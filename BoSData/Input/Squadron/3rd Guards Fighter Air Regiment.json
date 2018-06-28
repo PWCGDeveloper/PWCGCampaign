@@ -1,0 +1,74 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 10111003,
+  "name": "3rd Guards Fighter Air Regiment",
+  "fileName": "3rd Guards Fighter Air Regiment.json",
+  "skill": 60,
+  "planeAssignments": [
+    {
+      "type": "la5s8",
+      "squadronIntroduction": "19420906",
+      "squadronWithdrawal": "19450503"
+    },
+    {
+      "type": "la5fns2",
+      "squadronIntroduction": "19431010",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19420906": "Grishin",
+    "19421011": "Rahinka",
+    "19421123": "Bol. Ivanovka",
+    "19421223": "Bol. Ivanovka",
+    "19430120": "Bol. Ivanovka",
+    "19430301": "Agoy",
+    "19430330": "Severskaya",
+    "19430418": "Agoy",
+    "19430918": "Agoy",
+    "19430927": "Anapa",
+    "19431004": "Anapa",
+    "19431008": "Anapa"
+  },
+  "skins": [
+    {
+      "skinName": "LA5S8_SKIN_01",
+      "planeType": "la5s8",
+      "startDate": "19421101",
+      "endDate": "19430331",
+      "squadId": 10111013,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "LA5S8_SKIN_02",
+      "planeType": "la5s8",
+      "startDate": "19430331",
+      "endDate": "19440331",
+      "squadId": 10111013,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 20
+          }
+        ]
+      }
+    ]
+  }
+}

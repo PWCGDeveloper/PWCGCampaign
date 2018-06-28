@@ -1,0 +1,45 @@
+{
+  "country": "USA",
+  "squadronId": 103022,
+  "name": "22nd Aero",
+  "skill": 40,
+  "planeAssignments": [
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19180822",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180822": "Malzeville",
+    "19180922": "Belrain",
+    "19181101": "Souilly"
+  },
+  "skins": [
+    {
+      "skinName": "103022",
+      "planeType": "spad13",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 103022,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10301,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "No 16 Squadron RFC",
+  "squadronId": 102016,
+  "airfields": {
+    "19150801": "Merville",
+    "19151215": "La Gorgue",
+    "19160831": "Bruay",
+    "19170525": "Bruay",
+    "19181015": "Mazingarbe",
+    "19181025": "Beaucamp",
+    "19181105": "Lomme,Lille"
+  }
+}

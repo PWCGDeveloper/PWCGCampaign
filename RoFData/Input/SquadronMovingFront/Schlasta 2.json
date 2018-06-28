@@ -1,0 +1,18 @@
+{
+  "name": "Schlasta 2",
+  "squadronId": 501102,
+  "airfields": {
+    "19151220": "Pomacle",
+    "19160701": "Eppeville",
+    "19161121": "Bonneuil Ferme",
+    "19170508": "Moislains",
+    "19180114": "La Neuville",
+    "19180323": "La Neuville",
+    "19180509": "Epinoy,NW Cambrai",
+    "19180721": "Balatre,E Roye",
+    "19181005": "Ham Matigny",
+    "19181013": "Marville",
+    "19181025": "La Jolly Ferme,Stenay",
+    "19181110": "Carignan"
+  }
+}

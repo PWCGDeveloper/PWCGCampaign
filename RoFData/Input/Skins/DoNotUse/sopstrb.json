@@ -1,0 +1,165 @@
+{
+  "skinSetType": "SKIN_DO_NOT_USE",
+  "skins": {
+    "ssb_1pl_1esk": {
+      "skinName": "SSB_1PL_1ESK",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_1pl_2esk": {
+      "skinName": "SSB_1PL_2ESK",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_1pl_eszk": {
+      "skinName": "SSB_1PL_ESZK",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_ah_sid": {
+      "skinName": "SSB_AH_SID",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_citr_fra_gen": {
+      "skinName": "SSB_CITR_FRA_GEN",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_citr_fra_pan": {
+      "skinName": "SSB_CITR_FRA_PAN",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_citr_usas_gen": {
+      "skinName": "SSB_CITR_USAS_GEN",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_citr_usas_pan": {
+      "skinName": "SSB_CITR_USAS_PAN",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_jg1vonrd_j10": {
+      "skinName": "SSB_JG1VONRD_J10",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_o_rod": {
+      "skinName": "SSB_O_ROD",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_rnas-rfc_pc10": {
+      "skinName": "SSB_RNAS-RFC_PC10",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_rnas55_gen": {
+      "skinName": "SSB_RNAS55_GEN",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_rnas55_pan": {
+      "skinName": "SSB_RNAS55_PAN",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_ww-std1": {
+      "skinName": "SSB_WW-STD1",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_ww-std2": {
+      "skinName": "SSB_WW-STD2",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ssb_ww-std3": {
+      "skinName": "SSB_WW-STD3",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    }
+  }
+}

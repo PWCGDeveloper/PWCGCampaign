@@ -1,0 +1,21 @@
+{
+  "type": "dh4",
+  "side": "ALLIED",
+  "displayName": "Airco D.H.4",
+  "script": "LuaScripts\\WorldObjects\\dh4.txt",
+  "model": "graphics\\planes\\dh4\\dh4.mgm",
+  "desc": "",
+  "cruisingSpeed": 150,
+  "climbOutRate": 150,
+  "goodness": 55,
+  "endurance": 6.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_MEDIUM",
+  "roles": [
+    "ROLE_BOMB",
+    "ROLE_RECON",
+    "ROLE_ARTILLERY_SPOT"
+  ],
+  "introduction": "19170301",
+  "withdrawal": "19181111"
+}

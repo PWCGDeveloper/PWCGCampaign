@@ -1,0 +1,24 @@
+Player flight
+  Mission type: LOW_ALT_CAP
+  Airfield    : Ivanskoe
+  Aircraft    : bf109f4
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: DIVE_BOMB
+  Airfield    : Ryabinki
+  Aircraft    : ju87d3
+  Player Contact    : 17
+
+
+
+Flight
+  Mission type: GROUND_ATTACK
+  Airfield    : Ilinskoe
+  Aircraft    : il2m41
+  Player Contact    : 18
+
+
+

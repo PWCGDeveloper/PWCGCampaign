@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.campaign.TransferHandlerFighterTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:50:01" hostname="DigitalStorm-PC" time="1.903">
+  <properties/>
+  <testcase name="transferFromFighterToRecon" classname="pwcg.campaign.TransferHandlerFighterTest" time="0.521"/>
+  <testcase name="transferFromFighterToReconAsObserver" classname="pwcg.campaign.TransferHandlerFighterTest" time="0.46"/>
+  <testcase name="transferFromFighterToFighterDifferentService" classname="pwcg.campaign.TransferHandlerFighterTest" time="0.459"/>
+  <testcase name="transferFromFighterToFighterSameService" classname="pwcg.campaign.TransferHandlerFighterTest" time="0.463"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

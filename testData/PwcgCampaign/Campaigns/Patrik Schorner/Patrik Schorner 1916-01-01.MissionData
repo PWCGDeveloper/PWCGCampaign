@@ -1,0 +1,322 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-01-01";
+    Squadron = "FA 46b";
+    Map = "France";
+    Date = "19160101";
+    Time = "80:00";
+    Duty = "BOMB";
+    AircraftType = DFW C.V;
+    Altitude = 3243;
+    Airfield = Lagnicourt;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  DFW C.V
+Squadron  FA 46b
+Airbase  Lagnicourt
+Date  1916-01-01
+
+Weather Report 
+    Mostly clear, some high altitude clouds.
+    Cloud layer is 4958 meters.
+    Wind speed is 0 M/S.
+    Wind direction is 345.
+
+Primary Objective 
+    Attack the transport and road facilities  near Doullens
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 46b";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Carsten Olbrich";
+            ObserverRank = "Obltn";
+            Observer = "Viktor Schiller";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 46b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Fabian Spener";
+            ObserverRank = "Ltn";
+            Observer = "Tobias Klemme";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 46b";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Konrad Herxheimer";
+            ObserverRank = "Ltn";
+            Observer = "Patrik Schorner";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 46b";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Urs Kehlmann";
+            ObserverRank = "Ltn";
+            Observer = "Ewald Stock";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 5";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Maxim Gerstner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 5";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Georg Krommer";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 5";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Gerhard Dummler";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 5";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Klaus Heinemann";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Andreas Waghalter";
+            ObserverRank = "Obltn";
+            Observer = "Hans Schneider";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Jan Rosenstock";
+            ObserverRank = "Ltn";
+            Observer = "Walfred Buchtel";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Rudiger Weinstein";
+            ObserverRank = "Ltn";
+            Observer = "Holger Pfefferkorn";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Sven Krausser";
+            ObserverRank = "Ltn";
+            Observer = "Jurgen Neufeld";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 261";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Dietrich Schoenbohm";
+            ObserverRank = "Ltn";
+            Observer = "Wolfe Leupold";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 261";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Torsten Schmadel";
+            ObserverRank = "Obltn";
+            Observer = "Egon Auermann";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 261";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Rainer Reich";
+            ObserverRank = "Ltn";
+            Observer = "Michael Kuhne";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 261";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Gregor Ehrenfels";
+            ObserverRank = "Ltn";
+            Observer = "Dierck Weingand";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 210";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Harald Schett";
+            ObserverRank = "Ltn";
+            Observer = "Ferdinand Feuermann";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 210";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Jakob Schimmel";
+            ObserverRank = "Ltn";
+            Observer = "Engelbert Weidenmann";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport11";
+        Squadron = "Esc 57";
+        Crew
+        {
+            PilotRank = "Cne";
+            Pilot = "Dominique Mouillard";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport11";
+        Squadron = "Esc 57";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Florentin Dubois";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport11";
+        Squadron = "Esc 57";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Adolphe Kalandoff";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport11";
+        Squadron = "Esc 57";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Louis de La Cruz";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 107";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Jerome Motte";
+            ObserverRank = "S/Lt";
+            Observer = "Etienne Canere";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 107";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Serge Buge";
+            ObserverRank = "S/Lt";
+            Observer = "Ignace Lezot";
+        }
+    }
+}

@@ -1,0 +1,32 @@
+{
+  "targetPreferences": [
+    {
+      "startDate": "19411001",
+      "endDate": "19421101",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_DEFENSE",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19421101",
+      "endDate": "19420301",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_ASSAULT",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19411001",
+      "endDate": "19421101",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_ASSAULT",
+      "oddsOfUse": "30"
+    },
+    {
+      "startDate": "19421101",
+      "endDate": "19420301",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_DEFENSE",
+      "oddsOfUse": "40"
+    }
+  ]
+}

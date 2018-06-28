@@ -1,0 +1,19 @@
+{
+  "type": "nieuport28",
+  "side": "ALLIED",
+  "displayName": "Nieuport 28.C1",
+  "script": "LuaScripts\\WorldObjects\\nieuport28.txt",
+  "model": "graphics\\planes\\nieuport28\\nieuport28.mgm",
+  "desc": "",
+  "cruisingSpeed": 170,
+  "climbOutRate": 300,
+  "goodness": 50,
+  "endurance": 1.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER"
+  ],
+  "introduction": "19180101",
+  "withdrawal": "19181111"
+}

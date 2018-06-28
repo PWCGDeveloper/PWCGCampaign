@@ -1,0 +1,21 @@
+{
+  "name": "No 19 Squadron RFC",
+  "squadronId": 102019,
+  "airfields": {
+    "19160801": "Filescamp Ferme",
+    "19170402": "Baizieux 2",
+    "19170531": "Baizieux 2",
+    "19170814": "Poperinghe",
+    "19170905": "Bailleul",
+    "19171225": "Bailleul",
+    "19180213": "Bailleul",
+    "19180323": "Abeele (East)",
+    "19180329": "Bailleul",
+    "19180331": "Filescamp Ferme",
+    "19180817": "Les Moeres",
+    "19180923": "Savy Berlette",
+    "19181005": "La Targette",
+    "19181025": "Douai",
+    "19181105": "Masny"
+  }
+}

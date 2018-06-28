@@ -1,0 +1,111 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101029,
+  "name": "Esc 29",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "type": "fe2b",
+      "squadronIntroduction": "19150801",
+      "squadronWithdrawal": "19170130"
+    },
+    {
+      "type": "sopstrb",
+      "squadronIntroduction": "19170101",
+      "squadronWithdrawal": "19180130"
+    },
+    {
+      "type": "breguet14",
+      "squadronIntroduction": "19171215",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19150801": "Toul",
+    "19161205": "Vauxcere",
+    "19170206": "Quinquempoix",
+    "19170414": "Auve",
+    "19170526": "Grivesnes",
+    "19170712": "La Mellette",
+    "19180118": "Souilly",
+    "19180714": "Quinquempoix",
+    "19180806": "Vauxcere"
+  },
+  "skins": [
+    {
+      "skinName": "FE2B_PW_F29_DFT",
+      "planeType": "fe2b",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101029,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "RE8_FRENCH",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101029,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SSB_PW_F29_DFT",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101029,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SS_PW_F29_DFT",
+      "planeType": "sopstr",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101029,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "B14_ESC29_SEPT1917",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19180111",
+      "squadId": 101029,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "B14_ESC29_JAN1918",
+      "planeType": "breguet14",
+      "startDate": "19180112",
+      "endDate": "19181201",
+      "squadId": 101029,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501041,
+  "name": "Jasta 41",
+  "skill": 35,
+  "planeAssignments": [
+    {
+      "type": "albatrosd5",
+      "squadronIntroduction": "19170806",
+      "squadronWithdrawal": "19180810"
+    },
+    {
+      "type": "fokkerd7",
+      "squadronIntroduction": "19180619",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180321": "Phalempin,N Douai",
+    "19180724": "Sissonne",
+    "19180806": "La Selve",
+    "19180923": "Leffincourt,E Reims",
+    "19180928": "Chassonge Ferme,Stenay/Verdun",
+    "19181009": "Bellevue Ferme"
+  },
+  "skins": [
+    {
+      "skinName": "AD5_J41_MAY9917",
+      "planeType": "albatrosd5",
+      "startDate": "19140801",
+      "endDate": "19170919",
+      "squadId": 501041,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J41_OCT1917",
+      "planeType": "albatrosd5",
+      "startDate": "19170919",
+      "endDate": "19180404",
+      "squadId": 501041,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J41_APR1918",
+      "planeType": "albatrosd5",
+      "startDate": "19180404",
+      "endDate": "19181201",
+      "squadId": 501041,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7_J41_MAY1918",
+      "planeType": "fokkerd7",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501041,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

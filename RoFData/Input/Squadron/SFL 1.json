@@ -1,0 +1,53 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501601,
+  "name": "SFL 1",
+  "skill": 50,
+  "planeAssignments": [
+    {
+      "type": "brandw12",
+      "squadronIntroduction": "19170701",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19170701": "Zeebrugge"
+  },
+  "skins": [
+    {
+      "skinName": "501000_001",
+      "planeType": "brandw12",
+      "startDate": "19140801",
+      "endDate": "19180401",
+      "squadId": 501601,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "501000_000",
+      "planeType": "brandw12",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": 501601,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50102,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_SEA_PLANE_SMALL",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

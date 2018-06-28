@@ -1,0 +1,16 @@
+{
+  "name": "No 25 Squadron RFC",
+  "squadronId": 102025,
+  "airfields": {
+    "19160220": "Herzeele",
+    "19170401": "Le Hameau",
+    "19171011": "Filescamp Ferme",
+    "19180306": "Villers Bretonneux",
+    "19180324": "Petit Camon",
+    "19180326": "Villers Bretonneux",
+    "19180329": "Filescamp Ferme",
+    "19181015": "Mont St. Eloi",
+    "19181025": "Riencourt,Arras",
+    "19181110": "Epinoy,NW Cambrai"
+  }
+}

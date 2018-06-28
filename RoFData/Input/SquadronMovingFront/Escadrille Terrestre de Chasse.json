@@ -1,0 +1,9 @@
+{
+  "name": "Escadrille Terrestre de Chasse",
+  "squadronId": 101000,
+  "airfields": {
+    "19160101": "Coxyde",
+    "19181025": "Coxyde",
+    "19181105": "Leffinghe"
+  }
+}

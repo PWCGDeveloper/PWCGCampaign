@@ -1,0 +1,26 @@
+{
+  "name": "Jasta 22s",
+  "squadronId": 501022,
+  "airfields": {
+    "19161116": "Roupy,Somme",
+    "19161127": "Velu",
+    "19170516": "Bellevue Ferme",
+    "19170616": "Vivaise",
+    "19170916": "Bellevue Ferme",
+    "19171116": "Chambry,Laon",
+    "19180320": "Bonneuil Ferme",
+    "19180323": "Assevillers",
+    "19180326": "Mons-en-Chaussee",
+    "19180330": "Ham",
+    "19180404": "Balatre,E Roye",
+    "19180409": "Champien",
+    "19180512": "Riencourt,Arras",
+    "19180711": "Leffincourt,E Reims",
+    "19180808": "Beugnatre",
+    "19180820": "Villeselve",
+    "19181015": "Ham",
+    "19181025": "Fontaine-Uterte",
+    "19181105": "Fonsomme",
+    "19181110": "Bertry 2"
+  }
+}

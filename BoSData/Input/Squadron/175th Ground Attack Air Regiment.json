@@ -1,0 +1,82 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 10121175,
+  "name": "175th Ground Attack Air Regiment",
+  "fileName": "175th Ground Attack Air Regiment.json",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "type": "il2m41",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19420720"
+    },
+    {
+      "type": "il2m42",
+      "squadronIntroduction": "19420421",
+      "squadronWithdrawal": "19430501"
+    },
+    {
+      "type": "il2m43",
+      "squadronIntroduction": "19430301",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Kholm",
+    "19411020": "Pavlovskoe",
+    "19411110": "Pavlovskoe",
+    "19411120": "Bykovo",
+    "19411215": "Brykovo",
+    "19420110": "Ryabinki",
+    "19420301": "Zety",
+    "19420601": "Vyselki",
+    "19420624": "Abinskaya",
+    "19420709": "Gelenjik-3",
+    "19420721": "Lazarevskoe",
+    "19420801": "Davydovskiy",
+    "19420906": "Verh. Ahtuba",
+    "19421011": "Leninsk",
+    "19421123": "Tinguta",
+    "19421223": "Bol. Chapurniki",
+    "19430120": "Voroponovo",
+    "19430301": "Gelenjik-3",
+    "19430330": "Severskaya",
+    "19430418": "Gelenjik-3",
+    "19430918": "Krasnoarmeyskayas",
+    "19430927": "Slavyanskaya",
+    "19431004": "Anastasievskaya",
+    "19431008": "Gostagaevskaya"
+  },
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19420301",
+        "squadName": "766th Ground Attack Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 30
+      },
+      {
+        "date": "19430918",
+        "squadName": "783rd Ground Attack Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 30
+      }
+    ]
+  },
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

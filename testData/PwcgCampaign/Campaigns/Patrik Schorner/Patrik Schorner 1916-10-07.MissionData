@@ -1,0 +1,82 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-10-07";
+    Squadron = "Jasta 16b";
+    Map = "France";
+    Date = "19161007";
+    Time = "8:0:00";
+    Duty = "SCRAMBLE";
+    AircraftType = Albatros D.II;
+    Altitude = 2000;
+    Airfield = Balatre,E Roye;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Albatros D.II
+Squadron  Jasta 16b
+Airbase  Balatre,E Roye
+Date  1916-10-07
+
+Weather Report 
+    Heavy cloud cover, medium altitude.
+    Cloud layer is 2311 meters.
+    Wind speed is 0 M/S.
+    Wind direction is 182.
+
+Primary Objective 
+    Incoming enemy aircraft are near our airbase.  Get airborne and destroy them!
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Detlef Schwarzer";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "sopstr";
+        Squadron = "No 70 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Grayson Crocker";
+            ObserverRank = "Lt";
+            Observer = "Harold Vawdrey";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "sopstr";
+        Squadron = "No 70 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Monroe Moore";
+            ObserverRank = "Lt";
+            Observer = "Wilbur Strangewayes";
+        }
+    }
+}

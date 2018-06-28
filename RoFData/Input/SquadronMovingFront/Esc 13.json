@@ -1,0 +1,24 @@
+{
+  "name": "Esc 13",
+  "squadronId": 101013,
+  "airfields": {
+    "19150801": "Lemmes",
+    "19150906": "Auve",
+    "19151120": "Muizon",
+    "19151216": "Auve",
+    "19160503": "Tilloy at Bellay",
+    "19160519": "Julvecourt",
+    "19160828": "Froides",
+    "19161207": "Lemmes",
+    "19170103": "Vadelaincourt",
+    "19170127": "Lemmes",
+    "19170701": "Vadelaincourt",
+    "19170922": "Auve",
+    "19171005": "Froides",
+    "19180609": "Grivesnes",
+    "19180725": "Esquennoy",
+    "19181005": "Moreuil",
+    "19181015": "Balatre,E Roye",
+    "19181025": "Guisecourt(Guzancourt)"
+  }
+}

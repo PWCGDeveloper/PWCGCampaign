@@ -1,0 +1,286 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-08-02",
+    "squadron": "Jasta 16b",
+    "date": "19160802",
+    "time": "13:30:00",
+    "aircraftType": "AircraftType \u003d Halberstadt D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "PATROL",
+    "altitude": 4064
+  },
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-08-02\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 2450 meters.\nWind speed is 2 M/S.\nWind direction is 295.\n\nPrimary Objective\nPatrol airspace  near Noyon.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Augustus Kass",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Johann Hanneman",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Luther Schaumann",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 7",
+      "crew": {
+        "pilot": "Dirk Kohautek",
+        "observer": "Axel Wieser",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 7",
+      "crew": {
+        "pilot": "Ulrich Freisler",
+        "observer": "Franz Nadler",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Lenz Sundermann",
+        "observer": "Fabian Kromer",
+        "pilotRank": "Ltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Maxim Zimmermann",
+        "observer": "Klemens Stengel",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Ewart Harms",
+        "observer": "Klemens Hasselbach",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Konrad Distler",
+        "observer": "Anton Reinhard",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "soptriplane",
+      "squadronName": "No 1 Squadron RNAS",
+      "crew": {
+        "pilot": "Sherman Bray",
+        "observer": "",
+        "pilotRank": "Flt.Cdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "soptriplane",
+      "squadronName": "No 1 Squadron RNAS",
+      "crew": {
+        "pilot": "Claude Evans",
+        "observer": "",
+        "pilotRank": "Flt Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "soptriplane",
+      "squadronName": "No 1 Squadron RNAS",
+      "crew": {
+        "pilot": "Buck Bailey",
+        "observer": "",
+        "pilotRank": "Flt SLt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "soptriplane",
+      "squadronName": "No 1 Squadron RNAS",
+      "crew": {
+        "pilot": "Chad Browning",
+        "observer": "",
+        "pilotRank": "Flt SLt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Firmin Tavel",
+        "observer": "Sauveur Perrin",
+        "pilotRank": "Sergt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 23 Squadron RFC",
+      "crew": {
+        "pilot": "Steven Gobberd",
+        "observer": "Sloane Page",
+        "pilotRank": "Cpt",
+        "observerRank": "Cpt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 23 Squadron RFC",
+      "crew": {
+        "pilot": "Nicholas Helm",
+        "observer": "Travis Coorthopp",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 23 Squadron RFC",
+      "crew": {
+        "pilot": "Stanley Harlakinden",
+        "observer": "Claude Brett",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 23 Squadron RFC",
+      "crew": {
+        "pilot": "Wesley Hertcomb",
+        "observer": "Cadman Haye",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 2 Squadron RFC",
+      "crew": {
+        "pilot": "Frasier Roberts",
+        "observer": "Errol Duncombe",
+        "pilotRank": "Cpt",
+        "observerRank": "Cpt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 2 Squadron RFC",
+      "crew": {
+        "pilot": "Christian Inwood",
+        "observer": "Declan White",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 2 Squadron RFC",
+      "crew": {
+        "pilot": "David Joulon",
+        "observer": "Brooke Daundelyon",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 2 Squadron RFC",
+      "crew": {
+        "pilot": "Fenton Garret",
+        "observer": "Dudley Tibbord",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 12 Squadron RFC",
+      "crew": {
+        "pilot": "Sean Hall",
+        "observer": "Calvin Leveson",
+        "pilotRank": "Maj",
+        "observerRank": "Cpt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 12 Squadron RFC",
+      "crew": {
+        "pilot": "Garth Beeton",
+        "observer": "Stuart Spencer",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 12 Squadron RFC",
+      "crew": {
+        "pilot": "Hadden Wolstonton",
+        "observer": "Fabian Bell",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 12 Squadron RFC",
+      "crew": {
+        "pilot": "Oscar Etton",
+        "observer": "Frank Welby",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    }
+  ]
+}

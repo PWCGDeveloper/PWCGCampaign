@@ -1,0 +1,20 @@
+{
+  "type": "felixf2a",
+  "side": "ALLIED",
+  "displayName": "Felixstowe F2A",
+  "script": "LuaScripts\\WorldObjects\\felixf2a.txt",
+  "model": "graphics\\planes\\felixf2a\\felixf2a.mgm",
+  "desc": "",
+  "cruisingSpeed": 110,
+  "climbOutRate": 100,
+  "goodness": 60,
+  "endurance": 6.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_LARGE",
+  "roles": [
+    "ROLE_SEA_PLANE",
+    "ROLE_SEA_PLANE_LARGE"
+  ],
+  "introduction": "19170401",
+  "withdrawal": "19181111"
+}

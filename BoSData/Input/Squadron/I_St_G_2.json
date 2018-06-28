@@ -1,0 +1,77 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20121002,
+  "name": "I./St.G.2",
+  "fileName": "I_St_G_2.json",
+  "skill": 60,
+  "planeAssignments": [
+    {
+      "type": "ju87d3",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Znamenka",
+    "19411020": "Dugino",
+    "19411110": "Sychevka",
+    "19411120": "Ryabinki",
+    "19411215": "Zenino",
+    "19420110": "Znamenka",
+    "19420301": "Novo Sergievskiy",
+    "19420601": "Timashevskaya",
+    "19420624": "Dneprovskaya",
+    "19420709": "Ivanovskaya",
+    "19420721": "Severskaya",
+    "19420801": "Skvorin",
+    "19420906": "Skvorin",
+    "19421011": "Marinovka",
+    "19421123": "Zryansky",
+    "19421223": "Zryansky",
+    "19430120": "Skvorin",
+    "19430301": "Krymskaya",
+    "19430330": "Anapa",
+    "19430418": "Taman",
+    "19430918": "Taman",
+    "19430927": "Kerch 2",
+    "19431004": "Kerch 2",
+    "19431008": "Zamorsk"
+  },
+  "skins": [
+    {
+      "skinName": "JU87D3_SKIN_01",
+      "planeType": "ju87d3",
+      "startDate": "19421101",
+      "endDate": "19430331",
+      "squadId": 20121002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19430918",
+        "squadName": "I./St.G.3",
+        "armedServiceName": "Luftwaffe",
+        "skill": 55
+      }
+    ]
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_DIVE_BOMB",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

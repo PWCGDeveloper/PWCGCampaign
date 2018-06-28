@@ -1,0 +1,25 @@
+{
+  "name": "Esc 8",
+  "squadronId": 101008,
+  "airfields": {
+    "19150801": "Petit Camon",
+    "19150814": "Tilloy at Bellay",
+    "19160503": "Ferme d_Alger",
+    "19160620": "Vadelaincourt",
+    "19170201": "Somme Vesle",
+    "19170301": "Grivesnes",
+    "19170419": "Vauxcere",
+    "19170903": "Mont Soissons Ferme",
+    "19180309": "Vauxcere",
+    "19180315": "Mont Soissons Ferme",
+    "19180527": "Ferme Cravancon",
+    "19180601": "Vauxcere",
+    "19180729": "Vauxcere",
+    "19180813": "Muizon",
+    "19180823": "Vauxcere",
+    "19180830": "La Mellette",
+    "19180921": "Vauxcere",
+    "19180926": "La Cheppe",
+    "19181025": "Hauvine"
+  }
+}

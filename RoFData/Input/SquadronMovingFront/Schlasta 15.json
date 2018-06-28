@@ -1,0 +1,15 @@
+{
+  "name": "Schlasta 15",
+  "squadronId": 501115,
+  "airfields": {
+    "19160629": "Velu",
+    "19161216": "Pont-a-Marcq",
+    "19180321": "Eppeville",
+    "19180326": "Guisecourt(Guzancourt)",
+    "19180403": "Hermies,Cambrai",
+    "19180521": "Liesse",
+    "19180913": "Marville",
+    "19180918": "Sivry",
+    "19181025": "Jametz"
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "skinSetType": "SKIN_DO_NOT_USE",
+  "skins": {
+    "fd8_42sq_blue": {
+      "skinName": "FD8_42SQ_BLUE",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_42sq_red": {
+      "skinName": "FD8_42SQ_RED",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_er_cux_m": {
+      "skinName": "FD8_ER_CUX_M",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_er_mel_m": {
+      "skinName": "FD8_ER_MEL_M",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_er_ovk_m": {
+      "skinName": "FD8_ER_OVK_M",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_er_quin_m": {
+      "skinName": "FD8_ER_QUIN_M",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_er_rawl_m": {
+      "skinName": "FD8_ER_RAWL_M",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_er_sax_m": {
+      "skinName": "FD8_ER_SAX_M",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_er_seml_m": {
+      "skinName": "FD8_ER_SEML_M",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_er_stef_m": {
+      "skinName": "FD8_ER_STEF_M",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_er_strd_m": {
+      "skinName": "FD8_ER_STRD_M",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_er_tvs_m": {
+      "skinName": "FD8_ER_TVS_M",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_huntertastic": {
+      "skinName": "FD8_HUNTERTASTIC",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_jg1_butzzell": {
+      "skinName": "FD8_JG1_BUTZZELL",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_jg1_hett": {
+      "skinName": "FD8_JG1_HETT",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_jg1_labroisse": {
+      "skinName": "FD8_JG1_LABROISSE",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_jg1_lee": {
+      "skinName": "FD8_JG1_LEE",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_jg1_maushake": {
+      "skinName": "FD8_JG1_MAUSHAKE",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_jg1_reinhart": {
+      "skinName": "FD8_JG1_REINHART",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_jg1_vickner": {
+      "skinName": "FD8_JG1_VICKNER",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_jg1_vongreim": {
+      "skinName": "FD8_JG1_VONGREIM",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_jg1_vonkost": {
+      "skinName": "FD8_JG1_VONKOST",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_jg1_wurger": {
+      "skinName": "FD8_JG1_WURGER",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_jg1vonrd_j10": {
+      "skinName": "FD8_JG1VONRD_J10",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_o_rod": {
+      "skinName": "FD8_O_ROD",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_rkkvf": {
+      "skinName": "FD8_RKKVF",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_tvscherrer": {
+      "skinName": "FD8_TVSCHERRER",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fd8_tvscherrerv2": {
+      "skinName": "FD8_TVSCHERRERV2",
+      "planeType": "fokkerd8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    }
+  }
+}

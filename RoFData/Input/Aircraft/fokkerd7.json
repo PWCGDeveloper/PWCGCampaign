@@ -1,0 +1,19 @@
+{
+  "type": "fokkerd7",
+  "side": "AXIS",
+  "displayName": "Fokker D.VII",
+  "script": "LuaScripts\\WorldObjects\\fokkerd7.txt",
+  "model": "graphics\\planes\\fokkerd7\\fokkerd7.mgm",
+  "desc": "",
+  "cruisingSpeed": 150,
+  "climbOutRate": 300,
+  "goodness": 80,
+  "endurance": 1.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER"
+  ],
+  "introduction": "19180501",
+  "withdrawal": "19181111"
+}

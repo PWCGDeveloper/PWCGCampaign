@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="Deploy BoS Project PWCGCampaign">
+
+	<target name="compile">
+	       <javac srcdir="./src" includeantruntime="true" includes="BoSDeploy.java" destdir="."></javac>
+	</target>
+
+	<target name="run" depends="compile">
+	       <java classname="BoSDeploy.java" fork="true"></java>
+	</target>
+</project>

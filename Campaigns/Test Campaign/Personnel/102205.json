@@ -1,0 +1,358 @@
+{
+  "squadronMembers": {
+    "3001021": {
+      "name": "Harold Latton",
+      "serialNumber": 3001021,
+      "rank": "Lieutenant",
+      "picName": "British036.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 29,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102205,
+      "inactiveDate": "19181111"
+    },
+    "3001020": {
+      "name": "Curtis Steward",
+      "serialNumber": 3001020,
+      "rank": "Lieutenant",
+      "picName": "British064.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 16,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102205,
+      "inactiveDate": "19181111"
+    },
+    "3001023": {
+      "name": "Arnold Westlake",
+      "serialNumber": 3001023,
+      "rank": "2nd Lieutenant",
+      "picName": "British006.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 7,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102205,
+      "inactiveDate": "19181111"
+    },
+    "3001022": {
+      "name": "Walter Fulmer",
+      "serialNumber": 3001022,
+      "rank": "2nd Lieutenant",
+      "picName": "British034.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 5,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102205,
+      "inactiveDate": "19181111"
+    },
+    "3001017": {
+      "name": "Isaac Danvers",
+      "serialNumber": 3001017,
+      "rank": "Captain",
+      "picName": "British062.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 29,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102205,
+      "inactiveDate": "19181111"
+    },
+    "3001016": {
+      "name": "Carrick Upton",
+      "serialNumber": 3001016,
+      "rank": "Captain",
+      "picName": "British049.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 46,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102205,
+      "inactiveDate": "19181111"
+    },
+    "3001019": {
+      "name": "Andrew Warner",
+      "serialNumber": 3001019,
+      "rank": "Lieutenant",
+      "picName": "British009.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 15,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102205,
+      "inactiveDate": "19181111"
+    },
+    "3001018": {
+      "name": "Dean Leigh",
+      "serialNumber": 3001018,
+      "rank": "Lieutenant",
+      "picName": "British050.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 10,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102205,
+      "inactiveDate": "19181111"
+    },
+    "3001015": {
+      "name": "Trevor Wotton",
+      "serialNumber": 3001015,
+      "rank": "Major",
+      "picName": "British052.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 42,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102205,
+      "inactiveDate": "19181111"
+    },
+    "3001025": {
+      "name": "Winston Ermin",
+      "serialNumber": 3001025,
+      "rank": "2nd Lieutenant",
+      "picName": "British055.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 8,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102205,
+      "inactiveDate": "19181111"
+    },
+    "3001024": {
+      "name": "Ives Follywolle",
+      "serialNumber": 3001024,
+      "rank": "2nd Lieutenant",
+      "picName": "British70.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 7,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102205,
+      "inactiveDate": "19181111"
+    },
+    "3001026": {
+      "name": "Egerton Foljambe",
+      "serialNumber": 3001026,
+      "rank": "2nd Lieutenant",
+      "picName": "British041.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 4,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102205,
+      "inactiveDate": "19181111"
+    }
+  }
+}

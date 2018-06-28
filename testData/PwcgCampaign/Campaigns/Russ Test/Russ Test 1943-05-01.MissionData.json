@@ -1,0 +1,196 @@
+{
+  "missionHeader": {
+    "missionFileName": "Russ Test 1943-05-01",
+    "squadron": "16th Guards Fighter Air Regiment",
+    "date": "19430501",
+    "time": "1.5.1943",
+    "aircraftType": "P-39L-1",
+    "mapName": "Kuban",
+    "airfield": "Ivanovskaya",
+    "duty": "PATROL",
+    "altitude": 3593
+  },
+  "missionDescription": "Mission: \nAircraft  P-39L-1\nSquadron  16th Guards Fighter Air Regiment\nAirbase  Ivanovskaya\nDate  1.5.1943\n\nWeather Report \n    Mostly clear, some high altitude clouds.\n    Cloud layer is 6144 meters.\n    Wind speed is 0 M/S.\n    Wind direction is 307.\n\nPrimary Objective \n    Patrol airspace  near Kievskoe.  Engage any enemy aircraft that you encounter.\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "p39l1",
+      "squadronId": 10111126,
+      "crew": {
+        "pilot": "Iosif Batishchev",
+        "observer": "",
+        "pilotRank": "SLt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "p39l1",
+      "squadronId": 10111126,
+      "crew": {
+        "pilot": "Artur Primakov",
+        "observer": "",
+        "pilotRank": "SLt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "p39l1",
+      "squadronId": 10111126,
+      "crew": {
+        "pilot": "Artur Pugin",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "p39l1",
+      "squadronId": 10111126,
+      "crew": {
+        "pilot": "Russ Test",
+        "observer": "",
+        "pilotRank": "Szt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "p39l1",
+      "squadronId": 10111495,
+      "crew": {
+        "pilot": "Georgy Barbolin",
+        "observer": "",
+        "pilotRank": "Mjr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "p39l1",
+      "squadronId": 10111495,
+      "crew": {
+        "pilot": "Emil Bovarin",
+        "observer": "",
+        "pilotRank": "SLt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "p39l1",
+      "squadronId": 10111495,
+      "crew": {
+        "pilot": "Anton Statnik",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "p39l1",
+      "squadronId": 10111495,
+      "crew": {
+        "pilot": "Zakhar Dubow",
+        "observer": "",
+        "pilotRank": "Szt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "la5s8",
+      "squadronId": 10111027,
+      "crew": {
+        "pilot": "Igor Yurasov",
+        "observer": "",
+        "pilotRank": "Szt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "la5s8",
+      "squadronId": 10111027,
+      "crew": {
+        "pilot": "Vasily Ubeysobakin",
+        "observer": "",
+        "pilotRank": "Szt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "lagg3s29",
+      "squadronId": 10111233,
+      "crew": {
+        "pilot": "Fyodor Pashin",
+        "observer": "",
+        "pilotRank": "Mjr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "lagg3s29",
+      "squadronId": 10111233,
+      "crew": {
+        "pilot": "Moisey Smolin",
+        "observer": "",
+        "pilotRank": "SLt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "lagg3s29",
+      "squadronId": 10111233,
+      "crew": {
+        "pilot": "Vyacheslav Yevstigneyev",
+        "observer": "",
+        "pilotRank": "SLt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "lagg3s29",
+      "squadronId": 10111233,
+      "crew": {
+        "pilot": "Ilya Burdukovsky",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "mc202s8",
+      "squadronId": 20115021,
+      "crew": {
+        "pilot": "Bernaba Rossetti",
+        "observer": "",
+        "pilotRank": "Mgr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "mc202s8",
+      "squadronId": 20115021,
+      "crew": {
+        "pilot": "Biagio Rossetti",
+        "observer": "",
+        "pilotRank": "Sgt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "mc202s8",
+      "squadronId": 20115021,
+      "crew": {
+        "pilot": "Nuccio Monti",
+        "observer": "",
+        "pilotRank": "Sgt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "mc202s8",
+      "squadronId": 20115021,
+      "crew": {
+        "pilot": "Palla De Angelis",
+        "observer": "",
+        "pilotRank": "Sgt",
+        "observerRank": ""
+      }
+    }
+  ]
+}

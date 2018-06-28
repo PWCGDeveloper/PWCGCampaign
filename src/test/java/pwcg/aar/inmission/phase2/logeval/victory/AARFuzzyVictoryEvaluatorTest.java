@@ -1,0 +1,148 @@
+package pwcg.aar.inmission.phase2.logeval.victory;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Matchers;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import pwcg.aar.inmission.phase2.logeval.AARVehicleBuilder;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
+import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyByPlayerDamaged;
+import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyVictoryEvaluator;
+import pwcg.aar.inmission.phase2.logeval.victory.AARRandomAssignment;
+import pwcg.core.exception.PWCGException;
+
+@RunWith(MockitoJUnitRunner.class)
+public class AARFuzzyVictoryEvaluatorTest
+{
+    @Mock
+    private AARVehicleBuilder vehicleBuilder;
+
+    @Mock
+    private AARFuzzyByPlayerDamaged fuzzyByPlayerDamaged;
+    
+    @Mock
+    private AARRandomAssignment randomAssignment;
+    
+    private LogVictory victoryResult;
+    
+    @Mock
+    private LogPlane victor;
+    
+    private LogPlane victim;
+    
+    private LogUnknown unknownVictorEntity = new LogUnknown();
+    
+    @Before
+    public void setup()
+    {
+        victoryResult = new LogVictory();
+        
+        victim = new LogPlane();
+    }
+    
+    @Test
+    public void testUseFuzzyVictoryTrue () throws PWCGException
+    {
+        victoryResult.setVictim(new LogPlane());
+        victim.setId("11111");
+        Mockito.when(vehicleBuilder.getVehicle(Matchers.<String>any())).thenReturn(victim);
+        Mockito.when(randomAssignment.markForRandomAssignment(victoryResult)).thenReturn(unknownVictorEntity);
+        unknownVictorEntity.setId("11111");
+        
+        AARFuzzyVictoryEvaluator fuzzyVictoryEvaluator= new AARFuzzyVictoryEvaluator(
+                        vehicleBuilder, 
+                        fuzzyByPlayerDamaged,
+                        randomAssignment);
+        
+        fuzzyVictoryEvaluator.applyFuzzyVictoryMethods(victoryResult);
+        
+        assert(victoryResult.getVictor().getId() == "11111");
+    }
+    
+    @Test
+    public void testUseFuzzyVictoryFalseBecauseNullVictim () throws PWCGException
+    {
+        victoryResult.setVictim(null);
+        victim.setId("11111");
+        unknownVictorEntity.setId("11111");
+
+        Mockito.when(vehicleBuilder.getVehicle(Matchers.<String>any())).thenReturn(victim);
+        Mockito.when(randomAssignment.markForRandomAssignment(victoryResult)).thenReturn(unknownVictorEntity);
+        
+        AARFuzzyVictoryEvaluator fuzzyVictoryEvaluator= new AARFuzzyVictoryEvaluator(
+                        vehicleBuilder, 
+                        fuzzyByPlayerDamaged,
+                        randomAssignment);
+        
+        fuzzyVictoryEvaluator.applyFuzzyVictoryMethods(victoryResult);
+        
+        assert(victoryResult.getVictor() instanceof LogUnknown);
+    }
+    
+    @Test
+    public void testUseFuzzyVictoryFalseBecauseUnknownVictor () throws PWCGException
+    {
+        victoryResult.setVictim(null);
+        victim.setId("11111");
+        unknownVictorEntity.setId("11111");
+
+        Mockito.when(vehicleBuilder.getVehicle(Matchers.<String>any())).thenReturn(victim);
+        Mockito.when(randomAssignment.markForRandomAssignment(victoryResult)).thenReturn(unknownVictorEntity);
+        
+        AARFuzzyVictoryEvaluator fuzzyVictoryEvaluator= new AARFuzzyVictoryEvaluator(
+                        vehicleBuilder, 
+                        fuzzyByPlayerDamaged,
+                        randomAssignment);
+        
+        fuzzyVictoryEvaluator.applyFuzzyVictoryMethods(victoryResult);
+        
+        assert(victoryResult.getVictor() instanceof LogUnknown);
+    }
+    
+    @Test
+    public void testUseFuzzyVictoryFalseBecauseNotNullVictor () throws PWCGException
+    {
+        victoryResult.setVictor(new LogPlane());
+        victoryResult.setVictim(new LogPlane());
+        victim.setId("11111");
+        unknownVictorEntity.setId("11111");
+
+        Mockito.when(vehicleBuilder.getVehicle(Matchers.<String>any())).thenReturn(victim);
+        Mockito.when(randomAssignment.markForRandomAssignment(victoryResult)).thenReturn(unknownVictorEntity);
+        
+        AARFuzzyVictoryEvaluator fuzzyVictoryEvaluator= new AARFuzzyVictoryEvaluator(
+                        vehicleBuilder, 
+                        fuzzyByPlayerDamaged,
+                        randomAssignment);
+        
+        fuzzyVictoryEvaluator.applyFuzzyVictoryMethods(victoryResult);
+        
+        assert(victoryResult.getVictor().getId() == "");
+    }
+    
+    @Test
+    public void testUseFuzzyVictoryFalseBecauseVehicleBuilderCouldNotIdentifyVictim () throws PWCGException
+    {
+        victoryResult.setVictim(new LogPlane());
+        victim.setId("11111");
+        Mockito.when(vehicleBuilder.getVehicle(Matchers.<String>any())).thenReturn(null);
+        Mockito.when(randomAssignment.markForRandomAssignment(victoryResult)).thenReturn(unknownVictorEntity);
+        unknownVictorEntity.setId("11111");
+        
+        AARFuzzyVictoryEvaluator fuzzyVictoryEvaluator= new AARFuzzyVictoryEvaluator(
+                        vehicleBuilder, 
+                        fuzzyByPlayerDamaged,
+                        randomAssignment);
+        
+        fuzzyVictoryEvaluator.applyFuzzyVictoryMethods(victoryResult);
+        
+        assert(victoryResult.getVictor() instanceof LogUnknown);
+    }
+    
+}

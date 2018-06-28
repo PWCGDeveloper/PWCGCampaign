@@ -1,0 +1,116 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-05-15",
+    "squadron": "Jasta 4",
+    "date": "19160515",
+    "time": "15:0:00",
+    "aircraftType": "AircraftType \u003d Fokker E.II",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Bonneuil Ferm",
+    "duty": "OFFENSIVE",
+    "altitude": 2000
+  },
+  "missionDescription": "Mission:\nAircraft  Fokker E.III\nSquadron  Jasta 4\nAirbase  Bonneuil Ferme\nDate  1916-05-15\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 1882 meters.\nWind speed is 2 M/S.\nWind direction is 323.\n\nPrimary Objective\nPenetrate enemy airspace near Ribecourt.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Obltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Fritz Bernert",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Mario Falck",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Ewald Weinwurm",
+        "observer": "",
+        "pilotRank": "Uffz",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 7",
+      "crew": {
+        "pilot": "Johann Honigswald",
+        "observer": "Sebastian Traub",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 7",
+      "crew": {
+        "pilot": "Michael Flohr",
+        "observer": "Niklaus Eichhorn",
+        "pilotRank": "Uffz",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Blaise Morales",
+        "observer": "Ferdinand Vasse",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Leonard Lafont",
+        "observer": "Marceau Marchau",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 108",
+      "crew": {
+        "pilot": "Ignace Poligne",
+        "observer": "Adolphe Laboux",
+        "pilotRank": "Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 108",
+      "crew": {
+        "pilot": "Emilien Laforgue",
+        "observer": "Richard Labolle",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "skinSetType": "SKIN_DO_NOT_USE",
+  "skins": {
+    "re8_19rfc_std": {
+      "skinName": "RE8_19RFC_STD",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102019,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "re8_42sq_recruit": {
+      "skinName": "RE8_42SQ_RECRUIT",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "re8_ah_sid": {
+      "skinName": "RE8_AH_SID",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "re8_dw": {
+      "skinName": "RE8_DW",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "re8_e69": {
+      "skinName": "RE8_E69",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "re8_edwardgale": {
+      "skinName": "RE8_EDWARDGALE",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "re8_f3680": {
+      "skinName": "RE8_F3680",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "re8_fayt": {
+      "skinName": "RE8_FAYT",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "re8_fis_default": {
+      "skinName": "RE8_FIS_DEFAULT",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "re8_genericrnas55": {
+      "skinName": "RE8_GENERICRNAS55",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102055,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "re8_hq_a": {
+      "skinName": "RE8_HQ_A",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "re8_irfc_harry": {
+      "skinName": "RE8_IRFC_HARRY",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "re8_o_rod": {
+      "skinName": "RE8_O_ROD",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "re8_rkkvf": {
+      "skinName": "RE8_RKKVF",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "re8_ww_std": {
+      "skinName": "RE8_WW_STD",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    }
+  }
+}

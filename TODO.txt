@@ -1,0 +1,72 @@
+https://github.com/PWCGDeveloper/PWCG.git
+
+Target Definition
+Strategic Target selection
+Target definition -> target selection
+Finish GroundUnitFactoryRoFTest
+
+
+- A20
+- P39
+
+Switch to disable transfer of pilots
+
+Ju52
+Add transport mission
+- Officer
+- Cargo
+- Nighttime parachute drops
+Add parachute drop mission
+
+Add mission relevance: i.e. mission assignments are accurate based on period and place
+Needs:
+- Squadron role
+- Mission type
+- Mission location
+- Target Map
+- Target area
+- Target Type
+- Start Date
+- End Date
+
+How it works:
+Check for relevant mission
+Odds of assigning
+Get squadron role ... player or AI doesn't matter
+If squadron should be involved in special mission (determine by role)
+- Create specific mission type
+- With specific target type
+- At Target Location
+
+
+Aircraft inventory
+- Start at squadron size + 2
+- Add one new best plane each day
+- Retire old planes
+- Add squadron inventory screen
+- Maintain losses
+- Lose days if inventory < half
+
+Payloads
+Add logic to select best payload for mission
+For BoS: add capability to match plane modifications with payloads
+
+Weather
+- separate BOS and RoF config keys
+- make sure that thunderstorm is an option
+- stack odds instead of absolute
+
+A/G destroyed vehicles and victories be summarized in the AAR summary
+vehicles and victories be summarized in the pilot log, I believe there is only total of air victories: again it would be nice to have.
+
+New Events
+- Add page and squadron log for aircraft introduced
+- Add page and squadron log for aircraft removed from service
+
+Add text to indicate squadron status.
+Adjust pilot progress to squadron status. 
+Add exceptionally difficult missions with accept/reject button.
+Tank statistics are kept separately
+
+Add skin configuration screen
+Add ace configuration screen

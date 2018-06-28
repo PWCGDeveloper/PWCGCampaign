@@ -1,0 +1,555 @@
+{
+  "squadronMembers": {
+    "3000525": {
+      "name": "Emile Kalandoff",
+      "serialNumber": 3000525,
+      "rank": "Sergent",
+      "picName": "French051.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101096,
+      "inactiveDate": "19181111"
+    },
+    "3000524": {
+      "name": "Albin Tournaire",
+      "serialNumber": 3000524,
+      "rank": "Sergent",
+      "picName": "French012.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101096,
+      "inactiveDate": "19181111"
+    },
+    "3000527": {
+      "name": "Valentin Langenieux",
+      "serialNumber": 3000527,
+      "rank": "Corporal",
+      "picName": "French009.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 8,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101096,
+      "inactiveDate": "19181111"
+    },
+    "3000526": {
+      "name": "Gaspard Cottave",
+      "serialNumber": 3000526,
+      "rank": "Sergent",
+      "picName": "French049.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 8,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101096,
+      "inactiveDate": "19181111"
+    },
+    "3000521": {
+      "name": "Arthur Patrouilleau",
+      "serialNumber": 3000521,
+      "rank": "Sous Lieutenant",
+      "picName": "French061.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 13,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101096,
+      "inactiveDate": "19181111"
+    },
+    "3000520": {
+      "name": "Valentin Bridoux",
+      "serialNumber": 3000520,
+      "rank": "Sous Lieutenant",
+      "picName": "French059.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 28,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101096,
+      "inactiveDate": "19181111"
+    },
+    "3000523": {
+      "name": "Ernest Nouvion",
+      "serialNumber": 3000523,
+      "rank": "Sous Lieutenant",
+      "picName": "French011.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 26,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101096,
+      "inactiveDate": "19181111"
+    },
+    "3000522": {
+      "name": "Jean-Marie Michau",
+      "serialNumber": 3000522,
+      "rank": "Sous Lieutenant",
+      "picName": "French033.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 27,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101096,
+      "inactiveDate": "19181111"
+    },
+    "3000517": {
+      "name": "Jerome de Beauchamps",
+      "serialNumber": 3000517,
+      "rank": "Capitaine",
+      "picName": "French021.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 42,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170404",
+          "location": "Saint Hilaire - le Petite",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 12",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Hartwig Herzl",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.96",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitaine Jerome de Beauchamps",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170407",
+          "location": "Pont-A-Mousson",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd2late",
+            "squadronName": "Jasta 15",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Rupert Steinmeyer",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.96",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitaine Jerome de Beauchamps",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170410",
+          "location": "StMihiel",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Marine-Feldjagdstaffel I",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn.z.S Ewald Bodmer",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.96",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitaine Jerome de Beauchamps",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170413",
+          "location": "Sampigny",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FliK 10",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kp Eduard Sakal",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.96",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitaine Jerome de Beauchamps",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170416",
+          "location": "Sommepy-Tahure",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd2late",
+            "squadronName": "Jasta 28w",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Eberhardt Steiner",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.96",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitaine Jerome de Beauchamps",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170419",
+          "location": "Saint Hilaire - le Petite",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 278s",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Rudolph Dorflinger",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.96",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitaine Jerome de Beauchamps",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Sampigny",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "FA 15",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Erwin Bohlen",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.96",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitaine Jerome de Beauchamps",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Moivrons",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 216w",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Eugen Sauerbeck",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.96",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitaine Jerome de Beauchamps",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Sampigny",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 4",
+            "pilotSerialNumber": 0,
+            "pilotName": "Obltn Lars Nachtigal",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.96",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitaine Jerome de Beauchamps",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101096,
+      "inactiveDate": "19181111"
+    },
+    "3000519": {
+      "name": "Alphonse Eschenbrenner",
+      "serialNumber": 3000519,
+      "rank": "Lieutenant",
+      "picName": "French043.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 42,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101096,
+      "inactiveDate": "19181111"
+    },
+    "3000518": {
+      "name": "Vincent Alloncle",
+      "serialNumber": 3000518,
+      "rank": "Lieutenant",
+      "picName": "French002.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 23,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170428",
+          "location": "Moncel-sur-Seille",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 18",
+            "pilotSerialNumber": 0,
+            "pilotName": "Fw Johannes Liliental",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.96",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lieutenant Vincent Alloncle",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101096,
+      "inactiveDate": "19181111"
+    },
+    "3000528": {
+      "name": "Leonard Jaffre",
+      "serialNumber": 3000528,
+      "rank": "Corporal",
+      "picName": "French008.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 6,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101096,
+      "inactiveDate": "19181111"
+    }
+  }
+}

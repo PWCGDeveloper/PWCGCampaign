@@ -1,0 +1,125 @@
+{
+  "skinSetType": "SKIN_DO_NOT_USE",
+  "skins": {
+    "hhd1_1pl_1esk": {
+      "skinName": "HHD1_1PL_1ESK",
+      "planeType": "hanhd1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hhd1_1pl_1eszk": {
+      "skinName": "HHD1_1PL_1ESZK",
+      "planeType": "hanhd1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hhd1_42sq_blue": {
+      "skinName": "HHD1_42SQ_BLUE",
+      "planeType": "hanhd1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hhd1_42sq_bluecam": {
+      "skinName": "HHD1_42SQ_BLUECAM",
+      "planeType": "hanhd1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hhd1_42sq_red": {
+      "skinName": "HHD1_42SQ_RED",
+      "planeType": "hanhd1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hhd1_42sq_red_cam": {
+      "skinName": "HHD1_42SQ_RED_CAM",
+      "planeType": "hanhd1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hhd1_bma-pangen_e": {
+      "skinName": "HHD1_BMA-PANGEN_E",
+      "planeType": "hanhd1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hhd1_bma-pangen_l": {
+      "skinName": "HHD1_BMA-PANGEN_L",
+      "planeType": "hanhd1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hhd1_bma-panthere": {
+      "skinName": "HHD1_BMA-PANTHERE",
+      "planeType": "hanhd1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hhd1_bma-pantherl": {
+      "skinName": "HHD1_BMA-PANTHERL",
+      "planeType": "hanhd1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hhd1_citr_usn_e": {
+      "skinName": "HHD1_CITR_USN_E",
+      "planeType": "hanhd1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hhd1_pantherusn_e": {
+      "skinName": "HHD1_PANTHERUSN_E",
+      "planeType": "hanhd1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    }
+  }
+}

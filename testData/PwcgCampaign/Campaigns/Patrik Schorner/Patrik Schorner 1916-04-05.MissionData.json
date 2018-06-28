@@ -1,0 +1,226 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-04-05",
+    "squadron": "FA 15",
+    "date": "19160405",
+    "time": "100:00",
+    "aircraftType": "AircraftType \u003d Roland C.II",
+    "mapName": "Galicia",
+    "airfield": "Airfield \u003d Puko",
+    "duty": "ARTILLERY_SPOT",
+    "altitude": 800
+  },
+  "missionDescription": "Mission:\nAircraft  Roland C.IIa\nSquadron  FA 15\nAirbase  Pukov\nDate  1916-04-05\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 2142 meters.\nWind speed is 1 M/S.\nWind direction is 63.\n\nPrimary Objective\nSpot artillery against the transport and road facilities  near Factory\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "Rudiger Hoelscher",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "FAA 1",
+      "crew": {
+        "pilot": "Falco Stuber",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "FAA 1",
+      "crew": {
+        "pilot": "Manfred Kessler",
+        "observer": "",
+        "pilotRank": "Uffz",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 10",
+      "crew": {
+        "pilot": "Felix Gebauer",
+        "observer": "Rainer Stuber",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 10",
+      "crew": {
+        "pilot": "Bodis Stollar",
+        "observer": "Arndt Walbaum",
+        "pilotRank": "Fw",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 10",
+      "crew": {
+        "pilot": "Otto Kochel",
+        "observer": "Anton Aschersohn",
+        "pilotRank": "Kp",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 25",
+      "crew": {
+        "pilot": "Dorman Sakal",
+        "observer": "Salamon Silas",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 25",
+      "crew": {
+        "pilot": "Reinhard Holler",
+        "observer": "Azzony Karmazin",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 25",
+      "crew": {
+        "pilot": "Walfred Wiesenthal",
+        "observer": "Dietrich Baumstein",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 25",
+      "crew": {
+        "pilot": "Bertold Liptak",
+        "observer": "Frederich Saft",
+        "pilotRank": "Kp",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 18",
+      "crew": {
+        "pilot": "Zoltan Galik",
+        "observer": "Herbert Vorgrimler",
+        "pilotRank": "Ltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 18",
+      "crew": {
+        "pilot": "Arnulf von Braun",
+        "observer": "Georg Weizaecker",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 18",
+      "crew": {
+        "pilot": "Eugen Zippe",
+        "observer": "arpad Nemeth",
+        "pilotRank": "Kp",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 18",
+      "crew": {
+        "pilot": "Knut Quint",
+        "observer": "Jakob Sitte",
+        "pilotRank": "Kp",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "s16",
+      "squadronName": "4th AOI",
+      "crew": {
+        "pilot": "Alek Chaban",
+        "observer": "",
+        "pilotRank": "Pk",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "s16",
+      "squadronName": "4th AOI",
+      "crew": {
+        "pilot": "Dimitri Gulin",
+        "observer": "",
+        "pilotRank": "Pk",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "8th KAO",
+      "crew": {
+        "pilot": "Egor Yanayev",
+        "observer": "Yefrem Kurtashkin",
+        "pilotRank": "Pk",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "2nd KAO",
+      "crew": {
+        "pilot": "Vitenka Kulagin",
+        "observer": "Vladilen Yurnayev",
+        "pilotRank": "Cpt",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "2nd KAO",
+      "crew": {
+        "pilot": "Maksim Siyanosov",
+        "observer": "Andrusha Skryabin",
+        "pilotRank": "Pk",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "2nd KAO",
+      "crew": {
+        "pilot": "Vladilen Lazaroff",
+        "observer": "Motka Olshansky",
+        "pilotRank": "Pk",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "2nd KAO",
+      "crew": {
+        "pilot": "Yurochka Slutzky",
+        "observer": "Kostya Ilyukhin",
+        "pilotRank": "DPk",
+        "observerRank": "Pk"
+      }
+    }
+  ]
+}

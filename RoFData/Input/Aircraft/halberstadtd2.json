@@ -1,0 +1,19 @@
+{
+  "type": "halberstadtd2",
+  "side": "AXIS",
+  "displayName": "Halberstadt D.II",
+  "script": "LuaScripts\\WorldObjects\\halberstadtd2.txt",
+  "model": "graphics\\planes\\halberstadtd2\\halberstadtd2.mgm",
+  "desc": "",
+  "cruisingSpeed": 130,
+  "climbOutRate": 150,
+  "goodness": 31,
+  "endurance": 1.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER"
+  ],
+  "introduction": "19160501",
+  "withdrawal": "19181111"
+}

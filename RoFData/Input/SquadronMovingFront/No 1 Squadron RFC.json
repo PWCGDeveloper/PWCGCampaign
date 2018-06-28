@@ -1,0 +1,14 @@
+{
+  "name": "No 1 Squadron RFC",
+  "squadronId": 102001,
+  "airfields": {
+    "19150801": "Bailleul",
+    "19180329": "Houtem",
+    "19180413": "Abeele (West)",
+    "19180428": "Oudezeele",
+    "19180805": "Lealvillers",
+    "19181005": "Riencourt,Arras",
+    "19181006": "Mazingarbe",
+    "19181025": "Phalempin,N Douai"
+  }
+}

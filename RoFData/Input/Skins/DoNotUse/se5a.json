@@ -1,0 +1,505 @@
+{
+  "skinSetType": "SKIN_DO_NOT_USE",
+  "skins": {
+    "se5a_19_mjdixon": {
+      "skinName": "SE5A_19_MJDIXON",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_19rfc_std": {
+      "skinName": "SE5A_19RFC_STD",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102019,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_42sq_skeetr": {
+      "skinName": "SE5A_42SQ_SKEETR",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_42sq_yoke": {
+      "skinName": "SE5A_42SQ_YOKE",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_ah_sid": {
+      "skinName": "SE5A_AH_SID",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_bowen": {
+      "skinName": "SE5A_BOWEN",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_broadside": {
+      "skinName": "SE5A_BROADSIDE",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_conga": {
+      "skinName": "SE5A_CONGA",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_eaf_brigstoc": {
+      "skinName": "SE5A_EAF_BRIGSTOC",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_eaf_osprey": {
+      "skinName": "SE5A_EAF_OSPREY",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_eaf_paf": {
+      "skinName": "SE5A_EAF_PAF",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_eaf_splash": {
+      "skinName": "SE5A_EAF_SPLASH",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_eaf_whiskey": {
+      "skinName": "SE5A_EAF_WHISKEY",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_er_semmel": {
+      "skinName": "SE5A_ER_SEMMEL",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_irfc_airbiscuit": {
+      "skinName": "SE5A_IRFC_AIRBISCUIT",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_irfc_bender": {
+      "skinName": "SE5A_IRFC_BENDER",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_irfc_comet": {
+      "skinName": "SE5A_IRFC_COMET",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_irfc_darling": {
+      "skinName": "SE5A_IRFC_DARLING",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_j2 squid": {
+      "skinName": "SE5A_J2 SQUID",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_j2_bbobenhei": {
+      "skinName": "SE5A_J2_BBOBENHEI",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_j9": {
+      "skinName": "SE5A_J9",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_jg1vonrd_j10": {
+      "skinName": "SE5A_JG1VONRD_J10",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_lixma": {
+      "skinName": "SE5A_LIXMA",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_luckydog_ben": {
+      "skinName": "SE5A_LUCKYDOG_BEN",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_luckydog_dav": {
+      "skinName": "SE5A_LUCKYDOG_DAV",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_luckydog_gib": {
+      "skinName": "SE5A_LUCKYDOG_GIB",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_luckydog_jim": {
+      "skinName": "SE5A_LUCKYDOG_JIM",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_matt": {
+      "skinName": "SE5A_MATT",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_neca": {
+      "skinName": "SE5A_NECA",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_o_rod": {
+      "skinName": "SE5A_O_ROD",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_oelmann": {
+      "skinName": "SE5A_OELMANN",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_pavlov": {
+      "skinName": "SE5A_PAVLOV",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_phalcon": {
+      "skinName": "SE5A_PHALCON",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_reflectedv2": {
+      "skinName": "SE5A_REFLECTEDV2",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_reflectedv3": {
+      "skinName": "SE5A_REFLECTEDV3",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_s56davids": {
+      "skinName": "SE5A_S56DAVIDS",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_sc_1shot": {
+      "skinName": "SE5A_SC_1SHOT",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_sc_asp": {
+      "skinName": "SE5A_SC_ASP",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_sc_billy": {
+      "skinName": "SE5A_SC_BILLY",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_sc_default": {
+      "skinName": "SE5A_SC_DEFAULT",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_sc_greybeard": {
+      "skinName": "SE5A_SC_GREYBEARD",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_sc_lusthawk": {
+      "skinName": "SE5A_SC_LUSTHAWK",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_sc_mongoose": {
+      "skinName": "SE5A_SC_MONGOOSE",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_sc_sledriver": {
+      "skinName": "SE5A_SC_SLEDRIVER",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_sc_sp00k": {
+      "skinName": "SE5A_SC_SP00K",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_sc_spif": {
+      "skinName": "SE5A_SC_SPIF",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_sc_zester": {
+      "skinName": "SE5A_SC_ZESTER",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_squid": {
+      "skinName": "SE5A_SQUID",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_white": {
+      "skinName": "SE5A_WHITE",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "se5a_wwdubya": {
+      "skinName": "SE5A_WWDUBYA",
+      "planeType": "se5a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    }
+  }
+}

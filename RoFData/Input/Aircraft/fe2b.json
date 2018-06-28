@@ -1,0 +1,22 @@
+{
+  "type": "fe2b",
+  "side": "ALLIED",
+  "displayName": "F.E.2b",
+  "script": "LuaScripts\\WorldObjects\\fe2b.txt",
+  "model": "graphics\\planes\\fe2b\\fe2b.mgm",
+  "desc": "",
+  "cruisingSpeed": 110,
+  "climbOutRate": 100,
+  "goodness": 25,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_MEDIUM",
+  "roles": [
+    "ROLE_RECON",
+    "ROLE_BOMB",
+    "ROLE_FIGHTER",
+    "ROLE_ARTILLERY_SPOT"
+  ],
+  "introduction": "19151001",
+  "withdrawal": "19181111"
+}

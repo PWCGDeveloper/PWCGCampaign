@@ -1,0 +1,20 @@
+{
+  "type": "a20b",
+  "side": "ALLIED",
+  "displayName": "A-20B",
+  "script": "LuaScripts\\WorldObjects\\Planes\\a20b.txt",
+  "model": "graphics\\planes\\a20b\\a20b.mgm",
+  "desc": "",
+  "cruisingSpeed": 310,
+  "climbOutRate": 800,
+  "goodness": 40,
+  "endurance": 4.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_MEDIUM",
+  "roles": [
+    "ROLE_BOMB",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19420701",
+  "withdrawal": "19450503"
+}

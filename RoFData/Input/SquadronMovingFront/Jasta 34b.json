@@ -1,0 +1,25 @@
+{
+  "name": "Jasta 34b",
+  "squadronId": 501034,
+  "airfields": {
+    "19170225": "Mars-la-Tour",
+    "19171014": "Puisieux Ferme,Laon",
+    "19171122": "Chassonge Ferme,Stenay/Verdun",
+    "19180316": "Pronville,nr Queant",
+    "19180326": "Beugnatre",
+    "19180327": "Mesnil St George",
+    "19180404": "Warfusee",
+    "19180418": "Assevillers",
+    "19180520": "Warfusee",
+    "19180801": "Cachy-Bois I_Abbe",
+    "19180811": "Baizieux 2",
+    "19180829": "Houplin,S Lille",
+    "19180905": "Pronville,nr Queant",
+    "19181001": "Houplin,S Lille",
+    "19181007": "Assevillers",
+    "19181015": "Mesnil-Bruntel",
+    "19181025": "Fontaine-Uterte",
+    "19181105": "Bertry 1",
+    "19181110": "Bohain"
+  }
+}

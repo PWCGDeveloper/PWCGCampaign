@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.inmission.phase3.reconcile.personnel.PersonnelSquadronLossHandlerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:24" hostname="DigitalStorm-PC" time="2.11">
+  <properties/>
+  <testcase name="testMixedStatusWithMaimed" classname="pwcg.aar.inmission.phase3.reconcile.personnel.PersonnelSquadronLossHandlerTest" time="0.701"/>
+  <testcase name="testMixedStatusWithCaptured" classname="pwcg.aar.inmission.phase3.reconcile.personnel.PersonnelSquadronLossHandlerTest" time="0.698"/>
+  <testcase name="testEverybodyKilled" classname="pwcg.aar.inmission.phase3.reconcile.personnel.PersonnelSquadronLossHandlerTest" time="0.711"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

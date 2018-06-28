@@ -1,0 +1,3975 @@
+{
+  "skinSetType": "SKIN_CONFIGURED",
+  "skins": {
+    "501000_000": {
+      "skinName": "501000_000",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": -2,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "501002_a02": {
+      "skinName": "501002_A02",
+      "planeType": "albatrosd3",
+      "startDate": "19170319",
+      "endDate": "19171024",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "501039_a01": {
+      "skinName": "501039_A01",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "501057_a01": {
+      "skinName": "501057_A01",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501057,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_501018_ans": {
+      "skinName": "AD3_501018_ANS",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_501021_ans": {
+      "skinName": "AD3_501021_ANS",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501021,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_501026_ans": {
+      "skinName": "AD3_501026_ANS",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501026,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_501028_ans": {
+      "skinName": "AD3_501028_ANS",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501028,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_501036_ans": {
+      "skinName": "AD3_501036_ANS",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501036,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_501050_ans": {
+      "skinName": "AD3_501050_ANS",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501050,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_abteilungb": {
+      "skinName": "AD3_ABTEILUNGB",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_fa 263 d2114": {
+      "skinName": "AD3_FA 263 D2114",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_fa263 camouflage": {
+      "skinName": "AD3_FA263 CAMOUFLAGE",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_fa263hohberg": {
+      "skinName": "AD3_FA263HOHBERG",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501461,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_fa263hohberg_lt": {
+      "skinName": "AD3_FA263HOHBERG_LT",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501461,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_flik41j_15306": {
+      "skinName": "AD3_FLIK41J_15306",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Austria",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_flik41j_15311": {
+      "skinName": "AD3_FLIK41J_15311",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Austria",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_flik41j_15312": {
+      "skinName": "AD3_FLIK41J_15312",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Austria",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_flik42j_15342": {
+      "skinName": "AD3_FLIK42J_15342",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Austria",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_flik51j_15346": {
+      "skinName": "AD3_FLIK51J_15346",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Austria",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_flik55j_15315": {
+      "skinName": "AD3_FLIK55J_15315",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Austria",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_flik61j_15332": {
+      "skinName": "AD3_FLIK61J_15332",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Austria",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_flik_41j_5360": {
+      "skinName": "AD3_FLIK_41J_5360",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Austria",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j11_lubbert": {
+      "skinName": "AD3_J11_LUBBERT",
+      "planeType": "albatrosd3",
+      "startDate": "19170302",
+      "endDate": "19170330",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j11_may17": {
+      "skinName": "AD3_J11_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j11_may1917": {
+      "skinName": "AD3_J11_MAY1917",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j11brauneck": {
+      "skinName": "AD3_J11BRAUNECK",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j11festner": {
+      "skinName": "AD3_J11FESTNER",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j11krefft": {
+      "skinName": "AD3_J11KREFFT",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j11lubbert": {
+      "skinName": "AD3_J11LUBBERT",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j12_may17": {
+      "skinName": "AD3_J12_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j13_may17": {
+      "skinName": "AD3_J13_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501013,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j14_may17": {
+      "skinName": "AD3_J14_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501014,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j15_blue": {
+      "skinName": "AD3_J15_BLUE",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j15_mar1917": {
+      "skinName": "AD3_J15_MAR1917",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j15_may1917": {
+      "skinName": "AD3_J15_MAY1917",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j16_021917_p1": {
+      "skinName": "AD3_J16_021917_P1",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501016,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j16_021917_p10": {
+      "skinName": "AD3_J16_021917_P10",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501016,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j16_021917_p2": {
+      "skinName": "AD3_J16_021917_P2",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501016,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j16_021917_p3": {
+      "skinName": "AD3_J16_021917_P3",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501016,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j16_021917_p4": {
+      "skinName": "AD3_J16_021917_P4",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501016,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j16_021917_p5": {
+      "skinName": "AD3_J16_021917_P5",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501016,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j16_021917_p6": {
+      "skinName": "AD3_J16_021917_P6",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501016,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j16_021917_p7": {
+      "skinName": "AD3_J16_021917_P7",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501016,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j16_021917_p8": {
+      "skinName": "AD3_J16_021917_P8",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501016,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j16_021917_p9": {
+      "skinName": "AD3_J16_021917_P9",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501016,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j16_mar17": {
+      "skinName": "AD3_J16_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501016,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j16_may17": {
+      "skinName": "AD3_J16_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501016,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j17_may17": {
+      "skinName": "AD3_J17_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501017,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_bert_v2": {
+      "skinName": "AD3_J18_BERT_V2",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_capi17a": {
+      "skinName": "AD3_J18_CAPI17A",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_capi17b": {
+      "skinName": "AD3_J18_CAPI17B",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_chev_v2": {
+      "skinName": "AD3_J18_CHEV_V2",
+      "planeType": "albatrosd3",
+      "startDate": "19170817",
+      "endDate": "19180322",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_cro17a": {
+      "skinName": "AD3_J18_CRO17A",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_cro17b": {
+      "skinName": "AD3_J18_CRO17B",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_graser17a": {
+      "skinName": "AD3_J18_GRASER17A",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_graser17b": {
+      "skinName": "AD3_J18_GRASER17B",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_guims17a": {
+      "skinName": "AD3_J18_GUIMS17A",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_guims17b": {
+      "skinName": "AD3_J18_GUIMS17B",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_hvo17a": {
+      "skinName": "AD3_J18_HVO17A",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_hvo17b": {
+      "skinName": "AD3_J18_HVO17B",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_manf17a": {
+      "skinName": "AD3_J18_MANF17A",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_manf17b": {
+      "skinName": "AD3_J18_MANF17B",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_mika17a": {
+      "skinName": "AD3_J18_MIKA17A",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_mika17b": {
+      "skinName": "AD3_J18_MIKA17B",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_paul17a": {
+      "skinName": "AD3_J18_PAUL17A",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_paul17b": {
+      "skinName": "AD3_J18_PAUL17B",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_polia17a": {
+      "skinName": "AD3_J18_POLIA17A",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_polia17b": {
+      "skinName": "AD3_J18_POLIA17B",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_spiny17a": {
+      "skinName": "AD3_J18_SPINY17A",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_str": {
+      "skinName": "AD3_J18_STR",
+      "planeType": "albatrosd3",
+      "startDate": "19170817",
+      "endDate": "19180322",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j18_wolfb17b": {
+      "skinName": "AD3_J18_WOLFB17B",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j19_may17": {
+      "skinName": "AD3_J19_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501019,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j21_mar17": {
+      "skinName": "AD3_J21_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501021,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j23_mar17": {
+      "skinName": "AD3_J23_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501023,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j26_mar17": {
+      "skinName": "AD3_J26_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501026,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j27_summer17": {
+      "skinName": "AD3_J27_SUMMER17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501027,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j28_barenfanger": {
+      "skinName": "AD3_J28_BARENFANGER",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501028,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j28_hartmann": {
+      "skinName": "AD3_J28_HARTMANN",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501028,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j28_hess": {
+      "skinName": "AD3_J28_HESS",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501028,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j28_mar17": {
+      "skinName": "AD3_J28_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501028,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j29_mar17": {
+      "skinName": "AD3_J29_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501029,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j29_may17": {
+      "skinName": "AD3_J29_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501029,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j29_may1917": {
+      "skinName": "AD3_J29_MAY1917",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501029,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j2_hunzinger": {
+      "skinName": "AD3_J2_HUNZINGER",
+      "planeType": "albatrosd3",
+      "startDate": "19170602",
+      "endDate": "19170915",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j2_kempf": {
+      "skinName": "AD3_J2_KEMPF",
+      "planeType": "albatrosd3",
+      "startDate": "19170328",
+      "endDate": "19170915",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j2_may17": {
+      "skinName": "AD3_J2_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j2_noth": {
+      "skinName": "AD3_J2_NOTH",
+      "planeType": "albatrosd3",
+      "startDate": "19170301",
+      "endDate": "19170519",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j2_pernet": {
+      "skinName": "AD3_J2_PERNET",
+      "planeType": "albatrosd3",
+      "startDate": "19170602",
+      "endDate": "19170905",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j2_prien": {
+      "skinName": "AD3_J2_PRIEN",
+      "planeType": "albatrosd3",
+      "startDate": "19170607",
+      "endDate": "19170830",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j2bassenge": {
+      "skinName": "AD3_J2BASSENGE",
+      "planeType": "albatrosd3",
+      "startDate": "19170502",
+      "endDate": "19180322",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j30_mar17": {
+      "skinName": "AD3_J30_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501030,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j30_may17": {
+      "skinName": "AD3_J30_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501030,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j31_jacobsen": {
+      "skinName": "AD3_J31_JACOBSEN",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j32_mar17": {
+      "skinName": "AD3_J32_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501032,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j32_may17": {
+      "skinName": "AD3_J32_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501032,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j33_mar17": {
+      "skinName": "AD3_J33_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501033,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j33_may17": {
+      "skinName": "AD3_J33_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501033,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j34_may17": {
+      "skinName": "AD3_J34_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501034,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j36_checkers": {
+      "skinName": "AD3_J36_CHECKERS",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501036,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j36_mar17": {
+      "skinName": "AD3_J36_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501036,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j37_mar1917": {
+      "skinName": "AD3_J37_MAR1917",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501037,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j37_may1917": {
+      "skinName": "AD3_J37_MAY1917",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501037,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j3_mar17": {
+      "skinName": "AD3_J3_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501003,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j3_may17": {
+      "skinName": "AD3_J3_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501003,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j49franzray": {
+      "skinName": "AD3_J49FRANZRAY",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j49franzray_v2": {
+      "skinName": "AD3_J49FRANZRAY_V2",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j49habich_g": {
+      "skinName": "AD3_J49HABICH_G",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j4_mar1917": {
+      "skinName": "AD3_J4_MAR1917",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j50_arntzen": {
+      "skinName": "AD3_J50_ARNTZEN",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170527",
+      "squadId": 501050,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j50_weinmann": {
+      "skinName": "AD3_J50_WEINMANN",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501050,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5_bussing": {
+      "skinName": "AD3_J5_BUSSING",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5_bussing_v2": {
+      "skinName": "AD3_J5_BUSSING_V2",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5_christian": {
+      "skinName": "AD3_J5_CHRISTIAN",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5_christian_v2": {
+      "skinName": "AD3_J5_CHRISTIAN_V2",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19171211",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5_cremer": {
+      "skinName": "AD3_J5_CREMER",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5_cremer_v2": {
+      "skinName": "AD3_J5_CREMER_V2",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170831",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5_default": {
+      "skinName": "AD3_J5_DEFAULT",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5_default_v2": {
+      "skinName": "AD3_J5_DEFAULT_V2",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5_mar17": {
+      "skinName": "AD3_J5_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5_unknown1": {
+      "skinName": "AD3_J5_UNKNOWN1",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5_unknown1_v2": {
+      "skinName": "AD3_J5_UNKNOWN1_V2",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5_unknown2": {
+      "skinName": "AD3_J5_UNKNOWN2",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5_unknown2_v2": {
+      "skinName": "AD3_J5_UNKNOWN2_V2",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5_unknown3": {
+      "skinName": "AD3_J5_UNKNOWN3",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5berr": {
+      "skinName": "AD3_J5BERR",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j5berr_v2": {
+      "skinName": "AD3_J5BERR_V2",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j65_apr18": {
+      "skinName": "AD3_J65_APR18",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501065,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j6_may17": {
+      "skinName": "AD3_J6_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j7_mar17": {
+      "skinName": "AD3_J7_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j7_mar1917": {
+      "skinName": "AD3_J7_MAR1917",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j7_may17": {
+      "skinName": "AD3_J7_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j7_may1917": {
+      "skinName": "AD3_J7_MAY1917",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j7_schonfel_e": {
+      "skinName": "AD3_J7_SCHONFEL_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j7_schonfel_l": {
+      "skinName": "AD3_J7_SCHONFEL_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19181201",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j8_default": {
+      "skinName": "AD3_J8_DEFAULT",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j8_mar17": {
+      "skinName": "AD3_J8_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j9": {
+      "skinName": "AD3_J9",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j9_mar18": {
+      "skinName": "AD3_J9_MAR18",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j9_may17": {
+      "skinName": "AD3_J9_MAY17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j_50_2362": {
+      "skinName": "AD3_J_50_2362",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501050,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_j_7_mar17": {
+      "skinName": "AD3_J_7_MAR17",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_mfjiii": {
+      "skinName": "AD3_MFJIII",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501302,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_blue_e": {
+      "skinName": "AD3_PW_G10_BLUE_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_blue_l": {
+      "skinName": "AD3_PW_G10_BLUE_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_bw_e": {
+      "skinName": "AD3_PW_G10_BW_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_bw_l": {
+      "skinName": "AD3_PW_G10_BW_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_crsd_e": {
+      "skinName": "AD3_PW_G10_CRSD_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_crsd_l": {
+      "skinName": "AD3_PW_G10_CRSD_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_gw_e": {
+      "skinName": "AD3_PW_G10_GW_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_gw_l": {
+      "skinName": "AD3_PW_G10_GW_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_l_e": {
+      "skinName": "AD3_PW_G10_L_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_l_l": {
+      "skinName": "AD3_PW_G10_L_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_r_e": {
+      "skinName": "AD3_PW_G10_R_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_r_l": {
+      "skinName": "AD3_PW_G10_R_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_snke_e": {
+      "skinName": "AD3_PW_G10_SNKE_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_snke_l": {
+      "skinName": "AD3_PW_G10_SNKE_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_stal_e": {
+      "skinName": "AD3_PW_G10_STAL_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_stal_l": {
+      "skinName": "AD3_PW_G10_STAL_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_yb_e": {
+      "skinName": "AD3_PW_G10_YB_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_yb_l": {
+      "skinName": "AD3_PW_G10_YB_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_yw_e": {
+      "skinName": "AD3_PW_G10_YW_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g10_yw_l": {
+      "skinName": "AD3_PW_G10_YW_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_bf_e": {
+      "skinName": "AD3_PW_G11_BF_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_bf_l": {
+      "skinName": "AD3_PW_G11_BF_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_boar_e": {
+      "skinName": "AD3_PW_G11_BOAR_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_boar_l": {
+      "skinName": "AD3_PW_G11_BOAR_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_bx2_e": {
+      "skinName": "AD3_PW_G11_BX2_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_bx2_l": {
+      "skinName": "AD3_PW_G11_BX2_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_crsd_e": {
+      "skinName": "AD3_PW_G11_CRSD_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_crsd_l": {
+      "skinName": "AD3_PW_G11_CRSD_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_rb_e": {
+      "skinName": "AD3_PW_G11_RB_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_rb_l": {
+      "skinName": "AD3_PW_G11_RB_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_red_e": {
+      "skinName": "AD3_PW_G11_RED_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_red_l": {
+      "skinName": "AD3_PW_G11_RED_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_rw_e": {
+      "skinName": "AD3_PW_G11_RW_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_rw_l": {
+      "skinName": "AD3_PW_G11_RW_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_s_e": {
+      "skinName": "AD3_PW_G11_S_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_s_l": {
+      "skinName": "AD3_PW_G11_S_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_skul_e": {
+      "skinName": "AD3_PW_G11_SKUL_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_skul_l": {
+      "skinName": "AD3_PW_G11_SKUL_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_wht_e": {
+      "skinName": "AD3_PW_G11_WHT_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g11_wht_l": {
+      "skinName": "AD3_PW_G11_WHT_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501011,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_bf_e": {
+      "skinName": "AD3_PW_G12_BF_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_bf_l": {
+      "skinName": "AD3_PW_G12_BF_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_boar_e": {
+      "skinName": "AD3_PW_G12_BOAR_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_boar_l": {
+      "skinName": "AD3_PW_G12_BOAR_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_gw_e": {
+      "skinName": "AD3_PW_G12_GW_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_gw_l": {
+      "skinName": "AD3_PW_G12_GW_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_l_e": {
+      "skinName": "AD3_PW_G12_L_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_l_l": {
+      "skinName": "AD3_PW_G12_L_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_r_e": {
+      "skinName": "AD3_PW_G12_R_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_r_l": {
+      "skinName": "AD3_PW_G12_R_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_skul_e": {
+      "skinName": "AD3_PW_G12_SKUL_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_skul_l": {
+      "skinName": "AD3_PW_G12_SKUL_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_snke_e": {
+      "skinName": "AD3_PW_G12_SNKE_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_snke_l": {
+      "skinName": "AD3_PW_G12_SNKE_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_stal_e": {
+      "skinName": "AD3_PW_G12_STAL_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_stal_l": {
+      "skinName": "AD3_PW_G12_STAL_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_x_e": {
+      "skinName": "AD3_PW_G12_X_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_x_l": {
+      "skinName": "AD3_PW_G12_X_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_ylw_e": {
+      "skinName": "AD3_PW_G12_YLW_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g12_ylw_l": {
+      "skinName": "AD3_PW_G12_YLW_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501012,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_h_e": {
+      "skinName": "AD3_PW_G15_H_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_h_l": {
+      "skinName": "AD3_PW_G15_H_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_kh": {
+      "skinName": "AD3_PW_G15_KH",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_lion_e": {
+      "skinName": "AD3_PW_G15_LION_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_lion_l": {
+      "skinName": "AD3_PW_G15_LION_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_r": {
+      "skinName": "AD3_PW_G15_R",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_rw": {
+      "skinName": "AD3_PW_G15_RW",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_s_e": {
+      "skinName": "AD3_PW_G15_S_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_s_l": {
+      "skinName": "AD3_PW_G15_S_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_star_e": {
+      "skinName": "AD3_PW_G15_STAR_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_star_l": {
+      "skinName": "AD3_PW_G15_STAR_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_wht": {
+      "skinName": "AD3_PW_G15_WHT",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_x": {
+      "skinName": "AD3_PW_G15_X",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_yw_e": {
+      "skinName": "AD3_PW_G15_YW_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g15_yw_l": {
+      "skinName": "AD3_PW_G15_YW_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501015,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_bf_e": {
+      "skinName": "AD3_PW_G18_BF_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_bf_l": {
+      "skinName": "AD3_PW_G18_BF_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_boar_e": {
+      "skinName": "AD3_PW_G18_BOAR_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_boar_l": {
+      "skinName": "AD3_PW_G18_BOAR_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_crsd_e": {
+      "skinName": "AD3_PW_G18_CRSD_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_crsd_l": {
+      "skinName": "AD3_PW_G18_CRSD_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_drgn_e": {
+      "skinName": "AD3_PW_G18_DRGN_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_drgn_l": {
+      "skinName": "AD3_PW_G18_DRGN_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_kh_e": {
+      "skinName": "AD3_PW_G18_KH_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_kh_l": {
+      "skinName": "AD3_PW_G18_KH_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_lion_e": {
+      "skinName": "AD3_PW_G18_LION_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_lion_l": {
+      "skinName": "AD3_PW_G18_LION_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_skul_e": {
+      "skinName": "AD3_PW_G18_SKUL_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_skul_l": {
+      "skinName": "AD3_PW_G18_SKUL_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_snke_e": {
+      "skinName": "AD3_PW_G18_SNKE_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_snke_l": {
+      "skinName": "AD3_PW_G18_SNKE_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_stal_e": {
+      "skinName": "AD3_PW_G18_STAL_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_stal_l": {
+      "skinName": "AD3_PW_G18_STAL_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_wolf_e": {
+      "skinName": "AD3_PW_G18_WOLF_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g18_wolf_l": {
+      "skinName": "AD3_PW_G18_WOLF_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501018,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_bb_e": {
+      "skinName": "AD3_PW_G2_BB_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_bb_l": {
+      "skinName": "AD3_PW_G2_BB_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_bf_e": {
+      "skinName": "AD3_PW_G2_BF_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_bf_l": {
+      "skinName": "AD3_PW_G2_BF_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_blk_e": {
+      "skinName": "AD3_PW_G2_BLK_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_blk_l": {
+      "skinName": "AD3_PW_G2_BLK_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_blu_e": {
+      "skinName": "AD3_PW_G2_BLU_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_blu_l": {
+      "skinName": "AD3_PW_G2_BLU_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_bw_e": {
+      "skinName": "AD3_PW_G2_BW_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_bw_l": {
+      "skinName": "AD3_PW_G2_BW_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_drgn_e": {
+      "skinName": "AD3_PW_G2_DRGN_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_drgn_l": {
+      "skinName": "AD3_PW_G2_DRGN_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_gb_e": {
+      "skinName": "AD3_PW_G2_GB_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_gb_l": {
+      "skinName": "AD3_PW_G2_GB_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_kh_e": {
+      "skinName": "AD3_PW_G2_KH_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_kh_l": {
+      "skinName": "AD3_PW_G2_KH_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_s_e": {
+      "skinName": "AD3_PW_G2_S_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_s_l": {
+      "skinName": "AD3_PW_G2_S_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_skul_e": {
+      "skinName": "AD3_PW_G2_SKUL_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_skul_l": {
+      "skinName": "AD3_PW_G2_SKUL_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_wht_e": {
+      "skinName": "AD3_PW_G2_WHT_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_wht_l": {
+      "skinName": "AD3_PW_G2_WHT_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_x_e": {
+      "skinName": "AD3_PW_G2_X_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g2_x_l": {
+      "skinName": "AD3_PW_G2_X_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501002,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_boar_e": {
+      "skinName": "AD3_PW_G4_BOAR_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_boar_l": {
+      "skinName": "AD3_PW_G4_BOAR_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_drgn_e": {
+      "skinName": "AD3_PW_G4_DRGN_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_drgn_l": {
+      "skinName": "AD3_PW_G4_DRGN_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_h_e": {
+      "skinName": "AD3_PW_G4_H_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_h_l": {
+      "skinName": "AD3_PW_G4_H_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_kh_e": {
+      "skinName": "AD3_PW_G4_KH_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_kh_l": {
+      "skinName": "AD3_PW_G4_KH_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_l_e": {
+      "skinName": "AD3_PW_G4_L_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_l_l": {
+      "skinName": "AD3_PW_G4_L_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_lion_e": {
+      "skinName": "AD3_PW_G4_LION_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_lion_l": {
+      "skinName": "AD3_PW_G4_LION_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_r_e": {
+      "skinName": "AD3_PW_G4_R_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_r_l": {
+      "skinName": "AD3_PW_G4_R_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_s_e": {
+      "skinName": "AD3_PW_G4_S_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_s_l": {
+      "skinName": "AD3_PW_G4_S_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_wolf_e": {
+      "skinName": "AD3_PW_G4_WOLF_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_wolf_l": {
+      "skinName": "AD3_PW_G4_WOLF_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_x_e": {
+      "skinName": "AD3_PW_G4_X_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g4_x_l": {
+      "skinName": "AD3_PW_G4_X_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501004,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_boar_e": {
+      "skinName": "AD3_PW_G5_BOAR_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_boar_l": {
+      "skinName": "AD3_PW_G5_BOAR_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_bx2_e": {
+      "skinName": "AD3_PW_G5_BX2_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_bx2_l": {
+      "skinName": "AD3_PW_G5_BX2_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_drgn_e": {
+      "skinName": "AD3_PW_G5_DRGN_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_drgn_l": {
+      "skinName": "AD3_PW_G5_DRGN_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_gb_e": {
+      "skinName": "AD3_PW_G5_GB_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_gb_l": {
+      "skinName": "AD3_PW_G5_GB_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_lion_e": {
+      "skinName": "AD3_PW_G5_LION_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_lion_l": {
+      "skinName": "AD3_PW_G5_LION_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_rb_e": {
+      "skinName": "AD3_PW_G5_RB_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_rb_l": {
+      "skinName": "AD3_PW_G5_RB_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_red_e": {
+      "skinName": "AD3_PW_G5_RED_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_red_l": {
+      "skinName": "AD3_PW_G5_RED_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_snke_e": {
+      "skinName": "AD3_PW_G5_SNKE_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_snke_l": {
+      "skinName": "AD3_PW_G5_SNKE_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_stal_e": {
+      "skinName": "AD3_PW_G5_STAL_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_stal_l": {
+      "skinName": "AD3_PW_G5_STAL_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_wolf_e": {
+      "skinName": "AD3_PW_G5_WOLF_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g5_wolf_l": {
+      "skinName": "AD3_PW_G5_WOLF_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_bf_e": {
+      "skinName": "AD3_PW_G6_BF_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_bf_l": {
+      "skinName": "AD3_PW_G6_BF_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_drgn_e": {
+      "skinName": "AD3_PW_G6_DRGN_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_drgn_l": {
+      "skinName": "AD3_PW_G6_DRGN_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_h_e": {
+      "skinName": "AD3_PW_G6_H_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_h_l": {
+      "skinName": "AD3_PW_G6_H_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_kh_e": {
+      "skinName": "AD3_PW_G6_KH_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_kh_l": {
+      "skinName": "AD3_PW_G6_KH_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_lion_e": {
+      "skinName": "AD3_PW_G6_LION_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_lion_l": {
+      "skinName": "AD3_PW_G6_LION_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_skul_e": {
+      "skinName": "AD3_PW_G6_SKUL_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_skul_l": {
+      "skinName": "AD3_PW_G6_SKUL_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_snke_e": {
+      "skinName": "AD3_PW_G6_SNKE_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_snke_l": {
+      "skinName": "AD3_PW_G6_SNKE_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_wht_e": {
+      "skinName": "AD3_PW_G6_WHT_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_wht_l": {
+      "skinName": "AD3_PW_G6_WHT_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_wolf_e": {
+      "skinName": "AD3_PW_G6_WOLF_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_wolf_l": {
+      "skinName": "AD3_PW_G6_WOLF_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_x_e": {
+      "skinName": "AD3_PW_G6_X_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g6_x_l": {
+      "skinName": "AD3_PW_G6_X_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501006,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_7_e": {
+      "skinName": "AD3_PW_G7_7_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_7_l": {
+      "skinName": "AD3_PW_G7_7_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_bf_e": {
+      "skinName": "AD3_PW_G7_BF_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_bf_l": {
+      "skinName": "AD3_PW_G7_BF_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_blue_e": {
+      "skinName": "AD3_PW_G7_BLUE_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_blue_l": {
+      "skinName": "AD3_PW_G7_BLUE_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_boar_e": {
+      "skinName": "AD3_PW_G7_BOAR_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_boar_l": {
+      "skinName": "AD3_PW_G7_BOAR_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_crsd_e": {
+      "skinName": "AD3_PW_G7_CRSD_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_crsd_l": {
+      "skinName": "AD3_PW_G7_CRSD_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_drgn_e": {
+      "skinName": "AD3_PW_G7_DRGN_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_drgn_l": {
+      "skinName": "AD3_PW_G7_DRGN_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_h_e": {
+      "skinName": "AD3_PW_G7_H_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_h_l": {
+      "skinName": "AD3_PW_G7_H_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_kh_e": {
+      "skinName": "AD3_PW_G7_KH_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_kh_l": {
+      "skinName": "AD3_PW_G7_KH_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_l_e": {
+      "skinName": "AD3_PW_G7_L_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_l_l": {
+      "skinName": "AD3_PW_G7_L_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_lion_e": {
+      "skinName": "AD3_PW_G7_LION_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_lion_l": {
+      "skinName": "AD3_PW_G7_LION_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_s_e": {
+      "skinName": "AD3_PW_G7_S_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_s_l": {
+      "skinName": "AD3_PW_G7_S_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_skul_e": {
+      "skinName": "AD3_PW_G7_SKUL_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_skul_l": {
+      "skinName": "AD3_PW_G7_SKUL_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_snke_e": {
+      "skinName": "AD3_PW_G7_SNKE_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_snke_l": {
+      "skinName": "AD3_PW_G7_SNKE_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_wht_e": {
+      "skinName": "AD3_PW_G7_WHT_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_wht_l": {
+      "skinName": "AD3_PW_G7_WHT_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_wolf_e": {
+      "skinName": "AD3_PW_G7_WOLF_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_wolf_l": {
+      "skinName": "AD3_PW_G7_WOLF_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_x_e": {
+      "skinName": "AD3_PW_G7_X_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g7_x_l": {
+      "skinName": "AD3_PW_G7_X_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501007,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_bw_e": {
+      "skinName": "AD3_PW_G8_BW_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_bw_l": {
+      "skinName": "AD3_PW_G8_BW_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_crsd_e": {
+      "skinName": "AD3_PW_G8_CRSD_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_crsd_l": {
+      "skinName": "AD3_PW_G8_CRSD_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_drgn_e": {
+      "skinName": "AD3_PW_G8_DRGN_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_drgn_l": {
+      "skinName": "AD3_PW_G8_DRGN_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_lion_e": {
+      "skinName": "AD3_PW_G8_LION_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_lion_l": {
+      "skinName": "AD3_PW_G8_LION_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_r_e": {
+      "skinName": "AD3_PW_G8_R_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_r_l": {
+      "skinName": "AD3_PW_G8_R_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_rw_e": {
+      "skinName": "AD3_PW_G8_RW_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_rw_l": {
+      "skinName": "AD3_PW_G8_RW_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_s_e": {
+      "skinName": "AD3_PW_G8_S_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_s_l": {
+      "skinName": "AD3_PW_G8_S_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_skul_e": {
+      "skinName": "AD3_PW_G8_SKUL_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_skul_l": {
+      "skinName": "AD3_PW_G8_SKUL_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_snke_e": {
+      "skinName": "AD3_PW_G8_SNKE_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_snke_l": {
+      "skinName": "AD3_PW_G8_SNKE_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_star_e": {
+      "skinName": "AD3_PW_G8_STAR_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170430",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g8_star_l": {
+      "skinName": "AD3_PW_G8_STAR_L",
+      "planeType": "albatrosd3",
+      "startDate": "19170501",
+      "endDate": "19180401",
+      "squadId": 501008,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_blue_e": {
+      "skinName": "AD3_PW_G9_BLUE_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_blue_l": {
+      "skinName": "AD3_PW_G9_BLUE_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_crsd_e": {
+      "skinName": "AD3_PW_G9_CRSD_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_crsd_l": {
+      "skinName": "AD3_PW_G9_CRSD_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_h_e": {
+      "skinName": "AD3_PW_G9_H_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_h_l": {
+      "skinName": "AD3_PW_G9_H_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_kh_e": {
+      "skinName": "AD3_PW_G9_KH_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_kh_l": {
+      "skinName": "AD3_PW_G9_KH_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_l_e": {
+      "skinName": "AD3_PW_G9_L_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_l_l": {
+      "skinName": "AD3_PW_G9_L_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_s_e": {
+      "skinName": "AD3_PW_G9_S_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_s_l": {
+      "skinName": "AD3_PW_G9_S_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_stal_e": {
+      "skinName": "AD3_PW_G9_STAL_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_stal_l": {
+      "skinName": "AD3_PW_G9_STAL_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_wht_e": {
+      "skinName": "AD3_PW_G9_WHT_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_wht_l": {
+      "skinName": "AD3_PW_G9_WHT_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_wolf_e": {
+      "skinName": "AD3_PW_G9_WOLF_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_wolf_l": {
+      "skinName": "AD3_PW_G9_WOLF_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_yw_e": {
+      "skinName": "AD3_PW_G9_YW_E",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_pw_g9_yw_l": {
+      "skinName": "AD3_PW_G9_YW_L",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501009,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ad3_unknown": {
+      "skinName": "AD3_UNKNOWN",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "albatrosd3schorner": {
+      "skinName": "ALBATROSD3SCHORNER",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501016,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "schorner": {
+      "skinName": "SCHORNER",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 501016,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    }
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-10-12",
+    "squadron": "Jasta 16b",
+    "date": "19161012",
+    "time": "14:30:00",
+    "aircraftType": "AircraftType \u003d Albatros D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "BALLOON_BUST",
+    "altitude": 3642
+  },
+  "missionDescription": "Mission:\nAircraft  Albatros D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-10-12\n\nWeather Report\nMedium cloud cover, high altitude.\nCloud layer is 4094 meters.\nWind speed is 1 M/S.\nWind direction is 36.\n\nPrimary Objective\nDestroy the enemy balloon near Ferrieres.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Oswald Fromm",
+        "observer": "",
+        "pilotRank": "Obltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Joachim Lechner",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "spad7early",
+      "squadronName": "No 19 Squadron RFC",
+      "crew": {
+        "pilot": "Melville Cheverell",
+        "observer": "",
+        "pilotRank": "Maj",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "spad7early",
+      "squadronName": "No 19 Squadron RFC",
+      "crew": {
+        "pilot": "Quinlan Deacons",
+        "observer": "",
+        "pilotRank": "Cpt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "spad7early",
+      "squadronName": "No 19 Squadron RFC",
+      "crew": {
+        "pilot": "Burton Fleetwood",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "spad7early",
+      "squadronName": "No 19 Squadron RFC",
+      "crew": {
+        "pilot": "Wallace Hawkins",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "spad7early",
+      "squadronName": "No 19 Squadron RFC",
+      "crew": {
+        "pilot": "Otis Warren",
+        "observer": "",
+        "pilotRank": "2nd Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "albatrosd2late",
+      "squadronName": "Jasta 3",
+      "crew": {
+        "pilot": "Dominik Zehetner",
+        "observer": "",
+        "pilotRank": "Obltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "albatrosd2late",
+      "squadronName": "Jasta 3",
+      "crew": {
+        "pilot": "Eberhardt Wetterhahn",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 3",
+      "crew": {
+        "pilot": "Steffen Guttenberg",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 3",
+      "crew": {
+        "pilot": "Dieter Baumler",
+        "observer": "",
+        "pilotRank": "Uffz",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 281",
+      "crew": {
+        "pilot": "Jonas Fastnacht",
+        "observer": "Sigwalt Preisner",
+        "pilotRank": "Obltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 281",
+      "crew": {
+        "pilot": "Helmut Preisner",
+        "observer": "Harald Rowohlt",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 281",
+      "crew": {
+        "pilot": "Lenz Haar",
+        "observer": "Jurgen Schulhof",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 281",
+      "crew": {
+        "pilot": "Volker Brockhaus",
+        "observer": "Hugbert Cappel",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Mario Blacher",
+        "observer": "Gottlieb Dorfmann",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Konrad Neubert",
+        "observer": "Oswin Wolf-Ferrari",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Ruprecht Morgenthau",
+        "observer": "Arndt Vahlen",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Bernd Wehner",
+        "observer": "Dietrich Kresinger",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dh2",
+      "squadronName": "No 32 Squadron RFC",
+      "crew": {
+        "pilot": "Charles Stepney",
+        "observer": "",
+        "pilotRank": "2nd Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dh2",
+      "squadronName": "No 32 Squadron RFC",
+      "crew": {
+        "pilot": "Montgomery Wyard",
+        "observer": "",
+        "pilotRank": "2nd Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 16 Squadron RFC",
+      "crew": {
+        "pilot": "Elijah Davis",
+        "observer": "Maurice Brokehill",
+        "pilotRank": "Cpt",
+        "observerRank": "Cpt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 16 Squadron RFC",
+      "crew": {
+        "pilot": "Bryant Quintin",
+        "observer": "Emmanuel Leeds",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 12 Squadron RFC",
+      "crew": {
+        "pilot": "Hubert Trevett",
+        "observer": "Tobias Bohan",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 12 Squadron RFC",
+      "crew": {
+        "pilot": "Ross Peck",
+        "observer": "Roger Pray",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    }
+  ]
+}

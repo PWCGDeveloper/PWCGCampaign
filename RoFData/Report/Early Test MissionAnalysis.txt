@@ -1,0 +1,32 @@
+Player flight
+  Mission type: ESCORT
+  Airfield    : Bailleul
+  Aircraft    : nieuport11
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: OFFENSIVE
+  Airfield    : Savy Berlette
+  Aircraft    : nieuport11
+  Player Contact    : 28
+
+
+
+Flight
+  Mission type: RECON
+  Airfield    : Abeele (West)
+  Aircraft    : fe2b
+  Player Contact    : 0
+
+
+
+Flight
+  Mission type: CONTACT_PATROL
+  Airfield    : Lagnicourt
+  Aircraft    : dfwc5
+  Player Contact    : -1
+
+
+

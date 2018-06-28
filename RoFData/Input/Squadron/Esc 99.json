@@ -1,0 +1,84 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101099,
+  "name": "Esc 99",
+  "skill": 35,
+  "planeAssignments": [
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19180201",
+      "squadronWithdrawal": "19181201"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19180401",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180101": "Brabant en Argonne",
+    "19180227": "La Noblette",
+    "19180529": "Ravenel",
+    "19180610": "Muizon",
+    "19180724": "Vauxcere",
+    "19180907": "Julvecourt",
+    "19181101": "Tilloy at Bellay"
+  },
+  "skins": [
+    {
+      "skinName": "N17_PW_F99_DFT",
+      "planeType": "nieuport17",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101099,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC99_APR1917",
+      "planeType": "spad7",
+      "startDate": "19170101",
+      "endDate": "19180221",
+      "squadId": 101099,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC99_JAN1918",
+      "planeType": "spad7",
+      "startDate": "19180222",
+      "endDate": "19181201",
+      "squadId": 101099,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S13_101099_ANS",
+      "planeType": "spad13",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101099,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

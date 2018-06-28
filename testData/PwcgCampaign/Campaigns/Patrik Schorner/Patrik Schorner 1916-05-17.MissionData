@@ -1,0 +1,214 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-05-17";
+    Squadron = "Jasta 4";
+    Map = "France";
+    Date = "19160517";
+    Time = "12:0:00";
+    Duty = "PATROL";
+    AircraftType = Fokker E.III;
+    Altitude = 3069;
+    Airfield = Bonneuil Ferme;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Fokker E.III
+Squadron  Jasta 4
+Airbase  Bonneuil Ferme
+Date  1916-05-17
+
+Weather Report 
+    Mostly clear, some high altitude clouds.
+    Cloud layer is 6153 meters.
+    Wind speed is 1 M/S.
+    Wind direction is 348.
+
+Primary Objective 
+    Patrol airspace  near Caumont.  Engage any enemy aircraft that you encounter.
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Lambrecht Steinberg";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Gottlieb Grunebaum";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Ralf Schulz";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Bernd Landmann";
+            ObserverRank = "Ltn";
+            Observer = "Wilhelm Dorman";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Gustav Schoenherr";
+            ObserverRank = "Ltn";
+            Observer = "Albrecht Parler";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 18";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Ruprecht Joachim";
+            ObserverRank = "Ltn";
+            Observer = "Felix Haber";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 18";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Theodor Stosch";
+            ObserverRank = "Ltn";
+            Observer = "Tristan Masur";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 276";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Erwin Wohlermann";
+            ObserverRank = "Ltn";
+            Observer = "Emil Beck";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 2";
+        Crew
+        {
+            PilotRank = "Cne";
+            Pilot = "Ferdinand Hereau";
+            ObserverRank = "S/Lt";
+            Observer = "Antoine Lacombrade";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 2";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Alfred Lacour";
+            ObserverRank = "S/Lt";
+            Observer = "Anton Riot";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 2 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Maj";
+            Pilot = "Chester Yate";
+            ObserverRank = "Lt";
+            Observer = "Ferris Ford";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 2 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Connor Annesley";
+            ObserverRank = "Lt";
+            Observer = "Edan Brown";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 2 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Shamus Gonson";
+            ObserverRank = "Lt";
+            Observer = "Alfred Chatwyn";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 2 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Hunter Gold";
+            ObserverRank = "Lt";
+            Observer = "Mark Walford";
+        }
+    }
+}

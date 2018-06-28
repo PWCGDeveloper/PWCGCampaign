@@ -1,0 +1,156 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-05-12",
+    "squadron": "Jasta 4",
+    "date": "19160512",
+    "time": "140:00",
+    "aircraftType": "AircraftType \u003d Fokker E.II",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Bonneuil Ferm",
+    "duty": "PATROL",
+    "altitude": 2748
+  },
+  "missionDescription": "Mission:\nAircraft  Fokker E.III\nSquadron  Jasta 4\nAirbase  Bonneuil Ferme\nDate  1916-05-12\n\nWeather Report\nHeavy cloud cover, medium altitude.\nCloud layer is 2248 meters.\nWind speed is 0 M/S.\nWind direction is 163.\n\nPrimary Objective\nPatrol airspace  near Tergnier.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Fritz Bernert",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Gunther Huwyler",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Ralf Schulz",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "Schlasta 10",
+      "crew": {
+        "pilot": "Ludwig Birkenfeld",
+        "observer": "Konrad Biber",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "Schlasta 10",
+      "crew": {
+        "pilot": "Augustus Rudorffer",
+        "observer": "Ewart Holderbaum",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 7",
+      "crew": {
+        "pilot": "Till Schaeffer",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 7",
+      "crew": {
+        "pilot": "Rikard Gross",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Kristian Wintsch",
+        "observer": "Viktor Bauschinger",
+        "pilotRank": "Obltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Anton Sitte",
+        "observer": "Ulf Meidner",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Dietrich Hahnemann",
+        "observer": "Dirk Emmerich",
+        "pilotRank": "Ltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Maximilian Closterman",
+        "observer": "Gotthold Rozenkwit",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Edmond Daucourt",
+        "observer": "Paul Laborie",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Jacob Laferriere",
+        "observer": "Ernest Baux",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

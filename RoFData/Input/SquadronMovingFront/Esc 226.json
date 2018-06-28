@@ -1,0 +1,16 @@
+{
+  "name": "Esc 226",
+  "squadronId": 101226,
+  "airfields": {
+    "19170101": "Grivesnes",
+    "19170301": "Steenwerck",
+    "19170617": "Steenwerck",
+    "19171202": "Villers Bretonneux",
+    "19171207": "Steenwerck",
+    "19180301": "Vadelaincourt",
+    "19180601": "Auve",
+    "19180829": "Vauxcere",
+    "19181025": "Besny-et-Loisy",
+    "19181101": "Besny-et-Loisy"
+  }
+}

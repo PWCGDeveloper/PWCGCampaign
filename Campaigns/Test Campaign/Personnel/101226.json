@@ -1,0 +1,358 @@
+{
+  "squadronMembers": {
+    "3000637": {
+      "name": "Jerome Labordes",
+      "serialNumber": 3000637,
+      "rank": "Lieutenant",
+      "picName": "French047.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 40,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101226,
+      "inactiveDate": "19181111"
+    },
+    "3000636": {
+      "name": "Justin Levaique",
+      "serialNumber": 3000636,
+      "rank": "Lieutenant",
+      "picName": "French043.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 47,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101226,
+      "inactiveDate": "19181111"
+    },
+    "3000639": {
+      "name": "Ayme Besse",
+      "serialNumber": 3000639,
+      "rank": "Sous Lieutenant",
+      "picName": "French020.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 24,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101226,
+      "inactiveDate": "19181111"
+    },
+    "3000638": {
+      "name": "Maxime Lafargue",
+      "serialNumber": 3000638,
+      "rank": "Sous Lieutenant",
+      "picName": "French038.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 28,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101226,
+      "inactiveDate": "19181111"
+    },
+    "3000635": {
+      "name": "Jeremy Lagache",
+      "serialNumber": 3000635,
+      "rank": "Capitaine",
+      "picName": "French060.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 40,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101226,
+      "inactiveDate": "19181111"
+    },
+    "3000645": {
+      "name": "Nicolas Robilliart",
+      "serialNumber": 3000645,
+      "rank": "Corporal",
+      "picName": "French042.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 8,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101226,
+      "inactiveDate": "19181111"
+    },
+    "3000644": {
+      "name": "Edmond Lablee",
+      "serialNumber": 3000644,
+      "rank": "Sergent",
+      "picName": "French004.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101226,
+      "inactiveDate": "19181111"
+    },
+    "3000646": {
+      "name": "Guy Frahier",
+      "serialNumber": 3000646,
+      "rank": "Corporal",
+      "picName": "French015.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101226,
+      "inactiveDate": "19181111"
+    },
+    "3000641": {
+      "name": "Dominique Dussolon",
+      "serialNumber": 3000641,
+      "rank": "Sous Lieutenant",
+      "picName": "French030.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 28,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101226,
+      "inactiveDate": "19181111"
+    },
+    "3000640": {
+      "name": "Camille Gaspard",
+      "serialNumber": 3000640,
+      "rank": "Sous Lieutenant",
+      "picName": "French017.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 10,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101226,
+      "inactiveDate": "19181111"
+    },
+    "3000643": {
+      "name": "Maurice Nicolas",
+      "serialNumber": 3000643,
+      "rank": "Sergent",
+      "picName": "French007.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101226,
+      "inactiveDate": "19181111"
+    },
+    "3000642": {
+      "name": "Cornil Mouillard",
+      "serialNumber": 3000642,
+      "rank": "Sergent",
+      "picName": "French024.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101226,
+      "inactiveDate": "19181111"
+    }
+  }
+}

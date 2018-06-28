@@ -1,0 +1,3203 @@
+{
+  "locationSetName": "FrontLines",
+  "locations": [
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 277376.0,
+        "yPos": 0.0,
+        "zPos": 78312.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 269772.0,
+        "yPos": 0.0,
+        "zPos": 77954.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 92.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 264704.0,
+        "yPos": 0.0,
+        "zPos": 76433.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 106.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 259541.0,
+        "yPos": 0.0,
+        "zPos": 76075.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 93.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 255692.0,
+        "yPos": 0.0,
+        "zPos": 75627.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 96.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 250811.0,
+        "yPos": 0.0,
+        "zPos": 75717.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 88.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 246493.0,
+        "yPos": 0.0,
+        "zPos": 76164.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 84.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 241425.0,
+        "yPos": 0.0,
+        "zPos": 74553.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 107.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 238327.0,
+        "yPos": 0.0,
+        "zPos": 74106.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 98.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 235417.0,
+        "yPos": 0.0,
+        "zPos": 73658.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 98.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 232132.0,
+        "yPos": 0.0,
+        "zPos": 73748.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 88.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 227814.0,
+        "yPos": 0.0,
+        "zPos": 75627.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 66.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 223778.0,
+        "yPos": 0.0,
+        "zPos": 75985.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 84.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 219272.0,
+        "yPos": 0.0,
+        "zPos": 76433.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 84.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 214203.0,
+        "yPos": 0.0,
+        "zPos": 76522.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 88.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 211293.0,
+        "yPos": 0.0,
+        "zPos": 77059.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 79.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 207445.0,
+        "yPos": 0.0,
+        "zPos": 77775.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 79.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 203315.0,
+        "yPos": 0.0,
+        "zPos": 77238.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 97.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 199560.0,
+        "yPos": 0.0,
+        "zPos": 77775.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 81.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 196369.0,
+        "yPos": 0.0,
+        "zPos": 77954.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 86.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 193646.0,
+        "yPos": 0.0,
+        "zPos": 76612.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 116.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 189798.0,
+        "yPos": 0.0,
+        "zPos": 75180.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 110.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 186325.0,
+        "yPos": 0.0,
+        "zPos": 74016.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 108.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 182758.0,
+        "yPos": 0.0,
+        "zPos": 71958.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 119.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 179942.0,
+        "yPos": 0.0,
+        "zPos": 70257.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 121.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 176187.0,
+        "yPos": 0.0,
+        "zPos": 68736.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 112.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 171963.0,
+        "yPos": 0.0,
+        "zPos": 68288.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 96.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 168490.0,
+        "yPos": 0.0,
+        "zPos": 67393.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 104.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 164829.0,
+        "yPos": 0.0,
+        "zPos": 67483.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 88.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 160887.0,
+        "yPos": 0.0,
+        "zPos": 68288.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 78.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 158540.0,
+        "yPos": 0.0,
+        "zPos": 69183.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 69.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 156194.0,
+        "yPos": 0.0,
+        "zPos": 70347.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 63.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 153753.0,
+        "yPos": 0.0,
+        "zPos": 71421.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 66.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 150843.0,
+        "yPos": 0.0,
+        "zPos": 74195.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 46.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 148778.0,
+        "yPos": 0.0,
+        "zPos": 77238.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 34.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 146807.0,
+        "yPos": 0.0,
+        "zPos": 80371.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 32.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 145211.0,
+        "yPos": 0.0,
+        "zPos": 83861.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 24.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 144273.0,
+        "yPos": 0.0,
+        "zPos": 86904.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 17.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 142865.0,
+        "yPos": 0.0,
+        "zPos": 89768.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 26.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 142677.0,
+        "yPos": 0.0,
+        "zPos": 93169.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 3.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 141363.0,
+        "yPos": 0.0,
+        "zPos": 95675.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 27.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 137984.0,
+        "yPos": 0.0,
+        "zPos": 98002.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 55.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 136200.0,
+        "yPos": 0.0,
+        "zPos": 100061.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 40.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 133384.0,
+        "yPos": 0.0,
+        "zPos": 102030.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 55.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 130662.0,
+        "yPos": 0.0,
+        "zPos": 103730.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 58.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 128503.0,
+        "yPos": 0.0,
+        "zPos": 107310.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 31.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 127283.0,
+        "yPos": 0.0,
+        "zPos": 111159.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 17.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 126907.0,
+        "yPos": 0.0,
+        "zPos": 115186.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 5.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 126156.0,
+        "yPos": 0.0,
+        "zPos": 118766.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 11.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 126062.0,
+        "yPos": 0.0,
+        "zPos": 122794.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 1.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 125687.0,
+        "yPos": 0.0,
+        "zPos": 125926.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 6.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 124842.0,
+        "yPos": 0.0,
+        "zPos": 129775.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 12.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 122308.0,
+        "yPos": 0.0,
+        "zPos": 134250.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 29.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 120994.0,
+        "yPos": 0.0,
+        "zPos": 138367.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 17.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 119116.0,
+        "yPos": 0.0,
+        "zPos": 141141.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 34.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 117521.0,
+        "yPos": 0.0,
+        "zPos": 145169.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 21.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 115643.0,
+        "yPos": 0.0,
+        "zPos": 148301.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 30.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 114048.0,
+        "yPos": 0.0,
+        "zPos": 152955.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 18.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 113203.0,
+        "yPos": 0.0,
+        "zPos": 155372.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 19.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 111138.0,
+        "yPos": 0.0,
+        "zPos": 160294.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 22.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 108509.0,
+        "yPos": 0.0,
+        "zPos": 164948.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 29.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 105881.0,
+        "yPos": 0.0,
+        "zPos": 170766.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 24.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 104661.0,
+        "yPos": 0.0,
+        "zPos": 176225.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 12.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 105036.0,
+        "yPos": 0.0,
+        "zPos": 181237.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 355.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 105412.0,
+        "yPos": 0.0,
+        "zPos": 184907.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 354.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 104849.0,
+        "yPos": 0.0,
+        "zPos": 188666.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 8.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 104004.0,
+        "yPos": 0.0,
+        "zPos": 193499.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 102877.0,
+        "yPos": 0.0,
+        "zPos": 196542.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 100437.0,
+        "yPos": 0.0,
+        "zPos": 201375.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 26.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 98372.0,
+        "yPos": 0.0,
+        "zPos": 205134.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 28.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 98184.0,
+        "yPos": 0.0,
+        "zPos": 208803.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 2.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 97996.0,
+        "yPos": 0.0,
+        "zPos": 211220.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 4.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 97809.0,
+        "yPos": 0.0,
+        "zPos": 215247.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 2.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 97245.0,
+        "yPos": 0.0,
+        "zPos": 218022.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 11.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 97058.0,
+        "yPos": 0.0,
+        "zPos": 220617.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 4.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 96401.0,
+        "yPos": 0.0,
+        "zPos": 224287.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 10.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 96870.0,
+        "yPos": 0.0,
+        "zPos": 229299.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 354.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 97809.0,
+        "yPos": 0.0,
+        "zPos": 233505.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 97433.0,
+        "yPos": 0.0,
+        "zPos": 241202.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 2.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 96588.0,
+        "yPos": 0.0,
+        "zPos": 248720.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 6.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 96119.0,
+        "yPos": 0.0,
+        "zPos": 254180.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 4.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 94429.0,
+        "yPos": 0.0,
+        "zPos": 258744.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 90581.0,
+        "yPos": 0.0,
+        "zPos": 261071.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 58.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 85981.0,
+        "yPos": 0.0,
+        "zPos": 261787.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 81.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 81100.0,
+        "yPos": 0.0,
+        "zPos": 260445.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 105.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 76125.0,
+        "yPos": 0.0,
+        "zPos": 260266.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 92.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 73497.0,
+        "yPos": 0.0,
+        "zPos": 260982.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 74.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 70632.0,
+        "yPos": 0.0,
+        "zPos": 259837.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 111.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 68992.0,
+        "yPos": 0.0,
+        "zPos": 258028.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 137.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 65800.0,
+        "yPos": 0.0,
+        "zPos": 258118.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 88.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 62421.0,
+        "yPos": 0.0,
+        "zPos": 259013.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 75.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 56883.0,
+        "yPos": 0.0,
+        "zPos": 255791.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 52846.0,
+        "yPos": 0.0,
+        "zPos": 255343.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 96.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 50030.0,
+        "yPos": 0.0,
+        "zPos": 257133.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 57.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 48622.0,
+        "yPos": 0.0,
+        "zPos": 261250.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 18.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 48716.0,
+        "yPos": 0.0,
+        "zPos": 268321.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 359.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 51438.0,
+        "yPos": 0.0,
+        "zPos": 272796.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 328.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 52002.0,
+        "yPos": 0.0,
+        "zPos": 276107.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 350.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 53504.0,
+        "yPos": 0.0,
+        "zPos": 281567.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 344.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 54254.0,
+        "yPos": 0.0,
+        "zPos": 284968.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 347.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 55475.0,
+        "yPos": 0.0,
+        "zPos": 287295.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 332.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 55569.0,
+        "yPos": 0.0,
+        "zPos": 290696.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 358.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 56583.0,
+        "yPos": 0.0,
+        "zPos": 293490.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 340.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 55943.0,
+        "yPos": 0.0,
+        "zPos": 295823.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 57634.0,
+        "yPos": 0.0,
+        "zPos": 297587.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 316.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 56319.0,
+        "yPos": 0.0,
+        "zPos": 300015.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 28.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 56038.0,
+        "yPos": 0.0,
+        "zPos": 301704.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 53410.0,
+        "yPos": 0.0,
+        "zPos": 302331.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 76.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 50586.0,
+        "yPos": 0.0,
+        "zPos": 305114.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 47460.0,
+        "yPos": 0.0,
+        "zPos": 307560.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 51.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 43486.0,
+        "yPos": 0.0,
+        "zPos": 309788.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 60.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 40564.0,
+        "yPos": 0.0,
+        "zPos": 310912.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 68.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 37820.0,
+        "yPos": 0.0,
+        "zPos": 314768.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 35.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 35677.0,
+        "yPos": 0.0,
+        "zPos": 319523.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 24.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 33747.0,
+        "yPos": 0.0,
+        "zPos": 324595.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 32342.0,
+        "yPos": 0.0,
+        "zPos": 329197.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 16.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 30980.0,
+        "yPos": 0.0,
+        "zPos": 331688.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 28.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 29543.0,
+        "yPos": 0.0,
+        "zPos": 334362.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 28.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 26837.0,
+        "yPos": 0.0,
+        "zPos": 339403.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 28.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 24017.0,
+        "yPos": 0.0,
+        "zPos": 342686.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 40.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 20838.0,
+        "yPos": 0.0,
+        "zPos": 345828.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 19106.0,
+        "yPos": 0.0,
+        "zPos": 348470.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 33.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 13704.0,
+        "yPos": 0.0,
+        "zPos": 355136.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 39.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 277376.0,
+        "yPos": 0.0,
+        "zPos": 80818.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 270711.0,
+        "yPos": 0.0,
+        "zPos": 80281.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 94.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 266112.0,
+        "yPos": 0.0,
+        "zPos": 79476.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 99.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 260761.0,
+        "yPos": 0.0,
+        "zPos": 78760.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 97.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 257851.0,
+        "yPos": 0.0,
+        "zPos": 77059.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 255035.0,
+        "yPos": 0.0,
+        "zPos": 77596.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 79.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 251562.0,
+        "yPos": 0.0,
+        "zPos": 79207.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 65.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 247057.0,
+        "yPos": 0.0,
+        "zPos": 77507.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 110.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 241143.0,
+        "yPos": 0.0,
+        "zPos": 76433.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 100.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 236074.0,
+        "yPos": 0.0,
+        "zPos": 75806.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 97.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 230818.0,
+        "yPos": 0.0,
+        "zPos": 76522.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 82.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 226312.0,
+        "yPos": 0.0,
+        "zPos": 77775.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 74.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 220774.0,
+        "yPos": 0.0,
+        "zPos": 77775.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 215424.0,
+        "yPos": 0.0,
+        "zPos": 79207.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 75.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 210355.0,
+        "yPos": 0.0,
+        "zPos": 79744.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 83.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 204629.0,
+        "yPos": 0.0,
+        "zPos": 78670.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 100.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 200217.0,
+        "yPos": 0.0,
+        "zPos": 79207.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 83.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 195993.0,
+        "yPos": 0.0,
+        "zPos": 79744.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 82.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 192708.0,
+        "yPos": 0.0,
+        "zPos": 79207.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 99.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 189047.0,
+        "yPos": 0.0,
+        "zPos": 76791.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 123.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 185480.0,
+        "yPos": 0.0,
+        "zPos": 75717.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 106.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 182946.0,
+        "yPos": 0.0,
+        "zPos": 73748.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 127.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 179660.0,
+        "yPos": 0.0,
+        "zPos": 71958.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 118.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 176093.0,
+        "yPos": 0.0,
+        "zPos": 70526.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 111.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 173184.0,
+        "yPos": 0.0,
+        "zPos": 70436.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 91.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 169804.0,
+        "yPos": 0.0,
+        "zPos": 69362.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 107.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 166237.0,
+        "yPos": 0.0,
+        "zPos": 69094.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 94.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 162201.0,
+        "yPos": 0.0,
+        "zPos": 71421.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 60.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 159385.0,
+        "yPos": 0.0,
+        "zPos": 72137.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 75.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 157414.0,
+        "yPos": 0.0,
+        "zPos": 74106.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 154786.0,
+        "yPos": 0.0,
+        "zPos": 75090.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 69.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 152157.0,
+        "yPos": 0.0,
+        "zPos": 77149.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 51.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 150092.0,
+        "yPos": 0.0,
+        "zPos": 79923.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 36.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 147464.0,
+        "yPos": 0.0,
+        "zPos": 85383.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 25.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 145681.0,
+        "yPos": 0.0,
+        "zPos": 88336.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 31.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 145211.0,
+        "yPos": 0.0,
+        "zPos": 92722.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 6.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 143991.0,
+        "yPos": 0.0,
+        "zPos": 96123.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 19.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 141644.0,
+        "yPos": 0.0,
+        "zPos": 98181.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 48.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 138828.0,
+        "yPos": 0.0,
+        "zPos": 101045.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 44.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 135918.0,
+        "yPos": 0.0,
+        "zPos": 103641.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 48.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 133102.0,
+        "yPos": 0.0,
+        "zPos": 105968.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 50.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 131319.0,
+        "yPos": 0.0,
+        "zPos": 108295.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 37.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 129536.0,
+        "yPos": 0.0,
+        "zPos": 111427.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 29.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 129066.0,
+        "yPos": 0.0,
+        "zPos": 114739.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 8.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 128503.0,
+        "yPos": 0.0,
+        "zPos": 117513.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 11.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 128034.0,
+        "yPos": 0.0,
+        "zPos": 121272.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 7.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 128409.0,
+        "yPos": 0.0,
+        "zPos": 125389.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 354.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 127377.0,
+        "yPos": 0.0,
+        "zPos": 128253.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 19.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 126250.0,
+        "yPos": 0.0,
+        "zPos": 131028.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 22.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 124748.0,
+        "yPos": 0.0,
+        "zPos": 133713.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 29.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 123997.0,
+        "yPos": 0.0,
+        "zPos": 135413.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 23.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 123434.0,
+        "yPos": 0.0,
+        "zPos": 138725.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 9.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 122683.0,
+        "yPos": 0.0,
+        "zPos": 141678.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 14.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 120337.0,
+        "yPos": 0.0,
+        "zPos": 145169.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 33.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 118553.0,
+        "yPos": 0.0,
+        "zPos": 148122.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 31.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 116113.0,
+        "yPos": 0.0,
+        "zPos": 151523.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 35.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 116019.0,
+        "yPos": 0.0,
+        "zPos": 154208.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 2.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 115268.0,
+        "yPos": 0.0,
+        "zPos": 157072.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 14.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 114235.0,
+        "yPos": 0.0,
+        "zPos": 160652.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 16.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 111232.0,
+        "yPos": 0.0,
+        "zPos": 163069.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 51.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 109260.0,
+        "yPos": 0.0,
+        "zPos": 167812.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 22.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 108509.0,
+        "yPos": 0.0,
+        "zPos": 171929.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 10.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 107571.0,
+        "yPos": 0.0,
+        "zPos": 177210.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 10.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 108791.0,
+        "yPos": 0.0,
+        "zPos": 181595.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 344.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 108416.0,
+        "yPos": 0.0,
+        "zPos": 186339.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 4.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 106914.0,
+        "yPos": 0.0,
+        "zPos": 191261.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 16.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 106069.0,
+        "yPos": 0.0,
+        "zPos": 194841.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 13.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 104473.0,
+        "yPos": 0.0,
+        "zPos": 199495.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 18.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 102314.0,
+        "yPos": 0.0,
+        "zPos": 202270.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 37.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 102126.0,
+        "yPos": 0.0,
+        "zPos": 206029.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 2.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 101751.0,
+        "yPos": 0.0,
+        "zPos": 210504.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 4.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 101939.0,
+        "yPos": 0.0,
+        "zPos": 213368.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 356.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 100155.0,
+        "yPos": 0.0,
+        "zPos": 218022.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 99310.0,
+        "yPos": 0.0,
+        "zPos": 221602.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 13.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 98466.0,
+        "yPos": 0.0,
+        "zPos": 225540.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 12.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 99592.0,
+        "yPos": 0.0,
+        "zPos": 228135.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 336.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 99968.0,
+        "yPos": 0.0,
+        "zPos": 230731.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 351.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 99969.0,
+        "yPos": 0.0,
+        "zPos": 236011.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 359.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 100061.0,
+        "yPos": 0.0,
+        "zPos": 240486.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 358.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 98560.0,
+        "yPos": 0.0,
+        "zPos": 248810.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 10.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 98747.0,
+        "yPos": 0.0,
+        "zPos": 252479.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 357.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 96870.0,
+        "yPos": 0.0,
+        "zPos": 258565.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 17.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 95931.0,
+        "yPos": 0.0,
+        "zPos": 262056.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 91707.0,
+        "yPos": 0.0,
+        "zPos": 264741.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 57.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 86732.0,
+        "yPos": 0.0,
+        "zPos": 264741.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 80537.0,
+        "yPos": 0.0,
+        "zPos": 262235.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 112.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 75562.0,
+        "yPos": 0.0,
+        "zPos": 263756.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 73.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 70963.0,
+        "yPos": 0.0,
+        "zPos": 263040.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 98.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 68522.0,
+        "yPos": 0.0,
+        "zPos": 260445.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 136.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 65171.0,
+        "yPos": 0.0,
+        "zPos": 260860.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 82.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 60006.0,
+        "yPos": 0.0,
+        "zPos": 260787.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 55547.0,
+        "yPos": 0.0,
+        "zPos": 257968.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 122.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 53199.0,
+        "yPos": 0.0,
+        "zPos": 258051.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 87.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 50936.0,
+        "yPos": 0.0,
+        "zPos": 260466.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 43.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 50603.0,
+        "yPos": 0.0,
+        "zPos": 265093.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 4.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 51356.0,
+        "yPos": 0.0,
+        "zPos": 269786.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 350.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 53144.0,
+        "yPos": 0.0,
+        "zPos": 272834.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 329.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 53921.0,
+        "yPos": 0.0,
+        "zPos": 278498.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 352.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 54840.0,
+        "yPos": 0.0,
+        "zPos": 281194.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 341.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 55804.0,
+        "yPos": 0.0,
+        "zPos": 284085.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 341.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 57090.0,
+        "yPos": 0.0,
+        "zPos": 287672.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 340.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 56945.0,
+        "yPos": 0.0,
+        "zPos": 290853.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 2.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 58009.0,
+        "yPos": 0.0,
+        "zPos": 292486.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 326.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 57918.0,
+        "yPos": 0.0,
+        "zPos": 296134.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 1.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 59133.0,
+        "yPos": 0.0,
+        "zPos": 297557.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 319.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 58138.0,
+        "yPos": 0.0,
+        "zPos": 300844.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 16.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 57756.0,
+        "yPos": 0.0,
+        "zPos": 302871.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 10.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 54724.0,
+        "yPos": 0.0,
+        "zPos": 303673.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 75.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 51345.0,
+        "yPos": 0.0,
+        "zPos": 306627.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 48.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 48810.0,
+        "yPos": 0.0,
+        "zPos": 308506.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 53.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 44211.0,
+        "yPos": 0.0,
+        "zPos": 311191.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 59.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 41289.0,
+        "yPos": 0.0,
+        "zPos": 312777.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 61.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 39236.0,
+        "yPos": 0.0,
+        "zPos": 314592.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 48.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 36983.0,
+        "yPos": 0.0,
+        "zPos": 320410.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 21.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 35575.0,
+        "yPos": 0.0,
+        "zPos": 324348.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 19.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 34255.0,
+        "yPos": 0.0,
+        "zPos": 329780.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 13.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 32741.0,
+        "yPos": 0.0,
+        "zPos": 332635.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 27.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 31304.0,
+        "yPos": 0.0,
+        "zPos": 335309.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 28.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 28600.0,
+        "yPos": 0.0,
+        "zPos": 340348.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 28.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 25719.0,
+        "yPos": 0.0,
+        "zPos": 343501.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 42.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 22528.0,
+        "yPos": 0.0,
+        "zPos": 346723.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 44.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 19430.0,
+        "yPos": 0.0,
+        "zPos": 350124.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 42.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 14830.0,
+        "yPos": 0.0,
+        "zPos": 356210.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 37.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

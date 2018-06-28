@@ -1,0 +1,23 @@
+{
+  "name": "No 60 Squadron RFC",
+  "squadronId": 102060,
+  "airfields": {
+    "19150801": "Bailleul",
+    "19150911": "Droglandt",
+    "19151212": "Bailleul",
+    "19160101": "Savy Berlette",
+    "19160601": "Filescamp Ferme",
+    "19160803": "Villers Bretonneux",
+    "19160823": "Le Hameau",
+    "19160901": "Mont St. Eloi",
+    "19170118": "Le Hameau",
+    "19170905": "Droglandt",
+    "19180308": "Abeele (West)",
+    "19180327": "Marieux",
+    "19180412": "Filescamp Ferme",
+    "19180917": "Lealvillers",
+    "19181015": "Lealvillers",
+    "19181025": "Hermies,Cambrai",
+    "19181105": "Proville,Cambrai"
+  }
+}

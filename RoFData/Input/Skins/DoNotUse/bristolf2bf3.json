@@ -1,0 +1,535 @@
+{
+  "skinSetType": "SKIN_DO_NOT_USE",
+  "skins": {
+    "f2bf3_16ew_20_1": {
+      "skinName": "F2BF3_16EW_20_1",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102016,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_1pl_rahon": {
+      "skinName": "F2BF3_1PL_RAHON",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_42sq_blue": {
+      "skinName": "F2BF3_42SQ_BLUE",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_42sq_flatsp": {
+      "skinName": "F2BF3_42SQ_FLATSP",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_42sq_green": {
+      "skinName": "F2BF3_42SQ_GREEN",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_42sq_red": {
+      "skinName": "F2BF3_42SQ_RED",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_42sq_space": {
+      "skinName": "F2BF3_42SQ_SPACE",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_42sq_yellow": {
+      "skinName": "F2BF3_42SQ_YELLOW",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_42sq_yoke": {
+      "skinName": "F2BF3_42SQ_YOKE",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_ah_sid": {
+      "skinName": "F2BF3_AH_SID",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_er_tvscherr": {
+      "skinName": "F2BF3_ER_TVSCHERR",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_fis_default": {
+      "skinName": "F2BF3_FIS_DEFAULT",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_fis_leafgrn": {
+      "skinName": "F2BF3_FIS_LEAFGRN",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_fis_palesti": {
+      "skinName": "F2BF3_FIS_PALESTI",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_gen_rnas55": {
+      "skinName": "F2BF3_GEN_RNAS55",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102055,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_hq_jorri2": {
+      "skinName": "F2BF3_HQ_JORRI2",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_irfc_def": {
+      "skinName": "F2BF3_IRFC_DEF",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_irfc_dixie": {
+      "skinName": "F2BF3_IRFC_DIXIE",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_irfc_katie": {
+      "skinName": "F2BF3_IRFC_KATIE",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_irfc_nelle": {
+      "skinName": "F2BF3_IRFC_NELLE",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_irfc_reyk": {
+      "skinName": "F2BF3_IRFC_REYK",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_irfc_rosa": {
+      "skinName": "F2BF3_IRFC_ROSA",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_liberator": {
+      "skinName": "F2BF3_LIBERATOR",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_o_rod": {
+      "skinName": "F2BF3_O_ROD",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_panther55": {
+      "skinName": "F2BF3_PANTHER55",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_pavlov": {
+      "skinName": "F2BF3_PAVLOV",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_reflected": {
+      "skinName": "F2BF3_REFLECTED",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_sc_1shot": {
+      "skinName": "F2BF3_SC_1SHOT",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_sc_asp": {
+      "skinName": "F2BF3_SC_ASP",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_sc_billy": {
+      "skinName": "F2BF3_SC_BILLY",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_sc_default": {
+      "skinName": "F2BF3_SC_DEFAULT",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_sc_gbeard": {
+      "skinName": "F2BF3_SC_GBEARD",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_sc_lusthawk": {
+      "skinName": "F2BF3_SC_LUSTHAWK",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_sc_mongoose": {
+      "skinName": "F2BF3_SC_MONGOOSE",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_sc_sledrive": {
+      "skinName": "F2BF3_SC_SLEDRIVE",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_sc_sp00k": {
+      "skinName": "F2BF3_SC_SP00K",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_sc_spif": {
+      "skinName": "F2BF3_SC_SPIF",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_sc_zester": {
+      "skinName": "F2BF3_SC_ZESTER",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_syn_squad": {
+      "skinName": "F2BF3_SYN_SQUAD",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_tm_igotshot": {
+      "skinName": "F2BF3_TM_IGOTSHOT",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_ww8ball": {
+      "skinName": "F2BF3_WW8BALL",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_ww_std": {
+      "skinName": "F2BF3_WW_STD",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_wwbayo": {
+      "skinName": "F2BF3_WWBAYO",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_wwbrian": {
+      "skinName": "F2BF3_WWBRIAN",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_wwfox": {
+      "skinName": "F2BF3_WWFOX",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_wwnatops": {
+      "skinName": "F2BF3_WWNATOPS",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_wwng": {
+      "skinName": "F2BF3_WWNG",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_wwpierre": {
+      "skinName": "F2BF3_WWPIERRE",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_wwplague": {
+      "skinName": "F2BF3_WWPLAGUE",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_wwsandy": {
+      "skinName": "F2BF3_WWSANDY",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_wwtomka": {
+      "skinName": "F2BF3_WWTOMKA",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_wwwace": {
+      "skinName": "F2BF3_WWWACE",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "f2bf3_wwwring": {
+      "skinName": "F2BF3_WWWRING",
+      "planeType": "bristolf2bf3",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    }
+  }
+}

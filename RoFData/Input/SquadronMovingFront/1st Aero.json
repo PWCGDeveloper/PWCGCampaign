@@ -1,0 +1,16 @@
+{
+  "name": "1st Aero",
+  "squadronId": 103001,
+  "airfields": {
+    "19180408": "Souilly",
+    "19180629": "Lhery",
+    "19180705": "Vauxcere",
+    "19180722": "Vauxcere",
+    "19180802": "Esquennoy",
+    "19180810": "Vauxcere",
+    "19180820": "Toul",
+    "19180920": "Senard en Argonne",
+    "19181015": "Froides",
+    "19181025": "Brabant en Argonne"
+  }
+}

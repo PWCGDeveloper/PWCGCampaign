@@ -1,0 +1,22 @@
+{
+  "name": "Esc 31",
+  "squadronId": 101031,
+  "airfields": {
+    "19150404": "Toul",
+    "19151014": "Lemmes",
+    "19170130": "Rosnay",
+    "19170209": "Muizon",
+    "19170709": "Romarin",
+    "19170917": "Ville-Savoye",
+    "19180102": "Muizon",
+    "19180529": "Bouy",
+    "19180611": "Vauxcere",
+    "19180628": "La Cheppe",
+    "19180724": "Auve",
+    "19180923": "Vauxcere",
+    "19181011": "Ferme d_Alger",
+    "19181015": "Pomacle",
+    "19181025": "St.Loup,Champagne",
+    "19181105": "Boncourt"
+  }
+}

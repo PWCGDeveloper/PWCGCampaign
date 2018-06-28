@@ -1,0 +1,19 @@
+{
+  "name": "No 3 Squadron RNAS",
+  "squadronId": 102203,
+  "airfields": {
+    "19150801": "St. Marie Cappel",
+    "19160101": "Hondschoote",
+    "19170201": "Lealvillers",
+    "19170320": "Marieux",
+    "19170615": "Coxyde",
+    "19170906": "Poperinghe",
+    "19180310": "La Targette",
+    "19180326": "Lealvillers",
+    "19180409": "Lealvillers",
+    "19180506": "Le Hameau",
+    "19181005": "Riencourt,Arras",
+    "19181025": "Epinoy,NW Cambrai",
+    "19181110": "Lieu St.Amand"
+  }
+}

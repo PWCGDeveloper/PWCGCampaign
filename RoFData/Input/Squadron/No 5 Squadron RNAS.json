@@ -1,0 +1,80 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102205,
+  "name": "No 5 Squadron RNAS",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "type": "fe2b",
+      "squadronIntroduction": "19160415",
+      "squadronWithdrawal": "19161231"
+    },
+    {
+      "type": "sopstrb",
+      "squadronIntroduction": "19160701",
+      "squadronWithdrawal": "19170825"
+    },
+    {
+      "type": "dh4",
+      "squadronIntroduction": "19170709",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160415": "Droglandt",
+    "19161231": "Coudekerque",
+    "19170401": "Leffrinckhouke",
+    "19180206": "Villers Bretonneux",
+    "19180311": "Baizieux 2",
+    "19180328": "Petit Camon",
+    "19180816": "Warfusee"
+  },
+  "skins": [
+    {
+      "skinName": "SS_RNAS_STD_EARLY",
+      "planeType": "sopstr",
+      "startDate": "19140801",
+      "endDate": "19161231",
+      "squadId": 102205,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SS_RNAS-RFC_STD10",
+      "planeType": "sopstr",
+      "startDate": "19170101",
+      "endDate": "19181201",
+      "squadId": 102205,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+        
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 205 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

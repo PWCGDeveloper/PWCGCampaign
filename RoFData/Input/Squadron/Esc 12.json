@@ -1,0 +1,127 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101012,
+  "name": "Esc 12",
+  "skill": 85,
+  "planeAssignments": [
+    {
+      "type": "nieuport11",
+      "squadronIntroduction": "19150801",
+      "squadronWithdrawal": "19161201"
+    },
+    {
+      "type": "nieuport17",
+      "squadronIntroduction": "19161101",
+      "squadronWithdrawal": "19170415"
+    },
+    {
+      "type": "spad7early",
+      "squadronIntroduction": "19170401",
+      "squadronWithdrawal": "19170710"
+    },
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19170602",
+      "squadronWithdrawal": "19171201"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19171106",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19150801": "Rosnay",
+    "19160412": "Mont Soissons Ferme",
+    "19160911": "Froides",
+    "19161005": "Vadelaincourt",
+    "19170408": "Lhery",
+    "19170708": "Romarin",
+    "19170916": "Vauxcere",
+    "19180330": "Quinquempoix",
+    "19180530": "Bouy",
+    "19180611": "Vauxcere",
+    "19180628": "Tilloy at Bellay",
+    "19180724": "Bouy",
+    "19180906": "Malzeville",
+    "19180923": "Ferme de Corbeaulieu",
+    "19181015": "Ferme d_Alger"
+  },
+  "skins": [
+    {
+      "skinName": "N11_101012_ANS",
+      "planeType": "nieuport11",
+      "startDate": "19150801",
+      "endDate": "19161201",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N17_101012_ANS",
+      "planeType": "nieuport17",
+      "startDate": "19161101",
+      "endDate": "19170415",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7E_SPA12_DEFAULT",
+      "planeType": "spad7early",
+      "startDate": "19170401",
+      "endDate": "19160710",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC12_APR17",
+      "planeType": "spad7",
+      "startDate": "19170602",
+      "endDate": "19171231",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_SPA12_DEFAULT",
+      "planeType": "spad7",
+      "startDate": "19180101",
+      "endDate": "19180501",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "101012",
+      "planeType": "spad13",
+      "startDate": "19171201",
+      "endDate": "19181201",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

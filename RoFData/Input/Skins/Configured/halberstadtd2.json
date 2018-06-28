@@ -1,0 +1,165 @@
+{
+  "skinSetType": "SKIN_CONFIGURED",
+  "skins": {
+    "hd2_d605-16": {
+      "skinName": "HD2_D605-16",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_d805-16": {
+      "skinName": "HD2_D805-16",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_d810-16": {
+      "skinName": "HD2_D810-16",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_d813-16": {
+      "skinName": "HD2_D813-16",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_d818-16_e": {
+      "skinName": "HD2_D818-16_E",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19160801",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_d818-16_l": {
+      "skinName": "HD2_D818-16_L",
+      "planeType": "halberstadtd2",
+      "startDate": "19160801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_j5_berr": {
+      "skinName": "HD2_J5_BERR",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_j5_black_c": {
+      "skinName": "HD2_J5_BLACK_C",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_j5_black_f": {
+      "skinName": "HD2_J5_BLACK_F",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_j5_blackband": {
+      "skinName": "HD2_J5_BLACKBAND",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_j5_blackno8": {
+      "skinName": "HD2_J5_BLACKNO8",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_j5_klein": {
+      "skinName": "HD2_J5_KLEIN",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_j5_no3": {
+      "skinName": "HD2_J5_NO3",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_j5_no4": {
+      "skinName": "HD2_J5_NO4",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_j5_no5": {
+      "skinName": "HD2_J5_NO5",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hd2_j5_no7": {
+      "skinName": "HD2_J5_NO7",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501005,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    }
+  }
+}

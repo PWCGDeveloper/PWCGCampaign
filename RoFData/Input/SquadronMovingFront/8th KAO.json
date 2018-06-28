@@ -1,0 +1,10 @@
+{
+  "name": "8th KAO",
+  "squadronId": 105008,
+  "airfields": {
+    "19160101": "Perovoloka",
+    "19160701": "Laskovry",
+    "19170201": "Snovidov",
+    "19170801": "Bogutyn"
+  }
+}

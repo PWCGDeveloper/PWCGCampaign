@@ -1,0 +1,196 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-08-30",
+    "squadron": "Jasta 16b",
+    "date": "19160830",
+    "time": "10:0:00",
+    "aircraftType": "AircraftType \u003d Halberstadt D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "PATROL",
+    "altitude": 4071
+  },
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-08-30\n\nWeather Report\nLight cloud cover, high altitude.\nCloud layer is 4648 meters.\nWind speed is 2 M/S.\nWind direction is 311.\n\nPrimary Objective\nPatrol airspace  near Noyon.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Augustus Kass",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Luther Schaumann",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Karl Nostitz",
+        "observer": "",
+        "pilotRank": "Uffz",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 13",
+      "crew": {
+        "pilot": "Lenz Behm Canal",
+        "observer": "Theodor Spies",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 13",
+      "crew": {
+        "pilot": "Sigwalt Guns",
+        "observer": "Johannes Beutler",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 13",
+      "crew": {
+        "pilot": "Thomas Zehetner",
+        "observer": "Dominik Moritz",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 13",
+      "crew": {
+        "pilot": "Timo Klostermann",
+        "observer": "Holger Grasshoff",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 18",
+      "crew": {
+        "pilot": "Heinrich Weinblatt",
+        "observer": "Stefan Kaendler",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 18",
+      "crew": {
+        "pilot": "Florian Brausewetter",
+        "observer": "Kaspar Brahms",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Leo Chapelant",
+        "observer": "Alexis Clermont",
+        "pilotRank": "Cne",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Arsene Koch",
+        "observer": "Alfred Gisquet",
+        "pilotRank": "Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Bertrand Koch",
+        "observer": "Francis Lafarge",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Ignace Goarnigou",
+        "observer": "Florentin Lachaud",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 27 Squadron RFC",
+      "crew": {
+        "pilot": "Dixon Piggott",
+        "observer": "Rodney Berkhead",
+        "pilotRank": "Maj",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 27 Squadron RFC",
+      "crew": {
+        "pilot": "Herbert Cod",
+        "observer": "Shamus Helm",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 27 Squadron RFC",
+      "crew": {
+        "pilot": "Robert Gedding",
+        "observer": "Connell Scrope",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Cpt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 27 Squadron RFC",
+      "crew": {
+        "pilot": "Tyler Harwood",
+        "observer": "Benjamin Harcourt",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    }
+  ]
+}

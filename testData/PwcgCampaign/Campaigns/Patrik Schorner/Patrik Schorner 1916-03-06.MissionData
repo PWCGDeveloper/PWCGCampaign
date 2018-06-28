@@ -1,0 +1,274 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-03-06";
+    Squadron = "FA 15";
+    Map = "Galicia";
+    Date = "19160306";
+    Time = "90:00";
+    Duty = "BOMB";
+    AircraftType = Roland C.IIa;
+    Altitude = 1157;
+    Airfield = Pukov;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Roland C.IIa
+Squadron  FA 15
+Airbase  Pukov
+Date  1916-03-06
+
+Weather Report 
+    Light cloud cover, high altitude.
+    Cloud layer is 6556 meters.
+    Wind speed is 2 M/S.
+    Wind direction is 148.
+
+Primary Objective 
+    Attack assaulting enemy troops  near Factory
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "FA 15";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Friedrich Beethoven";
+            ObserverRank = "Ltn";
+            Observer = "Rudiger Hoelscher";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "FA 15";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "Ltn";
+            Observer = "Veit Traub";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "FA 15";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Meinhard Frohlich";
+            ObserverRank = "Ltn";
+            Observer = "Wenzel Scheiner";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "FA 15";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Nikolaus Fechter";
+            ObserverRank = "Ltn";
+            Observer = "Sepp Homberg";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "FliK 9";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Wendel Adler";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "FliK 9";
+        Crew
+        {
+            PilotRank = "Kp";
+            Pilot = "Piusz Kobak";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 25";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Badog Takacs";
+            ObserverRank = "Obltn";
+            Observer = "Benjamin Goldreich";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 25";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Ewald Steinhaeuser";
+            ObserverRank = "Ltn";
+            Observer = "Erwin Kaestenbaum";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 18";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Gunther Ehrenbaum";
+            ObserverRank = "Ltn";
+            Observer = "Csego Kosar";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 18";
+        Crew
+        {
+            PilotRank = "Kp";
+            Pilot = "Kristof Lemberg";
+            ObserverRank = "Ltn";
+            Observer = "Erich Gutenburg";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "s16";
+        Squadron = "7th AOI";
+        Crew
+        {
+            PilotRank = "Pk";
+            Pilot = "Akim Kollerov";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "s16";
+        Squadron = "7th AOI";
+        Crew
+        {
+            PilotRank = "SPk";
+            Pilot = "Oleg Aristov";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "8th KAO";
+        Crew
+        {
+            PilotRank = "Pk";
+            Pilot = "Luka Ozerov";
+            ObserverRank = "Pk";
+            Observer = "Vasya Senotrusov";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "8th KAO";
+        Crew
+        {
+            PilotRank = "Pk";
+            Pilot = "Pavlusha Moiseyev";
+            ObserverRank = "Lt";
+            Observer = "Motka Meshcheryakov";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "2nd KAO";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Matysh Belsky";
+            ObserverRank = "Lt";
+            Observer = "Zhenechka Markow";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "2nd KAO";
+        Crew
+        {
+            PilotRank = "Pk";
+            Pilot = "Pavel Osennykh";
+            ObserverRank = "Pk";
+            Observer = "Mishe Golovkin";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "2nd KAO";
+        Crew
+        {
+            PilotRank = "Pk";
+            Pilot = "Roman Kirilov";
+            ObserverRank = "Pk";
+            Observer = "Maksim Zolin";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "2nd KAO";
+        Crew
+        {
+            PilotRank = "DPk";
+            Pilot = "Rurik Silin";
+            ObserverRank = "Pk";
+            Observer = "Vladislav Dombrowsky";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "2nd KAO";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Markov Dmitriev";
+            ObserverRank = "Pk";
+            Observer = "Sacha Kuznetsov";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "2nd KAO";
+        Crew
+        {
+            PilotRank = "SPk";
+            Pilot = "Fjodor Budnikov";
+            ObserverRank = "Lt";
+            Observer = "Yurochka Grinin";
+        }
+    }
+}

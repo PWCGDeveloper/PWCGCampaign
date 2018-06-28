@@ -1,0 +1,142 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-06-26";
+    Squadron = "Jasta 4";
+    Map = "France";
+    Date = "19160626";
+    Time = "4:30:00";
+    Duty = "PATROL";
+    AircraftType = Fokker E.III;
+    Altitude = 3468;
+    Airfield = Bonneuil Ferme;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Fokker E.III
+Squadron  Jasta 4
+Airbase  Bonneuil Ferme
+Date  1916-06-26
+
+Weather Report 
+    Light cloud cover, medium altitude.
+    Cloud layer is 2410 meters.
+    Wind speed is 2 M/S.
+    Wind direction is 190.
+
+Primary Objective 
+    Patrol airspace  near Caumont.  Engage any enemy aircraft that you encounter.
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Lambrecht Steinberg";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Kurt Wintgens";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Dietrich Holweck";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 16";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Carsten Riegel";
+            ObserverRank = "Ltn";
+            Observer = "Arndt Ulrici";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 16";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Engelbert Romberg";
+            ObserverRank = "Obltn";
+            Observer = "Gebhard Felgenhauer";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 105";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Denis Lapegue";
+            ObserverRank = "S/Lt";
+            Observer = "Henri Labbe";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 105";
+        Crew
+        {
+            PilotRank = "Cpl";
+            Pilot = "Marceau Lacaze";
+            ObserverRank = "S/Lt";
+            Observer = "Jerome Goarnigou";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 5 Squadron RNAS";
+        Crew
+        {
+            PilotRank = "Flt Lt";
+            Pilot = "Philbert Downer";
+            ObserverRank = "Flt.Cdr";
+            Observer = "Willard Pennebrygg";
+        }
+    }
+}

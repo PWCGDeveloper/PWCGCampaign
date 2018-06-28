@@ -1,0 +1,19 @@
+{
+  "type": "ju523mg4e",
+  "side": "AXIS",
+  "displayName": "Ju 52",
+  "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+  "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+  "desc": "",
+  "cruisingSpeed": 200,
+  "climbOutRate": 500,
+  "goodness": 25,
+  "endurance": 1.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_MEDIUM",
+  "roles": [
+    "ROLE_TRANSPORT"
+  ],
+  "introduction": "19410301",
+  "withdrawal": "19450503"
+}

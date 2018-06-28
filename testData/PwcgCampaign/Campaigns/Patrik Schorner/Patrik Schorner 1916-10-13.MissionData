@@ -1,0 +1,106 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-10-13";
+    Squadron = "Jasta 16b";
+    Map = "France";
+    Date = "19161013";
+    Time = "15:30:00";
+    Duty = "SCRAMBLE";
+    AircraftType = Albatros D.II;
+    Altitude = 2000;
+    Airfield = Balatre,E Roye;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Albatros D.II
+Squadron  Jasta 16b
+Airbase  Balatre,E Roye
+Date  1916-10-13
+
+Weather Report 
+    Heavy cloud cover, medium altitude.
+    Cloud layer is 1562 meters.
+    Wind speed is 0 M/S.
+    Wind direction is 323.
+
+Primary Objective 
+    Incoming enemy aircraft are near our airbase.  Get airborne and destroy them!
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Karl Nostitz";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Ruprecht Hess";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Poldi Hechler";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 20";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Leo Scala";
+            ObserverRank = "Lt";
+            Observer = "Blaise Gentillon";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 20";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Marceau Adam";
+            ObserverRank = "S/Lt";
+            Observer = "Casimir Redinger";
+        }
+    }
+}

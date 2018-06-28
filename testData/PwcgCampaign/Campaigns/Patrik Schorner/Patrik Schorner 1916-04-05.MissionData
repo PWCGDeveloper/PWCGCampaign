@@ -1,0 +1,286 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-04-05";
+    Squadron = "FA 15";
+    Map = "Galicia";
+    Date = "19160405";
+    Time = "100:00";
+    Duty = "ARTILLERY_SPOT";
+    AircraftType = Roland C.IIa;
+    Altitude = 800;
+    Airfield = Pukov;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Roland C.IIa
+Squadron  FA 15
+Airbase  Pukov
+Date  1916-04-05
+
+Weather Report 
+    Medium cloud cover, medium altitude.
+    Cloud layer is 2142 meters.
+    Wind speed is 1 M/S.
+    Wind direction is 63.
+
+Primary Objective 
+    Spot artillery against the transport and road facilities  near Factory
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "FA 15";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "Ltn";
+            Observer = "Rudiger Hoelscher";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "FAA 1";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Falco Stuber";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "FAA 1";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Manfred Kessler";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 10";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Felix Gebauer";
+            ObserverRank = "Ltn";
+            Observer = "Rainer Stuber";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 10";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Bodis Stollar";
+            ObserverRank = "Obltn";
+            Observer = "Arndt Walbaum";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 10";
+        Crew
+        {
+            PilotRank = "Kp";
+            Pilot = "Otto Kochel";
+            ObserverRank = "Obltn";
+            Observer = "Anton Aschersohn";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 25";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Dorman Sakal";
+            ObserverRank = "Ltn";
+            Observer = "Salamon Silas";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 25";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Reinhard Holler";
+            ObserverRank = "Ltn";
+            Observer = "Azzony Karmazin";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 25";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Walfred Wiesenthal";
+            ObserverRank = "Ltn";
+            Observer = "Dietrich Baumstein";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 25";
+        Crew
+        {
+            PilotRank = "Kp";
+            Pilot = "Bertold Liptak";
+            ObserverRank = "Ltn";
+            Observer = "Frederich Saft";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 18";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Zoltan Galik";
+            ObserverRank = "Obltn";
+            Observer = "Herbert Vorgrimler";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 18";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Arnulf von Braun";
+            ObserverRank = "Ltn";
+            Observer = "Georg Weizaecker";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 18";
+        Crew
+        {
+            PilotRank = "Kp";
+            Pilot = "Eugen Zippe";
+            ObserverRank = "Ltn";
+            Observer = "arpad Nemeth";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 18";
+        Crew
+        {
+            PilotRank = "Kp";
+            Pilot = "Knut Quint";
+            ObserverRank = "Ltn";
+            Observer = "Jakob Sitte";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "s16";
+        Squadron = "4th AOI";
+        Crew
+        {
+            PilotRank = "Pk";
+            Pilot = "Alek Chaban";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "s16";
+        Squadron = "4th AOI";
+        Crew
+        {
+            PilotRank = "Pk";
+            Pilot = "Dimitri Gulin";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "8th KAO";
+        Crew
+        {
+            PilotRank = "Pk";
+            Pilot = "Egor Yanayev";
+            ObserverRank = "Lt";
+            Observer = "Yefrem Kurtashkin";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "2nd KAO";
+        Crew
+        {
+            PilotRank = "Cpt";
+            Pilot = "Vitenka Kulagin";
+            ObserverRank = "Pk";
+            Observer = "Vladilen Yurnayev";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "2nd KAO";
+        Crew
+        {
+            PilotRank = "Pk";
+            Pilot = "Maksim Siyanosov";
+            ObserverRank = "Pk";
+            Observer = "Andrusha Skryabin";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "2nd KAO";
+        Crew
+        {
+            PilotRank = "Pk";
+            Pilot = "Vladilen Lazaroff";
+            ObserverRank = "Pk";
+            Observer = "Motka Olshansky";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "2nd KAO";
+        Crew
+        {
+            PilotRank = "DPk";
+            Pilot = "Yurochka Slutzky";
+            ObserverRank = "Pk";
+            Observer = "Kostya Ilyukhin";
+        }
+    }
+}

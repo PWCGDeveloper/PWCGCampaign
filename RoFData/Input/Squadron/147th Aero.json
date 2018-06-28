@@ -1,0 +1,61 @@
+{
+  "country": "USA",
+  "squadronId": 103147,
+  "name": "147th Aero",
+  "skill": 60,
+  "planeAssignments": [
+    {
+      "type": "nieuport28",
+      "squadronIntroduction": "19180529",
+      "squadronWithdrawal": "19180801"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19180721",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180529": "Toul",
+    "19180628": "Maizy,N Fismes",
+    "19180709": "Chalons sur Vesle",
+    "19180828": "Lemmes"
+  },
+  "skins": [
+    {
+      "skinName": "103147",
+      "planeType": "nieuport28",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 103147,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S13_103147_ANS",
+      "planeType": "spad13",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 103147,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10301,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101090,
+  "name": "Esc 90",
+  "skill": 60,
+  "planeAssignments": [
+    {
+      "type": "nieuport17",
+      "squadronIntroduction": "19170215",
+      "squadronWithdrawal": "19171015"
+    },
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19171001",
+      "squadronWithdrawal": "19181201"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19180401",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19170215": "Chaudun"
+  },
+  "skins": [
+    {
+      "skinName": "N17_PW_F90_DFTL",
+      "planeType": "nieuport17",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101090,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC90_APR1917",
+      "planeType": "spad7",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 101090,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC90_JAN1918",
+      "planeType": "spad7",
+      "startDate": "19180323",
+      "endDate": "19181201",
+      "squadId": 101090,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S13_101090_ANS",
+      "planeType": "spad13",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101090,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

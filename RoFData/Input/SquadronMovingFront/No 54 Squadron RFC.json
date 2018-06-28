@@ -1,0 +1,28 @@
+{
+  "name": "No 54 Squadron RFC",
+  "squadronId": 102054,
+  "airfields": {
+    "19161226": "Poperinghe",
+    "19170101": "Warfusee",
+    "19170418": "Villers Bretonneux",
+    "19170618": "Proven",
+    "19170716": "Proven",
+    "19170908": "Hondschoote",
+    "19171206": "Bruay",
+    "19171218": "Lealvillers",
+    "19180101": "Warfusee",
+    "19180322": "Baizieux 2",
+    "19180326": "Assevillers",
+    "19180328": "Mazingarbe",
+    "19180329": "La Targette",
+    "19180601": "West Cappelle",
+    "19180611": "Mont St. Eloi",
+    "19180616": "Filescamp Ferme",
+    "19180630": "Lealvillers",
+    "19180714": "Bonne Maisson",
+    "19180804": "La Targette",
+    "19181017": "Assevillers",
+    "19181025": "Ronssoy,SE Epehy",
+    "19181105": "Awoingt"
+  }
+}

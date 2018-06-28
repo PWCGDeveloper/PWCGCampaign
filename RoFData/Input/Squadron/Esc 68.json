@@ -1,0 +1,121 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101068,
+  "name": "Esc 68",
+  "skill": 50,
+  "planeAssignments": [
+    {
+      "type": "nieuport11",
+      "squadronIntroduction": "19150923",
+      "squadronWithdrawal": "19161101"
+    },
+    {
+      "type": "nieuport17",
+      "squadronIntroduction": "19161005",
+      "squadronWithdrawal": "19170515"
+    },
+    {
+      "type": "spad7early",
+      "squadronIntroduction": "19170301",
+      "squadronWithdrawal": "19170611"
+    },
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19170611",
+      "squadronWithdrawal": "19180201"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19171201",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19150923": "Auve",
+    "19151028": "Bouy",
+    "19160815": "Toul",
+    "19170403": "Brabant en Argonne",
+    "19170913": "Muizon",
+    "19180308": "Muizon",
+    "19180425": "Ferme Cravancon",
+    "19180715": "Brabant en Argonne",
+    "19180916": "Tilloy at Bellay"
+  },
+  "skins": [
+    {
+      "skinName": "N11_PW_F68_DFT",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N17_PW_F68_DFT",
+      "planeType": "nieuport17",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7E_ESC68_DEC1916",
+      "planeType": "spad7early",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC68_APR1917",
+      "planeType": "spad7",
+      "startDate": "19140801",
+      "endDate": "19180206",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC68_JAN1918",
+      "planeType": "spad7",
+      "startDate": "19180206",
+      "endDate": "19181201",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "101068",
+      "planeType": "spad13",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

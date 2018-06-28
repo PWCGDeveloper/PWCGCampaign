@@ -1,0 +1,418 @@
+{
+  "squadronMembers": {
+    "3000893": {
+      "name": "Brooke Bladewell",
+      "serialNumber": 3000893,
+      "rank": "Major",
+      "picName": "British004.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 34,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170419",
+          "location": "",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd2late",
+            "squadronName": "Jasta 27",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Dirk Kluckhohn",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 50 Squadron (HD)",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Brooke Bladewell",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 12",
+            "pilotSerialNumber": 0,
+            "pilotName": "Fw Konrad Pesch",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 50 Squadron (HD)",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Brooke Bladewell",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 16",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Frederich Werkner",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17rus",
+            "squadronName": "No 50 Squadron (HD)",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Brooke Bladewell",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 27",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Ruprecht Eichwald",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "spad7",
+            "squadronName": "No 50 Squadron (HD)",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Brooke Bladewell",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102050,
+      "inactiveDate": "19181111"
+    },
+    "3000895": {
+      "name": "Wyman Bailey",
+      "serialNumber": 3000895,
+      "rank": "Captain",
+      "picName": "British005.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 30,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102050,
+      "inactiveDate": "19181111"
+    },
+    "3000894": {
+      "name": "Bevis Leventhorpe",
+      "serialNumber": 3000894,
+      "rank": "Captain",
+      "picName": "British059.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 20,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102050,
+      "inactiveDate": "19181111"
+    },
+    "3000904": {
+      "name": "Dylan Howard",
+      "serialNumber": 3000904,
+      "rank": "2nd Lieutenant",
+      "picName": "British055.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102050,
+      "inactiveDate": "19181111"
+    },
+    "3000901": {
+      "name": "Graham Hackman",
+      "serialNumber": 3000901,
+      "rank": "2nd Lieutenant",
+      "picName": "British051.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102050,
+      "inactiveDate": "19181111"
+    },
+    "3000900": {
+      "name": "Craig Wardyworth",
+      "serialNumber": 3000900,
+      "rank": "2nd Lieutenant",
+      "picName": "British015.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 7,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102050,
+      "inactiveDate": "19181111"
+    },
+    "3000903": {
+      "name": "Aaron Dunch",
+      "serialNumber": 3000903,
+      "rank": "2nd Lieutenant",
+      "picName": "British014.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 6,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102050,
+      "inactiveDate": "19181111"
+    },
+    "3000902": {
+      "name": "Grayson Roland",
+      "serialNumber": 3000902,
+      "rank": "2nd Lieutenant",
+      "picName": "British057.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 7,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102050,
+      "inactiveDate": "19181111"
+    },
+    "3000897": {
+      "name": "Orson Daundelyon",
+      "serialNumber": 3000897,
+      "rank": "Lieutenant",
+      "picName": "British008.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 22,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102050,
+      "inactiveDate": "19181111"
+    },
+    "3000896": {
+      "name": "Rolf Jones",
+      "serialNumber": 3000896,
+      "rank": "Lieutenant",
+      "picName": "British048.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 17,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102050,
+      "inactiveDate": "19181111"
+    },
+    "3000899": {
+      "name": "Gavin Gardiner",
+      "serialNumber": 3000899,
+      "rank": "Lieutenant",
+      "picName": "British052.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 14,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102050,
+      "inactiveDate": "19181111"
+    },
+    "3000898": {
+      "name": "Hadley Hussey",
+      "serialNumber": 3000898,
+      "rank": "Lieutenant",
+      "picName": "British041.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 11,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102050,
+      "inactiveDate": "19181111"
+    }
+  }
+}

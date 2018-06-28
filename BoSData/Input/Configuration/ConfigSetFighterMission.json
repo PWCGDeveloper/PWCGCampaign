@@ -1,0 +1,97 @@
+{
+  "configSetName": "ConfigSetFighterMission",
+  "configMap": {
+    "AlliedBalloonBustMission": {
+      "value": "0",
+      "label": "Allied Balloon Bust Mission",
+      "help": "Odds of creating a Balloon Bust - Allied"
+    },
+    "AlliedBalloonDefenseMission": {
+      "value": "0",
+      "label": "Allied Balloon Defense Mission",
+      "help": "Odds of creating a Balloon Defense - Allied"
+    },
+    "AlliedEscortMission": {
+      "value": "15",
+      "label": "Allied Escort Mission",
+      "help": "Odds of creating an Escort Mission - Allied"
+    },
+    "AlliedInterceptMission": {
+      "value": "30",
+      "label": "Allied Intercept Mission",
+      "help": "Odds of creating a Intercept Mission - Allied"
+    },
+    "AlliedOffensiveMission": {
+      "value": "30",
+      "label": "Allied Offensive Mission",
+      "help": "Odds of creating an Offensive Patrol Mission - Allied"
+    },
+    "AlliedScrambleMission": {
+      "value": "5",
+      "label": "Allied Scramble Mission",
+      "help": "Odds of creating a Scramble - Allied"
+    },
+    "AlliedPatrolMission": {
+      "value": "40",
+      "label": "Allied Patrol Mission",
+      "help": "Odds of creating a Patrol - Allied"
+    },
+    "AlliedLowAltPatrolMission": {
+      "value": "20",
+      "label": "Allied Low Altitude Patrol Mission",
+      "help": "Odds of creating a Low Altitude Patrol - Allied"
+    },
+    "AlliedCAPMission": {
+      "value": "20",
+      "label": "Allied CAP Mission",
+      "help": "Odds of creating a Battlefield CAP - Allied"
+    },
+    
+    "AxisBalloonBustMission": {
+      "value": "0",
+      "label": "Axis Balloon Bust Mission",
+      "help": "Odds of creating a Balloon Bust - Axis"
+    },
+    "AxisBalloonDefenseMission": {
+      "value": "0",
+      "label": "Axis Balloon Defense Mission",
+      "help": "Odds of creating a Balloon Defense - Axis"
+    },
+    "AxisEscortMission": {
+      "value": "15",
+      "label": "Axis Escort Mission",
+      "help": "Odds of creating an Escort Mission - Axis"
+    },
+    "AxisInterceptMission": {
+      "value": "35",
+      "label": "Axis Intercept Mission",
+      "help": "Odds of creating a Intercept Mission - Axis"
+    },
+    "AxisOffensiveMission": {
+      "value": "25",
+      "label": "Axis Offensive Mission",
+      "help": "Odds of creating an Offensive Patrol Mission - Axis"
+    },
+    "AxisScrambleMission": {
+      "value": "5",
+      "label": "Axis Scramble Mission",
+      "help": "Odds of creating a Scramble - Axis"
+    },
+    "AxisPatrolMission": {
+      "value": "40",
+      "label": "Axis Patrol Mission",
+      "help": "Odds of creating a Patrol - Axis"
+    },
+    "AxisLowAltPatrolMission": {
+      "value": "10",
+      "label": "Axis Low Altitude Patrol Mission",
+      "help": "Odds of creating a Low Altitude Patrol - Axis"
+    },
+    "AxisCAPMission": {
+      "value": "10",
+      "label": "Axis CAP Mission",
+      "help": "Odds of creating a Battlefield CAP - Axis"
+    }
+  }
+}
+

@@ -1,0 +1,52 @@
+{
+  "missionHeader": {
+    "missionFileName": "German Test 1941-11-09",
+    "squadron": "II./JG51",
+    "date": "19411109",
+    "time": "9.11.1941",
+    "aircraftType": "Bf 109 F-2",
+    "mapName": "Moscow",
+    "airfield": "Kolodezi",
+    "duty": "PATROL",
+    "altitude": 4848
+  },
+  "missionDescription": "Mission: \nAircraft  Bf 109 F-2\nSquadron  II./JG51\nAirbase  Kolodezi\nDate  9.11.1941\n\nWeather Report \n    Medium cloud cover, medium altitude.\n    Cloud layer is 2022 meters.\n    Wind speed is 1 M/S.\n    Wind direction is 298.\n\nPrimary Objective \n    Patrol airspace  near Oblyanishevo.  Engage any enemy aircraft that you encounter.\n\n",
+  "missionPlanes": {
+    "3000014": {
+      "aircraftType": "mig3s24",
+      "squadronId": 10111027,
+      "pilotSerialNumber": 3000014,
+      "pilotName": "Igor Aleyev"
+    },
+    "3000232": {
+      "aircraftType": "bf109f2",
+      "squadronId": 20112051,
+      "pilotSerialNumber": 3000232,
+      "pilotName": "Maximilian Streicher"
+    },
+    "3000235": {
+      "aircraftType": "bf109f2",
+      "squadronId": 20112051,
+      "pilotSerialNumber": 3000235,
+      "pilotName": "Adolf Schnabel"
+    },
+    "3000228": {
+      "aircraftType": "bf109f2",
+      "squadronId": 20112051,
+      "pilotSerialNumber": 3000228,
+      "pilotName": "Sigfried Dehnert"
+    },
+    "3000017": {
+      "aircraftType": "mig3s24",
+      "squadronId": 10111027,
+      "pilotSerialNumber": 3000017,
+      "pilotName": "Yuri Khvostovsky"
+    },
+    "1000000": {
+      "aircraftType": "bf109f4",
+      "squadronId": 20112051,
+      "pilotSerialNumber": 1000000,
+      "pilotName": "German Test"
+    }
+  }
+}

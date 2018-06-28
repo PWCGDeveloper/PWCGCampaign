@@ -1,0 +1,32 @@
+Player flight
+  Mission type: OFFENSIVE
+  Airfield    : Gelenjik-3
+  Aircraft    : yak1s127
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: GROUND_ATTACK
+  Airfield    : Staro-Nijne-Steblievskaya
+  Aircraft    : il2m43
+  Player Contact    : 9
+
+
+
+Flight
+  Mission type: BOMB
+  Airfield    : Korenovskaya
+  Aircraft    : a20b
+  Player Contact    : 0
+
+
+
+Flight
+  Mission type: DIVE_BOMB
+  Airfield    : Anapa
+  Aircraft    : ju87d3
+  Player Contact    : 35
+
+
+

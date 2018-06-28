@@ -1,0 +1,358 @@
+{
+  "squadronMembers": {
+    "3000799": {
+      "name": "Shelley Brown",
+      "serialNumber": 3000799,
+      "rank": "Major",
+      "picName": "British035.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 42,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102027,
+      "inactiveDate": "19181111"
+    },
+    "3000809": {
+      "name": "Dixon Stokey",
+      "serialNumber": 3000809,
+      "rank": "2nd Lieutenant",
+      "picName": "British038.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 6,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102027,
+      "inactiveDate": "19181111"
+    },
+    "3000808": {
+      "name": "Albion Willis",
+      "serialNumber": 3000808,
+      "rank": "2nd Lieutenant",
+      "picName": "British005.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102027,
+      "inactiveDate": "19181111"
+    },
+    "3000810": {
+      "name": "Dorian Harper",
+      "serialNumber": 3000810,
+      "rank": "2nd Lieutenant",
+      "picName": "British036.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102027,
+      "inactiveDate": "19181111"
+    },
+    "3000805": {
+      "name": "Felix Lappage",
+      "serialNumber": 3000805,
+      "rank": "Lieutenant",
+      "picName": "British063.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 25,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102027,
+      "inactiveDate": "19181111"
+    },
+    "3000804": {
+      "name": "Casey Maycott",
+      "serialNumber": 3000804,
+      "rank": "Lieutenant",
+      "picName": "British058.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 17,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102027,
+      "inactiveDate": "19181111"
+    },
+    "3000807": {
+      "name": "Floyd Wotton",
+      "serialNumber": 3000807,
+      "rank": "2nd Lieutenant",
+      "picName": "British011.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102027,
+      "inactiveDate": "19181111"
+    },
+    "3000806": {
+      "name": "Bertie Fisher",
+      "serialNumber": 3000806,
+      "rank": "2nd Lieutenant",
+      "picName": "British010.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 2,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102027,
+      "inactiveDate": "19181111"
+    },
+    "3000801": {
+      "name": "Cary Parris",
+      "serialNumber": 3000801,
+      "rank": "Captain",
+      "picName": "British012.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 25,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102027,
+      "inactiveDate": "19181111"
+    },
+    "3000800": {
+      "name": "David Yate",
+      "serialNumber": 3000800,
+      "rank": "Captain",
+      "picName": "British009.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 23,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102027,
+      "inactiveDate": "19181111"
+    },
+    "3000803": {
+      "name": "Seymour Fienley",
+      "serialNumber": 3000803,
+      "rank": "Lieutenant",
+      "picName": "British060.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 19,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102027,
+      "inactiveDate": "19181111"
+    },
+    "3000802": {
+      "name": "William Ardall",
+      "serialNumber": 3000802,
+      "rank": "Lieutenant",
+      "picName": "British044.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 11,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102027,
+      "inactiveDate": "19181111"
+    }
+  }
+}

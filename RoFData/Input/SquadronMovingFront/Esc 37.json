@@ -1,0 +1,33 @@
+{
+  "name": "Esc 37",
+  "squadronId": 101037,
+  "airfields": {
+    "19150801": "Belrain",
+    "19150819": "Froides",
+    "19150901": "La Mellette",
+    "19151001": "Froides",
+    "19151016": "Lemmes",
+    "19160307": "La Cheppe",
+    "19170125": "Grivesnes",
+    "19170201": "Ravenel",
+    "19170401": "La Noblette",
+    "19170725": "Julvecourt",
+    "19170921": "Muizon",
+    "19170927": "Souilly",
+    "19180228": "Ferme Cravancon",
+    "19180413": "Petit Camon",
+    "19180606": "Ferme de Corbeaulieu",
+    "19180706": "Auve",
+    "19180718": "Auve",
+    "19180724": "Tilloy at Bellay",
+    "19180807": "Grivesnes",
+    "19180825": "Ferme de Corbeaulieu",
+    "19180906": "Malzeville",
+    "19180923": "Bouy",
+    "19181015": "Hauvine",
+    "19181025": "Leffincourt,E Reims",
+    "19181103": "Leffincourt,E Reims",
+    "19181105": "Chassonge Ferme,Stenay/Verdun",
+    "19181110": "Stenay"
+  }
+}

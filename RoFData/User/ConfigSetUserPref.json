@@ -1,0 +1,10 @@
+{
+  "configSetName": "ConfigSetUserPref",
+  "configMap": {
+    "SoundVolume": {
+      "value": "3",
+      "label": "Volume control for sounds",
+      "help": "10 is normal, less reduces volume, cannot raise above 10"
+    }
+  }
+}

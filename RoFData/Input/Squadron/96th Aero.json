@@ -1,0 +1,58 @@
+{
+  "country": "USA",
+  "squadronId": 103096,
+  "name": "96th Aero",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "type": "breguet14",
+      "squadronIntroduction": "19180526",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180526": "Rosnay",
+    "19180923": "Giromancy"
+  },
+  "skins": [
+    {
+      "skinName": "103096_000-B2",
+      "planeType": "breguet14",
+      "startDate": "19180526",
+      "endDate": "19180811",
+      "squadId": 103096,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "103096_000-A2",
+      "planeType": "breguet14",
+      "startDate": "19180812",
+      "endDate": "19181201",
+      "squadId": 103096,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10301,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_RECON",
+            "weight": 60
+          },
+          {
+            "role": "ROLE_BOMB",
+            "weight": 40
+          }
+        ]
+      }
+    ]
+  }
+}

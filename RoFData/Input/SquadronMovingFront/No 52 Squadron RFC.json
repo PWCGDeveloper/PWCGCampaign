@@ -1,0 +1,24 @@
+{
+  "name": "No 52 Squadron RFC",
+  "squadronId": 102052,
+  "airfields": {
+    "19161118": "Baizieux 2",
+    "19161215": "Cachy-Bois I_Abbe",
+    "19170615": "Les Moeres",
+    "19171206": "Le Hameau",
+    "19180104": "Marieux",
+    "19180324": "Lealvillers",
+    "19180326": "Warfusee",
+    "19180404": "Valheureux",
+    "19180415": "Bertangles 8",
+    "19180503": "Mont Soissons Ferme",
+    "19180505": "Auve",
+    "19180527": "Vauxcere",
+    "19180529": "Auve",
+    "19180630": "Le Hameau",
+    "19180804": "Le Hameau",
+    "19180824": "Savy Berlette",
+    "19181015": "Mont St. Eloi",
+    "19181025": "Douai"
+  }
+}

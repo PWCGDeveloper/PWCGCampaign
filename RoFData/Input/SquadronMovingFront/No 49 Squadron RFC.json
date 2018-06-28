@@ -1,0 +1,15 @@
+{
+  "name": "No 49 Squadron RFC",
+  "squadronId": 102049,
+  "airfields": {
+    "19171112": "Auchel",
+    "19180331": "Auchel",
+    "19180503": "Auchel",
+    "19180602": "Lealvillers",
+    "19180621": "Le Hameau",
+    "19180715": "Vauxcere",
+    "19180804": "Le Hameau",
+    "19181015": "Mont St. Eloi",
+    "19181025": "Riencourt,Arras"
+  }
+}

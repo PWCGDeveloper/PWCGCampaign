@@ -1,0 +1,166 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-08-03",
+    "squadron": "Jasta 16b",
+    "date": "19160803",
+    "time": "17:30:00",
+    "aircraftType": "AircraftType \u003d Halberstadt D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "OFFENSIVE",
+    "altitude": 2822
+  },
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-08-03\n\nWeather Report\nHeavy cloud cover, low altitude.\nCloud layer is 1494 meters.\nWind speed is 2 M/S.\nWind direction is 249.\n\nPrimary Objective\nPenetrate enemy airspace near Ribecourt.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Johann Hanneman",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Gebhard Schonbaum",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Karl Nostitz",
+        "observer": "",
+        "pilotRank": "Uffz",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Horst Gottlieb",
+        "observer": "Hildebrand Schlesinger",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Baldemar Thimig",
+        "observer": "Dolf Oppeln",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Reinhard Wecker",
+        "observer": "Leopold Schnitzler",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 261",
+      "crew": {
+        "pilot": "Helge Hochberg",
+        "observer": "Martin Scherzer",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 261",
+      "crew": {
+        "pilot": "Christof Ulm",
+        "observer": "Wilfried Huhn",
+        "pilotRank": "Fw",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronName": "Esc 37",
+      "crew": {
+        "pilot": "Felix Mourrut",
+        "observer": "",
+        "pilotRank": "Cne",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronName": "Esc 37",
+      "crew": {
+        "pilot": "Frederic Laborie",
+        "observer": "",
+        "pilotRank": "S/Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 2",
+      "crew": {
+        "pilot": "Cyrille Noel",
+        "observer": "Hippolyte Phily",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 2",
+      "crew": {
+        "pilot": "Leandre Lagarde",
+        "observer": "Joseph Labarge",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 227",
+      "crew": {
+        "pilot": "Michel Antier",
+        "observer": "Aime Baboud",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 227",
+      "crew": {
+        "pilot": "Jules Lachassine",
+        "observer": "Charles Clermont",
+        "pilotRank": "Cpl",
+        "observerRank": "Lt"
+      }
+    }
+  ]
+}

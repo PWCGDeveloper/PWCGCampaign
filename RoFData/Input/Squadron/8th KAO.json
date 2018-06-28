@@ -1,0 +1,50 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 105008,
+  "name": "8th KAO",
+  "skill": 20,
+  "planeAssignments": [
+    {
+      "type": "fe2b",
+      "squadronIntroduction": "19140801",
+      "squadronWithdrawal": "19180112"
+    }
+  ],
+  "airfields": {
+    "19140801": "Perovoloka",
+    "19160701": "Laskovry",
+    "19170201": "Snovidov",
+    "19170801": "Bogutyn"
+  },
+  "skins": [
+    {
+      "skinName": "FE2B_RUSSIANPWSTD",
+      "planeType": "fe2b",
+      "startDate": "19150101",
+      "endDate": "19180112",
+      "squadId": 105008,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10501,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_RECON",
+            "weight": 60
+          },
+          {
+            "role": "ROLE_BOMB",
+            "weight": 40
+          }
+        ]
+      }
+    ]
+  }
+}

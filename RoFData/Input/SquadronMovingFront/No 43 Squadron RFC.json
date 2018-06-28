@@ -1,0 +1,18 @@
+{
+  "name": "No 43 Squadron RFC",
+  "squadronId": 102043,
+  "airfields": {
+    "19170117": "Lealvillers",
+    "19170510": "Auchel",
+    "19170530": "Mont St. Eloi",
+    "19180115": "La Gorgue",
+    "19180603": "Petit Camon",
+    "19180621": "La Gorgue",
+    "19180712": "Vauxcere",
+    "19180727": "Marieux",
+    "19180925": "Baizieux 2",
+    "19181005": "Cappy N",
+    "19181006": "Mazingarbe",
+    "19181025": "Pont-a-Marcq"
+  }
+}

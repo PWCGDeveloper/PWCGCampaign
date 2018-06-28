@@ -1,0 +1,15 @@
+{
+  "name": "Esc 78",
+  "squadronId": 101078,
+  "airfields": {
+    "19161112": "La Mellette",
+    "19170101": "Lemmes",
+    "19170319": "La Noblette",
+    "19170727": "Souilly",
+    "19180120": "Malzeville",
+    "19180324": "Vauxcere",
+    "19180908": "Rosnay",
+    "19181025": "Neuflize",
+    "19181110": "Autremencourt"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "il2m41",
+  "side": "ALLIED",
+  "displayName": "Il-2 mod.1941",
+  "script": "LuaScripts\\WorldObjects\\Planes\\il2m41.txt",
+  "model": "graphics\\planes\\il2m41\\il2m41.mgm",
+  "desc": "",
+  "cruisingSpeed": 300,
+  "climbOutRate": 700,
+  "goodness": 20,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_MEDIUM",
+  "roles": [
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19410101",
+  "withdrawal": "19450503"
+}

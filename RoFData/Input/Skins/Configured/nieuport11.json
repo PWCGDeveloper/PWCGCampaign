@@ -1,0 +1,3685 @@
+{
+  "skinSetType": "SKIN_CONFIGURED",
+  "skins": {
+    "101026_a01": {
+      "skinName": "101026_A01",
+      "planeType": "nieuport11",
+      "startDate": "19150801",
+      "endDate": "19160703",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "101062_a01": {
+      "skinName": "101062_A01",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "101067_a01": {
+      "skinName": "101067_A01",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "105001": {
+      "skinName": "105001",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Belgium",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "105005": {
+      "skinName": "105005",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Belgium",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "106005_a01": {
+      "skinName": "106005_A01",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Belgium",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_ derose_rabu": {
+      "skinName": "N11_ DEROSE_RABU",
+      "planeType": "nieuport11",
+      "startDate": "19160101",
+      "endDate": "19160511",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_102000_ans": {
+      "skinName": "N11_102000_ANS",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_109000_ans": {
+      "skinName": "N11_109000_ANS",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Belgium",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_adre sq75a": {
+      "skinName": "N11_ADRE SQ75A",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_blanc": {
+      "skinName": "N11_BLANC",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_bma5_default": {
+      "skinName": "N11_BMA5_DEFAULT",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Belgium",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_cf": {
+      "skinName": "N11_CF",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_de_neef": {
+      "skinName": "N11_DE_NEEF",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Belgium",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_e_kruten": {
+      "skinName": "N11_E_KRUTEN",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Russia",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_esc.12 gavardie": {
+      "skinName": "N11_ESC.12 GAVARDIE",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_esc87_generic": {
+      "skinName": "N11_ESC87_GENERIC",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_franchomme": {
+      "skinName": "N11_FRANCHOMME",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Belgium",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_n124_balsley": {
+      "skinName": "N11_N124_BALSLEY",
+      "planeType": "nieuport11",
+      "startDate": "19160101",
+      "endDate": "19170630",
+      "squadId": 101124,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_n124_johnson": {
+      "skinName": "N11_N124_JOHNSON",
+      "planeType": "nieuport11",
+      "startDate": "19160101",
+      "endDate": "19170630",
+      "squadId": 101124,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_n3242unknown": {
+      "skinName": "N11_N3242UNKNOWN",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_n836": {
+      "skinName": "N11_N836",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_n_serikov": {
+      "skinName": "N11_N_SERIKOV",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Russia",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_navarre_red": {
+      "skinName": "N11_NAVARRE_RED",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_olieslagers": {
+      "skinName": "N11_OLIESLAGERS",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Belgium",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f-cam_01": {
+      "skinName": "N11_PW_F-CAM_01",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101000,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f-cam_02": {
+      "skinName": "N11_PW_F-CAM_02",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101000,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f-cam_03": {
+      "skinName": "N11_PW_F-CAM_03",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101000,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f-cam_04": {
+      "skinName": "N11_PW_F-CAM_04",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101000,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f-cam_05": {
+      "skinName": "N11_PW_F-CAM_05",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101000,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f-cam_06": {
+      "skinName": "N11_PW_F-CAM_06",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101000,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f-cam_07": {
+      "skinName": "N11_PW_F-CAM_07",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101000,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f-cam_08": {
+      "skinName": "N11_PW_F-CAM_08",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101000,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f-cam_09": {
+      "skinName": "N11_PW_F-CAM_09",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101000,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f-cam_10": {
+      "skinName": "N11_PW_F-CAM_10",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101000,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f-cam_11": {
+      "skinName": "N11_PW_F-CAM_11",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101000,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f-cam_12": {
+      "skinName": "N11_PW_F-CAM_12",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101000,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_04e": {
+      "skinName": "N11_PW_F03_04E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_04l": {
+      "skinName": "N11_PW_F03_04L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_05e": {
+      "skinName": "N11_PW_F03_05E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_05l": {
+      "skinName": "N11_PW_F03_05L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_06e": {
+      "skinName": "N11_PW_F03_06E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_06l": {
+      "skinName": "N11_PW_F03_06L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_07e": {
+      "skinName": "N11_PW_F03_07E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_07l": {
+      "skinName": "N11_PW_F03_07L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_10e": {
+      "skinName": "N11_PW_F03_10E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_10l": {
+      "skinName": "N11_PW_F03_10L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_13e": {
+      "skinName": "N11_PW_F03_13E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_13l": {
+      "skinName": "N11_PW_F03_13L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_14e": {
+      "skinName": "N11_PW_F03_14E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_14l": {
+      "skinName": "N11_PW_F03_14L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_15e": {
+      "skinName": "N11_PW_F03_15E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_15l": {
+      "skinName": "N11_PW_F03_15L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_16e": {
+      "skinName": "N11_PW_F03_16E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_16l": {
+      "skinName": "N11_PW_F03_16L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_17e": {
+      "skinName": "N11_PW_F03_17E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f03_17l": {
+      "skinName": "N11_PW_F03_17L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_01e": {
+      "skinName": "N11_PW_F102_01E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_01l": {
+      "skinName": "N11_PW_F102_01L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_02e": {
+      "skinName": "N11_PW_F102_02E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_02l": {
+      "skinName": "N11_PW_F102_02L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_03e": {
+      "skinName": "N11_PW_F102_03E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_03l": {
+      "skinName": "N11_PW_F102_03L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_04e": {
+      "skinName": "N11_PW_F102_04E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_04l": {
+      "skinName": "N11_PW_F102_04L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_05e": {
+      "skinName": "N11_PW_F102_05E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_05l": {
+      "skinName": "N11_PW_F102_05L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_06e": {
+      "skinName": "N11_PW_F102_06E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_06l": {
+      "skinName": "N11_PW_F102_06L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_07e": {
+      "skinName": "N11_PW_F102_07E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_07l": {
+      "skinName": "N11_PW_F102_07L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_08e": {
+      "skinName": "N11_PW_F102_08E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_08l": {
+      "skinName": "N11_PW_F102_08L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_09e": {
+      "skinName": "N11_PW_F102_09E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_09l": {
+      "skinName": "N11_PW_F102_09L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_10e": {
+      "skinName": "N11_PW_F102_10E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_10l": {
+      "skinName": "N11_PW_F102_10L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_11e": {
+      "skinName": "N11_PW_F102_11E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_11l": {
+      "skinName": "N11_PW_F102_11L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_12e": {
+      "skinName": "N11_PW_F102_12E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f102_12l": {
+      "skinName": "N11_PW_F102_12L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_01": {
+      "skinName": "N11_PW_F103_01",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_02": {
+      "skinName": "N11_PW_F103_02",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_03": {
+      "skinName": "N11_PW_F103_03",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_04": {
+      "skinName": "N11_PW_F103_04",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_05": {
+      "skinName": "N11_PW_F103_05",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_07": {
+      "skinName": "N11_PW_F103_07",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_08": {
+      "skinName": "N11_PW_F103_08",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_09": {
+      "skinName": "N11_PW_F103_09",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_10": {
+      "skinName": "N11_PW_F103_10",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_11": {
+      "skinName": "N11_PW_F103_11",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_12": {
+      "skinName": "N11_PW_F103_12",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_13": {
+      "skinName": "N11_PW_F103_13",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_14": {
+      "skinName": "N11_PW_F103_14",
+      "planeType": "nieuport11",
+      "startDate": "19160219",
+      "endDate": "19170129",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_8": {
+      "skinName": "N11_PW_F103_8",
+      "planeType": "nieuport11",
+      "startDate": "19160219",
+      "endDate": "19170129",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f103_9": {
+      "skinName": "N11_PW_F103_9",
+      "planeType": "nieuport11",
+      "startDate": "19160219",
+      "endDate": "19170129",
+      "squadId": 101103,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f112_1508": {
+      "skinName": "N11_PW_F112_1508",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101112,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f112_1517": {
+      "skinName": "N11_PW_F112_1517",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101112,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f112_1525": {
+      "skinName": "N11_PW_F112_1525",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101112,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f112_1526": {
+      "skinName": "N11_PW_F112_1526",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101112,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f112_1528": {
+      "skinName": "N11_PW_F112_1528",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101112,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f112_1534": {
+      "skinName": "N11_PW_F112_1534",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101112,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f112_1535": {
+      "skinName": "N11_PW_F112_1535",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101112,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f112_1543": {
+      "skinName": "N11_PW_F112_1543",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101112,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f112_1545": {
+      "skinName": "N11_PW_F112_1545",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101112,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f112_1546": {
+      "skinName": "N11_PW_F112_1546",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101112,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f112_1552": {
+      "skinName": "N11_PW_F112_1552",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101112,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f112_1561": {
+      "skinName": "N11_PW_F112_1561",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101112,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f124_1110": {
+      "skinName": "N11_PW_F124_1110",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101124,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f124_1112": {
+      "skinName": "N11_PW_F124_1112",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101124,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f124_1115": {
+      "skinName": "N11_PW_F124_1115",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101124,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f124_1119": {
+      "skinName": "N11_PW_F124_1119",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101124,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f124_1120": {
+      "skinName": "N11_PW_F124_1120",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101124,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f124_1123": {
+      "skinName": "N11_PW_F124_1123",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101124,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f124_1126": {
+      "skinName": "N11_PW_F124_1126",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101124,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f124_1133": {
+      "skinName": "N11_PW_F124_1133",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101124,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f124_1134": {
+      "skinName": "N11_PW_F124_1134",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101124,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f124_1135": {
+      "skinName": "N11_PW_F124_1135",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101124,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f124_1137": {
+      "skinName": "N11_PW_F124_1137",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101124,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f124_1138": {
+      "skinName": "N11_PW_F124_1138",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101124,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_a": {
+      "skinName": "N11_PW_F12_A",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_bbird": {
+      "skinName": "N11_PW_F12_BBIRD",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_cards": {
+      "skinName": "N11_PW_F12_CARDS",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_dice": {
+      "skinName": "N11_PW_F12_DICE",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_eagle": {
+      "skinName": "N11_PW_F12_EAGLE",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_fire": {
+      "skinName": "N11_PW_F12_FIRE",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_floral": {
+      "skinName": "N11_PW_F12_FLORAL",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_griffn": {
+      "skinName": "N11_PW_F12_GRIFFN",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_king": {
+      "skinName": "N11_PW_F12_KING",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_knight": {
+      "skinName": "N11_PW_F12_KNIGHT",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_redbrd": {
+      "skinName": "N11_PW_F12_REDBRD",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_skull": {
+      "skinName": "N11_PW_F12_SKULL",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_snake": {
+      "skinName": "N11_PW_F12_SNAKE",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_spade": {
+      "skinName": "N11_PW_F12_SPADE",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f12_wreath": {
+      "skinName": "N11_PW_F12_WREATH",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101012,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_584e": {
+      "skinName": "N11_PW_F15_584E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_584l": {
+      "skinName": "N11_PW_F15_584L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_589e": {
+      "skinName": "N11_PW_F15_589E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_589l": {
+      "skinName": "N11_PW_F15_589L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_600e": {
+      "skinName": "N11_PW_F15_600E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_600l": {
+      "skinName": "N11_PW_F15_600L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_604e": {
+      "skinName": "N11_PW_F15_604E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_604l": {
+      "skinName": "N11_PW_F15_604L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_607e": {
+      "skinName": "N11_PW_F15_607E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_607l": {
+      "skinName": "N11_PW_F15_607L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_617e": {
+      "skinName": "N11_PW_F15_617E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_617l": {
+      "skinName": "N11_PW_F15_617L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_625e": {
+      "skinName": "N11_PW_F15_625E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_625l": {
+      "skinName": "N11_PW_F15_625L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_628e": {
+      "skinName": "N11_PW_F15_628E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_628l": {
+      "skinName": "N11_PW_F15_628L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_634e": {
+      "skinName": "N11_PW_F15_634E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_634l": {
+      "skinName": "N11_PW_F15_634L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_636e": {
+      "skinName": "N11_PW_F15_636E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_636l": {
+      "skinName": "N11_PW_F15_636L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_648e": {
+      "skinName": "N11_PW_F15_648E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_648l": {
+      "skinName": "N11_PW_F15_648L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_655e": {
+      "skinName": "N11_PW_F15_655E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f15_655l": {
+      "skinName": "N11_PW_F15_655L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101015,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_1": {
+      "skinName": "N11_PW_F26_1",
+      "planeType": "nieuport11",
+      "startDate": "19150801",
+      "endDate": "19161001",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_1136": {
+      "skinName": "N11_PW_F26_1136",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_1137": {
+      "skinName": "N11_PW_F26_1137",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_1139": {
+      "skinName": "N11_PW_F26_1139",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_1150": {
+      "skinName": "N11_PW_F26_1150",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_1151": {
+      "skinName": "N11_PW_F26_1151",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_1152": {
+      "skinName": "N11_PW_F26_1152",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_1162": {
+      "skinName": "N11_PW_F26_1162",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_1262": {
+      "skinName": "N11_PW_F26_1262",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_1266": {
+      "skinName": "N11_PW_F26_1266",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_1294": {
+      "skinName": "N11_PW_F26_1294",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_1339": {
+      "skinName": "N11_PW_F26_1339",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_2": {
+      "skinName": "N11_PW_F26_2",
+      "planeType": "nieuport11",
+      "startDate": "19150801",
+      "endDate": "19161001",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_3": {
+      "skinName": "N11_PW_F26_3",
+      "planeType": "nieuport11",
+      "startDate": "19150801",
+      "endDate": "19161001",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_4": {
+      "skinName": "N11_PW_F26_4",
+      "planeType": "nieuport11",
+      "startDate": "19150801",
+      "endDate": "19161001",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_5": {
+      "skinName": "N11_PW_F26_5",
+      "planeType": "nieuport11",
+      "startDate": "19150801",
+      "endDate": "19161001",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_6": {
+      "skinName": "N11_PW_F26_6",
+      "planeType": "nieuport11",
+      "startDate": "19150801",
+      "endDate": "19161001",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_7": {
+      "skinName": "N11_PW_F26_7",
+      "planeType": "nieuport11",
+      "startDate": "19150801",
+      "endDate": "19161001",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f26_947": {
+      "skinName": "N11_PW_F26_947",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101026,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f31_01": {
+      "skinName": "N11_PW_F31_01",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101031,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f31_02": {
+      "skinName": "N11_PW_F31_02",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101031,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f31_03": {
+      "skinName": "N11_PW_F31_03",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101031,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f31_04": {
+      "skinName": "N11_PW_F31_04",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101031,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f31_05": {
+      "skinName": "N11_PW_F31_05",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101031,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f31_06": {
+      "skinName": "N11_PW_F31_06",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101031,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f31_07": {
+      "skinName": "N11_PW_F31_07",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101031,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f31_08": {
+      "skinName": "N11_PW_F31_08",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101031,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f31_09": {
+      "skinName": "N11_PW_F31_09",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101031,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f31_10": {
+      "skinName": "N11_PW_F31_10",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101031,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f31_11": {
+      "skinName": "N11_PW_F31_11",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101031,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f31_12": {
+      "skinName": "N11_PW_F31_12",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101031,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f37_a": {
+      "skinName": "N11_PW_F37_A",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f37_b": {
+      "skinName": "N11_PW_F37_B",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f37_c": {
+      "skinName": "N11_PW_F37_C",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f37_d": {
+      "skinName": "N11_PW_F37_D",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f37_e": {
+      "skinName": "N11_PW_F37_E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f37_f": {
+      "skinName": "N11_PW_F37_F",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f37_g": {
+      "skinName": "N11_PW_F37_G",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f37_l": {
+      "skinName": "N11_PW_F37_L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f37_m": {
+      "skinName": "N11_PW_F37_M",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f37_n": {
+      "skinName": "N11_PW_F37_N",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f37_o": {
+      "skinName": "N11_PW_F37_O",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f37_p": {
+      "skinName": "N11_PW_F37_P",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f38_1311": {
+      "skinName": "N11_PW_F38_1311",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101038,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f38_1321": {
+      "skinName": "N11_PW_F38_1321",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101038,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f38_1322": {
+      "skinName": "N11_PW_F38_1322",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101038,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f38_1323": {
+      "skinName": "N11_PW_F38_1323",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101038,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f38_1324": {
+      "skinName": "N11_PW_F38_1324",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101038,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f38_1326": {
+      "skinName": "N11_PW_F38_1326",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101038,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f38_1328": {
+      "skinName": "N11_PW_F38_1328",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101038,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f38_1329": {
+      "skinName": "N11_PW_F38_1329",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101038,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f38_1332": {
+      "skinName": "N11_PW_F38_1332",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101038,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f38_1355": {
+      "skinName": "N11_PW_F38_1355",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101038,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f38_1366": {
+      "skinName": "N11_PW_F38_1366",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101038,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f38_1524": {
+      "skinName": "N11_PW_F38_1524",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101038,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f3_1": {
+      "skinName": "N11_PW_F3_1",
+      "planeType": "nieuport11",
+      "startDate": "19160101",
+      "endDate": "19160630",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f3_2": {
+      "skinName": "N11_PW_F3_2",
+      "planeType": "nieuport11",
+      "startDate": "19160101",
+      "endDate": "19160630",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f3_3": {
+      "skinName": "N11_PW_F3_3",
+      "planeType": "nieuport11",
+      "startDate": "19160101",
+      "endDate": "19160630",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f3_4": {
+      "skinName": "N11_PW_F3_4",
+      "planeType": "nieuport11",
+      "startDate": "19160101",
+      "endDate": "19160630",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f3_5": {
+      "skinName": "N11_PW_F3_5",
+      "planeType": "nieuport11",
+      "startDate": "19160101",
+      "endDate": "19160630",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f3_6": {
+      "skinName": "N11_PW_F3_6",
+      "planeType": "nieuport11",
+      "startDate": "19160101",
+      "endDate": "19160630",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f3_7": {
+      "skinName": "N11_PW_F3_7",
+      "planeType": "nieuport11",
+      "startDate": "19160101",
+      "endDate": "19160630",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f3_8": {
+      "skinName": "N11_PW_F3_8",
+      "planeType": "nieuport11",
+      "startDate": "19160101",
+      "endDate": "19160630",
+      "squadId": 101003,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_01e": {
+      "skinName": "N11_PW_F48_01E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_01l": {
+      "skinName": "N11_PW_F48_01L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_02e": {
+      "skinName": "N11_PW_F48_02E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_02l": {
+      "skinName": "N11_PW_F48_02L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_03e": {
+      "skinName": "N11_PW_F48_03E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_03l": {
+      "skinName": "N11_PW_F48_03L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_04e": {
+      "skinName": "N11_PW_F48_04E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_04l": {
+      "skinName": "N11_PW_F48_04L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_05e": {
+      "skinName": "N11_PW_F48_05E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_05l": {
+      "skinName": "N11_PW_F48_05L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_06e": {
+      "skinName": "N11_PW_F48_06E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_06l": {
+      "skinName": "N11_PW_F48_06L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_07e": {
+      "skinName": "N11_PW_F48_07E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_07l": {
+      "skinName": "N11_PW_F48_07L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_08e": {
+      "skinName": "N11_PW_F48_08E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_08l": {
+      "skinName": "N11_PW_F48_08L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_09e": {
+      "skinName": "N11_PW_F48_09E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_09l": {
+      "skinName": "N11_PW_F48_09L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_10e": {
+      "skinName": "N11_PW_F48_10E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_10l": {
+      "skinName": "N11_PW_F48_10L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_11e": {
+      "skinName": "N11_PW_F48_11E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_11l": {
+      "skinName": "N11_PW_F48_11L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_12e": {
+      "skinName": "N11_PW_F48_12E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f48_12l": {
+      "skinName": "N11_PW_F48_12L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101048,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f49_1231": {
+      "skinName": "N11_PW_F49_1231",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101049,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f49_1298": {
+      "skinName": "N11_PW_F49_1298",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101049,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f49_550": {
+      "skinName": "N11_PW_F49_550",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101049,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f49_802": {
+      "skinName": "N11_PW_F49_802",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101049,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f49_807": {
+      "skinName": "N11_PW_F49_807",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101049,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f49_885": {
+      "skinName": "N11_PW_F49_885",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101049,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f49_889": {
+      "skinName": "N11_PW_F49_889",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101049,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f49_891": {
+      "skinName": "N11_PW_F49_891",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101049,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f49_892": {
+      "skinName": "N11_PW_F49_892",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101049,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f49_898": {
+      "skinName": "N11_PW_F49_898",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101049,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f49_902": {
+      "skinName": "N11_PW_F49_902",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101049,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f49_911": {
+      "skinName": "N11_PW_F49_911",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101049,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_1000e": {
+      "skinName": "N11_PW_F57_1000E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_1000l": {
+      "skinName": "N11_PW_F57_1000L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_1011e": {
+      "skinName": "N11_PW_F57_1011E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_1011l": {
+      "skinName": "N11_PW_F57_1011L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_1018e": {
+      "skinName": "N11_PW_F57_1018E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_1018l": {
+      "skinName": "N11_PW_F57_1018L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_1028e": {
+      "skinName": "N11_PW_F57_1028E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_1028l": {
+      "skinName": "N11_PW_F57_1028L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_1034e": {
+      "skinName": "N11_PW_F57_1034E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_1034l": {
+      "skinName": "N11_PW_F57_1034L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_948e": {
+      "skinName": "N11_PW_F57_948E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_948l": {
+      "skinName": "N11_PW_F57_948L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_960e": {
+      "skinName": "N11_PW_F57_960E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_960l": {
+      "skinName": "N11_PW_F57_960L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_967e": {
+      "skinName": "N11_PW_F57_967E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_967l": {
+      "skinName": "N11_PW_F57_967L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_973e": {
+      "skinName": "N11_PW_F57_973E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_973l": {
+      "skinName": "N11_PW_F57_973L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_980e": {
+      "skinName": "N11_PW_F57_980E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_980l": {
+      "skinName": "N11_PW_F57_980L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_988e": {
+      "skinName": "N11_PW_F57_988E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_988l": {
+      "skinName": "N11_PW_F57_988L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_996e": {
+      "skinName": "N11_PW_F57_996E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f57_996l": {
+      "skinName": "N11_PW_F57_996L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101057,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f62_01": {
+      "skinName": "N11_PW_F62_01",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101062,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f62_02": {
+      "skinName": "N11_PW_F62_02",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101062,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f62_03": {
+      "skinName": "N11_PW_F62_03",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101062,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f62_04": {
+      "skinName": "N11_PW_F62_04",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101062,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f62_05": {
+      "skinName": "N11_PW_F62_05",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101062,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f62_07": {
+      "skinName": "N11_PW_F62_07",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101062,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f62_08": {
+      "skinName": "N11_PW_F62_08",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101062,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f62_09": {
+      "skinName": "N11_PW_F62_09",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101062,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f62_10": {
+      "skinName": "N11_PW_F62_10",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101062,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f62_11": {
+      "skinName": "N11_PW_F62_11",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101062,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f62_12": {
+      "skinName": "N11_PW_F62_12",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101062,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f62_13": {
+      "skinName": "N11_PW_F62_13",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101062,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f65_1205": {
+      "skinName": "N11_PW_F65_1205",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101065,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f65_523": {
+      "skinName": "N11_PW_F65_523",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101065,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f65_524": {
+      "skinName": "N11_PW_F65_524",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101065,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f65_527": {
+      "skinName": "N11_PW_F65_527",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101065,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f65_528": {
+      "skinName": "N11_PW_F65_528",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101065,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f65_556": {
+      "skinName": "N11_PW_F65_556",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101065,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f65_563": {
+      "skinName": "N11_PW_F65_563",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101065,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f65_641": {
+      "skinName": "N11_PW_F65_641",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101065,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f65_645": {
+      "skinName": "N11_PW_F65_645",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101065,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f65_649": {
+      "skinName": "N11_PW_F65_649",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101065,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f65_680": {
+      "skinName": "N11_PW_F65_680",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101065,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f65_684": {
+      "skinName": "N11_PW_F65_684",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101065,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f67_01": {
+      "skinName": "N11_PW_F67_01",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101067,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f67_02": {
+      "skinName": "N11_PW_F67_02",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101067,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f67_03": {
+      "skinName": "N11_PW_F67_03",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101067,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f67_04": {
+      "skinName": "N11_PW_F67_04",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101067,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f67_05": {
+      "skinName": "N11_PW_F67_05",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101067,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f67_06": {
+      "skinName": "N11_PW_F67_06",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101067,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f67_07": {
+      "skinName": "N11_PW_F67_07",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101067,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f67_08": {
+      "skinName": "N11_PW_F67_08",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101067,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f67_09": {
+      "skinName": "N11_PW_F67_09",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101067,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f67_10": {
+      "skinName": "N11_PW_F67_10",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101067,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f67_11": {
+      "skinName": "N11_PW_F67_11",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101067,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f67_12": {
+      "skinName": "N11_PW_F67_12",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101067,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f68_01": {
+      "skinName": "N11_PW_F68_01",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f68_02": {
+      "skinName": "N11_PW_F68_02",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f68_03": {
+      "skinName": "N11_PW_F68_03",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f68_04": {
+      "skinName": "N11_PW_F68_04",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f68_05": {
+      "skinName": "N11_PW_F68_05",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f68_06": {
+      "skinName": "N11_PW_F68_06",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f68_07": {
+      "skinName": "N11_PW_F68_07",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f68_08": {
+      "skinName": "N11_PW_F68_08",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f68_09": {
+      "skinName": "N11_PW_F68_09",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f68_10": {
+      "skinName": "N11_PW_F68_10",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f68_11": {
+      "skinName": "N11_PW_F68_11",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f68_12": {
+      "skinName": "N11_PW_F68_12",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101068,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_01e": {
+      "skinName": "N11_PW_F73_01E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_01l": {
+      "skinName": "N11_PW_F73_01L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_02e": {
+      "skinName": "N11_PW_F73_02E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_02l": {
+      "skinName": "N11_PW_F73_02L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_03e": {
+      "skinName": "N11_PW_F73_03E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_03l": {
+      "skinName": "N11_PW_F73_03L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_04e": {
+      "skinName": "N11_PW_F73_04E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_04l": {
+      "skinName": "N11_PW_F73_04L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_05e": {
+      "skinName": "N11_PW_F73_05E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_05l": {
+      "skinName": "N11_PW_F73_05L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_06e": {
+      "skinName": "N11_PW_F73_06E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_06l": {
+      "skinName": "N11_PW_F73_06L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_07e": {
+      "skinName": "N11_PW_F73_07E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_07l": {
+      "skinName": "N11_PW_F73_07L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_08e": {
+      "skinName": "N11_PW_F73_08E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_08l": {
+      "skinName": "N11_PW_F73_08L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_09e": {
+      "skinName": "N11_PW_F73_09E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_09l": {
+      "skinName": "N11_PW_F73_09L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_10e": {
+      "skinName": "N11_PW_F73_10E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_10l": {
+      "skinName": "N11_PW_F73_10L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_11e": {
+      "skinName": "N11_PW_F73_11E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_11l": {
+      "skinName": "N11_PW_F73_11L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_12e": {
+      "skinName": "N11_PW_F73_12E",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_pw_f73_12l": {
+      "skinName": "N11_PW_F73_12L",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101073,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_rfc_green": {
+      "skinName": "N11_RFC_GREEN",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_rnas2_savory": {
+      "skinName": "N11_RNAS2_SAVORY",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_sanspeur": {
+      "skinName": "N11_SANSPEUR",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_spa23_bbu25": {
+      "skinName": "N11_SPA23_BBU25",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_spa23_chden": {
+      "skinName": "N11_SPA23_CHDEN",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_spa23_goofy": {
+      "skinName": "N11_SPA23_GOOFY",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_spa23_jolkov": {
+      "skinName": "N11_SPA23_JOLKOV",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_spa23_michel": {
+      "skinName": "N11_SPA23_MICHEL",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_spa23_mikibzh": {
+      "skinName": "N11_SPA23_MIKIBZH",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_spa23_natthi": {
+      "skinName": "N11_SPA23_NATTHI",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_spa23_pwet": {
+      "skinName": "N11_SPA23_PWET",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_spa23_rhodi": {
+      "skinName": "N11_SPA23_RHODI",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_spa23_secu54": {
+      "skinName": "N11_SPA23_SECU54",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n11_turenne": {
+      "skinName": "N11_TURENNE",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "France",
+      "category": "Configured",
+      "definedInGame": false
+    }
+  }
+}

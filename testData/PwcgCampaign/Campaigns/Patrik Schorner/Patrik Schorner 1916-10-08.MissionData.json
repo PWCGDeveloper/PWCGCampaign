@@ -1,0 +1,226 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-10-08",
+    "squadron": "Jasta 16b",
+    "date": "19161008",
+    "time": "14:30:00",
+    "aircraftType": "AircraftType \u003d Albatros D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "OFFENSIVE",
+    "altitude": 3474
+  },
+  "missionDescription": "Mission:\nAircraft  Albatros D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-10-08\n\nWeather Report\nMedium cloud cover, high altitude.\nCloud layer is 3600 meters.\nWind speed is 0 M/S.\nWind direction is 336.\n\nPrimary Objective\nPenetrate enemy airspace near Noyon.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Oswald Fromm",
+        "observer": "",
+        "pilotRank": "Obltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Detlef Schwarzer",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Augustus Kass",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 13",
+      "crew": {
+        "pilot": "Mario Rauschenberg",
+        "observer": "Leonhard Oppelt",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 18",
+      "crew": {
+        "pilot": "Joachim Fischart",
+        "observer": "Jurgen Krausser",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 18",
+      "crew": {
+        "pilot": "Udo Kronfeldt",
+        "observer": "Gottfried Kunstler",
+        "pilotRank": "Fw",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 261",
+      "crew": {
+        "pilot": "Paul Drescher",
+        "observer": "Kristof Wenz",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 261",
+      "crew": {
+        "pilot": "Reinhold Kiefer",
+        "observer": "Hildebrand Brickner",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "nieuport17",
+      "squadronName": "Esc 65",
+      "crew": {
+        "pilot": "Charles Nungesser",
+        "observer": "",
+        "pilotRank": "S/Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronName": "Esc 65",
+      "crew": {
+        "pilot": "Philippe Kalandoff",
+        "observer": "",
+        "pilotRank": "Cpl",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "Esc 13",
+      "crew": {
+        "pilot": "Alphonse Ryckewaert",
+        "observer": "Blaize Gayrau",
+        "pilotRank": "Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "Esc 13",
+      "crew": {
+        "pilot": "Marc Riot",
+        "observer": "Ulysse Decraissain",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Godfrey Brome",
+        "observer": "Victor Cantilupe",
+        "pilotRank": "Sqdn.Cdr",
+        "observerRank": "Flt Lt"
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Egil Coppinger",
+        "observer": "Victor Sweetecok",
+        "pilotRank": "Flt Lt",
+        "observerRank": "Flt Lt"
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Drew Porter",
+        "observer": "Charles Frye",
+        "pilotRank": "Flt SLt",
+        "observerRank": "Flt.Cdr"
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Vance Switt",
+        "observer": "Frasier Pelletoot",
+        "pilotRank": "Flt SLt",
+        "observerRank": "Flt Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 34",
+      "crew": {
+        "pilot": "Fernand Morael",
+        "observer": "Dominique Laffargue",
+        "pilotRank": "Cne",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 34",
+      "crew": {
+        "pilot": "Alfred Marc",
+        "observer": "Jean-Francois Gallet",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 34",
+      "crew": {
+        "pilot": "Armand Laffite",
+        "observer": "Maurice Duvallet",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 34",
+      "crew": {
+        "pilot": "Emile Neyrat",
+        "observer": "Casimir Honore",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

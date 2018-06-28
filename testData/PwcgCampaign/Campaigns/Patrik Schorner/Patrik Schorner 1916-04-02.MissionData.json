@@ -1,0 +1,186 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-04-02",
+    "squadron": "FA 15",
+    "date": "19160402",
+    "time": "150:00",
+    "aircraftType": "AircraftType \u003d Roland C.II",
+    "mapName": "Galicia",
+    "airfield": "Airfield \u003d Puko",
+    "duty": "PATROL",
+    "altitude": 2000
+  },
+  "missionDescription": "Mission:\nAircraft  Roland C.IIa\nSquadron  FA 15\nAirbase  Pukov\nDate  1916-04-02\n\nWeather Report\nLight cloud cover, high altitude.\nCloud layer is 3045 meters.\nWind speed is 0 M/S.\nWind direction is 218.\n\nPrimary Objective\nPatrol airspace  near Factory.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "Rudiger Hoelscher",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Christian Welser",
+        "observer": "Erhard Kesselring",
+        "pilotRank": "Fw",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Meinhard Frohlich",
+        "observer": "Wenzel Scheiner",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Nikolaus Fechter",
+        "observer": "Sepp Homberg",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 10",
+      "crew": {
+        "pilot": "Balazs Bender",
+        "observer": "Dusan Korda",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "s16",
+      "squadronName": "4th AOI",
+      "crew": {
+        "pilot": "Gavrilovich Tseydlits",
+        "observer": "",
+        "pilotRank": "Pk",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "s16",
+      "squadronName": "4th AOI",
+      "crew": {
+        "pilot": "PavIpv Melnikov",
+        "observer": "",
+        "pilotRank": "Pk",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "s16",
+      "squadronName": "4th AOI",
+      "crew": {
+        "pilot": "Tamryn Lazarev",
+        "observer": "",
+        "pilotRank": "Pk",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "s16",
+      "squadronName": "4th AOI",
+      "crew": {
+        "pilot": "Matvey Gavrikov",
+        "observer": "",
+        "pilotRank": "SPk",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "2nd KAO",
+      "crew": {
+        "pilot": "Motka Kiryanov",
+        "observer": "Andrya Usachyov",
+        "pilotRank": "Cpt",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "2nd KAO",
+      "crew": {
+        "pilot": "Aleksis Dudnik",
+        "observer": "Gavrilovich Loktev",
+        "pilotRank": "DPk",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "2nd KAO",
+      "crew": {
+        "pilot": "Arman Kirsanov",
+        "observer": "Serguei Petrowski",
+        "pilotRank": "SPk",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "2nd KAO",
+      "crew": {
+        "pilot": "Fedya Ilyushin",
+        "observer": "Ivan Yakunin",
+        "pilotRank": "SPk",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "8th KAO",
+      "crew": {
+        "pilot": "Tosya Uglichinin",
+        "observer": "Alexei Sokolov",
+        "pilotRank": "Cpt",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "8th KAO",
+      "crew": {
+        "pilot": "Arman Khlebnikov",
+        "observer": "Yuri Sopov",
+        "pilotRank": "Pk",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "8th KAO",
+      "crew": {
+        "pilot": "Egor Lukashenko",
+        "observer": "Jeirgif Krivov",
+        "pilotRank": "Pk",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "8th KAO",
+      "crew": {
+        "pilot": "Vasya Kalganov",
+        "observer": "Shurochka Uspensky",
+        "pilotRank": "DPk",
+        "observerRank": "Pk"
+      }
+    }
+  ]
+}

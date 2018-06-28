@@ -1,0 +1,91 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 10121503,
+  "name": "503rd Ground Attack Air Regiment",
+  "fileName": "503rd Ground Attack Air Regiment.json",
+  "skill": 40,
+  "planeAssignments": [
+    {
+      "type": "il2m41",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19420826"
+    },
+    {
+      "type": "il2m42",
+      "squadronIntroduction": "19420627",
+      "squadronWithdrawal": "19430701"
+    },
+    {
+      "type": "il2m43",
+      "squadronIntroduction": "19430501",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Ryabinki",
+    "19411020": "Dyatlovo",
+    "19411110": "Vlasyevo",
+    "19411120": "Vlasyevo",
+    "19411215": "Vlasyevo",
+    "19420110": "Varvarovka",
+    
+    "19420301": "Karpovka",
+    
+    "19420601": "Kievskoe-1",
+    "19420624": "Gelenjik-2",
+    "19420709": "Agoy",
+    "19420721": "Agoy",
+    
+    "19420801": "Mal. Orlovka",
+    "19420906": "Srednyaya Ahtuba",
+    "19421011": "Krasnaya Zarjya",
+    "19421123": "Grishin",
+    "19421223": "Bol. Chapurniki",
+    "19430120": "Rynok",
+    
+    "19430301": "Agoy",
+    "19430330": "Gelenjik-3",
+    "19430418": "Staro-Nijne-Steblievskaya",
+    "19430918": "Holmskaya",
+    "19430927": "Gelenjik-1",
+    "19431004": "Anastasievskaya",
+    "19431008": "Anastasievskaya"
+  },
+  "skins": [
+    {
+      "skinName": "IL2M42_SKIN_01",
+      "planeType": "il2m42",
+      "startDate": "19421101",
+      "endDate": "19430331",
+      "squadId": 10121503,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19430301",
+        "squadName": "622nd Ground Attack Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 45
+      }
+    ]
+  },
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-04-08",
+    "squadron": "FA 15",
+    "date": "19160408",
+    "time": "545:00",
+    "aircraftType": "AircraftType \u003d Roland C.II",
+    "mapName": "Galicia",
+    "airfield": "Airfield \u003d Puko",
+    "duty": "BOMB",
+    "altitude": 1081
+  },
+  "missionDescription": "Mission:\nAircraft  Roland C.IIa\nSquadron  FA 15\nAirbase  Pukov\nDate  1916-04-08\n\nWeather Report\nLight cloud cover, high altitude.\nCloud layer is 4208 meters.\nWind speed is 0 M/S.\nWind direction is 195.\n\nPrimary Objective\nAttack the trains and rail facilities  near Factory\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "Rudiger Hoelscher",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Eberhardt Auch",
+        "observer": "Rupert Freudenberg",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "FAA 1",
+      "crew": {
+        "pilot": "Reinhold Braunstein",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "FAA 1",
+      "crew": {
+        "pilot": "Heinz Zwerling",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "FAA 1",
+      "crew": {
+        "pilot": "Wendel Nostitz",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "FAA 1",
+      "crew": {
+        "pilot": "Leopold Himmler",
+        "observer": "",
+        "pilotRank": "Uffz",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 10",
+      "crew": {
+        "pilot": "Bank Radi",
+        "observer": "Volkard Kleinmann",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 10",
+      "crew": {
+        "pilot": "Holger Nostitz",
+        "observer": "Felix Wendling",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "8th KAO",
+      "crew": {
+        "pilot": "Anatolii Ivakin",
+        "observer": "Yurii Orlov",
+        "pilotRank": "Cpt",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "8th KAO",
+      "crew": {
+        "pilot": "Sergei Khmelnov",
+        "observer": "Vassi Melekhov",
+        "pilotRank": "DPk",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "2nd KAO",
+      "crew": {
+        "pilot": "Fedya Torchinovich",
+        "observer": "Marko Ivanov",
+        "pilotRank": "Cpt",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "2nd KAO",
+      "crew": {
+        "pilot": "Gavrilovich Khmelnov",
+        "observer": "Moriz Yerzov",
+        "pilotRank": "Pk",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "2nd KAO",
+      "crew": {
+        "pilot": "Orel Chernetsky",
+        "observer": "Cheslav Dobronravov",
+        "pilotRank": "Pk",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "2nd KAO",
+      "crew": {
+        "pilot": "Vladilen Grigoryev",
+        "observer": "Stefan Palyulin",
+        "pilotRank": "DPk",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "3rd KAO",
+      "crew": {
+        "pilot": "Vyacheslav Baryshnikov",
+        "observer": "Valerii Kuznetsov",
+        "pilotRank": "Pk",
+        "observerRank": "Lt"
+      }
+    }
+  ]
+}

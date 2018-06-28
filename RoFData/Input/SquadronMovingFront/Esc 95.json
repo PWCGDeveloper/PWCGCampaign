@@ -1,0 +1,31 @@
+{
+  "name": "Esc 95",
+  "squadronId": 101095,
+  "airfields": {
+    "19170315": "Auve",
+    "19170503": "Tilloy at Bellay",
+    "19170520": "Souilly",
+    "19170707": "Vauxcere",
+    "19170717": "Ferme Cravancon",
+    "19170927": "Brabant en Argonne",
+    "19171004": "Belrain",
+    "19171016": "Souilly",
+    "19180213": "Muizon",
+    "19180401": "La Cheppe",
+    "19180407": "Bonne Maisson",
+    "19180413": "Petit Camon",
+    "19180529": "Ville-Savoye",
+    "19180603": "Grivesnes",
+    "19180614": "Vauxcere",
+    "19180706": "Auve",
+    "19180719": "Auve",
+    "19180724": "Bouy",
+    "19180807": "Grivesnes",
+    "19180825": "Ville-Savoye",
+    "19180908": "Auve",
+    "19180923": "Muizon",
+    "19180930": "Malzeville",
+    "19181030": "St.Loup,Champagne",
+    "19181105": "Marchais"
+  }
+}

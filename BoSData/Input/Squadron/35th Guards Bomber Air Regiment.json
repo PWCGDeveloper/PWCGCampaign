@@ -1,0 +1,99 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 10131035,
+  "name": "35th Guards Bomber Air Regiment",
+  "fileName": "35th Guards Bomber Air Regiment.json",
+  "skill": 50,
+  "planeAssignments": [
+    {
+      "type": "pe2s35",
+      "squadronIntroduction": "19420901",
+      "squadronWithdrawal": "19420823"
+    },
+    {
+      "type": "pe2s87",
+      "squadronIntroduction": "19420623",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19420801": "Verkhne-Pogromnoye",
+    "19420906": "Solodovka",
+    "19421011": "Konstitutsiya",
+    "19421123": "Leninsk",
+    "19421223": "Leninsk",
+    "19430120": "Verh. Ahtuba",
+    "19430301": "Lazarevskoe",
+    "19430330": "Severskaya",
+    "19430418": "Pashkovskaya",
+    "19430918": "Severskaya",
+    "19430927": "Krasnoarmeyskayas",
+    "19431004": "Myshako",
+    "19431008": "Myshako"
+  },
+  "skins": [
+    {
+      "skinName": "PE2S87_SKIN_04",
+      "planeType": "pe2s87",
+      "startDate": "19420101",
+      "endDate": "19420331",
+      "squadId": 10131275,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "PE2S87_SKIN_02",
+      "planeType": "pe2s87",
+      "startDate": "19420101",
+      "endDate": "19421101",
+      "squadId": 10131275,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "PE2S87_SKIN_04",
+      "planeType": "pe2s87",
+      "startDate": "19421101",
+      "endDate": "19430331",
+      "squadId": 10131275,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "PE2S87_SKIN_02",
+      "planeType": "pe2s87",
+      "startDate": "19430331",
+      "endDate": "19431101",
+      "squadId": 10131275,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 60
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_DIVE_BOMB",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  }
+}

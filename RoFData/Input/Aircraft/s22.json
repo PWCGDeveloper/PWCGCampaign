@@ -1,0 +1,19 @@
+{
+  "type": "s22",
+  "side": "ALLIED",
+  "displayName": "Sikorsky S-22",
+  "script": "LuaScripts\\WorldObjects\\s22.txt",
+  "model": "graphics\\planes\\s22\\s22.mgm",
+  "desc": "",
+  "cruisingSpeed": 90,
+  "climbOutRate": 80,
+  "goodness": 60,
+  "endurance": 5.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_LARGE",
+  "roles": [
+    "ROLE_STRAT_BOMB"
+  ],
+  "introduction": "19150801",
+  "withdrawal": "19181111"
+}

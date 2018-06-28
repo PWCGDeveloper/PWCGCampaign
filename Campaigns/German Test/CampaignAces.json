@@ -1,0 +1,516 @@
+{
+  "campaignAces": {
+    "101001": {
+      "activeStatus": 0,
+      "name": "Arkady Fedorovich Kovacevich",
+      "serialNumber": 101001,
+      "rank": "Leyitenant",
+      "picName": "Arkady Fedorovich Kovacevich.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 80,
+      "aggressiveness": 0,
+      "aiSkillLevel": "ACE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [
+        {
+          "skinName": "MIG3S24_SKIN_01",
+          "planeType": "mig3s24",
+          "startDate": "19411015",
+          "endDate": "19420819",
+          "squadId": -1,
+          "country": "",
+          "category": "",
+          "definedInGame": false
+        },
+        {
+          "skinName": "LA5S8_SKIN_01",
+          "planeType": "la5s8",
+          "startDate": "19420820",
+          "endDate": "19421210",
+          "squadId": -1,
+          "country": "",
+          "category": "",
+          "definedInGame": false
+        },
+        {
+          "skinName": "YAK1S69_SKIN_08",
+          "planeType": "yak1s69",
+          "startDate": "19421211",
+          "endDate": "19440930",
+          "squadId": -1,
+          "country": "",
+          "category": "",
+          "definedInGame": false
+        }
+      ],
+      "victories": [
+        {
+          "date": "19411018",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "Me-109",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411027",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "Me-109",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411027",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "Ju-87",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411028",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "Ju-88",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411028",
+          "medalName": "Order of the Red Star",
+          "medalImage": ""
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111027
+    },
+    "201001": {
+      "activeStatus": 0,
+      "name": "Hermann Graff",
+      "serialNumber": 201001,
+      "rank": "Leutnant",
+      "picName": "Hermann Graff.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 114,
+      "aggressiveness": 0,
+      "aiSkillLevel": "ACE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [
+        {
+          "skinName": "BF109G2_9_JG52_YELLOW11_GRAF",
+          "planeType": "bf109g2",
+          "startDate": "19420822",
+          "endDate": "19421119",
+          "squadId": -1,
+          "country": "",
+          "category": "",
+          "definedInGame": false
+        }
+      ],
+      "victories": [
+        {
+          "date": "19410804",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "I-16 Rata",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19410805",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "I-16 Rata",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19410811",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "MiG-3",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19410830",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "DB-3",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19410906",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "I-16 Rata",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19410913",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "Yak-1",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19410914",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "DB-3",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19410927",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "DB-3",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411003",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "Yak-1",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411003",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "I-16 Rata",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411004",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "SB-2",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411011",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "I-153",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411014",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "Yak-1",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411014",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "Yak-1",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411024",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "MiG-1",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411024",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "MiG-1",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20113052
+    }
+  }
+}

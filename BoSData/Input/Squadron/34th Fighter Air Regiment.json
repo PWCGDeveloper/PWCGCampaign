@@ -1,0 +1,91 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 10111034,
+  "name": "34th Fighter Air Regiment",
+  "fileName": "34th Fighter Air Regiment.json",
+  "skill": 35,
+  "planeAssignments": [
+    {
+      "type": "i16t24",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19420228"
+    },
+    {
+      "type": "yak1s69",
+      "squadronIntroduction": "19420301",
+      "squadronWithdrawal": "19430610"
+    },
+    {
+      "type": "yak1s127",
+      "squadronIntroduction": "19430410",
+      "squadronWithdrawal": "19450503"
+    },
+    {
+      "type": "yak7bs36",
+      "squadronIntroduction": "19430601",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Varvarovka",
+    "19411020": "Lotoshino",
+    "19411110": "Klimovo",
+    "19411120": "Pavlovskoe",
+    "19411215": "Dyatlovo",
+    "19420110": "Borko",
+    "19420301": "Gromoslavka",
+    "19420601": "Juravskaya",
+    "19420624": "Novotitarovskaya",
+    "19420709": "Belorechenskaya",
+    "19420721": "Gelenjik-2",
+    "19420801": "Basargino",
+    "19420906": "Akatovka",
+    "19421011": "Smutnev",
+    "19421123": "Karpovka",
+    "19421223": "Karpovka",
+    "19430120": "Tinguta",
+    "19430301": "Belorechenskaya",
+    "19430330": "Gelenjik-3",
+    "19430418": "Gelenjik-3",
+    "19430918": "Myshako",
+    "19430927": "Myshako",
+    "19431004": "Anapa",
+    "19431008": "Anapa"
+  },
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19420301",
+        "squadName": "273rd Fighter Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 40
+      },
+      {
+        "date": "19430918",
+        "squadName": "274th Fighter Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 45
+      }
+    ]
+  },
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 70
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

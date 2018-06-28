@@ -1,0 +1,90 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101091,
+  "name": "Esc 91",
+  "skill": 35,
+  "planeAssignments": [
+    {
+      "type": "nieuport17",
+      "squadronIntroduction": "19170215",
+      "squadronWithdrawal": "19170901"
+    },
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19170801",
+      "squadronWithdrawal": "19180630"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19180301",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19170215": "Brabant en Argonne",
+    "19170418": "Ferme de Corbeaulieu",
+    "19170914": "Moreuil",
+    "19180216": "Bouy",
+    "19180420": "Grivesnes",
+    "19180619": "Vauxcere",
+    "19180828": "Mont Soissons Ferme",
+    "19181009": "Auve"
+  },
+  "skins": [
+    {
+      "skinName": "N17_PW_F91_DFT",
+      "planeType": "nieuport17",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101091,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC91_APR1917",
+      "planeType": "spad7",
+      "startDate": "19140801",
+      "endDate": "19180314",
+      "squadId": 101091,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC91_JAN1918",
+      "planeType": "spad7",
+      "startDate": "19180315",
+      "endDate": "19181201",
+      "squadId": 101091,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S13_101091_ANS",
+      "planeType": "spad13",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101091,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

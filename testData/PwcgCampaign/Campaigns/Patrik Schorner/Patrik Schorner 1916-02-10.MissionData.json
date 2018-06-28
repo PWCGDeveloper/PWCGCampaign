@@ -1,0 +1,166 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-02-10",
+    "squadron": "FA 293b",
+    "date": "19160210",
+    "time": "1530:00",
+    "aircraftType": "AircraftType \u003d DFW C.",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Bellevue Ferm",
+    "duty": "CONTACT_PATROL",
+    "altitude": 548
+  },
+  "missionDescription": "Mission:\nAircraft  DFW C.V\nSquadron  FA 293b\nAirbase  Bellevue Ferme\nDate  1916-02-10\n\nWeather Report\nLight cloud cover, high altitude.\nCloud layer is 3417 meters.\nWind speed is 0 M/S.\nWind direction is 238.\n\nPrimary Objective\nPerform reconnaissance near Fresnes.  Make contact with friendly troop concentrations to establish front lines.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 293b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "Herbert Klemm",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 278s",
+      "crew": {
+        "pilot": "Dominik Eulenberg",
+        "observer": "Emmerich Loffler",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 19",
+      "crew": {
+        "pilot": "Fritz Conzelmann",
+        "observer": "Rudolph Frank",
+        "pilotRank": "Obltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 19",
+      "crew": {
+        "pilot": "Theodor Kirschenbaum",
+        "observer": "Gebhard Kruger",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 19",
+      "crew": {
+        "pilot": "Waldemar Kies",
+        "observer": "Dietrich Rehn",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 19",
+      "crew": {
+        "pilot": "Hartwig Hutto",
+        "observer": "Armin Luchsinger",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "Esc 48",
+      "crew": {
+        "pilot": "Amede Kerblat",
+        "observer": "",
+        "pilotRank": "S/Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "Esc 48",
+      "crew": {
+        "pilot": "Vincent Lepetre",
+        "observer": "",
+        "pilotRank": "S/Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 9",
+      "crew": {
+        "pilot": "Dominique Colaruotolo",
+        "observer": "Olivier Fleury",
+        "pilotRank": "Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 9",
+      "crew": {
+        "pilot": "Louis Berlier",
+        "observer": "Alain Dages",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 9",
+      "crew": {
+        "pilot": "Theophile Deleglise",
+        "observer": "Blaise Honore",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 29",
+      "crew": {
+        "pilot": "Alphonse Breidenstein",
+        "observer": "Alexandre Lacloche",
+        "pilotRank": "Cne",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 29",
+      "crew": {
+        "pilot": "Jehan Levaique",
+        "observer": "Ayme Riot",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 29",
+      "crew": {
+        "pilot": "Jean-Baptiste Laborie",
+        "observer": "Gustave Declais",
+        "pilotRank": "Sergt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 29",
+      "crew": {
+        "pilot": "Celestin Lacomble",
+        "observer": "Florent Lapegue",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

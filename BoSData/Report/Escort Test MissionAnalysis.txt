@@ -1,0 +1,24 @@
+Player flight
+  Mission type: PATROL
+  Airfield    : Bol. Ivanovka
+  Aircraft    : yak1s69
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: BOMB
+  Airfield    : Berezovsky
+  Aircraft    : ju88a4
+  Player Contact    : 47
+
+
+
+Flight
+  Mission type: BOMB
+  Airfield    : Zryansky
+  Aircraft    : ju88a4
+  Player Contact    : 23
+
+
+

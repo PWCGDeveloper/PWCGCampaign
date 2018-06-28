@@ -1,0 +1,49 @@
+{
+  "country": "ITALY",
+  "squadronId": 20115021,
+  "name": "21 Gruppo Caccia",
+  "fileName": "21 Gruppo Caccia.json",
+  "skill": 55,
+  "planeAssignments": [
+    {
+      "type": "mc202s8",
+      "squadronIntroduction": "19420101",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19420801": "Safronov",
+    "19420906": "Abganerovo",
+    "19421011": "Abganerovo",
+    "19421123": "Safronov",
+    "19421223": "Safronov",
+    "19430120": "Safronov",
+    "19430301": "Anapa",
+    "19430330": "Gostagaevskaya",
+    "19430418": "Gostagaevskaya",
+    "19430918": "Gostagaevskaya",
+    "19430927": "Taman",
+    "19431004": "Taman",
+    "19431008": "Marfovka"
+  },
+  "skins": [],
+  "serviceId": 20202,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 90
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  }
+}

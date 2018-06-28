@@ -1,0 +1,16 @@
+Player flight
+  Mission type: ARTILLERY_SPOT
+  Airfield    : Merville
+  Aircraft    : re8
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: PATROL
+  Airfield    : Lagnicourt
+  Aircraft    : albatrosd3
+  Player Contact    : 14
+
+
+

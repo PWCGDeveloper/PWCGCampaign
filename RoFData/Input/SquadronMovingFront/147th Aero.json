@@ -1,0 +1,11 @@
+{
+  "name": "147th Aero",
+  "squadronId": 103147,
+  "airfields": {
+    "19180529": "Toul",
+    "19180628": "Maizy,N Fismes",
+    "19180709": "Chalons sur Vesle",
+    "19180828": "Lemmes",
+    "19181015": "Verdun"
+  }
+}

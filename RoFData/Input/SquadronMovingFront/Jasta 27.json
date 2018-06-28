@@ -1,0 +1,20 @@
+{
+  "name": "Jasta 27",
+  "squadronId": 501027,
+  "airfields": {
+    "19170205": "Wervicq",
+    "19170616": "Phalempin,N Douai",
+    "19171101": "Engel",
+    "19180213": "La Petrie",
+    "19180415": "Wervicq",
+    "19180428": "Quesnoy",
+    "19180429": "Le Creche",
+    "19180521": "Vivaise",
+    "19180730": "Chambry,Laon",
+    "19180923": "Douai",
+    "19180930": "Guesnain,Douai",
+    "19181025": "Roucourt, Bohain",
+    "19181105": "Aniche",
+    "19181110": "Alunoy"
+  }
+}

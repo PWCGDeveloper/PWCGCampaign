@@ -1,0 +1,74 @@
+{
+  "targetPreferences": [
+    {
+      "startDate": "19430410",
+      "endDate": "19430417",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_ASSAULT",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19430417",
+      "endDate": "19430430",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_SHIPPING",
+      "oddsOfUse": "80"
+    },
+    {
+      "startDate": "19430430",
+      "endDate": "19430909",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_SHIPPING",
+      "oddsOfUse": "30"
+    },
+    {
+      "startDate": "19430909",
+      "endDate": "19430914",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_SHIPPING",
+      "oddsOfUse": "80"
+    },
+    {
+      "startDate": "19430914",
+      "endDate": "19430928",
+      "targetSide": "ALLIED",
+      "targetType": "TARGET_DEFENSE",
+      "oddsOfUse": "30"
+    },
+    {
+      "startDate": "19430410",
+      "endDate": "19430417",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_DEFENSE",
+      "oddsOfUse": "40"
+    },
+    {
+      "startDate": "19430430",
+      "endDate": "19430909",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_SHIPPING",
+      "oddsOfUse": "30"
+    },
+    {
+      "startDate": "19430909",
+      "endDate": "19430914",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_SHIPPING",
+      "oddsOfUse": "60"
+    },
+    {
+      "startDate": "19430914",
+      "endDate": "19430928",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_ASSAULT",
+      "oddsOfUse": "30"
+    },
+    {
+      "startDate": "19430928",
+      "endDate": "19431230",
+      "targetSide": "AXIS",
+      "targetType": "TARGET_SHIPPING",
+      "oddsOfUse": "60"
+    }
+  ]
+}

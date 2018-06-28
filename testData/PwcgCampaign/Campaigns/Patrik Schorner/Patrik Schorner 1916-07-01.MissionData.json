@@ -1,0 +1,136 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-07-01",
+    "squadron": "Jasta 4",
+    "date": "19160701",
+    "time": "9:30:00",
+    "aircraftType": "AircraftType \u003d Fokker E.II",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Bonneuil Ferm",
+    "duty": "INTERCEPT",
+    "altitude": 3297
+  },
+  "missionDescription": "Mission:\nAircraft  Fokker E.III\nSquadron  Jasta 4\nAirbase  Bonneuil Ferme\nDate  1916-07-01\n\nWeather Report\nMedium cloud cover, high altitude.\nCloud layer is 3145 meters.\nWind speed is 1 M/S.\nWind direction is 248.\n\nPrimary Objective\nIntercept enemy aircraft near Noyon.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Obltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Carsten Kantner",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 227",
+      "crew": {
+        "pilot": "Justin Nicolas",
+        "observer": "Joseph Lagarrigue",
+        "pilotRank": "Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 227",
+      "crew": {
+        "pilot": "Antonin Betirac",
+        "observer": "Leandre de Clarens",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 227",
+      "crew": {
+        "pilot": "Cyrille Besse",
+        "observer": "Marceau Riot",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 227",
+      "crew": {
+        "pilot": "Hyacinthe Mengel",
+        "observer": "Robert Demoulin",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 18",
+      "crew": {
+        "pilot": "Leon Rommel",
+        "observer": "Gustav Steinhauser",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Gerhard Rohrmann",
+        "observer": "Simon Kott",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Randolf Lehrer",
+        "observer": "Tristan Marks",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Karl Liebau",
+        "observer": "Walther Bauman",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Werner Flohr",
+        "observer": "Hubert Tuchman",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 108",
+      "crew": {
+        "pilot": "Urbain Dupouy",
+        "observer": "Christophe Baboud",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

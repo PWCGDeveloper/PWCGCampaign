@@ -1,0 +1,19 @@
+{
+  "type": "gothag5",
+  "side": "AXIS",
+  "displayName": "Gotha G.V",
+  "script": "LuaScripts\\WorldObjects\\gothag5.txt",
+  "model": "graphics\\planes\\gothag5\\gothag5.mgm",
+  "desc": "",
+  "cruisingSpeed": 110,
+  "climbOutRate": 100,
+  "goodness": 60,
+  "endurance": 5.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_LARGE",
+  "roles": [
+    "ROLE_STRAT_BOMB"
+  ],
+  "introduction": "19170101",
+  "withdrawal": "19181111"
+}

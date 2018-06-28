@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.phase4.elapsedtime.CampaignMemberAwardsGeneratorTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-09-10T23:49:08" hostname="DigitalStorm-PC" time="0.946">
+  <properties/>
+  <testcase name="testMedalAwardedForVictories" classname="pwcg.aar.phase4.elapsedtime.CampaignMemberAwardsGeneratorTest" time="0.248"/>
+  <testcase name="testNoMedalAwardedBecausePilotIsDead" classname="pwcg.aar.phase4.elapsedtime.CampaignMemberAwardsGeneratorTest" time="0.237"/>
+  <testcase name="testMissionsFlownIncreased" classname="pwcg.aar.phase4.elapsedtime.CampaignMemberAwardsGeneratorTest" time="0.23"/>
+  <testcase name="testPromotionAwardedForVictoriesAndMissionsFlown" classname="pwcg.aar.phase4.elapsedtime.CampaignMemberAwardsGeneratorTest" time="0.23"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

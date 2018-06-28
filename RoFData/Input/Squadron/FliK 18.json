@@ -1,0 +1,53 @@
+{
+  "country": "AUSTRIA",
+  "squadronId": 502018,
+  "name": "FliK 18",
+  "skill": 35,
+  "planeAssignments": [
+    {
+      "type": "dfwc5",
+      "squadronIntroduction": "19160101",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160301": "Sodhovka",
+    "19160901": "Stanislau",
+    "19170501": "Sodhovka"
+  },
+  "skins": [
+    {
+      "skinName": "DFC5_10_16",
+      "planeType": "dfwc5",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 502018,
+      "country": "Austria",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_RECON",
+            "weight": 40
+          },
+          {
+            "role": "ROLE_BOMB",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_ARTILLERY_SPOT",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

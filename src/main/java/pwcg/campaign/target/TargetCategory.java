@@ -1,0 +1,11 @@
+package pwcg.campaign.target;
+
+public enum TargetCategory
+{
+    TARGET_CATEGORY_NONE,
+    TARGET_CATEGORY_ARMORED,
+    TARGET_CATEGORY_SOFT,
+    TARGET_CATEGORY_MEDIUM,
+    TARGET_CATEGORY_HEAVY,
+    TARGET_CATEGORY_STRATEGIC;
+}

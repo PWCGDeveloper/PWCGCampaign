@@ -1,0 +1,770 @@
+{
+  "squadronMembers": {
+    "3001389": {
+      "name": "Egon Honigberg",
+      "serialNumber": 3001389,
+      "rank": "Leutnant",
+      "picName": "German147.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 16,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501017,
+      "inactiveDate": "19181111"
+    },
+    "3001388": {
+      "name": "Franz Hellbaum",
+      "serialNumber": 3001388,
+      "rank": "Leutnant",
+      "picName": "German086.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 27,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501017,
+      "inactiveDate": "19181111"
+    },
+    "3001391": {
+      "name": "Gottlieb Rotberg",
+      "serialNumber": 3001391,
+      "rank": "Feldwebel",
+      "picName": "German083.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501017,
+      "inactiveDate": "19181111"
+    },
+    "3001390": {
+      "name": "Erich Hellweg",
+      "serialNumber": 3001390,
+      "rank": "Leutnant",
+      "picName": "German179.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 12,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501017,
+      "inactiveDate": "19181111"
+    },
+    "3001385": {
+      "name": "Rupert Baeumler",
+      "serialNumber": 3001385,
+      "rank": "Kommandeur",
+      "picName": "German098.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 31,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170401",
+          "location": "Vailly-sur-Aisne",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.94",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cne Guy Justet",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Rupert Baeumler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170404",
+          "location": "Chauny",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstrb",
+            "squadronName": "No 70 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Halbert Champneys",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Rupert Baeumler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170407",
+          "location": "Somme-Tourbe",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "Esc 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpl Alfred Leroux",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Rupert Baeumler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170410",
+          "location": "Vienne-le-Chateau",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "No 43 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Edward Grenefeld",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Rupert Baeumler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170413",
+          "location": "Epagny",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "soppup",
+            "squadronName": "No 3 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Flt Lt Stacy Taylor",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Rupert Baeumler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170416",
+          "location": "Vienne-le-Chateau",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "re8",
+            "squadronName": "No 10 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "2nd Lt Erwin Harewell",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Rupert Baeumler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170419",
+          "location": "Montdidier",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dh2",
+            "squadronName": "No 24 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpt Chandler Killigrew",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Rupert Baeumler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Prosnes",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "No 23 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Scott Coddington",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Rupert Baeumler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Somme-Tourbe",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 40 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "2nd Lt Calvert Evans",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Rupert Baeumler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Chavignon",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "soptriplane",
+            "squadronName": "No 8 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Flt SLt Alden Ront",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Rupert Baeumler",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501017,
+      "inactiveDate": "19181111"
+    },
+    "3001387": {
+      "name": "Manfred Kruspe",
+      "serialNumber": 3001387,
+      "rank": "Oberleutnant",
+      "picName": "German184.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 32,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170413",
+          "location": "Chavignon",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "Esc SOP.122",
+            "pilotSerialNumber": 0,
+            "pilotName": "Sergt Camille Baboud",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Manfred Kruspe",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170416",
+          "location": "Witry-les-Reims",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.49",
+            "pilotSerialNumber": 0,
+            "pilotName": "Sergt Jean-Jacques Lacour",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Manfred Kruspe",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170419",
+          "location": "Auberive",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstrb",
+            "squadronName": "No 70 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Driscoll Letterford",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Manfred Kruspe",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Beuvraignes",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "Esc SPA.124 Lafayette",
+            "pilotSerialNumber": 0,
+            "pilotName": "Sergt Emile Hocquinghen",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Manfred Kruspe",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Chavignon",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstrb",
+            "squadronName": "No 70 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpt Blair Lyon",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Manfred Kruspe",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Prosnes",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.38",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpl Guy Chapelain",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Manfred Kruspe",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501017,
+      "inactiveDate": "19181111"
+    },
+    "3001386": {
+      "name": "Jurgen Pfennig",
+      "serialNumber": 3001386,
+      "rank": "Oberleutnant",
+      "picName": "German012.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 42,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170416",
+          "location": "Courcy",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 52 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Halsey Haddon",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Jurgen Pfennig",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170419",
+          "location": "Witry-les-Reims",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "Esc SOP.21",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cne Germain Vasseur",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Jurgen Pfennig",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Valmy",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 57 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Trent Brodnax",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Jurgen Pfennig",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Chavignon",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "No 19 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "2nd Lt Emerson Hornebolt",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Jurgen Pfennig",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Valmy",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "Esc SPA.12",
+            "pilotSerialNumber": 0,
+            "pilotName": "S/Lt Honore Rattaire",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Jurgen Pfennig",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501017,
+      "inactiveDate": "19181111"
+    },
+    "3001393": {
+      "name": "Oskar Herz",
+      "serialNumber": 3001393,
+      "rank": "Feldwebel",
+      "picName": "German016.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501017,
+      "inactiveDate": "19181111"
+    },
+    "3001392": {
+      "name": "Fabian Hammerschmidt",
+      "serialNumber": 3001392,
+      "rank": "Feldwebel",
+      "picName": "German155.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501017,
+      "inactiveDate": "19181111"
+    },
+    "3001395": {
+      "name": "Uwe Brandeis",
+      "serialNumber": 3001395,
+      "rank": "Unteroffizier",
+      "picName": "German077.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 4,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501017,
+      "inactiveDate": "19181111"
+    },
+    "3001394": {
+      "name": "Wolfe Ehrenberg",
+      "serialNumber": 3001394,
+      "rank": "Unteroffizier",
+      "picName": "German079.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 4,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501017,
+      "inactiveDate": "19181111"
+    }
+  }
+}

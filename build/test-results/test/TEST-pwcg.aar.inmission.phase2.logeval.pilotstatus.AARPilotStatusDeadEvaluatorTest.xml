@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusDeadEvaluatorTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:17" hostname="DigitalStorm-PC" time="2.204">
+  <properties/>
+  <testcase name="testSquadronMemberKilledByAccidentAwayFromField" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusDeadEvaluatorTest" time="0.254"/>
+  <testcase name="testSquadronMemberSurvivedAccidentNearField" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusDeadEvaluatorTest" time="0.246"/>
+  <testcase name="testAiKilledByAccident" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusDeadEvaluatorTest" time="0.241"/>
+  <testcase name="testPlayerKilledByKnownVictor" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusDeadEvaluatorTest" time="0.244"/>
+  <testcase name="testSquadronMemberKilledByKnownVictor" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusDeadEvaluatorTest" time="0.241"/>
+  <testcase name="testAiKilledByKnownVictor" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusDeadEvaluatorTest" time="0.246"/>
+  <testcase name="testPlayerKilledByAccident" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusDeadEvaluatorTest" time="0.24"/>
+  <testcase name="testSquadronMemberCrashedButNotKilled" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusDeadEvaluatorTest" time="0.25"/>
+  <testcase name="testNoDeath" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusDeadEvaluatorTest" time="0.241"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

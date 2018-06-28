@@ -1,0 +1,358 @@
+{
+  "squadronMembers": {
+    "3001933": {
+      "name": "Werner Hanke",
+      "serialNumber": 3001933,
+      "rank": "Kommandeur",
+      "picName": "Austrian67.jpg",
+      "pilotActiveStatus": 0,
+      "country": "AUSTRIA",
+      "missionFlown": 69,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 502025,
+      "inactiveDate": "19181111"
+    },
+    "3001935": {
+      "name": "Antonius Benyo",
+      "serialNumber": 3001935,
+      "rank": "Oberleutnant",
+      "picName": "Austrian15.jpg",
+      "pilotActiveStatus": 0,
+      "country": "AUSTRIA",
+      "missionFlown": 39,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 502025,
+      "inactiveDate": "19181111"
+    },
+    "3001934": {
+      "name": "Alvian Dienes",
+      "serialNumber": 3001934,
+      "rank": "Oberleutnant",
+      "picName": "Austrian29.jpg",
+      "pilotActiveStatus": 0,
+      "country": "AUSTRIA",
+      "missionFlown": 21,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 502025,
+      "inactiveDate": "19181111"
+    },
+    "3001944": {
+      "name": "Dieter Trachenberg",
+      "serialNumber": 3001944,
+      "rank": "Korporal ",
+      "picName": "Austrian75.jpg",
+      "pilotActiveStatus": 0,
+      "country": "AUSTRIA",
+      "missionFlown": 7,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 502025,
+      "inactiveDate": "19181111"
+    },
+    "3001941": {
+      "name": "Tristan Becke",
+      "serialNumber": 3001941,
+      "rank": "Feldwebel",
+      "picName": "Austrian16.jpg",
+      "pilotActiveStatus": 0,
+      "country": "AUSTRIA",
+      "missionFlown": 2,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 502025,
+      "inactiveDate": "19181111"
+    },
+    "3001940": {
+      "name": "Heinrich Basinger",
+      "serialNumber": 3001940,
+      "rank": "Feldwebel",
+      "picName": "Austrian01.jpg",
+      "pilotActiveStatus": 0,
+      "country": "AUSTRIA",
+      "missionFlown": 2,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 502025,
+      "inactiveDate": "19181111"
+    },
+    "3001943": {
+      "name": "Lazar Seder",
+      "serialNumber": 3001943,
+      "rank": "Korporal ",
+      "picName": "Austrian36.jpg",
+      "pilotActiveStatus": 0,
+      "country": "AUSTRIA",
+      "missionFlown": 4,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 502025,
+      "inactiveDate": "19181111"
+    },
+    "3001942": {
+      "name": "Jusztin Benko",
+      "serialNumber": 3001942,
+      "rank": "Feldwebel",
+      "picName": "Austrian63.jpg",
+      "pilotActiveStatus": 0,
+      "country": "AUSTRIA",
+      "missionFlown": 5,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 502025,
+      "inactiveDate": "19181111"
+    },
+    "3001937": {
+      "name": "Gustav Pilcz",
+      "serialNumber": 3001937,
+      "rank": "Leutnant",
+      "picName": "Austrian10.jpg",
+      "pilotActiveStatus": 0,
+      "country": "AUSTRIA",
+      "missionFlown": 13,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 502025,
+      "inactiveDate": "19181111"
+    },
+    "3001936": {
+      "name": "Rajmund Gergel",
+      "serialNumber": 3001936,
+      "rank": "Leutnant",
+      "picName": "Austrian05.jpg",
+      "pilotActiveStatus": 0,
+      "country": "AUSTRIA",
+      "missionFlown": 23,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 502025,
+      "inactiveDate": "19181111"
+    },
+    "3001939": {
+      "name": "Eberhardt Mensing",
+      "serialNumber": 3001939,
+      "rank": "Leutnant",
+      "picName": "Austrian54.jpg",
+      "pilotActiveStatus": 0,
+      "country": "AUSTRIA",
+      "missionFlown": 29,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 502025,
+      "inactiveDate": "19181111"
+    },
+    "3001938": {
+      "name": "Timm Herzl",
+      "serialNumber": 3001938,
+      "rank": "Leutnant",
+      "picName": "Austrian47.jpg",
+      "pilotActiveStatus": 0,
+      "country": "AUSTRIA",
+      "missionFlown": 14,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 502025,
+      "inactiveDate": "19181111"
+    }
+  }
+}

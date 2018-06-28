@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.campaign.CampaignGeneratorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:49:32" hostname="DigitalStorm-PC" time="0.397">
+  <properties/>
+  <testcase name="getBattleTest" classname="pwcg.campaign.CampaignGeneratorTest" time="0.397"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

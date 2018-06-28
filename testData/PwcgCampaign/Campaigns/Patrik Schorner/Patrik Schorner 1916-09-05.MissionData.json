@@ -1,0 +1,276 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-09-05",
+    "squadron": "Jasta 16b",
+    "date": "19160905",
+    "time": "14:30:00",
+    "aircraftType": "AircraftType \u003d Halberstadt D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "INTERCEPT",
+    "altitude": 3375
+  },
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-09-05\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 2429 meters.\nWind speed is 0 M/S.\nWind direction is 322.\n\nPrimary Objective\nIntercept enemy aircraft near Mesnil.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Oswald Fromm",
+        "observer": "",
+        "pilotRank": "Obltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Augustus Kass",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Detlef Schwarzer",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 66",
+      "crew": {
+        "pilot": "Eugene Levaique",
+        "observer": "Mattieu Tavernier",
+        "pilotRank": "Cne",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 66",
+      "crew": {
+        "pilot": "Jean-Marie Lafon",
+        "observer": "Jean-Baptiste Bouvier",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 66",
+      "crew": {
+        "pilot": "Leo Roquet",
+        "observer": "Antonin Laffite",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 66",
+      "crew": {
+        "pilot": "Ulysse Duvallet",
+        "observer": "Xavier Viala",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 2",
+      "crew": {
+        "pilot": "Kristof Haugwitz",
+        "observer": "Walther Schwarzman",
+        "pilotRank": "Obltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 2",
+      "crew": {
+        "pilot": "Franz Tugendhat",
+        "observer": "Rudolph Welker",
+        "pilotRank": "Ltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Ignaz Rossmann",
+        "observer": "Oskar Raedler",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Fritz Maurer",
+        "observer": "Bernd Vogelstein",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Joachim Ratzinger",
+        "observer": "Wilhelm Herberger",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Karl Amsel",
+        "observer": "Gerhard Lux",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 19",
+      "crew": {
+        "pilot": "Eberhardt Seitz",
+        "observer": "Heiner Jahnke",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 19",
+      "crew": {
+        "pilot": "Elias Wentzel",
+        "observer": "Karsten Reich",
+        "pilotRank": "Fw",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 19",
+      "crew": {
+        "pilot": "Sepp Rottmann",
+        "observer": "Tristan Faehlmann",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 19",
+      "crew": {
+        "pilot": "Waldemar Furst",
+        "observer": "Dietrich Schnitzler",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 2 Squadron RFC",
+      "crew": {
+        "pilot": "Bond Willis",
+        "observer": "Quenby Makepiece",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 2 Squadron RFC",
+      "crew": {
+        "pilot": "Hale Flexney",
+        "observer": "Matthew Pelletoot",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Cpt"
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "No 1 Squadron RFC",
+      "crew": {
+        "pilot": "Curtis Chichester",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "No 1 Squadron RFC",
+      "crew": {
+        "pilot": "Darell Parker",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "No 1 Squadron RFC",
+      "crew": {
+        "pilot": "Dominic Inwood",
+        "observer": "",
+        "pilotRank": "2nd Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "No 1 Squadron RFC",
+      "crew": {
+        "pilot": "Harley Frilende",
+        "observer": "",
+        "pilotRank": "2nd Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 8 Squadron RFC",
+      "crew": {
+        "pilot": "Brock Roland",
+        "observer": "Dominic Winston",
+        "pilotRank": "Lt",
+        "observerRank": "Cpt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 105",
+      "crew": {
+        "pilot": "Charles Laforge",
+        "observer": "Alexis Nigri",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

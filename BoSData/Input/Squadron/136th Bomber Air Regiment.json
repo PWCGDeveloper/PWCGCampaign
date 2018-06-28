@@ -1,0 +1,95 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 10131136,
+  "name": "136th Bomber Air Regiment",
+  "fileName": "136th Bomber Air Regiment.json",
+  "skill": 30,
+  "planeAssignments": [
+    {
+      "type": "pe2s35",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19420331"
+    },
+    {
+      "type": "a20b",
+      "squadronIntroduction": "19420401",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Trekhsvyatskoye",
+    "19411020": "Pavlovskoe",
+    "19411110": "Pavlovskoe",
+    "19411120": "Vnukovo",
+    "19411215": "Torjok",
+    "19420110": "Klimovo",
+    "19420301": "Zety",
+    "19420601": "Abinskaya",
+    "19420624": "Buryakovskaya",
+    "19420709": "Maykop-1",
+    "19420721": "Adler",
+    "19420801": "Trudolyublye",
+    "19420906": "Leninsk",
+    "19421011": "Konstitutsiya",
+    "19421123": "Raygorod",
+    "19421223": "Leninsk",
+    "19430120": "Trudolyublye",
+    "19430301": "Lazarevskoe",
+    "19430330": "Lazarevskoe",
+    "19430418": "Krasnodar",
+    "19430918": "Elizavetinskaya",
+    "19430927": "Gelenjik-3",
+    "19431004": "Abinskaya",
+    "19431008": "Slavyanskaya"
+  },
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19420301",
+        "squadName": "45th Bomber Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 40
+      },
+      {
+        "date": "19430918",
+        "squadName": "244th Bomber Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 40
+      }
+    ]
+  },
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19420331",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 60
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_DIVE_BOMB",
+            "weight": 10
+          }
+        ]
+      },
+      {
+        "startDate": "19420401",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

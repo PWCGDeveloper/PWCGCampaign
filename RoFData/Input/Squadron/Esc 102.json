@@ -1,0 +1,142 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101102,
+  "name": "Esc 102",
+  "skill": 50,
+  "planeAssignments": [
+    {
+      "type": "nieuport11",
+      "squadronIntroduction": "19160618",
+      "squadronWithdrawal": "19161101"
+    },
+    {
+      "type": "nieuport17",
+      "squadronIntroduction": "19161001",
+      "squadronWithdrawal": "19170401"
+    },
+    {
+      "type": "spad7early",
+      "squadronIntroduction": "19170301",
+      "squadronWithdrawal": "19170913"
+    },
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19170811",
+      "squadronWithdrawal": "19180601"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19180401",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160618": "Souilly",
+    "19160716": "Lemmes",
+    "19160721": "Ferme de Corbeaulieu",
+    "19170701": "Abeele (West)",
+    "19171015": "Tilloy at Bellay",
+    "19180114": "Toul",
+    "19180401": "Grivesnes",
+    "19180426": "Grivesnes",
+    "19180619": "Lemmes",
+    "19180909": "Quinquempoix"
+  },
+  "skins": [
+    {
+      "skinName": "N11_PW_F102_DFTE",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19160318",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N11_PW_F102_DFTL",
+      "planeType": "nieuport11",
+      "startDate": "19160318",
+      "endDate": "19181111",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N17_N102_GENERIC",
+      "planeType": "nieuport17",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N17B_ESC102_CAMO",
+      "planeType": "nieuport17brit",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7E_SPA102_STD",
+      "planeType": "spad7early",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC102_APR1917",
+      "planeType": "spad7",
+      "startDate": "19140801",
+      "endDate": "19180117",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_SPA102_STD",
+      "planeType": "spad7",
+      "startDate": "19180118",
+      "endDate": "19181201",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "101102",
+      "planeType": "spad13",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101102,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

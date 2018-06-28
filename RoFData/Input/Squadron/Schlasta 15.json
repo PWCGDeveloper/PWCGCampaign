@@ -1,0 +1,74 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501115,
+  "name": "Schlasta 15",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "type": "halberstadtcl2",
+      "squadronIntroduction": "19170629",
+      "squadronWithdrawal": "19180901"
+    },
+    {
+      "type": "halberstadtcl2au",
+      "squadronIntroduction": "19180816",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160629": "Velu",
+    "19161216": "Pont-a-Marcq",
+    "19180321": "Eppeville",
+    "19180403": "Hermies,Cambrai",
+    "19180521": "Liesse",
+    "19180913": "Marville",
+    "19180918": "Sivry"
+  },
+  "skins": [
+    {
+      "skinName": "HCL2_SCH15_09-17",
+      "planeType": "halberstadtcl2",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "HCL2_SCH15_04-18",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180322",
+      "endDate": "19181201",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "HCL2A_PW_S15_A",
+      "planeType": "halberstadtcl2au",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

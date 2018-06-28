@@ -1,0 +1,71 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20133027,
+  "name": "III./KG27",
+  "fileName": "III_KG27.json",
+  "skill": 60,
+  "planeAssignments": [
+    {
+      "type": "he111h6",
+      "squadronIntroduction": "19420101",
+      "squadronWithdrawal": "19430603"
+    },
+    {
+      "type": "he111h16",
+      "squadronIntroduction": "19430201",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19420801": "Oblivskaya",
+    "19420906": "Zryansky",
+    "19421011": "Kumovka",
+    "19421123": "Ventsy",
+    "19421223": "Chernishkovskiy",
+    "19430120": "Chernishkovskiy",
+    "19430301": "Kerch",
+    "19430330": "Kerch",
+    "19430418": "Kerch",
+    "19430918": "Marfovka",
+    "19430927": "Marfovka",
+    "19431004": "Marfovka",
+    "19431008": "Hardji-Bie"
+  },
+  "skins": [
+    {
+      "skinName": "HE111H6_SKIN_10",
+      "planeType": "he111h6",
+      "startDate": "19421101",
+      "endDate": "19430331",
+      "squadId": 20133027,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19430918",
+        "squadName": "III./KG55",
+        "armedServiceName": "Luftwaffe",
+        "skill": 50
+      }
+    ]
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 90
+          }
+        ]
+      }
+    ]
+  }
+}

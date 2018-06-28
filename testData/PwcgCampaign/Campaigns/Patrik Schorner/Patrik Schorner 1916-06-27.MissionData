@@ -1,0 +1,298 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-06-27";
+    Squadron = "Jasta 4";
+    Map = "France";
+    Date = "19160627";
+    Time = "9:0:00";
+    Duty = "BALLOON_DEFENSE";
+    AircraftType = Fokker E.III;
+    Altitude = 3082;
+    Airfield = Bonneuil Ferme;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Fokker E.III
+Squadron  Jasta 4
+Airbase  Bonneuil Ferme
+Date  1916-06-27
+
+Weather Report 
+    Heavy cloud cover, medium altitude.
+    Cloud layer is 2321 meters.
+    Wind speed is 2 M/S.
+    Wind direction is 343.
+
+Primary Objective 
+    Defend our balloon near Guiscard.
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Kurt Wintgens";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Florian Lasch";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Carsten Kantner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Arnold Bach";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dh2";
+        Squadron = "No 32 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "David Norwich";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dh2";
+        Squadron = "No 32 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Percival Thorne";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dh2";
+        Squadron = "No 32 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "William Chapman";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 276";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Gerhard Feigl";
+            ObserverRank = "Ltn";
+            Observer = "Emil Kornfeld";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 276";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Hermann Gross";
+            ObserverRank = "Ltn";
+            Observer = "Hermann Werlhof";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 7";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Elmar Krampitz";
+            ObserverRank = "Ltn";
+            Observer = "Volkard Rosenblatt";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 7";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Gottfried Birkenfeld";
+            ObserverRank = "Ltn";
+            Observer = "Fritz Werfel";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 23";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Knut Staebler";
+            ObserverRank = "Ltn";
+            Observer = "Heinrich Rohrbach";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 23";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Kristof Schickentanz";
+            ObserverRank = "Ltn";
+            Observer = "Leonhard Quattlebaum";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 23";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Sigwalt Schreiner";
+            ObserverRank = "Ltn";
+            Observer = "Kristof Neupauer";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 19";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Christophe Labauge";
+            ObserverRank = "S/Lt";
+            Observer = "Serge Lacomble";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 19";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Gaspard Gisquet";
+            ObserverRank = "S/Lt";
+            Observer = "Philippe Lachassine";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 23 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Ferdinand Northwood";
+            ObserverRank = "Lt";
+            Observer = "Farrell Gooder";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 23 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Royce Petham";
+            ObserverRank = "Lt";
+            Observer = "Charles Digby";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 23 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Christopher Kidwelly";
+            ObserverRank = "Cpt";
+            Observer = "Darrel Raynsford";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 23 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Elton Warner";
+            ObserverRank = "Lt";
+            Observer = "Bruno Ackworth";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 8 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Gideon Churmond";
+            ObserverRank = "Lt";
+            Observer = "Alexander Beresford";
+        }
+    }
+}

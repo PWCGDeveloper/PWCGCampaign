@@ -1,0 +1,14 @@
+{
+  "name": "FA 16",
+  "squadronId": 501216,
+  "airfields": {
+    "19150801": "Clastres",
+    "19160212": "Rulers",
+    "19160310": "Hermies,Cambrai",
+    "19160812": "Chambry,Laon",
+    "19180825": "Liesse",
+    "19181025": "Autremencourt",
+    "19181105": "Autremencourt",
+    "19181110": "Plomion,SE Vervins"
+  }
+}

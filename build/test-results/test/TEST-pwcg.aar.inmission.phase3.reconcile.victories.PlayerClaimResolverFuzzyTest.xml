@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.inmission.phase3.reconcile.victories.PlayerClaimResolverFuzzyTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:33" hostname="DigitalStorm-PC" time="1.204">
+  <properties/>
+  <testcase name="testPlayerFuzzyVictoryNotFoundBecauseClaimPlaneNotFound" classname="pwcg.aar.inmission.phase3.reconcile.victories.PlayerClaimResolverFuzzyTest" time="0.24"/>
+  <testcase name="testPlayerFuzzyVictoryNotFoundBecauseVictoryAlreadyConfirmed" classname="pwcg.aar.inmission.phase3.reconcile.victories.PlayerClaimResolverFuzzyTest" time="0.242"/>
+  <testcase name="testPlayerFuzzyVictoryFound" classname="pwcg.aar.inmission.phase3.reconcile.victories.PlayerClaimResolverFuzzyTest" time="0.241"/>
+  <testcase name="testPlayerFuzzyVictoryNotFoundBecausePlaneMismatch" classname="pwcg.aar.inmission.phase3.reconcile.victories.PlayerClaimResolverFuzzyTest" time="0.243"/>
+  <testcase name="testPlayerFuzzyVictoryNotFoundBecauseVictoryPlaneNotFound" classname="pwcg.aar.inmission.phase3.reconcile.victories.PlayerClaimResolverFuzzyTest" time="0.238"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

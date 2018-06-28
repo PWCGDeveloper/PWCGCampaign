@@ -1,0 +1,75 @@
+{
+  "skinSetType": "SKIN_DO_NOT_USE",
+  "skins": {
+    "fe2b_ah_sid": {
+      "skinName": "FE2B_AH_SID",
+      "planeType": "fe2b",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fe2b_dw": {
+      "skinName": "FE2B_DW",
+      "planeType": "fe2b",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fe2b_ww-std-a": {
+      "skinName": "FE2B_WW-STD-A",
+      "planeType": "fe2b",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fe2b_ww-std-b": {
+      "skinName": "FE2B_WW-STD-B",
+      "planeType": "fe2b",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fe2b_ww-std-c": {
+      "skinName": "FE2B_WW-STD-C",
+      "planeType": "fe2b",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fe2b_ww-std-d": {
+      "skinName": "FE2B_WW-STD-D",
+      "planeType": "fe2b",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fe2b_z_rnas55_gen": {
+      "skinName": "FE2B_Z_RNAS55_GEN",
+      "planeType": "fe2b",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102055,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    }
+  }
+}

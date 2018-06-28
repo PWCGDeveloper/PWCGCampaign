@@ -1,0 +1,22 @@
+{
+  "type": "rolc2a",
+  "side": "AXIS",
+  "displayName": "Roland C.IIa",
+  "script": "LuaScripts\\WorldObjects\\rolc2a.txt",
+  "model": "graphics\\planes\\rolc2a\\rolc2a.mgm",
+  "desc": "",
+  "cruisingSpeed": 130,
+  "climbOutRate": 120,
+  "goodness": 31,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_RECON",
+    "ROLE_BOMB",
+    "ROLE_FIGHTER",
+    "ROLE_ARTILLERY_SPOT"
+  ],
+  "introduction": "19160301",
+  "withdrawal": "19181111"
+}

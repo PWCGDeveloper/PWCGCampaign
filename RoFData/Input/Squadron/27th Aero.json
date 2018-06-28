@@ -1,0 +1,61 @@
+{
+  "country": "USA",
+  "squadronId": 103027,
+  "name": "27th Aero",
+  "skill": 55,
+  "planeAssignments": [
+    {
+      "type": "nieuport28",
+      "squadronIntroduction": "19180529",
+      "squadronWithdrawal": "19180731"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19180709",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180529": "Toul",
+    "19180628": "Bonne Maisson",
+    "19180709": "Courcy",
+    "19180828": "Souilly"
+  },
+  "skins": [
+    {
+      "skinName": "103027",
+      "planeType": "nieuport28",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 103027,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "103027",
+      "planeType": "spad13",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 103027,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10301,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-10-14",
+    "squadron": "Jasta 16b",
+    "date": "19161014",
+    "time": "9:30:00",
+    "aircraftType": "AircraftType \u003d Albatros D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "PATROL",
+    "altitude": 3500
+  },
+  "missionDescription": "Mission:\nAircraft  Albatros D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-10-14\n\nWeather Report\nLight cloud cover, medium altitude.\nCloud layer is 2903 meters.\nWind speed is 0 M/S.\nWind direction is 315.\n\nPrimary Objective\nPatrol airspace  near Beuvraignes.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "albatrosd2",
+      "squadronId": 501016,
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "albatrosd2",
+      "squadronId": 501016,
+      "crew": {
+        "pilot": "Detlef Schwarzer",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "albatrosd2",
+      "squadronId": 501016,
+      "crew": {
+        "pilot": "Joachim Lechner",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronId": 501016,
+      "crew": {
+        "pilot": "Ingemar Beckermann",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronId": 501223,
+      "crew": {
+        "pilot": "Hartmut Hardenburg",
+        "observer": "Florian Schimscheiner",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronId": 501223,
+      "crew": {
+        "pilot": "Niklaus Guns",
+        "observer": "Friedhelm Enzensberger",
+        "pilotRank": "Uffz",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronId": 102001,
+      "crew": {
+        "pilot": "Clive Holcott",
+        "observer": "",
+        "pilotRank": "Cpt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronId": 102001,
+      "crew": {
+        "pilot": "Carney Younger",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronId": 102001,
+      "crew": {
+        "pilot": "Hale Bardolf",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronId": 102001,
+      "crew": {
+        "pilot": "Benjamin Wilkins",
+        "observer": "",
+        "pilotRank": "2nd Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronId": 101107,
+      "crew": {
+        "pilot": "Julien Kalandoff",
+        "observer": "Gaspard Ignace",
+        "pilotRank": "Cne",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronId": 101107,
+      "crew": {
+        "pilot": "Antonin Vasseur",
+        "observer": "Augustin Martinez",
+        "pilotRank": "Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronId": 101107,
+      "crew": {
+        "pilot": "Honore Kalandoff",
+        "observer": "Sauveur Vertadier",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronId": 101107,
+      "crew": {
+        "pilot": "Celestin Morliere",
+        "observer": "Auguste Discors",
+        "pilotRank": "Cpl",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronId": 101020,
+      "crew": {
+        "pilot": "Samuel Le Bars",
+        "observer": "Leo Kunsch",
+        "pilotRank": "Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronId": 101020,
+      "crew": {
+        "pilot": "Alfred Ratoin",
+        "observer": "Gilbert Lafon",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronId": 101020,
+      "crew": {
+        "pilot": "Justin Paniez",
+        "observer": "Henri Vertadier",
+        "pilotRank": "S/Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronId": 101020,
+      "crew": {
+        "pilot": "Marceau Lafontaine",
+        "observer": "Leandre de Anchald",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

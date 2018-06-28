@@ -1,0 +1,166 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-08-04",
+    "squadron": "Jasta 16b",
+    "date": "19160804",
+    "time": "6:30:00",
+    "aircraftType": "AircraftType \u003d Halberstadt D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "INTERCEPT",
+    "altitude": 2284
+  },
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-08-04\n\nWeather Report\nLight cloud cover, medium altitude.\nCloud layer is 2988 meters.\nWind speed is 0 M/S.\nWind direction is 181.\n\nPrimary Objective\nIntercept enemy aircraft near Hombleux.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Gebhard Schonbaum",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 27 Squadron RFC",
+      "crew": {
+        "pilot": "Michael Blacknall",
+        "observer": "Carney Markeley",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 27 Squadron RFC",
+      "crew": {
+        "pilot": "Wayne White",
+        "observer": "Casper Willardsey",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Cpt"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "Schlasta 10",
+      "crew": {
+        "pilot": "Ralf Wetterhahn",
+        "observer": "Leon Baer",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "Schlasta 10",
+      "crew": {
+        "pilot": "Klaus Wirt",
+        "observer": "Nils Denker",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 12",
+      "crew": {
+        "pilot": "Konrad Frohlich",
+        "observer": "Frederich Seck",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 12",
+      "crew": {
+        "pilot": "Reinhard Kruger",
+        "observer": "Jorg Buchman",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 12",
+      "crew": {
+        "pilot": "Theodor Furtwaengler",
+        "observer": "Hildebrand Kornheiser",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 12",
+      "crew": {
+        "pilot": "Reinhard Krauszer",
+        "observer": "Markus Weinstock",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "Esc 102",
+      "crew": {
+        "pilot": "Richard Lafon",
+        "observer": "",
+        "pilotRank": "Cne",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "Esc 102",
+      "crew": {
+        "pilot": "Leonard Ducourant",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "Esc 102",
+      "crew": {
+        "pilot": "Christophe Bernardi",
+        "observer": "",
+        "pilotRank": "S/Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "Esc 102",
+      "crew": {
+        "pilot": "Alexis Nigri",
+        "observer": "",
+        "pilotRank": "Sergt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 27 Squadron RFC",
+      "crew": {
+        "pilot": "Harold Whyting",
+        "observer": "Melvin Chudderley",
+        "pilotRank": "Cpt",
+        "observerRank": "Cpt"
+      }
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101095,
+  "name": "Esc 95",
+  "skill": 45,
+  "planeAssignments": [
+    {
+      "type": "nieuport17",
+      "squadronIntroduction": "19170315",
+      "squadronWithdrawal": "19170731"
+    },
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19170715",
+      "squadronWithdrawal": "19181201"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19171120",
+      "squadronWithdrawal": "19180801"
+    }
+  ],
+  "airfields": {
+    "19170315": "Auve",
+    "19170503": "Tilloy at Bellay",
+    "19170520": "Souilly",
+    "19170707": "Vauxcere",
+    "19170717": "Ferme Cravancon",
+    "19170927": "Brabant en Argonne",
+    "19171004": "Belrain",
+    "19171016": "Souilly",
+    "19180213": "Muizon",
+    "19180401": "La Cheppe",
+    "19180407": "Bonne Maisson",
+    "19180413": "Baizieux 2",
+    "19180529": "Ville-Savoye",
+    "19180603": "Grivesnes",
+    "19180614": "Vauxcere",
+    "19180706": "Auve",
+    "19180719": "Auve",
+    "19180724": "Bouy",
+    "19180807": "Grivesnes",
+    "19180825": "Ville-Savoye",
+    "19180908": "Auve",
+    "19180923": "Muizon",
+    "19180930": "Malzeville",
+    "19181030": "Ferme d_Alger"
+  },
+  "skins": [
+    {
+      "skinName": "N17_PW_F95_DFT",
+      "planeType": "nieuport17",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101095,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC95_APR1917",
+      "planeType": "spad7",
+      "startDate": "19170101",
+      "endDate": "19181111",
+      "squadId": 101095,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC95_JAN1918",
+      "planeType": "spad7",
+      "startDate": "19180302",
+      "endDate": "19181111",
+      "squadId": 101095,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S13_101095_ANS",
+      "planeType": "spad13",
+      "startDate": "19171020",
+      "endDate": "19181111",
+      "squadId": 101095,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

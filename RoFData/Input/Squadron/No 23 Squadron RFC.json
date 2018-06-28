@@ -1,0 +1,177 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102023,
+  "name": "No 23 Squadron RFC",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "type": "fe2b",
+      "squadronIntroduction": "19140801",
+      "squadronWithdrawal": "19170201"
+    },
+    {
+      "type": "spad7early",
+      "squadronIntroduction": "19170201",
+      "squadronWithdrawal": "19170826"
+    },
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19170505",
+      "squadronWithdrawal": "19180204"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19171201",
+      "squadronWithdrawal": "19180331"
+    },
+    {
+      "type": "sopdolphin",
+      "squadronIntroduction": "19180401",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160316": "Le Hameau",
+    "19160901": "Marieux",
+    "19160905": "Baizieux 2",
+    "19170523": "Auchel",
+    "19170529": "Bruay",
+    "19170613": "Hondschoote",
+    "19180322": "Moreuil",
+    "19180328": "Baizieux 2",
+    "19180429": "Steenwerck",
+    "19180516": "Baizieux 2"
+  },
+  "skins": [
+    {
+      "skinName": "FE2B_RFC_DEFAULT",
+      "planeType": "fe2b",
+      "startDate": "19140801",
+      "endDate": "19170304",
+      "squadId": 102023,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7E_RFC_DEFAULT",
+      "planeType": "spad7early",
+      "startDate": "19170201",
+      "endDate": "19170531",
+      "squadId": 102023,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7E_RFC_CAMO_DEF",
+      "planeType": "spad7early",
+      "startDate": "19170601",
+      "endDate": "19170825",
+      "squadId": 102023,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7E_RFC23_DEFAULT",
+      "planeType": "spad7early",
+      "startDate": "19170826",
+      "endDate": "19170831",
+      "squadId": 102023,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_RFC_DEFAULT",
+      "planeType": "spad7",
+      "startDate": "19170505",
+      "endDate": "19170825",
+      "squadId": 102023,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_RFC23_AUG17",
+      "planeType": "spad7",
+      "startDate": "19170826",
+      "endDate": "19180204",
+      "squadId": 102023,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S13_RFC23_AUG17",
+      "planeType": "spad13",
+      "startDate": "19171201",
+      "endDate": "19180515",
+      "squadId": 102023,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102023",
+      "planeType": "spad13",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": 102023,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102023",
+      "planeType": "sopdolphin",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": 102023,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 23 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19170201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 60
+          },
+          {
+            "role": "ROLE_BOMB",
+            "weight": 40
+          }
+        ]
+      },
+      {
+        "startDate": "19170201",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

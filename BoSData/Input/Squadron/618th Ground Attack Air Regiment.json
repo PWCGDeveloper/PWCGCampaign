@@ -1,0 +1,97 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 10121618,
+  "name": "618th Ground Attack Air Regiment",
+  "fileName": "618th Ground Attack Air Regiment.json",
+  "skill": 40,
+  "planeAssignments": [
+    {
+      "type": "il2m41",
+      "squadronIntroduction": "19420101",
+      "squadronWithdrawal": "19420614"
+    },
+    {
+      "type": "il2m42",
+      "squadronIntroduction": "19420414",
+      "squadronWithdrawal": "19430401"
+    },
+    {
+      "type": "il2m43",
+      "squadronIntroduction": "19430301",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19420801": "Voroponovo",
+    "19420906": "Novonikolskoye",
+    "19421011": "Lugo-Vodyanoye",
+    "19421123": "Davydovskiy",
+    "19421223": "Davydovskiy",
+    "19430120": "Davydovskiy",
+    
+    "19430301": "Gelenjik-2",
+    "19430330": "Gelenjik-2",
+    "19430418": "Gelenjik-2",
+    "19430918": "Gelenjik-2",
+    "19430927": "Myshako",
+    "19431004": "Slavyanskaya",
+    "19431008": "Slavyanskaya"
+  },
+  "skins": [
+    {
+      "skinName": "IL2M42_SKIN_03",
+      "planeType": "il2m42",
+      "startDate": "19420101",
+      "endDate": "19420331",
+      "squadId": 10121618,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "IL2M42_SKIN_02",
+      "planeType": "il2m42",
+      "startDate": "19420101",
+      "endDate": "19421101",
+      "squadId": 10121618,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "IL2M42_SKIN_03",
+      "planeType": "il2m42",
+      "startDate": "19421101",
+      "endDate": "19430331",
+      "squadId": 10121618,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "IL2M42_SKIN_02",
+      "planeType": "il2m42",
+      "startDate": "19430331",
+      "endDate": "19431101",
+      "squadId": 10121618,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

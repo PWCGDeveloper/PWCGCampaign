@@ -1,0 +1,545 @@
+{
+  "skinSetType": "SKIN_DO_NOT_USE",
+  "skins": {
+    "dh2_42sq_blue": {
+      "skinName": "DH2_42SQ_BLUE",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_cazador_e": {
+      "skinName": "DH2_AH_CAZADOR_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_cazador_l": {
+      "skinName": "DH2_AH_CAZADOR_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_default_e": {
+      "skinName": "DH2_AH_DEFAULT_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_default_l": {
+      "skinName": "DH2_AH_DEFAULT_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_ehre_e": {
+      "skinName": "DH2_AH_EHRE_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_ehre_l": {
+      "skinName": "DH2_AH_EHRE_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_happy_e": {
+      "skinName": "DH2_AH_HAPPY_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_happy_l": {
+      "skinName": "DH2_AH_HAPPY_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_q_ball_e": {
+      "skinName": "DH2_AH_Q_BALL_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_q_ball_l": {
+      "skinName": "DH2_AH_Q_BALL_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_shotdown_e": {
+      "skinName": "DH2_AH_SHOTDOWN_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_shotdown_l": {
+      "skinName": "DH2_AH_SHOTDOWN_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_sid_e": {
+      "skinName": "DH2_AH_SID_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_sid_l": {
+      "skinName": "DH2_AH_SID_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_splater_e": {
+      "skinName": "DH2_AH_SPLATER_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_ah_splater_l": {
+      "skinName": "DH2_AH_SPLATER_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_gen_rnas55": {
+      "skinName": "DH2_GEN_RNAS55",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102055,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_hq_miggins": {
+      "skinName": "DH2_HQ_MIGGINS",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_irfc_squadron": {
+      "skinName": "DH2_IRFC_SQUADRON",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_j99-hihu": {
+      "skinName": "DH2_J99-HIHU",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_j99_arms": {
+      "skinName": "DH2_J99_ARMS",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_j99_std": {
+      "skinName": "DH2_J99_STD",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_liberator": {
+      "skinName": "DH2_LIBERATOR",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_o_rod": {
+      "skinName": "DH2_O_ROD",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_pan_rnas55": {
+      "skinName": "DH2_PAN_RNAS55",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102055,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_panthercules": {
+      "skinName": "DH2_PANTHERCULES",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_reflected": {
+      "skinName": "DH2_REFLECTED",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_1shot_e": {
+      "skinName": "DH2_SC_1SHOT_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_1shot_l": {
+      "skinName": "DH2_SC_1SHOT_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_asp_e": {
+      "skinName": "DH2_SC_ASP_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_asp_l": {
+      "skinName": "DH2_SC_ASP_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_billy_e": {
+      "skinName": "DH2_SC_BILLY_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_billy_l": {
+      "skinName": "DH2_SC_BILLY_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_default_e": {
+      "skinName": "DH2_SC_DEFAULT_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_default_l": {
+      "skinName": "DH2_SC_DEFAULT_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_greyb_e": {
+      "skinName": "DH2_SC_GREYB_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_greyb_l": {
+      "skinName": "DH2_SC_GREYB_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_lusthawk_e": {
+      "skinName": "DH2_SC_LUSTHAWK_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_lusthawk_l": {
+      "skinName": "DH2_SC_LUSTHAWK_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_mongoose_e": {
+      "skinName": "DH2_SC_MONGOOSE_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_mongoose_l": {
+      "skinName": "DH2_SC_MONGOOSE_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_sledrivere": {
+      "skinName": "DH2_SC_SLEDRIVERE",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_sledriverl": {
+      "skinName": "DH2_SC_SLEDRIVERL",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_sp00k_e": {
+      "skinName": "DH2_SC_SP00K_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_sp00k_l": {
+      "skinName": "DH2_SC_SP00K_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_spif_e": {
+      "skinName": "DH2_SC_SPIF_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_spif_l": {
+      "skinName": "DH2_SC_SPIF_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_zester_e": {
+      "skinName": "DH2_SC_ZESTER_E",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_sc_zester_l": {
+      "skinName": "DH2_SC_ZESTER_L",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_squid": {
+      "skinName": "DH2_SQUID",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_syn_squadron": {
+      "skinName": "DH2_SYN_SQUADRON",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_thebaron": {
+      "skinName": "DH2_THEBARON",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "dh2_wallenberg": {
+      "skinName": "DH2_WALLENBERG",
+      "planeType": "dh2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Jasta 30",
+  "squadronId": 501030,
+  "airfields": {
+    "19170126": "Houplin,S Lille",
+    "19180820": "Houplin,S Lille",
+    "19181001": "Riencourt,Arras",
+    "19181005": "Pronville,nr Queant",
+    "19181011": "Assevillers",
+    "19181015": "Mesnil-Bruntel",
+    "19181025": "Fonsomme",
+    "19181105": "Fontaine Notre Dame",
+    "19181110": "Escaufort,Busigny"
+  }
+}

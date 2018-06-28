@@ -1,0 +1,16 @@
+{
+  "name": "Esc 62",
+  "squadronId": 101062,
+  "airfields": {
+    "19150820": "Grivesnes",
+    "19150924": "Grivesnes",
+    "19151009": "Moreuil",
+    "19160412": "Moreuil",
+    "19170115": "Mont Soissons Ferme",
+    "19180315": "Mont Soissons Ferme",
+    "19180407": "Vauxcere",
+    "19180831": "Chalons sur Vesle",
+    "19181025": "St.Remy-le-Petit West",
+    "19181027": "Houplin,S Lille"
+  }
+}

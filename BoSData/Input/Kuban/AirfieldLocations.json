@@ -1,0 +1,655 @@
+{
+  "locationSetName": "AirfieldLocations",
+  "locations": [
+    {
+      "name": "Korenovskaya",
+      "position": {
+        "xPos": 280371.0,
+        "yPos": 17.0,
+        "zPos": 353105.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 294.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kerch 2",
+      "position": {
+        "xPos": 272851.0,
+        "yPos": 17.0,
+        "zPos": 112711.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 264.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sochi",
+      "position": {
+        "xPos": 74709.0,
+        "yPos": 17.0,
+        "zPos": 376475.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 80.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Staro-Nijne-Steblievskaya",
+      "position": {
+        "xPos": 274775.0,
+        "yPos": 17.0,
+        "zPos": 274145.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 58.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Andreevskaya",
+      "position": {
+        "xPos": 267778.0,
+        "yPos": 17.0,
+        "zPos": 289451.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 48.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Severskaya",
+      "position": {
+        "xPos": 216926.0,
+        "yPos": 17.0,
+        "zPos": 291492.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 233.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Holmskaya",
+      "position": {
+        "xPos": 218196.0,
+        "yPos": 0.0,
+        "zPos": 266189.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 160.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Abinskaya",
+      "position": {
+        "xPos": 220474.0,
+        "yPos": 17.0,
+        "zPos": 251521.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Slavyanskaya",
+      "position": {
+        "xPos": 255927.0,
+        "yPos": 17.0,
+        "zPos": 244680.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 41.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Krasnoarmeyskayas",
+      "position": {
+        "xPos": 273195.0,
+        "yPos": 17.0,
+        "zPos": 256665.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Popovicheskaya",
+      "position": {
+        "xPos": 286703.0,
+        "yPos": 17.0,
+        "zPos": 287540.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Dneprovskaya",
+      "position": {
+        "xPos": 297550.0,
+        "yPos": 17.0,
+        "zPos": 301625.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Timashevskaya",
+      "position": {
+        "xPos": 301680.0,
+        "yPos": 17.0,
+        "zPos": 314121.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Novovelichkovskaya",
+      "position": {
+        "xPos": 261369.0,
+        "yPos": 17.0,
+        "zPos": 301081.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 100.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Elizavetinskaya",
+      "position": {
+        "xPos": 237691.0,
+        "yPos": 17.0,
+        "zPos": 299177.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 5.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Pashkovskaya",
+      "position": {
+        "xPos": 234691.0,
+        "yPos": 17.0,
+        "zPos": 322813.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 145.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Krasnodar",
+      "position": {
+        "xPos": 236390.0,
+        "yPos": 0.0,
+        "zPos": 313600.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kalinino",
+      "position": {
+        "xPos": 239356.0,
+        "yPos": 17.0,
+        "zPos": 312611.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Novotitarovskaya",
+      "position": {
+        "xPos": 258822.0,
+        "yPos": 17.0,
+        "zPos": 314243.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ivanovskaya",
+      "position": {
+        "xPos": 256629.0,
+        "yPos": 17.0,
+        "zPos": 275792.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 315.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Mirskaya",
+      "position": {
+        "xPos": 292428.0,
+        "yPos": 17.0,
+        "zPos": 423810.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Juravskaya",
+      "position": {
+        "xPos": 297154.0,
+        "yPos": 17.0,
+        "zPos": 359974.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 50.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Vyselki",
+      "position": {
+        "xPos": 297363.0,
+        "yPos": 17.0,
+        "zPos": 370988.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 225.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Buryakovskaya",
+      "position": {
+        "xPos": 284222.0,
+        "yPos": 17.0,
+        "zPos": 364275.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Belorechenskaya",
+      "position": {
+        "xPos": 203687.0,
+        "yPos": 17.0,
+        "zPos": 388126.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Maykop-2",
+      "position": {
+        "xPos": 195367.0,
+        "yPos": 17.0,
+        "zPos": 398899.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 39.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Maykop-1",
+      "position": {
+        "xPos": 193852.0,
+        "yPos": 17.0,
+        "zPos": 404773.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 315.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Maykop-3",
+      "position": {
+        "xPos": 188947.0,
+        "yPos": 17.0,
+        "zPos": 401654.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 320.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Adler",
+      "position": {
+        "xPos": 58916.0,
+        "yPos": 17.0,
+        "zPos": 395103.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 231.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lazarevskoe",
+      "position": {
+        "xPos": 110453.0,
+        "yPos": 17.0,
+        "zPos": 344728.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 233.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Agoy",
+      "position": {
+        "xPos": 135410.0,
+        "yPos": 17.0,
+        "zPos": 320633.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 231.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gelenjik-1",
+      "position": {
+        "xPos": 182257.0,
+        "yPos": 17.0,
+        "zPos": 238007.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gelenjik-3",
+      "position": {
+        "xPos": 181397.0,
+        "yPos": 17.0,
+        "zPos": 246111.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 115.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Myshako",
+      "position": {
+        "xPos": 193298.0,
+        "yPos": 17.0,
+        "zPos": 219969.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 39.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Krymskaya",
+      "position": {
+        "xPos": 225564.0,
+        "yPos": 17.0,
+        "zPos": 236693.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 10.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kievskoe-1",
+      "position": {
+        "xPos": 233976.0,
+        "yPos": 17.0,
+        "zPos": 231212.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 230.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kievskoe",
+      "position": {
+        "xPos": 235773.0,
+        "yPos": 17.0,
+        "zPos": 227452.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Anastasievskaya",
+      "position": {
+        "xPos": 252220.0,
+        "yPos": 17.0,
+        "zPos": 227527.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 100.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Anapa",
+      "position": {
+        "xPos": 216336.0,
+        "yPos": 17.0,
+        "zPos": 184721.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 230.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gostagaevskaya",
+      "position": {
+        "xPos": 230402.0,
+        "yPos": 17.0,
+        "zPos": 186710.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Zaporojskaya",
+      "position": {
+        "xPos": 270964.0,
+        "yPos": 17.0,
+        "zPos": 149368.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 50.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Taman",
+      "position": {
+        "xPos": 252673.0,
+        "yPos": 17.0,
+        "zPos": 134584.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kerch",
+      "position": {
+        "xPos": 274529.0,
+        "yPos": 17.0,
+        "zPos": 120374.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 320.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bagerovo",
+      "position": {
+        "xPos": 274470.0,
+        "yPos": 17.0,
+        "zPos": 102409.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 43.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Hardji-Bie",
+      "position": {
+        "xPos": 243146.0,
+        "yPos": 17.0,
+        "zPos": 80102.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 180.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Marfovka",
+      "position": {
+        "xPos": 252388.0,
+        "yPos": 17.0,
+        "zPos": 85959.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Zamorsk",
+      "position": {
+        "xPos": 272810.0,
+        "yPos": 17.0,
+        "zPos": 84892.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Alibay",
+      "position": {
+        "xPos": 260592.0,
+        "yPos": 17.0,
+        "zPos": 54268.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Semisotka",
+      "position": {
+        "xPos": 258477.0,
+        "yPos": 17.0,
+        "zPos": 48763.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 335.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gelenjik-2",
+      "position": {
+        "xPos": 185387.0,
+        "yPos": 17.0,
+        "zPos": 240442.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 148.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

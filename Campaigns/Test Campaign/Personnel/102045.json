@@ -1,0 +1,532 @@
+{
+  "squadronMembers": {
+    "3000877": {
+      "name": "Chalmers Gooder",
+      "serialNumber": 3000877,
+      "rank": "2nd Lieutenant",
+      "picName": "British013.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 7,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102045,
+      "inactiveDate": "19181111"
+    },
+    "3000876": {
+      "name": "Dennis Longton",
+      "serialNumber": 3000876,
+      "rank": "2nd Lieutenant",
+      "picName": "British012.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 2,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102045,
+      "inactiveDate": "19181111"
+    },
+    "3000879": {
+      "name": "Toby Steward",
+      "serialNumber": 3000879,
+      "rank": "2nd Lieutenant",
+      "picName": "British033.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 7,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102045,
+      "inactiveDate": "19181111"
+    },
+    "3000878": {
+      "name": "Braden Sheffield",
+      "serialNumber": 3000878,
+      "rank": "2nd Lieutenant",
+      "picName": "British015.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102045,
+      "inactiveDate": "19181111"
+    },
+    "3000873": {
+      "name": "Farley Rowe",
+      "serialNumber": 3000873,
+      "rank": "Lieutenant",
+      "picName": "British043.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 28,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102045,
+      "inactiveDate": "19181111"
+    },
+    "3000872": {
+      "name": "Fergal Brudenell",
+      "serialNumber": 3000872,
+      "rank": "Lieutenant",
+      "picName": "British038.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 11,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102045,
+      "inactiveDate": "19181111"
+    },
+    "3000875": {
+      "name": "Wylie Underhill",
+      "serialNumber": 3000875,
+      "rank": "Lieutenant",
+      "picName": "British004.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 23,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102045,
+      "inactiveDate": "19181111"
+    },
+    "3000874": {
+      "name": "Harrison Danett",
+      "serialNumber": 3000874,
+      "rank": "Lieutenant",
+      "picName": "British048.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 21,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102045,
+      "inactiveDate": "19181111"
+    },
+    "3000869": {
+      "name": "Byron Elliot",
+      "serialNumber": 3000869,
+      "rank": "Major",
+      "picName": "British046.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 50,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170407",
+          "location": "Lens",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "halberstadtd2",
+            "squadronName": "FliK 7",
+            "pilotSerialNumber": 0,
+            "pilotName": "Fw Randolf Engels",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "No 45 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Byron Elliot",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170410",
+          "location": "Guiscard",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "FA 15",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Leopold Gerstaecker",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "No 45 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Byron Elliot",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170413",
+          "location": "Beuvry",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 19",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Kristian Hergenrother",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "No 45 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Byron Elliot",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170416",
+          "location": "Rosieres-en-Santerre",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 19",
+            "pilotSerialNumber": 0,
+            "pilotName": "Fw Lars Rutter",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "No 45 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Byron Elliot",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170419",
+          "location": "Cappy",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "halberstadtd2",
+            "squadronName": "FliK 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Fw Buda Torok",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "No 45 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Byron Elliot",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Festieux",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 29",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Elmar Werkner",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "No 45 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Byron Elliot",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Ecuvilly",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 27",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Rudolf Lasch",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "No 45 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Byron Elliot",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Rosieres-en-Santerre",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 8",
+            "pilotSerialNumber": 0,
+            "pilotName": "Fw Adolf Kaestenbaum",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "No 45 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Byron Elliot",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102045,
+      "inactiveDate": "19181111"
+    },
+    "3000871": {
+      "name": "Delmar Northwood",
+      "serialNumber": 3000871,
+      "rank": "Captain",
+      "picName": "British055.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 42,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102045,
+      "inactiveDate": "19181111"
+    },
+    "3000870": {
+      "name": "Royce Gill",
+      "serialNumber": 3000870,
+      "rank": "Captain",
+      "picName": "British056.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 30,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102045,
+      "inactiveDate": "19181111"
+    },
+    "3000880": {
+      "name": "Brian Hervey",
+      "serialNumber": 3000880,
+      "rank": "2nd Lieutenant",
+      "picName": "British010.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 4,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102045,
+      "inactiveDate": "19181111"
+    }
+  }
+}

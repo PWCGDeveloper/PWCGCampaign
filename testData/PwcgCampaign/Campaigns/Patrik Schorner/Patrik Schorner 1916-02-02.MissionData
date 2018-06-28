@@ -1,0 +1,250 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-02-02";
+    Squadron = "FA 293b";
+    Map = "France";
+    Date = "19160202";
+    Time = "930:00";
+    Duty = "ARTILLERY_SPOT";
+    AircraftType = DFW C.V;
+    Altitude = 800;
+    Airfield = Bellevue Ferme;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  DFW C.V
+Squadron  FA 293b
+Airbase  Bellevue Ferme
+Date  1916-02-02
+
+Weather Report 
+    Medium cloud cover, low altitude with fog.
+    Cloud layer is 1272 meters.
+    Wind speed is 1 M/S.
+    Wind direction is 197.
+
+Primary Objective 
+    Spot artillery against the artillery battery  near Verdun
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 293b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "Ltn";
+            Observer = "Herbert Klemm";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Fritz Kiesinger";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Falco Lange";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Udo Pfisterer";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Meinhard Schwertner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 46b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Sigwalt Kalkbrenner";
+            ObserverRank = "Ltn";
+            Observer = "Knut Schauerte";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 19";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Gerhard Huppert";
+            ObserverRank = "Ltn";
+            Observer = "Gotthold Landauer";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 19";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Georg Fleck";
+            ObserverRank = "Ltn";
+            Observer = "Mario Berwald";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 19";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Joachim Passendorfer";
+            ObserverRank = "Ltn";
+            Observer = "Dirk Schickentanz";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 19";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Georg Sacher";
+            ObserverRank = "Ltn";
+            Observer = "Gottfried Lexis";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 278s";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Kaspar Fastnacht";
+            ObserverRank = "Ltn";
+            Observer = "Ewald Parler";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 278s";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Karlheinz Vogelweide";
+            ObserverRank = "Ltn";
+            Observer = "Klemens Lindenlaub";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 9";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Henri Laborde";
+            ObserverRank = "Lt";
+            Observer = "Armand Picar";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 9";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Ignace Besse";
+            ObserverRank = "S/Lt";
+            Observer = "Gaston Jacqueline";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 9";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Raymond Neyrat";
+            ObserverRank = "S/Lt";
+            Observer = "Alain Heilgenstein";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 9";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Corentin Lacorne";
+            ObserverRank = "S/Lt";
+            Observer = "Antonin Kalandoff";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 64";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Edmond Brisau";
+            ObserverRank = "S/Lt";
+            Observer = "Theophile Chevenement";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 227";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Luc Congy";
+            ObserverRank = "S/Lt";
+            Observer = "Leo Vertadier";
+        }
+    }
+}

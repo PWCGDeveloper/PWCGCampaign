@@ -1,0 +1,775 @@
+{
+  "skinSetType": "SKIN_DO_NOT_USE",
+  "skins": {
+    "ernst udet": {
+      "skinName": "ERNST UDET",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_42sq_blue": {
+      "skinName": "FDR1_42SQ_BLUE",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_42sq_red": {
+      "skinName": "FDR1_42SQ_RED",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_ab1lstshdow": {
+      "skinName": "FDR1_AB1LSTSHDOW",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_adloff": {
+      "skinName": "FDR1_ADLOFF",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_ah_cazador": {
+      "skinName": "FDR1_AH_CAZADOR",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_ah_default": {
+      "skinName": "FDR1_AH_DEFAULT",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_ah_ehre": {
+      "skinName": "FDR1_AH_EHRE",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_ah_happy": {
+      "skinName": "FDR1_AH_HAPPY",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_ah_maj_qball": {
+      "skinName": "FDR1_AH_MAJ_QBALL",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_ah_shotdown": {
+      "skinName": "FDR1_AH_SHOTDOWN",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_ah_sid": {
+      "skinName": "FDR1_AH_SID",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_ah_splater": {
+      "skinName": "FDR1_AH_SPLATER",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_bodo": {
+      "skinName": "FDR1_BODO",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_boxerdog": {
+      "skinName": "FDR1_BOXERDOG",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_cai_gen": {
+      "skinName": "FDR1_CAI_GEN",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_capt_awesome": {
+      "skinName": "FDR1_CAPT_AWESOME",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_cf": {
+      "skinName": "FDR1_CF",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_conga": {
+      "skinName": "FDR1_CONGA",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_er_cux": {
+      "skinName": "FDR1_ER_CUX",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_er_cux_m": {
+      "skinName": "FDR1_ER_CUX_M",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_er_falko": {
+      "skinName": "FDR1_ER_FALKO",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_er_kessler": {
+      "skinName": "FDR1_ER_KESSLER",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_er_mel_m": {
+      "skinName": "FDR1_ER_MEL_M",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_er_ovk_m": {
+      "skinName": "FDR1_ER_OVK_M",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_er_quin_m": {
+      "skinName": "FDR1_ER_QUIN_M",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_er_rawl_m": {
+      "skinName": "FDR1_ER_RAWL_M",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_er_sax_m": {
+      "skinName": "FDR1_ER_SAX_M",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_er_seml_m": {
+      "skinName": "FDR1_ER_SEML_M",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_er_semmel": {
+      "skinName": "FDR1_ER_SEMMEL",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_er_stef_m": {
+      "skinName": "FDR1_ER_STEF_M",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_er_strd_m": {
+      "skinName": "FDR1_ER_STRD_M",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_er_tvs_m": {
+      "skinName": "FDR1_ER_TVS_M",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_falke": {
+      "skinName": "FDR1_FALKE",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_hist_rs": {
+      "skinName": "FDR1_HIST_RS",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_hq_default": {
+      "skinName": "FDR1_HQ_DEFAULT",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_hq_ref": {
+      "skinName": "FDR1_HQ_REF",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_hq_ueber": {
+      "skinName": "FDR1_HQ_UEBER",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_huetzv2": {
+      "skinName": "FDR1_HUETZV2",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_hunne": {
+      "skinName": "FDR1_HUNNE",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_huntertastic": {
+      "skinName": "FDR1_HUNTERTASTIC",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_j10_apr18": {
+      "skinName": "FDR1_J10_APR18",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_j10_voss2": {
+      "skinName": "FDR1_J10_VOSS2",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_j10_voss_v2": {
+      "skinName": "FDR1_J10_VOSS_V2",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_j11mohnicke": {
+      "skinName": "FDR1_J11MOHNICKE",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_j11mvrw": {
+      "skinName": "FDR1_J11MVRW",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_j11weiss": {
+      "skinName": "FDR1_J11WEISS",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_j12kessler": {
+      "skinName": "FDR1_J12KESSLER",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_j16_041918_p10": {
+      "skinName": "FDR1_J16_041918_P10",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_j5_chunko": {
+      "skinName": "FDR1_J5_CHUNKO",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_j7raben": {
+      "skinName": "FDR1_J7RABEN",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_j99_arms": {
+      "skinName": "FDR1_J99_ARMS",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_jg1_hett": {
+      "skinName": "FDR1_JG1_HETT",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_jg1_labroiss": {
+      "skinName": "FDR1_JG1_LABROISS",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_jg1_lee": {
+      "skinName": "FDR1_JG1_LEE",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_jg1_maushake": {
+      "skinName": "FDR1_JG1_MAUSHAKE",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_jg1_reinhart": {
+      "skinName": "FDR1_JG1_REINHART",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_jg1_vickner": {
+      "skinName": "FDR1_JG1_VICKNER",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_jg1_vonkost": {
+      "skinName": "FDR1_JG1_VONKOST",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_jg1_vonrd": {
+      "skinName": "FDR1_JG1_VONRD",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_jg1_wurger": {
+      "skinName": "FDR1_JG1_WURGER",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_joshecho": {
+      "skinName": "FDR1_JOSHECHO",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_m55_generic": {
+      "skinName": "FDR1_M55_GENERIC",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_m55_panther": {
+      "skinName": "FDR1_M55_PANTHER",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_marvel": {
+      "skinName": "FDR1_MARVEL",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_o_rod": {
+      "skinName": "FDR1_O_ROD",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_panzer_lv": {
+      "skinName": "FDR1_PANZER_LV",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_piggy": {
+      "skinName": "FDR1_PIGGY",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_sc_std_1_blu": {
+      "skinName": "FDR1_SC_STD_1_BLU",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_sc_std_2_bla": {
+      "skinName": "FDR1_SC_STD_2_BLA",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_sc_std_3_gre": {
+      "skinName": "FDR1_SC_STD_3_GRE",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_sc_std_4_yel": {
+      "skinName": "FDR1_SC_STD_4_YEL",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_sc_std_5_red": {
+      "skinName": "FDR1_SC_STD_5_RED",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_seaw0lf": {
+      "skinName": "FDR1_SEAW0LF",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_tvscherrer": {
+      "skinName": "FDR1_TVSCHERRER",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_tvscherrerv2": {
+      "skinName": "FDR1_TVSCHERRERV2",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "fdr1_von_beckman": {
+      "skinName": "FDR1_VON_BECKMAN",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    }
+  }
+}

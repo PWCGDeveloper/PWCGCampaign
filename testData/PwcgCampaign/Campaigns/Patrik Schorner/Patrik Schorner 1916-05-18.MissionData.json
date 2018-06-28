@@ -1,0 +1,216 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-05-18",
+    "squadron": "Jasta 4",
+    "date": "19160518",
+    "time": "17:0:00",
+    "aircraftType": "AircraftType \u003d Fokker E.II",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Bonneuil Ferm",
+    "duty": "INTERCEPT",
+    "altitude": 3062
+  },
+  "missionDescription": "Mission:\nAircraft  Fokker E.III\nSquadron  Jasta 4\nAirbase  Bonneuil Ferme\nDate  1916-05-18\n\nWeather Report\nLight cloud cover, medium altitude.\nCloud layer is 2358 meters.\nWind speed is 2 M/S.\nWind direction is 286.\n\nPrimary Objective\nIntercept enemy aircraft near Ecuvilly.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Lambrecht Steinberg",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Obltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 8",
+      "crew": {
+        "pilot": "Honore Laffite",
+        "observer": "Florent Langenieux",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 8",
+      "crew": {
+        "pilot": "Marceau Astruc",
+        "observer": "Ignace Bretons",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 8",
+      "crew": {
+        "pilot": "Xavier Lacam",
+        "observer": "Maxime Chattaing",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 8",
+      "crew": {
+        "pilot": "Emilien Gallet",
+        "observer": "Germain Berna",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Franz Reichmann",
+        "observer": "Wenzel Sauer",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Bruno Kielholz",
+        "observer": "Hugbert Reuter",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 261",
+      "crew": {
+        "pilot": "Karlheinz Scheiner",
+        "observer": "Rainer Meidner",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 261",
+      "crew": {
+        "pilot": "Ewald Brecht",
+        "observer": "Till Gotz",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 261",
+      "crew": {
+        "pilot": "Friedhelm Feilhaber",
+        "observer": "Hermann Baumeister",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 261",
+      "crew": {
+        "pilot": "Maxim Nessel",
+        "observer": "Dietrich Rothberg",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 12",
+      "crew": {
+        "pilot": "Maxim Riemann",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 12",
+      "crew": {
+        "pilot": "Konrad Harring",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 107",
+      "crew": {
+        "pilot": "Robert Viala",
+        "observer": "Jules Marc",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 107",
+      "crew": {
+        "pilot": "Gaston Mayaud",
+        "observer": "Marcel Nouvion",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 45",
+      "crew": {
+        "pilot": "Christophe Discors",
+        "observer": "Frederic de La Cruz",
+        "pilotRank": "S/Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 45",
+      "crew": {
+        "pilot": "Cornil Lavy",
+        "observer": "Alcide Lacroix",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 45",
+      "crew": {
+        "pilot": "Robert Lachassine",
+        "observer": "Ferdinand Villejoubert",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 45",
+      "crew": {
+        "pilot": "Victor Picar",
+        "observer": "Jean-Jacques Duvallet",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

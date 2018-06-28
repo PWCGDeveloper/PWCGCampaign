@@ -1,0 +1,473 @@
+{
+  "campaignMembers": {
+    "Eugene Canere": {
+      "name": "Eugene Canere",
+      "rank": "Sous Lieutenant",
+      "picName": "French045.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 26,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170720",
+          "location": "Meurchin",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 4",
+            "pilot": "Ltn Niklaus Helberg",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "spad7",
+            "squadronName": "Esc SPA.3",
+            "pilot": "Eugene Canere",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19170723",
+          "location": "Fromelles",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 281",
+            "pilot": "Ltn Meinhard Rabe",
+            "pilotStatus": -6,
+            "observer": "Ltn Lars Redlich",
+            "observerStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "spad7",
+            "squadronName": "Esc SPA.3",
+            "pilot": "Eugene Canere",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19170726",
+          "location": "Cappy",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 19",
+            "pilot": "Uffz Holger Gans",
+            "pilotStatus": -6,
+            "observer": "Ltn Wendall Stabler",
+            "observerStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "spad7",
+            "squadronName": "Esc SPA.3",
+            "pilot": "Eugene Canere",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19170729",
+          "location": "Vendin",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 23b",
+            "pilot": "Fw Egon Homberg",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "spad7",
+            "squadronName": "Esc SPA.3",
+            "pilot": "Eugene Canere",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170801",
+          "medalName": "Pilots Badge",
+          "medalImage": "fr_pb.jpg"
+        },
+        {
+          "medalDate": "19170801",
+          "medalName": "Medaille Militaire",
+          "medalImage": "MM.jpg"
+        },
+        {
+          "medalDate": "19170801",
+          "medalName": "Croix de Guerre",
+          "medalImage": "CdG.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101003,
+      "squadronMemberRole": "PILOT"
+    },
+    "Augustin Laforge": {
+      "name": "Augustin Laforge",
+      "rank": "Corporal",
+      "picName": "French028.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 4,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170801",
+          "medalName": "Pilots Badge",
+          "medalImage": "fr_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101003,
+      "squadronMemberRole": "PILOT"
+    },
+    "Cyprien Quillet": {
+      "name": "Cyprien Quillet",
+      "rank": "Sergent",
+      "picName": "French032.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170801",
+          "medalName": "Pilots Badge",
+          "medalImage": "fr_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101003,
+      "squadronMemberRole": "PILOT"
+    },
+    "Test Campaign": {
+      "name": "Test Campaign",
+      "rank": "Sous Lieutenant",
+      "picName": "French052.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 0,
+      "aggressiveness": 0,
+      "aiSkillLevel": "PLAYER",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170801",
+          "medalName": "Pilots Badge",
+          "medalImage": "fr_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": true,
+      "squadronId": 101003,
+      "squadronMemberRole": "PILOT"
+    },
+    "Theophile Poligne": {
+      "name": "Theophile Poligne",
+      "rank": "Sergent",
+      "picName": "French039.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170801",
+          "medalName": "Pilots Badge",
+          "medalImage": "fr_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101003,
+      "squadronMemberRole": "PILOT"
+    },
+    "Bernard Adam": {
+      "name": "Bernard Adam",
+      "rank": "Sergent",
+      "picName": "French005.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 7,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170801",
+          "medalName": "Pilots Badge",
+          "medalImage": "fr_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101003,
+      "squadronMemberRole": "PILOT"
+    },
+    "Marcel Marc": {
+      "name": "Marcel Marc",
+      "rank": "Lieutenant",
+      "picName": "French033.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 38,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170723",
+          "location": "Croisilles",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 46b",
+            "pilot": "Ltn Benjamin Daehnhardt",
+            "pilotStatus": -6,
+            "observer": "Ltn Oskar Blechmann",
+            "observerStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "spad7",
+            "squadronName": "Esc SPA.3",
+            "pilot": "Marcel Marc",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19170726",
+          "location": "Ypres",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "halberstadtcl2",
+            "squadronName": "Schlasta 18",
+            "pilot": "Fw Uwe Waldheim",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "spad7",
+            "squadronName": "Esc SPA.3",
+            "pilot": "Marcel Marc",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19170729",
+          "location": "Proyart",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 3",
+            "pilot": "Fw Sigfried Gradl",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "spad7",
+            "squadronName": "Esc SPA.3",
+            "pilot": "Marcel Marc",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170801",
+          "medalName": "Pilots Badge",
+          "medalImage": "fr_pb.jpg"
+        },
+        {
+          "medalDate": "19170801",
+          "medalName": "Medaille Militaire",
+          "medalImage": "MM.jpg"
+        },
+        {
+          "medalDate": "19170801",
+          "medalName": "Croix de Guerre",
+          "medalImage": "CdG.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101003,
+      "squadronMemberRole": "PILOT"
+    },
+    "Adolphe Mayaud": {
+      "name": "Adolphe Mayaud",
+      "rank": "Corporal",
+      "picName": "French016.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 8,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170801",
+          "medalName": "Pilots Badge",
+          "medalImage": "fr_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101003,
+      "squadronMemberRole": "PILOT"
+    },
+    "Alfred Lagarrigue": {
+      "name": "Alfred Lagarrigue",
+      "rank": "Sous Lieutenant",
+      "picName": "French029.jpg",
+      "pilotActiveStatus": 0,
+      "country": "FRANCE",
+      "missionFlown": 21,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170726",
+          "location": "Fricourt",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 278s",
+            "pilot": "Fw Hubert Rohrmann",
+            "pilotStatus": -6,
+            "observer": "Obltn Udo Kranz",
+            "observerStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "spad7",
+            "squadronName": "Esc SPA.3",
+            "pilot": "Alfred Lagarrigue",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19170729",
+          "location": "Lens",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 278s",
+            "pilot": "Fw Hermann Schwarzenbacher",
+            "pilotStatus": -6,
+            "observer": "Ltn Lambrecht eitenauer",
+            "observerStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "spad7",
+            "squadronName": "Esc SPA.3",
+            "pilot": "Alfred Lagarrigue",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170801",
+          "medalName": "Pilots Badge",
+          "medalImage": "fr_pb.jpg"
+        },
+        {
+          "medalDate": "19170801",
+          "medalName": "Medaille Militaire",
+          "medalImage": "MM.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 101003,
+      "squadronMemberRole": "PILOT"
+    }
+  }
+}

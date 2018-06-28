@@ -1,0 +1,214 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-04-08";
+    Squadron = "FA 15";
+    Map = "Galicia";
+    Date = "19160408";
+    Time = "545:00";
+    Duty = "BOMB";
+    AircraftType = Roland C.IIa;
+    Altitude = 1081;
+    Airfield = Pukov;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Roland C.IIa
+Squadron  FA 15
+Airbase  Pukov
+Date  1916-04-08
+
+Weather Report 
+    Light cloud cover, high altitude.
+    Cloud layer is 4208 meters.
+    Wind speed is 0 M/S.
+    Wind direction is 195.
+
+Primary Objective 
+    Attack the trains and rail facilities  near Factory
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "FA 15";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "Ltn";
+            Observer = "Rudiger Hoelscher";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "FA 15";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Eberhardt Auch";
+            ObserverRank = "Ltn";
+            Observer = "Rupert Freudenberg";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "FAA 1";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Reinhold Braunstein";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "FAA 1";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Heinz Zwerling";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "FAA 1";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Wendel Nostitz";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "FAA 1";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Leopold Himmler";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 10";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Bank Radi";
+            ObserverRank = "Ltn";
+            Observer = "Volkard Kleinmann";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FliK 10";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Holger Nostitz";
+            ObserverRank = "Ltn";
+            Observer = "Felix Wendling";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "8th KAO";
+        Crew
+        {
+            PilotRank = "Cpt";
+            Pilot = "Anatolii Ivakin";
+            ObserverRank = "Pk";
+            Observer = "Yurii Orlov";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "8th KAO";
+        Crew
+        {
+            PilotRank = "DPk";
+            Pilot = "Sergei Khmelnov";
+            ObserverRank = "Lt";
+            Observer = "Vassi Melekhov";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "2nd KAO";
+        Crew
+        {
+            PilotRank = "Cpt";
+            Pilot = "Fedya Torchinovich";
+            ObserverRank = "Pk";
+            Observer = "Marko Ivanov";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "2nd KAO";
+        Crew
+        {
+            PilotRank = "Pk";
+            Pilot = "Gavrilovich Khmelnov";
+            ObserverRank = "Pk";
+            Observer = "Moriz Yerzov";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "2nd KAO";
+        Crew
+        {
+            PilotRank = "Pk";
+            Pilot = "Orel Chernetsky";
+            ObserverRank = "Lt";
+            Observer = "Cheslav Dobronravov";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "2nd KAO";
+        Crew
+        {
+            PilotRank = "DPk";
+            Pilot = "Vladilen Grigoryev";
+            ObserverRank = "Pk";
+            Observer = "Stefan Palyulin";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "3rd KAO";
+        Crew
+        {
+            PilotRank = "Pk";
+            Pilot = "Vyacheslav Baryshnikov";
+            ObserverRank = "Lt";
+            Observer = "Valerii Kuznetsov";
+        }
+    }
+}

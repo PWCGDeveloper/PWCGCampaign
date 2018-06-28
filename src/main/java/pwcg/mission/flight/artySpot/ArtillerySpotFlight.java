@@ -1,0 +1,115 @@
+package pwcg.mission.flight.artySpot;
+
+import java.util.List;
+
+import pwcg.campaign.Campaign;
+import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.target.TacticalTarget;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerCampaign;
+import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.Mission;
+import pwcg.mission.MissionBeginUnit;
+import pwcg.mission.Unit;
+import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.ground.unittypes.GroundUnit;
+import pwcg.mission.mcu.McuWaypoint;
+
+public class ArtillerySpotFlight extends Flight
+{
+	public ArtillerySpotFlight() 
+	{
+		super ();
+	}
+
+	public void initialize(
+				Mission mission, 
+				Campaign campaign, 
+				Coordinate targetCoords, 
+				Squadron squad, 
+                MissionBeginUnit missionBeginUnit,
+				boolean isPlayerFlight) throws PWCGException 
+	{
+		super.initialize (mission, campaign, FlightTypes.ARTILLERY_SPOT, targetCoords, squad, missionBeginUnit, isPlayerFlight);
+	}
+
+	@Override
+	public int calcNumPlanes() throws PWCGException 
+	{
+		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+		
+		int ArtillerySpotMinimum = configManager.getIntConfigParam(ConfigItemKeys.ArtillerySpotMinimumKey);
+		int ArtillerySpotAdditional = configManager.getIntConfigParam(ConfigItemKeys.ArtillerySpotAdditionalKey) + 1;
+		int numPlanes = ArtillerySpotMinimum + RandomNumberGenerator.getRandom(ArtillerySpotAdditional);
+		
+		return numPlanes;
+
+	}
+
+	@Override
+	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
+	{
+		ArtillerySpotWaypoints am = new ArtillerySpotWaypoints(startPosition, 
+													 targetCoords,
+													 this,
+												 	 mission);
+		return am.createWaypoints();
+	}
+
+	public String getMissionObjective() throws PWCGException 
+	{
+		String objective = "Correct artillery fire at the specified objective.";
+		
+		for (Unit linkedUnit : linkedUnits)
+		{
+            String objectiveLocation =  getMissionObjectiveLocation(linkedUnit);
+            
+            if (linkedUnit instanceof GroundUnit)
+            {
+                GroundUnit groundUnit = (GroundUnit)linkedUnit;             
+                
+                if (groundUnit.getTargetType() == TacticalTarget.TARGET_ASSAULT)
+                {
+                    objective = "Spot artillery against assaulting enemy troops " + objectiveLocation; 
+                    break;
+                }
+                else if (groundUnit.getTargetType() == TacticalTarget.TARGET_DEFENSE)
+                {
+                    objective = "Spot artillery against defending enemy troops " + objectiveLocation; 
+                    break;
+                }
+                else if (groundUnit.getTargetType() == TacticalTarget.TARGET_ARTILLERY)
+                {
+                    objective = "Spot artillery against the artillery battery " + objectiveLocation; 
+                    // Artillery might be overridden by something else
+                }
+                else if (groundUnit.getTargetType() == TacticalTarget.TARGET_TRANSPORT)
+                {
+                    objective = "Spot artillery against the transport and road facilities " + objectiveLocation; 
+                    break;
+                }
+                else if (groundUnit.getTargetType() == TacticalTarget.TARGET_DRIFTER)
+                {
+                    objective = "Spot artillery against the light shipping " + objectiveLocation; 
+                    break;
+                }
+                else if (groundUnit.getTargetType() == TacticalTarget.TARGET_TROOP_CONCENTRATION)
+                {
+                    objective = "Spot artillery against the troop concentrations " + objectiveLocation; 
+                    // Troop concentration might be overridden by something else
+                }
+            }
+		}
+		
+		return objective;
+	}
+
+    @Override
+    protected void createFlightSpecificTargetAssociations() throws PWCGException
+    {
+        this.createSimpleTargetAssociations();
+    }
+}

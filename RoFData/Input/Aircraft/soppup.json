@@ -1,0 +1,19 @@
+{
+  "type": "soppup",
+  "side": "ALLIED",
+  "displayName": "Sopwith Pup",
+  "script": "LuaScripts\\WorldObjects\\soppup.txt",
+  "model": "graphics\\planes\\soppup\\soppup.mgm",
+  "desc": "",
+  "cruisingSpeed": 130,
+  "climbOutRate": 200,
+  "goodness": 34,
+  "endurance": 3.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER"
+  ],
+  "introduction": "19160901",
+  "withdrawal": "19181111"
+}

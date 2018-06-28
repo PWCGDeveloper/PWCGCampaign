@@ -1,0 +1,31 @@
+{
+  "name": "Esc 73",
+  "squadronId": 101073,
+  "airfields": {
+    "19160419": "Villers Bretonneux",
+    "19160813": "Brabant en Argonne",
+    "19170217": "Bouy",
+    "19170308": "Bonne Maisson",
+    "19170415": "Le Creche",
+    "19170705": "Ferme Cravancon",
+    "19170914": "Julvecourt",
+    "19180108": "Vauxcere",
+    "19180212": "Vauxcere",
+    "19180317": "Baizieux 2",
+    "19180326": "Foucaucourt en Santerre",
+    "19180404": "Vert Galand 1",
+    "19180405": "Ferme Cravancon",
+    "19180428": "Vauxcere",
+    "19180508": "Auve",
+    "19180517": "Senard en Argonne",
+    "19180615": "Bouy",
+    "19180705": "La Cheppe",
+    "19180818": "Ravenel",
+    "19180919": "Ville-Savoye",
+    "19180925": "Malzeville",
+    "19181010": "Muizon",
+    "19181025": "Neuflize",
+    "19181102": "St.Loup,Champagne",
+    "19181105": "Marchais"
+  }
+}

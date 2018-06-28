@@ -1,0 +1,60 @@
+{
+  "country": "AUSTRIA",
+  "squadronId": 502013,
+  "name": "FliK 13",
+  "skill": 35,
+  "planeAssignments": [
+    {
+      "type": "halberstadtd2",
+      "squadronIntroduction": "19160910",
+      "squadronWithdrawal": "19170620"
+    },
+    {
+      "type": "albatrosd3",
+      "squadronIntroduction": "19170610",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160901": "Msovono",
+    "19170101": "Lesnaya Slobcako",
+    "19170501": "Kolomyya"
+  },
+  "skins": [
+    {
+      "skinName": "HD2_PW_FL13_DEF",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 502013,
+      "country": "Austria",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD3_PW_FL13_DEF",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 502013,
+      "country": "Austria",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

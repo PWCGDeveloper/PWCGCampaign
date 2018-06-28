@@ -1,0 +1,18 @@
+{
+  "name": "Esc 77",
+  "squadronId": 101077,
+  "airfields": {
+    "19161004": "Toul",
+    "19170310": "Brabant en Argonne",
+    "19170515": "Mont Soissons Ferme",
+    "19170921": "Grivesnes",
+    "19180120": "Rosnay",
+    "19180322": "Ravenel",
+    "19180326": "Champien",
+    "19180404": "Moreuil",
+    "19180608": "Ferme de Corbeaulieu",
+    "19180806": "Froides",
+    "19181019": "Auve",
+    "19181025": "Leffincourt,E Reims"
+  }
+}

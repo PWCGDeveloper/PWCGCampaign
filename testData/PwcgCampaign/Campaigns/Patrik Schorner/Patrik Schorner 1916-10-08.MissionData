@@ -1,0 +1,286 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-10-08";
+    Squadron = "Jasta 16b";
+    Map = "France";
+    Date = "19161008";
+    Time = "14:30:00";
+    Duty = "OFFENSIVE";
+    AircraftType = Albatros D.II;
+    Altitude = 3474;
+    Airfield = Balatre,E Roye;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Albatros D.II
+Squadron  Jasta 16b
+Airbase  Balatre,E Roye
+Date  1916-10-08
+
+Weather Report 
+    Medium cloud cover, high altitude.
+    Cloud layer is 3600 meters.
+    Wind speed is 0 M/S.
+    Wind direction is 336.
+
+Primary Objective 
+    Penetrate enemy airspace near Noyon.  Engage any enemy aircraft that you encounter.  
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Oswald Fromm";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Detlef Schwarzer";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Augustus Kass";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 13";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Mario Rauschenberg";
+            ObserverRank = "Ltn";
+            Observer = "Leonhard Oppelt";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 18";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Joachim Fischart";
+            ObserverRank = "Ltn";
+            Observer = "Jurgen Krausser";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 18";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Udo Kronfeldt";
+            ObserverRank = "Obltn";
+            Observer = "Gottfried Kunstler";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 261";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Paul Drescher";
+            ObserverRank = "Ltn";
+            Observer = "Kristof Wenz";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 261";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Reinhold Kiefer";
+            ObserverRank = "Ltn";
+            Observer = "Hildebrand Brickner";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport17";
+        Squadron = "Esc 65";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Charles Nungesser";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport17brit";
+        Squadron = "Esc 65";
+        Crew
+        {
+            PilotRank = "Cpl";
+            Pilot = "Philippe Kalandoff";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "sopstr";
+        Squadron = "Esc 13";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Alphonse Ryckewaert";
+            ObserverRank = "S/Lt";
+            Observer = "Blaize Gayrau";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "sopstr";
+        Squadron = "Esc 13";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Marc Riot";
+            ObserverRank = "S/Lt";
+            Observer = "Ulysse Decraissain";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "sopstr";
+        Squadron = "No 5 Squadron RNAS";
+        Crew
+        {
+            PilotRank = "Sqdn.Cdr";
+            Pilot = "Godfrey Brome";
+            ObserverRank = "Flt Lt";
+            Observer = "Victor Cantilupe";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "sopstr";
+        Squadron = "No 5 Squadron RNAS";
+        Crew
+        {
+            PilotRank = "Flt Lt";
+            Pilot = "Egil Coppinger";
+            ObserverRank = "Flt Lt";
+            Observer = "Victor Sweetecok";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "sopstr";
+        Squadron = "No 5 Squadron RNAS";
+        Crew
+        {
+            PilotRank = "Flt SLt";
+            Pilot = "Drew Porter";
+            ObserverRank = "Flt.Cdr";
+            Observer = "Charles Frye";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "sopstr";
+        Squadron = "No 5 Squadron RNAS";
+        Crew
+        {
+            PilotRank = "Flt SLt";
+            Pilot = "Vance Switt";
+            ObserverRank = "Flt Lt";
+            Observer = "Frasier Pelletoot";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 34";
+        Crew
+        {
+            PilotRank = "Cne";
+            Pilot = "Fernand Morael";
+            ObserverRank = "Lt";
+            Observer = "Dominique Laffargue";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 34";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Alfred Marc";
+            ObserverRank = "S/Lt";
+            Observer = "Jean-Francois Gallet";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 34";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Armand Laffite";
+            ObserverRank = "S/Lt";
+            Observer = "Maurice Duvallet";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 34";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Emile Neyrat";
+            ObserverRank = "S/Lt";
+            Observer = "Casimir Honore";
+        }
+    }
+}

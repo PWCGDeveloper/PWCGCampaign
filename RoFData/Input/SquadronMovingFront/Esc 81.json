@@ -1,0 +1,32 @@
+{
+  "name": "Esc 81",
+  "squadronId": 101081,
+  "airfields": {
+    "19170105": "Ferme de Corbeaulieu",
+    "19170122": "La Noblette",
+    "19170314": "Beauze sur Aire",
+    "19170418": "Muizon",
+    "19170516": "Lemmes",
+    "19170913": "La Cheppe",
+    "19180108": "Vauxcere",
+    "19180215": "Baizieux 2",
+    "19180315": "Grivesnes",
+    "19180323": "Grivesnes",
+    "19180326": "Foucaucourt en Santerre",
+    "19180404": "Moreuil",
+    "19180408": "Arcy-Ste Restitue",
+    "19180429": "La Cheppe",
+    "19180528": "Giromancy",
+    "19180615": "Auve",
+    "19180622": "Ferme d_Alger",
+    "19180706": "Ravenel",
+    "19180819": "Grivesnes",
+    "19180901": "Malzeville",
+    "19180924": "La Cheppe",
+    "19181010": "La Mellette",
+    "19181015": "Hauvine",
+    "19181025": "Leffincourt,E Reims",
+    "19181105": "Chassonge Ferme,Stenay/Verdun",
+    "19181110": "Stenay"
+  }
+}

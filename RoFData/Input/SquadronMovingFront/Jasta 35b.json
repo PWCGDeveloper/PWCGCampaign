@@ -1,0 +1,18 @@
+{
+  "name": "Jasta 35b",
+  "squadronId": 501035,
+  "airfields": {
+    "19170722": "Lomme,Lille",
+    "19170919": "Moorslede",
+    "19171201": "Beugnatre",
+    "19180208": "Guesnain,Douai",
+    "19180329": "Velu",
+    "19180419": "Riencourt,Arras",
+    "19180829": "Guesnain,Douai",
+    "19181013": "Assevillers",
+    "19181015": "Mesnil-Bruntel",
+    "19181025": "Fontaine Notre Dame",
+    "19181105": "Busigny",
+    "19181110": "Bohain"
+  }
+}

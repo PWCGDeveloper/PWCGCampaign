@@ -1,0 +1,9 @@
+{
+  "name": "Boghol 5",
+  "squadronId": 501505,
+  "airfields": {
+    "19171101": "Snelleghem",
+    "19181105": "Oostcamp",
+    "19181110": "Coolkereke"
+  }
+}

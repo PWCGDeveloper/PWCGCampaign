@@ -1,0 +1,154 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-05-15";
+    Squadron = "Jasta 4";
+    Map = "France";
+    Date = "19160515";
+    Time = "15:0:00";
+    Duty = "OFFENSIVE";
+    AircraftType = Fokker E.III;
+    Altitude = 2000;
+    Airfield = Bonneuil Ferme;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Fokker E.III
+Squadron  Jasta 4
+Airbase  Bonneuil Ferme
+Date  1916-05-15
+
+Weather Report 
+    Medium cloud cover, medium altitude.
+    Cloud layer is 1882 meters.
+    Wind speed is 2 M/S.
+    Wind direction is 323.
+
+Primary Objective 
+    Penetrate enemy airspace near Ribecourt.  Engage any enemy aircraft that you encounter.  
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Fritz Bernert";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Mario Falck";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Ewald Weinwurm";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 7";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Johann Honigswald";
+            ObserverRank = "Ltn";
+            Observer = "Sebastian Traub";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 7";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Michael Flohr";
+            ObserverRank = "Obltn";
+            Observer = "Niklaus Eichhorn";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 40";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Blaise Morales";
+            ObserverRank = "S/Lt";
+            Observer = "Ferdinand Vasse";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 40";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Leonard Lafont";
+            ObserverRank = "S/Lt";
+            Observer = "Marceau Marchau";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 108";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Ignace Poligne";
+            ObserverRank = "S/Lt";
+            Observer = "Adolphe Laboux";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 108";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Emilien Laforgue";
+            ObserverRank = "S/Lt";
+            Observer = "Richard Labolle";
+        }
+    }
+}

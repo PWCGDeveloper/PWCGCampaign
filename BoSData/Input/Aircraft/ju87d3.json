@@ -1,0 +1,19 @@
+{
+  "type": "ju87d3",
+  "side": "AXIS",
+  "displayName": "Ju 87 D-3",
+  "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+  "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+  "desc": "",
+  "cruisingSpeed": 200,
+  "climbOutRate": 600,
+  "goodness": 25,
+  "endurance": 1.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_MEDIUM",
+  "roles": [
+    "ROLE_DIVE_BOMB"
+  ],
+  "introduction": "19410301",
+  "withdrawal": "19450503"
+}

@@ -1,0 +1,40 @@
+Player flight
+  Mission type: BOMB
+  Airfield    : Vatulino
+  Aircraft    : pe2s35
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: GROUND_ATTACK
+  Airfield    : Kholm
+  Aircraft    : il2m42
+  Player Contact    : 30
+
+
+
+Flight
+  Mission type: PATROL
+  Airfield    : Sychevka
+  Aircraft    : bf109f4
+  Player Contact    : 33
+
+
+
+Flight
+  Mission type: BOMB
+  Airfield    : Vjazma
+  Aircraft    : ju88a4
+  Player Contact    : 12
+
+
+
+Flight
+  Mission type: DIVE_BOMB
+  Airfield    : Temkino
+  Aircraft    : ju87d3
+  Player Contact    : -1
+
+
+

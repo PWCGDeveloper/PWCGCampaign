@@ -1,0 +1,236 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-06-27",
+    "squadron": "Jasta 4",
+    "date": "19160627",
+    "time": "9:0:00",
+    "aircraftType": "AircraftType \u003d Fokker E.II",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Bonneuil Ferm",
+    "duty": "BALLOON_DEFENSE",
+    "altitude": 3082
+  },
+  "missionDescription": "Mission:\nAircraft  Fokker E.III\nSquadron  Jasta 4\nAirbase  Bonneuil Ferme\nDate  1916-06-27\n\nWeather Report\nHeavy cloud cover, medium altitude.\nCloud layer is 2321 meters.\nWind speed is 2 M/S.\nWind direction is 343.\n\nPrimary Objective\nDefend our balloon near Guiscard.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Obltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Kurt Wintgens",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Florian Lasch",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Carsten Kantner",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Arnold Bach",
+        "observer": "",
+        "pilotRank": "Uffz",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dh2",
+      "squadronName": "No 32 Squadron RFC",
+      "crew": {
+        "pilot": "David Norwich",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dh2",
+      "squadronName": "No 32 Squadron RFC",
+      "crew": {
+        "pilot": "Percival Thorne",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dh2",
+      "squadronName": "No 32 Squadron RFC",
+      "crew": {
+        "pilot": "William Chapman",
+        "observer": "",
+        "pilotRank": "2nd Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Gerhard Feigl",
+        "observer": "Emil Kornfeld",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Hermann Gross",
+        "observer": "Hermann Werlhof",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 7",
+      "crew": {
+        "pilot": "Elmar Krampitz",
+        "observer": "Volkard Rosenblatt",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 7",
+      "crew": {
+        "pilot": "Gottfried Birkenfeld",
+        "observer": "Fritz Werfel",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 23",
+      "crew": {
+        "pilot": "Knut Staebler",
+        "observer": "Heinrich Rohrbach",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 23",
+      "crew": {
+        "pilot": "Kristof Schickentanz",
+        "observer": "Leonhard Quattlebaum",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 23",
+      "crew": {
+        "pilot": "Sigwalt Schreiner",
+        "observer": "Kristof Neupauer",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 19",
+      "crew": {
+        "pilot": "Christophe Labauge",
+        "observer": "Serge Lacomble",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 19",
+      "crew": {
+        "pilot": "Gaspard Gisquet",
+        "observer": "Philippe Lachassine",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 23 Squadron RFC",
+      "crew": {
+        "pilot": "Ferdinand Northwood",
+        "observer": "Farrell Gooder",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 23 Squadron RFC",
+      "crew": {
+        "pilot": "Royce Petham",
+        "observer": "Charles Digby",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 23 Squadron RFC",
+      "crew": {
+        "pilot": "Christopher Kidwelly",
+        "observer": "Darrel Raynsford",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Cpt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 23 Squadron RFC",
+      "crew": {
+        "pilot": "Elton Warner",
+        "observer": "Bruno Ackworth",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 8 Squadron RFC",
+      "crew": {
+        "pilot": "Gideon Churmond",
+        "observer": "Alexander Beresford",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    }
+  ]
+}

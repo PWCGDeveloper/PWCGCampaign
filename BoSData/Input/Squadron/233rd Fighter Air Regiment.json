@@ -1,0 +1,104 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 10111233,
+  "name": "233rd Fighter Air Regiment",
+  "fileName": "233rd Fighter Air Regiment.json",
+  "skill": 50,
+  "planeAssignments": [
+    {
+      "type": "mig3s24",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19420228"
+    },
+    {
+      "type": "lagg3s29",
+      "squadronIntroduction": "19420301",
+      "squadronWithdrawal": "19430917"
+    },
+    {
+      "type": "yak1s127",
+      "squadronIntroduction": "19430918",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Rjev",
+    "19411020": "Staritsa",
+    "19411110": "Nikolskoye",
+    "19411120": "Kryukovo",
+    "19411215": "Brykovo",
+    "19420110": "Ryabinki",
+    
+    "19420301": "Kalach",
+
+    "19420601": "Holmskaya",
+    "19420624": "Korenovskaya",
+    "19420709": "Agoy",
+    "19420721": "Sochi",
+
+    "19420801": "Bol. Rossoshka",
+    "19420906": "Rynok",
+    "19421011": "Zaplavnoye",
+    "19421123": "Tinguta",
+    "19421223": "Verh. Ahtuba",
+    "19430120": "Bol. Rossoshka",
+
+    "19430301": "Juravskaya",
+    "19430330": "Timashevskaya",
+    "19430418": "Krasnoarmeyskayas",
+    "19430918": "Myshako",
+    "19430927": "Myshako",
+    "19431004": "Anapa",
+    "19431008": "Anapa"
+  },
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19420301",
+        "squadName": "15th Fighter Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 50
+      },
+      {
+        "date": "19430918",
+        "squadName": "298th Fighter Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 45
+      }
+    ]
+  },
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19430824",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 60
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 40
+          }
+        ]
+      },
+      {
+        "startDate": "19430824",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 20
+          }
+        ]
+      }
+    ]
+  }
+}

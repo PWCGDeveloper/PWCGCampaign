@@ -1,0 +1,155 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101013,
+  "name": "Esc 13",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "type": "fe2b",
+      "squadronIntroduction": "19150801",
+      "squadronWithdrawal": "19161015"
+    },
+    {
+      "type": "sopstr",
+      "squadronIntroduction": "19161001",
+      "squadronWithdrawal": "19180315"
+    },
+    {
+      "type": "breguet14",
+      "squadronIntroduction": "19180301",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19150801": "Lemmes",
+    "19150906": "Auve",
+    "19151120": "Muizon",
+    "19151216": "Auve",
+    "19160503": "Tilloy at Bellay",
+    "19160519": "Julvecourt",
+    "19160828": "Froides",
+    "19161207": "Lemmes",
+    "19170103": "Vadelaincourt",
+    "19170127": "Lemmes",
+    "19170701": "Vadelaincourt",
+    "19170922": "Auve",
+    "19171005": "Froides",
+    "19180609": "Grivesnes"
+  },
+  "skins": [
+    {
+      "skinName": "FE2B_PW_F13_DFT",
+      "planeType": "fe2b",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101013,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "RE8_FRENCH",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101013,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SSB_FRA_STD_EARLY",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19171101",
+      "squadId": 101013,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SSB_FRA_STD_PC10",
+      "planeType": "sopstrb",
+      "startDate": "19170101",
+      "endDate": "19171101",
+      "squadId": 101013,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SSB_FRA_STD_CAMO",
+      "planeType": "sopstrb",
+      "startDate": "19171001",
+      "endDate": "19181201",
+      "squadId": 101013,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SS_PW_F13_DFTE",
+      "planeType": "sopstr",
+      "startDate": "19140801",
+      "endDate": "19171022",
+      "squadId": 101013,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SS_PW_F13_DFTL",
+      "planeType": "sopstr",
+      "startDate": "19171022",
+      "endDate": "19181111",
+      "squadId": 101013,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "B14_ESC13_SEPT1917",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19180111",
+      "squadId": 101013,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "B14_ESC13_JAN1918",
+      "planeType": "breguet14",
+      "startDate": "19180112",
+      "endDate": "19181201",
+      "squadId": 101013,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+    "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_RECON",
+            "weight": 40
+          },
+          {
+            "role": "ROLE_BOMB",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_ARTILLERY_SPOT",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+  
+}

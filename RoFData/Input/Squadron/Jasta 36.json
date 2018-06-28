@@ -1,0 +1,170 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501036,
+  "name": "Jasta 36",
+  "skill": 65,
+  "planeAssignments": [
+    {
+      "type": "albatrosd2late",
+      "squadronIntroduction": "19170301",
+      "squadronWithdrawal": "19170515"
+    },
+    {
+      "type": "albatrosd3",
+      "squadronIntroduction": "19170504",
+      "squadronWithdrawal": "19170710"
+    },
+    {
+      "type": "albatrosd5",
+      "squadronIntroduction": "19170615",
+      "squadronWithdrawal": "19180415"
+    },
+    {
+      "type": "fokkerdr1",
+      "squadronIntroduction": "19180310",
+      "squadronWithdrawal": "19180701"
+    },
+    {
+      "type": "fokkerd7",
+      "squadronIntroduction": "19180601",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19170225": "Clastres",
+    "19170302": "Neuflize",
+    "19170504": "St.Loup,Champagne",
+    "19170619": "Lomme,Lille",
+    "19170626": "La Petrie",
+    "19170703": "Gheluwe",
+    "19170911": "Moorslede",
+    "19170918": "Houplin,S Lille",
+    "19170922": "Rulers",
+    "19180314": "Douai",
+    "19180417": "Zande",
+    "19180523": "Vivaise",
+    "19180801": "Chambry,Laon",
+    "19180825": "Douai",
+    "19180828": "Douai",
+    "19180928": "Douai",
+    "19181001": "Assevillers",
+    "19181011": "Engel"
+  },
+  "skins": [
+    {
+      "skinName": "AD2L_3CAMO_LATE",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501036,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD3_J36_MAR1917",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170502",
+      "squadId": 501036,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD3_J36_MAY1917",
+      "planeType": "albatrosd3",
+      "startDate": "19170502",
+      "endDate": "19181201",
+      "squadId": 501036,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_501036_ANS",
+      "planeType": "albatrosd5",
+      "startDate": "19140801",
+      "endDate": "19170919",
+      "squadId": 501036,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J36_OCT17",
+      "planeType": "albatrosd5",
+      "startDate": "19170919",
+      "endDate": "19180404",
+      "squadId": 501036,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J36_APR18",
+      "planeType": "albatrosd5",
+      "startDate": "19180404",
+      "endDate": "19181201",
+      "squadId": 501036,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_J36_DEC17",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19180404",
+      "squadId": 501036,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_501036_ANS",
+      "planeType": "fokkerdr1",
+      "startDate": "19170919",
+      "endDate": "19180404",
+      "squadId": 501036,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7_501036_ANS",
+      "planeType": "fokkerd7",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501036,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7F_J36_MAY18",
+      "planeType": "fokkerd7f",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501036,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

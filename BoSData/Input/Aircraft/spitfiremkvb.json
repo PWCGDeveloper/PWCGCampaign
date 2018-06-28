@@ -1,0 +1,19 @@
+{
+  "type": "spitfiremkvb",
+  "side": "ALLIED",
+  "displayName": "Spitfire Mk.VB",
+  "script": "LuaScripts\\WorldObjects\\Planes\\spitfiremkvb.txt",
+  "model": "graphics\\planes\\spitfiremkvb\\spitfiremkvb.mgm",
+  "desc": "",
+  "cruisingSpeed": 350,
+  "climbOutRate": 1800,
+  "goodness": 40,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER"
+  ],
+  "introduction": "19410301",
+  "withdrawal": "19450503"
+}

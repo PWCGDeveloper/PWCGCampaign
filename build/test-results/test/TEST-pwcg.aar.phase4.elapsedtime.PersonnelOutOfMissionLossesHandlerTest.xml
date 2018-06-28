@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.phase4.elapsedtime.PersonnelOutOfMissionLossesHandlerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-09-10T23:49:10" hostname="DigitalStorm-PC" time="12.742">
+  <properties/>
+  <testcase name="testPilotsOutOfSquadronHarmed" classname="pwcg.aar.phase4.elapsedtime.PersonnelOutOfMissionLossesHandlerTest" time="4.088"/>
+  <testcase name="testPilotsInSquadronHarmed" classname="pwcg.aar.phase4.elapsedtime.PersonnelOutOfMissionLossesHandlerTest" time="4.284"/>
+  <testcase name="testPilotsInSquadronNotHarmedBecauseNotAvailable" classname="pwcg.aar.phase4.elapsedtime.PersonnelOutOfMissionLossesHandlerTest" time="4.13"/>
+  <testcase name="testAceInSquadronKilled" classname="pwcg.aar.phase4.elapsedtime.PersonnelOutOfMissionLossesHandlerTest" time="0.238"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

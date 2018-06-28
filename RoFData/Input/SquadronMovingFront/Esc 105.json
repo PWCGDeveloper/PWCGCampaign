@@ -1,0 +1,22 @@
+{
+  "name": "Esc 105",
+  "squadronId": 101105,
+  "airfields": {
+    "19150801": "Malzeville",
+    "19160418": "Vauxcere",
+    "19160901": "Lemmes",
+    "19170214": "Auve",
+    "19170316": "Rosnay",
+    "19171209": "Vauxcere",
+    "19180128": "Vauxcere",
+    "19180408": "Vauxcere",
+    "19180415": "Valheureux",
+    "19180520": "Muizon",
+    "19180526": "Auve",
+    "19180628": "Auve",
+    "19180705": "Rosnay",
+    "19180814": "Lhery",
+    "19181015": "Muizon",
+    "19181025": "Pomacle"
+  }
+}

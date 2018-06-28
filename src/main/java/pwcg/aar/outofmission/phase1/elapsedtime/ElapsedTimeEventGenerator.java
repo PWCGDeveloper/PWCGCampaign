@@ -1,0 +1,54 @@
+package pwcg.aar.outofmission.phase1.elapsedtime;
+
+import java.util.Date;
+
+import pwcg.aar.data.AARContext;
+import pwcg.aar.ui.events.model.EndOfWarEvent;
+import pwcg.aar.ui.events.model.SquadronMoveEvent;
+import pwcg.campaign.Campaign;
+import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
+
+public class ElapsedTimeEventGenerator
+{
+    private Campaign campaign;
+    private AARContext aarContext;
+    private ElapsedTimeEvents elapsedTimeEvents = new ElapsedTimeEvents();
+    
+    public ElapsedTimeEventGenerator(Campaign campaign, AARContext aarContext)
+    {
+        this.campaign = campaign;
+        this.aarContext = aarContext;
+    }
+
+    public ElapsedTimeEvents createElapsedTimeEvents() throws PWCGException
+    {
+        if (!endOfWar())
+        {
+            squadronMove();
+        }
+        
+        return elapsedTimeEvents;
+    }
+
+    private boolean endOfWar() throws PWCGException
+    {
+        Date theEnd = DateUtils.getEndOfWar();
+        if (!aarContext.getNewDate().before(theEnd))
+        {
+            EndOfWarEvent endOfWarEvent = new EndOfWarEvent();
+            elapsedTimeEvents.setEndOfWarEvent(endOfWarEvent);
+            return true;
+        }
+        
+        return false;
+    }
+
+    private void squadronMove() throws PWCGException
+    {
+        SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
+        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(aarContext.getNewDate());
+        elapsedTimeEvents.setSquadronMoveEvent(squadronMoveEvent);
+    }
+
+}

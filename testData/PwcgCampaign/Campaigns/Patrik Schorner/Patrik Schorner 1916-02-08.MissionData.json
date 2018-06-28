@@ -1,0 +1,156 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-02-08",
+    "squadron": "FA 293b",
+    "date": "19160208",
+    "time": "90:00",
+    "aircraftType": "AircraftType \u003d DFW C.",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Bellevue Ferm",
+    "duty": "BOMB",
+    "altitude": 3509
+  },
+  "missionDescription": "Mission:\nAircraft  DFW C.V\nSquadron  FA 293b\nAirbase  Bellevue Ferme\nDate  1916-02-08\n\nWeather Report\nMedium cloud cover, high altitude.\nCloud layer is 4921 meters.\nWind speed is 1 M/S.\nWind direction is 77.\n\nPrimary Objective\nAttack the transport and road facilities  near Forges-sur-Meuse\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 293b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "Herbert Klemm",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 293b",
+      "crew": {
+        "pilot": "Waldemar Ganz",
+        "observer": "Bernd Lewysohn",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 5",
+      "crew": {
+        "pilot": "Oskar Drache",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 5",
+      "crew": {
+        "pilot": "Emil Schneiderman",
+        "observer": "",
+        "pilotRank": "Uffz",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 12",
+      "crew": {
+        "pilot": "Ralf Faulhaber",
+        "observer": "Simon Hohmann",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Nils Frankenburg",
+        "observer": "Bernd Sehlman",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Harald Stromberg",
+        "observer": "Helmut Teichmuller",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Adolf Kissling",
+        "observer": "Carsten Wohler",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Thomas Behr",
+        "observer": "Emmerich Mummert",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 7",
+      "crew": {
+        "pilot": "Rene Hoguet",
+        "observer": "Vincent Brindejonc",
+        "pilotRank": "Cne",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 7",
+      "crew": {
+        "pilot": "Antonin Lacoste",
+        "observer": "Celestin Pelatan",
+        "pilotRank": "Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "Esc 31",
+      "crew": {
+        "pilot": "Hippolyte Perrin",
+        "observer": "",
+        "pilotRank": "Sergt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "Esc 31",
+      "crew": {
+        "pilot": "Marcel Morizot",
+        "observer": "",
+        "pilotRank": "Sergt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Marcel Benard",
+        "observer": "Auguste Honore",
+        "pilotRank": "Lt",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

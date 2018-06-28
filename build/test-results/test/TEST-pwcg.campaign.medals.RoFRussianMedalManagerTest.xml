@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.campaign.medals.RoFRussianMedalManagerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:50:00" hostname="DigitalStorm-PC" time="0.803">
+  <properties/>
+  <testcase name="testMMMFail" classname="pwcg.campaign.medals.RoFRussianMedalManagerTest" time="0.251"/>
+  <testcase name="testRussianMedals" classname="pwcg.campaign.medals.RoFRussianMedalManagerTest" time="0.251"/>
+  <testcase name="testImages" classname="pwcg.campaign.medals.RoFRussianMedalManagerTest" time="0.301"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,12 @@
+{
+  "name": "FA 18",
+  "squadronId": 501218,
+  "airfields": {
+    "19150801": "Epinoy,NW Cambrai",
+    "19151021": "Liesse",
+    "19171115": "Chassonge Ferme,Stenay/Verdun",
+    "19181025": "La Jolly Ferme,Stenay",
+    "19181105": "Carignan",
+    "19181110": "Jametz"
+  }
+}

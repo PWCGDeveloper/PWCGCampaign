@@ -1,0 +1,190 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-07-28";
+    Squadron = "Jasta 16b";
+    Map = "France";
+    Date = "19160728";
+    Time = "7:0:00";
+    Duty = "PATROL";
+    AircraftType = Halberstadt D.II;
+    Altitude = 3965;
+    Airfield = Balatre,E Roye;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Halberstadt D.II
+Squadron  Jasta 16b
+Airbase  Balatre,E Roye
+Date  1916-07-28
+
+Weather Report 
+    Medium cloud cover, medium altitude.
+    Cloud layer is 2347 meters.
+    Wind speed is 2 M/S.
+    Wind direction is 324.
+
+Primary Objective 
+    Patrol airspace  near Roye.  Engage any enemy aircraft that you encounter.
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Kristof Bahr";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Detlef Schwarzer";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Ruprecht Hess";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Hasso Olbrich";
+            ObserverRank = "Ltn";
+            Observer = "Walfred Hettinger";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Otto Berkel";
+            ObserverRank = "Ltn";
+            Observer = "Randolf Kroemer";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 210";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Leonhard Ungers";
+            ObserverRank = "Ltn";
+            Observer = "Horst Schonborn";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 210";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Hans Luxemburg";
+            ObserverRank = "Ltn";
+            Observer = "Fabian Wingen";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 210";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Gottlieb Wieser";
+            ObserverRank = "Ltn";
+            Observer = "Franz Hoppstetter";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 10 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Emmanuel Cassy";
+            ObserverRank = "Lt";
+            Observer = "Anthony Dericott";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 10 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Austin Boote";
+            ObserverRank = "Lt";
+            Observer = "Marvin Rowlett";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dh2";
+        Squadron = "No 32 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Arlen Garnis";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dh2";
+        Squadron = "No 32 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Norris Callthorpe";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+}

@@ -1,0 +1,330 @@
+{
+  "locationSetName": "MapLocations",
+  "locations": [
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 45729.0,
+        "yPos": 0.0,
+        "zPos": 125400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 55050.0,
+        "yPos": 0.0,
+        "zPos": 152828.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 77970.0,
+        "yPos": 0.0,
+        "zPos": 142508.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 79867.0,
+        "yPos": 0.0,
+        "zPos": 121590.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 47371.0,
+        "yPos": 0.0,
+        "zPos": 108399.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 76760.0,
+        "yPos": 0.0,
+        "zPos": 32716.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 86127.0,
+        "yPos": 0.0,
+        "zPos": 49775.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 144329.0,
+        "yPos": 0.0,
+        "zPos": 19999.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 148654.0,
+        "yPos": 0.0,
+        "zPos": 61690.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 108575.0,
+        "yPos": 0.0,
+        "zPos": 78040.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 105971.0,
+        "yPos": 0.0,
+        "zPos": 99647.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 106117.0,
+        "yPos": 0.0,
+        "zPos": 99901.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 109309.0,
+        "yPos": 0.0,
+        "zPos": 122458.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 104782.0,
+        "yPos": 0.0,
+        "zPos": 129686.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 140048.0,
+        "yPos": 0.0,
+        "zPos": 113256.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 133788.0,
+        "yPos": 0.0,
+        "zPos": 116136.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 162315.0,
+        "yPos": 0.0,
+        "zPos": 110458.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 162007.0,
+        "yPos": 0.0,
+        "zPos": 111997.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 123155.0,
+        "yPos": 0.0,
+        "zPos": 135045.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 106408.0,
+        "yPos": 0.0,
+        "zPos": 152425.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 107011.0,
+        "yPos": 0.0,
+        "zPos": 152207.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 22856.0,
+        "yPos": 0.0,
+        "zPos": 135254.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 24431.0,
+        "yPos": 0.0,
+        "zPos": 134218.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 40277.0,
+        "yPos": 0.0,
+        "zPos": 67709.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Factory",
+      "position": {
+        "xPos": 45118.0,
+        "yPos": 0.0,
+        "zPos": 66667.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

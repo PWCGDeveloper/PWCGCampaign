@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.phase4.elapsedtime.PilotAvailabilityEvaluatorTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2017-09-10T23:49:29" hostname="DigitalStorm-PC" time="0.002">
+  <properties/>
+  <testcase name="piloHarmedInMission" classname="pwcg.aar.phase4.elapsedtime.PilotAvailabilityEvaluatorTest" time="0.0"/>
+  <testcase name="piloHarmedOutOfMission" classname="pwcg.aar.phase4.elapsedtime.PilotAvailabilityEvaluatorTest" time="0.0"/>
+  <testcase name="piloUnharmed" classname="pwcg.aar.phase4.elapsedtime.PilotAvailabilityEvaluatorTest" time="0.0"/>
+  <testcase name="piloNotAvailableBecauseWasInMission" classname="pwcg.aar.phase4.elapsedtime.PilotAvailabilityEvaluatorTest" time="0.0"/>
+  <testcase name="piloNotAvailableBecauseKilledOutOfMission" classname="pwcg.aar.phase4.elapsedtime.PilotAvailabilityEvaluatorTest" time="0.0"/>
+  <testcase name="piloNotAvailableBecauseKilledInMission" classname="pwcg.aar.phase4.elapsedtime.PilotAvailabilityEvaluatorTest" time="0.0"/>
+  <testcase name="pilotAvailable" classname="pwcg.aar.phase4.elapsedtime.PilotAvailabilityEvaluatorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

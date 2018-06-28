@@ -1,0 +1,111 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20112052,
+  "name": "II./JG52",
+  "fileName": "II_JG52.json",
+  "skill": 90,
+  "planeAssignments": [
+    {
+      "type": "bf109f2",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19420622"
+    },
+    {
+      "type": "bf109f4",
+      "squadronIntroduction": "19411123",
+      "squadronWithdrawal": "19421223"
+    },
+    {
+      "type": "bf109g2",
+      "squadronIntroduction": "19420820",
+      "squadronWithdrawal": "19430403"
+    },
+    {
+      "type": "bf109g4",
+      "squadronIntroduction": "19430201",
+      "squadronWithdrawal": "19450503"
+    },
+    {
+      "type": "bf109g6",
+      "squadronIntroduction": "19430614",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Temkino",
+    "19411020": "Zenino",
+    "19411110": "Ivanskoe",
+    "19411120": "Trekhsvyatskoye",
+    "19411215": "Gorstovo",
+    "19420110": "Dugino",
+    "19420301": "Kletskaya",
+    "19420601": "Krasnoarmeyskayas",
+    "19420624": "Staro-Nijne-Steblievskaya",
+    "19420709": "Abinskaya",
+    "19420721": "Abinskaya",
+    "19420801": "Kumovka",
+    "19420906": "Evlampievsky",
+    "19421011": "Basargino",
+    "19421123": "Tuzov",
+    "19421223": "Tuzov",
+    "19430120": "Tuzov",
+    "19430301": "Popovicheskaya",
+    "19430330": "Staro-Nijne-Steblievskaya",
+    "19430418": "Kievskoe-1",
+    "19430918": "Gostagaevskaya",
+    "19430927": "Taman",
+    "19431004": "Taman",
+    "19431008": "Zaporojskaya"
+  },
+  "skins": [
+    {
+      "skinName": "BF109G2_SKIN_02",
+      "planeType": "bf109g2",
+      "startDate": "19420922",
+      "endDate": "19421119",
+      "squadId": 20112052,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "BF109G2_SKIN_09",
+      "planeType": "bf109g2",
+      "startDate": "19421119",
+      "endDate": "19430331",
+      "squadId": 20112052,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "BF109G2_SKIN_02",
+      "planeType": "bf109g2",
+      "startDate": "19430331",
+      "endDate": "19431119",
+      "squadId": 20112052,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 90
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  }
+}

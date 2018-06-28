@@ -1,0 +1,11 @@
+{
+  "name": "27th Aero",
+  "squadronId": 103027,
+  "airfields": {
+    "19180529": "Toul",
+    "19180628": "Bonne Maisson",
+    "19180709": "Courcy",
+    "19180828": "Souilly",
+    "19181015": "Verdun"
+  }
+}

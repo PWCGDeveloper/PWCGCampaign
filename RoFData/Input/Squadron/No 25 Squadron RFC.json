@@ -1,0 +1,84 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102025,
+  "name": "No 25 Squadron RFC",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "type": "fe2b",
+      "squadronIntroduction": "19160220",
+      "squadronWithdrawal": "19170630"
+    },
+    {
+      "type": "dh4",
+      "squadronIntroduction": "19170620",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160220": "Herzeele",
+    "19170401": "Le Hameau",
+    "19171011": "Filescamp Ferme",
+    "19180306": "Villers Bretonneux",
+    "19180324": "Petit Camon",
+    "19180329": "Filescamp Ferme"
+  },
+  "skins": [
+    {
+      "skinName": "FE2B_RFC_DEFAULT",
+      "planeType": "fe2b",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102025,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "DH4_RFC25_DS17",
+      "planeType": "dh4",
+      "startDate": "19170701",
+      "endDate": "19180825",
+      "squadId": 102025,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "DH4_RFC25_DF17",
+      "planeType": "dh4",
+      "startDate": "19170826",
+      "endDate": "19180321",
+      "squadId": 102025,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+    
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 25 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1113 @@
+{
+  "squadronMembers": {
+    "3001343": {
+      "name": "Adolf Weingand",
+      "serialNumber": 3001343,
+      "rank": "Kommandeur",
+      "picName": "German095.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 55,
+      "aggressiveness": 0,
+      "aiSkillLevel": "ACE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170320",
+          "location": "Varennes-en-Argonne",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.31",
+            "pilotSerialNumber": 0,
+            "pilotName": "S/Lt Honore Lestourneaud",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Adolf Weingand",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170323",
+          "location": "Prosnes",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "Esc SPA.73",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpl Joseph Dupouy",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Adolf Weingand",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170326",
+          "location": "Camp",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "re8",
+            "squadronName": "Esc 20",
+            "pilotSerialNumber": 0,
+            "pilotName": "S/Lt Jean-Louis Schwartz",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Adolf Weingand",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170329",
+          "location": "Ribecourt",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 22 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "2nd Lt Brian Lappage",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Adolf Weingand",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170401",
+          "location": "Camp",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.48",
+            "pilotSerialNumber": 0,
+            "pilotName": "S/Lt Leandre Lachat",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Adolf Weingand",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170404",
+          "location": "Berry-Au-Bac",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "Esc 7",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cne Stephane Bastoux",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Adolf Weingand",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170407",
+          "location": "Noyon",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "Esc SPA.65",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpl Leonard Benard",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Adolf Weingand",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170410",
+          "location": "Saint Hilaire - Le Grand",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "No 19 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Ellery Grimbald",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Adolf Weingand",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170413",
+          "location": "Maizy,N Fismes",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "soppup",
+            "squadronName": "No 54 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "2nd Lt Aldrich Peckham",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Adolf Weingand",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170416",
+          "location": "Saint Hilaire - Le Grand",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.94",
+            "pilotSerialNumber": 0,
+            "pilotName": "Sergt Rene Lamor",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Adolf Weingand",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170419",
+          "location": "Vauxcere",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "No 45 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Wesley Tiploft",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Adolf Weingand",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Ressons",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstrb",
+            "squadronName": "Esc SOP.66",
+            "pilotSerialNumber": 0,
+            "pilotName": "S/Lt Sauveur Lablee",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Adolf Weingand",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Somme-Tourbe",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "Esc N.112",
+            "pilotSerialNumber": 0,
+            "pilotName": "Sergt Marcel Laferriere",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Adolf Weingand",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Saint Hilaire - Le Grand",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "Esc SOP.21",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpl Arsene Ventre",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Adolf Weingand",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "House Order of Hohenzollern",
+          "medalImage": "HH.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501013,
+      "inactiveDate": "19181111"
+    },
+    "3001353": {
+      "name": "Holger Herzberg",
+      "serialNumber": 3001353,
+      "rank": "Unteroffizier",
+      "picName": "German174.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 2,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501013,
+      "inactiveDate": "19181111"
+    },
+    "3001352": {
+      "name": "Conrad Palmenberg",
+      "serialNumber": 3001352,
+      "rank": "Feldwebel",
+      "picName": "German086.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501013,
+      "inactiveDate": "19181111"
+    },
+    "3001354": {
+      "name": "Arnold Fittkau",
+      "serialNumber": 3001354,
+      "rank": "Unteroffizier",
+      "picName": "German071.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 9,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501013,
+      "inactiveDate": "19181111"
+    },
+    "3001349": {
+      "name": "Heinrich Kellner",
+      "serialNumber": 3001349,
+      "rank": "Leutnant",
+      "picName": "German009.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 16,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501013,
+      "inactiveDate": "19181111"
+    },
+    "3001348": {
+      "name": "Erich Feininger",
+      "serialNumber": 3001348,
+      "rank": "Leutnant",
+      "picName": "German035.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 11,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501013,
+      "inactiveDate": "19181111"
+    },
+    "3001351": {
+      "name": "Reiner Knirsch",
+      "serialNumber": 3001351,
+      "rank": "Feldwebel",
+      "picName": "German018.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501013,
+      "inactiveDate": "19181111"
+    },
+    "3001350": {
+      "name": "Hugbert Klauber",
+      "serialNumber": 3001350,
+      "rank": "Feldwebel",
+      "picName": "German097.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 2,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501013,
+      "inactiveDate": "19181111"
+    },
+    "3001345": {
+      "name": "Gerhard Landau",
+      "serialNumber": 3001345,
+      "rank": "Oberleutnant",
+      "picName": "German090.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 38,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170428",
+          "location": "Epagny",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "re8",
+            "squadronName": "Esc 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Marc de Anchald",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Gerhard Landau",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501013,
+      "inactiveDate": "19181111"
+    },
+    "3001344": {
+      "name": "Heiner Wahlbaum",
+      "serialNumber": 3001344,
+      "rank": "Oberleutnant",
+      "picName": "German062.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 37,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170404",
+          "location": "Ribecourt",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "soptriplane",
+            "squadronName": "No 9 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Flt SLt Benton Atherton",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Heiner Wahlbaum",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170407",
+          "location": "Lachalade",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "se5a",
+            "squadronName": "No 56 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "2nd Lt Mark Heyne",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Heiner Wahlbaum",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170410",
+          "location": "Ribecourt",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "Esc 40",
+            "pilotSerialNumber": 0,
+            "pilotName": "Sergt Charles-Henri Parres",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Heiner Wahlbaum",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170413",
+          "location": "Auberive",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstrb",
+            "squadronName": "Esc SOP.66",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpl Edmond Ducourant",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Heiner Wahlbaum",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170416",
+          "location": "Vienne-le-Chateau",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.68",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Gustave Schlegel",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Heiner Wahlbaum",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170419",
+          "location": "Chavignon",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "Esc SOP.7",
+            "pilotSerialNumber": 0,
+            "pilotName": "S/Lt Celestin Villard",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Heiner Wahlbaum",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Hangest",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "Esc 107",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Francois Pregermain",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Heiner Wahlbaum",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Epagny",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "Esc SOP.13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpl Amede Genotti",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Heiner Wahlbaum",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Ribecourt",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "re8",
+            "squadronName": "Esc 19",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpl Marc Chevenement",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Heiner Wahlbaum",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501013,
+      "inactiveDate": "19181111"
+    },
+    "3001347": {
+      "name": "Helge Kaestenbaum",
+      "serialNumber": 3001347,
+      "rank": "Leutnant",
+      "picName": "German125.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 28,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170413",
+          "location": "Beuvraignes",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "Esc 58",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpl Albin Gaspard",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Leutnant Helge Kaestenbaum",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170416",
+          "location": "Beuvraignes",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "Esc SPA.124 Lafayette",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Camille Lacour",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Leutnant Helge Kaestenbaum",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170419",
+          "location": "Vailly-sur-Aisne",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dh2",
+            "squadronName": "No 32 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpt Dirk Esmund",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Leutnant Helge Kaestenbaum",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Chauny",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "Esc SOP.7",
+            "pilotSerialNumber": 0,
+            "pilotName": "Sergt Etienne Decraissain",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Leutnant Helge Kaestenbaum",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Vienne-le-Chateau",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7",
+            "squadronName": "Esc N.77",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpl Casimir Bastoux",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Leutnant Helge Kaestenbaum",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Berry-Au-Bac",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "Esc N.48",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpl Edouard Laboux",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Leutnant Helge Kaestenbaum",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501013,
+      "inactiveDate": "19181111"
+    },
+    "3001346": {
+      "name": "Kristof Hengst",
+      "serialNumber": 3001346,
+      "rank": "Leutnant",
+      "picName": "German158.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 19,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170416",
+          "location": "Saint Hilaire - Le Grand",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "Esc SPA.12",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Guy Lachassine",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Leutnant Kristof Hengst",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170419",
+          "location": "Craonelle",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "Esc SOP.105",
+            "pilotSerialNumber": 0,
+            "pilotName": "S/Lt Bertrand Bonnet",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Leutnant Kristof Hengst",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Saint Hilaire - Le Grand",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstrb",
+            "squadronName": "Esc SOP.227",
+            "pilotSerialNumber": 0,
+            "pilotName": "Sergt Celestin Lacorne",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Leutnant Kristof Hengst",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Craonelle",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "Esc N.62",
+            "pilotSerialNumber": 0,
+            "pilotName": "S/Lt Theophile Schlegel",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Leutnant Kristof Hengst",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Chavignon",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 25 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Carter Harcourt",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Leutnant Kristof Hengst",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501013,
+      "inactiveDate": "19181111"
+    }
+  }
+}

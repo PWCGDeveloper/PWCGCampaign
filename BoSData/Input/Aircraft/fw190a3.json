@@ -1,0 +1,20 @@
+{
+  "type": "fw190a3",
+  "side": "AXIS",
+  "displayName": "Fw 190 A-3",
+  "script": "LuaScripts\\WorldObjects\\Planes\\fw190a3.txt",
+  "model": "graphics\\planes\\fw190a3\\fw190a3.mgm",
+  "desc": "",
+  "cruisingSpeed": 360,
+  "climbOutRate": 1100,
+  "goodness": 55,
+  "endurance": 1.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19410301",
+  "withdrawal": "19450503"
+}

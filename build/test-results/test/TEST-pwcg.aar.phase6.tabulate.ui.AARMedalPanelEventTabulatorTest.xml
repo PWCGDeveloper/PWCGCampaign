@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.phase6.tabulate.ui.AARMedalPanelEventTabulatorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-09-10T23:49:39" hostname="DigitalStorm-PC" time="0.458">
+  <properties/>
+  <testcase name="testMedalsAwardedButOneIsNotInSquadron" classname="pwcg.aar.phase6.tabulate.ui.AARMedalPanelEventTabulatorTest" time="0.22"/>
+  <testcase name="testMedalsAwarded" classname="pwcg.aar.phase6.tabulate.ui.AARMedalPanelEventTabulatorTest" time="0.238"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

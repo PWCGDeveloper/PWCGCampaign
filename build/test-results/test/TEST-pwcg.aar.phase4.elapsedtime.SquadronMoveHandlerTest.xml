@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.phase4.elapsedtime.SquadronMoveHandlerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-09-10T23:49:35" hostname="DigitalStorm-PC" time="0.001">
+  <properties/>
+  <testcase name="squadronMoveNoFerryBecauseTooFar" classname="pwcg.aar.phase4.elapsedtime.SquadronMoveHandlerTest" time="0.001"/>
+  <testcase name="squadronMoveNeedsFerry" classname="pwcg.aar.phase4.elapsedtime.SquadronMoveHandlerTest" time="0.0"/>
+  <testcase name="noSquadronMove" classname="pwcg.aar.phase4.elapsedtime.SquadronMoveHandlerTest" time="0.0"/>
+  <testcase name="squadronMoveNoFerryBecuaseDifferentMap" classname="pwcg.aar.phase4.elapsedtime.SquadronMoveHandlerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

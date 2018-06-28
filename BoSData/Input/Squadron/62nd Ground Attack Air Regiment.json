@@ -1,0 +1,76 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 10121062,
+  "name": "62nd Ground Attack Air Regiment",
+  "fileName": "62nd Ground Attack Air Regiment.json",
+  "skill": 35,
+  "planeAssignments": [
+    {
+      "type": "il2m41",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19420820"
+    },
+    {
+      "type": "il2m42",
+      "squadronIntroduction": "19420721",
+      "squadronWithdrawal": "19430601"
+    },
+    {
+      "type": "il2m43",
+      "squadronIntroduction": "19430301",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Rjev",
+    "19411020": "Lukovnikovo",
+    "19411110": "Staritsa",
+    "19411120": "Lukovnikovo",
+    "19411215": "Solodilovo",
+    "19420110": "Mozhaysk",
+    "19420301": "Kachalinskaya",
+    "19420601": "Pashkovskaya",
+    "19420624": "Pashkovskaya",
+    "19420709": "Buryakovskaya",
+    "19420721": "Gelenjik-3",
+    "19420801": "Tinguta",
+    "19420906": "Trudolyublye",
+    "19421011": "Novonikolskoye",
+    "19421123": "Verh. Ahtuba",
+    "19421223": "Smutnev",
+    "19430120": "Kuzmichy",
+    "19430301": "Maykop-2",
+    "19430330": "Kalinino",
+    "19430418": "Elizavetinskaya",
+    "19430918": "Krymskaya",
+    "19430927": "Krymskaya",
+    "19431004": "Myshako",
+    "19431008": "Myshako"
+  },
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19420301",
+        "squadName": "811th Ground Attack Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 35
+      }
+    ]
+  },
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

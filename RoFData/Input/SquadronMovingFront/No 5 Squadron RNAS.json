@@ -1,0 +1,18 @@
+{
+  "name": "No 5 Squadron RNAS",
+  "squadronId": 102205,
+  "airfields": {
+    "19160415": "Droglandt",
+    "19161231": "Coudekerque",
+    "19170401": "Leffrinckhouke",
+    "19180206": "Villers Bretonneux",
+    "19180311": "Baizieux 2",
+    "19180326": "Baizieux 2",
+    "19180328": "Petit Camon",
+    "19180413": "Bertangles 8",
+    "19181005": "Villers Bretonneux",
+    "19181015": "Foucaucourt en Santerre",
+    "19181025": "Bouvincourt",
+    "19181105": "Bernes"
+  }
+}

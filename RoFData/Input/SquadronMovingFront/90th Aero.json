@@ -1,0 +1,11 @@
+{
+  "name": "90th Aero",
+  "squadronId": 103090,
+  "airfields": {
+    "19180611": "Julvecourt",
+    "19180920": "Souilly",
+    "19181015": "Lemmes",
+    "19181102": "Julvecourt",
+    "19181105": "Vadelaincourt"
+  }
+}

@@ -1,0 +1,424 @@
+{
+  "squadronMembers": {
+    "3000925": {
+      "name": "Irving Wrenn",
+      "serialNumber": 3000925,
+      "rank": "2nd Lieutenant",
+      "picName": "British028.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 8,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102054,
+      "inactiveDate": "19181111"
+    },
+    "3000924": {
+      "name": "Jonathan Makepiece",
+      "serialNumber": 3000924,
+      "rank": "2nd Lieutenant",
+      "picName": "British060.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 5,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102054,
+      "inactiveDate": "19181111"
+    },
+    "3000927": {
+      "name": "Vance Seys",
+      "serialNumber": 3000927,
+      "rank": "2nd Lieutenant",
+      "picName": "British031.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 6,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102054,
+      "inactiveDate": "19181111"
+    },
+    "3000926": {
+      "name": "Clive Beckingham",
+      "serialNumber": 3000926,
+      "rank": "2nd Lieutenant",
+      "picName": "British025.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102054,
+      "inactiveDate": "19181111"
+    },
+    "3000921": {
+      "name": "Curtis Davis",
+      "serialNumber": 3000921,
+      "rank": "Lieutenant",
+      "picName": "British062.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 23,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102054,
+      "inactiveDate": "19181111"
+    },
+    "3000920": {
+      "name": "Godfrey Wightman",
+      "serialNumber": 3000920,
+      "rank": "Lieutenant",
+      "picName": "British034.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 27,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102054,
+      "inactiveDate": "19181111"
+    },
+    "3000923": {
+      "name": "Nicholas Stacy",
+      "serialNumber": 3000923,
+      "rank": "Lieutenant",
+      "picName": "British043.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 16,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102054,
+      "inactiveDate": "19181111"
+    },
+    "3000922": {
+      "name": "Alfred Higden",
+      "serialNumber": 3000922,
+      "rank": "Lieutenant",
+      "picName": "British049.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 14,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170428",
+          "location": "Ecuvilly",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 14",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Rainer Korsch",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "soppup",
+            "squadronName": "No 54 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lieutenant Alfred Higden",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102054,
+      "inactiveDate": "19181111"
+    },
+    "3000917": {
+      "name": "Hugh Scobahull",
+      "serialNumber": 3000917,
+      "rank": "Major",
+      "picName": "British050.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 60,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170422",
+          "location": "Fricourt",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 12",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Gottlieb Arneth",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "soppup",
+            "squadronName": "No 54 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Hugh Scobahull",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Vendin",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 19",
+            "pilotSerialNumber": 0,
+            "pilotName": "Fw Raimund Marks",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "soppup",
+            "squadronName": "No 54 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Hugh Scobahull",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Proyart",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd2late",
+            "squadronName": "Jasta 34b",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Wilfried Streicher",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "soppup",
+            "squadronName": "No 54 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Hugh Scobahull",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102054,
+      "inactiveDate": "19181111"
+    },
+    "3000919": {
+      "name": "Barry Leeds",
+      "serialNumber": 3000919,
+      "rank": "Captain",
+      "picName": "British013.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 32,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102054,
+      "inactiveDate": "19181111"
+    },
+    "3000918": {
+      "name": "Crispin Coddington",
+      "serialNumber": 3000918,
+      "rank": "Captain",
+      "picName": "British005.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 27,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102054,
+      "inactiveDate": "19181111"
+    },
+    "3000928": {
+      "name": "Simon Farindon",
+      "serialNumber": 3000928,
+      "rank": "2nd Lieutenant",
+      "picName": "British057.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 9,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102054,
+      "inactiveDate": "19181111"
+    }
+  }
+}

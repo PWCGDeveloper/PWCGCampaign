@@ -1,0 +1,16 @@
+{
+  "name": "No 11 Squadron RFC",
+  "squadronId": 102011,
+  "airfields": {
+    "19180327": "Lealvillers",
+    "19180404": "Vert Galand 3",
+    "19180416": "Savy Berlette",
+    "19180707": "Petit Camon",
+    "19180919": "Marieux",
+    "19181005": "Baizieux 2",
+    "19181015": "Cappy S",
+    "19181025": "Nurlu,NE Moislains",
+    "19181101": "Douai",
+    "19181110": "Guesnain,Douai"
+  }
+}

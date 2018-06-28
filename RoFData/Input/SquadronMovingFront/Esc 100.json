@@ -1,0 +1,18 @@
+{
+  "name": "Esc 100",
+  "squadronId": 101100,
+  "airfields": {
+    "19180116": "Ville-Savoye",
+    "19180207": "Ferme de Corbeaulieu",
+    "19180326": "Champien",
+    "19180404": "Moreuil",
+    "19180418": "Bouy",
+    "19180525": "Quinquempoix",
+    "19180728": "Muizon",
+    "19180818": "Ferme de Corbeaulieu",
+    "19180905": "Froides",
+    "19181002": "Vauxcere",
+    "19181025": "Chery-les-Pouilly,N",
+    "19181110": "La Ferte Ferriere"
+  }
+}

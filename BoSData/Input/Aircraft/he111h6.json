@@ -1,0 +1,19 @@
+{
+  "type": "he111h6",
+  "side": "AXIS",
+  "displayName": "He 111 H-6",
+  "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+  "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+  "desc": "",
+  "cruisingSpeed": 310,
+  "climbOutRate": 600,
+  "goodness": 25,
+  "endurance": 3.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_MEDIUM",
+  "roles": [
+    "ROLE_BOMB"
+  ],
+  "introduction": "19410301",
+  "withdrawal": "19450503"
+}

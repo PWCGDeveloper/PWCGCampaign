@@ -1,0 +1,92 @@
+{
+  "country": "BELGIUM",
+  "squadronId": 109009,
+  "name": "9eme Esc de Chasse",
+  "skill": 70,
+  "planeAssignments": [
+    {
+      "type": "nieuport11",
+      "squadronIntroduction": "19160222",
+      "squadronWithdrawal": "19161030"
+    },
+    {
+      "type": "nieuport17",
+      "squadronIntroduction": "19160918",
+      "squadronWithdrawal": "19170813"
+    },
+    {
+      "type": "hanhd1",
+      "squadronIntroduction": "19170722",
+      "squadronWithdrawal": "19181201"
+    },
+    {
+      "type": "sopcamel",
+      "squadronIntroduction": "19180301",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160222": "LaPanne"
+  },
+  "skins": [
+    {
+      "skinName": "N11_BMA1_DEFAULT",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 109009,
+      "country": "Belgium",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N17_109009_ANS",
+      "planeType": "nieuport17",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 109009,
+      "country": "Belgium",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SC_BMA9_DEFAULT",
+      "planeType": "sopcamel",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 109009,
+      "country": "Belgium",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10903,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19180301",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      },
+      {
+        "startDate": "19180301",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 70
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

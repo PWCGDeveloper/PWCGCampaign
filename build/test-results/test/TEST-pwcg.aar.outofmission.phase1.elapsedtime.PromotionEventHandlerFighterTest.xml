@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.outofmission.phase1.elapsedtime.PromotionEventHandlerFighterTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:49:01" hostname="DigitalStorm-PC" time="4.922">
+  <properties/>
+  <testcase name="promoteSousLieutenant" classname="pwcg.aar.outofmission.phase1.elapsedtime.PromotionEventHandlerFighterTest" time="0.727"/>
+  <testcase name="promoteSergent" classname="pwcg.aar.outofmission.phase1.elapsedtime.PromotionEventHandlerFighterTest" time="0.732"/>
+  <testcase name="promoteCorporalToSergent" classname="pwcg.aar.outofmission.phase1.elapsedtime.PromotionEventHandlerFighterTest" time="0.684"/>
+  <testcase name="promoteCapitaineFailNotEnoughMissions" classname="pwcg.aar.outofmission.phase1.elapsedtime.PromotionEventHandlerFighterTest" time="0.695"/>
+  <testcase name="promoteCapitaineFailNotEnoughictories" classname="pwcg.aar.outofmission.phase1.elapsedtime.PromotionEventHandlerFighterTest" time="0.688"/>
+  <testcase name="promoteCapitaineFailNotPlayer" classname="pwcg.aar.outofmission.phase1.elapsedtime.PromotionEventHandlerFighterTest" time="0.687"/>
+  <testcase name="promoteCapitaine" classname="pwcg.aar.outofmission.phase1.elapsedtime.PromotionEventHandlerFighterTest" time="0.709"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

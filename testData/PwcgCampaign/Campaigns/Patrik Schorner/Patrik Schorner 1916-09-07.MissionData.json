@@ -1,0 +1,246 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-09-07",
+    "squadron": "Jasta 16b",
+    "date": "19160907",
+    "time": "9:30:00",
+    "aircraftType": "AircraftType \u003d Halberstadt D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "PATROL",
+    "altitude": 2919
+  },
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-09-07\n\nWeather Report\nHeavy cloud cover, medium altitude.\nCloud layer is 2155 meters.\nWind speed is 1 M/S.\nWind direction is 223.\n\nPrimary Objective\nPatrol airspace  near Ecuvilly.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Augustus Kass",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Detlef Schwarzer",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Ruprecht Hess",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Herbert Kuechler",
+        "observer": "Arnold Seiler",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Gerhard Weininger",
+        "observer": "Till Steinhaeusser",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Hartwig Wulf",
+        "observer": "Ulf Peltzer",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Sigfried Arneth",
+        "observer": "Erik Taubenschlag",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 13",
+      "crew": {
+        "pilot": "Helge Stockert",
+        "observer": "Tobias Hoehmann",
+        "pilotRank": "Obltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 13",
+      "crew": {
+        "pilot": "Friedhelm Neuer",
+        "observer": "Erik Hertz",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 13",
+      "crew": {
+        "pilot": "Heinrich Sauerbrunn",
+        "observer": "Hermann Schottel",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 13",
+      "crew": {
+        "pilot": "Manfred Henschel",
+        "observer": "Gunther Huber",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 45",
+      "crew": {
+        "pilot": "Justin Ferrouillat",
+        "observer": "Camille Marchau",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 27 Squadron RFC",
+      "crew": {
+        "pilot": "Charles Makepiece",
+        "observer": "Ferguson Longton",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 27 Squadron RFC",
+      "crew": {
+        "pilot": "James Barnes",
+        "observer": "Conrad Churmond",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 27 Squadron RFC",
+      "crew": {
+        "pilot": "Braden Callthorpe",
+        "observer": "Conrad Warren",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Cpt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 27 Squadron RFC",
+      "crew": {
+        "pilot": "Victor Freen",
+        "observer": "Earl Branwhaite",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronName": "Esc 31",
+      "crew": {
+        "pilot": "Vincent Ferrouillat",
+        "observer": "",
+        "pilotRank": "Cne",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronName": "Esc 31",
+      "crew": {
+        "pilot": "Celestin Benhamou",
+        "observer": "",
+        "pilotRank": "S/Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronName": "Esc 31",
+      "crew": {
+        "pilot": "Jean Riou",
+        "observer": "",
+        "pilotRank": "Sergt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronName": "Esc 31",
+      "crew": {
+        "pilot": "Thierry Lacabanne",
+        "observer": "",
+        "pilotRank": "Cpl",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Ferdinand Chapelain",
+        "observer": "Laurent Labrette",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Emilien Coquard",
+        "observer": "Jean-Francois Mouillard",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusEvaluatorTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:19" hostname="DigitalStorm-PC" time="0.986">
+  <properties/>
+  <testcase name="testCrewWounded" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusEvaluatorTest" time="0.251"/>
+  <testcase name="testCrewCaptured" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusEvaluatorTest" time="0.241"/>
+  <testcase name="testCrewKilled" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusEvaluatorTest" time="0.25"/>
+  <testcase name="testCrewSurvived" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusEvaluatorTest" time="0.241"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

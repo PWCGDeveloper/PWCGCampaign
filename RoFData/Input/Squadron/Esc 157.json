@@ -1,0 +1,60 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101157,
+  "name": "Esc 157",
+  "skill": 35,
+  "planeAssignments": [
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19171220",
+      "squadronWithdrawal": "19180705"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19180501",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19171220": "La Noblette",
+    "19180315": "Vauxcere",
+    "19180406": "Tilloy at Bellay"
+  },
+  "skins": [
+    {
+      "skinName": "S7L_PW_F157_DFT",
+      "planeType": "spad7",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101157,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S13_PW_F157_DFT",
+      "planeType": "spad13",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101157,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

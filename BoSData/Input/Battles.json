@@ -1,0 +1,59 @@
+{
+  "battles": [
+    {
+      "name": "Moscow",
+      "neCorner": {
+        "xPos": 300000.0,
+        "yPos": 0.0,
+        "zPos": 300000.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "GERMANY",
+      "defendercountry": "RUSSIA",
+      "startDate": "19411015",
+      "stopDate": "19420315",
+      "map": "MOSCOW_MAP"
+    },
+    {
+      "name": "Stalingrad",
+      "neCorner": {
+        "xPos": 300000.0,
+        "yPos": 0.0,
+        "zPos": 300000.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "GERMANY",
+      "defendercountry": "RUSSIA",
+      "startDate": "19420815",
+      "stopDate": "19430215",
+      "map": "STALINGRAD_MAP"
+    },
+    {
+      "name": "Kuban",
+      "neCorner": {
+        "xPos": 460800.0,
+        "yPos": 0.0,
+        "zPos": 358400.0
+      },
+      "swCorner": {
+        "xPos": 0.0,
+        "yPos": 0.0,
+        "zPos": 0.0
+      },
+      "aggressorcountry": "RUSSIA",
+      "defendercountry": "GERMANY",
+      "startDate": "19430415",
+      "stopDate": "19431101",
+      "map": "KUBAN_MAP"
+    }
+
+  ]
+}

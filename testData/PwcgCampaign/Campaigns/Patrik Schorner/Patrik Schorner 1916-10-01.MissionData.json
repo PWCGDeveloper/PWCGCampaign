@@ -1,0 +1,246 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-10-01",
+    "squadron": "Jasta 16b",
+    "date": "19161001",
+    "time": "9:0:00",
+    "aircraftType": "AircraftType \u003d Halberstadt D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "BALLOON_BUST",
+    "altitude": 2271
+  },
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-10-01\n\nWeather Report\nMedium cloud cover, high altitude.\nCloud layer is 3112 meters.\nWind speed is 0 M/S.\nWind direction is 317.\n\nPrimary Objective\nDestroy the enemy balloon near Ferrieres.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Augustus Kass",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Gebhard Schonbaum",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 8",
+      "crew": {
+        "pilot": "Alcide Jobard",
+        "observer": "Edouard Quillet",
+        "pilotRank": "Cne",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 8",
+      "crew": {
+        "pilot": "Emile Lacourly",
+        "observer": "Ernest Mauvais",
+        "pilotRank": "S/Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 8",
+      "crew": {
+        "pilot": "Honore Maire",
+        "observer": "Andre Mourrut",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 8",
+      "crew": {
+        "pilot": "Antoine Baux",
+        "observer": "Victor Justet",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 8",
+      "crew": {
+        "pilot": "Robert Bouvier",
+        "observer": "Simon Lachaud",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 18",
+      "crew": {
+        "pilot": "Heinrich Heiner",
+        "observer": "Johann Stauffer",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 18",
+      "crew": {
+        "pilot": "Dietrich Kranefuss",
+        "observer": "Frederich Tauber",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 18",
+      "crew": {
+        "pilot": "Elias Abicht",
+        "observer": "Arnulf Neumann",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 18",
+      "crew": {
+        "pilot": "Hugbert Speckmann",
+        "observer": "Franz Kantner",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 58",
+      "crew": {
+        "pilot": "Victor Scozzaro",
+        "observer": "Leandre Segalen",
+        "pilotRank": "Sergt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 8 Squadron RFC",
+      "crew": {
+        "pilot": "Oliver Leventhorpe",
+        "observer": "Adrian Morris",
+        "pilotRank": "Lt",
+        "observerRank": "Cpt"
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronName": "Esc 31",
+      "crew": {
+        "pilot": "Denis Hoguet",
+        "observer": "",
+        "pilotRank": "S/Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronName": "Esc 31",
+      "crew": {
+        "pilot": "Joseph Antier",
+        "observer": "",
+        "pilotRank": "Cpl",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 9",
+      "crew": {
+        "pilot": "Anton Lamor",
+        "observer": "Gustave Lacorne",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 9",
+      "crew": {
+        "pilot": "Luc Lacloche",
+        "observer": "Fernand Vidal",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 9",
+      "crew": {
+        "pilot": "Ferdinand Vertadier",
+        "observer": "Gustave Leclercq",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 16 Squadron RFC",
+      "crew": {
+        "pilot": "Otis Fitzgeoffrey",
+        "observer": "Frederick Crugg",
+        "pilotRank": "Cpt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 16 Squadron RFC",
+      "crew": {
+        "pilot": "Darell Trenowyth",
+        "observer": "Elton Gorst",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 16 Squadron RFC",
+      "crew": {
+        "pilot": "Farley Maudit",
+        "observer": "Sigmund Rowe",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 16 Squadron RFC",
+      "crew": {
+        "pilot": "Igor Herleston",
+        "observer": "Alastair Boville",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    }
+  ]
+}

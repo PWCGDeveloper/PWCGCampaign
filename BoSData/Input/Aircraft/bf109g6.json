@@ -1,0 +1,20 @@
+{
+  "type": "bf109g6",
+  "side": "AXIS",
+  "displayName": "Bf 109 G-6",
+  "script": "LuaScripts\\WorldObjects\\Planes\\bf109g6.txt",
+  "model": "graphics\\planes\\bf109g6\\bf109g6.mgm",
+  "desc": "",
+  "cruisingSpeed": 360,
+  "climbOutRate": 1300,
+  "goodness": 55,
+  "endurance": 1.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19430601",
+  "withdrawal": "19450503"
+}

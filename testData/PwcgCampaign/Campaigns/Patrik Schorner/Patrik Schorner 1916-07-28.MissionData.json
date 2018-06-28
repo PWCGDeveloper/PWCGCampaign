@@ -1,0 +1,146 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-07-28",
+    "squadron": "Jasta 16b",
+    "date": "19160728",
+    "time": "7:0:00",
+    "aircraftType": "AircraftType \u003d Halberstadt D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "PATROL",
+    "altitude": 3965
+  },
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-07-28\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 2347 meters.\nWind speed is 2 M/S.\nWind direction is 324.\n\nPrimary Objective\nPatrol airspace  near Roye.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Kristof Bahr",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Detlef Schwarzer",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Ruprecht Hess",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 281",
+      "crew": {
+        "pilot": "Hasso Olbrich",
+        "observer": "Walfred Hettinger",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 281",
+      "crew": {
+        "pilot": "Otto Berkel",
+        "observer": "Randolf Kroemer",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Leonhard Ungers",
+        "observer": "Horst Schonborn",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Hans Luxemburg",
+        "observer": "Fabian Wingen",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Gottlieb Wieser",
+        "observer": "Franz Hoppstetter",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 10 Squadron RFC",
+      "crew": {
+        "pilot": "Emmanuel Cassy",
+        "observer": "Anthony Dericott",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 10 Squadron RFC",
+      "crew": {
+        "pilot": "Austin Boote",
+        "observer": "Marvin Rowlett",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "dh2",
+      "squadronName": "No 32 Squadron RFC",
+      "crew": {
+        "pilot": "Arlen Garnis",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dh2",
+      "squadronName": "No 32 Squadron RFC",
+      "crew": {
+        "pilot": "Norris Callthorpe",
+        "observer": "",
+        "pilotRank": "2nd Lt",
+        "observerRank": ""
+      }
+    }
+  ]
+}

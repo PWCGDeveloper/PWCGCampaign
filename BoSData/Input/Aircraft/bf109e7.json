@@ -1,0 +1,20 @@
+{
+  "type": "bf109e7",
+  "side": "AXIS",
+  "displayName": "Bf 109 E-7",
+  "script": "LuaScripts\\WorldObjects\\Planes\\bf109e7.txt",
+  "model": "graphics\\planes\\bf109e7\\bf109e7.mgm",
+  "desc": "",
+  "cruisingSpeed": 360,
+  "climbOutRate": 1000,
+  "goodness": 25,
+  "endurance": 1.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_ATTACK",
+    "ROLE_FIGHTER"
+  ],
+  "introduction": "19400801",
+  "withdrawal": "19450503"
+}

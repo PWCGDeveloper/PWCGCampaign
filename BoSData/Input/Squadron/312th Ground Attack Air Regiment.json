@@ -1,0 +1,82 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 10121312,
+  "name": "312th Ground Attack Air Regiment",
+  "fileName": "312th Ground Attack Air Regiment.json",
+  "skill": 40,
+  "planeAssignments": [
+    {
+      "type": "il2m41",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19420726"
+    },
+    {
+      "type": "il2m42",
+      "squadronIntroduction": "19420527",
+      "squadronWithdrawal": "19430601"
+    },
+    {
+      "type": "il2m43",
+      "squadronIntroduction": "19430401",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Maloyaroslavetc",
+    "19411020": "Vlasyevo",
+    "19411110": "Brykovo",
+    "19411120": "Ilinskoe",
+    "19411215": "Klin",
+    "19420110": "Kholm",
+    "19420301": "Illarionovskiy",
+    "19420601": "Severskaya",
+    "19420624": "Korenovskaya",
+    "19420709": "Maykop-2",
+    "19420721": "Agoy",
+    "19420801": "Erzovka",
+    "19420906": "Verhne-Pogromnoye",
+    "19421011": "Solodovka",
+    "19421123": "Bol. Chapurniki",
+    "19421223": "Bol. Chapurniki",
+    "19430120": "Tinguta",
+    "19430301": "Agoy",
+    "19430330": "Juravskaya",
+    "19430418": "Ivanovskaya",
+    "19430918": "Slavyanskaya",
+    "19430927": "Abinskaya",
+    "19431004": "Anastasievskaya",
+    "19431008": "Anapa"
+  },
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19420301",
+        "squadName": "621st Ground Attack Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 40
+      },
+      {
+        "date": "19430301",
+        "squadName": "312th Ground Attack Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 45
+      }
+    ]
+  },
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

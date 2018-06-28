@@ -1,0 +1,16 @@
+{
+  "name": "Jasta 50",
+  "squadronId": 501050,
+  "airfields": {
+    "19180111": "Marchais",
+    "19180315": "Marchais",
+    "19180821": "Sissonne",
+    "19180923": "Boncourt",
+    "19180925": "Leffincourt,E Reims",
+    "19180928": "Chassonge Ferme,Stenay/Verdun",
+    "19181009": "Bellevue Ferme",
+    "19181017": "Marville",
+    "19181025": "Stenay",
+    "19181110": "Jametz"
+  }
+}

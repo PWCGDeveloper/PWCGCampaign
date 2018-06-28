@@ -1,0 +1,18 @@
+{
+  "name": "Jasta 40s",
+  "squadronId": 501040,
+  "airfields": {
+    "19170819": "Bellevue Ferme",
+    "19170914": "Mars-la-Tour",
+    "19180315": "Douai",
+    "19180406": "Lagnicourt",
+    "19180505": "Le Creche",
+    "19180606": "Lomme,Lille",
+    "19180925": "Commines",
+    "19180928": "St. Marguerite",
+    "19181010": "Wervicq",
+    "19181025": "Le Belcamp",
+    "19181105": "Heule",
+    "19181110": "Ceune"
+  }
+}

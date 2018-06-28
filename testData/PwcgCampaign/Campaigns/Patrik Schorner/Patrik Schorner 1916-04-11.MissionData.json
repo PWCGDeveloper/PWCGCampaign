@@ -1,0 +1,166 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-04-11",
+    "squadron": "FA 15",
+    "date": "19160411",
+    "time": "70:00",
+    "aircraftType": "AircraftType \u003d Roland C.II",
+    "mapName": "Galicia",
+    "airfield": "Airfield \u003d Puko",
+    "duty": "BOMB",
+    "altitude": 1078
+  },
+  "missionDescription": "Mission:\nAircraft  Roland C.IIa\nSquadron  FA 15\nAirbase  Pukov\nDate  1916-04-11\n\nWeather Report\nMostly clear, some high altitude clouds.\nCloud layer is 4770 meters.\nWind speed is 1 M/S.\nWind direction is 230.\n\nPrimary Objective\nAttack assaulting enemy troops  near Factory\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "Lukas Heffter",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Lukas Westerman",
+        "observer": "Erhard Kesselring",
+        "pilotRank": "Ltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Nikolaus Fechter",
+        "observer": "Sepp Homberg",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Christian Welser",
+        "observer": "Ludwig Closterman",
+        "pilotRank": "Fw",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "FliK 9",
+      "crew": {
+        "pilot": "Hans Hammerstein",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "FliK 9",
+      "crew": {
+        "pilot": "Kristof Steuermann",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "FliK 9",
+      "crew": {
+        "pilot": "Buda Siroky",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "FliK 9",
+      "crew": {
+        "pilot": "Hartwig Kleber",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 10",
+      "crew": {
+        "pilot": "Andreas Krauszer",
+        "observer": "Agustus Borchers",
+        "pilotRank": "Kp",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 10",
+      "crew": {
+        "pilot": "Farkas Bandy",
+        "observer": "Leon Redlich",
+        "pilotRank": "Kp",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "s22",
+      "squadronName": "Escadra Vozdushnykh Korabley",
+      "crew": {
+        "pilot": "Yura Bogun",
+        "observer": "Volody Sadovsky",
+        "pilotRank": "Cpt",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "s22",
+      "squadronName": "Escadra Vozdushnykh Korabley",
+      "crew": {
+        "pilot": "Petenka Osminin",
+        "observer": "Roman Desyatkov",
+        "pilotRank": "Pk",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "s22",
+      "squadronName": "Escadra Vozdushnykh Korabley",
+      "crew": {
+        "pilot": "Hedeon Balashov",
+        "observer": "Jeirgif Kargin",
+        "pilotRank": "DPk",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "s22",
+      "squadronName": "Escadra Vozdushnykh Korabley",
+      "crew": {
+        "pilot": "Shurochka Barsukov",
+        "observer": "Vasilii Smolin",
+        "pilotRank": "SPk",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "2nd KAO",
+      "crew": {
+        "pilot": "Tasha Vitvinin",
+        "observer": "Vladik Yeleshev",
+        "pilotRank": "SPk",
+        "observerRank": "Lt"
+      }
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-07-30";
+    Squadron = "Jasta 16b";
+    Map = "France";
+    Date = "19160730";
+    Time = "7:0:00";
+    Duty = "PATROL";
+    AircraftType = Halberstadt D.II;
+    Altitude = 2500;
+    Airfield = Balatre,E Roye;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Halberstadt D.II
+Squadron  Jasta 16b
+Airbase  Balatre,E Roye
+Date  1916-07-30
+
+Weather Report 
+    Mostly clear, some high altitude clouds.
+    Cloud layer is 4186 meters.
+    Wind speed is 2 M/S.
+    Wind direction is 258.
+
+Primary Objective 
+    Patrol airspace  near Roye.  Engage any enemy aircraft that you encounter.
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Augustus Kass";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Johann Hanneman";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Ruprecht Hess";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Hildebrand Seiler";
+            ObserverRank = "Ltn";
+            Observer = "Randolf Kaestenbaum";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Klaus Seidenstucker";
+            ObserverRank = "Ltn";
+            Observer = "Randolf Vonhoff";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Volkard Schoeler";
+            ObserverRank = "Ltn";
+            Observer = "Bernd Pfisterer";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Emil Zaugg";
+            ObserverRank = "Ltn";
+            Observer = "Gotthold Weinreb";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 13";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Johann Stocker";
+            ObserverRank = "Obltn";
+            Observer = "Michael Schimpf";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 13";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Rupert Sauer";
+            ObserverRank = "Ltn";
+            Observer = "Ferdinand Fischlin";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 13";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Wendall Spitz";
+            ObserverRank = "Ltn";
+            Observer = "Johann Osterhaus";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 23";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Sebastian Nussbaum";
+            ObserverRank = "Ltn";
+            Observer = "Egon Wartenberg";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 23";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Hartmut Knaur";
+            ObserverRank = "Ltn";
+            Observer = "Oskar Kreutzwald";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 111";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Sebastien Hoguet";
+            ObserverRank = "S/Lt";
+            Observer = "Camille Richard";
+        }
+    }
+}

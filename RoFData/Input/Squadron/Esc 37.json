@@ -1,0 +1,150 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101037,
+  "name": "Esc 37",
+  "skill": 80,
+  "planeAssignments": [
+    {
+      "type": "nieuport11",
+      "squadronIntroduction": "19150801",
+      "squadronWithdrawal": "19160601"
+    },
+    {
+      "type": "nieuport17brit",
+      "squadronIntroduction": "19160401",
+      "squadronWithdrawal": "19161101"
+    },
+    {
+      "type": "nieuport17",
+      "squadronIntroduction": "19161001",
+      "squadronWithdrawal": "19170402"
+    },
+    {
+      "type": "spad7early",
+      "squadronIntroduction": "19170301",
+      "squadronWithdrawal": "19170615"
+    },
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19170601",
+      "squadronWithdrawal": "19180501"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19180101",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19150801": "Belrain",
+    "19150819": "Froides",
+    "19150901": "La Mellette",
+    "19151001": "Froides",
+    "19151016": "Lemmes",
+    "19160307": "La Cheppe",
+    "19170125": "Grivesnes",
+    "19170201": "Ravenel",
+    "19170401": "La Noblette",
+    "19170725": "Julvecourt",
+    "19170921": "Muizon",
+    "19170927": "Souilly",
+    "19180228": "Ferme Cravancon",
+    "19180413": "Baizieux 2",
+    "19180606": "Ferme de Corbeaulieu",
+    "19180706": "Auve",
+    "19180718": "Auve",
+    "19180724": "Tilloy at Bellay",
+    "19180807": "Grivesnes",
+    "19180825": "Ferme de Corbeaulieu",
+    "19180906": "Malzeville",
+    "19180923": "Bouy",
+    "19181103": "La Mellette"
+  },
+  "skins": [
+    {
+      "skinName": "N11_PW_F37_DFT",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N17B_PW_F37_DFT",
+      "planeType": "nieuport17brit",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N17_PW_F37_DFT",
+      "planeType": "nieuport17",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7E_ESC37_DEC16",
+      "planeType": "spad7early",
+      "startDate": "19150101",
+      "endDate": "19181201",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC37_APR17",
+      "planeType": "spad7",
+      "startDate": "19150101",
+      "endDate": "19171231",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC37_JAN1918",
+      "planeType": "spad7",
+      "startDate": "19180101",
+      "endDate": "19181201",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S13_101037_ANS",
+      "planeType": "spad13",
+      "startDate": "19170101",
+      "endDate": "19181201",
+      "squadId": 101037,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 105007,
+  "name": "7th AOI",
+  "skill": 40,
+  "planeAssignments": [
+    {
+      "type": "s16",
+      "squadronIntroduction": "19140801",
+      "squadronWithdrawal": "19180112"
+    },
+    {
+      "type": "nieuport11",
+      "squadronIntroduction": "19161001",
+      "squadronWithdrawal": "19170315"
+    },
+    {
+      "type": "nieuport17rus",
+      "squadronIntroduction": "19170301",
+      "squadronWithdrawal": "19180112"
+    },
+    {
+      "type": "spad7early",
+      "squadronIntroduction": "19170701",
+      "squadronWithdrawal": "19180112"
+    },
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19170901",
+      "squadronWithdrawal": "19180112"
+    }
+  ],
+  "airfields": {
+    "19140801": "Kozlov",
+    "19161001": "Burkanov",
+    "19170401": "Kozlov"
+  },
+  "skins": [
+    {
+      "skinName": "N11_PW_IRAS_STD",
+      "planeType": "nieuport11",
+      "startDate": "19150101",
+      "endDate": "19180112",
+      "squadId": 105007,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7E_RUSSIAN_PWSTD",
+      "planeType": "spad7early",
+      "startDate": "19150101",
+      "endDate": "19180112",
+      "squadId": 105007,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_RUSSIAN_PWSTD",
+      "planeType": "spad7",
+      "startDate": "19150101",
+      "endDate": "19180112",
+      "squadId": 105007,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10501,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

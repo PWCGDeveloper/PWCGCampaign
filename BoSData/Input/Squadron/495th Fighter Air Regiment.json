@@ -1,0 +1,107 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 10111495,
+  "name": "495th Fighter Air Regiment",
+  "fileName": "495th Fighter Air Regiment.json",
+  "skill": 40,
+  "planeAssignments": [
+    {
+      "type": "i16t24",
+      "squadronIntroduction": "19411001",
+      "squadronWithdrawal": "19420228"
+    },
+    {
+      "type": "mig3s24",
+      "squadronIntroduction": "19420301",
+      "squadronWithdrawal": "19430228"
+    },
+    {
+      "type": "p39l1",
+      "squadronIntroduction": "19430301",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Ryabinki",
+    "19411020": "Drakino",
+    "19411110": "Solodilovo",
+    "19411120": "Lukovnikovo",
+    "19411215": "Lukovnikovo",
+    "19420110": "Varvarovka",
+    "19420301": "Grachi",
+    "19420601": "Anastasievskaya",
+    "19420624": "Abinskaya",
+    "19420709": "Korenovskaya",
+    "19420721": "Gelenjik-3",
+    "19420801": "Gumrak",
+    "19420906": "Raygorod",
+    "19421011": "Srednyaya Ahtuba",
+    "19421123": "Samovalovka",
+    "19421223": "Samovalovka",
+    "19430120": "Samovalovka",
+    "19430301": "Agoy",
+    "19430330": "Holmskaya",
+    "19430418": "Holmskaya",
+    "19430918": "Kievskoe-1",
+    "19430927": "Kievskoe-1",
+    "19431004": "Kievskoe-1",
+    "19431008": "Gostagaevskaya"
+  },
+  "skins": [
+    {
+      "skinName": "MIG3S24_SKIN_01",
+      "planeType": "mig3s24",
+      "startDate": "19420101",
+      "endDate": "19420331",
+      "squadId": 10111439,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "MIG3S24_SKIN_01",
+      "planeType": "mig3s24",
+      "startDate": "19421101",
+      "endDate": "19430331",
+      "squadId": 10111439,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19420301",
+        "squadName": "439th Fighter Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 45
+      },
+      {
+        "date": "19430301",
+        "squadName": "45th Guards Fighter Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 60
+      }
+    ]
+  },
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 70
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

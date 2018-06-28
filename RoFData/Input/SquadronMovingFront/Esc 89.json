@@ -1,0 +1,17 @@
+{
+  "name": "Esc 89",
+  "squadronId": 101089,
+  "airfields": {
+    "19170428": "Brabant en Argonne",
+    "19170513": "Vauxcere",
+    "19170618": "Grivesnes",
+    "19170919": "Chalons sur Vesle",
+    "19180114": "Ferme de Corbeaulieu",
+    "19180326": "Balatre,E Roye",
+    "19180328": "Chalons sur Vesle",
+    "19180519": "Vauxcere",
+    "19180724": "Froides",
+    "19181005": "Auve",
+    "19181025": "Leffincourt,E Reims"
+  }
+}

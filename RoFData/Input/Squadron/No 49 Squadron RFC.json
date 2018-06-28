@@ -1,0 +1,58 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102049,
+  "name": "No 49 Squadron RFC",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "type": "dh4",
+      "squadronIntroduction": "19171112",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19171112": "Auchel",
+    "19180602": "Lealvillers",
+    "19180621": "Le Hameau",
+    "19180715": "Vauxcere",
+    "19180804": "Le Hameau"
+  },
+  "skins": [
+    {
+      "skinName": "DH4_RFC49_DEFAULT",
+      "planeType": "dh4",
+      "startDate": "19171112",
+      "endDate": "19180322",
+      "squadId": 102049,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+        
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 49 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

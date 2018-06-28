@@ -1,0 +1,15 @@
+{
+  "name": "No 45 Squadron RFC",
+  "squadronId": 102045,
+  "airfields": {
+    "19161203": "Baizieux 2",
+    "19171115": "Abeele (West)",
+    "19180326": "Assevillers",
+    "19180404": "Lealvillers",
+    "19180925": "Baizieux 2",
+    "19181005": "Cappy N",
+    "19181015": "Assevillers",
+    "19181025": "Ronssoy,SE Epehy",
+    "19181105": "La Catelet"
+  }
+}

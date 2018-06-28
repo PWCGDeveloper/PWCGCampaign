@@ -1,0 +1,22 @@
+{
+  "name": "Esc 112",
+  "squadronId": 101112,
+  "airfields": {
+    "19160716": "Lemmes",
+    "19160926": "Petit Camon",
+    "19161216": "Moreuil",
+    "19170305": "La Cheppe",
+    "19170412": "La Noblette",
+    "19170727": "Vadelaincourt",
+    "19180112": "Ferme Cravancon",
+    "19180215": "Grivesnes",
+    "19180326": "Foucaucourt en Santerre",
+    "19180404": "Moreuil",
+    "19180405": "Ferme de Corbeaulieu",
+    "19180715": "Ravenel",
+    "19180904": "Toul",
+    "19181102": "Puisieux Ferme,Laon",
+    "19181105": "Liesse",
+    "19181110": "Toulis"
+  }
+}

@@ -1,0 +1,48 @@
+Player flight
+  Mission type: TRANSPORT
+  Airfield    : Vjazma
+  Aircraft    : ju523mg4e
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: DIVE_BOMB
+  Airfield    : Vjazma
+  Aircraft    : ju87d3
+  Player Contact    : 22
+
+
+
+Flight
+  Mission type: BOMB
+  Airfield    : Novoye Selo
+  Aircraft    : ju88a4
+  Player Contact    : 18
+
+
+
+Flight
+  Mission type: GROUND_ATTACK
+  Airfield    : Kolodezi
+  Aircraft    : pe2s35
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: BOMB
+  Airfield    : Ruza
+  Aircraft    : pe2s35
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: GROUND_ATTACK
+  Airfield    : Maloyaroslavetc
+  Aircraft    : il2m41
+  Player Contact    : -1
+
+
+

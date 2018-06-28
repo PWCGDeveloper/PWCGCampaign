@@ -1,0 +1,24 @@
+{
+  "name": "Esc 94",
+  "squadronId": 101094,
+  "airfields": {
+    "19170215": "Lemmes",
+    "19170601": "Bouy",
+    "19180201": "Bouy",
+    "19180327": "Grivesnes",
+    "19180407": "Vauxcere",
+    "19180413": "Petit Camon",
+    "19180529": "Ferme Cravancon",
+    "19180613": "Vauxcere",
+    "19180705": "Froides",
+    "19180718": "Auve",
+    "19180724": "Ferme d_Alger",
+    "19180807": "Grivesnes",
+    "19180820": "Ville-Savoye",
+    "19180825": "Vauxcere",
+    "19180906": "Erize la Petite",
+    "19180922": "Tilloy at Bellay",
+    "19181025": "St.Loup,Champagne",
+    "19181101": "Neuflize"
+  }
+}

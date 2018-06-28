@@ -1,0 +1,15 @@
+{
+  "name": "No 85 Squadron RFC",
+  "squadronId": 102085,
+  "airfields": {
+    "19180401": "Bailleul",
+    "19180428": "St. Marie Cappel",
+    "19180525": "Droglandt",
+    "19180611": "Merville",
+    "19180813": "Petit Camon",
+    "19180905": "Savy Berlette",
+    "19181005": "La Targette",
+    "19181025": "Brayelles,Douai",
+    "19181105": "Roucourt, Bohain"
+  }
+}

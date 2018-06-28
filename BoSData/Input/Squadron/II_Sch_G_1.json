@@ -1,0 +1,61 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20142001,
+  "name": "II./Sch.G.1",
+  "fileName": "II_Sch_G_1.json",
+  "skill": 60,
+  "planeAssignments": [
+    {
+      "type": "bf109e7",
+      "squadronIntroduction": "19411001",
+      "squadronWithdrawal": "19430420"
+    },
+    {
+      "type": "fw190a5",
+      "squadronIntroduction": "19430321",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19411001": "Karpovo",
+    "19411020": "Kolodezi",
+    "19411110": "Maloyaroslavetc",
+    "19411120": "Mozhaysk",
+    "19411215": "Kolodezi",
+    "19420110": "Temkino",
+    "19420301": "Surovikino",
+    "19420601": "Staro-Nijne-Steblievskaya",
+    "19420624": "Ivanovskaya",
+    "19420709": "Abinskaya",
+    "19420721": "Maykop-3",
+    "19420801": "Kumovka",
+    "19420906": "Zety",
+    "19421011": "Zimovskoy",
+    "19421123": "Ventsy",
+    "19421223": "Ventsy",
+    "19430120": "Ventsy",
+    "19430301": "Severskaya",
+    "19430330": "Staro-Nijne-Steblievskaya",
+    "19430418": "Myshako",
+    "19430918": "Gostagaevskaya",
+    "19430927": "Taman",
+    "19431004": "Taman",
+    "19431008": "Kerch"
+  },
+  "skins": [],
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

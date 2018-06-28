@@ -1,0 +1,27 @@
+{
+  "name": "Esc 124 Lafayette",
+  "squadronId": 101124,
+  "airfields": {
+    "19160418": "Belrain",
+    "19170315": "Ravenel",
+    "19170518": "La Lovie",
+    "19170913": "Lemmes",
+    "19171203": "Chaudun",
+    "19180112": "La Noblette",
+    "19180209": "Vauxcere",
+    "19180315": "La Noblette",
+    "19180328": "Bonne Maisson",
+    "19180410": "Le Creche",
+    "19180420": "La Lovie",
+    "19180428": "West Cappelle",
+    "19180502": "La Noblette",
+    "19180615": "La Cheppe",
+    "19180715": "La Noblette",
+    "19180727": "Grivesnes",
+    "19180812": "Chaudun",
+    "19180915": "Tilloy at Bellay",
+    "19181025": "Leffincourt,E Reims",
+    "19181105": "Chassonge Ferme,Stenay/Verdun",
+    "19181110": "La Jolly Ferme,Stenay"
+  }
+}

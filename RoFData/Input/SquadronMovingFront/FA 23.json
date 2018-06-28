@@ -1,0 +1,14 @@
+{
+  "name": "FA 23",
+  "squadronId": 501223,
+  "airfields": {
+    "19150801": "Eppeville",
+    "19180326": "Hermies,Cambrai",
+    "19180918": "Balatre,E Roye",
+    "19181005": "Mesnil St George",
+    "19181015": "Ham Matigny",
+    "19181025": "Busigny",
+    "19181105": "Longchamps",
+    "19181110": "Wassigny"
+  }
+}

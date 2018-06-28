@@ -1,0 +1,755 @@
+{
+  "squadronMembers": {
+    "3000668": {
+      "name": "Adam Miller",
+      "serialNumber": 3000668,
+      "rank": "2nd Lieutenant",
+      "picName": "British008.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102001,
+      "inactiveDate": "19181111"
+    },
+    "3000665": {
+      "name": "David Monde",
+      "serialNumber": 3000665,
+      "rank": "2nd Lieutenant",
+      "picName": "British013.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102001,
+      "inactiveDate": "19181111"
+    },
+    "3000664": {
+      "name": "Perry Perchehay",
+      "serialNumber": 3000664,
+      "rank": "Lieutenant",
+      "picName": "British051.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 11,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170425",
+          "location": "Corbeny",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd2",
+            "squadronName": "FAA 1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Karl Schuerman",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lieutenant Perry Perchehay",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Bouconville-sur-Madt",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "Schlasta 10",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Adolf Hasselbach",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lieutenant Perry Perchehay",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102001,
+      "inactiveDate": "19181111"
+    },
+    "3000667": {
+      "name": "Rolf Mullens",
+      "serialNumber": 3000667,
+      "rank": "2nd Lieutenant",
+      "picName": "British017.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 2,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102001,
+      "inactiveDate": "19181111"
+    },
+    "3000666": {
+      "name": "Norris Stanley",
+      "serialNumber": 3000666,
+      "rank": "2nd Lieutenant",
+      "picName": "British004.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 6,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102001,
+      "inactiveDate": "19181111"
+    },
+    "3000661": {
+      "name": "Isaac Penhallick",
+      "serialNumber": 3000661,
+      "rank": "Captain",
+      "picName": "British064.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 32,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170425",
+          "location": "Pomacle",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 19",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Erich Kromer",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Isaac Penhallick",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Gincrey",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 11",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Joachim Feininger",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Isaac Penhallick",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102001,
+      "inactiveDate": "19181111"
+    },
+    "3000660": {
+      "name": "Carroll Huddleston",
+      "serialNumber": 3000660,
+      "rank": "Captain",
+      "picName": "British043.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 38,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170407",
+          "location": "Gincrey",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 37",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Eugen Seiden",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Carroll Huddleston",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170410",
+          "location": "Sampigny",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 261",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Lothar Naundorf",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Carroll Huddleston",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170413",
+          "location": "Malancourt",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 29",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Steffen Nickisch",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Carroll Huddleston",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170416",
+          "location": "Guignicourt",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 23",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Ingemar Redler",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Carroll Huddleston",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170419",
+          "location": "StMihiel",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 37",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Lukas Aschner",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Carroll Huddleston",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Forges-sur-Meuse",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Michael Fleischmann",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Carroll Huddleston",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Somme-Tourbe",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 23b",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kmdr Jan Busenbaum",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Carroll Huddleston",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Sommepy-Tahure",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 16b",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Klaus Reichmann",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Carroll Huddleston",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102001,
+      "inactiveDate": "19181111"
+    },
+    "3000663": {
+      "name": "Russell Colt",
+      "serialNumber": 3000663,
+      "rank": "Lieutenant",
+      "picName": "British063.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 25,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170425",
+          "location": "Pomacle",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 14",
+            "pilotSerialNumber": 0,
+            "pilotName": "Fw Udo Krauszer",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lieutenant Russell Colt",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Sommepy-Tahure",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Fw Rikard Adler",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lieutenant Russell Colt",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102001,
+      "inactiveDate": "19181111"
+    },
+    "3000662": {
+      "name": "Garret Duredent",
+      "serialNumber": 3000662,
+      "rank": "Lieutenant",
+      "picName": "British027.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 25,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102001,
+      "inactiveDate": "19181111"
+    },
+    "3000659": {
+      "name": "Brock Addicock",
+      "serialNumber": 3000659,
+      "rank": "Major",
+      "picName": "British70.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 53,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170410",
+          "location": "Guignicourt",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd2late",
+            "squadronName": "Jasta 32b",
+            "pilotSerialNumber": 0,
+            "pilotName": "Obltn Veit Leuba",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Brock Addicock",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170413",
+          "location": "StMihiel",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 17",
+            "pilotSerialNumber": 0,
+            "pilotName": "Obltn Joachim Habermann",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Brock Addicock",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170416",
+          "location": "Gincrey",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kmdr Wenzel Schlag",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Brock Addicock",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170419",
+          "location": "StMihiel",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 12",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Anton Herreshoff",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Brock Addicock",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Bourgogne",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FliK 10",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Friedhelm Weinzweig",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Brock Addicock",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Betheniville",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 18",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Ewald Lachenmann",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Brock Addicock",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Flirey",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 19",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Jens Rutter",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 1 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Brock Addicock",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102001,
+      "inactiveDate": "19181111"
+    }
+  }
+}

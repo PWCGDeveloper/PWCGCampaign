@@ -1,0 +1,609 @@
+package pwcg.gui.rofmap.brief;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.io.mission.MissionFileWriter;
+import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.plane.payload.IPayloadFactory;
+import pwcg.campaign.plane.payload.PayloadDesignation;
+import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.utils.AutoStart;
+import pwcg.campaign.utils.PlanesOwnedManager;
+import pwcg.core.exception.PWCGException;
+import pwcg.core.exception.PWCGIOException;
+import pwcg.core.utils.Logger;
+import pwcg.core.utils.MissionLogFileValidator;
+import pwcg.gui.CampaignGuiContextManager;
+import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.campaign.home.CampaignHomeGUI;
+import pwcg.gui.colors.ColorMap;
+import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.sound.SoundManager;
+import pwcg.gui.utils.ContextSpecificImages;
+import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.mission.Mission;
+import pwcg.mission.briefing.BriefingMissionHandler;
+import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
+import pwcg.mission.flight.plane.Plane;
+
+public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListener
+{
+    private static final Integer NUM_COLUMNS = 4;
+	private static final long serialVersionUID = 1L;
+    private CampaignHomeGUI campaignHomeGui = null;
+	private ImageResizingPanel pilotPanel = null;
+    private JButton acceptMissionButton = null;
+    private BriefingMissionHandler briefingMissionHandler = null;
+    private Map<Integer, BriefingPlaneModificationsPicker> planeModifications = new HashMap<>();
+    private Campaign campaign;
+
+    
+	public BriefingPilotPanelSet(CampaignHomeGUI campaignHomeGui, BriefingMissionHandler briefingMissionHandler) 
+	{
+	    super();
+	    
+        this.campaign = campaignHomeGui.getCampaign();
+        this.campaignHomeGui =  campaignHomeGui;
+        this.briefingMissionHandler =  briefingMissionHandler;
+	}
+
+	public void makePanels() 
+	{
+		try
+		{
+			this.removeAll();
+	
+			setLeftPanel(makeButtonPanel());
+
+			setCenterPanel(makePilotPanel());
+		}
+		catch (Exception e)
+		{
+			Logger.logException(e);
+			ErrorDialog.internalError(e.getMessage());
+		}
+	}
+	
+
+    private JPanel makeButtonPanel() throws PWCGException 
+    {
+        String imagePath = getSideImage("BriefingNav.jpg");
+
+        ImageResizingPanel pilotAssignmentNavPanel = new ImageResizingPanel(imagePath);
+        pilotAssignmentNavPanel.setLayout(new BorderLayout());
+        pilotAssignmentNavPanel.setOpaque(false);
+
+        JPanel buttonGrid = new JPanel(new GridLayout(0,1));
+        buttonGrid.setOpaque(false);
+        
+        JButton payloadAsLeaderButton = PWCGButtonFactory.makeMenuButton("Synchronize Payload", "Synchronize Payload", this);
+        buttonGrid.add(payloadAsLeaderButton);
+        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        
+        JButton scrubButton = PWCGButtonFactory.makeMenuButton("Scrub Mission", "Scrub Mission", this);
+        buttonGrid.add(scrubButton);
+        buttonGrid.add(PWCGButtonFactory.makeDummy());
+
+        JButton backToMapButton = PWCGButtonFactory.makeMenuButton("Back To Map", "Back To Map", this);
+        buttonGrid.add(backToMapButton);
+        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        
+        acceptMissionButton = PWCGButtonFactory.makeMenuButton("Accept Mission", "Accept Mission", this);
+        buttonGrid.add(acceptMissionButton);
+        buttonGrid.add(PWCGButtonFactory.makeDummy());
+        
+        enableAcceptButton();
+        
+        if (PwcgGuiModSupport.isRunningIntegrated() || PwcgGuiModSupport.isRunningDebrief())
+        {
+            JButton flyMissionButton = PWCGButtonFactory.makeMenuButton("Fly Mission", "Fly Mission", this);
+            buttonGrid.add(flyMissionButton);
+        }
+        
+        if (briefingMissionHandler.getMission().isFinalized())
+        {
+            acceptMissionButton.setEnabled(false);
+        }
+
+        pilotAssignmentNavPanel.add(buttonGrid, BorderLayout.NORTH);
+        
+        return pilotAssignmentNavPanel;
+    }
+
+    private void enableAcceptButton()
+    {
+        Campaign campaign  = PWCGContextManager.getInstance().getCampaign();
+        if (campaign.getCurrentMission() != null)
+        {
+            Mission mission = campaign.getCurrentMission();
+            if (mission.isFinalized())
+            {
+                acceptMissionButton.setEnabled(false);
+            }
+            else
+            {
+                acceptMissionButton.setEnabled(true);
+            }
+        }
+        else
+        {
+            acceptMissionButton.setEnabled(true);
+        }
+    }
+
+	public JPanel makePilotPanel() throws PWCGException  
+	{
+		if (pilotPanel != null)
+		{
+			remove(pilotPanel);		
+		}
+
+        String imagePath = ContextSpecificImages.imagesMisc() + "PilotSelectChalkboard.jpg";
+		pilotPanel = new ImageResizingPanel(imagePath);
+		pilotPanel.setLayout(new BorderLayout());
+		
+        Insets margins = MonitorSupport.calculateInset(60,60,60,60);
+        pilotPanel.setBorder(BorderFactory.createEmptyBorder(margins.top, margins.left, margins.bottom, margins.right)); 
+		
+		JPanel assignedPilotPanel = createAssignedPilots();
+
+		for (int i = 0; i < NUM_COLUMNS; ++i)
+		{
+            JLabel spacerLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+    		assignedPilotPanel.add(spacerLabel);
+		}
+
+		createUnassignedPilots(assignedPilotPanel);
+
+		for (int i = 0; i < (NUM_COLUMNS - 1); ++i)
+		{
+            JLabel spacerLabelBottom = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+            assignedPilotPanel.add(spacerLabelBottom);
+		}
+		
+		JPanel dummy1 = makeDummyPanel();
+		pilotPanel.add(dummy1, BorderLayout.WEST);
+		
+		JPanel dummy2 = makeDummyPanel();
+		pilotPanel.add(dummy2, BorderLayout.EAST);
+
+		JPanel dummy3 = makeDummyPanel();
+		pilotPanel.add(dummy3, BorderLayout.NORTH);
+
+		JPanel dummy4 = makeDummyPanel();
+		pilotPanel.add(dummy4, BorderLayout.SOUTH);
+
+		pilotPanel.add(BorderLayout.CENTER, assignedPilotPanel);
+		
+		return pilotPanel;
+	}
+
+    private JPanel createAssignedPilots() throws PWCGException
+    {
+        JPanel assignedPilotPanel = new JPanel(new GridLayout(0, NUM_COLUMNS));
+		assignedPilotPanel.setOpaque(false);
+		
+        makeLabelsForChalkboard(assignedPilotPanel);
+		addDataForChalkboard(assignedPilotPanel);
+        return assignedPilotPanel;
+    }
+
+    private void makeLabelsForChalkboard(JPanel assignedPilotPanel) throws PWCGException
+    {
+        JLabel assignedPilotLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Assigned Pilots:");
+        assignedPilotPanel.add(assignedPilotLabel);
+        
+        JLabel assignedAircraftLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Aircraft:");
+        assignedPilotPanel.add(assignedAircraftLabel);
+        
+        JLabel payloadLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Payload:");
+        assignedPilotPanel.add(payloadLabel);
+        
+        JLabel modificationsLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Modifications:");
+        assignedPilotPanel.add(modificationsLabel);
+    }
+
+    private void addDataForChalkboard(JPanel assignedPilotPanel) throws PWCGException
+    {
+		for (CrewPlanePayloadPairing crewPlane : briefingMissionHandler.getSortedAssigned())
+		{			
+		    String pilotNameText = crewPlane.getPilot().getNameAndRank();
+	        JButton assignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText, "Unassign Pilot:" + crewPlane.getPilot().getSerialNumber(), this);
+            assignedPilotPanel.add(assignedPilotButton);
+
+            addPilotColumn(crewPlane.getPilot(), assignedPilotButton);
+            addPlaneColumn(assignedPilotPanel, crewPlane);            
+            addPayloadColumn(assignedPilotPanel, crewPlane);
+            addModificationsColumn(assignedPilotPanel, crewPlane);
+		}
+    }
+
+    private void addPilotColumn(SquadronMember pilotSquadronMember, JButton assignedPilotButton) throws PWCGException
+    {
+        if (pilotSquadronMember.getSerialNumber() == campaign.getPlayer().getSerialNumber())
+        {
+            assignedPilotButton.setEnabled(false);
+        }
+    }
+
+    private void addPlaneColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane) throws PWCGException
+    {
+        PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(crewPlane.getPlaneType());
+        String planeName = plane.getDisplayName();
+        JButton planeButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planeName, "Change Plane:" + crewPlane.getPilot().getSerialNumber(), this);
+        assignedPilotPanel.add(planeButton);
+    }
+    
+    private void addPayloadColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane) throws PWCGException
+    {
+        IPayloadFactory payloadFactory = PWCGContextManager.getInstance().getPayloadFactory();
+        PayloadDesignation payloadDesignation = payloadFactory.getPlanePayloadDesignation(crewPlane.getPlaneType(), crewPlane.getPayloadId());
+        String planePayloadDescription = payloadDesignation.getPayloadDescription();
+        JButton payloadButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planePayloadDescription, "Change Payload:" + crewPlane.getPilot().getSerialNumber(), this);
+        assignedPilotPanel.add(payloadButton);
+    }
+    
+    private void addModificationsColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane) throws PWCGException
+    {
+        BriefingPlaneModificationsPicker planeModification = new BriefingPlaneModificationsPicker(this, crewPlane);
+        planeModifications.put(crewPlane.getPilot().getSerialNumber(), planeModification);
+        JPanel extrasPanel = planeModification.makePlaneModifications();
+        assignedPilotPanel.add(extrasPanel);
+    }
+
+    private void createUnassignedPilots(JPanel assignedPilotPanel) throws PWCGException
+    {
+        JLabel unassignedLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("Unassigned Pilots:");
+		assignedPilotPanel.add(unassignedLabel);
+        
+        JLabel assignedAircraftLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+        assignedPilotPanel.add(assignedAircraftLabel);
+        
+        JLabel payloadLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+        assignedPilotPanel.add(payloadLabel);
+        
+        JLabel modificationsLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+        assignedPilotPanel.add(modificationsLabel);
+ 
+        for (CrewPlanePayloadPairing unAssignedCreePlane : briefingMissionHandler.getSortedUnassigned())
+        {           
+            SquadronMember pilotSquadronMember = unAssignedCreePlane.getPilot();
+            String pilotNameText = pilotSquadronMember.getNameAndRank();
+            JButton unassignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText, "Assign Pilot:" + pilotSquadronMember.getSerialNumber(), this);
+			assignedPilotPanel.add(unassignedPilotButton);
+
+			JLabel planeSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+			assignedPilotPanel.add(planeSpaceLabel);
+
+            JLabel payloadSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+            assignedPilotPanel.add(payloadSpaceLabel);
+
+            JLabel modificationsSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+            assignedPilotPanel.add(modificationsSpaceLabel);
+        }
+    }
+
+	private JPanel makeDummyPanel() throws PWCGException 
+	{
+		Color bg = ColorMap.MAP_BACKGROUND;
+
+		JPanel dummyPanel = new JPanel();
+		dummyPanel.setLayout(new GridLayout(0,1));
+		dummyPanel.setOpaque(false);
+
+		JLabel backToMapLabel = new JLabel("          ");
+		backToMapLabel.setOpaque(false);
+		backToMapLabel.setBackground(bg);
+		dummyPanel.add(backToMapLabel);
+				
+		return dummyPanel;
+	}
+
+	public void actionPerformed(ActionEvent ae)
+	{
+		try
+		{
+			String action = ae.getActionCommand();
+			if (action.equalsIgnoreCase("Back To Map"))
+			{
+		        CampaignGuiContextManager.getInstance().popFromContextStack();
+				return;
+			}
+            else if (action.equals("Synchronize Payload"))
+            {
+                synchronizePayload();
+                synchronizeModifications();
+                refreshPilotDisplay();
+            }
+            else if (action.equals("Scrub Mission"))
+            {
+                scrubMission();
+            }
+            else if (action.equals("Accept Mission"))
+            {
+                acceptMission();
+            }
+            else if (action.equals("Fly Mission"))
+            {
+                flyMission();
+            }
+			else if (action.contains("Change Plane:"))
+			{
+                changePlaneForPilot(action);
+			}
+            else if (action.contains("Change Payload:"))
+            {
+                changePayloadForPlane(action);
+            }
+            else if (action.contains("SelectPlaneModification:"))
+            {
+                changeModificationsForPlane(action);
+            }
+            else if (action.contains("Assign Pilot:"))
+            {
+                assignPilot(action);
+            }
+            else if (action.contains("Unassign Pilot:"))
+            {
+                unassignPilot(action);
+            }
+		}
+		catch (Exception e)
+		{
+			Logger.logException(e);
+			ErrorDialog.internalError(e.getMessage());
+		}
+	}
+
+    private void changePlaneForPilot(String action) throws PWCGException
+    {
+        if (!briefingMissionHandler.getMission().isFinalized())
+        {
+        	Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
+        	
+        	BriefingPlanePicker briefingPlanePicker = new BriefingPlanePicker(briefingMissionHandler, this);
+        	String newPlane = briefingPlanePicker.pickPlane(pilotSerialNumber);
+        	if (newPlane != null)
+        	{
+        		briefingMissionHandler.modifyPlaneType(pilotSerialNumber, newPlane);
+        	}
+        	
+        	refreshPilotDisplay();
+        }
+    }
+
+    private void assignPilot(String action) throws PWCGException
+    {
+        if (!briefingMissionHandler.getMission().isFinalized())
+        {
+            Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
+            briefingMissionHandler.assignPilotFromBriefing(pilotSerialNumber);
+            refreshPilotDisplay();
+        }
+    }
+
+    private void unassignPilot(String action) throws PWCGException
+    {
+        if (!briefingMissionHandler.getMission().isFinalized())
+        {
+            Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
+            
+            CrewPlanePayloadPairing planeCrew = briefingMissionHandler.getPairingByPilot(pilotSerialNumber);
+            SquadronMember squadronMember = planeCrew.getPilot();
+            briefingMissionHandler.unassignPilotFromBriefing(squadronMember.getSerialNumber());
+            refreshPilotDisplay();
+        }
+    }
+
+    private void changePayloadForPlane(String action) throws PWCGException
+    {
+        if (!briefingMissionHandler.getMission().isFinalized())
+        {
+            Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
+            CrewPlanePayloadPairing crewPlane = briefingMissionHandler.getPairingByPilot(pilotSerialNumber);
+
+            BriefingPayloadPicker briefingPayloadPicker = new BriefingPayloadPicker(this);
+            int newPayload = briefingPayloadPicker.pickPayload(crewPlane.getPlaneType());
+            if (newPayload != -1)
+            {
+                briefingMissionHandler.modifyPayload(pilotSerialNumber, newPayload);
+            }
+            
+            refreshPilotDisplay();
+        }
+    }
+
+    private void changeModificationsForPlane(String action) throws PWCGException
+    {
+        if (!briefingMissionHandler.getMission().isFinalized())
+        {
+            Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
+            setModificationInCrewPlane(pilotSerialNumber);
+            refreshPilotDisplay();
+        }
+    }
+
+	private void setModificationInCrewPlane(Integer pilotSerialNumber) throws PWCGException {
+        CrewPlanePayloadPairing crewPlane = briefingMissionHandler.getPairingByPilot(pilotSerialNumber);
+		crewPlane.clearModification();
+		BriefingPlaneModificationsPicker modificationPicker = planeModifications.get(pilotSerialNumber);
+		for (String modificationDescription : modificationPicker.getPlaneModifications().keySet())
+		{
+		    JCheckBox planeModificationCheckBox = modificationPicker.getPlaneModifications().get(modificationDescription);
+		    boolean ismodificationSelected = planeModificationCheckBox.isSelected();
+		    if (ismodificationSelected)
+		    {
+		        crewPlane.addModification(modificationDescription);
+		    }
+		    else
+		    {
+		        crewPlane.removeModification(modificationDescription);
+		    }
+		}
+	}
+
+    private Integer getPilotSerialNumberFromAction(String action)
+    {
+        int index = action.indexOf(":");
+        String pilotSerialNumberString = action.substring(index + 1);
+        Integer pilotSerialNumber = new Integer(pilotSerialNumberString);
+        return pilotSerialNumber;
+    }
+
+    private void synchronizePayload() throws PWCGException
+    {
+        List<CrewPlanePayloadPairing> assignedPairings = briefingMissionHandler.getSortedAssigned();
+        CrewPlanePayloadPairing leadPlane = assignedPairings.get(0);
+        for (int i = 1; i < assignedPairings.size(); ++i)
+        {
+            CrewPlanePayloadPairing subordinatePlane = assignedPairings.get(i);
+            if (leadPlane.getPlaneType().equals(subordinatePlane.getPlaneType()))
+            {
+                subordinatePlane.setPayloadId(leadPlane.getPayloadId());
+            }
+        }
+    }
+
+    private void synchronizeModifications() throws PWCGException
+    {
+        List<CrewPlanePayloadPairing> assignedPairings = briefingMissionHandler.getSortedAssigned();
+        CrewPlanePayloadPairing leadPlane = assignedPairings.get(0);
+        for (int i = 1; i < assignedPairings.size(); ++i)
+        {
+            CrewPlanePayloadPairing subordinatePlane = assignedPairings.get(i);
+            if (leadPlane.getPlaneType().equals(subordinatePlane.getPlaneType()))
+            {
+                subordinatePlane.clearModification();
+                for (String modificationDescription : leadPlane.getModifications())
+                {
+                    subordinatePlane.addModification(modificationDescription);
+                }
+            }
+        }
+    }
+
+    private void refreshPilotDisplay() throws PWCGException
+    {
+        makePilotPanel();
+        add(pilotPanel, BorderLayout.CENTER);
+        pilotPanel.revalidate();
+        pilotPanel.repaint();
+    }
+
+    private void scrubMission() throws PWCGException
+    {
+        Campaign campaign  = PWCGContextManager.getInstance().getCampaign();
+        campaign.setCurrentMission(null);
+        
+        campaignHomeGui.clean();
+        campaignHomeGui.createPilotContext();
+
+        campaignHomeGui.enableButtonsAsNeeded();
+        CampaignGuiContextManager.getInstance().popFromContextStack();
+    }
+
+    private void acceptMission() throws PWCGException, PWCGException
+    {
+        briefingMissionHandler.pushEditsToMission();
+        if (!ensurePlayerOwnsPlane())
+        {
+        	return;
+        }
+        
+        SoundManager.getInstance().playSound("BriefingEnd.WAV");
+
+        briefingMissionHandler.finalizeMission();
+        
+        verifyLoggingEnabled();
+        
+        Campaign campaign  = PWCGContextManager.getInstance().getCampaign();
+
+        briefingMissionHandler.updateMissionBriefingParameters();
+        campaign.setCurrentMission(briefingMissionHandler.getMission());
+        
+        campaignHomeGui.clean();
+        campaignHomeGui.createPilotContext();
+
+        campaignHomeGui.enableButtonsAsNeeded();
+        CampaignGuiContextManager.getInstance().popFromContextStack();
+    }
+
+	private boolean ensurePlayerOwnsPlane() throws PWCGException
+	{
+		Plane playerPlane = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight().getPlayerPlane();
+        if (!PlanesOwnedManager.getInstance().isPlaneOwned(playerPlane.getType()))
+        {
+            ErrorDialog.userError("Player does not own his assigned plane: " + playerPlane.getDisplayName() + ".  Mission will not be written.");
+            return false;
+        }
+        
+        return true;
+	}
+
+    private void verifyLoggingEnabled()
+    {
+        MissionLogFileValidator missionLogFileValidator = new MissionLogFileValidator();
+        boolean missionLogsEnabled = missionLogFileValidator.validateMissionLogsEnabled();
+        if (!missionLogsEnabled)
+        {
+            ErrorDialog.userError("Mission logging is not enabled.  Before flying the mission open <game install dir>\\Data\\Startup.cfg and set mission_text_log = 1");
+        }
+    }
+
+    private void flyMission() throws PWCGException, PWCGIOException
+    {
+        briefingMissionHandler.pushEditsToMission();
+
+        MissionLogFileValidator missionLogFileValidator = new MissionLogFileValidator();
+        boolean missionLogsEnabled = missionLogFileValidator.validateMissionLogsEnabled();
+        if (missionLogsEnabled)
+        {
+            SoundManager.getInstance().playSound("BriefingEnd.WAV");
+
+            briefingMissionHandler.finalizeMission();
+            
+            makeDataFileForMission();
+
+            CampaignGuiContextManager.getInstance().popFromContextStack();
+            
+            System.exit(0);
+        }
+        else
+        {
+            ErrorDialog.userError("Mission not started because logging is not enabled.  Open .<game install dir>\\Data\\Startup.cfg and set mission_text_log = 1");
+        }
+        
+        
+    }
+    private void makeDataFileForMission() throws PWCGException 
+    {
+        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        String campaignName = campaign.getName();       
+        
+        String missionFileName = MissionFileWriter.getMissionFileName(campaign) + ".mission";
+        
+        AutoStart autoStartFile = new AutoStart();
+        autoStartFile.setCampaignName(campaignName);
+        autoStartFile.setMissionFileName(missionFileName);
+        autoStartFile.write();
+    }
+
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusCapturedEvaluatorTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:16" hostname="DigitalStorm-PC" time="0.979">
+  <properties/>
+  <testcase name="testCrewMemberAlwaysCaptured" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusCapturedEvaluatorTest" time="0.245"/>
+  <testcase name="testCrewMemberNotCapturedBecauseStillInTheAir" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusCapturedEvaluatorTest" time="0.251"/>
+  <testcase name="testCrewMemberNotCapturedBecauseNotBehindLines" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusCapturedEvaluatorTest" time="0.24"/>
+  <testcase name="testCrewMemberNotCapturedBecauseEscaped" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusCapturedEvaluatorTest" time="0.242"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

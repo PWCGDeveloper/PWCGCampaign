@@ -1,0 +1,14 @@
+{
+  "name": "No 22 Squadron RFC",
+  "squadronId": 102022,
+  "airfields": {
+    "19160401": "Grivesnes",
+    "19170501": "Marieux",
+    "19170703": "Le Hameau",
+    "19170909": "Oudezeele",
+    "19180115": "Auchel",
+    "19180321": "Merville",
+    "19181005": "La Gorgue",
+    "19181025": "La Neuville"
+  }
+}

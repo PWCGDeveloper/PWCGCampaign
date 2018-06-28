@@ -1,0 +1,21 @@
+{
+  "name": "Jasta 29",
+  "squadronId": 501029,
+  "airfields": {
+    "19170215": "Pomacle",
+    "19170622": "Lagnicourt",
+    "19170628": "Douai",
+    "19170718": "Menin",
+    "19170801": "Menin",
+    "19170914": "Zande",
+    "19171128": "Brayelles,Douai",
+    "19171214": "Lagnicourt",
+    "19180331": "Phalempin,N Douai",
+    "19180818": "Lagnicourt",
+    "19180929": "Wervicq",
+    "19181006": "Moorslede",
+    "19181015": "Phalempin,N Douai",
+    "19181025": "Bersee,NW Douai",
+    "19181110": "Mouchin"
+  }
+}

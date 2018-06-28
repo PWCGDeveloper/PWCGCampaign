@@ -1,0 +1,415 @@
+{
+  "skinSetType": "SKIN_DO_NOT_USE",
+  "skins": {
+    "hd2_1pl_1esk": {
+      "skinName": "HD2_1PL_1ESK",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_1pl_eszk": {
+      "skinName": "HD2_1PL_ESZK",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_42sq_blue": {
+      "skinName": "HD2_42SQ_BLUE",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_42sq_red": {
+      "skinName": "HD2_42SQ_RED",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_ben_robinson": {
+      "skinName": "HD2_BEN_ROBINSON",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_cak_def_1": {
+      "skinName": "HD2_CAK_DEF_1",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_cak_def_2": {
+      "skinName": "HD2_CAK_DEF_2",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_cak_madvlk": {
+      "skinName": "HD2_CAK_MADVLK",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_er_cux_m": {
+      "skinName": "HD2_ER_CUX_M",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_er_mel_m": {
+      "skinName": "HD2_ER_MEL_M",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_er_ovk_m": {
+      "skinName": "HD2_ER_OVK_M",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_er_quin_m": {
+      "skinName": "HD2_ER_QUIN_M",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_er_rawl_m": {
+      "skinName": "HD2_ER_RAWL_M",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_er_sax_m": {
+      "skinName": "HD2_ER_SAX_M",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_er_seml_m": {
+      "skinName": "HD2_ER_SEML_M",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_er_stef_m": {
+      "skinName": "HD2_ER_STEF_M",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_er_strd_m": {
+      "skinName": "HD2_ER_STRD_M",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_er_tvs_m": {
+      "skinName": "HD2_ER_TVS_M",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_gonty": {
+      "skinName": "HD2_GONTY",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_huntertastic": {
+      "skinName": "HD2_HUNTERTASTIC",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_j2_leader": {
+      "skinName": "HD2_J2_LEADER",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_j2_wallen": {
+      "skinName": "HD2_J2_WALLEN",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_j2_wing": {
+      "skinName": "HD2_J2_WING",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_j2_winga": {
+      "skinName": "HD2_J2_WINGA",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_j99": {
+      "skinName": "HD2_J99",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_j99_arms": {
+      "skinName": "HD2_J99_ARMS",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_j99_armsw": {
+      "skinName": "HD2_J99_ARMSW",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_j99_falke": {
+      "skinName": "HD2_J99_FALKE",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_m55_generic": {
+      "skinName": "HD2_M55_GENERIC",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_m55_panther": {
+      "skinName": "HD2_M55_PANTHER",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_o_rod": {
+      "skinName": "HD2_O_ROD",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_svonweiss": {
+      "skinName": "HD2_SVONWEISS",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_tvscherrer": {
+      "skinName": "HD2_TVSCHERRER",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_tvscherrerv2": {
+      "skinName": "HD2_TVSCHERRERV2",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_ww-std1": {
+      "skinName": "HD2_WW-STD1",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_ww-std2": {
+      "skinName": "HD2_WW-STD2",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_ww-std3": {
+      "skinName": "HD2_WW-STD3",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_ww-std4": {
+      "skinName": "HD2_WW-STD4",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_ww-std5": {
+      "skinName": "HD2_WW-STD5",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_ww-std6": {
+      "skinName": "HD2_WW-STD6",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "hd2_zjg1vonrd": {
+      "skinName": "HD2_ZJG1VONRD",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    }
+  }
+}

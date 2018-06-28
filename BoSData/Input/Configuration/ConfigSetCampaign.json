@@ -1,0 +1,25 @@
+{
+  "configSetName": "ConfigSetCampaign",
+  "configMap": {
+    "BaseOddsOfDeath": {
+      "value": "2",
+      "label": "Base Odds Of Death",
+      "help": "Base chance of out of mission death for a pilot (1/10 of a percent)"
+    },
+    "BaseOddsOfVictory": {
+      "value": "5",
+      "label": "Base Odds Of Victory",
+      "help": "Base chance of out of mission victory for a pilot (1/10 of a percent)"
+    },
+    "NewPilotRankOddsLow": {
+      "value": "45",
+      "label": "New Pilot Rank Odds Low",
+      "help": "Odds that a new pilot will be the second lowest or lowest possible rank"
+    },
+    "NewPilotRankOddsLowest": {
+      "value": "20",
+      "label": "New Pilot Rank Odds Lowest",
+      "help": "Odds that a new pilot will be lowest possible rank"
+    }
+  }
+}

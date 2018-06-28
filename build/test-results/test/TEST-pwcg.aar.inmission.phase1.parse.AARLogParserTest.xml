@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.inmission.phase1.parse.AARLogParserTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:06" hostname="DigitalStorm-PC" time="0.49">
+  <properties/>
+  <testcase name="testLogParseFileNotFound" classname="pwcg.aar.inmission.phase1.parse.AARLogParserTest" time="0.243"/>
+  <testcase name="testSuccessfulLogParse" classname="pwcg.aar.inmission.phase1.parse.AARLogParserTest" time="0.246"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

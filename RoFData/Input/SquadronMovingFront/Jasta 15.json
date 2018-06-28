@@ -1,0 +1,28 @@
+{
+  "name": "Jasta 15",
+  "squadronId": 501015,
+  "airfields": {
+    "19170305": "La Selve",
+    "19170502": "La Selve",
+    "19171101": "Sissonne",
+    "19171123": "Velu",
+    "19180213": "Marchais",
+    "19180320": "Besny-et-Loisy",
+    "19180324": "Clastres",
+    "19180326": "Mesnil St Nicaise",
+    "19180412": "Foucaucourt en Santerre",
+    "19180414": "Eppeville",
+    "19180613": "Cappy S",
+    "19180713": "Pomacle",
+    "19180725": "Chery-les-Pouilly,N",
+    "19180819": "Bonneuil Ferme",
+    "19180827": "Villeselve",
+    "19180829": "Neuflize",
+    "19180905": "Bellevue Ferme",
+    "19180914": "Bellevue Ferme",
+    "19180929": "Chassonge Ferme,Stenay/Verdun",
+    "19181010": "Sivry",
+    "19181025": "Charmois,S Stenay",
+    "19181110": "Jametz"
+  }
+}

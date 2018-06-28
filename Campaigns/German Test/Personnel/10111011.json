@@ -1,0 +1,236 @@
+{
+  "squadronMembers": {
+    "3000431": {
+      "name": "Yan Berezin",
+      "serialNumber": 3000431,
+      "rank": "Serzhant",
+      "picName": "Russian05.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 2,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411115",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111011
+    },
+    "3000008": {
+      "name": "Timofey Lilov",
+      "serialNumber": 3000008,
+      "rank": "Leyitenant",
+      "picName": "Russian18.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 20,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111011,
+      "inactiveDate": "19440101"
+    },
+    "3000010": {
+      "name": "Oleg Golovkin",
+      "serialNumber": 3000010,
+      "rank": "Leyitenant",
+      "picName": "Russian19.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 17,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111011,
+      "inactiveDate": "19440101"
+    },
+    "3000006": {
+      "name": "Pavel Kudashov",
+      "serialNumber": 3000006,
+      "rank": "Starshyi leyitenant",
+      "picName": "Russian50.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 22,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111011,
+      "inactiveDate": "19440101"
+    },
+    "3000001": {
+      "name": "Lev Bogdanov",
+      "serialNumber": 3000001,
+      "rank": "Major",
+      "picName": "Russian34.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 44,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19411029",
+          "location": "Shahovskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "ju88a4",
+            "squadronName": "II./KG76",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Ewart Krakauer",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "yak1s69",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Lev Bogdanov",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111011,
+      "inactiveDate": "19440101"
+    },
+    "3000003": {
+      "name": "Konstantin Butylin",
+      "serialNumber": 3000003,
+      "rank": "Kapitan",
+      "picName": "Russian01.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 50,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19411102",
+          "location": "Pogoreloe Gorodische",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "ju88a4",
+            "squadronName": "I./KG76",
+            "pilotSerialNumber": 0,
+            "pilotName": "Olt Christof Lehmann",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "yak1s69",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kapitan Konstantin Butylin",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111011,
+      "inactiveDate": "19440101"
+    },
+    "3000002": {
+      "name": "Matvey Mednikov",
+      "serialNumber": 3000002,
+      "rank": "Kapitan",
+      "picName": "Russian47.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 46,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111011,
+      "inactiveDate": "19440101"
+    }
+  }
+}

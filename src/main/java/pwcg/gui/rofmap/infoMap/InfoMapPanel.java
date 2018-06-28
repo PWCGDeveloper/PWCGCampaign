@@ -1,0 +1,545 @@
+package pwcg.gui.rofmap.infoMap;
+
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
+import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.SquadronManager;
+import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.group.Block;
+import pwcg.campaign.group.Bridge;
+import pwcg.campaign.group.GroupManager;
+import pwcg.campaign.plane.Role;
+import pwcg.campaign.squadron.Squadron;
+import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.location.PWCGLocation;
+import pwcg.core.utils.Logger;
+import pwcg.gui.colors.ColorMap;
+import pwcg.gui.colors.IServiceColorMap;
+import pwcg.gui.rofmap.MapGUI;
+import pwcg.gui.rofmap.MapPanelBase;
+
+public class InfoMapPanel extends MapPanelBase
+{
+    public static int DISPLAY_FRONT = 0;
+	public static int DISPLAY_AIRFIELDS = 1;
+	public static int DISPLAY_TOWNS = 2;
+    public static int DISPLAY_RAILROADS = 3;
+    public static int DISPLAY_BRIDGES = 4;
+    
+    public static int DISPLAY_FIGHTER = 5;
+    public static int DISPLAY_ATTACK = 6;
+    public static int DISPLAY_BOMBER = 7;
+    public static int DISPLAY_RECON = 8;
+    
+	private static final long serialVersionUID = 1L;
+	
+	private ICountry country = CountryFactory.makeMapReferenceCountry(Side.ALLIED);
+
+    private Boolean[] whatToDisplay = new Boolean[9];
+
+    private InfoMapSquadronMover squadronMover = new InfoMapSquadronMover();
+    
+    private boolean enableEditing = false;
+
+	public InfoMapPanel(MapGUI parent) throws PWCGException  
+	{
+		super(parent);
+		
+		for (int i = 0; i < whatToDisplay.length; ++i)
+		{
+		    whatToDisplay[i] = false;
+		}
+	}
+
+	public void setData() throws PWCGException 
+	{
+        setMapBackground(100);
+
+		repaint();
+	}
+
+    private void repaintMap()
+    {
+        makeVisible(false);
+        makeVisible(true);
+    }
+
+	public void paintComponent(Graphics g)
+	{
+		try
+		{
+			paintBaseMap(g);
+			
+			g.setColor(Color.black);
+			
+			if (whatToDisplay[DISPLAY_AIRFIELDS])
+			{
+		        AirfieldManager airfieldData =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager();
+		        Map<String, IAirfield> allAF = airfieldData.getAllAirfields();
+		        for (IAirfield af : allAF.values())
+		        {
+		            drawPointsByCountry(g, af.getPosition(), af.createCountry(parent.getMapDate()));
+		        }        
+			}
+			
+			if (whatToDisplay[DISPLAY_TOWNS])
+			{
+		        GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+		        List<PWCGLocation> mapLegends = groupData.getTownLocations().getLocations();
+		        for (PWCGLocation mapLegend : mapLegends)
+		        {
+		            drawPointsByCountry(g, mapLegend.getPosition(), null);
+		        }        
+			}
+            
+            if (whatToDisplay[DISPLAY_RAILROADS])
+            {
+                GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+                List<Block> railroads = groupData.getRailroadList();
+                for (Block railroad : railroads)
+                {
+                    drawPointsByCountry(g, railroad.getPosition(), railroad.createCountry(parent.getMapDate()));
+                }        
+            }
+            
+            if (whatToDisplay[DISPLAY_BRIDGES])
+            {
+                GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+                List<Bridge> bridges = groupData.getBridgeFinder().findAllBridges();
+                for (Bridge bridge : bridges)
+                {
+                    drawPointsByCountry(g, bridge.getPosition(), bridge.createCountry(parent.getMapDate()));
+                }        
+            }
+            
+            if (whatToDisplay[DISPLAY_FIGHTER])
+            {
+                SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
+                List<Squadron> allSquadrons = squadronManager.getAllActiveSquadronsForMap(parent.getMapDate());
+                for (Squadron squadron : allSquadrons)
+                {
+                    if (squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_FIGHTER))
+                    {
+                        drawPointsBySquadron(g, squadron);
+                    }
+                }        
+            }
+            
+            if (whatToDisplay[DISPLAY_BOMBER])
+            {
+                SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
+                List<Squadron> allSquadrons = squadronManager.getAllActiveSquadronsForMap(parent.getMapDate());
+                for (Squadron squadron : allSquadrons)
+                {
+                    if ((squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_BOMB)) || 
+                        (squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_STRAT_BOMB)) ||
+                        (squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_TRANSPORT)))
+                    {
+                        drawPointsBySquadron(g, squadron);
+                    }
+                }        
+            }
+            
+            if (whatToDisplay[DISPLAY_ATTACK])
+            {
+                SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
+                List<Squadron> allSquadrons = squadronManager.getAllActiveSquadronsForMap(parent.getMapDate());
+                for (Squadron squadron : allSquadrons)
+                {
+                    if ((squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_DIVE_BOMB)) || 
+                        (squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_ATTACK)))
+                    {
+                        drawPointsBySquadron(g, squadron);
+                    }
+                }        
+            }
+            
+            if (whatToDisplay[DISPLAY_RECON])
+            {
+                SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
+                List<Squadron> allSquadrons = squadronManager.getAllActiveSquadronsForMap(parent.getMapDate());
+                for (Squadron squadron : allSquadrons)
+                {
+                    if (squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_RECON))
+                    {
+                        drawPointsBySquadron(g, squadron);
+                    }
+                }        
+            }
+		}
+		catch (Exception e)
+		{
+			Logger.logException(e);
+		}
+	}
+
+    private void drawPointsBySquadron(Graphics g, Squadron squadron) throws PWCGException 
+    {
+        IServiceColorMap serviceColorMap = squadron.determineServiceForSquadron(parent.getMapDate()).getServiceColorMap();
+        
+        Color color = serviceColorMap.getColorForSquadron(squadron, parent.getMapDate());
+        
+        drawPoints(g, squadron.determineCurrentPosition(parent.getMapDate()), color);
+    }
+
+    private void drawPointsByCountry(Graphics g, Coordinate coordinate, ICountry country) 
+    {
+        Color color = ColorMap.UNKNOWN;
+                        
+        if (country == null)
+        {
+            color = ColorMap.PAPER_FOREGROUND;
+        }
+        else if (country.getSide() == Side.AXIS)
+        {
+            color = ColorMap.AXIS_BLACK;
+        }
+        else if (country.getSide() == Side.ALLIED)
+        {
+            color = ColorMap.RUSSIAN_RED;
+        }
+        else if (country.isNeutral())
+        {
+            color = ColorMap.NEUTRAL;
+        }
+        
+        drawPoints(g, coordinate, color);
+    }
+
+	private void drawPoints(Graphics g, Coordinate coordinate, Color color) 
+	{
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setStroke(new BasicStroke(3));
+        
+        g.setColor(color);
+
+        int size = 20;
+        
+        int halfWay = size / 2;
+
+        Point point = super.coordinateToPoint(coordinate);
+
+        Ellipse2D.Double circle = new Ellipse2D.Double(point.x - halfWay, point.y - halfWay, size, size);
+        g2.fill(circle);
+	}
+    
+    /**
+     * @param e
+     */
+    private void displayCoordinates(MouseEvent e)
+    {
+        try
+        {
+            Coordinate coordinate = getCoordinates(e);
+
+            String text = "Coordinates: " + coordinate.getXPos() + ", " + coordinate.getZPos();
+
+            InfoMapPopup menu = new InfoMapPopup(this, text);
+            menu.show(e.getComponent(), e.getX(), e.getY());
+        }
+        catch (Exception exp)
+        {
+            Logger.logException(exp);
+        }
+    }
+    
+    /**
+     * @param e
+     */
+    private Coordinate getCoordinates(MouseEvent e)
+    {
+        try
+        {
+            Point point = new Point();
+            point.x = e.getX();
+            point.y = e.getY();
+            Coordinate coordinate = pointToCoordinate(point);
+            return coordinate;
+        }
+        catch (Exception exp)
+        {
+            Logger.logException(exp);
+        }
+        
+        return null;
+    }
+
+    @Override
+    public void mouseMovedCallback(MouseEvent e) 
+    {       
+    }
+
+    @Override
+    public void mouseDraggedCallback(MouseEvent e)
+    {
+        super.mouseDraggedCallback(e);
+    }
+
+    @Override
+    public void leftClickReleasedCallback(MouseEvent e) throws PWCGException  
+    {       
+        super.leftClickReleasedCallback(e);
+    }
+
+
+    /**
+     * @param e
+     */
+    @Override
+    public void leftClickCallback(MouseEvent e) 
+    {       
+        super.leftClickCallback(e);
+    }
+
+
+
+    /* (non-Javadoc)
+     * @see rof.campaign.gui.rofmap.MapPanelBase#leftClickCallback(java.awt.event.MouseEvent)
+     */
+    @Override
+    public void rightClickCallback(MouseEvent e) 
+    {       
+        try
+        {
+            Point clickPoint = new Point();
+            clickPoint.x = e.getX();
+            clickPoint.y = e.getY();
+            
+            // Squadron info
+            if(!showSquadronInfo(e, clickPoint))
+            {
+                // IAirfield name
+                if (!showAirfieldName(e, clickPoint))
+                {
+                    // last option is display
+                    displayCoordinates(e);
+                }
+            }
+        }
+        catch (PWCGException exp)
+        {
+            exp.printStackTrace();
+        }
+    }
+
+    private boolean showAirfieldName(MouseEvent e, Point clickPoint)
+    {
+        if (whatToDisplay[DISPLAY_AIRFIELDS] == true)
+        {
+            IAirfield field = null;
+            try
+            {
+                Coordinate clickCoord = this.pointToCoordinate(clickPoint);
+
+               field = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getNearbyAirfield(clickCoord, 5000.0);
+                if (field == null)
+                {
+                    field = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getNearbyAirfield(clickCoord, 5000.0);
+                }
+                    
+            }
+            catch (PWCGException e1)
+            {
+                e1.printStackTrace();
+            }
+            
+            if (field != null)
+            {
+                if (enableEditing)
+                {
+                    showEditAirfieldLocation(e, field);
+                }
+                else
+                {
+                    showAirfieldInfo(e, field);
+                }
+
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
+    private void showEditAirfieldLocation(MouseEvent e, IAirfield field)
+    {
+        InfoAirfieldSelectPopup menu = new InfoAirfieldSelectPopup(this, field.getName());
+        menu.show(e.getComponent(), e.getX(), e.getY());
+    }
+
+    private void showAirfieldInfo(MouseEvent e, IAirfield field)
+    {
+        InfoMapPopup menu = new InfoMapPopup(this, field.getName());
+        menu.show(e.getComponent(), e.getX(), e.getY());
+        
+    }
+
+    private boolean showSquadronInfo(MouseEvent e, Point clickPoint) throws PWCGException
+    {
+        List<Squadron> selectedSquadrons = buildSelectedSquadrons(clickPoint);        
+        if (selectedSquadrons.size() > 0)
+        {
+            if (enableEditing)
+            {
+                showEditSquadronLocation(e, selectedSquadrons);
+            }
+            else
+            {
+                showSquadronInfo(e, selectedSquadrons);
+            }
+            
+            return true;
+        }
+        
+        return false;
+    }
+
+    private List<Squadron> buildSelectedSquadrons(Point clickPoint) throws PWCGException
+    {
+        List <Squadron> selectedSquadrons = new ArrayList<Squadron>();
+            
+        SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
+        List<Squadron> allSquadrons = squadronManager.getAllActiveSquadrons(parent.getMapDate());
+                
+        for (Squadron squadron : allSquadrons)
+        {
+            if ((whatToDisplay[DISPLAY_FIGHTER] == true && squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_FIGHTER))    || 
+                (whatToDisplay[DISPLAY_BOMBER] == true && squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_BOMB))        || 
+                (whatToDisplay[DISPLAY_BOMBER] == true && squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_STRAT_BOMB))  || 
+                (whatToDisplay[DISPLAY_BOMBER] == true && squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_TRANSPORT))  || 
+                (whatToDisplay[DISPLAY_ATTACK] == true && squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_ATTACK))      ||
+                (whatToDisplay[DISPLAY_ATTACK] == true && squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_DIVE_BOMB))   ||
+                (whatToDisplay[DISPLAY_RECON] == true && squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_SEA_PLANE))    ||
+                (whatToDisplay[DISPLAY_RECON] == true && squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_SEA_PLANE_LARGE))    ||
+                (whatToDisplay[DISPLAY_RECON] == true && squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_SEA_PLANE_SMALL))    ||
+                (whatToDisplay[DISPLAY_RECON] == true && squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_RECON)))
+            {
+                // Is the squadron based near a field that was clicked on
+                Coordinate clickCoord = this.pointToCoordinate(clickPoint);
+                IAirfield nearbyField = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getNearbyAirfield(clickCoord, 5000.0);
+                if (nearbyField != null)
+                {
+                    String squadronFieldName = squadron.determineCurrentAirfieldName(parent.getMapDate());
+                    if (squadronFieldName.equals(nearbyField.getName()))
+                    {
+                        selectedSquadrons.add(squadron);
+                    }
+                }
+            }
+        }
+        return selectedSquadrons;
+    }
+
+    private void showSquadronInfo(MouseEvent e, List<Squadron> selectedSquadrons) throws PWCGException
+    {
+        String displayString = "";
+        for (Squadron squadron : selectedSquadrons)
+        {                    
+            String fieldName = squadron.determineCurrentAirfieldName(parent.getMapDate());
+            String squadronName = squadron.determineDisplayName(parent.getMapDate());
+                
+            String info = squadronName + " at " + fieldName;
+            displayString += info + "   ";
+        }
+
+        InfoMapPopup squadronPopup = new InfoMapPopup(this, displayString);
+        squadronPopup.show(e.getComponent(), e.getX(), e.getY());
+    }
+
+    private void showEditSquadronLocation(MouseEvent e, List<Squadron> selectedSquadrons)
+    {
+        InfoSquadronSelectPopup menu = new InfoSquadronSelectPopup(this, selectedSquadrons, parent.getMapDate());
+        menu.show(e.getComponent(), e.getX(), e.getY());
+    }
+
+	public Dimension getMapSize()
+	{
+		Dimension mapSize = new Dimension();
+		mapSize.height =  image.getHeight(null);
+		mapSize.width =  image.getWidth(null);
+		return mapSize;
+	}
+
+
+	/**
+	 * @param whatToDisplay
+	 */
+	public void setWhatToDisplay(int displayItem, boolean displayIt)
+	{
+		this.whatToDisplay[displayItem] = displayIt;
+	    		
+		repaintMap();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) 
+	{
+        try
+        {
+            String action = arg0.getActionCommand();
+            if (action.contains("Select Squadron:"))
+            {
+                String[] parts = action.split(":");
+                int squadronId = new Integer(parts[1]);
+                squadronMover.setSquadronIdToMove(squadronId);
+            }
+            if (action.contains("Select Target Airfield:"))
+            {
+                String[] parts = action.split(":");
+                String airfield = parts[1];
+                squadronMover.moveSquadron(airfield, parent.getMapDate());
+                InfoMapGUI infoMapGUI = (InfoMapGUI)parent;
+                infoMapGUI.refreshSquadronPlacement();
+            }
+            else if (action.contains("Cancel"))
+            {
+            }
+        }
+        catch (Exception e)
+        {
+            Logger.logException(e);
+        }
+	}
+
+	public ICountry getCountry() {
+		return country;
+	}
+
+	public void setCountry(ICountry country) {
+		this.country = country;
+	}
+
+
+    @Override
+    public void rightClickReleasedCallback(MouseEvent e)
+    {        
+    }
+
+    @Override
+    public Point upperLeft()
+    {
+        return null;
+    }
+
+    public void resetFromActual()
+    {
+        repaintMap();
+    }
+
+}

@@ -1,0 +1,19 @@
+{
+  "type": "pfalzd3a",
+  "side": "AXIS",
+  "displayName": "Pfalz D.IIIa",
+  "script": "LuaScripts\\WorldObjects\\pfalzd3a.txt",
+  "model": "graphics\\planes\\pfalzd3a\\pfalzd3a.mgm",
+  "desc": "",
+  "cruisingSpeed": 140,
+  "climbOutRate": 220,
+  "goodness": 53,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER"
+  ],
+  "introduction": "19170501",
+  "withdrawal": "19181111"
+}

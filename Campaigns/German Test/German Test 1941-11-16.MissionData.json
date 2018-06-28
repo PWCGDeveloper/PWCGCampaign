@@ -1,0 +1,190 @@
+{
+  "missionHeader": {
+    "missionFileName": "German Test 1941-11-16",
+    "squadron": "II./JG51",
+    "date": "19411116",
+    "time": "16.11.1941",
+    "aircraftType": "Bf 109 F-2",
+    "mapName": "Moscow",
+    "airfield": "Kolodezi",
+    "duty": "PATROL",
+    "altitude": 5796
+  },
+  "missionDescription": "Mission: \nAircraft  Bf 109 F-2\nSquadron  II./JG51\nAirbase  Kolodezi\nDate  16.11.1941\n\nWeather Report \n    Mostly clear, some high altitude clouds.\n    Cloud layer is 4497 meters.\n    Wind speed is 1 M/S.\n    Wind direction is 325.\n\nPrimary Objective \n    Patrol airspace  near Kryukovo.  Engage any enemy aircraft that you encounter.\n\n",
+  "missionPlanes": {
+    "3000233": {
+      "aircraftType": "bf109f4",
+      "squadronId": 20112051,
+      "pilotSerialNumber": 3000233,
+      "pilotName": "Timm Notnagel"
+    },
+    "3000234": {
+      "aircraftType": "bf109f4",
+      "squadronId": 20112051,
+      "pilotSerialNumber": 3000234,
+      "pilotName": "Rainer Brecher"
+    },
+    "3000298": {
+      "aircraftType": "ju87d3",
+      "squadronId": 20122077,
+      "pilotSerialNumber": 3000298,
+      "pilotName": "Holger Blanke"
+    },
+    "3000228": {
+      "aircraftType": "bf109f2",
+      "squadronId": 20112051,
+      "pilotSerialNumber": 3000228,
+      "pilotName": "Sigfried Dehnert"
+    },
+    "3000225": {
+      "aircraftType": "bf109f2",
+      "squadronId": 20111052,
+      "pilotSerialNumber": 3000225,
+      "pilotName": "Dietrich Scheider"
+    },
+    "3000033": {
+      "aircraftType": "i16t24",
+      "squadronId": 10111034,
+      "pilotSerialNumber": 3000033,
+      "pilotName": "Moisey Dobrolyubov"
+    },
+    "3000032": {
+      "aircraftType": "i16t24",
+      "squadronId": 10111034,
+      "pilotSerialNumber": 3000032,
+      "pilotName": "Artem Yunevich"
+    },
+    "3000291": {
+      "aircraftType": "ju87d3",
+      "squadronId": 20122077,
+      "pilotSerialNumber": 3000291,
+      "pilotName": "Jurgen Holz"
+    },
+    "1000000": {
+      "aircraftType": "bf109f4",
+      "squadronId": 20112051,
+      "pilotSerialNumber": 1000000,
+      "pilotName": "German Test"
+    },
+    "3000226": {
+      "aircraftType": "bf109f2",
+      "squadronId": 20111052,
+      "pilotSerialNumber": 3000226,
+      "pilotName": "Laurenz Arendt"
+    },
+    "3000034": {
+      "aircraftType": "i16t24",
+      "squadronId": 10111034,
+      "pilotSerialNumber": 3000034,
+      "pilotName": "Denis Krutoy"
+    },
+    "3000059": {
+      "aircraftType": "mig3s24",
+      "squadronId": 10111233,
+      "pilotSerialNumber": 3000059,
+      "pilotName": "Zakhar Bogomazov"
+    },
+    "3000055": {
+      "aircraftType": "mig3s24",
+      "squadronId": 10111233,
+      "pilotSerialNumber": 3000055,
+      "pilotName": "Vadim Ostrovsky"
+    },
+    "3000240": {
+      "aircraftType": "bf109f2",
+      "squadronId": 20112052,
+      "pilotSerialNumber": 3000240,
+      "pilotName": "Kaspar Schoenherr"
+    },
+    "3000048": {
+      "aircraftType": "mig3s24",
+      "squadronId": 10111233,
+      "pilotSerialNumber": 3000048,
+      "pilotName": "Maksim Lapunov"
+    },
+    "3000243": {
+      "aircraftType": "bf109f2",
+      "squadronId": 20112052,
+      "pilotSerialNumber": 3000243,
+      "pilotName": "Rikard Raedler"
+    },
+    "3000051": {
+      "aircraftType": "mig3s24",
+      "squadronId": 10111233,
+      "pilotSerialNumber": 3000051,
+      "pilotName": "Moisey Toporkov"
+    },
+    "3000269": {
+      "aircraftType": "ju87d3",
+      "squadronId": 20121077,
+      "pilotSerialNumber": 3000269,
+      "pilotName": "Rudiger Zelter"
+    },
+    "3000265": {
+      "aircraftType": "ju87d3",
+      "squadronId": 20121077,
+      "pilotSerialNumber": 3000265,
+      "pilotName": "Florian Krampitz"
+    },
+    "3000197": {
+      "aircraftType": "bf110e2",
+      "squadronId": 20101026,
+      "pilotSerialNumber": 3000197,
+      "pilotName": "Oswald Hoscheck"
+    },
+    "3000192": {
+      "aircraftType": "bf110e2",
+      "squadronId": 20101026,
+      "pilotSerialNumber": 3000192,
+      "pilotName": "Christian Cossmann"
+    },
+    "3000031": {
+      "aircraftType": "i16t24",
+      "squadronId": 10111034,
+      "pilotSerialNumber": 3000031,
+      "pilotName": "Zakhar Mitkin"
+    },
+    "3000222": {
+      "aircraftType": "bf109f2",
+      "squadronId": 20111052,
+      "pilotSerialNumber": 3000222,
+      "pilotName": "Jorg Essig"
+    },
+    "3000414": {
+      "aircraftType": "pe2s35",
+      "squadronId": 10131095,
+      "pilotSerialNumber": 3000414,
+      "pilotName": "Svyatoslav Shcherbakov"
+    },
+    "3000409": {
+      "aircraftType": "pe2s35",
+      "squadronId": 10131095,
+      "pilotSerialNumber": 3000409,
+      "pilotName": "Fyodor Yugantsev"
+    },
+    "3000218": {
+      "aircraftType": "bf109f2",
+      "squadronId": 20111052,
+      "pilotSerialNumber": 3000218,
+      "pilotName": "Egon Rinder"
+    },
+    "3000154": {
+      "aircraftType": "pe2s35",
+      "squadronId": 10131095,
+      "pilotSerialNumber": 3000154,
+      "pilotName": "Stanislav Lyutov"
+    },
+    "3000026": {
+      "aircraftType": "i16t24",
+      "squadronId": 10111034,
+      "pilotSerialNumber": 3000026,
+      "pilotName": "Oleg Chelomtsev"
+    },
+    "3000144": {
+      "aircraftType": "pe2s35",
+      "squadronId": 10131095,
+      "pilotSerialNumber": 3000144,
+      "pilotName": "Nikolay Sayanov"
+    }
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "skinSetType": "SKIN_CONFIGURED",
+  "skins": {
+    "dh4_19rfc_std": {
+      "skinName": "DH4_19RFC_STD",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_raf202_f5706": {
+      "skinName": "DH4_RAF202_F5706",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_raf220_n6416": {
+      "skinName": "DH4_RAF220_N6416",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rfc18_a7466": {
+      "skinName": "DH4_RFC18_A7466",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rfc18_a8043": {
+      "skinName": "DH4_RFC18_A8043",
+      "planeType": "dh4",
+      "startDate": "19170826",
+      "endDate": "19180316",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rfc18_def": {
+      "skinName": "DH4_RFC18_DEF",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rfc25_a2170": {
+      "skinName": "DH4_RFC25_A2170",
+      "planeType": "dh4",
+      "startDate": "19170826",
+      "endDate": "19180321",
+      "squadId": 102025,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rfc25_h": {
+      "skinName": "DH4_RFC25_H",
+      "planeType": "dh4",
+      "startDate": "19170826",
+      "endDate": "19180321",
+      "squadId": 102025,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rfc57_a7422": {
+      "skinName": "DH4_RFC57_A7422",
+      "planeType": "dh4",
+      "startDate": "19170826",
+      "endDate": "19180322",
+      "squadId": 102057,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rfc57_a7583": {
+      "skinName": "DH4_RFC57_A7583",
+      "planeType": "dh4",
+      "startDate": "19170826",
+      "endDate": "19171002",
+      "squadId": 102057,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rnas2_a": {
+      "skinName": "DH4_RNAS2_A",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102205,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rnas2_a7446": {
+      "skinName": "DH4_RNAS2_A7446",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102205,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rnas2_a7459": {
+      "skinName": "DH4_RNAS2_A7459",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102205,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rnas2_a7845_r": {
+      "skinName": "DH4_RNAS2_A7845_R",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102205,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rnas2_d": {
+      "skinName": "DH4_RNAS2_D",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102205,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rnas2_i": {
+      "skinName": "DH4_RNAS2_I",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102205,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rnas2_o": {
+      "skinName": "DH4_RNAS2_O",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102205,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rnas2_r": {
+      "skinName": "DH4_RNAS2_R",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102205,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rnas2_s": {
+      "skinName": "DH4_RNAS2_S",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102205,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rnas2_z": {
+      "skinName": "DH4_RNAS2_Z",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102205,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "dh4_rnas5_n6000": {
+      "skinName": "DH4_RNAS5_N6000",
+      "planeType": "dh4",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102205,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    }
+  }
+}

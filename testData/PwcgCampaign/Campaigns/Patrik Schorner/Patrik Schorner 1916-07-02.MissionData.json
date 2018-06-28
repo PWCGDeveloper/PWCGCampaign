@@ -1,0 +1,176 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-07-02",
+    "squadron": "Jasta 4",
+    "date": "19160702",
+    "time": "13:30:00",
+    "aircraftType": "AircraftType \u003d Fokker E.II",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Bonneuil Ferm",
+    "duty": "PATROL",
+    "altitude": 3580
+  },
+  "missionDescription": "Mission:\nAircraft  Fokker E.III\nSquadron  Jasta 4\nAirbase  Bonneuil Ferme\nDate  1916-07-02\n\nWeather Report\nMostly clear, some high altitude clouds.\nCloud layer is 4209 meters.\nWind speed is 0 M/S.\nWind direction is 8.\n\nPrimary Objective\nPatrol airspace  near Chauny.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Obltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Kurt Wintgens",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Florian Lasch",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Wolfe Beckermann",
+        "observer": "",
+        "pilotRank": "Uffz",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Engelbert Straube",
+        "observer": "Nils Riemenschneider",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Ruprecht Schmeller",
+        "observer": "Hildebrand Tuchman",
+        "pilotRank": "Fw",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 281",
+      "crew": {
+        "pilot": "Engelbert Lustenberger",
+        "observer": "Mario Lehmann",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 281",
+      "crew": {
+        "pilot": "Philipp Graebner",
+        "observer": "Jurgen Henschel",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 2",
+      "crew": {
+        "pilot": "Gotthold Neisser",
+        "observer": "Dieter Lutz",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 2",
+      "crew": {
+        "pilot": "Adolf Rahner",
+        "observer": "Ernst Windischmann",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "Esc 65",
+      "crew": {
+        "pilot": "Julien Antier",
+        "observer": "",
+        "pilotRank": "S/Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "Esc 65",
+      "crew": {
+        "pilot": "Justin Maigron",
+        "observer": "",
+        "pilotRank": "Sergt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 227",
+      "crew": {
+        "pilot": "Luc Kalandyk",
+        "observer": "Laurent Lafontaine",
+        "pilotRank": "Cne",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 227",
+      "crew": {
+        "pilot": "Cyrille Labre",
+        "observer": "Olivier Cottave",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 227",
+      "crew": {
+        "pilot": "Lucien Lafond",
+        "observer": "Casimir Hoguet",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 227",
+      "crew": {
+        "pilot": "Cornil Morael",
+        "observer": "Auguste Lamor",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

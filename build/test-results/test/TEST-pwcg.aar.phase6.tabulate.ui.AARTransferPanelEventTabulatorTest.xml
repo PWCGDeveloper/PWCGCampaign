@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.phase6.tabulate.ui.AARTransferPanelEventTabulatorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-09-10T23:49:40" hostname="DigitalStorm-PC" time="0.439">
+  <properties/>
+  <testcase name="testTransferInEvent" classname="pwcg.aar.phase6.tabulate.ui.AARTransferPanelEventTabulatorTest" time="0.214"/>
+  <testcase name="testTransferOutEvent" classname="pwcg.aar.phase6.tabulate.ui.AARTransferPanelEventTabulatorTest" time="0.225"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

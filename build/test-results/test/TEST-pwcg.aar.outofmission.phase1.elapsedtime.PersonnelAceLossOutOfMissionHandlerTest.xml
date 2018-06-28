@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.outofmission.phase1.elapsedtime.PersonnelAceLossOutOfMissionHandlerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:45" hostname="DigitalStorm-PC" time="0.705">
+  <properties/>
+  <testcase name="testAceLossesOutOfMission" classname="pwcg.aar.outofmission.phase1.elapsedtime.PersonnelAceLossOutOfMissionHandlerTest" time="0.705"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

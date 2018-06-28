@@ -1,0 +1,19 @@
+{
+  "type": "fokkerd8",
+  "side": "AXIS",
+  "displayName": "Fokker D.VIII",
+  "script": "LuaScripts\\WorldObjects\\fokkerd8.txt",
+  "model": "graphics\\planes\\fokkerd8\\fokkerd8.mgm",
+  "desc": "",
+  "cruisingSpeed": 140,
+  "climbOutRate": 300,
+  "goodness": 85,
+  "endurance": 1.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER"
+  ],
+  "introduction": "19180801",
+  "withdrawal": "19181111"
+}

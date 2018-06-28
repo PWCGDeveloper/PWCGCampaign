@@ -1,0 +1,445 @@
+{
+  "skinSetType": "SKIN_DO_NOT_USE",
+  "skins": {
+    "sd_ah_cazador": {
+      "skinName": "SD_AH_CAZADOR",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_ah_default": {
+      "skinName": "SD_AH_DEFAULT",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_ah_ehre": {
+      "skinName": "SD_AH_EHRE",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_ah_happy": {
+      "skinName": "SD_AH_HAPPY",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_ah_maj_q_ball": {
+      "skinName": "SD_AH_MAJ_Q_BALL",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_ah_shotdown": {
+      "skinName": "SD_AH_SHOTDOWN",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_ah_sid": {
+      "skinName": "SD_AH_SID",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_ah_splaterguts": {
+      "skinName": "SD_AH_SPLATERGUTS",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_conga": {
+      "skinName": "SD_CONGA",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_generic_rnas55": {
+      "skinName": "SD_GENERIC_RNAS55",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_irfc_artun": {
+      "skinName": "SD_IRFC_ARTUN",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_j99": {
+      "skinName": "SD_J99",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_j99_arms": {
+      "skinName": "SD_J99_ARMS",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_j99_hihu": {
+      "skinName": "SD_J99_HIHU",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_liberator": {
+      "skinName": "SD_LIBERATOR",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_liberator_pf": {
+      "skinName": "SD_LIBERATOR_PF",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_o_rod": {
+      "skinName": "SD_O_ROD",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_panthercules": {
+      "skinName": "SD_PANTHERCULES",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_pp_thin_man": {
+      "skinName": "SD_PP_THIN_MAN",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_pw_gb19_bdefe": {
+      "skinName": "SD_PW_GB19_BDEFE",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102019,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_raf87 callaghan": {
+      "skinName": "SD_RAF87 CALLAGHAN",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_raf87_c4056": {
+      "skinName": "SD_RAF87_C4056",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_raf87_c4136": {
+      "skinName": "SD_RAF87_C4136",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102087,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_raf87_c4155apr": {
+      "skinName": "SD_RAF87_C4155APR",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102087,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_raf87_c4155jun": {
+      "skinName": "SD_RAF87_C4155JUN",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102087,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_raf87_c4158": {
+      "skinName": "SD_RAF87_C4158",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102087,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_raf87_c4159apr": {
+      "skinName": "SD_RAF87_C4159APR",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102087,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_raf87_c4159aug": {
+      "skinName": "SD_RAF87_C4159AUG",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102087,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_raf87_c4159jun": {
+      "skinName": "SD_RAF87_C4159JUN",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102087,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_raf87_may18": {
+      "skinName": "SD_RAF87_MAY18",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102087,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_reflected": {
+      "skinName": "SD_REFLECTED",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_sc_1shot": {
+      "skinName": "SD_SC_1SHOT",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_sc_asp": {
+      "skinName": "SD_SC_ASP",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_sc_billy": {
+      "skinName": "SD_SC_BILLY",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_sc_default": {
+      "skinName": "SD_SC_DEFAULT",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_sc_greybeard": {
+      "skinName": "SD_SC_GREYBEARD",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_sc_lusthawk": {
+      "skinName": "SD_SC_LUSTHAWK",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_sc_mongoose": {
+      "skinName": "SD_SC_MONGOOSE",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_sc_sledriver": {
+      "skinName": "SD_SC_SLEDRIVER",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_sc_sp00k": {
+      "skinName": "SD_SC_SP00K",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_sc_spif": {
+      "skinName": "SD_SC_SPIF",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_sc_zester": {
+      "skinName": "SD_SC_ZESTER",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_tomcundall": {
+      "skinName": "SD_TOMCUNDALL",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "sd_ww_std": {
+      "skinName": "SD_WW_STD",
+      "planeType": "sopdolphin",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Do Not Use",
+      "definedInGame": false
+    }
+  }
+}

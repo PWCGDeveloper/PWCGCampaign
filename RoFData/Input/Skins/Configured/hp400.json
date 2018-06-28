@@ -1,0 +1,55 @@
+{
+  "skinSetType": "SKIN_CONFIGURED",
+  "skins": {
+    "102216": {
+      "skinName": "102216",
+      "planeType": "hp400",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hp400_115sqn_d5426": {
+      "skinName": "HP400_115SQN_D5426",
+      "planeType": "hp400",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hp400_207sqn_c9696": {
+      "skinName": "HP400_207SQN_C9696",
+      "planeType": "hp400",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102207,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hp400_207sqnd4563": {
+      "skinName": "HP400_207SQND4563",
+      "planeType": "hp400",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 102207,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hp400_d9702": {
+      "skinName": "HP400_D9702",
+      "planeType": "hp400",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "albatrosd2late",
+  "side": "AXIS",
+  "displayName": "Albatros D.II lt",
+  "script": "LuaScripts\\WorldObjects\\albatrosd2late.txt",
+  "model": "graphics\\planes\\albatrosd2late\\albatrosd2late.mgm",
+  "desc": "",
+  "cruisingSpeed": 140,
+  "climbOutRate": 200,
+  "goodness": 43,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER"
+  ],
+  "introduction": "19161101",
+  "withdrawal": "19170801"
+}

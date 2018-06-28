@@ -1,0 +1,9 @@
+{
+  "name": "3eme Esc Observation",
+  "squadronId": 109003,
+  "airfields": {
+    "19160101": "Duinhoek",
+    "19181022": "LaPanne",
+    "19181105": "Zande"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "country": "AUSTRIA",
+  "squadronId": 502007,
+  "name": "FliK 7",
+  "skill": 50,
+  "planeAssignments": [
+    {
+      "type": "fokkere3",
+      "squadronIntroduction": "19140801",
+      "squadronWithdrawal": "19161210"
+    },
+    {
+      "type": "halberstadtd2",
+      "squadronIntroduction": "19161010",
+      "squadronWithdrawal": "19170601"
+    },
+    {
+      "type": "albatrosd3",
+      "squadronIntroduction": "19170510",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19140801": "Gosch",
+    "19161001": "Lesnaya Slobcako",
+    "19170501": "Msovono"
+  },
+  "skins": [
+    {
+      "skinName": "FE3_PW_FL7_DEF",
+      "planeType": "fokkere3",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 502007,
+      "country": "Austria",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "HD2_PW_FL7_DEF",
+      "planeType": "halberstadtd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 502007,
+      "country": "Austria",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD3_PW_FL7_DEF",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 502007,
+      "country": "Austria",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

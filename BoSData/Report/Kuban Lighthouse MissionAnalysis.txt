@@ -1,0 +1,48 @@
+Player flight
+  Mission type: DIVE_BOMB
+  Airfield    : Anapa
+  Aircraft    : ju87d3
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: DIVE_BOMB
+  Airfield    : Gostagaevskaya
+  Aircraft    : ju87d3
+  Player Contact    : 0
+
+
+
+Flight
+  Mission type: DIVE_BOMB
+  Airfield    : Gostagaevskaya
+  Aircraft    : ju87d3
+  Player Contact    : 0
+
+
+
+Flight
+  Mission type: GROUND_ATTACK
+  Airfield    : Staro-Nijne-Steblievskaya
+  Aircraft    : il2m42
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: GROUND_ATTACK
+  Airfield    : Krasnoarmeyskayas
+  Aircraft    : il2m43
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: GROUND_ATTACK
+  Airfield    : Elizavetinskaya
+  Aircraft    : il2m43
+  Player Contact    : -1
+
+
+

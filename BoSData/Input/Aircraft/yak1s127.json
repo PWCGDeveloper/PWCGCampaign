@@ -1,0 +1,20 @@
+{
+  "type": "yak1s127",
+  "side": "ALLIED",
+  "displayName": "Yak-1B ser.127",
+  "script": "LuaScripts\\WorldObjects\\Planes\\yak1s127.txt",
+  "model": "graphics\\planes\\yak1s127\\yak1s127.mgm",
+  "desc": "",
+  "cruisingSpeed": 350,
+  "climbOutRate": 1300,
+  "goodness": 50,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19420201",
+  "withdrawal": "19450503"
+}

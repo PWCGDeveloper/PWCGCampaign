@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.inmission.phase0.prelim.PwcgGeneratedMissionDataTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:04" hostname="DigitalStorm-PC" time="1.184">
+  <properties/>
+  <testcase name="testSquadronMembersInMission" classname="pwcg.aar.inmission.phase0.prelim.PwcgGeneratedMissionDataTest" time="0.6"/>
+  <testcase name="testPlaneMap" classname="pwcg.aar.inmission.phase0.prelim.PwcgGeneratedMissionDataTest" time="0.584"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

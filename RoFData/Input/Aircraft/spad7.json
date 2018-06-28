@@ -1,0 +1,19 @@
+{
+  "type": "spad7",
+  "side": "ALLIED",
+  "displayName": "SPAD 7.C1 180hp",
+  "script": "LuaScripts\\WorldObjects\\spad7.txt",
+  "model": "graphics\\planes\\spad7\\spad7.mgm",
+  "desc": "",
+  "cruisingSpeed": 180,
+  "climbOutRate": 350,
+  "goodness": 60,
+  "endurance": 1.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER"
+  ],
+  "introduction": "19170201",
+  "withdrawal": "19181111"
+}

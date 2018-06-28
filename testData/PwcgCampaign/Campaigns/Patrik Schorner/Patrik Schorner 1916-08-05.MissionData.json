@@ -1,0 +1,156 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-08-05",
+    "squadron": "Jasta 16b",
+    "date": "19160805",
+    "time": "11:0:00",
+    "aircraftType": "AircraftType \u003d Halberstadt D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "PATROL",
+    "altitude": 1797
+  },
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-08-05\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 1636 meters.\nWind speed is 2 M/S.\nWind direction is 188.\n\nPrimary Objective\nPatrol airspace  near Rosieres-en-Santerre.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Kristof Bahr",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Detlef Schwarzer",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 7",
+      "crew": {
+        "pilot": "Stefan Kupferblum",
+        "observer": "Wilhelm Strasburger",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 7",
+      "crew": {
+        "pilot": "Gunther Scheu",
+        "observer": "Christian Blumberg",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 18",
+      "crew": {
+        "pilot": "Adolf Teyber",
+        "observer": "Sigwalt Schild",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 18",
+      "crew": {
+        "pilot": "Dietrich Schirlitz",
+        "observer": "Berthold Welser",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 18",
+      "crew": {
+        "pilot": "Nikolaus Wuttke",
+        "observer": "Christof Osswald",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Johann Ackner",
+        "observer": "Engelbert Hess",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Engelbert Schwarzer",
+        "observer": "Till Schmetterling",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "No 70 Squadron RFC",
+      "crew": {
+        "pilot": "Aldis Radley",
+        "observer": "Coleman Balam",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 45",
+      "crew": {
+        "pilot": "Vincent Lacabanne",
+        "observer": "Jean-Marie Morales",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 13",
+      "crew": {
+        "pilot": "Victor Justet",
+        "observer": "Alexis Chevenement",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 9",
+      "crew": {
+        "pilot": "Leonard Bretons",
+        "observer": "Aime Ratoin",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

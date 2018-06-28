@@ -1,0 +1,76 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-05-16",
+    "squadron": "Jasta 4",
+    "date": "19160516",
+    "time": "11:0:00",
+    "aircraftType": "AircraftType \u003d Fokker E.II",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Bonneuil Ferm",
+    "duty": "SCRAMBLE",
+    "altitude": 2000
+  },
+  "missionDescription": "Mission:\nAircraft  Fokker E.III\nSquadron  Jasta 4\nAirbase  Bonneuil Ferme\nDate  1916-05-16\n\nWeather Report\nLight cloud cover, high altitude.\nCloud layer is 3422 meters.\nWind speed is 1 M/S.\nWind direction is 339.\n\nPrimary Objective\nIncoming enemy aircraft are near our airbase.  Get airborne and destroy them!\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Lambrecht Steinberg",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Obltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Fritz Bernert",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Florian Lasch",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 19",
+      "crew": {
+        "pilot": "Augustin Laffite",
+        "observer": "Etienne Labesse",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 19",
+      "crew": {
+        "pilot": "Etienne Tavel",
+        "observer": "Augustin Tournaire",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

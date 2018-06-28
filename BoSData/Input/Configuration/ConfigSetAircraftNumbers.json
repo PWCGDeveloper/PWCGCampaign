@@ -1,0 +1,125 @@
+{
+  "configSetName": "ConfigSetAircraftNumbers",
+  "configMap": {
+    "ArtillerySpotAdditional": {
+      "value": "2",
+      "label": "Artillery Spot Additional",
+      "help": "Maximum additional aircraft"
+    },
+    "ArtillerySpotMinimum": {
+      "value": "1",
+      "label": "Artillery Spot Minimum",
+      "help": "Minimum number of aircraft"
+    },
+    "BalloonBustAdditional": {
+      "value": "2",
+      "label": "Balloon Bust Additional",
+      "help": "Maximum additional aircraft"
+    },
+    "BalloonBustMinimum": {
+      "value": "2",
+      "label": "Balloon Bust Minimum",
+      "help": "Minimum number of aircraft"
+    },
+    "BalloonDefenseAdditional": {
+      "value": "2",
+      "label": "Balloon Defense Additional",
+      "help": "Maximum additional aircraft"
+    },
+    "BalloonDefenseMinimum": {
+      "value": "2",
+      "label": "Balloon Defense Minimum",
+      "help": "Minimum number of aircraft"
+    },
+    "BombingAdditional": {
+      "value": "2",
+      "label": "Bombing Additional",
+      "help": "Maximum additional aircraft"
+    },
+    "BombingMinimum": {
+      "value": "2",
+      "label": "Bombing Minimum",
+      "help": "Minimum number of aircraft"
+    },
+    "GroundAttackAdditional": {
+      "value": "1",
+      "label": "Ground Attack Additional",
+      "help": "Maximum additional aircraft"
+    },
+    "GroundAttackAltitude": {
+      "value": "400",
+      "label": "Ground Attack Altitude",
+      "help": "Altitude atground attack"
+    },
+    "GroundAttackIngressDistance": {
+      "value": "10000",
+      "label": "Ground Attack Ingress Distance",
+      "help": "Distance between target and setup waypoints (meters)"
+    },
+    "GroundAttackMinimum": {
+      "value": "2",
+      "label": "Ground Attack Minimum",
+      "help": "Minimum number of aircraft"
+    },
+    "InterceptAdditional": {
+      "value": "1",
+      "label": "Intercept Additional",
+      "help": "Maximum additional aircraft"
+    },
+    "InterceptMinimum": {
+      "value": "2",
+      "label": "Intercept Minimum",
+      "help": "Minimum number of aircraft"
+    },
+    "OffensivePatrolAdditional": {
+      "value": "2",
+      "label": "Offensive Patrol Additional",
+      "help": "Maximum additional aircraft"
+    },
+    "OffensivePatrolMinimum": {
+      "value": "2",
+      "label": "Offensive Patrol Minimum",
+      "help": "Minimum number of aircraft"
+    },
+    "PatrolAdditional": {
+      "value": "2",
+      "label": "Patrol Additional",
+      "help": "Maximum additional aircraft"
+    },
+    "PatrolDistanceBase": {
+      "value": "30",
+      "label": "Patrol Distance Base",
+      "help": "Base for maximum patrol distance (km)"
+    },
+    "PatrolDistanceRandom": {
+      "value": "30",
+      "label": "Patrol Distance Random",
+      "help": "Random element for additional patrol distance (km)"
+    },
+    "PatrolMinimum": {
+      "value": "2",
+      "label": "Patrol Minimum",
+      "help": "Minimum number of aircraft"
+    },
+    "ReconAdditional": {
+      "value": "2",
+      "label": "Recon Additional",
+      "help": "Maximum additional aircraft"
+    },
+    "ReconMinimum": {
+      "value": "1",
+      "label": "Recon Minimum",
+      "help": "Minimum number of aircraft"
+    },
+    "ScrambleAdditional": {
+      "value": "2",
+      "label": "Scramble Additional",
+      "help": "Maximum additional aircraft"
+    },
+    "ScrambleMinimum": {
+      "value": "1",
+      "label": "Scramble Minimum",
+      "help": "Minimum number of aircraft"
+    }
+  }
+}

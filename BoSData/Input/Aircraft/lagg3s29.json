@@ -1,0 +1,20 @@
+{
+  "type": "lagg3s29",
+  "side": "ALLIED",
+  "displayName": "LaGG-3 ser.29",
+  "script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
+  "model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
+  "desc": "",
+  "cruisingSpeed": 350,
+  "climbOutRate": 1000,
+  "goodness": 30,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19410301",
+  "withdrawal": "19450503"
+}

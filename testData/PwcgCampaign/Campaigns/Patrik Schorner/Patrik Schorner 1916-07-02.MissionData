@@ -1,0 +1,226 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-07-02";
+    Squadron = "Jasta 4";
+    Map = "France";
+    Date = "19160702";
+    Time = "13:30:00";
+    Duty = "PATROL";
+    AircraftType = Fokker E.III;
+    Altitude = 3580;
+    Airfield = Bonneuil Ferme;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Fokker E.III
+Squadron  Jasta 4
+Airbase  Bonneuil Ferme
+Date  1916-07-02
+
+Weather Report 
+    Mostly clear, some high altitude clouds.
+    Cloud layer is 4209 meters.
+    Wind speed is 0 M/S.
+    Wind direction is 8.
+
+Primary Objective 
+    Patrol airspace  near Chauny.  Engage any enemy aircraft that you encounter.
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Kurt Wintgens";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Florian Lasch";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Wolfe Beckermann";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 210";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Engelbert Straube";
+            ObserverRank = "Ltn";
+            Observer = "Nils Riemenschneider";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 210";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Ruprecht Schmeller";
+            ObserverRank = "Obltn";
+            Observer = "Hildebrand Tuchman";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Engelbert Lustenberger";
+            ObserverRank = "Ltn";
+            Observer = "Mario Lehmann";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Philipp Graebner";
+            ObserverRank = "Ltn";
+            Observer = "Jurgen Henschel";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 2";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Gotthold Neisser";
+            ObserverRank = "Ltn";
+            Observer = "Dieter Lutz";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 2";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Adolf Rahner";
+            ObserverRank = "Ltn";
+            Observer = "Ernst Windischmann";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport11";
+        Squadron = "Esc 65";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Julien Antier";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport11";
+        Squadron = "Esc 65";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Justin Maigron";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 227";
+        Crew
+        {
+            PilotRank = "Cne";
+            Pilot = "Luc Kalandyk";
+            ObserverRank = "S/Lt";
+            Observer = "Laurent Lafontaine";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 227";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Cyrille Labre";
+            ObserverRank = "S/Lt";
+            Observer = "Olivier Cottave";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 227";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Lucien Lafond";
+            ObserverRank = "S/Lt";
+            Observer = "Casimir Hoguet";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 227";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Cornil Morael";
+            ObserverRank = "S/Lt";
+            Observer = "Auguste Lamor";
+        }
+    }
+}

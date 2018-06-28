@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.phase4.elapsedtime.PromotionEventHandlerReconTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2017-09-10T23:49:31" hostname="DigitalStorm-PC" time="1.512">
+  <properties/>
+  <testcase name="promoteSousLieutenant" classname="pwcg.aar.phase4.elapsedtime.PromotionEventHandlerReconTest" time="0.26"/>
+  <testcase name="promoteSergent" classname="pwcg.aar.phase4.elapsedtime.PromotionEventHandlerReconTest" time="0.257"/>
+  <testcase name="promoteCorporalToSergent" classname="pwcg.aar.phase4.elapsedtime.PromotionEventHandlerReconTest" time="0.239"/>
+  <testcase name="promoteCapitaineFailNotEnoughMissions" classname="pwcg.aar.phase4.elapsedtime.PromotionEventHandlerReconTest" time="0.273"/>
+  <testcase name="promoteCapitaineFailNotPlayer" classname="pwcg.aar.phase4.elapsedtime.PromotionEventHandlerReconTest" time="0.226"/>
+  <testcase name="promoteCapitaine" classname="pwcg.aar.phase4.elapsedtime.PromotionEventHandlerReconTest" time="0.255"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

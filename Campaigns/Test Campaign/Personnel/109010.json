@@ -1,0 +1,418 @@
+{
+  "squadronMembers": {
+    "3001213": {
+      "name": "Guido Van der Bracht",
+      "serialNumber": 3001213,
+      "rank": "1er Sergent",
+      "picName": "Belg004.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BELGIUM",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 109010,
+      "inactiveDate": "19181111"
+    },
+    "3001212": {
+      "name": "Bernard Van Sprang",
+      "serialNumber": 3001212,
+      "rank": "1er Sergent",
+      "picName": "Belg015.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BELGIUM",
+      "missionFlown": 7,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 109010,
+      "inactiveDate": "19181111"
+    },
+    "3001215": {
+      "name": "Petrus Wackens",
+      "serialNumber": 3001215,
+      "rank": "Caporal",
+      "picName": "Belg002.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BELGIUM",
+      "missionFlown": 2,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 109010,
+      "inactiveDate": "19181111"
+    },
+    "3001214": {
+      "name": "Hubert Van Hulst",
+      "serialNumber": 3001214,
+      "rank": "Caporal",
+      "picName": "Belg009.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BELGIUM",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 109010,
+      "inactiveDate": "19181111"
+    },
+    "3001209": {
+      "name": "Alphonse Baboud",
+      "serialNumber": 3001209,
+      "rank": "Sous Lieutenant",
+      "picName": "Belg008.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BELGIUM",
+      "missionFlown": 12,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 109010,
+      "inactiveDate": "19181111"
+    },
+    "3001208": {
+      "name": "Engelbert Vandersteen",
+      "serialNumber": 3001208,
+      "rank": "Sous Lieutenant",
+      "picName": "Belg022.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BELGIUM",
+      "missionFlown": 10,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 109010,
+      "inactiveDate": "19181111"
+    },
+    "3001211": {
+      "name": "Nestor Jonckheere",
+      "serialNumber": 3001211,
+      "rank": "1er Sergent",
+      "picName": "Belg007.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BELGIUM",
+      "missionFlown": 5,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 109010,
+      "inactiveDate": "19181111"
+    },
+    "3001210": {
+      "name": "Pierre Lootens",
+      "serialNumber": 3001210,
+      "rank": "Sous Lieutenant",
+      "picName": "Belg021.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BELGIUM",
+      "missionFlown": 28,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 109010,
+      "inactiveDate": "19181111"
+    },
+    "3001205": {
+      "name": "Ludwig Redey",
+      "serialNumber": 3001205,
+      "rank": "1.eme Lieutenant",
+      "picName": "Belg010.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BELGIUM",
+      "missionFlown": 47,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 109010,
+      "inactiveDate": "19181111"
+    },
+    "3001204": {
+      "name": "Gabriel Mourrut",
+      "serialNumber": 3001204,
+      "rank": "Capitain",
+      "picName": "Belg011.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BELGIUM",
+      "missionFlown": 61,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170419",
+          "location": "Chavignon",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 14",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Randolf Strub",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "10eme Esc de Chasse",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitain Gabriel Mourrut",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Corbeny",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 8",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Markus Goldreich",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "10eme Esc de Chasse",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitain Gabriel Mourrut",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Sommepy-Tahure",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 261",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Joachim Hohlbaum",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "10eme Esc de Chasse",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitain Gabriel Mourrut",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Fresnes",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd2late",
+            "squadronName": "Jasta 28w",
+            "pilotSerialNumber": 0,
+            "pilotName": "Fw Gregor Veigel",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "10eme Esc de Chasse",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitain Gabriel Mourrut",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 109010,
+      "inactiveDate": "19181111"
+    },
+    "3001207": {
+      "name": "Alfred Kasel",
+      "serialNumber": 3001207,
+      "rank": "Sous Lieutenant",
+      "picName": "Belg019.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BELGIUM",
+      "missionFlown": 15,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 109010,
+      "inactiveDate": "19181111"
+    },
+    "3001206": {
+      "name": "Jean-Paul de Haese",
+      "serialNumber": 3001206,
+      "rank": "1.eme Lieutenant",
+      "picName": "Belg016.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BELGIUM",
+      "missionFlown": 48,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 109010,
+      "inactiveDate": "19181111"
+    }
+  }
+}

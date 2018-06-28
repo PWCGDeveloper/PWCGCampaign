@@ -1,0 +1,124 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102001,
+  "name": "No 1 Squadron RFC",
+  "skill": 95,
+  "planeAssignments": [
+    {
+      "type": "nieuport11",
+      "squadronIntroduction": "19150801",
+      "squadronWithdrawal": "19161115"
+    },
+    {
+      "type": "nieuport17brit",
+      "squadronIntroduction": "19161008",
+      "squadronWithdrawal": "19180123"
+    },
+    {
+      "type": "se5a",
+      "squadronIntroduction": "19180101",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19150801": "Bailleul",
+    "19180805": "Lealvillers",
+    "19181006": "Mazingarbe"
+  },
+  "skins": [
+    {
+      "skinName": "N11_RFC_GREEN",
+      "planeType": "nieuport11",
+      "startDate": "19150101",
+      "endDate": "19161231",
+      "squadId": 102001,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N17B_RFC_GREEN",
+      "planeType": "nieuport17brit",
+      "startDate": "19140801",
+      "endDate": "19170630",
+      "squadId": 102001,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N17B_RFC1JULY1917",
+      "planeType": "nieuport17brit",
+      "startDate": "19170701",
+      "endDate": "19170826",
+      "squadId": 102001,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N17B_RFC1_AUG1917",
+      "planeType": "nieuport17brit",
+      "startDate": "19170827",
+      "endDate": "19171223",
+      "squadId": 102001,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N17B_RFC1_DEC1917",
+      "planeType": "nieuport17brit",
+      "startDate": "19171224",
+      "endDate": "19180123",
+      "squadId": 102001,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5A_RFC1_DEC17",
+      "planeType": "se5a",
+      "startDate": "19171223",
+      "endDate": "19180321",
+      "squadId": 102001,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102001_020",
+      "planeType": "se5a",
+      "startDate": "19180322",
+      "endDate": "19181201",
+      "squadId": 102001,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 1 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

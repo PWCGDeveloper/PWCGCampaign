@@ -1,0 +1,55 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 105004,
+  "name": "4th AOI",
+  "skill": 30,
+  "planeAssignments": [
+    {
+      "type": "s16",
+      "squadronIntroduction": "19140801",
+      "squadronWithdrawal": "19180112"
+    },
+    {
+      "type": "nieuport11",
+      "squadronIntroduction": "19161101",
+      "squadronWithdrawal": "19180112"
+    },
+    {
+      "type": "nieuport17rus",
+      "squadronIntroduction": "19170501",
+      "squadronWithdrawal": "19180112"
+    }
+  ],
+  "airfields": {
+    "19140801": "Moastyryyska",
+    "19161001": "Kozlov",
+    "19170401": "Stanko"
+  },
+  "skins": [
+    {
+      "skinName": "N11_PW_IRAS_STD",
+      "planeType": "nieuport11",
+      "startDate": "19150101",
+      "endDate": "19180112",
+      "squadId": 105004,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10501,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

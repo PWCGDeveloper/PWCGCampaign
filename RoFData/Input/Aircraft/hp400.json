@@ -1,0 +1,19 @@
+{
+  "type": "hp400",
+  "side": "ALLIED",
+  "displayName": "Handley Page 0-400",
+  "script": "LuaScripts\\WorldObjects\\hp400.txt",
+  "model": "graphics\\planes\\hp400\\hp400.mgm",
+  "desc": "",
+  "cruisingSpeed": 110,
+  "climbOutRate": 100,
+  "goodness": 60,
+  "endurance": 7.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_LARGE",
+  "roles": [
+    "ROLE_STRAT_BOMB"
+  ],
+  "introduction": "19170201",
+  "withdrawal": "19181111"
+}

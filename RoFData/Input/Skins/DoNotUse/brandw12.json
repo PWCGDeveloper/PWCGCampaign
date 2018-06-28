@@ -1,0 +1,115 @@
+{
+  "skinSetType": "SKIN_DO_NOT_USE",
+  "skins": {
+    "bw12_42sq_gold": {
+      "skinName": "BW12_42SQ_GOLD",
+      "planeType": "brandw12",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "bw12_42sq_green": {
+      "skinName": "BW12_42SQ_GREEN",
+      "planeType": "brandw12",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "bw12_huntertastic": {
+      "skinName": "BW12_HUNTERTASTIC",
+      "planeType": "brandw12",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "bw12_mfs55_e": {
+      "skinName": "BW12_MFS55_E",
+      "planeType": "brandw12",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "bw12_mfs55_l": {
+      "skinName": "BW12_MFS55_L",
+      "planeType": "brandw12",
+      "startDate": "19180323",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "bw12_o_rod_v2": {
+      "skinName": "BW12_O_ROD_V2",
+      "planeType": "brandw12",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "bw12_o_taipan": {
+      "skinName": "BW12_O_TAIPAN",
+      "planeType": "brandw12",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "bw12_panther_e": {
+      "skinName": "BW12_PANTHER_E",
+      "planeType": "brandw12",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "bw12_panther_l": {
+      "skinName": "BW12_PANTHER_L",
+      "planeType": "brandw12",
+      "startDate": "19180323",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "bw12_ww-std": {
+      "skinName": "BW12_WW-STD",
+      "planeType": "brandw12",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "bw12_wwbrian": {
+      "skinName": "BW12_WWBRIAN",
+      "planeType": "brandw12",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    }
+  }
+}

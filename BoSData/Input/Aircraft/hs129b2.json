@@ -1,0 +1,19 @@
+{
+  "type": "hs129b2",
+  "side": "AXIS",
+  "displayName": "Hs 129 B-2",
+  "script": "LuaScripts\\WorldObjects\\Planes\\hs129b2.txt",
+  "model": "graphics\\planes\\hs129b2\\hs129b2.mgm",
+  "desc": "",
+  "cruisingSpeed": 240,
+  "climbOutRate": 550,
+  "goodness": 30,
+  "endurance": 1.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_MEDIUM",
+  "roles": [
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19420601",
+  "withdrawal": "19450503"
+}

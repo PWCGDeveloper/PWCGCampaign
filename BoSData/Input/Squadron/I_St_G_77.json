@@ -1,0 +1,67 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20121077,
+  "name": "I./St.G.77",
+  "fileName": "I_St_G_77.json",
+  "skill": 65,
+  "planeAssignments": [
+    {
+      "type": "ju87d3",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Novoye Selo",
+    "19411020": "Gzhatsk",
+    "19411110": "Gzhatsk",
+    "19411120": "Ivanskoe",
+    "19411215": "Sloboda",
+    "19420110": "Novoye Selo",
+    "19420301": "Oblivskaya",
+    "19420601": "Dneprovskaya",
+    "19420624": "Krasnoarmeyskayas",
+    "19420709": "Popovicheskaya",
+    "19420721": "Kalinino",
+    "19420801": "Ventsy",
+    "19420906": "Ventsy",
+    "19421011": "Golubinskiy",
+    "19421123": "Kamchie",
+    "19421223": "Tormosin",
+    "19430120": "Tormosin",
+    "19430301": "Novovelichkovskaya",
+    "19430330": "Slavyanskaya",
+    "19430418": "Anapa",
+    "19430918": "Zaporojskaya",
+    "19430927": "Kerch",
+    "19431004": "Kerch",
+    "19431008": "Hardji-Bie"
+  },
+  "skins": [
+    {
+      "skinName": "JU87D3_SKIN_03",
+      "planeType": "ju87d3",
+      "startDate": "19421101",
+      "endDate": "19430331",
+      "squadId": 20121077,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_DIVE_BOMB",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Jasta 5",
+  "squadronId": 501005,
+  "airfields": {
+    "19160101": "Mars-la-Tour",
+    "19160821": "Bellevue Ferme",
+    "19160926": "Bellevue Ferme",
+    "19160930": "Assevillers",
+    "19170311": "Beugnatre",
+    "19180326": "Ham Matigny",
+    "19180404": "Mesnil St George",
+    "19180423": "Cappy N",
+    "19180520": "Villers Bretonneux",
+    "19180728": "Villers Bretonneux",
+    "19180825": "Velu",
+    "19181001": "Beaucamp",
+    "19181005": "Lomme,Lille",
+    "19181015": "Helesmes,N Denain",
+    "19181105": "Mouchin"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Jasta 16b",
+  "squadronId": 501016,
+  "airfields": {
+    "19160101": "Balatre,E Roye",
+    "19170507": "Balatre,E Roye",
+    "19170606": "Bellevue Ferme",
+    "19171021": "Besny-et-Loisy",
+    "19171124": "Bellevue Ferme",
+    "19180207": "Zande",
+    "19180315": "Pronville,nr Queant",
+    "19180321": "Foucaucourt en Santerre",
+    "19180326": "Ennemain,N Nesle",
+    "19180404": "Warfusee",
+    "19180413": "Lomme,Lille",
+    "19180429": "Beaucamp",
+    "19181005": "Phalempin,N Douai",
+    "19181015": "Pont-a-Marcq",
+    "19181025": "Bersee,NW Douai",
+    "19181105": "Erre,Somain",
+    "19181110": "Briastre"
+  }
+}

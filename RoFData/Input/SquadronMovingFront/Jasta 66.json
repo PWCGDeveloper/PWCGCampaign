@@ -1,0 +1,11 @@
+{
+  "name": "Jasta 66",
+  "squadronId": 501066,
+  "airfields": {
+    "19180212": "Fonsomme",
+    "19180720": "Pomacle",
+    "19180730": "Sissonne",
+    "19180821": "Boncourt",
+    "19181009": "Fontaine Notre Dame"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Jasta 57",
+  "squadronId": 501057,
+  "airfields": {
+    "19180124": "Lagnicourt",
+    "19180326": "Velu",
+    "19180423": "Moorslede",
+    "19180428": "Oostnieuwkerke",
+    "19180429": "Handzaeme",
+    "19180607": "Cappy N",
+    "19180709": "Neuflize",
+    "19180822": "Roucourt, Bohain",
+    "19181001": "Mesnil St Nicaise",
+    "19181013": "Pronville,nr Queant",
+    "19181015": "Hermies,Cambrai",
+    "19181025": "Proville,Cambrai",
+    "19181105": "Beauvois,E Cambrai",
+    "19181110": "Beauvois,E Cambrai"
+  }
+}

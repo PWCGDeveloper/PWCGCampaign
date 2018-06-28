@@ -1,0 +1,11 @@
+{
+  "name": "Marine-Feldjadgstaffel II",
+  "squadronId": 501302,
+  "airfields": {
+    "19171008": "Ghistelles",
+    "19180415": "Stene",
+    "19180602": "Zande",
+    "19181105": "Ghistelles",
+    "19181110": "Houttave"
+  }
+}

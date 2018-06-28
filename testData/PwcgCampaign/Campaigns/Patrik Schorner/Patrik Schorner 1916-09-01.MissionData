@@ -1,0 +1,178 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-09-01";
+    Squadron = "Jasta 16b";
+    Map = "France";
+    Date = "19160901";
+    Time = "9:0:00";
+    Duty = "BALLOON_DEFENSE";
+    AircraftType = Halberstadt D.II;
+    Altitude = 2000;
+    Airfield = Balatre,E Roye;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Halberstadt D.II
+Squadron  Jasta 16b
+Airbase  Balatre,E Roye
+Date  1916-09-01
+
+Weather Report 
+    Light cloud cover, high altitude.
+    Cloud layer is 4451 meters.
+    Wind speed is 1 M/S.
+    Wind direction is 222.
+
+Primary Objective 
+    Defend our balloon near Ecuvilly.
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Oswald Fromm";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Gebhard Schonbaum";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Ruprecht Hess";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 45";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Corentin Lezot";
+            ObserverRank = "S/Lt";
+            Observer = "Michel Richard";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 45";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Adolphe Vertadier";
+            ObserverRank = "S/Lt";
+            Observer = "Anton Brossier";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 23";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Maximillian Herzl";
+            ObserverRank = "Obltn";
+            Observer = "Wenzel Hefter";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 23";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Jurgen Danneberg";
+            ObserverRank = "Ltn";
+            Observer = "Lukas Friesinger";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 21";
+        Crew
+        {
+            PilotRank = "Cne";
+            Pilot = "Edmond Canere";
+            ObserverRank = "S/Lt";
+            Observer = "Ignace Breidenstein";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 21";
+        Crew
+        {
+            PilotRank = "Cpl";
+            Pilot = "Jean-Marie Labordes";
+            ObserverRank = "S/Lt";
+            Observer = "Jean-Baptiste Hocquinghen";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 23 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Culver Bedell";
+            ObserverRank = "Lt";
+            Observer = "Mark Cook";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 23 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Tristan Botteler";
+            ObserverRank = "Lt";
+            Observer = "Harrison Fayneman";
+        }
+    }
+}

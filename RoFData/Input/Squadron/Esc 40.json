@@ -1,0 +1,112 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101040,
+  "name": "Esc 40",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "type": "fe2b",
+      "squadronIntroduction": "19150801",
+      "squadronWithdrawal": "19170930"
+    },
+    {
+      "type": "re8",
+      "squadronIntroduction": "19170715",
+      "squadronWithdrawal": "19180401"
+    },
+    {
+      "type": "breguet14",
+      "squadronIntroduction": "19180315",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19150801": "Ferme d_Alger",
+    "19151027": "La Mellette",
+    "19151123": "Lemmes",
+    "19160729": "Auve",
+    "19161022": "Rosnay",
+    "19161218": "Petit Camon",
+    "19170104": "Moreuil",
+    "19170208": "Belrain",
+    "19170709": "Ferme d_Alger",
+    "19180613": "Fonfry,N Fere-en-Tardenois",
+    "19181008": "Ferme d_Alger",
+    "19181020": "Lhery"
+  },
+  "skins": [
+    {
+      "skinName": "FE2B_PW_F40_DFT",
+      "planeType": "fe2b",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101040,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FE2B_PW_F52_DFT",
+      "planeType": "fe2b",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101040,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "RE8_PW_F40_DFT",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101040,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "B14_ESC40_SEPT1917",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19180111",
+      "squadId": 101040,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "B14_ESC40_JAN1918",
+      "planeType": "breguet14",
+      "startDate": "19180112",
+      "endDate": "19181201",
+      "squadId": 101040,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_RECON",
+            "weight": 40
+          },
+          {
+            "role": "ROLE_BOMB",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_ARTILLERY_SPOT",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

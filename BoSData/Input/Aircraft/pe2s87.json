@@ -1,0 +1,20 @@
+{
+  "type": "pe2s87",
+  "side": "ALLIED",
+  "displayName": "Pe-2 ser.87",
+  "script": "LuaScripts\\WorldObjects\\Planes\\pe2s87.txt",
+  "model": "graphics\\planes\\pe2s87\\pe2s87.mgm",
+  "desc": "",
+  "cruisingSpeed": 310,
+  "climbOutRate": 800,
+  "goodness": 25,
+  "endurance": 3.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_MEDIUM",
+  "roles": [
+    "ROLE_BOMB",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19420501",
+  "withdrawal": "19450503"
+}

@@ -1,0 +1,142 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-10-09";
+    Squadron = "Jasta 16b";
+    Map = "France";
+    Date = "19161009";
+    Time = "9:0:00";
+    Duty = "PATROL";
+    AircraftType = Albatros D.II;
+    Altitude = 2607;
+    Airfield = Balatre,E Roye;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Albatros D.II
+Squadron  Jasta 16b
+Airbase  Balatre,E Roye
+Date  1916-10-09
+
+Weather Report 
+    Medium cloud cover, high altitude.
+    Cloud layer is 3548 meters.
+    Wind speed is 2 M/S.
+    Wind direction is 265.
+
+Primary Objective 
+    Patrol airspace  near Ecuvilly.  Engage any enemy aircraft that you encounter.
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Detlef Schwarzer";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Augustus Kass";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Ruprecht Hess";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 276";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Mario Ehrenstein";
+            ObserverRank = "Ltn";
+            Observer = "Conrad Bethmann";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 276";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Maxim Streicher";
+            ObserverRank = "Obltn";
+            Observer = "Erhard Scheid";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 8 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Francis Bettsthorne";
+            ObserverRank = "Cpt";
+            Observer = "Elbert Cuddon";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 8 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Elvis Herleston";
+            ObserverRank = "Lt";
+            Observer = "Rupert Eston";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 17";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Andre Beth";
+            ObserverRank = "Lt";
+            Observer = "Vincent Westrelin";
+        }
+    }
+}

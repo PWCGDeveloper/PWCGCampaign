@@ -1,0 +1,465 @@
+{
+  "squadronMembers": {
+    "3001101": {
+      "name": "Svyatoslav Shapiro",
+      "serialNumber": 3001101,
+      "rank": "Praporshchik",
+      "picName": "Russian10.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 21,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 105007,
+      "inactiveDate": "19181111"
+    },
+    "3001100": {
+      "name": "Vasily Degtyarev",
+      "serialNumber": 3001100,
+      "rank": "Praporshchik",
+      "picName": "Russian25.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 14,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 105007,
+      "inactiveDate": "19181111"
+    },
+    "3001103": {
+      "name": "Artur Burov",
+      "serialNumber": 3001103,
+      "rank": "Deputy Praporshchik",
+      "picName": "Russian29.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 7,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 105007,
+      "inactiveDate": "19181111"
+    },
+    "3001102": {
+      "name": "Lev Bodrov",
+      "serialNumber": 3001102,
+      "rank": "Praporshchik",
+      "picName": "Russian37.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 18,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 105007,
+      "inactiveDate": "19181111"
+    },
+    "3001097": {
+      "name": "Yuri Pashin",
+      "serialNumber": 3001097,
+      "rank": "Lieutenant",
+      "picName": "Russian27.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 27,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 105007,
+      "inactiveDate": "19181111"
+    },
+    "3001096": {
+      "name": "Vadim Bezrodny",
+      "serialNumber": 3001096,
+      "rank": "Captain",
+      "picName": "Russian43.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 42,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170413",
+          "location": "Roye",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 23",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Dirk Seelmann",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17rus",
+            "squadronName": "7th AOI",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Vadim Bezrodny",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170416",
+          "location": "Airfield",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 23b",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Kristian Heffter",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17rus",
+            "squadronName": "7th AOI",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Vadim Bezrodny",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170419",
+          "location": "Cappy",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 276",
+            "pilotSerialNumber": 0,
+            "pilotName": "Fw Christian Zedner",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17rus",
+            "squadronName": "7th AOI",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Vadim Bezrodny",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Guignicourt",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd2late",
+            "squadronName": "Jasta 28w",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kmdr Armin Ruswurm",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17rus",
+            "squadronName": "7th AOI",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Vadim Bezrodny",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Fontaine-les-Croisilles",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "halberstadtd2",
+            "squadronName": "FliK 13",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Poldi Ruswurm",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17rus",
+            "squadronName": "7th AOI",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Vadim Bezrodny",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Monchy-le-Preux",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "halberstadtd2",
+            "squadronName": "FliK 7",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Bandi Mikos",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "nieuport17rus",
+            "squadronName": "7th AOI",
+            "pilotSerialNumber": 0,
+            "pilotName": "Captain Vadim Bezrodny",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 105007,
+      "inactiveDate": "19181111"
+    },
+    "3001099": {
+      "name": "Nikita Kasyanenko",
+      "serialNumber": 3001099,
+      "rank": "Praporshchik",
+      "picName": "Russian21.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 19,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 105007,
+      "inactiveDate": "19181111"
+    },
+    "3001098": {
+      "name": "Maksim Yaytsev",
+      "serialNumber": 3001098,
+      "rank": "Lieutenant",
+      "picName": "Russian09.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 41,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 105007,
+      "inactiveDate": "19181111"
+    },
+    "3001105": {
+      "name": "Leonid Mishnev",
+      "serialNumber": 3001105,
+      "rank": "Deputy Praporshchik",
+      "picName": "Russian02.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 9,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 105007,
+      "inactiveDate": "19181111"
+    },
+    "3001104": {
+      "name": "Leonid Zadorozhny",
+      "serialNumber": 3001104,
+      "rank": "Deputy Praporshchik",
+      "picName": "Russian22.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 105007,
+      "inactiveDate": "19181111"
+    },
+    "3001107": {
+      "name": "Eduard Yerokhin",
+      "serialNumber": 3001107,
+      "rank": "Sub-Praporshchik ",
+      "picName": "Russian19.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 9,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 105007,
+      "inactiveDate": "19181111"
+    },
+    "3001106": {
+      "name": "Moisey Yurasov",
+      "serialNumber": 3001106,
+      "rank": "Sub-Praporshchik ",
+      "picName": "Russian18.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 105007,
+      "inactiveDate": "19181111"
+    }
+  }
+}

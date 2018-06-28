@@ -1,0 +1,29 @@
+{
+  "name": "Jasta 10",
+  "squadronId": 501010,
+  "airfields": {
+    "19160916": "Phalempin,N Douai",
+    "19161028": "Sivry",
+    "19161212": "Chassonge Ferme,Stenay/Verdun",
+    "19170223": "Leffincourt,E Reims",
+    "19170502": "Douai",
+    "19170525": "Menin",
+    "19170702": "La Neuville",
+    "19171121": "Beaucamp",
+    "19180320": "Pronville,nr Queant",
+    "19180326": "Riencourt,Arras",
+    "19180327": "Velu",
+    "19180403": "Mesnil le Petit",
+    "19180404": "Villers Bretonneux",
+    "19180412": "Villers Bretonneux",
+    "19180414": "Lomme,Lille",
+    "19180429": "Beaucamp",
+    "19180521": "Besny-et-Loisy",
+    "19180526": "Puisieux Ferme,Laon",
+    "19180729": "Puisieux Ferme,Laon",
+    "19180810": "Cachy",
+    "19180830": "Velu",
+    "19180925": "Bellevue Ferme",
+    "19181009": "Marville"
+  }
+}

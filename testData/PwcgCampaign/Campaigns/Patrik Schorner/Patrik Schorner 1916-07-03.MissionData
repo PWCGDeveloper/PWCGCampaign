@@ -1,0 +1,238 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-07-03";
+    Squadron = "Jasta 4";
+    Map = "France";
+    Date = "19160703";
+    Time = "18:30:00";
+    Duty = "ESCORT";
+    AircraftType = Fokker E.III;
+    Altitude = 3413;
+    Airfield = Bonneuil Ferme;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Fokker E.III
+Squadron  Jasta 4
+Airbase  Bonneuil Ferme
+Date  1916-07-03
+
+Weather Report 
+    Mostly clear, some high altitude clouds.
+    Cloud layer is 5092 meters.
+    Wind speed is 0 M/S.
+    Wind direction is 69.
+
+Primary Objective 
+    Escort our flight to the location near Camp.  Accompany them until they cross our lines.
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Florian Lasch";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Fritz Bernert";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Joachim Manner";
+            ObserverRank = "Ltn";
+            Observer = "Friedhelm Wetterhahn";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Emmerich Zotz";
+            ObserverRank = "Ltn";
+            Observer = "Erwin Feigenspan";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Erich Lehmann";
+            ObserverRank = "Obltn";
+            Observer = "Hermann Holler";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Reinhard Noffke";
+            ObserverRank = "Ltn";
+            Observer = "Raimund Lang";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Markus Weber";
+            ObserverRank = "Ltn";
+            Observer = "Emmerich Herzl";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Detlef Rosenberger";
+            ObserverRank = "Ltn";
+            Observer = "Ferdinand Linde";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Eberhardt Neumarkt";
+            ObserverRank = "Ltn";
+            Observer = "Wolfgang Mader";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 281";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Anton Wendenbaum";
+            ObserverRank = "Ltn";
+            Observer = "Siegfried Mitterer";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 16 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Cpt";
+            Pilot = "Aaron Duredent";
+            ObserverRank = "Lt";
+            Observer = "Troy Stockton";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 16 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Connell Hakebourne";
+            ObserverRank = "Lt";
+            Observer = "Marvin Walker";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 16 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Morton Dryden";
+            ObserverRank = "Lt";
+            Observer = "Ambrose Hornebolt";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 16 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Calvin Leech";
+            ObserverRank = "Lt";
+            Observer = "Fitzgerald Leverer";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 52";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Alcide Labourdette";
+            ObserverRank = "S/Lt";
+            Observer = "Cornil Mordant";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 23 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Cpt";
+            Pilot = "Edgar Hervey";
+            ObserverRank = "Lt";
+            Observer = "Harold Roland";
+        }
+    }
+}

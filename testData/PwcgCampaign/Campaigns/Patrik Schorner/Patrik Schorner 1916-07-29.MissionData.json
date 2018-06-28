@@ -1,0 +1,176 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-07-29",
+    "squadron": "Jasta 16b",
+    "date": "19160729",
+    "time": "17:0:00",
+    "aircraftType": "AircraftType \u003d Halberstadt D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "INTERCEPT",
+    "altitude": 3647
+  },
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-07-29\n\nWeather Report\nLight cloud cover, high altitude.\nCloud layer is 4549 meters.\nWind speed is 1 M/S.\nWind direction is 267.\n\nPrimary Objective\nIntercept enemy aircraft near Chaulnes.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Johann Hanneman",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Luther Schaumann",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Byron Carlyle",
+        "observer": "Floyd Catesby",
+        "pilotRank": "Flt Lt",
+        "observerRank": "Flt.Cdr"
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Curtis Barton",
+        "observer": "Bertie Bradbridge",
+        "pilotRank": "Flt Lt",
+        "observerRank": "Flt Lt"
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Declan Urswick",
+        "observer": "Horatio Allen",
+        "pilotRank": "Flt Lt",
+        "observerRank": "Flt Lt"
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Mark Malemayns",
+        "observer": "Gilbert Glover",
+        "pilotRank": "Flt SLt",
+        "observerRank": "Flt Lt"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 2",
+      "crew": {
+        "pilot": "Nikolaus Hofmeister",
+        "observer": "Bernhard Becker",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 2",
+      "crew": {
+        "pilot": "Jurgen Baader",
+        "observer": "Emil Spiegler",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Klemens Dohna",
+        "observer": "Dietrich Riesz",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Volker Schlesinger",
+        "observer": "Ferdinand Cossmann",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 261",
+      "crew": {
+        "pilot": "Mathias Tauscher",
+        "observer": "Bernd Rorer",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 261",
+      "crew": {
+        "pilot": "Erich Honigmann",
+        "observer": "Dagobert Falck",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 23 Squadron RFC",
+      "crew": {
+        "pilot": "Grayson Cheverell",
+        "observer": "Roderick Roland",
+        "pilotRank": "Maj",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 23 Squadron RFC",
+      "crew": {
+        "pilot": "Eugene Kirkeby",
+        "observer": "Crosby Cox",
+        "pilotRank": "Lt",
+        "observerRank": "Cpt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 23 Squadron RFC",
+      "crew": {
+        "pilot": "Hugh Paston",
+        "observer": "Grover Merton",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    }
+  ]
+}

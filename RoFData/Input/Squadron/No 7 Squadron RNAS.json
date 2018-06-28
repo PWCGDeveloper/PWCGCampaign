@@ -1,0 +1,82 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102207,
+  "name": "No 7 Squadron RNAS",
+  "skill": 40,
+  "planeAssignments": [
+    {
+      "type": "fe2b",
+      "squadronIntroduction": "19161111",
+      "squadronWithdrawal": "19170501"
+    },
+    {
+      "type": "hp400",
+      "squadronIntroduction": "19170501",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19161111": "Leffrinckhouke",
+    "19170501": "Coudekerque",
+    "19180607": "Bertangles 5"
+  },
+  "skins": [
+    {
+      "skinName": "SSB_RNAS_EARLY",
+      "planeType": "sopstrb",
+      "startDate": "19140801",
+      "endDate": "19170220",
+      "squadId": 102207,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SSB_RNAS_EARLY",
+      "planeType": "sopstrb",
+      "startDate": "19170221",
+      "endDate": "19181201",
+      "squadId": 102207,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "HP400_GENERIC",
+      "planeType": "hp400",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102207,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 207 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+    
+  "nightDate": "19140801",
+  "serviceId": 10202,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_STRAT_BOMB",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

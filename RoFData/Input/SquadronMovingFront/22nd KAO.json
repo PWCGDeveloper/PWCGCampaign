@@ -1,0 +1,9 @@
+{
+  "name": "22nd KAO",
+  "squadronId": 105022,
+  "airfields": {
+    "19160901": "Yaslovets",
+    "19170301": "Bogutyn",
+    "19170601": "Chernarisa"
+  }
+}

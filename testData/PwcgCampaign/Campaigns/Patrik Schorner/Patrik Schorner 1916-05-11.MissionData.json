@@ -1,0 +1,256 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-05-11",
+    "squadron": "Jasta 4",
+    "date": "19160511",
+    "time": "1430:00",
+    "aircraftType": "AircraftType \u003d Fokker E.II",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Bonneuil Ferm",
+    "duty": "PATROL",
+    "altitude": 2895
+  },
+  "missionDescription": "Mission:\nAircraft  Fokker E.III\nSquadron  Jasta 4\nAirbase  Bonneuil Ferme\nDate  1916-05-11\n\nWeather Report\nMedium cloud cover, low altitude with fog.\nCloud layer is 1475 meters.\nWind speed is 0 M/S.\nWind direction is 284.\n\nPrimary Objective\nPatrol airspace  near Caumont.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Florian Lasch",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Gunther Huwyler",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Ralf Schulz",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 261",
+      "crew": {
+        "pilot": "Reinhard Honigswald",
+        "observer": "Anselm Schirlitz",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 261",
+      "crew": {
+        "pilot": "Franz Hammerschmidt",
+        "observer": "Rainer Brahms",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 7",
+      "crew": {
+        "pilot": "Arnulf Brahms",
+        "observer": "Luther Birkenfeld",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 7",
+      "crew": {
+        "pilot": "Rainer Krauszer",
+        "observer": "Veit Preissner",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Volker Baumeister",
+        "observer": "Johannes Hegel",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Bruno Rosenblum",
+        "observer": "Dieter Neumann",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronName": "Esc 37",
+      "crew": {
+        "pilot": "Edmond Dambreville",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronName": "Esc 37",
+      "crew": {
+        "pilot": "Charles Lacoste",
+        "observer": "",
+        "pilotRank": "Sergt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport17brit",
+      "squadronName": "Esc 37",
+      "crew": {
+        "pilot": "Dominique Brossier",
+        "observer": "",
+        "pilotRank": "Cpl",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "Esc 37",
+      "crew": {
+        "pilot": "Hyacinthe Lafitte",
+        "observer": "",
+        "pilotRank": "Cpl",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Ferdinand Maynwaring",
+        "observer": "Pierce Williams",
+        "pilotRank": "Sqdn.Cdr",
+        "observerRank": "Flt Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Glenn Medeley",
+        "observer": "Dion Fitzherbert",
+        "pilotRank": "Flt Lt",
+        "observerRank": "Flt Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Toby Benthey",
+        "observer": "Dennis Thomas",
+        "pilotRank": "Flt Lt",
+        "observerRank": "Flt Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Goddard Perris",
+        "observer": "Cecil Wenman",
+        "pilotRank": "Flt SLt",
+        "observerRank": "Flt Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 107",
+      "crew": {
+        "pilot": "Dominique Ignace",
+        "observer": "Jean-Baptiste Mauvais",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 107",
+      "crew": {
+        "pilot": "Hippolyte Ignace",
+        "observer": "Germain Robilliart",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 107",
+      "crew": {
+        "pilot": "Alain Jousselin",
+        "observer": "Marc Labarge",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 107",
+      "crew": {
+        "pilot": "Sebastien Frahier",
+        "observer": "Ernest Nigri",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Jehan Brisau",
+        "observer": "Honore Fournier",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Leandre Lacorne",
+        "observer": "Adolphe Pelatan",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

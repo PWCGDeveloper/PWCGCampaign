@@ -1,0 +1,85 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102032,
+  "name": "No 32 Squadron RFC",
+  "skill": 50,
+  "planeAssignments": [
+    {
+      "type": "dh2",
+      "squadronIntroduction": "19160201",
+      "squadronWithdrawal": "19170630"
+    },
+    {
+      "type": "soppup",
+      "squadronIntroduction": "19170501",
+      "squadronWithdrawal": "19180331"
+    },
+    {
+      "type": "se5a",
+      "squadronIntroduction": "19171201",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160528": "Proven",
+    "19160604": "Auchel",
+    "19160607": "Lealvillers",
+    "19160721": "Lealvillers",
+    "19161025": "Lealvillers",
+    "19170703": "Romarin",
+    "19170708": "Poperinghe",
+    "19180305": "Steenwerck",
+    "19180329": "Villers Bretonneux",
+    "19180603": "Grivesnes",
+    "19180621": "Mont St. Eloi",
+    "19180718": "Muizon"
+  },
+  "skins": [
+    {
+      "skinName": "SE5A_102032_ANS",
+      "planeType": "se5a",
+      "startDate": "19171201",
+      "endDate": "19180322",
+      "squadId": 102032,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5A_102032_18A",
+      "planeType": "se5a",
+      "startDate": "19180323",
+      "endDate": "19181201",
+      "squadId": 102032,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+    
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 32 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

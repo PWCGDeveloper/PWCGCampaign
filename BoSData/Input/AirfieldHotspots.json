@@ -1,0 +1,240 @@
+{
+  "airfieldHotSpots": {
+    "graphics\\blocks\\arf_caponiers_9_h_3.mgm": [
+      {
+        "model": "graphics\\blocks\\arf_caponiers_9_h_3.mgm",
+        "distance": 1.0,
+        "angle": 1.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_9_h_3.mgm",
+        "distance": 72.0,
+        "angle": 85.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_9_h_3.mgm",
+        "distance": 72.0,
+        "angle": 275.0
+      }
+    ],
+    "graphics\\blocks\\arf_caponiers_11_h_5.mgm": [
+      {
+        "model": "graphics\\blocks\\arf_caponiers_11_h_5.mgm",
+        "distance": 10.0,
+        "angle": 180.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_11_h_5.mgm",
+        "distance": 70.0,
+        "angle": 95.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_11_h_5.mgm",
+        "distance": 70.0,
+        "angle": 265.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_11_h_5.mgm",
+        "distance": 135.0,
+        "angle": 290.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_11_h_5.mgm",
+        "distance": 135.0,
+        "angle": 70.0
+      }
+    ],
+    "graphics\\blocks\\arf_caponiers_10_h_3.mgm": [
+      {
+        "model": "graphics\\blocks\\arf_caponiers_10_h_3.mgm",
+        "distance": 1.0,
+        "angle": 1.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_10_h_3.mgm",
+        "distance": 72.0,
+        "angle": 85.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_10_h_3.mgm",
+        "distance": 72.0,
+        "angle": 275.0
+      }
+    ],
+    "graphics\\blocks\\arf_caponiers_7_h_4.mgm": [
+      {
+        "model": "graphics\\blocks\\arf_caponiers_7_h_4.mgm",
+        "distance": 35.0,
+        "angle": 100.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_7_h_4.mgm",
+        "distance": 35.0,
+        "angle": 260.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_7_h_4.mgm",
+        "distance": 105.0,
+        "angle": 290.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_7_h_4.mgm",
+        "distance": 100.0,
+        "angle": 100.0
+      }
+    ],
+    "graphics\\blocks\\arf_hangars_3.mgm": [
+      {
+        "model": "graphics\\blocks\\arf_hangars_3.mgm",
+        "distance": 40.0,
+        "angle": 1.0
+      }
+    ],
+    "graphics\\blocks\\arf_caponiers_4_r_6.mgm": [
+      {
+        "model": "graphics\\blocks\\arf_caponiers_4_r_6.mgm",
+        "distance": 25.0,
+        "angle": 140.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_4_r_6.mgm",
+        "distance": 170.0,
+        "angle": 290.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_4_r_6.mgm",
+        "distance": 150.0,
+        "angle": 55.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_4_r_6.mgm",
+        "distance": 160.0,
+        "angle": 168.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_4_r_6.mgm",
+        "distance": 215.0,
+        "angle": 115.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_4_r_6.mgm",
+        "distance": 245.0,
+        "angle": 245.0
+      }
+    ],
+    "graphics\\blocks\\arf_caponiers_1_v_5.mgm": [
+      {
+        "model": "graphics\\blocks\\arf_caponiers_1_v_5.mgm",
+        "distance": 85.0,
+        "angle": 325.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_1_v_5.mgm",
+        "distance": 60.0,
+        "angle": 35.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_1_v_5.mgm",
+        "distance": 110.0,
+        "angle": 245.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_1_v_5.mgm",
+        "distance": 65.0,
+        "angle": 183.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_1_v_5.mgm",
+        "distance": 90.0,
+        "angle": 123.0
+      }
+    ],
+    "graphics\\blocks\\arf_hangarbox.mgm": [
+      {
+        "model": "graphics\\blocks\\arf_hangarbox.mgm",
+        "distance": 45.0,
+        "angle": 1.0
+      }
+    ],
+    "graphics\\blocks\\arf_caponiers_3_v_5.mgm": [
+      {
+        "model": "graphics\\blocks\\arf_caponiers_3_v_5.mgm",
+        "distance": 85.0,
+        "angle": 325.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_3_v_5.mgm",
+        "distance": 60.0,
+        "angle": 35.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_3_v_5.mgm",
+        "distance": 110.0,
+        "angle": 245.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_3_v_5.mgm",
+        "distance": 65.0,
+        "angle": 183.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_3_v_5.mgm",
+        "distance": 90.0,
+        "angle": 123.0
+      }
+    ],
+    "graphics\\blocks\\arf_hangars_2.mgm": [
+      {
+        "model": "graphics\\blocks\\arf_hangars_2.mgm",
+        "distance": 65.0,
+        "angle": 40.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_hangars_2.mgm",
+        "distance": 65.0,
+        "angle": 320.0
+      }
+    ],
+    "graphics\\blocks\\arf_caponiers_8_h_4.mgm": [
+      {
+        "model": "graphics\\blocks\\arf_caponiers_8_h_4.mgm",
+        "distance": 35.0,
+        "angle": 100.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_8_h_4.mgm",
+        "distance": 35.0,
+        "angle": 250.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_8_h_4.mgm",
+        "distance": 105.0,
+        "angle": 63.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_caponiers_8_h_4.mgm",
+        "distance": 100.0,
+        "angle": 265.0
+      }
+    ],
+    "graphics\\blocks\\arf_hangars_1.mgm": [
+      {
+        "model": "graphics\\blocks\\arf_hangars_1.mgm",
+        "distance": 65.0,
+        "angle": 40.0
+      },
+      {
+        "model": "graphics\\blocks\\arf_hangars_1.mgm",
+        "distance": 65.0,
+        "angle": 320.0
+      }
+    ],
+    "graphics\\blocks\\arf_hangararc.mgm": [
+      {
+        "model": "graphics\\blocks\\arf_hangararc.mgm",
+        "distance": 55.0,
+        "angle": 1.0
+      }
+    ]
+  }
+}

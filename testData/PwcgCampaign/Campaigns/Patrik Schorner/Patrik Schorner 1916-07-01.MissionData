@@ -1,0 +1,178 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-07-01";
+    Squadron = "Jasta 4";
+    Map = "France";
+    Date = "19160701";
+    Time = "9:30:00";
+    Duty = "INTERCEPT";
+    AircraftType = Fokker E.III;
+    Altitude = 3297;
+    Airfield = Bonneuil Ferme;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Fokker E.III
+Squadron  Jasta 4
+Airbase  Bonneuil Ferme
+Date  1916-07-01
+
+Weather Report 
+    Medium cloud cover, high altitude.
+    Cloud layer is 3145 meters.
+    Wind speed is 1 M/S.
+    Wind direction is 248.
+
+Primary Objective 
+    Intercept enemy aircraft near Noyon.
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Carsten Kantner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 227";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Justin Nicolas";
+            ObserverRank = "S/Lt";
+            Observer = "Joseph Lagarrigue";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 227";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Antonin Betirac";
+            ObserverRank = "S/Lt";
+            Observer = "Leandre de Clarens";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 227";
+        Crew
+        {
+            PilotRank = "Cpl";
+            Pilot = "Cyrille Besse";
+            ObserverRank = "S/Lt";
+            Observer = "Marceau Riot";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 227";
+        Crew
+        {
+            PilotRank = "Cpl";
+            Pilot = "Hyacinthe Mengel";
+            ObserverRank = "S/Lt";
+            Observer = "Robert Demoulin";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 18";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Leon Rommel";
+            ObserverRank = "Ltn";
+            Observer = "Gustav Steinhauser";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 276";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Gerhard Rohrmann";
+            ObserverRank = "Ltn";
+            Observer = "Simon Kott";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 276";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Randolf Lehrer";
+            ObserverRank = "Ltn";
+            Observer = "Tristan Marks";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 16";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Karl Liebau";
+            ObserverRank = "Ltn";
+            Observer = "Walther Bauman";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 16";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Werner Flohr";
+            ObserverRank = "Ltn";
+            Observer = "Hubert Tuchman";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 108";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Urbain Dupouy";
+            ObserverRank = "S/Lt";
+            Observer = "Christophe Baboud";
+        }
+    }
+}

@@ -1,0 +1,250 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-08-30";
+    Squadron = "Jasta 16b";
+    Map = "France";
+    Date = "19160830";
+    Time = "10:0:00";
+    Duty = "PATROL";
+    AircraftType = Halberstadt D.II;
+    Altitude = 4071;
+    Airfield = Balatre,E Roye;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Halberstadt D.II
+Squadron  Jasta 16b
+Airbase  Balatre,E Roye
+Date  1916-08-30
+
+Weather Report 
+    Light cloud cover, high altitude.
+    Cloud layer is 4648 meters.
+    Wind speed is 2 M/S.
+    Wind direction is 311.
+
+Primary Objective 
+    Patrol airspace  near Noyon.  Engage any enemy aircraft that you encounter.
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Augustus Kass";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Luther Schaumann";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Karl Nostitz";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 13";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Lenz Behm Canal";
+            ObserverRank = "Ltn";
+            Observer = "Theodor Spies";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 13";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Sigwalt Guns";
+            ObserverRank = "Ltn";
+            Observer = "Johannes Beutler";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 13";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Thomas Zehetner";
+            ObserverRank = "Ltn";
+            Observer = "Dominik Moritz";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 13";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Timo Klostermann";
+            ObserverRank = "Ltn";
+            Observer = "Holger Grasshoff";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 18";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Heinrich Weinblatt";
+            ObserverRank = "Ltn";
+            Observer = "Stefan Kaendler";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 18";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Florian Brausewetter";
+            ObserverRank = "Ltn";
+            Observer = "Kaspar Brahms";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 40";
+        Crew
+        {
+            PilotRank = "Cne";
+            Pilot = "Leo Chapelant";
+            ObserverRank = "S/Lt";
+            Observer = "Alexis Clermont";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 40";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Arsene Koch";
+            ObserverRank = "S/Lt";
+            Observer = "Alfred Gisquet";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 40";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Bertrand Koch";
+            ObserverRank = "S/Lt";
+            Observer = "Francis Lafarge";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 40";
+        Crew
+        {
+            PilotRank = "Cpl";
+            Pilot = "Ignace Goarnigou";
+            ObserverRank = "S/Lt";
+            Observer = "Florentin Lachaud";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 27 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Maj";
+            Pilot = "Dixon Piggott";
+            ObserverRank = "Lt";
+            Observer = "Rodney Berkhead";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 27 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Herbert Cod";
+            ObserverRank = "Lt";
+            Observer = "Shamus Helm";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 27 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Robert Gedding";
+            ObserverRank = "Cpt";
+            Observer = "Connell Scrope";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 27 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Tyler Harwood";
+            ObserverRank = "Lt";
+            Observer = "Benjamin Harcourt";
+        }
+    }
+}

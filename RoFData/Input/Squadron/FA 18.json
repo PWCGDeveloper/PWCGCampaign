@@ -1,0 +1,73 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501218,
+  "name": "FA 18",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "type": "dfwc5",
+      "squadronIntroduction": "19150801",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19150801": "Epinoy,NW Cambrai",
+    "19151021": "Liesse",
+    "19171115": "Chassonge Ferme,Stenay/Verdun"
+  },
+  "skins": [
+    {
+      "skinName": "DFC5_PW_F18_8_E",
+      "planeType": "dfwc5",
+      "startDate": "19140801",
+      "endDate": "19171001",
+      "squadId": 501218,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "DFC5_PW_F18_5_M",
+      "planeType": "dfwc5",
+      "startDate": "19171001",
+      "endDate": "19180401",
+      "squadId": 501218,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "DFC5_PW_F18_7_L",
+      "planeType": "dfwc5",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": 501218,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_RECON",
+            "weight": 40
+          },
+          {
+            "role": "ROLE_BOMB",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_ARTILLERY_SPOT",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

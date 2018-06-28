@@ -1,0 +1,25 @@
+{
+  "name": "Esc 12",
+  "squadronId": 101012,
+  "airfields": {
+    "19150801": "Rosnay",
+    "19160412": "Mont Soissons Ferme",
+    "19160911": "Froides",
+    "19161005": "Vadelaincourt",
+    "19170408": "Lhery",
+    "19170708": "Romarin",
+    "19170916": "Vauxcere",
+    "19180330": "Balatre,E Roye",
+    "19180404": "Ravenel",
+    "19180530": "Bouy",
+    "19180611": "Vauxcere",
+    "19180628": "Tilloy at Bellay",
+    "19180724": "Bouy",
+    "19180906": "Malzeville",
+    "19180923": "Ferme de Corbeaulieu",
+    "19181005": "Champien",
+    "19181015": "Pomacle",
+    "19181025": "St.Loup,Champagne",
+    "19181105": "Boncourt"
+  }
+}

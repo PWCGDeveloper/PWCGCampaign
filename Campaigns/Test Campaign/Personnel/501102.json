@@ -1,0 +1,634 @@
+{
+  "squadronMembers": {
+    "3001565": {
+      "name": "Gotthold Mummert",
+      "serialNumber": 3001565,
+      "rank": "Oberleutnant",
+      "picName": "German113.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 45,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170419",
+          "location": "Witry-les-Reims",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dh2",
+            "squadronName": "No 24 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "2nd Lt Brent Edgcombe",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Gotthold Mummert",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Montdidier",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "sopstr",
+            "squadronName": "No 43 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "2nd Lt Ward Blakeley",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Gotthold Mummert",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Witry-les-Reims",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.96",
+            "pilotSerialNumber": 0,
+            "pilotName": "Sergt Lucien de Beauchamps",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Gotthold Mummert",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Wailly",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "Esc SPA.84",
+            "pilotSerialNumber": 0,
+            "pilotName": "Sergt Leonard Lacant",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Gotthold Mummert",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501102,
+      "inactiveDate": "19181111"
+    },
+    "3001564": {
+      "name": "Martin Rohmer",
+      "serialNumber": 3001564,
+      "rank": "Oberleutnant",
+      "picName": "German156.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 43,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170422",
+          "location": "Beuvraignes",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "Esc SPA.124 Lafayette",
+            "pilotSerialNumber": 0,
+            "pilotName": "S/Lt Armand Maire",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Martin Rohmer",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Epagny",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.67",
+            "pilotSerialNumber": 0,
+            "pilotName": "Sergt Jacques Brossier",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Martin Rohmer",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Hangest",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 27 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "2nd Lt Solomon Battersby",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Martin Rohmer",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501102,
+      "inactiveDate": "19181111"
+    },
+    "3001567": {
+      "name": "Leopold Hecht",
+      "serialNumber": 3001567,
+      "rank": "Leutnant",
+      "picName": "German112.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 10,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501102,
+      "inactiveDate": "19181111"
+    },
+    "3001566": {
+      "name": "Gottfried Schonbohm",
+      "serialNumber": 3001566,
+      "rank": "Leutnant",
+      "picName": "German125.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 13,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501102,
+      "inactiveDate": "19181111"
+    },
+    "3001563": {
+      "name": "Dirk Stempel",
+      "serialNumber": 3001563,
+      "rank": "Kommandeur",
+      "picName": "German087.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 63,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170413",
+          "location": "Hangest",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "No 60 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "2nd Lt Bud Fleet",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Dirk Stempel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170416",
+          "location": "Montdidier",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "nieuport17brit",
+            "squadronName": "Esc N.38",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpl Jeremy Lacoume",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Dirk Stempel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170419",
+          "location": "Hangest",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "nieuport17",
+            "squadronName": "Esc N.57",
+            "pilotSerialNumber": 0,
+            "pilotName": "S/Lt Victor Terrade",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Dirk Stempel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Camp",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 25 Squadron RFC",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Davin Fulmer",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Dirk Stempel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "Beaucourt",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "Esc N.112",
+            "pilotSerialNumber": 0,
+            "pilotName": "S/Lt Firmin Laferriere",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Dirk Stempel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Berry-Au-Bac",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "spad7early",
+            "squadronName": "Esc SPA.124 Lafayette",
+            "pilotSerialNumber": 0,
+            "pilotName": "Cpl Cornil Bretons",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kommandeur Dirk Stempel",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501102,
+      "inactiveDate": "19181111"
+    },
+    "3001573": {
+      "name": "Volkard Nostitz",
+      "serialNumber": 3001573,
+      "rank": "Unteroffizier",
+      "picName": "German042.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 5,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501102,
+      "inactiveDate": "19181111"
+    },
+    "3001572": {
+      "name": "Harald Hofmeister",
+      "serialNumber": 3001572,
+      "rank": "Feldwebel",
+      "picName": "German3.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501102,
+      "inactiveDate": "19181111"
+    },
+    "3001574": {
+      "name": "Frederich Fleischman",
+      "serialNumber": 3001574,
+      "rank": "Unteroffizier",
+      "picName": "German137.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 8,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501102,
+      "inactiveDate": "19181111"
+    },
+    "3001569": {
+      "name": "Armin Buhl",
+      "serialNumber": 3001569,
+      "rank": "Leutnant",
+      "picName": "German056.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 27,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501102,
+      "inactiveDate": "19181111"
+    },
+    "3001568": {
+      "name": "Marko Brauswetter",
+      "serialNumber": 3001568,
+      "rank": "Leutnant",
+      "picName": "German088.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 16,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501102,
+      "inactiveDate": "19181111"
+    },
+    "3001571": {
+      "name": "Georg Herberger",
+      "serialNumber": 3001571,
+      "rank": "Feldwebel",
+      "picName": "German071.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 8,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501102,
+      "inactiveDate": "19181111"
+    },
+    "3001570": {
+      "name": "Anton Ackner",
+      "serialNumber": 3001570,
+      "rank": "Feldwebel",
+      "picName": "German116.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 6,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 501102,
+      "inactiveDate": "19181111"
+    }
+  }
+}

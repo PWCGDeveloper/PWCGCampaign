@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.inmission.phase3.reconcile.victories.ClaimResolverTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:28" hostname="DigitalStorm-PC" time="0.731">
+  <properties/>
+  <testcase name="testClaimNotAccepted" classname="pwcg.aar.inmission.phase3.reconcile.victories.ClaimResolverTest" time="0.247"/>
+  <testcase name="testClaimAccepted" classname="pwcg.aar.inmission.phase3.reconcile.victories.ClaimResolverTest" time="0.243"/>
+  <testcase name="testClaimDenied" classname="pwcg.aar.inmission.phase3.reconcile.victories.ClaimResolverTest" time="0.241"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

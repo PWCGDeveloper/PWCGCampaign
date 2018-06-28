@@ -1,0 +1,362 @@
+{
+  "squadronMembers": {
+    "3000057": {
+      "name": "Zakhar Chayka",
+      "serialNumber": 3000057,
+      "rank": "Leyitenant",
+      "picName": "Russian55.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 17,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111233,
+      "inactiveDate": "19440101"
+    },
+    "3000056": {
+      "name": "Andrey Davidoff",
+      "serialNumber": 3000056,
+      "rank": "Leyitenant",
+      "picName": "Russian18.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 17,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111233,
+      "inactiveDate": "19440101"
+    },
+    "3000059": {
+      "name": "Vladimir Podshivalov",
+      "serialNumber": 3000059,
+      "rank": "Serzhant",
+      "picName": "Russian32.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 14,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111233,
+      "inactiveDate": "19440101"
+    },
+    "3000373": {
+      "name": "Tikhon Bykov",
+      "serialNumber": 3000373,
+      "rank": "Serzhant",
+      "picName": "Russian11.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 9,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411104",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111233
+    },
+    "3000052": {
+      "name": "Igor Savinkov",
+      "serialNumber": 3000052,
+      "rank": "Starshyi leyitenant",
+      "picName": "Russian03.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 37,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111233,
+      "inactiveDate": "19440101"
+    },
+    "3000055": {
+      "name": "Vadim Shubkin",
+      "serialNumber": 3000055,
+      "rank": "Leyitenant",
+      "picName": "Russian48.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 20,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411108",
+          "medalName": "Wound Badge(Black)",
+          "medalImage": "BWB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111233,
+      "inactiveDate": "19440101"
+    },
+    "3000054": {
+      "name": "Konstantin Loginov",
+      "serialNumber": 3000054,
+      "rank": "Starshyi leyitenant",
+      "picName": "Russian47.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 38,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111233,
+      "inactiveDate": "19440101"
+    },
+    "3000048": {
+      "name": "Yaroslav Uglitsky",
+      "serialNumber": 3000048,
+      "rank": "Major",
+      "picName": "Russian05.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 72,
+      "aggressiveness": 0,
+      "aiSkillLevel": "ACE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19411017",
+          "location": "Pomelnica",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "bf109f2",
+            "squadronName": "II./JG52",
+            "pilotSerialNumber": 0,
+            "pilotName": "OFw Rupert Lauff",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "233rd Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Yaroslav Uglitsky",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411020",
+          "location": "Pomelnica",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "he111h6",
+            "squadronName": "I./KG53",
+            "pilotSerialNumber": 0,
+            "pilotName": "OFw Leonhard Weininger",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "233rd Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Yaroslav Uglitsky",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411023",
+          "location": "Konisheva",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "ju523mg4e",
+            "squadronName": "II./TG2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hptm Werner Springer",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "233rd Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Yaroslav Uglitsky",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411026",
+          "location": "Karmanovo",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "OFw Hans Furstenfeld",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "233rd Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Yaroslav Uglitsky",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411029",
+          "location": "Odnoschekina",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "he111h6",
+            "squadronName": "I./KG53",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Tobias Kornzweig",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "233rd Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Yaroslav Uglitsky",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411101",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111233,
+      "inactiveDate": "19440101"
+    },
+    "3000051": {
+      "name": "Georgy Kazankov",
+      "serialNumber": 3000051,
+      "rank": "Starshyi leyitenant",
+      "picName": "Russian52.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 39,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111233,
+      "inactiveDate": "19440101"
+    }
+  }
+}

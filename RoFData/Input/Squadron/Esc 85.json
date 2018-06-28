@@ -1,0 +1,100 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101085,
+  "name": "Esc 85",
+  "skill": 50,
+  "planeAssignments": [
+    {
+      "type": "nieuport17",
+      "squadronIntroduction": "19170307",
+      "squadronWithdrawal": "19171101"
+    },
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19171001",
+      "squadronWithdrawal": "19180301"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19180101",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19170307": "Vadelaincourt",
+    "19170424": "La Noblette",
+    "19170606": "Vadelaincourt",
+    "19170701": "Belrain",
+    "19170829": "Souilly",
+    "19171216": "Souilly",
+    "19180222": "Ferme d_Alger",
+    "19180407": "Bonne Maisson",
+    "19180602": "Grivesnes",
+    "19180615": "Vauxcere",
+    "19180707": "Auve",
+    "19180714": "Auve",
+    "19180723": "La Noblette",
+    "19180808": "Grivesnes",
+    "19180829": "Ville-Savoye",
+    "19180908": "Malzeville",
+    "19180924": "Bouy",
+    "19181030": "Ferme d_Alger"
+  },
+  "skins": [
+    {
+      "skinName": "N17_PW_F85_DFT",
+      "planeType": "nieuport17",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101085,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC85_APR1917",
+      "planeType": "spad7",
+      "startDate": "19170101",
+      "endDate": "19181111",
+      "squadId": 101085,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC85_JAN1918",
+      "planeType": "spad7",
+      "startDate": "19180130",
+      "endDate": "19181111",
+      "squadId": 101085,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S13_101085_ANS",
+      "planeType": "spad13",
+      "startDate": "19171001",
+      "endDate": "19181111",
+      "squadId": 101085,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

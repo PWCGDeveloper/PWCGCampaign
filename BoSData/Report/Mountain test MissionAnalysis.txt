@@ -1,0 +1,48 @@
+Player flight
+  Mission type: OFFENSIVE
+  Airfield    : Maykop-1
+  Aircraft    : fw190a3
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: OFFENSIVE
+  Airfield    : Krasnodar
+  Aircraft    : bf109f4
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: DIVE_BOMB
+  Airfield    : Belorechenskaya
+  Aircraft    : ju87d3
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: PATROL
+  Airfield    : Gelenjik-1
+  Aircraft    : yak1s69
+  Player Contact    : 48
+
+
+
+Flight
+  Mission type: OFFENSIVE
+  Airfield    : Agoy
+  Aircraft    : yak1s69
+  Player Contact    : 40
+
+
+
+Flight
+  Mission type: GROUND_ATTACK
+  Airfield    : Lazarevskoe
+  Aircraft    : il2m42
+  Player Contact    : -1
+
+
+

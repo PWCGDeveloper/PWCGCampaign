@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.outofmission.phase3.tabulate.ui.AARTransferPanelEventTabulatorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:49:26" hostname="DigitalStorm-PC" time="1.38">
+  <properties/>
+  <testcase name="testTransferInEvent" classname="pwcg.aar.outofmission.phase3.tabulate.ui.AARTransferPanelEventTabulatorTest" time="0.685"/>
+  <testcase name="testTransferOutEvent" classname="pwcg.aar.outofmission.phase3.tabulate.ui.AARTransferPanelEventTabulatorTest" time="0.695"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

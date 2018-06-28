@@ -1,0 +1,2375 @@
+{
+  "skinSetType": "SKIN_CONFIGURED",
+  "skins": {
+    "501421_001": {
+      "skinName": "501421_001",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "501421_a02": {
+      "skinName": "501421_A02",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "501427_001": {
+      "skinName": "501427_001",
+      "planeType": "halberstadtcl2",
+      "startDate": "19140801",
+      "endDate": "19180401",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "501427_002": {
+      "skinName": "501427_002",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_generic_1": {
+      "skinName": "HCL2_GENERIC_1",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": -2,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_generic_2": {
+      "skinName": "HCL2_GENERIC_2",
+      "planeType": "halberstadtcl2",
+      "startDate": "19140801",
+      "endDate": "19180401",
+      "squadId": -2,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_generic_3": {
+      "skinName": "HCL2_GENERIC_3",
+      "planeType": "halberstadtcl2",
+      "startDate": "19140801",
+      "endDate": "19180401",
+      "squadId": -2,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_10_e": {
+      "skinName": "HCL2_PW_S12_10_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170501",
+      "endDate": "19180331",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_10_m": {
+      "skinName": "HCL2_PW_S12_10_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180701",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_1_e": {
+      "skinName": "HCL2_PW_S12_1_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170501",
+      "endDate": "19180331",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_1_m": {
+      "skinName": "HCL2_PW_S12_1_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180701",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_2_e": {
+      "skinName": "HCL2_PW_S12_2_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170501",
+      "endDate": "19180331",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_2_m": {
+      "skinName": "HCL2_PW_S12_2_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180701",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_3_e": {
+      "skinName": "HCL2_PW_S12_3_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170501",
+      "endDate": "19180331",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_3_m": {
+      "skinName": "HCL2_PW_S12_3_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180701",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_4_e": {
+      "skinName": "HCL2_PW_S12_4_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170501",
+      "endDate": "19180331",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_4_m": {
+      "skinName": "HCL2_PW_S12_4_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180701",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_5_e": {
+      "skinName": "HCL2_PW_S12_5_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170501",
+      "endDate": "19180331",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_5_m": {
+      "skinName": "HCL2_PW_S12_5_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180701",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_6_e": {
+      "skinName": "HCL2_PW_S12_6_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170501",
+      "endDate": "19180331",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_6_m": {
+      "skinName": "HCL2_PW_S12_6_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180701",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_7_e": {
+      "skinName": "HCL2_PW_S12_7_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170501",
+      "endDate": "19180331",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_7_m": {
+      "skinName": "HCL2_PW_S12_7_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180701",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_8_e": {
+      "skinName": "HCL2_PW_S12_8_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170501",
+      "endDate": "19180331",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_8_m": {
+      "skinName": "HCL2_PW_S12_8_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180701",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_9_e": {
+      "skinName": "HCL2_PW_S12_9_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170501",
+      "endDate": "19180331",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s12_9_m": {
+      "skinName": "HCL2_PW_S12_9_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180701",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_1_e": {
+      "skinName": "HCL2_PW_S13_1_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170601",
+      "endDate": "19180331",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_1_l": {
+      "skinName": "HCL2_PW_S13_1_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181001",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_1_m": {
+      "skinName": "HCL2_PW_S13_1_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_2_e": {
+      "skinName": "HCL2_PW_S13_2_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170601",
+      "endDate": "19180331",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_2_l": {
+      "skinName": "HCL2_PW_S13_2_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181001",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_2_m": {
+      "skinName": "HCL2_PW_S13_2_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_3_e": {
+      "skinName": "HCL2_PW_S13_3_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170601",
+      "endDate": "19180331",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_3_l": {
+      "skinName": "HCL2_PW_S13_3_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181001",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_3_m": {
+      "skinName": "HCL2_PW_S13_3_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_4_e": {
+      "skinName": "HCL2_PW_S13_4_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170601",
+      "endDate": "19180331",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_4_l": {
+      "skinName": "HCL2_PW_S13_4_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181001",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_4_m": {
+      "skinName": "HCL2_PW_S13_4_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_5_e": {
+      "skinName": "HCL2_PW_S13_5_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170601",
+      "endDate": "19180331",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_5_l": {
+      "skinName": "HCL2_PW_S13_5_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181001",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_5_m": {
+      "skinName": "HCL2_PW_S13_5_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_6_e": {
+      "skinName": "HCL2_PW_S13_6_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170601",
+      "endDate": "19180331",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_6_l": {
+      "skinName": "HCL2_PW_S13_6_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181001",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_6_m": {
+      "skinName": "HCL2_PW_S13_6_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_7_e": {
+      "skinName": "HCL2_PW_S13_7_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170601",
+      "endDate": "19180331",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_7_l": {
+      "skinName": "HCL2_PW_S13_7_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181001",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_7_m": {
+      "skinName": "HCL2_PW_S13_7_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_8_e": {
+      "skinName": "HCL2_PW_S13_8_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170601",
+      "endDate": "19180331",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_8_l": {
+      "skinName": "HCL2_PW_S13_8_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181001",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_8_m": {
+      "skinName": "HCL2_PW_S13_8_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_9_e": {
+      "skinName": "HCL2_PW_S13_9_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170601",
+      "endDate": "19180331",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_9_l": {
+      "skinName": "HCL2_PW_S13_9_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181001",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_9_m": {
+      "skinName": "HCL2_PW_S13_9_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_a_e": {
+      "skinName": "HCL2_PW_S13_A_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170601",
+      "endDate": "19180331",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_a_l": {
+      "skinName": "HCL2_PW_S13_A_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181001",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s13_a_m": {
+      "skinName": "HCL2_PW_S13_A_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_1_e": {
+      "skinName": "HCL2_PW_S15_1_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170629",
+      "endDate": "19180324",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_1_l": {
+      "skinName": "HCL2_PW_S15_1_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_1_m": {
+      "skinName": "HCL2_PW_S15_1_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180325",
+      "endDate": "19180731",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_2_e": {
+      "skinName": "HCL2_PW_S15_2_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170629",
+      "endDate": "19180324",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_2_l": {
+      "skinName": "HCL2_PW_S15_2_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_2_m": {
+      "skinName": "HCL2_PW_S15_2_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180325",
+      "endDate": "19180731",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_3_e": {
+      "skinName": "HCL2_PW_S15_3_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170629",
+      "endDate": "19180324",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_3_l": {
+      "skinName": "HCL2_PW_S15_3_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_3_m": {
+      "skinName": "HCL2_PW_S15_3_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180325",
+      "endDate": "19180731",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_4_e": {
+      "skinName": "HCL2_PW_S15_4_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170629",
+      "endDate": "19180324",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_4_l": {
+      "skinName": "HCL2_PW_S15_4_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_4_m": {
+      "skinName": "HCL2_PW_S15_4_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180325",
+      "endDate": "19180731",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_5_e": {
+      "skinName": "HCL2_PW_S15_5_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170629",
+      "endDate": "19180324",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_5_l": {
+      "skinName": "HCL2_PW_S15_5_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_5_m": {
+      "skinName": "HCL2_PW_S15_5_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180325",
+      "endDate": "19180731",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_6_e": {
+      "skinName": "HCL2_PW_S15_6_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170629",
+      "endDate": "19180324",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_6_l": {
+      "skinName": "HCL2_PW_S15_6_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_6_m": {
+      "skinName": "HCL2_PW_S15_6_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180325",
+      "endDate": "19180731",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_7_e": {
+      "skinName": "HCL2_PW_S15_7_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170629",
+      "endDate": "19180324",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_7_l": {
+      "skinName": "HCL2_PW_S15_7_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_7_m": {
+      "skinName": "HCL2_PW_S15_7_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180325",
+      "endDate": "19180731",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_8_e": {
+      "skinName": "HCL2_PW_S15_8_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170629",
+      "endDate": "19180324",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_8_l": {
+      "skinName": "HCL2_PW_S15_8_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_8_m": {
+      "skinName": "HCL2_PW_S15_8_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180325",
+      "endDate": "19180731",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_9_e": {
+      "skinName": "HCL2_PW_S15_9_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170629",
+      "endDate": "19180324",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_9_l": {
+      "skinName": "HCL2_PW_S15_9_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_9_m": {
+      "skinName": "HCL2_PW_S15_9_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180325",
+      "endDate": "19180731",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_a_e": {
+      "skinName": "HCL2_PW_S15_A_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170629",
+      "endDate": "19180324",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_a_l": {
+      "skinName": "HCL2_PW_S15_A_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s15_a_m": {
+      "skinName": "HCL2_PW_S15_A_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180325",
+      "endDate": "19180731",
+      "squadId": 501115,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_1_e": {
+      "skinName": "HCL2_PW_S18_1_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180201",
+      "endDate": "19180326",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_1_l": {
+      "skinName": "HCL2_PW_S18_1_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_1_m": {
+      "skinName": "HCL2_PW_S18_1_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180327",
+      "endDate": "19180731",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_2_e": {
+      "skinName": "HCL2_PW_S18_2_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180201",
+      "endDate": "19180326",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_2_l": {
+      "skinName": "HCL2_PW_S18_2_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_2_m": {
+      "skinName": "HCL2_PW_S18_2_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180327",
+      "endDate": "19180731",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_3_e": {
+      "skinName": "HCL2_PW_S18_3_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180201",
+      "endDate": "19180326",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_3_l": {
+      "skinName": "HCL2_PW_S18_3_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_3_m": {
+      "skinName": "HCL2_PW_S18_3_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180327",
+      "endDate": "19180731",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_4_e": {
+      "skinName": "HCL2_PW_S18_4_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180201",
+      "endDate": "19180326",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_4_l": {
+      "skinName": "HCL2_PW_S18_4_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_4_m": {
+      "skinName": "HCL2_PW_S18_4_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180327",
+      "endDate": "19180731",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_5_e": {
+      "skinName": "HCL2_PW_S18_5_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180201",
+      "endDate": "19180326",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_5_l": {
+      "skinName": "HCL2_PW_S18_5_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_5_m": {
+      "skinName": "HCL2_PW_S18_5_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180327",
+      "endDate": "19180731",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_6_e": {
+      "skinName": "HCL2_PW_S18_6_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180201",
+      "endDate": "19180326",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_6_l": {
+      "skinName": "HCL2_PW_S18_6_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_6_m": {
+      "skinName": "HCL2_PW_S18_6_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180327",
+      "endDate": "19180731",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_7_e": {
+      "skinName": "HCL2_PW_S18_7_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180201",
+      "endDate": "19180326",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_7_l": {
+      "skinName": "HCL2_PW_S18_7_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_7_m": {
+      "skinName": "HCL2_PW_S18_7_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180327",
+      "endDate": "19180731",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_8_e": {
+      "skinName": "HCL2_PW_S18_8_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180201",
+      "endDate": "19180326",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_8_l": {
+      "skinName": "HCL2_PW_S18_8_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_8_m": {
+      "skinName": "HCL2_PW_S18_8_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180327",
+      "endDate": "19180731",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_9_e": {
+      "skinName": "HCL2_PW_S18_9_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180201",
+      "endDate": "19180326",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_9_l": {
+      "skinName": "HCL2_PW_S18_9_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_9_m": {
+      "skinName": "HCL2_PW_S18_9_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180327",
+      "endDate": "19180731",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_a_e": {
+      "skinName": "HCL2_PW_S18_A_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180201",
+      "endDate": "19180326",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_a_l": {
+      "skinName": "HCL2_PW_S18_A_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s18_a_m": {
+      "skinName": "HCL2_PW_S18_A_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180327",
+      "endDate": "19180731",
+      "squadId": 501118,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_10_l": {
+      "skinName": "HCL2_PW_S21_10_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180802",
+      "endDate": "19181201",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_10_m": {
+      "skinName": "HCL2_PW_S21_10_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180801",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_1_l": {
+      "skinName": "HCL2_PW_S21_1_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180802",
+      "endDate": "19181201",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_1_m": {
+      "skinName": "HCL2_PW_S21_1_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180801",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_2_l": {
+      "skinName": "HCL2_PW_S21_2_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180802",
+      "endDate": "19181201",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_2_m": {
+      "skinName": "HCL2_PW_S21_2_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180801",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_3_l": {
+      "skinName": "HCL2_PW_S21_3_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180802",
+      "endDate": "19181201",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_3_m": {
+      "skinName": "HCL2_PW_S21_3_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180801",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_4_l": {
+      "skinName": "HCL2_PW_S21_4_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180802",
+      "endDate": "19181201",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_4_m": {
+      "skinName": "HCL2_PW_S21_4_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180801",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_5_l": {
+      "skinName": "HCL2_PW_S21_5_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180802",
+      "endDate": "19181201",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_5_m": {
+      "skinName": "HCL2_PW_S21_5_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180801",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_6_l": {
+      "skinName": "HCL2_PW_S21_6_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180802",
+      "endDate": "19181201",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_6_m": {
+      "skinName": "HCL2_PW_S21_6_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180801",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_7_l": {
+      "skinName": "HCL2_PW_S21_7_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180802",
+      "endDate": "19181201",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_7_m": {
+      "skinName": "HCL2_PW_S21_7_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180801",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_8_l": {
+      "skinName": "HCL2_PW_S21_8_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180802",
+      "endDate": "19181201",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_8_m": {
+      "skinName": "HCL2_PW_S21_8_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180801",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_9_l": {
+      "skinName": "HCL2_PW_S21_9_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180802",
+      "endDate": "19181201",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s21_9_m": {
+      "skinName": "HCL2_PW_S21_9_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180801",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_21_e": {
+      "skinName": "HCL2_PW_S23_21_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171119",
+      "endDate": "19180331",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_21_l": {
+      "skinName": "HCL2_PW_S23_21_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_21_m": {
+      "skinName": "HCL2_PW_S23_21_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_22_e": {
+      "skinName": "HCL2_PW_S23_22_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171119",
+      "endDate": "19180331",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_22_l": {
+      "skinName": "HCL2_PW_S23_22_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_22_m": {
+      "skinName": "HCL2_PW_S23_22_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_23_e": {
+      "skinName": "HCL2_PW_S23_23_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171119",
+      "endDate": "19180331",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_23_l": {
+      "skinName": "HCL2_PW_S23_23_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_23_m": {
+      "skinName": "HCL2_PW_S23_23_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_24_e": {
+      "skinName": "HCL2_PW_S23_24_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171119",
+      "endDate": "19180331",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_24_l": {
+      "skinName": "HCL2_PW_S23_24_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_24_m": {
+      "skinName": "HCL2_PW_S23_24_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_25_e": {
+      "skinName": "HCL2_PW_S23_25_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171119",
+      "endDate": "19180331",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_25_l": {
+      "skinName": "HCL2_PW_S23_25_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_25_m": {
+      "skinName": "HCL2_PW_S23_25_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_26_e": {
+      "skinName": "HCL2_PW_S23_26_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171119",
+      "endDate": "19180331",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_26_l": {
+      "skinName": "HCL2_PW_S23_26_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_26_m": {
+      "skinName": "HCL2_PW_S23_26_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_27_e": {
+      "skinName": "HCL2_PW_S23_27_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171119",
+      "endDate": "19180331",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_27_l": {
+      "skinName": "HCL2_PW_S23_27_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_27_m": {
+      "skinName": "HCL2_PW_S23_27_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_28_e": {
+      "skinName": "HCL2_PW_S23_28_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171119",
+      "endDate": "19180331",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_28_l": {
+      "skinName": "HCL2_PW_S23_28_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_28_m": {
+      "skinName": "HCL2_PW_S23_28_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_29_e": {
+      "skinName": "HCL2_PW_S23_29_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171119",
+      "endDate": "19180331",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_29_l": {
+      "skinName": "HCL2_PW_S23_29_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_29_m": {
+      "skinName": "HCL2_PW_S23_29_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_30_e": {
+      "skinName": "HCL2_PW_S23_30_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171119",
+      "endDate": "19180331",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_30_l": {
+      "skinName": "HCL2_PW_S23_30_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s23_30_m": {
+      "skinName": "HCL2_PW_S23_30_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_11_e": {
+      "skinName": "HCL2_PW_S24_11_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170201",
+      "endDate": "19180331",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_11_l": {
+      "skinName": "HCL2_PW_S24_11_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_11_m": {
+      "skinName": "HCL2_PW_S24_11_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_12_e": {
+      "skinName": "HCL2_PW_S24_12_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170201",
+      "endDate": "19180331",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_12_l": {
+      "skinName": "HCL2_PW_S24_12_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_12_m": {
+      "skinName": "HCL2_PW_S24_12_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_13_e": {
+      "skinName": "HCL2_PW_S24_13_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170201",
+      "endDate": "19180331",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_13_l": {
+      "skinName": "HCL2_PW_S24_13_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_13_m": {
+      "skinName": "HCL2_PW_S24_13_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_14_e": {
+      "skinName": "HCL2_PW_S24_14_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170201",
+      "endDate": "19180331",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_14_l": {
+      "skinName": "HCL2_PW_S24_14_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_14_m": {
+      "skinName": "HCL2_PW_S24_14_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_15_e": {
+      "skinName": "HCL2_PW_S24_15_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170201",
+      "endDate": "19180331",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_15_l": {
+      "skinName": "HCL2_PW_S24_15_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_15_m": {
+      "skinName": "HCL2_PW_S24_15_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_16_e": {
+      "skinName": "HCL2_PW_S24_16_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170201",
+      "endDate": "19180331",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_16_l": {
+      "skinName": "HCL2_PW_S24_16_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_16_m": {
+      "skinName": "HCL2_PW_S24_16_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_17_e": {
+      "skinName": "HCL2_PW_S24_17_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170201",
+      "endDate": "19180331",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_17_l": {
+      "skinName": "HCL2_PW_S24_17_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_17_m": {
+      "skinName": "HCL2_PW_S24_17_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_18_e": {
+      "skinName": "HCL2_PW_S24_18_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170201",
+      "endDate": "19180331",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_18_l": {
+      "skinName": "HCL2_PW_S24_18_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_18_m": {
+      "skinName": "HCL2_PW_S24_18_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_19_e": {
+      "skinName": "HCL2_PW_S24_19_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170201",
+      "endDate": "19180331",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_19_l": {
+      "skinName": "HCL2_PW_S24_19_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_19_m": {
+      "skinName": "HCL2_PW_S24_19_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_20_e": {
+      "skinName": "HCL2_PW_S24_20_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170201",
+      "endDate": "19180331",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_20_l": {
+      "skinName": "HCL2_PW_S24_20_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s24_20_m": {
+      "skinName": "HCL2_PW_S24_20_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_21_e": {
+      "skinName": "HCL2_PW_S2_21_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171101",
+      "endDate": "19180331",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_21_l": {
+      "skinName": "HCL2_PW_S2_21_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_21_m": {
+      "skinName": "HCL2_PW_S2_21_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_22_e": {
+      "skinName": "HCL2_PW_S2_22_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171101",
+      "endDate": "19180331",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_22_l": {
+      "skinName": "HCL2_PW_S2_22_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_22_m": {
+      "skinName": "HCL2_PW_S2_22_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_23_e": {
+      "skinName": "HCL2_PW_S2_23_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171101",
+      "endDate": "19180331",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_23_l": {
+      "skinName": "HCL2_PW_S2_23_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_23_m": {
+      "skinName": "HCL2_PW_S2_23_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_24_e": {
+      "skinName": "HCL2_PW_S2_24_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171101",
+      "endDate": "19180331",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_24_l": {
+      "skinName": "HCL2_PW_S2_24_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_24_m": {
+      "skinName": "HCL2_PW_S2_24_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_25_e": {
+      "skinName": "HCL2_PW_S2_25_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171101",
+      "endDate": "19180331",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_25_l": {
+      "skinName": "HCL2_PW_S2_25_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_25_m": {
+      "skinName": "HCL2_PW_S2_25_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_26_e": {
+      "skinName": "HCL2_PW_S2_26_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171101",
+      "endDate": "19180331",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_26_l": {
+      "skinName": "HCL2_PW_S2_26_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_26_m": {
+      "skinName": "HCL2_PW_S2_26_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_27_e": {
+      "skinName": "HCL2_PW_S2_27_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171101",
+      "endDate": "19180331",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_27_l": {
+      "skinName": "HCL2_PW_S2_27_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_27_m": {
+      "skinName": "HCL2_PW_S2_27_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_28_e": {
+      "skinName": "HCL2_PW_S2_28_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171101",
+      "endDate": "19180331",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_28_l": {
+      "skinName": "HCL2_PW_S2_28_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_28_m": {
+      "skinName": "HCL2_PW_S2_28_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_29_e": {
+      "skinName": "HCL2_PW_S2_29_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171101",
+      "endDate": "19180331",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_29_l": {
+      "skinName": "HCL2_PW_S2_29_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_29_m": {
+      "skinName": "HCL2_PW_S2_29_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_a_e": {
+      "skinName": "HCL2_PW_S2_A_E",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171101",
+      "endDate": "19180331",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_a_l": {
+      "skinName": "HCL2_PW_S2_A_L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180801",
+      "endDate": "19181201",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_pw_s2_a_m": {
+      "skinName": "HCL2_PW_S2_A_M",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19180731",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_sch12_13": {
+      "skinName": "HCL2_SCH12_13",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": 501112,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_sch21_5": {
+      "skinName": "HCL2_SCH21_5",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": 501121,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_sch23_4": {
+      "skinName": "HCL2_SCH23_4",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171101",
+      "endDate": "19180323",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_sch23_5": {
+      "skinName": "HCL2_SCH23_5",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171101",
+      "endDate": "19180323",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_sch24_5": {
+      "skinName": "HCL2_SCH24_5",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_sch27_10ps": {
+      "skinName": "HCL2_SCH27_10PS",
+      "planeType": "halberstadtcl2",
+      "startDate": "19140801",
+      "endDate": "19180401",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_sch2_4l": {
+      "skinName": "HCL2_SCH2_4L",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_sch2_apr1918": {
+      "skinName": "HCL2_SCH2_APR1918",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_sch2_b": {
+      "skinName": "HCL2_SCH2_B",
+      "planeType": "halberstadtcl2",
+      "startDate": "19140801",
+      "endDate": "19180401",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "hcl2_sch2_sept1917": {
+      "skinName": "HCL2_SCH2_SEPT1917",
+      "planeType": "halberstadtcl2",
+      "startDate": "19140801",
+      "endDate": "19180401",
+      "squadId": 501102,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    }
+  }
+}

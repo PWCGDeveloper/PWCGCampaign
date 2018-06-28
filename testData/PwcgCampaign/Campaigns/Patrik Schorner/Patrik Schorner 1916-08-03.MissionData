@@ -1,0 +1,214 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-08-03";
+    Squadron = "Jasta 16b";
+    Map = "France";
+    Date = "19160803";
+    Time = "17:30:00";
+    Duty = "OFFENSIVE";
+    AircraftType = Halberstadt D.II;
+    Altitude = 2822;
+    Airfield = Balatre,E Roye;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Halberstadt D.II
+Squadron  Jasta 16b
+Airbase  Balatre,E Roye
+Date  1916-08-03
+
+Weather Report 
+    Heavy cloud cover, low altitude.
+    Cloud layer is 1494 meters.
+    Wind speed is 2 M/S.
+    Wind direction is 249.
+
+Primary Objective 
+    Penetrate enemy airspace near Ribecourt.  Engage any enemy aircraft that you encounter.  
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Johann Hanneman";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Gebhard Schonbaum";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Karl Nostitz";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 276";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Horst Gottlieb";
+            ObserverRank = "Ltn";
+            Observer = "Hildebrand Schlesinger";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 276";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Baldemar Thimig";
+            ObserverRank = "Ltn";
+            Observer = "Dolf Oppeln";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 276";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Reinhard Wecker";
+            ObserverRank = "Ltn";
+            Observer = "Leopold Schnitzler";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 261";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Helge Hochberg";
+            ObserverRank = "Ltn";
+            Observer = "Martin Scherzer";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 261";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Christof Ulm";
+            ObserverRank = "Obltn";
+            Observer = "Wilfried Huhn";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport17brit";
+        Squadron = "Esc 37";
+        Crew
+        {
+            PilotRank = "Cne";
+            Pilot = "Felix Mourrut";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport17brit";
+        Squadron = "Esc 37";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Frederic Laborie";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 2";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Cyrille Noel";
+            ObserverRank = "S/Lt";
+            Observer = "Hippolyte Phily";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 2";
+        Crew
+        {
+            PilotRank = "Cpl";
+            Pilot = "Leandre Lagarde";
+            ObserverRank = "S/Lt";
+            Observer = "Joseph Labarge";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 227";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Michel Antier";
+            ObserverRank = "S/Lt";
+            Observer = "Aime Baboud";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 227";
+        Crew
+        {
+            PilotRank = "Cpl";
+            Pilot = "Jules Lachassine";
+            ObserverRank = "Lt";
+            Observer = "Charles Clermont";
+        }
+    }
+}

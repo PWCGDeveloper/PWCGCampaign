@@ -1,0 +1,246 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-10-02",
+    "squadron": "Jasta 16b",
+    "date": "19161002",
+    "time": "15:0:00",
+    "aircraftType": "AircraftType \u003d Albatros D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "BALLOON_DEFENSE",
+    "altitude": 2289
+  },
+  "missionDescription": "Mission:\nAircraft  Albatros D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-10-02\n\nWeather Report\nLight cloud cover, medium altitude.\nCloud layer is 2753 meters.\nWind speed is 1 M/S.\nWind direction is 241.\n\nPrimary Objective\nDefend our balloon near Roye.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Oswald Fromm",
+        "observer": "",
+        "pilotRank": "Obltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Gebhard Schonbaum",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Karl Nostitz",
+        "observer": "",
+        "pilotRank": "Uffz",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 10 Squadron RFC",
+      "crew": {
+        "pilot": "Chapman Audlington",
+        "observer": "Scott Penhallick",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 10 Squadron RFC",
+      "crew": {
+        "pilot": "Hal Switt",
+        "observer": "Hall Heywood",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 10 Squadron RFC",
+      "crew": {
+        "pilot": "Peter Slyfield",
+        "observer": "Dermot Gilbert",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 2",
+      "crew": {
+        "pilot": "Philipp Delbruck",
+        "observer": "Paul Rosengart",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 2",
+      "crew": {
+        "pilot": "Erwin Eisenstein",
+        "observer": "Wenzel Schlitz",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 2",
+      "crew": {
+        "pilot": "Gebhard Altenau",
+        "observer": "Elias Lange",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 2",
+      "crew": {
+        "pilot": "Poldi Koler",
+        "observer": "Gustav Daehnhardt",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 5",
+      "crew": {
+        "pilot": "Randolf Landsman",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 5",
+      "crew": {
+        "pilot": "Karlheinz Faehr",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 5",
+      "crew": {
+        "pilot": "Norbert Wurtz",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 5",
+      "crew": {
+        "pilot": "Wendall Senger",
+        "observer": "",
+        "pilotRank": "Uffz",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 278s",
+      "crew": {
+        "pilot": "Emil Wolff",
+        "observer": "Wilhelm Gebauer",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 21",
+      "crew": {
+        "pilot": "Jules Scala",
+        "observer": "Adolphe Bastoux",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "nieuport17",
+      "squadronName": "Esc 112",
+      "crew": {
+        "pilot": "Corentin Brindejonc",
+        "observer": "",
+        "pilotRank": "S/Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport17",
+      "squadronName": "Esc 112",
+      "crew": {
+        "pilot": "Firmin Lamor",
+        "observer": "",
+        "pilotRank": "S/Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "Esc 112",
+      "crew": {
+        "pilot": "Valentin Ryckewaert",
+        "observer": "",
+        "pilotRank": "S/Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "Esc 112",
+      "crew": {
+        "pilot": "Emile Mourrut",
+        "observer": "",
+        "pilotRank": "Sergt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 58",
+      "crew": {
+        "pilot": "Hippolyte Laferriere",
+        "observer": "Bruno Garcin",
+        "pilotRank": "Cne",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 58",
+      "crew": {
+        "pilot": "Cyprien Larchant",
+        "observer": "Cyprien Fleury",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

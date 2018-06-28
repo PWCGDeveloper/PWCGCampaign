@@ -1,0 +1,19 @@
+{
+  "name": "Schlasta 12",
+  "squadronId": 501112,
+  "airfields": {
+    "19151220": "Chassonge Ferme,Stenay/Verdun",
+    "19170401": "Guesnain,Douai",
+    "19170810": "Rumbeke",
+    "19171112": "Erchin",
+    "19180319": "Pronville,nr Queant",
+    "19180326": "Epinoy,NW Cambrai",
+    "19180404": "Assevillers",
+    "19180524": "Chambry,Laon",
+    "19180804": "Douai",
+    "19181014": "Guesnain,Douai",
+    "19181025": "Erre,Somain",
+    "19181105": "Avensnes-le-Sec",
+    "19181110": "Alunoy"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "No 23 Squadron RFC",
+  "squadronId": 102023,
+  "airfields": {
+    "19160316": "Le Hameau",
+    "19160901": "Marieux",
+    "19160905": "Baizieux 2",
+    "19170523": "Auchel",
+    "19170529": "Bruay",
+    "19170613": "Hondschoote",
+    "19180322": "Moreuil",
+    "19180326": "Cappy S",
+    "19180328": "Baizieux 2",
+    "19180404": "Marieux",
+    "19180428": "Eecke",
+    "19180429": "Eecke",
+    "19180516": "Lealvillers",
+    "19181005": "Lagnicourt",
+    "19181025": "Hermies,Cambrai",
+    "19181105": "Proville,Cambrai",
+    "19181110": "Cambrai"
+  }
+}

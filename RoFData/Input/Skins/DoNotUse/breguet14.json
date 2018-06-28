@@ -1,0 +1,415 @@
+{
+  "skinSetType": "SKIN_DO_NOT_USE",
+  "skins": {
+    "105004": {
+      "skinName": "105004",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Belgium",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "105006": {
+      "skinName": "105006",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101000,
+      "country": "Belgium",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_1pl_sherman": {
+      "skinName": "B14_1PL_SHERMAN",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_42sq_blue_b": {
+      "skinName": "B14_42SQ_BLUE_B",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_42sq_blue_r": {
+      "skinName": "B14_42SQ_BLUE_R",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_42sq_green_b": {
+      "skinName": "B14_42SQ_GREEN_B",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_42sq_green_r": {
+      "skinName": "B14_42SQ_GREEN_R",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_42sq_red_b": {
+      "skinName": "B14_42SQ_RED_B",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_42sq_red_r": {
+      "skinName": "B14_42SQ_RED_R",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_42sq_yellow_b": {
+      "skinName": "B14_42SQ_YELLOW_B",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_42sq_yellow_r": {
+      "skinName": "B14_42SQ_YELLOW_R",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_bma3_std_b": {
+      "skinName": "B14_BMA3_STD_B",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_bma3_std_c": {
+      "skinName": "B14_BMA3_STD_C",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_br111 genrc 1917": {
+      "skinName": "B14_BR111 GENRC 1917",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_br66_1_1919": {
+      "skinName": "B14_BR66_1_1919",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_br66_6_1919": {
+      "skinName": "B14_BR66_6_1919",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_cai_gen": {
+      "skinName": "B14_CAI_GEN",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_cat-in-the-ring": {
+      "skinName": "B14_CAT-IN-THE-RING",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101000,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_esk3-1041": {
+      "skinName": "B14_ESK3-1041",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_fis_default": {
+      "skinName": "B14_FIS_DEFAULT",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_fis_palestine": {
+      "skinName": "B14_FIS_PALESTINE",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_hq_1": {
+      "skinName": "B14_HQ_1",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_hq_2": {
+      "skinName": "B14_HQ_2",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_hq_22": {
+      "skinName": "B14_HQ_22",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_hq_3": {
+      "skinName": "B14_HQ_3",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_hq_4": {
+      "skinName": "B14_HQ_4",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_hq_7": {
+      "skinName": "B14_HQ_7",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_j13_ngoro": {
+      "skinName": "B14_J13_NGORO",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_lm_squadron": {
+      "skinName": "B14_LM_SQUADRON",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_o_rod": {
+      "skinName": "B14_O_ROD",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_panthercules": {
+      "skinName": "B14_PANTHERCULES",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_pl_def_ai_1919": {
+      "skinName": "B14_PL_DEF_AI_1919",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_rkkvf": {
+      "skinName": "B14_RKKVF",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_semmel": {
+      "skinName": "B14_SEMMEL",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_spa23_6376": {
+      "skinName": "B14_SPA23_6376",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_stickysdayb14": {
+      "skinName": "B14_STICKYSDAYB14",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_syn_leader": {
+      "skinName": "B14_SYN_LEADER",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_syn_squadron": {
+      "skinName": "B14_SYN_SQUADRON",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "France",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_us9th-4948": {
+      "skinName": "B14_US9TH-4948",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "USA",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_wildbill_007": {
+      "skinName": "B14_WILDBILL_007",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "b14_ww_std": {
+      "skinName": "B14_WW_STD",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    }
+  }
+}

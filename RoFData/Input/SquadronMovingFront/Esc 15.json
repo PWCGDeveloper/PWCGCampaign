@@ -1,0 +1,28 @@
+{
+  "name": "Esc 15",
+  "squadronId": 101015,
+  "airfields": {
+    "19150326": "Mazingarbe",
+    "19150824": "Savy Berlette",
+    "19160319": "Lemmes",
+    "19160508": "Grivesnes",
+    "19160703": "Moreuil",
+    "19170206": "Ravenel",
+    "19170331": "Ferme Cravancon",
+    "19170408": "Bonne Maisson",
+    "19170513": "Ferme Cravancon",
+    "19170717": "La Lovie",
+    "19170817": "Julvecourt",
+    "19170927": "Ferme Cravancon",
+    "19171206": "La Noblette",
+    "19180401": "Foucaucourt en Santerre",
+    "19180404": "Aussonvillers",
+    "19180530": "Chalons sur Vesle",
+    "19180611": "Quinquempoix",
+    "19180709": "Muizon",
+    "19180724": "Mont Soissons Ferme",
+    "19180906": "Julvecourt",
+    "19181025": "Sivry",
+    "19181031": "Chery-les-Pouilly,S"
+  }
+}

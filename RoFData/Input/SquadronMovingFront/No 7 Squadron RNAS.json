@@ -1,0 +1,10 @@
+{
+  "name": "No 7 Squadron RNAS",
+  "squadronId": 102207,
+  "airfields": {
+    "19161111": "Leffrinckhouke",
+    "19170501": "Coudekerque",
+    "19180607": "Bertangles 5",
+    "19181024": "Cappy N"
+  }
+}

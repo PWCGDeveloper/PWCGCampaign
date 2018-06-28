@@ -1,0 +1,21 @@
+{
+  "name": "Jasta 3",
+  "squadronId": 501003,
+  "airfields": {
+    "19160901": "Beugnatre",
+    "19161105": "Velu",
+    "19170321": "Velu",
+    "19170712": "Houplin,S Lille",
+    "19170912": "Oostnieuwkerke",
+    "19180321": "Velu",
+    "19180326": "Nurlu,NE Moislains",
+    "19180404": "Baizieux 2",
+    "19180503": "Guesnain,Douai",
+    "19180708": "Velu",
+    "19180907": "Hauvine",
+    "19181005": "Neuflize",
+    "19181025": "La Selve",
+    "19181105": "Toulis",
+    "19181110": "Vaux"
+  }
+}

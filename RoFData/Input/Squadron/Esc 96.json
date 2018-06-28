@@ -1,0 +1,98 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101096,
+  "name": "Esc 96",
+  "skill": 40,
+  "planeAssignments": [
+    {
+      "type": "nieuport17",
+      "squadronIntroduction": "19170217",
+      "squadronWithdrawal": "19170710"
+    },
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19170701",
+      "squadronWithdrawal": "19180301"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19180201",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19170210": "Souilly",
+    "19170701": "Souilly",
+    "19170709": "La Noblette",
+    "19170722": "Bonne Maisson",
+    "19180211": "Muizon",
+    "19180311": "Muizon",
+    "19180328": "Grivesnes",
+    "19180407": "Bonne Maisson",
+    "19180413": "Baizieux 2",
+    "19180602": "Grivesnes",
+    "19180615": "Grivesnes",
+    "19180701": "Souilly",
+    "19180705": "Auve",
+    "19180709": "La Noblette",
+    "19180714": "Auve",
+    "19180718": "Ferme d_Alger"
+  },
+  "skins": [
+    {
+      "skinName": "N17_PW_F96_DFT",
+      "planeType": "nieuport17",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101096,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC96_APR1917",
+      "planeType": "spad7",
+      "startDate": "19140801",
+      "endDate": "19180212",
+      "squadId": 101096,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC96_JAN1918",
+      "planeType": "spad7",
+      "startDate": "19180213",
+      "endDate": "19181201",
+      "squadId": 101096,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S13_101096_ANS",
+      "planeType": "spad13",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101096,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

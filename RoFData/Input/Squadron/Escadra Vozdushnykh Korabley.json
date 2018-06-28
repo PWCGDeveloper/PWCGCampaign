@@ -1,0 +1,32 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 105100,
+  "name": "Escadra Vozdushnykh Korabley",
+  "skill": 50,
+  "planeAssignments": [
+    {
+      "type": "s22",
+      "squadronIntroduction": "19140801",
+      "squadronWithdrawal": "19180112"
+    }
+  ],
+  "airfields": {
+    "19140801": "Tarnopol"
+  },
+  "skins": [],
+  "serviceId": 10501,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_STRAT_BOMB",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,250 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-10-14";
+    Squadron = "Jasta 16b";
+    Map = "France";
+    Date = "19161014";
+    Time = "9:30:00";
+    Duty = "PATROL";
+    AircraftType = Albatros D.II;
+    Altitude = 3500;
+    Airfield = Balatre,E Roye;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Albatros D.II
+Squadron  Jasta 16b
+Airbase  Balatre,E Roye
+Date  1916-10-14
+
+Weather Report 
+    Light cloud cover, medium altitude.
+    Cloud layer is 2903 meters.
+    Wind speed is 0 M/S.
+    Wind direction is 315.
+
+Primary Objective 
+    Patrol airspace  near Beuvraignes.  Engage any enemy aircraft that you encounter.
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Detlef Schwarzer";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "albatrosd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Joachim Lechner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Ingemar Beckermann";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 23";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Hartmut Hardenburg";
+            ObserverRank = "Ltn";
+            Observer = "Florian Schimscheiner";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 23";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Niklaus Guns";
+            ObserverRank = "Obltn";
+            Observer = "Friedhelm Enzensberger";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport17brit";
+        Squadron = "No 1 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Cpt";
+            Pilot = "Clive Holcott";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport17brit";
+        Squadron = "No 1 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Carney Younger";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport17brit";
+        Squadron = "No 1 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Hale Bardolf";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport17brit";
+        Squadron = "No 1 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Benjamin Wilkins";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 107";
+        Crew
+        {
+            PilotRank = "Cne";
+            Pilot = "Julien Kalandoff";
+            ObserverRank = "S/Lt";
+            Observer = "Gaspard Ignace";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 107";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Antonin Vasseur";
+            ObserverRank = "S/Lt";
+            Observer = "Augustin Martinez";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 107";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Honore Kalandoff";
+            ObserverRank = "S/Lt";
+            Observer = "Sauveur Vertadier";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 107";
+        Crew
+        {
+            PilotRank = "Cpl";
+            Pilot = "Celestin Morliere";
+            ObserverRank = "Lt";
+            Observer = "Auguste Discors";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 20";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Samuel Le Bars";
+            ObserverRank = "S/Lt";
+            Observer = "Leo Kunsch";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 20";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Alfred Ratoin";
+            ObserverRank = "S/Lt";
+            Observer = "Gilbert Lafon";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 20";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Justin Paniez";
+            ObserverRank = "Lt";
+            Observer = "Henri Vertadier";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 20";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Marceau Lafontaine";
+            ObserverRank = "S/Lt";
+            Observer = "Leandre de Anchald";
+        }
+    }
+}

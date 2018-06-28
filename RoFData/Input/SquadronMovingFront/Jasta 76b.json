@@ -1,0 +1,13 @@
+{
+  "name": "Jasta 76b",
+  "squadronId": 501076,
+  "airfields": {
+    "19171105": "Douai",
+    "19180305": "Brayelles,Douai",
+    "19180909": "Pomacle",
+    "19181005": "St.Remy-le-Petit West",
+    "19181025": "Sissonne",
+    "19181105": "Cuirieux,Laon",
+    "19181110": "Plomion,SE Vervins"
+  }
+}

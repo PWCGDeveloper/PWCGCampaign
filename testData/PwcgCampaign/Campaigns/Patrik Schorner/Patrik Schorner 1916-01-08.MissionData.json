@@ -1,0 +1,246 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-01-08",
+    "squadron": "FA 46b",
+    "date": "19160108",
+    "time": "140:00",
+    "aircraftType": "AircraftType \u003d DFW C.",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Lagnicour",
+    "duty": "ARTILLERY_SPOT",
+    "altitude": 800
+  },
+  "missionDescription": "Mission:\nAircraft  DFW C.V\nSquadron  FA 46b\nAirbase  Lagnicourt\nDate  1916-01-08\n\nWeather Report\nLight cloud cover, medium altitude.\nCloud layer is 2061 meters.\nWind speed is 1 M/S.\nWind direction is 278.\n\nPrimary Objective\nSpot artillery against the troop concentrations  near Riviere\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 46b",
+      "crew": {
+        "pilot": "Konrad Herxheimer",
+        "observer": "Patrik Schorner",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 7",
+      "crew": {
+        "pilot": "Kaspar Keppler",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 7",
+      "crew": {
+        "pilot": "Gustav Reichner",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Georg Leutgeb",
+        "observer": "Wolfram Krantz",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Hildebrand Neuhaeuser",
+        "observer": "Wilfried Hoffbauer",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Armin Littauer",
+        "observer": "Elias Goldenberg",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Ulrich Huwyler",
+        "observer": "Maxim Spielmann",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Jan Hoehlbaum",
+        "observer": "Friedhelm Schiele",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Poldi Lichtenberger",
+        "observer": "Jorg Kalkbrenner",
+        "pilotRank": "Uffz",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "No 1 Squadron RFC",
+      "crew": {
+        "pilot": "Aaron Rolleston",
+        "observer": "",
+        "pilotRank": "Cpt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "No 1 Squadron RFC",
+      "crew": {
+        "pilot": "Earl Olingworth",
+        "observer": "",
+        "pilotRank": "2nd Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "No 1 Squadron RFC",
+      "crew": {
+        "pilot": "Frederick Jackmann",
+        "observer": "",
+        "pilotRank": "2nd Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "nieuport11",
+      "squadronName": "No 1 Squadron RFC",
+      "crew": {
+        "pilot": "Victor Amondsham",
+        "observer": "",
+        "pilotRank": "2nd Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 12 Squadron RFC",
+      "crew": {
+        "pilot": "Troy Cook",
+        "observer": "Amery Horman",
+        "pilotRank": "Maj",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 12 Squadron RFC",
+      "crew": {
+        "pilot": "David Sulyard",
+        "observer": "Farley Goldwell",
+        "pilotRank": "Cpt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 12 Squadron RFC",
+      "crew": {
+        "pilot": "Quinn Ruggenall",
+        "observer": "Denley Annesley",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 12 Squadron RFC",
+      "crew": {
+        "pilot": "Wallace Englisch",
+        "observer": "Aaron Hodgson",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 58",
+      "crew": {
+        "pilot": "Ernest Bolard",
+        "observer": "Olivier Chattaing",
+        "pilotRank": "S/Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 58",
+      "crew": {
+        "pilot": "Jerome Porte",
+        "observer": "Augustin Lamor",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Jeremy de La Cruz",
+        "observer": "Eugene Berna",
+        "pilotRank": "S/Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Marceau Lablee",
+        "observer": "Arthur Gayrau",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Charles-Etienne Ollier",
+        "observer": "Jean Riquoir",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Christophe Bretons",
+        "observer": "Jeremy Ventre",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

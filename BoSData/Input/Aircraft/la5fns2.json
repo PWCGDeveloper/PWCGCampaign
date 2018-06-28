@@ -1,0 +1,20 @@
+{
+  "type": "la5fns2",
+  "side": "ALLIED",
+  "displayName": "La-5N ser.2",
+  "script": "LuaScripts\\WorldObjects\\Planes\\la5fns2.txt",
+  "model": "graphics\\planes\\la5fns2\\la5fns2.mgm",
+  "desc": "",
+  "cruisingSpeed": 350,
+  "climbOutRate": 1300,
+  "goodness": 70,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19430601",
+  "withdrawal": "19450503"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "No 10 Squadron RFC",
+  "squadronId": 102010,
+  "airfields": {
+    "19150807": "Soncamp Farm",
+    "19171118": "Herzeele",
+    "19180412": "Droglandt",
+    "19180922": "St. Marie Cappel",
+    "19180925": "Eecke",
+    "19181015": "Bailleul",
+    "19181025": "Beaucamp",
+    "19181105": "Lomme,Lille",
+    "19181110": "Halluin"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20112051,
+  "name": "II./JG51",
+  "fileName": "II_JG51.json",
+  "skill": 90,
+  "planeAssignments": [
+    {
+      "type": "bf109f2",
+      "squadronIntroduction": "19410108",
+      "squadronWithdrawal": "19420414"
+    },
+    {
+      "type": "bf109f4",
+      "squadronIntroduction": "19411028",
+      "squadronWithdrawal": "19421001"
+    },
+    {
+      "type": "bf109g2",
+      "squadronIntroduction": "19420901",
+      "squadronWithdrawal": "19430303"
+    },
+    {
+      "type": "bf109g4",
+      "squadronIntroduction": "19430110",
+      "squadronWithdrawal": "19450503"
+    },
+    {
+      "type": "bf109g6",
+      "squadronIntroduction": "19430714",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Losinski",
+    "19411020": "Kolodezi",
+    "19411110": "Kolodezi",
+    "19411120": "Kolodezi",
+    "19411215": "Ryabinki",
+    "19420110": "Temkino",
+    "19420301": "Sekretov",
+    "19420601": "Staro-Nijne-Steblievskaya",
+    "19420624": "Popovicheskaya",
+    "19420709": "Novovelichkovskaya",
+    "19420721": "Kievskoe",
+    "19420801": "Golubinskiy",
+    "19420906": "Zety",
+    "19421011": "Evlampievsky",
+    "19421123": "Skvorin",
+    "19421223": "Zryansky",
+    "19430120": "Zryansky",
+    "19430301": "Andreevskaya",
+    "19430330": "Kievskoe",
+    "19430418": "Myshako",
+    "19430918": "Anapa",
+    "19430927": "Zaporojskaya",
+    "19431004": "Zaporojskaya",
+    "19431008": "Kerch 2"
+  },
+  "skins": [],
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 90
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+Player flight
+  Mission type: GROUND_ATTACK
+  Airfield    : Ryabinki
+  Aircraft    : il2m43
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: GROUND_ATTACK
+  Airfield    : Rjev
+  Aircraft    : il2m43
+  Player Contact    : 9
+
+
+
+Flight
+  Mission type: BOMB
+  Airfield    : Trekhsvyatskoye
+  Aircraft    : pe2s87
+  Player Contact    : 17
+
+
+
+Flight
+  Mission type: BOMB
+  Airfield    : Novoye Selo
+  Aircraft    : ju88a4
+  Player Contact    : 8
+
+
+
+Flight
+  Mission type: BOMB
+  Airfield    : Dugino
+  Aircraft    : ju87d3
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: BOMB
+  Airfield    : Karpovo
+  Aircraft    : ju87d3
+  Player Contact    : -1
+
+
+

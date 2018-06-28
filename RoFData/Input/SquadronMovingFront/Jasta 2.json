@@ -1,0 +1,27 @@
+{
+  "name": "Jasta 2",
+  "squadronId": 501002,
+  "airfields": {
+    "19160901": "Lagnicourt",
+    "19161205": "Pronville,nr Queant",
+    "19170314": "Pronville,nr Queant",
+    "19170323": "Pronville,nr Queant",
+    "19170807": "Oostnieuwkerke",
+    "19170812": "Oostnieuwkerke",
+    "19170827": "Handzaeme",
+    "19171001": "Handzaeme",
+    "19171213": "Handzaeme",
+    "19180315": "Pronville,nr Queant",
+    "19180326": "Velu",
+    "19180415": "Zande",
+    "19180521": "Vivaise",
+    "19180730": "Chambry,Laon",
+    "19180825": "Brayelles,Douai",
+    "19180927": "Douai",
+    "19180930": "Guesnain,Douai",
+    "19181010": "Cajebert",
+    "19181025": "Bisseghem",
+    "19181105": "Ichteghem",
+    "19181110": "Ceune"
+  }
+}

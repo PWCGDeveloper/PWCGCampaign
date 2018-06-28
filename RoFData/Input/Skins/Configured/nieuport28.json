@@ -1,0 +1,165 @@
+{
+  "skinSetType": "SKIN_CONFIGURED",
+  "skins": {
+    "103094_a01": {
+      "skinName": "103094_A01",
+      "planeType": "nieuport28",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 103094,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "103094_a02": {
+      "skinName": "103094_A02",
+      "planeType": "nieuport28",
+      "startDate": "19180528",
+      "endDate": "19181201",
+      "squadId": 103094,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "103094_a03": {
+      "skinName": "103094_A03",
+      "planeType": "nieuport28",
+      "startDate": "19180528",
+      "endDate": "19181201",
+      "squadId": 103094,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "103094_a05": {
+      "skinName": "103094_A05",
+      "planeType": "nieuport28",
+      "startDate": "19170630",
+      "endDate": "19181201",
+      "squadId": 103094,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "103094_a06": {
+      "skinName": "103094_A06",
+      "planeType": "nieuport28",
+      "startDate": "19180528",
+      "endDate": "19181201",
+      "squadId": 103094,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "103094_a07": {
+      "skinName": "103094_A07",
+      "planeType": "nieuport28",
+      "startDate": "19170630",
+      "endDate": "19180527",
+      "squadId": 103094,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "103094_a08": {
+      "skinName": "103094_A08",
+      "planeType": "nieuport28",
+      "startDate": "19170630",
+      "endDate": "19180605",
+      "squadId": 103094,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "103095_300": {
+      "skinName": "103095_300",
+      "planeType": "nieuport28",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 103095,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "103095_a01": {
+      "skinName": "103095_A01",
+      "planeType": "nieuport28",
+      "startDate": "19170630",
+      "endDate": "19180714",
+      "squadId": 103095,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "103095_a02": {
+      "skinName": "103095_A02",
+      "planeType": "nieuport28",
+      "startDate": "19170630",
+      "endDate": "19180527",
+      "squadId": 103095,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "103095_a03": {
+      "skinName": "103095_A03",
+      "planeType": "nieuport28",
+      "startDate": "19170630",
+      "endDate": "19180707",
+      "squadId": 103095,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "103095_a04": {
+      "skinName": "103095_A04",
+      "planeType": "nieuport28",
+      "startDate": "19170630",
+      "endDate": "19180530",
+      "squadId": 103095,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "103095_a05": {
+      "skinName": "103095_A05",
+      "planeType": "nieuport28",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 103095,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n28_147_ashenden": {
+      "skinName": "N28_147_ASHENDEN",
+      "planeType": "nieuport28",
+      "startDate": "19170630",
+      "endDate": "19180625",
+      "squadId": 103147,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n28_27th-8": {
+      "skinName": "N28_27TH-8",
+      "planeType": "nieuport28",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 103027,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "n28_us94th_meissner8": {
+      "skinName": "N28_US94TH_MEISSNER8",
+      "planeType": "nieuport28",
+      "startDate": "19180701",
+      "endDate": "19181201",
+      "squadId": 103094,
+      "country": "USA",
+      "category": "Configured",
+      "definedInGame": false
+    }
+  }
+}

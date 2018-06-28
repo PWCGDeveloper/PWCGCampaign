@@ -1,0 +1,14 @@
+{
+  "name": "No 84 Squadron RFC",
+  "squadronId": 102084,
+  "airfields": {
+    "19171001": "Lealvillers",
+    "19171112": "Le Hameau",
+    "19171229": "Villers Bretonneux",
+    "19180323": "Lealvillers",
+    "19180326": "Mont St. Eloi",
+    "19180328": "Bruay",
+    "19181005": "Mazingarbe",
+    "19181025": "La Petrie"
+  }
+}

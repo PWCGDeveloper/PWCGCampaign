@@ -1,0 +1,14 @@
+{
+  "name": "No 74 Squadron RFC",
+  "squadronId": 102074,
+  "airfields": {
+    "19180330": "Abeele (East)",
+    "19180402": "La Lovie",
+    "19180409": "La Lovie",
+    "19180411": "Proven",
+    "19180928": "Proven",
+    "19181003": "Le Creche",
+    "19181015": "Beaucamp",
+    "19181025": "Houplin,S Lille"
+  }
+}

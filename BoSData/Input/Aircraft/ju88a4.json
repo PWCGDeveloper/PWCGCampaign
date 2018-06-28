@@ -1,0 +1,19 @@
+{
+  "type": "ju88a4",
+  "side": "AXIS",
+  "displayName": "Ju 88 A-4",
+  "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+  "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+  "desc": "",
+  "cruisingSpeed": 310,
+  "climbOutRate": 800,
+  "goodness": 45,
+  "endurance": 3.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_MEDIUM",
+  "roles": [
+    "ROLE_BOMB"
+  ],
+  "introduction": "19410301",
+  "withdrawal": "19450503"
+}

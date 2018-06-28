@@ -1,0 +1,21 @@
+{
+  "type": "breguet14",
+  "side": "ALLIED",
+  "displayName": "Breguet 14.B2",
+  "script": "LuaScripts\\WorldObjects\\breguet14.txt",
+  "model": "graphics\\planes\\breguet14\\breguet14.mgm",
+  "desc": "",
+  "cruisingSpeed": 120,
+  "climbOutRate": 200,
+  "goodness": 59,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_MEDIUM",
+  "roles": [
+    "ROLE_RECON",
+    "ROLE_BOMB",
+    "ROLE_ARTILLERY_SPOT"
+  ],
+  "introduction": "19170401",
+  "withdrawal": "19181111"
+}

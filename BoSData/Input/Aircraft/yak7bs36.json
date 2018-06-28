@@ -1,0 +1,20 @@
+{
+  "type": "yak7bs36",
+  "side": "ALLIED",
+  "displayName": "Yak-7B ser.36",
+  "script": "LuaScripts\\WorldObjects\\Planes\\yak7bs36.txt",
+  "model": "graphics\\planes\\yak7bs36\\yak7bs36.mgm",
+  "desc": "",
+  "cruisingSpeed": 350,
+  "climbOutRate": 1300,
+  "goodness": 55,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19420601",
+  "withdrawal": "19450503"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Esc 122",
+  "squadronId": 101122,
+  "airfields": {
+    "19161201": "Ravenel",
+    "19170201": "Moreuil",
+    "19170301": "Vauxcere",
+    "19170401": "Somme Vesle",
+    "19171001": "Vadelaincourt",
+    "19171221": "Malzeville",
+    "19180121": "Souilly",
+    "19181025": "Lemmes"
+  }
+}

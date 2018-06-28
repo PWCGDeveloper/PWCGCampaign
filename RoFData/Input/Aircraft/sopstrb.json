@@ -1,0 +1,19 @@
+{
+  "type": "sopstrb",
+  "side": "ALLIED",
+  "displayName": "Sopwith Strutter B",
+  "script": "LuaScripts\\WorldObjects\\sopstrb.txt",
+  "model": "graphics\\planes\\sopstrb\\sopstrb.mgm",
+  "desc": "",
+  "cruisingSpeed": 130,
+  "climbOutRate": 150,
+  "goodness": 40,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_BOMB"
+  ],
+  "introduction": "19160701",
+  "withdrawal": "19181111"
+}

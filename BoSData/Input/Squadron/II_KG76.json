@@ -1,0 +1,70 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20132076,
+  "name": "II./KG76",
+  "fileName": "II_KG76.json",
+  "skill": 55,
+  "planeAssignments": [
+    {
+      "type": "ju88a4",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Novoye Selo",
+    "19411020": "Dugino",
+    "19411110": "Sychevka",
+    "19411120": "Ryabinki",
+    "19411215": "Sychevka",
+    "19420110": "Vjazma",
+    "19420301": "Novo Sergievskiy",
+    "19420601": "Alibay",
+    "19420624": "Zaporojskaya",
+    "19420709": "Slavyanskaya",
+    "19420721": "Zaporojskaya",
+    "19420801": "Tormosin",
+    "19420906": "Gromoslavka",
+    "19421011": "Gromoslavka",
+    "19421123": "Novo Sergievskiy",
+    "19421223": "Novo Sergievskiy",
+    "19430120": "Novo Sergievskiy",
+    "19430301": "Kerch",
+    "19430330": "Kerch",
+    "19430418": "Kerch",
+    "19430918": "Kerch",
+    "19430927": "Bagerovo",
+    "19431004": "Bagerovo",
+    "19431008": "Marfovka"
+  },
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19430918",
+        "squadName": "II./KG51",
+        "armedServiceName": "Luftwaffe",
+        "skill": 45
+      }
+    ]
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 90
+          },
+          {
+            "role": "ROLE_DIVE_BOMB",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  }
+}

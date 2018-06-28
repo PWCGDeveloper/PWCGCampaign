@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarationResolutionFirmVictoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:34" hostname="DigitalStorm-PC" time="1.218">
+  <properties/>
+  <testcase name="testPlayerZeroAwardForTwoDeclarationsButNoVictories" classname="pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarationResolutionFirmVictoryTest" time="0.245"/>
+  <testcase name="testPlayerMoreDeclarationsThanVictories" classname="pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarationResolutionFirmVictoryTest" time="0.24"/>
+  <testcase name="testPlayerFirmVictoryAward" classname="pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarationResolutionFirmVictoryTest" time="0.242"/>
+  <testcase name="testPlayerMultipleFirmVictoryAwards" classname="pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarationResolutionFirmVictoryTest" time="0.251"/>
+  <testcase name="testPlayerOneAwardForTwoDeclarationsButOnlyOneVictory" classname="pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarationResolutionFirmVictoryTest" time="0.239"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

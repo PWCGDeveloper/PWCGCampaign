@@ -1,0 +1,24 @@
+{
+  "name": "Esc 111",
+  "squadronId": 101111,
+  "airfields": {
+    "19150801": "Malzeville",
+    "19150920": "Vauxcere",
+    "19151101": "Malzeville",
+    "19160301": "Julvecourt",
+    "19170101": "Grivesnes",
+    "19170408": "Somme Vesle",
+    "19170814": "Giromancy",
+    "19171001": "Lhery",
+    "19180118": "Auve",
+    "19180401": "Vauxcere",
+    "19180429": "Aussonvillers",
+    "19180530": "Saint Just",
+    "19180715": "Auve",
+    "19180725": "Auve",
+    "19180807": "La Mellette",
+    "19180907": "Froides",
+    "19180926": "Auve",
+    "19181025": "Besny-et-Loisy"
+  }
+}

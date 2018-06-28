@@ -1,0 +1,250 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-02-18";
+    Squadron = "FA 293b";
+    Map = "France";
+    Date = "19160218";
+    Time = "150:00";
+    Duty = "ARTILLERY_SPOT";
+    AircraftType = DFW C.V;
+    Altitude = 800;
+    Airfield = Bellevue Ferme;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  DFW C.V
+Squadron  FA 293b
+Airbase  Bellevue Ferme
+Date  1916-02-18
+
+Weather Report 
+    Medium cloud cover, high altitude.
+    Cloud layer is 4288 meters.
+    Wind speed is 2 M/S.
+    Wind direction is 193.
+
+Primary Objective 
+    Spot artillery against the artillery battery  near Dieue
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 293b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "Ltn";
+            Observer = "Herbert Klemm";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 6";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Martin Kosel";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 6";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Klemens Setzer";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 19";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Ludwig Wurffel";
+            ObserverRank = "Obltn";
+            Observer = "Lars Degener";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 278s";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Jakob Baar";
+            ObserverRank = "Ltn";
+            Observer = "Heinrich Weinstock";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 278s";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Oskar Krantz";
+            ObserverRank = "Ltn";
+            Observer = "Gerhard Schreck";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 278s";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Leon Koenigswald";
+            ObserverRank = "Ltn";
+            Observer = "Timm Scherzinger";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 278s";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Ralf Reinhart";
+            ObserverRank = "Obltn";
+            Observer = "Johann Denzinger";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 2";
+        Crew
+        {
+            PilotRank = "Cne";
+            Pilot = "Vincent Vasse";
+            ObserverRank = "S/Lt";
+            Observer = "Gaspard Lacave";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 2";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Ferdinand Brindejonc";
+            ObserverRank = "S/Lt";
+            Observer = "Nicolas Lagarde";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 2";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Guillaume Saulnier";
+            ObserverRank = "S/Lt";
+            Observer = "Francois Petit";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 2";
+        Crew
+        {
+            PilotRank = "Cpl";
+            Pilot = "Justin Decraissain";
+            ObserverRank = "S/Lt";
+            Observer = "Adrien Bourgeois";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 40";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Samuel Justet";
+            ObserverRank = "S/Lt";
+            Observer = "Edouard Michau";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 40";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Florent Patrouilleau";
+            ObserverRank = "S/Lt";
+            Observer = "Julien Bolard";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 40";
+        Crew
+        {
+            PilotRank = "Cpl";
+            Pilot = "Emilien Pecheux";
+            ObserverRank = "Lt";
+            Observer = "Alain Gisquet";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 40";
+        Crew
+        {
+            PilotRank = "Cpl";
+            Pilot = "Gilbert Levaique";
+            ObserverRank = "S/Lt";
+            Observer = "Jacques Levaique";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 66";
+        Crew
+        {
+            PilotRank = "Cne";
+            Pilot = "Andre Brunet";
+            ObserverRank = "S/Lt";
+            Observer = "Jean-Marie Tournaire";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 66";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Raymond Kalandyk";
+            ObserverRank = "S/Lt";
+            Observer = "Jehan Robert";
+        }
+    }
+}

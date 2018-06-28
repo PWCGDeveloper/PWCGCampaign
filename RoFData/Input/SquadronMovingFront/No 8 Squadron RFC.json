@@ -1,0 +1,18 @@
+{
+  "name": "No 8 Squadron RFC",
+  "squadronId": 102008,
+  "airfields": {
+    "19150801": "Marieux",
+    "19170302": "Soncamp Farm",
+    "19170509": "Merville",
+    "19180322": "Petit Camon",
+    "19180324": "Grivesnes",
+    "19180326": "Warfusee",
+    "19180328": "Lealvillers",
+    "19180404": "Fienvillers",
+    "19180412": "Savy Berlette",
+    "19180805": "Le Hameau",
+    "19181015": "Mont St. Eloi",
+    "19181025": "Douai"
+  }
+}

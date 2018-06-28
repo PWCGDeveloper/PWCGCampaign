@@ -1,0 +1,105 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101019,
+  "name": "Esc 19",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "type": "fe2b",
+      "squadronIntroduction": "19150801",
+      "squadronWithdrawal": "19170115"
+    },
+    {
+      "type": "re8",
+      "squadronIntroduction": "19161201",
+      "squadronWithdrawal": "19180430"
+    },
+    {
+      "type": "breguet14",
+      "squadronIntroduction": "19180315",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19150801": "Quinquempoix",
+    "19150916": "Grivesnes",
+    "19151231": "Vauxcere",
+    "19160301": "Julvecourt",
+    "19160418": "Bonne Maisson",
+    "19161017": "Vauxcere",
+    "19170629": "Froides",
+    "19170704": "Vadelaincourt",
+    "19170912": "Auve",
+    "19170924": "Froides",
+    "19180310": "Julvecourt",
+    "19180506": "Vauxcere",
+    "19180930": "Vauxcere",
+    "19181001": "Auve",
+    "19181021": "La Cheppe"
+  },
+  "skins": [
+    {
+      "skinName": "FE2B_FRENCH",
+      "planeType": "fe2b",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101019,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "RE8_FRENCH",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101019,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "B14_ESC19_SEPT1917",
+      "planeType": "breguet14",
+      "startDate": "19140801",
+      "endDate": "19180111",
+      "squadId": 101019,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "B14_ESC19_JAN1918",
+      "planeType": "breguet14",
+      "startDate": "19180112",
+      "endDate": "19181201",
+      "squadId": 101019,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_RECON",
+            "weight": 40
+          },
+          {
+            "role": "ROLE_BOMB",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_ARTILLERY_SPOT",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

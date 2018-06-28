@@ -1,0 +1,226 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-09-02",
+    "squadron": "Jasta 16b",
+    "date": "19160902",
+    "time": "15:0:00",
+    "aircraftType": "AircraftType \u003d Halberstadt D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "INTERCEPT",
+    "altitude": 2200
+  },
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-09-02\n\nWeather Report\nHeavy cloud cover, medium altitude.\nCloud layer is 2553 meters.\nWind speed is 1 M/S.\nWind direction is 15.\n\nPrimary Objective\nIntercept enemy aircraft near Ham.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Ruprecht Hess",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 2 Squadron RFC",
+      "crew": {
+        "pilot": "Alston Stokerton",
+        "observer": "Darcy Lenton",
+        "pilotRank": "Maj",
+        "observerRank": "Cpt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 2 Squadron RFC",
+      "crew": {
+        "pilot": "Barnaby Westlake",
+        "observer": "Theodore Bailey",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 2 Squadron RFC",
+      "crew": {
+        "pilot": "Elton Sherbourne",
+        "observer": "Broderick Veldon",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 2 Squadron RFC",
+      "crew": {
+        "pilot": "Brian Shiveley",
+        "observer": "Quenby Foliot",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 7",
+      "crew": {
+        "pilot": "Horst Maibaum",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 7",
+      "crew": {
+        "pilot": "Rupert Scherrer",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 7",
+      "crew": {
+        "pilot": "Helge Parler",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 7",
+      "crew": {
+        "pilot": "Hans Sattler",
+        "observer": "",
+        "pilotRank": "Uffz",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Brooke Greenway",
+        "observer": "Barry Heron",
+        "pilotRank": "Flt Lt",
+        "observerRank": "Flt Lt"
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Fletcher Carter",
+        "observer": "Sigmund Dawne",
+        "pilotRank": "Flt Lt",
+        "observerRank": "Flt Lt"
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Miles Garret",
+        "observer": "Fergus Cunningham",
+        "pilotRank": "Flt Lt",
+        "observerRank": "Flt Lt"
+      }
+    },
+    {
+      "aircraftType": "sopstr",
+      "squadronName": "No 5 Squadron RNAS",
+      "crew": {
+        "pilot": "Riley Trenowyth",
+        "observer": "Herman Yornold",
+        "pilotRank": "Flt SLt",
+        "observerRank": "Flt Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 70",
+      "crew": {
+        "pilot": "Julien Azema",
+        "observer": "Alfred Lenoir",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 70",
+      "crew": {
+        "pilot": "Thierry Lacroix",
+        "observer": "Ferdinand Lafond",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 107",
+      "crew": {
+        "pilot": "Charles-Etienne Vidal",
+        "observer": "Jerome Salomon",
+        "pilotRank": "S/Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 107",
+      "crew": {
+        "pilot": "Andre Heilgenstein",
+        "observer": "Honore Clermont",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 107",
+      "crew": {
+        "pilot": "Firmin Demoulin",
+        "observer": "Gilbert Buge",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 107",
+      "crew": {
+        "pilot": "Marius Daucourt",
+        "observer": "Robert Gayrau",
+        "pilotRank": "Cpl",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 13",
+      "crew": {
+        "pilot": "Bruno Chapelant",
+        "observer": "Jacob Villard",
+        "pilotRank": "S/Lt",
+        "observerRank": "Lt"
+      }
+    }
+  ]
+}

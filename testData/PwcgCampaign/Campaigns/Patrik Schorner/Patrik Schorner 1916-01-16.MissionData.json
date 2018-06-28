@@ -1,0 +1,226 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-01-16",
+    "squadron": "FA 46b",
+    "date": "19160116",
+    "time": "1030:00",
+    "aircraftType": "AircraftType \u003d DFW C.",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Lagnicour",
+    "duty": "ARTILLERY_SPOT",
+    "altitude": 600
+  },
+  "missionDescription": "Mission:\nAircraft  DFW C.V\nSquadron  FA 46b\nAirbase  Lagnicourt\nDate  1916-01-16\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 2653 meters.\nWind speed is 0 M/S.\nWind direction is 255.\n\nPrimary Objective\nSpot artillery against the troop concentrations  near Filescamp Ferme\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 46b",
+      "crew": {
+        "pilot": "Konrad Herxheimer",
+        "observer": "Patrik Schorner",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 12",
+      "crew": {
+        "pilot": "Herbert Ganz",
+        "observer": "Arnold Holler",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 12",
+      "crew": {
+        "pilot": "Mathias Ehman",
+        "observer": "Leonhard Haeberli",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 12",
+      "crew": {
+        "pilot": "Wenzel Spiess",
+        "observer": "Adolf Blumenau",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 12",
+      "crew": {
+        "pilot": "Urs Kummer",
+        "observer": "Helge Pabst",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Kurt Hofmeister",
+        "observer": "",
+        "pilotRank": "Obltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Franz Neufeld",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Mario Munchberg",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Erik Ratzinger",
+        "observer": "",
+        "pilotRank": "Uffz",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Arnold Beckenbauer",
+        "observer": "Mathias Kirschbaum",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Anselm Wotraubek",
+        "observer": "Thomas Hirsch",
+        "pilotRank": "Ltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Falco Weyrauch",
+        "observer": "Lenz Stettin",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Mario Meidner",
+        "observer": "Dietrich Honigsman",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Hildebrand Schiffer",
+        "observer": "Sven Seidenstucker",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Franz Kober",
+        "observer": "Maximillian Kamm",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Gustav Schichau",
+        "observer": "Jan Hochberg",
+        "pilotRank": "Ltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 210",
+      "crew": {
+        "pilot": "Dierck Wohler",
+        "observer": "Erik Spindler",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 107",
+      "crew": {
+        "pilot": "Blaise Labriffe",
+        "observer": "Corentin Laffont",
+        "pilotRank": "S/Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 107",
+      "crew": {
+        "pilot": "Claude Guillement",
+        "observer": "Armand Picar",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 107",
+      "crew": {
+        "pilot": "Cyrille Saulnier",
+        "observer": "Jean Levaique",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 107",
+      "crew": {
+        "pilot": "Hippolyte Lafolie",
+        "observer": "Antonin Guillement",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

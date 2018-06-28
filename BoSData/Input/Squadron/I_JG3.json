@@ -1,0 +1,75 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20111003,
+  "name": "I./JG3",
+  "fileName": "I_JG3.json",
+  "skill": 85,
+  "planeAssignments": [
+    {
+      "type": "bf109f2",
+      "squadronIntroduction": "19420101",
+      "squadronWithdrawal": "19420927"
+    },
+    {
+      "type": "bf109f4",
+      "squadronIntroduction": "19420727",
+      "squadronWithdrawal": "19421024"
+    },
+    {
+      "type": "bf109g2",
+      "squadronIntroduction": "19420920",
+      "squadronWithdrawal": "19430503"
+    },
+    {
+      "type": "bf109g4",
+      "squadronIntroduction": "19430401",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19420801": "Zimovskoy",
+    "19420906": "Golubinskiy",
+    "19421011": "Zimovskoy",
+    "19421123": "Golubinskiy",
+    "19421223": "Ventsy",
+    "19430120": "Ventsy",
+    "19430301": "Severskaya",
+    "19430330": "Anastasievskaya",
+    "19430418": "Kievskoe",
+    "19430918": "Taman",
+    "19430927": "Taman",
+    "19431004": "Taman",
+    "19431008": "Bagerovo"
+  },
+  "skins": [
+    {
+      "skinName": "BF109G2_SKIN_01",
+      "planeType": "bf109g2",
+      "startDate": "19421101",
+      "endDate": "19430331",
+      "squadId": 20111003,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 90
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  }
+}

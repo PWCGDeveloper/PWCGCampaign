@@ -1,0 +1,77 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20122002,
+  "name": "II./St.G.2",
+  "fileName": "II_St_G_2.json",
+  "skill": 60,
+  "planeAssignments": [
+    {
+      "type": "ju87d3",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Vjazma",
+    "19411020": "Zenino",
+    "19411110": "Zenino",
+    "19411120": "Kholm",
+    "19411215": "Gzhatsk",
+    "19420110": "Vjazma",
+    "19420301": "Frolov",
+    "19420601": "Popovicheskaya",
+    "19420624": "Gostagaevskaya",
+    "19420709": "Kievskoe",
+    "19420721": "Kievskoe",
+    "19420801": "Zryansky",
+    "19420906": "Kalach",
+    "19421011": "Zety",
+    "19421123": "Skvorin",
+    "19421223": "Skvorin",
+    "19430120": "Zryansky",
+    "19430301": "Gostagaevskaya",
+    "19430330": "Gostagaevskaya",
+    "19430418": "Gostagaevskaya",
+    "19430918": "Taman",
+    "19430927": "Kerch 2",
+    "19431004": "Kerch 2",
+    "19431008": "Bagerovo"
+  },
+  "skins": [
+    {
+      "skinName": "JU87D3_SKIN_01",
+      "planeType": "ju87d3",
+      "startDate": "19421101",
+      "endDate": "19430331",
+      "squadId": 20121002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19430918",
+        "squadName": "II./St.G.3",
+        "armedServiceName": "Luftwaffe",
+        "skill": 55
+      }
+    ]
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_DIVE_BOMB",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

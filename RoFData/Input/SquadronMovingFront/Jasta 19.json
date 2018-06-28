@@ -1,0 +1,25 @@
+{
+  "name": "Jasta 19",
+  "squadronId": 501019,
+  "airfields": {
+    "19161025": "La Neuville",
+    "19170701": "Riencourt,Arras",
+    "19180203": "Besny-et-Loisy",
+    "19180227": "Puisieux Ferme,Laon",
+    "19180320": "Besny-et-Loisy",
+    "19180324": "Villeselve",
+    "19180326": "Falvy,Peronne",
+    "19180404": "Cachy",
+    "19180414": "Foucaucourt en Santerre",
+    "19180613": "Cappy S",
+    "19180713": "Pomacle",
+    "19180725": "Chery-les-Pouilly,N",
+    "19180822": "Villeselve",
+    "19180829": "Neuflize",
+    "19180904": "Bellevue Ferme",
+    "19180929": "Sivry",
+    "19181025": "Jametz",
+    "19181102": "Chassonge Ferme,Stenay/Verdun",
+    "19181104": "Jametz"
+  }
+}

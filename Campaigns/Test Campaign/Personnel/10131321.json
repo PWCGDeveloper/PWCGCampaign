@@ -1,0 +1,313 @@
+{
+  "squadronMembers": {
+    "3000189": {
+      "name": "Fyodor Ryabkin",
+      "serialNumber": 3000189,
+      "rank": "Leyitenant",
+      "picName": "Russian43.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 18,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411115",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10131321,
+      "inactiveDate": "19440101"
+    },
+    "3000188": {
+      "name": "Aleksandr Ukhtomsky",
+      "serialNumber": 3000188,
+      "rank": "Leyitenant",
+      "picName": "Russian03.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 12,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10131321,
+      "inactiveDate": "19440101"
+    },
+    "3000190": {
+      "name": "Artur Koshechkin",
+      "serialNumber": 3000190,
+      "rank": "Leyitenant",
+      "picName": "Russian21.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 19,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411112",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10131321,
+      "inactiveDate": "19440101"
+    },
+    "3000184": {
+      "name": "Konstantin Kirdan",
+      "serialNumber": 3000184,
+      "rank": "Starshyi leyitenant",
+      "picName": "Russian41.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 26,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411101",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10131321,
+      "inactiveDate": "19440101"
+    },
+    "3000376": {
+      "name": "Vyacheslav Yefremov",
+      "serialNumber": 3000376,
+      "rank": "Serzhant",
+      "picName": "Russian15.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 9,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19411109",
+          "location": "Nikiforovskoe",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "ju88a4",
+            "squadronName": "II./KG76",
+            "pilotSerialNumber": 0,
+            "pilotName": "Olt Manfred Pilzer",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "pe2s35",
+            "squadronName": "321st Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Serzhant Vyacheslav Yefremov",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411104",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10131321
+    },
+    "3000186": {
+      "name": "Igor Chendev",
+      "serialNumber": 3000186,
+      "rank": "Starshyi leyitenant",
+      "picName": "Russian24.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 35,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411101",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10131321,
+      "inactiveDate": "19440101"
+    },
+    "3000455": {
+      "name": "Viktor Obnizov",
+      "serialNumber": 3000455,
+      "rank": "Serzhant",
+      "picName": "Russian17.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411115",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10131321
+    },
+    "3000183": {
+      "name": "Gleb Tolstokozhev",
+      "serialNumber": 3000183,
+      "rank": "Starshyi leyitenant",
+      "picName": "Russian56.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 36,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411101",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10131321,
+      "inactiveDate": "19440101"
+    },
+    "3000449": {
+      "name": "Dmitry Kulibin",
+      "serialNumber": 3000449,
+      "rank": "Serzhant",
+      "picName": "Russian41.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19411116",
+          "location": "Nikiforovskoe",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "ju87d3",
+            "squadronName": "I./St.G.77",
+            "pilotSerialNumber": 0,
+            "pilotName": "Olt Maxim Kessel",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "pe2s35",
+            "squadronName": "321st Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Serzhant Dmitry Kulibin",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411115",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10131321
+    }
+  }
+}

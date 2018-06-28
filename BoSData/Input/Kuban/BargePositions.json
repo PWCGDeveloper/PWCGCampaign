@@ -1,0 +1,135 @@
+{
+  "locationSetName": "BargePositions",
+  "locations": [
+    {
+      "name": "BargeLocation",
+      "position": {
+        "xPos": 257968.0,
+        "yPos": 17.0,
+        "zPos": 201542.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 135.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "BargeLocation",
+      "position": {
+        "xPos": 262014.0,
+        "yPos": 17.0,
+        "zPos": 194787.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 279.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "BargeLocation",
+      "position": {
+        "xPos": 264547.0,
+        "yPos": 17.0,
+        "zPos": 206292.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "BargeLocation",
+      "position": {
+        "xPos": 246291.0,
+        "yPos": 17.0,
+        "zPos": 212487.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "BargeLocation",
+      "position": {
+        "xPos": 248051.0,
+        "yPos": 17.0,
+        "zPos": 195458.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "BargeLocation",
+      "position": {
+        "xPos": 241742.0,
+        "yPos": 17.0,
+        "zPos": 229957.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 90.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "BargeLocation",
+      "position": {
+        "xPos": 242898.0,
+        "yPos": 17.0,
+        "zPos": 217806.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 135.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "BargeLocation",
+      "position": {
+        "xPos": 233700.0,
+        "yPos": 17.0,
+        "zPos": 240848.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 105.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "BargeLocation",
+      "position": {
+        "xPos": 254865.0,
+        "yPos": 17.0,
+        "zPos": 179622.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "BargeLocation",
+      "position": {
+        "xPos": 264076.0,
+        "yPos": 17.0,
+        "zPos": 177718.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

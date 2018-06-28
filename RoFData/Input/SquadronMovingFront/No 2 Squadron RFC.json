@@ -1,0 +1,13 @@
+{
+  "name": "No 2 Squadron RFC",
+  "squadronId": 102002,
+  "airfields": {
+    "19150801": "Savy Berlette",
+    "19180609": "Soncamp Farm",
+    "19181005": "Mont St. Eloi",
+    "19181020": "Mont St. Eloi",
+    "19181025": "Lagnicourt",
+    "19181026": "Lagnicourt",
+    "19181105": "Pronville,nr Queant"
+  }
+}

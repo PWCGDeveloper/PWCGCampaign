@@ -1,0 +1,156 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-07-30",
+    "squadron": "Jasta 16b",
+    "date": "19160730",
+    "time": "7:0:00",
+    "aircraftType": "AircraftType \u003d Halberstadt D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "PATROL",
+    "altitude": 2500
+  },
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-07-30\n\nWeather Report\nMostly clear, some high altitude clouds.\nCloud layer is 4186 meters.\nWind speed is 2 M/S.\nWind direction is 258.\n\nPrimary Objective\nPatrol airspace  near Roye.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Augustus Kass",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Johann Hanneman",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Ruprecht Hess",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 281",
+      "crew": {
+        "pilot": "Hildebrand Seiler",
+        "observer": "Randolf Kaestenbaum",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 281",
+      "crew": {
+        "pilot": "Klaus Seidenstucker",
+        "observer": "Randolf Vonhoff",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 281",
+      "crew": {
+        "pilot": "Volkard Schoeler",
+        "observer": "Bernd Pfisterer",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 281",
+      "crew": {
+        "pilot": "Emil Zaugg",
+        "observer": "Gotthold Weinreb",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 13",
+      "crew": {
+        "pilot": "Johann Stocker",
+        "observer": "Michael Schimpf",
+        "pilotRank": "Obltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 13",
+      "crew": {
+        "pilot": "Rupert Sauer",
+        "observer": "Ferdinand Fischlin",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "Schlasta 13",
+      "crew": {
+        "pilot": "Wendall Spitz",
+        "observer": "Johann Osterhaus",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 23",
+      "crew": {
+        "pilot": "Sebastian Nussbaum",
+        "observer": "Egon Wartenberg",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 23",
+      "crew": {
+        "pilot": "Hartmut Knaur",
+        "observer": "Oskar Kreutzwald",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 111",
+      "crew": {
+        "pilot": "Sebastien Hoguet",
+        "observer": "Camille Richard",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

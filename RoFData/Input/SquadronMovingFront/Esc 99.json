@@ -1,0 +1,14 @@
+{
+  "name": "Esc 99",
+  "squadronId": 101099,
+  "airfields": {
+    "19180101": "Brabant en Argonne",
+    "19180227": "La Noblette",
+    "19180529": "Ravenel",
+    "19180610": "Muizon",
+    "19180724": "Vauxcere",
+    "19180907": "Julvecourt",
+    "19181025": "Sivry",
+    "19181101": "St.Loup,Champagne"
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "skinSetType": "SKIN_CONFIGURED",
+  "skins": {
+    "102000_000": {
+      "skinName": "102000_000",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "102000_001": {
+      "skinName": "102000_001",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102230,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_4512": {
+      "skinName": "FF2A_4512",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102230,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_bluetriangle": {
+      "skinName": "FF2A_BLUETRIANGLE",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102231,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_ch-16_n4072": {
+      "skinName": "FF2A_CH-16_N4072",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102231,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_ch-16_zigzag": {
+      "skinName": "FF2A_CH-16_ZIGZAG",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102230,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_n4087": {
+      "skinName": "FF2A_N4087",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102231,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_n4099_black": {
+      "skinName": "FF2A_N4099_BLACK",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102230,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_n4284": {
+      "skinName": "FF2A_N4284",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102231,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_n4287": {
+      "skinName": "FF2A_N4287",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102231,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_n4296": {
+      "skinName": "FF2A_N4296",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102230,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_n4297": {
+      "skinName": "FF2A_N4297",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102230,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_n4304": {
+      "skinName": "FF2A_N4304",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102230,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_n4510": {
+      "skinName": "FF2A_N4510",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102230,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_n4541": {
+      "skinName": "FF2A_N4541",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102230,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_n4545_v2": {
+      "skinName": "FF2A_N4545_V2",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102231,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_red_diamonds": {
+      "skinName": "FF2A_RED_DIAMONDS",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102230,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_redstripezig": {
+      "skinName": "FF2A_REDSTRIPEZIG",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102231,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "ff2a_tetris": {
+      "skinName": "FF2A_TETRIS",
+      "planeType": "felixf2a",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102231,
+      "country": "Britain",
+      "category": "Configured",
+      "definedInGame": false
+    }
+  }
+}

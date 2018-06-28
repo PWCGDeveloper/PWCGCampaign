@@ -1,0 +1,45 @@
+{
+  "configSetName": "ConfigSetGroundObjects",
+  "configMap": {
+    "AirfieldInclusionRadius": {
+      "value": "50000",
+      "label": "Airfield Inclusion Radius",
+      "help": "Radius to search for airfields to include in mission (in meters)"
+    },
+    "KeepAAASpread": {
+      "value": "4000",
+      "label": "Keep AAA Spread",
+      "help": "Distance from waypoint box to keep AAA"
+    },
+    "KeepAirfieldSpread": {
+      "value": "4000",
+      "label": "Keep Airfield Spread",
+      "help": "Distance from waypoint box to keep an airfield"
+    },
+    "KeepGroupSpread": {
+      "value": "4000",
+      "label": "Keep Group Spread",
+      "help": "Distance from waypoint box to keep a group (city, large airfield)"
+    },
+    "MaxGroundTargetDistance": {
+      "value": "30000",
+      "label": "Max distance to target",
+      "help": "Max distance from front to ground target"
+    },
+    "RandomShips": {
+      "value": "5",
+      "label": "Number of ships above base",
+      "help": "The possible number of ships above the base value"
+    },
+    "RandomTrains": {
+      "value": "5",
+      "label": "Number of trains above base",
+      "help": "The possible number of train cars above the base value"
+    },
+    "WindsockDistance": {
+      "value": "50",
+      "label": "Windsock Distance",
+      "help": "Distance in meters wind sock is placed from flight"
+    }
+  }
+}

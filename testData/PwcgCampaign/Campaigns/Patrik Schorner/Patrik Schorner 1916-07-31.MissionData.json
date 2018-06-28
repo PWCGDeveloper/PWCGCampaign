@@ -1,0 +1,226 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-07-31",
+    "squadron": "Jasta 16b",
+    "date": "19160731",
+    "time": "7:0:00",
+    "aircraftType": "AircraftType \u003d Halberstadt D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "BALLOON_BUST",
+    "altitude": 2000
+  },
+  "missionDescription": "Mission:\nAircraft  Halberstadt D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-07-31\n\nWeather Report\nMedium cloud cover, medium altitude.\nCloud layer is 2248 meters.\nWind speed is 1 M/S.\nWind direction is 174.\n\nPrimary Objective\nDestroy the enemy balloon near Ferrieres.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Luther Schaumann",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Detlef Schwarzer",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Karl Nostitz",
+        "observer": "",
+        "pilotRank": "Uffz",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 29",
+      "crew": {
+        "pilot": "Francis Mitteau",
+        "observer": "Florentin Krempp",
+        "pilotRank": "Cne",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 29",
+      "crew": {
+        "pilot": "Louis Lacabanne",
+        "observer": "Cyprien Jaffre",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 29",
+      "crew": {
+        "pilot": "Zephirin Lezot",
+        "observer": "Gaston Betirac",
+        "pilotRank": "S/Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 29",
+      "crew": {
+        "pilot": "Samuel Mari",
+        "observer": "Marc Ryckewaert",
+        "pilotRank": "Cpl",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Walther Wall",
+        "observer": "Viktor Loffler",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Leon Isserlin",
+        "observer": "Gustav Dohrmann",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Wilhelm Schichau",
+        "observer": "Bernd Redlich",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 16",
+      "crew": {
+        "pilot": "Erwin Brudes",
+        "observer": "Walfred Ungermann",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 23",
+      "crew": {
+        "pilot": "Dirk Maurer",
+        "observer": "Erhard Berglar",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 23",
+      "crew": {
+        "pilot": "Klaus Drachmann",
+        "observer": "Dieter Brahms",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 23",
+      "crew": {
+        "pilot": "Niklaus Cappel",
+        "observer": "Dominik Fink",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 23",
+      "crew": {
+        "pilot": "Rikard Dorfmann",
+        "observer": "Ingemar Isserlin",
+        "pilotRank": "Uffz",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 7",
+      "crew": {
+        "pilot": "Dagobert Schmidt",
+        "observer": "Franz Weiler",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 7",
+      "crew": {
+        "pilot": "Heinrich Zederbaum",
+        "observer": "Arnold Dolmetsch",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 52",
+      "crew": {
+        "pilot": "Edmond Parres",
+        "observer": "Albin Langenieux",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 8 Squadron RFC",
+      "crew": {
+        "pilot": "Eldwin Sweetecok",
+        "observer": "Paxton Joulon",
+        "pilotRank": "Maj",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 8 Squadron RFC",
+      "crew": {
+        "pilot": "David Taylor",
+        "observer": "Mark Saynsberry",
+        "pilotRank": "2nd Lt",
+        "observerRank": "Cpt"
+      }
+    }
+  ]
+}

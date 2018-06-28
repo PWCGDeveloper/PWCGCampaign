@@ -1,0 +1,18 @@
+{
+  "name": "Jasta 18",
+  "squadronId": 501018,
+  "airfields": {
+    "19170108": "Oostnieuwkerke",
+    "19170613": "La Petrie",
+    "19170702": "La Neuville",
+    "19171124": "Houplin,S Lille",
+    "19171129": "Phalempin,N Douai",
+    "19171202": "Houplin,S Lille",
+    "19171214": "Phalempin,N Douai",
+    "19180320": "Brayelles,Douai",
+    "19180408": "Pont-a-Marcq",
+    "19180412": "Pronville,nr Queant",
+    "19180430": "Beaucamp",
+    "19180614": "Mars-la-Tour"
+  }
+}

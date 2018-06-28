@@ -1,0 +1,146 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-04-10",
+    "squadron": "FA 15",
+    "date": "19160410",
+    "time": "140:00",
+    "aircraftType": "AircraftType \u003d Roland C.II",
+    "mapName": "Galicia",
+    "airfield": "Airfield \u003d Puko",
+    "duty": "OFFENSIVE",
+    "altitude": 2500
+  },
+  "missionDescription": "Mission:\nAircraft  Roland C.IIa\nSquadron  FA 15\nAirbase  Pukov\nDate  1916-04-10\n\nWeather Report\nMostly clear, some high altitude clouds.\nCloud layer is 4334 meters.\nWind speed is 2 M/S.\nWind direction is 280.\n\nPrimary Objective\nPenetrate enemy airspace at the specified transport hubs near Factory.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Friedrich Beethoven",
+        "observer": "Friedhelm Scherchen",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "Lukas Heffter",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Lukas Westerman",
+        "observer": "Erhard Kesselring",
+        "pilotRank": "Ltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Nikolaus Fechter",
+        "observer": "Sepp Homberg",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 25",
+      "crew": {
+        "pilot": "Hans Hengst",
+        "observer": "Leon Freudenberger",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 25",
+      "crew": {
+        "pilot": "Erwin Himmelfarb",
+        "observer": "Izsak Bobo",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 25",
+      "crew": {
+        "pilot": "Conrad Fuchs",
+        "observer": "Frigyes Meszaros",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 25",
+      "crew": {
+        "pilot": "Kurt Helfgot",
+        "observer": "Joachim Wechsler",
+        "pilotRank": "Ltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "s22",
+      "squadronName": "Escadra Vozdushnykh Korabley",
+      "crew": {
+        "pilot": "Kirill Lytkin",
+        "observer": "Tusya Buzinsky",
+        "pilotRank": "Cpt",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "s22",
+      "squadronName": "Escadra Vozdushnykh Korabley",
+      "crew": {
+        "pilot": "Maksim Popov",
+        "observer": "Bolodenka Kravchuk",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "s22",
+      "squadronName": "Escadra Vozdushnykh Korabley",
+      "crew": {
+        "pilot": "Akim Ostrovsky",
+        "observer": "Pabiyan Lyubimov",
+        "pilotRank": "Pk",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "s22",
+      "squadronName": "Escadra Vozdushnykh Korabley",
+      "crew": {
+        "pilot": "Rurik Perezhogin",
+        "observer": "Stanislov Orlov",
+        "pilotRank": "Pk",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "2nd KAO",
+      "crew": {
+        "pilot": "Sanya Brantov",
+        "observer": "Evgenii Fedoseyev",
+        "pilotRank": "Pk",
+        "observerRank": "Pk"
+      }
+    }
+  ]
+}

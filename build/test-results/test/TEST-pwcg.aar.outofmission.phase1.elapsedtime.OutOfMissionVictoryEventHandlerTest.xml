@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionVictoryEventHandlerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:39" hostname="DigitalStorm-PC" time="3.718">
+  <properties/>
+  <testcase name="testPilotOutOfMissionVictoryVeteran" classname="pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionVictoryEventHandlerTest" time="0.755"/>
+  <testcase name="testOutOfMissionVictoriesAwardedForVictories" classname="pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionVictoryEventHandlerTest" time="0.795"/>
+  <testcase name="testPilotOutOfMissionVictoryCommon" classname="pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionVictoryEventHandlerTest" time="0.714"/>
+  <testcase name="testPilotOutOfMissionVictoryAce" classname="pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionVictoryEventHandlerTest" time="0.742"/>
+  <testcase name="testPilotOutOfMissionVictoryNovice" classname="pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionVictoryEventHandlerTest" time="0.712"/>
+  <system-out><![CDATA[
+
+Veteran: 
+Victories: 23
+
+
+Common: 
+Victories: 10
+
+
+Ace: 
+Victories: 35
+
+
+Novice: 
+Victories: 6
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

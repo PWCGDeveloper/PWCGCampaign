@@ -1,0 +1,428 @@
+{
+  "squadrons": [
+    {
+      "squadron": -1,
+      "date": "19400501"
+    },
+    {
+      "squadron": 20113052,
+      "date": "19400501"
+    },
+    {
+      "squadron": -1,
+      "date": "19430918"
+    },
+    {
+      "squadron": -6,
+      "date": "19450801"
+    }
+  ],
+  "ranks": [
+    {
+      "rank": 3,
+      "date": "19400501"
+    },
+    {
+      "rank": 2,
+      "date": "19420915"
+    }
+  ],
+  "name": "Hermann Graff",
+  "serialNumber": 201001,
+  "rank": "",
+  "picName": "",
+  "pilotActiveStatus": 0,
+  "country": "GERMANY",
+  "missionFlown": 0,
+  "aggressiveness": 0,
+  "skill": 4,
+  "commonSense": 0,
+  "skins": [
+    {
+      "skinName": "BF109G2_9_JG52_YELLOW11_GRAF",
+      "planeType": "bf109g2",
+      "startDate": "19420822",
+      "endDate": "19421119",
+      "squadId": -1,
+      "country": "",
+      "category": "",
+      "definedInGame": false
+    }
+  ],
+  "victories": [
+    {
+      "date": "19410804",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "I-16 Rata",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19410805",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "I-16 Rata",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19410811",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "MiG-3",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19410830",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "DB-3",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19410906",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "I-16 Rata",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19410913",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Yak-1",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19410914",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "DB-3",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19410927",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "DB-3",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19411003",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Yak-1",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19411003",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "I-16 Rata",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19411004",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "SB-2",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19411011",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "I-153",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19411014",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Yak-1",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19411014",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Yak-1",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19411024",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "MiG-1",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19411024",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "MiG-1",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    }
+  ],
+  "groundVictories": [],
+  "medals": [],
+  "playerRegion": "",
+  "isPlayer": false,
+  "squadronId": -1,
+  "squadronMemberRole": "PILOT"
+}

@@ -1,0 +1,2103 @@
+{
+  "squadrons": [
+    {
+      "squadron": -1,
+      "date": "19150801"
+    },
+    {
+      "squadron": 501002,
+      "date": "19160901"
+    },
+    {
+      "squadron": 501011,
+      "date": "19170114"
+    },
+    {
+      "squadron": -1,
+      "date": "19170501"
+    },
+    {
+      "squadron": 501011,
+      "date": "19170617"
+    },
+    {
+      "squadron": -1,
+      "date": "19170706"
+    },
+    {
+      "squadron": 501011,
+      "date": "19170725"
+    },
+    {
+      "squadron": -1,
+      "date": "19170906"
+    },
+    {
+      "squadron": 501011,
+      "date": "19171016"
+    },
+    {
+      "squadron": -1,
+      "date": "19171212"
+    },
+    {
+      "squadron": 501011,
+      "date": "19180202"
+    },
+    {
+      "squadron": -6,
+      "date": "19180421"
+    }
+  ],
+  "ranks": [
+    {
+      "rank": 2,
+      "date": "19120901"
+    },
+    {
+      "rank": 0,
+      "date": "19170114"
+    }
+  ],
+  "name": "Manfred von Richthofen",
+  "rank": "",
+  "picName": "",
+  "pilotActiveStatus": 0,
+  "country": "GERMANY",
+  "missionFlown": 0,
+  "aggressiveness": 0,
+  "aiSkillLevel": "ACE",
+  "skill": 4,
+  "commonSense": 0,
+  "skins": [
+    {
+      "skinName": "AD2_J2_MVR_481-16",
+      "planeType": "albatrosd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD3_J11MVR1",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170616",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD3_J11MVR2",
+      "planeType": "albatrosd3",
+      "startDate": "19170617",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_MVR1177",
+      "planeType": "albatrosd5",
+      "startDate": "19170620",
+      "endDate": "19170701",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_MVRJULY1917",
+      "planeType": "albatrosd5",
+      "startDate": "19170702",
+      "endDate": "19170706",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_MVR2059",
+      "planeType": "albatrosd5",
+      "startDate": "19170725",
+      "endDate": "19171029",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_MVR4693V1",
+      "planeType": "albatrosd5",
+      "startDate": "19171030",
+      "endDate": "19171123",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_MVR4693V2",
+      "planeType": "albatrosd5",
+      "startDate": "19171124",
+      "endDate": "19171229",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_MVR4693V3",
+      "planeType": "albatrosd5",
+      "startDate": "19171130",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_MVRW102",
+      "planeType": "fokkerdr1",
+      "startDate": "19170828",
+      "endDate": "19170905",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_MVR127V1",
+      "planeType": "fokkerdr1",
+      "startDate": "19180202",
+      "endDate": "19180225",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_MVR152",
+      "planeType": "fokkerdr1",
+      "startDate": "19180226",
+      "endDate": "19180323",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_MVR477",
+      "planeType": "fokkerdr1",
+      "startDate": "19180324",
+      "endDate": "19180405",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_MVR127V2",
+      "planeType": "fokkerdr1",
+      "startDate": "19180406",
+      "endDate": "19180411",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_MVR425V1",
+      "planeType": "fokkerdr1",
+      "startDate": "19180412",
+      "endDate": "19180417",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_MVR425V2",
+      "planeType": "fokkerdr1",
+      "startDate": "19180418",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    }
+  ],
+  "victories": [
+    {
+      "date": "19160917",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "F.E.2b",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19160923",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Martinsyde G.100",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19160930",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "F.E.2b",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19161007",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.12",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19161016",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.12",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19161025",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.12",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19161103",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "F.E.2b",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19161109",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2c",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19161120",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2c",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19161120",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "F.E.2b",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19161123",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "D.H.2",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19161211",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "D.H.2",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19161220",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "D.H.2",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19161220",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "F.E.2b",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19161227",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "D.H.2",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170104",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Pup",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170123",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "F.E.8",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170124",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "F.E.2b",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170201",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2d",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170214",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2d",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170214",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2c",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170304",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2d",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170304",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Strutter",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170306",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2e",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170309",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "D.H.2",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170311",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2d",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170317",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "F.E.2b",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170317",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2g",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170321",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2e",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170324",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "SPAD VII",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170325",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Nieuport 17",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170402",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2d",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170402",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Strutter",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170403",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "F.E.2d",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170405",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Bristol F.2b",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170405",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Bristol F.2a",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170407",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Nieuport 17",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170408",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Strutter",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170408",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2g",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170411",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2d",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170413",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "R.E.8",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170413",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "F.E.2b",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170413",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "F.E.2b",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170414",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Nieuport 17",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170416",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2e",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170422",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "F.E.2b",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170423",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2f",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170428",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2e",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170429",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "SPAD VII",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170429",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "F.E.2d",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170429",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "B.E.2e",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170429",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Triplane",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170618",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "R.E.8",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170623",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "SPAD VII",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170624",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "D.H.4",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170625",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "R.E.8",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170702",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "R.E.8",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170816",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Nieuport 23",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170826",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "SPAD VII",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170901",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "R.E.8",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19170903",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Pup",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19171123",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "D.H.5",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19171130",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "S.E.5a",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180312",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Bristol F.2b",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180313",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Camel",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180318",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Camel",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180324",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "S.E.5a",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180325",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Camel",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180326",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "S.E.5a",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180326",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "R.E.8",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180327",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Camel",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180327",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "A.W.F.K.8",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180327",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Dolphin",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180328",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "A.W.F.K.8",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180402",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "R.E.8",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180406",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Camel",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180407",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Camel",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180407",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Camel",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180420",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Camel",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180420",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Sopwith Camel",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    }
+  ],
+  "groundVictories": [],
+  "medals": [
+    {
+      "medalDate": "19140923",
+      "medalName": "Iron Cross 2nd Class",
+      "medalImage": ""
+    },
+    {
+      "medalDate": "19160410",
+      "medalName": "Iron Cross 1st Class",
+      "medalImage": ""
+    },
+    {
+      "medalDate": "19161111",
+      "medalName": "House Order of Hohenzollern",
+      "medalImage": ""
+    },
+    {
+      "medalDate": "19170112",
+      "medalName": "Pour Le Merit",
+      "medalImage": ""
+    }
+  ],
+  "playerRegion": "",
+  "isPlayer": false,
+  "squadronId": -1,
+  "squadronMemberRole": "PILOT"
+}

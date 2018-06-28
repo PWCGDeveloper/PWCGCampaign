@@ -1,0 +1,26 @@
+{
+  "name": "Jasta 28w",
+  "squadronId": 501028,
+  "airfields": {
+    "19170124": "Handzaeme",
+    "19170326": "Lagnicourt",
+    "19170827": "Wervicq",
+    "19171104": "Gheluwe",
+    "19171126": "Halluin",
+    "19171208": "Halluin",
+    "19180206": "Halluin",
+    "19180302": "Douai",
+    "19180322": "St. Marguerite",
+    "19180330": "Douai",
+    "19180606": "Cachy-Bois I_Abbe",
+    "19180608": "Neuflize",
+    "19180825": "Riencourt,Arras",
+    "19181001": "Foucaucourt en Santerre",
+    "19181005": "Mesnil-Bruntel",
+    "19181013": "Pronville,nr Queant",
+    "19181015": "Hermies,Cambrai",
+    "19181025": "Eswars",
+    "19181105": "Beauvois,E Cambrai",
+    "19181110": "Beauvois,E Cambrai"
+  }
+}

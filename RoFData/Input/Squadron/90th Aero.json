@@ -1,0 +1,55 @@
+{
+  "country": "USA",
+  "squadronId": 103090,
+  "name": "90th Aero",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "type": "breguet14",
+      "squadronIntroduction": "19180616",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180611": "Julvecourt",
+    "19180920": "Souilly",
+    "19181102": "Julvecourt"
+  },
+  "skins": [
+    {
+      "skinName": "SS_USAS_STD_CAMO",
+      "planeType": "sopstr",
+      "startDate": "19170101",
+      "endDate": "19181201",
+      "squadId": 103090,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "103000_000",
+      "planeType": "breguet14",
+      "startDate": "19170101",
+      "endDate": "19181201",
+      "squadId": 103090,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10301,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

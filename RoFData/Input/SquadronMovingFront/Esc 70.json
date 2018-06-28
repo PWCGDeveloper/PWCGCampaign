@@ -1,0 +1,16 @@
+{
+  "name": "Esc 70",
+  "squadronId": 101070,
+  "airfields": {
+    "19150901": "La Mellette",
+    "19160817": "Brabant en Argonne",
+    "19170303": "Toul",
+    "19170412": "Brabant en Argonne",
+    "19170522": "Mannoncourt en Vermois",
+    "19180119": "Souilly",
+    "19180324": "Vauxcere",
+    "19180728": "Somme Vesle",
+    "19181010": "Ville-Savoye",
+    "19181025": "Vivaise"
+  }
+}

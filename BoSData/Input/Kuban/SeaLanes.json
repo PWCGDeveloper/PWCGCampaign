@@ -1,0 +1,96 @@
+{
+  "axisShippingLanes": [
+    {
+      "neCorner": {
+        "xPos": 190000.0,
+        "yPos": 0.0,
+        "zPos": 205000.0
+      },
+      "swCorner": {
+        "xPos": 175000.0,
+        "yPos": 0.0,
+        "zPos": 225000.0
+      },
+      "country": "GERMANY",
+      "startDate": "19420801",
+      "endDate": "19430601"
+    },
+    {
+      "neCorner": {
+        "xPos": 222000.0,
+        "yPos": 0.0,
+        "zPos": 170000.0
+      },
+      "swCorner": {
+        "xPos": 210000.0,
+        "yPos": 0.0,
+        "zPos": 180000.0
+      },
+      "country": "GERMANY",
+      "startDate": "19420801",
+      "endDate": "19431201"
+    },
+    {
+      "neCorner": {
+        "xPos": 235000.0,
+        "yPos": 0.0,
+        "zPos": 150000.0
+      },
+      "swCorner": {
+        "xPos": 223000.0,
+        "yPos": 0.0,
+        "zPos": 165000.0
+      },
+      "country": "GERMANY",
+      "startDate": "19420801",
+      "endDate": "19431201"
+    },
+    {
+      "neCorner": {
+        "xPos": 256000.0,
+        "yPos": 0.0,
+        "zPos": 115000.0
+      },
+      "swCorner": {
+        "xPos": 240000.0,
+        "yPos": 0.0,
+        "zPos": 127000.0
+      },
+      "country": "GERMANY",
+      "startDate": "19420801",
+      "endDate": "19431201"
+    }
+  ],
+  "alliedShippingLanes": [
+    {
+      "neCorner": {
+        "xPos": 190000.0,
+        "yPos": 0.0,
+        "zPos": 205000.0
+      },
+      "swCorner": {
+        "xPos": 175000.0,
+        "yPos": 0.0,
+        "zPos": 225000.0
+      },
+      "country": "RUSSIA",
+      "startDate": "19430601",
+      "endDate": "19431201"
+    },
+    {
+      "neCorner": {
+        "xPos": 175000.0,
+        "yPos": 0.0,
+        "zPos": 230000.0
+      },
+      "swCorner": {
+        "xPos": 160000.0,
+        "yPos": 0.0,
+        "zPos": 245000.0
+      },
+      "country": "RUSSIA",
+      "startDate": "19420801",
+      "endDate": "19431201"
+    }
+  ]
+}

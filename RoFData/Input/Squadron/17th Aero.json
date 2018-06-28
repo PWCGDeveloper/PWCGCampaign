@@ -1,0 +1,63 @@
+{
+  "country": "USA",
+  "squadronId": 103017,
+  "name": "17th Aero",
+  "skill": 70,
+  "planeAssignments": [
+    {
+      "type": "sopcamel",
+      "squadronIntroduction": "19180620",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180620": "La Lovie",
+    "19180818": "Mont St. Eloi",
+    "19180920": "Soncamp Farm"
+  },
+  "skins": [
+    {
+      "skinName": "SC_103017_ANS",
+      "planeType": "sopcamel",
+      "startDate": "19180629",
+      "endDate": "19181201",
+      "squadId": 103017,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10301,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19180401",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 90
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 10
+          }
+        ]
+      },
+      {
+        "startDate": "19180401",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 70
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

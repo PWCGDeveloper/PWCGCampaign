@@ -1,0 +1,9 @@
+{
+  "name": "FAA 1",
+  "squadronId": 501001,
+  "airfields": {
+    "19160101": "Ryonski",
+    "19161101": "Kurgany",
+    "19170601": "Ryonski"
+  }
+}

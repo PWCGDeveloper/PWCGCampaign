@@ -1,0 +1,76 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-10-13",
+    "squadron": "Jasta 16b",
+    "date": "19161013",
+    "time": "15:30:00",
+    "aircraftType": "AircraftType \u003d Albatros D.I",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Balatre,E Roy",
+    "duty": "SCRAMBLE",
+    "altitude": 2000
+  },
+  "missionDescription": "Mission:\nAircraft  Albatros D.II\nSquadron  Jasta 16b\nAirbase  Balatre,E Roye\nDate  1916-10-13\n\nWeather Report\nHeavy cloud cover, medium altitude.\nCloud layer is 1562 meters.\nWind speed is 0 M/S.\nWind direction is 323.\n\nPrimary Objective\nIncoming enemy aircraft are near our airbase.  Get airborne and destroy them!\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Karl Nostitz",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "halberstadtd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Ruprecht Hess",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "albatrosd2",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Poldi Hechler",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 20",
+      "crew": {
+        "pilot": "Leo Scala",
+        "observer": "Blaise Gentillon",
+        "pilotRank": "Sergt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 20",
+      "crew": {
+        "pilot": "Marceau Adam",
+        "observer": "Casimir Redinger",
+        "pilotRank": "Sergt",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

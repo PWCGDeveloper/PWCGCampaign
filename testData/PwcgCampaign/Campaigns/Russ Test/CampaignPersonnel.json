@@ -1,0 +1,911 @@
+{
+  "campaignMembers": {
+    "Svyatoslav Yermushin": {
+      "name": "Svyatoslav Yermushin",
+      "rank": "Serzhant",
+      "picName": "Russian29.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 18,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19430501",
+          "medalName": "Pilots Badge",
+          "medalImage": "rus_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111126,
+      "squadronMemberRole": "PILOT"
+    },
+    "Emil Zhivenkov": {
+      "name": "Emil Zhivenkov",
+      "rank": "Kapitan",
+      "picName": "Russian41.jpg",
+      "pilotActiveStatus": -4,
+      "country": "RUSSIA",
+      "missionFlown": 48,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19430428",
+          "location": "Varenikovskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "fw190a5",
+            "squadronName": "I./JG51",
+            "pilot": "Mjr Poldi Hausser",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Emil Zhivenkov",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19430501",
+          "medalName": "Pilots Badge",
+          "medalImage": "rus_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111126,
+      "squadronMemberRole": "PILOT"
+    },
+    "Valentin Dubolazov": {
+      "name": "Valentin Dubolazov",
+      "rank": "Leyitenant",
+      "picName": "Russian22.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 16,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19430501",
+          "medalName": "Pilots Badge",
+          "medalImage": "rus_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111126,
+      "squadronMemberRole": "PILOT"
+    },
+    "Russ Test": {
+      "name": "Russ Test",
+      "rank": "Serzhant",
+      "picName": "Russian46.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "PLAYER",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19430501",
+          "location": "Varenikovskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "MC.202 ser.VIII",
+            "squadronName": "21 Gruppo Caccia",
+            "pilot": "Nuccio Monti",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "P-39L-1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Russ Test",
+            "pilotStatus": -4,
+            "observer": "",
+            "observerStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19430501",
+          "medalName": "Pilots Badge",
+          "medalImage": "rus_pb.jpg"
+        },
+        {
+          "medalDate": "19430501",
+          "medalName": "Wound Stripe",
+          "medalImage": "WoundStripe.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": true,
+      "squadronId": 10111126,
+      "squadronMemberRole": "PILOT"
+    },
+    "Yan Tsigler": {
+      "name": "Yan Tsigler",
+      "rank": "Major",
+      "picName": "Russian08.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 58,
+      "aggressiveness": 0,
+      "aiSkillLevel": "ACE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19430323",
+          "location": "Gladkovskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "bf109g2",
+            "squadronName": "I./JG52",
+            "pilot": "Ltn Uwe Schau",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Yan Tsigler",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430326",
+          "location": "Anapskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "bf109g2",
+            "squadronName": "I./JG3",
+            "pilot": "Hpt Maximillian Landsteiner",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Yan Tsigler",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430329",
+          "location": "Varenikovskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "ju87d3",
+            "squadronName": "II./St.G.2",
+            "pilot": "Hpt Gustav Kresge",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Yan Tsigler",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430401",
+          "location": "Anapskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "ju88a4",
+            "squadronName": "I./KG76",
+            "pilot": "Obltn Frederich Thierse",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Yan Tsigler",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430404",
+          "location": "Gladkovskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "he111h16",
+            "squadronName": "I./KG27",
+            "pilot": "Fw Raimund Taubman",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Yan Tsigler",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430407",
+          "location": "Natuchaevskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilot": "Tnt Gentile Basile",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Yan Tsigler",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430410",
+          "location": "Varenikovskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "ju87d3",
+            "squadronName": "II./St.G.2",
+            "pilot": "Obltn Mario Quittner",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Yan Tsigler",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430413",
+          "location": "Gladkovskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "ju87d3",
+            "squadronName": "I./St.G.77",
+            "pilot": "Fw Wolfram Kielholz",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Yan Tsigler",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430416",
+          "location": "Natuchaevskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "bf109g4",
+            "squadronName": "II./JG51",
+            "pilot": "Fw Gotthold Berninger",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Yan Tsigler",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430419",
+          "location": "Gladkovskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilot": "STnt Nello Morelli",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Yan Tsigler",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430422",
+          "location": "Anapskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "bf109g4",
+            "squadronName": "II./JG52",
+            "pilot": "Obltn Volker Zuckermann",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Yan Tsigler",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430425",
+          "location": "Natuchaevskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "bf109g4",
+            "squadronName": "II./JG51",
+            "pilot": "Obltn Armin Baeumler",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Yan Tsigler",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430428",
+          "location": "Svistelnikovo",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "fw190a5",
+            "squadronName": "I./JG51",
+            "pilot": "Hpt Bernd Herzfeld",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Yan Tsigler",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19430501",
+          "medalName": "Pilots Badge",
+          "medalImage": "rus_pb.jpg"
+        },
+        {
+          "medalDate": "19430501",
+          "medalName": "Order of the Red Star",
+          "medalImage": "rus_ors.jpg"
+        },
+        {
+          "medalDate": "19430501",
+          "medalName": "Order of Glory",
+          "medalImage": "rus_og.jpg"
+        },
+        {
+          "medalDate": "19430501",
+          "medalName": "Order of the Patriotic War 2nd Class",
+          "medalImage": "rus_opw2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111126,
+      "squadronMemberRole": "PILOT"
+    },
+    "Artur Pugin": {
+      "name": "Artur Pugin",
+      "rank": "Leyitenant",
+      "picName": "Russian03.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 13,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19430501",
+          "location": "Gladkovskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "MC.202 ser.VIII",
+            "squadronName": "21 Gruppo Caccia",
+            "pilot": "Biagio Rossetti",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "P-39L-1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Artur Pugin",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19430501",
+          "medalName": "Pilots Badge",
+          "medalImage": "rus_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111126,
+      "squadronMemberRole": "PILOT"
+    },
+    "Iosif Batishchev": {
+      "name": "Iosif Batishchev",
+      "rank": "Starshyi leyitenant",
+      "picName": "Russian36.jpg",
+      "pilotActiveStatus": -5,
+      "country": "RUSSIA",
+      "missionFlown": 26,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19430419",
+          "location": "Natuchaevskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "bf109g4",
+            "squadronName": "II./JG51",
+            "pilot": "Fw Dirk Grottger",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Iosif Batishchev",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430422",
+          "location": "Varenikovskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "ju87d3",
+            "squadronName": "I./St.G.77",
+            "pilot": "Ltn Karlheinz Weiskopf",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Iosif Batishchev",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430425",
+          "location": "Natuchaevskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilot": "Tnt Duccio Colombo",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Iosif Batishchev",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        },
+        {
+          "date": "19430428",
+          "location": "Natuchaevskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "bf109g2",
+            "squadronName": "I./JG3",
+            "pilot": "Ltn Nils Leiningen",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Iosif Batishchev",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19430501",
+          "medalName": "Pilots Badge",
+          "medalImage": "rus_pb.jpg"
+        },
+        {
+          "medalDate": "19430501",
+          "medalName": "Order of the Red Star",
+          "medalImage": "rus_ors.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111126,
+      "squadronMemberRole": "PILOT"
+    },
+    "Kirill Pirogov": {
+      "name": "Kirill Pirogov",
+      "rank": "Leyitenant",
+      "picName": "Russian07.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 17,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19430501",
+          "medalName": "Pilots Badge",
+          "medalImage": "rus_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111126,
+      "squadronMemberRole": "PILOT"
+    },
+    "Artur Primakov": {
+      "name": "Artur Primakov",
+      "rank": "Starshyi leyitenant",
+      "picName": "Russian27.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 27,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19430501",
+          "location": "Gladkovskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "MC.202 ser.VIII",
+            "squadronName": "21 Gruppo Caccia",
+            "pilot": "Bernaba Rossetti",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "P-39L-1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Artur Primakov",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19430501",
+          "medalName": "Pilots Badge",
+          "medalImage": "rus_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111126,
+      "squadronMemberRole": "PILOT"
+    },
+    "Vasily Chaplin": {
+      "name": "Vasily Chaplin",
+      "rank": "Leyitenant",
+      "picName": "Russian12.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 20,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19430505",
+          "location": "Neberdjaevskaya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "ju87d3",
+            "squadronName": "I./St.G.77",
+            "pilot": "Fw Konrad Hoelscher",
+            "pilotStatus": -6,
+            "observer": "",
+            "observerStatus": 0
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "p39l1",
+            "squadronName": "16th Guards Fighter Air Regiment",
+            "pilot": "Vasily Chaplin",
+            "pilotStatus": 0,
+            "observer": "",
+            "observerStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19430501",
+          "medalName": "Pilots Badge",
+          "medalImage": "rus_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111126,
+      "squadronMemberRole": "PILOT"
+    },
+    "Eldar Khudovekov": {
+      "name": "Eldar Khudovekov",
+      "rank": "Leyitenant",
+      "picName": "Russian38.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 16,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19430501",
+          "medalName": "Pilots Badge",
+          "medalImage": "rus_pb.jpg"
+        },
+        {
+          "medalDate": "19430505",
+          "medalName": "Wound Stripe",
+          "medalImage": "WoundStripe.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111126,
+      "squadronMemberRole": "PILOT"
+    },
+    "Konstantin Golubov": {
+      "name": "Konstantin Golubov",
+      "rank": "Leyitenant",
+      "picName": "Russian08.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 18,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19430501",
+          "medalName": "Pilots Badge",
+          "medalImage": "rus_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111126,
+      "squadronMemberRole": "PILOT"
+    },
+    "Iosif Yozhov": {
+      "name": "Iosif Yozhov",
+      "rank": "Leyitenant",
+      "picName": "Russian02.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 16,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19430501",
+          "medalName": "Pilots Badge",
+          "medalImage": "rus_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111126,
+      "squadronMemberRole": "PILOT"
+    },
+    "Vadim Zykov": {
+      "name": "Vadim Zykov",
+      "rank": "Serzhant",
+      "picName": "Russian20.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 5,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19430520",
+          "medalName": "Pilots Badge",
+          "medalImage": "rus_pb.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111126,
+      "squadronMemberRole": "PILOT"
+    }
+  }
+}

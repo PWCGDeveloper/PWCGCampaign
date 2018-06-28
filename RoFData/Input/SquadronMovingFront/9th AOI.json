@@ -1,0 +1,9 @@
+{
+  "name": "9th AOI",
+  "squadronId": 105009,
+  "airfields": {
+    "19160601": "Stanko",
+    "19161201": "Koropets",
+    "19170501": "Moastyryyska"
+  }
+}

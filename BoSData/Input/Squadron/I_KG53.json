@@ -1,0 +1,77 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20131053,
+  "name": "I./KG53",
+  "fileName": "I_KG53.json",
+  "skill": 50,
+  "planeAssignments": [
+    {
+      "type": "he111h6",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19430403"
+    },
+    {
+      "type": "he111h16",
+      "squadronIntroduction": "19430201",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Vjazma",
+    "19411020": "Novoye Selo",
+    "19411110": "Varvarovka",
+    "19411120": "Varvarovka",
+    "19411215": "Gzhatsk",
+    "19420110": "Bolshoe Vergovo",
+    "19420301": "Morozovskiy West",
+    "19420601": "Semisotka",
+    "19420624": "Taman",
+    "19420709": "Krasnoarmeyskayas",
+    "19420721": "Taman",
+    "19420801": "Novo Sergievskiy",
+    "19420906": "Skvorin",
+    "19421011": "Berezovsky",
+    "19421123": "Frolov",
+    "19421223": "Frolov",
+    "19430120": "Frolov",
+    "19430301": "Kerch 2",
+    "19430330": "Kerch 2",
+    "19430418": "Kerch 2",
+    "19430918": "Bagerovo",
+    "19430927": "Bagerovo",
+    "19431004": "Bagerovo",
+    "19431008": "Zamorsk"
+  },
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19420301",
+        "squadName": "I./KG27",
+        "armedServiceName": "Luftwaffe",
+        "skill": 50
+      },
+      {
+        "date": "19430918",
+        "squadName": "I./KG4",
+        "armedServiceName": "Luftwaffe",
+        "skill": 40
+      }
+    ]
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 90
+          }
+        ]
+      }
+    ]
+  }
+}

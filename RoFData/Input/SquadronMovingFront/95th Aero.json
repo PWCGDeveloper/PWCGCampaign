@@ -1,0 +1,12 @@
+{
+  "name": "95th Aero",
+  "squadronId": 103095,
+  "airfields": {
+    "19180501": "Malzeville",
+    "19180602": "Toul",
+    "19180628": "Chalons sur Vesle",
+    "19180709": "Muizon",
+    "19180828": "Vadelaincourt",
+    "19181025": "Sivry"
+  }
+}

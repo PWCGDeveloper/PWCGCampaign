@@ -1,0 +1,746 @@
+{
+  "locationSetName": "Airfields",
+  "locations": [
+    {
+      "name": "Airfield64",
+      "position": {
+        "xPos": 20231.0,
+        "yPos": 0.0,
+        "zPos": 34308.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 200.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield01",
+      "position": {
+        "xPos": 8887.0,
+        "yPos": 0.0,
+        "zPos": 160308.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 45.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield65",
+      "position": {
+        "xPos": 41004.0,
+        "yPos": 0.0,
+        "zPos": 11367.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 100.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield02",
+      "position": {
+        "xPos": 15147.0,
+        "yPos": 0.0,
+        "zPos": 143756.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 5.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sodhovka",
+      "position": {
+        "xPos": 46978.0,
+        "yPos": 0.0,
+        "zPos": 42472.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 173.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield03",
+      "position": {
+        "xPos": 28813.0,
+        "yPos": 0.0,
+        "zPos": 125575.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 307.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Stanko",
+      "position": {
+        "xPos": 86012.0,
+        "yPos": 0.0,
+        "zPos": 80387.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 61.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield04",
+      "position": {
+        "xPos": 38225.0,
+        "yPos": 0.0,
+        "zPos": 155452.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 272.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Liporani",
+      "position": {
+        "xPos": 11529.0,
+        "yPos": 0.0,
+        "zPos": 98715.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield06",
+      "position": {
+        "xPos": 82080.0,
+        "yPos": 0.0,
+        "zPos": 162311.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 85.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield07",
+      "position": {
+        "xPos": 80746.0,
+        "yPos": 0.0,
+        "zPos": 136039.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 123.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield08",
+      "position": {
+        "xPos": 62828.0,
+        "yPos": 0.0,
+        "zPos": 120132.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 31.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Chernarisa",
+      "position": {
+        "xPos": 74964.0,
+        "yPos": 0.0,
+        "zPos": 98231.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 316.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Yaslovets",
+      "position": {
+        "xPos": 93352.0,
+        "yPos": 0.0,
+        "zPos": 100630.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 295.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield11",
+      "position": {
+        "xPos": 102108.0,
+        "yPos": 0.0,
+        "zPos": 114980.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 198.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield13",
+      "position": {
+        "xPos": 98756.0,
+        "yPos": 0.0,
+        "zPos": 120912.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 58.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield14",
+      "position": {
+        "xPos": 102152.0,
+        "yPos": 0.0,
+        "zPos": 145807.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 18.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield16",
+      "position": {
+        "xPos": 116363.0,
+        "yPos": 0.0,
+        "zPos": 143679.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 247.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield17",
+      "position": {
+        "xPos": 131693.0,
+        "yPos": 0.0,
+        "zPos": 171054.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 301.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield18",
+      "position": {
+        "xPos": 159385.0,
+        "yPos": 0.0,
+        "zPos": 148744.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 109.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield19",
+      "position": {
+        "xPos": 152142.0,
+        "yPos": 0.0,
+        "zPos": 131556.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 320.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield21",
+      "position": {
+        "xPos": 135397.0,
+        "yPos": 0.0,
+        "zPos": 130410.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 261.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield22",
+      "position": {
+        "xPos": 132093.0,
+        "yPos": 0.0,
+        "zPos": 124819.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 19.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Tarnopol",
+      "position": {
+        "xPos": 158470.0,
+        "yPos": 0.0,
+        "zPos": 114503.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 345.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kumki",
+      "position": {
+        "xPos": 165884.0,
+        "yPos": 0.0,
+        "zPos": 111167.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 294.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kozlov",
+      "position": {
+        "xPos": 155185.0,
+        "yPos": 0.0,
+        "zPos": 90218.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 296.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Bogutyn",
+      "position": {
+        "xPos": 169168.0,
+        "yPos": 0.0,
+        "zPos": 70201.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 43.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Burkanov",
+      "position": {
+        "xPos": 129572.0,
+        "yPos": 0.0,
+        "zPos": 96571.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 201.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Laskovry",
+      "position": {
+        "xPos": 120547.0,
+        "yPos": 0.0,
+        "zPos": 105047.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 269.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Perovoloka",
+      "position": {
+        "xPos": 109675.0,
+        "yPos": 0.0,
+        "zPos": 97007.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 346.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Moastyryyska",
+      "position": {
+        "xPos": 108942.0,
+        "yPos": 0.0,
+        "zPos": 81295.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 50.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Koropets",
+      "position": {
+        "xPos": 92815.0,
+        "yPos": 0.0,
+        "zPos": 82992.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 1.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Snovidov",
+      "position": {
+        "xPos": 85902.0,
+        "yPos": 0.0,
+        "zPos": 85941.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 340.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield36",
+      "position": {
+        "xPos": 78085.0,
+        "yPos": 0.0,
+        "zPos": 77079.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 181.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Grushka",
+      "position": {
+        "xPos": 76610.0,
+        "yPos": 0.0,
+        "zPos": 65237.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 183.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kraslyov",
+      "position": {
+        "xPos": 98459.0,
+        "yPos": 0.0,
+        "zPos": 68123.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 339.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Gosch",
+      "position": {
+        "xPos": 115319.0,
+        "yPos": 0.0,
+        "zPos": 50255.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 61.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kurgany",
+      "position": {
+        "xPos": 149919.0,
+        "yPos": 0.0,
+        "zPos": 55881.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 91.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Pukov",
+      "position": {
+        "xPos": 143225.0,
+        "yPos": 0.0,
+        "zPos": 41816.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 86.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ushkorilsa",
+      "position": {
+        "xPos": 168894.0,
+        "yPos": 0.0,
+        "zPos": 30074.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 153.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Khoromov",
+      "position": {
+        "xPos": 145516.0,
+        "yPos": 0.0,
+        "zPos": 15415.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 129.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Sivko",
+      "position": {
+        "xPos": 122816.0,
+        "yPos": 0.0,
+        "zPos": 40874.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 179.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Nogovyse",
+      "position": {
+        "xPos": 111318.0,
+        "yPos": 0.0,
+        "zPos": 21575.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 241.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Msovono",
+      "position": {
+        "xPos": 90850.0,
+        "yPos": 0.0,
+        "zPos": 51714.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 51.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Stanislau",
+      "position": {
+        "xPos": 86242.0,
+        "yPos": 0.0,
+        "zPos": 43302.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield50",
+      "position": {
+        "xPos": 73117.0,
+        "yPos": 0.0,
+        "zPos": 22804.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 18.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Grosd",
+      "position": {
+        "xPos": 63776.0,
+        "yPos": 0.0,
+        "zPos": 41026.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 53.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Lesnaya Slobcako",
+      "position": {
+        "xPos": 53539.0,
+        "yPos": 0.0,
+        "zPos": 62213.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 331.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kolomyya",
+      "position": {
+        "xPos": 47575.0,
+        "yPos": 0.0,
+        "zPos": 64995.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Tchuchaya",
+      "position": {
+        "xPos": 35704.0,
+        "yPos": 0.0,
+        "zPos": 51519.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 56.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Verbovesa",
+      "position": {
+        "xPos": 22551.0,
+        "yPos": 0.0,
+        "zPos": 77010.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 135.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Kutsy",
+      "position": {
+        "xPos": 13747.0,
+        "yPos": 0.0,
+        "zPos": 83566.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 359.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Grovskra",
+      "position": {
+        "xPos": 49551.0,
+        "yPos": 0.0,
+        "zPos": 92129.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 21.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Oberlin",
+      "position": {
+        "xPos": 62327.0,
+        "yPos": 0.0,
+        "zPos": 78313.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 62.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Voroshino",
+      "position": {
+        "xPos": 135159.0,
+        "yPos": 0.0,
+        "zPos": 76235.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 91.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Ryonski",
+      "position": {
+        "xPos": 139952.0,
+        "yPos": 0.0,
+        "zPos": 60467.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 186.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "name": "Airfield63",
+      "position": {
+        "xPos": 16487.0,
+        "yPos": 0.0,
+        "zPos": 19472.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 0.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

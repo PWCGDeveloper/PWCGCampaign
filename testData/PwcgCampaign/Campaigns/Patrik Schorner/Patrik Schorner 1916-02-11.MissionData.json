@@ -1,0 +1,166 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-02-11",
+    "squadron": "FA 293b",
+    "date": "19160211",
+    "time": "90:00",
+    "aircraftType": "AircraftType \u003d DFW C.",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Bellevue Ferm",
+    "duty": "BOMB",
+    "altitude": 3386
+  },
+  "missionDescription": "Mission:\nAircraft  DFW C.V\nSquadron  FA 293b\nAirbase  Bellevue Ferme\nDate  1916-02-11\n\nWeather Report\nMedium cloud cover, high altitude.\nCloud layer is 5979 meters.\nWind speed is 0 M/S.\nWind direction is 294.\n\nPrimary Objective\nAttack troop concentrations  near Baleycourt\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 293b",
+      "crew": {
+        "pilot": "Wolfram Tendler",
+        "observer": "Dietrich osterreich",
+        "pilotRank": "Kmdr",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 293b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "Herbert Klemm",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 293b",
+      "crew": {
+        "pilot": "Heinrich Haeberli",
+        "observer": "Theodor Huwyler",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 293b",
+      "crew": {
+        "pilot": "Lambrecht Tauber",
+        "observer": "Oskar Schulberg",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Randolf Wasen",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Oswald Hien",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 7",
+      "crew": {
+        "pilot": "Dirk Ross",
+        "observer": "",
+        "pilotRank": "Kmdr",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 7",
+      "crew": {
+        "pilot": "Berthold Altenau",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 19",
+      "crew": {
+        "pilot": "Carsten Stettin",
+        "observer": "Erik Rosenband",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 19",
+      "crew": {
+        "pilot": "Erik Schauerte",
+        "observer": "Sven Nesselmann",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 278s",
+      "crew": {
+        "pilot": "Otto Liebeneiner",
+        "observer": "Ingemar Gerstner",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 40",
+      "crew": {
+        "pilot": "Pierre Laborie",
+        "observer": "Geraud Ratoin",
+        "pilotRank": "S/Lt",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 45",
+      "crew": {
+        "pilot": "Fernand Labolle",
+        "observer": "Gilbert Dusaussoy",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 17",
+      "crew": {
+        "pilot": "Leonard Lezot",
+        "observer": "Christophe Rosas",
+        "pilotRank": "Cne",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 17",
+      "crew": {
+        "pilot": "Leo Labre",
+        "observer": "Cyprien Mayaud",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

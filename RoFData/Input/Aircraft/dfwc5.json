@@ -1,0 +1,21 @@
+{
+  "type": "dfwc5",
+  "side": "AXIS",
+  "displayName": "DFW C.V",
+  "script": "LuaScripts\\WorldObjects\\dfwc5.txt",
+  "model": "graphics\\planes\\dfwc5\\dfwc5.mgm",
+  "desc": "",
+  "cruisingSpeed": 140,
+  "climbOutRate": 130,
+  "goodness": 40,
+  "endurance": 3.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_RECON",
+    "ROLE_BOMB",
+    "ROLE_ARTILLERY_SPOT"
+  ],
+  "introduction": "19160901",
+  "withdrawal": "19181111"
+}

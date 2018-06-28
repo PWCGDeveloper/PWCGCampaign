@@ -1,0 +1,55 @@
+{
+  "skinSetType": "SKIN_CONFIGURED",
+  "skins": {
+    "gthg5_664": {
+      "skinName": "GTHG5_664",
+      "planeType": "gothag5",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "gthg5_991-16": {
+      "skinName": "GTHG5_991-16",
+      "planeType": "gothag5",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "gthg5_default_iii": {
+      "skinName": "GTHG5_DEFAULT_III",
+      "planeType": "gothag5",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -2,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "gthg5_erika_iii": {
+      "skinName": "GTHG5_ERIKA_III",
+      "planeType": "gothag5",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    },
+    "gthg5_kz_iii": {
+      "skinName": "GTHG5_KZ_III",
+      "planeType": "gothag5",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Configured",
+      "definedInGame": false
+    }
+  }
+}

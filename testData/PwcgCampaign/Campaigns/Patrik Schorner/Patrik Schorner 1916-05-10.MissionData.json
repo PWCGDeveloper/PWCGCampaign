@@ -1,0 +1,106 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-05-10",
+    "squadron": "Jasta 4",
+    "date": "19160510",
+    "time": "1430:00",
+    "aircraftType": "AircraftType \u003d Fokker E.II",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Bonneuil Ferm",
+    "duty": "PATROL",
+    "altitude": 2764
+  },
+  "missionDescription": "Mission:\nAircraft  Fokker E.III\nSquadron  Jasta 4\nAirbase  Bonneuil Ferme\nDate  1916-05-10\n\nWeather Report\nLight cloud cover, high altitude.\nCloud layer is 4883 meters.\nWind speed is 2 M/S.\nWind direction is 141.\n\nPrimary Objective\nPatrol airspace  near Noyon.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Harald Bronstein",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Ralf Schulz",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Gunther Huwyler",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Johann Paasche",
+        "observer": "Augustus Storch",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 44",
+      "crew": {
+        "pilot": "Jakob Basinger",
+        "observer": "Ralf MacNicol",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dh2",
+      "squadronName": "No 24 Squadron RFC",
+      "crew": {
+        "pilot": "Michael Ellis",
+        "observer": "",
+        "pilotRank": "Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dh2",
+      "squadronName": "No 24 Squadron RFC",
+      "crew": {
+        "pilot": "Andrew Allard",
+        "observer": "",
+        "pilotRank": "2nd Lt",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "No 27 Squadron RFC",
+      "crew": {
+        "pilot": "Quinby Merden",
+        "observer": "Davin Allard",
+        "pilotRank": "Lt",
+        "observerRank": "Lt"
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "No 24 Squadron RFC",
+  "squadronId": 102024,
+  "airfields": {
+    "19160210": "Baizieux 2",
+    "19170417": "Villers Bretonneux",
+    "19170710": "Baizieux 2",
+    "19170923": "La Lovie",
+    "19171124": "Marieux",
+    "19171230": "Lealvillers",
+    "19180322": "Moreuil",
+    "19180326": "Baizieux 2",
+    "19180328": "Mazingarbe",
+    "19180814": "Petit Camon",
+    "19180925": "Cachy-Bois I_Abbe",
+    "19181005": "Foucaucourt en Santerre",
+    "19181025": "Bernes",
+    "19181105": "Ronssoy,SE Epehy",
+    "19181110": "Fontaine-Uterte"
+  }
+}

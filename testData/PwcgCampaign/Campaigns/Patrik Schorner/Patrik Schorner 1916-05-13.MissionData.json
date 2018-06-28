@@ -1,0 +1,116 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-05-13",
+    "squadron": "Jasta 4",
+    "date": "19160513",
+    "time": "12:30:00",
+    "aircraftType": "AircraftType \u003d Fokker E.II",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Bonneuil Ferm",
+    "duty": "PATROL",
+    "altitude": 3383
+  },
+  "missionDescription": "Mission:\nAircraft  Fokker E.III\nSquadron  Jasta 4\nAirbase  Bonneuil Ferme\nDate  1916-05-13\n\nWeather Report\nMedium cloud cover, high altitude.\nCloud layer is 4205 meters.\nWind speed is 1 M/S.\nWind direction is 359.\n\nPrimary Objective\nPatrol airspace  near Noyon.  Engage any enemy aircraft that you encounter.\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Florian Lasch",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Mario Falck",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 4",
+      "crew": {
+        "pilot": "Gunther Huwyler",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Ferdinand Baum",
+        "observer": "Egon Bronner",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Harald Opitz",
+        "observer": "Emil Bodenheimer",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Otto Waldmann",
+        "observer": "Heiner Neumann",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 276",
+      "crew": {
+        "pilot": "Wolfgang Hardenburg",
+        "observer": "Eberhardt Habermann",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 64",
+      "crew": {
+        "pilot": "Antonin Mitteau",
+        "observer": "Arthur Marie",
+        "pilotRank": "S/Lt",
+        "observerRank": "S/Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 64",
+      "crew": {
+        "pilot": "Blaise Ollier",
+        "observer": "Florentin Labriffe",
+        "pilotRank": "S/Lt",
+        "observerRank": "Lt"
+      }
+    }
+  ]
+}

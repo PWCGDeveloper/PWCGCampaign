@@ -1,0 +1,366 @@
+{
+  "squadrons": [
+    {
+      "squadron": -1,
+      "date": "19150801"
+    },
+    {
+      "squadron": 102084,
+      "date": "19180605"
+    },
+    {
+      "squadron": 103017,
+      "date": "19180922"
+    },
+    {
+      "squadron": -6,
+      "date": "19181201"
+    }
+  ],
+  "ranks": [
+    {
+      "rank": 2,
+      "date": "19150101"
+    }
+  ],
+  "name": "George Vaughn",
+  "rank": "",
+  "picName": "",
+  "pilotActiveStatus": 0,
+  "country": "USA",
+  "missionFlown": 0,
+  "aggressiveness": 0,
+  "aiSkillLevel": "ACE",
+  "skill": 4,
+  "commonSense": 0,
+  "skins": [
+    {
+      "skinName": "SC_VAUGHN",
+      "planeType": "sopcamel",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "",
+      "category": "Ace",
+      "definedInGame": false
+    }
+  ],
+  "victories": [
+    {
+      "date": "19180616",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Pfalz D.III",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180724",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Fokker D.VII",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180728",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Rumpler C",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180729",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Rumpler C",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180822",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Rumpler C",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180823",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Balloon",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180823",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Rumpler C",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180922",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Fokker D.VII",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180922",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Fokker D.VII",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19180928",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "LVG C",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19181002",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "DFW C",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19181014",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Halberstadt C",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    },
+    {
+      "date": "19181014",
+      "location": "",
+      "crashedInSight": false,
+      "victim": {
+        "airOrGround": 1,
+        "type": "Fokker D.VII",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      },
+      "victor": {
+        "airOrGround": 3,
+        "type": "",
+        "squadron": "",
+        "pilot": 0,
+        "pilotStatus": 0,
+        "observer": 0,
+        "observerStatus": 0
+      }
+    }
+  ],
+  "groundVictories": [],
+  "medals": [
+    {
+      "medalDate": "19180729",
+      "medalName": "Distinguished Flying Cross",
+      "medalImage": ""
+    },
+    {
+      "medalDate": "19180928",
+      "medalName": "Distinguished Service Cross",
+      "medalImage": ""
+    }
+  ],
+  "playerRegion": "",
+  "isPlayer": false,
+  "squadronId": -1,
+  "squadronMemberRole": "PILOT"
+}

@@ -1,0 +1,142 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-05-10";
+    Squadron = "Jasta 4";
+    Map = "France";
+    Date = "19160510";
+    Time = "1430:00";
+    Duty = "PATROL";
+    AircraftType = Fokker E.III;
+    Altitude = 2764;
+    Airfield = Bonneuil Ferme;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Fokker E.III
+Squadron  Jasta 4
+Airbase  Bonneuil Ferme
+Date  1916-05-10
+
+Weather Report 
+    Light cloud cover, high altitude.
+    Cloud layer is 4883 meters.
+    Wind speed is 2 M/S.
+    Wind direction is 141.
+
+Primary Objective 
+    Patrol airspace  near Noyon.  Engage any enemy aircraft that you encounter.
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Harald Bronstein";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Ralf Schulz";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Gunther Huwyler";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Johann Paasche";
+            ObserverRank = "Ltn";
+            Observer = "Augustus Storch";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Jakob Basinger";
+            ObserverRank = "Ltn";
+            Observer = "Ralf MacNicol";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dh2";
+        Squadron = "No 24 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Michael Ellis";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dh2";
+        Squadron = "No 24 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Andrew Allard";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 27 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Quinby Merden";
+            ObserverRank = "Lt";
+            Observer = "Davin Allard";
+        }
+    }
+}

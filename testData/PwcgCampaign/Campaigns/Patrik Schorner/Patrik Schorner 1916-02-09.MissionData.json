@@ -1,0 +1,96 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-02-09",
+    "squadron": "FA 293b",
+    "date": "19160209",
+    "time": "90:00",
+    "aircraftType": "AircraftType \u003d DFW C.",
+    "mapName": "France",
+    "airfield": "Airfield \u003d Bellevue Ferm",
+    "duty": "ARTILLERY_SPOT",
+    "altitude": 800
+  },
+  "missionDescription": "Mission:\nAircraft  DFW C.V\nSquadron  FA 293b\nAirbase  Bellevue Ferme\nDate  1916-02-09\n\nWeather Report\nLight cloud cover, high altitude.\nCloud layer is 3512 meters.\nWind speed is 0 M/S.\nWind direction is 276.\n\nPrimary Objective\nSpot artillery against the artillery battery  near Dieue\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 293b",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "Herbert Klemm",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 293b",
+      "crew": {
+        "pilot": "Heiner Waldbrunn",
+        "observer": "Simon Gans",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Karl Scheck",
+        "observer": "",
+        "pilotRank": "Ltn",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "fokkere3",
+      "squadronName": "Jasta 16b",
+      "crew": {
+        "pilot": "Oskar Weinblatt",
+        "observer": "",
+        "pilotRank": "Fw",
+        "observerRank": ""
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 19",
+      "crew": {
+        "pilot": "Manfred Fried",
+        "observer": "Vinzenz Lachs",
+        "pilotRank": "Obltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 278s",
+      "crew": {
+        "pilot": "Ulrich Zipf",
+        "observer": "Lothar Rutter",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FA 278s",
+      "crew": {
+        "pilot": "Heinrich Gressmann",
+        "observer": "Oswald Zeilberger",
+        "pilotRank": "Fw",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "Esc 20",
+      "crew": {
+        "pilot": "Charles-Henri Vallat",
+        "observer": "Hippolyte Marie",
+        "pilotRank": "Cne",
+        "observerRank": "S/Lt"
+      }
+    }
+  ]
+}

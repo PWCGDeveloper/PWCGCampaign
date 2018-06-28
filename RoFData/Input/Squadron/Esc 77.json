@@ -1,0 +1,96 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101077,
+  "name": "Esc 77",
+  "skill": 85,
+  "planeAssignments": [
+    {
+      "type": "nieuport11",
+      "squadronIntroduction": "19161004",
+      "squadronWithdrawal": "19170801"
+    },
+    {
+      "type": "nieuport17",
+      "squadronIntroduction": "19160930",
+      "squadronWithdrawal": "19170425"
+    },
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19170401",
+      "squadronWithdrawal": "19180301"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19180201",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19161004": "Toul",
+    "19170310": "Brabant en Argonne",
+    "19170515": "Mont Soissons Ferme",
+    "19170921": "Grivesnes",
+    "19180120": "Rosnay",
+    "19180322": "Ravenel",
+    "19180608": "Ferme de Corbeaulieu",
+    "19180806": "Froides",
+    "19181019": "Auve"
+  },
+  "skins": [
+    {
+      "skinName": "N17_PW_F77_DFT",
+      "planeType": "nieuport17",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101077,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC77_APR1917",
+      "planeType": "spad7",
+      "startDate": "19140801",
+      "endDate": "19171231",
+      "squadId": 101077,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC77_JAN1918",
+      "planeType": "spad7",
+      "startDate": "19180101",
+      "endDate": "19181201",
+      "squadId": 101077,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "101077",
+      "planeType": "spad13",
+      "startDate": "19170101",
+      "endDate": "19181201",
+      "squadId": 101077,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

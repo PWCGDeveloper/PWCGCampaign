@@ -1,0 +1,106 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-05-16";
+    Squadron = "Jasta 4";
+    Map = "France";
+    Date = "19160516";
+    Time = "11:0:00";
+    Duty = "SCRAMBLE";
+    AircraftType = Fokker E.III;
+    Altitude = 2000;
+    Airfield = Bonneuil Ferme;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Fokker E.III
+Squadron  Jasta 4
+Airbase  Bonneuil Ferme
+Date  1916-05-16
+
+Weather Report 
+    Light cloud cover, high altitude.
+    Cloud layer is 3422 meters.
+    Wind speed is 1 M/S.
+    Wind direction is 339.
+
+Primary Objective 
+    Incoming enemy aircraft are near our airbase.  Get airborne and destroy them!
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Lambrecht Steinberg";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Fritz Bernert";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 4";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Florian Lasch";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 19";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Augustin Laffite";
+            ObserverRank = "S/Lt";
+            Observer = "Etienne Labesse";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 19";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Etienne Tavel";
+            ObserverRank = "S/Lt";
+            Observer = "Augustin Tournaire";
+        }
+    }
+}

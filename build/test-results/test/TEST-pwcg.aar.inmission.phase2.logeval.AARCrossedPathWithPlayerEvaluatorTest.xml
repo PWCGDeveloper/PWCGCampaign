@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pwcg.aar.inmission.phase2.logeval.AARCrossedPathWithPlayerEvaluatorTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:10" hostname="DigitalStorm-PC" time="1.465">
+  <properties/>
+  <testcase name="testCrossedPathFail" classname="pwcg.aar.inmission.phase2.logeval.AARCrossedPathWithPlayerEvaluatorTest" time="0.243"/>
+  <testcase name="testCrossedPathPlayerDamagedVictim" classname="pwcg.aar.inmission.phase2.logeval.AARCrossedPathWithPlayerEvaluatorTest" time="0.243"/>
+  <testcase name="testCrossedPathPlayerFlightWaypoint" classname="pwcg.aar.inmission.phase2.logeval.AARCrossedPathWithPlayerEvaluatorTest" time="0.25"/>
+  <testcase name="testCrossedPathVictorDamagedPlayer" classname="pwcg.aar.inmission.phase2.logeval.AARCrossedPathWithPlayerEvaluatorTest" time="0.243"/>
+  <testcase name="testCrossedPathFailBecauseOfMissingEntity" classname="pwcg.aar.inmission.phase2.logeval.AARCrossedPathWithPlayerEvaluatorTest" time="0.243"/>
+  <testcase name="testCrossedPathPlayerFlightWaypointFailedNotCloseEnough" classname="pwcg.aar.inmission.phase2.logeval.AARCrossedPathWithPlayerEvaluatorTest" time="0.242"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

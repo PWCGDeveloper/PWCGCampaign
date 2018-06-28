@@ -1,0 +1,15 @@
+{
+  "name": "No 12 Squadron RFC",
+  "squadronId": 102012,
+  "airfields": {
+    "19150906": "St. Marie Cappel",
+    "19160101": "Abeele (West)",
+    "19170509": "Savy Berlette",
+    "19170707": "Auchel",
+    "19171216": "Merville",
+    "19180322": "Soncamp Farm",
+    "19180326": "Mont St. Eloi",
+    "19181025": "Riencourt,Arras",
+    "19181105": "Pronville,nr Queant"
+  }
+}

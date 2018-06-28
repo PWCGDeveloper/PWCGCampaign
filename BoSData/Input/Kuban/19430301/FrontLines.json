@@ -1,0 +1,2645 @@
+{
+  "locationSetName": "FrontLines",
+  "locations": [
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 199681.0,
+        "yPos": 0.0,
+        "zPos": 224610.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 3.1486227963690725,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 200761.0,
+        "yPos": 0.0,
+        "zPos": 227350.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 33.197794990920016,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 200131.0,
+        "yPos": 0.0,
+        "zPos": 231062.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 27.227748831806917,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 199771.0,
+        "yPos": 0.0,
+        "zPos": 234598.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 27.041575605754282,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 198961.0,
+        "yPos": 0.0,
+        "zPos": 237780.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 46.04162667600997,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 197610.0,
+        "yPos": 0.0,
+        "zPos": 242731.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 17.21090951847852,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 196440.0,
+        "yPos": 0.0,
+        "zPos": 246443.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 30.88227794718965,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 194909.0,
+        "yPos": 0.0,
+        "zPos": 250332.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 10.69204689345739,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 193919.0,
+        "yPos": 0.0,
+        "zPos": 253338.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 22.802492343897708,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 192479.0,
+        "yPos": 0.0,
+        "zPos": 256697.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 35.53220280111545,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 191218.0,
+        "yPos": 0.0,
+        "zPos": 259614.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 48.66218529997243,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 189058.0,
+        "yPos": 0.0,
+        "zPos": 264034.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 38.14372855369144,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 187707.0,
+        "yPos": 0.0,
+        "zPos": 267835.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 18.757408234732154,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 186357.0,
+        "yPos": 0.0,
+        "zPos": 271724.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 13.342034339545267,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 185276.0,
+        "yPos": 0.0,
+        "zPos": 276144.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 23.35507728542536,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 183296.0,
+        "yPos": 0.0,
+        "zPos": 279237.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 19.482647773984827,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 182576.0,
+        "yPos": 0.0,
+        "zPos": 281712.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 48.899375404991815,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 180865.0,
+        "yPos": 0.0,
+        "zPos": 285513.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 29.807658658607462,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 179515.0,
+        "yPos": 0.0,
+        "zPos": 288254.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 36.377836489560465,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 178524.0,
+        "yPos": 0.0,
+        "zPos": 291436.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 49.915585943184894,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 177444.0,
+        "yPos": 0.0,
+        "zPos": 295148.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 46.968200573659075,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 175373.0,
+        "yPos": 0.0,
+        "zPos": 300010.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 11.872621315738325,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 174833.0,
+        "yPos": 0.0,
+        "zPos": 303192.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 7.721095363946734,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 174203.0,
+        "yPos": 0.0,
+        "zPos": 305933.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 15.35199293267271,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 172943.0,
+        "yPos": 0.0,
+        "zPos": 309645.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 2.2397600262464423,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 172763.0,
+        "yPos": 0.0,
+        "zPos": 312827.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 5.797520102115339,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 171322.0,
+        "yPos": 0.0,
+        "zPos": 316628.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 25.236661607036428,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 169612.0,
+        "yPos": 0.0,
+        "zPos": 321048.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 6.994390688613008,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 168081.0,
+        "yPos": 0.0,
+        "zPos": 324495.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 22.014020758753087,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 166551.0,
+        "yPos": 0.0,
+        "zPos": 327501.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 54.689568520454,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 164660.0,
+        "yPos": 0.0,
+        "zPos": 331832.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 18.77934953969071,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 163850.0,
+        "yPos": 0.0,
+        "zPos": 336163.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 29.174097564060656,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 164030.0,
+        "yPos": 0.0,
+        "zPos": 339699.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 22.098510719407134,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 164840.0,
+        "yPos": 0.0,
+        "zPos": 343235.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 167091.0,
+        "yPos": 0.0,
+        "zPos": 346417.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 170242.0,
+        "yPos": 0.0,
+        "zPos": 348362.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 174203.0,
+        "yPos": 0.0,
+        "zPos": 349511.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 177624.0,
+        "yPos": 0.0,
+        "zPos": 350130.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 181315.0,
+        "yPos": 0.0,
+        "zPos": 351898.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 184826.0,
+        "yPos": 0.0,
+        "zPos": 353842.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 187257.0,
+        "yPos": 0.0,
+        "zPos": 356229.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 343.7615452387468,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 188607.0,
+        "yPos": 0.0,
+        "zPos": 357997.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 190858.0,
+        "yPos": 0.0,
+        "zPos": 359941.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 193829.0,
+        "yPos": 0.0,
+        "zPos": 360825.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 195990.0,
+        "yPos": 0.0,
+        "zPos": 360472.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 253.59440720406974,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 198871.0,
+        "yPos": 0.0,
+        "zPos": 359853.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 235.0926529960954,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 201841.0,
+        "yPos": 0.0,
+        "zPos": 358616.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 222.7966694493993,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 205353.0,
+        "yPos": 0.0,
+        "zPos": 358262.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 209404.0,
+        "yPos": 0.0,
+        "zPos": 357555.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 212555.0,
+        "yPos": 0.0,
+        "zPos": 356759.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 227.50516121616187,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 215886.0,
+        "yPos": 0.0,
+        "zPos": 354991.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 204.38696495549846,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 218767.0,
+        "yPos": 0.0,
+        "zPos": 353842.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 227.07249031767995,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 221377.0,
+        "yPos": 0.0,
+        "zPos": 351190.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 217.37208484167226,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 222998.0,
+        "yPos": 0.0,
+        "zPos": 348892.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 217.77516127654684,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 224798.0,
+        "yPos": 0.0,
+        "zPos": 346064.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 205.0666610660642,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 226419.0,
+        "yPos": 0.0,
+        "zPos": 344119.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 228.66218529997244,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 228670.0,
+        "yPos": 0.0,
+        "zPos": 341113.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 200.79638599306307,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 230830.0,
+        "yPos": 0.0,
+        "zPos": 338992.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 244.69862137458028,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 233081.0,
+        "yPos": 0.0,
+        "zPos": 337313.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 294.6875912320237,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 236592.0,
+        "yPos": 0.0,
+        "zPos": 336429.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 219.52149535917928,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 241274.0,
+        "yPos": 0.0,
+        "zPos": 335279.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 243254.0,
+        "yPos": 0.0,
+        "zPos": 334572.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 255.7577469504653,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 246585.0,
+        "yPos": 0.0,
+        "zPos": 333335.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 216.62531502345306,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 250456.0,
+        "yPos": 0.0,
+        "zPos": 332186.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 211.4318839258413,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 254598.0,
+        "yPos": 0.0,
+        "zPos": 332009.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 257659.0,
+        "yPos": 0.0,
+        "zPos": 331567.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 234.0954472413194,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 262430.0,
+        "yPos": 0.0,
+        "zPos": 330595.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 267472.0,
+        "yPos": 0.0,
+        "zPos": 330506.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 270983.0,
+        "yPos": 0.0,
+        "zPos": 330064.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 226.99393970213015,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 274134.0,
+        "yPos": 0.0,
+        "zPos": 329445.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 230.1642035238297,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 277465.0,
+        "yPos": 0.0,
+        "zPos": 329357.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 281336.0,
+        "yPos": 0.0,
+        "zPos": 328561.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 217.23661403273644,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 284577.0,
+        "yPos": 0.0,
+        "zPos": 328827.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 287818.0,
+        "yPos": 0.0,
+        "zPos": 329799.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 291059.0,
+        "yPos": 0.0,
+        "zPos": 331567.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 293850.0,
+        "yPos": 0.0,
+        "zPos": 333423.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 297541.0,
+        "yPos": 0.0,
+        "zPos": 334484.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 300062.0,
+        "yPos": 0.0,
+        "zPos": 335545.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 303213.0,
+        "yPos": 0.0,
+        "zPos": 336163.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 306364.0,
+        "yPos": 0.0,
+        "zPos": 336252.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 310325.0,
+        "yPos": 0.0,
+        "zPos": 336252.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 313566.0,
+        "yPos": 0.0,
+        "zPos": 336959.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 300.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 316987.0,
+        "yPos": 0.0,
+        "zPos": 337931.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 241.71602719534445,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 201181.0,
+        "yPos": 0.0,
+        "zPos": 222011.92378864667
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 119.99999999999989,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 202261.0,
+        "yPos": 0.0,
+        "zPos": 224751.92378864667
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 183.14862279636907,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 202922.0,
+        "yPos": 0.0,
+        "zPos": 228764.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 213.19779499092002,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 202022.0,
+        "yPos": 0.0,
+        "zPos": 232035.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 207.2277488318069,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 202022.0,
+        "yPos": 0.0,
+        "zPos": 235747.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 207.04157560575428,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 200581.0,
+        "yPos": 0.0,
+        "zPos": 239460.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 226.04162667600997,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 199321.0,
+        "yPos": 0.0,
+        "zPos": 243261.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 197.21090951847853,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 198510.0,
+        "yPos": 0.0,
+        "zPos": 247681.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 210.88227794718966,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 197250.0,
+        "yPos": 0.0,
+        "zPos": 250774.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 190.6920468934574,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 195810.0,
+        "yPos": 0.0,
+        "zPos": 254133.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 202.8024923438977,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 194459.0,
+        "yPos": 0.0,
+        "zPos": 258111.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 215.53220280111546,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 192929.0,
+        "yPos": 0.0,
+        "zPos": 261559.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 228.66218529997244,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 191308.0,
+        "yPos": 0.0,
+        "zPos": 265801.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 218.14372855369143,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 190048.0,
+        "yPos": 0.0,
+        "zPos": 268630.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 198.75740823473217,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 188967.0,
+        "yPos": 0.0,
+        "zPos": 272343.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 193.34203433954528,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 187527.0,
+        "yPos": 0.0,
+        "zPos": 277116.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 203.35507728542535,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 185546.0,
+        "yPos": 0.0,
+        "zPos": 280033.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 199.48264777398484,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 184196.0,
+        "yPos": 0.0,
+        "zPos": 283569.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 228.89937540499182,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 183026.0,
+        "yPos": 0.0,
+        "zPos": 286751.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 209.80765865860747,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 181315.0,
+        "yPos": 0.0,
+        "zPos": 289580.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 216.37783648956048,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 180235.0,
+        "yPos": 0.0,
+        "zPos": 293469.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 229.9155859431849,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 179425.0,
+        "yPos": 0.0,
+        "zPos": 297270.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 226.9682005736591,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 177894.0,
+        "yPos": 0.0,
+        "zPos": 300540.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 191.87262131573831,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 177444.0,
+        "yPos": 0.0,
+        "zPos": 303546.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 187.72109536394674,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 176454.0,
+        "yPos": 0.0,
+        "zPos": 306551.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 195.35199293267272,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 175193.0,
+        "yPos": 0.0,
+        "zPos": 309733.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 182.23976002624644,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 175373.0,
+        "yPos": 0.0,
+        "zPos": 313092.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 185.79752010211533,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 173573.0,
+        "yPos": 0.0,
+        "zPos": 317689.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 205.23666160703644,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 171772.0,
+        "yPos": 0.0,
+        "zPos": 321313.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 186.994390688613,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 169612.0,
+        "yPos": 0.0,
+        "zPos": 325114.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 202.01402075875308,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 167991.0,
+        "yPos": 0.0,
+        "zPos": 329534.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 234.689568520454,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 167001.0,
+        "yPos": 0.0,
+        "zPos": 332628.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 198.7793495396907,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 165530.0,
+        "yPos": 0.0,
+        "zPos": 337100.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 209.17409756406065,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 166340.0,
+        "yPos": 0.0,
+        "zPos": 340636.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 202.09851071940713,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 168591.0,
+        "yPos": 0.0,
+        "zPos": 343818.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 171742.0,
+        "yPos": 0.0,
+        "zPos": 345763.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 175703.0,
+        "yPos": 0.0,
+        "zPos": 346912.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 179124.0,
+        "yPos": 0.0,
+        "zPos": 347531.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 182815.0,
+        "yPos": 0.0,
+        "zPos": 349299.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 186326.0,
+        "yPos": 0.0,
+        "zPos": 351243.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 188757.0,
+        "yPos": 0.0,
+        "zPos": 353630.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 190107.0,
+        "yPos": 0.0,
+        "zPos": 355398.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 163.76154523874683,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 192358.0,
+        "yPos": 0.0,
+        "zPos": 357342.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 195329.0,
+        "yPos": 0.0,
+        "zPos": 358226.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 73.59440720406973,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 197490.0,
+        "yPos": 0.0,
+        "zPos": 357873.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 55.092652996095424,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 200371.0,
+        "yPos": 0.0,
+        "zPos": 357254.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 42.79666944939931,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 203341.0,
+        "yPos": 0.0,
+        "zPos": 356017.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 206853.0,
+        "yPos": 0.0,
+        "zPos": 355663.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 210904.0,
+        "yPos": 0.0,
+        "zPos": 354956.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 47.505161216161866,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 214055.0,
+        "yPos": 0.0,
+        "zPos": 354160.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 24.38696495549846,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 216876.0,
+        "yPos": 0.0,
+        "zPos": 351809.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 47.07249031767994,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 218947.0,
+        "yPos": 0.0,
+        "zPos": 349334.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 37.372084841672255,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 221287.0,
+        "yPos": 0.0,
+        "zPos": 347566.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 37.775161276546825,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 222908.0,
+        "yPos": 0.0,
+        "zPos": 345180.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 25.066661066064206,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 224708.0,
+        "yPos": 0.0,
+        "zPos": 342174.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 48.66218529997243,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 225879.0,
+        "yPos": 0.0,
+        "zPos": 340053.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 20.796385993063076,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 227949.0,
+        "yPos": 0.0,
+        "zPos": 338020.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 18.643512881748276,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 229660.0,
+        "yPos": 0.0,
+        "zPos": 336517.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 64.69862137458027,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 234341.0,
+        "yPos": 0.0,
+        "zPos": 334572.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 39.52149535917929,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 238092.0,
+        "yPos": 0.0,
+        "zPos": 333830.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 242774.0,
+        "yPos": 0.0,
+        "zPos": 332680.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 75.7577469504653,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 244754.0,
+        "yPos": 0.0,
+        "zPos": 331973.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 36.625315023453055,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 248085.0,
+        "yPos": 0.0,
+        "zPos": 330736.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 31.43188392584131,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 251956.0,
+        "yPos": 0.0,
+        "zPos": 329587.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 256098.0,
+        "yPos": 0.0,
+        "zPos": 329410.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 54.09544724131938,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 259159.0,
+        "yPos": 0.0,
+        "zPos": 328968.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 263930.0,
+        "yPos": 0.0,
+        "zPos": 327996.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 268972.0,
+        "yPos": 0.0,
+        "zPos": 327907.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 46.993939702130135,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 272483.0,
+        "yPos": 0.0,
+        "zPos": 327465.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 50.16420352382973,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 275634.0,
+        "yPos": 0.0,
+        "zPos": 326846.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 278965.0,
+        "yPos": 0.0,
+        "zPos": 326758.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 37.236614032736455,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 282836.0,
+        "yPos": 0.0,
+        "zPos": 325962.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 286077.0,
+        "yPos": 0.0,
+        "zPos": 326228.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 289318.0,
+        "yPos": 0.0,
+        "zPos": 327200.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 292559.0,
+        "yPos": 0.0,
+        "zPos": 328968.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 295350.0,
+        "yPos": 0.0,
+        "zPos": 330824.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 299041.0,
+        "yPos": 0.0,
+        "zPos": 331885.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 301562.0,
+        "yPos": 0.0,
+        "zPos": 332946.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 304713.0,
+        "yPos": 0.0,
+        "zPos": 333564.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 307864.0,
+        "yPos": 0.0,
+        "zPos": 333653.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 311825.0,
+        "yPos": 0.0,
+        "zPos": 333653.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "GERMANY"
+      },
+      "name": "AxisFrontLine",
+      "position": {
+        "xPos": 315066.0,
+        "yPos": 0.0,
+        "zPos": 334360.9237886467
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 120.00000000000017,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

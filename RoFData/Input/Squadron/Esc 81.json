@@ -1,0 +1,107 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101081,
+  "name": "Esc 81",
+  "skill": 30,
+  "planeAssignments": [
+    {
+      "type": "nieuport17",
+      "squadronIntroduction": "19161226",
+      "squadronWithdrawal": "19170516"
+    },
+    {
+      "type": "spad7early",
+      "squadronIntroduction": "19170415",
+      "squadronWithdrawal": "19170715"
+    },
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19170615",
+      "squadronWithdrawal": "19180216"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19180115",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19170105": "Ferme de Corbeaulieu",
+    "19170122": "La Noblette",
+    "19170314": "Beauze sur Aire",
+    "19170418": "Muizon",
+    "19170516": "Lemmes",
+    "19170913": "La Cheppe",
+    "19180108": "Vauxcere",
+    "19180215": "Baizieux 2",
+    "19180315": "Grivesnes",
+    "19180323": "Grivesnes",
+    "19180408": "Arcy-Ste Restitue",
+    "19180429": "La Cheppe",
+    "19180528": "Giromancy",
+    "19180615": "Auve",
+    "19180622": "Ferme d_Alger",
+    "19180706": "Ravenel",
+    "19180819": "Grivesnes",
+    "19180901": "Malzeville",
+    "19180924": "La Cheppe",
+    "19181010": "La Mellette"
+  },
+  "skins": [
+    {
+      "skinName": "N17_PW_F81_DFT",
+      "planeType": "nieuport17",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101081,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC81_APR1917",
+      "planeType": "spad7",
+      "startDate": "19140801",
+      "endDate": "19180221",
+      "squadId": 101081,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC81_JAN1918",
+      "planeType": "spad7",
+      "startDate": "19180221",
+      "endDate": "19181201",
+      "squadId": 101081,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S13_101081_ANS",
+      "planeType": "spad13",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101081,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

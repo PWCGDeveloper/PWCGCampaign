@@ -1,0 +1,52 @@
+{
+  "missionHeader": {
+    "missionFileName": "German Test 1941-11-08",
+    "squadron": "II./JG51",
+    "date": "19411108",
+    "time": "8.11.1941",
+    "aircraftType": "Bf 109 F-2",
+    "mapName": "Moscow",
+    "airfield": "Kolodezi",
+    "duty": "INTERCEPT",
+    "altitude": 5634
+  },
+  "missionDescription": "Mission: \nAircraft  Bf 109 F-2\nSquadron  II./JG51\nAirbase  Kolodezi\nDate  8.11.1941\n\nWeather Report \n    Light cloud cover, medium altitude.\n    Cloud layer is 2082 meters.\n    Wind speed is 2 M/S.\n    Wind direction is 187.\n\nPrimary Objective \n    Intercept enemy aircraft near Kostino.\n\n",
+  "missionPlanes": {
+    "3000236": {
+      "aircraftType": "bf109f4",
+      "squadronId": 20112051,
+      "pilotSerialNumber": 3000236,
+      "pilotName": "Martin Brauer"
+    },
+    "3000233": {
+      "aircraftType": "bf109f4",
+      "squadronId": 20112051,
+      "pilotSerialNumber": 3000233,
+      "pilotName": "Timm Notnagel"
+    },
+    "3000185": {
+      "aircraftType": "pe2s35",
+      "squadronId": 10131321,
+      "pilotSerialNumber": 3000185,
+      "pilotName": "Konstantin Zhigunov"
+    },
+    "3000229": {
+      "aircraftType": "bf109f2",
+      "squadronId": 20112051,
+      "pilotSerialNumber": 3000229,
+      "pilotName": "Arno Mann"
+    },
+    "3000180": {
+      "aircraftType": "pe2s35",
+      "squadronId": 10131321,
+      "pilotSerialNumber": 3000180,
+      "pilotName": "Ilya Pokrovsky"
+    },
+    "1000000": {
+      "aircraftType": "bf109f4",
+      "squadronId": 20112051,
+      "pilotSerialNumber": 1000000,
+      "pilotName": "German Test"
+    }
+  }
+}

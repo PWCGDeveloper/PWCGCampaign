@@ -1,0 +1,617 @@
+{
+  "squadronMembers": {
+    "3001037": {
+      "name": "Bryant Leeds",
+      "serialNumber": 3001037,
+      "rank": "Flight Sub-Lieutenant",
+      "picName": "British040.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 2,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102207,
+      "inactiveDate": "19181111"
+    },
+    "3001036": {
+      "name": "Perry Perryvall",
+      "serialNumber": 3001036,
+      "rank": "Flight Sub-Lieutenant",
+      "picName": "British001.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 9,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102207,
+      "inactiveDate": "19181111"
+    },
+    "3001038": {
+      "name": "Sheridan Eyer",
+      "serialNumber": 3001038,
+      "rank": "Flight Sub-Lieutenant",
+      "picName": "British028.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102207,
+      "inactiveDate": "19181111"
+    },
+    "3001033": {
+      "name": "Isaac Chudderley",
+      "serialNumber": 3001033,
+      "rank": "Flight Lieutenant",
+      "picName": "British023.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 10,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102207,
+      "inactiveDate": "19181111"
+    },
+    "3001032": {
+      "name": "Hugh Snayth",
+      "serialNumber": 3001032,
+      "rank": "Flight Lieutenant",
+      "picName": "British003.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 22,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102207,
+      "inactiveDate": "19181111"
+    },
+    "3001035": {
+      "name": "Forbes Lave",
+      "serialNumber": 3001035,
+      "rank": "Flight Sub-Lieutenant",
+      "picName": "British041.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102207,
+      "inactiveDate": "19181111"
+    },
+    "3001034": {
+      "name": "Derwin Rusch",
+      "serialNumber": 3001034,
+      "rank": "Flight Sub-Lieutenant",
+      "picName": "British66.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 8,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102207,
+      "inactiveDate": "19181111"
+    },
+    "3001029": {
+      "name": "Baron Jordan",
+      "serialNumber": 3001029,
+      "rank": "Flight Commander",
+      "picName": "British007.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 41,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170428",
+          "location": "Forges-sur-Meuse",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Lenz Weindorf",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 7 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Flight Commander Baron Jordan",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102207,
+      "inactiveDate": "19181111"
+    },
+    "3001028": {
+      "name": "Wayne Molyngton",
+      "serialNumber": 3001028,
+      "rank": "Flight Commander",
+      "picName": "British72.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 28,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102207,
+      "inactiveDate": "19181111"
+    },
+    "3001031": {
+      "name": "Connell Cossington",
+      "serialNumber": 3001031,
+      "rank": "Flight Lieutenant",
+      "picName": "British050.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 15,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102207,
+      "inactiveDate": "19181111"
+    },
+    "3001030": {
+      "name": "Declan Playters",
+      "serialNumber": 3001030,
+      "rank": "Flight Lieutenant",
+      "picName": "British67.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 17,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102207,
+      "inactiveDate": "19181111"
+    },
+    "3001027": {
+      "name": "Sterling Fane",
+      "serialNumber": 3001027,
+      "rank": "Squadron Commander",
+      "picName": "British71.jpg",
+      "pilotActiveStatus": 0,
+      "country": "BRITAIN",
+      "missionFlown": 39,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19170329",
+          "location": "Champlon",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 261",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Hugo Feininger",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 7 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Squadron Commander Sterling Fane",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170401",
+          "location": "Pomacle",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd2late",
+            "squadronName": "Jasta 10",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Reinhard Kringel",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 7 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Squadron Commander Sterling Fane",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170404",
+          "location": "Sampigny",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "Schlasta 24b",
+            "pilotSerialNumber": 0,
+            "pilotName": "Ltn Oskar Hasenclever",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 7 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Squadron Commander Sterling Fane",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170407",
+          "location": "Lachalade",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 18",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Georg Lerche",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 7 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Squadron Commander Sterling Fane",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170410",
+          "location": "Pomacle",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 37",
+            "pilotSerialNumber": 0,
+            "pilotName": "Fw Sebastian Huppert",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 7 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Squadron Commander Sterling Fane",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170413",
+          "location": "Corbeny",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "rolc2a",
+            "squadronName": "FA 24",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Emil Walbert",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 7 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Squadron Commander Sterling Fane",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170416",
+          "location": "Forges-sur-Meuse",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 278s",
+            "pilotSerialNumber": 0,
+            "pilotName": "Uffz Horst Rommel",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 7 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Squadron Commander Sterling Fane",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170419",
+          "location": "Forges-sur-Meuse",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 18",
+            "pilotSerialNumber": 0,
+            "pilotName": "Obltn Fabian Weschler",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 7 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Squadron Commander Sterling Fane",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170422",
+          "location": "Varennes-en-Argonne",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FliK 25",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kmdr Bardo Toth",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 7 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Squadron Commander Sterling Fane",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170425",
+          "location": "StMihiel",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "albatrosd3",
+            "squadronName": "Jasta 37",
+            "pilotSerialNumber": 0,
+            "pilotName": "Obltn Felix Schrotter",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 7 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Squadron Commander Sterling Fane",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19170428",
+          "location": "Saint Hilaire - le Petite",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "dfwc5",
+            "squadronName": "FA 44",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kmdr Hildebrand Kornmann",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fe2b",
+            "squadronName": "No 7 Squadron RNAS",
+            "pilotSerialNumber": 0,
+            "pilotName": "Squadron Commander Sterling Fane",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19170501",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19170501",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 102207,
+      "inactiveDate": "19181111"
+    }
+  }
+}

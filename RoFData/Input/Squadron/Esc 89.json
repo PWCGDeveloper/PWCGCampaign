@@ -1,0 +1,96 @@
+{
+  "country": "FRANCE",
+  "squadronId": 101089,
+  "name": "Esc 89",
+  "skill": 35,
+  "planeAssignments": [
+    {
+      "type": "nieuport17",
+      "squadronIntroduction": "19170428",
+      "squadronWithdrawal": "19170531"
+    },
+    {
+      "type": "spad7early",
+      "squadronIntroduction": "19170501",
+      "squadronWithdrawal": "19171015"
+    },
+    {
+      "type": "spad7",
+      "squadronIntroduction": "19171001",
+      "squadronWithdrawal": "19180213"
+    },
+    {
+      "type": "spad13",
+      "squadronIntroduction": "19180213",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19170428": "Brabant en Argonne",
+    "19170513": "Vauxcere",
+    "19170618": "Grivesnes",
+    "19170919": "Chalons sur Vesle",
+    "19180114": "Ferme de Corbeaulieu",
+    "19180328": "Chalons sur Vesle",
+    "19180519": "Vauxcere",
+    "19180724": "Froides",
+    "19181005": "Auve"
+  },
+  "skins": [
+    {
+      "skinName": "N17_PW_F89_DFTL",
+      "planeType": "nieuport17",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": 101089,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC89_APR1917",
+      "planeType": "spad7",
+      "startDate": "19140801",
+      "endDate": "19180116",
+      "squadId": 101089,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S7L_ESC89_JAN1918",
+      "planeType": "spad7",
+      "startDate": "19180117",
+      "endDate": "19181201",
+      "squadId": 101089,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "S13_101089_ANS",
+      "planeType": "spad13",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 101089,
+      "country": "France",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

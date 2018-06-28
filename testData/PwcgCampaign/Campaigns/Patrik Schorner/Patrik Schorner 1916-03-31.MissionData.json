@@ -1,0 +1,166 @@
+{
+  "missionHeader": {
+    "missionFileName": "Patrik Schorner 1916-03-31",
+    "squadron": "FA 15",
+    "date": "19160331",
+    "time": "1530:00",
+    "aircraftType": "AircraftType \u003d Roland C.II",
+    "mapName": "Galicia",
+    "airfield": "Airfield \u003d Puko",
+    "duty": "BOMB",
+    "altitude": 700
+  },
+  "missionDescription": "Mission:\nAircraft  Roland C.IIa\nSquadron  FA 15\nAirbase  Pukov\nDate  1916-03-31\n\nWeather Report\nLight cloud cover, high altitude.\nCloud layer is 5985 meters.\nWind speed is 2 M/S.\nWind direction is 304.\n\nPrimary Objective\nAttack assaulting enemy troops  near Factory\n\n\n",
+  "missionPlanes": [
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Patrik Schorner",
+        "observer": "Veit Traub",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Ulrich Holler",
+        "observer": "Florian Lohmuller",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Christian Welser",
+        "observer": "Erhard Kesselring",
+        "pilotRank": "Fw",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Kaspar Aschner",
+        "observer": "Bernd Treich",
+        "pilotRank": "Uffz",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Erich Zehrt",
+        "observer": "Bruno Ohlenlaeger",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "rolc2a",
+      "squadronName": "FA 15",
+      "crew": {
+        "pilot": "Martin Baumhauer",
+        "observer": "Jakob Wirt",
+        "pilotRank": "Uffz",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 10",
+      "crew": {
+        "pilot": "Laurenz Maurer",
+        "observer": "Artur Barak",
+        "pilotRank": "Ltn",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 10",
+      "crew": {
+        "pilot": "Lorinc Gergely",
+        "observer": "Georg Weidenbaum",
+        "pilotRank": "Ltn",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 10",
+      "crew": {
+        "pilot": "Marko Schult",
+        "observer": "Ferdinand Strauch",
+        "pilotRank": "Kp",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 25",
+      "crew": {
+        "pilot": "Marius Fellgiebel",
+        "observer": "Adolar Sala",
+        "pilotRank": "Kmdr",
+        "observerRank": "Obltn"
+      }
+    },
+    {
+      "aircraftType": "dfwc5",
+      "squadronName": "FliK 25",
+      "crew": {
+        "pilot": "Bernad Kover",
+        "observer": "Bodor Lodi",
+        "pilotRank": "Kp",
+        "observerRank": "Ltn"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "3rd KAO",
+      "crew": {
+        "pilot": "Uriah Shchegolev",
+        "observer": "Matvey Poleski",
+        "pilotRank": "Cpt",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "3rd KAO",
+      "crew": {
+        "pilot": "Anton Bessonov",
+        "observer": "Feliks Golovanov",
+        "pilotRank": "Pk",
+        "observerRank": "Lt"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "3rd KAO",
+      "crew": {
+        "pilot": "Laurente Syukosev",
+        "observer": "Andrusha Avdeyev",
+        "pilotRank": "Pk",
+        "observerRank": "Pk"
+      }
+    },
+    {
+      "aircraftType": "fe2b",
+      "squadronName": "3rd KAO",
+      "crew": {
+        "pilot": "Stefan Volvakov",
+        "observer": "Vyacheslav Shigayev",
+        "pilotRank": "SPk",
+        "observerRank": "Lt"
+      }
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501022,
+  "name": "Jasta 22s",
+  "skill": 75,
+  "planeAssignments": [
+    {
+      "type": "albatrosd2late",
+      "squadronIntroduction": "19161206",
+      "squadronWithdrawal": "19170315"
+    },
+    {
+      "type": "albatrosd3",
+      "squadronIntroduction": "19170222",
+      "squadronWithdrawal": "19170601"
+    },
+    {
+      "type": "albatrosd5",
+      "squadronIntroduction": "19170501",
+      "squadronWithdrawal": "19180101"
+    },
+    {
+      "type": "pfalzd3a",
+      "squadronIntroduction": "19170901",
+      "squadronWithdrawal": "19180701"
+    },
+    {
+      "type": "fokkerd7",
+      "squadronIntroduction": "19180601",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19161116": "Roupy,Somme",
+    "19161127": "Velu",
+    "19170516": "Bellevue Ferme",
+    "19170616": "Vivaise",
+    "19170916": "Bellevue Ferme",
+    "19171116": "Chambry,Laon",
+    "19180320": "Bonneuil Ferme",
+    "19180323": "Assevillers",
+    "19180330": "Ham",
+    "19180409": "Champien",
+    "19180512": "Riencourt,Arras",
+    "19180711": "Leffincourt,E Reims",
+    "19180808": "Beugnatre",
+    "19180820": "Villeselve"
+  },
+  "skins": [
+    {
+      "skinName": "AD2L_3CAMO_LATE",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501022,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD3_J22_MAR1917",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19170509",
+      "squadId": 501022,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD3_J22_MAY1917",
+      "planeType": "albatrosd3",
+      "startDate": "19170510",
+      "endDate": "19181201",
+      "squadId": 501022,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J22_MAY17",
+      "planeType": "albatrosd5",
+      "startDate": "19140801",
+      "endDate": "19170929",
+      "squadId": 501022,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J22_OCT17",
+      "planeType": "albatrosd5",
+      "startDate": "19170930",
+      "endDate": "19180322",
+      "squadId": 501022,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J22_APR18",
+      "planeType": "albatrosd5",
+      "startDate": "19180323",
+      "endDate": "19181201",
+      "squadId": 501022,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "PD3A_J22_SEP17",
+      "planeType": "pfalzd3a",
+      "startDate": "19140801",
+      "endDate": "19180322",
+      "squadId": 501022,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "PD3A_J22_AUG18",
+      "planeType": "pfalzd3a",
+      "startDate": "19180323",
+      "endDate": "19181201",
+      "squadId": 501022,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7_J22_MAY18",
+      "planeType": "fokkerd7",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501022,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7F_J22_MAY18",
+      "planeType": "fokkerd7f",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501022,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

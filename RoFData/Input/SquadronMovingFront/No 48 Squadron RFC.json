@@ -1,0 +1,18 @@
+{
+  "name": "No 48 Squadron RFC",
+  "squadronId": 102048,
+  "airfields": {
+    "19170701": "Eecke",
+    "19170915": "Proven",
+    "19171222": "Cachy-Bois I_Abbe",
+    "19180324": "Baizieux 2",
+    "19180326": "Warfusee",
+    "19180328": "Savy Berlette",
+    "19180803": "Lealvillers",
+    "19180826": "Filescamp Ferme",
+    "19180930": "Abeele (West)",
+    "19181015": "Le Creche",
+    "19181025": "Beaucamp",
+    "19181105": "Lomme,Lille"
+  }
+}

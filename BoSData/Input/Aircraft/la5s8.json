@@ -1,0 +1,20 @@
+{
+  "type": "la5s8",
+  "side": "ALLIED",
+  "displayName": "La-5 ser.8",
+  "script": "LuaScripts\\WorldObjects\\Planes\\la5s8.txt",
+  "model": "graphics\\planes\\la5s8\\la5s8.mgm",
+  "desc": "",
+  "cruisingSpeed": 350,
+  "climbOutRate": 1300,
+  "goodness": 50,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19420301",
+  "withdrawal": "19450503"
+}

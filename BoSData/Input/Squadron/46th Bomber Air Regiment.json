@@ -1,0 +1,85 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 10131046,
+  "name": "46th Bomber Air Regiment",
+  "fileName": "46th Bomber Air Regiment.json",
+  "skill": 30,
+  "planeAssignments": [
+    {
+      "type": "pe2s35",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19420922"
+    },
+    {
+      "type": "pe2s87",
+      "squadronIntroduction": "19420623",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "airfields": {
+    "19411001": "Staritsa",
+    "19411020": "Ilinskoe",
+    "19411110": "Ilinskoe",
+    "19411120": "Ilinskoe",
+    "19411215": "Kryukovo",
+    "19420110": "Ruza",
+    "19420301": "Bol. Ivanovka",
+    "19420601": "Severskaya",
+    "19420624": "Pashkovskaya",
+    "19420709": "Maykop-3",
+    "19420721": "Sochi",
+    "19420801": "Rahinsky",
+    "19420906": "Krasnaya Zarjya",
+    "19421011": "Krasnaya Zarjya",
+    "19421123": "Krasnaya Zarjya",
+    "19421223": "Krasnaya Zarjya",
+    "19430120": "Rahinsky",
+    "19430301": "Maykop-3",
+    "19430330": "Juravskaya",
+    "19430418": "Novovelichkovskaya",
+    "19430918": "Gelenjik-3",
+    "19430927": "Ivanovskaya",
+    "19431004": "Krasnoarmeyskayas",
+    "19431008": "Krasnoarmeyskayas"
+  },
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19420301",
+        "squadName": "284th Bomber Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 40
+      },
+      {
+        "date": "19430918",
+        "squadName": "40th Bomber Air Regiment",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 40
+      }
+    ]
+  },
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 60
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_DIVE_BOMB",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  }
+}

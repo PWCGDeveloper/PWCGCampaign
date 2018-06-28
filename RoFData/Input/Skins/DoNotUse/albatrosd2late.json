@@ -1,0 +1,145 @@
+{
+  "skinSetType": "SKIN_DO_NOT_USE",
+  "skins": {
+    "ad2l_42sq_blue": {
+      "skinName": "AD2L_42SQ_BLUE",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ad2l_42sq_green": {
+      "skinName": "AD2L_42SQ_GREEN",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ad2l_42sq_red": {
+      "skinName": "AD2L_42SQ_RED",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ad2l_42sq_yellow": {
+      "skinName": "AD2L_42SQ_YELLOW",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ad2l_jg1_reinhart": {
+      "skinName": "AD2L_JG1_REINHART",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ad2l_jg1_vongreim": {
+      "skinName": "AD2L_JG1_VONGREIM",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ad2l_jg1_vonkost": {
+      "skinName": "AD2L_JG1_VONKOST",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ad2l_jg1_vonrd_10": {
+      "skinName": "AD2L_JG1_VONRD_10",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ad2l_o_rod": {
+      "skinName": "AD2L_O_ROD",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ad2l_pw_fl13_def": {
+      "skinName": "AD2L_PW_FL13_DEF",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ad2l_pw_fl7_def": {
+      "skinName": "AD2L_PW_FL7_DEF",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ad2l_pw_fl9_def": {
+      "skinName": "AD2L_PW_FL9_DEF",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ad2l_tvscherrer": {
+      "skinName": "AD2L_TVSCHERRER",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    },
+    "ad2l_tvscherrerv2": {
+      "skinName": "AD2L_TVSCHERRERV2",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181111",
+      "squadId": -1,
+      "country": "Germany",
+      "category": "Do Not Use",
+      "definedInGame": false
+    }
+  }
+}

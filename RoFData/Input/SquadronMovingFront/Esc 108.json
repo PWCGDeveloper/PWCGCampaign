@@ -1,0 +1,23 @@
+{
+  "name": "Esc 108",
+  "squadronId": 101108,
+  "airfields": {
+    "19150801": "Malzeville",
+    "19150903": "Petit Camon",
+    "19151107": "Grivesnes",
+    "19160401": "Grivesnes",
+    "19161101": "Grivesnes",
+    "19170509": "Vauxcere",
+    "19170721": "Bailleul",
+    "19170930": "Vauxcere",
+    "19171006": "Muizon",
+    "19180116": "Auve",
+    "19180328": "Vauxcere",
+    "19180714": "Auve",
+    "19180724": "La Mellette",
+    "19180806": "Somme Vesle",
+    "19180905": "Froides",
+    "19180924": "Auve",
+    "19181025": "Pomacle"
+  }
+}

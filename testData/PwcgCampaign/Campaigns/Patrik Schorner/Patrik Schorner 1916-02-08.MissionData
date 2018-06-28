@@ -1,0 +1,202 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-02-08";
+    Squadron = "FA 293b";
+    Map = "France";
+    Date = "19160208";
+    Time = "90:00";
+    Duty = "BOMB";
+    AircraftType = DFW C.V;
+    Altitude = 3509;
+    Airfield = Bellevue Ferme;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  DFW C.V
+Squadron  FA 293b
+Airbase  Bellevue Ferme
+Date  1916-02-08
+
+Weather Report 
+    Medium cloud cover, high altitude.
+    Cloud layer is 4921 meters.
+    Wind speed is 1 M/S.
+    Wind direction is 77.
+
+Primary Objective 
+    Attack the transport and road facilities  near Forges-sur-Meuse
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 293b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "Ltn";
+            Observer = "Herbert Klemm";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 293b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Waldemar Ganz";
+            ObserverRank = "Ltn";
+            Observer = "Bernd Lewysohn";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 5";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Oskar Drache";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fokkere3";
+        Squadron = "Jasta 5";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Emil Schneiderman";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 12";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Ralf Faulhaber";
+            ObserverRank = "Ltn";
+            Observer = "Simon Hohmann";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Nils Frankenburg";
+            ObserverRank = "Ltn";
+            Observer = "Bernd Sehlman";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Harald Stromberg";
+            ObserverRank = "Ltn";
+            Observer = "Helmut Teichmuller";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Adolf Kissling";
+            ObserverRank = "Ltn";
+            Observer = "Carsten Wohler";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Thomas Behr";
+            ObserverRank = "Ltn";
+            Observer = "Emmerich Mummert";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 7";
+        Crew
+        {
+            PilotRank = "Cne";
+            Pilot = "Rene Hoguet";
+            ObserverRank = "S/Lt";
+            Observer = "Vincent Brindejonc";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 7";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Antonin Lacoste";
+            ObserverRank = "S/Lt";
+            Observer = "Celestin Pelatan";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport11";
+        Squadron = "Esc 31";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Hippolyte Perrin";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport11";
+        Squadron = "Esc 31";
+        Crew
+        {
+            PilotRank = "Sergt";
+            Pilot = "Marcel Morizot";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 40";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Marcel Benard";
+            ObserverRank = "S/Lt";
+            Observer = "Auguste Honore";
+        }
+    }
+}

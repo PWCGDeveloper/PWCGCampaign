@@ -1,0 +1,346 @@
+Header
+{
+    Filename = "Patrik Schorner 1916-09-05";
+    Squadron = "Jasta 16b";
+    Map = "France";
+    Date = "19160905";
+    Time = "14:30:00";
+    Duty = "INTERCEPT";
+    AircraftType = Halberstadt D.II;
+    Altitude = 3375;
+    Airfield = Balatre,E Roye;
+}
+MissionDescription
+{
+Mission: 
+Aircraft  Halberstadt D.II
+Squadron  Jasta 16b
+Airbase  Balatre,E Roye
+Date  1916-09-05
+
+Weather Report 
+    Medium cloud cover, medium altitude.
+    Cloud layer is 2429 meters.
+    Wind speed is 0 M/S.
+    Wind direction is 322.
+
+Primary Objective 
+    Intercept enemy aircraft near Mesnil.
+
+
+}
+MissionPlanes
+{
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Kmdr";
+            Pilot = "Patrik Schorner";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Oswald Fromm";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Augustus Kass";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "halberstadtd2";
+        Squadron = "Jasta 16b";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Detlef Schwarzer";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 66";
+        Crew
+        {
+            PilotRank = "Cne";
+            Pilot = "Eugene Levaique";
+            ObserverRank = "S/Lt";
+            Observer = "Mattieu Tavernier";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 66";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Jean-Marie Lafon";
+            ObserverRank = "S/Lt";
+            Observer = "Jean-Baptiste Bouvier";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 66";
+        Crew
+        {
+            PilotRank = "S/Lt";
+            Pilot = "Leo Roquet";
+            ObserverRank = "S/Lt";
+            Observer = "Antonin Laffite";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 66";
+        Crew
+        {
+            PilotRank = "Cpl";
+            Pilot = "Ulysse Duvallet";
+            ObserverRank = "S/Lt";
+            Observer = "Xavier Viala";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 2";
+        Crew
+        {
+            PilotRank = "Obltn";
+            Pilot = "Kristof Haugwitz";
+            ObserverRank = "Obltn";
+            Observer = "Walther Schwarzman";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "rolc2a";
+        Squadron = "Schlasta 2";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Franz Tugendhat";
+            ObserverRank = "Obltn";
+            Observer = "Rudolph Welker";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Ignaz Rossmann";
+            ObserverRank = "Ltn";
+            Observer = "Oskar Raedler";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Fritz Maurer";
+            ObserverRank = "Ltn";
+            Observer = "Bernd Vogelstein";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Joachim Ratzinger";
+            ObserverRank = "Ltn";
+            Observer = "Wilhelm Herberger";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 44";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Karl Amsel";
+            ObserverRank = "Ltn";
+            Observer = "Gerhard Lux";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 19";
+        Crew
+        {
+            PilotRank = "Ltn";
+            Pilot = "Eberhardt Seitz";
+            ObserverRank = "Ltn";
+            Observer = "Heiner Jahnke";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 19";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Elias Wentzel";
+            ObserverRank = "Obltn";
+            Observer = "Karsten Reich";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 19";
+        Crew
+        {
+            PilotRank = "Fw";
+            Pilot = "Sepp Rottmann";
+            ObserverRank = "Ltn";
+            Observer = "Tristan Faehlmann";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "dfwc5";
+        Squadron = "FA 19";
+        Crew
+        {
+            PilotRank = "Uffz";
+            Pilot = "Waldemar Furst";
+            ObserverRank = "Ltn";
+            Observer = "Dietrich Schnitzler";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 2 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Bond Willis";
+            ObserverRank = "Lt";
+            Observer = "Quenby Makepiece";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 2 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Hale Flexney";
+            ObserverRank = "Cpt";
+            Observer = "Matthew Pelletoot";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport11";
+        Squadron = "No 1 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Curtis Chichester";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport11";
+        Squadron = "No 1 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Darell Parker";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport11";
+        Squadron = "No 1 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Dominic Inwood";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "nieuport11";
+        Squadron = "No 1 Squadron RFC";
+        Crew
+        {
+            PilotRank = "2nd Lt";
+            Pilot = "Harley Frilende";
+            ObserverRank = "";
+            Observer = "";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "No 8 Squadron RFC";
+        Crew
+        {
+            PilotRank = "Lt";
+            Pilot = "Brock Roland";
+            ObserverRank = "Cpt";
+            Observer = "Dominic Winston";
+        }
+    }
+    MissionPlane
+    {
+        AircraftType = "fe2b";
+        Squadron = "Esc 105";
+        Crew
+        {
+            PilotRank = "Cpl";
+            Pilot = "Charles Laforge";
+            ObserverRank = "S/Lt";
+            Observer = "Alexis Nigri";
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "bristolf2bf3",
+  "side": "ALLIED",
+  "displayName": "Bristol F2B (F.III)",
+  "script": "LuaScripts\\WorldObjects\\bristolf2bf3.txt",
+  "model": "graphics\\planes\\bristolf2bf3\\bristolf2bf3.mgm",
+  "desc": "",
+  "cruisingSpeed": 150,
+  "climbOutRate": 180,
+  "goodness": 80,
+  "endurance": 3.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_MEDIUM",
+  "roles": [
+    "ROLE_RECON",
+    "ROLE_FIGHTER",
+    "ROLE_BOMB",
+    "ROLE_ATTACK",
+    "ROLE_ARTILLERY_SPOT"
+  ],
+  "introduction": "19170801",
+  "withdrawal": "19181111"
+}

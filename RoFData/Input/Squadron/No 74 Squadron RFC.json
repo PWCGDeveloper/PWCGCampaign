@@ -1,0 +1,59 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102074,
+  "name": "No 74 Squadron RFC",
+  "skill": 75,
+  "planeAssignments": [
+    {
+      "type": "se5a",
+      "squadronIntroduction": "19180330",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180330": "Abeele (West)",
+    "19180402": "Abeele (East)",
+    "19180409": "La Lovie",
+    "19180411": "La Lovie",
+    "19180928": "La Lovie",
+    "19181003": "Coxyde"
+  },
+  "skins": [
+    {
+      "skinName": "102074_010",
+      "planeType": "se5a",
+      "startDate": "19180323",
+      "endDate": "19181201",
+      "squadId": 102074,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 74 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+    
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

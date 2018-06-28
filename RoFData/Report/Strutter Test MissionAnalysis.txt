@@ -1,0 +1,24 @@
+Player flight
+  Mission type: PATROL
+  Airfield    : Lealvillers
+  Aircraft    : nieuport11
+  Player Contact    : -1
+
+
+
+Flight
+  Mission type: PATROL
+  Airfield    : Marchais
+  Aircraft    : halberstadtd2
+  Player Contact    : 49
+
+
+
+Flight
+  Mission type: RECON
+  Airfield    : Mesnil-Bruntel
+  Aircraft    : dfwc5
+  Player Contact    : 9
+
+
+

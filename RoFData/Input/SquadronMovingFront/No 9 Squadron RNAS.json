@@ -1,0 +1,24 @@
+{
+  "name": "No 9 Squadron RNAS",
+  "squadronId": 102209,
+  "airfields": {
+    "19170201": "Poperinghe",
+    "19170515": "Proven",
+    "19170615": "Villers Bretonneux",
+    "19170705": "Coxyde",
+    "19170710": "Proven",
+    "19170725": "Proven",
+    "19171010": "Coxyde",
+    "19180321": "Abeele (East)",
+    "19180323": "La Gorgue",
+    "19180327": "Houtem",
+    "19180329": "Poperinghe",
+    "19180407": "Lealvillers",
+    "19180720": "La Gorgue",
+    "19180806": "Lealvillers",
+    "19180814": "Le Hameau",
+    "19181005": "Riencourt,Arras",
+    "19181025": "Epinoy,NW Cambrai",
+    "19181110": "Avensnes-le-Sec"
+  }
+}
