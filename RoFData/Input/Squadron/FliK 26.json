@@ -5,7 +5,7 @@
   "skill": 35,
   "planeAssignments": [
     {
-      "type": "dfwc5",
+      "archType": "dfwc",
       "squadronIntroduction": "19140801",
       "squadronWithdrawal": "19181201"
     }

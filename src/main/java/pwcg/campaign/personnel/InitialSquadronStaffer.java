@@ -21,7 +21,7 @@ public class InitialSquadronStaffer
     private Squadron squadron;
     private SquadronMemberFactory squadronMemberFactory;
     private SquadronPersonnel squadronPersonnel;
-    private int pilotsNeeded = Squadron.SQUADRON_SIZE;
+    private int pilotsNeeded = Squadron.SQUADRON_STAFF_SIZE;
     
 	public InitialSquadronStaffer(Campaign campaign, Squadron squadron) 
 	{

@@ -11,7 +11,7 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.McuEvent;
 import pwcg.mission.mcu.McuMessage;
 import pwcg.mission.mcu.McuMissionObjective;
@@ -65,7 +65,7 @@ public class MissionObjectiveGroup
      * @throws PWCGException 
      * @
      */
-    public void createFailureMissionObjective(Plane myPlane) throws PWCGException 
+    public void createFailureMissionObjective(PlaneMCU myPlane) throws PWCGException 
     {
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
         Coordinate squadronLocation = campaign.getPosition();

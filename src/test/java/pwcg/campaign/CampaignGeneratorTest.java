@@ -17,6 +17,7 @@ import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.CampaignPersonnelFilter;
 import pwcg.campaign.personnel.SquadronMemberFilterSpecification;
 import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -53,14 +54,19 @@ public class CampaignGeneratorTest
             CampaignPersonnelFilter filter = new CampaignPersonnelFilter(squadronPersonnel.getActiveSquadronMembersWithAces().getSquadronMembers());
             Map<Integer, SquadronMember> squadronMembers = filter.getFilteredSquadronMembers(filterSpecification);
 
-            if (squadronMembers.size() != Squadron.SQUADRON_SIZE)
+            if (squadronMembers.size() != Squadron.SQUADRON_STAFF_SIZE)
             {
                 squadronMembers = filter.getFilteredSquadronMembers(filterSpecification);
             }
             
-            assert(squadronMembers.size() == Squadron.SQUADRON_SIZE);
+            assert(squadronMembers.size() == Squadron.SQUADRON_STAFF_SIZE);
         }
         
+        
+        for (Equipment equipment : campaign.getEquipmentManager().getEquipmentAllSquadrons().values())
+        {
+            assert(equipment.getEquippedPlanes().size() == Squadron.SQUADRON_EQUIPMENT_SIZE);
+        }
     }
 
     public Campaign generateCampaign(

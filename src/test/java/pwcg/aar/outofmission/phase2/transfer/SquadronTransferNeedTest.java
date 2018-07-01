@@ -81,7 +81,7 @@ public class SquadronTransferNeedTest
         squadronTransferNeed.determineTransfersNeeded();
         assert (squadronTransferNeed.needsTransfer() == true);
         
-        for (int i = 0; i < Squadron.SQUADRON_SIZE - 1; ++i)
+        for (int i = 0; i < Squadron.SQUADRON_STAFF_SIZE - 1; ++i)
         {
             squadronTransferNeed.noteTransfer();
             assert (squadronTransferNeed.needsTransfer() == true);
@@ -97,7 +97,7 @@ public class SquadronTransferNeedTest
     {
         for (int i = 0; i < 9; ++i)
         {
-            activeSquadronMemberCollection.put(serialNumber.getNextSerialNumber(), squadronMember);
+            activeSquadronMemberCollection.put(serialNumber.getNextPilotSerialNumber(), squadronMember);
         }
         
         
@@ -107,7 +107,7 @@ public class SquadronTransferNeedTest
         squadronTransferNeed.determineTransfersNeeded();
         assert (squadronTransferNeed.needsTransfer() == true);
         
-        for (int i = 0; i < Squadron.SQUADRON_SIZE - 10; ++i)
+        for (int i = 0; i < Squadron.SQUADRON_STAFF_SIZE - 10; ++i)
         {
             squadronTransferNeed.noteTransfer();
             assert (squadronTransferNeed.needsTransfer() == true);
@@ -123,12 +123,12 @@ public class SquadronTransferNeedTest
     {
         for (int i = 0; i < 7; ++i)
         {
-            activeSquadronMemberCollection.put(serialNumber.getNextSerialNumber(), squadronMember);
+            activeSquadronMemberCollection.put(serialNumber.getNextPilotSerialNumber(), squadronMember);
         }
         
         for (int i = 0; i < 2; ++i)
         {
-            inactiveSquadronMemberCollection.put(serialNumber.getNextSerialNumber(), squadronMember);
+            inactiveSquadronMemberCollection.put(serialNumber.getNextPilotSerialNumber(), squadronMember);
         }
         
         Mockito.when(activeSquadronMembers.getActiveCount(campaign.getDate())).thenReturn(7);
@@ -138,7 +138,7 @@ public class SquadronTransferNeedTest
         squadronTransferNeed.determineTransfersNeeded();
         assert (squadronTransferNeed.needsTransfer() == true);
         
-        for (int i = 0; i < Squadron.SQUADRON_SIZE - 10; ++i)
+        for (int i = 0; i < Squadron.SQUADRON_STAFF_SIZE - 10; ++i)
         {
             squadronTransferNeed.noteTransfer();
             assert (squadronTransferNeed.needsTransfer() == true);
@@ -153,12 +153,12 @@ public class SquadronTransferNeedTest
     {
         for (int i = 0; i < 10; ++i)
         {
-            activeSquadronMemberCollection.put(serialNumber.getNextSerialNumber(), squadronMember);
+            activeSquadronMemberCollection.put(serialNumber.getNextPilotSerialNumber(), squadronMember);
         }
         
         for (int i = 0; i < 2; ++i)
         {
-            inactiveSquadronMemberCollection.put(serialNumber.getNextSerialNumber(), squadronMember);
+            inactiveSquadronMemberCollection.put(serialNumber.getNextPilotSerialNumber(), squadronMember);
         }
         
         Mockito.when(activeSquadronMembers.getActiveCount(campaign.getDate())).thenReturn(10);

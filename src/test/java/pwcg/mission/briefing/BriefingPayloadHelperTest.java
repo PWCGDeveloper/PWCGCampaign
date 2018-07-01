@@ -26,7 +26,7 @@ import pwcg.mission.MissionFlightBuilder;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BriefingPayloadHelperTest
@@ -37,9 +37,9 @@ public class BriefingPayloadHelperTest
     @Mock private SquadronMember pilot1;
     @Mock private SquadronMember pilot2;
     @Mock private SquadronMember pilot3;
-    @Mock private Plane plane1;
-    @Mock private Plane plane2;
-    @Mock private Plane plane3;
+    @Mock private PlaneMCU plane1;
+    @Mock private PlaneMCU plane2;
+    @Mock private PlaneMCU plane3;
     @Mock private Flight flight;
     @Mock private IPlanePayload payload1;
     @Mock private IPlanePayload payload2;
@@ -50,7 +50,7 @@ public class BriefingPayloadHelperTest
     
     
     private Map <Integer, CrewPlanePayloadPairing> assignedCrewMap = new HashMap <>();
-    private List <Plane> planesInFlight = new ArrayList <>();
+    private List <PlaneMCU> planesInFlight = new ArrayList <>();
 
     @Before
     public void setup() throws PWCGException

@@ -1,5 +1,6 @@
 {
   "type": "yak1s69",
+  "archType": "yak",
   "side": "ALLIED",
   "displayName": "Yak-1 ser.69",
   "script": "LuaScripts\\WorldObjects\\Planes\\yak1s69.txt",
@@ -15,6 +16,6 @@
     "ROLE_FIGHTER",
     "ROLE_ATTACK"
   ],
-  "introduction": "19410301",
-  "withdrawal": "19450503"
+  "introduction": "19410901",
+  "withdrawal": "19420801"
 }

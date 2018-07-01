@@ -5,18 +5,13 @@
   "skill": 25,
   "planeAssignments": [
     {
-      "type": "dfwc5",
+      "archType": "dfwc",
       "squadronIntroduction": "19151220",
       "squadronWithdrawal": "19170730"
     },
     {
-      "type": "halberstadtcl2",
+      "archType": "halberstadtcl",
       "squadronIntroduction": "19170601",
-      "squadronWithdrawal": "19181201"
-    },
-    {
-      "type": "halberstadtcl2au",
-      "squadronIntroduction": "19180601",
       "squadronWithdrawal": "19181201"
     }
   ],

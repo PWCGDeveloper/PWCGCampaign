@@ -10,7 +10,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -62,7 +62,7 @@ public abstract class WaypointPackage
      * @param plane
      * @return
      */
-    public List<McuWaypoint> getWaypointsForPlane(Plane plane)
+    public List<McuWaypoint> getWaypointsForPlane(PlaneMCU plane)
     {
         return flightWaypointsByPlane.get(plane.getIndex());
     }
@@ -103,7 +103,7 @@ public abstract class WaypointPackage
                 // The flight leader will use the original WP set
                 if (planeIndex > 0)
                 {
-                    Plane plane = flight.getPlanes().get(planeIndex);
+                    PlaneMCU plane = flight.getPlanes().get(planeIndex);
                     
                     // Add a new WP set for each plane
                     if (!flightWaypointsByPlane.containsKey(plane.getIndex()))

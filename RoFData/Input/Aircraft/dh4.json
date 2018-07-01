@@ -1,5 +1,6 @@
 {
   "type": "dh4",
+  "archType": "dh4",
   "side": "ALLIED",
   "displayName": "Airco D.H.4",
   "script": "LuaScripts\\WorldObjects\\dh4.txt",

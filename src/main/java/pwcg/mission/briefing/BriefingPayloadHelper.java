@@ -14,7 +14,7 @@ import pwcg.core.utils.Logger;
 import pwcg.gui.rofmap.brief.BriefingCrewPlanePayloadSorter;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 
 public class BriefingPayloadHelper
 {
@@ -75,7 +75,7 @@ public class BriefingPayloadHelper
 
     private void assignPayloadsToCrewPlanes() throws PWCGException
     {
-        for (Plane plane : mission.getMissionFlightBuilder().getPlayerFlight().getPlanes())
+        for (PlaneMCU plane : mission.getMissionFlightBuilder().getPlayerFlight().getPlanes())
         {
             SquadronMember pilotOfPlane = plane.getPilot();
             CrewPlanePayloadPairing crewPlane = assignedCrewMap.get(pilotOfPlane.getSerialNumber());
@@ -88,7 +88,7 @@ public class BriefingPayloadHelper
 
     private void assignModificationsToCrewPlanes() throws PWCGException
     {
-        for (Plane plane : mission.getMissionFlightBuilder().getPlayerFlight().getPlanes())
+        for (PlaneMCU plane : mission.getMissionFlightBuilder().getPlayerFlight().getPlanes())
         {
             SquadronMember pilotOfPlane = plane.getPilot();
             CrewPlanePayloadPairing crewPlane = assignedCrewMap.get(pilotOfPlane.getSerialNumber());

@@ -41,16 +41,16 @@ public class CampaignPersonnelManagerFighterTest
         filterSpecification.setSpecifySquadron(campaign.getSquadronId());
 
         Map<Integer, SquadronMember> squadronMembersNoPlayerNoAces = filter.getFilteredSquadronMembers(filterSpecification);
-    	assert (squadronMembersNoPlayerNoAces.size() < (Squadron.SQUADRON_SIZE - 1));
+    	assert (squadronMembersNoPlayerNoAces.size() < (Squadron.SQUADRON_STAFF_SIZE - 1));
         
         filterSpecification.setIncludeAces(true);
         filterSpecification.setIncludePlayer(false);
         Map<Integer, SquadronMember> squadronMembersNoPlayerWithAces = filter.getFilteredSquadronMembers(filterSpecification);
-        assert (squadronMembersNoPlayerWithAces.size() == (Squadron.SQUADRON_SIZE - 1));
+        assert (squadronMembersNoPlayerWithAces.size() == (Squadron.SQUADRON_STAFF_SIZE - 1));
 
         filterSpecification.setIncludeAces(true);
         filterSpecification.setIncludePlayer(true);
         Map<Integer, SquadronMember> squadronMembersWithPlayerWithAces = filter.getFilteredSquadronMembers(filterSpecification);
-        assert (squadronMembersWithPlayerWithAces.size() == Squadron.SQUADRON_SIZE);
+        assert (squadronMembersWithPlayerWithAces.size() == Squadron.SQUADRON_STAFF_SIZE);
     }
 }

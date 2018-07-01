@@ -9,9 +9,6 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.personnel.InitialReplacementStaffer;
-import pwcg.campaign.personnel.PersonnelReplacementsService;
-import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
@@ -83,19 +80,11 @@ public class CampaignGenerator
 
     private void staffReplacements() throws PWCGException
     {
-        
         List<ArmedService> armedServices = ArmedServiceFactory.createServiceManager().getAllArmedServices();
-        for (ArmedService service : armedServices)
+        for (ArmedService armedService : armedServices)
         {
-            InitialReplacementStaffer initialReplacementStaffer = new InitialReplacementStaffer(campaign, service);
-            SquadronMembers squadronMembers = initialReplacementStaffer.staffReplacementsForService();
-            
-            PersonnelReplacementsService replacementsForService = new PersonnelReplacementsService();
-            replacementsForService.setReplacements(squadronMembers);
-            replacementsForService.setServiceId(service.getServiceId());
-            replacementsForService.setDailyReplacementRate(service.getDailyReplacementRate());
-            replacementsForService.setLastReplacementDate(campaign.getDate());
-            campaign.getPersonnelManager().addPersonnelReplacementsService(service.getServiceId(), replacementsForService);
+            CampaignEquipmentGenerator equipmentGenerator = new CampaignEquipmentGenerator(campaign, armedService);
+            equipmentGenerator.createReplacements();
         }
     }
 

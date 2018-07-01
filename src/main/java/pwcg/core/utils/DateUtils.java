@@ -324,6 +324,19 @@ public class DateUtils
 
         return new Long(wholeDays).intValue();
     }
+
+    static public boolean isDateInRange (Date date, Date startRange, Date endRange) throws PWCGException
+    {
+        if (date.before(startRange))
+        {
+            return false;
+        }
+        if (date.after(endRange))
+        {
+            return false;
+        }
+        return true;
+    }
     
     static Calendar dateToCalendar(Date date)
     {

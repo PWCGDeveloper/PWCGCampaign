@@ -5,12 +5,12 @@
   "skill": 35,
   "planeAssignments": [
     {
-      "type": "halberstadtd2",
+      "archType": "halberstadtd",
       "squadronIntroduction": "19160910",
       "squadronWithdrawal": "19170620"
     },
     {
-      "type": "albatrosd3",
+      "archType": "albatrosd",
       "squadronIntroduction": "19170610",
       "squadronWithdrawal": "19181201"
     }

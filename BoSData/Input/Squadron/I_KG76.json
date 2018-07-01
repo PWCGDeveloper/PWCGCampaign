@@ -6,11 +6,13 @@
   "skill": 50,
   "planeAssignments": [
     {
-      "type": "ju88a4",
+      "archType": "ju88",
       "squadronIntroduction": "19410801",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19411001": "Novoye Selo",
     "19411020": "Varvarovka",

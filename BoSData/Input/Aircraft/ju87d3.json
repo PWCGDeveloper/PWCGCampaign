@@ -1,5 +1,6 @@
 {
   "type": "ju87d3",
+  "archType": "ju87",
   "side": "AXIS",
   "displayName": "Ju 87 D-3",
   "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
@@ -14,6 +15,6 @@
   "roles": [
     "ROLE_DIVE_BOMB"
   ],
-  "introduction": "19410301",
+  "introduction": "19410601",
   "withdrawal": "19450503"
 }

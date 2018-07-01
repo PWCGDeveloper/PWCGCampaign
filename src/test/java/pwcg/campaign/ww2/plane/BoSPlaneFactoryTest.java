@@ -28,7 +28,8 @@ public class BoSPlaneFactoryTest
 		for (PlaneType planeType : planeTypeFactory.getAllPlanes())
 		{
 			PlaneType plane = planeTypeFactory.getPlaneById(planeType.getType());
-			assert plane.getType().equals(planeType.getType());
+			assert (plane.getType().equals(planeType.getType()));
+			assert (plane.getArchType() != null);
 		}
 	}
 }

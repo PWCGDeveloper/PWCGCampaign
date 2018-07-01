@@ -6,16 +6,13 @@
   "skill": 60,
   "planeAssignments": [
     {
-      "type": "he111h6",
-      "squadronIntroduction": "19420101",
-      "squadronWithdrawal": "19430603"
-    },
-    {
-      "type": "he111h16",
-      "squadronIntroduction": "19430201",
+      "archType": "he111",
+      "squadronIntroduction": "19410801",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19420801": "Oblivskaya",
     "19420906": "Zryansky",

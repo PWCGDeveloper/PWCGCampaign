@@ -1,5 +1,6 @@
 {
   "type": "spitfiremkvb",
+  "archType": "spitfire",
   "side": "ALLIED",
   "displayName": "Spitfire Mk.VB",
   "script": "LuaScripts\\WorldObjects\\Planes\\spitfiremkvb.txt",
@@ -14,6 +15,6 @@
   "roles": [
     "ROLE_FIGHTER"
   ],
-  "introduction": "19410301",
+  "introduction": "19410901",
   "withdrawal": "19450503"
 }

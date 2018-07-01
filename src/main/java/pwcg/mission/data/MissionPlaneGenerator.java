@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 
 public class MissionPlaneGenerator
 {
@@ -16,7 +16,7 @@ public class MissionPlaneGenerator
 
         for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (Plane plane : flight.getPlanes())
+            for (PlaneMCU plane : flight.getPlanes())
             {
                 PwcgGeneratedMissionPlaneData missionPlaneData = new PwcgGeneratedMissionPlaneData();
                 missionPlaneData.setPilotName(plane.getPilot().getName());

@@ -12,7 +12,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.bomb.StrategicBombingFlight;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBoS;
 
@@ -41,7 +41,7 @@ public class PlayerFlightTypeBoSBombTest
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.BOMB);
-        for (Plane plane : flight.getPlanes())
+        for (PlaneMCU plane : flight.getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }
@@ -60,7 +60,7 @@ public class PlayerFlightTypeBoSBombTest
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB);
-        for (Plane plane : flight.getPlanes())
+        for (PlaneMCU plane : flight.getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }
@@ -79,7 +79,7 @@ public class PlayerFlightTypeBoSBombTest
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.STRATEGIC_BOMB);
-        for (Plane plane : flight.getPlanes())
+        for (PlaneMCU plane : flight.getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }

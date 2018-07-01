@@ -6,16 +6,18 @@
   "skill": 40,
   "planeAssignments": [
     {
-      "type": "p40e1",
+      "archType": "p40",
       "squadronIntroduction": "19410801",
       "squadronWithdrawal": "19430601"
     },
     {
-      "type": "p39l1",
+      "archType": "p39",
       "squadronIntroduction": "19430301",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19411001": "Gorstovo",
     "19411020": "Nikolskoye",

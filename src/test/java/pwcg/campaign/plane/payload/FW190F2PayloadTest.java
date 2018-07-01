@@ -48,7 +48,7 @@ public class FW190F2PayloadTest
 	@Test
 	public void payloadNormalTest() throws PWCGException
 	{
-		PlaneType fw190A5 = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByType(BosPlaneAttributeMapping.FW190_A5.getPlaneType());
+		PlaneType fw190A5 = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.FW190_A5.getPlaneType());
 		IPayloadFactory payloadFactory = PWCGContextManager.getInstance().getPayloadFactory();
     	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(fw190A5.getType());
     	testPatrolPayload(payloadGenerator);
@@ -59,7 +59,7 @@ public class FW190F2PayloadTest
 	@Test
 	public void payloadFw190F2Test() throws PWCGException
 	{
-		PlaneType fw190f2 = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByType(BosPlaneAttributeMapping.FW190_A5.getPlaneType());
+		PlaneType fw190f2 = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.FW190_A5.getPlaneType());
 		IPayloadFactory payloadFactory = PWCGContextManager.getInstance().getPayloadFactory();
     	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(fw190f2.getType());
     	testGroundAttackPayload(payloadGenerator);

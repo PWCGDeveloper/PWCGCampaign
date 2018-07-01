@@ -7,6 +7,8 @@ import pwcg.aar.data.AARContext;
 import pwcg.aar.data.ExtendedTimeReason;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -48,7 +50,8 @@ public class AARExtendedTimeHandler
 
     public void timePassedForSquadronNotViable() throws PWCGException
     {
-        while (!campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).isSquadronViable())
+        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
+        while (!squadron.isSquadronViable(campaign))
         {
             aarContext.setReasonForExtendedTime(ExtendedTimeReason.NO_PILOTS);
             AAROutOfMissionStepper stepper = new AAROutOfMissionStepper(campaign, aarContext);

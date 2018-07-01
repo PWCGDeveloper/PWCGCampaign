@@ -6,11 +6,13 @@
   "skill": 60,
   "planeAssignments": [
     {
-      "type": "ju87d3",
+      "archType": "ju87",
       "squadronIntroduction": "19410801",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19411001": "Dugino",
     "19411020": "Varvarovka",

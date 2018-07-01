@@ -1,5 +1,6 @@
 {
   "type": "sopstrb",
+  "archType": "sopstr",
   "side": "ALLIED",
   "displayName": "Sopwith Strutter B",
   "script": "LuaScripts\\WorldObjects\\sopstrb.txt",

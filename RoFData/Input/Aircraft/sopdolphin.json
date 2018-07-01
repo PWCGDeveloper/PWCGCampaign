@@ -1,5 +1,6 @@
 {
   "type": "sopdolphin",
+  "archType": "sopdolphin",
   "side": "ALLIED",
   "displayName": "Sopwith Dolphin",
   "script": "LuaScripts\\WorldObjects\\sopdolphin.txt",

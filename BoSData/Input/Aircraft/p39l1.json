@@ -1,5 +1,6 @@
 {
   "type": "p39l1",
+  "archType": "p39",
   "side": "ALLIED",
   "displayName": "P-39L-1",
   "script": "LuaScripts\\WorldObjects\\Planes\\p39l1.txt",

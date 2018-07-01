@@ -6,21 +6,13 @@
   "skill": 25,
   "planeAssignments": [
     {
-      "type": "il2m41",
+      "archType": "il2",
       "squadronIntroduction": "19410801",
-      "squadronWithdrawal": "19420720"
-    },
-    {
-      "type": "il2m42",
-      "squadronIntroduction": "19420421",
-      "squadronWithdrawal": "19430501"
-    },
-    {
-      "type": "il2m43",
-      "squadronIntroduction": "19430301",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19411001": "Kholm",
     "19411020": "Pavlovskoe",

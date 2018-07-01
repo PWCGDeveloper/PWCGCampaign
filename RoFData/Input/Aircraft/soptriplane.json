@@ -1,5 +1,6 @@
 {
   "type": "soptriplane",
+  "archType": "soptriplane",
   "side": "ALLIED",
   "displayName": "Sopwith Triplane",
   "script": "LuaScripts\\WorldObjects\\soptriplane.txt",

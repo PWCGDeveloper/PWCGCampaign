@@ -5,7 +5,7 @@
   "skill": 50,
   "planeAssignments": [
     {
-      "type": "re8",
+      "archType": "re8",
       "squadronIntroduction": "19170909",
       "squadronWithdrawal": "19181201"
     }

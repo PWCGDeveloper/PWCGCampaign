@@ -28,7 +28,7 @@ import pwcg.mission.MissionFlightBuilder;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BriefingPilotHelperTest
@@ -44,10 +44,10 @@ public class BriefingPilotHelperTest
     @Mock private SquadronMember pilot2;
     @Mock private SquadronMember pilot3;
     @Mock private SquadronMember pilot4;
-    @Mock private Plane plane1;
-    @Mock private Plane plane2;
-    @Mock private Plane plane3;
-    @Mock private Plane plane4;
+    @Mock private PlaneMCU plane1;
+    @Mock private PlaneMCU plane2;
+    @Mock private PlaneMCU plane3;
+    @Mock private PlaneMCU plane4;
     @Mock private Flight flight;
     
     
@@ -56,7 +56,7 @@ public class BriefingPilotHelperTest
 
     private Map <Integer, CrewPlanePayloadPairing> unassignedCrewMap = new HashMap <>();
     private Map <Integer, CrewPlanePayloadPairing> assignedCrewMap = new HashMap <>();
-    private List <Plane> planesInFlight = new ArrayList <>();
+    private List <PlaneMCU> planesInFlight = new ArrayList <>();
     private List<PlaneType> aircraftTypes = new ArrayList <>();
 
     @Before
@@ -78,7 +78,7 @@ public class BriefingPilotHelperTest
         Mockito.when(campaign.determineSquadron()).thenReturn(squadron);
         Mockito.when(squadron.determineCurrentAircraftList(Mockito.any())).thenReturn(aircraftTypes);
         
-        PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName("bf109f4");
+        PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName("bf109f4");
         aircraftTypes.add(plane);
         
         Mockito.when(personnelManager.getSquadronPersonnel(Mockito.any())).thenReturn(squadronPersonnel);

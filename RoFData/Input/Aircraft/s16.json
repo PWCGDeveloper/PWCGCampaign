@@ -1,5 +1,6 @@
 {
   "type": "s16",
+  "archType": "s16",
   "side": "ALLIED",
   "displayName": "Sikorsky S-16",
   "script": "LuaScripts\\WorldObjects\\s16.txt",

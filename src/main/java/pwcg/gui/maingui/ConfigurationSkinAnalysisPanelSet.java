@@ -409,7 +409,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
                 JCheckBox selectionBox = selectionBoxes.get(planeTypeDesc);
                 if (selectionBox.isSelected())
                 {
-                    PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(planeTypeDesc);
+                    PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
                     planeTypesToDisplay.put(planeTypeDesc, planeType);
                 }
             }

@@ -5,13 +5,8 @@
   "skill": 45,
   "planeAssignments": [
     {
-      "type": "bristolf2bf2",
+      "archType": "bristolf2",
       "squadronIntroduction": "19170308",
-      "squadronWithdrawal": "19180201"
-    },
-    {
-      "type": "bristolf2bf3",
-      "squadronIntroduction": "19180202",
       "squadronWithdrawal": "19181201"
     }
   ],

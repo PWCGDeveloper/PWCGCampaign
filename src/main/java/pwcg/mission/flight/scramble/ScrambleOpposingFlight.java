@@ -14,7 +14,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class ScrambleOpposingFlight extends Flight
@@ -44,7 +44,7 @@ public class ScrambleOpposingFlight extends Flight
 	{
 		super.createUnitMission();
 
-		for (Plane plane : planes)
+		for (PlaneMCU plane : planes)
 		{
 			plane.setFuel(.6);
 		}

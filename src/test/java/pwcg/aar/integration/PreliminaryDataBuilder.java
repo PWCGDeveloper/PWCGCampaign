@@ -12,12 +12,15 @@ import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.data.MissionHeader;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 
@@ -144,8 +147,13 @@ public class PreliminaryDataBuilder
         {
             SquadronPlaneAssignment planeAssignment = AARCoordinatorMissionTest.getPlaneForSquadron(squadronMember.getSquadronId());
             
+            PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
+            List<PlaneType> planeTypesForSquadron = planeTypeFactory.createActivePlaneTypesForArchType(planeAssignment.getArchType(), campaign.getDate());
+            int index = RandomNumberGenerator.getRandom(planeTypesForSquadron.size());
+            PlaneType planeType = planeTypesForSquadron.get(index);
+
             PwcgGeneratedMissionPlaneData missionPlaneData = new PwcgGeneratedMissionPlaneData();
-            missionPlaneData.setAircraftType(planeAssignment.getType());
+            missionPlaneData.setAircraftType(planeType.getType());
             missionPlaneData.setSquadronId(squadronMember.getSquadronId());
             missionPlaneData.setPilotName(squadronMember.getName());
             missionPlaneData.setPilotSerialNumber(squadronMember.getSerialNumber());

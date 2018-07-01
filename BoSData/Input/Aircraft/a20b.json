@@ -1,5 +1,6 @@
 {
   "type": "a20b",
+  "archType": "a20",
   "side": "ALLIED",
   "displayName": "A-20B",
   "script": "LuaScripts\\WorldObjects\\Planes\\a20b.txt",
@@ -15,6 +16,6 @@
     "ROLE_BOMB",
     "ROLE_ATTACK"
   ],
-  "introduction": "19420701",
+  "introduction": "19410601",
   "withdrawal": "19450503"
 }

@@ -12,7 +12,9 @@ import pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarations;
 import pwcg.aar.outofmission.AARCoordinatorOutOfMission;
 import pwcg.aar.tabulate.AARTabulateCoordinator;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
 public class AARCoordinatorMissionHandler
@@ -86,9 +88,10 @@ public class AARCoordinatorMissionHandler
 
     private void generateEventsForNotViableSquadron() throws PWCGException
     {
-        if (!campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).isSquadronViable())
+        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
+        if (squadron.isSquadronViable(campaign))
         {
-            AARExtendedTimeHandler extendedTimeHandler = new AARExtendedTimeHandler(campaign, aarContext);      
+             AARExtendedTimeHandler extendedTimeHandler = new AARExtendedTimeHandler(campaign, aarContext);      
             extendedTimeHandler.timePassedForSquadronNotViable();
         }
     }

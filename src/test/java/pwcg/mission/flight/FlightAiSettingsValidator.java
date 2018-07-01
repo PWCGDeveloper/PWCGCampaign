@@ -21,7 +21,7 @@ import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.bomb.StrategicBombingFlight;
 import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheRoF;
 
@@ -128,7 +128,7 @@ public class FlightAiSettingsValidator
     {
         for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (Plane plane : flight.getPlanes())
+            for (PlaneMCU plane : flight.getPlanes())
             {
                 SquadronMember squadronMember = mission.getCampaign().getPersonnelManager().getAnyCampaignMember(plane.getPilot().getSerialNumber());
                 Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());

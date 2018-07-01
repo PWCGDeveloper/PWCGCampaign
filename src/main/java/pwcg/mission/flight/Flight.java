@@ -30,8 +30,8 @@ import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.Unit;
 import pwcg.mission.flight.escort.EscortForPlayerFlight;
 import pwcg.mission.flight.escort.VirtualEscortFlight;
-import pwcg.mission.flight.plane.Plane;
-import pwcg.mission.flight.plane.PlaneFactory;
+import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.plane.PlaneMCUFactory;
 import pwcg.mission.flight.waypoint.ActualWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -59,7 +59,7 @@ public abstract class Flight extends Unit
     protected FlightTypes flightType = FlightTypes.ANY;
     protected TargetDefinition targetDefinition = new TargetDefinition();
 
-    protected List<Plane> planes = new ArrayList<Plane>();
+    protected List<PlaneMCU> planes = new ArrayList<PlaneMCU>();
     protected int numPlanesInFlight = 4;
 
     protected McuTimer formationTimer = null;
@@ -271,7 +271,7 @@ public abstract class Flight extends Unit
         if (isVirtual())
         {
             waypointPackage.duplicateWaypointsForFlight(this);
-            for (Plane plane : getPlanes())
+            for (PlaneMCU plane : getPlanes())
             {
                 List<McuWaypoint>waypointsToLink = waypointPackage.getWaypointsForPlane(plane);
                 createWaypointTargetAssociationsSimple(plane, waypointsToLink);
@@ -284,7 +284,7 @@ public abstract class Flight extends Unit
         }
     }
 
-    private void createWaypointTargetAssociationsSimple(Plane plane, List<McuWaypoint>waypointsToLink)
+    private void createWaypointTargetAssociationsSimple(PlaneMCU plane, List<McuWaypoint>waypointsToLink)
     {
         linkWPToPlane(plane, waypointsToLink);
         
@@ -378,7 +378,7 @@ public abstract class Flight extends Unit
 
     protected void createPlanes() throws PWCGException 
     {        
-        PlaneFactory planeGeneratorPlayer = new PlaneFactory(campaign, squadron, this);
+        PlaneMCUFactory planeGeneratorPlayer = new PlaneMCUFactory(campaign, squadron, this);
         planes = planeGeneratorPlayer.createPlanesForFlight(numPlanesInFlight);
     }
     
@@ -386,7 +386,7 @@ public abstract class Flight extends Unit
     {
         if (!isVirtual)
         {
-            for (Plane plane : planes)
+            for (PlaneMCU plane : planes)
             {
                 plane.getEntity().setEnabled(1);
             }
@@ -424,11 +424,11 @@ public abstract class Flight extends Unit
 
     public void createPlanePositionAirStart(Coordinate startCoordinate, Orientation orientation) throws PWCGException 
     {
-        Plane flightLeader = getFlightLeader();
+        PlaneMCU flightLeader = getFlightLeader();
         
         // Initial position has already been set for ground starts
         int i = 0;
-        for (Plane plane : planes)
+        for (PlaneMCU plane : planes)
         {
             Coordinate planeCoords = new Coordinate();
 
@@ -457,12 +457,12 @@ public abstract class Flight extends Unit
 
     protected void createPlanePositionRunway() throws PWCGException 
     {
-        Plane flightLeader = getFlightLeader();
+        PlaneMCU flightLeader = getFlightLeader();
 
         RunwayPlacer runwayPlacer = new RunwayPlacer(campaign);
         List<Coordinate> takeOffPositions = runwayPlacer.getFlightTakeoffPositions(this, departureAirfield);
 
-        for (Plane plane : planes)
+        for (PlaneMCU plane : planes)
         {
             plane.setPosition(takeOffPositions.get(plane.getNumberInFormation()-1));
 
@@ -476,7 +476,7 @@ public abstract class Flight extends Unit
 
     protected void resetPlaneInitialPositionForAirStarts() throws PWCGException 
     {
-        Plane flightLeader = getFlightLeader();
+        PlaneMCU flightLeader = getFlightLeader();
 
         // Initial position has already been set for ground starts
         if (airstart)
@@ -484,7 +484,7 @@ public abstract class Flight extends Unit
             int i = 0;
             Coordinate flightLeaderPos = null;
             Orientation flightLeaderOrient = null;
-            for (Plane plane : planes)
+            for (PlaneMCU plane : planes)
             {
                 if (i == 0)
                 {
@@ -726,7 +726,7 @@ public abstract class Flight extends Unit
      * @param plane
      * @param itemsToLink
      */
-    protected void linkWPToPlane(Plane plane, List<McuWaypoint>waypointsToLink)
+    protected void linkWPToPlane(PlaneMCU plane, List<McuWaypoint>waypointsToLink)
     {
         // Get the flight leader entity
         for (BaseFlightMcu mcu : waypointsToLink)
@@ -775,7 +775,7 @@ public abstract class Flight extends Unit
     /**
      * @return
      */
-    protected List<McuWaypoint> getAllWaypointsForPlane(Plane plane)
+    protected List<McuWaypoint> getAllWaypointsForPlane(PlaneMCU plane)
     {
         List<McuWaypoint> returnWaypoints = waypointPackage.getWaypointsForPlane(plane);
         if (waypointPackage.getWaypointsForLeadPlane().size() == 0)
@@ -862,7 +862,7 @@ public abstract class Flight extends Unit
     {
         for (int i = 0; i < planes.size(); ++i)
         {
-            Plane plane = planes.get(i);
+            PlaneMCU plane = planes.get(i);
             plane.write(writer);
         }
 
@@ -952,7 +952,7 @@ public abstract class Flight extends Unit
      * 
      * @return
      */
-    public List<BaseFlightMcu> getAllMissionPointsForPlane(Plane plane)
+    public List<BaseFlightMcu> getAllMissionPointsForPlane(PlaneMCU plane)
     {
         List<BaseFlightMcu> allMissionPointsForPlane = new ArrayList<BaseFlightMcu>();
         
@@ -970,16 +970,16 @@ public abstract class Flight extends Unit
 
     public void setFuel(double myFuel) 
     {
-        for (Plane plane : getPlanes())
+        for (PlaneMCU plane : getPlanes())
         {
             plane.setFuel(myFuel);
         }
     }
 
-    public Plane getPlayerPlane() throws PWCGException 
+    public PlaneMCU getPlayerPlane() throws PWCGException 
     {
-        Plane playerPlane = null;
-        for (Plane plane : planes)
+        PlaneMCU playerPlane = null;
+        for (PlaneMCU plane : planes)
         {
             if (plane.isPlayerPlane(campaign.getPlayer().getSerialNumber()))
             {
@@ -991,10 +991,10 @@ public abstract class Flight extends Unit
         return playerPlane;
     }
 
-    public Plane getPlaneForPilot(Integer pilotSerialNumber)
+    public PlaneMCU getPlaneForPilot(Integer pilotSerialNumber)
     {
-        Plane pilotPlane = null;
-        for (Plane plane : planes)
+        PlaneMCU pilotPlane = null;
+        for (PlaneMCU plane : planes)
         {
             if (plane.getPilot().getSerialNumber() == pilotSerialNumber)
             {
@@ -1066,12 +1066,12 @@ public abstract class Flight extends Unit
         return flightType;
     }
 
-    public Plane getFlightLeader()
+    public PlaneMCU getFlightLeader()
     {
         return planes.get(0);
     }
 
-    public List<Plane> getPlanes()
+    public List<PlaneMCU> getPlanes()
     {
         return planes;
     }
@@ -1329,11 +1329,11 @@ public abstract class Flight extends Unit
 
     public void addFlightTarget(Flight targetFlight)
     {
-        for (Plane plane : planes)
+        for (PlaneMCU plane : planes)
         {
             if (isAggressivePlane(plane))
             {
-                for (Plane targetPlane : targetFlight.getPlanes())
+                for (PlaneMCU targetPlane : targetFlight.getPlanes())
                 {
                     plane.addPlaneTarget(targetPlane.getEntity().getIndex());
                 }
@@ -1530,7 +1530,7 @@ public abstract class Flight extends Unit
         this.airfieldTargets.add(airfield);
     }
     
-    public Plane getLeadPlane()
+    public PlaneMCU getLeadPlane()
     {
         return planes.get(0);
     }
@@ -1630,7 +1630,7 @@ public abstract class Flight extends Unit
         this.flightId = flightId;
     }
 
-    public void setPlanes(List<Plane> planes) throws PWCGException
+    public void setPlanes(List<PlaneMCU> planes) throws PWCGException
     {
         this.planes = planes;        
         createPlayerPlanePosition();

@@ -5,7 +5,7 @@
   "skill": 65,
   "planeAssignments": [
     {
-      "type": "sopcamel",
+      "archType": "sopcamel",
       "squadronIntroduction": "19171218",
       "squadronWithdrawal": "19181201"
     }

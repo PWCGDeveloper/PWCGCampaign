@@ -1,5 +1,6 @@
 {
   "type": "rolc2a",
+  "archType": "rolc",
   "side": "AXIS",
   "displayName": "Roland C.IIa",
   "script": "LuaScripts\\WorldObjects\\rolc2a.txt",

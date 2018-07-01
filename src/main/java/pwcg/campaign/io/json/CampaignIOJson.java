@@ -21,16 +21,17 @@ public class CampaignIOJson
             campaignDirFile.mkdir();
         }
         
-        JsonWriter<CampaignData> jsonWriter1 = new JsonWriter<>();
-        jsonWriter1.writeAsJson(campaign.getCampaignData(), campaignDir, "Campaign.json");
+        JsonWriter<CampaignData> jsonCampaignDataWriter = new JsonWriter<>();
+        jsonCampaignDataWriter.writeAsJson(campaign.getCampaignData(), campaignDir, "Campaign.json");
         
+        JsonWriter<CampaignAces> jsonAcesWriter = new JsonWriter<>();
+        jsonAcesWriter.writeAsJson(campaign.getPersonnelManager().getCampaignAces(), campaignDir, "CampaignAces.json");
+        
+        JsonWriter<CampaignLogs> jsonCampaignLogsWriter = new JsonWriter<>();
+        jsonCampaignLogsWriter.writeAsJson(campaign.getCampaignLogs(), campaignDir, "CampaignLog.json");
+
         CampaignPersonnelIOJson.writeJson(campaign);
-        
-        JsonWriter<CampaignAces> jsonWriter3 = new JsonWriter<>();
-        jsonWriter3.writeAsJson(campaign.getPersonnelManager().getCampaignAces(), campaignDir, "CampaignAces.json");
-        
-        JsonWriter<CampaignLogs> jsonWriter4 = new JsonWriter<>();
-        jsonWriter4.writeAsJson(campaign.getCampaignLogs(), campaignDir, "CampaignLog.json");
+        CampaignEquipmentOJson.writeJson(campaign);
     }
 
     public static void readJson(Campaign campaign) throws PWCGException
@@ -41,8 +42,6 @@ public class CampaignIOJson
         CampaignData campaignData = jsoReader1.readJsonFile(campaignDir, "Campaign.json"); 
         campaign.setCampaignData(campaignData);
 
-        CampaignPersonnelIOJson.readJson(campaign);
-
         JsonObjectReader<CampaignAces> jsoReader3 = new JsonObjectReader<>(CampaignAces.class);
         CampaignAces campaignAces = jsoReader3.readJsonFile(campaignDir, "CampaignAces.json"); 
         campaign.getPersonnelManager().setCampaignAces(campaignAces);
@@ -50,5 +49,8 @@ public class CampaignIOJson
         JsonObjectReader<CampaignLogs> jsonWriter4 = new JsonObjectReader<>(CampaignLogs.class);
         CampaignLogs campaignLogs = jsonWriter4.readJsonFile(campaignDir, "CampaignLog.json"); 
         campaign.setCampaignLogs(campaignLogs);
+
+        CampaignPersonnelIOJson.readJson(campaign);
+        CampaignEquipmentOJson.readJson(campaign);
     }
 }

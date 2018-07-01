@@ -5,7 +5,7 @@
   "skill": 45,
   "planeAssignments": [
     {
-      "type": "felixf2a",
+      "archType": "felix",
       "squadronIntroduction": "19170701",
       "squadronWithdrawal": "19181201"
     }

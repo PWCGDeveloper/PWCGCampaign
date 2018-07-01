@@ -1,5 +1,6 @@
 {
   "type": "halberstadtcl2au",
+  "archType": "halberstadtcl",
   "side": "AXIS",
   "displayName": "Halberstadt CL.II 200hp",
   "script": "LuaScripts\\WorldObjects\\halberstadtcl2au.txt",
@@ -17,6 +18,6 @@
     "ROLE_BOMB",
     "ROLE_ARTILLERY_SPOT"
   ],
-  "introduction": "19170401",
+  "introduction": "19180401",
   "withdrawal": "19181111"
 }

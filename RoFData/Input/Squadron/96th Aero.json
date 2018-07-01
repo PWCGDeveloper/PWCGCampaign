@@ -5,7 +5,7 @@
   "skill": 25,
   "planeAssignments": [
     {
-      "type": "breguet14",
+      "archType": "breguet",
       "squadronIntroduction": "19180526",
       "squadronWithdrawal": "19181201"
     }

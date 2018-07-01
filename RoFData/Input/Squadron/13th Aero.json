@@ -5,7 +5,7 @@
   "skill": 35,
   "planeAssignments": [
     {
-      "type": "spad13",
+      "archType": "spad",
       "squadronIntroduction": "19180628",
       "squadronWithdrawal": "19181201"
     }

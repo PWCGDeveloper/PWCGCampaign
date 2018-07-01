@@ -6,21 +6,31 @@
   "skill": 40,
   "planeAssignments": [
     {
-      "type": "i16t24",
+      "archType": "i16",
       "squadronIntroduction": "19411001",
-      "squadronWithdrawal": "19420228"
+      "squadronWithdrawal": "19420315"
     },
     {
-      "type": "mig3s24",
-      "squadronIntroduction": "19420301",
-      "squadronWithdrawal": "19430228"
+      "archType": "mig3",
+      "squadronIntroduction": "19420316",
+      "squadronWithdrawal": "19430214"
     },
     {
-      "type": "p39l1",
-      "squadronIntroduction": "19430301",
+      "archType": "p39",
+      "squadronIntroduction": "19430215",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19420301",
+      "conversionCompleteDate": "19420315"
+    },
+    {
+      "conversionStartDate": "19430215",
+      "conversionCompleteDate": "19430228"
+    }
+  ],  
   "airfields": {
     "19411001": "Ryabinki",
     "19411020": "Drakino",

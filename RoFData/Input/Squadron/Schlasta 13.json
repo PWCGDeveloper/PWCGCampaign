@@ -5,18 +5,13 @@
   "skill": 25,
   "planeAssignments": [
     {
-      "type": "rolc2a",
+      "archType": "rolc",
       "squadronIntroduction": "19160729",
       "squadronWithdrawal": "19170711"
     },
     {
-      "type": "halberstadtcl2",
+      "archType": "halberstadtcl",
       "squadronIntroduction": "19170701",
-      "squadronWithdrawal": "19180801"
-    },
-    {
-      "type": "halberstadtcl2au",
-      "squadronIntroduction": "19180701",
       "squadronWithdrawal": "19181201"
     }
   ],

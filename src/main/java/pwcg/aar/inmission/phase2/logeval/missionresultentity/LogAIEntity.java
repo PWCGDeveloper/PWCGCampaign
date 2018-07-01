@@ -27,7 +27,7 @@ public abstract class LogAIEntity extends LogBase
         setVehicleType(atype12.getType());
         setSequenceNum(atype12.getSequenceNum());
         
-        PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(atype12.getType());
+        PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(atype12.getType());
         if (plane != null)
         {
             Role approximateRole = Role.getApproximateRole(plane.determinePrimaryRole());

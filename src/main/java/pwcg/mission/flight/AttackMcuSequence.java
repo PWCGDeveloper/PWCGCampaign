@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuAttackArea;
 import pwcg.mission.mcu.McuDeactivate;
@@ -37,7 +37,7 @@ public class AttackMcuSequence
         return clone;
     }
 
-    public void createAttackArea(Plane plane, String name, Coordinate targetCoords, int altitude, int attackTIme) 
+    public void createAttackArea(PlaneMCU plane, String name, Coordinate targetCoords, int altitude, int attackTIme) 
     {
         attackArea.setAttackGround(0);
         attackArea.setAttackGTargets(1);

@@ -6,21 +6,32 @@
   "skill": 50,
   "planeAssignments": [
     {
-      "type": "mig3s24",
+      "archType": "mig3",
       "squadronIntroduction": "19410801",
-      "squadronWithdrawal": "19420228"
+      "squadronWithdrawal": "19420314"
     },
     {
-      "type": "lagg3s29",
-      "squadronIntroduction": "19420301",
+      "archType": "lagg",
+      "squadronIntroduction": "19420315",
       "squadronWithdrawal": "19430917"
     },
     {
-      "type": "yak1s127",
+      "archType": "yak",
       "squadronIntroduction": "19430918",
       "squadronWithdrawal": "19450503"
     }
   ],
+    "conversionPeriods": [
+    {
+      "conversionStartDate": "19420301",
+      "conversionCompleteDate": "19420314"
+    },
+    {
+      "conversionStartDate": "19430901",
+      "conversionCompleteDate": "19430917"
+    }
+  ],  
+  
   "airfields": {
     "19411001": "Rjev",
     "19411020": "Staritsa",

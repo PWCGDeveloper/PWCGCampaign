@@ -59,7 +59,7 @@ public class SkinReportGenerator
     {
         for (String planeTypeDesc : skinsToWrite.keySet())
         {
-            PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(planeTypeDesc);
+            PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
             List<MissingSkin> missingSkinSet = skinsToWrite.get(planeTypeDesc);
             
             // The plane

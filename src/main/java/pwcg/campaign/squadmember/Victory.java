@@ -261,7 +261,7 @@ public class Victory implements Comparable<Victory>
     private String getPlaneDescription(String planeType) throws PWCGException
     {
         String planeName = "Enemy Aircraft";
-        PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(planeType);
+        PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeType);
         if (plane != null)
         {
             planeName = plane.getDisplayName();

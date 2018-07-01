@@ -6,16 +6,22 @@
   "skill": 60,
   "planeAssignments": [
     {
-      "type": "bf109e7",
+      "archType": "bf109e",
       "squadronIntroduction": "19411001",
-      "squadronWithdrawal": "19430420"
+      "squadronWithdrawal": "19430301"
     },
     {
-      "type": "fw190a5",
-      "squadronIntroduction": "19430321",
+      "archType": "fw190",
+      "squadronIntroduction": "19430302",
       "squadronWithdrawal": "19450601"
     }
   ],
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19430302",
+      "conversionCompleteDate": "19430321"
+    }
+  ],  
   "airfields": {
     "19411001": "Karpovo",
     "19411020": "Kolodezi",

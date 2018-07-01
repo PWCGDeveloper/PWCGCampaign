@@ -47,7 +47,7 @@ public class BoSPayloadFactory implements IPayloadFactory
 {
 	public IPlanePayload createPlanePayload(String planeTypeName) throws PWCGException 
 	{
-		PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(planeTypeName);
+		PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeName);
 		BosPlaneAttributeMapping attributeMapping = BoSPlaneAttributeFactory.createPlaneAttributeMap(planeTypeName);
 	    
         if (attributeMapping == BosPlaneAttributeMapping.BF109_E7)

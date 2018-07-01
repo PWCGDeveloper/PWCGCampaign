@@ -5,13 +5,8 @@
   "skill": 35,
   "planeAssignments": [
     {
-      "type": "spad7",
+      "archType": "spad",
       "squadronIntroduction": "19180201",
-      "squadronWithdrawal": "19181201"
-    },
-    {
-      "type": "spad13",
-      "squadronIntroduction": "19180401",
       "squadronWithdrawal": "19181201"
     }
   ],

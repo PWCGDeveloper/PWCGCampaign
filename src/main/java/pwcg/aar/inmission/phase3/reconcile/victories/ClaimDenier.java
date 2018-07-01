@@ -51,7 +51,7 @@ public class ClaimDenier
         }
         else
         {
-            PlaneType plane = planeFactory.getPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+            PlaneType plane = planeFactory.createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
             if (plane != null)
             {
                 planeDesc = plane.getDisplayName();

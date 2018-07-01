@@ -5,27 +5,17 @@
   "skill": 25,
   "planeAssignments": [
     {
-      "type": "fe2b",
+      "archType": "fe2",
       "squadronIntroduction": "19140801",
       "squadronWithdrawal": "19170201"
     },
     {
-      "type": "spad7early",
+      "archType": "spad",
       "squadronIntroduction": "19170201",
-      "squadronWithdrawal": "19170826"
-    },
-    {
-      "type": "spad7",
-      "squadronIntroduction": "19170505",
-      "squadronWithdrawal": "19180204"
-    },
-    {
-      "type": "spad13",
-      "squadronIntroduction": "19171201",
       "squadronWithdrawal": "19180331"
     },
     {
-      "type": "sopdolphin",
+      "archType": "sopdolphin",
       "squadronIntroduction": "19180401",
       "squadronWithdrawal": "19181201"
     }

@@ -1,5 +1,6 @@
 {
   "type": "hanhd1",
+  "archType": "hanhd1",
   "side": "ALLIED",
   "displayName": "Hanriot HD.1",
   "script": "LuaScripts\\WorldObjects\\hanhd1.txt",

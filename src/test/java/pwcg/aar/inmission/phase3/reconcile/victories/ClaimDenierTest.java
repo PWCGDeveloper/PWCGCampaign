@@ -78,7 +78,7 @@ public class ClaimDenierTest
 
         Mockito.when(playerDeclaration.isConfirmed()).thenReturn(false);
         Mockito.when(playerDeclaration.getAircraftType()).thenReturn("Albatros D.III");
-        Mockito.when(planeFactory.getPlaneTypeByAnyName(Matchers.<String>any())).thenReturn(planeType);
+        Mockito.when(planeFactory.createPlaneTypeByAnyName(Matchers.<String>any())).thenReturn(planeType);
         Mockito.when(planeType.getDisplayName()).thenReturn("Albatros D.III");
         
         ClaimDenier claimDenier = new ClaimDenier(campaign, planeFactory);
@@ -92,7 +92,7 @@ public class ClaimDenierTest
 
         Mockito.when(playerDeclaration.isConfirmed()).thenReturn(false);
         Mockito.when(playerDeclaration.getAircraftType()).thenReturn(PlaneType.BALLOON);
-        Mockito.when(planeFactory.getPlaneTypeByAnyName(Matchers.<String>any())).thenReturn(planeType);
+        Mockito.when(planeFactory.createPlaneTypeByAnyName(Matchers.<String>any())).thenReturn(planeType);
         Mockito.when(planeType.getDisplayName()).thenReturn("Albatros D.III");
         
         ClaimDenier claimDenier = new ClaimDenier(campaign, planeFactory);

@@ -1,5 +1,6 @@
 {
   "type": "s22",
+  "archType": "s22",
   "side": "ALLIED",
   "displayName": "Sikorsky S-22",
   "script": "LuaScripts\\WorldObjects\\s22.txt",

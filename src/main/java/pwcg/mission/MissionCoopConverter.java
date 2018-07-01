@@ -2,7 +2,7 @@ package pwcg.mission;
 
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.options.MissionOptions;
 
 /**
@@ -26,7 +26,7 @@ public class MissionCoopConverter
 
         for (Flight flight : missionFlightBuilder.getAllAerialFlights())
         {
-            for (Plane plane : flight.getPlanes())
+            for (PlaneMCU plane : flight.getPlanes())
             {
                 plane.setCoopStart(1);
             }

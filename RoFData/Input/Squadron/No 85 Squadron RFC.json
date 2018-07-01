@@ -5,7 +5,7 @@
   "skill": 75,
   "planeAssignments": [
     {
-      "type": "se5a",
+      "archType": "se5",
       "squadronIntroduction": "19180401",
       "squadronWithdrawal": "19181201"
     }

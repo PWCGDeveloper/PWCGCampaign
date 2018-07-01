@@ -5,37 +5,22 @@
   "skill": 35,
   "planeAssignments": [
     {
-      "type": "albatrosd2",
+      "archType": "albatrosd",
       "squadronIntroduction": "19170125",
-      "squadronWithdrawal": "19170622"
-    },
-    {
-      "type": "albatrosd2late",
-      "squadronIntroduction": "19170210",
-      "squadronWithdrawal": "19170814"
-    },
-    {
-      "type": "albatrosd3",
-      "squadronIntroduction": "19170517",
-      "squadronWithdrawal": "19171211"
-    },
-    {
-      "type": "albatrosd5",
-      "squadronIntroduction": "19170901",
       "squadronWithdrawal": "19181003"
-    },
+    },    
     {
-      "type": "pfalzd3a",
+      "archType": "pfalzd3a",
       "squadronIntroduction": "19180101",
       "squadronWithdrawal": "19181012"
     },
     {
-      "type": "fokkerdr1",
+      "archType": "fokkerdr1",
       "squadronIntroduction": "19180501",
       "squadronWithdrawal": "19181201"
     },
     {
-      "type": "fokkerd7",
+      "archType": "fokkerd7",
       "squadronIntroduction": "19180825",
       "squadronWithdrawal": "19181201"
     }

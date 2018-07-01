@@ -5,17 +5,17 @@
   "skill": 25,
   "planeAssignments": [
     {
-      "type": "fe2b",
+      "archType": "fe2",
       "squadronIntroduction": "19150801",
       "squadronWithdrawal": "19171010"
     },
     {
-      "type": "re8",
+      "archType": "re8",
       "squadronIntroduction": "19171001",
       "squadronWithdrawal": "19180323"
     },
     {
-      "type": "breguet14",
+      "archType": "breguet",
       "squadronIntroduction": "19180301",
       "squadronWithdrawal": "19180501"
     }

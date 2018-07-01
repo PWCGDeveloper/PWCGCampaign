@@ -39,7 +39,7 @@ public class CampaignPersonnelManagerReconTest
         filterSpecification.setSpecifySquadron(campaign.getSquadronId());
         
         Map<Integer, SquadronMember> squadronMembersNoPlayerNoAces = filter.getFilteredSquadronMembers(filterSpecification);
-        assert (squadronMembersNoPlayerNoAces.size() == (Squadron.SQUADRON_SIZE - 1));
+        assert (squadronMembersNoPlayerNoAces.size() == (Squadron.SQUADRON_STAFF_SIZE - 1));
         
         filterSpecification.setIncludePlayer(false);        
         filterSpecification.setIncludeAces(true);        
@@ -49,7 +49,7 @@ public class CampaignPersonnelManagerReconTest
         filterSpecification.setIncludePlayer(true);        
         filterSpecification.setIncludeAces(true);        
         Map<Integer, SquadronMember> squadronMembersWithPlayerWithAces = filter.getFilteredSquadronMembers(filterSpecification);
-        assert (squadronMembersWithPlayerWithAces.size() == Squadron.SQUADRON_SIZE);
+        assert (squadronMembersWithPlayerWithAces.size() == Squadron.SQUADRON_STAFF_SIZE);
     }
 }
 

@@ -9,13 +9,13 @@ public class PlayerClaimPlaneNameFinder
 {
     public String getShotDownPlaneDisplayName(PlayerVictoryDeclaration playerDeclaration, LogVictory resultVictory) throws PWCGException
     {
-        PlaneType shotDownPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(resultVictory.getVictim().getVehicleType());
+        PlaneType shotDownPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(resultVictory.getVictim().getVehicleType());
         if (shotDownPlane != null)
         {
             return shotDownPlane.getDisplayName();
         }
 
-        shotDownPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+        shotDownPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
         if (shotDownPlane != null)
         {
             return shotDownPlane.getDisplayName();

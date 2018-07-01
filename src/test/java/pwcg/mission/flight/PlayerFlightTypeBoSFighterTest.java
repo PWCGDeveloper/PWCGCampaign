@@ -11,7 +11,7 @@ import pwcg.mission.flight.escort.PlayerEscortFlight;
 import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBoS;
 
@@ -38,7 +38,7 @@ public class PlayerFlightTypeBoSFighterTest
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.PATROL);
-        for (Plane plane : flight.getPlanes())
+        for (PlaneMCU plane : flight.getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }
@@ -56,7 +56,7 @@ public class PlayerFlightTypeBoSFighterTest
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_PATROL);
-        for (Plane plane : flight.getPlanes())
+        for (PlaneMCU plane : flight.getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }
@@ -74,7 +74,7 @@ public class PlayerFlightTypeBoSFighterTest
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_CAP);
-        for (Plane plane : flight.getPlanes())
+        for (PlaneMCU plane : flight.getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }
@@ -92,7 +92,7 @@ public class PlayerFlightTypeBoSFighterTest
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.INTERCEPT);
-        for (Plane plane : flight.getPlanes())
+        for (PlaneMCU plane : flight.getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }
@@ -110,7 +110,7 @@ public class PlayerFlightTypeBoSFighterTest
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.OFFENSIVE);
-        for (Plane plane : flight.getPlanes())
+        for (PlaneMCU plane : flight.getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }
@@ -128,7 +128,7 @@ public class PlayerFlightTypeBoSFighterTest
         PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator();
         escortFlightValidator.validateEscortFlight(flight);
         assert (flight.getFlightType() == FlightTypes.ESCORT);
-        for (Plane plane : flight.getPlanes())
+        for (PlaneMCU plane : flight.getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }

@@ -7,12 +7,12 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 
 public class FormationGenerator
 {
     public List<Coordinate> createPlaneInitialPosition(
-                    List <Plane> planes, 
+                    List <PlaneMCU> planes, 
                     Coordinate startPosition,
                     Orientation orientation) throws PWCGException 
     {

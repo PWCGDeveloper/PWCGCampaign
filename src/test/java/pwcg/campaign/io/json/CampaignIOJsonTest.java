@@ -12,6 +12,8 @@ import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
+import pwcg.campaign.plane.Equipment;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -49,13 +51,52 @@ public class CampaignIOJsonTest
         campaign.open(CampaignCacheBase.TEST_CAMPAIGN_NAME);
         PWCGContextManager.getInstance().setCampaign(campaign);
 
+        validateCoreCampaign(campaign);        
+        validateFighterSquadronMembers(campaign);        
+        validateReconSquadronMembers(campaign);        
+    	validatePersonnelReplacements(campaign);
+    	validateFighterEquipment(campaign);
+    	validateReconEquipment(campaign);
+    }
+
+    private void validateCoreCampaign(Campaign campaign) throws PWCGException
+    {
         assert (campaign.getPlayer().getSerialNumber() == SerialNumber.PLAYER_SERIAL_NUMBER);
         assert (campaign.getDate().equals(DateUtils.getDateYYYYMMDD("19170501")));
         assert (campaign.getSquadronId() == 501011);
         assert (campaign.getName().equals(CampaignCacheBase.TEST_CAMPAIGN_NAME));
-        
+    }
+
+    private void validatePersonnelReplacements(Campaign campaign) throws PWCGException
+    {
+        IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
+    	ArmedService germanArmedService = armedServiceManager.getArmedServiceByName(RoFServiceManager.DEUTSCHE_LUFTSTREITKRAFTE_NAME, campaign.getDate());
+        PersonnelReplacementsService germanReplacements = campaign.getPersonnelManager().getPersonnelReplacementsService(germanArmedService.getServiceId());
+        assert(germanReplacements.getReplacements().getActiveCount(campaign.getDate()) == 20);
+        assert(germanReplacements.getDailyReplacementRate() == 15);
+        assert(germanReplacements.getLastReplacementDate().equals(campaign.getDate()));
+
+        ArmedService belgianArmedService = armedServiceManager.getArmedServiceByName(RoFServiceManager.AVIATION_MILITAIRE_BELGE_NAME, campaign.getDate());
+        PersonnelReplacementsService belgianReplacements = campaign.getPersonnelManager().getPersonnelReplacementsService(belgianArmedService.getServiceId());
+        assert(belgianReplacements.getReplacements().getActiveCount(campaign.getDate()) == 20);
+        assert(belgianReplacements.getDailyReplacementRate() == 1);
+    }
+
+    private void validateReconSquadronMembers(Campaign campaign) throws PWCGException
+    {
+        Map<Integer, SquadronMember> reconSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(101002).getActiveSquadronMembers().getSquadronMembers();
+        assert (reconSquadronPersonnel.size() == 12);
+        for (SquadronMember squadronMember : reconSquadronPersonnel.values())
+        {
+            assert (squadronMember.getSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER);
+            assert (squadronMember.getMissionFlown() > 0);
+        }
+    }
+
+    private void validateFighterSquadronMembers(Campaign campaign) throws PWCGException
+    {
         Map<Integer, SquadronMember> fighterSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(501011).getActiveSquadronMembersWithAces().getSquadronMembers();
-        assert (campaign.getSerialNumber().getNextSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
+        assert (campaign.getSerialNumber().getNextPilotSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
         assert (fighterSquadronPersonnel.size() >= 12);
         for (SquadronMember squadronMember : fighterSquadronPersonnel.values())
         {
@@ -75,29 +116,31 @@ public class CampaignIOJsonTest
                 assert (squadronMember.getMissionFlown() > 0);
             }
         }
-        
-        
-        Map<Integer, SquadronMember> reconSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(101002).getActiveSquadronMembers().getSquadronMembers();
-        assert (reconSquadronPersonnel.size() == 12);
-        for (SquadronMember squadronMember : reconSquadronPersonnel.values())
-        {
-            assert (squadronMember.getSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER);
-            assert (squadronMember.getMissionFlown() > 0);
-        }
-        
-    	IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
-    	ArmedService germanArmedService = armedServiceManager.getArmedServiceByName(RoFServiceManager.DEUTSCHE_LUFTSTREITKRAFTE_NAME, campaign.getDate());
-        PersonnelReplacementsService germanReplacements = campaign.getPersonnelManager().getPersonnelReplacementsService(germanArmedService.getServiceId());
-        assert(germanReplacements.getReplacements().getActiveCount(campaign.getDate()) == 20);
-        assert(germanReplacements.getDailyReplacementRate() == 10);
-        assert(germanReplacements.getLastReplacementDate().equals(campaign.getDate()));
-
-        ArmedService belgianArmedService = armedServiceManager.getArmedServiceByName(RoFServiceManager.AVIATION_MILITAIRE_BELGE_NAME, campaign.getDate());
-        PersonnelReplacementsService belgianReplacements = campaign.getPersonnelManager().getPersonnelReplacementsService(belgianArmedService.getServiceId());
-        assert(belgianReplacements.getReplacements().getActiveCount(campaign.getDate()) == 20);
-        assert(belgianReplacements.getDailyReplacementRate() == 1);
     }
 
+    private void validateFighterEquipment(Campaign campaign) throws PWCGException
+    {
+        Equipment fighterSquadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(501011);
+        assert (campaign.getSerialNumber().getNextPlaneSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
+        assert (fighterSquadronEquipment.getEquippedPlanes().size() >= 14);
+        for (EquippedPlane equippedPlane : fighterSquadronEquipment.getEquippedPlanes().values())
+        {
+            assert (equippedPlane.getSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER);
+            assert (equippedPlane.getArchType().equals("albatrosd"));
+        }
+    }
+
+    private void validateReconEquipment(Campaign campaign) throws PWCGException
+    {
+        Equipment reconSquadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(101002);
+        assert (campaign.getSerialNumber().getNextPlaneSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
+        assert (reconSquadronEquipment.getEquippedPlanes().size() >= 14);
+        for (EquippedPlane equippedPlane : reconSquadronEquipment.getEquippedPlanes().values())
+        {
+            assert (equippedPlane.getSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER);
+            assert (equippedPlane.getArchType().equals("re8") || equippedPlane.getArchType().equals("sopstr"));
+        }
+    }
 
     private void deleteCampaign()
     {

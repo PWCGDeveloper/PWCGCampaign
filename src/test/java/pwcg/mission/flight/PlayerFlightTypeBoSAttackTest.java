@@ -12,7 +12,7 @@ import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.attack.GroundAttackFlight;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBoS;
 
@@ -42,7 +42,7 @@ public class PlayerFlightTypeBoSAttackTest
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.GROUND_ATTACK);
-        for (Plane plane : flight.getPlanes())
+        for (PlaneMCU plane : flight.getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }

@@ -12,7 +12,7 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.MissionSkinGenerator;
 import pwcg.mission.Unit;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.ActualWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.mcu.BaseFlightMcu;
@@ -75,7 +75,7 @@ public class FlightFinalizer
         MissionSkinGenerator skinGenerator = new MissionSkinGenerator();
         if (flight.isPlayerFlight())
         {
-            for (Plane plane : flight.getPlanes())
+            for (PlaneMCU plane : flight.getPlanes())
             {
                 SquadronMember squadronMember = plane.getPilot();
                 skinGenerator.setSkinForPlayerSquadron(squadronMember, flight.getSquadron(), plane, flight.getCampaign().getDate());
@@ -83,7 +83,7 @@ public class FlightFinalizer
         }
         else
         {
-            for (Plane plane : flight.getPlanes())
+            for (PlaneMCU plane : flight.getPlanes())
             {
                 skinGenerator.setAISkin(flight.getSquadron(), plane, flight.getCampaign().getDate());
             }
@@ -172,7 +172,7 @@ public class FlightFinalizer
             {
                 for (int i = 0; i < flight.getPlanes().size(); ++i)
                 {
-                    Plane plane = flight.getPlanes().get(i);
+                    PlaneMCU plane = flight.getPlanes().get(i);
                     if (!plane.isPlayerPlane(flight.getCampaign().getPlayer().getSerialNumber()))
                     {
                         plane.createPlaneRemover(flight, flight.getMission().getMissionFlightBuilder().getPlayerFlight().getPlayerPlane());
@@ -203,7 +203,7 @@ public class FlightFinalizer
     {
         for (int index = 0; index < flight.getPlanes().size(); ++index)
         {
-            Plane plane = flight.getPlanes().get(index);
+            PlaneMCU plane = flight.getPlanes().get(index);
             
             plane.initializeAttackEntity(index);
             if (flight.getWaypointPackage() instanceof VirtualWaypointPackage)
@@ -224,12 +224,12 @@ public class FlightFinalizer
 
     private void resetPlaneInitialPositionForAirStarts() throws PWCGException 
     {
-        Plane flightLeader = flight.getFlightLeader();
+        PlaneMCU flightLeader = flight.getFlightLeader();
 
         int i = 0;
         Coordinate flightLeaderPos = null;
         Orientation flightLeaderOrient = null;
-        for (Plane plane : flight.getPlanes())
+        for (PlaneMCU plane : flight.getPlanes())
         {
             if (i == 0)
             {

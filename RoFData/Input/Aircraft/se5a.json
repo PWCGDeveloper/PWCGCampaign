@@ -1,5 +1,6 @@
 {
   "type": "se5a",
+  "archType": "se5",
   "side": "ALLIED",
   "displayName": "S.E.5a",
   "script": "LuaScripts\\WorldObjects\\se5a.txt",

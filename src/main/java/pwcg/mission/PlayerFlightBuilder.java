@@ -8,7 +8,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.factory.FlightFactory;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.ground.unittypes.infantry.GroundPillBoxFlareUnit;
 import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.group.FlareSequence;
@@ -59,7 +59,7 @@ public class PlayerFlightBuilder
         SquadronMember player = campaign.getPlayer();
                 
         boolean playerIsInFlight = false;
-        for (Plane plane : playerFlight.getPlanes())
+        for (PlaneMCU plane : playerFlight.getPlanes())
         {
             if (plane.getPilot().isPlayer())
             {
@@ -119,7 +119,7 @@ public class PlayerFlightBuilder
     {
         if (playerFlight != null)
         {
-            Plane playerPlane = playerFlight.getPlayerPlane();
+            PlaneMCU playerPlane = playerFlight.getPlayerPlane();
             if (playerPlane != null)
             {
                 McuCheckZone checkZone = selfDeactivatingCheckZone.getCheckZone();

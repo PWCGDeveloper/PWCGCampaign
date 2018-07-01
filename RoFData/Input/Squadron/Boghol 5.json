@@ -5,7 +5,7 @@
   "skill": 45,
   "planeAssignments": [
     {
-      "type": "gothag5",
+      "archType": "gotha",
       "squadronIntroduction": "19171101",
       "squadronWithdrawal": "19181201"
     }

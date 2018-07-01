@@ -6,16 +6,13 @@
   "skill": 60,
   "planeAssignments": [
     {
-      "type": "la5s8",
+      "archType": "lagg",
       "squadronIntroduction": "19420906",
-      "squadronWithdrawal": "19450503"
-    },
-    {
-      "type": "la5fns2",
-      "squadronIntroduction": "19431010",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19420906": "Grishin",
     "19421011": "Rahinka",

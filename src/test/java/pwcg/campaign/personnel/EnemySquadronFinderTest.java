@@ -47,7 +47,7 @@ public class EnemySquadronFinderTest
 
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(personnelManager.getSquadronPersonnel(Mockito.any())).thenReturn(squadronPersonnel);
-        Mockito.when(squadronPersonnel.isSquadronViable()).thenReturn(true);
+        Mockito.when(squadronPersonnel.isSquadronPersonnelViable()).thenReturn(true);
 
         Mockito.when(squadron.determineCurrentAirfieldAnyMap(Mockito.any())).thenReturn(squadronAirfield);
         Mockito.when(squadron.getCountry()).thenReturn(squadronCountry);

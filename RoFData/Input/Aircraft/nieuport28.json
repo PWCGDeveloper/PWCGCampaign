@@ -1,5 +1,6 @@
 {
   "type": "nieuport28",
+  "archType": "nieuport28",
   "side": "ALLIED",
   "displayName": "Nieuport 28.C1",
   "script": "LuaScripts\\WorldObjects\\nieuport28.txt",

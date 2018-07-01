@@ -10,7 +10,6 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 
@@ -24,6 +23,7 @@ public class PlaneType implements Cloneable
     public static final String BALLOON = "Balloon";
 
     protected String type = "";
+    protected String archType = "";
     protected String displayName = "";
     protected String script = "";
     protected String model = "";
@@ -41,14 +41,6 @@ public class PlaneType implements Cloneable
 
     public PlaneType()
     {
-        try
-        {
-            withdrawal = DateUtils.getEndOfWar();
-        }
-        catch (PWCGException e)
-        {
-            e.printStackTrace();
-        }
     }
 
     public PlaneType copy()
@@ -61,6 +53,7 @@ public class PlaneType implements Cloneable
     public PlaneType copyTemplate(PlaneType planeType)
     {
         planeType.type = this.type;
+        planeType.archType = this.archType;
         planeType.displayName = this.displayName;
         planeType.script = this.script;
         planeType.model = this.model;
@@ -103,6 +96,16 @@ public class PlaneType implements Cloneable
     public void setType(String type)
     {
         this.type = type;
+    }
+
+    public String getArchType()
+    {
+        return archType;
+    }
+
+    public void setArchType(String archType)
+    {
+        this.archType = archType;
     }
 
     public void setScript(String script)

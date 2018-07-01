@@ -1,5 +1,6 @@
 {
   "type": "sopcamel",
+  "archType": "sopcamel",
   "side": "ALLIED",
   "displayName": "Sopwith Camel",
   "script": "LuaScripts\\WorldObjects\\sopcamel.txt",

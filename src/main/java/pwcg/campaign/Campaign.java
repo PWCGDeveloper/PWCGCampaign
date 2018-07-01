@@ -37,8 +37,8 @@ public class Campaign
 
     private Mission currentMission = null;    
     private CampaignPersonnelManager personnelManager = null;
+    private CampaignEquipmentManager equipmentManager = new CampaignEquipmentManager();
     private SquadronMoveEvent squadronMoveEvent = new SquadronMoveEvent();
-    private SerialNumber serialNumber = new SerialNumber();
 
     public Campaign() 
     {
@@ -55,27 +55,8 @@ public class Campaign
         {
             return false;
         }
-
-        setNextSerialNumberForCampaign();
+        
         return true;
-    }
-        
-    private void setNextSerialNumberForCampaign() throws PWCGException
-    {
-        int lastSerialNumber = SerialNumber.AI_STARTING_SERIAL_NUMBER;
-        for (SquadronPersonnel squadronPersonnel : personnelManager.getAllSquadronPersonnel())
-        {
-            for (SquadronMember squadronMember : squadronPersonnel.getActiveSquadronMembers().getSquadronMembers().values())
-            {
-                if (squadronMember.getSerialNumber() > lastSerialNumber)
-                {
-                    lastSerialNumber = squadronMember.getSerialNumber();
-                }
-            }
-        }
-        
-        ++lastSerialNumber;
-        serialNumber.setLastSerialNumber(lastSerialNumber);
     }
 
     public void write() throws PWCGException
@@ -361,7 +342,7 @@ public class Campaign
 
     public SerialNumber getSerialNumber()
     {
-        return serialNumber;
+        return campaignData.getSerialNumber();
     }
 
     public boolean isGreatAce()
@@ -433,4 +414,19 @@ public class Campaign
 	{
 		this.squadronMoveEvent = squadronMoveEvent;
 	}
+
+    public CampaignEquipmentManager getEquipmentManager()
+    {
+        return equipmentManager;
+    }
+
+    public void setEquipmentManager(CampaignEquipmentManager equipmentManager)
+    {
+        this.equipmentManager = equipmentManager;
+    }
+
+    public void setPersonnelManager(CampaignPersonnelManager personnelManager)
+    {
+        this.personnelManager = personnelManager;
+    }
 }

@@ -9,7 +9,7 @@ import java.util.Map;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Unit;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.staticunits.AirfieldStaticGroup;
@@ -35,7 +35,7 @@ public abstract class GroundTargetAttackFlight extends Flight
         {
             getWaypointPackage().duplicateWaypointsForFlight(this);
            
-            for (Plane plane : getPlanes())
+            for (PlaneMCU plane : getPlanes())
             {
                 AttackMcuSequence attackMcuSequence = getAttackMcuSequences().get(plane.getIndex());
                 List<McuWaypoint>waypointsToLink = getWaypointPackage().getWaypointsForPlane(plane);
@@ -52,7 +52,7 @@ public abstract class GroundTargetAttackFlight extends Flight
         }
     }
 
-    protected void createWaypointTargetAssociationsWithAttack(Plane plane, List<McuWaypoint>waypointsToLink, AttackMcuSequence attackMcuSequence)
+    protected void createWaypointTargetAssociationsWithAttack(PlaneMCU plane, List<McuWaypoint>waypointsToLink, AttackMcuSequence attackMcuSequence)
     {
         linkWPToPlane(plane, waypointsToLink);
         
@@ -84,7 +84,7 @@ public abstract class GroundTargetAttackFlight extends Flight
     {
         if (isVirtual)
         {
-            for (Plane plane : planes)
+            for (PlaneMCU plane : planes)
             {
                 AttackMcuSequence attackMcuSequence = new AttackMcuSequence();
                 attackMcuSequence.createAttackArea(plane, name, targetCoords, altitude, attackTime);
@@ -113,7 +113,7 @@ public abstract class GroundTargetAttackFlight extends Flight
             
             if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
             {
-                Plane leadPlane = planes.get(0);
+                PlaneMCU leadPlane = planes.get(0);
                 allMissionPoints.add(attackMcuSequences.get(leadPlane.getIndex()).getAttackAreaMcu());
             }
         }
@@ -122,7 +122,7 @@ public abstract class GroundTargetAttackFlight extends Flight
     }
 
     @Override
-    public List<BaseFlightMcu> getAllMissionPointsForPlane(Plane plane)
+    public List<BaseFlightMcu> getAllMissionPointsForPlane(PlaneMCU plane)
     {
         List<BaseFlightMcu> allMissionPointsForPlane = new ArrayList<BaseFlightMcu>();
         

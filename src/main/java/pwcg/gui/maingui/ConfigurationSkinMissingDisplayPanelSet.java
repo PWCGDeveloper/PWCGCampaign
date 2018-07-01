@@ -174,7 +174,7 @@ public class ConfigurationSkinMissingDisplayPanelSet extends PwcgGuiContext impl
                 
         for (String planeTypeDesc : selectedMissingSkins.keySet())
         {
-            PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(planeTypeDesc);
+            PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
             List<MissingSkin> missingSkinSet = selectedMissingSkins.get(planeTypeDesc);
             
             if (missingSkinSet.size() > 0)

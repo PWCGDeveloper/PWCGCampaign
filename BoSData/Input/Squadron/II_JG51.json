@@ -6,31 +6,13 @@
   "skill": 90,
   "planeAssignments": [
     {
-      "type": "bf109f2",
-      "squadronIntroduction": "19410108",
-      "squadronWithdrawal": "19420414"
-    },
-    {
-      "type": "bf109f4",
-      "squadronIntroduction": "19411028",
-      "squadronWithdrawal": "19421001"
-    },
-    {
-      "type": "bf109g2",
-      "squadronIntroduction": "19420901",
-      "squadronWithdrawal": "19430303"
-    },
-    {
-      "type": "bf109g4",
-      "squadronIntroduction": "19430110",
-      "squadronWithdrawal": "19450503"
-    },
-    {
-      "type": "bf109g6",
-      "squadronIntroduction": "19430714",
+      "archType": "bf109",
+      "squadronIntroduction": "19411001",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19411001": "Losinski",
     "19411020": "Kolodezi",

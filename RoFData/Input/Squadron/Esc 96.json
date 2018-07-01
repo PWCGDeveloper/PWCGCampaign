@@ -5,18 +5,13 @@
   "skill": 40,
   "planeAssignments": [
     {
-      "type": "nieuport17",
+      "archType": "nieuport",
       "squadronIntroduction": "19170217",
       "squadronWithdrawal": "19170710"
     },
     {
-      "type": "spad7",
+      "archType": "spad",
       "squadronIntroduction": "19170701",
-      "squadronWithdrawal": "19180301"
-    },
-    {
-      "type": "spad13",
-      "squadronIntroduction": "19180201",
       "squadronWithdrawal": "19181201"
     }
   ],

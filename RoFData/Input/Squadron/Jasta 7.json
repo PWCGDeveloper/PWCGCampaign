@@ -5,59 +5,34 @@
   "skill": 80,
   "planeAssignments": [
     {
-      "type": "fokkere3",
+      "archType": "fokkere",
       "squadronIntroduction": "19151001",
       "squadronWithdrawal": "19160830"
     },
     {
-      "type": "halberstadtd2",
+      "archType": "halberstadtd",
       "squadronIntroduction": "19160715",
       "squadronWithdrawal": "19161031"
     },
     {
-      "type": "albatrosd2",
+      "archType": "albatrosd",
       "squadronIntroduction": "19160926",
-      "squadronWithdrawal": "19161118"
-    },
-    {
-      "type": "albatrosd2late",
-      "squadronIntroduction": "19161105",
-      "squadronWithdrawal": "19170401"
-    },
-    {
-      "type": "albatrosd3",
-      "squadronIntroduction": "19170201",
-      "squadronWithdrawal": "19171101"
-    },
-    {
-      "type": "albatrosd5",
-      "squadronIntroduction": "19170901",
       "squadronWithdrawal": "19180701"
     },
     {
-      "type": "pfalzd3a",
+      "archType": "pfalzd3a",
       "squadronIntroduction": "19170920",
       "squadronWithdrawal": "19171115"
     },
     {
-      "type": "pfalzd3a",
-      "squadronIntroduction": "19171115",
-      "squadronWithdrawal": "19180605"
-    },
-    {
-      "type": "fokkerdr1",
+      "archType": "fokkerdr1",
       "squadronIntroduction": "19180301",
       "squadronWithdrawal": "19180627"
     },
     {
-      "type": "fokkerd7",
+      "archType": "fokkerd7",
       "squadronIntroduction": "19180601",
-      "squadronWithdrawal": "19181007"
-    },
-    {
-      "type": "fokkerd7f",
-      "squadronIntroduction": "19180810",
-      "squadronWithdrawal": "19181201"
+      "squadronWithdrawal": "19180428"
     }
   ],
   "airfields": {

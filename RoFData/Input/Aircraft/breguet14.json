@@ -1,5 +1,6 @@
 {
   "type": "breguet14",
+  "archType": "breguet",
   "side": "ALLIED",
   "displayName": "Breguet 14.B2",
   "script": "LuaScripts\\WorldObjects\\breguet14.txt",

@@ -1,5 +1,6 @@
 {
   "type": "mc202s8",
+  "archType": "mc200",
   "side": "AXIS",
   "displayName": "MC.202 ser.VIII",
   "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
@@ -15,6 +16,6 @@
     "ROLE_FIGHTER",
     "ROLE_ATTACK"
   ],
-  "introduction": "19410301",
+  "introduction": "19410601",
   "withdrawal": "19450503"
 }

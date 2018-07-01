@@ -5,12 +5,12 @@
   "skill": 40,
   "planeAssignments": [
     {
-      "type": "fe2b",
+      "archType": "fe2",
       "squadronIntroduction": "19161111",
       "squadronWithdrawal": "19170501"
     },
     {
-      "type": "hp400",
+      "archType": "hp",
       "squadronIntroduction": "19170501",
       "squadronWithdrawal": "19181201"
     }

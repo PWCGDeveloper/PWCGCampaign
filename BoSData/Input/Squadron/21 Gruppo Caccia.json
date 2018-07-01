@@ -6,11 +6,13 @@
   "skill": 55,
   "planeAssignments": [
     {
-      "type": "mc202s8",
+      "archType": "mc200",
       "squadronIntroduction": "19420101",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19420801": "Safronov",
     "19420906": "Abganerovo",

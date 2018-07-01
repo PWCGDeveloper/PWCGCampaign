@@ -1,5 +1,6 @@
 {
   "type": "fokkerdr1",
+  "archType": "fokkerdr1",
   "side": "AXIS",
   "displayName": "Fokker Dr.I",
   "script": "LuaScripts\\WorldObjects\\fokkerdr1.txt",

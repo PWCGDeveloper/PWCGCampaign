@@ -28,8 +28,8 @@ public class PlayerClaimResolverFirm
                     if (resultVictory.getVictim() instanceof LogPlane)
                     {
                         LogPlane victimPlane = (LogPlane)resultVictory.getVictim();
-                        PlaneType shotDownPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(victimPlane.getVehicleType());
-                        PlaneType claimedPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+                        PlaneType shotDownPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(victimPlane.getVehicleType());
+                        PlaneType claimedPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
         
                         if (shotDownPlane == null || claimedPlane == null)
                         {
@@ -57,7 +57,7 @@ public class PlayerClaimResolverFirm
         {
             Role victimApproximateRole = Role.getApproximateRole(resultVictory.getVictim().getRole());
             
-            PlaneType declaredPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+            PlaneType declaredPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
             if (declaredPlane != null)
             {
                 Role declarationApproximateRole = Role.getApproximateRole(declaredPlane.determinePrimaryRole());

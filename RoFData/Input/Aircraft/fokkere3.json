@@ -1,5 +1,6 @@
 {
   "type": "fokkere3",
+  "archType": "fokkere",
   "side": "AXIS",
   "displayName": "Fokker E.III",
   "script": "LuaScripts\\WorldObjects\\fokkere3.txt",

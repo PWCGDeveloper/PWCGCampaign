@@ -48,7 +48,7 @@ public class Ju87G2PayloadTest
 	@Test
 	public void payloadNormalTest() throws PWCGException
 	{
-		PlaneType ju87D3 = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByType(BosPlaneAttributeMapping.JU87_D3.getPlaneType());
+		PlaneType ju87D3 = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.JU87_D3.getPlaneType());
 		IPayloadFactory payloadFactory = PWCGContextManager.getInstance().getPayloadFactory();
     	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(ju87D3.getType());
     	testPatrolPayload(payloadGenerator);
@@ -59,7 +59,7 @@ public class Ju87G2PayloadTest
 	@Test
 	public void payloadJu87G2F2Test() throws PWCGException
 	{
-		PlaneType ju87G2 = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByType(BosPlaneAttributeMapping.JU87_D3.getPlaneType());
+		PlaneType ju87G2 = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.JU87_D3.getPlaneType());
 		IPayloadFactory payloadFactory = PWCGContextManager.getInstance().getPayloadFactory();
     	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(ju87G2.getType());
     	testGroundAttackPayload(payloadGenerator);

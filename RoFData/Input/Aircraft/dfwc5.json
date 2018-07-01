@@ -1,5 +1,6 @@
 {
   "type": "dfwc5",
+  "archType": "dfwc",
   "side": "AXIS",
   "displayName": "DFW C.V",
   "script": "LuaScripts\\WorldObjects\\dfwc5.txt",

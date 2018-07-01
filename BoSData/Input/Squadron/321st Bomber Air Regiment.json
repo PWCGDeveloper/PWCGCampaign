@@ -6,16 +6,22 @@
   "skill": 25,
   "planeAssignments": [
     {
-      "type": "pe2s35",
+      "archType": "pe2",
       "squadronIntroduction": "19410801",
       "squadronWithdrawal": "19420731"
     },
     {
-      "type": "a20b",
+      "archType": "a20",
       "squadronIntroduction": "19420801",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19420715",
+      "conversionCompleteDate": "19420731"
+    }
+  ],  
   "airfields": {
     "19411001": "Kolodezi",
     "19411020": "Simonkovo",

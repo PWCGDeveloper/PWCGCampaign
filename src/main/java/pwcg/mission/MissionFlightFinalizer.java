@@ -8,7 +8,7 @@ import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.balloondefense.AiBalloonDefenseFlight;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.mcu.McuCheckZone;
@@ -98,7 +98,7 @@ public class MissionFlightFinalizer
 
     private void triggerOtherFlightCZFromMyFlight(Flight flight) throws PWCGException 
     {
-        Plane playerPlane = missionFlightBuilder.getPlayerFlight().getPlayerPlane();
+        PlaneMCU playerPlane = missionFlightBuilder.getPlayerFlight().getPlayerPlane();
         if (playerPlane != null)
         {
             // Makes linked activate on the players plane rather than any coalition

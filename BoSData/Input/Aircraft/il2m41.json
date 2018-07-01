@@ -1,5 +1,6 @@
 {
   "type": "il2m41",
+  "archType": "il2",
   "side": "ALLIED",
   "displayName": "Il-2 mod.1941",
   "script": "LuaScripts\\WorldObjects\\Planes\\il2m41.txt",
@@ -14,6 +15,6 @@
   "roles": [
     "ROLE_ATTACK"
   ],
-  "introduction": "19410101",
-  "withdrawal": "19450503"
+  "introduction": "19410601",
+  "withdrawal": "19420701"
 }

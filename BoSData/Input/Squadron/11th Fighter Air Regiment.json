@@ -6,21 +6,22 @@
   "skill": 35,
   "planeAssignments": [
     {
-      "type": "yak1s69",
+      "archType": "lagg",
       "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19430301"
+    },
+    {
+      "archType": "yak",
+      "squadronIntroduction": "19430302",
       "squadronWithdrawal": "19430630"
-    },
-    {
-      "type": "yak1s127",
-      "squadronIntroduction": "19430415",
-      "squadronWithdrawal": "19450503"
-    },
-    {
-      "type": "yak7bs36",
-      "squadronIntroduction": "19430918",
-      "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19430301",
+      "conversionCompleteDate": "19430314"
+    }
+  ],  
   "airfields": {
     "19411001": "Zenino",
     "19411020": "Bahmutovo",

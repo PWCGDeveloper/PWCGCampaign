@@ -23,6 +23,7 @@ import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.RandomNumberGenerator;
 
 public class MissionLogEventsBuilder
 {
@@ -82,9 +83,10 @@ public class MissionLogEventsBuilder
         for (SquadronMember pilot : preliminaryData.getCampaignMembersInMission().getSquadronMembers().values())
         {
             SquadronPlaneAssignment planeAssignment = AARCoordinatorMissionTest.getPlaneForSquadron(pilot.getSquadronId());
-            
             PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
-            PlaneType planeType = planeTypeFactory.getPlaneById(planeAssignment.getType());
+            List<PlaneType> planeTypesForSquadron = planeTypeFactory.createActivePlaneTypesForArchType(planeAssignment.getArchType(), campaign.getDate());
+            int index = RandomNumberGenerator.getRandom(planeTypesForSquadron.size());
+            PlaneType planeType = planeTypesForSquadron.get(index);
             AType12 planeSpawn = new AType12(
                     makeNextId(),
                     planeType.getDisplayName(),

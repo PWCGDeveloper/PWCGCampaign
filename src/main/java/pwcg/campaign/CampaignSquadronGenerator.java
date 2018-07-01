@@ -2,6 +2,9 @@ package pwcg.campaign;
 
 import pwcg.campaign.personnel.InitialSquadronStaffer;
 import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.plane.Equipment;
+import pwcg.campaign.plane.EquipmentWeightCalculator;
+import pwcg.campaign.plane.InitialSquadronEquipper;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
@@ -19,9 +22,10 @@ public class CampaignSquadronGenerator
     public void createSquadron(CampaignGeneratorModel generatorModel) throws PWCGException
     {
         createSquadronStaff(generatorModel);
+        createSquadronEquipment(generatorModel);
     }
 
-    private void createSquadronStaff(CampaignGeneratorModel generatorModel) throws PWCGException
+    public void createSquadronStaff(CampaignGeneratorModel generatorModel) throws PWCGException
     {
         InitialSquadronStaffer squadronStaffer = new InitialSquadronStaffer(campaign, squadron);
         if (squadron.getSquadronId() == campaign.getSquadronId())
@@ -30,5 +34,13 @@ public class CampaignSquadronGenerator
         }
         SquadronPersonnel squadronPersonnel = squadronStaffer.generatePersonnel();
         campaign.getPersonnelManager().addPersonnelForSquadron(squadronPersonnel);
+    }
+
+    public void createSquadronEquipment(CampaignGeneratorModel generatorModel) throws PWCGException
+    {
+        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign);
+        InitialSquadronEquipper equipmentStaffer = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
+        Equipment squadronEquipment = equipmentStaffer.generateEquipment();
+        campaign.getEquipmentManager().addEquipmentForSquadron(squadron.getSquadronId(), squadronEquipment);
     }
 }

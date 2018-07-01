@@ -16,8 +16,8 @@ public class PlayerClaimResolverFuzzy
         
         if (!resultVictory.isConfirmed())
         {
-            PlaneType shotDownPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(resultVictory.getVictim().getVehicleType());
-            PlaneType claimedPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+            PlaneType shotDownPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(resultVictory.getVictim().getVehicleType());
+            PlaneType claimedPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
                 
             if (shotDownPlane != null && claimedPlane != null)
             {
@@ -37,7 +37,7 @@ public class PlayerClaimResolverFuzzy
         if (!resultVictory.isConfirmed())
         {
             Role victimApproximateRole = Role.getApproximateRole(resultVictory.getVictim().getRole());
-            PlaneType declaredPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+            PlaneType declaredPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
             if (declaredPlane != null)
             {
                 Role declarationApproximateRole = Role.getApproximateRole(declaredPlane.determinePrimaryRole());

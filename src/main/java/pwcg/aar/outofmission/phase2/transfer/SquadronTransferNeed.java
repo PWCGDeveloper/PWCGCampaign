@@ -23,7 +23,7 @@ public class SquadronTransferNeed
         int activeSquadronSize = squadronPersonnel.getActiveSquadronMembersWithAces().getActiveCount(campaign.getDate());
         int getRecentlyInactive = squadronPersonnel.getRecentlyInactiveSquadronMembers().getActiveCount(campaign.getDate());
       
-        transfersNeeded = Squadron.SQUADRON_SIZE -  activeSquadronSize - getRecentlyInactive;
+        transfersNeeded = Squadron.SQUADRON_STAFF_SIZE -  activeSquadronSize - getRecentlyInactive;
     }
     
     public int getSquadronId()

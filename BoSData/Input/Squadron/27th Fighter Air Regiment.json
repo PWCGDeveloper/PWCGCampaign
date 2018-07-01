@@ -6,16 +6,22 @@
   "skill": 40,
   "planeAssignments": [
     {
-      "type": "mig3s24",
+      "archType": "mig3",
       "squadronIntroduction": "19410801",
       "squadronWithdrawal": "19420819"
     },
     {
-      "type": "la5s8",
+      "archType": "lagg",
       "squadronIntroduction": "19420820",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19420803",
+      "conversionCompleteDate": "19420819"
+    }
+  ],  
   "airfields": {
     "19411001": "Sloboda",
     "19411020": "Ruza",

@@ -1,5 +1,6 @@
 {
   "type": "mig3s24",
+  "archType": "mig3",
   "side": "ALLIED",
   "displayName": "MiG-3 ser.24",
   "script": "LuaScripts\\WorldObjects\\Planes\\mig3s24.txt",
@@ -15,6 +16,6 @@
     "ROLE_FIGHTER",
     "ROLE_ATTACK"
   ],
-  "introduction": "19410301",
+  "introduction": "19410601",
   "withdrawal": "19450503"
 }

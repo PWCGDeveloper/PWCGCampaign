@@ -10,7 +10,7 @@ import pwcg.core.location.Orientation;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class StrategicSupportingFlight extends BombingFlight
@@ -77,7 +77,7 @@ public class StrategicSupportingFlight extends BombingFlight
 		createPlanePositionAirStart(startCoords, new Orientation());
 		
 		// This is AI only. Reset fuel for burn
-		for (Plane plane : planes)
+		for (PlaneMCU plane : planes)
 		{
             plane.setFuel(.6);
 		}

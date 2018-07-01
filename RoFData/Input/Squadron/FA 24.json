@@ -5,7 +5,7 @@
   "skill": 50,
   "planeAssignments": [
     {
-      "type": "rolc2a",
+      "archType": "rolc",
       "squadronIntroduction": "19160601",
       "squadronWithdrawal": "19181201"
     }

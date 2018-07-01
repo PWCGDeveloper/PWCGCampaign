@@ -1,5 +1,6 @@
 {
   "type": "pe2s35",
+  "archType": "pe2",
   "side": "ALLIED",
   "displayName": "Pe-2 ser.35",
   "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
@@ -15,6 +16,6 @@
     "ROLE_BOMB",
     "ROLE_ATTACK"
   ],
-  "introduction": "19410301",
-  "withdrawal": "19450503"
+  "introduction": "19410601",
+  "withdrawal": "19420801"
 }

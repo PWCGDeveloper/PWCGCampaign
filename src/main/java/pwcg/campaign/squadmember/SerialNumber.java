@@ -6,15 +6,18 @@ public class SerialNumber
     public static final int ACE_STARTING_SERIAL_NUMBER = 100000;
     public static final int PLAYER_SERIAL_NUMBER = 1000000;
     public static final int AI_STARTING_SERIAL_NUMBER = 3000000;
+    public static final int PLANE_STARTING_SERIAL_NUMBER = 5000000;
     
-    private int nextSerialNumber = SerialNumber.AI_STARTING_SERIAL_NUMBER;
+    private int nextPilotSerialNumber = SerialNumber.AI_STARTING_SERIAL_NUMBER;
+    private int nextPlaneSerialNumber = SerialNumber.PLANE_STARTING_SERIAL_NUMBER;
 
     public enum SerialNumberClassification
     {
         NONE,
         PLAYER,
         ACE,
-        AI
+        AI, 
+        PLANE
     }
 
     public static SerialNumberClassification getSerialNumberClassification (int serialNumber)
@@ -31,23 +34,41 @@ public class SerialNumber
         {
             return SerialNumberClassification.PLAYER;
         }
-        else
+        else if (serialNumber < PLANE_STARTING_SERIAL_NUMBER)
         {
             return SerialNumberClassification.AI;
         }
-    }
-
-    public int getNextSerialNumber()
-    {
-        ++nextSerialNumber;
-        return nextSerialNumber;
-    }
-
-    public void setLastSerialNumber(int possibleNextSerialNumber)
-    {
-        if (possibleNextSerialNumber >= nextSerialNumber)
+        else
         {
-            this.nextSerialNumber = possibleNextSerialNumber + 1;
+            return SerialNumberClassification.PLANE;
+        }
+    }
+
+    public int getNextPilotSerialNumber()
+    {
+        ++nextPilotSerialNumber;
+        return nextPilotSerialNumber;
+    }
+
+    public void setLastPilotSerialNumber(int possibleNextSerialNumber)
+    {
+        if (possibleNextSerialNumber >= nextPilotSerialNumber)
+        {
+            this.nextPilotSerialNumber = possibleNextSerialNumber + 1;
+        }
+    }
+
+    public int getNextPlaneSerialNumber()
+    {
+        ++nextPlaneSerialNumber;
+        return nextPlaneSerialNumber;
+    }
+
+    public void setLastPlaneSerialNumber(int possibleNextSerialNumber)
+    {
+        if (possibleNextSerialNumber >= nextPlaneSerialNumber)
+        {
+            this.nextPlaneSerialNumber = possibleNextSerialNumber + 1;
         }
     }
 }

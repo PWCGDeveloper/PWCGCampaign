@@ -48,7 +48,7 @@ public class CampaignUpdateNewSquadronStafferTest
 
             SquadronMembers squadronMembers = squadronPersonnel.getActiveSquadronMembers();
             assert(squadronMembers != null);
-            assert(squadronMembers.getActiveCount(campaign.getDate()) >= Squadron.SQUADRON_SIZE);
+            assert(squadronMembers.getActiveCount(campaign.getDate()) >= Squadron.SQUADRON_STAFF_SIZE);
         }
     }
 }

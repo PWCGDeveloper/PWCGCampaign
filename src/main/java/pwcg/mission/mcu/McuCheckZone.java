@@ -10,7 +10,7 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 
 
 public class McuCheckZone extends BaseFlightMcu
@@ -49,10 +49,10 @@ public class McuCheckZone extends BaseFlightMcu
             Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight();
             if (myFlight != null)
             {
-                List<Plane> planes = myFlight.getPlanes();
+                List<PlaneMCU> planes = myFlight.getPlanes();
                 if (planes != null)
                 {
-                    Plane plane = myFlight.getPlanes().get(0);
+                    PlaneMCU plane = myFlight.getPlanes().get(0);
                     if (plane != null)
                     {
                         planeCoalitions.clear();;

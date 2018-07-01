@@ -2,11 +2,12 @@ package pwcg.campaign.squadron;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.plane.PlaneArchType;
 import pwcg.core.exception.PWCGException;
 
 public class FrenchSquadronAbbreviationHelper
@@ -25,11 +26,10 @@ public class FrenchSquadronAbbreviationHelper
         {
             for (String planeManufacturer : frenchAbbreviations.keySet())
             {
-                PlaneType plane = squadron.determineCurrentAircraftNoCheck(date);
-                if (plane != null)
+                List<PlaneArchType> planeArchType = squadron.determineCurrentAircraftArchTypes(date);
+                if (planeArchType != null)
                 {
-                    String planeName = plane.getDisplayName();
-                    if (planeName.contains(planeManufacturer))
+                    if (planeArchType.contains(planeManufacturer))
                     {
                         int index = displayName.indexOf(" ");
                         String newDisplayName = displayName.substring(0, index+1);
@@ -46,16 +46,10 @@ public class FrenchSquadronAbbreviationHelper
 
     private void initializeFrenchAbbreviations()
     {
-        frenchAbbreviations.put("Nieuport", "N.");
-        frenchAbbreviations.put("SPAD", "SPA.");
-        frenchAbbreviations.put("Sopwith", "SOP.");
-        frenchAbbreviations.put("Salmson", "SAL.");
-        frenchAbbreviations.put("Breguet", "BR.");
-        frenchAbbreviations.put("Voisin", "VB.");
-        frenchAbbreviations.put("Farman", "MF.");
-        frenchAbbreviations.put("Dorand", "AR.");
-        frenchAbbreviations.put("Caudron", "C.");
-        frenchAbbreviations.put("Morane Saulnier", "MS.");
+        frenchAbbreviations.put("nieuport", "N.");
+        frenchAbbreviations.put("spad", "SPA.");
+        frenchAbbreviations.put("sop", "SOP.");
+        frenchAbbreviations.put("breguet", "BR.");
     }
 
 }

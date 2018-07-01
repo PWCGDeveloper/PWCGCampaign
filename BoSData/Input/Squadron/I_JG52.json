@@ -6,31 +6,13 @@
   "skill": 85,
   "planeAssignments": [
     {
-      "type": "bf109f2",
-      "squadronIntroduction": "19410801",
-      "squadronWithdrawal": "19420525"
-    },
-    {
-      "type": "bf109f4",
-      "squadronIntroduction": "19411201",
-      "squadronWithdrawal": "19421223"
-    },
-    {
-      "type": "bf109g2",
-      "squadronIntroduction": "19420922",
-      "squadronWithdrawal": "19430503"
-    },
-    {
-      "type": "bf109g4",
-      "squadronIntroduction": "19430114",
-      "squadronWithdrawal": "19450503"
-    },
-    {
-      "type": "bf109g6",
-      "squadronIntroduction": "19430714",
+      "archType": "bf109",
+      "squadronIntroduction": "19411001",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19411001": "Dugino",
     "19411020": "Sychevka",

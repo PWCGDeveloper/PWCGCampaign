@@ -1,5 +1,6 @@
 {
   "type": "bristolf2bf3",
+  "archType": "bristolf2b",
   "side": "ALLIED",
   "displayName": "Bristol F2B (F.III)",
   "script": "LuaScripts\\WorldObjects\\bristolf2bf3.txt",
@@ -18,6 +19,6 @@
     "ROLE_ATTACK",
     "ROLE_ARTILLERY_SPOT"
   ],
-  "introduction": "19170801",
+  "introduction": "19180801",
   "withdrawal": "19181111"
 }

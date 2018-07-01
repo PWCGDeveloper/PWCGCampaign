@@ -7,7 +7,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.BaseFlightMcu;
 
@@ -21,7 +21,7 @@ public class VirtualWaypointPlotter
     public List<VirtualWayPointCoordinate> plotCoordinatesByMinute(Flight flight) throws PWCGException 
     {        
         List<BaseFlightMcu> allMissionPoints = flight.getAllMissionPoints();
-        Plane leadPlane = flight.getPlanes().get(0);
+        PlaneMCU leadPlane = flight.getPlanes().get(0);
 
         // For the case where a mission has no WPs
         if (allMissionPoints == null || allMissionPoints.size() == 0)
@@ -141,7 +141,7 @@ public class VirtualWaypointPlotter
     {
         List<VirtualWayPointCoordinate> delayedStartLeg = new ArrayList<VirtualWayPointCoordinate>();
         
-        Plane leadPlane = flight.getPlanes().get(0);
+        PlaneMCU leadPlane = flight.getPlanes().get(0);
 
         // Plane start is delayed - just hover at the start point
         for (int i = 0; i < flight.getMissionStartTimeAdjustment(); ++i)
@@ -208,7 +208,7 @@ public class VirtualWaypointPlotter
     {
         List<VirtualWayPointCoordinate> circlingFlightPath = new ArrayList<VirtualWayPointCoordinate>();
         
-        Plane leadPlane = flight.getPlanes().get(0);
+        PlaneMCU leadPlane = flight.getPlanes().get(0);
 
         // Plane start is delayed - just hover at the start point
         for (int i = 0; i < 60; ++i)

@@ -6,11 +6,13 @@
   "skill": 90,
   "planeAssignments": [
     {
-      "type": "ju523mg4e",
+      "archType": "ju52",
       "squadronIntroduction": "19400101",
       "squadronWithdrawal": "19450601"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19411001": "Vjazma",
     "19411020": "Temkino",

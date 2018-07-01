@@ -34,7 +34,7 @@ public class InitialSquadronStafferTest
         InitialSquadronStaffer initialSquadronStaffer = new InitialSquadronStaffer(campaign, squadron);
         SquadronPersonnel squadronPersonnel = initialSquadronStaffer.generatePersonnel();
         
-        assert(squadronPersonnel.getActiveSquadronMembersWithAces().getActiveCount(campaign.getDate()) == Squadron.SQUADRON_SIZE);
+        assert(squadronPersonnel.getActiveSquadronMembersWithAces().getActiveCount(campaign.getDate()) == Squadron.SQUADRON_STAFF_SIZE);
     }
     
     @Test
@@ -49,7 +49,7 @@ public class InitialSquadronStafferTest
         InitialSquadronStaffer initialSquadronStaffer = new InitialSquadronStaffer(campaign, squadron);
         SquadronPersonnel squadronPersonnel = initialSquadronStaffer.generatePersonnel();
         
-        assert(squadronPersonnel.getActiveSquadronMembersWithAces().getActiveCount(campaign.getDate()) == Squadron.SQUADRON_SIZE);
+        assert(squadronPersonnel.getActiveSquadronMembersWithAces().getActiveCount(campaign.getDate()) == Squadron.SQUADRON_STAFF_SIZE);
     }
     
     @Test
@@ -64,7 +64,7 @@ public class InitialSquadronStafferTest
         InitialSquadronStaffer initialSquadronStaffer = new InitialSquadronStaffer(campaign, squadron);
         SquadronPersonnel squadronPersonnel = initialSquadronStaffer.generatePersonnel();
         
-        assert(squadronPersonnel.getActiveSquadronMembersWithAces().getActiveCount(campaign.getDate()) == Squadron.SQUADRON_SIZE);
+        assert(squadronPersonnel.getActiveSquadronMembersWithAces().getActiveCount(campaign.getDate()) == Squadron.SQUADRON_STAFF_SIZE);
     }
 
 }

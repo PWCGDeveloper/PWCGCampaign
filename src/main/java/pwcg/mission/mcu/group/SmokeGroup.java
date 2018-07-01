@@ -12,7 +12,7 @@ import pwcg.core.utils.Logger;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.McuDeactivate;
@@ -57,7 +57,7 @@ public class SmokeGroup
         missionBeginUnit.initialize(position.copy());
 
         Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight();
-        Plane plane = playerFlight.getPlayerPlane();
+        PlaneMCU plane = playerFlight.getPlayerPlane();
         
         addSmokeEffect(requestedSmokeEffect, smokeEffectPosition);
         
@@ -185,14 +185,14 @@ public class SmokeGroup
         }
     }
 
-    private void buildDeactivate(Plane plane)
+    private void buildDeactivate(PlaneMCU plane)
     {
         deactivateCheckZone = new McuCheckZone(plane.getLinkTrId());
         deactivateCheckZone.setCloser(0);
         deactivateCheckZone.setZone(25000);
     }
 
-    private void buildActivate(Plane plane)
+    private void buildActivate(PlaneMCU plane)
     {
         activateCheckZone = new McuCheckZone(plane.getLinkTrId());
         activateCheckZone.setCloser(1);

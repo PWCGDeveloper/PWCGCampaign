@@ -6,16 +6,22 @@
   "skill": 35,
   "planeAssignments": [
     {
-      "type": "i16t24",
+      "archType": "i16",
       "squadronIntroduction": "19420101",
-      "squadronWithdrawal": "19430228"
+      "squadronWithdrawal": "19430314"
     },
     {
-      "type": "spitfiremkvb",
-      "squadronIntroduction": "19430301",
+      "archType": "spitfire",
+      "squadronIntroduction": "19430315",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19430315",
+      "conversionCompleteDate": "19430331"
+    }
+  ],  
   "airfields": {
     "19420801": "Bol. Rossoshka",
     "19420906": "Svetly Yar",

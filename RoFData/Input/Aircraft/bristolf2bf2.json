@@ -1,5 +1,6 @@
 {
   "type": "bristolf2bf2",
+  "archType": "bristolf2b",
   "side": "ALLIED",
   "displayName": "Bristol F2B (F.II)",
   "script": "LuaScripts\\WorldObjects\\bristolf2bf2.txt",

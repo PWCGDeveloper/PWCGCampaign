@@ -1,5 +1,6 @@
 {
   "type": "ju523mg4e",
+  "archType": "ju52",
   "side": "AXIS",
   "displayName": "Ju 52",
   "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
@@ -14,6 +15,6 @@
   "roles": [
     "ROLE_TRANSPORT"
   ],
-  "introduction": "19410301",
+  "introduction": "19410601",
   "withdrawal": "19450503"
 }

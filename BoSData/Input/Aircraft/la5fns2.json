@@ -1,5 +1,6 @@
 {
   "type": "la5fns2",
+  "archType": "lagg",
   "side": "ALLIED",
   "displayName": "La-5N ser.2",
   "script": "LuaScripts\\WorldObjects\\Planes\\la5fns2.txt",
@@ -15,6 +16,6 @@
     "ROLE_FIGHTER",
     "ROLE_ATTACK"
   ],
-  "introduction": "19430601",
+  "introduction": "19430701",
   "withdrawal": "19450503"
 }

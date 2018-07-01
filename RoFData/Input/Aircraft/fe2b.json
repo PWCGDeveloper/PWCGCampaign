@@ -1,5 +1,6 @@
 {
   "type": "fe2b",
+  "archType": "fe2",
   "side": "ALLIED",
   "displayName": "F.E.2b",
   "script": "LuaScripts\\WorldObjects\\fe2b.txt",

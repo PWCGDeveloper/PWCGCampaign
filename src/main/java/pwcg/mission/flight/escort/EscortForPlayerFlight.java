@@ -12,7 +12,7 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
 import pwcg.mission.flight.waypoint.WaypointType;
@@ -134,7 +134,7 @@ public class EscortForPlayerFlight extends Flight
 
     protected void createPlaneInitialPosition() throws PWCGException 
     {
-        Plane flightLeader = getFlightLeader();
+        PlaneMCU flightLeader = getFlightLeader();
 
         // Initial position is at the ingress WP
         McuWaypoint ingressWP = WaypointGeneratorBase.findWaypointByType(playerFlight.getAllWaypoints(), 
@@ -144,7 +144,7 @@ public class EscortForPlayerFlight extends Flight
         coverPosition.setYPos(coverPosition.getYPos() + 400);
 
         int i = 0;
-        for (Plane plane : planes)
+        for (PlaneMCU plane : planes)
         {
             Coordinate planeCoords = coverPosition.copy();
 

@@ -6,26 +6,22 @@
   "skill": 90,
   "planeAssignments": [
     {
-      "type": "bf109f2",
+      "archType": "bf109",
       "squadronIntroduction": "19410801",
-      "squadronWithdrawal": "19420414"
+      "squadronWithdrawal": "19420513"
     },
     {
-      "type": "bf109f4",
-      "squadronIntroduction": "19411020",
-      "squadronWithdrawal": "19420729"
-    },
-    {
-      "type": "fw190a3",
-      "squadronIntroduction": "19420730",
-      "squadronWithdrawal": "19430203"
-    },
-    {
-      "type": "fw190a5",
-      "squadronIntroduction": "19430128",
+      "archType": "fw190",
+      "squadronIntroduction": "19420514",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19420514",
+      "conversionCompleteDate": "19420529"
+    }
+  ],  
   "airfields": {
     "19411001": "Gzhatsk",
     "19411020": "Gzhatsk",

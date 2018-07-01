@@ -2,7 +2,7 @@ package pwcg.mission.flight;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 
 public class FlightPayloadBuilder
 {
@@ -29,7 +29,7 @@ public class FlightPayloadBuilder
 
     private void setFlightPayloadMixed() throws PWCGException
     {
-        for (Plane plane : flight.getPlanes())
+        for (PlaneMCU plane : flight.getPlanes())
         {
             plane.buildPlanePayload(flight);
         }
@@ -37,10 +37,10 @@ public class FlightPayloadBuilder
 
     private void setFlightPayloadHomogeneous() throws PWCGException
     {
-        Plane leadPlane = flight.getLeadPlane();
+        PlaneMCU leadPlane = flight.getLeadPlane();
         IPlanePayload payload = leadPlane.buildPlanePayload(flight);
         
-        for (Plane plane : flight.getPlanes())
+        for (PlaneMCU plane : flight.getPlanes())
         {
             plane.setPlanePayload(payload);
         }
@@ -48,7 +48,7 @@ public class FlightPayloadBuilder
 
     private void initializeFuel() throws PWCGException
     {
-        for (Plane plane : flight.getPlanes())
+        for (PlaneMCU plane : flight.getPlanes())
         {
             if (!flight.isAirstart())
             {
@@ -63,8 +63,8 @@ public class FlightPayloadBuilder
 
     private boolean isHomogeneous()
     {
-        Plane leadPlane = flight.getLeadPlane();
-        for (Plane plane : flight.getPlanes())
+        PlaneMCU leadPlane = flight.getLeadPlane();
+        for (PlaneMCU plane : flight.getPlanes())
         {
             if (!plane.getType().equals(leadPlane.getType()))
             {

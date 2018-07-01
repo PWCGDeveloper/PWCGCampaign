@@ -8,19 +8,18 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.io.json.AircraftIOJson;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
-import pwcg.mission.flight.plane.Plane;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class PlaneTypeFactory 
 {
-    private Map<String, PlaneType> planeMap = new TreeMap<String, PlaneType>();
+    private Map<String, PlaneType> planeTypes = new TreeMap<>();
+    private Map<String, PlaneArchType> planeArchTypes = new TreeMap<>();
 
     public PlaneTypeFactory ()
     {
@@ -28,34 +27,55 @@ public class PlaneTypeFactory
 
     public void initialize()  throws PWCGException
     {
-        planeMap = AircraftIOJson.readJson();
+        planeTypes = AircraftIOJson.readJson();
+        createPlaneArchTypes();
+    }
+
+    private void createPlaneArchTypes()
+    {
+        for (PlaneType planeType : planeTypes.values())
+        {
+            if (!planeArchTypes.containsKey(planeType.getArchType()))
+            {
+                PlaneArchType planeArchType = new PlaneArchType(planeType.getArchType());
+                planeArchTypes.put(planeType.getArchType(), planeArchType);
+            }
+            
+            PlaneArchType planeArchType = planeArchTypes.get(planeType.getArchType());
+            planeArchType.addPlaneTypeToArchType(planeType);
+        }
     }
 
     public void dump() 
     {
-        for (PlaneType plane : planeMap.values())
+        for (PlaneType planeType : planeTypes.values())
         {
-            Logger.log(LogLevel.DEBUG, "" + plane.getType() + "    " +  plane.getDisplayName());
+            Logger.log(LogLevel.DEBUG, "" + planeType.getType() + "    " +  planeType.getDisplayName());
         }
-    }        
+    }    
+    
+    public PlaneArchType getPlaneArchType(String planeArchTypeName)
+    {
+        return planeArchTypes.get(planeArchTypeName);
+    }
 
     public List<PlaneType> getAllFightersForCampaign(Campaign campaign) throws PWCGException 
     {
         List<PlaneType> aircraftTypes = new ArrayList<PlaneType>();
 
-        for (PlaneType plane : planeMap.values())
+        for (PlaneType planeType : planeTypes.values())
         {
-            if (plane != null)
+            if (planeType != null)
             {
-                if (plane.isFlyable())
+                if (planeType.isFlyable())
                 {
-                    if (plane.isRole(Role.ROLE_FIGHTER))
+                    if (planeType.isRole(Role.ROLE_FIGHTER))
                     {
-                        if (plane.getSide() == campaign.determineCountry().getSide())
+                        if (planeType.getSide() == campaign.determineCountry().getSide())
                         {
-                            if (plane.isPlaneActive(campaign.getDate()))
+                            if (planeType.isPlaneActive(campaign.getDate()))
                             {
-                                aircraftTypes.add(plane);
+                                aircraftTypes.add(planeType);
                             }
                         }
                     }
@@ -70,7 +90,7 @@ public class PlaneTypeFactory
     {
         List<PlaneType>alliedPlanes = new ArrayList<PlaneType>();
 
-        for (PlaneType planeType : planeMap.values())
+        for (PlaneType planeType : planeTypes.values())
         {
             if (planeType.getSide() == Side.ALLIED)
             {
@@ -85,7 +105,7 @@ public class PlaneTypeFactory
     {
         List<PlaneType>allPlanes = new ArrayList<PlaneType>();
         Map<String, PlaneType>allPlanesSet = new HashMap<String, PlaneType>();
-        for (PlaneType plane : planeMap.values())
+        for (PlaneType plane : planeTypes.values())
         {
             allPlanesSet.put(plane.getType(), plane);
         }
@@ -98,7 +118,7 @@ public class PlaneTypeFactory
     {
         List<PlaneType>axisPlanes = new ArrayList<PlaneType>();
 
-        for (PlaneType planeType : planeMap.values())
+        for (PlaneType planeType : planeTypes.values())
         {
             if (planeType.getSide() == Side.AXIS)
             {
@@ -112,9 +132,9 @@ public class PlaneTypeFactory
     public PlaneType getPlaneById(String planeTypeName) throws PWCGException
     {
         PlaneType plane = null;
-        if (planeMap.containsKey(planeTypeName))
+        if (planeTypes.containsKey(planeTypeName))
         {
-            plane = planeMap.get(planeTypeName);
+            plane = planeTypes.get(planeTypeName);
         }
         else
         {
@@ -127,7 +147,7 @@ public class PlaneTypeFactory
     public PlaneType getActivePlaneBySideDateAndRole(Side side, Date date, Role role) throws PWCGException
     {
         List<PlaneType> possiblePlanes = new ArrayList<>();
-        for (PlaneType planeType : planeMap.values())
+        for (PlaneType planeType : planeTypes.values())
         {
             if (planeType.getSide() == side)
             {
@@ -154,7 +174,7 @@ public class PlaneTypeFactory
     public PlaneType getActivePlaneBySideAndDate(Side side, Date date) throws PWCGException
     {
         List<PlaneType> possiblePlanes = new ArrayList<>();
-        for (PlaneType planeType : planeMap.values())
+        for (PlaneType planeType : planeTypes.values())
         {
             if (planeType.getSide() == side)
             {
@@ -175,11 +195,11 @@ public class PlaneTypeFactory
         return selectedPlane;
     }
 
-    public PlaneType getPlaneTypeByType (String planteTypeName) throws PWCGException
+    public PlaneType createPlaneTypeByType (String planteTypeName) throws PWCGException
     {
         PlaneType plane = null;
 
-        for (PlaneType thisPlane : planeMap.values())
+        for (PlaneType thisPlane : planeTypes.values())
         {
             if (thisPlane.getType().equalsIgnoreCase(planteTypeName))
             {
@@ -199,7 +219,7 @@ public class PlaneTypeFactory
         return plane;
     }
 
-    public PlaneType getPlaneTypeByAnyName (String name)
+    public PlaneType createPlaneTypeByAnyName (String name)
     {
         PlaneType plane = getPlaneByPlaneType(name);
         if (plane != null)
@@ -216,17 +236,52 @@ public class PlaneTypeFactory
         return null;
     }
 
-    public static Plane createPlaneByPlaneType (PlaneType planeType, ICountry country, SquadronMember pilot)
+    public List<PlaneType> createPlaneTypesForArchType(String planeArchType) throws PWCGException
     {
-        Plane plane = new Plane(planeType, country, pilot);
-        return plane;
+        List<PlaneType> planeTypesForArchType = new ArrayList<>();
+        for (PlaneType thisPlane : planeTypes.values())
+        {
+            if (thisPlane.getArchType().equals(planeArchType))
+            {
+                planeTypesForArchType.add(thisPlane);
+            }
+        }
+        
+        if (planeTypesForArchType.isEmpty())
+        {
+            throw new PWCGException("No planes found for archtype " + planeArchType);
+        }
+        
+        return planeTypesForArchType;
+    }
+
+    public List<PlaneType> createActivePlaneTypesForArchType(String planeArchType, Date date) throws PWCGException
+    {
+        List<PlaneType> planeTypesForArchType = new ArrayList<>();
+        for (PlaneType thisPlane : planeTypes.values())
+        {
+            if (thisPlane.getArchType().equals(planeArchType))
+            {
+                if (DateUtils.isDateInRange(date, thisPlane.getIntroduction(), thisPlane.getWithdrawal()))
+                {
+                    planeTypesForArchType.add(thisPlane);
+                }
+            }
+        }
+        
+        if (planeTypesForArchType.isEmpty())
+        {
+            throw new PWCGException("No planes found for in range archtype " + planeArchType);
+        }
+        
+        return planeTypesForArchType;
     }
 
     private PlaneType getPlaneByDisplayName(String pwcgDesc) 
     {
         PlaneType plane = null;
 
-        for (PlaneType thisPlane : planeMap.values())
+        for (PlaneType thisPlane : planeTypes.values())
         {
             if (thisPlane.getDisplayName().equalsIgnoreCase(pwcgDesc))
             {
@@ -245,7 +300,7 @@ public class PlaneTypeFactory
     {
         PlaneType plane = null;
 
-        for (PlaneType thisPlane : planeMap.values())
+        for (PlaneType thisPlane : planeTypes.values())
         {
             if (abrevName.equalsIgnoreCase(thisPlane.getType()))
             {

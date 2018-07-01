@@ -6,26 +6,22 @@
   "skill": 35,
   "planeAssignments": [
     {
-      "type": "i16t24",
+      "archType": "i16",
       "squadronIntroduction": "19410801",
-      "squadronWithdrawal": "19420228"
+      "squadronWithdrawal": "19420214"
     },
     {
-      "type": "yak1s69",
-      "squadronIntroduction": "19420301",
-      "squadronWithdrawal": "19430610"
-    },
-    {
-      "type": "yak1s127",
-      "squadronIntroduction": "19430410",
-      "squadronWithdrawal": "19450503"
-    },
-    {
-      "type": "yak7bs36",
-      "squadronIntroduction": "19430601",
+      "archType": "yak",
+      "squadronIntroduction": "19420215",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19420214",
+      "conversionCompleteDate": "19420228"
+    }
+  ],  
   "airfields": {
     "19411001": "Varvarovka",
     "19411020": "Lotoshino",

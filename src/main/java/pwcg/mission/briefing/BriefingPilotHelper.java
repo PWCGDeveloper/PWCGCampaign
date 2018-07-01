@@ -15,7 +15,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 
 public class BriefingPilotHelper
 {
@@ -43,7 +43,7 @@ public class BriefingPilotHelper
 	    }
 	    
         Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight();
-	    for (Plane plane : playerFlight.getPlanes())
+	    for (PlaneMCU plane : playerFlight.getPlanes())
 	    {
 	        assignPilotFromMission(plane);
 	    }
@@ -56,7 +56,7 @@ public class BriefingPilotHelper
             CrewPlanePayloadPairing crewPlane = assignedCrewMap.get(pilotSerialNumber);
             if (crewPlane != null)
             {
-                PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(planeName);
+                PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeName);
                 updateForPlaneType(crewPlane, plane);
             }
         }
@@ -91,7 +91,7 @@ public class BriefingPilotHelper
         unAssignedCrewMap.put(pilotSerialNumber, crewPlane);
     }
 
-    private void assignPilotFromMission(Plane plane) throws PWCGException 
+    private void assignPilotFromMission(PlaneMCU plane) throws PWCGException 
     {
         CrewPlanePayloadPairing crewPlane = unAssignedCrewMap.get(plane.getPilot().getSerialNumber());
         updateForPlaneType(crewPlane, plane);

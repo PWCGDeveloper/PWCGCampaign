@@ -1,5 +1,6 @@
 {
   "type": "hp400",
+  "archType": "hp",
   "side": "ALLIED",
   "displayName": "Handley Page 0-400",
   "script": "LuaScripts\\WorldObjects\\hp400.txt",

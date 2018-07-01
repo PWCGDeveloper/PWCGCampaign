@@ -11,7 +11,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 
 public class RunwayPlacer
 {
@@ -45,7 +45,7 @@ public class RunwayPlacer
         return takeOffPositions;
     }
 
-    protected int calculateTakeoffSpacing(Plane flightLeader) throws PWCGException
+    protected int calculateTakeoffSpacing(PlaneMCU flightLeader) throws PWCGException
     {
         int offsetForBigPlane = 0;
         if (flightLeader.getPlaneSize() == PlaneSize.PLANE_SIZE_MEDIUM)

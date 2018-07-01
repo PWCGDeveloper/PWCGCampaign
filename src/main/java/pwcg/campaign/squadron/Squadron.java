@@ -24,6 +24,8 @@ import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
@@ -39,7 +41,9 @@ import pwcg.core.utils.MathUtils;
 public class Squadron 
 {
     public static final Integer REPLACEMENT = -1;
-    public static final Integer SQUADRON_SIZE = 12;
+    public static final Integer SQUADRON_STAFF_SIZE = 12;
+    public static final Integer SQUADRON_EQUIPMENT_SIZE = 14;
+    public static final Integer REPLACEMENTS_AIRCRAFT_PER_SQUADRON = 3;
     private Country country = Country.NEUTRAL;
 	private int squadronId = 0;
     private String name = "";
@@ -52,22 +56,10 @@ public class Squadron
 	private int serviceId;
 	private Date nightDate;
 	private SquadronRoleSet squadronRoles = new SquadronRoleSet();
+	private List<SquadronConversionPeriod> conversionPeriods = new ArrayList<>();
 
 	public Squadron ()
 	{
-	}
-
-	public PlaneType determineCurrentAircraftNoCheck(Date now) throws PWCGException
-	{
-		List<PlaneType> aircraftTypes = determineCurrentAircraftList(now);
-		PlaneType plane =  null;
-		
-		if (aircraftTypes.size() > 0)
-		{
-			plane =  aircraftTypes.get(0).copy();
-		}
-		
-		return plane;
 	}
 
 	public List<PlaneType> determineCurrentAircraftList(Date now) throws PWCGException
@@ -83,8 +75,12 @@ public class Squadron
 			{
 				if (withdrawal.after(now) || withdrawal.equals((now)))
 				{
-					PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByType(planeAssignment.getType());
-				    currentAircraftByGoodness.put(plane.getGoodness(), plane);
+				    List<PlaneType> planeTypesForArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().createActivePlaneTypesForArchType(planeAssignment.getArchType(), now);
+				    for (PlaneType planeType : planeTypesForArchType)
+				    {
+				        PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeType.getType());
+				        currentAircraftByGoodness.put(plane.getGoodness(), plane);
+				    }
 				}
 			}			
 		}
@@ -94,6 +90,28 @@ public class Squadron
 		
 		return currentAircraft;
 	}
+
+    public List<PlaneArchType> determineCurrentAircraftArchTypes(Date now) throws PWCGException
+    {
+        List<PlaneArchType> currentPlaneArchTypes = new ArrayList<>();
+        
+        for (SquadronPlaneAssignment planeAssignment : planeAssignments)
+        {
+            Date introduction = planeAssignment.getSquadronIntroduction();
+            Date withdrawal = planeAssignment.getSquadronWithdrawal();
+            
+            if (introduction.before(now) || introduction.equals((now)))
+            {
+                if (withdrawal.after(now) || withdrawal.equals((now)))
+                {
+                    PlaneArchType planeArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneArchType(planeAssignment.getArchType());
+                    currentPlaneArchTypes.add(planeArchType);
+                }
+            }           
+        }
+
+        return currentPlaneArchTypes;
+    }
 
 	public String determineCurrentAirfieldName(Date campaignDate) throws PWCGException 
 	{
@@ -389,6 +407,46 @@ public class Squadron
 
 		return isHomeDefense;
 	}
+
+	public boolean isSquadronViable(Campaign campaign) throws PWCGException
+	{
+	    SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
+	    
+	    if (squadronPersonnel == null)
+	    {
+	        return false;
+	    }
+	    
+        if (!squadronPersonnel.isSquadronPersonnelViable())
+        {
+            return false;
+        }
+        
+        if (!campaign.getEquipmentManager().getEquipmentForSquadron(squadronId).isSquadronEquipmentViable())
+        {
+            return false;
+        }
+        
+        if (isInConversionPeriod(campaign.getDate()))
+        {
+            return false;
+        }
+        
+	    return true;
+	}
+	
+    private boolean isInConversionPeriod(Date date) throws PWCGException
+    {
+        for (SquadronConversionPeriod conversionPeriod: conversionPeriods)
+        {
+            if (conversionPeriod.isConversionPeriodActive(date))
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
 
     public boolean isSquadronThisRole (Date date, Role requestedRole) throws PWCGException 
     {

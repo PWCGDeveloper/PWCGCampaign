@@ -5,7 +5,7 @@
   "skill": 45,
   "planeAssignments": [
     {
-      "type": "sopdolphin",
+      "archType": "sopdolphin",
       "squadronIntroduction": "19180201",
       "squadronWithdrawal": "19181201"
     }

@@ -1,5 +1,6 @@
 {
   "type": "halberstadtd2",
+  "archType": "halberstadtd",
   "side": "AXIS",
   "displayName": "Halberstadt D.II",
   "script": "LuaScripts\\WorldObjects\\halberstadtd2.txt",

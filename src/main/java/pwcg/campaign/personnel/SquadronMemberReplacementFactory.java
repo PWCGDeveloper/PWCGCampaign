@@ -36,7 +36,7 @@ public class SquadronMemberReplacementFactory
         replacementPilot.setRank(rank);
         replacementPilot.setCountry(service.getCountry().getCountry());
         replacementPilot.setSquadronId(Squadron.REPLACEMENT);
-        replacementPilot.setSerialNumber(campaign.getSerialNumber().getNextSerialNumber());
+        replacementPilot.setSerialNumber(campaign.getSerialNumber().getNextPilotSerialNumber());
         replacementPilot.setMissionFlown(0);        
         replacementPilot.setAiSkillLevel(AiSkillLevel.NOVICE);
         makePilotPicture(replacementPilot);

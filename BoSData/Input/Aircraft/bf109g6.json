@@ -1,5 +1,6 @@
 {
   "type": "bf109g6",
+  "archType": "bf109",
   "side": "AXIS",
   "displayName": "Bf 109 G-6",
   "script": "LuaScripts\\WorldObjects\\Planes\\bf109g6.txt",

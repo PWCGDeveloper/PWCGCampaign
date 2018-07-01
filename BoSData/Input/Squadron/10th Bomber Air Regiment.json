@@ -6,16 +6,13 @@
   "skill": 35,
   "planeAssignments": [
     {
-      "type": "pe2s35",
+      "archType": "pe2",
       "squadronIntroduction": "19420101",
-      "squadronWithdrawal": "19420727"
-    },
-    {
-      "type": "pe2s87",
-      "squadronIntroduction": "19420627",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19420801": "Raygorod",
     "19420906": "Nizhniy Balykley",

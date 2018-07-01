@@ -1,5 +1,6 @@
 {
   "type": "he111h6",
+  "archType": "he111",
   "side": "AXIS",
   "displayName": "He 111 H-6",
   "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
@@ -14,6 +15,6 @@
   "roles": [
     "ROLE_BOMB"
   ],
-  "introduction": "19410301",
-  "withdrawal": "19450503"
+  "introduction": "19410601",
+  "withdrawal": "19421101"
 }

@@ -1,5 +1,6 @@
 {
   "type": "spad7",
+  "archType": "spad",
   "side": "ALLIED",
   "displayName": "SPAD 7.C1 180hp",
   "script": "LuaScripts\\WorldObjects\\spad7.txt",

@@ -1,5 +1,6 @@
 {
   "type": "ju88a4",
+  "archType": "ju88",
   "side": "AXIS",
   "displayName": "Ju 88 A-4",
   "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
@@ -14,6 +15,6 @@
   "roles": [
     "ROLE_BOMB"
   ],
-  "introduction": "19410301",
+  "introduction": "19410601",
   "withdrawal": "19450503"
 }

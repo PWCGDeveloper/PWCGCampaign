@@ -31,7 +31,7 @@ public class CampaignPersonnelIOJson
             personnelDirFile.mkdir();
         }
         
-        String campaignReplacementsDir = PWCGDirectoryManager.getInstance().getPwcgCampaignsDir() + campaign.getName() + "\\Replacements\\";
+        String campaignReplacementsDir = PWCGDirectoryManager.getInstance().getPwcgCampaignsDir() + campaign.getName() + "\\Personnel\\Replacements\\";
         File replacementDirFile = new File(campaignReplacementsDir);
         if (!replacementDirFile.exists())
         {
@@ -52,7 +52,7 @@ public class CampaignPersonnelIOJson
 
     private static void writeReplacements(Campaign campaign) throws PWCGException
     {
-        String campaignReplacementDir = PWCGDirectoryManager.getInstance().getPwcgCampaignsDir() + campaign.getName() + "\\Replacements\\";
+        String campaignReplacementDir = PWCGDirectoryManager.getInstance().getPwcgCampaignsDir() + campaign.getName() + "\\Personnel\\Replacements\\";
         JsonWriter<PersonnelReplacementsService> jsonWriterReplacements = new JsonWriter<>();
         for (PersonnelReplacementsService replacements : campaign.getPersonnelManager().getAllReplacements())
         {
@@ -87,7 +87,7 @@ public class CampaignPersonnelIOJson
 
     private static void readReplacements(Campaign campaign) throws PWCGException
     {
-        String campaignReplacementDir = PWCGDirectoryManager.getInstance().getPwcgCampaignsDir() + campaign.getName() + "\\Replacements\\";
+        String campaignReplacementDir = PWCGDirectoryManager.getInstance().getPwcgCampaignsDir() + campaign.getName() + "\\Personnel\\Replacements\\";
         FileUtils fileUtils = new FileUtils();
         List<File> jsonFiles = fileUtils.getFilesWithFilter(campaignReplacementDir, ".json");
         for (File jsonFile : jsonFiles)

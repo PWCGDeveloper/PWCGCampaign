@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class SquadronPlaneAssignment implements Cloneable
 {
-    protected String type = "";
+    protected String archType = "";
     protected Date squadronIntroduction;
     protected Date squadronWithdrawal;
 
@@ -16,21 +16,21 @@ public class SquadronPlaneAssignment implements Cloneable
     {
         SquadronPlaneAssignment planeAssignment = new SquadronPlaneAssignment();
         
-        planeAssignment.type = this.type;
+        planeAssignment.archType = this.archType;
         planeAssignment.squadronIntroduction = this.squadronIntroduction;
         planeAssignment.squadronWithdrawal = this.squadronWithdrawal;
 
         return planeAssignment;
     }
 
-    public String getType()
+    public String getArchType()
     {
-        return type;
+        return archType;
     }
 
-    public void setType(String type)
+    public void setArchType(String archType)
     {
-        this.type = type;
+        this.archType = archType;
     }
 
     public Date getSquadronIntroduction()

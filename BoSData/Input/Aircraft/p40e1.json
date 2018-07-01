@@ -1,5 +1,6 @@
 {
   "type": "p40e1",
+  "archType": "p40",
   "side": "ALLIED",
   "displayName": "P-40E-1",
   "script": "LuaScripts\\WorldObjects\\Planes\\p40e1.txt",
@@ -15,6 +16,6 @@
     "ROLE_FIGHTER",
     "ROLE_ATTACK"
   ],
-  "introduction": "19410301",
+  "introduction": "19410601",
   "withdrawal": "19450503"
 }

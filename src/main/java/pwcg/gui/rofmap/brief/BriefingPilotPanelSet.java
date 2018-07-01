@@ -42,7 +42,7 @@ import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.briefing.BriefingMissionHandler;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 
 public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListener
 {
@@ -246,7 +246,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private void addPlaneColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(crewPlane.getPlaneType());
+        PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(crewPlane.getPlaneType());
         String planeName = plane.getDisplayName();
         JButton planeButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planeName, "Change Plane:" + crewPlane.getPilot().getSerialNumber(), this);
         assignedPilotPanel.add(planeButton);
@@ -548,7 +548,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
 	private boolean ensurePlayerOwnsPlane() throws PWCGException
 	{
-		Plane playerPlane = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight().getPlayerPlane();
+		PlaneMCU playerPlane = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight().getPlayerPlane();
         if (!PlanesOwnedManager.getInstance().isPlaneOwned(playerPlane.getType()))
         {
             ErrorDialog.userError("Player does not own his assigned plane: " + playerPlane.getDisplayName() + ".  Mission will not be written.");

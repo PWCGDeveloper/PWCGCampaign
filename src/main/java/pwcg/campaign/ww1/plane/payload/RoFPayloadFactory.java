@@ -35,7 +35,7 @@ public class RoFPayloadFactory implements IPayloadFactory
 {
 	public IPlanePayload createPlanePayload(String planeTypeName) throws PWCGException 
 	{
-		PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(planeTypeName);
+		PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeName);
 		RoFPlaneAttributeMapping attributeMapping = RoFPlaneAttributeFactory.createPlaneAttributeMap(planeTypeName);
 	    
         // German scout

@@ -80,9 +80,9 @@ public class AiFlightBuilder
             return;
         }
         
-        for (Squadron squad : squads)
+        for (Squadron squadron : squads)
         {
-            if (squad.getSquadronId() == campaign.getSquadronId())
+            if (squadron.getSquadronId() == campaign.getSquadronId())
             {
                 continue;
             }
@@ -91,20 +91,20 @@ public class AiFlightBuilder
             {
                 continue;
             }
-            
-            if (!campaign.getPersonnelManager().getSquadronPersonnel(squad.getSquadronId()).isSquadronViable())
+
+            if (squadron.isSquadronViable(campaign))
             {
                 continue;
             }
 
-            if (squad.determineIsNightSquadron())
+            if (squadron.determineIsNightSquadron())
             {
                 continue;
             }
 
             FlightFactory flightFactory = PWCGFlightFactory.createFlightFactory(campaign);
-            FlightTypes flightType = flightFactory.getFlightType(squad, false);
-            Flight flight = flightFactory.getFlight(mission, squad, flightType, false);
+            FlightTypes flightType = flightFactory.getFlightType(squadron, false);
+            Flight flight = flightFactory.getFlight(mission, squadron, flightType, false);
             if (flight != null)
             {
                 missionFlights.add(flight);

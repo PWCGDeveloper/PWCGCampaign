@@ -1,5 +1,6 @@
 {
   "type": "soppup",
+  "archType": "soppup",
   "side": "ALLIED",
   "displayName": "Sopwith Pup",
   "script": "LuaScripts\\WorldObjects\\soppup.txt",

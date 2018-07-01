@@ -1,5 +1,6 @@
 {
   "type": "felixf2a",
+  "archType": "felix",
   "side": "ALLIED",
   "displayName": "Felixstowe F2A",
   "script": "LuaScripts\\WorldObjects\\felixf2a.txt",

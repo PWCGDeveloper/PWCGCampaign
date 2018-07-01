@@ -14,26 +14,26 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 
 public class MissionSkinGenerator 
 {
 
-    public void setSkinForPlayerSquadron(SquadronMember pilot, Squadron squad, Plane plane, Date date) 
+    public void setSkinForPlayerSquadron(SquadronMember pilot, Squadron squad, PlaneMCU plane, Date date) 
     {
         plane.setPlaneSkin(null);
         setSquadronSkin(squad, plane, date);
         setUserAssignedPilotSkin(pilot, plane);
     }
 
-    public void setSkinForAce(Ace pilot, Squadron squad, Plane plane, Date date) 
+    public void setSkinForAce(Ace pilot, Squadron squad, PlaneMCU plane, Date date) 
     {
         plane.setPlaneSkin(null);
         setSquadronSkin(squad, plane, date);
         setUserAssignedPilotSkin(pilot, plane);
     }
 
-    public void setAISkin(Squadron squad, Plane plane, Date date) throws PWCGException 
+    public void setAISkin(Squadron squad, PlaneMCU plane, Date date) throws PWCGException 
     {        
         // Start with setting the squadron livery
         setSquadronSkin(squad, plane, date);
@@ -63,7 +63,7 @@ public class MissionSkinGenerator
         }
      }
 
-    private Skin chooseSquadronPersonalSkin(Plane plane, List<Skin> squadronSkins)
+    private Skin chooseSquadronPersonalSkin(PlaneMCU plane, List<Skin> squadronSkins)
     {
         // If we don't have a skin try squadron personal
         Skin skin = pickSkin(plane.getType(), squadronSkins);
@@ -81,7 +81,7 @@ public class MissionSkinGenerator
         return skin;
     }
 
-    private Skin chooseNonSquadronPersonalSkin(Plane plane, List<Skin> personalSkins)
+    private Skin chooseNonSquadronPersonalSkin(PlaneMCU plane, List<Skin> personalSkins)
     {
         Skin skin = null;
         
@@ -107,7 +107,7 @@ public class MissionSkinGenerator
         return skin;
     }
 
-    private void chooseNoviceSkin(Plane plane, List<Skin> genericSkins)
+    private void chooseNoviceSkin(PlaneMCU plane, List<Skin> genericSkins)
     {
         Logger.log(LogLevel.DEBUG, "SKIN: Choose novice skin");
         
@@ -147,7 +147,7 @@ public class MissionSkinGenerator
 
     }
 
-    private void setSquadronSkin(Squadron squadron, Plane plane, Date date) 
+    private void setSquadronSkin(Squadron squadron, PlaneMCU plane, Date date) 
     {
         Skin selectedSkin = null;
         
@@ -187,7 +187,7 @@ public class MissionSkinGenerator
         }
     }
 
-	private void setUserAssignedPilotSkin(SquadronMember pilot, Plane plane) 
+	private void setUserAssignedPilotSkin(SquadronMember pilot, PlaneMCU plane) 
 	{
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
         

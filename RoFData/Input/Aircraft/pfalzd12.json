@@ -1,5 +1,6 @@
 {
   "type": "pfalzd12",
+  "archType": "pfalzd12",
   "side": "AXIS",
   "displayName": "Pfalz D.XII",
   "script": "LuaScripts\\WorldObjects\\pfalzd12.txt",

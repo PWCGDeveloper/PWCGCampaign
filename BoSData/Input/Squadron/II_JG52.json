@@ -6,31 +6,13 @@
   "skill": 90,
   "planeAssignments": [
     {
-      "type": "bf109f2",
-      "squadronIntroduction": "19410801",
-      "squadronWithdrawal": "19420622"
-    },
-    {
-      "type": "bf109f4",
-      "squadronIntroduction": "19411123",
-      "squadronWithdrawal": "19421223"
-    },
-    {
-      "type": "bf109g2",
-      "squadronIntroduction": "19420820",
-      "squadronWithdrawal": "19430403"
-    },
-    {
-      "type": "bf109g4",
-      "squadronIntroduction": "19430201",
-      "squadronWithdrawal": "19450503"
-    },
-    {
-      "type": "bf109g6",
-      "squadronIntroduction": "19430614",
+      "archType": "bf109",
+      "squadronIntroduction": "19411001",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19411001": "Temkino",
     "19411020": "Zenino",

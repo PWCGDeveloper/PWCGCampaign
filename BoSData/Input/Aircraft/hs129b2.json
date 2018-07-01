@@ -1,5 +1,6 @@
 {
   "type": "hs129b2",
+  "archType": "hs129",
   "side": "AXIS",
   "displayName": "Hs 129 B-2",
   "script": "LuaScripts\\WorldObjects\\Planes\\hs129b2.txt",

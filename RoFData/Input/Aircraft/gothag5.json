@@ -1,5 +1,6 @@
 {
   "type": "gothag5",
+  "archType": "gotha",
   "side": "AXIS",
   "displayName": "Gotha G.V",
   "script": "LuaScripts\\WorldObjects\\gothag5.txt",

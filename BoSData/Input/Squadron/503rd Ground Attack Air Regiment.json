@@ -6,21 +6,13 @@
   "skill": 40,
   "planeAssignments": [
     {
-      "type": "il2m41",
+      "archType": "il2",
       "squadronIntroduction": "19410801",
-      "squadronWithdrawal": "19420826"
-    },
-    {
-      "type": "il2m42",
-      "squadronIntroduction": "19420627",
-      "squadronWithdrawal": "19430701"
-    },
-    {
-      "type": "il2m43",
-      "squadronIntroduction": "19430501",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19411001": "Ryabinki",
     "19411020": "Dyatlovo",

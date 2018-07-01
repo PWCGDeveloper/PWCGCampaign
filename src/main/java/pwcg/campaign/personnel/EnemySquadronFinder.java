@@ -86,13 +86,9 @@ public class EnemySquadronFinder
         List<Squadron> viableSquadrons = new ArrayList<>();
         for (Squadron squadron : possibleSquadrons)
         {
-            SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());
-            if (squadronPersonnel != null)
+            if (squadron.isSquadronViable(campaign))
             {
-                if(squadronPersonnel.isSquadronViable())
-                {
-                    viableSquadrons.add(squadron);
-                }
+                viableSquadrons.add(squadron);
             }
         }
         return viableSquadrons;

@@ -6,26 +6,13 @@
   "skill": 85,
   "planeAssignments": [
     {
-      "type": "bf109f2",
-      "squadronIntroduction": "19420101",
-      "squadronWithdrawal": "19420927"
-    },
-    {
-      "type": "bf109f4",
-      "squadronIntroduction": "19420727",
-      "squadronWithdrawal": "19421024"
-    },
-    {
-      "type": "bf109g2",
-      "squadronIntroduction": "19420920",
-      "squadronWithdrawal": "19430503"
-    },
-    {
-      "type": "bf109g4",
-      "squadronIntroduction": "19430401",
+      "archType": "bf109",
+      "squadronIntroduction": "19420801",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19420801": "Zimovskoy",
     "19420906": "Golubinskiy",

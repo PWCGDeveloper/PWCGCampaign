@@ -6,16 +6,13 @@
   "skill": 30,
   "planeAssignments": [
     {
-      "type": "pe2s35",
+      "archType": "pe2",
       "squadronIntroduction": "19410801",
-      "squadronWithdrawal": "19420922"
-    },
-    {
-      "type": "pe2s87",
-      "squadronIntroduction": "19420623",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19411001": "Solodilovo",
     "19411020": "Klin",

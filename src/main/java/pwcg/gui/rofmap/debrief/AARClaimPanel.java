@@ -127,7 +127,7 @@ public class AARClaimPanel extends AARPanel implements ActionListener
 			for (String planeName : planeTypesInMission)
 			{
                 String planeDisplayName = planeName;
-                PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(planeName);
+                PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeName);
                 if (plane != null)
                 {
                     planeDisplayName = plane.getDisplayName();
@@ -164,7 +164,7 @@ public class AARClaimPanel extends AARPanel implements ActionListener
 			}
 			else
 			{
-			    PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(planeTypeDesc);
+			    PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
 			    if (planeType != null)
 			    {
     			    if (planeType.getType().equalsIgnoreCase(planeType.getType()))

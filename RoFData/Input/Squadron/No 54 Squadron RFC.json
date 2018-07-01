@@ -5,12 +5,12 @@
   "skill": 40,
   "planeAssignments": [
     {
-      "type": "soppup",
+      "archType": "soppup",
       "squadronIntroduction": "19161201",
       "squadronWithdrawal": "19171210"
     },
     {
-      "type": "sopcamel",
+      "archType": "sopcamel",
       "squadronIntroduction": "19171211",
       "squadronWithdrawal": "19181201"
     }

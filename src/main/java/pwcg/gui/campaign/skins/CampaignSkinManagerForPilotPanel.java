@@ -481,7 +481,7 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
 
          String planeDisplayName = "";
          
-         PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneTypeByAnyName(planeName);
+         PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeName);
          if (plane != null)
          {
              planeDisplayName = plane.getDisplayName();

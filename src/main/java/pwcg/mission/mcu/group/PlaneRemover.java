@@ -16,7 +16,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuDelete;
 import pwcg.mission.mcu.McuProximity;
@@ -52,7 +52,7 @@ public class PlaneRemover
      * @param plane
      * @throws PWCGException 
      */
-    public void initialize(Flight flight, Plane plane, Plane playerPlane) throws PWCGException 
+    public void initialize(Flight flight, PlaneMCU plane, PlaneMCU playerPlane) throws PWCGException 
     {
         Coalition friendlyCoalition = Coalition.getEnemyCoalition(plane.getCountry());
         Coalition enemyCoalition = Coalition.getEnemyCoalition(plane.getCountry());
@@ -128,7 +128,7 @@ public class PlaneRemover
      * @throws PWCGException 
      * 
      */
-    protected void makeSubtitles(Flight flight, Plane plane) throws PWCGException
+    protected void makeSubtitles(Flight flight, PlaneMCU plane) throws PWCGException
     {
         Coordinate coordinate = plane.getPosition().copy();
         

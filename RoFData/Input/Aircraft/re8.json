@@ -1,5 +1,6 @@
 {
   "type": "re8",
+  "archType": "re8",
   "side": "ALLIED",
   "displayName": "R.E.8",
   "script": "LuaScripts\\WorldObjects\\re8.txt",

@@ -5,17 +5,17 @@
   "skill": 85,
   "planeAssignments": [
     {
-      "type": "dh2",
+      "archType": "dh2",
       "squadronIntroduction": "19160208",
       "squadronWithdrawal": "19170601"
     },
     {
-      "type": "soppup",
+      "archType": "soppup",
       "squadronIntroduction": "19170515",
       "squadronWithdrawal": "19171225"
     },
     {
-      "type": "se5a",
+      "archType": "se5",
       "squadronIntroduction": "19171225",
       "squadronWithdrawal": "19181201"
     }

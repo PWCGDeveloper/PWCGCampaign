@@ -3,7 +3,7 @@ package pwcg.mission.flight;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuWaypoint;
@@ -33,7 +33,7 @@ public class GroundAttackFlightValidator
 				{
 					assert(!isNextWaypointLinked);
 					
-					Plane leadPlane = attackFlight.getLeadPlane();
+					PlaneMCU leadPlane = attackFlight.getLeadPlane();
 					AttackMcuSequence attackMcuSequence = attackFlight.getAttackMcuSequences().get(leadPlane.getIndex());
 					assert(attackMcuSequence != null);
 					assert(isIndexInTargetList(attackMcuSequence.getActivateTimer().getIndex(), prevWaypoint.getTargets()));

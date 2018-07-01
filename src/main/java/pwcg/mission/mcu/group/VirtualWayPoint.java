@@ -14,7 +14,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.FormationGenerator;
 import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.BaseFlightMcu;
@@ -185,7 +185,7 @@ public class VirtualWayPoint
         
         for (int i = 0; i < flight.getPlanes().size(); ++i)
         {
-            Plane plane = flight.getPlanes().get(i);
+            PlaneMCU plane = flight.getPlanes().get(i);
             Coordinate planeCoordinate = flightCoordinates.get(i);
             double planeAltitude = vwpCoordinate.getCoordinate().getYPos() + (30 * i);
             if (planeAltitude < 800.0)
@@ -296,7 +296,7 @@ public class VirtualWayPoint
     /**
      * @param timerToLink
      */
-    public void onTriggerAddTarget(Plane plane, int index)
+    public void onTriggerAddTarget(PlaneMCU plane, int index)
     {
         vmpSpawnContainers.get(plane.getIndex()).wpActivateTimer.setTarget(index);
     }
@@ -351,7 +351,7 @@ public class VirtualWayPoint
         private McuTimer wpActivateTimer = new McuTimer();
         private BaseFlightMcu waypoint = null;
         
-        private void create(Plane plane, int index, Coordinate planeCoordinate)
+        private void create(PlaneMCU plane, int index, Coordinate planeCoordinate)
         {
             spawner.setPosition(planeCoordinate.copy());
             spawner.setOrientation(vwpCoordinate.getOrientation().copy());

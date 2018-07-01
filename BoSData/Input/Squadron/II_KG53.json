@@ -6,16 +6,13 @@
   "skill": 50,
   "planeAssignments": [
     {
-      "type": "he111h6",
+      "archType": "he111",
       "squadronIntroduction": "19410801",
-      "squadronWithdrawal": "19430503"
-    },
-    {
-      "type": "he111h16",
-      "squadronIntroduction": "19430301",
       "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19411001": "Znamenka",
     "19411020": "Temkino",

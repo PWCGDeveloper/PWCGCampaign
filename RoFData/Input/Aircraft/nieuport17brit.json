@@ -1,5 +1,6 @@
 {
   "type": "nieuport17brit",
+  "archType": "nieuport",
   "side": "ALLIED",
   "displayName": "Nieuport 17.C1 GBR",
   "script": "LuaScripts\\WorldObjects\\nieuport17brit.txt",
@@ -15,5 +16,5 @@
     "ROLE_FIGHTER"
   ],
   "introduction": "19160101",
-  "withdrawal": "19181111"
+  "withdrawal": "19171101"
 }

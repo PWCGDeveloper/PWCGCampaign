@@ -1,5 +1,6 @@
 {
   "type": "bf109g2",
+  "archType": "bf109",
   "side": "AXIS",
   "displayName": "Bf 109 G-2",
   "script": "LuaScripts\\WorldObjects\\Planes\\bf109g2.txt",
@@ -15,6 +16,6 @@
     "ROLE_FIGHTER",
     "ROLE_ATTACK"
   ],
-  "introduction": "19420301",
-  "withdrawal": "19450503"
+  "introduction": "19420401",
+  "withdrawal": "19421101"
 }

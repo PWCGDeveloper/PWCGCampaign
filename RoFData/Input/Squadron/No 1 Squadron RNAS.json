@@ -5,22 +5,17 @@
   "skill": 85,
   "planeAssignments": [
     {
-      "type": "nieuport11",
+      "archType": "nieuport",
       "squadronIntroduction": "19160201",
-      "squadronWithdrawal": "19160603"
-    },
-    {
-      "type": "nieuport17brit",
-      "squadronIntroduction": "19160601",
       "squadronWithdrawal": "19161231"
     },
     {
-      "type": "soptriplane",
+      "archType": "soptriplane",
       "squadronIntroduction": "19160615",
       "squadronWithdrawal": "19171209"
     },
     {
-      "type": "sopcamel",
+      "archType": "sopcamel",
       "squadronIntroduction": "19171210",
       "squadronWithdrawal": "19181201"
     }

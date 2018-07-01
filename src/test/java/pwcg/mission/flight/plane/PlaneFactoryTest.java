@@ -40,13 +40,13 @@ public class PlaneFactoryTest
         Mockito.when(flight.isVirtual()).thenReturn(false);
 
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
-        PlaneFactory planeFactory = new PlaneFactory(campaign, squadron, flight);
-        List<Plane> assignedPlanes = planeFactory.createPlanesForFlight(4);
+        PlaneMCUFactory planeFactory = new PlaneMCUFactory(campaign, squadron, flight);
+        List<PlaneMCU> assignedPlanes = planeFactory.createPlanesForFlight(4);
         
         SquadronMember player = campaign.getPlayer();        
         boolean playerFound = false;
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId());        
-        for (Plane plane : assignedPlanes)
+        for (PlaneMCU plane : assignedPlanes)
         {
             assert(squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
             if (plane.getPilot().getSerialNumber() == player.getSerialNumber())
@@ -64,13 +64,13 @@ public class PlaneFactoryTest
         Mockito.when(flight.isVirtual()).thenReturn(true);
 
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(20111052);
-        PlaneFactory planeFactory = new PlaneFactory(campaign, squadron, flight);
-        List<Plane> assignedPlanes = planeFactory.createPlanesForFlight(4);
+        PlaneMCUFactory planeFactory = new PlaneMCUFactory(campaign, squadron, flight);
+        List<PlaneMCU> assignedPlanes = planeFactory.createPlanesForFlight(4);
         
         SquadronMember player = campaign.getPlayer();        
         boolean playerFound = false;
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());        
-        for (Plane plane : assignedPlanes)
+        for (PlaneMCU plane : assignedPlanes)
         {
             assert(squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
             if (plane.getPilot().getSerialNumber() == player.getSerialNumber())

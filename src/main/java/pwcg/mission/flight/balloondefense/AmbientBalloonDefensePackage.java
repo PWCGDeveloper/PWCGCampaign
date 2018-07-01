@@ -16,7 +16,7 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnitCheckZone;
-import pwcg.mission.flight.plane.Plane;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.Coalition;
 
 public class AmbientBalloonDefensePackage
@@ -37,7 +37,7 @@ public class AmbientBalloonDefensePackage
 		ICountry country = getAmbientBalloonCountry(positionCoordinate, side);
 		BalloonDefenseGroup balloonUnit = createBalloon (balloonPosition, country);
 		
-		Plane playerPlane = mission.getMissionFlightBuilder().getPlayerFlight().getPlayerPlane();
+		PlaneMCU playerPlane = mission.getMissionFlightBuilder().getPlayerFlight().getPlayerPlane();
 		balloonUnit.setBalloonCheckZoneForPlayer(playerPlane.getEntity().getIndex());
 
 		return balloonUnit;

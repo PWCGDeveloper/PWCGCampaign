@@ -1,5 +1,6 @@
 {
   "type": "albatrosd3",
+  "archType": "albatrosd",
   "side": "AXIS",
   "displayName": "Albatros D.III",
   "script": "LuaScripts\\WorldObjects\\albatrosd3.txt",
@@ -14,6 +15,6 @@
   "roles": [
     "ROLE_FIGHTER"
   ],
-  "introduction": "19171201",
-  "withdrawal": "19180401"
+  "introduction": "19170201",
+  "withdrawal": "19170801"
 }

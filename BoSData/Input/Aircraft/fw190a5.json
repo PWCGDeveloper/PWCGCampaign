@@ -1,5 +1,6 @@
 {
   "type": "fw190a5",
+  "archType": "fw190",
   "side": "AXIS",
   "displayName": "Fw 190 A-5",
   "script": "LuaScripts\\WorldObjects\\Planes\\fw190a5.txt",
@@ -15,6 +16,6 @@
     "ROLE_FIGHTER",
     "ROLE_ATTACK"
   ],
-  "introduction": "19420901",
+  "introduction": "19430101",
   "withdrawal": "19450503"
 }

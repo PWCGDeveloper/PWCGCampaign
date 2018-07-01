@@ -6,16 +6,13 @@
   "skill": 70,
   "planeAssignments": [
     {
-      "type": "bf110e2",
+      "archType": "bf110",
       "squadronIntroduction": "19410101",
-      "squadronWithdrawal": "19421215"
-    },
-    {
-      "type": "bf110g2",
-      "squadronIntroduction": "19421201",
-      "squadronWithdrawal": "19450601"
+      "squadronWithdrawal": "19450503"
     }
   ],
+  "conversionPeriods": [
+  ],  
   "airfields": {
     "19411001": "Novoye Selo",
     "19411020": "Gzhatsk",

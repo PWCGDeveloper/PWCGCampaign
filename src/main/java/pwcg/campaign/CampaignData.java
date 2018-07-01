@@ -2,6 +2,7 @@ package pwcg.campaign;
 
 import java.util.Date;
 
+import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 
 public class CampaignData
@@ -12,6 +13,7 @@ public class CampaignData
 	private int campaignStatus = SquadronMemberStatus.STATUS_ACTIVE;
 	private int squadId = -1;
     private boolean isGreatAce = false;
+    private SerialNumber serialNumber = new SerialNumber();
 
 	public Date getDate()
 	{
@@ -62,4 +64,16 @@ public class CampaignData
 	{
 		this.isGreatAce = isGreatAce;
 	}
+
+    public SerialNumber getSerialNumber()
+    {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(SerialNumber serialNumber)
+    {
+        this.serialNumber = serialNumber;
+    }
+	
+	
 }

@@ -66,7 +66,7 @@ public class SquadronMemberFactory
         newPilot.setRank(rank);
         newPilot.setCountry(squadron.getCountry().getCountry());
         newPilot.setSquadronId(squadron.getSquadronId());
-        newPilot.setSerialNumber(campaign.getSerialNumber().getNextSerialNumber());
+        newPilot.setSerialNumber(campaign.getSerialNumber().getNextPilotSerialNumber());
         newPilot.setInactiveDate(DateUtils.getEndOfWar());
 
         makePilotPicture(newPilot);
