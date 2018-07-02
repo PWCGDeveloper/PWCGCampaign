@@ -1,37 +1,3 @@
 {
-  "campaignLogs": {
-    "19411101": {
-      "date": "19411101",
-      "logs": [
-        "The  Pilots Badge has been awarded to Oberfeldwebel German Test",
-        "The  Pilots Badge has been awarded to Oberfeldwebel German Test",
-        "The  Pilots Badge has been awarded to Oberfeldwebel German Test",
-        "The  Pilots Badge has been awarded to Oberfeldwebel German Test",
-        "The  Pilots Badge has been awarded to Oberfeldwebel German Test",
-        "The  Pilots Badge has been awarded to Oberfeldwebel German Test"
-      ]
-    },
-    "19411108": {
-      "date": "19411108",
-      "logs": [
-        "The  Wound Badge(Black) has been awarded to Oberleutnant Maximilian Streicher"
-      ]
-    },
-    "19411109": {
-      "date": "19411109",
-      "logs": [
-        "The  Wound Badge(Silver) has been awarded to Oberleutnant Maximilian Streicher",
-        "The  Wound Badge(Silver) has been awarded to Oberleutnant Maximilian Streicher",
-        "The  Wound Badge(Silver) has been awarded to Oberleutnant Maximilian Streicher"
-      ]
-    },
-    "19411116": {
-      "date": "19411116",
-      "logs": [
-        "On 16/11/1941 near Kryukovo.\nA Pe-2 ser.35 of 95th Bomber Air Regiment was brought down by Olt Timm Notnagel of II./JG51.\nThe aircraft went down behind enemy lines.\n\nOlt Timm Notnagel was flying a Bf 109 F-4.",
-        "On 16/11/1941 near Kryukovo.\nA Pe-2 ser.35 of 95th Bomber Air Regiment was brought down by OFw German Test of II./JG51.\nSzt Stanislav Lyutov was made a prisoner of war.\nOFw German Test was flying a Bf 109 F-4.",
-        "The  Wound Badge(Black) has been awarded to Hauptmann Arno Mann"
-      ]
-    }
-  }
+  "campaignLogs": {}
 }

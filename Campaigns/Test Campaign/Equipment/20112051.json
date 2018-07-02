@@ -1,0 +1,312 @@
+{
+  "equippedPlanes": {
+    "5000268": {
+      "serialNumber": 5000268,
+      "type": "bf109f4",
+      "archType": "bf109",
+      "displayName": "Bf 109 F-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "model": "graphics\\planes\\bf109f4\\bf109f4.mgm",
+      "desc": "",
+      "cruisingSpeed": 360,
+      "climbOutRate": 1200,
+      "goodness": 35,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420601",
+      "side": "AXIS"
+    },
+    "5000269": {
+      "serialNumber": 5000269,
+      "type": "bf109f4",
+      "archType": "bf109",
+      "displayName": "Bf 109 F-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "model": "graphics\\planes\\bf109f4\\bf109f4.mgm",
+      "desc": "",
+      "cruisingSpeed": 360,
+      "climbOutRate": 1200,
+      "goodness": 35,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420601",
+      "side": "AXIS"
+    },
+    "5000270": {
+      "serialNumber": 5000270,
+      "type": "bf109f4",
+      "archType": "bf109",
+      "displayName": "Bf 109 F-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "model": "graphics\\planes\\bf109f4\\bf109f4.mgm",
+      "desc": "",
+      "cruisingSpeed": 360,
+      "climbOutRate": 1200,
+      "goodness": 35,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420601",
+      "side": "AXIS"
+    },
+    "5000271": {
+      "serialNumber": 5000271,
+      "type": "bf109f4",
+      "archType": "bf109",
+      "displayName": "Bf 109 F-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "model": "graphics\\planes\\bf109f4\\bf109f4.mgm",
+      "desc": "",
+      "cruisingSpeed": 360,
+      "climbOutRate": 1200,
+      "goodness": 35,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420601",
+      "side": "AXIS"
+    },
+    "5000267": {
+      "serialNumber": 5000267,
+      "type": "bf109f4",
+      "archType": "bf109",
+      "displayName": "Bf 109 F-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "model": "graphics\\planes\\bf109f4\\bf109f4.mgm",
+      "desc": "",
+      "cruisingSpeed": 360,
+      "climbOutRate": 1200,
+      "goodness": 35,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420601",
+      "side": "AXIS"
+    },
+    "5000280": {
+      "serialNumber": 5000280,
+      "type": "bf109f4",
+      "archType": "bf109",
+      "displayName": "Bf 109 F-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "model": "graphics\\planes\\bf109f4\\bf109f4.mgm",
+      "desc": "",
+      "cruisingSpeed": 360,
+      "climbOutRate": 1200,
+      "goodness": 35,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420601",
+      "side": "AXIS"
+    },
+    "5000276": {
+      "serialNumber": 5000276,
+      "type": "bf109f4",
+      "archType": "bf109",
+      "displayName": "Bf 109 F-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "model": "graphics\\planes\\bf109f4\\bf109f4.mgm",
+      "desc": "",
+      "cruisingSpeed": 360,
+      "climbOutRate": 1200,
+      "goodness": 35,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420601",
+      "side": "AXIS"
+    },
+    "5000277": {
+      "serialNumber": 5000277,
+      "type": "bf109f4",
+      "archType": "bf109",
+      "displayName": "Bf 109 F-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "model": "graphics\\planes\\bf109f4\\bf109f4.mgm",
+      "desc": "",
+      "cruisingSpeed": 360,
+      "climbOutRate": 1200,
+      "goodness": 35,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420601",
+      "side": "AXIS"
+    },
+    "5000278": {
+      "serialNumber": 5000278,
+      "type": "bf109f4",
+      "archType": "bf109",
+      "displayName": "Bf 109 F-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "model": "graphics\\planes\\bf109f4\\bf109f4.mgm",
+      "desc": "",
+      "cruisingSpeed": 360,
+      "climbOutRate": 1200,
+      "goodness": 35,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420601",
+      "side": "AXIS"
+    },
+    "5000279": {
+      "serialNumber": 5000279,
+      "type": "bf109f4",
+      "archType": "bf109",
+      "displayName": "Bf 109 F-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "model": "graphics\\planes\\bf109f4\\bf109f4.mgm",
+      "desc": "",
+      "cruisingSpeed": 360,
+      "climbOutRate": 1200,
+      "goodness": 35,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420601",
+      "side": "AXIS"
+    },
+    "5000272": {
+      "serialNumber": 5000272,
+      "type": "bf109f4",
+      "archType": "bf109",
+      "displayName": "Bf 109 F-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "model": "graphics\\planes\\bf109f4\\bf109f4.mgm",
+      "desc": "",
+      "cruisingSpeed": 360,
+      "climbOutRate": 1200,
+      "goodness": 35,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420601",
+      "side": "AXIS"
+    },
+    "5000273": {
+      "serialNumber": 5000273,
+      "type": "bf109f4",
+      "archType": "bf109",
+      "displayName": "Bf 109 F-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "model": "graphics\\planes\\bf109f4\\bf109f4.mgm",
+      "desc": "",
+      "cruisingSpeed": 360,
+      "climbOutRate": 1200,
+      "goodness": 35,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420601",
+      "side": "AXIS"
+    },
+    "5000274": {
+      "serialNumber": 5000274,
+      "type": "bf109f4",
+      "archType": "bf109",
+      "displayName": "Bf 109 F-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "model": "graphics\\planes\\bf109f4\\bf109f4.mgm",
+      "desc": "",
+      "cruisingSpeed": 360,
+      "climbOutRate": 1200,
+      "goodness": 35,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420601",
+      "side": "AXIS"
+    },
+    "5000275": {
+      "serialNumber": 5000275,
+      "type": "bf109f4",
+      "archType": "bf109",
+      "displayName": "Bf 109 F-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf109f4.txt",
+      "model": "graphics\\planes\\bf109f4\\bf109f4.mgm",
+      "desc": "",
+      "cruisingSpeed": 360,
+      "climbOutRate": 1200,
+      "goodness": 35,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420601",
+      "side": "AXIS"
+    }
+  }
+}

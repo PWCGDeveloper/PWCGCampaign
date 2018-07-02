@@ -1,0 +1,298 @@
+{
+  "equippedPlanes": {
+    "5000524": {
+      "serialNumber": 5000524,
+      "type": "ju523mg4e",
+      "archType": "ju52",
+      "displayName": "Ju 52",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+      "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 500,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_TRANSPORT"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000525": {
+      "serialNumber": 5000525,
+      "type": "ju523mg4e",
+      "archType": "ju52",
+      "displayName": "Ju 52",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+      "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 500,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_TRANSPORT"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000526": {
+      "serialNumber": 5000526,
+      "type": "ju523mg4e",
+      "archType": "ju52",
+      "displayName": "Ju 52",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+      "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 500,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_TRANSPORT"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000527": {
+      "serialNumber": 5000527,
+      "type": "ju523mg4e",
+      "archType": "ju52",
+      "displayName": "Ju 52",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+      "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 500,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_TRANSPORT"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000520": {
+      "serialNumber": 5000520,
+      "type": "ju523mg4e",
+      "archType": "ju52",
+      "displayName": "Ju 52",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+      "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 500,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_TRANSPORT"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000521": {
+      "serialNumber": 5000521,
+      "type": "ju523mg4e",
+      "archType": "ju52",
+      "displayName": "Ju 52",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+      "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 500,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_TRANSPORT"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000522": {
+      "serialNumber": 5000522,
+      "type": "ju523mg4e",
+      "archType": "ju52",
+      "displayName": "Ju 52",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+      "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 500,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_TRANSPORT"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000523": {
+      "serialNumber": 5000523,
+      "type": "ju523mg4e",
+      "archType": "ju52",
+      "displayName": "Ju 52",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+      "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 500,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_TRANSPORT"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000519": {
+      "serialNumber": 5000519,
+      "type": "ju523mg4e",
+      "archType": "ju52",
+      "displayName": "Ju 52",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+      "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 500,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_TRANSPORT"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000532": {
+      "serialNumber": 5000532,
+      "type": "ju523mg4e",
+      "archType": "ju52",
+      "displayName": "Ju 52",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+      "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 500,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_TRANSPORT"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000528": {
+      "serialNumber": 5000528,
+      "type": "ju523mg4e",
+      "archType": "ju52",
+      "displayName": "Ju 52",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+      "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 500,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_TRANSPORT"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000529": {
+      "serialNumber": 5000529,
+      "type": "ju523mg4e",
+      "archType": "ju52",
+      "displayName": "Ju 52",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+      "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 500,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_TRANSPORT"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000530": {
+      "serialNumber": 5000530,
+      "type": "ju523mg4e",
+      "archType": "ju52",
+      "displayName": "Ju 52",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+      "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 500,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_TRANSPORT"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000531": {
+      "serialNumber": 5000531,
+      "type": "ju523mg4e",
+      "archType": "ju52",
+      "displayName": "Ju 52",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
+      "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 500,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_TRANSPORT"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    }
+  }
+}

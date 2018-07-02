@@ -1,0 +1,312 @@
+{
+  "equippedPlanes": {
+    "5000365": {
+      "serialNumber": 5000365,
+      "type": "mc202s8",
+      "archType": "mc200",
+      "displayName": "MC.202 ser.VIII",
+      "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+      "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1100,
+      "goodness": 35,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000366": {
+      "serialNumber": 5000366,
+      "type": "mc202s8",
+      "archType": "mc200",
+      "displayName": "MC.202 ser.VIII",
+      "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+      "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1100,
+      "goodness": 35,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000367": {
+      "serialNumber": 5000367,
+      "type": "mc202s8",
+      "archType": "mc200",
+      "displayName": "MC.202 ser.VIII",
+      "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+      "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1100,
+      "goodness": 35,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000376": {
+      "serialNumber": 5000376,
+      "type": "mc202s8",
+      "archType": "mc200",
+      "displayName": "MC.202 ser.VIII",
+      "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+      "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1100,
+      "goodness": 35,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000377": {
+      "serialNumber": 5000377,
+      "type": "mc202s8",
+      "archType": "mc200",
+      "displayName": "MC.202 ser.VIII",
+      "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+      "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1100,
+      "goodness": 35,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000378": {
+      "serialNumber": 5000378,
+      "type": "mc202s8",
+      "archType": "mc200",
+      "displayName": "MC.202 ser.VIII",
+      "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+      "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1100,
+      "goodness": 35,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000372": {
+      "serialNumber": 5000372,
+      "type": "mc202s8",
+      "archType": "mc200",
+      "displayName": "MC.202 ser.VIII",
+      "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+      "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1100,
+      "goodness": 35,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000373": {
+      "serialNumber": 5000373,
+      "type": "mc202s8",
+      "archType": "mc200",
+      "displayName": "MC.202 ser.VIII",
+      "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+      "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1100,
+      "goodness": 35,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000374": {
+      "serialNumber": 5000374,
+      "type": "mc202s8",
+      "archType": "mc200",
+      "displayName": "MC.202 ser.VIII",
+      "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+      "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1100,
+      "goodness": 35,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000375": {
+      "serialNumber": 5000375,
+      "type": "mc202s8",
+      "archType": "mc200",
+      "displayName": "MC.202 ser.VIII",
+      "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+      "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1100,
+      "goodness": 35,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000368": {
+      "serialNumber": 5000368,
+      "type": "mc202s8",
+      "archType": "mc200",
+      "displayName": "MC.202 ser.VIII",
+      "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+      "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1100,
+      "goodness": 35,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000369": {
+      "serialNumber": 5000369,
+      "type": "mc202s8",
+      "archType": "mc200",
+      "displayName": "MC.202 ser.VIII",
+      "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+      "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1100,
+      "goodness": 35,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000370": {
+      "serialNumber": 5000370,
+      "type": "mc202s8",
+      "archType": "mc200",
+      "displayName": "MC.202 ser.VIII",
+      "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+      "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1100,
+      "goodness": 35,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000371": {
+      "serialNumber": 5000371,
+      "type": "mc202s8",
+      "archType": "mc200",
+      "displayName": "MC.202 ser.VIII",
+      "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
+      "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1100,
+      "goodness": 35,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    }
+  }
+}

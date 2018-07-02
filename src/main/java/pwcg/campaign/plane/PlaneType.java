@@ -50,7 +50,7 @@ public class PlaneType implements Cloneable
         return planeType;
     }
 
-    public PlaneType copyTemplate(PlaneType planeType)
+    public void copyTemplate(PlaneType planeType)
     {
         planeType.type = this.type;
         planeType.archType = this.archType;
@@ -74,8 +74,6 @@ public class PlaneType implements Cloneable
         planeType.withdrawal = this.withdrawal;
 
         planeType.side = this.side;
-
-        return planeType;
     }
 
     public int getCruisingSpeed()

@@ -40,7 +40,7 @@ public class PlayerFlightTypeBoSFighterTest
         assert (flight.getFlightType() == FlightTypes.PATROL);
         for (PlaneMCU plane : flight.getPlanes())
         {
-            assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
+            assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
         }
     }
 
@@ -58,7 +58,7 @@ public class PlayerFlightTypeBoSFighterTest
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_PATROL);
         for (PlaneMCU plane : flight.getPlanes())
         {
-            assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
+            assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
         }
     }
 
@@ -76,7 +76,7 @@ public class PlayerFlightTypeBoSFighterTest
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_CAP);
         for (PlaneMCU plane : flight.getPlanes())
         {
-            assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
+            assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
         }
     }
 
@@ -94,7 +94,7 @@ public class PlayerFlightTypeBoSFighterTest
         assert (flight.getFlightType() == FlightTypes.INTERCEPT);
         for (PlaneMCU plane : flight.getPlanes())
         {
-            assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
+            assert(plane.getPlanePayload().getSelectedPayloadId() == 0 || plane.getPlanePayload().getSelectedPayloadId() == 4);
         }
     }
 
@@ -112,7 +112,7 @@ public class PlayerFlightTypeBoSFighterTest
         assert (flight.getFlightType() == FlightTypes.OFFENSIVE);
         for (PlaneMCU plane : flight.getPlanes())
         {
-            assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
+            assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
         }
     }
 
@@ -130,7 +130,7 @@ public class PlayerFlightTypeBoSFighterTest
         assert (flight.getFlightType() == FlightTypes.ESCORT);
         for (PlaneMCU plane : flight.getPlanes())
         {
-            assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
+            assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
         }
     }
 }

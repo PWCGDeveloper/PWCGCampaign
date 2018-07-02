@@ -1,0 +1,312 @@
+{
+  "equippedPlanes": {
+    "5000040": {
+      "serialNumber": 5000040,
+      "type": "i16t24",
+      "archType": "i16",
+      "displayName": "I-16 type 24",
+      "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+      "model": "graphics\\planes\\i16t24\\i16t24.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 600,
+      "goodness": 15,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430301",
+      "side": "ALLIED"
+    },
+    "5000041": {
+      "serialNumber": 5000041,
+      "type": "i16t24",
+      "archType": "i16",
+      "displayName": "I-16 type 24",
+      "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+      "model": "graphics\\planes\\i16t24\\i16t24.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 600,
+      "goodness": 15,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430301",
+      "side": "ALLIED"
+    },
+    "5000042": {
+      "serialNumber": 5000042,
+      "type": "i16t24",
+      "archType": "i16",
+      "displayName": "I-16 type 24",
+      "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+      "model": "graphics\\planes\\i16t24\\i16t24.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 600,
+      "goodness": 15,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430301",
+      "side": "ALLIED"
+    },
+    "5000036": {
+      "serialNumber": 5000036,
+      "type": "i16t24",
+      "archType": "i16",
+      "displayName": "I-16 type 24",
+      "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+      "model": "graphics\\planes\\i16t24\\i16t24.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 600,
+      "goodness": 15,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430301",
+      "side": "ALLIED"
+    },
+    "5000037": {
+      "serialNumber": 5000037,
+      "type": "i16t24",
+      "archType": "i16",
+      "displayName": "I-16 type 24",
+      "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+      "model": "graphics\\planes\\i16t24\\i16t24.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 600,
+      "goodness": 15,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430301",
+      "side": "ALLIED"
+    },
+    "5000038": {
+      "serialNumber": 5000038,
+      "type": "i16t24",
+      "archType": "i16",
+      "displayName": "I-16 type 24",
+      "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+      "model": "graphics\\planes\\i16t24\\i16t24.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 600,
+      "goodness": 15,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430301",
+      "side": "ALLIED"
+    },
+    "5000039": {
+      "serialNumber": 5000039,
+      "type": "i16t24",
+      "archType": "i16",
+      "displayName": "I-16 type 24",
+      "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+      "model": "graphics\\planes\\i16t24\\i16t24.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 600,
+      "goodness": 15,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430301",
+      "side": "ALLIED"
+    },
+    "5000032": {
+      "serialNumber": 5000032,
+      "type": "i16t24",
+      "archType": "i16",
+      "displayName": "I-16 type 24",
+      "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+      "model": "graphics\\planes\\i16t24\\i16t24.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 600,
+      "goodness": 15,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430301",
+      "side": "ALLIED"
+    },
+    "5000033": {
+      "serialNumber": 5000033,
+      "type": "i16t24",
+      "archType": "i16",
+      "displayName": "I-16 type 24",
+      "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+      "model": "graphics\\planes\\i16t24\\i16t24.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 600,
+      "goodness": 15,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430301",
+      "side": "ALLIED"
+    },
+    "5000034": {
+      "serialNumber": 5000034,
+      "type": "i16t24",
+      "archType": "i16",
+      "displayName": "I-16 type 24",
+      "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+      "model": "graphics\\planes\\i16t24\\i16t24.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 600,
+      "goodness": 15,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430301",
+      "side": "ALLIED"
+    },
+    "5000035": {
+      "serialNumber": 5000035,
+      "type": "i16t24",
+      "archType": "i16",
+      "displayName": "I-16 type 24",
+      "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+      "model": "graphics\\planes\\i16t24\\i16t24.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 600,
+      "goodness": 15,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430301",
+      "side": "ALLIED"
+    },
+    "5000029": {
+      "serialNumber": 5000029,
+      "type": "i16t24",
+      "archType": "i16",
+      "displayName": "I-16 type 24",
+      "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+      "model": "graphics\\planes\\i16t24\\i16t24.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 600,
+      "goodness": 15,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430301",
+      "side": "ALLIED"
+    },
+    "5000030": {
+      "serialNumber": 5000030,
+      "type": "i16t24",
+      "archType": "i16",
+      "displayName": "I-16 type 24",
+      "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+      "model": "graphics\\planes\\i16t24\\i16t24.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 600,
+      "goodness": 15,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430301",
+      "side": "ALLIED"
+    },
+    "5000031": {
+      "serialNumber": 5000031,
+      "type": "i16t24",
+      "archType": "i16",
+      "displayName": "I-16 type 24",
+      "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
+      "model": "graphics\\planes\\i16t24\\i16t24.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 600,
+      "goodness": 15,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430301",
+      "side": "ALLIED"
+    }
+  }
+}

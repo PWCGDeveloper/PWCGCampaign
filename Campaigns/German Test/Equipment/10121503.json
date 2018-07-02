@@ -1,0 +1,298 @@
+{
+  "equippedPlanes": {
+    "5000168": {
+      "serialNumber": 5000168,
+      "type": "il2m42",
+      "archType": "il2",
+      "displayName": "Il-2 mod.1942",
+      "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+      "model": "graphics\\planes\\il2m42\\il2m42.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 700,
+      "goodness": 25,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420501",
+      "withdrawal": "19430701",
+      "side": "ALLIED"
+    },
+    "5000164": {
+      "serialNumber": 5000164,
+      "type": "il2m42",
+      "archType": "il2",
+      "displayName": "Il-2 mod.1942",
+      "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+      "model": "graphics\\planes\\il2m42\\il2m42.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 700,
+      "goodness": 25,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420501",
+      "withdrawal": "19430701",
+      "side": "ALLIED"
+    },
+    "5000165": {
+      "serialNumber": 5000165,
+      "type": "il2m42",
+      "archType": "il2",
+      "displayName": "Il-2 mod.1942",
+      "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+      "model": "graphics\\planes\\il2m42\\il2m42.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 700,
+      "goodness": 25,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420501",
+      "withdrawal": "19430701",
+      "side": "ALLIED"
+    },
+    "5000166": {
+      "serialNumber": 5000166,
+      "type": "il2m42",
+      "archType": "il2",
+      "displayName": "Il-2 mod.1942",
+      "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+      "model": "graphics\\planes\\il2m42\\il2m42.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 700,
+      "goodness": 25,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420501",
+      "withdrawal": "19430701",
+      "side": "ALLIED"
+    },
+    "5000167": {
+      "serialNumber": 5000167,
+      "type": "il2m42",
+      "archType": "il2",
+      "displayName": "Il-2 mod.1942",
+      "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+      "model": "graphics\\planes\\il2m42\\il2m42.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 700,
+      "goodness": 25,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420501",
+      "withdrawal": "19430701",
+      "side": "ALLIED"
+    },
+    "5000160": {
+      "serialNumber": 5000160,
+      "type": "il2m42",
+      "archType": "il2",
+      "displayName": "Il-2 mod.1942",
+      "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+      "model": "graphics\\planes\\il2m42\\il2m42.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 700,
+      "goodness": 25,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420501",
+      "withdrawal": "19430701",
+      "side": "ALLIED"
+    },
+    "5000161": {
+      "serialNumber": 5000161,
+      "type": "il2m42",
+      "archType": "il2",
+      "displayName": "Il-2 mod.1942",
+      "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+      "model": "graphics\\planes\\il2m42\\il2m42.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 700,
+      "goodness": 25,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420501",
+      "withdrawal": "19430701",
+      "side": "ALLIED"
+    },
+    "5000162": {
+      "serialNumber": 5000162,
+      "type": "il2m42",
+      "archType": "il2",
+      "displayName": "Il-2 mod.1942",
+      "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+      "model": "graphics\\planes\\il2m42\\il2m42.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 700,
+      "goodness": 25,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420501",
+      "withdrawal": "19430701",
+      "side": "ALLIED"
+    },
+    "5000163": {
+      "serialNumber": 5000163,
+      "type": "il2m42",
+      "archType": "il2",
+      "displayName": "Il-2 mod.1942",
+      "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+      "model": "graphics\\planes\\il2m42\\il2m42.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 700,
+      "goodness": 25,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420501",
+      "withdrawal": "19430701",
+      "side": "ALLIED"
+    },
+    "5000156": {
+      "serialNumber": 5000156,
+      "type": "il2m42",
+      "archType": "il2",
+      "displayName": "Il-2 mod.1942",
+      "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+      "model": "graphics\\planes\\il2m42\\il2m42.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 700,
+      "goodness": 25,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420501",
+      "withdrawal": "19430701",
+      "side": "ALLIED"
+    },
+    "5000157": {
+      "serialNumber": 5000157,
+      "type": "il2m42",
+      "archType": "il2",
+      "displayName": "Il-2 mod.1942",
+      "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+      "model": "graphics\\planes\\il2m42\\il2m42.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 700,
+      "goodness": 25,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420501",
+      "withdrawal": "19430701",
+      "side": "ALLIED"
+    },
+    "5000158": {
+      "serialNumber": 5000158,
+      "type": "il2m42",
+      "archType": "il2",
+      "displayName": "Il-2 mod.1942",
+      "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+      "model": "graphics\\planes\\il2m42\\il2m42.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 700,
+      "goodness": 25,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420501",
+      "withdrawal": "19430701",
+      "side": "ALLIED"
+    },
+    "5000159": {
+      "serialNumber": 5000159,
+      "type": "il2m42",
+      "archType": "il2",
+      "displayName": "Il-2 mod.1942",
+      "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+      "model": "graphics\\planes\\il2m42\\il2m42.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 700,
+      "goodness": 25,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420501",
+      "withdrawal": "19430701",
+      "side": "ALLIED"
+    },
+    "5000155": {
+      "serialNumber": 5000155,
+      "type": "il2m42",
+      "archType": "il2",
+      "displayName": "Il-2 mod.1942",
+      "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
+      "model": "graphics\\planes\\il2m42\\il2m42.mgm",
+      "desc": "",
+      "cruisingSpeed": 300,
+      "climbOutRate": 700,
+      "goodness": 25,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420501",
+      "withdrawal": "19430701",
+      "side": "ALLIED"
+    }
+  }
+}

@@ -107,7 +107,7 @@ public class MissionGenerator
         else
         {
             FlightFactory flightFactory = PWCGFlightFactory.createFlightFactory(campaign);
-            flightType = flightFactory.getFlightType(campaign.determineSquadron(), true);
+            flightType = flightFactory.buildFlight(campaign.determineSquadron(), true);
         }
         
         return flightType;

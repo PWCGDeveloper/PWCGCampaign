@@ -1,11 +1,14 @@
 package pwcg.mission.briefing;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.PlaneSorter;
+import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMemberSorter;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.BriefParametersContextBuilder;
 import pwcg.gui.rofmap.brief.BriefingCrewPlanePayloadSorter;
@@ -19,8 +22,7 @@ import pwcg.mission.flight.plane.PlaneMCU;
 public class BriefingMissionHandler
 {
     private BriefingFlightParameters briefParametersContext = new BriefingFlightParameters();
-    private Map <Integer, CrewPlanePayloadPairing> assignedCrewMap = new HashMap <>();
-    private Map <Integer, CrewPlanePayloadPairing> unAssignedCrewMap = new HashMap <>();
+    private BriefingAssignmentData briefingAssignmentData = new BriefingAssignmentData();
     private Mission mission = null;
 
     public BriefingMissionHandler(Mission mission)
@@ -30,40 +32,37 @@ public class BriefingMissionHandler
     
     public void initializeFromMission() throws PWCGException
     {
-        BriefingPilotHelper pilotHelper = new BriefingPilotHelper(mission, assignedCrewMap, unAssignedCrewMap);
+        BriefingDataInitializer pilotHelper = new BriefingDataInitializer(mission, briefingAssignmentData);
         pilotHelper.initializeFromMission();
 
-        BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, assignedCrewMap);
+        BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
         payloadHelper.initializePayloadsFromMission();
     }
 
-    public void modifyPlaneType(Integer pilotSerialNumber, String newPlane) throws PWCGException
+    public void changePlane(Integer pilotSerialNumber, Integer planeSerialNumber) throws PWCGException
     {
-        BriefingPilotHelper pilotHelper = new BriefingPilotHelper(mission, assignedCrewMap, unAssignedCrewMap);
-        pilotHelper.modifyPlaneType(pilotSerialNumber, newPlane);
-        
-        BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, assignedCrewMap);
+        briefingAssignmentData.changePlane(pilotSerialNumber, planeSerialNumber);
+
+        BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
         payloadHelper.setPayloadForChangedPlane(pilotSerialNumber);
     }
 
-    public void assignPilotFromBriefing(Integer pilotSerialNumber) throws PWCGException
+    public void assignPilotFromBriefing(Integer pilotSerialNumber, Integer planeSerialNumber) throws PWCGException
     {
-        BriefingPilotHelper pilotHelper = new BriefingPilotHelper(mission, assignedCrewMap, unAssignedCrewMap);
-        pilotHelper.assignPilotFromBriefing(pilotSerialNumber);
+        briefingAssignmentData.assignPilot(pilotSerialNumber, planeSerialNumber);
         
-        BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, assignedCrewMap);
+        BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
         payloadHelper.setPayloadForAddedPlane(pilotSerialNumber);
     }    
 
     public void unassignPilotFromBriefing(int pilotSerialNumber) throws PWCGException
     {
-        BriefingPilotHelper pilotHelper = new BriefingPilotHelper(mission, assignedCrewMap, unAssignedCrewMap);
-        pilotHelper.unassignPilotFromBriefing(pilotSerialNumber);
+        briefingAssignmentData.unassignPilot(pilotSerialNumber);
     }
 
     public void modifyPayload(Integer pilotSerialNumber, int newPayload)
     {
-        BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, assignedCrewMap);
+        BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
         payloadHelper.modifyPayload(pilotSerialNumber, newPayload);
     }
 
@@ -76,7 +75,7 @@ public class BriefingMissionHandler
     public void pushEditsToMission() throws PWCGException
     {
         PlayerFlightEditor planeGeneratorPlayer = new PlayerFlightEditor(mission.getCampaign(),mission.getMissionFlightBuilder().getPlayerFlight());
-        List<PlaneMCU> updatedPlaneSet =  planeGeneratorPlayer.updatePlayerPlanes(getCrewsSorted(assignedCrewMap));
+        List<PlaneMCU> updatedPlaneSet =  planeGeneratorPlayer.updatePlayerPlanes(getCrewsSorted());
         
         Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight();
         playerFlight.setPlanes(updatedPlaneSet);
@@ -105,25 +104,35 @@ public class BriefingMissionHandler
         }
     }
 
-    public List<CrewPlanePayloadPairing> getSortedAssigned() throws PWCGException 
+    public List<SquadronMember> getSortedAssigned() throws PWCGException 
     {       
-        return getCrewsSorted(assignedCrewMap);
+        return SquadronMemberSorter.sortSquadronMembers(mission.getCampaign(), briefingAssignmentData.getAssignedPilots());
     }
 
-    public List<CrewPlanePayloadPairing> getSortedUnassigned() throws PWCGException 
+    public List<SquadronMember> getSortedUnassignedPilots() throws PWCGException 
     {       
-        return getCrewsSorted(unAssignedCrewMap);
+        return SquadronMemberSorter.sortSquadronMembers(mission.getCampaign(), briefingAssignmentData.getUnassignedPilots());
     }
 
-    public List<CrewPlanePayloadPairing> getCrewsSorted(Map <Integer, CrewPlanePayloadPairing> crewMap) throws PWCGException
+    public List<EquippedPlane> getSortedAssignedPlanes() throws PWCGException 
+    {       
+        return PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(briefingAssignmentData.getAssignedPlanes().values()));
+    }
+
+    public List<EquippedPlane> getSortedUnassignedPlanes() throws PWCGException 
+    {       
+        return PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(briefingAssignmentData.getUnassignedPlanes().values()));
+    }
+
+    public List<CrewPlanePayloadPairing> getCrewsSorted() throws PWCGException
     {
-        BriefingCrewPlanePayloadSorter crewSorter = new BriefingCrewPlanePayloadSorter(mission, crewMap);
+        BriefingCrewPlanePayloadSorter crewSorter = new BriefingCrewPlanePayloadSorter(mission, briefingAssignmentData.getAssignedCrewPlanes());
         return crewSorter.getAssignedCrewsSorted();
     }
 
     public CrewPlanePayloadPairing getPairingByPilot(Integer pilotSerialNumber) throws PWCGException 
     {       
-        return assignedCrewMap.get(pilotSerialNumber);
+        return briefingAssignmentData.getAssignedCrewPlanes().get(pilotSerialNumber);
     }
 
     public Mission getMission()

@@ -5,8 +5,8 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.plane.Equipment;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -37,35 +37,34 @@ public class PlaneMCUFactory
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(campaign, squadron);
         List<SquadronMember> crewsForFlight = flightCrewBuilder.createCrewAssignmentsForFlight(numPlanes);
         
-        FlightPlaneTypeBuilder planeTypeBuilder = new FlightPlaneTypeBuilder(campaign, squadron, numPlanes);
-        List<String> planesTypesForFlight =planeTypeBuilder.getPlaneListForFlight();
+        Equipment equipmentForSquadron = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId());
+        FlightPlaneTypeBuilder planeTypeBuilder = new FlightPlaneTypeBuilder(equipmentForSquadron, numPlanes);
+        List<EquippedPlane> planesTypesForFlight =planeTypeBuilder.getPlaneListForFlight();
         
         createPlanes(planesTypesForFlight, crewsForFlight);
         
         return planesForFlight;
     }
-    
-    public PlaneMCU createPlaneByPlaneType (PlaneType planeType, ICountry country, SquadronMember pilot)
-    {
-        PlaneMCU plane = new PlaneMCU(planeType, country, pilot);
-        return plane;
-    }
 
-    private void createPlanes(List<String> planesTypesForFlight, List<SquadronMember> crewsForFlight) throws PWCGException
+    private void createPlanes(List<EquippedPlane> planesTypesForFlight, List<SquadronMember> crewsForFlight) throws PWCGException
     {        
         for (int numInFormation = 0; numInFormation < planesTypesForFlight.size(); ++numInFormation)
         {
-            String planeTypeDesc = planesTypesForFlight.get(numInFormation);
-            SquadronMember pilot = crewsForFlight.get(numInFormation);
-            
-            PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
-            PlaneMCU plane = createPlaneByPlaneType(planeType, squadron.getCountry(), pilot);
+            EquippedPlane equippedPlane = planesTypesForFlight.get(numInFormation);
+            SquadronMember pilot = crewsForFlight.get(numInFormation);            
+            PlaneMCU plane = createPlaneMcuByPlaneType(equippedPlane, squadron.getCountry(), pilot);
 
             plane.setIndex(IndexGenerator.getInstance().getNextIndex());
             planesForFlight.add(plane);            
         }
         
         initializePlaneParameters();
+    }
+    
+    public PlaneMCU createPlaneMcuByPlaneType (EquippedPlane equippedPlane, ICountry country, SquadronMember pilot)
+    {
+        PlaneMCU plane = new PlaneMCU(equippedPlane, country, pilot);
+        return plane;
     }
 
 	private void initializePlaneParameters() throws PWCGException

@@ -1,0 +1,312 @@
+{
+  "equippedPlanes": {
+    "5000292": {
+      "serialNumber": 5000292,
+      "type": "bf110e2",
+      "archType": "bf110",
+      "displayName": "Bf 110 E-2",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
+      "model": "graphics\\planes\\bf110e2\\bf110e2.mgm",
+      "desc": "",
+      "cruisingSpeed": 320,
+      "climbOutRate": 800,
+      "goodness": 20,
+      "endurance": 4.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK",
+        "ROLE_FIGHTER"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430101",
+      "side": "AXIS"
+    },
+    "5000293": {
+      "serialNumber": 5000293,
+      "type": "bf110e2",
+      "archType": "bf110",
+      "displayName": "Bf 110 E-2",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
+      "model": "graphics\\planes\\bf110e2\\bf110e2.mgm",
+      "desc": "",
+      "cruisingSpeed": 320,
+      "climbOutRate": 800,
+      "goodness": 20,
+      "endurance": 4.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK",
+        "ROLE_FIGHTER"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430101",
+      "side": "AXIS"
+    },
+    "5000294": {
+      "serialNumber": 5000294,
+      "type": "bf110e2",
+      "archType": "bf110",
+      "displayName": "Bf 110 E-2",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
+      "model": "graphics\\planes\\bf110e2\\bf110e2.mgm",
+      "desc": "",
+      "cruisingSpeed": 320,
+      "climbOutRate": 800,
+      "goodness": 20,
+      "endurance": 4.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK",
+        "ROLE_FIGHTER"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430101",
+      "side": "AXIS"
+    },
+    "5000288": {
+      "serialNumber": 5000288,
+      "type": "bf110e2",
+      "archType": "bf110",
+      "displayName": "Bf 110 E-2",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
+      "model": "graphics\\planes\\bf110e2\\bf110e2.mgm",
+      "desc": "",
+      "cruisingSpeed": 320,
+      "climbOutRate": 800,
+      "goodness": 20,
+      "endurance": 4.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK",
+        "ROLE_FIGHTER"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430101",
+      "side": "AXIS"
+    },
+    "5000289": {
+      "serialNumber": 5000289,
+      "type": "bf110e2",
+      "archType": "bf110",
+      "displayName": "Bf 110 E-2",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
+      "model": "graphics\\planes\\bf110e2\\bf110e2.mgm",
+      "desc": "",
+      "cruisingSpeed": 320,
+      "climbOutRate": 800,
+      "goodness": 20,
+      "endurance": 4.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK",
+        "ROLE_FIGHTER"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430101",
+      "side": "AXIS"
+    },
+    "5000290": {
+      "serialNumber": 5000290,
+      "type": "bf110e2",
+      "archType": "bf110",
+      "displayName": "Bf 110 E-2",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
+      "model": "graphics\\planes\\bf110e2\\bf110e2.mgm",
+      "desc": "",
+      "cruisingSpeed": 320,
+      "climbOutRate": 800,
+      "goodness": 20,
+      "endurance": 4.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK",
+        "ROLE_FIGHTER"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430101",
+      "side": "AXIS"
+    },
+    "5000291": {
+      "serialNumber": 5000291,
+      "type": "bf110e2",
+      "archType": "bf110",
+      "displayName": "Bf 110 E-2",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
+      "model": "graphics\\planes\\bf110e2\\bf110e2.mgm",
+      "desc": "",
+      "cruisingSpeed": 320,
+      "climbOutRate": 800,
+      "goodness": 20,
+      "endurance": 4.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK",
+        "ROLE_FIGHTER"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430101",
+      "side": "AXIS"
+    },
+    "5000284": {
+      "serialNumber": 5000284,
+      "type": "bf110e2",
+      "archType": "bf110",
+      "displayName": "Bf 110 E-2",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
+      "model": "graphics\\planes\\bf110e2\\bf110e2.mgm",
+      "desc": "",
+      "cruisingSpeed": 320,
+      "climbOutRate": 800,
+      "goodness": 20,
+      "endurance": 4.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK",
+        "ROLE_FIGHTER"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430101",
+      "side": "AXIS"
+    },
+    "5000285": {
+      "serialNumber": 5000285,
+      "type": "bf110e2",
+      "archType": "bf110",
+      "displayName": "Bf 110 E-2",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
+      "model": "graphics\\planes\\bf110e2\\bf110e2.mgm",
+      "desc": "",
+      "cruisingSpeed": 320,
+      "climbOutRate": 800,
+      "goodness": 20,
+      "endurance": 4.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK",
+        "ROLE_FIGHTER"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430101",
+      "side": "AXIS"
+    },
+    "5000286": {
+      "serialNumber": 5000286,
+      "type": "bf110e2",
+      "archType": "bf110",
+      "displayName": "Bf 110 E-2",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
+      "model": "graphics\\planes\\bf110e2\\bf110e2.mgm",
+      "desc": "",
+      "cruisingSpeed": 320,
+      "climbOutRate": 800,
+      "goodness": 20,
+      "endurance": 4.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK",
+        "ROLE_FIGHTER"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430101",
+      "side": "AXIS"
+    },
+    "5000287": {
+      "serialNumber": 5000287,
+      "type": "bf110e2",
+      "archType": "bf110",
+      "displayName": "Bf 110 E-2",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
+      "model": "graphics\\planes\\bf110e2\\bf110e2.mgm",
+      "desc": "",
+      "cruisingSpeed": 320,
+      "climbOutRate": 800,
+      "goodness": 20,
+      "endurance": 4.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK",
+        "ROLE_FIGHTER"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430101",
+      "side": "AXIS"
+    },
+    "5000281": {
+      "serialNumber": 5000281,
+      "type": "bf110e2",
+      "archType": "bf110",
+      "displayName": "Bf 110 E-2",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
+      "model": "graphics\\planes\\bf110e2\\bf110e2.mgm",
+      "desc": "",
+      "cruisingSpeed": 320,
+      "climbOutRate": 800,
+      "goodness": 20,
+      "endurance": 4.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK",
+        "ROLE_FIGHTER"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430101",
+      "side": "AXIS"
+    },
+    "5000282": {
+      "serialNumber": 5000282,
+      "type": "bf110e2",
+      "archType": "bf110",
+      "displayName": "Bf 110 E-2",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
+      "model": "graphics\\planes\\bf110e2\\bf110e2.mgm",
+      "desc": "",
+      "cruisingSpeed": 320,
+      "climbOutRate": 800,
+      "goodness": 20,
+      "endurance": 4.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK",
+        "ROLE_FIGHTER"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430101",
+      "side": "AXIS"
+    },
+    "5000283": {
+      "serialNumber": 5000283,
+      "type": "bf110e2",
+      "archType": "bf110",
+      "displayName": "Bf 110 E-2",
+      "script": "LuaScripts\\WorldObjects\\Planes\\bf110e2.txt",
+      "model": "graphics\\planes\\bf110e2\\bf110e2.mgm",
+      "desc": "",
+      "cruisingSpeed": 320,
+      "climbOutRate": 800,
+      "goodness": 20,
+      "endurance": 4.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_ATTACK",
+        "ROLE_FIGHTER"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19430101",
+      "side": "AXIS"
+    }
+  }
+}

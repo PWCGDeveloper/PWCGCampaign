@@ -1,23 +1,45 @@
 {
   "squadronMembers": {
     "3000061": {
-      "name": "Aleksey Shkuratov",
+      "name": "Timur Balaban",
       "serialNumber": 3000061,
       "rank": "Kapitan",
-      "picName": "Russian13.jpg",
+      "picName": "Russian01.jpg",
       "pilotActiveStatus": 0,
       "country": "RUSSIA",
-      "missionFlown": 55,
+      "missionFlown": 45,
       "aggressiveness": 0,
       "aiSkillLevel": "NOVICE",
       "skill": 1,
       "commonSense": 0,
       "skins": [],
-      "victories": [],
+      "victories": [
+        {
+          "date": "19420829",
+          "location": "sisikin",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Olt Markus Waldmann",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "439th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kapitan Timur Balaban",
+            "pilotStatus": 0
+          }
+        }
+      ],
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }
@@ -28,25 +50,115 @@
       "inactiveDate": "19440101"
     },
     "3000060": {
-      "name": "Arkady Chapayev",
+      "name": "Ruslan Ivazov",
       "serialNumber": 3000060,
       "rank": "Major",
       "picName": "Russian28.jpg",
       "pilotActiveStatus": 0,
       "country": "RUSSIA",
-      "missionFlown": 55,
+      "missionFlown": 54,
       "aggressiveness": 0,
-      "aiSkillLevel": "NOVICE",
+      "aiSkillLevel": "COMMON",
       "skill": 1,
       "commonSense": 0,
       "skins": [],
-      "victories": [],
+      "victories": [
+        {
+          "date": "19420820",
+          "location": "Vertjacij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "bf109g2",
+            "squadronName": "I./JG52",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Wolfram Wolf",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "439th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Ruslan Ivazov",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420823",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "ju87d3",
+            "squadronName": "I./St.G.2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Felix Scheuermann",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "439th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Ruslan Ivazov",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "Platonov",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "ju88a4",
+            "squadronName": "II./KG76",
+            "pilotSerialNumber": 0,
+            "pilotName": "Olt Ludwig Hertz",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "439th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Ruslan Ivazov",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Pan sino",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "ju523mg4e",
+            "squadronName": "II./TG2",
+            "pilotSerialNumber": 0,
+            "pilotName": "Olt Lothar Naegelein",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "439th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Ruslan Ivazov",
+            "pilotStatus": 0
+          }
+        }
+      ],
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
         }
       ],
       "playerRegion": "",
@@ -55,13 +167,13 @@
       "inactiveDate": "19440101"
     },
     "3000063": {
-      "name": "Svyatoslav Sorokin",
+      "name": "Nikolay Panarin",
       "serialNumber": 3000063,
       "rank": "Starshyi leyitenant",
-      "picName": "Russian55.jpg",
+      "picName": "Russian15.jpg",
       "pilotActiveStatus": 0,
       "country": "RUSSIA",
-      "missionFlown": 38,
+      "missionFlown": 12,
       "aggressiveness": 0,
       "aiSkillLevel": "NOVICE",
       "skill": 1,
@@ -71,7 +183,7 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }
@@ -82,13 +194,13 @@
       "inactiveDate": "19440101"
     },
     "3000062": {
-      "name": "Evgeny Kharzin",
+      "name": "Aleksey Yenin",
       "serialNumber": 3000062,
       "rank": "Kapitan",
-      "picName": "Russian02.jpg",
+      "picName": "Russian25.jpg",
       "pilotActiveStatus": 0,
       "country": "RUSSIA",
-      "missionFlown": 43,
+      "missionFlown": 42,
       "aggressiveness": 0,
       "aiSkillLevel": "NOVICE",
       "skill": 1,
@@ -98,7 +210,7 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }
@@ -109,13 +221,13 @@
       "inactiveDate": "19440101"
     },
     "3000069": {
-      "name": "Arkady Grachyov",
+      "name": "Fyodor Osokin",
       "serialNumber": 3000069,
       "rank": "Leyitenant",
-      "picName": "Russian51.jpg",
+      "picName": "Russian47.jpg",
       "pilotActiveStatus": 0,
       "country": "RUSSIA",
-      "missionFlown": 20,
+      "missionFlown": 3,
       "aggressiveness": 0,
       "aiSkillLevel": "NOVICE",
       "skill": 1,
@@ -125,7 +237,34 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111495,
+      "inactiveDate": "19440101"
+    },
+    "3000068": {
+      "name": "Yuri Druganin",
+      "serialNumber": 3000068,
+      "rank": "Leyitenant",
+      "picName": "Russian14.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }
@@ -136,13 +275,13 @@
       "inactiveDate": "19440101"
     },
     "3000071": {
-      "name": "Vladislav Tatarintsev",
+      "name": "Konstantin Stepnov",
       "serialNumber": 3000071,
       "rank": "Serzhant",
-      "picName": "Russian11.jpg",
+      "picName": "Russian29.jpg",
       "pilotActiveStatus": 0,
       "country": "RUSSIA",
-      "missionFlown": 18,
+      "missionFlown": 4,
       "aggressiveness": 0,
       "aiSkillLevel": "NOVICE",
       "skill": 1,
@@ -152,7 +291,7 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }
@@ -162,40 +301,14 @@
       "squadronId": 10111495,
       "inactiveDate": "19440101"
     },
-    "3000423": {
-      "name": "Andrey Nevzorov",
-      "serialNumber": 3000423,
-      "rank": "Serzhant",
-      "picName": "Russian39.jpg",
-      "pilotActiveStatus": 0,
-      "country": "RUSSIA",
-      "missionFlown": 2,
-      "aggressiveness": 0,
-      "aiSkillLevel": "NOVICE",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411115",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 10111495
-    },
     "3000070": {
-      "name": "Viktor Yuditsky",
+      "name": "Maksim Onipchenko",
       "serialNumber": 3000070,
       "rank": "Serzhant",
-      "picName": "Russian38.jpg",
+      "picName": "Russian55.jpg",
       "pilotActiveStatus": 0,
       "country": "RUSSIA",
-      "missionFlown": 15,
+      "missionFlown": 9,
       "aggressiveness": 0,
       "aiSkillLevel": "NOVICE",
       "skill": 1,
@@ -205,7 +318,7 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }
@@ -216,13 +329,13 @@
       "inactiveDate": "19440101"
     },
     "3000065": {
-      "name": "Oleg Dorofeyev",
+      "name": "Evgeny Etush",
       "serialNumber": 3000065,
       "rank": "Starshyi leyitenant",
-      "picName": "Russian29.jpg",
+      "picName": "Russian23.jpg",
       "pilotActiveStatus": 0,
       "country": "RUSSIA",
-      "missionFlown": 33,
+      "missionFlown": 25,
       "aggressiveness": 0,
       "aiSkillLevel": "NOVICE",
       "skill": 1,
@@ -232,7 +345,7 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }
@@ -243,13 +356,13 @@
       "inactiveDate": "19440101"
     },
     "3000064": {
-      "name": "Svyatoslav Shostak",
+      "name": "Filipp Zimin",
       "serialNumber": 3000064,
       "rank": "Starshyi leyitenant",
-      "picName": "Russian50.jpg",
+      "picName": "Russian19.jpg",
       "pilotActiveStatus": 0,
       "country": "RUSSIA",
-      "missionFlown": 36,
+      "missionFlown": 21,
       "aggressiveness": 0,
       "aiSkillLevel": "NOVICE",
       "skill": 1,
@@ -259,7 +372,7 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }
@@ -270,13 +383,13 @@
       "inactiveDate": "19440101"
     },
     "3000067": {
-      "name": "Ivan Kutyakov",
+      "name": "Emil Maslov",
       "serialNumber": 3000067,
       "rank": "Leyitenant",
-      "picName": "Russian48.jpg",
+      "picName": "Russian12.jpg",
       "pilotActiveStatus": 0,
       "country": "RUSSIA",
-      "missionFlown": 13,
+      "missionFlown": 9,
       "aggressiveness": 0,
       "aiSkillLevel": "NOVICE",
       "skill": 1,
@@ -286,7 +399,34 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 10111495,
+      "inactiveDate": "19440101"
+    },
+    "3000066": {
+      "name": "Anatoly Lukyanenko",
+      "serialNumber": 3000066,
+      "rank": "Starshyi leyitenant",
+      "picName": "Russian33.jpg",
+      "pilotActiveStatus": 0,
+      "country": "RUSSIA",
+      "missionFlown": 16,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }

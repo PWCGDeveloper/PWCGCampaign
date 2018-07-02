@@ -1,6 +1,6 @@
 {
   "type": "brandw12",
-  "archType": "brandw",
+  "archType": "brandw12",
   "side": "AXIS",
   "displayName": "Brandenburg W12",
   "script": "LuaScripts\\WorldObjects\\brandw12.txt",

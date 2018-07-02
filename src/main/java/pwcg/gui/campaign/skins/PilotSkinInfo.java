@@ -39,8 +39,7 @@ public class PilotSkinInfo
         
         // Make an entry for each plane initialized to "No Skin"
         List<PlaneType> squadronPlanes = squad.determineCurrentAircraftList(campaign.getDate());
-        PlaneSorter planeSorter = new PlaneSorter();
-        List<PlaneType> squadronPlanesByBest = planeSorter.sortPlanesByGoodness(squadronPlanes);
+        List<PlaneType> squadronPlanesByBest = PlaneSorter.sortPlanesByGoodness(squadronPlanes);
         for (PlaneType plane : squadronPlanesByBest)
         {
             updateSkinForPlane(plane.getType(), null);

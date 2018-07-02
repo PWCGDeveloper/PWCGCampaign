@@ -1,0 +1,593 @@
+{
+  "squadronMembers": {
+    "3000317": {
+      "name": "Roberto Rinaldi",
+      "serialNumber": 3000317,
+      "rank": "Tenente",
+      "picName": "Italian25.jpg",
+      "pilotActiveStatus": 0,
+      "country": "ITALY",
+      "missionFlown": 23,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20115021,
+      "inactiveDate": "19440101"
+    },
+    "3000316": {
+      "name": "Battista Silvestri",
+      "serialNumber": 3000316,
+      "rank": "Tenente",
+      "picName": "Italian03.jpg",
+      "pilotActiveStatus": 0,
+      "country": "ITALY",
+      "missionFlown": 26,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20115021,
+      "inactiveDate": "19440101"
+    },
+    "3000319": {
+      "name": "Taddeo Costantini",
+      "serialNumber": 3000319,
+      "rank": "Sottotenente",
+      "picName": "Italian06.jpg",
+      "pilotActiveStatus": 0,
+      "country": "ITALY",
+      "missionFlown": 1,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20115021,
+      "inactiveDate": "19440101"
+    },
+    "3000318": {
+      "name": "Bonifazio Montanari",
+      "serialNumber": 3000318,
+      "rank": "Sottotenente",
+      "picName": "Italian21.jpg",
+      "pilotActiveStatus": 0,
+      "country": "ITALY",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20115021,
+      "inactiveDate": "19440101"
+    },
+    "3000313": {
+      "name": "Abramo De Santis",
+      "serialNumber": 3000313,
+      "rank": "Capitano",
+      "picName": "Italian29.jpg",
+      "pilotActiveStatus": 0,
+      "country": "ITALY",
+      "missionFlown": 46,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19420826",
+          "location": "Kakpinka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Ilya Lukov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitano Abramo De Santis",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "277th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kap Eldar Khodyayev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitano Abramo De Santis",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20115021,
+      "inactiveDate": "19440101"
+    },
+    "3000312": {
+      "name": "Diedi Barbieri",
+      "serialNumber": 3000312,
+      "rank": "Capitano",
+      "picName": "Italian23.jpg",
+      "pilotActiveStatus": 0,
+      "country": "ITALY",
+      "missionFlown": 44,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19420829",
+          "location": "Karaicev",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Yakov Chichikov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilotSerialNumber": 0,
+            "pilotName": "Capitano Diedi Barbieri",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20115021,
+      "inactiveDate": "19440101"
+    },
+    "3000315": {
+      "name": "Lapaccio Gatti",
+      "serialNumber": 3000315,
+      "rank": "Tenente",
+      "picName": "Italian11.jpg",
+      "pilotActiveStatus": 0,
+      "country": "ITALY",
+      "missionFlown": 21,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20115021,
+      "inactiveDate": "19440101"
+    },
+    "3000314": {
+      "name": "Nigi Guerra",
+      "serialNumber": 3000314,
+      "rank": "Tenente",
+      "picName": "Italian31.jpg",
+      "pilotActiveStatus": 0,
+      "country": "ITALY",
+      "missionFlown": 25,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20115021,
+      "inactiveDate": "19440101"
+    },
+    "3000311": {
+      "name": "Geri Martini",
+      "serialNumber": 3000311,
+      "rank": "Maggiore",
+      "picName": "Italian08.jpg",
+      "pilotActiveStatus": 0,
+      "country": "ITALY",
+      "missionFlown": 68,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19420805",
+          "location": "Kakpinka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "yak1s127",
+            "squadronName": "273rd Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Artur Kropanin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maggiore Geri Martini",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420808",
+          "location": "zutov 2",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "284th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Artur Bobko",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maggiore Geri Martini",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420811",
+          "location": "Kakpinka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Zakhar Suvorin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maggiore Geri Martini",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420814",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "86th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Dmitry Elkin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maggiore Geri Martini",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420817",
+          "location": "Aksaj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "618th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Yan Gorbunkov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maggiore Geri Martini",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420820",
+          "location": "Darganov",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Vladislav Ogurtsov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maggiore Geri Martini",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420823",
+          "location": "Novo-Petrovskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Vasily Zaretsky",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maggiore Geri Martini",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "Darganov",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "27th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Pavel Kruchinkin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maggiore Geri Martini",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Darganov",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Yaroslav Pavlovsky",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "mc202s8",
+            "squadronName": "21 Gruppo Caccia",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maggiore Geri Martini",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20115021,
+      "inactiveDate": "19440101"
+    },
+    "3000321": {
+      "name": "Puccino Rizzi",
+      "serialNumber": 3000321,
+      "rank": "Sergeant",
+      "picName": "Italian22.jpg",
+      "pilotActiveStatus": 0,
+      "country": "ITALY",
+      "missionFlown": 6,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20115021,
+      "inactiveDate": "19440101"
+    },
+    "3000320": {
+      "name": "Matteo Sanna",
+      "serialNumber": 3000320,
+      "rank": "Sottotenente",
+      "picName": "Italian02.jpg",
+      "pilotActiveStatus": 0,
+      "country": "ITALY",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20115021,
+      "inactiveDate": "19440101"
+    },
+    "3000322": {
+      "name": "Bonaguida De Luca",
+      "serialNumber": 3000322,
+      "rank": "Sergeant",
+      "picName": "Italian09.jpg",
+      "pilotActiveStatus": 0,
+      "country": "ITALY",
+      "missionFlown": 6,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20115021,
+      "inactiveDate": "19440101"
+    }
+  }
+}

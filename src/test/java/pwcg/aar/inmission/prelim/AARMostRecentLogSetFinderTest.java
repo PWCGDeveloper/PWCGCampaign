@@ -46,8 +46,8 @@ public class AARMostRecentLogSetFinderTest
     public void testGetMostRecentLogSet () throws PWCGException
     {
         List<PwcgMissionData> sortedPwcgMissionDataForCampaign = new ArrayList<>();
-        sortedPwcgMissionDataForCampaign.add(evalPwcgMissionData1);
         sortedPwcgMissionDataForCampaign.add(evalPwcgMissionData2);
+        sortedPwcgMissionDataForCampaign.add(evalPwcgMissionData1);
 
         sortedLogSets.add("LogSet1");
         sortedLogSets.add("LogSet2");

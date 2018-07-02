@@ -1,13 +1,13 @@
 {
   "squadronMembers": {
-    "3000201": {
-      "name": "Dieter Schlamme",
-      "serialNumber": 3000201,
+    "3000249": {
+      "name": "Till Drachmann",
+      "serialNumber": 3000249,
       "rank": "Leutnant",
-      "picName": "German13.jpg",
+      "picName": "German26.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
-      "missionFlown": 16,
+      "missionFlown": 1,
       "aggressiveness": 0,
       "aiSkillLevel": "COMMON",
       "skill": 1,
@@ -17,7 +17,7 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }
@@ -27,24 +27,46 @@
       "squadronId": 20101026,
       "inactiveDate": "19440101"
     },
-    "3000200": {
-      "name": "Karlheinz Tausch",
-      "serialNumber": 3000200,
+    "3000248": {
+      "name": "Lenz Engels",
+      "serialNumber": 3000248,
       "rank": "Leutnant",
-      "picName": "German25.jpg",
+      "picName": "German66.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
-      "missionFlown": 19,
+      "missionFlown": 7,
       "aggressiveness": 0,
-      "aiSkillLevel": "VETERAN",
+      "aiSkillLevel": "COMMON",
       "skill": 1,
       "commonSense": 0,
       "skins": [],
-      "victories": [],
+      "victories": [
+        {
+          "date": "19420829",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Georgy Voronkov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Leutnant Lenz Engels",
+            "pilotStatus": 0
+          }
+        }
+      ],
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }
@@ -54,16 +76,16 @@
       "squadronId": 20101026,
       "inactiveDate": "19440101"
     },
-    "3000440": {
-      "name": "Thomas Kehlmann",
-      "serialNumber": 3000440,
+    "3000251": {
+      "name": "Wolfram Haarmann",
+      "serialNumber": 3000251,
       "rank": "Oberfeldwebel",
-      "picName": "German23.jpg",
+      "picName": "German27.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
-      "missionFlown": 2,
+      "missionFlown": 3,
       "aggressiveness": 0,
-      "aiSkillLevel": "COMMON",
+      "aiSkillLevel": "NOVICE",
       "skill": 1,
       "commonSense": 0,
       "skins": [],
@@ -71,33 +93,7 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411115",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20101026
-    },
-    "3000203": {
-      "name": "Timo Behr",
-      "serialNumber": 3000203,
-      "rank": "Leutnant",
-      "picName": "German64.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 17,
-      "aggressiveness": 0,
-      "aiSkillLevel": "VETERAN",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }
@@ -107,65 +103,16 @@
       "squadronId": 20101026,
       "inactiveDate": "19440101"
     },
-    "3000202": {
-      "name": "Hartmut Schurer",
-      "serialNumber": 3000202,
+    "3000250": {
+      "name": "Mathias Weintraub",
+      "serialNumber": 3000250,
       "rank": "Oberfeldwebel",
-      "picName": "German19.jpg",
+      "picName": "German41.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
-      "missionFlown": 12,
+      "missionFlown": 5,
       "aggressiveness": 0,
-      "aiSkillLevel": "VETERAN",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [
-        {
-          "date": "19411109",
-          "location": "Myshkino",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "132nd Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Konstantin Kharlamov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberfeldwebel Hartmut Schurer",
-            "pilotStatus": 0
-          }
-        }
-      ],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20101026,
-      "inactiveDate": "19440101"
-    },
-    "3000197": {
-      "name": "Oswald Hoscheck",
-      "serialNumber": 3000197,
-      "rank": "Oberleutnant",
-      "picName": "German17.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 39,
-      "aggressiveness": 0,
-      "aiSkillLevel": "COMMON",
+      "aiSkillLevel": "NOVICE",
       "skill": 1,
       "commonSense": 0,
       "skins": [],
@@ -173,7 +120,7 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }
@@ -183,720 +130,11 @@
       "squadronId": 20101026,
       "inactiveDate": "19440101"
     },
-    "3000196": {
-      "name": "Hugo May",
-      "serialNumber": 3000196,
+    "3000245": {
+      "name": "Anselm Hornbostel",
+      "serialNumber": 3000245,
       "rank": "Oberleutnant",
-      "picName": "German65.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 34,
-      "aggressiveness": 0,
-      "aiSkillLevel": "VETERAN",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [
-        {
-          "date": "19411020",
-          "location": "Krasniy Holm",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "p40e1",
-            "squadronName": "126th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Sergey Sukhorukov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Hugo May",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411023",
-          "location": "Krasniy Holm",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "62nd Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Maj Pyotr Yesikov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Hugo May",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411026",
-          "location": "Scherbinki",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "mig3s24",
-            "squadronName": "233rd Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Kap Valentin Bogolyubov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Hugo May",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411029",
-          "location": "Nikiforovskoe",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "95th Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Maj Matvey Pavlovich",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Hugo May",
-            "pilotStatus": 0
-          }
-        }
-      ],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        },
-        {
-          "medalDate": "19411101",
-          "medalName": "Iron Cross 2nd Class",
-          "medalImage": "IC2.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20101026,
-      "inactiveDate": "19440101"
-    },
-    "3000198": {
-      "name": "Ferdinand Wahler",
-      "serialNumber": 3000198,
-      "rank": "Oberleutnant",
-      "picName": "German35.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 33,
-      "aggressiveness": 0,
-      "aiSkillLevel": "COMMON",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [
-        {
-          "date": "19411116",
-          "location": "Nechaevo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "yak1s69",
-            "squadronName": "11th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Boris Esmond",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Ferdinand Wahler",
-            "pilotStatus": 0
-          }
-        }
-      ],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        },
-        {
-          "medalDate": "19411112",
-          "medalName": "Wound Badge(Black)",
-          "medalImage": "BWB.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20101026,
-      "inactiveDate": "19440101"
-    },
-    "3000193": {
-      "name": "Heinz Brandeis",
-      "serialNumber": 3000193,
-      "rank": "Hauptmann",
-      "picName": "German30.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 46,
-      "aggressiveness": 0,
-      "aiSkillLevel": "ACE",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [
-        {
-          "date": "19411005",
-          "location": "Vetka",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "132nd Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Szt Innokenty Shukshin",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Heinz Brandeis",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411008",
-          "location": "Chertolino",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "312th Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Szt Arkady Pivovarov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Heinz Brandeis",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411011",
-          "location": "Kurshevo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "503rd Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Georgy Bagrov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Heinz Brandeis",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411014",
-          "location": "Pesochnya",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "136th Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Szt Igor Utyuzhin",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Heinz Brandeis",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411017",
-          "location": "Pomelnica",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "503rd Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Szt Andrey Kruglov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Heinz Brandeis",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411020",
-          "location": "Shahovskaya",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "46th Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Kap Stepan Burdukovsky",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Heinz Brandeis",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411023",
-          "location": "Kryukovo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "yak1s69",
-            "squadronName": "11th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Szt Vladislav Chugunov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Heinz Brandeis",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411026",
-          "location": "Klimentovo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "i16t24",
-            "squadronName": "34th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Kap Igor Gusarov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Heinz Brandeis",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411029",
-          "location": "Krasniy Holm",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "321st Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Szt Matvey Sapalyov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Heinz Brandeis",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411101",
-          "location": "Ascherino",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "312th Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Viktor Putyatin",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Heinz Brandeis",
-            "pilotStatus": 0
-          }
-        }
-      ],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        },
-        {
-          "medalDate": "19411101",
-          "medalName": "Iron Cross 2nd Class",
-          "medalImage": "IC2.jpg"
-        },
-        {
-          "medalDate": "19411102",
-          "medalName": "Iron Cross 1st Class",
-          "medalImage": "IC1.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20101026,
-      "inactiveDate": "19440101"
-    },
-    "3000192": {
-      "name": "Christian Cossmann",
-      "serialNumber": 3000192,
-      "rank": "Major",
-      "picName": "German54.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 69,
-      "aggressiveness": 0,
-      "aiSkillLevel": "ACE",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [
-        {
-          "date": "19411002",
-          "location": "Pesochnya",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "yak1s69",
-            "squadronName": "11th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Oleg Vetrov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Christian Cossmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411005",
-          "location": "Tyurmino",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "mig3s24",
-            "squadronName": "27th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Vyacheslav Benediktov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Christian Cossmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411008",
-          "location": "Pesochnya",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "132nd Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Dmitry Maksudov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Christian Cossmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411011",
-          "location": "Makeyevka",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "312th Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Leonid Rabinovich",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Christian Cossmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411014",
-          "location": "Karmanovo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "95th Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Vadim Ukhtomsky",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Christian Cossmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411017",
-          "location": "Orehovnya",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "62nd Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Szt Roman Kapralov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Christian Cossmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411020",
-          "location": "Klimentovo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "i16t24",
-            "squadronName": "495th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Timofey Nizamutdinov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Christian Cossmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411023",
-          "location": "Klimentovo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "175th Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Igor Turfanov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Christian Cossmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411026",
-          "location": "Myshkino",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "95th Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Vadim Zhilin",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Christian Cossmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411029",
-          "location": "Klimentovo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "p40e1",
-            "squadronName": "126th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Emil Korenev",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Christian Cossmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411105",
-          "location": "Oblyanishevo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "175th Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Eldar Bogomazov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Christian Cossmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411109",
-          "location": "Klimentovo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "yak1s69",
-            "squadronName": "11th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Szt Leonid Pugachyov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf110e2",
-            "squadronName": "I./ZG 26",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Christian Cossmann",
-            "pilotStatus": 0
-          }
-        }
-      ],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        },
-        {
-          "medalDate": "19411101",
-          "medalName": "Iron Cross 2nd Class",
-          "medalImage": "IC2.jpg"
-        },
-        {
-          "medalDate": "19411101",
-          "medalName": "Iron Cross 1st Class",
-          "medalImage": "IC1.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20101026,
-      "inactiveDate": "19440101"
-    },
-    "3000195": {
-      "name": "Ulf Weizenbaum",
-      "serialNumber": 3000195,
-      "rank": "Oberleutnant",
-      "picName": "German48.jpg",
+      "picName": "German47.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
       "missionFlown": 28,
@@ -907,15 +145,15 @@
       "skins": [],
       "victories": [
         {
-          "date": "19411023",
-          "location": "Nechaevo",
+          "date": "19420805",
+          "location": "Kakpinka",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "321st Bomber Air Regiment",
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Kap Vyacheslav Sukhanov",
+            "pilotName": "Szt Mikhail Kuptsov",
             "pilotStatus": -6
           },
           "victor": {
@@ -923,20 +161,20 @@
             "type": "bf110e2",
             "squadronName": "I./ZG 26",
             "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Ulf Weizenbaum",
+            "pilotName": "Oberleutnant Anselm Hornbostel",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411026",
-          "location": "Dorohovo",
+          "date": "19420808",
+          "location": "Translator Icon",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "175th Ground Attack Air Regiment",
+            "type": "la5s8",
+            "squadronName": "11th Fighter Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Szt Stepan Sarnychev",
+            "pilotName": "Lt Lev Ilyasov",
             "pilotStatus": -6
           },
           "victor": {
@@ -944,20 +182,20 @@
             "type": "bf110e2",
             "squadronName": "I./ZG 26",
             "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Ulf Weizenbaum",
+            "pilotName": "Oberleutnant Anselm Hornbostel",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411029",
-          "location": "Nechaevo",
+          "date": "19420811",
+          "location": "Illarionovskij",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "321st Bomber Air Regiment",
+            "type": "pe2s87",
+            "squadronName": "86th Bomber Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Szt Vadim Bekhterev",
+            "pilotName": "Lt Valentin Chaplinski",
             "pilotStatus": -6
           },
           "victor": {
@@ -965,7 +203,133 @@
             "type": "bf110e2",
             "squadronName": "I./ZG 26",
             "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Ulf Weizenbaum",
+            "pilotName": "Oberleutnant Anselm Hornbostel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420814",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Denis Pushnoy",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Anselm Hornbostel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420817",
+          "location": "Graci",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Stepan Koychev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Anselm Hornbostel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420820",
+          "location": " Ozerki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Timur Ilyasov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Anselm Hornbostel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420823",
+          "location": " Ozerki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "766th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Ruslan Siyan",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Anselm Hornbostel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "27th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Leonid Pugin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Anselm Hornbostel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "15th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Leonid Somov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Anselm Hornbostel",
             "pilotStatus": 0
           }
         }
@@ -973,12 +337,12 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         },
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Iron Cross 2nd Class",
           "medalImage": "IC2.jpg"
         }
@@ -988,30 +352,30 @@
       "squadronId": 20101026,
       "inactiveDate": "19440101"
     },
-    "3000194": {
-      "name": "Steffen Furst",
-      "serialNumber": 3000194,
-      "rank": "Hauptmann",
-      "picName": "German60.jpg",
+    "3000244": {
+      "name": "Niklaus Westermann",
+      "serialNumber": 3000244,
+      "rank": "Oberleutnant",
+      "picName": "German68.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
-      "missionFlown": 33,
+      "missionFlown": 31,
       "aggressiveness": 0,
-      "aiSkillLevel": "ACE",
+      "aiSkillLevel": "VETERAN",
       "skill": 1,
       "commonSense": 0,
       "skins": [],
       "victories": [
         {
-          "date": "19411017",
-          "location": "Tyurmino",
+          "date": "19420802",
+          "location": "Log (Logovskoj)",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "321st Bomber Air Regiment",
+            "type": "il2m42",
+            "squadronName": "621st Ground Attack Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "SLt Artem Guslyakov",
+            "pilotName": "SLt Viktor Sazonov",
             "pilotStatus": -6
           },
           "victor": {
@@ -1019,20 +383,20 @@
             "type": "bf110e2",
             "squadronName": "I./ZG 26",
             "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Steffen Furst",
+            "pilotName": "Oberleutnant Niklaus Westermann",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411020",
-          "location": "Pleshkovo",
+          "date": "19420805",
+          "location": "Kuznecov",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "312th Ground Attack Air Regiment",
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Lt Aleksandr Bukir",
+            "pilotName": "SLt Viktor Yerkhov",
             "pilotStatus": -6
           },
           "victor": {
@@ -1040,20 +404,20 @@
             "type": "bf110e2",
             "squadronName": "I./ZG 26",
             "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Steffen Furst",
+            "pilotName": "Oberleutnant Niklaus Westermann",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411023",
-          "location": "Gubino",
+          "date": "19420808",
+          "location": "Kakpinka",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "175th Ground Attack Air Regiment",
+            "type": "il2m42",
+            "squadronName": "618th Ground Attack Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Szt Ivan Morenov",
+            "pilotName": "Lt Vitaly Grekov",
             "pilotStatus": -6
           },
           "victor": {
@@ -1061,20 +425,20 @@
             "type": "bf110e2",
             "squadronName": "I./ZG 26",
             "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Steffen Furst",
+            "pilotName": "Oberleutnant Niklaus Westermann",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411026",
-          "location": "Gubino",
+          "date": "19420811",
+          "location": "Erik",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "136th Bomber Air Regiment",
+            "type": "yak1s127",
+            "squadronName": "273rd Fighter Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Maj Emil Khantsev",
+            "pilotName": "SLt Yaroslav Zavrazin",
             "pilotStatus": -6
           },
           "victor": {
@@ -1082,20 +446,20 @@
             "type": "bf110e2",
             "squadronName": "I./ZG 26",
             "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Steffen Furst",
+            "pilotName": "Oberleutnant Niklaus Westermann",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411029",
-          "location": "Chenkovo",
+          "date": "19420814",
+          "location": "Stalinskij",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "mig3s24",
-            "squadronName": "233rd Fighter Air Regiment",
+            "type": "lagg3s29",
+            "squadronName": "11th Fighter Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Szt Yakov Nemtsev",
+            "pilotName": "Szt Dmitry Chelomeyev",
             "pilotStatus": -6
           },
           "victor": {
@@ -1103,7 +467,112 @@
             "type": "bf110e2",
             "squadronName": "I./ZG 26",
             "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Steffen Furst",
+            "pilotName": "Oberleutnant Niklaus Westermann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420817",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "yak1s127",
+            "squadronName": "273rd Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Arkady Gusin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Niklaus Westermann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420820",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "15th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Vitaly Knyazev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Niklaus Westermann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420823",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "277th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Innokenty Listratov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Niklaus Westermann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "27th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Filipp Karbainov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Niklaus Westermann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Pan sino",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "284th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Oleg Pogrebnov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Niklaus Westermann",
             "pilotStatus": 0
           }
         }
@@ -1111,14 +580,1549 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         },
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Iron Cross 2nd Class",
           "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20101026,
+      "inactiveDate": "19440101"
+    },
+    "3000247": {
+      "name": "Jurgen Mitter",
+      "serialNumber": 3000247,
+      "rank": "Leutnant",
+      "picName": "German08.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 3,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20101026,
+      "inactiveDate": "19440101"
+    },
+    "3000246": {
+      "name": "Hugbert Weiszhaupt",
+      "serialNumber": 3000246,
+      "rank": "Oberleutnant",
+      "picName": "German39.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 28,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19420805",
+          "location": "Vertjacij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Iosif Preobrazhensky",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Hugbert Weiszhaupt",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420808",
+          "location": "Vertjacij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "10th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Yan Agapov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Hugbert Weiszhaupt",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420811",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "10th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Tikhon Oshurkov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Hugbert Weiszhaupt",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420814",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "439th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Vyacheslav Sapogov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Hugbert Weiszhaupt",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420817",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "621st Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kap Kirill Chaykovsky",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Hugbert Weiszhaupt",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420820",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "439th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Lev Azhikelyamov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Hugbert Weiszhaupt",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420823",
+          "location": "Kakpinka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Yan Sadykov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Hugbert Weiszhaupt",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "618th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Gleb Anisimov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Hugbert Weiszhaupt",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Kacalinskaja",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "190th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Evgeny Kurakin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Hugbert Weiszhaupt",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20101026,
+      "inactiveDate": "19440101"
+    },
+    "3000241": {
+      "name": "Elias Bethmann",
+      "serialNumber": 3000241,
+      "rank": "Hauptmann",
+      "picName": "German11.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 55,
+      "aggressiveness": 0,
+      "aiSkillLevel": "ACE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19420709",
+          "location": "Evlampievskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Iosif Prazdnikov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420712",
+          "location": "Zimovskoj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "190th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Yakov Khrebtov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420715",
+          "location": "Osinki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "439th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Konstantin Dedov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420718",
+          "location": "Evlampievskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "284th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Pyotr Slivka",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420721",
+          "location": "Zimovskoj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "284th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Valeriy Putyatin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420724",
+          "location": "Zimovskoj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "277th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Dmitry Kharmats",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420727",
+          "location": "Zimovskoj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "503rd Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Dmitry Shurshalin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420730",
+          "location": "Zimovskoj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "p40e1",
+            "squadronName": "495th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Yegor Kovshutin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420802",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "p40e1",
+            "squadronName": "495th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Vasily Kruchinkin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420805",
+          "location": "Translator Icon",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Georgy Koryavov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420808",
+          "location": "Stalinskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "621st Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Semyon Borzilov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420811",
+          "location": "Illarionovskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "503rd Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Yaroslav Martyushev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420814",
+          "location": "Kakpinka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "p40e1",
+            "squadronName": "495th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Aleksandr Krayevsky",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420817",
+          "location": "sisikin",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "766th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Yaroslav Bugaychuk",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420820",
+          "location": "Kakpinka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "621st Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Mikhail Russak",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420823",
+          "location": "Kuznecov",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "27th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Daniil Samoylov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "Marinovka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "p40e1",
+            "squadronName": "495th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Maksim Repin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Illarionovskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "i16t24",
+            "squadronName": "629th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Iosif Yermolayev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Elias Bethmann",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20101026,
+      "inactiveDate": "19440101"
+    },
+    "3000240": {
+      "name": "Kaspar Schneider",
+      "serialNumber": 3000240,
+      "rank": "Major",
+      "picName": "German36.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 67,
+      "aggressiveness": 0,
+      "aiSkillLevel": "ACE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19420627",
+          "location": "Kozinovskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "503rd Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Valeriy Dyuzhenkov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420630",
+          "location": "Kozinovskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "277th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Kirill Tipalov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420703",
+          "location": "Podlesinskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "190th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Yegor Tsiryulnikov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420706",
+          "location": "Podlesinskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "766th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Daniil Durov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420709",
+          "location": "Osinki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Matvey Glinka",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420712",
+          "location": "Osinki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Valentin Krasinski",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420715",
+          "location": "Zimovskoj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "86th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Vyacheslav Potyomkin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420718",
+          "location": "Zimovskoj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "86th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kap Yaroslav Osborn",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420721",
+          "location": "Zimovskoj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "284th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Aleksey Myasnikov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420724",
+          "location": "Zimovskoj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Tikhon Primack",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420727",
+          "location": "Zimovskoj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "190th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Lev Minin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420730",
+          "location": "Zimovskoj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "p40e1",
+            "squadronName": "495th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Grigory Shmagin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420802",
+          "location": "Platonov",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "618th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Maksim Yurakin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420805",
+          "location": "Karpovka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Denis Tokmakov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420808",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "766th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Roman Suchkov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420811",
+          "location": "Illarionovskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "i16t24",
+            "squadronName": "629th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Oleg Bogatyryov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420814",
+          "location": "Stalinskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "27th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Zakhar Paskhin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420817",
+          "location": "Kakpinka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Semyon Moroz",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420820",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Vladislav Aliyev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420823",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "134th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Roman Bebchuk",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "sisikin",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "618th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kap Valeriy Permyakov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Platonov",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Filipp Amaliyev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Schneider",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20101026,
+      "inactiveDate": "19440101"
+    },
+    "3000243": {
+      "name": "Johannes Pfister",
+      "serialNumber": 3000243,
+      "rank": "Oberleutnant",
+      "picName": "German24.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 15,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19420820",
+          "location": "Kuznecov",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "15th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Maksim Alogrin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Johannes Pfister",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420823",
+          "location": "Pan sino",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "p40e1",
+            "squadronName": "495th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Zakhar Serpionov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Johannes Pfister",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "Kakpinka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "i16t24",
+            "squadronName": "629th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Svyatoslav Perminov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Johannes Pfister",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Stalinskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "p40e1",
+            "squadronName": "495th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Leonid Poltanov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Johannes Pfister",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20101026,
+      "inactiveDate": "19440101"
+    },
+    "3000242": {
+      "name": "Wendall Conzelmann",
+      "serialNumber": 3000242,
+      "rank": "Hauptmann",
+      "picName": "German40.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 35,
+      "aggressiveness": 0,
+      "aiSkillLevel": "ACE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19420802",
+          "location": "Kakpinka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "284th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Yakov Gura",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Wendall Conzelmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420805",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "134th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Daniil Yaroslavtsev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Wendall Conzelmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420808",
+          "location": "Vertjacij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "27th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Gleb Malikov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Wendall Conzelmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420811",
+          "location": "Log (Logovskoj)",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "439th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Innokenty Kramar",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Wendall Conzelmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420814",
+          "location": "Stalinskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "277th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Artem Zaretsky",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Wendall Conzelmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420817",
+          "location": "sisikin",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "10th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Leonid Tyannikov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Wendall Conzelmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420820",
+          "location": "Platonov",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Filipp Ryzhov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Wendall Conzelmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420823",
+          "location": "Marinovka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "yak1s127",
+            "squadronName": "273rd Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Gennady Karzhov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Wendall Conzelmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "Kakpinka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Georgy Luski",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Wendall Conzelmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Kakpinka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Yuri Malakhov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf110e2",
+            "squadronName": "I./ZG 26",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Wendall Conzelmann",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
         }
       ],
       "playerRegion": "",

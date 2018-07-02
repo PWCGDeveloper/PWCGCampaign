@@ -103,8 +103,8 @@ public class AiFlightBuilder
             }
 
             FlightFactory flightFactory = PWCGFlightFactory.createFlightFactory(campaign);
-            FlightTypes flightType = flightFactory.getFlightType(squadron, false);
-            Flight flight = flightFactory.getFlight(mission, squadron, flightType, false);
+            FlightTypes flightType = flightFactory.buildFlight(squadron, false);
+            Flight flight = flightFactory.buildFlight(mission, squadron, flightType, false);
             if (flight != null)
             {
                 missionFlights.add(flight);

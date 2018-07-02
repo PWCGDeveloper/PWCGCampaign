@@ -1,7 +1,11 @@
 {
-  "date": "19411119",
-  "name": "German Test",
+  "date": "19420901",
+  "name": "German test",
   "campaignStatus": 0,
-  "squadId": 20112051,
-  "isGreatAce": false
+  "squadId": 20111003,
+  "isGreatAce": false,
+  "serialNumber": {
+    "nextPilotSerialNumber": 3000514,
+    "nextPlaneSerialNumber": 5000646
+  }
 }

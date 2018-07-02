@@ -1,0 +1,298 @@
+{
+  "equippedPlanes": {
+    "5000365": {
+      "serialNumber": 5000365,
+      "type": "ju88a4",
+      "archType": "ju88",
+      "displayName": "Ju 88 A-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+      "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 45,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000366": {
+      "serialNumber": 5000366,
+      "type": "ju88a4",
+      "archType": "ju88",
+      "displayName": "Ju 88 A-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+      "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 45,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000367": {
+      "serialNumber": 5000367,
+      "type": "ju88a4",
+      "archType": "ju88",
+      "displayName": "Ju 88 A-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+      "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 45,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000376": {
+      "serialNumber": 5000376,
+      "type": "ju88a4",
+      "archType": "ju88",
+      "displayName": "Ju 88 A-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+      "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 45,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000377": {
+      "serialNumber": 5000377,
+      "type": "ju88a4",
+      "archType": "ju88",
+      "displayName": "Ju 88 A-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+      "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 45,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000378": {
+      "serialNumber": 5000378,
+      "type": "ju88a4",
+      "archType": "ju88",
+      "displayName": "Ju 88 A-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+      "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 45,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000372": {
+      "serialNumber": 5000372,
+      "type": "ju88a4",
+      "archType": "ju88",
+      "displayName": "Ju 88 A-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+      "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 45,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000373": {
+      "serialNumber": 5000373,
+      "type": "ju88a4",
+      "archType": "ju88",
+      "displayName": "Ju 88 A-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+      "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 45,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000374": {
+      "serialNumber": 5000374,
+      "type": "ju88a4",
+      "archType": "ju88",
+      "displayName": "Ju 88 A-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+      "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 45,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000375": {
+      "serialNumber": 5000375,
+      "type": "ju88a4",
+      "archType": "ju88",
+      "displayName": "Ju 88 A-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+      "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 45,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000368": {
+      "serialNumber": 5000368,
+      "type": "ju88a4",
+      "archType": "ju88",
+      "displayName": "Ju 88 A-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+      "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 45,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000369": {
+      "serialNumber": 5000369,
+      "type": "ju88a4",
+      "archType": "ju88",
+      "displayName": "Ju 88 A-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+      "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 45,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000370": {
+      "serialNumber": 5000370,
+      "type": "ju88a4",
+      "archType": "ju88",
+      "displayName": "Ju 88 A-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+      "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 45,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000371": {
+      "serialNumber": 5000371,
+      "type": "ju88a4",
+      "archType": "ju88",
+      "displayName": "Ju 88 A-4",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
+      "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 45,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    }
+  }
+}

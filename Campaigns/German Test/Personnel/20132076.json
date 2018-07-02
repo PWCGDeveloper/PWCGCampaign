@@ -1,57 +1,30 @@
 {
   "squadronMembers": {
-    "3000335": {
-      "name": "Eberhardt Hoenigberg",
-      "serialNumber": 3000335,
-      "rank": "Major",
-      "picName": "German59.jpg",
+    "3000413": {
+      "name": "Till Brudes",
+      "serialNumber": 3000413,
+      "rank": "Oberleutnant",
+      "picName": "German41.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
-      "missionFlown": 68,
+      "missionFlown": 15,
       "aggressiveness": 0,
       "aiSkillLevel": "COMMON",
       "skill": 1,
       "commonSense": 0,
       "skins": [],
-      "victories": [
-        {
-          "date": "19411103",
-          "location": "Chertolino",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "i16t24",
-            "squadronName": "34th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Kap Matvey Shurupin",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "ju88a4",
-            "squadronName": "II./KG76",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Eberhardt Hoenigberg",
-            "pilotStatus": 0
-          }
-        }
-      ],
+      "victories": [],
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         },
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Iron Cross 2nd Class",
           "medalImage": "IC2.jpg"
-        },
-        {
-          "medalDate": "19411101",
-          "medalName": "Iron Cross 1st Class",
-          "medalImage": "IC1.jpg"
         }
       ],
       "playerRegion": "",
@@ -59,11 +32,284 @@
       "squadronId": 20132076,
       "inactiveDate": "19440101"
     },
-    "3000398": {
-      "name": "Werner Kittel",
-      "serialNumber": 3000398,
+    "3000412": {
+      "name": "Hans Storch",
+      "serialNumber": 3000412,
+      "rank": "Oberleutnant",
+      "picName": "German66.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 26,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20132076,
+      "inactiveDate": "19440101"
+    },
+    "3000415": {
+      "name": "Vinzenz Behrmann",
+      "serialNumber": 3000415,
+      "rank": "Leutnant",
+      "picName": "German05.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 8,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20132076,
+      "inactiveDate": "19440101"
+    },
+    "3000414": {
+      "name": "Jakob Leitgeb",
+      "serialNumber": 3000414,
+      "rank": "Leutnant",
+      "picName": "German09.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 7,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20132076,
+      "inactiveDate": "19440101"
+    },
+    "3000409": {
+      "name": "Eugen Kayserling",
+      "serialNumber": 3000409,
+      "rank": "Hauptmann",
+      "picName": "German33.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 26,
+      "aggressiveness": 0,
+      "aiSkillLevel": "ACE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20132076,
+      "inactiveDate": "19440101"
+    },
+    "3000408": {
+      "name": "Erich Hersch",
+      "serialNumber": 3000408,
+      "rank": "Hauptmann",
+      "picName": "German63.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 43,
+      "aggressiveness": 0,
+      "aiSkillLevel": "ACE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20132076,
+      "inactiveDate": "19440101"
+    },
+    "3000411": {
+      "name": "Wilhelm Feigl",
+      "serialNumber": 3000411,
+      "rank": "Oberleutnant",
+      "picName": "German51.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 20,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20132076,
+      "inactiveDate": "19440101"
+    },
+    "3000410": {
+      "name": "Wendall Haringer",
+      "serialNumber": 3000410,
+      "rank": "Oberleutnant",
+      "picName": "German36.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 28,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20132076,
+      "inactiveDate": "19440101"
+    },
+    "3000407": {
+      "name": "Johann Stattler",
+      "serialNumber": 3000407,
+      "rank": "Major",
+      "picName": "German24.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 45,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20132076,
+      "inactiveDate": "19440101"
+    },
+    "3000417": {
+      "name": "Tobias Spanner",
+      "serialNumber": 3000417,
       "rank": "Oberfeldwebel",
-      "picName": "German12.jpg",
+      "picName": "German02.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 5,
+      "aggressiveness": 0,
+      "aiSkillLevel": "NOVICE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20132076,
+      "inactiveDate": "19440101"
+    },
+    "3000416": {
+      "name": "Andreas Landshut",
+      "serialNumber": 3000416,
+      "rank": "Leutnant",
+      "picName": "German13.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
       "missionFlown": 1,
@@ -76,23 +322,24 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411116",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }
       ],
       "playerRegion": "",
       "isPlayer": false,
-      "squadronId": 20132076
+      "squadronId": 20132076,
+      "inactiveDate": "19440101"
     },
-    "3000345": {
-      "name": "Tobias Goldwasser",
-      "serialNumber": 3000345,
-      "rank": "Leutnant",
-      "picName": "German07.jpg",
+    "3000418": {
+      "name": "Karl Riesz",
+      "serialNumber": 3000418,
+      "rank": "Oberfeldwebel",
+      "picName": "German08.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
-      "missionFlown": 20,
+      "missionFlown": 9,
       "aggressiveness": 0,
       "aiSkillLevel": "NOVICE",
       "skill": 1,
@@ -102,270 +349,9 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
-        },
-        {
-          "medalDate": "19411108",
-          "medalName": "Iron Cross 2nd Class",
-          "medalImage": "IC2.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20132076,
-      "inactiveDate": "19440101"
-    },
-    "3000344": {
-      "name": "Volkard Hoelder",
-      "serialNumber": 3000344,
-      "rank": "Leutnant",
-      "picName": "German66.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 15,
-      "aggressiveness": 0,
-      "aiSkillLevel": "NOVICE",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20132076,
-      "inactiveDate": "19440101"
-    },
-    "3000346": {
-      "name": "Maximillian Kosel",
-      "serialNumber": 3000346,
-      "rank": "Leutnant",
-      "picName": "German34.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 20,
-      "aggressiveness": 0,
-      "aiSkillLevel": "NOVICE",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        },
-        {
-          "medalDate": "19411108",
-          "medalName": "Iron Cross 2nd Class",
-          "medalImage": "IC2.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20132076,
-      "inactiveDate": "19440101"
-    },
-    "3000340": {
-      "name": "Poldi Frucht",
-      "serialNumber": 3000340,
-      "rank": "Oberleutnant",
-      "picName": "German10.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 31,
-      "aggressiveness": 0,
-      "aiSkillLevel": "COMMON",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        },
-        {
-          "medalDate": "19411101",
-          "medalName": "Iron Cross 2nd Class",
-          "medalImage": "IC2.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20132076,
-      "inactiveDate": "19440101"
-    },
-    "3000343": {
-      "name": "Conrad Winckler",
-      "serialNumber": 3000343,
-      "rank": "Leutnant",
-      "picName": "German30.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 13,
-      "aggressiveness": 0,
-      "aiSkillLevel": "NOVICE",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        },
-        {
-          "medalDate": "19411109",
-          "medalName": "Wound Badge(Black)",
-          "medalImage": "BWB.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20132076,
-      "inactiveDate": "19440101"
-    },
-    "3000342": {
-      "name": "Berthold Grendel",
-      "serialNumber": 3000342,
-      "rank": "Leutnant",
-      "picName": "German48.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 12,
-      "aggressiveness": 0,
-      "aiSkillLevel": "NOVICE",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20132076,
-      "inactiveDate": "19440101"
-    },
-    "3000336": {
-      "name": "Gustav Doldinger",
-      "serialNumber": 3000336,
-      "rank": "Hauptmann",
-      "picName": "German12.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 60,
-      "aggressiveness": 0,
-      "aiSkillLevel": "COMMON",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        },
-        {
-          "medalDate": "19411101",
-          "medalName": "Iron Cross 2nd Class",
-          "medalImage": "IC2.jpg"
-        },
-        {
-          "medalDate": "19411102",
-          "medalName": "Iron Cross 1st Class",
-          "medalImage": "IC1.jpg"
-        },
-        {
-          "medalDate": "19411112",
-          "medalName": "Wound Badge(Black)",
-          "medalImage": "BWB.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20132076,
-      "inactiveDate": "19440101"
-    },
-    "3000339": {
-      "name": "Frederich Seck",
-      "serialNumber": 3000339,
-      "rank": "Oberleutnant",
-      "picName": "German20.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 29,
-      "aggressiveness": 0,
-      "aiSkillLevel": "COMMON",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        },
-        {
-          "medalDate": "19411101",
-          "medalName": "Iron Cross 2nd Class",
-          "medalImage": "IC2.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20132076,
-      "inactiveDate": "19440101"
-    },
-    "3000338": {
-      "name": "Otto Hector",
-      "serialNumber": 3000338,
-      "rank": "Oberleutnant",
-      "picName": "German60.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 29,
-      "aggressiveness": 0,
-      "aiSkillLevel": "COMMON",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        },
-        {
-          "medalDate": "19411101",
-          "medalName": "Iron Cross 2nd Class",
-          "medalImage": "IC2.jpg"
         }
       ],
       "playerRegion": "",

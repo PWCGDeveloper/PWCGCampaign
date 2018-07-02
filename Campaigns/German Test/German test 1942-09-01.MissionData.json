@@ -1,0 +1,46 @@
+{
+  "missionHeader": {
+    "missionFileName": "German test 1942-09-01",
+    "squadron": "I./JG3",
+    "date": "19420901",
+    "time": "1.9.1942",
+    "aircraftType": "Bf 109 G-2",
+    "mapName": "Stalingrad",
+    "airfield": "Zimovskoy",
+    "duty": "INTERCEPT",
+    "altitude": 7373
+  },
+  "missionDescription": "Mission: \nAircraft  Bf 109 G-2\nSquadron  I./JG3\nAirbase  Zimovskoy\nDate  1.9.1942\n\nWeather Report \n    Heavy cloud cover, medium altitude.\n    Cloud layer is 2653 meters.\n    Wind speed is 2 M/S.\n    Wind direction is 351.\n\nPrimary Objective \n    Intercept enemy aircraft near Suhanovskij.\n\n",
+  "missionPlanes": {
+    "3000222": {
+      "aircraftType": "a20b",
+      "squadronId": 10131136,
+      "pilotSerialNumber": 3000222,
+      "pilotName": "Semyon Yelchukov"
+    },
+    "3000260": {
+      "aircraftType": "bf109g2",
+      "squadronId": 20111003,
+      "pilotSerialNumber": 3000260,
+      "pilotName": "Lambrecht Wahlbaum"
+    },
+    "3000256": {
+      "aircraftType": "bf109g2",
+      "squadronId": 20111003,
+      "pilotSerialNumber": 3000256,
+      "pilotName": "Oswin Schoettel"
+    },
+    "3000224": {
+      "aircraftType": "a20b",
+      "squadronId": 10131136,
+      "pilotSerialNumber": 3000224,
+      "pilotName": "Sergey Talanov"
+    },
+    "1000000": {
+      "aircraftType": "bf109g2",
+      "squadronId": 20111003,
+      "pilotSerialNumber": 1000000,
+      "pilotName": "German test"
+    }
+  }
+}

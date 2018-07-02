@@ -15,6 +15,7 @@ import pwcg.campaign.group.GroupManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.PositionFinder;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class StrategicTargetLocator
@@ -124,24 +125,29 @@ public class StrategicTargetLocator
 
         GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
         List<Block> blocks = groupManager.getStandaloneBlocks();
-        for (Block block : blocks)
+        
+        while (targets.size() == 0 && preferredRadius < PositionFinder.ABSURDLY_LARGE_DISTANCE)
         {
-            if (block.getModel().contains(blockType))
+            for (Block block : blocks)
             {
-                if (block.createCountry(date).isNeutral())
+                if (block.getModel().contains(blockType))
                 {
-                    continue;
-                }
-
-                if (block.createCountry(date).getSide() == side)
-                {
-                    double distanceToTarget = MathUtils.calcDist(referenceLocation, block.getPosition());
-                    if (distanceToTarget > minDistance && distanceToTarget < preferredRadius)
+                    if (block.createCountry(date).isNeutral())
                     {
-                        targets.add(block);
+                        continue;
+                    }
+    
+                    if (block.createCountry(date).getSide() == side)
+                    {
+                        double distanceToTarget = MathUtils.calcDist(referenceLocation, block.getPosition());
+                        if (distanceToTarget > minDistance && distanceToTarget < preferredRadius)
+                        {
+                            targets.add(block);
+                        }
                     }
                 }
             }
+            preferredRadius += 20000;
         }
 
         return targets;
@@ -151,13 +157,17 @@ public class StrategicTargetLocator
     {
         List<IFixedPosition> targets = new ArrayList<IFixedPosition>();
         List<IAirfield> targetFields = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirFieldsForSide(date, side);
-        for (IAirfield targetField : targetFields)
+        while (targets.size() == 0 && preferredRadius < PositionFinder.ABSURDLY_LARGE_DISTANCE)
         {
-            double distanceToTarget = MathUtils.calcDist(referenceLocation, targetField.getPosition());
-            if (distanceToTarget < preferredRadius)
+            for (IAirfield targetField : targetFields)
             {
-                targets.add(targetField);
+                double distanceToTarget = MathUtils.calcDist(referenceLocation, targetField.getPosition());
+                if (distanceToTarget < preferredRadius)
+                {
+                    targets.add(targetField);
+                }
             }
+            preferredRadius += 20000;
         }
                 
         return targets;

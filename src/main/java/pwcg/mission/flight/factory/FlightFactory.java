@@ -45,7 +45,7 @@ public abstract class FlightFactory
         this.campaign = campaign;
     }
     
-    public Flight getFlight(
+    public Flight buildFlight(
     		Mission mission,
     		Squadron squadron,
     		FlightTypes flightType,
@@ -168,7 +168,7 @@ public abstract class FlightFactory
         return flight;
     }
 
-    public FlightTypes getFlightType(Squadron squadron, boolean isMyFlight) 
+    public FlightTypes buildFlight(Squadron squadron, boolean isMyFlight) 
                     throws PWCGException
     {
         TestFlightFactory testFlightFactory = new TestFlightFactory(campaign);
@@ -182,7 +182,7 @@ public abstract class FlightFactory
     }
     
 
-    public Flight getFerryFlight(
+    public Flight buildFerryFlight(
                     Mission mission,
                     Squadron squad,
                     boolean isPlayerFlight) throws PWCGException 

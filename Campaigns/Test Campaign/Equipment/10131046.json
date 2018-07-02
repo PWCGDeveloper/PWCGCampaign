@@ -1,0 +1,312 @@
+{
+  "equippedPlanes": {
+    "5000168": {
+      "serialNumber": 5000168,
+      "type": "pe2s35",
+      "archType": "pe2",
+      "displayName": "Pe-2 ser.35",
+      "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420801",
+      "side": "ALLIED"
+    },
+    "5000164": {
+      "serialNumber": 5000164,
+      "type": "pe2s35",
+      "archType": "pe2",
+      "displayName": "Pe-2 ser.35",
+      "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420801",
+      "side": "ALLIED"
+    },
+    "5000165": {
+      "serialNumber": 5000165,
+      "type": "pe2s35",
+      "archType": "pe2",
+      "displayName": "Pe-2 ser.35",
+      "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420801",
+      "side": "ALLIED"
+    },
+    "5000166": {
+      "serialNumber": 5000166,
+      "type": "pe2s35",
+      "archType": "pe2",
+      "displayName": "Pe-2 ser.35",
+      "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420801",
+      "side": "ALLIED"
+    },
+    "5000167": {
+      "serialNumber": 5000167,
+      "type": "pe2s35",
+      "archType": "pe2",
+      "displayName": "Pe-2 ser.35",
+      "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420801",
+      "side": "ALLIED"
+    },
+    "5000160": {
+      "serialNumber": 5000160,
+      "type": "pe2s35",
+      "archType": "pe2",
+      "displayName": "Pe-2 ser.35",
+      "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420801",
+      "side": "ALLIED"
+    },
+    "5000161": {
+      "serialNumber": 5000161,
+      "type": "pe2s35",
+      "archType": "pe2",
+      "displayName": "Pe-2 ser.35",
+      "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420801",
+      "side": "ALLIED"
+    },
+    "5000162": {
+      "serialNumber": 5000162,
+      "type": "pe2s35",
+      "archType": "pe2",
+      "displayName": "Pe-2 ser.35",
+      "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420801",
+      "side": "ALLIED"
+    },
+    "5000163": {
+      "serialNumber": 5000163,
+      "type": "pe2s35",
+      "archType": "pe2",
+      "displayName": "Pe-2 ser.35",
+      "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420801",
+      "side": "ALLIED"
+    },
+    "5000156": {
+      "serialNumber": 5000156,
+      "type": "pe2s35",
+      "archType": "pe2",
+      "displayName": "Pe-2 ser.35",
+      "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420801",
+      "side": "ALLIED"
+    },
+    "5000157": {
+      "serialNumber": 5000157,
+      "type": "pe2s35",
+      "archType": "pe2",
+      "displayName": "Pe-2 ser.35",
+      "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420801",
+      "side": "ALLIED"
+    },
+    "5000158": {
+      "serialNumber": 5000158,
+      "type": "pe2s35",
+      "archType": "pe2",
+      "displayName": "Pe-2 ser.35",
+      "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420801",
+      "side": "ALLIED"
+    },
+    "5000159": {
+      "serialNumber": 5000159,
+      "type": "pe2s35",
+      "archType": "pe2",
+      "displayName": "Pe-2 ser.35",
+      "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420801",
+      "side": "ALLIED"
+    },
+    "5000155": {
+      "serialNumber": 5000155,
+      "type": "pe2s35",
+      "archType": "pe2",
+      "displayName": "Pe-2 ser.35",
+      "script": "LuaScripts\\WorldObjects\\Planes\\pe2s35.txt",
+      "model": "graphics\\planes\\pe2s35\\pe2s35.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 800,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19420801",
+      "side": "ALLIED"
+    }
+  }
+}

@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -30,7 +31,6 @@ import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionDescription;
 import pwcg.mission.briefing.BriefingMissionHandler;
-import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
 public class BriefingDescriptionPanelSet extends PwcgGuiContext implements ActionListener
 {
@@ -154,9 +154,9 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
     public String makePilotList() throws PWCGException 
     {
         StringBuffer assignedPilotsBuffer = new StringBuffer ("Assigned Pilots:\n");
-        for (CrewPlanePayloadPairing crewPlane : briefingMissionHandler.getSortedAssigned())
+        for (SquadronMember squadronMember : briefingMissionHandler.getSortedAssigned())
         {
-            assignedPilotsBuffer.append("    " + crewPlane.getPilot().getNameAndRank() + "\n");
+            assignedPilotsBuffer.append("    " + squadronMember.getNameAndRank() + "\n");
         }
         
         return assignedPilotsBuffer.toString();

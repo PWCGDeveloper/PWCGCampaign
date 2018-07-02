@@ -60,7 +60,7 @@ public class BriefingPlaneModificationsPicker
             if (planeModification.isSelected())
             {
                 String payloadDescription = planeModification.getText();
-                String mask = getPayloadMaskForChosenModifications(crewPlane.getPlaneType(), payloadDescription);
+                String mask = getPayloadMaskForChosenModifications(crewPlane.getPlane().getType(), payloadDescription);
                 chosenplaneModificationsMasks.add(mask);
             }
         }
@@ -71,7 +71,7 @@ public class BriefingPlaneModificationsPicker
     private void makePlaneModificationCheckBoxes() throws PWCGException 
     {
         IPayloadFactory payloadfactory = PWCGContextManager.getInstance().getPayloadFactory();
-        IPlanePayload payload = payloadfactory.createPlanePayload(crewPlane.getPlaneType());
+        IPlanePayload payload = payloadfactory.createPlanePayload(crewPlane.getPlane().getType());
         
         for (PayloadDesignation payloadDesignation : payload.getPayloadDesignations())
         {

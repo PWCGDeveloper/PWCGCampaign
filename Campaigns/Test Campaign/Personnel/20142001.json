@@ -1,0 +1,828 @@
+{
+  "squadronMembers": {
+    "3000349": {
+      "name": "Arnulf Springer",
+      "serialNumber": 3000349,
+      "rank": "Hauptmann",
+      "picName": "German33.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 57,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19411026",
+          "location": "Kozlakova",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s35",
+            "squadronName": "136th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Georgy Kolosov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Arnulf Springer",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411029",
+          "location": "Kurgany",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "233rd Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Maksim Shcherbatykh",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Arnulf Springer",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411101",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19411111",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20142001,
+      "inactiveDate": "19440101"
+    },
+    "3000348": {
+      "name": "Dolf Rossel",
+      "serialNumber": 3000348,
+      "rank": "Hauptmann",
+      "picName": "German69.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 51,
+      "aggressiveness": 0,
+      "aiSkillLevel": "ACE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19411017",
+          "location": "Vetka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s35",
+            "squadronName": "136th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Evgeny Golub",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Dolf Rossel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411020",
+          "location": "Makeyevka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "i16t24",
+            "squadronName": "34th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Oleg Protasov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Dolf Rossel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411023",
+          "location": "Orehovnya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s35",
+            "squadronName": "132nd Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Vladislav Novikov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Dolf Rossel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411026",
+          "location": "Staraya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "p40e1",
+            "squadronName": "126th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Mikhail Komzin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Dolf Rossel",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411029",
+          "location": "Koshnyaki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m41",
+            "squadronName": "312th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Maksim Yermolov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Dolf Rossel",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411101",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19411120",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20142001,
+      "inactiveDate": "19440101"
+    },
+    "3000351": {
+      "name": "Adolf Steiner",
+      "serialNumber": 3000351,
+      "rank": "Oberleutnant",
+      "picName": "German42.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 32,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19411026",
+          "location": "Kurgany",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s35",
+            "squadronName": "321st Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Stanislav Burak",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Adolf Steiner",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411029",
+          "location": "Kurshevo",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s35",
+            "squadronName": "132nd Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Anatoly Gorelov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Adolf Steiner",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411101",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20142001,
+      "inactiveDate": "19440101"
+    },
+    "3000350": {
+      "name": "Luther Seyler",
+      "serialNumber": 3000350,
+      "rank": "Oberleutnant",
+      "picName": "German18.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 26,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411101",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20142001,
+      "inactiveDate": "19440101"
+    },
+    "3000347": {
+      "name": "Kaspar Deegener",
+      "serialNumber": 3000347,
+      "rank": "Major",
+      "picName": "German65.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 80,
+      "aggressiveness": 0,
+      "aiSkillLevel": "ACE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19411001",
+          "location": "Orehovnya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m41",
+            "squadronName": "503rd Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Valentin Kozlovsky",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Deegener",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411002",
+          "location": "Koshnyaki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "i16t24",
+            "squadronName": "34th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kap Leonid Kholod",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Deegener",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411005",
+          "location": "Staraya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s35",
+            "squadronName": "46th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kap Konstantin Tsaregorodtsev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Deegener",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411008",
+          "location": "Kurgany",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Artur Lisitsyn",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Deegener",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411011",
+          "location": "Kurgany",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s35",
+            "squadronName": "46th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Sergey Koptsev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Deegener",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411014",
+          "location": "Koshnyaki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "i16t24",
+            "squadronName": "34th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Filipp Shapovalov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Deegener",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411017",
+          "location": "Klushino",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s35",
+            "squadronName": "46th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Aleksandr Volkov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Deegener",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411020",
+          "location": "Koshnyaki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m41",
+            "squadronName": "312th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Oleg Yerokhin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Deegener",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411023",
+          "location": "Vetka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m41",
+            "squadronName": "503rd Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Igor Siyakayev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Deegener",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411026",
+          "location": "Kurshevo",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s35",
+            "squadronName": "132nd Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Gennady Kedrov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Deegener",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19411029",
+          "location": "Orehovnya",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s35",
+            "squadronName": "136th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Vyacheslav Koshkin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Kaspar Deegener",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411101",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19411101",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20142001,
+      "inactiveDate": "19440101"
+    },
+    "3000356": {
+      "name": "Heinz Murnau",
+      "serialNumber": 3000356,
+      "rank": "Leutnant",
+      "picName": "German34.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 16,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19411111",
+          "location": "Kamenka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Yakov Engalychev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "bf109e7",
+            "squadronName": "II./Sch.G.1",
+            "pilotSerialNumber": 0,
+            "pilotName": "Leutnant Heinz Murnau",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411120",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20142001,
+      "inactiveDate": "19440101"
+    },
+    "3000358": {
+      "name": "Harald Heissler",
+      "serialNumber": 3000358,
+      "rank": "Oberfeldwebel",
+      "picName": "German26.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 12,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20142001,
+      "inactiveDate": "19440101"
+    },
+    "3000353": {
+      "name": "Kaspar Stempel",
+      "serialNumber": 3000353,
+      "rank": "Oberleutnant",
+      "picName": "German24.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 35,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411101",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20142001,
+      "inactiveDate": "19440101"
+    },
+    "3000481": {
+      "name": "Walfred Thalberg",
+      "serialNumber": 3000481,
+      "rank": "Oberfeldwebel",
+      "picName": "German04.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 4,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411114",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20142001
+    },
+    "3000352": {
+      "name": "Rudolf Blumenbach",
+      "serialNumber": 3000352,
+      "rank": "Oberleutnant",
+      "picName": "German51.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 26,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19411101",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20142001,
+      "inactiveDate": "19440101"
+    },
+    "3000355": {
+      "name": "Dagobert Buxbaum",
+      "serialNumber": 3000355,
+      "rank": "Leutnant",
+      "picName": "German41.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 14,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20142001,
+      "inactiveDate": "19440101"
+    },
+    "3000354": {
+      "name": "Adolf Weschler",
+      "serialNumber": 3000354,
+      "rank": "Leutnant",
+      "picName": "German05.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 12,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19411101",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20142001,
+      "inactiveDate": "19440101"
+    }
+  }
+}

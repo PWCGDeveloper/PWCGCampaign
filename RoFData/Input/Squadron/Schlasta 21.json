@@ -5,7 +5,7 @@
   "skill": 25,
   "planeAssignments": [
     {
-      "archType": "halberstadtcl2",
+      "archType": "halberstadtcl",
       "squadronIntroduction": "19171109",
       "squadronWithdrawal": "19181201"
     }

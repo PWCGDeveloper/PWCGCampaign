@@ -258,8 +258,7 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
         Squadron squad = campaign.determineSquadron();
 
         List<PlaneType> squadronPlanes = squad.determineCurrentAircraftList(campaign.getDate());
-        PlaneSorter planeSorter = new PlaneSorter();
-        List<PlaneType> squadronPlanesByBest = planeSorter.sortPlanesByGoodness(squadronPlanes);
+        List<PlaneType> squadronPlanesByBest = PlaneSorter.sortPlanesByGoodness(squadronPlanes);
         
         for (PlaneType plane : squadronPlanesByBest)
         {

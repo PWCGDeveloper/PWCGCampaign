@@ -18,8 +18,19 @@ public class EquippedPlane extends PlaneType
         this.serialNumber = serialNumber;
     }
 
+    public void copyTemplate(EquippedPlane equippedPlane)
+    {
+        super.copyTemplate(equippedPlane);
+        equippedPlane.serialNumber = this.serialNumber;
+    }
+    
     public int getSerialNumber()
     {
         return serialNumber;
+    }
+
+    public void setSerialNumber(int serialNumber)
+    {
+        this.serialNumber = serialNumber;
     }
 }

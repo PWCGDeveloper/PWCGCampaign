@@ -8,7 +8,7 @@
       "picName": "Arkady Fedorovich Kovacevich.jpg",
       "pilotActiveStatus": 0,
       "country": "RUSSIA",
-      "missionFlown": 80,
+      "missionFlown": 34,
       "aggressiveness": 0,
       "aiSkillLevel": "ACE",
       "skill": 1,
@@ -129,6 +129,153 @@
             "pilotName": "Unknown",
             "pilotStatus": 0
           }
+        },
+        {
+          "date": "19411204",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "Me-110",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420308",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "Ju-88",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420329",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "Ju-88",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420331",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "Ju-88",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420823",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "He-111",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "Me-109",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420827",
+          "location": "",
+          "crashedInSight": false,
+          "victim": {
+            "airOrGround": 1,
+            "type": "Me-109",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          },
+          "victor": {
+            "airOrGround": 3,
+            "type": "",
+            "squadronName": "",
+            "pilotSerialNumber": 0,
+            "pilotName": "Unknown",
+            "pilotStatus": 0
+          }
         }
       ],
       "groundVictories": [],
@@ -136,6 +283,11 @@
         {
           "medalDate": "19411028",
           "medalName": "Order of the Red Star",
+          "medalImage": ""
+        },
+        {
+          "medalDate": "19420731",
+          "medalName": "Order of the Red Banner",
           "medalImage": ""
         }
       ],
@@ -151,7 +303,7 @@
       "picName": "Hermann Graff.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
-      "missionFlown": 114,
+      "missionFlown": 61,
       "aggressiveness": 0,
       "aiSkillLevel": "ACE",
       "skill": 1,

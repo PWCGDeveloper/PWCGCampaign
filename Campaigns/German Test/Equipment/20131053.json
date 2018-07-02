@@ -1,0 +1,298 @@
+{
+  "equippedPlanes": {
+    "5000448": {
+      "serialNumber": 5000448,
+      "type": "he111h6",
+      "archType": "he111",
+      "displayName": "He 111 H-6",
+      "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+      "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19421101",
+      "side": "AXIS"
+    },
+    "5000444": {
+      "serialNumber": 5000444,
+      "type": "he111h6",
+      "archType": "he111",
+      "displayName": "He 111 H-6",
+      "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+      "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19421101",
+      "side": "AXIS"
+    },
+    "5000445": {
+      "serialNumber": 5000445,
+      "type": "he111h6",
+      "archType": "he111",
+      "displayName": "He 111 H-6",
+      "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+      "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19421101",
+      "side": "AXIS"
+    },
+    "5000446": {
+      "serialNumber": 5000446,
+      "type": "he111h6",
+      "archType": "he111",
+      "displayName": "He 111 H-6",
+      "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+      "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19421101",
+      "side": "AXIS"
+    },
+    "5000447": {
+      "serialNumber": 5000447,
+      "type": "he111h6",
+      "archType": "he111",
+      "displayName": "He 111 H-6",
+      "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+      "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19421101",
+      "side": "AXIS"
+    },
+    "5000440": {
+      "serialNumber": 5000440,
+      "type": "he111h6",
+      "archType": "he111",
+      "displayName": "He 111 H-6",
+      "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+      "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19421101",
+      "side": "AXIS"
+    },
+    "5000441": {
+      "serialNumber": 5000441,
+      "type": "he111h6",
+      "archType": "he111",
+      "displayName": "He 111 H-6",
+      "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+      "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19421101",
+      "side": "AXIS"
+    },
+    "5000442": {
+      "serialNumber": 5000442,
+      "type": "he111h6",
+      "archType": "he111",
+      "displayName": "He 111 H-6",
+      "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+      "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19421101",
+      "side": "AXIS"
+    },
+    "5000443": {
+      "serialNumber": 5000443,
+      "type": "he111h6",
+      "archType": "he111",
+      "displayName": "He 111 H-6",
+      "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+      "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19421101",
+      "side": "AXIS"
+    },
+    "5000436": {
+      "serialNumber": 5000436,
+      "type": "he111h6",
+      "archType": "he111",
+      "displayName": "He 111 H-6",
+      "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+      "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19421101",
+      "side": "AXIS"
+    },
+    "5000437": {
+      "serialNumber": 5000437,
+      "type": "he111h6",
+      "archType": "he111",
+      "displayName": "He 111 H-6",
+      "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+      "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19421101",
+      "side": "AXIS"
+    },
+    "5000438": {
+      "serialNumber": 5000438,
+      "type": "he111h6",
+      "archType": "he111",
+      "displayName": "He 111 H-6",
+      "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+      "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19421101",
+      "side": "AXIS"
+    },
+    "5000439": {
+      "serialNumber": 5000439,
+      "type": "he111h6",
+      "archType": "he111",
+      "displayName": "He 111 H-6",
+      "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+      "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19421101",
+      "side": "AXIS"
+    },
+    "5000435": {
+      "serialNumber": 5000435,
+      "type": "he111h6",
+      "archType": "he111",
+      "displayName": "He 111 H-6",
+      "script": "LuaScripts\\WorldObjects\\Planes\\he111h6.txt",
+      "model": "graphics\\planes\\he111h6\\he111h6.mgm",
+      "desc": "",
+      "cruisingSpeed": 310,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 3.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19421101",
+      "side": "AXIS"
+    }
+  }
+}

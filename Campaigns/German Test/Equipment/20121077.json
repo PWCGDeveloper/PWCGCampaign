@@ -1,0 +1,298 @@
+{
+  "equippedPlanes": {
+    "5000396": {
+      "serialNumber": 5000396,
+      "type": "ju87d3",
+      "archType": "ju87",
+      "displayName": "Ju 87 D-3",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+      "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_DIVE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000397": {
+      "serialNumber": 5000397,
+      "type": "ju87d3",
+      "archType": "ju87",
+      "displayName": "Ju 87 D-3",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+      "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_DIVE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000398": {
+      "serialNumber": 5000398,
+      "type": "ju87d3",
+      "archType": "ju87",
+      "displayName": "Ju 87 D-3",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+      "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_DIVE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000399": {
+      "serialNumber": 5000399,
+      "type": "ju87d3",
+      "archType": "ju87",
+      "displayName": "Ju 87 D-3",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+      "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_DIVE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000393": {
+      "serialNumber": 5000393,
+      "type": "ju87d3",
+      "archType": "ju87",
+      "displayName": "Ju 87 D-3",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+      "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_DIVE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000394": {
+      "serialNumber": 5000394,
+      "type": "ju87d3",
+      "archType": "ju87",
+      "displayName": "Ju 87 D-3",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+      "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_DIVE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000395": {
+      "serialNumber": 5000395,
+      "type": "ju87d3",
+      "archType": "ju87",
+      "displayName": "Ju 87 D-3",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+      "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_DIVE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000404": {
+      "serialNumber": 5000404,
+      "type": "ju87d3",
+      "archType": "ju87",
+      "displayName": "Ju 87 D-3",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+      "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_DIVE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000405": {
+      "serialNumber": 5000405,
+      "type": "ju87d3",
+      "archType": "ju87",
+      "displayName": "Ju 87 D-3",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+      "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_DIVE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000406": {
+      "serialNumber": 5000406,
+      "type": "ju87d3",
+      "archType": "ju87",
+      "displayName": "Ju 87 D-3",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+      "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_DIVE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000400": {
+      "serialNumber": 5000400,
+      "type": "ju87d3",
+      "archType": "ju87",
+      "displayName": "Ju 87 D-3",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+      "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_DIVE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000401": {
+      "serialNumber": 5000401,
+      "type": "ju87d3",
+      "archType": "ju87",
+      "displayName": "Ju 87 D-3",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+      "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_DIVE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000402": {
+      "serialNumber": 5000402,
+      "type": "ju87d3",
+      "archType": "ju87",
+      "displayName": "Ju 87 D-3",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+      "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_DIVE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    },
+    "5000403": {
+      "serialNumber": 5000403,
+      "type": "ju87d3",
+      "archType": "ju87",
+      "displayName": "Ju 87 D-3",
+      "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
+      "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",
+      "desc": "",
+      "cruisingSpeed": 200,
+      "climbOutRate": 600,
+      "goodness": 25,
+      "endurance": 1.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_MEDIUM",
+      "roles": [
+        "ROLE_DIVE_BOMB"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19450503",
+      "side": "AXIS"
+    }
+  }
+}

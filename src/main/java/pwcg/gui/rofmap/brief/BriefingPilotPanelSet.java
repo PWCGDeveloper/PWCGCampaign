@@ -19,7 +19,6 @@ import javax.swing.JPanel;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.io.mission.MissionFileWriter;
-import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -54,6 +53,8 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     private BriefingMissionHandler briefingMissionHandler = null;
     private Map<Integer, BriefingPlaneModificationsPicker> planeModifications = new HashMap<>();
     private Campaign campaign;
+    private Integer selectedPilot;
+    private Integer selectedPlane;
 
     
 	public BriefingPilotPanelSet(CampaignHomeGUI campaignHomeGui, BriefingMissionHandler briefingMissionHandler) 
@@ -72,7 +73,6 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 			this.removeAll();
 	
 			setLeftPanel(makeButtonPanel());
-
 			setCenterPanel(makePilotPanel());
 		}
 		catch (Exception e)
@@ -223,7 +223,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private void addDataForChalkboard(JPanel assignedPilotPanel) throws PWCGException
     {
-		for (CrewPlanePayloadPairing crewPlane : briefingMissionHandler.getSortedAssigned())
+		for (CrewPlanePayloadPairing crewPlane : briefingMissionHandler.getCrewsSorted())
 		{			
 		    String pilotNameText = crewPlane.getPilot().getNameAndRank();
 	        JButton assignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText, "Unassign Pilot:" + crewPlane.getPilot().getSerialNumber(), this);
@@ -246,8 +246,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private void addPlaneColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(crewPlane.getPlaneType());
-        String planeName = plane.getDisplayName();
+        String planeName = crewPlane.getPlane().getDisplayName() + " (" + crewPlane.getPlane().getSerialNumber() + ")";
         JButton planeButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planeName, "Change Plane:" + crewPlane.getPilot().getSerialNumber(), this);
         assignedPilotPanel.add(planeButton);
     }
@@ -255,7 +254,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     private void addPayloadColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
         IPayloadFactory payloadFactory = PWCGContextManager.getInstance().getPayloadFactory();
-        PayloadDesignation payloadDesignation = payloadFactory.getPlanePayloadDesignation(crewPlane.getPlaneType(), crewPlane.getPayloadId());
+        PayloadDesignation payloadDesignation = payloadFactory.getPlanePayloadDesignation(crewPlane.getPlane().getType(), crewPlane.getPayloadId());
         String planePayloadDescription = payloadDesignation.getPayloadDescription();
         JButton payloadButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planePayloadDescription, "Change Payload:" + crewPlane.getPilot().getSerialNumber(), this);
         assignedPilotPanel.add(payloadButton);
@@ -283,11 +282,10 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         JLabel modificationsLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
         assignedPilotPanel.add(modificationsLabel);
  
-        for (CrewPlanePayloadPairing unAssignedCreePlane : briefingMissionHandler.getSortedUnassigned())
+        for (SquadronMember unassignedSquadronMember : briefingMissionHandler.getSortedUnassignedPilots())
         {           
-            SquadronMember pilotSquadronMember = unAssignedCreePlane.getPilot();
-            String pilotNameText = pilotSquadronMember.getNameAndRank();
-            JButton unassignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText, "Assign Pilot:" + pilotSquadronMember.getSerialNumber(), this);
+            String pilotNameText = unassignedSquadronMember.getNameAndRank();
+            JButton unassignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText, "Assign Pilot:" + unassignedSquadronMember.getSerialNumber(), this);
 			assignedPilotPanel.add(unassignedPilotButton);
 
 			JLabel planeSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
@@ -380,10 +378,15 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         	Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
         	
         	BriefingPlanePicker briefingPlanePicker = new BriefingPlanePicker(briefingMissionHandler, this);
-        	String newPlane = briefingPlanePicker.pickPlane(pilotSerialNumber);
-        	if (newPlane != null)
+        	String newPlaneChoice = briefingPlanePicker.pickPlane(pilotSerialNumber);
+        	if (newPlaneChoice != null)
         	{
-        		briefingMissionHandler.modifyPlaneType(pilotSerialNumber, newPlane);
+                int index = newPlaneChoice.indexOf(":");
+                index += 2;
+                String planeSerialNumberString = newPlaneChoice.substring(index);
+                Integer planeSerialNumber = new Integer(planeSerialNumberString);
+
+        		briefingMissionHandler.changePlane(pilotSerialNumber, planeSerialNumber);
         	}
         	
         	refreshPilotDisplay();
@@ -394,9 +397,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     {
         if (!briefingMissionHandler.getMission().isFinalized())
         {
-            Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
-            briefingMissionHandler.assignPilotFromBriefing(pilotSerialNumber);
-            refreshPilotDisplay();
+            selectedPilot = getPilotSerialNumberFromAction(action);
         }
     }
 
@@ -421,7 +422,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
             CrewPlanePayloadPairing crewPlane = briefingMissionHandler.getPairingByPilot(pilotSerialNumber);
 
             BriefingPayloadPicker briefingPayloadPicker = new BriefingPayloadPicker(this);
-            int newPayload = briefingPayloadPicker.pickPayload(crewPlane.getPlaneType());
+            int newPayload = briefingPayloadPicker.pickPayload(crewPlane.getPlane().getType());
             if (newPayload != -1)
             {
                 briefingMissionHandler.modifyPayload(pilotSerialNumber, newPayload);
@@ -470,12 +471,12 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private void synchronizePayload() throws PWCGException
     {
-        List<CrewPlanePayloadPairing> assignedPairings = briefingMissionHandler.getSortedAssigned();
+        List<CrewPlanePayloadPairing> assignedPairings = briefingMissionHandler.getCrewsSorted();
         CrewPlanePayloadPairing leadPlane = assignedPairings.get(0);
         for (int i = 1; i < assignedPairings.size(); ++i)
         {
             CrewPlanePayloadPairing subordinatePlane = assignedPairings.get(i);
-            if (leadPlane.getPlaneType().equals(subordinatePlane.getPlaneType()))
+            if (leadPlane.getPlane().equals(subordinatePlane.getPlane()))
             {
                 subordinatePlane.setPayloadId(leadPlane.getPayloadId());
             }
@@ -484,12 +485,12 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private void synchronizeModifications() throws PWCGException
     {
-        List<CrewPlanePayloadPairing> assignedPairings = briefingMissionHandler.getSortedAssigned();
+        List<CrewPlanePayloadPairing> assignedPairings = briefingMissionHandler.getCrewsSorted();
         CrewPlanePayloadPairing leadPlane = assignedPairings.get(0);
         for (int i = 1; i < assignedPairings.size(); ++i)
         {
             CrewPlanePayloadPairing subordinatePlane = assignedPairings.get(i);
-            if (leadPlane.getPlaneType().equals(subordinatePlane.getPlaneType()))
+            if (leadPlane.getPlane().equals(subordinatePlane.getPlane()))
             {
                 subordinatePlane.clearModification();
                 for (String modificationDescription : leadPlane.getModifications())

@@ -11,7 +11,6 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.skin.Skin;
@@ -74,11 +73,11 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
     
     private SquadronMember pilot;
     
-    public PlaneMCU(PlaneType planeType, ICountry country, SquadronMember pilot)
+    public PlaneMCU(EquippedPlane equippedPlane, ICountry country, SquadronMember pilot)
     {
         this.pilot = pilot;
         
-        planeType.copyTemplate(this);
+        equippedPlane.copyTemplate(this);
         this.setCountry(country);
         this.setName(pilot.getNameAndRank());
         this.setDesc(pilot.getNameAndRank());

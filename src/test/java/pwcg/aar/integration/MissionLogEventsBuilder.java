@@ -140,7 +140,7 @@ public class MissionLogEventsBuilder
         String playerPlaneId = serialNumberToPlaneId.get(player.getSerialNumber());
         IAType12 playerPlane = logEventData.getVehicle(playerPlaneId);
 
-        IAType12 destroyedPlane1 = getPlaneVictimByType("Yak-1 ser.69");
+        IAType12 destroyedPlane1 = getPlaneVictimByType("LaGG-3 ser.29");
         AType3 destroyed1 = new AType3(playerPlane.getId(), destroyedPlane1.getId(), crashLocation);
 
         IAType12 destroyedPlane2 = getPlaneVictimByType("Il-2 mod.1941");

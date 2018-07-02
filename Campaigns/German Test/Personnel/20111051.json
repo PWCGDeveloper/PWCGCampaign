@@ -1,516 +1,163 @@
 {
   "squadronMembers": {
-    "3000205": {
-      "name": "Detlef Landsteiner",
-      "serialNumber": 3000205,
-      "rank": "Hauptmann",
-      "picName": "German41.jpg",
+    "3000269": {
+      "name": "Axel Germar",
+      "serialNumber": 3000269,
+      "rank": "Oberleutnant",
+      "picName": "German11.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
-      "missionFlown": 51,
+      "missionFlown": 28,
       "aggressiveness": 0,
-      "aiSkillLevel": "ACE",
+      "aiSkillLevel": "VETERAN",
       "skill": 1,
       "commonSense": 0,
       "skins": [],
       "victories": [
         {
-          "date": "19411001",
-          "location": "Pesochnya",
+          "date": "19420811",
+          "location": "Kakpinka",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "136th Bomber Air Regiment",
+            "type": "il2m42",
+            "squadronName": "190th Ground Attack Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Szt Matvey Kolesnikov",
+            "pilotName": "SLt Timur Rasskazov",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f2",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Detlef Landsteiner",
+            "pilotName": "Oberleutnant Axel Germar",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411002",
-          "location": "Karmanovo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "95th Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Maj Viktor Post",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f2",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Detlef Landsteiner",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411005",
-          "location": "Klushino",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "mig3s24",
-            "squadronName": "233rd Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Kap Gennady Schastlivtsev",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f2",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Detlef Landsteiner",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411008",
-          "location": "Kurshevo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "46th Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Szt Stanislav Yablonev",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f2",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Detlef Landsteiner",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411011",
-          "location": "Pesochnya",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "65th Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Szt Yan Selidov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f2",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Detlef Landsteiner",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411014",
-          "location": "Vetka",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "321st Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Leonid Yankov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f2",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Detlef Landsteiner",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411017",
-          "location": "Chertolino",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "136th Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Gennady Lapotnikov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f2",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Detlef Landsteiner",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411020",
-          "location": "Nikiforovskoe",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "312th Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Maj Boris Preobrazhensky",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Detlef Landsteiner",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411023",
-          "location": "Myshkino",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "95th Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Ilya Bershov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Detlef Landsteiner",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411026",
-          "location": "Klimentovo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "136th Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Szt Georgy Markowski",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Detlef Landsteiner",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411029",
-          "location": "Pleshkovo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "321st Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Emil Loskutov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Detlef Landsteiner",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411115",
-          "location": "Tarhanovo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "321st Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Yakov Paskhin",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Detlef Landsteiner",
-            "pilotStatus": 0
-          }
-        }
-      ],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        },
-        {
-          "medalDate": "19411101",
-          "medalName": "Iron Cross 2nd Class",
-          "medalImage": "IC2.jpg"
-        },
-        {
-          "medalDate": "19411101",
-          "medalName": "Iron Cross 1st Class",
-          "medalImage": "IC1.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20111051,
-      "inactiveDate": "19440101"
-    },
-    "3000204": {
-      "name": "Karl Specht",
-      "serialNumber": 3000204,
-      "rank": "Major",
-      "picName": "German04.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 65,
-      "aggressiveness": 0,
-      "aiSkillLevel": "ACE",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [
-        {
-          "date": "19411002",
-          "location": "Staraya",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "i16t24",
-            "squadronName": "495th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Denis Belevich",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f2",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Karl Specht",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411005",
-          "location": "Osuga",
+          "date": "19420814",
+          "location": "Kacalinskaja",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
             "type": "p40e1",
-            "squadronName": "126th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Arkady Rybakov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f2",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Karl Specht",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411008",
-          "location": "Orehovnya",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "mig3s24",
-            "squadronName": "27th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Vyacheslav Syomin",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f2",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Karl Specht",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411011",
-          "location": "Kozlakova",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "i16t24",
             "squadronName": "495th Fighter Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Szt Dmitry Andreyev",
+            "pilotName": "SLt Maksim Krivkov",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f2",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Major Karl Specht",
+            "pilotName": "Oberleutnant Axel Germar",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411014",
-          "location": "Vetka",
+          "date": "19420817",
+          "location": "Kakpinka",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "312th Ground Attack Air Regiment",
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Kap Grigory Mosyakov",
+            "pilotName": "Szt Filipp Balakhnov",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f2",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Major Karl Specht",
+            "pilotName": "Oberleutnant Axel Germar",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411017",
-          "location": "Makeyevka",
+          "date": "19420820",
+          "location": "Pan sino",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "95th Bomber Air Regiment",
+            "type": "lagg3s29",
+            "squadronName": "15th Fighter Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "SLt Semyon Salkov",
+            "pilotName": "SLt Zakhar Mikhalev",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f2",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Major Karl Specht",
+            "pilotName": "Oberleutnant Axel Germar",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411020",
-          "location": "Myshkino",
+          "date": "19420823",
+          "location": "Illarionovskij",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "95th Bomber Air Regiment",
+            "type": "la5s8",
+            "squadronName": "27th Fighter Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Maj Daniil Abalyshev",
+            "pilotName": "Szt Svyatoslav Shishlov",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f4",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Major Karl Specht",
+            "pilotName": "Oberleutnant Axel Germar",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411023",
-          "location": "Kryukovo",
+          "date": "19420826",
+          "location": "Graci",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "175th Ground Attack Air Regiment",
+            "type": "yak1s127",
+            "squadronName": "273rd Fighter Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Szt Matvey Ignatkovich",
+            "pilotName": "Lt Svyatoslav Chuzhinov",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f4",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Major Karl Specht",
+            "pilotName": "Oberleutnant Axel Germar",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411026",
-          "location": "Bogorodskoe",
+          "date": "19420829",
+          "location": "Erik",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "175th Ground Attack Air Regiment",
+            "type": "il2m42",
+            "squadronName": "190th Ground Attack Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Szt Tikhon Yurlov",
+            "pilotName": "Szt Grigory Schastlivtsev",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f4",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Major Karl Specht",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411029",
-          "location": "Shahovskaya",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "312th Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Matvey Shukshin",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Major Karl Specht",
+            "pilotName": "Oberleutnant Axel Germar",
             "pilotStatus": 0
           }
         }
@@ -518,19 +165,14 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         },
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Iron Cross 2nd Class",
           "medalImage": "IC2.jpg"
-        },
-        {
-          "medalDate": "19411101",
-          "medalName": "Iron Cross 1st Class",
-          "medalImage": "IC1.jpg"
         }
       ],
       "playerRegion": "",
@@ -538,389 +180,11 @@
       "squadronId": 20111051,
       "inactiveDate": "19440101"
     },
-    "3000207": {
-      "name": "Ewart Guldenstaedt",
-      "serialNumber": 3000207,
+    "3000268": {
+      "name": "Johannes Boellmann",
+      "serialNumber": 3000268,
       "rank": "Oberleutnant",
-      "picName": "German15.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 35,
-      "aggressiveness": 0,
-      "aiSkillLevel": "ACE",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [
-        {
-          "date": "19411011",
-          "location": "Koshnyaki",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "132nd Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Anatoly Rusakov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f2",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Ewart Guldenstaedt",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411014",
-          "location": "Karmanovo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "321st Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Kap Eldar Veselovsky",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f2",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Ewart Guldenstaedt",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411017",
-          "location": "Koshnyaki",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "503rd Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Georgy Balaban",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f2",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Ewart Guldenstaedt",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411020",
-          "location": "Bogorodskoe",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "95th Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Matvey Chernikov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Ewart Guldenstaedt",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411023",
-          "location": "Pogoreloe Gorodische",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "503rd Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Georgy Markovich",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Ewart Guldenstaedt",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411026",
-          "location": "Ryabinki",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "503rd Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Roman Kozlovsky",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Ewart Guldenstaedt",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411029",
-          "location": "Serada",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "62nd Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Szt Iosif Sobachkin",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Ewart Guldenstaedt",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411112",
-          "location": "Vasilevskoe",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "132nd Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Szt Boris Zadornov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Ewart Guldenstaedt",
-            "pilotStatus": 0
-          }
-        }
-      ],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        },
-        {
-          "medalDate": "19411101",
-          "medalName": "Iron Cross 2nd Class",
-          "medalImage": "IC2.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20111051,
-      "inactiveDate": "19440101"
-    },
-    "3000206": {
-      "name": "Agustus Finke",
-      "serialNumber": 3000206,
-      "rank": "Hauptmann",
-      "picName": "German36.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 32,
-      "aggressiveness": 0,
-      "aiSkillLevel": "VETERAN",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [
-        {
-          "date": "19411023",
-          "location": "Serada",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "i16t24",
-            "squadronName": "34th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Ivan Filatov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Agustus Finke",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411026",
-          "location": "Scherbinki",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "46th Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Emil Ledovskoy",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Agustus Finke",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411029",
-          "location": "Nechaevo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "yak1s69",
-            "squadronName": "11th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Pyotr Gachev",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Hauptmann Agustus Finke",
-            "pilotStatus": 0
-          }
-        }
-      ],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        },
-        {
-          "medalDate": "19411101",
-          "medalName": "Iron Cross 2nd Class",
-          "medalImage": "IC2.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20111051,
-      "inactiveDate": "19440101"
-    },
-    "3000213": {
-      "name": "Arno Gratz",
-      "serialNumber": 3000213,
-      "rank": "Leutnant",
-      "picName": "German35.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 13,
-      "aggressiveness": 0,
-      "aiSkillLevel": "COMMON",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20111051,
-      "inactiveDate": "19440101"
-    },
-    "3000212": {
-      "name": "Rupert Herzfeld",
-      "serialNumber": 3000212,
-      "rank": "Leutnant",
-      "picName": "German42.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 15,
-      "aggressiveness": 0,
-      "aiSkillLevel": "COMMON",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20111051,
-      "inactiveDate": "19440101"
-    },
-    "3000215": {
-      "name": "Karl Scholer",
-      "serialNumber": 3000215,
-      "rank": "Oberfeldwebel",
-      "picName": "German54.jpg",
-      "pilotActiveStatus": 0,
-      "country": "GERMANY",
-      "missionFlown": 17,
-      "aggressiveness": 0,
-      "aiSkillLevel": "VETERAN",
-      "skill": 1,
-      "commonSense": 0,
-      "skins": [],
-      "victories": [],
-      "groundVictories": [],
-      "medals": [
-        {
-          "medalDate": "19411101",
-          "medalName": "Pilots Badge",
-          "medalImage": "PB.jpg"
-        }
-      ],
-      "playerRegion": "",
-      "isPlayer": false,
-      "squadronId": 20111051,
-      "inactiveDate": "19440101"
-    },
-    "3000209": {
-      "name": "Sigfried Kieffer",
-      "serialNumber": 3000209,
-      "rank": "Oberleutnant",
-      "picName": "German62.jpg",
+      "picName": "German16.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
       "missionFlown": 25,
@@ -931,65 +195,107 @@
       "skins": [],
       "victories": [
         {
-          "date": "19411023",
-          "location": "Chenkovo",
+          "date": "19420817",
+          "location": "Erik",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "312th Ground Attack Air Regiment",
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "SLt Vladimir Krutov",
+            "pilotName": "SLt Anatoly Afanasyev",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f4",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Sigfried Kieffer",
+            "pilotName": "Oberleutnant Johannes Boellmann",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411026",
-          "location": "Scherbinki",
+          "date": "19420820",
+          "location": "Aksaj",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "95th Bomber Air Regiment",
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "SLt Aleksey Elefterov",
+            "pilotName": "SLt Konstantin Chernov",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f4",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Sigfried Kieffer",
+            "pilotName": "Oberleutnant Johannes Boellmann",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411029",
-          "location": "Mihalevo",
+          "date": "19420823",
+          "location": "Kakpinka",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "136th Bomber Air Regiment",
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "SLt Eduard Vitsin",
+            "pilotName": "Szt Emil Pashkov",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f4",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Sigfried Kieffer",
+            "pilotName": "Oberleutnant Johannes Boellmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "Translator Icon",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "15th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Ruslan Pushkaryov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Johannes Boellmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Arkady Glebov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Johannes Boellmann",
             "pilotStatus": 0
           }
         }
@@ -997,12 +303,12 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         },
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Iron Cross 2nd Class",
           "medalImage": "IC2.jpg"
         }
@@ -1012,164 +318,59 @@
       "squadronId": 20111051,
       "inactiveDate": "19440101"
     },
-    "3000208": {
-      "name": "Mario Weydmann",
-      "serialNumber": 3000208,
-      "rank": "Oberleutnant",
-      "picName": "German32.jpg",
+    "3000271": {
+      "name": "Andreas Brueckman",
+      "serialNumber": 3000271,
+      "rank": "Leutnant",
+      "picName": "German52.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
-      "missionFlown": 34,
+      "missionFlown": 7,
       "aggressiveness": 0,
-      "aiSkillLevel": "ACE",
+      "aiSkillLevel": "COMMON",
       "skill": 1,
       "commonSense": 0,
       "skins": [],
       "victories": [
         {
-          "date": "19411011",
-          "location": "Odnoschekina",
+          "date": "19420826",
+          "location": "Aksaj",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "p40e1",
-            "squadronName": "126th Fighter Air Regiment",
+            "type": "la5s8",
+            "squadronName": "15th Fighter Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "SLt Matvey Gusev",
+            "pilotName": "Lt Mikhail Tsyganov",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f2",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Mario Weydmann",
+            "pilotName": "Leutnant Andreas Brueckman",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411014",
-          "location": "Pomelnica",
+          "date": "19420829",
+          "location": "Aksaj",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "i16t24",
-            "squadronName": "34th Fighter Air Regiment",
+            "type": "pe2s87",
+            "squadronName": "86th Bomber Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Kap Valeriy Yenotov",
+            "pilotName": "Lt Evgeny Dostovalov",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f2",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Mario Weydmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411017",
-          "location": "Pesochnya",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "yak1s69",
-            "squadronName": "11th Fighter Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Daniil Dementyev",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f2",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Mario Weydmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411020",
-          "location": "Pleshkovo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "321st Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Szt Arkady Ustinov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Mario Weydmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411023",
-          "location": "Dorohovo",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "136th Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "SLt Grigory Bobko",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Mario Weydmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411026",
-          "location": "Gubino",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "95th Bomber Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Kap Ilya Bogdanov",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Mario Weydmann",
-            "pilotStatus": 0
-          }
-        },
-        {
-          "date": "19411029",
-          "location": "Myshkino",
-          "crashedInSight": true,
-          "victim": {
-            "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "62nd Ground Attack Air Regiment",
-            "pilotSerialNumber": 0,
-            "pilotName": "Lt Denis Pushnoy",
-            "pilotStatus": -6
-          },
-          "victor": {
-            "airOrGround": 1,
-            "type": "bf109f4",
-            "squadronName": "I./JG51",
-            "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Mario Weydmann",
+            "pilotName": "Leutnant Andreas Brueckman",
             "pilotStatus": 0
           }
         }
@@ -1177,12 +378,12 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         },
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Iron Cross 2nd Class",
           "medalImage": "IC2.jpg"
         }
@@ -1192,16 +393,16 @@
       "squadronId": 20111051,
       "inactiveDate": "19440101"
     },
-    "3000211": {
-      "name": "Andreas Wax",
-      "serialNumber": 3000211,
+    "3000270": {
+      "name": "Helmut Lichtenstadt",
+      "serialNumber": 3000270,
       "rank": "Leutnant",
-      "picName": "German21.jpg",
+      "picName": "German58.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
-      "missionFlown": 18,
+      "missionFlown": 5,
       "aggressiveness": 0,
-      "aiSkillLevel": "VETERAN",
+      "aiSkillLevel": "COMMON",
       "skill": 1,
       "commonSense": 0,
       "skins": [],
@@ -1209,7 +410,7 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         }
@@ -1219,101 +420,395 @@
       "squadronId": 20111051,
       "inactiveDate": "19440101"
     },
-    "3000210": {
-      "name": "Volker Conzelmann",
-      "serialNumber": 3000210,
-      "rank": "Oberleutnant",
-      "picName": "German01.jpg",
+    "3000265": {
+      "name": "Georg Hantzsch",
+      "serialNumber": 3000265,
+      "rank": "Hauptmann",
+      "picName": "German13.jpg",
       "pilotActiveStatus": 0,
       "country": "GERMANY",
-      "missionFlown": 35,
+      "missionFlown": 55,
       "aggressiveness": 0,
-      "aiSkillLevel": "VETERAN",
+      "aiSkillLevel": "ACE",
       "skill": 1,
       "commonSense": 0,
       "skins": [],
       "victories": [
         {
-          "date": "19411023",
-          "location": "Myshkino",
+          "date": "19420709",
+          "location": "Osinki",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "pe2s35",
-            "squadronName": "132nd Bomber Air Regiment",
+            "type": "pe2s87",
+            "squadronName": "134th Bomber Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Maj Ivan Yakubov",
+            "pilotName": "Szt Pyotr Dementyev",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f4",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Volker Conzelmann",
+            "pilotName": "Hauptmann Georg Hantzsch",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411026",
-          "location": "Gubino",
+          "date": "19420712",
+          "location": "Osinki",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "312th Ground Attack Air Regiment",
+            "type": "il2m42",
+            "squadronName": "503rd Ground Attack Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "SLt Zakhar Tselikovsky",
+            "pilotName": "SLt Maksim Yudin",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f4",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Volker Conzelmann",
+            "pilotName": "Hauptmann Georg Hantzsch",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411029",
-          "location": "Serada",
+          "date": "19420715",
+          "location": "Osinki",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
-            "type": "il2m41",
-            "squadronName": "312th Ground Attack Air Regiment",
+            "type": "p40e1",
+            "squadronName": "495th Fighter Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Szt Yakov Grankin",
+            "pilotName": "Szt Anton Silayev",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f4",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Volker Conzelmann",
+            "pilotName": "Hauptmann Georg Hantzsch",
             "pilotStatus": 0
           }
         },
         {
-          "date": "19411112",
-          "location": "Burinovo",
+          "date": "19420718",
+          "location": "Evlampievskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "277th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Aleksey Yasneyev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Georg Hantzsch",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420721",
+          "location": "Malogolubaja",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "86th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Moisey Losev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Georg Hantzsch",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420724",
+          "location": "Zimovskoj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "621st Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kap Innokenty Krysov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Georg Hantzsch",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420727",
+          "location": "Osinki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "15th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Igor Somov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Georg Hantzsch",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420730",
+          "location": "Zimovskoj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "277th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Roman Karaulin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Georg Hantzsch",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420802",
+          "location": "zutov 2",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "15th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Konstantin Denisov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Georg Hantzsch",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420805",
+          "location": "Vertjacij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "621st Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Valeriy Ivanov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Georg Hantzsch",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420808",
+          "location": "Stalinskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "190th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Yegor Tseydlerin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Georg Hantzsch",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420811",
+          "location": "Pan sino",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "618th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kap Ivan Solomonov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Georg Hantzsch",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420814",
+          "location": "Vertjacij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Matvey Shigin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Georg Hantzsch",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420817",
+          "location": "Vertjacij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Georgy Pavlovich",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Georg Hantzsch",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420820",
+          "location": "Platonov",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "277th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Ruslan Raskalov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Georg Hantzsch",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420823",
+          "location": "Kakpinka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Eldar Shurygin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Georg Hantzsch",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "Translator Icon",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Iosif Bokaryov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Georg Hantzsch",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Stalinskij",
           "crashedInSight": true,
           "victim": {
             "airOrGround": 1,
             "type": "mig3s24",
-            "squadronName": "233rd Fighter Air Regiment",
+            "squadronName": "439th Fighter Air Regiment",
             "pilotSerialNumber": 0,
-            "pilotName": "Szt Zakhar Bogomazov",
+            "pilotName": "SLt Moisey Ilyushin",
             "pilotStatus": -6
           },
           "victor": {
             "airOrGround": 1,
-            "type": "bf109f4",
+            "type": "fw190a3",
             "squadronName": "I./JG51",
             "pilotSerialNumber": 0,
-            "pilotName": "Oberleutnant Volker Conzelmann",
+            "pilotName": "Hauptmann Georg Hantzsch",
             "pilotStatus": 0
           }
         }
@@ -1321,14 +816,1465 @@
       "groundVictories": [],
       "medals": [
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Pilots Badge",
           "medalImage": "PB.jpg"
         },
         {
-          "medalDate": "19411101",
+          "medalDate": "19420901",
           "medalName": "Iron Cross 2nd Class",
           "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20111051,
+      "inactiveDate": "19440101"
+    },
+    "3000264": {
+      "name": "Norbert Eichler",
+      "serialNumber": 3000264,
+      "rank": "Hauptmann",
+      "picName": "German23.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 55,
+      "aggressiveness": 0,
+      "aiSkillLevel": "ACE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19420709",
+          "location": "Evlampievskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "190th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Sergey Oshurkov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420712",
+          "location": "Osinki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "766th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Vasily Gagolin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420715",
+          "location": "Osinki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "439th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Oleg Chukchov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420718",
+          "location": "Evlampievskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Grigory Agliullin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420721",
+          "location": "Malogolubaja",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "503rd Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Evgeny Listunov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420724",
+          "location": "Osinki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "621st Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Georgy Chebykin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420727",
+          "location": "Evlampievskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "190th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Yakov Shikhov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420730",
+          "location": "Malogolubaja",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Grigory Siyalov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420802",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "439th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kap Nikolay Polotentsev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420805",
+          "location": "Sovetskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "10th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Konstantin Kirilishen",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420808",
+          "location": "Pan sino",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Semyon Siyangulov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420811",
+          "location": "Pan sino",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "27th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Leonid Loginov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420814",
+          "location": "Illarionovskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "618th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Nikolay Anoshkin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420817",
+          "location": "Stalinskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "i16t24",
+            "squadronName": "629th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Anatoly Tsvetayev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420820",
+          "location": "Darganov",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "503rd Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Aleksey Kashkanov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420823",
+          "location": "zutov 2",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "618th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Yegor Kurdin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "766th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Anatoly Shishlov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "284th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Artur Medved",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Hauptmann Norbert Eichler",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20111051,
+      "inactiveDate": "19440101"
+    },
+    "3000267": {
+      "name": "Christof Blaustein",
+      "serialNumber": 3000267,
+      "rank": "Oberleutnant",
+      "picName": "German37.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 40,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19420724",
+          "location": "Evlampievskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "134th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Daniil Siyankin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Christof Blaustein",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420727",
+          "location": "Malogolubaja",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "86th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Timur Datsishin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Christof Blaustein",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420730",
+          "location": "Evlampievskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "p40e1",
+            "squadronName": "495th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kap Yegor Tabernakulov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Christof Blaustein",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420802",
+          "location": "Kakpinka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "621st Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Timofey Franko",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Christof Blaustein",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420805",
+          "location": "Pan sino",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Innokenty Surnin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Christof Blaustein",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420808",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "190th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Zakhar Sabitov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Christof Blaustein",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420811",
+          "location": "Illarionovskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "134th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Viktor Kharmats",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Christof Blaustein",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420814",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Moisey Ivashov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Christof Blaustein",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420817",
+          "location": "Illarionovskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "15th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Aleksey Dorokhin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Christof Blaustein",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420820",
+          "location": "Marinovka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "15th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Roman Yugov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Christof Blaustein",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420823",
+          "location": " Ozerki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "503rd Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Maksim Buturovich",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Christof Blaustein",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "Marinovka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "766th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Aleksandr Khloponin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Christof Blaustein",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "zutov 2",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "766th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Stepan Lyovkin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Christof Blaustein",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20111051,
+      "inactiveDate": "19440101"
+    },
+    "3000266": {
+      "name": "Marius Holz",
+      "serialNumber": 3000266,
+      "rank": "Oberleutnant",
+      "picName": "German41.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 16,
+      "aggressiveness": 0,
+      "aiSkillLevel": "VETERAN",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19420823",
+          "location": "Novo-Petrovskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "503rd Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Ivan Izyumov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Marius Holz",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "zutov 2",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "86th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Tikhon Dubolazov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Marius Holz",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Translator Icon",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "618th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Vladimir Tikhonov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Oberleutnant Marius Holz",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20111051,
+      "inactiveDate": "19440101"
+    },
+    "3000263": {
+      "name": "Leonhard Brugmann",
+      "serialNumber": 3000263,
+      "rank": "Major",
+      "picName": "German27.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 73,
+      "aggressiveness": 0,
+      "aiSkillLevel": "ACE",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [
+        {
+          "date": "19420621",
+          "location": "Kozinovskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Valeriy Surkov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420624",
+          "location": "Kozinovskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "p40e1",
+            "squadronName": "495th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Denis Sevostyanov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420627",
+          "location": "Podlesinskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "27th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Sergey Nazarov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420630",
+          "location": "Podlesinskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kap Zakhar Tikhomirov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420703",
+          "location": "Podlesinskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "lagg3s29",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Vyacheslav Shikhov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420706",
+          "location": "Podlesinskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Svyatoslav Koychev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420709",
+          "location": "Osinki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Semyon Pelevin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420712",
+          "location": "Osinki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "621st Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Moisey Kanadtsev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420715",
+          "location": "Evlampievskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "a20b",
+            "squadronName": "45th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Pyotr Tvardovsky",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420718",
+          "location": "Osinki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "190th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Grigory Leshev",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420721",
+          "location": "Osinki",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "766th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Pyotr Kamenskikh",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420724",
+          "location": "Evlampievskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "15th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kap Maksim Kipriyanov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420727",
+          "location": "Evlampievskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "190th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Vladimir Levin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420730",
+          "location": "Zimovskoj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "284th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Szt Vladimir Griboyedov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420802",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "il2m42",
+            "squadronName": "811th Ground Attack Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Maksim Koryavin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420805",
+          "location": "Graci",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "10th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Filipp Pavlovsky",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420808",
+          "location": "Aksaj",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "439th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Yan Vazov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420811",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "i16t24",
+            "squadronName": "629th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Kap Emil Karbainov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420814",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "86th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Artur Bunin",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420817",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "mig3s24",
+            "squadronName": "27th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Maj Vitaly Korenyov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420820",
+          "location": "Stalinskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "11th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Iosif Siyankovsky",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420823",
+          "location": "Kakpinka",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "134th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "Lt Svyatoslav Kazankov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420826",
+          "location": "Erik",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "pe2s87",
+            "squadronName": "86th Bomber Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Ivan Toporkov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        },
+        {
+          "date": "19420829",
+          "location": "Stalinskij",
+          "crashedInSight": true,
+          "victim": {
+            "airOrGround": 1,
+            "type": "la5s8",
+            "squadronName": "15th Fighter Air Regiment",
+            "pilotSerialNumber": 0,
+            "pilotName": "SLt Viktor Gorelov",
+            "pilotStatus": -6
+          },
+          "victor": {
+            "airOrGround": 1,
+            "type": "fw190a3",
+            "squadronName": "I./JG51",
+            "pilotSerialNumber": 0,
+            "pilotName": "Major Leonhard Brugmann",
+            "pilotStatus": 0
+          }
+        }
+      ],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 2nd Class",
+          "medalImage": "IC2.jpg"
+        },
+        {
+          "medalDate": "19420901",
+          "medalName": "Iron Cross 1st Class",
+          "medalImage": "IC1.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20111051,
+      "inactiveDate": "19440101"
+    },
+    "3000273": {
+      "name": "Gotthold Marx",
+      "serialNumber": 3000273,
+      "rank": "Oberfeldwebel",
+      "picName": "German39.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 4,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20111051,
+      "inactiveDate": "19440101"
+    },
+    "3000272": {
+      "name": "Eugen Assing",
+      "serialNumber": 3000272,
+      "rank": "Leutnant",
+      "picName": "German70.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 2,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
+        }
+      ],
+      "playerRegion": "",
+      "isPlayer": false,
+      "squadronId": 20111051,
+      "inactiveDate": "19440101"
+    },
+    "3000274": {
+      "name": "Rudolf Degen",
+      "serialNumber": 3000274,
+      "rank": "Oberfeldwebel",
+      "picName": "German55.jpg",
+      "pilotActiveStatus": 0,
+      "country": "GERMANY",
+      "missionFlown": 6,
+      "aggressiveness": 0,
+      "aiSkillLevel": "COMMON",
+      "skill": 1,
+      "commonSense": 0,
+      "skins": [],
+      "victories": [],
+      "groundVictories": [],
+      "medals": [
+        {
+          "medalDate": "19420901",
+          "medalName": "Pilots Badge",
+          "medalImage": "PB.jpg"
         }
       ],
       "playerRegion": "",

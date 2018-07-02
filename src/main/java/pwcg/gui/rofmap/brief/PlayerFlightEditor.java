@@ -7,7 +7,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
-import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
@@ -118,50 +117,31 @@ public class PlayerFlightEditor
     private PlaneMCU updateFlightMember(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
         PlaneMCU flightLeader = playerFlight.getLeadPlane();
-
-        PlaneType updatedPlaneType = getPlaneForPlayerSquadron(playerFlight, crewPlane.getPlaneType(), crewPlane);
         
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
         PlaneMCUFactory PlaneMCUFactory = new PlaneMCUFactory(campaign, squadron, playerFlight);
-        PlaneMCU updatedPlane = PlaneMCUFactory.createPlaneByPlaneType(updatedPlaneType, playerFlight.getCountry(), crewPlane.getPilot());
+        PlaneMCU updatedPlaneMcu = PlaneMCUFactory.createPlaneMcuByPlaneType(crewPlane.getPlane(), playerFlight.getCountry(), crewPlane.getPilot());
 
-        updatedPlane.setIndex(IndexGenerator.getInstance().getNextIndex());
-        updatedPlane.getEntity().setTarget(flightLeader.getLinkTrId());
+        updatedPlaneMcu.setIndex(IndexGenerator.getInstance().getNextIndex());
+        updatedPlaneMcu.getEntity().setTarget(flightLeader.getLinkTrId());
 
-        return updatedPlane;
+        return updatedPlaneMcu;
     }
 
     private PlaneMCU updateLeader(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        PlaneType modifiedLeadPlaneType = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(crewPlane.getPlaneType());
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
         PlaneMCUFactory PlaneMCUFactory = new PlaneMCUFactory(campaign, squadron, playerFlight);
-        PlaneMCU modifiedLeadPlane = PlaneMCUFactory.createPlaneByPlaneType(modifiedLeadPlaneType, playerFlight.getCountry(), crewPlane.getPilot());
+        PlaneMCU modifiedLeadPlane = PlaneMCUFactory.createPlaneMcuByPlaneType(crewPlane.getPlane(), playerFlight.getCountry(), crewPlane.getPilot());
 
-        PlaneMCU flightLeader = playerFlight.getLeadPlane();
-        flightLeader.setDisplayName(modifiedLeadPlane.getDisplayName());
-        flightLeader.setModel(modifiedLeadPlane.getModel());
-        flightLeader.setScript(modifiedLeadPlane.getScript());
-        flightLeader.setType(modifiedLeadPlane.getType());
-        flightLeader.setEndurance(modifiedLeadPlane.getEndurance());
-        flightLeader.setCruisingSpeed(modifiedLeadPlane.getCruisingSpeed());
+        PlaneMCU flightLeaderPlaneMcu = playerFlight.getLeadPlane();
+        flightLeaderPlaneMcu.setDisplayName(modifiedLeadPlane.getDisplayName());
+        flightLeaderPlaneMcu.setModel(modifiedLeadPlane.getModel());
+        flightLeaderPlaneMcu.setScript(modifiedLeadPlane.getScript());
+        flightLeaderPlaneMcu.setType(modifiedLeadPlane.getType());
+        flightLeaderPlaneMcu.setEndurance(modifiedLeadPlane.getEndurance());
+        flightLeaderPlaneMcu.setCruisingSpeed(modifiedLeadPlane.getCruisingSpeed());
 
-        return flightLeader;
-    }
-
-    private PlaneType getPlaneForPlayerSquadron(Flight playerFlight, String planeType, CrewPlanePayloadPairing crewPlane) throws PWCGException
-    {
-        List<PlaneType> aircraftTypes = playerFlight.getSquadron().determineCurrentAircraftList(campaign.getDate());
-        if (aircraftTypes.size() <= 0)
-        {
-            throw new PWCGException("No planes for player squadron on this date");
-        }
-
-        PlaneType playerSquadronPlaneType = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeType);
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
-        PlaneMCUFactory PlaneMCUFactory = new PlaneMCUFactory(campaign, squadron, playerFlight);
-        PlaneMCU playerFlightPlane = PlaneMCUFactory.createPlaneByPlaneType(playerSquadronPlaneType, playerFlight.getCountry(), crewPlane.getPilot());
-
-        return playerFlightPlane;
+        return flightLeaderPlaneMcu;
     }
 }

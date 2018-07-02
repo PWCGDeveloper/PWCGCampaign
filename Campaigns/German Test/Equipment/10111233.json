@@ -1,0 +1,312 @@
+{
+  "equippedPlanes": {
+    "5000068": {
+      "serialNumber": 5000068,
+      "type": "la5s8",
+      "archType": "lagg",
+      "displayName": "La-5 ser.8",
+      "script": "LuaScripts\\WorldObjects\\Planes\\la5s8.txt",
+      "model": "graphics\\planes\\la5s8\\la5s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1300,
+      "goodness": 50,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420701",
+      "withdrawal": "19431101",
+      "side": "ALLIED"
+    },
+    "5000069": {
+      "serialNumber": 5000069,
+      "type": "lagg3s29",
+      "archType": "lagg",
+      "displayName": "LaGG-3 ser.29",
+      "script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
+      "model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1000,
+      "goodness": 30,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19440201",
+      "side": "ALLIED"
+    },
+    "5000070": {
+      "serialNumber": 5000070,
+      "type": "lagg3s29",
+      "archType": "lagg",
+      "displayName": "LaGG-3 ser.29",
+      "script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
+      "model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1000,
+      "goodness": 30,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19440201",
+      "side": "ALLIED"
+    },
+    "5000064": {
+      "serialNumber": 5000064,
+      "type": "lagg3s29",
+      "archType": "lagg",
+      "displayName": "LaGG-3 ser.29",
+      "script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
+      "model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1000,
+      "goodness": 30,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19440201",
+      "side": "ALLIED"
+    },
+    "5000065": {
+      "serialNumber": 5000065,
+      "type": "lagg3s29",
+      "archType": "lagg",
+      "displayName": "LaGG-3 ser.29",
+      "script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
+      "model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1000,
+      "goodness": 30,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19440201",
+      "side": "ALLIED"
+    },
+    "5000066": {
+      "serialNumber": 5000066,
+      "type": "lagg3s29",
+      "archType": "lagg",
+      "displayName": "LaGG-3 ser.29",
+      "script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
+      "model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1000,
+      "goodness": 30,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19440201",
+      "side": "ALLIED"
+    },
+    "5000067": {
+      "serialNumber": 5000067,
+      "type": "la5s8",
+      "archType": "lagg",
+      "displayName": "La-5 ser.8",
+      "script": "LuaScripts\\WorldObjects\\Planes\\la5s8.txt",
+      "model": "graphics\\planes\\la5s8\\la5s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1300,
+      "goodness": 50,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420701",
+      "withdrawal": "19431101",
+      "side": "ALLIED"
+    },
+    "5000060": {
+      "serialNumber": 5000060,
+      "type": "lagg3s29",
+      "archType": "lagg",
+      "displayName": "LaGG-3 ser.29",
+      "script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
+      "model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1000,
+      "goodness": 30,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19440201",
+      "side": "ALLIED"
+    },
+    "5000061": {
+      "serialNumber": 5000061,
+      "type": "la5s8",
+      "archType": "lagg",
+      "displayName": "La-5 ser.8",
+      "script": "LuaScripts\\WorldObjects\\Planes\\la5s8.txt",
+      "model": "graphics\\planes\\la5s8\\la5s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1300,
+      "goodness": 50,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420701",
+      "withdrawal": "19431101",
+      "side": "ALLIED"
+    },
+    "5000062": {
+      "serialNumber": 5000062,
+      "type": "lagg3s29",
+      "archType": "lagg",
+      "displayName": "LaGG-3 ser.29",
+      "script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
+      "model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1000,
+      "goodness": 30,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19440201",
+      "side": "ALLIED"
+    },
+    "5000063": {
+      "serialNumber": 5000063,
+      "type": "la5s8",
+      "archType": "lagg",
+      "displayName": "La-5 ser.8",
+      "script": "LuaScripts\\WorldObjects\\Planes\\la5s8.txt",
+      "model": "graphics\\planes\\la5s8\\la5s8.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1300,
+      "goodness": 50,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19420701",
+      "withdrawal": "19431101",
+      "side": "ALLIED"
+    },
+    "5000057": {
+      "serialNumber": 5000057,
+      "type": "lagg3s29",
+      "archType": "lagg",
+      "displayName": "LaGG-3 ser.29",
+      "script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
+      "model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1000,
+      "goodness": 30,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19440201",
+      "side": "ALLIED"
+    },
+    "5000058": {
+      "serialNumber": 5000058,
+      "type": "lagg3s29",
+      "archType": "lagg",
+      "displayName": "LaGG-3 ser.29",
+      "script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
+      "model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1000,
+      "goodness": 30,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19440201",
+      "side": "ALLIED"
+    },
+    "5000059": {
+      "serialNumber": 5000059,
+      "type": "lagg3s29",
+      "archType": "lagg",
+      "displayName": "LaGG-3 ser.29",
+      "script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
+      "model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",
+      "desc": "",
+      "cruisingSpeed": 350,
+      "climbOutRate": 1000,
+      "goodness": 30,
+      "endurance": 2.0,
+      "isFlyable": true,
+      "planeSize": "PLANE_SIZE_SMALL",
+      "roles": [
+        "ROLE_FIGHTER",
+        "ROLE_ATTACK"
+      ],
+      "introduction": "19410601",
+      "withdrawal": "19440201",
+      "side": "ALLIED"
+    }
+  }
+}

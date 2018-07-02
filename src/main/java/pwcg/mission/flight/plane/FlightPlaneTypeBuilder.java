@@ -1,106 +1,71 @@
 package pwcg.mission.flight.plane;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.TreeMap;
+import java.util.Set;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.plane.Equipment;
+import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.PlaneSorter;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class FlightPlaneTypeBuilder
 {
-    private Campaign campaign;
-    private Squadron squadron;
     private int numPlanes;
+    private Equipment equipmentForSquadron;
     
-    public FlightPlaneTypeBuilder(Campaign campaign, Squadron squadron, int numPlanes)
+    public FlightPlaneTypeBuilder(Equipment equipmentForSquadron, int numPlanes)
     {
-        this.campaign = campaign;
-        this.squadron = squadron;
+        this.equipmentForSquadron = equipmentForSquadron;
         this.numPlanes = numPlanes;
     }
     
-    public List<String> getPlaneListForFlight() throws PWCGException 
-    {        
-        if (useMixed())
-        {
-            return createMixedAircraftSet();
-        }
-        else
-        {
-            return createHomogeneousAircraftSet();
-        }
+    public List<EquippedPlane> getPlaneListForFlight() throws PWCGException 
+    { 
+        setNumberOfPlanesForLosses();        
+        Set<Integer> selectedPlaneSerialNumbers = selectPlaneSerialNumbersForFlight();
+        List<EquippedPlane> selectedPlanes = getSelectedPlanes(selectedPlaneSerialNumbers);
+        List<EquippedPlane> sortedPlanes = sortSelectedPlanes(selectedPlanes);
+        return sortedPlanes;
     }
 
-    private List<String> createMixedAircraftSet() throws PWCGException
-    {        
-        List<PlaneType> aircraftTypes = squadron.determineCurrentAircraftList(campaign.getDate());
-        if (aircraftTypes.size() <= 0)
-        {
-            throw new PWCGException ("No planes for player squadron on this date");
-        }
-     
-        TreeMap<String, String> planeTypesForFlight = getPlaneTypesForMixedFlight(numPlanes, aircraftTypes);        
-        List<String> aircraftTypeForMission = new ArrayList<String>(planeTypesForFlight.descendingMap().values());
-
-        return aircraftTypeForMission;
-    }
-
-    private TreeMap<String, String> getPlaneTypesForMixedFlight(int numPlanes, List<PlaneType> aircraftTypes) {
-        TreeMap <String, String> planeTypesForFlight = new TreeMap <String, String>();
-        for (int planeNumber = 0; planeNumber < numPlanes; ++ planeNumber)
-        {
-            int selectedPlaneIndex = RandomNumberGenerator.getRandom(aircraftTypes.size());
-            PlaneType planeType = aircraftTypes.get(selectedPlaneIndex);
-            String key = "" + planeType.getGoodness() + new Integer(selectedPlaneIndex).toString() + new Integer(planeNumber).toString();
-            
-            planeTypesForFlight.put(key, aircraftTypes.get(selectedPlaneIndex).getType());
-        }
-        return planeTypesForFlight;
-    }
-
-    private List<String> createHomogeneousAircraftSet() throws PWCGException
+    private void setNumberOfPlanesForLosses()
     {
-        List<PlaneType> aircraftTypes = squadron.determineCurrentAircraftList(campaign.getDate());
-        if (aircraftTypes.size() <= 0)
+        if (equipmentForSquadron.getEquippedPlanes().size() < numPlanes)
         {
-            throw new PWCGException ("No planes for player squadron on this date");
+            numPlanes = equipmentForSquadron.getEquippedPlanes().size();
         }
-               
-        String bestPlaneTypeDesc =  aircraftTypes.get(aircraftTypes.size() - 1).getType();
-        
-        List<String> aircraftTypeForMission = new ArrayList<String>();
-        for (int i = 0; i < numPlanes; ++i)
-        {
-            aircraftTypeForMission.add(bestPlaneTypeDesc);
-        }
-
-        return aircraftTypeForMission;
     }
 
-    private boolean useMixed() throws PWCGException
+    private Set<Integer> selectPlaneSerialNumbersForFlight()
     {
-        if (PWCGContextManager.isRoF())
+        List<EquippedPlane> equippedPlanes = new ArrayList<>(equipmentForSquadron.getEquippedPlanes().values());
+        Set<Integer> selectedPlaneSerialNumbers = new HashSet<>();
+        while (selectedPlaneSerialNumbers.size() < numPlanes)
         {
-            
-            if (squadron.getCountry().isCountry(Country.BRITAIN))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            int index = RandomNumberGenerator.getRandom(equippedPlanes.size());
+            EquippedPlane selectedPlane = equippedPlanes.get(index);
+            selectedPlaneSerialNumbers.add(selectedPlane.getSerialNumber());
         }
-        else
-        {
-            return true;
-        }
+        return selectedPlaneSerialNumbers;
     }
 
+    private List<EquippedPlane> getSelectedPlanes(Set<Integer> selectedPlaneSerialNumbers)
+    {
+        List<EquippedPlane> selectedPlanes = new ArrayList<>();
+        for (Integer planeSerialNumber : selectedPlaneSerialNumbers)
+        {
+            EquippedPlane selectedPlane = equipmentForSquadron.getEquippedPlanes().get(planeSerialNumber);
+            selectedPlanes.add(selectedPlane);
+        }
+        return selectedPlanes;
+    }
+
+    private List<EquippedPlane> sortSelectedPlanes(List<EquippedPlane> selectedPlanes) throws PWCGException
+    {
+        List<EquippedPlane> sortedPlanes = PlaneSorter.sortEquippedPlanesByGoodness(selectedPlanes);
+        return sortedPlanes;
+    }
 }

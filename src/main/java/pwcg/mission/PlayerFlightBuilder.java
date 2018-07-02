@@ -35,16 +35,16 @@ public class PlayerFlightBuilder
         FlightFactory flightFactory = PWCGFlightFactory.createFlightFactory(campaign);
         if (flightType == FlightTypes.ANY)
         {
-            flightType = flightFactory.getFlightType(squad, true);
+            flightType = flightFactory.buildFlight(squad, true);
         }
         
         if (flightType == FlightTypes.FERRY)
         {
-            playerFlight = flightFactory.getFerryFlight(mission, squad, true);
+            playerFlight = flightFactory.buildFerryFlight(mission, squad, true);
         }
         else
         {
-            playerFlight = flightFactory.getFlight(mission, squad, flightType, true);
+            playerFlight = flightFactory.buildFlight(mission, squad, flightType, true);
         }
         
         triggerLinkedUnitCZFromMyFlight(playerFlight);

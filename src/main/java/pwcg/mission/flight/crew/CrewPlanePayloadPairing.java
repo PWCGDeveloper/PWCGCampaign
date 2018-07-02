@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 
 public class CrewPlanePayloadPairing
@@ -13,13 +14,14 @@ public class CrewPlanePayloadPairing
     public static final int NO_PAYLOAD_ASSIGNED = -1;
     
     private SquadronMember pilot;
-    private String planeType = NO_PLANE_ASSIGNED;
+    private EquippedPlane plane;
     private int payloadId = NO_PAYLOAD_ASSIGNED;
     private Map<String, String> modifications = new HashMap<>();
 
-    public CrewPlanePayloadPairing(SquadronMember pilot)
+    public CrewPlanePayloadPairing(SquadronMember pilot, EquippedPlane plane)
     {
         this.pilot = pilot;
+        this.plane = plane;
     }
     
     public SquadronMember getPilot()
@@ -27,14 +29,14 @@ public class CrewPlanePayloadPairing
         return pilot;
     }
 
-    public String getPlaneType()
+    public EquippedPlane getPlane()
     {
-        return planeType;
+        return plane;
     }
 
-    public void setPlaneType(String planeType)
+    public void setPlane(EquippedPlane plane)
     {
-        this.planeType = planeType;
+        this.plane = plane;
     }
 
     public int getPayloadId()
