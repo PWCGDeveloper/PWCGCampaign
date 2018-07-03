@@ -15,7 +15,7 @@ public class LocationIOJsonTest
     public void readJsonFranceTest() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
-        String directory = "E:\\PWCG\\workspacePWCGGradle\\PWCGCampaign\\RoFData\\Input\\France\\19160101\\";
+        String directory = System.getProperty("user.dir") + "\\RoFData\\Input\\France\\19160101\\";
         LocationSet locationSet = LocationIOJson.readJson(directory, "FrontLines");
         assert (locationSet.getLocations().size() > 0);
     }
@@ -24,7 +24,7 @@ public class LocationIOJsonTest
     public void readJsonChannelTest() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
-        String directory = "E:\\PWCG\\workspacePWCGGradle\\PWCGCampaign\\RoFData\\Input\\Channel\\19160101\\";
+        String directory = System.getProperty("user.dir") + "\\RoFData\\Input\\Channel\\19160101\\";
         LocationSet locationSet = LocationIOJson.readJson(directory, "FrontLines");
         assert (locationSet.getLocations().size() > 0);
     }
@@ -33,7 +33,7 @@ public class LocationIOJsonTest
     public void readJsonGaliciaTest() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
-        String directory = "E:\\PWCG\\workspacePWCGGradle\\PWCGCampaign\\RoFData\\Input\\Galicia\\19160101\\";
+        String directory = System.getProperty("user.dir") + "\\RoFData\\Input\\Galicia\\19160101\\";
         LocationSet locationSet = LocationIOJson.readJson(directory, "FrontLines");
         assert (locationSet.getLocations().size() > 0);
     }
@@ -42,7 +42,7 @@ public class LocationIOJsonTest
     public void readJsonMoscowTest() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        String directory = "E:\\PWCG\\workspacePWCGGradle\\PWCGCampaign\\BoSData\\Input\\Moscow\\19411001\\";
+        String directory = System.getProperty("user.dir") + "\\BoSData\\Input\\Moscow\\19411001\\";
         LocationSet locationSet = LocationIOJson.readJson(directory, "FrontLines");
         assert (locationSet.getLocations().size() > 0);
     }
@@ -51,7 +51,7 @@ public class LocationIOJsonTest
     public void readJsonStalingradTest() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        String directory = "E:\\PWCG\\workspacePWCGGradle\\PWCGCampaign\\BoSData\\Input\\Stalingrad\\19421011\\";
+        String directory = System.getProperty("user.dir") + "\\BoSData\\Input\\Stalingrad\\19421011\\";
         LocationSet locationSet = LocationIOJson.readJson(directory, "FrontLines");
         assert (locationSet.getLocations().size() > 0);
     }
@@ -60,7 +60,7 @@ public class LocationIOJsonTest
     public void readJsonKubanTest() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        String directory = "E:\\PWCG\\workspacePWCGGradle\\PWCGCampaign\\BoSData\\Input\\Kuban\\19420601\\";
+        String directory = System.getProperty("user.dir") + "\\BoSData\\Input\\Kuban\\19420601\\";
         LocationSet locationSet = LocationIOJson.readJson(directory, "FrontLines");
         assert (locationSet.getLocations().size() > 0);
     }
