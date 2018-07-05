@@ -96,6 +96,15 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
         this.name = planePosition.getName();
     }
 
+    public void initializeAirfieldFromDescriptor(AirfieldDescriptor desc)
+    {
+        this.position = desc.getPosition().copy();
+        this.orientation = desc.getOrientation().copy();
+        this.name = desc.getName();
+        for (Runway r : desc.runways)
+            this.runways.add(r.copy());
+    }
+
     public double getPlaneOrientation() 
     {
         // BoS does not use airfield orientation
@@ -170,5 +179,10 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 
 			return clone;
 		}
+	}
+
+	static public class AirfieldDescriptor extends PWCGLocation
+	{
+		public List<Runway> runways = new ArrayList<>();
 	}
 }
