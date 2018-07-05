@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Date;
 
 import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.ww2.airfield.BoSAirfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
@@ -14,6 +15,7 @@ public class FakeAirfield extends FixedPosition implements Cloneable
 {
     protected int callsign = 0;
     protected int callnum = 0;
+    protected String chart = "";
     protected int returnPlanes = 0;
     protected int hydrodrome = 0;
     protected int repairFriendlies = 0;
@@ -45,6 +47,8 @@ public class FakeAirfield extends FixedPosition implements Cloneable
         damageThreshold = 1;
         deleteAfterDeath = 1;
         
+        chart = ((BoSAirfield) airfield).getChart();
+
         populateEntity();
     }
     
@@ -73,6 +77,7 @@ public class FakeAirfield extends FixedPosition implements Cloneable
             writer.newLine();
             writer.write("    Callnum = " + callnum + ";");
             writer.newLine();
+            writer.write(chart);
             writer.write("    ReturnPlanes = " + returnPlanes + ";");
             writer.newLine();
             writer.write("    Hydrodrome = " + hydrodrome + ";");

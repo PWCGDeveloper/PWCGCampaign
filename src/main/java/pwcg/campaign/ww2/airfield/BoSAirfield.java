@@ -176,6 +176,50 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 		return null;
 	}
 
+	private String getChartPoint(int ptype, Coordinate point)
+	{
+		double xpos = point.getXPos() - getPosition().getXPos();
+		double ypos = point.getZPos() - getPosition().getZPos();
+
+		double angle = Math.toRadians(-this.getPlaneOrientation());
+
+		double rxpos = Math.cos(angle) * xpos - Math.sin(angle) * ypos;
+		double rypos = Math.cos(angle) * ypos + Math.sin(angle) * xpos;
+
+		String pos;
+		pos  = "      Point\n";
+		pos += "      {\n";
+		pos += "        Type = " + ptype + ";";
+		pos += "        X = " + Coordinate.format(rxpos) + ";";
+		pos += "        Y = " + Coordinate.format(rypos) + ";";
+		pos += "      }\n";
+		return pos;
+	}
+
+	public String getChart()
+	{
+		Runway runway = selectRunway();
+
+		if (runway == null)
+			return "";
+
+		String chart;
+
+		chart  = "    Chart\n";
+		chart += "    {\n";
+		chart += getChartPoint(0, runway.parkingLocation.getPosition());
+		for (Coordinate pos : runway.taxiToStart)
+			chart += getChartPoint(1, pos);
+		chart += getChartPoint(2, runway.startPos);
+		chart += getChartPoint(2, runway.endPos);
+		for (Coordinate pos : runway.taxiFromEnd)
+			chart += getChartPoint(1, pos);
+		chart += getChartPoint(0, runway.parkingLocation.getPosition());
+		chart += "    }\n";
+
+		return chart;
+	}
+
 	static public class Runway
 	{
 		public Coordinate startPos;
