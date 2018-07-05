@@ -16,7 +16,6 @@ import pwcg.mission.ground.vehicle.IVehicle;
 
 public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 {
-    private PWCGLocation planePosition = null;
 	private AirfieldObjects airfieldObjects = new AirfieldObjects();
 
 	public BoSAirfield ()
@@ -28,8 +27,6 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
     public BoSAirfield copy()
 	{
 		BoSAirfield clone = new BoSAirfield();
-		
-		clone.planePosition = this.planePosition;
 		
 	    clone.airfieldObjects = new AirfieldObjects();
 
@@ -86,8 +83,6 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
     @Override
     public void initializeAirfieldFromLocation(PWCGLocation planePosition)
     {
-        this.planePosition = planePosition;
-                        
         this.position = planePosition.getPosition().copy();
         this.orientation = planePosition.getOrientation().copy();
         this.name = planePosition.getName();
@@ -140,7 +135,7 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
     @Override
     public PWCGLocation getPlanePosition()
     {
-        return planePosition;
+        return this;
     }
         
 }
