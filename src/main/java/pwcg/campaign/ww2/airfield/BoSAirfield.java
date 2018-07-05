@@ -15,6 +15,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.DateUtils;
+import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.unittypes.GroundUnitSpawning;
 import pwcg.mission.ground.vehicle.IVehicle;
 
@@ -150,11 +151,31 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
     }
 
     @Override
-    public PWCGLocation getPlanePosition()
+    public PWCGLocation getPlanePosition() throws PWCGException
     {
-        return this;
+		Runway runway = selectRunway();
+
+		if (runway != null) {
+			double runwayOrientation = MathUtils.calcAngle(runway.startPos, runway.endPos);
+
+			PWCGLocation loc = new PWCGLocation();
+			loc.setPosition(runway.startPos);
+			loc.setOrientation(new Orientation(runwayOrientation));
+			return loc;
+		} else {
+			return this;
+		}
     }
         
+	// TODO: Select runway based on wind direction
+	private Runway selectRunway()
+	{
+		if (runways.size() > 0)
+			return runways.get(0);
+
+		return null;
+	}
+
 	static public class Runway
 	{
 		public Coordinate startPos;
