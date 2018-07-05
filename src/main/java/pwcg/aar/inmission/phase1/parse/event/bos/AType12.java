@@ -52,7 +52,10 @@ public class AType12 extends ATypeBase implements IAType12
 
         name = getString(line, "NAME:", " PID:");
         
-        pid = getString(line, "PID:", null);
+        if (line.contains(" POS("))
+            pid = getString(line, "PID:", " POS(");
+        else
+            pid = getString(line, "PID:", null);
     }
 
     @Override
