@@ -189,9 +189,9 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 		String pos;
 		pos  = "      Point\n";
 		pos += "      {\n";
-		pos += "        Type = " + ptype + ";";
-		pos += "        X = " + Coordinate.format(rxpos) + ";";
-		pos += "        Y = " + Coordinate.format(rypos) + ";";
+		pos += "        Type = " + ptype + ";\n";
+		pos += "        X = " + Coordinate.format(rxpos) + ";\n";
+		pos += "        Y = " + Coordinate.format(rypos) + ";\n";
 		pos += "      }\n";
 		return pos;
 	}
