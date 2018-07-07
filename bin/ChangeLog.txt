@@ -1,2 +1,0 @@
-Fixed crash on simple config
-Fixed crash on skin analysis (there are no configured skins for BoX, but it doesn't crash anymore)
