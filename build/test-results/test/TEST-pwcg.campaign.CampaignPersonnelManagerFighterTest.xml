@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.campaign.CampaignPersonnelManagerFighterTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:49:32" hostname="DigitalStorm-PC" time="1.343">
-  <properties/>
-  <testcase name="getSquadronMembersTest" classname="pwcg.campaign.CampaignPersonnelManagerFighterTest" time="0.446"/>
-  <testcase name="getCampaignMembersTest" classname="pwcg.campaign.CampaignPersonnelManagerFighterTest" time="0.455"/>
-  <testcase name="determineSquadronMemberStatusTest" classname="pwcg.campaign.CampaignPersonnelManagerFighterTest" time="0.441"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

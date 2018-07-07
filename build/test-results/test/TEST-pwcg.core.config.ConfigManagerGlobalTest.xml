@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.core.config.ConfigManagerGlobalTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:50:05" hostname="DigitalStorm-PC" time="0.348">
-  <properties/>
-  <testcase name="testGlobalConfigurationResetTest" classname="pwcg.core.config.ConfigManagerGlobalTest" time="0.322"/>
-  <testcase name="testGlobalConfigurationInitialize" classname="pwcg.core.config.ConfigManagerGlobalTest" time="0.0"/>
-  <testcase name="testGlobalConfigurationChangeParam" classname="pwcg.core.config.ConfigManagerGlobalTest" time="0.026"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.campaign.group.BoSAirfieldInEnemyTerritory" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:49:39" hostname="DigitalStorm-PC" time="5.524">
-  <properties/>
-  <testcase name="airfieldCheckKubanTest" classname="pwcg.campaign.group.BoSAirfieldInEnemyTerritory" time="3.77"/>
-  <testcase name="airfieldCheckStalingradTest" classname="pwcg.campaign.group.BoSAirfieldInEnemyTerritory" time="0.72"/>
-  <testcase name="airfieldCheckMoscowTest" classname="pwcg.campaign.group.BoSAirfieldInEnemyTerritory" time="1.034"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

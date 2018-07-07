@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.aar.outofmission.phase1.elapsedtime.ElapsedTimeEventGeneratorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:38" hostname="DigitalStorm-PC" time="0.729">
-  <properties/>
-  <testcase name="squadronMove" classname="pwcg.aar.outofmission.phase1.elapsedtime.ElapsedTimeEventGeneratorTest" time="0.241"/>
-  <testcase name="noSquadronMoveOrEndOfWar" classname="pwcg.aar.outofmission.phase1.elapsedtime.ElapsedTimeEventGeneratorTest" time="0.244"/>
-  <testcase name="endOfWar" classname="pwcg.aar.outofmission.phase1.elapsedtime.ElapsedTimeEventGeneratorTest" time="0.244"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

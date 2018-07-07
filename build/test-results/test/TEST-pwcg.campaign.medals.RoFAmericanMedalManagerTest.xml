@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.campaign.medals.RoFAmericanMedalManagerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:49:53" hostname="DigitalStorm-PC" time="1.059">
-  <properties/>
-  <testcase name="testMoHFail" classname="pwcg.campaign.medals.RoFAmericanMedalManagerTest" time="0.259"/>
-  <testcase name="testImages" classname="pwcg.campaign.medals.RoFAmericanMedalManagerTest" time="0.496"/>
-  <testcase name="testAmericanMedals" classname="pwcg.campaign.medals.RoFAmericanMedalManagerTest" time="0.303"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

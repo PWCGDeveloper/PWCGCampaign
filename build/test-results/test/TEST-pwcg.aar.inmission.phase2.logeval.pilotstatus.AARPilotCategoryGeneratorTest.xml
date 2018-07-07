@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotCategoryGeneratorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:15" hostname="DigitalStorm-PC" time="0.728">
-  <properties/>
-  <testcase name="testPilotIsAI" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotCategoryGeneratorTest" time="0.241"/>
-  <testcase name="testPilotIsPlayer" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotCategoryGeneratorTest" time="0.241"/>
-  <testcase name="testPilotIsSquadronMember" classname="pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotCategoryGeneratorTest" time="0.246"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

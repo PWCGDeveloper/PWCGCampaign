@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.aar.outofmission.phase3.tabulate.ui.AARNewsPanelEventTabulatorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:49:22" hostname="DigitalStorm-PC" time="2.09">
-  <properties/>
-  <testcase name="testMergedAcesKilled" classname="pwcg.aar.outofmission.phase3.tabulate.ui.AARNewsPanelEventTabulatorTest" time="0.703"/>
-  <testcase name="testMergedAcesKilledOneDuplicate" classname="pwcg.aar.outofmission.phase3.tabulate.ui.AARNewsPanelEventTabulatorTest" time="0.697"/>
-  <testcase name="testMergedAcesKilledOneNotNewsworthy" classname="pwcg.aar.outofmission.phase3.tabulate.ui.AARNewsPanelEventTabulatorTest" time="0.689"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

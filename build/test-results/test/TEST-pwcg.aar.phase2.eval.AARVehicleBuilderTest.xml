@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.aar.phase2.eval.AARVehicleBuilderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-09-10T23:49:06" hostname="DigitalStorm-PC" time="0.002">
-  <properties/>
-  <testcase name="testSortVehicles" classname="pwcg.aar.phase2.eval.AARVehicleBuilderTest" time="0.002"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

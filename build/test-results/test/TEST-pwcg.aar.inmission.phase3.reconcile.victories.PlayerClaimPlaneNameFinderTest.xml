@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.aar.inmission.phase3.reconcile.victories.PlayerClaimPlaneNameFinderTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:29" hostname="DigitalStorm-PC" time="0.731">
-  <properties/>
-  <testcase name="testPlaneNameNotFound" classname="pwcg.aar.inmission.phase3.reconcile.victories.PlayerClaimPlaneNameFinderTest" time="0.239"/>
-  <testcase name="testPlaneNameFoundByDeclaration" classname="pwcg.aar.inmission.phase3.reconcile.victories.PlayerClaimPlaneNameFinderTest" time="0.249"/>
-  <testcase name="testPlaneNameFoundByVictoryResult" classname="pwcg.aar.inmission.phase3.reconcile.victories.PlayerClaimPlaneNameFinderTest" time="0.243"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

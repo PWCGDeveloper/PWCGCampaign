@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.aar.outofmission.phase2.transfer.SquadronTransferHandlerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:49:19" hostname="DigitalStorm-PC" time="0.938">
-  <properties/>
-  <testcase name="testTransfersForSucess" classname="pwcg.aar.outofmission.phase2.transfer.SquadronTransferHandlerTest" time="0.499"/>
-  <testcase name="testTransfersInForLostSquadronMembers" classname="pwcg.aar.outofmission.phase2.transfer.SquadronTransferHandlerTest" time="0.439"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.aar.awards.CampaignMemberAwardsGeneratorOutOfMissionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:01" hostname="DigitalStorm-PC" time="2.236">
-  <properties/>
-  <testcase name="testMedalAwardedForVictories" classname="pwcg.aar.awards.CampaignMemberAwardsGeneratorOutOfMissionTest" time="0.754"/>
-  <testcase name="testMissionsFlownIncreased" classname="pwcg.aar.awards.CampaignMemberAwardsGeneratorOutOfMissionTest" time="0.731"/>
-  <testcase name="testPromotionAwardedForVictoriesAndMissionsFlown" classname="pwcg.aar.awards.CampaignMemberAwardsGeneratorOutOfMissionTest" time="0.751"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

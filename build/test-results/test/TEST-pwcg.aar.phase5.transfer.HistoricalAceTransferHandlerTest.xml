@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.aar.phase5.transfer.HistoricalAceTransferHandlerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-09-10T23:49:35" hostname="DigitalStorm-PC" time="2.913">
-  <properties/>
-  <testcase name="testDayBeforeKarlSchaferTransferToJasta28" classname="pwcg.aar.phase5.transfer.HistoricalAceTransferHandlerTest" time="0.391"/>
-  <testcase name="testKarlSchaferTransferToJasta28" classname="pwcg.aar.phase5.transfer.HistoricalAceTransferHandlerTest" time="2.522"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

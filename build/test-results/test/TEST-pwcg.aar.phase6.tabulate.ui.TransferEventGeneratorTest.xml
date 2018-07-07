@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.aar.phase6.tabulate.ui.TransferEventGeneratorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-09-10T23:49:41" hostname="DigitalStorm-PC" time="0.444">
-  <properties/>
-  <testcase name="testTransferInEvent" classname="pwcg.aar.phase6.tabulate.ui.TransferEventGeneratorTest" time="0.214"/>
-  <testcase name="testInSquadronAceUpdate" classname="pwcg.aar.phase6.tabulate.ui.TransferEventGeneratorTest" time="0.229"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

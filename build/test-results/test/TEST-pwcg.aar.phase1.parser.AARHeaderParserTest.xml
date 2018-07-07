@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.aar.phase1.parser.AARHeaderParserTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-09-10T23:49:05" hostname="DigitalStorm-PC" time="0.004">
-  <properties/>
-  <testcase name="testSuccessfulHeaderParse" classname="pwcg.aar.phase1.parser.AARHeaderParserTest" time="0.004"/>
-  <testcase name="testFailedHeaderParse" classname="pwcg.aar.phase1.parser.AARHeaderParserTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[AType0 line is:T:0 AType:0 GDate:1916.10.14 GTime:9:30:0 MFile:Missions/Patrik Schorner 1916-10-14.mission MID: GType:0 CNTRS:0:0,101:1,102:1,103:1,104:1,105:1,501:2,502:2,600:3 SETTS:01010100100000010000000110 MODS:1 PRESET:0
-]]></system-err>
-</testsuite>

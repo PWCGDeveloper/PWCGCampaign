@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.aar.MissionResultLogFileCleanerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:37" hostname="DigitalStorm-PC" time="0.878">
-  <properties/>
-  <testcase name="testCleanMissionLogsNotEnabled" classname="pwcg.aar.MissionResultLogFileCleanerTest" time="0.367"/>
-  <testcase name="testCleanMissionLogsNoFiles" classname="pwcg.aar.MissionResultLogFileCleanerTest" time="0.268"/>
-  <testcase name="testCleanMissionLogs" classname="pwcg.aar.MissionResultLogFileCleanerTest" time="0.243"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

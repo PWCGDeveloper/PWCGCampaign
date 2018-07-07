@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.aar.outofmission.phase3.tabulate.ui.AARPromotionPanelEventTabulatorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:49:26" hostname="DigitalStorm-PC" time="0.692">
-  <properties/>
-  <testcase name="testPromotionsAwarded" classname="pwcg.aar.outofmission.phase3.tabulate.ui.AARPromotionPanelEventTabulatorTest" time="0.692"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

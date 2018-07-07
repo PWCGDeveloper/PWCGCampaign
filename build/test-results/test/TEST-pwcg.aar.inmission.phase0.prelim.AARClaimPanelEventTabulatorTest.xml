@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.aar.inmission.phase0.prelim.AARClaimPanelEventTabulatorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:48:03" hostname="DigitalStorm-PC" time="0.991">
-  <properties/>
-  <testcase name="frenchMissionOnChannel" classname="pwcg.aar.inmission.phase0.prelim.AARClaimPanelEventTabulatorTest" time="0.49"/>
-  <testcase name="germanMissionInFrance" classname="pwcg.aar.inmission.phase0.prelim.AARClaimPanelEventTabulatorTest" time="0.5"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

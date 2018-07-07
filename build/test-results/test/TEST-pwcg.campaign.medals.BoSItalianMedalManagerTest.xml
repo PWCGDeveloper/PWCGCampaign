@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.campaign.medals.BoSItalianMedalManagerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:49:52" hostname="DigitalStorm-PC" time="0.513">
-  <properties/>
-  <testcase name="testItalianMedals" classname="pwcg.campaign.medals.BoSItalianMedalManagerTest" time="0.169"/>
-  <testcase name="testKCDiamondsFail" classname="pwcg.campaign.medals.BoSItalianMedalManagerTest" time="0.151"/>
-  <testcase name="testImages" classname="pwcg.campaign.medals.BoSItalianMedalManagerTest" time="0.193"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

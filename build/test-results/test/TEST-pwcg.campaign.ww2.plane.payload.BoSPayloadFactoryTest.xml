@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.campaign.ww2.plane.payload.BoSPayloadFactoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-11-24T16:50:04" hostname="DigitalStorm-PC" time="0.156">
-  <properties/>
-  <testcase name="validatePayloadsForAllPlanes" classname="pwcg.campaign.ww2.plane.payload.BoSPayloadFactoryTest" time="0.156"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="pwcg.campaign.personnel.InitialSquadronStafferTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-06-22T19:40:06" hostname="DigitalStorm-PC" time="31.278">
-  <properties/>
-  <testcase name="generateReconPersonnelTest" classname="pwcg.campaign.personnel.InitialSquadronStafferTest" time="31.278"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
