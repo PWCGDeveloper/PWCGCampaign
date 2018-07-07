@@ -38,7 +38,7 @@ public interface IAirfield extends IFixedPosition
     
     public Coordinate getPosition();
 
-    public PWCGLocation getPlanePosition();
+    public PWCGLocation getPlanePosition() throws PWCGException;
     
     public Date getStartDate();
 }
