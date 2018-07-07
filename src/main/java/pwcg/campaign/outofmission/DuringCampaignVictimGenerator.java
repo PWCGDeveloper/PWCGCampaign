@@ -10,6 +10,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -26,10 +27,10 @@ public class DuringCampaignVictimGenerator implements IVictimGenerator
     private Map<Integer, SquadronMember> highRanks = new HashMap<>();
     private Map<Integer, SquadronMember> all = new HashMap<>();
 
-    public DuringCampaignVictimGenerator (Campaign campaign, Squadron victorSquadron) throws PWCGException
+    public DuringCampaignVictimGenerator (Campaign campaign, Squadron victimSquadron) throws PWCGException
     {
         this.campaign = campaign;
-        this.victimSquadron = victorSquadron;
+        this.victimSquadron = victimSquadron;
     }
 
     public SquadronMember generateVictimAiCrew() throws PWCGException 
@@ -144,6 +145,12 @@ public class DuringCampaignVictimGenerator implements IVictimGenerator
     	}
     	
     	return null;
+    }
+
+    public EquippedPlane generateVictimPlane() throws PWCGException 
+    {        
+        EquippedPlane victimPlane = campaign.getEquipmentManager().getAnyActivePlaneFromSquadron(victimSquadron.getSquadronId());
+        return victimPlane;
     }
 
 }

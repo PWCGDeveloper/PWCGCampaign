@@ -7,7 +7,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IMissionFile;
-import pwcg.campaign.context.PWCGDirectoryManager;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.config.ConfigItemKeys;
@@ -176,7 +176,7 @@ public abstract class MissionFileWriter implements IMissionFile
 		String filepath = "..\\Data\\Missions\\" + fileName;
 		if (ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.UseCoopKey) == 1)
 		{
-			filepath = PWCGDirectoryManager.getInstance().getSimulatorDataDir() + "Multiplayer\\Cooperative\\" + fileName;
+			filepath = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir() + "Multiplayer\\Cooperative\\" + fileName;
 
 		}
 		

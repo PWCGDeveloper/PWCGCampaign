@@ -7,6 +7,7 @@ import pwcg.aar.data.AARLogEvents;
 import pwcg.aar.outofmission.phase1.elapsedtime.ElapsedTimeEventGenerator;
 import pwcg.aar.outofmission.phase1.elapsedtime.ElapsedTimeEvents;
 import pwcg.aar.ui.events.model.PilotStatusEvent;
+import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 
@@ -27,13 +28,14 @@ public class CampaignLogGenerator
 		createPilotVictoryEvents();
 		createPilotMedalEvents();
 		createPilotPromotionEvents();
-		createPilotLossEvents();
+        createPilotLossEvents();
+        createEquipmentLossEvents();
 		createTransfersEvents();
 		createElapsedTimeEvents();
 		
 		return campaignLogEvents;
 	}
-	
+
     private void createElapsedTimeEvents() throws PWCGException
 	{
     	if (aarContext.getNewDate() != null)
@@ -71,6 +73,11 @@ public class CampaignLogGenerator
     private void createPilotLossEvents() throws PWCGException
     {
         campaignLogEvents.addEvents(new ArrayList<PilotStatusEvent>(aarContext.getUiDebriefData().getPilotLossPanelData().getSquadMembersLost().values()));
+    }
+    
+    private void createEquipmentLossEvents()
+    {
+        campaignLogEvents.addEvents(new ArrayList<PlaneStatusEvent>(aarContext.getUiDebriefData().getEquipmentLossPanelData().getEquipmentLost().values()));
     }
 
     private void createTransfersEvents() throws PWCGException

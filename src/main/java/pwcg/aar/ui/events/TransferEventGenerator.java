@@ -3,7 +3,7 @@ package pwcg.aar.ui.events;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.aar.outofmission.phase2.transfer.TransferRecord;
+import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;

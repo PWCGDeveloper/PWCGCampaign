@@ -3,6 +3,7 @@ package pwcg.aar.tabulate.debrief;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.UIDebriefData;
 import pwcg.aar.ui.display.model.AARAceLeavePanelData;
+import pwcg.aar.ui.display.model.AAREquipmentLossPanelData;
 import pwcg.aar.ui.display.model.AARMedalPanelData;
 import pwcg.aar.ui.display.model.AARNewsPanelData;
 import pwcg.aar.ui.display.model.AARPilotLossPanelData;
@@ -29,6 +30,7 @@ public class AARDebriefTabulateCoordinator
         tabulateMedals();        
         tabulateNews();
         tabulatePilotLosses();
+        tabulateEquipmentLosses();
         tabulatePromotions();        
         tabulateTransfers();
         
@@ -54,6 +56,13 @@ public class AARDebriefTabulateCoordinator
         PilotLossPanelEventTabulator pilotLossPanelEventTabulator = new PilotLossPanelEventTabulator(campaign, aarContext);
         AARPilotLossPanelData pilotLossPanelData = pilotLossPanelEventTabulator.tabulateForAARPilotLossPanel();
         uiDebriefData.setPilotLossPanelData(pilotLossPanelData);
+    }
+
+    private void tabulateEquipmentLosses() throws PWCGException
+    {
+        EquipmentLossPanelEventTabulator equipmentLossPanelEventTabulator = new EquipmentLossPanelEventTabulator(campaign, aarContext);
+        AAREquipmentLossPanelData equipmentLossPanelData = equipmentLossPanelEventTabulator.tabulateForAAREquipmentLossPanel();
+        uiDebriefData.setEquipmentLossPanelData(equipmentLossPanelData);        
     }
 
     private void tabulateNews() throws PWCGException

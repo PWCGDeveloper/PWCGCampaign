@@ -5,6 +5,7 @@ public class PwcgGeneratedMissionPlaneData
     private String aircraftType;
     private Integer squadronId;
     private Integer pilotSerialNumber;
+    private Integer planeSerialNumber;
     private String pilotName;
 
     public PwcgGeneratedMissionPlaneData ()
@@ -39,6 +40,16 @@ public class PwcgGeneratedMissionPlaneData
     public void setPilotSerialNumber(Integer pilotSerialNumber)
     {
         this.pilotSerialNumber = pilotSerialNumber;
+    }
+
+    public Integer getPlaneSerialNumber()
+    {
+        return planeSerialNumber;
+    }
+
+    public void setPlaneSerialNumber(Integer planeSerialNumber)
+    {
+        this.planeSerialNumber = planeSerialNumber;
     }
 
     public String getPilotName()

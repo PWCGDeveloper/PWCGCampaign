@@ -21,6 +21,7 @@ public class MissionPlaneGenerator
                 PwcgGeneratedMissionPlaneData missionPlaneData = new PwcgGeneratedMissionPlaneData();
                 missionPlaneData.setPilotName(plane.getPilot().getName());
                 missionPlaneData.setPilotSerialNumber(plane.getPilot().getSerialNumber());
+                missionPlaneData.setPlaneSerialNumber(plane.getSerialNumber());
                 missionPlaneData.setSquadronId(flight.getSquadron().getSquadronId());
                 missionPlaneData.setAircraftType(plane.getType());
                 

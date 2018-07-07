@@ -36,7 +36,7 @@ public class EscortPackage extends FlightPackage
         
         PlayerEscortedFlightBuilder playerEscortedFlightBuilder = new PlayerEscortedFlightBuilder(campaign, mission, squadron, friendlyBombSquadron);
         
-        Coordinate targetCoordinates = enemyGroundUnits.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide(campaign.getDate()));
+        Coordinate targetCoordinates = enemyGroundUnits.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
         Flight flightEscortedByPlayer = playerEscortedFlightBuilder.createEscortedFlight(targetCoordinates);
         flightEscortedByPlayer.linkGroundUnitsToFlight(enemyGroundUnits);
 

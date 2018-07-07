@@ -5,7 +5,7 @@ import java.util.TreeMap;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IAirfieldConfiguration;
-import pwcg.campaign.context.PWCGDirectoryManager;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.io.json.LocationIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.LocationSet;
@@ -19,7 +19,7 @@ public class BoSAirfieldConfiguration implements IAirfieldConfiguration
         
         airfields.clear();
 
-	    String pwcgInputDir = PWCGDirectoryManager.getInstance().getPwcgInputDir() + mapName + "\\";
+	    String pwcgInputDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\";
         LocationSet airfieldLocations = LocationIOJson.readJson(pwcgInputDir, AIRFIELD_LOCATION_FILE_NAME);
         for (PWCGLocation location : airfieldLocations.getLocations())
         {

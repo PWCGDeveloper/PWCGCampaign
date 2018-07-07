@@ -1,6 +1,7 @@
 package pwcg.aar.data;
 
 import pwcg.aar.ui.display.model.AARAceLeavePanelData;
+import pwcg.aar.ui.display.model.AAREquipmentLossPanelData;
 import pwcg.aar.ui.display.model.AARMedalPanelData;
 import pwcg.aar.ui.display.model.AARNewsPanelData;
 import pwcg.aar.ui.display.model.AARPilotLossPanelData;
@@ -13,6 +14,7 @@ public class UIDebriefData
     private AARMedalPanelData medalPanelData = new AARMedalPanelData();
     private AARNewsPanelData newsPanelData = new AARNewsPanelData();
     private AARPilotLossPanelData pilotLossPanelData = new AARPilotLossPanelData();
+    private AAREquipmentLossPanelData equipmentLossPanelData = new AAREquipmentLossPanelData();
     private AARPromotionPanelData promotionPanelData = new AARPromotionPanelData();
     private TransferPanelData transferPanelData = new TransferPanelData();
 
@@ -23,11 +25,12 @@ public class UIDebriefData
         newsPanelData.getAcesKilledDuringElapsedTime().addAll(source.getNewsPanelData().getAcesKilledDuringElapsedTime());
         newsPanelData.getNewspaperEventsDuringElapsedTime().addAll(source.getNewsPanelData().getNewspaperEventsDuringElapsedTime());
         pilotLossPanelData.getSquadMembersLost().putAll(source.getPilotLossPanelData().getSquadMembersLost());
+        equipmentLossPanelData.getEquipmentLost().putAll(source.getEquipmentLossPanelData().getEquipmentLost());
         promotionPanelData.getPromotionEventsDuringElapsedTime().addAll(source.getPromotionPanelData().getPromotionEventsDuringElapsedTime());
         transferPanelData.getTransferIntoSquadron().addAll(source.getTransferPanelData().getTransferIntoSquadron());
         transferPanelData.getTransferOutOfSquadron().addAll(source.getTransferPanelData().getTransferOutOfSquadron());
     }
-    
+
     public AARAceLeavePanelData getAceLeavePanelData()
     {
         return aceLeavePanelData;
@@ -61,6 +64,16 @@ public class UIDebriefData
     public AARPilotLossPanelData getPilotLossPanelData()
     {
         return pilotLossPanelData;
+    }
+    
+    public AAREquipmentLossPanelData getEquipmentLossPanelData()
+    {
+        return equipmentLossPanelData;
+    }
+
+    public void setEquipmentLossPanelData(AAREquipmentLossPanelData equipmentLossPanelData)
+    {
+        this.equipmentLossPanelData = equipmentLossPanelData;
     }
 
     public void setPilotLossPanelData(AARPilotLossPanelData pilotLossPanelData)

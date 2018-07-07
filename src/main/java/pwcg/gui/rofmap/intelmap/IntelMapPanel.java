@@ -49,7 +49,7 @@ public class IntelMapPanel extends MapPanelBase
 	    Date date = PWCGContextManager.getInstance().getCampaign().getDate();
 
 		squadronPoints.clear();
-		List<Squadron> allSquadrons =  PWCGContextManager.getInstance().getSquadronManager().getAllActiveSquadrons(date);
+		List<Squadron> allSquadrons =  PWCGContextManager.getInstance().getSquadronManager().getActiveSquadrons(date);
 		for (Squadron squadron : allSquadrons)
 		{
 			addSquadronPoint(squadron);

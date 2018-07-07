@@ -37,7 +37,7 @@ public class AARCoordinatorInMission
     private void phase3ResolveMissionResultsAndPlayerClaims(PlayerDeclarations playerDeclarations) throws PWCGException
     {
         AARPhase3ReconcileCoordinator phase3Coordinator = new AARPhase3ReconcileCoordinator(campaign, aarContext);
-        ReconciledInMissionData reconciledInMissionData = phase3Coordinator.performAARPhaseReconcileLogsWithAAR(playerDeclarations);
+        ReconciledInMissionData reconciledInMissionData = phase3Coordinator.reconcileLogsWithAAR(playerDeclarations);
         aarContext.setReconciledInMissionData(reconciledInMissionData);
     }
 }

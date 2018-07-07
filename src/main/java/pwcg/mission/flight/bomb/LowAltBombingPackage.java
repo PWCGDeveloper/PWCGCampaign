@@ -30,7 +30,7 @@ public class LowAltBombingPackage extends FlightPackage
     public LowAltBombingFlight createPackageTacticalTarget () throws PWCGException 
     {
         GroundUnitCollection groundUnitCollection = createSpecificGroundUnitsForFlight(TacticalTarget.TARGET_ASSAULT);
-        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide(campaign.getDate()));
+        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
         
         LowAltBombingFlight bombingFlight = makeBombingFlight(targetCoordinates);
         bombingFlight.linkGroundUnitsToFlight(groundUnitCollection);

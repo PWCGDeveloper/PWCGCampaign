@@ -24,7 +24,7 @@ public class CampaignUpdateNewSquadronStaffer
     public List<Integer> staffNewSquadrons() throws PWCGException
     {
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
-        for (Squadron squadron : squadronManager.getAllActiveSquadrons(campaign.getDate()))
+        for (Squadron squadron : squadronManager.getActiveSquadrons(campaign.getDate()))
         {
             if (campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()) == null)
             {

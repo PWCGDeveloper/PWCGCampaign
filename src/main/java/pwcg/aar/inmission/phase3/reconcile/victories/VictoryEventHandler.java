@@ -30,7 +30,7 @@ public class VictoryEventHandler
             if (resultVictory.getVictor() instanceof LogPlane)
             {
                 LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
-    			SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(victorPlanePlane.getSerialNumber());
+    			SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(victorPlanePlane.getPilotSerialNumber());
     			if (pilot != null)
     			{			    
                     addVictoryForPilot(resultVictory, pilot);

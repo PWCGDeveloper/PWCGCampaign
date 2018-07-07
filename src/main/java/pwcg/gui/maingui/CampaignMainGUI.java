@@ -22,7 +22,6 @@ import javax.swing.UIManager;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGDirectoryManager;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.utils.AutoStart;
 import pwcg.campaign.utils.PlanesOwnedManager;
@@ -260,7 +259,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 
 	private boolean validateInstallDirectory()
 	{
-		String missionFilepath = PWCGDirectoryManager.getInstance().getSimulatorDataDir() + "Missions";
+		String missionFilepath = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir() + "Missions";
 		try
 		{
 			File file = new File(missionFilepath);

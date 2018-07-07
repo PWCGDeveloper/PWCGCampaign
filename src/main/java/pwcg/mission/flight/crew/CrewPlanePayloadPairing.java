@@ -71,4 +71,13 @@ public class CrewPlanePayloadPairing
 			this.modifications.remove(modification);
 		}
 	}
+
+    public void setModifications(List<String> sourceModifications)
+    {
+        this.modifications.clear();
+        for (String sourceModification : sourceModifications)
+        {
+            addModification(sourceModification);
+        }
+    }
 }

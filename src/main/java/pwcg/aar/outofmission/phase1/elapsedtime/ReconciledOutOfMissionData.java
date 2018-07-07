@@ -1,33 +1,36 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
+import pwcg.aar.data.AAREquipmentLosses;
 import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.aar.data.AARPersonnelLosses;
-import pwcg.aar.outofmission.phase2.transfer.AARTransferData;
+import pwcg.aar.outofmission.phase2.resupply.AARResupplyData;
 
 public class ReconciledOutOfMissionData
 {
-    private AARPersonnelLosses personnelLosses = new AARPersonnelLosses();
+    private AARPersonnelLosses personnelLossesOutOfMission = new AARPersonnelLosses();
+    private AAREquipmentLosses equipmentLossesOutOfMission = new AAREquipmentLosses();
     private HistoricalAceAwards historicalAceEvents = new HistoricalAceAwards();
     private AARPersonnelAwards personnelAwards = new AARPersonnelAwards();
     private ElapsedTimeEvents elapsedTimeEvents = new ElapsedTimeEvents();
-    private AARTransferData transferData = new AARTransferData();
+    private AARResupplyData resupplyData = new AARResupplyData();
     
     public void merge(ReconciledOutOfMissionData source)
     {
-        personnelLosses.merge(source.getPersonnelLosses());
+        personnelLossesOutOfMission.merge(source.getPersonnelLossesOutOfMission());
+        equipmentLossesOutOfMission.merge(source.getEquipmentLossesOutOfMission());
         personnelAwards.merge(source.getPersonnelAwards());
-        transferData.merge(source.getTransferData());
+        resupplyData.merge(source.getResupplyData());
         historicalAceEvents.merge(source.getHistoricalAceEvents());
     }
 
-    public AARPersonnelLosses getPersonnelLosses()
+    public AARPersonnelLosses getPersonnelLossesOutOfMission()
     {
-        return personnelLosses;
+        return personnelLossesOutOfMission;
     }
 
-    public void setPersonnelResults(AARPersonnelLosses personnelResults)
+    public AAREquipmentLosses getEquipmentLossesOutOfMission()
     {
-        this.personnelLosses = personnelResults;
+        return equipmentLossesOutOfMission;
     }
 
     public HistoricalAceAwards getHistoricalAceEvents()
@@ -35,19 +38,9 @@ public class ReconciledOutOfMissionData
         return historicalAceEvents;
     }
 
-    public void setHistoricalAceEvents(HistoricalAceAwards historicalAceEvents)
-    {
-        this.historicalAceEvents = historicalAceEvents;
-    }
-
     public AARPersonnelAwards getPersonnelAwards()
     {
         return personnelAwards;
-    }
-
-    public void setCampaignMemberAwards(AARPersonnelAwards campaignMemberAwards)
-    {
-        this.personnelAwards = campaignMemberAwards;
     }
 
     public ElapsedTimeEvents getElapsedTimeEvents()
@@ -60,13 +53,13 @@ public class ReconciledOutOfMissionData
         this.elapsedTimeEvents = elapsedTimeEvents;
     }
 
-    public AARTransferData getTransferData()
+    public AARResupplyData getResupplyData()
     {
-        return transferData;
+        return resupplyData;
     }
 
-    public void setTransferData(AARTransferData transferData)
+    public void setResupplyData(AARResupplyData resupplyData)
     {
-        this.transferData = transferData;
+        this.resupplyData = resupplyData;
     }
 }

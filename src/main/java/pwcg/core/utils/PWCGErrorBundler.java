@@ -12,7 +12,6 @@ import java.util.zip.ZipOutputStream;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGDirectoryManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger.LogLevel;
 
@@ -131,7 +130,7 @@ public class PWCGErrorBundler
 	 */
 	public void copyMissionFiles() throws IOException, PWCGException
 	{
-		File programDataDir = new File(PWCGDirectoryManager.getInstance().getSimulatorDataDir()); 
+		File programDataDir = new File(PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir()); 
 		File targetDataDir = new File(createTargetDirDataPath()); 
 		
 		if (!programDataDir.exists())
@@ -179,7 +178,7 @@ public class PWCGErrorBundler
 	 */
 	private String createErrorDirPath()
 	{
-		String errorDirPath = PWCGDirectoryManager.getInstance().getPwcgRootDir()  + ERROR_DIR_ROOT; 
+		String errorDirPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgRootDir()  + ERROR_DIR_ROOT; 
 		
 		return errorDirPath;
 	}
@@ -192,7 +191,7 @@ public class PWCGErrorBundler
 	 */
 	private String createTargetDirPath() 
 	{
-		String campaignErrorDirPath = PWCGDirectoryManager.getInstance().getPwcgRootDir() + ERROR_DIR_ROOT + "\\" + targetErrorFileName; 
+		String campaignErrorDirPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgRootDir() + ERROR_DIR_ROOT + "\\" + targetErrorFileName; 
 		return campaignErrorDirPath;
 	}
 
@@ -204,7 +203,7 @@ public class PWCGErrorBundler
 	 */
 	private String createTargetDirDataPath() 
 	{
-		String campaignTargetDataDirPath = PWCGDirectoryManager.getInstance().getPwcgRootDir() + ERROR_DIR_ROOT + "\\" + targetErrorFileName + "\\Data"; 
+		String campaignTargetDataDirPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgRootDir() + ERROR_DIR_ROOT + "\\" + targetErrorFileName + "\\Data"; 
 		return campaignTargetDataDirPath;
 	}
 		
@@ -217,7 +216,7 @@ public class PWCGErrorBundler
 	private String createTargetDirCampaignPath() 
 	{
 		Campaign campaign  = PWCGContextManager.getInstance().getCampaign();
-		String errorDateDir = PWCGDirectoryManager.getInstance().getPwcgRootDir() + ERROR_DIR_ROOT + "\\" + targetErrorFileName + "\\" + campaign.getName();
+		String errorDateDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgRootDir() + ERROR_DIR_ROOT + "\\" + targetErrorFileName + "\\" + campaign.getName();
 		return errorDateDir;
 	}
 
@@ -230,7 +229,7 @@ public class PWCGErrorBundler
 	{
 		// Create the specific error dir for this occurrence
 		Campaign campaign  = PWCGContextManager.getInstance().getCampaign();
-		String campaignDirPath = PWCGDirectoryManager.getInstance().getPwcgCampaignsDir() + campaign.getName(); 
+		String campaignDirPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getName(); 
 		
 		return campaignDirPath;
 	}

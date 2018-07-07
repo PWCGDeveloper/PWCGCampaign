@@ -78,8 +78,8 @@ public class AiDeclarationResolutionRandomTest
         randomVictories.clear();
         campaignMembersInmission.clear();
 
-        playerVictor.setSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
-        aiVictor.setSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
+        playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
+        aiVictor.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
 
         createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1000, UnknownVictoryAssignments.RANDOM_ASSIGNMENT);
         createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001, UnknownVictoryAssignments.UNKNOWN_ASSIGNMENT);
@@ -105,7 +105,7 @@ public class AiDeclarationResolutionRandomTest
     private void createVictory(Integer victimSerialNumber, UnknownVictoryAssignments unknownVictoryAssignment)
     {        
         LogPlane victim = new LogPlane();
-        victim.setSerialNumber(victimSerialNumber);
+        victim.setPilotSerialNumber(victimSerialNumber);
         
         LogVictory resultVictory = new LogVictory();
         resultVictory.setVictim(victim);

@@ -22,28 +22,35 @@ public class AARCampaignUpdateTabulator
     {        
         campaignUpdateData.setNewDate(aarContext.getNewDate());        
         tabulatePersonnelAwards();
-        tabulatePersonnelPersonnelChanges();
+        tabulatePersonnelChanges();
+        tabulateEquipmentChanges();
         tabulateTransfers();
         addEventsToCampaignUpdateData();
         
         return campaignUpdateData;
     }
-    
+
     private void tabulatePersonnelAwards()
     {
         campaignUpdateData.getPersonnelAwards().mergeVictories(aarContext.getReconciledInMissionData().getReconciledVictoryData().getVictoryAwardsByPilot());
         campaignUpdateData.getPersonnelAwards().merge(aarContext.getReconciledOutOfMissionData().getPersonnelAwards());
     }
     
-    private void tabulatePersonnelPersonnelChanges()
+    private void tabulatePersonnelChanges()
     {
-        campaignUpdateData.getPersonnelLosses().merge(aarContext.getReconciledInMissionData().getPersonnelLosses());
-        campaignUpdateData.getPersonnelLosses().merge(aarContext.getReconciledOutOfMissionData().getPersonnelLosses());
+        campaignUpdateData.getPersonnelLosses().merge(aarContext.getReconciledInMissionData().getPersonnelLossesInMission());
+        campaignUpdateData.getPersonnelLosses().merge(aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission());
     }
     
+    private void tabulateEquipmentChanges()
+    {
+        campaignUpdateData.getEquipmentLosses().merge(aarContext.getReconciledInMissionData().getEquipmentLossesInMission());
+        campaignUpdateData.getEquipmentLosses().merge(aarContext.getReconciledOutOfMissionData().getEquipmentLossesOutOfMission());
+    }
+
     private void tabulateTransfers()
     {
-        campaignUpdateData.getTransferData().merge(aarContext.getReconciledOutOfMissionData().getTransferData());
+        campaignUpdateData.getResupplyData().merge(aarContext.getReconciledOutOfMissionData().getResupplyData());
     }
 
     private void addEventsToCampaignUpdateData() throws PWCGException

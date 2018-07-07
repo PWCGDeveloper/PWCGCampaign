@@ -11,12 +11,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.core.exception.PWCGException;
 
-/**
- * Evaluates vehicle status based on destroyed events
- * 
- * @author Patrick Wilson
- *
- */
+
 public class AARDestroyedStatusEvaluator 
 {
     private List <LogVictory> deadLogVehicles = new ArrayList <LogVictory>();

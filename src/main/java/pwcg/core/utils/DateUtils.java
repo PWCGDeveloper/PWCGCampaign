@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGDirectoryManager;
 import pwcg.core.exception.PWCGException;
 
 public class DateUtils 
@@ -267,13 +266,13 @@ public class DateUtils
 	    try
 	    {
     		List<Date> transitionDates = new ArrayList<Date>();
-    		String inputDir = PWCGDirectoryManager.getInstance().getPwcgInputDir();		
+    		String inputDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir();		
     		
     		DirectoryReader directoryReader = new DirectoryReader();
             directoryReader.sortilesInDir(inputDir);
             for (String frontDateDirName : directoryReader.getDirectories()) 
             {
-                String frontDateDirs = PWCGDirectoryManager.getInstance().getPwcgInputDir() + frontDateDirName;
+                String frontDateDirs = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + frontDateDirName;
                 File frontDateDir = new File(frontDateDirs);
                 if (frontDateDir.isDirectory() && frontDateDir.getName().contains("19"))
                 {

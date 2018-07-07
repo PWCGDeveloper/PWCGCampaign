@@ -6,8 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.squadmember.PilotNames;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -18,11 +21,13 @@ public class BeforeCampaignVictimGenerator implements IVictimGenerator
 {
     private SquadronMember victimPilot;
 
+    private Campaign campaign;
     private Squadron victimSquadron;
     private Date date;
 
-    public BeforeCampaignVictimGenerator (Squadron squadron, Date date)
+    public BeforeCampaignVictimGenerator (Campaign campaign, Squadron squadron, Date date)
     {
+        this.campaign = campaign;
         this.victimSquadron = squadron;
         this.date = date;
     }
@@ -87,5 +92,13 @@ public class BeforeCampaignVictimGenerator implements IVictimGenerator
         }
         
         return squadMembers;
+    }
+
+    @Override
+    public EquippedPlane generateVictimPlane() throws PWCGException
+    {
+        PlaneEquipmentFactory planeEquipmentFactory = new PlaneEquipmentFactory(campaign);
+        EquippedPlane equippedPlane = planeEquipmentFactory.makePlaneForBeforeCampaign(victimSquadron.determineSide(), date);
+        return equippedPlane;
     }
 }

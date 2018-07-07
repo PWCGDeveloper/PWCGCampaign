@@ -2,35 +2,42 @@ package pwcg.campaign.context;
 
 public class PWCGDirectoryManager
 {
-    private static PWCGDirectoryManager instance = null;
     private String simulatorRootDir = "";
     private String pwcgRootDir;
+    private String pwcgDataDir;
     private String pwcgCampaignDir;
 
-    private PWCGDirectoryManager()
+    public PWCGDirectoryManager(boolean isRoF)
     {
-        
-    }
-    
-    public static PWCGDirectoryManager getInstance()
-    {
-        if (instance == null)
-        {
-            instance = new PWCGDirectoryManager();
-            instance.initialize(); 
-        }
-        
-        return instance;
+        createRootDir();
+        createPwcgDataDir(isRoF);
+        createCampaignDir();
     }
 
-    private void initialize()
+    private void createRootDir()
     {
         String userDir = System.getProperty("user.dir");
         simulatorRootDir = userDir + "\\..\\";
         pwcgRootDir = userDir + "\\";
-        pwcgCampaignDir = instance.pwcgRootDir + "Campaigns\\";
     }
     
+    private void createPwcgDataDir(boolean isRoF)
+    {
+        if (isRoF)
+        {
+            pwcgDataDir = pwcgRootDir + "RoFData\\";
+        }
+        else
+        {
+            pwcgDataDir = pwcgRootDir + "BoSData\\";
+        }
+    }
+
+    private void createCampaignDir()
+    {
+        pwcgCampaignDir = pwcgRootDir + "Campaigns\\";
+    }
+
     public String getSimulatorDataDir()
     {
         return simulatorRootDir + "data\\";
@@ -41,19 +48,6 @@ public class PWCGDirectoryManager
         return pwcgCampaignDir;
     }
     
-
-    public String getPwcgDataDir()
-    {
-        if (PWCGContextManager.isRoF())
-        {
-            return pwcgRootDir + "RoFData\\";
-        }
-        else
-        {
-            return pwcgRootDir + "BoSData\\";
-        }
-    }
-    
     public String getPwcgAudioDir()
     {
         return pwcgRootDir + "Audio\\";
@@ -61,7 +55,12 @@ public class PWCGDirectoryManager
     
     public String getPwcgInputDir()
     {
-        return getPwcgDataDir() + "Input\\";
+        return pwcgDataDir + "Input\\";
+    }
+    
+    public String getPwcgReportDir()
+    {
+        return pwcgRootDir + "Report\\";
     }
     
     public String getPwcgAircraftInfoDir()
@@ -91,17 +90,17 @@ public class PWCGDirectoryManager
     
     public String getPwcgImagesDir()
     {
-        return getPwcgDataDir() + "Images\\";
+        return pwcgDataDir + "Images\\";
     }
     
     public String getPwcgNamesDir()
     {
-        return getPwcgDataDir() + "Names\\";
+        return pwcgDataDir + "Names\\";
     }
     
     public String getPwcgUserDir()
     {
-        return getPwcgDataDir() + "User\\";
+        return pwcgDataDir + "User\\";
     }
 
 	public String getPwcgSkinsDir()

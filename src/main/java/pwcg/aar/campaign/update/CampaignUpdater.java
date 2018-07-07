@@ -27,14 +27,20 @@ public class CampaignUpdater
         CampaignAceUpdater aceUpdater = new CampaignAceUpdater(campaign, aarContext.getCampaignUpdateData().getPersonnelAwards().getHistoricalAceAwards().getAceVictories());
         aceUpdater.updatesCampaignAces();
         
-        CampaignSquadronPersonnelUpdater personnelUpdater = new CampaignSquadronPersonnelUpdater(campaign, aarContext);
+        CampaignPersonnelUpdater personnelUpdater = new CampaignPersonnelUpdater(campaign, aarContext);
         personnelUpdater.personnelUpdates();
+        
+        CampaignEquipmentUpdater equipmentUpdater = new CampaignEquipmentUpdater(campaign, aarContext);
+        equipmentUpdater.equipmentUpdates();
 
         CampaignServiceChangeHandler serviceChangeHandler = new CampaignServiceChangeHandler(campaign);
         serviceChangeHandler.handleChangeOfService(aarContext.getCampaignUpdateData().getNewDate());
 
-        CampaignReplacementUpdater replacementUpdater = new CampaignReplacementUpdater(campaign, aarContext);
-        replacementUpdater.updateCampaignReplacements();
+        CampaignPersonnelReplacementUpdater personnelReplacementUpdater = new CampaignPersonnelReplacementUpdater(campaign, aarContext);
+        personnelReplacementUpdater.updateCampaignPersonnelReplacements();
+        
+        CampaignEquipmentReplacementUpdater equipmentReplacementUpdater = new CampaignEquipmentReplacementUpdater(campaign);
+        equipmentReplacementUpdater.updateCampaignEquipmentReplacements();
         
         finishCampaignUpdates(aarContext.getCampaignUpdateData().getNewDate());
     }
@@ -49,5 +55,8 @@ public class CampaignUpdater
 
         CampaignUpdateNewSquadronStaffer newSquadronStaffer = new CampaignUpdateNewSquadronStaffer(campaign);
         newSquadronStaffer.staffNewSquadrons();
+
+        CampaignUpdateNewSquadronEquipper newSquadronEquipper = new CampaignUpdateNewSquadronEquipper(campaign);
+        newSquadronEquipper.equipNewSquadrons();
     }
  }

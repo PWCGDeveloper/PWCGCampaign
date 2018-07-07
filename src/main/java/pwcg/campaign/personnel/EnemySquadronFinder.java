@@ -17,9 +17,6 @@ import pwcg.core.utils.RandomNumberGenerator;
 public class EnemySquadronFinder
 {
     private Campaign campaign;
-    private List<Squadron> nearbyViableEnemySquadrons = new ArrayList<>();
-    private List<Squadron> allViableEnemySquadrons = new ArrayList<>();
-    private List<Squadron> allEnemySquadrons = new ArrayList<>();
 
     public EnemySquadronFinder (Campaign campaign)
     {
@@ -29,9 +26,9 @@ public class EnemySquadronFinder
     public Squadron getRandomEnemySquadron(Squadron squadron, Date date) throws PWCGException
     {
         List<Squadron> nearbyActiveEnemySquadrons = getNearbyEnemySquadronsForVictory(date, squadron);
-        nearbyViableEnemySquadrons = getViableSquadrons(nearbyActiveEnemySquadrons);
-        allEnemySquadrons = getAllActiveEnemySquadrons(squadron, date);
-        allViableEnemySquadrons = getViableSquadrons(allEnemySquadrons);
+        List<Squadron> nearbyViableEnemySquadrons = getViableSquadrons(nearbyActiveEnemySquadrons);
+        List<Squadron> allEnemySquadrons = getAllActiveEnemySquadrons(squadron, date);
+        List<Squadron> allViableEnemySquadrons = getViableSquadrons(allEnemySquadrons);
 
         Squadron enemySquadron = null;
         if (nearbyViableEnemySquadrons.size() > 0)
@@ -45,6 +42,26 @@ public class EnemySquadronFinder
         else if (allEnemySquadrons.size() > 0)
         {
             enemySquadron = getEnemySquadron(allEnemySquadrons);
+        }
+ 
+        return enemySquadron;
+    }
+
+    public Squadron getRandomEnemyViableSquadron(Squadron squadron, Date date) throws PWCGException
+    {
+        List<Squadron> nearbyActiveEnemySquadrons = getNearbyEnemySquadronsForVictory(date, squadron);
+        List<Squadron> nearbyViableEnemySquadrons = getViableSquadrons(nearbyActiveEnemySquadrons);
+        List<Squadron> allEnemySquadrons = getAllActiveEnemySquadrons(squadron, date);
+        List<Squadron> allViableEnemySquadrons = getViableSquadrons(allEnemySquadrons);
+
+        Squadron enemySquadron = null;
+        if (nearbyViableEnemySquadrons.size() > 0)
+        {
+            enemySquadron = getEnemySquadron(nearbyViableEnemySquadrons);
+        }
+        else if (allViableEnemySquadrons.size() > 0)
+        {
+            enemySquadron = getEnemySquadron(allViableEnemySquadrons);
         }
  
         return enemySquadron;
@@ -78,7 +95,7 @@ public class EnemySquadronFinder
     {
         ICountry country = squadron.getCountry();
         Side enemySide = country.getSide().getOppositeSide();
-        return PWCGContextManager.getInstance().getSquadronManager().getAllActiveSquadronsForSide(enemySide, date);
+        return PWCGContextManager.getInstance().getSquadronManager().getActiveSquadronsForSide(enemySide, date);
     }
 
     private List<Squadron> getViableSquadrons(List<Squadron> possibleSquadrons) throws PWCGException

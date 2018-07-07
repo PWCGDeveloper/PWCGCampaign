@@ -70,9 +70,11 @@ public class AiDeclarationResolutionFirmTest
         Mockito.when(aarContext.getMissionEvaluationData()).thenReturn(evaluationData);
         Mockito.when(evaluationData.getVictoryResults()).thenReturn(firmVictories);   
 
-        playerVictor.setSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
-        aiVictor.setSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
-        
+        playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
+        playerVictor.setPlaneSerialNumber(SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 1);
+        aiVictor.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
+        aiVictor.setPlaneSerialNumber(SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 2);
+
         createVictory(playerVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1000);
         createVictory(aiVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001);
         createVictory(aiVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002);
@@ -81,7 +83,8 @@ public class AiDeclarationResolutionFirmTest
     private void createVictory(LogPlane victor, Integer victimSerialNumber) throws PWCGException
     {        
         LogPlane victim = new LogPlane();
-        victim.setSerialNumber(victimSerialNumber);
+        victim.setPilotSerialNumber(victimSerialNumber);
+        victim.setPlaneSerialNumber(SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
         
         LogVictory resultVictory = new LogVictory();
         resultVictory.setVictor(victor);

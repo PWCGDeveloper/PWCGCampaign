@@ -5,7 +5,6 @@ import java.util.List;
 
 import pwcg.campaign.context.AceManager;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGDirectoryManager;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.HistoricalAce;
@@ -43,7 +42,7 @@ public class AceSkinChecker
             skinName = skinName + ".dds";
         }
 
-        String filename = System.getProperty("user.dir") + PWCGDirectoryManager.getInstance().getSimulatorDataDir() + "\\graphics\\skins\\" + aircraftName + "\\" + skinName;
+        String filename = System.getProperty("user.dir") + PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir() + "\\graphics\\skins\\" + aircraftName + "\\" + skinName;
         File file = new File(filename);
         if (file.exists())
         {

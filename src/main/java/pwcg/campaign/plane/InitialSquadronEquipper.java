@@ -52,7 +52,7 @@ public class InitialSquadronEquipper
             String planeTypeName = equipmentWeightCalculator.getPlaneTypeFromWeight();
             
             PlaneEquipmentFactory equipmentFactory = new PlaneEquipmentFactory(campaign);
-            EquippedPlane equippedPlane = equipmentFactory.getPlaneByPlaneType(planeTypeName);
+            EquippedPlane equippedPlane = equipmentFactory.makePlaneForSquadron(planeTypeName, squadron.getSquadronId());
             equipment.addEquippedPlane(equippedPlane);
         }
     }

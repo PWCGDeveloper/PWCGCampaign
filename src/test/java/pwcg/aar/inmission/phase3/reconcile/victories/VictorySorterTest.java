@@ -85,7 +85,7 @@ public class VictorySorterTest
         LogPlane victor = makeVictor();
         
         LogPlane victim = new LogPlane();
-        victim.setSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
+        victim.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
         victim.setVehicleType("albatrosd3");
         victim.setCountry(new RoFCountry(Country.GERMANY));
         victim.setSquadronId(501011);
@@ -99,7 +99,7 @@ public class VictorySorterTest
         LogUnknown victor = new LogUnknown();
         
         LogPlane victim = new LogPlane();
-        victim.setSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
+        victim.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
         victim.setVehicleType("albatrosd3");
         victim.setCountry(new RoFCountry(Country.GERMANY));
         victim.setSquadronId(501011);
@@ -144,7 +144,7 @@ public class VictorySorterTest
     private LogPlane makeVictor()
     {
         LogPlane victor = new LogPlane();
-        victor.setSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
+        victor.setPilotSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
         victor.setVehicleType("spad7");
         victor.setCountry(new RoFCountry(Country.FRANCE));
         victor.setSquadronId(101103);

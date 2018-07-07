@@ -1,5 +1,6 @@
 package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 
+import pwcg.campaign.plane.PlaneStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
@@ -12,7 +13,9 @@ public class LogPlane extends LogAIEntity
     private Integer squadronId;
     private boolean crashedInSight = false;
     private LogPilot logPilot;
-    private int serialNumber;
+    private int pilotSerialNumber;
+    private int planeSerialNumber;
+    private int planeStatus = PlaneStatus.STATUS_DEPLOYED;
 
     public LogPlane()
     {
@@ -31,7 +34,8 @@ public class LogPlane extends LogAIEntity
     public void initializeFromMissionPlane(PwcgGeneratedMissionPlaneData missionPlane)
     {        
         this.squadronId = missionPlane.getSquadronId();
-        this.serialNumber = missionPlane.getPilotSerialNumber();
+        this.pilotSerialNumber = missionPlane.getPilotSerialNumber();
+        this.planeSerialNumber = missionPlane.getPlaneSerialNumber();
         intializePilot(missionPlane.getPilotSerialNumber());
     }
 
@@ -111,15 +115,34 @@ public class LogPlane extends LogAIEntity
     {
         this.squadronId = squadronId;
     }
-    
-    public int getSerialNumber()
+
+    public int getPilotSerialNumber()
     {
-        return serialNumber;
+        return pilotSerialNumber;
     }
 
-    public void setSerialNumber(Integer serialNumber)
+    public void setPilotSerialNumber(int pilotSerialNumber)
     {
-        this.serialNumber = serialNumber;
+        this.pilotSerialNumber = pilotSerialNumber;
     }
 
+    public int getPlaneSerialNumber()
+    {
+        return planeSerialNumber;
+    }
+
+    public void setPlaneSerialNumber(int planeSerialNumber)
+    {
+        this.planeSerialNumber = planeSerialNumber;
+    }
+
+    public int getPlaneStatus()
+    {
+        return planeStatus;
+    }
+
+    public void setPlaneStatus(int planeStatus)
+    {
+        this.planeStatus = planeStatus;
+    }
 }

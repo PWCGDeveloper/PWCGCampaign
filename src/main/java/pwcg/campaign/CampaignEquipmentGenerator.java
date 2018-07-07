@@ -3,6 +3,7 @@ package pwcg.campaign;
 import pwcg.campaign.personnel.InitialReplacementStaffer;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.plane.Equipment;
+import pwcg.campaign.plane.EquipmentReplacement;
 import pwcg.campaign.plane.InitialReplacementEquipper;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
@@ -32,7 +33,7 @@ public class CampaignEquipmentGenerator
         PersonnelReplacementsService replacementsForService = new PersonnelReplacementsService();
         replacementsForService.setReplacements(squadronMembers);
         replacementsForService.setServiceId(armedService.getServiceId());
-        replacementsForService.setDailyReplacementRate(armedService.getDailyReplacementRate());
+        replacementsForService.setDailyReplacementRate(armedService.getDailyPersonnelReplacementRate());
         replacementsForService.setLastReplacementDate(campaign.getDate());
         campaign.getPersonnelManager().addPersonnelReplacementsService(armedService.getServiceId(), replacementsForService);
     }
@@ -41,6 +42,10 @@ public class CampaignEquipmentGenerator
     {
         InitialReplacementEquipper replacementEquipper = new InitialReplacementEquipper(campaign, armedService);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        campaign.getEquipmentManager().addEquipmentReplacementsForService(armedService.getServiceId(), equipment);
+        EquipmentReplacement equipmentReplacement = new EquipmentReplacement();
+        equipmentReplacement.setEquipmentPoints(armedService.getDailyEquipmentReplacementRate() * 2);
+        equipmentReplacement.setLastReplacementDate(campaign.getDate());
+        equipmentReplacement.setEquippment(equipment);
+        campaign.getEquipmentManager().addEquipmentReplacementsForService(armedService.getServiceId(), equipmentReplacement);
     }
 }

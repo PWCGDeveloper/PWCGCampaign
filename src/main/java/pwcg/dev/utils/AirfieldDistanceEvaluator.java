@@ -77,7 +77,7 @@ public class AirfieldDistanceEvaluator
         Map <String, IAirfield> fighterFields = airfieldSet.getFighterFields();
         Map <String, IAirfield> bomberFields = airfieldSet.getBomberFields();
 
-        List<Squadron> allActiveSquadrons = squadronManager.getAllActiveSquadrons(dateNow);
+        List<Squadron> allActiveSquadrons = squadronManager.getActiveSquadrons(dateNow);
         for (Squadron squadron : allActiveSquadrons)
         {
             boolean bad = false;

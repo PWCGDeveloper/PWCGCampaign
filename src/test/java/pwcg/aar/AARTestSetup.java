@@ -10,8 +10,8 @@ import pwcg.aar.data.CampaignUpdateData;
 import pwcg.aar.inmission.phase3.reconcile.ReconciledInMissionData;
 import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
 import pwcg.aar.outofmission.phase1.elapsedtime.ReconciledOutOfMissionData;
-import pwcg.aar.outofmission.phase2.transfer.AARTransferData;
-import pwcg.aar.outofmission.phase2.transfer.SquadronTransferData;
+import pwcg.aar.outofmission.phase2.resupply.AARResupplyData;
+import pwcg.aar.outofmission.phase2.resupply.SquadronTransferData;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
@@ -21,6 +21,7 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -32,89 +33,37 @@ import pwcg.mission.data.MissionHeader;
 
 public abstract class AARTestSetup
 {
-    @Mock
-    protected Campaign campaign;
-
-    @Mock
-    protected CampaignPersonnelManager personnelManager;
-    
-    @Mock
-    protected Squadron squadronEsc103;
-
-    @Mock
-    protected AARContext aarContext;
-    
-    @Mock
-    protected PwcgMissionDataEvaluator pwcgMissionDataEvaluator;
-
-    @Mock
-    protected PwcgMissionData pwcgMissionData;
-
-    @Mock
-    protected MissionHeader missionHeader;
-
-    @Mock
-    protected AARPreliminaryData preliminaryData;
-    
-    @Mock
-    protected SquadronMembers campaignMembersInMission;
-
-    @Mock
-    protected ReconciledInMissionData reconciledInMissionData;
-    
-    @Mock
-    protected ReconciledVictoryData reconciledVictoryData;
-
-    @Mock
-    protected ReconciledOutOfMissionData reconciledOutOfMissionData;
-
-    @Mock
-    protected AARPersonnelLosses personnelLossesOutOfMissionData;
-
-    @Mock
-    protected AARPersonnelLosses personnelLossesInMissionData;
-
-    @Mock
-    protected AARPersonnelLosses personnelLossesCampaignUpdate;
-
-    @Mock
-    protected AARPersonnelAwards campaignMemberAwards;
-
-    @Mock
-    protected AARTransferData transferData;
-
-    @Mock
-    protected SquadronTransferData acesTransferred;
-
-    @Mock
-    protected SquadronTransferData squadronMembersTransferred;
-
-    @Mock
-    private CampaignUpdateData campaignUpdateData;
-
-    @Mock
-    protected SquadronMember player;
-
-    @Mock
-    protected SquadronMember pilot1;
-
-    @Mock
-    protected SquadronMember pilot2;
-
-    @Mock
-    protected SquadronMember pilot3;
-
-    @Mock
-    protected Ace ace1;
-
-    @Mock
-    protected Ace ace2;
-
-    @Mock
-    protected Ace ace3;
-
-    @Mock
-    protected Ace ace4;
+    @Mock protected Campaign campaign;
+    @Mock protected CampaignPersonnelManager personnelManager;
+    @Mock protected Squadron squadronEsc103;
+    @Mock protected AARContext aarContext;
+    @Mock protected PwcgMissionDataEvaluator pwcgMissionDataEvaluator;
+    @Mock protected PwcgMissionData pwcgMissionData;
+    @Mock protected MissionHeader missionHeader;
+    @Mock protected AARPreliminaryData preliminaryData;
+    @Mock protected SquadronMembers campaignMembersInMission;
+    @Mock protected ReconciledInMissionData reconciledInMissionData;
+    @Mock protected ReconciledVictoryData reconciledVictoryData;
+    @Mock protected ReconciledOutOfMissionData reconciledOutOfMissionData;
+    @Mock protected AARPersonnelLosses personnelLossesOutOfMissionData;
+    @Mock protected AARPersonnelLosses personnelLossesInMissionData;
+    @Mock protected AARPersonnelLosses personnelLossesCampaignUpdate;
+    @Mock protected AARPersonnelAwards campaignMemberAwards;
+    @Mock protected AARResupplyData transferData;
+    @Mock protected SquadronTransferData acesTransferred;
+    @Mock protected SquadronTransferData squadronMembersTransferred;
+    @Mock private CampaignUpdateData campaignUpdateData;
+    @Mock protected SquadronMember player;
+    @Mock protected SquadronMember pilot1;
+    @Mock protected SquadronMember pilot2;
+    @Mock protected SquadronMember pilot3;
+    @Mock protected Ace ace1;
+    @Mock protected Ace ace2;
+    @Mock protected Ace ace3;
+    @Mock protected Ace ace4;
+    @Mock protected EquippedPlane plane1;
+    @Mock protected EquippedPlane plane2;
+    @Mock protected EquippedPlane plane3;
 
     protected void setupAARMocks() throws PWCGException
     {
@@ -133,9 +82,11 @@ public abstract class AARTestSetup
     {
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170701"));
         Mockito.when(campaign.determineSquadron()).thenReturn(squadronEsc103);
+        Mockito.when(campaign.getSquadronId()).thenReturn(101103);
         Mockito.when(campaign.getPlayer()).thenReturn(player);
         Mockito.when(campaign.getName()).thenReturn("Player Name");
         Mockito.when(squadronEsc103.determineDisplayName(Mockito.any())).thenReturn("Esc 103");
+        Mockito.when(squadronEsc103.getSquadronId()).thenReturn(101103);
 
         ICountry country = CountryFactory.makeCountryByCountry(Country.FRANCE);
         Mockito.when(campaign.determineCountry()).thenReturn(country);
@@ -165,14 +116,14 @@ public abstract class AARTestSetup
 
     private void mockInMissionData()
     {
-        Mockito.when(reconciledInMissionData.getPersonnelLosses()).thenReturn(personnelLossesInMissionData);
+        Mockito.when(reconciledInMissionData.getPersonnelLossesInMission()).thenReturn(personnelLossesInMissionData);
     }
 
     private void mockOutOfMissionData()
     {
-        Mockito.when(reconciledOutOfMissionData.getPersonnelLosses()).thenReturn(personnelLossesOutOfMissionData);
+        Mockito.when(reconciledOutOfMissionData.getPersonnelLossesOutOfMission()).thenReturn(personnelLossesOutOfMissionData);
         Mockito.when(reconciledOutOfMissionData.getPersonnelAwards()).thenReturn(campaignMemberAwards);
-        Mockito.when(reconciledOutOfMissionData.getTransferData()).thenReturn(transferData);
+        Mockito.when(reconciledOutOfMissionData.getResupplyData()).thenReturn(transferData);
         
         Mockito.when(transferData.getAcesTransferred()).thenReturn(acesTransferred);
         Mockito.when(transferData.getSquadronTransferData()).thenReturn(squadronMembersTransferred);
@@ -181,7 +132,7 @@ public abstract class AARTestSetup
     private void mockCampaignUpdate()
     {
         Mockito.when(campaignUpdateData.getPersonnelLosses()).thenReturn(personnelLossesCampaignUpdate);
-        Mockito.when(campaignUpdateData.getTransferData()).thenReturn(transferData);
+        Mockito.when(campaignUpdateData.getResupplyData()).thenReturn(transferData);
         Mockito.when(campaignUpdateData.getPersonnelAwards()).thenReturn(campaignMemberAwards);
     }
 
@@ -228,6 +179,10 @@ public abstract class AARTestSetup
         Mockito.when(ace2.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(ace3.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(ace4.getCountry()).thenReturn(Country.FRANCE);
+        
+        Mockito.when(plane1.getSquadronId()).thenReturn(101103);
+        Mockito.when(plane2.getSquadronId()).thenReturn(101103);
+        Mockito.when(plane3.getSquadronId()).thenReturn(101103);
     }
 
 }

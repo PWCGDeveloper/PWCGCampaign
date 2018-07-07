@@ -58,8 +58,8 @@ public class NewsPanelEventTabulator
     private List <Ace> mergeAcesKilledInMissionAndElapsedTime()
     {
         Map<Integer, Ace> acesKilledMap = new HashMap<>();
-        acesKilledMap.putAll(aarContext.getReconciledInMissionData().getPersonnelLosses().getAcesKilled());        
-        acesKilledMap.putAll(aarContext.getReconciledOutOfMissionData().getPersonnelLosses().getAcesKilled());        
+        acesKilledMap.putAll(aarContext.getReconciledInMissionData().getPersonnelLossesInMission().getAcesKilled());        
+        acesKilledMap.putAll(aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission().getAcesKilled());        
         return new ArrayList<Ace>(acesKilledMap.values());
     }
 

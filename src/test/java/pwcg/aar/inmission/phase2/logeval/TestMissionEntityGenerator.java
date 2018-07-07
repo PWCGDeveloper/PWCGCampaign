@@ -36,12 +36,14 @@ public class TestMissionEntityGenerator
         String[] frenchPilots = new String[] { "French PilotA","French PilotB"};
         String[] germanPilots = new String[] { "German PilotA","German PilotB"};
         Integer[] frenchPilotsSerialNumbers= new Integer[] { SerialNumber.AI_STARTING_SERIAL_NUMBER + 1, SerialNumber.AI_STARTING_SERIAL_NUMBER + 2};
+        Integer[] frenchPlaneSerialNumbers= new Integer[] { SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 1, SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 2};
         Integer[] germanPilotSerialNumbers = new Integer[] { SerialNumber.AI_STARTING_SERIAL_NUMBER + 100, SerialNumber.AI_STARTING_SERIAL_NUMBER + 200};
+        Integer[] germanPlaneSerialNumbers= new Integer[] { SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100, SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 200};
         String[] frenchPilotBotId = new String[] { "1001","1002"};
         String[] germanPilotBotId = new String[] { "2001","2002"};
 
-        makeFrenchFighters(numFrenchPlanes, frenchPilotsSerialNumbers, frenchPilots, frenchPilotBotId);
-        makeGermanFighters(numGermanPlanes, germanPilotSerialNumbers, germanPilots, germanPilotBotId);
+        makeFrenchFighters(numFrenchPlanes, frenchPilotsSerialNumbers, frenchPlaneSerialNumbers, frenchPilots, frenchPilotBotId);
+        makeGermanFighters(numGermanPlanes, germanPilotSerialNumbers, germanPlaneSerialNumbers, germanPilots, germanPilotBotId);
         makeFrenchBalloons(numFrenchBalloons);
         makeGermanBalloons(numGermanBalloons);
         makeFrenchTrucks(numFrenchTrucks);
@@ -56,7 +58,7 @@ public class TestMissionEntityGenerator
         logEventData.setBots(pilotBots);
     }
 
-    private void makeFrenchFighters(int numFrenchPlanes, Integer[] frenchPilotsSerialNumbers, String[] frenchPilots, String[] frenchPilotBotId) throws PWCGException
+    private void makeFrenchFighters(int numFrenchPlanes, Integer[] frenchPilotsSerialNumbers, Integer[] frenchPlaneSerialNumbers, String[] frenchPilots, String[] frenchPilotBotId) throws PWCGException
     {
         for (int i = 0; i < numFrenchPlanes; ++i)
         {            
@@ -65,11 +67,11 @@ public class TestMissionEntityGenerator
             frenchPlane.setId(frenchPilotBotId[i]);
             vehicles.add(frenchPlane);
             
-            makePwcgMissionPlaneFighter(frenchPilots[i], frenchPilotsSerialNumbers[i], frenchPlane);
+            makePwcgMissionPlaneFighter(frenchPilots[i], frenchPilotsSerialNumbers[i], frenchPlaneSerialNumbers[i], frenchPlane);
         }
     }
 
-    private void makeGermanFighters(int numGermanPlanes, Integer[] germanPilotSerialNumbers, String[] germanPilots, String[] germanPilotBotId) throws PWCGException
+    private void makeGermanFighters(int numGermanPlanes, Integer[] germanPilotSerialNumbers, Integer[] germanPlaneSerialNumbers, String[] germanPilots, String[] germanPilotBotId) throws PWCGException
     {
         for (int i = 0; i < numGermanPlanes; ++i)
         {
@@ -78,7 +80,7 @@ public class TestMissionEntityGenerator
             germanPlane.setId(germanPilotBotId[i]);
             vehicles.add(germanPlane);
 
-            makePwcgMissionPlaneFighter(germanPilots[i], germanPilotSerialNumbers[i], germanPlane);
+            makePwcgMissionPlaneFighter(germanPilots[i], germanPilotSerialNumbers[i], germanPlaneSerialNumbers[i], germanPlane);
         }
     }
 
@@ -118,27 +120,28 @@ public class TestMissionEntityGenerator
         }
     }
 
-    private void makePwcgMissionPlaneFighter(String pilotName, Integer pilotSerialNumber, IAType12 plane) throws PWCGException
+    private void makePwcgMissionPlaneFighter(String pilotName, Integer pilotSerialNumber, Integer planeSerialNumber, IAType12 plane) throws PWCGException
     {
         PwcgGeneratedMissionPlaneData pwcgMissionPlane = new PwcgGeneratedMissionPlaneData();
         pwcgMissionPlane.setAircraftType(plane.getType());
-        
-        pwcgMissionPlane.setPilotSerialNumber(pilotSerialNumber);;
+        pwcgMissionPlane.setPilotSerialNumber(pilotSerialNumber);
+        pwcgMissionPlane.setPlaneSerialNumber(planeSerialNumber);
         missionPlanes.put(pilotSerialNumber, pwcgMissionPlane);
         
         AType12 pilotBot = TestATypeFactory.makePilotBot(plane);
         pilotBots.put(pilotBot.getId(), pilotBot);
         
-        makeMissionResultPlaneFighter(pilotName, pilotSerialNumber, plane);
+        makeMissionResultPlaneFighter(pilotName, pilotSerialNumber, planeSerialNumber, plane);
     }
 
-    private void makeMissionResultPlaneFighter(String pilotName, Integer pilotSerialNumber, IAType12 plane) throws PWCGException
+    private void makeMissionResultPlaneFighter(String pilotName, Integer pilotSerialNumber, Integer planeSerialNumber, IAType12 plane) throws PWCGException
     {
     	LogPlane missionResultPlane = new LogPlane();
         missionResultPlane.setVehicleType(plane.getType());
         missionResultPlane.setId(plane.getId());
-        missionResultPlane.setSerialNumber(pilotSerialNumber);
-        
+        missionResultPlane.setPilotSerialNumber(pilotSerialNumber);
+        missionResultPlane.setPlaneSerialNumber(planeSerialNumber);
+
         LogPilot pilotCrewMember = new LogPilot();
         pilotCrewMember.setSerialNumber(pilotSerialNumber);
         pilotCrewMember.setBotId("");

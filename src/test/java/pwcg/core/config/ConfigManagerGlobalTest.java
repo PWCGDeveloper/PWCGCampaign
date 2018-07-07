@@ -7,7 +7,7 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
-import pwcg.campaign.context.PWCGDirectoryManager;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 
@@ -75,7 +75,7 @@ public class ConfigManagerGlobalTest
 
     private void cleanUpUserDir() throws PWCGException
     {
-        String userConfigDirName = PWCGDirectoryManager.getInstance().getPwcgUserDir();
+        String userConfigDirName = PWCGContextManager.getInstance().getDirectoryManager().getPwcgUserDir();
         FileUtils fileUtils = new FileUtils();
         fileUtils.deleteFilesInDirectory(userConfigDirName);
     }

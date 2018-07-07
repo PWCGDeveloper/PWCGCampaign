@@ -14,7 +14,7 @@ public class PersonnelResultsInMissionHandler
 {
     private Campaign campaign;
     private AARMissionEvaluationData evaluationData;
-    AARPersonnelLosses personnelResults;
+    private AARPersonnelLosses personnelResults;
 
     public PersonnelResultsInMissionHandler(Campaign campaign, AARMissionEvaluationData evaluationData)
     {

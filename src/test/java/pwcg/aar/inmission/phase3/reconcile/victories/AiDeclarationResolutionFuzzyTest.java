@@ -87,9 +87,9 @@ public class AiDeclarationResolutionFuzzyTest
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(preliminaryData.getCampaignMembersInMission()).thenReturn(campaignMembersInmission);
 
-        playerVictor.setSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
-        aiVictorOne.setSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
-        aiVictorTwo.setSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 2);
+        playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
+        aiVictorOne.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
+        aiVictorTwo.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 2);
         
         createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1000);
         createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001);
@@ -127,7 +127,7 @@ public class AiDeclarationResolutionFuzzyTest
     private void createVictory(Integer victimSerialNumber) throws PWCGException
     {        
         LogPlane victim = new LogPlane();
-        victim.setSerialNumber(victimSerialNumber);
+        victim.setPilotSerialNumber(victimSerialNumber);
         
         LogVictory resultVictory = new LogVictory();
         resultVictory.setVictim(victim);

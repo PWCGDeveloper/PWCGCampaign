@@ -35,7 +35,7 @@ public class GroundAttackPackage extends FlightPackage
         missionBeginUnit.initialize(startCoords.copy());
 
         GroundAttackFlight groundAttackFlight = new GroundAttackFlight ();
-        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide(campaign.getDate()));
+        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
 		groundAttackFlight.initialize(mission, campaign, targetCoordinates, squadron, missionBeginUnit, isPlayerFlight);
 
 		groundAttackFlight.linkGroundUnitsToFlight(groundUnitCollection);

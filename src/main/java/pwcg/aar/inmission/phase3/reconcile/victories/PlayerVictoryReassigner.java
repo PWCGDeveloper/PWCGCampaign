@@ -35,7 +35,7 @@ public class PlayerVictoryReassigner
             if (resultVictory.getVictor() instanceof LogPlane)
             {
                 LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
-                if (PlayerVictoryResolver.isPlayerVictory(campaign.getPlayer(), victorPlanePlane.getSerialNumber()))
+                if (PlayerVictoryResolver.isPlayerVictory(campaign.getPlayer(), victorPlanePlane.getPilotSerialNumber()))
                 {
                     LogUnknown markedForAssignment = new LogUnknown();
                     markedForAssignment.setUnknownVictoryAssignment(UnknownVictoryAssignments.RANDOM_ASSIGNMENT);

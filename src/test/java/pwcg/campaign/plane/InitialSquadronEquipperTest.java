@@ -32,8 +32,8 @@ public class InitialSquadronEquipperTest
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
         Equipment equipment = squadronEquipper.generateEquipment();
         
-        assert(equipment.getEquippedPlanes().size() == Squadron.SQUADRON_EQUIPMENT_SIZE);
-        for (EquippedPlane equippedPlane : equipment.getEquippedPlanes().values())
+        assert(equipment.getActiveEquippedPlanes().size() == Squadron.SQUADRON_EQUIPMENT_SIZE);
+        for (EquippedPlane equippedPlane : equipment.getActiveEquippedPlanes().values())
         {
             assert(equippedPlane.getArchType().equals("bf109"));
             assert(equippedPlane.getType().equals("bf109f2") || equippedPlane.getType().equals("bf109f4"));
@@ -51,8 +51,8 @@ public class InitialSquadronEquipperTest
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
         Equipment equipment = squadronEquipper.generateEquipment();
         
-        assert(equipment.getEquippedPlanes().size() == Squadron.SQUADRON_EQUIPMENT_SIZE);
-        for (EquippedPlane equippedPlane : equipment.getEquippedPlanes().values())
+        assert(equipment.getActiveEquippedPlanes().size() == Squadron.SQUADRON_EQUIPMENT_SIZE);
+        for (EquippedPlane equippedPlane : equipment.getActiveEquippedPlanes().values())
         {
             assert(equippedPlane.getArchType().equals("he111"));
             assert(equippedPlane.getType().equals("he111h6") || equippedPlane.getType().equals("he111h16"));
@@ -70,8 +70,8 @@ public class InitialSquadronEquipperTest
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
         Equipment equipment = squadronEquipper.generateEquipment();
         
-        assert(equipment.getEquippedPlanes().size() == Squadron.SQUADRON_EQUIPMENT_SIZE);
-        for (EquippedPlane equippedPlane : equipment.getEquippedPlanes().values())
+        assert(equipment.getActiveEquippedPlanes().size() == Squadron.SQUADRON_EQUIPMENT_SIZE);
+        for (EquippedPlane equippedPlane : equipment.getActiveEquippedPlanes().values())
         {
             assert(equippedPlane.getArchType().equals("ju87"));
             assert(equippedPlane.getType().equals("ju87d3"));
@@ -89,8 +89,8 @@ public class InitialSquadronEquipperTest
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
         Equipment equipment = squadronEquipper.generateEquipment();
         
-        assert(equipment.getEquippedPlanes().size() == Squadron.SQUADRON_EQUIPMENT_SIZE);
-        for (EquippedPlane equippedPlane : equipment.getEquippedPlanes().values())
+        assert(equipment.getActiveEquippedPlanes().size() == Squadron.SQUADRON_EQUIPMENT_SIZE);
+        for (EquippedPlane equippedPlane : equipment.getActiveEquippedPlanes().values())
         {
             assert(equippedPlane.getArchType().equals("ju52"));
             assert(equippedPlane.getType().equals("ju523mg4e"));
@@ -108,8 +108,8 @@ public class InitialSquadronEquipperTest
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
         Equipment equipment = squadronEquipper.generateEquipment();
         
-        assert(equipment.getEquippedPlanes().size() == Squadron.SQUADRON_EQUIPMENT_SIZE);
-        for (EquippedPlane equippedPlane : equipment.getEquippedPlanes().values())
+        assert(equipment.getActiveEquippedPlanes().size() == Squadron.SQUADRON_EQUIPMENT_SIZE);
+        for (EquippedPlane equippedPlane : equipment.getActiveEquippedPlanes().values())
         {
             assert(equippedPlane.getArchType().equals("il2"));
             assert(equippedPlane.getType().equals("il2m41") || equippedPlane.getType().equals("il2m42"));

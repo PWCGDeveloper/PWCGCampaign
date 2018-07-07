@@ -63,4 +63,5 @@ public interface IPWCGContextManager
 
     PlaneTypeFactory getPlaneTypeFactory();
 
+    PWCGDirectoryManager getDirectoryManager();
 }

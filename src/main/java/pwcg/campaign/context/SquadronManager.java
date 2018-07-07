@@ -1,7 +1,6 @@
 package pwcg.campaign.context;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -93,33 +92,6 @@ public class SquadronManager
     	return null;
 	}
 
-	public List<String> getAllSquadronNames(ICountry country, Date date) throws PWCGException
-	{
-		ArrayList<String> list = new ArrayList<String>();
-		Map<Integer, Squadron> map = countryToMap(country, date);
-		ArrayList<Squadron> squadList = new ArrayList<Squadron>();
-		squadList.addAll(map.values());
-		for (int i = 0; i < squadList.size(); ++i)
-		{
-			Squadron squadron = squadList.get(i);
-			String squadName = squadron.determineDisplayName(date);
-			list.add(squadName);
-		}
-		
-		Collections.sort(list);
-		return list;
-		
-	}
-
-	public List<Squadron> getAllSquadronsForCountryAndDate(ICountry country, Date date) throws PWCGException
-	{
-		ArrayList<Squadron> squadList = new ArrayList<Squadron>();
-		Map<Integer, Squadron> map = countryToMap(country, date);
-		squadList.addAll(map.values());
-
-		return squadList;
-	}
-
 	public List<Squadron> getSquadronsForSide(Side side, Date date) throws PWCGException
 	{		
 		ArrayList<Squadron> list = new ArrayList<Squadron>();
@@ -144,7 +116,7 @@ public class SquadronManager
 		
 	}
 
-    public List<Squadron> getAllActiveSquadrons(Date date) throws PWCGException 
+    public List<Squadron> getActiveSquadrons(Date date) throws PWCGException 
     {
         List<Squadron> list = new ArrayList<Squadron>();
         for (Squadron squadron : squadronMap.values())
@@ -158,7 +130,7 @@ public class SquadronManager
         return list;
     }
 
-    public List<Squadron> getAllActiveSquadronsForSide(Side side, Date date) throws PWCGException 
+    public List<Squadron> getActiveSquadronsForSide(Side side, Date date) throws PWCGException 
     {
         List<Squadron> list = new ArrayList<Squadron>();
         for (Squadron squadron : squadronMap.values())
@@ -175,10 +147,10 @@ public class SquadronManager
         return list;
     }
 
-    public List<Squadron> getAllActiveSquadronsForMap(Date date) throws PWCGException 
+    public List<Squadron> getActiveSquadronsForMap(Date date) throws PWCGException 
     {
         List<Squadron> listForMap = new ArrayList<Squadron>();
-        List<Squadron> listAll = getAllActiveSquadrons(date);
+        List<Squadron> listAll = getActiveSquadrons(date);
         
         for (Squadron squadron : listAll)
         {
@@ -192,6 +164,20 @@ public class SquadronManager
         return listForMap;
         
     }
+    
+    public List<Squadron> getActiveSquadronsForService(Date date, ArmedService service) throws PWCGException 
+    {
+        List<Squadron> squadronsForService = new ArrayList<>();
+        for (Squadron squadron : getActiveSquadrons(date))
+        {
+            if (squadron.determineServiceForSquadron(date).getServiceId() == service.getServiceId())
+            {
+                squadronsForService.add(squadron);
+            }
+        }
+        return squadronsForService;
+    }
+
 
 	public Squadron getSquadronByNameAndCountry(String squadName, ICountry country, Date campaignDate) 
 	                throws PWCGException 
@@ -297,7 +283,7 @@ public class SquadronManager
 	{
 		List<Squadron> squadronsForSide = getSquadronsForSide(side, date);
 		
-		List<Squadron> activeSquadronsForSide = getActiveSquadrons(squadronsForSide, date);
+		List<Squadron> activeSquadronsForSide = reduceToActiveSquadrons(squadronsForSide, date);
 
 		List<Squadron> squadronsForRole = getSquadronsByRole(activeSquadronsForSide, acceptableRoles, date);
 
@@ -312,7 +298,7 @@ public class SquadronManager
         throws PWCGException 
     {
         List<Squadron> squadronsForSide = getSquadronsForSide(side, date);
-        List<Squadron> activeSquadronsForSide = getActiveSquadrons(squadronsForSide, date);
+        List<Squadron> activeSquadronsForSide = reduceToActiveSquadrons(squadronsForSide, date);
 
         return activeSquadronsForSide;
     }
@@ -357,7 +343,7 @@ public class SquadronManager
 		return null;
 	}
 
-	public ArrayList<Squadron> getActiveSquadrons(List<Squadron> squadrons, Date  date) throws PWCGException 
+	private ArrayList<Squadron> reduceToActiveSquadrons(List<Squadron> squadrons, Date  date) throws PWCGException 
 	{
 		ArrayList<Squadron> returnSquadList = new ArrayList<Squadron>();
 		
@@ -410,7 +396,7 @@ public class SquadronManager
         Set<Integer> aceCommandedSquadrons = aceManager.getAceCommandedSquadrons();
 
         // Exclude squadrons commanded by an ace
-        for (Squadron possibleSquadron: getAllActiveSquadrons(campaign.getDate()))
+        for (Squadron possibleSquadron: getActiveSquadrons(campaign.getDate()))
         {
             if (!aceCommandedSquadrons.contains(possibleSquadron.getSquadronId()))
             {

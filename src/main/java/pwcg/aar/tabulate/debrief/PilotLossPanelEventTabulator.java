@@ -39,10 +39,10 @@ public class PilotLossPanelEventTabulator
     private Map<Integer, PilotStatusEvent> determineAllPilotsLostInMission(PilotStatusEventGenerator pilotLossEventGenerator) throws PWCGException
     {
         Map<Integer, PilotStatusEvent> allPilotsLost = new HashMap<>();
-        Map<Integer, PilotStatusEvent> pilotsLostInMission = pilotLossEventGenerator.createPilotLossEvents(aarContext.getReconciledInMissionData().getPersonnelLosses());
+        Map<Integer, PilotStatusEvent> pilotsLostInMission = pilotLossEventGenerator.createPilotLossEvents(aarContext.getReconciledInMissionData().getPersonnelLossesInMission());
         allPilotsLost.putAll(pilotsLostInMission);
         
-        Map<Integer, PilotStatusEvent> pilotsLostElapsedTime = pilotLossEventGenerator.createPilotLossEvents(aarContext.getReconciledOutOfMissionData().getPersonnelLosses());
+        Map<Integer, PilotStatusEvent> pilotsLostElapsedTime = pilotLossEventGenerator.createPilotLossEvents(aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission());
         allPilotsLost.putAll(pilotsLostElapsedTime);
         return allPilotsLost;
     }

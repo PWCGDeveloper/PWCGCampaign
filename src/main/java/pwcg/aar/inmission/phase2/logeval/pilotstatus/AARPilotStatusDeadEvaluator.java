@@ -40,7 +40,6 @@ public class AARPilotStatusDeadEvaluator
         this.oddsOfDeathDueToAiStupidity = oddsOfDeathDueToAiStupidity;
     }
 
-
     public boolean isCrewMemberDead() throws PWCGException
     {
     	boolean isCrewMemberDead = didCrewMemberDie();

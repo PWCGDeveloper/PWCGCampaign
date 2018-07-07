@@ -1,13 +1,13 @@
 package pwcg.campaign.outofmission;
 
 import java.util.Date;
-import java.util.List;
 
 import pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionPlaneFinder;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
@@ -17,7 +17,6 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
-import pwcg.core.utils.RandomNumberGenerator;
 
 public class OutOfMissionVictoryGenerator
 {
@@ -25,6 +24,7 @@ public class OutOfMissionVictoryGenerator
     private IVictimGenerator victimGenerator;
     private SquadronMember victorPilot;
     private SquadronMember victimPilot;
+    private EquippedPlane victimPlane;
 
     public OutOfMissionVictoryGenerator (Squadron victimSquadron, IVictimGenerator victimGenerator, SquadronMember victorPilot)
     {
@@ -106,25 +106,18 @@ public class OutOfMissionVictoryGenerator
 
     private VictoryEntity createVictim(Date date) throws PWCGException
     {
-        VictoryEntity victim = new VictoryEntity();
-        String victimType = getRandomVictimType(date);
-        
-        victim.setAirOrGround(Victory.AIR_VICTORY);
-        victim.setType(victimType);
-        victim.setSquadronName(victimSquadron.determineDisplayName(date));
-        victim.setPilotStatus(SquadronMemberStatus.STATUS_KIA);
-
         victimPilot = victimGenerator.generateVictimAiCrew();
-        if (victimPilot != null)
+        victimPlane = victimGenerator.generateVictimPlane();
+        if (victimPilot != null && victimPlane != null)
         {
-            victim.setPilotName(victimPilot.getNameAndRank());
+            VictoryEntity victim = new VictoryEntity();            
+            victim.setAirOrGround(Victory.AIR_VICTORY);
+            victim.setType(victimPlane.getType());
+            victim.setSquadronName(victimSquadron.determineDisplayName(date));
+            victim.setPilotStatus(SquadronMemberStatus.STATUS_KIA);
+            return victim;
         }
-        else
-        {
-            return null;
-        }
-        
-        return victim;
+        return null;
     }
 
     private String getEventLocation(Side enemySide, Date date) throws PWCGException
@@ -147,21 +140,13 @@ public class OutOfMissionVictoryGenerator
         return eventLocationDescription;
     }
 
-    private String getRandomVictimType(Date date) throws PWCGException 
-    {
-        List<PlaneType> enemyPlanes = victimSquadron.determineCurrentAircraftList(date);
-        if (enemyPlanes != null && enemyPlanes.size() > 0)
-        {
-            int planeIndex = RandomNumberGenerator.getRandom(enemyPlanes.size());
-            PlaneType enemyPlane = enemyPlanes.get(planeIndex);
-            return enemyPlane.getType();
-        }
-
-       throw new PWCGException ("Unable to generate aircraft type for squadron " + victimSquadron.determineDisplayName(date) + " at date " + date);
-    }
-
     public SquadronMember getVictimPilot()
     {
         return victimPilot;
+    }
+
+    public EquippedPlane getVictimPlane()
+    {
+        return victimPlane;
     }
 }

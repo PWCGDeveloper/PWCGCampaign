@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGDirectoryManager;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGUserException;
@@ -49,7 +49,7 @@ public class PictureManager
 
 	private static File getAcePictureFile(Ace ace) throws PWCGUserException 
 	{
-		String picPath = PWCGDirectoryManager.getInstance().getPwcgAcesDir() + "Pictures\\" + ace.getPicName();
+		String picPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgAcesDir() + "Pictures\\" + ace.getPicName();
 		
 		if (!picPath.contains(".jpg"))
 		{

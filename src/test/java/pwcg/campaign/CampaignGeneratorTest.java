@@ -65,7 +65,7 @@ public class CampaignGeneratorTest
         
         for (Equipment equipment : campaign.getEquipmentManager().getEquipmentAllSquadrons().values())
         {
-            assert(equipment.getEquippedPlanes().size() == Squadron.SQUADRON_EQUIPMENT_SIZE);
+            assert(equipment.getActiveEquippedPlanes().size() == Squadron.SQUADRON_EQUIPMENT_SIZE);
         }
     }
 

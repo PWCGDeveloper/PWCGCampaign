@@ -2,39 +2,48 @@ package pwcg.campaign.io.json;
 
 import java.util.Map;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.testutils.CampaignCache;
+import pwcg.testutils.CampaignCacheBoS;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CombatReportIOJsonTest
 {
-    @Mock
-    Campaign campaign;
-    
-    @Test
-    public void readJsonTest() throws PWCGException
+    private Campaign campaign;
+    private CombatReport combatReport = new CombatReport();
+
+    @Before
+    public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
-        Mockito.when(campaign.getCampaignPath()).thenReturn("E:\\PWCG\\workspacePWCGGradle\\PWCGCampaign\\Campaigns\\Patrik Schorner\\");
-        Map<String, CombatReport> combatReports = CombatReportIOJson.readJson(campaign);
-        assert (combatReports.size() > 0);
+        PWCGContextManager.setRoF(false);
+        campaign = CampaignCache.makeCampaign(CampaignCacheBoS.JG_51_PROFILE);
+    }
+
+    @Test
+    public void combatReportJsonTest() throws PWCGException
+    {
+        combatReport.setDate(campaign.getDate());
+        writeCombatReport();
+        readCombatReport();
     }
     
-    @Test
-    public void readJsonFailedTest() throws PWCGException
+    public void writeCombatReport() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
-        Mockito.when(campaign.getCampaignPath()).thenReturn("E:\\PWCG\\workspacePWCGGradle\\PWCGCampaign\\Campaigns\\Foo\\");
+        CombatReportIOJson.writeJson(campaign, combatReport);
+    }
+    
+    public void readCombatReport() throws PWCGException
+    {
         Map<String, CombatReport> combatReports = CombatReportIOJson.readJson(campaign);
-        assert (combatReports.size() == 0);
+        assert (combatReports.size() > 0);
     }
 
 }

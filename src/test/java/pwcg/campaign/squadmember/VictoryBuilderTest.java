@@ -54,7 +54,7 @@ public class VictoryBuilderTest
         LogPlane logVictor = new LogPlane();
         logVictor.setCrashedInSight(true);
         logVictor.setName(victor.getNameAndRank());
-        logVictor.setSerialNumber(victor.getSerialNumber());
+        logVictor.setPilotSerialNumber(victor.getSerialNumber());
         logVictor.setVehicleType("Bf109 F-2");
         logVictor.setSquadronId(20111052);
         logVictor.intializePilot(victor.getSerialNumber());
@@ -63,7 +63,7 @@ public class VictoryBuilderTest
         LogPlane logVictim = new LogPlane();
         logVictim.setCrashedInSight(true);
         logVictim.setName(victim.getNameAndRank());
-        logVictim.setSerialNumber(victim.getSerialNumber());
+        logVictim.setPilotSerialNumber(victim.getSerialNumber());
         logVictim.setVehicleType("Il-2 mod.1941");
         logVictim.setSquadronId(10121312);
         logVictim.intializePilot(victim.getSerialNumber());
@@ -94,7 +94,7 @@ public class VictoryBuilderTest
         LogPlane logVictor = new LogPlane();
         logVictor.setCrashedInSight(true);
         logVictor.setName(victor.getNameAndRank());
-        logVictor.setSerialNumber(victor.getSerialNumber());
+        logVictor.setPilotSerialNumber(victor.getSerialNumber());
         logVictor.setVehicleType("Bf109 F-2");
         logVictor.setSquadronId(20111052);
         logVictor.intializePilot(victor.getSerialNumber());

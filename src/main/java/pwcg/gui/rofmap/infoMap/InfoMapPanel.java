@@ -131,7 +131,7 @@ public class InfoMapPanel extends MapPanelBase
             if (whatToDisplay[DISPLAY_FIGHTER])
             {
                 SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
-                List<Squadron> allSquadrons = squadronManager.getAllActiveSquadronsForMap(parent.getMapDate());
+                List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
                     if (squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_FIGHTER))
@@ -144,7 +144,7 @@ public class InfoMapPanel extends MapPanelBase
             if (whatToDisplay[DISPLAY_BOMBER])
             {
                 SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
-                List<Squadron> allSquadrons = squadronManager.getAllActiveSquadronsForMap(parent.getMapDate());
+                List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
                     if ((squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_BOMB)) || 
@@ -159,7 +159,7 @@ public class InfoMapPanel extends MapPanelBase
             if (whatToDisplay[DISPLAY_ATTACK])
             {
                 SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
-                List<Squadron> allSquadrons = squadronManager.getAllActiveSquadronsForMap(parent.getMapDate());
+                List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
                     if ((squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_DIVE_BOMB)) || 
@@ -173,7 +173,7 @@ public class InfoMapPanel extends MapPanelBase
             if (whatToDisplay[DISPLAY_RECON])
             {
                 SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
-                List<Squadron> allSquadrons = squadronManager.getAllActiveSquadronsForMap(parent.getMapDate());
+                List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
                     if (squadron.isSquadronThisPrimaryRole(parent.getMapDate(), Role.ROLE_RECON))
@@ -415,7 +415,7 @@ public class InfoMapPanel extends MapPanelBase
         List <Squadron> selectedSquadrons = new ArrayList<Squadron>();
             
         SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
-        List<Squadron> allSquadrons = squadronManager.getAllActiveSquadrons(parent.getMapDate());
+        List<Squadron> allSquadrons = squadronManager.getActiveSquadrons(parent.getMapDate());
                 
         for (Squadron squadron : allSquadrons)
         {

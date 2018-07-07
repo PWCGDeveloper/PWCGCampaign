@@ -176,7 +176,8 @@ public class RoFServiceManager extends ArmedServiceManager implements IArmedServ
         lft.setEndDate(DateUtils.getEndOfWWIRussia());
         lft.setServiceColorMap(new AustrianColorMap());
         lft.setGeneralRankForService("Feldmarschall-leutenant");
-        lft.setDailyReplacementRate(4);
+        lft.setDailyPersonnelReplacementRate(4);
+        lft.setDailyEquipmentReplacementRate(8);
 
         List<String> lftPics = new ArrayList<String>();
         lftPics.add("austrian");
@@ -198,7 +199,8 @@ public class RoFServiceManager extends ArmedServiceManager implements IArmedServ
         mfj.setEndDate(endDate);
         mfj.setServiceColorMap(new GermanNavyColorMap());
         mfj.setGeneralRankForService("Vizeadmiral");
-        mfj.setDailyReplacementRate(2);
+        mfj.setDailyEquipmentReplacementRate(2);
+        mfj.setDailyEquipmentReplacementRate(4);
 
         List<String> mfjPics = new ArrayList<String>();
         mfjPics.add("German");
@@ -220,6 +222,8 @@ public class RoFServiceManager extends ArmedServiceManager implements IArmedServ
         gas.setEndDate(endDate);
         gas.setServiceColorMap(new GermanColorMap());
         gas.setGeneralRankForService("Generalleutnant");
+        gas.setDailyPersonnelReplacementRate(15);
+        gas.setDailyEquipmentReplacementRate(30);
 
         List<String> gasPics = new ArrayList<String>();
         gasPics.add("German");
@@ -241,7 +245,8 @@ public class RoFServiceManager extends ArmedServiceManager implements IArmedServ
         iras.setEndDate(DateUtils.getEndOfWWIRussia());
         iras.setServiceColorMap(new RussianColorMap());
         iras.setGeneralRankForService("Lieutenant General");
-        iras.setDailyReplacementRate(5);
+        iras.setDailyPersonnelReplacementRate(5);
+        iras.setDailyEquipmentReplacementRate(10);
 
         List<String> irasPics = new ArrayList<String>();
         irasPics.add("russian");
@@ -263,7 +268,8 @@ public class RoFServiceManager extends ArmedServiceManager implements IArmedServ
         usas.setEndDate(endDate);
         usas.setServiceColorMap(new AmericanColorMap());
         usas.setGeneralRankForService("Major-General");
-        usas.setDailyReplacementRate(15);
+        usas.setDailyPersonnelReplacementRate(10);
+        usas.setDailyEquipmentReplacementRate(20);
 
         List<String> usasPics = new ArrayList<String>();
         usasPics.add("American");
@@ -285,6 +291,8 @@ public class RoFServiceManager extends ArmedServiceManager implements IArmedServ
         raf.setEndDate(endDate);
         raf.setServiceColorMap(new RAFColorMap());
         raf.setGeneralRankForService("Major General");
+        raf.setDailyPersonnelReplacementRate(15);
+        raf.setDailyEquipmentReplacementRate(30);
 
         List<String> rafPics = new ArrayList<String>();
         rafPics.add("British");
@@ -307,6 +315,8 @@ public class RoFServiceManager extends ArmedServiceManager implements IArmedServ
         rnas.setEndDate(rafStartDate);  // RAF start date is the RNAS end date
         rnas.setServiceColorMap(new RNASColorMap());
         rnas.setGeneralRankForService("Rear Admiral");
+        rnas.setDailyPersonnelReplacementRate(8);
+        rnas.setDailyEquipmentReplacementRate(16);
 
         List<String> rnasPics = new ArrayList<String>();
         rnasPics.add("British");
@@ -329,6 +339,8 @@ public class RoFServiceManager extends ArmedServiceManager implements IArmedServ
         rfc.setEndDate(rafStartDate); // RAF start date is the RFC end date
         rfc.setServiceColorMap(new RFCColorMap());
         rfc.setGeneralRankForService("Major General");
+        rfc.setDailyPersonnelReplacementRate(15);
+        rfc.setDailyEquipmentReplacementRate(30);
 
         List<String> rfcPics = new ArrayList<String>();
         rfcPics.add("British");
@@ -351,7 +363,8 @@ public class RoFServiceManager extends ArmedServiceManager implements IArmedServ
         belgianAF.setEndDate(endDate);
         belgianAF.setServiceColorMap(new BelgianColorMap());
         belgianAF.setGeneralRankForService("General de Brigade");
-        belgianAF.setDailyReplacementRate(1);
+        belgianAF.setDailyPersonnelReplacementRate(1);
+        belgianAF.setDailyEquipmentReplacementRate(2);
 
         List<String> belgianPics = new ArrayList<String>();
         belgianPics.add("Belgian");
@@ -373,6 +386,8 @@ public class RoFServiceManager extends ArmedServiceManager implements IArmedServ
         frenchNavy.setEndDate(endDate);
         frenchNavy.setServiceColorMap(new FrenchNavyColorMap());
         frenchNavy.setGeneralRankForService("Contre-Amiral");
+        frenchNavy.setDailyPersonnelReplacementRate(1);
+        frenchNavy.setDailyEquipmentReplacementRate(2);
 
         List<String> frenchNavyPics = new ArrayList<String>();
         frenchNavyPics.add("French");
@@ -394,6 +409,8 @@ public class RoFServiceManager extends ArmedServiceManager implements IArmedServ
         frenchArmy.setEndDate(endDate);
         frenchArmy.setServiceColorMap(new FrenchColorMap());
         frenchArmy.setGeneralRankForService("General de Brigade");
+        frenchArmy.setDailyPersonnelReplacementRate(15);
+        frenchArmy.setDailyEquipmentReplacementRate(30);
 
         List<String> frenchArmyPics = new ArrayList<String>();
         frenchArmyPics.add("French");

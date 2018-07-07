@@ -40,7 +40,7 @@ public class InitialReplacementEquipperTest
         
         InitialReplacementEquipper replacementEquipper = new InitialReplacementEquipper(campaign, luftwaffe);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getEquippedPlanes().size() == 45);
+        assert(equipment.getEquippedPlanes().size() == 15);
         
         boolean me110e2Found = false;
         boolean he111h6Found = false;
@@ -90,7 +90,7 @@ public class InitialReplacementEquipperTest
         
         InitialReplacementEquipper replacementEquipper = new InitialReplacementEquipper(campaign, vvs);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getEquippedPlanes().size() == 48);
+        assert(equipment.getEquippedPlanes().size() == 64);
         
         boolean i16Found = false;
         boolean mig3 = false;
@@ -146,7 +146,7 @@ public class InitialReplacementEquipperTest
         
         InitialReplacementEquipper replacementEquipper = new InitialReplacementEquipper(campaign, regiaAeronautica);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getEquippedPlanes().size() == 3);
+        assert(equipment.getEquippedPlanes().size() == 1);
         
         boolean macchiFound = false;
         

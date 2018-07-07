@@ -19,7 +19,8 @@ public class ArmedService
     private String name;
     private Date startDate;
     private Date endDate;
-    private int dailyReplacementRate = 15;
+    private int dailyPersonnelReplacementRate = 15;
+    private int dailyEquipmentReplacementRate = 30;
     private ArmedServiceQualitySet serviceQuality = new ArmedServiceQualitySet();
     private IServiceColorMap serviceColorMap;
     private List<String> picDirs = new ArrayList<String>();
@@ -130,15 +131,23 @@ public class ArmedService
 		serviceQuality.addQuality(this, qualityDate, qualityValue);;
 	}
 
-	public int getDailyReplacementRate() 
-	{
-		return dailyReplacementRate;
-	}
+    public int getDailyPersonnelReplacementRate()
+    {
+        return dailyPersonnelReplacementRate;
+    }
 
-	public void setDailyReplacementRate(int dailyReplacementRate) 
-	{
-		this.dailyReplacementRate = dailyReplacementRate;
-	}
-	
-	
+    public void setDailyPersonnelReplacementRate(int dailyPersonnelReplacementRate)
+    {
+        this.dailyPersonnelReplacementRate = dailyPersonnelReplacementRate;
+    }
+
+    public int getDailyEquipmentReplacementRate()
+    {
+        return dailyEquipmentReplacementRate;
+    }
+
+    public void setDailyEquipmentReplacementRate(int dailyEquipmentReplacementRate)
+    {
+        this.dailyEquipmentReplacementRate = dailyEquipmentReplacementRate;
+    }
 }

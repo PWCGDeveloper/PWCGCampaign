@@ -1,6 +1,7 @@
 package pwcg.campaign.plane;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -16,53 +17,39 @@ public class PlaneSorter
         
         for (PlaneType plane : planes)
         {
-            if (!planesByGoodnessMap.containsKey(plane.getGoodness()))
+            int planeGoodnessKey = plane.getGoodness() * 1000;
+            while (planesByGoodnessMap.containsKey(planeGoodnessKey))
             {
-                planesByGoodnessMap.put(plane.getGoodness(), plane);
+                ++planeGoodnessKey;
             }
-            else
-            {
-                int planeGoodness = plane.getGoodness();
-                while (planesByGoodnessMap.containsKey(planeGoodness))
-                {
-                    ++planeGoodness;
-                }
-
-                planesByGoodnessMap.put(planeGoodness, plane);
-            }
+            planesByGoodnessMap.put(planeGoodnessKey, plane);
         }
         
         planesByGoodness.addAll(planesByGoodnessMap.values());
-        
+        Collections.reverse(planesByGoodness);
+
         return planesByGoodness;
     }
 
     public static List<EquippedPlane> sortEquippedPlanesByGoodness(List<EquippedPlane> planes) throws PWCGException
     {
         List<EquippedPlane> planesByGoodness = new ArrayList<>();
-        TreeMap<Integer, EquippedPlane> planesByGoodnessMap = new TreeMap<>();
+        TreeMap<String, EquippedPlane> planesByGoodnessMap = new TreeMap<>();
         
         for (EquippedPlane plane : planes)
         {
-            if (!planesByGoodnessMap.containsKey(plane.getGoodness()))
-            {
-                planesByGoodnessMap.put(plane.getGoodness(), plane);
-            }
-            else
-            {
-                int planeGoodness = plane.getGoodness();
-                while (planesByGoodnessMap.containsKey(planeGoodness))
-                {
-                    ++planeGoodness;
-                }
-
-                planesByGoodnessMap.put(planeGoodness, plane);
-            }
+            planesByGoodnessMap.put(formKey(plane), plane);
         }
         
         planesByGoodness.addAll(planesByGoodnessMap.values());
         
         return planesByGoodness;
+    }
+    
+    private static String formKey(EquippedPlane plane)
+    {
+        String key = "" + (10000 - plane.getGoodness()) + plane.getType() + plane.getSerialNumber();
+        return key;
     }
 
 }

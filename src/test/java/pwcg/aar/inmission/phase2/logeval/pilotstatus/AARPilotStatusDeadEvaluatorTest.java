@@ -24,23 +24,12 @@ import pwcg.core.location.Coordinate;
 @RunWith(MockitoJUnitRunner.class)
 public class AARPilotStatusDeadEvaluatorTest
 {
-    @Mock
-    private IAARLogParser aarLogParser;
-
-    @Mock
-    private Coordinate downAt;
-
-    @Mock
-    private IAirfield field;
-
-    @Mock
-    private LogPilot resultCrewmember;
-
-    @Mock
-    private AARDestroyedStatusEvaluator destroyedStatusEvaluator;
-
-    @Mock
-    private AType3 destroyedEventForPlane;
+    @Mock private IAARLogParser aarLogParser;
+    @Mock private Coordinate downAt;
+    @Mock private IAirfield field;
+    @Mock private LogPilot resultCrewmember;
+    @Mock private AARDestroyedStatusEvaluator destroyedStatusEvaluator;
+    @Mock private AType3 destroyedEventForPlane;
     
     private List<LogPilot> deadCrewMembers = new ArrayList<>();
     

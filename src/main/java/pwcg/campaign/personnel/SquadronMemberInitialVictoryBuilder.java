@@ -217,7 +217,7 @@ public class SquadronMemberInitialVictoryBuilder
             
             if (victimSquadron != null)
             {
-                BeforeCampaignVictimGenerator beforeCampaignVictimGenerator = new BeforeCampaignVictimGenerator(victimSquadron, victoryDate);
+                BeforeCampaignVictimGenerator beforeCampaignVictimGenerator = new BeforeCampaignVictimGenerator(campaign, victimSquadron, victoryDate);
                 
                 OutOfMissionVictoryGenerator outOfMissionVictoryGenerator = new OutOfMissionVictoryGenerator(victimSquadron, beforeCampaignVictimGenerator, newPilot);
                 Victory victory = outOfMissionVictoryGenerator.generateOutOfMissionVictory(victoryDate);

@@ -40,7 +40,7 @@ public class FrontLinesForMap
         frontLinesAxis.clear();
         
         String dateDir = DateUtils.getDateStringYYYYMMDD(frontDate);
-        String frontFilePath = PWCGDirectoryManager.getInstance().getPwcgInputDir() + mapName + "\\" + dateDir +  "\\";			
+        String frontFilePath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\" + dateDir +  "\\";			
         read(frontFilePath);
     }
 

@@ -70,7 +70,7 @@ public class CampaignGenerator
 
     private void staffSquadrons() throws PWCGException
     {
-        List<Squadron> activeSquadronsOnCampaignStartDate = PWCGContextManager.getInstance().getSquadronManager().getAllActiveSquadrons(generatorModel.getCampaignDate());
+        List<Squadron> activeSquadronsOnCampaignStartDate = PWCGContextManager.getInstance().getSquadronManager().getActiveSquadrons(generatorModel.getCampaignDate());
         for (Squadron squadron : activeSquadronsOnCampaignStartDate)
         {
             CampaignSquadronGenerator squadronGenerator = new CampaignSquadronGenerator(campaign, squadron);

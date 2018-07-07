@@ -3,7 +3,7 @@ package pwcg.campaign.group;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGDirectoryManager;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.group.airfield.AirfieldBlock;
 import pwcg.campaign.io.json.GroundObjectIOJson;
 import pwcg.campaign.io.json.LocationIOJson;
@@ -32,7 +32,7 @@ public class GroupManager
         bridgeFinder = new BridgeFinder(groundStructureGroup.getBridges());
         railroadStationFinder = new RailroadStationFinder(groundStructureGroup.getRailroadStations());
 
-	    String pwcgInputDir = PWCGDirectoryManager.getInstance().getPwcgInputDir() + mapName + "\\";
+	    String pwcgInputDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\";
 	    LocationSet townLocations = LocationIOJson.readJson(pwcgInputDir, TOWN_LOCATION_FILE_NAME);
         townFinder = new TownFinder(townLocations);
 	}

@@ -32,6 +32,7 @@ import pwcg.gui.campaign.CampaignRosterSquadronPanelFactory;
 import pwcg.gui.campaign.CampaignRosterTopAcesPanelFactory;
 import pwcg.gui.campaign.config.CampaignConfigurationAdvancedGUI;
 import pwcg.gui.campaign.config.CampaignConfigurationSimpleGUI;
+import pwcg.gui.campaign.depo.CampaignEquipmentDepoPanelSet;
 import pwcg.gui.campaign.intel.CampaignIntelligencePanelSet;
 import pwcg.gui.campaign.journal.CampaignJournalPanelSet;
 import pwcg.gui.campaign.journal.CampaignSquadronLogPanelSet;
@@ -131,9 +132,11 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             JButton pilotsButton = makeMenuButton("Pilots", "CampPilots", "Show squadron pilot chalk board");
             addButton(buttonPanel, pilotsButton);
 
-
             JButton topAcesButton = makeMenuButton("Top Aces", "CampTopAces", "Show top aces chalk board");
             addButton(buttonPanel, topAcesButton);
+
+            JButton equipmentButton = makeMenuButton("Equipment", "Equipment", "Show equipment chalk board");
+            addButton(buttonPanel, equipmentButton);
 
             JLabel space2 = new JLabel("");
             buttonPanel.add(space2);
@@ -154,11 +157,14 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         JButton skinManagementButton = makeMenuButton("Skin Management", "CampSkinManager", "Manage skins for the squadron");
         addButton(buttonPanel, skinManagementButton);
 
-        JButton intelligenceButton = makeMenuButton("Intelligence", "CampFlowIntelligence", "View local intelligence reports");
-        addButton(buttonPanel, intelligenceButton);
-
         JButton intellMapButton = makeMenuButton("Intel Map", "CampIntelMap", "View intelligence maps");
         addButton(buttonPanel, intellMapButton);
+
+        JButton intelligenceButton = makeMenuButton("Intelligence Report", "CampFlowIntelligence", "View intelligence reports");
+        addButton(buttonPanel, intelligenceButton);
+
+        JButton equipmentDepoButton = makeMenuButton("Equipment Depo Report", "EquipmentDepoReport", "View equipment depo report");
+        addButton(buttonPanel, equipmentDepoButton);
 
         JLabel space3 = new JLabel("");
         buttonPanel.add(space3);
@@ -213,12 +219,29 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         createSquadronMemberContext(topAceListDisplay);
     }
 
+    private void createEquipmentContext() throws PWCGException 
+    {
+        setLeftPanel(makeLeftPanel());
+        
+        CampaignEquipmentChalkBoard equipmentDisplay = new CampaignEquipmentChalkBoard();
+        equipmentDisplay.makeEquipmentPanel(campaign);
+        setCenterPanel(equipmentDisplay);
+
+        CampaignRosterBasePanelFactory pilotListDisplay = new CampaignRosterSquadronPanelFactory(this);
+        pilotListDisplay.makePilotList();
+        pilotListDisplay.makeCampaignHomePanels();
+        setRightPanel(pilotListDisplay.getPilotListPanel());
+
+        CampaignGuiContextManager.getInstance().clearContextStack();
+        CampaignGuiContextManager.getInstance().pushToContextStack(this);
+    }    
+
     private void createSquadronMemberContext(CampaignRosterBasePanelFactory squadronMemberListDisplay) throws PWCGException 
     {
         squadronMemberListDisplay.makeCampaignHomePanels();
         setLeftPanel(makeLeftPanel());
-        setRightPanel(squadronMemberListDisplay.getPilotListPanel());
         setCenterPanel(squadronMemberListDisplay.getChalkboardPanel());
+        setRightPanel(squadronMemberListDisplay.getPilotListPanel());
 
         CampaignGuiContextManager.getInstance().clearContextStack();
         CampaignGuiContextManager.getInstance().pushToContextStack(this);
@@ -311,10 +334,6 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
                 Mission mission = makeMission(true);
                 showBriefingMap(mission);
             }
-            else if (action.equalsIgnoreCase("CampPilots"))
-            {
-                createPilotContext();
-            }
             else if (action.equalsIgnoreCase("CampFlowTransfer"))
             {
                 showTransfer();
@@ -343,16 +362,26 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             {
                 showIntelReport();
             }
+            else if (action.equalsIgnoreCase("EquipmentDepoReport"))
+            {
+                showEquipmentDepoReport();
+            }
             else if (action.equalsIgnoreCase("CampIntelMap"))
             {
                 showIntelMap();
             }
-            // here we switch the context from squadron pilots to aces
+            else if (action.equalsIgnoreCase("CampPilots"))
+            {
+                createPilotContext();
+            }
             else if (action.equalsIgnoreCase("CampTopAces"))
             {
                 createTopAceContext();
             }
-            // Pilot Selected
+            else if (action.equalsIgnoreCase("Equipment"))
+            {
+                createEquipmentContext();
+            }
             else if (action.startsWith("CampFlowPilot"))
             {
                 showPilot(action);
@@ -492,6 +521,14 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         CampaignGuiContextManager.getInstance().pushToContextStack(intelligence);
     }
 
+    private void showEquipmentDepoReport() throws PWCGException 
+    {
+        CampaignEquipmentDepoPanelSet depo = new CampaignEquipmentDepoPanelSet(campaign);
+        depo.makePanels();
+
+        CampaignGuiContextManager.getInstance().pushToContextStack(depo);
+    }
+    
     private void showIntelMap() throws PWCGException 
     {
         IntelMapGUI map = new IntelMapGUI(campaign.getDate());

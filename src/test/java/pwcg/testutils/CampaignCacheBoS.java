@@ -6,7 +6,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGenerator;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGDirectoryManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightTypes;
@@ -42,7 +41,7 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
     protected void loadCampaignProfiles() throws PWCGException
     {
         make503GroundAttackProfile();
-        makeJasta52Profile();
+        makeJasta51Profile();
         makeKG53Profile();
         makeStG77Profile();
         makeTG2Profile();
@@ -51,7 +50,7 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
     
     private void makeWrittenProfile() throws PWCGException
     {
-        String pwcgCampaignDir = PWCGDirectoryManager.getInstance().getPwcgCampaignsDir();
+        String pwcgCampaignDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir();
         String writtenDir = pwcgCampaignDir + TEST_CAMPAIGN_NAME;
         File writtenDirFile = new File(writtenDir);
         if (!writtenDirFile.exists())
@@ -73,7 +72,7 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
     }
     
     
-    private void makeJasta52Profile() throws PWCGException
+    private void makeJasta51Profile() throws PWCGException
     {
         CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19411101", 20111051);
         campaignProfiles.put(JG_51_PROFILE, generatorModel);

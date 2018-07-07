@@ -122,8 +122,8 @@ public class CampaignIOJsonTest
     {
         Equipment fighterSquadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(501011);
         assert (campaign.getSerialNumber().getNextPlaneSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
-        assert (fighterSquadronEquipment.getEquippedPlanes().size() >= 14);
-        for (EquippedPlane equippedPlane : fighterSquadronEquipment.getEquippedPlanes().values())
+        assert (fighterSquadronEquipment.getActiveEquippedPlanes().size() >= 14);
+        for (EquippedPlane equippedPlane : fighterSquadronEquipment.getActiveEquippedPlanes().values())
         {
             assert (equippedPlane.getSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER);
             assert (equippedPlane.getArchType().equals("albatrosd"));
@@ -134,8 +134,8 @@ public class CampaignIOJsonTest
     {
         Equipment reconSquadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(101002);
         assert (campaign.getSerialNumber().getNextPlaneSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
-        assert (reconSquadronEquipment.getEquippedPlanes().size() >= 14);
-        for (EquippedPlane equippedPlane : reconSquadronEquipment.getEquippedPlanes().values())
+        assert (reconSquadronEquipment.getActiveEquippedPlanes().size() >= 14);
+        for (EquippedPlane equippedPlane : reconSquadronEquipment.getActiveEquippedPlanes().values())
         {
             assert (equippedPlane.getSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER);
             assert (equippedPlane.getArchType().equals("re8") || equippedPlane.getArchType().equals("sopstr"));

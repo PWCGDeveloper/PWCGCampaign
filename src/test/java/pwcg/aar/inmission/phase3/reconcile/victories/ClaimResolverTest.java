@@ -70,12 +70,12 @@ public class ClaimResolverTest
         for (int i = 0; i < 3; ++i)
         {
             LogPlane victor = new LogPlane();
-            victor.setSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
+            victor.setPilotSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
             victor.setSquadronId(501011);
             victor.intializePilot(SerialNumber.PLAYER_SERIAL_NUMBER);
             
             LogPlane victim = new LogPlane();
-            victim.setSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER);
+            victim.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER);
             victim.setSquadronId(102056);
             victim.intializePilot(SerialNumber.AI_STARTING_SERIAL_NUMBER);
 

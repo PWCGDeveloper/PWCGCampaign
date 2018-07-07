@@ -6,6 +6,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.outofmission.DuringCampaignVictimGenerator;
 import pwcg.campaign.outofmission.OutOfMissionVictoryGenerator;
 import pwcg.campaign.personnel.EnemySquadronFinder;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.Victory;
@@ -89,8 +90,7 @@ public class OutOfMissionVictoryEventHandler
     {
         Squadron victorSquadron = victorPilot.determineSquadron();
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-        Squadron victimSquadron = enemySquadronFinder.getRandomEnemySquadron(victorSquadron, campaign.getDate());
-        
+        Squadron victimSquadron = enemySquadronFinder.getRandomEnemyViableSquadron(victorSquadron, campaign.getDate());
         if (victimSquadron != null)
         {
             generateVictoryWithSquadron(victorPilot, victimSquadron);
@@ -107,11 +107,13 @@ public class OutOfMissionVictoryEventHandler
 
         if (victory != null)
         {
-            victoriesOutOMission.addVictoryAwards(victorPilot.getSerialNumber(), victory);
             SquadronMember shotDownPilot = outOfMissionVictoryGenerator.getVictimPilot();
-            if (shotDownPilot!= null && shotDownPilot.getSerialNumber() >= SerialNumber.AI_STARTING_SERIAL_NUMBER)
+            EquippedPlane shotDownPlane = outOfMissionVictoryGenerator.getVictimPlane();
+            if (shotDownPilot!= null && shotDownPlane != null && shotDownPilot.getSerialNumber() >= SerialNumber.AI_STARTING_SERIAL_NUMBER)
             {
+                victoriesOutOMission.addVictoryAwards(victorPilot.getSerialNumber(), victory);
                 victoriesOutOMission.addShotDownPilot(shotDownPilot);
+                victoriesOutOMission.addShotDownPlane(shotDownPlane);
             }
         }
     }

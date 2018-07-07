@@ -31,7 +31,7 @@ public class BriefingDataInitializer
         }
         
         Equipment squadronPlanes = mission.getCampaign().getEquipmentManager().getEquipmentForSquadron(mission.getCampaign().getSquadronId());
-        for (EquippedPlane squadronPlane : squadronPlanes.getEquippedPlanes().values())
+        for (EquippedPlane squadronPlane : squadronPlanes.getActiveEquippedPlanes().values())
         {
             briefingAssignmentData.addPlane(squadronPlane);
         }

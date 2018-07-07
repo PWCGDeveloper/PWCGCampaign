@@ -92,8 +92,8 @@ public class AARPhase3ReconcileCoordinatorTest
         Mockito.when(evaluationData.getVictoryResults()).thenReturn(firmVictories);   
         
         createCampaignMembersInMission();
-        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(playerPlaneVictor.getSerialNumber())).thenReturn(playerPlaneVictor);   
-        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(aiPlaneVictor.getSerialNumber())).thenReturn(aiPlaneVictor);   
+        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(playerPlaneVictor.getPilotSerialNumber())).thenReturn(playerPlaneVictor);   
+        Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(aiPlaneVictor.getPilotSerialNumber())).thenReturn(aiPlaneVictor);   
     }
 
     @Test
@@ -102,21 +102,21 @@ public class AARPhase3ReconcileCoordinatorTest
         addPlayerDeclarations();
         createAcesInMission();
         
-        createVictory(playerPlaneVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1000);
-        createVictory(aiPlaneVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001);
-        createVictory(aiPlaneVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002);
+        createVictory(playerPlaneVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1000, SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 1000);
+        createVictory(aiPlaneVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001, SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 1001);
+        createVictory(aiPlaneVictor, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002, SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 1002);
 
         AARPhase3ReconcileCoordinator phase3ReconcileCoordinator = new AARPhase3ReconcileCoordinator(campaign, aarContext);
-        ReconciledInMissionData reconciledInMissionData = phase3ReconcileCoordinator.performAARPhaseReconcileLogsWithAAR(playerDeclarations);
+        ReconciledInMissionData reconciledInMissionData = phase3ReconcileCoordinator.reconcileLogsWithAAR(playerDeclarations);
         
-        assert(reconciledInMissionData.getPersonnelLosses().getPersonnelKilled().size() == 1);
-        assert(reconciledInMissionData.getPersonnelLosses().getPersonnelCaptured().size() == 1);
-        assert(reconciledInMissionData.getPersonnelLosses().getPersonnelMaimed().size() == 1);
-        assert(reconciledInMissionData.getPersonnelLosses().getPlayerStatus() == SquadronMemberStatus.STATUS_WOUNDED);
-        assert(reconciledInMissionData.getPersonnelLosses().getAcesKilled().size() == 2);
+        assert(reconciledInMissionData.getPersonnelLossesInMission().getPersonnelKilled().size() == 1);
+        assert(reconciledInMissionData.getPersonnelLossesInMission().getPersonnelCaptured().size() == 1);
+        assert(reconciledInMissionData.getPersonnelLossesInMission().getPersonnelMaimed().size() == 1);
+        assert(reconciledInMissionData.getPersonnelLossesInMission().getPlayerStatus() == SquadronMemberStatus.STATUS_WOUNDED);
+        assert(reconciledInMissionData.getPersonnelLossesInMission().getAcesKilled().size() == 2);
 
-        List<Victory> aiPilotVictories = reconciledInMissionData.getReconciledVictoryData().getVictoryAwardsForPilot(aiPlaneVictor.getSerialNumber());
-        List<Victory> playerVictories = reconciledInMissionData.getReconciledVictoryData().getVictoryAwardsForPilot(playerPlaneVictor.getSerialNumber());
+        List<Victory> aiPilotVictories = reconciledInMissionData.getReconciledVictoryData().getVictoryAwardsForPilot(aiPlaneVictor.getPilotSerialNumber());
+        List<Victory> playerVictories = reconciledInMissionData.getReconciledVictoryData().getVictoryAwardsForPilot(playerPlaneVictor.getPilotSerialNumber());
         List<ClaimDeniedEvent> playerClaimsDenied = reconciledInMissionData.getReconciledVictoryData().getPlayerClaimsDenied();
         assert (aiPilotVictories.size() == 2);
         assert (playerVictories.size() == 1);
@@ -133,14 +133,15 @@ public class AARPhase3ReconcileCoordinatorTest
         }
     }
 
-    private void createVictory(LogPlane victor, Integer serialNumber)
+    private void createVictory(LogPlane victor, Integer pilotSerialNumber, Integer planeSerialNumber)
     {
         LogPlane victim = new LogPlane();
-        victim.setSerialNumber(serialNumber);
+        victim.setPilotSerialNumber(pilotSerialNumber);
+        victim.setPlaneSerialNumber(planeSerialNumber);
         victim.setVehicleType("albatrosd3");
         victim.setCountry(new RoFCountry(Country.GERMANY));
         victim.setSquadronId(501011);
-        victim.intializePilot(serialNumber);
+        victim.intializePilot(pilotSerialNumber);
 
         LogVictory resultVictory = new LogVictory();
         resultVictory.setLocation(new Coordinate(100.0, 0.0, 100.0));
@@ -154,13 +155,13 @@ public class AARPhase3ReconcileCoordinatorTest
     {        
         playerInFlight = campaign.getPlayer();
         addSquadronPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
-        playerPlaneVictor.setSerialNumber(playerInFlight.getSerialNumber());
+        playerPlaneVictor.setPilotSerialNumber(playerInFlight.getSerialNumber());
         playerPlaneVictor.setCountry(new RoFCountry(Country.FRANCE));
         playerPlaneVictor.intializePilot(playerInFlight.getSerialNumber());
                 
         sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");
         addSquadronPilot(sergentInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
-        aiPlaneVictor.setSerialNumber(sergentInFlight.getSerialNumber());
+        aiPlaneVictor.setPilotSerialNumber(sergentInFlight.getSerialNumber());
         aiPlaneVictor.setCountry(new RoFCountry(Country.FRANCE));
         aiPlaneVictor.intializePilot(sergentInFlight.getSerialNumber());
 

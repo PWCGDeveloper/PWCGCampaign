@@ -137,7 +137,7 @@ public class CampaignPersonnelManager
         this.personnelReplacementsServices.put(serviceId, personnelReplacementsService);
     }
 
-    public List<PersonnelReplacementsService> getAllReplacements()
+    public List<PersonnelReplacementsService> getAllPersonnelReplacements()
     {
         return new ArrayList<PersonnelReplacementsService>(personnelReplacementsServices.values());
     }

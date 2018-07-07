@@ -66,14 +66,14 @@ public class InterceptPlayerCoordinateGenerator
         List<FrontLinePoint> frontPointsPatrol = frontLinesForMap.findClosestFrontPositionsForSide(
                 squadron.determineCurrentPosition(campaign.getDate()), 
                 CLOSE_ENOUGH_FOR_INTERCEPT, 
-                squadron.determineEnemySide(campaign.getDate()));
+                squadron.determineEnemySide());
         
         if (frontPointsPatrol.size() == 0)
         {
             frontPointsPatrol = frontLinesForMap.findClosestFrontPositionsForSide(
                     squadron.determineCurrentPosition(campaign.getDate()), 
                     CLOSE_ENOUGH_FOR_INTERCEPT * 1.5, 
-                    squadron.determineEnemySide(campaign.getDate()));        
+                    squadron.determineEnemySide());        
         }
    
         int selectedIndex = RandomNumberGenerator.getRandom(frontPointsPatrol.size());

@@ -6,6 +6,7 @@ import java.util.Map;
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -15,7 +16,8 @@ public class OutOfMissionAAALossCalculator
 {
     private Campaign campaign;
     private AARContext aarContext;
-    private Map<Integer, SquadronMember> lossesDueToAAA = new HashMap<>();
+    private Map<Integer, SquadronMember> pilotsLostDueToAAA = new HashMap<>();
+    private Map<Integer, EquippedPlane> planesLostDueToAAA = new HashMap<>();
     private OutOfMissionAAAOddsCalculator oddsShotDownByAAACalculator;
 
     public OutOfMissionAAALossCalculator (Campaign campaign, AARContext aarContext, OutOfMissionAAAOddsCalculator oddsShotDownByAAACalculator)
@@ -25,7 +27,7 @@ public class OutOfMissionAAALossCalculator
         this.oddsShotDownByAAACalculator = oddsShotDownByAAACalculator;
     }
     
-    public Map<Integer, SquadronMember> pilotsLostToAAA() throws PWCGException
+    public void lostToAAA() throws PWCGException
     {
         for (SquadronMember squadronMember : aarContext.getPreliminaryData().getCampaignMembersOutOfMission().getSquadronMembers().values())
         {
@@ -35,8 +37,6 @@ public class OutOfMissionAAALossCalculator
                 calculatePilotShotDownByAAA(squadronMember);
             }
         }
-
-        return lossesDueToAAA;
     }
 
     private void calculatePilotShotDownByAAA(SquadronMember squadronMember) throws PWCGException
@@ -48,8 +48,21 @@ public class OutOfMissionAAALossCalculator
             int shotDownDiceRoll = RandomNumberGenerator.getRandom(1000);
             if (shotDownDiceRoll <= oddsShotDown)
             {
-                lossesDueToAAA.put(squadronMember.getSerialNumber(), squadronMember);
+                EquippedPlane planeShotDownByAAA = campaign.getEquipmentManager().destroyPlaneFromSquadron(squadronMember.getSquadronId(), campaign.getDate());
+
+                pilotsLostDueToAAA.put(squadronMember.getSerialNumber(), squadronMember);
+                planesLostDueToAAA.put(planeShotDownByAAA.getSerialNumber(), planeShotDownByAAA);
             }
         }
+    }
+
+    public Map<Integer, SquadronMember> getPilotsLostDueToAAA()
+    {
+        return pilotsLostDueToAAA;
+    }
+
+    public Map<Integer, EquippedPlane> getPlanesLostDueToAAA()
+    {
+        return planesLostDueToAAA;
     }
 }

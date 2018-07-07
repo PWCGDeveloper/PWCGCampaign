@@ -1,7 +1,13 @@
 package pwcg.campaign.plane;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 
 public class PlaneArchType
 {
@@ -23,8 +29,16 @@ public class PlaneArchType
         return planeArchTypeName;
     }
 
-    public Map<String, PlaneType> getMemberPlaneTypes()
+    public List<PlaneType> getActiveMemberPlaneTypes(Date date) throws PWCGException
     {
-        return memberPlaneTypes;
+        List<PlaneType> activePlaneTypes = new ArrayList<>();
+        for (PlaneType planeType : memberPlaneTypes.values())
+        {
+            if (DateUtils.isDateInRange(date, planeType.getIntroduction(), planeType.getWithdrawal()))
+            {
+                activePlaneTypes.add(planeType);
+            }
+        }
+        return activePlaneTypes;
     }   
 }

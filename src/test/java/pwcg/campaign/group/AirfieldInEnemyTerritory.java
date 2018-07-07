@@ -48,7 +48,7 @@ public class AirfieldInEnemyTerritory
 	private void determineProperPlacementForDate(FrontMapIdentifier mapId, Date startDate) throws PWCGException
 	{
 		SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
-		for (Squadron squadron : squadronManager.getAllActiveSquadrons(startDate))
+		for (Squadron squadron : squadronManager.getActiveSquadrons(startDate))
 		{
 		    determineSquadronIsOnCorrectSide(mapId, startDate, squadron);
 		}

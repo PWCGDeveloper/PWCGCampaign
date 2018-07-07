@@ -29,7 +29,7 @@ public class BombingPackage extends FlightPackage
 	public BombingFlight createPackageTacticalTarget () throws PWCGException 
 	{
         GroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
-        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide(campaign.getDate()));
+        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
 
         BombingFlight bombingFlight = makeBombingFlight(targetCoordinates);
         bombingFlight.linkGroundUnitsToFlight(groundUnitCollection);

@@ -22,7 +22,7 @@ public class DiveBombingPackage extends FlightPackage
     public Flight createPackage () throws PWCGException 
 	{
         GroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
-        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide(campaign.getDate()));
+        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
 
 		// Now the actual artillery spot mission
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());

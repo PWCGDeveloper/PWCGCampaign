@@ -5,7 +5,6 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGDirectoryManager;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
@@ -31,7 +30,7 @@ public class MissionFileCleaner
     {
         List<String> results = new ArrayList<String>();
 
-        String missionDir = PWCGDirectoryManager.getInstance().getSimulatorDataDir() + "Missions\\";
+        String missionDir = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir() + "Missions\\";
         directoryReader.sortilesInDir(missionDir);
         if (!directoryReader.getFiles().isEmpty())
         {

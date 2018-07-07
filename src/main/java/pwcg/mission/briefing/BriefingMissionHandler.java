@@ -47,7 +47,14 @@ public class BriefingMissionHandler
         payloadHelper.setPayloadForChangedPlane(pilotSerialNumber);
     }
 
-    public void assignPilotFromBriefing(Integer pilotSerialNumber, Integer planeSerialNumber) throws PWCGException
+
+    public void assignPilotFromBriefing(Integer pilotSerialNumber) throws PWCGException
+    {
+        EquippedPlane planeForPilot = this.getSortedUnassignedPlanes().get(0);
+        assignPilotAndPlaneFromBriefing(pilotSerialNumber, planeForPilot.getSerialNumber());
+    }
+
+    public void assignPilotAndPlaneFromBriefing(Integer pilotSerialNumber, Integer planeSerialNumber) throws PWCGException
     {
         briefingAssignmentData.assignPilot(pilotSerialNumber, planeSerialNumber);
         
@@ -149,4 +156,9 @@ public class BriefingMissionHandler
     {
         return briefParametersContext;
     }
+
+    public BriefingAssignmentData getBriefingAssignmentData()
+    {
+        return briefingAssignmentData;
+    }    
 }

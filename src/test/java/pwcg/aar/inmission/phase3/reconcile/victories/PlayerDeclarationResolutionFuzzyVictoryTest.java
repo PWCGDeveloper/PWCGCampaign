@@ -66,8 +66,8 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
         
         fuzzyVictories.clear();
         
-        playerVictor.setSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
-        aiVictor.setSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
+        playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
+        aiVictor.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
         
         createMocks();
     }
@@ -97,7 +97,7 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
     private void createVictory(Integer victimSerialNumber, String aircraftType, Role approximateRole)
     {        
         LogPlane victim = new LogPlane();
-        victim.setSerialNumber(victimSerialNumber);
+        victim.setPilotSerialNumber(victimSerialNumber);
         victim.setVehicleType(aircraftType);
         victim.setRole(approximateRole);
 

@@ -34,7 +34,7 @@ public class DuringCampaignVictimGeneratorTest
     {               
         Squadron victorSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());        
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-        Squadron victimSquadron = enemySquadronFinder.getRandomEnemySquadron(victorSquadron, campaign.getDate());
+        Squadron victimSquadron = enemySquadronFinder.getRandomEnemyViableSquadron(victorSquadron, campaign.getDate());
 
         DuringCampaignVictimGenerator  victimGenerator = new DuringCampaignVictimGenerator(campaign, victimSquadron);
         Side victorSide = victorSquadron.determineSquadronCountry(campaign.getDate()).getSide();

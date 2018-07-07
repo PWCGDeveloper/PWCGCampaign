@@ -11,9 +11,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.aar.campaign.update.CampaignSquadronPersonnelUpdater;
+import pwcg.aar.campaign.update.CampaignPersonnelUpdater;
 import pwcg.aar.data.AARContext;
-import pwcg.aar.outofmission.phase2.transfer.TransferRecord;
+import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.Ace;
@@ -57,7 +57,7 @@ public class CampaignSquadronPersonnelUpdaterTest
         squadMembersKilled.put(deadSquadronMember.getSerialNumber(), deadSquadronMember);
         aarContext.getCampaignUpdateData().getPersonnelLosses().mergePersonnelKilled(squadMembersKilled);
 
-        CampaignSquadronPersonnelUpdater personellUpdater = new CampaignSquadronPersonnelUpdater(campaign, aarContext);
+        CampaignPersonnelUpdater personellUpdater = new CampaignPersonnelUpdater(campaign, aarContext);
         personellUpdater.personnelUpdates();
 
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(deadSquadronMember.getSerialNumber()); 
@@ -72,7 +72,7 @@ public class CampaignSquadronPersonnelUpdaterTest
         squadMembersCaptured.put(capturedSquadronMember.getSerialNumber(), capturedSquadronMember);
         aarContext.getCampaignUpdateData().getPersonnelLosses().mergePersonnelCaptured(squadMembersCaptured);
 
-        CampaignSquadronPersonnelUpdater personellUpdater = new CampaignSquadronPersonnelUpdater(campaign, aarContext);
+        CampaignPersonnelUpdater personellUpdater = new CampaignPersonnelUpdater(campaign, aarContext);
         personellUpdater.personnelUpdates();
 
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(capturedSquadronMember.getSerialNumber()); 
@@ -87,7 +87,7 @@ public class CampaignSquadronPersonnelUpdaterTest
         squadMembersMaimed.put(maimedSquadronMember.getSerialNumber(), maimedSquadronMember);
         aarContext.getCampaignUpdateData().getPersonnelLosses().mergePersonnelMaimed(squadMembersMaimed);
 
-        CampaignSquadronPersonnelUpdater personellUpdater = new CampaignSquadronPersonnelUpdater(campaign, aarContext);
+        CampaignPersonnelUpdater personellUpdater = new CampaignPersonnelUpdater(campaign, aarContext);
         personellUpdater.personnelUpdates();
 
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(maimedSquadronMember.getSerialNumber()); 
@@ -100,9 +100,9 @@ public class CampaignSquadronPersonnelUpdaterTest
         SquadronMember transferredSquadronMember = SquadronMemberPicker.pickNonAceSquadronMember(campaign); 
         TransferRecord transferRecord = new TransferRecord(transferredSquadronMember, 101103, 101048);
         
-        aarContext.getCampaignUpdateData().getTransferData().getSquadronTransferData().addTransferRecord(transferRecord);
+        aarContext.getCampaignUpdateData().getResupplyData().getSquadronTransferData().addTransferRecord(transferRecord);
 
-        CampaignSquadronPersonnelUpdater personellUpdater = new CampaignSquadronPersonnelUpdater(campaign, aarContext);
+        CampaignPersonnelUpdater personellUpdater = new CampaignPersonnelUpdater(campaign, aarContext);
         personellUpdater.personnelUpdates();
 
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(transferredSquadronMember.getSerialNumber()); 
@@ -118,7 +118,7 @@ public class CampaignSquadronPersonnelUpdaterTest
         acesKilled.put(101064, guynemerInCampaign);
         aarContext.getCampaignUpdateData().getPersonnelLosses().mergeAcesKilled(acesKilled);
 
-        CampaignSquadronPersonnelUpdater personellUpdater = new CampaignSquadronPersonnelUpdater(campaign, aarContext);
+        CampaignPersonnelUpdater personellUpdater = new CampaignPersonnelUpdater(campaign, aarContext);
         personellUpdater.personnelUpdates();
 
         Ace aceAfterUpdate = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(101064); 
@@ -132,7 +132,7 @@ public class CampaignSquadronPersonnelUpdaterTest
         acesKilled.put(101175, vossInCampaign);
         aarContext.getCampaignUpdateData().getPersonnelLosses().mergeAcesKilled(acesKilled);
 
-        CampaignSquadronPersonnelUpdater personellUpdater = new CampaignSquadronPersonnelUpdater(campaign, aarContext);
+        CampaignPersonnelUpdater personellUpdater = new CampaignPersonnelUpdater(campaign, aarContext);
         personellUpdater.personnelUpdates();
 
         Ace aceAfterUpdate = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(101175); 

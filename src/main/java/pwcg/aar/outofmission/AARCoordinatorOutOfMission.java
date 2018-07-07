@@ -3,8 +3,8 @@ package pwcg.aar.outofmission;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.outofmission.phase1.elapsedtime.AAROutOfMissionPhase1EventCoordinator;
 import pwcg.aar.outofmission.phase1.elapsedtime.ReconciledOutOfMissionData;
-import pwcg.aar.outofmission.phase2.transfer.AARPhaseOutOfMissionPhase2TransferCoordinator;
-import pwcg.aar.outofmission.phase2.transfer.AARTransferData;
+import pwcg.aar.outofmission.phase2.resupply.AARResupplyCoordinator;
+import pwcg.aar.outofmission.phase2.resupply.AARResupplyData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 
@@ -22,7 +22,7 @@ public class AARCoordinatorOutOfMission
     public void coordinateOutOfMissionAAR() throws PWCGException
     {
     	outOfMissionEvents();  
-    	transfers();
+    	resupply();
     }
 
     private void outOfMissionEvents() throws PWCGException
@@ -32,10 +32,10 @@ public class AARCoordinatorOutOfMission
         aarContext.setReconciledOutMissionData(reconciledOutOfMissionData);
     }
 
-    private void transfers() throws PWCGException
+    private void resupply() throws PWCGException
     {
-        AARPhaseOutOfMissionPhase2TransferCoordinator transferCoordinator = new AARPhaseOutOfMissionPhase2TransferCoordinator(campaign, aarContext);
-        AARTransferData transferData = transferCoordinator.handleTransfers();
-        aarContext.getReconciledOutOfMissionData().setTransferData(transferData);
+        AARResupplyCoordinator transferCoordinator = new AARResupplyCoordinator(campaign, aarContext);
+        AARResupplyData transferData = transferCoordinator.handleResupply();
+        aarContext.getReconciledOutOfMissionData().setResupplyData(transferData);
     }
 }

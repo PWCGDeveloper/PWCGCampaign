@@ -5,9 +5,11 @@ import java.util.Map;
 
 import pwcg.aar.awards.CampaignMemberAwardsGeneratorOutOfMission;
 import pwcg.aar.data.AARContext;
+import pwcg.aar.data.AAREquipmentLosses;
 import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -51,8 +53,7 @@ public class AAROutOfMissionPhase1EventCoordinator
 	{
         outOfMissionAwards();
 		aceElapsedTimeEvents();
-		Map<Integer, SquadronMember> shotDownPilots = outOfMissionVictories();
-		outOfMissionLosses(shotDownPilots);
+		outOfMissionVictories();
 		createElapsedTimeEvents();
 	}
 
@@ -70,19 +71,24 @@ public class AAROutOfMissionPhase1EventCoordinator
         reconciledOutOfMissionData.getHistoricalAceEvents().merge(historicalAceEvents);
     }
     
-    private Map<Integer, SquadronMember> outOfMissionVictories() throws PWCGException
+    private void outOfMissionVictories() throws PWCGException
     {
         OutOfMissionVictoryEventHandler victoryEventHandler = new OutOfMissionVictoryEventHandler(campaign, aarContext);
         OutOfMissionVictoryData victoriesOutOMission = victoryEventHandler.generateOutOfMissionVictories();
         reconciledOutOfMissionData.getPersonnelAwards().getVictoriesByPilot().putAll(victoriesOutOMission.getVictoryAwardsBySquadronMember());
-        return victoriesOutOMission.getShotDownPilots();
+        outOfMissionLosses(victoriesOutOMission.getShotDownPilots(), victoriesOutOMission.getShotDownPlanes());
     }
 
-    private void outOfMissionLosses(Map<Integer, SquadronMember> shotDownPilots) throws PWCGException 
+    private void outOfMissionLosses(Map<Integer, SquadronMember> shotDownPilots, Map<Integer, EquippedPlane> shotDownPlanes) throws PWCGException 
     {
-        OutOfMissionLossHandler personnelHandler = new  OutOfMissionLossHandler(campaign, aarContext);
-        AARPersonnelLosses personnelLosses = personnelHandler.personellLosses(shotDownPilots);
-        reconciledOutOfMissionData.getPersonnelLosses().merge(personnelLosses);
+        OutOfMissionLossHandler lossHandler = new  OutOfMissionLossHandler(campaign, aarContext);
+        lossHandler.lossesOutOfMission(shotDownPilots, shotDownPlanes);
+        
+        AARPersonnelLosses personnelLosses = lossHandler.getOutOfMissionPersonnelLosses();
+        reconciledOutOfMissionData.getPersonnelLossesOutOfMission().merge(personnelLosses);
+        
+        AAREquipmentLosses equipmentLosses = lossHandler.getOutOfMissionEquipmentLosses();
+        reconciledOutOfMissionData.getEquipmentLossesOutOfMission().merge(equipmentLosses);
     }
 
     private void createElapsedTimeEvents() throws PWCGException

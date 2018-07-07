@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.AARTestSetup;
-import pwcg.aar.outofmission.phase2.transfer.TransferRecord;
+import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.aar.ui.events.TransferEventGenerator;
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.core.exception.PWCGException;

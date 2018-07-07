@@ -75,16 +75,16 @@ public class AARCrewBuilderTest
         addPlane(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
     }
 
-    private void addPlane(Integer serialNumber)
+    private void addPlane(Integer pilotSerialNumber)
     {
         LogPilot pilot = new LogPilot();
-        pilot.setSerialNumber(serialNumber);
+        pilot.setSerialNumber(pilotSerialNumber);
         
         LogPlane plane1 = new LogPlane();
-        plane1.setSerialNumber(serialNumber);
-        plane1.intializePilot(serialNumber);
+        plane1.setPilotSerialNumber(pilotSerialNumber);
+        plane1.intializePilot(pilotSerialNumber);
         
-        String planeId = serialNumber.toString();
+        String planeId = pilotSerialNumber.toString();
         planeAiEntities.put(planeId, plane1);
     }
 

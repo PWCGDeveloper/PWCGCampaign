@@ -34,7 +34,7 @@ public class ArtillerySpotPackage extends FlightPackage
 
     private Flight createFlight(GroundUnitCollection groundUnitCollection) throws PWCGException
     {
-        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide(campaign.getDate()));
+        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
         
 		Flight artySpot = null;

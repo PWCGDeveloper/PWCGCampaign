@@ -29,12 +29,20 @@ public abstract class CampaignCacheBase implements ICampaignCache
     public Campaign makeCampaign(String campaignProfileName) throws PWCGException
     {
         initialize();
+        
+        Campaign campaign = null;
         if (campaignCache.containsKey(campaignProfileName))
         {
-            return campaignCache.get(campaignProfileName);
+            campaign = campaignCache.get(campaignProfileName);
+        }
+        else
+        {          
+            campaign = makeCampaignForceCreation(campaignProfileName);
         }
         
-        return makeCampaignForceCreation(campaignProfileName);
+        PWCGContextManager.getInstance().setCampaign(campaign);
+        
+        return campaign;
     }
 
     @Override

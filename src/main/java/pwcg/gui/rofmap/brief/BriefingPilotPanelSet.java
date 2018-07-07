@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.io.mission.MissionFileWriter;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -53,8 +54,6 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     private BriefingMissionHandler briefingMissionHandler = null;
     private Map<Integer, BriefingPlaneModificationsPicker> planeModifications = new HashMap<>();
     private Campaign campaign;
-    private Integer selectedPilot;
-    private Integer selectedPlane;
 
     
 	public BriefingPilotPanelSet(CampaignHomeGUI campaignHomeGui, BriefingMissionHandler briefingMissionHandler) 
@@ -173,7 +172,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
 		createUnassignedPilots(assignedPilotPanel);
 
-		for (int i = 0; i < (NUM_COLUMNS - 1); ++i)
+		for (int i = 0; i < (NUM_COLUMNS); ++i)
 		{
             JLabel spacerLabelBottom = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
             assignedPilotPanel.add(spacerLabelBottom);
@@ -282,14 +281,42 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         JLabel modificationsLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
         assignedPilotPanel.add(modificationsLabel);
  
-        for (SquadronMember unassignedSquadronMember : briefingMissionHandler.getSortedUnassignedPilots())
+        List<SquadronMember> sortedUnassignedPilots = briefingMissionHandler.getSortedUnassignedPilots();
+        List<EquippedPlane> sortedUnassignedPlanes = briefingMissionHandler.getSortedUnassignedPlanes();
+        
+        int numRows = sortedUnassignedPilots.size();
+        if (sortedUnassignedPlanes.size() > numRows)
+        {
+            numRows = sortedUnassignedPlanes.size();
+        }
+        
+        for (int i = 0; i < numRows; ++i)
         {           
-            String pilotNameText = unassignedSquadronMember.getNameAndRank();
-            JButton unassignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText, "Assign Pilot:" + unassignedSquadronMember.getSerialNumber(), this);
-			assignedPilotPanel.add(unassignedPilotButton);
-
-			JLabel planeSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
-			assignedPilotPanel.add(planeSpaceLabel);
+            if (sortedUnassignedPilots.size() > i)
+            {
+                SquadronMember unassignedSquadronMember = sortedUnassignedPilots.get(i);
+                String pilotNameText = unassignedSquadronMember.getNameAndRank();
+                JButton unassignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText, "Assign Pilot:" + unassignedSquadronMember.getSerialNumber(), this);
+                assignedPilotPanel.add(unassignedPilotButton);
+            }
+            else
+            {
+                JLabel planeSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+                assignedPilotPanel.add(planeSpaceLabel);
+            }
+            
+            if (sortedUnassignedPlanes.size() > i)
+            {
+                EquippedPlane unassignedPlane = sortedUnassignedPlanes.get(i);
+                String planeNameText = unassignedPlane.getDisplayName() + " (" + unassignedPlane.getSerialNumber() + ")";
+                JLabel planeLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel(planeNameText);
+                assignedPilotPanel.add(planeLabel);
+            }
+            else
+            {
+                JLabel planeSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
+                assignedPilotPanel.add(planeSpaceLabel);
+            }
 
             JLabel payloadSpaceLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel("   ");
             assignedPilotPanel.add(payloadSpaceLabel);
@@ -397,7 +424,13 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     {
         if (!briefingMissionHandler.getMission().isFinalized())
         {
-            selectedPilot = getPilotSerialNumberFromAction(action);
+            if (briefingMissionHandler.getBriefingAssignmentData().getUnassignedPlanes().size() > 0)
+            {
+                Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
+                
+                briefingMissionHandler.assignPilotFromBriefing(pilotSerialNumber);
+                refreshPilotDisplay();
+            }
         }
     }
 
@@ -476,9 +509,10 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         for (int i = 1; i < assignedPairings.size(); ++i)
         {
             CrewPlanePayloadPairing subordinatePlane = assignedPairings.get(i);
-            if (leadPlane.getPlane().equals(subordinatePlane.getPlane()))
+            if (leadPlane.getPlane().getType().equals(subordinatePlane.getPlane().getType()))
             {
                 subordinatePlane.setPayloadId(leadPlane.getPayloadId());
+                subordinatePlane.setModifications(leadPlane.getModifications());
             }
         }
     }

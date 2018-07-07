@@ -7,7 +7,6 @@ import java.util.List;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGDirectoryManager;
 import pwcg.campaign.io.json.LocationIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.LocationSet;
@@ -93,7 +92,7 @@ public class FrontLineWriter
 
     private void writeFront() throws PWCGException, IOException
     {
-        String outputPath = PWCGDirectoryManager.getInstance().getPwcgInputDir() + PWCGContextManager.getInstance().getCurrentMap().getMapName() + "\\";      
+        String outputPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + PWCGContextManager.getInstance().getCurrentMap().getMapName() + "\\";      
         
         LocationSet locationSet = new LocationSet("FrontLines");
         frontLinePointToLocationSet(locationSet, userFrontLines);

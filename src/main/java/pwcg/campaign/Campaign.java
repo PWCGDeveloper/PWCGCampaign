@@ -9,7 +9,6 @@ import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGDirectoryManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.io.json.CampaignIOJson;
@@ -248,7 +247,7 @@ public class Campaign
     public static List<String> getCampaignNames() throws PWCGUserException 
     {       
         List<String> campaignList = new ArrayList<String>();
-        String campaignRootDirName = PWCGDirectoryManager.getInstance().getPwcgCampaignsDir();
+        String campaignRootDirName = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir();
         File campaignRootDir = new File(campaignRootDirName);
 
         if (!campaignRootDir.exists() || !campaignRootDir.isDirectory())
@@ -286,7 +285,7 @@ public class Campaign
 	
 	public String getCampaignPath()
 	{
-		String dir = PWCGDirectoryManager.getInstance().getPwcgCampaignsDir();
+		String dir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir();
 		String campaignPath = dir + getName() + "\\"; 
 		
 		File campaignDir = new File(campaignPath); 

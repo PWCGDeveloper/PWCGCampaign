@@ -72,6 +72,12 @@ public class RoFContextManager extends PWCGContextManagerBase implements IPWCGCo
     }
 
     @Override
+    public PWCGDirectoryManager getDirectoryManager()
+    {
+        return new PWCGDirectoryManager(true);
+    }
+
+    @Override
     public boolean determineUseMovingFront() throws PWCGException
     {        
         return true;

@@ -16,6 +16,7 @@ import pwcg.aar.data.CampaignUpdateData;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
@@ -60,8 +61,8 @@ public class PersonnelOutOfMissionLossesHandlerTest
     public void testAcesKilled () throws PWCGException
     {     
         OutOfMissionLossHandler outOfMissionLossesHandler = new OutOfMissionLossHandler(campaign, aarContext);
-        outOfMissionLossesHandler.personellLosses(new HashMap<Integer, SquadronMember>());
-        AARPersonnelLosses lossesInMissionDataTotal = outOfMissionLossesHandler.getPersonnelLosses();
+        outOfMissionLossesHandler.lossesOutOfMission(new HashMap<Integer, SquadronMember>(), new HashMap<Integer, EquippedPlane>());
+        AARPersonnelLosses lossesInMissionDataTotal = outOfMissionLossesHandler.getOutOfMissionPersonnelLosses();
         assert (lossesInMissionDataTotal.getAcesKilled().size() > 0);
     }
 
@@ -73,9 +74,9 @@ public class PersonnelOutOfMissionLossesHandlerTest
         Map<Integer, SquadronMember> aiCaptured = new HashMap<>();
 
         OutOfMissionLossHandler outOfMissionLossesHandler = new OutOfMissionLossHandler(campaign, aarContext);
-        outOfMissionLossesHandler.personellLosses(campaign.getPersonnelManager().getAllNonAceCampaignMembers());
+        outOfMissionLossesHandler.lossesOutOfMission(campaign.getPersonnelManager().getAllNonAceCampaignMembers(), new HashMap<Integer, EquippedPlane>());
 
-        AARPersonnelLosses lossesInMissionDataTotal = outOfMissionLossesHandler.getPersonnelLosses();
+        AARPersonnelLosses lossesInMissionDataTotal = outOfMissionLossesHandler.getOutOfMissionPersonnelLosses();
         aiKilled.putAll(lossesInMissionDataTotal.getPersonnelKilled());
         aiMaimed.putAll(lossesInMissionDataTotal.getPersonnelCaptured());
         aiCaptured.putAll(lossesInMissionDataTotal.getPersonnelMaimed());

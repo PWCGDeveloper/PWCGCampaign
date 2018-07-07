@@ -46,7 +46,7 @@ public class AARCrewBuilder
         List<LogPilot> squadronCrewsInMission = new ArrayList<LogPilot>();
         for (LogPlane logPlane : planeAiEntities.values())
         {
-            SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(logPlane.getSerialNumber());            
+            SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(logPlane.getPilotSerialNumber());            
             if (squadronMember.getSquadronId() == campaign.getSquadronId())
             {
                 squadronCrewsInMission.add(logPlane.getLogPilot());
@@ -66,7 +66,7 @@ public class AARCrewBuilder
         List<LogPilot> aceCrewsInMission = new ArrayList<LogPilot>();
         for (LogPlane logPlane : planeAiEntities.values())
         {
-            if (SerialNumber.getSerialNumberClassification(logPlane.getSerialNumber()) == SerialNumberClassification.ACE)
+            if (SerialNumber.getSerialNumberClassification(logPlane.getPilotSerialNumber()) == SerialNumberClassification.ACE)
             {
                 aceCrewsInMission.add(logPlane.getLogPilot());
             }

@@ -10,7 +10,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGDirectoryManager;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
@@ -29,7 +29,7 @@ public class MissionAnalyzer
 		try
         {
             Campaign campaign = mission.getCampaign();
-            String filename = PWCGDirectoryManager.getInstance().getPwcgDataDir() + "\\Report\\" + campaign.getName() + " MissionAnalysis.txt";
+            String filename = PWCGContextManager.getInstance().getDirectoryManager().getPwcgReportDir() + campaign.getName() + " MissionAnalysis.txt";
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
 
             writer.write("Player flight");

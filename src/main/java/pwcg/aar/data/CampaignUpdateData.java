@@ -2,28 +2,28 @@ package pwcg.aar.data;
 
 import java.util.Date;
 
-import pwcg.aar.outofmission.phase2.transfer.AARTransferData;
+import pwcg.aar.outofmission.phase2.resupply.AARResupplyData;
 
 public class CampaignUpdateData
 {
     private Date newDate;
     private AARPersonnelLosses personnelLosses = new AARPersonnelLosses();
     private AAREquipmentLosses equipmentLosses = new AAREquipmentLosses();
-    private AARTransferData transferData = new AARTransferData();
+    private AARResupplyData resupplyData = new AARResupplyData();
     private AARPersonnelAwards personnelAwards = new AARPersonnelAwards();
     private AARLogEvents logEvents = new AARLogEvents();
 
     public CampaignUpdateData()
     {
-        personnelLosses = new AARPersonnelLosses();
     }
 
     public void merge(CampaignUpdateData sourceCampaignUpdateData)
 	{
 		newDate = sourceCampaignUpdateData.getNewDate();
-		personnelAwards.merge(sourceCampaignUpdateData.getPersonnelAwards()); 
         personnelLosses.merge(sourceCampaignUpdateData.getPersonnelLosses());
-        transferData.merge(sourceCampaignUpdateData.getTransferData());
+        equipmentLosses.merge(sourceCampaignUpdateData.getEquipmentLosses());
+        resupplyData.merge(sourceCampaignUpdateData.getResupplyData());
+        personnelAwards.merge(sourceCampaignUpdateData.getPersonnelAwards()); 
         logEvents.merge(sourceCampaignUpdateData.getLogEvents());
 	}
 
@@ -47,9 +47,9 @@ public class CampaignUpdateData
         return equipmentLosses;
     }
 
-    public AARTransferData getTransferData()
+    public AARResupplyData getResupplyData()
     {
-        return transferData;
+        return resupplyData;
     }
 
     public AARPersonnelAwards getPersonnelAwards()

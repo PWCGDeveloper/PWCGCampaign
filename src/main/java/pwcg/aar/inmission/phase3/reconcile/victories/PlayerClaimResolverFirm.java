@@ -23,7 +23,7 @@ public class PlayerClaimResolverFirm
             if (resultVictory.getVictor() instanceof LogPlane)
             {
                 LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
-                if (PlayerVictoryResolver.isPlayerVictory(player, victorPlanePlane.getSerialNumber()))
+                if (PlayerVictoryResolver.isPlayerVictory(player, victorPlanePlane.getPilotSerialNumber()))
                 {
                     if (resultVictory.getVictim() instanceof LogPlane)
                     {

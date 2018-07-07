@@ -69,10 +69,10 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         
         firmVictories.clear();
         
-        playerVictor.setSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
+        playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
         playerVictor.setCountry(new RoFCountry(Country.FRANCE));
         
-        aiVictor.setSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
+        aiVictor.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
         aiVictor.setCountry(new RoFCountry(Country.FRANCE));
         
         createMocks();
@@ -103,13 +103,13 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     private void createVictory(Integer victorSerialNumber, Integer victimSerialNumber)
     {        
         LogPlane victim = new LogPlane();
-        victim.setSerialNumber(victimSerialNumber);
+        victim.setPilotSerialNumber(victimSerialNumber);
         victim.setVehicleType("albatrosd3");
         victim.setCountry(new RoFCountry(Country.GERMANY));
 
         LogPlane victor = new LogPlane();
         victor.setVehicleType("spad7");
-        victor.setSerialNumber(victorSerialNumber);
+        victor.setPilotSerialNumber(victorSerialNumber);
         victor.setCountry(new RoFCountry(Country.FRANCE));
 
         LogVictory resultVictory = new LogVictory();

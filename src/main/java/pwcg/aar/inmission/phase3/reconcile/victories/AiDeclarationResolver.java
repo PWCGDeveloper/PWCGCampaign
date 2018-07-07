@@ -54,10 +54,10 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
         if (resultVictory.getVictor() instanceof LogPlane)
         {
             LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
-            SquadronMember squadronMemberVictor = campaign.getPersonnelManager().getAnyCampaignMember(victorPlanePlane.getSerialNumber());
+            SquadronMember squadronMemberVictor = campaign.getPersonnelManager().getAnyCampaignMember(victorPlanePlane.getPilotSerialNumber());
             if (squadronMemberVictor != null)
             {
-                if (!PlayerVictoryResolver.isPlayerVictory(campaign.getPlayer(), victorPlanePlane.getSerialNumber()))
+                if (!PlayerVictoryResolver.isPlayerVictory(campaign.getPlayer(), victorPlanePlane.getPilotSerialNumber()))
                 {
                     if (!resultVictory.isConfirmed())
                     {
@@ -130,7 +130,7 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
             if (confirmedAiVictory.getVictor() instanceof LogPlane)
             {
                 LogPlane victorPlanePlane = (LogPlane)confirmedAiVictory.getVictor();
-                if (victorPlanePlane.getSerialNumber() == serialNumber)
+                if (victorPlanePlane.getPilotSerialNumber() == serialNumber)
                 {
                     return true;
                 }

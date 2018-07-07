@@ -35,7 +35,7 @@ public class ParaDropPackage extends FlightPackage
 	public ParaDropFlight createPackageTarget () throws PWCGException 
 	{
         GroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
-        Coordinate groundUnitCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide(campaign.getDate()));
+        Coordinate groundUnitCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
         Coordinate targetCoordinates = getTargetLocation(groundUnitCoordinates);
         ParaDropFlight paradropFlight = makeParaDropFlight(targetCoordinates);
         paradropFlight.linkGroundUnitsToFlight(groundUnitCollection);

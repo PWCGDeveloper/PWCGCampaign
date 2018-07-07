@@ -46,7 +46,7 @@ public class VictoryBuilder
         if (logEntity instanceof LogPlane)
         {
             LogPlane logPlane = (LogPlane)logEntity;
-            SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(logPlane.getSerialNumber());
+            SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(logPlane.getPilotSerialNumber());
             if (squadronMember != null)
             {
                 squadronMemberName = squadronMember.getNameAndRank();

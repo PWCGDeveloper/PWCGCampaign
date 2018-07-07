@@ -1,12 +1,14 @@
 package pwcg.aar.inmission.phase3.reconcile;
 
+import pwcg.aar.data.AAREquipmentLosses;
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
 
 public class ReconciledInMissionData
 {
     private ReconciledVictoryData reconciledVictoryData = new ReconciledVictoryData();
-    private AARPersonnelLosses personnelResultsInMission = new AARPersonnelLosses();
+    private AARPersonnelLosses personnelLossesInMission = new AARPersonnelLosses();
+    private AAREquipmentLosses equipmentLossesInMission = new AAREquipmentLosses();
     
     public ReconciledVictoryData getReconciledVictoryData()
     {
@@ -18,13 +20,23 @@ public class ReconciledInMissionData
         this.reconciledVictoryData = reconciledVictoryData;
     }
     
-    public AARPersonnelLosses getPersonnelLosses()
+    public AARPersonnelLosses getPersonnelLossesInMission()
     {
-        return personnelResultsInMission;
+        return personnelLossesInMission;
     }
     
-    public void setPersonnelResultsInMission(AARPersonnelLosses personnelResultsInMission)
+    public void setPersonnelLossesInMission(AARPersonnelLosses personnelResultsInMission)
     {
-        this.personnelResultsInMission = personnelResultsInMission;
+        this.personnelLossesInMission = personnelResultsInMission;
+    }
+
+    public AAREquipmentLosses getEquipmentLossesInMission()
+    {
+        return equipmentLossesInMission;
+    }
+
+    public void setEquipmentLossesInMission(AAREquipmentLosses equipmentLossesInMission)
+    {
+        this.equipmentLossesInMission = equipmentLossesInMission;
     }
 }

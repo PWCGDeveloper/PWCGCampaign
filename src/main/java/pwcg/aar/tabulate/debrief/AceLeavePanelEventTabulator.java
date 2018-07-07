@@ -1,7 +1,7 @@
 package pwcg.aar.tabulate.debrief;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.outofmission.phase2.transfer.TransferRecord;
+import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.aar.ui.display.model.AARAceLeavePanelData;
 import pwcg.aar.ui.events.model.AceLeaveEvent;
 import pwcg.campaign.Campaign;
@@ -23,7 +23,7 @@ public class AceLeavePanelEventTabulator
         
     public AARAceLeavePanelData tabulateForAARAceLeavePanel() throws PWCGException
     {
-        for (TransferRecord aceTransferRecord : aarContext.getReconciledOutOfMissionData().getTransferData().getAcesTransferred().getSquadronMembersTransferredFromSquadron(campaign.getSquadronId()))
+        for (TransferRecord aceTransferRecord : aarContext.getReconciledOutOfMissionData().getResupplyData().getAcesTransferred().getSquadronMembersTransferredFromSquadron(campaign.getSquadronId()))
         {
             if (aceTransferRecord.getTransferTo() == SquadronMemberStatus.STATUS_ON_LEAVE)
             {

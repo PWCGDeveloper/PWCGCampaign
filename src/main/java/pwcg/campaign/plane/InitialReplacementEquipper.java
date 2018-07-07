@@ -44,10 +44,16 @@ public class InitialReplacementEquipper
 
     private void makeReplacementPlanesForSquadron(EquipmentWeightCalculator equipmentWeightCalculator) throws PWCGException
     {
-        for (int i = 0; i < Squadron.REPLACEMENTS_AIRCRAFT_PER_SQUADRON; ++i)
+        int numPlanes = service.getDailyEquipmentReplacementRate() / 10;
+        if (numPlanes < 1)
+        {
+            numPlanes = 1;
+        }
+        
+        for (int i = 0; i < numPlanes; ++i)
         {
             String planeTypeName = equipmentWeightCalculator.getPlaneTypeFromWeight();
-            EquippedPlane equippedPlane = equipmentFactory.getPlaneByPlaneType(planeTypeName);
+            EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepo(planeTypeName);
             equipment.addEquippedPlane(equippedPlane);
         }
     }

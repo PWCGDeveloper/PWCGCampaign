@@ -10,7 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.AARTestSetup;
-import pwcg.aar.outofmission.phase2.transfer.TransferRecord;
+import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.aar.tabulate.debrief.TransferPanelEventTabulator;
 import pwcg.aar.ui.display.model.TransferPanelData;
 import pwcg.aar.ui.events.model.TransferEvent;

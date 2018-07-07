@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.outofmission.phase2.transfer.TransferRecord;
+import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.aar.ui.display.model.TransferPanelData;
 import pwcg.aar.ui.events.TransferEventGenerator;
 import pwcg.aar.ui.events.model.TransferEvent;
@@ -49,7 +49,7 @@ public class TransferPanelEventTabulator
     private List<TransferEvent> transferInForAces(TransferEventGenerator transferEventGenerator) throws PWCGException
     {
         List <TransferRecord> acesTransferredIn = new ArrayList<>();
-        acesTransferredIn.addAll(aarContext.getReconciledOutOfMissionData().getTransferData().getAcesTransferred().getSquadronMembersTransferredToSquadron(campaign.getSquadronId()));
+        acesTransferredIn.addAll(aarContext.getReconciledOutOfMissionData().getResupplyData().getAcesTransferred().getSquadronMembersTransferredToSquadron(campaign.getSquadronId()));
         List<TransferEvent> transferEventsForAces = transferEventGenerator.createPilotTransferEventsIntoSquadron(acesTransferredIn);
         List<TransferEvent> transferEventsForSquadronAces = getTransfersInForCurrentSquadron(transferEventsForAces);
         return transferEventsForSquadronAces;
@@ -58,7 +58,7 @@ public class TransferPanelEventTabulator
     private List<TransferEvent> transferInForSquadronMembers(TransferEventGenerator transferEventGenerator) throws PWCGException
     {
         List <TransferRecord> squadronMembersTransferredIn = new ArrayList<>();
-        squadronMembersTransferredIn.addAll(aarContext.getReconciledOutOfMissionData().getTransferData().getSquadronTransferData().getSquadronMembersTransferredToSquadron(campaign.getSquadronId()));
+        squadronMembersTransferredIn.addAll(aarContext.getReconciledOutOfMissionData().getResupplyData().getSquadronTransferData().getSquadronMembersTransferredToSquadron(campaign.getSquadronId()));
         List<TransferEvent> transferEventsForCampaignMembers = transferEventGenerator.createPilotTransferEventsIntoSquadron(squadronMembersTransferredIn);
         List<TransferEvent> transferEventsForSquadronMembers = getTransfersInForCurrentSquadron(transferEventsForCampaignMembers);
         return transferEventsForSquadronMembers;
@@ -81,7 +81,7 @@ public class TransferPanelEventTabulator
     private List<TransferEvent> tranferOutForSquadronMembers(TransferEventGenerator transferEventGenerator) throws PWCGException
     {
         List <TransferRecord> transferEventsOut = new ArrayList<>();
-        transferEventsOut.addAll(aarContext.getReconciledOutOfMissionData().getTransferData().getSquadronTransferData().getSquadronMembersTransferredFromSquadron(campaign.getSquadronId()));
+        transferEventsOut.addAll(aarContext.getReconciledOutOfMissionData().getResupplyData().getSquadronTransferData().getSquadronMembersTransferredFromSquadron(campaign.getSquadronId()));
         List<TransferEvent> transferEventsForCampaignMembers = transferEventGenerator.createPilotTransferEventsOutOfSquadron(transferEventsOut);
         List<TransferEvent> transferEventsForSquadronMembers = getTransfersOutForCurrentSquadron(transferEventsForCampaignMembers);
         return transferEventsForSquadronMembers;
@@ -90,7 +90,7 @@ public class TransferPanelEventTabulator
     private List<TransferEvent> tranferOutForAces(TransferEventGenerator transferEventGenerator) throws PWCGException
     {
         List <TransferRecord> acesTransferredOut = new ArrayList<>();
-        acesTransferredOut.addAll(aarContext.getReconciledOutOfMissionData().getTransferData().getAcesTransferred().getSquadronMembersTransferredFromSquadron(campaign.getSquadronId()));
+        acesTransferredOut.addAll(aarContext.getReconciledOutOfMissionData().getResupplyData().getAcesTransferred().getSquadronMembersTransferredFromSquadron(campaign.getSquadronId()));
         List<TransferEvent> transferEventsForAces = transferEventGenerator.createPilotTransferEventsOutOfSquadron(acesTransferredOut);
         List<TransferEvent> transferEventsForSquadronAces = getTransfersOutForCurrentSquadron(transferEventsForAces);
         return transferEventsForSquadronAces;

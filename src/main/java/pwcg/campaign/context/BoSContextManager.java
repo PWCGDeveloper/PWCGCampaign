@@ -72,6 +72,12 @@ public class BoSContextManager extends PWCGContextManagerBase implements IPWCGCo
     }
 
     @Override
+    public PWCGDirectoryManager getDirectoryManager()
+    {
+        return new PWCGDirectoryManager(false);
+    }
+
+    @Override
     public boolean determineUseMovingFront() throws PWCGException
     {        
         if (campaign != null)

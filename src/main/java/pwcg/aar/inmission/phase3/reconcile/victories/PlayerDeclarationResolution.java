@@ -145,7 +145,7 @@ public class PlayerDeclarationResolution
             if (resultVictory.getVictor() instanceof LogPlane)
             {
                 LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
-                if (PlayerVictoryResolver.isPlayerVictory(campaign.getPlayer(), victorPlanePlane.getSerialNumber()))
+                if (PlayerVictoryResolver.isPlayerVictory(campaign.getPlayer(), victorPlanePlane.getPilotSerialNumber()))
                 {
                     generatePlayerVictoryIfNotAlreadyConfirmed(playerDeclaration, resultVictory, resultVictory.getVictim().getVehicleType());
                     return true;

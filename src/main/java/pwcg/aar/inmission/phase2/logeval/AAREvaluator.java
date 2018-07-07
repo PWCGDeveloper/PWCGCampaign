@@ -2,6 +2,7 @@ package pwcg.aar.inmission.phase2.logeval;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
+import pwcg.aar.inmission.phase2.logeval.equipmentstatus.AAREquipmentStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.victory.AARAreaOfCombat;
 import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyByPlayerDamaged;
@@ -20,6 +21,7 @@ public class AAREvaluator
     private AARVehicleBuilder aarVehicleBuilder;
     private AARVictoryEvaluator aarVictoryEvaluator;
     private AARPilotStatusEvaluator aarPilotStatusEvaluator;
+    private AAREquipmentStatusEvaluator aarEquipmentStatusEvaluator;
     private AARChronologicalEventListBuilder aarChronologicalEventListBuilder;
     private AARWaypointBuilder waypointBuilder;
     
@@ -46,6 +48,9 @@ public class AAREvaluator
         aarPilotStatusEvaluator = new AARPilotStatusEvaluator(
                 campaign, aarContext.getPreliminaryData().getPwcgMissionData(), aarDestroyedStatusEvaluator, aarContext.getMissionLogRawData().getLogEventData(), aarVehicleBuilder);
         aarPilotStatusEvaluator.determineFateOfCrewsInMission();
+        
+        aarEquipmentStatusEvaluator = new AAREquipmentStatusEvaluator(campaign, aarContext.getMissionLogRawData().getLogEventData(), aarVehicleBuilder);
+        aarEquipmentStatusEvaluator.determineFateOfPlanesInMission();
         
         aarVictoryEvaluator = createAARVictoryEvaluator();
         aarVictoryEvaluator.evaluateVictories();
@@ -98,7 +103,6 @@ public class AAREvaluator
     {
         AARRandomAssignmentCalculator randomAssignmentCalculator = new AARRandomAssignmentCalculator(areaOfCombat);
         return new AARRandomAssignment(logEventData, randomAssignmentCalculator);
-        
     }
 
     public AARDamageStatusEvaluator getAarDamageStatusEvaluator()

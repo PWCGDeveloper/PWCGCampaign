@@ -20,7 +20,8 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.personnel.SquadronMemberSorter;
 import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -92,6 +93,7 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
         formSquadronDescForRole(Role.ROLE_BOMB, side);
         formSquadronDescForRole(Role.ROLE_STRAT_BOMB, side);
         formSquadronDescForRole(Role.ROLE_SEA_PLANE, side);
+        formSquadronDescForRole(Role.ROLE_TRANSPORT, side);
     }    
 
     private void formSquadronDescForRole(Role role, Side side) throws PWCGException
@@ -178,8 +180,8 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
     {
         StringBuffer intelBuffer = new StringBuffer("");
         formHeader(squadron, intelBuffer); 
-        formAircraftInventory(squadron, intelBuffer);
         formPersonnel(squadron.getSquadronId(), intelBuffer);
+        formAircraftInventory(squadron, intelBuffer);
 
         intelBuffer.append("\n");          
         
@@ -208,13 +210,13 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
 
     private void formAircraftInventory(Squadron squadron, StringBuffer intelBuffer) throws PWCGException
     {
-        intelBuffer.append("\n  Aircraft on inventory are:\n");          
-        List<PlaneType> aircraftTypes = squadron.determineCurrentAircraftList(campaign.getDate());
-        for (int i = 0; i < aircraftTypes.size(); ++i)
+        intelBuffer.append("\n  Aircraft on inventory are:\n");        
+        Map<Integer, EquippedPlane> aircraftOnInventory = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId()).getActiveEquippedPlanes();
+        List<EquippedPlane> sortedAircraftOnInventory = PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(aircraftOnInventory.values()));
+        for (int i = 0; i < sortedAircraftOnInventory.size(); ++i)
         {
-            PlaneType plane = aircraftTypes.get(i);
-            
-            intelBuffer.append("    " + plane.getDisplayName());
+            EquippedPlane plane = sortedAircraftOnInventory.get(i);
+            intelBuffer.append("    " + plane.getDisplayName() + " (" + plane.getSerialNumber() + ")");
             intelBuffer.append(".\n");          
         }
     }

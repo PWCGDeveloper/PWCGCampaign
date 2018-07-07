@@ -3,7 +3,7 @@ package pwcg.aar;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGDirectoryManager;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
@@ -54,7 +54,7 @@ public class MissionResultLogFileCleaner
     private List<String> getAllMissionResultsFiles() throws PWCGException 
     {
         List<String> results = new ArrayList<String>();
-        String simulatorDataDir = PWCGDirectoryManager.getInstance().getSimulatorDataDir();
+        String simulatorDataDir = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir();
 
         directoryReader.sortilesInDir(simulatorDataDir);
         for (String filename : directoryReader.getFiles()) 

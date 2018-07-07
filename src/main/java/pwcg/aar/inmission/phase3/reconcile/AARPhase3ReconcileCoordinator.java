@@ -1,8 +1,10 @@
 package pwcg.aar.inmission.phase3.reconcile;
 
 import pwcg.aar.data.AARContext;
+import pwcg.aar.data.AAREquipmentLosses;
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
+import pwcg.aar.inmission.phase3.reconcile.equipment.EquipmentResultsInMissionHandler;
 import pwcg.aar.inmission.phase3.reconcile .personnel.PersonnelResultsInMissionHandler;
 import pwcg.aar.inmission.phase3.reconcile.victories.ClaimDenier;
 import pwcg.aar.inmission.phase3.reconcile.victories.ClaimResolver;
@@ -29,10 +31,11 @@ public class AARPhase3ReconcileCoordinator
     }
     
     
-    public ReconciledInMissionData performAARPhaseReconcileLogsWithAAR(PlayerDeclarations playerDeclarations) throws PWCGException
+    public ReconciledInMissionData reconcileLogsWithAAR(PlayerDeclarations playerDeclarations) throws PWCGException
     {
         reconcileVictories(playerDeclarations);
         personnelChangesInMission();
+        equipmentChangesInMission();
         return reconciledInMissionData;
     }
 
@@ -54,6 +57,13 @@ public class AARPhase3ReconcileCoordinator
     {
         PersonnelResultsInMissionHandler personnelHandler = new PersonnelResultsInMissionHandler(campaign, aarContext.getMissionEvaluationData());
         AARPersonnelLosses personnelResultsInMission = personnelHandler.personellChanges();
-        reconciledInMissionData.setPersonnelResultsInMission(personnelResultsInMission);
+        reconciledInMissionData.setPersonnelLossesInMission(personnelResultsInMission);
+    }
+
+    private void equipmentChangesInMission() throws PWCGException 
+    {
+        EquipmentResultsInMissionHandler equipmentHandler = new EquipmentResultsInMissionHandler(campaign, aarContext.getMissionEvaluationData());
+        AAREquipmentLosses equipmentResultsInMission = equipmentHandler.equipmentChanges();
+        reconciledInMissionData.setEquipmentLossesInMission(equipmentResultsInMission);
     }
 }

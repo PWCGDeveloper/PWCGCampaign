@@ -371,13 +371,18 @@ public class Squadron
         return enemyCountry;
     }
 
-    public Side determineEnemySide(Date date) throws PWCGException
+    public Side determineEnemySide() throws PWCGException
     {
         ICountry squadronCountry = CountryFactory.makeCountryByCountry(country);
         Side enemySide = squadronCountry.getSideNoNeutral().getOppositeSide();
         return enemySide;
     }
 
+    public Side determineSide() throws PWCGException
+    {
+        ICountry squadronCountry = CountryFactory.makeCountryByCountry(country);
+        return squadronCountry.getSideNoNeutral();
+    }
 
 	public ArmedService determineServiceForSquadron(Date date) throws PWCGException 
 	{
@@ -629,6 +634,19 @@ public class Squadron
 	{
 		this.skill = skill;
 	}
+
+    public List<String> getActiveArchTypes(Date date) throws PWCGException 
+    {
+        List<String> activeArchTypes = new ArrayList<>();
+        for (SquadronPlaneAssignment planeAssignment : planeAssignments)
+        {
+            if (DateUtils.isDateInRange(date, planeAssignment.getSquadronIntroduction(), planeAssignment.getSquadronWithdrawal()))
+            {
+                activeArchTypes.add(planeAssignment.getArchType());
+            }
+        }
+        return activeArchTypes;
+    }
 
 	public List<SquadronPlaneAssignment> getPlaneAssignments() 
 	{

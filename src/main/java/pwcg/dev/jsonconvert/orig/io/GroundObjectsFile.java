@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGDirectoryManager;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.airfield.AirfieldBlock;
@@ -24,7 +24,7 @@ public class GroundObjectsFile
     
     public void readGroundObjects (String mapName) throws PWCGException 
     {
-        String filename = PWCGDirectoryManager.getInstance().getPwcgInputDir() + mapName + "\\GroundObjects.config";     
+        String filename = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\GroundObjects.config";     
         readGroundObjectsFromFile(filename);
 
     }

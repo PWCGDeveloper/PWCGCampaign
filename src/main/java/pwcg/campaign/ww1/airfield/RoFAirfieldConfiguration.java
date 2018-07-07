@@ -6,7 +6,7 @@ import java.util.TreeMap;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IAirfieldConfiguration;
-import pwcg.campaign.context.PWCGDirectoryManager;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.FixedPositions;
 import pwcg.campaign.io.json.FixedPositionIOJson;
@@ -22,7 +22,7 @@ public class RoFAirfieldConfiguration implements IAirfieldConfiguration
     @Override
     public  Map<String, IAirfield> configure (String mapName) throws PWCGException 
     {        
-	    String pwcgInputDir = PWCGDirectoryManager.getInstance().getPwcgInputDir() + mapName + "\\";
+	    String pwcgInputDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\";
         LocationSet airfieldLocations = LocationIOJson.readJson(pwcgInputDir, AIRFIELD_LOCATION_FILE_NAME);
         
 		Map<String, IAirfield> airfieldMap = extractAirfieldsFromRoFAirfields(mapName, airfieldLocations);
@@ -37,7 +37,7 @@ public class RoFAirfieldConfiguration implements IAirfieldConfiguration
 	private Map<String, IAirfield> extractAirfieldsFromRoFAirfields(String mapName, LocationSet airfieldLocations)
 	        throws PWCGException, PWCGIOException
 	{
-		String directory = PWCGDirectoryManager.getInstance().getPwcgInputDir() + mapName + "\\";
+		String directory = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\";
         FixedPositions rofAirfieldFixedPositions = FixedPositionIOJson.readJson(directory, "RoFAirfields");
         Map<String, IAirfield> airfieldMap = buildRofAirfieldMap(rofAirfieldFixedPositions, airfieldLocations);
 		return airfieldMap;

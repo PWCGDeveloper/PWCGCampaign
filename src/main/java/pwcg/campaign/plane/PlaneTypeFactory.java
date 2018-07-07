@@ -277,6 +277,28 @@ public class PlaneTypeFactory
         return planeTypesForArchType;
     }
 
+    public List<PlaneType> createActivePlaneTypesForDateAndSide(Side side, Date date) throws PWCGException
+    {
+        List<PlaneType> planeTypesForArchType = new ArrayList<>();
+        for (PlaneType thisPlane : planeTypes.values())
+        {
+            if (DateUtils.isDateInRange(date, thisPlane.getIntroduction(), thisPlane.getWithdrawal()))
+            {
+                if (thisPlane.getSide() == side)
+                {
+                    planeTypesForArchType.add(thisPlane);
+                }
+            }
+        }
+        
+        if (planeTypesForArchType.isEmpty())
+        {
+            throw new PWCGException("No planes found for date " + DateUtils.getDateStringDashDelimitedYYYYMMDD(date));
+        }
+        
+        return planeTypesForArchType;
+    }
+
     private PlaneType getPlaneByDisplayName(String pwcgDesc) 
     {
         PlaneType plane = null;

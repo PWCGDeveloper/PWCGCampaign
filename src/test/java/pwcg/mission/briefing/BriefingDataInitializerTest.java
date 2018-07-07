@@ -81,7 +81,7 @@ public class BriefingDataInitializerTest
         
         Mockito.when(campaign.getEquipmentManager()).thenReturn(equipmentManager);
         Mockito.when(equipmentManager.getEquipmentForSquadron(Mockito.any())).thenReturn(equipment);
-        Mockito.when(equipment.getEquippedPlanes()).thenReturn(equippedPlanes);
+        Mockito.when(equipment.getActiveEquippedPlanes()).thenReturn(equippedPlanes);
 
         Mockito.when(personnelManager.getSquadronPersonnel(Mockito.any())).thenReturn(squadronPersonnel);
         Mockito.when(squadronPersonnel.getActiveSquadronMembersWithAces()).thenReturn(squadronMembers);

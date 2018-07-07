@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGDirectoryManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.DirectoryReader;
@@ -59,11 +58,11 @@ public class CampaignTransitionDates
 
     private void addMovingFrontDates(Map<Date, Date> sortedDates) throws PWCGException
     {
-        String mapPath = PWCGDirectoryManager.getInstance().getPwcgInputDir() + PWCGContextManager.getInstance().getCurrentMap().getMapName();      
+        String mapPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + PWCGContextManager.getInstance().getCurrentMap().getMapName();      
         directoryReader.sortilesInDir(mapPath);
         for (String filename : directoryReader.getDirectories()) 
         {
-            String dirPath = PWCGDirectoryManager.getInstance().getPwcgInputDir() + filename;
+            String dirPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + filename;
             File child = new File(dirPath);
             if (child.getName().contains("19"))
             {

@@ -33,15 +33,15 @@ public class FlightPlaneTypeBuilder
 
     private void setNumberOfPlanesForLosses()
     {
-        if (equipmentForSquadron.getEquippedPlanes().size() < numPlanes)
+        if (equipmentForSquadron.getActiveEquippedPlanes().size() < numPlanes)
         {
-            numPlanes = equipmentForSquadron.getEquippedPlanes().size();
+            numPlanes = equipmentForSquadron.getActiveEquippedPlanes().size();
         }
     }
 
     private Set<Integer> selectPlaneSerialNumbersForFlight()
     {
-        List<EquippedPlane> equippedPlanes = new ArrayList<>(equipmentForSquadron.getEquippedPlanes().values());
+        List<EquippedPlane> equippedPlanes = new ArrayList<>(equipmentForSquadron.getActiveEquippedPlanes().values());
         Set<Integer> selectedPlaneSerialNumbers = new HashSet<>();
         while (selectedPlaneSerialNumbers.size() < numPlanes)
         {
@@ -57,7 +57,7 @@ public class FlightPlaneTypeBuilder
         List<EquippedPlane> selectedPlanes = new ArrayList<>();
         for (Integer planeSerialNumber : selectedPlaneSerialNumbers)
         {
-            EquippedPlane selectedPlane = equipmentForSquadron.getEquippedPlanes().get(planeSerialNumber);
+            EquippedPlane selectedPlane = equipmentForSquadron.getActiveEquippedPlanes().get(planeSerialNumber);
             selectedPlanes.add(selectedPlane);
         }
         return selectedPlanes;

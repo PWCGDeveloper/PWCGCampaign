@@ -25,7 +25,7 @@ public class SpyExtractPackage extends FlightPackage
 	{
         // Create a target ground defense package
         GroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
-        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide(campaign.getDate()));
+        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
 		
 		// Move the infantry a little bit away from the target
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
