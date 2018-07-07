@@ -1,34 +1,39 @@
 package pwcg.campaign.ww2.airfield;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IAirfieldConfiguration;
 import pwcg.campaign.context.PWCGDirectoryManager;
-import pwcg.campaign.io.json.LocationIOJson;
+import pwcg.campaign.io.json.AirfieldDescriptorIOJson;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.LocationSet;
-import pwcg.core.location.PWCGLocation;
 
 public class BoSAirfieldConfiguration implements IAirfieldConfiguration
 {
-    public  Map<String, IAirfield> configure (String mapName) throws PWCGException 
+    public Map<String, IAirfield> configure (String mapName) throws PWCGException
     {
         Map<String, IAirfield> airfields = new TreeMap<String, IAirfield>();
         
         airfields.clear();
 
 	    String pwcgInputDir = PWCGDirectoryManager.getInstance().getPwcgInputDir() + mapName + "\\";
-        LocationSet airfieldLocations = LocationIOJson.readJson(pwcgInputDir, AIRFIELD_LOCATION_FILE_NAME);
-        for (PWCGLocation location : airfieldLocations.getLocations())
+        AirfieldDescriptorSet airfieldDescriptors = AirfieldDescriptorIOJson.readJson(pwcgInputDir, AIRFIELD_LOCATION_FILE_NAME);
+        for (BoSAirfield.AirfieldDescriptor desc : airfieldDescriptors.locations)
         {
-            IAirfield field = new BoSAirfield();
-            field.initializeAirfieldFromLocation(location);
-            airfields.put(location.getName(), field);
+            BoSAirfield field = new BoSAirfield();
+            field.initializeAirfieldFromDescriptor(desc);
+            airfields.put(desc.getName(), field);
         }
 
         return airfields;
     }
 
+	static public class AirfieldDescriptorSet
+	{
+		String locationSetName = "";
+		List <BoSAirfield.AirfieldDescriptor> locations = new ArrayList<>();
+	}
 }
