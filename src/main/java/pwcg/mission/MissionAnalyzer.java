@@ -1,6 +1,7 @@
 package pwcg.mission;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -28,6 +29,11 @@ public class MissionAnalyzer
 	{
 		try
         {
+		    File reportDir = new File(PWCGContextManager.getInstance().getDirectoryManager().getPwcgReportDir());
+		    if (!reportDir.exists())
+		    {
+		        reportDir.mkdirs();
+		    }
             Campaign campaign = mission.getCampaign();
             String filename = PWCGContextManager.getInstance().getDirectoryManager().getPwcgReportDir() + campaign.getName() + " MissionAnalysis.txt";
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));

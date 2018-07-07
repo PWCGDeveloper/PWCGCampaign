@@ -1,8 +1,0 @@
-Player flight
-  Mission type: PATROL
-  Airfield    : Gzhatsk
-  Aircraft    : bf109f4
-  Player Contact    : -1
-
-
-

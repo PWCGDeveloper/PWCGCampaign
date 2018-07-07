@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IRankHelper;
-import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMemberSorter;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -81,15 +79,6 @@ public class FlightCrewBuilder
     
     private List<SquadronMember> sortCrewsByRank() throws PWCGException
     {
-        TreeMap<String, SquadronMember> sortedCrews = new TreeMap<>();
-        
-        IRankHelper rankObj = RankFactory.createRankHelper();
-        for (SquadronMember pilot : assignedCrewMap.values())
-        {
-            String key = "" + rankObj.getRankPosByService(pilot.getRank(), squadron.determineServiceForSquadron(campaign.getDate())) + pilot.getName();
-            sortedCrews.put(key, pilot);
-        }
-        
-        return new ArrayList<SquadronMember>(sortedCrews.descendingMap().values());
+        return SquadronMemberSorter.sortSquadronMembers(campaign, assignedCrewMap);
     }
 }

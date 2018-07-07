@@ -10,6 +10,15 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+/Campaigns/
+/Report/
+/ErrorReport/
+/build/
+/bin/
+/.settings/
+/User/
+
+
 # Package Files #
 *.jar
 *.war

@@ -1,8 +1,0 @@
-Player flight
-  Mission type: PATROL
-  Airfield    : Coxyde
-  Aircraft    : nieuport17brit
-  Player Contact    : -1
-
-
-

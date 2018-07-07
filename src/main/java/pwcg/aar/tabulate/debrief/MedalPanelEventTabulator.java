@@ -26,7 +26,13 @@ public class MedalPanelEventTabulator
     public AARMedalPanelData tabulateForAARMedalPanel() throws PWCGException
     {
         MedalEventGenerator medalEventGenerator = new MedalEventGenerator(campaign);
-        List<MedalEvent> medalEventsForCampaignMembers = medalEventGenerator.createPilotMedalEvents(aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getCampaignMemberMedals());
+        List<MedalEvent> medalEventsForCampaignMembersOutOfMission = medalEventGenerator.createPilotMedalEvents(aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getCampaignMemberMedals());
+        List<MedalEvent> medalEventsForCampaignMembersInMission = medalEventGenerator.createPilotMedalEvents(aarContext.getReconciledInMissionData().getPersonnelAwards().getCampaignMemberMedals());
+        
+        List<MedalEvent> medalEventsForCampaignMembers = new ArrayList<>();
+        medalEventsForCampaignMembers.addAll(medalEventsForCampaignMembersOutOfMission);
+        medalEventsForCampaignMembers.addAll(medalEventsForCampaignMembersInMission);
+        
         List<MedalEvent> medalEventsForSquadronMembers = getMedalsForCurrentSquadron(medalEventsForCampaignMembers);
         medalPanelData.setMedalsAwarded(medalEventsForSquadronMembers);
 

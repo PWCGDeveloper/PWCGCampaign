@@ -1,7 +1,7 @@
 package pwcg.campaign.io.json;
 
-import pwcg.core.exception.PWCGException;
 import pwcg.campaign.ww2.airfield.BoSAirfieldConfiguration;
+import pwcg.core.exception.PWCGException;
 
 public class AirfieldDescriptorIOJson
 {

@@ -47,7 +47,7 @@ public class CampaignMemberAwardsGeneratorInMission extends CampaignMemberAwards
 	private void generateAwardsForCampaignMembersInMission() throws PWCGException
 	{
         Map<Integer, SquadronMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getSquadronMembers();
-        Map<Integer, SquadronMember> nonAceCampaignMembersInMission = SquadronMemberFilter.filterActiveAI(campaignMembersInMission, campaign.getDate());
+        Map<Integer, SquadronMember> nonAceCampaignMembersInMission = SquadronMemberFilter.filterActiveAIAndPlayer(campaignMembersInMission, campaign.getDate());
 		for (SquadronMember nonAceCampaignMember : nonAceCampaignMembersInMission.values())
 		{
 		    SquadronMember campaignMemberInMission = campaign.getPersonnelManager().getAnyCampaignMember(nonAceCampaignMember.getSerialNumber());

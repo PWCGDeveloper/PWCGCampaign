@@ -33,6 +33,7 @@ public class AARCampaignUpdateTabulator
     private void tabulatePersonnelAwards()
     {
         campaignUpdateData.getPersonnelAwards().mergeVictories(aarContext.getReconciledInMissionData().getReconciledVictoryData().getVictoryAwardsByPilot());
+        campaignUpdateData.getPersonnelAwards().merge(aarContext.getReconciledInMissionData().getPersonnelAwards());
         campaignUpdateData.getPersonnelAwards().merge(aarContext.getReconciledOutOfMissionData().getPersonnelAwards());
     }
     

@@ -120,47 +120,36 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 			    rowCount = spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, i);
 			}
 
-			// Name
 			rowCount = createNameWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 
-			// Region - for German players in WWI to receive regional medals
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount = createRegionWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 
-            // Campaign Map
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount = createCampaignMapWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 
-            // Campaign Start Date
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount = createCampaignStartDateWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 
-            // Role - what kind of unit will the player enlist in
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount = createCampaignRoleWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             
-			// Rank - what rank will the player start
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 			rowCount = createRankWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 
-			// Squadron - which squadron will the player fly for
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 			rowCount = createSquadronWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 
-            // Spacer row
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 			createNextStepWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 
-            // Last spacer row
 			rowCount = spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 			
-			// Add the whole thing to the main panel
 			this.add(campaignGeneratePanel, BorderLayout.NORTH);
 	          
-            // Squadron info
             JPanel squadronPanel = createSquadronInfoPanel ();
             this.add(squadronPanel, BorderLayout.SOUTH);
             
@@ -309,11 +298,18 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         cbRole.removeAllItems();
         
         List<Role> availableRoles = getRolesForService();
-        for (Role role : availableRoles)
+        if (availableRoles.size() > 0)
         {
-            cbRole.addItem(Role.roleToSDesc(role));
+            for (Role role : availableRoles)
+            {
+                cbRole.addItem(Role.roleToSDesc(role));
+            }
         }
-
+        else
+        {
+            cbRole.addItem(Role.roleToSDesc(Role.ROLE_FIGHTER));
+        }
+        
         cbRole.addActionListener(this);
     }
 

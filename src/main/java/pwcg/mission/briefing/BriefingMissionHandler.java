@@ -13,7 +13,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.BriefParametersContextBuilder;
 import pwcg.gui.rofmap.brief.BriefingCrewPlanePayloadSorter;
 import pwcg.gui.rofmap.brief.BriefingFlightParameters;
-import pwcg.gui.rofmap.brief.PlayerFlightEditor;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;

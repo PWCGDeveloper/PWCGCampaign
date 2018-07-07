@@ -1,8 +1,0 @@
-Player flight
-  Mission type: STRATEGIC_BOMB
-  Airfield    : Jabbecke
-  Aircraft    : gothag5
-  Player Contact    : -1
-
-
-

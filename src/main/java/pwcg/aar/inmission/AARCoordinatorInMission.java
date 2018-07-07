@@ -1,6 +1,8 @@
 package pwcg.aar.inmission;
 
+import pwcg.aar.awards.CampaignMemberAwardsGeneratorInMission;
 import pwcg.aar.data.AARContext;
+import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.aar.inmission.phase1.parse.AARLogEvaluationCoordinator;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.AARPhase2EvaluateCoordinator;
@@ -25,6 +27,7 @@ public class AARCoordinatorInMission
     {        
         phase2EvaluateLogEventToCampaignEvents();  
         phase3ResolveMissionResultsAndPlayerClaims(playerDeclarations);
+        awardsInMission();
     }
 
     private void phase2EvaluateLogEventToCampaignEvents() throws PWCGException
@@ -39,5 +42,12 @@ public class AARCoordinatorInMission
         AARPhase3ReconcileCoordinator phase3Coordinator = new AARPhase3ReconcileCoordinator(campaign, aarContext);
         ReconciledInMissionData reconciledInMissionData = phase3Coordinator.reconcileLogsWithAAR(playerDeclarations);
         aarContext.setReconciledInMissionData(reconciledInMissionData);
+    }
+
+    private void awardsInMission() throws PWCGException
+    {
+        CampaignMemberAwardsGeneratorInMission awardsGeneratorInMission = new CampaignMemberAwardsGeneratorInMission(campaign, aarContext);
+        AARPersonnelAwards personnelAwards = awardsGeneratorInMission.createCampaignMemberAwards();
+        aarContext.getReconciledInMissionData().setPersonnelAwards(personnelAwards);
     }
 }

@@ -26,7 +26,13 @@ public class PromotionPanelEventTabulator
     public AARPromotionPanelData tabulateForAARPromotionPanel() throws PWCGException
     {
         PromotionEventGenerator promotionEventGenerator = new PromotionEventGenerator(campaign);
-        List<PromotionEvent> promotionEventsForCampaignMembers = promotionEventGenerator.createPilotPromotionEvents(aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getPromotions());
+        List<PromotionEvent> promotionEventsForCampaignMembersOutOfMission = promotionEventGenerator.createPilotPromotionEvents(aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getPromotions());
+        List<PromotionEvent> promotionEventsForCampaignMemberInMission = promotionEventGenerator.createPilotPromotionEvents(aarContext.getReconciledInMissionData().getPersonnelAwards().getPromotions());
+
+        List<PromotionEvent> promotionEventsForCampaignMembers = new ArrayList<>();
+        promotionEventsForCampaignMembers.addAll(promotionEventsForCampaignMembersOutOfMission);
+        promotionEventsForCampaignMembers.addAll(promotionEventsForCampaignMemberInMission);
+        
         List<PromotionEvent> promotionEventsForSquadronMembers = getPromotionsForCurrentSquadron(promotionEventsForCampaignMembers);
         promotionPanelData.setPromotionEventsDuringElapsedTime(promotionEventsForSquadronMembers);
                 

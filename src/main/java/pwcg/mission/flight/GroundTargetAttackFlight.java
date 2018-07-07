@@ -95,9 +95,9 @@ public abstract class GroundTargetAttackFlight extends Flight
         else
         {
             AttackMcuSequence attackMcuSequence = new AttackMcuSequence();
-            attackMcuSequence.createAttackArea(planes.get(0), name, targetCoords, altitude, attackTime);
+            attackMcuSequence.createAttackArea(getLeadPlane(), name, targetCoords, altitude, attackTime);
             
-            attackMcuSequences.put(planes.get(0).getIndex(), attackMcuSequence);
+            attackMcuSequences.put(getLeadPlane().getIndex(), attackMcuSequence);
         }
     }
 
@@ -113,8 +113,7 @@ public abstract class GroundTargetAttackFlight extends Flight
             
             if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
             {
-                PlaneMCU leadPlane = planes.get(0);
-                allMissionPoints.add(attackMcuSequences.get(leadPlane.getIndex()).getAttackAreaMcu());
+                allMissionPoints.add(attackMcuSequences.get(getLeadPlane().getIndex()).getAttackAreaMcu());
             }
         }
         

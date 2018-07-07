@@ -17,7 +17,7 @@ public class AARResultValidator
         this.expectedResults = expectedResults;
     }
 
-    public void validateInMission() throws PWCGException
+    public void validateInMission(int playerMissionsFlown) throws PWCGException
     {
         assert(campaign.getDate().after(DateUtils.getDateYYYYMMDD("19411101")));
         assert(campaign.getPlayer().getVictories().size() == expectedResults.getPlayerAirVictories());
@@ -31,6 +31,7 @@ public class AARResultValidator
             SquadronMember lostPilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
             assert(lostPilot.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
         }
+        assert(campaign.getPlayer().getMissionFlown() > playerMissionsFlown);
     }
 
     public void validateLeave() throws PWCGException

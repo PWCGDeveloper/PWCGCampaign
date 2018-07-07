@@ -48,10 +48,10 @@ public class PlaneMCUFactory
 
     private void createPlanes(List<EquippedPlane> planesTypesForFlight, List<SquadronMember> crewsForFlight) throws PWCGException
     {        
-        for (int numInFormation = 0; numInFormation < planesTypesForFlight.size(); ++numInFormation)
+        for (int index = 0; index < planesTypesForFlight.size(); ++index)
         {
-            EquippedPlane equippedPlane = planesTypesForFlight.get(numInFormation);
-            SquadronMember pilot = crewsForFlight.get(numInFormation);            
+            EquippedPlane equippedPlane = planesTypesForFlight.get(index);
+            SquadronMember pilot = crewsForFlight.get(index);            
             PlaneMCU plane = createPlaneMcuByPlaneType(equippedPlane, squadron.getCountry(), pilot);
 
             plane.setIndex(IndexGenerator.getInstance().getNextIndex());
@@ -69,13 +69,13 @@ public class PlaneMCUFactory
 
 	private void initializePlaneParameters() throws PWCGException
 	{
-		int numInFormation = 0;
+		int numInFormation = 1;
         for (PlaneMCU plane : planesForFlight)
         {
-            ++numInFormation;
             setPlaceInFormation(numInFormation, plane);
             setPlaneDescription(plane);
             setAiSkillLevelForPlane(plane);
+            ++numInFormation;
         }
 	}
 

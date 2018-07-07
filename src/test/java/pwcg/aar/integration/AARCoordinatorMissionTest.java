@@ -29,6 +29,7 @@ public class AARCoordinatorMissionTest
     private List<Squadron> squadronsInMission = new ArrayList<>();
     private PlayerDeclarations playerDeclarations;
     private ExpectedResults expectedResults;
+    private int playerMissionsFlown = 0;
 
     @Before
     public void setup() throws PWCGException
@@ -39,6 +40,8 @@ public class AARCoordinatorMissionTest
         expectedResults = new ExpectedResults(campaign);
         aarCoordinator = AARCoordinator.getInstance();
         aarCoordinator.reset(campaign);
+        
+        playerMissionsFlown = campaign.getPlayer().getMissionFlown();
     }
 
     @Test
@@ -49,7 +52,7 @@ public class AARCoordinatorMissionTest
         expectedResults.buildExpectedResultsFromAARContext(aarCoordinator.getAarContext());
         
         AARResultValidator resultValidator = new AARResultValidator(expectedResults);
-        resultValidator.validateInMission();
+        resultValidator.validateInMission(playerMissionsFlown);
     }
 
     public void createArtifacts () throws PWCGException
