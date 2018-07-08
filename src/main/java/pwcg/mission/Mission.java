@@ -95,7 +95,6 @@ public class Mission
         
         MissionDescriptionFile missionDescriptionFile = new MissionDescriptionFile();
         missionDescriptionFile.writeMissionDescription(missionDescription, campaign);
-        // writeMyMissionOnly();
 
         writePwcgMissionData(missionDescription);
     }

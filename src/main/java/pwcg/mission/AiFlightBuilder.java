@@ -74,7 +74,6 @@ public class AiFlightBuilder
         }
         
         boolean isMySquadNightSquadron = mission.getMissionFlightBuilder().getPlayerFlight().getSquadron().determineIsNightSquadron();
-
         if (isMySquadNightSquadron)
         {
             return;
@@ -82,22 +81,7 @@ public class AiFlightBuilder
         
         for (Squadron squadron : squads)
         {
-            if (squadron.getSquadronId() == campaign.getSquadronId())
-            {
-                continue;
-            }
-            
-            if (!squadronGeneratesFlight())
-            {
-                continue;
-            }
-
-            if (squadron.isSquadronViable(campaign))
-            {
-                continue;
-            }
-
-            if (squadron.determineIsNightSquadron())
+            if (!squadronWillGenerateAFlight(squadron))
             {
                 continue;
             }
@@ -111,10 +95,34 @@ public class AiFlightBuilder
             }
         }
     }
-
-    private boolean squadronGeneratesFlight() throws PWCGException 
+    
+    private boolean squadronWillGenerateAFlight(Squadron squadron) throws PWCGException
     {
-        boolean generateFlight = true;
+        if (squadron.getSquadronId() == campaign.getSquadronId())
+        {
+            return false;
+        }
+
+        if (squadron.determineIsNightSquadron())
+        {
+            return false;
+        }
+        
+        if (!squadronGeneratesFlightRandom())
+        {
+            return false;
+        }
+
+        if (!squadron.isSquadronViable(campaign))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean squadronGeneratesFlightRandom() throws PWCGException 
+    {
         int squadronGeneratesFlightOdds = configManager.getIntConfigParam(ConfigItemKeys.SquadronGeneratesMissionOddsKey);
         int squadronGeneratesFlightModifier = configManager.getIntConfigParam(ConfigItemKeys.SquadronGeneratesMissionModifierKey);
         
@@ -124,11 +132,13 @@ public class AiFlightBuilder
         }
         
         int roll = RandomNumberGenerator.getRandom(100);
-        if (roll > squadronGeneratesFlightOdds)
+        if (roll < squadronGeneratesFlightOdds)
         {
-            generateFlight = false;
+            return true;
         }
-
-        return generateFlight;
+        else
+        {
+            return false;
+        }
     }
 }

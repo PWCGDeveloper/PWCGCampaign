@@ -52,7 +52,7 @@ public class AARCoordinatorMissionTest
         expectedResults.buildExpectedResultsFromAARContext(aarCoordinator.getAarContext());
         
         AARResultValidator resultValidator = new AARResultValidator(expectedResults);
-        resultValidator.validateInMission(playerMissionsFlown);
+        resultValidator.validateInMission(playerMissionsFlown, 2);
     }
 
     public void createArtifacts () throws PWCGException
