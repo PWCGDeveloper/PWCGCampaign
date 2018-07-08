@@ -85,7 +85,7 @@ public class BriefingDataInitializerTest
 
         Mockito.when(personnelManager.getSquadronPersonnel(Mockito.any())).thenReturn(squadronPersonnel);
         Mockito.when(squadronPersonnel.getActiveSquadronMembersWithAces()).thenReturn(squadronMembers);
-        Mockito.when(squadronMembers.getSquadronMembers()).thenReturn(squadronPersonnelMap);
+        Mockito.when(squadronMembers.getSquadronMemberCollection()).thenReturn(squadronPersonnelMap);
         
         Mockito.when(pilot1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
         Mockito.when(pilot2.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);

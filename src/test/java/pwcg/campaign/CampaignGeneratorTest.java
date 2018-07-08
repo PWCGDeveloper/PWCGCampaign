@@ -51,7 +51,7 @@ public class CampaignGeneratorTest
             filterSpecification.setIncludeAces(true);     
             filterSpecification.setSpecifySquadron(squadronPersonnel.getSquadron().getSquadronId());
 
-            CampaignPersonnelFilter filter = new CampaignPersonnelFilter(squadronPersonnel.getActiveSquadronMembersWithAces().getSquadronMembers());
+            CampaignPersonnelFilter filter = new CampaignPersonnelFilter(squadronPersonnel.getActiveSquadronMembersWithAces().getSquadronMemberCollection());
             Map<Integer, SquadronMember> squadronMembers = filter.getFilteredSquadronMembers(filterSpecification);
 
             if (squadronMembers.size() != Squadron.SQUADRON_STAFF_SIZE)

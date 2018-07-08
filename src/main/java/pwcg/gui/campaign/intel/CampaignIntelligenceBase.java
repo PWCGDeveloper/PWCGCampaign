@@ -193,7 +193,7 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
         intelBuffer.append("\n  Personnel:\n");          
 
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
-        Map<String, SquadronMember> sortedPilots = SquadronMemberSorter.sortPilotsByStatus(campaign, squadronPersonnel.getActiveSquadronMembersWithAces().getSquadronMembers());
+        Map<String, SquadronMember> sortedPilots = SquadronMemberSorter.sortPilotsByStatus(campaign, squadronPersonnel.getActiveSquadronMembersWithAces().getSquadronMemberCollection());
         for (SquadronMember squadronMember : sortedPilots.values())
         {
             intelBuffer.append("    " + squadronMember.getNameAndRank());          

@@ -92,7 +92,7 @@ public class SquadronMemberFactory
     private void makePilotPicture(SquadronMember newPilot) throws PWCGException
     {
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
-        PilotPictureBuilder pilotPictureBuilder = new PilotPictureBuilder(service, squadronPersonnel.getActiveSquadronMembers().getSquadronMembers());
+        PilotPictureBuilder pilotPictureBuilder = new PilotPictureBuilder(service, squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection());
         String picPath = pilotPictureBuilder.assignPilotPicture();
         newPilot.setPicName(picPath);
     }
@@ -100,7 +100,7 @@ public class SquadronMemberFactory
     private HashMap<String, String> getNamesInUse() throws PWCGException
     {
         HashMap<String, String> namesUsed = new HashMap <String, String>();
-        for (SquadronMember squadronMember : squadronPersonnel.getActiveSquadronMembers().getSquadronMembers().values())
+        for (SquadronMember squadronMember : squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection().values())
         {
             int index = squadronMember.getName().indexOf(" ");
             String lastName = squadronMember.getName().substring(index + 1);

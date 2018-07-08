@@ -132,7 +132,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
     {
         String missionText = "Assigned Personnel:\n";
         
-        for (SquadronMember pilotInMission : aarCoordinator.getAarContext().getPreliminaryData().getCampaignMembersInMission().getSquadronMembers().values())
+        for (SquadronMember pilotInMission : aarCoordinator.getAarContext().getPreliminaryData().getCampaignMembersInMission().getSquadronMemberCollection().values())
         {            
             if (pilotInMission.getSquadronId() == campaign.getSquadronId())
             {

@@ -19,7 +19,7 @@ public class CampaignMemberAwardsGeneratorOutOfMission extends CampaignMemberAwa
 
     public AARPersonnelAwards createCampaignMemberAwards() throws PWCGException
     {
-        Map<Integer, SquadronMember> campaignMembersNotInMission = aarContext.getPreliminaryData().getCampaignMembersOutOfMission().getSquadronMembers();
+        Map<Integer, SquadronMember> campaignMembersNotInMission = aarContext.getPreliminaryData().getCampaignMembersOutOfMission().getSquadronMemberCollection();
         for (SquadronMember campaignMember : campaignMembersNotInMission.values())
         {
             promotions(campaignMember);

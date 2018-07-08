@@ -31,7 +31,7 @@ public class PersonnelOutOfMissionAiStatusHandlerTest
     public void testPersonnelLossesOutOfMission () throws PWCGException
     {     
         PersonnelOutOfMissionStatusHandler personnelLossOutOfMissionHandler = new PersonnelOutOfMissionStatusHandler();
-        Map<Integer, SquadronMember> campaignMembers = campaign.getPersonnelManager().getAllNonAceCampaignMembers();
+        Map<Integer, SquadronMember> campaignMembers = campaign.getPersonnelManager().getAllCampaignMembers();
         personnelLossOutOfMissionHandler.determineFateOfShotDownPilots(campaignMembers);
         
         Map<Integer, SquadronMember> aiKilled = new HashMap<>();

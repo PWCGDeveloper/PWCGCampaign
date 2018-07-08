@@ -12,6 +12,7 @@ import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -50,15 +51,15 @@ public class PreliminaryDataBuilderForTest
     {
         SquadronMembers squadronMembersInMission = new SquadronMembers();
         
-        squadronMembersInMission.addSquadronMember(campaign.getPlayer());
+        squadronMembersInMission.addToSquadronMemberCollection(campaign.getPlayer());
 
         for (Squadron squadron : squadronsInMission)
         {
-            Map<Integer, SquadronMember> squadronMembersMap = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getActiveSquadronMembers().getSquadronMembers();
+            Map<Integer, SquadronMember> squadronMembersMap = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getActiveSquadronMembers().getSquadronMemberCollection();
             List<SquadronMember> squadronMembers = new ArrayList<>(squadronMembersMap.values());
             for (int i = 0; i < 4; ++i)
             {
-                squadronMembersInMission.addSquadronMember(squadronMembers.get(i));
+                squadronMembersInMission.addToSquadronMemberCollection(squadronMembers.get(i));
             }
         }
                 
@@ -69,11 +70,14 @@ public class PreliminaryDataBuilderForTest
     {
         SquadronMembers squadronMembersInMission = preliminaryData.getCampaignMembersInMission();
         SquadronMembers squadronMembersNotInMission = new SquadronMembers();
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getAllNonAceCampaignMembers().values())
+        
+        Map<Integer, SquadronMember> campaignMembersNotInMission = campaign.getPersonnelManager().getAllCampaignMembers();
+        Map<Integer, SquadronMember> squadronMembersInMissionOtherThanPlayer = SquadronMemberFilter.filterActiveAI(campaignMembersNotInMission, campaign.getDate());
+        for (SquadronMember squadronMember : squadronMembersInMissionOtherThanPlayer.values())
         {
             if (!squadronMembersInMission.isSquadronMember(squadronMember.getSerialNumber()))
             {
-                squadronMembersNotInMission.addSquadronMember(squadronMember);
+                squadronMembersNotInMission.addToSquadronMemberCollection(squadronMember);
             }
         }
 
@@ -142,7 +146,7 @@ public class PreliminaryDataBuilderForTest
         Map<Integer, PwcgGeneratedMissionPlaneData> missionPlanes  = new HashMap<>();
         
         SquadronMembers squadronMembersInMission = preliminaryData.getCampaignMembersInMission();
-        for (SquadronMember squadronMember : squadronMembersInMission.getSquadronMembers().values())
+        for (SquadronMember squadronMember : squadronMembersInMission.getSquadronMemberCollection().values())
         {
             Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronMember.getSquadronId());
             List<EquippedPlane> planesForSquadron = new ArrayList<>(equipment.getActiveEquippedPlanes().values());

@@ -12,31 +12,31 @@ import pwcg.core.utils.RandomNumberGenerator;
 
 public class SquadronMembers
 {
-    private Map<Integer, SquadronMember> squadronMembers = new HashMap<>();
+    private Map<Integer, SquadronMember> squadronMemberCollection = new HashMap<>();
 
-    public Map<Integer, SquadronMember> getSquadronMembers()
+    public Map<Integer, SquadronMember> getSquadronMemberCollection()
     {
-        return squadronMembers;
+        return squadronMemberCollection;
     }
 
-    public void setSquadronMembers(Map<Integer, SquadronMember> squadronMembers)
+    public void setSquadronMemberCollection(Map<Integer, SquadronMember> squadronMembers)
     {
-        this.squadronMembers = squadronMembers;
+        this.squadronMemberCollection = squadronMembers;
     }
 
-    public void addSquadronMember(SquadronMember squadronMember)
+    public void addToSquadronMemberCollection(SquadronMember squadronMember)
     {
-        squadronMembers.put(squadronMember.getSerialNumber(), squadronMember);
+        squadronMemberCollection.put(squadronMember.getSerialNumber(), squadronMember);
     }
 
     public boolean isSquadronMember(Integer serialNumber)
     {
-        return squadronMembers.containsKey(serialNumber);
+        return squadronMemberCollection.containsKey(serialNumber);
     }
 
     public SquadronMember removeAnySquadronMember() throws PWCGException
     {
-        List<Integer> serialNumbers = new ArrayList<>(squadronMembers.keySet());
+        List<Integer> serialNumbers = new ArrayList<>(squadronMemberCollection.keySet());
         int index = RandomNumberGenerator.getRandom(serialNumbers.size());
         int serialNumber = serialNumbers.get(index);
         return removeSquadronMember(serialNumber);
@@ -44,30 +44,30 @@ public class SquadronMembers
 
     public SquadronMember removeSquadronMember(int serialNumber) throws PWCGException
     {
-        SquadronMember squadronMember = squadronMembers.remove(serialNumber);
+        SquadronMember squadronMember = squadronMemberCollection.remove(serialNumber);
         return squadronMember;
     }
 
     public int getActiveCount(Date date) throws PWCGException
     {
-        Map<Integer, SquadronMember> activeSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronMembers, date);
+        Map<Integer, SquadronMember> activeSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronMemberCollection, date);
         return activeSquadronMembers.size();
     }
     
     public SquadronMember getSquadronMember(int serialNumber)
     {
-        SquadronMember squadronMember = squadronMembers.get(serialNumber);
+        SquadronMember squadronMember = squadronMemberCollection.get(serialNumber);
         return squadronMember;
     }
     
     public void clear()
     {
-        squadronMembers.clear();
+        squadronMemberCollection.clear();
     }
 
     public SquadronMember getSquadronMemberByName(String name) throws PWCGException
     {
-        for (SquadronMember squadronMember : squadronMembers.values())
+        for (SquadronMember squadronMember : squadronMemberCollection.values())
         {
             if (squadronMember.getName().equals(name))
             {

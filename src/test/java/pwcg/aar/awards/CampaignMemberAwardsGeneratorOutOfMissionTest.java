@@ -72,9 +72,9 @@ public class CampaignMemberAwardsGeneratorOutOfMissionTest
         
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(preliminaryData.getCampaignMembersInMission()).thenReturn(campaignMembersInMission);
-        Mockito.when(campaignMembersInMission.getSquadronMembers()).thenReturn(squadronMembersInMission);
+        Mockito.when(campaignMembersInMission.getSquadronMemberCollection()).thenReturn(squadronMembersInMission);
         Mockito.when(preliminaryData.getCampaignMembersOutOfMission()).thenReturn(campaignMembersOutOfMission);
-        Mockito.when(campaignMembersOutOfMission.getSquadronMembers()).thenReturn(squadronMembersOutOfMission);
+        Mockito.when(campaignMembersOutOfMission.getSquadronMemberCollection()).thenReturn(squadronMembersOutOfMission);
         Mockito.when(aarContext.getReconciledInMissionData()).thenReturn(reconciledInMissionData);
         Mockito.when(reconciledInMissionData.getReconciledVictoryData()).thenReturn(reconciledVictoryData);
         Mockito.when(aarContext.getCampaignUpdateData()).thenReturn(campaignUpdateData);

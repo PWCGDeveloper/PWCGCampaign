@@ -11,7 +11,7 @@ public class SquadronMemberPicker
 {
     public static SquadronMember pickNonAceSquadronMember (Campaign campaign) throws PWCGException
     {
-        Map<Integer, SquadronMember> squadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMembers();
+        Map<Integer, SquadronMember> squadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMemberCollection();
         SquadronMember selectedSquadronMember = null;
         for (SquadronMember squadronMember : squadronMembers.values())
         {

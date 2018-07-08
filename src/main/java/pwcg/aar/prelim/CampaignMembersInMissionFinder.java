@@ -16,7 +16,7 @@ public class CampaignMembersInMissionFinder
     		SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(missionPlane.getPilotSerialNumber());
     		if (pilot != null)
     		{
-    	        campaignMembersInMission.addSquadronMember(pilot);
+    	        campaignMembersInMission.addToSquadronMemberCollection(pilot);
     		}
          }
                         

@@ -58,7 +58,7 @@ public class CampaignRosterSquadronPanelFactory extends CampaignRosterBasePanelF
     public void makePilotList() throws PWCGException 
     {
         Map<Integer, SquadronMember> pilots = new HashMap<>();
-        for (SquadronMember pilot : campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMembers().values())
+        for (SquadronMember pilot : campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMemberCollection().values())
         {
             if (excludeAces && pilot instanceof Ace)
             {

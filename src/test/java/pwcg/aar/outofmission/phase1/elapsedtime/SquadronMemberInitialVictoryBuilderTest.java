@@ -33,7 +33,7 @@ public class SquadronMemberInitialVictoryBuilderTest
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
         
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getSquadronPersonnel(20112052).getActiveSquadronMembers().getSquadronMembers().values())
+        for (SquadronMember squadronMember : campaign.getPersonnelManager().getSquadronPersonnel(20112052).getActiveSquadronMembers().getSquadronMemberCollection().values())
         {
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
             if (rankPos == 0)
@@ -63,7 +63,7 @@ public class SquadronMemberInitialVictoryBuilderTest
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
         
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getSquadronPersonnel(10111126).getActiveSquadronMembers().getSquadronMembers().values())
+        for (SquadronMember squadronMember : campaign.getPersonnelManager().getSquadronPersonnel(10111126).getActiveSquadronMembers().getSquadronMemberCollection().values())
         {
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
             if (rankPos == 0)

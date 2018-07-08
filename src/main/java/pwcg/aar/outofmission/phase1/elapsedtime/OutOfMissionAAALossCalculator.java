@@ -29,7 +29,7 @@ public class OutOfMissionAAALossCalculator
     
     public void lostToAAA() throws PWCGException
     {
-        for (SquadronMember squadronMember : aarContext.getPreliminaryData().getCampaignMembersOutOfMission().getSquadronMembers().values())
+        for (SquadronMember squadronMember : aarContext.getPreliminaryData().getCampaignMembersOutOfMission().getSquadronMemberCollection().values())
         {
             Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
             if (squadron.isSquadronViable(campaign))

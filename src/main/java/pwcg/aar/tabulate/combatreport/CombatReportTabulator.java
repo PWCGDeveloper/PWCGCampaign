@@ -55,7 +55,7 @@ public class CombatReportTabulator
 
     private void createCrewsInMission() throws PWCGException
     {
-        Map<Integer, SquadronMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getSquadronMembers();
+        Map<Integer, SquadronMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getSquadronMemberCollection();
         Map<Integer, SquadronMember> squadronMembersInMission = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesForSquadron(campaignMembersInMission, campaign.getDate(), campaign.getSquadronId());
         combatReportData.addPilotsInMission(squadronMembersInMission);
     }

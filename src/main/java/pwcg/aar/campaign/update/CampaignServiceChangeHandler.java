@@ -49,7 +49,7 @@ public class CampaignServiceChangeHandler
     private void changeService(Squadron squadron, ArmedService serviceNow, ArmedService serviceAfter) throws PWCGException
     {
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());
-        Map<Integer, SquadronMember> squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getActiveSquadronMembersWithAces().getSquadronMembers(), campaign.getDate());
+        Map<Integer, SquadronMember> squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getActiveSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember pilot : squadronMembers.values())
         {
             setPilotRanksForNewService(pilot, serviceNow, serviceAfter);

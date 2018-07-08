@@ -72,12 +72,12 @@ public class CampaignPersonnelManager
         return allSquadronMembers;
     }
 
-    public Map<Integer, SquadronMember> getAllNonAceCampaignMembers() throws PWCGException
+    private Map<Integer, SquadronMember> getAllNonAceCampaignMembers() throws PWCGException
     {
         Map<Integer, SquadronMember> allCampaignMembers =  new HashMap<>();
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
-            allCampaignMembers.putAll(squadronPersonnel.getActiveSquadronMembers().getSquadronMembers());
+            allCampaignMembers.putAll(squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection());
         }
         return allCampaignMembers;
     }    

@@ -62,7 +62,7 @@ public class MissionLogEventsBuilder
     private void makePilotsForVictories() throws PWCGException
     {
         player = campaign.getPlayer();
-        for (SquadronMember pilot : preliminaryData.getCampaignMembersInMission().getSquadronMembers().values())
+        for (SquadronMember pilot : preliminaryData.getCampaignMembersInMission().getSquadronMemberCollection().values())
         {
             if (pilot.getSquadronId() != player.getSquadronId())
             {
@@ -80,7 +80,7 @@ public class MissionLogEventsBuilder
 
     private void makePlanes() throws PWCGException
     {
-        for (SquadronMember pilot : preliminaryData.getCampaignMembersInMission().getSquadronMembers().values())
+        for (SquadronMember pilot : preliminaryData.getCampaignMembersInMission().getSquadronMemberCollection().values())
         {
             SquadronPlaneAssignment planeAssignment = AARCoordinatorMissionTest.getPlaneForSquadron(pilot.getSquadronId());
             PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();

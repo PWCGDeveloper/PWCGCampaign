@@ -51,7 +51,7 @@ public class TransferHandlerTest
     private void deactivateSquadronPersonnel() throws PWCGException
     {
         int numInactivated = 0;
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getAllNonAceCampaignMembers().values())
+        for (SquadronMember squadronMember : campaign.getPersonnelManager().getAllCampaignMembers().values())
         {
             if (!squadronMember.isPlayer())
             {

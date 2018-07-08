@@ -107,7 +107,7 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
 
     private SquadronMember flightMemberForVictory(LogVictory resultVictory) throws PWCGException
     {
-        Map<Integer, SquadronMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getSquadronMembers();
+        Map<Integer, SquadronMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getSquadronMemberCollection();
         Map<Integer, SquadronMember> squadronMembersInMissionOtherThanPlayer = SquadronMemberFilter.filterActiveAIForSquadron(campaignMembersInMission, campaign.getDate(), campaign.getSquadronId());
         for (SquadronMember pilotVictor: squadronMembersInMissionOtherThanPlayer.values())
         {

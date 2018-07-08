@@ -50,7 +50,7 @@ public class OutOfMissionVictoryEventHandlerTest
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         
         outOfMissionSquadronMembers = new SquadronMembers();
-        outOfMissionSquadronMembers.setSquadronMembers(campaign.getPersonnelManager().getSquadronPersonnel(501012).getActiveSquadronMembers().getSquadronMembers());
+        outOfMissionSquadronMembers.setSquadronMemberCollection(campaign.getPersonnelManager().getSquadronPersonnel(501012).getActiveSquadronMembers().getSquadronMemberCollection());
         Mockito.when(preliminaryData.getCampaignMembersOutOfMission()).thenReturn(outOfMissionSquadronMembers);
     }
 

@@ -42,7 +42,7 @@ public class PersonnelReplacementsService
 
     public boolean hasReplacements() throws PWCGException
     {
-        if (replacements.getSquadronMembers().isEmpty())
+        if (replacements.getSquadronMemberCollection().isEmpty())
         {
         	return false;
         }
@@ -54,7 +54,7 @@ public class PersonnelReplacementsService
 
     public void addReplacement(SquadronMember replacement) throws PWCGException
     {
-        replacements.addSquadronMember(replacement);
+        replacements.addToSquadronMemberCollection(replacement);
     }
 
     public SquadronMember useReplacement() throws PWCGException

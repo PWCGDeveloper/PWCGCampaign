@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadmember.VictoryEntity;
@@ -34,12 +35,15 @@ public class CampaignPersonnelTestHelper
     {
         SquadronMember selectedAiSquadMember = null;
         
-        Map<Integer, SquadronMember> squadronMembers = campaign.getPersonnelManager().getAllNonAceCampaignMembers();
+        Map<Integer, SquadronMember> squadronMembers = campaign.getPersonnelManager().getAllCampaignMembers();
         for (SquadronMember aiSquadMember : squadronMembers.values())
         {
             if (aiSquadMember.getRank().equals(rank))
             {
-                selectedAiSquadMember = aiSquadMember;
+                if (!(aiSquadMember instanceof Ace))
+                {
+                    selectedAiSquadMember = aiSquadMember;
+                }
             }
         }
 

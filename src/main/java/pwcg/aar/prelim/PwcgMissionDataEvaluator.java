@@ -77,7 +77,7 @@ public class PwcgMissionDataEvaluator
 
     public boolean wasPilotAssignedToMission(Integer serialNumber) throws PWCGException
     {
-        for (SquadronMember pilotInMission : aarPreliminarytData.getCampaignMembersInMission().getSquadronMembers().values())
+        for (SquadronMember pilotInMission : aarPreliminarytData.getCampaignMembersInMission().getSquadronMemberCollection().values())
         {
             if (pilotInMission.getSerialNumber() == serialNumber)
             {
@@ -90,7 +90,7 @@ public class PwcgMissionDataEvaluator
 
     public boolean wasPilotAssignedToMissionByName(String pilotName) throws PWCGException
     {
-        for (SquadronMember pilotInMission : aarPreliminarytData.getCampaignMembersInMission().getSquadronMembers().values())
+        for (SquadronMember pilotInMission : aarPreliminarytData.getCampaignMembersInMission().getSquadronMemberCollection().values())
         {
             if (pilotInMission.isPilotName(pilotName))
             {

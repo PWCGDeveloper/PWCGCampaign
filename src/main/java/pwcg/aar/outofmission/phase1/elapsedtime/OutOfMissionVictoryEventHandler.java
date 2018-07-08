@@ -34,7 +34,7 @@ public class OutOfMissionVictoryEventHandler
     
     public OutOfMissionVictoryData generateOutOfMissionVictories() throws PWCGException
     {
-        for (SquadronMember squadronMember : aarContext.getPreliminaryData().getCampaignMembersOutOfMission().getSquadronMembers().values())
+        for (SquadronMember squadronMember : aarContext.getPreliminaryData().getCampaignMembersOutOfMission().getSquadronMemberCollection().values())
         {
             if (OutOfMissionPilotSelector.shouldPilotBeEvaluated(campaign, squadronMember)) 
             {

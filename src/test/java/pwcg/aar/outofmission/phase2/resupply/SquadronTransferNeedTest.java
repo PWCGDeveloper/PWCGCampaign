@@ -69,10 +69,10 @@ public class SquadronTransferNeedTest
         Mockito.when(campaignPersonnelManager.getSquadronPersonnel(Matchers.<Integer>any())).thenReturn(squadronPersonnel);
 
         Mockito.when(squadronPersonnel.getActiveSquadronMembersWithAces()).thenReturn(activeSquadronMembers);
-        Mockito.when(activeSquadronMembers.getSquadronMembers()).thenReturn(activeSquadronMemberCollection);
+        Mockito.when(activeSquadronMembers.getSquadronMemberCollection()).thenReturn(activeSquadronMemberCollection);
 
         Mockito.when(squadronPersonnel.getRecentlyInactiveSquadronMembers()).thenReturn(inactiveSquadronMembers);
-        Mockito.when(inactiveSquadronMembers.getSquadronMembers()).thenReturn(inactiveSquadronMemberCollection);
+        Mockito.when(inactiveSquadronMembers.getSquadronMemberCollection()).thenReturn(inactiveSquadronMemberCollection);
      }
 
     @Test

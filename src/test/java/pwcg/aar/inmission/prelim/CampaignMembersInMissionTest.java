@@ -57,7 +57,7 @@ public class CampaignMembersInMissionTest
 
         assert(squadronMembersInMission.getActiveCount(campaign.getDate()) == 50);
         
-        for (SquadronMember squadronMember : squadronMembersInMission.getSquadronMembers().values())
+        for (SquadronMember squadronMember : squadronMembersInMission.getSquadronMemberCollection().values())
         {
             assert((squadronMember.getSerialNumber() % 2) == 1);
             assert(squadronMember.getSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER);

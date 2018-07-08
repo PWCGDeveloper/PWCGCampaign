@@ -32,7 +32,7 @@ public class SquadronPersonnel
 
     public void addSquadronMember(SquadronMember squadronMember) throws PWCGException
     {
-        squadronMembers.addSquadronMember(squadronMember);
+        squadronMembers.addToSquadronMemberCollection(squadronMember);
     }
 
     public boolean isSquadronPersonnelViable() throws PWCGException
@@ -49,11 +49,11 @@ public class SquadronPersonnel
 
     public SquadronMembers getActiveSquadronMembers() throws PWCGException
     {
-        Map<Integer, SquadronMember> activeCampaignMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronMembers.getSquadronMembers(), campaign.getDate());
+        Map<Integer, SquadronMember> activeCampaignMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronMembers.getSquadronMemberCollection(), campaign.getDate());
         SquadronMembers activeSquadronMembers = new SquadronMembers();
         for (SquadronMember squadronMember : activeCampaignMembers.values())
         {
-            activeSquadronMembers.addSquadronMember(squadronMember);
+            activeSquadronMembers.addToSquadronMemberCollection(squadronMember);
         }
         
         return activeSquadronMembers;
@@ -66,7 +66,7 @@ public class SquadronPersonnel
         List<Ace> aces = campaign.getPersonnelManager().getCampaignAces().getCampaignAcesBySquadron(squadron.getSquadronId());
         for (SquadronMember ace : aces)
         {
-            activeSquadronMembersAndAces.addSquadronMember(ace);
+            activeSquadronMembersAndAces.addToSquadronMemberCollection(ace);
         }
 
         return activeSquadronMembersAndAces;
@@ -74,14 +74,14 @@ public class SquadronPersonnel
 
     public SquadronMembers getRecentlyInactiveSquadronMembers() throws PWCGException
     {
-        Map<Integer, SquadronMember> inactiveCampaignMembers = SquadronMemberFilter.filterInactiveAIAndPlayerAndAces(squadronMembers.getSquadronMembers(), campaign.getDate());
+        Map<Integer, SquadronMember> inactiveCampaignMembers = SquadronMemberFilter.filterInactiveAIAndPlayerAndAces(squadronMembers.getSquadronMemberCollection(), campaign.getDate());
         SquadronMembers inactiveSquadronMembers = new SquadronMembers();
         for (SquadronMember squadronMember : inactiveCampaignMembers.values())
         {
             Date oneWeekAgo = DateUtils.removeTimeDays(campaign.getDate(), 7);
             if (squadronMember.getInactiveDate().after(oneWeekAgo))
             {
-                inactiveSquadronMembers.addSquadronMember(squadronMember);
+                inactiveSquadronMembers.addToSquadronMemberCollection(squadronMember);
             }
         }
         
@@ -90,12 +90,12 @@ public class SquadronPersonnel
 
     public SquadronMember getSquadronMember(Integer serialNumber) throws PWCGException
     {
-        return squadronMembers.getSquadronMembers().get(serialNumber);
+        return squadronMembers.getSquadronMemberCollection().get(serialNumber);
     }
 
     public boolean isActiveSquadronMember(Integer serialNumber) throws PWCGException
     {
-        for (SquadronMember squadronMember : squadronMembers.getSquadronMembers().values())
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberCollection().values())
         {
             if (squadronMember.getSerialNumber() == serialNumber)
             {

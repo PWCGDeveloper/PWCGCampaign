@@ -60,7 +60,7 @@ public class CombatReportTabulatorTest extends AARTestSetup
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(preliminaryData.getPwcgMissionData()).thenReturn(pwcgMissionData);
         Mockito.when(preliminaryData.getCampaignMembersInMission()).thenReturn(campaignMembersInMission);
-        Mockito.when(campaignMembersInMission.getSquadronMembers()).thenReturn(campaignMembersInMissionMap);
+        Mockito.when(campaignMembersInMission.getSquadronMemberCollection()).thenReturn(campaignMembersInMissionMap);
         
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
 

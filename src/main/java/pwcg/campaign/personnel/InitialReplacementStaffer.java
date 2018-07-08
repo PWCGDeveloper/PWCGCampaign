@@ -24,7 +24,7 @@ public class InitialReplacementStaffer
         for (int i = 0; i < NUM_INITIAL_REPLACEMENTS; ++i)
         {
             SquadronMember replacement = squadronMemberFactory.createAIReplacementPilot();
-            squadronMembers.addSquadronMember(replacement);
+            squadronMembers.addToSquadronMemberCollection(replacement);
         }
         
         return squadronMembers;

@@ -84,7 +84,7 @@ public class CampaignIOJsonTest
 
     private void validateReconSquadronMembers(Campaign campaign) throws PWCGException
     {
-        Map<Integer, SquadronMember> reconSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(101002).getActiveSquadronMembers().getSquadronMembers();
+        Map<Integer, SquadronMember> reconSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(101002).getActiveSquadronMembers().getSquadronMemberCollection();
         assert (reconSquadronPersonnel.size() == 12);
         for (SquadronMember squadronMember : reconSquadronPersonnel.values())
         {
@@ -95,7 +95,7 @@ public class CampaignIOJsonTest
 
     private void validateFighterSquadronMembers(Campaign campaign) throws PWCGException
     {
-        Map<Integer, SquadronMember> fighterSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(501011).getActiveSquadronMembersWithAces().getSquadronMembers();
+        Map<Integer, SquadronMember> fighterSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(501011).getActiveSquadronMembersWithAces().getSquadronMemberCollection();
         assert (campaign.getSerialNumber().getNextPilotSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
         assert (fighterSquadronPersonnel.size() >= 12);
         for (SquadronMember squadronMember : fighterSquadronPersonnel.values())

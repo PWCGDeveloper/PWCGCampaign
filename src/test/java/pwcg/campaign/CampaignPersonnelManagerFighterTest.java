@@ -35,7 +35,7 @@ public class CampaignPersonnelManagerFighterTest
         filterSpecification.setDate(campaign.getDate());
 
         CampaignPersonnelFilter filter = new CampaignPersonnelFilter(
-                campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembersWithAces().getSquadronMembers());
+                campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembersWithAces().getSquadronMemberCollection());
         filterSpecification.setIncludeAces(false);
         filterSpecification.setIncludePlayer(false);
         filterSpecification.setSpecifySquadron(campaign.getSquadronId());

@@ -16,6 +16,7 @@ import pwcg.aar.data.CampaignUpdateData;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -51,10 +52,10 @@ public class PersonnelOutOfMissionLossesHandlerTest
         Mockito.when(aarContext.getCampaignUpdateData()).thenReturn(campaignUpdateData);
         Mockito.when(aarContext.getNewDate()).thenReturn(DateUtils.getDateYYYYMMDD("19171001"));
         
-        Map<Integer, SquadronMember>possibleDeadGuys = campaign.getPersonnelManager().getAllNonAceCampaignMembers();
+        Map<Integer, SquadronMember> possibleDeadGuys = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(preliminaryData.getCampaignMembersOutOfMission()).thenReturn(squadronMembers);
-        Mockito.when(squadronMembers.getSquadronMembers()).thenReturn(possibleDeadGuys);
+        Mockito.when(squadronMembers.getSquadronMemberCollection()).thenReturn(possibleDeadGuys);
     }
 
     @Test
@@ -74,7 +75,8 @@ public class PersonnelOutOfMissionLossesHandlerTest
         Map<Integer, SquadronMember> aiCaptured = new HashMap<>();
 
         OutOfMissionLossHandler outOfMissionLossesHandler = new OutOfMissionLossHandler(campaign, aarContext);
-        outOfMissionLossesHandler.lossesOutOfMission(campaign.getPersonnelManager().getAllNonAceCampaignMembers(), new HashMap<Integer, EquippedPlane>());
+        Map<Integer, SquadronMember> nonPlayerSquadronMembersMap = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
+        outOfMissionLossesHandler.lossesOutOfMission(nonPlayerSquadronMembersMap, new HashMap<Integer, EquippedPlane>());
 
         AARPersonnelLosses lossesInMissionDataTotal = outOfMissionLossesHandler.getOutOfMissionPersonnelLosses();
         aiKilled.putAll(lossesInMissionDataTotal.getPersonnelKilled());

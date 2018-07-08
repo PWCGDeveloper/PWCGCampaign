@@ -124,7 +124,7 @@ public class SkinSessionManager
     private boolean isSkinInUseByAnotherPilot(Skin skinToCheck) throws PWCGException
     {
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        for (SquadronMember squadMember : campaign.getPersonnelManager().getPlayerPersonnel().getActiveSquadronMembers().getSquadronMembers().values())
+        for (SquadronMember squadMember : campaign.getPersonnelManager().getPlayerPersonnel().getActiveSquadronMembers().getSquadronMemberCollection().values())
         {
             if (!(squadMember.getSerialNumber() == pilot.getSerialNumber()))
             {

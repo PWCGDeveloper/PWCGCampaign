@@ -84,7 +84,7 @@ public class DuringCampaignVictimGenerator implements IVictimGenerator
     {
         Map<Integer, SquadronMember> possibleVictims = new HashMap<>();
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(victimSquadron.getSquadronId());
-        for (SquadronMember squadronMember : squadronPersonnel.getActiveSquadronMembers().getSquadronMembers().values())
+        for (SquadronMember squadronMember : squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection().values())
         {
             if (squadronMember.isPlayer())
             {

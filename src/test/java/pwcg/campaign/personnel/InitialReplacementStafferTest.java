@@ -35,8 +35,8 @@ public class InitialReplacementStafferTest
             InitialReplacementStaffer initialReplacementStaffer = new InitialReplacementStaffer(campaign, service);
             SquadronMembers squadronMembers = initialReplacementStaffer.staffReplacementsForService();
             
-            assert(squadronMembers.getSquadronMembers().size() == InitialReplacementStaffer.NUM_INITIAL_REPLACEMENTS);
-            for (SquadronMember replacement : squadronMembers.getSquadronMembers().values())
+            assert(squadronMembers.getSquadronMemberCollection().size() == InitialReplacementStaffer.NUM_INITIAL_REPLACEMENTS);
+            for (SquadronMember replacement : squadronMembers.getSquadronMemberCollection().values())
             {
                 assert(replacement.getSquadronId() == Squadron.REPLACEMENT);
             }

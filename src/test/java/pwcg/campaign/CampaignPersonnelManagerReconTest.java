@@ -33,7 +33,7 @@ public class CampaignPersonnelManagerReconTest
     {                               
         SquadronMemberFilterSpecification filterSpecification = new SquadronMemberFilterSpecification();
 
-        CampaignPersonnelFilter filter = new CampaignPersonnelFilter(campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMembers());
+        CampaignPersonnelFilter filter = new CampaignPersonnelFilter(campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMemberCollection());
         filterSpecification.setIncludePlayer(false);        
         filterSpecification.setIncludeAces(false);  
         filterSpecification.setSpecifySquadron(campaign.getSquadronId());

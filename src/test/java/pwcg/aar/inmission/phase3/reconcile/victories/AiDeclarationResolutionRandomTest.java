@@ -120,8 +120,8 @@ public class AiDeclarationResolutionRandomTest
     @Test
     public void testAiRandomVictoryAward () throws PWCGException
     {   
-        campaignMembersInmission.addSquadronMember(player);
-        campaignMembersInmission.addSquadronMember(aiSquadMember);
+        campaignMembersInmission.addToSquadronMemberCollection(player);
+        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember);
 
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER)).thenReturn(playerVictor);
         Mockito.when(personnelManager.getActiveCampaignMember(SerialNumber.PLAYER_SERIAL_NUMBER)).thenReturn(player);
@@ -138,7 +138,7 @@ public class AiDeclarationResolutionRandomTest
     @Test
     public void testAiRandomVictoryAwardFailedBecusePlaneNotFound () throws PWCGException
     {   
-        campaignMembersInmission.addSquadronMember(player);
+        campaignMembersInmission.addToSquadronMemberCollection(player);
 
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_SERIAL_NUMBER);
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER)).thenReturn(playerVictor);

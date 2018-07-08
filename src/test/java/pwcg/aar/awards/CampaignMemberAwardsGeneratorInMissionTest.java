@@ -22,6 +22,7 @@ import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
@@ -74,9 +75,9 @@ public class CampaignMemberAwardsGeneratorInMissionTest
         
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(preliminaryData.getCampaignMembersInMission()).thenReturn(campaignMembersInMission);
-        Mockito.when(campaignMembersInMission.getSquadronMembers()).thenReturn(squadronMembersInMission);
+        Mockito.when(campaignMembersInMission.getSquadronMemberCollection()).thenReturn(squadronMembersInMission);
         Mockito.when(preliminaryData.getCampaignMembersOutOfMission()).thenReturn(campaignMembersOutOfMission);
-        Mockito.when(campaignMembersOutOfMission.getSquadronMembers()).thenReturn(squadronMembersOutOfMission);
+        Mockito.when(campaignMembersOutOfMission.getSquadronMemberCollection()).thenReturn(squadronMembersOutOfMission);
         Mockito.when(aarContext.getReconciledInMissionData()).thenReturn(reconciledInMissionData);
         Mockito.when(reconciledInMissionData.getReconciledVictoryData()).thenReturn(reconciledVictoryData);
         Mockito.when(aarContext.getCampaignUpdateData()).thenReturn(campaignUpdateData);
@@ -103,7 +104,7 @@ public class CampaignMemberAwardsGeneratorInMissionTest
     @Test
     public void testKilledMemberssAwardedWoundBadge () throws PWCGException
     {             
-        Map<Integer, SquadronMember> nonPlayerSquadronMembersMap = campaign.getPersonnelManager().getAllNonAceCampaignMembers();
+        Map<Integer, SquadronMember> nonPlayerSquadronMembersMap = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
         List<SquadronMember>nonPlayerSquadronMembers = new ArrayList<>(nonPlayerSquadronMembersMap.values());
         Map<Integer, SquadronMember> squadronMembersKilled = new HashMap<>();
         squadronMembersKilled.put(nonPlayerSquadronMembers.get(1).getSerialNumber(), nonPlayerSquadronMembers.get(1));

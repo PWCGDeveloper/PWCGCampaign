@@ -50,22 +50,22 @@ public class SquadronMembersTest
         Mockito.when(squadronMember4.getName()).thenReturn("Robert Plant");
 
         squadronMembers = new SquadronMembers();
-        squadronMembers.addSquadronMember(squadronMember1);
-        squadronMembers.addSquadronMember(squadronMember2);
+        squadronMembers.addToSquadronMemberCollection(squadronMember1);
+        squadronMembers.addToSquadronMemberCollection(squadronMember2);
     }
 
     @Test
     public void addSquadronMember() throws PWCGException 
     {
-        squadronMembers.addSquadronMember(squadronMember3);
+        squadronMembers.addToSquadronMemberCollection(squadronMember3);
         assert(squadronMembers.getActiveCount(campaign.getDate()) == 3);
     }
 
     @Test
     public void removeAnySquadronMember() throws PWCGException 
     {
-        squadronMembers.addSquadronMember(squadronMember3);
-        squadronMembers.addSquadronMember(squadronMember4);
+        squadronMembers.addToSquadronMemberCollection(squadronMember3);
+        squadronMembers.addToSquadronMemberCollection(squadronMember4);
         squadronMembers.removeAnySquadronMember();
         assert(squadronMembers.getActiveCount(campaign.getDate()) == 3);
     }
@@ -73,8 +73,8 @@ public class SquadronMembersTest
     @Test
     public void removeSquadronMember() throws PWCGException 
     {
-        squadronMembers.addSquadronMember(squadronMember3);
-        squadronMembers.addSquadronMember(squadronMember4);
+        squadronMembers.addToSquadronMemberCollection(squadronMember3);
+        squadronMembers.addToSquadronMemberCollection(squadronMember4);
         SquadronMember squadronMember = squadronMembers.removeSquadronMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 3);
         assert(squadronMembers.getActiveCount(campaign.getDate()) == 3);
         assert(squadronMember.getSerialNumber() == (SerialNumber.AI_STARTING_SERIAL_NUMBER + 3));
@@ -83,8 +83,8 @@ public class SquadronMembersTest
     @Test
     public void getSquadronMemberByName() throws PWCGException 
     {
-        squadronMembers.addSquadronMember(squadronMember3);
-        squadronMembers.addSquadronMember(squadronMember4);
+        squadronMembers.addToSquadronMemberCollection(squadronMember3);
+        squadronMembers.addToSquadronMemberCollection(squadronMember4);
         SquadronMember squadronMember = squadronMembers.getSquadronMemberByName("Jimmy Page");
         assert(squadronMembers.getActiveCount(campaign.getDate()) == 4);
         assert(squadronMember.getSerialNumber() == (SerialNumber.AI_STARTING_SERIAL_NUMBER + 3));

@@ -138,8 +138,8 @@ public class AiDeclarationResolutionFuzzyTest
     @Test
     public void testAiOnlyOneFuzzyVictoryAward () throws PWCGException
     {   
-        campaignMembersInmission.addSquadronMember(player);
-        campaignMembersInmission.addSquadronMember(aiSquadMember1);
+        campaignMembersInmission.addToSquadronMemberCollection(player);
+        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember1);
 
         AiDeclarationResolver declarationResolution = new AiDeclarationResolver(campaign, aarContext);
         ConfirmedVictories confirmedAiVictories = declarationResolution.determineAiAirResults(victorySorter);
@@ -150,9 +150,9 @@ public class AiDeclarationResolutionFuzzyTest
     @Test
     public void testAiOneFuzzyVictoryPerCrewAward () throws PWCGException
     {   
-        campaignMembersInmission.addSquadronMember(player);
-        campaignMembersInmission.addSquadronMember(aiSquadMember1);
-        campaignMembersInmission.addSquadronMember(aiSquadMember2);
+        campaignMembersInmission.addToSquadronMemberCollection(player);
+        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember1);
+        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember2);
 
         AiDeclarationResolver declarationResolution = new AiDeclarationResolver(campaign, aarContext);
         ConfirmedVictories confirmedAiVictories = declarationResolution.determineAiAirResults(victorySorter);
@@ -163,7 +163,7 @@ public class AiDeclarationResolutionFuzzyTest
     @Test
     public void testAiFuzzyVictoryAwardFailedBecuseNoCrewOtherThanPlayer () throws PWCGException
     {   
-        campaignMembersInmission.addSquadronMember(player);
+        campaignMembersInmission.addToSquadronMemberCollection(player);
 
         AiDeclarationResolver declarationResolution = new AiDeclarationResolver(campaign, aarContext);
         ConfirmedVictories confirmedAiVictories = declarationResolution.determineAiAirResults(victorySorter);
@@ -174,9 +174,9 @@ public class AiDeclarationResolutionFuzzyTest
     @Test
     public void testAiFuzzyVictoryAwardFailedBecuseAllConfirmed () throws PWCGException
     {   
-        campaignMembersInmission.addSquadronMember(player);
-        campaignMembersInmission.addSquadronMember(aiSquadMember1);
-        campaignMembersInmission.addSquadronMember(aiSquadMember2);
+        campaignMembersInmission.addToSquadronMemberCollection(player);
+        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember1);
+        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember2);
 
         for (LogVictory fuzzyVictory : fuzzyVictories)
         {
@@ -192,9 +192,9 @@ public class AiDeclarationResolutionFuzzyTest
     @Test
     public void testAiFuzzyVictoryAwardFailedBecuseVictorIsNotSquadronMember () throws PWCGException
     {   
-        campaignMembersInmission.addSquadronMember(player);
-        campaignMembersInmission.addSquadronMember(aiSquadMember1);
-        campaignMembersInmission.addSquadronMember(aiSquadMember2);
+        campaignMembersInmission.addToSquadronMemberCollection(player);
+        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember1);
+        campaignMembersInmission.addToSquadronMemberCollection(aiSquadMember2);
 
         Mockito.when(aiSquadMember1.getSquadronId()).thenReturn(501004);
         Mockito.when(aiSquadMember2.getSquadronId()).thenReturn(501004);

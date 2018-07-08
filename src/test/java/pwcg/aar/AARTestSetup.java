@@ -48,7 +48,9 @@ public abstract class AARTestSetup
     @Mock protected AARPersonnelLosses personnelLossesOutOfMissionData;
     @Mock protected AARPersonnelLosses personnelLossesInMissionData;
     @Mock protected AARPersonnelLosses personnelLossesCampaignUpdate;
-    @Mock protected AARPersonnelAwards campaignMemberAwards;
+    @Mock protected AARPersonnelAwards campaignMemberAwardsInMission;
+    @Mock protected AARPersonnelAwards campaignMemberAwardsOutOfMission;
+    @Mock protected AARPersonnelAwards campaignMemberAwardsCampaignUpdate;
     @Mock protected AARResupplyData transferData;
     @Mock protected SquadronTransferData acesTransferred;
     @Mock protected SquadronTransferData squadronMembersTransferred;
@@ -117,12 +119,13 @@ public abstract class AARTestSetup
     private void mockInMissionData()
     {
         Mockito.when(reconciledInMissionData.getPersonnelLossesInMission()).thenReturn(personnelLossesInMissionData);
+        Mockito.when(reconciledInMissionData.getPersonnelAwards()).thenReturn(campaignMemberAwardsInMission);
     }
 
     private void mockOutOfMissionData()
     {
         Mockito.when(reconciledOutOfMissionData.getPersonnelLossesOutOfMission()).thenReturn(personnelLossesOutOfMissionData);
-        Mockito.when(reconciledOutOfMissionData.getPersonnelAwards()).thenReturn(campaignMemberAwards);
+        Mockito.when(reconciledOutOfMissionData.getPersonnelAwards()).thenReturn(campaignMemberAwardsOutOfMission);
         Mockito.when(reconciledOutOfMissionData.getResupplyData()).thenReturn(transferData);
         
         Mockito.when(transferData.getAcesTransferred()).thenReturn(acesTransferred);
@@ -133,7 +136,7 @@ public abstract class AARTestSetup
     {
         Mockito.when(campaignUpdateData.getPersonnelLosses()).thenReturn(personnelLossesCampaignUpdate);
         Mockito.when(campaignUpdateData.getResupplyData()).thenReturn(transferData);
-        Mockito.when(campaignUpdateData.getPersonnelAwards()).thenReturn(campaignMemberAwards);
+        Mockito.when(campaignUpdateData.getPersonnelAwards()).thenReturn(campaignMemberAwardsCampaignUpdate);
     }
 
     private void mockPersonnel() throws PWCGException

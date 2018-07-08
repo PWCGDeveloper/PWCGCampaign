@@ -110,7 +110,7 @@ public class InitialSquadronStaffer
     private int refineNumPilotsAtRank(int numPilots, int rankPos) throws PWCGException
     {
         SquadronMembers squadronMembersAlreadyWithSquadron = squadronPersonnel.getActiveSquadronMembersWithAces();
-        for (SquadronMember squadronMember : squadronMembersAlreadyWithSquadron.getSquadronMembers().values())
+        for (SquadronMember squadronMember : squadronMembersAlreadyWithSquadron.getSquadronMemberCollection().values())
         {
             IRankHelper rankObj = RankFactory.createRankHelper();
             int squadronMemberRankPos = rankObj.getRankPosByService(squadronMember.getRank(), squadron.determineServiceForSquadron(campaign.getDate()));
@@ -130,7 +130,7 @@ public class InitialSquadronStaffer
 
     private void validateMissionsFlownForInitialPilots() throws PWCGException
     {
-        Map<Integer, SquadronMember> squadronMembers = SquadronMemberFilter.filterActiveAI(squadronPersonnel.getActiveSquadronMembers().getSquadronMembers(), campaign.getDate());
+        Map<Integer, SquadronMember> squadronMembers = SquadronMemberFilter.filterActiveAI(squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : squadronMembers.values())
         {
             int minimumMissions = 1 + (squadronMember.getSquadronMemberVictories().getAirToAirVictories() * 3);
@@ -146,7 +146,7 @@ public class InitialSquadronStaffer
 
     private void setAiSkillLevel() throws PWCGException
     {
-        Map<Integer, SquadronMember> squadronMembers = SquadronMemberFilter.filterActiveAI(squadronPersonnel.getActiveSquadronMembers().getSquadronMembers(), campaign.getDate());
+        Map<Integer, SquadronMember> squadronMembers = SquadronMemberFilter.filterActiveAI(squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : squadronMembers.values())
         {
             AiPilotSkillGenerator aiPilotSkillGenerator = new AiPilotSkillGenerator();

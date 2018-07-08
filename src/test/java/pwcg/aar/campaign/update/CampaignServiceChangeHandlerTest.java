@@ -32,7 +32,7 @@ public class CampaignServiceChangeHandlerTest
         assertTrue (service.getName().equals(RoFServiceManager.RFC_NAME));
 
         SquadronPersonnel rfcPersonnel = campaign.getPersonnelManager().getPlayerPersonnel();
-        for (SquadronMember squadronMember : rfcPersonnel.getActiveSquadronMembers().getSquadronMembers().values())
+        for (SquadronMember squadronMember : rfcPersonnel.getActiveSquadronMembers().getSquadronMemberCollection().values())
         {
             IRankHelper rank = RankFactory.createRankHelper();
             int rankPos = rank.getRankPosByService(squadronMember.getRank(), service);
@@ -47,7 +47,7 @@ public class CampaignServiceChangeHandlerTest
         assertTrue (service.getName().equals(RoFServiceManager.RAF_NAME));
 
         SquadronPersonnel rafPersonnel = campaign.getPersonnelManager().getPlayerPersonnel();
-        for (SquadronMember squadronMember : rafPersonnel.getActiveSquadronMembers().getSquadronMembers().values())
+        for (SquadronMember squadronMember : rafPersonnel.getActiveSquadronMembers().getSquadronMemberCollection().values())
         {
             IRankHelper rank = RankFactory.createRankHelper();
             int rankPos = rank.getRankPosByService(squadronMember.getRank(), service);
@@ -66,7 +66,7 @@ public class CampaignServiceChangeHandlerTest
         assertTrue (service.getName().equals(RoFServiceManager.LAVIATION_MILITAIRE_NAME));
 
         SquadronPersonnel lafayettePersonnel = campaign.getPersonnelManager().getPlayerPersonnel();
-        for (SquadronMember squadronMember : lafayettePersonnel.getActiveSquadronMembers().getSquadronMembers().values())
+        for (SquadronMember squadronMember : lafayettePersonnel.getActiveSquadronMembers().getSquadronMemberCollection().values())
         {
             assertTrue (squadronMember.getCountry() == Country.FRANCE);
             IRankHelper rank = RankFactory.createRankHelper();
@@ -82,7 +82,7 @@ public class CampaignServiceChangeHandlerTest
         assertTrue (service.getName().equals(RoFServiceManager.USAS_NAME));
 
         SquadronPersonnel usasPersonnel = campaign.getPersonnelManager().getPlayerPersonnel();
-        for (SquadronMember squadronMember : usasPersonnel.getActiveSquadronMembers().getSquadronMembers().values())
+        for (SquadronMember squadronMember : usasPersonnel.getActiveSquadronMembers().getSquadronMemberCollection().values())
         {
             assertTrue (squadronMember.getCountry() == Country.USA);
             IRankHelper rank = RankFactory.createRankHelper();

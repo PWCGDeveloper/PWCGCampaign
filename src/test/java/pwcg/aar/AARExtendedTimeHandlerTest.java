@@ -54,13 +54,13 @@ public class AARExtendedTimeHandlerTest
     @Test
     public void testTimePassedForNonViableSquadron () throws PWCGException
     {
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMembers().values())
+        for (SquadronMember squadronMember : campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMemberCollection().values())
         {
             if (!squadronMember.isPlayer())
             {
                 squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate());
             }
-            if (campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembersWithAces().getSquadronMembers().size() < 6)
+            if (campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembersWithAces().getSquadronMemberCollection().size() < 6)
             {
                 break;
             }
@@ -73,7 +73,7 @@ public class AARExtendedTimeHandlerTest
         
         assert (aarContext.getReasonForExtendedTime() == ExtendedTimeReason.NO_PILOTS);
         assert(endCampaignDate.after(startCampaignDate));
-        assert(campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembersWithAces().getSquadronMembers().size() >= 6);
+        assert(campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembersWithAces().getSquadronMemberCollection().size() >= 6);
     }
     
     @Test

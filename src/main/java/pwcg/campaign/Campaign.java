@@ -106,7 +106,7 @@ public class Campaign
     {
         for (SquadronPersonnel squadronPersonnel : personnelManager.getAllSquadronPersonnel())
         {
-            for (SquadronMember squadMember : squadronPersonnel.getActiveSquadronMembers().getSquadronMembers().values())
+            for (SquadronMember squadMember : squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection().values())
             {
                 if (squadMember.isPlayer())
                 {

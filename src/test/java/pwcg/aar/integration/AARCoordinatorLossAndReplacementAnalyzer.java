@@ -12,6 +12,7 @@ import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
@@ -62,7 +63,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
 	    	int medalsAwarded = aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getMedalsAwarded().size();
             int promotionsAwarded = aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getPromotions().size();
             int transfers = aarContext.getReconciledOutOfMissionData().getResupplyData().getSquadronTransferData().getSquadronMembersTransferred().size();
-            int numAiPilots = campaign.getPersonnelManager().getAllCampaignMembers().size();
+            int numAiPilots = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate()).size();
             int equipmentLosses = aarContext.getReconciledOutOfMissionData().getEquipmentLossesOutOfMission().getPlanesDestroyed().size();
 
             totalVictories += victories;

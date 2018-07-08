@@ -58,7 +58,7 @@ public class ServiceTransferNeedTest
 
     private void deactivateSquadronPersonnel() throws PWCGException
     {
-        Map<Integer, SquadronMember> jasta12SquadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(501012).getActiveSquadronMembers().getSquadronMembers();
+        Map<Integer, SquadronMember> jasta12SquadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(501012).getActiveSquadronMembers().getSquadronMemberCollection();
         int numInactivated = 0;
         for (SquadronMember squadronMember : jasta12SquadronMembers.values())
         {
