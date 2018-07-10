@@ -5,6 +5,7 @@ import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -38,7 +39,12 @@ public class TransferHandler
     {
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
         int newSquadronId = squadronManager.chooseSquadronForTransfer(campaign, squadronMember);
+		SquadronPersonnel oldSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronMember.getSquadronId());
+		SquadronPersonnel newSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(newSquadronId);
+
+		oldSquadronPersonnel.removeSquadronMember(squadronMember);
         squadronMember.setSquadronId(newSquadronId);
+		newSquadronPersonnel.addSquadronMember(squadronMember);
     }
 
 	private TransferEvent createTransferEvent(int leaveTimeForTransfer, Squadron oldSquad, Squadron newSquad) throws PWCGException
@@ -60,8 +66,13 @@ public class TransferHandler
 		SquadronMember player = campaign.getPlayer();
 		Squadron newSquad =  PWCGContextManager.getInstance().getSquadronManager().getSquadronByNameAndCountry(newSquadName, newService.getCountry(), campaign.getDate());
         
+		SquadronPersonnel oldSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(player.getSquadronId());
+		SquadronPersonnel newSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(newSquad.getSquadronId());
+
+		oldSquadronPersonnel.removeSquadronMember(player);
 		campaign.setSquadId(newSquad.getSquadronId());
 		player.setSquadronId(newSquad.getSquadronId());
+		newSquadronPersonnel.addSquadronMember(player);
 		
 		return newSquad;
 	}
