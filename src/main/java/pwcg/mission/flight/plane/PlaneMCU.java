@@ -567,4 +567,20 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
     {
         this.pilot = newPilot;
     }
+
+	public Callsign getCallsign() {
+		return callsign;
+	}
+
+	public void setCallsign(Callsign callsign) {
+		this.callsign = callsign;
+	}
+
+	public int getCallnum() {
+		return callnum;
+	}
+
+	public void setCallnum(int callnum) {
+		this.callnum = callnum;
+	}
 }

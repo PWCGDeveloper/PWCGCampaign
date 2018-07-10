@@ -13,6 +13,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.constants.AiSkillLevel;
+import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.crew.FlightCrewBuilder;
@@ -74,6 +75,7 @@ public class PlaneMCUFactory
         {
             setPlaceInFormation(numInFormation, plane);
             setPlaneDescription(plane);
+            setPlaneCallsign(numInFormation, plane);
             setAiSkillLevelForPlane(plane);
             ++numInFormation;
         }
@@ -94,6 +96,14 @@ public class PlaneMCUFactory
 	private void setPlaneDescription(PlaneMCU plane) throws PWCGException
 	{
 	    plane.setDesc(plane.getPilot().getNameAndRank());
+	}
+
+	private void setPlaneCallsign(int numInFormation, PlaneMCU plane)
+	{
+		Callsign callsign = squadron.determineCurrentCallsign(campaign.getDate());
+
+		plane.setCallsign(callsign);
+		plane.setCallnum(numInFormation);
 	}
 
 	private void setAiSkillLevelForPlane(PlaneMCU plane) throws PWCGException

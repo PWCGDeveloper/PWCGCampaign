@@ -14,6 +14,7 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.testutils.CampaignCache;
@@ -46,9 +47,12 @@ public class PlaneFactoryTest
         SquadronMember player = campaign.getPlayer();        
         boolean playerFound = false;
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId());        
+        int callnum = 1;
         for (PlaneMCU plane : assignedPlanes)
         {
             assert(squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
+            assert(plane.getCallsign() == Callsign.SEAGULL);
+            assert(plane.getCallnum() == callnum++);
             if (plane.getPilot().getSerialNumber() == player.getSerialNumber())
             {
                 playerFound = true;
@@ -70,9 +74,12 @@ public class PlaneFactoryTest
         SquadronMember player = campaign.getPlayer();        
         boolean playerFound = false;
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());        
+        int callnum = 1;
         for (PlaneMCU plane : assignedPlanes)
         {
             assert(squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
+            assert(plane.getCallsign() == Callsign.ROOK);
+            assert(plane.getCallnum() == callnum++);
             if (plane.getPilot().getSerialNumber() == player.getSerialNumber())
             {
                 playerFound = true;
