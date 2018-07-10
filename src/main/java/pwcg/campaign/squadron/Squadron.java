@@ -307,6 +307,11 @@ public class Squadron
             }
         }
         
+        Callsign callsign = determineCurrentCallsign(date);
+        if (callsign != Callsign.NONE)
+        {
+            squadronDescription += "Callsign: " + callsign + "\n\n";
+        }
 
 		squadronDescription += "Stationed at\n";
 		String fieldName = determineCurrentAirfieldName(date);
