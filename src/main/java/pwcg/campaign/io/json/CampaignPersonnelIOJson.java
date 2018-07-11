@@ -44,7 +44,7 @@ public class CampaignPersonnelIOJson
         JsonWriter<SquadronMembers> jsonWriterSquadrons = new JsonWriter<>();
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
-            SquadronMembers squadronMembers = squadronPersonnel.getActiveSquadronMembers();
+            SquadronMembers squadronMembers = squadronPersonnel.getSquadronMembers();
             jsonWriterSquadrons.writeAsJson(squadronMembers, campaignPersonnelDir, squadronPersonnel.getSquadron().getSquadronId() + ".json");
         }
     }
