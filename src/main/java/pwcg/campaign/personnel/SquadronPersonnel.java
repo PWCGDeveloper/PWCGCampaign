@@ -1,6 +1,7 @@
 package pwcg.campaign.personnel;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,6 +46,15 @@ public class SquadronPersonnel
         {
             return false;
         }
+    }
+
+    public SquadronMembers getSquadronMembers() throws PWCGException
+    {
+        Map<Integer, SquadronMember> campaignMembers = new HashMap<>(squadronMembers.getSquadronMemberCollection());
+        SquadronMembers allSquadronMembers = new SquadronMembers();
+        allSquadronMembers.setSquadronMemberCollection(campaignMembers);
+
+        return allSquadronMembers;
     }
 
     public SquadronMembers getActiveSquadronMembers() throws PWCGException
