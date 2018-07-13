@@ -64,11 +64,11 @@ public class AARVictoryEvaluator
 
     private void buildVictoryList() throws PWCGException 
     {
-        for (LogVictory missionResultVictory : aarDestroyedStatusEvaluator.getDeadLogVehicleList())
+        for (LogVictory logVictory : aarDestroyedStatusEvaluator.getDeadLogVehicleList())
         {
-            if (missionResultVictory.getVictim() instanceof LogPlane)
+            if (logVictory.getVictim() instanceof LogPlane)
             {
-                determinePlaneCrashedInReportingRangeOfLines(missionResultVictory);
+                determinePlaneCrashedInReportingRangeOfLines(logVictory);
             }
         }
     }

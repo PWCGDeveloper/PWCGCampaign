@@ -15,6 +15,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightPositionHelperPlayerStart;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
 import pwcg.mission.flight.waypoint.WaypointType;
@@ -96,7 +97,8 @@ public class PlayerEscortFlight extends Flight
 		createDeactivate();
 		createActivation();
 
-		this.createPlayerPlanePosition();
+        FlightPositionHelperPlayerStart flightPositionHelperPlayerStart = new FlightPositionHelperPlayerStart(campaign, this);
+        flightPositionHelperPlayerStart.createPlayerPlanePosition();
 	}
 
 	@Override
@@ -260,12 +262,6 @@ public class PlayerEscortFlight extends Flight
         egressTimer.setTimer(2);                
     }
 
-	/**
-	 * Calculate the number of planes in the mission
-	 * @throws PWCGException 
-	 * 
-	 * @
-	 */
 	@Override
 	public int calcNumPlanes() throws PWCGException 
 	{
@@ -279,22 +275,15 @@ public class PlayerEscortFlight extends Flight
 
 	}
 
-	/**
-	 * Create the activation of this unit
-	 * @throws PWCGException 
-	 */
 	@Override
 	protected void createActivation() throws PWCGException 
 	{
 		// Do this again to compensate for the movement of the escorted flight
-	    createPlayerPlanePosition();
+	    FlightPositionHelperPlayerStart flightPositionHelperPlayerStart = new FlightPositionHelperPlayerStart(campaign, this);
+	    flightPositionHelperPlayerStart.createPlayerPlanePosition();
 		super.createActivation();
 	}
 
-	
-	/* (non-Javadoc)
-	 * @see rof.campaign.mission.Flight#write(java.io.BufferedWriter)
-	 */
 	@Override
 	public void write(BufferedWriter writer) throws PWCGException 
 	{

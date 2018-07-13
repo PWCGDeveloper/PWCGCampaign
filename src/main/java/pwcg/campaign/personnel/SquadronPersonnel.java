@@ -47,6 +47,17 @@ public class SquadronPersonnel
         }
     }
 
+    public SquadronMembers getAllSquadronMembers() throws PWCGException
+    {
+        SquadronMembers allSquadronMembers = new SquadronMembers();
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberCollection().values())
+        {
+            allSquadronMembers.addToSquadronMemberCollection(squadronMember);
+        }
+        
+        return allSquadronMembers;
+    }
+
     public SquadronMembers getActiveSquadronMembers() throws PWCGException
     {
         Map<Integer, SquadronMember> activeCampaignMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronMembers.getSquadronMemberCollection(), campaign.getDate());

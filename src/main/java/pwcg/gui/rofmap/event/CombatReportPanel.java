@@ -35,7 +35,6 @@ public class CombatReportPanel extends ImageResizingPanel implements ActionListe
 	
 	private JTextArea narrativeText = new JTextArea("");
 
-	// Display an existing combat report
 	public CombatReportPanel(CombatReport combatReport)
 	{
 		super(ContextSpecificImages.imagesMisc() + "paperRotated.jpg");

@@ -14,9 +14,7 @@ import pwcg.gui.rofmap.brief.BriefParametersContextBuilder;
 import pwcg.gui.rofmap.brief.BriefingCrewPlanePayloadSorter;
 import pwcg.gui.rofmap.brief.BriefingFlightParameters;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
-import pwcg.mission.flight.plane.PlaneMCU;
 
 public class BriefingMissionHandler
 {
@@ -81,10 +79,7 @@ public class BriefingMissionHandler
     public void pushEditsToMission() throws PWCGException
     {
         PlayerFlightEditor planeGeneratorPlayer = new PlayerFlightEditor(mission.getCampaign(),mission.getMissionFlightBuilder().getPlayerFlight());
-        List<PlaneMCU> updatedPlaneSet =  planeGeneratorPlayer.updatePlayerPlanes(getCrewsSorted());
-        
-        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight();
-        playerFlight.setPlanes(updatedPlaneSet);
+        planeGeneratorPlayer.updatePlayerPlanes(getCrewsSorted());
     }
 
     public void finalizeMission() throws PWCGException 

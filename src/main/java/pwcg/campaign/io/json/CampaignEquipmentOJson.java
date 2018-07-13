@@ -42,7 +42,7 @@ public class CampaignEquipmentOJson
         JsonWriter<Equipment> jsonWriterEquipment = new JsonWriter<>();
         for (Integer squadronId : campaign.getEquipmentManager().getEquipmentAllSquadrons().keySet())
         {
-            Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentAllSquadrons().get(squadronId);
+            Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronId);
             jsonWriterEquipment.writeAsJson(squadronEquipment, campaignEquipmentReplacementDir, squadronId + ".json");
         }
     }

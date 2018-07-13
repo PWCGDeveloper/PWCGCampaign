@@ -268,10 +268,37 @@ public class PlaneTypeFactory
                 }
             }
         }
+
+        if (planeTypesForArchType.isEmpty())
+        {
+            planeTypesForArchType = createOlderPlaneTypesForArchType(planeArchType, date);
+        }
         
         if (planeTypesForArchType.isEmpty())
         {
             throw new PWCGException("No planes found for in range archtype " + planeArchType);
+        }
+        
+        return planeTypesForArchType;
+    }
+
+    public List<PlaneType> createOlderPlaneTypesForArchType(String planeArchType, Date date) throws PWCGException
+    {
+        List<PlaneType> planeTypesForArchType = new ArrayList<>();
+        for (PlaneType thisPlane : planeTypes.values())
+        {
+            if (thisPlane.getArchType().equals(planeArchType))
+            {
+                if (thisPlane.getIntroduction().before(date))
+                {
+                    planeTypesForArchType.add(thisPlane);
+                }
+            }
+        }
+        
+        if (planeTypesForArchType.isEmpty())
+        {
+            throw new PWCGException("No older planes found for archtype " + planeArchType);
         }
         
         return planeTypesForArchType;

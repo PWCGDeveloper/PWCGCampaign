@@ -72,7 +72,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             totalPromotionsAwarded += promotionsAwarded;
             totalTransfers += transfers;
             totalEquipmentLosses += equipmentLosses;
-	    	
+            
 	    	int axisPersonnelLosses = 0;
 	    	int alliedPersonnelLosses = 0;
 	    	for (SquadronMember lostPilot : aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission().getSquadMembersLost().values())

@@ -280,13 +280,15 @@ public class DebriefMapPanel  extends MapPanelBase
 		// Speed up the path
 		if (atEvent >= 0)
 		{
-	    	DebriefMapPoint debriefPoint= eventPoints.get(atEvent);
-			
-	    	if (debriefPoint.eventType  == EventTypes.PILOT || debriefPoint.eventType  == EventTypes.WP)
-	    	{
-	    		waitTime = 100; 
-	    	}
-	    			
+		    if (eventPoints.size() > 0)
+		    {
+    	    	DebriefMapPoint debriefPoint= eventPoints.get(atEvent);
+    			
+    	    	if (debriefPoint.eventType  == EventTypes.PILOT || debriefPoint.eventType  == EventTypes.WP)
+    	    	{
+    	    		waitTime = 100; 
+    	    	}
+		    }
 		}
 		
 		return waitTime;

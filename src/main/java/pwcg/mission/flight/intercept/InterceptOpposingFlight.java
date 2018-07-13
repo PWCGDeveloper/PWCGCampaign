@@ -9,6 +9,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
+import pwcg.mission.flight.FlightPositionHelperAirStart;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
@@ -38,13 +39,7 @@ public class InterceptOpposingFlight extends BombingFlight
 		
 		this.startCoords = startCoords;
 	}
-	
-	/**
-	 * Create mission
-	 * @throws PWCGException 
-	 * 
-	 * @
-	 */
+
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
@@ -58,14 +53,7 @@ public class InterceptOpposingFlight extends BombingFlight
         
         return waypointList;
 	}
-	
-	/**
-	 * Create a mission for this flight
-	 * @throws PWCGException 
-	 * @throws PWCGException 
-	 * 
-	 * @
-	 */
+
 	public void createUnitMission() throws PWCGException, PWCGException  
 	{
 		super.setName(squadron.determineDisplayName(campaign.getDate()));
@@ -88,8 +76,8 @@ public class InterceptOpposingFlight extends BombingFlight
 		
 		createAttackArea(this.getMaximumFlightAltitude());
 		
-		// Reset the start point at the target coordinates.
-		createPlanePositionAirStart(startCoords.copy(), new Orientation());
+		FlightPositionHelperAirStart flightPositionHelperAirStart = new FlightPositionHelperAirStart(campaign, this);
+		flightPositionHelperAirStart.createPlanePositionAirStart(startCoords.copy(), new Orientation());
 		
 		// This is AI only. Reset fuel for burn
 		for (PlaneMCU plane : planes)

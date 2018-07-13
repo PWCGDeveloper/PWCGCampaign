@@ -46,7 +46,7 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
     protected Coordinate position;
     protected Orientation orientation;
     protected Skin skin = null;
-    protected AiSkillLevel aiLevel = AiSkillLevel.NOVICE;
+    protected AiSkillLevel aiSkillLevel = AiSkillLevel.NOVICE;
     protected int coopStart = 0;
     protected int numberInFormation = 0;
     protected int vulnerable = 1;
@@ -261,7 +261,7 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
             
             writer.write("  Skin = \"" + skinName + "\";");
             writer.newLine();
-            writer.write("  AILevel = " + aiLevel.getAiSkillLevel() + ";");
+            writer.write("  AILevel = " + aiSkillLevel.getAiSkillLevel() + ";");
             writer.newLine();
             writer.write("  CoopStart = " + coopStart + ";");
             writer.newLine();
@@ -417,12 +417,12 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
 
     public AiSkillLevel getAiLevel()
     {
-        return aiLevel;
+        return aiSkillLevel;
     }
 
     public void setAiLevel(AiSkillLevel aiLevel)
     {
-        this.aiLevel = aiLevel;
+        this.aiSkillLevel = aiLevel;
     }
 
     public int getCoopStart()
@@ -583,4 +583,8 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
 	public void setCallnum(int callnum) {
 		this.callnum = callnum;
 	}
+    public void setLinkTrId(int linkTrId)
+    {
+        this.linkTrId = linkTrId;
+    }
 }

@@ -22,7 +22,7 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBoS;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AARCoordinatorMissionTest
+public class AARCoordinatorInMissionTest
 {
     private Campaign campaign;    
     private AARCoordinator aarCoordinator;

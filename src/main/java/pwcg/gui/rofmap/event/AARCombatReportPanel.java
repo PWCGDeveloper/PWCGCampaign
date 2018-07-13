@@ -7,6 +7,7 @@ import java.util.Map;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.aar.ui.events.model.PilotStatusEvent;
+import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
@@ -74,18 +75,14 @@ public class AARCombatReportPanel extends AAREventPanel
 
 	private CombatReport startAARProcess() throws PWCGException 
 	{                
-        // Generate the combat report header
         CombatReport combatReport = createCombatReport();
 
-		// Crews in this mission
         String missionStatement = "";
 		missionStatement += createCrewsInMissionReport();
-		
         missionStatement += createFlownFromReport();
-
 		missionStatement += createClaimStatusReport();
-		
-		missionStatement += createPilotLostReport();
+        missionStatement += createPilotLostReport();
+        missionStatement += createEquipmentLostReport();
 		
         combatReport.setHaReport(missionStatement);
 
@@ -152,12 +149,30 @@ public class AARCombatReportPanel extends AAREventPanel
 		
         if (pilotsLostAppend.length() > 0)
         {
-            pilotsLostStatement = "Pilots lost were: \n" + pilotsLostAppend;
+            pilotsLostStatement = "Pilots lost: \n" + pilotsLostAppend;
         }
 
         return pilotsLostStatement;
     }
 
+
+    private String createEquipmentLostReport() throws PWCGException
+    {
+        String planesLostStatement = "";
+        String planesLostAppend = "";
+        for (PlaneStatusEvent planeLostEvent : aarCoordinator.getAarContext().getUiCombatReportData().getCombatReportPanelData().getSquadronPlanesLostInMission().values())
+        {
+            planesLostAppend += "    " + planeLostEvent.getPlane().getDisplayName() + ": " + planeLostEvent.getPlane().getSerialNumber() + "\n";
+        }
+        
+        if (planesLostAppend.length() > 0)
+        {
+            planesLostStatement = "Aircraft lost: \n" + planesLostAppend;
+        }
+
+        return planesLostStatement;
+    }
+    
     private String createCrewsInMissionReport() throws PWCGException
     {
         String missionStatement;

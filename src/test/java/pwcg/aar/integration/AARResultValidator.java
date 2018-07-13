@@ -23,9 +23,9 @@ public class AARResultValidator
         assert(campaign.getPlayer().getVictories().size() == expectedResults.getPlayerAirVictories());
         assert(campaign.getPlayer().getGroundVictories().size() == expectedResults.getPlayerGroundVictories());
         
-        SquadronMember otherPilot = campaign.getPersonnelManager().getAnyCampaignMember(expectedResults.getOtherPilotSerialNumber());        
-        assert(otherPilot.getVictories().size() == expectedResults.getOtherAirVictories());
-        assert(otherPilot.getGroundVictories().size() == expectedResults.getOtherGroundVictories());
+        SquadronMember otherPilot = campaign.getPersonnelManager().getAnyCampaignMember(expectedResults.getSquadronMemberPilotSerialNumber());        
+        assert(otherPilot.getVictories().size() == expectedResults.getSquadronMemberAirVictories());
+        assert(otherPilot.getGroundVictories().size() == expectedResults.getSquadronMemberGroundVictories());
         for (Integer serialNumber : expectedResults.getLostPilots())
         {
             SquadronMember lostPilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);

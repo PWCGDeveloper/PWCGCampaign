@@ -34,12 +34,13 @@ public class AARContext
 
     // Tabulated
     private CampaignUpdateData campaignUpdateData = new CampaignUpdateData();
-    private UICombatReportData uiCombatReportData = new UICombatReportData();
+    private UICombatReportData uiCombatReportData;
     private UIDebriefData uiDebriefData = new UIDebriefData();
 
     public AARContext(Campaign campaign)
     {
         this.campaign = campaign;
+        uiCombatReportData = new UICombatReportData(campaign);
     }
 
     public void resetContextForNextTimeIncrement() throws PWCGException
