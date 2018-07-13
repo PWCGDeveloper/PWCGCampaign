@@ -17,6 +17,7 @@
 /bin/
 /.settings/
 /User/
+/.gradle/
 
 
 # Package Files #

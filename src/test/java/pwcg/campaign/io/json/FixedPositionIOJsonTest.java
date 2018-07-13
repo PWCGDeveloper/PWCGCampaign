@@ -14,21 +14,21 @@ public class FixedPositionIOJsonTest
     @Test
     public void readJsonFranceAirfieldsTest() throws PWCGException
     {
-        String directory = "E:\\PWCG\\workspacePWCGGradle\\PWCGCampaign\\RoFData\\input\\France\\";
+        String directory = System.getProperty("user.dir") + "\\RoFData\\input\\France\\";
         validateRofFieldsForMap(directory);
     }
 
     @Test
     public void readJsonChannelAirfieldsTest() throws PWCGException
     {
-        String directory = "E:\\PWCG\\workspacePWCGGradle\\PWCGCampaign\\RoFData\\input\\Channel\\";
+        String directory = System.getProperty("user.dir") + "\\RoFData\\input\\Channel\\";
         validateRofFieldsForMap(directory);
     }
 
     @Test
     public void readJsonGaliciaAirfieldsTest() throws PWCGException
     {
-        String directory = "E:\\PWCG\\workspacePWCGGradle\\PWCGCampaign\\RoFData\\input\\Galicia\\";
+        String directory = System.getProperty("user.dir") + "\\RoFData\\input\\Galicia\\";
         validateRofFieldsForMap(directory);
     }
 
