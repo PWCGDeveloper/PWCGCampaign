@@ -35,6 +35,15 @@ public class SquadronPersonnel
         squadronMembers.addToSquadronMemberCollection(squadronMember);
     }
 
+    public void removeSquadronMember(SquadronMember squadronMember) throws PWCGException
+    {
+        if (!squadronMembers.isSquadronMember(squadronMember.getSerialNumber()))
+        {
+            throw new PWCGException("Not member of squadron");
+        }
+        squadronMembers.removeSquadronMember(squadronMember.getSerialNumber());
+    }
+
     public boolean isSquadronPersonnelViable() throws PWCGException
     {
         if (squadronMembers.getActiveCount(campaign.getDate()) > (Squadron.SQUADRON_STAFF_SIZE / 2))
