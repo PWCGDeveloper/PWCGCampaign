@@ -11,13 +11,14 @@ import pwcg.campaign.squadmember.SquadronMember;
 public class ExpectedResults
 {
     private Campaign campaign;
-    private int otherPilotSerialNumber;
+    private int squadronMemberPilotSerialNumber;
     private List<Integer> lostPilots = new ArrayList<>();
     private int playerAirVictories = 0;
     private int playerGroundVictories = 0;
-    private int otherAirVictories = 0;
-    private int otherGroundVictories = 0;
-    
+    private int squadronMemberAirVictories = 0;
+    private int squadronMemberGroundVictories = 0;
+    private int enemyAirVictories = 0;
+
     public ExpectedResults (Campaign campaign)
     {
         this.campaign = campaign;
@@ -48,24 +49,19 @@ public class ExpectedResults
         this.campaign = campaign;
     }
 
-    public int getOtherPilotSerialNumber()
+    public int getSquadronMemberPilotSerialNumber()
     {
-        return otherPilotSerialNumber;
+        return squadronMemberPilotSerialNumber;
     }
 
-    public void setOtherPilotSerialNumber(int otherPilotSerialNumber)
+    public void setSquadronMemberPilotSerialNumber(int squadronMemberPilotSerialNumber)
     {
-        this.otherPilotSerialNumber = otherPilotSerialNumber;
+        this.squadronMemberPilotSerialNumber = squadronMemberPilotSerialNumber;
     }
 
     public List<Integer> getLostPilots()
     {
         return lostPilots;
-    }
-
-    public void setLostPilots(List<Integer> lostPilots)
-    {
-        this.lostPilots = lostPilots;
     }
 
     public int getPlayerAirVictories()
@@ -78,6 +74,16 @@ public class ExpectedResults
         ++playerAirVictories;
     }
 
+    public void addEnemyAirVictories()
+    {
+        ++enemyAirVictories;
+    }
+
+    public int getEnemyAirVictories()
+    {
+        return enemyAirVictories;
+    }
+
     public int getPlayerGroundVictories()
     {
         return playerGroundVictories;
@@ -88,24 +94,24 @@ public class ExpectedResults
         ++playerGroundVictories;
     }
 
-    public int getOtherAirVictories()
+    public int getSquadronMemberAirVictories()
     {
-        return otherAirVictories;
+        return squadronMemberAirVictories;
     }
 
-    public void addOtherAirVictories()
+    public void addSquadronMemberAirVictories()
     {
-        ++otherAirVictories;
+        ++squadronMemberAirVictories;
     }
 
-    public int getOtherGroundVictories()
+    public int getSquadronMemberGroundVictories()
     {
-        return otherGroundVictories;
+        return squadronMemberGroundVictories;
     }
 
-    public void addOtherGroundVictories()
+    public void addSquadronMemberGroundVictories()
     {
-        ++otherGroundVictories;
+        ++squadronMemberGroundVictories;
     }
 
 

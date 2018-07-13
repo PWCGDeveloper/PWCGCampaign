@@ -214,7 +214,8 @@ public class MathUtils
         }
 
         remainder = number %2; 
-        numberToBinaryFormCalculator(binaryRepresentation, number >> 1);
+        int shifterNumber = number >> 1;
+        numberToBinaryFormCalculator(binaryRepresentation, shifterNumber);
     	binaryRepresentation.append(remainder);
     }
 }

@@ -14,6 +14,11 @@ public class Equipment
 {
     private Map<Integer, EquippedPlane> equippedPlanes = new HashMap<>();
 
+    public EquippedPlane getEquippedPlane(int planeSerialNumber)
+    {
+        return equippedPlanes.get(planeSerialNumber);
+    }
+
     public Map<Integer, EquippedPlane> getActiveEquippedPlanes()
     {
         Map<Integer, EquippedPlane> activeEquippedPlanes = new HashMap<>();

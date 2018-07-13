@@ -1,6 +1,8 @@
 package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.PlaneStatus;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
@@ -86,6 +88,20 @@ public class LogPlane extends LogAIEntity
         if (logPilot.getSerialNumber() == serialNumber)
         {
             return true;
+        }
+        
+        return false;
+    }
+
+    public boolean isLogPlaneFromPlayerSquadron(Campaign campaign) throws PWCGException
+    {
+        SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(pilotSerialNumber);
+        if (squadronMember != null)
+        {
+            if (squadronMember.getSquadronId() == campaign.getSquadronId())
+            {
+                return true;
+            }
         }
         
         return false;

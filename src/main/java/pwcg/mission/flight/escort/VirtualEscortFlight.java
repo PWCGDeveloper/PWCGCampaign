@@ -14,6 +14,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightPositionHelperAirStart;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuWaypoint;
@@ -42,8 +43,7 @@ public class VirtualEscortFlight extends Flight
 		airstart = true;
 	}
 
-	@Override
-	protected void createPlanePositionCloseToFirstWP() throws PWCGException 
+	public void createEscortPositionCloseToFirstWP() throws PWCGException 
 	{
 		// Different logic for escort air start
 		Coordinate escortedFlightCoords = escortedFlight.getPlanes().get(0).getPosition().copy();
@@ -57,7 +57,8 @@ public class VirtualEscortFlight extends Flight
         escortFlightCoords.setZPos(escortedFlightCoords.getZPos()+ 100);
         escortFlightCoords.setYPos(escortedFlightCoords.getYPos() + 300);
 
-		super.createPlanePositionAirStart(escortFlightCoords, escortedFlightOrient.copy());
+        FlightPositionHelperAirStart flightPositionHelperAirStart = new FlightPositionHelperAirStart(campaign, this);
+        flightPositionHelperAirStart.createPlanePositionAirStart(escortFlightCoords.copy(), escortedFlightOrient.copy());
 	}
 
 	@Override

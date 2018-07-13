@@ -91,12 +91,12 @@ public abstract class PlanePayload implements IPlanePayload
         String fullModificationMask = "1";
         PayloadDesignation payloadDesignation = availablePayload.get(selectedPrimaryPayloadId);
         fullModificationMask = payloadDesignation.getModMask();
-        int fullModificationMaskValue = Integer.parseInt(fullModificationMask, 2);
         
         for (PayloadElement modification : modifications.values())
         {
             String additionalModificationsMask = this.getPayloadMaskByDescription(modification.getDescription());
             int additionalModMaskValue = Integer.parseInt(additionalModificationsMask, 2);
+            int fullModificationMaskValue = Integer.parseInt(fullModificationMask, 2);
             int newModmaskValue = fullModificationMaskValue + additionalModMaskValue;
             fullModificationMask = MathUtils.numberToBinaryForm(newModmaskValue);            
         }

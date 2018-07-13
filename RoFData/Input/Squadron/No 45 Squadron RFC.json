@@ -24,7 +24,7 @@
       "skinName": "SS_RNAS-RFC_STD10",
       "planeType": "sopstr",
       "startDate": "19161115",
-      "endDate": "19170712",
+      "endDate": "19170710",
       "squadId": 102045,
       "country": "Britain",
       "category": "Squadron",
@@ -57,7 +57,7 @@
     "squadronRolePeriods": [
       {
         "startDate": "19150801",
-        "endDate": "19171005",
+        "endDate": "19170710",
         "weightedRoles": [
           {
             "role": "ROLE_RECON",
@@ -74,7 +74,7 @@
         ]
       },
       {
-        "startDate": "19171005",
+        "startDate": "19170711",
         "endDate": "19181201",
         "weightedRoles": [
           {

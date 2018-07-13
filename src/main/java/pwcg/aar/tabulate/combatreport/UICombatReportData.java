@@ -1,13 +1,20 @@
 package pwcg.aar.tabulate.combatreport;
 
-import pwcg.aar.ui.display.model.AARCombatReportPanelData;
 import pwcg.aar.ui.display.model.AARCombatReportMapData;
+import pwcg.aar.ui.display.model.AARCombatReportPanelData;
+import pwcg.campaign.Campaign;
 
 public class UICombatReportData
 {
-    private AARCombatReportPanelData combatReportPanelData = new AARCombatReportPanelData();
-    private AARCombatReportMapData combatReportMapData = new AARCombatReportMapData();
+    private AARCombatReportPanelData combatReportPanelData;
+    private AARCombatReportMapData combatReportMapData;
 
+    public UICombatReportData(Campaign campaign)
+    {
+        this.combatReportPanelData = new AARCombatReportPanelData();
+        this.combatReportMapData = new AARCombatReportMapData(campaign);
+    }
+    
     public AARCombatReportPanelData getCombatReportPanelData()
     {
         return combatReportPanelData;

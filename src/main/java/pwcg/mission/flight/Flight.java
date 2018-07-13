@@ -216,7 +216,9 @@ public abstract class Flight extends Unit
                 advancePlayerAirStart();
             }
             
-            createPlayerPlanePosition();
+            FlightPositionHelperPlayerStart flightPositionHelperPlayerStart = new FlightPositionHelperPlayerStart(campaign, this);
+            flightPositionHelperPlayerStart.createPlayerPlanePosition();
+
             createLanding();
         }
     }
@@ -225,7 +227,8 @@ public abstract class Flight extends Unit
     {
         if (airstart)
         {
-            createPlanePositionCloseToFirstWP();
+            FlightPositionHelperPlayerStart flightPositionHelperPlayerStart = new FlightPositionHelperPlayerStart(campaign, this);
+            flightPositionHelperPlayerStart.createPlayerPlanePosition();
         }
     }
 
@@ -366,8 +369,8 @@ public abstract class Flight extends Unit
             }
         }
 
-        // reset the initial plane position
-        createPlanePositionAirStart(rendezvousCoords, new Orientation());
+        FlightPositionHelperAirStart flightPositionHelperAirStart = new FlightPositionHelperAirStart(campaign, this);
+        flightPositionHelperAirStart.createPlanePositionAirStart(rendezvousCoords, new Orientation());
     }
 
     public void finalizeFlight() throws PWCGException 
@@ -389,128 +392,6 @@ public abstract class Flight extends Unit
             for (PlaneMCU plane : planes)
             {
                 plane.getEntity().setEnabled(1);
-            }
-        }
-    }
-
-    public void createPlayerPlanePosition() throws PWCGException
-    {
-        if (airstart)
-        {
-            createPlanePositionCloseToFirstWP();
-        }
-        else
-        {
-            createPlanePositionRunway();
-        }
-    }
-
-    protected void createPlanePositionCloseToFirstWP() throws PWCGException
-    {
-        Coordinate firstDestinationCoordinate = findFirstWaypointPosition();
-
-        // Calculate plane position about 5 KM from the first destination
-        double angleBetweenBaseAndFirstDest = MathUtils.calcAngle(departureAirfield.getPlanePosition().getPosition().copy(), firstDestinationCoordinate);
-        double angleToPlacePlanes = MathUtils.adjustAngle(angleBetweenBaseAndFirstDest, 180);
-        
-        Coordinate startCoordinate = MathUtils.calcNextCoord(firstDestinationCoordinate, angleToPlacePlanes, 5000);
-        startCoordinate.setYPos(firstDestinationCoordinate.getYPos());
-
-        // orientation
-        Orientation startOrientation = new Orientation(angleBetweenBaseAndFirstDest);
-
-        createPlanePositionAirStart(startCoordinate, startOrientation);
-    }
-
-    public void createPlanePositionAirStart(Coordinate startCoordinate, Orientation orientation) throws PWCGException 
-    {
-        PlaneMCU flightLeader = getFlightLeader();
-        
-        // Initial position has already been set for ground starts
-        int i = 0;
-        for (PlaneMCU plane : planes)
-        {
-            Coordinate planeCoords = new Coordinate();
-
-            // Air start for other flights
-            // Since we always face east, subtract from z to get your mates
-            // behind you
-            ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-            int AircraftSpacingHorizontal = configManager.getIntConfigParam(ConfigItemKeys.AircraftSpacingHorizontalKey);
-            planeCoords.setXPos(startCoordinate.getXPos() - (i * AircraftSpacingHorizontal));
-            planeCoords.setZPos(startCoordinate.getZPos() - (i * AircraftSpacingHorizontal));
-
-            int AircraftSpacingVertical = configManager.getIntConfigParam(ConfigItemKeys.AircraftSpacingVerticalKey);
-            planeCoords.setYPos(startCoordinate.getYPos() + (i * AircraftSpacingVertical));
-            
-            plane.setPosition(planeCoords);
-
-            // Point the planes at the first destination 
-            plane.setOrientation(orientation.copy());
-
-            // This must be done last
-            plane.populateEntity(this, flightLeader);
-
-            ++i;
-        }
-    }
-
-    protected void createPlanePositionRunway() throws PWCGException 
-    {
-        PlaneMCU flightLeader = getFlightLeader();
-
-        RunwayPlacer runwayPlacer = new RunwayPlacer(campaign);
-        List<Coordinate> takeOffPositions = runwayPlacer.getFlightTakeoffPositions(this, departureAirfield);
-
-        for (PlaneMCU plane : planes)
-        {
-            plane.setPosition(takeOffPositions.get(plane.getNumberInFormation()-1));
-
-            Orientation orient = new Orientation();
-            orient.setyOri(departureAirfield.getPlaneOrientation());
-            plane.setOrientation(orient);
-
-            plane.populateEntity(this, flightLeader);
-        }
-    }
-
-    protected void resetPlaneInitialPositionForAirStarts() throws PWCGException 
-    {
-        PlaneMCU flightLeader = getFlightLeader();
-
-        // Initial position has already been set for ground starts
-        if (airstart)
-        {
-            int i = 0;
-            Coordinate flightLeaderPos = null;
-            Orientation flightLeaderOrient = null;
-            for (PlaneMCU plane : planes)
-            {
-                if (i == 0)
-                {
-                    flightLeaderPos = flightLeader.getPosition().copy();
-                    flightLeaderOrient = flightLeader.getOrientation().copy();
-                    ++i;
-                    continue;
-                }
-
-                Coordinate planeCoords = new Coordinate();
-
-                ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-
-                // Since we always face east, subtract from z to get your mates
-                // behind you
-                int AircraftSpacingHorizontal = configManager.getIntConfigParam(ConfigItemKeys.AircraftSpacingHorizontalKey);
-                planeCoords.setXPos(flightLeaderPos.getXPos() - (i * AircraftSpacingHorizontal));
-                planeCoords.setZPos(flightLeaderPos.getZPos() - (i * AircraftSpacingHorizontal));
-
-                int AircraftSpacingVertical = configManager.getIntConfigParam(ConfigItemKeys.AircraftSpacingVerticalKey);
-                planeCoords.setYPos(flightLeaderPos.getYPos() + (i * AircraftSpacingVertical));
-                plane.setPosition(planeCoords);
-
-                plane.setOrientation(flightLeaderOrient.copy());
-
-                ++i;
             }
         }
     }
@@ -1223,6 +1104,7 @@ public abstract class Flight extends Unit
             virtualEscortFlight.initialize(mission, campaign, this.targetCoords.copy(), friendlyFighterSquadron,
                             missionBeginUnitEscort, false, this);
             virtualEscortFlight.createUnitMission();
+            virtualEscortFlight.createEscortPositionCloseToFirstWP();
 
             addLinkedUnit(virtualEscortFlight);
         }
@@ -1633,10 +1515,14 @@ public abstract class Flight extends Unit
     public void setPlanes(List<PlaneMCU> planes) throws PWCGException
     {
         this.planes = planes;        
-        createPlayerPlanePosition();
+    }
+    
+	public IAirfield getDepartureAirfield()
+    {
+        return departureAirfield;
     }
 
-	public boolean isEscortedByPlayerFlight()
+    public boolean isEscortedByPlayerFlight()
 	{
 		return escortedByPlayerFlight;
 	}
