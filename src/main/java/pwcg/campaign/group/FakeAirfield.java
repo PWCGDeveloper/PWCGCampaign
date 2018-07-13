@@ -6,6 +6,7 @@ import java.util.Date;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.ww2.airfield.BoSAirfield;
+import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
@@ -13,7 +14,7 @@ import pwcg.mission.mcu.McuTREntity;
 
 public class FakeAirfield extends FixedPosition implements Cloneable
 {
-    protected int callsign = 0;
+    protected Callsign callsign = Callsign.NONE;
     protected int callnum = 0;
     protected String chart = "";
     protected int returnPlanes = 0;
@@ -73,7 +74,7 @@ public class FakeAirfield extends FixedPosition implements Cloneable
             
             super.write(writer);
                         
-            writer.write("    Callsign = " + callsign + ";");
+            writer.write("    Callsign = " + callsign.getNum() + ";");
             writer.newLine();
             writer.write("    Callnum = " + callnum + ";");
             writer.newLine();

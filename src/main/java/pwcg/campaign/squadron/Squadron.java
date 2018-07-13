@@ -31,6 +31,7 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.Ace;
+import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
@@ -57,6 +58,7 @@ public class Squadron
 	private Date nightDate;
 	private SquadronRoleSet squadronRoles = new SquadronRoleSet();
 	private List<SquadronConversionPeriod> conversionPeriods = new ArrayList<>();
+    private Map<Date, Callsign> callsigns = new TreeMap<>();
 
 	public Squadron ()
 	{
@@ -305,6 +307,11 @@ public class Squadron
             }
         }
         
+        Callsign callsign = determineCurrentCallsign(date);
+        if (callsign != Callsign.NONE)
+        {
+            squadronDescription += "Callsign: " + callsign + "\n\n";
+        }
 
 		squadronDescription += "Stationed at\n";
 		String fieldName = determineCurrentAirfieldName(date);
@@ -647,6 +654,25 @@ public class Squadron
         }
         return activeArchTypes;
     }
+
+	public Callsign determineCurrentCallsign(Date campaignDate)
+	{
+		Callsign currentCallsign = Callsign.NONE;
+
+		for (Date callsignStartDate : callsigns.keySet())
+		{
+			if (!callsignStartDate.after(campaignDate))
+			{
+				currentCallsign = callsigns.get(callsignStartDate);
+			}
+			else
+			{
+				break;
+			}
+		}
+
+		return currentCallsign;
+	}
 
 	public List<SquadronPlaneAssignment> getPlaneAssignments() 
 	{

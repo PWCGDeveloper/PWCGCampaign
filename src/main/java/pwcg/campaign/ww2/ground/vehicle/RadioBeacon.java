@@ -8,6 +8,7 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
+import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
@@ -19,7 +20,7 @@ import pwcg.mission.ground.vehicle.IVehicle;
 class RadioBeacon extends Vehicle implements IVehicle
 {
     private int beaconChannel = 1;
-    private int callSign = 0;
+    private Callsign callSign = Callsign.NONE;
     private int spotter = -1;
     private int coopStart = 0;
 
@@ -96,7 +97,7 @@ class RadioBeacon extends Vehicle implements IVehicle
         writer.newLine();
         writer.write("  BeaconChannel = " + beaconChannel + ";");
         writer.newLine();
-        writer.write("  Callsign = " + callSign + ";");
+        writer.write("  Callsign = " + callSign.getNum() + ";");
         writer.newLine();
     }
 }

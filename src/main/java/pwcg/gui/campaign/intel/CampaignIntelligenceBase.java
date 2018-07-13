@@ -206,6 +206,7 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
         intelBuffer.append(squadron.determineDisplayName(campaign.getDate()));          
         intelBuffer.append(" at " + squadron.determineCurrentAirfieldName(campaign.getDate()));          
         intelBuffer.append(".\n");
+        intelBuffer.append("\n  Callsign: " + squadron.determineCurrentCallsign(campaign.getDate()) + ".\n");
     }
 
     private void formAircraftInventory(Squadron squadron, StringBuffer intelBuffer) throws PWCGException

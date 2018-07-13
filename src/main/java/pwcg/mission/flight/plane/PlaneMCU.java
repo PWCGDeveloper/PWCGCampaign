@@ -16,6 +16,7 @@ import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.constants.AiSkillLevel;
+import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
@@ -51,7 +52,7 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
     protected int vulnerable = 1;
     protected int engageable = 1;
     protected int limitAmmo = 1;
-    protected int callsign = 0;
+    protected Callsign callsign = Callsign.NONE;
     protected int callnum = 0;
     protected int startInAir;
     protected int time = 60;
@@ -293,7 +294,7 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
             IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
             if (productSpecificConfiguration.useCallSign())
             {
-                writer.write("  Callsign = " + callsign + ";");
+                writer.write("  Callsign = " + callsign.getNum() + ";");
                 writer.newLine();
                 writer.write("  Callnum = " + callnum + ";");
                 writer.newLine();
@@ -567,6 +568,21 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
         this.pilot = newPilot;
     }
 
+	public Callsign getCallsign() {
+		return callsign;
+	}
+
+	public void setCallsign(Callsign callsign) {
+		this.callsign = callsign;
+	}
+
+	public int getCallnum() {
+		return callnum;
+	}
+
+	public void setCallnum(int callnum) {
+		this.callnum = callnum;
+	}
     public void setLinkTrId(int linkTrId)
     {
         this.linkTrId = linkTrId;
