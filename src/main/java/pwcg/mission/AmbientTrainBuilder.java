@@ -16,7 +16,7 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
-import pwcg.mission.ground.GrountUnitTrainFactory;
+import pwcg.mission.ground.factory.TrainUnitFactory;
 import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 
 public class AmbientTrainBuilder extends AmbientUnitBuilder
@@ -51,7 +51,7 @@ public class AmbientTrainBuilder extends AmbientUnitBuilder
     {
         if (station.getCountry(campaign.getDate()).getSide() == enemySide)
         {
-            GrountUnitTrainFactory trainfactory =  new GrountUnitTrainFactory(campaign, station.getPosition(), trainCountry, campaign.getDate());
+            TrainUnitFactory trainfactory =  new TrainUnitFactory(campaign, station.getPosition(), trainCountry, campaign.getDate());
             GroundTrainUnit trainUnit = trainfactory.createTrainUnit();
             addAmbientTrain(trainUnit, station);
         }

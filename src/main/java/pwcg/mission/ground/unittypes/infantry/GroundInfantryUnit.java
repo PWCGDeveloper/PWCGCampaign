@@ -99,18 +99,18 @@ public class GroundInfantryUnit extends GroundDirectFireUnit
         String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
         if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
-            minRequested = 6;
-            maxRequested = 12;
+            minRequested = 4;
+            maxRequested = 8;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
-            minRequested = 8;
-            maxRequested = 16;
+            minRequested = 6;
+            maxRequested = 10;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
-            minRequested = 10;
-            maxRequested = 20;
+            minRequested = 8;
+            maxRequested = 15;
         }
     }
 

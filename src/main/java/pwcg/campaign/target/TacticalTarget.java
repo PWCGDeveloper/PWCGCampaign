@@ -17,8 +17,7 @@ public enum TacticalTarget
     TARGET_FACTORY("factory", TargetCategory.TARGET_CATEGORY_STRATEGIC),
     TARGET_CITY("city", TargetCategory.TARGET_CATEGORY_STRATEGIC), 
     TARGET_PORT("port facility", TargetCategory.TARGET_CATEGORY_STRATEGIC),
-    TARGET_RAIL("railway facility", TargetCategory.TARGET_CATEGORY_STRATEGIC),
-    TARGET_AI("target", TargetCategory.TARGET_CATEGORY_SOFT);
+    TARGET_RAIL("railway facility", TargetCategory.TARGET_CATEGORY_STRATEGIC);
     
     private String targetName;
     private TargetCategory targetCategory;

@@ -19,16 +19,20 @@ import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.MissionBeginUnitCheckZone;
+import pwcg.mission.ground.AssaultGenerator.BattleSize;
 import pwcg.mission.ground.unittypes.GroundMovingDirectFireUnit;
 import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class GroundAssaultInfantryUnit extends GroundMovingDirectFireUnit
 {
-	public GroundAssaultInfantryUnit() 
+    private BattleSize battleSize;
+    
+	public GroundAssaultInfantryUnit(BattleSize battleSize) 
 	{	    
         super(TacticalTarget.TARGET_INFANTRY);
-        unitSpeed = 3;
+        this.battleSize = battleSize;
+        this.unitSpeed = 3;
 	}
 
 
@@ -94,20 +98,28 @@ public class GroundAssaultInfantryUnit extends GroundMovingDirectFireUnit
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
         ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
         String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (battleSize == BattleSize.BATTLE_SIZE_TINY)
         {
-            minRequested = 10;
-            maxRequested = 20;
+            minRequested = 1;
+            maxRequested = 2;
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        else
         {
-            minRequested = 15;
-            maxRequested = 25;
-        }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
-        {
-            minRequested = 20;
-            maxRequested = 30;
+            if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+            {
+                minRequested = 5;
+                maxRequested = 10;
+            }
+            else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+            {
+                minRequested = 10;
+                maxRequested = 15;
+            }
+            else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+            {
+                minRequested = 15;
+                maxRequested = 20;
+            }
         }
     }
 

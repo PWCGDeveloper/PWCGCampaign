@@ -1,10 +1,11 @@
 package pwcg.campaign.ww2.airfield;
 
 import java.io.BufferedWriter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.ArrayList;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.group.FixedPosition;
@@ -113,11 +114,11 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
     }
 
     @Override
-    public void addAirfieldObjects(Date date) throws PWCGException 
+    public void addAirfieldObjects(Campaign campaign) throws PWCGException 
     {
-        if (!(createCountry(date).isNeutral()))
+        if (!(createCountry(campaign.getDate()).isNeutral()))
         {
-	    	AirfieldObjectPlacer airfieldObjectPlacer = new AirfieldObjectPlacer(this, date);
+	    	AirfieldObjectPlacer airfieldObjectPlacer = new AirfieldObjectPlacer(campaign, this);
 	    	airfieldObjects = airfieldObjectPlacer.createAirfieldObjectsWithEmptySpace();
         }
     }

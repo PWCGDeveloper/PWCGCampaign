@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Date;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IStaticPlane;
@@ -111,11 +112,12 @@ public class RoFAirfield extends PWCGLocation implements IAirfield, Cloneable
         }
 	}
 
-	public void addAirfieldObjects(Date date) throws PWCGException 
+	@Override
+	public void addAirfieldObjects(Campaign campaign) throws PWCGException 
 	{
-	    if (!(createCountry(date).isNeutral()))
+	    if (!(createCountry(campaign.getDate()).isNeutral()))
 	    {
-	    	AirfieldObjectPlacer airfieldObjectPlacer = new AirfieldObjectPlacer(this, date);
+	    	AirfieldObjectPlacer airfieldObjectPlacer = new AirfieldObjectPlacer(campaign, this);
 	    	airfieldObjects = airfieldObjectPlacer.createAirfieldObjectsDefinedHotSpotsOnly();
 	    }
 	}

@@ -1,4 +1,4 @@
-package pwcg.mission.ground;
+package pwcg.mission.ground.factory;
 
 import java.util.Date;
 
@@ -13,14 +13,14 @@ import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
 import pwcg.mission.mcu.Coalition;
 
-public class GrountUnitTruckFactory
+public class TruckUnitFactory
 {
     private Campaign campaign;
     private Coordinate location;
     private ICountry country;
     private Date date;
 
-    public GrountUnitTruckFactory (Campaign campaign, Coordinate location, ICountry country, Date date)
+    public TruckUnitFactory (Campaign campaign, Coordinate location, ICountry country, Date date)
     {
         this.campaign  = campaign;
         this.location  = location.copy();

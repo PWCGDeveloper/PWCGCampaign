@@ -142,18 +142,18 @@ public class GroundTruckConvoyUnit extends GroundMovingUnit
         String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
         if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
-            minRequested = 3;
-            maxRequested = 6;
+            minRequested = 2;
+            maxRequested = 4;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
-            minRequested = 4;
-            maxRequested = 8;
+            minRequested = 3;
+            maxRequested = 6;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
-            minRequested = 6;
-            maxRequested = 12;
+            minRequested = 4;
+            maxRequested = 8;
         }
     }
 

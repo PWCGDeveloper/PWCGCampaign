@@ -167,8 +167,8 @@ public class ShipConvoyUnit extends GroundMovingDirectFireUnit
         {
             int randomShips = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.RandomShipsKey);
 
-            minRequested = 3;
-            maxRequested = 3 + randomShips;
+            minRequested = 2;
+            maxRequested = 2 + randomShips;
         }
         else
         {

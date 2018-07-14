@@ -15,7 +15,7 @@ import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.ground.GrountUnitTruckFactory;
+import pwcg.mission.ground.factory.TruckUnitFactory;
 import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
 
 public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
@@ -53,7 +53,7 @@ public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
             if (roll < 40)
             {
 
-                GrountUnitTruckFactory groundUnitFactory =  new GrountUnitTruckFactory(campaign, bridge.getPosition(), country, campaign.getDate());
+                TruckUnitFactory groundUnitFactory =  new TruckUnitFactory(campaign, bridge.getPosition(), country, campaign.getDate());
                 GroundTruckConvoyUnit truckUnit = groundUnitFactory.createTruckConvoy();
                 if (truckUnit != null)
                 {

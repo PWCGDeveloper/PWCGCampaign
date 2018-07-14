@@ -10,6 +10,12 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.artySpot.ArtillerySpotArtilleryGroup;
+import pwcg.mission.ground.AssaultGenerator.BattleSize;
+import pwcg.mission.ground.factory.AAAUnitFactory;
+import pwcg.mission.ground.factory.AssaultFactory;
+import pwcg.mission.ground.factory.DrifterUnitFactory;
+import pwcg.mission.ground.factory.ShippingUnitFactory;
+import pwcg.mission.ground.factory.TroopConcentrationFactory;
 import pwcg.mission.ground.unittypes.SpotLightGroup;
 import pwcg.mission.ground.unittypes.artillery.GroundAAABattery;
 import pwcg.mission.ground.unittypes.artillery.GroundArtilleryUnit;
@@ -33,8 +39,8 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createAAAArtilleryBatteryTest () throws PWCGException 
     {
-        GroundUnitAAAFactory groundUnitFactory =  new GroundUnitAAAFactory(country, new Coordinate (100000, 0, 100000));
-        GroundAAABattery groundUnit = groundUnitFactory.createAAAArtilleryBattery(4);
+        AAAUnitFactory groundUnitFactory =  new AAAUnitFactory(campaign, country, new Coordinate (100000, 0, 100000));
+        GroundAAABattery groundUnit = groundUnitFactory.createAAAArtilleryBattery(4, 4);
         assert (groundUnit.getSpawners().size() == 4);
         assert (groundUnit.isMg() == false);
         assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
@@ -43,8 +49,8 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createAAAMGBatteryTest () throws PWCGException 
     {
-        GroundUnitAAAFactory groundUnitFactory =  new GroundUnitAAAFactory(country, new Coordinate (100000, 0, 100000));
-        GroundAAABattery groundUnit = groundUnitFactory.createAAAMGBattery(4);
+        AAAUnitFactory groundUnitFactory =  new AAAUnitFactory(campaign, country, new Coordinate (100000, 0, 100000));
+        GroundAAABattery groundUnit = groundUnitFactory.createAAAMGBattery(4, 4);
         assert (groundUnit.getSpawners().size() == 4);
         assert (groundUnit.isMg() == true);
         assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
@@ -53,7 +59,7 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createDefenseUnitTest () throws PWCGException 
     {
-        GroundUnitAssaultFactory groundUnitFactory =  new GroundUnitAssaultFactory(campaign);
+        AssaultFactory groundUnitFactory =  new AssaultFactory(campaign, BattleSize.BATTLE_SIZE_ASSAULT);
         GroundATArtillery groundUnit = (GroundATArtillery)groundUnitFactory.createDefenseUnit(missionBeginUnit, country, new Coordinate (100000, 0, 100000), new Coordinate (100000, 0, 100000));
         assert (groundUnit.getSpawners().size() > 0);
         assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
@@ -62,7 +68,7 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createAssaultTankUnitTest () throws PWCGException 
     {
-        GroundUnitAssaultFactory groundUnitFactory =  new GroundUnitAssaultFactory(campaign);
+        AssaultFactory groundUnitFactory =  new AssaultFactory(campaign, BattleSize.BATTLE_SIZE_ASSAULT);
         GroundAssaultTankUnit groundUnit = (GroundAssaultTankUnit)groundUnitFactory.createAssaultTankUnit(missionBeginUnit, country, new Coordinate (100000, 0, 100000), new Coordinate (100000, 0, 100000));
         assert (groundUnit.getSpawners().size() > 0);
         assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
@@ -71,7 +77,7 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createMachineGunUnitTest () throws PWCGException 
     {
-        GroundUnitAssaultFactory groundUnitFactory =  new GroundUnitAssaultFactory(campaign);
+        AssaultFactory groundUnitFactory =  new AssaultFactory(campaign, BattleSize.BATTLE_SIZE_ASSAULT);
         GroundMachineGunUnit groundUnit = (GroundMachineGunUnit)groundUnitFactory.createMachineGunUnit(missionBeginUnit, country, new Coordinate (100000, 0, 100000), new Coordinate (100000, 0, 100000));
         assert (groundUnit.getSpawners().size() > 0);
         assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
@@ -80,8 +86,8 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createDrifterUnitTest () throws PWCGException 
     {
-        GroundUnitDrifterFactory groundUnitFactory =  new GroundUnitDrifterFactory(campaign, new Coordinate (100000, 0, 100000), new Orientation(), country);
-        DrifterUnit groundUnit = (DrifterUnit)groundUnitFactory.createDrifterUnit();
+        DrifterUnitFactory groundUnitFactory =  new DrifterUnitFactory(campaign, new Coordinate (100000, 0, 100000), new Orientation(), country);
+        DrifterUnit groundUnit = (DrifterUnit)groundUnitFactory.createDrifterUnit(2, 4);
         assert (groundUnit.getSpawners().size() > 0);
         assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
     }
@@ -89,7 +95,7 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createShippingUnitTest () throws PWCGException 
     {
-        GroundUnitShippingFactory groundUnitFactory =  new GroundUnitShippingFactory(campaign, new Coordinate (100000, 0, 100000), country);        
+        ShippingUnitFactory groundUnitFactory =  new ShippingUnitFactory(campaign, new Coordinate (100000, 0, 100000), country);        
         ShipConvoyUnit groundUnit = (ShipConvoyUnit)groundUnitFactory.createShippingUnit();
         assert (groundUnit.getSpawners().size() > 0);
         assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
@@ -98,7 +104,7 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createTroopConcentrationTest () throws PWCGException 
     {
-        GrountUnitTroopConcentrationFactory groundUnitFactory =  new GrountUnitTroopConcentrationFactory(campaign, new Coordinate (100000, 0, 100000), country);        
+        TroopConcentrationFactory groundUnitFactory =  new TroopConcentrationFactory(campaign, new Coordinate (100000, 0, 100000), country);        
         GroundTroopConcentration groundUnit = (GroundTroopConcentration)groundUnitFactory.createTroopConcentration();
         assert (groundUnit.getVehicles().size() > 5);
         assert (groundUnit.getCountry().getCountry() == Country.GERMANY);

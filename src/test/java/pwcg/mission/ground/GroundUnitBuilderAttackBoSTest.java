@@ -151,18 +151,6 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
         validateTestResults(groundUnitCollection);
     }
 
-    @Test
-    public void createAITest () throws PWCGException 
-    {
-        targetDefinition.setTargetCategory(TargetCategory.TARGET_CATEGORY_MEDIUM);
-        targetDefinition.setTargetType(TacticalTarget.TARGET_AI);
-
-        GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
-        groundUnitBuilderAttack.createTargetGroundUnits();
-        GroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
-        validateTestResults(groundUnitCollection);
-    }
-
     private void validateTestResults(GroundUnitCollection groundUnitCollection) throws PWCGException
     {
         List<GroundUnit> groundUnits = groundUnitCollection.getAllAlliedGroundUnits();

@@ -111,18 +111,18 @@ public class GroundArtilleryUnit extends GroundAreaFireUnit
         String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
         if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
-            minRequested = 3;
-            maxRequested = 6;
+            minRequested = 2;
+            maxRequested = 4;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
-            minRequested = 5;
-            maxRequested = 10;
+            minRequested = 4;
+            maxRequested = 8;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
-            minRequested = 8;
-            maxRequested = 16;
+            minRequested = 6;
+            maxRequested = 10;
         }
     }
 

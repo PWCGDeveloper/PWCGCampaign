@@ -14,6 +14,7 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.ground.factory.AAAUnitFactory;
 import pwcg.mission.ground.unittypes.GroundUnitSpawning;
 
 public class AAAFrontLinesBuilder 
@@ -83,8 +84,9 @@ public class AAAFrontLinesBuilder
     {
         Coordinate aaaMgPosition = frontLinesForMap.findPositionBehindLinesForSide(lastAAAPosition, 1000, 50, 200, side);
         ICountry icountry = CountryFactory.makeMapReferenceCountry(side);
-        GroundUnitAAAFactory groundUnitFactory =  new GroundUnitAAAFactory(icountry, aaaMgPosition);
-        GroundUnitSpawning aaaMg = groundUnitFactory.createAAAMGBattery(1);
+
+        AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign, icountry, aaaMgPosition);
+        GroundUnitSpawning aaaMg = groundUnitFactory.createAAAMGBattery(1, 1);
         aaaForFront.add(aaaMg);
     }
     
@@ -92,8 +94,8 @@ public class AAAFrontLinesBuilder
     {
         Coordinate aaaArtyPosition = frontLinesForMap.findPositionBehindLinesForSide(lastAAAPosition, 1000, 1000, 2000, side);
         ICountry icountry = CountryFactory.makeMapReferenceCountry(side);
-        GroundUnitAAAFactory groundUnitFactory =  new GroundUnitAAAFactory(icountry, aaaArtyPosition);
-        GroundUnitSpawning aaaArty = groundUnitFactory.createAAAArtilleryBattery(1);
+        AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign, icountry, aaaArtyPosition);
+        GroundUnitSpawning aaaArty = groundUnitFactory.createAAAArtilleryBattery(1, 1);
         aaaForFront.add(aaaArty);
     }
 

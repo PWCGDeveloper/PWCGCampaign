@@ -1,4 +1,4 @@
-package pwcg.mission.ground;
+package pwcg.mission.ground.factory;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -9,14 +9,14 @@ import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.staticunits.AirfieldStaticGroup;
 
-public class GrountUnitAirfieldFactory
+public class AirfieldUnitFactory
 {
     private Campaign campaign;
     private Coordinate location;
     private Orientation orientation;
     private ICountry country;
 
-    public GrountUnitAirfieldFactory (Campaign campaign, Coordinate location, Orientation orientation, ICountry country)
+    public AirfieldUnitFactory (Campaign campaign, Coordinate location, Orientation orientation, ICountry country)
     {
         this.campaign  = campaign;
         this.location  = location.copy();

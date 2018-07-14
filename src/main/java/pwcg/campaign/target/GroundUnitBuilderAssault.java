@@ -16,8 +16,14 @@ public class GroundUnitBuilderAssault
 {
     public static GroundUnitCollection createAssault(Campaign campaign, Mission mission, TargetDefinition targetDefinition) throws PWCGException 
     {
+        BattleSize battleSize = BattleSize.BATTLE_SIZE_TINY;            
+        if (targetDefinition.isPlayerTarget())
+        {
+            battleSize = BattleSize.BATTLE_SIZE_ASSAULT;            
+        }
+        
        IAssaultGenerator assaultGenerator = AssaultGeneratorFactory.createAssaultGenerator(campaign, mission, campaign.getDate());
-       MissionBattle missionBattle = assaultGenerator.generateAssault(targetDefinition, BattleSize.BATTLE_SIZE_ASSAULT);
+       MissionBattle missionBattle = assaultGenerator.generateAssault(targetDefinition, battleSize);
        
        GroundUnitCollection groundUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION);
        groundUnitCollection = missionBattle.getGroundUnitCollection();

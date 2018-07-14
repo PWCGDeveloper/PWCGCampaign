@@ -98,18 +98,18 @@ public class GroundAssaultTankUnit extends GroundMovingDirectFireUnit
         String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
         if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
-            minRequested = 6;
-            maxRequested = 12;
+            minRequested = 3;
+            maxRequested = 6;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
-            minRequested = 6;
-            maxRequested = 16;
+            minRequested = 4;
+            maxRequested = 8;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
-            minRequested = 10;
-            maxRequested = 20;
+            minRequested = 6;
+            maxRequested = 10;
         }
         
         // Far fewer tanks in RoF

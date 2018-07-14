@@ -28,7 +28,6 @@ public class GroundATArtillery extends GroundDirectFireUnit
 	public GroundATArtillery(Campaign campaign) throws PWCGException
 	{
 	    super (TacticalTarget.TARGET_INFANTRY);
-	    
 	    this.campaign = campaign;
 	}	
 
@@ -93,18 +92,18 @@ public class GroundATArtillery extends GroundDirectFireUnit
         String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
         if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
-            minRequested = 2;
-            maxRequested = 3;
+            minRequested = 1;
+            maxRequested = 2;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
-            minRequested = 2;
-            maxRequested = 4;
+            minRequested = 1;
+            maxRequested = 3;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
-            minRequested = 3;
-            maxRequested = 6;
+            minRequested = 2;
+            maxRequested = 4;
         }
     }
 

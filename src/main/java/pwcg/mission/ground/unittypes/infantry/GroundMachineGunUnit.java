@@ -86,17 +86,17 @@ public class GroundMachineGunUnit extends GroundDirectFireUnit
         if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             minRequested = 1;
-            maxRequested = 3;
+            maxRequested = 2;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
             minRequested = 2;
-            maxRequested = 4;
+            maxRequested = 3;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
-            minRequested = 3;
-            maxRequested = 5;
+            minRequested = 2;
+            maxRequested = 4;
         }
     }
 

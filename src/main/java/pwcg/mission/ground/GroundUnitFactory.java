@@ -60,8 +60,7 @@ public class GroundUnitFactory
     {
         GroundArtilleryUnit artilleryUnit = new GroundArtilleryUnit(campaign);
         
-        artilleryUnit.setMinRequested(1);
-        artilleryUnit.setMinRequested(3);
+        artilleryUnit.setMinMaxRequested(1, 3);
         
         artilleryUnit.initialize(missionBeginUnit, startCoords, destinationCoords, country);
         artilleryUnit.createUnitMission();

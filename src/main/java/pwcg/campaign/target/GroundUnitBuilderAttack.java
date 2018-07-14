@@ -52,10 +52,6 @@ public class GroundUnitBuilderAttack
         {
             return GroundUnitBuilderAssault.createAssault(campaign, mission, targetDefinition);
         }
-        else if (targetDefinition.getTargetType() == TacticalTarget.TARGET_AI)
-        {
-            return GroundUnitBuilderAI.createAiTarget(campaign, targetDefinition);
-        }
         else
         {
             return GroundUnitBuilderTroopConcentration.createTroopConcentration(campaign, targetDefinition);

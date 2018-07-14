@@ -15,9 +15,9 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.ground.AssaultGenerator;
-import pwcg.mission.ground.GroundUnitAAAFactory;
-import pwcg.mission.ground.GroundUnitAssaultFactory;
 import pwcg.mission.ground.GroundUnitFactory;
+import pwcg.mission.ground.factory.AAAUnitFactory;
+import pwcg.mission.ground.factory.AssaultFactory;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.mcu.Coalition;
 
@@ -125,7 +125,7 @@ public class RoFAssaultGenerator extends AssaultGenerator
      */
     private void assaultingInfantry() throws PWCGException 
     { 
-        GroundUnitAssaultFactory GroundUnitAssaultFactory = new GroundUnitAssaultFactory(campaign);
+        AssaultFactory GroundUnitAssaultFactory = new AssaultFactory(campaign, battleSize);
 
         Coordinate infantryAssaultPosition = MathUtils.calcNextCoord(missionBattle.getDefensePosition(), angleOfCombatants, DISTANCE_BETWEEN_COMBATANTS + 600.0);
         
@@ -145,7 +145,7 @@ public class RoFAssaultGenerator extends AssaultGenerator
     private void standingFiringInfantry() throws PWCGException 
     { 
         // Assaults are big so set player flight to true.  we will never create an AI minimized assault
-        GroundUnitAssaultFactory GroundUnitAssaultFactory =  new GroundUnitAssaultFactory(campaign);
+        AssaultFactory GroundUnitAssaultFactory =  new AssaultFactory(campaign, battleSize);
 
         // Move the assault position about 300 meters from the defensive positions
         Coordinate infantryAssaultPosition = MathUtils.calcNextCoord(missionBattle.getDefensePosition(), angleOfCombatants, DISTANCE_BETWEEN_COMBATANTS);
@@ -167,7 +167,7 @@ public class RoFAssaultGenerator extends AssaultGenerator
     private void assaultingTanks() throws PWCGException 
     {         
         // Assaults are big so set player flight to true.  we will never create an AI minimized assault
-        GroundUnitAssaultFactory GroundUnitAssaultFactory =  new GroundUnitAssaultFactory(campaign);
+        AssaultFactory GroundUnitAssaultFactory =  new AssaultFactory(campaign, battleSize);
 
         // Generate the assaulting tank unit
         Date campaignDate=     PWCGContextManager.getInstance().getCampaign().getDate();
@@ -214,7 +214,7 @@ public class RoFAssaultGenerator extends AssaultGenerator
     private void assaultingMachineGuns() throws PWCGException 
     { 
         // Assaults are big so set player flight to true.  we will never create an AI minimized assault
-        GroundUnitAssaultFactory GroundUnitAssaultFactory =  new GroundUnitAssaultFactory(campaign);
+        AssaultFactory GroundUnitAssaultFactory =  new AssaultFactory(campaign, battleSize);
 
         Coordinate mgAssaultPosition = MathUtils.calcNextCoord(missionBattle.getDefensePosition(), angleOfCombatants, DISTANCE_BETWEEN_COMBATANTS + 50.0);
         
@@ -250,16 +250,16 @@ public class RoFAssaultGenerator extends AssaultGenerator
     private void assaultingAAAMG() throws PWCGException 
     { 
         Coordinate aaaMgAssaultPosition = MathUtils.calcNextCoord(missionBattle.getAssaultPosition(), angleOfCombatants, 10.0);        
-        GroundUnitAAAFactory groundUnitAAAFactory = new GroundUnitAAAFactory(missionBattle.getAggressor(), aaaMgAssaultPosition);
-        GroundUnit assaultAaaMgUnit = groundUnitAAAFactory.createAAAMGBattery(2);
+        AAAUnitFactory groundUnitAAAFactory = new AAAUnitFactory(campaign, missionBattle.getAggressor(), aaaMgAssaultPosition);
+        GroundUnit assaultAaaMgUnit = groundUnitAAAFactory.createAAAMGBattery(2, 2);
         missionBattle.addGroundUnit(GroundUnitType.AAA_MG_UNIT, assaultAaaMgUnit);
     }
 
     private void assaultingAAAArtillery() throws PWCGException 
     { 
         Coordinate aaaArtyAssaultPosition = MathUtils.calcNextCoord(missionBattle.getAssaultPosition(), angleOfCombatants, 150.0);
-        GroundUnitAAAFactory groundUnitAAAFactory = new GroundUnitAAAFactory(missionBattle.getAggressor(), aaaArtyAssaultPosition);
-        GroundUnit assaultAaaMgUnit = groundUnitAAAFactory.createAAAArtilleryBattery(1);
+        AAAUnitFactory groundUnitAAAFactory = new AAAUnitFactory(campaign,missionBattle.getAggressor(), aaaArtyAssaultPosition);
+        GroundUnit assaultAaaMgUnit = groundUnitAAAFactory.createAAAArtilleryBattery(1, 1);
         missionBattle.addGroundUnit(GroundUnitType.AAA_ARTY_UNIT, assaultAaaMgUnit);
     }
     
@@ -270,7 +270,7 @@ public class RoFAssaultGenerator extends AssaultGenerator
     private void defendingMachineGuns() throws PWCGException 
     { 
         // Assaults are big so set player flight to true.  we will never create an AI minimized assault
-        GroundUnitAssaultFactory GroundUnitAssaultFactory =  new GroundUnitAssaultFactory(campaign);
+        AssaultFactory GroundUnitAssaultFactory =  new AssaultFactory(campaign, battleSize);
 
         // Generate supporting MG Pillboxes
         GroundUnit defensePillBoxUnit = GroundUnitAssaultFactory.createPillBoxUnit (
@@ -310,8 +310,8 @@ public class RoFAssaultGenerator extends AssaultGenerator
         double angleOfDefendingArtillery = MathUtils.adjustAngle(angleOfCombatants, 180.0);
         Coordinate aaaMgDefensePosition = MathUtils.calcNextCoord(missionBattle.getDefensePosition(), angleOfDefendingArtillery, DISTANCE_BETWEEN_COMBATANTS + 10.0);
         
-        GroundUnitAAAFactory groundUnitAAAFactory = new GroundUnitAAAFactory(missionBattle.getDefender(), aaaMgDefensePosition);
-        GroundUnit assaultAaaMgUnit = groundUnitAAAFactory.createAAAMGBattery(2);
+        AAAUnitFactory groundUnitAAAFactory = new AAAUnitFactory(campaign,missionBattle.getDefender(), aaaMgDefensePosition);
+        GroundUnit assaultAaaMgUnit = groundUnitAAAFactory.createAAAMGBattery(2, 2);
         missionBattle.addGroundUnit(GroundUnitType.AAA_MG_UNIT, assaultAaaMgUnit);
     }
 

@@ -1,4 +1,4 @@
-package pwcg.mission.ground;
+package pwcg.mission.ground.factory;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -11,13 +11,13 @@ import pwcg.mission.ground.unittypes.transport.ShipConvoyUnit;
 import pwcg.mission.ground.unittypes.transport.ShipConvoyUnit.ShipConvoyTypes;
 import pwcg.mission.mcu.Coalition;
 
-public class GroundUnitShippingFactory
+public class ShippingUnitFactory
 {
     private Campaign campaign;
     private Coordinate location;
     private ICountry country;
 
-    public GroundUnitShippingFactory (Campaign campaign, Coordinate location, ICountry country)
+    public ShippingUnitFactory (Campaign campaign, Coordinate location, ICountry country)
     {
         this.campaign  = campaign;
         this.location  = location.copy();

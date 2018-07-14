@@ -1,4 +1,4 @@
-package pwcg.mission.ground;
+package pwcg.mission.ground.factory;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -8,13 +8,13 @@ import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.ground.unittypes.infantry.GroundTroopConcentration;
 import pwcg.mission.mcu.Coalition;
 
-public class GrountUnitTroopConcentrationFactory
+public class TroopConcentrationFactory
 {
     private Campaign campaign;
     private Coordinate location;
     private ICountry country;
 
-    public GrountUnitTroopConcentrationFactory (Campaign campaign, Coordinate location, ICountry country)
+    public TroopConcentrationFactory (Campaign campaign, Coordinate location, ICountry country)
     {
         this.campaign = campaign;
         this.location = location.copy();

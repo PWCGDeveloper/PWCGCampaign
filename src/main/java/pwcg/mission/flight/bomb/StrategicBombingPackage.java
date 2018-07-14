@@ -22,8 +22,8 @@ import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.bomb.BombingWaypoints.BombingAltitudeLevel;
 import pwcg.mission.flight.intercept.InterceptFlight;
-import pwcg.mission.ground.GroundUnitAAAFactory;
 import pwcg.mission.ground.GroundUnitFactory;
+import pwcg.mission.ground.factory.AAAUnitFactory;
 import pwcg.mission.ground.unittypes.GroundUnitSpawning;
 import pwcg.mission.ground.unittypes.SpotLightGroup;
 
@@ -100,8 +100,8 @@ public class StrategicBombingPackage extends FlightPackage
 
     private void createAAA(TargetDefinition targetDefinition, StrategicBombingFlight strategicBombingFlight) throws PWCGException
     {
-        GroundUnitAAAFactory groundUnitFactory = new GroundUnitAAAFactory(targetDefinition.getTargetCountry(), targetDefinition.getTargetLocation());
-        GroundUnitSpawning aaaArty = groundUnitFactory.createAAAArtilleryBattery(3);
+        AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign, targetDefinition.getTargetCountry(), targetDefinition.getTargetLocation());
+        GroundUnitSpawning aaaArty = groundUnitFactory.createAAAArtilleryBattery(3, 3);
         strategicBombingFlight.addLinkedUnit(aaaArty);
     }
 

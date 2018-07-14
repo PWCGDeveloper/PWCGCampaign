@@ -8,7 +8,5 @@ import pwcg.mission.ground.AssaultGenerator.BattleSize;
 public interface IAssaultGenerator
 {
 
-    MissionBattle generateAssault(TargetDefinition targetDefinition, BattleSize battleSize)
-                    throws PWCGException;
-
+    MissionBattle generateAssault(TargetDefinition targetDefinition, BattleSize battleSize) throws PWCGException;
 }

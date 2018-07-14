@@ -14,9 +14,9 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.ground.AssaultGenerator;
-import pwcg.mission.ground.GroundUnitAAAFactory;
-import pwcg.mission.ground.GroundUnitAssaultFactory;
 import pwcg.mission.ground.GroundUnitFactory;
+import pwcg.mission.ground.factory.AAAUnitFactory;
+import pwcg.mission.ground.factory.AssaultFactory;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.mcu.Coalition;
 
@@ -85,7 +85,7 @@ public class BoSAssaultGenerator extends AssaultGenerator implements IAssaultGen
     private void createAssault() throws PWCGException
     {
         assaultingTanks();
-        if (battleSize != BattleSize.BATTLE_SIZE_SKIRMISH)
+        if (battleSize == BattleSize.BATTLE_SIZE_ASSAULT || battleSize == BattleSize.BATTLE_SIZE_OFFENSIVE)
         {
             assaultingArtillery();
             assaultingAAA();
@@ -95,7 +95,7 @@ public class BoSAssaultGenerator extends AssaultGenerator implements IAssaultGen
     private void createDefenders() throws PWCGException
     {
         defendingATGuns();
-        if (battleSize != BattleSize.BATTLE_SIZE_SKIRMISH)
+        if (battleSize == BattleSize.BATTLE_SIZE_ASSAULT || battleSize == BattleSize.BATTLE_SIZE_OFFENSIVE)
         {
             defendingArtillery();
             defendingAAA();
@@ -106,7 +106,7 @@ public class BoSAssaultGenerator extends AssaultGenerator implements IAssaultGen
     {         
         Coordinate tankAssaultPosition = MathUtils.calcNextCoord(missionBattle.getDefensePosition(), angleOfCombatants, DISTANCE_BETWEEN_COMBATANTS + 500.0);
         
-        GroundUnitAssaultFactory groundUnitFactory =  new GroundUnitAssaultFactory(campaign);
+        AssaultFactory groundUnitFactory =  new AssaultFactory(campaign, battleSize);
 
         GroundUnit assaultTankUnit = groundUnitFactory.createAssaultTankUnit (
                         missionBeginUnit, 
@@ -145,22 +145,22 @@ public class BoSAssaultGenerator extends AssaultGenerator implements IAssaultGen
     private void assaultingAAAMG() throws PWCGException
     { 
         Coordinate aaaMgAssaultPosition = MathUtils.calcNextCoord(missionBattle.getAssaultPosition(), angleOfCombatants, 10.0);
-        GroundUnitAAAFactory groundUnitFactory =  new GroundUnitAAAFactory(missionBattle.getAggressor(), aaaMgAssaultPosition);
-        GroundUnit assaultAaaMgUnit = groundUnitFactory.createAAAMGBattery(2);
+        AAAUnitFactory groundUnitFactory =  new AAAUnitFactory(campaign, missionBattle.getAggressor(), aaaMgAssaultPosition);
+        GroundUnit assaultAaaMgUnit = groundUnitFactory.createAAAMGBattery(2, 4);
         missionBattle.addGroundUnit(GroundUnitType.AAA_MG_UNIT, assaultAaaMgUnit);
     }
 
     private void assaultingAAAArty() throws PWCGException
     { 
         Coordinate aaaArtyAssaultPosition = MathUtils.calcNextCoord(missionBattle.getAssaultPosition(), angleOfCombatants, 150.0);
-        GroundUnitAAAFactory groundUnitFactory =  new GroundUnitAAAFactory(missionBattle.getAggressor(), aaaArtyAssaultPosition);
-        GroundUnit assaultAaaArtilleryUnit = groundUnitFactory.createAAAArtilleryBattery(2);
+        AAAUnitFactory groundUnitFactory =  new AAAUnitFactory(campaign, missionBattle.getAggressor(), aaaArtyAssaultPosition);
+        GroundUnit assaultAaaArtilleryUnit = groundUnitFactory.createAAAArtilleryBattery(1, 2);
         missionBattle.addGroundUnit(GroundUnitType.AAA_ARTY_UNIT, assaultAaaArtilleryUnit);
     }
 
     private void defendingATGuns() throws PWCGException
     { 
-        GroundUnitAssaultFactory groundUnitFactory =  new GroundUnitAssaultFactory(campaign);
+        AssaultFactory groundUnitFactory =  new AssaultFactory(campaign, battleSize);
         GroundUnit defenseATFlareUnit = groundUnitFactory.createDefenseUnit (
                         missionBeginUnit, 
                         missionBattle.getDefender(), 
@@ -196,16 +196,16 @@ public class BoSAssaultGenerator extends AssaultGenerator implements IAssaultGen
     private void defendingAAAMG(double angleOfDefendingArtillery) throws PWCGException
     {
         Coordinate aaaMgDefensePosition = MathUtils.calcNextCoord(missionBattle.getDefensePosition(), angleOfDefendingArtillery, DISTANCE_BETWEEN_COMBATANTS + 10.0);
-        GroundUnitAAAFactory groundUnitFactory =  new GroundUnitAAAFactory(missionBattle.getAggressor(), aaaMgDefensePosition);
-        GroundUnit assaultAaaMgUnit = groundUnitFactory.createAAAMGBattery(2);
+        AAAUnitFactory groundUnitFactory =  new AAAUnitFactory(campaign, missionBattle.getAggressor(), aaaMgDefensePosition);
+        GroundUnit assaultAaaMgUnit = groundUnitFactory.createAAAMGBattery(2, 4);
         missionBattle.addGroundUnit(GroundUnitType.AAA_MG_UNIT, assaultAaaMgUnit);
     }
     
     private void defendingAAAArty(double angleOfDefendingArtillery) throws PWCGException
     {
         Coordinate aaaArtyDefensePosition = MathUtils.calcNextCoord(missionBattle.getDefensePosition(), angleOfDefendingArtillery, DISTANCE_BETWEEN_COMBATANTS + 150.0);
-        GroundUnitAAAFactory groundUnitFactory =  new GroundUnitAAAFactory(missionBattle.getAggressor(), aaaArtyDefensePosition);
-        GroundUnit assaultAaaArtilleryUnit = groundUnitFactory.createAAAMGBattery(2);   
+        AAAUnitFactory groundUnitFactory =  new AAAUnitFactory(campaign, missionBattle.getAggressor(), aaaArtyDefensePosition);
+        GroundUnit assaultAaaArtilleryUnit = groundUnitFactory.createAAAMGBattery(2, 4);   
         missionBattle.addGroundUnit(GroundUnitType.AAA_ARTY_UNIT, assaultAaaArtilleryUnit);
     }
  }

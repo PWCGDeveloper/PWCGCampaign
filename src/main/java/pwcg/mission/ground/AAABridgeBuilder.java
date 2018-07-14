@@ -12,6 +12,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.ground.factory.AAAUnitFactory;
 import pwcg.mission.ground.unittypes.GroundUnitSpawning;
 
 public class AAABridgeBuilder 
@@ -37,8 +38,8 @@ public class AAABridgeBuilder
 	            double distance = 100 + RandomNumberGenerator.getRandom(400);
 	            Coordinate aaaPosition = MathUtils.calcNextCoord(bridge.getPosition(), angle, distance);
 	            
-	            GroundUnitAAAFactory groundUnitFactory = new GroundUnitAAAFactory(bridge.getCountry(campaign.getDate()), aaaPosition);
-	            GroundUnitSpawning aaaArty = groundUnitFactory.createAAAArtilleryBattery(3);
+	            AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign, bridge.getCountry(campaign.getDate()), aaaPosition);
+	            GroundUnitSpawning aaaArty = groundUnitFactory.createAAAArtilleryBattery(2, 2);
 	            bridgeAAA.add(aaaArty);
 	        }
 		}

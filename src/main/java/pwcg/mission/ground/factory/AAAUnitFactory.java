@@ -1,5 +1,6 @@
-package pwcg.mission.ground;
+package pwcg.mission.ground.factory;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -7,41 +8,39 @@ import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.ground.unittypes.artillery.GroundAAABattery;
 import pwcg.mission.mcu.Coalition;
 
-public class GroundUnitAAAFactory
+public class AAAUnitFactory
 {    
+    private Campaign campaign;
     private ICountry country;
     private Coordinate location;
     
-    public GroundUnitAAAFactory (ICountry country, Coordinate location)
+    public AAAUnitFactory (Campaign campaign, ICountry country, Coordinate location)
     {
+        this.campaign  = campaign;
         this.country  = country;
         this.location  = location.copy();
     }
 
-    public GroundAAABattery createAAAArtilleryBattery (int numAAA) throws PWCGException
+    public GroundAAABattery createAAAArtilleryBattery (int minUnits, int maxUnits) throws PWCGException
     {
-        return createAAABattery(numAAA, false);
+        return createAAABattery(minUnits, maxUnits, false);
     }
 
-    public GroundAAABattery createAAAMGBattery (int numAAA) throws PWCGException
+    public GroundAAABattery createAAAMGBattery (int minUnits, int maxUnits) throws PWCGException
     {
-        return createAAABattery(numAAA, true);
+        return createAAABattery(minUnits, maxUnits, true);
     }
 
-    private GroundAAABattery createAAABattery (int numAAA, boolean isMG) throws PWCGException
+    private GroundAAABattery createAAABattery (int minUnits, int maxUnits, boolean isMG) throws PWCGException
     {
         Coalition enemyCoalition =  Coalition.getEnemyCoalition(country);
 
         MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
         missionBeginUnit.initialize(location, 5000, enemyCoalition);
 
-        GroundAAABattery aaaBattery = new GroundAAABattery();
-        if (numAAA > 0)
-        {
-            aaaBattery.setMinRequested(numAAA);
-            aaaBattery.setMaxRequested(numAAA);
-        }
-        
+        GroundAAABattery aaaBattery = new GroundAAABattery(campaign);
+        aaaBattery.setMinMaxRequested(minUnits, maxUnits);
+
         aaaBattery.initialize(missionBeginUnit, location, country, isMG);
         aaaBattery.createUnitMission();
 

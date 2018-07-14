@@ -90,17 +90,17 @@ public class DrifterUnit extends GroundDirectFireUnit
         if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             minRequested = 2;
-            maxRequested = 4;
+            maxRequested = 3;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
-            minRequested = 3;
-            maxRequested = 6;
+            minRequested = 2;
+            maxRequested = 4;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
-            minRequested = 4;
-            maxRequested = 8;
+            minRequested = 3;
+            maxRequested = 6;
         }
     }
 

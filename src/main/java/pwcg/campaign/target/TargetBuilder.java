@@ -10,6 +10,8 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.artySpot.ArtillerySpotArtilleryGroup;
 import pwcg.mission.ground.GroundUnitCollection;
 import pwcg.mission.ground.GroundUnitFactory;
+import pwcg.mission.ground.factory.AAAUnitFactory;
+import pwcg.mission.ground.unittypes.GroundUnit;
 
 public class TargetBuilder
 {
@@ -103,9 +105,13 @@ public class TargetBuilder
 
     private void addAAABattery(ICountry country, Coordinate targetPosition, int numAAAMG, int numAAAArtillery) throws PWCGException 
     {
-        GroundUnitBuilderAAA groundUnitBuilderAAA = new GroundUnitBuilderAAA();
-        GroundUnitCollection groundUnitCollectionAAA = groundUnitBuilderAAA.createAAABattery(targetDefinition, numAAAMG, numAAAArtillery);
-        groundUnitCollection.mergeGroundUnitCollection(groundUnitCollectionAAA);
+        AAAUnitFactory groundUnitFactory =  new AAAUnitFactory(campaign, targetDefinition.getTargetCountry(), targetDefinition.getTargetLocation());
+        
+        GroundUnit assaultAAAMgUnit = groundUnitFactory.createAAAMGBattery(1, numAAAMG);
+        groundUnitCollection.addGroundUnit(GroundUnitType.AAA_ARTY_UNIT, assaultAAAMgUnit);
+
+        GroundUnit assaultAAAArtilleryUnit = groundUnitFactory.createAAAArtilleryBattery(1, numAAAArtillery);
+        groundUnitCollection.addGroundUnit(GroundUnitType.AAA_ARTY_UNIT, assaultAAAArtilleryUnit);
     }
 
     private void addFriendlyArtillery() throws PWCGException, PWCGMissionGenerationException

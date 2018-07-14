@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.VehicleFactory;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.config.ConfigItemKeys;
@@ -27,18 +26,20 @@ public class GroundAAABattery extends GroundRepeatSpawningUnit
     static private int MG_ATTACK_AREA = 500;
     static private int ARTY_CHECK_ZONE = 6000;
     static private int ARTY_ATTACK_AREA = 5000;
-    
+ 
+    private Campaign campaign;
+
     protected boolean isMg = true;
     
     protected boolean hasBeenWritten = false;
 
-    public GroundAAABattery ()
+    public GroundAAABattery(Campaign campaign) throws PWCGException
     {
-        super(TacticalTarget.TARGET_ARTILLERY);
-        checkZoneMeters = MG_CHECK_ZONE;
-        checkAttackAreaMeters = MG_ATTACK_AREA;
-    }
-    
+        super (TacticalTarget.TARGET_ARTILLERY);
+        this.campaign = campaign;
+    }   
+
+
     public void initialize(MissionBeginUnitCheckZone missionBeginUnit, Coordinate position, ICountry country, boolean isMg) 
                     throws PWCGException 
     {
@@ -114,24 +115,22 @@ public class GroundAAABattery extends GroundRepeatSpawningUnit
 
     protected void calcNumUnitsByConfig() throws PWCGException 
     {
-        // How many units
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
         ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
         String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
         if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
         {
             minRequested = 1;
-            maxRequested = 3;
+            maxRequested = 2;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
         {
-            minRequested = 2;
-            maxRequested = 4;
+            minRequested = 1;
+            maxRequested = 3;
         }
         else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
         {
-            minRequested = 3;
-            maxRequested = 5;
+            minRequested = 2;
+            maxRequested = 4;
         }
     }
 

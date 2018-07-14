@@ -88,13 +88,9 @@ public abstract class GroundUnitSpawning extends GroundUnit
         }
     }
 
-    public void setMinRequested(int minRequested)
+    public void setMinMaxRequested(int minRequested, int maxRequested)
     {
         this.minRequested = minRequested;
-    }
-
-    public void setMaxRequested(int maxRequested)
-    {
         this.maxRequested = maxRequested;
     }
     

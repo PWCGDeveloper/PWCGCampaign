@@ -17,7 +17,7 @@ import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointGoal;
 import pwcg.mission.flight.waypoint.WaypointPriority;
-import pwcg.mission.ground.GroundUnitAAAFactory;
+import pwcg.mission.ground.factory.AAAUnitFactory;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.artillery.GroundAAABattery;
 import pwcg.mission.ground.vehicle.IVehicle;
@@ -69,16 +69,12 @@ public class BalloonDefenseGroup extends GroundUnit
         createSpawnTimer();
 		createWinch();
 		createGroundTargetAssociations();
-		
-        // Player flight doesn't matter for AAA - it's always the same
-        GroundUnitAAAFactory groundUnitFactory =  new GroundUnitAAAFactory(country, position.copy());
 
-		// AAA MG
-        aaaMg = groundUnitFactory.createAAAMGBattery(4);
+        AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign, country, position.copy());
+        aaaMg = groundUnitFactory.createAAAMGBattery(4, 4);
         aaaMg.setAiLevel(AiSkillLevel.COMMON);
         
-        // AAA Artillery
-        aaaArty = groundUnitFactory.createAAAArtilleryBattery(4);
+        aaaArty = groundUnitFactory.createAAAArtilleryBattery(4, 4);
         aaaArty.setAiLevel(AiSkillLevel.COMMON);
 	}
 

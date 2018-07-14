@@ -3,6 +3,7 @@ package pwcg.campaign.api;
 import java.io.BufferedWriter;
 import java.util.Date;
 
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -20,7 +21,7 @@ public interface IAirfield extends IFixedPosition
 
     void initializeAirfieldFromLocation(PWCGLocation airfieldLocation);
 
-    void addAirfieldObjects(Date date) throws PWCGException, PWCGException;
+    void addAirfieldObjects(Campaign campaign) throws PWCGException;
 
     public String getName();
     

@@ -12,6 +12,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.ground.factory.ShippingUnitFactory;
 import pwcg.mission.ground.unittypes.transport.ShipConvoyUnit;
 import pwcg.mission.ground.unittypes.transport.ShipConvoyUnit.ShipConvoyTypes;
 
@@ -39,7 +40,7 @@ public class ShipConvoyGenerator
                 shipCountry = CountryFactory.makeMapReferenceCountry(Side.AXIS);
             }
             
-            GroundUnitShippingFactory shippingFactory = new GroundUnitShippingFactory(campaign, targetPosition, shipCountry);
+            ShippingUnitFactory shippingFactory = new ShippingUnitFactory(campaign, targetPosition, shipCountry);
             ShipConvoyUnit convoy = shippingFactory.createShippingUnit();
             if (convoy.getCountry().getSide() == Side.ALLIED)
             {

@@ -4,7 +4,7 @@ import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.GroundUnitCollection;
 import pwcg.mission.ground.GroundUnitFactory;
-import pwcg.mission.ground.GrountUnitTroopConcentrationFactory;
+import pwcg.mission.ground.factory.TroopConcentrationFactory;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.SpotLightGroup;
 
@@ -22,7 +22,7 @@ public class GroundUnitBuilderSpyDrop
 
     public GroundUnitCollection createSpyDropTargets() throws PWCGException 
     {
-        GrountUnitTroopConcentrationFactory groundUnitFactory = new GrountUnitTroopConcentrationFactory(campaign, targetDefinition.getTargetLocation(), targetDefinition.getTargetCountry());
+        TroopConcentrationFactory groundUnitFactory = new TroopConcentrationFactory(campaign, targetDefinition.getTargetLocation(), targetDefinition.getTargetCountry());
         GroundUnit targetUnit = groundUnitFactory.createTroopConcentration();
         groundUnitCollection.addGroundUnit(GroundUnitType.INFANTRY_UNIT, targetUnit);
         

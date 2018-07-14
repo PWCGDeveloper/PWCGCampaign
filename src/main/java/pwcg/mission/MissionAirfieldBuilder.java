@@ -46,7 +46,7 @@ public class MissionAirfieldBuilder
         	    double closestDistance = objectProximityAnalyzer.plotProximityToPlayerFlightPath(field.getPosition());
         	    if (closestDistance < 10000.0)
         	    {
-                    field.addAirfieldObjects(campaign.getDate());
+                    field.addAirfieldObjects(campaign);
         	    }
         	    
                 selectedFields.put(field.getName(), field);

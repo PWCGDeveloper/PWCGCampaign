@@ -1,4 +1,4 @@
-package pwcg.mission.ground;
+package pwcg.mission.ground.factory;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -7,6 +7,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.MissionBeginUnitCheckZone;
+import pwcg.mission.ground.AssaultGenerator.BattleSize;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.infantry.GroundATArtillery;
 import pwcg.mission.ground.unittypes.infantry.GroundAssaultInfantryUnit;
@@ -16,13 +17,15 @@ import pwcg.mission.ground.unittypes.infantry.GroundMachineGunUnit;
 import pwcg.mission.ground.unittypes.infantry.GroundPillBoxFlareUnit;
 import pwcg.mission.ground.unittypes.infantry.GroundPillBoxUnit;
 
-public class GroundUnitAssaultFactory
+public class AssaultFactory
 {    
     private Campaign campaign;
+    private BattleSize battleSize;
     
-    public GroundUnitAssaultFactory (Campaign campaign)
+    public AssaultFactory (Campaign campaign, BattleSize battleSize)
     {
         this.campaign  = campaign;
+        this.battleSize  = battleSize;
     }
 
     public GroundUnit createDefenseUnit (
@@ -71,7 +74,7 @@ public class GroundUnitAssaultFactory
                     Coordinate startCoords, 
                     Coordinate destinationCoords) throws PWCGException 
     {
-        GroundAssaultInfantryUnit infantryAssaultUnit = new GroundAssaultInfantryUnit();
+        GroundAssaultInfantryUnit infantryAssaultUnit = new GroundAssaultInfantryUnit(battleSize);
         infantryAssaultUnit.initialize(missionBeginUnit, startCoords, destinationCoords, country);
         infantryAssaultUnit.createUnitMission();
 
