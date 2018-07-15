@@ -57,7 +57,7 @@ public class InterceptPlayerCoordinateGenerator
     {
         StrategicTargetBuilder targetManager = new StrategicTargetBuilder();        
         TargetDefinition targetDefinition = targetManager.getStrategicTarget(campaign, mission, squadron);
-        targetCoordinates = targetDefinition.getTargetLocation();
+        targetCoordinates = targetDefinition.getTargetPosition();
     }
     
     private void getFrontTargetCoordinates() throws PWCGException 

@@ -31,7 +31,7 @@ class RadioBeacon extends Vehicle implements IVehicle
         this.country = country;
         
         displayName = "Radio Beacon";
-        name = "Radio Beacon";
+        vehicleType = "Radio Beacon";
         script = "LuaScripts\\WorldObjects\\vehicles\\ndb.txt";
         model = "graphics\\vehicles\\ndb.mgm";
     }

@@ -41,7 +41,7 @@ public class GroundCrew extends Vehicle
 			displayName = "German Ground Crew";
 		}
 		
-		name = groundCrewId;
+		vehicleType = groundCrewId;
 		script = "LuaScripts\\WorldObjects\\" + groundCrewId + ".txt";
 		model = "graphics\\firingpoint\\soldiers\\" + groundCrewId + ".mgm";
 		
@@ -55,7 +55,7 @@ public class GroundCrew extends Vehicle
 		
 		groundCrew.index = IndexGenerator.getInstance().getNextIndex();
 		
-		groundCrew.name = this.name;
+		groundCrew.vehicleType = this.vehicleType;
 		groundCrew.displayName = this.displayName;
 		groundCrew.linkTrId = this.linkTrId;
 		groundCrew.script = this.script;

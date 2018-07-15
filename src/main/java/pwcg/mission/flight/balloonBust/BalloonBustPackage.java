@@ -13,13 +13,12 @@ import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.balloondefense.AiBalloonDefenseFlight;
 import pwcg.mission.flight.balloondefense.BalloonDefenseGroup;
-import pwcg.mission.mcu.Coalition;
+import pwcg.mission.ground.GroundUnitBalloonFactory;
 
 public class BalloonBustPackage extends FlightPackage
 {
@@ -50,7 +49,7 @@ public class BalloonBustPackage extends FlightPackage
         missionBeginUnit.initialize(startCoords.copy());
 
         BalloonBustFlight balloonBust = new BalloonBustFlight ();
-		balloonBust.initialize(mission, campaign, balloonUnit.getPosition(), squadron, missionBeginUnit, isPlayerFlight);
+		balloonBust.initialize(mission, campaign, balloonUnit.getPwcgGroundUnitInformation().getPosition(), squadron, missionBeginUnit, isPlayerFlight);
 
 		balloonBust.addLinkedUnit(balloonUnit);
 		
@@ -60,14 +59,8 @@ public class BalloonBustPackage extends FlightPackage
 
     private BalloonDefenseGroup createBalloonUnit(Coordinate balloonPosition, ICountry balloonCountry) throws PWCGException
     {
-        Coalition playerCoalition  = Coalition.getFriendlyCoalition(campaign.determineCountry());
-        MissionBeginUnitCheckZone missionBeginUnitBalloon = new MissionBeginUnitCheckZone();
-        missionBeginUnitBalloon.initialize(balloonPosition.copy(), 10000, playerCoalition);
-        
-        BalloonDefenseGroup balloonUnit = new BalloonDefenseGroup(campaign);
-		balloonUnit.initialize(missionBeginUnitBalloon, balloonPosition, balloonCountry);
-		balloonUnit.createUnitMission();
-        return balloonUnit;
+        GroundUnitBalloonFactory balloonFactory = new GroundUnitBalloonFactory(campaign, balloonPosition, balloonCountry);
+        return balloonFactory.createBalloonUnit();
     }
 
     private ICountry determineBalloonCountry(Side enemySide, Squadron enemyScoutSquadron) throws PWCGException
@@ -90,12 +83,12 @@ public class BalloonBustPackage extends FlightPackage
         if(isPlayerFlight)
 		{
             MissionBeginUnit missionBeginUnitCover = new MissionBeginUnit();
-            missionBeginUnitCover.initialize(balloonUnit.getPosition().copy());
+            missionBeginUnitCover.initialize(balloonUnit.getPwcgGroundUnitInformation().getPosition().copy());
 
             if (enemyScoutSquadron != null)
             {
                 AiBalloonDefenseFlight enemyCoverUnit = new AiBalloonDefenseFlight();
-                enemyCoverUnit.initialize(mission, campaign, balloonUnit.getPosition(), enemyScoutSquadron, 
+                enemyCoverUnit.initialize(mission, campaign, balloonUnit.getPwcgGroundUnitInformation().getPosition(), enemyScoutSquadron, 
                                 missionBeginUnitCover, false, balloonUnit);
                 enemyCoverUnit.createUnitMission();
     

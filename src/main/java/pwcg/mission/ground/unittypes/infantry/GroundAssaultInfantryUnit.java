@@ -4,9 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.campaign.ww1.ground.vehicle.MovingInfantry;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -15,10 +13,10 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.ground.AssaultGenerator.BattleSize;
 import pwcg.mission.ground.unittypes.GroundMovingDirectFireUnit;
 import pwcg.mission.mcu.McuSpawn;
@@ -28,30 +26,23 @@ public class GroundAssaultInfantryUnit extends GroundMovingDirectFireUnit
 {
     private BattleSize battleSize;
     
-	public GroundAssaultInfantryUnit(BattleSize battleSize) 
+	public GroundAssaultInfantryUnit(GroundUnitInformation pwcgGroundUnitInformation, BattleSize battleSize) 
 	{	    
-        super(TacticalTarget.TARGET_INFANTRY);
+	    super(pwcgGroundUnitInformation);
         this.battleSize = battleSize;
         this.unitSpeed = 3;
 	}
 
-
-    public void initialize (MissionBeginUnitCheckZone missionBeginUnit, Coordinate startCoords, Coordinate destinationCoords, ICountry country) 
-    {
-        String name = "Infantry";
-        super.initialize (missionBeginUnit, name, startCoords, destinationCoords, country);
-    }
-
 	protected void createUnits() throws PWCGException  
 	{
-	    MovingInfantry infantry = new MovingInfantry(country);
+	    MovingInfantry infantry = new MovingInfantry(pwcgGroundUnitInformation.getCountry());
         if (!infantry.vehicleExists())
         {
             Logger.log (LogLevel.DEBUG, "No infantry model or script found.  Download and install 3rd party objects");
         }
 
 		infantry.setOrientation(new Orientation());
-		infantry.setPosition(position.copy());			
+		infantry.setPosition(pwcgGroundUnitInformation.getPosition().copy());			
 		infantry.populateEntity();
 		infantry.getEntity().setEnabled(1);
 		
@@ -66,13 +57,13 @@ public class GroundAssaultInfantryUnit extends GroundMovingDirectFireUnit
         double infantrySpacing = 20.0;
                 
         // Move towards enemy
-        double infantryFacingAngle = MathUtils.calcAngle(position, destinationCoords);
+        double infantryFacingAngle = MathUtils.calcAngle(pwcgGroundUnitInformation.getPosition(), pwcgGroundUnitInformation.getDestination());
         Orientation infantryOrient = new Orientation();
         infantryOrient.setyOri(infantryFacingAngle);
         
         // Locate the infantry such that startCoords is the middle of the line
         double startLocationOrientation = MathUtils.adjustAngle (infantryFacingAngle, 270);     
-        Coordinate infantryCoords = MathUtils.calcNextCoord(position, startLocationOrientation, ((numInfantry * infantrySpacing) / 2));
+        Coordinate infantryCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), startLocationOrientation, ((numInfantry * infantrySpacing) / 2));
         
         // Direction in which subsequent units will be placed
         double placementOrientation = MathUtils.adjustAngle (infantryFacingAngle, 90);     
@@ -139,9 +130,8 @@ public class GroundAssaultInfantryUnit extends GroundMovingDirectFireUnit
             writer.write("  Desc = \"Assaulting Infantry\";");
             writer.newLine();
 
-            missionBeginUnit.write(writer);
+            pwcgGroundUnitInformation.getMissionBeginUnit().write(writer);
 
-            // This could happen if the user did not install 3rd party infantry
             spawnTimer.write(writer);
             spawningVehicle.write(writer);
             for (McuSpawn spawn : spawners)

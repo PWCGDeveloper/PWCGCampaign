@@ -3,12 +3,9 @@ package pwcg.mission.ground.unittypes;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuTimer;
@@ -25,9 +22,9 @@ public abstract class GroundUnitSpawning extends GroundUnit
     protected int minRequested = NUM_UNITS_BY_CONFIG;
     protected int maxRequested = NUM_UNITS_BY_CONFIG;
 
-	public GroundUnitSpawning(TacticalTarget targetType) 
+	public GroundUnitSpawning(GroundUnitInformation pwcgGroundUnitInformation) 
 	{
-        super(targetType);
+        super(pwcgGroundUnitInformation);
 	}
 
     protected int calcNumUnits() throws PWCGException 
@@ -48,11 +45,6 @@ public abstract class GroundUnitSpawning extends GroundUnit
         return numUnits;
     }
 
-    public void initialize (MissionBeginUnit missionBeginUnit, String name, Coordinate startCoords, Coordinate destinationCoords, ICountry country) 
-    {
-        super.initialize(missionBeginUnit, name, startCoords,  destinationCoords, country);
-    }
-
     @Override
     public void createUnitMission() throws PWCGException 
     {
@@ -67,7 +59,7 @@ public abstract class GroundUnitSpawning extends GroundUnit
     {
         spawnTimer.setName("Spawn Timer");
         spawnTimer.setDesc("Spawn Timer");
-        spawnTimer.setPosition(position.copy());
+        spawnTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
     }
 
     public List<IVehicle> getVehicles() 

@@ -63,8 +63,8 @@ public class TargetBuilderTest
         Mockito.when(campaign.determineCountry()).thenReturn(friendlyCountry);
         Mockito.when(targetDefinition.getTargetCountry()).thenReturn(enemyCountry);
         Mockito.when(targetDefinition.getAttackingCountry()).thenReturn(friendlyCountry);
-        Mockito.when(targetDefinition.getTargetGeneralLocation()).thenReturn(referencePosition);
-        Mockito.when(targetDefinition.getTargetLocation()).thenReturn(new Coordinate(216336, 0, 184721));
+        Mockito.when(targetDefinition.getTargetGeneralPosition()).thenReturn(referencePosition);
+        Mockito.when(targetDefinition.getTargetPosition()).thenReturn(new Coordinate(216336, 0, 184721));
         Mockito.when(targetDefinition.getTargetOrientation()).thenReturn(new Orientation(90));
         Mockito.when(enemyCountry.getSide()).thenReturn(Side.ALLIED);
         Mockito.when(friendlyCountry.getSide()).thenReturn(Side.AXIS);

@@ -17,6 +17,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.ground.GroundUnitBalloonFactory;
 import pwcg.mission.mcu.Coalition;
 
 public class AmbientBalloonDefensePackage
@@ -70,9 +71,8 @@ public class AmbientBalloonDefensePackage
         MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
         missionBeginUnit.initialize(balloonPosition.copy(), 10000, enemyCoalition);
         
-        BalloonDefenseGroup balloonUnit = new BalloonDefenseGroup(campaign);
-		balloonUnit.initialize(missionBeginUnit, balloonPosition, balloonCountry);
-		balloonUnit.createUnitMission();
+        GroundUnitBalloonFactory balloonFactory = new GroundUnitBalloonFactory(campaign, balloonPosition, balloonCountry);
+        BalloonDefenseGroup balloonUnit = balloonFactory.createBalloonUnit();
 
 		return balloonUnit;
 	}

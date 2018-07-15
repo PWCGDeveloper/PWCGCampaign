@@ -22,7 +22,7 @@ public class AirfieldObject extends StaticObject
         airfieldObjectId = airfieldObject[selectedAirfieldObject];           
         displayName = "Equipment";
 		
-		name = airfieldObjectId;
+        vehicleType = airfieldObjectId;
 		script = "LuaScripts\\WorldObjects\\Blocks\\" + airfieldObjectId + ".txt";
 		model = "graphics\\blocks\\" + airfieldObjectId + ".mgm";
 	}

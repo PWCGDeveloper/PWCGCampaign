@@ -6,6 +6,7 @@ import java.io.IOException;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.campaign.ww1.ground.vehicle.Vehicle;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -19,11 +20,11 @@ public abstract class StaticObject extends Vehicle
         super(country);
     }
 
-	public StaticObject makeCopy (StaticObject staticObject) 
+	public StaticObject makeCopy (StaticObject staticObject) throws PWCGException 
 	{
 		staticObject.index = IndexGenerator.getInstance().getNextIndex();
 		
-		staticObject.name = this.name;
+		staticObject.vehicleType = this.vehicleType;
 		staticObject.displayName = this.displayName;
 		staticObject.linkTrId = this.linkTrId;
 		staticObject.script = this.script;
@@ -58,7 +59,7 @@ public abstract class StaticObject extends Vehicle
     		writer.write("{");
     		writer.newLine();
     		
-    		writer.write("  Name = \"" + name + "\";");
+    		writer.write("  Name = \"" + vehicleType + "\";");
     		writer.newLine();
     		writer.write("  Index = " + index + ";");
     		writer.newLine();

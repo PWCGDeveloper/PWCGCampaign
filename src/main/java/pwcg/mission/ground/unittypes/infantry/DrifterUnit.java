@@ -4,9 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.VehicleFactory;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
@@ -14,9 +12,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.ground.unittypes.GroundDirectFireUnit;
 import pwcg.mission.ground.vehicle.IVehicleFactory;
 import pwcg.mission.mcu.McuSpawn;
@@ -25,30 +23,20 @@ public class DrifterUnit extends GroundDirectFireUnit
 {
     private Campaign campaign;
 
-    public DrifterUnit(Campaign campaign) throws PWCGException
+    public DrifterUnit(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation) throws PWCGException
     {
-        super (TacticalTarget.TARGET_DRIFTER);
-        
+        super (pwcgGroundUnitInformation);        
         this.campaign = campaign;
     }   
-
-    public void initialize (MissionBeginUnit missionBeginUnit, Coordinate position, Orientation orientation, ICountry country) 
-    {
-        String nationality = country.getNationality();
-        String name = nationality + " Drifter";
-        this.orientation = orientation;
-        
-        // Drifters don't move so start and destination are the same
-        super.initialize(missionBeginUnit, name, position, position, country);
-    }
 
 	protected void createUnits() throws PWCGException  
 	{
 	    IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
 
-        spawningVehicle = vehicleFactory.createBarge(country);
+        spawningVehicle = vehicleFactory.createBarge(pwcgGroundUnitInformation.getCountry());
         spawningVehicle.setOrientation(new Orientation());
-        spawningVehicle.setPosition(position.copy());         
+        spawningVehicle.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
+        spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
         spawningVehicle.populateEntity();
         spawningVehicle.getEntity().setEnabled(1);
 	}	
@@ -58,16 +46,16 @@ public class DrifterUnit extends GroundDirectFireUnit
         int numDrifter = calcNumUnits();
 
         // Face towards orientation
-        double drifterFacingAngle = MathUtils.adjustAngle(orientation.getyOri(), 180.0);
+        double drifterFacingAngle = MathUtils.adjustAngle(pwcgGroundUnitInformation.getOrientation().getyOri(), 180.0);
         Orientation drifterOrient = new Orientation();
         drifterOrient.setyOri(drifterFacingAngle);
         
-        Coordinate drifterCoords = position.copy();
+        Coordinate drifterCoords = pwcgGroundUnitInformation.getPosition().copy();
 
         double drifterSpacing = 30.0;
         
         // Direction in which subsequent units will be placed
-        double placementOrientation = orientation.getyOri();        
+        double placementOrientation = pwcgGroundUnitInformation.getOrientation().getyOri();        
 
         for (int i = 0; i < numDrifter; ++i)
         {   
@@ -120,7 +108,7 @@ public class DrifterUnit extends GroundDirectFireUnit
             writer.write("  Desc = \"Drifter\";");
             writer.newLine();
 
-            missionBeginUnit.write(writer);
+            pwcgGroundUnitInformation.getMissionBeginUnit().write(writer);
 
             // This could happen if the user did not install 3rd party infantry
             spawnTimer.write(writer);

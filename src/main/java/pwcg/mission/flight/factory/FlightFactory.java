@@ -162,7 +162,6 @@ public abstract class FlightFactory
         if (flightPackage != null)
         {
             flight = flightPackage.createPackage();
-            flight.setCountry(squadron.determineSquadronCountry(campaign.getDate()));
         }
         
         return flight;

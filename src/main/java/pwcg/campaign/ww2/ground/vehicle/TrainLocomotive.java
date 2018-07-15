@@ -44,7 +44,7 @@ class TrainLocomotive extends Vehicle implements ITrainLocomotive
 		
 		displayName = locomotive.getName();
 		
-		name = locomotive.getName();
+		vehicleType = locomotive.getName();
 		script = "LuaScripts\\WorldObjects\\Trains\\" + locomotive.getId() + ".txt";
 		model = "graphics\\trains\\" + locomotive.getCategory() + "\\" + locomotive.getId() + ".mgm";
 	}
@@ -55,7 +55,7 @@ class TrainLocomotive extends Vehicle implements ITrainLocomotive
 		
 		locomotive.index = IndexGenerator.getInstance().getNextIndex();
 		
-		locomotive.name = this.name;
+		locomotive.vehicleType = this.vehicleType;
 		locomotive.displayName = this.displayName;
 		locomotive.linkTrId = this.linkTrId;
 		locomotive.script = this.script;
@@ -91,7 +91,7 @@ class TrainLocomotive extends Vehicle implements ITrainLocomotive
     		writer.write("{");
     		writer.newLine();
     		
-    		writer.write("  Name = \"" + name + "\";");
+    		writer.write("  Name = \"" + vehicleType + "\";");
     		writer.newLine();
     		writer.write("  Index = " + index + ";");
     		writer.newLine();

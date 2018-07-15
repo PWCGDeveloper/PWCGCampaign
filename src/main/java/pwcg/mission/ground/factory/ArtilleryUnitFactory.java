@@ -2,9 +2,12 @@ package pwcg.mission.ground.factory;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.MissionBeginUnit;
+import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.artillery.GroundArtilleryUnit;
 
@@ -27,8 +30,13 @@ public class ArtilleryUnitFactory
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(location);
         
-        GroundArtilleryUnit artilleryUnit = new GroundArtilleryUnit(campaign);
-        artilleryUnit.initialize(missionBeginUnit, location, location, country);
+        String nationality = country.getNationality();
+        String name = nationality + " Artillery";
+
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                missionBeginUnit, country, name, TacticalTarget.TARGET_DEFENSE, location, location);
+
+        GroundArtilleryUnit artilleryUnit = new GroundArtilleryUnit(campaign, groundUnitInformation);
         artilleryUnit.createUnitMission();
 
         return artilleryUnit;

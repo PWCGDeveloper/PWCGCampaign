@@ -85,7 +85,7 @@ public class Ship extends Vehicle
 			}
 		}
 		
-		name = shipId;
+		vehicleType = shipId;
 		script = "LuaScripts\\WorldObjects\\Ships\\" + shipId + ".txt";
 		model = "graphics\\ships\\" + shipDir + shipId + ".mgm";
 	}
@@ -112,7 +112,7 @@ public class Ship extends Vehicle
 		
 		ship.index = IndexGenerator.getInstance().getNextIndex();
 		
-		ship.name = this.name;
+		ship.vehicleType = this.vehicleType;
 		ship.displayName = this.displayName;
 		ship.linkTrId = this.linkTrId;
 		ship.script = this.script;

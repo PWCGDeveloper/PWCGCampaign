@@ -2,6 +2,7 @@ package pwcg.campaign.ww1.ground.vehicle;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -65,17 +66,17 @@ public class TrainCar extends Vehicle
 		
 		displayName = car.getName();
 		
-		name = car.getName();
+		vehicleType = car.getName();
 		script = "LuaScripts\\WorldObjects\\Trains\\" + car.getId() + ".txt";
 		model = "graphics\\trains\\" + car.getCategory() + "\\" + car.getId() + ".mgm";
 	}
 
-	public TrainCar copy () 
+	public TrainCar copy () throws PWCGException 
 	{		
 		TrainCar train = new TrainCar(country);
 		train.index = IndexGenerator.getInstance().getNextIndex();
 		
-		train.name = this.name;
+		train.vehicleType = this.vehicleType;
 		train.displayName = this.displayName;
 		train.linkTrId = this.linkTrId;
 		train.script = this.script;

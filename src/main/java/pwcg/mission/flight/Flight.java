@@ -6,6 +6,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
@@ -87,7 +88,8 @@ public abstract class Flight extends Unit
     protected boolean escortedByPlayerFlight = false;
     protected boolean nightFlight = false;
     protected boolean friendly = false;
-
+    
+    private MissionBeginUnit missionBeginUnit;
 
     protected VirtualEscortFlight virtualEscortFlight = null;
 
@@ -122,15 +124,13 @@ public abstract class Flight extends Unit
         {
             isVirtual = false;
         }
-        
-        super.initialize(missionBeginUnit, squadron.determineCurrentPosition(campaign.getDate()), squadron.determineDisplayName(campaign.getDate()),
-                        squadron.determineSquadronCountry(campaign.getDate()));
 
         this.mission = mission;
         this.campaign = campaign;
         this.targetCoords = targetCoords;
         this.flightType = flightType;
         this.squadron = squadron;
+        this.missionBeginUnit = missionBeginUnit;
 
         if (squadron.determineSquadronCountry(campaign.getDate()).isSameSide(campaign.determineCountry()))
         {
@@ -167,6 +167,21 @@ public abstract class Flight extends Unit
         }
     }
 
+    public ICountry getCountry() throws PWCGException
+    {
+        return squadron.determineSquadronCountry(campaign.getDate());
+    }
+
+    public Coordinate getPosition() throws PWCGException
+    {
+        return squadron.determineCurrentPosition(campaign.getDate());
+    }
+
+    public String getName() throws PWCGException
+    {
+        return squadron.determineDisplayName(campaign.getDate());
+    }
+    
     private void calcPlanesInFlight() throws PWCGException
     {
         numPlanesInFlight = calcNumPlanes();
@@ -178,9 +193,6 @@ public abstract class Flight extends Unit
 
     public void createUnitMission() throws PWCGException 
     {
-        super.setName(squadron.determineDisplayName(campaign.getDate()));
-        super.setPosition(departureAirfield.getPosition().copy());
-
         createPlanes();
         createWaypoints();
         setPlayerInitialPosition();
@@ -460,25 +472,19 @@ public abstract class Flight extends Unit
         else
         {
             activationEntity = new McuActivate();
-            activationEntity.setName(name + ": Activate");
-            activationEntity.setDesc("Activate entity for " + name);
+            activationEntity.setName(getName() + ": Activate");
+            activationEntity.setDesc("Activate entity for " + getName());
             activationEntity.setPosition(departureAirfield.getPosition().copy());
 
             activationTimer = new McuTimer();
-            activationTimer.setName(name + ": Activation Timer");
-            activationTimer.setDesc("Activation Timer for " + name);
+            activationTimer.setName(getName() + ": Activation Timer");
+            activationTimer.setDesc("Activation Timer for " + getName());
             activationTimer.setPosition(departureAirfield.getPosition().copy());
             activationTimer.setTarget(activationEntity.getIndex());
         }
     }
 
-    /**
-     * Get the target waypoint for this flight
-     * 
-     * @return
-     * @throws PWCGMissionGenerationException 
-     */
-    public Coordinate getCoordinatesToIntersectWithPlayer() throws PWCGMissionGenerationException 
+    public Coordinate getCoordinatesToIntersectWithPlayer() throws PWCGException 
     {
         List<McuWaypoint> potentialWaypoints = waypointPackage.getWaypointsForLeadPlane();
 
@@ -523,7 +529,6 @@ public abstract class Flight extends Unit
         }
         else
         {
-            // Run a WP through the Intercept
             McuWaypoint selectedWaypoint = selectedWaypoints.get(RandomNumberGenerator.getRandom(selectedWaypoints.size()));
             targetCoordinates = selectedWaypoint.getPosition().copy();
         }
@@ -774,9 +779,6 @@ public abstract class Flight extends Unit
         missionBeginUnit.write(writer);
     }
 
-    /**
-     * @return
-     */
     public int getTotalDistance()
     {
         int totalDistance = 0;
@@ -804,12 +806,6 @@ public abstract class Flight extends Unit
         return totalDistance;
     }
 
-    
-    /**
-     * For basic flights, mission points are associated with waypoints.
-     * 
-     * @return
-     */
     public List<BaseFlightMcu> getAllMissionPoints()
     {
         List<BaseFlightMcu> allMissionPoints = new ArrayList<BaseFlightMcu>();
@@ -1545,5 +1541,10 @@ public abstract class Flight extends Unit
     public TargetDefinition getTargetDefinition()
     {
         return targetDefinition;
+    }
+
+    public MissionBeginUnit getMissionBeginUnit()
+    {
+        return missionBeginUnit;
     }
 }

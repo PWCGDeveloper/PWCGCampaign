@@ -1,6 +1,7 @@
 package pwcg.campaign.ww1.ground.staticobject;
 
 import pwcg.campaign.api.ICountry;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class StaticAmmo extends StaticObject
@@ -35,12 +36,12 @@ public class StaticAmmo extends StaticObject
 		
         displayName = "Ammo";
 				
-		name = staticAmmoId;
+        vehicleType = staticAmmoId;
 		script = "LuaScripts\\WorldObjects\\" + staticAmmoId + ".txt";
 		model = "graphics\\battlefield\\" + staticAmmoId + ".mgm";
 	}
 
-	public StaticAmmo copy () 
+	public StaticAmmo copy () throws PWCGException 
 	{
 		StaticAmmo clonedObject = new StaticAmmo(country);
 		

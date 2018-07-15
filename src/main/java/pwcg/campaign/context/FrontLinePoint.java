@@ -95,7 +95,7 @@ public class FrontLinePoint extends PWCGLocation
 
     public void setLocation(PWCGLocation location)
     {
-        this.setFromLocation(location);
+        setFromLocation(location);
         setCountryFromName(getName());
     }
 

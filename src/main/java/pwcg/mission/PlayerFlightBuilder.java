@@ -104,6 +104,7 @@ public class PlayerFlightBuilder
             }
             if (unit instanceof GroundPillBoxFlareUnit)
             {
+                
                 GroundPillBoxFlareUnit flareUnit = (GroundPillBoxFlareUnit) unit;
                 FlareSequence flareSequence = flareUnit.getFlares();
                 MissionBeginUnitCheckZone mbucz = flareSequence.getMissionBeginUnit();

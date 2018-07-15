@@ -3,6 +3,7 @@ package pwcg.campaign.ww1.ground.vehicle;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -65,18 +66,18 @@ public class Truck extends Vehicle
 			displayName = "British Truck";
 		}
 		
-		name = truckId;
+		vehicleType = truckId;
 		script = "LuaScripts\\WorldObjects\\" + truckId + ".txt";
 		model = "graphics\\vehicles\\" + truckDir + "\\" + truckId + ".mgm";
 	}
 
-	public Truck copy () 
+	public Truck copy () throws PWCGException 
 	{
 		Truck truck = new Truck(country);
 		
 		truck.index = IndexGenerator.getInstance().getNextIndex();
 		
-		truck.name = this.name;
+		truck.vehicleType = this.vehicleType;
 		truck.displayName = this.displayName;
 		truck.linkTrId = this.linkTrId;
 		truck.script = this.script;

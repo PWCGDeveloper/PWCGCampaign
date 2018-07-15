@@ -4,9 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.VehicleFactory;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
@@ -14,8 +12,8 @@ import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
-import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.ground.unittypes.GroundRepeatSpawningUnit;
 import pwcg.mission.ground.vehicle.IVehicleFactory;
 import pwcg.mission.mcu.McuSpawn;
@@ -33,22 +31,12 @@ public class GroundAAABattery extends GroundRepeatSpawningUnit
     
     protected boolean hasBeenWritten = false;
 
-    public GroundAAABattery(Campaign campaign) throws PWCGException
+    public GroundAAABattery(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation, boolean isMg) throws PWCGException
     {
-        super (TacticalTarget.TARGET_ARTILLERY);
+        super(pwcgGroundUnitInformation);
         this.campaign = campaign;
-    }   
-
-
-    public void initialize(MissionBeginUnitCheckZone missionBeginUnit, Coordinate position, ICountry country, boolean isMg) 
-                    throws PWCGException 
-    {
-        this.position = position;
-        this.country = country;
         this.isMg = isMg;
-        
-        super.initialize(missionBeginUnit, "AAA Battery", position.copy(), position.copy(), country);
-    }
+    }   
 
     public void createUnits() throws PWCGException 
     {
@@ -56,19 +44,20 @@ public class GroundAAABattery extends GroundRepeatSpawningUnit
         
         if (isMg)
         {
-            spawningVehicle = vehicleFactory.createAAAMachineGun(country);
+            spawningVehicle = vehicleFactory.createAAAMachineGun(pwcgGroundUnitInformation.getCountry());
             checkZoneMeters = MG_CHECK_ZONE;
             checkAttackAreaMeters = MG_ATTACK_AREA;
         }
         else
         {
-            spawningVehicle = vehicleFactory.createAAAArtillery(country);
+            spawningVehicle = vehicleFactory.createAAAArtillery(pwcgGroundUnitInformation.getCountry());
             checkZoneMeters = ARTY_CHECK_ZONE;
             checkAttackAreaMeters = ARTY_ATTACK_AREA;
         }
 
-        spawningVehicle.setPosition(position.copy());
-        spawningVehicle.setCountry(country);
+        spawningVehicle.setPosition(pwcgGroundUnitInformation.getPosition().copy());
+        spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
+        spawningVehicle.setCountry(pwcgGroundUnitInformation.getCountry());
         
         spawningVehicle.populateEntity();       
         
@@ -83,7 +72,7 @@ public class GroundAAABattery extends GroundRepeatSpawningUnit
         {
             McuSpawn spawn = new McuSpawn();
             
-            Coordinate spawnPosition = position.copy();
+            Coordinate spawnPosition = pwcgGroundUnitInformation.getPosition().copy();
             if (numAAA > 1)
             {
                 if (i == 0)
@@ -150,7 +139,7 @@ public class GroundAAABattery extends GroundRepeatSpawningUnit
             writer.write("  Desc = \"AAA Battery\";");
             writer.newLine();
 
-            missionBeginUnit.write(writer);
+            pwcgGroundUnitInformation.getMissionBeginUnit().write(writer);
 
             spawnTimer.write(writer);
             spawningVehicle.write(writer);

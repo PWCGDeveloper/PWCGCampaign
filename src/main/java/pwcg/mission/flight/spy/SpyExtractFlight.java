@@ -61,14 +61,14 @@ public class SpyExtractFlight extends Flight
 		return waypointList;
 	}
 
-	public void createSpyDrop(McuWaypoint targetWP) 
+	public void createSpyDrop(McuWaypoint targetWP) throws PWCGException 
 	{
 		Coordinate landCoords = targetCoords.copy();
 		landCoords.setYPos(0.0);
 		
 		spyDropTimer = new McuTimer();
-		spyDropTimer.setName(name + ": Activation Timer");		
-		spyDropTimer.setDesc("Activation Timer for " + name);
+		spyDropTimer.setName(getName() + ": Activation Timer");		
+		spyDropTimer.setDesc("Activation Timer for " + getName());
 		spyDropTimer.setPosition(landCoords.copy());	
 		spyDropTimer.setTimer(120);
 	}

@@ -3,12 +3,9 @@ package pwcg.mission.ground.unittypes;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointPriority;
@@ -25,14 +22,9 @@ public abstract class GroundMovingDirectFireUnit extends GroundDirectFireUnit im
     protected McuTimer deleteTimer = new McuTimer();
     protected McuDelete deleteEntity = new McuDelete();
 
-    public GroundMovingDirectFireUnit(TacticalTarget targetType) 
+    public GroundMovingDirectFireUnit(GroundUnitInformation pwcgGroundUnitInformation) 
     {
-        super(targetType);
-    }
-
-    public void initialize (MissionBeginUnit missionBeginUnit, String name, Coordinate startCoords, Coordinate destinationCoords, ICountry country) 
-    {
-        super.initialize(missionBeginUnit, name, startCoords,  destinationCoords, country);
+        super(pwcgGroundUnitInformation);
     }
 
     @Override
@@ -48,11 +40,11 @@ public abstract class GroundMovingDirectFireUnit extends GroundDirectFireUnit im
 		deleteTimer.setName("Delete Timer");
 		deleteTimer.setDesc("Delete Timer");
 		deleteTimer.setTimer(10);
-		deleteTimer.setPosition(position.copy());
+		deleteTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 
 		deleteEntity.setName("Delete");
 		deleteEntity.setDesc("Delete");
-		deleteEntity.setPosition(position.copy());
+		deleteEntity.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 	}
 
 	protected void createTargetWaypoint() throws PWCGException  
@@ -60,9 +52,9 @@ public abstract class GroundMovingDirectFireUnit extends GroundDirectFireUnit im
         McuWaypoint assaultWP = WaypointFactory.createMoveToWaypointType();
 
 		assaultWP.setTriggerArea(0);
-		assaultWP.setDesc(name + " WP");
+		assaultWP.setDesc(pwcgGroundUnitInformation.getName() + " WP");
 		assaultWP.setSpeed(unitSpeed);
-		assaultWP.setPosition(destinationCoords.copy());
+		assaultWP.setPosition(pwcgGroundUnitInformation.getDestination().copy());
 		assaultWP.setTargetWaypoint(true);
 		
         waypoints.add(assaultWP);
@@ -74,14 +66,14 @@ public abstract class GroundMovingDirectFireUnit extends GroundDirectFireUnit im
             McuWaypoint retreatWP = WaypointFactory.createMoveToWaypointType();
 
             retreatWP.setTriggerArea(0);
-            retreatWP.setDesc(name + " WP");
-            retreatWP.setName(name + " WP");
+            retreatWP.setDesc(pwcgGroundUnitInformation.getName() + " WP");
+            retreatWP.setName(pwcgGroundUnitInformation.getName() + " WP");
 
             retreatWP.setSpeed(unitSpeed);
             retreatWP.setPriority(WaypointPriority.PRIORITY_HIGH);          
             retreatWP.setWpAction(WaypointAction.WP_ACTION_MOVE_TO);
 
-            retreatWP.setPosition(this.getPosition().copy());
+            retreatWP.setPosition(pwcgGroundUnitInformation.getPosition().copy());
             
             retreatWP.setTargetWaypoint(true);
             
@@ -89,9 +81,9 @@ public abstract class GroundMovingDirectFireUnit extends GroundDirectFireUnit im
         }
         
         waypointTimer = new McuTimer();
-        waypointTimer.setName("WP Timer for " + name);
-        waypointTimer.setDesc("WP for " + name);
-        waypointTimer.setPosition(position.copy());
+        waypointTimer.setName("WP Timer for " + pwcgGroundUnitInformation.getName());
+        waypointTimer.setDesc("WP for " + pwcgGroundUnitInformation.getName());
+        waypointTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
         
         // TODO IMPROVEMENT Delete after the last WP
 	}
@@ -100,7 +92,7 @@ public abstract class GroundMovingDirectFireUnit extends GroundDirectFireUnit im
     protected void createGroundTargetAssociations() 
     {
         // MBU -> Spawn Timer
-        this.missionBeginUnit.linkToMissionBegin(this.spawnTimer.getIndex());
+        pwcgGroundUnitInformation.getMissionBeginUnit().linkToMissionBegin(this.spawnTimer.getIndex());
         
         // Spawn Timer -> Spawns
         for (McuSpawn spawn : spawners)

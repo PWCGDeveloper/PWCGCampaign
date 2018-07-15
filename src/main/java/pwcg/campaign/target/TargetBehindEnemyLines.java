@@ -11,7 +11,7 @@ public class TargetBehindEnemyLines
     {
         FrontLinesForMap frontLinesForMap =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(targetDefinition.getDate());
         Coordinate behindLinesPosition = frontLinesForMap.findPositionBehindLinesForSide(
-                targetDefinition.getTargetGeneralLocation(), 
+                targetDefinition.getTargetGeneralPosition(), 
                 targetDefinition.getPreferredRadius(), 
                 minDistanceBehindLines, 
                 maxDistanceBehindLines, 

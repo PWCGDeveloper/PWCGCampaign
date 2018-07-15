@@ -2,11 +2,8 @@
 
 package pwcg.mission.ground.unittypes;
 
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuAttackArea;
@@ -44,15 +41,9 @@ public abstract class GroundRepeatSpawningUnit extends GroundUnitSpawning
     protected int checkZoneMeters = 15000;
     protected int checkAttackAreaMeters = 15000;
 
-    public GroundRepeatSpawningUnit (TacticalTarget targetType)
+    public GroundRepeatSpawningUnit (GroundUnitInformation pwcgGroundUnitInformation)
     {
-        super(targetType);
-        missionBeginUnit = new MissionBeginUnit();
-    }
-
-    public void initialize (MissionBeginUnit missionBeginUnit, String name, Coordinate startCoords, Coordinate destinationCoords, ICountry country) 
-    {
-        super.initialize(missionBeginUnit, name, startCoords,  destinationCoords, country);
+        super(pwcgGroundUnitInformation);
     }
 
     public void createUnits() throws PWCGException 
@@ -66,28 +57,28 @@ public abstract class GroundRepeatSpawningUnit extends GroundUnitSpawning
 
     private void makeCheckZone() 
     {
-        Coalition enemyCoalition = Coalition.getEnemyCoalition(country);
+        Coalition enemyCoalition = Coalition.getEnemyCoalition(pwcgGroundUnitInformation.getCountry());
         
         checkZone = new McuCheckZone (enemyCoalition);
         checkZone.setZone(checkZoneMeters);
         checkZone.setName("Check Zone");
         checkZone.setDesc("Check Zone");
-        checkZone.setPosition(position.copy());
+        checkZone.setPosition(pwcgGroundUnitInformation.getPosition().copy());
     }
 
     private void makeActivation() 
     {
         addVehicleTimer.setName("Add Timer");
         addVehicleTimer.setDesc("Add Timer");
-        addVehicleTimer.setPosition(position.copy());
+        addVehicleTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 
         spawnTimer.setName("Spawn Timer");
         spawnTimer.setDesc("Spawn Timer");
-        spawnTimer.setPosition(position.copy());
+        spawnTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 
         attackAreaTimer.setName("Attack Area Timer");
         attackAreaTimer.setDesc("Attack Area Timer");
-        attackAreaTimer.setPosition(position.copy());
+        attackAreaTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
         attackArea.setTime(600);
 
         createAttackArea();        
@@ -101,7 +92,7 @@ public abstract class GroundRepeatSpawningUnit extends GroundUnitSpawning
         attackArea.setName("Attack Area");
         attackArea.setDesc("Attack Area");
         attackArea.setAttackArea(checkAttackAreaMeters);
-        attackArea.setPosition(position.copy());
+        attackArea.setPosition(pwcgGroundUnitInformation.getPosition().copy());
     }
 
     private void makeDeactivation() 
@@ -109,48 +100,48 @@ public abstract class GroundRepeatSpawningUnit extends GroundUnitSpawning
         hideTimer.setName("Hide Timer");
         hideTimer.setDesc("Hide Timer");
         hideTimer.setTimer(600);
-        hideTimer.setPosition(position.copy());
+        hideTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 
         deleteTimer.setName("Delete Timer");
         deleteTimer.setDesc("Delete Timer");
-        deleteTimer.setPosition(position.copy());
+        deleteTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 
         deactivateAAAEntity.setName("Deactivate");
         deactivateAAAEntity.setDesc("Deactivate");
-        deactivateAAAEntity.setPosition(position.copy());              
+        deactivateAAAEntity.setPosition(pwcgGroundUnitInformation.getPosition().copy());              
 
         spawnTimer.setName("Spawn Timer");
         spawnTimer.setDesc("Spawn Timer");
-        spawnTimer.setPosition(position.copy());
+        spawnTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 
         reactivateTimer.setName("Reactivate Timer");
         reactivateTimer.setDesc("Reactivate Timer");
-        reactivateTimer.setPosition(position.copy());
+        reactivateTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 
         deleteEntity.setName("Delete");
         deleteEntity.setDesc("Delete");
-        deleteEntity.setPosition(position.copy());
+        deleteEntity.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 
         reactivateEntity.setName("Reactivate");
         reactivateEntity.setDesc("Reactivate");
-        reactivateEntity.setPosition(position.copy());
+        reactivateEntity.setPosition(pwcgGroundUnitInformation.getPosition().copy());
     }
 
     protected void makeProcessTimers() 
     {
         checkZoneTimer.setName("AAA Check Zone Timer");
         checkZoneTimer.setDesc("AAA Check Zone Timer");
-        checkZoneTimer.setPosition(position.copy());
+        checkZoneTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
             
         processTimer.setName("AAA Process Timer");
         processTimer.setDesc("AAA Process Timer");
-        processTimer.setPosition(position.copy());
+        processTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
     }
 
     @Override
     protected void createGroundTargetAssociations() 
     {
-        missionBeginUnit.linkToMissionBegin(checkZoneTimer.getIndex());
+        pwcgGroundUnitInformation.getMissionBeginUnit().linkToMissionBegin(checkZoneTimer.getIndex());
         checkZoneTimer.setTarget(checkZone.getIndex());
         checkZone.setTarget(checkZone.getIndex());
         checkZone.setTarget(processTimer.getIndex());

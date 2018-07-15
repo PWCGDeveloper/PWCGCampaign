@@ -18,7 +18,6 @@ public class GroundUnitInitialization
     private ICountry country;
     private int minimumNumberUnits = 1;
     private int maximumNumberUnits = 1;
-    private boolean isFiring = false;
 
     public boolean isCombatUnit()
     {
@@ -115,16 +114,6 @@ public class GroundUnitInitialization
     public void setMaximumNumberUnits(int maximumNumberUnits)
     {
         this.maximumNumberUnits = maximumNumberUnits;
-    }
-
-    public boolean isFiring()
-    {
-        return isFiring;
-    }
-
-    public void setFiring(boolean isFiring)
-    {
-        this.isFiring = isFiring;
     }
 
     public TacticalTarget getTargetType()

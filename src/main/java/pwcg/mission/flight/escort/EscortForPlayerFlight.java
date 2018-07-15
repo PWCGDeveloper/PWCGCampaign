@@ -52,9 +52,6 @@ public class EscortForPlayerFlight extends Flight
     @Override
     public void createUnitMission() throws PWCGException  
     {
-        super.setName(squadron.determineDisplayName(campaign.getDate()));
-        super.setPosition(departureAirfield.getPosition().copy());
-
         createPlanes();
         createPlaneInitialPosition();
         List<McuWaypoint> waypointList = createWaypoints(mission, departureAirfield.getPosition());

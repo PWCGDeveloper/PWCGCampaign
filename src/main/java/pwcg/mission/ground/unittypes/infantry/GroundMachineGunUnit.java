@@ -4,8 +4,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.campaign.ww1.ground.vehicle.MachineGun;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -13,10 +11,9 @@ import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.ground.unittypes.GroundDirectFireUnit;
 import pwcg.mission.mcu.McuSpawn;
 
@@ -24,25 +21,18 @@ public class GroundMachineGunUnit extends GroundDirectFireUnit
 {
     private Campaign campaign;
 
-    public GroundMachineGunUnit(Campaign campaign) throws PWCGException
+    public GroundMachineGunUnit(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation) throws PWCGException
     {
-        super (TacticalTarget.TARGET_INFANTRY);
-        
+        super (pwcgGroundUnitInformation);
         this.campaign = campaign;
     }   
 
-    public void initialize (MissionBeginUnitCheckZone missionBeginUnit, Coordinate position, Coordinate destinationCoords, ICountry country) 
+    public void createUnits() throws PWCGException  
     {
-        String nationality = country.getNationality();
-        String name = nationality + " Machine Gun";
-        super.initialize(missionBeginUnit, name,  position, destinationCoords, country);
-    }
-
-    public void createUnits()  
-    {
-        spawningVehicle = new MachineGun(country);
-        spawningVehicle.setOrientation(new Orientation());
-        spawningVehicle.setPosition(position.copy());         
+        spawningVehicle = new MachineGun(pwcgGroundUnitInformation.getCountry());
+        spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation());
+        spawningVehicle.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
+        spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
         spawningVehicle.populateEntity();
         spawningVehicle.getEntity().setEnabled(1);
     }
@@ -50,21 +40,16 @@ public class GroundMachineGunUnit extends GroundDirectFireUnit
 	protected void createSpawners() throws PWCGException  
 	{
         int numMachineGun = calcNumUnits();
-
-		// Face towards enemy
-		double machineGunFacingAngle = MathUtils.calcAngle(position, destinationCoords);
-		Orientation machineGunOrient = new Orientation();
-		machineGunOrient.setyOri(machineGunFacingAngle);
 		
         // MGs are behind the lines
-        double initialPlacementAngle = MathUtils.adjustAngle (machineGunFacingAngle, 180.0);      
-        Coordinate machineGunCoords = MathUtils.calcNextCoord(position, initialPlacementAngle, 25.0);
+        double initialPlacementAngle = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 180.0);      
+        Coordinate machineGunCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), initialPlacementAngle, 25.0);
 
-        double startLocationOrientation = MathUtils.adjustAngle (machineGunFacingAngle, 270);             
+        double startLocationOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 270);             
         double machingGunSpacing = 100.0;
         machineGunCoords = MathUtils.calcNextCoord(machineGunCoords, startLocationOrientation, ((numMachineGun * machingGunSpacing) / 2));       
         
-        double placementOrientation = MathUtils.adjustAngle (machineGunFacingAngle, 90.0);        
+        double placementOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 90.0);        
 
         for (int i = 0; i < numMachineGun; ++i)
         {   
@@ -116,7 +101,7 @@ public class GroundMachineGunUnit extends GroundDirectFireUnit
             writer.write("  Desc = \"Machine Gun\";");
             writer.newLine();
 
-            missionBeginUnit.write(writer);
+            pwcgGroundUnitInformation.getMissionBeginUnit().write(writer);
 
             // This could happen if the user did not install 3rd party infantry
             spawnTimer.write(writer);

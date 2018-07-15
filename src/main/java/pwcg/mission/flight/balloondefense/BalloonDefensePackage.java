@@ -62,7 +62,7 @@ public class BalloonDefensePackage extends FlightPackage
 	        missionBeginUnit.initialize(startCoords.copy());
 	        
             PlayerBalloonDefenseFlight playerCoverUnit = new PlayerBalloonDefenseFlight();          
-			playerCoverUnit.initialize(mission, campaign, balloonUnit.getPosition(), squadron, missionBeginUnit, isPlayerFlight, balloonUnit);
+			playerCoverUnit.initialize(mission, campaign, balloonUnit.getPwcgGroundUnitInformation().getPosition(), squadron, missionBeginUnit, isPlayerFlight, balloonUnit);
 			balloonDefenseFlight = playerCoverUnit;
 		}
 		else
@@ -71,7 +71,7 @@ public class BalloonDefensePackage extends FlightPackage
             missionBeginUnit.initialize(startCoords.copy());
             
 			AiBalloonDefenseFlight nonPlayerCoverUnit = new AiBalloonDefenseFlight();
-			nonPlayerCoverUnit.initialize(mission, campaign, balloonUnit.getPosition(), squadron, missionBeginUnit, isPlayerFlight, balloonUnit);
+			nonPlayerCoverUnit.initialize(mission, campaign, balloonUnit.getPwcgGroundUnitInformation().getPosition(), squadron, missionBeginUnit, isPlayerFlight, balloonUnit);
 			balloonDefenseFlight = nonPlayerCoverUnit;
 		}
 
@@ -86,10 +86,10 @@ public class BalloonDefensePackage extends FlightPackage
             if (enemyScoutSquadron != null)
             {
                 MissionBeginUnit missionBeginUnitBust = new MissionBeginUnit();
-                missionBeginUnitBust.initialize(balloonUnit.getPosition().copy());
+                missionBeginUnitBust.initialize(balloonUnit.getPwcgGroundUnitInformation().getPosition().copy());
     
                 BalloonBustFlight enemyBustFlight = new BalloonBustFlight();
-                enemyBustFlight.initialize(mission, campaign, balloonUnit.getPosition(), enemyScoutSquadron, missionBeginUnitBust, false);
+                enemyBustFlight.initialize(mission, campaign, balloonUnit.getPwcgGroundUnitInformation().getPosition(), enemyScoutSquadron, missionBeginUnitBust, false);
                 enemyBustFlight.createUnitMission();
        
                 balloonDefenseFlight.addLinkedUnit(enemyBustFlight);

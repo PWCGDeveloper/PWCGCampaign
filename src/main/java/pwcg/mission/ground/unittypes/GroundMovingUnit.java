@@ -3,11 +3,8 @@ package pwcg.mission.ground.unittypes;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuTimer;
@@ -19,14 +16,9 @@ public abstract class GroundMovingUnit extends GroundUnitSpawning
     protected List<McuWaypoint> waypoints = new ArrayList<McuWaypoint>();
     protected int unitSpeed = 4;
 
-    public GroundMovingUnit(TacticalTarget targetType) 
+    public GroundMovingUnit(GroundUnitInformation pwcgGroundUnitInformation) 
     {
-        super(targetType);
-    }
-
-    public void initialize (MissionBeginUnit missionBeginUnit, String name, Coordinate startCoords, Coordinate destinationCoords, ICountry country) 
-    {
-        super.initialize(missionBeginUnit, name, startCoords,  destinationCoords, country);
+        super(pwcgGroundUnitInformation);
     }
 
     @Override
@@ -40,17 +32,17 @@ public abstract class GroundMovingUnit extends GroundUnitSpawning
     {
         McuWaypoint waypoint = WaypointFactory.createMoveToWaypointType();
         waypoint.setTriggerArea(0);
-        waypoint.setDesc(name + " WP");
+        waypoint.setDesc(pwcgGroundUnitInformation.getName() + " WP");
         waypoint.setSpeed(unitSpeed);
-        waypoint.setPosition(destinationCoords.copy());
+        waypoint.setPosition(pwcgGroundUnitInformation.getDestination().copy());
         waypoint.setTargetWaypoint(true);
 
         waypoints.add(waypoint);
 
         waypointTimer = new McuTimer();
-        waypointTimer.setName("WP Timer for " + name);
-        waypointTimer.setDesc("WP for " + name);
-        waypointTimer.setPosition(position.copy());
+        waypointTimer.setName("WP Timer for " + pwcgGroundUnitInformation.getName());
+        waypointTimer.setDesc("WP for " + pwcgGroundUnitInformation.getName());
+        waypointTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 
         waypointTimer.setTarget(waypoints.get(0).getIndex());
     }
@@ -59,7 +51,7 @@ public abstract class GroundMovingUnit extends GroundUnitSpawning
     protected void createGroundTargetAssociations() 
     {
         // MBU -> Spawn Timer
-        this.missionBeginUnit.linkToMissionBegin(this.spawnTimer.getIndex());
+        pwcgGroundUnitInformation.getMissionBeginUnit().linkToMissionBegin(this.spawnTimer.getIndex());
 
         // Spawn Timer -> Spawns
         for (McuSpawn spawn : spawners)

@@ -82,7 +82,7 @@ public class PlayerBalloonDefenseFlight extends Flight
         return waypointList;
 	}
 
-	protected void createAttackArea() 
+	protected void createAttackArea() throws PWCGException 
 	{
 		Coordinate areaCoords = balloonUnit.getBalloon().getPosition().copy();
 		areaCoords.setYPos(areaCoords.getYPos() + 500);
@@ -91,26 +91,26 @@ public class PlayerBalloonDefenseFlight extends Flight
 		attackArea.setAttackGround(0);
 		attackArea.setAttackGTargets(0);
 		attackArea.setAttackAir(1);
-		attackArea.setName("Balloon Defense Attack Area for " + name);
-		attackArea.setDesc("Balloon Defense Attack Area for " + name);
+		attackArea.setName("Balloon Defense Attack Area for " + squadron.determineDisplayName(campaign.getDate()));
+		attackArea.setDesc("Balloon Defense Attack Area for " + squadron.determineDisplayName(campaign.getDate()));
 		attackArea.setAttackArea(10000);		
 		attackArea.setOrientation(new Orientation());		
 		attackArea.setPosition(areaCoords);	
 		attackArea.setObject(planes.get(0).getLinkTrId());
 		
 		attackAreaTimer  = new McuTimer();
-		attackAreaTimer.setName(name + ": Balloon Defense Attack Area Timer");		
-		attackAreaTimer.setDesc("Balloon Defense Attack Area Timer for " + name);		
+		attackAreaTimer.setName(squadron.determineDisplayName(campaign.getDate()) + ": Balloon Defense Attack Area Timer");		
+		attackAreaTimer.setDesc("Balloon Defense Attack Area Timer for " + squadron.determineDisplayName(campaign.getDate()));		
 		attackAreaTimer.setPosition(areaCoords);
 		attackAreaTimer.setTarget(attackArea.getIndex());
 	}	
 
-	protected void createCover() 
+	protected void createCover() throws PWCGException 
 	{
 		// Cover the escorted flight
 		cover  = new McuCover();
-		cover.setName("Balloon Defense Cover for " + name);
-		cover.setDesc("Balloon Defense Cover for " + name);
+		cover.setName("Balloon Defense Cover for " + squadron.determineDisplayName(campaign.getDate()));
+		cover.setDesc("Balloon Defense Cover for " + squadron.determineDisplayName(campaign.getDate()));
 		cover.setPosition(balloonUnit.getBalloon().getPosition().copy());
 		cover.setObject(planes.get(0).getEntity().getIndex());
 		cover.setTarget(balloonUnit.getBalloon().getEntity().getIndex());
@@ -119,8 +119,8 @@ public class PlayerBalloonDefenseFlight extends Flight
 		// Activate the cover command
 		// Activate the escorted squadron
 		coverTimer  = new McuTimer();
-		coverTimer.setName("Balloon Defense Cover Timer for " + name);
-		coverTimer.setDesc("Balloon Defense Cover Timer for " + name);
+		coverTimer.setName("Balloon Defense Cover Timer for " + squadron.determineDisplayName(campaign.getDate()));
+		coverTimer.setDesc("Balloon Defense Cover Timer for " + squadron.determineDisplayName(campaign.getDate()));
 		coverTimer.setPosition(balloonUnit.getBalloon().getPosition().copy());
 		coverTimer.setTarget(cover.getIndex());
 	}	

@@ -37,7 +37,7 @@ public class Drifter extends Vehicle
         String drifterDir = drifters[selectedDrifter] [1];
         displayName = "River Ship";
         
-        name = drifterId;
+        vehicleType = drifterId;
         script = "LuaScripts\\WorldObjects\\Ships\\" + drifterId + ".txt";
         model = "graphics\\ships\\" + drifterDir + "\\" + drifterId + ".mgm";
     }
@@ -49,7 +49,7 @@ public class Drifter extends Vehicle
         
         barge.index = IndexGenerator.getInstance().getNextIndex();
         
-        barge.name = this.name;
+        barge.vehicleType = this.vehicleType;
         barge.displayName = this.displayName;
         barge.linkTrId = this.linkTrId;
         barge.script = this.script;

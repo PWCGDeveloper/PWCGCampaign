@@ -11,7 +11,7 @@ public class GroundUnitBuilderAI
 {
     public static GroundUnitCollection createAiTarget(Campaign campaign, TargetDefinition targetDefinition) throws PWCGException, PWCGMissionGenerationException
     {
-        AAAUnitFactory groundUnitFactory =  new AAAUnitFactory(campaign, targetDefinition.getTargetCountry(), targetDefinition.getTargetLocation());
+        AAAUnitFactory groundUnitFactory =  new AAAUnitFactory(campaign, targetDefinition.getTargetCountry(), targetDefinition.getTargetPosition());
         GroundUnit targetUnit = groundUnitFactory.createAAAMGBattery(1, 1);
         GroundUnitCollection groundUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION);
         groundUnitCollection.addGroundUnit(GroundUnitType.INFANTRY_UNIT, targetUnit);

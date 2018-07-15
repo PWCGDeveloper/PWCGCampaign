@@ -7,9 +7,12 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
+import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.MissionBeginUnitCheckZone;
+import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 import pwcg.mission.mcu.Coalition;
 
@@ -37,8 +40,13 @@ public class TrainUnitFactory
         MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
         missionBeginUnit.initialize(location, 50000, playerCoalition);
         
-        trainTarget = new GroundTrainUnit(campaign);
-        trainTarget.initialize (missionBeginUnit, location, destination, country);
+        String nationality = country.getNationality();
+        String name = nationality + " Train";
+
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                missionBeginUnit, country, name, TacticalTarget.TARGET_TRAIN, location, destination);
+        
+        trainTarget = new GroundTrainUnit(campaign, groundUnitInformation);
         trainTarget.createUnitMission();
         
         return trainTarget;

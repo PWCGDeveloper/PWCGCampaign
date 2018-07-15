@@ -3,6 +3,7 @@ package pwcg.campaign.ww1.ground.vehicle;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -61,18 +62,18 @@ public class AAAMachineGun extends AAA
 			displayName = "British MG";
 		}
 		
-		name = mgId;
+		vehicleType = mgId;
 		script = "LuaScripts\\WorldObjects\\" + mgId + ".txt";
 		model = "graphics\\artillery\\" + mgDir + "\\" + mgId + ".mgm";
 	}
 
-	public AAAMachineGun copy () 
+	public AAAMachineGun copy () throws PWCGException 
 	{
 		AAAMachineGun mg = new AAAMachineGun(country);
 		
 		mg.index = IndexGenerator.getInstance().getNextIndex();
 		
-		mg.name = this.name;
+		mg.vehicleType = this.vehicleType;
 		mg.displayName = this.displayName;
 		mg.linkTrId = this.linkTrId;
 		mg.script = this.script;

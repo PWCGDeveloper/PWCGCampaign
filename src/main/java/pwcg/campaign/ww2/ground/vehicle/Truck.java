@@ -132,7 +132,7 @@ class Truck extends Vehicle
         String truckId = vehicleChoices[selectedTruck] [1];
         
         this.displayName = displayName;
-        name = truckId;
+        vehicleType = truckId;
         script = "LuaScripts\\WorldObjects\\vehicles\\" + truckId + ".txt";
         model = "graphics\\vehicles\\" + truckDir + "\\" + truckId + ".mgm";
 	}
@@ -143,7 +143,7 @@ class Truck extends Vehicle
 		
 		truck.index = IndexGenerator.getInstance().getNextIndex();
 		
-		truck.name = this.name;
+		truck.vehicleType = this.vehicleType;
 		truck.displayName = this.displayName;
 		truck.linkTrId = this.linkTrId;
 		truck.script = this.script;

@@ -58,7 +58,7 @@ class ATArtillery extends Vehicle
             displayName = "German Artillery";
         }
 		
-		name = atArtilleryId;
+		vehicleType = atArtilleryId;
 		script = "LuaScripts\\WorldObjects\\vehicles\\" + atArtilleryId + ".txt";
 		model = "graphics\\artillery\\" + atArtilleryDir + "\\" + atArtilleryId + ".mgm";
 	}
@@ -70,7 +70,7 @@ class ATArtillery extends Vehicle
 		
 		gun.index = IndexGenerator.getInstance().getNextIndex();
 		
-		gun.name = this.name;
+		gun.vehicleType = this.vehicleType;
 		gun.displayName = this.displayName;
 		gun.linkTrId = this.linkTrId;
 		gun.script = this.script;

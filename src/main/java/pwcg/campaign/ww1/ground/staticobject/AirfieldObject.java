@@ -47,7 +47,7 @@ public class AirfieldObject extends StaticObject
 
 	private void finishAirfieldObject(String airfieldObjectId)
 	{
-		name = airfieldObjectId;
+		vehicleType = airfieldObjectId;
 		script = "LuaScripts\\WorldObjects\\" + airfieldObjectId + ".txt";
 		model = "graphics\\blocks\\" + airfieldObjectId + ".mgm";
 	}

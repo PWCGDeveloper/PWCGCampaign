@@ -1,11 +1,8 @@
 package pwcg.mission.ground.unittypes;
 
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.MissionBeginUnit;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.mcu.McuAttack;
 import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuTimer;
@@ -15,15 +12,9 @@ public abstract class GroundDirectFireUnit extends GroundUnitSpawning implements
     protected McuTimer attackTimer = new McuTimer();
     protected McuAttack attackEntity = new McuAttack();
 
-    public GroundDirectFireUnit(TacticalTarget targetType) 
+    public GroundDirectFireUnit(GroundUnitInformation pwcgGroundUnitInformation) 
     {
-        super (targetType);
-        setFiring(true);
-    }
-
-    public void initialize (MissionBeginUnit missionBeginUnit, String name, Coordinate startCoords, Coordinate destinationCoords, ICountry country) 
-    {
-        super.initialize(missionBeginUnit, name, startCoords,  destinationCoords, country);
+        super(pwcgGroundUnitInformation);
     }
 
     @Override
@@ -35,14 +26,14 @@ public abstract class GroundDirectFireUnit extends GroundUnitSpawning implements
 
     protected void createAttack() 
     {
-        attackTimer.setName(name + " Attack Timer");      
-        attackTimer.setDesc(name + " Attack Timer");       
-        attackTimer.setPosition(position);
+        attackTimer.setName(pwcgGroundUnitInformation.getName() + " Attack Timer");      
+        attackTimer.setDesc(pwcgGroundUnitInformation.getName() + " Attack Timer");       
+        attackTimer.setPosition(pwcgGroundUnitInformation.getPosition());
 
-        attackEntity.setName(name + " Attack");
-        attackEntity.setDesc(name + " Attack");
+        attackEntity.setName(pwcgGroundUnitInformation.getName() + " Attack");
+        attackEntity.setDesc(pwcgGroundUnitInformation.getName() + " Attack");
         attackEntity.setOrientation(new Orientation());       
-        attackEntity.setPosition(position); 
+        attackEntity.setPosition(pwcgGroundUnitInformation.getPosition()); 
     }   
 
     public void addTarget(int targetIndex)
@@ -54,7 +45,7 @@ public abstract class GroundDirectFireUnit extends GroundUnitSpawning implements
     protected void createGroundTargetAssociations() 
     {
         // MBU -> Spawn Timer
-        this.missionBeginUnit.linkToMissionBegin(this.spawnTimer.getIndex());
+        pwcgGroundUnitInformation.getMissionBeginUnit().linkToMissionBegin(this.spawnTimer.getIndex());
 
         // Spawn Timer -> Spawns
         for (McuSpawn spawn : spawners)

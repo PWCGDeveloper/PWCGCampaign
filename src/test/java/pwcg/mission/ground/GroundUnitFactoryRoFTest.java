@@ -102,7 +102,7 @@ public class GroundUnitFactoryRoFTest
         assert (groundUnit.getSpawners().size() >= 1);
         assert (groundUnit.getSpawners().size() <= 4);
         assert (groundUnit.isMg() == false);
-        assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
+        assert (groundUnit.getPwcgGroundUnitInformation().getCountry().getCountry() == Country.GERMANY);
     }
 
     @Test
@@ -112,7 +112,7 @@ public class GroundUnitFactoryRoFTest
         GroundAAABattery groundUnit = groundUnitFactory.createAAAMGBattery(4, 4);
         assert (groundUnit.getSpawners().size() == 4);
         assert (groundUnit.isMg() == true);
-        assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
+        assert (groundUnit.getPwcgGroundUnitInformation().getCountry().getCountry() == Country.GERMANY);
     }
 
     @Test
@@ -121,7 +121,7 @@ public class GroundUnitFactoryRoFTest
         GroundUnitFactory groundUnitFactory = new GroundUnitFactory(campaign, myTestPosition, country);
         GroundArtilleryUnit groundUnit = (GroundArtilleryUnit)groundUnitFactory.createArtilleryUnit(missionBeginUnit, country, new Coordinate (100000, 0, 100000), new Coordinate (102000, 0, 100000));
         assert (groundUnit.getSpawners().size() > 0);
-        assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
+        assert (groundUnit.getPwcgGroundUnitInformation().getCountry().getCountry() == Country.GERMANY);
     }
 
     @Test
@@ -130,7 +130,7 @@ public class GroundUnitFactoryRoFTest
         AssaultFactory groundUnitFactory = new AssaultFactory(campaign, BattleSize.BATTLE_SIZE_ASSAULT);
         GroundATArtillery groundUnit = (GroundATArtillery)groundUnitFactory.createDefenseUnit(missionBeginUnit, country, new Coordinate (100000, 0, 100000), new Coordinate (102000, 0, 100000));
         assert (groundUnit.getSpawners().size() > 0);
-        assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
+        assert (groundUnit.getPwcgGroundUnitInformation().getCountry().getCountry() == Country.GERMANY);
     }
 
     @Test
@@ -139,7 +139,7 @@ public class GroundUnitFactoryRoFTest
         AssaultFactory groundUnitFactory = new AssaultFactory(campaign, BattleSize.BATTLE_SIZE_ASSAULT);
         GroundAssaultTankUnit groundUnit = (GroundAssaultTankUnit)groundUnitFactory.createAssaultTankUnit(missionBeginUnit, country, new Coordinate (100000, 0, 100000), new Coordinate (102000, 0, 100000));
         assert (groundUnit.getSpawners().size() > 0);
-        assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
+        assert (groundUnit.getPwcgGroundUnitInformation().getCountry().getCountry() == Country.GERMANY);
     }
 
     @Test

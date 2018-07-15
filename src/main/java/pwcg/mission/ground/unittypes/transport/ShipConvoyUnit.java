@@ -4,18 +4,16 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.VehicleFactory;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.ground.unittypes.GroundMovingDirectFireUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
@@ -36,51 +34,24 @@ public class ShipConvoyUnit extends GroundMovingDirectFireUnit
     private ShipConvoyTypes shipConvoyType = ShipConvoyTypes.MERCHANT;
     private Campaign campaign;
 
-	public ShipConvoyUnit(Campaign campaign, ShipConvoyTypes shipConvoyType) 
+	public ShipConvoyUnit(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation, ShipConvoyTypes shipConvoyType) 
 	{
-        super(TacticalTarget.TARGET_SHIPPING);
-        unitSpeed = 6;
-        this.shipConvoyType = shipConvoyType;
+	    super(pwcgGroundUnitInformation);
         this.campaign = campaign;
+        this.shipConvoyType = shipConvoyType;
+        unitSpeed = 5;
 	}
-
-    public void initialize (MissionBeginUnit missionBeginUnit, Coordinate startCoords, ICountry country) throws PWCGException 
-	{
-        String name = createUnitName();
-        
-        // Pick a random spot 50 KM away.  We're not going to make 50KM in a mission.
-        // A target coord just gets them  moving.
-        int angle = RandomNumberGenerator.getRandom(360);
-        Coordinate endCoords = MathUtils.calcNextCoord(startCoords, angle, 50000);
-                        
-        super.initialize(missionBeginUnit, name, startCoords,  endCoords, country);
-	}
-
-    private String createUnitName()
-    {
-        if (shipConvoyType == ShipConvoyTypes.SUBMARINE)
-        {
-            return "Submarine";
-        }
-        
-        if (shipConvoyType == ShipConvoyTypes.WARSHIP)
-        {
-            return "Warship";
-        }
-
-        return "Merchant";
-    }
 
     @Override
     protected void createTargetWaypoint() throws PWCGException  
     {
         McuWaypoint waypoint = WaypointFactory.createMoveToWaypointType();
         waypoint.setTriggerArea(0);
-        waypoint.setDesc(name + " WP");
+        waypoint.setDesc(pwcgGroundUnitInformation.getName() + " WP");
         waypoint.setSpeed(unitSpeed);
 
-        double angle = MathUtils.calcAngle(position, destinationCoords);
-        Coordinate firstPosition = MathUtils.calcNextCoord(position, angle, 2000.0);
+        double angle = MathUtils.calcAngle(pwcgGroundUnitInformation.getPosition(), pwcgGroundUnitInformation.getDestination());
+        Coordinate firstPosition = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), angle, 2000.0);
         
         // Try to keep subs on the surface
         if (shipConvoyType == ShipConvoyTypes.SUBMARINE)
@@ -94,7 +65,7 @@ public class ShipConvoyUnit extends GroundMovingDirectFireUnit
 
         // Now the second, longer leg
         McuWaypoint waypoint2 = waypoint.copy();
-        waypoint2.setPosition(destinationCoords.copy());
+        waypoint2.setPosition(pwcgGroundUnitInformation.getDestination().copy());
         waypoint.setTargetWaypoint(true);
         waypoint.getPosition().setYPos(0.0);
         if (shipConvoyType == ShipConvoyTypes.SUBMARINE)
@@ -104,9 +75,9 @@ public class ShipConvoyUnit extends GroundMovingDirectFireUnit
         waypoints.add(waypoint2);
         
         waypointTimer = new McuTimer();
-        waypointTimer.setName("WP Timer for " + name);
-        waypointTimer.setDesc("WP for " + name);
-        waypointTimer.setPosition(position.copy());
+        waypointTimer.setName("WP Timer for " + pwcgGroundUnitInformation.getName());
+        waypointTimer.setDesc("WP for " + pwcgGroundUnitInformation.getName());
+        waypointTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
     }
 
     public Coordinate createDestinationPosition (Coordinate startCoords) throws PWCGException 
@@ -120,10 +91,10 @@ public class ShipConvoyUnit extends GroundMovingDirectFireUnit
 	protected void createUnits() throws PWCGException  
 	{
         IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        IVehicle ship = vehicleFactory.createShip(country, shipConvoyType);
+        IVehicle ship = vehicleFactory.createShip(pwcgGroundUnitInformation.getCountry(), shipConvoyType);
 
         ship.setOrientation(new Orientation());
-        ship.setPosition(position.copy());         
+        ship.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
         ship.populateEntity();
         ship.getEntity().setEnabled(1);
 
@@ -137,13 +108,13 @@ public class ShipConvoyUnit extends GroundMovingDirectFireUnit
         int numShips = calcNumUnits();
                 
         // Towards the destination
-        double shipMovementOrient = MathUtils.calcAngle(position, destinationCoords);
+        double shipMovementOrient = MathUtils.calcAngle(pwcgGroundUnitInformation.getPosition(), pwcgGroundUnitInformation.getDestination());
         Orientation shipOrient = new Orientation();
         shipOrient.setyOri(shipMovementOrient);
         
         // Offset 70 degrees from the previous ship
         double placementOrientation = MathUtils.adjustAngle (shipMovementOrient, -70);      
-        Coordinate shipCoords = position.copy();
+        Coordinate shipCoords = pwcgGroundUnitInformation.getPosition().copy();
 
         for (int i = 0; i < numShips; ++i)
         {   
@@ -193,7 +164,7 @@ public class ShipConvoyUnit extends GroundMovingDirectFireUnit
             writer.write("  Desc = \"Ships\";");
             writer.newLine();
 
-            missionBeginUnit.write(writer);
+            pwcgGroundUnitInformation.getMissionBeginUnit().write(writer);
 
             // This could happen if the user did not install 3rd party infantry
             spawnTimer.write(writer);

@@ -69,7 +69,7 @@ class Tank extends Vehicle
             displayName = "German Tank";
         }
 		
-		name = tankId;
+		vehicleType = tankId;
 		script = "LuaScripts\\WorldObjects\\vehicles\\" + tankId + ".txt";
 		model = "graphics\\vehicles\\" + tankDir + "\\" + tankId + ".mgm";
 	}
@@ -80,7 +80,7 @@ class Tank extends Vehicle
 		
 		tank.index = IndexGenerator.getInstance().getNextIndex();
 		
-		tank.name = this.name;
+		tank.vehicleType = this.vehicleType;
 		tank.displayName = this.displayName;
 		tank.linkTrId = this.linkTrId;
 		tank.script = this.script;

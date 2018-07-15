@@ -89,7 +89,7 @@ public class PlayerFlightTypeBoSBombTest
     {
         assert (targetDefinition.getAttackingCountry() != null);
         assert (targetDefinition.getTargetCountry() != null);
-        assert (targetDefinition.getTargetGeneralLocation() != null);
+        assert (targetDefinition.getTargetGeneralPosition() != null);
         assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
         assert (targetDefinition.getTargetType() != TacticalTarget.TARGET_NONE);
     }

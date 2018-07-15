@@ -5,9 +5,11 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.ground.AssaultGenerator.BattleSize;
+import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.infantry.GroundATArtillery;
 import pwcg.mission.ground.unittypes.infantry.GroundAssaultInfantryUnit;
@@ -33,9 +35,14 @@ public class AssaultFactory
                     ICountry country, 
                     Coordinate startCoords, 
                     Coordinate destinationCoords) throws PWCGException
-    {
-        GroundATArtillery atDefenseUnit = new GroundATArtillery(campaign);
-        atDefenseUnit.initialize(missionBeginUnit, startCoords, destinationCoords, country);
+    {        
+        String nationality = country.getNationality();
+        String name = nationality + " AT Gun";
+        
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                missionBeginUnit, country, name, TacticalTarget.TARGET_INFANTRY, startCoords, destinationCoords);
+        
+        GroundATArtillery atDefenseUnit = new GroundATArtillery(campaign,groundUnitInformation);
         atDefenseUnit.createUnitMission();
 
         return atDefenseUnit;
@@ -43,12 +50,16 @@ public class AssaultFactory
 
     public GroundUnit createAssaultTankUnit (
                     MissionBeginUnitCheckZone missionBeginUnit, 
-                    ICountry iCountry, 
+                    ICountry country, 
                     Coordinate startCoords, 
                     Coordinate destinationCoords) throws PWCGException
     {
-        GroundAssaultTankUnit tankAssaultUnit = new GroundAssaultTankUnit(campaign);
-        tankAssaultUnit.initialize(missionBeginUnit, startCoords, destinationCoords, iCountry);
+        String name = "Tank";
+
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                missionBeginUnit, country, name, TacticalTarget.TARGET_INFANTRY, startCoords, destinationCoords);
+
+        GroundAssaultTankUnit tankAssaultUnit = new GroundAssaultTankUnit(campaign, groundUnitInformation, battleSize);
         tankAssaultUnit.createUnitMission();
 
         return tankAssaultUnit;
@@ -60,9 +71,13 @@ public class AssaultFactory
                     Coordinate startCoords, 
                     Coordinate destinationCoords) throws PWCGException 
     {
-        
-        GroundInfantryUnit infantryAssaultUnit = new GroundInfantryUnit(TacticalTarget.TARGET_ASSAULT);
-        infantryAssaultUnit.initialize(missionBeginUnit, startCoords, destinationCoords, country);
+        String nationality = country.getNationality();
+        String name = nationality + " Infantry";
+
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                missionBeginUnit, country, name, TacticalTarget.TARGET_ASSAULT, startCoords, destinationCoords);
+
+        GroundInfantryUnit infantryAssaultUnit = new GroundInfantryUnit(groundUnitInformation);
         infantryAssaultUnit.createUnitMission();
 
         return infantryAssaultUnit;
@@ -74,8 +89,12 @@ public class AssaultFactory
                     Coordinate startCoords, 
                     Coordinate destinationCoords) throws PWCGException 
     {
-        GroundAssaultInfantryUnit infantryAssaultUnit = new GroundAssaultInfantryUnit(battleSize);
-        infantryAssaultUnit.initialize(missionBeginUnit, startCoords, destinationCoords, country);
+        String name = "Infantry";
+
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                missionBeginUnit, country, name, TacticalTarget.TARGET_INFANTRY, startCoords, destinationCoords);
+
+        GroundAssaultInfantryUnit infantryAssaultUnit = new GroundAssaultInfantryUnit(groundUnitInformation, battleSize);
         infantryAssaultUnit.createUnitMission();
 
         return infantryAssaultUnit;
@@ -87,8 +106,13 @@ public class AssaultFactory
                     Coordinate startCoords, 
                     Coordinate destinationCoords) throws PWCGException 
     {
-        GroundMachineGunUnit mgUnit = new GroundMachineGunUnit(campaign);
-        mgUnit.initialize(missionBeginUnit, startCoords, destinationCoords, country);
+        String nationality = country.getNationality();
+        String name = nationality + " Machine Gun";
+
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                missionBeginUnit, country, name, TacticalTarget.TARGET_INFANTRY, startCoords, destinationCoords);
+
+        GroundMachineGunUnit mgUnit = new GroundMachineGunUnit(campaign, groundUnitInformation);
         mgUnit.createUnitMission();
 
         return mgUnit;
@@ -100,8 +124,13 @@ public class AssaultFactory
                     Coordinate startCoords, 
                     Coordinate targetCoords) throws PWCGException 
     {
-        GroundPillBoxUnit pillBoxUnit = new GroundPillBoxUnit();
-        pillBoxUnit.initialize(missionBeginUnit, startCoords, targetCoords, country);
+        String nationality = country.getNationality();
+        String name = nationality + " Pillbox";
+
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                missionBeginUnit, country, name, TacticalTarget.TARGET_DEFENSE, startCoords, targetCoords);
+
+        GroundPillBoxUnit pillBoxUnit = new GroundPillBoxUnit(groundUnitInformation);
         pillBoxUnit.createUnitMission();
 
         return pillBoxUnit;
@@ -113,8 +142,13 @@ public class AssaultFactory
                     Coordinate startCoords, 
                     Coordinate destinationCoords) throws PWCGException 
     {
-        GroundPillBoxFlareUnit pillBoxUnit = new GroundPillBoxFlareUnit();
-        pillBoxUnit.initialize(missionBeginUnit, startCoords, destinationCoords, country);
+        String nationality = country.getNationality();
+        String name = nationality + " Pillbox";
+        
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                missionBeginUnit, country, name, TacticalTarget.TARGET_DEFENSE, startCoords, destinationCoords);
+
+        GroundPillBoxFlareUnit pillBoxUnit = new GroundPillBoxFlareUnit(groundUnitInformation);
         pillBoxUnit.createUnitMission();
 
         return pillBoxUnit;

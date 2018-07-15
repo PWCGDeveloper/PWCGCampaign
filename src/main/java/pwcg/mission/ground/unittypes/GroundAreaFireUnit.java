@@ -1,10 +1,7 @@
 package pwcg.mission.ground.unittypes;
 
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.target.TacticalTarget;
-import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.MissionBeginUnit;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.mcu.McuAttackArea;
 import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuTimer;
@@ -14,26 +11,21 @@ public abstract class GroundAreaFireUnit extends GroundUnitSpawning
     protected McuTimer attackAreaTimer = new McuTimer();
     protected McuAttackArea attackArea = new McuAttackArea();
 
-	public GroundAreaFireUnit(TacticalTarget targetType) 
+	public GroundAreaFireUnit(GroundUnitInformation pwcgGroundUnitInformation) 
 	{
-	    super (targetType);
+	    super (pwcgGroundUnitInformation);
 	}
-
-    public void initialize (MissionBeginUnit missionBeginUnit, String name, Coordinate startCoords, Coordinate destinationCoords, ICountry country) 
-    {
-        super.initialize(missionBeginUnit, name, startCoords,  destinationCoords, country);
-    }
 
     protected void createAttackArea() 
     {
-        attackAreaTimer.setName(name + " AttackArea Timer");      
-        attackAreaTimer.setDesc(name + " AttackArea Timer");       
-        attackAreaTimer.setPosition(position);
+        attackAreaTimer.setName(pwcgGroundUnitInformation.getName() + " AttackArea Timer");      
+        attackAreaTimer.setDesc(pwcgGroundUnitInformation.getName() + " AttackArea Timer");       
+        attackAreaTimer.setPosition(pwcgGroundUnitInformation.getPosition());
 
-        attackArea.setName(name + " AttackArea");
-        attackArea.setDesc(name + " AttackArea");
+        attackArea.setName(pwcgGroundUnitInformation.getName() + " AttackArea");
+        attackArea.setDesc(pwcgGroundUnitInformation.getName() + " AttackArea");
         attackArea.setOrientation(new Orientation());       
-        attackArea.setPosition(position); 
+        attackArea.setPosition(pwcgGroundUnitInformation.getPosition()); 
         attackArea.setTime(600);
     }   
 
@@ -41,7 +33,7 @@ public abstract class GroundAreaFireUnit extends GroundUnitSpawning
     protected void createGroundTargetAssociations() 
     {
         // MBU -> Spawn Timer
-        this.missionBeginUnit.linkToMissionBegin(this.spawnTimer.getIndex());
+        pwcgGroundUnitInformation.getMissionBeginUnit().linkToMissionBegin(this.spawnTimer.getIndex());
 
         // Spawn Timer -> Spawns
         for (McuSpawn spawn : spawners)

@@ -20,7 +20,7 @@ public class GroundUnitBuilderBalloonDefense
 
     public GroundUnitCollection createBalloonDefenseUnits() throws PWCGException 
     {
-        GroundUnitBalloonFactory groundUnitFactory =  new GroundUnitBalloonFactory(campaign, targetDefinition.getTargetLocation(), targetDefinition.getAttackingCountry());
+        GroundUnitBalloonFactory groundUnitFactory =  new GroundUnitBalloonFactory(campaign, targetDefinition.getTargetPosition(), targetDefinition.getAttackingCountry());
         GroundUnit balloonUnit = groundUnitFactory.createBalloonUnit();
         groundUnitCollection.addGroundUnit(GroundUnitType.BALLOON_UNIT, balloonUnit);        
         return groundUnitCollection;

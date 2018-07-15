@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -34,18 +35,18 @@ public class TrainLocomotive extends Vehicle implements ITrainLocomotive
 		
 		displayName = locomotive.getName();
 		
-		name = locomotive.getName();
+		vehicleType = locomotive.getName();
 		script = "LuaScripts\\WorldObjects\\" + locomotive.getId() + ".txt";
 		model = "graphics\\trains\\" + locomotive.getCategory() + "\\" + locomotive.getId() + ".mgm";
 	}
 
-	public TrainLocomotive copy () 
+	public TrainLocomotive copy () throws PWCGException 
 	{
 		TrainLocomotive locomotive = new TrainLocomotive(country);
 		
 		locomotive.index = IndexGenerator.getInstance().getNextIndex();
 		
-		locomotive.name = this.name;
+		locomotive.vehicleType = this.vehicleType;
 		locomotive.displayName = this.displayName;
 		locomotive.linkTrId = this.linkTrId;
 		locomotive.script = this.script;
@@ -81,7 +82,7 @@ public class TrainLocomotive extends Vehicle implements ITrainLocomotive
     		writer.write("{");
     		writer.newLine();
     		
-    		writer.write("  Name = \"" + name + "\";");
+    		writer.write("  Name = \"" + vehicleType + "\";");
     		writer.newLine();
     		writer.write("  Index = " + index + ";");
     		writer.newLine();

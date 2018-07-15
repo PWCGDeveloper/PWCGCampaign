@@ -51,7 +51,7 @@ public class StrategicBombingPackage extends FlightPackage
         createAAA(targetDefinition, strategicBombingFlight);
         createSpotlight(targetDefinition, strategicBombingFlight);
 
-        createOtherFlightsInStream(squadron, targetDefinition.getTargetLocation(), strategicBombingFlight);
+        createOtherFlightsInStream(squadron, targetDefinition.getTargetPosition(), strategicBombingFlight);
 
         createHomeDefenseFlights(squadron, isPlayerFlight, strategicBombingFlight);
 
@@ -67,7 +67,7 @@ public class StrategicBombingPackage extends FlightPackage
 
         strategicBombingFlight.setBombingAltitudeLevel(BombingAltitudeLevel.HIGH);
 
-        strategicBombingFlight.initialize(mission, campaign, FlightTypes.STRATEGIC_BOMB, targetDefinition.getTargetLocation(), squadron, missionBeginUnit, isPlayerFlight);
+        strategicBombingFlight.initialize(mission, campaign, FlightTypes.STRATEGIC_BOMB, targetDefinition.getTargetPosition(), squadron, missionBeginUnit, isPlayerFlight);
         
         strategicBombingFlight.setTargetDefinition(targetDefinition);
         
@@ -100,7 +100,7 @@ public class StrategicBombingPackage extends FlightPackage
 
     private void createAAA(TargetDefinition targetDefinition, StrategicBombingFlight strategicBombingFlight) throws PWCGException
     {
-        AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign, targetDefinition.getTargetCountry(), targetDefinition.getTargetLocation());
+        AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign, targetDefinition.getTargetCountry(), targetDefinition.getTargetPosition());
         GroundUnitSpawning aaaArty = groundUnitFactory.createAAAArtilleryBattery(3, 3);
         strategicBombingFlight.addLinkedUnit(aaaArty);
     }
@@ -120,7 +120,7 @@ public class StrategicBombingPackage extends FlightPackage
 
     private GroundUnitFactory createSpotlight(TargetDefinition targetDefinition, StrategicBombingFlight strategicBombingFlight) throws PWCGException
     {
-        GroundUnitFactory groundUnitFactory =  new GroundUnitFactory(campaign, targetDefinition.getTargetLocation(), targetDefinition.getTargetCountry());
+        GroundUnitFactory groundUnitFactory =  new GroundUnitFactory(campaign, targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry());
         if (squadron.determineIsNightSquadron())
         {
             if (squadron.determineIsNightSquadron())

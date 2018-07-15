@@ -1,6 +1,7 @@
 package pwcg.campaign.ww1.ground.staticobject;
 
 import pwcg.campaign.api.ICountry;
+import pwcg.core.exception.PWCGException;
 
 
 public class WaterTower extends StaticObject
@@ -25,12 +26,12 @@ public class WaterTower extends StaticObject
 		waterTowerId = waterTower[selectedWaterTower];
 		displayName = "Water Tower";
 		
-		name = waterTowerId;
+		vehicleType = waterTowerId;
 		script = "LuaScripts\\WorldObjects\\" + waterTowerId + ".txt";
 		model = "graphics\\blocks\\" + waterTowerId + ".mgm";
 	}
 
-	public WaterTower copy () 
+	public WaterTower copy () throws PWCGException 
 	{
 		WaterTower clonedObject = new WaterTower(country);
 		

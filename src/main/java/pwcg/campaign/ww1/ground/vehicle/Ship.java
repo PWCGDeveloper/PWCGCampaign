@@ -103,7 +103,7 @@ public class Ship extends Vehicle
 			}
 		}
 		
-		name = shipId;
+        vehicleType = shipId;
 		script = "LuaScripts\\WorldObjects\\" + shipId + ".txt";
 		model = "graphics\\ships\\" + shipDir + "\\" + shipId + ".mgm";
 	}
@@ -131,13 +131,13 @@ public class Ship extends Vehicle
 	/* (non-Javadoc)
 	 * @see java.lang.Object#clone()
 	 */
-	public Ship copy () 
+	public Ship copy () throws PWCGException 
 	{
 		Ship ship = new Ship(country);
 		
 		ship.index = IndexGenerator.getInstance().getNextIndex();
 		
-		ship.name = this.name;
+		ship.vehicleType = this.vehicleType;
 		ship.displayName = this.displayName;
 		ship.linkTrId = this.linkTrId;
 		ship.script = this.script;
@@ -165,9 +165,10 @@ public class Ship extends Vehicle
 
 	/**
 	 * Override to always enable ships
+	 * @throws PWCGException 
 	 */
 	@Override
-	public void populateEntity()
+	public void populateEntity() throws PWCGException
 	{
 		super.populateEntity();
 		entity.setEnabled(1);

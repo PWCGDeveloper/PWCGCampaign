@@ -4,9 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.VehicleFactory;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
@@ -14,9 +12,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.ground.unittypes.GroundDirectFireUnit;
 import pwcg.mission.ground.vehicle.IVehicleFactory;
 import pwcg.mission.mcu.McuSpawn;
@@ -25,28 +23,18 @@ public class GroundATArtillery extends GroundDirectFireUnit
 {
     private Campaign campaign;
 
-	public GroundATArtillery(Campaign campaign) throws PWCGException
+	public GroundATArtillery(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation) throws PWCGException
 	{
-	    super (TacticalTarget.TARGET_INFANTRY);
+	    super(pwcgGroundUnitInformation);
 	    this.campaign = campaign;
 	}	
-
-    public void initialize (
-                    MissionBeginUnit missionBeginUnit, 
-                    Coordinate position, 
-                    Coordinate destinationCoords, 
-                    ICountry country) throws PWCGException
-    {
-        String nationality = country.getNationality();
-        String name = nationality + " AT Gun";
-        super.initialize (missionBeginUnit, name, position, destinationCoords, country);
-    }
 
     public void createUnits() throws PWCGException 
     {
         IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        spawningVehicle = vehicleFactory.createATArtillery(country);
-        spawningVehicle.setPosition(position.copy());         
+        spawningVehicle = vehicleFactory.createATArtillery(pwcgGroundUnitInformation.getCountry());
+        spawningVehicle.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
+        spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
         spawningVehicle.populateEntity();
         spawningVehicle.getEntity().setEnabled(1);
     }
@@ -56,13 +44,13 @@ public class GroundATArtillery extends GroundDirectFireUnit
         int numatGun = calcNumUnits();
 
 		// Face towards enemy
-		double atGunFacingAngle = MathUtils.calcAngle(position, destinationCoords);
+		double atGunFacingAngle = MathUtils.calcAngle(pwcgGroundUnitInformation.getPosition(), pwcgGroundUnitInformation.getDestination());
 		Orientation atGunOrient = new Orientation();
 		atGunOrient.setyOri(atGunFacingAngle);
 		
         // MGs are behind the lines
         double initialPlacementAngle = MathUtils.adjustAngle (atGunFacingAngle, 180.0);      
-        Coordinate atGunCoords = MathUtils.calcNextCoord(position, initialPlacementAngle, 25.0);
+        Coordinate atGunCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), initialPlacementAngle, 25.0);
 
         // Locate the target such that startCoords is the middle of the line
         double startLocationOrientation = MathUtils.adjustAngle (atGunFacingAngle, 270);             
@@ -123,7 +111,7 @@ public class GroundATArtillery extends GroundDirectFireUnit
             writer.write("  Desc = \"AT Gun\";");
             writer.newLine();
     
-            missionBeginUnit.write(writer);
+            pwcgGroundUnitInformation.getMissionBeginUnit().write(writer);
     
             spawnTimer.write(writer);
             spawningVehicle.write(writer);

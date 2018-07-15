@@ -9,7 +9,7 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
-class AAAMachineGun extends AAA
+class AAAMachineGun extends Vehicle
 {
 	// German
 	private String[][] germanMGs = 
@@ -56,7 +56,7 @@ class AAAMachineGun extends AAA
 			displayName = "German MG";
 		}
 		
-		name = mgId;
+		vehicleType = mgId;
 		script = "LuaScripts\\WorldObjects\\vehicles\\" + mgId + ".txt";
 		model = "graphics\\artillery\\" + mgDir + "\\" + mgId + ".mgm";
 	}
@@ -67,7 +67,7 @@ class AAAMachineGun extends AAA
 		
 		mg.index = IndexGenerator.getInstance().getNextIndex();
 		
-		mg.name = this.name;
+		mg.vehicleType = this.vehicleType;
 		mg.displayName = this.displayName;
 		mg.linkTrId = this.linkTrId;
 		mg.script = this.script;

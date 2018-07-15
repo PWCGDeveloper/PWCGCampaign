@@ -30,7 +30,7 @@ public class GroundUnitCollection
     public void addGroundUnit(GroundUnitType grountUnitType, GroundUnit groundUnit) throws PWCGException
     {
         Map<GroundUnitType, List<GroundUnit>> unitsForSide = axisUnits;
-        if (groundUnit.getCountry().getSide() == Side.ALLIED)
+        if (groundUnit.getPwcgGroundUnitInformation().getCountry().getSide() == Side.ALLIED)
         {
             unitsForSide = alliedUnits;
         }
@@ -61,7 +61,7 @@ public class GroundUnitCollection
     {
         for (GroundUnit sourceGroundUnit : sourceGroundUnits)
         {
-            if (sourceGroundUnit.isFiring())
+            if (sourceGroundUnit instanceof GroundDirectFireUnit)
             {
                 GroundDirectFireUnit directFireUnit = (GroundDirectFireUnit)sourceGroundUnit;
                 for (GroundUnit targetGroundUnit : targetGroundUnits)
@@ -148,7 +148,7 @@ public class GroundUnitCollection
     {
         GroundUnitCollectionTargetFinder groundUnitCollectionTargetFinder = new GroundUnitCollectionTargetFinder(this);
         GroundUnit targetUnit = groundUnitCollectionTargetFinder.findTargetUnit(side);
-        Coordinate targetCoordinates = targetUnit.getPosition();
+        Coordinate targetCoordinates = targetUnit.getPwcgGroundUnitInformation().getPosition();
         return targetCoordinates;
     }
 

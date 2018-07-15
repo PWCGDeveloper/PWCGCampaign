@@ -85,7 +85,7 @@ class TrainCar extends Vehicle
 		
 		displayName = car.getName();
 		
-		name = car.getName();
+		vehicleType = car.getName();
 				
 		script = "LuaScripts\\WorldObjects\\Trains\\" + car.getId() + ".txt";
 		model = "graphics\\trains\\" + car.getCategory() + "\\" + car.getId() + ".mgm";
@@ -99,7 +99,7 @@ class TrainCar extends Vehicle
 		TrainCar train = new TrainCar();
 		train.index = IndexGenerator.getInstance().getNextIndex();
 		
-		train.name = this.name;
+		train.vehicleType = this.vehicleType;
 		train.displayName = this.displayName;
 		train.linkTrId = this.linkTrId;
 		train.script = this.script;

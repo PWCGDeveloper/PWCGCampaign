@@ -55,7 +55,7 @@ public class AAAManager
 		List<GroundUnitSpawning> selectedAAA = new ArrayList<>();
 		for (GroundUnitSpawning aaa : allAAA)
 		{
-			if (missionBorders.isInBox(aaa.getPosition()))
+			if (missionBorders.isInBox(aaa.getPwcgGroundUnitInformation().getPosition()))
 			{
 				selectedAAA.add(aaa);
 			}

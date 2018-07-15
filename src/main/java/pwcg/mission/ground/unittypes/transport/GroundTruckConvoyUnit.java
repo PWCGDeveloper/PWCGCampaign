@@ -4,9 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.VehicleFactory;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
@@ -14,9 +12,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.ground.unittypes.GroundMovingUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.IVehicleFactory;
@@ -27,39 +25,22 @@ public class GroundTruckConvoyUnit extends GroundMovingUnit
 {
     private String groupName = "Trucks";
     private Campaign campaign;
-    private Orientation orientation;
 
-    public GroundTruckConvoyUnit(Campaign campaign) 
+    public GroundTruckConvoyUnit(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation) 
     {
-        super(TacticalTarget.TARGET_TRANSPORT);
+        super(pwcgGroundUnitInformation);
         this.campaign = campaign;
-    }
-
-    public void initialize (
-                    MissionBeginUnitCheckZone missionBeginUnit, 
-                    Coordinate startCoords, 
-                    Coordinate destinationCoords, 
-                    Orientation orientation, 
-                    ICountry country) 
-    {
-        String name = "Truck Convoy";
-        
-        this.orientation = orientation;
-        
-        // Alternative coordinates because the trucks drive into the river
-        Coordinate alternativeCoords = createAlternativeDestination();
-        
-        super.initialize(missionBeginUnit, name, startCoords,  alternativeCoords, country);
+        unitSpeed = 10;
     }
 
     @Override
     public void createUnits() throws PWCGException  
     {
         IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        IVehicle truck = vehicleFactory.createCargoTruck(country);
+        IVehicle truck = vehicleFactory.createCargoTruck(pwcgGroundUnitInformation.getCountry());
 
         truck.setOrientation(new Orientation());
-        truck.setPosition(position.copy());         
+        truck.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
         truck.populateEntity();
         truck.getEntity().setEnabled(1);
         this.spawningVehicle = truck;
@@ -71,11 +52,8 @@ public class GroundTruckConvoyUnit extends GroundMovingUnit
         // How many trucks
         int numvehicles = calcNumUnits();
 
-        // Move along bridge
-        Orientation truckMovementOrient = orientation.copy();
-
         // Place opposite of movement
-        double placementOrientation = MathUtils.adjustAngle (truckMovementOrient.getyOri(), 180);       
+        double placementOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 180);       
         
         // Get the position of the first truck - off of the bridge
         Coordinate truckCoords = getFirstTruckPosition(placementOrientation);
@@ -85,7 +63,7 @@ public class GroundTruckConvoyUnit extends GroundMovingUnit
             McuSpawn spawn = new McuSpawn();
             spawn.setName("Truck Spawn " + (i + 1));      
             spawn.setDesc("Truck Spawn " + (i + 1));
-            spawn.setOrientation(truckMovementOrient.copy());
+            spawn.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
             spawn.setPosition(truckCoords.copy()); 
 
             spawners.add(spawn);
@@ -95,42 +73,9 @@ public class GroundTruckConvoyUnit extends GroundMovingUnit
         }       
     }
 
-
-    /**
-     * Because trucks drive into the river
-     * 
-     * @throws PWCGException 
-     */
-    public Coordinate createAlternativeDestination()  
-    {
-        Coordinate destinationCoords = position.copy();
-                        
-        try
-        {
-            // Move along bridge
-            Orientation truckMovementOrient = orientation.copy();
-    
-            // Place opposite of movement
-            double placementOrientation = MathUtils.adjustAngle (truckMovementOrient.getyOri(), 180);       
-            
-            // Get the position of the first truck - off of the bridge
-            Coordinate truckCoords;
-            truckCoords = getFirstTruckPosition(placementOrientation);
-
-            // Get the position of the first truck - off of the bridge
-            destinationCoords = MathUtils.calcNextCoord(truckCoords, truckMovementOrient.getyOri(), 100);
-        }
-        catch (PWCGException e)
-        {
-            e.printStackTrace();
-        }
-
-        return destinationCoords;
-    }
-
     private Coordinate getFirstTruckPosition(double placementOrientation) throws PWCGException
     {
-        Coordinate firstTruckCoords = MathUtils.calcNextCoord(position.copy(), placementOrientation, 250.0);
+        Coordinate firstTruckCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition().copy(), placementOrientation, 250.0);
         
         return firstTruckCoords;
     }
@@ -173,7 +118,7 @@ public class GroundTruckConvoyUnit extends GroundMovingUnit
             writer.write("  Desc = \"" + groupName + "\";");
             writer.newLine();
 
-            missionBeginUnit.write(writer);
+            pwcgGroundUnitInformation.getMissionBeginUnit().write(writer);
 
             spawnTimer.write(writer);
             spawningVehicle.write(writer);

@@ -3,6 +3,7 @@ package pwcg.campaign.ww1.ground.vehicle;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -67,19 +68,19 @@ public class Artillery extends Vehicle
 			displayName = "British Artillery";
 		}
 		
-		name = artilleryId;
+		vehicleType = artilleryId;
 		script = "LuaScripts\\WorldObjects\\" + artilleryId + ".txt";
 		model = "graphics\\artillery\\" + artilleryDir + "\\" + artilleryId + ".mgm";
 	}
 
 
-	public Artillery copy () 
+	public Artillery copy () throws PWCGException 
 	{
 		Artillery gun = new Artillery(country);
 		
 		gun.index = IndexGenerator.getInstance().getNextIndex();
 		
-		gun.name = this.name;
+		gun.vehicleType = this.vehicleType;
 		gun.displayName = this.displayName;
 		gun.linkTrId = this.linkTrId;
 		gun.script = this.script;

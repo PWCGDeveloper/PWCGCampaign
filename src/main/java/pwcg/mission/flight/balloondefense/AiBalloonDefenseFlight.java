@@ -79,7 +79,7 @@ public class AiBalloonDefenseFlight extends Flight
         return balloonDefenseIngressWP;
     }
 
-    private McuWaypoint makeBalloonCoverWP(int waypointSpeed)
+    private McuWaypoint makeBalloonCoverWP(int waypointSpeed) throws PWCGException
     {
         Coordinate balloonCoverPosition = balloonUnit.getPosition().copy();
 		balloonCoverPosition.setYPos(balloonUnit.getPosition().getYPos() + 500);

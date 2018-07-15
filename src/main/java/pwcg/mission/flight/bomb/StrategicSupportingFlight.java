@@ -54,9 +54,6 @@ public class StrategicSupportingFlight extends BombingFlight
 
 	public void createUnitMission() throws PWCGException  
 	{
-		super.setName(squadron.determineDisplayName(campaign.getDate()));
-		super.setPosition(departureAirfield.getPosition().copy());
-
 		createPlanes();
 		List<McuWaypoint> waypointList = createWaypoints(mission, departureAirfield.getPosition());
 		waypointPackage.setWaypoints(waypointList);

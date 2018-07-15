@@ -5,16 +5,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.VehicleFactory;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.ground.vehicle.IVehicleFactory;
 import pwcg.mission.mcu.McuSpawn;
 
@@ -22,19 +20,10 @@ public class SpotLightGroup extends GroundUnitSpawning
 {
 	protected int numGroups = 3;
 
-	public SpotLightGroup() 
+	public SpotLightGroup(GroundUnitInformation pwcgGroundUnitInformation, int numGroups) 
 	{
-		super(TacticalTarget.TARGET_NONE);
-	}
-
-	public void initialize (MissionBeginUnit missionBeginUnit, ICountry country, Coordinate groundPosition, int numGroups) 
-	{
-		this.numGroups = numGroups;
-	
-		String countryName = country.getNationality();
-		String name = countryName + " Spotlight Battery";
-		
-        super.initialize (missionBeginUnit, name, groundPosition, groundPosition, country);
+        super(pwcgGroundUnitInformation);
+        this.numGroups = numGroups;
 	}
 
     protected void calcNumUnitsByConfig() throws PWCGException 
@@ -72,9 +61,10 @@ public class SpotLightGroup extends GroundUnitSpawning
     {
         IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
 
-        spawningVehicle = vehicleFactory.createSpotLight(country);
+        spawningVehicle = vehicleFactory.createSpotLight(pwcgGroundUnitInformation.getCountry());
         spawningVehicle.setOrientation(new Orientation());
-        spawningVehicle.setPosition(position.copy());         
+        spawningVehicle.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
+        spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
         spawningVehicle.populateEntity();
         spawningVehicle.getEntity().setEnabled(1);
     }
@@ -89,8 +79,8 @@ public class SpotLightGroup extends GroundUnitSpawning
 			double movementHeading = ((360 / numGroups) * i) + offset;
 			movementHeading = MathUtils.adjustAngle (movementHeading, 0);		
 			
-			Coordinate position = MathUtils.calcNextCoord(getPosition(), movementHeading, distance);
-			positions.add (position);
+			Coordinate spotlightPosition = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), movementHeading, distance);
+			positions.add (spotlightPosition);
 		}
 		
 		return positions;
@@ -101,7 +91,7 @@ public class SpotLightGroup extends GroundUnitSpawning
     protected void createGroundTargetAssociations() 
     {
         // MBU -> Spawn Timer
-        this.missionBeginUnit.linkToMissionBegin(this.spawnTimer.getIndex());
+        pwcgGroundUnitInformation.getMissionBeginUnit().linkToMissionBegin(this.spawnTimer.getIndex());
 
         // Spawn Timer -> Spawns
         for (McuSpawn spawn : spawners)
@@ -126,7 +116,7 @@ public class SpotLightGroup extends GroundUnitSpawning
             writer.write("  Desc = \"Spot Lights\";");
             writer.newLine();
     
-            missionBeginUnit.write(writer);
+            pwcgGroundUnitInformation.getMissionBeginUnit().write(writer);
     
             // This could happen if the user did not install 3rd party infantry
             spawnTimer.write(writer);

@@ -42,7 +42,7 @@ public class ShipConvoyGenerator
             
             ShippingUnitFactory shippingFactory = new ShippingUnitFactory(campaign, targetPosition, shipCountry);
             ShipConvoyUnit convoy = shippingFactory.createShippingUnit();
-            if (convoy.getCountry().getSide() == Side.ALLIED)
+            if (convoy.getPwcgGroundUnitInformation().getCountry().getSide() == Side.ALLIED)
             {
                 alliedConvoys.add(convoy);
             }

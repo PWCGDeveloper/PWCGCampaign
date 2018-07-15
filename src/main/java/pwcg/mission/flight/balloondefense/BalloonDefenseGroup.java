@@ -7,11 +7,11 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.plane.Balloon;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.flight.waypoint.WaypointFactory;
@@ -45,32 +45,22 @@ public class BalloonDefenseGroup extends GroundUnit
     protected GroundAAABattery aaaMg = null;
     protected GroundAAABattery aaaArty = null;
 
-	public BalloonDefenseGroup (Campaign campaign) 
+	public BalloonDefenseGroup (Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation) 
 	{
-		super(TacticalTarget.TARGET_BALLOON);
-		
+        super(pwcgGroundUnitInformation);
+
 		this.campaign = campaign;
-	}
-
-	public void initialize ( MissionBeginUnitCheckZone missionBeginUnit, Coordinate balloonPosition, ICountry country) 
-	{
-		String countryName = country.getNationality();
-		String name = countryName + " Balloon";
-
-        super.initialize (missionBeginUnit, name, balloonPosition, balloonPosition, country);
-
-		this.country = country;		
 	}
 
 	@Override
 	public void createUnitMission() throws PWCGException  
 	{
-		createBalloon(country);		
+		createBalloon(pwcgGroundUnitInformation.getCountry());		
         createSpawnTimer();
 		createWinch();
 		createGroundTargetAssociations();
 
-        AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign, country, position.copy());
+        AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign, pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getPosition().copy());
         aaaMg = groundUnitFactory.createAAAMGBattery(4, 4);
         aaaMg.setAiLevel(AiSkillLevel.COMMON);
         
@@ -81,27 +71,27 @@ public class BalloonDefenseGroup extends GroundUnit
 	protected void createWinch() 
 	{
         // Enemy invokes winch down
-        Coalition enemyCoalition = Coalition.getEnemyCoalition(country);
+        Coalition enemyCoalition = Coalition.getEnemyCoalition(pwcgGroundUnitInformation.getCountry());
 	    
 		winchCheckZone = new McuCheckZone(enemyCoalition);
 		winchCheckZone.setZone(1000);
 
-		winchCheckZone.setName("Winch Check Zone for " + name);
-		winchCheckZone.setDesc("Winch Check Zone for " + name);
-		winchCheckZone.setPosition(position.copy());
+		winchCheckZone.setName("Winch Check Zone for " + pwcgGroundUnitInformation.getName());
+		winchCheckZone.setDesc("Winch Check Zone for " + pwcgGroundUnitInformation.getName());
+		winchCheckZone.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 		
 		// Make the winch down CZ Timer
 		winchCheckZoneTimer = new McuTimer();
-		winchCheckZoneTimer.setName("Winch Check Zone Timer for " + name);
-		winchCheckZoneTimer.setDesc("Winch Check Zone Timer for " + name);
-		winchCheckZoneTimer.setPosition(position.copy());
+		winchCheckZoneTimer.setName("Winch Check Zone Timer for " + pwcgGroundUnitInformation.getName());
+		winchCheckZoneTimer.setDesc("Winch Check Zone Timer for " + pwcgGroundUnitInformation.getName());
+		winchCheckZoneTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 		
 		
 		// Make the winch down Timer
 		winchDownTimer = new McuTimer();
-		winchDownTimer.setName("Winch Check Zone Timer for " + name);
-		winchDownTimer.setDesc("Winch Check Zone Timer for " + name);
-		winchDownTimer.setPosition(position.copy());
+		winchDownTimer.setName("Winch Check Zone Timer for " + pwcgGroundUnitInformation.getName());
+		winchDownTimer.setDesc("Winch Check Zone Timer for " + pwcgGroundUnitInformation.getName());
+		winchDownTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 		winchDownTimer.setTimer(60);
 		
 		// Make the winch down WP
@@ -126,7 +116,7 @@ public class BalloonDefenseGroup extends GroundUnit
     {
         spawnTimer.setName("Spawn Timer");
         spawnTimer.setDesc("Spawn Timer");
-        spawnTimer.setPosition(position.copy());
+        spawnTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
     }
 
 	/**
@@ -139,31 +129,29 @@ public class BalloonDefenseGroup extends GroundUnit
 	{
 		balloon = new Balloon (country);
 		
-		position.setYPos(Balloon.BALLOON_ALTITUDE);
+		Coordinate balloonPosition = pwcgGroundUnitInformation.getPosition().copy();
+		balloonPosition.setYPos(Balloon.BALLOON_ALTITUDE);
 		
 		Orientation orient = new Orientation();
 		orient.setyOri(RandomNumberGenerator.getRandom(360));
 
-		balloon.setPosition(position.copy());
+		balloon.setPosition(balloonPosition);
 		balloon.setOrientation(orient.copy());
-		balloon.populateEntity(position, orient);
+		balloon.populateEntity(balloonPosition, orient);
 		
 		spawner.setName("Balloon Spawn");      
 		spawner.setDesc("Balloon Spawn");      
-		spawner.setPosition(position.copy());
+		spawner.setPosition(balloonPosition.copy());
 		spawner.setOrientation(orient.copy());
 		spawner.setObject(balloon.getEntity().getIndex());
 
 		balloonIcon = new McuIcon(balloon);
 	}
 
-	/* (non-Javadoc)
-	 * @see rof.campaign.mission.Unit#linkTimers()
-	 */
 	@Override
 	protected void createGroundTargetAssociations()
 	{
-		missionBeginUnit.linkToMissionBegin(spawnTimer.getIndex());
+		pwcgGroundUnitInformation.getMissionBeginUnit().linkToMissionBegin(spawnTimer.getIndex());
         
         // Connect winch down CZ Timer -> winch down CZ -> winch downtimer -> winch down WP
         spawnTimer.setTarget(spawner.getIndex());
@@ -173,20 +161,13 @@ public class BalloonDefenseGroup extends GroundUnit
         winchDownTimer.setTarget(winchDownWP.getIndex());
 	}
 
-	/**
-	 * Write the mission to a file
-	 * 
-	 * @param writer
-	 * @throws PWCGException 
-	 * @
-	 */
 	@Override
 	public void write(BufferedWriter writer) throws PWCGException 
 	{
 		balloon.write(writer);
 		balloonIcon.write(writer);
 
-        missionBeginUnit.write(writer);
+		pwcgGroundUnitInformation.getMissionBeginUnit().write(writer);
 
 	    spawnTimer.write(writer);
 	    spawner.write(writer);
@@ -206,9 +187,6 @@ public class BalloonDefenseGroup extends GroundUnit
         }
 	}
 
-	/**
-	 * @return
-	 */
 	public Balloon getBalloon() 
 	{
 		return balloon;
@@ -223,13 +201,9 @@ public class BalloonDefenseGroup extends GroundUnit
 		return new ArrayList<IVehicle>();
 	}
 
-    
-    /**
-     * @param index
-     */
     public void setBalloonCheckZoneForPlayer(int index)
     {
-        MissionBeginUnitCheckZone mbu = (MissionBeginUnitCheckZone) missionBeginUnit;
+        MissionBeginUnitCheckZone mbu = (MissionBeginUnitCheckZone) pwcgGroundUnitInformation.getMissionBeginUnit();
         mbu.getCheckZone().setCZObject(index);
     }
 }	

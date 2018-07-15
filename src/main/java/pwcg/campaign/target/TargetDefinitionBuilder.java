@@ -37,11 +37,11 @@ public class TargetDefinitionBuilder
         targetDefinition.setPreferredRadius(productSpecific.getInitialTargetRadiusFromGeneralTargetLocation(flightType));
         targetDefinition.setMaximumRadius(productSpecific.getMaxTargetRadiusFromGeneralTargetLocation(flightType));
 
-        targetDefinition.setTargetGeneralLocation(targetGeneralLocation);
+        targetDefinition.setTargetGeneralPosition(targetGeneralLocation);
         
         TargetLocator targetLocator = new TargetLocator(targetDefinition);
         targetLocator.locateTarget();
-        targetDefinition.setTargetLocation(targetLocator.getTargetLocation());
+        targetDefinition.setTargetPosition(targetLocator.getTargetLocation());
         targetDefinition.setTargetOrientation(targetLocator.getTargetOrientation());
 
         return targetDefinition;
@@ -82,8 +82,8 @@ public class TargetDefinitionBuilder
         targetDefinition.setPreferredRadius(productSpecific.getInitialTargetRadiusFromGeneralTargetLocation(flightType));
         targetDefinition.setMaximumRadius(productSpecific.getMaxTargetRadiusFromGeneralTargetLocation(flightType));
 
-        targetDefinition.setTargetGeneralLocation(targetGeneralLocation);
-        targetDefinition.setTargetLocation(place.getPosition());
+        targetDefinition.setTargetGeneralPosition(targetGeneralLocation);
+        targetDefinition.setTargetPosition(place.getPosition());
         targetDefinition.setTargetOrientation(new Orientation());
 
         return targetDefinition;
@@ -108,8 +108,8 @@ public class TargetDefinitionBuilder
         targetDefinition.setPreferredRadius(5000);
         targetDefinition.setMaximumRadius(10000);
 
-        targetDefinition.setTargetGeneralLocation(targetPosition);
-        targetDefinition.setTargetLocation(targetPosition);
+        targetDefinition.setTargetGeneralPosition(targetPosition);
+        targetDefinition.setTargetPosition(targetPosition);
         targetDefinition.setTargetOrientation(new Orientation());
 
         return targetDefinition;

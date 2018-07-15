@@ -21,7 +21,7 @@ import pwcg.mission.ground.unittypes.GroundUnitSpawning;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.McuTREntity;
 
-public class RoFAirfield extends PWCGLocation implements IAirfield, Cloneable
+public class RoFAirfield extends FixedPosition implements IAirfield, Cloneable
 {
 	private boolean isGroup = false;
 	private Date startDate = null;

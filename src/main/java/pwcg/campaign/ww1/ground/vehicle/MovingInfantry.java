@@ -61,7 +61,7 @@ public class MovingInfantry extends Vehicle
 			displayName = "German Infantry";
 		}
 		
-		name = infantryId;
+		vehicleType = infantryId;
 		script = "LuaScripts\\WorldObjects\\" + infantryId + ".txt";
 		model = "graphics\\vehicles\\platoon\\" + infantryId + ".mgm";
 	}
@@ -72,7 +72,7 @@ public class MovingInfantry extends Vehicle
 		
 		infantry.index = IndexGenerator.getInstance().getNextIndex();
 		
-		infantry.name = this.name;
+		infantry.vehicleType = this.vehicleType;
 		infantry.displayName = this.displayName;
 		infantry.linkTrId = this.linkTrId;
 		infantry.script = this.script;

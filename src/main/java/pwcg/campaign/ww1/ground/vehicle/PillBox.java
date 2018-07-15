@@ -2,6 +2,7 @@ package pwcg.campaign.ww1.ground.vehicle;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -26,18 +27,18 @@ public class PillBox extends Vehicle
         pillBoxId = pillBoxes[selectedPillBox];
         displayName = "PillBox";
 		
-		name = pillBoxId;
+        vehicleType = pillBoxId;
 		script = "LuaScripts\\WorldObjects\\" + pillBoxId + ".txt";
 		model = "graphics\\firingpoint\\pillbox\\" + pillBoxId + ".mgm";
 	}
 
-	public PillBox copy () 
+	public PillBox copy () throws PWCGException 
 	{
 		PillBox pillBox = new PillBox(country);
 		
 		pillBox.index = IndexGenerator.getInstance().getNextIndex();
 		
-		pillBox.name = this.name;
+		pillBox.vehicleType = this.vehicleType;
 		pillBox.displayName = this.displayName;
 		pillBox.linkTrId = this.linkTrId;
 		pillBox.script = this.script;

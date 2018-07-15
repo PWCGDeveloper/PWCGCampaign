@@ -53,7 +53,7 @@ public abstract class AssaultGenerator  implements IAssaultGenerator
         // Find points for each element of the assault
         FrontLinesForMap frontLineMarker =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(date);
         List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(targetDefinition.getTargetCountry().getSide());
-        int centerFrontIndex = frontLineMarker.findIndexForClosestPosition(targetDefinition.getTargetLocation(), targetDefinition.getTargetCountry().getSide());
+        int centerFrontIndex = frontLineMarker.findIndexForClosestPosition(targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry().getSide());
         
         if (centerFrontIndex < 10)
         {

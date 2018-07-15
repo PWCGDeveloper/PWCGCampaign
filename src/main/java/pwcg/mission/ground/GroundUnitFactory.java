@@ -2,12 +2,13 @@ package pwcg.mission.ground;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.flight.artySpot.ArtillerySpotArtilleryGroup;
-import pwcg.mission.flight.balloondefense.BalloonDefenseGroup;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.SpotLightGroup;
 import pwcg.mission.ground.unittypes.artillery.GroundArtilleryUnit;
@@ -26,31 +27,13 @@ public class GroundUnitFactory
         this.country  = country;
     }
 
-    public ArtillerySpotArtilleryGroup createFriendlyArtilleryBattery () throws PWCGException 
+    public ArtillerySpotArtilleryGroup createFriendlyArtilleryBattery (Coordinate targetPosition) throws PWCGException 
     {
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(location);
-               
-        ArtillerySpotArtilleryGroup friendlyArtilleryGroup = new ArtillerySpotArtilleryGroup(campaign);
-        friendlyArtilleryGroup.initialize(missionBeginUnit, location, country);
+        ArtillerySpotBatteryFactory artillerySpotBatteryFactory = new ArtillerySpotBatteryFactory(campaign, location, targetPosition, country);
+        ArtillerySpotArtilleryGroup friendlyArtilleryGroup =artillerySpotBatteryFactory.createFriendlyArtilleryBattery();
         friendlyArtilleryGroup.createUnitMission();
-
         return friendlyArtilleryGroup;
     }
-
-    public GroundUnit createBalloonUnit () throws PWCGException 
-    {
-        Coalition enemyCoalition = Coalition.getEnemyCoalition(country);
-        
-        MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
-        missionBeginUnit.initialize(location, 7000, enemyCoalition);
-
-        BalloonDefenseGroup balloonUnit = new BalloonDefenseGroup(campaign);
-        balloonUnit.initialize(missionBeginUnit, location, country);
-        balloonUnit.createUnitMission();
-        
-        return balloonUnit;
-    }   
 
     public GroundUnit createArtilleryUnit (
                     MissionBeginUnit missionBeginUnit, 
@@ -58,26 +41,32 @@ public class GroundUnitFactory
                     Coordinate startCoords, 
                     Coordinate destinationCoords) throws PWCGException
     {
-        GroundArtilleryUnit artilleryUnit = new GroundArtilleryUnit(campaign);
-        
+        String nationality = country.getNationality();
+        String name = nationality + " Artillery";
+
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                missionBeginUnit, country, name, TacticalTarget.TARGET_ARTILLERY, startCoords, destinationCoords);
+
+        GroundArtilleryUnit artilleryUnit = new GroundArtilleryUnit(campaign, groundUnitInformation);
         artilleryUnit.setMinMaxRequested(1, 3);
-        
-        artilleryUnit.initialize(missionBeginUnit, startCoords, destinationCoords, country);
         artilleryUnit.createUnitMission();
 
         return artilleryUnit;
     }
 
-
     public SpotLightGroup createSpotLightGroup() throws PWCGException 
     {
         Coalition playerCoalition = Coalition.getFriendlyCoalition(campaign.determineCountry());
-
         MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
         missionBeginUnit.initialize(location, 12000, playerCoalition);
 
-        SpotLightGroup spotLightGroup = new SpotLightGroup();
-        spotLightGroup.initialize(missionBeginUnit, country, location, 8);
+        String nationality = country.getNationality();
+        String name = nationality + " Spotlight Battery";
+
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                missionBeginUnit, country, name, TacticalTarget.TARGET_NONE, location, location);
+
+        SpotLightGroup spotLightGroup = new SpotLightGroup(groundUnitInformation, 8);
         spotLightGroup.createUnitMission();
         
         return spotLightGroup;

@@ -11,8 +11,8 @@ public class TargetDefinition
     private TargetCategory targetCategory = TargetCategory.TARGET_CATEGORY_NONE;
     private TacticalTarget targetType = TacticalTarget.TARGET_NONE;
     private boolean isPlayerTarget = false;
-    private Coordinate targetGeneralLocation;
-    private Coordinate targetLocation;
+    private Coordinate targetGeneralPosition;
+    private Coordinate targetPosition;
     private Orientation targetOrientation;
     private ICountry attackingCountry;
     private ICountry targetCountry;
@@ -21,14 +21,14 @@ public class TargetDefinition
     private int preferredRadius;
     private int maximumRadius;
 
-    public Coordinate getTargetGeneralLocation()
+    public Coordinate getTargetGeneralPosition()
     {
-        return targetGeneralLocation;
+        return targetGeneralPosition;
     }
 
-    public void setTargetGeneralLocation(Coordinate targetGeneralLocation)
+    public void setTargetGeneralPosition(Coordinate targetGeneralLocation)
     {
-        this.targetGeneralLocation = targetGeneralLocation;
+        this.targetGeneralPosition = targetGeneralLocation;
     }
 
     public TargetCategory getTargetCategory()
@@ -51,9 +51,14 @@ public class TargetDefinition
         this.targetType = targetType;
     }
 
-    public Coordinate getTargetLocation()
+    public Coordinate getTargetPosition()
     {
-        return targetLocation;
+        return targetPosition;
+    }
+
+    public void setTargetPosition(Coordinate targetLocation)
+    {
+        this.targetPosition = targetLocation;
     }
 
     public Orientation getTargetOrientation()
@@ -64,11 +69,6 @@ public class TargetDefinition
     public void setTargetOrientation(Orientation targetOrientation)
     {
         this.targetOrientation = targetOrientation;
-    }
-
-    public void setTargetLocation(Coordinate targetLocation)
-    {
-        this.targetLocation = targetLocation;
     }
 
     public ICountry getAttackingCountry()

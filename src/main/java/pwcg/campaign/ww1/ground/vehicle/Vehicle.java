@@ -9,19 +9,22 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.constants.AiSkillLevel;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.Logger;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.McuTREntity;
 
-public abstract class Vehicle extends PWCGLocation implements Cloneable, IVehicle
+public abstract class Vehicle implements Cloneable, IVehicle
 {
-	protected String displayName = "Vehicle";
+    protected String displayName = "Vehicle";
+    protected String vehicleType = "";
 	protected int index;
 	protected int linkTrId;
-	protected Orientation orientation = new Orientation();
+    protected Coordinate position;
+    protected Orientation orientation;
 	protected String script = "";
 	protected String model = "";
 	protected String Desc = "";
@@ -44,8 +47,18 @@ public abstract class Vehicle extends PWCGLocation implements Cloneable, IVehicl
 		this.country = country;
 	}
 
-	public void populateEntity()
+	public void populateEntity() throws PWCGException
 	{
+        if (position == null)
+        {
+            throw new PWCGException ("No position set for populate entity");
+        }
+        
+        if (orientation == null)
+        {
+            throw new PWCGException ("No orientation set for populate entity");
+        }
+        
 		// Link this plane to the MCU
 		this.linkTrId = entity.getIndex();
 
@@ -82,7 +95,7 @@ public abstract class Vehicle extends PWCGLocation implements Cloneable, IVehicl
 			writer.write("{");
 			writer.newLine();
 
-			writer.write("  Name = \"" + name + "\";");
+			writer.write("  Name = \"" + vehicleType + "\";");
 			writer.newLine();
 			writer.write("  Index = " + index + ";");
 			writer.newLine();
@@ -162,7 +175,17 @@ public abstract class Vehicle extends PWCGLocation implements Cloneable, IVehicl
 		this.linkTrId = linkTrId;
 	}
 
-	public Orientation getOrientation()
+	public Coordinate getPosition()
+    {
+        return position;
+    }
+
+    public void setPosition(Coordinate position)
+    {
+        this.position = position;
+    }
+
+    public Orientation getOrientation()
 	{
 		return orientation;
 	}

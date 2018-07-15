@@ -20,20 +20,13 @@ public class ActualWaypointPackage extends WaypointPackage
 {
     protected McuTimer waypointTimer = null;
 
-    /**
-     * @param flight
-     */
-    public ActualWaypointPackage(Flight flight)
+    public ActualWaypointPackage(Flight flight) throws PWCGException
     {
         super(flight);
         createWaypointTimer();
     }
-   
 
-    /**
-     * @
-     */
-    private void createWaypointTimer()
+    private void createWaypointTimer() throws PWCGException
     {
         // Only unspawned air starts do this.  
         // flights are triggered from the virtual waypoints.getWaypoints().
@@ -43,21 +36,13 @@ public class ActualWaypointPackage extends WaypointPackage
         waypointTimer.setPosition(flight.getPosition());
         waypointTimer.setTimer(1);
     }
-    
 
-    /**
-     * @see rof.campaign.mission.flight.waypoint.WaypointPackage#setWaypoints(java.util.List)
-     */
     public void setWaypoints(List<McuWaypoint> waypoints)
     {
         super.setWaypoints(waypoints);
         setFirstWPTarget();
     }
 
-    
-    /**
-     * 
-     */
     private void setFirstWPTarget()
     {
         List<McuWaypoint> waypoints = getWaypointsForLeadPlane();
@@ -71,31 +56,16 @@ public class ActualWaypointPackage extends WaypointPackage
         }
     }
 
-
-    /**
-     * @param timerToLink
-     */
     public BaseFlightMcu getEntryMcu()
     {
         return waypointTimer;
     }
 
-
-    /**
-     * @param index
-     */
     public void onTriggerAddTarget(int index)
     {
         waypointTimer.setTarget(index);
     }
 
-    
-    /**
-     * For player air starts on escort missions, move the escort and the player flight
-     * @throws PWCGException 
-     * 
-     * @
-     */
     public void movePlayerEscortFlightToBombApproach() throws PWCGException 
     {
         List<McuWaypoint> waypoints = getWaypointsForLeadPlane();
@@ -162,14 +132,6 @@ public class ActualWaypointPackage extends WaypointPackage
         }               
     }
 
-
-    /**
-     * Write the mission to a file
-     * 
-     * @param writer
-     * @throws PWCGIOException 
-     * @
-     */
     public void write(BufferedWriter writer) throws PWCGIOException 
     {
         waypointTimer.write(writer);

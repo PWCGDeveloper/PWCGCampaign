@@ -133,7 +133,7 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     public void createFriendlyArtilleryBatteryTest () throws PWCGException 
     {
         GroundUnitFactory groundUnitFactory =  new GroundUnitFactory(campaign, new Coordinate (100000, 0, 100000), country);
-        ArtillerySpotArtilleryGroup groundUnit = (ArtillerySpotArtilleryGroup)groundUnitFactory.createFriendlyArtilleryBattery();
+        ArtillerySpotArtilleryGroup groundUnit = (ArtillerySpotArtilleryGroup)groundUnitFactory.createFriendlyArtilleryBattery(myTestPosition);
         assert (groundUnit.getVehicles().size() > 0);
         assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
     }

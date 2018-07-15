@@ -40,7 +40,7 @@ public class Drifter extends Vehicle
     		}
 		}
 		
-	    name = shipId;
+	    vehicleType = shipId;
 	    script = "LuaScripts\\WorldObjects\\" + shipId + ".txt";
 	    model = "graphics\\vehicles\\platoon\\" + shipId + ".mgm";
 	}
@@ -54,7 +54,7 @@ public class Drifter extends Vehicle
 		
 		ship.index = IndexGenerator.getInstance().getNextIndex();
 		
-		ship.name = this.name;
+		ship.vehicleType = this.vehicleType;
 		ship.displayName = this.displayName;
 		ship.linkTrId = this.linkTrId;
 		ship.script = this.script;
@@ -81,9 +81,10 @@ public class Drifter extends Vehicle
 
 	/**
 	 * Override to always enable ships
+	 * @throws PWCGException 
 	 */
 	@Override
-	public void populateEntity()
+	public void populateEntity() throws PWCGException
 	{
 		super.populateEntity();
 		entity.setEnabled(1);

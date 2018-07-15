@@ -4,7 +4,9 @@ import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.target.TacticalTarget;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.Unit;
 import pwcg.mission.ground.vehicle.IVehicle;
@@ -70,57 +72,53 @@ import pwcg.mission.ground.vehicle.IVehicle;
  */
 public abstract class GroundUnit extends Unit
 {
-    protected TacticalTarget targetType = TacticalTarget.TARGET_NONE;
-    protected Coordinate destinationCoords = null;    
-    protected boolean isFiring = false;
+    protected GroundUnitInformation pwcgGroundUnitInformation;
 
+    abstract public void createUnitMission() throws PWCGException ;
+    abstract public List<IVehicle> getVehicles() ;
     abstract protected void createGroundTargetAssociations();
 
-    public GroundUnit(TacticalTarget targetType) 
+    public GroundUnit(GroundUnitInformation pwcgGroundUnitInformation) 
 	{
         super();
-        this.targetType = targetType;
+        this.pwcgGroundUnitInformation = pwcgGroundUnitInformation;
 	}
-
-    public void initialize (
-                    MissionBeginUnit missionBeginUnit, 
-                    String name, 
-                    Coordinate position, 
-                    Coordinate destinationCoords, 
-                    ICountry country) 
-    {
-        this.destinationCoords = destinationCoords;
-        super.initialize(missionBeginUnit, position, name, country);
-    }
-
-    public TacticalTarget getTargetType() 
-    {
-        return targetType;
-    }   
-    
-    public boolean isFiring()
-    {
-        return this.isFiring;
-    }
-
-    public void setFiring(boolean isFiring)
-    {
-        this.isFiring = isFiring;
-    }
 
     public boolean isCombatUnit()
     {
-        if (targetType == TacticalTarget.TARGET_ASSAULT ||
-            targetType == TacticalTarget.TARGET_DEFENSE ||
-            targetType == TacticalTarget.TARGET_INFANTRY)
+        if (pwcgGroundUnitInformation.getTargetType() == TacticalTarget.TARGET_ASSAULT ||
+            pwcgGroundUnitInformation.getTargetType() == TacticalTarget.TARGET_DEFENSE ||
+            pwcgGroundUnitInformation.getTargetType() == TacticalTarget.TARGET_INFANTRY)
         {
             return true;
         }
 
         return false;
     }
-
-    abstract public List<IVehicle> getVehicles() ;
-
+    
+    public GroundUnitInformation getPwcgGroundUnitInformation()
+    {
+        return pwcgGroundUnitInformation;
+    }
+    
+    public ICountry getCountry() throws PWCGException
+    {
+        return pwcgGroundUnitInformation.getCountry();
+    }
+    
+    public Coordinate getPosition() throws PWCGException
+    {
+        return pwcgGroundUnitInformation.getPosition();
+    }
+    
+    public String getName() throws PWCGException
+    {
+        return pwcgGroundUnitInformation.getName();
+    }
+    
+    public MissionBeginUnit getMissionBeginUnit()
+    {
+        return pwcgGroundUnitInformation.getMissionBeginUnit();
+    }
 }	
 

@@ -71,7 +71,7 @@ public class AAAArtillery extends AAA
 			displayName = "British MG";
 		}
 		
-		name = mgId;
+		vehicleType = mgId;
         script = "LuaScripts\\WorldObjects\\" + mgId + ".txt";
 		// For 10x AAA fire rate
         if (use10x)
@@ -109,7 +109,7 @@ public class AAAArtillery extends AAA
 		
 		mg.index = IndexGenerator.getInstance().getNextIndex();
 		
-		mg.name = this.name;
+		mg.vehicleType = this.vehicleType;
 		mg.displayName = this.displayName;
 		mg.linkTrId = this.linkTrId;
 		mg.script = this.script;

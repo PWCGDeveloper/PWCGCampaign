@@ -15,14 +15,14 @@ public class GroundUnitBuilderTrain
 {
     public static GroundUnitCollection createTrainTarget(Campaign campaign, Mission mission, TargetDefinition targetDefinition) throws PWCGException, PWCGMissionGenerationException
     {
-        TrainUnitFactory groundUnitFactory = new TrainUnitFactory(campaign, targetDefinition.getTargetLocation(), targetDefinition.getTargetCountry(), campaign.getDate());
+        TrainUnitFactory groundUnitFactory = new TrainUnitFactory(campaign, targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry(), campaign.getDate());
         GroundUnit targetUnit = groundUnitFactory.createTrainUnit();
         
         GroundUnitCollection groundUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION);
         groundUnitCollection.addGroundUnit(GroundUnitType.TRANSPORT_UNIT, targetUnit);
         
         GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
-        Block trainStation = groupManager.getRailroadStationFinder().getClosestTrainPosition(targetDefinition.getTargetLocation());
+        Block trainStation = groupManager.getRailroadStationFinder().getClosestTrainPosition(targetDefinition.getTargetPosition());
         mission.getMissionGroundUnitManager().registerTrainStation(trainStation);
         return groundUnitCollection;
     }

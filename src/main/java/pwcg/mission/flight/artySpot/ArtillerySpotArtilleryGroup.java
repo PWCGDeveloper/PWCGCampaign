@@ -5,20 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PositionsManager;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.campaign.ww1.ground.vehicle.Artillery;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
-import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.MissionStringHandler;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
@@ -29,59 +23,28 @@ import pwcg.mission.mcu.McuTimer;
 
 public class ArtillerySpotArtilleryGroup extends GroundUnit
 {
-    public static final int MAX_ARTILLERY_RANGE = 10000;
     public static final int NUM_ARTILLERY = 4;
 	
 	protected ArrayList<Artillery> arty = new ArrayList<Artillery>();
 
-	protected double heading = 90;
 	protected McuTimer activateTimer = new McuTimer();
 	protected McuActivate activate = new McuActivate();
 	protected McuTimer deactivateTimer = new McuTimer();
 	protected McuDeactivate deactivate = new McuDeactivate();
-	protected Campaign campaign;
+    protected Campaign campaign;
+    protected Coordinate targetPosition;
 
     private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
 
     
-	public ArtillerySpotArtilleryGroup (Campaign campaign) 
+	public ArtillerySpotArtilleryGroup (Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation) 
 	{
-		super(TacticalTarget.TARGET_ARTILLERY);
+        super(pwcgGroundUnitInformation);
+	    pwcgGroundUnitInformation.setTargetType(TacticalTarget.TARGET_ARTILLERY);
 		
 		this.campaign = campaign;
 	}
 
-	public void initialize (
-	                MissionBeginUnit missionBeginUnit,
-	                Coordinate targetPosition, 
-	                ICountry country) throws PWCGException 
-	{
-		PositionsManager positionsManager = new PositionsManager(campaign.getDate());
-		
-		String airfieldName = campaign.getAirfieldName();
-        IAirfield field =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
-
-		Coordinate artilleryPosition = positionsManager.getClosestDefinitePosition(country.getSide(), 
-																		  field.getPosition().copy());	
-
-		heading = MathUtils.calcAngle(artilleryPosition, targetPosition);		
-
-		// Make sure that the artillery is in range
-		if (MathUtils.calcDist(targetPosition, artilleryPosition) > MAX_ARTILLERY_RANGE)
-		{
-			double angle = MathUtils.calcAngle(targetPosition, artilleryPosition);
-			artilleryPosition = MathUtils.calcNextCoord(targetPosition, angle, MAX_ARTILLERY_RANGE);
-		}
-		
-		String countryName = country.getNationality();
-		String name = countryName + " Artillery Group";
-		
-		super.initialize (missionBeginUnit, name, artilleryPosition, targetPosition, country);
-	}
-	
-	/**
-	 *  Return all vehicles in the unit
-	 */
 	public List<IVehicle> getVehicles() 
 	{
 		List<IVehicle> vehicles = new ArrayList<IVehicle>();
@@ -91,21 +54,11 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
 		return vehicles;
 	}
 
-	   
-    /**
-     *  Return all vehicles in the unit
-     */
     public int getLeadIndex() 
     {
         return arty.get(0).getEntity().getIndex();
     }
 
-	/**
-	 * Create a mission for this flight
-	 * @throws PWCGException 
-	 * 
-	 * @
-	 */
 	@Override
 	public void createUnitMission() throws PWCGException  
 	{
@@ -116,7 +69,7 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
 
     protected void createArtillery() throws PWCGException 
     {
-        Artillery gunType = new Artillery(country);
+        Artillery gunType = new Artillery(pwcgGroundUnitInformation.getCountry());
                 
         for (int i = 0; i < NUM_ARTILLERY; ++i)
         {
@@ -126,9 +79,7 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
             Coordinate position = getRandomPosition();
             gun.setPosition(position);
 
-            Orientation orient = new Orientation();
-            orient.setyOri(heading);
-            gun.setOrientation(orient);
+            gun.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
             
             arty.add(gun);
             
@@ -141,23 +92,23 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
 
 	protected void createActivation()
 	{
-		activate.setName(name + ": Activate");		
-		activate.setDesc("Activate for " + name);
-		activate.setPosition(position.copy());
+		activate.setName(pwcgGroundUnitInformation.getName() + ": Activate");		
+		activate.setDesc("Activate for " + pwcgGroundUnitInformation.getName());
+		activate.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 		
 		activateTimer = new McuTimer();
-		activateTimer.setName(name + ": Activate Timer");		
-		activateTimer.setDesc("Activate Timer for " + name);
-		activateTimer.setPosition(position.copy());
+		activateTimer.setName(pwcgGroundUnitInformation.getName() + ": Activate Timer");		
+		activateTimer.setDesc("Activate Timer for " + pwcgGroundUnitInformation.getName());
+		activateTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 
-		deactivate.setName(name + ": Deactivate");		
-		deactivate.setDesc("Deactivate for " + name);
-		deactivate.setPosition(position.copy());
+		deactivate.setName(pwcgGroundUnitInformation.getName() + ": Deactivate");		
+		deactivate.setDesc("Deactivate for " + pwcgGroundUnitInformation.getName());
+		deactivate.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 		
 		deactivateTimer = new McuTimer();
-		deactivateTimer.setName(name + ": Deactivate Timer");		
-		deactivateTimer.setDesc("Deactivate Timer for " + name);
-		deactivateTimer.setPosition(position.copy());
+		deactivateTimer.setName(pwcgGroundUnitInformation.getName() + ": Deactivate Timer");		
+		deactivateTimer.setDesc("Deactivate Timer for " + pwcgGroundUnitInformation.getName());
+		deactivateTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 	}
 
     public void createSubtitles()
@@ -165,14 +116,14 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
         McuSubtitle artilleryReadySubtitle = new McuSubtitle();
         artilleryReadySubtitle.setName("artilleryReadySubtitle Subtitle");
         artilleryReadySubtitle.setText("Artillery Ready");
-        artilleryReadySubtitle.setPosition(position.copy());
+        artilleryReadySubtitle.setPosition(pwcgGroundUnitInformation.getPosition().copy());
         activateTimer.setTarget(artilleryReadySubtitle.getIndex());
         subTitleList.add(artilleryReadySubtitle);
         
         McuSubtitle artilleryCancelledSubtitle = new McuSubtitle();
         artilleryCancelledSubtitle.setName("artilleryCancelledSubtitle Subtitle");
         artilleryCancelledSubtitle.setText("Artillery Cancelled");
-        artilleryCancelledSubtitle.setPosition(position.copy());
+        artilleryCancelledSubtitle.setPosition(pwcgGroundUnitInformation.getPosition().copy());
         deactivateTimer.setTarget(artilleryCancelledSubtitle.getIndex());
         subTitleList.add(artilleryCancelledSubtitle);
 
@@ -188,8 +139,8 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
 		int xoffset = RandomNumberGenerator.getRandom(1000);
 		int zoffset = RandomNumberGenerator.getRandom(1000);
 		
-		position.setXPos(getPosition().getXPos() + xoffset - 500);
-		position.setZPos(getPosition().getZPos() + zoffset - 500);
+		position.setXPos(pwcgGroundUnitInformation.getPosition().copy().getXPos() + xoffset - 500);
+		position.setZPos(pwcgGroundUnitInformation.getPosition().copy().getZPos() + zoffset - 500);
 		
 		return position;
 	}
@@ -197,7 +148,7 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
 	@Override
 	protected void createGroundTargetAssociations()
 	{
-	    missionBeginUnit.linkToMissionBegin(activateTimer.getIndex());
+	    pwcgGroundUnitInformation.getMissionBeginUnit().linkToMissionBegin(activateTimer.getIndex());
 		activateTimer.setTarget(activate.getIndex());
 		
 		for (Artillery gun : arty)
@@ -214,7 +165,7 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
 	{	
 	    try
 	    {
-	        missionBeginUnit.write(writer);
+	        pwcgGroundUnitInformation.getMissionBeginUnit().write(writer);
 	        
     		activateTimer.write(writer);
     		activate.write(writer);

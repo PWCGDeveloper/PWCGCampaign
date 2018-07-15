@@ -11,7 +11,7 @@ public class GroundUnitBuilderArtilleryBattery
 {
     public static GroundUnitCollection createArtilleryBattery(Campaign campaign, TargetDefinition targetDefinition) throws PWCGException, PWCGMissionGenerationException
     {
-        ArtilleryUnitFactory groundUnitFactory = new ArtilleryUnitFactory(campaign, targetDefinition.getTargetLocation(), targetDefinition.getTargetCountry());
+        ArtilleryUnitFactory groundUnitFactory = new ArtilleryUnitFactory(campaign, targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry());
         GroundUnit targetUnit = groundUnitFactory.createGroundArtilleryBattery();        
         GroundUnitCollection groundUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION);
         groundUnitCollection.addGroundUnit(GroundUnitType.ARTILLERY_UNIT, targetUnit);

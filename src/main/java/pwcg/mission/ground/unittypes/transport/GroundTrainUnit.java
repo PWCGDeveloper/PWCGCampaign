@@ -4,17 +4,14 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.VehicleFactory;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.MissionBeginUnitCheckZone;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.unittypes.GroundMovingUnit;
 import pwcg.mission.ground.vehicle.ITrainLocomotive;
 import pwcg.mission.ground.vehicle.IVehicle;
@@ -26,22 +23,12 @@ public class GroundTrainUnit extends GroundMovingUnit
 {
     private Campaign campaign;
 
-	public GroundTrainUnit (Campaign campaign) 
+	public GroundTrainUnit (Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation) 
 	{
-        super(TacticalTarget.TARGET_TRAIN);
+	    super(pwcgGroundUnitInformation);
         this.campaign = campaign;
         unitSpeed = 12;
 	}
-
-     public void initialize (
-                     MissionBeginUnitCheckZone missionBeginUnit, 
-                     Coordinate location, 
-                     Coordinate destinationCoords, 
-                     ICountry country)
-     {
-         String name = "Train";
-         super.initialize(missionBeginUnit, name, location,  destinationCoords, country);
-     }
 
 	protected void createUnits() throws PWCGException 
 	{		
@@ -51,11 +38,11 @@ public class GroundTrainUnit extends GroundMovingUnit
 		this.spawningVehicle = locomotive;
 	}
 
-	private ITrainLocomotive makeLocomotive(IVehicleFactory vehicleFactory)
+	private ITrainLocomotive makeLocomotive(IVehicleFactory vehicleFactory) throws PWCGException
 	{
-		ITrainLocomotive locomotive = vehicleFactory.createTrainLocomotive(country);
+		ITrainLocomotive locomotive = vehicleFactory.createTrainLocomotive(pwcgGroundUnitInformation.getCountry());
 
-        locomotive.setPosition(position.copy());
+        locomotive.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 		locomotive.setOrientation(new Orientation());
 		locomotive.populateEntity();
 		locomotive.getEntity().setEnabled(1);
@@ -70,7 +57,7 @@ public class GroundTrainUnit extends GroundMovingUnit
 
 		for (int i = 0; i < numCars; ++i)
 		{	
-	        IVehicle car = vehicleFactory.createTrainCar(country);
+	        IVehicle car = vehicleFactory.createTrainCar(pwcgGroundUnitInformation.getCountry());
 			locomotive.addCar(car);
 		}
 	}
@@ -88,7 +75,7 @@ public class GroundTrainUnit extends GroundMovingUnit
         spawn.setName("Train Spawn");      
         spawn.setDesc("Train Spawn");
         spawn.setOrientation(new Orientation());
-        spawn.setPosition(position.copy()); 
+        spawn.setPosition(pwcgGroundUnitInformation.getPosition().copy()); 
 
         spawners.add(spawn);
     }
@@ -109,7 +96,7 @@ public class GroundTrainUnit extends GroundMovingUnit
             writer.write("  Desc = \"Train\";");
             writer.newLine();
 
-            missionBeginUnit.write(writer);
+            pwcgGroundUnitInformation.getMissionBeginUnit().write(writer);
 
             spawnTimer.write(writer);
             spawningVehicle.write(writer);

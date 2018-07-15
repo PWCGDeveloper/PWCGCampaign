@@ -10,53 +10,53 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGIOException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.Logger;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.McuTREntity;
 
-abstract class Vehicle extends PWCGLocation implements Cloneable, IVehicle
+abstract class Vehicle implements Cloneable, IVehicle
 {
-	protected String displayName = "Vehicle";
-	protected int index;
-	protected int linkTrId;
-	protected Orientation orientation = new Orientation();
-	protected String script = "";
-	protected String model = "";
-	protected String Desc = "";
-	protected int numberInFormation = 0;
-	protected int vulnerable = 1;
-	protected int engageable = 1;
-	protected int limitAmmo = 1;
-	protected AiSkillLevel aiLevel = AiSkillLevel.NOVICE;
-	protected int damageReport = 50;
-	protected int damageThreshold = 1; 
-	protected int deleteAfterDeath = 1; 
-	protected boolean isThirdParty = false; 
-	protected ICountry country = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
+    protected String vehicleType = "";
+    protected String displayName = "Vehicle";
+    protected int index;
+    protected int linkTrId;
+    protected Coordinate position;
+    protected Orientation orientation;
+    protected String script = "";
+    protected String model = "";
+    protected String Desc = "";
+    protected int numberInFormation = 0;
+    protected int vulnerable = 1;
+    protected int engageable = 1;
+    protected int limitAmmo = 1;
+    protected AiSkillLevel aiLevel = AiSkillLevel.NOVICE;
+    protected int damageReport = 50;
+    protected int damageThreshold = 1;
+    protected int deleteAfterDeath = 1;
+    protected boolean isThirdParty = false;
+    protected ICountry country = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
 
-	protected McuTREntity entity = new McuTREntity();
-
+    protected McuTREntity entity = new McuTREntity();
 
     protected Vehicle()
     {
         index = IndexGenerator.getInstance().getNextIndex();
     }
-    
-	public void populateEntity()
-	{
-		// Link this plane to the MCU
-		this.linkTrId = entity.getIndex();
-		
-		// Position is same as vehicle
-		entity.setPosition(position);
-		entity.setOrientation(orientation);
-		
-		entity.setMisObjID(index);
-	}
 
-	   
+    public void populateEntity()
+    {
+        // Link this plane to the MCU
+        this.linkTrId = entity.getIndex();
+
+        // Position is same as vehicle
+        entity.setPosition(position);
+        entity.setOrientation(orientation);
+
+        entity.setMisObjID(index);
+    }
+
     public void write(BufferedWriter writer) throws PWCGIOException
     {
         try
@@ -65,14 +65,14 @@ abstract class Vehicle extends PWCGLocation implements Cloneable, IVehicle
             writer.newLine();
             writer.write("{");
             writer.newLine();
-            
+
             writeInternals(writer);
-            
+
             writer.write("}");
             writer.newLine();
             writer.newLine();
             writer.newLine();
-            
+
             entity.write(writer);
         }
         catch (IOException e)
@@ -81,29 +81,29 @@ abstract class Vehicle extends PWCGLocation implements Cloneable, IVehicle
             throw new PWCGIOException(e.getMessage());
         }
     }
-    
+
     protected void writeInternals(BufferedWriter writer) throws PWCGIOException
     {
         try
         {
-            writer.write("  Name = \"" + name + "\";");
+            writer.write("  Name = \"" + vehicleType + "\";");
             writer.newLine();
             writer.write("  Index = " + index + ";");
             writer.newLine();
             writer.write("  LinkTrId = " + linkTrId + ";");
             writer.newLine();
-            
+
             position.write(writer);
-            orientation.write(writer);      
-            
+            orientation.write(writer);
+
             writer.write("  Script = \"" + script + "\";");
             writer.newLine();
             writer.write("  Model = \"" + model + "\";");
             writer.newLine();
-            
-    		country.writeAdjusted(writer);
 
-            writer.write("  Desc = \"" +  Desc + "\";");
+            country.writeAdjusted(writer);
+
+            writer.write("  Desc = \"" + Desc + "\";");
             writer.newLine();
             writer.write("  AILevel = " + aiLevel.getAiSkillLevel() + ";");
             writer.newLine();
@@ -129,12 +129,6 @@ abstract class Vehicle extends PWCGLocation implements Cloneable, IVehicle
         }
     }
 
-    
-    /**
-     * 
-     * @return
-     */
-
     public boolean vehicleExists()
     {
         String scriptFilename = "..\\data\\" + script;
@@ -152,24 +146,42 @@ abstract class Vehicle extends PWCGLocation implements Cloneable, IVehicle
         return false;
     }
 
-    public void setOrientation(Orientation orientation) {
-		this.orientation = orientation;
-		entity.setOrientation(orientation);
-	}
+    public Coordinate getPosition()
+    {
+        return position;
+    }
 
-	protected String getScript() {
-		return script;
-	}
+    public void setPosition(Coordinate position)
+    {
+        this.position = position;
+    }
 
-	
+    public Orientation getOrientation()
+    {
+        return orientation;
+    }
 
-	protected void setDesc(String desc) {
-		Desc = desc;
-	}
+    public void setOrientation(Orientation orientation)
+    {
+        this.orientation = orientation;
+        entity.setOrientation(orientation);
+    }
 
-	public McuTREntity getEntity() {
-		return entity;
-	}
+
+    protected String getScript()
+    {
+        return script;
+    }
+
+    protected void setDesc(String desc)
+    {
+        Desc = desc;
+    }
+
+    public McuTREntity getEntity()
+    {
+        return entity;
+    }
 
     public int getEngageable()
     {
@@ -186,13 +198,13 @@ abstract class Vehicle extends PWCGLocation implements Cloneable, IVehicle
         this.aiLevel = aiLevel;
     }
 
-	public void setCountry(ICountry country)
-	{
-		this.country = country;
-	}
+    public void setCountry(ICountry country)
+    {
+        this.country = country;
+    }
 
-	public ICountry getCountry()
-	{
-		return country;
-	}
+    public ICountry getCountry()
+    {
+        return country;
+    }
 }

@@ -33,8 +33,8 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
         
         targetDefinition.setAttackingCountry(country);
         targetDefinition.setTargetCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
-        targetDefinition.setTargetGeneralLocation(myTestPosition);
-        targetDefinition.setTargetLocation(new Coordinate(100000, 0, 150000));
+        targetDefinition.setTargetGeneralPosition(myTestPosition);
+        targetDefinition.setTargetPosition(new Coordinate(100000, 0, 150000));
         targetDefinition.setTargetOrientation(new Orientation());
         targetDefinition.setDate(date);
         targetDefinition.setPreferredRadius(80000);

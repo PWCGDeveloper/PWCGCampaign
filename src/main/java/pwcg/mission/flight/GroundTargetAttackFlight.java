@@ -80,14 +80,14 @@ public abstract class GroundTargetAttackFlight extends Flight
         }
     }
     
-    protected void createAttackArea(int altitude) 
+    protected void createAttackArea(int altitude) throws PWCGException 
     {
         if (isVirtual)
         {
             for (PlaneMCU plane : planes)
             {
                 AttackMcuSequence attackMcuSequence = new AttackMcuSequence();
-                attackMcuSequence.createAttackArea(plane, name, targetCoords, altitude, attackTime);
+                attackMcuSequence.createAttackArea(plane, squadron.determineDisplayName(campaign.getDate()), targetCoords, altitude, attackTime);
                 
                 attackMcuSequences.put(plane.getIndex(), attackMcuSequence);
             }
@@ -95,7 +95,7 @@ public abstract class GroundTargetAttackFlight extends Flight
         else
         {
             AttackMcuSequence attackMcuSequence = new AttackMcuSequence();
-            attackMcuSequence.createAttackArea(getLeadPlane(), name, targetCoords, altitude, attackTime);
+            attackMcuSequence.createAttackArea(getLeadPlane(), squadron.determineDisplayName(campaign.getDate()), targetCoords, altitude, attackTime);
             
             attackMcuSequences.put(getLeadPlane().getIndex(), attackMcuSequence);
         }
@@ -164,50 +164,49 @@ public abstract class GroundTargetAttackFlight extends Flight
                 {
                     GroundUnit groundUnit = (GroundUnit)linkedUnit;             
 
-                    if (groundUnit.getTargetType() == TacticalTarget.TARGET_INFANTRY)
+                    TacticalTarget targetType = groundUnit.getPwcgGroundUnitInformation().getTargetType();
+                    if (targetType == TacticalTarget.TARGET_INFANTRY)
                     {
                         objective = "Attack enemy troops " + objectiveLocation; 
                         break;
                     }
-                    if (groundUnit.getTargetType() == TacticalTarget.TARGET_ASSAULT)
+                    if (targetType == TacticalTarget.TARGET_ASSAULT)
                     {
                         objective = "Attack assaulting enemy troops " + objectiveLocation; 
                         break;
                     }
-                    else if (groundUnit.getTargetType() == TacticalTarget.TARGET_DEFENSE)
+                    else if (targetType == TacticalTarget.TARGET_DEFENSE)
                     {
                         objective = "Attack defending enemy troops " + objectiveLocation; 
                         break;
                     }
-                    else if (groundUnit.getTargetType() == TacticalTarget.TARGET_ARTILLERY)
+                    else if (targetType == TacticalTarget.TARGET_ARTILLERY)
                     {
                         objective = "Attack the artillery battery " + objectiveLocation; 
-                        // Artillery might be overridden by something else
                     }
-                    else if (groundUnit.getTargetType() == TacticalTarget.TARGET_TRANSPORT)
+                    else if (targetType == TacticalTarget.TARGET_TRANSPORT)
                     {
                         objective = "Attack the transport and road facilities " + objectiveLocation; 
                         break;
                     }
-                    else if (groundUnit.getTargetType() == TacticalTarget.TARGET_SHIPPING)
+                    else if (targetType == TacticalTarget.TARGET_SHIPPING)
                     {
                         objective = "Attack the shipping " + objectiveLocation; 
                         break;
                     }
-                    else if (groundUnit.getTargetType() == TacticalTarget.TARGET_BALLOON)
+                    else if (targetType == TacticalTarget.TARGET_BALLOON)
                     {
                         objective = "Attack the balloons " + objectiveLocation; 
                         break;
                     }
-                    else if (groundUnit.getTargetType() == TacticalTarget.TARGET_DRIFTER)
+                    else if (targetType == TacticalTarget.TARGET_DRIFTER)
                     {
                         objective = "Attack the light shipping " + objectiveLocation; 
                         break;
                     }
-                    else if (groundUnit.getTargetType() == TacticalTarget.TARGET_TROOP_CONCENTRATION)
+                    else if (targetType == TacticalTarget.TARGET_TROOP_CONCENTRATION)
                     {
                         objective = "Attack troop concentrations " + objectiveLocation; 
-                        // Troop concentration might be overridden by something else
                     }
                 }
             }

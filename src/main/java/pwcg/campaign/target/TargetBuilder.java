@@ -71,7 +71,7 @@ public class TargetBuilder
         Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(targetDefinition.getTargetCountry().getSide());
         if (targetCoordinates != null)
         {
-            targetDefinition.setTargetLocation(targetCoordinates);
+            targetDefinition.setTargetPosition(targetCoordinates);
         }
     }
 
@@ -105,7 +105,7 @@ public class TargetBuilder
 
     private void addAAABattery(ICountry country, Coordinate targetPosition, int numAAAMG, int numAAAArtillery) throws PWCGException 
     {
-        AAAUnitFactory groundUnitFactory =  new AAAUnitFactory(campaign, targetDefinition.getTargetCountry(), targetDefinition.getTargetLocation());
+        AAAUnitFactory groundUnitFactory =  new AAAUnitFactory(campaign, targetDefinition.getTargetCountry(), targetDefinition.getTargetPosition());
         
         GroundUnit assaultAAAMgUnit = groundUnitFactory.createAAAMGBattery(1, numAAAMG);
         groundUnitCollection.addGroundUnit(GroundUnitType.AAA_ARTY_UNIT, assaultAAAMgUnit);
@@ -116,8 +116,8 @@ public class TargetBuilder
 
     private void addFriendlyArtillery() throws PWCGException, PWCGMissionGenerationException
     {
-        GroundUnitFactory groundUnitFactory =  new GroundUnitFactory(campaign, targetDefinition.getTargetLocation(), targetDefinition.getAttackingCountry());
-        ArtillerySpotArtilleryGroup friendlyArtilleryGroup = groundUnitFactory.createFriendlyArtilleryBattery();
+        GroundUnitFactory groundUnitFactory =  new GroundUnitFactory(campaign, targetDefinition.getTargetPosition(), targetDefinition.getAttackingCountry());
+        ArtillerySpotArtilleryGroup friendlyArtilleryGroup = groundUnitFactory.createFriendlyArtilleryBattery(targetDefinition.getTargetPosition());
         groundUnitCollection.addGroundUnit(GroundUnitType.ARTILLERY_UNIT, friendlyArtilleryGroup);
     }
 

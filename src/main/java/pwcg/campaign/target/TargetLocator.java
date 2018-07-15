@@ -90,7 +90,7 @@ public class TargetLocator
     {
         FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(targetDefinition.getDate());
         FrontLinePoint frontLinePoint = frontLinesForMap.findCloseFrontPositionForSide(
-                targetDefinition.getTargetGeneralLocation(), 
+                targetDefinition.getTargetGeneralPosition(), 
                 currentSearchRadius, 
                 targetDefinition.getAttackingCountry().getSide());
         
@@ -105,7 +105,7 @@ public class TargetLocator
     {
         FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(targetDefinition.getDate());
         FrontLinePoint frontLinePoint = frontLinesForMap.findCloseFrontPositionForSide(
-                targetDefinition.getTargetGeneralLocation(), 
+                targetDefinition.getTargetGeneralPosition(), 
                 currentSearchRadius, 
                 targetDefinition.getTargetCountry().getSide());
 
@@ -122,7 +122,7 @@ public class TargetLocator
         Block station = groupData.getRailroadStationFinder().getNearbyTrainPosition(
                 targetDefinition.getTargetCountry().getSide(), 
                 targetDefinition.getDate(), 
-                targetDefinition.getTargetGeneralLocation(),
+                targetDefinition.getTargetGeneralPosition(),
                 currentSearchRadius);
         
         if (station != null)
@@ -138,7 +138,7 @@ public class TargetLocator
         Bridge bridge = groupManager.getBridgeFinder().findBridgeForSideWithinRadius(
                 targetDefinition.getTargetCountry().getSide(), 
                 targetDefinition.getDate(), 
-                targetDefinition.getTargetGeneralLocation(),
+                targetDefinition.getTargetGeneralPosition(),
                 currentSearchRadius);
         
         if (bridge != null)
@@ -154,7 +154,7 @@ public class TargetLocator
         PWCGLocation selectedBargePosition = drifterManager.getBargePositions().getSelectedLocationWithinRadiusBySide(
                 targetDefinition.getTargetCountry().getSide(), 
                 targetDefinition.getDate(), 
-                targetDefinition.getTargetGeneralLocation(),
+                targetDefinition.getTargetGeneralPosition(),
                 currentSearchRadius);
 
         if (selectedBargePosition != null)
@@ -171,7 +171,7 @@ public class TargetLocator
         List<IAirfield> potentialTargetAirfields = airfieldManager.getAirFieldsForSide(targetDefinition.getDate(), targetDefinition.getTargetCountry().getSide());
         IAirfield airfield = positionFinder.selectPositionWithinExpandingRadius(
                 potentialTargetAirfields, 
-                targetDefinition.getTargetGeneralLocation(), 
+                targetDefinition.getTargetGeneralPosition(), 
                 currentSearchRadius, 
                 targetDefinition.getMaximumRadius());
 
@@ -185,7 +185,7 @@ public class TargetLocator
     private void getTargetLocationShippingLanes() throws PWCGException
     {
         ShippingLane shippingLane = PWCGContextManager.getInstance().getCurrentMap().getShippingLaneManager().getTargetShippingLane(
-                targetDefinition.getTargetGeneralLocation(), 
+                targetDefinition.getTargetGeneralPosition(), 
                 targetDefinition.getTargetCountry().getSide().getOppositeSide());
 
         if (shippingLane != null)

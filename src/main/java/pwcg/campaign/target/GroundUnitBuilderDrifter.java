@@ -20,7 +20,7 @@ public class GroundUnitBuilderDrifter
             maxUnits = 2;
         }
         
-        DrifterUnitFactory groundUnitFactory = new DrifterUnitFactory(campaign, targetDefinition.getTargetLocation(), targetDefinition.getTargetOrientation(), targetDefinition.getTargetCountry());
+        DrifterUnitFactory groundUnitFactory = new DrifterUnitFactory(campaign, targetDefinition.getTargetPosition(), targetDefinition.getTargetOrientation(), targetDefinition.getTargetCountry());
         GroundUnit targetUnit = groundUnitFactory.createDrifterUnit(minUnits, maxUnits);
         GroundUnitCollection groundUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION);
         groundUnitCollection.addGroundUnit(GroundUnitType.TRANSPORT_UNIT, targetUnit);

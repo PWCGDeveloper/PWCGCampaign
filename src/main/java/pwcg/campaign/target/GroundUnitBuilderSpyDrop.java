@@ -22,7 +22,7 @@ public class GroundUnitBuilderSpyDrop
 
     public GroundUnitCollection createSpyDropTargets() throws PWCGException 
     {
-        TroopConcentrationFactory groundUnitFactory = new TroopConcentrationFactory(campaign, targetDefinition.getTargetLocation(), targetDefinition.getTargetCountry());
+        TroopConcentrationFactory groundUnitFactory = new TroopConcentrationFactory(campaign, targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry());
         GroundUnit targetUnit = groundUnitFactory.createTroopConcentration();
         groundUnitCollection.addGroundUnit(GroundUnitType.INFANTRY_UNIT, targetUnit);
         
@@ -33,7 +33,7 @@ public class GroundUnitBuilderSpyDrop
 
     private void addSpotLight() throws PWCGException 
     {
-        GroundUnitFactory groundUnitFactory = new GroundUnitFactory(campaign, targetDefinition.getTargetLocation(), targetDefinition.getTargetCountry());
+        GroundUnitFactory groundUnitFactory = new GroundUnitFactory(campaign, targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry());
         SpotLightGroup spotLightGroup = groundUnitFactory.createSpotLightGroup();
         if (spotLightGroup != null)
         {

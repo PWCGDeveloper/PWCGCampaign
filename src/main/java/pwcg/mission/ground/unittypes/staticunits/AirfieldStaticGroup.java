@@ -9,12 +9,12 @@ import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.VehicleFactory;
 import pwcg.campaign.group.AirfieldManager;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.unittypes.GroundUnit;
@@ -24,25 +24,21 @@ import pwcg.mission.ground.vehicle.IVehicleFactory;
 public class AirfieldStaticGroup extends GroundUnit
 {
     protected Campaign campaign;
-    protected Coordinate location;
-    protected Orientation orientation;
     protected ArrayList<IVehicle> trucks = new ArrayList<IVehicle>();
     protected ArrayList<IVehicle> staticPlanes = new ArrayList<IVehicle>();
     protected IAirfield airfield;
 
-	public AirfieldStaticGroup(Campaign campaign, Coordinate location, Orientation orientation) 
+	public AirfieldStaticGroup(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation) 
 	{
-		super(TacticalTarget.TARGET_AIRFIELD);
+		super(pwcgGroundUnitInformation);
         this.campaign = campaign;
-        this.location = location;
-        this.orientation = orientation;        
 	}
 
 	@Override
 	public void createUnitMission() throws PWCGException  
 	{
         AirfieldManager airfieldManager = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager();
-        this.airfield = airfieldManager.getAirfieldFinder().findClosestAirfield(location);
+        this.airfield = airfieldManager.getAirfieldFinder().findClosestAirfield(pwcgGroundUnitInformation.getPosition());
 
         createTrucks();
 	}
@@ -50,7 +46,7 @@ public class AirfieldStaticGroup extends GroundUnit
     private void createTrucks() throws PWCGException 
     {
         IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        IVehicle truckType = vehicleFactory.createCargoTruck(country);
+        IVehicle truckType = vehicleFactory.createCargoTruck(pwcgGroundUnitInformation.getCountry());
 
         int numTrucks = RandomNumberGenerator.getRandom(4) + 2;
 
@@ -71,8 +67,8 @@ public class AirfieldStaticGroup extends GroundUnit
 	{
 		ConfigManager configManager = campaign.getCampaignConfigManager();
 		int truckDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
-		Double angleTrucksLeft = MathUtils.adjustAngle(orientation.getyOri(), -90);
-		Coordinate initialTruckLocation = MathUtils.calcNextCoord(location, angleTrucksLeft, truckDistance);
+		Double angleTrucksLeft = MathUtils.adjustAngle(pwcgGroundUnitInformation.getOrientation().getyOri(), -90);
+		Coordinate initialTruckLocation = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), angleTrucksLeft, truckDistance);
 		
 		return initialTruckLocation;
 	}
@@ -80,7 +76,7 @@ public class AirfieldStaticGroup extends GroundUnit
 
 	private Coordinate findTruckLocation(Coordinate initialTruckLocation, int truckNumber) throws PWCGException, PWCGException
 	{
-		Coordinate truckLocation = MathUtils.calcNextCoord(initialTruckLocation, orientation.getyOri(), (10 * truckNumber));
+		Coordinate truckLocation = MathUtils.calcNextCoord(initialTruckLocation, pwcgGroundUnitInformation.getOrientation().getyOri(), (10 * truckNumber));
 		
 		return truckLocation;
 	}

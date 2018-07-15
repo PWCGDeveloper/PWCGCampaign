@@ -42,7 +42,7 @@ public class Wagon extends Vehicle
 			displayName = "German Wagon";
 		}
 		
-		name = wagonId;
+		vehicleType = wagonId;
 		script = "LuaScripts\\WorldObjects\\" + wagonId + ".txt";
 		model = "graphics\\vehicles\\ammowagon\\" + wagonId + ".mgm";
 	}
@@ -53,7 +53,7 @@ public class Wagon extends Vehicle
 		
 		wagon.index = IndexGenerator.getInstance().getNextIndex();
 		
-		wagon.name = this.name;
+		wagon.vehicleType = this.vehicleType;
 		wagon.displayName = this.displayName;
 		wagon.linkTrId = this.linkTrId;
 		wagon.script = this.script;

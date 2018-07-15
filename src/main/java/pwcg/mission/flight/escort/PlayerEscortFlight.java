@@ -65,15 +65,11 @@ public class PlayerEscortFlight extends Flight
 		super.initialize (mission, campaign, FlightTypes.ESCORT, targetCoords, squad, missionBeginUnit, isPlayerFlight);
 
 		this.escortedFlight = escortedFlight;
-		this.position = escortedFlight.getPosition();
 	}
 
 	@Override
 	public void createUnitMission() throws PWCGException  
 	{
-		super.setName(squadron.determineDisplayName(campaign.getDate()));
-		super.setPosition(departureAirfield.getPosition().copy());
-
 		createPlanes();
 	    List<McuWaypoint> waypointList = createWaypoints(mission, departureAirfield.getPosition());
 	    waypointPackage.setWaypoints(waypointList);

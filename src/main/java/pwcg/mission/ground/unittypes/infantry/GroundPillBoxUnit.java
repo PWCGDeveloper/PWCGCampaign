@@ -4,9 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.campaign.ww1.ground.vehicle.PillBox;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -15,32 +13,26 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.ground.unittypes.GroundDirectFireUnit;
 import pwcg.mission.mcu.McuSpawn;
 
 public class GroundPillBoxUnit extends GroundDirectFireUnit
 {
 
-	public GroundPillBoxUnit() 
+	public GroundPillBoxUnit(GroundUnitInformation pwcgGroundUnitInformation) 
 	{
-	    super (TacticalTarget.TARGET_DEFENSE);
+	    super (pwcgGroundUnitInformation);
 	}	
 
-    public void initialize (MissionBeginUnit missionBeginUnit, Coordinate position, Coordinate targetCoords, ICountry country) 
-    {
-        String nationality = country.getNationality();
-        String name = nationality + " Pillbox";
-        super.initialize (missionBeginUnit, name, position, targetCoords, country);
-    }
-
-	protected void createUnits()  
+	protected void createUnits() throws PWCGException  
 	{
-        spawningVehicle = new PillBox(country);
+        spawningVehicle = new PillBox(pwcgGroundUnitInformation.getCountry());
         spawningVehicle.setOrientation(new Orientation());
-        spawningVehicle.setPosition(position.copy());         
+        spawningVehicle.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
+        spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
         spawningVehicle.populateEntity();
         spawningVehicle.getEntity().setEnabled(1);
 	}	
@@ -49,22 +41,17 @@ public class GroundPillBoxUnit extends GroundDirectFireUnit
     {
         int numPillBox = calcNumUnits();
 
-        // Face towards enemy
-        double pillBoxFacingAngle = MathUtils.calcAngle(position, destinationCoords);
-        Orientation pillBoxOrient = new Orientation();
-        pillBoxOrient.setyOri(pillBoxFacingAngle);
-        
-        Coordinate pillBoxCoords = position.copy();
+        Coordinate pillBoxCoords = pwcgGroundUnitInformation.getPosition().copy();
 
         // Locate the infantry such that startCoords is the middle of the line
-        double startLocationOrientation = MathUtils.adjustAngle (pillBoxFacingAngle, 270);             
+        double startLocationOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 270);             
         double pillBoxSpacing = 1000 / numPillBox;
         
         // The +20 prevents the center pillbox from spawning on top of the flare pilllbox
         pillBoxCoords = MathUtils.calcNextCoord(pillBoxCoords, startLocationOrientation, ((numPillBox * pillBoxSpacing) / 2) + 20);       
         
         // Direction in which subsequent units will be placed
-        double placementOrientation = MathUtils.adjustAngle (pillBoxFacingAngle, 90.0);        
+        double placementOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 90.0);        
 
         for (int i = 0; i < numPillBox; ++i)
         {   
@@ -119,7 +106,7 @@ public class GroundPillBoxUnit extends GroundDirectFireUnit
             writer.write("  Desc = \"Pillbox\";");
             writer.newLine();
 
-            missionBeginUnit.write(writer);
+            pwcgGroundUnitInformation.getMissionBeginUnit().write(writer);
 
             // This could happen if the user did not install 3rd party infantry
             spawnTimer.write(writer);

@@ -45,7 +45,7 @@ public class SpotLight extends Vehicle
 			displayName = "German SpotLight";
 		}
 		
-		name = spotLightId;
+		vehicleType = spotLightId;
 		script = "LuaScripts\\WorldObjects\\vehicles\\" + spotLightId + ".txt";
 		model = "graphics\\artillery\\" + spotLightDir + "\\" + spotLightId + ".mgm";
 
@@ -57,7 +57,7 @@ public class SpotLight extends Vehicle
 		
 		spotLight.index = IndexGenerator.getInstance().getNextIndex();
 		
-		spotLight.name = this.name;
+		spotLight.vehicleType = this.vehicleType;
 		spotLight.displayName = this.displayName;
 		spotLight.linkTrId = this.linkTrId;
 		spotLight.script = this.script;
