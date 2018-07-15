@@ -35,11 +35,9 @@ public interface IAirfield extends IFixedPosition
 
     public String getScript();
     
-    public double getPlaneOrientation();
-    
     public Coordinate getPosition();
 
-    public PWCGLocation getPlanePosition() throws PWCGException;
+    public PWCGLocation getTakeoffLocation() throws PWCGException;
 
     public PWCGLocation getLandingLocation() throws PWCGException;
     

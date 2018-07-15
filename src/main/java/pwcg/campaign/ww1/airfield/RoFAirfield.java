@@ -125,7 +125,7 @@ public class RoFAirfield extends FixedPosition implements IAirfield, Cloneable
 	    }
 	}
 
-    public double getPlaneOrientation() 
+    private double getPlaneOrientation()
     {
         if (orientation != null)
         {
@@ -161,12 +161,6 @@ public class RoFAirfield extends FixedPosition implements IAirfield, Cloneable
     public void initializeAirfieldFromLocation(PWCGLocation airfieldLocation)
     {
         super.setFromLocation(airfieldLocation);
-    }
-        
-    @Override
-    public PWCGLocation getPlanePosition()
-    {
-        return this;
     }
 
 	@Override
@@ -236,12 +230,17 @@ public class RoFAirfield extends FixedPosition implements IAirfield, Cloneable
 		Campaign campaign = PWCGContextManager.getInstance().getCampaign();
 		int landingDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.LandingDistanceKey);
 		Coordinate landCoords = MathUtils.calcNextCoord(
-				getPlanePosition().getPosition(),
+				getPosition(),
 				getPlaneOrientation(),
 				landingDistance);
 		landCoords.setYPos(0.0);
 		location.setPosition(landCoords);
 
 		return location;
+	}
+
+	@Override
+	public PWCGLocation getTakeoffLocation() throws PWCGException {
+		return this;
 	}
 }

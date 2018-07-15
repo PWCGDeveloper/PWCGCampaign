@@ -25,7 +25,8 @@ public class AirfieldManagerTest
         AirfieldManager airfieldManager = PWCGContextManager.getInstance().getMapByMapId(FrontMapIdentifier.FRANCE_MAP).getAirfieldManager();
         for (IAirfield airfield : airfieldManager.getAllAirfields().values())
         {
-        	assert (airfield.getPlanePosition() != null);
+            assert (airfield.getTakeoffLocation() != null);
+            assert (airfield.getLandingLocation() != null);
         }
 	}
 

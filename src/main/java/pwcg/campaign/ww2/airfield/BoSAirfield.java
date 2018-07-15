@@ -151,8 +151,7 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
         return null;
     }
 
-    @Override
-    public PWCGLocation getPlanePosition() throws PWCGException
+    private PWCGLocation getRunwayStart() throws PWCGException
     {
 		Runway runway = selectRunway();
 
@@ -169,8 +168,13 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
     }
         
 	@Override
+	public PWCGLocation getTakeoffLocation() throws PWCGException {
+		return getRunwayStart();
+	}
+
+	@Override
 	public PWCGLocation getLandingLocation() throws PWCGException {
-		return getPlanePosition();
+		return getRunwayStart();
 	}
 
 	// TODO: Select runway based on wind direction
@@ -187,7 +191,7 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 		double xpos = point.getXPos() - getPosition().getXPos();
 		double ypos = point.getZPos() - getPosition().getZPos();
 
-		double angle = Math.toRadians(-this.getPlaneOrientation());
+		double angle = Math.toRadians(-orientation.getyOri());
 
 		double rxpos = Math.cos(angle) * xpos - Math.sin(angle) * ypos;
 		double rypos = Math.cos(angle) * ypos + Math.sin(angle) * xpos;

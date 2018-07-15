@@ -64,11 +64,11 @@ public class TransportWaypoints extends WaypointGeneratorBase
     protected void createMidWaypoint() throws PWCGException  
     {
         McuWaypoint lastWp = waypoints.get(waypoints.size()-1);
-        double angleFromTargetToHomeAirfield = MathUtils.calcAngle(lastWp.getPosition(), toAirfield.getPlanePosition().getPosition());
-        double distanceBetweenAirfields = MathUtils.calcDist(fromAirfield.getPlanePosition().getPosition(), toAirfield.getPlanePosition().getPosition());
+        double angleFromTargetToHomeAirfield = MathUtils.calcAngle(lastWp.getPosition(), toAirfield.getLandingLocation().getPosition());
+        double distanceBetweenAirfields = MathUtils.calcDist(fromAirfield.getTakeoffLocation().getPosition(), toAirfield.getLandingLocation().getPosition());
         distanceBetweenAirfields = distanceBetweenAirfields / 2;
         
-        Coordinate midPointCoords = MathUtils.calcNextCoord(fromAirfield.getPlanePosition().getPosition(), angleFromTargetToHomeAirfield, distanceBetweenAirfields);
+        Coordinate midPointCoords = MathUtils.calcNextCoord(fromAirfield.getTakeoffLocation().getPosition(), angleFromTargetToHomeAirfield, distanceBetweenAirfields);
         midPointCoords.setYPos(determineFlightAltitude());
 
         McuWaypoint midPointWP = WaypointFactory.createMoveToWaypointType();
@@ -82,9 +82,9 @@ public class TransportWaypoints extends WaypointGeneratorBase
 	protected void createDestinationWaypoint() throws PWCGException  
 	{
 	    McuWaypoint lastWp = waypoints.get(waypoints.size()-1);
-        double angleFromTargetToHomeAirfield = MathUtils.calcAngle(toAirfield.getPlanePosition().getPosition(), lastWp.getPosition());
+        double angleFromTargetToHomeAirfield = MathUtils.calcAngle(toAirfield.getLandingLocation().getPosition(), lastWp.getPosition());
         
-        Coordinate destinationCoords = MathUtils.calcNextCoord(toAirfield.getPlanePosition().getPosition(), angleFromTargetToHomeAirfield, 10000.0);
+        Coordinate destinationCoords = MathUtils.calcNextCoord(toAirfield.getLandingLocation().getPosition(), angleFromTargetToHomeAirfield, 10000.0);
         destinationCoords.setYPos(determineFlightAltitude());
 
         McuWaypoint destinationWP = WaypointFactory.createMoveToWaypointType();
