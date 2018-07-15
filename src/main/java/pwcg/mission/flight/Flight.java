@@ -424,12 +424,13 @@ public abstract class Flight extends Unit
 
     /**
      * Takeoff for player plane
+     * @throws PWCGException
      */
-    public void createTakeoff()
+    public void createTakeoff() throws PWCGException
     {
         takeoff = new McuTakeoff();
-        takeoff.setPosition(departureAirfield.getPosition().copy());
-        takeoff.setOrientation(departureAirfield.getOrientation().copy());
+        takeoff.setPosition(departureAirfield.getTakeoffLocation().getPosition().copy());
+        takeoff.setOrientation(departureAirfield.getTakeoffLocation().getOrientation().copy());
     }
 
 

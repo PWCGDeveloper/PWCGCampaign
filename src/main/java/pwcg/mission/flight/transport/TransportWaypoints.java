@@ -46,10 +46,10 @@ public class TransportWaypoints extends WaypointGeneratorBase
 
     protected void createStartWaypoint() throws PWCGException  
     {
-        double airfieldOrientation = fromAirfield.getOrientation().getyOri();
+        double takeoffOrientation = fromAirfield.getTakeoffLocation().getOrientation().getyOri();
         int initialWaypointDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointDistanceKey);
         
-        startCoords = MathUtils.calcNextCoord(fromAirfield.getPosition().copy(), airfieldOrientation, initialWaypointDistance);
+        startCoords = MathUtils.calcNextCoord(fromAirfield.getTakeoffLocation().getPosition().copy(), takeoffOrientation, initialWaypointDistance);
         int InitialWaypointAltitude = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointAltitudeKey);
         startCoords.setYPos(InitialWaypointAltitude);
 

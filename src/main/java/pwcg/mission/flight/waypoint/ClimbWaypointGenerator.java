@@ -137,7 +137,7 @@ public class ClimbWaypointGenerator
         clearTheDeckClimbWP.setSpeed(waypointSpeed - 20);
         clearTheDeckClimbWP.setPriority(WaypointPriority.PRIORITY_HIGH);          
         clearTheDeckClimbWP.setPosition(initialClimbCoords);
-        clearTheDeckClimbWP.setOrientation(flight.getAirfield().getOrientation().copy());
+        clearTheDeckClimbWP.setOrientation(flight.getAirfield().getTakeoffLocation().getOrientation().copy());
 
         return clearTheDeckClimbWP;
     }
@@ -148,8 +148,8 @@ public class ClimbWaypointGenerator
         int takeoffWaypointDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.TakeoffWaypointDistanceKey);
         int takeoffWaypointAltitude = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.TakeoffWaypointAltitudeKey);
 
-        double airfieldOrientation = flight.getAirfield().getOrientation().getyOri();
-        Coordinate initialClimbCoords = MathUtils.calcNextCoord(flight.getAirfield().getPosition().copy(), airfieldOrientation, takeoffWaypointDistance);
+        double takeoffOrientation = flight.getAirfield().getTakeoffLocation().getOrientation().getyOri();
+        Coordinate initialClimbCoords = MathUtils.calcNextCoord(flight.getAirfield().getTakeoffLocation().getPosition().copy(), takeoffOrientation, takeoffWaypointDistance);
         initialClimbCoords.setYPos(takeoffWaypointAltitude);
 		return initialClimbCoords;
 	}
