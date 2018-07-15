@@ -144,7 +144,7 @@ public class AARExtendedTimeHandlerTest
         assert (aarContext.getReasonForExtendedTime() == ExtendedTimeReason.TRANSFER);
         assert(endCampaignDate.after(startCampaignDate));
         int daysPassed = DateUtils.daysDifference(startCampaignDate, endCampaignDate);
-        assert(daysPassed > 9);
-        assert(daysPassed < 13);
+        assert(daysPassed >= 9);
+        assert(daysPassed <= 13);
     }
 }

@@ -39,7 +39,7 @@ public abstract class PWCGMap
 
     protected FrontMapIdentifier mapIdentifier = null;
     protected Map<Date, FrontLinesForMap> frontLinesForMapByDate = new TreeMap<>();
-    protected FrontDatesForMap frontDatesForMap = new FrontDatesForMap();
+    protected FrontDatesForMap frontDatesForMap;
     protected DrifterManager drifterManager = null;
     protected AirfieldManager airfieldManager = null;
     protected GroupManager groupManager = null; 
@@ -87,7 +87,8 @@ public abstract class PWCGMap
     {
         String mapName = getMapName();
         
-    	configureTransitionDates();
+        frontDatesForMap = new FrontDatesForMap(PWCGMap.getMapIdFromMapName(mapName));
+        configureTransitionDates();
     	frontDatesForMap.cleanUnwantedDateDirectories(mapName);
     	for (Date frontDate : frontDatesForMap.getFrontDates())
     	{

@@ -4,7 +4,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
+import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateRange;
 import pwcg.core.utils.DateUtils;
@@ -12,13 +15,19 @@ import pwcg.core.utils.FileUtils;
 
 public class FrontDatesForMap
 {
-    private List<Date> frontDates = new ArrayList<Date>();
+    private FrontMapIdentifier frontMapIdentifier;
+    private Map<String, Date> frontDates = new TreeMap<>();
     private List<DateRange> mapActiveDates = new ArrayList<>();
 
+    public FrontDatesForMap(FrontMapIdentifier frontMapIdentifier)
+    {
+        this.frontMapIdentifier = frontMapIdentifier;
+    }
+    
     public void addFrontDate(String dateString) throws PWCGException
     {
         Date subDirDate = DateUtils.getDateYYYYMMDD(dateString);
-        frontDates.add(subDirDate);
+        frontDates.put(dateString, subDirDate);
     }
 
     public void cleanUnwantedDateDirectories(String mapName) throws PWCGException
@@ -47,13 +56,13 @@ public class FrontDatesForMap
 
         if (frontDates.isEmpty())
         {
-            throw new PWCGException("No date directories in: " + frontPath);
+            throw new PWCGException("No date directories in: " + frontPath + " for map " + frontMapIdentifier);
         }
     }
 
     private boolean findDateInList(String searchFor)
     {
-        for (Date mapDate : frontDates)
+        for (Date mapDate : frontDates.values())
         {
             String mapDateStr = DateUtils.getDateStringYYYYMMDD(mapDate);
             if (mapDateStr.trim().contains(searchFor))
@@ -69,26 +78,23 @@ public class FrontDatesForMap
     {
         boolean useMovingFront = PWCGContextManager.getInstance().determineUseMovingFront();
 
-        if (!useMovingFront)
-        {
-            return frontDates.get(0);
-        }
-
         Date closestFrontDate = null;
-        closestFrontDate = frontDates.get(0);
-        for (Date frontDate : frontDates)
+        if (useMovingFront)
         {
-            if (frontDate.after(date))
+            for (String frontDateString : frontDates.keySet())
             {
-                break;
+                Date frontDate = frontDates.get(frontDateString);
+                if (date.after(frontDate) || date.equals(frontDate))
+                {
+                    closestFrontDate = frontDate;
+                }    
             }
-
-            closestFrontDate = frontDate;
         }
-
+        
         if (closestFrontDate == null)
         {
-            throw new PWCGException("No date directories for date: " + date);
+            List<Date> orderedDateList = new ArrayList<>(frontDates.values());
+            closestFrontDate = orderedDateList.get(0);
         }
 
         return closestFrontDate;
@@ -158,7 +164,8 @@ public class FrontDatesForMap
 
     public List<Date> getFrontDates()
     {
-        return frontDates;
+        List<Date> orderedDateList = new ArrayList<>(frontDates.values());
+        return orderedDateList;
     }
 
 }
