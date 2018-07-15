@@ -24,6 +24,7 @@ public abstract class MapWeather
 	protected int tempPressLevel = 0;
 	protected int temperature = 15;
 	protected int pressure = 760;
+	protected int windDirection = 0;
 	
 	protected Flight playerFlight = null;
 	
@@ -33,6 +34,20 @@ public abstract class MapWeather
     {
     }
     	
+    public void createWindDirection()
+    {
+		// Prevailing direction is west to east
+		int eastOrWest = RandomNumberGenerator.getRandom(100);
+		if (eastOrWest > 80)
+		{
+			windDirection = 180 + RandomNumberGenerator.getRandom(180);
+		}
+		else
+		{
+			windDirection = RandomNumberGenerator.getRandom(180);
+		}
+    }
+
 	public void createMissionWeather(Flight playerFlight) throws PWCGException 
 	{		
 	    this.playerFlight = playerFlight;
@@ -344,42 +359,30 @@ public abstract class MapWeather
 		}
 		
 
-		// Prevailing direction is west to east
-		int direction = 0;
-		int eastOrWest = RandomNumberGenerator.getRandom(100);
-		if (eastOrWest > 80)
-		{
-			direction = 180 + RandomNumberGenerator.getRandom(180);
-		}
-		else
-		{
-			direction = RandomNumberGenerator.getRandom(180);
-		}
-		
 		WindLayer windLayer0 = new WindLayer();
 		windLayer0.layer = 0;
-		windLayer0.direction = direction;
+		windLayer0.direction = windDirection;
 		windLayer0.speed = 0 + RandomNumberGenerator.getRandom(3) / weatherDivisor;
 		
 		WindLayer windLayer500 = new WindLayer();
 		windLayer500.layer = 500;
-		windLayer500.direction = direction;
+		windLayer500.direction = windDirection;
 		windLayer500.speed = 1 + turbulenceFactor + RandomNumberGenerator.getRandom(3 + windSpeedModifier) / weatherDivisor;
 		
 		WindLayer windLayer1000 = new WindLayer();
 		windLayer1000.layer = 1000;
-		windLayer1000.direction = direction;
+		windLayer1000.direction = windDirection;
 		windLayer1000.speed = 1 + turbulenceFactor + RandomNumberGenerator.getRandom(4 + windSpeedModifier) / weatherDivisor;
 		
 		WindLayer windLayer3000 = new WindLayer();
 		windLayer3000.layer = 3000;
-		windLayer3000.direction = direction;
+		windLayer3000.direction = windDirection;
 		windLayer3000.speed = 1 + turbulenceFactor +  RandomNumberGenerator.getRandom(5 + windSpeedModifier) / weatherDivisor;
 
 		
 		WindLayer windLayer5000 = new WindLayer();
 		windLayer5000.layer = 5000;
-		windLayer5000.direction = direction;
+		windLayer5000.direction = windDirection;
 		windLayer5000.speed = 1 + turbulenceFactor + RandomNumberGenerator.getRandom(5 + windSpeedModifier) / weatherDivisor;	
 		
 		windLayers.clear();
@@ -446,6 +449,10 @@ public abstract class MapWeather
 
 	public int getPressure() {
 		return pressure;
+	}
+
+	public int getWindDirection() {
+		return windDirection;
 	}
 
     public class WindLayer

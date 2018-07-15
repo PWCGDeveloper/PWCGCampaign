@@ -64,6 +64,8 @@ public class Mission
 
     public void generate(FlightTypes flightType) throws PWCGException 
     {
+        PWCGContextManager.getInstance().getCurrentMap().getMapWeather().createWindDirection();
+
     	missionFlightBuilder.generateFlights(flightType);
 
         createFirePots();
