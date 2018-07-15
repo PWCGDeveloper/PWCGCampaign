@@ -168,6 +168,11 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 		}
     }
         
+	@Override
+	public PWCGLocation getLandingLocation() throws PWCGException {
+		return getPlanePosition();
+	}
+
 	// TODO: Select runway based on wind direction
 	private Runway selectRunway()
 	{
