@@ -455,6 +455,10 @@ public abstract class MapWeather
 		return windDirection;
 	}
 
+	public void setWindDirection(int windDirection) {
+		this.windDirection = windDirection;
+	}
+
     public class WindLayer
     {
         public int layer;

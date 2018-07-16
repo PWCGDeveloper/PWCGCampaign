@@ -8,6 +8,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IStaticPlane;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.airfield.AirfieldObjectPlacer;
 import pwcg.campaign.group.airfield.AirfieldObjects;
@@ -177,13 +178,36 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 		return getRunwayStart();
 	}
 
-	// TODO: Select runway based on wind direction
-	private Runway selectRunway()
+	private Runway selectRunway() throws PWCGException
 	{
-		if (runways.size() > 0)
-			return runways.get(0);
+		// Note: wind direction is as specified in mission file, i.e. heading wind blows to
+		// Adjust by 180 degrees to give standard direction
+		double windDirection = MathUtils.adjustAngle(PWCGContextManager.getInstance().getCurrentMap().getMapWeather().getWindDirection(), 180);
 
-		return null;
+		double bestOffset = 1000.0;
+		Runway bestRunway = null;
+		boolean invertRunway = false;
+
+		for (Runway r : runways) {
+			double offset = MathUtils.calcNumberOfDegrees(windDirection, r.getHeading());
+			boolean invert = false;
+
+			if (offset > 90.0) {
+				offset = 180 - offset;
+				invert = true;
+			}
+
+			if (offset < bestOffset) {
+				bestOffset = offset;
+				bestRunway = r;
+				invertRunway = invert;
+			}
+		}
+
+		if (invertRunway)
+			return bestRunway.invert();
+		else
+			return bestRunway.copy();
 	}
 
 	private String getChartPoint(int ptype, Coordinate point)
@@ -206,7 +230,7 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 		return pos;
 	}
 
-	public String getChart()
+	public String getChart() throws PWCGException
 	{
 		Runway runway = selectRunway();
 
@@ -298,6 +322,27 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 				clone.taxiFromEnd.add(t.copy());
 
 			return clone;
+		}
+
+		public double getHeading() throws PWCGException
+		{
+			return MathUtils.calcAngle(startPos, endPos);
+		}
+
+		public Runway invert()
+		{
+			Runway inv = new Runway();
+
+			inv.startPos = endPos;
+			inv.endPos = startPos;
+			inv.parkingLocation = parkingLocation;
+
+			for (Coordinate t : taxiFromEnd)
+				inv.taxiToStart.add(0, t.copy());
+			for (Coordinate t : taxiToStart)
+				inv.taxiFromEnd.add(0, t.copy());
+
+			return inv;
 		}
 	}
 
