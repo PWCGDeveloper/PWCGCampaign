@@ -57,5 +57,7 @@ public interface IAirfield extends IFixedPosition
      */
     public PWCGLocation getLandingLocation() throws PWCGException;
     
+    public boolean isNearRunwayOrTaxiway(Coordinate pos) throws PWCGException;
+
     public Date getStartDate();
 }

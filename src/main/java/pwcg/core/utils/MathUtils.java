@@ -218,4 +218,23 @@ public class MathUtils
         numberToBinaryFormCalculator(binaryRepresentation, shifterNumber);
     	binaryRepresentation.append(remainder);
     }
+
+    public static double distFromLine(final Coordinate lineStart, final Coordinate lineEnd, final Coordinate coord) throws PWCGException
+    {
+        double xDist = lineEnd.getXPos() - lineStart.getXPos();
+        double zDist = lineEnd.getZPos() - lineStart.getZPos();
+        double distSquared = xDist * xDist + zDist * zDist;
+
+        if (distSquared == 0)
+            return calcDist(lineStart, coord);
+
+        double t = ((coord.getXPos() - lineStart.getXPos()) * xDist + (coord.getZPos() - lineStart.getZPos()) * zDist) / distSquared;
+        t = Math.max(0, Math.min(1,  t));
+
+        Coordinate proj = new Coordinate();
+        proj.setXPos(lineStart.getXPos() + t * xDist);
+        proj.setZPos(lineStart.getZPos() + t * zDist);
+
+        return calcDist(proj, coord);
+    }
 }

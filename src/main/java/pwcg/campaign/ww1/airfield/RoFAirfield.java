@@ -16,6 +16,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.Logger;
@@ -242,5 +243,17 @@ public class RoFAirfield extends FixedPosition implements IAirfield, Cloneable
 	@Override
 	public PWCGLocation getTakeoffLocation() throws PWCGException {
 		return this;
+	}
+
+	@Override
+	public boolean isNearRunwayOrTaxiway(Coordinate pos) throws PWCGException {
+		double runwayOrientation = getTakeoffLocation().getOrientation().getyOri();
+		Coordinate startOfRunway = getTakeoffLocation().getPosition();
+		Coordinate endOfRunway = MathUtils.calcNextCoord(getTakeoffLocation().getPosition(), runwayOrientation, 2000.0);
+
+		CoordinateBox runwayCoordinateBox = CoordinateBox.coordinateBoxFromTwoCoordinates(startOfRunway, endOfRunway);
+		runwayCoordinateBox.expandBox(200);
+
+		return runwayCoordinateBox.isInBox(pos);
 	}
 }
