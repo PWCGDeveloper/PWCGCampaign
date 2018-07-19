@@ -7,6 +7,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.bomb.BombingWaypoints.BombingAltitudeLevel;
@@ -46,10 +47,8 @@ public class BombingPackage extends FlightPackage
 	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
 	    missionBeginUnit.initialize(startCoords.copy());
 	        
-        BombingFlight bombingFlight = new BombingFlight ();
-	    bombingFlight.initialize(mission, campaign, FlightTypes.BOMB, targetCoordinates, squadron, missionBeginUnit, isPlayerFlight);
-
-
+        FlightInformation flightInformation = createFlightInformation(targetCoordinates);
+        BombingFlight bombingFlight = new BombingFlight (flightInformation, missionBeginUnit);
 	    if (squadron.determineIsNightSquadron())
 	    {
 	        bombingFlight.setNightFlight(true);

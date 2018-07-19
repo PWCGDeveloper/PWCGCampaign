@@ -3,8 +3,6 @@ package pwcg.mission.flight.scramble;
 import java.io.BufferedWriter;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -13,7 +11,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -21,24 +19,11 @@ public class ScrambleOpposingFlight extends Flight
 {
 	Coordinate startCoords = null;
 	
-	public ScrambleOpposingFlight() 
-	{
-		super ();
-	}
-
-	public void initialize(
-				Mission mission, 
-				Campaign campaign, 
-				Coordinate targetCoords, 
-				Coordinate startCoords, 
-				Squadron squad, 
-                MissionBeginUnit missionBeginUnit,
-				boolean isPlayerFlight) throws PWCGException 
-	{
-        setVirtual(false);
-		super.initialize (mission, campaign, FlightTypes.SCRAMBLE_OPPOSE, targetCoords, squad, missionBeginUnit, isPlayerFlight);		
-		this.startCoords = startCoords;
-	}
+    public ScrambleOpposingFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit, Coordinate startCoords)
+    {
+        super (flightInformation, missionBeginUnit);
+        this.startCoords = startCoords;
+    }
 
 	public void createUnitMission() throws PWCGException  
 	{
@@ -53,7 +38,7 @@ public class ScrambleOpposingFlight extends Flight
 	@Override
 	public int calcNumPlanes() throws PWCGException 
 	{
-		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
 		
 		int GroundAttackMinimum = configManager.getIntConfigParam(ConfigItemKeys.GroundAttackMinimumKey);
 		int GroundAttackAdditional = configManager.getIntConfigParam(ConfigItemKeys.GroundAttackAdditionalKey) + 1;
@@ -67,7 +52,7 @@ public class ScrambleOpposingFlight extends Flight
 	{
 		ScrambleOpposingWaypoints waypointGenerator = new ScrambleOpposingWaypoints(
 					startPosition, 
-		       		targetCoords, 
+					getTargetCoords(), 
 		       		this,
 		       		mission);
 

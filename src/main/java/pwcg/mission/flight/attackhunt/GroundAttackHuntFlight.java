@@ -2,8 +2,6 @@ package pwcg.mission.flight.attackhunt;
 
 import java.util.List;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -12,31 +10,20 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class GroundAttackHuntFlight extends Flight
 {
-	public GroundAttackHuntFlight() 
-	{
-		super ();
-	}
-
-	public void initialize(
-				Mission mission, 
-				Campaign campaign, 
-				Coordinate targetCoords, 
-				Squadron squad, 
-                MissionBeginUnit missionBeginUnit,
-				boolean isPlayerFlight) throws PWCGException 
-	{
-		super.initialize (mission, campaign, FlightTypes.GROUND_ATTACK, targetCoords, squad, missionBeginUnit, isPlayerFlight);
-	}
-
+    public GroundAttackHuntFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
+    {
+        super (flightInformation, missionBeginUnit);
+    }
+    
 	@Override
 	public int calcNumPlanes() throws PWCGException 
 	{
-		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
 		
         int GroundAttackMinimum = configManager.getIntConfigParam(ConfigItemKeys.GroundAttackMinimumKey);
         int GroundAttackAdditional = configManager.getIntConfigParam(ConfigItemKeys.GroundAttackAdditionalKey) + 1;
@@ -50,7 +37,7 @@ public class GroundAttackHuntFlight extends Flight
     {
         GroundAttackHuntWaypoints waypointGenerator = new GroundAttackHuntWaypoints(
                 startPosition, 
-                targetCoords, 
+                getTargetCoords(), 
                 this,
                 mission);
 
@@ -63,7 +50,7 @@ public class GroundAttackHuntFlight extends Flight
 	{
 	    String objective = "";
 
-        String objectiveName =  formMissionObjectiveLocation(targetCoords.copy());
+        String objectiveName =  formMissionObjectiveLocation(getTargetCoords().copy());
         if (!objectiveName.isEmpty())
         {
             objective = "Perform a free hunt near " + objectiveName + 

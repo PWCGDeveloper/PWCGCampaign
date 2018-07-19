@@ -25,7 +25,7 @@ public class FlightPositionHelperPlayerStart
 
     public void createPlayerPlanePosition() throws PWCGException
     {
-        if (flight.isAirstart())
+        if (flight.isAirStart())
         {
             createPlanePositionCloseToFirstWP();
         }
@@ -47,7 +47,7 @@ public class FlightPositionHelperPlayerStart
             plane.setPosition(takeOffPositions.get(plane.getNumberInFormation()-1));
 
             Orientation orient = new Orientation();
-            orient.setyOri(flight.getDepartureAirfield().getPlaneOrientation());
+            orient.setyOri(flight.getAirfield().getPlaneOrientation());
             plane.setOrientation(orient);
 
             plane.populateEntity(flight, flightLeader);
@@ -63,7 +63,7 @@ public class FlightPositionHelperPlayerStart
         Coordinate firstDestinationCoordinate = flight.findFirstWaypointPosition();
 
         // Calculate plane position about 5 KM from the first destination
-        double angleBetweenBaseAndFirstDest = MathUtils.calcAngle(flight.getDepartureAirfield().getPlanePosition().getPosition().copy(), firstDestinationCoordinate);
+        double angleBetweenBaseAndFirstDest = MathUtils.calcAngle(flight.getAirfield().getPlanePosition().getPosition().copy(), firstDestinationCoordinate);
         double angleToPlacePlanes = MathUtils.adjustAngle(angleBetweenBaseAndFirstDest, 180);
         
         Coordinate startCoordinate = MathUtils.calcNextCoord(firstDestinationCoordinate, angleToPlacePlanes, 5000);

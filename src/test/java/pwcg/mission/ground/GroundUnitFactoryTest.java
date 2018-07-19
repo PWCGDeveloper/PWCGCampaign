@@ -128,14 +128,24 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
         assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
     }
     
+    @Test
+    public void createFriendlyArtilleryBatteryForPlayerTest () throws PWCGException 
+    {
+        ArtillerySpotBatteryFactory artillerySpotBatteryFactory = new ArtillerySpotBatteryFactory(campaign, new Coordinate (100000, 0, 100000), myTestPosition, country);
+        ArtillerySpotArtilleryGroup friendlyArtilleryGroup = artillerySpotBatteryFactory.createFriendlyArtilleryBattery(true);
+
+        assert (friendlyArtilleryGroup.getVehicles().size() > 0);
+        assert (friendlyArtilleryGroup.getCountry().getCountry() == Country.GERMANY);
+    }
     
     @Test
-    public void createFriendlyArtilleryBatteryTest () throws PWCGException 
+    public void createFriendlyArtilleryBatteryForAITest () throws PWCGException 
     {
-        GroundUnitFactory groundUnitFactory =  new GroundUnitFactory(campaign, new Coordinate (100000, 0, 100000), country);
-        ArtillerySpotArtilleryGroup groundUnit = (ArtillerySpotArtilleryGroup)groundUnitFactory.createFriendlyArtilleryBattery(myTestPosition);
-        assert (groundUnit.getVehicles().size() > 0);
-        assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
+        ArtillerySpotBatteryFactory artillerySpotBatteryFactory = new ArtillerySpotBatteryFactory(campaign, new Coordinate (100000, 0, 100000), myTestPosition, country);
+        ArtillerySpotArtilleryGroup friendlyArtilleryGroup = artillerySpotBatteryFactory.createFriendlyArtilleryBattery(false);
+
+        assert (friendlyArtilleryGroup.getVehicles().size() ==1);
+        assert (friendlyArtilleryGroup.getCountry().getCountry() == Country.GERMANY);
     }
 
 }

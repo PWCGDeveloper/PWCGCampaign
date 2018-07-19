@@ -11,6 +11,8 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.balloonBust.BalloonBustFlight;
@@ -61,8 +63,8 @@ public class BalloonDefensePackage extends FlightPackage
 	        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
 	        missionBeginUnit.initialize(startCoords.copy());
 	        
-            PlayerBalloonDefenseFlight playerCoverUnit = new PlayerBalloonDefenseFlight();          
-			playerCoverUnit.initialize(mission, campaign, balloonUnit.getPwcgGroundUnitInformation().getPosition(), squadron, missionBeginUnit, isPlayerFlight, balloonUnit);
+	        FlightInformation flightInformation = createFlightInformation(balloonUnit.getPwcgGroundUnitInformation().getPosition());
+            PlayerBalloonDefenseFlight playerCoverUnit = new PlayerBalloonDefenseFlight(flightInformation, missionBeginUnit, balloonUnit);          
 			balloonDefenseFlight = playerCoverUnit;
 		}
 		else
@@ -70,8 +72,8 @@ public class BalloonDefensePackage extends FlightPackage
             MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
             missionBeginUnit.initialize(startCoords.copy());
             
-			AiBalloonDefenseFlight nonPlayerCoverUnit = new AiBalloonDefenseFlight();
-			nonPlayerCoverUnit.initialize(mission, campaign, balloonUnit.getPwcgGroundUnitInformation().getPosition(), squadron, missionBeginUnit, isPlayerFlight, balloonUnit);
+            FlightInformation flightInformation = createFlightInformation(balloonUnit.getPwcgGroundUnitInformation().getPosition());
+			AiBalloonDefenseFlight nonPlayerCoverUnit = new AiBalloonDefenseFlight(flightInformation, missionBeginUnit, balloonUnit);
 			balloonDefenseFlight = nonPlayerCoverUnit;
 		}
 
@@ -88,10 +90,9 @@ public class BalloonDefensePackage extends FlightPackage
                 MissionBeginUnit missionBeginUnitBust = new MissionBeginUnit();
                 missionBeginUnitBust.initialize(balloonUnit.getPwcgGroundUnitInformation().getPosition().copy());
     
-                BalloonBustFlight enemyBustFlight = new BalloonBustFlight();
-                enemyBustFlight.initialize(mission, campaign, balloonUnit.getPwcgGroundUnitInformation().getPosition(), enemyScoutSquadron, missionBeginUnitBust, false);
-                enemyBustFlight.createUnitMission();
-       
+                FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(enemyScoutSquadron, mission, FlightTypes.BALLOON_BUST, balloonUnit.getPwcgGroundUnitInformation().getPosition());
+                BalloonBustFlight enemyBustFlight = new BalloonBustFlight(opposingFlightInformation, missionBeginUnitBust);
+                enemyBustFlight.createUnitMission();       
                 balloonDefenseFlight.addLinkedUnit(enemyBustFlight);
             }
         }

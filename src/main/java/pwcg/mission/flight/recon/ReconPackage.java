@@ -20,6 +20,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.recon.ReconFlight.ReconFlightTypes;
@@ -34,31 +35,29 @@ public class ReconPackage extends FlightPackage
 
     public Flight createPackage () throws PWCGException 
     {
+        // Initial target coordinates will be something near the target area
+        ReconFlightTypes reconFlightType = getReconFlightType();
+        Coordinate targetGeneralLocation = GeneralTargetLocationGenerator.createTargetGeneralLocation(campaign, mission, squadron);
+        Coordinate initialTargetCoordinates = getInitialTargetCoordinates(reconFlightType, squadron, targetGeneralLocation);
+
         // Now the actual mission
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
 
-        ReconFlight recon = null;
-        
+        ReconFlight recon = null;        
+        FlightInformation flightInformation = createFlightInformation(initialTargetCoordinates);
         if (isPlayerFlight)
         {
-            PlayerReconFlight playerRecon = new  PlayerReconFlight();
+            PlayerReconFlight playerRecon = new PlayerReconFlight(flightInformation, missionBeginUnit);
             recon = playerRecon;
         }
         else
         {
-            recon = new ReconFlight ();
+            recon = new ReconFlight(flightInformation, missionBeginUnit);
         }
 
-        ReconFlightTypes reconFlightType = getReconFlightType();
         recon.setReconFlightType(reconFlightType);
-
-        // Initial target coordinates will be something near the target area
-        Coordinate targetGeneralLocation = GeneralTargetLocationGenerator.createTargetGeneralLocation(campaign, mission, squadron);
-        Coordinate initialTargetCoordinates = getInitialTargetCoordinates(recon, squadron, targetGeneralLocation);
-        recon.initialize(mission, campaign, initialTargetCoordinates, squadron, missionBeginUnit, isPlayerFlight);
-
         recon.createUnitMission();
 
         addPossibleEscort(recon);        
@@ -66,17 +65,17 @@ public class ReconPackage extends FlightPackage
         return recon;
     }
 
-    private Coordinate getInitialTargetCoordinates(ReconFlight flight, Squadron squadron, Coordinate targetGeneralLocation) throws PWCGException 
+    private Coordinate getInitialTargetCoordinates(ReconFlightTypes reconFlightType, Squadron squadron, Coordinate targetGeneralLocation) throws PWCGException 
     {
         Coordinate targetCoordinates = null;
 
         // For transports we put in trucks and trains
-        if (flight.getReconFlightType() == ReconFlightTypes.RECON_FLIGHT_TRANSPORT)
+        if (reconFlightType == ReconFlightTypes.RECON_FLIGHT_TRANSPORT)
         {
             return getTargetTransportCoordinates(squadron, targetGeneralLocation);
         }
         // For airfields there might be a scramble
-        else if (flight.getReconFlightType() == ReconFlightTypes.RECON_FLIGHT_AIRFIELD)
+        else if (reconFlightType == ReconFlightTypes.RECON_FLIGHT_AIRFIELD)
         {
             return getTargetAirfieldCoordinates(squadron, targetGeneralLocation);
         }

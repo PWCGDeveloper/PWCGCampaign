@@ -18,6 +18,8 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.ShipConvoyGenerator;
@@ -46,9 +48,8 @@ public class SeaAntiShippingPackage extends FlightPackage
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
         
-		SeaAntiShippingFlight seaPatrol = new SeaAntiShippingFlight ();
-		seaPatrol.initialize(mission, campaign, targetPosition, squadron, flightType, missionBeginUnit, isPlayerFlight);
-		
+        FlightInformation flightInformation = createFlightInformation(targetPosition);
+		SeaAntiShippingFlight seaPatrol = new SeaAntiShippingFlight (flightInformation, missionBeginUnit);
 		generateConvoysForPlayerFlight(isPlayerFlight, selectedShippingLane, targetPosition, seaPatrol);
 		
 		seaPatrol.createUnitMission();
@@ -146,10 +147,8 @@ public class SeaAntiShippingPackage extends FlightPackage
             MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
             missionBeginUnit.initialize(startingPosition.copy());
             
-			opposingFlight = new SeaAntiShippingOpposingFlight ();
-			opposingFlight.initialize(mission, campaign, targetPosition.copy(), startingPosition.copy(), opposingSquad, FlightTypes.SEA_PATROL, 
-			                missionBeginUnit, false);
-					
+            FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(opposingSquad, mission, FlightTypes.SEA_PATROL, targetPosition);
+			opposingFlight = new SeaAntiShippingOpposingFlight (opposingFlightInformation, missionBeginUnit, startingPosition);
 			opposingFlight.createUnitMission();
 			
 			opposingFlight.getMissionBeginUnit().setStartTime(2);

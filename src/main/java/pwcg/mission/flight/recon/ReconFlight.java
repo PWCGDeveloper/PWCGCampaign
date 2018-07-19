@@ -2,8 +2,6 @@ package pwcg.mission.flight.recon;
 
 import java.util.List;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -12,7 +10,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class ReconFlight extends Flight
@@ -26,26 +24,15 @@ public class ReconFlight extends Flight
         RECON_FLIGHT_AIRFIELD,
     }
     
-	public ReconFlight() 
-	{
-		super ();
-	}
-
-	public void initialize(
-				Mission mission, 
-				Campaign campaign, 
-				Coordinate targetCoords, 
-				Squadron squad, 
-                MissionBeginUnit missionBeginUnit,
-				boolean isPlayerFlight) throws PWCGException 
-	{
-		super.initialize (mission, campaign, FlightTypes.RECON, targetCoords, squad, missionBeginUnit, isPlayerFlight);
-	}
+    public ReconFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
+    {
+        super (flightInformation, missionBeginUnit);
+    }
 
 	@Override
 	public int calcNumPlanes() throws PWCGException 
 	{
-		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
 		
 		int ReconMinimum = configManager.getIntConfigParam(ConfigItemKeys.ReconMinimumKey);
 		int ReconAdditional = configManager.getIntConfigParam(ConfigItemKeys.ReconAdditionalKey) + 1;
@@ -61,15 +48,15 @@ public class ReconFlight extends Flight
 	    
 	    if (reconFlightType == ReconFlightTypes.RECON_FLIGHT_TRANSPORT)
 	    {
-	        waypoints = new ReconWaypointsTransport(startPosition, targetCoords, this, mission);
+	        waypoints = new ReconWaypointsTransport(startPosition, getTargetCoords(), this, mission);
 	    }
 	    else if (reconFlightType == ReconFlightTypes.RECON_FLIGHT_AIRFIELD)
         {
-	        waypoints = new ReconWaypointsAirfield(startPosition, targetCoords, this, mission);
+	        waypoints = new ReconWaypointsAirfield(startPosition, getTargetCoords(), this, mission);
         }
 	    else
 	    {
-            waypoints = new ReconWaypointsFront(startPosition, targetCoords, this, mission);
+            waypoints = new ReconWaypointsFront(startPosition, getTargetCoords(), this, mission);
 	    }
 		
 		return waypoints.createWaypoints();
@@ -79,7 +66,7 @@ public class ReconFlight extends Flight
 	{
 	    String objective = "";
 
-        String objectiveName =  formMissionObjectiveLocation(targetCoords.copy());
+        String objectiveName =  formMissionObjectiveLocation(getTargetCoords().copy());
 	    if (reconFlightType == ReconFlightTypes.RECON_FLIGHT_TRANSPORT)
 	    {
 	        if (!objectiveName.isEmpty())

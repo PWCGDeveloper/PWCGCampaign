@@ -3,8 +3,6 @@ package pwcg.mission.flight.balloondefense;
 import java.io.BufferedWriter;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -14,7 +12,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuAttackArea;
 import pwcg.mission.mcu.McuCover;
@@ -38,23 +36,11 @@ public class PlayerBalloonDefenseFlight extends Flight
 
 	protected BalloonDefenseGroup balloonUnit = null;
 
-	public PlayerBalloonDefenseFlight() 
-	{
-	}
-
-	public void initialize(
-				Mission mission, 
-				Campaign campaign, 
-				Coordinate targetCoords, 
-				Squadron squad, 
-                MissionBeginUnit missionBeginUnit,
-				boolean isPlayerFlight,
-				BalloonDefenseGroup balloonUnit) throws PWCGException 
-	{
-		super.initialize (mission, campaign, FlightTypes.BALLOON_DEFENSE, targetCoords, squad, missionBeginUnit, isPlayerFlight);
-
-		this.balloonUnit = balloonUnit;
-	}
+    public PlayerBalloonDefenseFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit, BalloonDefenseGroup balloonUnit)
+    {
+        super (flightInformation, missionBeginUnit);
+        this.balloonUnit = balloonUnit;
+   }
 
 	@Override
 	public void createUnitMission() throws PWCGException  
@@ -73,7 +59,7 @@ public class PlayerBalloonDefenseFlight extends Flight
 	{
 		BalloonDefenseWaypoints waypointGenerator = new BalloonDefenseWaypoints(
 					startPosition, 
-		       		targetCoords, 
+		       		getTargetCoords(), 
 		       		this,
 		       		mission);
 
@@ -91,16 +77,16 @@ public class PlayerBalloonDefenseFlight extends Flight
 		attackArea.setAttackGround(0);
 		attackArea.setAttackGTargets(0);
 		attackArea.setAttackAir(1);
-		attackArea.setName("Balloon Defense Attack Area for " + squadron.determineDisplayName(campaign.getDate()));
-		attackArea.setDesc("Balloon Defense Attack Area for " + squadron.determineDisplayName(campaign.getDate()));
+		attackArea.setName("Balloon Defense Attack Area for " + getSquadron().determineDisplayName(getCampaign().getDate()));
+		attackArea.setDesc("Balloon Defense Attack Area for " + getSquadron().determineDisplayName(getCampaign().getDate()));
 		attackArea.setAttackArea(10000);		
 		attackArea.setOrientation(new Orientation());		
 		attackArea.setPosition(areaCoords);	
 		attackArea.setObject(planes.get(0).getLinkTrId());
 		
 		attackAreaTimer  = new McuTimer();
-		attackAreaTimer.setName(squadron.determineDisplayName(campaign.getDate()) + ": Balloon Defense Attack Area Timer");		
-		attackAreaTimer.setDesc("Balloon Defense Attack Area Timer for " + squadron.determineDisplayName(campaign.getDate()));		
+		attackAreaTimer.setName(getSquadron().determineDisplayName(getCampaign().getDate()) + ": Balloon Defense Attack Area Timer");		
+		attackAreaTimer.setDesc("Balloon Defense Attack Area Timer for " + getSquadron().determineDisplayName(getCampaign().getDate()));		
 		attackAreaTimer.setPosition(areaCoords);
 		attackAreaTimer.setTarget(attackArea.getIndex());
 	}	
@@ -109,8 +95,8 @@ public class PlayerBalloonDefenseFlight extends Flight
 	{
 		// Cover the escorted flight
 		cover  = new McuCover();
-		cover.setName("Balloon Defense Cover for " + squadron.determineDisplayName(campaign.getDate()));
-		cover.setDesc("Balloon Defense Cover for " + squadron.determineDisplayName(campaign.getDate()));
+		cover.setName("Balloon Defense Cover for " + getSquadron().determineDisplayName(getCampaign().getDate()));
+		cover.setDesc("Balloon Defense Cover for " + getSquadron().determineDisplayName(getCampaign().getDate()));
 		cover.setPosition(balloonUnit.getBalloon().getPosition().copy());
 		cover.setObject(planes.get(0).getEntity().getIndex());
 		cover.setTarget(balloonUnit.getBalloon().getEntity().getIndex());
@@ -119,8 +105,8 @@ public class PlayerBalloonDefenseFlight extends Flight
 		// Activate the cover command
 		// Activate the escorted squadron
 		coverTimer  = new McuTimer();
-		coverTimer.setName("Balloon Defense Cover Timer for " + squadron.determineDisplayName(campaign.getDate()));
-		coverTimer.setDesc("Balloon Defense Cover Timer for " + squadron.determineDisplayName(campaign.getDate()));
+		coverTimer.setName("Balloon Defense Cover Timer for " + getSquadron().determineDisplayName(getCampaign().getDate()));
+		coverTimer.setDesc("Balloon Defense Cover Timer for " + getSquadron().determineDisplayName(getCampaign().getDate()));
 		coverTimer.setPosition(balloonUnit.getBalloon().getPosition().copy());
 		coverTimer.setTarget(cover.getIndex());
 	}	
@@ -160,15 +146,15 @@ public class PlayerBalloonDefenseFlight extends Flight
 		deactivateCoverTimer.setTarget(deactivateCoverEntity.getIndex());
 	}
 
-	public Coordinate getCoordinatesToIntersectWithPlayer() 
+	public Coordinate getCoordinatesToIntersectWithPlayer() throws PWCGException 
 	{
- 		return targetCoords;
+ 		return getTargetCoords();
 	}
 
 	@Override
 	public int calcNumPlanes() throws PWCGException 
 	{
-		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
 		
 		int BalloonBustMinimum = configManager.getIntConfigParam(ConfigItemKeys.BalloonDefenseMinimumKey);
 		int BalloonBustAdditional = configManager.getIntConfigParam(ConfigItemKeys.BalloonDefenseAdditionalKey) + 1;
@@ -225,7 +211,7 @@ public class PlayerBalloonDefenseFlight extends Flight
 
 	public String getMissionObjective() throws PWCGException 
 	{
-        String objective = "Defend our balloon" + formMissionObjectiveLocation(targetCoords.copy()) + ".";       
+        String objective = "Defend our balloon" + formMissionObjectiveLocation(getTargetCoords().copy()) + ".";       
 
         return objective;
 	}

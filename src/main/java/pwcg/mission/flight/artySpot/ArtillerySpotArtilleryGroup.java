@@ -22,9 +22,9 @@ import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 
 public class ArtillerySpotArtilleryGroup extends GroundUnit
-{
-    public static final int NUM_ARTILLERY = 4;
-	
+{	
+    static final int NUM_ARTILLERY_FOR_PLAYER = 4;
+    
 	protected ArrayList<Artillery> arty = new ArrayList<Artillery>();
 
 	protected McuTimer activateTimer = new McuTimer();
@@ -48,9 +48,7 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
 	public List<IVehicle> getVehicles() 
 	{
 		List<IVehicle> vehicles = new ArrayList<IVehicle>();
-		
 		vehicles.addAll(arty);
-		
 		return vehicles;
 	}
 
@@ -71,7 +69,7 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
     {
         Artillery gunType = new Artillery(pwcgGroundUnitInformation.getCountry());
                 
-        for (int i = 0; i < NUM_ARTILLERY; ++i)
+        for (int i = 0; i < calcNumUnits(); ++i)
         {
             Artillery gun = gunType.copy();
             gun.getEntity().setEnabled(1);
@@ -90,7 +88,18 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
         }       
     }
 
-	protected void createActivation()
+	private int calcNumUnits()
+    {
+	    int numUnits = calculateForMinMaxRequested();
+	    if (numUnits == NUM_UNITS_BY_CONFIG)
+	    {
+	        numUnits = NUM_ARTILLERY_FOR_PLAYER;
+	    }
+	    
+	    return numUnits;
+    }
+
+    protected void createActivation()
 	{
 		activate.setName(pwcgGroundUnitInformation.getName() + ": Activate");		
 		activate.setDesc("Activate for " + pwcgGroundUnitInformation.getName());

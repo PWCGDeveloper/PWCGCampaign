@@ -9,6 +9,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.waypoint.TargetLocationFinder;
@@ -43,8 +44,8 @@ public class OffensivePackage extends FlightPackage
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
-		OffensiveFlight offensive = new OffensiveFlight ();
-		offensive.initialize(mission, campaign, targetWaypoint, squadron, missionBeginUnit, isPlayerFlight);
+        FlightInformation flightInformation = createFlightInformation(targetWaypoint);
+		OffensiveFlight offensive = new OffensiveFlight (flightInformation, missionBeginUnit);
 		offensive.createUnitMission();
         return offensive;
     }

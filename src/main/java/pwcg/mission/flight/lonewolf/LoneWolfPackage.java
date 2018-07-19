@@ -8,6 +8,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.patrol.PatrolPackage;
 
@@ -31,11 +32,9 @@ public class LoneWolfPackage extends PatrolPackage
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
         
-		LoneWolfFlight patrol = new LoneWolfFlight ();
-		patrol.initialize(mission, campaign, targetWaypoint, squadron, missionBeginUnit, isPlayerFlight);
-
-		patrol.createUnitMission();
-		
+        FlightInformation flightInformation = createFlightInformation(targetWaypoint);
+		LoneWolfFlight patrol = new LoneWolfFlight (flightInformation, missionBeginUnit);
+		patrol.createUnitMission();		
 		return patrol;
 	}
 

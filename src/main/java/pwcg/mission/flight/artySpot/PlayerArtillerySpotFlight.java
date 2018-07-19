@@ -3,8 +3,6 @@ package pwcg.mission.flight.artySpot;
 import java.io.BufferedWriter;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -12,7 +10,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.artySpot.grid.ArtillerySpotGrid;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuTimer;
@@ -25,31 +23,20 @@ public class PlayerArtillerySpotFlight extends ArtillerySpotFlight
 	private McuTimer egressWPTimer = new McuTimer();
 	private ArtillerySpotGrid artySpotGrid = null;
 
-	public PlayerArtillerySpotFlight() 
-	{
-		super ();
-	}
-
-	public void initialize(
-				Mission mission, 
-				Campaign campaign, 
-				Coordinate targetCoords,
-				Squadron squad, 
-                MissionBeginUnit missionBeginUnit) throws PWCGException 
-	{
-		super.initialize (mission, campaign, FlightTypes.ARTILLERY_SPOT, targetCoords,  squad, missionBeginUnit, true);
-				
-		artySpotGrid = new ArtillerySpotGrid();
-	}
+    public PlayerArtillerySpotFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
+    {
+        super (flightInformation, missionBeginUnit);
+        artySpotGrid = new ArtillerySpotGrid();
+    }
 	
 	public void createArtyGrid(ArtillerySpotArtilleryGroup friendlyArtillery) throws PWCGException 
 	{
-		artySpotGrid.create(friendlyArtillery, targetCoords);
+		artySpotGrid.create(friendlyArtillery, getTargetCoords());
 		
 		// Timer values
 		startSpotTimer.setTimer(1);
 		
-		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
 		int timeOnStation = configManager.getIntConfigParam(ConfigItemKeys.TimeOnArtillerySpotKey) * 60;
 		loiterCompleteTimer.setTimer(timeOnStation); // loiter
 		
@@ -61,7 +48,7 @@ public class PlayerArtillerySpotFlight extends ArtillerySpotFlight
 		egressWPTimer.setName("Spot Egress WP Timer");
 		
 		// Position
-		Coordinate mcuCoords = MathUtils.calcNextCoord(targetCoords, 0, 1200);
+		Coordinate mcuCoords = MathUtils.calcNextCoord(getTargetCoords(), 0, 1200);
 		mcuCoords = MathUtils.calcNextCoord(mcuCoords, 270, 1200);
 		startSpotTimer.setPosition(mcuCoords);
 		loiterCompleteTimer.setPosition(mcuCoords);
@@ -72,9 +59,9 @@ public class PlayerArtillerySpotFlight extends ArtillerySpotFlight
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
 		PlayerArtySpotWaypoints am = new PlayerArtySpotWaypoints(startPosition, 
-													 targetCoords,
+													 getTargetCoords(),
 													 this,
-												 	 mission);
+												 	 getMission());
 		return am.createWaypoints();
 	}
 

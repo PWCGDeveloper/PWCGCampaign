@@ -2,8 +2,6 @@ package pwcg.mission.flight.patrol;
 
 import java.util.List;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -12,32 +10,34 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class PatrolFlight extends Flight
 {
-	public PatrolFlight() 
+    public PatrolFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
 	{
-		super ();
+		super (flightInformation, missionBeginUnit);
 	}
 
-	public void initialize(
-				Mission mission, 
-				Campaign campaign, 
-				Coordinate targetCoords, 
-				Squadron squad, 
-	            MissionBeginUnit missionBeginUnit,
-	            FlightTypes flightType,
-				boolean isPlayerFlight) throws PWCGException 
-	{
-		super.initialize (mission, campaign, flightType, targetCoords, squad, missionBeginUnit, isPlayerFlight);
-	}
-
+    @Override
+    public void createUnitMission() throws PWCGException 
+    {
+        calcPlanesInFlight();
+        createWaypointPackage();
+        createPlanes();
+        createWaypoints();
+        setPlayerInitialPosition();
+        createActivation();
+        createFormation();
+        setFlightPayload();
+        moveAirstartCloseToInitialWaypoint();
+    }
+    
 	@Override
 	public int calcNumPlanes() throws PWCGException 
 	{
-		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
 		
 		int PatrolMinimum = configManager.getIntConfigParam(ConfigItemKeys.PatrolMinimumKey);
 		int PatrolAdditional = configManager.getIntConfigParam(ConfigItemKeys.PatrolAdditionalKey) + 1;
@@ -51,7 +51,7 @@ public class PatrolFlight extends Flight
 	{
 		PatrolFrontWaypoints waypointGenerator = new PatrolFrontWaypoints(
 				startPosition, 
-				targetCoords, 
+				getTargetCoords(), 
 				this,
 				mission);
 
@@ -64,13 +64,12 @@ public class PatrolFlight extends Flight
 	{
 		String objective = "Patrol aircpace at the specified front location.  " + 
 				"Engage any enemy aircraft that you encounter.  ";
-        String objectiveName =  formMissionObjectiveLocation(targetCoords.copy());
+        String objectiveName =  formMissionObjectiveLocation(getTargetCoords().copy());
         if (!objectiveName.isEmpty())
 		{
 			objective = "Patrol airspace " + objectiveName + 
 					".  Engage any enemy aircraft that you encounter."; 
 		}
-		
 		
 		return objective;
 	}

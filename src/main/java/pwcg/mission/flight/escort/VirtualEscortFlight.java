@@ -3,8 +3,6 @@ package pwcg.mission.flight.escort;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -14,34 +12,20 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPositionHelperAirStart;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class VirtualEscortFlight extends Flight
 {
-    Flight escortedFlight = null;
+    private Flight escortedFlight = null;
 
-	public VirtualEscortFlight(Flight escortingFlight)
-	{
-		this.escortedFlight = escortingFlight;
-	}
-
-	public void initialize(
-			Mission mission, 
-			Campaign campaign, 
-			Coordinate targetCoords, 
-			Squadron squad, 
-            MissionBeginUnit missionBeginUnit,
-			boolean isPlayerFlight,
-			Flight escortedFlight) throws PWCGException 
-	{
-		super.initialize (mission, campaign, FlightTypes.ESCORT, targetCoords, squad, missionBeginUnit, isPlayerFlight);
-		
-		// Always air start escort flights
-		airstart = true;
-	}
+    public VirtualEscortFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit, Flight escortingFlight)
+    {
+        super (flightInformation, missionBeginUnit);
+        this.escortedFlight = escortingFlight;
+    }
 
 	public void createEscortPositionCloseToFirstWP() throws PWCGException 
 	{
@@ -57,14 +41,14 @@ public class VirtualEscortFlight extends Flight
         escortFlightCoords.setZPos(escortedFlightCoords.getZPos()+ 100);
         escortFlightCoords.setYPos(escortedFlightCoords.getYPos() + 300);
 
-        FlightPositionHelperAirStart flightPositionHelperAirStart = new FlightPositionHelperAirStart(campaign, this);
+        FlightPositionHelperAirStart flightPositionHelperAirStart = new FlightPositionHelperAirStart(getCampaign(), this);
         flightPositionHelperAirStart.createPlanePositionAirStart(escortFlightCoords.copy(), escortedFlightOrient.copy());
 	}
 
 	@Override
 	public int calcNumPlanes() throws PWCGException 
 	{
-		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
 		
 		int escortMinimum = configManager.getIntConfigParam(ConfigItemKeys.PatrolMinimumKey);
 		int escortAdditional = configManager.getIntConfigParam(ConfigItemKeys.PatrolAdditionalKey) + 1;

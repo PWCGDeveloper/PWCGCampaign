@@ -5,10 +5,8 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.MissionBeginUnitCheckZone;
-import pwcg.mission.flight.artySpot.ArtillerySpotArtilleryGroup;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.SpotLightGroup;
 import pwcg.mission.ground.unittypes.artillery.GroundArtilleryUnit;
@@ -25,14 +23,6 @@ public class GroundUnitFactory
         this.campaign  = campaign;
         this.location  = location.copy();
         this.country  = country;
-    }
-
-    public ArtillerySpotArtilleryGroup createFriendlyArtilleryBattery (Coordinate targetPosition) throws PWCGException 
-    {
-        ArtillerySpotBatteryFactory artillerySpotBatteryFactory = new ArtillerySpotBatteryFactory(campaign, location, targetPosition, country);
-        ArtillerySpotArtilleryGroup friendlyArtilleryGroup =artillerySpotBatteryFactory.createFriendlyArtilleryBattery();
-        friendlyArtilleryGroup.createUnitMission();
-        return friendlyArtilleryGroup;
     }
 
     public GroundUnit createArtilleryUnit (

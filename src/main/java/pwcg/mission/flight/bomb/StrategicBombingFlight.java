@@ -2,13 +2,15 @@ package pwcg.mission.flight.bomb;
 
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.MissionBeginUnit;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.bomb.BombingWaypoints.BombingAltitudeLevel;
 
 public class StrategicBombingFlight extends BombingFlight
 {
-    public StrategicBombingFlight()
+    public StrategicBombingFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
     {
-        super();
+        super (flightInformation, missionBeginUnit);
         bombingAltitudeLevel = BombingAltitudeLevel.HIGH;
     }
 
@@ -17,7 +19,7 @@ public class StrategicBombingFlight extends BombingFlight
     {
         int numPlanes = 1;
 
-        if (!squadron.determineIsNightSquadron())
+        if (!getSquadron().determineIsNightSquadron())
         {
             numPlanes = 3 + RandomNumberGenerator.getRandom(2);
         }

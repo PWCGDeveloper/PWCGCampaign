@@ -12,15 +12,11 @@ import pwcg.mission.mcu.McuTimer;
 
 public abstract class GroundUnitSpawning extends GroundUnit
 {    
-    public static final int NUM_UNITS_BY_CONFIG = -1;
     
     protected McuTimer spawnTimer = new McuTimer();
     protected List <McuSpawn> spawners = new ArrayList<McuSpawn>();
     
     protected IVehicle spawningVehicle = null;
-    
-    protected int minRequested = NUM_UNITS_BY_CONFIG;
-    protected int maxRequested = NUM_UNITS_BY_CONFIG;
 
 	public GroundUnitSpawning(GroundUnitInformation pwcgGroundUnitInformation) 
 	{
@@ -78,12 +74,6 @@ public abstract class GroundUnitSpawning extends GroundUnit
         {
             spawn.setObject(spawningVehicle.getEntity().getIndex());
         }
-    }
-
-    public void setMinMaxRequested(int minRequested, int maxRequested)
-    {
-        this.minRequested = minRequested;
-        this.maxRequested = maxRequested;
     }
     
     public List<McuSpawn> getSpawners()

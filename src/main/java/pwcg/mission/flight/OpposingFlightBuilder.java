@@ -127,15 +127,10 @@ public class OpposingFlightBuilder
                 MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
                 missionBeginUnit.initialize(startPosition.copy());
                 
-                InterceptOpposingFlight opposingBombingFlight = new InterceptOpposingFlight ();
-                opposingBombingFlight.initialize(mission, campaign, targetPosition.copy(), startPosition, opposingSquad, 
-                                opposingFlightType, missionBeginUnit, true, false);
-                        
+                FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(opposingSquad, mission, opposingFlightType, targetPosition.copy());
+                InterceptOpposingFlight opposingBombingFlight = new InterceptOpposingFlight (opposingFlightInformation, missionBeginUnit, startPosition);
                 opposingBombingFlight.createUnitMission();
-                
-                // Start the bombers right away
-                opposingBombingFlight.getMissionBeginUnit().setStartTime(2);
-                
+                opposingBombingFlight.getMissionBeginUnit().setStartTime(2);                
                 opposingBombingFlights.add(opposingBombingFlight);
             }
 

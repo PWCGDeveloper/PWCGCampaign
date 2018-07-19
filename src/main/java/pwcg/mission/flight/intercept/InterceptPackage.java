@@ -10,6 +10,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.OpposingFlightBuilder;
@@ -58,11 +59,14 @@ public class InterceptPackage extends FlightPackage
 
     protected void addOpposingFlight(InterceptFlight interceptFlight, Coordinate targetCoordinates) throws PWCGException
     {
-        OpposingFlightBuilder opposingFlightBuilder = new OpposingFlightBuilder(mission, targetCoordinates, opposingFlightRole, opposingFlightType);
-        List<InterceptOpposingFlight> interceptOpposingFlights = opposingFlightBuilder.buildOpposingFlights();
-        for (Flight interceptOpposingFlight : interceptOpposingFlights)
+        for (int i = 0; i < 2; ++i)
         {
-            interceptFlight.addLinkedUnit(interceptOpposingFlight);
+            OpposingFlightBuilder opposingFlightBuilder = new OpposingFlightBuilder(mission, targetCoordinates, opposingFlightRole, opposingFlightType);
+            List<InterceptOpposingFlight> interceptOpposingFlights = opposingFlightBuilder.buildOpposingFlights();
+            for (Flight interceptOpposingFlight : interceptOpposingFlights)
+            {
+                interceptFlight.addLinkedUnit(interceptOpposingFlight);
+            }
         }
     }
 
@@ -72,8 +76,8 @@ public class InterceptPackage extends FlightPackage
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
         
-		InterceptFlight interceptFlight = new InterceptFlight ();
-		interceptFlight.initialize(mission, campaign, flightType, targetCoordinates, squadron, missionBeginUnit, isPlayerFlight);
+        FlightInformation flightInformation = createFlightInformation(targetCoordinates);
+		InterceptFlight interceptFlight = new InterceptFlight (flightInformation, missionBeginUnit);
 
 		interceptFlight.createUnitMission();
         return interceptFlight;

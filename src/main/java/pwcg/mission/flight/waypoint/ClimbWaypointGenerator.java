@@ -113,7 +113,7 @@ public class ClimbWaypointGenerator
         return aiStartWP;
     }
 
-	private Coordinate createAiStartCoords(double flightAlt)
+	private Coordinate createAiStartCoords(double flightAlt) throws PWCGException
 	{
 		Coordinate startCoords = flight.getAirfield().getPosition().copy();
         
