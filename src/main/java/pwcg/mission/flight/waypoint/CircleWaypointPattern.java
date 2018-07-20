@@ -67,9 +67,8 @@ public class CircleWaypointPattern
                 
         circleWPs.add(nextCircleWP);
         
-        if (legCount < legsInCircle)
+        if (++legCount < legsInCircle)
         {
-            ++legCount;
             generateCircleWP(nextCircleWP, endAlt, deltaAlt, legDistance, legCount);
         }
     }
