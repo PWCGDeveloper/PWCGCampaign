@@ -97,7 +97,7 @@ public class BoSMapWeatherBase extends MapWeather
         }
         else if (month == 4 | month == 5)
         {
-            season = Season.SUMMER;
+            season = Season.SPRING;
         }
         else if (month == 6 || month == 7 || month == 8)
         {
