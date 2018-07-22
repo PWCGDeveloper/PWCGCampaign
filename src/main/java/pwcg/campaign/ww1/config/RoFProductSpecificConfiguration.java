@@ -51,6 +51,12 @@ public class RoFProductSpecificConfiguration implements IProductSpecificConfigur
     }
 
     @Override
+    public boolean usePosition1()
+    {
+        return false;
+    }
+
+    @Override
     public TakeoffFormation getTakeoffFormation()
     {
         return TakeoffFormation.LINE_ABREAST;
