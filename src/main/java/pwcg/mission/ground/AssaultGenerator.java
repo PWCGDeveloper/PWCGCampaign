@@ -1,5 +1,6 @@
 package pwcg.mission.ground;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,25 +14,22 @@ import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.AssaultInformation;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionBattle;
 
 public abstract class AssaultGenerator  implements IAssaultGenerator
-{
-    public enum BattleSize
-    {
-        BATTLE_SIZE_TINY,
-        BATTLE_SIZE_SKIRMISH,
-        BATTLE_SIZE_ASSAULT,
-        BATTLE_SIZE_OFFENSIVE;
-    }
-    
+{    
     protected Campaign campaign;
     protected Mission mission;
     protected Date date;
     protected TargetDefinition targetDefinition;
     protected BattleSize battleSize;
-    protected MissionBattle missionBattle = new MissionBattle();
+    protected List<AssaultInformation> assaultInformationElements = new ArrayList<>();
+    protected static int DISTANCE_BETWEEN_COMBATANTS = 500;
+
+    protected abstract void generateAssaultComponent(Coordinate groundPosition) throws PWCGException;
 
     public AssaultGenerator(Campaign campaign, Mission mission, Date date)
     {
@@ -41,20 +39,32 @@ public abstract class AssaultGenerator  implements IAssaultGenerator
     }
     
     @Override
-    public MissionBattle generateAssault(TargetDefinition targetDefinition, BattleSize battleSize) throws PWCGException 
+    public AssaultInformation generateAssault(TargetDefinition targetDefinition, BattleSize battleSize) throws PWCGException 
     {
         this.targetDefinition = targetDefinition;
         this.battleSize = battleSize;
 
-        // RoF blows up with out of memory if there is too much packed into an assault
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int numAssaults = productSpecific.getNumAssaultSegments(battleSize);        
+        int numAssaults = determineNumberOfAssaultSegments(battleSize);        
+        int centerFrontIndex = determineCenterOfBattle();
+        generateMiniAssaultOnEachIndex(targetDefinition, numAssaults, centerFrontIndex);
         
-        // Find points for each element of the assault
+        int index = RandomNumberGenerator.getRandom(assaultInformationElements.size());
+        mission.registerAssault(assaultInformationElements.get(index));
+        return assaultInformationElements.get(index);
+    }
+
+    private int determineNumberOfAssaultSegments(BattleSize battleSize)
+    {
+        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int numAssaults = productSpecific.getNumAssaultSegments(battleSize);
+        return numAssaults;
+    }
+    
+    protected int determineCenterOfBattle() throws PWCGException
+    {
         FrontLinesForMap frontLineMarker =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(date);
         List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(targetDefinition.getTargetCountry().getSide());
         int centerFrontIndex = frontLineMarker.findIndexForClosestPosition(targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry().getSide());
-        
         if (centerFrontIndex < 10)
         {
             centerFrontIndex = 10;
@@ -65,21 +75,49 @@ public abstract class AssaultGenerator  implements IAssaultGenerator
             centerFrontIndex = frontLines.size() - 10;
         }
         
-        // Generate a mini assault on each selected front point
-        int startFrontIndex = centerFrontIndex - (numAssaults / 2);
-        int finishFrontIndex = startFrontIndex + numAssaults;
-        for (int thisIndex = startFrontIndex; thisIndex < finishFrontIndex; ++thisIndex)
+        return centerFrontIndex;
+    }
+
+    private void generateMiniAssaultOnEachIndex(TargetDefinition targetDefinition, int numAssaults, int centerFrontIndex) throws PWCGException
+    {
+        int startFrontIndex = centerFrontIndex;
+        int finishFrontIndex = centerFrontIndex;
+        if (numAssaults > 1)
+        {
+            startFrontIndex = centerFrontIndex - (numAssaults / 2);
+            finishFrontIndex = startFrontIndex + numAssaults;
+        }
+        
+        FrontLinesForMap frontLineMarker =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(date);
+        for (int thisIndex = startFrontIndex; thisIndex <= finishFrontIndex; ++thisIndex)
         {
             Coordinate battleCoordinate = frontLineMarker.getCoordinates(thisIndex, targetDefinition.getTargetCountry().getSide());
             generateAssaultComponent (battleCoordinate);
         }
-        
-        mission.registerMissionBattle(missionBattle);
-
-        return missionBattle;
     }
-
     
-    protected abstract void generateAssaultComponent(Coordinate groundPosition) throws PWCGException;
-
+    protected Coordinate getDefensePositionAcrossFromAssaultingUnit(AssaultInformation assaultInformation, Coordinate unitPosition) throws PWCGException
+    {
+        double angleToDefensePosition = MathUtils.calcAngle(assaultInformation.getAssaultPosition(), assaultInformation.getDefensePosition());
+        double distanceToDefensePosition = MathUtils.calcDist(assaultInformation.getAssaultPosition(), assaultInformation.getDefensePosition()) + DISTANCE_BETWEEN_COMBATANTS;
+        Coordinate destinationPositionForThisUnit = MathUtils.calcNextCoord(unitPosition, angleToDefensePosition, distanceToDefensePosition);
+        return destinationPositionForThisUnit;
+    }
+    
+    protected void registerAssaultSegment(AssaultInformation assaultInformation)
+    {
+        assaultInformationElements.add(assaultInformation);
+    }
+    
+    protected boolean determineIsPlayer()
+    {
+        if (battleSize == BattleSize.BATTLE_SIZE_TINY)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 }

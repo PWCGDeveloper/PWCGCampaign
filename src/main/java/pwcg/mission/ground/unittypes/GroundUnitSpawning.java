@@ -5,7 +5,6 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.GroundUnitInformation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuTimer;
@@ -22,24 +21,6 @@ public abstract class GroundUnitSpawning extends GroundUnit
 	{
         super(pwcgGroundUnitInformation);
 	}
-
-    protected int calcNumUnits() throws PWCGException 
-    {
-        if (minRequested == NUM_UNITS_BY_CONFIG || maxRequested == NUM_UNITS_BY_CONFIG)
-        {
-            calcNumUnitsByConfig();
-        }
-        
-        int randomUnits = 0;
-        if (maxRequested > minRequested)
-        {
-            randomUnits = RandomNumberGenerator.getRandom(maxRequested - minRequested + 1);
-        }
-
-        int numUnits = minRequested + randomUnits;
-        
-        return numUnits;
-    }
 
     @Override
     public void createUnitMission() throws PWCGException 
@@ -83,6 +64,6 @@ public abstract class GroundUnitSpawning extends GroundUnit
 
     abstract protected void createUnits() throws PWCGException ;
     abstract protected void createSpawners() throws PWCGException ;
-    abstract protected void calcNumUnitsByConfig() throws PWCGException ;
+    abstract protected int calcNumUnits() throws PWCGException ;
 }	
 

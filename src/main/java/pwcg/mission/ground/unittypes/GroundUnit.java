@@ -73,11 +73,11 @@ import pwcg.mission.ground.vehicle.IVehicle;
  */
 public abstract class GroundUnit extends Unit
 {
-    public static final int NUM_UNITS_BY_CONFIG = -1;
-
+    protected static final int NO_MIN_MAX_REQUESTED = -1;
+    
     protected GroundUnitInformation pwcgGroundUnitInformation;
-    protected int minRequested = NUM_UNITS_BY_CONFIG;
-    protected int maxRequested = NUM_UNITS_BY_CONFIG;
+    protected int minRequested = NO_MIN_MAX_REQUESTED;
+    protected int maxRequested = NO_MIN_MAX_REQUESTED;
 
     abstract public void createUnitMission() throws PWCGException ;
     abstract public List<IVehicle> getVehicles() ;
@@ -132,13 +132,20 @@ public abstract class GroundUnit extends Unit
         this.maxRequested = maxRequested;
     }
     
+    public boolean isMinMaxRequested()
+    {
+        if ((minRequested == NO_MIN_MAX_REQUESTED) || (maxRequested == NO_MIN_MAX_REQUESTED))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public int calculateForMinMaxRequested()
     {
-        if (minRequested == NUM_UNITS_BY_CONFIG || maxRequested == NUM_UNITS_BY_CONFIG)
-        {
-            return NUM_UNITS_BY_CONFIG;
-        }
-        
         if (maxRequested < minRequested)
         {
             maxRequested = minRequested;

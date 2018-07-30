@@ -21,6 +21,10 @@ public class TargetDefinition
     private int preferredRadius;
     private int maximumRadius;
 
+    public TargetDefinition()
+    {
+    }
+    
     public Coordinate getTargetGeneralPosition()
     {
         return targetGeneralPosition;

@@ -20,7 +20,7 @@ public class AmbientGroundUnitBuilder
     private List<GroundTrainUnit> ambientTrains = new ArrayList<GroundTrainUnit>();
     private List<GroundTruckConvoyUnit> ambientTrucks = new ArrayList<GroundTruckConvoyUnit>();
     private List<GroundUnitSpawning> AAA = new ArrayList<GroundUnitSpawning>();
-    private List<MissionBattle> ambientBattles = new ArrayList<MissionBattle>();
+    private List<AssaultInformation> ambientBattles = new ArrayList<AssaultInformation>();
 
     public AmbientGroundUnitBuilder (Campaign campaign, Mission mission)
     {
@@ -77,7 +77,7 @@ public class AmbientGroundUnitBuilder
         return ambientTrucks;
     }
 
-    public List<MissionBattle> getAmbientBattles()
+    public List<AssaultInformation> getAmbientBattles()
     {
         return ambientBattles;
     }

@@ -62,10 +62,10 @@ public class GroundTrainUnit extends GroundMovingUnit
 		}
 	}
 
-    protected void calcNumUnitsByConfig() throws PWCGException 
+    protected int calcNumUnits()
     {
-        minRequested = 1;
-        maxRequested = 1;
+        setMinMaxRequested(1, 1);        
+        return calculateForMinMaxRequested();
     }
 
     @Override

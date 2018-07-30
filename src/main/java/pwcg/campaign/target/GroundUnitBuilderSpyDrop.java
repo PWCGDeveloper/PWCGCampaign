@@ -22,7 +22,7 @@ public class GroundUnitBuilderSpyDrop
 
     public GroundUnitCollection createSpyDropTargets() throws PWCGException 
     {
-        TroopConcentrationFactory groundUnitFactory = new TroopConcentrationFactory(campaign, targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry());
+        TroopConcentrationFactory groundUnitFactory = new TroopConcentrationFactory(campaign, targetDefinition);
         GroundUnit targetUnit = groundUnitFactory.createTroopConcentration();
         groundUnitCollection.addGroundUnit(GroundUnitType.INFANTRY_UNIT, targetUnit);
         

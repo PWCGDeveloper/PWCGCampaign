@@ -8,6 +8,9 @@ import pwcg.campaign.context.PositionsManager;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.target.TacticalTarget;
+import pwcg.campaign.target.TargetDefinition;
+import pwcg.campaign.target.TargetDefinitionBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
@@ -59,7 +62,10 @@ public class BalloonBustPackage extends FlightPackage
 
     private BalloonDefenseGroup createBalloonUnit(Coordinate balloonPosition, ICountry balloonCountry) throws PWCGException
     {
-        GroundUnitBalloonFactory balloonFactory = new GroundUnitBalloonFactory(campaign, balloonPosition, balloonCountry);
+        TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, balloonCountry, TacticalTarget.TARGET_BALLOON, balloonPosition, isPlayerFlight);
+
+        GroundUnitBalloonFactory balloonFactory = new GroundUnitBalloonFactory(campaign, targetDefinition);
         return balloonFactory.createBalloonUnit();
     }
 

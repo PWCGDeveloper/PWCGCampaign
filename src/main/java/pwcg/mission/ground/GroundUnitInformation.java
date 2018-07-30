@@ -21,6 +21,7 @@ public class GroundUnitInformation
     protected Coordinate destination = new Coordinate();
 	protected Orientation orientation = new Orientation();
     protected TacticalTarget targetType = TacticalTarget.TARGET_NONE;
+    protected GroundUnitSize unitSize = GroundUnitSize.GROUND_UNIT_SIZE_TINY;
 
 	public ICountry getCountry(Date date) throws PWCGException
 	{
@@ -96,5 +97,15 @@ public class GroundUnitInformation
     public void setTargetType(TacticalTarget targetType)
     {
         this.targetType = targetType;
+    }
+
+    public GroundUnitSize getUnitSize()
+    {
+        return unitSize;
+    }
+
+    public void setUnitSize(GroundUnitSize unitSize)
+    {
+        this.unitSize = unitSize;
     }
 }

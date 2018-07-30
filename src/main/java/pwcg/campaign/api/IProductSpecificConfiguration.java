@@ -2,7 +2,7 @@ package pwcg.campaign.api;
 
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.TakeoffFormation;
-import pwcg.mission.ground.AssaultGenerator.BattleSize;
+import pwcg.mission.ground.BattleSize;
 
 public interface IProductSpecificConfiguration
 {

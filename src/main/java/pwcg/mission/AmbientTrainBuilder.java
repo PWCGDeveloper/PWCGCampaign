@@ -10,6 +10,9 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
+import pwcg.campaign.target.TacticalTarget;
+import pwcg.campaign.target.TargetDefinition;
+import pwcg.campaign.target.TargetDefinitionBuilder;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -51,7 +54,11 @@ public class AmbientTrainBuilder extends AmbientUnitBuilder
     {
         if (station.getCountry(campaign.getDate()).getSide() == enemySide)
         {
-            TrainUnitFactory trainfactory =  new TrainUnitFactory(campaign, station.getPosition(), trainCountry, campaign.getDate());
+            boolean isPlayerTarget = true;
+            TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
+            TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, trainCountry, TacticalTarget.TARGET_TRAIN, station.getPosition(), isPlayerTarget);
+
+            TrainUnitFactory trainfactory =  new TrainUnitFactory(campaign, targetDefinition);
             GroundTrainUnit trainUnit = trainfactory.createTrainUnit();
             addAmbientTrain(trainUnit, station);
         }

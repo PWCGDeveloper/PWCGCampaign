@@ -22,7 +22,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.ground.AssaultGenerator.BattleSize;
+import pwcg.mission.ground.BattleSize;
 
 public class AmbientBattleBuilder
 {
@@ -31,7 +31,7 @@ public class AmbientBattleBuilder
     private ICountry attackingCountry = null;
     private ICountry defendingCountry = null;
 
-    private List<MissionBattle> battles = new ArrayList<MissionBattle>();
+    private List<AssaultInformation> battles = new ArrayList<AssaultInformation>();
 
     public AmbientBattleBuilder (Campaign campaign, Mission mission)
     {
@@ -39,7 +39,7 @@ public class AmbientBattleBuilder
         this.campaign = campaign;
     }
 
-    public List<MissionBattle> generateAmbientBattles() throws PWCGException 
+    public List<AssaultInformation> generateAmbientBattles() throws PWCGException 
     {
         int maxBattles = getMaxAmbientBattles();
         int numBattles = RandomNumberGenerator.getRandom(maxBattles+1);
@@ -50,13 +50,14 @@ public class AmbientBattleBuilder
             Coordinate battleLocation = getBattleLocation();
             if (battleLocation != null)
             {
+                boolean isPlayerTarget = true;
                 TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
-                TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionForAmbient(campaign, attackingCountry, defendingCountry, TacticalTarget.TARGET_ASSAULT, battleLocation);
+                TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionAssault(campaign, attackingCountry, defendingCountry, TacticalTarget.TARGET_ASSAULT, battleLocation, isPlayerTarget);
     
                 if (targetDefinition != null)
                 {
                     IAssaultGenerator assaultGenerator = AssaultGeneratorFactory.createAssaultGenerator(campaign, mission, campaign.getDate());
-                    MissionBattle missionBattle = assaultGenerator.generateAssault(targetDefinition, BattleSize.BATTLE_SIZE_SKIRMISH);
+                    AssaultInformation missionBattle = assaultGenerator.generateAssault(targetDefinition, BattleSize.BATTLE_SIZE_SKIRMISH);
                     
                     battles.add(missionBattle);
                 }

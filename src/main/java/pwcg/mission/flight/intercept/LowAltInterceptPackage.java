@@ -44,7 +44,7 @@ public class LowAltInterceptPackage extends InterceptPackage
 
     private GroundUnitCollection createBattle() throws PWCGException
     {
-        FlightGroundUnitTargetGenerator targetGenerator = new FlightGroundUnitTargetGenerator(mission, campaign, squadron, opposingFlightType, false);
+        FlightGroundUnitTargetGenerator targetGenerator = new FlightGroundUnitTargetGenerator(mission, campaign, squadron, opposingFlightType, isPlayerFlight);
         GroundUnitCollection groundUnitCollection = targetGenerator.createGroundUnitsForFlightWithOverride(TacticalTarget.TARGET_DEFENSE);
         return groundUnitCollection;
     }

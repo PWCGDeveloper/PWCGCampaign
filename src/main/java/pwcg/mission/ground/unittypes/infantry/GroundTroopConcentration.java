@@ -15,6 +15,7 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -95,22 +96,20 @@ public class GroundTroopConcentration extends GroundUnit
         int numTrucks = 5;
         int randomTrucks = 0;
         
-        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
-            numTrucks = 5;
-            randomTrucks = 5;
+            numTrucks = 2;
+            randomTrucks = 2;
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
         {
-            numTrucks = 10;
-            randomTrucks = 10;
+            numTrucks = 6;
+            randomTrucks = 6;
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
         {
-            numTrucks = 15;
-            randomTrucks = 15;
+            numTrucks = 8;
+            randomTrucks = 8;
         }        
 
         numTrucks = numTrucks + RandomNumberGenerator.getRandom(randomTrucks+1);

@@ -3,17 +3,14 @@ package pwcg.mission.ground.unittypes.artillery;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.factory.VehicleFactory;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
-import pwcg.core.config.ConfigSimple;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
+import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundRepeatSpawningUnit;
 import pwcg.mission.ground.vehicle.IVehicleFactory;
 import pwcg.mission.mcu.McuSpawn;
@@ -24,17 +21,14 @@ public class GroundAAABattery extends GroundRepeatSpawningUnit
     static private int MG_ATTACK_AREA = 500;
     static private int ARTY_CHECK_ZONE = 6000;
     static private int ARTY_ATTACK_AREA = 5000;
- 
-    private Campaign campaign;
 
     protected boolean isMg = true;
     
     protected boolean hasBeenWritten = false;
 
-    public GroundAAABattery(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation, boolean isMg) throws PWCGException
+    public GroundAAABattery(GroundUnitInformation pwcgGroundUnitInformation, boolean isMg) throws PWCGException
     {
         super(pwcgGroundUnitInformation);
-        this.campaign = campaign;
         this.isMg = isMg;
     }   
 
@@ -102,25 +96,29 @@ public class GroundAAABattery extends GroundRepeatSpawningUnit
         }
     }
 
-    protected void calcNumUnitsByConfig() throws PWCGException 
+    protected int calcNumUnits()
     {
-        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (!isMinMaxRequested())
         {
-            minRequested = 1;
-            maxRequested = 2;
+            if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
+            {
+                setMinMaxRequested(1, 1);
+            }
+            else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
+            {
+                setMinMaxRequested(1, 2);
+            }
+            else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
+            {
+                setMinMaxRequested(1, 3);
+            }
+            else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
+            {
+                setMinMaxRequested(2, 4);
+            }
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
-        {
-            minRequested = 1;
-            maxRequested = 3;
-        }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
-        {
-            minRequested = 2;
-            maxRequested = 4;
-        }
+        
+        return calculateForMinMaxRequested();
     }
 
     public void write(BufferedWriter writer) throws PWCGException 

@@ -7,23 +7,23 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAssaultGenerator;
 import pwcg.campaign.factory.AssaultGeneratorFactory;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.AssaultInformation;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionBattle;
-import pwcg.mission.ground.AssaultGenerator.BattleSize;
+import pwcg.mission.ground.BattleSize;
 import pwcg.mission.ground.GroundUnitCollection;
 
 public class GroundUnitBuilderAssault
 {
     public static GroundUnitCollection createAssault(Campaign campaign, Mission mission, TargetDefinition targetDefinition) throws PWCGException 
     {
-        BattleSize battleSize = BattleSize.BATTLE_SIZE_TINY;            
+        BattleSize battleSize = BattleSize.BATTLE_SIZE_SKIRMISH;            
         if (targetDefinition.isPlayerTarget())
         {
             battleSize = BattleSize.BATTLE_SIZE_ASSAULT;            
         }
         
        IAssaultGenerator assaultGenerator = AssaultGeneratorFactory.createAssaultGenerator(campaign, mission, campaign.getDate());
-       MissionBattle missionBattle = assaultGenerator.generateAssault(targetDefinition, battleSize);
+       AssaultInformation missionBattle = assaultGenerator.generateAssault(targetDefinition, battleSize);
        
        GroundUnitCollection groundUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION);
        groundUnitCollection = missionBattle.getGroundUnitCollection();

@@ -38,4 +38,6 @@ public interface ICountry
 
     boolean isCountry(Country country);
 
+    ICountry getOppositeSideCountry();
+
 }

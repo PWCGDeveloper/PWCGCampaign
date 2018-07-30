@@ -8,14 +8,18 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.target.GroundUnitType;
+import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.AssaultInformation;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.ground.AssaultGenerator;
-import pwcg.mission.ground.GroundUnitFactory;
+import pwcg.mission.ground.BattleSize;
+import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.factory.AAAUnitFactory;
 import pwcg.mission.ground.factory.AssaultFactory;
 import pwcg.mission.ground.unittypes.GroundUnit;
@@ -24,30 +28,28 @@ import pwcg.mission.mcu.Coalition;
 public class RoFAssaultGenerator extends AssaultGenerator
 {
     private MissionBeginUnitCheckZone missionBeginUnit = null;
-
-    private double angleOfCombatants = 0;
-    
-    private static final int DISTANCE_BETWEEN_COMBATANTS = 200;
-
+    private AssaultInformation assaultInformation = new AssaultInformation();
 
     public RoFAssaultGenerator(Campaign campaign, Mission mission, Date date)
     {
         super(campaign, mission, date);
+        DISTANCE_BETWEEN_COMBATANTS = 200;
     }
 
     
     @Override
     protected void generateAssaultComponent(Coordinate battleComponentPosition) throws PWCGException 
     {
-        missionBattle.setAggressor(targetDefinition.getAttackingCountry());
-        missionBattle.setDefender(targetDefinition.getTargetCountry());
+        assaultInformation.setAggressor(targetDefinition.getAttackingCountry());
+        assaultInformation.setDefender(targetDefinition.getTargetCountry());
         
         createPositions(battleComponentPosition);
         createMissionBegin();
         createAssault();
         createDefenders();
         
-        missionBattle.finalizeBattle();
+        assaultInformation.finalizeBattle();
+        registerAssaultSegment(assaultInformation);
  	}
 
 
@@ -56,7 +58,7 @@ public class RoFAssaultGenerator extends AssaultGenerator
         standingFiringInfantry();
         assaultingInfantry();
         
-        if (battleSize != BattleSize.BATTLE_SIZE_SKIRMISH)
+        if (battleSize == BattleSize.BATTLE_SIZE_ASSAULT || battleSize == BattleSize.BATTLE_SIZE_OFFENSIVE)
         {
             assaultingTanks();
             assaultingMachineGuns();
@@ -70,36 +72,13 @@ public class RoFAssaultGenerator extends AssaultGenerator
     {
         defendingMachineGuns();
         
-        if (battleSize != BattleSize.BATTLE_SIZE_SKIRMISH)
+        if (battleSize == BattleSize.BATTLE_SIZE_ASSAULT || battleSize == BattleSize.BATTLE_SIZE_OFFENSIVE)
         {
             defendingArtillery();
             defendingAAA();
         }
     }
 
-
-    private void createMissionBegin() throws PWCGException
-    {
-        Coordinate missionBeginPosition = missionBattle.getAssaultPosition().copy();
-        if (campaign.determineCountry().isSameSide(targetDefinition.getTargetCountry()))
-        {
-            missionBeginPosition = missionBattle.getDefensePosition().copy();
-        }
-        else 
-        {
-            missionBeginPosition = missionBattle.getAssaultPosition().copy();
-        }
-        
-        missionBeginUnit = new MissionBeginUnitCheckZone();
-        Coalition playerCoalition  = Coalition.getFriendlyCoalition(campaign.determineCountry());
-        missionBeginUnit.initialize(missionBeginPosition, 8000, playerCoalition);
-        missionBeginUnit.setStartTime(2);
-    }
-    
-    /**
-     * @param groundPosition
-     * @throws PWCGException 
-     */
     private void createPositions(Coordinate groundPosition) throws PWCGException 
     {
         FrontLinesForMap frontLinesForMap =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(date);
@@ -108,137 +87,165 @@ public class RoFAssaultGenerator extends AssaultGenerator
         Coordinate axisPosition = frontLinesForMap.findClosestFrontCoordinateForSide(groundPosition, Side.AXIS);
         
         // Who is assaulting whom?
-        missionBattle.setAssaultPosition(axisPosition.copy());
-        missionBattle.setDefensePosition(alliedPosition.copy());                
-        if (missionBattle.getAggressor().getSide() == Side.ALLIED)
+        assaultInformation.setAssaultPosition(axisPosition.copy());
+        assaultInformation.setDefensePosition(alliedPosition.copy());                
+        if (assaultInformation.getAggressor().getSide() == Side.ALLIED)
         {
-            missionBattle.setAssaultPosition(alliedPosition.copy());
-            missionBattle.setDefensePosition(axisPosition.copy());                
+            assaultInformation.setAssaultPosition(alliedPosition.copy());
+            assaultInformation.setDefensePosition(axisPosition.copy());                
         }
-
-        angleOfCombatants = MathUtils.calcAngle(missionBattle.getDefensePosition(), missionBattle.getAssaultPosition());        
     }
-    
-    /**
-     * @throws PWCGException 
-     * @
-     */
+
+
+    private void createMissionBegin() throws PWCGException
+    {
+        Coordinate missionBeginPosition = assaultInformation.getAssaultPosition().copy();
+        if (campaign.determineCountry().isSameSide(targetDefinition.getTargetCountry()))
+        {
+            missionBeginPosition = assaultInformation.getDefensePosition().copy();
+        }
+        else 
+        {
+            missionBeginPosition = assaultInformation.getAssaultPosition().copy();
+        }
+        
+        missionBeginUnit = new MissionBeginUnitCheckZone();
+        Coalition playerCoalition  = Coalition.getFriendlyCoalition(campaign.determineCountry());
+        missionBeginUnit.initialize(missionBeginPosition, 8000, playerCoalition);
+        missionBeginUnit.setStartTime(2);
+    }
+
     private void assaultingInfantry() throws PWCGException 
     { 
-        AssaultFactory GroundUnitAssaultFactory = new AssaultFactory(campaign, battleSize);
+        String name = assaultInformation.getAggressor().getCountryName() + " Infantry";        
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                missionBeginUnit, 
+                assaultInformation.getAggressor(),
+                name, 
+                TacticalTarget.TARGET_ASSAULT, 
+                assaultInformation.getAssaultPosition(), 
+                assaultInformation.getDefensePosition(), 
+                assaultInformation.getAssaultOrientation(), 
+                determineIsPlayer());
 
-        Coordinate infantryAssaultPosition = MathUtils.calcNextCoord(missionBattle.getDefensePosition(), angleOfCombatants, DISTANCE_BETWEEN_COMBATANTS + 600.0);
-        
-        GroundUnit assaultInfantryUnit = GroundUnitAssaultFactory.createAssaultInfantryUnit (
-                        missionBeginUnit, 
-                        missionBattle.getAggressor(), 
-                        infantryAssaultPosition, 
-                        missionBattle.getDefensePosition());
-
-        missionBattle.addGroundUnit(GroundUnitType.INFANTRY_UNIT, assaultInfantryUnit);
+        AssaultFactory assaultFactory = new AssaultFactory();        
+        GroundUnit assaultInfantryUnit = assaultFactory.createAssaultInfantryUnit (groundUnitInformation);
+        assaultInformation.addGroundUnit(GroundUnitType.INFANTRY_UNIT, assaultInfantryUnit);
     }
-    
-    /**
-     * @throws PWCGException 
-     * @
-     */
+
     private void standingFiringInfantry() throws PWCGException 
     { 
-        // Assaults are big so set player flight to true.  we will never create an AI minimized assault
-        AssaultFactory GroundUnitAssaultFactory =  new AssaultFactory(campaign, battleSize);
-
-        // Move the assault position about 300 meters from the defensive positions
-        Coordinate infantryAssaultPosition = MathUtils.calcNextCoord(missionBattle.getDefensePosition(), angleOfCombatants, DISTANCE_BETWEEN_COMBATANTS);
+        String name = assaultInformation.getAggressor().getCountryName() + " Infantry";
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                missionBeginUnit, 
+                assaultInformation.getAggressor(),
+                name, 
+                TacticalTarget.TARGET_INFANTRY, 
+                assaultInformation.getAssaultPosition(), 
+                assaultInformation.getDefensePosition(), 
+                assaultInformation.getAssaultOrientation(), 
+                determineIsPlayer());
         
-        // Generate the assaulting infantry unit
-        GroundUnit assaultInfantryUnit = GroundUnitAssaultFactory.createStandingInfantryUnit (
-                        missionBeginUnit, 
-                        missionBattle.getAggressor(), 
-                        infantryAssaultPosition, 
-                        missionBattle.getDefensePosition());
-        
-        missionBattle.addGroundUnit(GroundUnitType.INFANTRY_UNIT, assaultInfantryUnit);
+        AssaultFactory assaultFactory = new AssaultFactory();
+        GroundUnit assaultInfantryUnit = assaultFactory.createAssaultInfantryUnit (groundUnitInformation);
+        assaultInformation.addGroundUnit(GroundUnitType.INFANTRY_UNIT, assaultInfantryUnit);
     }
-    
-    /**
-     * @throws PWCGException 
-     * @
-     */
+
     private void assaultingTanks() throws PWCGException 
     {         
         // Assaults are big so set player flight to true.  we will never create an AI minimized assault
-        AssaultFactory GroundUnitAssaultFactory =  new AssaultFactory(campaign, battleSize);
+        AssaultFactory groundUnitAssaultFactory =  new AssaultFactory();
 
         // Generate the assaulting tank unit
         Date campaignDate=     PWCGContextManager.getInstance().getCampaign().getDate();
         Date tankDate = DateUtils.getDateWithValidityCheck("01/10/1917");
-        if (missionBattle.getAggressor().isCountry(Country.BRITAIN))
+        if (assaultInformation.getAggressor().isCountry(Country.BRITAIN))
         {
             tankDate = DateUtils.getDateWithValidityCheck("01/06/1916");
         }
-        else if (missionBattle.getAggressor().isCountry(Country.FRANCE))
+        else if (assaultInformation.getAggressor().isCountry(Country.FRANCE))
         {
             tankDate = DateUtils.getDateWithValidityCheck("01/06/1917");
         }
-        else if (missionBattle.getAggressor().isCountry(Country.GERMANY))
+        else if (assaultInformation.getAggressor().isCountry(Country.GERMANY))
         {
             tankDate = DateUtils.getDateWithValidityCheck("01/03/1918");
         }
-        else if (missionBattle.getAggressor().isCountry(Country.USA))
+        else if (assaultInformation.getAggressor().isCountry(Country.USA))
         {
             tankDate = DateUtils.getDateWithValidityCheck("01/04/1918");
         }
-        else if (missionBattle.getAggressor().isCountry(Country.AUSTRIA))
+        else if (assaultInformation.getAggressor().isCountry(Country.AUSTRIA))
         {
             tankDate = DateUtils.getDateWithValidityCheck("01/12/1918");
         }
-        else if (missionBattle.getAggressor().isCountry(Country.RUSSIA))
+        else if (assaultInformation.getAggressor().isCountry(Country.RUSSIA))
         {
             tankDate = DateUtils.getDateWithValidityCheck("01/12/1918");
         }
         
         if (campaignDate.after(tankDate))
         {
-            Coordinate tankAssaultPosition = MathUtils.calcNextCoord(missionBattle.getDefensePosition(), angleOfCombatants, DISTANCE_BETWEEN_COMBATANTS + 500.0);
-            
-            GroundUnit assaultTankUnit = GroundUnitAssaultFactory.createAssaultTankUnit (
-                            missionBeginUnit, 
-                            missionBattle.getAggressor(), 
-                            tankAssaultPosition, 
-                            missionBattle.getDefensePosition());
+            Coordinate tankAssaultStartPosition = MathUtils.calcNextCoord(assaultInformation.getAssaultPosition(), assaultInformation.getDefenseOrientation().getyOri(), DISTANCE_BETWEEN_COMBATANTS + 200.0);            
+            String name = assaultInformation.getAggressor().getCountryName() + " Tank";
 
-            missionBattle.addGroundUnit(GroundUnitType.TANK_UNIT, assaultTankUnit);
+            GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                    campaign, 
+                    missionBeginUnit, 
+                    assaultInformation.getAggressor(),
+                    name, 
+                    TacticalTarget.TARGET_INFANTRY, 
+                    tankAssaultStartPosition, 
+                    assaultInformation.getDefensePosition(), 
+                    assaultInformation.getAssaultOrientation(), 
+                    determineIsPlayer());
+
+            GroundUnit assaultTankUnit = groundUnitAssaultFactory.createAssaultTankUnit (groundUnitInformation);
+            assaultInformation.addGroundUnit(GroundUnitType.TANK_UNIT, assaultTankUnit);
         }
     }
 
     private void assaultingMachineGuns() throws PWCGException 
     { 
-        // Assaults are big so set player flight to true.  we will never create an AI minimized assault
-        AssaultFactory GroundUnitAssaultFactory =  new AssaultFactory(campaign, battleSize);
+        Coordinate mgAssaultStartPosition = MathUtils.calcNextCoord(assaultInformation.getAssaultPosition(), assaultInformation.getDefenseOrientation().getyOri(), DISTANCE_BETWEEN_COMBATANTS + 50.0);            
+        String name = assaultInformation.getAggressor().getCountryName() + " MG";
 
-        Coordinate mgAssaultPosition = MathUtils.calcNextCoord(missionBattle.getDefensePosition(), angleOfCombatants, DISTANCE_BETWEEN_COMBATANTS + 50.0);
-        
-        // Generate supporting MG
-        GroundUnit assaultMGUnit = GroundUnitAssaultFactory.createMachineGunUnit (
-                        missionBeginUnit, 
-                        missionBattle.getAggressor(), 
-                        mgAssaultPosition, 
-                        missionBattle.getDefensePosition());
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                missionBeginUnit, 
+                assaultInformation.getAggressor(),
+                name, 
+                TacticalTarget.TARGET_INFANTRY, 
+                mgAssaultStartPosition, 
+                assaultInformation.getDefensePosition(), 
+                assaultInformation.getAssaultOrientation(), 
+                determineIsPlayer());
 
-        missionBattle.addGroundUnit(GroundUnitType.MG_UNIT, assaultMGUnit);        
+        AssaultFactory assaultFactory =  new AssaultFactory();
+        GroundUnit assaultMGUnit = assaultFactory.createMachineGunUnit(groundUnitInformation);
+        assaultInformation.addGroundUnit(GroundUnitType.MG_UNIT, assaultMGUnit);        
     }
 
     private void assaultingArtillery() throws PWCGException 
     { 
-        Coordinate artilleryAssaultPosition = MathUtils.calcNextCoord(missionBattle.getAssaultPosition(), angleOfCombatants, 200.0);
-        GroundUnitFactory groundUnitFactory =  new GroundUnitFactory(campaign, artilleryAssaultPosition, missionBattle.getAggressor());
-        GroundUnit assaultArtilleryUnit = groundUnitFactory.createArtilleryUnit (
-                        missionBeginUnit, 
-                        missionBattle.getAggressor(), 
-                        artilleryAssaultPosition, 
-                        missionBattle.getDefensePosition());
+        Coordinate artilleryAssaultPosition = MathUtils.calcNextCoord(assaultInformation.getAssaultPosition(), assaultInformation.getDefenseOrientation().getyOri(), DISTANCE_BETWEEN_COMBATANTS + 2500.0);            
+        String name = assaultInformation.getAggressor().getCountryName() + " Artillery";
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                missionBeginUnit, 
+                assaultInformation.getAggressor(),
+                name, 
+                TacticalTarget.TARGET_INFANTRY, 
+                artilleryAssaultPosition, 
+                assaultInformation.getDefensePosition(), 
+                assaultInformation.getAssaultOrientation(), 
+                determineIsPlayer());
 
-        missionBattle.addGroundUnit(GroundUnitType.ARTILLERY_UNIT, assaultArtilleryUnit);
+        AssaultFactory assaultFactory =  new AssaultFactory();
+        GroundUnit assaultArtilleryUnit = assaultFactory.createAssaultArtilleryUnit (groundUnitInformation);
+        assaultInformation.addGroundUnit(GroundUnitType.ARTILLERY_UNIT, assaultArtilleryUnit);
     }
         
     private void assaultingAAA() throws PWCGException 
@@ -249,70 +256,68 @@ public class RoFAssaultGenerator extends AssaultGenerator
 
     private void assaultingAAAMG() throws PWCGException 
     { 
-        Coordinate aaaMgAssaultPosition = MathUtils.calcNextCoord(missionBattle.getAssaultPosition(), angleOfCombatants, 10.0);        
-        AAAUnitFactory groundUnitAAAFactory = new AAAUnitFactory(campaign, missionBattle.getAggressor(), aaaMgAssaultPosition);
+        Coordinate aaaMgAssaultPosition = MathUtils.calcNextCoord(assaultInformation.getAssaultPosition(), assaultInformation.getDefenseOrientation().getyOri(), DISTANCE_BETWEEN_COMBATANTS + 100.0);            
+        AAAUnitFactory groundUnitAAAFactory = new AAAUnitFactory(campaign, assaultInformation.getAggressor(), aaaMgAssaultPosition);
         GroundUnit assaultAaaMgUnit = groundUnitAAAFactory.createAAAMGBattery(2, 2);
-        missionBattle.addGroundUnit(GroundUnitType.AAA_MG_UNIT, assaultAaaMgUnit);
+        assaultInformation.addGroundUnit(GroundUnitType.AAA_MG_UNIT, assaultAaaMgUnit);
     }
 
     private void assaultingAAAArtillery() throws PWCGException 
     { 
-        Coordinate aaaArtyAssaultPosition = MathUtils.calcNextCoord(missionBattle.getAssaultPosition(), angleOfCombatants, 150.0);
-        AAAUnitFactory groundUnitAAAFactory = new AAAUnitFactory(campaign,missionBattle.getAggressor(), aaaArtyAssaultPosition);
+        Coordinate aaaArtyAssaultPosition = MathUtils.calcNextCoord(assaultInformation.getAssaultPosition(), assaultInformation.getDefenseOrientation().getyOri(), DISTANCE_BETWEEN_COMBATANTS + 1000.0);            
+        AAAUnitFactory groundUnitAAAFactory = new AAAUnitFactory(campaign, assaultInformation.getAggressor(), aaaArtyAssaultPosition);
         GroundUnit assaultAaaMgUnit = groundUnitAAAFactory.createAAAArtilleryBattery(1, 1);
-        missionBattle.addGroundUnit(GroundUnitType.AAA_ARTY_UNIT, assaultAaaMgUnit);
+        assaultInformation.addGroundUnit(GroundUnitType.AAA_ARTY_UNIT, assaultAaaMgUnit);
     }
-    
-    /**
-     * @throws PWCGException 
-     * @
-     */
+
     private void defendingMachineGuns() throws PWCGException 
     { 
-        // Assaults are big so set player flight to true.  we will never create an AI minimized assault
-        AssaultFactory GroundUnitAssaultFactory =  new AssaultFactory(campaign, battleSize);
+        String name = assaultInformation.getDefender().getCountryName() + " Pillbox";
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                missionBeginUnit, 
+                assaultInformation.getDefender(),
+                name, 
+                TacticalTarget.TARGET_INFANTRY, 
+                assaultInformation.getDefensePosition(), 
+                assaultInformation.getAssaultPosition(), 
+                assaultInformation.getDefenseOrientation(), 
+                determineIsPlayer());
 
-        // Generate supporting MG Pillboxes
-        GroundUnit defensePillBoxUnit = GroundUnitAssaultFactory.createPillBoxUnit (
-                        missionBeginUnit, 
-                        missionBattle.getDefender(), 
-                        missionBattle.getDefensePosition(), 
-                        missionBattle.getAssaultPosition());
-
-        missionBattle.addGroundUnit(GroundUnitType.MG_UNIT, defensePillBoxUnit);
+        AssaultFactory assaultFactory =  new AssaultFactory();
+        GroundUnit defensePillBoxUnit = assaultFactory.createPillBoxUnit (groundUnitInformation);
+        assaultInformation.addGroundUnit(GroundUnitType.MG_UNIT, defensePillBoxUnit);
         
-        GroundUnit defensePillBoxFlareUnit = GroundUnitAssaultFactory.createPillBoxFlareUnit (
-                        missionBeginUnit, 
-                        missionBattle.getDefender(), 
-                        missionBattle.getDefensePosition(), 
-                        missionBattle.getAssaultPosition());
-
-        missionBattle.addGroundUnit(GroundUnitType.FLARE_UNIT, defensePillBoxFlareUnit);
+        GroundUnit defensePillBoxFlareUnit = assaultFactory.createPillBoxFlareUnit (groundUnitInformation);
+        assaultInformation.addGroundUnit(GroundUnitType.FLARE_UNIT, defensePillBoxFlareUnit);
     }
 
     private void defendingArtillery() throws PWCGException 
     { 
-        double angleOfDefendingArillery = MathUtils.adjustAngle(angleOfCombatants, 180.0);
-        Coordinate artilleryDefensePosition = MathUtils.calcNextCoord(missionBattle.getDefensePosition(), angleOfDefendingArillery, DISTANCE_BETWEEN_COMBATANTS + 100.0);
-        
-        GroundUnitFactory groundUnitFactory =  new GroundUnitFactory(campaign, artilleryDefensePosition, missionBattle.getDefender());
-        GroundUnit defenseArtilleryUnit = groundUnitFactory.createArtilleryUnit (
-                        missionBeginUnit, 
-                        missionBattle.getDefender(), 
-                        artilleryDefensePosition, 
-                        missionBattle.getAssaultPosition());
+        Coordinate artilleryDefensePosition = MathUtils.calcNextCoord(assaultInformation.getDefensePosition(), assaultInformation.getAssaultOrientation().getyOri(), DISTANCE_BETWEEN_COMBATANTS + 2500.0);
+        String name = assaultInformation.getDefender().getCountryName() + " Artillery";
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                missionBeginUnit, 
+                assaultInformation.getDefender(),
+                name, 
+                TacticalTarget.TARGET_INFANTRY, 
+                artilleryDefensePosition, 
+                assaultInformation.getAssaultPosition(), 
+                assaultInformation.getDefenseOrientation(), 
+                determineIsPlayer());
 
-        missionBattle.addGroundUnit(GroundUnitType.ARTILLERY_UNIT, defenseArtilleryUnit);
+        AssaultFactory assaultFactory =  new AssaultFactory();
+        GroundUnit defenseArtilleryUnit = assaultFactory.createAssaultArtilleryUnit (groundUnitInformation);
+        assaultInformation.addGroundUnit(GroundUnitType.ARTILLERY_UNIT, defenseArtilleryUnit);
     }
 
     private void defendingAAA() throws PWCGException 
     { 
-        double angleOfDefendingArtillery = MathUtils.adjustAngle(angleOfCombatants, 180.0);
-        Coordinate aaaMgDefensePosition = MathUtils.calcNextCoord(missionBattle.getDefensePosition(), angleOfDefendingArtillery, DISTANCE_BETWEEN_COMBATANTS + 10.0);
-        
-        AAAUnitFactory groundUnitAAAFactory = new AAAUnitFactory(campaign,missionBattle.getDefender(), aaaMgDefensePosition);
+        Coordinate aaaMgDefensePosition = MathUtils.calcNextCoord(assaultInformation.getDefensePosition(), assaultInformation.getAssaultOrientation().getyOri(), DISTANCE_BETWEEN_COMBATANTS + 100.0);
+        AAAUnitFactory groundUnitAAAFactory = new AAAUnitFactory(campaign, assaultInformation.getDefender(), aaaMgDefensePosition);
         GroundUnit assaultAaaMgUnit = groundUnitAAAFactory.createAAAMGBattery(2, 2);
-        missionBattle.addGroundUnit(GroundUnitType.AAA_MG_UNIT, assaultAaaMgUnit);
+        assaultInformation.addGroundUnit(GroundUnitType.AAA_MG_UNIT, assaultAaaMgUnit);
     }
 
  }

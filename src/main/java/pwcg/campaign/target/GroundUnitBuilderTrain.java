@@ -15,7 +15,7 @@ public class GroundUnitBuilderTrain
 {
     public static GroundUnitCollection createTrainTarget(Campaign campaign, Mission mission, TargetDefinition targetDefinition) throws PWCGException, PWCGMissionGenerationException
     {
-        TrainUnitFactory groundUnitFactory = new TrainUnitFactory(campaign, targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry(), campaign.getDate());
+        TrainUnitFactory groundUnitFactory = new TrainUnitFactory(campaign, targetDefinition);
         GroundUnit targetUnit = groundUnitFactory.createTrainUnit();
         
         GroundUnitCollection groundUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION);

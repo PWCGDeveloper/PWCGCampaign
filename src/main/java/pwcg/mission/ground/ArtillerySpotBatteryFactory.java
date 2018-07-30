@@ -37,13 +37,9 @@ public class ArtillerySpotBatteryFactory
         String name = createUnitName();
 
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                missionBeginUnit, country, name, TacticalTarget.TARGET_ARTILLERY, position, targetPosition);
-               
+                campaign, missionBeginUnit, country, name, TacticalTarget.TARGET_ARTILLERY, position, targetPosition, null, isPlayerFlight);
+
         ArtillerySpotArtilleryGroup friendlyArtilleryGroup = new ArtillerySpotArtilleryGroup(campaign, groundUnitInformation);
-        if (!isPlayerFlight)
-        {
-            friendlyArtilleryGroup.setMinMaxRequested(1, 1);
-        }
         friendlyArtilleryGroup.createUnitMission();
 
         return friendlyArtilleryGroup;

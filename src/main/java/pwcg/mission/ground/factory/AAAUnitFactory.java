@@ -5,8 +5,8 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.MissionBeginUnitCheckZone;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.unittypes.artillery.GroundAAABattery;
 import pwcg.mission.mcu.Coalition;
@@ -44,10 +44,11 @@ public class AAAUnitFactory
         String nationality = country.getNationality();
         String name = nationality + " AAA";
 
+        boolean isPlayerTarget = false;
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                missionBeginUnit, country, name, TacticalTarget.TARGET_DEFENSE, position, position);
+                campaign, missionBeginUnit, country, name, TacticalTarget.TARGET_DEFENSE, position, position, null, isPlayerTarget);
         
-        GroundAAABattery aaaBattery = new GroundAAABattery(campaign, groundUnitInformation, isMG);
+        GroundAAABattery aaaBattery = new GroundAAABattery(groundUnitInformation, isMG);
         aaaBattery.setMinMaxRequested(minUnits, maxUnits);
         aaaBattery.createUnitMission();
 
