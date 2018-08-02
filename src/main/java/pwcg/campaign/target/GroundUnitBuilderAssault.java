@@ -6,7 +6,11 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAssaultGenerator;
 import pwcg.campaign.factory.AssaultGeneratorFactory;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerCampaign;
+import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.AssaultInformation;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.BattleSize;
@@ -16,10 +20,43 @@ public class GroundUnitBuilderAssault
 {
     public static GroundUnitCollection createAssault(Campaign campaign, Mission mission, TargetDefinition targetDefinition) throws PWCGException 
     {
-        BattleSize battleSize = BattleSize.BATTLE_SIZE_SKIRMISH;            
+        BattleSize battleSize = BattleSize.BATTLE_SIZE_TINY;      
         if (targetDefinition.isPlayerTarget())
         {
-            battleSize = BattleSize.BATTLE_SIZE_ASSAULT;            
+            ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+            String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
+            if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+            {
+                battleSize = BattleSize.BATTLE_SIZE_SKIRMISH;      
+            }
+            else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+            {
+                int roll = RandomNumberGenerator.getRandom(100);
+                if (roll < 50)
+                {
+                    battleSize = BattleSize.BATTLE_SIZE_SKIRMISH;      
+                }
+                else
+                {
+                    battleSize = BattleSize.BATTLE_SIZE_ASSAULT;
+                }
+            }
+            else
+            {
+                int roll = RandomNumberGenerator.getRandom(100);
+                if (roll < 30)
+                {
+                    battleSize = BattleSize.BATTLE_SIZE_SKIRMISH;      
+                }
+                else if (roll < 80)
+                {
+                    battleSize = BattleSize.BATTLE_SIZE_ASSAULT;
+                }
+                else
+                {
+                    battleSize = BattleSize.BATTLE_SIZE_OFFENSIVE;
+                }
+            }
         }
         
        IAssaultGenerator assaultGenerator = AssaultGeneratorFactory.createAssaultGenerator(campaign, mission, campaign.getDate());

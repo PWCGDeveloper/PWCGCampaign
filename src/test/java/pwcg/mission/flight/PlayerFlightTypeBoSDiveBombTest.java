@@ -11,6 +11,7 @@ import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.divebomb.DiveBombingFlight;
+import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBoS;
 

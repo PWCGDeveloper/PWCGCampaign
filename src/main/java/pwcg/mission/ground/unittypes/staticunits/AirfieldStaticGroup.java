@@ -15,6 +15,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.unittypes.GroundUnit;
@@ -48,7 +49,7 @@ public class AirfieldStaticGroup extends GroundUnit
         IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
         IVehicle truckType = vehicleFactory.createCargoTruck(pwcgGroundUnitInformation.getCountry());
 
-        int numTrucks = RandomNumberGenerator.getRandom(4) + 2;
+        int numTrucks = calcNumUnits();
 
         Coordinate initialTruckLocation = findTruckStartLocation();
         for (int i = 0; i < numTrucks; ++i)
@@ -72,6 +73,28 @@ public class AirfieldStaticGroup extends GroundUnit
 		
 		return initialTruckLocation;
 	}
+
+	private int calcNumUnits()
+    {
+        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
+        {
+            setMinMaxRequested(1, 1);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
+        {
+            setMinMaxRequested(2, 3);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
+        {
+            setMinMaxRequested(2, 4);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
+        {
+            setMinMaxRequested(3, 6);
+        }
+
+        return calculateForMinMaxRequested();
+    }
 
 
 	private Coordinate findTruckLocation(Coordinate initialTruckLocation, int truckNumber) throws PWCGException, PWCGException

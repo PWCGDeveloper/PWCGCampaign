@@ -1,4 +1,4 @@
-package pwcg.mission.flight;
+package pwcg.mission.flight.validate;
 
 import java.util.List;
 

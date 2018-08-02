@@ -45,7 +45,7 @@ public abstract class FlightPackage
         }
         else
         {
-            flightInformation = FlightInformationFactory.buildPlayerFlightInformation(squadron, mission, flightType, targetWaypoint);
+            flightInformation = FlightInformationFactory.buildAiFlightInformation(squadron, mission, flightType, targetWaypoint);
         }
         return flightInformation;
     }

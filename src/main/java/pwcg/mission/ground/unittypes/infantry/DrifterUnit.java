@@ -69,7 +69,7 @@ public class DrifterUnit extends GroundDirectFireUnit
     {
         if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
-            setMinMaxRequested(2, 2);
+            setMinMaxRequested(1, 1);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {

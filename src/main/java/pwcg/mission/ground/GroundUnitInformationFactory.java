@@ -109,17 +109,17 @@ public class GroundUnitInformationFactory
         {
             ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
             String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-            if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+            if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
             {
-                return GroundUnitSize.GROUND_UNIT_SIZE_LOW;
+                return GroundUnitSize.GROUND_UNIT_SIZE_HIGH;
             }
             else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
             {
                 return GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM;
             }
-            else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+            else
             {
-                return GroundUnitSize.GROUND_UNIT_SIZE_HIGH;
+                return GroundUnitSize.GROUND_UNIT_SIZE_LOW;
             }
         }
 

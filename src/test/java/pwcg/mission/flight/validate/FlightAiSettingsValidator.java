@@ -1,4 +1,4 @@
-package pwcg.mission.flight;
+package pwcg.mission.flight.validate;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +16,8 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.attack.GroundAttackFlight;
 import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.bomb.StrategicBombingFlight;

@@ -1,8 +1,9 @@
-package pwcg.mission.flight;
+package pwcg.mission.flight.validate;
 
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.escort.PlayerEscortFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointPriority;

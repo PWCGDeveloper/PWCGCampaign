@@ -5,20 +5,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.factory.VehicleFactory;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
-import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.ground.GroundUnitInformation;
-import pwcg.mission.ground.GroundUnitSize;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.IVehicleFactory;
@@ -28,14 +24,12 @@ public class GroundTroopConcentration extends GroundUnit
     private ArrayList<IVehicle> tanks = new ArrayList<IVehicle>();
     private ArrayList<IVehicle> trucks = new ArrayList<IVehicle>();
     private ArrayList<IVehicle> ammo = new ArrayList<IVehicle>();
-    private Campaign campaign;
  	
 	protected double heading = 90.0;
 
-	public GroundTroopConcentration(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation) throws PWCGException
+	public GroundTroopConcentration(GroundUnitInformation pwcgGroundUnitInformation) throws PWCGException
 	{
         super(pwcgGroundUnitInformation);
-		this.campaign = campaign;
 	}
 
     public void createUnits() throws PWCGException 
@@ -93,28 +87,24 @@ public class GroundTroopConcentration extends GroundUnit
 
     private int calcNumTrucks() throws PWCGException
     {
-        int numTrucks = 5;
-        int randomTrucks = 0;
-        
-        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
+        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
-            numTrucks = 2;
-            randomTrucks = 2;
+            setMinMaxRequested(1, 1);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
+        {
+            setMinMaxRequested(2, 4);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
         {
-            numTrucks = 6;
-            randomTrucks = 6;
+            setMinMaxRequested(3, 6);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
         {
-            numTrucks = 8;
-            randomTrucks = 8;
-        }        
+            setMinMaxRequested(4, 8);
+        }
 
-        numTrucks = numTrucks + RandomNumberGenerator.getRandom(randomTrucks+1);
-
-        return numTrucks;
+        return calculateForMinMaxRequested();
     }
 
     private void createArtillery() throws PWCGException
@@ -152,30 +142,24 @@ public class GroundTroopConcentration extends GroundUnit
 
     private int calcNumArtillery() throws PWCGException
     {
-        int numArtillery = 4;
-        int randomArtillery = 4;
-        
-        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
-            numArtillery = 4;
-            randomArtillery = 4;
+            setMinMaxRequested(1, 1);
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
-            numArtillery = 8;
-            randomArtillery = 8;
+            setMinMaxRequested(2, 4);
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
         {
-            numArtillery = 8;
-            randomArtillery = 8;
+            setMinMaxRequested(3, 6);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
+        {
+            setMinMaxRequested(4, 8);
         }
 
-        numArtillery = numArtillery + RandomNumberGenerator.getRandom(randomArtillery+1);
-
-        return numArtillery;
+        return calculateForMinMaxRequested();
     }
 
     private void createTanks() throws PWCGException
@@ -204,30 +188,24 @@ public class GroundTroopConcentration extends GroundUnit
 
     private int calcNumTanks() throws PWCGException
     {
-        int numTanks = 4;
-        int randomTanks = 4;
-        
-        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
-            numTanks = 4;
-            randomTanks = 4;
+            setMinMaxRequested(1, 1);
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
-            numTanks = 7;
-            randomTanks = 7;
+            setMinMaxRequested(2, 3);
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
         {
-            numTanks = 10;
-            randomTanks = 10;
+            setMinMaxRequested(2, 4);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
+        {
+            setMinMaxRequested(3, 6);
         }
 
-        numTanks = numTanks + RandomNumberGenerator.getRandom(randomTanks+1);
-
-        return numTanks;
+        return calculateForMinMaxRequested();
     }
     
 

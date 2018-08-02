@@ -24,7 +24,7 @@ public class TroopConcentrationFactory
     {
         MissionBeginUnitCheckZone missionBeginUnit = buildMissionBegin();
         GroundUnitInformation groundUnitInformation = createGroundUnitInformationForUnit(missionBeginUnit);
-        GroundTroopConcentration troopConcentration = new GroundTroopConcentration(campaign, groundUnitInformation);
+        GroundTroopConcentration troopConcentration = new GroundTroopConcentration( groundUnitInformation);
         troopConcentration.createUnitMission();
         return troopConcentration;
     }

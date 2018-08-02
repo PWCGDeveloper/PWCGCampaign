@@ -27,17 +27,16 @@ public class ArtillerySpotPackage extends FlightPackage
 
     public Flight createPackage () throws PWCGException 
     {
-        GroundUnitCollection groundUnits = createGroundUnitsForFlight();
-        Flight artySpot = createFlight(groundUnits);
+        Flight artySpot = createFlight();
         addPossibleEscort(artySpot);        
 		return artySpot;
 	}
 
-    private Flight createFlight(GroundUnitCollection groundUnitCollection) throws PWCGException
-    {
-        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
+    private Flight createFlight() throws PWCGException
+    {        
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        
+        GroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
+        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
 		Flight artySpot = null;
 		if (isPlayerFlight)
 		{
@@ -45,10 +44,10 @@ public class ArtillerySpotPackage extends FlightPackage
 		}
 		else
 		{
-	        artySpot = createAiFlight(targetCoordinates, startCoords);
+            artySpot = createAiFlight(targetCoordinates, startCoords);
 		}
 
-		artySpot.linkGroundUnitsToFlight(groundUnitCollection);
+        artySpot.linkGroundUnitsToFlight(groundUnitCollection);
         return artySpot;
     }
 

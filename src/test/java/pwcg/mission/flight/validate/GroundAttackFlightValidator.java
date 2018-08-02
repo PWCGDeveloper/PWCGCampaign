@@ -1,8 +1,10 @@
-package pwcg.mission.flight;
+package pwcg.mission.flight.validate;
 
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.AttackMcuSequence;
+import pwcg.mission.flight.GroundTargetAttackFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointPriority;

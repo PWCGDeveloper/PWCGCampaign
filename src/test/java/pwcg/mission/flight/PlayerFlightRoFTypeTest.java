@@ -26,6 +26,12 @@ import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
 import pwcg.mission.flight.recon.PlayerReconFlight;
+import pwcg.mission.flight.validate.GroundAttackFlightValidator;
+import pwcg.mission.flight.validate.GroundUnitValidator;
+import pwcg.mission.flight.validate.PatrolFlightValidator;
+import pwcg.mission.flight.validate.PlayerArtillerySpotFlightValidator;
+import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
+import pwcg.mission.flight.validate.PlayerReconFlightValidator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheRoF;
 
@@ -76,6 +82,9 @@ public class PlayerFlightRoFTypeTest
 		groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert(flight.getFlightType() == FlightTypes.BOMB);
+        
+        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
+        groundUnitValidator.validateGroundUnitsForMission(mission);
 	}
 	
 	@Test
@@ -123,6 +132,9 @@ public class PlayerFlightRoFTypeTest
         flight.finalizeFlight();
         
         assert(flight.getFlightType() == FlightTypes.BALLOON_BUST);
+        
+        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
+        groundUnitValidator.validateGroundUnitsForMission(mission);
     }
 
     @Test
@@ -137,6 +149,9 @@ public class PlayerFlightRoFTypeTest
         flight.finalizeFlight();
         
         assert(flight.getFlightType() == FlightTypes.BALLOON_DEFENSE);
+        
+        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
+        groundUnitValidator.validateGroundUnitsForMission(mission);
     }
 
 	@Test
@@ -218,6 +233,9 @@ public class PlayerFlightRoFTypeTest
 		artillerySpotFlightValidator.validateArtillerySpotFlight(flight);
 		validateTargetDefinition(flight.getTargetDefinition());
         assert(flight.getFlightType() == FlightTypes.ARTILLERY_SPOT);
+        
+        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
+        groundUnitValidator.validateGroundUnitsForMission(mission);
 	}
 	
 	public void validateTargetDefinition(TargetDefinition targetDefinition)
