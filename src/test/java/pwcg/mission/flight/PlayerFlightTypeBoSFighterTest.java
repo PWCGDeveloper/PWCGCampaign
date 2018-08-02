@@ -12,6 +12,7 @@ import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PatrolFlightValidator;
 import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
 import pwcg.testutils.CampaignCache;
@@ -44,6 +45,9 @@ public class PlayerFlightTypeBoSFighterTest
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
         }
+        
+        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
+        groundUnitValidator.validateGroundUnitsForMission(mission);
     }
 
     @Test
@@ -62,6 +66,9 @@ public class PlayerFlightTypeBoSFighterTest
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
         }
+        
+        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
+        groundUnitValidator.validateGroundUnitsForMission(mission);
     }
 
     @Test
@@ -80,6 +87,9 @@ public class PlayerFlightTypeBoSFighterTest
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
         }
+        
+        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
+        groundUnitValidator.validateGroundUnitsForMission(mission);
     }
 
     @Test
@@ -98,6 +108,9 @@ public class PlayerFlightTypeBoSFighterTest
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() == 0 || plane.getPlanePayload().getSelectedPayloadId() == 4);
         }
+        
+        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
+        groundUnitValidator.validateGroundUnitsForMission(mission);
     }
 
     @Test
@@ -116,6 +129,9 @@ public class PlayerFlightTypeBoSFighterTest
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
         }
+        
+        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
+        groundUnitValidator.validateGroundUnitsForMission(mission);
     }
 
     @Test
@@ -134,5 +150,8 @@ public class PlayerFlightTypeBoSFighterTest
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
         }
+        
+        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
+        groundUnitValidator.validateGroundUnitsForMission(mission);
     }
 }
