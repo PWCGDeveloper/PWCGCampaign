@@ -26,12 +26,6 @@ public class SpotLightGroup extends GroundUnitSpawning
         this.numGroups = numGroups;
 	}
 
-    protected void calcNumUnitsByConfig() throws PWCGException 
-    {
-        minRequested = 1;
-        maxRequested = 1;
-    }
-
 	public void createSpawners() throws PWCGException  
 	{
 		List<Coordinate> aaaPositionsOuter = getPositions(4000.0, 0.0);
@@ -86,6 +80,11 @@ public class SpotLightGroup extends GroundUnitSpawning
 		return positions;
 	}
 
+    protected int calcNumUnits() throws PWCGException 
+    {
+        setMinMaxRequested(1, 1);        
+        return calculateForMinMaxRequested();
+    }
 
     @Override
     protected void createGroundTargetAssociations() 

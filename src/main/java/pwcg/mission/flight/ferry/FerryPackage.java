@@ -1,11 +1,15 @@
 package pwcg.mission.flight.ferry;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightInformationFactory;
+import pwcg.mission.flight.FlightTypes;
 
 public class FerryPackage
 {
@@ -17,11 +21,10 @@ public class FerryPackage
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(campaign.getSquadronMoveEvent().getLastAirfield().getPosition().copy());
         
-		FerryFlight ferry = new FerryFlight (false);
-		ferry.initialize(mission, campaign, squad, missionBeginUnit);
-
+        IAirfield toAirfield = squad.determineCurrentAirfieldCurrentMap(campaign.getDate());
+        FlightInformation flightInformation = FlightInformationFactory.buildPlayerFlightInformation(squad, mission, FlightTypes.FERRY, toAirfield.getPosition().copy());
+		FerryFlight ferry = new FerryFlight (flightInformation, missionBeginUnit, false);
 		ferry.createUnitMission();
-		
 		return ferry;
 	}
 }

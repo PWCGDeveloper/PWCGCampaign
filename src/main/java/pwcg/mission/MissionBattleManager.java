@@ -8,16 +8,16 @@ import pwcg.core.location.Coordinate;
 
 public class MissionBattleManager
 {
-    private List<MissionBattle> missionBattles = new ArrayList<>();
+    private List<AssaultInformation> missionBattles = new ArrayList<>();
 
-    public void addMissionBattle(MissionBattle missionBattle)
+    public void addMissionBattle(AssaultInformation missionBattle)
     {
         missionBattles.add(missionBattle);
     }
     
     public boolean isNearAnyBattle(Coordinate coordinate) throws PWCGException
     {
-        for (MissionBattle missionBattle : missionBattles)
+        for (AssaultInformation missionBattle : missionBattles)
         {
             if (missionBattle.isNearBattle(coordinate))
             {

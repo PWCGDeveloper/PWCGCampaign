@@ -3,30 +3,24 @@ package pwcg.mission.ground.unittypes.infantry;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.factory.VehicleFactory;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
-import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundDirectFireUnit;
 import pwcg.mission.ground.vehicle.IVehicleFactory;
 import pwcg.mission.mcu.McuSpawn;
 
-public class GroundATArtillery extends GroundDirectFireUnit
+public class GroundAntiTankArtillery extends GroundDirectFireUnit
 {
-    private Campaign campaign;
-
-	public GroundATArtillery(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation) throws PWCGException
+	public GroundAntiTankArtillery(GroundUnitInformation pwcgGroundUnitInformation) throws PWCGException
 	{
 	    super(pwcgGroundUnitInformation);
-	    this.campaign = campaign;
 	}	
 
     public void createUnits() throws PWCGException 
@@ -74,25 +68,26 @@ public class GroundATArtillery extends GroundDirectFireUnit
         }       
 	}	
 
-    protected void calcNumUnitsByConfig() throws PWCGException 
+    protected int calcNumUnits()
     {
-        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
-            minRequested = 1;
-            maxRequested = 2;
+            setMinMaxRequested(1, 1);
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
-            minRequested = 1;
-            maxRequested = 3;
+            setMinMaxRequested(1, 2);
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
         {
-            minRequested = 2;
-            maxRequested = 4;
+            setMinMaxRequested(2, 3);
         }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
+        {
+            setMinMaxRequested(2, 4);
+        }
+        
+        return calculateForMinMaxRequested();
     }
 
     public void write(BufferedWriter writer) throws PWCGException

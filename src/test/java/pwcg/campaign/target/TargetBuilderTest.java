@@ -162,6 +162,8 @@ public class TargetBuilderTest
     public void createBalloonDefenseTest()  throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_BALLOON);
+        Mockito.when(enemyCountry.getSide()).thenReturn(Side.AXIS);
+        Mockito.when(friendlyCountry.getSide()).thenReturn(Side.ALLIED);
 
         TargetBuilder targetBuilder = new TargetBuilder(campaign, mission, targetDefinition);
         targetBuilder.buildTarget(FlightTypes.BALLOON_DEFENSE);

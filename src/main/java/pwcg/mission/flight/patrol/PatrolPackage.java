@@ -15,6 +15,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 
@@ -38,9 +39,8 @@ public class PatrolPackage extends FlightPackage
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
         
-		PatrolFlight patrol = new PatrolFlight ();
-		patrol.initialize(mission, campaign, targetWaypoint, squadron, missionBeginUnit, flightType, isPlayerFlight);
-
+        FlightInformation flightInformation = createFlightInformation(targetWaypoint);
+		PatrolFlight patrol = new PatrolFlight (flightInformation, missionBeginUnit);
 		patrol.createUnitMission();
 		
 		return patrol;

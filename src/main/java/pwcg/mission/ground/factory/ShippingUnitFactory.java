@@ -1,15 +1,14 @@
 package pwcg.mission.ground.factory;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.target.TacticalTarget;
+import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.MissionBeginUnitCheckZone;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.unittypes.transport.ShipConvoyUnit;
 import pwcg.mission.ground.unittypes.transport.ShipConvoyUnit.ShipConvoyTypes;
@@ -18,14 +17,12 @@ import pwcg.mission.mcu.Coalition;
 public class ShippingUnitFactory
 {
     private Campaign campaign;
-    private Coordinate location;
-    private ICountry country;
-
-    public ShippingUnitFactory (Campaign campaign, Coordinate location, ICountry country)
+    private TargetDefinition targetDefinition;
+    
+    public ShippingUnitFactory (Campaign campaign, TargetDefinition targetDefinition)
     {
-        this.campaign  = campaign;
-        this.location  = location.copy();
-        this.country  = country;
+        this.campaign = campaign;
+        this.targetDefinition  = targetDefinition;
     }
 
     public ShipConvoyUnit createShippingUnit () throws PWCGException 
@@ -38,15 +35,8 @@ public class ShippingUnitFactory
 
     public ShipConvoyUnit generateConvoy(ShipConvoyTypes shipType) throws PWCGException 
     {
-        Coalition playerCoalition  = Coalition.getFriendlyCoalition(campaign.determineCountry());
-        MissionBeginUnitCheckZone missionBeginUnitShips = new MissionBeginUnitCheckZone();
-        missionBeginUnitShips.initialize(location, 30000, playerCoalition);
-        
-        int angle = RandomNumberGenerator.getRandom(360);
-        Coordinate destination = MathUtils.calcNextCoord(location, angle, 50000);
-
-        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                missionBeginUnitShips, country, createUnitName(shipType), TacticalTarget.TARGET_SHIPPING, location, destination);
+        MissionBeginUnitCheckZone missionBeginUnitShips = createMissionBegin();        
+        GroundUnitInformation groundUnitInformation = createGroundUnitInformationForUnit(missionBeginUnitShips);
         
         ShipConvoyUnit shipGroup = new ShipConvoyUnit(campaign, groundUnitInformation, shipType);
         shipGroup.createUnitMission();
@@ -54,29 +44,30 @@ public class ShippingUnitFactory
         return shipGroup;
     }
 
-    private String createUnitName(ShipConvoyTypes shipType)
+    private MissionBeginUnitCheckZone createMissionBegin() throws PWCGException
     {
-        if (shipType == ShipConvoyTypes.SUBMARINE)
-        {
-            return "Submarine";
-        }
-        
-        if (shipType == ShipConvoyTypes.WARSHIP)
-        {
-            return "Warship";
-        }
-
-        return "Merchant";
+        Coalition playerCoalition  = Coalition.getFriendlyCoalition(campaign.determineCountry());
+        MissionBeginUnitCheckZone missionBeginUnitShips = new MissionBeginUnitCheckZone();
+        missionBeginUnitShips.initialize(targetDefinition.getTargetPosition(), 30000, playerCoalition);
+        return missionBeginUnitShips;
     }
 
+    private GroundUnitInformation createGroundUnitInformationForUnit(MissionBeginUnitCheckZone missionBeginUnit) throws PWCGException
+    {
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(campaign, missionBeginUnit, targetDefinition);
+        int angle = RandomNumberGenerator.getRandom(360);
+        Coordinate destination = MathUtils.calcNextCoord(targetDefinition.getTargetPosition(), angle, 50000);
+        groundUnitInformation.setDestination(destination);
+        return groundUnitInformation;
+    }
 
     private ShipConvoyTypes chooseShipType()
     {
         int shipTypeRoll = RandomNumberGenerator.getRandom(100);
         ShipConvoyTypes shipType = ShipConvoyTypes.MERCHANT;
-        if (country.getSide() == Side.AXIS)
+        if (targetDefinition.getTargetCountry().getSide() == Side.AXIS)
         {
-            if (country.getSide() == Side.AXIS)
+            if (targetDefinition.getTargetCountry().getSide() == Side.AXIS)
             {
                 if (shipTypeRoll < 20)
                 {
@@ -105,7 +96,7 @@ public class ShippingUnitFactory
         }
         else
         {
-            if (country.getSide() == Side.ALLIED)
+            if (targetDefinition.getTargetCountry().getSide() == Side.ALLIED)
             {
                 if (shipTypeRoll < 75)
                 {

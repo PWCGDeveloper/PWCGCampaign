@@ -2,40 +2,21 @@ package pwcg.mission.flight.seapatrolscout;
 
 import java.util.List;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class SeaPatrolFlight extends Flight
 {
-	public SeaPatrolFlight() 
-	{
-		super ();
-	}
-
-	public void initialize(
-				Mission mission, 
-				Campaign campaign, 
-				Coordinate targetCoords, 
-				Squadron squad, 
-				FlightTypes flightType,
-	            MissionBeginUnit missionBeginUnit,
-				boolean isPlayerFlight) throws PWCGException 
-	{
-		super.initialize (mission, campaign, flightType, targetCoords, squad, missionBeginUnit, isPlayerFlight);
-	}
-
-	public void createUnitMission() throws PWCGException  
-	{
-		super.createUnitMission();
-	}
+    public SeaPatrolFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
+    {
+        super (flightInformation, missionBeginUnit);
+    }
 
 	@Override
 	public int calcNumPlanes() 
@@ -51,7 +32,7 @@ public class SeaPatrolFlight extends Flight
 	{
 		SeaPatrolWaypoints waypointGenerator = new SeaPatrolWaypoints(
 				startPosition, 
-				targetCoords, 
+				getTargetCoords(), 
 				this,
 				mission);
 

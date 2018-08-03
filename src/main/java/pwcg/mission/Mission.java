@@ -164,7 +164,7 @@ public class Mission
         return airfieldBuilder.getFieldsForPatrol();
     }
     
-    public void registerMissionBattle(MissionBattle missionBattle)
+    public void registerAssault(AssaultInformation missionBattle)
     {
         missionBattleManager.addMissionBattle(missionBattle);
     }

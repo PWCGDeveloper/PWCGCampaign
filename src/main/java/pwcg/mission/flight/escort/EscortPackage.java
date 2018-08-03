@@ -10,6 +10,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.GroundUnitCollection;
@@ -71,10 +72,8 @@ public class EscortPackage extends FlightPackage
         Coordinate playerSquadronPosition = squadron.determineCurrentPosition(campaign.getDate());
         missionBeginUnit.initialize(playerSquadronPosition.copy());
 
-		PlayerEscortFlight playerEscort = new PlayerEscortFlight();
-		playerEscort.initialize(mission, campaign, flightEscortedByPlayer.getPlanes().get(0).getPosition(), squadron, 
-		                missionBeginUnit, true, flightEscortedByPlayer);
-		
+        FlightInformation flightInformation = createFlightInformation(flightEscortedByPlayer.getPlanes().get(0).getPosition().copy());
+		PlayerEscortFlight playerEscort = new PlayerEscortFlight(flightInformation, missionBeginUnit, flightEscortedByPlayer);
 		playerEscort.addLinkedUnit(flightEscortedByPlayer);
 		playerEscort.createUnitMission();
 		return playerEscort;

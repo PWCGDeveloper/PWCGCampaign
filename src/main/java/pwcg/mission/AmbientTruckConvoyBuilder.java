@@ -8,6 +8,9 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
+import pwcg.campaign.target.TacticalTarget;
+import pwcg.campaign.target.TargetDefinition;
+import pwcg.campaign.target.TargetDefinitionBuilder;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -52,8 +55,11 @@ public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
             int roll = RandomNumberGenerator.getRandom(100);
             if (roll < 40)
             {
+                boolean isPlayerTarget = true;
+                TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
+                TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, attackingCountry, TacticalTarget.TARGET_TRANSPORT, bridge.getPosition(), isPlayerTarget);
 
-                TruckUnitFactory groundUnitFactory =  new TruckUnitFactory(campaign, bridge.getPosition(), country, campaign.getDate());
+                TruckUnitFactory groundUnitFactory =  new TruckUnitFactory(campaign, targetDefinition);
                 GroundTruckConvoyUnit truckUnit = groundUnitFactory.createTruckConvoy();
                 if (truckUnit != null)
                 {

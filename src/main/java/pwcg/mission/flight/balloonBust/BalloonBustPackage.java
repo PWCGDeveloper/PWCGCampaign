@@ -8,12 +8,17 @@ import pwcg.campaign.context.PositionsManager;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.target.TacticalTarget;
+import pwcg.campaign.target.TargetDefinition;
+import pwcg.campaign.target.TargetDefinitionBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.balloondefense.AiBalloonDefenseFlight;
@@ -48,18 +53,19 @@ public class BalloonBustPackage extends FlightPackage
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
 
-        BalloonBustFlight balloonBust = new BalloonBustFlight ();
-		balloonBust.initialize(mission, campaign, balloonUnit.getPwcgGroundUnitInformation().getPosition(), squadron, missionBeginUnit, isPlayerFlight);
-
+        FlightInformation flightInformation = createFlightInformation(balloonUnit.getPwcgGroundUnitInformation().getPosition());
+        BalloonBustFlight balloonBust = new BalloonBustFlight (flightInformation, missionBeginUnit);
 		balloonBust.addLinkedUnit(balloonUnit);
-		
 		balloonBust.createUnitMission();
         return balloonBust;
     }
 
     private BalloonDefenseGroup createBalloonUnit(Coordinate balloonPosition, ICountry balloonCountry) throws PWCGException
     {
-        GroundUnitBalloonFactory balloonFactory = new GroundUnitBalloonFactory(campaign, balloonPosition, balloonCountry);
+        TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, balloonCountry, TacticalTarget.TARGET_BALLOON, balloonPosition, isPlayerFlight);
+
+        GroundUnitBalloonFactory balloonFactory = new GroundUnitBalloonFactory(campaign, targetDefinition);
         return balloonFactory.createBalloonUnit();
     }
 
@@ -87,11 +93,9 @@ public class BalloonBustPackage extends FlightPackage
 
             if (enemyScoutSquadron != null)
             {
-                AiBalloonDefenseFlight enemyCoverUnit = new AiBalloonDefenseFlight();
-                enemyCoverUnit.initialize(mission, campaign, balloonUnit.getPwcgGroundUnitInformation().getPosition(), enemyScoutSquadron, 
-                                missionBeginUnitCover, false, balloonUnit);
+                FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(enemyScoutSquadron, mission, FlightTypes.BALLOON_DEFENSE, balloonUnit.getPwcgGroundUnitInformation().getPosition());
+                AiBalloonDefenseFlight enemyCoverUnit = new AiBalloonDefenseFlight(opposingFlightInformation, missionBeginUnitCover, balloonUnit);
                 enemyCoverUnit.createUnitMission();
-    
                 balloonBust.addLinkedUnit(enemyCoverUnit);
             }
 		}

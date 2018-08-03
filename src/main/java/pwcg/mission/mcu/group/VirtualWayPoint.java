@@ -201,9 +201,7 @@ public class VirtualWayPoint
             // Since every plane has a matching set of missionpoints, the index will be
             // identical for each plane
             BaseFlightMcu planeMissionPoint = planeMissionPoints.get(vwpCoordinate.getWaypointindex());
-            
             VmpSpawnContainer vmpSpawnContainer = new VmpSpawnContainer(planeMissionPoint);
-            
 
             // Chain the spawns such that they happen one after the other
             if (lastSpawnTimer == null)

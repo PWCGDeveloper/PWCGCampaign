@@ -13,6 +13,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.paradrop.ParaDropFlight;
 import pwcg.mission.flight.transport.TransportFlight;
+import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBoS;
 

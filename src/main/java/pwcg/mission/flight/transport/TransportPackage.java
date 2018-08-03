@@ -7,6 +7,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 
@@ -34,8 +35,8 @@ public class TransportPackage extends FlightPackage
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
             
-        TransportFlight transportFlight = new TransportFlight ();
-        transportFlight.initialize(mission, campaign, FlightTypes.TRANSPORT, targetCoordinates, squadron, missionBeginUnit, isPlayerFlight);
+        FlightInformation flightInformation = createFlightInformation(targetCoordinates);
+        TransportFlight transportFlight = new TransportFlight (flightInformation, missionBeginUnit);
         transportFlight.createUnitMission();
 
         return transportFlight;

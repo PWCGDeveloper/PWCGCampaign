@@ -5,16 +5,16 @@ import java.io.IOException;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.factory.VehicleFactory;
-import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.waypoint.WaypointFactory;
+import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundMovingDirectFireUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.IVehicleFactory;
@@ -32,12 +32,10 @@ public class ShipConvoyUnit extends GroundMovingDirectFireUnit
     };
     
     private ShipConvoyTypes shipConvoyType = ShipConvoyTypes.MERCHANT;
-    private Campaign campaign;
 
 	public ShipConvoyUnit(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation, ShipConvoyTypes shipConvoyType) 
 	{
 	    super(pwcgGroundUnitInformation);
-        this.campaign = campaign;
         this.shipConvoyType = shipConvoyType;
         unitSpeed = 5;
 	}
@@ -131,21 +129,33 @@ public class ShipConvoyUnit extends GroundMovingDirectFireUnit
         }       
     }
 
-    protected void calcNumUnitsByConfig() throws PWCGException 
+    protected int calcNumUnits()
     {
-        // How many ships
-        if (shipConvoyType != ShipConvoyTypes.SUBMARINE)
+        if (shipConvoyType == ShipConvoyTypes.SUBMARINE)
         {
-            int randomShips = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.RandomShipsKey);
-
-            minRequested = 2;
-            maxRequested = 2 + randomShips;
+            setMinMaxRequested(1, 1);
         }
         else
         {
-            minRequested = 1;
-            maxRequested = 1;
+            if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
+            {
+                setMinMaxRequested(1, 1);
+            }
+            else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
+            {
+                setMinMaxRequested(2, 4);
+            }
+            else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
+            {
+                setMinMaxRequested(3, 5);
+            }
+            else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
+            {
+                setMinMaxRequested(2, 6);
+            }
         }
+        
+        return calculateForMinMaxRequested();
     }
 
     public void write(BufferedWriter writer) throws PWCGException 

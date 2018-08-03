@@ -30,15 +30,15 @@ public class ArtillerySpotBatteryFactory
         this.country  = country;
     }
 
-    public ArtillerySpotArtilleryGroup createFriendlyArtilleryBattery () throws PWCGException 
+    public ArtillerySpotArtilleryGroup createFriendlyArtilleryBattery (boolean isPlayerFlight) throws PWCGException 
     {
         Coordinate artilleryPosition = determineArtilleryPosition();    
         MissionBeginUnit missionBeginUnit = createMBU(artilleryPosition);
         String name = createUnitName();
 
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                missionBeginUnit, country, name, TacticalTarget.TARGET_ARTILLERY, position, targetPosition);
-               
+                campaign, missionBeginUnit, country, name, TacticalTarget.TARGET_ARTILLERY, position, targetPosition, null, isPlayerFlight);
+
         ArtillerySpotArtilleryGroup friendlyArtilleryGroup = new ArtillerySpotArtilleryGroup(campaign, groundUnitInformation);
         friendlyArtilleryGroup.createUnitMission();
 

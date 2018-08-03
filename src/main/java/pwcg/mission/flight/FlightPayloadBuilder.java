@@ -50,7 +50,7 @@ public class FlightPayloadBuilder
     {
         for (PlaneMCU plane : flight.getPlanes())
         {
-            if (!flight.isAirstart())
+            if (!flight.isAirStart())
             {
                 plane.setFuel(1.0);
             }

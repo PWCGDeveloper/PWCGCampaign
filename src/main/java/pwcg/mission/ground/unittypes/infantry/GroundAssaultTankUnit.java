@@ -3,20 +3,15 @@ package pwcg.mission.ground.unittypes.infantry;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.VehicleFactory;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
-import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.ground.AssaultGenerator.BattleSize;
+import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundMovingDirectFireUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.IVehicleFactory;
@@ -25,14 +20,9 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class GroundAssaultTankUnit extends GroundMovingDirectFireUnit
 {
-    private Campaign campaign;
-    private BattleSize battleSize;
-    
-    public GroundAssaultTankUnit(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation, BattleSize battleSize) 
+    public GroundAssaultTankUnit(GroundUnitInformation pwcgGroundUnitInformation) 
     {       
         super(pwcgGroundUnitInformation);
-        this.campaign = campaign;
-        this.battleSize = battleSize;
         this.unitSpeed = 6;
     }
 
@@ -83,40 +73,26 @@ public class GroundAssaultTankUnit extends GroundMovingDirectFireUnit
 		}		
 	}
 
-    protected void calcNumUnitsByConfig() throws PWCGException 
+    protected int calcNumUnits()
     {
-        if (battleSize == BattleSize.BATTLE_SIZE_TINY)
+        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
-            minRequested = 1;
-            maxRequested = 1;
+            setMinMaxRequested(1, 1);
         }
-        else
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
-            ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-            String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-            if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
-            {
-                minRequested = 3;
-                maxRequested = 6;
-            }
-            else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
-            {
-                minRequested = 4;
-                maxRequested = 8;
-            }
-            else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
-            {
-                minRequested = 6;
-                maxRequested = 10;
-            }
-            
-            // Far fewer tanks in RoF
-            if (PWCGContextManager.isRoF())
-            {
-                minRequested = minRequested / 3;
-                maxRequested = maxRequested / 3;
-            }
+            setMinMaxRequested(3, 5);
         }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
+        {
+            setMinMaxRequested(4, 7);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
+        {
+            setMinMaxRequested(6, 10);
+        }
+        
+        return calculateForMinMaxRequested();
     }
 
     public void write(BufferedWriter writer) throws PWCGException 

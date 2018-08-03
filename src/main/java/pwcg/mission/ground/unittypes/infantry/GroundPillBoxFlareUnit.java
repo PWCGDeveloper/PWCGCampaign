@@ -8,9 +8,10 @@ import pwcg.campaign.ww1.ground.vehicle.PillBox;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Orientation;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundDirectFireUnit;
 import pwcg.mission.mcu.McuFlare;
 import pwcg.mission.mcu.McuSpawn;
@@ -39,10 +40,26 @@ public class GroundPillBoxFlareUnit extends GroundDirectFireUnit
        createFlares();
 	}
 
-    protected void calcNumUnitsByConfig() throws PWCGException 
+    protected int calcNumUnits()
     {
-        minRequested = 1;
-        maxRequested = 2;
+        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
+        {
+            setMinMaxRequested(1, 1);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
+        {
+            setMinMaxRequested(1, 1);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
+        {
+            setMinMaxRequested(1, 2);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
+        {
+            setMinMaxRequested(2, 2);
+        }
+        
+        return calculateForMinMaxRequested();
     }
 
     protected void createSpawners() throws PWCGException  

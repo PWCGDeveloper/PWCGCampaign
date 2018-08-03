@@ -13,6 +13,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 
@@ -30,12 +31,11 @@ public class GroundAttackHuntPackage extends FlightPackage
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
 
-        GroundAttackHuntFlight groundAttackHunt = new GroundAttackHuntFlight ();
-
         Coordinate targetGeneralLocation = GeneralTargetLocationGenerator.createTargetGeneralLocation(campaign, mission, squadron);
         Coordinate initialTargetCoordinates = getFrontPosition(squadron, targetGeneralLocation);
-        groundAttackHunt.initialize(mission, campaign, initialTargetCoordinates, squadron, missionBeginUnit, isPlayerFlight);
 
+        FlightInformation flightInformation = createFlightInformation(initialTargetCoordinates);
+        GroundAttackHuntFlight groundAttackHunt = new GroundAttackHuntFlight (flightInformation, missionBeginUnit);
         groundAttackHunt.createUnitMission();
         
         addPossibleEscort(groundAttackHunt);        

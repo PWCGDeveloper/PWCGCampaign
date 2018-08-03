@@ -6,6 +6,7 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.Unit;
@@ -72,7 +73,11 @@ import pwcg.mission.ground.vehicle.IVehicle;
  */
 public abstract class GroundUnit extends Unit
 {
+    protected static final int NO_MIN_MAX_REQUESTED = -1;
+    
     protected GroundUnitInformation pwcgGroundUnitInformation;
+    protected int minRequested = NO_MIN_MAX_REQUESTED;
+    protected int maxRequested = NO_MIN_MAX_REQUESTED;
 
     abstract public void createUnitMission() throws PWCGException ;
     abstract public List<IVehicle> getVehicles() ;
@@ -119,6 +124,35 @@ public abstract class GroundUnit extends Unit
     public MissionBeginUnit getMissionBeginUnit()
     {
         return pwcgGroundUnitInformation.getMissionBeginUnit();
+    }
+    
+    public void setMinMaxRequested(int minRequested, int maxRequested)
+    {
+        this.minRequested = minRequested;
+        this.maxRequested = maxRequested;
+    }
+    
+    public boolean isMinMaxRequested()
+    {
+        if ((minRequested == NO_MIN_MAX_REQUESTED) || (maxRequested == NO_MIN_MAX_REQUESTED))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public int calculateForMinMaxRequested()
+    {
+        if (maxRequested < minRequested)
+        {
+            maxRequested = minRequested;
+        }
+        
+        int numUnits = minRequested + (RandomNumberGenerator.getRandom(maxRequested - minRequested));
+        return numUnits;
     }
 }	
 

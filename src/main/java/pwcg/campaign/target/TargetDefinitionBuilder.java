@@ -27,10 +27,19 @@ public class TargetDefinitionBuilder
 
         targetDefinition.setTargetType(targetType);
         targetDefinition.setTargetCategory(targetType.getTargetCategory());
-        targetDefinition.setTargetName(targetType.getTargetName());
+        targetDefinition.setTargetName(buildTargetName(campaign.determineCountry(), targetType));
 
-        targetDefinition.setAttackingCountry(squadron.determineSquadronCountry(campaign.getDate()));
-        targetDefinition.setTargetCountry(squadron.determineEnemyCountry(campaign.getDate()));
+        if (flightType == FlightTypes.BALLOON_DEFENSE)
+        {
+            targetDefinition.setAttackingCountry(squadron.determineEnemyCountry(campaign.getDate()));
+            targetDefinition.setTargetCountry(squadron.determineSquadronCountry(campaign.getDate()));
+        }
+        else
+        {
+            targetDefinition.setAttackingCountry(squadron.determineSquadronCountry(campaign.getDate()));
+            targetDefinition.setTargetCountry(squadron.determineEnemyCountry(campaign.getDate()));
+        }
+        
         targetDefinition.setDate(campaign.getDate());
         targetDefinition.setPlayerTarget((campaign.getSquadronId() == squadron.getSquadronId()));
         
@@ -72,7 +81,7 @@ public class TargetDefinitionBuilder
 
         targetDefinition.setTargetType(targetType);
         targetDefinition.setTargetCategory(targetType.getTargetCategory());
-        targetDefinition.setTargetName(targetType.getTargetName());
+        targetDefinition.setTargetName(buildTargetName(targetCountry, targetType));
 
         targetDefinition.setAttackingCountry(squadron.determineSquadronCountry(campaign.getDate()));
         targetDefinition.setTargetCountry(targetCountry);
@@ -89,21 +98,21 @@ public class TargetDefinitionBuilder
         return targetDefinition;
     }
 
-    public TargetDefinition buildTargetDefinitionForAmbient (
+    public TargetDefinition buildTargetDefinitionAssault (
             Campaign campaign, 
             ICountry attackingCountry, 
             ICountry targetCountry, 
             TacticalTarget targetType, 
-            Coordinate targetPosition) throws PWCGException
+            Coordinate targetPosition,
+            boolean isPlayerTarget) throws PWCGException
     {
         targetDefinition.setTargetType(targetType);
         targetDefinition.setTargetCategory(targetType.getTargetCategory());
-        targetDefinition.setTargetName(targetType.getTargetName());
+        targetDefinition.setTargetName(buildTargetName(targetCountry, targetType));
 
         targetDefinition.setAttackingCountry(attackingCountry);
         targetDefinition.setTargetCountry(targetCountry);
         targetDefinition.setDate(campaign.getDate());
-        targetDefinition.setPlayerTarget(false);
         
         targetDefinition.setPreferredRadius(5000);
         targetDefinition.setMaximumRadius(10000);
@@ -111,7 +120,42 @@ public class TargetDefinitionBuilder
         targetDefinition.setTargetGeneralPosition(targetPosition);
         targetDefinition.setTargetPosition(targetPosition);
         targetDefinition.setTargetOrientation(new Orientation());
+        targetDefinition.setPlayerTarget(isPlayerTarget);
 
         return targetDefinition;
     }
+
+    public TargetDefinition buildTargetDefinitionNoFlight (
+            Campaign campaign, 
+            ICountry targetCountry, 
+            TacticalTarget targetType, 
+            Coordinate targetPosition,
+            boolean isPlayerTarget) throws PWCGException
+    {
+        targetDefinition.setTargetType(targetType);
+        targetDefinition.setTargetCategory(targetType.getTargetCategory());
+        targetDefinition.setTargetName(buildTargetName(targetCountry, targetType));
+
+        targetDefinition.setAttackingCountry(targetCountry.getOppositeSideCountry());
+        targetDefinition.setTargetCountry(targetCountry);
+        targetDefinition.setDate(campaign.getDate());
+        
+        targetDefinition.setPreferredRadius(5000);
+        targetDefinition.setMaximumRadius(10000);
+
+        targetDefinition.setTargetGeneralPosition(targetPosition);
+        targetDefinition.setTargetPosition(targetPosition);
+        targetDefinition.setTargetOrientation(new Orientation());
+        targetDefinition.setPlayerTarget(isPlayerTarget);
+
+        return targetDefinition;
+    }
+
+    private String buildTargetName(ICountry targetCountry, TacticalTarget targetType)
+    {
+        String nationality = targetCountry.getNationality();
+        String name = nationality + " " + targetType.getTargetCategory();
+        return name;
+    }
+
 }

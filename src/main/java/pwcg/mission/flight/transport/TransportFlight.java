@@ -3,10 +3,9 @@ package pwcg.mission.flight.transport;
 import java.io.BufferedWriter;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
+import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.group.AirfieldManager;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
@@ -14,26 +13,18 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.LandingBuilder;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class TransportFlight extends Flight
 {
-	public TransportFlight() 
-	{
-	}
+    private IAirfield arrivalAirfield = null;
 
-	public void initialize(
-				Mission mission, 
-				Campaign campaign, 
-				FlightTypes flightType,
-				Coordinate targetCoords, 
-				Squadron squadron, 
-                MissionBeginUnit missionBeginUnit,
-				boolean isPlayerFlight) throws PWCGException 
-	{
-		super.initialize (mission, campaign, flightType, targetCoords, squadron, missionBeginUnit, isPlayerFlight);
-	}
+    public TransportFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
+    {
+        super (flightInformation, missionBeginUnit);
+    }
 
 	public void createUnitMission() throws PWCGException  
 	{
@@ -44,7 +35,7 @@ public class TransportFlight extends Flight
 	private void determineTargetAirfield() throws PWCGException
     {
 	    AirfieldManager airfieldManager = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager();
-	    arrivalAirfield = airfieldManager.getAirfieldFinder().findClosestAirfieldForSide(targetCoords, campaign.getDate(), squadron.getCountry().getSide());    
+	    arrivalAirfield = airfieldManager.getAirfieldFinder().findClosestAirfieldForSide(getTargetCoords(), getCampaign().getDate(), getSquadron().getCountry().getSide());    
     }
 
     @Override
@@ -60,7 +51,7 @@ public class TransportFlight extends Flight
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
         TransportWaypoints waypointGenerator = new TransportWaypoints(
-                squadron.determineCurrentAirfieldCurrentMap(campaign.getDate()), 
+                getSquadron().determineCurrentAirfieldCurrentMap(getCampaign().getDate()), 
                 arrivalAirfield, 
                 this,
                 mission);
@@ -87,5 +78,12 @@ public class TransportFlight extends Flight
     protected void createFlightSpecificTargetAssociations() throws PWCGException
     {
         this.createSimpleTargetAssociations();
+    }
+
+    @Override
+    protected void createLanding() throws PWCGException, PWCGException
+    {
+        LandingBuilder landingBuilder = new LandingBuilder(flightInformation.getCampaign());
+        landing = landingBuilder.createLanding(arrivalAirfield);
     }
 }

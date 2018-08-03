@@ -5,6 +5,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.GroundUnitCollection;
@@ -35,6 +36,19 @@ public abstract class FlightPackage
         return groundUnits;
     }
 
+    protected FlightInformation createFlightInformation(Coordinate targetWaypoint)
+    {
+        FlightInformation flightInformation = null;
+        if (isPlayerFlight)
+        {
+            flightInformation = FlightInformationFactory.buildPlayerFlightInformation(squadron, mission, flightType, targetWaypoint);
+        }
+        else
+        {
+            flightInformation = FlightInformationFactory.buildAiFlightInformation(squadron, mission, flightType, targetWaypoint);
+        }
+        return flightInformation;
+    }
 
     protected GroundUnitCollection createSpecificGroundUnitsForFlight(TacticalTarget targetType) throws PWCGException
     {

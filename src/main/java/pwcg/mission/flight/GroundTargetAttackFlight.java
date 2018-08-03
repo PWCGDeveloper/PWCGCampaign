@@ -8,6 +8,7 @@ import java.util.Map;
 
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.Unit;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -23,8 +24,9 @@ public abstract class GroundTargetAttackFlight extends Flight
     
     protected int attackTime = 180;
     
-    public GroundTargetAttackFlight(int attackTime)
+    public GroundTargetAttackFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit, int attackTime)
     {
+        super (flightInformation, missionBeginUnit);
         this.attackTime = attackTime;
     }
 
@@ -82,12 +84,12 @@ public abstract class GroundTargetAttackFlight extends Flight
     
     protected void createAttackArea(int altitude) throws PWCGException 
     {
-        if (isVirtual)
+        if (isVirtual())
         {
             for (PlaneMCU plane : planes)
             {
                 AttackMcuSequence attackMcuSequence = new AttackMcuSequence();
-                attackMcuSequence.createAttackArea(plane, squadron.determineDisplayName(campaign.getDate()), targetCoords, altitude, attackTime);
+                attackMcuSequence.createAttackArea(plane, getSquadron().determineDisplayName(getCampaign().getDate()), getTargetCoords(), altitude, attackTime);
                 
                 attackMcuSequences.put(plane.getIndex(), attackMcuSequence);
             }
@@ -95,7 +97,7 @@ public abstract class GroundTargetAttackFlight extends Flight
         else
         {
             AttackMcuSequence attackMcuSequence = new AttackMcuSequence();
-            attackMcuSequence.createAttackArea(getLeadPlane(), squadron.determineDisplayName(campaign.getDate()), targetCoords, altitude, attackTime);
+            attackMcuSequence.createAttackArea(getLeadPlane(), getSquadron().determineDisplayName(getCampaign().getDate()), getTargetCoords(), altitude, attackTime);
             
             attackMcuSequences.put(getLeadPlane().getIndex(), attackMcuSequence);
         }
@@ -147,7 +149,7 @@ public abstract class GroundTargetAttackFlight extends Flight
         {
             String objectiveLocation =  getMissionObjectiveLocation(linkedUnit);
             
-            if (!linkedUnit.getCountry().isSameSide(campaign.determineCountry()))
+            if (!linkedUnit.getCountry().isSameSide(getCampaign().determineCountry()))
             {
                 if (linkedUnit instanceof AirfieldStaticGroup)
                 {

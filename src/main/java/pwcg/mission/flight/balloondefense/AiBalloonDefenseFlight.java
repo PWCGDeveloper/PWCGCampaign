@@ -4,9 +4,7 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.Balloon;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -16,7 +14,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -24,24 +22,11 @@ public class AiBalloonDefenseFlight extends Flight
 {
 	protected BalloonDefenseGroup balloonUnit = null;
 
-	public AiBalloonDefenseFlight() 
-	{
-	}
-
-	public void initialize(
-				Mission mission, 
-				Campaign campaign, 
-				Coordinate targetCoords, 
-				Squadron squad, 
-				MissionBeginUnit missionBeginUnit,
-				boolean isPlayerFlight,
-				BalloonDefenseGroup balloonUnit) throws PWCGException 
-	{
-		super.initialize (mission, campaign, FlightTypes.BALLOON_DEFENSE, targetCoords, squad, missionBeginUnit, isPlayerFlight);
-
-		this.balloonUnit = balloonUnit;		
-		airstart = true;
-	}
+    public AiBalloonDefenseFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit, BalloonDefenseGroup balloonUnit)
+    {
+        super (flightInformation, missionBeginUnit);
+        this.balloonUnit = balloonUnit;     
+    }
 
 	@Override
 	public void createUnitMission() throws PWCGException  
@@ -92,15 +77,15 @@ public class AiBalloonDefenseFlight extends Flight
 		return balloonDefenseWP;
     }
 
-	public Coordinate getCoordinatesToIntersectWithPlayer() 
+	public Coordinate getCoordinatesToIntersectWithPlayer() throws PWCGException 
 	{
- 		return targetCoords;
+ 		return getTargetCoords();
 	}
 
 	@Override
 	public int calcNumPlanes() throws PWCGException 
 	{
-		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
 		
 		int BalloonBustMinimum = configManager.getIntConfigParam(ConfigItemKeys.BalloonDefenseMinimumKey);
 		int BalloonBustAdditional = configManager.getIntConfigParam(ConfigItemKeys.BalloonDefenseAdditionalKey) + 1;
@@ -124,7 +109,7 @@ public class AiBalloonDefenseFlight extends Flight
 
 	public String getMissionObjective() throws PWCGException 
 	{
-        String objective = "Defend our balloon" + formMissionObjectiveLocation(targetCoords.copy()) + ".";       
+        String objective = "Defend our balloon" + formMissionObjectiveLocation(getTargetCoords().copy()) + ".";       
 
         return objective;
 	}

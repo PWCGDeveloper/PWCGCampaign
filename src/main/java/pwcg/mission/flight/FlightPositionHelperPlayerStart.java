@@ -25,7 +25,7 @@ public class FlightPositionHelperPlayerStart
 
     public void createPlayerPlanePosition() throws PWCGException
     {
-        if (flight.isAirstart())
+        if (flight.isAirStart())
         {
             createPlanePositionCloseToFirstWP();
         }

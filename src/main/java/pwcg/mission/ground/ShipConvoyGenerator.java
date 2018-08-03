@@ -8,6 +8,9 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.target.ShippingLane;
+import pwcg.campaign.target.TacticalTarget;
+import pwcg.campaign.target.TargetDefinition;
+import pwcg.campaign.target.TargetDefinitionBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -40,7 +43,10 @@ public class ShipConvoyGenerator
                 shipCountry = CountryFactory.makeMapReferenceCountry(Side.AXIS);
             }
             
-            ShippingUnitFactory shippingFactory = new ShippingUnitFactory(campaign, targetPosition, shipCountry);
+            TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
+            TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, shipCountry, TacticalTarget.TARGET_SHIPPING, targetPosition, isPlayerFlight);
+
+            ShippingUnitFactory shippingFactory = new ShippingUnitFactory(campaign, targetDefinition);
             ShipConvoyUnit convoy = shippingFactory.createShippingUnit();
             if (convoy.getPwcgGroundUnitInformation().getCountry().getSide() == Side.ALLIED)
             {
@@ -80,5 +86,7 @@ public class ShipConvoyGenerator
         
         return convoys;
     }
+    
+    
 
 }

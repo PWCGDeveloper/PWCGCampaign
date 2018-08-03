@@ -2,8 +2,6 @@ package pwcg.mission.flight.offensive;
 
 import java.util.List;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -12,7 +10,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class OffensiveFlight extends Flight
@@ -26,26 +24,15 @@ public class OffensiveFlight extends Flight
         OFFENSIVE_FLIGHT_AIRFIELD,
     }
 
-	public OffensiveFlight() 
-	{
-		super ();
-	}
-
-	public void initialize(
-				Mission mission, 
-				Campaign campaign, 
-				Coordinate targetCoords, 
-				Squadron squad, 
-	            MissionBeginUnit missionBeginUnit,
-				boolean isPlayerFlight) throws PWCGException 
-	{
-		super.initialize (mission, campaign, FlightTypes.OFFENSIVE, targetCoords, squad, missionBeginUnit, isPlayerFlight);
-	}
-
+    public OffensiveFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
+    {
+        super (flightInformation, missionBeginUnit);
+    }
+    
 	@Override
 	public int calcNumPlanes() throws PWCGException 
 	{
-		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
 		
 		int OffensivePatrolMinimum = configManager.getIntConfigParam(ConfigItemKeys.OffensivePatrolMinimumKey);
 		int OffensivePatrolAdditional = configManager.getIntConfigParam(ConfigItemKeys.OffensivePatrolAdditionalKey) + 1;
@@ -63,15 +50,15 @@ public class OffensiveFlight extends Flight
 
 	    if (offensiveFlightType == OffensiveFlightTypes.OFFENSIVE_FLIGHT_TRANSPORT)
 	    {
-	        waypoints = new OffensiveWaypointsTransport(startPosition, targetCoords, this, mission);
+	        waypoints = new OffensiveWaypointsTransport(startPosition, getTargetCoords(), this, mission);
 	    }
 	    else if (offensiveFlightType == OffensiveFlightTypes.OFFENSIVE_FLIGHT_AIRFIELD)
 	    {
-	        waypoints = new OffensiveWaypointsAirfield(startPosition, targetCoords, this, mission);
+	        waypoints = new OffensiveWaypointsAirfield(startPosition, getTargetCoords(), this, mission);
 	    }
 	    else
 	    {
-	        waypoints = new OffensiveWaypointsFront(startPosition, targetCoords, this, mission);
+	        waypoints = new OffensiveWaypointsFront(startPosition, getTargetCoords(), this, mission);
 	    }
 
 	    return waypoints.createWaypoints();
@@ -104,7 +91,7 @@ public class OffensiveFlight extends Flight
     {
         String objective = "";
 
-        String objectiveName =  formMissionObjectiveLocation(targetCoords.copy());
+        String objectiveName =  formMissionObjectiveLocation(getTargetCoords().copy());
         if (offensiveFlightType == OffensiveFlightTypes.OFFENSIVE_FLIGHT_TRANSPORT)
         {
             if (!objectiveName.isEmpty())

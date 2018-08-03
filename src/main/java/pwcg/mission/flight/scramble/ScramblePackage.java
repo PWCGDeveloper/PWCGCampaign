@@ -15,6 +15,8 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 
@@ -37,8 +39,8 @@ public class ScramblePackage extends FlightPackage
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
 
-		PlayerScrambleFlight scramble = new PlayerScrambleFlight ();
-		scramble.initialize(mission, campaign, targetWaypoint, squadron, missionBeginUnit, isPlayerFlight);
+        FlightInformation flightInformation = createFlightInformation(targetWaypoint);
+		PlayerScrambleFlight scramble = new PlayerScrambleFlight (flightInformation, missionBeginUnit);
 		scramble.createUnitMission();
 
 		// Only fighters for now
@@ -69,8 +71,8 @@ public class ScramblePackage extends FlightPackage
 	        MissionBeginUnit missionBeginUnitOpposing = new MissionBeginUnit();
 	        missionBeginUnitOpposing.initialize(opposingTargetCoords.copy());
 
-			ScrambleOpposingFlight scrambleOpposing = new ScrambleOpposingFlight ();
-			scrambleOpposing.initialize(mission, campaign, opposingTargetCoords, opposingStartCoords, opposingSquad, missionBeginUnitOpposing, false);
+	        FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(opposingSquad, mission, FlightTypes.SCRAMBLE_OPPOSE, opposingTargetCoords);
+			ScrambleOpposingFlight scrambleOpposing = new ScrambleOpposingFlight (opposingFlightInformation, missionBeginUnitOpposing, opposingStartCoords);
 			scrambleOpposing.createUnitMission();
 			
 			// Link the opposing flight to the scramble

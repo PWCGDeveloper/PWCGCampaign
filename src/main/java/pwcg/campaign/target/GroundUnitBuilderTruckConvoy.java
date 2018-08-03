@@ -15,7 +15,7 @@ public class GroundUnitBuilderTruckConvoy
 {
     public static GroundUnitCollection createTruckConvoy(Campaign campaign, Mission mission, TargetDefinition targetDefinition) throws PWCGException, PWCGMissionGenerationException
     {
-        TruckUnitFactory groundUnitFactory = new TruckUnitFactory(campaign, targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry(), campaign.getDate());
+        TruckUnitFactory groundUnitFactory = new TruckUnitFactory(campaign, targetDefinition);
         GroundUnit targetUnit = groundUnitFactory.createTruckConvoy();
 
         GroundUnitCollection groundUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION);

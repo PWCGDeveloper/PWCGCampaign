@@ -13,6 +13,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.attack.GroundAttackFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.validate.GroundAttackFlightValidator;
+import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBoS;
 
@@ -46,6 +48,9 @@ public class PlayerFlightTypeBoSAttackTest
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }
+        
+        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
+        groundUnitValidator.validateGroundUnitsForMission(mission);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

@@ -18,6 +18,8 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.ShipConvoyGenerator;
@@ -43,8 +45,8 @@ public class SeaPatrolPackage extends FlightPackage
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
         
-		SeaPatrolFlight seaPatrol = new SeaPatrolFlight ();
-		seaPatrol.initialize(mission, campaign, targetPosition, squadron, FlightTypes.SEA_PATROL, missionBeginUnit, isPlayerFlight);
+        FlightInformation flightInformation = createFlightInformation(targetPosition);
+		SeaPatrolFlight seaPatrol = new SeaPatrolFlight (flightInformation, missionBeginUnit);
 		
 		// Add a sea unit for the player flight
         if (isPlayerFlight)
@@ -121,10 +123,8 @@ public class SeaPatrolPackage extends FlightPackage
             MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
             missionBeginUnit.initialize(startingPosition.copy());
             
-			opposingFlight = new SeaPlaneOpposingFlight ();
-			opposingFlight.initialize(mission, campaign, targetPosition.copy(), startingPosition.copy(), opposingSquad, FlightTypes.SEA_PATROL, 
-			                missionBeginUnit, false);
-					
+            FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(opposingSquad, mission, FlightTypes.SEA_PATROL, targetPosition.copy());
+			opposingFlight = new SeaPlaneOpposingFlight (opposingFlightInformation, missionBeginUnit);
 			opposingFlight.createUnitMission();
 			
 			// Start the bombers right away

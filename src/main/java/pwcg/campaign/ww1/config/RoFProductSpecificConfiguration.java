@@ -4,7 +4,7 @@ import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.TakeoffFormation;
-import pwcg.mission.ground.AssaultGenerator.BattleSize;
+import pwcg.mission.ground.BattleSize;
 
 public class RoFProductSpecificConfiguration implements IProductSpecificConfiguration
 {
@@ -255,7 +255,7 @@ public class RoFProductSpecificConfiguration implements IProductSpecificConfigur
     {
         if (battleSize == BattleSize.BATTLE_SIZE_ASSAULT)
         {
-            return (1 + RandomNumberGenerator.getRandom(3));
+            return (1 + RandomNumberGenerator.getRandom(2));
         }
         else if (battleSize == BattleSize.BATTLE_SIZE_OFFENSIVE)
         {

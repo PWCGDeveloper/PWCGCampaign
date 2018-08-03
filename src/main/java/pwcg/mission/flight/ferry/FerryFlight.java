@@ -2,15 +2,13 @@ package pwcg.mission.flight.ferry;
 
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class FerryFlight extends Flight
@@ -20,23 +18,12 @@ public class FerryFlight extends Flight
     private IAirfield fromAirfield;
     private IAirfield toAirfield;
     
-	public FerryFlight(boolean isTransfer) 
-	{
-		super ();
-		
+    public FerryFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit, boolean isTransfer) throws PWCGException
+    {
+        super (flightInformation, missionBeginUnit);
 		this.isTransfer = isTransfer;
-	}
-
-	public void initialize(
-				Mission mission, 
-				Campaign campaign, 
-				Squadron squad, 
-	            MissionBeginUnit missionBeginUnit) throws PWCGException 
-	{
-        fromAirfield = campaign.getSquadronMoveEvent().getLastAirfield();
-        toAirfield = squad.determineCurrentAirfieldCurrentMap(campaign.getDate());
-
-		super.initialize (mission, campaign, FlightTypes.FERRY, toAirfield.getPosition().copy(), squad, missionBeginUnit, true);
+        fromAirfield = flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield();
+        toAirfield = flightInformation.getSquadron().determineCurrentAirfieldCurrentMap(flightInformation.getCampaign().getDate());
 	}
 
 	@Override

@@ -18,7 +18,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
 import pwcg.mission.AmbientGroundUnitBuilder;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionBattle;
+import pwcg.mission.AssaultInformation;
 import pwcg.mission.MissionBlockBuilder;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.GroundUnitSpawning;
@@ -148,7 +148,7 @@ public abstract class MissionFileWriter implements IMissionFile
             truckUnit.write(writer);
         }
         
-        for (MissionBattle battle: ambientGroundUnitBuilder.getAmbientBattles())
+        for (AssaultInformation battle: ambientGroundUnitBuilder.getAmbientBattles())
         {
             for (GroundUnit grountUnit : battle.getGroundUnitCollection().getAllGroundUnits())
             {

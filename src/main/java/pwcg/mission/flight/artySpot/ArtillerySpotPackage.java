@@ -11,6 +11,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.GroundUnitCollection;
@@ -26,17 +27,16 @@ public class ArtillerySpotPackage extends FlightPackage
 
     public Flight createPackage () throws PWCGException 
     {
-        GroundUnitCollection groundUnits = createGroundUnitsForFlight();
-        Flight artySpot = createFlight(groundUnits);
+        Flight artySpot = createFlight();
         addPossibleEscort(artySpot);        
 		return artySpot;
 	}
 
-    private Flight createFlight(GroundUnitCollection groundUnitCollection) throws PWCGException
-    {
-        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
+    private Flight createFlight() throws PWCGException
+    {        
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        
+        GroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
+        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
 		Flight artySpot = null;
 		if (isPlayerFlight)
 		{
@@ -44,10 +44,10 @@ public class ArtillerySpotPackage extends FlightPackage
 		}
 		else
 		{
-	        artySpot = createAiFlight(targetCoordinates, startCoords);
+            artySpot = createAiFlight(targetCoordinates, startCoords);
 		}
 
-		artySpot.linkGroundUnitsToFlight(groundUnitCollection);
+        artySpot.linkGroundUnitsToFlight(groundUnitCollection);
         return artySpot;
     }
 
@@ -61,8 +61,8 @@ public class ArtillerySpotPackage extends FlightPackage
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
         
-        PlayerArtillerySpotFlight artySpotPlayer = new PlayerArtillerySpotFlight ();
-        artySpotPlayer.initialize(mission, campaign, targetCoordinates, squadron, missionBeginUnit);
+        FlightInformation flightInformation = createFlightInformation(targetCoordinates);
+        PlayerArtillerySpotFlight artySpotPlayer = new PlayerArtillerySpotFlight (flightInformation, missionBeginUnit);
         artySpotPlayer.createUnitMission();
         artySpotPlayer.createArtyGrid(friendlyArtillery);
         
@@ -76,8 +76,8 @@ public class ArtillerySpotPackage extends FlightPackage
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
         
-        ArtillerySpotFlight artySpotAI = new ArtillerySpotFlight ();
-        artySpotAI.initialize(mission, campaign, targetCoordinates, squadron, missionBeginUnit, false);
+        FlightInformation flightInformation = createFlightInformation(targetCoordinates);
+        ArtillerySpotFlight artySpotAI = new ArtillerySpotFlight (flightInformation, missionBeginUnit);
         artySpotAI.createUnitMission();
         artySpot = artySpotAI;
         return artySpot;

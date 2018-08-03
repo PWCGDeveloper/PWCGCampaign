@@ -11,7 +11,9 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
+import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
@@ -41,29 +43,32 @@ public class EscortForPlayerFlight extends Flight
     protected Flight playerFlight;
 
 
-    public EscortForPlayerFlight(Flight playerFlight) 
+    public EscortForPlayerFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit, Flight playerFlight) 
     {
-        super();
-        
+        super(flightInformation, missionBeginUnit);
         this.playerFlight = playerFlight;                
-        setVirtual(false);
     }
 
     @Override
     public void createUnitMission() throws PWCGException  
     {
+        calcPlanesInFlight();
+        createWaypointPackage();
         createPlanes();
         createPlaneInitialPosition();
-        List<McuWaypoint> waypointList = createWaypoints(mission, departureAirfield.getPosition());
-        waypointPackage.setWaypoints(waypointList);
-
+        createWaypoints();
         createActivation();
         createFormation();
-
         setFlightPayload();
-
         createCover();
         createDeactivate();
+    }
+
+    @Override
+    protected void createWaypoints() throws PWCGException
+    {
+        List<McuWaypoint> waypointList = createWaypoints(flightInformation.getMission(), playerFlight.getFlightInformation().getDepartureAirfield().getPosition());
+        waypointPackage.setWaypoints(waypointList);
     }
 
     @Override
@@ -103,8 +108,8 @@ public class EscortForPlayerFlight extends Flight
 
         // Activate the cover command
         coverTimer  = new McuTimer();
-        coverTimer.setName("Cover Timer for " + getSquadron().determineDisplayName(campaign.getDate()));
-        coverTimer.setDesc("Cover " + playerFlight.getSquadron().determineDisplayName(campaign.getDate()));
+        coverTimer.setName("Cover Timer for " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
+        coverTimer.setDesc("Cover " + playerFlight.getFlightInformation().getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
         coverTimer.setPosition(coverPosition);
         coverTimer.setTarget(cover.getIndex());
         
@@ -117,14 +122,14 @@ public class EscortForPlayerFlight extends Flight
         deactivateCoverEntity.setName("Escort Cover Deactivate Cover");
         deactivateCoverEntity.setDesc("Escort Cover Deactivate Cover");
         deactivateCoverEntity.setOrientation(new Orientation());
-        deactivateCoverEntity.setPosition(targetCoords.copy());                
+        deactivateCoverEntity.setPosition(flightInformation.getTargetCoords().copy());                
         deactivateCoverEntity.setTarget(cover.getIndex());
         
         deactivateCoverTimer  = new McuTimer();
         deactivateCoverTimer.setName("Escort Cover Deactivate Cover Timer");
         deactivateCoverTimer.setDesc("Escort Cover Deactivate Cover Timer");
         deactivateCoverTimer.setOrientation(new Orientation());
-        deactivateCoverTimer.setPosition(targetCoords.copy());             
+        deactivateCoverTimer.setPosition(flightInformation.getTargetCoords().copy());             
         deactivateCoverTimer.setTimer(2);               
         deactivateCoverTimer.setTarget(deactivateCoverEntity.getIndex());
     }
@@ -145,7 +150,7 @@ public class EscortForPlayerFlight extends Flight
         {
             Coordinate planeCoords = coverPosition.copy();
 
-            ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+            ConfigManagerCampaign configManager = flightInformation.getCampaign().getCampaignConfigManager();
             int AircraftSpacingHorizontal = configManager.getIntConfigParam(ConfigItemKeys.AircraftSpacingHorizontalKey);
             
             planeCoords.setXPos(coverPosition.getXPos() - (i * AircraftSpacingHorizontal));
@@ -169,7 +174,7 @@ public class EscortForPlayerFlight extends Flight
     @Override
     public int calcNumPlanes() throws PWCGException 
     {
-        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+        ConfigManagerCampaign configManager = flightInformation.getCampaign().getCampaignConfigManager();
         
         int GroundAttackMinimum = configManager.getIntConfigParam(ConfigItemKeys.PatrolAdditionalKey);
         int GroundAttackAdditional = configManager.getIntConfigParam(ConfigItemKeys.PatrolAdditionalKey) + 1;
@@ -182,7 +187,7 @@ public class EscortForPlayerFlight extends Flight
     public String getMissionObjective() throws PWCGException 
     {
         String objective = "Escort to the specified location and accompany them until they cross our lines.";
-        String objectiveName =  formMissionObjectiveLocation(targetCoords.copy());
+        String objectiveName =  formMissionObjectiveLocation(flightInformation.getTargetCoords().copy());
         if (!objectiveName.isEmpty())
         {
             objective = "Escort to the location" + objectiveName + 
@@ -195,11 +200,11 @@ public class EscortForPlayerFlight extends Flight
     @Override
     protected List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException
     {
-        Coordinate rtbCoords = departureAirfield.getPosition().copy();
+        Coordinate rtbCoords = flightInformation.getDepartureAirfield().getPosition().copy();
         rtbCoords.setYPos(4000.0);
 
         Orientation orient = new Orientation();
-        orient.setyOri(departureAirfield.getOrientation().getyOri());
+        orient.setyOri(flightInformation.getDepartureAirfield().getOrientation().getyOri());
 
         List<McuWaypoint> waypoints = new ArrayList<>();
         

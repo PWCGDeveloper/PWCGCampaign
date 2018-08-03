@@ -3,32 +3,24 @@ package pwcg.mission.ground.unittypes.artillery;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.VehicleFactory;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
-import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundAreaFireUnit;
 import pwcg.mission.ground.vehicle.IVehicleFactory;
 import pwcg.mission.mcu.McuSpawn;
 
 public class GroundArtilleryUnit extends GroundAreaFireUnit
 {
-    private Campaign campaign;
-    
-	public GroundArtilleryUnit(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation) 
+	public GroundArtilleryUnit(GroundUnitInformation pwcgGroundUnitInformation) 
 	{
         super (pwcgGroundUnitInformation);
-	    this.campaign = campaign;
 	}
 
 	protected void createUnits() throws PWCGException  
@@ -46,19 +38,12 @@ public class GroundArtilleryUnit extends GroundAreaFireUnit
     {        
         int numArtillery = calcNumUnits();
 
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        double angleToEnemy = frontLinesForMap.findClosestEnemyPositionAngle(pwcgGroundUnitInformation.getPosition(), pwcgGroundUnitInformation.getCountry().getSide().getOppositeSide());
-        
-        Orientation gunOrient = new Orientation();
-        gunOrient.setyOri(angleToEnemy);
-
-        // Locate the guns such that startCoords is the middle of the line
-        double startLocationOrientation = MathUtils.adjustAngle (angleToEnemy, 270);             
+        double startLocationOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 270);             
         double gunSpacing = 30.0;
         Coordinate gunCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), startLocationOrientation, ((numArtillery * gunSpacing) / 2));       
         
         // Direction in which subsequent units will be placed
-        double placementOrientation = MathUtils.adjustAngle (angleToEnemy, 90.0);        
+        double placementOrientation = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 90.0);        
 
         for (int i = 0; i < numArtillery; ++i)
         {   
@@ -92,25 +77,26 @@ public class GroundArtilleryUnit extends GroundAreaFireUnit
         attackArea.setObject(spawningVehicle.getEntity().getIndex());
     }   
 
-    protected void calcNumUnitsByConfig() throws PWCGException 
+    protected int calcNumUnits()
     {
-        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
-            minRequested = 2;
-            maxRequested = 4;
+            setMinMaxRequested(1, 1);
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
-            minRequested = 4;
-            maxRequested = 8;
+            setMinMaxRequested(2, 4);
         }
-        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
         {
-            minRequested = 6;
-            maxRequested = 10;
+            setMinMaxRequested(4, 8);
         }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
+        {
+            setMinMaxRequested(6, 10);
+        }
+        
+        return calculateForMinMaxRequested();
     }
 
     public void write(BufferedWriter writer) throws PWCGException 

@@ -10,10 +10,11 @@ import pwcg.campaign.ww1.ground.vehicle.Artillery;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.MissionStringHandler;
+import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.McuActivate;
@@ -22,9 +23,7 @@ import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 
 public class ArtillerySpotArtilleryGroup extends GroundUnit
-{
-    public static final int NUM_ARTILLERY = 4;
-	
+{	
 	protected ArrayList<Artillery> arty = new ArrayList<Artillery>();
 
 	protected McuTimer activateTimer = new McuTimer();
@@ -48,9 +47,7 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
 	public List<IVehicle> getVehicles() 
 	{
 		List<IVehicle> vehicles = new ArrayList<IVehicle>();
-		
 		vehicles.addAll(arty);
-		
 		return vehicles;
 	}
 
@@ -70,8 +67,10 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
     protected void createArtillery() throws PWCGException 
     {
         Artillery gunType = new Artillery(pwcgGroundUnitInformation.getCountry());
+        
+        int numArtillery = calcNumUnits();
                 
-        for (int i = 0; i < NUM_ARTILLERY; ++i)
+        for (int i = 0; i < numArtillery; ++i)
         {
             Artillery gun = gunType.copy();
             gun.getEntity().setEnabled(1);
@@ -90,7 +89,29 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
         }       
     }
 
-	protected void createActivation()
+	private int calcNumUnits()
+    {
+	    if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
+	    {
+	        setMinMaxRequested(1, 1);
+	    }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
+        {
+            setMinMaxRequested(2, 2);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
+        {
+            setMinMaxRequested(3, 4);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
+        {
+            setMinMaxRequested(4, 5);
+        }
+	    
+	    return calculateForMinMaxRequested();
+    }
+
+    protected void createActivation()
 	{
 		activate.setName(pwcgGroundUnitInformation.getName() + ": Activate");		
 		activate.setDesc("Activate for " + pwcgGroundUnitInformation.getName());

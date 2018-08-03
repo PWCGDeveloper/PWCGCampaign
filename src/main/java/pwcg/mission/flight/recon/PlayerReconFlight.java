@@ -4,15 +4,11 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
-import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuTimer;
@@ -28,21 +24,10 @@ public class PlayerReconFlight extends ReconFlight
 	static public int PLAYER_RECON_MAX_ALT = 6000;
 	static public int PLAYER_RECON_MIN_ALT = 1600;
 
-	public PlayerReconFlight() 
-	{
-		super ();
-	}
-
-	public void initialize(
-				Mission mission, 
-				Campaign campaign, 
-				Coordinate targetCoords, 
-				Squadron squad, 
-	            MissionBeginUnit missionBeginUnit,
-				boolean isPlayerFlight) throws PWCGException 
-	{
-		super.initialize (mission, campaign, FlightTypes.RECON, targetCoords, squad, missionBeginUnit, isPlayerFlight);
-	}
+    public PlayerReconFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
+    {
+        super (flightInformation, missionBeginUnit);
+    }
 
 	@Override
     protected void createFlightSpecificTargetAssociations() throws PWCGException

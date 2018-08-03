@@ -7,6 +7,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.GroundUnitCollection;
@@ -29,8 +30,8 @@ public class DiveBombingPackage extends FlightPackage
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
         
-        DiveBombingFlight diveBombingFlight = createDiveBombingFlight();
-		diveBombingFlight.initialize(mission, campaign, FlightTypes.DIVE_BOMB, targetCoordinates, squadron, missionBeginUnit, isPlayerFlight);
+        FlightInformation flightInformation = createFlightInformation(targetCoordinates);
+        DiveBombingFlight diveBombingFlight = new DiveBombingFlight(flightInformation, missionBeginUnit);
 		diveBombingFlight.linkGroundUnitsToFlight(groundUnitCollection);
 		
         diveBombingFlight.createUnitMission();
@@ -40,10 +41,4 @@ public class DiveBombingPackage extends FlightPackage
 
 		return diveBombingFlight;
 	}
-
-    protected DiveBombingFlight createDiveBombingFlight()
-    {
-        DiveBombingFlight diveBombingFlight = new DiveBombingFlight ();
-        return diveBombingFlight;
-    }
 }

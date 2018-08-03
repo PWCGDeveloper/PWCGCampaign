@@ -133,4 +133,17 @@ public class BoSCountry extends CountryBase implements Cloneable, ICountry
         return country;
     }
 
+    @Override
+    public ICountry getOppositeSideCountry()
+    {
+        if (getSide() == Side.ALLIED)
+        {
+            return new RoFCountry(GERMANY_CODE);
+        }
+        else
+        {
+            return new RoFCountry(RUSSIA_CODE);
+        }
+    }
+
 }

@@ -18,6 +18,8 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.bomb.BombingWaypoints.BombingAltitudeLevel;
@@ -63,14 +65,11 @@ public class StrategicBombingPackage extends FlightPackage
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
-        StrategicBombingFlight strategicBombingFlight = new StrategicBombingFlight();
 
+        FlightInformation flightInformation = createFlightInformation(targetDefinition.getTargetPosition());
+        StrategicBombingFlight strategicBombingFlight = new StrategicBombingFlight(flightInformation, missionBeginUnit);
         strategicBombingFlight.setBombingAltitudeLevel(BombingAltitudeLevel.HIGH);
-
-        strategicBombingFlight.initialize(mission, campaign, FlightTypes.STRATEGIC_BOMB, targetDefinition.getTargetPosition(), squadron, missionBeginUnit, isPlayerFlight);
-        
         strategicBombingFlight.setTargetDefinition(targetDefinition);
-        
         if (squadron.determineIsNightSquadron())
         {
             strategicBombingFlight.setNightFlight(true);
@@ -146,8 +145,6 @@ public class StrategicBombingPackage extends FlightPackage
             if (opposingSquads != null && opposingSquads.size() != 0)
             {
                 int numHomeDefenseFlights = 1;
-                FlightTypes opposingFlightType = FlightTypes.INTERCEPT;
-
                 for (int i = 0; i < numHomeDefenseFlights; ++i)
                 {
                     int index = RandomNumberGenerator.getRandom(opposingSquads.size());
@@ -161,9 +158,9 @@ public class StrategicBombingPackage extends FlightPackage
                     MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
                     missionBeginUnit.initialize(homeDefenseCoords.copy());
 
-                    InterceptFlight homeDefenseFlight = new InterceptFlight();
-                    homeDefenseFlight.initialize(mission, campaign, opposingFlightType, bombing.getCoordinatesToIntersectWithPlayer().copy(), opposingSquad, missionBeginUnit,
-                            false);
+                    
+                    FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(opposingSquad, mission, FlightTypes.INTERCEPT, bombing.getCoordinatesToIntersectWithPlayer().copy());
+                    InterceptFlight homeDefenseFlight = new InterceptFlight(opposingFlightInformation, missionBeginUnit);
                     homeDefenseFlight.createUnitMission();
 
                     homeDefenseFlights.add(homeDefenseFlight);
@@ -234,9 +231,8 @@ public class StrategicBombingPackage extends FlightPackage
             MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
             missionBeginUnit.initialize(startPosition.copy());
 
-            StrategicSupportingFlight bombingFlight = new StrategicSupportingFlight();
-            bombingFlight.initialize(mission, campaign, targetPosition.copy(), startPosition.copy(), squadron, FlightTypes.STRATEGIC_BOMB, missionBeginUnit,
-                    false);
+            FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(squadron, mission, FlightTypes.STRATEGIC_BOMB, targetPosition.copy());
+            StrategicSupportingFlight bombingFlight = new StrategicSupportingFlight(opposingFlightInformation, missionBeginUnit, startPosition.copy());
             bombingFlight.createUnitMission();
 
             // Start the bombers right away

@@ -2,8 +2,6 @@ package pwcg.mission.flight.artySpot;
 
 import java.util.List;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -14,32 +12,22 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.Unit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class ArtillerySpotFlight extends Flight
 {
-	public ArtillerySpotFlight() 
-	{
-		super ();
-	}
 
-	public void initialize(
-				Mission mission, 
-				Campaign campaign, 
-				Coordinate targetCoords, 
-				Squadron squad, 
-                MissionBeginUnit missionBeginUnit,
-				boolean isPlayerFlight) throws PWCGException 
-	{
-		super.initialize (mission, campaign, FlightTypes.ARTILLERY_SPOT, targetCoords, squad, missionBeginUnit, isPlayerFlight);
-	}
+    public ArtillerySpotFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
+    {
+        super (flightInformation, missionBeginUnit);
+    }
 
 	@Override
 	public int calcNumPlanes() throws PWCGException 
 	{
-		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
 		
 		int ArtillerySpotMinimum = configManager.getIntConfigParam(ConfigItemKeys.ArtillerySpotMinimumKey);
 		int ArtillerySpotAdditional = configManager.getIntConfigParam(ConfigItemKeys.ArtillerySpotAdditionalKey) + 1;
@@ -53,7 +41,7 @@ public class ArtillerySpotFlight extends Flight
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
 		ArtillerySpotWaypoints am = new ArtillerySpotWaypoints(startPosition, 
-													 targetCoords,
+													 getTargetCoords(),
 													 this,
 												 	 mission);
 		return am.createWaypoints();

@@ -1,13 +1,10 @@
 package pwcg.mission.ground.factory;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.target.TacticalTarget;
+import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.MissionBeginUnit;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.infantry.DrifterUnit;
@@ -15,31 +12,20 @@ import pwcg.mission.ground.unittypes.infantry.DrifterUnit;
 public class DrifterUnitFactory
 {
     private Campaign campaign;
-    private Coordinate location;
-    private Orientation orientation;
-    private ICountry country;
-
-    public DrifterUnitFactory (Campaign campaign, Coordinate location, Orientation orientation, ICountry country)
+    private TargetDefinition targetDefinition;
+    
+    public DrifterUnitFactory (Campaign campaign, TargetDefinition targetDefinition)
     {
-        this.campaign  = campaign;
-        this.location  = location.copy();
-        this.orientation  = orientation.copy();
-        this.country  = country;
+        this.campaign = campaign;
+        this.targetDefinition  = targetDefinition;
     }
 
-    public GroundUnit createDrifterUnit (int minUnits, int maxUnits) throws PWCGException 
+    public GroundUnit createDrifterUnit () throws PWCGException 
     {
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(location);
-
-        String countryName = country.getNationality();
-        String name = countryName + " Drifter";
-        
-        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                missionBeginUnit, country, name, TacticalTarget.TARGET_DRIFTER, location, location, orientation);
-
-        DrifterUnit drifterUnit = new DrifterUnit(campaign, groundUnitInformation);
-        drifterUnit.setMinMaxRequested(minUnits, maxUnits);
+        missionBeginUnit.initialize(targetDefinition.getTargetPosition().copy());
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(campaign, missionBeginUnit, targetDefinition);
+        DrifterUnit drifterUnit = new DrifterUnit(groundUnitInformation);
         drifterUnit.createUnitMission();
 
         return drifterUnit;

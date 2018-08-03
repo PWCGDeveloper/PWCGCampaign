@@ -9,10 +9,12 @@ import pwcg.campaign.target.GroundUnitType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
+import pwcg.core.location.Orientation;
+import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitCollection;
 import pwcg.mission.ground.unittypes.GroundUnit;
 
-public class MissionBattle
+public class AssaultInformation
 {
     private ICountry aggressor;
     private ICountry defender;
@@ -99,4 +101,18 @@ public class MissionBattle
     {
         return groundUnitCollection;
     }
+    
+    
+    public Orientation getAssaultOrientation() throws PWCGException
+    {
+        double angleToDefensePosition = MathUtils.calcAngle(assaultPosition, defensePosition);
+        return new Orientation(angleToDefensePosition);
+    }
+    
+    public Orientation getDefenseOrientation() throws PWCGException
+    {
+        double angleToAssaultPosition = MathUtils.calcAngle(defensePosition, assaultPosition);
+        return new Orientation(angleToAssaultPosition);
+    }
+
 }

@@ -5,13 +5,8 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.ground.GroundUnitInformation;
-import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.MissionBeginUnitCheckZone;
-import pwcg.mission.flight.artySpot.ArtillerySpotArtilleryGroup;
-import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.SpotLightGroup;
-import pwcg.mission.ground.unittypes.artillery.GroundArtilleryUnit;
 import pwcg.mission.mcu.Coalition;
 
 public class GroundUnitFactory
@@ -27,33 +22,6 @@ public class GroundUnitFactory
         this.country  = country;
     }
 
-    public ArtillerySpotArtilleryGroup createFriendlyArtilleryBattery (Coordinate targetPosition) throws PWCGException 
-    {
-        ArtillerySpotBatteryFactory artillerySpotBatteryFactory = new ArtillerySpotBatteryFactory(campaign, location, targetPosition, country);
-        ArtillerySpotArtilleryGroup friendlyArtilleryGroup =artillerySpotBatteryFactory.createFriendlyArtilleryBattery();
-        friendlyArtilleryGroup.createUnitMission();
-        return friendlyArtilleryGroup;
-    }
-
-    public GroundUnit createArtilleryUnit (
-                    MissionBeginUnit missionBeginUnit, 
-                    ICountry country, 
-                    Coordinate startCoords, 
-                    Coordinate destinationCoords) throws PWCGException
-    {
-        String nationality = country.getNationality();
-        String name = nationality + " Artillery";
-
-        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                missionBeginUnit, country, name, TacticalTarget.TARGET_ARTILLERY, startCoords, destinationCoords);
-
-        GroundArtilleryUnit artilleryUnit = new GroundArtilleryUnit(campaign, groundUnitInformation);
-        artilleryUnit.setMinMaxRequested(1, 3);
-        artilleryUnit.createUnitMission();
-
-        return artilleryUnit;
-    }
-
     public SpotLightGroup createSpotLightGroup() throws PWCGException 
     {
         Coalition playerCoalition = Coalition.getFriendlyCoalition(campaign.determineCountry());
@@ -62,9 +30,10 @@ public class GroundUnitFactory
 
         String nationality = country.getNationality();
         String name = nationality + " Spotlight Battery";
-
+        
+        boolean isPlayerTarget = true;
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                missionBeginUnit, country, name, TacticalTarget.TARGET_NONE, location, location);
+                campaign, missionBeginUnit, country, name, TacticalTarget.TARGET_ARTILLERY, location, location, null, isPlayerTarget);
 
         SpotLightGroup spotLightGroup = new SpotLightGroup(groundUnitInformation, 8);
         spotLightGroup.createUnitMission();

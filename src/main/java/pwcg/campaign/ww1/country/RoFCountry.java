@@ -19,7 +19,6 @@ public class RoFCountry extends CountryBase  implements ICountry, Cloneable
     public static int AUSTRIA_CODE = 502;
     public static int ITALY_CODE = 999;
 	
-	
 	public RoFCountry(Country country)
 	{
 	    this.country = country;
@@ -198,5 +197,18 @@ public class RoFCountry extends CountryBase  implements ICountry, Cloneable
         }
                 
         return getCountryCode();
+    }
+
+    @Override
+    public ICountry getOppositeSideCountry()
+    {
+        if (getSide() == Side.ALLIED)
+        {
+            return new RoFCountry(GERMANY_CODE);
+        }
+        else
+        {
+            return new RoFCountry(FRANCE_CODE);
+        }
     }
 }

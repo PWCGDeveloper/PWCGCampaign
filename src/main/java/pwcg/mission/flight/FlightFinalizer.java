@@ -94,7 +94,7 @@ public class FlightFinalizer
     {
         // Add take off notification.
         // This is needed to trigger the first WP
-        if (!flight.isAirstart())
+        if (!flight.isAirStart())
         {
             if (flight.getTakeoff() != null)
             {
@@ -118,7 +118,7 @@ public class FlightFinalizer
         }
 
         // Reset the player flight for air starts
-        if (flight.isAirstart())
+        if (flight.isAirStart())
         {
             resetPlaneInitialPositionForAirStarts();
         }
@@ -130,7 +130,7 @@ public class FlightFinalizer
     {
         // The mission begin timer triggers the formation timer.
         // For airstart, link the formation timer to the WP timer
-    	if (flight.isEscortedByPlayerFlight())
+    	if (flight.getFlightInformation().isEscortedByPlayerFlight())
         {
             // Flights escorted by the player circle until rendezvous
         }
@@ -318,12 +318,7 @@ public class FlightFinalizer
         {
             flight.getMissionBeginUnit().linkToMissionBegin(flight.getFormationTimer().getIndex());
         }
-        else if (flight.isVirtual)
-        {
-            flight.getMissionBeginUnit().linkToMissionBegin(flight.getActivationTimer().getIndex());
-            flight.getActivationTimer().setTarget(flight.getFormationTimer().getIndex());
-        }
-        else if (flight.isVirtual)
+        else if (flight.isVirtual())
         {
             flight.getMissionBeginUnit().linkToMissionBegin(flight.getActivationTimer().getIndex());
             flight.getActivationTimer().setTarget(flight.getFormationTimer().getIndex());

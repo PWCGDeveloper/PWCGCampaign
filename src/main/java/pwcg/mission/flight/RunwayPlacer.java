@@ -29,15 +29,15 @@ public class RunwayPlacer
         IRunwayPlacer runwayPlacer = null;
         if (productSpecificConfiguration.getTakeoffFormation() == TakeoffFormation.LINE_ABREAST)
         {
-            runwayPlacer = new RunwayPlacerLineAbreast(flight, flight.getDepartureAirfield(), takeoffSpacing);
+            runwayPlacer = new RunwayPlacerLineAbreast(flight, flight.getAirfield(), takeoffSpacing);
         }
         else if (productSpecificConfiguration.getTakeoffFormation() == TakeoffFormation.LINE_ASTERN)
         {
-            runwayPlacer = new RunwayPlacerLineAstern(flight, flight.getDepartureAirfield(), takeoffSpacing);
+            runwayPlacer = new RunwayPlacerLineAstern(flight, flight.getAirfield(), takeoffSpacing);
         }
         else if (productSpecificConfiguration.getTakeoffFormation() == TakeoffFormation.STAGGERED)
         {
-            runwayPlacer = new RunwayPlacerStaggered(flight, flight.getDepartureAirfield(), takeoffSpacing);
+            runwayPlacer = new RunwayPlacerStaggered(flight, flight.getAirfield(), takeoffSpacing);
         }
         
         List<Coordinate> takeOffPositions = runwayPlacer.getFlightTakeoffPositions();

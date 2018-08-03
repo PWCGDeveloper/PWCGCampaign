@@ -11,6 +11,8 @@ import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.divebomb.DiveBombingFlight;
+import pwcg.mission.flight.validate.GroundAttackFlightValidator;
+import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBoS;
 
@@ -39,6 +41,9 @@ public class PlayerFlightTypeBoSDiveBombTest
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.DIVE_BOMB);
+        
+        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
+        groundUnitValidator.validateGroundUnitsForMission(mission);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

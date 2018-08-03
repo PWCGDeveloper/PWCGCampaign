@@ -7,6 +7,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.GroundUnitCollection;
@@ -34,10 +35,10 @@ public class GroundAttackPackage extends FlightPackage
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());
 
-        GroundAttackFlight groundAttackFlight = new GroundAttackFlight ();
         Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
-		groundAttackFlight.initialize(mission, campaign, targetCoordinates, squadron, missionBeginUnit, isPlayerFlight);
 
+        FlightInformation flightInformation = createFlightInformation(targetCoordinates);
+        GroundAttackFlight groundAttackFlight = new GroundAttackFlight (flightInformation, missionBeginUnit);
 		groundAttackFlight.linkGroundUnitsToFlight(groundUnitCollection);
 		groundAttackFlight.createUnitMission();
         return groundAttackFlight;

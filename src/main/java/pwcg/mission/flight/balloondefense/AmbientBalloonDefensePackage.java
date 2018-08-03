@@ -10,6 +10,9 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PositionsManager;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.target.TacticalTarget;
+import pwcg.campaign.target.TargetDefinition;
+import pwcg.campaign.target.TargetDefinitionBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -71,7 +74,11 @@ public class AmbientBalloonDefensePackage
         MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
         missionBeginUnit.initialize(balloonPosition.copy(), 10000, enemyCoalition);
         
-        GroundUnitBalloonFactory balloonFactory = new GroundUnitBalloonFactory(campaign, balloonPosition, balloonCountry);
+        boolean isPlayerTarget = true;
+        TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, balloonCountry, TacticalTarget.TARGET_BALLOON, balloonPosition, isPlayerTarget);
+
+        GroundUnitBalloonFactory balloonFactory = new GroundUnitBalloonFactory(campaign, targetDefinition);
         BalloonDefenseGroup balloonUnit = balloonFactory.createBalloonUnit();
 
 		return balloonUnit;
