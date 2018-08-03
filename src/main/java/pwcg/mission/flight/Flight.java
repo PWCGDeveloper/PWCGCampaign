@@ -143,8 +143,8 @@ public abstract class Flight extends Unit
 
     protected void createWaypoints() throws PWCGException
     {
-        Coordinate startPosition = departureAirfield.getTakeoffLocation().getPosition().copy();
-        List<McuWaypoint> waypointList = createWaypoints(mission, startPosition);
+        Coordinate startPosition = flightInformation.getDepartureAirfield().getTakeoffLocation().getPosition().copy();
+        List<McuWaypoint> waypointList = createWaypoints(flightInformation.getMission(), startPosition);
         waypointPackage.setWaypoints(waypointList);
     }
 
@@ -373,8 +373,8 @@ public abstract class Flight extends Unit
     public void createTakeoff() throws PWCGException
     {
         takeoff = new McuTakeoff();
-        takeoff.setPosition(departureAirfield.getTakeoffLocation().getPosition().copy());
-        takeoff.setOrientation(departureAirfield.getTakeoffLocation().getOrientation().copy());
+        takeoff.setPosition(flightInformation.getDepartureAirfield().getTakeoffLocation().getPosition().copy());
+        takeoff.setOrientation(flightInformation.getDepartureAirfield().getTakeoffLocation().getOrientation().copy());
     }
 
     protected void createActivation() throws PWCGException, PWCGException 
