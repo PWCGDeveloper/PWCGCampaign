@@ -3,6 +3,7 @@ package pwcg.campaign.ww2.airfield;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.context.PWCGContextManager;
@@ -136,6 +137,25 @@ public class BoSAirfieldTest
 	{
         BoSAirfield airfield = (BoSAirfield) PWCGContextManager.getInstance().getAirfieldAllMaps(airfieldName);
 
+		PWCGContextManager.getInstance().getCurrentMap().getMapWeather().setWindDirection(180);
         assert(airfield.getChart().equals(refChart));
+	}
+
+	@Test
+	public void windTest() throws PWCGException
+	{
+		BoSAirfield airfield = (BoSAirfield) PWCGContextManager.getInstance().getAirfieldAllMaps("Rogachevko");
+
+		PWCGContextManager.getInstance().getCurrentMap().getMapWeather().setWindDirection(0);
+		assert((int) airfield.getTakeoffLocation().getOrientation().getyOri() == 225);
+
+		PWCGContextManager.getInstance().getCurrentMap().getMapWeather().setWindDirection(90);
+		assert((int) airfield.getTakeoffLocation().getOrientation().getyOri() == 278);
+
+		PWCGContextManager.getInstance().getCurrentMap().getMapWeather().setWindDirection(180);
+		assert((int) airfield.getTakeoffLocation().getOrientation().getyOri() == 45);
+
+		PWCGContextManager.getInstance().getCurrentMap().getMapWeather().setWindDirection(270);
+		assert((int) airfield.getTakeoffLocation().getOrientation().getyOri() == 98);
 	}
 }

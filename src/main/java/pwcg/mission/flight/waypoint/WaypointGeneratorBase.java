@@ -17,6 +17,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 import pwcg.core.utils.MathUtils;
@@ -168,14 +169,15 @@ public abstract class WaypointGeneratorBase
 
 	protected void createApproachWaypoint(IAirfield airfield) throws PWCGException  
 	{
+		PWCGLocation landingLocation = airfield.getLandingLocation();
         int initialWaypointDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointDistanceKey);
-	    Coordinate approachCoords = MathUtils.calcNextCoord(airfield.getPosition(), airfield.getPlaneOrientation(), initialWaypointDistance);
+	    Coordinate approachCoords = MathUtils.calcNextCoord(landingLocation.getPosition(), landingLocation.getOrientation().getyOri() - 180, initialWaypointDistance);
 		
 		int ApproachWaypointAltitude = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.ApproachWaypointAltitudeKey);
 		approachCoords.setYPos(airfield.getPosition().getYPos() + ApproachWaypointAltitude);
 
 		Orientation orient = new Orientation();
-		orient.setyOri(airfield.getOrientation().getyOri() - 180);
+		orient.setyOri(landingLocation.getOrientation().getyOri());
 
 		McuWaypoint approachWP = WaypointFactory.createLandingApproachWaypointType();
 		approachWP.setTriggerArea(McuWaypoint.LAND_AREA);

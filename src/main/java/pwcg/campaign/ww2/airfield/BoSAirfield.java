@@ -8,6 +8,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IStaticPlane;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.airfield.AirfieldObjectPlacer;
 import pwcg.campaign.group.airfield.AirfieldObjects;
@@ -151,8 +152,7 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
         return null;
     }
 
-    @Override
-    public PWCGLocation getPlanePosition() throws PWCGException
+    private PWCGLocation getRunwayStart() throws PWCGException
     {
 		Runway runway = selectRunway();
 
@@ -168,13 +168,46 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 		}
     }
         
-	// TODO: Select runway based on wind direction
-	private Runway selectRunway()
-	{
-		if (runways.size() > 0)
-			return runways.get(0);
+	@Override
+	public PWCGLocation getTakeoffLocation() throws PWCGException {
+		return getRunwayStart();
+	}
 
-		return null;
+	@Override
+	public PWCGLocation getLandingLocation() throws PWCGException {
+		return getRunwayStart();
+	}
+
+	private Runway selectRunway() throws PWCGException
+	{
+		// Note: wind direction is as specified in mission file, i.e. heading wind blows to
+		// Adjust by 180 degrees to give standard direction
+		double windDirection = MathUtils.adjustAngle(PWCGContextManager.getInstance().getCurrentMap().getMapWeather().getWindDirection(), 180);
+
+		double bestOffset = 1000.0;
+		Runway bestRunway = null;
+		boolean invertRunway = false;
+
+		for (Runway r : runways) {
+			double offset = MathUtils.calcNumberOfDegrees(windDirection, r.getHeading());
+			boolean invert = false;
+
+			if (offset > 90.0) {
+				offset = 180 - offset;
+				invert = true;
+			}
+
+			if (offset < bestOffset) {
+				bestOffset = offset;
+				bestRunway = r;
+				invertRunway = invert;
+			}
+		}
+
+		if (invertRunway)
+			return bestRunway.invert();
+		else
+			return bestRunway.copy();
 	}
 
 	private String getChartPoint(int ptype, Coordinate point)
@@ -182,7 +215,7 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 		double xpos = point.getXPos() - getPosition().getXPos();
 		double ypos = point.getZPos() - getPosition().getZPos();
 
-		double angle = Math.toRadians(-this.getPlaneOrientation());
+		double angle = Math.toRadians(-orientation.getyOri());
 
 		double rxpos = Math.cos(angle) * xpos - Math.sin(angle) * ypos;
 		double rypos = Math.cos(angle) * ypos + Math.sin(angle) * xpos;
@@ -197,7 +230,7 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 		return pos;
 	}
 
-	public String getChart()
+	public String getChart() throws PWCGException
 	{
 		Runway runway = selectRunway();
 
@@ -219,6 +252,51 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 		chart += "    }\n";
 
 		return chart;
+	}
+
+	@Override
+	public boolean isNearRunwayOrTaxiway(Coordinate pos) throws PWCGException {
+		if (runways.size() == 0)
+		{
+			double runwayOrientation = getTakeoffLocation().getOrientation().getyOri();
+			Coordinate startOfRunway = getTakeoffLocation().getPosition();
+			Coordinate endOfRunway = MathUtils.calcNextCoord(getTakeoffLocation().getPosition(), runwayOrientation, 2000.0);
+
+			return MathUtils.distFromLine(startOfRunway, endOfRunway, pos) < 120;
+		} else {
+			for (Runway r : runways)
+			{
+				Coordinate extendedRunwayStart = MathUtils.calcNextCoord(r.startPos, MathUtils.adjustAngle(r.getHeading(), 180), 300);
+				Coordinate extendedRunwayEnd = MathUtils.calcNextCoord(r.endPos, r.getHeading(), 300);
+				if (MathUtils.distFromLine(extendedRunwayStart, extendedRunwayEnd, pos) < 120)
+					return true;
+
+				Coordinate prevPoint = r.parkingLocation.getPosition();
+				for (Coordinate p : r.taxiToStart) {
+					if (MathUtils.distFromLine(prevPoint, p, pos) < 50)
+						return true;
+					prevPoint = p;
+				}
+				if (MathUtils.distFromLine(prevPoint, r.startPos, pos) < 50)
+					return true;
+
+				prevPoint = r.endPos;
+				for (Coordinate p : r.taxiFromEnd) {
+					if (MathUtils.distFromLine(prevPoint, p, pos) < 50)
+						return true;
+					prevPoint = p;
+				}
+				if (MathUtils.distFromLine(prevPoint, r.parkingLocation.getPosition(), pos) < 50)
+					return true;
+
+				double parkingOrientation = MathUtils.adjustAngle(r.parkingLocation.getOrientation().getyOri(), 90);
+				Coordinate parkingEnd = MathUtils.calcNextCoord(r.parkingLocation.getPosition(), parkingOrientation, 300);
+				if (MathUtils.distFromLine(r.parkingLocation.getPosition(), parkingEnd, pos) < 80)
+					return true;
+			}
+		}
+
+		return false;
 	}
 
 	static public class Runway
@@ -244,6 +322,27 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 				clone.taxiFromEnd.add(t.copy());
 
 			return clone;
+		}
+
+		public double getHeading() throws PWCGException
+		{
+			return MathUtils.calcAngle(startPos, endPos);
+		}
+
+		public Runway invert()
+		{
+			Runway inv = new Runway();
+
+			inv.startPos = endPos;
+			inv.endPos = startPos;
+			inv.parkingLocation = parkingLocation;
+
+			for (Coordinate t : taxiFromEnd)
+				inv.taxiToStart.add(0, t.copy());
+			for (Coordinate t : taxiToStart)
+				inv.taxiFromEnd.add(0, t.copy());
+
+			return inv;
 		}
 	}
 

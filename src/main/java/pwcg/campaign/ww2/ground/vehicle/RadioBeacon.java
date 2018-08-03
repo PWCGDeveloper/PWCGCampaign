@@ -38,7 +38,7 @@ class RadioBeacon extends Vehicle implements IVehicle
 
     public void initialize(Flight flight) throws PWCGException 
     {
-        double airfieldOrientation = flight.getAirfield().getOrientation().getyOri();
+        double airfieldOrientation = flight.getAirfield().getTakeoffLocation().getOrientation().getyOri();
 
         Coordinate RadioBeaconCoordMoveLeft = moveWindSockDownAndLeftOfRunway(flight, airfieldOrientation);
 
@@ -57,7 +57,7 @@ class RadioBeacon extends Vehicle implements IVehicle
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
         ConfigManager configManager = campaign.getCampaignConfigManager();
         int RadioBeaconDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
-        Coordinate RadioBeaconCoordMoveLeft = MathUtils.calcNextCoord(flight.getAirfield().getPosition().copy(), angleRadioBeaconLeft, RadioBeaconDistance);
+        Coordinate RadioBeaconCoordMoveLeft = MathUtils.calcNextCoord(flight.getAirfield().getTakeoffLocation().getPosition().copy(), angleRadioBeaconLeft, RadioBeaconDistance);
 		return RadioBeaconCoordMoveLeft;
 	}
 	

@@ -40,9 +40,9 @@ public class FerryWaypoints extends WaypointGeneratorBase
 
     protected void createStartWaypoint() throws PWCGException  
     {
-        double airfieldOrientation = fromAirfield.getOrientation().getyOri();
+        double takeoffOrientation = fromAirfield.getTakeoffLocation().getOrientation().getyOri();
         int InitialWaypointDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointDistanceKey);
-        startCoords = MathUtils.calcNextCoord(fromAirfield.getPosition().copy(), airfieldOrientation, InitialWaypointDistance);
+        startCoords = MathUtils.calcNextCoord(fromAirfield.getTakeoffLocation().getPosition().copy(), takeoffOrientation, InitialWaypointDistance);
         int InitialWaypointAltitude = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointAltitudeKey);
         startCoords.setYPos(InitialWaypointAltitude);
 

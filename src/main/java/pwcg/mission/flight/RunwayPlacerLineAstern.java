@@ -26,8 +26,8 @@ public class RunwayPlacerLineAstern implements IRunwayPlacer
     {
         List<Coordinate> takeOffPositions = new ArrayList<>();
                 
-        Coordinate fieldPlanePosition = airfield.getPlanePosition().getPosition().copy();
-        double fieldPlaneOrientation = airfield.getPlaneOrientation();
+        Coordinate fieldPlanePosition = airfield.getTakeoffLocation().getPosition().copy();
+        double fieldPlaneOrientation = airfield.getTakeoffLocation().getOrientation().getyOri();
         for (int i = 0; i < flight.getPlanes().size(); ++i)
         {
             Coordinate takeoffCoordsForPlane = MathUtils.calcNextCoord(fieldPlanePosition, fieldPlaneOrientation, (takeoffSpacing * i));

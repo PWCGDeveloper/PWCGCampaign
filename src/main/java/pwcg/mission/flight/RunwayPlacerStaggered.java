@@ -57,17 +57,17 @@ public class RunwayPlacerStaggered implements IRunwayPlacer
     
     private Coordinate calculateInitialPlacement() throws PWCGException
     {
-        double takeoffAngle = airfield.getPlaneOrientation();
+        double takeoffAngle = airfield.getTakeoffLocation().getOrientation().getyOri();
         double initialPlacementAngleAngle = MathUtils.adjustAngle(takeoffAngle, 270);
 
-        Coordinate fieldPlanePosition = airfield.getPlanePosition().getPosition().copy();
+        Coordinate fieldPlanePosition = airfield.getTakeoffLocation().getPosition().copy();
         Coordinate initialCoord = MathUtils.calcNextCoord(fieldPlanePosition, initialPlacementAngleAngle, (25.0));
         return initialCoord;
     }
     
     private Coordinate calculateNextRight(Coordinate lastPosition, int takeoffSpacing) throws PWCGException
     {
-        double takeoffAngle = airfield.getPlaneOrientation();
+        double takeoffAngle = airfield.getTakeoffLocation().getOrientation().getyOri();
         double nextlacementAngleAngle = MathUtils.adjustAngle(takeoffAngle, 45);
 
         Coordinate nextTakeoffCoord = MathUtils.calcNextCoord(lastPosition, nextlacementAngleAngle, (takeoffSpacing));
@@ -76,7 +76,7 @@ public class RunwayPlacerStaggered implements IRunwayPlacer
     
     private Coordinate calculateNextLeft(Coordinate lastPosition, int takeoffSpacing) throws PWCGException
     {
-        double takeoffAngle = airfield.getPlaneOrientation();
+        double takeoffAngle = airfield.getTakeoffLocation().getOrientation().getyOri();
         double nextlacementAngleAngle = MathUtils.adjustAngle(takeoffAngle, 315);
 
         Coordinate nextTakeoffCoord = MathUtils.calcNextCoord(lastPosition, nextlacementAngleAngle, (takeoffSpacing));

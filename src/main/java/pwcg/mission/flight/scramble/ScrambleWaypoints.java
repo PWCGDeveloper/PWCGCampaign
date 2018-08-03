@@ -44,9 +44,9 @@ public class ScrambleWaypoints
 	
 	protected void createStartWaypoint() throws PWCGException  
 	{
-		double airfieldOrientation = flight.getAirfield().getOrientation().getyOri();
+		double takeoffOrientation = flight.getAirfield().getTakeoffLocation().getOrientation().getyOri();
 		int InitialWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointDistanceKey);
-		startCoords = MathUtils.calcNextCoord(flight.getAirfield().getPosition().copy(), airfieldOrientation, InitialWaypointDistance);
+		startCoords = MathUtils.calcNextCoord(flight.getAirfield().getTakeoffLocation().getPosition().copy(), takeoffOrientation, InitialWaypointDistance);
 
 		int InitialWaypointAltitude = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointAltitudeKey);
 		startCoords.setYPos(InitialWaypointAltitude);

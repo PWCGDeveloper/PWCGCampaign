@@ -7,6 +7,7 @@ import java.util.List;
 import pwcg.campaign.api.IAirfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
 
 public class RunwayPlacerLineAbreast implements IRunwayPlacer
@@ -27,8 +28,9 @@ public class RunwayPlacerLineAbreast implements IRunwayPlacer
     {
         List<Coordinate> takeOffPositions = new ArrayList<>();
          
-        Coordinate fieldPlanePosition = airfield.getPlanePosition().getPosition().copy();
-        double lineAbreastAngle = calculateLineAbreastAngle();
+        PWCGLocation takeoffLocation = airfield.getTakeoffLocation();
+        Coordinate fieldPlanePosition = takeoffLocation.getPosition().copy();
+        double lineAbreastAngle = calculateLineAbreastAngle(takeoffLocation);
         for (int i = 0; i < flight.getPlanes().size(); ++i)
         {
             Coordinate takeoffCoordsForPlane = MathUtils.calcNextCoord(fieldPlanePosition, lineAbreastAngle, (takeoffSpacing * i));
@@ -40,9 +42,9 @@ public class RunwayPlacerLineAbreast implements IRunwayPlacer
         return takeOffPositions;
     }
     
-    private double calculateLineAbreastAngle()
+    private double calculateLineAbreastAngle(PWCGLocation loc)
     {
-        double takeoffAngle = airfield.getPlaneOrientation();
+        double takeoffAngle = loc.getOrientation().getyOri();
         double lineAbreastAngle = MathUtils.adjustAngle(takeoffAngle, 90);
         return lineAbreastAngle;
     }

@@ -35,11 +35,29 @@ public interface IAirfield extends IFixedPosition
 
     public String getScript();
     
-    public double getPlaneOrientation();
-    
+    /**
+     * Gets the location of the airfield as a whole, used for map coordinates,
+     * distance checking etc. Does not relate to takeoff/landing locations.
+     */
     public Coordinate getPosition();
 
-    public PWCGLocation getPlanePosition() throws PWCGException;
+    /**
+     * Gets the position and direction for the start of the takeoff run from
+     * this airfield.
+     * @return Takeoff position and orientation
+     * @throws PWCGException
+     */
+    public PWCGLocation getTakeoffLocation() throws PWCGException;
+
+    /**
+     * Gets the position and direction for the touchdown point when landing at
+     * this airfield.
+     * @return Landing position and orientation
+     * @throws PWCGException
+     */
+    public PWCGLocation getLandingLocation() throws PWCGException;
     
+    public boolean isNearRunwayOrTaxiway(Coordinate pos) throws PWCGException;
+
     public Date getStartDate();
 }

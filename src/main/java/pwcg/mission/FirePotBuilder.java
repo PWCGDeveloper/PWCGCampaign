@@ -3,6 +3,7 @@ package pwcg.mission;
 import pwcg.campaign.api.IAirfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.mcu.effect.FirePotSeries;
 
@@ -12,8 +13,9 @@ public class FirePotBuilder
     {
         FirePotSeries firePotSeries = new FirePotSeries();
 
-        double airfieldOrientation = airfield.getPlaneOrientation();
-        Coordinate planePosition = airfield.getPlanePosition().getPosition().copy();
+        PWCGLocation takeoffLocation = airfield.getTakeoffLocation();
+        double airfieldOrientation = takeoffLocation.getOrientation().getyOri();
+        Coordinate planePosition = takeoffLocation.getPosition().copy();
 
         Double angleOffsetFirePots = MathUtils.adjustAngle(airfieldOrientation, -90);
         Coordinate positionLeftOfPlane = MathUtils.calcNextCoord(planePosition, angleOffsetFirePots, 30.0);

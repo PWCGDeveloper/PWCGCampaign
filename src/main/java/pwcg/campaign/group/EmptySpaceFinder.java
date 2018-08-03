@@ -87,17 +87,8 @@ public class EmptySpaceFinder
     {
         for (IAirfield airfield : airfieldsInArea)
         {
-            double runwayOrientation = airfield.getPlanePosition().getOrientation().getyOri();
-            Coordinate startOfRunway = airfield.getPlanePosition().getPosition().copy();
-            Coordinate endOfRunway = MathUtils.calcNextCoord(airfield.getPlanePosition().getPosition(), runwayOrientation, 2000.0);
-            
-            CoordinateBox runwayCoordinateBox = CoordinateBox.coordinateBoxFromTwoCoordinates(startOfRunway, endOfRunway);
-            runwayCoordinateBox.expandBox(200);
-            
-            if (runwayCoordinateBox.isInBox(coordinateExaminedNow))
-            {
+            if (airfield.isNearRunwayOrTaxiway(coordinateExaminedNow))
                 return true;
-            }
         }
 
         return false;
