@@ -1407,4 +1407,9 @@ public abstract class Flight extends Unit
     {
         return flightInformation.isAirStart();
     } 
+
+    public boolean isParkedStart() throws PWCGException
+    {
+        return flightInformation.isParkedStart();
+    }
 }

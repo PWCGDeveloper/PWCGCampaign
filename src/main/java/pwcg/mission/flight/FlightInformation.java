@@ -130,6 +130,20 @@ public class FlightInformation
         return airstart;
     }
 
+    public boolean isParkedStart() throws PWCGException
+    {
+        boolean parkedStart = false;
+        if (isPlayerFlight)
+        {
+            ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+            if (configManager.getIntConfigParam(ConfigItemKeys.AllowAirStartsKey) == 2)
+            {
+                parkedStart = true;
+            }
+        }
+        return parkedStart;
+    }
+
     
     public IAirfield getDepartureAirfield() throws PWCGException
     {

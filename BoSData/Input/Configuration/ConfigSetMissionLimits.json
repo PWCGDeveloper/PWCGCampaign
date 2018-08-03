@@ -3,8 +3,8 @@
   "configMap": {
     "AllowAirStarts": {
       "value": "0",
-      "label": "Always Air Start",
-      "help": "Always air start - set to 1 for shorter missions"
+      "label": "Start type",
+      "help": "0 \u003d Start on runway, 1 \u003d Start in air (gives shorter missions), 2 \u003d Start parked (gives longer missions)"
     },
     "DistanceFromPlayerFieldZone": {
       "value": "20000",
