@@ -7,6 +7,8 @@ import java.util.List;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.mcu.McuIcon;
+import pwcg.mission.mcu.McuLanding;
+import pwcg.mission.mcu.McuTakeoff;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionWaypointIconBuilder
@@ -20,6 +22,14 @@ public class MissionWaypointIconBuilder
         List<McuWaypoint> waypoints = myFlight.getAllWaypoints();
 
         McuIcon prevIcon = null;
+
+        McuTakeoff takeoff = myFlight.getTakeoff();
+        if (takeoff != null) {
+            McuIcon icon = new McuIcon(takeoff);
+            prevIcon = icon;
+            waypointIcons.add(icon);
+        }
+
         for (int i = 0; i < waypoints.size(); ++i)
         {
             McuWaypoint waypoint = waypoints.get(i);
@@ -29,6 +39,14 @@ public class MissionWaypointIconBuilder
                 prevIcon.setTarget(icon.getIndex());
             }
             prevIcon = icon;
+            waypointIcons.add(icon);
+        }
+
+        McuLanding landing = myFlight.getLanding();
+        if (landing != null) {
+            McuIcon icon = new McuIcon(landing);
+            if (prevIcon != null)
+                prevIcon.setTarget(icon.getIndex());
             waypointIcons.add(icon);
         }
     }

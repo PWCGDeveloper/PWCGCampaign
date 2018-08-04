@@ -51,6 +51,12 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     }
 
     @Override
+    public boolean usePosition1()
+    {
+        return true;
+    }
+
+    @Override
     public TakeoffFormation getTakeoffFormation()
     {
         return TakeoffFormation.STAGGERED;

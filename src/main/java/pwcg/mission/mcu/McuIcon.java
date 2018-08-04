@@ -9,9 +9,11 @@ import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.CountryDesignator;
 import pwcg.campaign.context.FrontLinePoint;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.Balloon;
 import pwcg.campaign.utils.LCIndexGenerator;
 import pwcg.campaign.ww1.plane.RoFPlaneAttributeMapping;
@@ -51,23 +53,71 @@ public class McuIcon extends BaseFlightMcu
 		super();
 		position = waypoint.getPosition().copy();
 
-		if (waypoint.getDesc().contains("Starting"))
-		{
-			iconId = McuIconIdType.ICON_ID_TAKEOFF;
-			name = "Take Off";
-			desc = "Take Off";
+		iconId = McuIconIdType.ICON_ID_WAYPOINT;
+
+		name = waypoint.getName();
+
+		IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+		if (productSpecificConfiguration.usePosition1()) {
+			rColor = 0;
+			gColor = 0;
+			bColor = 0;
+
+			lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
+
+			desc = waypoint.getName() + "<br>Speed to waypoint: <kmh-mph-v>" + waypoint.getSpeed() + "</kmh-mph-v> <kmh-mph-u/>";
+		} else {
+			desc = waypoint.getName() + "<br>Speed to waypoint: " + waypoint.getSpeed() + " km/h<br>Altitude at waypoint: " + ((int) waypoint.getPosition().getYPos()) + " m";
 		}
-		else if (waypoint.getDesc().contains("Landing"))
-		{
-			iconId = McuIconIdType.ICON_ID_LAND;
-			name = "Land";
-			desc = "Land";
+
+		lCName = LCIndexGenerator.getInstance().getNextIndex();
+		lCDesc = LCIndexGenerator.getInstance().getNextIndex();
+		MissionStringHandler.getInstance().registerMissionText(lCName, name);
+		MissionStringHandler.getInstance().registerMissionText(lCDesc, desc);
+
+		coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
+		coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));
+	}
+
+    public McuIcon(McuTakeoff takeoff) {
+		super();
+		position = takeoff.getPosition().copy();
+		iconId = McuIconIdType.ICON_ID_TAKEOFF;
+		name = "Take Off";
+		desc = "Take Off";
+
+		IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+		if (productSpecificConfiguration.usePosition1()) {
+			rColor = 0;
+			gColor = 0;
+			bColor = 0;
+
+			lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
 		}
-		else
-		{
-			iconId = McuIconIdType.ICON_ID_WAYPOINT;
-			name = "Way Point";
-			desc = "Way Point";
+
+		lCName = LCIndexGenerator.getInstance().getNextIndex();
+		lCDesc = lCName;
+
+		MissionStringHandler.getInstance().registerMissionText(lCName, name);
+
+		coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
+		coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));
+	}
+
+    public McuIcon(McuLanding landing) {
+		super();
+		position = landing.getPosition().copy();
+		iconId = McuIconIdType.ICON_ID_LAND;
+		name = "Land";
+		desc = "Land";
+
+		IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+		if (productSpecificConfiguration.usePosition1()) {
+			rColor = 0;
+			gColor = 0;
+			bColor = 0;
+
+			lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
 		}
 		
 		lCName = LCIndexGenerator.getInstance().getNextIndex();
@@ -126,7 +176,7 @@ public class McuIcon extends BaseFlightMcu
         MissionStringHandler.getInstance().registerMissionText(lCName, name);
 
         position = frontLinePoint.getPosition().copy();
-        this.lineType = McuIconLineType.ICON_LINE_TYPE_POSITION;
+        this.lineType = McuIconLineType.ICON_LINE_TYPE_POSITION0;
         
         coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
         coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));

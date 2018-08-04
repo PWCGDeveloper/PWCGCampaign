@@ -10,6 +10,7 @@ public interface IProductSpecificConfiguration
     boolean usePlaneDir();
     boolean useFlagDir();
     boolean useCallSign();
+    boolean usePosition1();
     TakeoffFormation getTakeoffFormation();
     int startInAir();
     int startOnRunway();

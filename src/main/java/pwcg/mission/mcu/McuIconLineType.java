@@ -4,7 +4,8 @@ public enum McuIconLineType
 {
     ICON_LINE_TYPE_NONE(0),
     ICON_LINE_TYPE_BORDER(2),
-    ICON_LINE_TYPE_POSITION(13),
+    ICON_LINE_TYPE_POSITION0(13),
+    ICON_LINE_TYPE_POSITION1(14),
     ICON_LINE_TYPE_THIN(22);
 	
 	int iconLineTypeValue;
