@@ -213,7 +213,7 @@ public class SquadronMemberInitialVictoryBuilder
             Date victoryDate = generateVictoryDate(i);
             
             EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-            Squadron victimSquadron = enemySquadronFinder.getRandomEnemySquadron(victorSquadron, victoryDate);
+            Squadron victimSquadron = enemySquadronFinder.getRandomEnemyViableSquadron(victorSquadron, victoryDate);
             
             if (victimSquadron != null)
             {

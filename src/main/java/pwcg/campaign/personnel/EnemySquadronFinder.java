@@ -23,30 +23,6 @@ public class EnemySquadronFinder
         this.campaign = campaign;
     }
 
-    public Squadron getRandomEnemySquadron(Squadron squadron, Date date) throws PWCGException
-    {
-        List<Squadron> nearbyActiveEnemySquadrons = getNearbyEnemySquadronsForVictory(date, squadron);
-        List<Squadron> nearbyViableEnemySquadrons = getViableSquadrons(nearbyActiveEnemySquadrons);
-        List<Squadron> allEnemySquadrons = getAllActiveEnemySquadrons(squadron, date);
-        List<Squadron> allViableEnemySquadrons = getViableSquadrons(allEnemySquadrons);
-
-        Squadron enemySquadron = null;
-        if (nearbyViableEnemySquadrons.size() > 0)
-        {
-            enemySquadron = getEnemySquadron(nearbyViableEnemySquadrons);
-        }
-        else if (allViableEnemySquadrons.size() > 0)
-        {
-            enemySquadron = getEnemySquadron(allViableEnemySquadrons);
-        }
-        else if (allEnemySquadrons.size() > 0)
-        {
-            enemySquadron = getEnemySquadron(allEnemySquadrons);
-        }
- 
-        return enemySquadron;
-    }
-
     public Squadron getRandomEnemyViableSquadron(Squadron squadron, Date date) throws PWCGException
     {
         List<Squadron> nearbyActiveEnemySquadrons = getNearbyEnemySquadronsForVictory(date, squadron);

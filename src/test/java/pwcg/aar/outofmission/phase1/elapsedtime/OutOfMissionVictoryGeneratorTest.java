@@ -40,7 +40,7 @@ public class OutOfMissionVictoryGeneratorTest
         DuringCampaignVictimGenerator duringCampaignVictimGenerator = new DuringCampaignVictimGenerator(campaign, squadronMemberSquadron);
 
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-        Squadron victimSquadron = enemySquadronFinder.getRandomEnemySquadron(squadronMemberSquadron, campaign.getDate());
+        Squadron victimSquadron = enemySquadronFinder.getRandomEnemyViableSquadron(squadronMemberSquadron, campaign.getDate());
         
         OutOfMissionVictoryGenerator victoryGenerator = new OutOfMissionVictoryGenerator(victimSquadron, duringCampaignVictimGenerator, aiSquadMember);
         Victory victory = victoryGenerator.generateOutOfMissionVictory(campaign.getDate());

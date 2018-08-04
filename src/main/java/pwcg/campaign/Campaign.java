@@ -29,8 +29,6 @@ import pwcg.mission.Mission;
 public class Campaign
 {
     private CampaignData campaignData = new CampaignData();
-    
-
     private ConfigManagerCampaign campaignConfigManager = null;
     private CampaignLogs campaignLogs = null;
 

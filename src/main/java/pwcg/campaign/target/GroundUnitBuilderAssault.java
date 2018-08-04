@@ -31,24 +31,12 @@ public class GroundUnitBuilderAssault
             }
             else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
             {
-                int roll = RandomNumberGenerator.getRandom(100);
-                if (roll < 50)
-                {
-                    battleSize = BattleSize.BATTLE_SIZE_SKIRMISH;      
-                }
-                else
-                {
-                    battleSize = BattleSize.BATTLE_SIZE_ASSAULT;
-                }
+                battleSize = BattleSize.BATTLE_SIZE_ASSAULT;
             }
             else
             {
                 int roll = RandomNumberGenerator.getRandom(100);
-                if (roll < 30)
-                {
-                    battleSize = BattleSize.BATTLE_SIZE_SKIRMISH;      
-                }
-                else if (roll < 80)
+                if (roll < 80)
                 {
                     battleSize = BattleSize.BATTLE_SIZE_ASSAULT;
                 }

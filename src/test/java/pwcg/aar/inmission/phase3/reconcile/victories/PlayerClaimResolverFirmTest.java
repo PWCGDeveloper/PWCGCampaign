@@ -24,7 +24,7 @@ public class PlayerClaimResolverFirmTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
-        Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_SERIAL_NUMBER);
+        Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class PlayerClaimResolverFirmTest
 
         LogPlane victor = new LogPlane();
         victor.setVehicleType("albatrosd3");
-        victor.setPilotSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
+        victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
         LogVictory resultVictory = new LogVictory();
         resultVictory.setVictim(victim);
@@ -58,7 +58,7 @@ public class PlayerClaimResolverFirmTest
 
         LogPlane victor = new LogPlane();
         victor.setVehicleType("albatrosd3");
-        victor.setPilotSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
+        victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
         LogVictory resultVictory = new LogVictory();
         resultVictory.setVictim(victim);
@@ -81,7 +81,7 @@ public class PlayerClaimResolverFirmTest
 
         LogPlane victor = new LogPlane();
         victor.setVehicleType("albatrosd3");
-        victor.setPilotSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
+        victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
         LogVictory resultVictory = new LogVictory();
         resultVictory.setVictim(victim);
@@ -104,7 +104,7 @@ public class PlayerClaimResolverFirmTest
 
         LogPlane victor = new LogPlane();
         victor.setVehicleType("albatrosd3");
-        victor.setPilotSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
+        victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
         LogVictory resultVictory = new LogVictory();
         resultVictory.setVictim(victim);
@@ -127,7 +127,7 @@ public class PlayerClaimResolverFirmTest
 
         LogPlane victor = new LogPlane();
         victor.setVehicleType("albatrosd3");
-        victor.setPilotSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
+        victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
         LogVictory resultVictory = new LogVictory();
         resultVictory.setVictim(victim);

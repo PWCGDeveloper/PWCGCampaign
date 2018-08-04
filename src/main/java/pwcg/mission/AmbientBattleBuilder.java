@@ -57,8 +57,8 @@ public class AmbientBattleBuilder
                 if (targetDefinition != null)
                 {
                     IAssaultGenerator assaultGenerator = AssaultGeneratorFactory.createAssaultGenerator(campaign, mission, campaign.getDate());
-                    AssaultInformation missionBattle = assaultGenerator.generateAssault(targetDefinition, BattleSize.BATTLE_SIZE_SKIRMISH);
-                    
+                    BattleSize battleSize = getBattleSize();
+                    AssaultInformation missionBattle = assaultGenerator.generateAssault(targetDefinition, battleSize);
                     battles.add(missionBattle);
                 }
             }
@@ -90,7 +90,6 @@ public class AmbientBattleBuilder
         }
     }
 
-
     private int getMaxAmbientBattles() throws PWCGException
     {
         int maxBattles = 1;
@@ -111,7 +110,43 @@ public class AmbientBattleBuilder
         return maxBattles;
     }
 
-    
+
+    private BattleSize getBattleSize() throws PWCGException
+    {
+        BattleSize battleSize = BattleSize.BATTLE_SIZE_SKIRMISH;
+        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
+        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        {
+            battleSize = BattleSize.BATTLE_SIZE_SKIRMISH;
+        }
+        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        {
+            int roll = RandomNumberGenerator.getRandom(100);
+            if (roll < 70)
+            {
+                battleSize = BattleSize.BATTLE_SIZE_SKIRMISH;
+            }
+            else
+            {
+                battleSize = BattleSize.BATTLE_SIZE_ASSAULT;
+            }
+        }
+        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        {
+            int roll = RandomNumberGenerator.getRandom(100);
+            if (roll < 40)
+            {
+                battleSize = BattleSize.BATTLE_SIZE_SKIRMISH;
+            }
+            else
+            {
+                battleSize = BattleSize.BATTLE_SIZE_ASSAULT;
+            }
+        }
+        return battleSize;
+    }
+
     private Coordinate getBattleLocation() throws PWCGException
     {
         CoordinateBox missionBorders = mission.getMissionFlightBuilder().getMissionBorders(3000);

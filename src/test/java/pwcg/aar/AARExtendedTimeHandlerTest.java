@@ -79,7 +79,7 @@ public class AARExtendedTimeHandlerTest
     @Test
     public void testTimePassedForWounds () throws PWCGException
     {
-        Mockito.when(playerLogPilot.getSerialNumber()).thenReturn(SerialNumber.PLAYER_SERIAL_NUMBER);
+        Mockito.when(playerLogPilot.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         Mockito.when(playerLogPilot.getStatus()).thenReturn(SquadronMemberStatus.STATUS_WOUNDED);
             
         Date startCampaignDate = campaign.getDate();
@@ -97,7 +97,7 @@ public class AARExtendedTimeHandlerTest
     @Test
     public void testTimePassedForSeriousWounds () throws PWCGException
     {
-        Mockito.when(playerLogPilot.getSerialNumber()).thenReturn(SerialNumber.PLAYER_SERIAL_NUMBER);
+        Mockito.when(playerLogPilot.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         Mockito.when(playerLogPilot.getStatus()).thenReturn(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
             
         Date startCampaignDate = campaign.getDate();
@@ -115,7 +115,7 @@ public class AARExtendedTimeHandlerTest
     @Test
     public void testTimePassedForLeave () throws PWCGException
     {
-        Mockito.when(playerLogPilot.getSerialNumber()).thenReturn(SerialNumber.PLAYER_SERIAL_NUMBER);
+        Mockito.when(playerLogPilot.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         Mockito.when(playerLogPilot.getStatus()).thenReturn(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
             
         Date startCampaignDate = campaign.getDate();
@@ -133,7 +133,7 @@ public class AARExtendedTimeHandlerTest
     @Test
     public void testTimePassedForTransfer () throws PWCGException
     {
-        Mockito.when(playerLogPilot.getSerialNumber()).thenReturn(SerialNumber.PLAYER_SERIAL_NUMBER);
+        Mockito.when(playerLogPilot.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         Mockito.when(playerLogPilot.getStatus()).thenReturn(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
             
         Date startCampaignDate = campaign.getDate();

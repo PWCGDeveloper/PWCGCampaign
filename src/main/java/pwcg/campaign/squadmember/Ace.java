@@ -35,7 +35,6 @@ public class Ace extends SquadronMember
         target.aggressiveness = this.aggressiveness;
         target.aiSkillLevel = this.aiSkillLevel;
         target.commonSense = this.commonSense;
-        target.isPlayer = this.isPlayer;
         target.serialNumber = this.serialNumber;
 
         target.skins.addAll(this.skins);

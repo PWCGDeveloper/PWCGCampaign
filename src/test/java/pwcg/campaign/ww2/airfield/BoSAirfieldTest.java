@@ -3,7 +3,6 @@ package pwcg.campaign.ww2.airfield;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.context.PWCGContextManager;

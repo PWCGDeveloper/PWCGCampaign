@@ -78,7 +78,7 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setZPos(100.0);
         
         Mockito.when(destroyedEventForPlane.getVictor()).thenReturn("Joe Blow");
-        Mockito.when(resultCrewmember.getSerialNumber()).thenReturn(SerialNumber.PLAYER_SERIAL_NUMBER);
+        Mockito.when(resultCrewmember.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         deadCrewMembers.add(resultCrewmember);
 
         Coordinate fieldAt = new Coordinate();
@@ -108,7 +108,7 @@ public class AARPilotStatusDeadEvaluatorTest
         downAt.setZPos(100.0);
         
         Mockito.when(destroyedEventForPlane.getVictor()).thenReturn(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
-        Mockito.when(resultCrewmember.getSerialNumber()).thenReturn(SerialNumber.PLAYER_SERIAL_NUMBER);
+        Mockito.when(resultCrewmember.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         deadCrewMembers.add(resultCrewmember);
 
         Coordinate fieldAt = new Coordinate();

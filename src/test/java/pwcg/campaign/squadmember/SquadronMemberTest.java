@@ -25,8 +25,7 @@ import pwcg.testutils.CampaignCacheRoF;
 @RunWith(MockitoJUnitRunner.class)
 public class SquadronMemberTest
 {
-    @Mock 
-    private Campaign campaign;
+    @Mock private Campaign campaign;
     private Date campaignDate;
     private SquadronPersonnel squadronPersonnel;
     private Squadron squadron;

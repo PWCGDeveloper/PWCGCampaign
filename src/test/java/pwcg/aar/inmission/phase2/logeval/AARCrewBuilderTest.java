@@ -55,7 +55,7 @@ public class AARCrewBuilderTest
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(campaign.getSquadronId()).thenReturn(501011);
         
-        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_SERIAL_NUMBER)).thenReturn(player);
+        Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.ACE_STARTING_SERIAL_NUMBER+1)).thenReturn(aceInMission1);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.ACE_STARTING_SERIAL_NUMBER+2)).thenReturn(aceInMission2);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1)).thenReturn(aiInSquadron);
@@ -68,7 +68,7 @@ public class AARCrewBuilderTest
         Mockito.when(aiNotInSquadron.getSquadronId()).thenReturn(501012);
 
         planeAiEntities = new HashMap <>();
-        addPlane(SerialNumber.PLAYER_SERIAL_NUMBER);
+        addPlane(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         addPlane(SerialNumber.ACE_STARTING_SERIAL_NUMBER+1);
         addPlane(SerialNumber.ACE_STARTING_SERIAL_NUMBER+2);
         addPlane(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
@@ -93,7 +93,7 @@ public class AARCrewBuilderTest
     {        
         AARCrewBuilder crewBuilder = new AARCrewBuilder(campaign, planeAiEntities);
         List<LogPilot> inSquad = crewBuilder.buildSquadronMembersFromLogPlanes();
-        assert(pilotIsInList(SerialNumber.PLAYER_SERIAL_NUMBER, inSquad) == true);
+        assert(pilotIsInList(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, inSquad) == true);
         assert(pilotIsInList(SerialNumber.ACE_STARTING_SERIAL_NUMBER+1, inSquad) == true);
         assert(pilotIsInList(SerialNumber.ACE_STARTING_SERIAL_NUMBER+2, inSquad) == false);
         assert(pilotIsInList(SerialNumber.AI_STARTING_SERIAL_NUMBER+1, inSquad) == true);
@@ -105,7 +105,7 @@ public class AARCrewBuilderTest
     {        
         AARCrewBuilder crewBuilder = new AARCrewBuilder(campaign, planeAiEntities);
         List<LogPilot> aces = crewBuilder.buildAcesFromLogPlanes();
-        assert(pilotIsInList(SerialNumber.PLAYER_SERIAL_NUMBER, aces) == false);
+        assert(pilotIsInList(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, aces) == false);
         assert(pilotIsInList(SerialNumber.ACE_STARTING_SERIAL_NUMBER+1, aces) == true);
         assert(pilotIsInList(SerialNumber.ACE_STARTING_SERIAL_NUMBER+2, aces) == true);
         assert(pilotIsInList(SerialNumber.AI_STARTING_SERIAL_NUMBER+1, aces) == false);

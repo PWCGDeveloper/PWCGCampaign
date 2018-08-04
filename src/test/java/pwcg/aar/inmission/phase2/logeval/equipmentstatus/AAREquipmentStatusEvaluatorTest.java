@@ -93,7 +93,7 @@ public class AAREquipmentStatusEvaluatorTest
         LogPlane resultPlane = new LogPlane();
         resultPlane.setLandAt(new Coordinate());
         resultPlane.setCountry(country);
-        resultPlane.intializePilot(SerialNumber.PLAYER_SERIAL_NUMBER);
+        resultPlane.intializePilot(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         resultPlane.setSquadronId(10131132);
         resultPlane.setPlaneStatus(PlaneStatus.STATUS_DEPLOYED);
 

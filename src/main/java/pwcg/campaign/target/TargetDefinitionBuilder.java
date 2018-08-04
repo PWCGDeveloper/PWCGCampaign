@@ -9,6 +9,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 
 public class TargetDefinitionBuilder
@@ -34,6 +35,10 @@ public class TargetDefinitionBuilder
             targetDefinition.setAttackingCountry(squadron.determineEnemyCountry(campaign.getDate()));
             targetDefinition.setTargetCountry(squadron.determineSquadronCountry(campaign.getDate()));
         }
+        else if (targetType == TacticalTarget.TARGET_ASSAULT)
+        {
+            chooseSides(campaign, squadron);
+        }
         else
         {
             targetDefinition.setAttackingCountry(squadron.determineSquadronCountry(campaign.getDate()));
@@ -54,6 +59,21 @@ public class TargetDefinitionBuilder
         targetDefinition.setTargetOrientation(targetLocator.getTargetOrientation());
 
         return targetDefinition;
+    }
+    
+    private void chooseSides(Campaign campaign,Squadron squadron) throws PWCGException
+    {
+        int roll = RandomNumberGenerator.getRandom(100);
+        if (roll < 60)
+        {
+            targetDefinition.setAttackingCountry(squadron.determineEnemyCountry(campaign.getDate()));
+            targetDefinition.setTargetCountry(squadron.determineSquadronCountry(campaign.getDate()));
+        }
+        else
+        {
+            targetDefinition.setTargetCountry(squadron.determineEnemyCountry(campaign.getDate()));
+            targetDefinition.setAttackingCountry(squadron.determineSquadronCountry(campaign.getDate()));
+        }
     }
 
     public TargetDefinition buildTargetDefinitionForStrategicFlight (

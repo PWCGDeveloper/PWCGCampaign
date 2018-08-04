@@ -130,6 +130,7 @@ public class FlightInformation
         return airstart;
     }
 
+    
     public IAirfield getDepartureAirfield() throws PWCGException
     {
         String airfieldName = squadron.determineCurrentAirfieldName(campaign.getDate());

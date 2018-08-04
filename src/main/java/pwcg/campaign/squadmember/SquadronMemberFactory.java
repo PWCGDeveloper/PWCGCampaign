@@ -37,7 +37,6 @@ public class SquadronMemberFactory
     {
         SquadronMember player = new SquadronMember();
 
-        player.setPlayer(true);
         player.setName(generatorModel.getPlayerName());
         player.setRank(generatorModel.getPlayerRank());
         ICountry country = CountryFactory.makeCountryByService(generatorModel.getService());
@@ -46,7 +45,7 @@ public class SquadronMemberFactory
         player.setPlayerRegion(generatorModel.getPlayerRegion());
         player.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null);
         player.setSquadronId(squadron.getSquadronId());
-        player.setSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
+        player.setSerialNumber(campaign.getSerialNumber().getLastPlayerSerialNumber());
         player.setInactiveDate(DateUtils.getEndOfWar());
         
         makePilotPicture(player);

@@ -70,7 +70,7 @@ public class SquadronMemberFactoryTest
         SquadronMember player = squadronMemberFactory.createPlayer(generatorModel);
         
         assert(player.isPlayer() == true);
-        assert(player.getSerialNumber() == SerialNumber.PLAYER_SERIAL_NUMBER);
+        assert(player.getSerialNumber() >= SerialNumber.PLAYER_STARTING_SERIAL_NUMBER && player.getSerialNumber() < SerialNumber.AI_STARTING_SERIAL_NUMBER);
         assert(player.getName().equals(generatorModel.getPlayerName()));
         assert(player.getPicName() != null && !player.getPicName().isEmpty());
         assert(player.getPlayerRegion().equals(generatorModel.getPlayerRegion()));

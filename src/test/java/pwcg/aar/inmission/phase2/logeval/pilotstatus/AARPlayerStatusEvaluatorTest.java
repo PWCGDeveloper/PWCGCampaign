@@ -160,7 +160,7 @@ public class AARPlayerStatusEvaluatorTest
         ICountry country = CountryFactory.makeCountryByCountry(Country.BRITAIN);
         resultPlane.setCountry(country);
         planeAiEntities.put("11111", resultPlane);
-        resultPlane.intializePilot(SerialNumber.PLAYER_SERIAL_NUMBER);
+        resultPlane.intializePilot(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         
         return planeAiEntities;
     }

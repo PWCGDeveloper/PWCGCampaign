@@ -141,7 +141,7 @@ public abstract class AARTestSetup
 
     private void mockPersonnel() throws PWCGException
     {
-        Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_SERIAL_NUMBER);
+        Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         Mockito.when(player.getSquadronId()).thenReturn(101103);
         Mockito.when(player.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(player.determineSquadron()).thenReturn(squadronEsc103);

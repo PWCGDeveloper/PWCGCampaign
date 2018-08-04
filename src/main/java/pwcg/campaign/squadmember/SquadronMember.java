@@ -20,6 +20,7 @@ import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.skin.Skin;
+import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
@@ -54,7 +55,6 @@ public class SquadronMember implements Cloneable
     protected List<Victory> groundVictories = new ArrayList<Victory>();
     protected List<Medal> medals = new ArrayList<Medal>();
     protected String playerRegion = "";
-    protected boolean isPlayer = false;
     protected int squadronId = 0;
     protected Date inactiveDate;
 
@@ -75,8 +75,8 @@ public class SquadronMember implements Cloneable
         clone.aiSkillLevel = this.aiSkillLevel;
         clone.commonSense = this.commonSense;
         clone.playerRegion = this.playerRegion;
-        clone.isPlayer = this.isPlayer;
         clone.squadronId = this.squadronId;
+        clone.serialNumber = this.serialNumber;
 
         clone.country = this.country;
 
@@ -342,7 +342,7 @@ public class SquadronMember implements Cloneable
         {
             inactiveDate = new Date(statusDate.getTime());
         }
-        else if (pilotActiveStatus == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED && !(isPlayer))
+        else if (pilotActiveStatus == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED && !(isPlayer()))
         {
             inactiveDate = new Date(statusDate.getTime());            
         }
@@ -489,13 +489,17 @@ public class SquadronMember implements Cloneable
         this.country = country;
     }
 
-    public void setPlayer(boolean player)
-    {
-        isPlayer = player;
-    }
-
     public boolean isPlayer()
     {
+        boolean isPlayer = false;
+        if (serialNumber != SerialNumber.NO_SERIAL_NUMBER)
+        {
+            if (SerialNumber.getSerialNumberClassification(serialNumber) == SerialNumberClassification.PLAYER)
+            {
+                isPlayer = true;
+            }
+        }
+        
         return isPlayer;
     }
 

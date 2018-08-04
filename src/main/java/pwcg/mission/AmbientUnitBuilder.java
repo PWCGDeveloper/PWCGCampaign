@@ -11,9 +11,6 @@ import pwcg.core.utils.MathUtils;
 
 public abstract class AmbientUnitBuilder
 {
-    protected ICountry attackingCountry = null;
-    protected ICountry targetCountry = null;
-    
     protected Mission mission = null;
     protected Campaign campaign = null;
     protected ICountry country = null;

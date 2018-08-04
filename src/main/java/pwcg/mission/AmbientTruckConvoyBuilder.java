@@ -57,7 +57,7 @@ public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
             {
                 boolean isPlayerTarget = true;
                 TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
-                TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, attackingCountry, TacticalTarget.TARGET_TRANSPORT, bridge.getPosition(), isPlayerTarget);
+                TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, country, TacticalTarget.TARGET_TRANSPORT, bridge.getPosition(), isPlayerTarget);
 
                 TruckUnitFactory groundUnitFactory =  new TruckUnitFactory(campaign, targetDefinition);
                 GroundTruckConvoyUnit truckUnit = groundUnitFactory.createTruckConvoy();

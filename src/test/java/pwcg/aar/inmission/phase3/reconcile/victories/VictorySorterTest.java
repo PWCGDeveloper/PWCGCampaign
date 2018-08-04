@@ -40,7 +40,7 @@ public class VictorySorterTest
     {
         Mockito.when(campaign.determineCountry()).thenReturn(new RoFCountry(Country.FRANCE));
         Mockito.when(campaign.getPlayer()).thenReturn(player);
-        Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_SERIAL_NUMBER);
+        Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
         createPlaneVictory();
         createPlaneVictory();
@@ -144,11 +144,11 @@ public class VictorySorterTest
     private LogPlane makeVictor()
     {
         LogPlane victor = new LogPlane();
-        victor.setPilotSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER);
+        victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         victor.setVehicleType("spad7");
         victor.setCountry(new RoFCountry(Country.FRANCE));
         victor.setSquadronId(101103);
-        victor.intializePilot(SerialNumber.PLAYER_SERIAL_NUMBER);
+        victor.intializePilot(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         return victor;
     }
 

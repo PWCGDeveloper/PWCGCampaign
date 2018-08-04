@@ -4,10 +4,11 @@ public class SerialNumber
 {
     public static final int NO_SERIAL_NUMBER = 0;
     public static final int ACE_STARTING_SERIAL_NUMBER = 100000;
-    public static final int PLAYER_SERIAL_NUMBER = 1000000;
+    public static final int PLAYER_STARTING_SERIAL_NUMBER = 1000000;
     public static final int AI_STARTING_SERIAL_NUMBER = 3000000;
     public static final int PLANE_STARTING_SERIAL_NUMBER = 5000000;
     
+    private int nextPlayerSerialNumber = SerialNumber.PLAYER_STARTING_SERIAL_NUMBER;
     private int nextPilotSerialNumber = SerialNumber.AI_STARTING_SERIAL_NUMBER;
     private int nextPlaneSerialNumber = SerialNumber.PLANE_STARTING_SERIAL_NUMBER;
 
@@ -22,19 +23,19 @@ public class SerialNumber
 
     public static SerialNumberClassification getSerialNumberClassification (int serialNumber)
     {
-        if (serialNumber  == NO_SERIAL_NUMBER)
+        if (serialNumber == NO_SERIAL_NUMBER)
         {
             return SerialNumberClassification.NONE;
         }
-        else if (serialNumber < PLAYER_SERIAL_NUMBER)
+        else if (serialNumber < PLAYER_STARTING_SERIAL_NUMBER)
         {
             return SerialNumberClassification.ACE;
         }
-        else if (serialNumber < AI_STARTING_SERIAL_NUMBER)
+        else if ((serialNumber >= PLAYER_STARTING_SERIAL_NUMBER) && (serialNumber < AI_STARTING_SERIAL_NUMBER))
         {
             return SerialNumberClassification.PLAYER;
         }
-        else if (serialNumber < PLANE_STARTING_SERIAL_NUMBER)
+        else if ((serialNumber >= AI_STARTING_SERIAL_NUMBER) && (serialNumber < PLANE_STARTING_SERIAL_NUMBER))
         {
             return SerialNumberClassification.AI;
         }
@@ -50,25 +51,15 @@ public class SerialNumber
         return nextPilotSerialNumber;
     }
 
-    public void setLastPilotSerialNumber(int possibleNextSerialNumber)
+    public int getLastPlayerSerialNumber()
     {
-        if (possibleNextSerialNumber >= nextPilotSerialNumber)
-        {
-            this.nextPilotSerialNumber = possibleNextSerialNumber + 1;
-        }
+        ++nextPlayerSerialNumber;
+        return nextPlayerSerialNumber;
     }
 
     public int getNextPlaneSerialNumber()
     {
         ++nextPlaneSerialNumber;
         return nextPlaneSerialNumber;
-    }
-
-    public void setLastPlaneSerialNumber(int possibleNextSerialNumber)
-    {
-        if (possibleNextSerialNumber >= nextPlaneSerialNumber)
-        {
-            this.nextPlaneSerialNumber = possibleNextSerialNumber + 1;
-        }
     }
 }

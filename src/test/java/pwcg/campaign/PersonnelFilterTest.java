@@ -106,7 +106,7 @@ public class PersonnelFilterTest
         for (int i = 3; i < 7; ++i)
         {
             SquadronMember squadronMember = testSquadronMembers.get(SerialNumber.AI_STARTING_SERIAL_NUMBER + i);
-            squadronMember.setSerialNumber(SerialNumber.PLAYER_SERIAL_NUMBER + i);
+            squadronMember.setSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER + i);
         }
 
         Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<Integer, SquadronMember>();

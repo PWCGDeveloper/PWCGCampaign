@@ -61,7 +61,7 @@ public class CampaignIOJsonTest
 
     private void validateCoreCampaign(Campaign campaign) throws PWCGException
     {
-        assert (campaign.getPlayer().getSerialNumber() == SerialNumber.PLAYER_SERIAL_NUMBER);
+        assert (campaign.getPlayer().getSerialNumber() >= SerialNumber.PLAYER_STARTING_SERIAL_NUMBER && campaign.getPlayer().getSerialNumber() < SerialNumber.AI_STARTING_SERIAL_NUMBER);
         assert (campaign.getDate().equals(DateUtils.getDateYYYYMMDD("19170501")));
         assert (campaign.getSquadronId() == 501011);
         assert (campaign.getName().equals(CampaignCacheBase.TEST_CAMPAIGN_NAME));
@@ -102,7 +102,7 @@ public class CampaignIOJsonTest
         {
             if (squadronMember.isPlayer())
             {
-                assert (squadronMember.getSerialNumber() >= SerialNumber.PLAYER_SERIAL_NUMBER);
+                assert (squadronMember.getSerialNumber() >= SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
                 assert (squadronMember.getMissionFlown() == 0);
             }
             else if (squadronMember instanceof Ace)

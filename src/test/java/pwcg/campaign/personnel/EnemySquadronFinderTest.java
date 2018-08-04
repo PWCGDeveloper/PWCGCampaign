@@ -65,7 +65,7 @@ public class EnemySquadronFinderTest
         Mockito.when(squadronAirfield.getPosition()).thenReturn(squadronAirfieldPosition);
 
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-        Squadron enemySquadron = enemySquadronFinder.getRandomEnemySquadron(squadron, DateUtils.getDateYYYYMMDD("19421001"));
+        Squadron enemySquadron = enemySquadronFinder.getRandomEnemyViableSquadron(squadron, DateUtils.getDateYYYYMMDD("19421001"));
         assert(enemySquadron != null);
     }
 
@@ -73,7 +73,7 @@ public class EnemySquadronFinderTest
     public void findEnemySquadronNearby () throws PWCGException
     {     
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-        Squadron enemySquadron = enemySquadronFinder.getRandomEnemySquadron(squadron, DateUtils.getDateYYYYMMDD("19421001"));
+        Squadron enemySquadron = enemySquadronFinder.getRandomEnemyViableSquadron(squadron, DateUtils.getDateYYYYMMDD("19421001"));
         assert(enemySquadron != null);
     }
 
@@ -81,7 +81,7 @@ public class EnemySquadronFinderTest
     public void findEnemySquadronAny () throws PWCGException
     {     
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
-        Squadron enemySquadron = enemySquadronFinder.getRandomEnemySquadron(squadron, DateUtils.getDateYYYYMMDD("19421001"));
+        Squadron enemySquadron = enemySquadronFinder.getRandomEnemyViableSquadron(squadron, DateUtils.getDateYYYYMMDD("19421001"));
         assert(enemySquadron != null);
     }
 }
