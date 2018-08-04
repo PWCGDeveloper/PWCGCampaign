@@ -71,7 +71,7 @@ public class MissionDescription
         setAirfield(myFlight.getAirfield().getName());
         setObjective(myFlight.getMissionObjective());
         setSquadron(myFlight.getSquadron().determineDisplayName(campaign.getDate()));
-        setTitle(campaign.getName(), myFlight.getFlightType().toString());
+        setTitle(campaign.getCampaignData().getName(), myFlight.getFlightType().toString());
 
         HashMap<String, Flight> squadronMap = new HashMap<String, Flight>();
         for (Flight flight : mission.getMissionFlightBuilder().getMissionFlights())

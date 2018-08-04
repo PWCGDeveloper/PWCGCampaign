@@ -14,6 +14,7 @@ import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
@@ -27,29 +28,15 @@ import pwcg.core.utils.DateUtils;
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerDeclarationResolutionFirmVictoryTest
 {
-    @Mock 
-    private Campaign campaign;
-    
-    @Mock
-    private CampaignPersonnelManager personnelManager;
-
-    @Mock
-    private PlayerVictoryDeclaration mockPlayerDeclaration;
-
-    @Mock
-    private AARMissionEvaluationData evaluationData;
-
-    @Mock
-    private VictorySorter victorySorter;
-    
-    @Mock
-    private SquadronMember player;
-    
-    @Mock
-    private SquadronMember ai;
-
-    @Mock
-    private PlaneTypeFactory planeFactory;
+    @Mock private Campaign campaign;
+    @Mock private CampaignData campaignData;
+    @Mock private CampaignPersonnelManager personnelManager;
+    @Mock private PlayerVictoryDeclaration mockPlayerDeclaration;
+    @Mock private AARMissionEvaluationData evaluationData;
+    @Mock private VictorySorter victorySorter;
+    @Mock private SquadronMember player;
+    @Mock private SquadronMember ai;
+    @Mock private PlaneTypeFactory planeFactory;
     
     private PlayerDeclarations playerDeclarations;
 
@@ -86,10 +73,11 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         Mockito.when(victorySorter.getFuzzyAirVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getAllUnconfirmed()).thenReturn(emptyList);
         Mockito.when(campaign.getPlayer()).thenReturn(player);
-        Mockito.when(campaign.getName()).thenReturn(PLAYER_NAME);
+        Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getBeginningOfWar());
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        
+        Mockito.when(campaignData.getName()).thenReturn(PLAYER_NAME);
+
         Mockito.when(personnelManager.getActiveCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
         Mockito.when(personnelManager.getActiveCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(ai);
 

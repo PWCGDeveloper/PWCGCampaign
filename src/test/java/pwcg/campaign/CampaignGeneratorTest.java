@@ -41,7 +41,7 @@ public class CampaignGeneratorTest
     	Campaign campaign = generateCampaign(101003, DateUtils.getDateYYYYMMDD("19161001"));
         assert (campaign.getCampaignData().getSquadId() == 101003);
         assert (campaign.determineCountry().getCountry() == Country.FRANCE);
-        assert (campaign.getName().equals(CampaignCacheRoF.TEST_CAMPAIGN_NAME));
+        assert (campaign.getCampaignData().getName().equals(CampaignCacheRoF.TEST_CAMPAIGN_NAME));
         assert(campaign.getPersonnelManager().getAllSquadronPersonnel().size() > 100);
         
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
@@ -85,7 +85,8 @@ public class CampaignGeneratorTest
 
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setCampaignDate(campaignDate);
-        generatorModel.setPlayerName(CampaignCacheRoF.TEST_CAMPAIGN_NAME);
+        generatorModel.setCampaignName(CampaignCacheRoF.TEST_CAMPAIGN_NAME);
+        generatorModel.setPlayerName(CampaignCacheRoF.TEST_PLAYER_NAME);
         generatorModel.setPlayerRank(rankName);
         generatorModel.setPlayerRegion("");
         generatorModel.setService(service);

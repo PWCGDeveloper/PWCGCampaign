@@ -8,12 +8,13 @@ import pwcg.gui.utils.StringValidity;
 
 public class CampaignGeneratorState
 {
-    private CampaignGeneratorWorkflow currentStep = CampaignGeneratorWorkflow.CHOOSE_NAME;
+    private CampaignGeneratorWorkflow currentStep = CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME;
     private CampaignGeneratorDO campaignGeneratorDO = new CampaignGeneratorDO();
 
     public enum CampaignGeneratorWorkflow
     {
-        CHOOSE_NAME,
+        CHOOSE_CAMPAIGN_NAME,
+        CHOOSE_PLAYER_NAME,
         CHOOSE_REGION,
         CHOOSE_MAP,
         CHOOSE_DATE,
@@ -34,9 +35,21 @@ public class CampaignGeneratorState
      */
     public void goToNextStep() throws PWCGException
     {
-        if (currentStep == CampaignGeneratorWorkflow.CHOOSE_NAME)
+        if (currentStep == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME)
         {
             if (StringValidity.isAlpha(campaignGeneratorDO.getCampaignName()))
+            {
+                currentStep = CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME;
+            }
+            else
+            {
+                throw new PWCGException ("Name must be English characters");
+            }
+        }
+        
+        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME)
+        {
+            if (StringValidity.isAlpha(campaignGeneratorDO.getPlayerName()))
             {
                 currentStep = CampaignGeneratorWorkflow.CHOOSE_MAP;
                 if (PWCGContextManager.isRoF())
@@ -118,7 +131,7 @@ public class CampaignGeneratorState
         
         else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_MAP)
         {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_NAME;
+            currentStep = CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME;
             if (PWCGContextManager.isRoF())
             {
                 ICountry country = campaignGeneratorDO.getService().getCountry();
@@ -129,9 +142,14 @@ public class CampaignGeneratorState
             }
         }
         
+        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME)
+        {
+            currentStep = CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME;
+        }
+        
         else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_REGION)
         {
-            currentStep = CampaignGeneratorWorkflow.CHOOSE_NAME;
+            currentStep = CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME;
         }        
     }
 

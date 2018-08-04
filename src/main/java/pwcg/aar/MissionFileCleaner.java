@@ -52,8 +52,8 @@ public class MissionFileCleaner
         {
             try
             {
-                Logger.log(LogLevel.DEBUG, "Campaign = " + campaign.getName() + "    " + filename);
-                if (filename.contains(campaign.getName()))
+                Logger.log(LogLevel.DEBUG, "Campaign = " + campaign.getCampaignData().getName() + "    " + filename);
+                if (filename.contains(campaign.getCampaignData().getName()))
                 {
                     if (filename.contains(".mission"))
                     {

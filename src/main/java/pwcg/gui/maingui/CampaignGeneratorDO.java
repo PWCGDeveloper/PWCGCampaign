@@ -14,6 +14,7 @@ public class CampaignGeneratorDO
     private ArmedService service = null;
     private FrontMapIdentifier frontMap = null;
     private String campaignName = "";
+    private String playerName = "";
     private String region = "";
     private String rankName = null;
     private String squadName = "";
@@ -23,6 +24,11 @@ public class CampaignGeneratorDO
     public boolean isDataSetValid()
     {
         if (campaignName.isEmpty())
+        {
+            return false;
+        }
+        
+        if (playerName.isEmpty())
         {
             return false;
         }
@@ -97,8 +103,18 @@ public class CampaignGeneratorDO
     {
         this.campaignName = campaignName;
     }
+    
+   public String getPlayerName()
+    {
+        return playerName;
+    }
 
-   public String getRegion()
+    public void setPlayerName(String playerName)
+    {
+        this.playerName = playerName;
+    }
+
+public String getRegion()
     {
         return region;
     }

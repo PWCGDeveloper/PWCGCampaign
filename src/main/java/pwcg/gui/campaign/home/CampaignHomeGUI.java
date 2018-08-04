@@ -479,7 +479,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         }
         catch (PWCGException e)
         {
-            new  HelpDialog("PWCG was unable to find a log set for your last mission " + campaign.getName());
+            new  HelpDialog("PWCG was unable to find a log set for your last mission " + campaign.getCampaignData().getName());
         }
     }
 

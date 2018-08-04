@@ -165,16 +165,6 @@ public class Campaign
         return squadron;
     }
 
-    public String getName()
-    {
-        return campaignData.getName();
-    }
-
-    public void setName(String name)
-    {
-    	campaignData.setName(name);
-    }
-
     public FrontMapIdentifier getMapForCampaign() throws PWCGException
     {
         List<FrontMapIdentifier> mapsForAirfield = AirfieldManager.getMapIdForAirfield(getAirfieldName());
@@ -284,7 +274,7 @@ public class Campaign
 	public String getCampaignPath()
 	{
 		String dir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir();
-		String campaignPath = dir + getName() + "\\"; 
+		String campaignPath = dir + campaignData.getName() + "\\"; 
 		
 		File campaignDir = new File(campaignPath); 
 		if (!campaignDir.exists())

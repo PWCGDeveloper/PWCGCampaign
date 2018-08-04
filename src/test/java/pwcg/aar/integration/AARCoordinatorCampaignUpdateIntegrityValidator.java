@@ -53,13 +53,13 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
                 validateEquipmentLossesInMemory();
                 
                 campaign.write();
-                campaign.open(campaign.getName());
+                campaign.open(campaign.getCampaignData().getName());
                 
                 validatePersonnelLossesInMemory();
                 validateEquipmentLossesInMemory();
                 
                 CampaignRemover campaignRemover = new CampaignRemover();
-                campaignRemover.deleteCampaign(campaign.getName());
+                campaignRemover.deleteCampaign(campaign.getCampaignData().getName());
                 
                 break;
             }

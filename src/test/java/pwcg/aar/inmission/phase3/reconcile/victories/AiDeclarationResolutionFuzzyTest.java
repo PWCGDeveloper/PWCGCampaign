@@ -17,6 +17,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SerialNumber;
@@ -28,45 +29,23 @@ import pwcg.core.exception.PWCGException;
 @RunWith(MockitoJUnitRunner.class)
 public class AiDeclarationResolutionFuzzyTest
 {
-    @Mock
-    private AARMissionEvaluationData evaluationData;
+    private static String PLAYER_NAME = "Player Name";
 
-    @Mock
-    private Campaign campaign;
-
-    @Mock
-    private Squadron squadron;
-
-    @Mock
-    private CampaignPersonnelManager personnelManager;
-    
-    @Mock
-    private AARContext aarContext;
-
-    @Mock 
-    private AARPreliminaryData preliminaryData;
+    @Mock private AARMissionEvaluationData evaluationData;
+    @Mock private Campaign campaign;
+    @Mock private CampaignData campaignData;
+    @Mock private Squadron squadron;
+    @Mock private CampaignPersonnelManager personnelManager;
+    @Mock private AARContext aarContext;
+    @Mock private AARPreliminaryData preliminaryData;
+    @Mock private PwcgMissionDataEvaluator pwcgMissionDataEvaluator;
+    @Mock private VictorySorter victorySorter;
+    @Mock private SquadronMember player;
+    @Mock private SquadronMember aiSquadMember1;
+    @Mock private SquadronMember aiSquadMember2;
+    @Mock private SquadronMember aiNotSquadMember;
     
     private SquadronMembers campaignMembersInmission = new SquadronMembers();
-
-    @Mock
-    private PwcgMissionDataEvaluator pwcgMissionDataEvaluator;
-    
-    @Mock
-    private VictorySorter victorySorter;
-    
-    @Mock
-    private SquadronMember player;
-    
-    @Mock
-    private SquadronMember aiSquadMember1;
-    
-    @Mock
-    private SquadronMember aiSquadMember2;
-    
-    @Mock
-    private SquadronMember aiNotSquadMember;
-    
-    private static String PLAYER_NAME = "Player Name";
 
     private List<LogVictory> fuzzyVictories = new ArrayList<>();        
     private List<LogVictory> emptyList = new ArrayList<>();        
@@ -101,11 +80,12 @@ public class AiDeclarationResolutionFuzzyTest
         Mockito.when(victorySorter.getAllUnconfirmed()).thenReturn(emptyList);
         
         Mockito.when(campaign.getPlayer()).thenReturn(player);
-        Mockito.when(campaign.getName()).thenReturn(PLAYER_NAME);
+        Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(campaign.determineSquadron()).thenReturn(squadron);
         Mockito.when(campaign.getSquadronId()).thenReturn(501011);
-                
+        Mockito.when(campaignData.getName()).thenReturn(PLAYER_NAME);
+
         Mockito.when(squadron.getSquadronId()).thenReturn(501011);
 
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);

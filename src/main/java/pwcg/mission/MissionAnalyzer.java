@@ -35,7 +35,7 @@ public class MissionAnalyzer
 		        reportDir.mkdirs();
 		    }
             Campaign campaign = mission.getCampaign();
-            String filename = PWCGContextManager.getInstance().getDirectoryManager().getPwcgReportDir() + campaign.getName() + " MissionAnalysis.txt";
+            String filename = PWCGContextManager.getInstance().getDirectoryManager().getPwcgReportDir() + campaign.getCampaignData().getName() + " MissionAnalysis.txt";
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
 
             writer.write("Player flight");

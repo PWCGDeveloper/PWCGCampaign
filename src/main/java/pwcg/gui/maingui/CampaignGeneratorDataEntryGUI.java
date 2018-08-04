@@ -59,6 +59,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 
 	
     private JTextField campaignNameTextBox;
+    private JTextField playerNameTextBox;
     private JTextArea squadronTextBox;
 	private JComboBox<String> cbRegion;
 	private JComboBox<String> cbMap;
@@ -70,7 +71,8 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
     private JLabel lSquad;
     private JLabel lRank;
     private JLabel lRole;
-    private JLabel lName;
+    private JLabel lCampaignName;
+    private JLabel lPlayerName;
     private JLabel lRegion;
     private JLabel lDate;
     private JLabel lMap;
@@ -115,12 +117,16 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 			campaignGeneratePanel.setOpaque(false);
 
 			int rowCount = 0;
-			for (int i = 0; i < 10; ++i)
+			for (int i = 0; i < 4; ++i)
 			{
 			    rowCount = spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, i);
 			}
 
-			rowCount = createNameWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
+            rowCount = createCampaignNameWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
+            rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
+
+            rowCount = createPlayerNameWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
+            rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount = createRegionWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
@@ -140,7 +146,6 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 			rowCount = createSquadronWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 
-            rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
@@ -334,13 +339,13 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         return roles;
     }
 
-    private int createNameWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
+    private int createCampaignNameWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
                     JPanel campaignGeneratePanel, int rowCount) throws PWCGException
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
 
-        lName = createCampaignGenMenuLabel("Name:", labelConstraints, campaignGeneratePanel, rowCount);
-        campaignGeneratePanel.add(lName, labelConstraints);
+        lCampaignName = createCampaignGenMenuLabel("Campaign Name:", labelConstraints, campaignGeneratePanel, rowCount);
+        campaignGeneratePanel.add(lCampaignName, labelConstraints);
 
         campaignNameTextBox = new JTextField(50);
         campaignNameTextBox.setFont(font);
@@ -349,6 +354,28 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         dataConstraints.gridx = 2;
         dataConstraints.gridy = rowCount;
         campaignGeneratePanel.add(campaignNameTextBox, dataConstraints);
+
+        spacerColumn (campaignGeneratePanel, 3, rowCount + 0);
+
+        ++rowCount;
+        return rowCount;
+    }
+
+    private int createPlayerNameWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
+                    JPanel campaignGeneratePanel, int rowCount) throws PWCGException
+    {
+        spacerColumn (campaignGeneratePanel, 0, rowCount);
+
+        lPlayerName = createCampaignGenMenuLabel("Player Name:", labelConstraints, campaignGeneratePanel, rowCount);
+        campaignGeneratePanel.add(lPlayerName, labelConstraints);
+
+        playerNameTextBox = new JTextField(50);
+        playerNameTextBox.setFont(font);
+        playerNameTextBox.setBackground(textBoxBackgroundColor);
+        
+        dataConstraints.gridx = 2;
+        dataConstraints.gridy = rowCount;
+        campaignGeneratePanel.add(playerNameTextBox, dataConstraints);
 
         spacerColumn (campaignGeneratePanel, 3, rowCount + 0);
 
@@ -534,15 +561,17 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 
 	public void evaluateUI() throws PWCGException 
 	{
-	    // Initialize the widgets to an inactive state
 	    initializeWidgets();
 
+        if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME)
+        {
+            lCampaignName.setForeground(labelColorSelected);
+        }
 
-        // Evaluate and activate the appropriate widgets
-	    if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_NAME)
-	    {
-	        lName.setForeground(labelColorSelected);
-	    }
+        if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME)
+        {
+            lPlayerName.setForeground(labelColorSelected);
+        }
 
 	    if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_REGION)
 	    {
@@ -620,7 +649,8 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         cbRank.setEnabled(false);
         cbSquadron.setEnabled(false);
         
-        lName.setForeground(labelColorNotSelected);
+        lCampaignName.setForeground(labelColorNotSelected);
+        lPlayerName.setForeground(labelColorNotSelected);
         if (lRegion != null)
         {
             lRegion.setForeground(labelColorNotSelected);
@@ -737,6 +767,9 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 		{
             String campaignName = (String)campaignNameTextBox.getText();
             campaignGeneratorDO.setCampaignName(campaignName);
+            
+            String playerName = (String)playerNameTextBox.getText();
+            campaignGeneratorDO.setPlayerName(playerName);
             
             if (ae.getActionCommand().equalsIgnoreCase("RegionChanged"))
             {

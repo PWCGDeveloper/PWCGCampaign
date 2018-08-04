@@ -5,6 +5,7 @@ import java.util.Date;
 public class CampaignGeneratorModel
 {
     private ArmedService service;
+    private String campaignName;
     private String playerName;
     private String playerRank;
     private String squadronName;
@@ -19,6 +20,16 @@ public class CampaignGeneratorModel
     public void setService(ArmedService service)
     {
         this.service = service;
+    }
+
+    public String getCampaignName()
+    {
+        return campaignName;
+    }
+
+    public void setCampaignName(String campaignName)
+    {
+        this.campaignName = campaignName;
     }
 
     public String getPlayerName()

@@ -16,6 +16,7 @@ import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
@@ -34,6 +35,7 @@ import pwcg.mission.data.MissionHeader;
 public abstract class AARTestSetup
 {
     @Mock protected Campaign campaign;
+    @Mock protected CampaignData campaignData;
     @Mock protected CampaignPersonnelManager personnelManager;
     @Mock protected Squadron squadronEsc103;
     @Mock protected AARContext aarContext;
@@ -86,9 +88,10 @@ public abstract class AARTestSetup
         Mockito.when(campaign.determineSquadron()).thenReturn(squadronEsc103);
         Mockito.when(campaign.getSquadronId()).thenReturn(101103);
         Mockito.when(campaign.getPlayer()).thenReturn(player);
-        Mockito.when(campaign.getName()).thenReturn("Player Name");
+        Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
         Mockito.when(squadronEsc103.determineDisplayName(Mockito.any())).thenReturn("Esc 103");
         Mockito.when(squadronEsc103.getSquadronId()).thenReturn(101103);
+        Mockito.when(campaignData.getName()).thenReturn("Player Name");
 
         ICountry country = CountryFactory.makeCountryByCountry(Country.FRANCE);
         Mockito.when(campaign.determineCountry()).thenReturn(country);

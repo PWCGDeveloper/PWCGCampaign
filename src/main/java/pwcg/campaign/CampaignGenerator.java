@@ -64,7 +64,7 @@ public class CampaignGenerator
 		campaign = new Campaign();
         campaign.initializeCampaignConfigs();
         campaign.setDate(generatorModel.getCampaignDate());
-        campaign.setName(generatorModel.getPlayerName());
+        campaign.getCampaignData().setName(generatorModel.getCampaignName());
         campaign.setSquadId(playerSquadron.getSquadronId());
 	}
 
@@ -120,6 +120,11 @@ public class CampaignGenerator
         if (generatorModel.getCampaignDate().before(earliest) || generatorModel.getCampaignDate().after(latest))
         {
             throw new PWCGUserException ("Invalid date - must be between start and end of war");
+        }
+
+        if (generatorModel.getCampaignName() == null || generatorModel.getCampaignName().length() == 0)
+        {
+            throw new PWCGUserException ("Invalid name - no campaign name provided");
         }
 
         if (generatorModel.getPlayerName() == null || generatorModel.getPlayerName().length() == 0)

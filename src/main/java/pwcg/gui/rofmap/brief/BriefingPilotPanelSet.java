@@ -632,7 +632,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     private void makeDataFileForMission() throws PWCGException
     {
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        String campaignName = campaign.getName();
+        String campaignName = campaign.getCampaignData().getName();
 
         String missionFileName = MissionFileWriter.getMissionFileName(campaign) + ".mission";
 

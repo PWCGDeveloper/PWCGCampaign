@@ -14,7 +14,7 @@ public class CampaignIOJson
 
     public static  void writeJson(Campaign campaign) throws PWCGException
     {
-        String campaignDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getName() + "\\";
+        String campaignDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\";
         File campaignDirFile = new File(campaignDir);
         if (!campaignDirFile.exists())
         {
@@ -36,7 +36,7 @@ public class CampaignIOJson
 
     public static void readJson(Campaign campaign) throws PWCGException
     {
-        String campaignDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getName() + "\\";
+        String campaignDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\";
 
         JsonObjectReader<CampaignData> jsoReader1 = new JsonObjectReader<>(CampaignData.class);
         CampaignData campaignData = jsoReader1.readJsonFile(campaignDir, "Campaign.json"); 

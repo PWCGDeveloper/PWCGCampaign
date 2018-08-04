@@ -60,7 +60,8 @@ public class SquadronMemberFactoryTest
 
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setCampaignDate(campaignDate);
-        generatorModel.setPlayerName(CampaignCacheRoF.TEST_CAMPAIGN_NAME);
+        generatorModel.setCampaignName(CampaignCacheRoF.TEST_CAMPAIGN_NAME);
+        generatorModel.setPlayerName(CampaignCacheRoF.TEST_PLAYER_NAME);
         generatorModel.setPlayerRank(rankName);
         generatorModel.setPlayerRegion("");
         generatorModel.setService(service);

@@ -18,6 +18,7 @@ import pwcg.core.utils.DateUtils;
 public abstract class CampaignCacheBase implements ICampaignCache
 {
     public static final String TEST_CAMPAIGN_NAME = "Test Campaign";
+    public static final String TEST_PLAYER_NAME = "Test Player";
 
     protected Map<String, Campaign> campaignCache = new HashMap<>();
     protected Map<String, CampaignGeneratorModel> campaignProfiles = new HashMap<>();
@@ -74,7 +75,8 @@ public abstract class CampaignCacheBase implements ICampaignCache
     
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setCampaignDate(campaignDate);
-        generatorModel.setPlayerName(CampaignCacheRoF.TEST_CAMPAIGN_NAME);
+        generatorModel.setCampaignName(CampaignCacheRoF.TEST_CAMPAIGN_NAME);
+        generatorModel.setPlayerName(CampaignCacheRoF.TEST_PLAYER_NAME);
         generatorModel.setPlayerRank(rankName);
         generatorModel.setPlayerRegion("");
         generatorModel.setService(service);

@@ -186,7 +186,7 @@ public abstract class MissionFileWriter implements IMissionFile
 	public static String getMissionFileName(Campaign campaign) 
 	{
 		String dateStr = DateUtils.getDateStringDashDelimitedYYYYMMDD(campaign.getDate());
-		String filename = campaign.getName() + " " + dateStr;
+		String filename = campaign.getCampaignData().getName() + " " + dateStr;
 		
 		return filename;
 	}
