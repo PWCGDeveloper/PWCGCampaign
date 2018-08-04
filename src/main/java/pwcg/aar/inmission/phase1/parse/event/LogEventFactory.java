@@ -88,4 +88,16 @@ public class LogEventFactory
             return new pwcg.aar.inmission.phase1.parse.event.bos.AType6(line);
         }
     }
+
+    public static IAType18 createAType18(String line) throws PWCGException
+    {
+        if (PWCGContextManager.isRoF())
+        {
+            throw new PWCGException("Bailout events should not be generated in RoF");
+        }
+        else
+        {
+            return new pwcg.aar.inmission.phase1.parse.event.bos.AType18(line);
+        }
+    }
 }

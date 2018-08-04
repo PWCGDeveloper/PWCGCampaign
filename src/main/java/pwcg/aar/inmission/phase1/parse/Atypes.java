@@ -22,6 +22,7 @@ public class Atypes
                 "AType:15 ",    // "Unknown", 
                 "AType:16 ",    // "Unknown", 
                 "AType:17 ",    // "Waypoint", 
+                "AType:18 ",    // "Bail out",
                 "AType:99 "     // "Message"
         };
 

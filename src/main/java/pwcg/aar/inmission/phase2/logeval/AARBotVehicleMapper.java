@@ -30,7 +30,9 @@ public class AARBotVehicleMapper
     {
         for (IAType12 atype12Bot : botList)
         {
-            LogPlane planeResult = getMissionResultPlaneById(atype12Bot.getPid());
+            String planeId = logEventData.getPlaneIdByBot(atype12Bot);
+
+            LogPlane planeResult = getMissionResultPlaneById(planeId);
             if (planeResult != null)
             {
                 if (atype12Bot.getType().contains("BotPilot") || atype12Bot.getType().contains("Common Bot"))
@@ -40,7 +42,7 @@ public class AARBotVehicleMapper
             }
             else
             {
-                Logger.log(LogLevel.ERROR, "While adding bot = No plane found for bot: " + atype12Bot.getId() + " for plane id: " + atype12Bot.getPid());
+                Logger.log(LogLevel.ERROR, "While adding bot = No plane found for bot: " + atype12Bot.getId() + " for plane id: " + planeId);
             }
         }
     }

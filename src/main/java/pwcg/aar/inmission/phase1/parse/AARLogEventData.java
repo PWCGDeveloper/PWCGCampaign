@@ -8,6 +8,7 @@ import java.util.TreeMap;
 
 import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.aar.inmission.phase1.parse.event.IAType17;
+import pwcg.aar.inmission.phase1.parse.event.IAType18;
 import pwcg.aar.inmission.phase1.parse.event.IAType2;
 import pwcg.aar.inmission.phase1.parse.event.IAType3;
 import pwcg.aar.inmission.phase1.parse.event.IAType6;
@@ -20,6 +21,7 @@ public class AARLogEventData
     private List<IAType3> destroyedEvents = new ArrayList<>();
     private List<IAType6> landingEvents = new ArrayList<>();
     private List<IAType17> waypointEvents = new ArrayList<>();
+    private List<IAType18> bailoutEvents = new ArrayList<>();
     private Map<String, IAType12> bots = new HashMap<>();
     private Map<String, IAType12> vehicles = new HashMap<>();
 
@@ -56,6 +58,12 @@ public class AARLogEventData
         addChronologicalAType(waypointEvent);
     }
     
+    public void addBailoutEvent(IAType18 bailoutEvent)
+    {
+        this.bailoutEvents.add(bailoutEvent);
+        addChronologicalAType(bailoutEvent);
+    }
+
     public void addBot(String logId, IAType12 bot)
     {
         this.bots.put(logId, bot);
@@ -91,6 +99,11 @@ public class AARLogEventData
         return waypointEvents;
     }
     
+    public List<IAType18> getBailoutEvents()
+    {
+        return bailoutEvents;
+    }
+
     public List<IAType12> getBots()
     {
         return new ArrayList<IAType12>(bots.values());
@@ -154,7 +167,7 @@ public class AARLogEventData
         IAType12 botSpawn = bots.get(botId);
         if (botSpawn != null)
         {
-            IAType12 planeSpawn = vehicles.get(botSpawn.getPid());
+            IAType12 planeSpawn = vehicles.get(getPlaneIdByBot(botSpawn));
             if (planeSpawn != null)
             {
                 return getDestroyedEvent(planeSpawn.getId());
@@ -162,6 +175,26 @@ public class AARLogEventData
         }
         
         return null;
+    }
+
+    public String getPlaneIdByBot(IAType12 atype12Bot) {
+        String planeId = atype12Bot.getPid();
+
+        // Work around a case where BoX might not give the AType12 event for a bot until after it has bailed out,
+        // meaning the PID field is -1. Try to associate with a bailout event in this case
+        if (planeId.equals(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY))
+        {
+            for (IAType18 bailoutEvent : bailoutEvents)
+            {
+                if (bailoutEvent.getBotId().equals(atype12Bot.getId()))
+                {
+                    planeId = bailoutEvent.getVehicleId();
+                    break;
+                }
+            }
+        }
+
+        return planeId;
     }
 
     public void setChronologicalATypes(Map<Integer, IATypeBase> chronologicalATypes)
@@ -187,6 +220,11 @@ public class AARLogEventData
     public void setWaypointEvents(List<IAType17> waypointEvents)
     {
         this.waypointEvents = waypointEvents;
+    }
+
+    public void setBailoutEvents(List<IAType18> bailoutEvents)
+    {
+        this.bailoutEvents = bailoutEvents;
     }
 
     public void setBots(Map<String, IAType12> bots)
