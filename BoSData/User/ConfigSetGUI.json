@@ -1,4 +1,10 @@
 {
   "configSetName": "ConfigSetGUI",
-  "configMap": {}
+  "configMap": {
+    "UseGenericUI": {
+      "value": "0",
+      "label": "Use Generic UI",
+      "help": "Set to 1 to use generic green panels"
+    }
+  }
 }
