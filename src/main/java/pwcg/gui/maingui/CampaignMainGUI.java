@@ -69,7 +69,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		
 		try
 		{
-			// SoundManager.getInstance().play("Song001.WAV");
+		    //SoundManager.getInstance().play("Song001.WAV");
 		}
 		catch (Exception e)
 		{
@@ -365,7 +365,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		JLabel spacer = new JLabel("    ", JLabel.LEFT);
 		versionPanel.add(spacer);
 
-		JLabel lversion = new JLabel("   PWCG Version 4.2.0  ", JLabel.LEFT);
+		JLabel lversion = new JLabel("   PWCG Version 4.2.1  ", JLabel.LEFT);
 		lversion.setBackground(lbg);
 		lversion.setForeground(fg);
 		lversion.setOpaque(false);
