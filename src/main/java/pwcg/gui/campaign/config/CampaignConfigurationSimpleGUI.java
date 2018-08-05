@@ -36,13 +36,18 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
 
 	private static final long serialVersionUID = 1L;
 	private ButtonGroup airButtonGroup = new ButtonGroup();
-	private ButtonGroup groundButtonGroup = new ButtonGroup();
 	private ButtonModel airLowButtonModel = null;
 	private ButtonModel airMedButtonModel = null;
 	private ButtonModel airHighButtonModel = null;
-	private ButtonModel groundLowButtonModel = null;
-	private ButtonModel groundMedButtonModel = null;
-	private ButtonModel groundHighButtonModel = null;
+
+    private ButtonGroup groundButtonGroup = new ButtonGroup();
+    private ButtonModel groundLowButtonModel = null;
+    private ButtonModel groundMedButtonModel = null;
+    private ButtonModel groundHighButtonModel = null;
+
+    private ButtonGroup coopGroup = new ButtonGroup();
+    private ButtonModel singlePlayerButtonModel = null;
+    private ButtonModel coopButtonModel = null;
 
     private Campaign campaign;
 
@@ -79,20 +84,30 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
 		{
 			airButtonGroup.setSelected(airHighButtonModel, true);
 		}
-		
-		String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
-		if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
-		{
-			groundButtonGroup.setSelected(groundLowButtonModel, true);
-		}
-		else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
-		{
-			groundButtonGroup.setSelected(groundMedButtonModel, true);
-		}
-		else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
-		{
-			groundButtonGroup.setSelected(groundHighButtonModel, true);
-		}
+        
+        String currentGroundSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
+        if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
+        {
+            groundButtonGroup.setSelected(groundLowButtonModel, true);
+        }
+        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_MED))
+        {
+            groundButtonGroup.setSelected(groundMedButtonModel, true);
+        }
+        else if (currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_HIGH))
+        {
+            groundButtonGroup.setSelected(groundHighButtonModel, true);
+        }
+        
+        boolean isCoop = campaign.getCampaignData().isCoop();
+        if (isCoop)
+        {
+            coopGroup.setSelected(coopButtonModel, true);
+        }
+        else
+        {
+            coopGroup.setSelected(singlePlayerButtonModel, true);
+        }
 	}
 
 	private JPanel makeCenterPanel() throws PWCGException  
@@ -142,17 +157,60 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
 	private JPanel makeConfigControlPanel() throws PWCGException
 	{
 		JPanel airButtonPanel = createAirConfigPanel();
-		JPanel groundButtonPanel = createGroundConfigPanel();
+        JPanel groundButtonPanel = createGroundConfigPanel();
+        JPanel coopPanel = createCoopPanel();
         String imagePath = getSideImage("SimpleConfigCampaignRight.jpg");
 
         ImageResizingPanel simpleConfigButtonPanel = new ImageResizingPanel(imagePath);
 		simpleConfigButtonPanel.setLayout(new GridLayout(0,1));
 
 		simpleConfigButtonPanel.add(airButtonPanel);
-		simpleConfigButtonPanel.add(groundButtonPanel);
+        simpleConfigButtonPanel.add(groundButtonPanel);
+        simpleConfigButtonPanel.add(coopPanel);
 				
 		return simpleConfigButtonPanel;
 	}
+    
+    private JPanel createAirConfigPanel() throws PWCGException
+    {
+        JPanel airButtonPanel = new JPanel(new BorderLayout());
+        airButtonPanel.setOpaque(false);
+
+        JLabel spacerLabel = makeLabel("          ");        
+        airButtonPanel.add(spacerLabel, BorderLayout.WEST);
+
+        JPanel shapePanel = new JPanel(new BorderLayout());
+        shapePanel.setOpaque(false);
+
+        JPanel airButtonPanelGrid = new JPanel(new GridLayout(0,1));
+        airButtonPanelGrid.setOpaque(false);
+        
+        JLabel airDensityLabel = makeLabel(CampaignConfigurationSimpleGUIController.ACTION_SET_AIR_DENSITY + ":");      
+        airButtonPanelGrid.add(airDensityLabel);
+
+        JRadioButton airLowDensity = makeRadioButton("Low", "Low Air Density", "Fewer aircraft for average machines", false);       
+        airButtonPanelGrid.add(airLowDensity);
+        airLowButtonModel = airLowDensity.getModel();
+        airButtonGroup.add(airLowDensity);
+
+        JRadioButton airMedDensity = makeRadioButton("Med", "Med Air Density", "Medium number of aircraft - requires a pretty good machine", false);        
+        airButtonPanelGrid.add(airMedDensity);
+        airMedButtonModel = airMedDensity.getModel();
+        airButtonGroup.add(airMedDensity);
+        
+        JRadioButton airHighDensity = makeRadioButton("High", "High Air Density", "High number of aircraft - high end machines only", false);       
+        airButtonPanelGrid.add(airHighDensity);
+        airHighButtonModel = airHighDensity.getModel();
+        airButtonGroup.add(airHighDensity);
+        
+
+        airButtonPanel.add(airButtonPanelGrid, BorderLayout.SOUTH);
+        
+        shapePanel.add(airButtonPanelGrid, BorderLayout.NORTH);
+        airButtonPanel.add(shapePanel, BorderLayout.CENTER);
+
+        return airButtonPanel;
+    }
 
     private JPanel createGroundConfigPanel() throws PWCGException
     {
@@ -191,46 +249,40 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
         
         return groundButtonPanel;
     }
-
-    private JPanel createAirConfigPanel() throws PWCGException
+    
+    private JPanel createCoopPanel() throws PWCGException
     {
-        JPanel airButtonPanel = new JPanel(new BorderLayout());
-		airButtonPanel.setOpaque(false);
+        JPanel coopButtonPanel = new JPanel(new BorderLayout());
+        coopButtonPanel.setOpaque(false);
 
         JLabel spacerLabel = makeLabel("          ");        
-        airButtonPanel.add(spacerLabel, BorderLayout.WEST);
+        coopButtonPanel.add(spacerLabel, BorderLayout.WEST);
 
         JPanel shapePanel = new JPanel(new BorderLayout());
         shapePanel.setOpaque(false);
 
-		JPanel airButtonPanelGrid = new JPanel(new GridLayout(0,1));
-		airButtonPanelGrid.setOpaque(false);
-		
-		JLabel airDensityLabel = makeLabel(CampaignConfigurationSimpleGUIController.ACTION_SET_AIR_DENSITY + ":");		
-		airButtonPanelGrid.add(airDensityLabel);
+        JPanel coopButtonPanelGrid = new JPanel(new GridLayout(0,1));
+        coopButtonPanelGrid.setOpaque(false);
+        
+        JLabel coopLabel = makeLabel(CampaignConfigurationSimpleGUIController.ACTION_SET_COOP + ":");      
+        coopButtonPanelGrid.add(coopLabel);
 
-		JRadioButton airLowDensity = makeRadioButton("Low", "Low Air Density", "Fewer aircraft for average machines", false);		
-		airButtonPanelGrid.add(airLowDensity);
-		airLowButtonModel = airLowDensity.getModel();
-		airButtonGroup.add(airLowDensity);
+        JRadioButton singlePlayerButton = makeRadioButton("Single Player Mode", "Mission Mode: Single Player", "Select single player mode for generated missions", false);       
+        coopButtonPanelGrid.add(singlePlayerButton);
+        singlePlayerButtonModel = singlePlayerButton.getModel();
+        coopGroup.add(singlePlayerButton);
 
-		JRadioButton airMedDensity = makeRadioButton("Med", "Med Air Density", "Medium number of aircraft - requires a pretty good machine", false);		
-		airButtonPanelGrid.add(airMedDensity);
-		airMedButtonModel = airMedDensity.getModel();
-		airButtonGroup.add(airMedDensity);
-		
-		JRadioButton airHighDensity = makeRadioButton("High", "High Air Density", "High number of aircraft - high end machines only", false);		
-		airButtonPanelGrid.add(airHighDensity);
-		airHighButtonModel = airHighDensity.getModel();
-		airButtonGroup.add(airHighDensity);
-		
+        JRadioButton coopButton = makeRadioButton("Coop Mode", "Mission Mode: Coop", "Select coop player mode for generated missions", false);              
+        coopButtonPanelGrid.add(coopButton);
+        coopButtonModel = coopButton.getModel();
+        coopGroup.add(coopButton);
 
-		airButtonPanel.add(airButtonPanelGrid, BorderLayout.SOUTH);
-		
-        shapePanel.add(airButtonPanelGrid, BorderLayout.NORTH);
-        airButtonPanel.add(shapePanel, BorderLayout.CENTER);
+        coopButtonPanel.add(coopButtonPanelGrid, BorderLayout.SOUTH);
+        
+        shapePanel.add(coopButtonPanelGrid, BorderLayout.NORTH);
+        coopButtonPanel.add(shapePanel, BorderLayout.CENTER);
 
-        return airButtonPanel;
+        return coopButtonPanel;
     }
 
 	private JLabel makeLabel(String buttonName) throws PWCGException

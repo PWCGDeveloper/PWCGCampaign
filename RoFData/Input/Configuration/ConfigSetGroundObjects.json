@@ -31,11 +31,6 @@
       "label": "Number of ships above base",
       "help": "The possible number of ships above the base value"
     },
-    "RandomTrains": {
-      "value": "5",
-      "label": "Number of trains above base",
-      "help": "The possible number of train cars above the base value"
-    },
     "WindsockDistance": {
       "value": "50",
       "label": "Windsock Distance",

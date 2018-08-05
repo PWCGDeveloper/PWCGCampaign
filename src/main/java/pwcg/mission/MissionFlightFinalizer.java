@@ -3,8 +3,6 @@ package pwcg.mission;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.balloondefense.AiBalloonDefenseFlight;
@@ -28,28 +26,28 @@ public class MissionFlightFinalizer
     
     public List<Flight> finalizeMissionFlights() throws PWCGException 
     {
-            convertForCoop();
+        convertForCoop();
 
-            missionFlightBuilder.getPlayerFlight().finalizeFlight();
-            
-            MissionFlightKeeper missionFlightKeeper = new MissionFlightKeeper(campaign, missionFlightBuilder);
-            List<Flight> finalizedMissionFlights = missionFlightKeeper.keepLimitedFlights();
+        missionFlightBuilder.getPlayerFlight().finalizeFlight();
+        
+        MissionFlightKeeper missionFlightKeeper = new MissionFlightKeeper(campaign, missionFlightBuilder);
+        List<Flight> finalizedMissionFlights = missionFlightKeeper.keepLimitedFlights();
 
-            for (Flight flight : finalizedMissionFlights)
-            {
-                flight.finalizeFlight();
-            }
+        for (Flight flight : finalizedMissionFlights)
+        {
+            flight.finalizeFlight();
+        }
 
-            setFlightAttackMcu();
-            
-            setCzTriggers();
-            
-            return finalizedMissionFlights;
+        setFlightAttackMcu();
+        
+        setCzTriggers();
+        
+        return finalizedMissionFlights;
     }
 
     private void convertForCoop() throws PWCGException, PWCGException
     {
-        if (ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.UseCoopKey) == 1)
+        if (campaign.getCampaignData().isCoop())
         {
             MissionCoopConverter coopConverter = new MissionCoopConverter();
             coopConverter.convertToCoop(missionFlightBuilder);

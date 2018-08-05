@@ -10,15 +10,13 @@ import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.utils.TestDriver;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
 import pwcg.mission.AmbientGroundUnitBuilder;
-import pwcg.mission.Mission;
 import pwcg.mission.AssaultInformation;
+import pwcg.mission.Mission;
 import pwcg.mission.MissionBlockBuilder;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.GroundUnitSpawning;
@@ -171,10 +169,10 @@ public abstract class MissionFileWriter implements IMissionFile
         }
     }
 
-    protected static String getMissionFilePath(String fileName) throws PWCGException 
+    protected String getMissionFilePath(String fileName) throws PWCGException 
 	{
 		String filepath = "..\\Data\\Missions\\" + fileName;
-		if (ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.UseCoopKey) == 1)
+		if (mission.getCampaign().getCampaignData().isCoop())
 		{
 			filepath = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir() + "Multiplayer\\Cooperative\\" + fileName;
 

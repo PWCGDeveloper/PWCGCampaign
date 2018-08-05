@@ -12,7 +12,6 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.ww2.country.BoSServiceManager;
-import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
@@ -54,7 +53,7 @@ public class OutOfMissionVictoryEventHandler
 
     private int determineOddsOfOutOfMissionVictory(SquadronMember squadronMember, ConfigManagerCampaign configManager) throws PWCGException
     {
-        int victoryOdds = configManager.getIntConfigParam(ConfigItemKeys.BaseOddsOfVictoryKey);
+        int victoryOdds = 5;
         if (squadronMember.getAiSkillLevel() == AiSkillLevel.COMMON)
         {
         	victoryOdds += 10;

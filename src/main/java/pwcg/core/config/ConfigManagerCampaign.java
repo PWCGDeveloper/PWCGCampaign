@@ -19,7 +19,6 @@ public class ConfigManagerCampaign extends ConfigManager
         defaultCampaignConfigSets.put(ConfigSetKeys.ConfigSetMissionSpacing, ConfigSetMissionSpacing.initialize());
         defaultCampaignConfigSets.put(ConfigSetKeys.ConfigSetAircraftNumbers, ConfigSetAircraftNumbers.initialize());
         defaultCampaignConfigSets.put(ConfigSetKeys.ConfigSetUserPrefCampaign, ConfigSetUserPrefCampaign.initialize());
-        defaultCampaignConfigSets.put(ConfigSetKeys.ConfigSetCampaign, ConfigSetCampaign.initialize());
         defaultCampaignConfigSets.put(ConfigSetKeys.ConfigSetWeather, ConfigSetWeather.initialize());
         defaultCampaignConfigSets.put(ConfigSetKeys.ConfigSetSimple, ConfigSetSimple.initialize());
 

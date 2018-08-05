@@ -9,6 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
@@ -17,13 +18,12 @@ import pwcg.mission.MissionStringHandler;
 
 public class MissionDescriptionFile 
 {
-	public void writeMissionDescription(MissionDescription missionDescription, 
-										Campaign campaign) throws PWCGException 
+	public void writeMissionDescription(MissionDescription missionDescription, Campaign campaign) throws PWCGException 
 	{
 		try
         {
             String filename = MissionFileWriter.getMissionFileName(campaign);
-            String filePath = MissionFileWriter.getMissionFilePath(filename) + ".eng";
+            String filePath = getMissionFilePath(campaign, filename) + ".eng";
             OutputStream ostream = new FileOutputStream(filePath);
             OutputStreamWriter writer = new OutputStreamWriter(ostream, "UTF-16LE");
             
@@ -66,4 +66,17 @@ public class MissionDescriptionFile
             throw new PWCGIOException(e.getMessage());
         }
 	}
+	
+
+    protected String getMissionFilePath(Campaign campaign, String fileName) throws PWCGException 
+    {
+        String filepath = "..\\Data\\Missions\\" + fileName;
+        if (campaign.getCampaignData().isCoop())
+        {
+            filepath = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir() + "Multiplayer\\Cooperative\\" + fileName;
+
+        }
+        
+        return filepath;
+    }
 }

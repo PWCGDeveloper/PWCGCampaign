@@ -17,8 +17,6 @@ import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
@@ -100,11 +98,8 @@ public class AARPilotStatusEvaluator
 
     private void setCrewMemberDead(LogPlane resultPlane, LogPilot resultCrewmember) throws PWCGException 
     {        
-        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-        int oddsOfDeathDueToAiStupidity = configManager.getIntConfigParam(ConfigItemKeys.AiStupidityDeathOddsKey);
-        
-        IAType3 destroyedEventForPlane = logEventData.getDestroyedEventForPlaneByBot(resultCrewmember.getBotId());
-        
+        int oddsOfDeathDueToAiStupidity = 10;
+        IAType3 destroyedEventForPlane = logEventData.getDestroyedEventForPlaneByBot(resultCrewmember.getBotId());        
         IAirfield field =  campaign.getPlayerAirfield();
 
         pilotStatusDeadEvaluator.initialize(

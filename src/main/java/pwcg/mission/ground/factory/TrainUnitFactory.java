@@ -29,7 +29,7 @@ public class TrainUnitFactory
         MissionBeginUnitCheckZone missionBeginUnit = createMissionBegin();        
         GroundUnitInformation groundUnitInformation = createGroundUnitInformationForUnit(missionBeginUnit);
         
-        GroundTrainUnit trainTarget = new GroundTrainUnit(campaign, groundUnitInformation);
+        GroundTrainUnit trainTarget = new GroundTrainUnit(groundUnitInformation);
         trainTarget.createUnitMission();
         return trainTarget;
     }

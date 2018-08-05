@@ -2,7 +2,6 @@ package pwcg.core.config;
 
 public class ConfigItemKeys
 {
-	public static final String UseCoopKey = "UseCoop";
 	public static final String DeleteAllMissionLogsKey = "DeleteAllMissionLogs";
 	public static final String SaveOldMissionsKey = "SaveOldMissions";
 	public static final String PlaySoundsKey = "PlaySounds";
@@ -12,9 +11,7 @@ public class ConfigItemKeys
 	public static final String UseGenericUIKey = "UseGenericUI";
 
 	public static final String MovingFrontKey = "MovingFront";
-	public static final String AARMethodKey = "AARMethod";
 	public static final String PilotInjuryKey = "PilotInjury";
-	public static final String AiStupidityDeathOddsKey = "AiStupidityDeathOdds";
 	public static final String SimpleConfigAirKey = "SimpleConfigAir";
 	public static final String SimpleConfigGroundKey = "SimpleConfigGround";
 
@@ -81,8 +78,6 @@ public class ConfigItemKeys
 	public static final String GroundAttackIngressDistanceKey = "GroundAttackIngressDistance";
 	public static final String GroundAttackAltitudeKey = "GroundAttackAltitude";
 
-	public static final String JunkFlightDistanceKey = "JunkFlightDistance";
-
 	// Mission Limiters
 	public static final String SquadronGeneratesMissionOddsKey = "SquadronGeneratesMissionOdds";
 	public static final String SquadronGeneratesMissionModifierKey = "SquadronGeneratesMissionModifier";
@@ -121,8 +116,6 @@ public class ConfigItemKeys
 	public static final String KeepGroupSpreadKey = "KeepGroupSpread";
 	public static final String AirfieldInclusionRadiusKey = "AirfieldInclusionRadius";
 	public static final String MaxGroundTargetDistanceKey = "MaxGroundTargetDistance";
-	public static final String RandomShipsKey = "RandomShips";
-	public static final String RandomTrainsKey = "RandomTrains";
 
 	// Mission AI
 	public static final String FighterAISkillAdjustmentKey = "FighterAISkillAdjustment";
@@ -176,15 +169,9 @@ public class ConfigItemKeys
 	public static final String TakeoffWaypointDistanceKey = "TakeoffWaypointDistance";
 	public static final String TakeoffWaypointAltitudeKey = "TakeoffWaypointAltitude";
 
-	public static final String VictoriesForAcedomKey = "VictoriesForAcedom";
 	public static final String TakeoffTimeKey = "TakeoffTime";
-
-	public static final String BaseOddsOfDeathKey = "BaseOddsOfDeath";
-	public static final String BaseOddsOfVictoryKey = "BaseOddsOfVictory";
-	public static final String NewPilotRankOddsLowestKey = "NewPilotRankOddsLowest";
-	public static final String NewPilotRankOddsLowKey = "NewPilotRankOddsLow";
-	public static final String MissionSpacing01MinKey = "MissionSpacing01Min";
 	
+	public static final String MissionSpacing01MinKey = "MissionSpacing01Min";	
 	public static final String MissionSpacing01MaxAdditionalKey = "MissionSpacing01MaxAdditional";
 	public static final String MissionSpacing02MinKey = "MissionSpacing02Min";
 	public static final String MissionSpacing02MaxAdditionalKey = "MissionSpacing02MaxAdditional";

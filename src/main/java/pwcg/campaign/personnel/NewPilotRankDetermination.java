@@ -5,8 +5,6 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -26,11 +24,9 @@ public class NewPilotRankDetermination
 
         int rankIndex = 2;
         int rankOdds = RandomNumberGenerator.getRandom(100);
-
-        ConfigManagerCampaign campaignConfigManager = campaign.getCampaignConfigManager();
         
-        int NewPilotRankOddsLowest = campaignConfigManager.getIntConfigParam(ConfigItemKeys.NewPilotRankOddsLowestKey);
-        int NewPilotRankOddsLow = campaignConfigManager.getIntConfigParam(ConfigItemKeys.NewPilotRankOddsLowKey);
+        int NewPilotRankOddsLowest = 15;
+        int NewPilotRankOddsLow = 25;
         rankIndex = getReplacementPilotRankIndex(ranks, rankOdds, NewPilotRankOddsLowest, NewPilotRankOddsLow);
 
         String rank = rankObj.getRankByService(rankIndex, campaign.getPlayer().determineService(campaign.getDate()));

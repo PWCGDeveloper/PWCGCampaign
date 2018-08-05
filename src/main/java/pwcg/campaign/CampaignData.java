@@ -11,8 +11,9 @@ public class CampaignData
 	private Date date = null;
 	private String name = "";
 	private int campaignStatus = SquadronMemberStatus.STATUS_ACTIVE;
-	private int squadId = -1;
+    private int squadId = -1;
     private boolean isGreatAce = false;
+    private boolean isCoop = false;
     private SerialNumber serialNumber = new SerialNumber();
 
 	public Date getDate()
@@ -64,6 +65,16 @@ public class CampaignData
 	{
 		this.isGreatAce = isGreatAce;
 	}
+	
+    public boolean isCoop()
+    {
+        return isCoop;
+    }
+
+    public void setCoop(boolean isCoop)
+    {
+        this.isCoop = isCoop;
+    }
 
     public SerialNumber getSerialNumber()
     {

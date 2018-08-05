@@ -46,8 +46,6 @@ public class ConfigSimple
     public void setGroundLow() throws PWCGException 
     {
         setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigGroundKey, ConfigSimple.CONFIG_LEVEL_LOW);
-        setParamForSimpleConfigChange(ConfigItemKeys.RandomShipsKey, "4");
-        setParamForSimpleConfigChange(ConfigItemKeys.RandomTrainsKey, "3");
         setParamForSimpleConfigChange(ConfigItemKeys.UseAirfieldMGsKey, "0");
         setParamForSimpleConfigChange(ConfigItemKeys.UseAmbientGroundUnitsKey, "0");
         setParamForSimpleConfigChange(ConfigItemKeys.MGSpacingKey, "5000");
@@ -83,8 +81,6 @@ public class ConfigSimple
     public void setGroundMed() throws PWCGException 
     {
         setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigGroundKey, ConfigSimple.CONFIG_LEVEL_MED);
-        setParamForSimpleConfigChange(ConfigItemKeys.RandomShipsKey, "5");
-        setParamForSimpleConfigChange(ConfigItemKeys.RandomTrainsKey, "4");
         setParamForSimpleConfigChange(ConfigItemKeys.UseAirfieldMGsKey, "1");
         setParamForSimpleConfigChange(ConfigItemKeys.UseAmbientGroundUnitsKey, "1");
         setParamForSimpleConfigChange(ConfigItemKeys.MGSpacingKey, "3000");
@@ -119,8 +115,6 @@ public class ConfigSimple
     public void setGroundHigh() throws PWCGException 
     {
         setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigGroundKey, ConfigSimple.CONFIG_LEVEL_HIGH);
-        setParamForSimpleConfigChange(ConfigItemKeys.RandomShipsKey, "6");
-        setParamForSimpleConfigChange(ConfigItemKeys.RandomTrainsKey, "5");
         setParamForSimpleConfigChange(ConfigItemKeys.UseAirfieldMGsKey, "1");
         setParamForSimpleConfigChange(ConfigItemKeys.UseAmbientGroundUnitsKey, "1");
         setParamForSimpleConfigChange(ConfigItemKeys.MGSpacingKey, "2000");

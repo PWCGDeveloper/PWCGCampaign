@@ -71,11 +71,6 @@
       "label": "Odds a mission is escorted",
       "help": "Odds of a 2 seater mission being escorted"
     },
-    "JunkFlightDistance": {
-      "value": "20000",
-      "label": "Junk Flight Distance",
-      "help": "Distance at which a flight is not likely to be encountered"
-    },
     "MGSpacing": {
       "value": "3000",
       "label": "MG Spacing",

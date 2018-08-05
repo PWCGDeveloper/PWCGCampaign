@@ -35,7 +35,6 @@ public class ConfigSetMissionLimits
         configSet.addConfigItem(ConfigItemKeys.UsePlaneDeleteKey, new ConfigItem("1"));
         configSet.addConfigItem(ConfigItemKeys.PlaneDeleteEnemyDistanceKey, new ConfigItem("10000"));
         configSet.addConfigItem(ConfigItemKeys.PlaneDeletePlayerDistanceKey, new ConfigItem("12000"));
-        configSet.addConfigItem(ConfigItemKeys.JunkFlightDistanceKey, new ConfigItem("20000"));      // Distance at which a flight is not likely to be encountered
         configSet.addConfigItem(ConfigItemKeys.IsEscortedOddsKey, new ConfigItem("50"));
 		
         configSet.addConfigItem(ConfigItemKeys.MaxAmbientBalloonsKey, new ConfigItem("1"));

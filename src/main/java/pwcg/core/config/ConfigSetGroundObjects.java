@@ -13,8 +13,6 @@ public class ConfigSetGroundObjects
 		configSet.addConfigItem(ConfigItemKeys.KeepGroupSpreadKey, new ConfigItem("50000"));			// Distance from waypoint box to keep a group (city, new ConfigItem("large airfield)
 		configSet.addConfigItem(ConfigItemKeys.AirfieldInclusionRadiusKey, new ConfigItem("50000")); // Distance from which to draw flights from
 		configSet.addConfigItem(ConfigItemKeys.MaxGroundTargetDistanceKey, new ConfigItem("10000")); // Max flying distance for most tactical ground targets.
-		configSet.addConfigItem(ConfigItemKeys.RandomShipsKey, new ConfigItem("4"));
-		configSet.addConfigItem(ConfigItemKeys.RandomTrainsKey, new ConfigItem("3"));
 		return configSet;
 	}
 }

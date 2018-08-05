@@ -112,7 +112,7 @@
       "help": "Font size for typed documents"
     },
     "UseGenericUI": {
-      "value": "1",
+      "value": "0",
       "label": "Use Generic UI",
       "help": "Set to 1 to use generic green panels"
     },

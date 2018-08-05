@@ -40,8 +40,16 @@ public class AARExtendedTimeHandlerTest
     }
     
     @Test
-    public void testTimeNotPassedForNonViableSquadron () throws PWCGException
+    public void testTimeNotPassedForViableSquadron () throws PWCGException
     {
+        for (SquadronMember squadronMember : campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMemberCollection().values())
+        {
+            if (!squadronMember.isPlayer())
+            {
+                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, campaign.getDate());
+            }
+        }
+
         Date startCampaignDate = campaign.getDate();
         AARExtendedTimeHandler extendedTimeHandler = new AARExtendedTimeHandler(campaign, aarContext);
         extendedTimeHandler.timePassedForSquadronNotViable();
@@ -52,7 +60,7 @@ public class AARExtendedTimeHandlerTest
     }
     
     @Test
-    public void testTimePassedForNonViableSquadron () throws PWCGException
+    public void testTimePassedForViableAndNonViableSquadron () throws PWCGException
     {
         for (SquadronMember squadronMember : campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMemberCollection().values())
         {

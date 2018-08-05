@@ -12,8 +12,10 @@ public class CampaignConfigurationSimpleGUIController
 {
     static public final String ACTION_SET_AIR_DENSITY = "Air Density";
     static public final String ACTION_SET_GROUND_DENSITY = "Ground Density";
+    static public final String ACTION_SET_COOP = "Mission Mode";
     
     private Campaign campaign;
+    private boolean coopMode = false;
 
     public CampaignConfigurationSimpleGUIController(Campaign campaign)
     {
@@ -28,10 +30,20 @@ public class CampaignConfigurationSimpleGUIController
 			{
 				setAirDensity(action);
 			}
-			else if (action.contains(ACTION_SET_GROUND_DENSITY))
-			{
-				setGroundDensity(action);
-			}
+            else if (action.contains(ACTION_SET_GROUND_DENSITY))
+            {
+                setGroundDensity(action);
+            }
+            else if (action.contains(ACTION_SET_COOP))
+            {
+                if (action.contains("Coop"))
+                {        
+                    coopMode = true;
+                }
+                else
+                {
+                    coopMode = false;                }
+            }
             else if (action.equalsIgnoreCase(CommonUIActions.ACTION_ACCEPT))
 			{
 				acceptSimpleConfigChanges(campaign);
@@ -88,6 +100,7 @@ public class CampaignConfigurationSimpleGUIController
 
     private void acceptSimpleConfigChanges(Campaign campaign) throws PWCGException
     {
+        campaign.getCampaignData().setCoop(coopMode);
         campaign.getCampaignConfigManager().write();
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }

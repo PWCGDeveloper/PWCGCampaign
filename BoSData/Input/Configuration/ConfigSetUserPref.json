@@ -30,11 +30,6 @@
       "value": "10",
       "label": "Volume control for sounds",
       "help": "10 is normal, less reduces volume, cannot raise above 10"
-    },
-    "UseCoop": {
-      "value": "0",
-      "label": "Use Coop",
-      "help": "Set to 1 to create a coop mission"
     }
   }
 }

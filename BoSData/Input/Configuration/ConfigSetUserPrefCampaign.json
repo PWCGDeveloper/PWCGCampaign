@@ -1,16 +1,6 @@
 {
   "configSetName": "ConfigSetUserPrefCampaign",
   "configMap": {
-    "AARMethod": {
-      "value": "1",
-      "label": "Select AAR Method",
-      "help": "Set to 1 to use mission log files for AAR"
-    },
-    "AiStupidityDeathOdds": {
-      "value": "10",
-      "label": "Odds of death when stupid",
-      "help": "Odds of AI dying when death is not due to being shot down"
-    },
     "MissionsCredited": {
       "value": "1",
       "label": "Number of Missions Credited",

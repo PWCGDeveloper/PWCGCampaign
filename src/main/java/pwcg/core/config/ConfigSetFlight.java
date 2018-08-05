@@ -8,7 +8,6 @@ public class ConfigSetFlight
 		configSet.setConfigSetName(ConfigSetKeys.ConfigSetFlight);
 
         configSet.addConfigItem(ConfigItemKeys.TakeoffTimeKey, new ConfigItem("30"));
-		configSet.addConfigItem(ConfigItemKeys.VictoriesForAcedomKey, new ConfigItem("10"));			// How many victories an ace must have before he is included
 		configSet.addConfigItem(ConfigItemKeys.AircraftSpacingHorizontalKey, new ConfigItem("100"));	// Initial spacing: horizontal
 		configSet.addConfigItem(ConfigItemKeys.AircraftSpacingVerticalKey, new ConfigItem("100"));	// Initial spacing: vertical
 		configSet.addConfigItem(ConfigItemKeys.TakeoffSpacingKey, new ConfigItem("30"));				// Distance in meters between planes on the ground

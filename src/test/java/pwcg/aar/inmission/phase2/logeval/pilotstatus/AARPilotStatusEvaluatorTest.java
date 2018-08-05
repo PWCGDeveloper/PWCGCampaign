@@ -101,7 +101,6 @@ public class AARPilotStatusEvaluatorTest
         
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.PilotInjuryKey)).thenReturn(4);
-        Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.AiStupidityDeathOddsKey)).thenReturn(30);
     }
 
     /**

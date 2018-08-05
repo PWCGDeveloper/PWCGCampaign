@@ -8,20 +8,16 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronRoleSet;
 import pwcg.campaign.ww2.country.BoSServiceManager;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 
 public class OutOfMissionAAAOddsCalculator
 {
     private Campaign campaign;
-    private ConfigManagerCampaign configManager;
     
     public OutOfMissionAAAOddsCalculator (Campaign campaign)
     {
         this.campaign = campaign;
-        this.configManager = campaign.getCampaignConfigManager();
     }
     
 
@@ -38,7 +34,7 @@ public class OutOfMissionAAAOddsCalculator
         SquadronRoleSet squadronRoles = squadron.getSquadronRoles();
         Role roleThisMission = squadronRoles.selectRoleForMission(campaign.getDate());
         
-        int shotDownOdds = configManager.getIntConfigParam(ConfigItemKeys.BaseOddsOfDeathKey);
+        int shotDownOdds = 5;
         if (roleThisMission == Role.ROLE_ATTACK)
         {
             shotDownOdds += 20;

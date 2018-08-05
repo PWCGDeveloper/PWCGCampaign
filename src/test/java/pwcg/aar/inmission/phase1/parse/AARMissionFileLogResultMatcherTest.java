@@ -15,6 +15,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.prelim.AARHeaderParser;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignData;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.data.MissionHeader;
@@ -22,17 +23,11 @@ import pwcg.mission.data.MissionHeader;
 @RunWith(MockitoJUnitRunner.class)
 public class AARMissionFileLogResultMatcherTest
 {
-    @Mock
-    private Campaign campaign;
-
-    @Mock
-    private PwcgMissionData pwcgMissionData;       
-    
-    @Mock
-    MissionHeader missionHeader;
-
-    @Mock
-    private AARHeaderParser aarHeaderParser;        
+    @Mock private Campaign campaign;
+    @Mock private CampaignData campaignData;
+    @Mock private PwcgMissionData pwcgMissionData;       
+    @Mock private MissionHeader missionHeader;
+    @Mock private AARHeaderParser aarHeaderParser;        
     
     @InjectMocks
     AARMissionFileLogResultMatcher missionFileLogResultMatcher;
@@ -41,6 +36,8 @@ public class AARMissionFileLogResultMatcherTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
+        Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
+        Mockito.when(campaignData.getName()).thenReturn("Patrik Schorner");
     }
     
     @Test

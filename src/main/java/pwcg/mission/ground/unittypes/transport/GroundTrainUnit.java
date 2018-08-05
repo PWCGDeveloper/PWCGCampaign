@@ -3,15 +3,14 @@ package pwcg.mission.ground.unittypes.transport;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.factory.VehicleFactory;
-import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundMovingUnit;
 import pwcg.mission.ground.vehicle.ITrainLocomotive;
 import pwcg.mission.ground.vehicle.IVehicle;
@@ -21,12 +20,9 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class GroundTrainUnit extends GroundMovingUnit
 {
-    private Campaign campaign;
-
-	public GroundTrainUnit (Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation) 
+	public GroundTrainUnit (GroundUnitInformation pwcgGroundUnitInformation) 
 	{
 	    super(pwcgGroundUnitInformation);
-        this.campaign = campaign;
         unitSpeed = 12;
 	}
 
@@ -52,9 +48,7 @@ public class GroundTrainUnit extends GroundMovingUnit
 	private void makeCars(IVehicleFactory vehicleFactory, ITrainLocomotive locomotive)
 	        throws PWCGException, PWCGException
 	{
-		int randomTrainCars = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.RandomTrainsKey);
-		int numCars = 4 + RandomNumberGenerator.getRandom(randomTrainCars);
-
+		int numCars = calcNumCars();
 		for (int i = 0; i < numCars; ++i)
 		{	
 	        IVehicle car = vehicleFactory.createTrainCar(pwcgGroundUnitInformation.getCountry());
@@ -66,6 +60,36 @@ public class GroundTrainUnit extends GroundMovingUnit
     {
         setMinMaxRequested(1, 1);        
         return calculateForMinMaxRequested();
+    }
+
+    private int calcNumCars()
+    {
+        int baseTrainCars = 3;
+        int randomTrainCars = 3;
+
+        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
+        {
+            baseTrainCars = 1;
+            randomTrainCars = 1;
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
+        {
+            baseTrainCars = 3;
+            randomTrainCars = 3;
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
+        {
+            baseTrainCars = 4;
+            randomTrainCars = 5;
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
+        {
+            baseTrainCars = 5;
+            randomTrainCars = 7;
+        }
+        
+        int numUnits = baseTrainCars + (RandomNumberGenerator.getRandom(randomTrainCars - baseTrainCars));
+        return numUnits;
     }
 
     @Override
