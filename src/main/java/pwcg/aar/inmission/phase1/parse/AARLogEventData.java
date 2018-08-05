@@ -24,6 +24,7 @@ public class AARLogEventData
     private List<IAType18> bailoutEvents = new ArrayList<>();
     private Map<String, IAType12> bots = new HashMap<>();
     private Map<String, IAType12> vehicles = new HashMap<>();
+    private Map<String, IAType12> turrets = new HashMap<>();
 
     private int eventNum = 1;
     
@@ -74,6 +75,11 @@ public class AARLogEventData
         this.vehicles.put(logId, vehicle);
     }
 
+    public void addTurret(String logId, IAType12 turret)
+    {
+        this.turrets.put(logId, turret);
+    }
+
     public List<IATypeBase> getChronologicalATypes()
     {
         return new ArrayList<IATypeBase>(chronologicalATypes.values());
@@ -114,6 +120,11 @@ public class AARLogEventData
         return new ArrayList<IAType12>(vehicles.values());
     }
     
+    public List<IAType12> getTurrets()
+    {
+        return new ArrayList<IAType12>(turrets.values());
+    }
+
     public IAType12 getBot(String id)
     {
         return bots.get(id);
@@ -122,6 +133,11 @@ public class AARLogEventData
     public IAType12 getVehicle(String id)
     {
         return vehicles.get(id);
+    }
+
+    public IAType12 getTurret(String id)
+    {
+        return turrets.get(id);
     }
 
     public boolean isVehicle(String id)
@@ -235,5 +251,10 @@ public class AARLogEventData
     public void setVehicles(Map<String, IAType12> vehicles)
     {
         this.vehicles = vehicles;
+    }
+
+    public void setTurrets(Map<String, IAType12> turrets)
+    {
+        this.turrets = turrets;
     }
 }

@@ -140,6 +140,10 @@ public class AARLogParser implements IAARLogParser
         {
             logEventData.addVehicle(atype12.getId(), atype12);
         }
+        else
+        {
+            logEventData.addTurret(atype12.getId(), atype12);
+        }
     }
 
     private void parseWaypointEvent(String line) throws PWCGException

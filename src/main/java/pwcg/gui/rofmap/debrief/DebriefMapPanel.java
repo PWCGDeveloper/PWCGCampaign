@@ -15,6 +15,7 @@ import java.util.List;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBase;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogWaypoint;
 import pwcg.campaign.Campaign;
@@ -240,7 +241,12 @@ public class DebriefMapPanel  extends MapPanelBase
         
         String displayVictim = damageEvent.getVictim().getName();
         String displayVictor = "Unknown";
-        if (!(damageEvent.getVictor() instanceof LogUnknown))
+        if (damageEvent.getVictor() instanceof LogTurret)
+        {
+            LogTurret logTurret = (LogTurret)damageEvent.getVictor();
+            displayVictor = "a gunner flying with " + logTurret.getParent().getName();
+        }
+        else if (!(damageEvent.getVictor() instanceof LogUnknown))
         {
         	displayVictor = damageEvent.getVictor().getName();
         }
