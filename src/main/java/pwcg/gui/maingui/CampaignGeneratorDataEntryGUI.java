@@ -14,9 +14,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -38,12 +41,14 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
+import pwcg.gui.campaign.config.CampaignConfigurationSimpleGUIController;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.maingui.CampaignGeneratorState.CampaignGeneratorWorkflow;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGJButton;
 
 public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements ActionListener
@@ -80,7 +85,11 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
     private CampaignGeneratorDO campaignGeneratorDO = new CampaignGeneratorDO();
     private CampaignGeneratorState campaignGeneratorState;
     private CampaignGeneratorPanelSet parent = null;
-    
+
+    private ButtonGroup coopGroup = new ButtonGroup();
+    private ButtonModel singlePlayerButtonModel = null;
+    private ButtonModel coopButtonModel = null;
+
 	public CampaignGeneratorDataEntryGUI(CampaignGeneratorPanelSet parent) 
 	{
         super(ContextSpecificImages.menuPathMain() + "CampaignGenCenter.jpg");
@@ -117,10 +126,16 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 			campaignGeneratePanel.setOpaque(false);
 
 			int rowCount = 0;
-			for (int i = 0; i < 4; ++i)
+			for (int i = 0; i < 3; ++i)
 			{
 			    rowCount = spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, i);
 			}
+
+	        
+            rowCount = createCoopWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
+            coopGroup.setSelected(singlePlayerButtonModel, true);
+            rowCount = spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
+            rowCount = spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 
             rowCount = createCampaignNameWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
@@ -543,6 +558,70 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         
         return squadronPanel;
     }
+    
+    
+
+    private int createCoopWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints, JPanel campaignGeneratePanel, int rowCount) throws PWCGException
+    {
+        spacerColumn (campaignGeneratePanel, 0, rowCount);
+
+        JPanel coopButtonPanel = createCoopPanel();
+                
+        dataConstraints.gridx = 2;
+        dataConstraints.gridy = rowCount;
+        campaignGeneratePanel.add(coopButtonPanel, dataConstraints);
+
+        spacerColumn (campaignGeneratePanel, 3, rowCount + 0);
+
+        ++rowCount;
+        return rowCount;
+    }
+
+    private JPanel createCoopPanel() throws PWCGException
+    {
+        JPanel coopButtonPanel = new JPanel(new BorderLayout());
+        coopButtonPanel.setOpaque(false);
+
+        JLabel spacerLabel = makeCoopLabel("          ");        
+        coopButtonPanel.add(spacerLabel, BorderLayout.WEST);
+
+        JPanel shapePanel = new JPanel(new BorderLayout());
+        shapePanel.setOpaque(false);
+
+        JPanel coopButtonPanelGrid = new JPanel(new GridLayout(0,1));
+        coopButtonPanelGrid.setOpaque(false);
+        
+        JLabel coopLabel = makeCoopLabel(CampaignConfigurationSimpleGUIController.ACTION_SET_COOP + ":");      
+        coopButtonPanelGrid.add(coopLabel);
+
+        JRadioButton singlePlayerButton = PWCGButtonFactory.makeRadioButton("Single Player Mode", "Mission Mode: Single Player", "Select single player mode for generated missions", false, this);       
+        coopButtonPanelGrid.add(singlePlayerButton);
+        singlePlayerButtonModel = singlePlayerButton.getModel();
+        coopGroup.add(singlePlayerButton);
+
+        JRadioButton coopButton = PWCGButtonFactory.makeRadioButton("Coop Mode", "Mission Mode: Coop", "Select coop player mode for generated missions", false, this);              
+        coopButtonPanelGrid.add(coopButton);
+        coopButtonModel = coopButton.getModel();
+        coopGroup.add(coopButton);
+
+        coopButtonPanel.add(coopButtonPanelGrid, BorderLayout.SOUTH);
+        
+        shapePanel.add(coopButtonPanelGrid, BorderLayout.NORTH);
+        coopButtonPanel.add(shapePanel, BorderLayout.CENTER);
+
+        return coopButtonPanel;
+    }
+
+    private JLabel makeCoopLabel(String buttonName) throws PWCGException
+    {
+        Font font = MonitorSupport.getPrimaryFontLarge();
+
+        JLabel button= new JLabel(buttonName);
+        button.setOpaque(false);
+        button.setFont(font);
+
+        return button;
+    }
 
 	private void spacerColumn (JPanel panel, int column, int row)
 	{
@@ -825,6 +904,16 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
                 campaignGeneratorState.goToPreviousStep();
                 evaluateUI() ;
             }
+            else if (ae.getActionCommand().contains("Single"))
+            {
+                campaignGeneratorDO.setCoop(false);
+                coopGroup.setSelected(singlePlayerButtonModel, true);
+            }
+            else if (ae.getActionCommand().contains("Coop"))
+            {
+                campaignGeneratorDO.setCoop(true);
+                coopGroup.setSelected(coopButtonModel, true);
+           }
             
             revalidate();
             repaint();

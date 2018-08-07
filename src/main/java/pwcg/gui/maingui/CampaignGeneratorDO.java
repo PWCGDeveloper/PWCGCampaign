@@ -20,6 +20,7 @@ public class CampaignGeneratorDO
     private String squadName = "";
     private Date startDate = null;
     private Role role = Role.ROLE_FIGHTER;
+    private boolean isCoop = false;
 
     public boolean isDataSetValid()
     {
@@ -173,6 +174,16 @@ public String getRegion()
 	{
 		this.frontMap = frontMap;
 	}
+
+    public boolean isCoop()
+    {
+        return isCoop;
+    }
+
+    public void setCoop(boolean isCoop)
+    {
+        this.isCoop = isCoop;
+    }
     
     
 }

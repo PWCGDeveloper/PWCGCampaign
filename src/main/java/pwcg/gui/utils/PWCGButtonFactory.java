@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import pwcg.core.exception.PWCGException;
@@ -63,6 +64,28 @@ public class PWCGButtonFactory extends JButton
 
         return button;
     }
+    
+
+    public static JRadioButton makeRadioButton(String buttonName, String action, String toolTipText, boolean selected, ActionListener actionListener) throws PWCGException
+    {
+        Color bg = ColorMap.WOOD_BACKGROUND;
+        Color fg = ColorMap.CHALK_FOREGROUND;
+
+        Font font = MonitorSupport.getPrimaryFont();
+
+        JRadioButton button= new JRadioButton(buttonName);
+        button.setOpaque(false);
+        button.setActionCommand(action);
+        button.addActionListener(actionListener);
+        button.setFont(font);
+        button.setBackground(bg);
+        button.setForeground(fg);
+
+        ToolTipManager.setToolTip(button, toolTipText);
+
+        return button;
+    }
+
 
     public static JLabel makeDummy()
     {

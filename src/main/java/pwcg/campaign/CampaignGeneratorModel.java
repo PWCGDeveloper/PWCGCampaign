@@ -11,6 +11,7 @@ public class CampaignGeneratorModel
     private String squadronName;
     private Date campaignDate;
     private String playerRegion;
+    private boolean isCoop = false;
 
     public ArmedService getService()
     {
@@ -80,5 +81,15 @@ public class CampaignGeneratorModel
     public void setPlayerRegion(String playerRegion)
     {
         this.playerRegion = playerRegion;
+    }
+
+    public boolean isCoop()
+    {
+        return isCoop;
+    }
+
+    public void setCoop(boolean isCoop)
+    {
+        this.isCoop = isCoop;
     }
 }

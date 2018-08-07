@@ -159,6 +159,7 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         String squadronName = campaignGeneratorDO.getSquadName();
         String rank = campaignGeneratorDO.getRank();
         Date startDate = campaignGeneratorDO.getStartDate();
+        boolean isCoop = campaignGeneratorDO.isCoop();
 
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setCampaignDate(startDate);
@@ -168,6 +169,7 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         generatorModel.setPlayerRegion(region);
         generatorModel.setService(service);
         generatorModel.setSquadronName(squadronName);
+        generatorModel.setCoop(isCoop);
 
         CampaignGenerator generator = new CampaignGenerator(generatorModel);
         Campaign campaign = generator.generate();
