@@ -12,7 +12,6 @@ public class CampaignData
 	private String name = "";
 	private int campaignStatus = SquadronMemberStatus.STATUS_ACTIVE;
     private int squadId = -1;
-    private boolean isGreatAce = false;
     private boolean isCoop = false;
     private SerialNumber serialNumber = new SerialNumber();
 
@@ -54,16 +53,6 @@ public class CampaignData
 	public void setSquadId(int squadId)
 	{
 		this.squadId = squadId;
-	}
-
-	public boolean isGreatAce()
-	{
-		return isGreatAce;
-	}
-
-	public void setGreatAce(boolean isGreatAce)
-	{
-		this.isGreatAce = isGreatAce;
 	}
 	
     public boolean isCoop()

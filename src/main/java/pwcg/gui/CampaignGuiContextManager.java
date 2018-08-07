@@ -16,33 +16,20 @@ public class CampaignGuiContextManager
     
     private List<PwcgGuiContext> contextStack = new ArrayList<PwcgGuiContext>();
 
-    /**
-     * 
-     */
     private CampaignGuiContextManager()
     {
     }
-    
-    /**
-     * @return
-     */
+
     public static CampaignGuiContextManager getInstance()
     {
         return instance;
     }
-    
-    /**
-     * 
-     */
+
     public void clearContextStack()
     {
         contextStack.clear();
     }
-    
-    /**
-     * @return
-     * @throws PWCGException 
-     */
+
     public PwcgGuiContext getCurrentContext() throws PWCGException 
     {
         if (contextStack.size() == 0)
@@ -54,20 +41,12 @@ public class CampaignGuiContextManager
         return contextStack.get(index);
     }
 
-    /**
-     * @throws PWCGException 
-     * 
-     */
     public void pushToContextStack(PwcgGuiContext context) throws PWCGException
     {
         contextStack.add(context);
         displayCurrentContext();
     }
-    
-    /**
-     * @throws PWCGException 
-     * 
-     */
+
     public void popFromContextStack() throws PWCGException
     {
         if (contextStack.size() > 1)
@@ -77,11 +56,7 @@ public class CampaignGuiContextManager
             displayCurrentContext();
         }
     }
-    
-    /**
-     * @throws PWCGException 
-     * 
-     */
+
     private void displayCurrentContext() throws PWCGException
     {
         if (contextStack.size() > 0)
@@ -92,12 +67,7 @@ public class CampaignGuiContextManager
             displayContext(context);
         }
     }
-    
 
-    /**
-     * Used for refresh or after a pop.
-     * Display an existing context
-     */
     private void displayContext(PwcgGuiContext context) 
     {
         try

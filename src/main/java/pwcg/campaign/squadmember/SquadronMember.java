@@ -203,7 +203,7 @@ public class SquadronMember implements Cloneable
     public String determineSortKey(Campaign campaign) throws PWCGException
     {
         IRankHelper rankObj = RankFactory.createRankHelper();
-        int rankPos = rankObj.getRankPosByService(rank, campaign.getPlayer().determineService(campaign.getDate()));
+        int rankPos = rankObj.getRankPosByService(rank, campaign.getService());
 
         int numVictoriesKey = 999 - getSquadronMemberVictories().getAirToAirVictories();
         String victoriesString = String.format("%03d", numVictoriesKey);

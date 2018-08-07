@@ -81,7 +81,6 @@ public class CampaignRosterSquadronPanelFactory extends CampaignRosterBasePanelF
 		
 		Font font = MonitorSupport.getPrimaryFont();
 		
-		SquadronMember player = campaign.getPlayer();
 		
 		Color fg = ColorMap.PLAQUE_GOLD;
 		
@@ -96,35 +95,29 @@ public class CampaignRosterSquadronPanelFactory extends CampaignRosterBasePanelF
 		lDummy2.setOpaque(false);
         descGridPanel.add(lDummy2);
 
-		String nameString = spacing + player.getNameAndRank();
-		JLabel lName = new JLabel(nameString, JLabel.LEFT);
-		lName.setFont(font);
-		lName.setForeground(fg);
-		descGridPanel.add(lName);
+        Squadron squad =  campaign.determineSquadron();
+        String squadString = spacing + "Assigned to " + squad.determineDisplayName(campaign.getDate());
+        JLabel lSquad = new JLabel(squadString, JLabel.LEFT);
+        lSquad.setFont(font);
+        lSquad.setForeground(fg);
+        descGridPanel.add(lSquad);
+        
+        String airfieldAtString = spacing + "Stationed at ";
+        JLabel lAirfieldAt = new JLabel(airfieldAtString, JLabel.LEFT);
+        lAirfieldAt.setFont(font);
+        lAirfieldAt.setForeground(fg);
+        descGridPanel.add(lAirfieldAt);
+        
+        String airfieldString = spacing + campaign.getAirfieldName();
+        JLabel lAirfield = new JLabel(airfieldString, JLabel.LEFT);
+        lAirfield.setFont(font);
+        lAirfield.setForeground(fg);
+        descGridPanel.add(lAirfield);
 
 		JLabel lDate = new JLabel(spacing + DateUtils.getDateString(campaign.getDate()), JLabel.LEFT);
 		lDate.setFont(font);
 		lDate.setForeground(fg);
 		descGridPanel.add(lDate);
-
-		Squadron squad =  campaign.determineSquadron();
-		String squadString = spacing + "Assigned to " + squad.determineDisplayName(campaign.getDate());
-		JLabel lSquad = new JLabel(squadString, JLabel.LEFT);
-		lSquad.setFont(font);
-		lSquad.setForeground(fg);
-		descGridPanel.add(lSquad);
-		
-		String airfieldAtString = spacing + "Stationed at ";
-		JLabel lAirfieldAt = new JLabel(airfieldAtString, JLabel.LEFT);
-		lAirfieldAt.setFont(font);
-		lAirfieldAt.setForeground(fg);
-		descGridPanel.add(lAirfieldAt);
-		
-		String airfieldString = spacing + campaign.getAirfieldName();
-		JLabel lAirfield = new JLabel(airfieldString, JLabel.LEFT);
-		lAirfield.setFont(font);
-		lAirfield.setForeground(fg);
-		descGridPanel.add(lAirfield);
 		
 		PlaneType aircraftType = squad.determineBestPlane(campaign.getDate());
 		if (aircraftType != null)

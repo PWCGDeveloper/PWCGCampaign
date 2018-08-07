@@ -41,6 +41,7 @@ public class AiDeclarationResolutionFirmTest
         
     private List<LogVictory> firmVictories = new ArrayList<>();        
     private List<LogVictory> emptyList = new ArrayList<>();        
+    private List<SquadronMember> players = new ArrayList<>();
 
     private LogPlane playerVictor = new LogPlane();
     private LogPlane aiVictor = new LogPlane();
@@ -77,15 +78,19 @@ public class AiDeclarationResolutionFirmTest
         resultVictory.setCrossedPlayerPath(true);
         firmVictories.add(resultVictory);
         
+        players = new ArrayList<>();
+        players.add(player);
+
         Mockito.when(victorySorter.getFirmAirVictories()).thenReturn(firmVictories);
         Mockito.when(victorySorter.getFirmBalloonVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getFuzzyAirVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getAllUnconfirmed()).thenReturn(emptyList);
-        Mockito.when(campaign.getPlayer()).thenReturn(player);
+        Mockito.when(campaign.getPlayers()).thenReturn(players);
         Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(campaignData.getName()).thenReturn(PLAYER_NAME);
 
+        Mockito.when(player.isPlayer()).thenReturn(true);
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         Mockito.when(ai.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
     }

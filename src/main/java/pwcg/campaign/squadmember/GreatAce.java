@@ -9,22 +9,25 @@ public class GreatAce
 {
     public static boolean isGreatAce(Campaign campaign) throws PWCGException 
     {        
-        // Check anyway
         if (campaign == null)
         {
             return false;
         }
         
-        // If we have already designated the player as a great ace we do not perform the calculations again.
-        // Once a great ace always a great ace.
-        if (campaign.isGreatAce())
+        for (SquadronMember player : campaign.getPlayers())
         {
-            return true;
+            int numVictories = player.getSquadronMemberVictories().getAirToAirVictories();
+            if (isSquadronMemberGreatAce(campaign, numVictories))
+            {
+                return true;
+            }
         }
         
-        SquadronMember player = campaign.getPlayer();
-        int numVictories = player.getSquadronMemberVictories().getAirToAirVictories();
-        
+        return false;
+    }
+
+    private static boolean isSquadronMemberGreatAce(Campaign campaign, int numVictories)
+    {
         try
         {
             if (campaign.getDate().before(DateUtils.getDateNoCheck("01/08/1916")))
@@ -67,7 +70,7 @@ public class GreatAce
         {
             Logger.logException(e);
         }
-        
+
         return false;
     }
 }

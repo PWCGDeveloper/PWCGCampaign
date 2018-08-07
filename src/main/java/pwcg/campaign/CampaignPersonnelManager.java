@@ -67,7 +67,6 @@ public class CampaignPersonnelManager
     public Map<Integer, SquadronMember> getAllCampaignMembers() throws PWCGException
     {
         Map<Integer, SquadronMember> allSquadronMembers = getAllNonAceCampaignMembers();
-        allSquadronMembers.put(campaign.getPlayer().getSerialNumber(), campaign.getPlayer());
         allSquadronMembers.putAll(campaignAces.getCampaignAces());
         return allSquadronMembers;
     }

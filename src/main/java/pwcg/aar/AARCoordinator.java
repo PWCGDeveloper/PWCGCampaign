@@ -1,5 +1,7 @@
 package pwcg.aar;
 
+import java.util.Map;
+
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase1.parse.AARLogEvaluationCoordinator;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
@@ -36,7 +38,7 @@ public class AARCoordinator
         aarContext.setPreliminaryData(aarPreliminaryData);
     }
 
-    public void submitAAR(PlayerDeclarations playerDeclarations) throws PWCGException
+    public void submitAAR(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         try
         {
@@ -58,7 +60,7 @@ public class AARCoordinator
         aarContext.setMissionLogRawData(missionLogRawData);
     }
 
-    public void evaluateInMission(PlayerDeclarations playerDeclarations) throws PWCGException
+    public void evaluateInMission(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         AARCoordinatorMissionHandler missionHandler = new AARCoordinatorMissionHandler(campaign, aarContext);
         missionHandler.handleInMissionAAR(playerDeclarations);

@@ -4,6 +4,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 public class PlayerVictoryReassigner
@@ -35,7 +36,8 @@ public class PlayerVictoryReassigner
             if (resultVictory.getVictor() instanceof LogPlane)
             {
                 LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
-                if (PlayerVictoryResolver.isPlayerVictory(campaign.getPlayer(), victorPlanePlane.getPilotSerialNumber()))
+                SquadronMember squadronMember = campaign.getPersonnelManager().getActiveCampaignMember(victorPlanePlane.getPilotSerialNumber());
+                if (PlayerVictoryResolver.isPlayerVictory(squadronMember, victorPlanePlane.getPilotSerialNumber()))
                 {
                     LogUnknown markedForAssignment = new LogUnknown();
                     markedForAssignment.setUnknownVictoryAssignment(UnknownVictoryAssignments.RANDOM_ASSIGNMENT);

@@ -51,7 +51,7 @@ public class PreliminaryDataBuilderForTest
     {
         SquadronMembers squadronMembersInMission = new SquadronMembers();
         
-        squadronMembersInMission.addToSquadronMemberCollection(campaign.getPlayer());
+        squadronMembersInMission.addToSquadronMemberCollection(campaign.getPlayers().get(0));
 
         for (Squadron squadron : squadronsInMission)
         {

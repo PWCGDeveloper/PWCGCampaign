@@ -44,7 +44,7 @@ public class PlaneFactoryTest
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(campaign, squadron, flight);
         List<PlaneMCU> assignedPlanes = planeFactory.createPlanesForFlight(4);
         
-        SquadronMember player = campaign.getPlayer();        
+        List<SquadronMember> players = campaign.getPlayers();        
         boolean playerFound = false;
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId());        
         int callnum = 1;
@@ -53,7 +53,7 @@ public class PlaneFactoryTest
             assert(squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
             assert(plane.getCallsign() == Callsign.SEAGULL);
             assert(plane.getCallnum() == callnum++);
-            if (plane.getPilot().getSerialNumber() == player.getSerialNumber())
+            if (plane.getPilot().getSerialNumber() == players.get(0).getSerialNumber())
             {
                 playerFound = true;
             }
@@ -71,7 +71,7 @@ public class PlaneFactoryTest
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(campaign, squadron, flight);
         List<PlaneMCU> assignedPlanes = planeFactory.createPlanesForFlight(4);
         
-        SquadronMember player = campaign.getPlayer();        
+        List<SquadronMember> players = campaign.getPlayers();        
         boolean playerFound = false;
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());        
         int callnum = 1;
@@ -80,7 +80,7 @@ public class PlaneFactoryTest
             assert(squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
             assert(plane.getCallsign() == Callsign.ROOK);
             assert(plane.getCallnum() == callnum++);
-            if (plane.getPilot().getSerialNumber() == player.getSerialNumber())
+            if (plane.getPilot().getSerialNumber() == players.get(0).getSerialNumber())
             {
                 playerFound = true;
             }

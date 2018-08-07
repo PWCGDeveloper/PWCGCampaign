@@ -76,7 +76,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 	public void makePanels() throws PWCGException  
 	{
 	    // Initialize things that might change based on the transfer
-        service = this.campaign.getPlayer().determineService(campaign.getDate());
+        service = this.campaign.getService();
 
 		// Not so great dependency - have to make the right panel first so accept button is not null
 		// when evaluate is called
@@ -150,7 +150,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 			}
 
 			// Transfer label
-		     SquadronMember player = campaign.getPlayer();
+			SquadronMember player = campaign.getPlayers().get(0);
 
 			JLabel lName = new JLabel(player.getNameAndRank(), JLabel.LEFT);
 			lName.setOpaque(false);
@@ -203,7 +203,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 
     private void initializeValues() throws PWCGException 
     {
-        ArmedService playerService = campaign.getPlayer().determineService(campaign.getDate());
+        ArmedService playerService = campaign.getService();
         cbService.setSelectedItem(playerService.getName());
 
         Squadron playerSquadron = campaign.determineSquadron();        

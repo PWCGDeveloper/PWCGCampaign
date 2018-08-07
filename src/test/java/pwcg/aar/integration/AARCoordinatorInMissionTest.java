@@ -2,6 +2,7 @@ package pwcg.aar.integration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +17,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -27,7 +29,7 @@ public class AARCoordinatorInMissionTest
     private Campaign campaign;    
     private AARCoordinator aarCoordinator;
     private List<Squadron> squadronsInMission = new ArrayList<>();
-    private PlayerDeclarations playerDeclarations;
+    private Map<Integer, PlayerDeclarations> playerDeclarations;
     private ExpectedResults expectedResults;
     private int playerMissionsFlown = 0;
 
@@ -41,7 +43,7 @@ public class AARCoordinatorInMissionTest
         aarCoordinator = AARCoordinator.getInstance();
         aarCoordinator.reset(campaign);
         
-        playerMissionsFlown = campaign.getPlayer().getMissionFlown();
+        playerMissionsFlown = campaign.getPlayers().get(0).getMissionFlown();
     }
 
     @Test
@@ -76,10 +78,11 @@ public class AARCoordinatorInMissionTest
         aarCoordinator.getAarContext().setPreliminaryData(preliminaryData);
     }
 
-    private void makePlayerDeclarations()
+    private void makePlayerDeclarations() throws PWCGException
     {
+        SquadronMember player = campaign.getPlayers().get(0);
         PlayerDeclarationsBuilder  declarationsBuilder = new PlayerDeclarationsBuilder();
-        playerDeclarations = declarationsBuilder.makePlayerDeclarations();
+        playerDeclarations = declarationsBuilder.makePlayerDeclarations(player);
     }
 
     private void makeMissionLogEvents() throws PWCGException

@@ -25,7 +25,6 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
@@ -109,32 +108,6 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
         return pilotPanel;
     }
 
-    public JPanel makePilotLog2() throws PWCGIOException 
-    {
-        Color bg = ColorMap.WOOD_BACKGROUND;
-        
-        // Picture button
-        // Set up the picture
-        JPanel pilotLogBookPanel = new JPanel(new BorderLayout());
-        pilotLogBookPanel.setOpaque(false);
-
-        String imagePath = ContextSpecificImages.imagesMisc() + "PilotLogBook.gif";
-        ImageIcon imageIcon = ImageCache.getInstance().getImageIcon(imagePath);
-        PWCGJButton logBookButton = new PWCGJButton(imageIcon);
-
-
-        logBookButton.setBackground(bg);
-        logBookButton.setOpaque(false);
-        logBookButton.setBorderPainted(false);
-        String actionCommand = openLogBookAction + pilot.getSerialNumber();
-        logBookButton.setActionCommand(actionCommand);
-        logBookButton.addActionListener(this);
-
-        pilotLogBookPanel.add(logBookButton, BorderLayout.NORTH);
-        
-        return pilotLogBookPanel;
-    }   
-
 	private JPanel makePilotLog() throws PWCGException 
 	{
 		JPanel pilotLogPanel = new JPanel(new BorderLayout());
@@ -197,26 +170,14 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 			pilotInfoPanel.add(lSpacer);
 		}
 
-		// Name
-		String pilotRank = labelSpacing + pilot.getRank() ;
+		String pilotRank = labelSpacing + pilot.getNameAndRank();
 		JLabel lRank = new JLabel(pilotRank, JLabel.LEFT);
 		lRank.setForeground(fadedFG);
 		lRank.setBackground(bg);
 		lRank.setOpaque(false);
 		lRank.setFont(font);
 		pilotInfoPanel.add(lRank);
-		
-		// Name
-		String pilotName = labelSpacing + pilot.getSerialNumber();
-		JLabel lName = new JLabel(pilotName, JLabel.LEFT);
-		lName.setForeground(fadedFG);
-		lName.setBackground(bg);
-		lName.setOpaque(false);
-		lName.setFont(font);
-		pilotInfoPanel.add(lName);
 
-
-		
 		for (int i = 0; i < 6; ++i)
 		{
 			JLabel lSpacer = new JLabel("          ");
@@ -226,7 +187,6 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 			pilotInfoPanel.add(lSpacer);
 		}
 		
-
 		pilotLogBorderPanel.add(pilotInfoPanel, BorderLayout.CENTER);
 
 		pilotLogPanel.add(pilotLogBorderPanel, BorderLayout.CENTER);

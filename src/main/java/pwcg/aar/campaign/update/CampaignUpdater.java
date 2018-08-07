@@ -4,7 +4,6 @@ import java.util.Date;
 
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.GreatAce;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignUpdater 
@@ -47,8 +46,6 @@ public class CampaignUpdater
     
     private void finishCampaignUpdates(Date newDate) throws PWCGException
     {
-        campaign.setGreatAce(GreatAce.isGreatAce(campaign));
-        
         campaign.getCampaignLogs().setCampaignLogs(campaign, aarContext.getCampaignUpdateData().getLogEvents().getCampaignLogEvents());
         
         campaign.setDate(newDate);

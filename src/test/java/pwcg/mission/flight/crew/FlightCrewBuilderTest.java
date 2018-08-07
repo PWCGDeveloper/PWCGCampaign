@@ -32,13 +32,13 @@ public class FlightCrewBuilderTest
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(campaign, squadron);
         List<SquadronMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
-        SquadronMember player = campaign.getPlayer();        
+        List<SquadronMember> players = campaign.getPlayers();
         boolean playerFound = false;
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId());        
         for (SquadronMember crew : assignedCrewMap)
         {
             assert(squadronPersonnel.isActiveSquadronMember(crew.getSerialNumber()));
-            if (crew.getSerialNumber() == player.getSerialNumber())
+            if (crew.getSerialNumber() == players.get(0).getSerialNumber())
             {
                 playerFound = true;
             }
@@ -54,13 +54,13 @@ public class FlightCrewBuilderTest
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(campaign, squadron);
         List<SquadronMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
-        SquadronMember player = campaign.getPlayer();
+        List<SquadronMember> players = campaign.getPlayers();
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());        
         boolean playerFound = false;
         for (SquadronMember crew : assignedCrewMap)
         {
             assert(squadronPersonnel.isActiveSquadronMember(crew.getSerialNumber()));
-            if (crew.getSerialNumber() == player.getSerialNumber())
+            if (crew.getSerialNumber() == players.get(0).getSerialNumber())
             {
                 playerFound = true;
             }

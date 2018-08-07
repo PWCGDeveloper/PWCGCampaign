@@ -47,21 +47,8 @@ public class PilotStatusEventGenerator
             pilotsLost.put(pilot.getSerialNumber(),aceKiaEvent);
         }
         
-        createPlayerLostEvent(personnelResults);
-        
         return pilotsLost;
     }
-    
-
-    private void createPlayerLostEvent(AARPersonnelLosses personnelResults) throws PWCGException
-    {
-        if (personnelResults.getPlayerStatus() <= SquadronMemberStatus.STATUS_WOUNDED)
-        {
-            PilotStatusEvent pilotLostEvent = makePilotLostEvent(campaign.getPlayer(), personnelResults.getPlayerStatus());
-            pilotsLost.put(campaign.getPlayer().getSerialNumber(),pilotLostEvent);
-        }
-    }
-
 
     protected PilotStatusEvent makePilotLostEvent(SquadronMember pilot, int pilotStatus) throws PWCGException
     {

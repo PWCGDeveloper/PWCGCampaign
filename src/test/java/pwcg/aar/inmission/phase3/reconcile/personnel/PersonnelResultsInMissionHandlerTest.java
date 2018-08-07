@@ -56,13 +56,13 @@ public class PersonnelResultsInMissionHandlerTest
         assert(inMissionHandler.personellChanges().getPersonnelKilled().size() == 1);
         assert(inMissionHandler.personellChanges().getPersonnelCaptured().size() == 1);
         assert(inMissionHandler.personellChanges().getPersonnelMaimed().size() == 1);
-        assert(inMissionHandler.personellChanges().getPlayerStatus() == SquadronMemberStatus.STATUS_WOUNDED);
+        assert(inMissionHandler.personellChanges().getPersonnelWounded().size() == 2);
         assert(inMissionHandler.personellChanges().getAcesKilled().size() == 2);
     }
 
     private void createSquadronMembersInMission() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPlayer();
+        SquadronMember playerInFlight = campaign.getPlayers().get(0);
         addSquadronPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
 
         SquadronMember sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");

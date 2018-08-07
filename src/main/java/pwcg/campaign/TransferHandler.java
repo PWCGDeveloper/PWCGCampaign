@@ -1,5 +1,7 @@
 package pwcg.campaign;
 
+import java.util.List;
+
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContextManager;
@@ -50,7 +52,7 @@ public class TransferHandler
 	private TransferEvent createTransferEvent(int leaveTimeForTransfer, Squadron oldSquad, Squadron newSquad) throws PWCGException
 	{
 		TransferEvent transferEvent = new TransferEvent();
-        transferEvent.setPilot(campaign.getPlayer());
+        transferEvent.setPilot(campaign.getPlayers().get(0));
         transferEvent.setTransferIn(true);
         transferEvent.setDate(campaign.getDate());
         transferEvent.setSquadron(newSquad.determineDisplayName(campaign.getDate()));
@@ -63,7 +65,7 @@ public class TransferHandler
 	private Squadron setNewSquadron(ArmedService newService, String newSquadName)
 	        throws PWCGException
 	{
-		SquadronMember player = campaign.getPlayer();
+		SquadronMember player = campaign.getPlayers().get(0);
 		Squadron newSquad =  PWCGContextManager.getInstance().getSquadronManager().getSquadronByNameAndCountry(newSquadName, newService.getCountry(), campaign.getDate());
         
 		SquadronPersonnel oldSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(player.getSquadronId());
@@ -85,17 +87,20 @@ public class TransferHandler
 
     private void changeInRankForServiceTransfer(ArmedService newService) throws PWCGException 
     {
-        SquadronMember player = campaign.getPlayer();
-        IRankHelper iRank = RankFactory.createRankHelper();        
-        int rankPos = iRank.getRankPosByService(player.getRank(), campaign.determineSquadron().determineServiceForSquadron(campaign.getDate()));
-        
-        int lowestRankPos = iRank.getLowestRankPosForService(newService);
-        if (rankPos > lowestRankPos)
+        List<SquadronMember> players = campaign.getPlayers();
+        for (SquadronMember player : players)
         {
-            rankPos = lowestRankPos;
+            IRankHelper iRank = RankFactory.createRankHelper();        
+            int rankPos = iRank.getRankPosByService(player.getRank(), campaign.determineSquadron().determineServiceForSquadron(campaign.getDate()));
+            
+            int lowestRankPos = iRank.getLowestRankPosForService(newService);
+            if (rankPos > lowestRankPos)
+            {
+                rankPos = lowestRankPos;
+            }
+            
+            String newRank = iRank.getRankByService(rankPos, newService);
+            player.setRank(newRank);
         }
-        
-        String newRank = iRank.getRankByService(rankPos, newService);
-        player.setRank(newRank);
     }
 }

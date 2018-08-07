@@ -1,6 +1,7 @@
 package pwcg.aar;
 
 import java.util.Date;
+import java.util.Map;
 
 import pwcg.aar.campaign.update.CampaignUpdater;
 import pwcg.aar.campaigndate.AARTimePassedAfterMission;
@@ -28,14 +29,14 @@ public class AARCoordinatorMissionHandler
         this.aarContext = aarContext;
     }
 
-    public void handleInMissionAAR(PlayerDeclarations playerDeclarations) throws PWCGException
+    public void handleInMissionAAR(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         inMission(playerDeclarations);
         generateEventsForTimeWounded();
         generateEventsForNotViableSquadron();
     }
 
-    private void inMission(PlayerDeclarations playerDeclarations) throws PWCGException
+    private void inMission(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         determineInMissionResults(playerDeclarations);
         elapsedTimeDuringMission();
@@ -44,7 +45,7 @@ public class AARCoordinatorMissionHandler
         updateCampaignFromMission();
     }
 
-	private void determineInMissionResults(PlayerDeclarations playerDeclarations) throws PWCGException
+	private void determineInMissionResults(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
 	{
         AARLogEvaluationCoordinator inMissionCoordinator = new AARLogEvaluationCoordinator();
         AARCoordinatorInMission coordinatorInMission = new AARCoordinatorInMission(campaign, aarContext, inMissionCoordinator);

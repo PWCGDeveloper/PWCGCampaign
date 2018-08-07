@@ -34,13 +34,13 @@ public class PersonnelLossHandler
             {
                 continue;
             }
-            else  if (pilot.isPlayer())
+            else if (pilot.isPlayer())
             {
-                playerStatus(pilotStatus);
+                setStatus(pilotStatus, pilot);
             }
             else
             {
-                setAiStatus(pilotStatus, pilot);
+                setStatus(pilotStatus, pilot);
             }
         }
         
@@ -48,8 +48,13 @@ public class PersonnelLossHandler
     }
 
 
-    private void setAiStatus(LogPilot pilotStatus, SquadronMember pilot)
+    private void setStatus(LogPilot pilotStatus, SquadronMember pilot)
     {
+        if (pilotStatus.getStatus() == SquadronMemberStatus.STATUS_WOUNDED)
+        {
+            personnelLosses.addPersonnelWounded(pilot);
+        }
+
         if (pilotStatus.getStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
         {
             personnelLosses.addPersonnelMaimed(pilot);
@@ -65,11 +70,4 @@ public class PersonnelLossHandler
             personnelLosses.addPersonnelKilled(pilot);
         }
     }
-
-
-    private void playerStatus(LogPilot pilotStatus)
-    {
-        personnelLosses.setPlayerStatus(pilotStatus.getStatus());
-    }
-
 }

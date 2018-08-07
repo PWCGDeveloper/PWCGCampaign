@@ -1,5 +1,8 @@
 package pwcg.aar.inmission.phase3.reconcile.victories;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,24 +26,16 @@ import pwcg.core.utils.DateUtils;
 @RunWith(MockitoJUnitRunner.class)
 public class ClaimResolverTest
 {
-    @Mock 
-    private Campaign campaign;
-    
-    @Mock
-    private CampaignPersonnelManager personnelManager;
-    
-    @Mock
-    private SquadronMember pilot;
-
-    @Mock 
-    private VerifiedVictoryGenerator verifiedVictoryGenerator;
-
-    @Mock 
-    private ClaimDenier claimDenier;
+    @Mock private Campaign campaign;
+    @Mock private CampaignPersonnelManager personnelManager;
+    @Mock private SquadronMember pilot;
+    @Mock private VerifiedVictoryGenerator verifiedVictoryGenerator;
+    @Mock private ClaimDenier claimDenier;
 
     private ConfirmedVictories verifiedVictories;
+    private Map<Integer, PlayerDeclarations> playerDeclarations = new HashMap<>();
+    private PlayerDeclarations playerDeclarationSet;
 
-    private PlayerDeclarations playerDeclarations;
     
     @Before
     public void setup() throws PWCGException
@@ -48,14 +43,17 @@ public class ClaimResolverTest
         PWCGContextManager.setRoF(true);
 
         verifiedVictories = new ConfirmedVictories();
-        playerDeclarations = new PlayerDeclarations();
+        playerDeclarationSet = new PlayerDeclarations();
         for (int i = 0; i < 3; ++i)
         {
             PlayerVictoryDeclaration declaration = new PlayerVictoryDeclaration();
             declaration.confirmDeclaration(true, "SE.5a");
-            playerDeclarations.addPlayerDeclaration(declaration);
+            playerDeclarationSet.addDeclaration(declaration);
         }
         
+        playerDeclarations.clear();
+        playerDeclarations.put(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, playerDeclarationSet);
+
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getBeginningOfWar());
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(personnelManager.getActiveCampaignMember(Matchers.<Integer>any())).thenReturn(pilot);
@@ -105,7 +103,7 @@ public class ClaimResolverTest
     @Test
     public void testClaimDenied() throws PWCGException
     {
-        Mockito.when(claimDenier.determineClaimDenied(Matchers.<PlayerVictoryDeclaration>any())).thenReturn(new ClaimDeniedEvent());
+        Mockito.when(claimDenier.determineClaimDenied(Matchers.<Integer>any(), Matchers.<PlayerVictoryDeclaration>any())).thenReturn(new ClaimDeniedEvent());
 
         ClaimResolver claimResolver = new ClaimResolver(campaign, verifiedVictoryGenerator, claimDenier);
         ReconciledVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims(playerDeclarations);

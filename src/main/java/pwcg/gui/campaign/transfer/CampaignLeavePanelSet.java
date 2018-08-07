@@ -92,12 +92,6 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 		return leaverPanel;
 	}
 
-	
-	
-	/**
-	 * @return
-	 * @
-	 */
 	private JPanel makeLeaveCenterPanel()  
 	{
 		ImageResizingPanel leaveCenterPanel = null;
@@ -136,7 +130,6 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 				leavePanel.add(lDummy, constraints);
 			}
 
-			
 			int numDummyCols = 3;
 			for (int i = 0; i < numDummyCols; ++i)
 			{
@@ -149,7 +142,7 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 				leavePanel.add(lDummy, constraints);
 			}
 			
-			SquadronMember player = campaign.getPlayer();
+			SquadronMember player = campaign.getPlayers().get(0);
 
 			JLabel lName = new JLabel(player.getNameAndRank(), JLabel.LEFT);
 			lName.setOpaque(false);

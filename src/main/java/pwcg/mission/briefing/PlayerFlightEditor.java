@@ -9,6 +9,7 @@ import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PayloadElementManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.constants.AiSkillLevel;
@@ -106,7 +107,8 @@ public class PlayerFlightEditor
     private void configurePlaneForCrew(PlaneMCU plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
         AiSkillLevel aiLevel = crewPlane.getPilot().getAiSkillLevel();
-        if (crewPlane.getPilot().getSerialNumber() == campaign.getPlayer().getSerialNumber())
+        SquadronMember squadronMember = campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMember(crewPlane.getPilot().getSerialNumber());
+        if (squadronMember.isPlayer())
         {
             aiLevel = AiSkillLevel.PLAYER;
         }

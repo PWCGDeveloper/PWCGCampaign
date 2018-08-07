@@ -17,6 +17,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.squadmember.Ace;
+import pwcg.campaign.squadmember.GreatAce;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadron.Squadron;
@@ -63,10 +64,9 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
     
     private CampaignMainGUI parent = null;
     private Campaign campaign = null;
-    
     private JButton loneWolfMission = null;
-
     private List<JButton> activeButtons = new ArrayList<JButton>();
+    private boolean needContextRefresh = false;
 
     public CampaignHomeGUI(CampaignMainGUI parent, Campaign campaign) 
     {
@@ -86,6 +86,16 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         {
             Logger.logException(e);
             ErrorDialog.internalError(e.getMessage());
+        }
+    }
+    
+    @Override
+    public void refreshCenterPanel() throws PWCGException
+    {
+        if (needContextRefresh)
+        {
+            needContextRefresh = false;
+            createPilotContext();
         }
     }
 
@@ -131,6 +141,9 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
             JButton pilotsButton = makeMenuButton("Pilots", "CampPilots", "Show squadron pilot chalk board");
             addButton(buttonPanel, pilotsButton);
+
+            JButton addHumanPilotButton = makeMenuButton("Add Pilot", "AddHumanPilot", "Add a human pilot");
+            addButton(buttonPanel, addHumanPilotButton);
 
             JButton topAcesButton = makeMenuButton("Top Aces", "CampTopAces", "Show top aces chalk board");
             addButton(buttonPanel, topAcesButton);
@@ -374,6 +387,10 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             {
                 createPilotContext();
             }
+            else if (action.equalsIgnoreCase("AddHumanPilot"))
+            {
+                showAddHumanPilot();
+            }
             else if (action.equalsIgnoreCase("CampTopAces"))
             {
                 createTopAceContext();
@@ -415,6 +432,16 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         }
     }
 
+    private void showAddHumanPilot() throws PWCGException
+    {
+        needContextRefresh = true;
+
+        SoundManager.getInstance().playSound("Typewriter.WAV");
+        CampaignAddHumanPilotPanelSet addPilotDisplay = new CampaignAddHumanPilotPanelSet();
+        addPilotDisplay.makePanels();        
+        CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
+    }
+
     private void showBriefingMap(Mission mission) throws PWCGException 
     {
     	MusicManager.playMissionBriefingTheme();
@@ -428,10 +455,8 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
     private void showTransfer() throws PWCGException 
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
-
         CampaignTransferPanelSet transferDisplay = new CampaignTransferPanelSet(this);
-        transferDisplay.makePanels();
-        
+        transferDisplay.makePanels();        
         CampaignGuiContextManager.getInstance().pushToContextStack(transferDisplay);
     }
 
@@ -589,7 +614,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
     {
         if (campaign.getCampaignStatus() > SquadronMemberStatus.STATUS_CAPTURED)
         {            
-            if (campaign.isGreatAce())
+            if (GreatAce.isGreatAce(campaign))
             {
                 loneWolfMission.setEnabled(true);
             }

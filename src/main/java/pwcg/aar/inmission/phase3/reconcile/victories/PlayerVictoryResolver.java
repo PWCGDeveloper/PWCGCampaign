@@ -11,13 +11,15 @@ public abstract class PlayerVictoryResolver
 {
     protected List<LogVictory> confirmedPlayerVictories = new ArrayList<LogVictory>();
 
-    public static boolean isPlayerVictory(SquadronMember player, Integer victorSerialNumber) throws PWCGException
+    public static boolean isPlayerVictory(SquadronMember squadronMember, Integer victorSerialNumber) throws PWCGException
     {
-        if (player.getSerialNumber() == victorSerialNumber)
+        if (squadronMember.isPlayer())
         {
-            return true;
+            if (squadronMember.getSerialNumber() == victorSerialNumber)
+            {
+                return true;
+            }
         }
-        
         return false;
     }
 

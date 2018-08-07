@@ -7,7 +7,6 @@ import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignMemberAwardsGeneratorInMission extends CampaignMemberAwardsGenerator
@@ -36,11 +35,6 @@ public class CampaignMemberAwardsGeneratorInMission extends CampaignMemberAwards
         for (SquadronMember campaignMemberWoundedInMission : aarContext.getCampaignUpdateData().getPersonnelLosses().getPersonnelMaimed().values())
         {
             awardWoundMedal(campaignMemberWoundedInMission);
-        }
-
-        if (aarContext.getCampaignUpdateData().getPersonnelLosses().getPlayerStatus() <= SquadronMemberStatus.STATUS_WOUNDED)
-        {
-            this.awardWoundMedal(campaign.getPlayer());
         }
 	}
 

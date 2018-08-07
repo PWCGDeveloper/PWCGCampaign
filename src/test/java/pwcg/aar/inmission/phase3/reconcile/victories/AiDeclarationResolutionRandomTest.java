@@ -66,6 +66,7 @@ public class AiDeclarationResolutionRandomTest
         
     private List<LogVictory> randomVictories = new ArrayList<>();        
     private List<LogVictory> emptyList = new ArrayList<>();        
+    private List<SquadronMember> players = new ArrayList<>();
 
     private LogPlane playerVictor = new LogPlane();
     private LogPlane aiVictor = new LogPlane();
@@ -80,6 +81,9 @@ public class AiDeclarationResolutionRandomTest
 
         playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         aiVictor.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
+        
+        players = new ArrayList<>();
+        players.add(player);
 
         createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1000, UnknownVictoryAssignments.RANDOM_ASSIGNMENT);
         createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001, UnknownVictoryAssignments.UNKNOWN_ASSIGNMENT);
@@ -89,7 +93,7 @@ public class AiDeclarationResolutionRandomTest
         Mockito.when(victorySorter.getFirmBalloonVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getFuzzyAirVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getAllUnconfirmed()).thenReturn(randomVictories);
-        Mockito.when(campaign.getPlayer()).thenReturn(player);
+        Mockito.when(campaign.getPlayers()).thenReturn(players);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(campaign.determineSquadron()).thenReturn(squadron);
         Mockito.when(squadron.getSquadronId()).thenReturn(Squadron.REPLACEMENT);

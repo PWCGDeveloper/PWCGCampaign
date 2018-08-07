@@ -35,8 +35,9 @@ public abstract class PwcgGuiContext extends ImagePanel
         return rightPanel;
     }
 
-    public JPanel getCenterPanel()
+    public JPanel getCenterPanel() throws PWCGException
     {
+        refreshCenterPanel();
         return centerPanel;
     }
 
@@ -147,6 +148,11 @@ public abstract class PwcgGuiContext extends ImagePanel
         }
         
         return imagePath;
+    }
+
+    public void refreshCenterPanel() throws PWCGException
+    {
+        // Override when necessary
     }
 
 }

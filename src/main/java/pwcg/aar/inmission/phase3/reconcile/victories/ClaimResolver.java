@@ -25,14 +25,14 @@ public class ClaimResolver
         this.claimDenier = claimDenier;
     }
     
-    public ReconciledVictoryData resolvePlayerClaims(PlayerDeclarations playerDeclarations) throws PWCGException
+    public ReconciledVictoryData resolvePlayerClaims(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         confirmVictories(playerDeclarations);
         claimsDenied(playerDeclarations);       
         return reconciledMissionData;
     }
 
-    private void confirmVictories(PlayerDeclarations playerDeclarations) throws PWCGException
+    private void confirmVictories(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         ConfirmedVictories verifiedVictories = verifiedVictoryGenerator.createVerifiedictories(playerDeclarations);
         
@@ -41,14 +41,18 @@ public class ClaimResolver
         reconciledMissionData.addVictoryAwards(victories);
     }
 
-    private void claimsDenied(PlayerDeclarations playerDeclarations) throws PWCGException 
+    private void claimsDenied(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException 
     {
-        for (PlayerVictoryDeclaration playerDeclaration : playerDeclarations.getPlayerDeclarations())
+        for (Integer playerSerialNumber : playerDeclarations.keySet())
         {
-            ClaimDeniedEvent claimDenied = claimDenier.determineClaimDenied(playerDeclaration);
-            if (claimDenied != null)
+            PlayerDeclarations playerDeclaration = playerDeclarations.get(playerSerialNumber);
+            for (PlayerVictoryDeclaration declaration : playerDeclaration.getDeclarations())
             {
-                reconciledMissionData.addClaimDenied(claimDenied);
+                ClaimDeniedEvent claimDenied = claimDenier.determineClaimDenied(playerSerialNumber, declaration);
+                if (claimDenied != null)
+                {
+                    reconciledMissionData.addClaimDenied(claimDenied);
+                }
             }
         }
     }

@@ -45,7 +45,7 @@ public class PersonnelSquadronLossHandlerTest
     @Test
     public void testEverybodyKilled() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPlayer();
+        SquadronMember playerInFlight = campaign.getPlayers().get(0);
         addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_KIA);
 
         SquadronMember SergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");
@@ -62,16 +62,15 @@ public class PersonnelSquadronLossHandlerTest
         PersonnelLossHandler pilotLossInMissionHandler = new PersonnelLossHandler(campaign);
         AARPersonnelLosses personnelLosses = pilotLossInMissionHandler.pilotsShotDown(pilotStatusList);
         
-        assert(personnelLosses.getPersonnelKilled().size() == 3);
+        assert(personnelLosses.getPersonnelKilled().size() == 4);
         assert(personnelLosses.getPersonnelCaptured().size() == 0);
         assert(personnelLosses.getPersonnelMaimed().size() == 0);
-        assert(personnelLosses.getPlayerStatus() == SquadronMemberStatus.STATUS_KIA);
     }
 
     @Test
     public void testMixedStatusWithMaimed() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPlayer();
+        SquadronMember playerInFlight = campaign.getPlayers().get(0);
         addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
 
         SquadronMember sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");
@@ -91,13 +90,13 @@ public class PersonnelSquadronLossHandlerTest
         assert(personnelLosses.getPersonnelKilled().size() == 1);
         assert(personnelLosses.getPersonnelCaptured().size() == 0);
         assert(personnelLosses.getPersonnelMaimed().size() == 1);
-        assert(personnelLosses.getPlayerStatus() == SquadronMemberStatus.STATUS_WOUNDED);
+        assert(personnelLosses.getPersonnelWounded().size() == 2);
     }
 
     @Test
     public void testMixedStatusWithCaptured() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPlayer();
+        SquadronMember playerInFlight = campaign.getPlayers().get(0);
         addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_CAPTURED);
 
         SquadronMember sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");
@@ -115,9 +114,8 @@ public class PersonnelSquadronLossHandlerTest
         AARPersonnelLosses personnelLosses = pilotLossInMissionHandler.pilotsShotDown(pilotStatusList);
         
         assert(personnelLosses.getPersonnelKilled().size() == 0);
-        assert(personnelLosses.getPersonnelCaptured().size() == 1);
+        assert(personnelLosses.getPersonnelCaptured().size() == 2);
         assert(personnelLosses.getPersonnelMaimed().size() == 1);
-        assert(personnelLosses.getPlayerStatus() == SquadronMemberStatus.STATUS_CAPTURED);
     }
 
 }

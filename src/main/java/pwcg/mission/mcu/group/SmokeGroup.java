@@ -57,12 +57,12 @@ public class SmokeGroup
         missionBeginUnit.initialize(position.copy());
 
         Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight();
-        PlaneMCU plane = playerFlight.getPlayerPlane();
+        List<PlaneMCU> planes = playerFlight.getPlayerPlanes();
         
         addSmokeEffect(requestedSmokeEffect, smokeEffectPosition);
         
-        buildActivate(plane);
-        buildDeactivate(plane);
+        buildActivate(planes.get(0));
+        buildDeactivate(planes.get(0));
         setTimers();
         setTargetAssociations();
         setObjectAssociations();

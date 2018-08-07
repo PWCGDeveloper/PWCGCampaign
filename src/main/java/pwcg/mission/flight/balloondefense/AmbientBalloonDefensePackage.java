@@ -41,7 +41,7 @@ public class AmbientBalloonDefensePackage
 		ICountry country = getAmbientBalloonCountry(positionCoordinate, side);
 		BalloonDefenseGroup balloonUnit = createBalloon (balloonPosition, country);
 		
-		PlaneMCU playerPlane = mission.getMissionFlightBuilder().getPlayerFlight().getPlayerPlane();
+		PlaneMCU playerPlane = mission.getMissionFlightBuilder().getPlayerFlight().getPlayerPlanes().get(0);
 		balloonUnit.setBalloonCheckZoneForPlayer(playerPlane.getEntity().getIndex());
 
 		return balloonUnit;

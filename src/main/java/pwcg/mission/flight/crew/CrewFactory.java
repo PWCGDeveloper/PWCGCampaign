@@ -1,6 +1,7 @@
 package pwcg.mission.flight.crew;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
@@ -39,17 +40,23 @@ public class CrewFactory
     {
         if (squadron.getSquadronId() == campaign.getSquadronId())
         {
-            SquadronMember player = campaign.getPlayer();
-            if (crewsForSquadron.containsKey(player.getSerialNumber()))
+            List<SquadronMember> players = campaign.getPlayers();
+            for (SquadronMember player : players)
             {
-                return;
-            }
-    
-            for (SquadronMember squadronMemberToBeReplaced : crewsForSquadron.values())
-            {
-                crewsForSquadron.put(player.getSerialNumber(), player);
-                crewsForSquadron.remove(squadronMemberToBeReplaced);
-                break;
+                if (crewsForSquadron.containsKey(player.getSerialNumber()))
+                {
+                    return;
+                }
+        
+                for (SquadronMember squadronMemberToBeReplaced : crewsForSquadron.values())
+                {
+                    if (!squadronMemberToBeReplaced.isPlayer())
+                    {
+                        crewsForSquadron.put(player.getSerialNumber(), player);
+                        crewsForSquadron.remove(squadronMemberToBeReplaced);
+                        break;
+                    }
+                }
             }
         }
     }

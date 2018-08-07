@@ -124,8 +124,8 @@ public class Mission
 
     private void setMissionScript(MissionOptions missionOptions) throws PWCGException
     {
-        PlaneMCU playerPlane = missionFlightBuilder.getPlayerFlight().getPlayerPlane();
-        String playerScript = playerPlane.getScript();
+        List<PlaneMCU> playerPlanes = missionFlightBuilder.getPlayerFlight().getPlayerPlanes();
+        String playerScript = playerPlanes.get(0).getScript();
 
         missionOptions.setPlayerConfig(playerScript);
     }
@@ -146,7 +146,7 @@ public class Mission
         	missionAirfieldIconBuilder.createWaypointIcons(campaign, this);
 
             missionObjectiveSuccess.createSuccessMissionObjective();
-            missionObjectiveFailure.createFailureMissionObjective(missionFlightBuilder.getPlayerFlight().getPlayerPlane());
+            missionObjectiveFailure.createFailureMissionObjective(missionFlightBuilder.getPlayerFlight().getPlayerPlanes().get(0));
             missionPlaneLimiter.createPlaneCountersToLimitPlanesSpawned(this, missionFlightBuilder.getPlayerFlight().getPlanes().size());
 
             MissionAnalyzer analyzer = new MissionAnalyzer();

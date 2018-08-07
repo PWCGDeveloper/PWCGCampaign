@@ -20,8 +20,8 @@ public class AARResultValidator
     public void validateInMission(int playerMissionsFlown, int expectedPlayerVictories) throws PWCGException
     {
         assert(campaign.getDate().after(DateUtils.getDateYYYYMMDD("19411101")));
-        assert(campaign.getPlayer().getVictories().size() == expectedResults.getPlayerAirVictories());
-        assert(campaign.getPlayer().getGroundVictories().size() == expectedResults.getPlayerGroundVictories());
+        assert(campaign.getPlayers().get(0).getVictories().size() == expectedResults.getPlayerAirVictories());
+        assert(campaign.getPlayers().get(0).getGroundVictories().size() == expectedResults.getPlayerGroundVictories());
         
         SquadronMember otherPilot = campaign.getPersonnelManager().getAnyCampaignMember(expectedResults.getSquadronMemberPilotSerialNumber());        
         assert(otherPilot.getVictories().size() == expectedResults.getSquadronMemberAirVictories());
@@ -31,15 +31,15 @@ public class AARResultValidator
             SquadronMember lostPilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
             assert(lostPilot.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
         }
-        assert(campaign.getPlayer().getMissionFlown()  == (playerMissionsFlown+1));
-        assert(campaign.getPlayer().getVictories().size() == expectedPlayerVictories);
+        assert(campaign.getPlayers().get(0).getMissionFlown()  == (playerMissionsFlown+1));
+        assert(campaign.getPlayers().get(0).getVictories().size() == expectedPlayerVictories);
     }
 
     public void validateLeave() throws PWCGException
     {
         assert(campaign.getDate().after(DateUtils.getDateYYYYMMDD("19411101")));
-        assert(campaign.getPlayer().getVictories().size() == 0);
-        assert(campaign.getPlayer().getGroundVictories().size() == 0);
+        assert(campaign.getPlayers().get(0).getVictories().size() == 0);
+        assert(campaign.getPlayers().get(0).getGroundVictories().size() == 0);
         
         for (Integer serialNumber : expectedResults.getLostPilots())
         {

@@ -17,13 +17,13 @@ import pwcg.core.exception.PWCGException;
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerClaimResolverFirmTest
 {    
-    @Mock
-    private SquadronMember player;
+    @Mock private SquadronMember player;
 
     @Before
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
+        Mockito.when(player.isPlayer()).thenReturn(true);
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
     }
 

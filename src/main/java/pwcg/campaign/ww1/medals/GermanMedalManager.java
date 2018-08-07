@@ -461,24 +461,28 @@ public class GermanMedalManager extends RoFMedalManager
 		List<Medal> medalsInOrder = getAllNationalMedalsInOrder();
 
 		List<Medal> regionalInOrder = new ArrayList<>();
-    	if (campaign.getPlayer().getPlayerRegion().equals(SquadronMember.BAVARIA))
-    	{
-    		regionalInOrder = getBavariaMedalsInOrder();
-    	}
-    	else if (campaign.getPlayer().getPlayerRegion().equals(SquadronMember.WURTTEMBURG))
-    	{
-    		regionalInOrder = getWurttenburgMedalsInOrder();
-    	}
-    	else if (campaign.getPlayer().getPlayerRegion().equals(SquadronMember.SAXONY))
-    	{
-    		regionalInOrder = getSaxonyMedalsInOrder();
-    	}
-    	else
-    	{
-    		regionalInOrder = getPrussiaMedalsInOrder();
-    	}
-    	
-    	medalsInOrder.addAll(regionalInOrder);
+		for (SquadronMember player : campaign.getPlayers())
+		{
+        	if (player.getPlayerRegion().equals(SquadronMember.BAVARIA))
+        	{
+        		regionalInOrder = getBavariaMedalsInOrder();
+        	}
+        	else if (player.getPlayerRegion().equals(SquadronMember.WURTTEMBURG))
+        	{
+        		regionalInOrder = getWurttenburgMedalsInOrder();
+        	}
+        	else if (player.getPlayerRegion().equals(SquadronMember.SAXONY))
+        	{
+        		regionalInOrder = getSaxonyMedalsInOrder();
+        	}
+        	else
+        	{
+        		regionalInOrder = getPrussiaMedalsInOrder();
+        	}
+
+        	medalsInOrder.addAll(regionalInOrder);
+		}
+		
 		return medalsInOrder;
 	}
 
@@ -573,14 +577,10 @@ public class GermanMedalManager extends RoFMedalManager
 	@Override
 	public List<Medal> getAllBadgesInOrder() throws PWCGException
 	{
-    	if (campaign.getPlayer().getPlayerRegion().equals(SquadronMember.BAVARIA))
-    	{
-    		return getBavarianBadges();
-    	}
-    	else
-    	{
-    		return getPrussianBadges();
-    	}		
+        List<Medal> allBadges = getBavarianBadges();
+        List<Medal> prussianBadges = getPrussianBadges();
+        allBadges.addAll(prussianBadges);
+        return allBadges;
 	}
 
 	public List<Medal> getBavarianBadges()

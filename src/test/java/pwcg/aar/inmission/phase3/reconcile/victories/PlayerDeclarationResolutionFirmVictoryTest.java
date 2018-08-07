@@ -1,7 +1,9 @@
 package pwcg.aar.inmission.phase3.reconcile.victories;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -38,11 +40,12 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     @Mock private SquadronMember ai;
     @Mock private PlaneTypeFactory planeFactory;
     
-    private PlayerDeclarations playerDeclarations;
-
+    private Map<Integer, PlayerDeclarations> playerDeclarations = new HashMap<>();
+    private PlayerDeclarations playerDeclarationSet;
 
     private List<LogVictory> firmVictories = new ArrayList<>();        
     private List<LogVictory> emptyList = new ArrayList<>();        
+    private List<SquadronMember> players = new ArrayList<>();
 
     private LogPlane playerVictor = new LogPlane();
     private LogPlane aiVictor = new LogPlane();
@@ -67,12 +70,14 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     
     private void createMocks() throws PWCGException
     {
-        
+        players = new ArrayList<>();
+        players.add(player);
+
         Mockito.when(victorySorter.getFirmAirVictories()).thenReturn(firmVictories);
         Mockito.when(victorySorter.getFirmBalloonVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getFuzzyAirVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getAllUnconfirmed()).thenReturn(emptyList);
-        Mockito.when(campaign.getPlayer()).thenReturn(player);
+        Mockito.when(campaign.getPlayers()).thenReturn(players);
         Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getBeginningOfWar());
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
@@ -84,6 +89,7 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(playerVictor);
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(aiVictor);
 
+        Mockito.when(player.isPlayer()).thenReturn(true);
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         Mockito.when(ai.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
     }
@@ -110,13 +116,16 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     
     private void createPlayerDeclarations(int numDeclarations) throws PWCGException
     {
-        playerDeclarations = new PlayerDeclarations();
+        playerDeclarationSet = new PlayerDeclarations();
         for (int i = 0; i < numDeclarations; ++i)
         {
             PlayerVictoryDeclaration declaration = new PlayerVictoryDeclaration();
             declaration.confirmDeclaration(true, "albatrosd3");
-            playerDeclarations.addPlayerDeclaration(declaration);
+            playerDeclarationSet.addDeclaration(declaration);
         }        
+        
+        playerDeclarations.clear();
+        playerDeclarations.put(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, playerDeclarationSet);
     }
     
     @Test
@@ -128,8 +137,8 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         createVictory(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002);
         createVictory(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1003);
 
-        PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter);
-        ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims(playerDeclarations);
+        PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
+        ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
         
         assert (confirmedPlayerVictories.getConfirmedVictories().size() == 1);
     }
@@ -143,8 +152,8 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         createVictory(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002);
         createVictory(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1003);
 
-        PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter);
-        ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims(playerDeclarations);
+        PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
+        ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
         
         assert (confirmedPlayerVictories.getConfirmedVictories().size() == 2);
     }
@@ -158,8 +167,8 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002);
         createVictory(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1003);
 
-        PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter);
-        ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims(playerDeclarations);
+        PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
+        ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
         
         assert (confirmedPlayerVictories.getConfirmedVictories().size() == 1);
     }
@@ -172,8 +181,8 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1002);
         createVictory(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1003);
 
-        PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter);
-        ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims(playerDeclarations);
+        PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
+        ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
         
         assert (confirmedPlayerVictories.getConfirmedVictories().size() == 0);
     }
@@ -182,8 +191,8 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     public void testPlayerMoreDeclarationsThanVictories () throws PWCGException
     {   
         createPlayerDeclarations(2);
-        PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter);
-        ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims(playerDeclarations);
+        PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
+        ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
         
         assert (confirmedPlayerVictories.getConfirmedVictories().size() == 0);
     }

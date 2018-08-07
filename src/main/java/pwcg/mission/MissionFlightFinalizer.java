@@ -96,8 +96,8 @@ public class MissionFlightFinalizer
 
     private void triggerOtherFlightCZFromMyFlight(Flight flight) throws PWCGException 
     {
-        PlaneMCU playerPlane = missionFlightBuilder.getPlayerFlight().getPlayerPlane();
-        if (playerPlane != null)
+        List<PlaneMCU> playerPlanes = missionFlightBuilder.getPlayerFlight().getPlayerPlanes();
+        if (!playerPlanes.isEmpty())
         {
             // Makes linked activate on the players plane rather than any coalition
             WaypointPackage waypointpackage = flight.getWaypointPackage();
@@ -119,7 +119,7 @@ public class MissionFlightFinalizer
             if (flight instanceof AiBalloonDefenseFlight)
             {
                 AiBalloonDefenseFlight balloonDefenseFlight = (AiBalloonDefenseFlight)flight;
-                balloonDefenseFlight.setBalloonCheckZoneForPlayer(playerPlane.getEntity().getIndex());
+                balloonDefenseFlight.setBalloonCheckZoneForPlayer(playerPlanes.get(0).getEntity().getIndex());
             }
         }
     }

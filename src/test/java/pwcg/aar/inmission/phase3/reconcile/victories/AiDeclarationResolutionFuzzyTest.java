@@ -49,6 +49,7 @@ public class AiDeclarationResolutionFuzzyTest
 
     private List<LogVictory> fuzzyVictories = new ArrayList<>();        
     private List<LogVictory> emptyList = new ArrayList<>();        
+    private List<SquadronMember> players = new ArrayList<>();
 
     private LogPlane playerVictor = new LogPlane();
     private LogPlane aiVictorOne = new LogPlane();
@@ -79,7 +80,10 @@ public class AiDeclarationResolutionFuzzyTest
         Mockito.when(victorySorter.getFuzzyAirVictories()).thenReturn(fuzzyVictories);
         Mockito.when(victorySorter.getAllUnconfirmed()).thenReturn(emptyList);
         
-        Mockito.when(campaign.getPlayer()).thenReturn(player);
+        players = new ArrayList<>();
+        players.add(player);
+
+        Mockito.when(campaign.getPlayers()).thenReturn(players);
         Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(campaign.determineSquadron()).thenReturn(squadron);

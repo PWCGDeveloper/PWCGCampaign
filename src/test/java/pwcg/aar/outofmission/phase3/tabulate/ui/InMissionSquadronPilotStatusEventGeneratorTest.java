@@ -26,11 +26,18 @@ public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
     private Map<Integer, SquadronMember> squadronMembersKilledInMission = new HashMap<>();
     private Map<Integer, SquadronMember> squadronMembersCapturedInMission = new HashMap<>();
     private Map<Integer, SquadronMember> squadronMembersMaimedInMission = new HashMap<>();
+    private Map<Integer, SquadronMember> squadronMembersWoundedInMission = new HashMap<>();
     private Map<Integer, Ace> acesKilledMissionSquadronInMission = new HashMap<>();
 	
     @Before
     public void setup() throws PWCGException
     {
+        squadronMembersKilledInMission = new HashMap<>();
+        squadronMembersCapturedInMission = new HashMap<>();
+        squadronMembersMaimedInMission = new HashMap<>();
+        squadronMembersWoundedInMission = new HashMap<>();
+        acesKilledMissionSquadronInMission = new HashMap<>();
+
         setupAARMocks();
         
         SquadronMember squaddie1 = MissionEntityBuilder.makeSquadronMemberWithStatus("Squaddie A", SerialNumber.AI_STARTING_SERIAL_NUMBER+1, SquadronMemberStatus.STATUS_KIA, campaign.getDate());
@@ -49,13 +56,15 @@ public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
         Mockito.when(personnelLossesInMissionData.getPersonnelKilled()).thenReturn(squadronMembersKilledInMission);
         Mockito.when(personnelLossesInMissionData.getPersonnelCaptured()).thenReturn(squadronMembersCapturedInMission);
         Mockito.when(personnelLossesInMissionData.getPersonnelMaimed()).thenReturn(squadronMembersMaimedInMission);
+        Mockito.when(personnelLossesInMissionData.getPersonnelWounded()).thenReturn(squadronMembersWoundedInMission);
         Mockito.when(personnelLossesInMissionData.getAcesKilled()).thenReturn(acesKilledMissionSquadronInMission);
     }
     
 	@Test
 	public void testPilotAndPlayerKilled() throws PWCGException
 	{
-        Mockito.when(personnelLossesInMissionData.getPlayerStatus()).thenReturn(SquadronMemberStatus.STATUS_KIA);
+        SquadronMember player = MissionEntityBuilder.makeSquadronMemberWithStatus("PLayer Pilot", SerialNumber.PLAYER_STARTING_SERIAL_NUMBER+1, SquadronMemberStatus.STATUS_KIA, campaign.getDate());
+        squadronMembersKilledInMission.put(player.getSerialNumber(), player);
 
         PilotStatusEventGenerator inMissionSquadronPilotStatusEventGenerator = new PilotStatusEventGenerator(campaign);
         Map<Integer, PilotStatusEvent> pilotsLostInMission = inMissionSquadronPilotStatusEventGenerator.createPilotLossEvents(personnelLossesInMissionData);
@@ -63,22 +72,33 @@ public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
         assert(pilotsLostInMission.size() == 6);
 	}
     
-	@Test
-	public void testPilotAndPlayerWounded() throws PWCGException
-	{
-        Mockito.when(personnelLossesInMissionData.getPlayerStatus()).thenReturn(SquadronMemberStatus.STATUS_WOUNDED);
+    @Test
+    public void testPilotAndPlayerMaimed() throws PWCGException
+    {
+        SquadronMember player = MissionEntityBuilder.makeSquadronMemberWithStatus("PLayer Pilot", SerialNumber.PLAYER_STARTING_SERIAL_NUMBER+1, SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate());
+        squadronMembersMaimedInMission.put(player.getSerialNumber(), player);
 
         PilotStatusEventGenerator inMissionSquadronPilotStatusEventGenerator = new PilotStatusEventGenerator(campaign);
         Map<Integer, PilotStatusEvent> pilotsLostInMission = inMissionSquadronPilotStatusEventGenerator.createPilotLossEvents(personnelLossesInMissionData);
         
         assert(pilotsLostInMission.size() == 6);
-	}
+    }
+    
+    @Test
+    public void testPilotAndPlayerWounded() throws PWCGException
+    {
+        SquadronMember player = MissionEntityBuilder.makeSquadronMemberWithStatus("PLayer Pilot", SerialNumber.PLAYER_STARTING_SERIAL_NUMBER+1, SquadronMemberStatus.STATUS_WOUNDED, campaign.getDate());
+        squadronMembersWoundedInMission.put(player.getSerialNumber(), player);
+
+        PilotStatusEventGenerator inMissionSquadronPilotStatusEventGenerator = new PilotStatusEventGenerator(campaign);
+        Map<Integer, PilotStatusEvent> pilotsLostInMission = inMissionSquadronPilotStatusEventGenerator.createPilotLossEvents(personnelLossesInMissionData);
+        
+        assert(pilotsLostInMission.size() == 5);
+    }
     
 	@Test
 	public void testPilotAndPlayerOK() throws PWCGException
 	{
-        Mockito.when(personnelLossesInMissionData.getPlayerStatus()).thenReturn(SquadronMemberStatus.STATUS_ACTIVE);
-
         PilotStatusEventGenerator inMissionSquadronPilotStatusEventGenerator = new PilotStatusEventGenerator(campaign);
         Map<Integer, PilotStatusEvent> pilotsLostInMission = inMissionSquadronPilotStatusEventGenerator.createPilotLossEvents(personnelLossesInMissionData);
         

@@ -20,7 +20,7 @@ public class NewPilotRankDetermination
     public String getReplacementPilotRank() throws PWCGException
     {
         IRankHelper rankObj = RankFactory.createRankHelper();
-        List<String> ranks = rankObj.getRanksByService(campaign.getPlayer().determineService(campaign.getDate()));
+        List<String> ranks = rankObj.getRanksByService(campaign.getService());
 
         int rankIndex = 2;
         int rankOdds = RandomNumberGenerator.getRandom(100);
@@ -29,7 +29,7 @@ public class NewPilotRankDetermination
         int NewPilotRankOddsLow = 25;
         rankIndex = getReplacementPilotRankIndex(ranks, rankOdds, NewPilotRankOddsLowest, NewPilotRankOddsLow);
 
-        String rank = rankObj.getRankByService(rankIndex, campaign.getPlayer().determineService(campaign.getDate()));
+        String rank = rankObj.getRankByService(rankIndex, campaign.getService());
         
         return rank;
     }

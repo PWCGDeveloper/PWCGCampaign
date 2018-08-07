@@ -792,19 +792,18 @@ public abstract class Flight extends Unit
         }
     }
 
-    public PlaneMCU getPlayerPlane() throws PWCGException 
+    public List<PlaneMCU> getPlayerPlanes() throws PWCGException 
     {
-        PlaneMCU playerPlane = null;
+        List<PlaneMCU> playerPlanes = new ArrayList<>();
         for (PlaneMCU plane : planes)
         {
-            if (plane.isPlayerPlane(flightInformation.getCampaign().getPlayer().getSerialNumber()))
+            if (plane.getPilot().isPlayer())
             {
-                playerPlane = plane;
-                break;
+                playerPlanes.add(plane);
             }
         }
 
-        return playerPlane;
+        return playerPlanes;
     }
 
     public PlaneMCU getPlaneForPilot(Integer pilotSerialNumber)

@@ -173,9 +173,9 @@ public class FlightFinalizer
                 for (int i = 0; i < flight.getPlanes().size(); ++i)
                 {
                     PlaneMCU plane = flight.getPlanes().get(i);
-                    if (!plane.isPlayerPlane(flight.getCampaign().getPlayer().getSerialNumber()))
+                    if (!plane.getPilot().isPlayer())
                     {
-                        plane.createPlaneRemover(flight, flight.getMission().getMissionFlightBuilder().getPlayerFlight().getPlayerPlane());
+                        plane.createPlaneRemover(flight, flight.getMission().getMissionFlightBuilder().getPlayerFlight().getPlayerPlanes().get(0));
                     }
                     
                     for (VirtualWayPoint virtualWaypoint : ((VirtualWaypointPackage) flight.getWaypointPackage()).getVirtualWaypoints())

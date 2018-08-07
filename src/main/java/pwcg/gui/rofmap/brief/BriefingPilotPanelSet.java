@@ -53,13 +53,11 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     private JButton acceptMissionButton = null;
     private BriefingMissionHandler briefingMissionHandler = null;
     private Map<Integer, BriefingPlaneModificationsPicker> planeModifications = new HashMap<>();
-    private Campaign campaign;
 
     public BriefingPilotPanelSet(CampaignHomeGUI campaignHomeGui, BriefingMissionHandler briefingMissionHandler)
     {
         super();
 
-        this.campaign = campaignHomeGui.getCampaign();
         this.campaignHomeGui = campaignHomeGui;
         this.briefingMissionHandler = briefingMissionHandler;
     }
@@ -222,24 +220,19 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     {
         for (CrewPlanePayloadPairing crewPlane : briefingMissionHandler.getCrewsSorted())
         {
-            String pilotNameText = crewPlane.getPilot().getNameAndRank();
-            JButton assignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText,
-                    "Unassign Pilot:" + crewPlane.getPilot().getSerialNumber(), this);
-            assignedPilotPanel.add(assignedPilotButton);
-
-            addPilotColumn(crewPlane.getPilot(), assignedPilotButton);
+            addPilotColumn(assignedPilotPanel, crewPlane);
             addPlaneColumn(assignedPilotPanel, crewPlane);
             addPayloadColumn(assignedPilotPanel, crewPlane);
             addModificationsColumn(assignedPilotPanel, crewPlane);
         }
     }
 
-    private void addPilotColumn(SquadronMember pilotSquadronMember, JButton assignedPilotButton) throws PWCGException
+    private void addPilotColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        if (pilotSquadronMember.getSerialNumber() == campaign.getPlayer().getSerialNumber())
-        {
-            assignedPilotButton.setEnabled(false);
-        }
+        String pilotNameText = crewPlane.getPilot().getNameAndRank();
+        JButton assignedPilotButton = PWCGButtonFactory.makeBriefingChalkBoardButton(pilotNameText,
+                "Unassign Pilot:" + crewPlane.getPilot().getSerialNumber(), this);
+        assignedPilotPanel.add(assignedPilotButton);
     }
 
     private void addPlaneColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane) throws PWCGException
@@ -582,13 +575,16 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private boolean ensurePlayerOwnsPlane() throws PWCGException
     {
-        PlaneMCU playerPlane = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight().getPlayerPlane();
-        if (!PlanesOwnedManager.getInstance().isPlaneOwned(playerPlane.getType()))
+        List<PlaneMCU> playerPlanes = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight().getPlayerPlanes();
+        for (PlaneMCU playerPlane : playerPlanes)
         {
-            ErrorDialog.userError("Player does not own his assigned plane: " + playerPlane.getDisplayName() + ".  Mission will not be written.");
-            return false;
+            if (!PlanesOwnedManager.getInstance().isPlaneOwned(playerPlane.getType()))
+            {
+                ErrorDialog.userError("Player does not own his assigned plane: " + playerPlane.getDisplayName() + ".  Mission will not be written.");
+                return false;
+            }
         }
-
+        
         return true;
     }
 

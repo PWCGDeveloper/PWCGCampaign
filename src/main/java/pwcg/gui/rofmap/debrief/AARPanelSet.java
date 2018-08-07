@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -91,18 +92,6 @@ public class AARPanelSet extends AARPanel implements ActionListener
 		    infoPanelGrid.add(PWCGButtonFactory.makeDummy());
 		}
 
-        SquadronMember player = campaign.getPlayer();
-        
-		JLabel lName = new JLabel("     Pilot     : " + player.getNameAndRank(), JLabel.LEFT);
-		lName.setBackground(buttonBG);
-		lName.setFont(font);
-		infoPanelGrid.add(lName);
-
-		JLabel lDate = new JLabel("     Date      : " + DateUtils.getDateString(campaign.getDate()), JLabel.LEFT);
-		lDate.setBackground(buttonBG);
-		lDate.setFont(font);
-		infoPanelGrid.add(lDate);
-
 		JLabel lPilots = new JLabel("     Pilots assigned to this mission:", JLabel.LEFT);
 		lPilots.setBackground(buttonBG);
 		lPilots.setOpaque(false);
@@ -124,7 +113,12 @@ public class AARPanelSet extends AARPanel implements ActionListener
     			infoPanelGrid.add(lPilot);		
             }
 		}
-		
+
+        JLabel lDate = new JLabel("     Date      : " + DateUtils.getDateString(campaign.getDate()), JLabel.LEFT);
+        lDate.setBackground(buttonBG);
+        lDate.setFont(font);
+        infoPanelGrid.add(lDate);
+
 		for (int i = 0; i < 1; ++i)
 		{
 			infoPanelGrid.add(PWCGButtonFactory.makeDummy());
@@ -200,8 +194,8 @@ public class AARPanelSet extends AARPanel implements ActionListener
     {
         SoundManager.getInstance().playSound("Stapling.WAV");
    
-        PlayerDeclarations playerDeclarations = aarClaimPanel.getPlayerDeclarations();
-
+        Map<Integer, PlayerDeclarations> playerDeclarations = aarClaimPanel.getPlayerDeclarations();
+        
         AARCoordinator.getInstance().submitAAR(playerDeclarations);
         String aarError = AARCoordinator.getInstance().getErrorBundleFileName();
         if (aarError != null && !aarError.isEmpty())

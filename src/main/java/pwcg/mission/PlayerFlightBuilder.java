@@ -1,8 +1,9 @@
 package pwcg.mission;
 
+import java.util.List;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.factory.PWCGFlightFactory;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
@@ -56,22 +57,12 @@ public class PlayerFlightBuilder
 
     private void validatePlayerFlight() throws PWCGException
     {
-        SquadronMember player = campaign.getPlayer();
-                
         boolean playerIsInFlight = false;
         for (PlaneMCU plane : playerFlight.getPlanes())
         {
             if (plane.getPilot().isPlayer())
             {
                 playerIsInFlight = true;
-                if (plane.getPilot().getSerialNumber() != player.getSerialNumber())
-                {
-                    throw new PWCGException("Plane serial number does not match player serial number");
-                }
-                if (!plane.getName().equals(player.getNameAndRank()))
-                {
-                    throw new PWCGException("Plane name does not match player name");
-                }
             }
         }
         
@@ -120,8 +111,8 @@ public class PlayerFlightBuilder
     {
         if (playerFlight != null)
         {
-            PlaneMCU playerPlane = playerFlight.getPlayerPlane();
-            if (playerPlane != null)
+            List<PlaneMCU> playerPlanes = playerFlight.getPlayerPlanes();
+            if (!playerPlanes.isEmpty())
             {
                 McuCheckZone checkZone = selfDeactivatingCheckZone.getCheckZone();
                 checkZone.setCheckZoneForPlayer(playerFlight.getMission());

@@ -1,5 +1,7 @@
 package pwcg.aar.inmission.phase3.reconcile.victories;
 
+import java.util.Map;
+
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.campaign.Campaign;
@@ -16,19 +18,19 @@ public class VerifiedVictoryGenerator
         this.aarContext = aarContext;
     }
 
-    public ConfirmedVictories createVerifiedictories(PlayerDeclarations playerDeclarations) throws PWCGException
+    public ConfirmedVictories createVerifiedictories(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         AARMissionEvaluationData evaluationData = aarContext.getMissionEvaluationData();
 
         VictorySorter victorySorter = new VictorySorter(campaign);
         victorySorter.sortVictories(evaluationData.getVictoryResults());
-        PlayerDeclarationResolution playerClaimResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter);
+        PlayerDeclarationResolution playerClaimResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
         
         AiDeclarationResolver aiDeclarationResolution = createAiDeclarationResolver();        
         GroundDeclarationResolver groundDeclarationResolver = new GroundDeclarationResolver(victorySorter);
         
         ConfirmedVictories verifiedMissionResultVictorys = new ConfirmedVictories();
-        ConfirmedVictories verifiedPlayerMissionResultVictorys = playerClaimResolution.determinePlayerAirResultsWithClaims(playerDeclarations);
+        ConfirmedVictories verifiedPlayerMissionResultVictorys = playerClaimResolution.determinePlayerAirResultsWithClaims();
         ConfirmedVictories verifiedAIMissionResultVictorys = aiDeclarationResolution.determineAiAirResults(victorySorter);
         ConfirmedVictories verifiedGroundMissionResultVictorys = groundDeclarationResolver.determineGroundResults();
         

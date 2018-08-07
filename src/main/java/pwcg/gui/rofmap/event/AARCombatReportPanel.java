@@ -104,7 +104,8 @@ public class AARCombatReportPanel extends AAREventPanel
         combatReport.setDate(combatReportDate);
         combatReport.setTime(missionHeader.getTime());
         
-        SquadronMember player = campaign.getPlayer();
+        // TODO Need to figure out combat reports ... maybe add pilots involved.
+        SquadronMember player = campaign.getPlayers().get(0);
         combatReport.setPilot(player.getNameAndRank());
         
         combatReport.setType(missionHeader.getAircraftType());

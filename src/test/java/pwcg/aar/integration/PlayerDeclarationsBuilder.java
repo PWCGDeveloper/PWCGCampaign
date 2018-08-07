@@ -1,27 +1,32 @@
 package pwcg.aar.integration;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarations;
 import pwcg.aar.inmission.phase3.reconcile.victories.PlayerVictoryDeclaration;
+import pwcg.campaign.squadmember.SquadronMember;
 
 public class PlayerDeclarationsBuilder
-{
-    private PlayerDeclarations playerDeclarations = new PlayerDeclarations();
-    
+{    
     public PlayerDeclarationsBuilder ()
     {
     }
     
-    public PlayerDeclarations makePlayerDeclarations()
+    public Map<Integer, PlayerDeclarations> makePlayerDeclarations(SquadronMember player)
     {
+        Map<Integer, PlayerDeclarations> playerDeclarations = new HashMap<>();
+        PlayerDeclarations playerDeclarationSet = new PlayerDeclarations();
         PlayerVictoryDeclaration victoryDeclaration1 = new PlayerVictoryDeclaration();
         victoryDeclaration1.setAircraftType("yak1s69");
 
         PlayerVictoryDeclaration victoryDeclaration2 = new PlayerVictoryDeclaration();
         victoryDeclaration2.setAircraftType("il2m41");
         
-        playerDeclarations.addPlayerDeclaration(victoryDeclaration1);
-        playerDeclarations.addPlayerDeclaration(victoryDeclaration2);
+        playerDeclarationSet.addDeclaration(victoryDeclaration1);
+        playerDeclarationSet.addDeclaration(victoryDeclaration2);
 
+        playerDeclarations.put(player.getSerialNumber(), playerDeclarationSet);
         return playerDeclarations;
     }
 }

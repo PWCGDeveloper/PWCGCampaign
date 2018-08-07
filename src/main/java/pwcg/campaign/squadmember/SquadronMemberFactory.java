@@ -50,6 +50,9 @@ public class SquadronMemberFactory
         
         makePilotPicture(player);
 
+        CampaignValidatorMedals medalFixer = new CampaignValidatorMedals(campaign);
+        medalFixer.assignMissingMedalsForSquadMember(player);
+
         return player;
      }
 

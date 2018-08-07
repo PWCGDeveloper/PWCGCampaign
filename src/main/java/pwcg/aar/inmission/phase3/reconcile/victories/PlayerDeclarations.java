@@ -5,15 +5,15 @@ import java.util.List;
 
 public class PlayerDeclarations
 {
-    private List<PlayerVictoryDeclaration> playerDeclarations = new ArrayList<>();
+    private List<PlayerVictoryDeclaration> declarations = new ArrayList<>();
     
-    public void addPlayerDeclaration (PlayerVictoryDeclaration victoryDeclaration)
+    public void addDeclaration (PlayerVictoryDeclaration victoryDeclaration)
     {
-        playerDeclarations.add(victoryDeclaration);
+        declarations.add(victoryDeclaration);
     }
 
-    public List<PlayerVictoryDeclaration> getPlayerDeclarations()
+    public List<PlayerVictoryDeclaration> getDeclarations()
     {
-        return playerDeclarations;
+        return declarations;
     }
 }

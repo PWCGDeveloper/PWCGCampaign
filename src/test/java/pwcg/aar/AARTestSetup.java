@@ -1,5 +1,8 @@
 package pwcg.aar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -68,11 +71,15 @@ public abstract class AARTestSetup
     @Mock protected EquippedPlane plane1;
     @Mock protected EquippedPlane plane2;
     @Mock protected EquippedPlane plane3;
+    
+    protected List<SquadronMember> players = new ArrayList<>();
 
     protected void setupAARMocks() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
-
+        players = new ArrayList<>();
+        players.add(player);
+        
         mockCampaign();        
         mockAARContext();
         mockPreliminaryData();
@@ -87,7 +94,7 @@ public abstract class AARTestSetup
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170701"));
         Mockito.when(campaign.determineSquadron()).thenReturn(squadronEsc103);
         Mockito.when(campaign.getSquadronId()).thenReturn(101103);
-        Mockito.when(campaign.getPlayer()).thenReturn(player);
+        Mockito.when(campaign.getPlayers()).thenReturn(players);
         Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
         Mockito.when(squadronEsc103.determineDisplayName(Mockito.any())).thenReturn("Esc 103");
         Mockito.when(squadronEsc103.getSquadronId()).thenReturn(101103);

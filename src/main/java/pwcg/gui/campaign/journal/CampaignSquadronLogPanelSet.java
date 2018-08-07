@@ -311,8 +311,9 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 
     /**
      *  Add the previous/next page turner at the bottom of the log
+     * @throws PWCGException 
      */
-    private void addPageTurner()
+    private void addPageTurner() throws PWCGException
     {
         if (pageTurnerPanel != null)
         {

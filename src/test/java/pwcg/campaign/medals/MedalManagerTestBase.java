@@ -21,24 +21,14 @@ import pwcg.core.exception.PWCGException;
 
 public abstract class MedalManagerTestBase
 {
-    @Mock
-    protected Campaign campaign;
+    @Mock protected Campaign campaign;
+    @Mock protected SquadronMember player;
+    @Mock protected Squadron squadron;
+    @Mock protected ICountry country;
+    @Mock protected SquadronMemberVictories squadronMemberVictories;
+    @Mock protected SquadronRoleSet squadronRoleSet;
     
-    @Mock
-    protected SquadronMember player;
-    
-    @Mock
-    protected Squadron squadron;
-    
-    @Mock
-    protected ICountry country;
-    
-    @Mock
-    protected SquadronMemberVictories squadronMemberVictories;
-    
-    @Mock
-    protected SquadronRoleSet squadronRoleSet;
-    
+    protected List<SquadronMember> players = new ArrayList<>();
     protected List<Victory> victories = new ArrayList<>();
     protected List<Medal> medals = new ArrayList<>();
     protected ArmedService service;
@@ -46,7 +36,10 @@ public abstract class MedalManagerTestBase
 
     public void setup() throws PWCGException
     {
-        Mockito.when(campaign.getPlayer()).thenReturn(player);
+        players = new ArrayList<>();
+        players.add(player);
+        
+        Mockito.when(campaign.getPlayers()).thenReturn(players);
         Mockito.when(campaign.determineCountry()).thenReturn(country);
         Mockito.when(campaign.determineCountry()).thenReturn(country);
         Mockito.when(player.getVictories()).thenReturn(victories);

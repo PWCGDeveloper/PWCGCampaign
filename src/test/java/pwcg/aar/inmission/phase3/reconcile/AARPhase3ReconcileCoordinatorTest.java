@@ -1,7 +1,9 @@
 package pwcg.aar.inmission.phase3.reconcile;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -51,22 +53,14 @@ public class AARPhase3ReconcileCoordinatorTest
     private LogPlane playerPlaneVictor = new LogPlane();
     private LogPlane aiPlaneVictor = new LogPlane();
 
-    @Mock
-    private AARMissionEvaluationData evaluationData;
-    
-    @Mock 
-    private AARMissionLogFileSet missionLogFileSet;
-    
-    @Mock 
-    private AARContext aarContext;
+    @Mock private AARMissionEvaluationData evaluationData;
+    @Mock private AARMissionLogFileSet missionLogFileSet;
+    @Mock private AARContext aarContext;
+    @Mock private AARPreliminaryData preliminaryData;
+    @Mock private PwcgMissionData pwcgMissionData;
 
-    @Mock 
-    private AARPreliminaryData preliminaryData;
-
-    @Mock
-    private PwcgMissionData pwcgMissionData;
-
-    private PlayerDeclarations playerDeclarations;
+    private Map<Integer, PlayerDeclarations> playerDeclarations = new HashMap<>();
+    private PlayerDeclarations playerDeclarationSet;
 
     @Before
     public void setup() throws PWCGException
@@ -78,7 +72,7 @@ public class AARPhase3ReconcileCoordinatorTest
         aceStatusList = new ArrayList<>();
         pilotStatusList = new ArrayList<>();
         firmVictories = new ArrayList<>();
-        playerDeclarations = new PlayerDeclarations();
+        playerDeclarationSet = new PlayerDeclarations();
 
         playerPlaneVictor.setSquadronId(101003);
         aiPlaneVictor.setSquadronId(101003);
@@ -112,7 +106,7 @@ public class AARPhase3ReconcileCoordinatorTest
         assert(reconciledInMissionData.getPersonnelLossesInMission().getPersonnelKilled().size() == 1);
         assert(reconciledInMissionData.getPersonnelLossesInMission().getPersonnelCaptured().size() == 1);
         assert(reconciledInMissionData.getPersonnelLossesInMission().getPersonnelMaimed().size() == 1);
-        assert(reconciledInMissionData.getPersonnelLossesInMission().getPlayerStatus() == SquadronMemberStatus.STATUS_WOUNDED);
+        assert(reconciledInMissionData.getPersonnelLossesInMission().getPersonnelWounded().size() == 2);
         assert(reconciledInMissionData.getPersonnelLossesInMission().getAcesKilled().size() == 2);
 
         List<Victory> aiPilotVictories = reconciledInMissionData.getReconciledVictoryData().getVictoryAwardsForPilot(aiPlaneVictor.getPilotSerialNumber());
@@ -122,15 +116,17 @@ public class AARPhase3ReconcileCoordinatorTest
         assert (playerVictories.size() == 1);
         assert (playerClaimsDenied.size() == 2);
     }
-
-    private void addPlayerDeclarations()
+    
+    private void addPlayerDeclarations() throws PWCGException
     {
         for (int i = 0; i < 3; ++i)
         {
             PlayerVictoryDeclaration declaration = new PlayerVictoryDeclaration();
             declaration.setAircraftType("albatrosd3");
-            playerDeclarations.addPlayerDeclaration(declaration);
+            playerDeclarationSet.addDeclaration(declaration);
         }
+        
+        playerDeclarations.put(campaign.getPlayers().get(0).getSerialNumber(), playerDeclarationSet);
     }
 
     private void createVictory(LogPlane victor, Integer pilotSerialNumber, Integer planeSerialNumber)
@@ -153,7 +149,7 @@ public class AARPhase3ReconcileCoordinatorTest
 
     private void createCampaignMembersInMission() throws PWCGException
     {        
-        playerInFlight = campaign.getPlayer();
+        playerInFlight = campaign.getPlayers().get(0);
         addSquadronPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
         playerPlaneVictor.setPilotSerialNumber(playerInFlight.getSerialNumber());
         playerPlaneVictor.setCountry(new RoFCountry(Country.FRANCE));

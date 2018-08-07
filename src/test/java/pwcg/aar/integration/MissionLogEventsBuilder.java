@@ -63,7 +63,7 @@ public class MissionLogEventsBuilder
 
     private void makePilotsForVictories() throws PWCGException
     {
-        player = campaign.getPlayer();
+        player = campaign.getPlayers().get(0);
         for (SquadronMember pilot : preliminaryData.getCampaignMembersInMission().getSquadronMemberCollection().values())
         {
             if (pilot.getSquadronId() != player.getSquadronId())

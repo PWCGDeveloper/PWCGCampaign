@@ -255,7 +255,7 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
         addPageTurner();
     }
 
-    private void addPageTurner()
+    private void addPageTurner() throws PWCGException
     {
         if (pageTurnerPanel != null)
         {

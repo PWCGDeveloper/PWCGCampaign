@@ -1,5 +1,7 @@
 package pwcg.aar.inmission.phase3.reconcile;
 
+import java.util.Map;
+
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AAREquipmentLosses;
 import pwcg.aar.data.AARPersonnelLosses;
@@ -31,7 +33,7 @@ public class AARPhase3ReconcileCoordinator
     }
     
     
-    public ReconciledInMissionData reconcileLogsWithAAR(PlayerDeclarations playerDeclarations) throws PWCGException
+    public ReconciledInMissionData reconcileLogsWithAAR(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         reconcileVictories(playerDeclarations);
         personnelChangesInMission();
@@ -39,7 +41,7 @@ public class AARPhase3ReconcileCoordinator
         return reconciledInMissionData;
     }
 
-    private void reconcileVictories(PlayerDeclarations playerDeclarations) throws PWCGException
+    private void reconcileVictories(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         ClaimResolver missionResolver = createClaimResolver(campaign, aarContext.getMissionEvaluationData(), aarContext.getPreliminaryData().getPwcgMissionData());
         ReconciledVictoryData reconciledVictoryData = missionResolver.resolvePlayerClaims(playerDeclarations);

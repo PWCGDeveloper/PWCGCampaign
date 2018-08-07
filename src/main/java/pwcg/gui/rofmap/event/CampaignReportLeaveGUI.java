@@ -28,9 +28,7 @@ public class CampaignReportLeaveGUI extends CampaignDocumentGUI
         Squadron squadron =  PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
                 
         String leaveText = "Squadron: " + squadron.determineDisplayName(campaign.getDate()) + "\n";
-        leaveText += "Date: " + campaign.getDate() + "\n";
-        leaveText += "Pilot: " + campaign.getPlayer().getNameAndRank() + "\n";
-        
+        leaveText += "Date: " + campaign.getDate() + "\n";        
         return leaveText;
     }
 

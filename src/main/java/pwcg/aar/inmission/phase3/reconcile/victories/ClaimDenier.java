@@ -18,20 +18,20 @@ public class ClaimDenier
         this.planeFactory = planeFactory;
     }
     
-    public ClaimDeniedEvent determineClaimDenied(PlayerVictoryDeclaration playerDeclaration) throws PWCGException 
+    public ClaimDeniedEvent determineClaimDenied(Integer playerSerialNumber, PlayerVictoryDeclaration declaration) throws PWCGException 
     {
-        if (!playerDeclaration.isConfirmed())
+        if (!declaration.isConfirmed())
         {
-            return createPlaneDenied(playerDeclaration);                
+            return createPlaneDenied(playerSerialNumber, declaration);                
         }
         
         return null;
     }
 
-    private ClaimDeniedEvent createPlaneDenied(PlayerVictoryDeclaration playerDeclaration) throws PWCGException
+    private ClaimDeniedEvent createPlaneDenied(Integer playerSerialNumber, PlayerVictoryDeclaration declaration) throws PWCGException
     {
-        String planeDesc = getPlaneDescription(playerDeclaration);
-        SquadronMember player = campaign.getPlayer();
+        String planeDesc = getPlaneDescription(declaration);
+        SquadronMember player = campaign.getPersonnelManager().getActiveCampaignMember(playerSerialNumber);
         
         ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(); 
         claimDenied.setDate(campaign.getDate());

@@ -16,6 +16,7 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -100,20 +101,21 @@ public class Campaign
         return campaignConfigDir;
     }
 
-    public SquadronMember getPlayer() throws PWCGException 
+    public List<SquadronMember> getPlayers() throws PWCGException 
     {
+        List<SquadronMember> players = new ArrayList<>();
         for (SquadronPersonnel squadronPersonnel : personnelManager.getAllSquadronPersonnel())
         {
             for (SquadronMember squadMember : squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection().values())
             {
-                if (squadMember.isPlayer())
+                if (squadMember.isPlayer() && squadMember.getPilotActiveStatus() > SquadronMemberStatus.STATUS_CAPTURED)
                 {
-                    return squadMember;
+                    players.add(squadMember);
                 }
             }
         }
 
-        return null;
+        return players;
     }
 
     public String getAirfieldName() throws PWCGException 
@@ -206,16 +208,20 @@ public class Campaign
     public String getCampaignDescription() throws PWCGException
     {
         String campaignDescription = "";
-        SquadronMember player = getPlayer();
         
-        String nameString = player.getRank() + " " + player.getSerialNumber();
-        campaignDescription += nameString;
-
+        for (SquadronMember player : getPlayers())
+        {
+            if (!campaignDescription.isEmpty())
+            {
+                campaignDescription += ", ";
+            }
+            campaignDescription += player.getNameAndRank();
+        }
+        
         campaignDescription += "     " + DateUtils.getDateString(getDate());
         
         Squadron squadron =  determineSquadron();
         campaignDescription += "     " + squadron.determineDisplayName(getDate());
-        
         campaignDescription += "     " + getAirfieldName();
         
         return campaignDescription;
@@ -308,7 +314,14 @@ public class Campaign
 
 	public boolean isPlayerCommander() throws PWCGException
 	{
-	    return getPlayer().determineIsSquadronMemberCommander();
+	    for (SquadronMember player : getPlayers())
+	    {
+	        if (player.determineIsSquadronMemberCommander())
+	        {
+	            return true;
+	        }
+	    }
+	    return false;
 	}
 
 	private boolean isValidCampaignForProduct() throws PWCGException 
@@ -326,20 +339,17 @@ public class Campaign
 		
 		return true;
 	}
+	
+	public ArmedService getService() throws PWCGException
+	{
+	    Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaignData.getSquadId());
+	    ArmedService service = squadron.determineServiceForSquadron(campaignData.getDate());
+	    return service;
+	}
 
     public SerialNumber getSerialNumber()
     {
         return campaignData.getSerialNumber();
-    }
-
-    public boolean isGreatAce()
-	{
-	    return campaignData.isGreatAce();
-	}
-    
-    public void setGreatAce(boolean isGreatAce)
-    {
-    	campaignData.setGreatAce(isGreatAce);
     }
 
     public void resetFerryMission()

@@ -7,7 +7,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -18,6 +20,7 @@ import pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarations;
 import pwcg.aar.inmission.phase3.reconcile.victories.PlayerVictoryDeclaration;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
@@ -149,9 +152,10 @@ public class AARClaimPanel extends AARPanel implements ActionListener
 		return victoriesClaimedPanel;
 	}
 
-	public PlayerDeclarations getPlayerDeclarations() throws PWCGException 
+	public Map<Integer, PlayerDeclarations> getPlayerDeclarations() throws PWCGException 
 	{
-	    PlayerDeclarations playerDeclarations = new PlayerDeclarations();
+        Map<Integer, PlayerDeclarations> playerDeclarations = new HashMap<>();
+	    PlayerDeclarations playerDeclarationForOnePlayer = new PlayerDeclarations();
 		for (int i = 0; i < numVictories; ++i)
 		{
 			PlayerVictoryDeclaration declaration = new PlayerVictoryDeclaration();
@@ -160,7 +164,7 @@ public class AARClaimPanel extends AARPanel implements ActionListener
 			if (planeTypeDesc.equals(PlaneType.BALLOON))
 			{
 			    declaration.setAircraftType(PlaneType.BALLOON);
-	            playerDeclarations.addPlayerDeclaration(declaration);
+	            playerDeclarationForOnePlayer.addDeclaration(declaration);
 			}
 			else
 			{
@@ -170,7 +174,7 @@ public class AARClaimPanel extends AARPanel implements ActionListener
     			    if (planeType.getType().equalsIgnoreCase(planeType.getType()))
     			    {
     			        declaration.setAircraftType(planeType.getType());
-    		            playerDeclarations.addPlayerDeclaration(declaration);
+    		            playerDeclarationForOnePlayer.addDeclaration(declaration);
     			    }
 			    }
 			    else
@@ -180,6 +184,8 @@ public class AARClaimPanel extends AARPanel implements ActionListener
 			}
 		}
 		
+		// TODO Need to specify particula plazyer after tabs are in place
+        playerDeclarations.put(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, playerDeclarationForOnePlayer);
 		return playerDeclarations;
 	}
 

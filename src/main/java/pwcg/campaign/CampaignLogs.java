@@ -17,7 +17,6 @@ import pwcg.aar.ui.events.model.PromotionEvent;
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -98,12 +97,9 @@ public class CampaignLogs
 
 	private void addClaimDeniedToCampaignLogs(Campaign campaign, AAREvent event) throws PWCGException
 	{
-		SquadronMember player = campaign.getPlayer();
-
 		ClaimDeniedEvent logEvent = (ClaimDeniedEvent) event;
 		String planeName = logEvent.getType();
-		String pilotName = player.getRank() + " " + player.getName();
-		String logEntry = "A claim for a  " + planeName + ", made by " + pilotName + ",  has been denied";
+		String logEntry = "A claim for a  " + planeName + ", made by " + logEvent.getPilot().getNameAndRank() + ",  has been denied";
 		addCampaignLog(logEvent.getDate(), logEntry);
 	}
 
