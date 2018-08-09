@@ -35,11 +35,6 @@ public class AARPlayerStatusAdjuster
         {
             // Nothing - status is as per the mission, including capture or death
         }
-        
-        if (playerCrewMember.getStatus() <= SquadronMemberStatus.STATUS_CAPTURED)
-        {
-            campaign.setCampaignStatus(playerCrewMember.getStatus());
-        }
     }
 
 	private void playerIsNeverInjured(LogPilot playerCrewMember)

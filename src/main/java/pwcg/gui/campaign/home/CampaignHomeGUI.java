@@ -19,7 +19,6 @@ import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.GreatAce;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
@@ -124,14 +123,17 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
         activeButtons.clear();
         
-        if (campaign.getCampaignStatus() > SquadronMemberStatus.STATUS_CAPTURED)
+        if (campaign.isCampaignActive())
         {
             JButton createButton = makeMenuButton("Mission", "CampMission", "Generate a mission");
             addButton(buttonPanel, createButton);
             activeButtons.add(createButton);
 
-            loneWolfMission = makeMenuButton("Lone Wolf Mission", "CampMissionLoneWolf", "Generate a lone wolf mission");
-            addButton(buttonPanel, loneWolfMission);
+            if (!campaign.getCampaignData().isCoop())
+            {
+                loneWolfMission = makeMenuButton("Lone Wolf Mission", "CampMissionLoneWolf", "Generate a lone wolf mission");
+                addButton(buttonPanel, loneWolfMission);
+            }
             
             JButton combatReportButton = makeMenuButton("Combat Report", "CampFlowCombatReport", "File an After Action Report (AAR) for a mission");
             addButton(buttonPanel, combatReportButton);
@@ -142,9 +144,6 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             JButton pilotsButton = makeMenuButton("Pilots", "CampPilots", "Show squadron pilot chalk board");
             addButton(buttonPanel, pilotsButton);
 
-            JButton addHumanPilotButton = makeMenuButton("Add Pilot", "AddHumanPilot", "Add a human pilot");
-            addButton(buttonPanel, addHumanPilotButton);
-
             JButton topAcesButton = makeMenuButton("Top Aces", "CampTopAces", "Show top aces chalk board");
             addButton(buttonPanel, topAcesButton);
 
@@ -154,11 +153,24 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             JLabel space2 = new JLabel("");
             buttonPanel.add(space2);
 
-            JButton transferButton = makeMenuButton("Transfer", "CampFlowTransfer", "Transfer to a new squadron");
-            addButton(buttonPanel, transferButton);
-
-            JButton leaveButton = makeMenuButton("Leave", "CampFlowLeave", "Request leave");
-            addButton(buttonPanel, leaveButton);
+            if (!campaign.getCampaignData().isCoop())
+            {
+                JButton transferButton = makeMenuButton("Transfer", "CampFlowTransfer", "Transfer to a new squadron");
+                addButton(buttonPanel, transferButton);
+    
+                JButton leaveButton = makeMenuButton("Leave", "CampFlowLeave", "Request leave");
+                addButton(buttonPanel, leaveButton);
+            }
+            else
+            {
+                JButton addHumanPilotButton = makeMenuButton("Add Pilot", "AddHumanPilot", "Add a human pilot");
+                addButton(buttonPanel, addHumanPilotButton);
+            }
+        }
+        else
+        {
+            JButton addHumanPilotButton = makeMenuButton("Add Pilot", "AddHumanPilot", "Add a human pilot");
+            addButton(buttonPanel, addHumanPilotButton);
         }
 
         JButton recordsButton = makeMenuButton("Journal", "CampFlowJournal", "Update your personal journal");
@@ -612,7 +624,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
     public void enableButtonsAsNeeded() throws PWCGException  
     {
-        if (campaign.getCampaignStatus() > SquadronMemberStatus.STATUS_CAPTURED)
+        if (campaign.isCampaignActive() && !campaign.getCampaignData().isCoop())
         {            
             if (GreatAce.isGreatAce(campaign))
             {

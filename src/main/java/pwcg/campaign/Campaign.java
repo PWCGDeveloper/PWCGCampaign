@@ -195,16 +195,6 @@ public class Campaign
         return playerFieldPosition;
     }
 
-    public int getCampaignStatus()
-    {
-        return campaignData.getCampaignStatus();
-    }
-
-    public void setCampaignStatus(int campaignStatus)
-    {
-    	campaignData.setCampaignStatus(campaignStatus);;
-    }
-
     public String getCampaignDescription() throws PWCGException
     {
         String campaignDescription = "";
@@ -346,6 +336,19 @@ public class Campaign
 	    ArmedService service = squadron.determineServiceForSquadron(campaignData.getDate());
 	    return service;
 	}
+
+
+    public boolean isCampaignActive() throws PWCGException
+    {
+        for (SquadronMember player : getPlayers())
+        {
+            if (player.getPilotActiveStatus() > SquadronMemberStatus.STATUS_CAPTURED)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public SerialNumber getSerialNumber()
     {

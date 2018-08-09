@@ -3,14 +3,12 @@ package pwcg.campaign;
 import java.util.Date;
 
 import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
 
 public class CampaignData
 {
 
 	private Date date = null;
 	private String name = "";
-	private int campaignStatus = SquadronMemberStatus.STATUS_ACTIVE;
     private int squadId = -1;
     private boolean isCoop = false;
     private SerialNumber serialNumber = new SerialNumber();
@@ -33,16 +31,6 @@ public class CampaignData
 	public void setName(String name)
 	{
 		this.name = name;
-	}
-
-	public int getCampaignStatus()
-	{
-		return campaignStatus;
-	}
-
-	public void setCampaignStatus(int campaignStatus)
-	{
-		this.campaignStatus = campaignStatus;
 	}
 
 	public int getSquadId()

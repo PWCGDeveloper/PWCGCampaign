@@ -22,7 +22,6 @@ import javax.swing.UIManager;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.utils.AutoStart;
 import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.campaign.utils.TestDriver;
@@ -407,7 +406,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 				Campaign campaign = new Campaign();
                 if (campaign.open(campaignName))              
 				{
-    				if (campaign.getCampaignStatus() <= SquadronMemberStatus.STATUS_CAPTURED)
+    				if (!campaign.isCampaignActive())
     				{
     					icon = "RIP.jpg";
     				}
