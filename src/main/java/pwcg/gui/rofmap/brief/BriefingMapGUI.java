@@ -22,6 +22,7 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.Logger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
@@ -143,6 +144,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         if (showAllFlightsInBreifingKey == 1)
         {
             mapFlights();
+            mapFlightBox();
         }
         
         centerMapAt(initialPosition);
@@ -200,9 +202,6 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 	private void createMissionEditPanel() throws PWCGException 
 	{
         String imagePath = ContextSpecificImages.imagesMisc() + "PaperPart.jpg";
-        
-		//JPanel editorPanel = new ImagePanelLayout(imagePath, new BorderLayout());
-        //editorPanel.setOpaque(false);
 
 		editorPanel = new ImageResizingPanel(imagePath);
 		editorPanel.setLayout(new BorderLayout());
@@ -574,9 +573,14 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         }
     }
 
-    /**
-     * @return the briefingMissionHandler
-     */
+
+    private void mapFlightBox() throws PWCGException  
+    {    
+        CoordinateBox missionBorders = briefingMissionHandler.getMission().getMissionFlightBuilder().getMissionBorders(5000);
+        BriefingMapPanel mapPanel = (BriefingMapPanel)mapScroll.getMapPanel();
+        mapPanel.setMissionBorders(missionBorders);
+    }
+
     public BriefingMissionHandler getBriefingMissionHandler()
     {
         return briefingMissionHandler;

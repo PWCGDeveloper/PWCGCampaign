@@ -21,6 +21,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.Logger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.MonitorSupport;
@@ -29,6 +30,7 @@ import pwcg.gui.utils.MapPointInfoPopup;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.VirtualWaypointPlotter;
 import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
+import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 
 public class BriefingMapPanel extends MapPanelBase implements ActionListener
 {
@@ -38,6 +40,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 	private BriefingFlightParameters briefParametersContext;
     private List <FlightMap> alliedVirtualPoints = new ArrayList<FlightMap>();
     private List <FlightMap> axisVirtualPoints = new ArrayList<FlightMap>();
+    private CoordinateBox missionBorders = new CoordinateBox();
 
 	private BriefingMapGUI parent = null;
 
@@ -61,7 +64,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
             g.setColor(ColorMap.RUSSIAN_RED);
             drawVirtualPoints(g, alliedVirtualPoints, true);            
             
-            g.setColor(ColorMap.ITALIAN_GOLD);
+            g.setColor(ColorMap.FRENCH_NAVY_BLUE);
             drawVirtualPoints(g, axisVirtualPoints, true);            
 		}
 		catch (Exception e)
@@ -151,29 +154,10 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
             BriefingMapPoint prevMapPoint = null;
             
            for (int i = 0; i < flightMap.mapPoints.size(); ++i)
-            {
+           {
                 BriefingMapPoint mapPoint = flightMap.mapPoints.get(i);
-
                 g.setColor(requestedColor);
 
-                if (i == 0)
-                {
-                    Font font = MonitorSupport.getPrimaryFont();
-                    g.setFont(font);
-                    Point point = super.coordinateToPoint(mapPoint.coord);
-                    g.drawString(flightMap.flightType, point.x + 4, point.y);
-                }
-                
-                
-                if (i == 0)
-                {
-                    g.setColor(Color.GREEN);
-                }
-                if (i == (flightMap.mapPoints.size()-1) )
-                {
-                    g.setColor(Color.CYAN);
-                }
-    
                 Point point = super.coordinateToPoint(mapPoint.coord);
                 Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 4, point.y - 4, 8, 8);
                 g2.fill(circle);
@@ -188,6 +172,50 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
                 prevMapPoint = mapPoint;
             }
         }
+        
+        for (FlightMap flightMap : flightMaps)
+        {
+            for (int i = 0; i < flightMap.mapPoints.size(); ++i)
+            {
+                BriefingMapPoint mapPoint = flightMap.mapPoints.get(i);
+                if (i == 0)
+                {
+                    g.setColor(Color.GREEN);
+                    Point point = super.coordinateToPoint(mapPoint.coord);
+                    Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 8, point.y - 8, 16, 16);
+                    g2.fill(circle);
+                    
+                    g.setColor(Color.BLACK);
+                    Font font = MonitorSupport.getPrimaryFont();
+                    g.setFont(font);
+                    g.drawString((flightMap.flightType + "/" + flightMap.planeType), point.x + 4, point.y);
+                }
+                if (i == (flightMap.mapPoints.size()-1) )
+                {
+                    g.setColor(Color.ORANGE);
+                    Point point = super.coordinateToPoint(mapPoint.coord);
+                    Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 8, point.y - 8, 16, 16);
+                    g2.fill(circle);
+                }
+            }
+        }
+        
+        Coordinate sw = missionBorders.getSW().copy();
+        Coordinate se = new Coordinate(missionBorders.getNE().getXPos(), 0.0, missionBorders.getSW().getZPos());
+        Coordinate ne = missionBorders.getNE().copy();
+        Coordinate nw = new Coordinate(missionBorders.getSW().getXPos(), 0.0, missionBorders.getNE().getZPos());
+
+        Point swPoint = super.coordinateToPoint(sw);
+        Point sePoint = super.coordinateToPoint(se);
+        Point nePoint = super.coordinateToPoint(ne);
+        Point nwPoint = super.coordinateToPoint(nw);
+        
+        g.setColor(Color.WHITE);
+        g2.draw(new Line2D.Float(swPoint.x, swPoint.y, sePoint.x, sePoint.y));
+        g2.draw(new Line2D.Float(sePoint.x, sePoint.y, nePoint.x, nePoint.y));
+        g2.draw(new Line2D.Float(nePoint.x, nePoint.y, nwPoint.x, nwPoint.y));
+        g2.draw(new Line2D.Float(nwPoint.x, nwPoint.y, swPoint.x, swPoint.y));
+
     }
 
     public void  clearVirtualPoints()
@@ -200,10 +228,28 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
     {
         FlightMap flightMap = new FlightMap();
         flightMap.flightType = flight.getFlightType().toString();
+        flightMap.planeType = flight.getPlanes().get(0).getDisplayName();
         
         // VWPs are usually created later.  If we display this we have to make them now
-        VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
-        List<VirtualWayPointCoordinate> plotCoordinates = virtualWaypointPlotter.plotCoordinatesByMinute(flight);
+        List<VirtualWayPointCoordinate> plotCoordinates = null;
+        if (flight.isVirtual())
+        {
+            if (flight.getWaypointPackage() instanceof VirtualWaypointPackage)
+            {
+                VirtualWaypointPackage virtualWaypointPackage = (VirtualWaypointPackage) flight.getWaypointPackage();
+                plotCoordinates = virtualWaypointPackage.getVirtualWaypointCoordinates();
+                if (plotCoordinates.size() == 0)
+                {
+                    VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
+                    plotCoordinates = virtualWaypointPlotter.plotCoordinatesByMinute(flight);                }
+            }
+        }
+        
+        if (plotCoordinates == null)
+        {
+            VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
+            plotCoordinates = virtualWaypointPlotter.plotCoordinatesByMinute(flight);
+        }
         
         for (VirtualWayPointCoordinate vwp : plotCoordinates)
         {
@@ -455,7 +501,15 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 	
 	private class FlightMap
 	{
-	    String flightType;
+        String flightType;
+        String planeType;
         List<BriefingMapPoint> mapPoints = new ArrayList<BriefingMapPoint>();
 	}
+
+    public void setMissionBorders(CoordinateBox missionBorders)
+    {
+        this.missionBorders = missionBorders;
+    }
+	
+	
 }

@@ -22,8 +22,8 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.FriendlyPlanesMaxKey, "6");
         setParamForSimpleConfigChange(ConfigItemKeys.EnemyPlanesMaxKey, "8");
 
-        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMinKey, "1");
-        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMaxKey, "3");
+        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMinKey, "3");
+        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMaxKey, "5");
         setParamForSimpleConfigChange(ConfigItemKeys.FriendlyFlightsToKeepMinKey, "1");
         setParamForSimpleConfigChange(ConfigItemKeys.FriendlyFlightsToKeepMaxKey, "3");
 
@@ -57,8 +57,8 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.FriendlyPlanesMaxKey, "8");
         setParamForSimpleConfigChange(ConfigItemKeys.EnemyPlanesMaxKey, "12");
 
-        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMinKey, "1");
-        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMaxKey, "5");
+        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMinKey, "3");
+        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMaxKey, "6");
         setParamForSimpleConfigChange(ConfigItemKeys.FriendlyFlightsToKeepMinKey, "1");
         setParamForSimpleConfigChange(ConfigItemKeys.FriendlyFlightsToKeepMaxKey, "5");
 
@@ -92,7 +92,7 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.FriendlyPlanesMaxKey, "16");
         setParamForSimpleConfigChange(ConfigItemKeys.EnemyPlanesMaxKey, "20");
 
-        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMinKey, "2");
+        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMinKey, "4");
         setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMaxKey, "12");
         setParamForSimpleConfigChange(ConfigItemKeys.FriendlyFlightsToKeepMinKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.FriendlyFlightsToKeepMaxKey, "12");

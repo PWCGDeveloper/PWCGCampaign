@@ -23,7 +23,27 @@ public class FlightProximityAnalyzer
     public void plotFlightEncounters() throws PWCGException 
     {
         plotPlayerFlightEncounters();
-        plotAIFlightEncounters();
+    }
+
+    public double proximityToPlayerAirbase(Flight aiFlight) throws PWCGException 
+    {
+        // Plot the minute by minute path of each flight
+        VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
+        List<VirtualWayPointCoordinate> aiFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(aiFlight);
+
+        double closestDistanceToPlayerField = PositionFinder.ABSURDLY_LARGE_DISTANCE;
+        
+        Coordinate playerFieldCoordinte = PWCGContextManager.getInstance().getCampaign().getPosition().copy();
+        for (VirtualWayPointCoordinate vwp : aiFlightPath)
+        {
+            double distanceToPlayerField = MathUtils.calcDist(playerFieldCoordinte, vwp.getCoordinate());
+            if (closestDistanceToPlayerField > distanceToPlayerField)
+            {
+                closestDistanceToPlayerField = distanceToPlayerField;
+            }
+        }
+        
+        return closestDistanceToPlayerField;
     }
 
     private void plotPlayerFlightEncounters() throws PWCGException 
@@ -37,26 +57,12 @@ public class FlightProximityAnalyzer
         }
     }
 
-    private void plotAIFlightEncounters() throws PWCGException 
-    {
-        // Mission flights
-        for (Flight alliedFlight : missionFlightBuilder.getAlliedAiFlights())
-        {
-            for (Flight axisFlight : missionFlightBuilder.getAxisAiFlights())
-            {
-                // Set first point only for flights we are going to keep
-                // Dependency: plotPlayerFlightEncounters must be executed first
-                plotEncounter(alliedFlight, axisFlight, 3500.0);
-            }
-        }
-    }
-
-    private void plotEncounter(Flight thisFlight, Flight thatFlight, double encounterRadius) throws PWCGException 
+    private void plotEncounter(Flight playerFlight, Flight aiFlight, double encounterRadius) throws PWCGException 
     {
         // Plot the minute by minute path of each flight
         VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
-        List<VirtualWayPointCoordinate> thisFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(thisFlight);
-        List<VirtualWayPointCoordinate> thatFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(thatFlight);
+        List<VirtualWayPointCoordinate> thisFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(playerFlight);
+        List<VirtualWayPointCoordinate> thatFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(aiFlight);
 
         double closestDistanceToThatFlight = -1.0;
         // Compare the minute by minute plots to see when a flight intersects a
@@ -71,22 +77,22 @@ public class FlightProximityAnalyzer
                 double distance = MathUtils.calcDist(thisFlightCoordinate.getCoordinate(), thatFlightCoordinate.getCoordinate());
                 if (distance < encounterRadius)
                 {                    
-                    if (thisFlight.isPlayerFlight())
+                    if (playerFlight.isPlayerFlight())
                     {
-                        thatFlight.setContactWithPlayer(timeSliceOfFlight);
+                        aiFlight.setContactWithPlayer(timeSliceOfFlight);
                     }
                     else
                     {
-                        thisFlight.setFirstContactWithEnemy(timeSliceOfFlight, thatFlight);
-                        thatFlight.setFirstContactWithEnemy(timeSliceOfFlight, thisFlight);
+                        playerFlight.setFirstContactWithEnemy(timeSliceOfFlight, aiFlight);
+                        aiFlight.setFirstContactWithEnemy(timeSliceOfFlight, playerFlight);
                     }
                 }
                 
                 if (closestDistanceToThatFlight == -1.0 || distance < closestDistanceToThatFlight)
                 {
-                    if (thisFlight.isPlayerFlight())
+                    if (playerFlight.isPlayerFlight())
                     {
-                        thatFlight.setClosestContactWithPlayerDistance(distance);
+                        aiFlight.setClosestContactWithPlayerDistance(distance);
                         closestDistanceToThatFlight = distance;
                     }
                 }
@@ -97,51 +103,4 @@ public class FlightProximityAnalyzer
             }
         }
     }
-
-    public static double proximityToPosition(Flight thisFlight, Coordinate referencePosition) throws PWCGException 
-    {
-        VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
-        List<VirtualWayPointCoordinate> thisFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(thisFlight);
-
-        double closestDistanceToReferencePosition = PositionFinder.ABSURDLY_LARGE_DISTANCE;
-        
-        // Compare the minute by minute plots to see when a flight intersects a
-        // player flight or another flight
-        for (VirtualWayPointCoordinate thisFlightCoordinate : thisFlightPath)
-        {
-            double distance = MathUtils.calcDist(thisFlightCoordinate.getCoordinate(), referencePosition);
-            if (distance < closestDistanceToReferencePosition)
-            {
-                closestDistanceToReferencePosition = distance;
-            }
-        }
-        
-        return closestDistanceToReferencePosition;
-    }
-    
-
-    public static double proximityToPlayerAirbase(Flight thisFlight) throws PWCGException 
-    {
-        // Plot the minute by minute path of each flight
-        VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
-        List<VirtualWayPointCoordinate> thisFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(thisFlight);
-
-        double closestDistanceToPlayerField = PositionFinder.ABSURDLY_LARGE_DISTANCE;
-        
-        Coordinate playerFieldCoordinte = PWCGContextManager.getInstance().getCampaign().getPosition().copy();
-        
-        // Compare the minute by minute plots to see when a flight intersects a
-        // player flight or another flight
-        for (VirtualWayPointCoordinate vwp : thisFlightPath)
-        {
-            double distanceToPlayerField = MathUtils.calcDist(playerFieldCoordinte, vwp.getCoordinate());
-            if (closestDistanceToPlayerField > distanceToPlayerField)
-            {
-                closestDistanceToPlayerField = distanceToPlayerField;
-            }
-        }
-        
-        return closestDistanceToPlayerField;
-    }
-
 }

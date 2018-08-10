@@ -761,13 +761,6 @@ public abstract class Flight extends Unit
         return allMissionPoints;
     }
 
-
-    
-    /**
-     * For basic flights, mission points are associated with waypoints.
-     * 
-     * @return
-     */
     public List<BaseFlightMcu> getAllMissionPointsForPlane(PlaneMCU plane)
     {
         List<BaseFlightMcu> allMissionPointsForPlane = new ArrayList<BaseFlightMcu>();
@@ -1039,8 +1032,7 @@ public abstract class Flight extends Unit
     {
         if (newClosestDistance > 0.0)
         {
-            if (this.closestContactWithPlayerDistance <= 0.0 ||
-                            newClosestDistance < this.closestContactWithPlayerDistance)
+            if (this.closestContactWithPlayerDistance <= 0.0 || newClosestDistance < this.closestContactWithPlayerDistance)
             {
                 this.closestContactWithPlayerDistance = newClosestDistance;
             }
@@ -1126,10 +1118,13 @@ public abstract class Flight extends Unit
     public boolean isFighterFlight()
     {
         if (this.flightInformation.getFlightType() == FlightTypes.PATROL           ||
+            this.flightInformation.getFlightType() == FlightTypes.LOW_ALT_PATROL   ||
             this.flightInformation.getFlightType() == FlightTypes.OFFENSIVE        ||
             this.flightInformation.getFlightType() == FlightTypes.INTERCEPT        ||
+            this.flightInformation.getFlightType() == FlightTypes.LOW_ALT_CAP      ||
             this.flightInformation.getFlightType() == FlightTypes.ESCORT           ||
             this.flightInformation.getFlightType() == FlightTypes.SCRAMBLE         ||
+            this.flightInformation.getFlightType() == FlightTypes.SCRAMBLE_OPPOSE  ||
             this.flightInformation.getFlightType() == FlightTypes.HOME_DEFENSE     ||
             this.flightInformation.getFlightType() == FlightTypes.LONE_WOLF        ||
             this.flightInformation.getFlightType() == FlightTypes.BALLOON_BUST     ||
@@ -1141,7 +1136,7 @@ public abstract class Flight extends Unit
             
         return false;
     }
-
+    
     protected String formMissionObjectiveLocation(Coordinate targetLocation) throws PWCGException 
     {
         String missionObjectiveLocation = "";

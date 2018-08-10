@@ -12,19 +12,12 @@ import pwcg.mission.mcu.group.VirtualWayPoint;
 public class VirtualWaypointPackage extends WaypointPackage
 {
     protected List<VirtualWayPoint> virtualWaypoints = new ArrayList<VirtualWayPoint>();
-    
-    /**
-     * @param flight
-     */
+
     public VirtualWaypointPackage(Flight flight)
     {
         super(flight);
     }
 
-
-    /**
-     * @param timerToLink
-     */
     public BaseFlightMcu getEntryMcu()
     {
         if (virtualWaypoints.size() > 0)
@@ -36,13 +29,6 @@ public class VirtualWaypointPackage extends WaypointPackage
         return null;
     }
 
-    /**
-     * Write the mission to a file
-     * 
-     * @param writer
-     * @throws PWCGIOException 
-     * @
-     */
     public void write(BufferedWriter writer) throws PWCGIOException 
     {
         for (VirtualWayPoint virtualWaypoint : virtualWaypoints)
@@ -53,17 +39,23 @@ public class VirtualWaypointPackage extends WaypointPackage
         super.write(writer);
     }
 
-
-
     public List<VirtualWayPoint> getVirtualWaypoints()
     {
         return this.virtualWaypoints;
     }
 
+    public List<VirtualWayPointCoordinate> getVirtualWaypointCoordinates()
+    {
+        List<VirtualWayPointCoordinate> virtualWayPointCoordinates = new ArrayList<>();
+        for (VirtualWayPoint virtualWayPoint : virtualWaypoints)
+        {
+            virtualWayPointCoordinates.add(virtualWayPoint.getCoordinate());
+        }
+        return virtualWayPointCoordinates;
+    }
 
     public void setVirtualWaypoints(List<VirtualWayPoint> virtualWaypoints)
     {
         this.virtualWaypoints = virtualWaypoints;
     }
-
 }

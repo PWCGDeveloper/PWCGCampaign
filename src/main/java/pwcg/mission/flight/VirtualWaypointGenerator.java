@@ -3,8 +3,11 @@ package pwcg.mission.flight;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.group.VirtualWayPoint;
@@ -31,7 +34,9 @@ public class VirtualWaypointGenerator
         int endVWP = plotCoordinates.size();
         
         // Determine which VWPs to keep
-        CoordinateBox missionBorders = flight.getMission().getMissionFlightBuilder().getMissionBorders(5000);
+        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int boxExpansionForFirstVWPToKeep = RandomNumberGenerator.getRandom(productSpecific.getMaxDistanceForVirtualFlightFromPlayerBox());
+        CoordinateBox missionBorders = flight.getMission().getMissionFlightBuilder().getMissionBorders(boxExpansionForFirstVWPToKeep);
         for (int i = 0; i < plotCoordinates.size(); ++i)
         {
             VirtualWayPointCoordinate vwp = plotCoordinates.get(i);
@@ -41,11 +46,7 @@ public class VirtualWaypointGenerator
                 if (startVWP == 0)
                 {
                     startVWP = i;
-                }
-                // End at the last
-                else
-                {
-                    endVWP = i;
+                    break;
                 }
             }
         }

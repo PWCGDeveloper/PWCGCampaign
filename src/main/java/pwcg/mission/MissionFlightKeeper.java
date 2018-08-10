@@ -118,7 +118,7 @@ public class MissionFlightKeeper
         }
 
         return keptFlights;
-    }
+    }    
     
     private boolean isFighterFlightForPurposeOfKeep(Flight enemyFlight)
     {
@@ -162,7 +162,8 @@ public class MissionFlightKeeper
             return false;
         }
 
-        double distanceToBase = FlightProximityAnalyzer.proximityToPlayerAirbase(flight);
+        FlightProximityAnalyzer flightProximityAnalyzer = new FlightProximityAnalyzer(missionFlightBuilder);
+        double distanceToBase = flightProximityAnalyzer.proximityToPlayerAirbase(flight);
         
         int DistanceFromPlayerFieldZone = configManager.getIntConfigParam(ConfigItemKeys.DistanceFromPlayerFieldZoneKey);
         int DistanceToPlayerFieldOverrideOdds = configManager.getIntConfigParam(ConfigItemKeys.DistanceToPlayerFieldOverrideOddsKey);

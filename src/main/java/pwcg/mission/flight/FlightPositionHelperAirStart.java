@@ -23,15 +23,11 @@ public class FlightPositionHelperAirStart
     {
         PlaneMCU flightLeader = flight.getFlightLeader();
         
-        // Initial position has already been set for ground starts
         int i = 0;
         for (PlaneMCU plane : flight.getPlanes())
         {
             Coordinate planeCoords = new Coordinate();
 
-            // Air start for other flights
-            // Since we always face east, subtract from z to get your mates
-            // behind you
             ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
             int AircraftSpacingHorizontal = configManager.getIntConfigParam(ConfigItemKeys.AircraftSpacingHorizontalKey);
             planeCoords.setXPos(startCoordinate.getXPos() - (i * AircraftSpacingHorizontal));

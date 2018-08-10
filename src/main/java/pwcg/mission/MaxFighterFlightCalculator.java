@@ -25,7 +25,7 @@ public class MaxFighterFlightCalculator
         int numFighterFlightsToKeep = 0;
         if (campaign.isFighterCampaign() && playerFlight.isFighterFlight())
         {
-            numFighterFlightsToKeep =  RandomNumberGenerator.getRandom(maxFighterToKeepIfFighterCampaign+1);
+            numFighterFlightsToKeep =  RandomNumberGenerator.getRandom(maxFighterToKeepIfFighterCampaign)+1;
         }
         else
         {

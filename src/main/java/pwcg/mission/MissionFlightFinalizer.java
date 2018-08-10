@@ -27,16 +27,13 @@ public class MissionFlightFinalizer
     public List<Flight> finalizeMissionFlights() throws PWCGException 
     {
         convertForCoop();
-
-        missionFlightBuilder.getPlayerFlight().finalizeFlight();
-        
-        MissionFlightKeeper missionFlightKeeper = new MissionFlightKeeper(campaign, missionFlightBuilder);
-        List<Flight> finalizedMissionFlights = missionFlightKeeper.keepLimitedFlights();
-
-        for (Flight flight : finalizedMissionFlights)
+        for (Flight flight : missionFlightBuilder.getAllAerialFlights())
         {
             flight.finalizeFlight();
         }
+
+        MissionFlightKeeper missionFlightKeeper = new MissionFlightKeeper(campaign, missionFlightBuilder);
+        List<Flight> finalizedMissionFlights = missionFlightKeeper.keepLimitedFlights();
 
         setFlightAttackMcu();
         

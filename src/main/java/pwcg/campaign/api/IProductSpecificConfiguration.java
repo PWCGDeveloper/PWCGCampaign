@@ -32,4 +32,5 @@ public interface IProductSpecificConfiguration
     int getNumAssaultSegments(BattleSize battleSize);
     int getMaxSeaLaneDistance();
     int getCloseToFrontDistance();
+    int getMaxDistanceForVirtualFlightFromPlayerBox();
 }

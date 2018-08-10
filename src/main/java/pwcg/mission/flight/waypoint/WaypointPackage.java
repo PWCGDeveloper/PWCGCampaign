@@ -19,26 +19,13 @@ public abstract class WaypointPackage
     protected Map<Integer, List<McuWaypoint>> flightWaypointsByPlane = new HashMap<Integer, List<McuWaypoint>>();
     protected Flight flight = null;
 
-    /**
-     * @param flight
-     */
     public WaypointPackage(Flight flight)
     {
         this.flight = flight;
     }
 
-
-    /**
-     * @param timerToLink
-     */
     public abstract BaseFlightMcu getEntryMcu();
 
-    /**
-     * Write the mission to a file
-     * 
-     * @param writer
-     * @
-     */
     public void write(BufferedWriter writer) throws PWCGIOException
     {
         for (List<McuWaypoint> waypoints : flightWaypointsByPlane.values())
@@ -50,40 +37,22 @@ public abstract class WaypointPackage
         }
     }
 
-    /**
-     * @return
-     */
     public List<McuWaypoint> getWaypointsForLeadPlane()
     {
         return flightWaypointsByPlane.get(flight.getPlanes().get(0).getIndex());
     }
 
-    /**
-     * @param plane
-     * @return
-     */
     public List<McuWaypoint> getWaypointsForPlane(PlaneMCU plane)
     {
         return flightWaypointsByPlane.get(plane.getIndex());
     }
 
-    /**
-     * Set the waypoints and associate with the flight leader
-     * 
-     * @param waypoints
-     */
     public void setWaypoints(List<McuWaypoint> waypoints)
     {
         flightWaypointsByPlane.clear();
         flightWaypointsByPlane.put(flight.getPlanes().get(0).getIndex(), waypoints);    
     }
-    
-    /**
-     * Duplicates and offsets waypoints for each plane in the flight
-     * 
-     * @param flight
-     * @throws PWCGException 
-     */
+
     public void duplicateWaypointsForFlight(Flight flight) throws PWCGException
     {
         List<McuWaypoint> waypoints = flightWaypointsByPlane.get(flight.getPlanes().get(0).getIndex());

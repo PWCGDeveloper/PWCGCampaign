@@ -8,23 +8,24 @@ import pwcg.mission.ground.BattleSize;
 
 public class BoSProductSpecificConfiguration implements IProductSpecificConfiguration
 {
-    private static int START_IN_AIR = 0;
-    private static int START_ON_RUNWAY = 1;
-    private static int START_PARKED = 2;
-    private static int INTERCEPT_LOOP_ANGLE = 60;
-    private static int INNER_LOOP_DISTANCE = 15000;
-    private static int CLIMB_DISTANCE = 10000;
-    private static int NEUTRAL_ZONE = 5000;
-    private static int FRONT_LINE_MISSION_RADIUS = 40000;
-    public static int BOMB_APPROACH_DISTANCE = 18000;
-    public static int BOMB_APPROACH_FINAL_DISTANCE = 10000;
-    public static int MIN_CLIMB_WP_ALT = 2000;
-    public static int CROSS_DIAMETER = 25000;
-    public static int CREEPING_LINE_LENGTH = 15000;
-    public static int CREEPING_LINE_CROSS = 8000;
-    public static int MAX_SEA_LANE_DISTANCE = 100000;
-    public static int INTERCEPT_RADIUS = 60000;
-    public static int CLOSE_TO_FRONT_DISTANCE = 60000;
+    private static final int START_IN_AIR = 0;
+    private static final int START_ON_RUNWAY = 1;
+    private static final int START_PARKED = 2;
+    private static final int INTERCEPT_LOOP_ANGLE = 60;
+    private static final int INNER_LOOP_DISTANCE = 15000;
+    private static final int CLIMB_DISTANCE = 10000;
+    private static final int NEUTRAL_ZONE = 5000;
+    private static final int FRONT_LINE_MISSION_RADIUS = 40000;
+    private static final int BOMB_APPROACH_DISTANCE = 18000;
+    private static final int BOMB_APPROACH_FINAL_DISTANCE = 10000;
+    private static final int MIN_CLIMB_WP_ALT = 2000;
+    private static final int CROSS_DIAMETER = 25000;
+    private static final int CREEPING_LINE_LENGTH = 15000;
+    private static final int CREEPING_LINE_CROSS = 8000;
+    private static final int MAX_SEA_LANE_DISTANCE = 100000;
+    private static final int INTERCEPT_RADIUS = 60000;
+    private static final int CLOSE_TO_FRONT_DISTANCE = 60000;
+    private static final int MAX_DISTANCE_FROM_PLAYER_BOX = 60000;
 
     @Override
     public boolean useWaypointGoal()
@@ -343,5 +344,11 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     public int getCloseToFrontDistance()
     {
         return CLOSE_TO_FRONT_DISTANCE;
+    }
+
+    @Override
+    public int getMaxDistanceForVirtualFlightFromPlayerBox()
+    {
+        return MAX_DISTANCE_FROM_PLAYER_BOX;
     }
 }

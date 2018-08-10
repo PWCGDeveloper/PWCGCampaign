@@ -221,13 +221,13 @@ public class CoordinateBox
 
     public double getBoxHeight() throws PWCGException
     {
-        double height = sw.getXPos() - ne.getXPos();
+        double height = ne.getXPos() - sw.getXPos();
         return height;
     }
 
     public double getBoxWidth() throws PWCGException
     {
-        double width = sw.getZPos() - ne.getZPos();
+        double width = ne.getZPos() - sw.getZPos();
         return width;
     }
 

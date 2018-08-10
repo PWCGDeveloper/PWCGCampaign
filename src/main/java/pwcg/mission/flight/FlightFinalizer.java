@@ -154,48 +154,59 @@ public class FlightFinalizer
         // Create virtual waypoints
         if (flight.getWaypointPackage() instanceof VirtualWaypointPackage)
         {
-            VirtualWaypointGenerator virtualWaypointGenerator = new VirtualWaypointGenerator(flight);
-            List<VirtualWayPoint> virtualWaypoints = virtualWaypointGenerator.createVirtualWaypoints();
-
-            VirtualWaypointPackage virtualWaypointPackage = (VirtualWaypointPackage) flight.getWaypointPackage();
-            virtualWaypointPackage.setVirtualWaypoints(virtualWaypoints);
-
-            // After we have the VWPs in place, link to the waypoint package
-            BaseFlightMcu wpEntryMcu = flight.getWaypointPackage().getEntryMcu();
-            if (wpEntryMcu != null)
-            {
-                flight.getMissionBeginUnit().linkToMissionBegin(wpEntryMcu.getIndex());
-            }
-
-            // Plane Remover
-            if (!(configManager.getIntConfigParam(ConfigItemKeys.UsePlaneDeleteKey) == 0))
-            {
-                for (int i = 0; i < flight.getPlanes().size(); ++i)
-                {
-                    PlaneMCU plane = flight.getPlanes().get(i);
-                    if (!plane.getPilot().isPlayer())
-                    {
-                        plane.createPlaneRemover(flight, flight.getMission().getMissionFlightBuilder().getPlayerFlight().getPlayerPlanes().get(0));
-                    }
-                    
-                    for (VirtualWayPoint virtualWaypoint : ((VirtualWaypointPackage) flight.getWaypointPackage()).getVirtualWaypoints())
-                    {
-                        // For virtual WP flights, enable the plane remover when
-                        // the flight becomes active.
-                        // Only one virtual WP will ever trigger, so the plane
-                        // remover will be instantiated only once.
-                        PlaneRemover planeRemover = plane.getPlaneRemover();
-                        if (planeRemover != null)
-                        {
-                            virtualWaypoint.onTriggerAddTarget(plane, planeRemover.getEntryPoint().getIndex());
-                        }
-                    }
-                }
-            }
+            buildVirtualWaypoints();            
+            linkVirtualWaypoints();
+            buildPlaneRemover(configManager);
         }
         else
         {
             throw new PWCGMissionGenerationException("Non virtual AI flight");
+        }
+    }
+
+    private void buildVirtualWaypoints() throws PWCGException
+    {
+        VirtualWaypointGenerator virtualWaypointGenerator = new VirtualWaypointGenerator(flight);
+        List<VirtualWayPoint> virtualWaypoints = virtualWaypointGenerator.createVirtualWaypoints();
+
+        VirtualWaypointPackage virtualWaypointPackage = (VirtualWaypointPackage) flight.getWaypointPackage();
+        virtualWaypointPackage.setVirtualWaypoints(virtualWaypoints);
+    }
+
+    private void linkVirtualWaypoints()
+    {
+        BaseFlightMcu wpEntryMcu = flight.getWaypointPackage().getEntryMcu();
+        if (wpEntryMcu != null)
+        {
+            flight.getMissionBeginUnit().linkToMissionBegin(wpEntryMcu.getIndex());
+        }
+    }
+
+    private void buildPlaneRemover(ConfigManagerCampaign configManager) throws PWCGException
+    {
+        if (!(configManager.getIntConfigParam(ConfigItemKeys.UsePlaneDeleteKey) == 0))
+        {
+            for (int i = 0; i < flight.getPlanes().size(); ++i)
+            {
+                PlaneMCU plane = flight.getPlanes().get(i);
+                if (!plane.getPilot().isPlayer())
+                {
+                    plane.createPlaneRemover(flight, flight.getMission().getMissionFlightBuilder().getPlayerFlight().getPlayerPlanes().get(0));
+                }
+                
+                for (VirtualWayPoint virtualWaypoint : ((VirtualWaypointPackage) flight.getWaypointPackage()).getVirtualWaypoints())
+                {
+                    // For virtual WP flights, enable the plane remover when
+                    // the flight becomes active.
+                    // Only one virtual WP will ever trigger, so the plane
+                    // remover will be instantiated only once.
+                    PlaneRemover planeRemover = plane.getPlaneRemover();
+                    if (planeRemover != null)
+                    {
+                        virtualWaypoint.onTriggerAddTarget(plane, planeRemover.getEntryPoint().getIndex());
+                    }
+                }
+            }
         }
     }
 

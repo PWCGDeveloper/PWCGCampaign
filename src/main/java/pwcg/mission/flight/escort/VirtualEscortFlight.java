@@ -29,14 +29,11 @@ public class VirtualEscortFlight extends Flight
 
 	public void createEscortPositionCloseToFirstWP() throws PWCGException 
 	{
-		// Different logic for escort air start
 		Coordinate escortedFlightCoords = escortedFlight.getPlanes().get(0).getPosition().copy();
 		Orientation escortedFlightOrient = escortedFlight.getPlanes().get(0).getOrientation().copy();
 		
-        // Air start for other flights
         Coordinate escortFlightCoords = new Coordinate();
         
-        // Since we always face east, subtract from z to get your mates behind you              
         escortFlightCoords.setXPos(escortedFlightCoords.getXPos() + 100);
         escortFlightCoords.setZPos(escortedFlightCoords.getZPos()+ 100);
         escortFlightCoords.setYPos(escortedFlightCoords.getYPos() + 300);

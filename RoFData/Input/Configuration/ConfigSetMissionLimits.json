@@ -17,12 +17,12 @@
       "help": "Odds that a flight will be in the exclusion zone"
     },
     "EnemyFlightsToKeepMax": {
-      "value": "3",
+      "value": "6",
       "label": "Max Enemy Flights",
       "help": "Upper bound of enemy flights to keep"
     },
     "EnemyFlightsToKeepMin": {
-      "value": "1",
+      "value": "3",
       "label": "Min Enemy Flights",
       "help": "Lower bound of enemy flights to keep"
     },

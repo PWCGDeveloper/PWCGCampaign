@@ -63,11 +63,7 @@ public class VirtualWaypointPlotter
             
             ++wpIndex;
         }
-        
-        // If the virtual flight is already in the air then we remove some VWPs to simulate
-        // distance traveled
-        flightPath = this.adjustForEarlyStart(flight, flightPath);
-        
+
         return flightPath;
     }
     
@@ -153,57 +149,7 @@ public class VirtualWaypointPlotter
         
         return delayedStartLeg;
     }
-    
-    
-    /**
-     * Remove VWPs at the aircraft start point to simulate departure before theplayer flight
-     * 
-     * @param missionStartTimeAdjustment
-     * @param legStartPosition
-     * @param orientation
-     * @return
-     */
-    private List<VirtualWayPointCoordinate> adjustForEarlyStart(Flight flight, List<VirtualWayPointCoordinate> flightPath)
-    {
-        List<VirtualWayPointCoordinate> delayedStartLeg = new ArrayList<VirtualWayPointCoordinate>();
-        
-        if (flight.getMissionStartTimeAdjustment() < 0)
-        {
-            int numVWPToRemove = Math.abs(flight.getMissionStartTimeAdjustment());
 
-            // Safety check - we should not advance the flight too far.
-            // If this is the result then just start the flight at time zero
-            if (numVWPToRemove > (flightPath.size() - 10))
-            {
-                if (flightPath.size() > 20)
-                {
-                    numVWPToRemove = flightPath.size() - 10;
-                }
-            }
-            
-            // Change the flight path to advance the start
-            for (int i = numVWPToRemove; i < flightPath.size(); ++i)
-            {
-                delayedStartLeg.add(flightPath.get(i));
-            }
-        }
-        // If we are not removing anything then just return the flight path
-        else
-        {
-            delayedStartLeg = flightPath;
-        }
-        
-        return delayedStartLeg;
-    }
-    
-     
-    /**
-     * If there are no waypoints, generate fake VWPs at the aircraft start point to simulate circling
-     * 
-     * @param flightStartPosition
-     * @param orientation
-     * @return
-     */
     private List<VirtualWayPointCoordinate> generateVwpForNoWaypoints(Flight flight)
     {
         List<VirtualWayPointCoordinate> circlingFlightPath = new ArrayList<VirtualWayPointCoordinate>();
@@ -221,13 +167,6 @@ public class VirtualWaypointPlotter
         return circlingFlightPath;
     }
 
-
-
-    /**
-     * @param wpIndex
-     * @param coordinate
-     * @return
-     */
     private VirtualWayPointCoordinate createVwpCoordinate(int wpIndex, Coordinate coordinate, Orientation orientation)
     {
         VirtualWayPointCoordinate virtualWayPointCoordinate = new VirtualWayPointCoordinate();
