@@ -5,7 +5,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
+import pwcg.campaign.ArmedService;
+import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -76,6 +80,26 @@ public class SquadronMembers
         }
         
         throw new PWCGException("No squadronmember found for name " + name);
+    }
+
+
+    public List<SquadronMember> sortByRank(ArmedService service) throws PWCGException
+    {
+        List<SquadronMember> sorted = new ArrayList<SquadronMember>();
+        Map<String, SquadronMember> sortedTree = new TreeMap<String, SquadronMember>();
+
+        IRankHelper rankObj = RankFactory.createRankHelper();
+
+        for (SquadronMember squadronMember : squadronMemberCollection.values())
+        {
+            int rankPos = rankObj.getRankPosByService(squadronMember.getRank(), service);
+            String sortKey = "" + rankPos + squadronMember.getName();
+            sortedTree.put(sortKey, squadronMember);
+        }
+
+        sorted.addAll(sortedTree.values());
+
+        return sorted;
     }
 
 }

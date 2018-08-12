@@ -38,8 +38,11 @@ public class AARPhase0Preliminary
     	List<String> sortedLogSets = logSetFinder.getSortedLogFileSets();
     	
     	AARMostRecentLogSetFinder mostRecentLogSetFinder = createAARMostRecentLogSetFinder(campaign);
-        mostRecentLogSetFinder.getMostRecentAARLogFileMissionDataSetForCampaign(sortedLogSets, sortedPwcgMissionDataForCampaign);     
-                
+    	if (sortedPwcgMissionDataForCampaign.size() > 0)
+    	{
+    	    mostRecentLogSetFinder.getMostRecentAARLogFileMissionDataSetForCampaign(sortedLogSets, sortedPwcgMissionDataForCampaign);     
+    	}
+    	
         if (mostRecentLogSetFinder.getAarLogFileMissionFile() == null)
         {
         	throw new PWCGException ("Failed to find most recent log file data set");

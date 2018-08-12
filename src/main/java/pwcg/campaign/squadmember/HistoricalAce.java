@@ -52,7 +52,7 @@ public class HistoricalAce extends SquadronMember
     {
         aceNow.setName(name);
         aceNow.setSerialNumber(serialNumber);
-        aceNow.setPilotActiveStatus(pilotActiveStatus, date);
+        aceNow.setPilotActiveStatus(pilotActiveStatus, date, null);
     }
 
     private void determineAcePicture(Ace aceNow)
@@ -103,15 +103,15 @@ public class HistoricalAce extends SquadronMember
             {
                 if (aceSquadron.squadron == SquadronMemberStatus.STATUS_ON_LEAVE)
                 {
-                    aceNow.setPilotActiveStatus(SquadronMemberStatus.STATUS_ON_LEAVE, null);
+                    aceNow.setPilotActiveStatus(SquadronMemberStatus.STATUS_ON_LEAVE, null, null);
                 }
                 else if (aceSquadron.squadron == SquadronMemberStatus.STATUS_KIA)
                 {
-                    aceNow.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, date);
+                    aceNow.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, date, null);
                 }
                 else
                 {
-                    aceNow.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null);
+                    aceNow.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
                     lastHistoricalAceSquadron = aceSquadron;
                     aceNow.setSquadronId(lastHistoricalAceSquadron.squadron);
                 }

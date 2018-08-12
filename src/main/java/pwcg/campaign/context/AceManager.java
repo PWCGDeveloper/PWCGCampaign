@@ -248,7 +248,7 @@ public class AceManager
 		aceClone.setSquadronId(squadAtThisDate);
 		if (squadAtThisDate > 0)
 		{
-			aceClone.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null);
+			aceClone.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
 		}
 	}
 

@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import javax.swing.ImageIcon;
 
@@ -57,6 +56,7 @@ public class SquadronMember implements Cloneable
     protected String playerRegion = "";
     protected int squadronId = 0;
     protected Date inactiveDate;
+    protected Date recoveryDate;
 
     public SquadronMember()
     {
@@ -213,25 +213,6 @@ public class SquadronMember implements Cloneable
         return sortKey;
     }
 
-    public static List<SquadronMember> sortByRank(List<SquadronMember> unsorted, ArmedService service) throws PWCGException
-    {
-        List<SquadronMember> sorted = new ArrayList<SquadronMember>();
-        Map<String, SquadronMember> sortedTree = new TreeMap<String, SquadronMember>();
-
-        IRankHelper rankObj = RankFactory.createRankHelper();
-
-        for (SquadronMember squadronMember : unsorted)
-        {
-            int rankPos = rankObj.getRankPosByService(squadronMember.getRank(), service);
-            String sortKey = "" + rankPos + squadronMember.getName();
-            sortedTree.put(sortKey, squadronMember);
-        }
-
-        sorted.addAll(sortedTree.values());
-
-        return sorted;
-    }
-
     public ArmedService determineService(Date date) throws PWCGException
     {
         ArmedService service = null;
@@ -335,16 +316,47 @@ public class SquadronMember implements Cloneable
         return pilotActiveStatus;
     }
 
-    public void setPilotActiveStatus(int pilotActiveStatus, Date statusDate)
+    public void setPilotActiveStatus(int pilotActiveStatus, Date statusDate, Date recoveryDate)
+    {
+        if (isPlayer())
+        {
+            setPlayerPilotActiveStatus(pilotActiveStatus, statusDate, recoveryDate);
+        }
+        else
+        {
+            setAiPilotActiveStatus(pilotActiveStatus, statusDate);
+        }
+    }
+
+    private void setPlayerPilotActiveStatus(int pilotActiveStatus, Date statusDate, Date recoveryDate)
     {
         this.pilotActiveStatus = pilotActiveStatus;
         if (pilotActiveStatus <= SquadronMemberStatus.STATUS_CAPTURED)
         {
             inactiveDate = new Date(statusDate.getTime());
         }
-        else if (pilotActiveStatus == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED && !(isPlayer()))
+        else if (pilotActiveStatus <= SquadronMemberStatus.STATUS_WOUNDED)
         {
-            inactiveDate = new Date(statusDate.getTime());            
+            this.recoveryDate = new Date(recoveryDate.getTime());            
+        }
+        else if (pilotActiveStatus == SquadronMemberStatus.STATUS_ACTIVE)
+        {
+            this.inactiveDate = null;            
+            this.recoveryDate = null;            
+        }
+    }
+
+    private void setAiPilotActiveStatus(int pilotActiveStatus, Date statusDate)
+    {
+        this.pilotActiveStatus = pilotActiveStatus;
+        if (pilotActiveStatus <= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+        {
+            inactiveDate = new Date(statusDate.getTime());
+        }
+        else if (pilotActiveStatus == SquadronMemberStatus.STATUS_ACTIVE)
+        {
+            this.inactiveDate = null;            
+            this.recoveryDate = null;            
         }
     }
 
@@ -531,5 +543,15 @@ public class SquadronMember implements Cloneable
     public String getNameAndRank()
     {
         return determineRankAbbrev() + " " + name;
+    }
+
+    public Date getRecoveryDate()
+    {
+        return recoveryDate;
+    }
+
+    public void setRecoveryDate(Date recoveryDate)
+    {
+        this.recoveryDate = recoveryDate;
     }
 }

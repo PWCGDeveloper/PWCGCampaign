@@ -54,7 +54,7 @@ public class AcesKilledEventGeneratorTest
     public void aceKilledNotEnoughVictories () throws PWCGException
     {       
         Ace aceKilledInMission = new Ace();
-        aceKilledInMission.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate());
+        aceKilledInMission.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
         for (int i = 0; i < AcesKilledEventGenerator.NUM_VICTORIES_FOR_ACE_TO_BE_NEWSWORTHY-1; ++i)
         {
             Victory victory = new Victory();

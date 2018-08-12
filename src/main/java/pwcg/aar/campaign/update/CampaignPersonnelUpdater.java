@@ -23,9 +23,7 @@ public class CampaignPersonnelUpdater
     public void personnelUpdates() throws PWCGException 
     {
         personnelAceRemovals();
-
-        personnelPilotLosses();
-        
+        personnelPilotLosses();        
         personnelAceAdditions();
     }
 
@@ -33,7 +31,6 @@ public class CampaignPersonnelUpdater
     private void personnelAceRemovals()
     {
         acesKilled();
-        
         acesTransferredOut();
     }
 
@@ -52,18 +49,15 @@ public class CampaignPersonnelUpdater
     private void setAceKilledInCampaign(Integer serialNumber)
     {
         Ace ace = campaign.getPersonnelManager().getCampaignAces().retrieveAceBySerialNumber(serialNumber);
-        ace.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate());
+        ace.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
     }
 
 
     private void personnelPilotLosses() throws PWCGException 
     {        
         squadronMembersKilled();
-        
         squadronMembersCaptured();
-
         squadronMembersMaimed();
-
         squadronMembersTransfers();
     }
 
@@ -71,7 +65,7 @@ public class CampaignPersonnelUpdater
     {
         for (SquadronMember pilot : aarContext.getCampaignUpdateData().getPersonnelLosses().getPersonnelKilled().values())
         {
-            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate());
+            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
         }
     }
 
@@ -79,7 +73,7 @@ public class CampaignPersonnelUpdater
     {
         for (SquadronMember pilot : aarContext.getCampaignUpdateData().getPersonnelLosses().getPersonnelCaptured().values())
         {
-            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_CAPTURED, campaign.getDate());
+            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_CAPTURED, campaign.getDate(), null);
         }
     }
 
@@ -87,7 +81,7 @@ public class CampaignPersonnelUpdater
     {
         for (SquadronMember pilot : aarContext.getCampaignUpdateData().getPersonnelLosses().getPersonnelMaimed().values())
         {
-            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate());
+            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), pilot.getRecoveryDate());
         }
     }
 

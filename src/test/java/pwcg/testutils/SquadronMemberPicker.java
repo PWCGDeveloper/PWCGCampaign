@@ -27,4 +27,20 @@ public class SquadronMemberPicker
         
         return selectedSquadronMember;
     }
+    
+    public static SquadronMember pickPlayerSquadronMember (Campaign campaign) throws PWCGException
+    {
+        Map<Integer, SquadronMember> squadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMemberCollection();
+        SquadronMember selectedSquadronMember = null;
+        for (SquadronMember squadronMember : squadronMembers.values())
+        {
+            if (squadronMember.isPlayer())
+            {
+                selectedSquadronMember = squadronMember;
+                break;
+            }
+        }
+        
+        return selectedSquadronMember;
+    }
 }

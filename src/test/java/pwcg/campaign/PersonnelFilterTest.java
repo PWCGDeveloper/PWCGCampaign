@@ -30,7 +30,7 @@ public class PersonnelFilterTest
     		SquadronMember squadronMember = new SquadronMember();
     		squadronMember.setName(names[i]);
     		squadronMember.setSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + i);
-    		squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null);
+    		squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
     		squadronMember.setSquadronId(101003);
     		testSquadronMembers.put(squadronMember.getSerialNumber(), squadronMember);
     	}
@@ -42,7 +42,7 @@ public class PersonnelFilterTest
     	for (int i = 0; i < 4; ++i)
     	{
     		SquadronMember squadronMember = testSquadronMembers.get(SerialNumber.AI_STARTING_SERIAL_NUMBER + i);
-    		squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, DateUtils.getDateYYYYMMDD("19170801"));
+    		squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, DateUtils.getDateYYYYMMDD("19170801"), null);
     	}
 
     	Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<Integer, SquadronMember>();

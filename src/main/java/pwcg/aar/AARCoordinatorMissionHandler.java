@@ -1,6 +1,7 @@
 package pwcg.aar;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.campaign.update.CampaignUpdater;
@@ -79,11 +80,14 @@ public class AARCoordinatorMissionHandler
 
     private void generateEventsForTimeWounded() throws PWCGException
     {
-        LogPilot playerCrewMember = aarContext.getMissionEvaluationData().getPlayerCrewMember();
-        if (playerCrewMember.getStatus() <= SquadronMemberStatus.STATUS_WOUNDED)
+        List<LogPilot> playerCrewMembers = aarContext.getMissionEvaluationData().getPlayerCrewMembers();
+        for (LogPilot playerCrewMember : playerCrewMembers)
         {
-            AARExtendedTimeHandler extendedTimeHandler = new AARExtendedTimeHandler(campaign, aarContext);      
-            extendedTimeHandler.timePassedForWounds(playerCrewMember);
+            if (playerCrewMember.getStatus() <= SquadronMemberStatus.STATUS_WOUNDED)
+            {
+                AARExtendedTimeHandler extendedTimeHandler = new AARExtendedTimeHandler(campaign, aarContext);      
+                extendedTimeHandler.timePassedForWounds(playerCrewMember);
+            }
         }
     }
 

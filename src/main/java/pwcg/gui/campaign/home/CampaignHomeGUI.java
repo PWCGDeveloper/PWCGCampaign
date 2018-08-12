@@ -123,54 +123,52 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
         activeButtons.clear();
         
-        if (campaign.isCampaignActive())
+        if (isDisplayMissionButton())
         {
             JButton createButton = makeMenuButton("Mission", "CampMission", "Generate a mission");
             addButton(buttonPanel, createButton);
-            activeButtons.add(createButton);
 
             if (!campaign.getCampaignData().isCoop())
             {
                 loneWolfMission = makeMenuButton("Lone Wolf Mission", "CampMissionLoneWolf", "Generate a lone wolf mission");
                 addButton(buttonPanel, loneWolfMission);
             }
-            
+
             JButton combatReportButton = makeMenuButton("Combat Report", "CampFlowCombatReport", "File an After Action Report (AAR) for a mission");
             addButton(buttonPanel, combatReportButton);
-
-            JLabel space1 = new JLabel("");
-            buttonPanel.add(space1);
-
-            JButton pilotsButton = makeMenuButton("Pilots", "CampPilots", "Show squadron pilot chalk board");
-            addButton(buttonPanel, pilotsButton);
-
-            JButton topAcesButton = makeMenuButton("Top Aces", "CampTopAces", "Show top aces chalk board");
-            addButton(buttonPanel, topAcesButton);
-
-            JButton equipmentButton = makeMenuButton("Equipment", "Equipment", "Show equipment chalk board");
-            addButton(buttonPanel, equipmentButton);
-
-            JLabel space2 = new JLabel("");
-            buttonPanel.add(space2);
-
-            if (!campaign.getCampaignData().isCoop())
-            {
-                JButton transferButton = makeMenuButton("Transfer", "CampFlowTransfer", "Transfer to a new squadron");
-                addButton(buttonPanel, transferButton);
-    
-                JButton leaveButton = makeMenuButton("Leave", "CampFlowLeave", "Request leave");
-                addButton(buttonPanel, leaveButton);
-            }
-            else
-            {
-                JButton addHumanPilotButton = makeMenuButton("Add Pilot", "AddHumanPilot", "Add a human pilot");
-                addButton(buttonPanel, addHumanPilotButton);
-            }
         }
-        else
+        
+        JLabel space1 = new JLabel("");
+        buttonPanel.add(space1);
+
+        JButton pilotsButton = makeMenuButton("Pilots", "CampPilots", "Show squadron pilot chalk board");
+        addButton(buttonPanel, pilotsButton);
+
+        JButton topAcesButton = makeMenuButton("Top Aces", "CampTopAces", "Show top aces chalk board");
+        addButton(buttonPanel, topAcesButton);
+
+        JButton equipmentButton = makeMenuButton("Equipment", "Equipment", "Show equipment chalk board");
+        addButton(buttonPanel, equipmentButton);
+
+        if (isAddHumanPilot())
         {
             JButton addHumanPilotButton = makeMenuButton("Add Pilot", "AddHumanPilot", "Add a human pilot");
             addButton(buttonPanel, addHumanPilotButton);
+        }
+        
+        JLabel space2 = new JLabel("");
+        buttonPanel.add(space2);
+
+        if (campaign.isCampaignActive())
+        {
+            JButton leaveButton = makeMenuButton("Leave", "CampFlowLeave", "Request leave");
+            addButton(buttonPanel, leaveButton);
+        }
+        
+        if (isDisplayTransferButton())
+        {
+            JButton transferButton = makeMenuButton("Transfer", "CampFlowTransfer", "Transfer to a new squadron");
+            addButton(buttonPanel, transferButton);
         }
 
         JButton recordsButton = makeMenuButton("Journal", "CampFlowJournal", "Update your personal journal");
@@ -179,27 +177,30 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         JButton squadronLogButton = makeMenuButton("Squadron Log", "CampFlowLog", "View campaign logs");
         addButton(buttonPanel, squadronLogButton);
 
-        JButton skinManagementButton = makeMenuButton("Skin Management", "CampSkinManager", "Manage skins for the squadron");
-        addButton(buttonPanel, skinManagementButton);
-
-        JButton intellMapButton = makeMenuButton("Intel Map", "CampIntelMap", "View intelligence maps");
-        addButton(buttonPanel, intellMapButton);
-
-        JButton intelligenceButton = makeMenuButton("Intelligence Report", "CampFlowIntelligence", "View intelligence reports");
-        addButton(buttonPanel, intelligenceButton);
-
-        JButton equipmentDepoButton = makeMenuButton("Equipment Depo Report", "EquipmentDepoReport", "View equipment depo report");
-        addButton(buttonPanel, equipmentDepoButton);
-
-        JLabel space3 = new JLabel("");
-        buttonPanel.add(space3);
-
-        JButton simpleConfigButton = makeMenuButton("Simple Config", "CampSimpleConfig", "Set simple configuration for this campaign");
-        addButton(buttonPanel, simpleConfigButton);
-
-        JButton advancedConfigButton = makeMenuButton("Advanced Config", "CampAdvancedConfig", "Set advanced configuration for this campaign");
-        addButton(buttonPanel, advancedConfigButton);
-
+        if (campaign.isCampaignActive())
+        {
+            JButton skinManagementButton = makeMenuButton("Skin Management", "CampSkinManager", "Manage skins for the squadron");
+            addButton(buttonPanel, skinManagementButton);
+    
+            JButton intellMapButton = makeMenuButton("Intel Map", "CampIntelMap", "View intelligence maps");
+            addButton(buttonPanel, intellMapButton);
+    
+            JButton intelligenceButton = makeMenuButton("Intelligence Report", "CampFlowIntelligence", "View intelligence reports");
+            addButton(buttonPanel, intelligenceButton);
+    
+            JButton equipmentDepoButton = makeMenuButton("Equipment Depo Report", "EquipmentDepoReport", "View equipment depo report");
+            addButton(buttonPanel, equipmentDepoButton);
+    
+            JLabel space3 = new JLabel("");
+            buttonPanel.add(space3);
+    
+            JButton simpleConfigButton = makeMenuButton("Simple Config", "CampSimpleConfig", "Set simple configuration for this campaign");
+            addButton(buttonPanel, simpleConfigButton);
+    
+            JButton advancedConfigButton = makeMenuButton("Advanced Config", "CampAdvancedConfig", "Set advanced configuration for this campaign");
+            addButton(buttonPanel, advancedConfigButton);
+        }
+        
         JLabel space4 = new JLabel("");
         buttonPanel.add(space4);
 
@@ -213,6 +214,56 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         addButton(buttonPanel, errorButton);
     }
 
+    private boolean isAddHumanPilot() throws PWCGException
+    {
+        if (!campaign.isCampaignActive())
+        {
+            return true;
+        }
+
+        if (campaign.getCampaignData().isCoop())
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean isDisplayMissionButton() throws PWCGException
+    {
+        if (!campaign.isCampaignActive())
+        {
+            return false;
+        }
+        
+        if (!campaign.isCampaignCanFly())
+        {
+            return false;
+        }
+        
+        return true;
+    }
+
+    private boolean isDisplayTransferButton() throws PWCGException
+    {
+        if (!campaign.isCampaignActive())
+        {
+            return false;
+        }
+        
+        if (!campaign.isCampaignCanFly())
+        {
+            return false;
+        }
+        
+        if (campaign.getCampaignData().isCoop())
+        {
+            return false;
+        }
+        
+        return true;
+    }
+    
     private void addButton(JPanel buttonPanel, JButton button) 
     {
         buttonPanel.add(button);

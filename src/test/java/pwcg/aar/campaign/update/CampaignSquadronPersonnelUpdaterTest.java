@@ -3,15 +3,16 @@ package pwcg.aar.campaign.update;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.aar.campaign.update.CampaignPersonnelUpdater;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.campaign.Campaign;
@@ -20,6 +21,7 @@ import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheRoF;
 import pwcg.testutils.SquadronMemberPicker;
@@ -48,12 +50,21 @@ public class CampaignSquadronPersonnelUpdaterTest
         squadMembersCaptured.clear();
         acesKilled.clear();
     }
+    
+    @After
+    public void reset() throws PWCGException
+    {
+        for (SquadronMember squadronMember : campaign.getPersonnelManager().getPlayerPersonnel().getAllSquadronMembers().getSquadronMemberCollection().values())
+        {
+            squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
+        }
+    }
 
     @Test
     public void testSquadronMemberKilled() throws PWCGException
     {
         SquadronMember deadSquadronMember = SquadronMemberPicker.pickNonAceSquadronMember(campaign); 
-        deadSquadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate());
+        deadSquadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
         squadMembersKilled.put(deadSquadronMember.getSerialNumber(), deadSquadronMember);
         aarContext.getCampaignUpdateData().getPersonnelLosses().mergePersonnelKilled(squadMembersKilled);
 
@@ -68,7 +79,7 @@ public class CampaignSquadronPersonnelUpdaterTest
     public void testSquadronMemberCaptured() throws PWCGException
     {
         SquadronMember capturedSquadronMember = SquadronMemberPicker.pickNonAceSquadronMember(campaign);
-        capturedSquadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_CAPTURED, campaign.getDate());
+        capturedSquadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_CAPTURED, campaign.getDate(), null);
         squadMembersCaptured.put(capturedSquadronMember.getSerialNumber(), capturedSquadronMember);
         aarContext.getCampaignUpdateData().getPersonnelLosses().mergePersonnelCaptured(squadMembersCaptured);
 
@@ -83,7 +94,8 @@ public class CampaignSquadronPersonnelUpdaterTest
     public void testSquadronMemberMaimed() throws PWCGException
     {
         SquadronMember maimedSquadronMember = SquadronMemberPicker.pickNonAceSquadronMember(campaign); 
-        maimedSquadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate());
+        Date recoveryDate = DateUtils.advanceTimeDays(campaign.getDate(), 21);
+        maimedSquadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), recoveryDate);
         squadMembersMaimed.put(maimedSquadronMember.getSerialNumber(), maimedSquadronMember);
         aarContext.getCampaignUpdateData().getPersonnelLosses().mergePersonnelMaimed(squadMembersMaimed);
 
@@ -91,7 +103,24 @@ public class CampaignSquadronPersonnelUpdaterTest
         personellUpdater.personnelUpdates();
 
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(maimedSquadronMember.getSerialNumber()); 
-        assertTrue (squadronMemberAfterUpdate.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+        assert (squadronMemberAfterUpdate.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+    }
+
+    @Test
+    public void testPlayerMemberMaimed() throws PWCGException
+    {
+        SquadronMember maimedSquadronMember = SquadronMemberPicker.pickPlayerSquadronMember(campaign); 
+        Date recoveryDate = DateUtils.advanceTimeDays(campaign.getDate(), 21);
+        maimedSquadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), recoveryDate);
+        squadMembersMaimed.put(maimedSquadronMember.getSerialNumber(), maimedSquadronMember);
+        aarContext.getCampaignUpdateData().getPersonnelLosses().mergePersonnelMaimed(squadMembersMaimed);
+
+        CampaignPersonnelUpdater personellUpdater = new CampaignPersonnelUpdater(campaign, aarContext);
+        personellUpdater.personnelUpdates();
+
+        SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(maimedSquadronMember.getSerialNumber()); 
+        assert (squadronMemberAfterUpdate.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+        assert(maimedSquadronMember.getRecoveryDate().equals(recoveryDate));
     }
 
     @Test

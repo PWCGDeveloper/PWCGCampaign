@@ -59,7 +59,7 @@ public class Campaign
 
     public void write() throws PWCGException
     {
-        CampaignIOJson.writeJson(this);
+        //CampaignIOJson.writeJson(this);
     }
     
 	private boolean readValidCampaign()
@@ -337,12 +337,23 @@ public class Campaign
 	    return service;
 	}
 
-
     public boolean isCampaignActive() throws PWCGException
     {
         for (SquadronMember player : getPlayers())
         {
             if (player.getPilotActiveStatus() > SquadronMemberStatus.STATUS_CAPTURED)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isCampaignCanFly() throws PWCGException
+    {
+        for (SquadronMember player : getPlayers())
+        {
+            if (player.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
             {
                 return true;
             }

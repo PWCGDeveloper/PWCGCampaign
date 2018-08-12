@@ -34,17 +34,23 @@ public class AARMissionEvaluationData
         return null;
     }
 
-    public LogPilot getPlayerCrewMember() throws PWCGException
+    public List<LogPilot> getPlayerCrewMembers() throws PWCGException
     {
+        List<LogPilot> playerCrewMembers = new ArrayList<>();
         for (LogPilot logPlayer : pilotsInMission)
         {
             if (SerialNumber.getSerialNumberClassification(logPlayer.getSerialNumber()) == SerialNumberClassification.PLAYER)
             {
-                return logPlayer;
+                playerCrewMembers.add(logPlayer);
             }
         }
         
-        throw new PWCGException ("No player crew member found in mission");
+        if (playerCrewMembers.size() == 0)
+        {
+            throw new PWCGException ("No player crew member found in mission");
+        }
+        
+        return playerCrewMembers;
     }
 
 

@@ -53,7 +53,7 @@ public class SquadronMemberTest
     public void testUpdateStatusKilled() throws PWCGException
     {
         SquadronMember pilot = squadronMemberFactory.createAIPilot("Sergent");
-        pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate());
+        pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
         assert(pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_KIA);
         assert(pilot.getInactiveDate().equals(campaign.getDate()));
     }
@@ -61,8 +61,9 @@ public class SquadronMemberTest
     @Test
     public void testUpdateStatusActive() throws PWCGException
     {
+        Date returnDate = DateUtils.advanceTimeDays(campaign.getDate(), 21);
         SquadronMember pilot = squadronMemberFactory.createAIPilot("Sergent");
-        pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_WOUNDED, campaign.getDate());
+        pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_WOUNDED, campaign.getDate(), returnDate);
         assert(pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED);
         assert(pilot.getInactiveDate().equals(DateUtils.getEndOfWar()));
     }
@@ -70,8 +71,9 @@ public class SquadronMemberTest
     @Test
     public void testUpdateStatusAiSeriousWound() throws PWCGException
     {
+        Date returnDate = DateUtils.advanceTimeDays(campaign.getDate(), 90);
         SquadronMember pilot = squadronMemberFactory.createAIPilot("Sergent");
-        pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate());
+        pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), returnDate);
         assert(pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
         assert(pilot.getInactiveDate().equals(campaign.getDate()));
     }
@@ -93,7 +95,8 @@ public class SquadronMemberTest
         generatorModel.setService(service);
         generatorModel.setSquadronName(squadronName);
         SquadronMember player = squadronMemberFactory.createPlayer(generatorModel);
-        player.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate());
+        Date returnDate = DateUtils.advanceTimeDays(campaign.getDate(), 90);
+        player.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), returnDate);
         assert(player.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
         assert(player.getInactiveDate().equals(DateUtils.getEndOfWar()));
     }

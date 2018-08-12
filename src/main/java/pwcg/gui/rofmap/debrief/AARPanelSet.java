@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.JButton;
@@ -13,11 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.aar.AARCoordinator;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarations;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
@@ -38,7 +39,7 @@ public class AARPanelSet extends AARPanel implements ActionListener
 
     private Campaign campaign = null;
 	private CampaignHomeGUI home = null;
-    private AARClaimPanel aarClaimPanel = null;
+    private AARClaimPanels aarClaimPanel = null;
 
 	public AARPanelSet(CampaignHomeGUI home)  
 	{
@@ -68,10 +69,10 @@ public class AARPanelSet extends AARPanel implements ActionListener
 		return aarMainPanel;
 	}
 
-    private AARClaimPanel makeAARPanel() throws PWCGException  
+    private AARClaimPanels makeAARPanel() throws PWCGException  
     {
-        AARClaimPanel aarClaimPanel = new AARClaimPanel();
-        aarClaimPanel.makePanel();
+        AARClaimPanels aarClaimPanel = new AARClaimPanels();
+        aarClaimPanel.makePanels();
         return aarClaimPanel;
     }
 
@@ -98,9 +99,10 @@ public class AARPanelSet extends AARPanel implements ActionListener
 		lPilots.setFont(font);
 		infoPanelGrid.add(lPilots);
 		
-		for (LogPilot crew : AARCoordinator.getInstance().getAarContext().getMissionEvaluationData().getPilotsInMission())
+        SquadronMembers pilotsInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getCampaignMembersInMission();
+        List<SquadronMember> pilotsInMissionSorted = pilotsInMission.sortByRank(campaign.getService());
+		for (SquadronMember pilot : pilotsInMissionSorted)
 		{
-            SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(crew.getSerialNumber());
             if (pilot.getSquadronId() == campaign.getSquadronId())
             {
                 String crewDesc = "             " + pilot.getNameAndRank();
@@ -113,8 +115,13 @@ public class AARPanelSet extends AARPanel implements ActionListener
     			infoPanelGrid.add(lPilot);		
             }
 		}
+		
+        JLabel space1 = new JLabel("", JLabel.LEFT);
+        JLabel space2 = new JLabel("", JLabel.LEFT);
+        infoPanelGrid.add(space1);
+        infoPanelGrid.add(space2);
 
-        JLabel lDate = new JLabel("     Date      : " + DateUtils.getDateString(campaign.getDate()), JLabel.LEFT);
+        JLabel lDate = new JLabel("     Date: " + DateUtils.getDateString(campaign.getDate()), JLabel.LEFT);
         lDate.setBackground(buttonBG);
         lDate.setFont(font);
         infoPanelGrid.add(lDate);

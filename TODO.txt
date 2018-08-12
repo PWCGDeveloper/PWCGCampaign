@@ -1,15 +1,25 @@
 https://github.com/PWCGDeveloper/PWCG.git
 
-Target Definition
-Strategic Target selection
-Target definition -> target selection
-Finish GroundUnitFactoryRoFTest
-
-
-- A20
-- P39
-
-Switch to disable transfer of pilots
+Problems:
+Chronological events not being recorded
+Multiple entries in squadron log
+Handling wounded scenarios for multiple pilots
+    - record recovery date of pilot
+	- record date of return for wounded pilots
+	- record death of dead pilots
+	- never advance time - DONE
+	
+	- if player is available
+		- enable mission button
+	- if all players are wounded 
+		- disable mission button
+		- offer advance time to heal (show date)
+	- if some players are wounded 
+		- enable mission button
+		- offer advance time to heal (show date)
+	- if all players are dead 
+		- disable mission button
+		- disable advance time button
 
 Ju52
 Add transport mission
@@ -46,10 +56,6 @@ Aircraft inventory
 - Add squadron inventory screen
 - Maintain losses
 - Lose days if inventory < half
-
-Payloads
-Add logic to select best payload for mission
-For BoS: add capability to match plane modifications with payloads
 
 Weather
 - separate BOS and RoF config keys

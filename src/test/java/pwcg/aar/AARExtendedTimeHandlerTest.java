@@ -36,6 +36,7 @@ public class AARExtendedTimeHandlerTest
     {
         PWCGContextManager.setRoF(false);
         campaign = CampaignCache.makeCampaign(CampaignCacheBoS.JG_51_PROFILE);
+        campaign.getCampaignData().setCoop(false);
         aarContext = new AARContext(campaign);
     }
     
@@ -46,7 +47,7 @@ public class AARExtendedTimeHandlerTest
         {
             if (!squadronMember.isPlayer())
             {
-                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, campaign.getDate());
+                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, campaign.getDate(), null);
             }
         }
 
@@ -66,7 +67,7 @@ public class AARExtendedTimeHandlerTest
         {
             if (!squadronMember.isPlayer())
             {
-                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate());
+                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
             }
             if (campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembersWithAces().getSquadronMemberCollection().size() < 6)
             {
@@ -92,14 +93,15 @@ public class AARExtendedTimeHandlerTest
             
         Date startCampaignDate = campaign.getDate();
         AARExtendedTimeHandler extendedTimeHandler = new AARExtendedTimeHandler(campaign, aarContext);
-        extendedTimeHandler.timePassedForWounds(playerLogPilot);
+
+        Date newDate = DateUtils.advanceTimeDays(campaign.getDate(), 7);
+        extendedTimeHandler.advanceTimeForPlayerRecovery(newDate);
         Date endCampaignDate = campaign.getDate();
-        
+
         assert (aarContext.getReasonForExtendedTime() == ExtendedTimeReason.WOUND);
         assert(endCampaignDate.after(startCampaignDate));
         int daysPassed = DateUtils.daysDifference(startCampaignDate, endCampaignDate);
-        assert(daysPassed > 6);
-        assert(daysPassed < 40);
+        assert(daysPassed == 7);
     }
     
     @Test
@@ -111,15 +113,33 @@ public class AARExtendedTimeHandlerTest
         Date startCampaignDate = campaign.getDate();
         AARExtendedTimeHandler extendedTimeHandler = new AARExtendedTimeHandler(campaign, aarContext);
         extendedTimeHandler.timePassedForWounds(playerLogPilot);
-        Date endCampaignDate = campaign.getDate();
         
-        assert (aarContext.getReasonForExtendedTime() == ExtendedTimeReason.WOUND);
+        Date newDate = DateUtils.advanceTimeDays(campaign.getDate(), 21);
+        extendedTimeHandler.advanceTimeForPlayerRecovery(newDate);
+        Date endCampaignDate = campaign.getDate();
+
         assert(endCampaignDate.after(startCampaignDate));
         int daysPassed = DateUtils.daysDifference(startCampaignDate, endCampaignDate);
-        assert(daysPassed > 29);
-        assert(daysPassed < 90);
+        assert(daysPassed== 21);
     }
     
+    @Test
+    public void testNoTimePassedForSeriousWoundsCoop () throws PWCGException
+    {
+        campaign.getCampaignData().setCoop(true);
+
+        Mockito.when(playerLogPilot.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        Mockito.when(playerLogPilot.getStatus()).thenReturn(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+            
+        Date startCampaignDate = campaign.getDate();
+        AARExtendedTimeHandler extendedTimeHandler = new AARExtendedTimeHandler(campaign, aarContext);
+        extendedTimeHandler.timePassedForWounds(playerLogPilot);
+        Date endCampaignDate = campaign.getDate();
+        
+        assert (aarContext.getReasonForExtendedTime() == ExtendedTimeReason.NO_EXTENDED_TIME);
+        assert(endCampaignDate.equals(startCampaignDate));
+    }
+
     @Test
     public void testTimePassedForLeave () throws PWCGException
     {

@@ -64,7 +64,7 @@ public class ServiceTransferNeedTest
         {
             if (!squadronMember.isPlayer())
             {
-                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate());
+                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
                 Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 9);
                 squadronMember.setInactiveDate(inactiveDate);
                 ++numInactivated;

@@ -553,6 +553,11 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     private void acceptMission() throws PWCGException, PWCGException
     {
         briefingMissionHandler.pushEditsToMission();
+        if (!ensurePlayerIsInMission())
+        {
+            return;
+        }
+
         if (!ensurePlayerOwnsPlane())
         {
             return;
@@ -571,6 +576,22 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
         campaignHomeGui.enableButtonsAsNeeded();
         CampaignGuiContextManager.getInstance().popFromContextStack();
+    }
+
+    private boolean ensurePlayerIsInMission() throws PWCGException
+    {
+        List<PlaneMCU> playerPlanes = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight().getPlayerPlanes();
+        for (PlaneMCU playerPlane : playerPlanes)
+        {
+            SquadronMember squadronMember = playerPlane.getPilot();
+            if (squadronMember.isPlayer())
+            {
+                return true;
+            }
+        }
+
+        ErrorDialog.userError("Player is not assigned to this mission");
+        return false;
     }
 
     private boolean ensurePlayerOwnsPlane() throws PWCGException

@@ -7,9 +7,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -20,30 +18,30 @@ import pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarations;
 import pwcg.aar.inmission.phase3.reconcile.victories.PlayerVictoryDeclaration;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.utils.ContextSpecificImages;
+import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class AARClaimPanel extends AARPanel implements ActionListener
+public class AARClaimPanel extends ImageResizingPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 
     private JComboBox<String> cbVictoriesClaimedBoxes = new JComboBox<String>();
 	private List<JComboBox<String>> cbPlaneBoxes = new ArrayList<JComboBox<String>>();
     private JPanel victoriesClaimedPanel = null;
-	
 	private int numVictories = 0;
 
-	private List<String> planeTypesInMission = new ArrayList<String>();
 
 	public AARClaimPanel() throws PWCGException 
 	{
-	    super();
+	    super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
 		this.setOpaque(false);
+        this.setLayout(new BorderLayout());
 	}
 
 	public void makePanel() throws PWCGException 
@@ -52,13 +50,15 @@ public class AARClaimPanel extends AARPanel implements ActionListener
 		this.add(selectedPanel, BorderLayout.NORTH);
 
 		victoriesClaimedPanel = makeClaimsPanel();
-		this.add(victoriesClaimedPanel, BorderLayout.CENTER);
+        JPanel planesClaimedPanel = new JPanel(new BorderLayout());
+        planesClaimedPanel.setOpaque(false);
+        planesClaimedPanel.add(victoriesClaimedPanel, BorderLayout.NORTH);
+		this.add(planesClaimedPanel, BorderLayout.CENTER);
 	}
 
-	public JPanel makeSelectPanel() throws PWCGException 
+	private JPanel makeSelectPanel() throws PWCGException 
 	{
 		Color bgColor = ColorMap.PAPER_BACKGROUND;
-		
 		Font font = MonitorSupport.getPrimaryFont();
 		
 		JPanel selectedPanel = new JPanel (new BorderLayout());
@@ -98,7 +98,6 @@ public class AARClaimPanel extends AARPanel implements ActionListener
 	private JPanel makeClaimsPanel() throws PWCGException 
 	{
 		Color bgColor = ColorMap.PAPER_BACKGROUND;
-		
 		Font font = MonitorSupport.getPrimaryFont();
 
 		victoriesClaimedPanel = new JPanel (new BorderLayout());
@@ -117,26 +116,7 @@ public class AARClaimPanel extends AARPanel implements ActionListener
 			lVictories.setOpaque(false);
 			lVictories.setFont(font);
 
-			// The plane drop down
-			JComboBox<String> cbPlane = new JComboBox<String>();
-			cbPlane.setOpaque(false);
-			cbPlane.setBackground(bgColor);
-			cbPlane.setSize(300, 40);		
-			cbPlane.setFont(font);
-
-			// Get plane list for the other side
-            planeTypesInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getClaimPanelData().getEnemyPlaneTypesInMission();                   
-    			
-			for (String planeName : planeTypesInMission)
-			{
-                String planeDisplayName = planeName;
-                PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeName);
-                if (plane != null)
-                {
-                    planeDisplayName = plane.getDisplayName();
-                }
-                cbPlane.addItem(planeDisplayName);
-			}
+			JComboBox<String> cbPlane = createPlaneDropdown(bgColor, font);
 			cbPlaneBoxes.add(cbPlane);
 
 			victoryPanel.add(PWCGButtonFactory.makeDummy());
@@ -147,15 +127,35 @@ public class AARClaimPanel extends AARPanel implements ActionListener
 			victoriesClaimedMainGridPanel.add (victoryPanel);
 		}
 		
-		victoriesClaimedPanel.add(victoriesClaimedMainGridPanel, BorderLayout.NORTH);
-		
+        victoriesClaimedPanel.add(victoriesClaimedMainGridPanel, BorderLayout.NORTH);		
 		return victoriesClaimedPanel;
 	}
 
-	public Map<Integer, PlayerDeclarations> getPlayerDeclarations() throws PWCGException 
+    private JComboBox<String> createPlaneDropdown(Color bgColor, Font font)
+    {
+        JComboBox<String> cbPlane = new JComboBox<String>();
+        cbPlane.setOpaque(false);
+        cbPlane.setBackground(bgColor);
+        cbPlane.setSize(300, 40);		
+        cbPlane.setFont(font);
+
+        List<String> planeTypesInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getClaimPanelData().getEnemyPlaneTypesInMission();                   
+        for (String planeName : planeTypesInMission)
+        {
+            String planeDisplayName = planeName;
+            PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeName);
+            if (plane != null)
+            {
+                planeDisplayName = plane.getDisplayName();
+            }
+            cbPlane.addItem(planeDisplayName);
+        }
+        return cbPlane;
+    }
+
+	public PlayerDeclarations getPlayerDeclarations() throws PWCGException 
 	{
-        Map<Integer, PlayerDeclarations> playerDeclarations = new HashMap<>();
-	    PlayerDeclarations playerDeclarationForOnePlayer = new PlayerDeclarations();
+	    PlayerDeclarations playerDeclarations = new PlayerDeclarations();
 		for (int i = 0; i < numVictories; ++i)
 		{
 			PlayerVictoryDeclaration declaration = new PlayerVictoryDeclaration();
@@ -164,7 +164,7 @@ public class AARClaimPanel extends AARPanel implements ActionListener
 			if (planeTypeDesc.equals(PlaneType.BALLOON))
 			{
 			    declaration.setAircraftType(PlaneType.BALLOON);
-	            playerDeclarationForOnePlayer.addDeclaration(declaration);
+			    playerDeclarations.addDeclaration(declaration);
 			}
 			else
 			{
@@ -174,7 +174,7 @@ public class AARClaimPanel extends AARPanel implements ActionListener
     			    if (planeType.getType().equalsIgnoreCase(planeType.getType()))
     			    {
     			        declaration.setAircraftType(planeType.getType());
-    		            playerDeclarationForOnePlayer.addDeclaration(declaration);
+    			        playerDeclarations.addDeclaration(declaration);
     			    }
 			    }
 			    else
@@ -184,8 +184,6 @@ public class AARClaimPanel extends AARPanel implements ActionListener
 			}
 		}
 		
-		// TODO Need to specify particula plazyer after tabs are in place
-        playerDeclarations.put(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, playerDeclarationForOnePlayer);
 		return playerDeclarations;
 	}
 

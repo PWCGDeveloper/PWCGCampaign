@@ -1,5 +1,6 @@
 package pwcg.aar.outofmission.phase3.tabulate.ui;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.testutils.MissionEntityBuilder;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -40,10 +42,12 @@ public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
 
         setupAARMocks();
         
-        SquadronMember squaddie1 = MissionEntityBuilder.makeSquadronMemberWithStatus("Squaddie A", SerialNumber.AI_STARTING_SERIAL_NUMBER+1, SquadronMemberStatus.STATUS_KIA, campaign.getDate());
-        SquadronMember squaddie2 = MissionEntityBuilder.makeSquadronMemberWithStatus("Squaddie B", SerialNumber.AI_STARTING_SERIAL_NUMBER+2, SquadronMemberStatus.STATUS_KIA, campaign.getDate());
-        SquadronMember squaddie3 = MissionEntityBuilder.makeSquadronMemberWithStatus("Squaddie C", SerialNumber.AI_STARTING_SERIAL_NUMBER+3, SquadronMemberStatus.STATUS_CAPTURED, campaign.getDate());
-        SquadronMember squaddie4 = MissionEntityBuilder.makeSquadronMemberWithStatus("Squaddie D", SerialNumber.AI_STARTING_SERIAL_NUMBER+4, SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate());
+        SquadronMember squaddie1 = MissionEntityBuilder.makeSquadronMemberWithStatus("Squaddie A", SerialNumber.AI_STARTING_SERIAL_NUMBER+1, SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
+        SquadronMember squaddie2 = MissionEntityBuilder.makeSquadronMemberWithStatus("Squaddie B", SerialNumber.AI_STARTING_SERIAL_NUMBER+2, SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
+        SquadronMember squaddie3 = MissionEntityBuilder.makeSquadronMemberWithStatus("Squaddie C", SerialNumber.AI_STARTING_SERIAL_NUMBER+3, SquadronMemberStatus.STATUS_CAPTURED, campaign.getDate(), null);
+        
+        Date returnDate = DateUtils.advanceTimeDays(campaign.getDate(), 90);
+        SquadronMember squaddie4 = MissionEntityBuilder.makeSquadronMemberWithStatus("Squaddie D", SerialNumber.AI_STARTING_SERIAL_NUMBER+4, SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), returnDate);
 
         squadronMembersKilledInMission.put(squaddie1.getSerialNumber(), squaddie1);
         squadronMembersKilledInMission.put(squaddie2.getSerialNumber(), squaddie2);
@@ -63,7 +67,7 @@ public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
 	@Test
 	public void testPilotAndPlayerKilled() throws PWCGException
 	{
-        SquadronMember player = MissionEntityBuilder.makeSquadronMemberWithStatus("PLayer Pilot", SerialNumber.PLAYER_STARTING_SERIAL_NUMBER+1, SquadronMemberStatus.STATUS_KIA, campaign.getDate());
+        SquadronMember player = MissionEntityBuilder.makeSquadronMemberWithStatus("PLayer Pilot", SerialNumber.PLAYER_STARTING_SERIAL_NUMBER+1, SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
         squadronMembersKilledInMission.put(player.getSerialNumber(), player);
 
         PilotStatusEventGenerator inMissionSquadronPilotStatusEventGenerator = new PilotStatusEventGenerator(campaign);
@@ -75,7 +79,8 @@ public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
     @Test
     public void testPilotAndPlayerMaimed() throws PWCGException
     {
-        SquadronMember player = MissionEntityBuilder.makeSquadronMemberWithStatus("PLayer Pilot", SerialNumber.PLAYER_STARTING_SERIAL_NUMBER+1, SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate());
+        Date returnDate = DateUtils.advanceTimeDays(campaign.getDate(), 90);
+        SquadronMember player = MissionEntityBuilder.makeSquadronMemberWithStatus("PLayer Pilot", SerialNumber.PLAYER_STARTING_SERIAL_NUMBER+1, SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), returnDate);
         squadronMembersMaimedInMission.put(player.getSerialNumber(), player);
 
         PilotStatusEventGenerator inMissionSquadronPilotStatusEventGenerator = new PilotStatusEventGenerator(campaign);
@@ -87,7 +92,8 @@ public class InMissionSquadronPilotStatusEventGeneratorTest extends AARTestSetup
     @Test
     public void testPilotAndPlayerWounded() throws PWCGException
     {
-        SquadronMember player = MissionEntityBuilder.makeSquadronMemberWithStatus("PLayer Pilot", SerialNumber.PLAYER_STARTING_SERIAL_NUMBER+1, SquadronMemberStatus.STATUS_WOUNDED, campaign.getDate());
+        Date returnDate = DateUtils.advanceTimeDays(campaign.getDate(), 14);
+        SquadronMember player = MissionEntityBuilder.makeSquadronMemberWithStatus("PLayer Pilot", SerialNumber.PLAYER_STARTING_SERIAL_NUMBER+1, SquadronMemberStatus.STATUS_WOUNDED, campaign.getDate(), returnDate);
         squadronMembersWoundedInMission.put(player.getSerialNumber(), player);
 
         PilotStatusEventGenerator inMissionSquadronPilotStatusEventGenerator = new PilotStatusEventGenerator(campaign);

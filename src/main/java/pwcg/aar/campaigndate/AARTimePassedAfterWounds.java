@@ -18,15 +18,11 @@ public class AARTimePassedAfterWounds
         this.campaign = campaign;
     }
     
-    public Date calcNewDate(LogPilot playerCrewMember) throws PWCGException 
+    public Date calcDateOfRecovery(LogPilot playerCrewMember) throws PWCGException 
     {
         int daysForWounds = calculateDaysForWounds(playerCrewMember);        
-
-        Date newDate = DateUtils.advanceTimeDays(campaign.getDate(), daysForWounds);
-        
-        Date finalNewDate = AARAdjustDateForNightMissions.adjustForNightMissions(campaign, newDate);
-        
-        return finalNewDate;
+        Date newDateAfterWounds = DateUtils.advanceTimeDays(campaign.getDate(), daysForWounds);
+        return newDateAfterWounds;
     }
 
     private int calculateDaysForWounds(LogPilot playerCrewMember) throws PWCGException

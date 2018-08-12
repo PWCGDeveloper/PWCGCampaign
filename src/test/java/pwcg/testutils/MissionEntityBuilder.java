@@ -16,7 +16,7 @@ public class MissionEntityBuilder
         aceKilledInMission.setSerialNumber(aceSerialNumber);
         aceKilledInMission.setName(aceName);
         aceKilledInMission.setSquadronId(101103);
-        aceKilledInMission.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, date);
+        aceKilledInMission.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, date, null);
         aceKilledInMission.setInactiveDate(date);
         for (int i = 0; i < numVictories; ++i)
         {
@@ -27,13 +27,13 @@ public class MissionEntityBuilder
     }
 
 
-    public static SquadronMember makeSquadronMemberWithStatus(String pilotName, int serialNumber, int status, Date date) throws PWCGException
+    public static SquadronMember makeSquadronMemberWithStatus(String pilotName, int serialNumber, int status, Date statusDate, Date returnDate) throws PWCGException
     {
         SquadronMember squadronMember = new Ace();
         squadronMember.setSerialNumber(serialNumber);
         squadronMember.setName(pilotName);
         squadronMember.setSquadronId(101103);
-        squadronMember.setPilotActiveStatus(status, date);
+        squadronMember.setPilotActiveStatus(status, statusDate, returnDate);
         return squadronMember;
     }
 

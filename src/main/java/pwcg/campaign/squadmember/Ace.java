@@ -101,7 +101,7 @@ public class Ace extends SquadronMember
 
         if (historicalAce.getStatus(campaign.getDate()) == SquadronMemberStatus.STATUS_KIA)
         {
-            setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate());
+            setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
         }
     }
 

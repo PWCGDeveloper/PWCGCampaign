@@ -2,6 +2,7 @@ package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.Date;
 
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 
@@ -11,6 +12,7 @@ public class LogPilot
     private String botId = "";
     private double damageLevel = 0.0;
     private int status = SquadronMemberStatus.STATUS_ACTIVE;
+    private Date dateOfReturn;
 
     public LogPilot()
     {
@@ -63,5 +65,15 @@ public class LogPilot
     public void setSerialNumber(int serialNumber)
     {
         this.serialNumber = serialNumber;
+    }
+
+    public Date getDateOfReturn()
+    {
+        return dateOfReturn;
+    }
+
+    public void setDateOfReturn(Date dateOfReturn)
+    {
+        this.dateOfReturn = dateOfReturn;
     }
 }

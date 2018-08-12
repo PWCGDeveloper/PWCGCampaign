@@ -43,7 +43,7 @@ public class SquadronMemberFactory
         player.setCountry(country.getCountry());
         player.setAiSkillLevel(AiSkillLevel.PLAYER);
         player.setPlayerRegion(generatorModel.getPlayerRegion());
-        player.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null);
+        player.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
         player.setSquadronId(squadron.getSquadronId());
         player.setSerialNumber(campaign.getSerialNumber().getLastPlayerSerialNumber());
         player.setInactiveDate(DateUtils.getEndOfWar());

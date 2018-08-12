@@ -192,7 +192,7 @@ public class PlayerFlightRoFTypeTest
 	@Test
 	public void reconFlightTest() throws PWCGException
 	{
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_103_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_2_PROFILE);
 
 	    Mission mission = new Mission();
         mission.initialize(campaign);        
