@@ -37,8 +37,8 @@ public class FakeAirfield extends FixedPosition implements Cloneable
         linkTrId = entity.getIndex();
         
         country = airfield.getCountry(date).getCountry();
-        position = airfield.getPosition().copy();
-        orientation = airfield.getOrientation().copy();
+        position = airfield.getParkingLocation().getPosition().copy();
+        orientation = airfield.getParkingLocation().getOrientation().copy();
         
         model = "graphics\\airfields\\fakefield.mgm";
         script = "LuaScripts\\WorldObjects\\Airfields\\fakefield.txt";

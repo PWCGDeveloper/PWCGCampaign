@@ -178,6 +178,16 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 		return getRunwayStart();
 	}
 
+	@Override
+	public PWCGLocation getParkingLocation() throws PWCGException {
+		Runway runway = selectRunway();
+
+		if (runway == null)
+			return this;
+
+		return runway.parkingLocation;
+	}
+
 	private Runway selectRunway() throws PWCGException
 	{
 		// Note: wind direction is as specified in mission file, i.e. heading wind blows to
@@ -210,12 +220,12 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 			return bestRunway.copy();
 	}
 
-	private String getChartPoint(int ptype, Coordinate point)
+	private String getChartPoint(int ptype, Coordinate point) throws PWCGException
 	{
-		double xpos = point.getXPos() - getPosition().getXPos();
-		double ypos = point.getZPos() - getPosition().getZPos();
+		double xpos = point.getXPos() - getParkingLocation().getPosition().getXPos();
+		double ypos = point.getZPos() - getParkingLocation().getPosition().getZPos();
 
-		double angle = Math.toRadians(-orientation.getyOri());
+		double angle = Math.toRadians(-getParkingLocation().getOrientation().getyOri());
 
 		double rxpos = Math.cos(angle) * xpos - Math.sin(angle) * ypos;
 		double rypos = Math.cos(angle) * ypos + Math.sin(angle) * xpos;
