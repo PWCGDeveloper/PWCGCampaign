@@ -28,7 +28,7 @@ public class PromotionEventGenerator
         List<PromotionEvent> promotionEventsForSquadronMembers = new ArrayList<>();
         for (Integer serialNumber : promotionByPilot.keySet())
         {
-            SquadronMember squadronMember = campaign.getPersonnelManager().getActiveCampaignMember(serialNumber);
+            SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
             if (squadronMember != null)
             {
                 String newRankForSquadronMember = promotionByPilot.get(serialNumber);

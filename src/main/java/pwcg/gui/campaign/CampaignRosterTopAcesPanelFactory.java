@@ -1,6 +1,8 @@
 package pwcg.gui.campaign;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.NavigableSet;
 import java.util.TreeMap;
 
@@ -55,7 +57,7 @@ public class CampaignRosterTopAcesPanelFactory extends CampaignRosterBasePanelFa
 
     private void getAcesSortedByVictories(TreeMap<String, SquadronMember> allAcesInCampaign)
     {
-        sortedPilots = new TreeMap <String, SquadronMember>();
+        Map<String, SquadronMember> sortedPilotsByVictories = new TreeMap <>();
 		int topAceCount = 0;
 		NavigableSet<String> sortedAcesDescending = allAcesInCampaign.descendingKeySet();  	      
 	    for (String key : sortedAcesDescending) 
@@ -63,7 +65,7 @@ public class CampaignRosterTopAcesPanelFactory extends CampaignRosterBasePanelFa
 	    	// This little stunt sets the sort order
 	    	SquadronMember ace = allAcesInCampaign.get(key);
 			String newKey = new String ("" + (ACE_VICTORY_SORT_CONSTANT - ((100 * ace.getSquadronMemberVictories().getAirToAirVictories()) + topAceCount)));
-			sortedPilots.put(newKey, ace);
+			sortedPilotsByVictories.put(newKey, ace);
 	        
 	        ++topAceCount;
 
@@ -74,6 +76,8 @@ public class CampaignRosterTopAcesPanelFactory extends CampaignRosterBasePanelFa
 	        	break;
 	        }
 	    }
+	    
+	    sortedPilots = new ArrayList<SquadronMember>(sortedPilotsByVictories.values());
     }
 
     private int getHistoricalAces(TreeMap<String, SquadronMember> allAcesInCampaign, int aceCounter)

@@ -7,6 +7,7 @@ import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignMemberAwardsGeneratorInMission extends CampaignMemberAwardsGenerator
@@ -41,8 +42,8 @@ public class CampaignMemberAwardsGeneratorInMission extends CampaignMemberAwards
 	private void generateAwardsForCampaignMembersInMission() throws PWCGException
 	{
         Map<Integer, SquadronMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getSquadronMemberCollection();
-        Map<Integer, SquadronMember> nonAceCampaignMembersInMission = SquadronMemberFilter.filterActiveAIAndPlayer(campaignMembersInMission, campaign.getDate());
-		for (SquadronMember nonAceCampaignMember : nonAceCampaignMembersInMission.values())
+        SquadronMembers nonAceCampaignMembersInMission = SquadronMemberFilter.filterActiveAIAndPlayer(campaignMembersInMission, campaign.getDate());
+		for (SquadronMember nonAceCampaignMember : nonAceCampaignMembersInMission.getSquadronMemberCollection().values())
 		{
 		    SquadronMember campaignMemberInMission = campaign.getPersonnelManager().getAnyCampaignMember(nonAceCampaignMember.getSerialNumber());
 			generateEvents(campaignMemberInMission);

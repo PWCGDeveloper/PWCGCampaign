@@ -71,7 +71,7 @@ public class PwcgMissionDataEvaluator
 
     public boolean wasPilotAssignedToMission(int squadronId, String name) throws PWCGException
     {
-        SquadronMember squadronMember = campaign.getPersonnelManager().getSquadronPersonnel(squadronId).getActiveSquadronMembers().getSquadronMemberByName(name);
+        SquadronMember squadronMember = campaign.getPersonnelManager().getSquadronPersonnel(squadronId).getSquadronMembersWithAces().getSquadronMemberByName(name);
         return wasPilotAssignedToMission(squadronMember.getSerialNumber());
     }
 

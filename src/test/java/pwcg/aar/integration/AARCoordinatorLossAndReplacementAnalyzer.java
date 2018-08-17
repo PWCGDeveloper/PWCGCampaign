@@ -1,6 +1,7 @@
 package pwcg.aar.integration;
 
 import java.util.Date;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +18,7 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
@@ -63,7 +65,10 @@ public class AARCoordinatorLossAndReplacementAnalyzer
 	    	int medalsAwarded = aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getMedalsAwarded().size();
             int promotionsAwarded = aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getPromotions().size();
             int transfers = aarContext.getReconciledOutOfMissionData().getResupplyData().getSquadronTransferData().getSquadronMembersTransferred().size();
-            int numAiPilots = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate()).size();
+            
+            Map<Integer, SquadronMember> allCampaignMembers = campaign.getPersonnelManager().getAllCampaignMembers();  
+            SquadronMembers activeAiCampaignMembers = SquadronMemberFilter.filterActiveAI(allCampaignMembers, campaign.getDate());
+            int numAiPilots = activeAiCampaignMembers.getSquadronMemberList().size();
             int equipmentLosses = aarContext.getReconciledOutOfMissionData().getEquipmentLossesOutOfMission().getPlanesDestroyed().size();
 
             totalVictories += victories;
@@ -164,7 +169,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
             System.out.println(squadronPersonnel.getSquadron().determineDisplayName(campaign.getDate()));
-            System.out.println(" Personnel size is " + squadronPersonnel.getActiveSquadronMembers().getActiveCount(campaign.getDate()));
+            System.out.println(" Personnel size is " + squadronPersonnel.getSquadronMembersWithAces().getActiveCount(campaign.getDate()));
             
             Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronPersonnel.getSquadron().getSquadronId());
             System.out.println(" Equipment size is " + equipment.getActiveEquippedPlanes().size());

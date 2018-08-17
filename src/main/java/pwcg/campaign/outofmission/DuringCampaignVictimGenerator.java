@@ -9,10 +9,11 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -84,18 +85,9 @@ public class DuringCampaignVictimGenerator implements IVictimGenerator
     {
         Map<Integer, SquadronMember> possibleVictims = new HashMap<>();
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(victimSquadron.getSquadronId());
-        for (SquadronMember squadronMember : squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection().values())
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAI(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
         {
-            if (squadronMember.isPlayer())
-            {
-                continue;
-            }
-            
-            if (squadronMember instanceof Ace)
-            {
-                continue;
-            }
-            
             if (squadronMember.getSquadronId() == campaign.getSquadronId())
             {
                 continue;

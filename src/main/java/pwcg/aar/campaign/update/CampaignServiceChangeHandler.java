@@ -2,7 +2,6 @@ package pwcg.aar.campaign.update;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -15,6 +14,7 @@ import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
@@ -49,8 +49,8 @@ public class CampaignServiceChangeHandler
     private void changeService(Squadron squadron, ArmedService serviceNow, ArmedService serviceAfter) throws PWCGException
     {
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());
-        Map<Integer, SquadronMember> squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getActiveSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        for (SquadronMember pilot : squadronMembers.values())
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        for (SquadronMember pilot : squadronMembers.getSquadronMemberList())
         {
             setPilotRanksForNewService(pilot, serviceNow, serviceAfter);
             setPilotCountryForNewService(pilot, serviceAfter);

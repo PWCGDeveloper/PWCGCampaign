@@ -81,7 +81,7 @@ public class PlayerDeclarationResolution
         {
             if (!resultVictory.isConfirmed())
             {
-                SquadronMember player = campaign.getPersonnelManager().getActiveCampaignMember(playerSerialNumber);
+                SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
                 String shotDownPlaneDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirm(player, victoryDeclaration, resultVictory);
                 if (!shotDownPlaneDisplayName.isEmpty())
                 {

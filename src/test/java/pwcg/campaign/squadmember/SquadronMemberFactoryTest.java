@@ -1,6 +1,8 @@
 package pwcg.campaign.squadmember;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,15 +13,14 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignAces;
 import pwcg.campaign.CampaignGeneratorModel;
+import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronPersonnel;
-import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -28,8 +29,10 @@ import pwcg.testutils.CampaignCacheRoF;
 @RunWith(MockitoJUnitRunner.class)
 public class SquadronMemberFactoryTest
 {
-    @Mock 
-    private Campaign campaign;
+    @Mock private Campaign campaign;
+    @Mock private CampaignPersonnelManager campaignPersonnelManager;
+    @Mock private CampaignAces campaignAces;
+    
     private Date campaignDate;
     private SquadronPersonnel squadronPersonnel;
     private Squadron squadron;
@@ -44,6 +47,10 @@ public class SquadronMemberFactoryTest
         Mockito.when(campaign.determineCountry()).thenReturn(CountryFactory.makeCountryByCode(101));
         Mockito.when(campaign.determineCountry()).thenReturn(CountryFactory.makeCountryByCode(101));
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
+        Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
+        Mockito.when(campaignPersonnelManager.getCampaignAces()).thenReturn(campaignAces);
+        List<Ace> aces = new ArrayList<>();
+        Mockito.when(campaignAces.getCampaignAcesBySquadron(Mockito.anyInt())).thenReturn(aces);
         
         squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(101003); 
         squadronPersonnel = new SquadronPersonnel(campaign, squadron);

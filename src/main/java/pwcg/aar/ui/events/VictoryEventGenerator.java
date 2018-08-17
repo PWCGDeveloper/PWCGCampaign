@@ -27,7 +27,7 @@ public class VictoryEventGenerator
         
         for (Integer serialNumber : victoryAwardByPilot.keySet())
         {
-            SquadronMember squadronMember = campaign.getPersonnelManager().getActiveCampaignMember(serialNumber);
+            SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
             if (squadronMember != null)
             {
                 List<Victory> victoriesForSquadronMember = victoryAwardByPilot.get(serialNumber);

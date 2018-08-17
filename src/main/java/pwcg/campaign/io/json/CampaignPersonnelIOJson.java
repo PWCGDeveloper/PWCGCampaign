@@ -6,6 +6,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
@@ -44,8 +45,8 @@ public class CampaignPersonnelIOJson
         JsonWriter<SquadronMembers> jsonWriterSquadrons = new JsonWriter<>();
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
-            SquadronMembers squadronMembers = squadronPersonnel.getAllSquadronMembers();
-            jsonWriterSquadrons.writeAsJson(squadronMembers, campaignPersonnelDir, squadronPersonnel.getSquadron().getSquadronId() + ".json");
+            SquadronMembers squadronMembersToWrite = SquadronMemberFilter.filterActiveAIAndPlayer(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(),campaign.getDate());
+            jsonWriterSquadrons.writeAsJson(squadronMembersToWrite, campaignPersonnelDir, squadronPersonnel.getSquadron().getSquadronId() + ".json");
         }
     }
 

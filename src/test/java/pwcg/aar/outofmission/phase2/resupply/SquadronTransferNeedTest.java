@@ -12,13 +12,13 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARPersonnelLosses;
-import pwcg.aar.outofmission.phase2.resupply.SquadronPersonnelNeed;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -27,29 +27,13 @@ import pwcg.core.utils.DateUtils;
 @RunWith(MockitoJUnitRunner.class)
 public class SquadronTransferNeedTest
 {
-    @Mock
-    private Campaign campaign;
-    
-    @Mock
-    private Squadron squadron;
-    
-    @Mock
-    private CampaignPersonnelManager campaignPersonnelManager;
-
-    @Mock
-    private AARPersonnelLosses lossesInMissionData;
-
-    @Mock
-    private SquadronPersonnel squadronPersonnel;
-
-    @Mock
-    private SquadronMembers activeSquadronMembers;
-
-    @Mock
-    private SquadronMembers inactiveSquadronMembers;
-
-    @Mock
-    private SquadronMember squadronMember;
+    @Mock private Campaign campaign;
+    @Mock private Squadron squadron;
+    @Mock private CampaignPersonnelManager campaignPersonnelManager;
+    @Mock private AARPersonnelLosses lossesInMissionData;
+    @Mock private SquadronPersonnel squadronPersonnel;
+    @Mock private SquadronMembers activeSquadronMembers;
+    @Mock private SquadronMembers inactiveSquadronMembers;
 
     private Map<Integer, SquadronMember> activeSquadronMemberCollection = new HashMap<>();
     private Map<Integer, SquadronMember> inactiveSquadronMemberCollection = new HashMap<>();
@@ -67,11 +51,9 @@ public class SquadronTransferNeedTest
         Mockito.when(campaign.getSquadronId()).thenReturn(501011);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         Mockito.when(campaignPersonnelManager.getSquadronPersonnel(Matchers.<Integer>any())).thenReturn(squadronPersonnel);
-
-        Mockito.when(squadronPersonnel.getActiveSquadronMembersWithAces()).thenReturn(activeSquadronMembers);
-        Mockito.when(activeSquadronMembers.getSquadronMemberCollection()).thenReturn(activeSquadronMemberCollection);
-
+        Mockito.when(squadronPersonnel.getSquadronMembersWithAces()).thenReturn(activeSquadronMembers);
         Mockito.when(squadronPersonnel.getRecentlyInactiveSquadronMembers()).thenReturn(inactiveSquadronMembers);
+        Mockito.when(activeSquadronMembers.getSquadronMemberCollection()).thenReturn(activeSquadronMemberCollection);
         Mockito.when(inactiveSquadronMembers.getSquadronMemberCollection()).thenReturn(inactiveSquadronMemberCollection);
      }
 
@@ -98,7 +80,10 @@ public class SquadronTransferNeedTest
     {
         for (int i = 0; i < 9; ++i)
         {
-            activeSquadronMemberCollection.put(serialNumber.getNextPilotSerialNumber(), squadronMember);
+            SquadronMember squadronMember = new SquadronMember();
+            squadronMember.setSerialNumber(serialNumber.getNextPilotSerialNumber());
+            squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
+            activeSquadronMemberCollection.put(squadronMember.getSerialNumber(), squadronMember);
         }
         
         
@@ -124,12 +109,18 @@ public class SquadronTransferNeedTest
     {
         for (int i = 0; i < 7; ++i)
         {
-            activeSquadronMemberCollection.put(serialNumber.getNextPilotSerialNumber(), squadronMember);
+            SquadronMember squadronMember = new SquadronMember();
+            squadronMember.setSerialNumber(serialNumber.getNextPilotSerialNumber());
+            squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
+            activeSquadronMemberCollection.put(squadronMember.getSerialNumber(), squadronMember);
         }
         
         for (int i = 0; i < 2; ++i)
         {
-            inactiveSquadronMemberCollection.put(serialNumber.getNextPilotSerialNumber(), squadronMember);
+            SquadronMember squadronMember = new SquadronMember();
+            squadronMember.setSerialNumber(serialNumber.getNextPilotSerialNumber());
+            squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
+            inactiveSquadronMemberCollection.put(squadronMember.getSerialNumber(), squadronMember);
         }
         
         Mockito.when(activeSquadronMembers.getActiveCount(campaign.getDate())).thenReturn(7);
@@ -154,12 +145,18 @@ public class SquadronTransferNeedTest
     {
         for (int i = 0; i < 10; ++i)
         {
-            activeSquadronMemberCollection.put(serialNumber.getNextPilotSerialNumber(), squadronMember);
+            SquadronMember squadronMember = new SquadronMember();
+            squadronMember.setSerialNumber(serialNumber.getNextPilotSerialNumber());
+            squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
+            activeSquadronMemberCollection.put(squadronMember.getSerialNumber(), squadronMember);
         }
         
         for (int i = 0; i < 2; ++i)
         {
-            inactiveSquadronMemberCollection.put(serialNumber.getNextPilotSerialNumber(), squadronMember);
+            SquadronMember squadronMember = new SquadronMember();
+            squadronMember.setSerialNumber(serialNumber.getNextPilotSerialNumber());
+            squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
+            inactiveSquadronMemberCollection.put(squadronMember.getSerialNumber(), squadronMember);
         }
         
         Mockito.when(activeSquadronMembers.getActiveCount(campaign.getDate())).thenReturn(10);

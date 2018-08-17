@@ -8,6 +8,7 @@ import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.squadmember.PilotNames;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
@@ -54,7 +55,7 @@ public class SquadronMemberReplacementFactory
 
     private void makePilotPicture(SquadronMember newPilot) throws PWCGException
     {
-        PilotPictureBuilder pilotPictureBuilder = new PilotPictureBuilder(service, new HashMap<Integer, SquadronMember>());
+        PilotPictureBuilder pilotPictureBuilder = new PilotPictureBuilder(service, new SquadronMembers());
         String picPath = pilotPictureBuilder.assignPilotPicture();
         newPilot.setPicName(picPath);
     }

@@ -13,9 +13,9 @@ public class CampaignMembersOutOfMissionFinder
     public SquadronMembers getCampaignMembersNotInMission(Campaign campaign, SquadronMembers campaignMembersInMission) throws PWCGException
     {
     	Map<Integer, SquadronMember> allCampaignMembers = campaign.getPersonnelManager().getAllCampaignMembers();  
-        Map<Integer, SquadronMember> activeAiCampaignMembers = SquadronMemberFilter.filterActiveAI(allCampaignMembers, campaign.getDate());
+    	SquadronMembers activeAiCampaignMembers = SquadronMemberFilter.filterActiveAI(allCampaignMembers, campaign.getDate());
         SquadronMembers campaignMembersOutOfMission = new SquadronMembers();
-    	for (SquadronMember pilot : activeAiCampaignMembers.values())
+    	for (SquadronMember pilot : activeAiCampaignMembers.getSquadronMemberList())
     	{
     		if (!campaignMembersInMission.getSquadronMemberCollection().containsKey(pilot.getSerialNumber()))
     		{

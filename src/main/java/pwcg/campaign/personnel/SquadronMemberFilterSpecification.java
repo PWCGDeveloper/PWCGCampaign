@@ -10,6 +10,7 @@ public class SquadronMemberFilterSpecification
     private boolean includeInactive = false;
     private boolean includeActive = true;
     private boolean includeAces = true;
+    private boolean includeAI = true;
     private boolean includePlayer = true;
     private int specifySquadron = NO_SQUADRON_FILTER;
 
@@ -41,6 +42,21 @@ public class SquadronMemberFilterSpecification
     public void setIncludePlayer(boolean includePlayer)
     {
         this.includePlayer = includePlayer;
+    }
+    
+    public boolean isIncludeAI()
+    {
+        return includeAI;
+    }
+
+    public void setIncludeAI(boolean includeAI)
+    {
+        this.includeAI = includeAI;
+    }
+
+    public static int getNoSquadronFilter()
+    {
+        return NO_SQUADRON_FILTER;
     }
 
     public boolean isIncludeInactive()

@@ -1,7 +1,6 @@
 package pwcg.campaign;
 
 import java.util.Date;
-import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,11 +13,10 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.personnel.CampaignPersonnelFilter;
-import pwcg.campaign.personnel.SquadronMemberFilterSpecification;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -46,20 +44,8 @@ public class CampaignGeneratorTest
         
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
-            SquadronMemberFilterSpecification filterSpecification = new SquadronMemberFilterSpecification();
-            filterSpecification.setIncludePlayer(true);                
-            filterSpecification.setIncludeAces(true);     
-            filterSpecification.setSpecifySquadron(squadronPersonnel.getSquadron().getSquadronId());
-
-            CampaignPersonnelFilter filter = new CampaignPersonnelFilter(squadronPersonnel.getActiveSquadronMembersWithAces().getSquadronMemberCollection());
-            Map<Integer, SquadronMember> squadronMembers = filter.getFilteredSquadronMembers(filterSpecification);
-
-            if (squadronMembers.size() != Squadron.SQUADRON_STAFF_SIZE)
-            {
-                squadronMembers = filter.getFilteredSquadronMembers(filterSpecification);
-            }
-            
-            assert(squadronMembers.size() == Squadron.SQUADRON_STAFF_SIZE);
+            SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+            assert(squadronMembers.getSquadronMemberList().size() == Squadron.SQUADRON_STAFF_SIZE);
         }
         
         

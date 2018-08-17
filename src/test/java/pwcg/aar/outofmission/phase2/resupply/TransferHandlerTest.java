@@ -26,8 +26,7 @@ public class TransferHandlerTest
 {
     private Campaign campaign;
     
-    @Mock
-    private AARPersonnelLosses lossesInMissionData;
+    @Mock private AARPersonnelLosses lossesInMissionData;
 
     @Before
     public void setup() throws PWCGException

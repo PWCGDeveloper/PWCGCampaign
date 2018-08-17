@@ -17,7 +17,6 @@ public class CampaignUpdater
         this.aarContext = aarContext;
     }
 
-
 	public void updateCampaign() throws PWCGException 
     {
         CampaignPilotUpdater pilotUpdater = new CampaignPilotUpdater(campaign, aarContext.getCampaignUpdateData().getPersonnelAwards());
@@ -47,9 +46,11 @@ public class CampaignUpdater
     private void finishCampaignUpdates(Date newDate) throws PWCGException
     {
         campaign.getCampaignLogs().setCampaignLogs(campaign, aarContext.getCampaignUpdateData().getLogEvents().getCampaignLogEvents());
-        
         campaign.setDate(newDate);
 
+        CampaignWoundUpdater woundUpdater = new CampaignWoundUpdater(campaign);
+        woundUpdater.updateWoundedPilots(newDate);
+        
         CampaignUpdateNewSquadronStaffer newSquadronStaffer = new CampaignUpdateNewSquadronStaffer(campaign);
         newSquadronStaffer.staffNewSquadrons();
 

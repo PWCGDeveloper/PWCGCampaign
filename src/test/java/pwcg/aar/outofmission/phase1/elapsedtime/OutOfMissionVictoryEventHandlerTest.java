@@ -15,6 +15,7 @@ import pwcg.aar.data.AARContext;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadmember.Victory;
@@ -50,7 +51,7 @@ public class OutOfMissionVictoryEventHandlerTest
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         
         outOfMissionSquadronMembers = new SquadronMembers();
-        outOfMissionSquadronMembers.setSquadronMemberCollection(campaign.getPersonnelManager().getSquadronPersonnel(501012).getActiveSquadronMembers().getSquadronMemberCollection());
+        outOfMissionSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getSquadronPersonnel(501012).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         Mockito.when(preliminaryData.getCampaignMembersOutOfMission()).thenReturn(outOfMissionSquadronMembers);
     }
 

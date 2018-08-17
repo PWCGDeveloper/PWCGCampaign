@@ -8,7 +8,9 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -32,8 +34,9 @@ public class SquadronMemberInitialVictoryBuilderTest
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(20112052);
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
-        
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getSquadronPersonnel(20112052).getActiveSquadronMembers().getSquadronMemberCollection().values())
+
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getSquadronPersonnel(20112052).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberCollection().values())
         {
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
             if (rankPos == 0)
@@ -63,7 +66,8 @@ public class SquadronMemberInitialVictoryBuilderTest
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
         
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getSquadronPersonnel(10111126).getActiveSquadronMembers().getSquadronMemberCollection().values())
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getSquadronPersonnel(10111126).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberCollection().values())
         {
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
             if (rankPos == 0)

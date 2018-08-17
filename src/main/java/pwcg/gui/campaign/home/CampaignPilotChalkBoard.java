@@ -6,7 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.util.Map;
+import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,7 +29,7 @@ public class CampaignPilotChalkBoard extends ImageResizingPanel
 	    super(ContextSpecificImages.imagesMisc() + "chalkboard.jpg");
 	}
 
-    public void makeSquadronPanel(Map<String, SquadronMember> sortedPilots)  
+    public void makeSquadronPanel(List<SquadronMember> sortedPilots)  
     {
         try
         {
@@ -44,7 +44,7 @@ public class CampaignPilotChalkBoard extends ImageResizingPanel
         }
     }
 
-    private JPanel createPilotListPanel(Map<String, SquadronMember> sortedPilots) throws PWCGException
+    private JPanel createPilotListPanel(List<SquadronMember> sortedPilots) throws PWCGException
     {
         Color buttonBG = ColorMap.CHALK_BACKGROUND;
         Color buttonFG = ColorMap.CHALK_FOREGROUND;
@@ -110,7 +110,7 @@ public class CampaignPilotChalkBoard extends ImageResizingPanel
         squadronPanel.add(lDummy, constraints);
         
         int i = 1;
-        for (SquadronMember pilot : sortedPilots.values())
+        for (SquadronMember pilot : sortedPilots)
         {
             lDummy = new JLabel("     ");
             lDummy.setOpaque(false);

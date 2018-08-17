@@ -26,7 +26,7 @@ public class MedalEventGenerator
         
         for (Integer pilotSerialNumber : medalAwardByPilot.keySet())
         {
-            SquadronMember squadronMember = campaign.getPersonnelManager().getActiveCampaignMember(pilotSerialNumber);
+            SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(pilotSerialNumber);
             if (squadronMember != null)
             {
                 Map<String, Medal> medalsForSquadronMember = medalAwardByPilot.get(pilotSerialNumber);

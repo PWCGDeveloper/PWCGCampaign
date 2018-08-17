@@ -1,8 +1,6 @@
 package pwcg.aar.awards;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.junit.Before;
@@ -103,29 +101,28 @@ public class CampaignMemberAwardsGeneratorInMissionTest
 
     @Test
     public void testKilledMemberssAwardedWoundBadge () throws PWCGException
-    {             
-        Map<Integer, SquadronMember> nonPlayerSquadronMembersMap = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
-        List<SquadronMember>nonPlayerSquadronMembers = new ArrayList<>(nonPlayerSquadronMembersMap.values());
+    {            
+        SquadronMembers nonPlayerSquadronMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
         Map<Integer, SquadronMember> squadronMembersKilled = new HashMap<>();
-        squadronMembersKilled.put(nonPlayerSquadronMembers.get(1).getSerialNumber(), nonPlayerSquadronMembers.get(1));
+        squadronMembersKilled.put(nonPlayerSquadronMembers.getSquadronMemberList().get(1).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(1));
         Mockito.when(personnelLosses.getPersonnelKilled()).thenReturn(squadronMembersKilled);
 
         Map<Integer, SquadronMember> squadronMembersMaimed = new HashMap<>();
-        squadronMembersMaimed.put(nonPlayerSquadronMembers.get(2).getSerialNumber(), nonPlayerSquadronMembers.get(2));
-        squadronMembersMaimed.put(nonPlayerSquadronMembers.get(3).getSerialNumber(), nonPlayerSquadronMembers.get(3));
+        squadronMembersMaimed.put(nonPlayerSquadronMembers.getSquadronMemberList().get(2).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(2));
+        squadronMembersMaimed.put(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(3));
         Mockito.when(personnelLosses.getPersonnelMaimed()).thenReturn(squadronMembersMaimed);
         
-        squadronMembersInMission.put(nonPlayerSquadronMembers.get(1).getSerialNumber(), nonPlayerSquadronMembers.get(1));
-        squadronMembersInMission.put(nonPlayerSquadronMembers.get(2).getSerialNumber(), nonPlayerSquadronMembers.get(2));
-        squadronMembersInMission.put(nonPlayerSquadronMembers.get(3).getSerialNumber(), nonPlayerSquadronMembers.get(3));
+        squadronMembersInMission.put(nonPlayerSquadronMembers.getSquadronMemberList().get(1).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(1));
+        squadronMembersInMission.put(nonPlayerSquadronMembers.getSquadronMemberList().get(2).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(2));
+        squadronMembersInMission.put(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(3));
 
         CampaignMemberAwardsGeneratorInMission awardsGenerator = new CampaignMemberAwardsGeneratorInMission(campaign, aarContext);
         AARPersonnelAwards campaignMemberAwards = awardsGenerator.createCampaignMemberAwards();
         
         assert (campaignMemberAwards.getCampaignMemberMedals().size() >= 1);
-        assert (campaignMemberAwards.getCampaignMemberMedals().containsKey(nonPlayerSquadronMembers.get(1).getSerialNumber()));
-        assert (campaignMemberAwards.getCampaignMemberMedals().containsKey(nonPlayerSquadronMembers.get(2).getSerialNumber()));
-        assert (campaignMemberAwards.getCampaignMemberMedals().containsKey(nonPlayerSquadronMembers.get(3).getSerialNumber()));
+        assert (campaignMemberAwards.getCampaignMemberMedals().containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(1).getSerialNumber()));
+        assert (campaignMemberAwards.getCampaignMemberMedals().containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(2).getSerialNumber()));
+        assert (campaignMemberAwards.getCampaignMemberMedals().containsKey(nonPlayerSquadronMembers.getSquadronMemberList().get(3).getSerialNumber()));
     }
 
 

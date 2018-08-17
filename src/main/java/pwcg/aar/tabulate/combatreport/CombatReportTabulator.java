@@ -14,6 +14,7 @@ import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
 
@@ -56,7 +57,7 @@ public class CombatReportTabulator
     private void createCrewsInMission() throws PWCGException
     {
         Map<Integer, SquadronMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getSquadronMemberCollection();
-        Map<Integer, SquadronMember> squadronMembersInMission = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesForSquadron(campaignMembersInMission, campaign.getDate(), campaign.getSquadronId());
+        SquadronMembers squadronMembersInMission = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesForSquadron(campaignMembersInMission, campaign.getDate(), campaign.getSquadronId());
         combatReportData.addPilotsInMission(squadronMembersInMission);
     }
 

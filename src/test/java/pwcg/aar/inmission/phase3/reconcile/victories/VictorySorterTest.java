@@ -44,7 +44,7 @@ public class VictorySorterTest
         Mockito.when(campaign.determineCountry()).thenReturn(new RoFCountry(Country.FRANCE));
         Mockito.when(campaign.getPlayers()).thenReturn(players);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(personnelManager.getActiveCampaignMember(Mockito.any())).thenReturn(player);
+        Mockito.when(personnelManager.getAnyCampaignMember(Mockito.any())).thenReturn(player);
         Mockito.when(player.isPlayer()).thenReturn(true);
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 

@@ -17,6 +17,7 @@ import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberFactory;
@@ -186,9 +187,8 @@ public class CampaignAddHumanPilotPanelSet extends PwcgGuiContext implements Act
         cbReplacePilot.setBackground(ColorMap.PAPER_BACKGROUND);
         cbReplacePilot.setFont(font);
         
-        SquadronPersonnel playerSquadronPersonnel = campaign.getPersonnelManager().getPlayerPersonnel();
-        SquadronMembers aiSquadronMembers = playerSquadronPersonnel.getActiveSquadronMembersAiOnly();
-        for (SquadronMember aiSquadronMember : aiSquadronMembers.getSquadronMemberCollection().values())
+        SquadronMembers aiSquadronMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        for (SquadronMember aiSquadronMember : aiSquadronMembers.sortPilots(campaign.getDate()))
         {
             cbReplacePilot.addItem(aiSquadronMember.getSerialNumber() + ":" + aiSquadronMember.getNameAndRank());
         }

@@ -8,8 +8,10 @@ import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -124,7 +126,8 @@ public class SkinSessionManager
     private boolean isSkinInUseByAnotherPilot(Skin skinToCheck) throws PWCGException
     {
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        for (SquadronMember squadMember : campaign.getPersonnelManager().getPlayerPersonnel().getActiveSquadronMembers().getSquadronMemberCollection().values())
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        for (SquadronMember squadMember : squadronMembers.getSquadronMemberList())
         {
             if (!(squadMember.getSerialNumber() == pilot.getSerialNumber()))
             {

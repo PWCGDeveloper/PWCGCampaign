@@ -316,28 +316,35 @@ public class SquadronMember implements Cloneable
         return pilotActiveStatus;
     }
 
-    public void setPilotActiveStatus(int pilotActiveStatus, Date statusDate, Date recoveryDate)
+    public void setPilotActiveStatus(int pilotActiveStatus, Date statusDate, Date updatedRecoveryDate)
     {
         if (isPlayer())
         {
-            setPlayerPilotActiveStatus(pilotActiveStatus, statusDate, recoveryDate);
+            setPlayerPilotActiveStatus(pilotActiveStatus, statusDate, updatedRecoveryDate);
         }
         else
         {
-            setAiPilotActiveStatus(pilotActiveStatus, statusDate);
+            setAiPilotActiveStatus(pilotActiveStatus, statusDate, updatedRecoveryDate);
         }
     }
 
-    private void setPlayerPilotActiveStatus(int pilotActiveStatus, Date statusDate, Date recoveryDate)
+    private void setPlayerPilotActiveStatus(int pilotActiveStatus, Date statusDate, Date updatedRecoveryDate)
     {
         this.pilotActiveStatus = pilotActiveStatus;
         if (pilotActiveStatus <= SquadronMemberStatus.STATUS_CAPTURED)
         {
+            recoveryDate = null;            
             inactiveDate = new Date(statusDate.getTime());
         }
         else if (pilotActiveStatus <= SquadronMemberStatus.STATUS_WOUNDED)
         {
+            recoveryDate = new Date(updatedRecoveryDate.getTime());            
+            inactiveDate = null;            
+        }
+        else if (pilotActiveStatus <= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+        {
             this.recoveryDate = new Date(recoveryDate.getTime());            
+            this.inactiveDate = null;            
         }
         else if (pilotActiveStatus == SquadronMemberStatus.STATUS_ACTIVE)
         {
@@ -346,12 +353,18 @@ public class SquadronMember implements Cloneable
         }
     }
 
-    private void setAiPilotActiveStatus(int pilotActiveStatus, Date statusDate)
+    private void setAiPilotActiveStatus(int pilotActiveStatus, Date statusDate, Date updatedRecoveryDate)
     {
         this.pilotActiveStatus = pilotActiveStatus;
         if (pilotActiveStatus <= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
         {
+            recoveryDate = null;            
             inactiveDate = new Date(statusDate.getTime());
+        }
+        else if (pilotActiveStatus <= SquadronMemberStatus.STATUS_WOUNDED)
+        {
+            recoveryDate = new Date(updatedRecoveryDate.getTime());            
+            inactiveDate = null;            
         }
         else if (pilotActiveStatus == SquadronMemberStatus.STATUS_ACTIVE)
         {

@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.campaign.ArmedService;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
@@ -21,6 +20,11 @@ public class SquadronMembers
     public Map<Integer, SquadronMember> getSquadronMemberCollection()
     {
         return squadronMemberCollection;
+    }
+
+    public List<SquadronMember> getSquadronMemberList()
+    {
+        return new ArrayList<>(squadronMemberCollection.values());
     }
 
     public void setSquadronMemberCollection(Map<Integer, SquadronMember> squadronMembers)
@@ -54,8 +58,8 @@ public class SquadronMembers
 
     public int getActiveCount(Date date) throws PWCGException
     {
-        Map<Integer, SquadronMember> activeSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronMemberCollection, date);
-        return activeSquadronMembers.size();
+        SquadronMembers activeSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronMemberCollection, date);
+        return activeSquadronMembers.getSquadronMemberList().size();
     }
     
     public SquadronMember getSquadronMember(int serialNumber)
@@ -81,25 +85,18 @@ public class SquadronMembers
         
         throw new PWCGException("No squadronmember found for name " + name);
     }
-
-
-    public List<SquadronMember> sortByRank(ArmedService service) throws PWCGException
+    
+    public List<SquadronMember> sortPilots(Date date) throws PWCGException 
     {
-        List<SquadronMember> sorted = new ArrayList<SquadronMember>();
-        Map<String, SquadronMember> sortedTree = new TreeMap<String, SquadronMember>();
-
-        IRankHelper rankObj = RankFactory.createRankHelper();
-
-        for (SquadronMember squadronMember : squadronMemberCollection.values())
-        {
-            int rankPos = rankObj.getRankPosByService(squadronMember.getRank(), service);
-            String sortKey = "" + rankPos + squadronMember.getName();
-            sortedTree.put(sortKey, squadronMember);
+        Map<String, SquadronMember> sortedPilots = new TreeMap<>();
+        for (SquadronMember pilot : squadronMemberCollection.values())
+        {            
+            IRankHelper rankObj = RankFactory.createRankHelper();
+            int rankPos = rankObj.getRankPosByService(pilot.getRank(), pilot.determineService(date));
+            String keyVal = new String("" + rankPos + pilot.getName());
+            sortedPilots.put(keyVal, pilot);
         }
-
-        sorted.addAll(sortedTree.values());
-
-        return sorted;
+        
+        return new ArrayList<>(sortedPilots.values());
     }
-
 }

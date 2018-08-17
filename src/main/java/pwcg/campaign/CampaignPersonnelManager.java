@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.personnel.PersonnelReplacementsService;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignPersonnelManager 
@@ -71,35 +73,16 @@ public class CampaignPersonnelManager
         return allSquadronMembers;
     }
 
-    private Map<Integer, SquadronMember> getAllNonAceCampaignMembers() throws PWCGException
+    public Map<Integer, SquadronMember> getAllNonAceCampaignMembers() throws PWCGException
     {
         Map<Integer, SquadronMember> allCampaignMembers =  new HashMap<>();
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
-            allCampaignMembers.putAll(squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection());
+            SquadronMembers aiSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayer(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+            allCampaignMembers.putAll(aiSquadronMembers.getSquadronMemberCollection());
         }
         return allCampaignMembers;
     }    
-
-    public SquadronMember getActiveCampaignMember(Integer serialNumber) throws PWCGException
-    {
-        SquadronMember squadronMember = campaignAces.retrieveAceBySerialNumber(serialNumber);
-        if (squadronMember != null)
-        {
-            return squadronMember;
-        }        
-
-        for (SquadronPersonnel squadronPersonnel : squadronPersonnelAllSquadrons.values())
-        {
-            squadronMember = squadronPersonnel.getActiveSquadronMembers().getSquadronMember(serialNumber);
-            if (squadronMember != null)
-            {
-                return squadronMember;
-            }        
-        }
-
-        throw new PWCGException ("Unable to locate active squadron member for serial number " + serialNumber);
-    }
 
     public SquadronMember getAnyCampaignMember(Integer serialNumber) throws PWCGException
     {

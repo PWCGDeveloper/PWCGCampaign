@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
@@ -46,7 +47,7 @@ public class CampaignUpdateNewSquadronStafferTest
             SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
             assert(squadronPersonnel != null);
 
-            SquadronMembers squadronMembers = squadronPersonnel.getActiveSquadronMembers();
+            SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(),campaign.getDate());
             assert(squadronMembers != null);
             assert(squadronMembers.getActiveCount(campaign.getDate()) >= Squadron.SQUADRON_STAFF_SIZE);
         }

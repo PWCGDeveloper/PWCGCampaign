@@ -11,6 +11,7 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.personnel.CampaignPersonnelFilter;
 import pwcg.campaign.personnel.SquadronMemberFilterSpecification;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -33,21 +34,25 @@ public class CampaignPersonnelManagerReconTest
     {                               
         SquadronMemberFilterSpecification filterSpecification = new SquadronMemberFilterSpecification();
 
-        CampaignPersonnelFilter filter = new CampaignPersonnelFilter(campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMemberCollection());
+        SquadronMembers squadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getSquadronMembersWithAces();
+        CampaignPersonnelFilter filter = new CampaignPersonnelFilter(squadronMembers.getSquadronMemberCollection());
+
         filterSpecification.setIncludePlayer(false);        
         filterSpecification.setIncludeAces(false);  
+        filterSpecification.setIncludeAI(true);  
         filterSpecification.setSpecifySquadron(campaign.getSquadronId());
-        
         Map<Integer, SquadronMember> squadronMembersNoPlayerNoAces = filter.getFilteredSquadronMembers(filterSpecification);
         assert (squadronMembersNoPlayerNoAces.size() == (Squadron.SQUADRON_STAFF_SIZE - 1));
         
         filterSpecification.setIncludePlayer(false);        
         filterSpecification.setIncludeAces(true);        
+        filterSpecification.setIncludeAI(true);  
         Map<Integer, SquadronMember> squadronMembersNoPlayerWithAces = filter.getFilteredSquadronMembers(filterSpecification);
         assert (squadronMembersNoPlayerWithAces.size() == squadronMembersNoPlayerNoAces.size());
 
         filterSpecification.setIncludePlayer(true);        
         filterSpecification.setIncludeAces(true);        
+        filterSpecification.setIncludeAI(true);  
         Map<Integer, SquadronMember> squadronMembersWithPlayerWithAces = filter.getFilteredSquadronMembers(filterSpecification);
         assert (squadronMembersWithPlayerWithAces.size() == Squadron.SQUADRON_STAFF_SIZE);
     }

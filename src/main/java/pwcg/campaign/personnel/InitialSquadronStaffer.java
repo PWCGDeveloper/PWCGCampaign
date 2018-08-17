@@ -1,13 +1,11 @@
 package pwcg.campaign.personnel;
 
 import java.util.List;
-import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberFactory;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -21,7 +19,6 @@ public class InitialSquadronStaffer
     private Squadron squadron;
     private SquadronMemberFactory squadronMemberFactory;
     private SquadronPersonnel squadronPersonnel;
-    private int pilotsNeeded = Squadron.SQUADRON_STAFF_SIZE;
     
 	public InitialSquadronStaffer(Campaign campaign, Squadron squadron) 
 	{
@@ -34,7 +31,6 @@ public class InitialSquadronStaffer
 
     public SquadronPersonnel generatePersonnel() throws PWCGException 
     {
-        calculatePilotsNeeded();
         generateAIPilots();        
         return squadronPersonnel;
     }
@@ -47,7 +43,7 @@ public class InitialSquadronStaffer
 
     private void addSquadronMember(SquadronMember player) throws PWCGException
     {
-        if (squadronPersonnel.getActiveSquadronMembers().getActiveCount(campaign.getDate()) < pilotsNeeded)
+        if ((squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberList().size()) < Squadron.SQUADRON_STAFF_SIZE)
         {
             squadronPersonnel.addSquadronMember(player);
         }
@@ -59,13 +55,6 @@ public class InitialSquadronStaffer
 		validateMissionsFlownForInitialPilots();
 		setAiSkillLevel();
 	}
-    
-    private void calculatePilotsNeeded() throws PWCGException
-    {
-        List<Ace> aces = campaign.getPersonnelManager().getCampaignAces().getCampaignAcesBySquadron(squadron.getSquadronId());
-        pilotsNeeded -= aces.size();
-    }
-
 
     private void addAiPilots() throws PWCGException
     {
@@ -109,7 +98,7 @@ public class InitialSquadronStaffer
 
     private int refineNumPilotsAtRank(int numPilots, int rankPos) throws PWCGException
     {
-        SquadronMembers squadronMembersAlreadyWithSquadron = squadronPersonnel.getActiveSquadronMembersWithAces();
+        SquadronMembers squadronMembersAlreadyWithSquadron = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : squadronMembersAlreadyWithSquadron.getSquadronMemberCollection().values())
         {
             IRankHelper rankObj = RankFactory.createRankHelper();
@@ -130,8 +119,8 @@ public class InitialSquadronStaffer
 
     private void validateMissionsFlownForInitialPilots() throws PWCGException
     {
-        Map<Integer, SquadronMember> squadronMembers = SquadronMemberFilter.filterActiveAI(squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection(), campaign.getDate());
-        for (SquadronMember squadronMember : squadronMembers.values())
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAI(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
         {
             int minimumMissions = 1 + (squadronMember.getSquadronMemberVictories().getAirToAirVictories() * 3);
             if (!squadronMember.isPlayer())
@@ -146,8 +135,8 @@ public class InitialSquadronStaffer
 
     private void setAiSkillLevel() throws PWCGException
     {
-        Map<Integer, SquadronMember> squadronMembers = SquadronMemberFilter.filterActiveAI(squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection(), campaign.getDate());
-        for (SquadronMember squadronMember : squadronMembers.values())
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAI(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
         {
             AiPilotSkillGenerator aiPilotSkillGenerator = new AiPilotSkillGenerator();
             AiSkillLevel aiSkillLevel = aiPilotSkillGenerator.calculatePilotQualityByRankAndService(campaign, squadron, squadronMember.getRank());

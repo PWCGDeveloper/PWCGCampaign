@@ -11,6 +11,7 @@ import pwcg.aar.ui.events.model.PilotStatusEvent;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.mission.data.MissionHeader;
 
 public class AARCombatReportPanelData
@@ -72,9 +73,9 @@ public class AARCombatReportPanelData
         claimsDenied.addAll(sourceClaimDeniedEvents);
     }
 
-    public void addPilotsInMission(Map<Integer, SquadronMember> crewsInMissionFromPlayerSquadron)
+    public void addPilotsInMission(SquadronMembers crewsInMissionFromPlayerSquadron)
     {
-        crewsInMission.putAll(crewsInMissionFromPlayerSquadron);
+        crewsInMission.putAll(crewsInMissionFromPlayerSquadron.getSquadronMemberCollection());
     }
 
     public void addPilotLostInMission(PilotStatusEvent pilotLostEvent)

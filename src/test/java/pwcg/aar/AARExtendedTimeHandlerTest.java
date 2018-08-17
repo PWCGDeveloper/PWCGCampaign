@@ -14,9 +14,11 @@ import pwcg.aar.data.ExtendedTimeReason;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
@@ -43,11 +45,12 @@ public class AARExtendedTimeHandlerTest
     @Test
     public void testTimeNotPassedForViableSquadron () throws PWCGException
     {
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMemberCollection().values())
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
         {
             if (!squadronMember.isPlayer())
             {
-                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, campaign.getDate(), null);
+                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
             }
         }
 
@@ -63,13 +66,15 @@ public class AARExtendedTimeHandlerTest
     @Test
     public void testTimePassedForViableAndNonViableSquadron () throws PWCGException
     {
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMemberCollection().values())
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
         {
             if (!squadronMember.isPlayer())
             {
                 squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
             }
-            if (campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembersWithAces().getSquadronMemberCollection().size() < 6)
+            SquadronMembers squadronMembersLeft = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+            if (squadronMembersLeft.getSquadronMemberCollection().size() < 6)
             {
                 break;
             }
@@ -82,7 +87,8 @@ public class AARExtendedTimeHandlerTest
         
         assert (aarContext.getReasonForExtendedTime() == ExtendedTimeReason.NO_PILOTS);
         assert(endCampaignDate.after(startCampaignDate));
-        assert(campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembersWithAces().getSquadronMemberCollection().size() >= 6);
+        SquadronMembers squadronMembersAfter = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        assert(squadronMembersAfter.getSquadronMemberCollection().size() >= 6);
     }
     
     @Test

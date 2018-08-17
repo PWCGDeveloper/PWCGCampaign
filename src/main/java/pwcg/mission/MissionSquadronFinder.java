@@ -10,7 +10,9 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.plane.Role;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -190,7 +192,8 @@ public class MissionSquadronFinder
 
 	private boolean isSquadronPersonnelDepleted(Squadron squadron) throws PWCGException 
 	{
-		int numSquadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getActiveSquadronMembersWithAces().getActiveCount(campaign.getDate());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+		int numSquadronMembers = squadronMembers.getSquadronMemberList().size();
 		if (numSquadronMembers < 6)
 		{
 			return true;

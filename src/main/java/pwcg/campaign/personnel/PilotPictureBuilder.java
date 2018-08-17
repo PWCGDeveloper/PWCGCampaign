@@ -4,10 +4,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -15,9 +15,9 @@ import pwcg.gui.utils.ContextSpecificImages;
 public class PilotPictureBuilder
 {
     private ArmedService service;
-    private Map<Integer, SquadronMember> squadronMembersAlreadyAssigned;
+    private SquadronMembers squadronMembersAlreadyAssigned;
 
-    public PilotPictureBuilder (ArmedService service, Map<Integer, SquadronMember> squadronMembersAlreadyAssigned)
+    public PilotPictureBuilder (ArmedService service, SquadronMembers squadronMembersAlreadyAssigned)
     {
         this.service = service;
         this.squadronMembersAlreadyAssigned = squadronMembersAlreadyAssigned;
@@ -46,7 +46,7 @@ public class PilotPictureBuilder
     private HashMap<String, String> getPicturesInUse() throws PWCGException
     {
         HashMap<String, String> picsInUse = new HashMap<String, String>();
-        for (SquadronMember squadronMember : squadronMembersAlreadyAssigned.values())
+        for (SquadronMember squadronMember : squadronMembersAlreadyAssigned.getSquadronMemberList())
         {
             picsInUse.put(squadronMember.getPicName(), squadronMember.getPicName());
         }

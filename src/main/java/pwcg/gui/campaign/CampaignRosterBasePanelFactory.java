@@ -1,7 +1,7 @@
 package pwcg.gui.campaign;
 
 import java.awt.event.ActionListener;
-import java.util.Map;
+import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -14,7 +14,7 @@ public abstract class CampaignRosterBasePanelFactory
 {
     protected ActionListener parent = null;
 	protected Campaign campaign = null;
-	protected Map<String, SquadronMember> sortedPilots = null;
+	protected List<SquadronMember> sortedPilots = null;
     protected JPanel chalkboardPanel = null;
     protected JPanel pilotListPanel = null;
     protected boolean excludeAces = false;

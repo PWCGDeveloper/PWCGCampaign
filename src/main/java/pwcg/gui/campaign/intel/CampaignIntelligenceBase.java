@@ -18,12 +18,13 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.personnel.SquadronMemberSorter;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -193,8 +194,9 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
         intelBuffer.append("\n  Personnel:\n");          
 
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
-        Map<String, SquadronMember> sortedPilots = SquadronMemberSorter.sortPilotsByStatus(campaign, squadronPersonnel.getActiveSquadronMembersWithAces().getSquadronMemberCollection());
-        for (SquadronMember squadronMember : sortedPilots.values())
+        SquadronMembers activeSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        List<SquadronMember> sortedPilots = activeSquadronMembers.sortPilots(campaign.getDate());
+        for (SquadronMember squadronMember : sortedPilots)
         {
             intelBuffer.append("    " + squadronMember.getNameAndRank());          
             intelBuffer.append(".\n");          

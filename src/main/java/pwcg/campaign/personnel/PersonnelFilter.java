@@ -88,6 +88,32 @@ public class PersonnelFilter
         return returnSquadronMembers;
     }
     
+
+    public Map<Integer, SquadronMember> applyAIFilter(Map<Integer, SquadronMember> input)
+    {
+        Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<>();
+        for (SquadronMember pilot : input.values())
+        {
+            if (!invertFilter)
+            {
+                if (SerialNumber.getSerialNumberClassification(pilot.getSerialNumber()) == SerialNumberClassification.AI)
+                {
+                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                }
+            }
+            else
+            {
+                if (SerialNumber.getSerialNumberClassification(pilot.getSerialNumber()) != SerialNumberClassification.AI)
+                {
+                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                }
+            }
+        }
+
+        return returnSquadronMembers;
+    }
+
+    
     public Map<Integer, SquadronMember> applySquadronFilter(Map<Integer, SquadronMember> input, int squadronId) 
     {
         Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<>();

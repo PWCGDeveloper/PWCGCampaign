@@ -2,7 +2,6 @@ package pwcg.campaign.personnel;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.Ace;
@@ -56,69 +55,6 @@ public class SquadronPersonnel
         }
     }
 
-    public SquadronMembers getAllSquadronMembers() throws PWCGException
-    {
-        SquadronMembers allSquadronMembers = new SquadronMembers();
-        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberCollection().values())
-        {
-            allSquadronMembers.addToSquadronMemberCollection(squadronMember);
-        }
-        
-        return allSquadronMembers;
-    }
-
-    public SquadronMembers getActiveSquadronMembers() throws PWCGException
-    {
-        Map<Integer, SquadronMember> activeCampaignMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronMembers.getSquadronMemberCollection(), campaign.getDate());
-        SquadronMembers activeSquadronMembers = new SquadronMembers();
-        for (SquadronMember squadronMember : activeCampaignMembers.values())
-        {
-            activeSquadronMembers.addToSquadronMemberCollection(squadronMember);
-        }
-        
-        return activeSquadronMembers;
-    }
-    
-    public SquadronMembers getActiveSquadronMembersWithAces() throws PWCGException
-    {
-        SquadronMembers activeSquadronMembersAndAces = getActiveSquadronMembers();
-        List<Ace> aces = campaign.getPersonnelManager().getCampaignAces().getCampaignAcesBySquadron(squadron.getSquadronId());
-        for (SquadronMember ace : aces)
-        {
-            activeSquadronMembersAndAces.addToSquadronMemberCollection(ace);
-        }
-
-        return activeSquadronMembersAndAces;
-    }
-    
-    public SquadronMembers getActiveSquadronMembersAiOnly() throws PWCGException
-    {
-        Map<Integer, SquadronMember> activeCampaignMembers = SquadronMemberFilter.filterActiveAI(squadronMembers.getSquadronMemberCollection(), campaign.getDate());
-        SquadronMembers activeSquadronMembersAiOnly = new SquadronMembers();
-        for (SquadronMember squadronMember : activeCampaignMembers.values())
-        {
-            activeSquadronMembersAiOnly.addToSquadronMemberCollection(squadronMember);
-        }
-        
-        return activeSquadronMembersAiOnly;
-    }
-
-    public SquadronMembers getRecentlyInactiveSquadronMembers() throws PWCGException
-    {
-        Map<Integer, SquadronMember> inactiveCampaignMembers = SquadronMemberFilter.filterInactiveAIAndPlayerAndAces(squadronMembers.getSquadronMemberCollection(), campaign.getDate());
-        SquadronMembers inactiveSquadronMembers = new SquadronMembers();
-        for (SquadronMember squadronMember : inactiveCampaignMembers.values())
-        {
-            Date oneWeekAgo = DateUtils.removeTimeDays(campaign.getDate(), 7);
-            if (squadronMember.getInactiveDate().after(oneWeekAgo))
-            {
-                inactiveSquadronMembers.addToSquadronMemberCollection(squadronMember);
-            }
-        }
-        
-        return inactiveSquadronMembers;
-    }
-
     public SquadronMember getSquadronMember(Integer serialNumber) throws PWCGException
     {
         return squadronMembers.getSquadronMemberCollection().get(serialNumber);
@@ -138,8 +74,42 @@ public class SquadronPersonnel
         return false;
     }
 
+    public SquadronMembers getRecentlyInactiveSquadronMembers() throws PWCGException
+    {
+        SquadronMembers campaignMembers = getSquadronMembersWithAces();
+        SquadronMembers inactiveSquadronMembers = SquadronMemberFilter.filterInactiveAIAndPlayerAndAces(campaignMembers.getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers recentlyInactiveSquadronMembers = new SquadronMembers();
+        for (SquadronMember squadronMember : inactiveSquadronMembers.getSquadronMemberList())
+        {
+            Date oneWeekAgo = DateUtils.removeTimeDays(campaign.getDate(), 7);
+            if (squadronMember.getInactiveDate().after(oneWeekAgo))
+            {
+                recentlyInactiveSquadronMembers.addToSquadronMemberCollection(squadronMember);
+            }
+        }
+        
+        return recentlyInactiveSquadronMembers;
+    }
+
     public Squadron getSquadron()
     {
         return squadron;
+    }
+
+    public SquadronMembers getSquadronMembersWithAces() throws PWCGException
+    {
+        SquadronMembers activeSquadronMembersAndAces = new SquadronMembers();
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
+        {
+            activeSquadronMembersAndAces.addToSquadronMemberCollection(squadronMember);
+        }
+
+        List<Ace> aces = campaign.getPersonnelManager().getCampaignAces().getCampaignAcesBySquadron(squadron.getSquadronId());
+        for (SquadronMember ace : aces)
+        {
+            activeSquadronMembersAndAces.addToSquadronMemberCollection(ace);
+        }
+
+        return activeSquadronMembersAndAces;
     }
 }

@@ -8,6 +8,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -32,9 +33,10 @@ public class InitialSquadronStafferTest
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(20111052);
         
         InitialSquadronStaffer initialSquadronStaffer = new InitialSquadronStaffer(campaign, squadron);
-        SquadronPersonnel squadronPersonnel = initialSquadronStaffer.generatePersonnel();
-        
-        assert(squadronPersonnel.getActiveSquadronMembersWithAces().getActiveCount(campaign.getDate()) == Squadron.SQUADRON_STAFF_SIZE);
+        SquadronPersonnel squadronPersonnel = initialSquadronStaffer.generatePersonnel();        
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());        
+
+        assert(squadronMembers.getSquadronMemberList().size() == Squadron.SQUADRON_STAFF_SIZE);
     }
     
     @Test
@@ -47,9 +49,10 @@ public class InitialSquadronStafferTest
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(101002);
         
         InitialSquadronStaffer initialSquadronStaffer = new InitialSquadronStaffer(campaign, squadron);
-        SquadronPersonnel squadronPersonnel = initialSquadronStaffer.generatePersonnel();
+        SquadronPersonnel squadronPersonnel = initialSquadronStaffer.generatePersonnel();        
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());        
         
-        assert(squadronPersonnel.getActiveSquadronMembersWithAces().getActiveCount(campaign.getDate()) == Squadron.SQUADRON_STAFF_SIZE);
+        assert(squadronMembers.getSquadronMemberList().size() == Squadron.SQUADRON_STAFF_SIZE);
     }
     
     @Test
@@ -62,9 +65,11 @@ public class InitialSquadronStafferTest
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(501011);
         
         InitialSquadronStaffer initialSquadronStaffer = new InitialSquadronStaffer(campaign, squadron);
-        SquadronPersonnel squadronPersonnel = initialSquadronStaffer.generatePersonnel();
+        SquadronPersonnel squadronPersonnel = initialSquadronStaffer.generatePersonnel();        
+        SquadronMembers squadronMembers = squadronPersonnel.getSquadronMembersWithAces();
+        SquadronMembers filteredSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronMembers.getSquadronMemberCollection(), campaign.getDate());        
         
-        assert(squadronPersonnel.getActiveSquadronMembersWithAces().getActiveCount(campaign.getDate()) == Squadron.SQUADRON_STAFF_SIZE);
+        assert(filteredSquadronMembers.getSquadronMemberList().size() == Squadron.SQUADRON_STAFF_SIZE);
     }
 
 }

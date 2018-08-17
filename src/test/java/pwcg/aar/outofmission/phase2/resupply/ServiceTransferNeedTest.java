@@ -1,20 +1,19 @@
 package pwcg.aar.outofmission.phase2.resupply;
 
 import java.util.Date;
-import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.aar.outofmission.phase2.resupply.ServiceResupplyNeed;
-import pwcg.aar.outofmission.phase2.resupply.SquadronNeedFactory;
 import pwcg.aar.outofmission.phase2.resupply.SquadronNeedFactory.SquadronNeedType;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
@@ -58,9 +57,9 @@ public class ServiceTransferNeedTest
 
     private void deactivateSquadronPersonnel() throws PWCGException
     {
-        Map<Integer, SquadronMember> jasta12SquadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(501012).getActiveSquadronMembers().getSquadronMemberCollection();
+        SquadronMembers jasta12SquadronMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getSquadronPersonnel(501012).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         int numInactivated = 0;
-        for (SquadronMember squadronMember : jasta12SquadronMembers.values())
+        for (SquadronMember squadronMember : jasta12SquadronMembers.getSquadronMemberList())
         {
             if (!squadronMember.isPlayer())
             {

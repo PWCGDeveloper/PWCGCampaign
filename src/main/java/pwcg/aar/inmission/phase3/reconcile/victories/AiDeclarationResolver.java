@@ -10,6 +10,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
 public class AiDeclarationResolver  extends PlayerVictoryResolver
@@ -108,8 +109,8 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
     private SquadronMember flightMemberForVictory(LogVictory resultVictory) throws PWCGException
     {
         Map<Integer, SquadronMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getSquadronMemberCollection();
-        Map<Integer, SquadronMember> squadronMembersInMissionOtherThanPlayer = SquadronMemberFilter.filterActiveAIForSquadron(campaignMembersInMission, campaign.getDate(), campaign.getSquadronId());
-        for (SquadronMember pilotVictor: squadronMembersInMissionOtherThanPlayer.values())
+        SquadronMembers squadronMembersInMissionOtherThanPlayer = SquadronMemberFilter.filterActiveAIForSquadron(campaignMembersInMission, campaign.getDate(), campaign.getSquadronId());
+        for (SquadronMember pilotVictor: squadronMembersInMissionOtherThanPlayer.getSquadronMemberList())
         {
             if (pilotVictor != null)
             {

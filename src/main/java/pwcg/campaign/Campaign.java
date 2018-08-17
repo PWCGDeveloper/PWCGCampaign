@@ -12,11 +12,12 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.io.json.CampaignIOJson;
-import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -103,19 +104,8 @@ public class Campaign
 
     public List<SquadronMember> getPlayers() throws PWCGException 
     {
-        List<SquadronMember> players = new ArrayList<>();
-        for (SquadronPersonnel squadronPersonnel : personnelManager.getAllSquadronPersonnel())
-        {
-            for (SquadronMember squadMember : squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection().values())
-            {
-                if (squadMember.isPlayer() && squadMember.getPilotActiveStatus() > SquadronMemberStatus.STATUS_CAPTURED)
-                {
-                    players.add(squadMember);
-                }
-            }
-        }
-
-        return players;
+        SquadronMembers players = SquadronMemberFilter.filterActivePlayers(personnelManager.getPlayerPersonnel().getSquadronMembersWithAces().getSquadronMemberCollection(), campaignData.getDate());
+        return players.getSquadronMemberList();
     }
 
     public String getAirfieldName() throws PWCGException 

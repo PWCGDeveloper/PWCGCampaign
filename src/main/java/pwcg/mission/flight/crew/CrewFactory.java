@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
@@ -29,8 +31,8 @@ public class CrewFactory
 
     private void createCrewsForSquadron() throws PWCGException
     {
-        Map<Integer, SquadronMember> pilots = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getActiveSquadronMembersWithAces().getSquadronMemberCollection();        
-        for (SquadronMember pilot : pilots.values())
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        for (SquadronMember pilot : squadronMembers.getSquadronMemberList())
         {
             crewsForSquadron.put(pilot.getSerialNumber(), pilot);
         }

@@ -80,8 +80,7 @@ public class AARVehicleBuilderTest
                     int numFrenchTrucks, int numGermanTrucks) throws PWCGException
     {
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
-        Mockito.when(campaignPersonnelManager.getAnyCampaignMember(Matchers.<Integer>any())).thenReturn(squadronMember);
-        Mockito.when(campaignPersonnelManager.getActiveCampaignMember(Matchers.<Integer>any())).thenReturn(squadronMember);
+        Mockito.when(campaignPersonnelManager.getAnyCampaignMember(Matchers.<Integer>any())).thenReturn(squadronMember);        
         Mockito.when(campaignPersonnelManager.getSquadronPersonnel(Matchers.<Integer>any())).thenReturn(squadronPersonnel);
         Mockito.when(squadronPersonnel.getSquadronMember(Matchers.<Integer>any())).thenReturn(squadronMember);
         

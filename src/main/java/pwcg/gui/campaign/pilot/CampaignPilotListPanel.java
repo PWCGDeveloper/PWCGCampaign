@@ -6,7 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionListener;
-import java.util.Map;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -39,7 +39,7 @@ public class CampaignPilotListPanel extends ImageResizingPanel
 	    this.parent = parent;
 	}
 
-	public JPanel makeSquadronRightPanel(Map<String, SquadronMember>pilots, String description, String action) throws PWCGException  
+	public JPanel makeSquadronRightPanel(List<SquadronMember>pilots, String description, String action) throws PWCGException  
 	{
         ImageResizingPanel pilotsPanel = new ImageResizingPanel(imagePath);
         pilotsPanel.setLayout(new BorderLayout());
@@ -53,7 +53,7 @@ public class CampaignPilotListPanel extends ImageResizingPanel
 		JPanel headerPlaque = makeHeaderPlaque(description);
 		pilotListGrid.add(headerPlaque);
 		
-		for (SquadronMember pilot : pilots.values())
+		for (SquadronMember pilot : pilots)
 		{
 			try
 			{

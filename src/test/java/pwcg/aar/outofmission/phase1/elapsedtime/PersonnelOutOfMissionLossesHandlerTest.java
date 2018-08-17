@@ -52,10 +52,10 @@ public class PersonnelOutOfMissionLossesHandlerTest
         Mockito.when(aarContext.getCampaignUpdateData()).thenReturn(campaignUpdateData);
         Mockito.when(aarContext.getNewDate()).thenReturn(DateUtils.getDateYYYYMMDD("19171001"));
         
-        Map<Integer, SquadronMember> possibleDeadGuys = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
+        SquadronMembers possibleDeadGuys = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(preliminaryData.getCampaignMembersOutOfMission()).thenReturn(squadronMembers);
-        Mockito.when(squadronMembers.getSquadronMemberCollection()).thenReturn(possibleDeadGuys);
+        Mockito.when(squadronMembers.getSquadronMemberCollection()).thenReturn(possibleDeadGuys.getSquadronMemberCollection());
     }
 
     @Test
@@ -75,8 +75,8 @@ public class PersonnelOutOfMissionLossesHandlerTest
         Map<Integer, SquadronMember> aiCaptured = new HashMap<>();
 
         OutOfMissionLossHandler outOfMissionLossesHandler = new OutOfMissionLossHandler(campaign, aarContext);
-        Map<Integer, SquadronMember> nonPlayerSquadronMembersMap = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
-        outOfMissionLossesHandler.lossesOutOfMission(nonPlayerSquadronMembersMap, new HashMap<Integer, EquippedPlane>());
+        SquadronMembers nonPlayerSquadronMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
+        outOfMissionLossesHandler.lossesOutOfMission(nonPlayerSquadronMembers.getSquadronMemberCollection(), new HashMap<Integer, EquippedPlane>());
 
         AARPersonnelLosses lossesInMissionDataTotal = outOfMissionLossesHandler.getOutOfMissionPersonnelLosses();
         aiKilled.putAll(lossesInMissionDataTotal.getPersonnelKilled());

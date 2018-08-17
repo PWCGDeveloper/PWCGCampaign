@@ -1,16 +1,14 @@
 package pwcg.campaign;
 
-import java.util.Map;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.personnel.CampaignPersonnelFilter;
-import pwcg.campaign.personnel.SquadronMemberFilterSpecification;
-import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.personnel.SquadronMemberFilter;
+import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCacheBase;
@@ -31,26 +29,14 @@ public class CampaignPersonnelManagerFighterTest
         CampaignGenerator generator = new CampaignGenerator(generatorModel);
         Campaign campaign = generator.generate();
 
-        SquadronMemberFilterSpecification filterSpecification = new SquadronMemberFilterSpecification();
-        filterSpecification.setDate(campaign.getDate());
-
-        CampaignPersonnelFilter filter = new CampaignPersonnelFilter(
-                campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembersWithAces().getSquadronMemberCollection());
-        filterSpecification.setIncludeAces(false);
-        filterSpecification.setIncludePlayer(false);
-        filterSpecification.setSpecifySquadron(campaign.getSquadronId());
-
-        Map<Integer, SquadronMember> squadronMembersNoPlayerNoAces = filter.getFilteredSquadronMembers(filterSpecification);
-    	assert (squadronMembersNoPlayerNoAces.size() < (Squadron.SQUADRON_STAFF_SIZE - 1));
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getPlayerPersonnel();
+        SquadronMembers squadronMembersNoPlayerNoAces = SquadronMemberFilter.filterActiveAI(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());        
+    	assert (squadronMembersNoPlayerNoAces.getSquadronMemberList().size() < (Squadron.SQUADRON_STAFF_SIZE - 1));
         
-        filterSpecification.setIncludeAces(true);
-        filterSpecification.setIncludePlayer(false);
-        Map<Integer, SquadronMember> squadronMembersNoPlayerWithAces = filter.getFilteredSquadronMembers(filterSpecification);
-        assert (squadronMembersNoPlayerWithAces.size() == (Squadron.SQUADRON_STAFF_SIZE - 1));
+        SquadronMembers squadronMembersNoPlayerWithAces = SquadronMemberFilter.filterActiveAIAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());        
+        assert (squadronMembersNoPlayerWithAces.getSquadronMemberList().size() == (Squadron.SQUADRON_STAFF_SIZE - 1));
 
-        filterSpecification.setIncludeAces(true);
-        filterSpecification.setIncludePlayer(true);
-        Map<Integer, SquadronMember> squadronMembersWithPlayerWithAces = filter.getFilteredSquadronMembers(filterSpecification);
-        assert (squadronMembersWithPlayerWithAces.size() == Squadron.SQUADRON_STAFF_SIZE);
+        SquadronMembers squadronMembersWithPlayerWithAces = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());        
+        assert (squadronMembersWithPlayerWithAces.getSquadronMemberList().size() == Squadron.SQUADRON_STAFF_SIZE);
     }
 }

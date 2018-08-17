@@ -5,16 +5,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import pwcg.campaign.personnel.SquadronMemberSorter;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -57,17 +56,18 @@ public class CampaignRosterSquadronPanelFactory extends CampaignRosterBasePanelF
 
     public void makePilotList() throws PWCGException 
     {
-        Map<Integer, SquadronMember> pilots = new HashMap<>();
-        for (SquadronMember pilot : campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getActiveSquadronMembers().getSquadronMemberCollection().values())
+        SquadronMembers pilots = new SquadronMembers();
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        for (SquadronMember pilot : squadronMembers.getSquadronMemberList())
         {
             if (excludeAces && pilot instanceof Ace)
             {
                 continue;
             }
-            pilots.put(pilot.getSerialNumber(), pilot);
+            pilots.addToSquadronMemberCollection(pilot);
         }
         
-        sortedPilots = SquadronMemberSorter.sortPilotsByStatus(campaign, pilots);
+        sortedPilots = pilots.sortPilots(campaign.getDate());
     }
 
 	private JPanel makeDescPanel() throws PWCGException 

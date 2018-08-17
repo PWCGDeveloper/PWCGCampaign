@@ -31,7 +31,7 @@ public class ClaimDenier
     private ClaimDeniedEvent createPlaneDenied(Integer playerSerialNumber, PlayerVictoryDeclaration declaration) throws PWCGException
     {
         String planeDesc = getPlaneDescription(declaration);
-        SquadronMember player = campaign.getPersonnelManager().getActiveCampaignMember(playerSerialNumber);
+        SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
         
         ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(); 
         claimDenied.setDate(campaign.getDate());

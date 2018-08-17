@@ -73,7 +73,7 @@ public class AARBotVehicleMapperTest
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         //Mockito.when(campaignPersonnelManager.getCampaignMember(Matchers.<Integer>any())).thenReturn(squadronMember);
         Mockito.when(campaignPersonnelManager.getAnyCampaignMember(Matchers.<Integer>any())).thenReturn(squadronMember);
-        Mockito.when(campaignPersonnelManager.getActiveCampaignMember(Matchers.<Integer>any())).thenReturn(squadronMember);
+        Mockito.when(campaignPersonnelManager.getAnyCampaignMember(Matchers.<Integer>any())).thenReturn(squadronMember);
         Mockito.when(squadronMember.isPlayer()).thenReturn(false);
 
         testMissionEntityGenerator = new TestMissionEntityGenerator();

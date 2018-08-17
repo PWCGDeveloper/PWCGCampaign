@@ -54,7 +54,7 @@ public class CampaignSquadronPersonnelUpdaterTest
     @After
     public void reset() throws PWCGException
     {
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getPlayerPersonnel().getAllSquadronMembers().getSquadronMemberCollection().values())
+        for (SquadronMember squadronMember : campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMembersWithAces().getSquadronMemberList())
         {
             squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
         }

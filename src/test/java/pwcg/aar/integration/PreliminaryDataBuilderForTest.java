@@ -55,11 +55,11 @@ public class PreliminaryDataBuilderForTest
 
         for (Squadron squadron : squadronsInMission)
         {
-            Map<Integer, SquadronMember> squadronMembersMap = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getActiveSquadronMembers().getSquadronMemberCollection();
-            List<SquadronMember> squadronMembers = new ArrayList<>(squadronMembersMap.values());
+            SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(),campaign.getDate());
+            List<SquadronMember> squadronMembersList = squadronMembers.getSquadronMemberList();
             for (int i = 0; i < 4; ++i)
             {
-                squadronMembersInMission.addToSquadronMemberCollection(squadronMembers.get(i));
+                squadronMembersInMission.addToSquadronMemberCollection(squadronMembersList.get(i));
             }
         }
                 
@@ -72,8 +72,8 @@ public class PreliminaryDataBuilderForTest
         SquadronMembers squadronMembersNotInMission = new SquadronMembers();
         
         Map<Integer, SquadronMember> campaignMembersNotInMission = campaign.getPersonnelManager().getAllCampaignMembers();
-        Map<Integer, SquadronMember> squadronMembersInMissionOtherThanPlayer = SquadronMemberFilter.filterActiveAI(campaignMembersNotInMission, campaign.getDate());
-        for (SquadronMember squadronMember : squadronMembersInMissionOtherThanPlayer.values())
+        SquadronMembers squadronMembersInMissionOtherThanPlayer = SquadronMemberFilter.filterActiveAI(campaignMembersNotInMission, campaign.getDate());
+        for (SquadronMember squadronMember : squadronMembersInMissionOtherThanPlayer.getSquadronMemberList())
         {
             if (!squadronMembersInMission.isSquadronMember(squadronMember.getSerialNumber()))
             {

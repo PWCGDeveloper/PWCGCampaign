@@ -100,7 +100,7 @@ public class AARPanelSet extends AARPanel implements ActionListener
 		infoPanelGrid.add(lPilots);
 		
         SquadronMembers pilotsInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getCampaignMembersInMission();
-        List<SquadronMember> pilotsInMissionSorted = pilotsInMission.sortByRank(campaign.getService());
+        List<SquadronMember> pilotsInMissionSorted = pilotsInMission.sortPilots(campaign.getDate());
 		for (SquadronMember pilot : pilotsInMissionSorted)
 		{
             if (pilot.getSquadronId() == campaign.getSquadronId())

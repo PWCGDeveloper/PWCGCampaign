@@ -10,6 +10,7 @@ import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.campaign.squadmember.PilotSkill;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -100,8 +101,8 @@ public class CampaignPilotUpdater
     
     private void adjustPilotSkill() throws PWCGException
     {
-        Map<Integer, SquadronMember> squadronMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
-        for (SquadronMember pilot : squadronMembers.values())
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
+        for (SquadronMember pilot : squadronMembers.getSquadronMemberCollection().values())
         {
             PilotSkill pilotSkill = new PilotSkill(campaign);
             pilotSkill.advanceSkillofPilot(pilot, pilot.determineSquadron());

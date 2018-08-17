@@ -12,6 +12,7 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.CampaignValidatorMedals;
 import pwcg.campaign.personnel.PilotPictureBuilder;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronMemberInitialVictoryBuilder;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadron.Squadron;
@@ -94,7 +95,8 @@ public class SquadronMemberFactory
     private void makePilotPicture(SquadronMember newPilot) throws PWCGException
     {
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
-        PilotPictureBuilder pilotPictureBuilder = new PilotPictureBuilder(service, squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        PilotPictureBuilder pilotPictureBuilder = new PilotPictureBuilder(service, squadronMembers);
         String picPath = pilotPictureBuilder.assignPilotPicture();
         newPilot.setPicName(picPath);
     }
@@ -102,7 +104,8 @@ public class SquadronMemberFactory
     private HashMap<String, String> getNamesInUse() throws PWCGException
     {
         HashMap<String, String> namesUsed = new HashMap <String, String>();
-        for (SquadronMember squadronMember : squadronPersonnel.getActiveSquadronMembers().getSquadronMemberCollection().values())
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
         {
             int index = squadronMember.getName().indexOf(" ");
             String lastName = squadronMember.getName().substring(index + 1);

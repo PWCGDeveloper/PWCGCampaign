@@ -36,7 +36,7 @@ public class PlayerVictoryReassigner
             if (resultVictory.getVictor() instanceof LogPlane)
             {
                 LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
-                SquadronMember squadronMember = campaign.getPersonnelManager().getActiveCampaignMember(victorPlanePlane.getPilotSerialNumber());
+                SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(victorPlanePlane.getPilotSerialNumber());
                 if (PlayerVictoryResolver.isPlayerVictory(squadronMember, victorPlanePlane.getPilotSerialNumber()))
                 {
                     LogUnknown markedForAssignment = new LogUnknown();
