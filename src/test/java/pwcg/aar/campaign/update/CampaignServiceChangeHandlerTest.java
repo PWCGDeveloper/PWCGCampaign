@@ -70,7 +70,7 @@ public class CampaignServiceChangeHandlerTest
         assertTrue (service.getName().equals(RoFServiceManager.LAVIATION_MILITAIRE_NAME));
 
         SquadronPersonnel lafayettePersonnel = campaign.getPersonnelManager().getPlayerPersonnel();
-        SquadronMembers lafayetteSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(lafayettePersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers lafayetteSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayer(lafayettePersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : lafayetteSquadronMembers.getSquadronMemberList())
         {
             assertTrue (squadronMember.getCountry() == Country.FRANCE);
@@ -87,7 +87,7 @@ public class CampaignServiceChangeHandlerTest
         assertTrue (service.getName().equals(RoFServiceManager.USAS_NAME));
 
         SquadronPersonnel usasPersonnel = campaign.getPersonnelManager().getPlayerPersonnel();
-        SquadronMembers usasSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(usasPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers usasSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayer(usasPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : usasSquadronMembers.getSquadronMemberList())
         {
             assertTrue (squadronMember.getCountry() == Country.USA);
