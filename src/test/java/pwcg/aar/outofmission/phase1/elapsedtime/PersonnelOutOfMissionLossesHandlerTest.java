@@ -30,17 +30,10 @@ public class PersonnelOutOfMissionLossesHandlerTest
 {
     private Campaign campaign;
 
-    @Mock
-    private AARContext aarContext;
-
-    @Mock
-    private CampaignUpdateData campaignUpdateData;
-
-    @Mock
-    private AARPreliminaryData preliminaryData;
-
-    @Mock
-    private SquadronMembers squadronMembers;
+    @Mock private AARContext aarContext;
+    @Mock private CampaignUpdateData campaignUpdateData;
+    @Mock private AARPreliminaryData preliminaryData;
+    @Mock private SquadronMembers squadronMembers;
 
     
     @Before
@@ -73,18 +66,21 @@ public class PersonnelOutOfMissionLossesHandlerTest
         Map<Integer, SquadronMember> aiKilled = new HashMap<>();
         Map<Integer, SquadronMember> aiMaimed = new HashMap<>();
         Map<Integer, SquadronMember> aiCaptured = new HashMap<>();
+        Map<Integer, SquadronMember> aiWounded = new HashMap<>();
 
         OutOfMissionLossHandler outOfMissionLossesHandler = new OutOfMissionLossHandler(campaign, aarContext);
-        SquadronMembers nonPlayerSquadronMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
-        outOfMissionLossesHandler.lossesOutOfMission(nonPlayerSquadronMembers.getSquadronMemberCollection(), new HashMap<Integer, EquippedPlane>());
+        SquadronMembers allAiCampaignMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
+        outOfMissionLossesHandler.lossesOutOfMission(allAiCampaignMembers.getSquadronMemberCollection(), new HashMap<Integer, EquippedPlane>());
 
         AARPersonnelLosses lossesInMissionDataTotal = outOfMissionLossesHandler.getOutOfMissionPersonnelLosses();
         aiKilled.putAll(lossesInMissionDataTotal.getPersonnelKilled());
         aiMaimed.putAll(lossesInMissionDataTotal.getPersonnelCaptured());
         aiCaptured.putAll(lossesInMissionDataTotal.getPersonnelMaimed());
+        aiWounded.putAll(lossesInMissionDataTotal.getPersonnelWounded());
         
         assert (aiKilled.size() > 0);
         assert (aiMaimed.size() > 0);
         assert (aiCaptured.size() > 0);
+        assert (aiWounded.size() > 0);
     }
 }

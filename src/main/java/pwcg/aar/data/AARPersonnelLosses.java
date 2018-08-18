@@ -77,7 +77,13 @@ public class AARPersonnelLosses
     {
         this.personnelMaimed.putAll(squadMembersMaimed);
     }
-    
+
+
+    public void mergePersonnelWounded(Map<Integer, SquadronMember> squadMembersWounded)
+    {
+        this.personnelWounded.putAll(squadMembersWounded);
+    }
+ 
     public void mergePersonnelCaptured(Map<Integer, SquadronMember> squadMembersCaptured)
     {
         this.personnelCaptured.putAll(squadMembersCaptured);

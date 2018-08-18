@@ -16,7 +16,7 @@ public class CampaignWoundUpdater
         this.campaign = campaign;
     }
     
-    public void updateWoundedPilots(Date newDate) throws PWCGException
+    public void healWoundedPilots(Date newDate) throws PWCGException
     {
         for (SquadronMember squadronMember : campaign.getPersonnelManager().getAllNonAceCampaignMembers().values())
         {

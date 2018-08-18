@@ -562,9 +562,4 @@ public class SquadronMember implements Cloneable
     {
         return recoveryDate;
     }
-
-    public void setRecoveryDate(Date recoveryDate)
-    {
-        this.recoveryDate = recoveryDate;
-    }
 }

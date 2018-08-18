@@ -77,7 +77,6 @@ public class AARPilotStatusEvaluatorTest
         {
             LogPilot crewmanAfter = resultPlaneAfter.getLogPilot();
             assert (crewmanAfter.getStatus() == SquadronMemberStatus.STATUS_ACTIVE);
-            assert(crewmanAfter.getDateOfReturn() == null);
         }
         
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
@@ -181,14 +180,6 @@ public class AARPilotStatusEvaluatorTest
         {
             LogPilot crewmanAfter = resultPlaneAfter.getLogPilot();
             assert (crewmanAfter.getStatus() == expectedStatus);
-            if (expectedStatus == SquadronMemberStatus.STATUS_WOUNDED || expectedStatus == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
-            {
-                assert(crewmanAfter.getDateOfReturn().after(campaign.getDate()));
-            }
-            else
-            {
-                assert(crewmanAfter.getDateOfReturn() == null);
-            }
         }
     }
 

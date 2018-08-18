@@ -11,8 +11,9 @@ import pwcg.core.utils.RandomNumberGenerator;
 public class PersonnelOutOfMissionStatusHandler
 {
     private Map<Integer, SquadronMember> aiKilled = new HashMap<>();
-    private Map<Integer, SquadronMember> aiMaimed = new HashMap<>();
     private Map<Integer, SquadronMember> aiCaptured = new HashMap<>();
+    private Map<Integer, SquadronMember> aiMaimed = new HashMap<>();
+    private Map<Integer, SquadronMember> aiWounded = new HashMap<>();
 
     public PersonnelOutOfMissionStatusHandler()
     {
@@ -22,45 +23,53 @@ public class PersonnelOutOfMissionStatusHandler
     {
         for (SquadronMember squadronMember : shotDownPilots.values())
         {
-            int pilotStatus = pilotsNotInMissionStatus();
+            int pilotStatus = fateOfShotDownPilot();
             sortByStatus(squadronMember, pilotStatus);
         }        
     }
-
-    private void sortByStatus(SquadronMember squadronMember, int pilotStatus)
-    {
-        if (pilotStatus == SquadronMemberStatus.STATUS_CAPTURED)
-        {
-            aiCaptured.put(squadronMember.getSerialNumber(), squadronMember);
-        }
-        if (pilotStatus == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
-        {
-            aiMaimed.put(squadronMember.getSerialNumber(), squadronMember);
-        }
-        if (pilotStatus == SquadronMemberStatus.STATUS_KIA)
-        {
-            aiKilled.put(squadronMember.getSerialNumber(), squadronMember);
-        }
-    }
     
-    private int pilotsNotInMissionStatus() throws PWCGException
+    private int fateOfShotDownPilot() throws PWCGException
     {
         int fateDiceRoll = RandomNumberGenerator.getRandom(100);
         if (fateDiceRoll < 20)
         {
+            return SquadronMemberStatus.STATUS_KIA;
+        }
+        else if (fateDiceRoll < 30)
+        {
             return SquadronMemberStatus.STATUS_CAPTURED;
         }
-        else if (fateDiceRoll < 40)
+        else if (fateDiceRoll < 45)
         {
             return SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED;
         }
-        else if (fateDiceRoll < 70)
+        else if (fateDiceRoll < 65)
         {
-            return SquadronMemberStatus.STATUS_KIA;
+            return SquadronMemberStatus.STATUS_WOUNDED;
         }
         else
         {
             return SquadronMemberStatus.STATUS_ACTIVE;
+        }
+    }
+
+    private void sortByStatus(SquadronMember squadronMember, int pilotStatus)
+    {
+        if (pilotStatus == SquadronMemberStatus.STATUS_KIA)
+        {
+            aiKilled.put(squadronMember.getSerialNumber(), squadronMember);
+        }
+        else if (pilotStatus == SquadronMemberStatus.STATUS_CAPTURED)
+        {
+            aiCaptured.put(squadronMember.getSerialNumber(), squadronMember);
+        }
+        else if (pilotStatus == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+        {
+            aiMaimed.put(squadronMember.getSerialNumber(), squadronMember);
+        }
+        else if (pilotStatus == SquadronMemberStatus.STATUS_WOUNDED)
+        {
+            aiWounded.put(squadronMember.getSerialNumber(), squadronMember);
         }
     }
 
@@ -77,5 +86,10 @@ public class PersonnelOutOfMissionStatusHandler
     public Map<Integer, SquadronMember> getAiCaptured()
     {
         return aiCaptured;
+    }
+
+    public Map<Integer, SquadronMember> getAiWounded()
+    {
+        return aiWounded;
     }
 }

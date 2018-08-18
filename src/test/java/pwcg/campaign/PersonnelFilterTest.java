@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import pwcg.campaign.personnel.PersonnelActiveFilter;
 import pwcg.campaign.personnel.PersonnelFilter;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -47,17 +48,13 @@ public class PersonnelFilterTest
 
     	Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<Integer, SquadronMember>();
     	
-        PersonnelFilter personnelFilter = new PersonnelFilter(false);
-    	returnSquadronMembers = personnelFilter.applyStatusFilter(testSquadronMembers, SquadronMemberStatus.STATUS_ACTIVE);
+        PersonnelActiveFilter activePersonnelFilter = new PersonnelActiveFilter();
+        returnSquadronMembers = activePersonnelFilter.getActive(testSquadronMembers);
         assert (returnSquadronMembers.size() == 6);
     	
-        personnelFilter = new PersonnelFilter(true);
-    	returnSquadronMembers = personnelFilter.applyStatusFilter(testSquadronMembers, SquadronMemberStatus.STATUS_ACTIVE);
+        PersonnelActiveFilter inactivePersonnelFilter = new PersonnelActiveFilter();
+        returnSquadronMembers = inactivePersonnelFilter.getInactive(testSquadronMembers);
         assert (returnSquadronMembers.size() == 4);
-    	
-        personnelFilter = new PersonnelFilter(false);
-    	returnSquadronMembers = personnelFilter.applyStatusFilter(testSquadronMembers, SquadronMemberStatus.STATUS_CAPTURED);
-        assert (returnSquadronMembers.size() == 0);
     }
 
     @Test

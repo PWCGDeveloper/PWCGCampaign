@@ -15,30 +15,6 @@ public class PersonnelFilter
     {
         this.invertFilter = invertFilter;
     }
-    
-    public Map<Integer, SquadronMember> applyStatusFilter(Map<Integer, SquadronMember> input, int status) 
-    {
-        Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<>();
-        for (SquadronMember pilot : input.values())
-        {
-            if (!invertFilter)
-            {
-                if (pilot.getPilotActiveStatus() == status)
-                {
-                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
-                }
-            }
-            else
-            {
-                if (pilot.getPilotActiveStatus() != status)
-                {
-                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
-                }
-            }
-        }
-
-        return returnSquadronMembers;
-    }
 
     public Map<Integer, SquadronMember> applyPlayerFilter(Map<Integer, SquadronMember> input) 
     {

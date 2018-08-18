@@ -86,14 +86,13 @@ public class SquadronTransferNeedTest
             activeSquadronMemberCollection.put(squadronMember.getSerialNumber(), squadronMember);
         }
         
-        
         Mockito.when(activeSquadronMembers.getActiveCount(campaign.getDate())).thenReturn(9);
         
         SquadronPersonnelNeed squadronResupplyNeed = new SquadronPersonnelNeed(campaign, squadron);
         squadronResupplyNeed.determineResupplyNeeded();
         assert (squadronResupplyNeed.needsResupply() == true);
         
-        for (int i = 0; i < Squadron.SQUADRON_STAFF_SIZE - 10; ++i)
+        for (int i = 0; i < 2; ++i)
         {
             squadronResupplyNeed.noteResupply();
             assert (squadronResupplyNeed.needsResupply() == true);
@@ -130,7 +129,7 @@ public class SquadronTransferNeedTest
         squadronResupplyNeed.determineResupplyNeeded();
         assert (squadronResupplyNeed.needsResupply() == true);
         
-        for (int i = 0; i < Squadron.SQUADRON_STAFF_SIZE - 10; ++i)
+        for (int i = 0; i < 2; ++i)
         {
             squadronResupplyNeed.noteResupply();
             assert (squadronResupplyNeed.needsResupply() == true);

@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignPersonnelFilter
@@ -98,13 +97,13 @@ public class CampaignPersonnelFilter
         Map<Integer, SquadronMember> selectedSquadronMembers = new HashMap<>();
         if (filterSpecification.isIncludeActive() && !filterSpecification.isIncludeInactive())
         {
-            PersonnelFilter personnelFilter = new PersonnelFilter(false);
-            selectedSquadronMembers = personnelFilter.applyStatusFilter(inputSquadronMembers, SquadronMemberStatus.STATUS_ACTIVE);
+            PersonnelActiveFilter personnelFilter = new PersonnelActiveFilter();
+            selectedSquadronMembers = personnelFilter.getActive(inputSquadronMembers);
         }
         else if (!filterSpecification.isIncludeActive() && filterSpecification.isIncludeInactive())
         {
-            PersonnelFilter personnelFilter = new PersonnelFilter(true);
-            selectedSquadronMembers = personnelFilter.applyStatusFilter(inputSquadronMembers, SquadronMemberStatus.STATUS_ACTIVE);
+            PersonnelActiveFilter personnelFilter = new PersonnelActiveFilter();
+            selectedSquadronMembers = personnelFilter.getInactive(inputSquadronMembers);
         }
         else
         {

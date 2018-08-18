@@ -1,8 +1,5 @@
 package pwcg.aar.inmission.phase2.logeval.pilotstatus;
 
-import java.util.Date;
-
-import pwcg.aar.campaigndate.AARTimePassedAfterWounds;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SerialNumber;
@@ -57,7 +54,6 @@ public class AARPlayerStatusAdjuster
 		if (playerCrewMember.getStatus() <= SquadronMemberStatus.STATUS_WOUNDED)
 		{
 		    playerCrewMember.setStatus(SquadronMemberStatus.STATUS_WOUNDED);
-            setPlayerWoundedTime(playerCrewMember);
 		}
 	}
 
@@ -66,7 +62,6 @@ public class AARPlayerStatusAdjuster
 		if (playerCrewMember.getStatus() <= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
 		{
 		    playerCrewMember.setStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
-		    setPlayerWoundedTime(playerCrewMember);
 		}
 	}
 
@@ -76,12 +71,4 @@ public class AARPlayerStatusAdjuster
         int maxPlayerInjury = configManager.getIntConfigParam(ConfigItemKeys.PilotInjuryKey);
 		return maxPlayerInjury;
 	}
-
-
-    private void setPlayerWoundedTime(LogPilot playerCrewMember) throws PWCGException
-    {
-        AARTimePassedAfterWounds newDateCalculator = new AARTimePassedAfterWounds(campaign);
-        Date woundedDate = newDateCalculator.calcDateOfRecovery(playerCrewMember);
-        playerCrewMember.setDateOfReturn(woundedDate);
-    }
 }

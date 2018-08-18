@@ -1,5 +1,8 @@
 package pwcg.aar.campaign.update;
 
+import java.util.Date;
+
+import pwcg.aar.campaigndate.AARTimePassedAfterWounds;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.campaign.Campaign;
@@ -52,12 +55,12 @@ public class CampaignPersonnelUpdater
         ace.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
     }
 
-
     private void personnelPilotLosses() throws PWCGException 
     {        
         squadronMembersKilled();
         squadronMembersCaptured();
         squadronMembersMaimed();
+        squadronMembersWounded();
         squadronMembersTransfers();
     }
 
@@ -77,11 +80,21 @@ public class CampaignPersonnelUpdater
         }
     }
 
-    private void squadronMembersMaimed()
+    private void squadronMembersWounded() throws PWCGException
+    {
+        for (SquadronMember pilot : aarContext.getCampaignUpdateData().getPersonnelLosses().getPersonnelWounded().values())
+        {
+            Date woundrecoveryDate = determinePlayerWoundedTime(SquadronMemberStatus.STATUS_WOUNDED);
+            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_WOUNDED, campaign.getDate(), woundrecoveryDate);
+        }
+    }
+
+    private void squadronMembersMaimed() throws PWCGException
     {
         for (SquadronMember pilot : aarContext.getCampaignUpdateData().getPersonnelLosses().getPersonnelMaimed().values())
         {
-            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), pilot.getRecoveryDate());
+            Date woundrecoveryDate = determinePlayerWoundedTime(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), woundrecoveryDate);
         }
     }
 
@@ -106,6 +119,13 @@ public class CampaignPersonnelUpdater
     private void personnelHealWoundedPilots() throws PWCGException
     {
         CampaignWoundUpdater woundUpdater = new CampaignWoundUpdater(campaign);
-        woundUpdater.updateWoundedPilots(aarContext.getNewDate());
+        woundUpdater.healWoundedPilots(aarContext.getNewDate());
+    }
+    
+    private Date determinePlayerWoundedTime(int pilotStatus) throws PWCGException
+    {
+        AARTimePassedAfterWounds woundTimeCalculator = new AARTimePassedAfterWounds(campaign);
+        Date woundedDate = woundTimeCalculator.calcDateOfRecovery(pilotStatus);
+        return woundedDate;
     }
  }

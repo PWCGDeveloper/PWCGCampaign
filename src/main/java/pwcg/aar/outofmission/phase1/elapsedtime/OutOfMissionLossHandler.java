@@ -49,6 +49,7 @@ public class OutOfMissionLossHandler
         outOfMissionPersonnelLosses.mergePersonnelCaptured(personnelOutOfMissionHandler.getAiCaptured());
         outOfMissionPersonnelLosses.mergePersonnelKilled(personnelOutOfMissionHandler.getAiKilled());
         outOfMissionPersonnelLosses.mergePersonnelMaimed(personnelOutOfMissionHandler.getAiMaimed());
+        outOfMissionPersonnelLosses.mergePersonnelWounded(personnelOutOfMissionHandler.getAiWounded());
     }
 
     private void calculateShotDownEquipmentLosses(Map<Integer, EquippedPlane> shotDownPlanes)
@@ -90,6 +91,7 @@ public class OutOfMissionLossHandler
         outOfMissionPersonnelLosses.mergePersonnelCaptured(personnelOutOfMissionHandler.getAiCaptured());
         outOfMissionPersonnelLosses.mergePersonnelKilled(personnelOutOfMissionHandler.getAiKilled());
         outOfMissionPersonnelLosses.mergePersonnelMaimed(personnelOutOfMissionHandler.getAiMaimed());
+        outOfMissionPersonnelLosses.mergePersonnelWounded(personnelOutOfMissionHandler.getAiWounded());
     }
 
 	public AARPersonnelLosses getOutOfMissionPersonnelLosses()
