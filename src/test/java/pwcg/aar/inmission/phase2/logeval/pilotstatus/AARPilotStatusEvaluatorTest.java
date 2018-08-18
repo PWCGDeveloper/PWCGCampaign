@@ -34,50 +34,30 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AARPilotStatusEvaluatorTest
 {
-    @Mock
-    private AARLogEventData logEventData;
-
-    @Mock
-    private AARVehicleBuilder aarVehicleBuilder;
-
-    @Mock
-    private AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator;
-
-    @Mock
-    private AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator;
-
-    @Mock
-    private AARPilotStatusWoundedEvaluator aarPilotStatusWoundedEvaluator;
-
-    @Mock
-    private AARDestroyedStatusEvaluator destroyedStatusEvaluator;
-
-    @Mock
-    private Campaign campaign;
-
-    @Mock
-    private PwcgMissionData pwcgMissionData;
-
-    @Mock
-    private MissionHeader missionHeader;
-
-    @Mock
-    private ConfigManagerCampaign configManager;
+    @Mock private AARLogEventData logEventData;
+    @Mock private AARVehicleBuilder aarVehicleBuilder;
+    @Mock private AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator;
+    @Mock private AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator;
+    @Mock private AARPilotStatusWoundedEvaluator aarPilotStatusWoundedEvaluator;
+    @Mock private AARDestroyedStatusEvaluator destroyedStatusEvaluator;
+    @Mock private Campaign campaign;
+    @Mock private PwcgMissionData pwcgMissionData;
+    @Mock private MissionHeader missionHeader;
+    @Mock private ConfigManagerCampaign configManager;
     
     @Before
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
+        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
     }
 
-    /**
-     * Crew survived.
-     */
     @Test
     public void testCrewSurvived () throws PWCGException
     {
@@ -97,15 +77,13 @@ public class AARPilotStatusEvaluatorTest
         {
             LogPilot crewmanAfter = resultPlaneAfter.getLogPilot();
             assert (crewmanAfter.getStatus() == SquadronMemberStatus.STATUS_ACTIVE);
+            assert(crewmanAfter.getDateOfReturn() == null);
         }
         
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.PilotInjuryKey)).thenReturn(4);
     }
 
-    /**
-     * Crew was wounded.
-     */
     @Test
     public void testCrewWounded () throws PWCGException
     {
@@ -203,6 +181,14 @@ public class AARPilotStatusEvaluatorTest
         {
             LogPilot crewmanAfter = resultPlaneAfter.getLogPilot();
             assert (crewmanAfter.getStatus() == expectedStatus);
+            if (expectedStatus == SquadronMemberStatus.STATUS_WOUNDED || expectedStatus == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+            {
+                assert(crewmanAfter.getDateOfReturn().after(campaign.getDate()));
+            }
+            else
+            {
+                assert(crewmanAfter.getDateOfReturn() == null);
+            }
         }
     }
 

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import pwcg.aar.campaign.update.CampaignUpdater;
 import pwcg.aar.campaigndate.AARTimePassedAfterMission;
+import pwcg.aar.campaigndate.AARTimePassedAfterWounds;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.AARCoordinatorInMission;
 import pwcg.aar.inmission.phase1.parse.AARLogEvaluationCoordinator;
@@ -33,7 +34,6 @@ public class AARCoordinatorMissionHandler
     public void handleInMissionAAR(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         inMission(playerDeclarations);
-        generateEventsForTimeWounded();
         generateEventsForNotViableSquadron();
     }
 
@@ -43,6 +43,7 @@ public class AARCoordinatorMissionHandler
         elapsedTimeDuringMission();
         determineOutOfMissionResults();
         tabulate();
+        generateEventsForTimeWounded();
         updateCampaignFromMission();
     }
 
@@ -85,8 +86,9 @@ public class AARCoordinatorMissionHandler
         {
             if (playerCrewMember.getStatus() <= SquadronMemberStatus.STATUS_WOUNDED)
             {
-                AARExtendedTimeHandler extendedTimeHandler = new AARExtendedTimeHandler(campaign, aarContext);      
-                extendedTimeHandler.timePassedForWounds(playerCrewMember);
+                AARTimePassedAfterWounds newDateCalculator = new AARTimePassedAfterWounds(campaign);
+                Date woundedDate = newDateCalculator.calcDateOfRecovery(playerCrewMember);
+                playerCrewMember.setDateOfReturn(woundedDate);
             }
         }
     }

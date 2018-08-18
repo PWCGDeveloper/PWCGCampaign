@@ -16,13 +16,13 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 
-public class CampaignPilotUpdater 
+public class CampaignPilotAwardsUpdater 
 {
 	private Campaign campaign = null;
 	
 	private AARPersonnelAwards personnelAwards;
 	
-	public CampaignPilotUpdater (Campaign campaign, AARPersonnelAwards personnelAwards) 
+	public CampaignPilotAwardsUpdater (Campaign campaign, AARPersonnelAwards personnelAwards) 
 	{
         this.campaign = campaign;
         this.personnelAwards = personnelAwards;

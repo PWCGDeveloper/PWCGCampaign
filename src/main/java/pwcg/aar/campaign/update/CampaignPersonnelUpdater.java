@@ -25,8 +25,8 @@ public class CampaignPersonnelUpdater
         personnelAceRemovals();
         personnelPilotLosses();        
         personnelAceAdditions();
+        personnelHealWoundedPilots();
     }
-
 
     private void personnelAceRemovals()
     {
@@ -101,5 +101,11 @@ public class CampaignPersonnelUpdater
         {
             transferRecord.getSquadronMember().setSquadronId(transferRecord.getTransferTo());
         }
+    }
+    
+    private void personnelHealWoundedPilots() throws PWCGException
+    {
+        CampaignWoundUpdater woundUpdater = new CampaignWoundUpdater(campaign);
+        woundUpdater.updateWoundedPilots(aarContext.getNewDate());
     }
  }

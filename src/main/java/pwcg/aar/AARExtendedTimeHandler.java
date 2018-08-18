@@ -2,10 +2,8 @@ package pwcg.aar;
 
 import java.util.Date;
 
-import pwcg.aar.campaigndate.AARTimePassedAfterWounds;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.ExtendedTimeReason;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadron.Squadron;
@@ -22,20 +20,6 @@ public class AARExtendedTimeHandler
         this.campaign = campaign;
         this.aarContext = aarContext;
 	}
-	
-	public void timePassedForWounds(LogPilot playerCrewMember) throws PWCGException
-	{
-        AARTimePassedAfterWounds newDateCalculator = new AARTimePassedAfterWounds(campaign);
-        Date woundedDate = newDateCalculator.calcDateOfRecovery(playerCrewMember);
-        playerCrewMember.setDateOfReturn(woundedDate);
-	}
-
-	public void advanceTimeForPlayerRecovery(Date woundedDate) throws PWCGException
-    {
-        aarContext.setReasonForExtendedTime(ExtendedTimeReason.WOUND);
-        stepToNewDate(woundedDate);
-        campaign.setCurrentMission(null);
-    }
 
     public void timePassedForLeave(int timePassedDays) throws PWCGException
     {

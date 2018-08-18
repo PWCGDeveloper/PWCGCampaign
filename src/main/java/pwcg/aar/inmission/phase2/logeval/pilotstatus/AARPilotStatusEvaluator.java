@@ -1,7 +1,9 @@
 package pwcg.aar.inmission.phase2.logeval.pilotstatus;
 
+import java.util.Date;
 import java.util.List;
 
+import pwcg.aar.campaigndate.AARTimePassedAfterWounds;
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.event.IAType2;
 import pwcg.aar.inmission.phase1.parse.event.IAType3;
@@ -64,21 +66,34 @@ public class AARPilotStatusEvaluator
 
     private void adjustForPlayer(LogPilot resultCrewmember) throws PWCGException
 	{
-    	AARPlayerStatusAdjuster playerStatusAdjuster = new AARPlayerStatusAdjuster();
+    	AARPlayerStatusAdjuster playerStatusAdjuster = new AARPlayerStatusAdjuster(campaign);
         if (SerialNumber.getSerialNumberClassification(resultCrewmember.getSerialNumber()) == SerialNumberClassification.PLAYER)
     	{
-        	playerStatusAdjuster.adjustForPlayer(campaign, resultCrewmember);
+        	playerStatusAdjuster.adjustForPlayer(resultCrewmember);
     	}
 	}
 
-	private void setCrewMemberWounded(LogPilot resultCrewmember) 
+	private void setCrewMemberWounded(LogPilot resultCrewmember) throws PWCGException 
     {        
         List<IAType2> damageForBot = logEventData.getDamageForBot(resultCrewmember.getBotId());
         int woundLevel = pilotStatusWoundedEvaluator.getCrewMemberWoundedLevel(damageForBot);
-        if (woundLevel <= SquadronMemberStatus.STATUS_WOUNDED)
+        if (woundLevel == SquadronMemberStatus.STATUS_WOUNDED)
         {
             resultCrewmember.setStatus(woundLevel);
+            setWoundedTime(resultCrewmember);
         }
+        else if (woundLevel == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+        {
+            resultCrewmember.setStatus(woundLevel);
+            setWoundedTime(resultCrewmember);
+        }
+    }
+
+    private void setWoundedTime(LogPilot resultCrewmember) throws PWCGException
+    {
+        AARTimePassedAfterWounds newDateCalculator = new AARTimePassedAfterWounds(campaign);
+        Date woundedDate = newDateCalculator.calcDateOfRecovery(resultCrewmember);
+        resultCrewmember.setDateOfReturn(woundedDate);
     }
 
     private void setCrewMemberCaptured(LogPlane resultPlane, LogPilot resultCrewmember) 
@@ -92,6 +107,7 @@ public class AARPilotStatusEvaluator
             if (wasCaptured)
             {
                 resultCrewmember.setStatus(SquadronMemberStatus.STATUS_CAPTURED);
+                resultCrewmember.setDateOfReturn(null);
             }
         }
      }
@@ -113,6 +129,7 @@ public class AARPilotStatusEvaluator
         if (isDead)
         {
             resultCrewmember.setStatus(SquadronMemberStatus.STATUS_KIA);
+            resultCrewmember.setDateOfReturn(null);
         }
     }
 

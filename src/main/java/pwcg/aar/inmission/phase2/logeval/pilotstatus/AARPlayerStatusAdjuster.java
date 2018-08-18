@@ -1,5 +1,8 @@
 package pwcg.aar.inmission.phase2.logeval.pilotstatus;
 
+import java.util.Date;
+
+import pwcg.aar.campaigndate.AARTimePassedAfterWounds;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SerialNumber;
@@ -11,14 +14,21 @@ import pwcg.core.exception.PWCGException;
 
 public class AARPlayerStatusAdjuster
 {
-    public void adjustForPlayer(Campaign campaign, LogPilot playerCrewMember) throws PWCGException 
+    private Campaign campaign;
+    
+    public AARPlayerStatusAdjuster(Campaign campaign)
+    {
+        this.campaign = campaign;
+    }
+    
+    public void adjustForPlayer(LogPilot playerCrewMember) throws PWCGException 
     {
         if (SerialNumber.getSerialNumberClassification(playerCrewMember.getSerialNumber()) != SerialNumberClassification.PLAYER)
     	{
     		return;
     	}
     	
-    	int maxPlayerInjury = getConfiguredMaxPlayerInjury(campaign);
+    	int maxPlayerInjury = getConfiguredMaxPlayerInjury();
         if (maxPlayerInjury == 1)
         {
             playerIsNeverInjured(playerCrewMember);
@@ -42,27 +52,36 @@ public class AARPlayerStatusAdjuster
 		playerCrewMember.setStatus(SquadronMemberStatus.STATUS_ACTIVE);
 	}
 
-	private void playerIsLightlyWounded(LogPilot playerCrewMember)
+	private void playerIsLightlyWounded(LogPilot playerCrewMember) throws PWCGException
 	{
 		if (playerCrewMember.getStatus() <= SquadronMemberStatus.STATUS_WOUNDED)
 		{
 		    playerCrewMember.setStatus(SquadronMemberStatus.STATUS_WOUNDED);
+            setPlayerWoundedTime(playerCrewMember);
 		}
 	}
 
-	private void playerIsBadlyWounded(LogPilot playerCrewMember)
+	private void playerIsBadlyWounded(LogPilot playerCrewMember) throws PWCGException
 	{
 		if (playerCrewMember.getStatus() <= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
 		{
 		    playerCrewMember.setStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+		    setPlayerWoundedTime(playerCrewMember);
 		}
 	}
 
-	private int getConfiguredMaxPlayerInjury(Campaign campaign) throws PWCGException
+	private int getConfiguredMaxPlayerInjury() throws PWCGException
 	{
 		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
         int maxPlayerInjury = configManager.getIntConfigParam(ConfigItemKeys.PilotInjuryKey);
 		return maxPlayerInjury;
 	}
 
+
+    private void setPlayerWoundedTime(LogPilot playerCrewMember) throws PWCGException
+    {
+        AARTimePassedAfterWounds newDateCalculator = new AARTimePassedAfterWounds(campaign);
+        Date woundedDate = newDateCalculator.calcDateOfRecovery(playerCrewMember);
+        playerCrewMember.setDateOfReturn(woundedDate);
+    }
 }

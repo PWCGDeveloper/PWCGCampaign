@@ -48,24 +48,24 @@ public class PersonnelLossHandler
     }
 
 
-    private void setStatus(LogPilot pilotStatus, SquadronMember pilot)
+    private void setStatus(LogPilot logPilot, SquadronMember pilot)
     {
-        if (pilotStatus.getStatus() == SquadronMemberStatus.STATUS_WOUNDED)
+        if (logPilot.getStatus() == SquadronMemberStatus.STATUS_WOUNDED)
         {
             personnelLosses.addPersonnelWounded(pilot);
         }
 
-        if (pilotStatus.getStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+        if (logPilot.getStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
         {
             personnelLosses.addPersonnelMaimed(pilot);
         }
 
-        if (pilotStatus.getStatus() == SquadronMemberStatus.STATUS_CAPTURED)
+        if (logPilot.getStatus() == SquadronMemberStatus.STATUS_CAPTURED)
         {
             personnelLosses.addPersonnelCaptured(pilot);
         }
 
-        if (pilotStatus.getStatus() == SquadronMemberStatus.STATUS_KIA)
+        if (logPilot.getStatus() == SquadronMemberStatus.STATUS_KIA)
         {
             personnelLosses.addPersonnelKilled(pilot);
         }

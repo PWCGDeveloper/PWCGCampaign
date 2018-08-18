@@ -34,45 +34,28 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AARPlayerStatusEvaluatorTest
 {
-    @Mock
-    private AARLogEventData logEventData;
-
-    @Mock
-    private AARVehicleBuilder aarVehicleBuilder;
-    
-    @Mock
-    AARDestroyedStatusEvaluator destroyedStatusEvaluator;
-
-    @Mock
-    private AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator;
-
-    @Mock
-    private AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator;
-
-    @Mock
-    private AARPilotStatusWoundedEvaluator aarPilotStatusWoundedEvaluator;
-
-    @Mock
-    private Campaign campaign;
-
-    @Mock
-    private PwcgMissionData pwcgMissionData;
-
-    @Mock
-    private MissionHeader missionHeader;
-    
-    @Mock
-    private ConfigManagerCampaign configManager;
+    @Mock private AARLogEventData logEventData;
+    @Mock private AARVehicleBuilder aarVehicleBuilder;
+    @Mock private AARDestroyedStatusEvaluator destroyedStatusEvaluator;
+    @Mock private AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator;
+    @Mock private AARPilotStatusCapturedEvaluator aarPilotStatusCapturedEvaluator;
+    @Mock private AARPilotStatusWoundedEvaluator aarPilotStatusWoundedEvaluator;
+    @Mock private Campaign campaign;
+    @Mock private PwcgMissionData pwcgMissionData;
+    @Mock private MissionHeader missionHeader;
+    @Mock private ConfigManagerCampaign configManager;
 
     @Before
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
+        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
     }
 
     @Test
