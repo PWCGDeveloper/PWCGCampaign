@@ -112,4 +112,9 @@ public class SquadronPersonnel
 
         return activeSquadronMembersAndAces;
     }
+
+    public SquadronMembers getSquadronMembers()
+    {
+        return squadronMembers;
+    }
 }
