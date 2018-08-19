@@ -1,10 +1,13 @@
 package pwcg.campaign;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class CombatReport 
 {
-	private String pilot = "";
+    private List<String> pilots = new ArrayList<>();
+    private String pilot = "";
 	private String squadron = "";
 	private Date date;
 	private String time = "";
@@ -19,7 +22,12 @@ public class CombatReport
 	{
 	}
 
-	public String getPilot()
+    public void setPilots(List<String> pilots)
+    {
+        this.pilots = pilots;
+    }
+
+    public String getPilot()
 	{
 		return pilot;
 	}
@@ -28,6 +36,11 @@ public class CombatReport
 	{
 		this.pilot = pilot;
 	}
+
+    public List<String> getPilots()
+    {
+        return pilots;
+    }
 
 	public String getSquadron()
 	{

@@ -59,6 +59,10 @@ public class PersonnelActiveFilter
         {
             return true;
         }
+        else if (pilot.isPlayer() && pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+        {
+            return true;
+        }
         
         return false;
     }

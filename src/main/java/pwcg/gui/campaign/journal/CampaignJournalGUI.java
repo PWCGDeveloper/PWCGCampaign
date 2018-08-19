@@ -131,9 +131,7 @@ public class CampaignJournalGUI extends JPanel
 		lSquadron.setFont(font);
 		headerLeftPanel.add(lSquadron);
 		
-		JLabel lPilot = new JLabel("Pilot: " + combatReport.getPilot() + "          ", JLabel.LEFT);
-		lPilot.setOpaque(false);
-		lPilot.setFont(font);
+		JLabel lPilot = makePilotsInMissionLabel(font);
 		headerLeftPanel.add(lPilot);
 
 		JLabel lType = new JLabel("Type: " + combatReport.getType() + "          ", JLabel.LEFT);
@@ -199,6 +197,33 @@ public class CampaignJournalGUI extends JPanel
 		
 		return headerPanel;
 	}
+
+    private JLabel makePilotsInMissionLabel(Font font)
+    {
+        JLabel lPilot = null;
+		if (combatReport.getPilots() == null || combatReport.getPilots().isEmpty())
+		{
+    		lPilot = new JLabel("Pilot: " + combatReport.getPilot() + "          ", JLabel.LEFT);
+    		lPilot.setOpaque(false);
+    		lPilot.setFont(font);
+		}
+		else
+		{
+		    String pilotNames = "";
+		    for (String pilotName : combatReport.getPilots())
+		    {
+		        if (!pilotNames.isEmpty())
+		        {
+		            pilotNames += ", ";
+		        }
+                pilotNames += pilotName;
+		    }
+            lPilot = new JLabel("Pilots in mission: " + pilotNames, JLabel.LEFT);
+            lPilot.setOpaque(false);
+            lPilot.setFont(font);
+		}
+        return lPilot;
+    }
 
 	
 	/**
