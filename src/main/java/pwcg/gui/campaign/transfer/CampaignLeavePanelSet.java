@@ -3,8 +3,6 @@ package pwcg.gui.campaign.transfer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +18,7 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
@@ -52,24 +51,13 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 	public void makeVisible(boolean visible) 
 	{
 	}
-	
-	
-	
-	/**
-	 * @throws PWCGException
-	 */
+
 	public void makePanels() throws PWCGException  
 	{
 	    setCenterPanel(makeLeaveCenterPanel());
 	    setLeftPanel(makeLeaveLeftPanel());
 	}
-	
-	
-	/**
-	 * @return
-	 * @throws PWCGException 
-	 * @
-	 */
+
 	private JPanel makeLeaveLeftPanel() throws PWCGException  
 	{
         String imagePath = getSideImage("LeaveNav.jpg");
@@ -94,122 +82,29 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 
 	private JPanel makeLeaveCenterPanel()  
 	{
-		ImageResizingPanel leaveCenterPanel = null;
+        ImageResizingPanel leaveCenterPanel = null;
+        try
+        {
+            String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
+            leaveCenterPanel = new ImageResizingPanel(imagePath);            
+            leaveCenterPanel.setLayout(new BorderLayout());
+    
+            JPanel leavePanel = new JPanel (new GridLayout(0, 3));
+            leavePanel.setOpaque(false);
 
-		try
-		{
-	        String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-			leaveCenterPanel = new ImageResizingPanel(imagePath);
-			leaveCenterPanel.setLayout(new BorderLayout());
-			
-			Color buttonBG = ColorMap.PAPER_BACKGROUND;
+            makeBlankRows(leavePanel, 6);
 
-			
-			Font font = MonitorSupport.getPrimaryFont();
-	
-			GridBagConstraints constraints = new GridBagConstraints();
-			constraints.fill = GridBagConstraints.HORIZONTAL;
-			constraints.ipadx = 3;
-			constraints.ipady = 3;
-			GridBagLayout leaveLayout = new GridBagLayout();
-			
-			JPanel leavePanel = new JPanel(leaveLayout);
-			leavePanel.setOpaque(false);
+            JPanel leavePlayerWoundInfoPanel = makePlayerWoundHealTimePanel();
+            leavePanel.add(new JLabel (" "));
+            leavePanel.add(leavePlayerWoundInfoPanel);
+            leavePanel.add(new JLabel (" "));
 
-			JLabel lDummy = null;
-			
-			int numDummyRows = 5;
-			for (int i = 0; i < numDummyRows; ++i)
-			{
-				lDummy = new JLabel("     ");
-				lDummy.setOpaque(false);
-				lDummy.setFont(font);
-			    constraints.weightx = 0.15;
-				constraints.gridx = 0;
-				constraints.gridy = i;
-				leavePanel.add(lDummy, constraints);
-			}
-
-			int numDummyCols = 3;
-			for (int i = 0; i < numDummyCols; ++i)
-			{
-				lDummy = new JLabel("     ");
-				lDummy.setOpaque(false);
-				lDummy.setFont(font);
-			    constraints.weightx = 0.15;
-				constraints.gridx = i;
-				constraints.gridy = numDummyRows + 0;
-				leavePanel.add(lDummy, constraints);
-			}
-			
-			SquadronMember player = campaign.getPlayers().get(0);
-
-			JLabel lName = new JLabel(player.getNameAndRank(), JLabel.LEFT);
-			lName.setOpaque(false);
-			lName.setFont(font);
-		    constraints.weightx = 0.15;
-			constraints.gridx = numDummyCols + 0;
-			constraints.gridy = numDummyRows + 0;
-			leavePanel.add(lName, constraints);
-							
-			for (int i = 0; i < numDummyCols + 1; ++i)
-			{
-				lDummy = new JLabel("     ");
-				lDummy.setOpaque(false);
-				lDummy.setFont(font);
-			    constraints.weightx = 0.15;
-				constraints.gridx = numDummyCols + 1 + i;
-				constraints.gridy = numDummyRows + 0;
-				leavePanel.add(lDummy, constraints);
-			}
-
-			lDummy = new JLabel("     ");
-			lDummy.setOpaque(false);
-			lDummy.setFont(font);
-		    constraints.weightx = 0.15;
-			constraints.gridx = 0;
-			constraints.gridy = numDummyRows + 1;
-			leavePanel.add(lDummy, constraints);
-
-			for (int i = 0; i < numDummyCols; ++i)
-			{
-				lDummy = new JLabel("     ");
-				lDummy.setOpaque(false);
-				lDummy.setFont(font);
-			    constraints.weightx = 0.15;
-				constraints.gridx = i;
-				constraints.gridy = numDummyRows + 2;
-				leavePanel.add(lDummy, constraints);
-			}
-			
-			JLabel lLeave = new JLabel("Request Leave Time (weeks): ", JLabel.LEFT);
-			lLeave.setOpaque(false);
-			lLeave.setFont(font);
-		    constraints.weightx = 0.15;
-			constraints.gridx = numDummyCols + 0;
-			constraints.gridy = numDummyRows + 2;
-			leavePanel.add(lLeave, constraints);
-
-			
-			tLeaveTime = new JTextField(5);
-			tLeaveTime.setBackground(buttonBG);
-			tLeaveTime.setOpaque(false);
-			tLeaveTime.setFont(font);
-		    constraints.weightx = 0.15;
-			constraints.gridx = numDummyCols + 1;
-			constraints.gridy = numDummyRows + 2;
-			leavePanel.add(tLeaveTime, constraints);
-			
-			for (int i = 0; i < numDummyCols; ++i)
-			{
-				lDummy = new JLabel("     ");
-				lDummy.setOpaque(false);
-				lDummy.setFont(font);
-			    constraints.weightx = 0.15;
-				constraints.gridx = numDummyCols + 2 + i;
-				constraints.gridy = numDummyRows + 2;
-				leavePanel.add(lDummy, constraints);
-			}
+            makeBlankRows(leavePanel, 2);
+            
+            JPanel leaveRequestPanel = makeLeaveRequestRow();
+            leavePanel.add(new JLabel (" "));
+            leavePanel.add(leaveRequestPanel);
+            leavePanel.add(new JLabel (" "));
 
 			leaveCenterPanel.add(leavePanel, BorderLayout.NORTH);
 		}
@@ -221,6 +116,62 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 		
 		return leaveCenterPanel;
 	}
+
+    private JPanel makePlayerWoundHealTimePanel() throws PWCGException
+    {
+        Font font = MonitorSupport.getPrimaryFontLarge();
+        Color buttonBG = ColorMap.PAPER_BACKGROUND;
+
+        JPanel leavePlayerWoundInfoPanel = new JPanel(new GridLayout(0, 1));
+        leavePlayerWoundInfoPanel.setOpaque(false);
+        for (SquadronMember player : campaign.getPlayers())
+        {
+            if (player.getRecoveryDate() != null)
+            {
+                int daysToHeal = DateUtils.daysDifference(campaign.getDate(), player.getRecoveryDate()) + 1;
+                String playerWoundHealTimeDesc = player.getNameAndRank() + " requires " + daysToHeal + " to recover from his wounds";
+                JLabel playerWoundHealTimeLabel = new JLabel (playerWoundHealTimeDesc, JLabel.LEFT);
+                playerWoundHealTimeLabel.setFont(font);
+                leavePlayerWoundInfoPanel.add(playerWoundHealTimeLabel);
+            }
+        }
+       return leavePlayerWoundInfoPanel;
+    }
+
+    private JPanel makeLeaveRequestRow() throws PWCGException
+    {
+        Font font = MonitorSupport.getPrimaryFontLarge();
+        Color buttonBG = ColorMap.PAPER_BACKGROUND;
+
+        JLabel lLeave = new JLabel("Request Leave Time (days): ", JLabel.LEFT);
+        lLeave.setOpaque(false);
+        lLeave.setFont(font);
+
+        tLeaveTime = new JTextField(5);
+        tLeaveTime.setBackground(buttonBG);
+        tLeaveTime.setOpaque(false);
+        tLeaveTime.setFont(font);
+        
+        JPanel leaveRequestPanel = new JPanel (new GridLayout(1, 0));
+        leaveRequestPanel.setOpaque(false);
+        leaveRequestPanel.add(lLeave);
+        leaveRequestPanel.add(tLeaveTime);
+        
+        return leaveRequestPanel;
+    }
+
+    private void makeBlankRows(JPanel leavePanel, int numDummyRows) throws PWCGException
+    {
+        for (int i = 0; i < numDummyRows; ++i)
+        {
+            JLabel lDummy1 = new JLabel("     ");
+            JLabel lDummy2 = new JLabel("     ");
+            JLabel lDummy3 = new JLabel("     ");
+            leavePanel.add(lDummy1);
+            leavePanel.add(lDummy2);
+            leavePanel.add(lDummy3);
+         }
+    }
 	
 
 
