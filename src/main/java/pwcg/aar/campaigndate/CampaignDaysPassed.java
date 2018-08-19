@@ -6,7 +6,6 @@ import java.util.Date;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.MissionSpread;
 import pwcg.campaign.plane.Role;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -28,27 +27,6 @@ public class CampaignDaysPassed
         daysForMission = atLeastOneDay(daysForMission);
         
         return daysForMission;
-    }
-
-    public int calcDaysForWound(int status) throws PWCGException 
-    {
-        int extraDaysForWound = 0;
-        
-        if (status == SquadronMemberStatus.STATUS_WOUNDED)
-        {
-            int randomAdditional = RandomNumberGenerator.getRandom(30);
-
-            extraDaysForWound = 7 + randomAdditional;
-        }
-        
-        if (status == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
-        {
-            int randomAdditional = RandomNumberGenerator.getRandom(60);
-
-            extraDaysForWound = 30 + randomAdditional;
-        }
-        
-        return extraDaysForWound;
     }
 
     private int getCampaignMonth()

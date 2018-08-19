@@ -2,7 +2,7 @@ package pwcg.aar.campaign.update;
 
 import java.util.Date;
 
-import pwcg.aar.campaigndate.AARTimePassedAfterWounds;
+import pwcg.aar.campaigndate.WoundRecovery;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.campaign.Campaign;
@@ -124,7 +124,7 @@ public class CampaignPersonnelUpdater
     
     private Date determinePlayerWoundedTime(int pilotStatus) throws PWCGException
     {
-        AARTimePassedAfterWounds woundTimeCalculator = new AARTimePassedAfterWounds(campaign);
+        WoundRecovery woundTimeCalculator = new WoundRecovery(campaign);
         Date woundedDate = woundTimeCalculator.calcDateOfRecovery(pilotStatus);
         return woundedDate;
     }

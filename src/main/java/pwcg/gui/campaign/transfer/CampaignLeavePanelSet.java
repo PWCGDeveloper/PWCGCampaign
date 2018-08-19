@@ -120,7 +120,6 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
     private JPanel makePlayerWoundHealTimePanel() throws PWCGException
     {
         Font font = MonitorSupport.getPrimaryFontLarge();
-        Color buttonBG = ColorMap.PAPER_BACKGROUND;
 
         JPanel leavePlayerWoundInfoPanel = new JPanel(new GridLayout(0, 1));
         leavePlayerWoundInfoPanel.setOpaque(false);
@@ -206,15 +205,15 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
     {
         SoundManager.getInstance().playSound("Stapling.WAV");
 
-        int leaveTimeWeeks = getLeaveTime();
+        int leaveTimeDays = getLeaveTime();
         
-        if (leaveTimeWeeks < 0 || leaveTimeWeeks > 26)
+        if (leaveTimeDays < 0 || leaveTimeDays > 60)
         {
             throw new PWCGUserException ("Your country cannot spare you for that long");
         }
 
         LeaveEvent leaveEvent = new LeaveEvent();
-        leaveEvent.setLeaveTime(leaveTimeWeeks * 7);
+        leaveEvent.setLeaveTime(leaveTimeDays);
 
         parent.campaignTimePassed(leaveEvent.getLeaveTime(), leaveEvent, EventPanelReason.EVENT_PANEL_REASON_LEAVE);
     }
