@@ -30,13 +30,13 @@ public class WoundRecovery
         if (pilotStatus == SquadronMemberStatus.STATUS_WOUNDED)
         {
             int randomAdditional = RandomNumberGenerator.getRandom(20);
-            daysForWound = 7 + randomAdditional;
+            daysForWound = 4 + randomAdditional;
         }
         
         if (pilotStatus == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
         {
             int randomAdditional = RandomNumberGenerator.getRandom(60);
-            daysForWound = 30 + randomAdditional;
+            daysForWound = 25 + randomAdditional;
         }
         
         return daysForWound;

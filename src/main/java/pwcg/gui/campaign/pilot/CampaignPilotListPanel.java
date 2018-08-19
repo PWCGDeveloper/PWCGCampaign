@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 
 import pwcg.campaign.PictureManager;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.exception.PWCGUserException;
@@ -45,12 +46,10 @@ public class CampaignPilotListPanel extends ImageResizingPanel
         pilotsPanel.setLayout(new BorderLayout());
 		pilotsPanel.setOpaque(false);
 
-		int totalEntries = 1 + pilots.size();
-
-		JPanel pilotListGrid = new JPanel(new GridLayout(totalEntries,1));
+		JPanel pilotListGrid = new JPanel(new GridLayout(0, 1));
 		pilotListGrid.setOpaque(false);
 		
-		JPanel headerPlaque = makeHeaderPlaque(description);
+		JPanel headerPlaque = makeNamePlaque(description);
 		pilotListGrid.add(headerPlaque);
 		
 		for (SquadronMember pilot : pilots)
@@ -73,55 +72,16 @@ public class CampaignPilotListPanel extends ImageResizingPanel
 		return pilotsPanel;
 	}
 
-    public JPanel makeHeaderPlaque(String description) throws PWCGException  
-    {
-        String imagePath = ContextSpecificImages.imagesMisc() + "NamePlate2.jpg";
-        ImageResizingPanel headerPlaquePanel = new ImageResizingPanel(imagePath);
-        headerPlaquePanel.setLayout(new BorderLayout());
-
-        JLabel squadronPanelLabel = PWCGButtonFactory.makePlaqueLabelLarge("     " + description);
-        squadronPanelLabel.setHorizontalAlignment(JLabel.LEFT);
-        squadronPanelLabel.setVerticalAlignment(JLabel.CENTER);
-        
-        headerPlaquePanel.add(squadronPanelLabel, BorderLayout.CENTER);
-         
-        return headerPlaquePanel;
-    }
-
-    /**
-     * @param action
-     * @param buttonBG
-     * @param buttonFG
-     * @param font
-     * @param pilot
-     * @return
-     * @throws PWCGUserException
-     * @throws PWCGIOException
-     * @throws PWCGException
-     */
     private JPanel createPilotButton(String action, SquadronMember pilot)
                     throws PWCGException
     {
         JPanel pilotPanel = new JPanel(new BorderLayout());
         
-        String picPath = PictureManager.getPicturePath(pilot);
-
-        JLabel pilotPicButton = null;
-        Image pilotPic = ImageCache.getInstance().getBufferedImage(picPath);
-        if (pilotPic != null)
-        {
-        	int imageHeight = MonitorSupport.getPilotPlateHeight();
-        	
-        	Image scaledPic = pilotPic.getScaledInstance(imageHeight, -1, Image.SCALE_DEFAULT);
-
-        	pilotPicButton = ImageButton.makePilotPicButton(scaledPic);
-        }
-        else
-        {
-        	pilotPicButton = new JLabel("");	
-        }
-        
+        JLabel pilotPicButton = makePilotPicButton(pilot);
         pilotPanel.add(pilotPicButton, BorderLayout.WEST);
+        
+        JLabel pilotStatusButton = makePilotStatusButton(pilot);
+        pilotPanel.add(pilotStatusButton, BorderLayout.EAST);
         
         String imagePath = ContextSpecificImages.imagesMisc() + "NamePlate2.jpg";
         ImageResizingPanel nameplatePanel = new ImageResizingPanel(imagePath);
@@ -149,4 +109,83 @@ public class CampaignPilotListPanel extends ImageResizingPanel
 
         return pilotPanel;
     }
+
+    private JLabel makePilotPicButton(SquadronMember pilot) throws PWCGUserException, PWCGIOException, PWCGException
+    {
+        JLabel pilotPicButton = null;
+        String picPath = PictureManager.getPicturePath(pilot);
+        Image pilotPic = ImageCache.getInstance().getBufferedImage(picPath);
+        if (pilotPic != null)
+        {
+        	int imageHeight = MonitorSupport.getPilotPlateHeight();
+        	
+        	Image scaledPic = pilotPic.getScaledInstance(imageHeight, -1, Image.SCALE_DEFAULT);
+
+        	pilotPicButton = ImageButton.makePilotPicButton(scaledPic);
+        }
+        else
+        {
+        	pilotPicButton = new JLabel("");	
+        }
+        return pilotPicButton;
+    }
+    
+
+    private JPanel makeNamePlaque(String description) throws PWCGException  
+    {
+        String imagePath = ContextSpecificImages.imagesMisc() + "NamePlate2.jpg";
+        ImageResizingPanel headerPlaquePanel = new ImageResizingPanel(imagePath);
+        headerPlaquePanel.setLayout(new BorderLayout());
+
+        JLabel squadronPanelLabel = PWCGButtonFactory.makePlaqueLabelLarge("     " + description);
+        squadronPanelLabel.setHorizontalAlignment(JLabel.LEFT);
+        squadronPanelLabel.setVerticalAlignment(JLabel.CENTER);
+        
+        headerPlaquePanel.add(squadronPanelLabel, BorderLayout.CENTER);
+         
+        return headerPlaquePanel;
+    }
+
+
+    private JLabel makePilotStatusButton(SquadronMember pilot) throws PWCGUserException, PWCGIOException, PWCGException
+    {
+        JLabel pilotStatusButton = null;
+        String imagePath = ContextSpecificImages.imagesMisc() + "Healthy.jpg";
+        if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED)
+        {
+            imagePath = ContextSpecificImages.imagesMisc() + "Wounded.jpg";
+        }
+        if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ON_LEAVE)
+        {
+            imagePath = ContextSpecificImages.imagesMisc() + "Leave.jpg";
+        }
+        else if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+        {
+            imagePath = ContextSpecificImages.imagesMisc() + "Maimed.jpg";
+        }
+        else if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_CAPTURED)
+        {
+            imagePath = ContextSpecificImages.imagesMisc() + "Captured.jpg";
+        }
+        else if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_KIA)
+        {
+            imagePath = ContextSpecificImages.imagesMisc() + "RIP.jpg";
+        }
+        
+        Image pilotStatusImage = ImageCache.getInstance().getBufferedImage(imagePath);
+        if (pilotStatusImage != null)
+        {
+            int imageHeight = MonitorSupport.getPilotPlateHeight();
+            
+            Image scaledPic = pilotStatusImage.getScaledInstance(imageHeight, -1, Image.SCALE_DEFAULT);
+
+            pilotStatusButton = ImageButton.makePilotPicButton(scaledPic);
+        }
+        else
+        {
+            pilotStatusButton = new JLabel("");    
+        }
+        return pilotStatusButton;
+    }
+
 }
