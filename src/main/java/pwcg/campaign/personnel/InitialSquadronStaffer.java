@@ -119,7 +119,7 @@ public class InitialSquadronStaffer
 
     private void validateMissionsFlownForInitialPilots() throws PWCGException
     {
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAI(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAINoWounded(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
         {
             int minimumMissions = 1 + (squadronMember.getSquadronMemberVictories().getAirToAirVictories() * 3);
@@ -135,7 +135,7 @@ public class InitialSquadronStaffer
 
     private void setAiSkillLevel() throws PWCGException
     {
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAI(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAINoWounded(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
         {
             AiPilotSkillGenerator aiPilotSkillGenerator = new AiPilotSkillGenerator();

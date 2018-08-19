@@ -10,7 +10,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheRoF;
@@ -32,7 +34,8 @@ public class PersonnelOutOfMissionAiStatusHandlerTest
     {     
         PersonnelOutOfMissionStatusHandler personnelLossOutOfMissionHandler = new PersonnelOutOfMissionStatusHandler();
         Map<Integer, SquadronMember> campaignMembers = campaign.getPersonnelManager().getAllCampaignMembers();
-        personnelLossOutOfMissionHandler.determineFateOfShotDownPilots(campaignMembers);
+        SquadronMembers squadronMembersInMissionOtherThanPlayer = SquadronMemberFilter.filterActiveAI(campaignMembers, campaign.getDate());
+        personnelLossOutOfMissionHandler.determineFateOfShotDownPilots(squadronMembersInMissionOtherThanPlayer.getSquadronMemberCollection());
         
         Map<Integer, SquadronMember> aiKilled = new HashMap<>();
         Map<Integer, SquadronMember> aiMaimed = new HashMap<>();

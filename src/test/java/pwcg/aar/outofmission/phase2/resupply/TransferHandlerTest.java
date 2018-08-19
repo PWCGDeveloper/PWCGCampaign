@@ -14,8 +14,10 @@ import pwcg.aar.outofmission.phase2.resupply.TransferHandler;
 import pwcg.aar.outofmission.phase2.resupply.ResupplyNeedBuilder;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
@@ -50,7 +52,8 @@ public class TransferHandlerTest
     private void deactivateSquadronPersonnel() throws PWCGException
     {
         int numInactivated = 0;
-        for (SquadronMember squadronMember : campaign.getPersonnelManager().getAllCampaignMembers().values())
+        SquadronMembers allActiveCampaignMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
+        for (SquadronMember squadronMember : allActiveCampaignMembers.getSquadronMemberList())
         {
             if (!squadronMember.isPlayer())
             {

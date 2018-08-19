@@ -102,7 +102,7 @@ public class CampaignMemberAwardsGeneratorInMissionTest
     @Test
     public void testKilledMemberssAwardedWoundBadge () throws PWCGException
     {            
-        SquadronMembers nonPlayerSquadronMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
+        SquadronMembers nonPlayerSquadronMembers = SquadronMemberFilter.filterActiveAINoWounded(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
         Map<Integer, SquadronMember> squadronMembersKilled = new HashMap<>();
         squadronMembersKilled.put(nonPlayerSquadronMembers.getSquadronMemberList().get(1).getSerialNumber(), nonPlayerSquadronMembers.getSquadronMemberList().get(1));
         Mockito.when(personnelLosses.getPersonnelKilled()).thenReturn(squadronMembersKilled);

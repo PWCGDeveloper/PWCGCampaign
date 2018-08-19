@@ -6,6 +6,7 @@ import java.util.Map;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMemberStatus;
 
 public class PersonnelFilter 
 {
@@ -62,8 +63,7 @@ public class PersonnelFilter
         }
 
         return returnSquadronMembers;
-    }
-    
+    }   
 
     public Map<Integer, SquadronMember> applyAIFilter(Map<Integer, SquadronMember> input)
     {
@@ -80,6 +80,30 @@ public class PersonnelFilter
             else
             {
                 if (SerialNumber.getSerialNumberClassification(pilot.getSerialNumber()) != SerialNumberClassification.AI)
+                {
+                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                }
+            }
+        }
+
+        return returnSquadronMembers;
+    }
+
+    public Map<Integer, SquadronMember> applyWoundedFilter(Map<Integer, SquadronMember> input)
+    {
+        Map<Integer, SquadronMember> returnSquadronMembers = new HashMap<>();
+        for (SquadronMember pilot : input.values())
+        {
+            if (!invertFilter)
+            {
+                if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED)
+                {
+                    returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
+                }
+            }
+            else
+            {
+                if (!(pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED))
                 {
                     returnSquadronMembers.put(pilot.getSerialNumber(), pilot);
                 }

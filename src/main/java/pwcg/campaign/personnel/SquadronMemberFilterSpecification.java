@@ -12,6 +12,7 @@ public class SquadronMemberFilterSpecification
     private boolean includeAces = true;
     private boolean includeAI = true;
     private boolean includePlayer = true;
+    private boolean includeWounded = true;
     private int specifySquadron = NO_SQUADRON_FILTER;
 
     public Date getDate()
@@ -87,5 +88,15 @@ public class SquadronMemberFilterSpecification
     public void setSpecifySquadron(int specifySquadron)
     {
         this.specifySquadron = specifySquadron;
+    }
+
+    public boolean isIncludeWounded()
+    {
+        return includeWounded;
+    }
+
+    public void setIncludeWounded(boolean includeWounded)
+    {
+        this.includeWounded = includeWounded;
     }
 }

@@ -21,8 +21,25 @@ public class CampaignPersonnelFilter
         selectedSquadronMembers = filterForAces(filterSpecification, selectedSquadronMembers);
         selectedSquadronMembers = filterForAI(filterSpecification, selectedSquadronMembers);
         selectedSquadronMembers = filterForActive(filterSpecification, selectedSquadronMembers);        
+        selectedSquadronMembers = filterForWounded(filterSpecification, selectedSquadronMembers);        
         selectedSquadronMembers = filterForSquadron(filterSpecification, selectedSquadronMembers);
 
+        return selectedSquadronMembers;
+    }
+
+    private Map<Integer, SquadronMember> filterForWounded(SquadronMemberFilterSpecification filterSpecification, Map<Integer, SquadronMember> inputSquadronMembers)
+    {
+        Map<Integer, SquadronMember> selectedSquadronMembers = new HashMap<>();
+        if (!filterSpecification.isIncludeWounded())
+        {
+            PersonnelFilter personnelFilter = new PersonnelFilter(true);
+            selectedSquadronMembers = personnelFilter.applyWoundedFilter(inputSquadronMembers);
+        }
+        else
+        {
+            selectedSquadronMembers = inputSquadronMembers;
+        }
+        
         return selectedSquadronMembers;
     }
 

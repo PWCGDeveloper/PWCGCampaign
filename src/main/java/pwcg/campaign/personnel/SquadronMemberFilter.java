@@ -9,17 +9,17 @@ import pwcg.core.exception.PWCGException;
 
 public class SquadronMemberFilter
 {
-    public static SquadronMembers filterActiveAI(Map<Integer, SquadronMember> squadronMembersToFilter, Date date) throws PWCGException
+    public static SquadronMembers filterActivePlayers(Map<Integer, SquadronMember> squadronMembersToFilter, Date date) throws PWCGException
     {
-        SquadronMemberFilterSpecification filterSpecification = SquadronMemberFilterFactory.buildActiveAIFilter(date);
+        SquadronMemberFilterSpecification filterSpecification = SquadronMemberFilterFactory.buildActivePlayerFilter(date);
         CampaignPersonnelFilter filter = new CampaignPersonnelFilter(squadronMembersToFilter);     
         Map<Integer, SquadronMember> filteredSquadronMembers = filter.getFilteredSquadronMembers(filterSpecification);
         return mapToSquadronMembers(filteredSquadronMembers);
     }
 
-    public static SquadronMembers filterActivePlayer(Map<Integer, SquadronMember> squadronMembersToFilter, Date date) throws PWCGException
+    public static SquadronMembers filterActiveAI(Map<Integer, SquadronMember> squadronMembersToFilter, Date date) throws PWCGException
     {
-        SquadronMemberFilterSpecification filterSpecification = SquadronMemberFilterFactory.buildActivePlayerFilter(date);
+        SquadronMemberFilterSpecification filterSpecification = SquadronMemberFilterFactory.buildActiveAIFilter(date);
         CampaignPersonnelFilter filter = new CampaignPersonnelFilter(squadronMembersToFilter);     
         Map<Integer, SquadronMember> filteredSquadronMembers = filter.getFilteredSquadronMembers(filterSpecification);
         return mapToSquadronMembers(filteredSquadronMembers);
@@ -56,14 +56,6 @@ public class SquadronMemberFilter
         Map<Integer, SquadronMember> filteredSquadronMembers = filter.getFilteredSquadronMembers(filterSpecification);
         return mapToSquadronMembers(filteredSquadronMembers);
     }
-
-    public static SquadronMembers filterActivePlayers(Map<Integer, SquadronMember> squadronMembersToFilter, Date date) throws PWCGException
-    {
-        SquadronMemberFilterSpecification filterSpecification = SquadronMemberFilterFactory.buildActivePlayerFilter(date);
-        CampaignPersonnelFilter filter = new CampaignPersonnelFilter(squadronMembersToFilter);     
-        Map<Integer, SquadronMember> filteredSquadronMembers = filter.getFilteredSquadronMembers(filterSpecification);
-        return mapToSquadronMembers(filteredSquadronMembers);
-    }
     
     public static SquadronMembers filterActiveAIForSquadron(Map<Integer, SquadronMember> squadroNMembersToFilter, Date date, int squadronId) throws PWCGException
     {
@@ -89,6 +81,14 @@ public class SquadronMemberFilter
         return mapToSquadronMembers(filteredSquadronMembers);
     }
 
+    public static SquadronMembers filterActiveAINoWounded(Map<Integer, SquadronMember> squadronMembersToFilter, Date date) throws PWCGException
+    {
+        SquadronMemberFilterSpecification filterSpecification = SquadronMemberFilterFactory.buildActiveAINoWoundedFilter(date);
+        CampaignPersonnelFilter filter = new CampaignPersonnelFilter(squadronMembersToFilter);     
+        Map<Integer, SquadronMember> filteredSquadronMembers = filter.getFilteredSquadronMembers(filterSpecification);
+        return mapToSquadronMembers(filteredSquadronMembers);
+    }    
+
     private static SquadronMembers mapToSquadronMembers(Map<Integer, SquadronMember> map)
     {
         SquadronMembers squadronMembers = new SquadronMembers();
@@ -97,5 +97,5 @@ public class SquadronMemberFilter
             squadronMembers.addToSquadronMemberCollection(squadronMember);
         }
         return squadronMembers;
-    }    
+    }
 }

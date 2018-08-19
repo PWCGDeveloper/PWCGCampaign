@@ -12,6 +12,7 @@ public class SquadronMemberFilterFactory
         filterSpecification.setIncludePlayer(false);        
         filterSpecification.setIncludeAces(false);
         filterSpecification.setIncludeAI(true);
+        filterSpecification.setIncludeWounded(true);
         filterSpecification.setIncludeActive(true);
         filterSpecification.setIncludeInactive(false);
         filterSpecification.setSpecifySquadron(SquadronMemberFilterSpecification.NO_SQUADRON_FILTER);
@@ -25,6 +26,7 @@ public class SquadronMemberFilterFactory
         filterSpecification.setIncludePlayer(true);        
         filterSpecification.setIncludeAces(false);
         filterSpecification.setIncludeAI(true);
+        filterSpecification.setIncludeWounded(true);
         filterSpecification.setIncludeActive(true);
         filterSpecification.setIncludeInactive(false);
         filterSpecification.setSpecifySquadron(SquadronMemberFilterSpecification.NO_SQUADRON_FILTER);
@@ -37,6 +39,8 @@ public class SquadronMemberFilterFactory
         filterSpecification.setDate(date);
         filterSpecification.setIncludePlayer(false);        
         filterSpecification.setIncludeAces(true);
+        filterSpecification.setIncludeAI(true);
+        filterSpecification.setIncludeWounded(true);
         filterSpecification.setIncludeActive(true);
         filterSpecification.setIncludeInactive(false);
         filterSpecification.setSpecifySquadron(SquadronMemberFilterSpecification.NO_SQUADRON_FILTER);
@@ -50,6 +54,7 @@ public class SquadronMemberFilterFactory
         filterSpecification.setIncludePlayer(true);        
         filterSpecification.setIncludeAces(true);
         filterSpecification.setIncludeAI(true);
+        filterSpecification.setIncludeWounded(true);
         filterSpecification.setIncludeActive(true);
         filterSpecification.setIncludeInactive(false);
         filterSpecification.setSpecifySquadron(SquadronMemberFilterSpecification.NO_SQUADRON_FILTER);
@@ -63,6 +68,7 @@ public class SquadronMemberFilterFactory
         filterSpecification.setIncludePlayer(true);        
         filterSpecification.setIncludeAces(true);
         filterSpecification.setIncludeAI(true);
+        filterSpecification.setIncludeWounded(true);
         filterSpecification.setIncludeActive(false);
         filterSpecification.setIncludeInactive(true);
         filterSpecification.setSpecifySquadron(SquadronMemberFilterSpecification.NO_SQUADRON_FILTER);
@@ -76,6 +82,7 @@ public class SquadronMemberFilterFactory
         filterSpecification.setIncludePlayer(true);        
         filterSpecification.setIncludeAces(false);
         filterSpecification.setIncludeAI(false);
+        filterSpecification.setIncludeWounded(true);
         filterSpecification.setIncludeActive(false);
         filterSpecification.setIncludeInactive(false);
         filterSpecification.setSpecifySquadron(SquadronMemberFilterSpecification.NO_SQUADRON_FILTER);
@@ -89,6 +96,7 @@ public class SquadronMemberFilterFactory
         filterSpecification.setIncludePlayer(false);        
         filterSpecification.setIncludeAces(false);
         filterSpecification.setIncludeAI(true);
+        filterSpecification.setIncludeWounded(true);
         filterSpecification.setIncludeActive(true);
         filterSpecification.setIncludeInactive(false);
         filterSpecification.setSpecifySquadron(squadronId);
@@ -102,6 +110,7 @@ public class SquadronMemberFilterFactory
         filterSpecification.setIncludePlayer(true);        
         filterSpecification.setIncludeAces(false);
         filterSpecification.setIncludeAI(true);
+        filterSpecification.setIncludeWounded(true);
         filterSpecification.setIncludeActive(true);
         filterSpecification.setIncludeInactive(false);
         filterSpecification.setSpecifySquadron(squadronId);
@@ -115,9 +124,24 @@ public class SquadronMemberFilterFactory
         filterSpecification.setIncludePlayer(true);        
         filterSpecification.setIncludeAces(true);
         filterSpecification.setIncludeAI(true);
+        filterSpecification.setIncludeWounded(true);
         filterSpecification.setIncludeActive(true);
         filterSpecification.setIncludeInactive(false);
         filterSpecification.setSpecifySquadron(squadronId);
+        return filterSpecification;
+    }
+
+    public static SquadronMemberFilterSpecification buildActiveAINoWoundedFilter(Date date)
+    {
+        SquadronMemberFilterSpecification filterSpecification = new SquadronMemberFilterSpecification();
+        filterSpecification.setDate(date);
+        filterSpecification.setIncludePlayer(false);        
+        filterSpecification.setIncludeAces(false);
+        filterSpecification.setIncludeAI(true);
+        filterSpecification.setIncludeWounded(false);
+        filterSpecification.setIncludeActive(true);
+        filterSpecification.setIncludeInactive(false);
+        filterSpecification.setSpecifySquadron(SquadronMemberFilterSpecification.NO_SQUADRON_FILTER);
         return filterSpecification;
     }
 
