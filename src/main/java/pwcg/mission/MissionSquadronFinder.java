@@ -192,7 +192,7 @@ public class MissionSquadronFinder
 
 	private boolean isSquadronPersonnelDepleted(Squadron squadron) throws PWCGException 
 	{
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesNoWounded(campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
 		int numSquadronMembers = squadronMembers.getSquadronMemberList().size();
 		if (numSquadronMembers < 6)
 		{

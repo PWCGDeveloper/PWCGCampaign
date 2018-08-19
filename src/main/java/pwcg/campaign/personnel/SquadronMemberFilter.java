@@ -98,4 +98,12 @@ public class SquadronMemberFilter
         }
         return squadronMembers;
     }
+
+    public static SquadronMembers filterActiveAIAndPlayerAndAcesNoWounded(Map<Integer, SquadronMember> squadronMembersToFilter, Date date) throws PWCGException
+    {
+        SquadronMemberFilterSpecification filterSpecification = SquadronMemberFilterFactory.buildActiveAIAndPlayerAndAcesNoWoundedFilter(date);
+        CampaignPersonnelFilter filter = new CampaignPersonnelFilter(squadronMembersToFilter);     
+        Map<Integer, SquadronMember> filteredSquadronMembers = filter.getFilteredSquadronMembers(filterSpecification);
+        return mapToSquadronMembers(filteredSquadronMembers);
+    }
 }

@@ -27,7 +27,7 @@ public class BriefingDataInitializer
 	    briefingAssignmentData.reset();
         
 	    SquadronPersonnel playerPersonnel = mission.getCampaign().getPersonnelManager().getPlayerPersonnel();
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(playerPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), (mission.getCampaign().getDate()));
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesNoWounded(playerPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), (mission.getCampaign().getDate()));
         for (SquadronMember squadronMember : squadronMembers.getSquadronMemberCollection().values())
         {
             briefingAssignmentData.addPilot(squadronMember);
