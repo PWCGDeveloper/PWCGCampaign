@@ -4,10 +4,9 @@ import pwcg.campaign.plane.Role;
 
 public class LogGroundUnit extends LogAIEntity
 {
-    public LogGroundUnit()
+    public LogGroundUnit(int sequenceNumber)
     {
-        super();
-        
+        super(sequenceNumber);
         this.setRole(Role.ROLE_GROUND_UNIT);
     }
 }

@@ -10,8 +10,9 @@ public class LogVictory extends LogBase
     private boolean confirmed = false;
     private boolean crossedPlayerPath = false;
     
-    public LogVictory()
+    public LogVictory(int sequenceNumber)
     {
+        super(sequenceNumber);
     }
 
     public LogAIEntity getVictor()

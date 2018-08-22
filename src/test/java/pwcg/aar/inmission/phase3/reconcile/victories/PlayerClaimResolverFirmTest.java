@@ -30,14 +30,14 @@ public class PlayerClaimResolverFirmTest
     @Test
     public void testPlayerFirmVictoryFound() throws PWCGException
     {
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
 
-        LogPlane victor = new LogPlane();
+        LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
         resultVictory.setVictor(victor);
         
@@ -53,14 +53,14 @@ public class PlayerClaimResolverFirmTest
     @Test
     public void testPlayerFirmVictoryNotFoundBecausePlaneMismatch() throws PWCGException
     {
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
 
-        LogPlane victor = new LogPlane();
+        LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
         resultVictory.setVictor(victor);
         
@@ -76,14 +76,14 @@ public class PlayerClaimResolverFirmTest
     @Test
     public void testPlayerFirmVictoryNotFoundBecauseVictoryPlaneNotFound() throws PWCGException
     {
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(1);
         victim.setVehicleType("notarealplane");
 
-        LogPlane victor = new LogPlane();
+        LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
         resultVictory.setVictor(victor);
         
@@ -99,14 +99,14 @@ public class PlayerClaimResolverFirmTest
     @Test
     public void testPlayerFirmVictoryNotFoundBecauseClaimPlaneNotFound() throws PWCGException
     {
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
 
-        LogPlane victor = new LogPlane();
+        LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
         resultVictory.setVictor(victor);
         
@@ -122,14 +122,14 @@ public class PlayerClaimResolverFirmTest
     @Test
     public void testPlayerFirmVictoryNotFoundBecauseVictoryAlreadyConfirmed() throws PWCGException
     {
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
 
-        LogPlane victor = new LogPlane();
+        LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
         resultVictory.setVictor(victor);
         resultVictory.setConfirmed(true);

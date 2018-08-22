@@ -136,7 +136,7 @@ public class TestMissionEntityGenerator
 
     private void makeMissionResultPlaneFighter(String pilotName, Integer pilotSerialNumber, Integer planeSerialNumber, IAType12 plane) throws PWCGException
     {
-    	LogPlane missionResultPlane = new LogPlane();
+    	LogPlane missionResultPlane = new LogPlane(1);
         missionResultPlane.setVehicleType(plane.getType());
         missionResultPlane.setId(plane.getId());
         missionResultPlane.setPilotSerialNumber(pilotSerialNumber);

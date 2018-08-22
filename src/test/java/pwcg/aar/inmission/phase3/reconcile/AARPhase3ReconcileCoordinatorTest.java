@@ -50,8 +50,8 @@ public class AARPhase3ReconcileCoordinatorTest
     private SquadronMember corporalInFlight;
     private SquadronMember sltInFlight;
     private SquadronMember ltInFlight;
-    private LogPlane playerPlaneVictor = new LogPlane();
-    private LogPlane aiPlaneVictor = new LogPlane();
+    private LogPlane playerPlaneVictor = new LogPlane(1);
+    private LogPlane aiPlaneVictor = new LogPlane(2);
 
     @Mock private AARMissionEvaluationData evaluationData;
     @Mock private AARMissionLogFileSet missionLogFileSet;
@@ -131,7 +131,7 @@ public class AARPhase3ReconcileCoordinatorTest
 
     private void createVictory(LogPlane victor, Integer pilotSerialNumber, Integer planeSerialNumber)
     {
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(3);
         victim.setPilotSerialNumber(pilotSerialNumber);
         victim.setPlaneSerialNumber(planeSerialNumber);
         victim.setVehicleType("albatrosd3");
@@ -139,7 +139,7 @@ public class AARPhase3ReconcileCoordinatorTest
         victim.setSquadronId(501011);
         victim.intializePilot(pilotSerialNumber);
 
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setLocation(new Coordinate(100.0, 0.0, 100.0));
         resultVictory.setVictor(victor);
         resultVictory.setVictim(victim);

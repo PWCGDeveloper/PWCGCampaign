@@ -91,19 +91,19 @@ public class AARVehiclePlaneLandedTest
 
     private Map <String, LogPlane> makePlaneEntities()
     {
-        LogPlane resultPlane1 = new LogPlane();
+        LogPlane resultPlane1 = new LogPlane(1);
         resultPlane1.setId("101");
         planeAiEntities.put("11111", resultPlane1);
         
-        LogPlane resultPlane2 = new LogPlane();
+        LogPlane resultPlane2 = new LogPlane(2);
         resultPlane2.setId("102");
         planeAiEntities.put("22222", resultPlane2);
         
-        LogPlane resultPlane3 = new LogPlane();
+        LogPlane resultPlane3 = new LogPlane(3);
         resultPlane3.setId("999");
         planeAiEntities.put("99999", resultPlane3);
         
-        LogPlane resultPlane4 = new LogPlane();
+        LogPlane resultPlane4 = new LogPlane(4);
         resultPlane4.setId("104");
         planeAiEntities.put("44444", resultPlane4);
                 

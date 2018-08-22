@@ -22,9 +22,8 @@ public class AARWaypointBuilder
     {
         for (IAType17 atype17 : logEventData.getWaypointEvents())
         {
-            LogWaypoint wpEvent = new LogWaypoint();
+            LogWaypoint wpEvent = new LogWaypoint(atype17.getSequenceNum());
             wpEvent.setLocation(atype17.getLocation());
-            wpEvent.setSequenceNum(atype17.getSequenceNum());
             waypointEventList.add(wpEvent);
         }
         

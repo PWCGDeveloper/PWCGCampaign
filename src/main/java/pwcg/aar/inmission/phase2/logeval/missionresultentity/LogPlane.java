@@ -24,8 +24,9 @@ public class LogPlane extends LogAIEntity
     private int planeSerialNumber;
     private int planeStatus = PlaneStatus.STATUS_DEPLOYED;
 
-    public LogPlane()
+    public LogPlane(int sequenceNumber)
     {
+        super(sequenceNumber);
     }
 
     public Coordinate getLandAt()
@@ -66,7 +67,7 @@ public class LogPlane extends LogAIEntity
 
     public LogTurret createTurret(IAType12 atype12) throws PWCGException
     {
-        LogTurret logTurret = new LogTurret();
+        LogTurret logTurret = new LogTurret(atype12.getSequenceNum());
         logTurret.initializeEntityFromEvent(atype12);
         logTurret.setParent(this);
         logTurrets.put(atype12.getId(), logTurret);

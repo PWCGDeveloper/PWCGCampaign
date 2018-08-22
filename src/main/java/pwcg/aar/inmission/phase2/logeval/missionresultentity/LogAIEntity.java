@@ -15,8 +15,9 @@ public abstract class LogAIEntity extends LogBase
     protected Role role = Role.ROLE_UNKNOWN;
     protected ICountry country;
 
-    public LogAIEntity()
+    public LogAIEntity(int sequenceNumber)
     {
+        super(sequenceNumber);
     }
 
     public void initializeEntityFromEvent(IAType12 atype12) throws PWCGException
@@ -25,7 +26,6 @@ public abstract class LogAIEntity extends LogBase
         setCountry(atype12.getCountry());
         setName(atype12.getName());
         setVehicleType(atype12.getType());
-        setSequenceNum(atype12.getSequenceNum());
         
         PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(atype12.getType());
         if (plane != null)
@@ -73,18 +73,6 @@ public abstract class LogAIEntity extends LogBase
     public void setRole(Role role)
     {
         this.role = role;
-    }
-
-    @Override
-    public int getSequenceNum()
-    {
-        return super.getSequenceNum();
-    }
-
-    @Override
-    public void setSequenceNum(int sequenceNum)
-    {
-        super.setSequenceNum(sequenceNum);
     }
 
     public String getName()

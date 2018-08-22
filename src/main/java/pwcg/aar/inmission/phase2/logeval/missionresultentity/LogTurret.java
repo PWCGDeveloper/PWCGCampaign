@@ -4,8 +4,9 @@ public class LogTurret extends LogAIEntity
 {
     private LogAIEntity parent;
 
-    public LogTurret()
+    public LogTurret(int sequenceNumber)
     {
+        super(sequenceNumber);
     }
 
     public LogAIEntity getParent() {

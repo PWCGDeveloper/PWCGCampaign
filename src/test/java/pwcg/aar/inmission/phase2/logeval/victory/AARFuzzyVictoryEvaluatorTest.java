@@ -41,15 +41,15 @@ public class AARFuzzyVictoryEvaluatorTest
     @Before
     public void setup()
     {
-        victoryResult = new LogVictory();
+        victoryResult = new LogVictory(10);
         
-        victim = new LogPlane();
+        victim = new LogPlane(1);
     }
     
     @Test
     public void testUseFuzzyVictoryTrue () throws PWCGException
     {
-        victoryResult.setVictim(new LogPlane());
+        victoryResult.setVictim(new LogPlane(2));
         victim.setId("11111");
         Mockito.when(vehicleBuilder.getVehicle(Matchers.<String>any())).thenReturn(victim);
         Mockito.when(randomAssignment.markForRandomAssignment(victoryResult)).thenReturn(unknownVictorEntity);
@@ -108,8 +108,8 @@ public class AARFuzzyVictoryEvaluatorTest
     @Test
     public void testUseFuzzyVictoryFalseBecauseNotNullVictor () throws PWCGException
     {
-        victoryResult.setVictor(new LogPlane());
-        victoryResult.setVictim(new LogPlane());
+        victoryResult.setVictor(new LogPlane(3));
+        victoryResult.setVictim(new LogPlane(4));
         victim.setId("11111");
         unknownVictorEntity.setId("11111");
 
@@ -129,7 +129,7 @@ public class AARFuzzyVictoryEvaluatorTest
     @Test
     public void testUseFuzzyVictoryFalseBecauseVehicleBuilderCouldNotIdentifyVictim () throws PWCGException
     {
-        victoryResult.setVictim(new LogPlane());
+        victoryResult.setVictim(new LogPlane(5));
         victim.setId("11111");
         Mockito.when(vehicleBuilder.getVehicle(Matchers.<String>any())).thenReturn(null);
         Mockito.when(randomAssignment.markForRandomAssignment(victoryResult)).thenReturn(unknownVictorEntity);

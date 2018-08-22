@@ -57,14 +57,13 @@ public class AARDamageStatusEvaluator
         LogAIEntity logVictor = aarVehicleBuilder.getVehicle(atype2.getVictor());
         LogAIEntity logVictim = aarVehicleBuilder.getVehicle(atype2.getVictim());
                         
-        LogDamage logDamage = new LogDamage();
+        LogDamage logDamage = new LogDamage(atype2.getSequenceNum());
         if (logVictor != null)
         {
             logDamage.setVictor(logVictor);
         }
         logDamage.setVictim(logVictim);
         logDamage.setLocation(atype2.getLocation());
-        logDamage.setSequenceNum(atype2.getSequenceNum());
         return logDamage;
     }
 

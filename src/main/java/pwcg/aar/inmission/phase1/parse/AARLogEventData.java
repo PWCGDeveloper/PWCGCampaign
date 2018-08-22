@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.aar.inmission.phase1.parse.event.IAType17;
@@ -16,7 +15,7 @@ import pwcg.aar.inmission.phase1.parse.event.IATypeBase;
 
 public class AARLogEventData
 {
-    private Map<Integer, IATypeBase> chronologicalATypes = new TreeMap<>();
+    private List<IATypeBase> chronologicalATypes = new ArrayList<>();
     private List<IAType2> damageEvents = new ArrayList<>();
     private List<IAType3> destroyedEvents = new ArrayList<>();
     private List<IAType6> landingEvents = new ArrayList<>();
@@ -25,14 +24,10 @@ public class AARLogEventData
     private Map<String, IAType12> bots = new HashMap<>();
     private Map<String, IAType12> vehicles = new HashMap<>();
     private Map<String, IAType12> turrets = new HashMap<>();
-
-    private int eventNum = 1;
     
     private void addChronologicalAType(IATypeBase chronologicalAType)
     {
-        chronologicalAType.setSequenceNum(eventNum);
-        this.chronologicalATypes.put(eventNum, chronologicalAType);
-        ++eventNum;
+        this.chronologicalATypes.add(chronologicalAType);
     }
     
     public void addDamageEvent(IAType2 damageEvent)
@@ -82,7 +77,7 @@ public class AARLogEventData
 
     public List<IATypeBase> getChronologicalATypes()
     {
-        return new ArrayList<IATypeBase>(chronologicalATypes.values());
+        return chronologicalATypes;
     }
 
     public List<IAType2> getDamageEvents()
@@ -213,48 +208,8 @@ public class AARLogEventData
         return planeId;
     }
 
-    public void setChronologicalATypes(Map<Integer, IATypeBase> chronologicalATypes)
-    {
-        this.chronologicalATypes = chronologicalATypes;
-    }
-
-    public void setDamageEvents(List<IAType2> damageEvents)
-    {
-        this.damageEvents = damageEvents;
-    }
-
-    public void setDestroyedEvents(List<IAType3> destroyedEvents)
-    {
-        this.destroyedEvents = destroyedEvents;
-    }
-
-    public void setLandingEvents(List<IAType6> landingEvents)
-    {
-        this.landingEvents = landingEvents;
-    }
-
-    public void setWaypointEvents(List<IAType17> waypointEvents)
-    {
-        this.waypointEvents = waypointEvents;
-    }
-
-    public void setBailoutEvents(List<IAType18> bailoutEvents)
-    {
-        this.bailoutEvents = bailoutEvents;
-    }
-
     public void setBots(Map<String, IAType12> bots)
     {
         this.bots = bots;
-    }
-
-    public void setVehicles(Map<String, IAType12> vehicles)
-    {
-        this.vehicles = vehicles;
-    }
-
-    public void setTurrets(Map<String, IAType12> turrets)
-    {
-        this.turrets = turrets;
     }
 }

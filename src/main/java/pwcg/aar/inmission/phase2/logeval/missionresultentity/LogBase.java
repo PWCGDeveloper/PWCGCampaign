@@ -4,16 +4,12 @@ public abstract class LogBase
 {
 	protected int sequenceNum;
 	
-	public LogBase()
+	public LogBase(int sequenceNum)
 	{
+	    this.sequenceNum = sequenceNum;
 	}
 
 	public int getSequenceNum() {
 		return sequenceNum;
 	}
-
-	public void setSequenceNum(int sequenceNum) {
-		this.sequenceNum = sequenceNum;
-	}
-
 }

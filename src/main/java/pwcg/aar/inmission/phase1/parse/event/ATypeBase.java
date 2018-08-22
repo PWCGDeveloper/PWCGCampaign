@@ -9,10 +9,13 @@ import pwcg.core.utils.Logger;
 
 public abstract class ATypeBase 
 {	
+    private static int sequenceNumCounter = 0;
 	private int sequenceNum = 0;
 	
 	public ATypeBase ()
 	{
+	    this.sequenceNum = sequenceNumCounter;
+	    ++sequenceNumCounter;
 	}
 
 	protected Coordinate findCoordinate(String line, String startTag) throws PWCGException 
@@ -88,11 +91,6 @@ public abstract class ATypeBase
 	public int getSequenceNum() 
 	{
 		return sequenceNum;
-	}
-
-	public void setSequenceNum(int sequenceNum) 
-	{
-		this.sequenceNum = sequenceNum;
 	}
 	
     public abstract void write(BufferedWriter writer) throws PWCGIOException;

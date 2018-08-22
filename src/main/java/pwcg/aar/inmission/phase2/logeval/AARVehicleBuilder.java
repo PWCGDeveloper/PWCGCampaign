@@ -118,7 +118,7 @@ public class AARVehicleBuilder
     private LogPlane makePlaneFromMissionAndLog(IAType12 atype12) throws PWCGException
     {
         PwcgGeneratedMissionPlaneData missionPlane = pwcgMissionDataEvaluator.getPlaneForPilotByName(atype12.getName());
-        LogPlane logPlane = new LogPlane();
+        LogPlane logPlane = new LogPlane(atype12.getSequenceNum());
         logPlane.initializeEntityFromEvent(atype12);
         logPlane.initializeFromMissionPlane(missionPlane);
         return logPlane;
@@ -127,7 +127,7 @@ public class AARVehicleBuilder
     private void createLogBalloon(IAType12 atype12) throws PWCGException
     {
         LogAIEntity logEntity;
-        logEntity = new LogBalloon();
+        logEntity = new LogBalloon(atype12.getSequenceNum());
         logEntity.initializeEntityFromEvent(atype12);
         logEntity.setRole(Role.ROLE_BALLOON);
         
@@ -138,7 +138,7 @@ public class AARVehicleBuilder
     private void createLogGroundUNit(IAType12 atype12) throws PWCGException
     {
         LogAIEntity logEntity;
-        logEntity = new LogGroundUnit();
+        logEntity = new LogGroundUnit(atype12.getSequenceNum());
         logEntity.initializeEntityFromEvent(atype12);
         
         logGroundUnits.put(atype12.getId(), (LogGroundUnit)logEntity);

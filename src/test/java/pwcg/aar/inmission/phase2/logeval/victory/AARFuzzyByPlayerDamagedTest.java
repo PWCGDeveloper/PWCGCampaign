@@ -24,13 +24,13 @@ public class AARFuzzyByPlayerDamagedTest
     @Mock
     private AARDamageStatusEvaluator aarDamageStatusEvaluator = null;
 
-    private LogPlane playerPlane = new LogPlane();
+    private LogPlane playerPlane = new LogPlane(1);
 
-    private LogPlane shotDownPlane1 = new LogPlane();
+    private LogPlane shotDownPlane1 = new LogPlane(2);
     
-    private LogPlane shotDownPlane2 = new LogPlane();
+    private LogPlane shotDownPlane2 = new LogPlane(3);
     
-    private LogPlane shotDownPlane3 = new LogPlane();
+    private LogPlane shotDownPlane3 = new LogPlane(4);
 
     
     @Before
@@ -42,12 +42,12 @@ public class AARFuzzyByPlayerDamagedTest
         shotDownPlane3.setId("99999");
         
         List<LogDamage> damageEvents = new ArrayList<>();
-        LogDamage logDamage1 = new LogDamage();
+        LogDamage logDamage1 = new LogDamage(100);
         logDamage1.setVictor(playerPlane);
         logDamage1.setVictim(shotDownPlane1);
         damageEvents.add(logDamage1);
 
-        LogDamage logDamage2 = new LogDamage();
+        LogDamage logDamage2 = new LogDamage(101);
         logDamage2.setVictor(playerPlane);
         logDamage2.setVictim(shotDownPlane2);
         damageEvents.add(logDamage2);
@@ -109,9 +109,9 @@ public class AARFuzzyByPlayerDamagedTest
 
     private LogVictory makeShotDownPlane(String id)
     {
-        LogPlane shotDownPlane1 = new LogPlane();
+        LogPlane shotDownPlane1 = new LogPlane(5);
         shotDownPlane1.setId(id);
-        LogVictory victoryResult = new LogVictory();
+        LogVictory victoryResult = new LogVictory(10);
         victoryResult.setVictim(shotDownPlane1);
         return victoryResult;
     }

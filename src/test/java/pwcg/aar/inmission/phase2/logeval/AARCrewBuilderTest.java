@@ -80,7 +80,7 @@ public class AARCrewBuilderTest
         LogPilot pilot = new LogPilot();
         pilot.setSerialNumber(pilotSerialNumber);
         
-        LogPlane plane1 = new LogPlane();
+        LogPlane plane1 = new LogPlane(1);
         plane1.setPilotSerialNumber(pilotSerialNumber);
         plane1.intializePilot(pilotSerialNumber);
         

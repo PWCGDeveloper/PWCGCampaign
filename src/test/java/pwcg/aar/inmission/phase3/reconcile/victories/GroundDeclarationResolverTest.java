@@ -34,9 +34,7 @@ public class GroundDeclarationResolverTest
         List<LogVictory> victories = new ArrayList<>();
         for (int i = 0; i < 3; ++i)
         {
-            LogVictory victory = new LogVictory();
-            
-            victory.setSequenceNum(i);
+            LogVictory victory = new LogVictory(10);
             victory.setLocation(new Coordinate());
             victories.add(victory);
         }

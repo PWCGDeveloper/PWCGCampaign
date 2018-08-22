@@ -6,9 +6,10 @@ public class LogWaypoint extends LogBase
 {
 	protected Coordinate location;
 
-	public LogWaypoint()
-	{
-	}
+    public LogWaypoint(int sequenceNumber)
+    {
+        super(sequenceNumber);
+    }
 
 	public Coordinate getLocation() {
 		return location;

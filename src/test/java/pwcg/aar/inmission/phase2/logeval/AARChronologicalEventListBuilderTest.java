@@ -32,23 +32,12 @@ import pwcg.core.exception.PWCGException;
 @RunWith(MockitoJUnitRunner.class)
 public class AARChronologicalEventListBuilderTest
 {
-    @Mock
-    private AAREvaluator evaluator;
-
-    @Mock
-    private AARLogEventData logEventData;
-
-    @Mock
-    private AARWaypointBuilder aarWaypointBuilder;
-    
-    @Mock
-    AARVehicleBuilder aarVehicleBuilder;
-    
-    @Mock
-    AARVictoryEvaluator aarVictoryEvaluator;
-    
-    @Mock
-    AARDamageStatusEvaluator aarDamageStatusEvaluator;
+    @Mock private AAREvaluator evaluator;
+    @Mock private AARLogEventData logEventData;
+    @Mock private AARWaypointBuilder aarWaypointBuilder;
+    @Mock private AARVehicleBuilder aarVehicleBuilder;
+    @Mock private AARVictoryEvaluator aarVictoryEvaluator;
+    @Mock private AARDamageStatusEvaluator aarDamageStatusEvaluator;
 
     @Before
     public void setupForTestEnvironment() throws PWCGException
@@ -88,8 +77,8 @@ public class AARChronologicalEventListBuilderTest
         int i = lastSequenceNumber;
         for (; i < lastSequenceNumber+3; ++i)
         {
-            LogPlane planeSpawn = new LogPlane();
-            planeSpawn.setSequenceNum(i);
+            LogPlane planeSpawn = new LogPlane(i);
+            planeAiEntities.put("" + i, planeSpawn);
         }
         Mockito.when(aarVehicleBuilder.getLogPlanes()).thenReturn(planeAiEntities);
         
@@ -103,8 +92,8 @@ public class AARChronologicalEventListBuilderTest
         int i = lastSequenceNumber;
         for (; i < lastSequenceNumber+2; ++i)
         {
-            LogBalloon balloonSpawn = new LogBalloon();
-            balloonSpawn.setSequenceNum(i);
+            LogBalloon balloonSpawn = new LogBalloon(i);
+            missionResultBalloons.put("" + i, balloonSpawn);
         }
         Mockito.when(aarVehicleBuilder.getLogBalloons()).thenReturn(missionResultBalloons);
         
@@ -113,14 +102,14 @@ public class AARChronologicalEventListBuilderTest
 
     private int mockVictory(int lastSequenceNumber)
     {
-        List<LogVictory> missionResultVictoryList = new ArrayList<>();
+        List<LogVictory> missionResultVictories = new ArrayList<>();
         int i = lastSequenceNumber;
         for (; i < lastSequenceNumber+1; ++i)
         {
-            LogVictory victory = new LogVictory();
-            victory.setSequenceNum(i);
+            LogVictory victory = new LogVictory(i);
+            missionResultVictories.add(victory);
         }
-        Mockito.when(aarVictoryEvaluator.getVictoryResults()).thenReturn(missionResultVictoryList);
+        Mockito.when(aarVictoryEvaluator.getVictoryResults()).thenReturn(missionResultVictories);
         
         return i;
     }
@@ -131,8 +120,8 @@ public class AARChronologicalEventListBuilderTest
         int i = lastSequenceNumber;
         for (; i < lastSequenceNumber+8; ++i)
         {
-            LogDamage damage = new LogDamage();
-            damage.setSequenceNum(i);
+            LogDamage damage = new LogDamage(i);
+            missionResultDamageList.add(damage);
         }
         Mockito.when(aarDamageStatusEvaluator.getVehiclesDamagedByPlayer()).thenReturn(missionResultDamageList);
         
@@ -145,8 +134,8 @@ public class AARChronologicalEventListBuilderTest
         int i = lastSequenceNumber;
         for (; i < lastSequenceNumber+5; ++i)
         {
-            LogWaypoint missionResultWaypoint = new LogWaypoint();
-            missionResultWaypoint.setSequenceNum(i);
+            LogWaypoint missionResultWaypoint = new LogWaypoint(i);
+            missionResultWaypointList.add(missionResultWaypoint);
         }
         Mockito.when(aarWaypointBuilder.buildWaypointEvents()).thenReturn(missionResultWaypointList);
         
