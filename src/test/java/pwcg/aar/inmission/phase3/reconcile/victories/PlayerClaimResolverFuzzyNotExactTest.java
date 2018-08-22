@@ -24,15 +24,15 @@ public class PlayerClaimResolverFuzzyNotExactTest
     @Test
     public void testPlayerFuzzyNotExactVictoryFoundWithExactMatch() throws PWCGException
     {
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(1);
         victim.setRole(Role.ROLE_FIGHTER);
         victim.setVehicleType("se5a");
 
-        LogPlane victor = new LogPlane();
+        LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
         resultVictory.setVictor(victor);
         
@@ -48,15 +48,15 @@ public class PlayerClaimResolverFuzzyNotExactTest
     @Test
     public void testPlayerFuzzyNotExactVictoryFoundWithNotExactMatch() throws PWCGException
     {
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(1);
         victim.setRole(Role.ROLE_FIGHTER);
         victim.setVehicleType("se5a");
 
-        LogPlane victor = new LogPlane();
+        LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
         resultVictory.setVictor(victor);
         
@@ -72,15 +72,15 @@ public class PlayerClaimResolverFuzzyNotExactTest
     @Test
     public void testPlayerFuzzyNotExactVictoryNotFoundBecauseRoleIsDifferent() throws PWCGException
     {
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(1);
         victim.setRole(Role.ROLE_BOMB);
         victim.setVehicleType("notarealplane");
 
-        LogPlane victor = new LogPlane();
+        LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
         resultVictory.setVictor(victor);
         
@@ -96,15 +96,15 @@ public class PlayerClaimResolverFuzzyNotExactTest
     @Test
     public void testPlayerFuzzyNotExactVictoryNotFoundBecauseClaimPlaneNotFound() throws PWCGException
     {
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(1);
         victim.setRole(Role.ROLE_FIGHTER);
         victim.setVehicleType("se5a");
 
-        LogPlane victor = new LogPlane();
+        LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
         resultVictory.setVictor(victor);
         
@@ -120,15 +120,15 @@ public class PlayerClaimResolverFuzzyNotExactTest
     @Test
     public void testPlayerFuzzyNotExactVictoryNotFoundBecauseVictoryAlreadyConfirmed() throws PWCGException
     {
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(1);
         victim.setRole(Role.ROLE_FIGHTER);
         victim.setVehicleType("se5a");
 
-        LogPlane victor = new LogPlane();
+        LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
         resultVictory.setVictor(victor);
         resultVictory.setConfirmed(true);

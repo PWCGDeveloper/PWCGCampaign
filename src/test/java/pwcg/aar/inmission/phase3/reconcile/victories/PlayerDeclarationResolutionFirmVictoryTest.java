@@ -47,8 +47,8 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     private List<LogVictory> emptyList = new ArrayList<>();        
     private List<SquadronMember> players = new ArrayList<>();
 
-    private LogPlane playerVictor = new LogPlane();
-    private LogPlane aiVictor = new LogPlane();
+    private LogPlane playerVictor = new LogPlane(1);
+    private LogPlane aiVictor = new LogPlane(2);
     
     private static String PLAYER_NAME = "Player Name";
 
@@ -96,17 +96,17 @@ public class PlayerDeclarationResolutionFirmVictoryTest
 
     private void createVictory(Integer victorSerialNumber, Integer victimSerialNumber)
     {        
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(3);
         victim.setPilotSerialNumber(victimSerialNumber);
         victim.setVehicleType("albatrosd3");
         victim.setCountry(new RoFCountry(Country.GERMANY));
 
-        LogPlane victor = new LogPlane();
+        LogPlane victor = new LogPlane(4);
         victor.setVehicleType("spad7");
         victor.setPilotSerialNumber(victorSerialNumber);
         victor.setCountry(new RoFCountry(Country.FRANCE));
 
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictor(victor);
         resultVictory.setVictim(victim);
         resultVictory.setCrossedPlayerPath(true);

@@ -29,7 +29,6 @@ public class AType17 extends ATypeBase implements IAType17
         super();
         id = atype10.getId();
         location = atype10.getLocation().copy();
-        this.setSequenceNum(atype10.getSequenceNum());
     }
 
     private void parse (String line) throws PWCGException 

@@ -186,7 +186,7 @@ public class AARPilotStatusEvaluatorTest
     private Map <String, LogPlane> makePlaneEntities() throws PWCGException
     {
         Map <String, LogPlane> planeAiEntities = new HashMap <>();
-        LogPlane resultPlane = new LogPlane();
+        LogPlane resultPlane = new LogPlane(2);
         resultPlane.setLandAt(new Coordinate());
         ICountry country = CountryFactory.makeCountryByCountry(Country.BRITAIN);
         resultPlane.setCountry(country);

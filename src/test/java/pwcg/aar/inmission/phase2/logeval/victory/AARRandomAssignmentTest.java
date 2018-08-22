@@ -31,7 +31,7 @@ public class AARRandomAssignmentTest
     @Before
     public void setup()
     {
-        victoryResult = new LogVictory();
+        victoryResult = new LogVictory(10);
     }
 
     @Test

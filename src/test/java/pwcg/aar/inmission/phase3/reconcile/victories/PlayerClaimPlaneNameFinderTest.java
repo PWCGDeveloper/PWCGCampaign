@@ -23,10 +23,10 @@ public class PlayerClaimPlaneNameFinderTest
     @Test
     public void testPlaneNameFoundByVictoryResult() throws PWCGException
     {
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
 
-        LogVictory victory = new LogVictory();
+        LogVictory victory = new LogVictory(2);
         victory.setVictim(victim);
         
         PlayerVictoryDeclaration playerDeclaration = new PlayerVictoryDeclaration();
@@ -40,7 +40,7 @@ public class PlayerClaimPlaneNameFinderTest
     @Test
     public void testPlaneNameFoundByDeclaration() throws PWCGException
     {
-        LogVictory victory = new LogVictory();
+        LogVictory victory = new LogVictory(1);
          
         PlayerVictoryDeclaration playerDeclaration = new PlayerVictoryDeclaration();
         playerDeclaration.setAircraftType("se5a");
@@ -54,7 +54,7 @@ public class PlayerClaimPlaneNameFinderTest
     @Test
     public void testPlaneNameNotFound() throws PWCGException
     {
-        LogVictory victory = new LogVictory();
+        LogVictory victory = new LogVictory(1);
          
         PlayerVictoryDeclaration playerDeclaration = new PlayerVictoryDeclaration();
 

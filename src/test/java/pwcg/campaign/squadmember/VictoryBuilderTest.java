@@ -51,7 +51,7 @@ public class VictoryBuilderTest
     @Test
     public void buildVictoryPlanePlane () throws PWCGException
     {
-        LogPlane logVictor = new LogPlane();
+        LogPlane logVictor = new LogPlane(1);
         logVictor.setCrashedInSight(true);
         logVictor.setName(victor.getNameAndRank());
         logVictor.setPilotSerialNumber(victor.getSerialNumber());
@@ -60,7 +60,7 @@ public class VictoryBuilderTest
         logVictor.intializePilot(victor.getSerialNumber());
         logVictor.getLogPilot().setStatus(SquadronMemberStatus.STATUS_ACTIVE);
 
-        LogPlane logVictim = new LogPlane();
+        LogPlane logVictim = new LogPlane(2);
         logVictim.setCrashedInSight(true);
         logVictim.setName(victim.getNameAndRank());
         logVictim.setPilotSerialNumber(victim.getSerialNumber());
@@ -69,9 +69,8 @@ public class VictoryBuilderTest
         logVictim.intializePilot(victim.getSerialNumber());
         logVictim.getLogPilot().setStatus(SquadronMemberStatus.STATUS_CAPTURED);
 
-        LogVictory logVictory = new LogVictory();
+        LogVictory logVictory = new LogVictory(10);
         logVictory.setLocation(new Coordinate (100000, 0, 100000));
-        logVictory.setSequenceNum(3);            
         logVictory.setVictim(logVictim);
         logVictory.setVictor(logVictor);
 
@@ -91,7 +90,7 @@ public class VictoryBuilderTest
     @Test
     public void buildVictoryPlaneGround () throws PWCGException
     {
-        LogPlane logVictor = new LogPlane();
+        LogPlane logVictor = new LogPlane(1);
         logVictor.setCrashedInSight(true);
         logVictor.setName(victor.getNameAndRank());
         logVictor.setPilotSerialNumber(victor.getSerialNumber());
@@ -100,13 +99,12 @@ public class VictoryBuilderTest
         logVictor.intializePilot(victor.getSerialNumber());
         logVictor.getLogPilot().setStatus(SquadronMemberStatus.STATUS_ACTIVE);
 
-        LogGroundUnit logVictim = new LogGroundUnit();
+        LogGroundUnit logVictim = new LogGroundUnit(1000);
         logVictim.setName(victim.getNameAndRank());
         logVictim.setVehicleType("Truck");
 
-        LogVictory logVictory = new LogVictory();
+        LogVictory logVictory = new LogVictory(10);
         logVictory.setLocation(new Coordinate (100000, 0, 100000));
-        logVictory.setSequenceNum(3);            
         logVictory.setVictim(logVictim);
         logVictory.setVictor(logVictor);
 

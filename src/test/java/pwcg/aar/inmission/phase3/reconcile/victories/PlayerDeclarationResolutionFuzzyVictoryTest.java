@@ -46,8 +46,8 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
     private List<LogVictory> emptyList = new ArrayList<>();        
     private List<SquadronMember> players = new ArrayList<>();
 
-    private LogPlane playerVictor = new LogPlane();
-    private LogPlane aiVictor = new LogPlane();
+    private LogPlane playerVictor = new LogPlane(1);
+    private LogPlane aiVictor = new LogPlane(2);
     
     @Before
     public void setup() throws PWCGException
@@ -89,12 +89,12 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
 
     private void createVictory(Integer victimSerialNumber, String aircraftType, Role approximateRole)
     {        
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(1);
         victim.setPilotSerialNumber(victimSerialNumber);
         victim.setVehicleType(aircraftType);
         victim.setRole(approximateRole);
 
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
         resultVictory.setCrossedPlayerPath(true);
         

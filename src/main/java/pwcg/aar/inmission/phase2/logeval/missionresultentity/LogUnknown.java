@@ -5,10 +5,12 @@ import pwcg.aar.inmission.phase3.reconcile.victories.UnknownVictoryAssignments;
 
 public class LogUnknown extends LogAIEntity
 {
-    UnknownVictoryAssignments unknownVictoryAssignment = UnknownVictoryAssignments.UNKNOWN_ASSIGNMENT;
+    private UnknownVictoryAssignments unknownVictoryAssignment = UnknownVictoryAssignments.UNKNOWN_ASSIGNMENT;
+    private static final int unknownSequenceNumber = -1;
     
     public LogUnknown()
     {
+        super(unknownSequenceNumber);
         this.setId(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
     }
 

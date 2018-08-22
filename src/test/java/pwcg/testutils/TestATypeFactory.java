@@ -12,11 +12,9 @@ import pwcg.core.exception.PWCGException;
 public class TestATypeFactory
 {
     static public int id = 100;
-    static public int entitySequenceNumber = 0;
     
     static public AType12 makeFrenchPlane() throws PWCGException
     {
-        ++entitySequenceNumber;
         ++id;
 
         
@@ -28,7 +26,6 @@ public class TestATypeFactory
     
     static public AType12 makeGermanPlane() throws PWCGException
     {
-        ++entitySequenceNumber;
         ++id;
 
         AType12 aType12 = new AType12("AType:12 ID:1488895 TYPE:albatrosd3 COUNTRY:101 NAME:Lt Pierre Trudeau PID:-1 POS(119648.406,152.195,44274.488)");
@@ -38,7 +35,6 @@ public class TestATypeFactory
     
     static public AType12 makeBalloon(ICountry country) throws PWCGException
     {
-        ++entitySequenceNumber;
         ++id;
 
         AType12 aType12 = new AType12();
@@ -51,7 +47,6 @@ public class TestATypeFactory
         aType12.setName(balloon.getType());
         aType12.setId(new Integer (id).toString());
         aType12.setPid(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
-        aType12.setSequenceNum(entitySequenceNumber);
         aType12.setType(balloon.getName());
         
         return aType12;
@@ -59,7 +54,6 @@ public class TestATypeFactory
     
     static public AType12 makeTruck(Country countryCode) throws PWCGException
     {
-        ++entitySequenceNumber;
         ++id;
 
         AType12 aType12 = new AType12();
@@ -79,7 +73,6 @@ public class TestATypeFactory
         aType12.setName("Truck");
         aType12.setId(new Integer (id).toString());
         aType12.setPid(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
-        aType12.setSequenceNum(entitySequenceNumber);
         aType12.setType("Truck");
         
         return aType12;
@@ -87,7 +80,6 @@ public class TestATypeFactory
     
     static public AType12 makePilotBot(IAType12 plane) throws PWCGException
     {
-        ++entitySequenceNumber;
         ++id;
 
         AType12 aType12 = new AType12();
@@ -96,7 +88,6 @@ public class TestATypeFactory
         aType12.setName("Bot");
         aType12.setId(new Integer (id).toString());
         aType12.setPid(plane.getId());
-        aType12.setSequenceNum(entitySequenceNumber);
         aType12.setType("Common Bot");
         
         return aType12;

@@ -90,7 +90,7 @@ public class VictorySorterTest
     {
         LogPlane victor = makeVictor();
         
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(1);
         victim.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
         victim.setVehicleType("albatrosd3");
         victim.setCountry(new RoFCountry(Country.GERMANY));
@@ -104,7 +104,7 @@ public class VictorySorterTest
     {
         LogUnknown victor = new LogUnknown();
         
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(1);
         victim.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
         victim.setVehicleType("albatrosd3");
         victim.setCountry(new RoFCountry(Country.GERMANY));
@@ -118,7 +118,7 @@ public class VictorySorterTest
     {
         LogPlane victor = makeVictor();
         
-        LogBalloon victim = new LogBalloon();
+        LogBalloon victim = new LogBalloon(10000);
         victim.setVehicleType("drachen");
         victim.setCountry(new RoFCountry(Country.GERMANY));
 
@@ -129,7 +129,7 @@ public class VictorySorterTest
     {
         LogUnknown victor = new LogUnknown();
         
-        LogBalloon victim = new LogBalloon();
+        LogBalloon victim = new LogBalloon(10000);
         victim.setVehicleType("drachen");
         victim.setCountry(new RoFCountry(Country.GERMANY));
 
@@ -140,7 +140,7 @@ public class VictorySorterTest
     {
         LogPlane victor = makeVictor();
         
-        LogGroundUnit victim = new LogGroundUnit();
+        LogGroundUnit victim = new LogGroundUnit(1000);
         victim.setVehicleType("tank");
         victim.setCountry(new RoFCountry(Country.GERMANY));
 
@@ -149,7 +149,7 @@ public class VictorySorterTest
 
     private LogPlane makeVictor()
     {
-        LogPlane victor = new LogPlane();
+        LogPlane victor = new LogPlane(1);
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         victor.setVehicleType("spad7");
         victor.setCountry(new RoFCountry(Country.FRANCE));
@@ -160,7 +160,7 @@ public class VictorySorterTest
 
     private void makeVictory(LogAIEntity victor, LogAIEntity victim)
     {
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setLocation(new Coordinate(100.0, 0.0, 100.0));
         resultVictory.setVictor(victor);
         resultVictory.setVictim(victim);

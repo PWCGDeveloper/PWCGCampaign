@@ -19,8 +19,9 @@ public class LogPlane extends LogAIEntity
     private int planeSerialNumber;
     private int planeStatus = PlaneStatus.STATUS_DEPLOYED;
 
-    public LogPlane()
+    public LogPlane(int sequenceNumber)
     {
+        super(sequenceNumber);
     }
 
     public Coordinate getLandAt()

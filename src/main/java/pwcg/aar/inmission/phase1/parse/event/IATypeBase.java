@@ -9,6 +9,4 @@ public interface IATypeBase
     void write(BufferedWriter writer) throws PWCGIOException;
 
     int getSequenceNum();
-
-    void setSequenceNum(int sequenceNum);    
 }

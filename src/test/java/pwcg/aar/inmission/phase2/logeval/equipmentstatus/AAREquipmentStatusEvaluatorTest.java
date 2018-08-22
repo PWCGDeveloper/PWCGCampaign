@@ -90,7 +90,7 @@ public class AAREquipmentStatusEvaluatorTest
     {
         ICountry country = CountryFactory.makeCountryByCountry(Country.RUSSIA);
 
-        LogPlane resultPlane = new LogPlane();
+        LogPlane resultPlane = new LogPlane(1);
         resultPlane.setLandAt(new Coordinate());
         resultPlane.setCountry(country);
         resultPlane.intializePilot(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);

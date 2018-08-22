@@ -39,9 +39,8 @@ public class AARDestroyedStatusEvaluator
             LogAIEntity logVictor = aarVehicleBuilder.getVehicle(atype3.getVictor());
             LogAIEntity logVictim = aarVehicleBuilder.getVehicle(atype3.getVictim());
             
-            LogVictory logVictory = new LogVictory();
+            LogVictory logVictory = new LogVictory(atype3.getSequenceNum());
             logVictory.setLocation(atype3.getLocation());
-            logVictory.setSequenceNum(atype3.getSequenceNum());            
             
             if (logVictim != null)
             {

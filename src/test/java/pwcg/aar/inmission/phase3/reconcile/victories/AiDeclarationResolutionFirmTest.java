@@ -43,8 +43,8 @@ public class AiDeclarationResolutionFirmTest
     private List<LogVictory> emptyList = new ArrayList<>();        
     private List<SquadronMember> players = new ArrayList<>();
 
-    private LogPlane playerVictor = new LogPlane();
-    private LogPlane aiVictor = new LogPlane();
+    private LogPlane playerVictor = new LogPlane(1);
+    private LogPlane aiVictor = new LogPlane(2);
 
     @Before
     public void setup() throws PWCGException
@@ -68,11 +68,11 @@ public class AiDeclarationResolutionFirmTest
 
     private void createVictory(LogPlane victor, Integer victimSerialNumber) throws PWCGException
     {        
-        LogPlane victim = new LogPlane();
+        LogPlane victim = new LogPlane(3);
         victim.setPilotSerialNumber(victimSerialNumber);
         victim.setPlaneSerialNumber(SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
         
-        LogVictory resultVictory = new LogVictory();
+        LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictor(victor);
         resultVictory.setVictim(victim);
         resultVictory.setCrossedPlayerPath(true);

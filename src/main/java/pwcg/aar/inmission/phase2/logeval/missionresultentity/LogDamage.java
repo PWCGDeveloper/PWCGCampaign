@@ -8,8 +8,9 @@ public class LogDamage extends LogBase
     private LogAIEntity victim = new LogUnknown();
     protected Coordinate location;
 
-    public LogDamage()
+    public LogDamage(int sequenceNumber)
     {
+        super(sequenceNumber);
     }
 
     public LogAIEntity getVictor()

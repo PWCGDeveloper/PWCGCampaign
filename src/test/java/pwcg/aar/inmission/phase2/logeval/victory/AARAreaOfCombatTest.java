@@ -84,7 +84,7 @@ public class AARAreaOfCombatTest
         List<LogVictory> victories = new ArrayList<>();
         for (int i = 0; i < numCoords; ++i)
         {
-            LogVictory victory = new LogVictory();
+            LogVictory victory = new LogVictory(10);
             
             Coordinate crashLocation = new Coordinate();
             crashLocation.setXPos(100000.0);
@@ -92,7 +92,6 @@ public class AARAreaOfCombatTest
             
             zpos += 5000;
 
-            victory.setSequenceNum(i);
             victory.setLocation(crashLocation);
             victories.add(victory);
         }

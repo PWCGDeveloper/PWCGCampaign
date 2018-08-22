@@ -37,27 +37,27 @@ public class OutOfMissionAAAOddsCalculator
         int shotDownOdds = 5;
         if (roleThisMission == Role.ROLE_ATTACK)
         {
-            shotDownOdds += 20;
+            shotDownOdds += 12;
         }
         else if (roleThisMission == Role.ROLE_DIVE_BOMB)
         {
-            shotDownOdds += 10;
+            shotDownOdds += 7;
         }
         else if (roleThisMission == Role.ROLE_ARTILLERY_SPOT)
         {
-            shotDownOdds += 10;
+            shotDownOdds += 7;
         }
         else if (roleThisMission == Role.ROLE_RECON)
         {
-            shotDownOdds += 10;
+            shotDownOdds += 7;
         }
         else if (roleThisMission == Role.ROLE_BOMB)
         {
-            shotDownOdds += 10;
+            shotDownOdds += 7;
         }
         else if (roleThisMission == Role.ROLE_STRAT_BOMB)
         {
-            shotDownOdds += 10;
+            shotDownOdds += 7;
         }
         else if (roleThisMission == Role.ROLE_FIGHTER)
         {
@@ -75,15 +75,15 @@ public class OutOfMissionAAAOddsCalculator
     {
         if (squadronMember.getAiSkillLevel() == AiSkillLevel.NOVICE)
         {
-        	shotDownOdds += 20;
+        	shotDownOdds += 17;
         }
         else if (squadronMember.getAiSkillLevel() == AiSkillLevel.COMMON)
         {
-        	shotDownOdds += 10;
+        	shotDownOdds += 8;
         }
         else if (squadronMember.getAiSkillLevel() == AiSkillLevel.VETERAN)
         {
-            shotDownOdds -= 5;
+            shotDownOdds -= 7;
         }
         else if (squadronMember.getAiSkillLevel() == AiSkillLevel.ACE)
         {
