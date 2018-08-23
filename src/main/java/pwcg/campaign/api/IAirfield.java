@@ -56,6 +56,13 @@ public interface IAirfield extends IFixedPosition
      * @throws PWCGException
      */
     public PWCGLocation getLandingLocation() throws PWCGException;
+
+    /**
+     * Gets the position and direction of the lead plane when starting parked.
+     * @return Parking position and orientation
+     * @throws PWCGException
+     */
+    public PWCGLocation getParkingLocation() throws PWCGException;
     
     public boolean isNearRunwayOrTaxiway(Coordinate pos) throws PWCGException;
 

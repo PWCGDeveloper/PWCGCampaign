@@ -246,6 +246,11 @@ public class RoFAirfield extends FixedPosition implements IAirfield, Cloneable
 	}
 
 	@Override
+	public PWCGLocation getParkingLocation() throws PWCGException {
+		throw new PWCGException("Parked starts not implemented for RoF");
+	}
+
+	@Override
 	public boolean isNearRunwayOrTaxiway(Coordinate pos) throws PWCGException {
 		double runwayOrientation = getTakeoffLocation().getOrientation().getyOri();
 		Coordinate startOfRunway = getTakeoffLocation().getPosition();
