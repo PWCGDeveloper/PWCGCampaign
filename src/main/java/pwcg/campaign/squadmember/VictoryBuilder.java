@@ -4,6 +4,7 @@ import java.util.Date;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
@@ -43,6 +44,11 @@ public class VictoryBuilder
     private String getSquadronMemberNameForLogEvent(LogAIEntity logEntity) throws PWCGException
     {
         String squadronMemberName = "Unknown";
+        if (logEntity instanceof LogTurret)
+        {
+            LogTurret logTurret = (LogTurret)logEntity;
+            logEntity = logTurret.getParent();
+        }
         if (logEntity instanceof LogPlane)
         {
             LogPlane logPlane = (LogPlane)logEntity;

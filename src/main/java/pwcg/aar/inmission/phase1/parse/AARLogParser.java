@@ -9,6 +9,7 @@ import java.util.List;
 import pwcg.aar.inmission.phase1.parse.event.IAType10;
 import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.aar.inmission.phase1.parse.event.IAType17;
+import pwcg.aar.inmission.phase1.parse.event.IAType18;
 import pwcg.aar.inmission.phase1.parse.event.IAType2;
 import pwcg.aar.inmission.phase1.parse.event.IAType3;
 import pwcg.aar.inmission.phase1.parse.event.IAType6;
@@ -89,6 +90,10 @@ public class AARLogParser implements IAARLogParser
             {
                 parseWaypointEvent(line);
             }
+            else if (line.contains(Atypes.getAType(18)))
+            {
+                parseBailoutEvent(line);
+            }
         }
 
         reader.close();
@@ -127,13 +132,17 @@ public class AARLogParser implements IAARLogParser
 
     private void mapSpawnToMissionArtifactType(IAType12 atype12)
     {
-        if (atype12.getPid().contains(UNKNOWN_MISSION_LOG_ENTITY))
+        if(atype12.getType().contains("Bot"))
+        {
+            logEventData.addBot(atype12.getId(), atype12);
+        }
+        else if (atype12.getPid().contains(UNKNOWN_MISSION_LOG_ENTITY))
         {
             logEventData.addVehicle(atype12.getId(), atype12);
         }
-        else if(atype12.getType().contains("Bot"))
+        else
         {
-            logEventData.addBot(atype12.getId(), atype12);
+            logEventData.addTurret(atype12.getId(), atype12);
         }
     }
 
@@ -143,5 +152,10 @@ public class AARLogParser implements IAARLogParser
         logEventData.addWaypointEvent(atype17);
     }
 
+    private void parseBailoutEvent(String line) throws PWCGException
+    {
+        IAType18 atype18 = LogEventFactory.createAType18(line);
+        logEventData.addBailoutEvent(atype18);
+    }
 }
 

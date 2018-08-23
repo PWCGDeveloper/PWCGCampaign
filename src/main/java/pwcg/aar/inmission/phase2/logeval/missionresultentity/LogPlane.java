@@ -1,5 +1,9 @@
 package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.PlaneStatus;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -15,6 +19,7 @@ public class LogPlane extends LogAIEntity
     private Integer squadronId;
     private boolean crashedInSight = false;
     private LogPilot logPilot;
+    private Map<String, LogTurret> logTurrets = new HashMap<>();
     private int pilotSerialNumber;
     private int planeSerialNumber;
     private int planeStatus = PlaneStatus.STATUS_DEPLOYED;
@@ -58,6 +63,15 @@ public class LogPlane extends LogAIEntity
         {
             Logger.log(LogLevel.ERROR, "While mapping bot = No crew member found for bot: " + botId);
         }
+    }
+
+    public LogTurret createTurret(IAType12 atype12) throws PWCGException
+    {
+        LogTurret logTurret = new LogTurret(atype12.getSequenceNum());
+        logTurret.initializeEntityFromEvent(atype12);
+        logTurret.setParent(this);
+        logTurrets.put(atype12.getId(), logTurret);
+        return logTurret;
     }
 
     public boolean isWithPlane(String searchId)

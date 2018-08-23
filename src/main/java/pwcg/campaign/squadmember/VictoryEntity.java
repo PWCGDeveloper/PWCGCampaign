@@ -7,6 +7,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBalloon;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogGroundUnit;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -18,12 +19,8 @@ public class VictoryEntity
     private String squadronName = "";
     private Integer pilotSerialNumber = SerialNumber.NO_SERIAL_NUMBER;
     private String pilotName ="Unknown";
-    public String getPilotName()
-    {
-        return pilotName;
-    }
-
     private int pilotStatus = SquadronMemberStatus.STATUS_ACTIVE;
+    private boolean isGunner = false;
 
     public VictoryEntity()
     {
@@ -46,6 +43,11 @@ public class VictoryEntity
         {
             LogGroundUnit logGroundUnit = (LogGroundUnit)logEntity;
             initializeForGround(logGroundUnit);
+        }
+        if (logEntity instanceof LogTurret)
+        {
+            LogTurret logTurret = (LogTurret)logEntity;
+            initializeForTurret(victoryDate, logTurret, pilotName);
         }
     }
 
@@ -82,6 +84,16 @@ public class VictoryEntity
     {
         airOrGround = Victory.GROUND_VICTORY;
         type = logGrountUnit.getVehicleType();
+    }
+
+    private void initializeForTurret(Date victoryDate, LogTurret logTurret, String pilotName) throws PWCGException
+    {
+        if (!(logTurret.getParent() instanceof LogPlane))
+            throw new PWCGException("Parent of turret is not a plane");
+
+        LogPlane logPlane = (LogPlane) logTurret.getParent();
+        initializeForPlane(victoryDate, logPlane, pilotName);
+        isGunner = true;
     }
 
     public int getAirOrGround()
@@ -134,10 +146,21 @@ public class VictoryEntity
         this.pilotStatus = pilotStatus;
     }
 
+    public String getPilotName()
+    {
+        return pilotName;
+    }
+
     public void setPilotName(String pilotName)
     {
         this.pilotName = pilotName;
     }
-    
-    
+
+    public boolean isGunner() {
+        return isGunner;
+    }
+
+    public void setGunner(boolean isGunner) {
+        this.isGunner = isGunner;
+    }
 }

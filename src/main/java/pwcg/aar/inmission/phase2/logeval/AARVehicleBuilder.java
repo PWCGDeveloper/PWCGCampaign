@@ -10,6 +10,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBalloon;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogGroundUnit;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.plane.Balloon;
 import pwcg.campaign.plane.Role;
@@ -27,6 +28,7 @@ public class AARVehicleBuilder
     private Map <String, LogPlane> logPlanes = new HashMap<>();
     private Map <String, LogBalloon> logBalloons = new HashMap<>();
     private Map <String, LogGroundUnit> logGroundUnits = new HashMap<>();
+    private Map <String, LogTurret> logTurrets = new HashMap<>();
 
     public AARVehicleBuilder(
             AARBotVehicleMapper botPlaneMapper,
@@ -41,6 +43,7 @@ public class AARVehicleBuilder
     public void buildVehicleListsByVehicleType(AARLogEventData logEventData) throws PWCGException 
     {
         sortVehiclesByType(logEventData.getVehicles());
+        createTurretEntitiesForVehicle(logEventData.getTurrets());
         botPlaneMapper.mapBotsToCrews(logPlanes);        
         landedMapper.buildLandedLocations(logPlanes);
     }
@@ -58,6 +61,10 @@ public class AARVehicleBuilder
         else if (logBalloons.containsKey(id))
         {
             return logBalloons.get(id);
+        }
+        else if (logTurrets.containsKey(id))
+        {
+            return logTurrets.get(id);
         }
 
         return null;
@@ -138,6 +145,18 @@ public class AARVehicleBuilder
         Logger.log(LogLevel.DEBUG, "Add Entity: " + atype12.getName() + " ID:" + atype12.getId() + " Type:" + atype12.getType());
     }
     
+    private void createTurretEntitiesForVehicle(List<IAType12> turretList) throws PWCGException
+    {
+        for (IAType12 atype12 : turretList)
+        {
+            LogPlane planeResult = logPlanes.get(atype12.getPid());
+            if (planeResult != null)
+            {
+                logTurrets.put(atype12.getId(), planeResult.createTurret(atype12));
+            }
+        }
+    }
+
     public Map<String, LogPlane> getLogPlanes()
     {
         return logPlanes;

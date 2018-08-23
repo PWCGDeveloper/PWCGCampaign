@@ -173,11 +173,8 @@ public class Victory implements Comparable<Victory>
 
         // Line 2
         victoryDesc +=  "\n";
-        victoryDesc +=  "A " + victimPlaneType + " of " + victim.getSquadronName() + " was brought down by " + victor.getPilotName();
-        if (victor.getSquadronName() != null && !(victor.getSquadronName().isEmpty()))
-        {
-            victoryDesc += " of " + victor.getSquadronName();
-        }
+        victoryDesc +=  "A " + victimPlaneType + " of " + victim.getSquadronName() + " was brought down by ";
+        victoryDesc += describeVictor();
         victoryDesc +=  ".";
 
         // Line 3
@@ -219,11 +216,8 @@ public class Victory implements Comparable<Victory>
 
         // Line 2
         victoryDesc +=  "\n";
-        victoryDesc +=  "A " + victimBalloonType + " was brought down by " + victor.getPilotName();
-        if (victor.getSquadronName() != null && !(victor.getSquadronName().isEmpty()))
-        {
-            victoryDesc += " of " + victor.getSquadronName();
-        }
+        victoryDesc +=  "A " + victimBalloonType + " was brought down by ";
+        victoryDesc += describeVictor();
         victoryDesc +=  ".";
 
         // Line 3
@@ -232,6 +226,23 @@ public class Victory implements Comparable<Victory>
         victoryDesc +=  " was flying a " + victorPlaneType + ".";          
         
         return victoryDesc;
+    }
+
+    private String describeVictor() {
+        String victorDesc;
+        if (victor.isGunner())
+        {
+            victorDesc = "a gunner flying with " + victor.getPilotName();
+        }
+        else
+        {
+            victorDesc = victor.getPilotName();
+        }
+        if (victor.getSquadronName() != null && !(victor.getSquadronName().isEmpty()))
+        {
+            victorDesc += " of " + victor.getSquadronName();
+        }
+        return victorDesc;
     }
 
     private String getVictoryDescriptionAirToAirSimple() throws PWCGException
@@ -300,7 +311,9 @@ public class Victory implements Comparable<Victory>
 
         // Line 2
         victoryDesc +=  "\n";
-        victoryDesc +=  "A " + getGroundUnitName(victim.getType()) + " was destroyed by " + victor.getPilotName() + " of " + victor.getSquadronName() + ".";
+        victoryDesc +=  "A " + getGroundUnitName(victim.getType()) + " was destroyed by ";
+        victoryDesc += describeVictor();
+        victoryDesc += ".";
 
         // Line 3
         victoryDesc +=  "\n";

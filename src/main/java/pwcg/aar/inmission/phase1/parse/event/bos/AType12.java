@@ -51,6 +51,8 @@ public class AType12 extends ATypeBase implements IAType12
         country = CountryFactory.makeCountryByCode(countryCode);
 
         name = getString(line, "NAME:", " PID:");
+        if (name.startsWith("\u0001"))
+            name = name.substring(1);
         
         if (line.contains(" POS("))
             pid = getString(line, "PID:", " POS(");

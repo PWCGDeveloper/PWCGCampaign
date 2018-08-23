@@ -237,7 +237,7 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
             
             super.write(writer);
 
-            writer.write("  Name = \"" + name + "\";");
+            writer.write("  Name = \"\u0001" + name + "\";");
             writer.newLine();
             writer.write("  Index = " + index + ";");
             writer.newLine();
