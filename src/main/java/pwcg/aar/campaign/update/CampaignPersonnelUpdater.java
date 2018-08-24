@@ -61,6 +61,7 @@ public class CampaignPersonnelUpdater
         squadronMembersCaptured();
         squadronMembersMaimed();
         squadronMembersWounded();
+        squadronMembersTransferredHome();
         squadronMembersTransfers();
     }
 
@@ -95,6 +96,14 @@ public class CampaignPersonnelUpdater
         {
             Date woundrecoveryDate = determinePlayerWoundedTime(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
             pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), woundrecoveryDate);
+        }
+    }
+
+    private void squadronMembersTransferredHome() throws PWCGException
+    {
+        for (SquadronMember pilot : aarContext.getCampaignUpdateData().getPersonnelLosses().getPersonnelTransferredHome().values())
+        {
+            pilot.setPilotActiveStatus(SquadronMemberStatus.STATUS_TRANSFERRED, campaign.getDate(), null);
         }
     }
 

@@ -10,12 +10,13 @@ public class AARCampaignUpdateTabulator
 {
     private Campaign campaign;
     private AARContext aarContext;
-    private CampaignUpdateData campaignUpdateData = new CampaignUpdateData();
+    private CampaignUpdateData campaignUpdateData;
     
     public AARCampaignUpdateTabulator(Campaign campaign, AARContext aarContext)
     {
         this.campaign = campaign;
-        this.aarContext = aarContext;   
+        this.aarContext = aarContext; 
+        this.campaignUpdateData = new CampaignUpdateData(campaign); 
     }
     
     public CampaignUpdateData tabulateAARForCampaignUpdate() throws PWCGException

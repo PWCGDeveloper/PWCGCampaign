@@ -38,7 +38,6 @@ public class TransferHandler
         return squadronTransferData;
     }
 
-
     private void replaceForService(ServiceResupplyNeed serviceTransferNeed, PersonnelReplacementsService serviceReplacements) throws PWCGException
     {
         while (serviceTransferNeed.hasNeedySquadron())

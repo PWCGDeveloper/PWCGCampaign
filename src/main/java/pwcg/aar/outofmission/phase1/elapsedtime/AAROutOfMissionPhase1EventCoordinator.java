@@ -53,7 +53,8 @@ public class AAROutOfMissionPhase1EventCoordinator
 	{
         outOfMissionAwards();
 		aceElapsedTimeEvents();
-		outOfMissionVictories();
+        outOfMissionVictories();
+        changeInCommand();
 		createElapsedTimeEvents();
 	}
 
@@ -77,6 +78,13 @@ public class AAROutOfMissionPhase1EventCoordinator
         OutOfMissionVictoryData victoriesOutOMission = victoryEventHandler.generateOutOfMissionVictories();
         reconciledOutOfMissionData.getPersonnelAwards().getVictoriesByPilot().putAll(victoriesOutOMission.getVictoryAwardsBySquadronMember());
         outOfMissionLosses(victoriesOutOMission.getShotDownPilots(), victoriesOutOMission.getShotDownPlanes());
+    }
+    
+    private void changeInCommand() throws PWCGException
+    {
+        OutOfMissionCommandChangeHandler commandChangeHandler = new OutOfMissionCommandChangeHandler(campaign);
+        AARPersonnelLosses personnelLossesTransferHome = commandChangeHandler.replaceCommanderWithPlayer();
+        reconciledOutOfMissionData.getPersonnelLossesOutOfMission().mergePersonnelTransferredHome(personnelLossesTransferHome.getPersonnelTransferredHome());
     }
 
     private void outOfMissionLosses(Map<Integer, SquadronMember> shotDownPilots, Map<Integer, EquippedPlane> shotDownPlanes) throws PWCGException 

@@ -259,7 +259,6 @@ public class SquadronMember implements Cloneable
     public boolean determineIsSquadronMemberCommander() throws PWCGException
     {
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-
         IRankHelper rankObj = RankFactory.createRankHelper();
         int rankPos = rankObj.getRankPosByService(getRank(), determineService(campaign.getDate()));
         if (rankPos == 0)
@@ -343,13 +342,19 @@ public class SquadronMember implements Cloneable
         }
         else if (pilotActiveStatus <= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
         {
-            this.recoveryDate = new Date(recoveryDate.getTime());            
-            this.inactiveDate = null;            
+            recoveryDate = new Date(recoveryDate.getTime());            
+            inactiveDate = null;            
+        }
+        else if (pilotActiveStatus <= SquadronMemberStatus.STATUS_TRANSFERRED)
+        {
+            pilotActiveStatus = SquadronMemberStatus.STATUS_ACTIVE;
+            recoveryDate = null;            
+            inactiveDate = null;            
         }
         else if (pilotActiveStatus == SquadronMemberStatus.STATUS_ACTIVE)
         {
-            this.inactiveDate = null;            
-            this.recoveryDate = null;            
+            inactiveDate = null;            
+            recoveryDate = null;            
         }
     }
 
@@ -366,10 +371,15 @@ public class SquadronMember implements Cloneable
             recoveryDate = new Date(updatedRecoveryDate.getTime());            
             inactiveDate = null;            
         }
+        else if (pilotActiveStatus <= SquadronMemberStatus.STATUS_TRANSFERRED)
+        {
+            recoveryDate = null;            
+            inactiveDate = new Date(statusDate.getTime());
+        }
         else if (pilotActiveStatus == SquadronMemberStatus.STATUS_ACTIVE)
         {
-            this.inactiveDate = null;            
-            this.recoveryDate = null;            
+            inactiveDate = null;            
+            recoveryDate = null;            
         }
     }
 

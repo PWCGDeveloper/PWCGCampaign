@@ -41,6 +41,7 @@ import pwcg.core.utils.MathUtils;
 
 public class Squadron 
 {
+    public static final Integer HOME_ASSIGNMENT = -2;
     public static final Integer REPLACEMENT = -1;
     public static final Integer SQUADRON_STAFF_SIZE = 12;
     public static final Integer SQUADRON_EQUIPMENT_SIZE = 14;

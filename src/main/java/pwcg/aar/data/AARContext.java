@@ -33,7 +33,7 @@ public class AARContext
     private ReconciledOutOfMissionData cumulativeMissionData = new ReconciledOutOfMissionData();
 
     // Tabulated
-    private CampaignUpdateData campaignUpdateData = new CampaignUpdateData();
+    private CampaignUpdateData campaignUpdateData = new CampaignUpdateData(campaign);
     private UICombatReportData uiCombatReportData;
     private UIDebriefData uiDebriefData = new UIDebriefData();
 
@@ -56,7 +56,7 @@ public class AARContext
         missionEvaluationData = new AARMissionEvaluationData();
         reconciledInMissionData = new ReconciledInMissionData();
         reconciledOutOfMissionData = new ReconciledOutOfMissionData();
-        campaignUpdateData = new CampaignUpdateData();
+        campaignUpdateData = new CampaignUpdateData(campaign);
     }
     
     public AARPreliminaryData getPreliminaryData()

@@ -53,7 +53,7 @@ public class PersonnelActiveFilter
         }
         else if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_TRANSFERRED)
         {
-            return true;
+            return false;
         }
         else if (pilot.getPilotActiveStatus() == SquadronMemberStatus.STATUS_WOUNDED)
         {

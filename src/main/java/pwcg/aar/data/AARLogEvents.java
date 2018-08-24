@@ -1,30 +1,44 @@
 package pwcg.aar.data;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import pwcg.aar.ui.events.model.AAREvent;
+import pwcg.campaign.Campaign;
 
 public class AARLogEvents
 {
-    private List<AAREvent> campaignLogEvents = new ArrayList<>();
+    private Campaign campaign;
+    private Map<Integer, AAREvent> campaignLogEvents = new TreeMap<>();
 
+    public AARLogEvents(Campaign campaign)
+    {
+        this.campaign = campaign;
+    }
+    
     public void addEvent(AAREvent event)
     {
-        campaignLogEvents.add(event);
+        campaignLogEvents.put(event.getEventId(), event);
     }
 
     public void addEvents(List<? extends AAREvent> events)
     {
-        campaignLogEvents.addAll(events);
+        for (AAREvent event : events)
+        {
+            if (!(event.getDate().before(campaign.getDate())))
+            {
+                addEvent(event);
+            }
+        }
     }
 
     public void merge(AARLogEvents source)
     {
-        campaignLogEvents.addAll(source.getCampaignLogEvents());
+        campaignLogEvents.putAll(source.getCampaignLogEvents());
     }
 
-    public List<AAREvent> getCampaignLogEvents()
+    public Map<Integer, AAREvent> getCampaignLogEvents()
     {
         return campaignLogEvents;
     }

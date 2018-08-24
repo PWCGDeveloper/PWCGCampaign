@@ -32,9 +32,9 @@ public class CampaignLogs
 	{
 	}
 
-	public void setCampaignLogs(Campaign campaign, List<AAREvent> eventList) throws PWCGException
+	public void setCampaignLogs(Campaign campaign, Map<Integer, AAREvent> eventList) throws PWCGException
 	{
-		for (AAREvent event : eventList)
+		for (AAREvent event : eventList.values())
 		{
 			if (event instanceof AceKilledEvent)
 			{

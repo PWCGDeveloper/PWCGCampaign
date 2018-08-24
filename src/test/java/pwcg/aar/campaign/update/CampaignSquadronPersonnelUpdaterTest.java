@@ -14,12 +14,18 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
+import pwcg.aar.data.AARPersonnelLosses;
+import pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionCommandChangeHandler;
 import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
@@ -122,6 +128,49 @@ public class CampaignSquadronPersonnelUpdaterTest
         SquadronMember squadronMemberAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(maimedPlayer.getSerialNumber()); 
         assert (squadronMemberAfterUpdate.getPilotActiveStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
         assert(maimedPlayer.getRecoveryDate().after(campaign.getDate()));
+    }
+
+    @Test
+    public void testPlayerBecomesCommander() throws PWCGException
+    {
+        SquadronMember commander = null;
+        commander = getAiCommander();
+        assert (commander != null);
+
+        SquadronMember player = SquadronMemberPicker.pickPlayerSquadronMember(campaign);
+
+        IRankHelper iRank = RankFactory.createRankHelper();        
+        String commandRank = iRank.getRankByService(0, player.determineService(campaign.getDate()));
+        player.setRank(commandRank);
+        
+        OutOfMissionCommandChangeHandler commandChangeHandler = new OutOfMissionCommandChangeHandler(campaign);
+        AARPersonnelLosses personnelLossesTransferHome = commandChangeHandler.replaceCommanderWithPlayer();
+        aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission().mergePersonnelTransferredHome(personnelLossesTransferHome.getPersonnelTransferredHome());
+
+        CampaignPersonnelUpdater personellUpdater = new CampaignPersonnelUpdater(campaign, aarContext);
+        personellUpdater.personnelUpdates();
+
+        SquadronMember commanderAfterUpdate = campaign.getPersonnelManager().getAnyCampaignMember(commander.getSerialNumber()); 
+        assert (commanderAfterUpdate.getPilotActiveStatus() == SquadronMemberStatus.STATUS_TRANSFERRED);
+        assert(commanderAfterUpdate.getInactiveDate().equals(campaign.getDate()));
+
+        SquadronMember activeCommander = getAiCommander();
+        assert (activeCommander == null);
+    }
+
+    private SquadronMember getAiCommander() throws PWCGException
+    {
+        SquadronMember commander = null;
+        SquadronMembers squadronMembers = campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMembersWithAces();
+        SquadronMembers activeSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronMembers.getSquadronMemberCollection(), campaign.getDate());
+        for (SquadronMember squadronMember : activeSquadronMembers.getSquadronMemberList())
+        {
+            if (squadronMember.determineIsSquadronMemberCommander() && !squadronMember.isPlayer())
+            {
+                commander = squadronMember;
+            }
+        }
+        return commander;
     }
 
     @Test

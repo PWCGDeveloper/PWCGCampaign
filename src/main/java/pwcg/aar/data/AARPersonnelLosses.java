@@ -12,6 +12,7 @@ public class AARPersonnelLosses
     private Map<Integer, SquadronMember> personnelCaptured = new HashMap<>();
     private Map<Integer, SquadronMember> personnelMaimed = new HashMap<>();
     private Map<Integer, SquadronMember> personnelWounded = new HashMap<>();
+    private Map<Integer, SquadronMember> personnelTransferredHome = new HashMap<>();
     private Map<Integer, Ace> acesKilled = new HashMap<>();
 
     
@@ -26,6 +27,7 @@ public class AARPersonnelLosses
         squadronMembersLost.putAll(personnelMaimed);
         squadronMembersLost.putAll(personnelCaptured);
         squadronMembersLost.putAll(acesKilled);
+        squadronMembersLost.putAll(personnelTransferredHome);
         return squadronMembersLost;
     }
 
@@ -36,6 +38,7 @@ public class AARPersonnelLosses
         personnelCaptured.putAll(personnelEvents.getPersonnelCaptured());
         personnelWounded.putAll(personnelEvents.getPersonnelWounded());
         acesKilled.putAll(personnelEvents.getAcesKilled());
+        personnelTransferredHome.putAll(personnelEvents.getPersonnelTransferredHome());
     }
 
     public boolean wasAceKilledInMission(Integer aceSerialNumber)
@@ -66,6 +69,11 @@ public class AARPersonnelLosses
     public Map<Integer, SquadronMember> getPersonnelWounded()
     {
         return personnelWounded;
+    }    
+
+    public Map<Integer, SquadronMember> getPersonnelTransferredHome()
+    {
+        return personnelTransferredHome;
     }
 
     public void mergePersonnelKilled(Map<Integer, SquadronMember> squadMembersKilled)
@@ -78,15 +86,19 @@ public class AARPersonnelLosses
         this.personnelMaimed.putAll(squadMembersMaimed);
     }
 
-
     public void mergePersonnelWounded(Map<Integer, SquadronMember> squadMembersWounded)
     {
         this.personnelWounded.putAll(squadMembersWounded);
     }
- 
+    
     public void mergePersonnelCaptured(Map<Integer, SquadronMember> squadMembersCaptured)
     {
         this.personnelCaptured.putAll(squadMembersCaptured);
+    }
+    
+    public void mergePersonnelTransferredHome(Map<Integer, SquadronMember> personnelTransferredHome)
+    {
+        this.personnelTransferredHome.putAll(personnelTransferredHome);
     }
 
     public void mergeAcesKilled(Map<Integer, Ace> acesKilled)
@@ -117,5 +129,10 @@ public class AARPersonnelLosses
     public void addAcesKilled(Ace aceKilled)
     {
         this.acesKilled.put(aceKilled.getSerialNumber(), aceKilled);
+    }
+    
+    public void addPersonnelTransferredHome(SquadronMember campaignMemberTransferred)
+    {
+        this.personnelTransferredHome.put(campaignMemberTransferred.getSerialNumber(), campaignMemberTransferred);
     }
 }

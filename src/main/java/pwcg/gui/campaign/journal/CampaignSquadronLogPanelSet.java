@@ -79,9 +79,6 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
         }
     }
 
-    /**
-     * @param screenSize
-     */
     private void calculateLinesPerPage(Dimension screenSize)
     {
         linesPerPage = 55;
@@ -98,11 +95,7 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 			linesPerPage = 25;
 		}		
     }
-	
 
-    /**
-     * @param screenSize
-     */
     private void calculateCharsPerLine(Dimension screenSize)
     {
         charsPerLine = 70;
@@ -120,9 +113,6 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
         }
     }
 
-	/**
-	 * @param visible
-	 */
 	public void makeVisible(boolean visible) 
 	{
 	}
@@ -135,11 +125,7 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 		
         makePages();        
 	}
-	
 
-	/**
-	 * @return
-	 */
 	private Map<Integer, StringBuffer> orderPageEntries()
 	{
 		Map<Integer, StringBuffer> pages = new TreeMap<Integer, StringBuffer>();

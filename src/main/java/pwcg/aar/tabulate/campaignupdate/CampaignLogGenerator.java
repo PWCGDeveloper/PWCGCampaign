@@ -15,12 +15,13 @@ public class CampaignLogGenerator
 {
 	private Campaign campaign;
 	private AARContext aarContext;
-	private AARLogEvents campaignLogEvents = new AARLogEvents();
+	private AARLogEvents campaignLogEvents;
 	
 	public CampaignLogGenerator(Campaign campaign, AARContext aarContext)
 	{
 		this.campaign = campaign;
 		this.aarContext = aarContext;
+		this.campaignLogEvents = new AARLogEvents(campaign);
 	}
 	
 	public AARLogEvents createCampaignLogEventsForCampaignUpdate() throws PWCGException
@@ -36,28 +37,9 @@ public class CampaignLogGenerator
 		return campaignLogEvents;
 	}
 
-    private void createElapsedTimeEvents() throws PWCGException
-	{
-    	if (aarContext.getNewDate() != null)
-    	{
-	    	ElapsedTimeEventGenerator elapsedTimeEventGenerator = new ElapsedTimeEventGenerator(campaign, aarContext);	
-	    	ElapsedTimeEvents elapsedTimeEvents = elapsedTimeEventGenerator.createElapsedTimeEvents();
-	    	
-	    	if (elapsedTimeEvents.getSquadronMoveEvent() != null)
-	    	{
-	    		campaignLogEvents.addEvent(elapsedTimeEvents.getSquadronMoveEvent());
-	    	}
-	    	
-	    	if (elapsedTimeEvents.getEndOfWarEvent() != null)
-	    	{
-	    		campaignLogEvents.addEvent(elapsedTimeEvents.getEndOfWarEvent());
-	    	}
-    	}
-	}
-
 	private void createPilotVictoryEvents() throws PWCGException
     {
-        campaignLogEvents.addEvents(aarContext.getUiCombatReportData().getCombatReportPanelData().getVictoriesForSquadronMembersInMission());
+	    campaignLogEvents.addEvents(aarContext.getUiCombatReportData().getCombatReportPanelData().getVictoriesForSquadronMembersInMission());
     }
 	
     private void createPilotMedalEvents() throws PWCGException
@@ -86,4 +68,22 @@ public class CampaignLogGenerator
         campaignLogEvents.addEvents(aarContext.getUiDebriefData().getTransferPanelData().getTransferIntoSquadron());
     }
 
+    private void createElapsedTimeEvents() throws PWCGException
+    {
+        if (aarContext.getNewDate() != null)
+        {
+            ElapsedTimeEventGenerator elapsedTimeEventGenerator = new ElapsedTimeEventGenerator(campaign, aarContext);  
+            ElapsedTimeEvents elapsedTimeEvents = elapsedTimeEventGenerator.createElapsedTimeEvents();
+            
+            if (elapsedTimeEvents.getSquadronMoveEvent() != null)
+            {
+                campaignLogEvents.addEvent(elapsedTimeEvents.getSquadronMoveEvent());
+            }
+            
+            if (elapsedTimeEvents.getEndOfWarEvent() != null)
+            {
+                campaignLogEvents.addEvent(elapsedTimeEvents.getEndOfWarEvent());
+            }
+        }
+    }
 }

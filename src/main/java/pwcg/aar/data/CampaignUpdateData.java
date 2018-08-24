@@ -3,6 +3,7 @@ package pwcg.aar.data;
 import java.util.Date;
 
 import pwcg.aar.outofmission.phase2.resupply.AARResupplyData;
+import pwcg.campaign.Campaign;
 
 public class CampaignUpdateData
 {
@@ -11,10 +12,11 @@ public class CampaignUpdateData
     private AAREquipmentLosses equipmentLosses = new AAREquipmentLosses();
     private AARResupplyData resupplyData = new AARResupplyData();
     private AARPersonnelAwards personnelAwards = new AARPersonnelAwards();
-    private AARLogEvents logEvents = new AARLogEvents();
+    private AARLogEvents logEvents;
 
-    public CampaignUpdateData()
+    public CampaignUpdateData(Campaign campaign)
     {
+        this.logEvents = new AARLogEvents(campaign);
     }
 
     public void merge(CampaignUpdateData sourceCampaignUpdateData)
