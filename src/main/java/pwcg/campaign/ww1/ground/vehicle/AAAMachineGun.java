@@ -1,75 +1,70 @@
 package pwcg.campaign.ww1.ground.vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
 public class AAAMachineGun extends AAA
 {
-	// German
-	private String[][] germanMGs = 
-	{
-		{ "lmg08aaa", "machineguns" },
-	};
-	
-	// Allied
-	private String[][] alliedMGs = 
-	{
-		{ "hotchkissaaa", "machineguns" },
-	};
- 
-	public AAAMachineGun(ICountry country) 
-	{
-        super(country);
-		
-		// Make AAA not engageable to avoid aircraft diving on every MG that they come across
-		this.setEngageable(0);
+    private static final List<VehicleDefinition> germanAAAMachineGuns = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "artillery\\machineguns\\", "lmg08aaa", Country.GERMANY));
+        }
+    };
 
-		String mgId= "";
-		String mgDir = "";
-		
-		if (country.getCountry() == Country.FRANCE)
-		{
-			int selectedMG = RandomNumberGenerator.getRandom(alliedMGs.length);
-			mgId = alliedMGs[selectedMG] [0];
-			mgDir = alliedMGs[selectedMG] [1];
-			displayName = "French MG";
-		}
-		else if (country.getCountry() == Country.USA)
-		{
-			int selectedMG = RandomNumberGenerator.getRandom(alliedMGs.length);
-			mgId = alliedMGs[selectedMG] [0];
-			mgDir = alliedMGs[selectedMG] [1];
-			displayName = "American MG";
-		}
-		else if (country.getCountry() == Country.GERMANY)
-		{
-			int selectedMG = RandomNumberGenerator.getRandom(germanMGs.length);
-			mgId = germanMGs[selectedMG] [0];
-			mgDir = germanMGs[selectedMG] [1];
-			displayName = "German MG";
-		}
-		else
-		{
-			int selectedMG = RandomNumberGenerator.getRandom(alliedMGs.length);
-			mgId = alliedMGs[selectedMG] [0];			
-			mgDir = alliedMGs[selectedMG] [1];
-			displayName = "British MG";
-		}
-		
-		vehicleType = mgId;
-		script = "LuaScripts\\WorldObjects\\" + mgId + ".txt";
-		model = "graphics\\artillery\\" + mgDir + "\\" + mgId + ".mgm";
-	}
+    private static final List<VehicleDefinition> alliedAAAMachineGuns = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "artillery\\machineguns\\", "hotchkissaaa", Country.FRANCE));
+        }
+    };
+
+    
+    public AAAMachineGun()
+    {
+        super();
+    }
+
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanAAAMachineGuns);
+        allvehicleDefinitions.addAll(alliedAAAMachineGuns);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
+        if (country.getSideNoNeutral() == Side.ALLIED)
+        {
+            vehicleSet = alliedAAAMachineGuns;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanAAAMachineGuns;
+        }
+        
+        displayName = "AAA Machine Gun";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 
 	public AAAMachineGun copy () throws PWCGException 
 	{
-		AAAMachineGun mg = new AAAMachineGun(country);
+		AAAMachineGun mg = new AAAMachineGun();
 		
 		mg.index = IndexGenerator.getInstance().getNextIndex();
 		

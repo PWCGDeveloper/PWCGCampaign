@@ -1,40 +1,75 @@
 package pwcg.campaign.ww1.ground.vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
 public class PillBox extends Vehicle
 {
-	private String[] pillBoxes = 
-	{
-	    "pillbox01", "pillbox02", "pillbox03", "pillbox04"
-	};
-	
-	public PillBox(ICountry country) 
-	{
-        super(country);
+    private static final List<VehicleDefinition> germanPillBoxes = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "firingpoint\\pillbox\\", "pillbox01", Country.GERMANY));
+            add(new VehicleDefinition("", "firingpoint\\pillbox\\", "pillbox02", Country.GERMANY));
+            add(new VehicleDefinition("", "firingpoint\\pillbox\\", "pillbox03", Country.GERMANY));
+            add(new VehicleDefinition("", "firingpoint\\pillbox\\", "pillbox04", Country.GERMANY));
+        }
+    };
 
-		this.setEngageable(1);
+    private static final List<VehicleDefinition> alliedPillBoxes = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "firingpoint\\pillbox\\", "pillbox01", Country.BRITAIN));
+            add(new VehicleDefinition("", "firingpoint\\pillbox\\", "pillbox02", Country.BRITAIN));
+            add(new VehicleDefinition("", "firingpoint\\pillbox\\", "pillbox03", Country.BRITAIN));
+            add(new VehicleDefinition("", "firingpoint\\pillbox\\", "pillbox04", Country.BRITAIN));
+        }
+    };
+    
+    public PillBox()
+    {
+        super();
+    }
+    
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanPillBoxes);
+        allvehicleDefinitions.addAll(alliedPillBoxes);
+        return allvehicleDefinitions;
+    }
 
-		String pillBoxId= "";
-		
-        int selectedPillBox = RandomNumberGenerator.getRandom(pillBoxes.length);
-        pillBoxId = pillBoxes[selectedPillBox];
-        displayName = "PillBox";
-		
-        vehicleType = pillBoxId;
-		script = "LuaScripts\\WorldObjects\\" + pillBoxId + ".txt";
-		model = "graphics\\firingpoint\\pillbox\\" + pillBoxId + ".mgm";
-	}
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
+        if (country.getSideNoNeutral() == Side.ALLIED)
+        {
+            vehicleSet = alliedPillBoxes;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanPillBoxes;
+        }
+        
+        displayName = "Pillbox";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 
 	public PillBox copy () throws PWCGException 
 	{
-		PillBox pillBox = new PillBox(country);
+		PillBox pillBox = new PillBox();
 		
 		pillBox.index = IndexGenerator.getInstance().getNextIndex();
 		

@@ -1,56 +1,70 @@
 package pwcg.campaign.ww1.ground.vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
 public class Drifter extends Vehicle
 {
-	// German
-    private String unarmedDrifter = "hmsDrifter";
-    private String germanArmedDrifter = "gerdrifter";
-    private String britishArmedDrifter = "hmsdrifter6pdraaa";
-	
-	public Drifter(ICountry country) throws PWCGException 
-	{
-        super(country);
-        this.country = country;
-		
-		String shipId= unarmedDrifter;
-		displayName = "Drifter";
-		
-		// Armed drifter?
-		int armedRoll = RandomNumberGenerator.getRandom(100);
-		if (armedRoll < 20)
-		{
-		    displayName = "AAA Drifter";
-		    
-	        if (country.getSideNoNeutral() == Side.ALLIED)
-    		{
-    			shipId = britishArmedDrifter;
-    		}
-    		else
-    		{
-    			shipId = germanArmedDrifter;
-    		}
-		}
-		
-	    vehicleType = shipId;
-	    script = "LuaScripts\\WorldObjects\\" + shipId + ".txt";
-	    model = "graphics\\vehicles\\platoon\\" + shipId + ".mgm";
-	}
+    private static final List<VehicleDefinition> germanDrifters = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "vehicles\\platoon\\", "gerdrifter", Country.GERMANY));
+        }
+    };
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#clone()
-	 */
+    private static final List<VehicleDefinition> alliedDrifters = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "vehicles\\platoon\\", "hmsDrifter", Country.GERMANY));
+            add(new VehicleDefinition("", "vehicles\\platoon\\", "hmsdrifter6pdraaa", Country.GERMANY));
+        }
+    };
+    
+    public Drifter()
+    {
+        super();
+    }
+    
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanDrifters);
+        allvehicleDefinitions.addAll(alliedDrifters);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
+        if (country.getSideNoNeutral() == Side.ALLIED)
+        {
+            vehicleSet = alliedDrifters;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanDrifters;
+        }
+        
+        displayName = "River Ship";
+        makeRandomVehicleInstance(vehicleSet);
+    }
+
 	public Drifter copy () throws PWCGException 
 	{
-		Drifter ship = new Drifter(this.country);
+		Drifter ship = new Drifter();
 		
 		ship.index = IndexGenerator.getInstance().getNextIndex();
 		

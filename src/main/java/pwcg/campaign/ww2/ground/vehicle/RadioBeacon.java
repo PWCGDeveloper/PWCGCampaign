@@ -2,10 +2,15 @@ package pwcg.campaign.ww2.ground.vehicle;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.ww1.ground.vehicle.VehicleDefinition;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.constants.Callsign;
@@ -24,16 +29,51 @@ class RadioBeacon extends Vehicle implements IVehicle
     private int spotter = -1;
     private int coopStart = 0;
 
-    public RadioBeacon(ICountry country) 
+    private static final List<VehicleDefinition> germanRadioBeacon = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "vehicles\\", "ndb", Country.GERMANY));
+        }
+    };
+
+    private static final List<VehicleDefinition> russianRadioBeacon = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "vehicles\\", "ndb", Country.RUSSIA));
+        }
+    };
+
+    public RadioBeacon() 
     {
         super();
-        
-        this.country = country;
+    }
+
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanRadioBeacon);
+        allvehicleDefinitions.addAll(russianRadioBeacon);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
+        if (country.getSideNoNeutral() == Side.ALLIED)
+        {
+            vehicleSet = russianRadioBeacon;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanRadioBeacon;
+        }
         
         displayName = "Radio Beacon";
-        vehicleType = "Radio Beacon";
-        script = "LuaScripts\\WorldObjects\\vehicles\\ndb.txt";
-        model = "graphics\\vehicles\\ndb.mgm";
+        makeRandomVehicleInstance(vehicleSet);
     }
 
     public void initialize(Flight flight) throws PWCGException 

@@ -1,25 +1,67 @@
 package pwcg.campaign.ww1.ground.staticobject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
+import pwcg.campaign.ww1.ground.vehicle.VehicleDefinition;
 import pwcg.core.exception.PWCGException;
 
 
 public class StaticTent extends StaticObject
 {
-	public StaticTent(ICountry country) 
-	{
-		super(country);
-		
-		this.country = country;
-		
-		vehicleType = "Tent";
-		script = "LuaScripts\\WorldObjects\\tent02" + ".txt";
-		model = "graphics\\battlefield\\tent02" + ".mgm";
-	}
+    private static final List<VehicleDefinition> germanTents = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "battlefield\\", "tent02", Country.GERMANY));
+        }
+    };
+    
+    private static final List<VehicleDefinition> alliedTents = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "battlefield\\", "tent02", Country.BRITAIN));
+        }
+    };
+
+    public StaticTent() throws PWCGException 
+    {
+        super();
+    }
+
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanTents);
+        allvehicleDefinitions.addAll(alliedTents);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
+        if (country.getSideNoNeutral() == Side.ALLIED)
+        {
+            vehicleSet = alliedTents;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanTents;
+        }
+        
+        displayName = "Tent";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 
 	public StaticTent copy () throws PWCGException 
 	{
-		StaticTent clonedObject = new StaticTent(country);
+		StaticTent clonedObject = new StaticTent();
 		
 		super.makeCopy(clonedObject);
 		

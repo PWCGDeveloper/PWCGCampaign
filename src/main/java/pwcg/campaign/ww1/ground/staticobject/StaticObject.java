@@ -3,7 +3,6 @@ package pwcg.campaign.ww1.ground.staticobject;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.campaign.ww1.ground.vehicle.Vehicle;
 import pwcg.core.exception.PWCGException;
@@ -15,9 +14,9 @@ import pwcg.mission.mcu.McuTREntity;
 
 public abstract class StaticObject extends Vehicle
 {
-    public StaticObject(ICountry country) 
+    public StaticObject() 
     {
-        super(country);
+        super();
     }
 
 	public StaticObject makeCopy (StaticObject staticObject) throws PWCGException 

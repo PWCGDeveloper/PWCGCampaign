@@ -10,6 +10,7 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.MissionFileFactory;
 import pwcg.campaign.io.json.CampaignMissionIOJson;
 import pwcg.campaign.io.mission.MissionDescriptionFile;
+import pwcg.campaign.ww2.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.mission.data.PwcgGeneratedMission;
@@ -35,6 +36,7 @@ public class Mission
     private MissionAirfieldIconBuilder missionAirfieldIconBuilder = new MissionAirfieldIconBuilder();
     private MissionFrontLineIconBuilder missionFrontLines;
     private MissionEffects missionEffects = new MissionEffects();
+    private VehicleSetBuilderComprehensive vehicleSetBuilder = new VehicleSetBuilderComprehensive();
     private boolean isFinalized = false;
 
     public Mission()
@@ -72,6 +74,13 @@ public class Mission
 
         MissionOptions missionOptions = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions();
         missionOptions.createFlightSpecificMissionOptions(missionFlightBuilder.getPlayerFlight());
+    }
+    
+    public void generateAllGroundUnitTypes() throws PWCGException
+    {
+        vehicleSetBuilder = new VehicleSetBuilderComprehensive();
+        vehicleSetBuilder.makeOneOfEachType();
+        vehicleSetBuilder.scatterAroundPosition(missionFlightBuilder.getPlayerFlight().getPosition().copy());
     }
 
     private void createAmbientUnits() throws PWCGException, PWCGException
@@ -247,5 +256,15 @@ public class Mission
     public MissionBattleManager getMissionBattleManager()
     {
         return missionBattleManager;
+    }
+
+    public MissionPlaneLimiter getMissionPlaneLimiter()
+    {
+        return missionPlaneLimiter;
+    }
+
+    public VehicleSetBuilderComprehensive getVehicleSetBuilder()
+    {
+        return vehicleSetBuilder;
     }  
 }

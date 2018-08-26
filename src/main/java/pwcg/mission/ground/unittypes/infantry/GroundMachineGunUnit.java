@@ -23,7 +23,8 @@ public class GroundMachineGunUnit extends GroundDirectFireUnit
 
     public void createUnits() throws PWCGException  
     {
-        spawningVehicle = new MachineGun(pwcgGroundUnitInformation.getCountry());
+        spawningVehicle = new MachineGun();
+        spawningVehicle.makeRandomVehicleFromSet(pwcgGroundUnitInformation.getCountry());
         spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation());
         spawningVehicle.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
         spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());

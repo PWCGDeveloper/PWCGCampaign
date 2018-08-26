@@ -10,6 +10,7 @@ import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.utils.TestDriver;
+import pwcg.campaign.ww2.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.DateUtils;
@@ -22,6 +23,7 @@ import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.GroundUnitSpawning;
 import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
+import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.object.WindSock;
 
 /**
@@ -57,6 +59,7 @@ public abstract class MissionFileWriter implements IMissionFile
 		    writeMissionFileHeader(writer);            
             writeMissionOptions(writer);
             writeFlights(writer);		
+            writeVehiclesForTest(writer);
             
             if (!TestDriver.getInstance().isCreatePlayerOnly())
             {
@@ -157,6 +160,16 @@ public abstract class MissionFileWriter implements IMissionFile
         for (GroundUnitSpawning aaa : ambientGroundUnitBuilder.getAAA())
         {
             aaa.write(writer);
+        }
+    }
+
+    private void writeVehiclesForTest(BufferedWriter writer) throws PWCGException
+    {
+        VehicleSetBuilderComprehensive vehicleSetBuilderComprehensive = mission.getVehicleSetBuilder();
+
+        for (IVehicle vehicle: vehicleSetBuilderComprehensive.getAllVehicles())
+        {
+            vehicle.write(writer);
         }
     }
 

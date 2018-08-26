@@ -1,53 +1,69 @@
 package pwcg.campaign.ww1.ground.vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
 public class Infantry extends Vehicle
 {
-	private String[] germanInfantry = 
-	{
-		"infantryde" 
-	};
-	
-	private String[] britishInfantry = 
-	{
-		"infantryen" 
-	};
+    private static final List<VehicleDefinition> germanInfantry = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "firingpoint\\soldiers\\", "infantryde", Country.GERMANY));
+        }
+    };
 
-	public Infantry(ICountry country) throws PWCGException 
-	{
-        super(country);
+    private static final List<VehicleDefinition> alliedInfantry = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "firingpoint\\soldiers\\", "infantryen", Country.BRITAIN));
+        }
+    };
+    
+    public Infantry()
+    {
+        super();
+    }
+    
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanInfantry);
+        allvehicleDefinitions.addAll(alliedInfantry);
+        return allvehicleDefinitions;
+    }
 
-		String infantryId= "";
-		
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
         if (country.getSideNoNeutral() == Side.ALLIED)
-		{
-			int selectedInfantry = RandomNumberGenerator.getRandom(britishInfantry.length);
-			infantryId = britishInfantry[selectedInfantry];			
-			displayName = "Allied Infantry";
-		}
-		else
-		{
-			int selectedInfantry = RandomNumberGenerator.getRandom(germanInfantry.length);
-			infantryId = germanInfantry[selectedInfantry];
-			displayName = "German Infantry";
-		}
-		
-		vehicleType = infantryId;
-		script = "LuaScripts\\WorldObjects\\" + infantryId + ".txt";
-		model = "graphics\\firingpoint\\soldiers\\" + infantryId + ".mgm";
-	}
+        {
+            vehicleSet = alliedInfantry;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanInfantry;
+        }
+        
+        displayName = "Infantry";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 
 	public Infantry copy () throws PWCGException 
 	{
-		Infantry infantry = new Infantry(this.country);
+		Infantry infantry = new Infantry();
 		
 		infantry.index = IndexGenerator.getInstance().getNextIndex();
 		

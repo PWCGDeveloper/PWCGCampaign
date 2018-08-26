@@ -1,19 +1,24 @@
 package pwcg.campaign.ww2.ground.vehicle;
 
 import java.io.BufferedWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.campaign.ww1.ground.vehicle.VehicleDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
 class Truck extends Vehicle
 {
+    private TruckType truckType;
+
     public enum TruckType
     {
         TRUCK_CARGO,
@@ -21,125 +26,132 @@ class Truck extends Vehicle
         CAR;
     }
     
-	private String[][] germanTrucks = 
-	{
-        { "ford", "ford-g917" },
-        { "ford", "ford-g917" },
-        { "opel", "opel-blitz" },
-        { "opel", "opel-blitz" },
-        { "opel", "opel-blitz" },
-        { "sdkfz251", "sdkfz251-1c" },
-        { "sdkfz251", "sdkfz251-1c" },
-        { "sdkfz251", "sdkfz251-szf" }
-	};
-
-	private String[][] germanAAATrucks = 
-	{
-	    { "sdkfz10-flak38", "sdkfz10-flak38" },
-	};
-
-    private String[][] germanCars = 
+    private static final List<VehicleDefinition> germanTrucks = new ArrayList<VehicleDefinition>() 
     {
-        { "horch", "horch830" }
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "vehicles\\ford\\", "ford-g917", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\ford\\", "ford-g917", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\ford\\", "ford-g917", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\opel\\", "opel-blitz", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\opel\\", "opel-blitz", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\opel\\", "opel-blitz", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\opel\\", "opel-blitz", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\opel\\", "opel-blitz", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\sdkfz251\\", "sdkfz251-1c", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\sdkfz251\\", "sdkfz251-1c", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\sdkfz251\\", "sdkfz251-szf", Country.GERMANY));
+        }
+    };
+    
+    private static final List<VehicleDefinition> germanAAATrucks = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "vehicles\\sdkfz10-flak38\\", "sdkfz10-flak38", Country.GERMANY));
+        }
+    };
+    
+    private static final List<VehicleDefinition> germanCars = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "vehicles\\horch\\", "horch830", Country.GERMANY));
+        }
     };
 
-	private String[][] alliedTrucks = 
-	{
-        { "gaz", "gaz-aa" },
-        { "gaz", "gaz-aa" },
-        { "gaz", "gaz-aa" },
-        { "zis", "zis5" },
-        { "zis", "zis5" },
-        { "zis", "zis5" },
-        { "zis", "bm13" }
-	};
-
-    private String[][] alliedAAATrucks = 
+    private static final List<VehicleDefinition> russianTrucks = new ArrayList<VehicleDefinition>() 
     {
-        { "gaz", "gaz-aa-m4-aa" },
-        { "zis", "zis5-72k" }
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "vehicles\\gaz\\", "gaz-aa", Country.RUSSIA));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\zis\\", "zis5", Country.RUSSIA));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\zis\\", "bm13", Country.RUSSIA));
+        }
+    };
+    
+    private static final List<VehicleDefinition> russianAAATrucks = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "vehicles\\gaz\\", "gaz-aa-m4-aa", Country.RUSSIA));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\zis\\", "zis5-72k", Country.RUSSIA));
+        }
+    };
+    
+    private static final List<VehicleDefinition> russianCars = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "vehicles\\gaz\\", "gaz-m", Country.GERMANY));
+        }
     };
 
-    private String[][] alliedCars = 
+    public Truck()
     {
-        { "gaz", "gaz-m" }
-    };
+        super();
+        this.truckType = TruckType.TRUCK_CARGO;
+    }
 
-	protected Truck()
+    public Truck(TruckType truckType)
 	{
+        super();
+	    this.truckType = truckType;
 	}
 
-	public Truck(ICountry country, TruckType truckType) throws PWCGException 
-	{
-		super();
-		
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanTrucks);
+        allvehicleDefinitions.addAll(germanAAATrucks);
+        allvehicleDefinitions.addAll(germanCars);
+        allvehicleDefinitions.addAll(russianTrucks);
+        allvehicleDefinitions.addAll(russianAAATrucks);
+        allvehicleDefinitions.addAll(russianCars);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+	{		
 		this.country = country;
         
-        if (truckType == TruckType.TRUCK_CARGO)
+		List<VehicleDefinition> vehicleSet = null;
+		if (truckType == TruckType.TRUCK_CARGO)
         {
-            makeTruck(country);
+            displayName = "Truck";
+            vehicleSet = germanTrucks;          
+            if (country.getSideNoNeutral() == Side.ALLIED)
+            {
+                vehicleSet = russianTrucks;                       
+            }
         }
         else if (truckType == TruckType.TRUCK_AAA)
         {
-            makeAAATruck(country);
+            displayName = "AAA Truck";
+            vehicleSet = germanAAATrucks;          
+            if (country.getSideNoNeutral() == Side.ALLIED)
+            {
+                vehicleSet = russianAAATrucks;                       
+            }
         }
         else if (truckType == TruckType.CAR)
         {
-            makeCar(country);
+            displayName = "AAA Truck";
+            vehicleSet = germanCars;          
+            if (country.getSideNoNeutral() == Side.ALLIED)
+            {
+                vehicleSet = russianCars;                       
+            }
         }
+
+		makeRandomVehicleInstance(vehicleSet);
 	}
 
-    private void makeTruck(ICountry countryObj) throws PWCGException
-    {
-        if (countryObj.getSideNoNeutral() == Side.ALLIED)
-        {
-            makeVehicleInstance(alliedTrucks, "Russian Truck");
-        }
-        else
-        {
-            makeVehicleInstance(germanTrucks, "German Truck");
-        }
-    }
-
-    private void makeAAATruck(ICountry countryObj) throws PWCGException
-    {
-        if (countryObj.getSideNoNeutral() == Side.ALLIED)
-        {
-            makeVehicleInstance(alliedAAATrucks, "Russian AAA Truck");
-        }
-        else
-        {
-            makeVehicleInstance(germanAAATrucks, "German AAA Truck");
-        }
-    }
-
-    private void makeCar(ICountry countryObj) throws PWCGException
-    {
-        if (countryObj.getSideNoNeutral() == Side.ALLIED)
-        {
-            makeVehicleInstance(alliedCars, "Russian AAA Truck");
-        }
-        else
-        {
-            makeVehicleInstance(germanCars, "German AAA Truck");
-        }
-    }
-	
-	private void makeVehicleInstance(String[][] vehicleChoices, String displayName)
+    public Truck copy () 
 	{
-        int selectedTruck = RandomNumberGenerator.getRandom(vehicleChoices.length);
-        String truckDir = vehicleChoices[selectedTruck] [0];
-        String truckId = vehicleChoices[selectedTruck] [1];
-        
-        this.displayName = displayName;
-        vehicleType = truckId;
-        script = "LuaScripts\\WorldObjects\\vehicles\\" + truckId + ".txt";
-        model = "graphics\\vehicles\\" + truckDir + "\\" + truckId + ".mgm";
-	}
-
-	public Truck copy () 
-	{
-		Truck truck = new Truck();
+		Truck truck = new Truck(this.truckType);
 		
 		truck.index = IndexGenerator.getInstance().getNextIndex();
 		

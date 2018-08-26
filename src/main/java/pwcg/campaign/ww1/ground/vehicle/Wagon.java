@@ -1,55 +1,71 @@
 package pwcg.campaign.ww1.ground.vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
 public class Wagon extends Vehicle
 {
-	// German
-	private String[] germanWagon = 
-	{
-		"guncarriagede", "ammowagon" 
-	};
-	
-	// British
-	private String[] britishWagon = 
-	{
-       "guncarriagede", "ammowagon" 
-	};
-	
-	public Wagon(ICountry country) throws PWCGException 
-	{
-        super(country);
-        
-		String wagonId= "";
-		
+    private static final List<VehicleDefinition> germanWagon = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "vehicles\\ammowagon\\", "guncarriagede", Country.GERMANY));
+            add(new VehicleDefinition("", "vehicles\\ammowagon\\", "ammowagon", Country.GERMANY));
+        }
+    };
+
+    private static final List<VehicleDefinition> alliedWagon = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "vehicles\\ammowagon\\", "guncarriagede", Country.BRITAIN));
+            add(new VehicleDefinition("", "vehicles\\ammowagon\\", "ammowagon", Country.BRITAIN));
+        }
+    };
+    
+    protected Wagon()
+    {
+        super();
+    }
+
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanWagon);
+        allvehicleDefinitions.addAll(alliedWagon);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
         if (country.getSideNoNeutral() == Side.ALLIED)
-		{
-			int selectedWagon = RandomNumberGenerator.getRandom(britishWagon.length);
-			wagonId = britishWagon[selectedWagon];			
-			displayName = "Allied Wagon";
-		}
-		else
-		{
-			int selectedWagon = RandomNumberGenerator.getRandom(germanWagon.length);
-			wagonId = germanWagon[selectedWagon];
-			displayName = "German Wagon";
-		}
-		
-		vehicleType = wagonId;
-		script = "LuaScripts\\WorldObjects\\" + wagonId + ".txt";
-		model = "graphics\\vehicles\\ammowagon\\" + wagonId + ".mgm";
-	}
+        {
+            vehicleSet = alliedWagon;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanWagon;
+        }
+        
+        displayName = "Wagon";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 
 	public Wagon copy () throws PWCGException 
 	{
-		Wagon wagon = new Wagon(this.country);
+		Wagon wagon = new Wagon();
 		
 		wagon.index = IndexGenerator.getInstance().getNextIndex();
 		

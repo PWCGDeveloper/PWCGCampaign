@@ -1,111 +1,69 @@
 package pwcg.campaign.ww1.ground.vehicle;
 
-import pwcg.campaign.Campaign;
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.utils.IndexGenerator;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
 public class AAAArtillery extends AAA
 {
-    boolean use10x = false;
-    
-	// German
-	private String[][] germanMGs = 
-	{
-		{ "77mmaaa", "77mmaaa" },
-	};
-	
-	// Allied
-	private String[][] alliedMGs = 
-	{
-		{ "13pdraaa", "13pdraaa" },
-	};
-	
-	public AAAArtillery(ICountry country) throws PWCGException 
-	{
-		super(country);
-
-        // If the user does not want 10x then never use it
-        set10xUsage();
-		
-		// Make AAA not engageable to avoid aircraft diving on every MG that they come across
-		this.setEngageable(0);
-		
-		String mgId= "";
-		String mgDir = "";
-		
-		if (country.isCountry(Country.FRANCE))
-		{
-			int selectedMG = RandomNumberGenerator.getRandom(alliedMGs.length);
-			mgId = alliedMGs[selectedMG] [0];
-			mgDir = alliedMGs[selectedMG] [1];
-			displayName = "French MG";
-		}
-        if (country.isCountry(Country.USA))
-		{
-			int selectedMG = RandomNumberGenerator.getRandom(alliedMGs.length);
-			mgId = alliedMGs[selectedMG] [0];
-			mgDir = alliedMGs[selectedMG] [1];
-			displayName = "American MG";
-		}
-        if (country.isCountry(Country.GERMANY))
-		{
-			int selectedMG = RandomNumberGenerator.getRandom(germanMGs.length);
-			mgId = germanMGs[selectedMG] [0];
-			mgDir = germanMGs[selectedMG] [1];
-			displayName = "German MG";
-		}
-		else
-		{
-			int selectedMG = RandomNumberGenerator.getRandom(alliedMGs.length);
-			mgId = alliedMGs[selectedMG] [0];			
-			mgDir = alliedMGs[selectedMG] [1];
-			displayName = "British MG";
-		}
-		
-		vehicleType = mgId;
-        script = "LuaScripts\\WorldObjects\\" + mgId + ".txt";
-		// For 10x AAA fire rate
-        if (use10x)
+    private static final List<VehicleDefinition> germanAAAArtillery = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
         {
-            script = "LuaScripts\\WorldObjects\\" + mgId + "10g.txt";
+            add(new VehicleDefinition("", "artillery\\77mmaaa\\", "77mmaaa", Country.GERMANY));
+        }
+    };
+
+    private static final List<VehicleDefinition> alliedAAAArtillery = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "artillery\\13pdraaa\\", "13pdraaa", Country.FRANCE));
+        }
+    };
+
+    public AAAArtillery() throws PWCGException 
+    {
+        super();
+    }
+
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanAAAArtillery);
+        allvehicleDefinitions.addAll(alliedAAAArtillery);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
+        if (country.getSideNoNeutral() == Side.ALLIED)
+        {
+            vehicleSet = alliedAAAArtillery;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanAAAArtillery;
         }
         
-		model = "graphics\\artillery\\" + mgDir + "\\" + mgId + ".mgm";
-	}
-
-    /**
-     * Set 10x usage from config
-     * @throws PWCGException 
-     */
-    private void set10xUsage() throws PWCGException
-    {
-        Campaign campaign =     PWCGContextManager.getInstance().getCampaign();
-        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-        try
-        {
-            if (configManager.getIntConfigParam(ConfigItemKeys.Use10xFlakKey) == 1)
-            {
-                this.use10x = true;
-            }
-        }
-        catch (PWCGException e)
-        {
-            e.printStackTrace();
-        }
+        displayName = "AAA Gun";
+        makeRandomVehicleInstance(vehicleSet);
     }
 
 	public AAAArtillery copy () throws PWCGException 
 	{
-		AAAArtillery mg = new AAAArtillery(country);
+		AAAArtillery mg = new AAAArtillery();
 		
 		mg.index = IndexGenerator.getInstance().getNextIndex();
 		

@@ -1,57 +1,71 @@
 package pwcg.campaign.ww1.ground.vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
 public class GroundCrew extends Vehicle
 {
-	private String[] germanGroundCrew = 
-	{
-		"groundcrew_01", "groundcrew_02" 
-	};
-	
-	private String[] britishGroundCrew = 
-	{
-		"groundcrewen_01", "groundcrewen_02" 
-	};
-	
-	
-	public GroundCrew(ICountry country) throws PWCGException 
-	{
-        super(country);
-		
-		String groundCrewId= "";
-		
+    private static final List<VehicleDefinition> germanGroundCrews = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "firingpoint\\soldiers\\", "groundcrew_01", Country.GERMANY));
+            add(new VehicleDefinition("", "firingpoint\\soldiers\\", "groundcrew_02", Country.GERMANY));
+        }
+    };
+
+    private static final List<VehicleDefinition> alliedGroundCrews = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "firingpoint\\soldiers\\", "groundcrewen_01", Country.BRITAIN));
+            add(new VehicleDefinition("", "firingpoint\\soldiers\\", "groundcrewen_02", Country.BRITAIN));
+        }
+    };
+    
+    public GroundCrew()
+    {
+        super();
+    }
+    
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanGroundCrews);
+        allvehicleDefinitions.addAll(alliedGroundCrews);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
         if (country.getSideNoNeutral() == Side.ALLIED)
-		{
-			int selectedGroundCrew = RandomNumberGenerator.getRandom(britishGroundCrew.length);
-			groundCrewId = britishGroundCrew[selectedGroundCrew];			
-			displayName = "Allied Ground Crew";
-		}
-		else
-		{
-			int selectedGroundCrew = RandomNumberGenerator.getRandom(germanGroundCrew.length);
-			groundCrewId = germanGroundCrew[selectedGroundCrew];
-			displayName = "German Ground Crew";
-		}
-		
-		vehicleType = groundCrewId;
-		script = "LuaScripts\\WorldObjects\\" + groundCrewId + ".txt";
-		model = "graphics\\firingpoint\\soldiers\\" + groundCrewId + ".mgm";
-		
-		populateEntity();
-        getEntity().setEnabled(1);
-	}
+        {
+            vehicleSet = alliedGroundCrews;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanGroundCrews;
+        }
+        
+        displayName = "Ground Crew";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 
 	public GroundCrew copy () throws PWCGException 
 	{
-		GroundCrew groundCrew = new GroundCrew(this.country);
+		GroundCrew groundCrew = new GroundCrew();
 		
 		groundCrew.index = IndexGenerator.getInstance().getNextIndex();
 		

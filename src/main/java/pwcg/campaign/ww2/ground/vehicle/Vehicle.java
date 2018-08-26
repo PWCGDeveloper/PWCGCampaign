@@ -3,20 +3,24 @@ package pwcg.campaign.ww2.ground.vehicle;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.campaign.ww1.ground.vehicle.VehicleDefinition;
 import pwcg.core.constants.AiSkillLevel;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.Logger;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.McuTREntity;
 
-abstract class Vehicle implements Cloneable, IVehicle
+public abstract class Vehicle implements Cloneable, IVehicle
 {
     protected String vehicleType = "";
     protected String displayName = "Vehicle";
@@ -40,6 +44,7 @@ abstract class Vehicle implements Cloneable, IVehicle
 
     protected McuTREntity entity = new McuTREntity();
 
+    
     protected Vehicle()
     {
         index = IndexGenerator.getInstance().getNextIndex();
@@ -80,6 +85,29 @@ abstract class Vehicle implements Cloneable, IVehicle
             Logger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
+    }
+
+    protected void makeRandomVehicleInstance(List<VehicleDefinition> vehicleSet) throws PWCGException
+    {
+        int selectedIndex = RandomNumberGenerator.getRandom(vehicleSet.size());
+        VehicleDefinition vehicleDefinition = vehicleSet.get(selectedIndex);
+        makeVehicleFromDefinition(vehicleDefinition);
+    }
+
+    public void makeVehicleFromDefinition(VehicleDefinition vehicleDefinition) throws PWCGException
+    {
+        country = vehicleDefinition.getCountry();
+        vehicleType = vehicleDefinition.getVehicleType();
+        script = "LuaScripts\\WorldObjects\\" + vehicleDefinition.getScriptDir() + vehicleDefinition.getVehicleType() + ".txt";
+        model = "graphics\\" + vehicleDefinition.getModelDir() + "\\" + vehicleDefinition.getVehicleType() + ".mgm";
+        setPosition(new Coordinate());
+        setOrientation(new Orientation());
+        populateEntity();
+    }
+    
+    public String getDescription()
+    {
+        return (vehicleType + " / " + script + " / " + model);
     }
 
     protected void writeInternals(BufferedWriter writer) throws PWCGIOException
@@ -206,5 +234,10 @@ abstract class Vehicle implements Cloneable, IVehicle
     public ICountry getCountry()
     {
         return country;
+    }
+
+    public String getVehicleType()
+    {
+        return vehicleType;
     }
 }

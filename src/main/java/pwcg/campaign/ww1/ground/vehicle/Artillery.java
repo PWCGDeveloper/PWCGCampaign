@@ -1,82 +1,71 @@
 package pwcg.campaign.ww1.ground.vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
 public class Artillery extends Vehicle
 {
-	// German
-	private String[][] germanArtillery = 
-	{
-		{ "fk96", "fk96" },
-		{ "m13", "m13" },
-	};
-	
-	// French
-	private String[][] frenchArtillery = 
-	{
-		{ "45qf", "45qf" },
-		{ "75fg1897", "75fg1897" },
-	};
-	
-	// British
-	private String[][] britishArtillery = 
-	{
-		{ "45qf", "45qf" },
-		{ "75fg1897", "75fg1897" },
-	};
-	
-	public Artillery(ICountry country) 
-	{
-        super(country);
-		
-		String artilleryId= "";
-		String artilleryDir = "";
-		
-		if (country.getCountry() == Country.FRANCE)
-		{
-			int selectedArtillery = RandomNumberGenerator.getRandom(frenchArtillery.length);
-			artilleryId = frenchArtillery[selectedArtillery] [0];
-			artilleryDir = frenchArtillery[selectedArtillery] [1];
-			displayName = "French Artillery";
-		}
-		else if (country.getCountry() == Country.USA)
-		{
-			int selectedArtillery = RandomNumberGenerator.getRandom(frenchArtillery.length);
-			artilleryId = frenchArtillery[selectedArtillery] [0];
-			artilleryDir = frenchArtillery[selectedArtillery] [1];
-			displayName = "American Artillery";
-		}
-		else if (country.getCountry() == Country.GERMANY)
-		{
-			int selectedArtillery = RandomNumberGenerator.getRandom(germanArtillery.length);
-			artilleryId = germanArtillery[selectedArtillery] [0];
-			artilleryDir = germanArtillery[selectedArtillery] [1];
-			displayName = "German Artillery";
-		}
-		else
-		{
-			int selectedArtillery = RandomNumberGenerator.getRandom(britishArtillery.length);
-			artilleryId = britishArtillery[selectedArtillery] [0];			
-			artilleryDir = britishArtillery[selectedArtillery] [1];
-			displayName = "British Artillery";
-		}
-		
-		vehicleType = artilleryId;
-		script = "LuaScripts\\WorldObjects\\" + artilleryId + ".txt";
-		model = "graphics\\artillery\\" + artilleryDir + "\\" + artilleryId + ".mgm";
-	}
+    private static final List<VehicleDefinition> germanArtillery = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "artillery\\fk96\\", "fk96", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "artillery\\m13\\", "m13", Country.GERMANY));
+        }
+    };
 
+    private static final List<VehicleDefinition> alliedArtillery = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "artillery\\45qf\\", "45qf", Country.RUSSIA));
+            add(new VehicleDefinition("vehicles\\", "artillery\\75fg1897\\", "75fg1897", Country.RUSSIA));
+        }
+    };
+    
+    public Artillery()
+    {
+        super();
+    }
+
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanArtillery);
+        allvehicleDefinitions.addAll(alliedArtillery);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
+        if (country.getSideNoNeutral() == Side.ALLIED)
+        {
+            vehicleSet = alliedArtillery;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanArtillery;
+        }
+        
+        displayName = "Artillery";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 
 	public Artillery copy () throws PWCGException 
 	{
-		Artillery gun = new Artillery(country);
+		Artillery gun = new Artillery();
 		
 		gun.index = IndexGenerator.getInstance().getNextIndex();
 		

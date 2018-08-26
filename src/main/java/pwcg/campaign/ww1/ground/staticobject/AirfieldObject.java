@@ -1,54 +1,72 @@
 package pwcg.campaign.ww1.ground.staticobject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
+import pwcg.campaign.ww1.ground.vehicle.VehicleDefinition;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.RandomNumberGenerator;
 
 public class AirfieldObject extends StaticObject
 {
+    private static final List<VehicleDefinition> germanAirfieldObjects = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "blocks\\", "airfieldobj_01", Country.GERMANY));
+            add(new VehicleDefinition("", "blocks\\", "airfieldobj_02", Country.GERMANY));
+            add(new VehicleDefinition("", "blocks\\", "airfieldobj_03", Country.GERMANY));
+            add(new VehicleDefinition("", "blocks\\", "airfieldobj_04", Country.GERMANY));
+            add(new VehicleDefinition("", "blocks\\", "airfieldobj_05", Country.GERMANY));
+            add(new VehicleDefinition("", "blocks\\", "airfieldobj_06", Country.GERMANY));
+            add(new VehicleDefinition("", "blocks\\", "airfieldobj_07", Country.GERMANY));
+        }
+    };
     
-	// German
-	private String[] germanAirfieldObject = 
-	{
-		"airfieldobj_01", "airfieldobj_02", "airfieldobj_03", 
-		"airfieldobj_04", "airfieldobj_05", "airfieldobj_06", 
-		"airfieldobj_07"
-	};
-	
-	// British
-	private String[] britishAirfieldObject = 
-	{
-		"airfieldobj_01", "airfieldobj_02", "airfieldobj_03", 
-		"airfieldobj_04", "airfieldobj_05", "airfieldobj_06", 
-		"airfieldobj_07"
-	};
-	public AirfieldObject(ICountry country) throws PWCGException 
-	{
-		super(country);
-				
-		String airfieldObjectId= "";
-		
-        if (country.getSideNoNeutral() == Side.ALLIED)
-		{
-			int selectedAirfieldObject = RandomNumberGenerator.getRandom(britishAirfieldObject.length);
-			airfieldObjectId = britishAirfieldObject[selectedAirfieldObject];			
-			displayName = "Allied Static Truck";
-	        finishAirfieldObject(airfieldObjectId);
-		}
-		else if (country.getSideNoNeutral() == Side.AXIS)
-		{
-			int selectedAirfieldObject = RandomNumberGenerator.getRandom(germanAirfieldObject.length);
-			airfieldObjectId = germanAirfieldObject[selectedAirfieldObject];
-			displayName = "German Static Truck";
-	        finishAirfieldObject(airfieldObjectId);
-		}		
-	}
+    private static final List<VehicleDefinition> alliedAirfieldObjects = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "blocks\\", "airfieldobj_01", Country.BRITAIN));
+            add(new VehicleDefinition("", "blocks\\", "airfieldobj_02", Country.BRITAIN));
+            add(new VehicleDefinition("", "blocks\\", "airfieldobj_03", Country.BRITAIN));
+            add(new VehicleDefinition("", "blocks\\", "airfieldobj_04", Country.BRITAIN));
+            add(new VehicleDefinition("", "blocks\\", "airfieldobj_05", Country.BRITAIN));
+            add(new VehicleDefinition("", "blocks\\", "airfieldobj_06", Country.BRITAIN));
+            add(new VehicleDefinition("", "blocks\\", "airfieldobj_07", Country.BRITAIN));
+        }
+    };
 
-	private void finishAirfieldObject(String airfieldObjectId)
-	{
-		vehicleType = airfieldObjectId;
-		script = "LuaScripts\\WorldObjects\\" + airfieldObjectId + ".txt";
-		model = "graphics\\blocks\\" + airfieldObjectId + ".mgm";
-	}
+    public AirfieldObject() throws PWCGException 
+    {
+        super();
+    }
+
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanAirfieldObjects);
+        allvehicleDefinitions.addAll(alliedAirfieldObjects);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
+        if (country.getSideNoNeutral() == Side.ALLIED)
+        {
+            vehicleSet = alliedAirfieldObjects;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanAirfieldObjects;
+        }
+        
+        displayName = "Equipment";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 }

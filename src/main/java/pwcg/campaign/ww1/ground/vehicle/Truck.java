@@ -1,79 +1,75 @@
 package pwcg.campaign.ww1.ground.vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
 public class Truck extends Vehicle
 {
-	// German
-	private String[][] germanTrucks = 
-	{
-		{ "benz_open", "benz" },
-		{ "benz_soft", "benz" },
-		{ "daimlermarienfelde", "daimlermarienfelde" },
-		{ "daimlermarienfelde_s", "daimlermarienfelde" },
-	};
-	
-	// British
-	private String[][] alliedTrucks = 
-	{
-		{ "leyland", "leyland" },
-		{ "leylands", "leyland" },
-		{ "quad", "quad" },
-		{ "quada", "quad" },
-	};
+    private static final List<VehicleDefinition> germanWagon = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "vehicles\\daimlermarienfelde\\", "daimlermarienfelde", Country.GERMANY));
+            add(new VehicleDefinition("", "vehicles\\daimlermarienfelde\\", "daimlermarienfelde_s", Country.GERMANY));
+            add(new VehicleDefinition("", "vehicles\\benz\\", "benz_soft", Country.GERMANY));
+            add(new VehicleDefinition("", "vehicles\\benz\\", "benz_open", Country.GERMANY));
+        }
+    };
 
+    private static final List<VehicleDefinition> alliedWagon = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "vehicles\\quad\\", "quad", Country.BRITAIN));
+            add(new VehicleDefinition("", "vehicles\\quad\\", "quada", Country.BRITAIN));
+            add(new VehicleDefinition("", "vehicles\\leyland\\", "leyland", Country.BRITAIN));
+            add(new VehicleDefinition("", "vehicles\\leyland\\", "leylands", Country.BRITAIN));
+        }
+    };
+    
+    protected Truck()
+    {
+        super();
+    }
 
-	public Truck(ICountry country) 
-	{
-        super(country);
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanWagon);
+        allvehicleDefinitions.addAll(alliedWagon);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
+        if (country.getSideNoNeutral() == Side.ALLIED)
+        {
+            vehicleSet = alliedWagon;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanWagon;
+        }
         
-		String truckId= "";
-		String truckDir = "";
-		
-		if (country.getCountry() == Country.FRANCE)
-		{
-			int selectedTruck = RandomNumberGenerator.getRandom(alliedTrucks.length);
-			truckId = alliedTrucks[selectedTruck] [0];
-			truckDir = alliedTrucks[selectedTruck] [1];
-			displayName = "French Truck";
-		}
-		else if (country.getCountry() == Country.USA)
-		{
-			int selectedTruck = RandomNumberGenerator.getRandom(alliedTrucks.length);
-			truckId = alliedTrucks[selectedTruck] [0];
-			truckDir = alliedTrucks[selectedTruck] [1];
-			displayName = "American Truck";
-		}
-		else if (country.getCountry() == Country.GERMANY)
-		{
-			int selectedTruck = RandomNumberGenerator.getRandom(germanTrucks.length);
-			truckId = germanTrucks[selectedTruck] [0];
-			truckDir = germanTrucks[selectedTruck] [1];
-			displayName = "German Truck";
-		}
-		else
-		{
-			int selectedTruck = RandomNumberGenerator.getRandom(alliedTrucks.length);
-			truckId = alliedTrucks[selectedTruck] [0];			
-			truckDir = alliedTrucks[selectedTruck] [1];
-			displayName = "British Truck";
-		}
-		
-		vehicleType = truckId;
-		script = "LuaScripts\\WorldObjects\\" + truckId + ".txt";
-		model = "graphics\\vehicles\\" + truckDir + "\\" + truckId + ".mgm";
-	}
+        displayName = "Wagon";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 
 	public Truck copy () throws PWCGException 
 	{
-		Truck truck = new Truck(country);
+		Truck truck = new Truck();
 		
 		truck.index = IndexGenerator.getInstance().getNextIndex();
 		

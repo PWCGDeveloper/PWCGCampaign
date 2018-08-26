@@ -1,7 +1,11 @@
 package pwcg.campaign.ww1.ground.vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -10,40 +14,56 @@ import pwcg.mission.mcu.McuTREntity;
 
 public class SpotLight extends Vehicle
 {
-	// German
-	private String[] germanSpotLight = { "benz_p", "benz" };
-	private String[] alliedSpotLight = { "quad_p", "quad" };
+    private static final List<VehicleDefinition> germanSpotLight = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "vehicles\\benz\\", "benz_p", Country.GERMANY));
+        }
+    };
 
-	public SpotLight(ICountry country) throws PWCGException 
-	{
-        super(country);
-        
-		String spotLightId= "";
-		String spotLightDir = "";
-		
-		this.getEntity().setEnabled(1);
-			
+    private static final List<VehicleDefinition> alliedSpotLight = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "vehicles\\quad\\", "quad_p", Country.BRITAIN));
+        }
+    };
+
+    protected SpotLight()
+    {
+        super();
+    }
+
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanSpotLight);
+        allvehicleDefinitions.addAll(alliedSpotLight);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
         if (country.getSideNoNeutral() == Side.ALLIED)
-		{
-			spotLightId = alliedSpotLight[0];
-			spotLightDir = alliedSpotLight [1];
-			displayName = "British SpotLight";
-		}
-		else
-		{
-			spotLightId = germanSpotLight[0];
-			spotLightDir = germanSpotLight[1];
-			displayName = "German SpotLight";
-		}
-		
-        vehicleType = spotLightId;
-		script = "LuaScripts\\WorldObjects\\" + spotLightId + ".txt";
-		model = "graphics\\vehicles\\" + spotLightDir + "\\" + spotLightId + ".mgm";
-	}
-
+        {
+            vehicleSet = alliedSpotLight;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanSpotLight;
+        }
+        
+        displayName = "Spot Light";
+        makeRandomVehicleInstance(vehicleSet);
+    }
+    
 	public SpotLight copy () throws PWCGException 
 	{
-	    SpotLight spotLight = new SpotLight(this.country);
+	    SpotLight spotLight = new SpotLight();
 		
 		spotLight.index = IndexGenerator.getInstance().getNextIndex();
 		

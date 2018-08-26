@@ -27,7 +27,8 @@ public class GroundAssaultInfantryUnit extends GroundMovingDirectFireUnit
 
 	protected void createUnits() throws PWCGException  
 	{
-	    MovingInfantry infantry = new MovingInfantry(pwcgGroundUnitInformation.getCountry());
+	    MovingInfantry infantry = new MovingInfantry();
+	    infantry.makeRandomVehicleFromSet(pwcgGroundUnitInformation.getCountry());
         if (!infantry.vehicleExists())
         {
             Logger.log (LogLevel.DEBUG, "No infantry model or script found.  Download and install 3rd party objects");

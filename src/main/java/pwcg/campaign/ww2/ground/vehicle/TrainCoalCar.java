@@ -1,49 +1,106 @@
 package pwcg.campaign.ww2.ground.vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.campaign.ww1.ground.vehicle.VehicleDefinition;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.mcu.McuTREntity;
 
 public class TrainCoalCar extends TrainCar
 {
-	private TrainDO coalCar = null;
+    private TrainLocomotive trainLocomotive;
+    
+    private static final List<VehicleDefinition> germanCoalCars = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("trains\\", "trains\\g8t\\", "g8t", Country.GERMANY));
+            add(new VehicleDefinition("trains\\", "trains\\et\\", "et", Country.GERMANY));
+        }
+    };
+    
+    private static final List<VehicleDefinition> russianCoalCars = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("trains\\", "trains\\g8t\\", "g8t", Country.RUSSIA));
+            add(new VehicleDefinition("trains\\", "trains\\et\\", "et", Country.RUSSIA));
+        }
+    };
 
-	private TrainDO[] coalCars =
-	{ new TrainDO("g8t", "g8t", "Coal Car", 8.5), new TrainDO("et", "et", "Coal Car", 8.5), };
-
-	public TrainCoalCar()
+    public TrainCoalCar()
 	{
+        super();
 	}
 
-	public TrainCoalCar(String trainId, ICountry country)
+	public TrainCoalCar(TrainLocomotive trainLocomotive)
 	{
 		super();
-
-		this.country = country;
-
-		for (TrainDO coalCar : coalCars)
-		{
-			if (coalCar.getId().contains(trainId))
-			{
-				this.coalCar = coalCar.copy();
-			}
-		}
-
-		if (this.coalCar != null)
-		{
-			displayName = coalCar.getName();
-
-			vehicleType = coalCar.getName();
-			script = "LuaScripts\\WorldObjects\\Trains\\" + coalCar.getCategory() + ".txt";
-			model = "graphics\\trains\\" + coalCar.getCategory() + "\\" + coalCar.getId() + ".mgm";
-		}
+		this.trainLocomotive = trainLocomotive;
 	}
+
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanCoalCars);
+        allvehicleDefinitions.addAll(russianCoalCars);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
+        if (country.getSideNoNeutral() == Side.ALLIED)
+        {
+            vehicleSet = russianCoalCars;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanCoalCars;
+        }
+
+        VehicleDefinition matchingCoalCarDefinition = matchCoalCarToLocomotive(vehicleSet);
+        if (matchingCoalCarDefinition != null)
+        {
+            this.makeVehicleFromDefinition(matchingCoalCarDefinition);
+        }
+        else
+        {
+            makeRandomVehicleInstance(vehicleSet);
+        }
+        
+        displayName = "Coal Car";
+    }
+
+    private VehicleDefinition matchCoalCarToLocomotive(List<VehicleDefinition> vehicleSet)
+    {
+        VehicleDefinition matchingCoalCarDefinition = null;
+        if (trainLocomotive != null)
+        {
+            for (VehicleDefinition coalCarDefinition : vehicleSet)
+            {
+                if (coalCarDefinition.getVehicleType().contains(trainLocomotive.getVehicleType()))
+                {
+                    matchingCoalCarDefinition = coalCarDefinition;
+                    break;
+                }
+            }
+        }
+        return matchingCoalCarDefinition;
+    }
 
 	public TrainCoalCar copy()
 	{
-		TrainCoalCar coalCar = new TrainCoalCar();
+		TrainCoalCar coalCar = new TrainCoalCar(trainLocomotive);
 
 		coalCar.index = IndexGenerator.getInstance().getNextIndex();
 
@@ -67,15 +124,8 @@ public class TrainCoalCar extends TrainCar
 
 		coalCar.entity = new McuTREntity();
 
-		coalCar.coalCar = this.coalCar.copy();
-
 		coalCar.populateEntity();
 
-		return coalCar;
-	}
-
-	public TrainDO getCoalCar()
-	{
 		return coalCar;
 	}
 }

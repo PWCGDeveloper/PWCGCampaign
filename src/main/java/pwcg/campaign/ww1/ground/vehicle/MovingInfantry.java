@@ -1,5 +1,8 @@
 package pwcg.campaign.ww1.ground.vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
@@ -7,68 +10,79 @@ import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
 public class MovingInfantry extends Vehicle
 {
-	// German
-	private String[] germanInfantry = 
-	{
-        "platoonde",
-        "platoonde02" 
-	};
-    
-    // British
-    private String[] frenchInfantry = 
+    private static final List<VehicleDefinition> germanInfantry = new ArrayList<VehicleDefinition>() 
     {
-        "platoonfr",
-        "platoonfr02" 
-    };
-    
-    // British
-    private String[] britishInfantry = 
-    {
-        "platoonen",
-        "platoonen02" 
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "vehicles\\platoon\\", "platoonde", Country.GERMANY));
+            add(new VehicleDefinition("", "vehicles\\platoon\\", "platoonde02", Country.GERMANY));
+        }
     };
 
-	public MovingInfantry(ICountry country) throws PWCGException 
-	{
-        super(country);
+    private static final List<VehicleDefinition> britishInfantry = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "vehicles\\platoon\\", "platoonen", Country.BRITAIN));
+            add(new VehicleDefinition("", "vehicles\\platoon\\", "platoonen02", Country.BRITAIN));
+        }
+    };
 
-		String infantryId= "";
-		
+    private static final List<VehicleDefinition> frenchInfantry = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("", "vehicles\\platoon\\", "platoonfr", Country.FRANCE));
+            add(new VehicleDefinition("", "vehicles\\platoon\\", "platoonfr02", Country.FRANCE));
+        }
+    };
+    
+    public MovingInfantry()
+    {
+        super();
+    }
+    
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanInfantry);
+        allvehicleDefinitions.addAll(britishInfantry);
+        allvehicleDefinitions.addAll(frenchInfantry);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
         if (country.getSideNoNeutral() == Side.ALLIED)
-		{
-		    if (country.isCountry(Country.FRANCE))
-		    {
-                int selectedInfantry = RandomNumberGenerator.getRandom(frenchInfantry.length);
-                infantryId = frenchInfantry[selectedInfantry];         
-                displayName = "French Infantry";
-		    }
-		    else
-		    {
-    			int selectedInfantry = RandomNumberGenerator.getRandom(britishInfantry.length);
-    			infantryId = britishInfantry[selectedInfantry];			
-    			displayName = "British Infantry";
-		    }
-		}
-		else
-		{
-			int selectedInfantry = RandomNumberGenerator.getRandom(germanInfantry.length);
-			infantryId = germanInfantry[selectedInfantry];
-			displayName = "German Infantry";
-		}
-		
-		vehicleType = infantryId;
-		script = "LuaScripts\\WorldObjects\\" + infantryId + ".txt";
-		model = "graphics\\vehicles\\platoon\\" + infantryId + ".mgm";
-	}
+        {
+            if (country.getCountry() == Country.FRANCE)
+            {
+                vehicleSet = frenchInfantry;
+            }
+            else
+            {
+                vehicleSet = britishInfantry;
+            }
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanInfantry;
+        }
+        
+        displayName = "Infantry";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 
 	public MovingInfantry copy () throws PWCGException 
 	{
-		MovingInfantry infantry = new MovingInfantry(this.country);
+		MovingInfantry infantry = new MovingInfantry();
 		
 		infantry.index = IndexGenerator.getInstance().getNextIndex();
 		

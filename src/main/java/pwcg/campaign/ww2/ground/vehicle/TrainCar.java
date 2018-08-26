@@ -1,8 +1,13 @@
 package pwcg.campaign.ww2.ground.vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.campaign.ww1.ground.vehicle.VehicleDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -11,89 +16,130 @@ import pwcg.mission.mcu.McuTREntity;
 
 class TrainCar extends Vehicle
 {
-	private TrainDO car = null;
+	private List<VehicleDefinition> vehicleSet;
 
-	private TrainDO[] cars = 
-	{
-	        new TrainDO("traincars", "boxb", "Boxcar", 8.65),
-	        new TrainDO("traincars", "boxnb", "Boxcar", 7.65),
-            new TrainDO("traincars", "gondolab", "Freight", 8.65),
-            new TrainDO("traincars", "gondolanb", "Freight", 7.65),
-			new TrainDO("traincars", "pass", "Passenger", 10.6),
-			new TrainDO("traincars", "passc", "Passenger", 10.6),
-			
-			new TrainDO("traincars", "platformb", "Platform", 10.6),
-            new TrainDO("traincars", "platformnb", "Platform", 10.6),
-            new TrainDO("traincars", "platformemptyb", "Platform", 10.6),
-            new TrainDO("traincars", "platformemptynb", "Platform", 10.6),
-	};
-	
-    // Tanker
-    private TrainDO[] tankers = 
+    private static final List<VehicleDefinition> germanTrainCar = new ArrayList<VehicleDefinition>() 
     {
-            new TrainDO("traincars", "tankb", "Tanker", 8.8),
-            new TrainDO("traincars", "tanknb", "Tanker", 7.85),
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "boxb", Country.GERMANY));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "boxnb", Country.GERMANY));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "gondolab", Country.GERMANY));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "gondolanb", Country.GERMANY));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "pass", Country.GERMANY));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "passc", Country.GERMANY));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "platformb", Country.GERMANY));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "platformnb", Country.GERMANY));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "platformemptyb", Country.GERMANY));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "platformemptynb", Country.GERMANY));
+        }
     };
-    
-    // AAA
-    private TrainDO[] aaaRussian = 
+
+    private static final List<VehicleDefinition> germanTankerCar = new ArrayList<VehicleDefinition>() 
     {
-            new TrainDO("traincars", "platformaa-m4", "AAA", 8.8),
-            new TrainDO("traincars", "platformaa-61k", "AAA", 7.85),
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("trains\\", "trains\\tankb\\", "tankb", Country.GERMANY));
+            add(new VehicleDefinition("trains\\", "trains\\tanknb\\", "tanknb", Country.GERMANY));
+        }
     };
-    
-    // AAA
-    private TrainDO[] aaaGerman = 
+
+    private static final List<VehicleDefinition> germanAAACar = new ArrayList<VehicleDefinition>() 
     {
-        new TrainDO("traincars", "platformaa-mg34", "AAA", 8.8),
-        new TrainDO("traincars", "platformaa-flak38", "AAA", 7.85),
-};
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("trains\\", "trains\\platformaa-mg34\\", "platformaa-mg34", Country.GERMANY));
+            add(new VehicleDefinition("trains\\", "trains\\platformaa-flak38\\", "platformaa-flak38", Country.GERMANY));
+        }
+    };
+
+    private static final List<VehicleDefinition> russianTrainCar = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "boxb", Country.RUSSIA));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "boxnb", Country.RUSSIA));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "gondolab", Country.RUSSIA));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "gondolanb", Country.RUSSIA));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "pass", Country.RUSSIA));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "passc", Country.RUSSIA));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "platformb", Country.RUSSIA));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "platformnb", Country.RUSSIA));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "platformemptyb", Country.RUSSIA));
+            add(new VehicleDefinition("trains\\", "trains\\traincars\\", "platformemptynb", Country.RUSSIA));
+        }
+    };
+
+    private static final List<VehicleDefinition> russianTankerCar = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("trains\\", "trains\\tankb\\", "tankb", Country.RUSSIA));
+            add(new VehicleDefinition("trains\\", "trains\\tanknb\\", "tanknb", Country.RUSSIA));
+        }
+    };
+
+    private static final List<VehicleDefinition> russianAAACar = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("trains\\", "trains\\platformaa-m4\\", "platformaa-m4", Country.RUSSIA));
+            add(new VehicleDefinition("trains\\", "trains\\platformaa-61k\\", "platformaa-61k", Country.RUSSIA));
+        }
+    };
         
 	protected TrainCar()
 	{
 	}
 
-	public TrainCar(ICountry country) throws PWCGException 
-	{
-		super();
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanTrainCar);
+        allvehicleDefinitions.addAll(germanTankerCar);
+        allvehicleDefinitions.addAll(germanAAACar);
+        allvehicleDefinitions.addAll(russianTrainCar);
+        allvehicleDefinitions.addAll(russianTankerCar);
+        allvehicleDefinitions.addAll(russianAAACar);
+        return allvehicleDefinitions;
+    }
 
-		this.country = country;
-		
-		// 80% car, 10% tanker,10% ambulance
-		TrainDO[] trainArray = null;
-		int roll = RandomNumberGenerator.getRandom(100);
-		if (roll < 20)
-		{
-			trainArray = tankers;
-		}
-		else if (roll < 35)
-		{
-            trainArray = aaaGerman;          
-    		if (country.getSideNoNeutral() == Side.ALLIED)
-		    {
-	            trainArray = aaaRussian;          		        
-		    }
-		}
-		else
-		{
-			trainArray = cars;			
-		}
-		
-		// Now pick one from the selected category
-		roll = RandomNumberGenerator.getRandom(trainArray.length);
-		car = trainArray[roll];
-		
-		displayName = car.getName();
-		
-		vehicleType = car.getName();
-				
-		script = "LuaScripts\\WorldObjects\\Trains\\" + car.getId() + ".txt";
-		model = "graphics\\trains\\" + car.getCategory() + "\\" + car.getId() + ".mgm";
-	}
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        int roll = RandomNumberGenerator.getRandom(100);
+        if (roll < 20)
+        {
+            displayName = "Tanker Car";
+            vehicleSet = germanTankerCar;          
+            if (country.getSideNoNeutral() == Side.ALLIED)
+            {
+                vehicleSet = russianTankerCar;                       
+            }
+        }
+        else if (roll < 30)
+        {
+            displayName = "AAA Car";
+            vehicleSet = germanAAACar;          
+            if (country.getSideNoNeutral() == Side.ALLIED)
+            {
+                vehicleSet = russianAAACar;                       
+            }
+        }
+        else
+        {
+            displayName = "Freight Car";
+            vehicleSet = germanTrainCar;          
+            if (country.getSideNoNeutral() == Side.ALLIED)
+            {
+                vehicleSet = russianTrainCar;                       
+            }
+        }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#clone()
-	 */
+        makeRandomVehicleInstance(vehicleSet);
+    }
+
 	public TrainCar copy () 
 	{		
 		TrainCar train = new TrainCar();
@@ -121,13 +167,6 @@ class TrainCar extends Vehicle
 		
 		train.populateEntity();
 		
-		train.car = this.car.copy();
-		
 		return train;
-	}
-
-	public TrainDO getCar() 
-	{
-		return car;
 	}
 }

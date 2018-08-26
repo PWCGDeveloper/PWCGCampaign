@@ -23,7 +23,7 @@ public interface IVehicleFactory
 
     IVehicle cloneTrainCar(IVehicle source) throws PWCGException;
 
-    ITrainLocomotive createTrainLocomotive(ICountry country);
+    ITrainLocomotive createTrainLocomotive(ICountry country) throws PWCGException;
 
     ITrainLocomotive cloneTrainLocomotive(IVehicle source) throws PWCGException;
 

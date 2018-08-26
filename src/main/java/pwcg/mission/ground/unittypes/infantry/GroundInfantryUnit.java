@@ -27,7 +27,8 @@ public class GroundInfantryUnit extends GroundDirectFireUnit
 
     public void createUnits() throws PWCGException  
     {
-        spawningVehicle = new Infantry(pwcgGroundUnitInformation.getCountry());
+        spawningVehicle = new Infantry();
+        spawningVehicle.makeRandomVehicleFromSet(pwcgGroundUnitInformation.getCountry());
         if (!spawningVehicle.vehicleExists())
         {
             Logger.log (LogLevel.DEBUG, "No infantry model or script found.  Download and install 3rd party objects");

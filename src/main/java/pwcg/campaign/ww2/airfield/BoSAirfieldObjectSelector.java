@@ -36,7 +36,8 @@ public class BoSAirfieldObjectSelector implements IAirfieldObjectSelector
         objectOrientation.setyOri(orientation);
             
 
-        IVehicle airfieldObject = new AirfieldObject(airfield.getCountry(date));                      
+        IVehicle airfieldObject = new AirfieldObject();
+        airfieldObject.makeRandomVehicleFromSet(airfield.getCountry(date));
         
         airfieldObject.setPosition(hotSpot.getPosition().copy());
         airfieldObject.setOrientation(objectOrientation);

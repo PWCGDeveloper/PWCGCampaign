@@ -1,64 +1,68 @@
 package pwcg.campaign.ww2.ground.vehicle;
 
 import java.io.BufferedWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.campaign.ww1.ground.vehicle.VehicleDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
 class Artillery extends Vehicle
 {
-	// German
-	private String[][] germanArtillery = 
-	{
-         { "lefh18", "lefh18" },
-	};
-	
-	// Russian
-	private String[][] russianArtillery = 
-	{
-         { "ml20", "ml20" },
-	};
-	
-	protected Artillery()
-	{
-	}
-
-	public Artillery(ICountry country) throws PWCGException 
-	{
-		super();
-		
-		this.country = country;
-		
-		String artilleryId= "unknownArty";
-		String artilleryDir = "unknownArtyDir";
-		
-		if (country.getSideNoNeutral() == Side.ALLIED)
-		{
-			int selectedArtillery = RandomNumberGenerator.getRandom(russianArtillery.length);
-			artilleryDir = russianArtillery[selectedArtillery] [0];
-			artilleryId = russianArtillery[selectedArtillery] [1];
-			displayName = "Russian Artillery";
-		}
-        else
+    private static final List<VehicleDefinition> germanArtillery = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
         {
-            int selectedArtillery = RandomNumberGenerator.getRandom(germanArtillery.length);
-            artilleryDir = germanArtillery[selectedArtillery] [0];
-            artilleryId = germanArtillery[selectedArtillery] [1];
-            displayName = "German Artillery";
+            add(new VehicleDefinition("vehicles\\", "artillery\\lefh18\\", "lefh18", Country.GERMANY));
         }
-		
-		vehicleType = artilleryId;
-		script = "LuaScripts\\WorldObjects\\vehicles\\" + artilleryId + ".txt";
-		model = "graphics\\artillery\\" + artilleryDir + "\\" + artilleryId + ".mgm";
+    };
+
+    private static final List<VehicleDefinition> russianArtillery = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "artillery\\ml20\\", "ml20", Country.RUSSIA));
+        }
+    };
+	
+	public Artillery()
+	{
+        super();
 	}
 
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanArtillery);
+        allvehicleDefinitions.addAll(russianArtillery);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
+        if (country.getSideNoNeutral() == Side.ALLIED)
+        {
+            vehicleSet = russianArtillery;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanArtillery;
+        }
+        
+        displayName = "Artillery";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 
 	public Artillery copy () 
 	{

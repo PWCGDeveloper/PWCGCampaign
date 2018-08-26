@@ -18,23 +18,24 @@ public class RoFVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createBarge(ICountry country) throws PWCGException
     {
-        Drifter drifter = new Drifter(country);
-        
+        Drifter drifter = new Drifter();
+        drifter.makeRandomVehicleFromSet(country);
         return drifter;
     }
 
     @Override
     public IVehicle createShip(ICountry country, ShipConvoyTypes shipConvoyType) throws PWCGException
     {
-        Ship ship = new Ship(country, shipConvoyType);
+        Ship ship = new Ship(shipConvoyType);
+        ship.makeRandomVehicleFromSet(country);
         return ship;
     }
 
     @Override
-    public IVehicle createTank(ICountry country)
+    public IVehicle createTank(ICountry country) throws PWCGException
     {
-        Tank tank = new Tank(country);
-        
+        Tank tank = new Tank();
+        tank.makeRandomVehicleFromSet(country);        
         return tank;
     }
 
@@ -56,12 +57,14 @@ public class RoFVehicleFactory implements IVehicleFactory
         int roll = RandomNumberGenerator.getRandom(100);
         if (roll < 50)
         {
-            Truck truck = new Truck(country);
+            Truck truck = new Truck();
+            truck.makeRandomVehicleFromSet(country);        
             return truck;
         }
         else
         {
-            Wagon wagon = new Wagon(country);
+            Wagon wagon = new Wagon();
+            wagon.makeRandomVehicleFromSet(country);        
             return wagon;
         }
     }
@@ -97,10 +100,10 @@ public class RoFVehicleFactory implements IVehicleFactory
     }
 
     @Override
-    public IVehicle createTrainCar(ICountry country)
+    public IVehicle createTrainCar(ICountry country) throws PWCGException
     {
-        TrainCar trainCar = new TrainCar(country);
-        
+        TrainCar trainCar = new TrainCar();
+        trainCar.makeRandomVehicleFromSet(country);        
         return trainCar;
     }
 
@@ -117,12 +120,13 @@ public class RoFVehicleFactory implements IVehicleFactory
     }
 
     @Override
-    public ITrainLocomotive createTrainLocomotive(ICountry country)
+    public ITrainLocomotive createTrainLocomotive(ICountry country) throws PWCGException
     {
-        TrainLocomotive trainLocomotive = new TrainLocomotive(country);
-                
-        // Add the coal car     
-        TrainCoalCar coalCar = new TrainCoalCar(country);
+        TrainLocomotive trainLocomotive = new TrainLocomotive();
+        trainLocomotive.makeRandomVehicleFromSet(country);        
+
+        TrainCoalCar coalCar = new TrainCoalCar();
+        coalCar.makeRandomVehicleFromSet(country);        
         trainLocomotive.addCar(coalCar);
 
         return trainLocomotive;
@@ -141,10 +145,10 @@ public class RoFVehicleFactory implements IVehicleFactory
     }
 
     @Override
-    public IVehicle createArtillery(ICountry country)
+    public IVehicle createArtillery(ICountry country) throws PWCGException
     {
-        Artillery artillery = new Artillery(country);
-        
+        Artillery artillery = new Artillery();
+        artillery.makeRandomVehicleFromSet(country);        
         return artillery;
     }
 
@@ -163,8 +167,8 @@ public class RoFVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createAAAArtillery(ICountry country) throws PWCGException
     {
-        AAAArtillery aaaArtillery = new AAAArtillery(country);
-        
+        AAAArtillery aaaArtillery = new AAAArtillery();
+        aaaArtillery.makeRandomVehicleFromSet(country);        
         return aaaArtillery;
     }
 
@@ -181,11 +185,10 @@ public class RoFVehicleFactory implements IVehicleFactory
     }
 
     @Override
-    public IVehicle createATArtillery(ICountry country)
+    public IVehicle createATArtillery(ICountry country) throws PWCGException
     {
-        // For RoF us regular artillery
-        Artillery artillery = new Artillery(country);
-        
+        Artillery artillery = new Artillery();
+        artillery.makeRandomVehicleFromSet(country);        
         return artillery;
     }
 
@@ -203,11 +206,11 @@ public class RoFVehicleFactory implements IVehicleFactory
     }
 
     @Override
-    public IVehicle createAAAMachineGun(ICountry country)
+    public IVehicle createAAAMachineGun(ICountry country) throws PWCGException
     {
-        AAAMachineGun AAAMachineGun = new AAAMachineGun(country);
-        
-        return AAAMachineGun;
+        AAAMachineGun aaaMachineGun = new AAAMachineGun();
+        aaaMachineGun.makeRandomVehicleFromSet(country);        
+        return aaaMachineGun;
     }
 
     @Override
@@ -231,15 +234,16 @@ public class RoFVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createSpotLight(ICountry country) throws PWCGException
     {
-        SpotLight spotLight = new SpotLight(country);
-        
+        SpotLight spotLight = new SpotLight();
+        spotLight.makeRandomVehicleFromSet(country);        
         return spotLight;
     }
 
     @Override
-    public IVehicle createTent(ICountry country)
+    public IVehicle createTent(ICountry country) throws PWCGException
     {
-        StaticTent tent = new StaticTent(country);
+        StaticTent tent = new StaticTent();
+        tent.makeRandomVehicleFromSet(country);
         return tent;
     }
 
@@ -256,9 +260,10 @@ public class RoFVehicleFactory implements IVehicleFactory
     }
 
     @Override
-    public IVehicle createAmmoCrate(ICountry country)
+    public IVehicle createAmmoCrate(ICountry country) throws PWCGException
     {
-        StaticAmmo ammoCrate = new StaticAmmo(country);
+        StaticAmmo ammoCrate = new StaticAmmo();
+        ammoCrate.makeRandomVehicleFromSet(country);
         return ammoCrate;
     }
 

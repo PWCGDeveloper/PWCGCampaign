@@ -12,6 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.config.ConfigItemKeys;
@@ -29,28 +30,16 @@ import pwcg.mission.ground.GroundUnitCollection;
 @RunWith(MockitoJUnitRunner.class)
 public class TargetBuilderTest
 {
-    @Mock
-    private TargetDefinition targetDefinition;
-    
-    private Coordinate referencePosition = new Coordinate(150000, 0, 150000);
-
-    @Mock
-    private Campaign campaign;
-    
-    @Mock
-    private Mission mission;
-    
-    @Mock
-    private ICountry friendlyCountry;
-    
-    @Mock
-    private ICountry enemyCountry;
-
-    @Mock
-    private ConfigManagerCampaign configManager;
+    @Mock private TargetDefinition targetDefinition;
+    @Mock private Campaign campaign;
+    @Mock private Mission mission;
+    @Mock private ICountry friendlyCountry;
+    @Mock private ICountry enemyCountry;
+    @Mock private ConfigManagerCampaign configManager;
     
     private MissionGroundUnitResourceManager groundUnitResourceManager = new MissionGroundUnitResourceManager();
-    
+    private Coordinate referencePosition = new Coordinate(150000, 0, 150000);
+
     @Before
     public void setup() throws PWCGException
     {
@@ -67,11 +56,13 @@ public class TargetBuilderTest
         Mockito.when(targetDefinition.getTargetPosition()).thenReturn(new Coordinate(216336, 0, 184721));
         Mockito.when(targetDefinition.getTargetOrientation()).thenReturn(new Orientation(90));
         Mockito.when(enemyCountry.getSide()).thenReturn(Side.ALLIED);
+        Mockito.when(enemyCountry.getSideNoNeutral()).thenReturn(Side.AXIS);
+        Mockito.when(enemyCountry.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(friendlyCountry.getSide()).thenReturn(Side.AXIS);
+        Mockito.when(friendlyCountry.getSideNoNeutral()).thenReturn(Side.AXIS);
+        Mockito.when(friendlyCountry.getCountry()).thenReturn(Country.GERMANY);
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
         Mockito.when(mission.getMissionGroundUnitManager()).thenReturn(groundUnitResourceManager);
-        
-        
     }
     
     @Test

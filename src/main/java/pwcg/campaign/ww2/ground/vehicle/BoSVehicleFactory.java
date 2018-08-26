@@ -15,23 +15,25 @@ public class BoSVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createBarge(ICountry country) throws PWCGException
     {
-        Drifter drifter = new Drifter(country);
-        
+        Drifter drifter = new Drifter();
+        drifter.makeRandomVehicleFromSet(country);
+
         return drifter;
     }
 
     @Override
     public IVehicle createShip(ICountry country, ShipConvoyTypes shipConvoyType) throws PWCGException
     {
-        Ship ship = new Ship(country, shipConvoyType);
+        Ship ship = new Ship(shipConvoyType);
+        ship.makeRandomVehicleFromSet(country);
         return ship;
     }
 
     @Override
     public IVehicle createTank(ICountry country) throws PWCGException
     {
-        Tank tank = new Tank(country);
-        
+        Tank tank = new Tank();
+        tank.makeRandomVehicleFromSet(country);
         return tank;
     }
 
@@ -50,24 +52,24 @@ public class BoSVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createCar(ICountry country) throws PWCGException
     {
-        Truck truck = new Truck(country, TruckType.CAR);
-        
+        Truck truck = new Truck(TruckType.CAR);
+        truck.makeRandomVehicleFromSet(country);
         return truck;
     }
 
     @Override
     public IVehicle createAAATruck(ICountry country) throws PWCGException
     {
-        Truck truck = new Truck(country, TruckType.TRUCK_AAA);
-        
+        Truck truck = new Truck(TruckType.TRUCK_AAA);
+        truck.makeRandomVehicleFromSet(country);        
         return truck;
     }
 
     @Override
     public IVehicle createCargoTruck(ICountry country) throws PWCGException
     {
-        Truck truck = new Truck(country, TruckType.TRUCK_CARGO);
-        
+        Truck truck = new Truck(TruckType.TRUCK_CARGO);
+        truck.makeRandomVehicleFromSet(country);
         return truck;
     }
 
@@ -86,8 +88,8 @@ public class BoSVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createTrainCar(ICountry country) throws PWCGException
     {
-        TrainCar trainCar = new TrainCar(country);
-        
+        TrainCar trainCar = new TrainCar();
+        trainCar.makeRandomVehicleFromSet(country);
         return trainCar;
     }
 
@@ -104,11 +106,12 @@ public class BoSVehicleFactory implements IVehicleFactory
     }
 
     @Override
-    public ITrainLocomotive createTrainLocomotive(ICountry country)
+    public ITrainLocomotive createTrainLocomotive(ICountry country) throws PWCGException
     {
-        TrainLocomotive trainLocomotive = new TrainLocomotive(country);
-        
-        TrainCoalCar coalCar = new TrainCoalCar(trainLocomotive.getLocomotive().getId(), country);
+        TrainLocomotive trainLocomotive = new TrainLocomotive();
+        trainLocomotive.makeRandomVehicleFromSet(country);
+
+        TrainCoalCar coalCar = new TrainCoalCar(trainLocomotive);
         trainLocomotive.addCar(coalCar);
 
         return trainLocomotive;
@@ -129,7 +132,8 @@ public class BoSVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createArtillery(ICountry country) throws PWCGException
     {
-        Artillery artillery = new Artillery(country);
+        Artillery artillery = new Artillery();
+        artillery.makeRandomVehicleFromSet(country);
         
         return artillery;
     }
@@ -149,8 +153,9 @@ public class BoSVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createAAAArtillery(ICountry country) throws PWCGException
     {
-        AAAArtillery aaaArtillery = new AAAArtillery(country);
-        
+        AAAArtillery aaaArtillery = new AAAArtillery();
+        aaaArtillery.makeRandomVehicleFromSet(country);
+
         return aaaArtillery;
     }
 
@@ -169,8 +174,9 @@ public class BoSVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createATArtillery(ICountry country) throws PWCGException
     {
-        ATArtillery atArtillery = new ATArtillery(country);
-        
+        ATArtillery atArtillery = new ATArtillery();
+        atArtillery.makeRandomVehicleFromSet(country);
+
         return atArtillery;
     }
 
@@ -189,9 +195,10 @@ public class BoSVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createAAAMachineGun(ICountry country) throws PWCGException
     {
-        AAAMachineGun AAAMachineGun = new AAAMachineGun(country);
-        
-        return AAAMachineGun;
+        AAAMachineGun aaaMachineGun = new AAAMachineGun();
+        aaaMachineGun.makeRandomVehicleFromSet(country);
+
+        return aaaMachineGun;
     }
 
     @Override
@@ -209,7 +216,9 @@ public class BoSVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createRadioBeacon(Flight flight)  throws PWCGException
     {
-        RadioBeacon radioBeacon = new RadioBeacon(flight.getCountry());
+        RadioBeacon radioBeacon = new RadioBeacon();
+        radioBeacon.makeRandomVehicleFromSet(flight.getCountry());
+
         radioBeacon.initialize(flight);
         radioBeacon.populateEntity();
         
@@ -219,8 +228,9 @@ public class BoSVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createSpotLight(ICountry country) throws PWCGException
     {
-        SpotLight spotLight = new SpotLight(country);
-        
+        SpotLight spotLight = new SpotLight();
+        spotLight.makeRandomVehicleFromSet(country);
+
         return spotLight;
     }
 

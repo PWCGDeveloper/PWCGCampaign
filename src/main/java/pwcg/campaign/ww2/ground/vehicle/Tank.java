@@ -1,78 +1,82 @@
 package pwcg.campaign.ww2.ground.vehicle;
 
 import java.io.BufferedWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.campaign.ww1.ground.vehicle.VehicleDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
 class Tank extends Vehicle
 {
-	// German
-	private String[][] germanTanks = 
-	{
-        { "pz38t", "pz38t" },
-        { "pziii-h", "pziii-h" },
-        { "pziii-l", "pziii-l" },
-        { "pziv-f1", "pziv-f1" },
-        { "pziv-g", "pziv-g" },
-        { "stug37l24", "stug37l24" },
-        { "stug40l43", "stug40l43" },
-        { "marderiii-h", "marderiii-h" },
-	};
-	
-	// Russian
-	private String[][] russianTanks = 
-	{
-        { "ba10m", "ba10m" },
-        { "ba64", "ba64" },
-		{ "bt7m", "bt7m" },
-        { "kv1-41", "kv1-41" },
-        { "kv1-42", "kv1-42" },
-        { "t34-76stz-41", "t34-76stz-41" },
-        { "t34-76stz", "t34-76stz" },
-        { "t70", "t70" },
-	};
-	
+    private static final List<VehicleDefinition> germanTank = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "vehicles\\pz38t\\", "pz38t", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\pziii-h\\", "pziii-h", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\pziii-l\\", "pziii-l", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\pziv-f1\\", "pziv-f1", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\pziv-g\\", "pziv-g", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\stug37l24\\", "stug37l24", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\stug40l43\\", "stug40l43", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\marderiii-h\\", "marderiii-h", Country.GERMANY));
+        }
+    };
+
+    private static final List<VehicleDefinition> russianTank = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "vehicles\\ba10m\\", "ba10m", Country.RUSSIA));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\ba64\\", "ba64", Country.RUSSIA));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\bt7m\\", "bt7m", Country.RUSSIA));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\kv1-41\\", "kv1-41", Country.RUSSIA));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\kv1-42\\", "kv1-42", Country.RUSSIA));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\t34-76stz-41\\", "t34-76stz-41", Country.RUSSIA));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\t34-76stz\\", "t34-76stz", Country.RUSSIA));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\t70\\", "t70", Country.RUSSIA));
+        }
+    };
 	
 	protected Tank()
 	{
+	    super();
 	}
 
-	public Tank(ICountry country) throws PWCGException 
-	{
-		super();
-		
-		this.country = country;
-		
-		String tankId= "unknownTank";
-		String tankDir = "unknownTankDir";
-		
-		if (country.getSideNoNeutral() == Side.ALLIED)
-		{
-			int selectedTank = RandomNumberGenerator.getRandom(russianTanks.length);
-			tankId = russianTanks[selectedTank] [0];
-			tankDir = russianTanks[selectedTank] [1];
-			displayName = "Russian Tank";
-		}
-        else 
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanTank);
+        allvehicleDefinitions.addAll(russianTank);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
+        if (country.getSideNoNeutral() == Side.ALLIED)
         {
-            int selectedTank = RandomNumberGenerator.getRandom(germanTanks.length);
-            tankId = germanTanks[selectedTank] [0];
-            tankDir = germanTanks[selectedTank] [1];
-            displayName = "German Tank";
+            vehicleSet = russianTank;
         }
-		
-		vehicleType = tankId;
-		script = "LuaScripts\\WorldObjects\\vehicles\\" + tankId + ".txt";
-		model = "graphics\\vehicles\\" + tankDir + "\\" + tankId + ".mgm";
-	}
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanTank;
+        }
+        
+        displayName = "Tank";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 
 	public Tank copy () 
 	{

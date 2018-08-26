@@ -66,8 +66,9 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
 
     protected void createArtillery() throws PWCGException 
     {
-        Artillery gunType = new Artillery(pwcgGroundUnitInformation.getCountry());
-        
+        Artillery gunType = new Artillery();
+        gunType.makeRandomVehicleFromSet(pwcgGroundUnitInformation.getCountry());
+
         int numArtillery = calcNumUnits();
                 
         for (int i = 0; i < numArtillery; ++i)

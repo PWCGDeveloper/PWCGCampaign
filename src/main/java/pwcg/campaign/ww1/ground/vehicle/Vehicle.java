@@ -3,6 +3,7 @@ package pwcg.campaign.ww1.ground.vehicle;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
@@ -14,6 +15,7 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.Logger;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.McuTREntity;
 
@@ -41,10 +43,9 @@ public abstract class Vehicle implements Cloneable, IVehicle
 
 	protected McuTREntity entity = new McuTREntity();
 
-	protected Vehicle(ICountry country)
+	protected Vehicle()
 	{
 		index = IndexGenerator.getInstance().getNextIndex();
-		this.country = country;
 	}
 
 	public void populateEntity() throws PWCGException
@@ -68,6 +69,29 @@ public abstract class Vehicle implements Cloneable, IVehicle
 
 		entity.setMisObjID(index);
 	}
+
+    protected void makeRandomVehicleInstance(List<VehicleDefinition> vehicleSet) throws PWCGException
+    {
+        int selectedIndex = RandomNumberGenerator.getRandom(vehicleSet.size());
+        VehicleDefinition vehicleDefinition = vehicleSet.get(selectedIndex);
+        makeVehicleFromDefinition(vehicleDefinition);
+    }
+
+    public void makeVehicleFromDefinition(VehicleDefinition vehicleDefinition) throws PWCGException
+    {
+        country = vehicleDefinition.getCountry();
+        vehicleType = vehicleDefinition.getVehicleType();
+        script = "LuaScripts\\WorldObjects\\" + vehicleDefinition.getScriptDir() + vehicleDefinition.getVehicleType() + ".txt";
+        model = "graphics\\" + vehicleDefinition.getModelDir() + "\\" + vehicleDefinition.getVehicleType() + ".mgm";
+        setPosition(new Coordinate());
+        setOrientation(new Orientation());
+        populateEntity();
+    }
+    
+    public String getDescription()
+    {
+        return (vehicleType + " / " + script + " / " + model);
+    }
 
 	public boolean vehicleExists()
 	{
@@ -315,4 +339,9 @@ public abstract class Vehicle implements Cloneable, IVehicle
 	{
 		return country;
 	}
+	
+    public String getVehicleType()
+    {
+        return vehicleType;
+    }
 }

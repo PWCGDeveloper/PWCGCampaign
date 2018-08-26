@@ -35,8 +35,9 @@ public class RoFAirfieldObjectSelector implements IAirfieldObjectSelector
 
         IVehicle airfieldObject = null;
         // First hot spot is the water tower
-        airfieldObject = new WaterTower(airfield.getCountry(date));
-    
+        airfieldObject = new WaterTower();
+        airfieldObject.makeRandomVehicleFromSet(airfield.getCountry(date));
+
         airfieldObject.setPosition(hotSpot.getPosition().copy());
         airfieldObject.setOrientation(objectOrientation);
         airfieldObject.populateEntity();
@@ -52,7 +53,11 @@ public class RoFAirfieldObjectSelector implements IAirfieldObjectSelector
         Orientation objectOrientation = new Orientation();
         objectOrientation.setyOri(orientation);
             
-        IVehicle airfieldObject = new AirfieldObject(airfield.getCountry(date));                      
+        IVehicle airfieldStuff;
+        
+        AirfieldObject airfieldObject = new AirfieldObject();
+        airfieldObject.makeRandomVehicleFromSet(airfield.getCountry(date));
+        airfieldStuff = airfieldObject;
         
         double roll = RandomNumberGenerator.getRandom(100);
         if (roll < 20)
@@ -62,10 +67,11 @@ public class RoFAirfieldObjectSelector implements IAirfieldObjectSelector
             String playerAirfieldName = campaign.getAirfieldName();
             if (playerAirfieldName.equals(airfield.getName()))
             {
-                IVehicle groundCrew = new GroundCrew(airfield.getCountry(date));
+                GroundCrew groundCrew = new GroundCrew();
+                groundCrew.makeRandomVehicleFromSet(airfield.getCountry(date));
                 if (groundCrew.vehicleExists())
                 {
-                    airfieldObject = groundCrew;
+                    airfieldStuff = groundCrew;
                 }
             }
         }
@@ -74,7 +80,7 @@ public class RoFAirfieldObjectSelector implements IAirfieldObjectSelector
         airfieldObject.setOrientation(objectOrientation);
         airfieldObject.populateEntity();
 
-        return airfieldObject;
+        return airfieldStuff;
     }
 
 }

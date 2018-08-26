@@ -1,7 +1,10 @@
 package pwcg.mission.ground.vehicle;
 
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IPWCGObject;
+import pwcg.campaign.ww1.ground.vehicle.VehicleDefinition;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -17,4 +20,8 @@ public interface IVehicle extends IPWCGObject
     public void setAiLevel(AiSkillLevel aiLevel);
     public void setCountry(ICountry country);
     public void setPosition(Coordinate position);
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException;
+    public void makeVehicleFromDefinition(VehicleDefinition vehicleDefinition) throws PWCGException;
+    public List<VehicleDefinition> getAllVehicleDefinitions();
+    public String getDescription();
 }

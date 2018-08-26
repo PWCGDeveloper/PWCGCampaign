@@ -1,118 +1,125 @@
 package pwcg.campaign.ww2.ground.vehicle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.campaign.ww1.ground.vehicle.VehicleDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.unittypes.transport.ShipConvoyUnit.ShipConvoyTypes;
 import pwcg.mission.mcu.McuTREntity;
 
 public class Ship extends Vehicle
 {
-    private String[][] germanShips = 
+    private ShipConvoyTypes shipConvoyType;
+    
+    private static final List<VehicleDefinition> germanWarships = new ArrayList<VehicleDefinition>() 
     {
-        { "torpedoboat38", "torpedoboat38" },
-        { "destroyertype7", "destroyertype7" },
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("ships\\", "ships\\torpboats38\\", "torpboats38", Country.GERMANY));
+            add(new VehicleDefinition("ships\\", "ships\\destroyertype7\\", "destroyertype7", Country.GERMANY));
+        }
     };
 
-    private String[][] russianShips = 
+    private static final List<VehicleDefinition> germanMerchants = new ArrayList<VehicleDefinition>() 
     {
-        { "destroyertype7", "destroyertype7" },
-        { "destroyertype7", "destroyertype7" },
-        { "destroyertype7", "destroyertype7" },
-        { "torpboatg5s11b", "torpboatg5s11b" },
-        { "torpboatg5s11b", "torpboatg5s11b" },
-        { "torpboatg5s11b213", "torpboatg5s11b" },
-        { "torpboatg5s11b213", "torpboatg5s11b" },
-        { "landboata", "landboata" },
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("ships\\", "ships\\largecargoshiptype1\\", "largecargoshiptype1", Country.GERMANY));
+            add(new VehicleDefinition("ships\\", "ships\\largetankershiptype1\\", "largetankershiptype1", Country.GERMANY));
+        }
     };
-	
 
-    private String[][] merchantShips = 
+    private static final List<VehicleDefinition> russianWarships = new ArrayList<VehicleDefinition>() 
     {
-            { "largecargoshiptype1", "largecargoshiptype1" },
-            { "largetankershiptype1", "largetankershiptype1" },
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("ships\\", "ships\\destroyertype7\\", "destroyertype7", Country.RUSSIA));
+            add(new VehicleDefinition("ships\\", "ships\\torpboatg5s11b\\", "torpboatg5s11b", Country.RUSSIA));
+            add(new VehicleDefinition("ships\\", "ships\\torpboatg5s11b213\\", "torpboatg5s11b213", Country.RUSSIA));
+            add(new VehicleDefinition("ships\\", "ships\\landboata\\", "landboata", Country.RUSSIA));
+            add(new VehicleDefinition("ships\\", "ships\\landboata\\", "landboata", Country.RUSSIA));
+        }
     };
 	
-	private Ship(ICountry country) 
+    private static final List<VehicleDefinition> russianMerchants = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("ships\\", "ships\\largecargoshiptype1\\", "largecargoshiptype1", Country.RUSSIA));
+            add(new VehicleDefinition("ships\\", "ships\\largetankershiptype1\\", "largetankershiptype1", Country.RUSSIA));
+        }
+    };
+
+    public Ship() 
 	{
 	    super();
-        this.country = country;
 	}
 	   
-	public Ship(ICountry country, ShipConvoyTypes shipConvoyType) throws PWCGException 
+	public Ship(ShipConvoyTypes shipConvoyType) throws PWCGException 
 	{
         super();
-        this.country = country;
-		
-		String shipId= "";
-		String shipDir= "";
-		
+        this.shipConvoyType = shipConvoyType;
+	}
+
+    
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanWarships);
+        allvehicleDefinitions.addAll(germanMerchants);
+        allvehicleDefinitions.addAll(russianWarships);
+        allvehicleDefinitions.addAll(russianMerchants);
+        return allvehicleDefinitions;
+    }
+
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
         if (country.getSideNoNeutral() == Side.ALLIED)
-		{
+        {
             if (shipConvoyType == ShipConvoyTypes.WARSHIP)
-			{
-				int selectedShip = RandomNumberGenerator.getRandom(russianShips.length);
-				shipId = russianShips[selectedShip][0];
-		        shipDir = russianShips[selectedShip] [1];
-				displayName = "Russian Warship";
-			}
-			else
-			{
-				int selectedShip = RandomNumberGenerator.getRandom(merchantShips.length);
-				shipId = merchantShips[selectedShip][1];
-				displayName = getDisplayName(shipId);
-			}
-		}
-		else
-		{
+            {
+                vehicleSet = russianWarships;
+            }
+            else
+            {
+                vehicleSet = russianMerchants;
+            }
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
             if (shipConvoyType == ShipConvoyTypes.WARSHIP)
-			{
-				int selectedShip = RandomNumberGenerator.getRandom(germanShips.length);
-				shipId = germanShips[selectedShip] [0];
-		        shipDir = germanShips[selectedShip] [1];
-				displayName = "German Warship";
-			}
-			else
-			{
-				int selectedShip = RandomNumberGenerator.getRandom(merchantShips.length);
-				shipId = merchantShips[selectedShip][0];
-		        shipDir = merchantShips[selectedShip] [1];
-				displayName = "Cargo Ship";
-			}
-		}
-		
-		vehicleType = shipId;
-		script = "LuaScripts\\WorldObjects\\Ships\\" + shipId + ".txt";
-		model = "graphics\\ships\\" + shipDir + shipId + ".mgm";
-	}
+            {
+                vehicleSet = germanWarships;
+            }
+            else
+            {
+                vehicleSet = germanMerchants;
+            }
+        }
+        
+        displayName = "Ship";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 
-	private String getDisplayName(String id)
-	{
-		if (id.contains("tanker"))
-		{
-			return  "Tanker";
-		}
-		else if (id.contains("pass"))
-		{
-			return  "Troop Transport";
-		}
-		else
-		{
-			return  "Cargo";
-		}
-	}
-
+	
+	
 	public Ship copy () 
 	{
-		Ship ship = new Ship(country);
+		Ship ship = new Ship();
 		
 		ship.index = IndexGenerator.getInstance().getNextIndex();
 		
-		ship.vehicleType = this.vehicleType;
+        ship.vehicleType = this.vehicleType;
 		ship.displayName = this.displayName;
 		ship.linkTrId = this.linkTrId;
 		ship.script = this.script;

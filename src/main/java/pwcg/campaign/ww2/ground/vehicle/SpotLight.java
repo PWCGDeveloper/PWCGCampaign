@@ -1,10 +1,14 @@
 package pwcg.campaign.ww2.ground.vehicle;
 
 import java.io.BufferedWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.campaign.ww1.ground.vehicle.VehicleDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
@@ -13,43 +17,52 @@ import pwcg.mission.mcu.McuTREntity;
 
 public class SpotLight extends Vehicle
 {
-	// German
-	private String[] germanSpotLight = { "searchlightger", "searchlightger" };
-	private String[] alliedSpotLight = { "searchlightsu", "searchlightsu" };
+    private static final List<VehicleDefinition> germanSpotLight = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "artillery\\searchlightger\\", "searchlightger", Country.GERMANY));
+        }
+    };
 
-    
+    private static final List<VehicleDefinition> russianSpotLight = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("vehicles\\", "artillery\\searchlightsu\\", "searchlightsu", Country.RUSSIA));
+        }
+    };
+
     protected SpotLight()
     {
+        super();
     }
 
-	public SpotLight(ICountry country) throws PWCGException 
-	{
-        super();
-        this.country = country;
-        
-		String spotLightId= "";
-		String spotLightDir = "";
-		
-		this.getEntity().setEnabled(1);
-			
-		if (country.getSideNoNeutral() == Side.ALLIED)
-		{
-			spotLightId = alliedSpotLight[0];
-			spotLightDir = alliedSpotLight [1];
-			displayName = "British SpotLight";
-		}
-		else 
-		{
-			spotLightId = germanSpotLight[0];
-			spotLightDir = germanSpotLight[1];
-			displayName = "German SpotLight";
-		}
-		
-		vehicleType = spotLightId;
-		script = "LuaScripts\\WorldObjects\\vehicles\\" + spotLightId + ".txt";
-		model = "graphics\\artillery\\" + spotLightDir + "\\" + spotLightId + ".mgm";
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanSpotLight);
+        allvehicleDefinitions.addAll(russianSpotLight);
+        return allvehicleDefinitions;
+    }
 
-	}
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
+        if (country.getSideNoNeutral() == Side.ALLIED)
+        {
+            vehicleSet = russianSpotLight;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanSpotLight;
+        }
+        
+        displayName = "Spot Light";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 
 	public SpotLight copy () 
 	{

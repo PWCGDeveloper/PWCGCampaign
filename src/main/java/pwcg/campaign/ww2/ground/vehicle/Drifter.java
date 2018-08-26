@@ -1,47 +1,76 @@
 package pwcg.campaign.ww2.ground.vehicle;
 
 import java.io.BufferedWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.campaign.ww1.ground.vehicle.VehicleDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
 
 public class Drifter extends Vehicle
 {
-    private String[][] drifters = 
+    private static final List<VehicleDefinition> germanDrifters = new ArrayList<VehicleDefinition>() 
     {
-        { "rivershipgeorgia", "rivershipgeorgia" },
-        { "rivershipgeorgia", "rivershipgeorgiaaaa" },
-        { "1124bm13", "1124bm13" },
-        { "1124", "1124" },
-        { "rivergunshipa", "rivergunshipa" },
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("ships\\", "ships\\rivershipgeorgia\\", "rivershipgeorgia", Country.GERMANY));
+            add(new VehicleDefinition("ships\\", "ships\\rivershipgeorgia\\", "rivershipgeorgiaaaa", Country.GERMANY));
+            add(new VehicleDefinition("ships\\", "ships\\1124bm13\\", "1124bm13", Country.GERMANY));
+            add(new VehicleDefinition("ships\\", "ships\\1124\\", "1124", Country.GERMANY));
+            add(new VehicleDefinition("ships\\", "ships\\rivergunshipa\\", "rivergunshipa", Country.GERMANY));
+        }
+    };
+
+    private static final List<VehicleDefinition> russianDrifters = new ArrayList<VehicleDefinition>() 
+    {
+        private static final long serialVersionUID = 1L;
+        {
+            add(new VehicleDefinition("ships\\", "ships\\rivershipgeorgia\\", "rivershipgeorgia", Country.RUSSIA));
+            add(new VehicleDefinition("ships\\", "ships\\rivershipgeorgia\\", "rivershipgeorgiaaaa", Country.RUSSIA));
+            add(new VehicleDefinition("ships\\", "ships\\1124bm13\\", "1124bm13", Country.RUSSIA));
+            add(new VehicleDefinition("ships\\", "ships\\1124\\", "1124", Country.RUSSIA));
+            add(new VehicleDefinition("ships\\", "ships\\rivergunshipa\\", "rivergunshipa", Country.RUSSIA));
+        }
     };
     
-    protected Drifter()
-    {
-    }
-
-    public Drifter(ICountry country) throws PWCGException 
+    public Drifter()
     {
         super();
-        
-        this.country = country;
-        
-        int selectedDrifter = RandomNumberGenerator.getRandom(drifters.length);
-        String drifterId = drifters[selectedDrifter] [0];
-        String drifterDir = drifters[selectedDrifter] [1];
-        displayName = "River Ship";
-        
-        vehicleType = drifterId;
-        script = "LuaScripts\\WorldObjects\\Ships\\" + drifterId + ".txt";
-        model = "graphics\\ships\\" + drifterDir + "\\" + drifterId + ".mgm";
+    }
+    
+    @Override
+    public List<VehicleDefinition> getAllVehicleDefinitions()
+    {
+        List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
+        allvehicleDefinitions.addAll(germanDrifters);
+        allvehicleDefinitions.addAll(russianDrifters);
+        return allvehicleDefinitions;
     }
 
+    @Override
+    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+    {
+        List<VehicleDefinition> vehicleSet = null;;
+        if (country.getSideNoNeutral() == Side.ALLIED)
+        {
+            vehicleSet = russianDrifters;
+        }
+        else if (country.getSideNoNeutral() == Side.AXIS)
+        {
+            vehicleSet = germanDrifters;
+        }
+        
+        displayName = "River Ship";
+        makeRandomVehicleInstance(vehicleSet);
+    }
 
     public Drifter copy () 
     {

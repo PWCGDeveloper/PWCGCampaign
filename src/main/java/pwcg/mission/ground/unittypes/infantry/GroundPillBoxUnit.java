@@ -25,7 +25,9 @@ public class GroundPillBoxUnit extends GroundDirectFireUnit
 
 	protected void createUnits() throws PWCGException  
 	{
-        spawningVehicle = new PillBox(pwcgGroundUnitInformation.getCountry());
+        spawningVehicle = new PillBox();
+        spawningVehicle.makeRandomVehicleFromSet(pwcgGroundUnitInformation.getCountry());
+
         spawningVehicle.setOrientation(new Orientation());
         spawningVehicle.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
         spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
