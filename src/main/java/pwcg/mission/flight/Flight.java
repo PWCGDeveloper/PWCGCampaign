@@ -927,7 +927,10 @@ public abstract class Flight extends Unit
     {
         PlayerEscortBuilder playerEscortBuilder = new PlayerEscortBuilder();
         Flight escortForPlayerFlight = playerEscortBuilder.createEscortForPlayerFlight(this);
-        addLinkedUnit(escortForPlayerFlight);
+        if (escortForPlayerFlight != null)
+        {
+            addLinkedUnit(escortForPlayerFlight);
+        }
     }
     
     public void createVirtualEscortFlight() throws PWCGException 

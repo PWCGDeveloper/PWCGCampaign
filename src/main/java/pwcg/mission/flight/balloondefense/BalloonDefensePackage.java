@@ -84,7 +84,7 @@ public class BalloonDefensePackage extends FlightPackage
     {
         if(isPlayerFlight)
         {    
-            Squadron enemyScoutSquadron = PWCGContextManager.getInstance().getSquadronManager().getEnemySquadronByRole(squadron.determineSquadronCountry(campaign.getDate()), Role.ROLE_FIGHTER, campaign.getDate());
+            Squadron enemyScoutSquadron = PWCGContextManager.getInstance().getSquadronManager().getEnemySquadronByRole(campaign, squadron.determineSquadronCountry(campaign.getDate()), Role.ROLE_FIGHTER, campaign.getDate());
             if (enemyScoutSquadron != null)
             {
                 MissionBeginUnit missionBeginUnitBust = new MissionBeginUnit();

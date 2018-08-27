@@ -72,7 +72,7 @@ public class OpposingFlightBuilder
         
         Side enemySide = campaign.determineCountry().getSide().getOppositeSide();
         Squadron playerSquadron = campaign.determineSquadron();
-        opposingSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(playerSquadron.determineCurrentPosition(
+        opposingSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, playerSquadron.determineCurrentPosition(
                 campaign.getDate()), 1, 500000.0, acceptableRoles, enemySide, campaign.getDate());
 
         if (opposingSquads != null && opposingSquads.size() != 0)
@@ -92,7 +92,7 @@ public class OpposingFlightBuilder
         acceptableRoles.add(opposingFlightRole);
         
         List<Squadron> opposingSquads = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(
-                        targetPosition.copy(), 1, 250000.0, acceptableRoles, campaign.determineCountry().getSide().getOppositeSide(), campaign.getDate());
+                campaign, targetPosition.copy(), 1, 250000.0, acceptableRoles, campaign.determineCountry().getSide().getOppositeSide(), campaign.getDate());
 
         if (opposingSquads != null && opposingSquads.size() != 0)
         {

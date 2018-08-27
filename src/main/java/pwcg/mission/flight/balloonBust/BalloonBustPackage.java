@@ -39,7 +39,7 @@ public class BalloonBustPackage extends FlightPackage
 
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
 		Coordinate balloonPosition = getTargetWaypoint(mission, startCoords, enemySide);
-        Squadron enemyScoutSquadron = PWCGContextManager.getInstance().getSquadronManager().getEnemySquadronByRole(squadron.determineSquadronCountry(campaign.getDate()), Role.ROLE_FIGHTER, campaign.getDate());
+        Squadron enemyScoutSquadron = PWCGContextManager.getInstance().getSquadronManager().getEnemySquadronByRole(campaign, squadron.determineSquadronCountry(campaign.getDate()), Role.ROLE_FIGHTER, campaign.getDate());
         ICountry balloonCountry = determineBalloonCountry(enemySide, enemyScoutSquadron);
         BalloonDefenseGroup balloonUnit = createBalloonUnit(balloonPosition, balloonCountry);
 		BalloonBustFlight balloonBust = createFlight(startCoords, balloonUnit);

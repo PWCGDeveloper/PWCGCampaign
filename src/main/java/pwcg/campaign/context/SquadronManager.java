@@ -273,7 +273,8 @@ public class SquadronManager
 		
 	}
 
-	public List<Squadron> getNearestSquadronsByRole(Coordinate startPoint,
+	public List<Squadron> getNearestSquadronsByRole(Campaign campaign, 
+	                                                Coordinate startPoint,
 	                                                int minimumSquadrons,
 	                                                double radius,
 	                                                List<Role> acceptableRoles,
@@ -282,15 +283,14 @@ public class SquadronManager
 		throws PWCGException 
 	{
 		List<Squadron> squadronsForSide = getSquadronsForSide(side, date);
-		
-		List<Squadron> activeSquadronsForSide = reduceToActiveSquadrons(squadronsForSide, date);
-
+		List<Squadron> activeSquadronsForSide = reduceToActiveSquadrons(campaign, squadronsForSide, date);
 		List<Squadron> squadronsForRole = getSquadronsByRole(activeSquadronsForSide, acceptableRoles, date);
 
 		return squadronsForRole;
 	}
 
-    public List<Squadron> getNearestSquadronsBySide(Coordinate startPoint,
+    public List<Squadron> getNearestSquadronsBySide(Campaign campaign, 
+                                                    Coordinate startPoint,
                                                     int minimumSquadrons,
                                                     double radius,
                                                     Side side,
@@ -298,7 +298,7 @@ public class SquadronManager
         throws PWCGException 
     {
         List<Squadron> squadronsForSide = getSquadronsForSide(side, date);
-        List<Squadron> activeSquadronsForSide = reduceToActiveSquadrons(squadronsForSide, date);
+        List<Squadron> activeSquadronsForSide = reduceToActiveSquadrons(campaign, squadronsForSide, date);
 
         return activeSquadronsForSide;
     }
@@ -343,7 +343,7 @@ public class SquadronManager
 		return null;
 	}
 
-	private ArrayList<Squadron> reduceToActiveSquadrons(List<Squadron> squadrons, Date  date) throws PWCGException 
+	private ArrayList<Squadron> reduceToActiveSquadrons(Campaign campaign, List<Squadron> squadrons, Date  date) throws PWCGException 
 	{
 		ArrayList<Squadron> returnSquadList = new ArrayList<Squadron>();
 		
@@ -357,7 +357,10 @@ public class SquadronManager
 				{
 					if (squadron.isCanFly(date))
 					{
-						returnSquadList.add(squadron);
+					    if (squadron.isSquadronViable(campaign))
+					    {
+					        returnSquadList.add(squadron);
+					    }
 					}
 				}
 			}
@@ -456,9 +459,8 @@ public class SquadronManager
         return squadronId;
     }
 
-    public Squadron getEnemySquadronByRole(ICountry country, Role role, Date date) throws PWCGException 
+    public Squadron getEnemySquadronByRole(Campaign campaign, ICountry country, Role role, Date date) throws PWCGException 
     {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
         ConfigManager configManager = campaign.getCampaignConfigManager();
 
         int initialSquadronSearchRadiusKey = configManager.getIntConfigParam(ConfigItemKeys.InitialSquadronSearchRadiusKey);
@@ -473,6 +475,7 @@ public class SquadronManager
 
         List<Squadron> enemySquadrons = null;
         enemySquadrons =  getNearestSquadronsByRole(
+                        campaign,
                         field.getPosition(),
                         100,
                         initialSquadronSearchRadiusKey,
@@ -505,6 +508,7 @@ public class SquadronManager
 
         List<Squadron> friendlySquadrons = null;
         friendlySquadrons =  getNearestSquadronsByRole(
+                        campaign,
                         field.getPosition(),
                         100,
                         initialSquadronSearchRadiusKey,

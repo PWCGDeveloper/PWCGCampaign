@@ -131,7 +131,7 @@ public class SeaAntiShippingPackage extends FlightPackage
 		
 		List<Squadron> opposingSquads = null;
         Side enemySide = campaign.determineCountry().getSide().getOppositeSide();
-        opposingSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(targetPosition.copy(), 1, 400000.0, acceptableRoles, enemySide, campaign.getDate());
+        opposingSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, targetPosition.copy(), 1, 400000.0, acceptableRoles, enemySide, campaign.getDate());
 
 		if (opposingSquads != null && opposingSquads.size() != 0)
 		{

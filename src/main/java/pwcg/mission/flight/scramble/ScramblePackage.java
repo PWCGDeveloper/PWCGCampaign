@@ -50,7 +50,7 @@ public class ScramblePackage extends FlightPackage
 		// Generate an opposing fighter squadron
 		List<Squadron> opposingSquads = null;
 		Side enemySide = squadron.determineSquadronCountry(campaign.getDate()).getSide().getOppositeSide();
-        opposingSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(targetWaypoint, 1, 50000.0, acceptableRoles, enemySide, campaign.getDate());
+        opposingSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, targetWaypoint, 1, 50000.0, acceptableRoles, enemySide, campaign.getDate());
 		
 		if (opposingSquads != null && opposingSquads.size() != 0)
 		{

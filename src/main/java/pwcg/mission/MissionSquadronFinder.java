@@ -44,14 +44,14 @@ public class MissionSquadronFinder
 		FrontLinesForMap frontLinesForMap =  map.getFrontLinesForMap(campaign.getDate());
 
         Coordinate closestAlliedFrontPosition =  frontLinesForMap.findClosestFrontCoordinateForSide(field.getPosition(), Side.ALLIED);
-        alliedSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsBySide(closestAlliedFrontPosition, 
+        alliedSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsBySide(campaign, closestAlliedFrontPosition, 
                                                                                 5, 
                                                                                 initialSquadronSearchRadiusKey,
                                                                                 Side.ALLIED,
                                                                                 date);
 
         Coordinate closestAxisFrontPosition =  frontLinesForMap.findClosestFrontCoordinateForSide(field.getPosition(), Side.AXIS);
-        axisSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsBySide(closestAxisFrontPosition, 
+        axisSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsBySide(campaign, closestAxisFrontPosition, 
                                                                               5, 
                                                                               initialSquadronSearchRadiusKey,
                                                                               Side.AXIS,
@@ -74,8 +74,8 @@ public class MissionSquadronFinder
         List<Role> acceptableRoles = new ArrayList<Role>();
         acceptableRoles.add(Role.ROLE_SEA_PLANE);
         
-        List<Squadron> alliedSeaPlaneSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(seaFrontPosition.copy(), 1, 400000.0, acceptableRoles, Side.ALLIED, date);
-        List<Squadron> axisSeaPlaneSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(seaFrontPosition.copy(), 1, 400000.0, acceptableRoles, Side.AXIS, date);
+        List<Squadron> alliedSeaPlaneSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, seaFrontPosition.copy(), 1, 400000.0, acceptableRoles, Side.ALLIED, date);
+        List<Squadron> axisSeaPlaneSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, seaFrontPosition.copy(), 1, 400000.0, acceptableRoles, Side.AXIS, date);
 
         for (Squadron alliedSeaPlaneSquad : alliedSeaPlaneSquads)
         {
@@ -98,14 +98,14 @@ public class MissionSquadronFinder
         // All missions are available for sea planes although most will be rejected due to lack of proximity
         acceptableRoles = Role.getAllRoles();
 
-        List<Squadron> otherAlliedSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(seaFrontPosition, 
+        List<Squadron> otherAlliedSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, seaFrontPosition, 
                                                                                      3, 
                                                                                      initialSquadronSearchRadiusKey,
                                                                                      acceptableRoles,
                                                                                      Side.ALLIED,
                                                                                      date);
 
-        List<Squadron> otherAxisSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(seaFrontPosition, 
+        List<Squadron> otherAxisSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, seaFrontPosition, 
                                                                                         3, 
                                                                                         initialSquadronSearchRadiusKey,
                                                                                         acceptableRoles,
@@ -136,7 +136,7 @@ public class MissionSquadronFinder
         int initialSquadronSearchRadiusKey = configManager.getIntConfigParam(ConfigItemKeys.InitialSquadronSearchRadiusKey);
 
         Coordinate closestAlliedFrontPosition =  frontLinesForMap.findClosestFrontCoordinateForSide(field.getPosition(), Side.ALLIED);
-        List<Squadron> otherAlliedSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(closestAlliedFrontPosition, 
+        List<Squadron> otherAlliedSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, closestAlliedFrontPosition, 
                                                                                      3, 
                                                                                      initialSquadronSearchRadiusKey,
                                                                                      acceptableRoles,
@@ -144,7 +144,7 @@ public class MissionSquadronFinder
                                                                                      date);
 
         Coordinate closestAxisFrontPosition =  frontLinesForMap.findClosestFrontCoordinateForSide(field.getPosition(), Side.AXIS);
-        List<Squadron> otherAxisSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(closestAxisFrontPosition, 
+        List<Squadron> otherAxisSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, closestAxisFrontPosition, 
                                                                                         3, 
                                                                                         initialSquadronSearchRadiusKey,
                                                                                         acceptableRoles,

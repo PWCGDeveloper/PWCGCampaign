@@ -180,7 +180,7 @@ public class StrategicBombingPackage extends FlightPackage
         // First get anything near the target area
         List<Squadron> allOpposingSquads = null;
         Side enemySide = campaign.determineCountry().getSide().getOppositeSide();
-        allOpposingSquads = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(targetCoordinates.copy(), 1, 75000.0, acceptableRoles, enemySide,
+        allOpposingSquads = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, targetCoordinates.copy(), 1, 75000.0, acceptableRoles, enemySide,
                 campaign.getDate());
 
         // Include day or night squadrons based on whether the mission is day or

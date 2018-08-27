@@ -354,14 +354,14 @@ public class Squadron
 		return datesSquadronAtField;
 	}
 
-    public ICountry determineEnemyCountry(Date date) throws PWCGException
+    public ICountry determineEnemyCountry(Campaign campaign, Date date) throws PWCGException
     {
         List<Squadron> squads = null;
         Coordinate squadronPosition = this.determineCurrentPosition(date);
         
         ICountry squadronCountry = CountryFactory.makeCountryByCountry(country);
         Side enemySide = squadronCountry.getSideNoNeutral().getOppositeSide();
-        squads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsBySide(squadronPosition, 1, 10000.0, enemySide, date);
+        squads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsBySide(campaign, squadronPosition, 1, 10000.0, enemySide, date);
 
         // Use an enemy squadron as a reference country.
         // If no enemy squadron use the enemy map reference nation
@@ -535,9 +535,9 @@ public class Squadron
         return squadronInfo.toString();
     }
 
-    public boolean isStartsCloseToFront(Date date) throws PWCGException
+    public boolean isStartsCloseToFront(Campaign campaign, Date date) throws PWCGException
     {
-        Side enemySide = determineEnemyCountry(date).getSide();
+        Side enemySide = determineEnemyCountry(campaign, date).getSide();
         Coordinate squadronPosition = determineCurrentPosition(date);
         FrontLinePoint closestFrontPosition = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(date).findClosestFrontPositionForSide(squadronPosition, enemySide);
         double distanceToFront = MathUtils.calcDist(squadronPosition, closestFrontPosition.getPosition());

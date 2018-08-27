@@ -63,7 +63,7 @@ public class FlightGroundUnitTargetGenerator
     private TargetTypeAvailabilityInputs createTargetingInputs(Coordinate targetGeneralLocation) throws PWCGException
     {
         TargetTypeAvailabilityInputGenerator targetTypeAvailabilityInputGenerator = new TargetTypeAvailabilityInputGenerator();
-        ICountry enemyCountry = squadron.determineEnemyCountry(campaign.getDate());
+        ICountry enemyCountry = squadron.determineEnemyCountry(campaign, campaign.getDate());
         TargetTypeAvailabilityInputs targetTypeAvailabilityInputs = targetTypeAvailabilityInputGenerator.createTargetAvailabilityInputs(campaign, flightType, enemyCountry.getSide(), targetGeneralLocation);
         return targetTypeAvailabilityInputs;
     }

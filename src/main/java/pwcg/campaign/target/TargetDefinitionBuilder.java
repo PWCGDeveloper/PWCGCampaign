@@ -32,7 +32,7 @@ public class TargetDefinitionBuilder
 
         if (flightType == FlightTypes.BALLOON_DEFENSE)
         {
-            targetDefinition.setAttackingCountry(squadron.determineEnemyCountry(campaign.getDate()));
+            targetDefinition.setAttackingCountry(squadron.determineEnemyCountry(campaign, campaign.getDate()));
             targetDefinition.setTargetCountry(squadron.determineSquadronCountry(campaign.getDate()));
         }
         else if (targetType == TacticalTarget.TARGET_ASSAULT)
@@ -42,7 +42,7 @@ public class TargetDefinitionBuilder
         else
         {
             targetDefinition.setAttackingCountry(squadron.determineSquadronCountry(campaign.getDate()));
-            targetDefinition.setTargetCountry(squadron.determineEnemyCountry(campaign.getDate()));
+            targetDefinition.setTargetCountry(squadron.determineEnemyCountry(campaign, campaign.getDate()));
         }
         
         targetDefinition.setDate(campaign.getDate());
@@ -66,12 +66,12 @@ public class TargetDefinitionBuilder
         int roll = RandomNumberGenerator.getRandom(100);
         if (roll < 60)
         {
-            targetDefinition.setAttackingCountry(squadron.determineEnemyCountry(campaign.getDate()));
+            targetDefinition.setAttackingCountry(squadron.determineEnemyCountry(campaign, campaign.getDate()));
             targetDefinition.setTargetCountry(squadron.determineSquadronCountry(campaign.getDate()));
         }
         else
         {
-            targetDefinition.setTargetCountry(squadron.determineEnemyCountry(campaign.getDate()));
+            targetDefinition.setTargetCountry(squadron.determineEnemyCountry(campaign, campaign.getDate()));
             targetDefinition.setAttackingCountry(squadron.determineSquadronCountry(campaign.getDate()));
         }
     }
@@ -85,7 +85,7 @@ public class TargetDefinitionBuilder
                 
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
 
-        ICountry targetCountry = squadron.determineEnemyCountry(campaign.getDate());
+        ICountry targetCountry = squadron.determineEnemyCountry(campaign, campaign.getDate());
         StrategicTargetTypeGenerator strategicTargetTypeGenerator = new StrategicTargetTypeGenerator(targetCountry.getSide(), campaign.getDate(), targetGeneralLocation);
         TacticalTarget targetType = strategicTargetTypeGenerator.createTargetType();
 

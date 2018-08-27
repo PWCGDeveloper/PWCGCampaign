@@ -17,13 +17,18 @@ public class PlayerEscortBuilder
                 playerFlightInformation.getCampaign(),
                 playerFlightInformation.getSquadron().determineSquadronCountry(playerFlightInformation.getCampaign().getDate()), 
                 Role.ROLE_FIGHTER);
-
-        MissionBeginUnit missionBeginUnitEscort = new MissionBeginUnit();
-        missionBeginUnitEscort.initialize(playerFlightInformation.getDepartureAirfield().getPosition());
-
-        FlightInformation escortFlightInformation = FlightInformationFactory.buildEscortForPlayerFlight(playerFlight.getFlightInformation(), friendlyFighterSquadron);
-        EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, missionBeginUnitEscort, playerFlight);
-        escortForPlayerFlight.createUnitMission();        
-        return escortForPlayerFlight;
+        
+        if (friendlyFighterSquadron != null)
+        {
+            MissionBeginUnit missionBeginUnitEscort = new MissionBeginUnit();
+            missionBeginUnitEscort.initialize(playerFlightInformation.getDepartureAirfield().getPosition());
+    
+            FlightInformation escortFlightInformation = FlightInformationFactory.buildEscortForPlayerFlight(playerFlight.getFlightInformation(), friendlyFighterSquadron);
+            EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, missionBeginUnitEscort, playerFlight);
+            escortForPlayerFlight.createUnitMission();       
+            return escortForPlayerFlight;
+        }
+        
+        return null;
     }
 }

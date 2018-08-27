@@ -112,7 +112,7 @@ public class AmbientBalloonDefensePackage
 	{		
 		Squadron squad = null;
 		List<Squadron> squadrons = new ArrayList<Squadron>();
-		squadrons =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsBySide(balloonPosition, 1, 200000.0, side, mission.getCampaign().getDate());
+		squadrons =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsBySide(campaign, balloonPosition, 1, 200000.0, side, mission.getCampaign().getDate());
 		if (squadrons.size() > 0)
 		{
 			squad = squadrons.get(0);

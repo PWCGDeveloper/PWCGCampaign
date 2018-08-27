@@ -138,7 +138,7 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
         IAirfield field =  PWCGContextManager.getInstance().getAirfieldAllMaps(airfieldName);
 
         List<Squadron> squadrons = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(
-                        field.getPosition(), 5, 55000, acceptableRoles, side, campaign.getDate());
+                campaign, field.getPosition(), 5, 55000, acceptableRoles, side, campaign.getDate());
 
         for (Squadron squadron : squadrons)
         {

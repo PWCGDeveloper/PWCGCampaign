@@ -40,7 +40,7 @@ public class SpyExtractWaypoints extends WaypointGeneratorBase
 
     private Coordinate getSpyExtractLocation(Coordinate startPosition) throws PWCGException
     {
-        Side enemySide = flight.getSquadron().determineEnemyCountry(campaign.getDate()).getSide(); 
+        Side enemySide = flight.getSquadron().determineEnemyCountry(campaign, campaign.getDate()).getSide(); 
 	    TargetLocationFinder targetLocationFinder = new TargetLocationFinder(campaign, enemySide, startPosition, SPY_EXTRACT_RADIUS);
 		Coordinate pickupLocation = targetLocationFinder.createTargetCoordinates();
         pickupLocation.setYPos(getFlightAlt());

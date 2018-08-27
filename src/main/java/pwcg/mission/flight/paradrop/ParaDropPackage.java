@@ -58,7 +58,7 @@ public class ParaDropPackage extends FlightPackage
     private Coordinate getTargetBridgeLocationForParaDrop(Coordinate groundUnitCoordinates) throws PWCGException
     {
         GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
-        Side enemySide = squadron.determineEnemyCountry(campaign.getDate()).getSide();
+        Side enemySide = squadron.determineEnemyCountry(campaign, campaign.getDate()).getSide();
         Bridge targetBridge = groupManager.getBridgeFinder().findClosestBridgeForSide(enemySide, campaign.getDate(), groundUnitCoordinates);
         Coordinate targetCoordinates = targetBridge.getPosition().copy();
         return targetCoordinates;

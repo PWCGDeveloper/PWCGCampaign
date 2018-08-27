@@ -57,6 +57,7 @@ public class PackageAirfieldScramble
 
         List<Squadron> squadrons = null;
         squadrons = squadronManager.getNearestSquadronsBySide(
+                campaign, 
                 scrambleCoordinates, 
                 0, 10000.0, 
                 campaign.determineCountry().getSide().getOppositeSide(),

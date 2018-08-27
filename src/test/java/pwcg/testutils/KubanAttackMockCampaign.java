@@ -7,11 +7,15 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignEquipmentManager;
+import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -28,17 +32,14 @@ import pwcg.mission.mcu.Coalition;
 
 public class KubanAttackMockCampaign
 {
-    @Mock
-    protected Campaign campaign;
-
-    @Mock
-    protected Mission mission;
-
-    @Mock
-    protected MissionFlightBuilder missionFlightBuilder;
-
-    @Mock
-    protected ConfigManagerCampaign configManager;
+    @Mock protected Campaign campaign;
+    @Mock protected Mission mission;
+    @Mock protected MissionFlightBuilder missionFlightBuilder;
+    @Mock protected ConfigManagerCampaign configManager;
+    @Mock protected CampaignPersonnelManager personnelManager;
+    @Mock protected SquadronPersonnel squadronPersonnel;
+    @Mock protected CampaignEquipmentManager equipmentManager;
+    @Mock protected Equipment squadronEquipment;
 
     protected ICountry country = CountryFactory.makeCountryByCountry(Country.GERMANY);
     protected MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
@@ -65,6 +66,16 @@ public class KubanAttackMockCampaign
         Mockito.when(campaign.getSquadronId()).thenReturn(squadron.getSquadronId());
         Mockito.when(campaign.getAirfieldName()).thenReturn(squadron.determineCurrentAirfieldName(date));
         
+        Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
+        Mockito.when(personnelManager.getSquadronPersonnel(Mockito.any())).thenReturn(squadronPersonnel);
+        Mockito.when(squadronPersonnel.isSquadronPersonnelViable()).thenReturn(true);
+        
+        Mockito.when(campaign.getAirfieldName()).thenReturn(squadron.determineCurrentAirfieldName(date));
+
+        Mockito.when(campaign.getEquipmentManager()).thenReturn(equipmentManager);
+        Mockito.when(equipmentManager.getEquipmentForSquadron(Mockito.any())).thenReturn(squadronEquipment);
+        Mockito.when(squadronEquipment.isSquadronEquipmentViable()).thenReturn(true);
+
         Mockito.when(campaign.determineCountry()).thenReturn(country);
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MaxGroundTargetDistanceKey)).thenReturn(50000);
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);

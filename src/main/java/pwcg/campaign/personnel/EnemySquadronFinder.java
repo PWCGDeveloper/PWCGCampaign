@@ -60,7 +60,7 @@ public class EnemySquadronFinder
         IAirfield airfield = squadron.determineCurrentAirfieldAnyMap(date);
         if (airfield != null)
         {
-            nearbyEnemySquadrons = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(airfield.getPosition(), 1, 200000.0, acceptableRoles, enemySide, date);
+            nearbyEnemySquadrons = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, airfield.getPosition(), 1, 200000.0, acceptableRoles, enemySide, date);
         }
         
         List<Squadron> nearbyActiveEnemySquadrons = PWCGContextManager.getInstance().getSquadronManager().reduceToFlyable(nearbyEnemySquadrons, date);
