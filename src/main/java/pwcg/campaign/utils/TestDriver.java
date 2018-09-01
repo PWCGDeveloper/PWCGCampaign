@@ -13,7 +13,7 @@ public class TestDriver
     private static TestDriver testDriver = new TestDriver();
     
     private boolean enabled = false;
-    private boolean createPlayerOnly = true;
+    private boolean createPlayerOnly = false;
     private boolean writeCampaignFile = true;
     private boolean useTestFlightType = false;
     
@@ -42,9 +42,6 @@ public class TestDriver
         return testDriver;
     }
 
-    /**
-     * @param enabled the enabled to set
-     */
     public void setEnabled(boolean enabled)
     {
         this.enabled = enabled;
@@ -56,9 +53,6 @@ public class TestDriver
         return enabled;
     }
 
-    /**
-     * @return the createPlayerOnly
-     */
     public boolean isCreatePlayerOnly()
     {
         if (enabled)
@@ -69,17 +63,11 @@ public class TestDriver
         return false;
     }
 
-    /**
-     * @param createPlayerOnly the createPlayerOnly to set
-     */
     public void setCreatePlayerOnly(boolean createPlayerOnly)
     {
         this.createPlayerOnly = createPlayerOnly;
     }
 
-    /**
-     * @return
-     */
     public boolean isWriteCampaignFile()
     {
         if (enabled)
@@ -90,36 +78,21 @@ public class TestDriver
         return false;
     }
 
-    /**
-     * @param writeCampaignFile
-     */
     public void setWriteCampaignFile(boolean writeCampaignFile)
     {
         this.writeCampaignFile = writeCampaignFile;
     }
-    
-    /**
-     * @return
-     */
+
     public boolean isUseTestFlightType()
     {
         return useTestFlightType;
     }
 
-    /**
-     * @param useTestFlightType
-     */
     public void setUseTestFlightType(boolean useTestFlightType)
     {
         this.useTestFlightType = useTestFlightType;
     }
 
-
-    /**
-     * @param role
-     * @return
-     * @throws PWCGException
-     */
     private TestFlightType getTestFlightTypeForRole() throws PWCGException
     {
         if (currentRole == Role.ROLE_FIGHTER)
@@ -152,13 +125,6 @@ public class TestDriver
         }
     }
 
-
-    /**
-     * @param playerFlight
-     * @param role
-     * @return
-     * @throws PWCGException
-     */
     public FlightTypes getTestFlightType(boolean playerFlight) throws PWCGException
     {
         if (enabled)
@@ -180,12 +146,6 @@ public class TestDriver
         return FlightTypes.ANY;
     }
 
-    /**
-     * @param playerFlight
-     * @param role
-     * @param newTestFlightType
-     * @throws PWCGException 
-     */
     public void setTestFlightType(boolean playerFlight, Role role, FlightTypes newTestFlightType) throws PWCGException
     {
         if (enabled)
@@ -207,14 +167,6 @@ public class TestDriver
         }
     }
 
-
-
-    /**
-     * @param playerFlight
-     * @param role
-     * @return
-     * @throws PWCGException
-     */
     public TacticalTarget getTestTacticalTargetType(boolean playerFlight) throws PWCGException
     {
         if (enabled)
@@ -235,26 +187,16 @@ public class TestDriver
         return TacticalTarget.TARGET_NONE;
     }
 
-    /**
-     * @return the assignedSquadMembers
-     */
     public List<SquadronMember> getAssignedSquadMembers()
     {
         return this.assignedSquadMembers;
     }
 
-    /**
-     * @param assignedSquadMembers the assignedSquadMembers to set
-     */
     public void setAssignedSquadMembers(List<SquadronMember> assignedSquadMembers)
     {
         this.assignedSquadMembers = assignedSquadMembers;
     }
 
-    /**
-     * @author Patrick Wilson
-     *
-     */
     private class TestFlightType
     {
         private FlightTypes playerFlightType = FlightTypes.ANY;

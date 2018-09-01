@@ -20,21 +20,14 @@ public class McuCheckZone extends BaseFlightMcu
 	private int closer = 1;
 	private List<Coalition> planeCoalitions = new ArrayList<Coalition>();
 	private List<Coalition> vehicleCoalitions = new ArrayList<Coalition>();
-	
-    /**
-     * @param coalition
-     */
+
     public McuCheckZone (Coalition coalition)
     {
         super();
 
         setPlaneCoalition(coalition);
     }
-    
 
-    /**
-     * @param objectId
-     */
     public McuCheckZone (int objectId)
     {
         super();

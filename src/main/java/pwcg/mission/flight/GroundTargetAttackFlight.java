@@ -68,8 +68,7 @@ public abstract class GroundTargetAttackFlight extends Flight
                 {
                     if (prevWP.isTargetWaypoint())
                     {
-                        prevWP.setTarget(attackMcuSequence.getActivateTimer().getIndex());
-                        attackMcuSequence.getDeactivateTimer().setTarget(waypoint.getIndex());
+                        attackMcuSequence.linkToAttackDeactivate(waypoint.getIndex());
                     }
                     else
                     {

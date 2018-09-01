@@ -15,8 +15,8 @@ public class McuAttackArea extends BaseFlightMcu
 	private int attackGTargets = 0;
 	private int attackArea = 2000;
 	private int time = 60;
-	private WaypointPriority priority = WaypointPriority.PRIORITY_LOW;
-	private WaypointGoal goalType = WaypointGoal.GOAL_DEFAULT;
+	private WaypointPriority priority = WaypointPriority.PRIORITY_HIGH;
+	private WaypointGoal goalType = WaypointGoal.GOAL_PRIMARY;
 
 	public McuAttackArea ()
 	{

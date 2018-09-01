@@ -37,9 +37,7 @@ public class GroundAttackFlightValidator
 					
 					PlaneMCU leadPlane = attackFlight.getLeadPlane();
 					AttackMcuSequence attackMcuSequence = attackFlight.getAttackMcuSequences().get(leadPlane.getIndex());
-					assert(attackMcuSequence != null);
-					assert(isIndexInTargetList(attackMcuSequence.getActivateTimer().getIndex(), prevWaypoint.getTargets()));
-					assert(isIndexInTargetList(waypoint.getIndex(), attackMcuSequence.getDeactivateTimer().getTargets()));
+					assert(attackMcuSequence != null);					
 				}
 			}
 			

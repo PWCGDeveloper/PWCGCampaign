@@ -31,14 +31,7 @@ public class SelfDeactivatingCheckZone
 	public SelfDeactivatingCheckZone ()
 	{    
 	}
-	
 
-    /**
-     * @param coordinate
-     * @param planes
-     * @param waypoint
-     * @
-     */
     public void initialize(Coordinate coordinate, Coalition coolition) 
     {
         triggerCheckZone = new McuCheckZone(coolition);
@@ -81,7 +74,7 @@ public class SelfDeactivatingCheckZone
         triggerCheckZone.setTarget(deactivateCZTimer.getIndex());
         deactivateCZTimer.setTarget(deactivateCZ.getIndex());
         
-        // Deactivate both the CZ and the ativate timer
+        // Deactivate both the CZ and the activate timer
         deactivateCZ.setTarget(triggerCheckZone.getIndex());        
         deactivateCZ.setTarget(activateCZTimer.getIndex());    
         
