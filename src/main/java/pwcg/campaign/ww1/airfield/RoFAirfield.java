@@ -251,6 +251,11 @@ public class RoFAirfield extends FixedPosition implements IAirfield, Cloneable
 	}
 
 	@Override
+	public PWCGLocation getFakeAirfieldLocation() throws PWCGException {
+		throw new PWCGException("Fake airfields not used in RoF");
+	}
+
+	@Override
 	public boolean isNearRunwayOrTaxiway(Coordinate pos) throws PWCGException {
 		double runwayOrientation = getTakeoffLocation().getOrientation().getyOri();
 		Coordinate startOfRunway = getTakeoffLocation().getPosition();

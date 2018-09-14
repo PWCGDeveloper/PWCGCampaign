@@ -64,6 +64,14 @@ public interface IAirfield extends IFixedPosition
      */
     public PWCGLocation getParkingLocation() throws PWCGException;
     
+    /**
+     * Gets the position and direction that the fake airfield object should
+     * be placed at.
+     * @return Airfield position and orientation
+     * @throws PWCGException
+     */
+    public PWCGLocation getFakeAirfieldLocation() throws PWCGException;
+
     public boolean isNearRunwayOrTaxiway(Coordinate pos) throws PWCGException;
 
     public Date getStartDate();
