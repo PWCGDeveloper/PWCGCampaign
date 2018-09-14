@@ -22,6 +22,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadmember.VictoryBuilder;
+import pwcg.campaign.squadmember.VictoryDescription;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.rofmap.MapPanelBase;
@@ -228,7 +229,9 @@ public class DebriefMapPanel  extends MapPanelBase
             VictoryBuilder victoryBuilder = new VictoryBuilder(campaign);
             Victory victory = victoryBuilder.buildVictory(campaign.getDate(), victoryEvent);
 
-            mapPoint.desc = victory.createVictoryDescription()  + "\n\n";
+            VictoryDescription victoryDescription = new VictoryDescription(campaign, victory);
+            String victoryDescriptionText = victoryDescription.createVictoryDescription();
+            mapPoint.desc = victoryDescriptionText  + "\n\n";
             eventPoints.add(mapPoint);
         }
     }

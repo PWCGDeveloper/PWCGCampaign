@@ -80,11 +80,12 @@ public class VictoryBuilderTest
         assert (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
         assert (victory.getVictim().getPilotName().equals(victim.getNameAndRank()));
         
-        String victoryDesc = victory.createVictoryDescription();
+        VictoryDescription victoryDescription = new VictoryDescription(campaign, victory);
+        String victoryDescriptionText = victoryDescription.createVictoryDescription();
         
         String verificationSegment =  "A Il-2 mod.1941 of 621st Ground Attack Air Regiment was brought down by Ofw Hans Schmidt";
 
-        assert(victoryDesc.contains(verificationSegment));
+        assert(victoryDescriptionText.contains(verificationSegment));
     }
     
     @Test
@@ -114,10 +115,11 @@ public class VictoryBuilderTest
         assert (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
         assert (victory.getVictim().getType().equals("Truck"));
         
-        String victoryDesc = victory.createVictoryDescription();
+        VictoryDescription victoryDescription = new VictoryDescription(campaign, victory);
+        String victoryDescriptionText = victoryDescription.createVictoryDescription();
         
         String verificationSegment=  "A Truck was destroyed by Ofw Hans Schmidt of I./JG52";
 
-        assert(victoryDesc.contains(verificationSegment));
+        assert(victoryDescriptionText.contains(verificationSegment));
     }
 }

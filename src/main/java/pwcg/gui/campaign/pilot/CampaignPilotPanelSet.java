@@ -343,7 +343,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
         
         if (pilot != null)
         {
-            CampaignPilotLogPanel pilotLogPanel = new CampaignPilotLogPanel(pilot);
+            CampaignPilotLogPanel pilotLogPanel = new CampaignPilotLogPanel(campaign, pilot);
             pilotLogPanel.makePanels();
             
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotLogPanel);

@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -37,12 +38,14 @@ public class CampaignPilotLogPanel extends PwcgGuiContext implements ActionListe
 	private JPanel rightpage = null;
     private int pageNum = 1;
     private PilotLogPages pilotLogPages;
+    private Campaign campaign;
 
-    public CampaignPilotLogPanel(SquadronMember pilot)
+    public CampaignPilotLogPanel(Campaign campaign, SquadronMember pilot)
     {
         super();
 
         this.pilot = pilot;  
+        this.campaign = campaign;  
     }
 
 
@@ -52,7 +55,7 @@ public class CampaignPilotLogPanel extends PwcgGuiContext implements ActionListe
 	
 	public void makePanels() throws PWCGException  
 	{
-        pilotLogPages = new PilotLogPages(pilot);
+        pilotLogPages = new PilotLogPages(campaign, pilot);
         pilotLogPages.makePages();
         
 		setLeftPanel(makeNavigationPanel());

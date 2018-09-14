@@ -42,7 +42,7 @@ public class Campaign
     public Campaign() 
     {
         personnelManager = new CampaignPersonnelManager(this);
-        campaignLogs = new CampaignLogs();
+        campaignLogs = new CampaignLogs(this);
     }
 
     public boolean open(String campaignName) throws PWCGException 

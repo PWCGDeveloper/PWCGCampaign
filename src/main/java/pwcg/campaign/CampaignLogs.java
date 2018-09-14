@@ -18,6 +18,7 @@ import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.squadmember.VictoryDescription;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -26,10 +27,12 @@ import pwcg.core.utils.Logger.LogLevel;
 
 public class CampaignLogs
 {
-	Map<String, CampaignLog> campaignLogs = new TreeMap<>();
+	private Map<String, CampaignLog> campaignLogs = new TreeMap<>();
+	private Campaign campaign;
 
-	public CampaignLogs()
+	public CampaignLogs(Campaign campaign)
 	{
+	    this.campaign = campaign;
 	}
 
 	public void setCampaignLogs(Campaign campaign, Map<Integer, AAREvent> eventList) throws PWCGException
@@ -175,7 +178,8 @@ public class CampaignLogs
 	private void addVictoryToCampaignLogs(AAREvent event) throws PWCGException
 	{
 		VictoryEvent logEvent = (VictoryEvent) event;
-		String logEntry = logEvent.getVictory().createVictoryDescription();
+		VictoryDescription victoryDescription = new VictoryDescription(campaign, logEvent.getVictory());
+		String logEntry = victoryDescription.createVictoryDescription();
 		addCampaignLog(logEvent.getDate(), logEntry);
 	}
 

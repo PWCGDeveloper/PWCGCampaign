@@ -16,6 +16,7 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.squadmember.VictoryDescription;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
@@ -188,7 +189,9 @@ public class CombatReportBuilder
 
         for (VictoryEvent victoryEvent :aarCoordinator.getAarContext().getUiCombatReportData().getCombatReportPanelData().getVictoriesForSquadronMembersInMission())
         {            
-            victoryAppend += victoryEvent.getVictory().createVictoryDescription() + "\n\n";
+            VictoryDescription victoryDescription = new VictoryDescription(campaign, victoryEvent.getVictory());
+            String victoryDescriptionText = victoryDescription.createVictoryDescription();
+            victoryAppend += victoryDescriptionText + "\n\n";
         }
         
         

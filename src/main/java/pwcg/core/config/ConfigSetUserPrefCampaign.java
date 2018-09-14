@@ -9,6 +9,7 @@ public class ConfigSetUserPrefCampaign
 
 		configSet.addConfigItem(ConfigItemKeys.MovingFrontKey, new ConfigItem("1"));
         configSet.addConfigItem(ConfigItemKeys.PilotInjuryKey, new ConfigItem("2"));
+        configSet.addConfigItem(ConfigItemKeys.DetailedVictoryDescriptionKey, new ConfigItem("1"));
         configSet.addConfigItem(ConfigItemKeys.MissionsCreditedKey, new ConfigItem("1"));    
         configSet.addConfigItem(ConfigItemKeys.ShowAllFlightsInBreifingKey, new ConfigItem("0"));
 		return configSet;    

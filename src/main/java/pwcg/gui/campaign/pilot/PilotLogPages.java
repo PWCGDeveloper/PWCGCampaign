@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.squadmember.VictoryDescription;
 import pwcg.core.exception.PWCGException;
 
 public class PilotLogPages
@@ -14,10 +16,11 @@ public class PilotLogPages
     private SquadronMember squadronMember;
     private PageSizeCalculator pageSizeCalculator = new PageSizeCalculator();
     private Map<Integer, StringBuffer> pages = new TreeMap<Integer, StringBuffer>();
-;
+    private Campaign campaign;
 
-    public PilotLogPages(SquadronMember squadronMember)
+    public PilotLogPages(Campaign campaign, SquadronMember squadronMember)
     {
+        this.campaign = campaign;
         this.squadronMember = squadronMember;
     }
 
@@ -66,7 +69,9 @@ public class PilotLogPages
 
         for (Victory victory : victories)
         {
-            String logEntry = victory.createVictoryDescription()  + "\n\n";
+            VictoryDescription victoryDescription = new VictoryDescription(campaign, victory);
+            String victoryDescriptionText = victoryDescription.createVictoryDescription();
+            String logEntry = victoryDescriptionText  + "\n\n";
 
             if ( (countLines(page.toString()) + countLines(logEntry)) >= pageSizeCalculator.getLinesPerPage())
             {
