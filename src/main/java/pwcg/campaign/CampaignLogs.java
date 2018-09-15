@@ -28,11 +28,9 @@ import pwcg.core.utils.Logger.LogLevel;
 public class CampaignLogs
 {
 	private Map<String, CampaignLog> campaignLogs = new TreeMap<>();
-	transient private Campaign campaign;
 
-	public CampaignLogs(Campaign campaign)
+	public CampaignLogs()
 	{
-	    this.campaign = campaign;
 	}
 
 	public void setCampaignLogs(Campaign campaign, Map<Integer, AAREvent> eventList) throws PWCGException
@@ -77,7 +75,7 @@ public class CampaignLogs
 			}
 			else if (event instanceof VictoryEvent)
 			{
-				addVictoryToCampaignLogs(event);
+				addVictoryToCampaignLogs(campaign, event);
 			}
 		}
 	}
@@ -175,7 +173,7 @@ public class CampaignLogs
 		addCampaignLog(logEvent.getDate(), logEntry);
 	}
 
-	private void addVictoryToCampaignLogs(AAREvent event) throws PWCGException
+	private void addVictoryToCampaignLogs(Campaign campaign, AAREvent event) throws PWCGException
 	{
 		VictoryEvent logEvent = (VictoryEvent) event;
 		VictoryDescription victoryDescription = new VictoryDescription(campaign, logEvent.getVictory());

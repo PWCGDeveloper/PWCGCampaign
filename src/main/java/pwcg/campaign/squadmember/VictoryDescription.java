@@ -11,8 +11,8 @@ public class VictoryDescription
     
     public VictoryDescription (Campaign campaign, Victory victory)
     {
-        this.campaign = campaign;
         this.victory = victory;
+        this.campaign = campaign;
     }    
 
     public String createVictoryDescription() throws PWCGException
