@@ -25,6 +25,7 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.Role;
@@ -114,6 +115,21 @@ public class Squadron
         }
 
         return currentPlaneArchTypes;
+    }
+
+
+    public boolean isPlaneInActiveSquadronArchTypes(Date date, EquippedPlane plane) throws PWCGException
+    {
+        boolean isActiveArchType = false;
+        for (PlaneArchType archType : determineCurrentAircraftArchTypes(date))
+        {
+            if (plane.getArchType().equals(archType.getPlaneArchTypeName()))
+            {
+                isActiveArchType = true;
+                break;
+            }
+        }
+        return isActiveArchType;
     }
 
 	public String determineCurrentAirfieldName(Date campaignDate) throws PWCGException 

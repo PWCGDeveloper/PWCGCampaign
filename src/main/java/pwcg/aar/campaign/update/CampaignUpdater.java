@@ -40,6 +40,9 @@ public class CampaignUpdater
         CampaignEquipmentReplacementUpdater equipmentReplacementUpdater = new CampaignEquipmentReplacementUpdater(campaign);
         equipmentReplacementUpdater.updateCampaignEquipmentReplacements();
         
+        CampaignEquipmentArchtypeChangeHandler archtypeChangeHandler = new CampaignEquipmentArchtypeChangeHandler(campaign, aarContext.getNewDate());
+        archtypeChangeHandler.updateCampaignEquipmentForArchtypeChange();
+        
         finishCampaignUpdates(aarContext.getCampaignUpdateData().getNewDate());
     }
     

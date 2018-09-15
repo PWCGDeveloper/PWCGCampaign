@@ -28,7 +28,7 @@ import pwcg.core.utils.Logger.LogLevel;
 public class CampaignLogs
 {
 	private Map<String, CampaignLog> campaignLogs = new TreeMap<>();
-	private Campaign campaign;
+	transient private Campaign campaign;
 
 	public CampaignLogs(Campaign campaign)
 	{

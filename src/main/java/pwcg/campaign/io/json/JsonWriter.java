@@ -17,8 +17,8 @@ public class JsonWriter<T>
 		try (Writer writer = new FileWriter(directory + filename))
 		{
 			Gson gson = new GsonBuilder().setPrettyPrinting().setDateFormat("yyyyMMdd").create();
-
 			gson.toJson(javaObject, writer);
+			writer.close();
 		}
 		catch (Exception e)
 		{
