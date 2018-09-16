@@ -25,10 +25,7 @@ public class PWCGErrorBundler
 	public PWCGErrorBundler()
 	{
 	}
-	
-	/**
-	 * 
-	 */
+
 	public void bundleDebuggingData()
 	{
 		try
@@ -51,21 +48,14 @@ public class PWCGErrorBundler
 		
 	}
 
-	/**
-	 * 
-	 */
 	private void createTargetDirs()
 	{
 		// make sure the error dir is there
 		createErrorDir();
 		createTargetDirRoot();
 		createTargetDataDir();
-		createTargetCampaignDir();
 	}
-	
-	/**
-	 * 
-	 */
+
 	private void createErrorDir()
 	{
 		String errorDirPath = createErrorDirPath(); 
@@ -77,9 +67,6 @@ public class PWCGErrorBundler
 		}
 	}
 
-	/**
-	 * 
-	 */
 	private void createTargetDirRoot()
 	{
 		// Create the specific error dir for this occurrence
@@ -91,9 +78,6 @@ public class PWCGErrorBundler
 		}
 	}
 
-	/**
-	 * 
-	 */
 	private void createTargetDataDir()
 	{
 		
@@ -107,75 +91,24 @@ public class PWCGErrorBundler
 		}
 	}
 
-
-	/**
-	 * 
-	 */
-	public void createTargetCampaignDir()
-	{
-		// Create the specific error dir for this occurrence
-		String errorDateDir = createTargetDirCampaignPath(); 
-		File campaignDir = new File(errorDateDir); 
-		
-		if (!campaignDir.exists())
-		{
-			campaignDir.mkdir();
-		}
-	}
-
-	/**
-	 * @throws IOException 
-	 * @throws PWCGException 
-	 * 
-	 */
 	public void copyMissionFiles() throws IOException, PWCGException
 	{
-		File programDataDir = new File(PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir()); 
-		File targetDataDir = new File(createTargetDirDataPath()); 
-		
-		if (!programDataDir.exists())
-		{
-			throw new PWCGException ("Could not find 777/1C program data directory: " + programDataDir.getAbsolutePath());
-		}
-		
-		if (!targetDataDir.exists())
-		{
-			throw new PWCGException ("Could not find target data directory: " + targetDataDir.getAbsolutePath());
-		}
-				
+		String programDataDir = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir(); 
+		String targetDataDir = createTargetDirDataPath(); 
+
 		copyDirectory(programDataDir, targetDataDir, "missionReport");
 	}
 
-
-	/**
-	 * @throws IOException 
-	 * @throws PWCGException 
-	 * 
-	 */
 	public void copyCampaignFiles() throws IOException, PWCGException
 	{
-		File programDataDir = new File(createSourceCampaignDirPath()); 
-		File targetDataDir = new File(createTargetDirCampaignPath()); 
-
-		if (!programDataDir.exists())
-		{
-			throw new PWCGException ("Could not find PWCG campaign data directory: " + programDataDir.getAbsolutePath());
-		}
-		
-		if (!targetDataDir.exists())
-		{
-			throw new PWCGException ("Could not find target campaign directory: " + targetDataDir.getAbsolutePath());
-		}
+		String programDataDir = createSourceCampaignDirPath(); 
+		String targetDataDir = createTargetDirCampaignPath(); 
 				
-		copyDirectory(programDataDir, targetDataDir, "*");
+        copyDirectory(programDataDir, targetDataDir, "*");
+        copyDirectory(programDataDir + "\\Personnel", targetDataDir + "\\Personnel", "*");
+        copyDirectory(programDataDir + "\\Equipment", targetDataDir + "\\Equipment", "*");
 	}
 
-	
-	/**
-	 * The root PWCG error directory
-	 * 
-	 * @return
-	 */
 	private String createErrorDirPath()
 	{
 		String errorDirPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgRootDir()  + ERROR_DIR_ROOT; 
@@ -183,36 +116,18 @@ public class PWCGErrorBundler
 		return errorDirPath;
 	}
 
-
-	/**
-	 * The directory to be zipped.  Contains misison logs and campaign data
-	 * 
-	 * @return
-	 */
 	private String createTargetDirPath() 
 	{
 		String campaignErrorDirPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgRootDir() + ERROR_DIR_ROOT + "\\" + targetErrorFileName; 
 		return campaignErrorDirPath;
 	}
 
-	
-	/**
-	 * Where we will copy mission data logs
-	 * 
-	 * @return
-	 */
 	private String createTargetDirDataPath() 
 	{
 		String campaignTargetDataDirPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgRootDir() + ERROR_DIR_ROOT + "\\" + targetErrorFileName + "\\Data"; 
 		return campaignTargetDataDirPath;
 	}
-		
 
-	/**
-	 * Where we will copy campaign files
-	 * 
-	 * @return
-	 */
 	private String createTargetDirCampaignPath() 
 	{
 		Campaign campaign  = PWCGContextManager.getInstance().getCampaign();
@@ -220,11 +135,6 @@ public class PWCGErrorBundler
 		return errorDateDir;
 	}
 
-	/**
-	 * Source campaign files
-	 * 
-	 * @return
-	 */
 	public String createSourceCampaignDirPath()
 	{
 		// Create the specific error dir for this occurrence
@@ -233,18 +143,27 @@ public class PWCGErrorBundler
 		
 		return campaignDirPath;
 	}
-	/**
-	 * @param source
-	 * @param destination
-	 * @throws IOException
-	 */
+
 	private void copyDirectory(
-			File source, 
-			File destination, 
-			String prefix) throws IOException 
+			String source, 
+			String destination, 
+			String prefix) throws IOException, PWCGException 
 	{
-		Logger.log(LogLevel.INFO, "Directory being copied is " + source.getAbsolutePath());
-		File[] files = source.listFiles();
+	    File sourceDir = new File(source); 
+	    File destinationDir = new File(destination); 
+
+       if (!sourceDir.exists())
+        {
+            throw new PWCGException ("Could not find 777/1C program data directory: " + sourceDir.getAbsolutePath());
+        }
+        
+        if (!destinationDir.exists())
+        {
+            destinationDir.mkdir();
+        }
+	                	    
+		Logger.log(LogLevel.INFO, "Directory being copied is " + source);
+		File[] files = sourceDir.listFiles();
 				
 		for (File file : files) 
 		{
@@ -256,19 +175,12 @@ public class PWCGErrorBundler
 			{
 				if (prefix.equalsIgnoreCase("*") || file.getName().startsWith(prefix))
 				{
-					copyFileOrDirectory(file, destination);
+					copyFileOrDirectory(file, destinationDir);
 				}
 			}
 		}
 	}
 
-	/**
-     * Copy a file or directory from source to target
-     * 
-	 * @param source
-	 * @param destination
-	 * @throws IOException
-	 */
 	private void copyFileOrDirectory(File source, File destination) throws IOException 
 	{
 		//
@@ -284,14 +196,6 @@ public class PWCGErrorBundler
 		copyFile(input, destination);
 	}
 
-
-	/**
-	 * Copy a file from source to target
-	 * 
-	 * @param input
-	 * @param destination
-	 * @throws IOException
-	 */
 	private void copyFile(InputStream input, File destination) throws IOException 
 	{
 		OutputStream output = null;
@@ -312,12 +216,6 @@ public class PWCGErrorBundler
 		output.close();
 	}
 
-
-	/**
-     * Initiate compression of the staging area
-     * 
-	 * @throws IOException 
-	 */
 	private void zipErrorFiles() throws IOException 
 	{
 		String zipFile = createErrorDirPath()  + "\\" + targetErrorFileName + ".zip";
@@ -331,13 +229,6 @@ public class PWCGErrorBundler
         zos.close();
 	}
 
-	/**
-     * Compress the staging directory
-     * 
-	 * @param sourcePath
-	 * @param zos
-	 * @throws IOException
-	 */
 	private void compressDirectory(String sourcePath, String targetDir, ZipOutputStream zos) throws IOException
 	{
 	    File fileToCompress = new File(sourcePath);
@@ -383,14 +274,7 @@ public class PWCGErrorBundler
 	         }
 	     }
 	 }
-	
-	
-    /**
-     * Initiate clean up of the staging area
-     * 
-     * @param dirToClean
-     * @throws IOException
-     */
+
     private void cleanStaging() throws IOException 
     {
         String dirToCleanPath = createTargetDirPath();
@@ -398,13 +282,7 @@ public class PWCGErrorBundler
         
         deleteDirectory(dirToClean);
     }
-    
-    /**
-     * Delete the staging directory structure
-     * 
-     * @param directory
-     * @return
-     */
+
     private static boolean deleteDirectory(File directory) 
     {
         if(directory.exists())
@@ -429,7 +307,6 @@ public class PWCGErrorBundler
         return(directory.delete());
     }
     
-
     public String getTargetErrorFileName()
     {
         return targetErrorFileName;

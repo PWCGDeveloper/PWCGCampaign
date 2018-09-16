@@ -13,6 +13,7 @@ import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.io.json.CampaignIOJson;
 import pwcg.campaign.personnel.SquadronMemberFilter;
+import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -104,7 +105,8 @@ public class Campaign
 
     public List<SquadronMember> getPlayers() throws PWCGException 
     {
-        SquadronMembers players = SquadronMemberFilter.filterActivePlayers(personnelManager.getPlayerPersonnel().getSquadronMembersWithAces().getSquadronMemberCollection(), campaignData.getDate());
+        SquadronPersonnel personnel = personnelManager.getPlayerPersonnel();
+        SquadronMembers players = SquadronMemberFilter.filterActivePlayers(personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaignData.getDate());
         return players.getSquadronMemberList();
     }
 
