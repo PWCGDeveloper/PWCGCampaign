@@ -18,8 +18,8 @@ public class AARVehiclePlaneLanded
 
     public void buildLandedLocations(Map <String, LogPlane> planeAiEntities)
     {
-        notePlaneLandedLocation(planeAiEntities);
         notePlaneCrashedLocation(planeAiEntities);
+        notePlaneLandedLocation(planeAiEntities);
     }
 
     private void notePlaneCrashedLocation(Map <String, LogPlane> planeAiEntities)
