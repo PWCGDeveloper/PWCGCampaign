@@ -152,6 +152,11 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
         return null;
     }
 
+    public List<Runway> getAllRunways()
+    {
+        return runways;
+    }
+
     private PWCGLocation getRunwayStart() throws PWCGException
     {
 		Runway runway = selectRunway();
