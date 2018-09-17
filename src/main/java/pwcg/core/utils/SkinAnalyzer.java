@@ -77,7 +77,7 @@ public class SkinAnalyzer
 		
 			for (Skin skin : skinsForPlane.getAceSkins().getSkins().values())
 			{
-				if (!skin.skinExists(Skin.PRODUCT_SKIN_DIR))
+				if (skin.getTemplate() == null && !skin.skinExists(Skin.PRODUCT_SKIN_DIR))
 				{		
                     addMissingSkin(plane, skin.getSkinName(), "Ace");
 				}

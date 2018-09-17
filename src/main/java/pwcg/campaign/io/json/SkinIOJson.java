@@ -7,6 +7,7 @@ import java.util.Map;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.skin.SkinSet;
+import pwcg.campaign.skin.SkinTemplateSet;
 import pwcg.campaign.skin.SkinsForPlane;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
@@ -47,4 +48,22 @@ public class SkinIOJson
 		
 		return skinSets;
 	}
+
+    public static Map<String, SkinTemplateSet> readSkinTemplateSet() throws PWCGException
+    {
+        Map<String, SkinTemplateSet>  skinTemplateSets = new HashMap<>();
+
+        String skinDir = PWCGContext.getInstance().getDirectoryManager().getPwcgSkinsDir() + "Templates\\";
+        List<File> jsonFiles = FileUtils.getFilesWithFilter(skinDir, ".json");
+        for (File jsonFile : jsonFiles)
+        {
+            JsonObjectReader<SkinTemplateSet> jsonReader = new JsonObjectReader<>(SkinTemplateSet.class);
+            SkinTemplateSet skinTemplateSet = jsonReader.readJsonFile(skinDir, jsonFile.getName());
+
+            String planeType = FileUtils.stripFileExtension(jsonFile.getName());
+            skinTemplateSets.put(planeType, skinTemplateSet);
+        }
+
+        return skinTemplateSets;
+    }
 }

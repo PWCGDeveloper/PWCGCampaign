@@ -18,6 +18,7 @@ public class ConfiguredSkinReader
     {
         Map<String, SkinSet>  configuredSkinSets = SkinIOJson.readSkinSet(SkinSetType.SKIN_CONFIGURED.getSkinSetName());
         Map<String, SkinSet>  doNotUseSkinSets = SkinIOJson.readSkinSet(SkinSetType.SKIN_DO_NOT_USE.getSkinSetName());
+        Map<String, SkinTemplateSet> skinTemplateSets = SkinIOJson.readSkinTemplateSet();
 
         for (String planeType : skinsForPlanes.keySet())
         {
@@ -31,6 +32,11 @@ public class ConfiguredSkinReader
             {
                 SkinSet doNotUseSkins = doNotUseSkinSets.get(planeType);
                 skinsForPlane.setDoNotUse(doNotUseSkins);
+            }
+            if (skinTemplateSets.containsKey(planeType))
+            {
+                SkinTemplateSet skinTemplates = skinTemplateSets.get(planeType);
+                skinsForPlane.setTemplates(skinTemplates);
             }
         }
     }

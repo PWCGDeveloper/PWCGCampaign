@@ -13,6 +13,7 @@ public class SkinsForPlane
     private SkinSet aceSkins = new SkinSet(SkinSetType.SKIN_ACE);
     private SkinSet looseSkins = new SkinSet(SkinSetType.SKIN_LOOSE);
     private SkinSet squadronSkins = new SkinSet(SkinSetType.SKIN_SQUADRON);
+    private SkinTemplateSet skinTemplates = new SkinTemplateSet();
 
 
 	public SkinsForPlane()
@@ -171,5 +172,14 @@ public class SkinsForPlane
 		this.doNotUse = doNotUse;
 	}
 	
+	public void setTemplates(SkinTemplateSet skinTemplates)
+	{
+		this.skinTemplates = skinTemplates;
+	}
+
+	public SkinTemplate getTemplate(String skinName)
+	{
+		return skinTemplates.getTemplates().get(skinName.toLowerCase());
+	}
 	
 }
