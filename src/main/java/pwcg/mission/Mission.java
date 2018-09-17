@@ -10,6 +10,7 @@ import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.CampaignMissionIOJson;
+import pwcg.campaign.skin.SkinTemplate.SkinTemplateInstance;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -50,6 +51,7 @@ public class Mission
     private boolean isFinalized = false;
     private MissionProfile missionProfile = MissionProfile.DAY_TACTICAL_MISSION;
     private MissionOptions missionOptions;
+    private List<SkinTemplateInstance> skinsToGenerate;
 
     public Mission(Campaign campaign, MissionProfile missionProfile, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders) throws PWCGException
     {
@@ -352,5 +354,14 @@ public class Mission
     public AmbientBalloonBuilder getAmbientBalloonBuilder()
     {
         return ambientBalloonBuilder;
+    }
+
+    public void setSkinsToGenerate(List<SkinTemplateInstance> skinsToGenerate)
+    {
+        this.skinsToGenerate = skinsToGenerate;
+    }
+
+    public List<SkinTemplateInstance> getSkinsToGenerate() {
+        return skinsToGenerate;
     }
 }

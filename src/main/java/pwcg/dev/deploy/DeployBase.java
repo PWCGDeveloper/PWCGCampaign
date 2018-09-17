@@ -169,11 +169,13 @@ public abstract class DeployBase
         directoriesToCopy.put("PWCGCampaign", null);
 
         // From Data
+        directoriesToCopy.put("Fonts", null);
         directoriesToCopy.put("Images", null);
         directoriesToCopy.put("Input", null);
         directoriesToCopy.put("Names", null);
 
         // From Images
+        directoriesToCopy.put("Insignia", null);
         directoriesToCopy.put("Maps", null);
         directoriesToCopy.put("Medals", null);
         directoriesToCopy.put("Menus", null);
@@ -216,6 +218,7 @@ public abstract class DeployBase
 
         // From Input/Skins
         directoriesToCopy.put("Configured", null);
+        directoriesToCopy.put("Templates", null);
 
         return directoriesToCopy;
     }

@@ -188,7 +188,12 @@ public class MissionSkinGenerator
             {
                 continue;
             }
-            
+
+            if (!squadSkin.skinExists(Skin.PRODUCT_SKIN_DIR))
+            {
+                continue;
+            }
+
             selectedSkin = squadSkin;
         }
 
