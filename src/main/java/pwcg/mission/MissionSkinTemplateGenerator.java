@@ -44,6 +44,7 @@ public class MissionSkinTemplateGenerator
 
                     Map<String, Object> params = new HashMap<>();
                     Date date = campaign.getDate();
+                    params.put("AIRCRAFT_ID_CODE", plane.getAircraftIdCode());
                     PWCGMap currentMap = PWCGContext.getInstance().getCurrentMap();
                     params.put("WINTER", (currentMap.getMapWeather().getSeason(date) == Season.WINTER) ? 1 : 0);
                     params.put("WESTERN_FRONT", (currentMap.getMapIdentifier() == FrontMapIdentifier.BODENPLATTE_MAP) ? 1 : 0);

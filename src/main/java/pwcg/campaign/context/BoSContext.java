@@ -1,7 +1,9 @@
 package pwcg.campaign.context;
 
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.plane.IPlaneMarkingManager;
 import pwcg.campaign.plane.payload.IPayloadFactory;
+import pwcg.product.bos.plane.BoSPlaneMarkingManager;
 import pwcg.product.bos.plane.payload.BoSPayloadFactory;
 import pwcg.core.exception.PWCGException;
 
@@ -91,5 +93,10 @@ public class BoSContext extends PWCGContextBase implements IPWCGContextManager
     public PWCGDirectoryManager getDirectoryManager()
     {
         return new PWCGDirectoryManager(PWCGProduct.BOS);
+    }
+
+    @Override
+    public IPlaneMarkingManager getPlaneMarkingManager() {
+        return new BoSPlaneMarkingManager();
     }
 }
