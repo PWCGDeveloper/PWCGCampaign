@@ -29,6 +29,11 @@ public class PlaneArchType
         return planeArchTypeName;
     }
 
+    public List<PlaneType> getAllMemberPlaneTypes()
+    {
+        return new ArrayList<>(memberPlaneTypes.values());
+    }
+
     public List<PlaneType> getActiveMemberPlaneTypes(Date date) throws PWCGException
     {
         List<PlaneType> activePlaneTypes = new ArrayList<>();
