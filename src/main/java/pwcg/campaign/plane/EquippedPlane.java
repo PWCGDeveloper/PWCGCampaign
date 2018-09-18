@@ -10,6 +10,7 @@ public class EquippedPlane extends PlaneType
     protected int planeStatus = PlaneStatus.NO_STATUS;
     protected int squadronId;
     protected Date dateRemovedFromService;
+    protected String aircraftIdCode;
 
     public EquippedPlane()
     {
@@ -32,6 +33,7 @@ public class EquippedPlane extends PlaneType
         equippedPlane.squadronId = this.squadronId;
         equippedPlane.dateRemovedFromService = this.dateRemovedFromService;
         equippedPlane.planeStatus = this.planeStatus;
+        equippedPlane.aircraftIdCode = this.aircraftIdCode;
     }
     
     public int getSerialNumber()
@@ -72,5 +74,15 @@ public class EquippedPlane extends PlaneType
     public void setSquadronId(int squadronId)
     {
         this.squadronId = squadronId;
+    }
+
+    public String getAircraftIdCode()
+    {
+        return aircraftIdCode;
+    }
+
+    public void setAircraftIdCode(String aircraftIdCode)
+    {
+        this.aircraftIdCode = aircraftIdCode;
     }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.group.airfield.Airfield;
 import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
+import pwcg.campaign.plane.IPlaneMarkingManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
@@ -71,4 +72,6 @@ public interface IPWCGContextManager
     String getMissionLogDirectory();
 
     void setCurrentMap(FrontMapIdentifier bodenplatteMap) throws PWCGException;
+
+    IPlaneMarkingManager getPlaneMarkingManager();
 }
