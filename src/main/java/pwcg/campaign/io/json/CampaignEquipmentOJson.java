@@ -6,6 +6,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Equipment;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
@@ -66,6 +67,13 @@ public class CampaignEquipmentOJson
             Equipment squadronEquipment = jsoReader.readJsonFile(campaignEquipmentDir, jsonFile.getName());
             int squadronId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
             campaign.getEquipmentManager().addEquipmentForSquadron(squadronId, squadronEquipment);
+            // Allocate ID codes in case none were present
+            // Can be removed after the next campaign compatibility break
+            for (EquippedPlane equippedPlane : squadronEquipment.getActiveEquippedPlanes().values())
+            {
+                if (equippedPlane.getAircraftIdCode() == null)
+                    PWCGContext.getInstance().getPlaneMarkingManager().allocatePlaneIdCode(campaign, squadronId, squadronEquipment, equippedPlane);
+            }
         }
     }
 

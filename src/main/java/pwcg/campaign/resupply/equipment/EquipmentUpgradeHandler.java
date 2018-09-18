@@ -11,6 +11,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.IPlaneMarkingManager;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.campaign.resupply.depot.EquipmentUpgradeRecord;
@@ -62,6 +63,7 @@ public class EquipmentUpgradeHandler
     {
         Equipment equipmentForSquadron = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId());
         EquipmentDepot equipmentDepot = campaign.getEquipmentManager().getEquipmentDepotForService(squadron.getService());
+        IPlaneMarkingManager planeMarkingManager = PWCGContext.getInstance().getPlaneMarkingManager();
 
         List<EquippedPlane> sortedPlanes = getPlanesForSquadronWorstToBest(equipmentForSquadron);
         for (EquippedPlane equippedPlane : sortedPlanes)
@@ -70,6 +72,7 @@ public class EquipmentUpgradeHandler
             if (equipmentUpgrade != null)
             {
                 EquippedPlane replacementPlane = equipmentDepot.removeEquippedPlaneFromDepot(equipmentUpgrade.getUpgrade().getSerialNumber());
+    			planeMarkingManager.allocatePlaneIdCode(campaign, squadron.getSquadronId(), equipmentForSquadron, equippedPlane);
                 equipmentForSquadron.addEquippedPlane(replacementPlane);
                 
                 EquippedPlane replacedPlane = equipmentForSquadron.removeEquippedPlane(equipmentUpgrade.getReplacedPlane().getSerialNumber());
