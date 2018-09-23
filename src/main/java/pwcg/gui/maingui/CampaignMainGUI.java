@@ -364,7 +364,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		JLabel spacer = new JLabel("    ", JLabel.LEFT);
 		versionPanel.add(spacer);
 
-		JLabel lversion = new JLabel("   PWCG Version 5.0.0", JLabel.LEFT);
+		JLabel lversion = new JLabel("   PWCG Version 5.0.1", JLabel.LEFT);
 		lversion.setBackground(lbg);
 		lversion.setForeground(fg);
 		lversion.setOpaque(false);

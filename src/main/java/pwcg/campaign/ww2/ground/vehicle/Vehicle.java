@@ -99,7 +99,7 @@ public abstract class Vehicle implements Cloneable, IVehicle
         country = vehicleDefinition.getCountry();
         vehicleType = vehicleDefinition.getVehicleType();
         script = "LuaScripts\\WorldObjects\\" + vehicleDefinition.getScriptDir() + vehicleDefinition.getVehicleType() + ".txt";
-        model = "graphics\\" + vehicleDefinition.getModelDir() + "\\" + vehicleDefinition.getVehicleType() + ".mgm";
+        model = "graphics\\" + vehicleDefinition.getModelDir() + vehicleDefinition.getVehicleType() + ".mgm";
         setPosition(new Coordinate());
         setOrientation(new Orientation());
         populateEntity();

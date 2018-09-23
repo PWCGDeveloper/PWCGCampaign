@@ -33,7 +33,7 @@ class RadioBeacon extends Vehicle implements IVehicle
     {
         private static final long serialVersionUID = 1L;
         {
-            add(new VehicleDefinition("vehicles\\", "vehicles\\", "ndb", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\ndb\\", "ndb", Country.GERMANY));
         }
     };
 
@@ -41,7 +41,7 @@ class RadioBeacon extends Vehicle implements IVehicle
     {
         private static final long serialVersionUID = 1L;
         {
-            add(new VehicleDefinition("vehicles\\", "vehicles\\", "ndb", Country.RUSSIA));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\ndb\\", "ndb", Country.RUSSIA));
         }
     };
 

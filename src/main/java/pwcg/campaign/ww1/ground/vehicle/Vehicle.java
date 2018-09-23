@@ -82,7 +82,7 @@ public abstract class Vehicle implements Cloneable, IVehicle
         country = vehicleDefinition.getCountry();
         vehicleType = vehicleDefinition.getVehicleType();
         script = "LuaScripts\\WorldObjects\\" + vehicleDefinition.getScriptDir() + vehicleDefinition.getVehicleType() + ".txt";
-        model = "graphics\\" + vehicleDefinition.getModelDir() + "\\" + vehicleDefinition.getVehicleType() + ".mgm";
+        model = "graphics\\" + vehicleDefinition.getModelDir() + vehicleDefinition.getVehicleType() + ".mgm";
         setPosition(new Coordinate());
         setOrientation(new Orientation());
         populateEntity();
@@ -169,36 +169,6 @@ public abstract class Vehicle implements Cloneable, IVehicle
 		}
 	}
 
-	public int getIndex()
-	{
-		return index;
-	}
-
-	public String getDisplayName()
-	{
-		return displayName;
-	}
-
-	public void setDisplayName(String displayName)
-	{
-		this.displayName = displayName;
-	}
-
-	public void setIndex(int index)
-	{
-		this.index = index;
-	}
-
-	public int getLinkTrId()
-	{
-		return linkTrId;
-	}
-
-	public void setLinkTrId(int linkTrId)
-	{
-		this.linkTrId = linkTrId;
-	}
-
 	public Coordinate getPosition()
     {
         return position;
@@ -225,31 +195,6 @@ public abstract class Vehicle implements Cloneable, IVehicle
 		return script;
 	}
 
-	public void setScript(String script)
-	{
-		this.script = script;
-	}
-
-	public String getModel()
-	{
-		return model;
-	}
-
-	public void setModel(String model)
-	{
-		this.model = model;
-	}
-
-	public String getDesc()
-	{
-		return Desc;
-	}
-
-	public void setDesc(String desc)
-	{
-		Desc = desc;
-	}
-
 	public AiSkillLevel getAiLevel()
 	{
 		return aiLevel;
@@ -260,84 +205,14 @@ public abstract class Vehicle implements Cloneable, IVehicle
 		this.aiLevel = aiLevel;
 	}
 
-	public int getNumberInFormation()
-	{
-		return numberInFormation;
-	}
-
-	public void setNumberInFormation(int numberInFormation)
-	{
-		this.numberInFormation = numberInFormation;
-	}
-
-	public int getVulnerable()
-	{
-		return vulnerable;
-	}
-
-	public void setVulnerable(int vulnerable)
-	{
-		this.vulnerable = vulnerable;
-	}
-
-	public int getEngageable()
-	{
-		return engageable;
-	}
-
-	public void setEngageable(int engageable)
-	{
-		this.engageable = engageable;
-	}
-
-	public int getLimitAmmo()
-	{
-		return limitAmmo;
-	}
-
-	public void setLimitAmmo(int limitAmmo)
-	{
-		this.limitAmmo = limitAmmo;
-	}
-
-	public int getDamageReport()
-	{
-		return damageReport;
-	}
-
-	public void setDamageReport(int damageReport)
-	{
-		this.damageReport = damageReport;
-	}
-
-	public int getDamageThreshold()
-	{
-		return damageThreshold;
-	}
-
-	public void setDamageThreshold(int damageThreshold)
-	{
-		this.damageThreshold = damageThreshold;
-	}
-
 	public McuTREntity getEntity()
 	{
 		return entity;
 	}
 
-	public void setEntity(McuTREntity entity)
-	{
-		this.entity = entity;
-	}
-
 	public void setCountry(ICountry country)
 	{
 		this.country = country;
-	}
-
-	public ICountry getCountry()
-	{
-		return country;
 	}
 	
     public String getVehicleType()

@@ -41,7 +41,7 @@ public class PlayerFlightEditor
 
     private void updatePlanesFromBriefing(List<CrewPlanePayloadPairing> crewPlanes) throws PWCGException
     {
-        int numInFormation = 1;
+        int numInFormation = 0;
         for (CrewPlanePayloadPairing crewPlane : crewPlanes)
         {
             createPlaneBasedOnBriefingSelections(numInFormation, crewPlane);
@@ -63,7 +63,7 @@ public class PlayerFlightEditor
     private void createPlaneBasedOnBriefingSelections(int numInFormation, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
         PlaneMCU plane = null;
-        if (numInFormation == 1)
+        if (numInFormation == 0)
         {
             plane = updateLeader(crewPlane);
         }

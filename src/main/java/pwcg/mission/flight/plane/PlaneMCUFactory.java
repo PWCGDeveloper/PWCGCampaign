@@ -70,7 +70,7 @@ public class PlaneMCUFactory
 
 	private void initializePlaneParameters() throws PWCGException
 	{
-		int numInFormation = 1;
+		int numInFormation = 0;
         for (PlaneMCU plane : planesForFlight)
         {
             setPlaceInFormation(numInFormation, plane);
