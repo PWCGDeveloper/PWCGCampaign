@@ -16,6 +16,8 @@ import pwcg.campaign.skin.SkinTemplate;
 import pwcg.campaign.skin.SkinsForPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.skin.SkinTemplate.SkinTemplateInstance;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.AsyncJobRunner;
 import pwcg.core.utils.DateUtils;
@@ -29,6 +31,7 @@ public class MissionSkinTemplateGenerator
     public static List<SkinTemplateInstance> instantiateTemplates(Campaign campaign, List<IFlight> list) throws PWCGException
     {
         List<SkinTemplateInstance> skinsToGenerate = new ArrayList<>();
+        int generateSkinLimit = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.GenerateSkinLimitKey);
 
         for (IFlight flight : list)
         {
@@ -36,7 +39,7 @@ public class MissionSkinTemplateGenerator
             {
                 SkinsForPlane skinsForPlane = PWCGContext.getInstance().getSkinManager().getSkinsForPlane(plane.getType());
                 Skin skin = plane.getPlaneSkin();
-                if (skin != null && skin.getTemplate() != null)
+                if (skin != null && skin.getTemplate() != null && (generateSkinLimit == 0 || skinsToGenerate.size() < generateSkinLimit))
                 {
                     SkinTemplate template = skinsForPlane.getTemplate(plane.getPlaneSkin().getTemplate());
                     if (template == null)
