@@ -74,7 +74,7 @@ public class PlayerFlightEditor
 
         plane.setNumberInFormation(numInFormation);
         plane.setCallsign(playerFlight.getSquadron().determineCurrentCallsign(campaign.getDate()));
-        plane.setCallnum(numInFormation);
+        plane.setCallnum(numInFormation + 1);
         setPayloadFromBriefing(plane, crewPlane);
         setModificationsFromBriefing(plane, crewPlane);
         configurePlaneForCrew(plane, crewPlane);
