@@ -15,6 +15,8 @@ public class ConfigSetUserPref
         configSet.addConfigItem(ConfigItemKeys.PlayMusicKey, new ConfigItem("1"));
         configSet.addConfigItem(ConfigItemKeys.SoundVolumeKey, new ConfigItem("10"));
         configSet.addConfigItem(ConfigItemKeys.MusicVolumeKey, new ConfigItem("10"));
+        configSet.addConfigItem(ConfigItemKeys.GenerateSkinsKey, new ConfigItem("0"));
+        configSet.addConfigItem(ConfigItemKeys.GenerateSkinLimitKey, new ConfigItem("20"));
 		return configSet;
 	}
 }

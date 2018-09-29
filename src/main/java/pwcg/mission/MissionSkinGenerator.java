@@ -8,6 +8,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
@@ -38,17 +40,17 @@ public class MissionSkinGenerator
         }
     }
 
-    private void setSkinForPlayerSquadron(SquadronMember pilot, Squadron squad, PlaneMcu plane, Date date)
+    private void setSkinForPlayerSquadron(SquadronMember pilot, Squadron squad, PlaneMcu plane, Date date) throws PWCGException
     {
         plane.setPlaneSkin(null);
-        setSquadronSkin(squad, plane, date);
+        setSquadronSkin(squad, plane, date, true);
         setUserAssignedPilotSkin(pilot, plane);
     }
 
     private void setAISkin(Squadron squad, PlaneMcu plane, Date date) throws PWCGException 
     {        
         // Start with setting the squadron livery
-        setSquadronSkin(squad, plane, date);
+        setSquadronSkin(squad, plane, date, true);
 
         if (plane.getAiLevel() != AiSkillLevel.NOVICE)
         {            
@@ -159,8 +161,9 @@ public class MissionSkinGenerator
 
     }
 
-    private void setSquadronSkin(Squadron squadron, PlaneMcu plane, Date date) 
+    private void setSquadronSkin(Squadron squadron, PlaneMcu plane, Date date, boolean isPlayerFlight) throws PWCGException
     {
+        int generateSkins = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.GenerateSkinsKey);
         Skin selectedSkin = null;
         
         // Start by setting to squadron livery
@@ -190,6 +193,11 @@ public class MissionSkinGenerator
             }
 
             if (!squadSkin.skinExists(Skin.PRODUCT_SKIN_DIR))
+            {
+                continue;
+            }
+
+            if (squadSkin.getTemplate() != null && (generateSkins == 0 || (generateSkins == 1 && !isPlayerFlight)))
             {
                 continue;
             }
