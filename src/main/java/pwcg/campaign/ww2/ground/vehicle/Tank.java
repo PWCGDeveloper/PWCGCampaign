@@ -28,10 +28,10 @@ class Tank extends Vehicle
             add(new VehicleDefinition("vehicles\\", "vehicles\\pziv-g\\", "pziv-g", Country.GERMANY));
             add(new VehicleDefinition("vehicles\\", "vehicles\\stug37l24\\", "stug37l24", Country.GERMANY));
             add(new VehicleDefinition("vehicles\\", "vehicles\\stug40l43\\", "stug40l43", Country.GERMANY));
-            add(new VehicleDefinition("vehicles\\", "vehicles\\marderiii-h\\", "marderiii-h", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\pz38t\\", "marderiii-h", Country.GERMANY));
         }
     };
-
+    
     private static final List<VehicleDefinition> russianTank = new ArrayList<VehicleDefinition>() 
     {
         private static final long serialVersionUID = 1L;
