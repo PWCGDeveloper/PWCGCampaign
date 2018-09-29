@@ -174,7 +174,7 @@ public class TargetDefinitionBuilder
     private String buildTargetName(ICountry targetCountry, TacticalTarget targetType)
     {
         String nationality = targetCountry.getNationality();
-        String name = nationality + " " + targetType.getTargetCategory();
+        String name = nationality + " " + targetType.getTargetName();
         return name;
     }
 
