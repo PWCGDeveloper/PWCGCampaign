@@ -112,6 +112,7 @@ public class BoSVehicleFactory implements IVehicleFactory
         trainLocomotive.makeRandomVehicleFromSet(country);
 
         TrainCoalCar coalCar = new TrainCoalCar(trainLocomotive);
+        coalCar.makeRandomVehicleFromSet(trainLocomotive.getCountry());
         trainLocomotive.addCar(coalCar);
 
         return trainLocomotive;

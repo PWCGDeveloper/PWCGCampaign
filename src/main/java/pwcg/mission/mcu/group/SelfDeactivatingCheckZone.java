@@ -60,10 +60,7 @@ public class SelfDeactivatingCheckZone
         activateCZTimer.setTimer(0);
         deactivateCZTimer.setTimer(0);
     }
-    
-    /**
-     * @param in
-     */
+
     public void linkTargets(BaseFlightMcu activateIn, BaseFlightMcu deactivatIn)
     {
         // 1. Link the incoming MCU to the activate timer
