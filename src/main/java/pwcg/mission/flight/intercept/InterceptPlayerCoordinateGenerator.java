@@ -29,12 +29,11 @@ public class InterceptPlayerCoordinateGenerator
     private Squadron squadron;
     private Coordinate targetCoordinates = null;
 
-    public InterceptPlayerCoordinateGenerator(Campaign campaign, Mission mission, FlightTypes flightType, Squadron squadron)
+    public InterceptPlayerCoordinateGenerator(Campaign campaign, Mission mission, Squadron squadron)
     {
         this.campaign = campaign;
         this.mission = mission;
         this.squadron = squadron;
-        this.flightType = flightType;
     }
     
     public void createTargetCoordinates() throws PWCGException

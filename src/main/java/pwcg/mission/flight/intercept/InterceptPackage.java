@@ -1,5 +1,6 @@
 package pwcg.mission.flight.intercept;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
@@ -13,15 +14,11 @@ import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightPackage;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.OpposingFlightBuilder;
 import pwcg.mission.ground.GroundUnitFactory;
 import pwcg.mission.ground.unittypes.SpotLightGroup;
 
 public class InterceptPackage extends FlightPackage
-{
-	protected Role opposingFlightRole = Role.ROLE_BOMB;
-	protected FlightTypes opposingFlightType = FlightTypes.BOMB;
-	
+{	
     public InterceptPackage(Mission mission, Campaign campaign, Squadron squadron, boolean isPlayerFlight)
     {
         super(mission, campaign, squadron, isPlayerFlight);
@@ -30,47 +27,65 @@ public class InterceptPackage extends FlightPackage
 
     public Flight createPackage () throws PWCGException 
     {
-        InterceptFlight interceptFlight = null;
-		if (isPlayerFlight)
-		{
-	        Coordinate targetCoordinates = getTargetCoordinates();	        
-	        interceptFlight = createInterceptFlight(campaign, targetCoordinates);            
-            addOpposingFlight(interceptFlight, targetCoordinates);
-	        addSpotLights(targetCoordinates, interceptFlight);
-		}
-		else
-		{
-		    InterceptAiCoordinateGenerator coordinateGenerator = new InterceptAiCoordinateGenerator(campaign, squadron);
-		    Coordinate targetCoordinates = coordinateGenerator.createTargetCoordinates();
-            interceptFlight = createInterceptFlight(campaign, targetCoordinates);
-		}
-		
+        Coordinate targetCoordinates = getPlayerTargetCoordinates();
+        InterceptFlight interceptFlight = createInterceptFlight(campaign, targetCoordinates);            
+        if (isPlayerFlight)
+        {
+            addOpposingFlights(interceptFlight, targetCoordinates);
+        }
+        
         setNightFlight(interceptFlight);
 		return interceptFlight;
 	}
 
-    protected Coordinate getTargetCoordinates() throws PWCGException
+    protected Coordinate getTargetCoordinates() throws PWCGException 
     {
-        InterceptPlayerCoordinateGenerator coordinateGenerator = new InterceptPlayerCoordinateGenerator(campaign, mission, opposingFlightType, squadron);
+        Coordinate targetCoordinates;
+        
+        if (isPlayerFlight)
+        {
+            targetCoordinates = getPlayerTargetCoordinates();          
+        }
+        else
+        {
+            InterceptAiCoordinateGenerator coordinateGenerator = new InterceptAiCoordinateGenerator(campaign, squadron);
+            targetCoordinates = coordinateGenerator.createTargetCoordinates();
+        }
+ 
+        return targetCoordinates;
+    }
+    
+    private Coordinate getPlayerTargetCoordinates() throws PWCGException
+    {
+        InterceptPlayerCoordinateGenerator coordinateGenerator = new InterceptPlayerCoordinateGenerator(campaign, mission, squadron);
         coordinateGenerator.createTargetCoordinates();	        
         Coordinate targetCoordinates = coordinateGenerator.getTargetCoordinates();
         return targetCoordinates;
     }
 
-    protected void addOpposingFlight(InterceptFlight interceptFlight, Coordinate targetCoordinates) throws PWCGException
+    private void addOpposingFlights(InterceptFlight interceptFlight, Coordinate targetCoordinates) throws PWCGException
     {
-        for (int i = 0; i < 2; ++i)
+        List<Role> opposingFlightRoles = generateOpposingFlightRole();
+                
+        OpposingFlightBuilder opposingFlightBuilder = new OpposingFlightBuilder(mission, targetCoordinates, opposingFlightRoles);
+        List<InterceptOpposingFlight> interceptOpposingFlights = opposingFlightBuilder.buildOpposingFlights();
+        for (Flight interceptOpposingFlight : interceptOpposingFlights)
         {
-            OpposingFlightBuilder opposingFlightBuilder = new OpposingFlightBuilder(mission, targetCoordinates, opposingFlightRole, opposingFlightType);
-            List<InterceptOpposingFlight> interceptOpposingFlights = opposingFlightBuilder.buildOpposingFlights();
-            for (Flight interceptOpposingFlight : interceptOpposingFlights)
-            {
-                interceptFlight.addLinkedUnit(interceptOpposingFlight);
-            }
+            interceptFlight.addLinkedUnit(interceptOpposingFlight);
         }
     }
 
-    protected InterceptFlight createInterceptFlight(Campaign campaign, Coordinate targetCoordinates) throws PWCGException
+
+    protected List<Role> generateOpposingFlightRole()
+    {
+        List<Role> opposingFlightRoles = new ArrayList<>();
+        opposingFlightRoles.add(Role.ROLE_BOMB);
+        opposingFlightRoles.add(Role.ROLE_ATTACK);
+        opposingFlightRoles.add(Role.ROLE_DIVE_BOMB);
+        return opposingFlightRoles;
+    }
+
+    private InterceptFlight createInterceptFlight(Campaign campaign, Coordinate targetCoordinates) throws PWCGException
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
@@ -83,11 +98,12 @@ public class InterceptPackage extends FlightPackage
         return interceptFlight;
     }
 
-    protected void setNightFlight(InterceptFlight interceptFlight)
+    protected void setNightFlight(InterceptFlight interceptFlight) throws PWCGException
     {
         if (squadron.determineIsNightSquadron())
         {
             interceptFlight.setNightFlight(true);
+            addSpotLights(interceptFlight.getTargetCoords(), interceptFlight);
         }
     }
 

@@ -1,12 +1,15 @@
 package pwcg.mission.flight.intercept;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightGroundUnitTargetGenerator;
@@ -15,52 +18,41 @@ import pwcg.mission.ground.GroundUnitCollection;
 
 public class LowAltInterceptPackage extends InterceptPackage
 {
+    private GroundUnitCollection groundUnitCollection;
+    
     public LowAltInterceptPackage(Mission mission, Campaign campaign, Squadron squadron, boolean isPlayerFlight)
     {
         super(mission, campaign, squadron, isPlayerFlight);
-
 		flightType = FlightTypes.LOW_ALT_CAP;
-
     }
 
     @Override
     public Flight createPackage () throws PWCGException 
     {
-        GroundUnitCollection groundUnitCollection = createBattle();
-        
+        createBattle();
+       return super.createPackage();
+    }
+
+    @Override
+    protected List<Role> generateOpposingFlightRole()
+    {
+        List<Role> opposingFlightRoles = new ArrayList<>();
+        opposingFlightRoles.add(Role.ROLE_ATTACK);
+        opposingFlightRoles.add(Role.ROLE_DIVE_BOMB);
+        return opposingFlightRoles;
+    }
+    
+    @Override
+    protected Coordinate getTargetCoordinates() throws PWCGException 
+    {
         Side mySide = campaign.determineCountry().getSide();
-        InterceptFlight interceptFlight = createInterceptFlight(campaign, groundUnitCollection.getTargetCoordinatesFromGroundUnits(mySide));
-
-        if (isPlayerFlight)
-        {
-            generateOpposingFlightRole();
-            addOpposingFlight(interceptFlight, groundUnitCollection.getTargetCoordinatesFromGroundUnits(mySide));
-            interceptFlight.linkGroundUnitsToFlight(groundUnitCollection);
-        }
-        
-        return interceptFlight;
+        return groundUnitCollection.getTargetCoordinatesFromGroundUnits(mySide);
     }
 
 
-    private GroundUnitCollection createBattle() throws PWCGException
+    private void createBattle() throws PWCGException
     {
-        FlightGroundUnitTargetGenerator targetGenerator = new FlightGroundUnitTargetGenerator(mission, campaign, squadron, opposingFlightType, isPlayerFlight);
-        GroundUnitCollection groundUnitCollection = targetGenerator.createGroundUnitsForFlightWithOverride(TacticalTarget.TARGET_DEFENSE);
-        return groundUnitCollection;
-    }
-
-    private void generateOpposingFlightRole()
-    {
-        int roll = RandomNumberGenerator.getRandom(100);
-		if (roll < 20)
-		{
-		    opposingFlightRole = Role.ROLE_BOMB;
-		    opposingFlightType = FlightTypes.LOW_ALT_BOMB;
-		}
-		else
-		{
-            opposingFlightRole = Role.ROLE_ATTACK;
-            opposingFlightType = FlightTypes.GROUND_ATTACK;
-		}
+        FlightGroundUnitTargetGenerator targetGenerator = new FlightGroundUnitTargetGenerator(mission, campaign, squadron, FlightTypes.GROUND_ATTACK, isPlayerFlight);
+        groundUnitCollection = targetGenerator.createGroundUnitsForFlightWithOverride(TacticalTarget.TARGET_DEFENSE);
     }
 }
