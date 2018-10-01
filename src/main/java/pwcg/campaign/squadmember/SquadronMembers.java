@@ -2,10 +2,10 @@ package pwcg.campaign.squadmember;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
@@ -15,7 +15,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 
 public class SquadronMembers
 {
-    private Map<Integer, SquadronMember> squadronMemberCollection = new HashMap<>();
+    private Map<Integer, SquadronMember> squadronMemberCollection = new ConcurrentHashMap<>();
 
     public Map<Integer, SquadronMember> getSquadronMemberCollection()
     {

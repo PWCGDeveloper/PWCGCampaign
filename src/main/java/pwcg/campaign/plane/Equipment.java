@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -13,7 +12,7 @@ import pwcg.core.utils.DateUtils;
 
 public class Equipment
 {
-    private Map<Integer, EquippedPlane> equippedPlanes = new ConcurrentHashMap<>();
+    private Map<Integer, EquippedPlane> equippedPlanes = new HashMap<>();
 
     public EquippedPlane getEquippedPlane(int planeSerialNumber)
     {
