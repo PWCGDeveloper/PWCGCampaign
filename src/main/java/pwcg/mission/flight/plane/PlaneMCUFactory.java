@@ -103,7 +103,7 @@ public class PlaneMCUFactory
 		Callsign callsign = squadron.determineCurrentCallsign(campaign.getDate());
 
 		plane.setCallsign(callsign);
-		plane.setCallnum(numInFormation);
+		plane.setCallnum(numInFormation+1);
 	}
 
 	private void setAiSkillLevelForPlane(PlaneMCU plane) throws PWCGException
