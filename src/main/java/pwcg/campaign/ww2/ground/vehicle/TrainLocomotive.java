@@ -59,11 +59,11 @@ class TrainLocomotive extends Vehicle implements ITrainLocomotive
     {
         List<VehicleDefinition> vehicleSet = null;
         ;
-        if (country.getSideNoNeutral() == Side.ALLIED)
+        if (country.getSideNoNeutral() == Side.AXIS)
         {
             vehicleSet = germanLocomotives;
         }
-        else if (country.getSideNoNeutral() == Side.AXIS)
+        else if (country.getSideNoNeutral() == Side.ALLIED)
         {
             vehicleSet = russianLocomotives;
         }
