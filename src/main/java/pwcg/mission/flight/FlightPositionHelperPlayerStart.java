@@ -44,7 +44,7 @@ public class FlightPositionHelperPlayerStart
 
         for (PlaneMCU plane : flight.getPlanes())
         {
-            plane.setPosition(takeOffPositions.get(plane.getNumberInFormation()));
+            plane.setPosition(takeOffPositions.get(plane.getNumberInFormation()-1));
 
             Orientation orient = flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation().getOrientation().copy();
             plane.setOrientation(orient);

@@ -70,7 +70,7 @@ public class PlaneMCUFactory
 
 	private void initializePlaneParameters() throws PWCGException
 	{
-		int numInFormation = 0;
+		int numInFormation = 1;
         for (PlaneMCU plane : planesForFlight)
         {
             setPlaceInFormation(numInFormation, plane);
@@ -103,7 +103,7 @@ public class PlaneMCUFactory
 		Callsign callsign = squadron.determineCurrentCallsign(campaign.getDate());
 
 		plane.setCallsign(callsign);
-		plane.setCallnum(numInFormation+1);
+		plane.setCallnum(numInFormation);
 	}
 
 	private void setAiSkillLevelForPlane(PlaneMCU plane) throws PWCGException

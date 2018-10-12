@@ -86,6 +86,7 @@ public class SmokeGroup
             smokeEffect = new SmokeVillage();
         }
         
+        smokeEffectPosition.setYPos(0.0);
         smokeEffect.setPosition(smokeEffectPosition);
         
         smokeEffect.populateEntity();

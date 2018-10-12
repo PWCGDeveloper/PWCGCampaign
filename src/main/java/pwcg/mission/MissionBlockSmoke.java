@@ -27,14 +27,31 @@ public class MissionBlockSmoke
     
     public List<SmokeGroup> addSmokeToDamagedAreas(List<FixedPosition> fixedPositions) throws PWCGException
     {                
+        List<FixedPosition> filteredPositions = filterPositions(fixedPositions);
+                
         ConfigManagerCampaign configManager = mission.getCampaign().getCampaignConfigManager();
         maxSmokingPositions = configManager.getIntConfigParam(ConfigItemKeys.MaxSmokeInMissionKey);
 
-        smokeNearBattle(fixedPositions);        
-        smokeNearInfantry(fixedPositions);
-        smokeNearPlayer(fixedPositions);
+        smokeNearBattle(filteredPositions);        
+        smokeNearInfantry(filteredPositions);
+        smokeNearPlayer(filteredPositions);
         
         return smokingPositions;
+    }
+    
+    private  List<FixedPosition> filterPositions(List<FixedPosition> fixedPositions) 
+    {
+        List<FixedPosition> filteredPositions = new ArrayList<>();
+        for (FixedPosition fixedPosition : fixedPositions)
+        {
+            if (fixedPosition.getName().toLowerCase().contains("bridge"))
+            {
+                continue;
+            }
+            
+            filteredPositions.add(fixedPosition);
+        }
+        return filteredPositions;
     }
 
     private void smokeNearBattle(List<FixedPosition> fixedPositions) throws PWCGException
