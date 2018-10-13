@@ -43,7 +43,30 @@
     "19450401": "ef_Mill",
     "19450501": "ef_Gilze-Rijen"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "VVS_GREEN_BLACK_NN",
+      "archTypes": ["yak"],
+      "startDate": "19420401",
+      "endDate": "19430630",
+      "squadId": 10111999,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_GREEN_BLACK"
+    },
+    {
+      "skinName": "VVS_GREY_NN",
+      "archTypes": ["yak"],
+      "startDate": "19430701",
+      "endDate": "19450503",
+      "squadId": 10111999,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_GREY"
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

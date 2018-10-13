@@ -23,7 +23,19 @@
     "19450310": "Mill",
     "19450404": "Kirchhellen"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "RAF_LATE_56",
+      "archTypes": ["tempest"],
+      "startDate": "19440901",
+      "endDate": "19450601",
+      "squadId": 103083056,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "RAF_LATE"
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

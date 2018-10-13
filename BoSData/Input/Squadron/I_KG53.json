@@ -86,6 +86,20 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": false
+    },
+    {
+      "skinName": "LW_BOMBER_MID_I_KG53",
+      "archTypes": ["he111"],
+      "startDate": "19410801",
+      "endDate": "19450503",
+      "squadId": 20131053,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 3
+      }
     }
   ],
   "squadHistory": {

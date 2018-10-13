@@ -71,6 +71,34 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": true
+    },
+    {
+      "skinName": "LW_BOMBER_MID_II_STG77",
+      "planeType": "ju87d3",
+      "startDate": "19410801",
+      "endDate": "19431018",
+      "squadId": 20122077,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 2
+      }
+    },
+    {
+      "skinName": "LW_FIGHTER_MID_III_SG10",
+      "archTypes": ["fw190"],
+      "startDate": "19431018",
+      "endDate": "19450503",
+      "squadId": 20122077,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 2
+      }
     }
   ],
   "squadHistory": {

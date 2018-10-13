@@ -83,6 +83,39 @@
       "country": "Russia",
       "category": "Squadron",
       "definedInGame": true
+    },
+    {
+      "skinName": "VVS_GREEN_35TH",
+      "archTypes": ["pe2"],
+      "startDate": "19410801",
+      "endDate": "19420331",
+      "squadId": 10131035,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_GREEN"
+    },
+    {
+      "skinName": "VVS_GREEN_BLACK_35TH",
+      "archTypes": ["pe2"],
+      "startDate": "19420401",
+      "endDate": "19430630",
+      "squadId": 10131035,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_GREEN_BLACK"
+    },
+    {
+      "skinName": "VVS_GREY_35TH",
+      "archTypes": ["pe2"],
+      "startDate": "19430701",
+      "endDate": "19450503",
+      "squadId": 10131035,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_GREY"
     }
   ],
   "serviceId": 10101,

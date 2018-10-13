@@ -23,7 +23,19 @@
     "19450310": "Odendorf",
     "19450404": "Breitscheid"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "USAAF_LATE_BARE_36",
+      "archTypes": ["p47"],
+      "startDate": "19440801",
+      "endDate": "19450601",
+      "squadId": 102036022,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "USAAF_LATE_BARE"
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

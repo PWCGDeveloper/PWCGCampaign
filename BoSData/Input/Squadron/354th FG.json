@@ -33,7 +33,19 @@
     "19450310": "PetitBrogel",
     "19450404": "Eudenbach/Asbach"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "USAAF_LATE_BARE_354",
+      "archTypes": ["p51", "p47"],
+      "startDate": "19440801",
+      "endDate": "19450601",
+      "squadId": 102362377,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "USAAF_LATE_BARE"
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

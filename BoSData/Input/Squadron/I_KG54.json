@@ -24,7 +24,22 @@
     "19450310": "Altenstadt",
     "19450404": "Vorden"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "LW_BOMBER_MID_I_KG54",
+      "archTypes": ["ju88"],
+      "startDate": "19410801",
+      "endDate": "19450503",
+      "squadId": 20131054,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 3
+      }
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
     ]

@@ -56,7 +56,37 @@
     "19450401": "ef_Nivelles",
     "19450501": "ef_Chievres"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "LW_BOMBER_MID_I_KG76",
+      "archTypes": ["ju88"],
+      "startDate": "19410801",
+      "endDate": "19430917",
+      "squadId": 20131076,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 3,
+        "INSIGNIA": "Insignia\\3_KG76.png"
+      }
+    },
+    {
+      "skinName": "LW_BOMBER_MID_I_KG51",
+      "archTypes": ["ju88"],
+      "startDate": "19430918",
+      "endDate": "19450503",
+      "squadId": 20131076,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 3
+      }
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {

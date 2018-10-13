@@ -69,6 +69,17 @@
       "country": "Russia",
       "category": "Squadron",
       "definedInGame": true
+    },
+    {
+      "skinName": "VVS_GREEN_126TH",
+      "archTypes": ["p40", "p39"],
+      "startDate": "19410801",
+      "endDate": "19450503",
+      "squadId": 10111126,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_GREEN"
     }
   ],
   "squadHistory": {
