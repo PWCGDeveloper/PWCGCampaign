@@ -4,6 +4,7 @@
   "name": "I./JG52",
   "fileName": "I_JG52.json",
   "skill": 85,
+  "subUnitIdCode": "",
   "planeAssignments": [
     {
       "archType": "bf109",

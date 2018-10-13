@@ -4,6 +4,7 @@
   "name": "II./SG 4",
   "fileName": "II_SG4.json",
   "skill": 60,
+  "subUnitIdCode": "-",
   "planeAssignments": [
     {
       "archType": "fw190",

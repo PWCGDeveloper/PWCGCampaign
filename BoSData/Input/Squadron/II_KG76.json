@@ -1,115 +1,121 @@
 {
-	"country": "GERMANY",
-	"squadronId": 20132076,
-	"name": "II./KG76",
-	"fileName": "II_KG76.json",
-	"skill": 55,
-	"planeAssignments": [
-		{
-			"archType": "ju88",
-			"squadronIntroduction": "19410801",
-			"squadronWithdrawal": "19450601"
-		}
-	],
-	"airfields": {
-		"19411001": "Novoye Selo",
-		"19411020": "Dugino",
-		"19411110": "Sychevka",
-		"19411120": "Ryabinki",
-		"19411215": "Sychevka",
-		"19420110": "Vjazma",
-		"19420301": "Novo Sergievskiy",
-		"19420601": "Alibay",
-		"19420624": "Zaporojskaya",
-		"19420709": "Slavyanskaya",
-		"19420721": "Zaporojskaya",
-		"19420801": "Kamchie",
-		"19420906": "Zhutovo",
-		"19421011": "Aksay",
-		"19421123": "Novo Sergievskiy",
-		"19421223": "Novo Sergievskiy",
-		"19430120": "Novo Sergievskiy",
-		"19430301": "Kerch",
-		"19430330": "Kerch",
-		"19430418": "Kerch",
-		"19430918": "Kerch",
-		"19430927": "Bagerovo",
-		"19431004": "Bagerovo",
-		"19431008": "Marfovka",
-		"19440901": "Venlo",
-		"19441001": "Krefeld",
-		"19441101": "Munster-Handorf",
-		"19441220": "Essen-Mulheim",
-		"19441225": "Munster-Handorf",
-		"19441229": "Munster-Handorf",
-		"19450207": "Breitscheid",
-		"19450310": "Munster-Handorf",
-		"19450404": "Bad Lippspringe",
-		"19450101": "ef_Chievres",
-		"19450201": "ef_Chievres",
-		"19450301": "ef_Chievres",
-		"19450401": "ef_Chievres",
-		"19450501": "ef_Chievres"
-	},
-	"skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": [
-			{
-				"date": "19430918",
-				"squadName": "II./KG51",
-				"armedServiceName": "Luftwaffe",
-				"skill": 45
-			},
-			{
-				"date": "19440901",
-				"squadName": "II./KG54",
-				"armedServiceName": "Luftwaffe",
-				"skill": 45
-			}
-		]
-	},
-	"serviceId": 20101,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19400101",
-				"endDate": "19450601",
-				"weightedRoles": [
-					{
-						"role": "ROLE_RECON",
-						"weight": 10
-					},
-					{
-						"role": "ROLE_BOMB",
-						"weight": 80
-					},
-					{
-						"role": "ROLE_DIVE_BOMB",
-						"weight": 10
-					}
-				]
-			}
-		]
-	},
-	"squadronSpecializedRoles": {
-		"squadronSpecializedRolePeriods": []
-	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19400101",
-				"endDate": "19450601",
-				"nightMissionOdds": 10
-			}
-		]
-	},
-	"conversionPeriods": [
-		{
-			"conversionStartDate": "19440101",
-			"conversionCompleteDate": "19440831"
-		}
-	],
-	"callsigns": {
-		"19410801": "PHEASANT"
-	}
+  "country": "GERMANY",
+  "squadronId": 20132076,
+  "name": "II./KG76",
+  "fileName": "II_KG76.json",
+  "skill": 55,
+  "unitIdCode": "F1",
+  "subUnitIdCode": "N",
+  "planeAssignments": [
+    {
+      "archType": "ju88",
+      "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19411001": "Novoye Selo",
+    "19411020": "Dugino",
+    "19411110": "Sychevka",
+    "19411120": "Ryabinki",
+    "19411215": "Sychevka",
+    "19420110": "Vjazma",
+    "19420301": "Novo Sergievskiy",
+    "19420601": "Alibay",
+    "19420624": "Zaporojskaya",
+    "19420709": "Slavyanskaya",
+    "19420721": "Zaporojskaya",
+    "19420801": "Kamchie",
+    "19420906": "Zhutovo",
+    "19421011": "Aksay",
+    "19421123": "Novo Sergievskiy",
+    "19421223": "Novo Sergievskiy",
+    "19430120": "Novo Sergievskiy",
+    "19430301": "Kerch",
+    "19430330": "Kerch",
+    "19430418": "Kerch",
+    "19430918": "Kerch",
+    "19430927": "Bagerovo",
+    "19431004": "Bagerovo",
+    "19431008": "Marfovka",
+    "19440901": "Venlo",
+    "19441001": "Krefeld",
+    "19441101": "Munster-Handorf",
+    "19441220": "Essen-Mulheim",
+    "19441225": "Munster-Handorf",
+    "19441229": "Munster-Handorf",
+    "19450207": "Breitscheid",
+    "19450310": "Munster-Handorf",
+    "19450404": "Bad Lippspringe",
+    "19450101": "ef_Chievres",
+    "19450201": "ef_Chievres",
+    "19450301": "ef_Chievres",
+    "19450401": "ef_Chievres",
+    "19450501": "ef_Chievres"
+  },
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19430918",
+        "squadName": "II./KG51",
+        "armedServiceName": "Luftwaffe",
+        "skill": 45,
+        "unitIdCode": "9K",
+        "subUnitIdCode": "N"
+      },
+      {
+        "date": "19440901",
+        "squadName": "II./KG54",
+        "armedServiceName": "Luftwaffe",
+        "skill": 45,
+        "unitIdCode": "B3",
+        "subUnitIdCode": "N"
+      }
+    ]
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_RECON",
+            "weight": 10
+          },
+          {
+            "role": "ROLE_BOMB",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_DIVE_BOMB",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  },
+  "squadronSpecializedRoles": {
+    "squadronSpecializedRolePeriods": []
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "nightMissionOdds": 10
+      }
+    ]
+  },
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440831"
+    }
+  ],
+  "callsigns": {
+    "19410801": "PHEASANT"
+  }
 }

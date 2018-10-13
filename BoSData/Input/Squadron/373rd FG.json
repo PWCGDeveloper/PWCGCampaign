@@ -4,6 +4,7 @@
   "name": "373rd Fighter Group",
   "fileName": "373rd FG.json",
   "skill": 65,
+  "unitIdCode": "R3",
   "planeAssignments": [
     {
       "archType": "p47",

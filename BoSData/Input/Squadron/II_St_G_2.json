@@ -4,6 +4,8 @@
   "name": "II./St.G.2",
   "fileName": "II_St_G_2.json",
   "skill": 60,
+  "unitIdCode": "T6",
+  "subUnitIdCode": "M",
   "planeAssignments": [
     {
       "archType": "ju87",
@@ -72,13 +74,17 @@
         "date": "19440201",
         "squadName": "10.(Pz)/SG3",
         "armedServiceName": "Luftwaffe",
-        "skill": 55
+        "skill": 55,
+        "unitIdCode": "S7",
+        "subUnitIdCode": "U"
       },
       {
         "date": "19450107",
         "squadName": "3.(Pz)/SG9",
         "armedServiceName": "Luftwaffe",
-        "skill": 45
+        "skill": 45,
+        "unitIdCode": "P8",
+        "subUnitIdCode": "L"
       }
     ]
   },

@@ -4,6 +4,7 @@
   "name": "358th Fighter Group",
   "fileName": "358th FG.json",
   "skill": 80,
+  "unitIdCode": "CH",
   "planeAssignments": [
     {
       "archType": "p47",

@@ -4,6 +4,8 @@
   "name": "I./St.G.77",
   "fileName": "I_St_G_77.json",
   "skill": 65,
+  "unitIdCode": "S2",
+  "subUnitIdCode": "H",
   "planeAssignments": [
     {
       "archType": "ju87",
@@ -92,7 +94,9 @@
         "date": "19431018",
         "squadName": "I./SG77",
         "armedServiceName": "Luftwaffe",
-        "skill": 60
+        "skill": 60,
+        "unitIdCode": "S2",
+        "subUnitIdCode": "H"
       }
     ]
   },

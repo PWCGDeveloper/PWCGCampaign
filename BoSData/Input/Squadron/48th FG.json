@@ -4,6 +4,7 @@
   "name": "48th Fighter Group",
   "fileName": "48th FG.json",
   "skill": 65,
+  "unitIdCode": "F4",
   "planeAssignments": [
     {
       "archType": "p47",

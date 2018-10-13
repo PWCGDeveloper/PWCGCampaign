@@ -4,6 +4,8 @@
   "name": "I./KG54",
   "fileName": "I_KG54.json",
   "skill": 50,
+  "unitIdCode": "B3",
+  "subUnitIdCode": "L",
   "planeAssignments": [
     {
       "archType": "ju88",
