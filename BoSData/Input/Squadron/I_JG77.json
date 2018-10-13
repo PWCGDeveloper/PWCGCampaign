@@ -1,84 +1,133 @@
 {
-	"country": "GERMANY",
-	"squadronId": 20111077,
-	"name": "I./JG77",
-	"fileName": "I_JG77.json",
-	"skill": 70,
-        "subUnitIdCode": "",
-	"planeAssignments": [
-		{
-			"archType": "bf109",
-			"squadronIntroduction": "19411001",
-			"squadronWithdrawal": "19450601"
-		}
-	],
-	"airfields": {
-		"19440901": "Ophoven",
-		"19441001": "Koln-Butzweilerhof",
-		"19441101": "Dusseldorf-Lohausen",
-		"19441220": "Krefeld-Linn",
-		"19441225": "Essen-Mulheim",
-		"19441229": "Soesterberg",
-		"19450207": "Koln-Ostheim",
-		"19450310": "Wiesbaden-Erbenheim",
-		"19450404": "Gross-Ostheim"
-	},
-	"skins": [],
-	"squadHistory": {
-		"squadHistoryEntries": []
-	},
-	"serviceId": 20101,
-	"squadronRoles": {
-		"squadronRolePeriods": [
-			{
-				"startDate": "19400101",
-				"endDate": "19440901",
-				"weightedRoles": [
-					{
-						"role": "ROLE_STRATEGIC_INTERCEPT",
-						"weight": 5
-					},
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 80
-					},
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 10
-					}
-				]
-			},
-			{
-				"startDate": "19440901",
-				"endDate": "19450601",
-				"weightedRoles": [
-					{
-						"role": "ROLE_STRATEGIC_INTERCEPT",
-						"weight": 20
-					},
-					{
-						"role": "ROLE_FIGHTER",
-						"weight": 80
-					},
-					{
-						"role": "ROLE_ATTACK",
-						"weight": 10
-					}
-				]
-			}
-		]
-	},
-	"nightMissionOdds": {
-		"nightMissionPeriods": [
-			{
-				"startDate": "19400101",
-				"endDate": "19450601",
-				"nightMissionOdds": 3
-			}
-		]
-	},
-	"conversionPeriods": [],
-	"callsigns": {
-		"19410801": "ORIOLE"
-	}
+  "country": "GERMANY",
+  "squadronId": 20111077,
+  "name": "I./JG77",
+  "fileName": "I_JG77.json",
+  "skill": 70,
+  "subUnitIdCode": "",
+  "planeAssignments": [
+    {
+      "archType": "bf109",
+      "squadronIntroduction": "19411001",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19440901": "Ophoven",
+    "19441001": "Koln-Butzweilerhof",
+    "19441101": "Dusseldorf-Lohausen",
+    "19441220": "Krefeld-Linn",
+    "19441225": "Essen-Mulheim",
+    "19441229": "Soesterberg",
+    "19450207": "Koln-Ostheim",
+    "19450310": "Wiesbaden-Erbenheim",
+    "19450404": "Gross-Ostheim"
+  },
+  "skins": [
+    {
+      "skinName": "LW_FIGHTER_MID_I_JG77",
+      "archTypes": ["bf109", "fw190"],
+      "startDate": "19410401",
+      "endDate": "19450503",
+      "squadId": 20111077,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 3,
+        "ID_BAND_FORE": "faf7f1",
+        "ID_BAND_AFT": "3f853f"
+      }
+    },
+    {
+      "skinName": "LW_FIGHTER_LATE_I_JG77",
+      "archTypes": ["bf109", "fw190"],
+      "startDate": "19440901",
+      "endDate": "19450503",
+      "squadId": 20111077,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_LATE",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 3,
+        "ID_BAND_FORE": "faf7f1",
+        "ID_BAND_AFT": "3f853f"
+      }
+    },
+    {
+      "skinName": "LW_FIGHTER_LATER_I_JG77",
+      "archTypes": ["bf109", "fw190"],
+      "startDate": "19450102",
+      "endDate": "19450503",
+      "squadId": 20111077,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_LATER",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 3,
+        "ID_BAND_FORE": "faf7f1",
+        "ID_BAND_AFT": "3f853f"
+      }
+    }
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19440901",
+        "weightedRoles": [
+          {
+            "role": "ROLE_STRATEGIC_INTERCEPT",
+            "weight": 5
+          },
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 10
+          }
+        ]
+      },
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_STRATEGIC_INTERCEPT",
+            "weight": 20
+          },
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "nightMissionOdds": 3
+      }
+    ]
+  },
+  "conversionPeriods": [],
+  "callsigns": {
+    "19410801": "ORIOLE"
+  }
 }

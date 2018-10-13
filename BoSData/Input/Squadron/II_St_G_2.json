@@ -66,6 +66,49 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": true
+    },
+    {
+      "skinName": "LW_BOMBER_MID_II_STG2",
+      "planeType": "ju87d3",
+      "startDate": "19410801",
+      "endDate": "19440131",
+      "squadId": 20122002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1,
+        "INSIGNIA_CP_FORE": "Insignia\\4_StG2.png"
+      }
+    },
+    {
+      "skinName": "LW_BOMBER_MID_10_PZ_SG3",
+      "planeType": "ju87d3",
+      "startDate": "19440202",
+      "endDate": "19450106",
+      "squadId": 20122002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 1
+      }
+    },
+    {
+      "skinName": "LW_BOMBER_MID_3_PZ_SG9",
+      "planeType": "ju87d3",
+      "startDate": "19450107",
+      "endDate": "19450601",
+      "squadId": 20122002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 3
+      }
     }
   ],
   "squadHistory": {

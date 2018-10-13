@@ -33,6 +33,17 @@
       "country": "USA",
       "category": "Squadron",
       "definedInGame": false
+    },
+    {
+      "skinName": "USAAF_LATE_OLIVE_387",
+      "archTypes": ["a20"],
+      "startDate": "19440801",
+      "endDate": "19450601",
+      "squadId": 102340486,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "USAAF_LATE_OLIVE"
     }
   ],
   "squadHistory": {

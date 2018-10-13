@@ -24,7 +24,19 @@
     "19450310": "Volkel",
     "19450404": "Kirchhellen"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "RAF_LATE_326",
+      "archTypes": ["spitfire"],
+      "startDate": "19440801",
+      "endDate": "19450601",
+      "squadId": 103084326,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "RAF_LATE"
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

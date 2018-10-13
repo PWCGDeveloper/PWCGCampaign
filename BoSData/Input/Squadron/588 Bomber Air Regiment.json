@@ -43,7 +43,19 @@
     "19450401": "ef_Eindhoven",
     "19450501": "ef_LeCulot East"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "VVS_GREEN_588TH",
+      "archTypes": ["u2"],
+      "startDate": "19410801",
+      "endDate": "19450601",
+      "squadId": 10111588,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_GREEN"
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {

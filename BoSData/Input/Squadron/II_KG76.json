@@ -53,7 +53,22 @@
     "19450401": "ef_Chievres",
     "19450501": "ef_Chievres"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "LW_BOMBER_MID_II_KG76",
+      "archTypes": ["ju88"],
+      "startDate": "19410801",
+      "endDate": "19450503",
+      "squadId": 20132076,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 2
+      }
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {

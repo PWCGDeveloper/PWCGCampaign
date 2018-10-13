@@ -56,7 +56,22 @@
     "19450401": "ef_Grimbergen",
     "19450501": "ef_Chievres"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "LW_BOMBER_MID_II_TG2",
+      "planeType": "ju523mg4e",
+      "startDate": "19400101",
+      "endDate": "19450601",
+      "squadId": 20142002,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 4
+      }
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {

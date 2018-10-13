@@ -83,6 +83,39 @@
       "country": "Russia",
       "category": "Squadron",
       "definedInGame": false
+    },
+    {
+      "skinName": "VVS_GREEN_62ND",
+      "archTypes": ["il2"],
+      "startDate": "19410801",
+      "endDate": "19420331",
+      "squadId": 10121062,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_GREEN"
+    },
+    {
+      "skinName": "VVS_GREEN_BLACK_62ND",
+      "archTypes": ["il2"],
+      "startDate": "19420401",
+      "endDate": "19430331",
+      "squadId": 10121062,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_GREEN_BLACK"
+    },
+    {
+      "skinName": "VVS_TRICOLOR_62ND",
+      "archTypes": ["il2"],
+      "startDate": "19430401",
+      "endDate": "19450503",
+      "squadId": 10121062,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_TRICOLOR"
     }
   ],
   "squadHistory": {

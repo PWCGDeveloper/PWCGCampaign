@@ -24,7 +24,22 @@
     "19450310": "Werl",
     "19450404": "Quackenbruck"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "LW_BOMBER_MID_II_TG1",
+      "planeType": "ju523mg4e",
+      "startDate": "19400101",
+      "endDate": "19450601",
+      "squadId": 20142003,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 2
+      }
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
     ]

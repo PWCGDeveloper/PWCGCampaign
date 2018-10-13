@@ -24,6 +24,48 @@
     "19450404": "Ettinghausen"
   },
   "skins": [
+    {
+      "skinName": "LW_FIGHTER_MID_II_SG4",
+      "archTypes": ["bf109", "fw190", "fw190d"],
+      "startDate": "19410401",
+      "endDate": "19450503",
+      "squadId": 20122004,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 2
+      }
+    },
+    {
+      "skinName": "LW_FIGHTER_LATE_II_SG4",
+      "archTypes": ["bf109", "fw190", "fw190d"],
+      "startDate": "19440901",
+      "endDate": "19450503",
+      "squadId": 20122004,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_LATE",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 2
+      }
+    },
+    {
+      "skinName": "LW_FIGHTER_LATER_II_SG4",
+      "archTypes": ["bf109", "fw190", "fw190d"],
+      "startDate": "19450102",
+      "endDate": "19450503",
+      "squadId": 20122004,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_LATER",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 2
+      }
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": [

@@ -74,7 +74,21 @@
 			"country": "Germany",
 			"category": "Squadron",
 			"definedInGame": false
-		}
+		},
+    {
+      "skinName": "LW_FIGHTER_MID_I_JG3",
+      "archTypes": ["bf109", "fw190", "fw190d"],
+      "startDate": "19411001",
+      "endDate": "19450601",
+      "squadId": 20111003,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_FIGHTER_MID",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 3
+      }
+    }
 	],
 	"squadHistory": {
 		"squadHistoryEntries": []

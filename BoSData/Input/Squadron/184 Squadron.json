@@ -23,7 +23,19 @@
     "19450310": "Eindhoven",
     "19450404": "Werl"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "RAF_LATE_184",
+      "archTypes": ["tempest"],
+      "startDate": "19440901",
+      "endDate": "19450601",
+      "squadId": 103083184,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "RAF_LATE"
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": []
   },

@@ -109,6 +109,28 @@
       "country": "Russia",
       "category": "Squadron",
       "definedInGame": false
+    },
+    {
+      "skinName": "VVS_GREEN_34TH",
+      "archTypes": ["i16"],
+      "startDate": "19410801",
+      "endDate": "19450503",
+      "squadId": 10111034,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_GREEN"
+    },
+    {
+      "skinName": "VVS_GREEN_BLACK_34TH",
+      "archTypes": ["yak"],
+      "startDate": "19410801",
+      "endDate": "19450503",
+      "squadId": 10111034,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "VVS_GREEN_BLACK"
     }
   ],
   "squadHistory": {

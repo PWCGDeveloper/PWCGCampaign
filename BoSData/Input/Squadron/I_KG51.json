@@ -25,6 +25,20 @@
     "19450404": "Achmer"
   },
   "skins": [
+    {
+      "skinName": "LW_BOMBER_LATER_I_KG51",
+      "archTypes": ["me262"],
+      "startDate": "19440901",
+      "endDate": "19450601",
+      "squadId": 20131051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false,
+      "template": "LW_BOMBER_LATER",
+      "overrides": {
+        "STAFFEL_COLOR_INDEX": 2
+      }
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": [
