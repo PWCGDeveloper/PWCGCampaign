@@ -5,4 +5,6 @@ import pwcg.core.exception.PWCGException;
 
 public interface IPlaneMarkingManager {
     public void allocatePlaneIdCode(Campaign campaign, int squadronId, Equipment equipment, EquippedPlane equippedPlane) throws PWCGException;
+
+    public String determineDisplayMarkings(Campaign campaign, EquippedPlane equippedPlane) throws PWCGException;
 }

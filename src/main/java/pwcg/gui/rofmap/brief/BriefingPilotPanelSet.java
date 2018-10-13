@@ -256,7 +256,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private void addPlaneColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        String planeName = crewPlane.getPlane().getDisplayName() + " (" + crewPlane.getPlane().getSerialNumber() + ")";
+        String planeName = crewPlane.getPlane().getDisplayName() + " (" + crewPlane.getPlane().getDisplayMarkings() + ")";
         JButton planeButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planeName, "Change Plane:" + crewPlane.getPilot().getSerialNumber(), this);
         planeButton.setVerticalAlignment(SwingConstants.TOP);
         planeButton.setHorizontalAlignment(SwingConstants.LEFT);
@@ -329,7 +329,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
             if (sortedUnassignedPlanes.size() > i)
             {
                 EquippedPlane unassignedPlane = sortedUnassignedPlanes.get(i);
-                String planeNameText = unassignedPlane.getDisplayName() + " (" + unassignedPlane.getSerialNumber() + ")";
+                String planeNameText = unassignedPlane.getDisplayName() + " (" + unassignedPlane.getDisplayMarkings() + ")";
                 JLabel planeLabel = PWCGButtonFactory.makeBriefingChalkBoardLabel(planeNameText);
                 unassignedPilotPanel.add(planeLabel);
             }
@@ -432,14 +432,9 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
             Integer pilotSerialNumber = getPilotSerialNumberFromAction(action);
 
             BriefingPlanePicker briefingPlanePicker = new BriefingPlanePicker(briefingMissionHandler, this);
-            String newPlaneChoice = briefingPlanePicker.pickPlane(pilotSerialNumber);
-            if (newPlaneChoice != null)
+            Integer planeSerialNumber = briefingPlanePicker.pickPlane(pilotSerialNumber);
+            if (planeSerialNumber != null)
             {
-                int index = newPlaneChoice.indexOf(":");
-                index += 2;
-                String planeSerialNumberString = newPlaneChoice.substring(index);
-                Integer planeSerialNumber = Integer.valueOf(planeSerialNumberString);
-
                 briefingMissionHandler.changePlane(pilotSerialNumber, planeSerialNumber);
             }
 
