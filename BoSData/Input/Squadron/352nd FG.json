@@ -4,6 +4,7 @@
   "name": "352nd Fighter Group",
   "fileName": "352nd FG.json",
   "skill": 80,
+  "unitIdCode": "PZ",
   "planeAssignments": [
     {
       "archType": "p51",

@@ -4,6 +4,7 @@
   "name": "66 Squadron",
   "fileName": "66 Squadron.json",
   "skill": 75,
+  "unitIdCode": "LZ",
   "planeAssignments": [
     {
       "archType": "spitfire",

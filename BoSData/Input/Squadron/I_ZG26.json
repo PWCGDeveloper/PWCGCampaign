@@ -4,6 +4,8 @@
   "name": "I./ZG 26",
   "fileName": "I_ZG26.json",
   "skill": 70,
+  "unitIdCode": "3U",
+  "subUnitIdCode": "L",
   "planeAssignments": [
     {
       "archType": "bf110",

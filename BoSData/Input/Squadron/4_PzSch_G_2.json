@@ -4,6 +4,7 @@
   "name": "4.(Pz)/Sch.G.2",
   "fileName": "4_PzSch_G_2.json",
   "skill": 70,
+  "subUnitIdCode": "\u25b2",
   "planeAssignments": [
     {
       "archType": "hs129",
@@ -44,13 +45,15 @@
         "date": "19431018",
         "squadName": "12.(Pz)/SG9",
         "armedServiceName": "Luftwaffe",
-        "skill": 70
+        "skill": 70,
+        "subUnitIdCode": ""
       },
       {
         "date": "19450107",
         "squadName": "1.(Pz)/SG9",
         "armedServiceName": "Luftwaffe",
-        "skill": 70
+        "skill": 70,
+        "subUnitIdCode": ""
       }
     ]
   },

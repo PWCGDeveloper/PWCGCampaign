@@ -4,6 +4,7 @@
   "name": "387th Bomber Group",
   "fileName": "387th BG.json",
   "skill": 70,
+  "unitIdCode": "TQ",
   "planeAssignments": [
     {
       "archType": "a20",

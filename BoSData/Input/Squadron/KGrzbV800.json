@@ -4,6 +4,8 @@
   "name": "KGrzbV800",
   "fileName": "KGrzbV800.json",
   "skill": 50,
+  "unitIdCode": "3T",
+  "subUnitIdCode": "M",
   "planeAssignments": [
     {
       "archType": "ju52",
@@ -62,7 +64,9 @@
         "date": "19430501",
         "squadName": "II./TG2",
         "armedServiceName": "Luftwaffe",
-        "skill": 50
+        "skill": 50,
+        "unitIdCode": "8T",
+        "subUnitIdCode": "S"
       }
     ]
   },

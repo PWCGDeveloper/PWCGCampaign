@@ -4,6 +4,8 @@
 	"name": "I./KG53",
 	"fileName": "I_KG53.json",
 	"skill": 50,
+	"unitIdCode": "A1",
+	"subUnitIdCode": "L",
 	"planeAssignments": [
 		{
 			"archType": "he111",
@@ -93,13 +95,17 @@
 				"date": "19420301",
 				"squadName": "I./KG27",
 				"armedServiceName": "Luftwaffe",
-				"skill": 50
+				"skill": 50,
+				"unitIdCode": "1G",
+				"subUnitIdCode": "L"
 			},
 			{
 				"date": "19430918",
 				"squadName": "I./KG4",
 				"armedServiceName": "Luftwaffe",
-				"skill": 40
+				"skill": 40,
+				"unitIdCode": "5J",
+				"subUnitIdCode": "L"
 			}
 		]
 	},

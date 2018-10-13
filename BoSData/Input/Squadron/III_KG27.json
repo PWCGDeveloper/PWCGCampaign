@@ -4,6 +4,8 @@
   "name": "III./KG27",
   "fileName": "III_KG27.json",
   "skill": 60,
+  "unitIdCode": "1G",
+  "subUnitIdCode": "S",
   "planeAssignments": [
     {
       "archType": "he111",
@@ -88,7 +90,9 @@
         "date": "19430918",
         "squadName": "III./KG55",
         "armedServiceName": "Luftwaffe",
-        "skill": 50
+        "skill": 50,
+        "unitIdCode": "G1",
+        "subUnitIdCode": "S"
       }
     ]
   },

@@ -4,6 +4,7 @@
   "name": "349 Squadron",
   "fileName": "349 Squadron.json",
   "skill": 70,
+  "unitIdCode": "GE",
   "planeAssignments": [
     {
       "archType": "spitfire",

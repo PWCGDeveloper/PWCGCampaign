@@ -4,6 +4,7 @@
   "name": "193 Squadron",
   "fileName": "193 Squadron.json",
   "skill": 70,
+  "unitIdCode": "DP",
   "planeAssignments": [
     {
       "archType": "spitfire",

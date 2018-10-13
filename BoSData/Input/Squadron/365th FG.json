@@ -4,6 +4,7 @@
   "name": "365th Fighter Group",
   "fileName": "365th FG.json",
   "skill": 70,
+  "unitIdCode": "D5",
   "planeAssignments": [
     {
       "archType": "p47",
