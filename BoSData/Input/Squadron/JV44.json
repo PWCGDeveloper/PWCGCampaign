@@ -4,6 +4,7 @@
 	"name": "JV44",
 	"fileName": "JV44.json",
 	"skill": 95,
+	"subUnitIdCode": "",
 	"planeAssignments": [
 		{
 			"archType": "me262",

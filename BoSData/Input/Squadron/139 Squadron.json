@@ -4,6 +4,7 @@
   "name": "139 Squadron",
   "fileName": "139 Squadron.json",
   "skill": 70,
+  "unitIdCode": "XD",
   "planeAssignments": [
     {
       "archType": "b25",

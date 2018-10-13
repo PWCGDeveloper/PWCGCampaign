@@ -4,6 +4,7 @@
   "name": "56 Squadron",
   "fileName": "56 Squadron.json",
   "skill": 65,
+  "unitIdCode": "US",
   "planeAssignments": [
     {
       "archType": "tempest",

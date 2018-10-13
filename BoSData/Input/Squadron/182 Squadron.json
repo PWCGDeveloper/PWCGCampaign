@@ -4,6 +4,7 @@
   "name": "182 Squadron",
   "fileName": "182 Squadron.json",
   "skill": 65,
+  "unitIdCode": "XM",
   "planeAssignments": [
     {
       "archType": "tempest",

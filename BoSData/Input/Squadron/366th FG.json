@@ -4,6 +4,7 @@
   "name": "366th Fighter Group",
   "fileName": "366th FG.json",
   "skill": 80,
+  "unitIdCode": "A6",
   "planeAssignments": [
     {
       "archType": "p47",

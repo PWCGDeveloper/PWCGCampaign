@@ -4,6 +4,7 @@
   "name": "II./Sch.G.1",
   "fileName": "II_Sch_G_1.json",
   "skill": 60,
+  "subUnitIdCode": "\u25b2",
   "planeAssignments": [
     {
       "archType": "bf109e",
@@ -77,7 +78,8 @@
         "date": "19431018",
         "squadName": "I./SG4",
         "armedServiceName": "Luftwaffe",
-        "skill": 55
+        "skill": 55,
+        "subUnitIdCode": ""
       }
     ]
   },

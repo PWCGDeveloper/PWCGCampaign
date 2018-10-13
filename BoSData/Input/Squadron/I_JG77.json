@@ -4,6 +4,7 @@
 	"name": "I./JG77",
 	"fileName": "I_JG77.json",
 	"skill": 70,
+        "subUnitIdCode": "",
 	"planeAssignments": [
 		{
 			"archType": "bf109",

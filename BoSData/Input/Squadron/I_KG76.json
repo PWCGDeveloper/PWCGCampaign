@@ -4,6 +4,8 @@
   "name": "I./KG76",
   "fileName": "I_KG76.json",
   "skill": 50,
+  "unitIdCode": "F1",
+  "subUnitIdCode": "L",
   "planeAssignments": [
     {
       "archType": "ju88",
@@ -61,7 +63,9 @@
         "date": "19430918",
         "squadName": "I./KG51",
         "armedServiceName": "Luftwaffe",
-        "skill": 40
+        "skill": 40,
+        "unitIdCode": "9K",
+        "subUnitIdCode": "L"
       }
     ]
   },

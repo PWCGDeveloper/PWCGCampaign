@@ -4,6 +4,7 @@
   "name": "410th Bomber Group",
   "fileName": "410th BG.json",
   "skill": 70,
+  "unitIdCode": "8U",
   "planeAssignments": [
     {
       "archType": "a20",

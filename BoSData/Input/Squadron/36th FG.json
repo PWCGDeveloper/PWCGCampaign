@@ -4,6 +4,7 @@
   "name": "36th Fighter Group",
   "fileName": "36th FG.json",
   "skill": 65,
+  "unitIdCode": "3T",
   "planeAssignments": [
     {
       "archType": "p47",

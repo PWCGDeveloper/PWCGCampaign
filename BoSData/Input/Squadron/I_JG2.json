@@ -4,6 +4,7 @@
 	"name": "I./JG2",
 	"fileName": "I_JG2.json",
 	"skill": 90,
+        "subUnitIdCode": "-",
 	"planeAssignments": [
 		{
 			"archType": "fw190",
@@ -34,7 +35,8 @@
 				"date": "19440901",
 				"squadName": "I./JG2",
 				"armedServiceName": "Luftwaffe",
-				"skill": 70
+				"skill": 70,
+                                "subUnitIdCode": ""
 			}
 		]
 	},
