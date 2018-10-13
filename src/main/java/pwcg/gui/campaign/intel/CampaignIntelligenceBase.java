@@ -241,7 +241,7 @@ public abstract class CampaignIntelligenceBase extends JPanel implements ActionL
         for (int i = 0; i < sortedAircraftOnInventory.size(); ++i)
         {
             EquippedPlane plane = sortedAircraftOnInventory.get(i);
-            intelBuffer.append("    " + plane.getDisplayName() + " (" + plane.getSerialNumber() + ")");
+            intelBuffer.append("    " + plane.getDisplayName() + " (" + plane.getDisplayMarkings() + ")");
             intelBuffer.append(".\n");          
         }
     }

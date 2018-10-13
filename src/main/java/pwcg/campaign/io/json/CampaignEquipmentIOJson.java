@@ -8,6 +8,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGDirectoryUserManager;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
@@ -93,6 +94,12 @@ public class CampaignEquipmentIOJson
             EquipmentDepot replacementEquipemnt = jsoReader.readJsonFile(campaignEquipmentReplacementDir, jsonFile.getName());
             int serviceId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
             campaign.getEquipmentManager().addEquipmentDepotForService(serviceId, replacementEquipemnt);
+            for (EquippedPlane equippedPlane : replacementEquipemnt.getAllPlanesInDepot())
+            {
+                // Propagate any updates to the aircraft definitions into plane instances
+                PlaneType basePlane = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneById(equippedPlane.getType());
+                basePlane.copyTemplate(equippedPlane);
+            }
         }
     }
 }
