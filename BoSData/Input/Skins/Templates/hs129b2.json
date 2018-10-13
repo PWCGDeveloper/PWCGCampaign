@@ -1,0 +1,71 @@
+{
+  "templates": {
+    "lw_attack_schg1": {
+      "templateName": "LW_ATTACK_SCHG1",
+      "planeType": "hs129b2",
+      "credit": "Based on official 2K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "SUB_UNIT_ID_CODE": null,
+        "STAFFEL_COLOR_INDEX": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 150,
+          "x": 504,
+          "y": 317,
+          "orientation": 0,
+          "fillColor": "{2,choice,0#101010|1#d0d0d0|2#941515|3#fcbe0e|4#3b46b1}",
+          "strokeWidth": 4,
+          "strokeColor": "{2,choice,0#'{3,choice,0#d0d0d0|1#101010}'|1#101010|2#d0d0d0|3#101010|4#d0d0d0}"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 150,
+          "x": 504,
+          "y": 684,
+          "orientation": 180,
+          "fillColor": "{2,choice,0#101010|1#d0d0d0|2#941515|3#fcbe0e|4#3b46b1}",
+          "strokeWidth": 4,
+          "strokeColor": "{2,choice,0#'{3,choice,0#d0d0d0|1#101010}'|1#101010|2#d0d0d0|3#101010|4#d0d0d0}"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 150,
+          "x": 694,
+          "y": 317,
+          "orientation": 0,
+          "fillColor": "101010",
+          "strokeWidth": 4,
+          "strokeColor": "{3,choice,0#d0d0d0|1#101010}"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 150,
+          "x": 694,
+          "y": 684,
+          "orientation": 180,
+          "fillColor": "101010",
+          "strokeWidth": 4,
+          "strokeColor": "{3,choice,0#d0d0d0|1#101010}"
+        }
+      ],
+      "baseImagePath": "hs129b2_lw{3,choice,0#|1#_winter}_base.png",
+      "weatherImagePath": "hs129b2_weather.png"
+    }
+  }
+}

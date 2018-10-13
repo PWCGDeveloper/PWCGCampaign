@@ -1,0 +1,85 @@
+{
+  "templates": {
+    "vvs_green": {
+      "templateName": "VVS_GREEN",
+      "planeType": "p39l1",
+      "credit": "Based on Zargos's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null,
+        "TAIL_CODE_START": null,
+        "TAIL_CODE_END": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 300,
+          "x": 2573,
+          "y": 3071,
+          "orientation": 0,
+          "fillColor": "{1,choice,0#e7e7e7|1#912617}"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 300,
+          "x": 2573,
+          "y": 2043,
+          "orientation": 180,
+          "fillColor": "{1,choice,0#e7e7e7|1#912617}"
+        },
+        {
+          "text": "{2}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "Airborne.otf",
+          "size": 100,
+          "x": 3216,
+          "y": 2378,
+          "orientation": 270,
+          "fillColor": "d9b349"
+        },
+        {
+          "text": "{3}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "Airborne.otf",
+          "size": 100,
+          "x": 3589,
+          "y": 2279,
+          "orientation": 270,
+          "fillColor": "d9b349"
+        },
+        {
+          "text": "{2}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "Airborne.otf",
+          "size": 100,
+          "x": 3761,
+          "y": 2675,
+          "orientation": 180,
+          "fillColor": "d9b349"
+        },
+        {
+          "text": "{3}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "Airborne.otf",
+          "size": 100,
+          "x": 3559,
+          "y": 3075,
+          "orientation": 270,
+          "fillColor": "d9b349"
+        }
+      ],
+      "baseImagePath": "p39l1_vvs_{1,choice,0#green|1#winter}_base.png",
+      "weatherImagePath": "p39l1_weather.png"
+    }
+  }
+}

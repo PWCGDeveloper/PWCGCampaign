@@ -1,0 +1,39 @@
+{
+  "templates": {
+    "vvs_green": {
+      "templateName": "VVS_GREEN",
+      "planeType": "u2vs",
+      "credit": "Based on official 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "font": "VVSNumbers1.otf",
+          "size": 230,
+          "x": 2462,
+          "y": 2951,
+          "orientation": 270,
+          "fillColor": "{1,choice,0#f3f3f3|1#671a0e}"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "TOP",
+          "font": "VVSNumbers1.otf",
+          "size": 230,
+          "x": 3192,
+          "y": 2951,
+          "orientation": 90,
+          "fillColor": "{1,choice,0#f3f3f3|1#671a0e}"
+        }
+      ],
+      "baseImagePath": "u2vs_vvs_{1,choice,0#green|1#winter}_base.png",
+      "weatherImagePath": "u2vs_weather.png"
+    }
+  }
+}

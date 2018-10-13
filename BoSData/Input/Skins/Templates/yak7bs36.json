@@ -1,0 +1,78 @@
+{
+  "templates": {
+    "vvs_green_black": {
+      "templateName": "VVS_GREEN_BLACK",
+      "planeType": "yak7bs36",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers1.otf",
+          "size": 300,
+          "x": 2314,
+          "y": 2248,
+          "orientation": 0,
+          "fillColor": "{1,choice,0#f3f3f3|1#991818}"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers1.otf",
+          "size": 300,
+          "x": 2314,
+          "y": 635,
+          "orientation": 180,
+          "fillColor": "{1,choice,0#f3f3f3|1#991818}"
+        }
+      ],
+      "baseImagePath": "yak7bs36_vvs_green_black{1,choice,0#|1#_winter}_base.png",
+      "weatherImagePath": "yak7bs36_weather.png"
+    },
+    "vvs_grey": {
+      "templateName": "VVS_GREY",
+      "planeType": "yak7bs36",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 300,
+          "x": 2314,
+          "y": 2248,
+          "orientation": 0,
+          "fillColor": "{1,choice,0#f3f3f3|1#991818}",
+          "strokeWidth": 5,
+          "strokeColor": "991818"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 300,
+          "x": 2314,
+          "y": 635,
+          "orientation": 180,
+          "fillColor": "{1,choice,0#f3f3f3|1#991818}",
+          "strokeWidth": 5,
+          "strokeColor": "991818"
+        }
+      ],
+      "baseImagePath": "yak7bs36_vvs_grey{1,choice,0#|1#_winter}_base.png",
+      "weatherImagePath": "yak7bs36_weather.png"
+    }
+  }
+}
