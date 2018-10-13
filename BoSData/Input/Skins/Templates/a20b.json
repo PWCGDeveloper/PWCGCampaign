@@ -1,0 +1,304 @@
+{
+  "templates": {
+    "vvs_green": {
+      "templateName": "VVS_GREEN",
+      "planeType": "a20b",
+      "credit": "Based on official 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null,
+        "TAIL_CODE": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 210,
+          "x": 3736,
+          "y": 3048,
+          "orientation": 0,
+          "fillColor": "{1,choice,0#e7e7e7|1#912617}"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 210,
+          "x": 3736,
+          "y": 792,
+          "orientation": 180,
+          "fillColor": "{1,choice,0#e7e7e7|1#912617}"
+        },
+        {
+          "text": "{2}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "TOP",
+          "font": "Airborne.otf",
+          "size": 55,
+          "x": 3651,
+          "y": 3191,
+          "orientation": 0,
+          "fillColor": "dab03f"
+        },
+        {
+          "text": "{2}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "font": "Airborne.otf",
+          "size": 55,
+          "x": 3651,
+          "y": 654,
+          "orientation": 180,
+          "fillColor": "dab03f"
+        }
+      ],
+      "baseImagePath": "a20b_vvs_{1,choice,0#green|1#winter}_base.png",
+      "weatherImagePath": "a20b_weather.png"
+    },
+    "raf_late_olive": {
+      "templateName": "RAF_LATE_OLIVE",
+      "planeType": "a20b",
+      "credit": "Based on official 4K template, with invasion stripes by BOO",
+      "parameters": {
+        "UNIT_ID_CODE": null,
+        "AIRCRAFT_ID_CODE": null,
+        "RANK_FLAG": null,
+        "STRIPES": null,
+        "SERIAL": null,
+        "FLAG_NUM": ""
+      },
+      "defs": [
+        {
+          "text": "{4}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "font": "RAF_PW_ATH.otf",
+          "size": 70,
+          "x": 3494,
+          "y": 3525,
+          "orientation": 0,
+          "fillColor": "13120e"
+        },
+        {
+          "text": "{4}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "TOP",
+          "font": "RAF_PW_ATH.otf",
+          "size": 70,
+          "x": 3494,
+          "y": 315,
+          "orientation": 180,
+          "fillColor": "13120e"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 170,
+          "x": 2987,
+          "y": 3691,
+          "orientation": 0,
+          "fillColor": "7a312a"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 170,
+          "x": 1483,
+          "y": 3607,
+          "orientation": 0,
+          "fillColor": "7a312a"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 170,
+          "x": 2987,
+          "y": 154,
+          "orientation": 180,
+          "fillColor": "7a312a"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 170,
+          "x": 1483,
+          "y": 232,
+          "orientation": 180,
+          "fillColor": "7a312a"
+        },
+        {
+          "image": "{2}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 1112,
+          "y": 3520,
+          "width": 96,
+          "height": 56,
+          "orientation": 0
+        },
+        {
+          "image": "{2}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "TOP",
+          "x": 1112,
+          "y": 320,
+          "width": 96,
+          "height": 56,
+          "orientation": 180
+        },
+        {
+          "text": "{5}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "font": "RAF_PW_ATH.otf",
+          "size": 10,
+          "x": 1132,
+          "y": 3554,
+          "orientation": 0,
+          "fillColor": "00247d"
+        },
+        {
+          "text": "{5}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "font": "RAF_PW_ATH.otf",
+          "size": 10,
+          "x": 1176,
+          "y": 286,
+          "orientation": 180,
+          "fillColor": "00247d"
+        }
+      ],
+      "baseImagePath": "a20b_raf_late_olive_{3,choice,0#|1#stripes_under_|2#stripes_}base.png",
+      "weatherImagePath": "a20b_weather.png"
+    },
+    "usaaf_late_olive": {
+      "templateName": "USAAF_LATE_OLIVE",
+      "planeType": "a20b",
+      "credit": "Based on official 4K template, with invasion stripes by BOO",
+      "parameters": {
+        "UNIT_ID_CODE": null,
+        "AIRCRAFT_ID_CODE": null,
+        "STRIPES": null,
+        "TAIL_CODE": null,
+        "SQUADRON_NUM": 0
+      },
+      "defs": [
+        {
+          "image": "{2,choice,0#|1#Insignia\\a20_stripes_usaaf_under_1.png|2#Insignia\\a20_stripes_usaaf_full_1.png}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 1218,
+          "y": 0
+        },
+        {
+          "image": "{2,choice,0#|1#Insignia\\a20_stripes_usaaf_under_2.png|2#Insignia\\a20_stripes_usaaf_full_2.png}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 538,
+          "y": 949
+        },
+        {
+          "image": "{2,choice,0#|1#Insignia\\a20_stripes_usaaf_under_3.png|2#Insignia\\a20_stripes_usaaf_full_3.png}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 2482,
+          "y": 0
+        },
+        {
+          "image": "{2,choice,0#|1#Insignia\\a20_stripes_usaaf_under_4.png|2#Insignia\\a20_stripes_usaaf_full_4.png}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 2803,
+          "y": 981
+        },
+        {
+          "image": "{2,choice,0#|1#Insignia\\a20_stripes_usaaf_under_5.png|2#Insignia\\a20_stripes_usaaf_full_5.png}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 2631,
+          "y": 3285
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "Airborne.otf",
+          "size": 220,
+          "x": 2973,
+          "y": 3693,
+          "orientation": 0,
+          "fillColor": "c6c6c6"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "Airborne.otf",
+          "size": 210,
+          "x": 3439,
+          "y": 3663,
+          "orientation": 0,
+          "fillColor": "c6c6c6"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "Airborne.otf",
+          "size": 220,
+          "x": 2973,
+          "y": 149,
+          "orientation": 180,
+          "fillColor": "c6c6c6"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "Airborne.otf",
+          "size": 210,
+          "x": 3439,
+          "y": 179,
+          "orientation": 180,
+          "fillColor": "c6c6c6"
+        },
+        {
+          "text": "{3}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "TOP",
+          "font": "Airborne.otf",
+          "size": 55,
+          "x": 3651,
+          "y": 3191,
+          "orientation": 0,
+          "fillColor": "dab03f"
+        },
+        {
+          "text": "{3}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "font": "Airborne.otf",
+          "size": 55,
+          "x": 3651,
+          "y": 654,
+          "orientation": 180,
+          "fillColor": "dab03f"
+        }
+      ],
+      "baseImagePath": "a20b_usaaf_late_olive{4,choice,0#|0<_{4}}_base.png",
+      "weatherImagePath": "a20b_weather.png"
+    }
+  }
+}

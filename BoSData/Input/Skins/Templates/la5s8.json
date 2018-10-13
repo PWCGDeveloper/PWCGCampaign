@@ -1,0 +1,78 @@
+{
+  "templates": {
+    "vvs_green_black": {
+      "templateName": "VVS_GREEN_BLACK",
+      "planeType": "la5s8",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers1.otf",
+          "size": 300,
+          "x": 1910,
+          "y": 3808,
+          "orientation": 0,
+          "fillColor": "{1,choice,0#e7e7e7|1#a21919}"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers1.otf",
+          "size": 300,
+          "x": 1910,
+          "y": 2706,
+          "orientation": 180,
+          "fillColor": "{1,choice,0#e7e7e7|1#a21919}"
+        }
+      ],
+      "baseImagePath": "la5s8_vvs_{1,choice,0#green_black|1#winter}_base.png",
+      "weatherImagePath": "la5s8_weather.png"
+    },
+    "vvs_grey": {
+      "templateName": "VVS_GREY",
+      "planeType": "la5s8",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 300,
+          "x": 1930,
+          "y": 3808,
+          "orientation": 0,
+          "fillColor": "{1,choice,0#e7e7e7|1#a21919}",
+          "strokeWidth": 5,
+          "strokeColor": "a21919"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 300,
+          "x": 1930,
+          "y": 2706,
+          "orientation": 180,
+          "fillColor": "{1,choice,0#e7e7e7|1#a21919}",
+          "strokeWidth": 5,
+          "strokeColor": "a21919"
+        }
+      ],
+      "baseImagePath": "la5s8_vvs_{1,choice,0#grey|1#winter}_base.png",
+      "weatherImagePath": "la5s8_weather.png"
+    }
+  }
+}

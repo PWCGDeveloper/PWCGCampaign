@@ -1,0 +1,61 @@
+{
+  "templates": {
+    "vvs_green_grey": {
+      "templateName": "VVS_GREEN_GREY",
+      "planeType": "spitfiremkvb",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "SERIAL": null
+      },
+      "defs": [
+        {
+          "text": "{1}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "RAF_PW_ATH.otf",
+          "size": 70,
+          "x": 2677,
+          "y": 2730,
+          "orientation": 0,
+          "fillColor": "13120e"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "RAF_PW_ATH.otf",
+          "size": 70,
+          "x": 2677,
+          "y": 2116,
+          "orientation": 180,
+          "fillColor": "13120e"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 420,
+          "x": 1933,
+          "y": 2860,
+          "orientation": 0,
+          "fillColor": "e7e7e7"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 420,
+          "x": 1933,
+          "y": 1992,
+          "orientation": 180,
+          "fillColor": "e7e7e7"
+        }
+      ],
+      "baseImagePath": "spitfiremkvb_vvs_green_grey_base.png",
+      "weatherImagePath": "spitfiremkvb_weather.png"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "templates": {
+    "vvs_tricolor": {
+      "templateName": "VVS_TRICOLOR",
+      "planeType": "il2m43",
+      "credit": "Based on BlackHellHound1's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 250,
+          "x": 2515,
+          "y": 2889,
+          "orientation": 0,
+          "fillColor": "{1,choice,0#e7e7e7|1#903522}",
+          "strokeWidth": 5,
+          "strokeColor": "903522"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 250,
+          "x": 2515,
+          "y": 2117,
+          "orientation": 180,
+          "fillColor": "{1,choice,0#e7e7e7|1#903522}",
+          "strokeWidth": 5,
+          "strokeColor": "903522"
+        }
+      ],
+      "baseImagePath": "il2m43_vvs_tricolor{1,choice,0#|1#_winter}_base.png",
+      "weatherImagePath": "il2m43_weather.png"
+    }
+  }
+}

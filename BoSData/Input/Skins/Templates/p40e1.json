@@ -1,0 +1,88 @@
+{
+  "templates": {
+    "p40e1_raf_desert": {
+      "templateName": "P40E1_RAF_DESERT",
+      "planeType": "p40e1",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "UNIT_ID_CODE": null,
+        "AIRCRAFT_ID_CODE": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "align": "RIGHT",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 230,
+          "x": 3135,
+          "y": 2625,
+          "orientation": 0
+        },
+        {
+          "text": "{1}",
+          "align": "LEFT",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 230,
+          "x": 3507,
+          "y": 2625,
+          "orientation": 0
+        },
+        {
+          "text": "{0}",
+          "align": "LEFT",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 230,
+          "x": 3135,
+          "y": 1725,
+          "orientation": 180
+        },
+        {
+          "text": "{1}",
+          "align": "RIGHT",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 230,
+          "x": 3507,
+          "y": 1725,
+          "orientation": 180
+        }
+      ],
+      "baseImagePath": "p40e1_raf_shark_base.png",
+      "weatherImagePath": "p40e1_weather.png"
+    },
+    "vvs_green": {
+      "templateName": "VVS_GREEN",
+      "planeType": "p40e1",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 300,
+          "x": 3247,
+          "y": 2652,
+          "orientation": 0,
+          "fillColor": "{1,choice,0#e7e7e7|1#961818}"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 300,
+          "x": 3247,
+          "y": 1706,
+          "orientation": 180,
+          "fillColor": "{1,choice,0#e7e7e7|1#961818}"
+        }
+      ],
+      "baseImagePath": "p40e1_vvs_{1,choice,0#green|1#winter}_base.png",
+      "weatherImagePath": "p40e1_weather.png"
+    }
+  }
+}

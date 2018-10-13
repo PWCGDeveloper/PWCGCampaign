@@ -1,0 +1,456 @@
+{
+  "templates": {
+    "lw_fighter_later": {
+      "templateName": "LW_FIGHTER_LATER",
+      "planeType": "me262a",
+      "credit": "Based on official 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "SUB_UNIT_ID_CODE": null,
+        "STAFFEL_COLOR_INDEX": null,
+        "INSIGNIA_NOSE": null,
+        "INSIGNIA_CP_FORE": null,
+        "INSIGNIA_CP_MID": null,
+        "INSIGNIA_TAIL": null,
+        "ID_BAND_FORE": null,
+        "ID_BAND_AFT": null,
+        "ID_BAND_CHECKS": null,
+        "SERIAL": null,
+        "ID_ON_NOSE": 0
+      },
+      "defs": [
+        {
+          "image": "Insignia\\me262_tail_band_fore.png",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 2383,
+          "y": 57,
+          "orientation": 0,
+          "fillColor": "{7}"
+        },
+        {
+          "image": "Insignia\\me262_tail_band_aft.png",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 2579,
+          "y": 74,
+          "orientation": 0,
+          "fillColor": "{8}"
+        },
+        {
+          "image": "Insignia\\me262_tail_band_checks.png",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 2383,
+          "y": 57,
+          "orientation": 0,
+          "fillColor": "{9}"
+        },
+        {
+          "text": "{11,choice,0#|1#{0}}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 200,
+          "x": 922,
+          "y": 844,
+          "orientation": 0,
+          "fillColor": "{2,choice,1#faf7f1|2#262627|3#ffc63d}",
+          "strokeWidth": 4,
+          "strokeColor": "{2,choice,1#262627|2#faf7f1|3#262627}"
+        },
+        {
+          "text": "{11,choice,0#|1#{0}}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 200,
+          "x": 922,
+          "y": 184,
+          "orientation": 180,
+          "fillColor": "{2,choice,1#faf7f1|2#262627|3#ffc63d}",
+          "strokeWidth": 4,
+          "strokeColor": "{2,choice,1#262627|2#faf7f1|3#262627}"
+        },
+        {
+          "text": "{11,choice,0#{0}|1#}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 250,
+          "x": 2099,
+          "y": 848,
+          "orientation": 0,
+          "fillColor": "{2,choice,1#faf7f1|2#262627|3#ffc63d}",
+          "strokeWidth": 6,
+          "strokeColor": "{2,choice,1#262627|2#faf7f1|3#262627}"
+        },
+        {
+          "text": "{11,choice,0#{0}|1#}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 250,
+          "x": 2099,
+          "y": 187,
+          "orientation": 180,
+          "fillColor": "{2,choice,1#faf7f1|2#262627|3#ffc63d}",
+          "strokeWidth": 6,
+          "strokeColor": "{2,choice,1#262627|2#faf7f1|3#262627}"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 250,
+          "x": 2578,
+          "y": 848,
+          "orientation": 0,
+          "fillColor": "{2,choice,1#faf7f1|2#262627|3#ffc63d}",
+          "strokeWidth": 6,
+          "strokeColor": "{2,choice,1#262627|2#faf7f1|3#262627}"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 250,
+          "x": 2578,
+          "y": 187,
+          "orientation": 180,
+          "fillColor": "{2,choice,1#faf7f1|2#262627|3#ffc63d}",
+          "strokeWidth": 6,
+          "strokeColor": "{2,choice,1#262627|2#faf7f1|3#262627}"
+        },
+        {
+          "image": "{3}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "x": 922,
+          "y": 794,
+          "width": 82,
+          "height": 87,
+          "orientation": 0
+        },
+        {
+          "image": "{3}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "x": 922,
+          "y": 234,
+          "width": 82,
+          "height": 87,
+          "orientation": 180
+        },
+        {
+          "image": "{4}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "x": 1126,
+          "y": 740,
+          "width": 87,
+          "height": 104,
+          "orientation": 0
+        },
+        {
+          "image": "{4}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "x": 1126,
+          "y": 288,
+          "width": 87,
+          "height": 104,
+          "orientation": 180
+        },
+        {
+          "image": "{5}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "x": 1422,
+          "y": 768,
+          "width": 128,
+          "height": 138,
+          "orientation": 0
+        },
+        {
+          "image": "{5}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "x": 1422,
+          "y": 260,
+          "width": 128,
+          "height": 138,
+          "orientation": 180
+        },
+        {
+          "image": "{6}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "x": 2578,
+          "y": 848,
+          "width": 144,
+          "height": 200,
+          "orientation": 0
+        },
+        {
+          "image": "{6}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "x": 2578,
+          "y": 187,
+          "width": 144,
+          "height": 200,
+          "orientation": 180
+        },
+        {
+          "text": "{10}",
+          "horizAlign": "CENTER",
+          "vertAlign": "BOTTOM",
+          "font": "Blockschrift.otf",
+          "size": 70,
+          "x": 3612,
+          "y": 1937,
+          "orientation": 270,
+          "fillColor": "262627"
+        },
+        {
+          "text": "{10}",
+          "horizAlign": "CENTER",
+          "vertAlign": "BOTTOM",
+          "font": "Blockschrift.otf",
+          "size": 70,
+          "x": 3347,
+          "y": 1586,
+          "orientation": 180,
+          "fillColor": "262627"
+        }
+      ],
+      "baseImagePath": "me262a_lw_later_base.png",
+      "weatherImagePath": "me262a_weather.png"
+    },
+    "lw_bomber_later": {
+      "templateName": "LW_BOMBER_LATER",
+      "planeType": "me262a",
+      "credit": "Based on official 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "SUB_UNIT_ID_CODE": null,
+        "STAFFEL_COLOR_INDEX": null,
+        "INSIGNIA_NOSE": null,
+        "INSIGNIA_CP_FORE": null,
+        "INSIGNIA_CP_MID": null,
+        "INSIGNIA_TAIL": null,
+        "ID_BAND_FORE": null,
+        "ID_BAND_AFT": null,
+        "ID_BAND_CHECKS": null,
+        "SERIAL": null,
+        "UNIT_ID_CODE": null
+      },
+      "defs": [
+        {
+          "image": "Insignia\\me262_tail_band_fore.png",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 2383,
+          "y": 57,
+          "orientation": 0,
+          "fillColor": "{7}"
+        },
+        {
+          "image": "Insignia\\me262_tail_band_aft.png",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 2579,
+          "y": 74,
+          "orientation": 0,
+          "fillColor": "{8}"
+        },
+        {
+          "image": "Insignia\\me262_tail_band_checks.png",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 2383,
+          "y": 57,
+          "orientation": 0,
+          "fillColor": "{9}"
+        },
+        {
+          "text": "{11}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 60,
+          "x": 2099,
+          "y": 848,
+          "orientation": 0,
+          "fillColor": "262627"
+        },
+        {
+          "text": "{11}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 60,
+          "x": 2099,
+          "y": 187,
+          "orientation": 180,
+          "fillColor": "262627"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 180,
+          "x": 2457,
+          "y": 848,
+          "orientation": 0,
+          "fillColor": "{2,choice,0#009900|1#e1e1e1|2#a62121|3#ddb63a|4#3e48d5}",
+          "strokeWidth": 6,
+          "strokeColor": "262627"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 180,
+          "x": 2457,
+          "y": 187,
+          "orientation": 180,
+          "fillColor": "{2,choice,0#009900|1#e1e1e1|2#a62121|3#ddb63a|4#3e48d5}",
+          "strokeWidth": 6,
+          "strokeColor": "262627"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 60,
+          "x": 2528,
+          "y": 848,
+          "orientation": 0,
+          "fillColor": "262627"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "Blockschrift.otf",
+          "size": 60,
+          "x": 2528,
+          "y": 187,
+          "orientation": 180,
+          "fillColor": "262627"
+        },
+        {
+          "image": "{3}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "x": 922,
+          "y": 794,
+          "width": 82,
+          "height": 87,
+          "orientation": 0
+        },
+        {
+          "image": "{3}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "x": 922,
+          "y": 234,
+          "width": 82,
+          "height": 87,
+          "orientation": 180
+        },
+        {
+          "image": "{4}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "x": 1126,
+          "y": 740,
+          "width": 87,
+          "height": 104,
+          "orientation": 0
+        },
+        {
+          "image": "{4}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "x": 1126,
+          "y": 288,
+          "width": 87,
+          "height": 104,
+          "orientation": 180
+        },
+        {
+          "image": "{5}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "x": 1422,
+          "y": 768,
+          "width": 128,
+          "height": 138,
+          "orientation": 0
+        },
+        {
+          "image": "{5}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "x": 1422,
+          "y": 260,
+          "width": 128,
+          "height": 138,
+          "orientation": 180
+        },
+        {
+          "image": "{6}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "x": 2578,
+          "y": 848,
+          "width": 144,
+          "height": 200,
+          "orientation": 0
+        },
+        {
+          "image": "{6}",
+          "horizAlign": "CENTER",
+          "vertAlign": "CENTER",
+          "x": 2578,
+          "y": 187,
+          "width": 144,
+          "height": 200,
+          "orientation": 180
+        },
+        {
+          "text": "{10}",
+          "horizAlign": "CENTER",
+          "vertAlign": "BOTTOM",
+          "font": "Blockschrift.otf",
+          "size": 70,
+          "x": 3612,
+          "y": 1937,
+          "orientation": 270,
+          "fillColor": "262627"
+        },
+        {
+          "text": "{10}",
+          "horizAlign": "CENTER",
+          "vertAlign": "BOTTOM",
+          "font": "Blockschrift.otf",
+          "size": 70,
+          "x": 3347,
+          "y": 1586,
+          "orientation": 180,
+          "fillColor": "262627"
+        }
+      ],
+      "baseImagePath": "me262a_lw_later_base.png",
+      "weatherImagePath": "me262a_weather.png"
+    }
+  }
+}

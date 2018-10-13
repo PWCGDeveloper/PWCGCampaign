@@ -1,0 +1,158 @@
+{
+  "templates": {
+    "usaaf_late_bare": {
+      "templateName": "USAAF_LATE_BARE",
+      "planeType": "p47d28",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "UNIT_ID_CODE": null,
+        "AIRCRAFT_ID_CODE": null,
+        "PILOT_NAME_RANK_INIT": null,
+        "SQUADRON_NUM": 0,
+        "TAIL_CODE": null,
+        "SERIAL": null,
+        "STRIPES": null
+      },
+      "defs": [
+        {
+          "image": "{6,choice,0#|1#Insignia\\p47d_stripes_shackles.png}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 3556,
+          "y": 0,
+          "fillShine": "34"
+        },
+        {
+          "image": "{6,choice,0#|1#Insignia\\p47d_stripes_wings_usaaf_under.png|2#}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 793,
+          "y": 1094,
+          "fillShine": "34"
+        },
+        {
+          "image": "{6,choice,0#|2#Insignia\\p47d_stripes_wings_usaaf_full.png}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 792,
+          "y": 106,
+          "fillShine": "34"
+        },
+        {
+          "image": "{6,choice,0#|1#Insignia\\p47d_stripes_fuselage_usaaf_under.png|2#}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 2143,
+          "y": 2592,
+          "fillShine": "34"
+        },
+        {
+          "image": "{6,choice,0#|2#Insignia\\p47d_stripes_fuselage_usaaf_full.png}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 2143,
+          "y": 2480,
+          "fillShine": "34"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "Airborne.otf",
+          "size": 260,
+          "x": 2295,
+          "y": 3644,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "Airborne.otf",
+          "size": 260,
+          "x": 2887,
+          "y": 3644,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "Airborne.otf",
+          "size": 260,
+          "x": 2295,
+          "y": 2755,
+          "orientation": 180,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "Airborne.otf",
+          "size": 260,
+          "x": 2887,
+          "y": 2755,
+          "orientation": 180,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "pilot   {2}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "AlegreyaSansSC-MediumItalic.ttf",
+          "size": 18,
+          "x": 1375,
+          "y": 3352,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{4}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "CENTER",
+          "font": "Airborne.otf",
+          "size": 75,
+          "x": 3825,
+          "y": 3756,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{4}",
+          "horizAlign": "LEFT",
+          "vertAlign": "CENTER",
+          "font": "Airborne.otf",
+          "size": 75,
+          "x": 3825,
+          "y": 2957,
+          "orientation": 180,
+          "fillColor": "191919",
+          "fillShine": "3f"
+        },
+        {
+          "text": "{5}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "Arimo-Bold.ttf",
+          "size": 7,
+          "x": 1178,
+          "y": 3494,
+          "orientation": 0,
+          "fillColor": "191919",
+          "fillShine": "24"
+        }
+      ],
+      "baseImagePath": "p47d28_usaaf_late_bare{3,choice,0#|0<_{3}}_base.png",
+      "weatherImagePath": "p47d28_weather.png"
+    }
+  }
+}

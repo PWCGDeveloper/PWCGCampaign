@@ -1,0 +1,74 @@
+{
+  "templates": {
+    "vvs_green": {
+      "templateName": "VVS_GREEN",
+      "planeType": "mig3s24",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers1.otf",
+          "size": 280,
+          "x": 1866,
+          "y": 3160,
+          "orientation": 0,
+          "fillColor": "{1,choice,0#e7e7e7|1#961818}"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers1.otf",
+          "size": 280,
+          "x": 1866,
+          "y": 3389,
+          "orientation": 180,
+          "fillColor": "{1,choice,0#e7e7e7|1#961818}"
+        }
+      ],
+      "baseImagePath": "mig3s24_vvs_{1,choice,0#green|1#winter}_base.png",
+      "weatherImagePath": "mig3s24_weather.png"
+    },
+    "vvs_green_black": {
+      "templateName": "VVS_GREEN_BLACK",
+      "planeType": "mig3s24",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers1.otf",
+          "size": 280,
+          "x": 1866,
+          "y": 3160,
+          "orientation": 0,
+          "fillColor": "{1,choice,0#e7e7e7|1#961818}"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers1.otf",
+          "size": 280,
+          "x": 1866,
+          "y": 3389,
+          "orientation": 180,
+          "fillColor": "{1,choice,0#e7e7e7|1#961818}"
+        }
+      ],
+      "baseImagePath": "mig3s24_vvs_{1,choice,0#green_black|1#winter}_base.png",
+      "weatherImagePath": "mig3s24_weather.png"
+    }
+  }
+}

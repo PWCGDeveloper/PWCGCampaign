@@ -1,0 +1,186 @@
+{
+  "templates": {
+    "vvs_green_grey": {
+      "templateName": "VVS_GREEN_GREY",
+      "planeType": "spitfiremkixe",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "SERIAL": null
+      },
+      "defs": [
+        {
+          "text": "{1}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "RAF_PW_ATH.otf",
+          "size": 70,
+          "x": 2677,
+          "y": 2730,
+          "orientation": 0,
+          "fillColor": "13120e"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "RAF_PW_ATH.otf",
+          "size": 70,
+          "x": 2677,
+          "y": 2116,
+          "orientation": 180,
+          "fillColor": "13120e"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 420,
+          "x": 1933,
+          "y": 2860,
+          "orientation": 0,
+          "fillColor": "e7e7e7"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 420,
+          "x": 1933,
+          "y": 1992,
+          "orientation": 180,
+          "fillColor": "e7e7e7"
+        }
+      ],
+      "baseImagePath": "spitfiremkixe_vvs_green_grey_base.png",
+      "weatherImagePath": "spitfiremkixe_weather.png"
+    },
+    "raf_late": {
+      "templateName": "RAF_LATE",
+      "planeType": "spitfiremkixe",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "UNIT_ID_CODE": null,
+        "AIRCRAFT_ID_CODE": null,
+        "RANK_FLAG": null,
+        "STRIPES": null,
+        "SERIAL": null,
+        "FLAG_NUM": ""
+      },
+      "defs": [
+        {
+          "text": "{4}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "RAF_PW_ATH.otf",
+          "size": 70,
+          "x": 2677,
+          "y": 2730,
+          "orientation": 0,
+          "fillColor": "13120e"
+        },
+        {
+          "text": "{4}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "RAF_PW_ATH.otf",
+          "size": 70,
+          "x": 2677,
+          "y": 2116,
+          "orientation": 180,
+          "fillColor": "13120e"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 230,
+          "x": 1800,
+          "y": 2818,
+          "orientation": 0,
+          "fillColor": "c6d1b9"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 230,
+          "x": 1800,
+          "y": 2027,
+          "orientation": 180,
+          "fillColor": "c6d1b9"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 230,
+          "x": 2161,
+          "y": 2818,
+          "orientation": 0,
+          "fillColor": "c6d1b9"
+        },
+        {
+          "text": "{1}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "RAF_WW2_851ATH.otf",
+          "size": 230,
+          "x": 2161,
+          "y": 2027,
+          "orientation": 180,
+          "fillColor": "c6d1b9"
+        },
+        {
+          "image": "{2}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "x": 1132,
+          "y": 2621,
+          "width": 96,
+          "height": 56,
+          "orientation": 0
+        },
+        {
+          "image": "{2}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "TOP",
+          "x": 1132,
+          "y": 2223,
+          "width": 96,
+          "height": 56,
+          "orientation": 180
+        },
+        {
+          "text": "{5}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "font": "RAF_PW_ATH.otf",
+          "size": 10,
+          "x": 1152,
+          "y": 2655,
+          "orientation": 0,
+          "fillColor": "00247d"
+        },
+        {
+          "text": "{5}",
+          "horizAlign": "CENTER",
+          "vertAlign": "TOP",
+          "font": "RAF_PW_ATH.otf",
+          "size": 10,
+          "x": 1196,
+          "y": 2189,
+          "orientation": 180,
+          "fillColor": "00247d"
+        }
+      ],
+      "baseImagePath": "spitfiremkixe_raf_late_{3,choice,0#|1#stripes_under_|2#stripes_}base.png",
+      "weatherImagePath": "spitfiremkixe_weather.png"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "templates": {
+    "vvs_green_black": {
+      "templateName": "VVS_GREEN_BLACK",
+      "planeType": "yak1s69",
+      "credit": "Based on Pluton's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "TOP",
+          "font": "VVSNumbers1.otf",
+          "size": 300,
+          "x": 2060,
+          "y": 2036,
+          "orientation": 0,
+          "fillColor": "{1,choice,0#f3f3f3|1#ab3722}"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "TOP",
+          "font": "VVSNumbers1.otf",
+          "size": 300,
+          "x": 2060,
+          "y": 1132,
+          "orientation": 180,
+          "fillColor": "{1,choice,0#f3f3f3|1#ab3722}"
+        }
+      ],
+      "baseImagePath": "yak1s69_vvs_{1,choice,0#green_black|1#winter}_base.png",
+      "weatherImagePath": "yak1s69_weather.png"
+    }
+  }
+}

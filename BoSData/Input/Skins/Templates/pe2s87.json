@@ -1,0 +1,117 @@
+{
+  "templates": {
+    "vvs_green_black": {
+      "templateName": "VVS_GREEN_BLACK",
+      "planeType": "pe2s87",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 200,
+          "x": 2176,
+          "y": 820,
+          "orientation": 0,
+          "fillColor": "{1,choice,0#e7e7e7|1#903d2d}"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 200,
+          "x": 2176,
+          "y": 114,
+          "orientation": 180,
+          "fillColor": "{1,choice,0#e7e7e7|1#903d2d}"
+        }
+      ],
+      "baseImagePath": "pe2s87_vvs_{1,choice,0#green_black|1#winter}_base.png",
+      "weatherImagePath": "pe2s87_weather.png"
+    },
+    "vvs_grey": {
+      "templateName": "VVS_GREY",
+      "planeType": "pe2s87",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 200,
+          "x": 2176,
+          "y": 820,
+          "orientation": 0,
+          "fillColor": "{1,choice,0#e7e7e7|1#903d2d}",
+          "strokeWidth": 4,
+          "strokeColor": "903d2d"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 200,
+          "x": 2176,
+          "y": 114,
+          "orientation": 180,
+          "fillColor": "{1,choice,0#e7e7e7|1#903d2d}",
+          "strokeWidth": 4,
+          "strokeColor": "903d2d"
+        }
+      ],
+      "baseImagePath": "pe2s87_vvs_{1,choice,0#grey|1#winter}_base.png",
+      "weatherImagePath": "pe2s87_weather.png"
+    },
+    "vvs_tricolor": {
+      "templateName": "VVS_TRICOLOR",
+      "planeType": "pe2s87",
+      "credit": "Based on ICDP's 4K template",
+      "parameters": {
+        "AIRCRAFT_ID_CODE": null,
+        "WINTER": null
+      },
+      "defs": [
+        {
+          "text": "{0}",
+          "horizAlign": "LEFT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 200,
+          "x": 2176,
+          "y": 812,
+          "orientation": 0,
+          "fillColor": "{1,choice,0#e7e7e7|1#903d2d}",
+          "strokeWidth": 4,
+          "strokeColor": "903d2d"
+        },
+        {
+          "text": "{0}",
+          "horizAlign": "RIGHT",
+          "vertAlign": "BOTTOM",
+          "font": "VVSNumbers2.otf",
+          "size": 200,
+          "x": 2176,
+          "y": 114,
+          "orientation": 180,
+          "fillColor": "{1,choice,0#e7e7e7|1#903d2d}",
+          "strokeWidth": 4,
+          "strokeColor": "903d2d"
+        }
+      ],
+      "baseImagePath": "pe2s87_vvs_{1,choice,0#tricolor|1#winter}_base.png",
+      "weatherImagePath": "pe2s87_weather.png"
+    }
+  }
+}
