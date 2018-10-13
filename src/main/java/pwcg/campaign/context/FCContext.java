@@ -64,6 +64,11 @@ public class FCContext extends PWCGContextBase implements IPWCGContextManager
             @Override
             public void allocatePlaneIdCode(Campaign campaign, int squadronId, Equipment equipment, EquippedPlane equippedPlane) throws PWCGException {
             }
+
+            @Override
+            public String determineDisplayMarkings(Campaign campaign, EquippedPlane equippedPlane) throws PWCGException {
+                return null;
+            }
         };
     }
 }

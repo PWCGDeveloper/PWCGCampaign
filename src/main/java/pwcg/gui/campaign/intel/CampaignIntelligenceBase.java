@@ -220,7 +220,7 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
         for (int i = 0; i < sortedAircraftOnInventory.size(); ++i)
         {
             EquippedPlane plane = sortedAircraftOnInventory.get(i);
-            intelBuffer.append("    " + plane.getDisplayName() + " (" + plane.getSerialNumber() + ")");
+            intelBuffer.append("    " + plane.getDisplayName() + " (" + plane.getDisplayMarkings() + ")");
             intelBuffer.append(".\n");          
         }
     }

@@ -14,9 +14,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.IPlaneMarkingManager;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
@@ -41,7 +45,7 @@ public class CampaignEquipmentChalkBoard extends ImageResizingPanel
         {
             this.setLayout(new BorderLayout()); 
         	SquadronMember referencePlayer = campaign.findReferencePlayer();
-            JPanel squadronPanel = createEquipmentListPanel(campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId()).getActiveEquippedPlanes());
+            JPanel squadronPanel = createEquipmentListPanel(campaign, campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId()).getActiveEquippedPlanes());
             this.add(squadronPanel, BorderLayout.CENTER);
         }
         catch (Exception e)
@@ -51,9 +55,12 @@ public class CampaignEquipmentChalkBoard extends ImageResizingPanel
         }
     }
 
-    private JPanel createEquipmentListPanel(Map<Integer, EquippedPlane> planesForSquadron) throws PWCGException
+    private JPanel createEquipmentListPanel(Campaign campaign, Map<Integer, EquippedPlane> planesForSquadron) throws PWCGException
     {
         List<EquippedPlane> sortedAircraftOnInventory = PlaneSorter.sortEquippedPlanesByGoodness(new ArrayList<EquippedPlane>(planesForSquadron.values()));
+        IPlaneMarkingManager planeMarkingManager = PWCGContext.getInstance().getPlaneMarkingManager();
+        int generateSkins = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.GenerateSkinsKey);
+        boolean useMarkings = (generateSkins > 0);
 
         Color buttonBG = ColorMap.CHALK_BACKGROUND;
         Color buttonFG = ColorMap.CHALK_FOREGROUND;
@@ -101,7 +108,7 @@ public class CampaignEquipmentChalkBoard extends ImageResizingPanel
         constraints.gridy = 0;
         squadronPanel.add(lMissionHeader, constraints);
 
-        JLabel lVictoryHeader = new JLabel("      ", JLabel.RIGHT);
+        JLabel lVictoryHeader = new JLabel(useMarkings ? "ID Code" : "      ", JLabel.RIGHT);
         lVictoryHeader.setOpaque(false);
         lVictoryHeader.setForeground(buttonFG);
         lVictoryHeader.setFont(font);
@@ -149,14 +156,13 @@ public class CampaignEquipmentChalkBoard extends ImageResizingPanel
             constraints.gridy = i;
             squadronPanel.add(lMissions, constraints);
             
-            
-            lDummy = new JLabel("     ");
-            lDummy.setOpaque(false);
-            lDummy.setForeground(buttonFG);
-            lDummy.setFont(font);               constraints.weightx = 0.15;
-            constraints.gridx = 4;
+            JLabel lIdCode = new JLabel(useMarkings ? planeMarkingManager.determineDisplayMarkings(campaign, plane) : "     ", JLabel.RIGHT);
+            lIdCode.setOpaque(false);
+            lIdCode.setForeground(buttonFG);
+            lIdCode.setFont(font);               constraints.weightx = 0.15;
+            constraints.gridx = 3;
             constraints.gridy = i;
-            squadronPanel.add(lDummy, constraints);
+            squadronPanel.add(lIdCode, constraints);
              
             lDummy = new JLabel("     ");
             lDummy.setOpaque(false);
