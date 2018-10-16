@@ -14,6 +14,7 @@ import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuCover;
 import pwcg.mission.mcu.McuDeactivate;
+import pwcg.mission.mcu.McuForceComplete;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -66,8 +67,8 @@ public class PlayerEscortFlightValidator
 		McuCover cover = playerFlight.getCover();
 	    McuTimer escortedFlightWaypointTimer = playerFlight.getEscortedFlightWaypointTimer();
 
-		McuTimer deactivateCoverTimer = playerFlight.getDeactivateCoverTimer();
-		McuDeactivate deactivateCoverEntity = playerFlight.getDeactivateCoverEntity();
+		McuTimer forceCompleteTimer = playerFlight.getForceCompleteTimer();
+		McuForceComplete forceCompleteEntity = playerFlight.getForceCompleteEntity();
 	    McuTimer egressTimer = playerFlight.getEgressTimer();
 
 		McuWaypoint prevWaypoint = null;
@@ -98,9 +99,9 @@ public class PlayerEscortFlightValidator
 				else if (prevWaypoint.getWpAction().equals(WaypointAction.WP_ACTION_EGRESS))
 				{
 					assert(isNextWaypointLinked);
-					assert(isIndexInTargetList(deactivateCoverTimer.getIndex(), escortedEgressWP.getTargets()));
-					assert(isIndexInTargetList(deactivateCoverEntity.getIndex(), deactivateCoverTimer.getTargets()));
-					assert(isIndexInTargetList(egressTimer.getIndex(), deactivateCoverTimer.getTargets()));
+					assert(isIndexInTargetList(forceCompleteTimer.getIndex(), escortedEgressWP.getTargets()));
+					assert(isIndexInTargetList(forceCompleteEntity.getIndex(), forceCompleteTimer.getTargets()));
+					assert(isIndexInTargetList(egressTimer.getIndex(), forceCompleteTimer.getTargets()));
 					assert(isIndexInTargetList(prevWaypoint.getIndex(), egressTimer.getTargets()));
 				}
 				else

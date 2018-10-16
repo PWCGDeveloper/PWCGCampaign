@@ -18,7 +18,7 @@ import pwcg.mission.flight.FlightPositionHelperPlayerStart;
 import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuCover;
-import pwcg.mission.mcu.McuDeactivate;
+import pwcg.mission.mcu.McuForceComplete;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -34,8 +34,8 @@ public class PlayerEscortFlight extends Flight
 	protected McuCover cover = null;
 	protected McuTimer coverTimer  = null;
 
-	protected McuTimer deactivateCoverTimer = null;
-	protected McuDeactivate deactivateCoverEntity = null;
+	protected McuTimer forceCompleteTimer = null;
+	protected McuForceComplete forceCompleteEntity = null;
 
     protected McuTimer escortedFlightWaypointTimer = null;
     protected McuTimer egressTimer = null;
@@ -64,7 +64,7 @@ public class PlayerEscortFlight extends Flight
 	{
 		createTimers();
 		createCover();
-		createDeactivate();
+		createForceComplete();
 		createActivation();
 
         FlightPositionHelperPlayerStart flightPositionHelperPlayerStart = new FlightPositionHelperPlayerStart(getCampaign(), this);
@@ -143,9 +143,9 @@ public class PlayerEscortFlight extends Flight
 	{
 		List<McuWaypoint> escortedWaypoints = getEscortedFlight().getAllWaypoints();
 		McuWaypoint escortedEgress = WaypointGeneratorBase.findWaypointByType(escortedWaypoints, WaypointType.EGRESS_WAYPOINT.getName());
-		escortedEgress.setTarget(deactivateCoverTimer.getIndex());
+		escortedEgress.setTarget(forceCompleteTimer.getIndex());
 
-		deactivateCoverTimer.setTarget(egressTimer.getIndex());
+		forceCompleteTimer.setTarget(egressTimer.getIndex());
 		egressTimer.setTarget(nextWP.getIndex());
 	}
 
@@ -189,23 +189,23 @@ public class PlayerEscortFlight extends Flight
 		coverTimer.setTarget(cover.getIndex());
 	}
 
-	protected void createDeactivate() throws PWCGException 
+	protected void createForceComplete() throws PWCGException
 	{
 		// Deactivate the cover entity
-		deactivateCoverEntity = new McuDeactivate();
-		deactivateCoverEntity.setName("Escort Cover Deactivate Cover");
-		deactivateCoverEntity.setDesc("Escort Cover Deactivate Cover");
-		deactivateCoverEntity.setOrientation(new Orientation());
-		deactivateCoverEntity.setPosition(getTargetCoords().copy());				
-		deactivateCoverEntity.setTarget(cover.getIndex());
+		forceCompleteEntity = new McuForceComplete();
+		forceCompleteEntity.setName("Escort Cover Force Complete");
+		forceCompleteEntity.setDesc("Escort Cover Force Complete");
+		forceCompleteEntity.setOrientation(new Orientation());
+		forceCompleteEntity.setPosition(getTargetCoords().copy());
+		forceCompleteEntity.setObject(planes.get(0).getEntity().getIndex());
 		
-		deactivateCoverTimer  = new McuTimer();
-		deactivateCoverTimer.setName("Escort Cover Deactivate Cover Timer");
-		deactivateCoverTimer.setDesc("Escort Cover Deactivate Cover Timer");
-		deactivateCoverTimer.setOrientation(new Orientation());
-		deactivateCoverTimer.setPosition(getTargetCoords().copy());				
-		deactivateCoverTimer.setTimer(2);				
-		deactivateCoverTimer.setTarget(deactivateCoverEntity.getIndex());
+		forceCompleteTimer  = new McuTimer();
+		forceCompleteTimer.setName("Escort Cover Force Complete Timer");
+		forceCompleteTimer.setDesc("Escort Cover Force Complete Timer");
+		forceCompleteTimer.setOrientation(new Orientation());
+		forceCompleteTimer.setPosition(getTargetCoords().copy());
+		forceCompleteTimer.setTimer(2);
+		forceCompleteTimer.setTarget(forceCompleteEntity.getIndex());
 	}
 
     protected void createTimers() throws PWCGException 
@@ -256,8 +256,8 @@ public class PlayerEscortFlight extends Flight
 		cover.write(writer);
 		escortedFlightWaypointTimer.write(writer);
 		
-		deactivateCoverTimer.write(writer);
-		deactivateCoverEntity.write(writer);
+		forceCompleteTimer.write(writer);
+		forceCompleteEntity.write(writer);
 		egressTimer.write(writer);
 	}
 
@@ -289,14 +289,14 @@ public class PlayerEscortFlight extends Flight
 		return coverTimer;
 	}
 
-	public McuTimer getDeactivateCoverTimer() 
+	public McuTimer getForceCompleteTimer()
 	{
-		return deactivateCoverTimer;
+		return forceCompleteTimer;
 	}
 
-	public McuDeactivate getDeactivateCoverEntity() 
+	public McuForceComplete getForceCompleteEntity()
 	{
-		return deactivateCoverEntity;
+		return forceCompleteEntity;
 	}
 
 	public McuTimer getEscortedFlightWaypointTimer() 
