@@ -8,4 +8,5 @@ public interface ISquadronNeed
     public int getSquadronId();
     public boolean needsResupply();
     public void noteResupply();
+    public int getNumNeeded();
 }

@@ -1,7 +1,10 @@
 package pwcg.aar.outofmission.phase2.resupply;
 
 import pwcg.aar.data.AARContext;
+import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.IArmedServiceManager;
+import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.core.exception.PWCGException;
 
 public class AARResupplyCoordinator
@@ -34,17 +37,25 @@ public class AARResupplyCoordinator
     
     private void squadronTransfers() throws PWCGException
     {
-        ResupplyNeedBuilder transferNeedBuilder = new ResupplyNeedBuilder(campaign);
-        TransferHandler squadronTransferHandler = new TransferHandler(campaign, transferNeedBuilder);
-        SquadronTransferData squadronTransferData = squadronTransferHandler.determineSquadronMemberTransfers();
-        resupplyData.setSquadronTransferData(squadronTransferData);
+        IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
+        for (ArmedService armedService : serviceManager.getAllArmedServices())
+        {
+            ResupplyNeedBuilder transferNeedBuilder = new ResupplyNeedBuilder(campaign, armedService);
+            TransferHandler squadronTransferHandler = new TransferHandler(campaign, transferNeedBuilder);
+            SquadronTransferData squadronTransferData = squadronTransferHandler.determineSquadronMemberTransfers(armedService);
+            resupplyData.getSquadronTransferData().merge(squadronTransferData);
+        }
     }
-    
+
     private void equipmentResupply() throws PWCGException
     {
-        ResupplyNeedBuilder transferNeedBuilder = new ResupplyNeedBuilder(campaign);
-        EquipmentReplacementHandler equipmentResupplyHandler = new EquipmentReplacementHandler(campaign, transferNeedBuilder);
-        EquipmentResupplyData equipmentResupplyData = equipmentResupplyHandler.determineEquipmentResupply();
-        resupplyData.setEquipmentResupplyData(equipmentResupplyData);
+        IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
+        for (ArmedService armedService : serviceManager.getAllArmedServices())
+        {
+            ResupplyNeedBuilder equipmentNeedBuilder = new ResupplyNeedBuilder(campaign, armedService);
+            EquipmentReplacementHandler equipmentResupplyHandler = new EquipmentReplacementHandler(campaign, equipmentNeedBuilder);
+            EquipmentResupplyData equipmentResupplyData = equipmentResupplyHandler.determineEquipmentResupply(armedService);
+            resupplyData.getEquipmentResupplyData().merge(equipmentResupplyData);
+        }
     }
 }

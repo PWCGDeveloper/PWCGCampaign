@@ -26,9 +26,9 @@ public class EquipmentNeedBuilder
         for (ArmedService armedService : serviceManager.getAllArmedServices())
         {
             SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
-            ServiceResupplyNeed serviceTransferNeed = new ServiceResupplyNeed(campaign, armedService.getServiceId(), squadronNeedFactory);
-            serviceTransferNeed.determineResupplyNeed();
-            serviceTransferNeeds.put(armedService.getServiceId(), serviceTransferNeed);
+            ServiceResupplyNeed serviceResupplyNeed = new ServiceResupplyNeed(campaign, armedService.getServiceId(), squadronNeedFactory);
+            serviceResupplyNeed.determineResupplyNeed();
+            serviceTransferNeeds.put(armedService.getServiceId(), serviceResupplyNeed);
         }
     }
     

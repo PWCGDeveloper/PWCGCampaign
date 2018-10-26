@@ -45,8 +45,8 @@ public class ServiceTransferNeedTest
         boolean jasta12Needs = false;
         while (serviceTransferNeed.hasNeedySquadron())
         {
-            int squadronInNeed = serviceTransferNeed.chooseNeedySquadron();
-            if (squadronInNeed == 501012)
+            ISquadronNeed selectedSquadronNeed = serviceTransferNeed.chooseNeedySquadron();
+            if (selectedSquadronNeed.getSquadronId() == 501012)
             {
                 jasta12Needs = true;
             }

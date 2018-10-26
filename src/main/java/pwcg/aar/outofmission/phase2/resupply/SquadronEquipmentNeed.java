@@ -46,4 +46,14 @@ public class SquadronEquipmentNeed implements ISquadronNeed
         --planesNeeded;
     }
 
+    @Override
+    public int getNumNeeded()
+    {
+        return planesNeeded;
+    }
+
+    public void setPlanesNeeded(int planesNeeded)
+    {
+        this.planesNeeded = planesNeeded;
+    }
 }

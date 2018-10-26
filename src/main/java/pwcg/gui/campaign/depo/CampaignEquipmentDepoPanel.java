@@ -87,6 +87,9 @@ public class CampaignEquipmentDepoPanel extends ImagePanel
         StringBuffer depoStatusBuffer = new StringBuffer("");
         depoStatusBuffer.append("Aircraft Depo Status Report\n");
         depoStatusBuffer.append("Date: " + DateUtils.getDateString(campaign.getDate()) + "\n");
+        
+        EquipmentReplacement aircraftOnInventory = campaign.getEquipmentManager().getEquipmentReplacementsForService(service.getServiceId());
+        depoStatusBuffer.append("Last Replacement Date: " + DateUtils.getDateString(aircraftOnInventory.getLastReplacementDate()) + "\n");
 
         depoStatusBuffer.append(service.getName());          
         depoStatusBuffer.append(" Inventory.\n");

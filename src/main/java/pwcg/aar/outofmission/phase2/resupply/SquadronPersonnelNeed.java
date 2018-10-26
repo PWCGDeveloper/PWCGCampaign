@@ -50,4 +50,10 @@ public class SquadronPersonnelNeed implements ISquadronNeed
     {
         --transfersNeeded;
     }
+
+    @Override
+    public int getNumNeeded()
+    {
+        return transfersNeeded;
+    }
 }

@@ -6,18 +6,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.aar.data.AARPersonnelLosses;
-import pwcg.aar.outofmission.phase2.resupply.SquadronTransferData;
-import pwcg.aar.outofmission.phase2.resupply.TransferHandler;
-import pwcg.aar.outofmission.phase2.resupply.ResupplyNeedBuilder;
+import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
@@ -28,24 +27,59 @@ public class TransferHandlerTest
 {
     private Campaign campaign;
     
-    @Mock private AARPersonnelLosses lossesInMissionData;
+    @Mock private ArmedService armedService;
 
     @Before
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
         campaign = CampaignCache.makeCampaign(CampaignCacheRoF.JASTA_11_PROFILE);
+        Mockito.when(armedService.getServiceId()).thenReturn(50101);
      }
+
+    @Test
+    public void testTransfersInForLostCampaignMembers() throws PWCGException
+    {
+        ResupplyNeedBuilder transferNeedBuilder = new ResupplyNeedBuilder(campaign, armedService);
+        TransferHandler squadronTransferHandler = new TransferHandler(campaign, transferNeedBuilder);
+        
+        deactivateCampaignPersonnel();
+      
+        SquadronTransferData squadronTransferData = squadronTransferHandler.determineSquadronMemberTransfers(armedService);
+        assert (squadronTransferData.getTransferCount() == 3);
+    }
+
+    private void deactivateCampaignPersonnel() throws PWCGException
+    {
+        int numInactivated = 0;
+        SquadronMembers allActiveCampaignMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
+        for (SquadronMember squadronMember : allActiveCampaignMembers.getSquadronMemberList())
+        {
+            Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
+            if (!squadronMember.isPlayer() && squadron.getService() == armedService.getServiceId())
+            {
+                Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 10);
+                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, inactiveDate, null);
+                ++numInactivated;
+            }
+            
+            if (numInactivated == 3)
+            {
+                break;
+            }
+        }
+    }
+    
 
     @Test
     public void testTransfersInForLostSquadronMembers() throws PWCGException
     {
-        ResupplyNeedBuilder transferNeedBuilder = new ResupplyNeedBuilder(campaign);
+        ResupplyNeedBuilder transferNeedBuilder = new ResupplyNeedBuilder(campaign, armedService);
         TransferHandler squadronTransferHandler = new TransferHandler(campaign, transferNeedBuilder);
         
         deactivateSquadronPersonnel();
       
-        SquadronTransferData squadronTransferData = squadronTransferHandler.determineSquadronMemberTransfers();
+        SquadronTransferData squadronTransferData = squadronTransferHandler.determineSquadronMemberTransfers(armedService);
         assert (squadronTransferData.getTransferCount() == 3);
     }
 
@@ -55,11 +89,11 @@ public class TransferHandlerTest
         SquadronMembers allActiveCampaignMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
         for (SquadronMember squadronMember : allActiveCampaignMembers.getSquadronMemberList())
         {
-            if (!squadronMember.isPlayer())
+            Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
+            if (!squadronMember.isPlayer() && squadron.getSquadronId() == squadronMember.getSquadronId())
             {
-                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
-                Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 9);
-                squadronMember.setInactiveDate(inactiveDate);
+                Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 10);
+                squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, inactiveDate, null);
                 ++numInactivated;
             }
             

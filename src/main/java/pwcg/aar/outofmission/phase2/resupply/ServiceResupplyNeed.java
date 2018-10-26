@@ -1,21 +1,18 @@
 package pwcg.aar.outofmission.phase2.resupply;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.RandomNumberGenerator;
 
 public class ServiceResupplyNeed
 {
     private Campaign campaign;
     private int serviceId;
     private SquadronNeedFactory squadronNeedFactory;
-    private Map<Integer, ISquadronNeed> squadronNeeds = new HashMap<>();
+    private Map<Integer, ISquadronNeed> squadronNeeds = new TreeMap<>();
 
     public ServiceResupplyNeed (Campaign campaign, int serviceId, SquadronNeedFactory squadronNeedFactory)
     {
@@ -33,9 +30,11 @@ public class ServiceResupplyNeed
             {
                 ISquadronNeed squadronResupplyNeed = squadronNeedFactory.buildSquadronNeed(campaign, squadronPersonnel.getSquadron());
                 squadronResupplyNeed.determineResupplyNeeded();
+                
                 if (squadronResupplyNeed.needsResupply())
                 {
                     squadronNeeds.put(squadronResupplyNeed.getSquadronId(), squadronResupplyNeed);
+                    System.out.println("Squadron " + squadronResupplyNeed.getSquadronId() + " needs " + squadronResupplyNeed.getNumNeeded());
                 }
             }
         }
@@ -50,29 +49,23 @@ public class ServiceResupplyNeed
         return true;
     }
 
-    public int chooseNeedySquadron() throws PWCGException
-    {
-        if (squadronNeeds.isEmpty())
-        {
-            throw new PWCGException("No needy squadron to select");
-        }
-        
-        List<Integer> squadronKeys = new ArrayList<>(squadronNeeds.keySet());
-        int index = RandomNumberGenerator.getRandom(squadronKeys.size());
-        int squadronKey = squadronKeys.get(index);
-        
-        ISquadronNeed squadronForReplacement = squadronNeeds.get(squadronKey);
-        squadronForReplacement.noteResupply();
-        if (!squadronForReplacement.needsResupply())
-        {
-            removeNeedySquadron(squadronKey);
-        }
-        
-        return squadronForReplacement.getSquadronId();
+    public ISquadronNeed chooseNeedySquadron() throws PWCGException
+    {        
+        ResupplySquadronChooser resupplySquadronChooser = new ResupplySquadronChooser(campaign, squadronNeeds);
+        return resupplySquadronChooser.getNeedySquadron();
     }
 
-    public void removeNeedySquadron(int needySquadronId)
+    public void removeNeedySquadron(ISquadronNeed squadronNeed)
     {
-        squadronNeeds.remove(needySquadronId);
+        squadronNeeds.remove(squadronNeed.getSquadronId());
+    }
+
+    public void noteResupply(ISquadronNeed squadronNeed)
+    {
+        squadronNeed.noteResupply();
+        if (!squadronNeed.needsResupply())
+        {
+            removeNeedySquadron(squadronNeed);
+        }
     }
 }

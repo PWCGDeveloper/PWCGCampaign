@@ -3,8 +3,6 @@ package pwcg.aar.outofmission.phase2.resupply;
 import pwcg.aar.outofmission.phase2.resupply.SquadronNeedFactory.SquadronNeedType;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IArmedServiceManager;
-import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -23,18 +21,11 @@ public class TransferHandler
         this.transferNeedBuilder = transferNeedBuilder;
     }
     
-    public SquadronTransferData determineSquadronMemberTransfers() throws PWCGException
+    public SquadronTransferData determineSquadronMemberTransfers(ArmedService armedService) throws PWCGException
     {
-        transferNeedBuilder.initialize(SquadronNeedType.PERSONNEL);
-        
-        IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
-        for (ArmedService armedService : serviceManager.getAllArmedServices())
-        {
-            ServiceResupplyNeed serviceTransferNeed = transferNeedBuilder.getServiceTransferNeed(armedService.getServiceId());
-            PersonnelReplacementsService serviceReplacements =  campaign.getPersonnelManager().getPersonnelReplacementsService(armedService.getServiceId());
-            replaceForService(serviceTransferNeed, serviceReplacements);
-        }
-        
+        ServiceResupplyNeed serviceTransferNeed = transferNeedBuilder.determineNeedForService(SquadronNeedType.PERSONNEL);
+        PersonnelReplacementsService serviceReplacements =  campaign.getPersonnelManager().getPersonnelReplacementsService(armedService.getServiceId());
+        replaceForService(serviceTransferNeed, serviceReplacements);
         return squadronTransferData;
     }
 
@@ -42,12 +33,13 @@ public class TransferHandler
     {
         while (serviceTransferNeed.hasNeedySquadron())
         {
-            int needySquadronId = serviceTransferNeed.chooseNeedySquadron();
+            ISquadronNeed selectedSquadronNeed = serviceTransferNeed.chooseNeedySquadron();
             if (serviceReplacements.hasReplacements())
             {
                 SquadronMember replacement = serviceReplacements.useReplacement();        
-                TransferRecord transferRecord = new TransferRecord(replacement, Squadron.REPLACEMENT, needySquadronId);
+                TransferRecord transferRecord = new TransferRecord(replacement, Squadron.REPLACEMENT, selectedSquadronNeed.getSquadronId());
                 squadronTransferData.addTransferRecord(transferRecord);
+                serviceTransferNeed.noteResupply(selectedSquadronNeed);
             }
             else
             {
