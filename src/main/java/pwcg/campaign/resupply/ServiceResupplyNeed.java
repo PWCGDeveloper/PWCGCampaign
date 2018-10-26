@@ -1,4 +1,4 @@
-package pwcg.aar.outofmission.phase2.resupply;
+package pwcg.campaign.resupply;
 
 import java.util.Map;
 import java.util.TreeMap;

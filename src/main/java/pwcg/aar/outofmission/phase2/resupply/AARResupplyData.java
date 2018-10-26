@@ -1,5 +1,8 @@
 package pwcg.aar.outofmission.phase2.resupply;
 
+import pwcg.campaign.resupply.equipment.EquipmentResupplyData;
+import pwcg.campaign.resupply.personnel.SquadronTransferData;
+
 public class AARResupplyData
 {
     private SquadronTransferData acesTransferred = new SquadronTransferData();

@@ -1,10 +1,16 @@
-package pwcg.campaign.plane;
+package pwcg.campaign.resupply;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.plane.Equipment;
+import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.PlaneArchType;
+import pwcg.campaign.plane.PlaneEquipmentFactory;
+import pwcg.campaign.plane.PlaneType;
+import pwcg.campaign.resupply.depo.EquipmentWeightCalculator;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 

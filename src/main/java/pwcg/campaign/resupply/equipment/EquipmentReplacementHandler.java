@@ -1,13 +1,16 @@
-package pwcg.aar.outofmission.phase2.resupply;
+package pwcg.campaign.resupply.equipment;
 
 import java.util.List;
 
-import pwcg.aar.outofmission.phase2.resupply.SquadronNeedFactory.SquadronNeedType;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.plane.EquipmentReplacement;
 import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.resupply.ISquadronNeed;
+import pwcg.campaign.resupply.ResupplyNeedBuilder;
+import pwcg.campaign.resupply.ServiceResupplyNeed;
+import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
+import pwcg.campaign.resupply.depo.EquipmentReplacement;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
@@ -43,21 +46,13 @@ public class EquipmentReplacementHandler
             {
                 break;
             }
-            
-            System.out.println("Squadron chosen for need: " + selectedSquadronNeed.getSquadronId());
-            
+
             Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(selectedSquadronNeed.getSquadronId());
             List<String> activeArchTypes = squadron.getActiveArchTypes(campaign.getDate());
-
-            for (String archType: activeArchTypes)
-            {
-                System.out.println("Archtypes for squadron: " + archType);
-            }
             
             EquippedPlane replacement = serviceAvailableReplacements.getEquipment().removeBestEquippedPlaneForArchType(activeArchTypes);        
             if (replacement != null)
             {
-                System.out.println("Removed from depo: " + replacement.getDisplayName() + " " + replacement.getSerialNumber() + " for " + selectedSquadronNeed.getSquadronId());
                 EquipmentResupplyRecord equipmentResupplyRecord = new EquipmentResupplyRecord(replacement, selectedSquadronNeed.getSquadronId());
                 equipmentResupplyData.addEquipmentResupplyRecord(equipmentResupplyRecord);
                 serviceResupplyNeed.noteResupply(selectedSquadronNeed);

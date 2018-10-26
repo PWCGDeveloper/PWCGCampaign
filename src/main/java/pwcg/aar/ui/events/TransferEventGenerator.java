@@ -3,11 +3,11 @@ package pwcg.aar.ui.events;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.SquadronManager;
+import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;

@@ -1,7 +1,8 @@
-package pwcg.aar.outofmission.phase2.resupply;
+package pwcg.campaign.resupply.equipment;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.Equipment;
+import pwcg.campaign.resupply.ISquadronNeed;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 

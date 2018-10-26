@@ -1,4 +1,4 @@
-package pwcg.aar.outofmission.phase2.resupply;
+package pwcg.campaign.resupply.equipment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class EquipmentResupplyData
         planesResupplied.addAll(source.planesResupplied);
     }
 
-    public List<EquipmentResupplyRecord> getEquipmentresuppliedToSquadron(int squadronId)
+    public List<EquipmentResupplyRecord> getEquipmentResuppliedToSquadron(int squadronId)
     {
         List<EquipmentResupplyRecord> squadronMembersTransferredIn = new ArrayList<>();
         for (EquipmentResupplyRecord squadronEquipmentResupplyRecord : planesResupplied)

@@ -10,7 +10,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.plane.EquipmentReplacement;
+import pwcg.campaign.resupply.depo.EquipmentDepoReplenisher;
+import pwcg.campaign.resupply.depo.EquipmentReplacement;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBoS;
@@ -31,8 +32,8 @@ public class CampaignEquipmentReplacementUpdaterTest
     public void testUpdateWithReplacementsGermans() throws PWCGException 
     {
         Map<Integer, Integer> replacementsAvailableBefore = determineReplacementsAvailableByService();
-        CampaignEquipmentReplacementUpdater equipmentReplacementUpdater  = new CampaignEquipmentReplacementUpdater(campaign);
-        equipmentReplacementUpdater.updateCampaignEquipmentReplacements();
+        EquipmentDepoReplenisher equipmentReplacementUpdater  = new EquipmentDepoReplenisher(campaign);
+        equipmentReplacementUpdater.changeSquadronArchType();
         Map<Integer, Integer> replacementsAvailableAfter = determineReplacementsAvailableByService();
         validateReplacements(replacementsAvailableBefore, replacementsAvailableAfter);
     }

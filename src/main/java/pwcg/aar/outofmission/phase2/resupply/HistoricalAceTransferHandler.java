@@ -6,6 +6,8 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.resupply.personnel.SquadronTransferData;
+import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.campaign.squadmember.SquadronMemberStatus;

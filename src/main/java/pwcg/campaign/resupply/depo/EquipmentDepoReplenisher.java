@@ -1,4 +1,4 @@
-package pwcg.aar.campaign.update;
+package pwcg.campaign.resupply.depo;
 
 import java.util.List;
 
@@ -7,24 +7,22 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.plane.EquipmentReplacement;
-import pwcg.campaign.plane.EquipmentWeightCalculator;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
-public class CampaignEquipmentReplacementUpdater 
+public class EquipmentDepoReplenisher
 {
 	private Campaign campaign;
 	
-	public CampaignEquipmentReplacementUpdater(Campaign campaign)
+	public EquipmentDepoReplenisher(Campaign campaign)
 	{
 		this.campaign = campaign;
 	}
 	
-	public void updateCampaignEquipmentReplacements () throws PWCGException
+	public void changeSquadronArchType () throws PWCGException
 	{
 		for (Integer serviceId : campaign.getEquipmentManager().getEquipmentReplacements().keySet())
 		{
@@ -71,7 +69,7 @@ public class CampaignEquipmentReplacementUpdater
 
     private PlaneArchType getArchTypeForReplacement(ArmedService service, List<Squadron> squadronsForService) throws PWCGException
     {        
-        EquipmentArchtypeFinder equipmentArchtypeReplacementFinder = new EquipmentArchtypeFinder(campaign);
+        EquipmentArchTypeFinder equipmentArchtypeReplacementFinder = new EquipmentArchTypeFinder(campaign);
         String archTypeForReplacementPlane = equipmentArchtypeReplacementFinder.getArchTypeForReplacementPlane(squadronsForService);
         PlaneArchType planeArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneArchType(archTypeForReplacementPlane);
         return planeArchType;

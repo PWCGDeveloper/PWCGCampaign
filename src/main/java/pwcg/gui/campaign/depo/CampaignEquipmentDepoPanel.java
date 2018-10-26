@@ -11,10 +11,10 @@ import javax.swing.JTextArea;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.EquipmentReplacement;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.plane.Role;
+import pwcg.campaign.resupply.depo.EquipmentReplacement;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;

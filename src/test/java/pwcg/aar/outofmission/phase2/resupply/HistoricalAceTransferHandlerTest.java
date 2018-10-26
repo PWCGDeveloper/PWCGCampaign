@@ -9,12 +9,12 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.outofmission.phase2.resupply.HistoricalAceTransferHandler;
-import pwcg.aar.outofmission.phase2.resupply.SquadronTransferData;
-import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.resupply.personnel.SquadronTransferData;
+import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 

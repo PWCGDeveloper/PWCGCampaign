@@ -1,11 +1,11 @@
 package pwcg.aar.campaign.update;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.outofmission.phase2.resupply.EquipmentResupplyRecord;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
+import pwcg.campaign.resupply.equipment.EquipmentResupplyRecord;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignEquipmentUpdater 

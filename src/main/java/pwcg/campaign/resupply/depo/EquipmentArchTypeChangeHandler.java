@@ -1,4 +1,4 @@
-package pwcg.aar.campaign.update;
+package pwcg.campaign.resupply.depo;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,13 +17,13 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
-public class CampaignEquipmentArchtypeChangeHandler 
+public class EquipmentArchTypeChangeHandler 
 {
     private Campaign campaign;
     private Date newDate;
     private Set<Squadron> squadronsToEquip = new HashSet<>();
 	
-	public CampaignEquipmentArchtypeChangeHandler(Campaign campaign, Date newDate)
+	public EquipmentArchTypeChangeHandler(Campaign campaign, Date newDate)
 	{
         this.campaign = campaign;
         this.newDate = newDate;

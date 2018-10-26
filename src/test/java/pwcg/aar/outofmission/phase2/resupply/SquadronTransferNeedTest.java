@@ -16,6 +16,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.resupply.personnel.SquadronPersonnelNeed;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;

@@ -4,6 +4,8 @@ import java.util.Date;
 
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.resupply.depo.EquipmentArchTypeChangeHandler;
+import pwcg.campaign.resupply.depo.EquipmentDepoReplenisher;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignUpdater 
@@ -37,10 +39,10 @@ public class CampaignUpdater
         CampaignPersonnelReplacementUpdater personnelReplacementUpdater = new CampaignPersonnelReplacementUpdater(campaign, aarContext);
         personnelReplacementUpdater.updateCampaignPersonnelReplacements();
         
-        CampaignEquipmentReplacementUpdater equipmentReplacementUpdater = new CampaignEquipmentReplacementUpdater(campaign);
-        equipmentReplacementUpdater.updateCampaignEquipmentReplacements();
+        EquipmentDepoReplenisher equipmentReplacementUpdater = new EquipmentDepoReplenisher(campaign);
+        equipmentReplacementUpdater.changeSquadronArchType();
         
-        CampaignEquipmentArchtypeChangeHandler archtypeChangeHandler = new CampaignEquipmentArchtypeChangeHandler(campaign, aarContext.getNewDate());
+        EquipmentArchTypeChangeHandler archtypeChangeHandler = new EquipmentArchTypeChangeHandler(campaign, aarContext.getNewDate());
         archtypeChangeHandler.updateCampaignEquipmentForArchtypeChange();
         
         finishCampaignUpdates(aarContext.getCampaignUpdateData().getNewDate());

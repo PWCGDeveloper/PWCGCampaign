@@ -1,4 +1,4 @@
-package pwcg.aar.campaign.update;
+package pwcg.campaign.resupply.depo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,12 +11,12 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
-public class EquipmentArchtypeFinder
+public class EquipmentArchTypeFinder
 {
     private Campaign campaign;
     private Map<String, Integer> aircraftUsageByArchType = new HashMap<>();
 
-    public EquipmentArchtypeFinder (Campaign campaign)
+    public EquipmentArchTypeFinder (Campaign campaign)
     {
         this.campaign = campaign;
     }

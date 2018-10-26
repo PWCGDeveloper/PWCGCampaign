@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.plane.EquipmentReplacement;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
+import pwcg.campaign.resupply.depo.EquipmentReplacement;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignEquipmentManager

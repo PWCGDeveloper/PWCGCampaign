@@ -1,10 +1,10 @@
 package pwcg.aar.tabulate.debrief;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.aar.ui.display.model.AARAceLeavePanelData;
 import pwcg.aar.ui.events.model.AceLeaveEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 

@@ -1,4 +1,4 @@
-package pwcg.aar.outofmission.phase2.resupply;
+package pwcg.campaign.resupply;
 
 import pwcg.core.exception.PWCGException;
 

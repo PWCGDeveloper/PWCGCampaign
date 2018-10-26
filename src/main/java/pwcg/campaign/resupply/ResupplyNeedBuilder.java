@@ -1,8 +1,8 @@
-package pwcg.aar.outofmission.phase2.resupply;
+package pwcg.campaign.resupply;
 
-import pwcg.aar.outofmission.phase2.resupply.SquadronNeedFactory.SquadronNeedType;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
 import pwcg.core.exception.PWCGException;
 
 public class ResupplyNeedBuilder

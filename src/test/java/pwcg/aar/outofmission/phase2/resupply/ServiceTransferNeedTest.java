@@ -7,10 +7,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.aar.outofmission.phase2.resupply.SquadronNeedFactory.SquadronNeedType;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.personnel.SquadronMemberFilter;
+import pwcg.campaign.resupply.ISquadronNeed;
+import pwcg.campaign.resupply.ServiceResupplyNeed;
+import pwcg.campaign.resupply.SquadronNeedFactory;
+import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.SquadronMembers;

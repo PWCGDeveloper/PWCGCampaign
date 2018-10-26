@@ -1,6 +1,8 @@
-package pwcg.campaign.plane;
+package pwcg.campaign.resupply.depo;
 
 import java.util.Date;
+
+import pwcg.campaign.plane.Equipment;
 
 public class EquipmentReplacement
 {

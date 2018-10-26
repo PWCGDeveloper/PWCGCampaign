@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.plane.EquipmentReplacement;
+import pwcg.campaign.resupply.depo.EquipmentReplacement;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 

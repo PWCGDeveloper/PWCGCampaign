@@ -3,8 +3,8 @@ package pwcg.campaign;
 import pwcg.campaign.personnel.InitialReplacementStaffer;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.plane.EquipmentReplacement;
-import pwcg.campaign.plane.InitialReplacementEquipper;
+import pwcg.campaign.resupply.depo.EquipmentReplacement;
+import pwcg.campaign.resupply.depo.EquipmentDepo;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
@@ -40,7 +40,7 @@ public class CampaignEquipmentGenerator
 
     private void createEquipmentReplacements() throws PWCGException
     {
-        InitialReplacementEquipper replacementEquipper = new InitialReplacementEquipper(campaign, armedService);
+        EquipmentDepo replacementEquipper = new EquipmentDepo(campaign, armedService);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
         EquipmentReplacement equipmentReplacement = new EquipmentReplacement();
         equipmentReplacement.setEquipmentPoints(armedService.getDailyEquipmentReplacementRate() * 2);

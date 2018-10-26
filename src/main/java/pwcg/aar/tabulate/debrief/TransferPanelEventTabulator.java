@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.aar.ui.display.model.TransferPanelData;
 import pwcg.aar.ui.events.TransferEventGenerator;
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.core.exception.PWCGException;
 
 public class TransferPanelEventTabulator

@@ -1,4 +1,4 @@
-package pwcg.aar.outofmission.phase2.resupply;
+package pwcg.campaign.resupply.equipment;
 
 import pwcg.campaign.plane.EquippedPlane;
 

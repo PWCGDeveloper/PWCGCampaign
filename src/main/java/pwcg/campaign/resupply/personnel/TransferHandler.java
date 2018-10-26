@@ -1,9 +1,12 @@
-package pwcg.aar.outofmission.phase2.resupply;
+package pwcg.campaign.resupply.personnel;
 
-import pwcg.aar.outofmission.phase2.resupply.SquadronNeedFactory.SquadronNeedType;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
+import pwcg.campaign.resupply.ISquadronNeed;
+import pwcg.campaign.resupply.ResupplyNeedBuilder;
+import pwcg.campaign.resupply.ServiceResupplyNeed;
+import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;

@@ -5,6 +5,11 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
+import pwcg.campaign.resupply.ResupplyNeedBuilder;
+import pwcg.campaign.resupply.equipment.EquipmentReplacementHandler;
+import pwcg.campaign.resupply.equipment.EquipmentResupplyData;
+import pwcg.campaign.resupply.personnel.SquadronTransferData;
+import pwcg.campaign.resupply.personnel.TransferHandler;
 import pwcg.core.exception.PWCGException;
 
 public class AARResupplyCoordinator

@@ -1,6 +1,8 @@
-package pwcg.aar.outofmission.phase2.resupply;
+package pwcg.campaign.resupply;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.resupply.equipment.SquadronEquipmentNeed;
+import pwcg.campaign.resupply.personnel.SquadronPersonnelNeed;
 import pwcg.campaign.squadron.Squadron;
 
 public class SquadronNeedFactory

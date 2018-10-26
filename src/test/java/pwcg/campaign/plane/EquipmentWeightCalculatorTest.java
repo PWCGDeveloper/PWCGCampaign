@@ -13,6 +13,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.resupply.depo.EquipmentWeightCalculator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 

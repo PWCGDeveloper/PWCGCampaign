@@ -7,8 +7,8 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.plane.EquipmentWeightCalculator;
-import pwcg.campaign.plane.InitialSquadronEquipper;
+import pwcg.campaign.resupply.InitialSquadronEquipper;
+import pwcg.campaign.resupply.depo.EquipmentWeightCalculator;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 

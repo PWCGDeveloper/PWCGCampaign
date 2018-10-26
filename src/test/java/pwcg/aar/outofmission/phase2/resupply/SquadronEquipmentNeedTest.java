@@ -18,6 +18,7 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.resupply.equipment.SquadronEquipmentNeed;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;

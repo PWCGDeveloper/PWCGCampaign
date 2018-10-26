@@ -15,6 +15,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
+import pwcg.campaign.resupply.depo.EquipmentArchTypeFinder;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -39,7 +40,7 @@ public class EquipmentArchtypeFinderTest
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
-        EquipmentArchtypeFinder equipmentArchtypeFinder = new EquipmentArchtypeFinder(campaign);
+        EquipmentArchTypeFinder equipmentArchtypeFinder = new EquipmentArchTypeFinder(campaign);
         Map<String, Integer> aircraftUsageByArchType = equipmentArchtypeFinder.getAircraftUsageByArchType();
 
         String archTypeName =equipmentArchtypeFinder.getArchTypeForReplacementPlane(squadronsForService);
@@ -70,7 +71,7 @@ public class EquipmentArchtypeFinderTest
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
-        EquipmentArchtypeFinder equipmentArchtypeFinder = new EquipmentArchtypeFinder(campaign);
+        EquipmentArchTypeFinder equipmentArchtypeFinder = new EquipmentArchTypeFinder(campaign);
         Map<String, Integer> aircraftUsageByArchType = equipmentArchtypeFinder.getAircraftUsageByArchType();
 
         String archTypeName =equipmentArchtypeFinder.getArchTypeForReplacementPlane(squadronsForService);
@@ -99,7 +100,7 @@ public class EquipmentArchtypeFinderTest
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
-        EquipmentArchtypeFinder equipmentArchtypeFinder = new EquipmentArchtypeFinder(campaign);
+        EquipmentArchTypeFinder equipmentArchtypeFinder = new EquipmentArchTypeFinder(campaign);
         Map<String, Integer> aircraftUsageByArchType = equipmentArchtypeFinder.getAircraftUsageByArchType();
 
         String archTypeName =equipmentArchtypeFinder.getArchTypeForReplacementPlane(squadronsForService);

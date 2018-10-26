@@ -11,9 +11,9 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.AARTestSetup;
-import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.aar.tabulate.debrief.AceLeavePanelEventTabulator;
 import pwcg.aar.ui.display.model.AARAceLeavePanelData;
+import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;

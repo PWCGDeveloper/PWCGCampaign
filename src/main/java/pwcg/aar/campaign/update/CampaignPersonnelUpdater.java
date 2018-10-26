@@ -4,9 +4,9 @@ import java.util.Date;
 
 import pwcg.aar.campaigndate.WoundRecovery;
 import pwcg.aar.data.AARContext;
-import pwcg.aar.outofmission.phase2.resupply.TransferRecord;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;

@@ -1,10 +1,11 @@
-package pwcg.campaign.plane;
+package pwcg.campaign.resupply.depo;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;

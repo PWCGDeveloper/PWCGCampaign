@@ -1,22 +1,25 @@
-package pwcg.campaign.plane;
+package pwcg.campaign.resupply.depo;
 
 import java.util.List;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.plane.Equipment;
+import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.PlaneEquipmentFactory;
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
-public class InitialReplacementEquipper
+public class EquipmentDepo
 {
-    
     private Campaign campaign;
     private ArmedService service;
     private Equipment equipment = new Equipment();
     private PlaneEquipmentFactory equipmentFactory;
 
-    public InitialReplacementEquipper(Campaign campaign, ArmedService service) 
+    public EquipmentDepo(Campaign campaign, ArmedService service) 
     {
         this.campaign = campaign;
         this.service = service;
