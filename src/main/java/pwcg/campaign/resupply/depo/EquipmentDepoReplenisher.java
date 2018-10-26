@@ -22,7 +22,7 @@ public class EquipmentDepoReplenisher
 		this.campaign = campaign;
 	}
 	
-	public void changeSquadronArchType () throws PWCGException
+	public void replenishDeposForServices () throws PWCGException
 	{
 		for (Integer serviceId : campaign.getEquipmentManager().getEquipmentReplacements().keySet())
 		{
@@ -37,8 +37,8 @@ public class EquipmentDepoReplenisher
         if (squadronsForService.size() > 0)
         {
             PlaneEquipmentFactory equipmentFactory = new PlaneEquipmentFactory(campaign);
-            EquipmentReplacement replaceMentEquipmentForService = campaign.getEquipmentManager().getEquipmentReplacementsForService(service.getServiceId());
-            addReplacementPlanes(service, squadronsForService, equipmentFactory, replaceMentEquipmentForService);
+            EquipmentDepo depo = campaign.getEquipmentManager().getEquipmentReplacementsForService(service.getServiceId());
+            addReplacementPlanes(service, squadronsForService, equipmentFactory, depo);
         }
         else
         {
@@ -46,25 +46,32 @@ public class EquipmentDepoReplenisher
         }
     }
 
+    private List<Squadron> getSquadronsForService(ArmedService service) throws PWCGException 
+    {
+        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        return squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
+    }
+
     private void addReplacementPlanes(
             ArmedService service, 
             List<Squadron> squadronsForService, 
             PlaneEquipmentFactory equipmentFactory,
-            EquipmentReplacement replaceMentEquipmentForService) throws PWCGException
+            EquipmentDepo depo) throws PWCGException
     {
-        int numPlanes = replaceMentEquipmentForService.getEquipmentPoints() / 10;
+        int numPlanes = depo.getEquipmentPoints() / 10;
         for (int i = 0; i < numPlanes; ++i)
         {
             PlaneArchType planeArchType = getArchTypeForReplacement(service, squadronsForService);
             String planeTypeName = getTypeForReplacement(planeArchType);
             EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepo(planeTypeName);
-            replaceMentEquipmentForService.getEquipment().addEquippedPlane(equippedPlane);
+            depo.getEquipment().addEquippedPlane(equippedPlane);
+            depo.setLastReplacementDate(campaign.getDate());
         }
         
         int newPoints = service.getDailyEquipmentReplacementRate();
-        int remainingPoints = replaceMentEquipmentForService.getEquipmentPoints() % 10;
+        int remainingPoints = depo.getEquipmentPoints() % 10;
         int updatedEquipmentPoints = newPoints + remainingPoints;
-        replaceMentEquipmentForService.setEquipmentPoints(updatedEquipmentPoints);
+        depo.setEquipmentPoints(updatedEquipmentPoints);
     }
 
     private PlaneArchType getArchTypeForReplacement(ArmedService service, List<Squadron> squadronsForService) throws PWCGException
@@ -81,11 +88,5 @@ public class EquipmentDepoReplenisher
         equipmentWeightCalculator.determinePlaneWeightsForPlanes(planeArchType.getActiveMemberPlaneTypes(campaign.getDate()));
         String planeTypeName = equipmentWeightCalculator.getPlaneTypeFromWeight();
         return planeTypeName;
-    }
-
-    private List<Squadron> getSquadronsForService(ArmedService service) throws PWCGException 
-    {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
-        return squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
     }
 }

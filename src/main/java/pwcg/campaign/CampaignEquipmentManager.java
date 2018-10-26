@@ -7,22 +7,22 @@ import java.util.Map;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
-import pwcg.campaign.resupply.depo.EquipmentReplacement;
+import pwcg.campaign.resupply.depo.EquipmentDepo;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignEquipmentManager
 {
     private Map<Integer, Equipment> equipmentAllSquadrons = new HashMap<>();
-    private Map<Integer, EquipmentReplacement> equipmentReplacements = new HashMap<>();
+    private Map<Integer, EquipmentDepo> equipmentDepo = new HashMap<>();
 
     public Equipment getEquipmentForSquadron(Integer squadronId)
     {
         return equipmentAllSquadrons.get(squadronId);
     }
 
-    public EquipmentReplacement getEquipmentReplacementsForService(Integer serviceId)
+    public EquipmentDepo getEquipmentReplacementsForService(Integer serviceId)
     {
-        return equipmentReplacements.get(serviceId);
+        return equipmentDepo.get(serviceId);
     }
 
     public void addEquipmentForSquadron(Integer squadronId, Equipment equipmentForSquadron)
@@ -30,9 +30,9 @@ public class CampaignEquipmentManager
         equipmentAllSquadrons.put(squadronId, equipmentForSquadron);
     }
 
-    public void addEquipmentReplacementsForService(Integer serviceId, EquipmentReplacement replacementEquipmentForService)
+    public void addEquipmentDepoForService(Integer serviceId, EquipmentDepo replacementEquipmentForService)
     {
-        equipmentReplacements.put(serviceId, replacementEquipmentForService);
+        equipmentDepo.put(serviceId, replacementEquipmentForService);
     }
 
     public Map<Integer, Equipment> getEquipmentAllSquadrons()
@@ -40,9 +40,9 @@ public class CampaignEquipmentManager
         return equipmentAllSquadrons;
     }
 
-    public Map<Integer, EquipmentReplacement> getEquipmentReplacements()
+    public Map<Integer, EquipmentDepo> getEquipmentReplacements()
     {
-        return equipmentReplacements;
+        return equipmentDepo;
     }
 
     public EquippedPlane getPlaneFromAnySquadron(Integer serialNumber) throws PWCGException
@@ -91,7 +91,7 @@ public class CampaignEquipmentManager
     public int getReplacementCount() throws PWCGException
     {
         int replacementCount = 0;
-        for (EquipmentReplacement replacementService : equipmentReplacements.values())
+        for (EquipmentDepo replacementService : equipmentDepo.values())
         {
             replacementCount += replacementService.getEquipment().getEquippedPlanes().size();
         }

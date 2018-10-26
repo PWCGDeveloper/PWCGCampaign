@@ -14,7 +14,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.plane.Role;
-import pwcg.campaign.resupply.depo.EquipmentReplacement;
+import pwcg.campaign.resupply.depo.EquipmentDepo;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
@@ -88,7 +88,7 @@ public class CampaignEquipmentDepoPanel extends ImagePanel
         depoStatusBuffer.append("Aircraft Depo Status Report\n");
         depoStatusBuffer.append("Date: " + DateUtils.getDateString(campaign.getDate()) + "\n");
         
-        EquipmentReplacement aircraftOnInventory = campaign.getEquipmentManager().getEquipmentReplacementsForService(service.getServiceId());
+        EquipmentDepo aircraftOnInventory = campaign.getEquipmentManager().getEquipmentReplacementsForService(service.getServiceId());
         depoStatusBuffer.append("Last Replacement Date: " + DateUtils.getDateString(aircraftOnInventory.getLastReplacementDate()) + "\n");
 
         depoStatusBuffer.append(service.getName());          
@@ -148,7 +148,7 @@ public class CampaignEquipmentDepoPanel extends ImagePanel
     private List<EquippedPlane> getDepoAircraftForRole(Role role) throws PWCGException
     {
         List<EquippedPlane> depoForRole = new ArrayList<>();
-        EquipmentReplacement aircraftOnInventory = campaign.getEquipmentManager().getEquipmentReplacementsForService(service.getServiceId());
+        EquipmentDepo aircraftOnInventory = campaign.getEquipmentManager().getEquipmentReplacementsForService(service.getServiceId());
         for (EquippedPlane equippedPlane : aircraftOnInventory.getEquipment().getEquippedPlanes().values())
         {
             if (equippedPlane.getRoles().get(0) == role)

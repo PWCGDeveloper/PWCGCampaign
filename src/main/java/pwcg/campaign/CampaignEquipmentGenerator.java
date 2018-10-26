@@ -3,8 +3,8 @@ package pwcg.campaign;
 import pwcg.campaign.personnel.InitialReplacementStaffer;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.resupply.depo.EquipmentReplacement;
 import pwcg.campaign.resupply.depo.EquipmentDepo;
+import pwcg.campaign.resupply.depo.EquipmentDepoInitializer;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
@@ -22,7 +22,7 @@ public class CampaignEquipmentGenerator
     public void createReplacements() throws PWCGException
     {
         createPersonnelReplacements();
-        createEquipmentReplacements();
+        createEquipmentDepo();
     }
 
     private void createPersonnelReplacements() throws PWCGException
@@ -38,14 +38,14 @@ public class CampaignEquipmentGenerator
         campaign.getPersonnelManager().addPersonnelReplacementsService(armedService.getServiceId(), replacementsForService);
     }
 
-    private void createEquipmentReplacements() throws PWCGException
+    private void createEquipmentDepo() throws PWCGException
     {
-        EquipmentDepo replacementEquipper = new EquipmentDepo(campaign, armedService);
-        Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        EquipmentReplacement equipmentReplacement = new EquipmentReplacement();
-        equipmentReplacement.setEquipmentPoints(armedService.getDailyEquipmentReplacementRate() * 2);
-        equipmentReplacement.setLastReplacementDate(campaign.getDate());
-        equipmentReplacement.setEquippment(equipment);
-        campaign.getEquipmentManager().addEquipmentReplacementsForService(armedService.getServiceId(), equipmentReplacement);
+        EquipmentDepoInitializer depoInitializer = new EquipmentDepoInitializer(campaign, armedService);
+        Equipment equipment = depoInitializer.createReplacementPoolForService();
+        EquipmentDepo depo = new EquipmentDepo();
+        depo.setEquipmentPoints(armedService.getDailyEquipmentReplacementRate() * 2);
+        depo.setLastReplacementDate(campaign.getDate());
+        depo.setEquippment(equipment);
+        campaign.getEquipmentManager().addEquipmentDepoForService(armedService.getServiceId(), depo);
     }
 }

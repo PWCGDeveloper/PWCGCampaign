@@ -11,7 +11,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.resupply.depo.EquipmentDepoReplenisher;
-import pwcg.campaign.resupply.depo.EquipmentReplacement;
+import pwcg.campaign.resupply.depo.EquipmentDepo;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBoS;
@@ -33,7 +33,7 @@ public class CampaignEquipmentReplacementUpdaterTest
     {
         Map<Integer, Integer> replacementsAvailableBefore = determineReplacementsAvailableByService();
         EquipmentDepoReplenisher equipmentReplacementUpdater  = new EquipmentDepoReplenisher(campaign);
-        equipmentReplacementUpdater.changeSquadronArchType();
+        equipmentReplacementUpdater.replenishDeposForServices();
         Map<Integer, Integer> replacementsAvailableAfter = determineReplacementsAvailableByService();
         validateReplacements(replacementsAvailableBefore, replacementsAvailableAfter);
     }
@@ -43,7 +43,7 @@ public class CampaignEquipmentReplacementUpdaterTest
         Map<Integer, Integer> replacementsAvailable = new HashMap<>();
         for (Integer serviceId : campaign.getEquipmentManager().getEquipmentReplacements().keySet())
         {
-            EquipmentReplacement replacementEquipmentForService = campaign.getEquipmentManager().getEquipmentReplacementsForService(serviceId);
+            EquipmentDepo replacementEquipmentForService = campaign.getEquipmentManager().getEquipmentReplacementsForService(serviceId);
             replacementsAvailable.put(serviceId, replacementEquipmentForService.getEquipment().getEquippedPlanes().size());
         }
         return replacementsAvailable;

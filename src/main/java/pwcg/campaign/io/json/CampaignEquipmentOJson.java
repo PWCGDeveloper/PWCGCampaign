@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.resupply.depo.EquipmentReplacement;
+import pwcg.campaign.resupply.depo.EquipmentDepo;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 
@@ -50,10 +50,10 @@ public class CampaignEquipmentOJson
     private static void writeReplacements(Campaign campaign) throws PWCGException
     {
         String campaignEquipmentReplacementDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\Equipment\\Replacements\\";
-        JsonWriter<EquipmentReplacement> jsonWriterReplacements = new JsonWriter<>();
+        JsonWriter<EquipmentDepo> jsonWriterReplacements = new JsonWriter<>();
         for (Integer serviceId : campaign.getEquipmentManager().getEquipmentReplacements().keySet())
         {
-            EquipmentReplacement replacementEquipment = campaign.getEquipmentManager().getEquipmentReplacements().get(serviceId);
+            EquipmentDepo replacementEquipment = campaign.getEquipmentManager().getEquipmentReplacements().get(serviceId);
             jsonWriterReplacements.writeAsJson(replacementEquipment, campaignEquipmentReplacementDir, serviceId + ".json");
         }
     }
@@ -85,10 +85,10 @@ public class CampaignEquipmentOJson
         List<File> jsonFiles = fileUtils.getFilesWithFilter(campaignEquipmentReplacementDir, ".json");
         for (File jsonFile : jsonFiles)
         {
-            JsonObjectReader<EquipmentReplacement> jsoReader = new JsonObjectReader<>(EquipmentReplacement.class);
-            EquipmentReplacement replacementEquipemnt = jsoReader.readJsonFile(campaignEquipmentReplacementDir, jsonFile.getName());
+            JsonObjectReader<EquipmentDepo> jsoReader = new JsonObjectReader<>(EquipmentDepo.class);
+            EquipmentDepo replacementEquipemnt = jsoReader.readJsonFile(campaignEquipmentReplacementDir, jsonFile.getName());
             int serviceId = new Integer(FileUtils.stripFileExtension(jsonFile.getName()));
-            campaign.getEquipmentManager().addEquipmentReplacementsForService(serviceId, replacementEquipemnt);
+            campaign.getEquipmentManager().addEquipmentDepoForService(serviceId, replacementEquipemnt);
         }
     }
 }

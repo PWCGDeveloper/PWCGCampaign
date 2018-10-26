@@ -10,7 +10,7 @@ import pwcg.campaign.resupply.ISquadronNeed;
 import pwcg.campaign.resupply.ResupplyNeedBuilder;
 import pwcg.campaign.resupply.ServiceResupplyNeed;
 import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
-import pwcg.campaign.resupply.depo.EquipmentReplacement;
+import pwcg.campaign.resupply.depo.EquipmentDepo;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
@@ -30,14 +30,14 @@ public class EquipmentReplacementHandler
     public EquipmentResupplyData determineEquipmentResupply(ArmedService armedService) throws PWCGException
     {
         ServiceResupplyNeed serviceResupplyNeed = equipmentNeedBuilder.determineNeedForService(SquadronNeedType.EQUIPMENT);
-        EquipmentReplacement serviceAvailableReplacements =  campaign.getEquipmentManager().getEquipmentReplacementsForService(armedService.getServiceId());
+        EquipmentDepo serviceAvailableReplacements =  campaign.getEquipmentManager().getEquipmentReplacementsForService(armedService.getServiceId());
         replaceForService(serviceResupplyNeed, serviceAvailableReplacements);
         
         return equipmentResupplyData;
     }
 
 
-    private void replaceForService(ServiceResupplyNeed serviceResupplyNeed, EquipmentReplacement serviceAvailableReplacements) throws PWCGException
+    private void replaceForService(ServiceResupplyNeed serviceResupplyNeed, EquipmentDepo serviceAvailableReplacements) throws PWCGException
     {
         while (serviceResupplyNeed.hasNeedySquadron())
         {

@@ -30,8 +30,8 @@ public class CampaignUpdater
         CampaignPersonnelUpdater personnelUpdater = new CampaignPersonnelUpdater(campaign, aarContext);
         personnelUpdater.personnelUpdates();
         
-        CampaignEquipmentUpdater equipmentUpdater = new CampaignEquipmentUpdater(campaign, aarContext);
-        equipmentUpdater.equipmentUpdates();
+        CampaignSquadronEquipmentUpdater squadronEquipmentUpdater = new CampaignSquadronEquipmentUpdater(campaign, aarContext);
+        squadronEquipmentUpdater.equipmentUpdatesForSquadrons();
 
         CampaignServiceChangeHandler serviceChangeHandler = new CampaignServiceChangeHandler(campaign);
         serviceChangeHandler.handleChangeOfService(aarContext.getCampaignUpdateData().getNewDate());
@@ -40,7 +40,7 @@ public class CampaignUpdater
         personnelReplacementUpdater.updateCampaignPersonnelReplacements();
         
         EquipmentDepoReplenisher equipmentReplacementUpdater = new EquipmentDepoReplenisher(campaign);
-        equipmentReplacementUpdater.changeSquadronArchType();
+        equipmentReplacementUpdater.replenishDeposForServices();
         
         EquipmentArchTypeChangeHandler archtypeChangeHandler = new EquipmentArchTypeChangeHandler(campaign, aarContext.getNewDate());
         archtypeChangeHandler.updateCampaignEquipmentForArchtypeChange();

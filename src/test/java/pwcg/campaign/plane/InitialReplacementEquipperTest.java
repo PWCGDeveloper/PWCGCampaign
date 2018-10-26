@@ -12,7 +12,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.resupply.depo.EquipmentDepo;
+import pwcg.campaign.resupply.depo.EquipmentDepoInitializer;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -39,7 +39,7 @@ public class InitialReplacementEquipperTest
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
         ArmedService luftwaffe = serviceManager.getArmedService(20101);
         
-        EquipmentDepo replacementEquipper = new EquipmentDepo(campaign, luftwaffe);
+        EquipmentDepoInitializer replacementEquipper = new EquipmentDepoInitializer(campaign, luftwaffe);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
         assert(equipment.getEquippedPlanes().size() == 15);
         
@@ -89,7 +89,7 @@ public class InitialReplacementEquipperTest
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
         ArmedService vvs = serviceManager.getArmedService(10101);
         
-        EquipmentDepo replacementEquipper = new EquipmentDepo(campaign, vvs);
+        EquipmentDepoInitializer replacementEquipper = new EquipmentDepoInitializer(campaign, vvs);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
         assert(equipment.getEquippedPlanes().size() == 64);
         
@@ -145,7 +145,7 @@ public class InitialReplacementEquipperTest
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
         ArmedService regiaAeronautica = serviceManager.getArmedService(20202);
         
-        EquipmentDepo replacementEquipper = new EquipmentDepo(campaign, regiaAeronautica);
+        EquipmentDepoInitializer replacementEquipper = new EquipmentDepoInitializer(campaign, regiaAeronautica);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
         assert(equipment.getEquippedPlanes().size() == 1);
         
