@@ -52,6 +52,7 @@ public class ServiceTransferNeedTest
             if (selectedSquadronNeed.getSquadronId() == 501012)
             {
                 jasta12Needs = true;
+                break;
             }
         }
         assert (jasta12Needs);

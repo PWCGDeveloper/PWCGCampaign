@@ -74,7 +74,6 @@ public class MissionLogEventsBuilder
                 {
                     friendlyPilotFromDifferentSquadron = pilot;
                     expectedResults.setSquadronMemberPilotSerialNumber(friendlyPilotFromDifferentSquadron.getSerialNumber());
-                    break;
                 }
             }
             else

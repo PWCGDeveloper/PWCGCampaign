@@ -34,7 +34,6 @@ public class ServiceResupplyNeed
                 if (squadronResupplyNeed.needsResupply())
                 {
                     squadronNeeds.put(squadronResupplyNeed.getSquadronId(), squadronResupplyNeed);
-                    System.out.println("Squadron " + squadronResupplyNeed.getSquadronId() + " needs " + squadronResupplyNeed.getNumNeeded());
                 }
             }
         }
@@ -67,5 +66,10 @@ public class ServiceResupplyNeed
         {
             removeNeedySquadron(squadronNeed);
         }
+    }
+
+    public Map<Integer, ISquadronNeed> getSquadronNeeds()
+    {
+        return squadronNeeds;
     }
 }

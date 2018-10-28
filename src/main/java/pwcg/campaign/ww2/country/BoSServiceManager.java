@@ -137,7 +137,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		regiaAeronautica.setGeneralRankForService("Generale di Divisione Aerea");
 		regiaAeronautica.setDailyPersonnelReplacementRate(1);
 		regiaAeronautica.setDailyEquipmentReplacementRate(3);
-		regiaAeronautica.setStartDate(DateUtils.getDateYYYYMMDD("19420801"));
+		regiaAeronautica.setStartDate(DateUtils.getDateYYYYMMDD("19411001"));
 
 		List<String> lftPics = new ArrayList<String>();
 		lftPics.add("Italian");

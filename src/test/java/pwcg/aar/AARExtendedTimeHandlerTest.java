@@ -31,13 +31,12 @@ public class AARExtendedTimeHandlerTest
     private AARContext aarContext;
     
     @Mock LogPilot playerLogPilot;
-
     
     @Before
     public void setupForTestEnvironment() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        campaign = CampaignCache.makeCampaign(CampaignCacheBoS.JG_51_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.JG_51_PROFILE);
         campaign.getCampaignData().setCoop(false);
         aarContext = new AARContext(campaign);
     }

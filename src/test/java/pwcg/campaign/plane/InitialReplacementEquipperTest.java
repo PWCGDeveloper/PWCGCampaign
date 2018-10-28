@@ -41,7 +41,7 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepoInitializer replacementEquipper = new EquipmentDepoInitializer(campaign, luftwaffe);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getEquippedPlanes().size() == 15);
+        assert(equipment.getEquippedPlanes().size() == 45);
         
         boolean me110e2Found = false;
         boolean he111h6Found = false;
@@ -91,7 +91,7 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepoInitializer replacementEquipper = new EquipmentDepoInitializer(campaign, vvs);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getEquippedPlanes().size() == 64);
+        assert(equipment.getEquippedPlanes().size() == 112);
         
         boolean i16Found = false;
         boolean mig3 = false;

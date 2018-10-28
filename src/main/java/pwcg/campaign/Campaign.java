@@ -61,7 +61,7 @@ public class Campaign
 
     public void write() throws PWCGException
     {
-        // CampaignIOJson.writeJson(this);
+        CampaignIOJson.writeJson(this);
     }
     
 	private boolean readValidCampaign()

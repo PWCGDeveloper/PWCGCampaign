@@ -35,7 +35,7 @@ public class EquipmentReplacementHandlerTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        campaign = CampaignCache.makeCampaign(CampaignCacheBoS.JG_51_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.JG_51_PROFILE);
         Mockito.when(armedService.getServiceId()).thenReturn(20101);
      }
 
@@ -54,6 +54,7 @@ public class EquipmentReplacementHandlerTest
     private void deactivateCampaignEquipment() throws PWCGException
     {
         Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 10);
+        Squadron playerSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
 
         int numInactivated = 0;
         for (Equipment equipment: campaign.getEquipmentManager().getEquipmentAllSquadrons().values())
@@ -63,9 +64,12 @@ public class EquipmentReplacementHandlerTest
                 Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(equippedPlane.getSquadronId());
                 if (squadron.getService() == armedService.getServiceId())
                 {
-                    equippedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
-                    equippedPlane.setDateRemovedFromService(inactiveDate);
-                    ++numInactivated;
+                    if (playerSquadron.getSquadronId() != equippedPlane.getSquadronId())
+                    {
+                        equippedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
+                        equippedPlane.setDateRemovedFromService(inactiveDate);
+                        ++numInactivated;
+                    }
                 }
                 
                 break;
@@ -77,7 +81,6 @@ public class EquipmentReplacementHandlerTest
             }
         }
     }
-    
 
     @Test
     public void testTransfersInForLostSquadronMembers() throws PWCGException

@@ -21,10 +21,10 @@ public class EquipmentReplacementHandler
 
     private EquipmentResupplyData equipmentResupplyData = new EquipmentResupplyData();
     
-    public EquipmentReplacementHandler(Campaign campaign, ResupplyNeedBuilder transferNeedBuilder)
+    public EquipmentReplacementHandler(Campaign campaign, ResupplyNeedBuilder equipmentNeedBuilder)
     {
         this.campaign = campaign;
-        this.equipmentNeedBuilder = transferNeedBuilder;
+        this.equipmentNeedBuilder = equipmentNeedBuilder;
     }
     
     public EquipmentResupplyData determineEquipmentResupply(ArmedService armedService) throws PWCGException

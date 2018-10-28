@@ -76,7 +76,7 @@ public class EquipmentDepoReplenisher
 
     private PlaneArchType getArchTypeForReplacement(ArmedService service, List<Squadron> squadronsForService) throws PWCGException
     {        
-        EquipmentArchTypeFinder equipmentArchtypeReplacementFinder = new EquipmentArchTypeFinder(campaign);
+        EquipmentReplacementCalculator equipmentArchtypeReplacementFinder = new EquipmentReplacementCalculator(campaign);
         String archTypeForReplacementPlane = equipmentArchtypeReplacementFinder.getArchTypeForReplacementPlane(squadronsForService);
         PlaneArchType planeArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneArchType(archTypeForReplacementPlane);
         return planeArchType;

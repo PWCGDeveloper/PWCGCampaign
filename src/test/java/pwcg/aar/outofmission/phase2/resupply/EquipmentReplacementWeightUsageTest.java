@@ -1,4 +1,4 @@
-package pwcg.aar.campaign.update;
+package pwcg.aar.outofmission.phase2.resupply;
 
 import java.util.List;
 import java.util.Map;
@@ -6,8 +6,6 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.ArmedService;
@@ -15,36 +13,34 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.resupply.depo.EquipmentArchTypeFinder;
+import pwcg.campaign.resupply.depo.EquipmentReplacementWeightUsage;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.DateUtils;
+import pwcg.testutils.CampaignCache;
+import pwcg.testutils.CampaignCacheBoS;
 
 @RunWith(MockitoJUnitRunner.class)
-public class EquipmentArchtypeFinderTest
+public class EquipmentReplacementWeightUsageTest
 {
-    @Mock private Campaign campaign;
+    private Campaign campaign;
 
     @Before
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
+        campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.JG_51_PROFILE);
     }
     
     @Test
     public void testGermanReplacementArchTypes() throws PWCGException
     {
-        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19411101"));
-
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
-        EquipmentArchTypeFinder equipmentArchtypeFinder = new EquipmentArchTypeFinder(campaign);
-        Map<String, Integer> aircraftUsageByArchType = equipmentArchtypeFinder.getAircraftUsageByArchType();
+        EquipmentReplacementWeightUsage equipmentReplacementWeightUsage = new EquipmentReplacementWeightUsage(campaign);
+        Map<String, Integer> aircraftUsageByArchType = equipmentReplacementWeightUsage.getAircraftUsageByArchType(squadronsForService);
 
-        String archTypeName =equipmentArchtypeFinder.getArchTypeForReplacementPlane(squadronsForService);
-        assert(aircraftUsageByArchType.containsKey(archTypeName));
         assert(aircraftUsageByArchType.containsKey("bf109"));
         assert(aircraftUsageByArchType.containsKey("bf110"));
         assert(aircraftUsageByArchType.containsKey("he111"));
@@ -65,17 +61,13 @@ public class EquipmentArchtypeFinderTest
     @Test
     public void testRussianReplacementArchTypes() throws PWCGException
     {
-        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19411101"));
-
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(10101);
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
-        EquipmentArchTypeFinder equipmentArchtypeFinder = new EquipmentArchTypeFinder(campaign);
-        Map<String, Integer> aircraftUsageByArchType = equipmentArchtypeFinder.getAircraftUsageByArchType();
+        EquipmentReplacementWeightUsage equipmentReplacementWeightUsage = new EquipmentReplacementWeightUsage(campaign);
+        Map<String, Integer> aircraftUsageByArchType = equipmentReplacementWeightUsage.getAircraftUsageByArchType(squadronsForService);
 
-        String archTypeName =equipmentArchtypeFinder.getArchTypeForReplacementPlane(squadronsForService);
-        assert(aircraftUsageByArchType.containsKey(archTypeName));
         assert(aircraftUsageByArchType.containsKey("il2"));
         assert(aircraftUsageByArchType.containsKey("i16"));
         assert(aircraftUsageByArchType.containsKey("lagg"));
@@ -94,17 +86,13 @@ public class EquipmentArchtypeFinderTest
     @Test
     public void testItalianReplacementArchTypes() throws PWCGException
     {
-        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
-
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20202);
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
-        EquipmentArchTypeFinder equipmentArchtypeFinder = new EquipmentArchTypeFinder(campaign);
-        Map<String, Integer> aircraftUsageByArchType = equipmentArchtypeFinder.getAircraftUsageByArchType();
+        EquipmentReplacementWeightUsage equipmentReplacementWeightUsage = new EquipmentReplacementWeightUsage(campaign);
+        Map<String, Integer> aircraftUsageByArchType = equipmentReplacementWeightUsage.getAircraftUsageByArchType(squadronsForService);
 
-        String archTypeName =equipmentArchtypeFinder.getArchTypeForReplacementPlane(squadronsForService);
-        assert(aircraftUsageByArchType.containsKey(archTypeName));
         assert(aircraftUsageByArchType.containsKey("mc200"));
         assert(aircraftUsageByArchType.size() == 1);
     }

@@ -27,7 +27,7 @@ public class InitialReplacementStafferTest
     {
         PWCGContextManager.setRoF(false);
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheBoS.JG_51_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.JG_51_PROFILE);
 
         List<ArmedService> armedServices = ArmedServiceFactory.createServiceManager().getAllArmedServices();
         for (ArmedService service : armedServices)

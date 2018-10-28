@@ -1,19 +1,30 @@
 {
   "country": "ITALY",
   "squadronId": 20115021,
-  "name": "21 Gruppo Caccia",
-  "fileName": "21 Gruppo Caccia.json",
+  "name": "22 Gruppo Caccia",
+  "fileName": "22 Gruppo Caccia.json",
   "skill": 55,
   "planeAssignments": [
     {
       "archType": "mc200",
-      "squadronIntroduction": "19420801",
+      "squadronIntroduction": "19411001",
       "squadronWithdrawal": "19450503"
     }
   ],
   "conversionPeriods": [
   ],  
   "airfields": {
+    "19411001": "Karpovo",
+    "19411020": "Varvarovka",
+    "19411110": "Maloyaroslavetc",
+    "19411120": "Vatulino",
+    "19411215": "Kolodezi",
+    "19420110": "Yuhnov",
+    "19420301": "Tormosin",
+    "19420601": "Popovicheskaya",
+    "19420624": "Dneprovskaya",
+    "19420709": "Timashevskaya",
+    "19420721": "Severskaya",
     "19420801": "Safronov",
     "19420906": "Abganerovo",
     "19421011": "Abganerovo",
