@@ -7,14 +7,12 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.escort.PlayerEscortFlight;
 import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PatrolFlightValidator;
-import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBoS;
 
@@ -125,27 +123,6 @@ public class PlayerFlightTypeBoSFighterTest
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.OFFENSIVE);
-        for (PlaneMCU plane : flight.getPlanes())
-        {
-            assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
-        }
-        
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
-    }
-
-    @Test
-    public void escortFlightTest() throws PWCGException
-    {
-        mission = new Mission();
-        mission.initialize(campaign);
-        mission.generate(FlightTypes.ESCORT);
-        PlayerEscortFlight flight = (PlayerEscortFlight) mission.getMissionFlightBuilder().getPlayerFlight();
-        flight.finalizeFlight();
-
-        PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator();
-        escortFlightValidator.validateEscortFlight(flight);
-        assert (flight.getFlightType() == FlightTypes.ESCORT);
         for (PlaneMCU plane : flight.getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() == 0);

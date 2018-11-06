@@ -16,7 +16,7 @@ public enum WaypointAction
 
 	WP_ACTION_PATROL("Patrol"),
 	WP_ACTION_BALLOON("Balloon"),
-	WP_ACTION_RENDEVOUS("Rendevous"),
+	WP_ACTION_RENDEZVOUS("Rendezvous"),
 
 	WP_ACTION_TARGET_APPROACH("Target Approach"),
 	WP_ACTION_TARGET_FINAL("Target Final Approach"),

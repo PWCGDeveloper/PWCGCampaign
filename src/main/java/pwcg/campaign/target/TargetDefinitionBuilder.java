@@ -28,7 +28,6 @@ public class TargetDefinitionBuilder
 
         targetDefinition.setTargetType(targetType);
         targetDefinition.setTargetCategory(targetType.getTargetCategory());
-        targetDefinition.setTargetName(buildTargetName(campaign.determineCountry(), targetType));
 
         if (flightType == FlightTypes.BALLOON_DEFENSE)
         {
@@ -45,6 +44,7 @@ public class TargetDefinitionBuilder
             targetDefinition.setTargetCountry(squadron.determineEnemyCountry(campaign, campaign.getDate()));
         }
         
+        targetDefinition.setTargetName(buildTargetName(targetDefinition.getTargetCountry(), targetType));
         targetDefinition.setDate(campaign.getDate());
         targetDefinition.setPlayerTarget((campaign.getSquadronId() == squadron.getSquadronId()));
         

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.personnel.InitialSquadronBuilder;
 import pwcg.campaign.resupply.depo.EquipmentArchTypeChangeHandler;
 import pwcg.campaign.resupply.depo.EquipmentDepoReplenisher;
 import pwcg.core.exception.PWCGException;
@@ -53,10 +54,7 @@ public class CampaignUpdater
         campaign.getCampaignLogs().setCampaignLogs(campaign, aarContext.getCampaignUpdateData().getLogEvents().getCampaignLogEvents());
         campaign.setDate(newDate);
         
-        CampaignUpdateNewSquadronStaffer newSquadronStaffer = new CampaignUpdateNewSquadronStaffer(campaign);
-        newSquadronStaffer.staffNewSquadrons();
-
-        CampaignUpdateNewSquadronEquipper newSquadronEquipper = new CampaignUpdateNewSquadronEquipper(campaign);
-        newSquadronEquipper.equipNewSquadrons();
+        InitialSquadronBuilder initialSquadronBuilder = new InitialSquadronBuilder();
+        initialSquadronBuilder.buildNewSquadrons(campaign);
     }
  }

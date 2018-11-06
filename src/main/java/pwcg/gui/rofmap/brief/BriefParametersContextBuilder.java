@@ -39,7 +39,7 @@ public class BriefParametersContextBuilder
 
 		     if (mission.getMissionFlightBuilder().getPlayerFlight().getFlightType() == FlightTypes.ESCORT)
 		     {
-		         if (waypoint.getWpAction() == WaypointAction.WP_ACTION_RENDEVOUS)
+		         if (waypoint.getWpAction() == WaypointAction.WP_ACTION_RENDEZVOUS)
 		         {
 		             updateEscortWaypointsOnMap();
 		         }
@@ -80,7 +80,7 @@ public class BriefParametersContextBuilder
 		mapPoint.desc = waypoint.getWpAction().getAction();
 		mapPoint.coord = waypoint.getPosition().copy();
 		
-		if ((waypoint.getWpAction() == WaypointAction.WP_ACTION_RENDEVOUS) || 
+		if ((waypoint.getWpAction() == WaypointAction.WP_ACTION_RENDEZVOUS) || 
 			(waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL) || 
             (waypoint.getWpAction() == WaypointAction.WP_ACTION_RECON) || 
 			(waypoint.getWpAction() == WaypointAction.WP_ACTION_LANDING_APPROACH))

@@ -216,8 +216,8 @@ public class PlayerFlightRoFTypeTest
         PlayerEscortFlight flight = (PlayerEscortFlight) mission.getMissionFlightBuilder().getPlayerFlight();
 		flight.finalizeFlight();
 		
-		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator();
-		escortFlightValidator.validateEscortFlight(flight);
+		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);
+		escortFlightValidator.validateEscortFlight();
         assert(flight.getFlightType() == FlightTypes.ESCORT);
 	}
 

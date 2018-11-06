@@ -12,6 +12,7 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.io.json.CampaignIOJson;
+import pwcg.campaign.personnel.InitialSquadronBuilder;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Role;
@@ -55,7 +56,10 @@ public class Campaign
         {
             return false;
         }
-        
+
+        InitialSquadronBuilder initialSquadronBuilder = new InitialSquadronBuilder();
+        initialSquadronBuilder.buildNewSquadrons(this);
+
         return true;
     }
 

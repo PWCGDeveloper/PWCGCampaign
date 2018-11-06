@@ -118,7 +118,7 @@ public class ActualWaypointPackage extends WaypointPackage
             
             rendevousPoint.setPosition(rendevousCoordinate);
             rendevousPoint.setName(WaypointType.RENDEZVOUS_WAYPOINT.getName());
-            rendevousPoint.setWpAction(WaypointAction.WP_ACTION_RENDEVOUS);
+            rendevousPoint.setWpAction(WaypointAction.WP_ACTION_RENDEZVOUS);
             
             waypoints.remove(0);
             waypoints.add(0, rendevousPoint);

@@ -26,7 +26,7 @@ public class IngressWaypointNearTarget extends IngressWaypointBase
         ingressWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
         ingressWP.setSpeed(waypointSpeed);
         ingressWP.setPosition(coord);   
-        ingressWP.setTargetWaypoint(true);
+        ingressWP.setTargetWaypoint(false);
         
         return ingressWP;
     }

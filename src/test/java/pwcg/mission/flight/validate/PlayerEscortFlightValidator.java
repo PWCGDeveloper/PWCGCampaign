@@ -3,8 +3,13 @@ package pwcg.mission.flight.validate;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
+import pwcg.mission.Unit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.escort.PlayerEscortFlight;
+import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuCover;
@@ -14,42 +19,81 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class PlayerEscortFlightValidator 
 {
-	public void validateEscortFlight(PlayerEscortFlight flight) throws PWCGException
+    private McuWaypoint rendezvousWp = null;
+    private PlayerEscortFlight playerFlight;
+    private BombingFlight escortedFlight;
+
+    public PlayerEscortFlightValidator (PlayerEscortFlight playerFlight)
+    {
+        this.playerFlight = playerFlight;
+    }
+    
+	public void validateEscortFlight() throws PWCGException
 	{
-		assert(flight.getWaypointPackage().getWaypointsForLeadPlane().size() > 0);
-		validateWaypointLinkage(flight);
-		validateWaypointTypes(flight);
+		assert(playerFlight.getWaypointPackage().getWaypointsForLeadPlane().size() > 0);
+        validateEscortedFlight();
+        validateWaypointLinkage();
+		validateWaypointTypes();
 	}
+    
+    private void validateEscortedFlight() throws PWCGException
+    {
+        for (Unit unit : playerFlight.getLinkedUnits())
+        {
+            if (unit instanceof Flight)
+            {
+                assert(unit instanceof BombingFlight);
+                escortedFlight = (BombingFlight)unit;    
+            }
+        }
+        
+        assert(escortedFlight != null);
+        assert(escortedFlight.isVirtual() == false);
+        assert(escortedFlight.isAirStart() == true);
+        
+        PlaneMCU leadEscortedPlane = escortedFlight.getPlanes().get(0);
+        assert(leadEscortedPlane != null);
+    }
 
-	private void validateWaypointLinkage(PlayerEscortFlight escortFlight) throws PWCGException 
+	private void validateWaypointLinkage() throws PWCGException 
 	{
-		Flight escortedFlight = escortFlight.getEscortedFlight();
-		McuWaypoint escortedIngressWP = getEscortedFlightWaypoint(escortedFlight, WaypointAction.WP_ACTION_INGRESS);
-		McuWaypoint escortedEgressWP = getEscortedFlightWaypoint(escortedFlight, WaypointAction.WP_ACTION_EGRESS);
+		McuWaypoint escortedIngressWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_INGRESS);
+        McuWaypoint escortedEgressWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_EGRESS);
+        McuWaypoint escortedTargetWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_TARGET_APPROACH);
+        McuWaypoint escortedTargetFinalWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_TARGET_FINAL);
 
-		McuTimer coverTimer  = escortFlight.getCoverTimer();
-		McuCover cover = escortFlight.getCover();
-	    McuTimer escortedFlightWaypointTimer = escortFlight.getEscortedFlightWaypointTimer();
+		McuTimer coverTimer  = playerFlight.getCoverTimer();
+		McuCover cover = playerFlight.getCover();
+	    McuTimer escortedFlightWaypointTimer = playerFlight.getEscortedFlightWaypointTimer();
 
-		McuTimer deactivateCoverTimer = escortFlight.getDeactivateCoverTimer();
-		McuDeactivate deactivateCoverEntity = escortFlight.getDeactivateCoverEntity();
-	    McuTimer egressTimer = escortFlight.getEgressTimer();
+		McuTimer deactivateCoverTimer = playerFlight.getDeactivateCoverTimer();
+		McuDeactivate deactivateCoverEntity = playerFlight.getDeactivateCoverEntity();
+	    McuTimer egressTimer = playerFlight.getEgressTimer();
 
 		McuWaypoint prevWaypoint = null;
-		for (McuWaypoint waypoint : escortFlight.getWaypointPackage().getWaypointsForLeadPlane())
+		for (McuWaypoint waypoint : playerFlight.getWaypointPackage().getWaypointsForLeadPlane())
 		{
+            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_RENDEZVOUS))
+            {
+                rendezvousWp = waypoint;
+            }
+            
 			if (prevWaypoint != null)
 			{
 				boolean isNextWaypointLinked = isIndexInTargetList(waypoint.getIndex(), prevWaypoint.getTargets());
-				if (prevWaypoint.getWpAction().equals(WaypointAction.WP_ACTION_RENDEVOUS))
+				if (prevWaypoint.getWpAction().equals(WaypointAction.WP_ACTION_RENDEZVOUS))
 				{
+				    PlaneMCU leadBomber = escortedFlight.getPlanes().get(0);
 					assert(!isNextWaypointLinked);
-					assert(isIndexInTargetList(coverTimer.getIndex(), prevWaypoint.getTargets()));
-					assert(isIndexInTargetList(escortedFlight.getPlanes().get(0).getEntity().getIndex(), cover.getTargets()));
+					assert(isIndexInTargetList(coverTimer.getIndex(), rendezvousWp.getTargets()));
+					assert(isIndexInTargetList(leadBomber.getEntity().getIndex(), cover.getTargets()));
 					assert(isIndexInTargetList(cover.getIndex(), coverTimer.getTargets()));
 					assert(isIndexInTargetList(escortedFlightWaypointTimer.getIndex(), coverTimer.getTargets()));
-					assert(isIndexInTargetList(escortedIngressWP.getIndex(), escortedFlightWaypointTimer.getTargets()));
+                    assert(isIndexInTargetList(escortedIngressWP.getIndex(), escortedFlightWaypointTimer.getTargets()));
+                    assert(isIndexInTargetList(escortedTargetWP.getIndex(), escortedIngressWP.getTargets()));
+                    assert(isIndexInTargetList(escortedTargetFinalWP.getIndex(), escortedTargetWP.getTargets()));
 					
+                    verifyEscortedPlanesCloseToRendezvous(leadBomber);			        
 				}
 				else if (prevWaypoint.getWpAction().equals(WaypointAction.WP_ACTION_EGRESS))
 				{
@@ -68,8 +112,16 @@ public class PlayerEscortFlightValidator
 			prevWaypoint = waypoint;
 		}
 	}
+
+    private void verifyEscortedPlanesCloseToRendezvous(PlaneMCU leadBomber)
+    {
+        Coordinate leadEscortedPlanePosition = leadBomber.getPosition();
+        Coordinate rendezvousPosition = rendezvousWp.getPosition();
+        double distance = MathUtils.calcDist(leadEscortedPlanePosition, rendezvousPosition);
+        assert(distance < 1000.0);
+    }
 	
-	private McuWaypoint getEscortedFlightWaypoint(Flight escortedFlight, WaypointAction wpActionIngress) throws PWCGException
+	private McuWaypoint getEscortedFlightWaypoint(WaypointAction wpActionIngress) throws PWCGException
 	{
 		for (McuWaypoint waypoint : escortedFlight.getWaypointPackage().getWaypointsForLeadPlane())
 		{
@@ -82,12 +134,12 @@ public class PlayerEscortFlightValidator
 		throw new PWCGException("No waypoint of type found: " + wpActionIngress);
 	}
 
-	private boolean isIndexInTargetList(int index, List<String>targets) 
+	private boolean isIndexInTargetList(int targetIndexToFind, List<String>targetsFromMCU) 
 	{
 		boolean isIndexInTargetList = false;
-		for (String targetIndex : targets)
+		for (String targetIndex : targetsFromMCU)
 		{
-			if (targetIndex.equals(new String("" + index)))
+			if (targetIndex.equals(new String("" + targetIndexToFind)))
 			{
 				isIndexInTargetList = true;	
 			}
@@ -95,11 +147,11 @@ public class PlayerEscortFlightValidator
 		return isIndexInTargetList;
 	}
 
-	private void validateWaypointTypes(PlayerEscortFlight attackFlight) 
+	private void validateWaypointTypes() 
 	{
 		boolean rendezvousFound = false;
 
-		for (McuWaypoint waypoint : attackFlight.getWaypointPackage().getWaypointsForLeadPlane())
+		for (McuWaypoint waypoint : playerFlight.getWaypointPackage().getWaypointsForLeadPlane())
 		{
 			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TAKEOFF))
 			{
@@ -110,7 +162,7 @@ public class PlayerEscortFlightValidator
 				assert(waypoint.getPriority() == WaypointPriority.PRIORITY_LOW);
 			}
 			
-			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_RENDEVOUS))
+			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_RENDEZVOUS))
 			{
 				rendezvousFound = true;
 			}

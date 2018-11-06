@@ -1,6 +1,8 @@
 package pwcg.mission.flight.escort;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.FrontLinesForMap;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -34,9 +36,9 @@ public class PlayerEscortedFlightBuilder
 		MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(friendlyBombSquadron.determineCurrentPosition(campaign.getDate()));
 
-        FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(friendlyBombSquadron, mission, FlightTypes.BOMB, enemyGroundUnitCoordinates.copy());
-        opposingFlightInformation.setEscortedByPlayerFlight(true);
-        bombingFlightEscortedByPlayer = new BombingFlight (opposingFlightInformation, missionBeginUnit);
+        FlightInformation escortedFlightInformation = FlightInformationFactory.buildAiFlightInformation(friendlyBombSquadron, mission, FlightTypes.BOMB, enemyGroundUnitCoordinates.copy());
+        escortedFlightInformation.setEscortedByPlayerFlight(true);
+        bombingFlightEscortedByPlayer = new BombingFlight (escortedFlightInformation, missionBeginUnit);
 		bombingFlightEscortedByPlayer.createUnitMission();
         moveEscortedFlightCloseToPlayer(enemyGroundUnitCoordinates);
         return bombingFlightEscortedByPlayer;
@@ -46,8 +48,11 @@ public class PlayerEscortedFlightBuilder
 	{
         Coordinate playerSquadronPosition = playerSquadron.determineCurrentPosition(campaign.getDate());
 
-        double angleToTarget = MathUtils.calcAngle(playerSquadronPosition, targetCoordinates);
-		Coordinate rendevousCoords = MathUtils.calcNextCoord(playerSquadronPosition, angleToTarget, 20000.0);
+        FrontLinesForMap frontMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        Coordinate closestFrontToTarget = frontMap.findClosestFrontCoordinateForSide(targetCoordinates, playerSquadron.determineSide());
+                        
+        double angleToTarget = MathUtils.calcAngle(closestFrontToTarget, playerSquadronPosition);
+		Coordinate rendevousCoords = MathUtils.calcNextCoord(closestFrontToTarget, angleToTarget, 10000.0);
 				
         Coordinate firstDestinationCoordinate = bombingFlightEscortedByPlayer.findIngressWaypointPosition();
         rendevousCoords.setYPos(firstDestinationCoordinate.getYPos());

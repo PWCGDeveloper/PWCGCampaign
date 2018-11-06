@@ -285,7 +285,7 @@ public abstract class Flight extends Unit
         for (McuWaypoint waypoint : waypoints)
         {
             if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_INGRESS) ||
-                waypoint.getWpAction().equals(WaypointAction.WP_ACTION_RENDEVOUS) ||
+                waypoint.getWpAction().equals(WaypointAction.WP_ACTION_RENDEZVOUS) ||
                 waypoint.isTargetWaypoint())
             {
                 keepIt = true;

@@ -97,7 +97,7 @@ public class WaypointFactory
 	public static McuWaypoint createRendezvousWaypointType()
 	{
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.RENDEZVOUS_WAYPOINT);
-		waypoint.setWpAction(WaypointAction.WP_ACTION_RENDEVOUS);
+		waypoint.setWpAction(WaypointAction.WP_ACTION_RENDEZVOUS);
 		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
 		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		

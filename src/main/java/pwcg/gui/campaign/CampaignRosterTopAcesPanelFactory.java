@@ -50,8 +50,7 @@ public class CampaignRosterTopAcesPanelFactory extends CampaignRosterBasePanelFa
 	{
 		TreeMap<String, SquadronMember> allAcesInCampaign = new TreeMap<String, SquadronMember>();
 		int aceCounter = 0;
-		aceCounter = getNonHistoricalAces(allAcesInCampaign, aceCounter);
-		aceCounter = getHistoricalAces(allAcesInCampaign, aceCounter);
+		aceCounter = getAces(allAcesInCampaign, aceCounter);
 		getAcesSortedByVictories(allAcesInCampaign);  
 	}
 
@@ -80,23 +79,7 @@ public class CampaignRosterTopAcesPanelFactory extends CampaignRosterBasePanelFa
 	    sortedPilots = new ArrayList<SquadronMember>(sortedPilotsByVictories.values());
     }
 
-    private int getHistoricalAces(TreeMap<String, SquadronMember> allAcesInCampaign, int aceCounter)
-    {
-        for (SquadronMember pilot : campaign.getPersonnelManager().getCampaignAces().getCampaignAces().values())
-		{
-			if (pilot.getSquadronMemberVictories().getAirToAirVictories() > 5)
-			{
-				String key = new String ("" + (ACE_VICTORY_SORT_CONSTANT + (100 * pilot.getSquadronMemberVictories().getAirToAirVictories()) + aceCounter));
-				++aceCounter;
-				allAcesInCampaign.put(key, pilot);
-
-				Logger.log(LogLevel.DEBUG, "Add Ace key: " + key + "     " + pilot.getName() + "     " + pilot.getSquadronMemberVictories().getAirToAirVictories());
-			}
-		}
-        return aceCounter;
-    }
-
-    private int getNonHistoricalAces(TreeMap<String, SquadronMember> allAcesInCampaign, int aceCounter) throws PWCGException
+    private int getAces(TreeMap<String, SquadronMember> allAcesInCampaign, int aceCounter) throws PWCGException
     {
         for (SquadronMember pilot : campaign.getPersonnelManager().getAllCampaignMembers().values())
 		{
