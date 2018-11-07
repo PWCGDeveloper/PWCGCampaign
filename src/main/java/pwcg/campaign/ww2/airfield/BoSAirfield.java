@@ -197,12 +197,18 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 	public PWCGLocation getFakeAirfieldLocation() throws PWCGException {
 		Runway runway = selectRunway();
 
-		PWCGLocation loc = getTakeoffLocation();
+		PWCGLocation loc = new PWCGLocation();
 		Coordinate pos = new Coordinate();
 		pos.setXPos((runway.startPos.getXPos() + runway.endPos.getXPos()) / 2.0);
 		pos.setYPos((runway.startPos.getYPos() + runway.endPos.getYPos()) / 2.0);
 		pos.setZPos((runway.startPos.getZPos() + runway.endPos.getZPos()) / 2.0);
 		loc.setPosition(pos);
+        double runwayOrientation = MathUtils.calcAngle(runway.startPos, runway.endPos);
+        // BoX seems to like the runway orientation to be an odd integer
+        runwayOrientation = Math.rint(runwayOrientation);
+        if ((runwayOrientation % 2) == 0)
+            runwayOrientation = MathUtils.adjustAngle(runwayOrientation, 1.0);
+        loc.setOrientation(new Orientation(runwayOrientation));
 		return loc;
 	}
 
