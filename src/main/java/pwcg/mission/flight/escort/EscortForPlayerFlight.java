@@ -19,7 +19,7 @@ import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuCover;
-import pwcg.mission.mcu.McuDeactivate;
+import pwcg.mission.mcu.McuForceComplete;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -35,8 +35,8 @@ public class EscortForPlayerFlight extends Flight
     protected McuCover cover = null;
     protected McuTimer coverTimer  = null;
 
-    protected McuTimer deactivateCoverTimer = null;
-    protected McuDeactivate deactivateCoverEntity = null;
+    protected McuTimer forceCompleteTimer = null;
+    protected McuForceComplete forceCompleteEntity = null;
 
     protected Coordinate rendevousCoord;
     
@@ -61,7 +61,7 @@ public class EscortForPlayerFlight extends Flight
         createFormation();
         setFlightPayload();
         createCover();
-        createDeactivate();
+        createForceComplete();
     }
 
     @Override
@@ -87,9 +87,9 @@ public class EscortForPlayerFlight extends Flight
         McuWaypoint egressWP = WaypointGeneratorBase.findWaypointByType(getPlayerFlight().getAllWaypoints(), 
                         WaypointType.EGRESS_WAYPOINT.getName());
 
-        egressWP.setTarget(getDeactivateCoverTimer().getIndex());
+        egressWP.setTarget(getForceCompleteTimer().getIndex());
 
-        getDeactivateCoverTimer().setTarget(getWaypointPackage().getWaypointsForLeadPlane().get(0).getIndex());
+        getForceCompleteTimer().setTarget(getWaypointPackage().getWaypointsForLeadPlane().get(0).getIndex());
     }
 
     public void createCover() throws PWCGException 
@@ -115,23 +115,23 @@ public class EscortForPlayerFlight extends Flight
         
     }
 
-    protected void createDeactivate() 
+    protected void createForceComplete()
     {
         // Deactivate the cover entity
-        deactivateCoverEntity = new McuDeactivate();
-        deactivateCoverEntity.setName("Escort Cover Deactivate Cover");
-        deactivateCoverEntity.setDesc("Escort Cover Deactivate Cover");
-        deactivateCoverEntity.setOrientation(new Orientation());
-        deactivateCoverEntity.setPosition(flightInformation.getTargetCoords().copy());                
-        deactivateCoverEntity.setTarget(cover.getIndex());
+        forceCompleteEntity = new McuForceComplete();
+        forceCompleteEntity.setName("Escort Cover Force Complete");
+        forceCompleteEntity.setDesc("Escort Cover Force Complete");
+        forceCompleteEntity.setOrientation(new Orientation());
+        forceCompleteEntity.setPosition(flightInformation.getTargetCoords().copy());
+        forceCompleteEntity.setObject(planes.get(0).getEntity().getIndex());
         
-        deactivateCoverTimer  = new McuTimer();
-        deactivateCoverTimer.setName("Escort Cover Deactivate Cover Timer");
-        deactivateCoverTimer.setDesc("Escort Cover Deactivate Cover Timer");
-        deactivateCoverTimer.setOrientation(new Orientation());
-        deactivateCoverTimer.setPosition(flightInformation.getTargetCoords().copy());             
-        deactivateCoverTimer.setTimer(2);               
-        deactivateCoverTimer.setTarget(deactivateCoverEntity.getIndex());
+        forceCompleteTimer  = new McuTimer();
+        forceCompleteTimer.setName("Escort Cover Force Complete Timer");
+        forceCompleteTimer.setDesc("Escort Cover Force Complete Timer");
+        forceCompleteTimer.setOrientation(new Orientation());
+        forceCompleteTimer.setPosition(flightInformation.getTargetCoords().copy());
+        forceCompleteTimer.setTimer(2);
+        forceCompleteTimer.setTarget(forceCompleteEntity.getIndex());
     }
 
     protected void createPlaneInitialPosition() throws PWCGException 
@@ -227,8 +227,8 @@ public class EscortForPlayerFlight extends Flight
         coverTimer.write(writer);
         cover.write(writer);
         
-        deactivateCoverTimer.write(writer);
-        deactivateCoverEntity.write(writer);
+        forceCompleteTimer.write(writer);
+        forceCompleteEntity.write(writer);
     }
 
 
@@ -256,27 +256,27 @@ public class EscortForPlayerFlight extends Flight
     }
 
 
-    public McuTimer getDeactivateCoverTimer()
+    public McuTimer getForceCompleteTimer()
     {
-        return deactivateCoverTimer;
+        return forceCompleteTimer;
     }
 
 
-    public void setDeactivateCoverTimer(McuTimer deactivateCoverTimer)
+    public void setForceCompleteTimer(McuTimer forceCompleteTimer)
     {
-        this.deactivateCoverTimer = deactivateCoverTimer;
+        this.forceCompleteTimer = forceCompleteTimer;
     }
 
 
-    public McuDeactivate getDeactivateCoverEntity()
+    public McuForceComplete getForceCompleteEntity()
     {
-        return deactivateCoverEntity;
+        return forceCompleteEntity;
     }
 
 
-    public void setDeactivateCoverEntity(McuDeactivate deactivateCoverEntity)
+    public void setForceCompleteEntity(McuForceComplete forceCompleteEntity)
     {
-        this.deactivateCoverEntity = deactivateCoverEntity;
+        this.forceCompleteEntity = forceCompleteEntity;
     }
 
 
