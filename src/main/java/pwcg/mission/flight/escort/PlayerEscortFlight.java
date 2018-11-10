@@ -107,8 +107,7 @@ public class PlayerEscortFlight extends Flight
 
 	private void linkRendezvousWPToCover(McuWaypoint rendezvousWP)
 	{
-		List<McuWaypoint> escortedWaypoints = getEscortedFlight().getAllWaypoints();
-		McuWaypoint escortedIngressWP = WaypointGeneratorBase.findWaypointByType(escortedWaypoints,  WaypointType.INGRESS_WAYPOINT.getName());
+		McuWaypoint escortedIngressWP = getEscortedFlight().getAllWaypoints().get(0);
 
 		rendezvousWP.setTarget(coverTimer.getIndex());
 		coverTimer.setTarget(escortedFlightWaypointTimer.getIndex());

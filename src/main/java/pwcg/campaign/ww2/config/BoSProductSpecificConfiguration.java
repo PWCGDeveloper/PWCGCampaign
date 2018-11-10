@@ -157,6 +157,10 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
         {
             initialDistance = 15000;                    
         }
+        else if (flightType == FlightTypes.ESCORT)
+        {
+            initialDistance = 15000;                    
+        }
         else if (flightType == FlightTypes.LOW_ALT_PATROL)
         {
             initialDistance = 15000;                    

@@ -15,6 +15,8 @@ import pwcg.mission.mcu.McuTimer;
 
 public class AttackMcuSequence
 {    
+    public static final int CHECK_ZONE_INSTANCE = 11000;
+            
     private MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
     private McuTimer activateTimer = new McuTimer();
     private McuTimer deactivateTimer = new McuTimer();
@@ -46,7 +48,7 @@ public class AttackMcuSequence
         createSequence(attackArea, name, targetCoords, attackTIme) ;
         
         Coalition coalition  = Coalition.getFriendlyCoalition(plane.getCountry());
-        missionBeginUnit.initialize(targetCoords, 11000, coalition);
+        missionBeginUnit.initialize(targetCoords, CHECK_ZONE_INSTANCE, coalition);
         missionBeginUnit.setStartTime(2);
         missionBeginUnit.linkToMissionBegin(activateTimer.getIndex());
     }

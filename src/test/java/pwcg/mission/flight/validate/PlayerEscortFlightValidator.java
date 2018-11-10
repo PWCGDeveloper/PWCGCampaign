@@ -51,6 +51,11 @@ public class PlayerEscortFlightValidator
         assert(escortedFlight.isVirtual() == false);
         assert(escortedFlight.isAirStart() == true);
         
+        for (PlaneMCU escortedPlane : escortedFlight.getPlanes())
+        {
+            assert(escortedPlane.getPosition().getYPos() > 1000.0);
+        }
+        
         PlaneMCU leadEscortedPlane = escortedFlight.getPlanes().get(0);
         assert(leadEscortedPlane != null);
     }
@@ -58,6 +63,8 @@ public class PlayerEscortFlightValidator
 	private void validateWaypointLinkage() throws PWCGException 
 	{
 		McuWaypoint escortedIngressWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_INGRESS);
+		assert(escortedIngressWP.getIndex() == escortedFlight.getWaypointPackage().getWaypointsForLeadPlane().get(0).getIndex());
+		
         McuWaypoint escortedEgressWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_EGRESS);
         McuWaypoint escortedTargetWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_TARGET_APPROACH);
         McuWaypoint escortedTargetFinalWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_TARGET_FINAL);
