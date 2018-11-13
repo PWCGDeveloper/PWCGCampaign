@@ -241,13 +241,11 @@ public class PWCGErrorBundler
 	        // testing type. directories and files have to be treated separately.
 	        if(f.isDirectory())
 	        {
-	            // add empty directory
-	            zos.putNextEntry(new ZipEntry(f.getName() + "\\"));
 	            // initiate recursive call
 	            String newTargetDir = f.getName();
 	            if (!targetDir.isEmpty())
 	            {
-	                newTargetDir = targetDir + "\\";
+	                newTargetDir = targetDir + "\\" + newTargetDir;
 	            }
 	            compressDirectory(f.getPath(), newTargetDir,  zos);
 	            // continue the iteration
