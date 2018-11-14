@@ -48,9 +48,10 @@ public class AARVictoryEvaluator
     public void evaluateVictories() throws PWCGException
     {
         buildVictoryList();
-        applyFuzzyVictoryMethods();
         
         victoryResults.addAll(aarDestroyedStatusEvaluator.getDeadLogVehicleList());
+
+        applyFuzzyVictoryMethods();
     }
     
     private void applyFuzzyVictoryMethods() throws PWCGException

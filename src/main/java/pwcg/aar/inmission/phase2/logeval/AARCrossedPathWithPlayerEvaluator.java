@@ -3,22 +3,29 @@ package pwcg.aar.inmission.phase2.logeval;
 import java.util.List;
 
 import pwcg.aar.inmission.phase1.parse.event.IAType17;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
+import pwcg.campaign.Campaign;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 
 public class AARCrossedPathWithPlayerEvaluator 
 {    
     public static double DISTANCE_TO_CROSS_PLAYER_PATH = 6000.0;
+
+    private Campaign campaign;
     
-    public AARCrossedPathWithPlayerEvaluator()
+    public AARCrossedPathWithPlayerEvaluator(Campaign campaign)
     {
+        this.campaign = campaign;
     }
 
-    public boolean isCrossedPathWithPlayerFlight(LogVictory deadVehicle, List<LogDamage> vehiclesDamagedByPlayer, List<IAType17> waypointEvents)
+    public boolean isCrossedPathWithPlayerFlight(LogVictory deadVehicle, List<LogDamage> damageEvents, List<IAType17> waypointEvents) throws PWCGException
     {
         boolean crossedPath = false;
-        if (isCrossedPathByProximityToDamageEvent(deadVehicle, vehiclesDamagedByPlayer))
+        if (isCrossedPathByProximityToDamageEvent(deadVehicle, damageEvents))
         {
             crossedPath = true;
         }
@@ -30,25 +37,37 @@ public class AARCrossedPathWithPlayerEvaluator
         return crossedPath;
     }
     
-    private boolean isCrossedPathByProximityToDamageEvent(LogVictory deadVehicle, List<LogDamage> vehiclesDamagedByPlayer)
+    private boolean isCrossedPathByProximityToDamageEvent(LogVictory deadVehicle, List<LogDamage> damageEvents) throws PWCGException
     {
-        for (LogDamage damagedVehicle : vehiclesDamagedByPlayer)
+        for (LogDamage damageEvent : damageEvents)
         {
-            if (deadVehicle.getVictim() == null || damagedVehicle.getVictim() == null || damagedVehicle.getVictor() == null)
+            if (deadVehicle.getVictim() == null || damageEvent.getVictim() == null || damageEvent.getVictor() == null)
             {
                 return false;
             }
             
-            if (deadVehicle.getVictim().getId().equals(damagedVehicle.getVictim().getId()))
+            LogAIEntity otherVehicle = null;
+
+            if (deadVehicle.getVictim().getId().equals(damageEvent.getVictim().getId()))
             {
-                return true;
+                otherVehicle = damageEvent.getVictor();
             }
             
-            if (deadVehicle.getVictim().getId().equals(damagedVehicle.getVictor().getId()))
+            if (deadVehicle.getVictim().getId().equals(damageEvent.getVictor().getId()))
             {
-                return true;
+                otherVehicle = damageEvent.getVictim();
             }
-       }
+
+            if (otherVehicle instanceof LogPlane)
+            {
+                LogPlane otherPlane = (LogPlane) otherVehicle;
+
+                if (otherPlane.isLogPlaneFromPlayerSquadron(campaign))
+                {
+                    return true;
+                }
+            }
+        }
         
         return false;
     }

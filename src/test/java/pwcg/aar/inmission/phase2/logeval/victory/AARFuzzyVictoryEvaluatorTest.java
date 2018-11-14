@@ -14,7 +14,6 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyByPlayerDamaged;
 import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyVictoryEvaluator;
-import pwcg.aar.inmission.phase2.logeval.victory.AARRandomAssignment;
 import pwcg.core.exception.PWCGException;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -25,9 +24,6 @@ public class AARFuzzyVictoryEvaluatorTest
 
     @Mock
     private AARFuzzyByPlayerDamaged fuzzyByPlayerDamaged;
-    
-    @Mock
-    private AARRandomAssignment randomAssignment;
     
     private LogVictory victoryResult;
     
@@ -52,13 +48,12 @@ public class AARFuzzyVictoryEvaluatorTest
         victoryResult.setVictim(new LogPlane(2));
         victim.setId("11111");
         Mockito.when(vehicleBuilder.getVehicle(Matchers.<String>any())).thenReturn(victim);
-        Mockito.when(randomAssignment.markForRandomAssignment(victoryResult)).thenReturn(unknownVictorEntity);
+        Mockito.when(fuzzyByPlayerDamaged.getVictorBasedOnDamage(victoryResult)).thenReturn(unknownVictorEntity);
         unknownVictorEntity.setId("11111");
         
         AARFuzzyVictoryEvaluator fuzzyVictoryEvaluator= new AARFuzzyVictoryEvaluator(
                         vehicleBuilder, 
-                        fuzzyByPlayerDamaged,
-                        randomAssignment);
+                        fuzzyByPlayerDamaged);
         
         fuzzyVictoryEvaluator.applyFuzzyVictoryMethods(victoryResult);
         
@@ -73,12 +68,11 @@ public class AARFuzzyVictoryEvaluatorTest
         unknownVictorEntity.setId("11111");
 
         Mockito.when(vehicleBuilder.getVehicle(Matchers.<String>any())).thenReturn(victim);
-        Mockito.when(randomAssignment.markForRandomAssignment(victoryResult)).thenReturn(unknownVictorEntity);
+        Mockito.when(fuzzyByPlayerDamaged.getVictorBasedOnDamage(victoryResult)).thenReturn(unknownVictorEntity);
         
         AARFuzzyVictoryEvaluator fuzzyVictoryEvaluator= new AARFuzzyVictoryEvaluator(
                         vehicleBuilder, 
-                        fuzzyByPlayerDamaged,
-                        randomAssignment);
+                        fuzzyByPlayerDamaged);
         
         fuzzyVictoryEvaluator.applyFuzzyVictoryMethods(victoryResult);
         
@@ -93,12 +87,11 @@ public class AARFuzzyVictoryEvaluatorTest
         unknownVictorEntity.setId("11111");
 
         Mockito.when(vehicleBuilder.getVehicle(Matchers.<String>any())).thenReturn(victim);
-        Mockito.when(randomAssignment.markForRandomAssignment(victoryResult)).thenReturn(unknownVictorEntity);
+        Mockito.when(fuzzyByPlayerDamaged.getVictorBasedOnDamage(victoryResult)).thenReturn(unknownVictorEntity);
         
         AARFuzzyVictoryEvaluator fuzzyVictoryEvaluator= new AARFuzzyVictoryEvaluator(
                         vehicleBuilder, 
-                        fuzzyByPlayerDamaged,
-                        randomAssignment);
+                        fuzzyByPlayerDamaged);
         
         fuzzyVictoryEvaluator.applyFuzzyVictoryMethods(victoryResult);
         
@@ -114,12 +107,11 @@ public class AARFuzzyVictoryEvaluatorTest
         unknownVictorEntity.setId("11111");
 
         Mockito.when(vehicleBuilder.getVehicle(Matchers.<String>any())).thenReturn(victim);
-        Mockito.when(randomAssignment.markForRandomAssignment(victoryResult)).thenReturn(unknownVictorEntity);
+        Mockito.when(fuzzyByPlayerDamaged.getVictorBasedOnDamage(victoryResult)).thenReturn(unknownVictorEntity);
         
         AARFuzzyVictoryEvaluator fuzzyVictoryEvaluator= new AARFuzzyVictoryEvaluator(
                         vehicleBuilder, 
-                        fuzzyByPlayerDamaged,
-                        randomAssignment);
+                        fuzzyByPlayerDamaged);
         
         fuzzyVictoryEvaluator.applyFuzzyVictoryMethods(victoryResult);
         
@@ -132,13 +124,12 @@ public class AARFuzzyVictoryEvaluatorTest
         victoryResult.setVictim(new LogPlane(5));
         victim.setId("11111");
         Mockito.when(vehicleBuilder.getVehicle(Matchers.<String>any())).thenReturn(null);
-        Mockito.when(randomAssignment.markForRandomAssignment(victoryResult)).thenReturn(unknownVictorEntity);
+        Mockito.when(fuzzyByPlayerDamaged.getVictorBasedOnDamage(victoryResult)).thenReturn(unknownVictorEntity);
         unknownVictorEntity.setId("11111");
         
         AARFuzzyVictoryEvaluator fuzzyVictoryEvaluator= new AARFuzzyVictoryEvaluator(
                         vehicleBuilder, 
-                        fuzzyByPlayerDamaged,
-                        randomAssignment);
+                        fuzzyByPlayerDamaged);
         
         fuzzyVictoryEvaluator.applyFuzzyVictoryMethods(victoryResult);
         

@@ -18,12 +18,16 @@ import pwcg.aar.inmission.phase1.parse.event.rof.AType3;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
+import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AARDestroyedStatusEvaluatorTest
 {
+    @Mock
+    private Campaign campaign;
+
     @Mock
     private AARDamageStatusEvaluator aarDamageStatusEvaluator;
     
@@ -79,6 +83,7 @@ public class AARDestroyedStatusEvaluatorTest
         Mockito.when(aarVehicleBuilder.getVehicle("102")).thenReturn(DestroyedVictim1);
 
         AARDestroyedStatusEvaluator aarDestroyedStatusEvaluator = new AARDestroyedStatusEvaluator(
+                        campaign,
                         logEventData,
                         aarVehicleBuilder,
                         aarDamageStatusEvaluator);
@@ -114,6 +119,7 @@ public class AARDestroyedStatusEvaluatorTest
         Mockito.when(aarVehicleBuilder.getVehicle("102")).thenReturn(null);
 
         AARDestroyedStatusEvaluator aarDestroyedStatusEvaluator = new AARDestroyedStatusEvaluator(
+                        campaign,
                         logEventData,
                         aarVehicleBuilder,
                         aarDamageStatusEvaluator);
@@ -157,6 +163,7 @@ public class AARDestroyedStatusEvaluatorTest
         
         
         AARDestroyedStatusEvaluator aarDestroyedStatusEvaluator = new AARDestroyedStatusEvaluator(
+                        campaign,
                         logEventData,
                         aarVehicleBuilder,
                         aarDamageStatusEvaluator);

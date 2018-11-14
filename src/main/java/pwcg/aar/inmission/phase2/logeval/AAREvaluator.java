@@ -1,14 +1,11 @@
 package pwcg.aar.inmission.phase2.logeval;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.equipmentstatus.AAREquipmentStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.victory.AARAreaOfCombat;
 import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyByPlayerDamaged;
 import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyVictoryEvaluator;
-import pwcg.aar.inmission.phase2.logeval.victory.AARRandomAssignment;
-import pwcg.aar.inmission.phase2.logeval.victory.AARRandomAssignmentCalculator;
 import pwcg.aar.inmission.phase2.logeval.victory.AARVictoryEvaluator;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.Campaign;
@@ -42,7 +39,7 @@ public class AAREvaluator
         aarDamageStatusEvaluator = new AARDamageStatusEvaluator(aarContext.getMissionLogRawData().getLogEventData(), aarVehicleBuilder);
         aarDamageStatusEvaluator.buildDamagedList();
         
-        aarDestroyedStatusEvaluator = new AARDestroyedStatusEvaluator(aarContext.getMissionLogRawData().getLogEventData(), aarVehicleBuilder, aarDamageStatusEvaluator);
+        aarDestroyedStatusEvaluator = new AARDestroyedStatusEvaluator(campaign, aarContext.getMissionLogRawData().getLogEventData(), aarVehicleBuilder, aarDamageStatusEvaluator);
         aarDestroyedStatusEvaluator.buildDeadLists();
         
         aarPilotStatusEvaluator = new AARPilotStatusEvaluator(
@@ -95,16 +92,9 @@ public class AAREvaluator
     private AARFuzzyVictoryEvaluator createAARFuzzyVictoryEvaluator(AARAreaOfCombat areaOfCombat)
     {
         AARFuzzyByPlayerDamaged fuzzyByPlayerDamaged = new AARFuzzyByPlayerDamaged(aarDamageStatusEvaluator);
-        AARRandomAssignment randomAssignment = createAARRandomAssignment(aarContext.getMissionLogRawData().getLogEventData(), areaOfCombat);
-        return new AARFuzzyVictoryEvaluator(aarVehicleBuilder, fuzzyByPlayerDamaged, randomAssignment);        
+        return new AARFuzzyVictoryEvaluator(aarVehicleBuilder, fuzzyByPlayerDamaged);
     }
     
-    private AARRandomAssignment createAARRandomAssignment(AARLogEventData logEventData, AARAreaOfCombat areaOfCombat)
-    {
-        AARRandomAssignmentCalculator randomAssignmentCalculator = new AARRandomAssignmentCalculator(areaOfCombat);
-        return new AARRandomAssignment(logEventData, randomAssignmentCalculator);
-    }
-
     public AARDamageStatusEvaluator getAarDamageStatusEvaluator()
     {
         return aarDamageStatusEvaluator;

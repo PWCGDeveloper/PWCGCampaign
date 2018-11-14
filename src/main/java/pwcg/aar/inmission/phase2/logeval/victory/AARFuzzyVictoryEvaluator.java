@@ -10,16 +10,14 @@ public class AARFuzzyVictoryEvaluator
 {
     private AARVehicleBuilder vehicleBuilder;
     private AARFuzzyByPlayerDamaged fuzzyByPlayerDamaged;
-    private AARRandomAssignment randomAssignment;
     
     public AARFuzzyVictoryEvaluator(
                     AARVehicleBuilder vehicleBuilder, 
-                    AARFuzzyByPlayerDamaged fuzzyByPlayerDamaged,
-                    AARRandomAssignment randomAssignment)
+                    AARFuzzyByPlayerDamaged fuzzyByPlayerDamaged)
     {
         this.vehicleBuilder = vehicleBuilder;
         this.fuzzyByPlayerDamaged = fuzzyByPlayerDamaged;
-        this.randomAssignment = randomAssignment;
+
     }
 
     public void applyFuzzyVictoryMethods(LogVictory victoryResult) throws PWCGException 
@@ -27,14 +25,8 @@ public class AARFuzzyVictoryEvaluator
         if (shouldFuzzyVictoryMethodsBeUsed(victoryResult))
         {
             LogAIEntity victor = fuzzyByPlayerDamaged.getVictorBasedOnDamage(victoryResult);
-            if (victor == null)
-            {
-                LogAIEntity randomAssignmentEntity = randomAssignment.markForRandomAssignment(victoryResult);
-                if (randomAssignmentEntity != null)
-                {
-                    victoryResult.setVictor(randomAssignmentEntity);
-                }
-            }
+            if (victor != null)
+                victoryResult.setVictor(victor);
         }
     }
 

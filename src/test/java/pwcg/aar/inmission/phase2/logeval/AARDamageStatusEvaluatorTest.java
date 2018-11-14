@@ -76,7 +76,7 @@ public class AARDamageStatusEvaluatorTest
                         aarVehicleBuilder);
 
         aarDamageStatusEvaluator.buildDamagedList();
-        List<LogDamage> vehiclesDamagedByPlayer = aarDamageStatusEvaluator.getVehiclesDamagedByPlayer();
+        List<LogDamage> vehiclesDamagedByPlayer = aarDamageStatusEvaluator.getVehiclesDamaged();
 
         assert(vehiclesDamagedByPlayer.size() == 2);
     }
@@ -105,7 +105,7 @@ public class AARDamageStatusEvaluatorTest
                         aarVehicleBuilder);
 
         aarDamageStatusEvaluator.buildDamagedList();
-        List<LogDamage> vehiclesDamagedByPlayer = aarDamageStatusEvaluator.getVehiclesDamagedByPlayer();
+        List<LogDamage> vehiclesDamagedByPlayer = aarDamageStatusEvaluator.getVehiclesDamaged();
 
         assert(vehiclesDamagedByPlayer.size() == 2);
     }
@@ -134,7 +134,7 @@ public class AARDamageStatusEvaluatorTest
                         aarVehicleBuilder);
 
         aarDamageStatusEvaluator.buildDamagedList();
-        List<LogDamage> vehiclesDamagedByPlayer = aarDamageStatusEvaluator.getVehiclesDamagedByPlayer();
+        List<LogDamage> vehiclesDamagedByPlayer = aarDamageStatusEvaluator.getVehiclesDamaged();
 
         assert(vehiclesDamagedByPlayer.size() == 1);
     }

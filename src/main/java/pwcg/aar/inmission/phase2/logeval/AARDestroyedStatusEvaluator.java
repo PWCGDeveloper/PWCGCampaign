@@ -9,6 +9,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 
 
@@ -19,16 +20,18 @@ public class AARDestroyedStatusEvaluator
 
     private AARVehicleBuilder aarVehicleBuilder;
     private AARLogEventData logEventData;
-    private AARCrossedPathWithPlayerEvaluator aarCrossedPathWithPlayerEvaluator = new AARCrossedPathWithPlayerEvaluator();
+    private AARCrossedPathWithPlayerEvaluator aarCrossedPathWithPlayerEvaluator;
     private AARDamageStatusEvaluator aarDamageStatusEvaluator;
     
     public AARDestroyedStatusEvaluator(
+                    Campaign campaign,
                     AARLogEventData logEventData, 
                     AARVehicleBuilder aarVehicleBuilder, 
                     AARDamageStatusEvaluator aarDamageStatusEvaluator)
     {
         this.logEventData = logEventData;        
         this.aarVehicleBuilder = aarVehicleBuilder;
+        this.aarCrossedPathWithPlayerEvaluator = new AARCrossedPathWithPlayerEvaluator(campaign);
         this.aarDamageStatusEvaluator = aarDamageStatusEvaluator;        
     }
 
@@ -79,11 +82,11 @@ public class AARDestroyedStatusEvaluator
     	return null;
     }
 
-    private void setCrossedPathWithPlayer(LogVictory victoryResult)
+    private void setCrossedPathWithPlayer(LogVictory victoryResult) throws PWCGException
     {
         boolean crossedPathWithPlayer = aarCrossedPathWithPlayerEvaluator.isCrossedPathWithPlayerFlight(
                         victoryResult, 
-                        aarDamageStatusEvaluator.getVehiclesDamagedByPlayer(),
+                        aarDamageStatusEvaluator.getVehiclesDamaged(),
                         logEventData.getWaypointEvents());
         
         victoryResult.setCrossedPlayerPath(crossedPathWithPlayer);

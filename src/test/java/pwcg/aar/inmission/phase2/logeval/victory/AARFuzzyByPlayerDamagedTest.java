@@ -32,6 +32,10 @@ public class AARFuzzyByPlayerDamagedTest
     
     private LogPlane shotDownPlane3 = new LogPlane(4);
 
+    private LogPlane shotDownPlane4 = new LogPlane(5);
+
+    private LogPlane otherPlane = new LogPlane(6);
+
     
     @Before
     public void setup()
@@ -40,19 +44,37 @@ public class AARFuzzyByPlayerDamagedTest
         shotDownPlane1.setId("77777");
         shotDownPlane2.setId("88888");
         shotDownPlane3.setId("99999");
+        shotDownPlane4.setId("66666");
+        otherPlane.setId("22222");
         
-        List<LogDamage> damageEvents = new ArrayList<>();
+        List<LogDamage> damageEventsPlane1 = new ArrayList<>();
         LogDamage logDamage1 = new LogDamage(100);
         logDamage1.setVictor(playerPlane);
         logDamage1.setVictim(shotDownPlane1);
-        damageEvents.add(logDamage1);
+        damageEventsPlane1.add(logDamage1);
 
+        List<LogDamage> damageEventsPlane2 = new ArrayList<>();
         LogDamage logDamage2 = new LogDamage(101);
         logDamage2.setVictor(playerPlane);
         logDamage2.setVictim(shotDownPlane2);
-        damageEvents.add(logDamage2);
+        damageEventsPlane2.add(logDamage2);
 
-        Mockito.when(aarDamageStatusEvaluator.getVehiclesDamagedByPlayer()).thenReturn(damageEvents);
+        List<LogDamage> damageEventsPlane4 = new ArrayList<>();
+        LogDamage logDamage3 = new LogDamage(102);
+        logDamage3.setVictor(playerPlane);
+        logDamage3.setVictim(shotDownPlane4);
+        logDamage3.addDamage(0.1);
+        damageEventsPlane4.add(logDamage3);
+
+        LogDamage logDamage4 = new LogDamage(103);
+        logDamage4.setVictor(otherPlane);
+        logDamage4.setVictim(shotDownPlane4);
+        logDamage4.addDamage(0.05);
+        damageEventsPlane4.add(logDamage4);
+
+        Mockito.when(aarDamageStatusEvaluator.getDamageEventsForVehicle(shotDownPlane1.getId())).thenReturn(damageEventsPlane1);
+        Mockito.when(aarDamageStatusEvaluator.getDamageEventsForVehicle(shotDownPlane2.getId())).thenReturn(damageEventsPlane2);
+        Mockito.when(aarDamageStatusEvaluator.getDamageEventsForVehicle(shotDownPlane4.getId())).thenReturn(damageEventsPlane4);
     }
     
     @Test
@@ -105,6 +127,16 @@ public class AARFuzzyByPlayerDamagedTest
         fuzzyByPlayerDamaged = new AARFuzzyByPlayerDamaged(aarDamageStatusEvaluator);
         victor = fuzzyByPlayerDamaged.getVictorBasedOnDamage(victoryResult);
         assert(victor == null);
+    }
+
+    @Test
+    public void testSetVehiclesCreditedByDamageTwoAttackers () throws PWCGException
+    {
+        LogVictory victoryResult = makeShotDownPlane(shotDownPlane4.getId());
+        AARFuzzyByPlayerDamaged fuzzyByPlayerDamaged = new AARFuzzyByPlayerDamaged(aarDamageStatusEvaluator);
+        LogAIEntity victor = fuzzyByPlayerDamaged.getVictorBasedOnDamage(victoryResult);
+
+        assert(victor == playerPlane);
     }
 
     private LogVictory makeShotDownPlane(String id)
