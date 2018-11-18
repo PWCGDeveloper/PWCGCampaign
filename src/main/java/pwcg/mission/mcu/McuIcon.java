@@ -75,7 +75,7 @@ public class McuIcon extends BaseFlightMcu
 
             lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
 
-            desc = waypoint.getName();
+	    desc = waypoint.getName() + "<routespeed>" + waypoint.getSpeed() + "</routespeed>";
         }
         else
         {
