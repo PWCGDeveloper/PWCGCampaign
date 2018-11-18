@@ -4,12 +4,16 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.escort.EscortedByPlayerFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.mcu.McuIcon;
+import pwcg.mission.mcu.McuIconLineType;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionWaypointIconBuilder
@@ -50,6 +54,54 @@ public class MissionWaypointIconBuilder
             }
             prevIcon = icon;
             waypointIcons.add(icon);
+
+            if (waypoint.getWpAction() == WaypointAction.WP_ACTION_RENDEZVOUS)
+            {
+                EscortedByPlayerFlight escortedFlight = playerFlight.getLinkedFlights().getEscortedByPlayer();
+                if (escortedFlight != null)
+                {
+                    boolean foundRendezvous = false;
+
+                    for (McuWaypoint escortWaypoint : escortedFlight.getWaypointPackage().getAllWaypoints())
+                    {
+                        if (escortWaypoint.getWpAction() == WaypointAction.WP_ACTION_LANDING_APPROACH)
+                        {
+                            break;
+                        }
+                        if (!foundRendezvous)
+                        {
+                            if (escortWaypoint.getWpAction() == WaypointAction.WP_ACTION_RENDEZVOUS)
+                            {
+                                foundRendezvous = true;
+                            }
+                            continue;
+                        }
+
+                        icon = new McuIcon(escortWaypoint, playerFlight.getFlightInformation().getCountry().getSide());
+                        icon.setName("Escort " + icon.getName());
+                        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+                        if (productSpecificConfiguration.usePosition1()) {
+                            prevIcon.setLineType(McuIconLineType.ICON_LINE_TYPE_POSITION2);
+                        }
+                        prevIcon.setTarget(icon.getIndex());
+                        prevIcon = icon;
+                        waypointIcons.add(icon);
+
+                        if (escortWaypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
+                        {
+                            MissionPoint target = escortedFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_ATTACK);
+                            icon = new McuIcon(WaypointAction.WP_ACTION_ATTACK, target, escortedFlight.getFlightInformation().getCountry().getSide());
+                            icon.setName("Escort " + icon.getName());
+                            if (productSpecificConfiguration.usePosition1()) {
+                                prevIcon.setLineType(McuIconLineType.ICON_LINE_TYPE_POSITION2);
+                            }
+                            prevIcon.setTarget(icon.getIndex());
+                            prevIcon = icon;
+                            waypointIcons.add(icon);
+                        }
+                    }
+                }
+            }
 
             if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
             {
