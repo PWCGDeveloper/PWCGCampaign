@@ -50,6 +50,15 @@ public class MissionWaypointIconBuilder
             }
             prevIcon = icon;
             waypointIcons.add(icon);
+
+            if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
+            {
+                MissionPoint target = playerFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_ATTACK);
+                icon = new McuIcon(WaypointAction.WP_ACTION_ATTACK, target, playerFlight.getFlightInformation().getCountry().getSide());
+                prevIcon.setTarget(icon.getIndex());
+                prevIcon = icon;
+                waypointIcons.add(icon);
+            }
         }
 
         MissionPoint landing = playerFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_LANDING);

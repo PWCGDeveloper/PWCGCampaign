@@ -96,6 +96,10 @@ public class McuIcon extends BaseFlightMcu
         {
             createIconTakeoff(missionPoint, side);
         }
+        else if (action == WaypointAction.WP_ACTION_ATTACK)
+        {
+            createIconTarget(missionPoint, side);
+        }
         else
         {
             createIconLanding(missionPoint, side);
@@ -117,6 +121,32 @@ public class McuIcon extends BaseFlightMcu
             bColor = 0;
 
             lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
+        }
+
+        lCName = LCIndexGenerator.getInstance().getNextIndex();
+        lCDesc = lCName;
+
+        MissionStringHandler.getInstance().registerMissionText(lCName, name);
+        coalitions.add(CoalitionFactory.getCoalitionBySide(side));
+    }
+
+    private void createIconTarget(MissionPoint target, Side side) {
+        position = target.getPosition();
+
+        iconId = McuIconIdType.ICON_ID_ACTION_POINT;
+
+        name = "Target";
+        desc = "Target";
+
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        if (productSpecificConfiguration.usePosition1()) {
+            rColor = 0;
+            gColor = 0;
+            bColor = 0;
+
+            lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
+
+            desc = name;
         }
 
         lCName = LCIndexGenerator.getInstance().getNextIndex();
