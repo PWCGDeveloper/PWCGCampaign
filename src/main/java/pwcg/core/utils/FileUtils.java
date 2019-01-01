@@ -42,7 +42,7 @@ public class FileUtils
         return false;
     }
     
-    private void deleteFile(String sFilePath)
+    public void deleteFile(String sFilePath)
     {
         File oFile = new File(sFilePath);
         if(oFile.isDirectory())

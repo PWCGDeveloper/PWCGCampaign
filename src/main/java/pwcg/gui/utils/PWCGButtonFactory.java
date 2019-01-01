@@ -43,6 +43,17 @@ public class PWCGButtonFactory extends JButton
         return button;
     }
 
+    public static JButton makePaperButtonWithBorder(String buttonText, String commandText, ActionListener actionListener) throws PWCGException 
+    {
+        Color bgColor = ColorMap.PAPER_BACKGROUND;
+        Color fgColor = ColorMap.PAPER_FOREGROUND;
+        Font font = MonitorSupport.getPrimaryFont();
+        
+        PWCGJButton button = makeButtonWithBorder(buttonText, commandText, actionListener, bgColor, fgColor, font);
+
+        return button;
+    }
+
     public static JButton makeChalkBoardButton(String buttonText, String commandText, ActionListener actionListener) throws PWCGException 
     {
         Color bgColor = ColorMap.CHALK_BACKGROUND;
@@ -112,6 +123,30 @@ public class PWCGButtonFactory extends JButton
         button.setBorderPainted(false);
         button.setHorizontalAlignment(SwingConstants.LEFT);
         button.addActionListener(actionListener);
+        return button;
+    }
+
+
+    private static PWCGJButton makeButtonWithBorder(
+                    String buttonText, 
+                    String commandText, 
+                    ActionListener actionListener, 
+                    Color bgColor,
+                    Color fgColor, 
+                    Font font)
+    {
+        PWCGJButton button = new PWCGJButton(buttonText);
+        button.setActionCommand(commandText);
+        button.setBackground(bgColor);
+        button.setForeground(fgColor);
+        button.setOpaque(false);
+        button.setFont(font);
+        button.setBorderPainted(true);
+        button.setHorizontalAlignment(SwingConstants.CENTER);
+        button.addActionListener(actionListener);
+        
+        button.setBorder(new RoundedBorder(8)); //10 is the radius
+
         return button;
     }
 

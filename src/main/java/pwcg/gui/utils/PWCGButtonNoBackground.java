@@ -5,12 +5,6 @@ import java.awt.Graphics;
 
 import javax.swing.JButton;
 
-/**
- * This class eliminates the obnoxious background color on a button press
- * 
- * @author Patrick Wilson
- *
- */
 public class PWCGButtonNoBackground extends JButton
 {
     private static final long serialVersionUID = 1L;

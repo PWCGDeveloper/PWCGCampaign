@@ -6,7 +6,7 @@ import java.util.TreeMap;
 public class SkinSet
 {
     private SkinSetType skinSetType;
-    private Map<String, Skin> skins = new TreeMap<String, Skin>();
+    private Map<String, Skin> skins = new TreeMap<>();
 
     public SkinSet(SkinSetType skinSetType)
     {

@@ -7,6 +7,8 @@ import pwcg.campaign.ArmedService;
 
 public interface IRankHelper
 {
+    public static int COMMAND_RANK = 0;
+    
     public ArrayList<String> getRanksByService(ArmedService service);
     public int getLowestRankPosForService(ArmedService service);
     public int getRankPosByService(String currentRank, ArmedService service);

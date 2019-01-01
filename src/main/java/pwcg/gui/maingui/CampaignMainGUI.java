@@ -30,6 +30,8 @@ import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.campaign.coop.CoopPilotAccept;
+import pwcg.gui.campaign.coop.CoopUserAccept;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -320,6 +322,8 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
         makeMenuButton ("Music", "Music", buttonPanel);
         makeMenuButton ("Skin Analysis", "Skin Analysis", buttonPanel);
         makeMenuButton ("PWCG Information", "PWCG Information", buttonPanel);
+        makeMenuButton ("Administer Coop Participation", "Administer Coop Participation", buttonPanel);
+        makeMenuButton ("Administer Coop Pilot Creation", "Administer Coop Pilot Creation", buttonPanel);
         
         if (displayFrontLineEditor)
         {
@@ -534,19 +538,23 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 				int index = action.indexOf(":");
 				String campaignName = action.substring(index+1);
 				loadCampaign(campaignName);
-				return;
 			}
             else if (action.contains("PWCG Information"))
             {
                 showPWCGInfoMap();
-                return;
             }
             else if (action.contains("PWCG Edit Front"))
             {
                 showPWCGEditMap();
-                return;
             }
-
+            else if (action.equals("Administer Coop Participation"))
+            {
+                showCoopUserAdmin();
+            }            
+            else if (action.equals("Administer Coop Pilot Creation"))
+            {
+                showCoopPilotAdmin();
+            }            
 		}
 		catch (Exception e)
 		{
@@ -603,5 +611,19 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
         editMapGUI.makeGUI();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(editMapGUI);
+    }    
+
+    private void showCoopUserAdmin() throws PWCGException 
+    {
+        CoopUserAccept coopConfigGUI = new CoopUserAccept();
+        coopConfigGUI.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(coopConfigGUI);
+    }
+
+    private void showCoopPilotAdmin() throws PWCGException 
+    {
+        CoopPilotAccept coopConfigGUI = new CoopPilotAccept();
+        coopConfigGUI.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(coopConfigGUI);
     }
 }

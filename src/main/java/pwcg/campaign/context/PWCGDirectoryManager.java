@@ -53,6 +53,11 @@ public class PWCGDirectoryManager
         return pwcgRootDir + "Audio\\";
     }
     
+    public String getPwcgCoopDir()
+    {
+        return pwcgRootDir + "Coop\\";
+    }
+    
     public String getPwcgInputDir()
     {
         return pwcgDataDir + "Input\\";

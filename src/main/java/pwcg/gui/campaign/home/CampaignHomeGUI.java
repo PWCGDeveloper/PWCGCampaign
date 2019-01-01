@@ -203,7 +203,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         
         JLabel space4 = new JLabel("");
         buttonPanel.add(space4);
-
+        
         JButton mainButton = makeMenuButton("Leave Campaign", "CampMainMenu", "Return to PWCG main menu");
         addButton(buttonPanel, mainButton);
 
@@ -474,6 +474,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             {
                 showAdvancedConfig();
             }
+
         }
         catch (PWCGUserException ue)
         {
@@ -637,7 +638,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         simpleConfigGUI.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(simpleConfigGUI);
     }
-
+    
     private void showPilot(String action) throws PWCGException 
     {
         SquadronMember pilot = UIUtils.getPilotFromAction(campaign, action);

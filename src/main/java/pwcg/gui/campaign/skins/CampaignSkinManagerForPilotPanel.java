@@ -39,16 +39,7 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
 
-/**
- * Skin assignment panel for pilot skin management
- * Select aircraft
- * Select skin set
- * Select skin
- * Display skins assigned to pilot
- * 
- * @author Patrick Wilson
- *
- */
+
 public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;

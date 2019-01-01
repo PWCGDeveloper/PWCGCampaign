@@ -74,6 +74,23 @@ public class SquadronPersonnel
         return false;
     }
 
+    public SquadronMembers getActiveAiSquadronMembers() throws PWCGException
+    {
+        SquadronMembers campaignMembers = getSquadronMembersWithAces();
+        SquadronMembers inactiveSquadronMembers = SquadronMemberFilter.filterInactiveAIAndPlayerAndAces(campaignMembers.getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers recentlyInactiveSquadronMembers = new SquadronMembers();
+        for (SquadronMember squadronMember : inactiveSquadronMembers.getSquadronMemberList())
+        {
+            Date oneWeekAgo = DateUtils.removeTimeDays(campaign.getDate(), 7);
+            if (squadronMember.getInactiveDate().after(oneWeekAgo))
+            {
+                recentlyInactiveSquadronMembers.addToSquadronMemberCollection(squadronMember);
+            }
+        }
+        
+        return recentlyInactiveSquadronMembers;
+    }
+
     public SquadronMembers getRecentlyInactiveSquadronMembers() throws PWCGException
     {
         SquadronMembers campaignMembers = getSquadronMembersWithAces();

@@ -13,14 +13,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.CampaignGeneratorModel;
+import pwcg.campaign.CampaignHumanPilotHandler;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberFactory;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -229,27 +227,14 @@ public class CampaignAddHumanPilotPanelSet extends PwcgGuiContext implements Act
     }
 
     private void addNewPilot() throws PWCGException
-    {
+    {        
         String rank = (String)cbPilotRank.getSelectedItem();
         String playerName = playerNameTextBox.getText();
         String replaceInfo = (String)cbReplacePilot.getSelectedItem();
         String[] replaceInfoArray = replaceInfo.split(":");
         int serialNumberToReplace = new Integer(replaceInfoArray[0]);
-        
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getCampaignData().getSquadId());
-        SquadronPersonnel playerSquadronPersonnel = campaign.getPersonnelManager().getPlayerPersonnel();
 
-        CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
-        generatorModel.setPlayerRank(rank);
-        generatorModel.setPlayerName(playerName);
-        generatorModel.setService(squadron.determineServiceForSquadron(campaign.getDate()));
-        
-        SquadronMemberFactory squadronMemberFactory = new SquadronMemberFactory(campaign, squadron, playerSquadronPersonnel);
-        SquadronMember newPlayer = squadronMemberFactory.createPlayer(generatorModel);
-
-        playerSquadronPersonnel.addSquadronMember(newPlayer);
-        
-        SquadronMember aiToRemove = playerSquadronPersonnel.getSquadronMember(serialNumberToReplace);
-        playerSquadronPersonnel.removeSquadronMember(aiToRemove);
+        CampaignHumanPilotHandler humanPilotHandler = new CampaignHumanPilotHandler(campaign);
+        humanPilotHandler.addNewPilot(playerName, rank, serialNumberToReplace, campaign.getSquadronId());
     }
 }
