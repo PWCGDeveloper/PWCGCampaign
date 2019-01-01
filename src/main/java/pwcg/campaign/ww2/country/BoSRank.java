@@ -8,6 +8,10 @@ import java.util.TreeMap;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.io.json.RankIOJson;
+import pwcg.campaign.personnel.Rank;
+import pwcg.campaign.personnel.Ranks;
+import pwcg.core.utils.Logger;
 
 public class BoSRank implements IRankHelper 
 {
@@ -19,32 +23,36 @@ public class BoSRank implements IRankHelper
 
 	public BoSRank ()
 	{
-        // Russian	    
-        ussr.put (0, new RankStruct("Major", "Maj"));
-        ussr.put (1, new RankStruct("Kapitan", "Kap"));
-        ussr.put (2, new RankStruct("Starshyi leyitenant", "SLt"));
-        ussr.put (3, new RankStruct("Leyitenant", "Lt"));
-        ussr.put (4, new RankStruct("Serzhant", "Szt"));
-        
-		// Germany
-        luftwaffe.put (0, new RankStruct("Major", "Maj"));
-        luftwaffe.put (1, new RankStruct("Hauptmann", "Hptm"));
-		luftwaffe.put (2, new RankStruct("Oberleutnant", "Olt"));
-		luftwaffe.put (3, new RankStruct("Leutnant", "Ltn"));
-		luftwaffe.put (4, new RankStruct("Oberfeldwebel", "OFw"));
-		
-		// Italy
-        iaf.put (0, new RankStruct("Maggiore", "Mgr"));
-        iaf.put (1, new RankStruct("Capitano", "Cpt"));
-        iaf.put (2, new RankStruct("Tenente", "Tnt"));
-        iaf.put (3, new RankStruct("Sottotenente", "STnt"));
-        iaf.put (4, new RankStruct("Sergeant", "Sgt"));
-
-        // Form a map of rank maps
-        ranksByService.put(BoSServiceManager.VVS, ussr);
-        ranksByService.put(BoSServiceManager.LUFTWAFFE, luftwaffe);
-        ranksByService.put(BoSServiceManager.REGIA_AERONAUTICA, iaf);
-
+	    try
+	    {
+    	    Ranks ranks = RankIOJson.readJson();
+    	    
+    	    for (Rank rank : ranks.getRanks())
+    	    {
+    	        RankStruct rankStruct = new RankStruct(rank.getRankName(), rank.getRankAbbrev());
+    	        if (rank.getRankService() == BoSServiceManager.VVS)
+    	        {
+    	            ussr.put(rank.getRankId(), rankStruct);
+    	        }
+                else if (rank.getRankService() == BoSServiceManager.LUFTWAFFE)
+                {
+                    luftwaffe.put(rank.getRankId(), rankStruct);
+                }
+                else if (rank.getRankService() == BoSServiceManager.REGIA_AERONAUTICA)
+                {
+                    iaf.put(rank.getRankId(), rankStruct);
+                }
+    	    }
+    
+            // Form a map of rank maps
+            ranksByService.put(BoSServiceManager.VVS, ussr);
+            ranksByService.put(BoSServiceManager.LUFTWAFFE, luftwaffe);
+            ranksByService.put(BoSServiceManager.REGIA_AERONAUTICA, iaf);
+	    }
+	    catch (Exception e)
+	    {
+	        Logger.logException(e);
+	    }
 	}
 
 	@Override

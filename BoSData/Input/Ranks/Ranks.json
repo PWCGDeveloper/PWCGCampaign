@@ -1,0 +1,110 @@
+{
+    "ranks":
+    [
+        {
+            "rankId": 0,
+            "rankName": "Major",
+            "rankAbbrev": "Maj",
+            "rankCountry": 101,
+            "rankService": 10101
+        },
+        {
+            "rankId": 1,
+            "rankName": "Kapitan",
+            "rankAbbrev": "Kap",
+            "rankCountry": 101,
+            "rankService": 10101
+        },
+        {
+            "rankId": 2,
+            "rankName": "Starshyi Leyitenant",
+            "rankAbbrev": "SLt",
+            "rankCountry": 101,
+            "rankService": 10101
+        },
+        {
+            "rankId": 3,
+            "rankName": "Leyitenant",
+            "rankAbbrev": "Lt",
+            "rankCountry": 101,
+            "rankService": 10101
+        },
+        {
+            "rankId": 4,
+            "rankName": "Serzhant",
+            "rankAbbrev": "Szt",
+            "rankCountry": 101,
+            "rankService": 10101
+        },
+        {
+            "rankId": 0,
+            "rankName": "Major",
+            "rankAbbrev": "Maj",
+            "rankCountry": 201,
+            "rankService": 20101
+        },
+        {
+            "rankId": 1,
+            "rankName": "Hauptmann",
+            "rankAbbrev": "Hptm",
+            "rankCountry": 201,
+            "rankService": 20101
+        },
+        {
+            "rankId": 2,
+            "rankName": "Oberleutnant",
+            "rankAbbrev": "Olt",
+            "rankCountry": 201,
+            "rankService": 20101
+        },
+        {
+            "rankId": 3,
+            "rankName": "Leutnant",
+            "rankAbbrev": "Ltn",
+            "rankCountry": 201,
+            "rankService": 20101
+        },
+        {
+            "rankId": 4,
+            "rankName": "Oberfeldwebel",
+            "rankAbbrev": "OFw",
+            "rankCountry": 201,
+            "rankService": 20101
+        },
+        {
+            "rankId": 0,
+            "rankName": "Maggiore",
+            "rankAbbrev": "Mgr",
+            "rankCountry": 202,
+            "rankService": 20202
+        },
+        {
+            "rankId": 1,
+            "rankName": "Capitano",
+            "rankAbbrev": "Cpt",
+            "rankCountry": 202,
+            "rankService": 20202
+        },
+        {
+            "rankId": 2,
+            "rankName": "Tenente",
+            "rankAbbrev": "Tnt",
+            "rankCountry": 202,
+            "rankService": 20202
+        },
+        {
+            "rankId": 3,
+            "rankName": "Sottotenente",
+            "rankAbbrev": "STnt",
+            "rankCountry": 202,
+            "rankService": 20202
+        },
+        {
+            "rankId": 4,
+            "rankName": "Sergeant",
+            "rankAbbrev": "Sgt",
+            "rankCountry": 202,
+            "rankService": 20202
+        }
+    ]
+}
