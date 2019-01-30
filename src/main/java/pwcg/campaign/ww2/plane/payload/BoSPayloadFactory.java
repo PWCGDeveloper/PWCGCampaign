@@ -11,13 +11,16 @@ import pwcg.campaign.ww2.plane.payload.aircraft.A20BPayload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Bf109E7Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Bf109F2Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Bf109F4Payload;
+import pwcg.campaign.ww2.plane.payload.aircraft.Bf109G14Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Bf109G2Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Bf109G4Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Bf109G6Payload;
+import pwcg.campaign.ww2.plane.payload.aircraft.Bf109K4Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Bf110E2Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Bf110G2Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Fw190A3Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Fw190A5Payload;
+import pwcg.campaign.ww2.plane.payload.aircraft.Fw190A8Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.He111H16Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.He111H6Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Hs129B2Payload;
@@ -35,8 +38,10 @@ import pwcg.campaign.ww2.plane.payload.aircraft.Ma202Ser8Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.MiG3Ser24Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.P39L1Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.P40E1Payload;
+import pwcg.campaign.ww2.plane.payload.aircraft.P47D28Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Pe2S35Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Pe2S87Payload;
+import pwcg.campaign.ww2.plane.payload.aircraft.SpitfireMkIXePayload;
 import pwcg.campaign.ww2.plane.payload.aircraft.SpitfireMkVbPayload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Yak1S127Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Yak1S69Payload;
@@ -74,6 +79,14 @@ public class BoSPayloadFactory implements IPayloadFactory
         {
             return new Bf109G6Payload(planeType);
         }
+        else if (attributeMapping == BosPlaneAttributeMapping.BF109_G14)
+        {
+            return new Bf109G14Payload(planeType);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.BF109_K4)
+        {
+            return new Bf109K4Payload(planeType);
+        }
         else if (attributeMapping == BosPlaneAttributeMapping.BF110_E2)
         {
             return new Bf110E2Payload(planeType);
@@ -89,6 +102,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.FW190_A5)
         {
             return new Fw190A5Payload(planeType);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.FW190_A8)
+        {
+            return new Fw190A8Payload(planeType);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.HE111_H6)
         {
@@ -160,6 +177,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         {
             return new P40E1Payload(planeType);
         }
+        else if (attributeMapping == BosPlaneAttributeMapping.P47_D28)
+        {
+            return new P47D28Payload(planeType);
+        }
         else if (attributeMapping == BosPlaneAttributeMapping.PE2_S35)
         {
             return new Pe2S35Payload(planeType);
@@ -175,6 +196,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.SPITFIRE_MKVB)
         {
             return new SpitfireMkVbPayload(planeType);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.SPITFIRE_MKIXE)
+        {
+            return new SpitfireMkIXePayload(planeType);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.YAK1_S69)
         {

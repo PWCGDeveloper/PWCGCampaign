@@ -1,14 +1,14 @@
 {
-  "type": "fw190a5",
+  "type": "fw190a8",
   "archType": "fw190",
   "side": "AXIS",
-  "displayName": "Fw 190 A-5",
-  "script": "LuaScripts\\WorldObjects\\Planes\\fw190a5.txt",
-  "model": "graphics\\planes\\fw190a5\\fw190a5.mgm",
+  "displayName": "Fw 190 A-8",
+  "script": "LuaScripts\\WorldObjects\\Planes\\fw190a8.txt",
+  "model": "graphics\\planes\\fw190a8\\fw190a8.mgm",
   "desc": "",
   "cruisingSpeed": 360,
   "climbOutRate": 1100,
-  "goodness": 65,
+  "goodness": 70,
   "endurance": 1.0,
   "isFlyable": true,
   "planeSize": "PLANE_SIZE_SMALL",
@@ -16,6 +16,6 @@
     "ROLE_FIGHTER",
     "ROLE_ATTACK"
   ],
-  "introduction": "19430101",
+  "introduction": "19440301",
   "withdrawal": "19450503"
 }

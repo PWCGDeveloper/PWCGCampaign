@@ -20,13 +20,13 @@ public class P40E1Payload extends PlanePayload implements IPlanePayload
 	{
         setAvailablePayload(-1, "1000000", PayloadElement.MIRROR);
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(2, "11", PayloadElement.P40_4MG);
+        setAvailablePayload(2, "11", PayloadElement.MG50CAL_4x);
         setAvailablePayload(4, "10001", PayloadElement.FAB250SV_X1);
-        setAvailablePayload(6, "10011", PayloadElement.P40_4MG, PayloadElement.FAB250SV_X1);
+        setAvailablePayload(6, "10011", PayloadElement.MG50CAL_4x, PayloadElement.FAB250SV_X1);
         setAvailablePayload(8, "100001", PayloadElement.FAB500M_X1);
-        setAvailablePayload(10, "100011", PayloadElement.P40_4MG, PayloadElement.FAB500M_X1);
+        setAvailablePayload(10, "100011", PayloadElement.MG50CAL_4x, PayloadElement.FAB500M_X1);
         setAvailablePayload(12, "1001", PayloadElement.ROS82_X4);
-        setAvailablePayload(14, "1011", PayloadElement.P40_4MG, PayloadElement.ROS82_X4);
+        setAvailablePayload(14, "1011", PayloadElement.MG50CAL_4x, PayloadElement.ROS82_X4);
 	}
  
     @Override

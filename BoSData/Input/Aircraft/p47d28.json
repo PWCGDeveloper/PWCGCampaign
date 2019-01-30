@@ -1,0 +1,21 @@
+{
+  "type": "p47d28",
+  "archType": "p47",
+  "side": "ALLIED",
+  "displayName": "P-47D-28",
+  "script": "LuaScripts\\WorldObjects\\Planes\\p47d28.txt",
+  "model": "graphics\\planes\\p47d28\\p47d28.mgm",
+  "desc": "",
+  "cruisingSpeed": 380,
+  "climbOutRate": 1800,
+  "goodness": 28,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19430801",
+  "withdrawal": "19450503"
+}

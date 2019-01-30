@@ -1,0 +1,20 @@
+{
+  "type": "u2vs",
+  "archType": "u2",
+  "side": "ALLIED",
+  "displayName": "U2-VS",
+  "script": "LuaScripts\\WorldObjects\\Planes\\u2vs.txt",
+  "model": "graphics\\planes\\u2vs\\u2vs.mgm",
+  "desc": "",
+  "cruisingSpeed": 220,
+  "climbOutRate": 600,
+  "goodness": 10,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19410601",
+  "withdrawal": "19450503"
+}

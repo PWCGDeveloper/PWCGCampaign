@@ -1,0 +1,21 @@
+{
+  "type": "spitfiremkixe",
+  "archType": "spitfire",
+  "side": "ALLIED",
+  "displayName": "Spitfire Mk.IXe",
+  "script": "LuaScripts\\WorldObjects\\Planes\\spitfiremkixe.txt",
+  "model": "graphics\\planes\\spitfiremkixe\\spitfiremkixe.mgm",
+  "desc": "",
+  "cruisingSpeed": 370,
+  "climbOutRate": 1800,
+  "goodness": 65,
+  "endurance": 2.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19430301",
+  "withdrawal": "19450503"
+}

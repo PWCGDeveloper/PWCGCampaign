@@ -58,22 +58,31 @@ public enum PayloadElement
     MIRROR(PayloadElementCategory.PLANE_PART, "Mirror", 0),
 	BELLY_TURRET(PayloadElementCategory.PLANE_PART, "Belly Turret", 250),
     NOSE_TURRET(PayloadElementCategory.PLANE_PART, "Nose Turret", 250),
-    M82F_ENGINE(PayloadElementCategory.PLANE_PART, "M82F engine", 100),
+    M82F_ENGINE(PayloadElementCategory.PLANE_PART, "M82F Engine", 100),
     MERLIN_ENGINE(PayloadElementCategory.PLANE_PART, "Merlin engine", 100),
     RPK10(PayloadElementCategory.PLANE_PART, "RPK 10", 100),
     LANDING_LIGHTS(PayloadElementCategory.PLANE_PART, "Landing Lights", 0),
     LA5_AMMO(PayloadElementCategory.PLANE_PART, "LA5 Ammo Scheme", 0),
     PEILG6(PayloadElementCategory.PLANE_PART, "Peil G6", 0),
     U_17(PayloadElementCategory.PLANE_PART, "U/17", 300),
-    
-    
+    FUG16_ZY(PayloadElementCategory.PLANE_PART, "FuG 16 ZY", 10),
+    DB605DC_ENGINE(PayloadElementCategory.PLANE_PART, "DB605DC engine", 100),
+    FW190F8(PayloadElementCategory.PLANE_PART, "FW190 Ground Attack", 100),
+    FW190_REM_GUNS(PayloadElementCategory.PLANE_PART, "Remove Outboard Guns", 0),
+    GYRO_GUNSIGHT(PayloadElementCategory.PLANE_PART, "Gyro Gunsight", 0),
+    P47_GUNSIGHT(PayloadElementCategory.PLANE_PART, "P-47 Gunsight", 0),
+    P47_MN28(PayloadElementCategory.PLANE_PART, "P-47 MN28", 0),
+    SPITFIRE_IX_WINGTIPS(PayloadElementCategory.PLANE_PART, "Clipped Wings", 0),
+    MERLIN_70_ENGINE(PayloadElementCategory.PLANE_PART, "Merlin 70 Engine", 100),
+    ETC501(PayloadElementCategory.PLANE_PART, "ETC 501 Bomb Rack", 100),
+    U2_GUNNER(PayloadElementCategory.PLANE_PART, "Rear Gunner", 100),
 
     EMPTY(PayloadElementCategory.CARGO, "EMpty", 0),
     PARATROOPERS(PayloadElementCategory.CARGO, "Paratroopers", 1000),
 	CARGO(PayloadElementCategory.CARGO, "Cargo", 1000),
 
 	STANDARD(PayloadElementCategory.WEAPON, "Standard Payload", 0),
-    ADDITIONJAL_AMMO(PayloadElementCategory.WEAPON, "Additional Ammo", 200),
+    ADDITIONAL_AMMO(PayloadElementCategory.WEAPON, "Additional Ammo", 200),
 
     MAB_250(PayloadElementCategory.ORDNANCE_BOMB, "MAB 250", 1000),
 	FAB50SV_X2(PayloadElementCategory.ORDNANCE_BOMB, "50 kg Bomb x2", 100),
@@ -91,7 +100,8 @@ public enum PayloadElement
 	FAB250SV_X2(PayloadElementCategory.ORDNANCE_BOMB, "250 kg Bomb x2", 500),
 	FAB250SV_X4(PayloadElementCategory.ORDNANCE_BOMB, "250 kg Bomb x4", 1000),
 	FAB500M_X1(PayloadElementCategory.ORDNANCE_BOMB, "500 kg Bomb x1", 500),
-	FAB500M_X2(PayloadElementCategory.ORDNANCE_BOMB, "500 kg Bomb x2", 1000),
+    FAB500M_X2(PayloadElementCategory.ORDNANCE_BOMB, "500 kg Bomb x2", 1000),
+    FAB_U2VS(PayloadElementCategory.ORDNANCE_BOMB, "U2 Bomb x2", 1000),
 
 	ROS82_X2(PayloadElementCategory.ORDNANCE_ROCKET, "RoS 82mm Rocket x2", 12),
 	ROS82_X4(PayloadElementCategory.ORDNANCE_ROCKET, "RoS 82mm Rocket x4", 24),
@@ -100,8 +110,10 @@ public enum PayloadElement
 	ROFS132_X4(PayloadElementCategory.ORDNANCE_ROCKET, "RoFS 132mm Rocket x4", 92),
 	ROFS132_X6(PayloadElementCategory.ORDNANCE_ROCKET, "RoFS 132mm Rocket x6", 138),
 	ROFS132_X8(PayloadElementCategory.ORDNANCE_ROCKET, "RoFS 132mm Rocket x8", 184),
-	ROS132_X10(PayloadElementCategory.ORDNANCE_ROCKET, "RoFS 132mm Rocket x10", 230),
-	
+    ROS132_X10(PayloadElementCategory.ORDNANCE_ROCKET, "RoFS 132mm Rocket x10", 230),
+    RP3_X2(PayloadElementCategory.ORDNANCE_ROCKET, "RP-3 Rocket x2", 230),
+    BR21(PayloadElementCategory.ORDNANCE_ROCKET, "Werfer-Granate 21", 100),
+
     SHVAK_GUNPOD(PayloadElementCategory.WEAPON, "Shvak Gun Pod", 50),
     SHVAK_UPGRADE(PayloadElementCategory.WEAPON, "Shvak Upgrade", 50),
 	BK_GUNPOD(PayloadElementCategory.WEAPON, "BK Gun Pod", 50),
@@ -114,10 +126,17 @@ public enum PayloadElement
 	NS37_AP_GUNPOD(PayloadElementCategory.WEAPON, "NS 37mm Autocannon (AP)", 50),
 	NS37_HE_GUNPOD(PayloadElementCategory.WEAPON, "NS 37mm Autocannon (HE)", 50),
 	NS37_APHE_GUNPOD(PayloadElementCategory.WEAPON, "NS 37mm Autocannon (AP,HE)", 50),
-    P40_4MG(PayloadElementCategory.WEAPON, "4x .50 Cal MG", 0),
+    MG50CAL_4x(PayloadElementCategory.WEAPON, "4x .50 Cal MG", 0),
+    MG50CAL_6x(PayloadElementCategory.WEAPON, "6x .50 Cal MG", 0),
     REM_M230(PayloadElementCategory.WEAPON, "REM M230", 50),
     P3937MM_AP(PayloadElementCategory.WEAPON, "37mm AP", 50),
-	
+    
+    
+    M64_X1(PayloadElementCategory.ORDNANCE_BOMB, "Mk 64 500 lb Bomb x1", 250),
+    M64_X2(PayloadElementCategory.ORDNANCE_BOMB, "Mk 64 500 lb Bomb x2", 500),
+    M64_X3(PayloadElementCategory.ORDNANCE_BOMB, "Mk 64 500 lb Bomb x3", 750),
+    M65_X2(PayloadElementCategory.ORDNANCE_BOMB, "Mk 65 1000 lb Bomb x2", 1000),
+    M8_X6(PayloadElementCategory.ORDNANCE_ROCKET, "Mk 8 Rocket x6", 600),
 
 	SC50_X2(PayloadElementCategory.ORDNANCE_BOMB, "50 kg Bomb x2", 100),
 	SC50_X4(PayloadElementCategory.ORDNANCE_BOMB, "50 kg Bomb x4", 200),

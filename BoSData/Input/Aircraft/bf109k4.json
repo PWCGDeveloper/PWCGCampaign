@@ -1,0 +1,21 @@
+{
+  "type": "bf109k4",
+  "archType": "bf109",
+  "side": "AXIS",
+  "displayName": "Bf 109 K-4",
+  "script": "LuaScripts\\WorldObjects\\Planes\\bf109k4.txt",
+  "model": "graphics\\planes\\bf109k4\\bf109k4.mgm",
+  "desc": "",
+  "cruisingSpeed": 380,
+  "climbOutRate": 2000,
+  "goodness": 85,
+  "endurance": 1.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19441001",
+  "withdrawal": "19450503"
+}

@@ -130,14 +130,8 @@ public class CoopPilotAccept extends PwcgGuiContext implements ActionListener
 			String action = ae.getActionCommand();
 			if (action.equalsIgnoreCase("Accept"))
 			{
-
-		        
-			    
-                // create human pilot
-			    // Add serial number to pilot record
-                // Add human pilot
-			    // remove ai pilot
-			    writeResults();
+			    acceptHumanPilot();
+                CampaignGuiContextManager.getInstance().popFromContextStack();
 			}
 			else if (action.equalsIgnoreCase("Cancel"))
 			{
@@ -153,7 +147,7 @@ public class CoopPilotAccept extends PwcgGuiContext implements ActionListener
 	}
 	
 
-    private void writeResults() throws PWCGException
+    private void acceptHumanPilot() throws PWCGException
     {
         for (MultiSelectData selectData: selector.getAccepted())
         {
@@ -163,10 +157,7 @@ public class CoopPilotAccept extends PwcgGuiContext implements ActionListener
                 if (acceptedPilot.getSerialNumber() == 0)
                 {
                     int newPilotSerialNumber = addHumanPilot(acceptedPilot);
-                    acceptedPilot.setSerialNumber(newPilotSerialNumber);
-                    
-                    acceptedPilot.setApproved(true);
-                    CoopPilotIOJson.writeJson(acceptedPilot);
+                    updateHumanPilotRecord(acceptedPilot, newPilotSerialNumber);
                 }
             }
         }        
@@ -188,6 +179,17 @@ public class CoopPilotAccept extends PwcgGuiContext implements ActionListener
                 squadronMemberToReplace.getSerialNumber(), 
                 acceptedPilot.getSquadronId());
         
+        campaign.write();
+        
         return newPilotSerialNumber;
     }
+    
+    private void updateHumanPilotRecord(CoopPilot acceptedPilot, int newPilotSerialNumber) throws PWCGException
+    {
+        acceptedPilot.setSerialNumber(newPilotSerialNumber);
+        
+        acceptedPilot.setApproved(true);
+        CoopPilotIOJson.writeJson(acceptedPilot);
+    }
+
 }

@@ -21,7 +21,7 @@ public class P39L1Payload extends PlanePayload implements IPlanePayload
         setAvailablePayload(-2, "100000", PayloadElement.P3937MM_AP);
         setAvailablePayload(-1, "1000000", PayloadElement.RPK10);
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(2, "1001", PayloadElement.ADDITIONJAL_AMMO);
+        setAvailablePayload(2, "1001", PayloadElement.ADDITIONAL_AMMO);
         setAvailablePayload(4, "10001", PayloadElement.REM_M230);
         setAvailablePayload(6, "11", PayloadElement.FAB100M_X1);
         setAvailablePayload(12, "101", PayloadElement.FAB250SV_X1);
