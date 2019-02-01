@@ -43,6 +43,7 @@ import pwcg.campaign.ww2.plane.payload.aircraft.Pe2S35Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Pe2S87Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.SpitfireMkIXePayload;
 import pwcg.campaign.ww2.plane.payload.aircraft.SpitfireMkVbPayload;
+import pwcg.campaign.ww2.plane.payload.aircraft.U2VSPayload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Yak1S127Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Yak1S69Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Yak7BS36Payload;
@@ -137,6 +138,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         }
 
         // Russian
+        else if (attributeMapping == BosPlaneAttributeMapping.U2_VS)
+        {
+            return new U2VSPayload(planeType);
+        }
         else if (attributeMapping == BosPlaneAttributeMapping.I16_T24)
         {
             return new I16Type24Payload(planeType);

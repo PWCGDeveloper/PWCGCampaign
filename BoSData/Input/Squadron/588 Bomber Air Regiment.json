@@ -1,0 +1,61 @@
+{
+  "country": "RUSSIA",
+  "squadronId": 10111588,
+  "name": "588th Bomber Air Regiment",
+  "fileName": "588th Bomber Air Regiment",
+  "skill": 40,
+  "planeAssignments": [
+    {
+      "archType": "u2",
+      "squadronIntroduction": "19420801",
+      "squadronWithdrawal": "19450503"
+    }
+  ],
+  "conversionPeriods": [
+  ],  
+  "airfields": {
+    "19420801": "Samovalovka",
+    "19420906": "Erzovka",
+    "19421011": "Srednyaya Ahtuba",
+    "19421123": "Pichuga",
+    "19421223": "Beketovka",
+    "19430120": "Beketovka",
+    "19430301": "Gelenjik-3",
+    "19430330": "Gelenjik-3",
+    "19430418": "Gelenjik-3",
+    "19430918": "Krymskaya",
+    "19430927": "Krymskaya",
+    "19431004": "Gostagaevskaya",
+    "19431008": "Gostagaevskaya"
+  },
+  "skins": [
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19430918",
+        "squadName": "46th Guards Bomber Air Regiment ",
+        "armedServiceName": "Voyenno-Vozdushnye Sily",
+        "skill": 40
+      }
+    ]
+  },
+  "serviceId": 10101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  },
+  "callsigns": {
+    "19410801": "CANARY"
+  }
+}
