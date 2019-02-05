@@ -145,6 +145,12 @@ public class SquadronHistoryValidationTest
         else if (transitionDate.equals(DateUtils.getDateYYYYMMDD("19430918")))
         {
         }
+        else if (transitionDate.equals(DateUtils.getDateYYYYMMDD("19440801")))
+        {
+        }
+        else if (transitionDate.equals(DateUtils.getDateYYYYMMDD("19450207")))
+        {
+        }
         else
         {
             String errorMsg = squadHistoryEntry.getSquadName() + " invalid transition date " + squadHistoryEntry.getDate(); 

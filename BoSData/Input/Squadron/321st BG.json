@@ -1,0 +1,43 @@
+{
+  "country": "USA",
+  "squadronId": 102321445,
+  "name": "321st Bomber Group",
+  "fileName": "321st BG.json",
+  "skill": 70,
+  "planeAssignments": [
+    {
+      "archType": "b25",
+      "squadronIntroduction": "19440801",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "conversionPeriods": [
+  ],  
+  "airfields": {
+    "19440801": "Sedan"
+  },
+  "skins": [
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+    ]
+  },
+  "serviceId": 10102,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19440801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  },
+  "callsigns": {
+    "19410801": "SWAN"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 103083184,
+  "name": "184 Squadron",
+  "fileName": "184 Squadron.json",
+  "skill": 70,
+  "planeAssignments": [
+    {
+      "archType": "tempest",
+      "squadronIntroduction": "19440801",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "conversionPeriods": [
+  ],  
+  "airfields": {
+    "19440801": "Volkel"
+  },
+  "skins": [
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+    ]
+  },
+  "serviceId": 10103,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19440801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 60
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 40
+          }
+        ]
+      }
+    ]
+  },
+  "callsigns": {
+    "19410801": "BRAMBLING"
+  }
+}

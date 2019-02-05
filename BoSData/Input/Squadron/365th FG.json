@@ -1,0 +1,47 @@
+{
+  "country": "USA",
+  "squadronId": 102365386,
+  "name": "365th Fighter Group",
+  "fileName": "365th FG.json",
+  "skill": 70,
+  "planeAssignments": [
+    {
+      "archType": "p47",
+      "squadronIntroduction": "19440801",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "conversionPeriods": [
+  ],  
+  "airfields": {
+    "19440801": "Ursel"
+  },
+  "skins": [
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+    ]
+  },
+  "serviceId": 10102,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19440801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 60
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 40
+          }
+        ]
+      }
+    ]
+  },
+  "callsigns": {
+    "19410801": "SWIFT"
+  }
+}

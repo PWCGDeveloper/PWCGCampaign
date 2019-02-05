@@ -105,6 +105,62 @@
             "rankAbbrev": "Sgt",
             "rankCountry": 202,
             "rankService": 20202
+        },
+        {
+            "rankId": 0,
+            "rankName": "Major",
+            "rankAbbrev": "Maj",
+            "rankCountry": 102,
+            "rankService": 10102
+        },
+        {
+            "rankId": 1,
+            "rankName": "Captain",
+            "rankAbbrev": "Cpt",
+            "rankCountry": 102,
+            "rankService": 10102
+        },
+        {
+            "rankId": 2,
+            "rankName": "1st Lieutenant",
+            "rankAbbrev": "Lt",
+            "rankCountry": 102,
+            "rankService": 10102
+        },
+        {
+            "rankId": 3,
+            "rankName": "2nd Lieutenant",
+            "rankAbbrev": "2nd Lt",
+            "rankCountry": 102,
+            "rankService": 10102
+        },
+        {
+            "rankId": 0,
+            "rankName": "Squadron Leader",
+            "rankAbbrev": "Sqn Ldr",
+            "rankCountry": 103,
+            "rankService": 10103
+        },
+        {
+            "rankId": 1,
+            "rankName": "Flight Lieutenant",
+            "rankAbbrev": "Flt Lt",
+            "rankCountry": 103,
+            "rankService": 10103
+        },
+        {
+            "rankId": 2,
+            "rankName": "Flying Officer",
+            "rankAbbrev": "Fg Off",
+            "rankCountry": 103,
+            "rankService": 10103
+        },
+        {
+            "rankId": 3,
+            "rankName": "Pilot Officer",
+            "rankAbbrev": "Plt Off",
+            "rankCountry": 103,
+            "rankService": 10103
         }
     ]
 }

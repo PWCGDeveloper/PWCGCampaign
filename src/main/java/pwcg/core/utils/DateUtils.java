@@ -218,7 +218,7 @@ public class DateUtils
         }
         else
         {              
-            return getDateNoCheck("01/01/1944");
+            return getDateNoCheck("03/05/1945");
         }
     }
 
@@ -254,6 +254,16 @@ public class DateUtils
     public static Date getStartofWWIIItaly() throws PWCGException
     {
         return getDateNoCheck("01/01/1942");
+    }
+
+    public static Date getStartofWWIIUSA() throws PWCGException
+    {
+        return getDateNoCheck("01/08/1944");
+    }
+
+    public static Date getStartofWWIIBritain() throws PWCGException
+    {
+        return getDateNoCheck("01/08/1944");
     }
 
     public static Date getRAFDate() throws PWCGException

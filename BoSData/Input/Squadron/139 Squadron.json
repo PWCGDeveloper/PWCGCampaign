@@ -1,0 +1,43 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 103002139,
+  "name": "139 Squadron",
+  "fileName": "139 Squadron.json",
+  "skill": 70,
+  "planeAssignments": [
+    {
+      "archType": "b25",
+      "squadronIntroduction": "19440801",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "conversionPeriods": [
+  ],  
+  "airfields": {
+    "19440801": "Ghent"
+  },
+  "skins": [
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+    ]
+  },
+  "serviceId": 10103,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19440801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  },
+  "callsigns": {
+    "19410801": "DUCK"
+  }
+}

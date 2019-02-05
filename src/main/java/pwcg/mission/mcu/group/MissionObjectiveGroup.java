@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
@@ -52,7 +53,13 @@ public class MissionObjectiveGroup
         missionObjective.setSuccess(1);
         missionObjective.setPosition(squadronLocation);
 
-        missionBeginUnit.initialize(campaign.determineSquadron().determineCurrentAirfieldCurrentMap(campaign.getDate()).getPosition());
+        IAirfield airfield = campaign.determineSquadron().determineCurrentAirfieldCurrentMap(campaign.getDate());
+        if (airfield == null)
+        {
+            throw new PWCGException("No airfield found for squadron " + campaign.determineSquadron().getSquadronId() + ".  Should not have been included in mission");
+        }
+
+        missionBeginUnit.initialize(airfield.getPosition());
         missionObjectiveTimer.setPosition(squadronLocation);
         missionBeginUnit.linkToMissionBegin(missionObjectiveTimer.getIndex());
         missionObjectiveTimer.setTarget(missionObjective.getIndex());

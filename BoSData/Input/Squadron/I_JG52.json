@@ -12,6 +12,10 @@
     }
   ],
   "conversionPeriods": [
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440801"
+    }
   ],  
   "airfields": {
     "19411001": "Dugino",
@@ -37,7 +41,8 @@
     "19430918": "Zaporojskaya",
     "19430927": "Taman",
     "19431004": "Taman",
-    "19431008": "Taman"
+    "19431008": "Taman",
+    "19440801": "Rheine"   
   },
   "skins": [
     {
@@ -51,12 +56,22 @@
       "definedInGame": false
     }
   ],
+  "squadHistory": {
+      "squadHistoryEntries": [
+      {
+        "date": "19440801",
+        "squadName": "I./JG27",
+        "armedServiceName": "Luftwaffe",
+        "skill": 70
+      }
+    ]
+  },
   "serviceId": 20101,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
         "startDate": "19400101",
-        "endDate": "19450601",
+        "endDate": "19440801",
         "weightedRoles": [
           {
             "role": "ROLE_FIGHTER",
@@ -65,6 +80,20 @@
           {
             "role": "ROLE_ATTACK",
             "weight": 10
+          }
+        ]
+      },
+      {
+        "startDate": "19440801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 20
           }
         ]
       }

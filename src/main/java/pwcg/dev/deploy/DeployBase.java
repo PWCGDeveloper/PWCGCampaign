@@ -203,6 +203,7 @@ public abstract class DeployBase
         directoriesToCopy.put("SquadronMovingFront", null);
         directoriesToCopy.put("Configured", null);
         directoriesToCopy.put("DoNotUse", null);
+        directoriesToCopy.put("Ranks", null);
 
 		return directoriesToCopy;
 	}

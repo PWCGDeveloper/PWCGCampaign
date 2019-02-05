@@ -1,0 +1,47 @@
+{
+  "country": "USA",
+  "squadronId": 102358365,
+  "name": "358th Fighter Group",
+  "fileName": "358th FG.json",
+  "skill": 80,
+  "planeAssignments": [
+    {
+      "archType": "p47",
+      "squadronIntroduction": "19440801",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "conversionPeriods": [
+  ],  
+  "airfields": {
+    "19440801": "Sint-Truiden"
+  },
+  "skins": [
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+    ]
+  },
+  "serviceId": 10102,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19440801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 60
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 40
+          }
+        ]
+      }
+    ]
+  },
+  "callsigns": {
+    "19410801": "PELICAN"
+  }
+}

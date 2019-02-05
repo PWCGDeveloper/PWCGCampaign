@@ -104,11 +104,7 @@ public class RoFRank implements IRankHelper
         ranksByService.put(RoFServiceManager.AUSTRO_HUNGARIAN_AIR_SERVICE, lft);
 
 	}
-	
-	/**
-	 * @param service
-	 * @return
-	 */
+
 	public ArrayList<String> getRanksByService (ArmedService service)
 	{
 		ArrayList<String> list = new ArrayList<String>();
@@ -123,12 +119,6 @@ public class RoFRank implements IRankHelper
 		return list;
 	}
 
-	
-	   
-    /**
-     * @param service
-     * @return
-     */
     private Map<Integer, RankStruct> getRankMapByService (ArmedService service)
     {
         Map<Integer, RankStruct> rankMap = ranksByService.get(service.getServiceId()); 
@@ -136,24 +126,13 @@ public class RoFRank implements IRankHelper
         return rankMap;
     }
 
-    
-    
-    /**
-     * @param service
-     * @return
-     */
     public int getLowestRankPosForService (ArmedService service)
     {
         Map<Integer, RankStruct> rankMap = ranksByService.get(service.getServiceId()); 
         
         return rankMap.size() - 1;
     }
-    
-    /**
-     * @param currentRank
-     * @param service
-     * @return
-     */
+
     public int getRankPosByService (String currentRank, ArmedService service)
     {
     	int rankPos = this.getRankPosByRankAndService(currentRank, service);

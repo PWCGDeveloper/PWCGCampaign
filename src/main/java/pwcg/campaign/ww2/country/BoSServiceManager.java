@@ -11,8 +11,10 @@ import pwcg.campaign.context.Country;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
+import pwcg.gui.colors.AmericanColorMap;
 import pwcg.gui.colors.GermanColorMap;
 import pwcg.gui.colors.ItalianColorMap;
+import pwcg.gui.colors.RAFColorMap;
 import pwcg.gui.colors.VVSColorMap;
 
 public class BoSServiceManager extends ArmedServiceManager implements IArmedServiceManager 
@@ -20,14 +22,20 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
     public static int VVS = 10101;
     public static int LUFTWAFFE = 20101;
     public static int REGIA_AERONAUTICA = 20202;
+    public static int USAAF = 10102;
+    public static int RAF = 10103;
     
     private static String LUFTWAFFE_NAME = "Luftwaffe";
     private static String REGIA_AERONAUTICA_NAME ="Regia Aeronautica";
     private static String VVS_NAME ="Voyenno-Vozdushnye Sily";
+    private static String USAAF_NAME ="United States Army Air Force";
+    private static String RAF_NAME ="Royal Air Force";
     
     private static String LUFTWAFFE_ICON ="ServiceLuftwaffe";
     private static String REGIA_AERONAUTICA_ICON ="ServiceRA";
     private static String VVS_ICON ="ServiceVVS";
+    private static String USAAF_ICON ="ServiceUSAAF";
+    private static String RAF_ICON ="ServiceRAF";
 
     private static BoSServiceManager instance;
     
@@ -53,6 +61,8 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
             createRussianAirServices();
             createGermanAirServices();
             createItalianAirServices();
+            createAmericanAirServices();
+            createBritishAirServices();
         }
         catch (Exception e)
         {
@@ -148,6 +158,72 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
 		italianServices.add(regiaAeronautica);
 	}
 
+    private void createAmericanAirServices() throws PWCGException
+    {
+        List <ArmedService> americanServices = new ArrayList<ArmedService>();
+        armedServicesByCountry.put(BoSCountry.USA_CODE, americanServices);
+   
+        ArmedService usaaf = new ArmedService();
+        usaaf.setServiceId(USAAF);
+        usaaf.setCountry(new BoSCountry(BoSCountry.USA_CODE));
+        usaaf.setName(USAAF_NAME);
+        usaaf.setServiceIcon(USAAF_ICON);
+        usaaf.setStartDate(DateUtils.getStartofWWIIUSA());
+        usaaf.setEndDate(DateUtils.getEndOfWar());
+        usaaf.setServiceColorMap(new AmericanColorMap());
+        usaaf.setGeneralRankForService("General");
+        usaaf.setDailyPersonnelReplacementRate(15);
+        usaaf.setDailyEquipmentReplacementRate(30);
+        usaaf.setStartDate(DateUtils.getDateYYYYMMDD("19440801"));
+
+        List<String> usaafPics = new ArrayList<String>();
+        usaafPics.add("American");
+        usaaf.setPicDirs(usaafPics);
+        
+        usaaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19390101"), 50);
+        usaaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19400101"), 60);
+        usaaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19410101"), 60);
+        usaaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19420101"), 60);
+        usaaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19430101"), 70);
+        usaaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 75);
+        usaaf.addServiceQuality(DateUtils.getDateYYYYMMDD("19450101"), 75);
+
+        americanServices.add(usaaf);
+    }
+
+    private void createBritishAirServices() throws PWCGException
+    {
+        List <ArmedService> britishServices = new ArrayList<ArmedService>();
+        armedServicesByCountry.put(BoSCountry.BRITAIN_CODE, britishServices);
+   
+        ArmedService raf = new ArmedService();
+        raf.setServiceId(RAF);
+        raf.setCountry(new BoSCountry(BoSCountry.BRITAIN_CODE));
+        raf.setName(RAF_NAME);
+        raf.setServiceIcon(RAF_ICON);
+        raf.setStartDate(DateUtils.getStartofWWIIUSA());
+        raf.setEndDate(DateUtils.getEndOfWar());
+        raf.setServiceColorMap(new RAFColorMap());
+        raf.setGeneralRankForService("General");
+        raf.setDailyPersonnelReplacementRate(15);
+        raf.setDailyEquipmentReplacementRate(30);
+        raf.setStartDate(DateUtils.getDateYYYYMMDD("19440801"));
+
+        List<String> rafPics = new ArrayList<String>();
+        rafPics.add("British");
+        raf.setPicDirs(rafPics);
+        
+        raf.addServiceQuality(DateUtils.getDateYYYYMMDD("19390101"), 60);
+        raf.addServiceQuality(DateUtils.getDateYYYYMMDD("19400101"), 70);
+        raf.addServiceQuality(DateUtils.getDateYYYYMMDD("19410101"), 70);
+        raf.addServiceQuality(DateUtils.getDateYYYYMMDD("19420101"), 70);
+        raf.addServiceQuality(DateUtils.getDateYYYYMMDD("19430101"), 70);
+        raf.addServiceQuality(DateUtils.getDateYYYYMMDD("19440101"), 70);
+        raf.addServiceQuality(DateUtils.getDateYYYYMMDD("19450101"), 70);
+        
+        britishServices.add(raf);
+    }
+    
 	@Override
     public ArmedService getArmedServiceById(int serviceId, Date campaignDate) throws PWCGException 
 	{

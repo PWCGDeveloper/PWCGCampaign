@@ -61,21 +61,31 @@ public class GroundObjectIOJsonTest
         validateGroundStructuresBoS(mapName);
     }
 
-    private void validateGroundStructuresRoF(String mapName) throws PWCGException, PWCGIOException
+    @Test
+    public void readJsonBoddenplatteTest() throws PWCGException
+    {
+        PWCGContextManager.setRoF(false);
+        String mapName = "Bodenplatte";
+        validateGroundStructuresBoS(mapName);        
+    }
+
+    private GroundStructureGroup validateGroundStructuresRoF(String mapName) throws PWCGException, PWCGIOException
     {
         GroundStructureGroup groundStructures = GroundObjectIOJson.readJson(mapName);
         assert (groundStructures.getRailroadStations().size() > 0);
         assert (groundStructures.getAirfieldBlocks().size() > 0);
         assert (groundStructures.getBridges().size() > 0);
         assert (groundStructures.getStandaloneBlocks().size() > 0);
+        return groundStructures;
     }
 
-    private void validateGroundStructuresBoS(String mapName) throws PWCGException, PWCGIOException
+    private GroundStructureGroup validateGroundStructuresBoS(String mapName) throws PWCGException, PWCGIOException
     {
         GroundStructureGroup groundStructures = GroundObjectIOJson.readJson(mapName);
         assert (groundStructures.getRailroadStations().size() > 0);
         assert (groundStructures.getBridges().size() > 0);
         assert (groundStructures.getStandaloneBlocks().size() > 0);
+        return groundStructures;
     }
 
 }

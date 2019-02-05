@@ -29,8 +29,8 @@ public class BoSAirfieldInEnemyTerritory extends AirfieldInEnemyTerritory
 	{
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
 
-        BoSAirfieldInEnemyTerritory airfieldFInder = new BoSAirfieldInEnemyTerritory();
-        airfieldFInder.findEnemy(FrontMapIdentifier.MOSCOW_MAP, DateUtils.getDateYYYYMMDD("19411001"), DateUtils.getDateYYYYMMDD("19420301"));
+        BoSAirfieldInEnemyTerritory airfieldFinder = new BoSAirfieldInEnemyTerritory();
+        airfieldFinder.findEnemy(FrontMapIdentifier.MOSCOW_MAP, DateUtils.getDateYYYYMMDD("19411001"), DateUtils.getDateYYYYMMDD("19420301"));
 	}
 	   
     @Test
@@ -38,8 +38,8 @@ public class BoSAirfieldInEnemyTerritory extends AirfieldInEnemyTerritory
     {
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.STALINGRAD_MAP);
 
-        BoSAirfieldInEnemyTerritory airfieldFInder = new BoSAirfieldInEnemyTerritory();
-        airfieldFInder.findEnemy(FrontMapIdentifier.STALINGRAD_MAP, DateUtils.getDateYYYYMMDD("19420301"), DateUtils.getDateYYYYMMDD("19420601"));
+        BoSAirfieldInEnemyTerritory airfieldFinder = new BoSAirfieldInEnemyTerritory();
+        airfieldFinder.findEnemy(FrontMapIdentifier.STALINGRAD_MAP, DateUtils.getDateYYYYMMDD("19420301"), DateUtils.getDateYYYYMMDD("19420601"));
     }
 
 	@Test
@@ -47,8 +47,8 @@ public class BoSAirfieldInEnemyTerritory extends AirfieldInEnemyTerritory
 	{
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.STALINGRAD_MAP);
 
-        BoSAirfieldInEnemyTerritory airfieldFInder = new BoSAirfieldInEnemyTerritory();
-        airfieldFInder.findEnemy(FrontMapIdentifier.STALINGRAD_MAP, DateUtils.getDateYYYYMMDD("19420801"), DateUtils.getDateYYYYMMDD("19430301"));
+        BoSAirfieldInEnemyTerritory airfieldFinder = new BoSAirfieldInEnemyTerritory();
+        airfieldFinder.findEnemy(FrontMapIdentifier.STALINGRAD_MAP, DateUtils.getDateYYYYMMDD("19420801"), DateUtils.getDateYYYYMMDD("19430301"));
 	}
 	
 	@Test
@@ -56,8 +56,8 @@ public class BoSAirfieldInEnemyTerritory extends AirfieldInEnemyTerritory
 	{
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
 
-        BoSAirfieldInEnemyTerritory airfieldFInder = new BoSAirfieldInEnemyTerritory();
-        airfieldFInder.findEnemy(FrontMapIdentifier.KUBAN_MAP, DateUtils.getDateYYYYMMDD("19420601"), DateUtils.getDateYYYYMMDD("19420801"));
+        BoSAirfieldInEnemyTerritory airfieldFinder = new BoSAirfieldInEnemyTerritory();
+        airfieldFinder.findEnemy(FrontMapIdentifier.KUBAN_MAP, DateUtils.getDateYYYYMMDD("19420601"), DateUtils.getDateYYYYMMDD("19420801"));
 	}
     
     @Test
@@ -65,7 +65,18 @@ public class BoSAirfieldInEnemyTerritory extends AirfieldInEnemyTerritory
     {
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
 
-        BoSAirfieldInEnemyTerritory airfieldFInder = new BoSAirfieldInEnemyTerritory();
-        airfieldFInder.findEnemy(FrontMapIdentifier.KUBAN_MAP, DateUtils.getDateYYYYMMDD("19430301"), DateUtils.getDateYYYYMMDD("19431201"));
+        BoSAirfieldInEnemyTerritory airfieldFinder = new BoSAirfieldInEnemyTerritory();
+        airfieldFinder.findEnemy(FrontMapIdentifier.KUBAN_MAP, DateUtils.getDateYYYYMMDD("19430301"), DateUtils.getDateYYYYMMDD("19431201"));
     }
+    
+
+    @Test
+    public void airfieldCheckBodenplatteTest() throws PWCGException 
+    {
+        PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.BODENPLATTE_MAP);
+
+        BoSAirfieldInEnemyTerritory airfieldFinder = new BoSAirfieldInEnemyTerritory();
+        airfieldFinder.findEnemy(FrontMapIdentifier.BODENPLATTE_MAP, DateUtils.getDateYYYYMMDD("19440801"), DateUtils.getDateYYYYMMDD("19450503"));
+    }
+
 }

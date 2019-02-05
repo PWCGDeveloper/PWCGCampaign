@@ -12,6 +12,10 @@
     }
   ],
   "conversionPeriods": [
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440801"
+    }
   ],  
   "airfields": {
     "19411001": "Novoye Selo",
@@ -37,7 +41,8 @@
     "19430918": "Hardji-Bie",
     "19430927": "Bagerovo",
     "19431004": "Bagerovo",
-    "19431008": "Alibay"
+    "19431008": "Alibay",
+    "19440801": "Achmer"   
   },
   "skins": [],
   "squadHistory": {
@@ -45,6 +50,12 @@
       {
         "date": "19430918",
         "squadName": "I./KG51",
+        "armedServiceName": "Luftwaffe",
+        "skill": 40
+      },
+      {
+        "date": "19440801",
+        "squadName": "I./KG54",
         "armedServiceName": "Luftwaffe",
         "skill": 40
       }

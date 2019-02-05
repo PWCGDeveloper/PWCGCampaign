@@ -154,6 +154,11 @@ public abstract class WaypointGeneratorBase
         Coordinate closestFrontToLastWaypoint = frontLines.findClosestFrontCoordinateForSide(lastWaypointCoord, side);
 
 	    IAirfield airfield = flight.getSquadron().determineCurrentAirfieldCurrentMap(campaign.getDate());
+        if (airfield == null)
+        {
+            throw new PWCGException("No airfield found for squadron " + flight.getSquadron().getSquadronId() + ".  Should not have been included in mission");
+        }
+        
 	    double angleFromFieldToFront = MathUtils.calcAngle(airfield.getPosition(), closestFrontToLastWaypoint);
 	    
         Coordinate closestFrontToAirfield = frontLines.findClosestFrontCoordinateForSide(airfield.getPosition(), side);

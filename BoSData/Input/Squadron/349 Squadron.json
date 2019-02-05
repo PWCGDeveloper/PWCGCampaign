@@ -1,0 +1,47 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 103084349,
+  "name": "349  Squadron",
+  "fileName": "349 Squadron.json",
+  "skill": 70,
+  "planeAssignments": [
+    {
+      "archType": "spitfire",
+      "squadronIntroduction": "19440801",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "conversionPeriods": [
+  ],  
+  "airfields": {
+    "19440801": "Maldegem"
+  },
+  "skins": [
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+    ]
+  },
+  "serviceId": 10103,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19440801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 20
+          }
+        ]
+      }
+    ]
+  },
+  "callsigns": {
+    "19410801": "THRUSH"
+  }
+}

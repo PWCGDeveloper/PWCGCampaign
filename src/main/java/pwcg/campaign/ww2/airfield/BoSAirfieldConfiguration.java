@@ -33,7 +33,7 @@ public class BoSAirfieldConfiguration implements IAirfieldConfiguration
 
     static public class AirfieldDescriptorSet
     {
-        String locationSetName = "";
-        List <BoSAirfield.AirfieldDescriptor> locations = new ArrayList<>();
+        public String locationSetName = "";
+        public List <BoSAirfield.AirfieldDescriptor> locations = new ArrayList<>();
     }
 }

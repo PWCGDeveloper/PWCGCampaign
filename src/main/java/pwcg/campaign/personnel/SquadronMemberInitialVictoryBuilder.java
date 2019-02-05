@@ -49,6 +49,11 @@ public class SquadronMemberInitialVictoryBuilder
         factorSquadronQuality(rankPos);
         factorLuftwaffe(rankPos);
         resetForEarlyWWI(rankPos);
+        
+        if (victorSquadron.getSquadronId() == 102362377) 
+        {
+            System.out.println("max victories for rank " + rankPos + " is between " + minVictories + " and " + maxVictories);
+        }
 
         int victories = calcNumberOfVictories(minVictories, maxVictories);
         addVictories(newPilot, victories);

@@ -37,7 +37,7 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     YAK7B_S36("yak7bs36", "static_yak1_open", "static_mig3_net"),
     P39L1("p39l1", "static_mig3_net"),
     P40_E1("p40e1", "static_mig3_net"),
-    P47_D28("p40e1", "static_lagg3_net"),
+    P47_D28("p47d28", "static_lagg3_net"),
     SPITFIRE_MKVB("spitfiremkvb", "static_mig3_net"),
     SPITFIRE_MKIXE("spitfiremkixe", "static_mig3_net"),
 

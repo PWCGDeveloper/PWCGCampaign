@@ -20,6 +20,8 @@ public class BoSRank implements IRankHelper
     Map<Integer, RankStruct> ussr = new TreeMap<Integer, RankStruct>();
 	Map<Integer, RankStruct> luftwaffe = new TreeMap<Integer, RankStruct>();
     Map<Integer, RankStruct> iaf = new TreeMap<Integer, RankStruct>();
+    Map<Integer, RankStruct> usaaf = new TreeMap<Integer, RankStruct>();
+    Map<Integer, RankStruct> raf = new TreeMap<Integer, RankStruct>();
 
 	public BoSRank ()
 	{
@@ -42,12 +44,22 @@ public class BoSRank implements IRankHelper
                 {
                     iaf.put(rank.getRankId(), rankStruct);
                 }
+                else if (rank.getRankService() == BoSServiceManager.USAAF)
+                {
+                    usaaf.put(rank.getRankId(), rankStruct);
+                }
+                else if (rank.getRankService() == BoSServiceManager.RAF)
+                {
+                    raf.put(rank.getRankId(), rankStruct);
+                }
     	    }
     
             // Form a map of rank maps
             ranksByService.put(BoSServiceManager.VVS, ussr);
             ranksByService.put(BoSServiceManager.LUFTWAFFE, luftwaffe);
             ranksByService.put(BoSServiceManager.REGIA_AERONAUTICA, iaf);
+            ranksByService.put(BoSServiceManager.USAAF, usaaf);
+            ranksByService.put(BoSServiceManager.RAF, raf);
 	    }
 	    catch (Exception e)
 	    {

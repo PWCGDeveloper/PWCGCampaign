@@ -1,0 +1,47 @@
+{
+  "country": "USA",
+  "squadronId": 102363033,
+  "name": "363rd Fighter Group",
+  "fileName": "363rd FG.json",
+  "skill": 70,
+  "planeAssignments": [
+    {
+      "archType": "p38",
+      "squadronIntroduction": "19440801",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "conversionPeriods": [
+  ],  
+  "airfields": {
+    "19440801": "Le Culot"
+  },
+  "skins": [
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+    ]
+  },
+  "serviceId": 10102,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19440801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 70
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  },
+  "callsigns": {
+    "19410801": "STORM"
+  }
+}

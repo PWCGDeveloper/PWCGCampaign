@@ -4,6 +4,7 @@ import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.ww1.map.channel.ChannelMap;
 import pwcg.campaign.ww1.map.france.FranceMap;
 import pwcg.campaign.ww1.map.galicia.GaliciaMap;
+import pwcg.campaign.ww2.map.bodenplatte.BodenplatteMap;
 import pwcg.campaign.ww2.map.kuban.KubanMap;
 import pwcg.campaign.ww2.map.moscow.MoscowMap;
 import pwcg.campaign.ww2.map.stalingrad.StalingradMap;
@@ -38,6 +39,11 @@ public class PWCGMapFactory
         if (frontMapIdentifier == FrontMapIdentifier.STALINGRAD_MAP)
         {
             map = new StalingradMap();
+            map.configure();
+        }
+        if (frontMapIdentifier == FrontMapIdentifier.BODENPLATTE_MAP)
+        {
+            map = new BodenplatteMap();
             map.configure();
         }
         if (frontMapIdentifier == FrontMapIdentifier.KUBAN_MAP)

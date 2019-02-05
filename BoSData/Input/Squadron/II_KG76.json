@@ -12,6 +12,10 @@
     }
   ],
   "conversionPeriods": [
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440801"
+    }
   ],  
   "airfields": {
     "19411001": "Novoye Selo",
@@ -37,7 +41,8 @@
     "19430918": "Kerch",
     "19430927": "Bagerovo",
     "19431004": "Bagerovo",
-    "19431008": "Marfovka"
+    "19431008": "Marfovka",
+    "19440801": "Bissel"
   },
   "skins": [],
   "squadHistory": {
@@ -45,6 +50,12 @@
       {
         "date": "19430918",
         "squadName": "II./KG51",
+        "armedServiceName": "Luftwaffe",
+        "skill": 45
+      },
+      {
+        "date": "19440801",
+        "squadName": "II./KG54",
         "armedServiceName": "Luftwaffe",
         "skill": 45
       }

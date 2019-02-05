@@ -56,7 +56,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 	
 	private List<JButton> campaignButtonList = new ArrayList<JButton>();
 	
-	private boolean displayFrontLineEditor = false;
+	private boolean displayFrontLineEditor = true;
 
 	public static void main(String[] args) 
 	{

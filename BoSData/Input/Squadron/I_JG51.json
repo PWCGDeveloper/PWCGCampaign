@@ -13,6 +13,11 @@
     {
       "archType": "fw190",
       "squadronIntroduction": "19420514",
+      "squadronWithdrawal": "19450207"
+    },
+    {
+      "archType": "me262",
+      "squadronIntroduction": "19450208",
       "squadronWithdrawal": "19450503"
     }
   ],
@@ -20,7 +25,16 @@
     {
       "conversionStartDate": "19420514",
       "conversionCompleteDate": "19420529"
+    },
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440801"
+    },
+    {
+      "conversionStartDate": "19450201",
+      "conversionCompleteDate": "19450208"
     }
+    
   ],  
   "airfields": {
     "19411001": "Gzhatsk",
@@ -46,7 +60,8 @@
     "19430918": "Anapa",
     "19430927": "Zaporojskaya",
     "19431004": "Zaporojskaya",
-    "19431008": "Kerch"
+    "19431008": "Kerch",
+    "19440801": "Furstenau"
   },
   "skins": [
     {
@@ -60,12 +75,28 @@
       "definedInGame": false
     }
   ],
+  "squadHistory": {
+      "squadHistoryEntries": [
+      {
+        "date": "19440801",
+        "squadName": "I./JG26",
+        "armedServiceName": "Luftwaffe",
+        "skill": 70
+      },
+      {
+        "date": "19450207",
+        "squadName": "I./JG44",
+        "armedServiceName": "Luftwaffe",
+        "skill": 90
+      }
+    ]
+  },
   "serviceId": 20101,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
         "startDate": "19400101",
-        "endDate": "19450601",
+        "endDate": "19420513",
         "weightedRoles": [
           {
             "role": "ROLE_FIGHTER",
@@ -74,6 +105,30 @@
           {
             "role": "ROLE_ATTACK",
             "weight": 10
+          }
+        ]
+      },
+      {
+        "startDate": "19420514",
+        "endDate": "19450201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 20
+          }
+        ]
+      },
+      {
+        "startDate": "19450202",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
           }
         ]
       }

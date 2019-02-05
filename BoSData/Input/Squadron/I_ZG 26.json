@@ -8,10 +8,19 @@
     {
       "archType": "bf110",
       "squadronIntroduction": "19410101",
+      "squadronWithdrawal": "19440731"
+    },
+    {
+      "archType": "fw190",
+      "squadronIntroduction": "19440801",
       "squadronWithdrawal": "19450503"
     }
   ],
   "conversionPeriods": [
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440801"
+    }
   ],  
   "airfields": {
     "19411001": "Novoye Selo",
@@ -37,15 +46,26 @@
     "19430918": "Zaporojskaya",
     "19430927": "Zaporojskaya",
     "19431004": "Zaporojskaya",
-    "19431008": "Kerch 2"
+    "19431008": "Kerch 2",
+    "19440801": "Delmenhorst"
   },
   "skins": [],
+  "squadHistory": {
+      "squadHistoryEntries": [
+      {
+        "date": "19440801",
+        "squadName": "I./JG6",
+        "armedServiceName": "Luftwaffe",
+        "skill": 50
+      }
+    ]
+  },
   "serviceId": 20101,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
         "startDate": "19400101",
-        "endDate": "19450601",
+        "endDate": "19440801",
         "weightedRoles": [
           {
             "role": "ROLE_ATTACK",
@@ -54,6 +74,20 @@
           {
             "role": "ROLE_FIGHTER",
             "weight": 35
+          }
+        ]
+      },
+      {
+        "startDate": "19440801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 20
           }
         ]
       }

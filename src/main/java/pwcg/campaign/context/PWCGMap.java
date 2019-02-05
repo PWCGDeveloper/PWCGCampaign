@@ -26,7 +26,8 @@ public abstract class PWCGMap
         GALICIA_MAP,
         MOSCOW_MAP,
         STALINGRAD_MAP,
-        KUBAN_MAP
+        KUBAN_MAP,
+        BODENPLATTE_MAP
     }
 
     public static final String FRANCE_MAP_NAME = "France";
@@ -36,6 +37,7 @@ public abstract class PWCGMap
     public static final String MOSCOW_MAP_NAME = "Moscow";
     public static final String STALINGRAD_MAP_NAME = "Stalingrad";
     public static final String KUBAN_MAP_NAME = "Kuban";
+    public static final String BODENPLATTE_MAP_NAME = "Bodenplatte";
 
     protected FrontMapIdentifier mapIdentifier = null;
     protected Map<Date, FrontLinesForMap> frontLinesForMapByDate = new TreeMap<>();
@@ -56,38 +58,11 @@ public abstract class PWCGMap
     {
     }
 
-    public static FrontMapIdentifier getMapIdFromMapName(String mapName)
-    {
-        FrontMapIdentifier mapId = FrontMapIdentifier.FRANCE_MAP;
-        if (mapName.equals(CHANNEL_MAP_NAME))
-        {
-            mapId = FrontMapIdentifier.CHANNEL_MAP;
-        }
-        else if (mapName.equals(GALICIA_MAP_NAME))
-        {
-            mapId = FrontMapIdentifier.GALICIA_MAP;
-        }
-        else if (mapName.equals(MOSCOW_MAP_NAME))
-        {
-            mapId = FrontMapIdentifier.MOSCOW_MAP;
-        }
-        else if (mapName.equals(STALINGRAD_MAP_NAME))
-        {
-            mapId = FrontMapIdentifier.STALINGRAD_MAP;
-        }
-        else if (mapName.equals(KUBAN_MAP_NAME))
-        {
-            mapId = FrontMapIdentifier.KUBAN_MAP;
-        }
-
-        return mapId;
-    }
-
     public void configure() throws PWCGException
     {
         String mapName = getMapName();
         
-        frontDatesForMap = new FrontDatesForMap(PWCGMap.getMapIdFromMapName(mapName));
+        frontDatesForMap = new FrontDatesForMap(PWCGMap.getFrontMapIdentifierForName(mapName));
         configureTransitionDates();
     	frontDatesForMap.cleanUnwantedDateDirectories(mapName);
     	for (Date frontDate : frontDatesForMap.getFrontDates())
@@ -125,6 +100,7 @@ public abstract class PWCGMap
         frontNameIdentifierMap.put(MOSCOW_MAP_NAME, FrontMapIdentifier.MOSCOW_MAP);            
         frontNameIdentifierMap.put(STALINGRAD_MAP_NAME, FrontMapIdentifier.STALINGRAD_MAP);
         frontNameIdentifierMap.put(KUBAN_MAP_NAME, FrontMapIdentifier.KUBAN_MAP);            
+        frontNameIdentifierMap.put(BODENPLATTE_MAP_NAME, FrontMapIdentifier.BODENPLATTE_MAP);            
 
         return frontNameIdentifierMap.get(name);
     }

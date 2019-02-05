@@ -132,7 +132,7 @@ public class Squadron
         return isActiveArchType;
     }
 
-	public String determineCurrentAirfieldName(Date campaignDate) throws PWCGException 
+	public String determineCurrentAirfieldName(Date campaignDate)
 	{
 		String currentAirFieldName = null;
 		
@@ -169,7 +169,7 @@ public class Squadron
         return field;
     }
 
-    public IAirfield determineCurrentAirfieldCurrentMap(Date campaignDate) throws PWCGException 
+    public IAirfield determineCurrentAirfieldCurrentMap(Date campaignDate)
     {
         IAirfield field = null;
         
@@ -177,11 +177,6 @@ public class Squadron
         if (airfieldName != null)
         {
             field =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
-        }
-        
-        if (field == null)
-        {
-            throw new PWCGException("No home field for campaign " + DateUtils.getDateStringYYYYMMDD(campaignDate));
         }
         
         return field;
@@ -206,15 +201,12 @@ public class Squadron
 		    return false;
 		}
 		
-		if (currentAirfield != null)
-		{
-		    PlaneType currentAircraft = determineBestPlane(date);
-			if (currentAircraft == null)
-			{
-		        Logger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Cannot fly aircraft is null");
-			    return false;
-			}
-		}
+        PlaneType currentAircraft = determineBestPlane(date);
+        if (currentAircraft == null)
+        {
+            Logger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Cannot fly aircraft is null");
+            return false;
+        }
 		
         Logger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Can fly fom airfield " + currentAirfield);
 		return true; 
@@ -242,11 +234,11 @@ public class Squadron
     public Date determineFirstAircraftDate() throws PWCGException 
     {
         Date firstPlaneDate = DateUtils.getEndOfWar();
-        for (SquadronPlaneAssignment planeAssignments : planeAssignments)
+        for (SquadronPlaneAssignment planeAssignment : planeAssignments)
         {
-            if (planeAssignments.getSquadronIntroduction().before(firstPlaneDate))
+            if (planeAssignment.getSquadronIntroduction().before(firstPlaneDate))
             {
-                firstPlaneDate = planeAssignments.getSquadronIntroduction();
+                firstPlaneDate = planeAssignment.getSquadronIntroduction();
             }
         }
         
@@ -694,11 +686,6 @@ public class Squadron
 	public List<SquadronPlaneAssignment> getPlaneAssignments() 
 	{
 		return planeAssignments;
-	}
-
-	public void setPlaneAssignments(List<SquadronPlaneAssignment> planeAssignments) 
-	{
-		this.planeAssignments = planeAssignments;
 	}
 
 	public Map<Date, String> getAirfields() 

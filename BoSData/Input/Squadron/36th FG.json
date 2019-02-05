@@ -1,0 +1,47 @@
+{
+  "country": "USA",
+  "squadronId": 102036022,
+  "name": "36th Fighter Group",
+  "fileName": "36th FG.json",
+  "skill": 65,
+  "planeAssignments": [
+    {
+      "archType": "p47",
+      "squadronIntroduction": "19440801",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "conversionPeriods": [
+  ],  
+  "airfields": {
+    "19440801": "Ophoven"
+  },
+  "skins": [
+  ],
+  "squadHistory": {
+    "squadHistoryEntries": [
+    ]
+  },
+  "serviceId": 10102,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19440801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 50
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 50
+          }
+        ]
+      }
+    ]
+  },
+  "callsigns": {
+    "19410801": "ROOK"
+  }
+}

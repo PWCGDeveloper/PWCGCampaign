@@ -8,10 +8,19 @@
     {
       "archType": "he111",
       "squadronIntroduction": "19410801",
+      "squadronWithdrawal": "19440101"
+    },
+    {
+      "archType": "me262",
+      "squadronIntroduction": "19440801",
       "squadronWithdrawal": "19450503"
     }
   ],
   "conversionPeriods": [
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440801"
+    }
   ],  
   "airfields": {
     "19411001": "Vjazma",
@@ -37,7 +46,8 @@
     "19430918": "Bagerovo",
     "19430927": "Bagerovo",
     "19431004": "Bagerovo",
-    "19431008": "Zamorsk"
+    "19431008": "Zamorsk",
+    "19440801": "Hesepe"
   },
   "skins": [],
   "squadHistory": {
@@ -53,7 +63,14 @@
         "squadName": "I./KG4",
         "armedServiceName": "Luftwaffe",
         "skill": 40
+      },
+      {
+        "date": "19440801",
+        "squadName": "I./KG51",
+        "armedServiceName": "Luftwaffe",
+        "skill": 50
       }
+      
     ]
   },
   "serviceId": 20101,
@@ -61,11 +78,21 @@
     "squadronRolePeriods": [
       {
         "startDate": "19400101",
-        "endDate": "19450601",
+        "endDate": "19440801",
         "weightedRoles": [
           {
             "role": "ROLE_BOMB",
             "weight": 90
+          }
+        ]
+      },
+      {
+        "startDate": "19440801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 100
           }
         ]
       }

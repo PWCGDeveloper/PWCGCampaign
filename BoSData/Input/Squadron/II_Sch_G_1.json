@@ -13,13 +13,22 @@
     {
       "archType": "fw190",
       "squadronIntroduction": "19430302",
-      "squadronWithdrawal": "19450601"
+      "squadronWithdrawal": "19440731"
+    },
+    {
+      "archType": "bf109",
+      "squadronIntroduction": "19440801",
+      "squadronWithdrawal": "19450503"
     }
   ],
   "conversionPeriods": [
     {
       "conversionStartDate": "19430302",
       "conversionCompleteDate": "19430321"
+    },
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440801"
     }
   ],  
   "airfields": {
@@ -46,9 +55,20 @@
     "19430918": "Gostagaevskaya",
     "19430927": "Taman",
     "19431004": "Taman",
-    "19431008": "Kerch"
+    "19431008": "Kerch",
+    "19440801": "Zellhausen"
   },
   "skins": [],
+  "squadHistory": {
+      "squadHistoryEntries": [
+      {
+        "date": "19440801",
+        "squadName": "II./JG511",
+        "armedServiceName": "Luftwaffe",
+        "skill": 50
+      }
+    ]
+  },
   "serviceId": 20101,
   "squadronRoles": {
     "squadronRolePeriods": [
@@ -59,6 +79,20 @@
           {
             "role": "ROLE_ATTACK",
             "weight": 100
+          }
+        ]
+      },
+      {
+        "startDate": "19440801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 80
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 20
           }
         ]
       }

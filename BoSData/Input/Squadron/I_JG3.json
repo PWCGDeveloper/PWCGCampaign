@@ -8,10 +8,19 @@
     {
       "archType": "bf109",
       "squadronIntroduction": "19420801",
+      "squadronWithdrawal": "19440731"
+    },
+    {
+      "archType": "fw190",
+      "squadronIntroduction": "19440801",
       "squadronWithdrawal": "19450503"
     }
   ],
   "conversionPeriods": [
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440801"
+    }
   ],  
   "airfields": {
     "19420801": "Zimovskoy",
@@ -26,7 +35,8 @@
     "19430918": "Taman",
     "19430927": "Taman",
     "19431004": "Taman",
-    "19431008": "Bagerovo"
+    "19431008": "Bagerovo",
+    "19440801": "Merzhausen"
   },
   "skins": [
     {
@@ -40,12 +50,22 @@
       "definedInGame": false
     }
   ],
+  "squadHistory": {
+      "squadHistoryEntries": [
+      {
+        "date": "19440801",
+        "squadName": "I./JG1",
+        "armedServiceName": "Luftwaffe",
+        "skill": 70
+      }
+    ]
+  },
   "serviceId": 20101,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19400101",
-        "endDate": "19450601",
+        "startDate": "19420801",
+        "endDate": "19440601",
         "weightedRoles": [
           {
             "role": "ROLE_FIGHTER",
@@ -54,6 +74,20 @@
           {
             "role": "ROLE_ATTACK",
             "weight": 10
+          }
+        ]
+      },
+      {
+        "startDate": "19440801",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 70
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
           }
         ]
       }

@@ -243,6 +243,11 @@ public class InterceptWaypoints extends WaypointGeneratorBase
     protected void createEgressWaypoint(Coordinate lastWaypointCoord) throws PWCGException  
     {
         IAirfield airfield = flight.getSquadron().determineCurrentAirfieldCurrentMap(campaign.getDate());
+        if (airfield == null)
+        {
+            throw new PWCGException("No airfield found for squadron " + flight.getSquadron().getSquadronId() + ".  Should not have been included in mission");
+        }
+        
         double angleFromFrontToField = MathUtils.calcAngle(lastWaypointCoord, airfield.getPosition());
         double distanceFromFrontToField = MathUtils.calcDist(lastWaypointCoord, airfield.getPosition());
         Coordinate egressCoord = MathUtils.calcNextCoord(lastWaypointCoord, angleFromFrontToField, (distanceFromFrontToField / 2));

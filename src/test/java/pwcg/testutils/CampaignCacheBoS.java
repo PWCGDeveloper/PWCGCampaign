@@ -15,9 +15,11 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
     public static final String REG_503_PROFILE = "503rdGroundAttackRegiment";
     public static final String JG_51_PROFILE = "Jasta51";
     public static final String JG_51_PROFILE_2 = "Jasta51_2";
+    public static final String JG_51_PROFILE_3 = "Jasta51_3";
     public static final String KG53_PROFILE = "KG53";
     public static final String STG77_PROFILE = "StG77";
     public static final String TG2_PROFILE = "TG2";
+    public static final String FG_362_PROFILE = "362FG";
     public static final String WRITTEN = "Written";
     
     protected Campaign makeCampaignFromModel(CampaignGeneratorModel generatorModel) throws PWCGException
@@ -44,6 +46,8 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
         make503GroundAttackProfile();
         makeJasta51Profile();
         makeJasta51Profile2();
+        makeJasta51Profile3();
+        make362FGProfile();
         makeKG53Profile();
         makeStG77Profile();
         makeTG2Profile();
@@ -85,6 +89,18 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
         campaignProfiles.put(JG_51_PROFILE_2, generatorModel);
     }
     
+    private void makeJasta51Profile3() throws PWCGException
+    {
+        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19440801", 20111051);
+        campaignProfiles.put(JG_51_PROFILE_3, generatorModel);
+    }
+    
+    private void make362FGProfile() throws PWCGException
+    {
+        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19440801", 102362377);
+        campaignProfiles.put(FG_362_PROFILE, generatorModel);
+    }
+
     private void makeKG53Profile() throws PWCGException
     {
         CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19430301", 20131053);

@@ -15,6 +15,8 @@ public class BoSCountry extends CountryBase implements Cloneable, ICountry
     public static int RUSSIA_CODE = 101;
     public static int GERMANY_CODE = 201;
     public static int ITALY_CODE = 202;
+    public static int USA_CODE = 102;
+    public static int BRITAIN_CODE = 103;
 
     public BoSCountry(Country country)
     {
@@ -67,7 +69,15 @@ public class BoSCountry extends CountryBase implements Cloneable, ICountry
         {
             country = new BoSCountry(Country.ITALY);
         }		
-		
+        else if (service.getServiceId() == BoSServiceManager.USAAF)
+        {
+            country = new BoSCountry(Country.USA);
+        }       
+        else if (service.getServiceId() == BoSServiceManager.RAF)
+        {
+            country = new BoSCountry(Country.BRITAIN);
+        }       
+
 		return country;
 	}
 
@@ -78,7 +88,15 @@ public class BoSCountry extends CountryBase implements Cloneable, ICountry
         {
             return countryToCountryCode(Country.GERMANY);
         }
-        
+        else if (country == Country.USA)
+        {
+            return countryToCountryCode(Country.RUSSIA);
+        }
+        else if (country == Country.BRITAIN)
+        {
+            return countryToCountryCode(Country.RUSSIA);
+        }
+
         return getCountryCode();
     }
 
@@ -100,7 +118,15 @@ public class BoSCountry extends CountryBase implements Cloneable, ICountry
         {
             countryCode = ITALY_CODE;
         }       
-        
+        else if (country == Country.USA)
+        {
+            countryCode = USA_CODE;
+        }       
+        else if (country == Country.BRITAIN)
+        {
+            countryCode = BRITAIN_CODE;
+        }       
+
         return countryCode;
     }
 
@@ -122,7 +148,15 @@ public class BoSCountry extends CountryBase implements Cloneable, ICountry
         {
             country = Country.ITALY;
         }       
-        
+        else if (countryCode == USA_CODE)
+        {
+            country = Country.USA;
+        }       
+        else if (countryCode == BRITAIN_CODE)
+        {
+            country = Country.BRITAIN;
+        }       
+
         return country;
     }
 

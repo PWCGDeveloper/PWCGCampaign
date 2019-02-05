@@ -258,15 +258,23 @@ public class IntelMapGUI extends MapGUI implements ActionListener
             {
                 mapGrid.add(makeRadioButton(PWCGMap.MOSCOW_MAP_NAME, MAP_DELIMITER + PWCGMap.MOSCOW_MAP_NAME, mapButtonGroup));
             }
+            
             PWCGMap stalingradMap = PWCGContextManager.getInstance().getMapByMapId(FrontMapIdentifier.STALINGRAD_MAP);
             if (stalingradMap.getFrontDatesForMap().isMapActive(campaign.getDate()))
             {
                 mapGrid.add(makeRadioButton(PWCGMap.STALINGRAD_MAP_NAME, MAP_DELIMITER + PWCGMap.STALINGRAD_MAP_NAME, mapButtonGroup));
             }
+            
             PWCGMap kubanMap = PWCGContextManager.getInstance().getMapByMapId(FrontMapIdentifier.KUBAN_MAP);
             if (kubanMap.getFrontDatesForMap().isMapActive(campaign.getDate()))
             {
                 mapGrid.add(makeRadioButton(PWCGMap.KUBAN_MAP_NAME, MAP_DELIMITER + PWCGMap.KUBAN_MAP_NAME, mapButtonGroup));
+            }
+            
+            PWCGMap bodenplatteMap = PWCGContextManager.getInstance().getMapByMapId(FrontMapIdentifier.BODENPLATTE_MAP);
+            if (bodenplatteMap.getFrontDatesForMap().isMapActive(campaign.getDate()))
+            {
+                mapGrid.add(makeRadioButton(PWCGMap.BODENPLATTE_MAP_NAME, MAP_DELIMITER + PWCGMap.BODENPLATTE_MAP_NAME, mapButtonGroup));
             }
         }
         return mapPanel;
@@ -308,7 +316,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
             {
                 int indexOfMapName = MAP_DELIMITER.length();
                 String mapName = action.substring(indexOfMapName);
-                FrontMapIdentifier mapIdentifier = PWCGMap.getMapIdFromMapName(mapName);
+                FrontMapIdentifier mapIdentifier = PWCGMap.getFrontMapIdentifierForName(mapName);
                 PWCGContextManager.getInstance().changeContext(mapIdentifier);
                 JPanel mapCenterPanel = createMapPanel();
                 this.setCenterPanel(mapCenterPanel); 

@@ -26,13 +26,17 @@ public abstract class BoSMedalManager extends MedalManager
         {
             medalManager = new GermanMedalManager(campaign);
         }
-        if (country.isCountry(Country.RUSSIA))
+        else if (country.isCountry(Country.RUSSIA))
         {
             medalManager = new RussianMedalManager(campaign);
         }
-        if (country.isCountry(Country.ITALY))
+        else if (country.isCountry(Country.ITALY))
         {
             medalManager = new ItalianMedalManager(campaign);
+        }
+        else if (country.isCountry(Country.USA))
+        {
+            medalManager = new AmericanMedalManager(campaign);
         }
                
         if (medalManager == null)
