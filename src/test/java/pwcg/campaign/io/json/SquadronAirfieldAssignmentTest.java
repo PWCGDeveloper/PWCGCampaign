@@ -52,6 +52,7 @@ public class SquadronAirfieldAssignmentTest
         validMoveDates.add("19430927");
         validMoveDates.add("19431004");
         validMoveDates.add("19431008");
+        validMoveDates.add("19440801");
     }
     
     @Test
@@ -142,8 +143,11 @@ public class SquadronAirfieldAssignmentTest
             }
             
             int firstTransitionDatePosition = findFirstTransitionDatePosition(airfieldDatesForSquadron.get(0));
+            int easternFrontTransitionDates = validMoveDates.size() - 1;
+            int westernFrontTransitionDates = validMoveDates.size();
             
-            if (airfieldDatesForSquadron.size() != (validMoveDates.size() - firstTransitionDatePosition))
+            if ((airfieldDatesForSquadron.size() != (easternFrontTransitionDates - firstTransitionDatePosition)) && 
+                (airfieldDatesForSquadron.size() != (westernFrontTransitionDates - firstTransitionDatePosition)))
             {
                 String errorMsg = "incomplete airfield move date for squadron " + squadron.getSquadronId(); 
                 System.out.println(errorMsg);

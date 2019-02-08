@@ -71,7 +71,7 @@
     "squadronRolePeriods": [
       {
         "startDate": "19400101",
-        "endDate": "19440801",
+        "endDate": "19440731",
         "weightedRoles": [
           {
             "role": "ROLE_FIGHTER",

@@ -22,6 +22,7 @@ public class BehindEnemyLinesTest
     @Before
     public void setup() throws PWCGException
     {
+        PWCGContextManager.setRoF(true);
         PWCGContextManager.getInstance().changeContext(mapId);
     	behindEnemyLines = new BehindEnemyLines(DateUtils.getDateYYYYMMDD("19170101"));
     }

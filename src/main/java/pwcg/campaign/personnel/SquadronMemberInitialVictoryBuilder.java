@@ -7,6 +7,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.outofmission.BeforeCampaignVictimGenerator;
 import pwcg.campaign.outofmission.OutOfMissionVictoryGenerator;
+import pwcg.campaign.outofmission.UnknownSquadronVictoryGenerator;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -220,18 +221,39 @@ public class SquadronMemberInitialVictoryBuilder
             EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
             Squadron victimSquadron = enemySquadronFinder.getRandomEnemyViableSquadron(victorSquadron, victoryDate);
             
-            if (victimSquadron != null)
+            Victory victory = generateVictoryFromActualSquadrons(victoryDate, victimSquadron, newPilot);
+            if (victory != null)
             {
-                BeforeCampaignVictimGenerator beforeCampaignVictimGenerator = new BeforeCampaignVictimGenerator(campaign, victimSquadron, victoryDate);
-                
-                OutOfMissionVictoryGenerator outOfMissionVictoryGenerator = new OutOfMissionVictoryGenerator(victimSquadron, beforeCampaignVictimGenerator, newPilot);
-                Victory victory = outOfMissionVictoryGenerator.generateOutOfMissionVictory(victoryDate);
+                newPilot.addVictory(victory);
+            }
+            else
+            {
+                victory = generateVictoryWithoutSquadron(victoryDate, newPilot);
                 if (victory != null)
                 {
                     newPilot.addVictory(victory);
                 }
             }
         }
+    }
+
+    private Victory generateVictoryWithoutSquadron(Date victoryDate, SquadronMember newPilot) throws PWCGException
+    {
+        UnknownSquadronVictoryGenerator unknownSquadronVictoryGenerator = new UnknownSquadronVictoryGenerator(newPilot);
+        return unknownSquadronVictoryGenerator.generateOutOfMissionVictory(victoryDate);
+    }
+
+    private Victory generateVictoryFromActualSquadrons(Date victoryDate, Squadron victimSquadron, SquadronMember newPilot) throws PWCGException
+    {
+        Victory victory = null;
+        if (victimSquadron != null)
+        {
+            BeforeCampaignVictimGenerator beforeCampaignVictimGenerator = new BeforeCampaignVictimGenerator(campaign, victimSquadron, victoryDate);
+            
+            OutOfMissionVictoryGenerator outOfMissionVictoryGenerator = new OutOfMissionVictoryGenerator(victimSquadron, beforeCampaignVictimGenerator, newPilot);
+            victory = outOfMissionVictoryGenerator.generateOutOfMissionVictory(victoryDate);
+        }
+        return victory;
     }
 
     private Date generateVictoryDate(int i) throws PWCGException
