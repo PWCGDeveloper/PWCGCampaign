@@ -75,7 +75,8 @@ public abstract class CampaignCacheBase implements ICampaignCache
     
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setCampaignDate(campaignDate);
-        generatorModel.setCampaignName(CampaignCacheRoF.TEST_CAMPAIGN_NAME);
+        String campaignName = makeCampaignNameFromSquadronAndDate(squadronId, dateYYMMDD);
+        generatorModel.setCampaignName(campaignName);
         generatorModel.setPlayerName(CampaignCacheRoF.TEST_PLAYER_NAME);
         generatorModel.setPlayerRank(rankName);
         generatorModel.setPlayerRegion("");
@@ -83,6 +84,11 @@ public abstract class CampaignCacheBase implements ICampaignCache
         generatorModel.setSquadronName(squadronName);
 
         return generatorModel;
+    }
+    
+    public static String makeCampaignNameFromSquadronAndDate(int squadronId, String dateYYMMDD)
+    {
+        return CampaignCacheRoF.TEST_CAMPAIGN_NAME + "_" + squadronId + "_" + dateYYMMDD;
     }
 
 }

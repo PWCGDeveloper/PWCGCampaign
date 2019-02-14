@@ -2,6 +2,7 @@ package pwcg.campaign.io.json;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -31,6 +32,14 @@ import pwcg.testutils.CampaignCacheRoF;
 @RunWith(MockitoJUnitRunner.class)
 public class CampaignIOJsonTest
 {    
+    String campaignName;
+    
+    @Before
+    public void setup()
+    {
+        campaignName = CampaignCacheRoF.makeCampaignNameFromSquadronAndDate(501011, "19170501");
+    }
+    
     @Test
     public void campaignIOJsonTest() throws PWCGException
     {
@@ -51,7 +60,7 @@ public class CampaignIOJsonTest
     private void readCampaign() throws PWCGException
     {
         Campaign campaign = new Campaign();
-        campaign.open(CampaignCacheBase.TEST_CAMPAIGN_NAME);
+        campaign.open(campaignName);
         PWCGContextManager.getInstance().setCampaign(campaign);
 
         validateCoreCampaign(campaign);        
@@ -72,7 +81,7 @@ public class CampaignIOJsonTest
         
         assert (campaign.getDate().equals(DateUtils.getDateYYYYMMDD("19170501")));
         assert (campaign.getSquadronId() == 501011);
-        assert (campaign.getCampaignData().getName().equals(CampaignCacheBase.TEST_CAMPAIGN_NAME));
+        assert (campaign.getCampaignData().getName().equals(campaignName));
         assert (campaign.getPlayers().get(0).getName().equals(CampaignCacheBase.TEST_PLAYER_NAME));
     }
 
@@ -156,6 +165,6 @@ public class CampaignIOJsonTest
     private void deleteCampaign()
     {
         CampaignRemover campaignRemover = new CampaignRemover();
-        campaignRemover.deleteCampaign(CampaignCacheBase.TEST_CAMPAIGN_NAME);
+        campaignRemover.deleteCampaign(campaignName);
     }
 }

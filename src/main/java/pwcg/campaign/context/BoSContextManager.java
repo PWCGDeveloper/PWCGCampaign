@@ -39,13 +39,7 @@ public class BoSContextManager extends PWCGContextManagerBase implements IPWCGCo
         campaignStartDates.add("01/10/1943");
         campaignStartDates.add("01/08/1944");
     }
-	
 
-    /**
-     * Initialize context to the base map for the product
-     * 
-     * @throws PWCGException 
-     */
     @Override
     protected void initialize() throws PWCGException  
     {

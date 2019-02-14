@@ -4,9 +4,12 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
@@ -38,6 +41,7 @@ public class PlaneType implements Cloneable
     protected Date introduction;
     protected Date withdrawal;
     protected Side side = null;
+    protected List<Country> primaryUsedBy = new ArrayList<>();;
 
     public PlaneType()
     {
@@ -354,5 +358,23 @@ public class PlaneType implements Cloneable
     public void setSide(Side side)
     {
         this.side = side;
+    }
+
+    public boolean isUsedBy(ICountry country)
+    {
+        for (Country countryEnum: primaryUsedBy) 
+        {
+            if (countryEnum == country.getCountry())
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void setPrimaryUsedBy(List<Country> primaryUsedBy)
+    {
+        this.primaryUsedBy = primaryUsedBy;
     }
 }

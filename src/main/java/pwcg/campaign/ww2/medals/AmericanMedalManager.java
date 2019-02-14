@@ -30,9 +30,9 @@ public class AmericanMedalManager extends BoSMedalManager
 		medals.put(DISTINGUISHED_FLYING_CROSS, new Medal ("Distinguished Flying Cross",	    "us_dfc.jpg"));
         medals.put(SILVER_STAR, new Medal ("Silver Star",                                   "us_ss.jpg"));
         medals.put(DISTINGUISHED_SERVICE_CROSS, new Medal ("Distinguished Service Cross",   "us_dsc.jpg"));
-		medals.put(MEDAL_OF_HONOR, new Medal ("Medal of Honor",							    "MoH.jpg"));
+		medals.put(MEDAL_OF_HONOR, new Medal ("Medal of Honor",							    "us_moh.jpg"));
 		
-		medals.put(PURPLE_HEART, new Medal ("Purple Heart", 							    "WoundChev.jpg"));
+		medals.put(PURPLE_HEART, new Medal ("Purple Heart", 							    "us_ph.jpg"));
 	} 
 
     protected Medal awardWings(SquadronMember pilot) 
@@ -72,21 +72,15 @@ public class AmericanMedalManager extends BoSMedalManager
 		{
 			if (!hasMedal(pilot, medals.get(MEDAL_OF_HONOR)))
 			{
-				if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 15))
+				if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 20) && (victoriesThisMission >= 3))
 				{
-					if (victoriesThisMission >= 3)
-					{
-						return medals.get(MEDAL_OF_HONOR);
-					}
+                    return medals.get(MEDAL_OF_HONOR);
 				}
-				else if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 20))
+				else if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 30) && (victoriesThisMission >= 2))
 				{
-					if (victoriesThisMission >= 2)
-					{
-						return medals.get(MEDAL_OF_HONOR);
-					}
+                    return medals.get(MEDAL_OF_HONOR);
 				}
-                else if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 30))
+                else if ((pilot.getSquadronMemberVictories().getAirToAirVictories() >= 35))
                 {
                     return medals.get(MEDAL_OF_HONOR);
                 }
@@ -147,7 +141,7 @@ public class AmericanMedalManager extends BoSMedalManager
 	@Override
 	public List<Medal> getAllAwardsForService() throws PWCGException
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
+		List<Medal> medalsInOrder = getAllMedalsInOrder();
 		medalsInOrder.addAll(getWoundBadgesInOrder());
 		medalsInOrder.addAll(getAllBadgesInOrder());
 		return medalsInOrder;

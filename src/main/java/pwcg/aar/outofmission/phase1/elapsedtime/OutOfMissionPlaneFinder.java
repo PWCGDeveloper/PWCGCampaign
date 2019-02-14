@@ -22,7 +22,7 @@ public class OutOfMissionPlaneFinder
         
         if (planeType == null)
         {
-            planeType = findAnyPlaneTypeForSideAndDate(squadron, date);
+            planeType = findAnyPlaneTypeForCountryAndDate(squadron, date);
         }
         
         if (planeType == null)
@@ -41,15 +41,15 @@ public class OutOfMissionPlaneFinder
 
     private PlaneType findAlternativePlaneTypeForSquadron(Squadron squadron, Role role, Date date) throws PWCGException
     {
-        PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().getActivePlaneBySideDateAndRole(
-                squadron.determineSquadronCountry(date).getSide(), date, role);
+        PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().findActivePlaneTypeByCountryDateAndRole(
+                squadron.determineSquadronCountry(date), date, role);
         return planeType;        
     }
 
-    private PlaneType findAnyPlaneTypeForSideAndDate(Squadron squadron, Date date) throws PWCGException
+    private PlaneType findAnyPlaneTypeForCountryAndDate(Squadron squadron, Date date) throws PWCGException
     {
-        PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().getActivePlaneBySideAndDate(
-                squadron.determineSquadronCountry(date).getSide(), date);
+        PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().findAnyPlaneTypeForCountryAndDate(
+                squadron.determineSquadronCountry(date), date);
         return planeType;        
         
     }

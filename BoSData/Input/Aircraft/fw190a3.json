@@ -2,6 +2,9 @@
   "type": "fw190a3",
   "archType": "fw190",
   "side": "AXIS",
+  "primaryUsedBy": [
+    "GERMANY"
+  ],
   "displayName": "Fw 190 A-3",
   "script": "LuaScripts\\WorldObjects\\Planes\\fw190a3.txt",
   "model": "graphics\\planes\\fw190a3\\fw190a3.mgm",

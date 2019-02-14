@@ -2,6 +2,9 @@
   "type": "lagg3s29",
   "archType": "lagg",
   "side": "ALLIED",
+  "primaryUsedBy": [
+    "RUSSIA"
+  ],
   "displayName": "LaGG-3 ser.29",
   "script": "LuaScripts\\WorldObjects\\Planes\\lagg3s29.txt",
   "model": "graphics\\planes\\lagg3s29\\lagg3s29.mgm",

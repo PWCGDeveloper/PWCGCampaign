@@ -3,6 +3,10 @@
   "archType": "a20",
   "side": "ALLIED",
   "displayName": "A-20B",
+  "primaryUsedBy": [
+    "USA",
+    "RUSSIA"
+  ],
   "script": "LuaScripts\\WorldObjects\\Planes\\a20b.txt",
   "model": "graphics\\planes\\a20b\\a20b.mgm",
   "desc": "",

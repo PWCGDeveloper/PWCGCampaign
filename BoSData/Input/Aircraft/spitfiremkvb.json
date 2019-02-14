@@ -2,6 +2,9 @@
   "type": "spitfiremkvb",
   "archType": "spitfire",
   "side": "ALLIED",
+  "primaryUsedBy": [
+    "BRITAIN"
+  ],
   "displayName": "Spitfire Mk.VB",
   "script": "LuaScripts\\WorldObjects\\Planes\\spitfiremkvb.txt",
   "model": "graphics\\planes\\spitfiremkvb\\spitfiremkvb.mgm",

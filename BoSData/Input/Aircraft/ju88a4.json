@@ -2,6 +2,9 @@
   "type": "ju88a4",
   "archType": "ju88",
   "side": "AXIS",
+  "primaryUsedBy": [
+    "GERMANY"
+  ],
   "displayName": "Ju 88 A-4",
   "script": "LuaScripts\\WorldObjects\\Planes\\ju88a4.txt",
   "model": "graphics\\planes\\ju88a4\\ju88a4.mgm",

@@ -2,6 +2,9 @@
   "type": "yak1s69",
   "archType": "yak",
   "side": "ALLIED",
+  "primaryUsedBy": [
+    "RUSSIA"
+  ],
   "displayName": "Yak-1 ser.69",
   "script": "LuaScripts\\WorldObjects\\Planes\\yak1s69.txt",
   "model": "graphics\\planes\\yak1s69\\yak1s69.mgm",

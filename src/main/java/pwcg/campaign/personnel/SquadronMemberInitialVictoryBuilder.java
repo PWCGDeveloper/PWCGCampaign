@@ -50,11 +50,6 @@ public class SquadronMemberInitialVictoryBuilder
         factorSquadronQuality(rankPos);
         factorLuftwaffe(rankPos);
         resetForEarlyWWI(rankPos);
-        
-        if (victorSquadron.getSquadronId() == 102362377) 
-        {
-            System.out.println("max victories for rank " + rankPos + " is between " + minVictories + " and " + maxVictories);
-        }
 
         int victories = calcNumberOfVictories(minVictories, maxVictories);
         addVictories(newPilot, victories);
@@ -250,7 +245,7 @@ public class SquadronMemberInitialVictoryBuilder
         {
             BeforeCampaignVictimGenerator beforeCampaignVictimGenerator = new BeforeCampaignVictimGenerator(campaign, victimSquadron, victoryDate);
             
-            OutOfMissionVictoryGenerator outOfMissionVictoryGenerator = new OutOfMissionVictoryGenerator(victimSquadron, beforeCampaignVictimGenerator, newPilot);
+            OutOfMissionVictoryGenerator outOfMissionVictoryGenerator = new OutOfMissionVictoryGenerator(campaign, victimSquadron, beforeCampaignVictimGenerator, newPilot);
             victory = outOfMissionVictoryGenerator.generateOutOfMissionVictory(victoryDate);
         }
         return victory;

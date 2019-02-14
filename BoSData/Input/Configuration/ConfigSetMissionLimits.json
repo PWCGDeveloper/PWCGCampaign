@@ -36,6 +36,11 @@
       "label": "Max Fighter Flights Per Side: Fighter Campaigns",
       "help": "Max number of fighter flights per side when the player is in a fighter squadron"
     },
+    "AiAddidionalFighterFlightsForWestFrontCampaign": {
+      "value": "2",
+      "label": "Max Additional Fighter Flights Western Front",
+      "help": "Almost all squadrons are fighter, so more fighter flights are needed on the Western front"
+    },
     "EnemyPlanesMax": {
       "value": "10",
       "label": "Max Enemy Planes",
@@ -62,7 +67,7 @@
       "help": "Generate WPs to gain altitude - set to 1 for more climb WPs"
     },
     "InitialSquadronSearchRadius": {
-      "value": "100000",
+      "value": "150000",
       "label": "Initial Squadron Search Radius",
       "help": "Initial radius to search for squadrons to include in mission (in meters)"
     },

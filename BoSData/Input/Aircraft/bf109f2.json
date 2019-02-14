@@ -2,6 +2,9 @@
   "type": "bf109f2",
   "archType": "bf109",
   "side": "AXIS",
+  "primaryUsedBy": [
+    "GERMANY"
+  ],
   "displayName": "Bf 109 F-2",
   "script": "LuaScripts\\WorldObjects\\Planes\\bf109f2.txt",
   "model": "graphics\\planes\\bf109f2\\bf109f2.mgm",

@@ -2,6 +2,9 @@
   "type": "hs129b2",
   "archType": "hs129",
   "side": "AXIS",
+  "primaryUsedBy": [
+    "GERMANY"
+  ],
   "displayName": "Hs 129 B-2",
   "script": "LuaScripts\\WorldObjects\\Planes\\hs129b2.txt",
   "model": "graphics\\planes\\hs129b2\\hs129b2.mgm",

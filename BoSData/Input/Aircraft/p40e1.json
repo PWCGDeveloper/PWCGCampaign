@@ -2,6 +2,9 @@
   "type": "p40e1",
   "archType": "p40",
   "side": "ALLIED",
+  "primaryUsedBy": [
+    "USA"
+  ],
   "displayName": "P-40E-1",
   "script": "LuaScripts\\WorldObjects\\Planes\\p40e1.txt",
   "model": "graphics\\planes\\p40e1\\p40e1.mgm",

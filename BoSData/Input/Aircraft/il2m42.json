@@ -2,6 +2,9 @@
   "type": "il2m42",
   "archType": "il2",
   "side": "ALLIED",
+  "primaryUsedBy": [
+    "RUSSIA"
+  ],
   "displayName": "Il-2 mod.1942",
   "script": "LuaScripts\\WorldObjects\\Planes\\il2m42.txt",
   "model": "graphics\\planes\\il2m42\\il2m42.mgm",

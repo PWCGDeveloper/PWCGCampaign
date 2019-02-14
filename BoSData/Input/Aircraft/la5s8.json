@@ -2,6 +2,9 @@
   "type": "la5s8",
   "archType": "lagg",
   "side": "ALLIED",
+  "primaryUsedBy": [
+    "RUSSIA"
+  ],
   "displayName": "La-5 ser.8",
   "script": "LuaScripts\\WorldObjects\\Planes\\la5s8.txt",
   "model": "graphics\\planes\\la5s8\\la5s8.mgm",

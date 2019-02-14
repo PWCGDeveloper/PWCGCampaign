@@ -38,7 +38,11 @@ public abstract class BoSMedalManager extends MedalManager
         {
             medalManager = new AmericanMedalManager(campaign);
         }
-               
+        else if (country.isCountry(Country.BRITAIN))
+        {
+            medalManager = new BritishMedalManager(campaign);
+        }
+
         if (medalManager == null)
         {
             throw new PWCGException ("No medal manager for country " + country.getCountryName());

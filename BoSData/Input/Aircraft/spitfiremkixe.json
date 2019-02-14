@@ -2,6 +2,9 @@
   "type": "spitfiremkixe",
   "archType": "spitfire",
   "side": "ALLIED",
+  "primaryUsedBy": [
+    "BRITAIN"
+  ],
   "displayName": "Spitfire Mk.IXe",
   "script": "LuaScripts\\WorldObjects\\Planes\\spitfiremkixe.txt",
   "model": "graphics\\planes\\spitfiremkixe\\spitfiremkixe.mgm",

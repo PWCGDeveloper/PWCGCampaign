@@ -73,6 +73,7 @@ public class BoSDeploy extends DeployBase
         directoriesToCopy.put("Stalingrad", null);
         directoriesToCopy.put("Moscow", null);
         directoriesToCopy.put("Kuban", null);
+        directoriesToCopy.put("Bodenplatte", null);        
 
 		// Moscow dates
         directoriesToCopy.put("19411001", null);
@@ -103,6 +104,9 @@ public class BoSDeploy extends DeployBase
         directoriesToCopy.put("19430927", null);
         directoriesToCopy.put("19431004", null);
         directoriesToCopy.put("19431008", null);
+
+        // Bodenplatte dates
+        directoriesToCopy.put("19440801", null);
 
 		return directoriesToCopy;
 	}

@@ -2,6 +2,9 @@
   "type": "u2vs",
   "archType": "u2",
   "side": "ALLIED",
+  "primaryUsedBy": [
+    "RUSSIA"
+  ],
   "displayName": "U2-VS",
   "script": "LuaScripts\\WorldObjects\\Planes\\u2vs.txt",
   "model": "graphics\\planes\\u2vs\\u2vs.mgm",

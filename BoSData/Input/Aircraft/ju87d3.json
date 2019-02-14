@@ -2,6 +2,9 @@
   "type": "ju87d3",
   "archType": "ju87",
   "side": "AXIS",
+  "primaryUsedBy": [
+    "GERMANY"
+  ],
   "displayName": "Ju 87 D-3",
   "script": "LuaScripts\\WorldObjects\\Planes\\ju87d3.txt",
   "model": "graphics\\planes\\ju87d3\\ju87d3.mgm",

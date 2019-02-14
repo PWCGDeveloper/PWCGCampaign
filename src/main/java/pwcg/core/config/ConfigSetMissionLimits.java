@@ -22,6 +22,7 @@ public class ConfigSetMissionLimits
         configSet.addConfigItem(ConfigItemKeys.EnemyFlightsToKeepMinKey, new ConfigItem("6"));
         configSet.addConfigItem(ConfigItemKeys.EnemyFlightsToKeepMaxKey, new ConfigItem("10"));
         configSet.addConfigItem(ConfigItemKeys.AiFighterFlightsForGroundCampaignMaxKey, new ConfigItem("1"));
+        configSet.addConfigItem(ConfigItemKeys.AiAddidionalFighterFlightsForWestFrontCampaignKey, new ConfigItem("2"));
         configSet.addConfigItem(ConfigItemKeys.AiFighterFlightsForFighterCampaignMaxKey, new ConfigItem("3"));        
         configSet.addConfigItem(ConfigItemKeys.DistanceFromPlayerFieldZoneKey, new ConfigItem("20000"));
         configSet.addConfigItem(ConfigItemKeys.DistanceToPlayerFieldOverrideOddsKey, new ConfigItem("5"));

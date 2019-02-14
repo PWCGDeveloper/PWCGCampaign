@@ -2,6 +2,9 @@
   "type": "p47d28",
   "archType": "p47",
   "side": "ALLIED",
+  "primaryUsedBy": [
+    "USA"
+  ],
   "displayName": "P-47D-28",
   "script": "LuaScripts\\WorldObjects\\Planes\\p47d28.txt",
   "model": "graphics\\planes\\p47d28\\p47d28.mgm",

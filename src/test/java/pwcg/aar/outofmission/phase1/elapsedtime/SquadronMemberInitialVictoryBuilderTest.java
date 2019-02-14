@@ -106,7 +106,7 @@ public class SquadronMemberInitialVictoryBuilderTest
     @Test
     public void testInitialVictoriesGermanFighterWest () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheBoS.JG_51_PROFILE_3);
+        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheBoS.JG_51_PROFILE_WEST);
 
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(20112052);
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());

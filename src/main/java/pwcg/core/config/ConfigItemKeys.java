@@ -91,7 +91,8 @@ public class ConfigItemKeys
 	public static final String EnemyFlightsToKeepMinKey = "EnemyFlightsToKeepMin";
 	public static final String EnemyFlightsToKeepMaxKey = "EnemyFlightsToKeepMax";
 	public static final String AiFighterFlightsForGroundCampaignMaxKey = "AiFighterFlightsForGroundCampaignMax";
-	public static final String AiFighterFlightsForFighterCampaignMaxKey = "AiFighterFlightsForFighterCampaignMax";
+    public static final String AiFighterFlightsForFighterCampaignMaxKey = "AiFighterFlightsForFighterCampaignMax";
+    public static final String AiAddidionalFighterFlightsForWestFrontCampaignKey = "AiAddidionalFighterFlightsForWestFrontCampaign";
 	public static final String DistanceFromPlayerFieldZoneKey = "DistanceFromPlayerFieldZone";
 	public static final String DistanceToPlayerFieldOverrideOddsKey = "DistanceToPlayerFieldOverrideOdds";
 

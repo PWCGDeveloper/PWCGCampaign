@@ -101,7 +101,7 @@ public class OutOfMissionVictoryEventHandler
     {
         DuringCampaignVictimGenerator duringCampaignVictimGenerator = new DuringCampaignVictimGenerator(campaign, victimSquadron);
 
-        OutOfMissionVictoryGenerator outOfMissionVictoryGenerator = new OutOfMissionVictoryGenerator(victimSquadron, duringCampaignVictimGenerator, victorPilot);
+        OutOfMissionVictoryGenerator outOfMissionVictoryGenerator = new OutOfMissionVictoryGenerator(campaign, victimSquadron, duringCampaignVictimGenerator, victorPilot);
         Victory victory = outOfMissionVictoryGenerator.generateOutOfMissionVictory(campaign.getDate());
 
         if (victory != null)

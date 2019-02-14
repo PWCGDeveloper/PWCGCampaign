@@ -2,6 +2,9 @@
   "type": "he111h16",
   "archType": "he111",
   "side": "AXIS",
+  "primaryUsedBy": [
+    "GERMANY"
+  ],
   "displayName": "He 111 H-16",
   "script": "LuaScripts\\WorldObjects\\Planes\\he111h16.txt",
   "model": "graphics\\planes\\he111h16\\he111h16.mgm",

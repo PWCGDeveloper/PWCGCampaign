@@ -2,6 +2,9 @@
   "type": "bf109g14",
   "archType": "bf109",
   "side": "AXIS",
+  "primaryUsedBy": [
+    "GERMANY"
+  ],
   "displayName": "Bf 109 G-14",
   "script": "LuaScripts\\WorldObjects\\Planes\\bf109g14.txt",
   "model": "graphics\\planes\\bf109g14\\bf109g14.mgm",

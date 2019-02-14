@@ -2,6 +2,9 @@
   "type": "i16t24",
   "archType": "i16",
   "side": "ALLIED",
+  "primaryUsedBy": [
+    "RUSSIA"
+  ],
   "displayName": "I-16 type 24",
   "script": "LuaScripts\\WorldObjects\\Planes\\i16t24.txt",
   "model": "graphics\\planes\\i16t24\\i16t24.mgm",

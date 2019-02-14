@@ -57,10 +57,14 @@ public class PlaneTypeFactoryTest
         Date planeDate = DateUtils.getDateYYYYMMDD("19420302");
         
         PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
-        PlaneType planeType =  planeTypeFactory.getActivePlaneBySideAndDate(Side.ALLIED, planeDate);
+        ICountry countryRussia = CountryFactory.makeCountryByCountry(Country.RUSSIA);
+        PlaneType planeType =  planeTypeFactory.findAnyPlaneTypeForCountryAndDate(countryRussia, planeDate);
         assert(planeType.getIntroduction().before(planeDate));
         assert(planeType.getWithdrawal().after(planeDate));
         assert(planeType.getSide() == Side.ALLIED);
+        assert(planeType.isUsedBy(countryRussia));
+        ICountry countryGermany = CountryFactory.makeCountryByCountry(Country.GERMANY);
+        assert(!planeType.isUsedBy(countryGermany));
     }
 
     @Test

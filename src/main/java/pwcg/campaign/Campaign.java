@@ -8,6 +8,7 @@ import java.util.List;
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
@@ -129,6 +130,12 @@ public class Campaign
     {
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaignData.getSquadId());
         return squadron.determineSquadronCountry(campaignData.getDate());
+    }
+
+    public Side determineSide() throws PWCGException
+    {
+        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaignData.getSquadId());
+        return squadron.determineSquadronCountry(campaignData.getDate()).getSide();
     }
 
     public Date getDate()

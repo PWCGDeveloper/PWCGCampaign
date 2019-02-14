@@ -2,6 +2,9 @@
   "type": "mc202s8",
   "archType": "mc200",
   "side": "AXIS",
+  "primaryUsedBy": [
+    "ITALY"
+  ],
   "displayName": "MC.202 ser.VIII",
   "script": "LuaScripts\\WorldObjects\\Planes\\mc202s8.txt",
   "model": "graphics\\planes\\mc202s8\\mc202s8.mgm",

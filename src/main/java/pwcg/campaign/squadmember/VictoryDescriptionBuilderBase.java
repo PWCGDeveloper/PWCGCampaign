@@ -97,7 +97,15 @@ public abstract class VictoryDescriptionBuilderBase
         {
             if (victory.getCrashedInSight())
             {
-                pilotFate =  "\n" + victory.getVictim().getPilotName() + " " + getStringForStatus(victory.getVictim().getPilotStatus());
+                String pilotName = "The pilot";
+                if (victory.getVictim().getPilotName() != null && 
+                    victory.getVictim().getPilotName().equals("") &&
+                    victory.getVictim().getPilotName().equals(""))
+                {
+                    pilotName = victory.getVictim().getPilotName();
+                }
+                    
+                pilotFate =  "\n" + pilotName + " " + getStringForStatus(victory.getVictim().getPilotStatus());
             }
             else
             {

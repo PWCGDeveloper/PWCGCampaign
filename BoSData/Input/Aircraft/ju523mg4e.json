@@ -2,6 +2,9 @@
   "type": "ju523mg4e",
   "archType": "ju52",
   "side": "AXIS",
+  "primaryUsedBy": [
+    "GERMANY"
+  ],
   "displayName": "Ju 52",
   "script": "LuaScripts\\WorldObjects\\Planes\\ju523mg4e.txt",
   "model": "graphics\\planes\\ju523mg4e\\ju523mg4e.mgm",

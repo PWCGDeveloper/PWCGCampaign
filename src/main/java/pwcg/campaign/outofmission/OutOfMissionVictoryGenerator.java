@@ -2,7 +2,7 @@ package pwcg.campaign.outofmission;
 
 import java.util.Date;
 
-import pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionPlaneFinder;
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
@@ -20,14 +20,16 @@ import pwcg.core.utils.Logger;
 
 public class OutOfMissionVictoryGenerator
 {
+    private Campaign campaign;
     private Squadron victimSquadron;
     private IVictimGenerator victimGenerator;
     private SquadronMember victorPilot;
     private SquadronMember victimPilot;
     private EquippedPlane victimPlane;
 
-    public OutOfMissionVictoryGenerator (Squadron victimSquadron, IVictimGenerator victimGenerator, SquadronMember victorPilot)
+    public OutOfMissionVictoryGenerator (Campaign campaign, Squadron victimSquadron, IVictimGenerator victimGenerator, SquadronMember victorPilot)
     {
+        this.campaign = campaign;
         this.victimSquadron = victimSquadron;
         this.victimGenerator = victimGenerator;
         this.victorPilot = victorPilot;
@@ -86,17 +88,11 @@ public class OutOfMissionVictoryGenerator
         VictoryEntity victor = new VictoryEntity();
         
         Squadron squadron = victorPilot.determineSquadron();
-        
-        OutOfMissionPlaneFinder outOfMissionPlaneFinder = new OutOfMissionPlaneFinder();
-        PlaneType planeType = outOfMissionPlaneFinder.findPlaneType(
-                squadron,
-                squadron.determineSquadronPrimaryRole(date),
-                date);
-                
-        String victorType = planeType.getType();
+
+        PlaneType victorPlaneType = squadron.determineBestPlane(campaign.getDate());
 
         victor.setAirOrGround(Victory.AIR_VICTORY);
-        victor.setType(victorType);
+        victor.setType(victorPlaneType.getDisplayName());
         victor.setSquadronName(squadron.determineDisplayName(date));
         victor.setPilotName(victorPilot.getRank() + " " + victorPilot.getName());
         victor.setPilotStatus(SquadronMemberStatus.STATUS_ACTIVE);
