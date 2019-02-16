@@ -17,9 +17,9 @@ public class P47D28Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-3, "10000001", PayloadElement.MIRROR);
-        setAvailablePayload(-2, "1000001", PayloadElement.P47_MN28);
-        setAvailablePayload(-1, "100001", PayloadElement.P47_GUNSIGHT);
+        setAvailablePayload(-3, "10000000", PayloadElement.MIRROR);
+        setAvailablePayload(-2, "1000000", PayloadElement.P47_MN28);
+        setAvailablePayload(-1, "100000", PayloadElement.P47_GUNSIGHT);
                 
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "11", PayloadElement.MG50CAL_6x);
