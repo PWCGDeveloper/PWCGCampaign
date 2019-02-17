@@ -2,6 +2,7 @@ package pwcg.campaign.plane;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -49,6 +50,23 @@ public class PlaneTypeFactoryTest
         PlaneType planeType =  planeTypeFactory.createPlaneTypeByAnyName("Bf 109 F-4");
         assert(planeType.getType().equals("bf109f4"));
         assert(planeType.getArchType().equals("bf109"));
+    }
+
+    @Test
+    public void testAllPlaneTypes() throws PWCGException
+    {
+        PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
+        Map<String, PlaneType> planeTypes =  planeTypeFactory.getPlaneTypes();
+        assert(planeTypes.size() > 30);
+        for (PlaneType planeType : planeTypes.values())
+        {
+            assert(planeType.getArchType() != null);
+            assert(planeType.getIntroduction().after(DateUtils.getDateYYYYMMDD("19390901")));
+            assert(planeType.getWithdrawal().before(DateUtils.getDateYYYYMMDD("1945601")));
+            assert(planeType.getEndProduction().before(DateUtils.getDateYYYYMMDD("1945601")));
+            assert(planeType.getRoles().size() > 0);
+            assert(planeType.getPrimaryUsedBy().size() > 0);
+        }
     }
 
     @Test

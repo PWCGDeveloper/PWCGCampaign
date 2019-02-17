@@ -40,8 +40,10 @@ public class PlaneType implements Cloneable
     protected ArrayList<Role> roles = new ArrayList<Role>();
     protected Date introduction;
     protected Date withdrawal;
+    protected Date endProduction;;
     protected Side side = null;
-    protected List<Country> primaryUsedBy = new ArrayList<>();;
+    protected List<Country> primaryUsedBy = new ArrayList<>();
+
 
     public PlaneType()
     {
@@ -275,6 +277,16 @@ public class PlaneType implements Cloneable
         this.withdrawal = withdrawal;
     }
 
+    public Date getEndProduction()
+    {
+        return endProduction;
+    }
+
+    public void setEndProduction(Date endProduction)
+    {
+        this.endProduction = endProduction;
+    }
+
     public Date getIntroduction()
     {
         return this.introduction;
@@ -373,8 +385,8 @@ public class PlaneType implements Cloneable
         return false;
     }
 
-    public void setPrimaryUsedBy(List<Country> primaryUsedBy)
+    public List<Country> getPrimaryUsedBy()
     {
-        this.primaryUsedBy = primaryUsedBy;
+        return primaryUsedBy;
     }
 }

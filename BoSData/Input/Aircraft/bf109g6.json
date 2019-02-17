@@ -20,5 +20,6 @@
     "ROLE_ATTACK"
   ],
   "introduction": "19430601",
-  "withdrawal": "19440801"
+  "endProduction": "19440401",
+  "withdrawal": "19440901"
 }

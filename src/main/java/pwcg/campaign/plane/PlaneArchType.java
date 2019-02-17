@@ -41,7 +41,20 @@ public class PlaneArchType
         }
         return activePlaneTypes;
     }
-    
+
+    public List<PlaneType> getInProductionMemberPlaneTypes(Date date) throws PWCGException
+    {
+        List<PlaneType> activePlaneTypes = new ArrayList<>();
+        for (PlaneType planeType : memberPlaneTypes.values())
+        {
+            if (DateUtils.isDateInRange(date, planeType.getIntroduction(), planeType.getEndProduction()))
+            {
+                activePlaneTypes.add(planeType);
+            }
+        }
+        return activePlaneTypes;
+    }
+
     public static String getArchTypeDescription(String archType)
     {
         String archTypeDescription = archType;

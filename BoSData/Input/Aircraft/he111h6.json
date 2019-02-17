@@ -19,5 +19,6 @@
     "ROLE_BOMB"
   ],
   "introduction": "19410601",
-  "withdrawal": "19421101"
+  "endProduction": "19421101",
+  "withdrawal": "19430601"
 }

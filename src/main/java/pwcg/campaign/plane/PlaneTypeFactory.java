@@ -365,4 +365,8 @@ public class PlaneTypeFactory
         return plane;
     }
 
+    public Map<String, PlaneType> getPlaneTypes()
+    {
+        return planeTypes;
+    }
 }

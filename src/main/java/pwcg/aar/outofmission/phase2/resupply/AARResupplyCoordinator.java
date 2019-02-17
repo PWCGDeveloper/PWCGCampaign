@@ -5,9 +5,12 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
+import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.resupply.ResupplyNeedBuilder;
 import pwcg.campaign.resupply.equipment.EquipmentReplacementHandler;
 import pwcg.campaign.resupply.equipment.EquipmentResupplyData;
+import pwcg.campaign.resupply.equipment.WithdrawnEquipmentReplacer;
 import pwcg.campaign.resupply.personnel.SquadronTransferData;
 import pwcg.campaign.resupply.personnel.TransferHandler;
 import pwcg.core.exception.PWCGException;
@@ -57,10 +60,31 @@ public class AARResupplyCoordinator
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
         for (ArmedService armedService : serviceManager.getAllArmedServices())
         {
-            ResupplyNeedBuilder equipmentNeedBuilder = new ResupplyNeedBuilder(campaign, armedService);
-            EquipmentReplacementHandler equipmentResupplyHandler = new EquipmentReplacementHandler(campaign, equipmentNeedBuilder);
-            EquipmentResupplyData equipmentResupplyData = equipmentResupplyHandler.determineEquipmentResupply(armedService);
-            resupplyData.getEquipmentResupplyData().merge(equipmentResupplyData);
+            replaceWithdrawnPlanes(armedService);
+            replaceLostPlanes(armedService);
         }
+    }
+
+
+    private void replaceWithdrawnPlanes(ArmedService armedService) throws PWCGException
+    {
+        for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        {
+            int serviceIdForSquadron = squadronPersonnel.getSquadron().determineServiceForSquadron(campaign.getDate()).getServiceId();
+            if (armedService.getServiceId() == serviceIdForSquadron)
+            {
+                Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(serviceIdForSquadron);
+                WithdrawnEquipmentReplacer withdrawnEquipmentReplacer = new WithdrawnEquipmentReplacer(campaign, equipment, squadronPersonnel.getSquadron());
+                withdrawnEquipmentReplacer.replaceWithdrawnEquipment();
+            }
+        }        
+    }
+
+    private void replaceLostPlanes(ArmedService armedService) throws PWCGException
+    {
+        ResupplyNeedBuilder equipmentNeedBuilder = new ResupplyNeedBuilder(campaign, armedService);
+        EquipmentReplacementHandler equipmentResupplyHandler = new EquipmentReplacementHandler(campaign, equipmentNeedBuilder);
+        EquipmentResupplyData equipmentResupplyData = equipmentResupplyHandler.determineEquipmentResupply(armedService);
+        resupplyData.getEquipmentResupplyData().merge(equipmentResupplyData);
     }
 }

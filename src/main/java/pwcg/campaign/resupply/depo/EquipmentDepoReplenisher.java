@@ -62,7 +62,7 @@ public class EquipmentDepoReplenisher
         for (int i = 0; i < numPlanes; ++i)
         {
             PlaneArchType planeArchType = getArchTypeForReplacement(service, squadronsForService);
-            String planeTypeName = getTypeForReplacement(planeArchType);
+            String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign, planeArchType);
             EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepo(planeTypeName);
             depo.getEquipment().addEquippedPlane(equippedPlane);
             depo.setLastReplacementDate(campaign.getDate());
@@ -80,13 +80,5 @@ public class EquipmentDepoReplenisher
         String archTypeForReplacementPlane = equipmentArchtypeReplacementFinder.getArchTypeForReplacementPlane(squadronsForService);
         PlaneArchType planeArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneArchType(archTypeForReplacementPlane);
         return planeArchType;
-    }
-
-    private String getTypeForReplacement(PlaneArchType planeArchType) throws PWCGException
-    {
-        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign);
-        equipmentWeightCalculator.determinePlaneWeightsForPlanes(planeArchType.getActiveMemberPlaneTypes(campaign.getDate()));
-        String planeTypeName = equipmentWeightCalculator.getPlaneTypeFromWeight();
-        return planeTypeName;
     }
 }

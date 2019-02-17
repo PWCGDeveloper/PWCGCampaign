@@ -111,6 +111,16 @@ public class Equipment
         return planesForArchType;
     }
 
+    public List<String> getArchTypes()
+    {
+        Map<String, String> archTypeMap = new HashMap<>();
+        for (EquippedPlane equippedPlane : equippedPlanes.values())
+        {
+            archTypeMap.put(equippedPlane.getArchType(), equippedPlane.getArchType());
+        }
+        return new ArrayList<String>(archTypeMap.values());
+    }
+
     public EquippedPlane removeEquippedPlane(Integer planeSerialNumber)
     {
         return equippedPlanes.remove(planeSerialNumber);

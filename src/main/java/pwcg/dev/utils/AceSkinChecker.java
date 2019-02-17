@@ -28,11 +28,6 @@ public class AceSkinChecker
         }
     }
 
-    /**
-     * @param aircraftName
-     * @param skinName
-     * @return
-     */
     public boolean skinExists(String aircraftName, String skinName)
     {
         boolean exists = false;
@@ -52,10 +47,6 @@ public class AceSkinChecker
         return exists;
     }
 
-    
-    /**
-     * 
-     */
     public void checkSkinsForExistence()
     {
         try

@@ -46,6 +46,7 @@ public class Squadron
     public static final Integer REPLACEMENT = -1;
     public static final Integer SQUADRON_STAFF_SIZE = 12;
     public static final Integer SQUADRON_EQUIPMENT_SIZE = 14;
+    public static final Integer MIN_REEQUIPMENT_SIZE = 10;
     public static final Integer REPLACEMENTS_AIRCRAFT_PER_SQUADRON = 3;
     private Country country = Country.NEUTRAL;
 	private int squadronId = 0;
