@@ -38,7 +38,7 @@ public class EquipmentWeightCalculatorTest
         planeTypes.add(me109G2);
         
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420501"));
-        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign);
+        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         equipmentWeightCalculator.determinePlaneWeightsForPlanes(planeTypes);
         
         Map<String, Integer> weightedPlaneOdds = equipmentWeightCalculator.getWeightedPlaneOdds();

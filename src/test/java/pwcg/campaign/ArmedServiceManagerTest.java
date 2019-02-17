@@ -2,11 +2,13 @@ package pwcg.campaign;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.api.IArmedServiceManager;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.ww1.country.RoFServiceManager;
 import pwcg.core.exception.PWCGException;
@@ -15,6 +17,12 @@ import pwcg.core.utils.DateUtils;
 @RunWith(MockitoJUnitRunner.class)
 public class ArmedServiceManagerTest
 {   
+    @Before
+    public void setup() throws PWCGException
+    {
+        PWCGContextManager.setRoF(true);
+    }
+
     @Test
     public void testGetArmedServiceByNameTest () throws PWCGException
     {        

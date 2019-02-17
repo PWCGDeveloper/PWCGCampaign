@@ -123,7 +123,7 @@ public class SquadronMemberInitialVictoryBuilderTest
             }
             else  if (rankPos == 1)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 3, 15);
+                validateVictoryRange (squadronMember.getVictories().size(), 1, 15);
             }
             else  if (rankPos == 2)
             {

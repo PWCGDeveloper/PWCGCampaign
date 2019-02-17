@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import pwcg.aar.campaign.update.CampaignServiceChangeHandler;
@@ -11,6 +12,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
@@ -24,6 +26,12 @@ import pwcg.testutils.CampaignCacheRoF;
 
 public class CampaignServiceChangeHandlerTest
 {
+    @Before
+    public void setup() throws PWCGException
+    {
+        PWCGContextManager.setRoF(true);
+    }
+
     @Test
     public void testRafTransition() throws PWCGException 
     {

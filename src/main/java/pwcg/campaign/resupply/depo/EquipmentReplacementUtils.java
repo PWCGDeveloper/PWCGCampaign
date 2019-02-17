@@ -1,16 +1,17 @@
 package pwcg.campaign.resupply.depo;
 
-import pwcg.campaign.Campaign;
+import java.util.Date;
+
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentReplacementUtils
 {
 
-    public static String getTypeForReplacement(Campaign campaign, PlaneArchType planeArchType) throws PWCGException
+    public static String getTypeForReplacement(Date campaignDate, PlaneArchType planeArchType) throws PWCGException
     {
-        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign);
-        equipmentWeightCalculator.determinePlaneWeightsForPlanes(planeArchType.getInProductionMemberPlaneTypes(campaign.getDate()));
+        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaignDate);
+        equipmentWeightCalculator.determinePlaneWeightsForPlanes(planeArchType.getInProductionMemberPlaneTypes(campaignDate));
         String planeTypeName = equipmentWeightCalculator.getPlaneTypeFromWeight();
         return planeTypeName;
     }

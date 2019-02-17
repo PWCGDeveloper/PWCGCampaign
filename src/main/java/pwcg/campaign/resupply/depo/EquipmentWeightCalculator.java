@@ -1,10 +1,10 @@
 package pwcg.campaign.resupply.depo;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -12,12 +12,12 @@ import pwcg.core.utils.RandomNumberGenerator;
 
 public class EquipmentWeightCalculator
 {
-    private Campaign campaign;
+    private Date campaignDate;
     private Map<String, Integer> weightedPlaneOdds = new HashMap<>();
 
-    public EquipmentWeightCalculator (Campaign campaign)
+    public EquipmentWeightCalculator (Date campaignDate)
     {
-        this.campaign = campaign;
+        this.campaignDate = campaignDate;
     }
     
     public void determinePlaneWeightsForPlanes(List<PlaneType> planeTypes) throws PWCGException
@@ -62,7 +62,7 @@ public class EquipmentWeightCalculator
 
     private Integer determinePlaneWeight(PlaneType planeType) throws PWCGException
     {
-        Integer daysSinceIntroduction = DateUtils.daysDifference(planeType.getIntroduction(), campaign.getDate());
+        Integer daysSinceIntroduction = DateUtils.daysDifference(planeType.getIntroduction(), campaignDate);
         Integer weight = daysSinceIntroduction;
         if (weight > 100)
         {

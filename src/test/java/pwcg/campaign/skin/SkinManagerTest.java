@@ -17,7 +17,7 @@ public class SkinManagerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContextManager.setRoF(false);
     }
 
     @Test
@@ -26,11 +26,11 @@ public class SkinManagerTest
         SkinManager skinManager = PWCGContextManager.getInstance().getSkinManager();
         List<Skin> testSkins;
         Skin testSkin;
-        String planeType = "fokkerd7";
+        String planeType = "bf109f4";
         ICountry iCountry = CountryFactory.makeCountryByCountry(Country.GERMANY);
         
-        testSkin = skinManager.getConfiguredSkinByName("halberstadtcl2", "HCL2_PW_S12_10_M");
-        assert (testSkin.getSkinName().equals("HCL2_PW_S12_10_M"));
+        testSkin = skinManager.getConfiguredSkinByName("bf109f4", "SchornerMe109F4");
+        assert (testSkin.getSkinName().equals("SchornerMe109F4"));
         
         testSkins = skinManager.getLooseSkinByPlane(planeType);
         assert (testSkins.size() > 0);

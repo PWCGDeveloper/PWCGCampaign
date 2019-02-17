@@ -76,7 +76,7 @@ public class WithdrawnEquipmentReplacer
     {
         String planeArchTypeName = chooseArchTypeForSquadron();
         PlaneArchType planeArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneArchType(planeArchTypeName);
-        String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign, planeArchType);
+        String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign.getDate(), planeArchType);
         return planeTypeName;
     }
 

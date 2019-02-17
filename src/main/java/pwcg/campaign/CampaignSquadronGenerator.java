@@ -38,7 +38,7 @@ public class CampaignSquadronGenerator
 
     public void createSquadronEquipment(CampaignGeneratorModel generatorModel) throws PWCGException
     {
-        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign);
+        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         InitialSquadronEquipper equipmentStaffer = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
         Equipment squadronEquipment = equipmentStaffer.generateEquipment();
         campaign.getEquipmentManager().addEquipmentForSquadron(squadron.getSquadronId(), squadronEquipment);

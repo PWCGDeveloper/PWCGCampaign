@@ -62,7 +62,7 @@ public class EquipmentDepoReplenisher
         for (int i = 0; i < numPlanes; ++i)
         {
             PlaneArchType planeArchType = getArchTypeForReplacement(service, squadronsForService);
-            String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign, planeArchType);
+            String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign.getDate(), planeArchType);
             EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepo(planeTypeName);
             depo.getEquipment().addEquippedPlane(equippedPlane);
             depo.setLastReplacementDate(campaign.getDate());

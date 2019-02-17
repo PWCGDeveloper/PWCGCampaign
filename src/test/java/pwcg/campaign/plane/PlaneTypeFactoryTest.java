@@ -104,7 +104,7 @@ public class PlaneTypeFactoryTest
         
         PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
         List<PlaneType> planeTypes =  planeTypeFactory.createActivePlaneTypesForArchType("bf109", planeDate);
-        assert(planeTypes.size() == 2);
+        assert(planeTypes.size() == 3);
         for (PlaneType planeType : planeTypes)
         {
             assert(planeType.getArchType().equals("bf109"));
@@ -116,7 +116,7 @@ public class PlaneTypeFactoryTest
     {
         PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
         List<PlaneType> planeTypes =  planeTypeFactory.getAllFightersForCampaign(campaign);
-        assert(planeTypes.size() == 5);
+        assert(planeTypes.size() == 6);
     }
 
 }

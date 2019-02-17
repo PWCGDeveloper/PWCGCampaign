@@ -1,21 +1,21 @@
 package pwcg.campaign.resupply.depo;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
 public class EquipmentReplacementWeightUsage
 {
-    private Campaign campaign;
+    private Date campaignDate;
 
-    public EquipmentReplacementWeightUsage (Campaign campaign)
+    public EquipmentReplacementWeightUsage (Date campaignDate)
     {
-        this.campaign = campaign;
+        this.campaignDate = campaignDate;
     }
 
     public Map<String, Integer> getAircraftUsageByArchType(List<Squadron> squadronsForService) throws PWCGException
@@ -24,7 +24,7 @@ public class EquipmentReplacementWeightUsage
         
         for (Squadron squadron : squadronsForService)
         {
-            List<PlaneArchType> currentAircraftArchTypes = squadron.determineCurrentAircraftArchTypes(campaign.getDate());
+            List<PlaneArchType> currentAircraftArchTypes = squadron.determineCurrentAircraftArchTypes(campaignDate);
             for (PlaneArchType planeArchType : currentAircraftArchTypes)
             {
                 if (!aircraftUsageByArchType.containsKey(planeArchType.getPlaneArchTypeName()))

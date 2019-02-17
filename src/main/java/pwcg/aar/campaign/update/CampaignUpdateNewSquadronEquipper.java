@@ -29,7 +29,7 @@ public class CampaignUpdateNewSquadronEquipper
         {
             if (campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId()) == null)
             {
-                EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign);
+                EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
                 InitialSquadronEquipper equipmentStaffer = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
                 Equipment squadronEquipment = equipmentStaffer.generateEquipment();
                 campaign.getEquipmentManager().addEquipmentForSquadron(squadron.getSquadronId(), squadronEquipment);

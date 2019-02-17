@@ -665,6 +665,16 @@ public class Squadron
         return activeArchTypes;
     }
 
+    public List<String> getAllArchTypes() throws PWCGException 
+    {
+        List<String> activeArchTypes = new ArrayList<>();
+        for (SquadronPlaneAssignment planeAssignment : planeAssignments)
+        {
+            activeArchTypes.add(planeAssignment.getArchType());
+        }
+        return activeArchTypes;
+    }
+
 	public Callsign determineCurrentCallsign(Date campaignDate)
 	{
 		Callsign currentCallsign = Callsign.NONE;

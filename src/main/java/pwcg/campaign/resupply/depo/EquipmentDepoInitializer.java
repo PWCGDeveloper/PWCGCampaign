@@ -40,7 +40,7 @@ public class EquipmentDepoInitializer
     private EquipmentWeightCalculator createPlaneCalculator(Squadron squadron) throws PWCGException
     {
         List<PlaneType> planeTypesForSquadron = squadron.determineCurrentAircraftList(campaign.getDate());
-        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign);
+        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         equipmentWeightCalculator.determinePlaneWeightsForPlanes(planeTypesForSquadron);
         return equipmentWeightCalculator;
     }

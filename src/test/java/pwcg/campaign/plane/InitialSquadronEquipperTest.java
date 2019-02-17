@@ -30,7 +30,7 @@ public class InitialSquadronEquipperTest
         Campaign campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.JG_51_PROFILE);        
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
         
-        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign);
+        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
         Equipment equipment = squadronEquipper.generateEquipment();
         
@@ -49,7 +49,7 @@ public class InitialSquadronEquipperTest
         Campaign campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.KG53_PROFILE);        
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
         
-        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign);
+        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
         Equipment equipment = squadronEquipper.generateEquipment();
         
@@ -68,7 +68,7 @@ public class InitialSquadronEquipperTest
         Campaign campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.STG77_PROFILE);        
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
         
-        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign);
+        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
         Equipment equipment = squadronEquipper.generateEquipment();
         
@@ -87,7 +87,7 @@ public class InitialSquadronEquipperTest
         Campaign campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.TG2_PROFILE);        
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
         
-        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign);
+        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
         Equipment equipment = squadronEquipper.generateEquipment();
         
@@ -106,7 +106,7 @@ public class InitialSquadronEquipperTest
         Campaign campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.REG_503_PROFILE);        
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
         
-        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign);
+        EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
         Equipment equipment = squadronEquipper.generateEquipment();
         

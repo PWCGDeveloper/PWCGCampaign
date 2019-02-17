@@ -44,7 +44,7 @@ public class AARResultValidator
         for (Integer serialNumber : expectedResults.getLostPilots())
         {
             SquadronMember lostPilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
-            assert(lostPilot.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+            assert(lostPilot.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_WOUNDED);
         }
     }
 }
