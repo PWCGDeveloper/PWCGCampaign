@@ -19,6 +19,7 @@ import javax.swing.JTextArea;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.MissionFileCleaner;
 import pwcg.aar.MissionResultLogFileCleaner;
+import pwcg.aar.TemplatedSkinCleaner;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBase;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
@@ -235,6 +236,8 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
         
         MissionFileCleaner missionFileCleaner = new MissionFileCleaner();
         missionFileCleaner.cleanMissionFiles();
+
+        TemplatedSkinCleaner.cleanSkinFiles();
 
         showMissionEvents();
 	}
