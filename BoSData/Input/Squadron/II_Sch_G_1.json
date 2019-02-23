@@ -58,7 +58,18 @@
     "19431008": "Kerch",
     "19440801": "Zellhausen"
   },
-  "skins": [],
+  "skins": [
+      {
+      "skinName": "II_Sch_G_1",
+      "planeType": "bf109e7",
+      "startDate": "19410801",
+      "endDate": "19450601",
+      "squadId": 20142001,
+      "country": "GERMANY",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
   "squadHistory": {
       "squadHistoryEntries": [
       {

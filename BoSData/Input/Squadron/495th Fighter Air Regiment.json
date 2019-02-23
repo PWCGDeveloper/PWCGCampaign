@@ -58,22 +58,52 @@
     "19431008": "Gostagaevskaya"
   },
   "skins": [
-    {
-      "skinName": "MIG3S24_SKIN_01",
-      "planeType": "mig3s24",
-      "startDate": "19420101",
-      "endDate": "19420331",
-      "squadId": 10111439,
+      {
+      "skinName": "495th Fighter Air Regiment",
+      "planeType": "i16t24",
+      "startDate": "19410801",
+      "endDate": "19411101",
+      "squadId": 10111495,
       "country": "Russia",
       "category": "Squadron",
       "definedInGame": false
     },
     {
-      "skinName": "MIG3S24_SKIN_01",
+      "skinName": "495th Fighter Air Regiment W",
+      "planeType": "i16t24",
+      "startDate": "19411101",
+      "endDate": "19420316",
+      "squadId": 10111495,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },  
+    {
+      "skinName": "495th Fighter Air Regiment",
+      "planeType": "mig3s24",
+      "startDate": "19420301",
+      "endDate": "19421101",
+      "squadId": 10111495,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "495th Fighter Air Regiment W",
       "planeType": "mig3s24",
       "startDate": "19421101",
-      "endDate": "19430331",
-      "squadId": 10111439,
+      "endDate": "19430301",
+      "squadId": 10111495,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "495th Fighter Air Regiment",
+      "planeType": "mig3s24",
+      "startDate": "19430301",
+      "endDate": "19450601",
+      "squadId": 10111495,
       "country": "Russia",
       "category": "Squadron",
       "definedInGame": false

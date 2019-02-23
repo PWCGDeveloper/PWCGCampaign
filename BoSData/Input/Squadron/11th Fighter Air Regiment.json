@@ -50,20 +50,20 @@
   },
   "skins": [
     {
-      "skinName": "YAK1S69_SKIN_05",
+      "skinName": "11th Fighter Air Regiment",
       "planeType": "yak1s69",
-      "startDate": "19410801",
-      "endDate": "19420331",
+      "startDate": "19430302",
+      "endDate": "19450601",
       "squadId": 10111011,
       "country": "Russia",
       "category": "Squadron",
       "definedInGame": true
     },
     {
-      "skinName": "YAK1S69_SKIN_05",
-      "planeType": "yak1s69",
-      "startDate": "19421101",
-      "endDate": "19430331",
+      "skinName": "11th Fighter Air Regiment",
+      "planeType": "yak1s127",
+      "startDate": "19430302",
+      "endDate": "19450601",
       "squadId": 10111011,
       "country": "Russia",
       "category": "Squadron",

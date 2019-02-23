@@ -49,7 +49,38 @@
     "19431008": "Zamorsk",
     "19440801": "Hesepe"
   },
-  "skins": [],
+  "skins": [
+  {
+      "skinName": "II_KG53",
+      "planeType": "he111h6",
+      "startDate": "19400801",
+      "endDate": "19421101",
+      "squadId": 20131053,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "II_KG53_W",
+      "planeType": "he111h6",
+      "startDate": "19421101",
+      "endDate": "19430301",
+      "squadId": 20131053,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "II_KG53",
+      "planeType": "he111h6",
+      "startDate": "19430301",
+      "endDate": "19450601",
+      "squadId": 20131053,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {

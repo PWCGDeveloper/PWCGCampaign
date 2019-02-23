@@ -48,7 +48,58 @@
     "19431004": "Anapa",
     "19431008": "Anapa"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "34th Fighter Air Regiment",
+      "planeType": "i16t24",
+      "startDate": "19410801",
+      "endDate": "19411101",
+      "squadId": 10111034,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "34th Fighter Air Regiment W",
+      "planeType": "i16t24",
+      "startDate": "19411101",
+      "endDate": "19420301",
+      "squadId": 10111034,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "34th Fighter Air Regiment",
+      "planeType": "i16t24",
+      "startDate": "19420301",
+      "endDate": "19450601",
+      "squadId": 10111034,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "34th Fighter Air Regiment",
+      "planeType": "yak1s69",
+      "startDate": "19420215",
+      "endDate": "19450601",
+      "squadId": 10111034,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "34th Fighter Air Regiment",
+      "planeType": "yak1s127",
+      "startDate": "19420215",
+      "endDate": "19450601",
+      "squadId": 10111034,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {

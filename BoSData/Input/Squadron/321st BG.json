@@ -17,6 +17,16 @@
     "19440801": "Sedan"
   },
   "skins": [
+      {
+      "skinName": "321st Bomber Group",
+      "planeType": "a20b",
+      "startDate": "19420801",
+      "endDate": "19450601",
+      "squadId": 102321445,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": [

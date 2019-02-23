@@ -49,7 +49,18 @@
     "19431008": "Kerch 2",
     "19440801": "Delmenhorst"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "I_ZG_26",
+      "planeType": "bf110e2",
+      "startDate": "19410101",
+      "endDate": "19450601",
+      "squadId": 20101026,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
   "squadHistory": {
       "squadHistoryEntries": [
       {

@@ -31,19 +31,9 @@
   },
   "skins": [
     {
-      "skinName": "IL2M42_SKIN_03",
+      "skinName": "618th Ground Attack Air Regiment",
       "planeType": "il2m42",
-      "startDate": "19420101",
-      "endDate": "19420331",
-      "squadId": 10121618,
-      "country": "Russia",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "IL2M42_SKIN_02",
-      "planeType": "il2m42",
-      "startDate": "19420101",
+      "startDate": "19420301",
       "endDate": "19421101",
       "squadId": 10121618,
       "country": "Russia",
@@ -51,20 +41,20 @@
       "definedInGame": false
     },
     {
-      "skinName": "IL2M42_SKIN_03",
+      "skinName": "618th Ground Attack Air Regiment W",
       "planeType": "il2m42",
       "startDate": "19421101",
-      "endDate": "19430331",
+      "endDate": "19430301",
       "squadId": 10121618,
       "country": "Russia",
       "category": "Squadron",
       "definedInGame": false
     },
     {
-      "skinName": "IL2M42_SKIN_02",
+      "skinName": "618th Ground Attack Air Regiment",
       "planeType": "il2m42",
-      "startDate": "19430331",
-      "endDate": "19431101",
+      "startDate": "19430301",
+      "endDate": "19450601",
       "squadId": 10121618,
       "country": "Russia",
       "category": "Squadron",

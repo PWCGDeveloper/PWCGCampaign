@@ -37,7 +37,38 @@
     "19431004": "Kievskoe",
     "19431008": "Kievskoe"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "629th Fighter Air Regiment",
+      "planeType": "i16t24",
+      "startDate": "19410801",
+      "endDate": "19411101",
+      "squadId": 10111629,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "629th Fighter Air Regiment W",
+      "planeType": "i16t24",
+      "startDate": "19411101",
+      "endDate": "19420301",
+      "squadId": 10111629,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "629th Fighter Air Regiment",
+      "planeType": "i16t24",
+      "startDate": "19420301",
+      "endDate": "19450601",
+      "squadId": 10111629,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {

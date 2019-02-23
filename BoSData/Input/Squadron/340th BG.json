@@ -17,6 +17,16 @@
     "19440801": "Brussels"
   },
   "skins": [
+      {
+      "skinName": "340th Bomber Group",
+      "planeType": "a20b",
+      "startDate": "19420801",
+      "endDate": "19450601",
+      "squadId": 102340486,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": [

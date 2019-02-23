@@ -50,6 +50,36 @@
   },
   "skins": [
     {
+      "skinName": "27th Fighter Air Regiment",
+      "planeType": "mig3s24",
+      "startDate": "19410801",
+      "endDate": "19411101",
+      "squadId": 10111027,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "27th Fighter Air Regiment W",
+      "planeType": "mig3s24",
+      "startDate": "19411101",
+      "endDate": "19420301",
+      "squadId": 10111027,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "27th Fighter Air Regiment",
+      "planeType": "mig3s24",
+      "startDate": "19420301",
+      "endDate": "19450601",
+      "squadId": 10111027,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
       "skinName": "LA5S8_SKIN_01",
       "planeType": "la5s8",
       "startDate": "19421101",

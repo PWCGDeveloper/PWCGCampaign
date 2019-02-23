@@ -48,7 +48,18 @@
     "19431004": "Abinskaya",
     "19431008": "Abinskaya"
   },
-  "skins": [],
+  "skins": [
+      {
+      "skinName": "321st Bomber Air Regiment",
+      "planeType": "a20b",
+      "startDate": "19420801",
+      "endDate": "19450601",
+      "squadId": 10131321,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {

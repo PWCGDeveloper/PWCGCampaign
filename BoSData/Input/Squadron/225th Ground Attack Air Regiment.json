@@ -31,10 +31,30 @@
   },
   "skins": [
     {
-      "skinName": "IL2M42_SKIN_08",
+      "skinName": "175th Ground Attack Air Regiment",
+      "planeType": "il2m42",
+      "startDate": "19420301",
+      "endDate": "19421101",
+      "squadId": 10121225,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "175th Ground Attack Air Regiment W",
       "planeType": "il2m42",
       "startDate": "19421101",
-      "endDate": "19430331",
+      "endDate": "19430301",
+      "squadId": 10121225,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "175th Ground Attack Air Regiment",
+      "planeType": "il2m42",
+      "startDate": "19430301",
+      "endDate": "19450601",
       "squadId": 10121225,
       "country": "Russia",
       "category": "Squadron",

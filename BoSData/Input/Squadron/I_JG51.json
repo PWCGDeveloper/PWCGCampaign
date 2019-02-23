@@ -65,15 +65,55 @@
   },
   "skins": [
     {
-      "skinName": "FW190A3_SKIN_01",
-      "planeType": "fw190a3",
-      "startDate": "19421101",
-      "endDate": "19430331",
+      "skinName": "I_JG51",
+      "planeType": "bf109f2",
+      "startDate": "19400801",
+      "endDate": "19450601",
       "squadId": 20111051,
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": false
-    }
+    },
+    {
+      "skinName": "I_JG51",
+      "planeType": "bf109f4",
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20111051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "I_JG51",
+      "planeType": "fw190a3",
+      "startDate": "19400801",
+      "endDate": "19421101",
+      "squadId": 20111051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "I_JG51_W",
+      "planeType": "fw190a3",
+      "startDate": "19421101",
+      "endDate": "19430301",
+      "squadId": 20111051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "I_JG51",
+      "planeType": "fw190a3",
+      "startDate": "19430301",
+      "endDate": "19450601",
+      "squadId": 20111051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }    
   ],
   "squadHistory": {
       "squadHistoryEntries": [

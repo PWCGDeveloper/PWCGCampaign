@@ -44,7 +44,38 @@
     "19431008": "Kerch-2",
     "19440801": "Bonninghardt"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "II_JG51",
+      "planeType": "bf109f2",
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20112051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "II_JG51",
+      "planeType": "bf109f4",
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20112051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "II_JG51",
+      "planeType": "bf109g2",
+      "startDate": "19400801",
+      "endDate": "19450601",
+      "squadId": 20112051,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
   "squadHistory": {
       "squadHistoryEntries": [
       {

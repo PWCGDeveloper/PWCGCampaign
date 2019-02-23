@@ -39,7 +39,38 @@
     "19431004": "Anastasievskaya",
     "19431008": "Anapa"
   },
-  "skins": [],
+  "skins": [
+    {
+      "skinName": "312th Ground Attack Air Regiment",
+      "planeType": "il2m42",
+      "startDate": "19420301",
+      "endDate": "19421101",
+      "squadId": 10121312,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "312th Ground Attack Air Regiment W",
+      "planeType": "il2m42",
+      "startDate": "19421101",
+      "endDate": "19430301",
+      "squadId": 10121312,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "312th Ground Attack Air Regiment",
+      "planeType": "il2m42",
+      "startDate": "19430301",
+      "endDate": "19450601",
+      "squadId": 10121312,
+      "country": "Russia",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
   "squadHistory": {
     "squadHistoryEntries": [
       {

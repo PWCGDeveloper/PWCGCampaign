@@ -17,6 +17,16 @@
     "19440801": "Ghent"
   },
   "skins": [
+      {
+      "skinName": "139 Squadron",
+      "planeType": "a20b",
+      "startDate": "19420801",
+      "endDate": "19450601",
+      "squadId": 103002139,
+      "country": "BRITAIN",
+      "category": "Squadron",
+      "definedInGame": false
+    }
   ],
   "squadHistory": {
     "squadHistoryEntries": [
