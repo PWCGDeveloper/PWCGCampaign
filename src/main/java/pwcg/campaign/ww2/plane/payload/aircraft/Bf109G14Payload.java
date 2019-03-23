@@ -16,12 +16,12 @@ public class Bf109G14Payload extends Bf109Payload implements IPlanePayload
 
     protected void initialize()
 	{        
-        setAvailablePayload(-1, "1000001", PayloadElement.FUG16_ZY);
+        setAvailablePayload(-1, "1000000", PayloadElement.FUG16_ZY);
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "1001", PayloadElement.SD70_X4);
         setAvailablePayload(2, "10001", PayloadElement.SC250_X1);
         setAvailablePayload(3, "111", PayloadElement.MG151_20_GUNPOD);
-        setAvailablePayload(4, "1001", PayloadElement.BR21);
+        setAvailablePayload(4, "1001", PayloadElement.BR21_X2);
         setAvailablePayload(8, "11", PayloadElement.MK108_30);
 	}
 

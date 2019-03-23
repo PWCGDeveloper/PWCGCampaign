@@ -47,23 +47,6 @@ public class SquadronManager
         setAirfieldsForMovingFront();
 	}
 
-	private void setAirfieldsForMovingFront() throws PWCGException, PWCGException
-	{
-		boolean useMovingFront = PWCGContextManager.getInstance().determineUseMovingFront();
-        if (useMovingFront)
-        {
-	        List<SquadronMovingFrontOverlay> overlays = SquadronMovingFrontIOJson.readJson();
-	        for (SquadronMovingFrontOverlay overlay : overlays)
-	        {
-	        	if (squadronMap.containsKey(overlay.getSquadronId()))
-	        	{
-	        		Squadron squadron = squadronMap.get(overlay.getSquadronId());
-	        		squadron.setAirfields(overlay.getAirfields());
-	        	}
-	        }
-        }
-	}
-
 	public Map<Integer, Squadron> countryToMap (ICountry country, Date date) throws PWCGException
 	{
 		Map<Integer, Squadron> squadronsByCountryMap = new TreeMap<Integer, Squadron>();
@@ -340,32 +323,6 @@ public class SquadronManager
 		return null;
 	}
 
-	private ArrayList<Squadron> reduceToActiveSquadrons(Campaign campaign, List<Squadron> squadrons, Date  date) throws PWCGException 
-	{
-		ArrayList<Squadron> returnSquadList = new ArrayList<Squadron>();
-		
-		for (Squadron squadron : squadrons)
-		{
-			String currentFieldNameForSquad = squadron.determineCurrentAirfieldName(date);
-			if (currentFieldNameForSquad != null)
-			{
-				IAirfield currentFieldForSquad =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(currentFieldNameForSquad);
-				if (currentFieldForSquad != null)
-				{
-					if (squadron.isCanFly(date))
-					{
-					    if (squadron.isSquadronViable(campaign))
-					    {
-					        returnSquadList.add(squadron);
-					    }
-					}
-				}
-			}
-		}
-		
-		return returnSquadList;
-	}
-
 	public ArrayList<Squadron> getSquadronsByRole(List<Squadron> squadrons, List<Role> acceptableRoles, Date date) throws PWCGException 
 	{		
 		ArrayList<Squadron> squadronsWithRole = new ArrayList<Squadron>();
@@ -413,5 +370,48 @@ public class SquadronManager
         }
 
         return enemySquadron;
+    }
+
+    private void setAirfieldsForMovingFront() throws PWCGException, PWCGException
+    {
+        boolean useMovingFront = PWCGContextManager.getInstance().determineUseMovingFront();
+        if (useMovingFront)
+        {
+            List<SquadronMovingFrontOverlay> overlays = SquadronMovingFrontIOJson.readJson();
+            for (SquadronMovingFrontOverlay overlay : overlays)
+            {
+                if (squadronMap.containsKey(overlay.getSquadronId()))
+                {
+                    Squadron squadron = squadronMap.get(overlay.getSquadronId());
+                    squadron.setAirfields(overlay.getAirfields());
+                }
+            }
+        }
+    }
+
+    private ArrayList<Squadron> reduceToActiveSquadrons(Campaign campaign, List<Squadron> squadrons, Date  date) throws PWCGException 
+    {
+        ArrayList<Squadron> returnSquadList = new ArrayList<Squadron>();
+
+         for (Squadron squadron : squadrons)
+        {
+            String currentFieldNameForSquad = squadron.determineCurrentAirfieldName(date);
+            if (currentFieldNameForSquad != null)
+            {
+                IAirfield currentFieldForSquad =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(currentFieldNameForSquad);
+                if (currentFieldForSquad != null)
+                {
+                    if (squadron.isCanFly(date))
+                    {
+                        if (squadron.isSquadronViable(campaign))
+                        {
+                            returnSquadList.add(squadron);
+                        }
+                    }
+                }
+            }
+        }
+
+         return returnSquadList;
     }
 }
