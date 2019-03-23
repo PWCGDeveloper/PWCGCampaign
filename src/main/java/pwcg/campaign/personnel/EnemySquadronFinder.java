@@ -81,7 +81,11 @@ public class EnemySquadronFinder
         {
             if (squadron.isSquadronViable(campaign))
             {
-                viableSquadrons.add(squadron);
+            	SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());
+            	if (!squadronPersonnel.isPlayerSquadron())
+            	{
+            		viableSquadrons.add(squadron);
+            	}
             }
         }
         return viableSquadrons;

@@ -25,7 +25,7 @@ import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheRoF;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(Parameterized.class)
 public class FlightAiSettingsValidator 
@@ -45,12 +45,12 @@ public class FlightAiSettingsValidator
     @Test
     public void groundAttackFlightTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_2_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
 
         Mission mission = new Mission();
         mission.initialize(campaign);        
-        mission.generate(FlightTypes.GROUND_ATTACK);
-        GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.ESC_2_PROFILE), FlightTypes.GROUND_ATTACK);
+        GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         validatePlaneAI(mission);
@@ -59,12 +59,12 @@ public class FlightAiSettingsValidator
     @Test
     public void groundAttackFlightWithFighterTest() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_103_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_103_PROFILE);
 
         Mission mission = new Mission();
         mission.initialize(campaign);        
-        mission.generate(FlightTypes.GROUND_ATTACK);
-        GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.ESC_103_PROFILE), FlightTypes.GROUND_ATTACK);
+        GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         validatePlaneAI(mission);
@@ -73,12 +73,12 @@ public class FlightAiSettingsValidator
     @Test
 	public void bombFlightTest() throws PWCGException
 	{
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_2_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
 
         Mission mission = new Mission();
         mission.initialize(campaign);        
-        mission.generate(FlightTypes.BOMB);
-        BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.ESC_2_PROFILE), FlightTypes.BOMB);
+        BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
 		validatePlaneAI(mission);
@@ -87,12 +87,12 @@ public class FlightAiSettingsValidator
 	@Test
 	public void strategicBombFlightTest() throws PWCGException
 	{
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_2_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
 
         Mission mission = new Mission();
         mission.initialize(campaign);        
-        mission.generate(FlightTypes.STRATEGIC_BOMB);
-        StrategicBombingFlight flight = (StrategicBombingFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.ESC_2_PROFILE), FlightTypes.STRATEGIC_BOMB);
+        StrategicBombingFlight flight = (StrategicBombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
         validatePlaneAI(mission);
@@ -101,12 +101,12 @@ public class FlightAiSettingsValidator
 	@Test
 	public void patrolFlightTest() throws PWCGException
 	{
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_103_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_103_PROFILE);
 
         Mission mission = new Mission();
         mission.initialize(campaign);        
-        mission.generate(FlightTypes.PATROL);
-        PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.ESC_103_PROFILE), FlightTypes.PATROL);
+        PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
         validatePlaneAI(mission);
@@ -115,12 +115,12 @@ public class FlightAiSettingsValidator
 	@Test
 	public void interceptFlightTest() throws PWCGException
 	{
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheRoF.JASTA_11_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
 
 	    Mission mission = new Mission();
         mission.initialize(campaign);        
-        mission.generate(FlightTypes.INTERCEPT);
-        InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.JASTA_11_PROFILE), FlightTypes.INTERCEPT);
+        InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
         validatePlaneAI(mission);

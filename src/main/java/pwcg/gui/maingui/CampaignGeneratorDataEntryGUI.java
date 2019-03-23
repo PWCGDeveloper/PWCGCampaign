@@ -748,10 +748,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
             return "";
         }
 
-        ICountry country = CountryFactory.makeCountryByService (campaignGeneratorDO.getService());
-
-        Squadron squad = PWCGContextManager.getInstance().getSquadronManager().getSquadronByNameAndCountry(squadronName, country, campaignDate);
-        
+        Squadron squad = PWCGContextManager.getInstance().getSquadronManager().getSquadronByName(squadronName, campaignDate);
         return squad.determineSquadronInfo(campaignDate);
     }
 

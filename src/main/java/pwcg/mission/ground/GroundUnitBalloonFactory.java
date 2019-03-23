@@ -20,9 +20,8 @@ public class GroundUnitBalloonFactory
     
     public BalloonDefenseGroup createBalloonUnit() throws PWCGException
     {
-        Coalition playerCoalition  = Coalition.getFriendlyCoalition(campaign.determineCountry());
-        MissionBeginUnitCheckZone missionBeginUnitBalloon = new MissionBeginUnitCheckZone();
-        missionBeginUnitBalloon.initialize(targetDefinition.getTargetPosition().copy(), 10000, playerCoalition);
+        MissionBeginUnitCheckZone missionBeginUnitBalloon = new MissionBeginUnitCheckZone(targetDefinition.getTargetPosition().copy(), 15000);
+        missionBeginUnitBalloon.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalitions(Coalition.getAllCoalitions());
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(campaign, missionBeginUnitBalloon, targetDefinition);
         BalloonDefenseGroup balloonUnit = new BalloonDefenseGroup(campaign, groundUnitInformation);
         balloonUnit.createUnitMission();

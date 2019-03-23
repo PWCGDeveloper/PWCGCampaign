@@ -47,7 +47,7 @@ public class RoFFlightFactory extends FlightFactory
         }
         else if (missionRole == Role.ROLE_FIGHTER)
         {
-            return getFighterFlightType(isMyFlight);
+            return getFighterFlightType(squadron, isMyFlight);
         }
         else if (missionRole == Role.ROLE_ATTACK)
         {
@@ -70,7 +70,7 @@ public class RoFFlightFactory extends FlightFactory
         }
     }
 
-    protected FlightTypes getFighterFlightType(boolean isPlayerFlight) throws PWCGException
+    protected FlightTypes getFighterFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
     {
         FlightTypes flightType = FlightTypes.PATROL;
 
@@ -87,15 +87,13 @@ public class RoFFlightFactory extends FlightFactory
 
         if (isPlayerFlight)
         {
-            int squadId = campaign.getSquadronId();
-            Squadron squad = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadId);
-            if (squad.isHomeDefense(campaign.getDate()))
+            if (squadron.isHomeDefense(campaign.getDate()))
             {
                 return FlightTypes.HOME_DEFENSE;
             }
         }
 
-        if (campaign.determineCountry().getSide() == Side.ALLIED)
+        if (squadron.determineSquadronCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
         {
             offensiveMissionOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedOffensiveMissionKey);
             interceptMissionOdds = offensiveMissionOdds

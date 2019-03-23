@@ -547,7 +547,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         
         mapPanel.clearVirtualPoints();
         
-        Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight();
+        Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
         for (Unit unit : myFlight.getLinkedUnits())
         {
             if (unit instanceof Flight)

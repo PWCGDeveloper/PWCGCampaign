@@ -10,7 +10,6 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.VehicleFactory;
 import pwcg.campaign.group.FakeAirfield;
 import pwcg.campaign.group.FixedPosition;
-import pwcg.campaign.io.mission.MissionFileWriter;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.DateUtils;
@@ -18,8 +17,10 @@ import pwcg.core.utils.Logger;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBlockDamage;
 import pwcg.mission.MissionBlockSmoke;
+import pwcg.mission.flight.Flight;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.IVehicleFactory;
+import pwcg.mission.io.MissionFileWriter;
 import pwcg.mission.mcu.group.SmokeGroup;
 import pwcg.mission.options.MapSeasonalParameters;
 import pwcg.mission.options.MapWeather;
@@ -73,10 +74,13 @@ public class BoSMissionFile extends MissionFileWriter
     private void writeRadioBeacon(BufferedWriter writer) throws PWCGException
     {
         IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        IVehicle radioBeacon = vehicleFactory.createRadioBeacon(mission.getMissionFlightBuilder().getPlayerFlight());
-        if (radioBeacon != null)
+        for (Flight playerFlight:  mission.getMissionFlightBuilder().getPlayerFlights())
         {
-            radioBeacon.write(writer);
+            IVehicle radioBeacon = vehicleFactory.createRadioBeacon(playerFlight);
+            if (radioBeacon != null)
+            {
+                radioBeacon.write(writer);
+            }
         }
     }
 

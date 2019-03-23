@@ -106,16 +106,6 @@ public class FlightInformation
         return isVirtual;
     }
 
-    public boolean isFriendly() throws PWCGException
-    {
-        boolean isFriendly = false;
-        if (squadron.determineSquadronCountry(campaign.getDate()).isSameSide(campaign.determineCountry()))
-        {
-            isFriendly = true;
-        }
-        return isFriendly;
-    }
-
     public boolean isAirStart() throws PWCGException
     {
         boolean airstart = true;
@@ -128,6 +118,20 @@ public class FlightInformation
             }
         }
         return airstart;
+    }
+
+    public boolean isParkedStart() throws PWCGException
+    {
+        boolean parkedStart = false;
+        if (isPlayerFlight)
+        {
+            ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
+            if (configManager.getIntConfigParam(ConfigItemKeys.AllowAirStartsKey) == 2)
+            {
+                parkedStart = true;
+            }
+        }
+        return parkedStart;
     }
 
     

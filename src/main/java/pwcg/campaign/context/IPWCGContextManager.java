@@ -10,6 +10,7 @@ import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 public interface IPWCGContextManager
@@ -64,4 +65,8 @@ public interface IPWCGContextManager
     PlaneTypeFactory getPlaneTypeFactory();
 
     PWCGDirectoryManager getDirectoryManager();
+
+	void setReferencePlayer(SquadronMember referencePlayer);
+
+	SquadronMember getReferencePlayer();
 }

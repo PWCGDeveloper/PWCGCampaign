@@ -48,10 +48,11 @@ public class EscortPackage extends FlightPackage
 
     private Squadron getSquadronToBeEscorted() throws PWCGException
     {
-        friendlyBombSquadron = PWCGContextManager.getInstance().getSquadronManager().getNearbyFriendlySquadronByRole(
-                campaign,
-                squadron.determineSquadronCountry(campaign.getDate()), 
-                Role.ROLE_BOMB);
+        friendlyBombSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
+                        campaign, 
+                        squadron.determineCurrentPosition(campaign.getDate()), 
+                        Role.ROLE_BOMB, 
+                        squadron.determineSquadronCountry(campaign.getDate()).getSide());
         
         if (friendlyBombSquadron == null)
         {

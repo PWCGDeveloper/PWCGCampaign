@@ -3,6 +3,7 @@ package pwcg.campaign.target;
 import java.util.Date;
 
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 
@@ -14,6 +15,7 @@ public class TargetDefinition
     private Coordinate targetGeneralPosition;
     private Coordinate targetPosition;
     private Orientation targetOrientation;
+    private Squadron attackingSquadron;
     private ICountry attackingCountry;
     private ICountry targetCountry;
     private Date date;
@@ -143,5 +145,15 @@ public class TargetDefinition
     public void setMaximumRadius(int maximumRadius)
     {
         this.maximumRadius = maximumRadius;
+    }
+
+    public Squadron getAttackingSquadron()
+    {
+        return attackingSquadron;
+    }
+
+    public void setAttackingSquadron(Squadron attackingSquadron)
+    {
+        this.attackingSquadron = attackingSquadron;
     }
 }

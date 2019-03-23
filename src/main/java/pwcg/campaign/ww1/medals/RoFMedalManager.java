@@ -17,12 +17,10 @@ public abstract class RoFMedalManager extends MedalManager
         super(campaign);
     }
 
-    public static MedalManager getManager(Campaign campaign) throws PWCGException 
+    public static MedalManager getManager(ICountry country, Campaign campaign) throws PWCGException 
     {
         MedalManager medalManager = null;
         
-        ICountry country = campaign.determineCountry();
-
         if (country.isCountry(Country.GERMANY))
         {
             medalManager = new GermanMedalManager(campaign);

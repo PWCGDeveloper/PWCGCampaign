@@ -188,6 +188,18 @@ public class SquadronMember implements Cloneable
         return rankObj.getRankAbbrev(rank);
     }
 
+    public int determineRankPos(Date date) throws PWCGException
+    {
+        IRankHelper rankObj = RankFactory.createRankHelper();
+        return rankObj.getRankPosByService(rank, this.determineService(date));
+    }
+
+    public boolean isCommander(Date date) throws PWCGException
+    {
+    	int rankPos = determineRankPos(date);
+    	return (rankPos == 0);
+    }
+
     public boolean isPilotName(String name)
     {
         if (getName().equalsIgnoreCase(name) || 
@@ -200,10 +212,10 @@ public class SquadronMember implements Cloneable
         return false;
     }
 
-    public String determineSortKey(Campaign campaign) throws PWCGException
+    public String determineSortKey(Date date) throws PWCGException
     {
         IRankHelper rankObj = RankFactory.createRankHelper();
-        int rankPos = rankObj.getRankPosByService(rank, campaign.getService());
+        int rankPos = rankObj.getRankPosByService(rank, determineService(date));
 
         int numVictoriesKey = 999 - getSquadronMemberVictories().getAirToAirVictories();
         String victoriesString = String.format("%03d", numVictoriesKey);

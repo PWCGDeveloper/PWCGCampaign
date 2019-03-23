@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.personnel.SquadronMemberFilter;
+import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -57,7 +58,8 @@ public class CampaignRosterSquadronPanelFactory extends CampaignRosterBasePanelF
     public void makePilotList() throws PWCGException 
     {
         SquadronMembers pilots = new SquadronMembers();
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember pilot : squadronMembers.getSquadronMemberList())
         {
             if (excludeAces && pilot instanceof Ace)
@@ -95,7 +97,7 @@ public class CampaignRosterSquadronPanelFactory extends CampaignRosterBasePanelF
 		lDummy2.setOpaque(false);
         descGridPanel.add(lDummy2);
 
-        Squadron squad =  campaign.determineSquadron();
+        Squadron squad =  referencePlayer.determineSquadron();
         String squadString = spacing + "Assigned to " + squad.determineDisplayName(campaign.getDate());
         JLabel lSquad = new JLabel(squadString, JLabel.LEFT);
         lSquad.setFont(font);
@@ -108,7 +110,7 @@ public class CampaignRosterSquadronPanelFactory extends CampaignRosterBasePanelF
         lAirfieldAt.setForeground(fg);
         descGridPanel.add(lAirfieldAt);
         
-        String airfieldString = spacing + campaign.getAirfieldName();
+        String airfieldString = spacing + referencePlayer.determineSquadron().determineCurrentAirfieldName(campaign.getDate());
         JLabel lAirfield = new JLabel(airfieldString, JLabel.LEFT);
         lAirfield.setFont(font);
         lAirfield.setForeground(fg);

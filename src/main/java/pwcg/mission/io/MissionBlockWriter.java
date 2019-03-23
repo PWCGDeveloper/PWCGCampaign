@@ -1,4 +1,4 @@
-package pwcg.campaign.io.mission;
+package pwcg.mission.io;
 
 import java.io.BufferedWriter;
 import java.util.List;

@@ -7,7 +7,6 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.core.exception.PWCGException;
 
 public class ItalianMedalManager extends BoSMedalManager 
 {
@@ -125,41 +124,19 @@ public class ItalianMedalManager extends BoSMedalManager
     }
 
 	@Override
-	public List<Medal> getAllAwardsForService() throws PWCGException
+	protected List<Medal> getWoundBadges()
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.addAll(getWoundBadgesInOrder());
-		medalsInOrder.addAll(getAllBadgesInOrder());
-		return medalsInOrder;
+		List<Medal> medals = new ArrayList<>();
+		medals.add( medals.get(WOUND_STRIPE));		
+		return medals;
 	}
 
 	@Override
-	public List<Medal> getAllMedalsInOrder()
+	protected List<Medal> getAllBadges()
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(MEDAL_MILITARY_VALOR_BRONZE));
-		medalsInOrder.add( medals.get(MEDAL_MILITARY_VALOR_SILVER));
-		medalsInOrder.add( medals.get(MEDAL_MILITARY_VALOR_GOLD));
-		medalsInOrder.add( medals.get(CROSS_WAR_MERIT));
-		medalsInOrder.add( medals.get(CROSS_MILITARY_VALOR));
-
-		return medalsInOrder;
-	}
-
-	@Override
-	public List<Medal> getWoundBadgesInOrder()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(WOUND_STRIPE));		
-		return medalsInOrder;
-	}
-
-	@Override
-	public List<Medal> getAllBadgesInOrder()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(PILOTS_BADGE));		
-		return medalsInOrder;
+		List<Medal> medals = new ArrayList<>();
+		medals.add( medals.get(PILOTS_BADGE));		
+		return medals;
 	}
 
 }

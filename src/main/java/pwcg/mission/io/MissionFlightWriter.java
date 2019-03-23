@@ -1,6 +1,7 @@
-package pwcg.campaign.io.mission;
+package pwcg.mission.io;
 
 import java.io.BufferedWriter;
+import java.util.List;
 
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
@@ -21,29 +22,19 @@ public class MissionFlightWriter
 	
 	public void writeFlights(BufferedWriter writer) throws PWCGException
 	{
-        writePlayerFlight(writer);
+	    writeFlights(mission.getMissionFlightBuilder().getPlayerFlights(), writer);
         if (!TestDriver.getInstance().isCreatePlayerOnly())
         {
-            writeOtherFlights(writer);
+            writeFlights(mission.getMissionFlightBuilder().getMissionFlights(), writer);
             writePlaneCounters(writer);
         }
 	}
-	
-    private void writePlayerFlight(BufferedWriter writer) throws PWCGException
-    {
-        mission.getMissionFlightBuilder().getPlayerFlight().write(writer);
-        for (Unit linkedUnit : mission.getMissionFlightBuilder().getPlayerFlight().getLinkedUnits())
-        {
-            linkedUnit.write(writer);
-        }
-    }
 
-    private void writeOtherFlights(BufferedWriter writer) throws PWCGException
+    private void writeFlights(List<Flight> flights, BufferedWriter writer) throws PWCGException
     {
         for (Flight flight : mission.getMissionFlightBuilder().getMissionFlights())
         {
             flight.write(writer);
-            
             for (Unit linkedUnit : flight.getLinkedUnits())
             {
                 linkedUnit.write(writer);

@@ -6,22 +6,15 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGenerator;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
+import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightTypes;
 
 public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCache
 {
-    public static final String REG_503_PROFILE = "503rdGroundAttackRegiment";
-    public static final String JG_51_PROFILE = "Jasta51";
-    public static final String JG_51_PROFILE_2 = "Jasta51_2";
-    public static final String JG_51_PROFILE_WEST = "Jasta51_West";
-    public static final String KG53_PROFILE = "KG53";
-    public static final String STG77_PROFILE = "StG77";
-    public static final String TG2_PROFILE = "TG2";
-    public static final String FG_362_PROFILE = "362FG";
-    public static final String SQ_184_PROFILE = "184 Squadron";
-    public static final String FIGHTER_11_PROFILE = "111 Fighter Air Regiment";
+    public static final String WRITTEN = "Written";
     
     protected Campaign makeCampaignFromModel(CampaignGeneratorModel generatorModel) throws PWCGException
     {
@@ -44,17 +37,16 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
     @Override
     protected void loadCampaignProfiles() throws PWCGException
     {
-        make503GroundAttackProfile();
-        makeJasta51Profile();
-        makeJasta51Profile2();
-        makeJasta51ProfileWest();
-        makeKG53Profile();
-        makeStG77Profile();
-        makeTG2Profile();
-        make362FGProfile();
-        make184SqProfile();
-        make11FighterProfile();
-        
+        makeProfile(SquadrontTestProfile.REGIMENT_503_PROFILE);
+        makeProfile(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
+        makeProfile(SquadrontTestProfile.JG_51_PROFILE_STALINGRAD);
+        makeProfile(SquadrontTestProfile.JG_51_PROFILE_WEST);
+        makeProfile(SquadrontTestProfile.KG53_PROFILE);
+        makeProfile(SquadrontTestProfile.STG77_PROFILE);
+        makeProfile(SquadrontTestProfile.TG2_PROFILE);
+        makeProfile(SquadrontTestProfile.RAF_184_PROFILE);
+        makeProfile(SquadrontTestProfile.REGIMENT_11_PROFILE);
+
         makeWrittenProfile();
     }
     
@@ -65,74 +57,19 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
         File writtenDirFile = new File(writtenDir);
         if (!writtenDirFile.exists())
         {
-            Campaign writtenCampaign = makeCampaign(JG_51_PROFILE);
+            Campaign writtenCampaign = makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
             writtenCampaign.write();
             
+            MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
+        	for (SquadronMember player: writtenCampaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
+        	{
+        		participatingPlayers.addSquadronMember(player);
+        	}
+
             Mission mission = new Mission();
             mission.initialize(writtenCampaign);
-            mission.generate(FlightTypes.PATROL);
+            mission.generate(participatingPlayers, FlightTypes.PATROL);
             mission.finalizeMission();
         }
     }
-
-    private void make503GroundAttackProfile() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19420801", 10121503);
-        campaignProfiles.put(REG_503_PROFILE, generatorModel);
-    }
-    
-    private void makeJasta51Profile() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19411101", 20111051);
-        campaignProfiles.put(JG_51_PROFILE, generatorModel);
-    }
-    
-    private void makeJasta51Profile2() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19420501", 20111051);
-        campaignProfiles.put(JG_51_PROFILE_2, generatorModel);
-    }
-    
-    private void makeJasta51ProfileWest() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19440801", 20111051);
-        campaignProfiles.put(JG_51_PROFILE_WEST, generatorModel);
-    }
-
-    private void makeKG53Profile() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19430301", 20131053);
-        campaignProfiles.put(KG53_PROFILE, generatorModel);
-    }
-    
-    private void makeStG77Profile() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19420906", 20121077);
-        campaignProfiles.put(STG77_PROFILE, generatorModel);
-    }
-    
-    private void makeTG2Profile() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19420906", 20142002);
-        campaignProfiles.put(TG2_PROFILE, generatorModel);
-    }
-    
-    private void make362FGProfile() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19440801", 102362377);
-        campaignProfiles.put(FG_362_PROFILE, generatorModel);
-    }
-
-    private void make184SqProfile() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19440801", 103083184);
-        campaignProfiles.put(SQ_184_PROFILE, generatorModel);
-    }
-
-    private void make11FighterProfile() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19430301", 10111011);
-        campaignProfiles.put(FIGHTER_11_PROFILE, generatorModel);
-    }
-
 }

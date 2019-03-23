@@ -11,6 +11,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.rofmap.brief.BriefingCrewPlanePayloadSorter;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 import pwcg.mission.flight.plane.PlaneMCU;
 
@@ -73,7 +74,10 @@ public class BriefingPayloadHelper
 
     private void assignPayloadsToCrewPlanes() throws PWCGException
     {
-        for (PlaneMCU plane : mission.getMissionFlightBuilder().getPlayerFlight().getPlanes())
+        SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
+
+        for (PlaneMCU plane : playerFlight.getPlanes())
         {
             SquadronMember pilotOfPlane = plane.getPilot();
             CrewPlanePayloadPairing crewPlane = briefingAssignmentData.getAssignedCrewPlanes().get(pilotOfPlane.getSerialNumber());
@@ -86,7 +90,10 @@ public class BriefingPayloadHelper
 
     private void assignModificationsToCrewPlanes() throws PWCGException
     {
-        for (PlaneMCU plane : mission.getMissionFlightBuilder().getPlayerFlight().getPlanes())
+        SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
+
+        for (PlaneMCU plane : playerFlight.getPlanes())
         {
             SquadronMember pilotOfPlane = plane.getPilot();
             CrewPlanePayloadPairing crewPlane = briefingAssignmentData.getAssignedCrewPlanes().get(pilotOfPlane.getSerialNumber());
@@ -129,9 +136,12 @@ public class BriefingPayloadHelper
     
     private void setPayloadFromPayloadFactory(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
+        SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
+
         IPayloadFactory payloadFactory = PWCGContextManager.getInstance().getPayloadFactory();
         IPlanePayload payload = payloadFactory.createPlanePayload(crewPlane.getPlane().getType());
-        payload.createWeaponsPayload(mission.getMissionFlightBuilder().getPlayerFlight());
+        payload.createWeaponsPayload(playerFlight);
         crewPlane.setPayloadId(payload.getSelectedPayloadId());
     }
 

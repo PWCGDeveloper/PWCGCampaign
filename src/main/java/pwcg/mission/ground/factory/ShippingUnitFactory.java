@@ -46,9 +46,9 @@ public class ShippingUnitFactory
 
     private MissionBeginUnitCheckZone createMissionBegin() throws PWCGException
     {
-        Coalition playerCoalition  = Coalition.getFriendlyCoalition(campaign.determineCountry());
-        MissionBeginUnitCheckZone missionBeginUnitShips = new MissionBeginUnitCheckZone();
-        missionBeginUnitShips.initialize(targetDefinition.getTargetPosition(), 30000, playerCoalition);
+        Coalition enemyCoalition  = Coalition.getCoalitionBySide(targetDefinition.getTargetCountry().getSide().getOppositeSide());
+        MissionBeginUnitCheckZone missionBeginUnitShips = new MissionBeginUnitCheckZone(targetDefinition.getTargetPosition(), 30000);
+        missionBeginUnitShips.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(enemyCoalition);
         return missionBeginUnitShips;
     }
 

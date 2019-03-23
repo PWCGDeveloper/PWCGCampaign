@@ -8,12 +8,11 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.escort.PlayerEscortFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 public class PlayerFlightTypeBoSEscortTest
 {
@@ -24,7 +23,7 @@ public class PlayerFlightTypeBoSEscortTest
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        campaign = CampaignCache.makeCampaign(CampaignCacheBoS.JG_51_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test
@@ -32,8 +31,8 @@ public class PlayerFlightTypeBoSEscortTest
     {
         mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.ESCORT);
-        PlayerEscortFlight flight = (PlayerEscortFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.JG_51_PROFILE_MOSCOW), FlightTypes.ESCORT);
+        PlayerEscortFlight flight = (PlayerEscortFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);

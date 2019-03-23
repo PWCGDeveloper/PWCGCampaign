@@ -102,7 +102,7 @@ public class SeaPatrolPackage extends FlightPackage
         acceptableRoles.add(Role.ROLE_SEA_PLANE_LARGE);
 		
 		List<Squadron> opposingSquads = null;
-		Side enemySide = campaign.determineCountry().getSideNoNeutral().getOppositeSide();
+		Side enemySide = squadron.determineEnemySide();
         opposingSquads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, targetPosition.copy(), 1, 400000.0, acceptableRoles, enemySide, campaign.getDate());
 
 		if (opposingSquads != null && opposingSquads.size() != 0)

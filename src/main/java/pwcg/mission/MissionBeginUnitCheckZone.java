@@ -6,29 +6,16 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
-import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.group.SelfDeactivatingCheckZone;
 
 public class MissionBeginUnitCheckZone extends MissionBeginUnit
 {
     protected SelfDeactivatingCheckZone checkZone = null;
 
-	public MissionBeginUnitCheckZone() 
-	{
-		super();
-	}
-
-    public void initialize(Coordinate unitPosition, int checkZoneRange, Coalition coalition) throws PWCGException 
+    public MissionBeginUnitCheckZone (Coordinate unitPosition, int checkZoneRange)
     {
-        super.initialize(unitPosition);     
-        createCheckZone(checkZoneRange, coalition);
-    }
-
-    protected void createCheckZone(int checkZoneRange, Coalition coalition) 
-    {       
-        checkZone = new SelfDeactivatingCheckZone();
-        checkZone.initialize(position.copy(), coalition);
-        checkZone.setZone(checkZoneRange);
+        super();
+        checkZone = new SelfDeactivatingCheckZone(unitPosition, checkZoneRange);
         checkZone.linkTargets(missionBeginTimer, null);
     }
 
@@ -51,7 +38,7 @@ public class MissionBeginUnitCheckZone extends MissionBeginUnit
         }
 	}
 
-    public SelfDeactivatingCheckZone getCheckZone()
+    public SelfDeactivatingCheckZone getSelfDeactivatingCheckZone()
     {
         return this.checkZone;
     }

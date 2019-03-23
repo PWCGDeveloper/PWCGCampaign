@@ -39,9 +39,6 @@ public abstract class MedalManagerTestBase
         players = new ArrayList<>();
         players.add(player);
         
-        Mockito.when(campaign.getPlayers()).thenReturn(players);
-        Mockito.when(campaign.determineCountry()).thenReturn(country);
-        Mockito.when(campaign.determineCountry()).thenReturn(country);
         Mockito.when(player.getVictories()).thenReturn(victories);
         Mockito.when(player.getMedals()).thenReturn(medals);
         Mockito.when(player.getSquadronMemberVictories()).thenReturn(squadronMemberVictories);

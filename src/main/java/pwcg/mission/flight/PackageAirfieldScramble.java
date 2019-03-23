@@ -28,18 +28,18 @@ public class PackageAirfieldScramble
     public Flight createEnemyScramble(Flight flight, Coordinate scrambleCoordinates) throws PWCGException
     {
         Flight enemyScramble = null;
-        if (flight.isPlayerFlight())
+        if (flight.isPlayerFlight() && !campaign.getCampaignData().isCoop())
         {
-            enemyScramble = createEnemyScrambleForAirfieldAttack(scrambleCoordinates);
+            enemyScramble = createEnemyScrambleForAirfieldAttack(flight, scrambleCoordinates);
         }
         
         return enemyScramble;
     }
 
-    protected Flight createEnemyScrambleForAirfieldAttack(Coordinate scrambleCoordinates) throws PWCGException 
+    protected Flight createEnemyScrambleForAirfieldAttack(Flight flight, Coordinate scrambleCoordinates) throws PWCGException 
     {
         ScrambleFlight scramble = null;
-        List<Squadron> residentSquadrons = getResidentSquadrons(scrambleCoordinates);
+        List<Squadron> residentSquadrons = getResidentSquadrons(flight, scrambleCoordinates);
         if (residentSquadrons != null && residentSquadrons.size() > 0)
         {
             List<Squadron> fighterSquadrons = getFighterSquadrons(residentSquadrons);
@@ -51,7 +51,7 @@ public class PackageAirfieldScramble
         return scramble;
     }
 
-    private List<Squadron> getResidentSquadrons(Coordinate scrambleCoordinates) throws PWCGException
+    private List<Squadron> getResidentSquadrons(Flight flight, Coordinate scrambleCoordinates) throws PWCGException
     {
         SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
 
@@ -60,7 +60,7 @@ public class PackageAirfieldScramble
                 campaign, 
                 scrambleCoordinates, 
                 0, 10000.0, 
-                campaign.determineCountry().getSide().getOppositeSide(),
+                flight.getSquadron().determineSide().getOppositeSide(),
                 campaign.getDate());
         
         return squadrons;

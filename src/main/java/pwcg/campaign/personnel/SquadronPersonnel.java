@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.IRankHelper;
+import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
@@ -67,7 +69,9 @@ public class SquadronPersonnel
             if (squadronMember.getSerialNumber() == serialNumber)
             {
                 if (squadronMember.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
-                return true;
+                {
+                	return true;
+                }
             }
         }
 
@@ -129,9 +133,52 @@ public class SquadronPersonnel
 
         return activeSquadronMembersAndAces;
     }
+    
+    public boolean isPlayerSquadron()
+    {
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
+        {
+            if (squadronMember.isPlayer())
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
+    public SquadronMembers getActivePlayers()
+    {
+        SquadronMembers activePlayers = new SquadronMembers();
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
+        {
+            if (squadronMember.getPilotActiveStatus() >= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
+            {
+            	if (squadronMember.isPlayer())
+            	{
+            		activePlayers.addToSquadronMemberCollection(squadronMember);
+            	}
+            }
+        }
+
+        return activePlayers;
+    }
 
     public SquadronMembers getSquadronMembers()
     {
         return squadronMembers;
     }
+
+	public boolean isPlayerCommander() throws PWCGException {
+		SquadronMembers players = getActivePlayers();
+		for (SquadronMember player : players.getSquadronMemberList())
+		{
+            IRankHelper rank = RankFactory.createRankHelper();
+			if (rank.isCommandRank(player.getRank(), player.determineService(campaign.getDate())))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }

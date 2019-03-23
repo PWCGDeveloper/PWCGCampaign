@@ -2,7 +2,6 @@ package pwcg.mission.flight.intercept;
 
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -40,11 +39,9 @@ public class InterceptOpposingWaypoints extends WaypointGeneratorBase
 		
 		createTargetWaypoint();
 
-		// Move back towards base for egress
-		IAirfield field =  mission.getCampaign().getPlayerAirfield();
-		Coordinate baseCoords = field.getPosition().copy();
-		double angle = MathUtils.calcAngle(baseCoords, targetCoords);
-		Coordinate egressCoords = MathUtils.calcNextCoord(baseCoords, angle, 10000.0);
+		Coordinate airfieldPosition = flight.getSquadron().determineCurrentPosition(mission.getCampaign().getDate());
+		double angle = MathUtils.calcAngle(airfieldPosition, targetCoords);
+		Coordinate egressCoords = MathUtils.calcNextCoord(airfieldPosition, angle, 10000.0);
 		createEgressWaypoint(egressCoords);		
 		createApproachWaypoint(flight.getAirfield());	
 	}

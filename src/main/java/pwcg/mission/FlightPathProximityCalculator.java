@@ -11,25 +11,27 @@ import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 
 public class FlightPathProximityCalculator
 {
-    Flight myFlight;
+	List<Flight> playerFlights;
     
-    public FlightPathProximityCalculator (Flight myFlight)
+    public FlightPathProximityCalculator (List<Flight> playerFlights)
     {
-        this.myFlight = myFlight;
+        this.playerFlights = playerFlights;
     }
     
     public boolean isInFlightPath(Coordinate position) throws PWCGException 
     {
         VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
-        List<VirtualWayPointCoordinate> vwpCoordinates = virtualWaypointPlotter.plotCoordinatesByMinute(myFlight);
-
-        for (VirtualWayPointCoordinate vwpCoordinate : vwpCoordinates)
+        for (Flight playerFlight : playerFlights)
         {
-            double distanceToPlayer = MathUtils.calcDist(vwpCoordinate.getCoordinate(), position);
-            if (distanceToPlayer < 15000)
-            {
-                return true;
-            }
+	        List<VirtualWayPointCoordinate> vwpCoordinates = virtualWaypointPlotter.plotCoordinatesByMinute(playerFlight);
+	        for (VirtualWayPointCoordinate vwpCoordinate : vwpCoordinates)
+	        {
+	            double distanceToPlayer = MathUtils.calcDist(vwpCoordinate.getCoordinate(), position);
+	            if (distanceToPlayer < 15000)
+	            {
+	                return true;
+	            }
+	        }
         }
 
         return false;

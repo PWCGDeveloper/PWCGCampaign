@@ -13,16 +13,14 @@ public class ConfigSetMissionLimits
 		
         configSet.addConfigItem(ConfigItemKeys.SquadronGeneratesMissionOddsKey, new ConfigItem("100"));
         configSet.addConfigItem(ConfigItemKeys.SquadronGeneratesMissionModifierKey, new ConfigItem("20"));
-        configSet.addConfigItem(ConfigItemKeys.FriendlyPlanesMaxKey, new ConfigItem("6"));
-        configSet.addConfigItem(ConfigItemKeys.EnemyPlanesMaxKey, new ConfigItem("10"));
+        configSet.addConfigItem(ConfigItemKeys.AlliedPlanesToSpawnMaxKey, new ConfigItem("6"));
+        configSet.addConfigItem(ConfigItemKeys.AxisPlanesToSpawnMaxKey, new ConfigItem("10"));
         configSet.addConfigItem(ConfigItemKeys.RandomizePlanesPerSideKey, new ConfigItem("1"));		
 		
-        configSet.addConfigItem(ConfigItemKeys.FriendlyFlightsToKeepMinKey, new ConfigItem("6"));
-        configSet.addConfigItem(ConfigItemKeys.FriendlyFlightsToKeepMaxKey, new ConfigItem("10"));
-        configSet.addConfigItem(ConfigItemKeys.EnemyFlightsToKeepMinKey, new ConfigItem("6"));
-        configSet.addConfigItem(ConfigItemKeys.EnemyFlightsToKeepMaxKey, new ConfigItem("10"));
+        configSet.addConfigItem(ConfigItemKeys.AlliedFlightsToKeepKey, new ConfigItem("4"));
+        configSet.addConfigItem(ConfigItemKeys.AxisFlightsToKeepKey, new ConfigItem("3"));
+
         configSet.addConfigItem(ConfigItemKeys.AiFighterFlightsForGroundCampaignMaxKey, new ConfigItem("1"));
-        configSet.addConfigItem(ConfigItemKeys.AiAddidionalFighterFlightsForWestFrontCampaignKey, new ConfigItem("2"));
         configSet.addConfigItem(ConfigItemKeys.AiFighterFlightsForFighterCampaignMaxKey, new ConfigItem("3"));        
         configSet.addConfigItem(ConfigItemKeys.DistanceFromPlayerFieldZoneKey, new ConfigItem("20000"));
         configSet.addConfigItem(ConfigItemKeys.DistanceToPlayerFieldOverrideOddsKey, new ConfigItem("5"));

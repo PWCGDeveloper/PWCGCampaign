@@ -38,25 +38,29 @@ public class CrewFactory
         }
     }
 
+    // TODO COOP Need to assign player in mission from squadron to crew
     private void ensurePlayerIsAssigned() throws PWCGException
     {
-        if (squadron.getSquadronId() == campaign.getSquadronId())
+        if (!campaign.getCampaignData().isCoop())
         {
-            List<SquadronMember> players = campaign.getPlayers();
-            for (SquadronMember player : players)
+            if (Squadron.isPlayerSquadron(campaign, squadron.getSquadronId()))
             {
-                if (crewsForSquadron.containsKey(player.getSerialNumber()))
+                List<SquadronMember> playersForSquadron = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getSquadronMembers().getSquadronMemberList();
+                for (SquadronMember player : playersForSquadron)
                 {
-                    return;
-                }
-        
-                for (SquadronMember squadronMemberToBeReplaced : crewsForSquadron.values())
-                {
-                    if (!squadronMemberToBeReplaced.isPlayer())
+                    if (crewsForSquadron.containsKey(player.getSerialNumber()))
                     {
-                        crewsForSquadron.put(player.getSerialNumber(), player);
-                        crewsForSquadron.remove(squadronMemberToBeReplaced);
-                        break;
+                        return;
+                    }
+            
+                    for (SquadronMember squadronMemberToBeReplaced : crewsForSquadron.values())
+                    {
+                        if (!squadronMemberToBeReplaced.isPlayer())
+                        {
+                            crewsForSquadron.put(player.getSerialNumber(), player);
+                            crewsForSquadron.remove(squadronMemberToBeReplaced);
+                            break;
+                        }
                     }
                 }
             }

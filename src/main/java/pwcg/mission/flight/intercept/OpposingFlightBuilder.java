@@ -21,12 +21,14 @@ public class OpposingFlightBuilder
 {
     private Campaign campaign;
     private Mission mission;
+    private Squadron squadron;
     private Coordinate targetCoordinates;
     private List<Role> opposingFlightRoles;
 
-    public OpposingFlightBuilder(Mission mission, Coordinate targetCoordinates, List<Role> opposingFlightRoles)
+    public OpposingFlightBuilder(Mission mission, Squadron squadron, Coordinate targetCoordinates, List<Role> opposingFlightRoles)
     {
         this.mission = mission;
+        this.squadron = squadron;
         this.campaign = mission.getCampaign();
         this.targetCoordinates = targetCoordinates;
         this.opposingFlightRoles = opposingFlightRoles;
@@ -34,7 +36,7 @@ public class OpposingFlightBuilder
 
     public List<InterceptOpposingFlight> buildOpposingFlights() throws PWCGException
     {
-        OpposingFlightSquadronChooser opposingFlightSquadronChooser = new OpposingFlightSquadronChooser(mission, targetCoordinates, opposingFlightRoles);
+        OpposingFlightSquadronChooser opposingFlightSquadronChooser = new OpposingFlightSquadronChooser(mission, squadron, targetCoordinates, opposingFlightRoles);
         List<Squadron> opposingSquadrons = opposingFlightSquadronChooser.getOpposingSquadrons();            
         return createOpposingFlights(opposingSquadrons);
     }
@@ -63,7 +65,7 @@ public class OpposingFlightBuilder
             IAirfield opposingField =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(opposingFieldName);
             double angleFromFieldToTarget = MathUtils.calcAngle(targetCoordinates, opposingField.getPosition());
                 
-            double distancePlayerFromTarget = MathUtils.calcDist(campaign.getPosition(), targetCoordinates);
+            double distancePlayerFromTarget = MathUtils.calcDist(squadron.determineCurrentPosition(campaign.getDate()), targetCoordinates);
             Coordinate startingPosition = MathUtils.calcNextCoord(targetCoordinates, angleFromFieldToTarget, distancePlayerFromTarget);
                 
             interceptOpposingFlight = getOpposingFlight(opposingSquadron, startingPosition);

@@ -36,7 +36,7 @@ public class IngressWaypointNearFront extends IngressWaypointBase
     private Coordinate getBestIngressPositionToFront() throws PWCGException 
     {
         FrontLinesForMap frontLinesForMap =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        Coordinate closestFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(targetPosition, campaign.determineCountry().getSide());
+        Coordinate closestFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(targetPosition, flight.getSquadron().determineSide());
         
         Coordinate flightHomeCoordinates = flight.getSquadron().determineCurrentPosition(campaign.getDate());
         double angleFromFrontToHome = MathUtils.calcAngle(closestFrontLinesToTarget, flightHomeCoordinates);

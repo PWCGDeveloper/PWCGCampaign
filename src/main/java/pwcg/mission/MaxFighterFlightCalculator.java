@@ -1,63 +1,38 @@
 package pwcg.mission;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightTypes;
 
 public class MaxFighterFlightCalculator
 {
     private Campaign campaign;
-    private Flight playerFlight;
+    private Mission mission;
     
-    public MaxFighterFlightCalculator (Campaign campaign, Flight playerFlight)
+    public MaxFighterFlightCalculator (Campaign campaign, Mission mission)
     {
         this.campaign = campaign;
-        this.playerFlight = playerFlight;
+        this.mission = mission;
     }
     
     public int getMaxFighterFlightsForMission() throws PWCGException
     {
+        int maxFighterToKeepIfGroundCampaign = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AiFighterFlightsForGroundCampaignMaxKey);
+        int maxFighterToKeepIfFighterCampaign = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AiFighterFlightsForFighterCampaignMaxKey);
         int numFighterFlightsToKeep = 0;
-        if (campaign.isFighterCampaign() && playerFlight.isFighterFlight())
+        if (campaign.isFighterCampaign() && mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(FlightTypes.getFighterFlightTypes()))
         {
-            numFighterFlightsToKeep = calcNumFighterFlightsToKeepForFighterMission();
+            numFighterFlightsToKeep =  RandomNumberGenerator.getRandom(maxFighterToKeepIfFighterCampaign)+1;
         }
         else
         {
-            numFighterFlightsToKeep = calcNumFighterFlightsToKeepForGroundMission();
+            numFighterFlightsToKeep = RandomNumberGenerator.getRandom(maxFighterToKeepIfGroundCampaign+1);
         }
+        
         return reduceFlightsForPeriodOfLowActivity(numFighterFlightsToKeep);
-    }
-
-    private int calcNumFighterFlightsToKeepForFighterMission() throws PWCGException
-    {
-        int maxFighterToKeepIfFighterCampaign = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AiFighterFlightsForFighterCampaignMaxKey);
-        if (PWCGContextManager.getInstance().getCurrentMap().getMapIdentifier() == FrontMapIdentifier.BODENPLATTE_MAP)
-        {
-            int additionalFighterFLightsForWestFront = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AiAddidionalFighterFlightsForWestFrontCampaignKey);
-            maxFighterToKeepIfFighterCampaign += additionalFighterFLightsForWestFront;
-        }
-
-        int minFighterFlightsToKeep = 2;
-        int maxFighterFlightsToAdd = maxFighterToKeepIfFighterCampaign - minFighterFlightsToKeep;
-        if (maxFighterFlightsToAdd < 0) 
-        {
-            maxFighterFlightsToAdd = 0;
-        }
-        int numFighterFlightsToKeep =  minFighterFlightsToKeep + RandomNumberGenerator.getRandom(maxFighterFlightsToAdd)+1;
-        return numFighterFlightsToKeep;
-    }
-
-    private int calcNumFighterFlightsToKeepForGroundMission() throws PWCGException
-    {
-        int maxFighterToKeepIfGroundCampaign = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AiFighterFlightsForGroundCampaignMaxKey);
-        int numFighterFlightsToKeep =  RandomNumberGenerator.getRandom(maxFighterToKeepIfGroundCampaign)+1;
-        return numFighterFlightsToKeep;
     }
 
     private int reduceFlightsForPeriodOfLowActivity(int numFighterFlightsToKeep) throws PWCGException

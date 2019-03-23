@@ -11,7 +11,6 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
-import pwcg.mission.flight.ObjectProximityAnalyzer;
 
 public class MissionAirfieldBuilder
 {
@@ -42,13 +41,7 @@ public class MissionAirfieldBuilder
         {
         	if (missionBorders.isInBox(field.getPosition()))
             {
-        	    ObjectProximityAnalyzer objectProximityAnalyzer = new ObjectProximityAnalyzer(mission.getMissionFlightBuilder().getPlayerFlight());
-        	    double closestDistance = objectProximityAnalyzer.plotProximityToPlayerFlightPath(field.getPosition());
-        	    if (closestDistance < 10000.0)
-        	    {
-                    field.addAirfieldObjects(campaign);
-        	    }
-        	    
+                field.addAirfieldObjects(campaign);        	    
                 selectedFields.put(field.getName(), field);
             }
         }

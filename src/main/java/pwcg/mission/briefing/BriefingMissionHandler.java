@@ -14,6 +14,7 @@ import pwcg.gui.rofmap.brief.BriefParametersContextBuilder;
 import pwcg.gui.rofmap.brief.BriefingCrewPlanePayloadSorter;
 import pwcg.gui.rofmap.brief.BriefingFlightParameters;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
 public class BriefingMissionHandler
@@ -78,7 +79,9 @@ public class BriefingMissionHandler
 
     public void pushEditsToMission() throws PWCGException
     {
-        PlayerFlightEditor planeGeneratorPlayer = new PlayerFlightEditor(mission.getCampaign(),mission.getMissionFlightBuilder().getPlayerFlight());
+        SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
+        PlayerFlightEditor planeGeneratorPlayer = new PlayerFlightEditor(mission.getCampaign(), playerFlight);
         planeGeneratorPlayer.updatePlayerPlanes(getCrewsSorted());
     }
 
@@ -94,12 +97,15 @@ public class BriefingMissionHandler
         }
     }
 
-    public void updateMissionBriefingParameters() 
+    public void updateMissionBriefingParameters() throws PWCGException 
     {
         if (!mission.isFinalized())
         {
-            mission.getMissionFlightBuilder().getPlayerFlight().updateWaypoints(briefParametersContext.getWaypointsInBriefing());
-            mission.getMissionFlightBuilder().getPlayerFlight().setFuel(briefParametersContext.getSelectedFuel());
+            SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+            Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
+
+            playerFlight.updateWaypoints(briefParametersContext.getWaypointsInBriefing());
+            playerFlight.setFuel(briefParametersContext.getSelectedFuel());
             
             PWCGContextManager.getInstance().getCurrentMap().getMissionOptions().getMissionTime().setMissionTime(briefParametersContext.getSelectedTime());
         }

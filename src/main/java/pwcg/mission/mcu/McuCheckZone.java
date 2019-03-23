@@ -6,54 +6,63 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.plane.PlaneMCU;
 
 
 public class McuCheckZone extends BaseFlightMcu
 {
-	private int zone = 5000;
+	private int zone = 20000;
 	private int cylinder = 1;
 	private int closer = 1;
 	private List<Coalition> planeCoalitions = new ArrayList<Coalition>();
 	private List<Coalition> vehicleCoalitions = new ArrayList<Coalition>();
-
-    public McuCheckZone (Coalition coalition)
+	
+    public McuCheckZone ()
     {
         super();
-
-        setPlaneCoalition(coalition);
     }
 
-    public McuCheckZone (int objectId)
+    public void triggerCheckZoneByPlaneCoalitions (List<Coalition> coalitions)
     {
-        super();
-        
+        planeCoalitions.clear();
+        for (Coalition coalition: coalitions)
+        {
+            addPlaneCoalition(coalition);
+        }
+    }
+    
+    public void triggerCheckZoneByPlaneCoalition (Coalition coalition)
+    {
+        planeCoalitions.clear();
+        addPlaneCoalition(coalition);
+    }
+
+    public void triggerCheckZoneByFlight (Flight flight)
+    {
+        planeCoalitions.clear();
+        for (PlaneMCU plane: flight.getPlanes())
+        {
+            this.setObject(plane.getLinkTrId());
+        }
+    }
+
+    public void triggerCheckZoneBySingleObject (int objectId)
+    {
+        planeCoalitions.clear();
         this.setObject(objectId);
     }
 
-	public void setCheckZoneForPlayer(Mission mission) 
+	public void triggerCheckZoneByMultipleObjects(List<Integer> playerPlaneIds) throws PWCGException 
     {       
-        if (mission != null)
-        {
-            Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight();
-            if (myFlight != null)
-            {
-                List<PlaneMCU> planes = myFlight.getPlanes();
-                if (planes != null)
-                {
-                    PlaneMCU plane = myFlight.getPlanes().get(0);
-                    if (plane != null)
-                    {
-                        planeCoalitions.clear();;
-                        setObject(plane.getEntity().getIndex());
-                    }
-                }
-            }
-        }
+		planeCoalitions.clear();
+		for (int playerPlaneId : playerPlaneIds)
+		{
+			setObject(playerPlaneId);
+		}
     }
 
 	
@@ -114,7 +123,7 @@ public class McuCheckZone extends BaseFlightMcu
 		this.closer = closer;
 	}
 
-	private void setPlaneCoalition(Coalition coalition) 
+	private void addPlaneCoalition(Coalition coalition) 
 	{
         planeCoalitions.add(coalition);
 	}

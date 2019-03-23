@@ -46,8 +46,6 @@ public class SquadronMemberStatusTest
         PWCGContextManager.setRoF(true);
         campaignDate = DateUtils.getDateYYYYMMDD("19170601");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
-        Mockito.when(campaign.determineCountry()).thenReturn(CountryFactory.makeCountryByCode(101));
-        Mockito.when(campaign.determineCountry()).thenReturn(CountryFactory.makeCountryByCode(101));
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         Mockito.when(campaignPersonnelManager.getCampaignAces()).thenReturn(campaignAces);

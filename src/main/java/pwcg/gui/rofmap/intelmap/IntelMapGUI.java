@@ -24,6 +24,7 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -38,22 +39,21 @@ import pwcg.gui.utils.ImagePanelLayout;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-/**
- * @author Patrick Wilson
- *
- */
-
 public class IntelMapGUI extends MapGUI implements ActionListener
 {
     private static String MAP_DELIMITER = "Map: ";
 	private static final long serialVersionUID = 1L;
 
     private ButtonGroup mapButtonGroup = new ButtonGroup();
+    private Campaign campaign = null;
+    private SquadronMember referencePlayer;
 
 	public IntelMapGUI(Date mapDate) throws PWCGException  
 	{
 		super(mapDate);
 		setLayout(new BorderLayout());
+		this.campaign = PWCGContextManager.getInstance().getCampaign();
+		this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
 	}
 
 	public void makePanels() 
@@ -66,8 +66,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 			setBackground(bg);
 
 			// Initialize to the players current map
-			Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-	        List<FrontMapIdentifier> airfieldMaps = AirfieldManager.getMapIdForAirfield(campaign.getAirfieldName());
+	        List<FrontMapIdentifier> airfieldMaps = AirfieldManager.getMapIdForAirfield(referencePlayer.determineSquadron().determineCurrentAirfieldName(campaign.getDate()));
             PWCGContextManager.getInstance().changeContext(airfieldMaps.get(0));
 								
 			setRightPanel(makeRightPanel(-1));

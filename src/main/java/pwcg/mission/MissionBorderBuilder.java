@@ -1,30 +1,27 @@
 package pwcg.mission;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionBorderBuilder 
 {
 	private static final double MIN_BOX_DIAMETER = 25000.0;
 	
-	private Flight playerFlight;
+	private List<Flight> playerFlights;
 	private CoordinateBox coordinateBox;
 
-    public static CoordinateBox buildCoordinateBox (Flight playerFlight, int additionalSpread) throws PWCGException
+    public static CoordinateBox buildCoordinateBox (List<Flight> playerFlights, int minimumSize, int additionalSpread) throws PWCGException
     {
-        MissionBorderBuilder missionBorders = new MissionBorderBuilder(playerFlight);
+        MissionBorderBuilder missionBorders = new MissionBorderBuilder(playerFlights);
         return missionBorders.makeCoordinateBox(additionalSpread);
     }
 
-    private MissionBorderBuilder (Flight playerFlight)
+    private MissionBorderBuilder (List<Flight> playerFlights)
     {
-        this.playerFlight = playerFlight;
+        this.playerFlights = playerFlights;
     }
     
     private CoordinateBox makeCoordinateBox (int additionalSpread) throws PWCGException
@@ -39,13 +36,7 @@ public class MissionBorderBuilder
 
 	private void setMissionBorderToWaypointBorder() throws PWCGException
 	{
-        List<Coordinate> coordinates = new ArrayList<>();
-        for (McuWaypoint waypoint : playerFlight.getAllWaypoints())
-        {
-            coordinates.add(waypoint.getPosition());
-        }
-        
-        coordinateBox =  CoordinateBox.coordinateBoxFromCoordinateList(coordinates);
+        coordinateBox =  CoordinateBox.coordinateBoxFromFlights(playerFlights);
  	}
 
 	private void addToBordersForNarrowMissions() throws PWCGException

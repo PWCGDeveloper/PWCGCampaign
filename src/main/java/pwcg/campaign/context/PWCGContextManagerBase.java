@@ -14,6 +14,9 @@ import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
+import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
@@ -26,6 +29,7 @@ public abstract class PWCGContextManagerBase implements IPWCGContextManager
     protected Map<FrontMapIdentifier, PWCGMap> pwcgMaps = new HashMap<FrontMapIdentifier, PWCGMap>();
     protected FrontMapIdentifier currentMap = null;
     protected Campaign campaign = null;
+    protected SquadronMember referencePlayer = null;
     protected AceManager aceManager = new AceManager();
     protected SquadronManager squadronManager = new SquadronManager();
     protected BattleManager battleManager = new BattleManager();
@@ -71,10 +75,10 @@ public abstract class PWCGContextManagerBase implements IPWCGContextManager
     public void setCampaign(Campaign campaign) throws PWCGException  
     {
         this.campaign = campaign;
-        
         if (campaign != null)
         {
-            List<FrontMapIdentifier> mapIdentifiers = getMapForAirfield(campaign.getAirfieldName());
+        	Squadron representativePlayerSquadron = getRepresentativeSquadronForCampaign(campaign);
+            List<FrontMapIdentifier> mapIdentifiers = getMapForAirfield(representativePlayerSquadron.determineCurrentAirfieldName(campaign.getDate()));
             if (mapIdentifiers.size() > 0)
             {
                 changeContext(mapIdentifiers.get(0));
@@ -111,6 +115,18 @@ public abstract class PWCGContextManagerBase implements IPWCGContextManager
     {
         return campaign;
     }
+    
+	@Override
+	public void setReferencePlayer(SquadronMember referencePlayer) 
+	{
+		this.referencePlayer = referencePlayer;
+	}
+
+	@Override
+	public SquadronMember getReferencePlayer() 
+	{
+        return referencePlayer;
+	}
 
     @Override
     public PWCGMap getCurrentMap()
@@ -176,6 +192,14 @@ public abstract class PWCGContextManagerBase implements IPWCGContextManager
         
         return allMaps;
     }
+
+	private Squadron getRepresentativeSquadronForCampaign(Campaign campaign) throws PWCGException 
+	{
+		SquadronMembers players = campaign.getPersonnelManager().getAllPlayers();
+		SquadronMember representativePlayer = players.getSquadronMemberList().get(0);
+		Squadron representativePlayerSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(representativePlayer.getSquadronId());
+		return representativePlayerSquadron;
+	}
 
     @Override
     public IAirfield getAirfieldAllMaps(String airfieldName)

@@ -50,7 +50,7 @@ public class BalloonDefensePackage extends FlightPackage
 
     private BalloonDefenseGroup createBalloonUnit(GroundUnitCollection groundUnits) throws PWCGException
     {
-        Side campaignSide = campaign.determineCountry().getSide();
+        Side campaignSide = squadron.determineSide();
         BalloonDefenseGroup balloonUnit = (BalloonDefenseGroup)groundUnits.getGroundUnitByType(GroundUnitType.BALLOON_UNIT, campaignSide);
         return balloonUnit;
     }
@@ -84,7 +84,12 @@ public class BalloonDefensePackage extends FlightPackage
     {
         if(isPlayerFlight)
         {    
-            Squadron enemyScoutSquadron = PWCGContextManager.getInstance().getSquadronManager().getEnemySquadronByRole(campaign, squadron.determineSquadronCountry(campaign.getDate()), Role.ROLE_FIGHTER, campaign.getDate());
+            Squadron enemyScoutSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
+                            campaign, 
+                            squadron.determineCurrentPosition(campaign.getDate()), 
+                            Role.ROLE_FIGHTER, 
+                            squadron.determineSquadronCountry(campaign.getDate()).getSide().getOppositeSide());
+            
             if (enemyScoutSquadron != null)
             {
                 MissionBeginUnit missionBeginUnitBust = new MissionBeginUnit();

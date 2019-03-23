@@ -1,4 +1,4 @@
-package pwcg.campaign.io.mission;
+package pwcg.mission.io;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,12 +13,12 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
-import pwcg.mission.MissionDescription;
+import pwcg.mission.IMissionDescription;
 import pwcg.mission.MissionStringHandler;
 
 public class MissionDescriptionFile 
 {
-	public void writeMissionDescription(MissionDescription missionDescription, Campaign campaign) throws PWCGException 
+	public void writeMissionDescription(IMissionDescription missionDescription, Campaign campaign) throws PWCGException 
 	{
 		try
         {

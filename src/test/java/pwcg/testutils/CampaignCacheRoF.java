@@ -36,6 +36,13 @@ public class CampaignCacheRoF extends CampaignCacheBase
     protected void loadCampaignProfiles() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
+        makeProfile(SquadrontTestProfile.JASTA_11_PROFILE);
+        makeProfile(SquadrontTestProfile.ESC_103_PROFILE);
+        makeProfile(SquadrontTestProfile.ESC_124_PROFILE);
+        makeProfile(SquadrontTestProfile.RFC_2_PROFILE);
+        makeProfile(SquadrontTestProfile.ESC_2_PROFILE);
+
+
         makeJasta11Profile();
         makeEsc124Profile();
         makeEsc103Profile();

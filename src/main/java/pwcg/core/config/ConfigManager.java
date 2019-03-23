@@ -34,7 +34,7 @@ public abstract class ConfigManager
 
     public void readConfig() throws PWCGException 
     {
-    	readInitialConfigSets();
+    	loadInitialConfigSets();
     	readUserConfigSets();
     }
 
@@ -45,9 +45,9 @@ public abstract class ConfigManager
         readConfig();
     }
 
-    private void readInitialConfigSets() throws PWCGException 
+    public void loadInitialConfigSets() throws PWCGException 
     {
-    	Map<String, ConfigSet> InitialConfigSets = ConfigurationIOJson.readJson(PWCGContextManager.getInstance().getDirectoryManager().getPwcgConfigurationDir());
+    	Map<String, ConfigSet> InitialConfigSets = readInitialConfigSets();
     	for (String configSetKey : defaultCampaignConfigSets.keySet())
     	{
     		ConfigSet initialConfigSet = InitialConfigSets.get(configSetKey);
@@ -58,6 +58,11 @@ public abstract class ConfigManager
 
     		defaultCampaignConfigSets.put(configSetKey, initialConfigSet);
     	}
+    }
+
+    public Map<String, ConfigSet> readInitialConfigSets() throws PWCGException 
+    {
+        return ConfigurationIOJson.readJson(PWCGContextManager.getInstance().getDirectoryManager().getPwcgConfigurationDir());
     }
 
     private void readUserConfigSets() throws PWCGException 

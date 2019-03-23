@@ -44,6 +44,7 @@ public class McuIcon extends BaseFlightMcu
         
         MissionStringHandler.getInstance().registerMissionText(lCName, iconText);
         
+        // TODO COOP Icons tied to planes not coalitions
         coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
         coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));
     }

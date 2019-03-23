@@ -161,7 +161,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
     {
         if (reasonToAdvanceTime == EventPanelReason.EVENT_PANEL_REASON_AAR)
         {
-            AARCombatReportPanel combatReportPanelSet = new AARCombatReportPanel(campaign);
+            AARCombatReportPanel combatReportPanelSet = new AARCombatReportPanel();
             allEventPanels.add(combatReportPanelSet);
         }
         else if (reasonToAdvanceTime == EventPanelReason.EVENT_PANEL_REASON_LEAVE)

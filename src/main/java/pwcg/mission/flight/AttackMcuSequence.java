@@ -8,16 +8,16 @@ import pwcg.core.location.Orientation;
 import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.BaseFlightMcu;
-import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuAttackArea;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuTimer;
 
+// TODO Coop test to make sure attack is not broken
 public class AttackMcuSequence
 {    
-    public static final int CHECK_ZONE_INSTANCE = 11000;
-            
-    private MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
+    public static final int CHECK_ZONE_DEFAULT_DISTANCE = 12000;
+
+    private MissionBeginUnitCheckZone missionBeginUnit;
     private McuTimer activateTimer = new McuTimer();
     private McuTimer deactivateTimer = new McuTimer();
     private McuAttackArea attackArea = new McuAttackArea();
@@ -27,7 +27,7 @@ public class AttackMcuSequence
     {
     }
 
-    public void createAttackArea(PlaneMCU plane, String name, Coordinate targetCoords, int altitude, int attackTIme) throws PWCGException 
+    public void createAttackArea(String name, Coordinate targetCoords, int altitude, int attackTIme) throws PWCGException 
     {
         attackArea.setAttackGround(0);
         attackArea.setAttackGTargets(1);
@@ -43,12 +43,30 @@ public class AttackMcuSequence
         attackAreaCoords.setYPos(altitude);
         
         attackArea.setPosition(attackAreaCoords);   
-        attackArea.setObject(plane.getLinkTrId());
         
         createSequence(attackArea, name, targetCoords, attackTIme) ;
         
-        Coalition coalition  = Coalition.getFriendlyCoalition(plane.getCountry());
-        missionBeginUnit.initialize(targetCoords, CHECK_ZONE_INSTANCE, coalition);
+    }
+    
+    public void createTriggerForPlane(PlaneMCU plane, Coordinate targetCoords)
+    {
+        attackArea.setObject(plane.getLinkTrId());
+
+        missionBeginUnit = new MissionBeginUnitCheckZone(targetCoords, CHECK_ZONE_DEFAULT_DISTANCE);
+        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneBySingleObject(plane.getLinkTrId());
+        missionBeginUnit.setStartTime(2);
+        missionBeginUnit.linkToMissionBegin(activateTimer.getIndex());
+    }
+    
+    public void createTriggerForFlight(Flight flight, Coordinate targetCoords)
+    {
+        for (PlaneMCU plane: flight.getPlanes())
+        {
+            attackArea.setObject(plane.getLinkTrId());
+        }
+        
+        missionBeginUnit = new MissionBeginUnitCheckZone(targetCoords, 12000);
+        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByFlight(flight);
         missionBeginUnit.setStartTime(2);
         missionBeginUnit.linkToMissionBegin(activateTimer.getIndex());
     }

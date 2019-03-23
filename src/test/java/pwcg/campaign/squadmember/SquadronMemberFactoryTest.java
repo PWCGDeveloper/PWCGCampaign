@@ -18,7 +18,6 @@ import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadron.Squadron;
@@ -44,8 +43,6 @@ public class SquadronMemberFactoryTest
         PWCGContextManager.setRoF(true);
         campaignDate = DateUtils.getDateYYYYMMDD("19170601");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
-        Mockito.when(campaign.determineCountry()).thenReturn(CountryFactory.makeCountryByCode(101));
-        Mockito.when(campaign.determineCountry()).thenReturn(CountryFactory.makeCountryByCode(101));
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         Mockito.when(campaignPersonnelManager.getCampaignAces()).thenReturn(campaignAces);

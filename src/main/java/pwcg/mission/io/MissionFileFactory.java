@@ -1,4 +1,4 @@
-package pwcg.campaign.factory;
+package pwcg.mission.io;
 
 import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.context.PWCGContextManager;

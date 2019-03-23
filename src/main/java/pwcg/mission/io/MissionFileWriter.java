@@ -1,4 +1,4 @@
-package pwcg.campaign.io.mission;
+package pwcg.mission.io;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -19,20 +19,16 @@ import pwcg.mission.AmbientGroundUnitBuilder;
 import pwcg.mission.AssaultInformation;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBlockBuilder;
+import pwcg.mission.flight.Flight;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.GroundUnitSpawning;
 import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
+import pwcg.mission.io.MissionBlockWriter;
 import pwcg.mission.object.WindSock;
 
-/**
- * @author Patrick Wilson
- * 
- * Writes a mission file from a mission object.
- * Overridden by BoS and Rof specific
- *
- */
+// TODO COOP Move this package to pwcg.campaign.mission.io
 public abstract class MissionFileWriter implements IMissionFile 
 {
     protected String missionFileName = "";
@@ -106,8 +102,11 @@ public abstract class MissionFileWriter implements IMissionFile
 
     private void writeMissionObjectives(BufferedWriter writer) throws PWCGException
     {
-        mission.getMissionObjectiveSuccess().write(writer);
-        mission.getMissionObjectiveFailure().write(writer);
+        if (!mission.getCampaign().getCampaignData().isCoop())
+        {
+            mission.getMissionObjectiveSuccess().write(writer);
+            mission.getMissionObjectiveFailure().write(writer);
+        }
     }
 
     private void writeFlights(BufferedWriter writer) throws PWCGException
@@ -175,11 +174,14 @@ public abstract class MissionFileWriter implements IMissionFile
 
     private void writeWindSock(BufferedWriter writer) throws PWCGException
     {
-        WindSock windSock = WindSock.createWindSock(mission.getMissionFlightBuilder().getPlayerFlight());
-        if (windSock != null)
-        {
-            windSock.write(writer);
-        }
+    	for (Flight playerFlight: mission.getMissionFlightBuilder().getPlayerFlights())
+    	{
+	        WindSock windSock = WindSock.createWindSock(playerFlight);
+	        if (windSock != null)
+	        {
+	            windSock.write(writer);
+	        }
+    	}
     }
 
     protected String getMissionFilePath(String fileName) throws PWCGException 

@@ -14,7 +14,7 @@ import pwcg.mission.flight.divebomb.DiveBombingFlight;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 public class PlayerFlightTypeBoSDiveBombTest
 {
@@ -25,7 +25,7 @@ public class PlayerFlightTypeBoSDiveBombTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        campaign = CampaignCache.makeCampaign(CampaignCacheBoS.STG77_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
     }
 
     @Test
@@ -33,8 +33,8 @@ public class PlayerFlightTypeBoSDiveBombTest
     {
         mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.DIVE_BOMB);
-        DiveBombingFlight flight = (DiveBombingFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.STG77_PROFILE), FlightTypes.DIVE_BOMB);
+        DiveBombingFlight flight = (DiveBombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();

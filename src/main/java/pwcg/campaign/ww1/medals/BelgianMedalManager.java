@@ -216,43 +216,24 @@ public class BelgianMedalManager extends RoFMedalManager
 	@Override
 	public List<Medal> getAllAwardsForService() throws PWCGException
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.addAll(getWoundBadgesInOrder());
-		medalsInOrder.addAll(getAllBadgesInOrder());
-		return medalsInOrder;
-	}
-
-
-	@Override
-	public List<Medal> getAllMedalsInOrder()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(MILITARY_MEDAL));
-		medalsInOrder.add( medals.get(BEL_CROIX_DE_GUERRE));
-		medalsInOrder.add( medals.get(CROIX_DE_GUERRE));
-		medalsInOrder.add( medals.get(CROIX_DE_GUERRE_BRONZE_STAR));
-		medalsInOrder.add( medals.get(BEL_ORDRE_DE_LA_COURONNE));
-		medalsInOrder.add( medals.get(MEDAILLE_DE_HONNEUR));
-		medalsInOrder.add( medals.get(BEL_ORDRE_DE_LEOPOLD));
-		medalsInOrder.add( medals.get(LEGION_DE_HONNEUR));
-		
-		return medalsInOrder;
+		List<Medal> medals = new ArrayList<>();
+		medals.addAll(getWoundBadges());
+		medals.addAll(getAllBadges());
+		return medals;
 	}
 	
-	@Override
-	public List<Medal> getWoundBadgesInOrder()
+	private List<Medal> getWoundBadges()
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(BEL_WOUND_BADGE));		
-		return medalsInOrder;
+		List<Medal> medals = new ArrayList<>();
+		medals.add( medals.get(BEL_WOUND_BADGE));		
+		return medals;
 	}
 	
-	@Override
-	public List<Medal> getAllBadgesInOrder()
+	private List<Medal> getAllBadges()
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(PILOTS_BADGE));		
-		return medalsInOrder;
+		List<Medal> medals = new ArrayList<>();
+		medals.add( medals.get(PILOTS_BADGE));		
+		return medals;
 	}
 
 }

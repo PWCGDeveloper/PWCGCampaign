@@ -20,6 +20,7 @@ import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.campaign.squadmember.HistoricalAceRank;
 import pwcg.campaign.squadmember.HistoricalAceSquadron;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 
@@ -272,9 +273,9 @@ public class AceManager
 	{
 		if (campaign != null)
 		{
-			if (aceClone.getSquadronId() == campaign.getSquadronId())
+            if (Squadron.isPlayerSquadron(campaign, aceClone.getSquadronId()))
 			{
-				if (campaign.isPlayerCommander())
+				if (campaign.getPersonnelManager().getSquadronPersonnel(aceClone.getSquadronId()).isPlayerCommander())
 				{
 				    IRankHelper rankObj = RankFactory.createRankHelper();
                     String commandRankRank = rankObj.getRankByService(0, aceClone.determineService(date));

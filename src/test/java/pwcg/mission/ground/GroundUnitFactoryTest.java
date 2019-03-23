@@ -193,7 +193,7 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createFriendlyArtilleryBatteryForPlayerTest () throws PWCGException 
     {
-        ArtillerySpotBatteryFactory artillerySpotBatteryFactory = new ArtillerySpotBatteryFactory(campaign, new Coordinate (100000, 0, 100000), myTestPosition, country);
+        ArtillerySpotBatteryFactory artillerySpotBatteryFactory = new ArtillerySpotBatteryFactory(campaign, squadron, new Coordinate (100000, 0, 100000), myTestPosition, country);
         ArtillerySpotArtilleryGroup friendlyArtilleryGroup = artillerySpotBatteryFactory.createFriendlyArtilleryBattery(true);
 
         assert (friendlyArtilleryGroup.getVehicles().size() > 0);
@@ -203,7 +203,7 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createFriendlyArtilleryBatteryForAITest () throws PWCGException 
     {
-        ArtillerySpotBatteryFactory artillerySpotBatteryFactory = new ArtillerySpotBatteryFactory(campaign, new Coordinate (100000, 0, 100000), myTestPosition, country);
+        ArtillerySpotBatteryFactory artillerySpotBatteryFactory = new ArtillerySpotBatteryFactory(campaign, squadron, new Coordinate (100000, 0, 100000), myTestPosition, country);
         ArtillerySpotArtilleryGroup friendlyArtilleryGroup = artillerySpotBatteryFactory.createFriendlyArtilleryBattery(false);
 
         assert (friendlyArtilleryGroup.getVehicles().size() ==1);

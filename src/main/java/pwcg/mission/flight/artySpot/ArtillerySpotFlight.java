@@ -53,7 +53,7 @@ public class ArtillerySpotFlight extends Flight
 		
 		for (Unit linkedUnit : linkedUnits)
 		{
-            String objectiveLocation =  getMissionObjectiveLocation(linkedUnit);
+            String objectiveLocation =  getMissionObjectiveLocation(flightInformation.getSquadron(), flightInformation.getCampaign().getDate(), linkedUnit);
             
             if (linkedUnit instanceof GroundUnit)
             {

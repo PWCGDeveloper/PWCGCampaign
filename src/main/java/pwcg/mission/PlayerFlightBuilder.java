@@ -1,7 +1,5 @@
 package pwcg.mission;
 
-import java.util.List;
-
 import pwcg.campaign.Campaign;
 import pwcg.campaign.factory.PWCGFlightFactory;
 import pwcg.campaign.squadron.Squadron;
@@ -13,7 +11,6 @@ import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.ground.unittypes.infantry.GroundPillBoxFlareUnit;
 import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.group.FlareSequence;
-import pwcg.mission.mcu.group.SelfDeactivatingCheckZone;
 
 public class PlayerFlightBuilder
 {
@@ -28,24 +25,22 @@ public class PlayerFlightBuilder
         this.mission = mission;
     }
     
-    public Flight createPlayerFlight(FlightTypes flightType) throws PWCGException 
+    public Flight createPlayerFlight(FlightTypes flightType, Squadron squadron) throws PWCGException 
     {
-        Squadron squad =  campaign.determineSquadron();
-
         // get plane to allow determination of role
         FlightFactory flightFactory = PWCGFlightFactory.createFlightFactory(campaign);
         if (flightType == FlightTypes.ANY)
         {
-            flightType = flightFactory.buildFlight(squad, true);
+            flightType = flightFactory.buildFlight(squadron, true);
         }
         
         if (flightType == FlightTypes.FERRY)
         {
-            playerFlight = flightFactory.buildFerryFlight(mission, squad, true);
+            playerFlight = flightFactory.buildFerryFlight(mission, squadron, true);
         }
         else
         {
-            playerFlight = flightFactory.buildFlight(mission, squad, flightType, true);
+            playerFlight = flightFactory.buildFlight(mission, squadron, flightType, true);
         }
         
         triggerLinkedUnitCZFromMyFlight(playerFlight);
@@ -80,43 +75,20 @@ public class PlayerFlightBuilder
             if (mbu instanceof MissionBeginUnitCheckZone)
             {
                 MissionBeginUnitCheckZone mbucz = (MissionBeginUnitCheckZone) mbu;
-                SelfDeactivatingCheckZone selfDeactivatingCheckZone = mbucz.getCheckZone();
-                setCheckZoneForPlayer(selfDeactivatingCheckZone);
+                McuCheckZone checkZone = mbucz.getSelfDeactivatingCheckZone().getCheckZone();
+                checkZone.triggerCheckZoneByFlight(playerFlight);
             }
-            if (mbu instanceof MissionBeginUnitBehavior)
-            {
-                MissionBeginUnitBehavior mcub = (MissionBeginUnitBehavior) mbu;
-
-                SelfDeactivatingCheckZone spawnCZ = mcub.getSpawnCheckZone();
-                setCheckZoneForPlayer(spawnCZ);
-
-                SelfDeactivatingCheckZone behaviorCZ = mcub.getBehaviorCheckZone();
-                setCheckZoneForPlayer(behaviorCZ);
-            }
+            
             if (unit instanceof GroundPillBoxFlareUnit)
             {
-                
                 GroundPillBoxFlareUnit flareUnit = (GroundPillBoxFlareUnit) unit;
                 FlareSequence flareSequence = flareUnit.getFlares();
                 MissionBeginUnitCheckZone mbucz = flareSequence.getMissionBeginUnit();
-                SelfDeactivatingCheckZone cz = mbucz.getCheckZone();
-                setCheckZoneForPlayer(cz);
+                McuCheckZone checkZone = mbucz.getSelfDeactivatingCheckZone().getCheckZone();
+                checkZone.triggerCheckZoneByFlight(playerFlight);
             }
 
             triggerLinkedUnitCZFromMyFlight(unit);
-        }
-    }
-
-    private void setCheckZoneForPlayer(SelfDeactivatingCheckZone selfDeactivatingCheckZone) throws PWCGException 
-    {
-        if (playerFlight != null)
-        {
-            List<PlaneMCU> playerPlanes = playerFlight.getPlayerPlanes();
-            if (!playerPlanes.isEmpty())
-            {
-                McuCheckZone checkZone = selfDeactivatingCheckZone.getCheckZone();
-                checkZone.setCheckZoneForPlayer(playerFlight.getMission());
-            }
         }
     }
 }

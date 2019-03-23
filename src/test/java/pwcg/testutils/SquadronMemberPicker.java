@@ -13,7 +13,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 
 public class SquadronMemberPicker
 {
-    public static SquadronMember pickNonAceCampaignMember (Campaign campaign) throws PWCGException
+    public static SquadronMember pickNonAceCampaignMember (Campaign campaign, int squadronId) throws PWCGException
     {
         Map<Integer, SquadronMember> squadronAllCampaignMembers = campaign.getPersonnelManager().getAllCampaignMembers();        
         SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAINoWounded(squadronAllCampaignMembers, campaign.getDate());        
@@ -22,18 +22,18 @@ public class SquadronMemberPicker
         return allHealthyCampaignMembers.get(index);
     }
     
-    public static SquadronMember pickNonAceSquadronMember (Campaign campaign) throws PWCGException
+    public static SquadronMember pickNonAceSquadronMember (Campaign campaign, int squadronId) throws PWCGException
     {
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId());        
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);        
         SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAINoWounded(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());        
         List<SquadronMember> allHealthySquadronMembers = squadronMembers.getSquadronMemberList();
         int index = RandomNumberGenerator.getRandom(allHealthySquadronMembers.size());
         return allHealthySquadronMembers.get(index);
     }
     
-    public static SquadronMember pickPlayerSquadronMember (Campaign campaign) throws PWCGException
+    public static SquadronMember pickPlayerSquadronMember (Campaign campaign, int squadronId) throws PWCGException
     {
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId());        
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);        
         SquadronMembers squadronMembers = SquadronMemberFilter.filterActivePlayers(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());        
         List<SquadronMember> allHealthyPlayers = squadronMembers.getSquadronMemberList();
         int index = RandomNumberGenerator.getRandom(allHealthyPlayers.size());

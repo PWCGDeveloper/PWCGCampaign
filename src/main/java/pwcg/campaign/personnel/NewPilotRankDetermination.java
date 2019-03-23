@@ -2,25 +2,22 @@ package pwcg.campaign.personnel;
 
 import java.util.List;
 
-import pwcg.campaign.Campaign;
+import pwcg.campaign.ArmedService;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class NewPilotRankDetermination
-{
-    private Campaign campaign;
-    
-    public NewPilotRankDetermination (Campaign campaign)
+{    
+    public NewPilotRankDetermination ()
     {
-        this.campaign = campaign;
     }
     
-    public String getReplacementPilotRank() throws PWCGException
+    public String getReplacementPilotRank(ArmedService service) throws PWCGException
     {
-        IRankHelper rankObj = RankFactory.createRankHelper();
-        List<String> ranks = rankObj.getRanksByService(campaign.getService());
+        IRankHelper rankHelper = RankFactory.createRankHelper();
+        List<String> ranks = rankHelper.getRanksByService(service);
 
         int rankIndex = 2;
         int rankOdds = RandomNumberGenerator.getRandom(100);
@@ -29,7 +26,7 @@ public class NewPilotRankDetermination
         int NewPilotRankOddsLow = 25;
         rankIndex = getReplacementPilotRankIndex(ranks, rankOdds, NewPilotRankOddsLowest, NewPilotRankOddsLow);
 
-        String rank = rankObj.getRankByService(rankIndex, campaign.getService());
+        String rank = rankHelper.getRankByService(rankIndex, service);
         
         return rank;
     }

@@ -1,8 +1,5 @@
 package pwcg.campaign.io.json;
 
-import java.util.List;
-
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -27,19 +24,11 @@ import pwcg.core.utils.CampaignRemover;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBase;
-import pwcg.testutils.CampaignCacheRoF;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CampaignIOJsonTest
 {    
-    String campaignName;
-    
-    @Before
-    public void setup()
-    {
-        campaignName = CampaignCacheRoF.makeCampaignNameFromSquadronAndDate(501011, "19170501");
-    }
-    
     @Test
     public void campaignIOJsonTest() throws PWCGException
     {
@@ -53,14 +42,14 @@ public class CampaignIOJsonTest
 
     private void writeCampaign() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheRoF.JASTA_11_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
         CampaignIOJson.writeJson(campaign);
     }
 
     private void readCampaign() throws PWCGException
     {
         Campaign campaign = new Campaign();
-        campaign.open(campaignName);
+        campaign.open(CampaignCacheBase.TEST_CAMPAIGN_NAME);
         PWCGContextManager.getInstance().setCampaign(campaign);
 
         validateCoreCampaign(campaign);        
@@ -73,16 +62,16 @@ public class CampaignIOJsonTest
 
     private void validateCoreCampaign(Campaign campaign) throws PWCGException
     {
-        List<SquadronMember> players = campaign.getPlayers();
-        for (SquadronMember player : players)
+    	SquadronMembers players = campaign.getPersonnelManager().getAllPlayers();
+        for (SquadronMember player : players.getSquadronMemberList())
         {
             assert (player.getSerialNumber() >= SerialNumber.PLAYER_STARTING_SERIAL_NUMBER && player.getSerialNumber() < SerialNumber.AI_STARTING_SERIAL_NUMBER);
         }
         
         assert (campaign.getDate().equals(DateUtils.getDateYYYYMMDD("19170501")));
-        assert (campaign.getSquadronId() == 501011);
-        assert (campaign.getCampaignData().getName().equals(campaignName));
-        assert (campaign.getPlayers().get(0).getName().equals(CampaignCacheBase.TEST_PLAYER_NAME));
+        assert (campaign.getCampaignData().getName().equals(CampaignCacheBase.TEST_CAMPAIGN_NAME));
+    	SquadronMember player = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+        assert (player.getName().equals(CampaignCacheBase.TEST_PLAYER_NAME));
     }
 
     private void validatePersonnelReplacements(Campaign campaign) throws PWCGException
@@ -165,6 +154,6 @@ public class CampaignIOJsonTest
     private void deleteCampaign()
     {
         CampaignRemover campaignRemover = new CampaignRemover();
-        campaignRemover.deleteCampaign(campaignName);
+        campaignRemover.deleteCampaign(CampaignCacheBase.TEST_CAMPAIGN_NAME);
     }
 }

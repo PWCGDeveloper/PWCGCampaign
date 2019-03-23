@@ -2,6 +2,7 @@ package pwcg.mission.flight;
 
 import java.io.BufferedWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
@@ -19,7 +20,6 @@ import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.Logger;
@@ -73,8 +73,6 @@ public abstract class Flight extends Unit
     protected Flight firstContactWithEnemyFlight = null;
 
     protected int missionStartTimeAdjustment = 0;
-
-    protected boolean nightFlight = false;
     
     private MissionBeginUnit missionBeginUnit;
 
@@ -286,6 +284,7 @@ public abstract class Flight extends Unit
         {
             if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_INGRESS) ||
                 waypoint.getWpAction().equals(WaypointAction.WP_ACTION_RENDEZVOUS) ||
+                
                 waypoint.isTargetWaypoint())
             {
                 keepIt = true;
@@ -423,64 +422,6 @@ public abstract class Flight extends Unit
         }
     }
 
-    public Coordinate getCoordinatesToIntersectWithPlayer() throws PWCGException 
-    {
-        List<McuWaypoint> potentialWaypoints = waypointPackage.getWaypointsForLeadPlane();
-
-        if (potentialWaypoints.size() == 0)
-        {
-            List<Unit> linkedUnits = flightInformation.getMission().getMissionFlightBuilder().getPlayerFlight().getLinkedUnits();
-            for (Unit linkedUnit : linkedUnits)
-            {
-                if (linkedUnit instanceof Flight)
-                {
-                    Flight linkedFlight = (Flight) linkedUnit;
-
-                    potentialWaypoints = linkedFlight.getWaypointsNoSearch().getWaypointsForLeadPlane();
-                    if (potentialWaypoints != null && potentialWaypoints.size() > 0)
-                    {
-                        break;
-                    }
-                }
-                else
-                {
-                    throw new PWCGMissionGenerationException("getTargetCoordinates: Attempt to get waypoints.getWaypoints() for non flight unit "
-                                    + linkedUnit.getName());
-                }
-            }
-        }
-
-        List<McuWaypoint> selectedWaypoints = new ArrayList<McuWaypoint>();
-        for (int i = 0; i < potentialWaypoints.size(); ++i)
-        {
-            McuWaypoint playerWaypoint = potentialWaypoints.get(i);
-            if (playerWaypoint.getName().contains(WaypointType.RECON_WAYPOINT.getName()))
-            {
-                selectedWaypoints.add(playerWaypoint);
-            }
-        }
-
-        Coordinate targetCoordinates = null;
-
-        if (selectedWaypoints.size() == 0)
-        {
-            targetCoordinates = flightInformation.getMission().getMissionFlightBuilder().getPlayerFlight().getPlanes().get(0).getPosition().copy();
-        }
-        else
-        {
-            McuWaypoint selectedWaypoint = selectedWaypoints.get(RandomNumberGenerator.getRandom(selectedWaypoints.size()));
-            targetCoordinates = selectedWaypoint.getPosition().copy();
-        }
-
-        return targetCoordinates;
-    }
-
-    /**
-     * Set the orientation of a waypoint
-     * @throws PWCGException 
-     * 
-     * @
-     */
     protected void setWaypointOrientation() throws PWCGException 
     {
         // TL each waypoint to the next one
@@ -502,10 +443,6 @@ public abstract class Flight extends Unit
         }
     }
 
-    /**
-     * @throws PWCGException 
-     * @
-     */
     public void moveToStartPosition() throws PWCGException 
     {
         // Never move the player flight
@@ -561,18 +498,12 @@ public abstract class Flight extends Unit
         }
     }
 
-    
-    
-    /**
-     * @return
-     */
     public List<McuWaypoint> getAllWaypoints()
     {
         List<McuWaypoint> returnWaypoints = waypointPackage.getWaypointsForLeadPlane();
         if (waypointPackage.getWaypointsForLeadPlane().size() == 0)
         {
-            List<Unit> linkedUnits = flightInformation.getMission().getMissionFlightBuilder().getPlayerFlight().getLinkedUnits();
-            for (Unit linkedUnit : linkedUnits)
+            for (Unit linkedUnit : this.getLinkedUnits())
             {
                 if (linkedUnit instanceof Flight)
                 {
@@ -594,19 +525,12 @@ public abstract class Flight extends Unit
         return returnWaypoints;
     }
 
-    
-
-    
-    /**
-     * @return
-     */
     protected List<McuWaypoint> getAllWaypointsForPlane(PlaneMCU plane)
     {
         List<McuWaypoint> returnWaypoints = waypointPackage.getWaypointsForPlane(plane);
         if (waypointPackage.getWaypointsForLeadPlane().size() == 0)
         {
-            List<Unit> linkedUnits = flightInformation.getMission().getMissionFlightBuilder().getPlayerFlight().getLinkedUnits();
-            for (Unit linkedUnit : linkedUnits)
+            for (Unit linkedUnit : this.getLinkedUnits())
             {
                 if (linkedUnit instanceof Flight)
                 {
@@ -628,9 +552,6 @@ public abstract class Flight extends Unit
         return returnWaypoints;
     }
 
-    /**
-     * @return
-     */
     public WaypointPackage getLinkedWaypoints()
     {
         for (Unit linkedUnit : linkedUnits)
@@ -674,13 +595,6 @@ public abstract class Flight extends Unit
         }
 
         return flightWPDistance;
-    }
-
-    public double calcPlayerFlightDistance() 
-    {
-        Flight myFlight = flightInformation.getMission().getMissionFlightBuilder().getPlayerFlight();
-        return myFlight.calcFlightDistance();
-
     }
 
     public void write(BufferedWriter writer) throws PWCGException 
@@ -859,16 +773,6 @@ public abstract class Flight extends Unit
         return planes;
     }
 
-    public boolean isNightFlight()
-    {
-        return nightFlight;
-    }
-
-    public void setNightFlight(boolean nightFlight)
-    {
-        this.nightFlight = nightFlight;
-    }
-
     public int getFirstContactWithPlayer()
     {
         int firstContactWithPlayer = -1;
@@ -935,10 +839,11 @@ public abstract class Flight extends Unit
     
     public void createVirtualEscortFlight() throws PWCGException 
     {
-        Squadron friendlyFighterSquadron = PWCGContextManager.getInstance().getSquadronManager().getNearbyFriendlySquadronByRole(
-                flightInformation.getCampaign(),
-                flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()), 
-                Role.ROLE_FIGHTER);
+        Squadron friendlyFighterSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
+                        flightInformation.getCampaign(), 
+                        flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate()), 
+                        Role.ROLE_FIGHTER, 
+                        flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()).getSide());
 
         if (friendlyFighterSquadron != null)
         {
@@ -1079,11 +984,10 @@ public abstract class Flight extends Unit
         return false;
     }
 
-    protected String getMissionObjectiveLocation(Unit linkedUnit) throws PWCGException 
+    protected String getMissionObjectiveLocation(Squadron squadron, Date date, Unit linkedUnit) throws PWCGException 
     {
         String objectiveLocation = "";
-        
-        if (linkedUnit.getCountry().isEnemy(flightInformation.getCampaign().determineCountry()))
+        if (linkedUnit.getCountry().isEnemy(squadron.determineSquadronCountry(date)))
         {
             if (linkedUnit instanceof AirfieldStaticGroup)
             {
@@ -1397,14 +1301,14 @@ public abstract class Flight extends Unit
     {
         return flightInformation.isVirtual();
     }
-
-    public boolean isFriendly() throws PWCGException
-    {
-        return flightInformation.isFriendly();
-    }
     
     public boolean isAirStart() throws PWCGException
     {
         return flightInformation.isAirStart();
     } 
+
+    public boolean isParkedStart() throws PWCGException
+    {
+        return flightInformation.isParkedStart();
+    }
 }

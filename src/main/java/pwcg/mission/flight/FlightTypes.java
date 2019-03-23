@@ -1,5 +1,8 @@
 package pwcg.mission.flight;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum FlightTypes
 {
     ANY,
@@ -13,7 +16,6 @@ public enum FlightTypes
     LONE_WOLF,
     BALLOON_BUST,
     BALLOON_DEFENSE,
-    PORT_RECON,
     SEA_PATROL,
     LOW_ALT_CAP,
     LOW_ALT_PATROL,
@@ -27,6 +29,7 @@ public enum FlightTypes
     
     TRANSPORT,
     RECON,
+    PORT_RECON,
     CONTACT_PATROL,
     ARTILLERY_SPOT,
     PARATROOP_DROP,
@@ -35,5 +38,18 @@ public enum FlightTypes
     
     FERRY,
     GROUND_FORCES;
-
+    
+    public static List<FlightTypes> getFighterFlightTypes()
+    {
+        List<FlightTypes> fighterFlightTypes = new ArrayList<>();
+        fighterFlightTypes.add(PATROL);
+        fighterFlightTypes.add(OFFENSIVE);
+        fighterFlightTypes.add(INTERCEPT);
+        fighterFlightTypes.add(LONE_WOLF);
+        fighterFlightTypes.add(BALLOON_BUST);
+        fighterFlightTypes.add(BALLOON_DEFENSE);
+        fighterFlightTypes.add(LOW_ALT_CAP);
+        fighterFlightTypes.add(LOW_ALT_PATROL);
+        return fighterFlightTypes;
+    }
 }

@@ -40,13 +40,15 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
 	
     protected StringBuffer intelHeaderBuffer = new StringBuffer("");
     protected Campaign campaign;
+	protected SquadronMember referencePlayer;
     protected JPanel squadronsByRoleContainer;
     protected JTextArea squadronInteltext;
     
-	public CampaignIntelligenceBase(Campaign campaign) throws PWCGException  
+	public CampaignIntelligenceBase() throws PWCGException  
 	{
         super();
-        this.campaign = campaign;
+		this.campaign = PWCGContextManager.getInstance().getCampaign();
+		this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 	}    
@@ -134,7 +136,7 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
         acceptableRoles.add(role);
 
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        String airfieldName = campaign.getAirfieldName();
+        String airfieldName = referencePlayer.determineSquadron().determineCurrentAirfieldName(campaign.getDate());
         IAirfield field =  PWCGContextManager.getInstance().getAirfieldAllMaps(airfieldName);
 
         List<Squadron> squadrons = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(

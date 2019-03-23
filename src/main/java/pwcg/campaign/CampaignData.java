@@ -2,6 +2,7 @@ package pwcg.campaign;
 
 import java.util.Date;
 
+import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.squadmember.SerialNumber;
 
 public class CampaignData
@@ -9,9 +10,9 @@ public class CampaignData
 
 	private Date date = null;
 	private String name = "";
-    private int squadId = -1;
     private boolean isCoop = false;
     private SerialNumber serialNumber = new SerialNumber();
+    private FrontMapIdentifier campaignMap;
 
 	public Date getDate()
 	{
@@ -31,16 +32,6 @@ public class CampaignData
 	public void setName(String name)
 	{
 		this.name = name;
-	}
-
-	public int getSquadId()
-	{
-		return squadId;
-	}
-
-	public void setSquadId(int squadId)
-	{
-		this.squadId = squadId;
 	}
 	
     public boolean isCoop()
@@ -62,6 +53,16 @@ public class CampaignData
     {
         this.serialNumber = serialNumber;
     }
+
+	public FrontMapIdentifier getCampaignMap() 
+	{
+		return campaignMap;
+	}
+
+	public void setCampaignMap(FrontMapIdentifier campaignMap) 
+	{
+		this.campaignMap = campaignMap;
+	}
 	
 	
 }

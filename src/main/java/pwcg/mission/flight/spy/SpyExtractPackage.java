@@ -38,7 +38,6 @@ public class SpyExtractPackage extends FlightPackage
         
         FlightInformation flightInformation = createFlightInformation(targetCoordinates);
 		SpyExtractFlight spyFlight = new SpyExtractFlight (flightInformation, missionBeginUnit);
-		spyFlight.setNightFlight(true);
 		spyFlight.linkGroundUnitsToFlight(groundUnitCollection);
 		
 		spyFlight.createUnitMission();

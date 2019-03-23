@@ -127,18 +127,4 @@ public class Ace extends SquadronMember
             super.setGroundVictories(victories);
         }
     }
-    
-    
-    public boolean isAceInSquadron(Campaign campaign, Ace ace) throws PWCGException
-    {
-        HistoricalAce ha = PWCGContextManager.getInstance().getAceManager().getHistoricalAceBySerialNumber(ace.getSerialNumber());
-        Ace aceBefore = ha.getAtDate(campaign.getDate());
-        if (aceBefore.getSquadronId() == campaign.getSquadronId())
-        {
-            return true;
-        }
-
-        return false;
-    }
-
 }

@@ -66,6 +66,16 @@ public class Squadron
 	public Squadron ()
 	{
 	}
+	
+	public static boolean isPlayerSquadron (Campaign campaign, int squadronId)
+	{
+        if (campaign.getPersonnelManager().getSquadronPersonnel(squadronId).isPlayerSquadron())
+        {
+            return true;
+        }
+        
+        return false;
+	}
 
 	public List<PlaneType> determineCurrentAircraftList(Date now) throws PWCGException
 	{

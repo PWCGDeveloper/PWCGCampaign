@@ -1,5 +1,8 @@
 package pwcg.mission.mcu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 
@@ -36,7 +39,15 @@ public enum Coalition
         
         return friendlyCoalition;
     }    
-    
+
+    public static List<Coalition> getAllCoalitions()
+    {
+        List<Coalition> allCoalitions = new ArrayList<>();
+        allCoalitions.add(COALITION_AXIS);
+        allCoalitions.add(COALITION_ALLIED);
+        return allCoalitions;
+    }    
+
     public static Coalition getEnemyCoalition(ICountry country)
     {
         Coalition enemyCoalition = COALITION_AXIS;

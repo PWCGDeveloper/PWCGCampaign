@@ -2,6 +2,7 @@ package pwcg.campaign.target;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
@@ -18,15 +19,18 @@ public class TargetBuilder
     private GroundUnitCollection groundUnitCollection;
 
     private Campaign campaign;
+    private Squadron squadron;
     private Mission mission;
     private TargetDefinition targetDefinition;    
 
     public TargetBuilder(
             Campaign campaign, 
+            Squadron squadron, 
             Mission mission, 
             TargetDefinition targetDefinition) throws PWCGException 
     { 
         this.campaign = campaign;
+        this.squadron = squadron;
         this.mission = mission;
         this.targetDefinition = targetDefinition;
     }
@@ -116,7 +120,12 @@ public class TargetBuilder
 
     private void addFriendlyArtillery() throws PWCGException, PWCGMissionGenerationException
     {
-        ArtillerySpotBatteryFactory artillerySpotBatteryFactory = new ArtillerySpotBatteryFactory(campaign, targetDefinition.getTargetPosition(), targetDefinition.getTargetPosition(), targetDefinition.getAttackingCountry());
+        ArtillerySpotBatteryFactory artillerySpotBatteryFactory = new ArtillerySpotBatteryFactory(
+        		campaign, 
+        		squadron, 
+        		targetDefinition.getTargetPosition(), 
+        		targetDefinition.getTargetPosition(), 
+        		targetDefinition.getAttackingCountry());
         ArtillerySpotArtilleryGroup friendlyArtilleryGroup = artillerySpotBatteryFactory.createFriendlyArtilleryBattery(targetDefinition.isPlayerTarget());
         friendlyArtilleryGroup.createUnitMission();
         groundUnitCollection.addGroundUnit(GroundUnitType.ARTILLERY_UNIT, friendlyArtilleryGroup);

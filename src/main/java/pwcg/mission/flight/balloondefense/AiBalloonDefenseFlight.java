@@ -124,9 +124,9 @@ public class AiBalloonDefenseFlight extends Flight
         return null;
     }
 
-    public void setBalloonCheckZoneForPlayer(int index)
+    public void setBalloonCheckZoneForPlayer(List<Integer> playerPlaneIds)
     {
-        balloonUnit.setBalloonCheckZoneForPlayer(index);
+        balloonUnit.setBalloonCheckZoneForPlayer(playerPlaneIds);
     }
 
     public Balloon getBalloon()

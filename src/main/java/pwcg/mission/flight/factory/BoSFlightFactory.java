@@ -38,7 +38,7 @@ public class BoSFlightFactory extends FlightFactory
         }
         else if (missionRole == Role.ROLE_FIGHTER)
         {
-            return getFighterFlightType(isPlayerFlight);
+            return getFighterFlightType(squadron, isPlayerFlight);
         }
         else if (missionRole == Role.ROLE_ATTACK)
         {
@@ -54,7 +54,7 @@ public class BoSFlightFactory extends FlightFactory
         }
     }
 
-    protected FlightTypes getFighterFlightType(boolean isPlayerFlight) throws PWCGException
+    protected FlightTypes getFighterFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
     {
         FlightTypes flightType = FlightTypes.PATROL;
 
@@ -66,7 +66,7 @@ public class BoSFlightFactory extends FlightFactory
         int lowAltPatrolMissionOdds = 0;
         int capMissionOdds = 0;
 
-        if (campaign.determineCountry().getSideNoNeutral() == Side.ALLIED)
+        if (squadron.determineSquadronCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
         {
             offensiveMissionOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedOffensiveMissionKey);
             interceptMissionOdds = offensiveMissionOdds
@@ -122,7 +122,7 @@ public class BoSFlightFactory extends FlightFactory
         }
         else if (missionOdds < scrambleMissionOdds)
         {
-            if (isPlayerFlight)
+            if (isPlayerFlight && !campaign.getCampaignData().isCoop())
             {
                 flightType = FlightTypes.SCRAMBLE;
             }

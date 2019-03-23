@@ -11,8 +11,6 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.McuDeactivate;
@@ -56,13 +54,10 @@ public class SmokeGroup
         this.position = smokeEffectPosition;
         missionBeginUnit.initialize(position.copy());
 
-        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight();
-        List<PlaneMCU> planes = playerFlight.getPlayerPlanes();
-        
         addSmokeEffect(requestedSmokeEffect, smokeEffectPosition);
         
-        buildActivate(planes.get(0));
-        buildDeactivate(planes.get(0));
+        buildActivate(mission.getMissionFlightBuilder().getPlayersInMission());
+        buildDeactivate(mission.getMissionFlightBuilder().getPlayersInMission());
         setTimers();
         setTargetAssociations();
         setObjectAssociations();
@@ -86,7 +81,6 @@ public class SmokeGroup
             smokeEffect = new SmokeVillage();
         }
         
-        smokeEffectPosition.setYPos(0.0);
         smokeEffect.setPosition(smokeEffectPosition);
         
         smokeEffect.populateEntity();
@@ -186,18 +180,20 @@ public class SmokeGroup
         }
     }
 
-    private void buildDeactivate(PlaneMCU plane)
+    private void buildDeactivate(List<Integer> playerPlaneIds) throws PWCGException
     {
-        deactivateCheckZone = new McuCheckZone(plane.getLinkTrId());
+        deactivateCheckZone = new McuCheckZone();
         deactivateCheckZone.setCloser(0);
         deactivateCheckZone.setZone(25000);
+        deactivateCheckZone.triggerCheckZoneByMultipleObjects(playerPlaneIds);
     }
 
-    private void buildActivate(PlaneMCU plane)
+    private void buildActivate(List<Integer> playerPlaneIds) throws PWCGException
     {
-        activateCheckZone = new McuCheckZone(plane.getLinkTrId());
+        activateCheckZone = new McuCheckZone();
         activateCheckZone.setCloser(1);
         activateCheckZone.setZone(20000);
+        activateCheckZone.triggerCheckZoneByMultipleObjects(playerPlaneIds);
     }
 
     public void write(BufferedWriter writer) throws PWCGException 

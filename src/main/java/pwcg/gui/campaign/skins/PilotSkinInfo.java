@@ -35,10 +35,11 @@ public class PilotSkinInfo
     public void initialize() throws PWCGException
     {
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        Squadron squad = campaign.determineSquadron();
+        SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        Squadron squadron = referencePlayer.determineSquadron();
         
         // Make an entry for each plane initialized to "No Skin"
-        List<PlaneType> squadronPlanes = squad.determineCurrentAircraftList(campaign.getDate());
+        List<PlaneType> squadronPlanes = squadron.determineCurrentAircraftList(campaign.getDate());
         List<PlaneType> squadronPlanesByBest = PlaneSorter.sortPlanesByGoodness(squadronPlanes);
         for (PlaneType plane : squadronPlanesByBest)
         {

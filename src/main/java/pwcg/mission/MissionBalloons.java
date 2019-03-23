@@ -24,11 +24,6 @@ public class MissionBalloons
 {
     private List<BalloonDefenseGroup> ambientBalloons = new ArrayList<BalloonDefenseGroup>();
 
-
-    /**
-     * @throws PWCGException 
-     * 
-     */
     public void createAmbientBalloons(Mission mission) throws PWCGException 
     {
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
@@ -37,8 +32,6 @@ public class MissionBalloons
         List<Coordinate> balloonPositions = new ArrayList<Coordinate>();
         for(Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            // Only balloon defense flights have a balloon.
-            // Balloon bust flights get their balloon from the linked balloon defense flight.
             if (flight instanceof AiBalloonDefenseFlight)
             {
                 AiBalloonDefenseFlight balloonDefenseFlight = (AiBalloonDefenseFlight)flight;
@@ -46,12 +39,15 @@ public class MissionBalloons
             } 
         }
         
-        Squadron squad =  campaign.determineSquadron();
-        if (squad.isSquadronThisRole(campaign.getDate(), Role.ROLE_STRAT_BOMB) || 
-            squad.isSquadronThisRole(campaign.getDate(), Role.ROLE_SEA_PLANE) || 
-            squad.isHomeDefense(campaign.getDate()))
+        if (!campaign.getCampaignData().isCoop())
         {
-            return;
+	        Squadron squad =  mission.getMissionFlightBuilder().getReferencePlayerFlight().getSquadron();
+	        if (squad.isSquadronThisRole(campaign.getDate(), Role.ROLE_STRAT_BOMB) || 
+	            squad.isSquadronThisRole(campaign.getDate(), Role.ROLE_SEA_PLANE) || 
+	            squad.isHomeDefense(campaign.getDate()))
+	        {
+	            return;
+	        }
         }
 
         // Number of ambient balloons
@@ -67,34 +63,18 @@ public class MissionBalloons
         {
             try
             {
-                // Balloon is for opposite side by default
-                Side balloonSide = campaign.determineCountry().getSide().getOppositeSide();
-
-                // First ambient balloon will always be enemy - others might be
-                // friendly
-                if (i > 0)
+                Side balloonSide = Side.ALLIED;
+                int roll = RandomNumberGenerator.getRandom(100);
+                if (roll < 50)
                 {
-                    int roll = RandomNumberGenerator.getRandom(100);
-                    if (roll < 50)
-                    {
-                        balloonSide = campaign.determineCountry().getSide();
-                    }
+                	balloonSide = Side.AXIS;
                 }
 
-                // Create the balloon
                 AmbientBalloonDefensePackage ambientBalloonPackage = new AmbientBalloonDefensePackage();
-                BalloonDefenseGroup balloonGroup = ambientBalloonPackage.createPackage(campaign, mission, balloonSide);
+            	Coordinate ambientBalloonReferencePosition = determineAmbientBalloonReferencePosition(mission);
+                BalloonDefenseGroup balloonGroup = ambientBalloonPackage.createPackage(campaign, mission, balloonSide, ambientBalloonReferencePosition);
 
-                // Reject in duplicate position
-                boolean alreadyTaken = false;
-                for (Coordinate balloonPosition : balloonPositions)
-                {
-                    if (MathUtils.calcDist(balloonGroup.getPosition(), balloonPosition) < 2000.0)
-                    {
-                        alreadyTaken = true;
-                    }
-                }
-
+                boolean alreadyTaken = isBalloonPositionTaken(balloonPositions, balloonGroup);
                 if (!alreadyTaken)
                 {
                     ambientBalloons.add(balloonGroup);
@@ -106,11 +86,29 @@ public class MissionBalloons
             }
         }
     }
+    
+    private Coordinate determineAmbientBalloonReferencePosition(Mission mission)
+    {
+    	List<Flight> playerFlights = mission.getMissionFlightBuilder().getPlayerFlights();
+    	int index = RandomNumberGenerator.getRandom(playerFlights.size());
+    	Flight referenceFlight = playerFlights.get(index);
+    	Coordinate ambientBalloonReferencePosition = referenceFlight.getPlanes().get(0).getPosition();
+    	return ambientBalloonReferencePosition;
+    }
 
-    /**
-     * @return
-     * @throws PWCGException 
-     */
+	private boolean isBalloonPositionTaken(List<Coordinate> balloonPositions, BalloonDefenseGroup balloonGroup) throws PWCGException 
+	{
+		boolean alreadyTaken = false;
+		for (Coordinate balloonPosition : balloonPositions)
+		{
+		    if (MathUtils.calcDist(balloonGroup.getPosition(), balloonPosition) < 2000.0)
+		    {
+		        alreadyTaken = true;
+		    }
+		}
+		return alreadyTaken;
+	}
+
     public boolean hasAlliedBalloon() throws PWCGException
     {
         for (BalloonDefenseGroup balloonGroup : ambientBalloons)
@@ -124,10 +122,6 @@ public class MissionBalloons
         return false;
     }
 
-    /**
-     * @return
-     * @throws PWCGException 
-     */
     public boolean hasAxisBalloon() throws PWCGException
     {
         for (BalloonDefenseGroup balloonGroup : ambientBalloons)
@@ -141,10 +135,6 @@ public class MissionBalloons
         return false;
     }
 
-
-    /**
-     * @return
-     */
     public List<BalloonDefenseGroup> getAmbientBalloons()
     {
         return ambientBalloons;

@@ -45,7 +45,7 @@ public class LowAltInterceptPackage extends InterceptPackage
     @Override
     protected Coordinate getTargetCoordinates() throws PWCGException 
     {
-        Side mySide = campaign.determineCountry().getSide();
+        Side mySide = squadron.determineSquadronCountry(campaign.getDate()).getSide();
         return groundUnitCollection.getTargetCoordinatesFromGroundUnits(mySide);
     }
 

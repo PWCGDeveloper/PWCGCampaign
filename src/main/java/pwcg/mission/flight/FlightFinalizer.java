@@ -130,11 +130,9 @@ public class FlightFinalizer
     {
         // The mission begin timer triggers the formation timer.
         // For airstart, link the formation timer to the WP timer
-        if (flight.getFlightInformation().isEscortedByPlayerFlight() ||
-            flight.getFlightInformation().isEscortForPlayerFlight())
+    	if (flight.getFlightInformation().isEscortedByPlayerFlight())
         {
-            // Flights escorted by the player or escorting the player
-            // circle until rendezvous
+            // Flights escorted by the player circle until rendezvous
         }
     	else
     	{
@@ -193,7 +191,7 @@ public class FlightFinalizer
                 PlaneMCU plane = flight.getPlanes().get(i);
                 if (!plane.getPilot().isPlayer())
                 {
-                    plane.createPlaneRemover(flight, flight.getMission().getMissionFlightBuilder().getPlayerFlight().getPlayerPlanes().get(0));
+                    plane.createPlaneRemover(flight);
                 }
                 
                 for (VirtualWayPoint virtualWaypoint : ((VirtualWaypointPackage) flight.getWaypointPackage()).getVirtualWaypoints())

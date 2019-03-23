@@ -40,7 +40,7 @@ public class FlightCrewBuilder
 
     private void assignPlayerToCrew() throws PWCGException
     {
-        if (campaign.getSquadronId() == squadron.getSquadronId())
+        if (Squadron.isPlayerSquadron(campaign, squadron.getSquadronId()))
         {
             SquadronMember playerCrew = null;
             for (SquadronMember pilot : unassignedCrewMap.values())

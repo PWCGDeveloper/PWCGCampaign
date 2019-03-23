@@ -441,10 +441,10 @@ public class GermanMedalManager extends RoFMedalManager
 	@Override
 	public List<Medal> getAllAwardsForService() throws PWCGException
 	{
-		List<Medal> allAwardsForService = getAllNationalMedalsInOrder();
+		List<Medal> allAwardsForService = getAllNationalMedals();
 		
-		allAwardsForService.addAll(getBavariaMedalsInOrder());
-		allAwardsForService.addAll(getBavariaMedalsInOrder());
+		allAwardsForService.addAll(getBavariaMedals());
+		allAwardsForService.addAll(getBavariaMedals());
 		allAwardsForService.addAll(getWurttenburgMedalsInOrder());
 		allAwardsForService.addAll(getSaxonyMedalsInOrder());
 		allAwardsForService.addAll(getArmyWoundBadges());
@@ -454,39 +454,8 @@ public class GermanMedalManager extends RoFMedalManager
 		
 		return allAwardsForService;
 	}
-	
-	@Override
-	public List<Medal> getAllMedalsInOrder() throws PWCGException
-	{
-		List<Medal> medalsInOrder = getAllNationalMedalsInOrder();
 
-		List<Medal> regionalInOrder = new ArrayList<>();
-		for (SquadronMember player : campaign.getPlayers())
-		{
-        	if (player.getPlayerRegion().equals(SquadronMember.BAVARIA))
-        	{
-        		regionalInOrder = getBavariaMedalsInOrder();
-        	}
-        	else if (player.getPlayerRegion().equals(SquadronMember.WURTTEMBURG))
-        	{
-        		regionalInOrder = getWurttenburgMedalsInOrder();
-        	}
-        	else if (player.getPlayerRegion().equals(SquadronMember.SAXONY))
-        	{
-        		regionalInOrder = getSaxonyMedalsInOrder();
-        	}
-        	else
-        	{
-        		regionalInOrder = getPrussiaMedalsInOrder();
-        	}
-
-        	medalsInOrder.addAll(regionalInOrder);
-		}
-		
-		return medalsInOrder;
-	}
-
-	private List<Medal> getAllNationalMedalsInOrder()
+	private List<Medal> getAllNationalMedals()
 	{
 		List<Medal> medalsInOrder = new ArrayList<>();
 
@@ -499,7 +468,7 @@ public class GermanMedalManager extends RoFMedalManager
 		return medalsInOrder;
 	}
 
-	private List<Medal> getBavariaMedalsInOrder()
+	private List<Medal> getBavariaMedals()
 	{
 		List<Medal> medalsInOrder = new ArrayList<>();
 		
@@ -531,33 +500,6 @@ public class GermanMedalManager extends RoFMedalManager
 		return medalsInOrder;
 	}
 
-	private List<Medal> getPrussiaMedalsInOrder()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		
-		medalsInOrder.add( medals.get(P_WAR_MERIT_MEDAL));
-		medalsInOrder.add( medals.get(P_MILITARY_MERIT_CROSS));
-
-		return medalsInOrder;
-	}
-
-	@Override
-	public List<Medal> getWoundBadgesInOrder() throws PWCGException
-	{
-	    ArmedService service = campaign.determineSquadron().determineServiceForSquadron(campaign.getDate());
-
-        if (service.getServiceId() == RoFServiceManager.DEUTSCHE_LUFTSTREITKRAFTE)
-        {
-        	return getArmyWoundBadges();
-        }
-        else if (service.getServiceId() == RoFServiceManager.MARINE_FLIEGER_CORP)
-        {
-        	return getNavyWoundBadges();
-        }
-        
-		throw new PWCGException("Service undefined for German wound badges");
-	}
-
 	public List<Medal> getArmyWoundBadges()
 	{
 		List<Medal> medalsInOrder = new ArrayList<>();
@@ -572,15 +514,6 @@ public class GermanMedalManager extends RoFMedalManager
 		medalsInOrder.add( medals.get(NAVAL_WOUND_BADGE_BLACK));		
 		medalsInOrder.add( medals.get(NAVAL_WOUND_BADGE_SILVER));		
 		return medalsInOrder;
-	}
-
-	@Override
-	public List<Medal> getAllBadgesInOrder() throws PWCGException
-	{
-        List<Medal> allBadges = getBavarianBadges();
-        List<Medal> prussianBadges = getPrussianBadges();
-        allBadges.addAll(prussianBadges);
-        return allBadges;
 	}
 
 	public List<Medal> getBavarianBadges()

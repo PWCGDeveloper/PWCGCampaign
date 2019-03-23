@@ -1,5 +1,6 @@
 package pwcg.mission.briefing;
 
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
@@ -26,20 +27,21 @@ public class BriefingDataInitializer
 	{	    
 	    briefingAssignmentData.reset();
         
-	    SquadronPersonnel playerPersonnel = mission.getCampaign().getPersonnelManager().getPlayerPersonnel();
+	    SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+	    SquadronPersonnel playerPersonnel = mission.getCampaign().getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId());
         SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesNoWounded(playerPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), (mission.getCampaign().getDate()));
         for (SquadronMember squadronMember : squadronMembers.getSquadronMemberCollection().values())
         {
             briefingAssignmentData.addPilot(squadronMember);
         }
         
-        Equipment squadronPlanes = mission.getCampaign().getEquipmentManager().getEquipmentForSquadron(mission.getCampaign().getSquadronId());
+        Equipment squadronPlanes = mission.getCampaign().getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
         for (EquippedPlane squadronPlane : squadronPlanes.getActiveEquippedPlanes().values())
         {
             briefingAssignmentData.addPlane(squadronPlane);
         }
 	    
-        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight();
+        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
 	    for (PlaneMCU plane : playerFlight.getPlanes())
 	    {
 	        briefingAssignmentData.assignPilot(plane.getPilot().getSerialNumber(), plane.getSerialNumber());

@@ -27,7 +27,9 @@ public class TargetDefinitionBuilder
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
 
         targetDefinition.setTargetType(targetType);
+        targetDefinition.setAttackingSquadron(squadron);
         targetDefinition.setTargetCategory(targetType.getTargetCategory());
+        targetDefinition.setTargetName(buildTargetName(squadron.determineSquadronCountry(campaign.getDate()), targetType));
 
         if (flightType == FlightTypes.BALLOON_DEFENSE)
         {
@@ -44,9 +46,8 @@ public class TargetDefinitionBuilder
             targetDefinition.setTargetCountry(squadron.determineEnemyCountry(campaign, campaign.getDate()));
         }
         
-        targetDefinition.setTargetName(buildTargetName(targetDefinition.getTargetCountry(), targetType));
         targetDefinition.setDate(campaign.getDate());
-        targetDefinition.setPlayerTarget((campaign.getSquadronId() == squadron.getSquadronId()));
+        targetDefinition.setPlayerTarget((squadron.getSquadronId() == squadron.getSquadronId()));
         
         targetDefinition.setPreferredRadius(productSpecific.getInitialTargetRadiusFromGeneralTargetLocation(flightType));
         targetDefinition.setMaximumRadius(productSpecific.getMaxTargetRadiusFromGeneralTargetLocation(flightType));
@@ -100,13 +101,14 @@ public class TargetDefinitionBuilder
         IFixedPosition place = strategicTargetLocator.getStrategicTargetLocation(targetType);
 
         targetDefinition.setTargetType(targetType);
+        targetDefinition.setAttackingSquadron(squadron);
         targetDefinition.setTargetCategory(targetType.getTargetCategory());
         targetDefinition.setTargetName(buildTargetName(targetCountry, targetType));
 
         targetDefinition.setAttackingCountry(squadron.determineSquadronCountry(campaign.getDate()));
         targetDefinition.setTargetCountry(targetCountry);
         targetDefinition.setDate(campaign.getDate());
-        targetDefinition.setPlayerTarget((campaign.getSquadronId() == squadron.getSquadronId()));
+        targetDefinition.setPlayerTarget((squadron.getSquadronId() == squadron.getSquadronId()));
         
         targetDefinition.setPreferredRadius(productSpecific.getInitialTargetRadiusFromGeneralTargetLocation(flightType));
         targetDefinition.setMaximumRadius(productSpecific.getMaxTargetRadiusFromGeneralTargetLocation(flightType));
@@ -118,7 +120,7 @@ public class TargetDefinitionBuilder
         return targetDefinition;
     }
 
-    public TargetDefinition buildTargetDefinitionAssault (
+    public TargetDefinition buildTargetDefinitionAmbientAssault (
             Campaign campaign, 
             ICountry attackingCountry, 
             ICountry targetCountry, 
@@ -127,6 +129,7 @@ public class TargetDefinitionBuilder
             boolean isPlayerTarget) throws PWCGException
     {
         targetDefinition.setTargetType(targetType);
+        targetDefinition.setAttackingSquadron(null);
         targetDefinition.setTargetCategory(targetType.getTargetCategory());
         targetDefinition.setTargetName(buildTargetName(targetCountry, targetType));
 

@@ -17,7 +17,7 @@ public class SquadronMemberSorter
                 
         for (SquadronMember squadronMember : unsorted.values())
         {
-            String crewKey = squadronMember.determineSortKey(campaign);
+            String crewKey = squadronMember.determineSortKey(campaign.getDate());
             sortedTree.put(crewKey, squadronMember);
         }
         

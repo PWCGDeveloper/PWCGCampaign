@@ -18,7 +18,6 @@ import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.io.mission.MissionFileWriter;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.PayloadDesignation;
@@ -41,8 +40,10 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.briefing.BriefingMissionHandler;
+import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.io.MissionFileWriter;
 
 public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListener
 {
@@ -580,7 +581,13 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private boolean ensurePlayerIsInMission() throws PWCGException
     {
-        List<PlaneMCU> playerPlanes = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight().getPlayerPlanes();
+    	if (campaignHomeGui.getCampaign().getCampaignData().isCoop())
+    	{
+    		return true;
+    	}
+    	
+        Flight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
+        List<PlaneMCU> playerPlanes = playerFlight.getPlayerPlanes();
         for (PlaneMCU playerPlane : playerPlanes)
         {
             SquadronMember squadronMember = playerPlane.getPilot();
@@ -596,7 +603,8 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private boolean ensurePlayerOwnsPlane() throws PWCGException
     {
-        List<PlaneMCU> playerPlanes = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight().getPlayerPlanes();
+        Flight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
+        List<PlaneMCU> playerPlanes = playerFlight.getPlayerPlanes();
         for (PlaneMCU playerPlane : playerPlanes)
         {
             if (!PlanesOwnedManager.getInstance().isPlaneOwned(playerPlane.getType()))

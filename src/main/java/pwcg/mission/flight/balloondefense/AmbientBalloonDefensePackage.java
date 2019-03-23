@@ -19,39 +19,40 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnitCheckZone;
-import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.ground.GroundUnitBalloonFactory;
 import pwcg.mission.mcu.Coalition;
 
 public class AmbientBalloonDefensePackage
 {
     private Campaign campaign;
+    private Coordinate referenceLocation;
     private Mission mission;
 	
-	public BalloonDefenseGroup createPackage (Campaign campaign, Mission mission, Side side) throws PWCGException 
+	public BalloonDefenseGroup createPackage (Campaign campaign, Mission mission, Side balloonSide, Coordinate referenceLocation) throws PWCGException 
 	{
         this.campaign = campaign;
         this.mission = mission;
+        this.referenceLocation = referenceLocation;
 
 		// Create a balloon defense package
-		Coordinate positionCoordinate = getNearestPositionCoordinate(side);
-		Coordinate balloonPosition = getBalloonCoordinate(mission, positionCoordinate, side);
+		Coordinate positionCoordinate = getNearestPositionCoordinate(balloonSide);
+		Coordinate balloonPosition = getBalloonCoordinate(mission, positionCoordinate, balloonSide);
 		
 		
-		ICountry country = getAmbientBalloonCountry(positionCoordinate, side);
+		ICountry country = getAmbientBalloonCountry(positionCoordinate, balloonSide);
 		BalloonDefenseGroup balloonUnit = createBalloon (balloonPosition, country);
 		
-		PlaneMCU playerPlane = mission.getMissionFlightBuilder().getPlayerFlight().getPlayerPlanes().get(0);
-		balloonUnit.setBalloonCheckZoneForPlayer(playerPlane.getEntity().getIndex());
+		List<Integer> playerPlaneIds = mission.getMissionFlightBuilder().determinePlayerPlaneIds();
+		balloonUnit.setBalloonCheckZoneForPlayer(playerPlaneIds);
 
 		return balloonUnit;
 	}
 
-	private ICountry getAmbientBalloonCountry(Coordinate positionCoordinate, Side side) throws PWCGException 
+	private ICountry getAmbientBalloonCountry(Coordinate positionCoordinate, Side balloonSide) throws PWCGException 
 	{
-	    ICountry country = CountryFactory.makeMapReferenceCountry(side);
+	    ICountry country = CountryFactory.makeMapReferenceCountry(balloonSide);
 	    
-        Squadron squad = getBalloonSquadronForClosestCountry(side, positionCoordinate);
+        Squadron squad = getBalloonSquadronForClosestCountry(balloonSide, positionCoordinate);
         if (squad != null)
         {
             Campaign campaign = PWCGContextManager.getInstance().getCampaign();
@@ -63,16 +64,11 @@ public class AmbientBalloonDefensePackage
 
 	private BalloonDefenseGroup createBalloon (Coordinate balloonCoordinate, ICountry balloonCountry) throws PWCGException 
 	{
-		// Get the target waypoint - this will be near a friendly infantry position
 		Side side = balloonCountry.getSide();
 		Coordinate balloonPosition = getBalloonCoordinate(mission, balloonCoordinate, side);
 
-		// No Coalition for a balloon.  Trigger on proximity to player instead
-        Coalition enemyCoalition = Coalition.getEnemyCoalition(balloonCountry);
-	
-		// Create a balloon defense package
-        MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
-        missionBeginUnit.initialize(balloonPosition.copy(), 10000, enemyCoalition);
+        MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone(balloonPosition.copy(), 12000);
+        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalitions(Coalition.getAllCoalitions());
         
         boolean isPlayerTarget = true;
         TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
@@ -102,7 +98,7 @@ public class AmbientBalloonDefensePackage
         }
         else
         {
-            balloonPosition = positionsManager.getClosestDefinitePosition(side, mission.getMissionFlightBuilder().getPlayerFlight().getPlanes().get(0).getPosition());
+            balloonPosition = positionsManager.getClosestDefinitePosition(side, referenceLocation);
         }
 		
 		return balloonPosition;

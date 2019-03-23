@@ -37,6 +37,11 @@ public class SquadronMembers
         squadronMemberCollection.put(squadronMember.getSerialNumber(), squadronMember);
     }
 
+    public void addSquadronMembers(SquadronMembers newSquadronMembers)
+    {
+        squadronMemberCollection.putAll(newSquadronMembers.squadronMemberCollection);
+    }
+
     public boolean isSquadronMember(Integer serialNumber)
     {
         return squadronMemberCollection.containsKey(serialNumber);

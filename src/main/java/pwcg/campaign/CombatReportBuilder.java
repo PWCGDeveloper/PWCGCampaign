@@ -24,12 +24,14 @@ import pwcg.mission.data.MissionHeader;
 public class CombatReportBuilder
 {
     private Campaign campaign;
+    private SquadronMember reportSquadronMember;
     private AARCoordinator aarCoordinator;
     private CombatReport combatReport = new CombatReport();
 
-    public CombatReportBuilder(Campaign campaign, AARCoordinator aarCoordinator)
+    public CombatReportBuilder(Campaign campaign, SquadronMember reportSquadronMember, AARCoordinator aarCoordinator)
     {
         this.campaign = campaign;
+        this.reportSquadronMember = reportSquadronMember;
         this.aarCoordinator = aarCoordinator;
     }
     
@@ -49,7 +51,7 @@ public class CombatReportBuilder
     
     private CombatReport createCombatReportHeader() throws PWCGException
     {
-        combatReport.setSquadron(campaign.determineSquadron().determineDisplayName(campaign.getDate()));
+        combatReport.setSquadron(reportSquadronMember.determineSquadron().determineDisplayName(campaign.getDate()));
         
         MissionHeader missionHeader = aarCoordinator.getAarContext().getUiCombatReportData().getCombatReportPanelData().getMissionHeader();
         
@@ -73,7 +75,7 @@ public class CombatReportBuilder
         int altitude = missionHeader.getAltitude();
         String altString = " meters";
         
-        ICountry personnelCountry = campaign.determineCountry();
+        ICountry personnelCountry = reportSquadronMember.determineSquadron().getCountry();
         if (personnelCountry.isCountry(Country.BRITAIN))
         {
             altitude = altitude * 3;
@@ -86,8 +88,7 @@ public class CombatReportBuilder
 
     private void setPilotsForSinglePlayer() throws PWCGException
     {
-        SquadronMember player = campaign.getPlayers().get(0);
-        combatReport.setPilot(player.getNameAndRank());
+        combatReport.setPilot(reportSquadronMember.getNameAndRank());
     }   
 
     private void setPilotsForCoop()
@@ -96,7 +97,7 @@ public class CombatReportBuilder
         SquadronMembers campaignMembersInMission = aarCoordinator.getAarContext().getPreliminaryData().getCampaignMembersInMission();
         for (SquadronMember squadronMember : campaignMembersInMission.getSquadronMemberList())
         {
-            if (squadronMember.getSquadronId() == campaign.getSquadronId())
+            if (squadronMember.getSquadronId() == reportSquadronMember.getSquadronId())
             {
                 squadroMemberInMissionNames.add(squadronMember.getNameAndRank());
             }
@@ -122,7 +123,7 @@ public class CombatReportBuilder
         
         String flownFromStatement = "\n";
 
-        flownFromStatement += " The mission was flown from " + campaign.determineSquadron().determineCurrentAirfieldName(campaign.getDate()) + " aerodrome.\n";
+        flownFromStatement += " The mission was flown from " + reportSquadronMember.determineSquadron().determineCurrentAirfieldName(campaign.getDate()) + " aerodrome.\n";
 
         flownFromStatement += "\n";
         return flownFromStatement;

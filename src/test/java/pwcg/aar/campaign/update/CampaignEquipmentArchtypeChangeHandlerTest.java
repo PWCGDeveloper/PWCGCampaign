@@ -53,7 +53,7 @@ public class CampaignEquipmentArchtypeChangeHandlerTest
     
     private void assertPlaneArchType(String planeArchTypeName)
     {
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(campaign.getSquadronId());
+    	Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(20111051);
         for (EquippedPlane plane : equipment.getActiveEquippedPlanes().values())
         {
             assert(plane.getArchType().equals(planeArchTypeName));
@@ -62,7 +62,7 @@ public class CampaignEquipmentArchtypeChangeHandlerTest
     
     private void assertNotPlaneArchType(String planeArchTypeName)
     {
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(campaign.getSquadronId());
+    	Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(20111051);
         for (EquippedPlane plane : equipment.getActiveEquippedPlanes().values())
         {
             assert(!(plane.getArchType().equals(planeArchTypeName)));

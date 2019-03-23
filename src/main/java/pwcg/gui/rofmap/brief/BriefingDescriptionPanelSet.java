@@ -28,8 +28,9 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
+import pwcg.mission.IMissionDescription;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionDescription;
+import pwcg.mission.MissionDescriptionFactory;
 import pwcg.mission.briefing.BriefingMissionHandler;
 
 public class BriefingDescriptionPanelSet extends PwcgGuiContext implements ActionListener
@@ -138,12 +139,12 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
     public void setMissionText() throws PWCGException 
     {
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        MissionDescription missionDescription = new MissionDescription(campaign, briefingMissionHandler.getMission());
-        missionDescription.createDescription();
+        IMissionDescription missionDescription =MissionDescriptionFactory.buildMissionDescription(campaign, briefingMissionHandler.getMission());
+        String missionDescriptionText = missionDescription.createDescription();
         
         StringBuffer missionDescriptionBuffer = new StringBuffer("");
         missionDescriptionBuffer.append("Mission: \n");
-        missionDescriptionBuffer.append(missionDescription.getDesc());
+        missionDescriptionBuffer.append(missionDescriptionText);
 
         String pilotList = makePilotList();
         missionDescriptionBuffer.append(pilotList.toString());

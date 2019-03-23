@@ -11,9 +11,11 @@ import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.MedalManagerFactory;
 import pwcg.campaign.ww2.country.BoSServiceManager;
 import pwcg.campaign.ww2.medals.ItalianMedalManager;
@@ -32,7 +34,8 @@ public class BoSItalianMedalManagerTest extends MedalManagerTestBase
         PWCGContextManager.setRoF(false);
         super.setup();
         Mockito.when(country.isCountry(Country.ITALY)).thenReturn(true);
-        medalManager = MedalManagerFactory.createMedalManager(campaign);
+        ICountry country = CountryFactory.makeCountryByCountry(Country.ITALY);
+        medalManager = MedalManagerFactory.createMedalManager(country, campaign);
         medals.clear();
     }
 

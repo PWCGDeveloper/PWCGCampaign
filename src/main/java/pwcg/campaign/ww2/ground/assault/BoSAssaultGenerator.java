@@ -51,18 +51,12 @@ public class BoSAssaultGenerator extends AssaultGenerator implements IAssaultGen
 
     private void createMissionBeginUnit() throws PWCGException
     {
-        Coordinate missionBeginPosition = assaultInformation.getAssaultPosition().copy();
-        if (campaign.determineCountry().isSameSide(targetDefinition.getTargetCountry()))
-        {
-            missionBeginPosition = assaultInformation.getDefensePosition().copy();
-        }
-        else 
-        {
-            missionBeginPosition = assaultInformation.getAssaultPosition().copy();
-        }
-        missionBeginUnit = new MissionBeginUnitCheckZone();
-        Coalition playerCoalition  = Coalition.getFriendlyCoalition(campaign.determineCountry());
-        missionBeginUnit.initialize(missionBeginPosition, 10000, playerCoalition);
+        Double inBetweenDistance = MathUtils.calcDist(assaultInformation.getAssaultPosition(), assaultInformation.getDefensePosition()) / 2.0;
+        Double assaultAngle = MathUtils.calcAngle(assaultInformation.getAssaultPosition(), assaultInformation.getDefensePosition());
+        Coordinate inBetweenPosition = MathUtils.calcNextCoord(assaultInformation.getAssaultPosition(), assaultAngle, inBetweenDistance);
+         
+        missionBeginUnit = new MissionBeginUnitCheckZone(inBetweenPosition, 20000);
+        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalitions(Coalition.getAllCoalitions());
         missionBeginUnit.setStartTime(2);
     }
 

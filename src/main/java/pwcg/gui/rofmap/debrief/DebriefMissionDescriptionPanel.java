@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -30,7 +31,7 @@ import pwcg.gui.utils.ScrollBarWrapper;
 
 public class DebriefMissionDescriptionPanel extends AARPanel implements ActionListener
 {
-    private Campaign campaign = null;
+    private SquadronMember referencePlayer = null;
     private AARCoordinator aarCoordinator;
     private CampaignHomeGUI homeGui;
 
@@ -41,7 +42,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
 	{
 	    super();
 	    
-        this.campaign = campaign;        
+    	this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
         this.homeGui = homeGui;        
         this.aarCoordinator = AARCoordinator.getInstance();
 	}
@@ -134,7 +135,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
         
         for (SquadronMember pilotInMission : aarCoordinator.getAarContext().getPreliminaryData().getCampaignMembersInMission().getSquadronMemberCollection().values())
         {            
-            if (pilotInMission.getSquadronId() == campaign.getSquadronId())
+            if (pilotInMission.getSquadronId() == referencePlayer.getSquadronId())
             {
                 missionText += "             " + pilotInMission.getNameAndRank();
                 missionText += "\n";

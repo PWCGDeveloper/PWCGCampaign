@@ -1,7 +1,7 @@
 package pwcg.mission.flight;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,45 +18,46 @@ import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PatrolFlightValidator;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 public class PlayerFlightTypeBoSFighterTest
 {
     Mission mission;
-    List<Campaign> campaigns = new ArrayList<>();
+    Map<SquadrontTestProfile, Campaign> campaigns = new HashMap<>();
 
     @Before
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        Campaign germanEastCampaign = CampaignCache.makeCampaign(CampaignCacheBoS.JG_51_PROFILE);
-        Campaign germanWestCampaign = CampaignCache.makeCampaign(CampaignCacheBoS.JG_51_PROFILE_WEST);
-        Campaign americanCampaign = CampaignCache.makeCampaign(CampaignCacheBoS.FG_362_PROFILE);
-        Campaign britishCampaign = CampaignCache.makeCampaign(CampaignCacheBoS.SQ_184_PROFILE);
-        Campaign russianCampaign = CampaignCache.makeCampaign(CampaignCacheBoS.FIGHTER_11_PROFILE);
+        Campaign germanEastCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
+        Campaign germanWestCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_WEST);
+        Campaign americanCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.FG_362_PROFILE);
+        Campaign britishCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.RAF_184_PROFILE);
+        Campaign russianCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.REGIMENT_11_PROFILE);
         
-        campaigns.add(germanEastCampaign);
-        campaigns.add(germanWestCampaign);
-        campaigns.add(americanCampaign);
-        campaigns.add(britishCampaign);
-        campaigns.add(russianCampaign);
+        campaigns.put(SquadrontTestProfile.JG_51_PROFILE_MOSCOW, germanEastCampaign);
+        campaigns.put(SquadrontTestProfile.JG_51_PROFILE_WEST, germanWestCampaign);
+        campaigns.put(SquadrontTestProfile.FG_362_PROFILE, americanCampaign);
+        campaigns.put(SquadrontTestProfile.FG_362_PROFILE, britishCampaign);
+        campaigns.put(SquadrontTestProfile.REGIMENT_11_PROFILE, russianCampaign);
     }
 
     @Test
     public void patrolFlightTest() throws PWCGException
     {
-        for (Campaign campaign: campaigns) 
+        for (SquadrontTestProfile profile: campaigns.keySet()) 
         {
+        	Campaign campaign = campaigns.get(profile);
             PWCGContextManager.getInstance().setCampaign(campaign);
-            patrolFlightTestImpl(campaign);
+            patrolFlightTestImpl(profile, campaign);
         }
     }
     
-    private void patrolFlightTestImpl(Campaign campaign) throws PWCGException
+    private void patrolFlightTestImpl(SquadrontTestProfile profile, Campaign campaign) throws PWCGException
     {
-        generateMission(campaign, FlightTypes.PATROL);
+        generateMission(profile, campaign, FlightTypes.PATROL);
 
-        PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.PATROL);
@@ -68,18 +69,19 @@ public class PlayerFlightTypeBoSFighterTest
     @Test
     public void lowAltPatrolFlightTest() throws PWCGException
     {
-        for (Campaign campaign: campaigns) 
+        for (SquadrontTestProfile profile: campaigns.keySet()) 
         {
+        	Campaign campaign = campaigns.get(profile);
             PWCGContextManager.getInstance().setCampaign(campaign);
-            lowAltPatrolFlightTestImpl(campaign);
+            lowAltPatrolFlightTestImpl(profile, campaign);
         }
     }
 
-    private void lowAltPatrolFlightTestImpl(Campaign campaign) throws PWCGException
+    private void lowAltPatrolFlightTestImpl(SquadrontTestProfile profile, Campaign campaign) throws PWCGException
     {
-        generateMission(campaign, FlightTypes.LOW_ALT_PATROL);
+        generateMission(profile, campaign, FlightTypes.LOW_ALT_PATROL);
 
-        PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_PATROL);        
@@ -91,18 +93,19 @@ public class PlayerFlightTypeBoSFighterTest
     @Test
     public void lowAltCapFlightTest() throws PWCGException
     {
-        for (Campaign campaign: campaigns) 
+        for (SquadrontTestProfile profile: campaigns.keySet()) 
         {
+        	Campaign campaign = campaigns.get(profile);
             PWCGContextManager.getInstance().setCampaign(campaign);
-            lowAltCapFlightTestImpl(campaign);
+            lowAltCapFlightTestImpl(profile, campaign);
         }
     }
 
-    private void lowAltCapFlightTestImpl(Campaign campaign) throws PWCGException
+    private void lowAltCapFlightTestImpl(SquadrontTestProfile profile, Campaign campaign) throws PWCGException
     {
-        generateMission(campaign, FlightTypes.LOW_ALT_CAP);
+        generateMission(profile, campaign, FlightTypes.LOW_ALT_CAP);
 
-        InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_CAP);
@@ -119,18 +122,19 @@ public class PlayerFlightTypeBoSFighterTest
     @Test
     public void interceptFlightTest() throws PWCGException
     {
-        for (Campaign campaign: campaigns) 
+        for (SquadrontTestProfile profile: campaigns.keySet()) 
         {
+        	Campaign campaign = campaigns.get(profile);
             PWCGContextManager.getInstance().setCampaign(campaign);
-            interceptFlightTestImpl(campaign);
+            interceptFlightTestImpl(profile, campaign);
         }
     }
 
-    private void interceptFlightTestImpl(Campaign campaign) throws PWCGException
+    private void interceptFlightTestImpl(SquadrontTestProfile profile, Campaign campaign) throws PWCGException
     {
-        generateMission(campaign, FlightTypes.INTERCEPT);
+        generateMission(profile, campaign, FlightTypes.INTERCEPT);
 
-        InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.INTERCEPT);        
@@ -142,18 +146,19 @@ public class PlayerFlightTypeBoSFighterTest
     @Test
     public void offensiveFlightTest() throws PWCGException
     {
-        for (Campaign campaign: campaigns) 
+        for (SquadrontTestProfile profile: campaigns.keySet()) 
         {
+        	Campaign campaign = campaigns.get(profile);
             PWCGContextManager.getInstance().setCampaign(campaign);
-            offensiveFlightTestImpl(campaign);
+            offensiveFlightTestImpl(profile, campaign);
         }
     }
 
-    private void offensiveFlightTestImpl(Campaign campaign) throws PWCGException
+    private void offensiveFlightTestImpl(SquadrontTestProfile profile, Campaign campaign) throws PWCGException
     {
-        generateMission(campaign, FlightTypes.OFFENSIVE);
+        generateMission(profile, campaign, FlightTypes.OFFENSIVE);
         
-        OffensiveFlight flight = (OffensiveFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        OffensiveFlight flight = (OffensiveFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.OFFENSIVE);
@@ -163,17 +168,17 @@ public class PlayerFlightTypeBoSFighterTest
         verifyEnemyFlights(campaign);
     }
     
-    private void generateMission(Campaign campaign, FlightTypes flightType) throws PWCGException
+    private void generateMission(SquadrontTestProfile profile, Campaign campaign, FlightTypes flightType) throws PWCGException
     {
         mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(flightType);
+        mission.generate(CampaignCache.buildParticipatingPlayers(profile), flightType);
         mission.finalizeMission();
     }
     
     private int verifyEnemyFlights(Campaign campaign) throws PWCGException 
     {
-        Side enemySide = campaign.determineSide().getOppositeSide();
+        Side enemySide = mission.getMissionFlightBuilder().getPlayerFlights().get(0).getSquadron().determineEnemySide();
         
         boolean enemyFlightFound = false;
         int numEnemyFlights = 0;
@@ -188,11 +193,11 @@ public class PlayerFlightTypeBoSFighterTest
         
         if (!enemyFlightFound)
         {
-            System.out.println("!!!!!No Enemy flights found for campaign " + campaign.getCampaignData().getName() + "  Mission " + mission.getMissionFlightBuilder().getPlayerFlight().getFlightType());
+            System.out.println("!!!!!No Enemy flights found for campaign " + campaign.getCampaignData().getName() + "  Mission " + mission.getMissionFlightBuilder().getPlayerFlights().get(0).getFlightType());
         }
         else
         {
-            System.out.println("Enemy flights found is " + numEnemyFlights + " for campaign " + campaign.getCampaignData().getName() + "  Mission " + mission.getMissionFlightBuilder().getPlayerFlight().getFlightType());
+            System.out.println("Enemy flights found is " + numEnemyFlights + " for campaign " + campaign.getCampaignData().getName() + "  Mission " + mission.getMissionFlightBuilder().getPlayerFlights().get(0).getFlightType());
         }
 
         assert(enemyFlightFound);

@@ -6,29 +6,25 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
-import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.io.json.CampaignIOJson;
 import pwcg.campaign.personnel.InitialSquadronBuilder;
-import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 
 public class Campaign
@@ -108,34 +104,10 @@ public class Campaign
         return campaignConfigDir;
     }
 
-    public List<SquadronMember> getPlayers() throws PWCGException 
+    public boolean isHumanSquadron(int squadronId)
     {
-        SquadronPersonnel personnel = personnelManager.getPlayerPersonnel();
-        SquadronMembers players = SquadronMemberFilter.filterActivePlayers(personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaignData.getDate());
-        return players.getSquadronMemberList();
-    }
-
-    public String getAirfieldName() throws PWCGException 
-    {
-        Squadron squadron = determineSquadron();
-        if (squadron != null)
-        {
-            return squadron.determineCurrentAirfieldName(getDate());
-        }
-        
-        throw new PWCGException ("Unable to find campaign squadron for id " + campaignData.getSquadId());
-    }
-
-    public ICountry determineCountry() throws PWCGException
-    {
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaignData.getSquadId());
-        return squadron.determineSquadronCountry(campaignData.getDate());
-    }
-
-    public Side determineSide() throws PWCGException
-    {
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaignData.getSquadId());
-        return squadron.determineSquadronCountry(campaignData.getDate()).getSide();
+    	SquadronPersonnel squadronPersonnel = personnelManager.getSquadronPersonnel(squadronId);
+    	return squadronPersonnel.isPlayerSquadron();
     }
 
     public Date getDate()
@@ -148,74 +120,25 @@ public class Campaign
     	campaignData.setDate(date);
     }
 
-    public int getSquadronId()
-    {
-        return campaignData.getSquadId();
-    }
-
-    public void setSquadId(int squadId)
-    {
-    	campaignData.setSquadId(squadId);
-    }
-
-    public Squadron determineSquadron() throws PWCGException 
-    {
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaignData.getSquadId());
-        
-        if (squadron == null)
-        {
-        	throw new PWCGException("Unable to determine squadron for campaign.  Squadron id is " + campaignData.getSquadId());
-        }
-        
-        return squadron;
-    }
-
-    public FrontMapIdentifier getMapForCampaign() throws PWCGException
-    {
-        List<FrontMapIdentifier> mapsForAirfield = AirfieldManager.getMapIdForAirfield(getAirfieldName());
-
-        for (FrontMapIdentifier map : mapsForAirfield)
-        {
-        	return map;
-        }
-        
-        return null;
-    }
-
-    public IAirfield getPlayerAirfield() throws PWCGException
-    {
-        String airfieldName = getAirfieldName();
-        IAirfield playerAirfield =  PWCGContextManager.getInstance().getAirfieldAllMaps(airfieldName);
-
-        return playerAirfield;
-    }
-
-    public Coordinate getPosition() throws PWCGException
-    {
-        IAirfield playerAirfield =  getPlayerAirfield();
-        Coordinate playerFieldPosition = playerAirfield.getPosition().copy();
-
-        return playerFieldPosition;
-    }
-
     public String getCampaignDescription() throws PWCGException
     {
-        String campaignDescription = "";
-        
-        for (SquadronMember player : getPlayers())
+        String campaignDescription = "";        
+
+        if (this.campaignData.isCoop())
         {
-            if (!campaignDescription.isEmpty())
-            {
-                campaignDescription += ", ";
-            }
-            campaignDescription += player.getNameAndRank();
+            campaignDescription = "Coop Campaign";
         }
-        
-        campaignDescription += "     " + DateUtils.getDateString(getDate());
-        
-        Squadron squadron =  determineSquadron();
-        campaignDescription += "     " + squadron.determineDisplayName(getDate());
-        campaignDescription += "     " + getAirfieldName();
+        else
+        {
+            SquadronMember referencePlayer = getReferenceCampaignMember();
+
+            campaignDescription += referencePlayer.getNameAndRank();
+            campaignDescription += "     " + DateUtils.getDateString(getDate());
+            
+            Squadron squadron =  PWCGContextManager.getInstance().getSquadronManager().getSquadron(referencePlayer.getSquadronId());
+            campaignDescription += "     " + squadron.determineDisplayName(getDate());
+            campaignDescription += "     " + squadron.determineCurrentAirfieldName(campaignData.getDate());
+        }
         
         return campaignDescription;
     }
@@ -286,36 +209,31 @@ public class Campaign
 
 	public boolean isBattle() throws PWCGException
 	{
-	    if (PWCGContextManager.getInstance().getBattleManager().getBattleForCampaign(this.getMapForCampaign(), this.getPlayerAirfield().getPosition(), this.getDate()) != null)
-	    {
-	        return true;
-	    }
-	    
+        for (SquadronMember player : this.personnelManager.getAllPlayers().getSquadronMemberList())
+        {
+            Squadron squadron =  PWCGContextManager.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+		    if (PWCGContextManager.getInstance().getBattleManager().getBattleForCampaign(this.campaignData.getCampaignMap(), squadron.determineCurrentPosition(this.getDate()), this.getDate()) != null)
+		    {
+		        return true;
+		    }
+        }
+        
 	    return false;
 	}
 	
     public boolean isFighterCampaign() throws PWCGException 
     {
-        Squadron squad = determineSquadron();
-        if (squad.isSquadronThisRole(campaignData.getDate(), Role.ROLE_FIGHTER))
+        for (SquadronMember player : this.personnelManager.getAllPlayers().getSquadronMemberList())
         {
-        	return true;
+            Squadron squadron =  PWCGContextManager.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+            if (squadron.isSquadronThisPrimaryRole(getDate(), Role.ROLE_FIGHTER))
+            {
+                return true;
+            }
         }
         
         return false;
     }
-
-	public boolean isPlayerCommander() throws PWCGException
-	{
-	    for (SquadronMember player : getPlayers())
-	    {
-	        if (player.determineIsSquadronMemberCommander())
-	        {
-	            return true;
-	        }
-	    }
-	    return false;
-	}
 
 	private boolean isValidCampaignForProduct() throws PWCGException 
 	{
@@ -332,29 +250,28 @@ public class Campaign
 		
 		return true;
 	}
-	
-	public ArmedService getService() throws PWCGException
-	{
-	    Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaignData.getSquadId());
-	    ArmedService service = squadron.determineServiceForSquadron(campaignData.getDate());
-	    return service;
-	}
 
     public boolean isCampaignActive() throws PWCGException
     {
-        for (SquadronMember player : getPlayers())
+    	if (this.getCampaignData().isCoop())
+    	{
+    		return true;
+    	}
+    	
+        for (SquadronMember player : this.personnelManager.getAllPlayers().getSquadronMemberList())
         {
             if (player.getPilotActiveStatus() > SquadronMemberStatus.STATUS_CAPTURED)
             {
                 return true;
             }
         }
+        
         return false;
     }
 
     public boolean isCampaignCanFly() throws PWCGException
     {
-        for (SquadronMember player : getPlayers())
+        for (SquadronMember player : this.personnelManager.getAllPlayers().getSquadronMemberList())
         {
             if (player.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
             {
@@ -363,6 +280,49 @@ public class Campaign
         }
         return false;
     }
+
+    public Side determineCampaignSide() throws PWCGException
+    {
+    	if (campaignData.isCoop())
+    	{
+    		int diceRoll = RandomNumberGenerator.getRandom(100);
+    		if (diceRoll < 50)
+    		{
+    			return Side.ALLIED;
+    		}
+    		else
+    		{
+    			return Side.AXIS;
+    		}
+    	}
+    	else
+    	{
+    		SquadronMember referencePlayer = getReferenceCampaignMember();
+    		return referencePlayer.determineCountry(this.getDate()).getSide();
+    	}
+     }
+
+    private SquadronMember getReferenceCampaignMember() throws PWCGException
+    {
+        List<SquadronMember> players = this.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+        int index = RandomNumberGenerator.getRandom(players.size());
+        SquadronMember referencePlayer = players.get(index);
+        return referencePlayer;
+    }
+
+    // TODo COOP Examine need for this method.  prefer not to do anything by reference
+    public ICountry determineCampaignCountry() throws PWCGException
+    {
+        if (campaignData.isCoop())
+        {
+            return CountryFactory.makeNeutralCountry();
+        }
+        else
+        {
+            SquadronMember referencePlayer = getReferenceCampaignMember();
+            return CountryFactory.makeCountryByCountry(referencePlayer.getCountry());
+        }
+     }
 
     public SerialNumber getSerialNumber()
     {

@@ -1,6 +1,5 @@
 package pwcg.gui.sound;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -14,9 +13,9 @@ public class MusicManager
         playTheme("titletheme.wav");
 	}
 
-	public static void playCampaignTheme(Campaign campaign) throws PWCGException 
+	public static void playCampaignTheme(Side side) throws PWCGException 
 	{
-		if (campaign.determineCountry().getSide() == Side.ALLIED)
+		if (side == Side.ALLIED)
 		{
 			playTheme("alliedcampaign.wav");
 		}

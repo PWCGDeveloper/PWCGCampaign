@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.AARPilotEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.squadmember.Ace;
@@ -56,6 +57,7 @@ import pwcg.gui.utils.ToolTipManager;
 import pwcg.gui.utils.UIUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
+import pwcg.mission.MissionHumanParticipants;
 
 public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 {
@@ -203,7 +205,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         
         JLabel space4 = new JLabel("");
         buttonPanel.add(space4);
-        
+
         JButton mainButton = makeMenuButton("Leave Campaign", "CampMainMenu", "Return to PWCG main menu");
         addButton(buttonPanel, mainButton);
 
@@ -281,7 +283,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
     public void createPilotContext() throws PWCGException 
     {
-		MusicManager.playCampaignTheme(campaign);
+		MusicManager.playCampaignTheme(campaign.determineCampaignSide());
 
         CampaignRosterBasePanelFactory pilotListDisplay = new CampaignRosterSquadronPanelFactory(this);
         pilotListDisplay.makePilotList();
@@ -339,17 +341,19 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         }
         else
         {
+        	// TODO COOP Have to make this screen ... with no human participants added mission create will not work
+        	MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
+        	
             if (campaign.getCurrentMission() == null)
             {
-                MissionGenerator missionGenerator = new MissionGenerator();
-
+                MissionGenerator missionGenerator = new MissionGenerator(participatingPlayers);
                 if (isLoneWolf)
                 {
-                    mission = missionGenerator.makeLoneWolfMission();
+                    mission = missionGenerator.makeLoneWolfMission(participatingPlayers);
                 }
                 else
                 {
-                    mission = missionGenerator.makeMission();                    
+                    mission = missionGenerator.makeMission(participatingPlayers);                    
                 }
             }
             else
@@ -367,7 +371,9 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         // Get the maps for the airfield.  If the airfield is on the Galician
         // map then it can only be on that map (some Western airfields are
         // on both the France and Channel maps)
-        String airfieldName = campaign.getAirfieldName();
+    	
+    	SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        String airfieldName = referencePlayer.determineSquadron().determineCurrentAirfieldName(campaign.getDate());
         List<FrontMapIdentifier> mapsForAirfield =  AirfieldManager.getMapIdForAirfield(airfieldName);
         FrontMapIdentifier mapId = mapsForAirfield.get(0);
 
@@ -474,7 +480,6 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             {
                 showAdvancedConfig();
             }
-
         }
         catch (PWCGUserException ue)
         {
@@ -604,7 +609,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
     private void showIntelReport() throws PWCGException 
     {
-        CampaignIntelligencePanelSet intelligence = new CampaignIntelligencePanelSet(campaign);
+        CampaignIntelligencePanelSet intelligence = new CampaignIntelligencePanelSet();
         intelligence.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(intelligence);
@@ -638,13 +643,13 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         simpleConfigGUI.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(simpleConfigGUI);
     }
-    
+
     private void showPilot(String action) throws PWCGException 
     {
         SquadronMember pilot = UIUtils.getPilotFromAction(campaign, action);
         if (pilot != null)
         {
-            Squadron squad = campaign.determineSquadron();
+            Squadron squad = pilot.determineSquadron();
             if (pilot instanceof Ace)
             {
                 Ace ace = (Ace)pilot;

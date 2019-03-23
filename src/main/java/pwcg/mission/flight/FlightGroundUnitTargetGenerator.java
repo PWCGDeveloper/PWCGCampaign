@@ -55,7 +55,7 @@ public class FlightGroundUnitTargetGenerator
 
     private GroundUnitCollection buildTarget(TargetDefinition targetDefinition) throws PWCGException
     {
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, mission, targetDefinition);
+        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
         targetBuilder.buildTarget(flightType);
         return targetBuilder.getGroundUnits();
     }

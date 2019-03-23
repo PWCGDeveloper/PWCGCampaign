@@ -132,31 +132,7 @@ public class BritishMedalManager extends BoSMedalManager
     }
 
     @Override
-    public List<Medal> getAllMedalsInOrder() throws PWCGException
-    {
-        List<Medal> medalsInOrder = new ArrayList<>();
-
-        medalsInOrder.add(medals.get(DFC));
-        medalsInOrder.add(medals.get(DFC_BAR_1));
-        medalsInOrder.add(medals.get(DSO));
-        medalsInOrder.add(medals.get(DSO_BAR));
-        medalsInOrder.add(medals.get(DFC_BAR_2));
-        medalsInOrder.add(medals.get(VC));
-
-        return medalsInOrder;
-    }
-
-    @Override
-    public List<Medal> getAllAwardsForService() throws PWCGException
-    {
-        List<Medal> medalsInOrder = getAllMedalsInOrder();
-        medalsInOrder.addAll(getWoundBadgesInOrder());
-        medalsInOrder.addAll(getAllBadgesInOrder());
-        return medalsInOrder;
-    }
-
-    @Override
-    public List<Medal> getWoundBadgesInOrder()
+    protected List<Medal> getWoundBadges()
     {
         List<Medal> medalsInOrder = new ArrayList<>();
         medalsInOrder.add(medals.get(WOUND_STRIPE));
@@ -164,7 +140,7 @@ public class BritishMedalManager extends BoSMedalManager
     }
 
     @Override
-    public List<Medal> getAllBadgesInOrder()
+    protected List<Medal> getAllBadges()
     {
         List<Medal> medalsInOrder = new ArrayList<>();
         medalsInOrder.add(medals.get(PILOTS_BADGE));

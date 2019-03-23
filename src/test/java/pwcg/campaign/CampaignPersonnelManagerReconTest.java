@@ -15,7 +15,7 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheRoF;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CampaignPersonnelManagerReconTest
@@ -26,7 +26,7 @@ public class CampaignPersonnelManagerReconTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
-        campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_2_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
     }
 
     @Test
@@ -34,13 +34,13 @@ public class CampaignPersonnelManagerReconTest
     {                               
         SquadronMemberFilterSpecification filterSpecification = new SquadronMemberFilterSpecification();
 
-        SquadronMembers squadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId()).getSquadronMembersWithAces();
+        SquadronMembers squadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(101002).getSquadronMembersWithAces();
         CampaignPersonnelFilter filter = new CampaignPersonnelFilter(squadronMembers.getSquadronMemberCollection());
 
         filterSpecification.setIncludePlayer(false);        
         filterSpecification.setIncludeAces(false);  
         filterSpecification.setIncludeAI(true);  
-        filterSpecification.setSpecifySquadron(campaign.getSquadronId());
+        filterSpecification.setSpecifySquadron(101002);
         Map<Integer, SquadronMember> squadronMembersNoPlayerNoAces = filter.getFilteredSquadronMembers(filterSpecification);
         assert (squadronMembersNoPlayerNoAces.size() == (Squadron.SQUADRON_STAFF_SIZE - 1));
         

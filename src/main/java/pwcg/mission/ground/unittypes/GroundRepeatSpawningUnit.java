@@ -56,14 +56,15 @@ public abstract class GroundRepeatSpawningUnit extends GroundUnitSpawning
     }
 
     private void makeCheckZone() 
-    {
-        Coalition enemyCoalition = Coalition.getEnemyCoalition(pwcgGroundUnitInformation.getCountry());
-        
-        checkZone = new McuCheckZone (enemyCoalition);
+    {        
+        checkZone = new McuCheckZone ();
         checkZone.setZone(checkZoneMeters);
         checkZone.setName("Check Zone");
         checkZone.setDesc("Check Zone");
         checkZone.setPosition(pwcgGroundUnitInformation.getPosition().copy());
+
+        Coalition enemyCoalition = Coalition.getEnemyCoalition(pwcgGroundUnitInformation.getCountry());
+        checkZone.triggerCheckZoneByPlaneCoalition(enemyCoalition);
     }
 
     private void makeActivation() 

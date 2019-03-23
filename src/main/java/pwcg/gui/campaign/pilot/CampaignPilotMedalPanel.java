@@ -38,10 +38,7 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 
     private int medalsPerRow = 5;
 	private SquadronMember pilot = null;
-	
-	/**
-	 * @param pilot
-	 */
+
 	public CampaignPilotMedalPanel(SquadronMember pilot)
 	{
         super();
@@ -51,23 +48,13 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 
         this.pilot = pilot;
 	}
-	
-	/**
-	 * @throws PWCGException 
-	 * @
-	 */
+
 	public void makePanels() throws PWCGException  
 	{
 	    setCenterPanel(makeCenterPanel());
 	    setLeftPanel(makeNavigationPanel());
 	}
-	        
 
-
-	/**
-	 * Makes the left side pilot status and the right side victory list
-	 * @throws PWCGException 
-	 */
 	private JPanel makeCenterPanel() throws PWCGException 
 	{
         SoundManager.getInstance().playSound("MedalCaseOpen.WAV");
@@ -81,14 +68,7 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 		
 		return campaignPilotMedalPanel;
 	}	
-	
-	   
-    
-    /**
-     * @return
-     * @throws PWCGException 
-     * @
-     */
+
     private JPanel makeNavigationPanel() throws PWCGException  
     {
         String imagePath = getSideImage("PilotInfoNav.jpg");
@@ -108,11 +88,6 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
         return medalPanel;
     }
 
-	/**
-	 * Makes the north side pilot description and a south side medal box
-	 * @return
-	 * @throws PWCGException 
-	 */
 	private JPanel makePilotMedalPanel() throws PWCGException 
 	{
 		JPanel medalPanel = new JPanel (new GridLayout(0, 1));
@@ -139,13 +114,7 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 				
 		return medalPanel;
 	}
-	
-	
-	/**
-	 * @param firstMedal
-	 * @param lastMedal
-	 * @return
-	 */
+
 	private JPanel getEmptyMedalPanelRow() 
 	{
         String medalBoxImagePath = ContextSpecificImages.imagesMedals() + "MedalBox.jpg";
@@ -183,12 +152,6 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 		return medalPanel;
 	}
 
-	/**
-	 * @param firstMedal
-	 * @param lastMedal
-	 * @return
-	 * @throws PWCGException 
-	 */
 	private JPanel getMedalPanelRow(int firstMedal, int lastMedal) throws PWCGException 
 	{
         String medalBoxImagePath = ContextSpecificImages.imagesMedals() + "MedalBox.jpg";
@@ -203,12 +166,12 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 		{
 			// The medal manager has the image
 		    Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-			Medal medal =  MedalManager.getMedalFromAnyManager(campaign, pilot.getMedals().get(i).getMedalName());
+		    ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());
+			Medal medal =  MedalManager.getMedalFromAnyManager(country, campaign, pilot.getMedals().get(i).getMedalName());
 			
 			if (medal != null)
 			{
 				String medalSide = "Axis";
-		        ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());
 				if (country.getSide() == Side.ALLIED)
 				{
 					medalSide = "Allied";

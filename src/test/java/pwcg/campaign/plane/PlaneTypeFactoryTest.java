@@ -12,11 +12,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.api.Side;
-import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -30,8 +26,6 @@ public class PlaneTypeFactoryTest
     {
         PWCGContextManager.setRoF(false);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420302"));
-        ICountry country = CountryFactory.makeCountryByCountry(Country.GERMANY);
-        Mockito.when(campaign.determineCountry()).thenReturn(country);
     }
 
     @Test
@@ -67,22 +61,6 @@ public class PlaneTypeFactoryTest
             assert(planeType.getRoles().size() > 0);
             assert(planeType.getPrimaryUsedBy().size() > 0);
         }
-    }
-
-    @Test
-    public void testCreatePlaneBySide() throws PWCGException
-    {
-        Date planeDate = DateUtils.getDateYYYYMMDD("19420302");
-        
-        PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
-        ICountry countryRussia = CountryFactory.makeCountryByCountry(Country.RUSSIA);
-        PlaneType planeType =  planeTypeFactory.findAnyPlaneTypeForCountryAndDate(countryRussia, planeDate);
-        assert(planeType.getIntroduction().before(planeDate));
-        assert(planeType.getWithdrawal().after(planeDate));
-        assert(planeType.getSide() == Side.ALLIED);
-        assert(planeType.isUsedBy(countryRussia));
-        ICountry countryGermany = CountryFactory.makeCountryByCountry(Country.GERMANY);
-        assert(!planeType.isUsedBy(countryGermany));
     }
 
     @Test

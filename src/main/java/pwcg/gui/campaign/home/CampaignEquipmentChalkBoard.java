@@ -14,8 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.colors.ColorMap;
@@ -39,7 +41,8 @@ public class CampaignEquipmentChalkBoard extends ImageResizingPanel
         try
         {
             this.setLayout(new BorderLayout()); 
-            JPanel squadronPanel = createEquipmentListPanel(campaign.getEquipmentManager().getEquipmentForSquadron(campaign.getSquadronId()).getActiveEquippedPlanes());
+        	SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+            JPanel squadronPanel = createEquipmentListPanel(campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId()).getActiveEquippedPlanes());
             this.add(squadronPanel, BorderLayout.CENTER);
         }
         catch (Exception e)

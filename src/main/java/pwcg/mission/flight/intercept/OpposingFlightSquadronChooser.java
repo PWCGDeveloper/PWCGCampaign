@@ -15,12 +15,14 @@ import pwcg.mission.Mission;
 public class OpposingFlightSquadronChooser
 {
     private Mission mission;
+    private Squadron squadron;
     private Coordinate targetCoordinates;
     private List<Role> opposingFlightRoles;
 
-    public OpposingFlightSquadronChooser(Mission mission, Coordinate targetCoordinates, List<Role> opposingFlightRoles)
+    public OpposingFlightSquadronChooser(Mission mission, Squadron squadron, Coordinate targetCoordinates, List<Role> opposingFlightRoles)
     {
         this.mission = mission;
+        this.squadron = squadron;
         this.targetCoordinates = targetCoordinates;
         this.opposingFlightRoles = opposingFlightRoles;
     }
@@ -59,7 +61,13 @@ public class OpposingFlightSquadronChooser
     private List<Squadron> getViableOpposingSquadrons() throws PWCGException
     {
         List<Squadron> possibleOpposingSquadsByRole = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(
-                mission.getCampaign(), targetCoordinates.copy(), 1, 250000.0, opposingFlightRoles, mission.getCampaign().determineCountry().getSide().getOppositeSide(), mission.getCampaign().getDate());
+                mission.getCampaign(), 
+                targetCoordinates.copy(), 
+                1, 
+                250000.0, 
+                opposingFlightRoles, 
+                squadron.determineEnemySide(), 
+                mission.getCampaign().getDate());
 
         List<Squadron> viableOpposingSquads = new ArrayList<>();
         for (Squadron squadron : possibleOpposingSquadsByRole)

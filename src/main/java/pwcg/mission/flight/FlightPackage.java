@@ -63,23 +63,26 @@ public abstract class FlightPackage
         {
             flight.createEscortForPlayerFlight();
         }
-        else if (!flight.isFriendly())
+        else if (!campaign.getCampaignData().isCoop())
         {
             addPossibleEscortForEnemyFlight(flight);
-        } 
+        }
     }
 
     protected void addPossibleEscortForEnemyFlight(Flight flight) throws PWCGException, PWCGException
     {
-        if (mission.getMissionFlightBuilder().getPlayerFlight().isFighterFlight())
+        if (!campaign.getCampaignData().isCoop())
         {
-            if (campaign.isFighterCampaign())
+            if (mission.getMissionFlightBuilder().hasPlayerFighterFlightType())
             {
-                int escortedOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsEscortedOddsKey);
-                int escortedDiceRoll = RandomNumberGenerator.getRandom(100);        
-                if (escortedDiceRoll < escortedOdds)
+                if (campaign.isFighterCampaign())
                 {
-                    flight.createVirtualEscortFlight();
+                    int escortedOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsEscortedOddsKey);
+                    int escortedDiceRoll = RandomNumberGenerator.getRandom(100);        
+                    if (escortedDiceRoll < escortedOdds)
+                    {
+                        flight.createVirtualEscortFlight();
+                    }
                 }
             }
         }

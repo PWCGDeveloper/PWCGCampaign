@@ -2,6 +2,7 @@ package pwcg.testutils;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.ArmedService;
@@ -11,6 +12,7 @@ import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -26,39 +28,61 @@ public abstract class CampaignCacheBase implements ICampaignCache
     protected abstract Campaign makeCampaignFromModel(CampaignGeneratorModel model) throws PWCGException;
     protected abstract void initialize() throws PWCGException;
 
+
+    protected void makeProfile(SquadrontTestProfile profile) throws PWCGException
+    {
+        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile (profile.getDateString(), profile.getSquadronId());
+        campaignProfiles.put(profile.getKey(), generatorModel);
+    }
+
     @Override
-    public Campaign makeCampaign(String campaignProfileName) throws PWCGException
+    public Campaign makeCampaign(SquadrontTestProfile profile) throws PWCGException
     {
         initialize();
         
         Campaign campaign = null;
-        if (campaignCache.containsKey(campaignProfileName))
+        if (campaignCache.containsKey(profile.getKey()))
         {
-            campaign = campaignCache.get(campaignProfileName);
+            campaign = campaignCache.get(profile.getKey());
         }
         else
         {          
-            campaign = makeCampaignForceCreation(campaignProfileName);
+            campaign = makeCampaignForceCreation(profile);
         }
         
         PWCGContextManager.getInstance().setCampaign(campaign);
+        validateCampaign(profile, campaign);
         
         return campaign;
     }
+    
+    private void validateCampaign(SquadrontTestProfile profile, Campaign campaign) throws PWCGException
+    {
+        List<SquadronMember> squadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(profile.getSquadronId()).getSquadronMembers().getSquadronMemberList();
+        for (SquadronMember squadronMember : squadronMembers)
+        {
+            if (squadronMember.isPlayer())
+            {
+                return;
+            }
+        }
+        
+        throw new PWCGException("No players in player squadron " + profile.getSquadronId());
+    }
 
     @Override
-    public Campaign makeCampaignForceCreation(String campaignProfileName) throws PWCGException
+    public Campaign makeCampaignForceCreation(SquadrontTestProfile profile) throws PWCGException
     {
         initialize();
-        if (campaignProfiles.containsKey(campaignProfileName))
+        if (campaignProfiles.containsKey(profile.getKey()))
         {
-            CampaignGeneratorModel model = campaignProfiles.get(campaignProfileName);
+            CampaignGeneratorModel model = campaignProfiles.get(profile.getKey());
             Campaign campaign = makeCampaignFromModel(model);
-            campaignCache.put(campaignProfileName, campaign);
+            campaignCache.put(profile.getKey(), campaign);
             return campaign;
         }
         
-        throw new PWCGException("No campaign found for profile " + campaignProfileName);
+        throw new PWCGException("No campaign found for profile " + profile.getKey());
     }
     
     public static CampaignGeneratorModel makeCampaignModelForProfile(String dateYYMMDD, int squadronId) throws PWCGException
@@ -75,8 +99,7 @@ public abstract class CampaignCacheBase implements ICampaignCache
     
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setCampaignDate(campaignDate);
-        String campaignName = makeCampaignNameFromSquadronAndDate(squadronId, dateYYMMDD);
-        generatorModel.setCampaignName(campaignName);
+        generatorModel.setCampaignName(CampaignCacheRoF.TEST_CAMPAIGN_NAME);
         generatorModel.setPlayerName(CampaignCacheRoF.TEST_PLAYER_NAME);
         generatorModel.setPlayerRank(rankName);
         generatorModel.setPlayerRegion("");
@@ -84,11 +107,6 @@ public abstract class CampaignCacheBase implements ICampaignCache
         generatorModel.setSquadronName(squadronName);
 
         return generatorModel;
-    }
-    
-    public static String makeCampaignNameFromSquadronAndDate(int squadronId, String dateYYMMDD)
-    {
-        return CampaignCacheRoF.TEST_CAMPAIGN_NAME + "_" + squadronId + "_" + dateYYMMDD;
     }
 
 }

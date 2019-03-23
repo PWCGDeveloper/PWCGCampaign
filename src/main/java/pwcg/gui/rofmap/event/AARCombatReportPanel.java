@@ -7,6 +7,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
 import pwcg.campaign.CombatReportBuilder;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -19,16 +20,18 @@ public class AARCombatReportPanel extends AAREventPanel
     private static final long serialVersionUID = 1L;
 
     private Campaign campaign;
+    private SquadronMember referencePlayer = null;
     private AARCoordinator aarCoordinator;
 
     private CombatReportPanel campaignCombatReportGUI = null;
 
-	public AARCombatReportPanel(Campaign campaign)
+	public AARCombatReportPanel()
 	{
         super();
-        this.campaign = campaign;		
         this.shouldDisplay = true;
         this.aarCoordinator = AARCoordinator.getInstance();
+		this.campaign = PWCGContextManager.getInstance().getCampaign();
+		this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
 	}
 
 	public void makePanel()  
@@ -64,7 +67,7 @@ public class AARCombatReportPanel extends AAREventPanel
 
 	private CombatReport startAARProcess() throws PWCGException 
 	{                
-	    CombatReportBuilder combatReportBuilder = new CombatReportBuilder(campaign, aarCoordinator);
+	    CombatReportBuilder combatReportBuilder = new CombatReportBuilder(campaign, referencePlayer, aarCoordinator);
         CombatReport combatReport = combatReportBuilder.createCombatReport();
 		return combatReport;
 	}

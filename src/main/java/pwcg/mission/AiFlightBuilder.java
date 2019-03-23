@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.Side;
 import pwcg.campaign.factory.PWCGFlightFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
@@ -34,47 +33,16 @@ public class AiFlightBuilder
 
     public List<Flight> createAiFlights() throws PWCGException
     {
-        if (missionHasAiFlights(mission.getMissionFlightBuilder().getPlayerFlight().getFlightType()))
-        {
-            if (campaign.determineCountry().getSide() == Side.ALLIED)
-            {
-                createFlightsForSquadrons(mission.getMissionParameters().getAxisSquads());
-                createFlightsForSquadrons(mission.getMissionParameters().getAlliedSquads());
-            }
-            else
-            {
-                createFlightsForSquadrons(mission.getMissionParameters().getAlliedSquads());
-                createFlightsForSquadrons(mission.getMissionParameters().getAxisSquads());
-            }
-        }
-        
+        MissionSquadronFinder missionSquadronFinder = new MissionSquadronFinder(campaign, mission);
+        createFlightsForSquadrons(missionSquadronFinder.getAxisSquads());
+        createFlightsForSquadrons(missionSquadronFinder.getAlliedSquads());
         return missionFlights;
-    }
-    
-    private boolean missionHasAiFlights(FlightTypes playerFlightType) throws PWCGException
-    {
-        if (!(playerFlightType == FlightTypes.SCRAMBLE) &&
-            !(playerFlightType == FlightTypes.SPY_EXTRACT) &&
-            !(playerFlightType == FlightTypes.STRATEGIC_BOMB) &&
-            !(playerFlightType == FlightTypes.HOME_DEFENSE))
-        {
-            return true;
-        }
-        
-        return false;
-    }
-    
+    }    
 
     private void createFlightsForSquadrons(List<Squadron> squads) throws PWCGException 
     {
         TestDriver testDriver = TestDriver.getInstance();
         if (testDriver.isCreatePlayerOnly())
-        {
-            return;
-        }
-        
-        boolean isMySquadNightSquadron = mission.getMissionFlightBuilder().getPlayerFlight().getSquadron().determineIsNightSquadron();
-        if (isMySquadNightSquadron)
         {
             return;
         }
@@ -98,7 +66,7 @@ public class AiFlightBuilder
     
     private boolean squadronWillGenerateAFlight(Squadron squadron) throws PWCGException
     {
-        if (squadron.getSquadronId() == campaign.getSquadronId())
+        if (squadronHasPlayerFlight(squadron.getSquadronId()))
         {
             return false;
         }
@@ -119,6 +87,20 @@ public class AiFlightBuilder
         }
 
         return true;
+    }
+    
+    private boolean squadronHasPlayerFlight(int squadronId)
+    {
+    	for (Flight playerFlight: mission.getMissionFlightBuilder().getPlayerFlights())
+    	{
+            if (playerFlight.getSquadron().getSquadronId() == squadronId)
+            {
+                return true;
+            }
+
+    	}
+
+    	return false;
     }
 
     private boolean squadronGeneratesFlightRandom() throws PWCGException 
