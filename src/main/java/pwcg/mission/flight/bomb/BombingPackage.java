@@ -49,10 +49,6 @@ public class BombingPackage extends FlightPackage
 	        
         FlightInformation flightInformation = createFlightInformation(targetCoordinates);
         BombingFlight bombingFlight = new BombingFlight (flightInformation, missionBeginUnit);
-	    if (squadron.determineIsNightSquadron())
-	    {
-	        bombingFlight.setNightFlight(true);
-	    }
 
 	    // Set the altitude based on the aircraft type
 	    BombingAltitudeLevel bombingAltitude = BombingAltitudeLevel.MED;

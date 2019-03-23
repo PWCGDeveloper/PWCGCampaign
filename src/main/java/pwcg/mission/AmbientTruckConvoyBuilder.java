@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.target.TacticalTarget;
@@ -32,39 +34,61 @@ public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
 
     public List<GroundTruckConvoyUnit> generateAmbientTrucks() throws PWCGException 
     {
-        chooseSides();
+        Side targetSide = TargetSide.ambientTargetSide(campaign);
         int maxTrucks = getMaxTruckConvoys(campaign);
-        for (Bridge bridge : getBridgesAmbientConvoys())
+        for (Bridge bridge : getBridgesAmbientConvoys(targetSide))
         {
             if (ambientTrucks.size() >= maxTrucks)
             {
                 break;
             }
             
-            possibleAmbientConvoy(bridge);
+            possibleAmbientConvoy(targetSide, bridge);
         }
         
         return ambientTrucks;
     }
 
-    private void possibleAmbientConvoy(Bridge bridge) throws PWCGException
+    private ArrayList<Bridge> getBridgesAmbientConvoys(Side targetSide) throws PWCGException 
     {
-        Side targetSide = campaign.determineCountry().getSide().getOppositeSide();
-        if (bridge.getCountry(campaign.getDate()).getSide() == targetSide)
-        {
-            int roll = RandomNumberGenerator.getRandom(100);
-            if (roll < 40)
-            {
-                boolean isPlayerTarget = true;
-                TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
-                TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, country, TacticalTarget.TARGET_TRANSPORT, bridge.getPosition(), isPlayerTarget);
+        ArrayList<Bridge> selectedBridges = new ArrayList<Bridge>();
 
-                TruckUnitFactory groundUnitFactory =  new TruckUnitFactory(campaign, targetDefinition);
-                GroundTruckConvoyUnit truckUnit = groundUnitFactory.createTruckConvoy();
-                if (truckUnit != null)
+        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        ConfigManager configManager = campaign.getCampaignConfigManager();
+
+        int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);        
+        CoordinateBox missionBorders = mission.getMissionFlightBuilder().getMissionBorders(keepGroupSpread);
+
+        GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())
+        {
+            if (bridge.createCountry(campaign.getDate()).getSide() == targetSide)
+            {
+            	if (missionBorders.isInBox(bridge.getPosition()))
                 {
-                    addAmbientTruckConvoy(truckUnit, bridge);
+                    selectedBridges.add(bridge);
                 }
+            }
+        }
+        
+        return selectedBridges;
+    }
+
+    private void possibleAmbientConvoy(Side targetSide, Bridge bridge) throws PWCGException
+    {
+        int roll = RandomNumberGenerator.getRandom(100);
+        if (roll < 40)
+        {
+            boolean isPlayerTarget = true;
+            ICountry truckCountry = CountryFactory.makeMapReferenceCountry(targetSide);
+            TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
+            TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, truckCountry, TacticalTarget.TARGET_TRANSPORT, bridge.getPosition(), isPlayerTarget);
+
+            TruckUnitFactory groundUnitFactory =  new TruckUnitFactory(campaign, targetDefinition);
+            GroundTruckConvoyUnit truckUnit = groundUnitFactory.createTruckConvoy();
+            if (truckUnit != null)
+            {
+                addAmbientTruckConvoy(truckUnit, bridge);
             }
         }
     }
@@ -88,31 +112,6 @@ public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
             maxTrucks = 8;
         }
         return maxTrucks;
-    }
-
-    private ArrayList<Bridge> getBridgesAmbientConvoys() throws PWCGException 
-    {
-        ArrayList<Bridge> selectedBridges = new ArrayList<Bridge>();
-
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        ConfigManager configManager = campaign.getCampaignConfigManager();
-
-        int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);        
-        CoordinateBox missionBorders = mission.getMissionFlightBuilder().getMissionBorders(keepGroupSpread);
-
-        GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
-        for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())
-        {
-            if (campaign.determineCountry().isEnemy(bridge.createCountry(campaign.getDate())))
-            {
-            	if (missionBorders.isInBox(bridge.getPosition()))
-                {
-                    selectedBridges.add(bridge);
-                }
-            }
-        }
-        
-        return selectedBridges;
     }
 
     private void addAmbientTruckConvoy(GroundTruckConvoyUnit truckUnit, Bridge bridge)

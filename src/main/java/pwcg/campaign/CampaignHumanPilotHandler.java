@@ -16,13 +16,13 @@ public class CampaignHumanPilotHandler
         this.campaign = campaign;
     }
 
-    public int addNewPilot(String humanPilotName, String humanPilotRank, int pilotToReplaceSerialNumber, int squadId) throws PWCGException
+    public int addNewPilot(String humanPilotName, String humanPilotRank, int pilotToReplaceSerialNumber, int squadronId) throws PWCGException
     {
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadId);
-        SquadronPersonnel playerSquadronPersonnel = campaign.getPersonnelManager().getPlayerPersonnel();
+        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronId);
+        SquadronPersonnel squadronSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
 
-        SquadronMember newPlayer = addHumanPilot(humanPilotName, humanPilotRank, squadron, playerSquadronPersonnel);
-        removeAiPilot(pilotToReplaceSerialNumber, playerSquadronPersonnel);
+        SquadronMember newPlayer = addHumanPilot(humanPilotName, humanPilotRank, squadron, squadronSquadronPersonnel);
+        removeAiPilot(pilotToReplaceSerialNumber, squadronSquadronPersonnel);
         
         return newPlayer.getSerialNumber();
     }

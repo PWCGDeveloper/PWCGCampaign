@@ -2,8 +2,6 @@ package pwcg.mission.mcu.group;
 
 import java.io.BufferedWriter;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.MissionBeginUnitCheckZone;
@@ -19,27 +17,30 @@ public class FlareSequence
     protected McuTimer[] flareTimers = new McuTimer[FLARES_IN_SEQUENCE];
     protected McuFlare[] flares = new McuFlare[FLARES_IN_SEQUENCE];
 
-    /**
-     * 
-     */
     public FlareSequence()
     {
     }
-     
-    /**
-     * @param position
-     * @throws PWCGException 
-     * @
-     */
-    public void setFlare(Coordinate position, int color, int object) throws PWCGException 
-    {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+
+    public void setFlare(Coalition friendlyCoalition, Coordinate position, int color, int object) throws PWCGException 
+    {        
+        buildFlareTimers(position, color, object);
+
+        missionBeginUnit = new MissionBeginUnitCheckZone(position.copy(), 1000);
+        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(friendlyCoalition);
         
-        Coalition playerCoalition  = Coalition.getFriendlyCoalition(campaign.determineCountry());
+        SelfDeactivatingCheckZone checkZone = missionBeginUnit.getSelfDeactivatingCheckZone();
+        checkZone.setCZTarget(flareTimers[0].getIndex());
+        
+        // Link from MB to each timer
+        missionBeginUnit.linkToMissionBegin(flareTimers[0].getIndex());
+        for (int i = 1; i < FLARES_IN_SEQUENCE; ++i)
+        {
+            flareTimers[i-1].setTarget(flareTimers[i].getIndex());
+        }
+    }
 
-        missionBeginUnit = new MissionBeginUnitCheckZone();
-        missionBeginUnit.initialize(position.copy(), 1000, playerCoalition);
-
+    private void buildFlareTimers(Coordinate position, int color, int object)
+    {
         for (int i = 0; i < FLARES_IN_SEQUENCE; ++i)
         {
             McuTimer flareTimer = new McuTimer();
@@ -58,22 +59,8 @@ public class FlareSequence
             
             flare.setObject(object);
         }
-        
-        SelfDeactivatingCheckZone checkZone = missionBeginUnit.getCheckZone();
-        checkZone.setCZTarget(flareTimers[0].getIndex());
-        
-        // Link from MB to each timer
-        missionBeginUnit.linkToMissionBegin(flareTimers[0].getIndex());
-        for (int i = 1; i < FLARES_IN_SEQUENCE; ++i)
-        {
-            flareTimers[i-1].setTarget(flareTimers[i].getIndex());
-        }
     }
 
-    /**
-     * @throws PWCGException 
-     * @see rof.campaign.mcu.BaseFlightMcu#write(java.io.BufferedWriter)
-     */
     public void write(BufferedWriter writer) throws PWCGException 
     {
         missionBeginUnit.write(writer);

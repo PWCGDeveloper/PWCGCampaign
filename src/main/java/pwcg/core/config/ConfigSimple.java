@@ -19,13 +19,11 @@ public class ConfigSimple
     public void setAirLow() throws PWCGException 
     {
         setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigAirKey, ConfigSimple.CONFIG_LEVEL_LOW);
-        setParamForSimpleConfigChange(ConfigItemKeys.FriendlyPlanesMaxKey, "6");
-        setParamForSimpleConfigChange(ConfigItemKeys.EnemyPlanesMaxKey, "8");
+        setParamForSimpleConfigChange(ConfigItemKeys.AlliedPlanesToSpawnMaxKey, "6");
+        setParamForSimpleConfigChange(ConfigItemKeys.AxisPlanesToSpawnMaxKey, "8");
 
-        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMinKey, "3");
-        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMaxKey, "5");
-        setParamForSimpleConfigChange(ConfigItemKeys.FriendlyFlightsToKeepMinKey, "1");
-        setParamForSimpleConfigChange(ConfigItemKeys.FriendlyFlightsToKeepMaxKey, "3");
+        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "4");
+        setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "3");
 
         setParamForSimpleConfigChange(ConfigItemKeys.OffensivePatrolMinimumKey, "2"); 
         setParamForSimpleConfigChange(ConfigItemKeys.OffensivePatrolAdditionalKey, "2"); 
@@ -54,13 +52,11 @@ public class ConfigSimple
     public void setAirMed() throws PWCGException 
     {
         setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigAirKey, ConfigSimple.CONFIG_LEVEL_MED);
-        setParamForSimpleConfigChange(ConfigItemKeys.FriendlyPlanesMaxKey, "8");
-        setParamForSimpleConfigChange(ConfigItemKeys.EnemyPlanesMaxKey, "12");
+        setParamForSimpleConfigChange(ConfigItemKeys.AlliedPlanesToSpawnMaxKey, "8");
+        setParamForSimpleConfigChange(ConfigItemKeys.AxisPlanesToSpawnMaxKey, "12");
 
-        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMinKey, "3");
-        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMaxKey, "6");
-        setParamForSimpleConfigChange(ConfigItemKeys.FriendlyFlightsToKeepMinKey, "1");
-        setParamForSimpleConfigChange(ConfigItemKeys.FriendlyFlightsToKeepMaxKey, "5");
+        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "8");
+        setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "6");
 
         setParamForSimpleConfigChange(ConfigItemKeys.OffensivePatrolMinimumKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.OffensivePatrolAdditionalKey, "3");
@@ -89,13 +85,12 @@ public class ConfigSimple
     public void setAirHigh() throws PWCGException 
     {
         setParamForSimpleConfigChange(ConfigItemKeys.SimpleConfigAirKey, ConfigSimple.CONFIG_LEVEL_HIGH);
-        setParamForSimpleConfigChange(ConfigItemKeys.FriendlyPlanesMaxKey, "16");
-        setParamForSimpleConfigChange(ConfigItemKeys.EnemyPlanesMaxKey, "20");
+        setParamForSimpleConfigChange(ConfigItemKeys.AlliedPlanesToSpawnMaxKey, "16");
+        setParamForSimpleConfigChange(ConfigItemKeys.AxisPlanesToSpawnMaxKey, "20");
+        
+        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "12");
+        setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "9");
 
-        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMinKey, "4");
-        setParamForSimpleConfigChange(ConfigItemKeys.EnemyFlightsToKeepMaxKey, "12");
-        setParamForSimpleConfigChange(ConfigItemKeys.FriendlyFlightsToKeepMinKey, "2");
-        setParamForSimpleConfigChange(ConfigItemKeys.FriendlyFlightsToKeepMaxKey, "12");
         setParamForSimpleConfigChange(ConfigItemKeys.OffensivePatrolMinimumKey, "3"); 
         setParamForSimpleConfigChange(ConfigItemKeys.OffensivePatrolAdditionalKey, "4"); 
         setParamForSimpleConfigChange(ConfigItemKeys.InterceptMinimumKey, "3"); 

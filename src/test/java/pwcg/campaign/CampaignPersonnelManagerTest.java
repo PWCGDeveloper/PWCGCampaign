@@ -15,7 +15,7 @@ import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CampaignPersonnelManagerTest
@@ -26,7 +26,7 @@ public class CampaignPersonnelManagerTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        campaign = CampaignCache.makeCampaign(CampaignCacheBoS.REG_503_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.REGIMENT_503_PROFILE);
     }
 
     @Test
@@ -46,8 +46,10 @@ public class CampaignPersonnelManagerTest
     @Test
     public void testPlayerRetrieval() throws PWCGException
     {
-        SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(campaign.getPlayers().get(0).getSerialNumber());
-        assert(player.isPlayer());
+    	assert(campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().size() == 1);
+    	SquadronMember playerByPlayers = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+        SquadronMember playerBySerialNumber = campaign.getPersonnelManager().getAnyCampaignMember(playerByPlayers.getSerialNumber());
+        assert(playerBySerialNumber.isPlayer());
     }
 
     @Test

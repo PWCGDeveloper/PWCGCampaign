@@ -40,13 +40,13 @@ public class IngressWaypointEscortedFlight extends IngressWaypointBase
         IAirfield playerAirfield = flight.getAirfield(); 
         Coordinate playerFieldPosition = playerAirfield.getPosition().copy();
         FrontLinesForMap frontLines =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        Side playerSide = campaign.determineCountry().getSide();
+        Side escortFlightSide = flight.getSquadron().determineSide();
 
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int initialRadius = productSpecific.getInitialTargetRadiusFromGeneralTargetLocation(FlightTypes.BOMB);
         int minDistanceBehindLines = 5000;
         int maxDistanceBehindLines = 15000;
-        Coordinate positionBehindFriendlyLines = frontLines.findPositionBehindLinesForSide(playerFieldPosition, initialRadius, minDistanceBehindLines, maxDistanceBehindLines, playerSide);
+        Coordinate positionBehindFriendlyLines = frontLines.findPositionBehindLinesForSide(playerFieldPosition, initialRadius, minDistanceBehindLines, maxDistanceBehindLines, escortFlightSide);
         return positionBehindFriendlyLines;
     }
 

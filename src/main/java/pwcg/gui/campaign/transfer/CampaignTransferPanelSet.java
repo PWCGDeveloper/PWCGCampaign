@@ -24,12 +24,10 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
 import pwcg.campaign.TransferHandler;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -54,6 +52,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 
     private CampaignHomeGUI parent = null;
 	private Campaign campaign = null;	
+	private SquadronMember referencePlayer = null;	
     private JComboBox<String> cbService;
 	private JComboBox<String> cbSquadron;
     private JComboBox<String> cbRole;
@@ -67,6 +66,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 
 		this.parent = parent;
 		this.campaign = PWCGContextManager.getInstance().getCampaign();
+		this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
 	}
 	
 	public void makeVisible(boolean visible) 
@@ -76,7 +76,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 	public void makePanels() throws PWCGException  
 	{
 	    // Initialize things that might change based on the transfer
-        service = this.campaign.getService();
+        service = this.referencePlayer.determineService(campaign.getDate());
 
 		// Not so great dependency - have to make the right panel first so accept button is not null
 		// when evaluate is called
@@ -150,9 +150,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 			}
 
 			// Transfer label
-			SquadronMember player = campaign.getPlayers().get(0);
-
-			JLabel lName = new JLabel(player.getNameAndRank(), JLabel.LEFT);
+			JLabel lName = new JLabel(referencePlayer.getNameAndRank(), JLabel.LEFT);
 			lName.setOpaque(false);
 			lName.setFont(font);
 			components.clear();
@@ -203,10 +201,10 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 
     private void initializeValues() throws PWCGException 
     {
-        ArmedService playerService = campaign.getService();
+        ArmedService playerService = referencePlayer.determineService(campaign.getDate());
         cbService.setSelectedItem(playerService.getName());
 
-        Squadron playerSquadron = campaign.determineSquadron();        
+        Squadron playerSquadron = referencePlayer.determineSquadron();        
 
         if (playerSquadron.isSquadronThisRole(campaign.getDate(), Role.ROLE_BOMB))
         {
@@ -292,7 +290,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
         cbService = new JComboBox<String>();
         
         List<ArmedService> services = null;
-        if (campaign.determineCountry().getSideNoNeutral() == Side.ALLIED)
+        if (referencePlayer.determineCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
         {
             services = ArmedServiceFactory.createServiceManager().getAlliedServices(campaign.getDate());
         }
@@ -419,14 +417,14 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 			Date campaignDate = campaign.getDate();
 			if (squad.isCanFly(campaignDate))
 			{
-				if(squad.getSquadronId() != campaign.getSquadronId())
+				if(squad.getSquadronId() != referencePlayer.getSquadronId())
 				{
 					if (squad.determineSquadronPrimaryRole(campaignDate) == role)
 					{
 					    String display = squad.determineDisplayName(campaign.getDate());
 					    CampaignAces aces =  PWCGContextManager.getInstance().getAceManager().loadFromHistoricalAces(campaignDate);
 					    List<Ace> squadronAces =  PWCGContextManager.getInstance().getAceManager().getActiveAcesForSquadron(aces, campaignDate, squad.getSquadronId());
-					    if (!campaign.isPlayerCommander() || !squad.isCommandedByAce(squadronAces, campaignDate))
+					    if (!referencePlayer.isCommander(campaignDate) || !squad.isCommandedByAce(squadronAces, campaignDate))
 					    {
 					        cbSquadron.addItem(display);
 					    }
@@ -453,9 +451,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
         String squadronInfo = "";
         if (squadronName != null)
         {
-            ICountry country = CountryFactory.makeCountryByService (service);
-
-            Squadron squad = PWCGContextManager.getInstance().getSquadronManager().getSquadronByNameAndCountry(squadronName, country, campaign.getDate());
+            Squadron squad = PWCGContextManager.getInstance().getSquadronManager().getSquadronByName(squadronName, campaign.getDate());
             squadronInfo = squad.determineSquadronInfo(campaign.getDate());
         }
         tSquadronInfo.setText(squadronInfo);
@@ -521,10 +517,9 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
         SoundManager.getInstance().playSound("Stapling.WAV");
         
         String newSquadName = getSelectedSquad();
-        ArmedService newService = getService();
-
-        TransferHandler transferHandler = new TransferHandler(campaign);
-        TransferEvent transferEvent = transferHandler.transferPlayer(newService, newSquadName);
+        TransferHandler transferHandler = new TransferHandler(campaign,referencePlayer);
+        Squadron newSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadronByName(newSquadName, campaign.getDate());
+        TransferEvent transferEvent = transferHandler.transferPlayer(referencePlayer.determineSquadron(), newSquadron);
 
         parent.campaignTimePassed(transferEvent.getLeaveTime(), transferEvent, EventPanelReason.EVENT_PANEL_REASON_TRANSFER);
     }

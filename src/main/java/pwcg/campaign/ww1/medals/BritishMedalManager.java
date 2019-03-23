@@ -316,96 +316,71 @@ public class BritishMedalManager extends RoFMedalManager
         return awardFighter(pilot, service, victoriesThisMission);
     }
     
-
-	@Override
-	public List<Medal> getAllMedalsInOrder() throws PWCGException
-	{
-	    ArmedService service = campaign.determineSquadron().determineServiceForSquadron(campaign.getDate());
-
-		Date rafStartDate = DateUtils.getRAFDate();
-        if (campaign.getDate().after(rafStartDate))
-        {
-        	return getRAFMedals();
-        }
-        else if (service.getServiceId() == RoFServiceManager.RNAS)
-        {
-        	return getRNASMedals();
-        }
-        else if (service.getServiceId() == RoFServiceManager.RFC)
-        {
-        	return getRFCMedals();
-        }
-		
-		throw new PWCGException("Service not determined for British medal manager");
-	}
-
 	@Override
 	public List<Medal> getAllAwardsForService() throws PWCGException
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder = getRAFMedals();
-		medalsInOrder.addAll(getRNASMedals());
-		medalsInOrder.addAll(getRFCMedals());
-		medalsInOrder.addAll(getWoundBadgesInOrder());
-		medalsInOrder.addAll(getAllBadgesInOrder());
-		return medalsInOrder;
+		List<Medal> medals = new ArrayList<>();
+		medals = getRAFMedals();
+		medals.addAll(getRNASMedals());
+		medals.addAll(getRFCMedals());
+		medals.addAll(getWoundBadges());
+		medals.addAll(getAllBadges());
+		return medals;
 	}
 
 	private List<Medal> getRAFMedals()
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
+		List<Medal> medals = new ArrayList<>();
 		
-		medalsInOrder.add( medals.get(DFC));
-		medalsInOrder.add( medals.get(DFC_BAR_1));
-		medalsInOrder.add( medals.get(DSO));
-		medalsInOrder.add( medals.get(DSO_BAR));
-		medalsInOrder.add( medals.get(DFC_BAR_2));
-		medalsInOrder.add( medals.get(VC));
+		medals.add( medals.get(DFC));
+		medals.add( medals.get(DFC_BAR_1));
+		medals.add( medals.get(DSO));
+		medals.add( medals.get(DSO_BAR));
+		medals.add( medals.get(DFC_BAR_2));
+		medals.add( medals.get(VC));
 
-		return medalsInOrder;
+		return medals;
 	}
 	
 
 	private List<Medal> getRNASMedals()
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
+		List<Medal> medals = new ArrayList<>();
 
-		medalsInOrder.add( medals.get(DSC));
-		medalsInOrder.add( medals.get(DSC_BAR));
-		medalsInOrder.add( medals.get(DSO));
-		medalsInOrder.add( medals.get(DSO_BAR));
-		medalsInOrder.add( medals.get(VC));
+		medals.add( medals.get(DSC));
+		medals.add( medals.get(DSC_BAR));
+		medals.add( medals.get(DSO));
+		medals.add( medals.get(DSO_BAR));
+		medals.add( medals.get(VC));
 
-		return medalsInOrder;
+		return medals;
 	}
 
 
 	private List<Medal> getRFCMedals()
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
+		List<Medal> medals = new ArrayList<>();
 
-		medalsInOrder.add( medals.get(MC));
-		medalsInOrder.add( medals.get(DSO));
-		medalsInOrder.add( medals.get(DSO_BAR));
-		medalsInOrder.add( medals.get(VC));
+		medals.add( medals.get(MC));
+		medals.add( medals.get(DSO));
+		medals.add( medals.get(DSO_BAR));
+		medals.add( medals.get(VC));
 
-		return medalsInOrder;
+		return medals;
 	}
 
-	@Override
-	public List<Medal> getWoundBadgesInOrder()
+	private List<Medal> getWoundBadges()
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(WOUND_STRIPE));		
-		return medalsInOrder;
+		List<Medal> medals = new ArrayList<>();
+		medals.add( medals.get(WOUND_STRIPE));		
+		return medals;
 	}
 	
-	@Override
-	public List<Medal> getAllBadgesInOrder()
+	private List<Medal> getAllBadges()
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(PILOTS_BADGE));		
-		return medalsInOrder;
+		List<Medal> medals = new ArrayList<>();
+		medals.add( medals.get(PILOTS_BADGE));		
+		return medals;
 	}
 
 }

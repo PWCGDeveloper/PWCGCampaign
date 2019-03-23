@@ -2,20 +2,31 @@ package pwcg.campaign.group;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.Flight;
+import pwcg.testutils.CampaignCache;
+import pwcg.testutils.SquadrontTestProfile;
 
 public class AirfieldManagerTest
 {
-	@Before
-	public void setup() throws PWCGException
-	{
-		PWCGContextManager.setRoF(true);
-	}
-	
+    Campaign campaign;
+    
+    @Mock
+    Flight flight;
+
+    @Before
+    public void setup() throws PWCGException
+    {
+        PWCGContextManager.setRoF(true);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
+        PWCGContextManager.getInstance().setCampaign(campaign);
+    }
 
 	@Test
 	public void airfieldValidityCheckFranceTest() throws PWCGException 

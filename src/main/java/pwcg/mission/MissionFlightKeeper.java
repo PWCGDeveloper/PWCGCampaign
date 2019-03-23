@@ -17,13 +17,13 @@ import pwcg.mission.flight.FlightProximityAnalyzer;
 
 public class MissionFlightKeeper
 {
-    private MissionFlightBuilder missionFlightBuilder;
+    private Mission mission;
     private Campaign campaign;
     private ConfigManager configManager;
 
-    public MissionFlightKeeper (Campaign campaign, MissionFlightBuilder missionFlightBuilder)
+    public MissionFlightKeeper (Campaign campaign, Mission mission)
     {
-        this.missionFlightBuilder = missionFlightBuilder;
+        this.mission = mission;
         this.campaign = campaign;
         
         configManager = campaign.getCampaignConfigManager();
@@ -32,70 +32,37 @@ public class MissionFlightKeeper
     public List<Flight> keepLimitedFlights() throws PWCGException 
     {
         List<Flight> missionFlights = new ArrayList<Flight>();
-        
-        List<Flight> enemyFlights = keepLimitedEnemyFlights();
-        
-        List<Flight> friendlyFlights = keepLimitedFriendlyFlights();
+        List<Flight> axisFlights = keepLimitedAxisFlights();        
+        List<Flight> alliedFlights = keepLimitedAlliedFlights();
 
-        missionFlights.addAll(friendlyFlights);
-        missionFlights.addAll(enemyFlights);
+        missionFlights.addAll(alliedFlights);
+        missionFlights.addAll(axisFlights);
         
         return missionFlights;
     }
 
-    private List<Flight> keepLimitedFriendlyFlights() throws PWCGException
+    private List<Flight> keepLimitedAlliedFlights() throws PWCGException
     {
-        List<Flight> friendlyFlights = null;
-        if (campaign.determineCountry().getSide() == Side.AXIS)
-        {
-            friendlyFlights = missionFlightBuilder.getAxisAiFlights();
-        }
-        else
-        {
-            friendlyFlights = missionFlightBuilder.getAlliedAiFlights();
-        }
-
-        int minToKeep = configManager.getIntConfigParam(ConfigItemKeys.FriendlyFlightsToKeepMinKey);
-        int maxToKeep = configManager.getIntConfigParam(ConfigItemKeys.FriendlyFlightsToKeepMaxKey);
-        
-        if (maxToKeep < minToKeep)
-        {
-            minToKeep = maxToKeep - 1;
-        }
-        
-        return selectFlightsToKeep(minToKeep, maxToKeep, false, friendlyFlights);
+        List<Flight> axisAiFlights = mission.getMissionFlightBuilder().getAlliedAiFlights();
+        int maxAlliedAiFlights = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedFlightsToKeepKey);
+        return selectFlightsToKeep(maxAlliedAiFlights, Side.ALLIED, axisAiFlights);
     }
 
-    private List<Flight> keepLimitedEnemyFlights() throws PWCGException
+    private List<Flight> keepLimitedAxisFlights() throws PWCGException
     {
-        List<Flight> enemyFlights = null;
-        if (campaign.determineCountry().getSide() == Side.AXIS)
-        {
-            enemyFlights = missionFlightBuilder.getAlliedAiFlights();
-        }
-        else
-        {
-            enemyFlights = missionFlightBuilder.getAxisAiFlights();
-        }
-
-        int minToKeep = configManager.getIntConfigParam(ConfigItemKeys.EnemyFlightsToKeepMinKey);
-        int maxToKeep = configManager.getIntConfigParam(ConfigItemKeys.EnemyFlightsToKeepMaxKey);
-        
-        if (maxToKeep < minToKeep)
-        {
-            minToKeep = maxToKeep - 1;
-        }
-        
-        return selectFlightsToKeep(minToKeep, maxToKeep, true, enemyFlights);
+        List<Flight> axisAiFlights = mission.getMissionFlightBuilder().getAxisAiFlights();
+        int maxAxisAiFlights = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisFlightsToKeepKey);
+        return selectFlightsToKeep(maxAxisAiFlights, Side.AXIS, axisAiFlights);
     }
 
-    private List<Flight> selectFlightsToKeep(int minToKeep, int maxToKeep, boolean isEnemy, List<Flight> aiFLights) throws PWCGException
+    private List<Flight> selectFlightsToKeep(int maxToKeep, Side side, List<Flight> aiFLights) throws PWCGException
     {
-        int numToKeep = minToKeep +  RandomNumberGenerator.getRandom(maxToKeep - minToKeep + 1);
+        int numToKeep = determineNumFlightsToKeepForSide(maxToKeep);
+        
         int maxFighterToKeep = getMaxFighterFlights();
         int numFighterKept = 0;
             
-        Map<Double, Flight> enemyFlightsByEncounterDistance = mapEnemyDistanceToPlayerFlight(isEnemy, aiFLights);
+        Map<Double, Flight> enemyFlightsByEncounterDistance = mapEnemyDistanceToPlayerFlight(aiFLights);
         List<Flight> keptFlights = new ArrayList<Flight>();
         for (Flight enemyFlight : enemyFlightsByEncounterDistance.values())
         {
@@ -118,6 +85,18 @@ public class MissionFlightKeeper
         }
 
         return keptFlights;
+    }
+
+    private int determineNumFlightsToKeepForSide(int maxToKeep)
+    {
+        int minToKeep = 2;
+        if (maxToKeep < minToKeep)
+        {
+            maxToKeep = minToKeep;
+        }
+        
+        int numToKeep = minToKeep +  RandomNumberGenerator.getRandom(maxToKeep - minToKeep + 1);
+        return numToKeep;
     }    
     
     private boolean isFighterFlightForPurposeOfKeep(Flight enemyFlight)
@@ -134,11 +113,11 @@ public class MissionFlightKeeper
 
     private int getMaxFighterFlights() throws PWCGException
     {
-        MaxFighterFlightCalculator maxFighterFlightCalculator = new MaxFighterFlightCalculator(campaign, missionFlightBuilder.getPlayerFlight());
+        MaxFighterFlightCalculator maxFighterFlightCalculator = new MaxFighterFlightCalculator(campaign, mission);
         return maxFighterFlightCalculator.getMaxFighterFlightsForMission();
     }
 
-    private Map<Double, Flight> mapEnemyDistanceToPlayerFlight(boolean isEnemy, List<Flight> aiFLights) throws PWCGException
+    private Map<Double, Flight> mapEnemyDistanceToPlayerFlight(List<Flight> aiFLights) throws PWCGException
     {
         Map<Double, Flight> enemyFlightsByEncounterDistance = new TreeMap<Double, Flight>();
         
@@ -146,7 +125,7 @@ public class MissionFlightKeeper
         {
             if (flight.getClosestContactWithPlayerDistance() > 0.0)
             {
-                if (!isTooCloseToPlayerBase(flight, isEnemy))
+                if (!isTooCloseToPlayerBase(flight))
                 {
                     enemyFlightsByEncounterDistance.put(flight.getClosestContactWithPlayerDistance(), flight);
                 }
@@ -155,19 +134,14 @@ public class MissionFlightKeeper
         return enemyFlightsByEncounterDistance;
     }
 
-    private boolean isTooCloseToPlayerBase(Flight flight, boolean isEnemy) throws PWCGException
+    private boolean isTooCloseToPlayerBase(Flight flight) throws PWCGException
     {
-        if (!isEnemy)
-        {
-            return false;
-        }
-
-        FlightProximityAnalyzer flightProximityAnalyzer = new FlightProximityAnalyzer(missionFlightBuilder);
+        // TODO COOP Revisit flight proximity analyzer
+        FlightProximityAnalyzer flightProximityAnalyzer = new FlightProximityAnalyzer(mission);
         double distanceToBase = flightProximityAnalyzer.proximityToPlayerAirbase(flight);
         
         int DistanceFromPlayerFieldZone = configManager.getIntConfigParam(ConfigItemKeys.DistanceFromPlayerFieldZoneKey);
         int DistanceToPlayerFieldOverrideOdds = configManager.getIntConfigParam(ConfigItemKeys.DistanceToPlayerFieldOverrideOddsKey);
-
         if (distanceToBase < DistanceFromPlayerFieldZone)
         {
             

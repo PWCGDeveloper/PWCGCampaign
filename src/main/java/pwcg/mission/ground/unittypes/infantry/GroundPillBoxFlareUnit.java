@@ -13,6 +13,7 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundDirectFireUnit;
+import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuFlare;
 import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.group.FlareSequence;
@@ -86,18 +87,12 @@ public class GroundPillBoxFlareUnit extends GroundDirectFireUnit
             flareColor = McuFlare.FLARE_COLOR_GREEN;
         }
         
-        // Pop flares for friendly planes        
+        Coalition friendlyCoalition  = Coalition.getFriendlyCoalition(pwcgGroundUnitInformation.getCountry());
+
         flares = new FlareSequence();
-        flares.setFlare(pwcgGroundUnitInformation.getPosition().copy(), flareColor, spawningVehicle.getEntity().getIndex());
+        flares.setFlare(friendlyCoalition, pwcgGroundUnitInformation.getPosition().copy(), flareColor, spawningVehicle.getEntity().getIndex());
     }
 
-    /**
-     * Write the mission to a file
-     * 
-     * @param writer
-     * @throws PWCGException 
-     * @
-     */
     public void write(BufferedWriter writer) throws PWCGException 
     {       
         try

@@ -35,11 +35,15 @@ public class BalloonBustPackage extends FlightPackage
 
     public Flight createPackage () throws PWCGException 
     {
-        Side enemySide = campaign.determineCountry().getSide().getOppositeSide();
+        Side enemySide = squadron.determineEnemySide();
 
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
 		Coordinate balloonPosition = getTargetWaypoint(mission, startCoords, enemySide);
-        Squadron enemyScoutSquadron = PWCGContextManager.getInstance().getSquadronManager().getEnemySquadronByRole(campaign, squadron.determineSquadronCountry(campaign.getDate()), Role.ROLE_FIGHTER, campaign.getDate());
+        Squadron enemyScoutSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
+                        campaign, 
+                        squadron.determineCurrentPosition(campaign.getDate()), 
+                        Role.ROLE_FIGHTER, 
+                        squadron.determineSquadronCountry(campaign.getDate()).getSide().getOppositeSide());
         ICountry balloonCountry = determineBalloonCountry(enemySide, enemyScoutSquadron);
         BalloonDefenseGroup balloonUnit = createBalloonUnit(balloonPosition, balloonCountry);
 		BalloonBustFlight balloonBust = createFlight(startCoords, balloonUnit);

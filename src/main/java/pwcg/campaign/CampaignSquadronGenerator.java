@@ -28,7 +28,7 @@ public class CampaignSquadronGenerator
     public void createSquadronStaff(CampaignGeneratorModel generatorModel) throws PWCGException
     {
         InitialSquadronStaffer squadronStaffer = new InitialSquadronStaffer(campaign, squadron);
-        if (squadron.getSquadronId() == campaign.getSquadronId())
+        if (squadron.getSquadronId() == generatorModel.getCampaignSquadron().getSquadronId())
         {
             squadronStaffer.addPlayerToCampaign(generatorModel);
         }

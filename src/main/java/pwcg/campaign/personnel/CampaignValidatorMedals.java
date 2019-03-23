@@ -21,7 +21,7 @@ public class CampaignValidatorMedals
     {
         if (!(squadronMember instanceof Ace))
         {
-            IMedalManager mm = MedalManagerFactory.createMedalManager(campaign);
+            IMedalManager mm = MedalManagerFactory.createMedalManager(squadronMember.determineCountry(campaign.getDate()), campaign);
             while (true)
             {
                 Medal medal = mm.award(campaign, squadronMember, squadronMember.determineService(campaign.getDate()),  0);

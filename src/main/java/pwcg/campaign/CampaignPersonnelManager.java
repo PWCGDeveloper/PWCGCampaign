@@ -9,6 +9,7 @@ import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignPersonnelManager 
@@ -33,11 +34,6 @@ public class CampaignPersonnelManager
     {
         return squadronPersonnelAllSquadrons.get(squadronId);
     }
-
-    public SquadronPersonnel getPlayerPersonnel()
-    {
-        return getSquadronPersonnel(campaign.getSquadronId());
-    }    
 
 	public void addPersonnelForSquadron(SquadronPersonnel campaignPersonnel)
 	{
@@ -70,6 +66,17 @@ public class CampaignPersonnelManager
         allSquadronMembers.putAll(campaignAces.getCampaignAces());
         return allSquadronMembers;
     }
+
+    public SquadronMembers getAllPlayers() throws PWCGException
+    {
+    	SquadronMembers allPlayers =  new SquadronMembers();
+        for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
+        {
+        	SquadronMembers playersInSquadron = squadronPersonnel.getActivePlayers();
+        	allPlayers.addSquadronMembers(playersInSquadron);
+        }
+        return allPlayers;
+    }    
 
     private Map<Integer, SquadronMember> getAllNonAceCampaignMembers() throws PWCGException
     {

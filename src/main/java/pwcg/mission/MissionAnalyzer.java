@@ -38,10 +38,12 @@ public class MissionAnalyzer
             String filename = PWCGContextManager.getInstance().getDirectoryManager().getPwcgReportDir() + campaign.getCampaignData().getName() + " MissionAnalysis.txt";
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
 
-            writer.write("Player flight");
+            writer.write("Player flights");
             writer.newLine();
-            Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight();
-            analyzeFlight (writer, myFlight, false);
+            for (Flight playerFlight: mission.getMissionFlightBuilder().getPlayerFlights())
+            {
+            	analyzeFlight (writer, playerFlight, false);
+            }
             writer.newLine();
             writer.newLine();
             writer.newLine();

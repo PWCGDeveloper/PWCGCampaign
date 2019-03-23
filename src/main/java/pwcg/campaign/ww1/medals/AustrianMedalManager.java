@@ -138,40 +138,25 @@ public class AustrianMedalManager extends RoFMedalManager
 	@Override
 	public List<Medal> getAllAwardsForService() throws PWCGException
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.addAll(getWoundBadgesInOrder());
-		medalsInOrder.addAll(getAllBadgesInOrder());
-		return medalsInOrder;
+		List<Medal> medals = new ArrayList<>();
+		medals.addAll(getWoundBadges());
+		medals.addAll(getAllBadges());
+		return medals;
 	}
 
-	@Override
-	public List<Medal> getAllMedalsInOrder()
+	private List<Medal> getWoundBadges()
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(IRON_CROSS_2));
-		medalsInOrder.add( medals.get(A_ORDER_IRON_CROWN));
-		medalsInOrder.add( medals.get(A_ORDER_LEOPOLD));
-		medalsInOrder.add( medals.get(A_MEDAL_FOR_BRAVERY));
-		medalsInOrder.add( medals.get(A_MILITARY_MERIT_MEDAL));
-		
-		return medalsInOrder;
+		List<Medal> medals = new ArrayList<>();
+		medals.add( medals.get(WOUND_BADGE_BLACK));		
+		medals.add( medals.get(WOUND_BADGE_SILVER));		
+		return medals;
 	}
 
-	@Override
-	public List<Medal> getWoundBadgesInOrder()
+	private List<Medal> getAllBadges()
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(WOUND_BADGE_BLACK));		
-		medalsInOrder.add( medals.get(WOUND_BADGE_SILVER));		
-		return medalsInOrder;
-	}
-
-	@Override
-	public List<Medal> getAllBadgesInOrder()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(A_PILOTS_BADGE));		
-		return medalsInOrder;
+		List<Medal> medals = new ArrayList<>();
+		medals.add( medals.get(A_PILOTS_BADGE));		
+		return medals;
 	}
 
 }

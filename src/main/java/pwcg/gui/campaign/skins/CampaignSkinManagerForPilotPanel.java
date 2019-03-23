@@ -245,10 +245,12 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
         JLabel label = makeLabel ("Squadron Aircraft:");
         aircraftButtonGrid.add(label);
 
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        Squadron squad = campaign.determineSquadron();
+        SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        Squadron squad = referencePlayer.determineSquadron();
 
+        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
         List<PlaneType> squadronPlanes = squad.determineCurrentAircraftList(campaign.getDate());
+
         List<PlaneType> squadronPlanesByBest = PlaneSorter.sortPlanesByGoodness(squadronPlanes);
         
         for (PlaneType plane : squadronPlanesByBest)

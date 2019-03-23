@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.Role;
@@ -45,11 +44,6 @@ public class StrategicBombingPackage extends FlightPackage
 
         StrategicBombingFlight strategicBombingFlight = createStrategicBombingFlight(squadron, isPlayerFlight, targetDefinition);
 
-        if (isPlayerFlight)
-        {
-            mission.getMissionFlightBuilder().setPlayerFlight(strategicBombingFlight);
-        }
-
         createAAA(targetDefinition, strategicBombingFlight);
         createSpotlight(targetDefinition, strategicBombingFlight);
 
@@ -70,14 +64,6 @@ public class StrategicBombingPackage extends FlightPackage
         StrategicBombingFlight strategicBombingFlight = new StrategicBombingFlight(flightInformation, missionBeginUnit);
         strategicBombingFlight.setBombingAltitudeLevel(BombingAltitudeLevel.HIGH);
         strategicBombingFlight.setTargetDefinition(targetDefinition);
-        if (squadron.determineIsNightSquadron())
-        {
-            strategicBombingFlight.setNightFlight(true);
-        }
-        else
-        {
-            strategicBombingFlight.setNightFlight(false);
-        }
         strategicBombingFlight.createUnitMission();
 
         return strategicBombingFlight;
@@ -88,8 +74,8 @@ public class StrategicBombingPackage extends FlightPackage
     {
         if (squadron.determineIsNightSquadron())
         {
-            IAirfield airfield = campaign.getPlayerAirfield();
-            List<StrategicSupportingFlight> supportingFlights = getSupportingFlights(mission, targetPosition, airfield.getPosition(), squadron);
+            Coordinate airfieldPosition = squadron.determineCurrentPosition(campaign.getDate());
+            List<StrategicSupportingFlight> supportingFlights = getSupportingFlights(mission, targetPosition, airfieldPosition, squadron);
             for (Flight supportingFlight : supportingFlights)
             {
                 strategicBombingFlight.addLinkedUnit(supportingFlight);
@@ -140,8 +126,7 @@ public class StrategicBombingPackage extends FlightPackage
             List<Role> acceptableRoles = new ArrayList<Role>();
             acceptableRoles.add(Role.ROLE_FIGHTER);
 
-            List<Squadron> opposingSquads = getOpposingSquadrons(bombing.getCoordinatesToIntersectWithPlayer().copy(), squadron.determineIsNightSquadron());
-
+            List<Squadron> opposingSquads = getOpposingSquadrons(bombing.getTargetCoords().copy(), squadron.determineIsNightSquadron());
             if (opposingSquads != null && opposingSquads.size() != 0)
             {
                 int numHomeDefenseFlights = 1;
@@ -159,7 +144,7 @@ public class StrategicBombingPackage extends FlightPackage
                     missionBeginUnit.initialize(homeDefenseCoords.copy());
 
                     
-                    FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(opposingSquad, mission, FlightTypes.INTERCEPT, bombing.getCoordinatesToIntersectWithPlayer().copy());
+                    FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(opposingSquad, mission, FlightTypes.INTERCEPT, bombing.getTargetCoords().copy());
                     InterceptFlight homeDefenseFlight = new InterceptFlight(opposingFlightInformation, missionBeginUnit);
                     homeDefenseFlight.createUnitMission();
 
@@ -179,7 +164,7 @@ public class StrategicBombingPackage extends FlightPackage
 
         // First get anything near the target area
         List<Squadron> allOpposingSquads = null;
-        Side enemySide = campaign.determineCountry().getSide().getOppositeSide();
+        Side enemySide = squadron.determineEnemySide();
         allOpposingSquads = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, targetCoordinates.copy(), 1, 75000.0, acceptableRoles, enemySide,
                 campaign.getDate());
 

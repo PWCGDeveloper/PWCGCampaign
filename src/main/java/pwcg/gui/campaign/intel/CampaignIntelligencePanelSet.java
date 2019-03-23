@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.PwcgGuiContext;
@@ -25,12 +24,10 @@ public class CampaignIntelligencePanelSet extends PwcgGuiContext implements Acti
     private static final long serialVersionUID = 1L;
 
 	private ImageJTabbedPane tabs = new ImageJTabbedPane();
-	private Campaign campaign;
 
-	public CampaignIntelligencePanelSet(Campaign campaign)
+	public CampaignIntelligencePanelSet()
 	{
         super();
-	    this.campaign = campaign;
         this.setOpaque(false);
 	}
 
@@ -74,10 +71,10 @@ public class CampaignIntelligencePanelSet extends PwcgGuiContext implements Acti
 			tabs.setBackground(tabBG);
 			tabs.setOpaque(false);
 			
-			CampaignIntelligenceEnemySquadronsGUI enemySquadronsGUI = new CampaignIntelligenceEnemySquadronsGUI(campaign);
+			CampaignIntelligenceEnemySquadronsGUI enemySquadronsGUI = new CampaignIntelligenceEnemySquadronsGUI();
 			tabs.addTab("Enemy Squadrons", enemySquadronsGUI);		
 			
-			CampaignIntelligenceFriendlySquadronsGUI friendlySquadronsGUI = new CampaignIntelligenceFriendlySquadronsGUI(campaign);
+			CampaignIntelligenceFriendlySquadronsGUI friendlySquadronsGUI = new CampaignIntelligenceFriendlySquadronsGUI();
 			tabs.addTab("Friendly Squadrons", friendlySquadronsGUI);		
 						
 			for (int i = 0; i < tabs.getTabCount(); ++i)

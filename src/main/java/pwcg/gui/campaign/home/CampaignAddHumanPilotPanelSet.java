@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -13,14 +14,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.CampaignHumanPilotHandler;
+import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
+import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMemberFactory;
 import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -90,8 +92,8 @@ public class CampaignAddHumanPilotPanelSet extends PwcgGuiContext implements Act
         cbPilotRank.setFont(font);
 
         IRankHelper rankHelper = RankFactory.createRankHelper();
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getCampaignData().getSquadId());
-        for (String rank : rankHelper.getRanksByService(squadron.determineServiceForSquadron(campaign.getDate())))
+    	SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        for (String rank : rankHelper.getRanksByService(referencePlayer.determineSquadron().determineServiceForSquadron(campaign.getDate())))
         {
             cbPilotRank.addItem(rank);
         }        
@@ -185,7 +187,9 @@ public class CampaignAddHumanPilotPanelSet extends PwcgGuiContext implements Act
         cbReplacePilot.setBackground(ColorMap.PAPER_BACKGROUND);
         cbReplacePilot.setFont(font);
         
-        SquadronMembers aiSquadronMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+    	SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+    	Map<Integer, SquadronMember> squadronMemberCollection = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection();
+        SquadronMembers aiSquadronMembers = SquadronMemberFilter.filterActiveAI(squadronMemberCollection, campaign.getDate());
         for (SquadronMember aiSquadronMember : aiSquadronMembers.sortPilots(campaign.getDate()))
         {
             cbReplacePilot.addItem(aiSquadronMember.getSerialNumber() + ":" + aiSquadronMember.getNameAndRank());
@@ -227,14 +231,27 @@ public class CampaignAddHumanPilotPanelSet extends PwcgGuiContext implements Act
     }
 
     private void addNewPilot() throws PWCGException
-    {        
+    {
         String rank = (String)cbPilotRank.getSelectedItem();
         String playerName = playerNameTextBox.getText();
         String replaceInfo = (String)cbReplacePilot.getSelectedItem();
         String[] replaceInfoArray = replaceInfo.split(":");
         int serialNumberToReplace = new Integer(replaceInfoArray[0]);
+        
+    	SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+    	SquadronPersonnel playerSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId());
 
-        CampaignHumanPilotHandler humanPilotHandler = new CampaignHumanPilotHandler(campaign);
-        humanPilotHandler.addNewPilot(playerName, rank, serialNumberToReplace, campaign.getSquadronId());
+        CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
+        generatorModel.setPlayerRank(rank);
+        generatorModel.setPlayerName(playerName);
+        generatorModel.setService(referencePlayer.determineSquadron().determineServiceForSquadron(campaign.getDate()));
+        
+        SquadronMemberFactory squadronMemberFactory = new SquadronMemberFactory(campaign, referencePlayer.determineSquadron(), playerSquadronPersonnel);
+        SquadronMember newPlayer = squadronMemberFactory.createPlayer(generatorModel);
+
+        playerSquadronPersonnel.addSquadronMember(newPlayer);
+        
+        SquadronMember aiToRemove = playerSquadronPersonnel.getSquadronMember(serialNumberToReplace);
+        playerSquadronPersonnel.removeSquadronMember(aiToRemove);
     }
 }

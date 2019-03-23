@@ -16,7 +16,7 @@ import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 public class PlayerFlightTypeBoSBombTest
 {
@@ -27,7 +27,7 @@ public class PlayerFlightTypeBoSBombTest
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        campaign = CampaignCache.makeCampaign(CampaignCacheBoS.KG53_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.KG53_PROFILE);
     }
 
     @Test
@@ -35,8 +35,8 @@ public class PlayerFlightTypeBoSBombTest
     {
         mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.BOMB);
-        BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.KG53_PROFILE), FlightTypes.BOMB);
+        BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
@@ -57,8 +57,8 @@ public class PlayerFlightTypeBoSBombTest
     {
         mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.LOW_ALT_BOMB);
-        BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.KG53_PROFILE), FlightTypes.LOW_ALT_BOMB);
+        BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
@@ -79,8 +79,8 @@ public class PlayerFlightTypeBoSBombTest
     {
         mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.STRATEGIC_BOMB);
-        StrategicBombingFlight flight = (StrategicBombingFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.KG53_PROFILE), FlightTypes.STRATEGIC_BOMB);
+        StrategicBombingFlight flight = (StrategicBombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();

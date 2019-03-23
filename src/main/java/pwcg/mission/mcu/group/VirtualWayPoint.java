@@ -43,7 +43,7 @@ public class VirtualWayPoint
     protected boolean useSubtitles = false;
 
 
-    private SelfDeactivatingCheckZone triggerCheckZone = new SelfDeactivatingCheckZone();
+    private SelfDeactivatingCheckZone triggerCheckZone;
     
     private McuTimer nextVwpTimer = new McuTimer();
 
@@ -69,7 +69,7 @@ public class VirtualWayPoint
     {
         this.vwpCoordinate = vwpCoordinate;
                  
-        triggerCheckZone.initialize(vwpCoordinate.getCoordinate().copy(), coalition);
+        triggerCheckZone = new SelfDeactivatingCheckZone(vwpCoordinate.getCoordinate().copy(), 20000);
 
         // set position
         vwpTimer.setPosition(vwpCoordinate.getCoordinate().copy());

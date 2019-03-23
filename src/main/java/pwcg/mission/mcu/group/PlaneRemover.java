@@ -27,9 +27,6 @@ public class PlaneRemover
 {
     private McuProximity outOfEnemyRangeProximity = null;
     private McuTimer outOfEnemyRangeProximityTimer = new McuTimer();
-
-    private McuProximity outOfPlayerRangeProximity = null;
-    private McuTimer outOfPlayerRangeProximityTimer = new McuTimer();
     
     private McuTimer deletePlaneTimer = new McuTimer();
     private McuDelete deletePlane = new McuDelete();
@@ -40,53 +37,37 @@ public class PlaneRemover
     
     private boolean useSubtitles = false;
 
-    /**
-     * 
-     */
     public PlaneRemover()
     {
         index = IndexGenerator.getInstance().getNextIndex();
     }
 
-    /**
-     * @param plane
-     * @throws PWCGException 
-     */
-    public void initialize(Flight flight, PlaneMCU plane, PlaneMCU playerPlane) throws PWCGException 
+    public void initialize(Flight flight, PlaneMCU plane) throws PWCGException 
     {
-        Coalition friendlyCoalition = Coalition.getEnemyCoalition(plane.getCountry());
-        Coalition enemyCoalition = Coalition.getEnemyCoalition(plane.getCountry());
-
-        outOfEnemyRangeProximity = new McuProximity(enemyCoalition);
-        outOfPlayerRangeProximity = new McuProximity(friendlyCoalition);
+        outOfEnemyRangeProximity = new McuProximity();
+        outOfEnemyRangeProximity.addCoalition(Coalition.getFriendlyCoalition(plane.getCountry()));
+        outOfEnemyRangeProximity.addCoalition(Coalition.getEnemyCoalition(plane.getCountry()));
         
         // set position
         outOfEnemyRangeProximityTimer.setPosition(plane.getPosition().copy());
         outOfEnemyRangeProximity.setPosition(plane.getPosition().copy());
-        outOfPlayerRangeProximityTimer.setPosition(plane.getPosition().copy());
-        outOfPlayerRangeProximity.setPosition(plane.getPosition().copy());
         deletePlaneTimer.setPosition(plane.getPosition().copy());
         deletePlane.setPosition(plane.getPosition().copy());
 
         // set name
         outOfEnemyRangeProximityTimer.setName("outOfEnemyRangeProximityTimer");
         outOfEnemyRangeProximity.setName("outOfEnemyRangeProximity");
-        outOfPlayerRangeProximityTimer.setName("outOfPlayerRangeProximityTimer");
-        outOfPlayerRangeProximity.setName("outOfPlayerRangeProximity");
         deletePlaneTimer.setName("deletePlaneTimer");
         deletePlane.setName("deletePlane");
 
         // set name
         outOfEnemyRangeProximityTimer.setDesc("outOfEnemyRangeProximityTimer");
         outOfEnemyRangeProximity.setDesc("outOfEnemyRangeProximity");
-        outOfPlayerRangeProximityTimer.setDesc("outOfPlayerRangeProximityTimer");
-        outOfPlayerRangeProximity.setDesc("outOfPlayerRangeProximity");
         deletePlaneTimer.setDesc("deletePlaneTimer");
         deletePlane.setDesc("deletePlane");
         
         // Timer values
         outOfEnemyRangeProximityTimer.setTimer(60);
-        outOfPlayerRangeProximityTimer.setTimer(10);
         deletePlaneTimer.setTimer(3);
         
         // Coalition is enemy
@@ -97,37 +78,19 @@ public class PlaneRemover
         outOfEnemyRangeProximity.setCloser(0);
         outOfEnemyRangeProximity.setDistance(enemyDistance);
 
-        // Player proximity is based on player plane
-        int playerDistance = configManager.getIntConfigParam(ConfigItemKeys.PlaneDeletePlayerDistanceKey);
-        outOfPlayerRangeProximity.setCloser(0);
-        outOfPlayerRangeProximity.setDistance(playerDistance);
-        
-        // Proximity of this plane to player plane
-        outOfPlayerRangeProximity.setObject(plane.getEntity().getIndex());
-        outOfPlayerRangeProximity.setObject(playerPlane.getEntity().getIndex());
-        
         if (useSubtitles)
         {
             makeSubtitles(flight, plane);
         }
         
-        
         // Link up targets
         outOfEnemyRangeProximityTimer.setTarget(outOfEnemyRangeProximity.getIndex());
-        outOfEnemyRangeProximity.setTarget(outOfPlayerRangeProximityTimer.getIndex());
-        outOfPlayerRangeProximityTimer.setTarget(outOfPlayerRangeProximity.getIndex());
-        outOfPlayerRangeProximity.setTarget(deletePlaneTimer.getIndex());
-
+        outOfEnemyRangeProximity.setTarget(deletePlaneTimer.getIndex());
         deletePlaneTimer.setTarget(deletePlane.getIndex());
         
         deletePlane.setObject(plane.getEntity().getIndex());
     }
 
-    
-    /**
-     * @throws PWCGException 
-     * 
-     */
     protected void makeSubtitles(Flight flight, PlaneMCU plane) throws PWCGException
     {
         Coordinate coordinate = plane.getPosition().copy();
@@ -142,19 +105,12 @@ public class PlaneRemover
         planeRemoverStartedSubtitle.setPosition(coordinate.copy());
         outOfEnemyRangeProximityTimer.setTarget(planeRemoverStartedSubtitle.getIndex());
         
-        McuSubtitle noEnemySubtitle = new McuSubtitle();
-        noEnemySubtitle.setName("noEnemySubtitle Subtitle");
-        noEnemySubtitle.setText("No Enemy " +  squadron.determineDisplayName(campaignDate) +  " Triggered for " + plane.getName());
-        noEnemySubtitle.setPosition(coordinate.copy());
-        outOfEnemyRangeProximity.setTarget(noEnemySubtitle.getIndex());
-        subTitleList.add(noEnemySubtitle);
-
-        McuSubtitle noPlayerSubtitle = new McuSubtitle();
-        noPlayerSubtitle.setName("noPlayerSubtitle Subtitle");
-        noPlayerSubtitle.setText("No Player " +  squadron.determineDisplayName(campaignDate) +  " Triggered for " + plane.getName());
-        noPlayerSubtitle.setPosition(coordinate.copy());
-        outOfPlayerRangeProximity.setTarget(noPlayerSubtitle.getIndex());
-        subTitleList.add(noPlayerSubtitle);
+        McuSubtitle noNearbyPlaneSubtitle = new McuSubtitle();
+        noNearbyPlaneSubtitle.setName("noPlanesSubtitle Subtitle");
+        noNearbyPlaneSubtitle.setText("No planes " +  squadron.determineDisplayName(campaignDate) +  " Triggered for " + plane.getName());
+        noNearbyPlaneSubtitle.setPosition(coordinate.copy());
+        outOfEnemyRangeProximity.setTarget(noNearbyPlaneSubtitle.getIndex());
+        subTitleList.add(noNearbyPlaneSubtitle);
 
         McuSubtitle deletePlaneSubtitle = new McuSubtitle();
         deletePlaneSubtitle.setName("deletePlane Subtitle");
@@ -165,26 +121,15 @@ public class PlaneRemover
         
         MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
         subtitleHandler.registerMissionText(planeRemoverStartedSubtitle.getLcText(), planeRemoverStartedSubtitle.getText());
-        subtitleHandler.registerMissionText(noEnemySubtitle.getLcText(), noEnemySubtitle.getText());
-        subtitleHandler.registerMissionText(noPlayerSubtitle.getLcText(), noPlayerSubtitle.getText());
+        subtitleHandler.registerMissionText(noNearbyPlaneSubtitle.getLcText(), noNearbyPlaneSubtitle.getText());
         subtitleHandler.registerMissionText(deletePlaneSubtitle.getLcText(), deletePlaneSubtitle.getText());
     }
 
-
-
-    /**
-     * Write the plane remover group
-     * 
-     * @param writer
-     * @throws PWCGIOException 
-     * @
-     */
     public void write(BufferedWriter writer) throws PWCGIOException 
     {
         try
         {
-            // Don't pump this out if not used.
-            // Usually player plane
+
             if (deletePlane.getObjects().size() == 0)
             {
                 return;
@@ -204,8 +149,6 @@ public class PlaneRemover
             
             outOfEnemyRangeProximityTimer.write(writer);
             outOfEnemyRangeProximity.write(writer);
-            outOfPlayerRangeProximityTimer.write(writer);
-            outOfPlayerRangeProximity.write(writer);
             
             deletePlaneTimer.write(writer);
             deletePlane.write(writer);
@@ -227,18 +170,11 @@ public class PlaneRemover
         }
     }
 
-    /**
-     * @return
-     */
     public McuTimer getDeletePlaneTimer()
     {
         return deletePlaneTimer;
     }
 
-
-    /**
-     * @return
-     */
     public McuTimer getEntryPoint()
     {
         return this.outOfEnemyRangeProximityTimer;

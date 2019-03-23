@@ -38,7 +38,6 @@ public class WW2PayloadTest
 		PWCGContextManager.setRoF(false);
         
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign);
-        Mockito.when(campaign.getAirfieldName()).thenReturn("Korenovskaya");
 		Mockito.when(flight.getSquadron()).thenReturn(squadron);
 
         PWCGContextManager.getInstance().setCampaign(campaign);

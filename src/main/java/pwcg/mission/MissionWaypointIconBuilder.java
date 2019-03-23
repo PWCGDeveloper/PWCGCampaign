@@ -15,15 +15,16 @@ public class MissionWaypointIconBuilder
 {
     private ArrayList<McuIcon> waypointIcons = new ArrayList<McuIcon>();
 
-    public void createWaypointIcons(Flight myFlight) 
+    // TODO COOP Icons tied to planes not coalitions
+    public void createWaypointIcons(Flight playerFlight) 
     {        
     	waypointIcons.clear();
     	
-        List<McuWaypoint> waypoints = myFlight.getAllWaypoints();
+        List<McuWaypoint> waypoints = playerFlight.getAllWaypoints();
 
         McuIcon prevIcon = null;
 
-        McuTakeoff takeoff = myFlight.getTakeoff();
+        McuTakeoff takeoff = playerFlight.getTakeoff();
         if (takeoff != null) {
             McuIcon icon = new McuIcon(takeoff);
             prevIcon = icon;
@@ -42,7 +43,7 @@ public class MissionWaypointIconBuilder
             waypointIcons.add(icon);
         }
 
-        McuLanding landing = myFlight.getLanding();
+        McuLanding landing = playerFlight.getLanding();
         if (landing != null) {
             McuIcon icon = new McuIcon(landing);
             if (prevIcon != null)

@@ -38,8 +38,8 @@ public class AAAUnitFactory
     {
         Coalition enemyCoalition =  Coalition.getEnemyCoalition(country);
 
-        MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
-        missionBeginUnit.initialize(position, 5000, enemyCoalition);
+        MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone(position, 5000);
+        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(enemyCoalition);
         
         String nationality = country.getNationality();
         String name = nationality + " AAA";

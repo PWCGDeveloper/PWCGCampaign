@@ -39,7 +39,7 @@ public class BriefingCrewPlanePayloadSorter
         for (CrewPlanePayloadPairing crewPlane : unsorted)
         {
             SquadronMember pilotSquadMember = crewPlane.getPilot();
-            String crewKey = pilotSquadMember.determineSortKey(mission.getCampaign());
+            String crewKey = pilotSquadMember.determineSortKey(mission.getCampaign().getDate());
             sortedTree.put(crewKey, crewPlane);
         }
         

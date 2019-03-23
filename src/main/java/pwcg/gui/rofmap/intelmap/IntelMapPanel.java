@@ -15,10 +15,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -36,12 +36,14 @@ public class IntelMapPanel extends MapPanelBase
 	private Map <String, IntelAirfieldMapPoint> airfieldPoints = new HashMap<String, IntelAirfieldMapPoint>();
 
 	private IntelMapGUI parent = null;
+    private SquadronMember referencePlayer = null;
 
 	public IntelMapPanel(IntelMapGUI parent) throws PWCGException  
 	{
 		super(parent);
 
 		this.parent = parent;		
+		this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
 	}
 
 	public void setData() throws PWCGException 
@@ -256,8 +258,7 @@ public class IntelMapPanel extends MapPanelBase
             mapPoint.service = squadron.determineServiceForSquadron(parent.getMapDate());
             mapPoint.squadron = squadron;
             
-            Campaign campaign =     PWCGContextManager.getInstance().getCampaign();
-            if (squadron.getSquadronId() == campaign.getSquadronId())
+            if (squadron.getSquadronId() == referencePlayer.getSquadronId())
             {
                 mapPoint.isPlayerSquadron = true;
             }

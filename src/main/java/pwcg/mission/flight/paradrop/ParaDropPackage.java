@@ -8,7 +8,6 @@ import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
@@ -72,31 +71,15 @@ public class ParaDropPackage extends FlightPackage
             
         FlightInformation flightInformation = createFlightInformation(targetCoordinates);
         ParaDropFlight paradropFlight = new ParaDropFlight (flightInformation, missionBeginUnit);
-        isNightFlight(paradropFlight);
         
         paradropFlight.createUnitMission();
 
         return paradropFlight;
     }
 
-    public ParaDropFlight isNightFlight (ParaDropFlight paradropFlight) throws PWCGException 
-    {
-        paradropFlight.setNightFlight(false);
-        if (flightType == FlightTypes.PARATROOP_DROP)
-        {
-            int roll = RandomNumberGenerator.getRandom(100);
-            if (roll < 75)
-            {
-                paradropFlight.setNightFlight(true);
-            }
-        }            
-
-        return paradropFlight;
-    }
-
     private void addEscortIfNeeded(ParaDropFlight paradropFlight) throws PWCGException
     {
-        if (!paradropFlight.isNightFlight())
+        if (!mission.isNightMission())
         {
             addPossibleEscort(paradropFlight);
         }

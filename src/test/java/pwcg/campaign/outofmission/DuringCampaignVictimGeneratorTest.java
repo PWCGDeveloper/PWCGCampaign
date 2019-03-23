@@ -14,7 +14,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DuringCampaignVictimGeneratorTest
@@ -26,13 +26,13 @@ public class DuringCampaignVictimGeneratorTest
     {
         PWCGContextManager.setRoF(false);
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
-        campaign = CampaignCache.makeCampaign(CampaignCacheBoS.JG_51_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test
     public void testVictimGeneration () throws PWCGException
     {               
-        Squadron victorSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());        
+        Squadron victorSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());        
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
         Squadron victimSquadron = enemySquadronFinder.getRandomEnemyViableSquadron(victorSquadron, campaign.getDate());
 
@@ -51,7 +51,7 @@ public class DuringCampaignVictimGeneratorTest
     @Test
     public void testNotFromPLayerSquadron () throws PWCGException
     {               
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
+        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
         DuringCampaignVictimGenerator  victimGenerator = new DuringCampaignVictimGenerator(campaign, squadron);
         SquadronMember victim = victimGenerator.generateVictimAiCrew();
         assert(victim == null);

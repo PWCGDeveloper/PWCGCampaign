@@ -1,13 +1,14 @@
 package pwcg.mission.options;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.options.MapSeasonalParameters.Season;
 
@@ -26,7 +27,7 @@ public abstract class MapWeather
 	protected int pressure = 760;
 	protected int windDirection = 0;
 	
-	protected Flight playerFlight = null;
+	protected Mission mission;
 	
 	protected ArrayList<WindLayer> windLayers = new ArrayList<WindLayer> ();
 	
@@ -48,12 +49,10 @@ public abstract class MapWeather
 		}
     }
 
-	public void createMissionWeather(Flight playerFlight) throws PWCGException 
+	public void createMissionWeather(Mission mission) throws PWCGException 
 	{		
-	    this.playerFlight = playerFlight;
-	    
-	    int weatherSeverity = createCloud(playerFlight);
-        
+	    this.mission = mission;
+	    int weatherSeverity = createCloud();
         createWind(weatherSeverity);
     }
 
@@ -64,17 +63,17 @@ public abstract class MapWeather
     protected abstract String getOvercastSkys() throws PWCGException;
     public abstract Season getSeason(Date date);
 
-    protected int createCloud(Flight playerFlight) throws PWCGException 
+    protected int createCloud() throws PWCGException 
     {
         int weatherSeverity = 1;
         
-        if (playerFlight.isNightFlight())
+        if (mission.isNightMission())
         {
-            weatherSeverity = createNightCloud(playerFlight);
+            weatherSeverity = createNightCloud();
         }
         else
         {
-            weatherSeverity = createDayCloud(playerFlight);
+            weatherSeverity = createDayCloud();
         }
 
         weatherDescription += "\n    Cloud layer is " + cloudLevel + " meters.";
@@ -82,28 +81,36 @@ public abstract class MapWeather
         return weatherSeverity;
     }
 
-	protected int createDayCloud(Flight playerFlight) throws PWCGException 
+	protected int createDayCloud() throws PWCGException 
 	{
         int weatherSeverity = 1;
 
-        ConfigManagerCampaign configManager = playerFlight.getCampaign().getCampaignConfigManager();
+        ConfigManagerCampaign configManager = mission.getCampaign().getCampaignConfigManager();
         
+        weatherSeverity = generateRandomCloudCover(configManager);
+
+        setTurbulence(configManager);
+		
+		return weatherSeverity;
+	}
+
+    private int generateRandomCloudCover(ConfigManagerCampaign configManager) throws PWCGException
+    {
+        int weatherSeverity;
         int weatherOverCastClouds = configManager.getIntConfigParam(ConfigItemKeys.WeatherOvercastCloudsKey);
         int weatherHeavyClouds = weatherOverCastClouds + configManager.getIntConfigParam(ConfigItemKeys.WeatherHeavyCloudsKey);
         int weatherAverageClouds = weatherHeavyClouds + configManager.getIntConfigParam(ConfigItemKeys.WeatherAverageCloudsKey);
         int weatherLightsClouds = weatherAverageClouds + configManager.getIntConfigParam(ConfigItemKeys.WeatherLightCloudsKey);
         int weatherClearClouds = weatherLightsClouds + configManager.getIntConfigParam(ConfigItemKeys.WeatherClearCloudsKey);
 
-        FlightTypes playerFlightType= playerFlight.getFlightType();
-
         int sky = RandomNumberGenerator.getRandom(weatherClearClouds);
         if (sky < weatherOverCastClouds)  
         {
-            weatherSeverity = setWeatherForOvercast(playerFlightType);
+            weatherSeverity = setWeatherForOvercast();
         }
         else if (sky < weatherHeavyClouds)  
         {
-            weatherSeverity = setWeatherForHeavy(playerFlightType);
+            weatherSeverity = setWeatherForHeavy();
         }
         else if (sky < weatherAverageClouds)  
         {
@@ -117,11 +124,31 @@ public abstract class MapWeather
         {
             weatherSeverity = clearWeather();
         }
+        return weatherSeverity;
+    }
+	
 
-        setTurbulence(configManager);
-		
-		return weatherSeverity;
-	}
+    protected int determineCloudPattern()
+    {
+        int cloudPattern = 0;
+        
+        // A chance for the overcast layer
+        int overcastRoll = RandomNumberGenerator.getRandom(100);
+        if (overcastRoll < 50 && 
+            !(mission.getMissionFlightBuilder().hasPlayerFlightWithFlightType(FlightTypes.BOMB)) && 
+            !(mission.getMissionFlightBuilder().hasPlayerFlightWithFlightType(FlightTypes.DIVE_BOMB)) &&
+            !(mission.getMissionFlightBuilder().hasPlayerFlightWithFlightType(FlightTypes.RECON)) &&
+            !(mission.getMissionFlightBuilder().hasPlayerFlightWithFlightType(FlightTypes.STRATEGIC_BOMB)))
+        {
+            cloudPattern = RandomNumberGenerator.getRandom(10);
+        }
+        return cloudPattern;
+    }
+    
+    protected Date determineMapDate()
+    {
+        return mission.getCampaign().getDate();
+    }
 
     private void setTurbulence(ConfigManagerCampaign configManager) throws PWCGException
     {
@@ -132,12 +159,13 @@ public abstract class MapWeather
         }
     }
 
-    private int setWeatherForHeavy(FlightTypes playerFlightType) throws PWCGException
+    private int setWeatherForHeavy() throws PWCGException
     {
         int weatherSeverity;
-        if (playerFlightType == FlightTypes.RECON           ||
-            playerFlightType == FlightTypes.STRATEGIC_BOMB  ||
-            playerFlightType == FlightTypes.DIVE_BOMB)
+        if (mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(Arrays.asList(
+        		FlightTypes.RECON, 
+        		FlightTypes.STRATEGIC_BOMB, 
+        		FlightTypes.DIVE_BOMB)))
         {
             weatherSeverity = lightWeather();
         }
@@ -148,14 +176,15 @@ public abstract class MapWeather
         return weatherSeverity;
     }
 
-    private int setWeatherForOvercast(FlightTypes playerFlightType) throws PWCGException
+    private int setWeatherForOvercast() throws PWCGException
     {
         int weatherSeverity;
-        if (playerFlightType == FlightTypes.RECON           ||
-            playerFlightType == FlightTypes.STRATEGIC_BOMB  ||
-            playerFlightType == FlightTypes.GROUND_ATTACK   ||
-            playerFlightType == FlightTypes.LOW_ALT_BOMB   ||
-            playerFlightType == FlightTypes.DIVE_BOMB)
+        if (mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(Arrays.asList(
+        		FlightTypes.RECON, 
+        		FlightTypes.STRATEGIC_BOMB, 
+        		FlightTypes.GROUND_ATTACK, 
+        		FlightTypes.LOW_ALT_BOMB, 
+        		FlightTypes.DIVE_BOMB)))
         {
             weatherSeverity = lightWeather();
         }
@@ -166,7 +195,7 @@ public abstract class MapWeather
         return weatherSeverity;
     }
 
-    protected int createNightCloud(Flight playerFlight) throws PWCGException 
+    protected int createNightCloud() throws PWCGException 
     {
         int weatherSeverity = clearWeather();
         turbulence = 1;
@@ -304,22 +333,15 @@ public abstract class MapWeather
         return weatherSeverity;
     }
 
-    /**
-     * @param base
-     * @param random
-     */
     private void setCloudLevel(int base, int random)
     {
-        FlightTypes playerFLightType= playerFlight.getFlightType();
-        if (playerFLightType == FlightTypes.RECON ||
-            playerFLightType == FlightTypes.STRATEGIC_BOMB)
+        if (mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(Arrays.asList(FlightTypes.RECON, FlightTypes.STRATEGIC_BOMB)))
         {
             cloudLevel = 6000 + RandomNumberGenerator.getRandom(2000);
         }
-        else if (playerFLightType == FlightTypes.DIVE_BOMB ||
-                 playerFLightType == FlightTypes.BOMB)
+        else if (mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(Arrays.asList(FlightTypes.DIVE_BOMB, FlightTypes.BOMB)))
         {
-            cloudLevel = 4000 + RandomNumberGenerator.getRandom(3000);
+        	cloudLevel = 4000 + RandomNumberGenerator.getRandom(3000);
         }
         else
         {
@@ -353,7 +375,7 @@ public abstract class MapWeather
 
 		// Night missions are flown with less turbulence
 		int weatherDivisor = 1;
-		if (playerFlight.isNightFlight())
+		if (mission.isNightMission())
 		{
 			weatherDivisor = 2;
 		}
@@ -392,7 +414,7 @@ public abstract class MapWeather
 		windLayers.add(windLayer3000);
 		windLayers.add(windLayer5000);
 		
-        ConfigManagerCampaign configManager = playerFlight.getCampaign().getCampaignConfigManager();
+        ConfigManagerCampaign configManager = mission.getCampaign().getCampaignConfigManager();
         int maxWind = configManager.getIntConfigParam(ConfigItemKeys.MaxWindKey);
 		for (WindLayer windLayer : windLayers)
 		{

@@ -57,7 +57,7 @@ public class PlayerEscortedFlightBuilder
         rendevousCoords.setYPos(escortedFlightIngressPosition.getYPos());
 
 		double distanceToTarget = MathUtils.calcDist(targetCoordinates, rendevousCoords);
-        if (distanceToTarget < (AttackMcuSequence.CHECK_ZONE_INSTANCE + 10000))
+        if (distanceToTarget < (AttackMcuSequence.CHECK_ZONE_DEFAULT_DISTANCE + 10000))
         {
             rendevousCoords = moveRendezvousZoneAwayFromTarget(rendevousCoords, targetCoordinates);
         }
@@ -66,10 +66,11 @@ public class PlayerEscortedFlightBuilder
 	}
 	
 
+	
     private Coordinate moveRendezvousZoneAwayFromTarget(Coordinate initialRendevousCoords, Coordinate targetPosition) throws PWCGException
     {
         double angleAwayFromTarget = MathUtils.calcAngle(targetPosition, initialRendevousCoords);
-        Coordinate rendevousCoords = MathUtils.calcNextCoord(initialRendevousCoords, angleAwayFromTarget, AttackMcuSequence.CHECK_ZONE_INSTANCE + 10000);
+        Coordinate rendevousCoords = MathUtils.calcNextCoord(initialRendevousCoords, angleAwayFromTarget, AttackMcuSequence.CHECK_ZONE_DEFAULT_DISTANCE + 10000);
         rendevousCoords.setYPos(initialRendevousCoords.getYPos());
         return rendevousCoords;
     }

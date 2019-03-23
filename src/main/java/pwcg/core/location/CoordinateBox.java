@@ -1,5 +1,6 @@
 package pwcg.core.location;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.context.FrontParameters;
@@ -7,6 +8,8 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.flight.Flight;
+import pwcg.mission.mcu.McuWaypoint;
 
 public class CoordinateBox
 {
@@ -50,6 +53,20 @@ public class CoordinateBox
         return coordinateBox;
     }
 
+    
+    public static CoordinateBox coordinateBoxFromFlights (List<Flight> flights) throws PWCGException
+    {
+        List<Coordinate> flightWaypointCoordinates = new ArrayList<>();
+        for (Flight flight : flights)
+        {
+            for (McuWaypoint waypoint : flight.getWaypointPackage().getWaypointsForLeadPlane())
+            {
+                flightWaypointCoordinates.add(waypoint.getPosition().copy());
+            }
+        }        
+        CoordinateBox coordinateBox = coordinateBoxFromCoordinateList(flightWaypointCoordinates);
+        return coordinateBox;
+    }
 
     public void setBoxCornersFromCoordinates(List<Coordinate> coordinates) throws PWCGException
     {
@@ -86,6 +103,14 @@ public class CoordinateBox
 
     public void expandBox(int meters) throws PWCGException
     {
+        if (meters < 0)
+        {
+            if ((getBoxWidth() < Math.abs(meters)) || getBoxHeight() < Math.abs(meters))
+            {
+                return;
+            }
+        }
+        
         sw.setXPos(sw.getXPos() - meters);
         sw.setZPos(sw.getZPos() - meters);
 
@@ -178,6 +203,20 @@ public class CoordinateBox
         return ne;
     }
 
+    public Coordinate chooseCoordinateWithinBox() throws PWCGException
+    {
+        int distanceX = new Double(ne.getXPos() - sw.getXPos()).intValue();
+        int distanceZ = new Double(ne.getZPos() - sw.getZPos()).intValue();
+        
+        int offsetX = RandomNumberGenerator.getRandom(distanceX);
+        int offsety = RandomNumberGenerator.getRandom(distanceZ);
+        
+        Coordinate approximatePosition = sw.copy();
+        approximatePosition.setXPos(approximatePosition.getXPos() + offsetX);
+        approximatePosition.setZPos(approximatePosition.getZPos() + offsety);
+        return approximatePosition;
+    }
+
     public Coordinate getSW()
     {
         return sw;
@@ -192,8 +231,7 @@ public class CoordinateBox
     {
         return center;
     }
-    
-
+ 
     public double getLongestEdge()
     {
         double ewEdge = ne.getZPos() - sw.getZPos();

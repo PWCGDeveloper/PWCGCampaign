@@ -4,7 +4,7 @@ import java.util.Date;
 
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.Mission;
 import pwcg.mission.options.MapSeasonalParameters.Season;
 import pwcg.mission.utils.MissionTime;
 
@@ -29,15 +29,17 @@ public abstract class MissionOptions
 	
     protected String playerConfig = "";
     protected MissionTime missionTime = null;
+    protected Mission mission = null;
 
     public MissionOptions()
     {       
     }
 
-    public void createFlightSpecificMissionOptions(Flight playerFlight) throws PWCGException 
+    public void createFlightSpecificMissionOptions(Mission mission) throws PWCGException 
     {
-        PWCGContextManager.getInstance().getCurrentMap().getMapWeather().createMissionWeather(playerFlight);
-        createMissionTime (playerFlight.getCampaign().getDate(), playerFlight.isNightFlight());
+    	this.mission = mission;
+        PWCGContextManager.getInstance().getCurrentMap().getMapWeather().createMissionWeather(mission);
+        createMissionTime();
     }
     
     public MapSeasonalParameters getSeasonBasedParameters(Date date) throws PWCGException
@@ -63,9 +65,9 @@ public abstract class MissionOptions
     	throw new PWCGException("Badly defined season: " + season);
     }
 
-    private void createMissionTime(Date date, boolean isNightFlight) throws PWCGException 
+    private void createMissionTime() throws PWCGException 
     {          
-        missionTime = new MissionTime(date, isNightFlight);
+        missionTime = new MissionTime(mission.getCampaign().getDate(), mission.isNightMission());
         missionTime.generateMissionDateTime();
     }
 

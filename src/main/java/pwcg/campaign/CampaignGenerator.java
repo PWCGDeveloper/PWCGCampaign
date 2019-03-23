@@ -4,11 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
@@ -18,8 +16,6 @@ public class CampaignGenerator
 {
     private CampaignGeneratorModel generatorModel;
     private Campaign campaign;
-    private Squadron playerSquadron;
-    private ICountry country;
     
     public CampaignGenerator(CampaignGeneratorModel generatorModel)
     {
@@ -28,9 +24,6 @@ public class CampaignGenerator
 
     public Campaign generate() throws PWCGException
     {
-        this.country = generatorModel.getService().getCountry();
-        this.playerSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadronByNameAndCountry(generatorModel.getSquadronName(), country, generatorModel.getCampaignDate());
-
         validateCampaignInputs();
         createCampaignBasis();
         staffSquadrons();
@@ -47,16 +40,9 @@ public class CampaignGenerator
 
     private void createCampaignBasis() throws PWCGException
     {
-        setCountryForNewCampaign();
         setMapForNewCampaign();
         createCampaign();
         setCampaignAces();
-        determineCampaignSquadron();
-    }
-
-	private void setCountryForNewCampaign()
-    {
-        country = CountryFactory.makeCountryByService(generatorModel.getService());        
     }
 
     private void createCampaign() throws PWCGException
@@ -65,7 +51,6 @@ public class CampaignGenerator
         campaign.initializeCampaignConfigs();
         campaign.setDate(generatorModel.getCampaignDate());
         campaign.getCampaignData().setName(generatorModel.getCampaignName());
-        campaign.setSquadId(playerSquadron.getSquadronId());
         campaign.getCampaignData().setCoop(generatorModel.isCoop());
 	}
 
@@ -91,20 +76,13 @@ public class CampaignGenerator
 
     private void setMapForNewCampaign() throws PWCGException
     {
-        Squadron squad = PWCGContextManager.getInstance().getSquadronManager().getSquadronByNameAndCountry(generatorModel.getSquadronName(), country, generatorModel.getCampaignDate());
+        Squadron squad = PWCGContextManager.getInstance().getSquadronManager().getSquadronByName(generatorModel.getSquadronName(), generatorModel.getCampaignDate());
         IAirfield airfield = squad.determineCurrentAirfieldAnyMap(generatorModel.getCampaignDate());
         List<FrontMapIdentifier> airfieldMaps = PWCGContextManager.getInstance().getMapForAirfield(airfield.getName());
         FrontMapIdentifier initialAirfieldMap = airfieldMaps.get(0);
 
         PWCGContextManager.getInstance().changeContext(initialAirfieldMap);
     }
-
-	private void determineCampaignSquadron() throws PWCGException
-	{
-		playerSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadronByNameAndCountry(
-		        generatorModel.getSquadronName(), country, generatorModel.getCampaignDate());
-        campaign.setSquadId(playerSquadron.getSquadronId());
-	}
 
 	private void validateCampaignInputs()
 	        throws PWCGUserException, PWCGException

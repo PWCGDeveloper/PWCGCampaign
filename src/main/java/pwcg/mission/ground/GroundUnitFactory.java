@@ -24,9 +24,8 @@ public class GroundUnitFactory
 
     public SpotLightGroup createSpotLightGroup() throws PWCGException 
     {
-        Coalition playerCoalition = Coalition.getFriendlyCoalition(campaign.determineCountry());
-        MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
-        missionBeginUnit.initialize(location, 12000, playerCoalition);
+        MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone(location.copy(), 12000);
+        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalitions(Coalition.getAllCoalitions());
 
         String nationality = country.getNationality();
         String name = nationality + " Spotlight Battery";

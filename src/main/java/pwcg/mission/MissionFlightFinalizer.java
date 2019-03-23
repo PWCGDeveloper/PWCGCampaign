@@ -6,33 +6,31 @@ import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.balloondefense.AiBalloonDefenseFlight;
-import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.mcu.McuCheckZone;
-import pwcg.mission.mcu.group.SelfDeactivatingCheckZone;
 import pwcg.mission.mcu.group.VirtualWayPoint;
 
 public class MissionFlightFinalizer
 {
     private Campaign campaign;
-    private MissionFlightBuilder missionFlightBuilder;
+    private Mission mission;
     
-    public MissionFlightFinalizer (Campaign campaign, MissionFlightBuilder missionFlightBuilder)
+    public MissionFlightFinalizer (Campaign campaign, Mission mission)
     {
         this.campaign = campaign;
-        this.missionFlightBuilder = missionFlightBuilder;
+        this.mission = mission;
     }
     
     public List<Flight> finalizeMissionFlights() throws PWCGException 
     {
         convertForCoop();
-        for (Flight flight : missionFlightBuilder.getAllAerialFlights())
+        for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
             flight.finalizeFlight();
         }
 
-        MissionFlightKeeper missionFlightKeeper = new MissionFlightKeeper(campaign, missionFlightBuilder);
+        MissionFlightKeeper missionFlightKeeper = new MissionFlightKeeper(campaign, mission);
         List<Flight> finalizedMissionFlights = missionFlightKeeper.keepLimitedFlights();
 
         setFlightAttackMcu();
@@ -47,15 +45,15 @@ public class MissionFlightFinalizer
         if (campaign.getCampaignData().isCoop())
         {
             MissionCoopConverter coopConverter = new MissionCoopConverter();
-            coopConverter.convertToCoop(missionFlightBuilder);
+            coopConverter.convertToCoop(mission.getMissionFlightBuilder());
         }
     }
 
 
     private void setFlightAttackMcu() throws PWCGException  
     {
-        List<Flight> axisFlights = missionFlightBuilder.getAllAxisFlights();
-        List<Flight> alliedFlights = missionFlightBuilder.getAllAlliedFlights();
+        List<Flight> axisFlights = mission.getMissionFlightBuilder().getAllAxisFlights();
+        List<Flight> alliedFlights = mission.getMissionFlightBuilder().getAllAlliedFlights();
         
         for (Flight axisFlight : axisFlights)
         {
@@ -74,50 +72,52 @@ public class MissionFlightFinalizer
         }
     }
 
+    // TODO COOP TEST THIS - verify setting virtual flight triggers to player plane ids
     private void setCzTriggers() throws PWCGException  
     {
-        for (Flight flight : missionFlightBuilder.getAllAerialFlights())
+        for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
             // Trigger the flight on proximity to player
-            triggerOtherFlightCZFromMyFlight(flight);
+            triggerOtherFlightCZFromPlayerFlight(flight);
             for (Unit linkedUnit  : flight.getLinkedUnits())
             {
                 if (linkedUnit instanceof Flight)
                 {
                     Flight linkedFlight = (Flight)linkedUnit;
-                    triggerOtherFlightCZFromMyFlight(linkedFlight);
+                    triggerOtherFlightCZFromPlayerFlight(linkedFlight);
                 }
             }
         }
     }
 
-    private void triggerOtherFlightCZFromMyFlight(Flight flight) throws PWCGException 
+    // TODO COOP TEST THIS - verify setting virtual flight triggers to player plane ids
+    private void triggerOtherFlightCZFromPlayerFlight(Flight virtualFlight) throws PWCGException 
     {
-        List<PlaneMCU> playerPlanes = missionFlightBuilder.getPlayerFlight().getPlayerPlanes();
-        if (!playerPlanes.isEmpty())
+    	if (!virtualFlight.isVirtual())
+    	{
+    		return;
+    	}
+    	
+        // Makes linked activate on the players plane rather than any coalition
+        WaypointPackage waypointpackage = virtualFlight.getWaypointPackage();
+        if (waypointpackage != null && waypointpackage instanceof VirtualWaypointPackage)
         {
-            // Makes linked activate on the players plane rather than any coalition
-            WaypointPackage waypointpackage = flight.getWaypointPackage();
-            if (waypointpackage != null && waypointpackage instanceof VirtualWaypointPackage)
+            VirtualWaypointPackage virtualWaypointPackage = (VirtualWaypointPackage)waypointpackage;
+            for (VirtualWayPoint vwp : virtualWaypointPackage.getVirtualWaypoints())
             {
-                VirtualWaypointPackage virtualWaypointPackage = (VirtualWaypointPackage)waypointpackage;
-                for (VirtualWayPoint vwp : virtualWaypointPackage.getVirtualWaypoints())
+                if (vwp != null && vwp instanceof VirtualWayPoint)
                 {
-                    if (vwp != null && vwp instanceof VirtualWayPoint)
-                    {
-                        VirtualWayPoint vwpCZ = (VirtualWayPoint)vwp;
-                        SelfDeactivatingCheckZone selfDeactivatingCheckZone = vwpCZ.getTriggerCheckZone();
-                        McuCheckZone checkZone = selfDeactivatingCheckZone.getCheckZone();
-                        checkZone.setCheckZoneForPlayer(flight.getMission());
-                    }
+                    VirtualWayPoint vwpCZ = (VirtualWayPoint)vwp;
+                    McuCheckZone checkZone = vwpCZ.getTriggerCheckZone().getCheckZone();
+                    checkZone.triggerCheckZoneByMultipleObjects(virtualFlight.getMission().getMissionFlightBuilder().determinePlayerPlaneIds());
                 }
             }
-            
-            if (flight instanceof AiBalloonDefenseFlight)
-            {
-                AiBalloonDefenseFlight balloonDefenseFlight = (AiBalloonDefenseFlight)flight;
-                balloonDefenseFlight.setBalloonCheckZoneForPlayer(playerPlanes.get(0).getEntity().getIndex());
-            }
+        }
+        
+        if (virtualFlight instanceof AiBalloonDefenseFlight)
+        {
+            AiBalloonDefenseFlight balloonDefenseFlight = (AiBalloonDefenseFlight)virtualFlight;
+            balloonDefenseFlight.setBalloonCheckZoneForPlayer(virtualFlight.getMission().getMissionFlightBuilder().determinePlayerPlaneIds());
         }
     }
 

@@ -123,7 +123,7 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 
         JPanel leavePlayerWoundInfoPanel = new JPanel(new GridLayout(0, 1));
         leavePlayerWoundInfoPanel.setOpaque(false);
-        for (SquadronMember player : campaign.getPlayers())
+        for (SquadronMember player : campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
         {
             if (player.getRecoveryDate() != null)
             {

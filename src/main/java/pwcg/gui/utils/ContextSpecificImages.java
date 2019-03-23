@@ -1,16 +1,15 @@
 package pwcg.gui.utils;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 public class ContextSpecificImages
 {
     public static String menuPathForNation() throws PWCGException 
     {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        
-        String nationality = campaign.determineCountry().getNationality();
+		SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        String nationality = referencePlayer.determineSquadron().getCountry().getNationality();
         String picPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgImagesDir() + "Menus\\" + nationality + "\\";
         
         return picPath;

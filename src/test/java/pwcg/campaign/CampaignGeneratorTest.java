@@ -16,6 +16,7 @@ import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -37,8 +38,10 @@ public class CampaignGeneratorTest
     public void createWWICampaign () throws PWCGException
     {        
     	Campaign campaign = generateCampaign(101003, DateUtils.getDateYYYYMMDD("19161001"));
-        assert (campaign.getCampaignData().getSquadId() == 101003);
-        assert (campaign.determineCountry().getCountry() == Country.FRANCE);
+    	assert(campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().size() == 1);
+    	SquadronMember player = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+        assert (player.determineSquadron().getSquadronId() == 101003);
+        assert (player.determineSquadron().determineSquadronCountry(campaign.getDate()).getCountry() == Country.FRANCE);
         assert (campaign.getCampaignData().getName().equals(CampaignCacheRoF.TEST_CAMPAIGN_NAME));
         assert(campaign.getPersonnelManager().getAllSquadronPersonnel().size() > 100);
         

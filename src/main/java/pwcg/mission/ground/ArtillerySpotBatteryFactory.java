@@ -5,6 +5,7 @@ import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PositionsManager;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -18,13 +19,15 @@ public class ArtillerySpotBatteryFactory
     public static final int MAX_ARTILLERY_RANGE = 15000;
 
     private Campaign campaign;
+    private Squadron squadron;
     private Coordinate position;
     private Coordinate targetPosition;
     private ICountry country;
     
-    public ArtillerySpotBatteryFactory (Campaign campaign, Coordinate location, Coordinate targetPosition, ICountry country)
+    public ArtillerySpotBatteryFactory (Campaign campaign, Squadron squadron, Coordinate location, Coordinate targetPosition, ICountry country)
     {
         this.campaign  = campaign;
+        this.squadron = squadron;
         this.position  = location.copy();
         this.targetPosition  = targetPosition.copy();
         this.country  = country;
@@ -62,7 +65,7 @@ public class ArtillerySpotBatteryFactory
     private Coordinate determineArtilleryPosition() throws PWCGException
     {
         PositionsManager positionsManager = new PositionsManager(campaign.getDate());
-        String airfieldName = campaign.getAirfieldName();
+        String airfieldName = squadron.determineCurrentAirfieldName(campaign.getDate());
         IAirfield field =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
         Coordinate artilleryPosition = positionsManager.getClosestDefinitePosition(country.getSide(), field.getPosition().copy());
         

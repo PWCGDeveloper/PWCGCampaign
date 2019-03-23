@@ -13,7 +13,6 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -35,8 +34,6 @@ public class SquadronMemberReplacementFactoryTest
         PWCGContextManager.setRoF(false);
         campaignDate = DateUtils.getDateYYYYMMDD("19420801");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
-        Mockito.when(campaign.determineCountry()).thenReturn(CountryFactory.makeCountryByCode(101));
-        Mockito.when(campaign.determineCountry()).thenReturn(CountryFactory.makeCountryByCode(101));
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
     }
 

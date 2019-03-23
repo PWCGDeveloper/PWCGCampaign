@@ -8,9 +8,11 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.MedalManagerFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.ww1.country.RoFServiceManager;
@@ -32,7 +34,8 @@ public class RoFGermanMedalManagerTest extends MedalManagerTestBase
         super.setup();
         Mockito.when(country.isCountry(Country.GERMANY)).thenReturn(true);
         Mockito.when(player.getPlayerRegion()).thenReturn("");
-        medalManager = MedalManagerFactory.createMedalManager(campaign);
+        ICountry country = CountryFactory.makeCountryByCountry(Country.GERMANY);
+        medalManager = MedalManagerFactory.createMedalManager(country, campaign);
         medals.clear();
     }
     

@@ -2,27 +2,31 @@ package pwcg.mission.data;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.io.mission.MissionFileWriter;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.io.MissionFileWriter;
 
 public class MissionHeaderGenerator
 {
 
     public MissionHeader generateMissionHeader(Campaign campaign, Mission mission) throws PWCGException
     {
-        Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight();
+        // Even for Coop flights we have to set the header.  Doesn't really matter which flight 
+        // as long as itis a player flight
+        Flight myFlight = mission.getMissionFlightBuilder().getReferencePlayerFlight();
+        Squadron mySquadron =myFlight.getSquadron();
         
         MissionHeader missionHeader = new MissionHeader();
         
         String missionFileName = MissionFileWriter.getMissionFileName(campaign) ;
         missionHeader.setMissionFileName(missionFileName);
         
-        missionHeader.setAirfield(campaign.getAirfieldName());
+        missionHeader.setAirfield(mySquadron.determineCurrentAirfieldName(campaign.getDate()));
         missionHeader.setDate(DateUtils.getDateStringYYYYMMDD(campaign.getDate()));
-        missionHeader.setSquadron(campaign.determineSquadron().determineDisplayName(campaign.getDate()));
+        missionHeader.setSquadron(mySquadron.determineDisplayName(campaign.getDate()));
         missionHeader.setAircraftType(myFlight.getPlanes().get(0).getDisplayName());
 
         

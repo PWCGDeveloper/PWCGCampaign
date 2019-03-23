@@ -4,7 +4,6 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -54,9 +53,8 @@ public class ArtillerySpotPackage extends FlightPackage
     private Flight createPlayerFlight(GroundUnitCollection groundUnits, Coordinate targetCoordinates, Coordinate startCoords) throws PWCGException
     {
         Flight artySpot;
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        Side campaignSide = campaign.determineCountry().getSide();
-        ArtillerySpotArtilleryGroup friendlyArtillery = getFriendlyArtillery(groundUnits, campaignSide);
+        Side squadronSide = squadron.determineSide();
+        ArtillerySpotArtilleryGroup friendlyArtillery = getFriendlyArtillery(groundUnits, squadronSide);
         
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
         missionBeginUnit.initialize(startCoords.copy());

@@ -31,9 +31,9 @@ public class TroopConcentrationFactory
 
     private MissionBeginUnitCheckZone buildMissionBegin() throws PWCGException
     {
-        Coalition playerCoalition = Coalition.getFriendlyCoalition(campaign.determineCountry());
-        MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
-        missionBeginUnit.initialize(targetDefinition.getTargetPosition(), 10000, playerCoalition);
+        Coalition enemyCoalition  = Coalition.getCoalitionBySide(targetDefinition.getTargetCountry().getSide().getOppositeSide());
+        MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone(targetDefinition.getTargetPosition(), 15000);
+        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(enemyCoalition);
         return missionBeginUnit;
     }
 

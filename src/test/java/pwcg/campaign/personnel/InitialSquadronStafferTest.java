@@ -12,8 +12,7 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
-import pwcg.testutils.CampaignCacheRoF;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class InitialSquadronStafferTest
@@ -28,7 +27,7 @@ public class InitialSquadronStafferTest
     {
         PWCGContextManager.setRoF(false);
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheBoS.JG_51_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
 
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(20111052);
         
@@ -44,7 +43,7 @@ public class InitialSquadronStafferTest
     {
         PWCGContextManager.setRoF(true);
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_2_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
 
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(101002);
         
@@ -60,7 +59,7 @@ public class InitialSquadronStafferTest
     {
         PWCGContextManager.setRoF(true);
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheRoF.JASTA_11_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
 
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(501011);
         

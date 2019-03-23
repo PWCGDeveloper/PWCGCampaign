@@ -199,47 +199,27 @@ public class FrenchMedalManager extends RoFMedalManager
         return awardFighter(pilot, service, victoriesThisMission);
     }
 
-	@Override
+    @Override
 	public List<Medal> getAllAwardsForService() throws PWCGException
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.addAll(getWoundBadgesInOrder());
-		medalsInOrder.addAll(getAllBadgesInOrder());
-		return medalsInOrder;
+		List<Medal> medals = new ArrayList<>();
+		medals.addAll(getWoundBadges());
+		medals.addAll(getAllBadges());
+		return medals;
 	}
 
-	@Override
-	public List<Medal> getAllMedalsInOrder() throws PWCGException
+	private List<Medal> getWoundBadges()
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-
-		medalsInOrder.add( medals.get(MILITARY_MEDAL));
-		medalsInOrder.add( medals.get(CROIX_DE_GUERRE));
-		medalsInOrder.add( medals.get(CROIX_DE_GUERRE_BRONZE_STAR));
-		medalsInOrder.add( medals.get(CROIX_DE_GUERRE_SILVER_STAR));
-		medalsInOrder.add( medals.get(CROIX_DE_GUERRE_GILT_STAR));
-		medalsInOrder.add( medals.get(CROIX_DE_GUERRE_BRONZE_PALM));
-		medalsInOrder.add( medals.get(CROIX_DE_GUERRE_SILVER_PALM));
-		medalsInOrder.add( medals.get(MEDAILLE_DE_HONNEUR));
-		medalsInOrder.add( medals.get(LEGION_DE_HONNEUR));
-
-		return medalsInOrder;
-	}
-
-	@Override
-	public List<Medal> getWoundBadgesInOrder()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(IBM));		
-		return medalsInOrder;
+		List<Medal> medals = new ArrayList<>();
+		medals.add( medals.get(IBM));		
+		return medals;
 	}
 	
-	@Override
-	public List<Medal> getAllBadgesInOrder()
+	private List<Medal> getAllBadges()
 	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(PILOTS_BADGE));		
-		return medalsInOrder;
+		List<Medal> medals = new ArrayList<>();
+		medals.add( medals.get(PILOTS_BADGE));		
+		return medals;
 	}
 
 }

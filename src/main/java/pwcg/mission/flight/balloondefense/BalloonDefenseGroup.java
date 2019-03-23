@@ -73,8 +73,9 @@ public class BalloonDefenseGroup extends GroundUnit
         // Enemy invokes winch down
         Coalition enemyCoalition = Coalition.getEnemyCoalition(pwcgGroundUnitInformation.getCountry());
 	    
-		winchCheckZone = new McuCheckZone(enemyCoalition);
+		winchCheckZone = new McuCheckZone();
 		winchCheckZone.setZone(1000);
+		winchCheckZone.triggerCheckZoneByPlaneCoalition(enemyCoalition);
 
 		winchCheckZone.setName("Winch Check Zone for " + pwcgGroundUnitInformation.getName());
 		winchCheckZone.setDesc("Winch Check Zone for " + pwcgGroundUnitInformation.getName());
@@ -191,20 +192,20 @@ public class BalloonDefenseGroup extends GroundUnit
 	{
 		return balloon;
 	}
-	
-	/**
-	 * TODO IMPROVEMENT maybe put some trucks around the balloon
-	 */
+
 	@Override
 	public List<IVehicle> getVehicles() 
 	{
 		return new ArrayList<IVehicle>();
 	}
 
-    public void setBalloonCheckZoneForPlayer(int index)
+    public void setBalloonCheckZoneForPlayer(List<Integer> playerPlaneIds)
     {
         MissionBeginUnitCheckZone mbu = (MissionBeginUnitCheckZone) pwcgGroundUnitInformation.getMissionBeginUnit();
-        mbu.getCheckZone().setCZObject(index);
+        for (int playerPlaneId : playerPlaneIds)
+        {
+        	mbu.getSelfDeactivatingCheckZone().setCZObject(playerPlaneId);
+        }
     }
 }	
 

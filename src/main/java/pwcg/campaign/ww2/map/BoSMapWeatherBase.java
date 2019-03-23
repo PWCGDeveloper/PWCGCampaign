@@ -7,7 +7,6 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.options.MapSeasonalParameters;
 import pwcg.mission.options.MapSeasonalParameters.Season;
 import pwcg.mission.options.MapWeather;
@@ -25,7 +24,6 @@ public class BoSMapWeatherBase extends MapWeather
     protected String getClearSkys() throws PWCGException
     {
         String skys = addCloudPattern("00_clear_");
-        
         return skys;
     }
 
@@ -33,7 +31,6 @@ public class BoSMapWeatherBase extends MapWeather
     protected String getLightSkys() throws PWCGException
     {
         String skys = addCloudPattern("01_Light_");
-        
         return skys;
     }
 
@@ -41,7 +38,6 @@ public class BoSMapWeatherBase extends MapWeather
     protected String getAverageSkys() throws PWCGException
     {
         String skys = addCloudPattern("03_Heavy_");
-
         return skys;
     }
 
@@ -49,7 +45,6 @@ public class BoSMapWeatherBase extends MapWeather
     protected String getHeavySkys() throws PWCGException
     {
         String skys = addCloudPattern("03_Heavy_");
-
         return skys;
     }
 
@@ -57,27 +52,17 @@ public class BoSMapWeatherBase extends MapWeather
     protected String getOvercastSkys() throws PWCGException
     {
         String skys = addCloudPattern("04_Overcast_");
-
         return skys;
     }
 
     protected String addCloudPattern(String skys) throws PWCGException
     {
         MissionOptions missionOptions = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions();
-        MapSeasonalParameters mapSeasonalParameters = missionOptions.getSeasonBasedParameters(playerFlight.getCampaign().getDate());
+        MapSeasonalParameters mapSeasonalParameters = missionOptions.getSeasonBasedParameters(determineMapDate());
         String seasonString = mapSeasonalParameters.getSeason();
         String weather = seasonString + "\\" + skys;
         
-        int cloudPattern = 0;
-        
-        // A chance for the overcast layer
-        int overcastRoll = RandomNumberGenerator.getRandom(100);
-        if (overcastRoll < 50 && 
-            !(playerFlight.getFlightType() == FlightTypes.BOMB) && 
-            !(playerFlight.getFlightType() == FlightTypes.DIVE_BOMB) )
-        {
-            cloudPattern = RandomNumberGenerator.getRandom(10);
-        }
+        int cloudPattern = determineCloudPattern();
         
         weather += "0" + cloudPattern + "\\sky.ini";
         return weather;

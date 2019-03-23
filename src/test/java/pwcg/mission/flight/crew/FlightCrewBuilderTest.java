@@ -12,7 +12,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 public class FlightCrewBuilderTest 
 {
@@ -22,19 +22,19 @@ public class FlightCrewBuilderTest
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        campaign = CampaignCache.makeCampaign(CampaignCacheBoS.KG53_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.KG53_PROFILE);
     }
 
     @Test
     public void testPlayerFlightGeneration() throws PWCGException
     {
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
+        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.KG53_PROFILE.getSquadronId());
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(campaign, squadron);
         List<SquadronMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
-        List<SquadronMember> players = campaign.getPlayers();
+        List<SquadronMember> players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
         boolean playerFound = false;
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId());        
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadrontTestProfile.KG53_PROFILE.getSquadronId());        
         for (SquadronMember crew : assignedCrewMap)
         {
             assert(squadronPersonnel.isActiveSquadronMember(crew.getSerialNumber()));
@@ -54,7 +54,7 @@ public class FlightCrewBuilderTest
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(campaign, squadron);
         List<SquadronMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
-        List<SquadronMember> players = campaign.getPlayers();
+        List<SquadronMember> players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());        
         boolean playerFound = false;
         for (SquadronMember crew : assignedCrewMap)

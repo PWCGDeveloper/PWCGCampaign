@@ -18,7 +18,7 @@ import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlaneFactoryTest
@@ -29,10 +29,10 @@ public class PlaneFactoryTest
     Flight flight;
 
     @Before
-    public void fighterFlightTests() throws PWCGException
+    public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        campaign = CampaignCache.makeCampaign(CampaignCacheBoS.KG53_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.KG53_PROFILE);
     }
 
     @Test
@@ -40,19 +40,20 @@ public class PlaneFactoryTest
     {
         Mockito.when(flight.isVirtual()).thenReturn(false);
 
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
+        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.KG53_PROFILE.getSquadronId());
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(campaign, squadron, flight);
         List<PlaneMCU> assignedPlanes = planeFactory.createPlanesForFlight(4);
         
         boolean playerFound = false;
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(campaign.getSquadronId());        
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadrontTestProfile.KG53_PROFILE.getSquadronId());        
         int callnum = 1;
         for (PlaneMCU plane : assignedPlanes)
         {
             assert(squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
             assert(plane.getCallsign() == Callsign.SEAGULL);
             assert(plane.getCallnum() == callnum++);
-            for (SquadronMember player : campaign.getPlayers())
+            List<SquadronMember> players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+            for (SquadronMember player : players)
             {
                 if (plane.getPilot().getSerialNumber() == player.getSerialNumber())
                 {
@@ -73,7 +74,7 @@ public class PlaneFactoryTest
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(campaign, squadron, flight);
         List<PlaneMCU> assignedPlanes = planeFactory.createPlanesForFlight(4);
         
-        List<SquadronMember> players = campaign.getPlayers();        
+        List<SquadronMember> players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
         boolean playerFound = false;
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());        
         int callnum = 1;

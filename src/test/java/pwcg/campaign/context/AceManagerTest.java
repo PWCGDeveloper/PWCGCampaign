@@ -16,6 +16,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
@@ -26,7 +27,8 @@ import pwcg.core.utils.DateUtils;
 public class AceManagerTest
 {
 	@Mock private Campaign campaign;
-	@Mock private CampaignPersonnelManager personnelManager;
+    @Mock private CampaignPersonnelManager personnelManager;
+    @Mock private SquadronPersonnel squadronPersonnel;
 	@Mock private Ace wernerVoss;
 	@Mock private Ace georgesGuynemer;
 
@@ -41,7 +43,9 @@ public class AceManagerTest
     	
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170501"));
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-    	Mockito.when(personnelManager.getCampaignAces()).thenReturn(campaignAces);
+        Mockito.when(personnelManager.getCampaignAces()).thenReturn(campaignAces);
+        Mockito.when(personnelManager.getSquadronPersonnel(Mockito.anyInt())).thenReturn(squadronPersonnel);
+        Mockito.when(squadronPersonnel.isPlayerSquadron()).thenReturn(false);
     	
     	Mockito.when(wernerVoss.getSerialNumber()).thenReturn(101175);
     	Mockito.when(wernerVoss.getSquadronId()).thenReturn(501010);

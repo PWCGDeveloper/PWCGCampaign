@@ -2,22 +2,21 @@ package pwcg.mission.flight;
 
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
-import pwcg.mission.MissionFlightBuilder;
+import pwcg.mission.Mission;
 import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.group.VirtualWayPoint;
 
 public class FlightProximityAnalyzer
 {
-    private MissionFlightBuilder missionFlightBuilder = null;
+    private Mission mission = null;
 
-    public FlightProximityAnalyzer (MissionFlightBuilder mission)
+    public FlightProximityAnalyzer (Mission mission)
     {
-        this.missionFlightBuilder = mission;
+        this.mission = mission;
     }
 
     public void plotFlightEncounters() throws PWCGException 
@@ -27,33 +26,47 @@ public class FlightProximityAnalyzer
 
     public double proximityToPlayerAirbase(Flight aiFlight) throws PWCGException 
     {
-        // Plot the minute by minute path of each flight
-        VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
-        List<VirtualWayPointCoordinate> aiFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(aiFlight);
+        double closestDistanceToEnemyPlayerField = PositionFinder.ABSURDLY_LARGE_DISTANCE;
 
-        double closestDistanceToPlayerField = PositionFinder.ABSURDLY_LARGE_DISTANCE;
-        
-        Coordinate playerFieldCoordinte = PWCGContextManager.getInstance().getCampaign().getPosition().copy();
-        for (VirtualWayPointCoordinate vwp : aiFlightPath)
+        // TODO COOP test close to enemy airfield and not friendly
+        for (Flight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
         {
-            double distanceToPlayerField = MathUtils.calcDist(playerFieldCoordinte, vwp.getCoordinate());
-            if (closestDistanceToPlayerField > distanceToPlayerField)
+            if (playerFlight.getSquadron().determineSide() != aiFlight.getSquadron().determineSide())
             {
-                closestDistanceToPlayerField = distanceToPlayerField;
+                Coordinate playerFieldCoordinte = playerFlight.getSquadron().determineCurrentPosition(aiFlight.getCampaign().getDate());
+                VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
+                List<VirtualWayPointCoordinate> aiFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(aiFlight);
+                for (VirtualWayPointCoordinate vwp : aiFlightPath)
+                {
+                    double distanceToPlayerField = MathUtils.calcDist(playerFieldCoordinte, vwp.getCoordinate());
+                    if (closestDistanceToEnemyPlayerField > distanceToPlayerField)
+                    {
+                        closestDistanceToEnemyPlayerField = distanceToPlayerField;
+                    }
+                }
             }
         }
         
-        return closestDistanceToPlayerField;
+        return closestDistanceToEnemyPlayerField;
     }
 
     private void plotPlayerFlightEncounters() throws PWCGException 
     {
-        // Plot my flight against every other flight
         int playerEncounerDistance = VirtualWayPoint.VWP_TRIGGGER_DISTANCE;
-        
-        for (Flight flight : missionFlightBuilder.getMissionFlights())
+
+        // TODO COOP test close to enemy flights and not friendly
+        for (Flight aiFlight : mission.getMissionFlightBuilder().getMissionFlights())
         {
-            plotEncounter(missionFlightBuilder.getPlayerFlight(), flight, playerEncounerDistance);
+            if (!aiFlight.isPlayerFlight())
+            {
+                for (Flight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
+                {
+                    if (playerFlight.getSquadron().determineSide() != aiFlight.getSquadron().determineSide())
+                    {
+                        plotEncounter(playerFlight, aiFlight, playerEncounerDistance);
+                    }
+                }
+            }
         }
     }
 

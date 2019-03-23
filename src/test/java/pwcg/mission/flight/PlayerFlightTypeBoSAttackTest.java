@@ -16,7 +16,7 @@ import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 public class PlayerFlightTypeBoSAttackTest
 {
@@ -28,7 +28,7 @@ public class PlayerFlightTypeBoSAttackTest
     {
         PWCGContextManager.setRoF(false);
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.STALINGRAD_MAP);
-        campaign = CampaignCache.makeCampaign(CampaignCacheBoS.REG_503_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.REGIMENT_503_PROFILE);
     }
 
     @Test
@@ -36,8 +36,8 @@ public class PlayerFlightTypeBoSAttackTest
     {
         mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.GROUND_ATTACK);
-        GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.REGIMENT_503_PROFILE), FlightTypes.GROUND_ATTACK);
+        GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();

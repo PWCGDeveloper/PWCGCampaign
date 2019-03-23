@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.io.json.AircraftIOJson;
 import pwcg.core.exception.PWCGException;
@@ -72,12 +71,9 @@ public class PlaneTypeFactory
                 {
                     if (planeType.isRole(Role.ROLE_FIGHTER))
                     {
-                        if (planeType.getSide() == campaign.determineCountry().getSide())
+                        if (planeType.isPlaneActive(campaign.getDate()))
                         {
-                            if (planeType.isPlaneActive(campaign.getDate()))
-                            {
-                                aircraftTypes.add(planeType);
-                            }
+                            aircraftTypes.add(planeType);
                         }
                     }
                 }
@@ -145,12 +141,12 @@ public class PlaneTypeFactory
         return plane;
     }
 
-    public PlaneType findActivePlaneTypeByCountryDateAndRole(ICountry country, Date date, Role role) throws PWCGException
+    public PlaneType getActivePlaneBySideDateAndRole(Side side, Date date, Role role) throws PWCGException
     {
         List<PlaneType> possiblePlanes = new ArrayList<>();
         for (PlaneType planeType : planeTypes.values())
         {
-            if (planeType.isUsedBy(country))
+            if (planeType.getSide() == side)
             {
                 if (!(planeType.getIntroduction().after(date)))
                 {
@@ -172,12 +168,12 @@ public class PlaneTypeFactory
         return selectedPlane;
     }
 
-    public PlaneType findAnyPlaneTypeForCountryAndDate(ICountry country, Date date) throws PWCGException
+    public PlaneType getActivePlaneBySideAndDate(Side side, Date date) throws PWCGException
     {
         List<PlaneType> possiblePlanes = new ArrayList<>();
         for (PlaneType planeType : planeTypes.values())
         {
-            if (planeType.isUsedBy(country))
+            if (planeType.getSide() == side)
             {
                 if (!(planeType.getIntroduction().after(date)))
                 {
@@ -283,7 +279,7 @@ public class PlaneTypeFactory
         return planeTypesForArchType;
     }
 
-    private List<PlaneType> createOlderPlaneTypesForArchType(String planeArchType, Date date) throws PWCGException
+    public List<PlaneType> createOlderPlaneTypesForArchType(String planeArchType, Date date) throws PWCGException
     {
         List<PlaneType> planeTypesForArchType = new ArrayList<>();
         for (PlaneType thisPlane : planeTypes.values())

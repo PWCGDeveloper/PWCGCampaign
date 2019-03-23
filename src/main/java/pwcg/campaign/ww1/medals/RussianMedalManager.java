@@ -99,28 +99,14 @@ public class RussianMedalManager extends RoFMedalManager
 		return medalsInOrder;
 	}
 
-	@Override
-	public List<Medal> getAllMedalsInOrder()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(R_ORDER_ST_GEORGE));
-		medalsInOrder.add( medals.get(R_ORDER_ST_VLADIMIR));
-		medalsInOrder.add( medals.get(R_ORDER_ST_STANISLAW));
-		medalsInOrder.add( medals.get(R_ORDER_ST_ANNE));
-
-		return medalsInOrder;
-	}
-
-	@Override
-	public List<Medal> getWoundBadgesInOrder()
+	private List<Medal> getWoundBadgesInOrder()
 	{
 		List<Medal> medalsInOrder = new ArrayList<>();
 		medalsInOrder.add( medals.get(WOUND_STRIPE));		
 		return medalsInOrder;
 	}
 
-	@Override
-	public List<Medal> getAllBadgesInOrder()
+	private List<Medal> getAllBadgesInOrder()
 	{
 		List<Medal> medalsInOrder = new ArrayList<>();
 		medalsInOrder.add( medals.get(R_PILOTS_BADGE));		

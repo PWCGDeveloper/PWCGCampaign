@@ -86,14 +86,13 @@ public class DuringCampaignVictimGenerator implements IVictimGenerator
         Map<Integer, SquadronMember> possibleVictims = new HashMap<>();
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(victimSquadron.getSquadronId());
         SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAINoWounded(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
-        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
+		// COOP TODO TEST THIS!!!
+        if (!squadronPersonnel.isPlayerSquadron())
         {
-            if (squadronMember.getSquadronId() == campaign.getSquadronId())
-            {
-                continue;
+        	for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
+        	{
+                possibleVictims.put(squadronMember.getSerialNumber(), squadronMember);
             }
-            
-            possibleVictims.put(squadronMember.getSerialNumber(), squadronMember);
         }
 
         return possibleVictims;

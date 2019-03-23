@@ -30,7 +30,10 @@ public class SquadronMemberReplacementFactory
         
         HashMap<String, String> namesUsed = new HashMap<>();
         
-        String rank = getLowestRankForService();
+        NewPilotRankDetermination rankDetermination = new NewPilotRankDetermination();
+        String rank = rankDetermination.getReplacementPilotRank(service);
+        
+        AiSkillLevel aiSkillLevel = determineAiSkillLevelByRank(rank);
         
         String squaddieName = PilotNames.getInstance().getName(service.getCountry(), namesUsed);
         replacementPilot.setName(squaddieName);
@@ -39,18 +42,22 @@ public class SquadronMemberReplacementFactory
         replacementPilot.setSquadronId(Squadron.REPLACEMENT);
         replacementPilot.setSerialNumber(campaign.getSerialNumber().getNextPilotSerialNumber());
         replacementPilot.setMissionFlown(0);        
-        replacementPilot.setAiSkillLevel(AiSkillLevel.NOVICE);
+        replacementPilot.setAiSkillLevel(aiSkillLevel);
         makePilotPicture(replacementPilot);
         
         return replacementPilot;
     }
 
-    private String getLowestRankForService()
+    private AiSkillLevel determineAiSkillLevelByRank(String rank)
     {
-        IRankHelper rankObj = RankFactory.createRankHelper();
-        int lowestRankPos = rankObj.getLowestRankPosForService(service);
-        String rank = rankObj.getRankByService(lowestRankPos, service);
-        return rank;
+        IRankHelper rankHelper = RankFactory.createRankHelper();
+        int rankPos = rankHelper.getRankPosByService(rank, service);
+        if (rankPos > 3) 
+        {
+            return AiSkillLevel.NOVICE;
+        }
+        
+        return AiSkillLevel.COMMON;
     }
 
     private void makePilotPicture(SquadronMember newPilot) throws PWCGException

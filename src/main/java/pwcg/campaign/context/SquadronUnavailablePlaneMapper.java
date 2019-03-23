@@ -11,7 +11,11 @@ public class SquadronUnavailablePlaneMapper
         {
             if (planeAssignment.getArchType().equals("me262"))
             {
-                planeAssignment.setArchType("fw190d");
+                planeAssignment.setArchType("fw190");
+            }
+            else if (planeAssignment.getArchType().equals("fw190d"))
+            {
+                planeAssignment.setArchType("fw190");
             }
             else  if (planeAssignment.getArchType().equals("tempest"))
             {

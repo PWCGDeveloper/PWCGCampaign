@@ -14,6 +14,7 @@ public abstract class CampaignRosterBasePanelFactory
 {
     protected ActionListener parent = null;
 	protected Campaign campaign = null;
+	protected SquadronMember referencePlayer = null;
 	protected List<SquadronMember> sortedPilots = null;
     protected JPanel chalkboardPanel = null;
     protected JPanel pilotListPanel = null;
@@ -23,6 +24,7 @@ public abstract class CampaignRosterBasePanelFactory
 	{
 	    this.parent = parent;
 		this.campaign = PWCGContextManager.getInstance().getCampaign();
+		this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
 	}
 	
 	abstract public void makePilotList() throws PWCGException ;

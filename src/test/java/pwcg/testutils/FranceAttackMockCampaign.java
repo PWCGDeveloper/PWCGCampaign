@@ -41,7 +41,7 @@ public class FranceAttackMockCampaign
     protected ConfigManagerCampaign configManager;
 
     protected ICountry country = CountryFactory.makeCountryByCountry(Country.GERMANY);
-    protected MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
+    protected MissionBeginUnitCheckZone missionBeginUnit;
     protected Coordinate myTestPosition = new Coordinate (100000, 0, 100000);
     protected Coordinate mytargetLocation = new Coordinate (100000, 0, 150000);
     
@@ -62,9 +62,6 @@ public class FranceAttackMockCampaign
 
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(date);
-        Mockito.when(campaign.getAirfieldName()).thenReturn(squadron.determineCurrentAirfieldName(date));
-        Mockito.when(campaign.getSquadronId()).thenReturn(squadron.getSquadronId());
-        Mockito.when(campaign.determineCountry()).thenReturn(country);
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MaxGroundTargetDistanceKey)).thenReturn(50000);
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
         Mockito.when(mission.getMissionGroundUnitManager()).thenReturn(missionGroundUnitResourceManager);
@@ -75,7 +72,8 @@ public class FranceAttackMockCampaign
         Mockito.when(missionFlightBuilder.isInFlightPath(Matchers.any())).thenReturn(true);
         Mockito.when(missionFlightBuilder.getMissionBorders(Matchers.<Integer>any())).thenReturn(missionBorders);
 
-        missionBeginUnit.initialize(myTestPosition, 10000, Coalition.COALITION_ALLIED);
+        missionBeginUnit = new MissionBeginUnitCheckZone(myTestPosition, 10000);
+        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(Coalition.COALITION_ALLIED);
     }
 
 }

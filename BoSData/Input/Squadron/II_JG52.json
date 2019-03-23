@@ -13,12 +13,7 @@
     {
       "archType": "fw190",
       "squadronIntroduction": "19440801",
-      "squadronWithdrawal": "19441201"
-    },
-    {
-      "archType": "fw190d",
-      "squadronIntroduction": "19441101",
-      "squadronWithdrawal": "19450207"
+      "squadronWithdrawal": "19450601"
     }
   ],
   "conversionPeriods": [

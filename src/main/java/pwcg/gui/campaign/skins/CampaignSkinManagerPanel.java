@@ -43,9 +43,8 @@ public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionLi
         {
             setLeftPanel(makeLeftPanel());
             setRightPanel(createRightPanel());
-            Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-            SquadronMember player = campaign.getPlayers().get(0);
-            createCenterPanel(player);                
+            SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+            createCenterPanel(referencePlayer);                
         }
         catch (Exception e)
         {

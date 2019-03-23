@@ -39,6 +39,7 @@ public class AARPanelSet extends AARPanel implements ActionListener
 
     private Campaign campaign = null;
 	private CampaignHomeGUI home = null;
+    private SquadronMember referencePlayer = null;
     private AARClaimPanels aarClaimPanel = null;
 
 	public AARPanelSet(CampaignHomeGUI home)  
@@ -46,6 +47,7 @@ public class AARPanelSet extends AARPanel implements ActionListener
         super();
 
 		this.campaign = PWCGContextManager.getInstance().getCampaign();
+		this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
         this.home = home;
 	}
 
@@ -103,7 +105,7 @@ public class AARPanelSet extends AARPanel implements ActionListener
         List<SquadronMember> pilotsInMissionSorted = pilotsInMission.sortPilots(campaign.getDate());
 		for (SquadronMember pilot : pilotsInMissionSorted)
 		{
-            if (pilot.getSquadronId() == campaign.getSquadronId())
+            if (pilot.getSquadronId() == referencePlayer.getSquadronId())
             {
                 String crewDesc = "             " + pilot.getNameAndRank();
                

@@ -13,11 +13,12 @@ public class PlayerEscortBuilder
     {
         FlightInformation playerFlightInformation = playerFlight.getFlightInformation();
         
-        Squadron friendlyFighterSquadron = PWCGContextManager.getInstance().getSquadronManager().getNearbyFriendlySquadronByRole(
-                playerFlightInformation.getCampaign(),
-                playerFlightInformation.getSquadron().determineSquadronCountry(playerFlightInformation.getCampaign().getDate()), 
-                Role.ROLE_FIGHTER);
-        
+        Squadron friendlyFighterSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
+                        playerFlightInformation.getCampaign(), 
+                        playerFlightInformation.getSquadron().determineCurrentPosition(playerFlightInformation.getCampaign().getDate()), 
+                        Role.ROLE_FIGHTER, 
+                        playerFlightInformation.getSquadron().determineSquadronCountry(playerFlightInformation.getCampaign().getDate()).getSide());
+
         if (friendlyFighterSquadron != null)
         {
             MissionBeginUnit missionBeginUnitEscort = new MissionBeginUnit();

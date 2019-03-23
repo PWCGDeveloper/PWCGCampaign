@@ -18,7 +18,7 @@ import pwcg.mission.ground.unittypes.GroundUnitSpawning;
 import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AmbientBuilderTest
@@ -32,10 +32,10 @@ public class AmbientBuilderTest
     @Test
     public void createAmbientBattle () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheBoS.STG77_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
         Mission mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.DIVE_BOMB);
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.STG77_PROFILE), FlightTypes.DIVE_BOMB);
         
         AmbientBattleBuilder ambientBattleBuilder = new AmbientBattleBuilder(campaign, mission);
         List<AssaultInformation> battles = ambientBattleBuilder.generateAmbientBattles();
@@ -52,10 +52,10 @@ public class AmbientBuilderTest
     @Test
     public void createAmbientTrucks () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheBoS.STG77_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
         Mission mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.DIVE_BOMB);
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.STG77_PROFILE), FlightTypes.DIVE_BOMB);
         
         AmbientTruckConvoyBuilder ambientTruckConvoyBuilder = new AmbientTruckConvoyBuilder(campaign, mission);
         List<GroundTruckConvoyUnit> ambientTrucks = ambientTruckConvoyBuilder.generateAmbientTrucks();
@@ -71,10 +71,10 @@ public class AmbientBuilderTest
     @Test
     public void createAmbientTrains () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheBoS.STG77_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
         Mission mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.DIVE_BOMB);
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.STG77_PROFILE), FlightTypes.DIVE_BOMB);
         
         AmbientTrainBuilder ambientTrainBuilder = new AmbientTrainBuilder(campaign, mission);
         List<GroundTrainUnit> ambientTrains = ambientTrainBuilder.generateAmbientTrains();
@@ -90,10 +90,10 @@ public class AmbientBuilderTest
     @Test
     public void createAmbientAAA () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheBoS.STG77_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
         Mission mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.DIVE_BOMB);
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.STG77_PROFILE), FlightTypes.DIVE_BOMB);
         
         AAAManager aaaManager = new AAAManager(campaign, mission);
         List<GroundUnitSpawning> AAA = aaaManager.getAAAForMission();

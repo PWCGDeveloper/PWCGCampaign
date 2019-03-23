@@ -11,19 +11,22 @@ import pwcg.core.utils.Logger;
 
 public class McuProximity extends BaseFlightMcu
 {
-	private int distance = 5000;
+	private int distance = 8000;
 	private int closer = 1;
 
 	private List<Coalition> planeCoalitions = new ArrayList<Coalition>();
 
-	public McuProximity(Coalition planeCoalition)
+	public McuProximity()
 	{
 		super();
 
 		name = "Proximity";
 		desc = "Proximity";
-
-		planeCoalitions.add(planeCoalition);
+	}
+	
+	public void addCoalition(Coalition coalition)
+	{
+	    planeCoalitions.add(coalition);
 	}
 
 	public void write(BufferedWriter writer) throws PWCGIOException

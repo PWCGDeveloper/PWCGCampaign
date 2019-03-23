@@ -35,7 +35,7 @@ public class IngressWaypointNearTarget extends IngressWaypointBase
         Coordinate ingressCoordinate = MathUtils.calcNextCoord(lastPosition, angleToIntercept, distanceToIntercept / 2);
         
         double distance = MathUtils.calcDist(targetPosition, ingressCoordinate);
-        if (distance < (AttackMcuSequence.CHECK_ZONE_INSTANCE + 10000))
+        if (distance < (AttackMcuSequence.CHECK_ZONE_DEFAULT_DISTANCE + 10000))
         {
             ingressCoordinate = moveIngressZoneAwayFromTarget(ingressCoordinate, targetPosition);
         }
@@ -46,7 +46,7 @@ public class IngressWaypointNearTarget extends IngressWaypointBase
     private Coordinate moveIngressZoneAwayFromTarget(Coordinate ingressCoordinate, Coordinate targetPosition) throws PWCGException
     {
         double angleAwayFromTarget = MathUtils.calcAngle(targetPosition, ingressCoordinate);
-        Coordinate movedIngressCoordinate = MathUtils.calcNextCoord(ingressCoordinate, angleAwayFromTarget, AttackMcuSequence.CHECK_ZONE_INSTANCE + 10000);
+        Coordinate movedIngressCoordinate = MathUtils.calcNextCoord(ingressCoordinate, angleAwayFromTarget, AttackMcuSequence.CHECK_ZONE_DEFAULT_DISTANCE + 10000);
         return movedIngressCoordinate;
     }
 

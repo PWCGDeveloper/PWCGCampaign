@@ -18,7 +18,7 @@ public class Fw190A5Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
-        setAvailablePayload(-1, "1000000", PayloadElement.U_17);
+        setAvailablePayload(-1, "1000001", PayloadElement.U_17);
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "11", PayloadElement.SC50_X4);
         setAvailablePayload(2, "101", PayloadElement.SC250_X1);

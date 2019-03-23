@@ -18,7 +18,7 @@ public class Ma202Ser8Payload extends PlanePayload implements IPlanePayload
 
     protected void initialize()
 	{
-		setAvailablePayload(-1, "10", PayloadElement.ARMORED_WINDSCREEN);
+		setAvailablePayload(-1, "11", PayloadElement.ARMORED_WINDSCREEN);
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "101", PayloadElement.T50_X2);
 		setAvailablePayload(2, "1001", PayloadElement.T100_X2);

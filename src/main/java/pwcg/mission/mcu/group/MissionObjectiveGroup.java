@@ -4,24 +4,20 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
+import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
+import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.McuEvent;
 import pwcg.mission.mcu.McuMessage;
 import pwcg.mission.mcu.McuMissionObjective;
 import pwcg.mission.mcu.McuTimer;
 
-/**
- * @author Patrick Wilson
- *
- */
 public class MissionObjectiveGroup
 {
     private McuMissionObjective missionObjective = new McuMissionObjective();
@@ -34,56 +30,37 @@ public class MissionObjectiveGroup
     {
         index = IndexGenerator.getInstance().getNextIndex();
     }
-    
-    /**
-     * In the success scenario we trigger success immediately, thus making missions
-     * a success by default.
-     * @throws PWCGException 
-     * 
-     * @
-     */
-    public void createSuccessMissionObjective() throws PWCGException 
+
+    public void createSuccessMissionObjective(Campaign campaign, Mission mission) throws PWCGException 
     {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        Coordinate squadronLocation = campaign.getPosition();
+        Flight playerFlight = mission.getMissionFlightBuilder().getReferencePlayerFlight();
+        Coordinate squadronLocation = playerFlight.getSquadron().determineCurrentPosition(campaign.getDate());
         
         missionBeginUnit.initialize(squadronLocation);
         
-        missionObjective.setCoalition(campaign.determineCountry());
+        missionObjective.setCoalition(playerFlight.getSquadron().getCountry());
         missionObjective.setSuccess(1);
         missionObjective.setPosition(squadronLocation);
 
-        IAirfield airfield = campaign.determineSquadron().determineCurrentAirfieldCurrentMap(campaign.getDate());
-        if (airfield == null)
-        {
-            throw new PWCGException("No airfield found for squadron " + campaign.determineSquadron().getSquadronId() + ".  Should not have been included in mission");
-        }
-
-        missionBeginUnit.initialize(airfield.getPosition());
+        missionBeginUnit.initialize(playerFlight.getSquadron().determineCurrentAirfieldCurrentMap(campaign.getDate()).getPosition());
         missionObjectiveTimer.setPosition(squadronLocation);
         missionBeginUnit.linkToMissionBegin(missionObjectiveTimer.getIndex());
         missionObjectiveTimer.setTarget(missionObjective.getIndex());
     }
-    
-    /**
-     * The failure scenario is triggered by the loss of your plane
-     * 
-     * @param myPlane
-     * @throws PWCGException 
-     * @
-     */
-    public void createFailureMissionObjective(PlaneMCU myPlane) throws PWCGException 
+
+    public void createFailureMissionObjective(Campaign campaign, Mission mission) throws PWCGException 
     {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        Coordinate squadronLocation = campaign.getPosition();
+        Flight playerFlight = mission.getMissionFlightBuilder().getReferencePlayerFlight();
+        Coordinate squadronLocation = playerFlight.getSquadron().determineCurrentPosition(campaign.getDate());
 
         missionBeginUnit.initialize(squadronLocation);
 
-        missionObjective.setCoalition(campaign.determineCountry());
+        missionObjective.setCoalition(playerFlight.getSquadron().getCountry());
         missionObjective.setPosition(squadronLocation);
         missionObjective.setSuccess(0);
 
-        myPlane.getEntity().setOnMessages(
+        PlaneMCU referencePlane = mission.getMissionFlightBuilder().getReferencePlayerFlight().getPlayerPlanes().get(0);
+        referencePlane.getEntity().setOnMessages(
                         McuMessage.ONKILL,
                         missionBeginUnit.getStartTimeindex(),
                         missionObjectiveTimer.getIndex());
@@ -94,17 +71,9 @@ public class MissionObjectiveGroup
         McuEvent planeDamagedEvent = new McuEvent();
         planeDamagedEvent.setType(McuEvent.ONPLANECRASHED);
         planeDamagedEvent.setTarId(missionObjectiveTimer.getIndex());
-        myPlane.getEntity().addEvent(planeDamagedEvent);
+        referencePlane.getEntity().addEvent(planeDamagedEvent);
     }
-    
 
-    /**
-     * Write the mission objective group
-     * 
-     * @param writer
-     * @throws PWCGException 
-     * @
-     */
     public void write(BufferedWriter writer) throws PWCGException 
     {
         try

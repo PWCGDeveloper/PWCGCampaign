@@ -88,7 +88,8 @@ public abstract class GroundTargetAttackFlight extends Flight
             for (PlaneMCU plane : planes)
             {
                 AttackMcuSequence attackMcuSequence = new AttackMcuSequence();
-                attackMcuSequence.createAttackArea(plane, getSquadron().determineDisplayName(getCampaign().getDate()), getTargetCoords(), altitude, attackTime);
+                attackMcuSequence.createAttackArea(getSquadron().determineDisplayName(getCampaign().getDate()), getTargetCoords(), altitude, attackTime);
+                attackMcuSequence.createTriggerForPlane(plane, getTargetCoords());
                 
                 attackMcuSequences.put(plane.getIndex(), attackMcuSequence);
             }
@@ -96,7 +97,8 @@ public abstract class GroundTargetAttackFlight extends Flight
         else
         {
             AttackMcuSequence attackMcuSequence = new AttackMcuSequence();
-            attackMcuSequence.createAttackArea(getLeadPlane(), getSquadron().determineDisplayName(getCampaign().getDate()), getTargetCoords(), altitude, attackTime);
+            attackMcuSequence.createAttackArea(getSquadron().determineDisplayName(getCampaign().getDate()), getTargetCoords(), altitude, attackTime);
+            attackMcuSequence.createTriggerForFlight(this, getTargetCoords());
             
             attackMcuSequences.put(getLeadPlane().getIndex(), attackMcuSequence);
         }
@@ -143,12 +145,11 @@ public abstract class GroundTargetAttackFlight extends Flight
     public String getMissionObjective() throws PWCGException 
     {
         String objective = "Attack the specified objective using all available means.";
-        
         for (Unit linkedUnit : linkedUnits)
         {
-            String objectiveLocation =  getMissionObjectiveLocation(linkedUnit);
+            String objectiveLocation =  getMissionObjectiveLocation(flightInformation.getSquadron(), flightInformation.getCampaign().getDate(), linkedUnit);
             
-            if (!linkedUnit.getCountry().isSameSide(getCampaign().determineCountry()))
+            if (!linkedUnit.getCountry().isSameSide(this.getCountry()))
             {
                 if (linkedUnit instanceof AirfieldStaticGroup)
                 {

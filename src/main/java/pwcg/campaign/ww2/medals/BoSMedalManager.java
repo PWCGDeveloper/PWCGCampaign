@@ -6,6 +6,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.medals.Medal;
 import pwcg.campaign.medals.MedalManager;
 import pwcg.core.exception.PWCGException;
 
@@ -16,12 +17,10 @@ public abstract class BoSMedalManager extends MedalManager
         super(campaign);
     }
 
-    public static MedalManager getManager(Campaign campaign) throws PWCGException 
+    public static MedalManager getManager(ICountry country, Campaign campaign) throws PWCGException 
     {
         MedalManager medalManager = null;
-        
-        ICountry country = campaign.determineCountry();
-        
+                
         if (country.isCountry(Country.GERMANY))
         {
             medalManager = new GermanMedalManager(campaign);
@@ -61,5 +60,19 @@ public abstract class BoSMedalManager extends MedalManager
         
         return medalManagers;
     }
+    
+
+	@Override
+	public List<Medal> getAllAwardsForService() throws PWCGException
+	{
+		List<Medal> allAwards = new ArrayList<>();
+		allAwards.addAll(medals.values());
+		allAwards.addAll(getWoundBadges());
+		allAwards.addAll(getAllBadges());
+		return allAwards;
+	}
+	
+	abstract protected List<Medal>getWoundBadges();
+	abstract protected List<Medal>getAllBadges();
 
 }

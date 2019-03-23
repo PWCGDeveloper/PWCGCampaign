@@ -9,6 +9,7 @@ import java.util.Map;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.personnel.SquadronMemberFilter;
+import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -44,7 +45,7 @@ public class SkinSessionManager
         List<Skin> skinNames = new ArrayList<>();
 
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        Squadron squad = campaign.determineSquadron();
+        Squadron squad = pilot.determineSquadron();
 
         List<Skin> squadronSkins = PWCGContextManager.getInstance().getSkinManager().getSkinsBySquadronPlaneDate(selectedPlane, squad.getSquadronId(), campaign.getDate());
         skinNames = getConfiguredSkins(squadronSkins);
@@ -126,7 +127,8 @@ public class SkinSessionManager
     private boolean isSkinInUseByAnotherPilot(Skin skinToCheck) throws PWCGException
     {
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(pilot.getSquadronId());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadMember : squadronMembers.getSquadronMemberList())
         {
             if (!(squadMember.getSerialNumber() == pilot.getSerialNumber()))
@@ -193,7 +195,6 @@ public class SkinSessionManager
     public void setPilot(SquadronMember pilot) throws PWCGException
     {
         this.pilot = pilot;
-        
         addSkinSetForPilot (pilot);
     }
 

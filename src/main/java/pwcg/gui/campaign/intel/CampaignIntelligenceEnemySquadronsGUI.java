@@ -1,6 +1,5 @@
 package pwcg.gui.campaign.intel;
 
-import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -8,14 +7,14 @@ public class CampaignIntelligenceEnemySquadronsGUI extends CampaignIntelligenceB
 {
 	private static final long serialVersionUID = 1L;
 
-    public CampaignIntelligenceEnemySquadronsGUI(Campaign campaign) throws PWCGException  
+    public CampaignIntelligenceEnemySquadronsGUI() throws PWCGException  
     {
-		super(campaign);
+		super();
         
         intelHeaderBuffer.append("Intelligence Report on Enemy Air Units\n");
         intelHeaderBuffer.append("Date: " + DateUtils.getDateString(campaign.getDate()) + "\n");
 
-        makePanel(campaign.determineCountry().getSide().getOppositeSide());
+        makePanel(referencePlayer.determineCountry(campaign.getDate()).getSide().getOppositeSide());
     }
 }
 

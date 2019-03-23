@@ -107,7 +107,6 @@ public class AmericanMedalManager extends RoFMedalManager
         return awardFighter(pilot, service, victoriesThisMission);
     }
 
-	@Override
 	public List<Medal> getAllAwardsForService() throws PWCGException
 	{
 		List<Medal> medalsInOrder = new ArrayList<>();
@@ -116,27 +115,14 @@ public class AmericanMedalManager extends RoFMedalManager
 		return medalsInOrder;
 	}
 
-	@Override
-	public List<Medal> getAllMedalsInOrder()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(DISTINGUISHED_SERVICE_MEDAL));
-		medalsInOrder.add( medals.get(DISTINGUISHED_FLYING_CROSS));
-		medalsInOrder.add( medals.get(MEDAL_OF_HONOR));
-		
-		return medalsInOrder;
-	}
-
-	@Override
-	public List<Medal> getWoundBadgesInOrder()
+	private List<Medal> getWoundBadgesInOrder()
 	{
 		List<Medal> medalsInOrder = new ArrayList<>();
 		medalsInOrder.add( medals.get(WOUND_CHEVRON));		
 		return medalsInOrder;
 	}
 
-	@Override
-	public List<Medal> getAllBadgesInOrder()
+	private List<Medal> getAllBadgesInOrder()
 	{
 		List<Medal> medalsInOrder = new ArrayList<>();
 		medalsInOrder.add( medals.get(PILOTS_BADGE));		

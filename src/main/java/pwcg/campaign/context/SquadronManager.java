@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 import pwcg.campaign.ArmedService;
@@ -15,7 +14,6 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.io.json.SquadronIOJson;
 import pwcg.campaign.io.json.SquadronMovingFrontIOJson;
 import pwcg.campaign.plane.Role;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronMovingFrontOverlay;
 import pwcg.core.config.ConfigItemKeys;
@@ -47,6 +45,23 @@ public class SquadronManager
 		}
 		
         setAirfieldsForMovingFront();
+	}
+
+	private void setAirfieldsForMovingFront() throws PWCGException, PWCGException
+	{
+		boolean useMovingFront = PWCGContextManager.getInstance().determineUseMovingFront();
+        if (useMovingFront)
+        {
+	        List<SquadronMovingFrontOverlay> overlays = SquadronMovingFrontIOJson.readJson();
+	        for (SquadronMovingFrontOverlay overlay : overlays)
+	        {
+	        	if (squadronMap.containsKey(overlay.getSquadronId()))
+	        	{
+	        		Squadron squadron = squadronMap.get(overlay.getSquadronId());
+	        		squadron.setAirfields(overlay.getAirfields());
+	        	}
+	        }
+        }
 	}
 
 	public Map<Integer, Squadron> countryToMap (ICountry country, Date date) throws PWCGException
@@ -163,13 +178,11 @@ public class SquadronManager
     }
 
 
-	public Squadron getSquadronByNameAndCountry(String squadName, ICountry country, Date campaignDate) 
+	public Squadron getSquadronByName(String squadName, Date campaignDate) 
 	                throws PWCGException 
 	{
-		Map<Integer, Squadron> squadMap = countryToMap(country, campaignDate);
 		Squadron squadReturn = null;
-
-		for (Squadron squadron : squadMap.values())
+		for (Squadron squadron : squadronMap.values())
 		{
 			if (squadName.equalsIgnoreCase(squadron.determineDisplayName(campaignDate)))
 			{
@@ -327,6 +340,32 @@ public class SquadronManager
 		return null;
 	}
 
+	private ArrayList<Squadron> reduceToActiveSquadrons(Campaign campaign, List<Squadron> squadrons, Date  date) throws PWCGException 
+	{
+		ArrayList<Squadron> returnSquadList = new ArrayList<Squadron>();
+		
+		for (Squadron squadron : squadrons)
+		{
+			String currentFieldNameForSquad = squadron.determineCurrentAirfieldName(date);
+			if (currentFieldNameForSquad != null)
+			{
+				IAirfield currentFieldForSquad =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(currentFieldNameForSquad);
+				if (currentFieldForSquad != null)
+				{
+					if (squadron.isCanFly(date))
+					{
+					    if (squadron.isSquadronViable(campaign))
+					    {
+					        returnSquadList.add(squadron);
+					    }
+					}
+				}
+			}
+		}
+		
+		return returnSquadList;
+	}
+
 	public ArrayList<Squadron> getSquadronsByRole(List<Squadron> squadrons, List<Role> acceptableRoles, Date date) throws PWCGException 
 	{		
 		ArrayList<Squadron> squadronsWithRole = new ArrayList<Squadron>();
@@ -345,79 +384,8 @@ public class SquadronManager
 		return squadronsWithRole;
 	}
 
-    public int chooseSquadronForTransfer(Campaign campaign, SquadronMember squadronMember) throws PWCGException 
-    {
-        int squadronId = -1;
-        
-        List<Integer> bestFitSquadrons = new ArrayList<Integer>();
-        List<Integer> anySquadrons = new ArrayList<Integer>();
-        
-        AceManager aceManager = PWCGContextManager.getInstance().getAceManager();
-        
-        Set<Integer> aceCommandedSquadrons = aceManager.getAceCommandedSquadrons();
-
-        // Exclude squadrons commanded by an ace
-        for (Squadron possibleSquadron: getActiveSquadrons(campaign.getDate()))
-        {
-            if (!aceCommandedSquadrons.contains(possibleSquadron.getSquadronId()))
-            {
-                // Do not transfer into the player squadron
-                if (possibleSquadron.getSquadronId() != campaign.getSquadronId())
-                {
-                    // Do not transfer into the same squadron
-                    if (possibleSquadron.getSquadronId() != squadronMember.getSquadronId())
-                    {
-                        Squadron squadMemberSquadron = getSquadron(squadronMember.getSquadronId());
-                        if (squadMemberSquadron == null)
-                        {
-                            squadMemberSquadron = getSquadron(campaign.getSquadronId());
-                        }
-
-                        // Same country
-                        ICountry squadMemberCountry = squadMemberSquadron.determineSquadronCountry(campaign.getDate());
-                        ICountry possibleSquadCountry = possibleSquadron.determineSquadronCountry(campaign.getDate());
-                        
-                        if (squadMemberCountry.equals(possibleSquadCountry))
-                        {
-                            anySquadrons.add(possibleSquadron.getSquadronId());
-                            
-                            // Best fit for a transfer
-                            
-                            if (squadMemberSquadron != null)
-                            {
-                                Role bestRoleForThisSquadron = squadMemberSquadron.determineSquadronPrimaryRole(campaign.getDate());
-                                Role bestRoleForNewSquadron = possibleSquadron.determineSquadronPrimaryRole(campaign.getDate());
-                                
-                                 if (bestRoleForThisSquadron == bestRoleForNewSquadron)
-                                {
-                                    bestFitSquadrons.add(possibleSquadron.getSquadronId());
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
-        // Best fit if possible
-        if (bestFitSquadrons.size() > 0)
-        {
-            int size = bestFitSquadrons.size();
-            int index = RandomNumberGenerator.getRandom(size);
-            squadronId = bestFitSquadrons.get(index);
-        }
-        // Otherwise anywhere
-        else
-        {
-            int size = anySquadrons.size();
-            int index = RandomNumberGenerator.getRandom(size);
-            squadronId = anySquadrons.get(index);
-        }
-        
-        return squadronId;
-    }
-
-    public Squadron getEnemySquadronByRole(Campaign campaign, ICountry country, Role role, Date date) throws PWCGException 
+	// TODO COOP TEST THIS!!!
+    public Squadron getSquadronByProximityAndRoleAndSide(Campaign campaign, Coordinate position, Role role, Side side) throws PWCGException 
     {
         ConfigManager configManager = campaign.getCampaignConfigManager();
 
@@ -428,18 +396,15 @@ public class SquadronManager
         List<Role> acceptableRoles = new ArrayList<Role>();
         acceptableRoles.add(role);
 
-        String airfieldName = campaign.getAirfieldName();
-        IAirfield field =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
-
         List<Squadron> enemySquadrons = null;
         enemySquadrons =  getNearestSquadronsByRole(
                         campaign,
-                        field.getPosition(),
+                        position.copy(),
                         100,
                         initialSquadronSearchRadiusKey,
                         acceptableRoles,
-                        country.getSide().getOppositeSide(),
-                        date);
+                        side,
+                        campaign.getDate());
 
         if (enemySquadrons.size() > 0)
         {
@@ -448,81 +413,5 @@ public class SquadronManager
         }
 
         return enemySquadron;
-    }
-
-    public Squadron getNearbyFriendlySquadronByRole(Campaign campaign, ICountry country, Role role) throws PWCGException 
-    {
-        ConfigManager configManager = campaign.getCampaignConfigManager();
- 
-        int initialSquadronSearchRadiusKey = configManager.getIntConfigParam(ConfigItemKeys.InitialSquadronSearchRadiusKey);
-
-        Squadron friendlySquadron = null;
-
-        List<Role> acceptableRoles = new ArrayList<Role>();
-        acceptableRoles.add(role);
-
-        String playerAirfieldName = campaign.getAirfieldName();
-        IAirfield field =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(playerAirfieldName);
-
-        List<Squadron> friendlySquadrons = null;
-        friendlySquadrons =  getNearestSquadronsByRole(
-                        campaign,
-                        field.getPosition(),
-                        100,
-                        initialSquadronSearchRadiusKey,
-                        acceptableRoles,
-                        country.getSide(),
-                        campaign.getDate());
-
-        if (friendlySquadrons.size() > 0)
-        {
-            int index = RandomNumberGenerator.getRandom(friendlySquadrons.size());
-            friendlySquadron = friendlySquadrons.get(index);
-        }
-
-        return friendlySquadron;
-    }
-
-    private void setAirfieldsForMovingFront() throws PWCGException, PWCGException
-    {
-        boolean useMovingFront = PWCGContextManager.getInstance().determineUseMovingFront();
-        if (useMovingFront)
-        {
-            List<SquadronMovingFrontOverlay> overlays = SquadronMovingFrontIOJson.readJson();
-            for (SquadronMovingFrontOverlay overlay : overlays)
-            {
-                if (squadronMap.containsKey(overlay.getSquadronId()))
-                {
-                    Squadron squadron = squadronMap.get(overlay.getSquadronId());
-                    squadron.setAirfields(overlay.getAirfields());
-                }
-            }
-        }
-    }
-
-    private ArrayList<Squadron> reduceToActiveSquadrons(Campaign campaign, List<Squadron> squadrons, Date  date) throws PWCGException 
-    {
-        ArrayList<Squadron> returnSquadList = new ArrayList<Squadron>();
-        
-        for (Squadron squadron : squadrons)
-        {
-            String currentFieldNameForSquad = squadron.determineCurrentAirfieldName(date);
-            if (currentFieldNameForSquad != null)
-            {
-                IAirfield currentFieldForSquad =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(currentFieldNameForSquad);
-                if (currentFieldForSquad != null)
-                {
-                    if (squadron.isCanFly(date))
-                    {
-                        if (squadron.isSquadronViable(campaign))
-                        {
-                            returnSquadList.add(squadron);
-                        }
-                    }
-                }
-            }
-        }
-        
-        return returnSquadList;
     }
 }

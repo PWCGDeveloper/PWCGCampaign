@@ -2,9 +2,11 @@ package pwcg.gui.rofmap.brief;
 
 import java.util.List;
 
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.mcu.McuLanding;
@@ -32,12 +34,13 @@ public class BriefParametersContextBuilder
 	
 	private void setWaypoints() throws PWCGException
 	{
+		Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
 		McuWaypoint prevWaypoint = null;
-		for (McuWaypoint waypoint :  mission.getMissionFlightBuilder().getPlayerFlight().getWaypointPackage().getWaypointsForLeadPlane())
+		for (McuWaypoint waypoint :  playerFlight.getWaypointPackage().getWaypointsForLeadPlane())
 		{				
 		     addPlayerFlightWaypoint(prevWaypoint, waypoint);
 
-		     if (mission.getMissionFlightBuilder().getPlayerFlight().getFlightType() == FlightTypes.ESCORT)
+		     if (playerFlight.getFlightType() == FlightTypes.ESCORT)
 		     {
 		         if (waypoint.getWpAction() == WaypointAction.WP_ACTION_RENDEZVOUS)
 		         {
@@ -47,7 +50,7 @@ public class BriefParametersContextBuilder
 
 		     if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
 		     {
-		    	 addAttackPoint(mission.getMissionFlightBuilder().getPlayerFlight().getTargetCoords().copy());
+		    	 addAttackPoint(playerFlight.getTargetCoords().copy());
 		     }
 		     
 		     prevWaypoint = waypoint;
@@ -92,9 +95,10 @@ public class BriefParametersContextBuilder
 		return mapPoint;
 	}
 
-	public void addTakeoff() 
+	public void addTakeoff() throws PWCGException 
 	{
-		McuTakeoff takeoffEntity = mission.getMissionFlightBuilder().getPlayerFlight().getTakeoff();
+		Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
+		McuTakeoff takeoffEntity = playerFlight.getTakeoff();
 		if (takeoffEntity != null)
 		{
 			BriefingMapPoint takeoff = new BriefingMapPoint();
@@ -111,9 +115,10 @@ public class BriefParametersContextBuilder
 		}
 	}
 	
-	public void addLanding() 
+	public void addLanding() throws PWCGException 
 	{
-		McuLanding landingEntity = mission.getMissionFlightBuilder().getPlayerFlight().getLanding();
+		Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
+		McuLanding landingEntity = playerFlight.getLanding();
 		if (landingEntity != null)
 		{
 			BriefingMapPoint landing = new BriefingMapPoint();
@@ -145,9 +150,10 @@ public class BriefParametersContextBuilder
 		briefParametersContext.appendEditorGroup(editorWaypointGroup);
 	}
 	
-    private void updateEscortWaypointsOnMap()
-    {        
-	    List<McuWaypoint> escortedWaypoints = mission.getMissionFlightBuilder().getPlayerFlight().getLinkedWaypoints().getWaypointsForLeadPlane();
+    private void updateEscortWaypointsOnMap() throws PWCGException
+    {
+		Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
+    	List<McuWaypoint> escortedWaypoints = playerFlight.getLinkedWaypoints().getWaypointsForLeadPlane();
 	    if (escortedWaypoints != null)
 	    {
 	        for (McuWaypoint waypoint : escortedWaypoints)

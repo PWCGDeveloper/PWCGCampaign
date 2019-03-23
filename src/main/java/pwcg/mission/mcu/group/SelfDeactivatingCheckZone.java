@@ -8,7 +8,6 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.mission.mcu.BaseFlightMcu;
-import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuTimer;
@@ -22,37 +21,36 @@ public class SelfDeactivatingCheckZone
     private int index = IndexGenerator.getInstance().getNextIndex();;
 	
     private McuTimer activateCZTimer = new McuTimer();
-    private McuCheckZone triggerCheckZone = null;
+    private McuCheckZone checkZone = new McuCheckZone();
     
     private McuTimer deactivateCZTimer = new McuTimer();
     private McuDeactivate deactivateCZ = new McuDeactivate();
 	
-    
-	public SelfDeactivatingCheckZone ()
-	{    
-	}
 
-    public void initialize(Coordinate coordinate, Coalition coolition) 
+    public SelfDeactivatingCheckZone (Coordinate coordinate, int zone)
     {
-        triggerCheckZone = new McuCheckZone(coolition);
+        super();
+        initialize(coordinate, zone);
+    }
+
+    private void initialize(Coordinate coordinate, int zone) 
+    {
+        checkZone.setZone(zone);
                         
-        // set position
         activateCZTimer.setPosition(coordinate.copy());
-        triggerCheckZone.setPosition(coordinate.copy());
+        checkZone.setPosition(coordinate.copy());
 
         deactivateCZTimer.setPosition(coordinate.copy());
         deactivateCZ.setPosition(coordinate.copy());
         
-        // set name
         activateCZTimer.setName("CZ Activate Timer");
-        triggerCheckZone.setName("CZ");
+        checkZone.setName("CZ");
         
         deactivateCZTimer.setName("CZ Deactivate Timer");
         deactivateCZ.setName("CZ Deactivate");
 
-        // set desc
         activateCZTimer.setDesc("CZ Activate Timer");
-        triggerCheckZone.setDesc("CZ");
+        checkZone.setDesc("CZ");
 
         deactivateCZTimer.setDesc("VWP CZ Deactivate Timer");
         deactivateCZ.setDesc("CZ Deactivate");
@@ -65,14 +63,14 @@ public class SelfDeactivatingCheckZone
     {
         // 1. Link the incoming MCU to the activate timer
         activateIn.setTarget(activateCZTimer.getIndex());
-        activateCZTimer.setTarget(triggerCheckZone.getIndex());
+        activateCZTimer.setTarget(checkZone.getIndex());
 
         // 2. If the CZ triggers, deactivate the CZ to avoid repeat triggers
-        triggerCheckZone.setTarget(deactivateCZTimer.getIndex());
+        checkZone.setTarget(deactivateCZTimer.getIndex());
         deactivateCZTimer.setTarget(deactivateCZ.getIndex());
         
         // Deactivate both the CZ and the activate timer
-        deactivateCZ.setTarget(triggerCheckZone.getIndex());        
+        deactivateCZ.setTarget(checkZone.getIndex());        
         deactivateCZ.setTarget(activateCZTimer.getIndex());    
         
         // We may have an alternative deactivate
@@ -101,7 +99,7 @@ public class SelfDeactivatingCheckZone
             writer.newLine();
 
             activateCZTimer.write(writer);
-            triggerCheckZone.write(writer);
+            checkZone.write(writer);
             deactivateCZTimer.write(writer);
             deactivateCZ.write(writer);
 
@@ -115,46 +113,26 @@ public class SelfDeactivatingCheckZone
         }
     }
 
-    
-    /**
-     * @param plane
-     */
     public void setZone(int zone)
     {
-        triggerCheckZone.setZone(zone);
+        checkZone.setZone(zone);
     }
 
-    /**
-     * @param plane
-     */
     public void setCZTarget(int targetMcuIndex)
     {
-        triggerCheckZone.setTarget(targetMcuIndex);
+        checkZone.setTarget(targetMcuIndex);
     }
 
-    /**
-     * If the CZ fires on object rather than Coalition
-     * 
-     * @param plane
-     */
     public void setCZObject(int objectMcuIndex)
     {
-        triggerCheckZone.setObject(objectMcuIndex);
+        checkZone.setObject(objectMcuIndex);
     }
 
-    /**
-     * If the CZ fires on object rather than Coalition
-     * 
-     * @param plane
-     */
     public McuCheckZone getCheckZone()
     {
-        return triggerCheckZone;
+        return checkZone;
     }
 
-    /**
-     * @return
-     */
     public McuTimer getDeactivateCZTimer()
     {
         return deactivateCZTimer;

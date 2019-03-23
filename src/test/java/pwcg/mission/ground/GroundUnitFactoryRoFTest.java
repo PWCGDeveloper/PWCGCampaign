@@ -39,7 +39,7 @@ public class GroundUnitFactoryRoFTest
     private ConfigManagerCampaign configManager;
     
     private ICountry country = CountryFactory.makeCountryByCountry(Country.GERMANY);
-    private MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone();
+    private MissionBeginUnitCheckZone missionBeginUnit;
     private Coordinate myTestPosition = new Coordinate (100000, 0, 100000);
 
     @Before
@@ -48,11 +48,11 @@ public class GroundUnitFactoryRoFTest
         PWCGContextManager.setRoF(false);
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));
-        Mockito.when(campaign.getAirfieldName()).thenReturn("Staro-Nijne-Steblievskaya");
         Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MaxGroundTargetDistanceKey)).thenReturn(50000);
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
 
-        missionBeginUnit.initialize(myTestPosition, 10000, Coalition.COALITION_ALLIED);
+        missionBeginUnit = new MissionBeginUnitCheckZone(myTestPosition, 10000);
+        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(Coalition.COALITION_ALLIED);
 }
     
     @Test

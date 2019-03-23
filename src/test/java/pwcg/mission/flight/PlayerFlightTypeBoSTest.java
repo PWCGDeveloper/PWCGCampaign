@@ -15,7 +15,7 @@ import pwcg.mission.flight.paradrop.ParaDropFlight;
 import pwcg.mission.flight.transport.TransportFlight;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 public class PlayerFlightTypeBoSTest
 {
@@ -26,7 +26,7 @@ public class PlayerFlightTypeBoSTest
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        campaign = CampaignCache.makeCampaign(CampaignCacheBoS.TG2_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.TG2_PROFILE);
     }
 
     @Test
@@ -34,8 +34,8 @@ public class PlayerFlightTypeBoSTest
     {
         mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.PARATROOP_DROP);
-        ParaDropFlight flight = (ParaDropFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.TG2_PROFILE), FlightTypes.PARATROOP_DROP);
+        ParaDropFlight flight = (ParaDropFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
@@ -49,8 +49,8 @@ public class PlayerFlightTypeBoSTest
     {
         mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.CARGO_DROP);
-        ParaDropFlight flight = (ParaDropFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.TG2_PROFILE), FlightTypes.CARGO_DROP);
+        ParaDropFlight flight = (ParaDropFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
@@ -64,8 +64,8 @@ public class PlayerFlightTypeBoSTest
     {
         mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.TRANSPORT);
-        TransportFlight flight = (TransportFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.TG2_PROFILE), FlightTypes.TRANSPORT);
+        TransportFlight flight = (TransportFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         assert (flight.getFlightType() == FlightTypes.TRANSPORT);
@@ -77,8 +77,8 @@ public class PlayerFlightTypeBoSTest
     {
         mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.BOMB);
-        BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.TG2_PROFILE), FlightTypes.BOMB);
+        BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
@@ -92,8 +92,8 @@ public class PlayerFlightTypeBoSTest
     {
         mission = new Mission();
         mission.initialize(campaign);
-        mission.generate(FlightTypes.LOW_ALT_BOMB);
-        BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlight();
+        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.TG2_PROFILE), FlightTypes.LOW_ALT_BOMB);
+        BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();

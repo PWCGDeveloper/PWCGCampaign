@@ -83,16 +83,14 @@ public class ConfigItemKeys
 	public static final String SquadronGeneratesMissionOddsKey = "SquadronGeneratesMissionOdds";
 	public static final String SquadronGeneratesMissionModifierKey = "SquadronGeneratesMissionModifier";
 
-	public static final String FriendlyPlanesMaxKey = "FriendlyPlanesMax";
-	public static final String EnemyPlanesMaxKey = "EnemyPlanesMax";
+	public static final String AlliedPlanesToSpawnMaxKey = "AlliedPlanesToSpawnMax";
+	public static final String AxisPlanesToSpawnMaxKey = "AxisPlanesToSpawnMax";
 
-	public static final String FriendlyFlightsToKeepMinKey = "FriendlyFlightsToKeepMin";
-	public static final String FriendlyFlightsToKeepMaxKey = "FriendlyFlightsToKeepMax";
-	public static final String EnemyFlightsToKeepMinKey = "EnemyFlightsToKeepMin";
-	public static final String EnemyFlightsToKeepMaxKey = "EnemyFlightsToKeepMax";
+	public static final String AlliedFlightsToKeepKey = "AlliedFlightsToKeep";
+	public static final String AxisFlightsToKeepKey = "AxisFlightsToKeep";
+
 	public static final String AiFighterFlightsForGroundCampaignMaxKey = "AiFighterFlightsForGroundCampaignMax";
-    public static final String AiFighterFlightsForFighterCampaignMaxKey = "AiFighterFlightsForFighterCampaignMax";
-    public static final String AiAddidionalFighterFlightsForWestFrontCampaignKey = "AiAddidionalFighterFlightsForWestFrontCampaign";
+	public static final String AiFighterFlightsForFighterCampaignMaxKey = "AiFighterFlightsForFighterCampaignMax";
 	public static final String DistanceFromPlayerFieldZoneKey = "DistanceFromPlayerFieldZone";
 	public static final String DistanceToPlayerFieldOverrideOddsKey = "DistanceToPlayerFieldOverrideOdds";
 

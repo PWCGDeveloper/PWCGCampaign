@@ -52,7 +52,7 @@ public class AmbientBattleBuilder
             {
                 boolean isPlayerTarget = true;
                 TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
-                TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionAssault(campaign, attackingCountry, defendingCountry, TacticalTarget.TARGET_ASSAULT, battleLocation, isPlayerTarget);
+                TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbientAssault(campaign, attackingCountry, defendingCountry, TacticalTarget.TARGET_ASSAULT, battleLocation, isPlayerTarget);
     
                 if (targetDefinition != null)
                 {

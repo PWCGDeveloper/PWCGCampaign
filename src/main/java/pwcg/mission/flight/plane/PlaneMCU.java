@@ -135,10 +135,10 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
         }
     }
 
-    public void createPlaneRemover (Flight flight, PlaneMCU playerPlane) throws PWCGException 
+    public void createPlaneRemover (Flight flight) throws PWCGException 
     {
         planeRemover = new PlaneRemover();
-        planeRemover.initialize(flight, this, playerPlane);
+        planeRemover.initialize(flight, this);
     }
 
     public boolean isPlayerPlane(Integer playerSerialNumber)

@@ -40,8 +40,9 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
 	public CampaignReportMedalGUI(MedalEvent medalEvent) throws PWCGException
 	{
 		super(ContextSpecificImages.imagesMedals() + "medalAwardAllied.jpg");
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        if (campaign.determineCountry().getSide() == Side.AXIS)
+
+        ICountry country = CountryFactory.makeCountryByCountry(medalEvent.getPilot().getCountry());
+        if (country.getSide() == Side.AXIS)
         {
             imagePath = ContextSpecificImages.imagesMedals() + "medalAwardGerman.jpg";
             setImage(imagePath);
@@ -103,7 +104,8 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
         // Medal        
         // The medal manager has the image
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        Medal medal =  MedalManager.getMedalFromAnyManager(campaign, medalEvent.getMedal());
+	    ICountry country = CountryFactory.makeCountryByCountry(medalEvent.getPilot().getCountry());
+        Medal medal =  MedalManager.getMedalFromAnyManager(country, campaign, medalEvent.getMedal());
         if (medal != null)
         {
             JLabel lMedal = createMedalImage(medal);

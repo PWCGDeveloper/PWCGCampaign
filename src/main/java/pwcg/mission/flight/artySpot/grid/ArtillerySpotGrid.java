@@ -2,6 +2,7 @@ package pwcg.mission.flight.artySpot.grid;
 
 import java.io.BufferedWriter;
 
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
@@ -27,21 +28,13 @@ public class ArtillerySpotGrid
 
     private double placementAngle = 270;
 
-	/**
-	 * 
-	 */
 	public ArtillerySpotGrid ()
 	{
 	}
-	
-	/**
-	 * @param position
-	 * @throws PWCGException 
-	 * @throws PWCGDataValidityException 
-	 */
-	public void create (ArtillerySpotArtilleryGroup friendlyArtillery, Coordinate gridPosition) throws PWCGException 
+
+	public void create (ArtillerySpotArtilleryGroup friendlyArtillery, Coordinate gridPosition, ICountry artilleryCountry) throws PWCGException 
 	{
-	    placementAngle = calcPlacementAngle(gridPosition);
+	    placementAngle = calcPlacementAngle(artilleryCountry);
 		
         // Forces artillery to complete firing task
         artillerySpotForceComplete = new ArtillerySpotForceComplete();
@@ -78,9 +71,6 @@ public class ArtillerySpotGrid
         artySpotMapGrid.create(this);
 	}
 
-    /**
-     * Create the 64 grid elements
-     */
     private void createElements(ArtillerySpotArtilleryGroup friendlyArtillery) 
     {
         for (int columnIndex = 0; columnIndex < GRID_ELEMENTS; ++columnIndex)
@@ -98,12 +88,6 @@ public class ArtillerySpotGrid
         }
     }
 
-    
-	/**
-	 * @param writer
-	 * @throws PWCGException 
-	 * @throws PWCGDataValidityException 
-	 */
 	private void setMcuPosition(Coordinate gridPosition) throws PWCGException 
 	{
         double placementAnglePlus90 = MathUtils.adjustAngle(placementAngle, 90);
@@ -124,23 +108,15 @@ public class ArtillerySpotGrid
 			}
 		}
 	}	
-	
-	/**
-	 * @param gridPosition
-	 * @return
-	 * @throws PWCGException 
-	 * @throws PWCGDataValidityException 
-	 */
-	private double calcPlacementAngle(Coordinate gridPosition) throws PWCGException
+
+	private double calcPlacementAngle(ICountry artilleryCountry) throws PWCGException
 	{
 	    double placementAngle = 270;
-	    	    
-	    Side friendlySide = PWCGContextManager.getInstance().getCampaign().determineCountry().getSide();
-	    
+	    	    	    
 	    // Angle is calculated north to south.  We really want left to right.  
         // Left to right on the allied side (central campaign) is south to north.
         // Left to right on the central side (allied campaign) is south to north.
-	    if (friendlySide == Side.AXIS)
+	    if (artilleryCountry.getSide() == Side.AXIS)
 	    {
 	        placementAngle = MathUtils.adjustAngle(placementAngle, 180);
 	    }
@@ -153,12 +129,7 @@ public class ArtillerySpotGrid
 	    
 	    return placementAngle;
 	}
-	
 
-	/**
-	 * @param writer
-	 * @throws PWCGIOException 
-	 */
 	public void write(BufferedWriter writer) throws PWCGIOException 
 	{
 	    artillerySpotMasterTrigger.write(writer);
@@ -177,57 +148,36 @@ public class ArtillerySpotGrid
         }
 	}
 
-    /**
-     * @return the gridElements
-     */
     public ArtillerySpotGridElement[][] getGridElements()
     {
         return this.gridElements;
     }
 
-    /**
-     * @return the placementAngle
-     */
     public double getPlacementAngle()
     {
         return this.placementAngle;
     }
 
-    /**
-     * @return the artySpotMapGrid
-     */
     public ArtillerySpotMapGrid getArtySpotMapGrid()
     {
         return this.artySpotMapGrid;
     }
 
-    /**
-     * @return the artillerySpotMedia
-     */
     public ArtillerySpotMedia getArtillerySpotMedia()
     {
         return this.artillerySpotMedia;
     }
 
-    /**
-     * @return the artillerySpotActivateSet
-     */
     public ArtillerySpotActivateSet getArtillerySpotActivateSet()
     {
         return this.artillerySpotActivateSet;
     }
 
-    /**
-     * @return the artillerySpotMasterTrigger
-     */
     public ArtillerySpotMasterTrigger getArtillerySpotMasterTrigger()
     {
         return this.artillerySpotMasterTrigger;
     }
 
-    /**
-     * @return the artillerySpotForceComplete
-     */
     public ArtillerySpotForceComplete getArtillerySpotForceComplete()
     {
         return this.artillerySpotForceComplete;

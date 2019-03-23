@@ -3,6 +3,7 @@ package pwcg.mission.flight.artySpot;
 import java.io.BufferedWriter;
 import java.util.List;
 
+import pwcg.campaign.api.ICountry;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -31,7 +32,8 @@ public class PlayerArtillerySpotFlight extends ArtillerySpotFlight
 	
 	public void createArtyGrid(ArtillerySpotArtilleryGroup friendlyArtillery) throws PWCGException 
 	{
-		artySpotGrid.create(friendlyArtillery, getTargetCoords());
+	    ICountry squadronCountry = flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate());
+	    artySpotGrid.create(friendlyArtillery, getTargetCoords(), squadronCountry);
 		
 		// Timer values
 		startSpotTimer.setTimer(1);

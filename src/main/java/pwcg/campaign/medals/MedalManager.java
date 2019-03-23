@@ -6,6 +6,7 @@ import java.util.TreeMap;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.MedalManagerFactory;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -25,9 +26,6 @@ public abstract class MedalManager implements IMedalManager
 	@Override
 	public abstract Medal getWoundedAward(SquadronMember pilot, ArmedService service);
 
-	@Override
-	public abstract List<Medal> getAllMedalsInOrder() throws PWCGException;
-
 	protected Campaign campaign = null;
 	
 	public abstract List<MedalManager> getAllManagers(Campaign campaign);
@@ -37,9 +35,9 @@ public abstract class MedalManager implements IMedalManager
 	    this.campaign = campaign;
 	}
 	
-	public static Medal getMedalFromAnyManager(Campaign campaign, String type) throws PWCGException 
+	public static Medal getMedalFromAnyManager(ICountry country, Campaign campaign, String type) throws PWCGException 
 	{
-		IMedalManager thisCountryManager = MedalManagerFactory.createMedalManager(campaign);
+		IMedalManager thisCountryManager = MedalManagerFactory.createMedalManager(country, campaign);
 		Medal medal = thisCountryManager.getMedalFromManager(type);
 		
 		if (medal == null)
