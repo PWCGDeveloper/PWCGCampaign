@@ -21,6 +21,7 @@ import pwcg.campaign.ww2.plane.payload.aircraft.Bf110G2Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Fw190A3Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Fw190A5Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Fw190A8Payload;
+import pwcg.campaign.ww2.plane.payload.aircraft.Fw190D9Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.He111H16Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.He111H6Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Hs129B2Payload;
@@ -107,6 +108,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.FW190_A8)
         {
             return new Fw190A8Payload(planeType);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.FW190_D9)
+        {
+            return new Fw190D9Payload(planeType);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.HE111_H6)
         {

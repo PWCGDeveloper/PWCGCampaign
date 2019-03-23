@@ -9,30 +9,29 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 
-public class Fw190A8Payload extends PlanePayload implements IPlanePayload
+public class Fw190D9Payload extends PlanePayload implements IPlanePayload
 {
-    public Fw190A8Payload(PlaneType planeType)
+    public Fw190D9Payload(PlaneType planeType)
     {
         super(planeType);
     }
 
     protected void initialize()
 	{        
-        setAvailablePayload(-2, "1000000", PayloadElement.FW190_REM_GUNS);
-        setAvailablePayload(-1, "10000", PayloadElement.EXTRA_ARMOR);
+        setAvailablePayload(-2, "10000000", PayloadElement.BUBBLE_CANOPY);
+        setAvailablePayload(-1, "1000000", PayloadElement.GYRO_GUNSIGHT);
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
-        setAvailablePayload(1, "101", PayloadElement.SD70_X4);
+        setAvailablePayload(1, "11", PayloadElement.SD70_X4);
         setAvailablePayload(2, "101", PayloadElement.SC250_X1);
-        setAvailablePayload(3, "101", PayloadElement.SC500_X1);
-        setAvailablePayload(4, "1001", PayloadElement.BR21_X2);
-        setAvailablePayload(16, "11", PayloadElement.MK108_30);
-        setAvailablePayload(32, "100001", PayloadElement.FW190F8);
+        setAvailablePayload(3, "1001", PayloadElement.SC500_X1);
+        setAvailablePayload(4, "10001", PayloadElement.BR21_X2);
+        setAvailablePayload(8, "100001", PayloadElement.R4M_X26);
 	}
     
     @Override
     public IPlanePayload copy()
     {
-        Fw190A8Payload clone = new Fw190A8Payload(planeType);
+        Fw190D9Payload clone = new Fw190D9Payload(planeType);
         
         return super.copy(clone);
     }
@@ -59,16 +58,8 @@ public class Fw190A8Payload extends PlanePayload implements IPlanePayload
 
     protected void createStandardPayload()
     {
-        int diceRoll = RandomNumberGenerator.getRandom(100);
-        if (diceRoll < 20)
-        {
-            selectedPrimaryPayloadId = 16;
-        }
-        else
-        {
-            selectedPrimaryPayloadId = 0;
-        }
-    }
+        selectedPrimaryPayloadId = 0;
+   }
 
 	protected void selectGroundAttackPayload(Flight flight)
     {
@@ -100,7 +91,7 @@ public class Fw190A8Payload extends PlanePayload implements IPlanePayload
         }
         else if (diceRoll < 60)
         {
-            selectedPrimaryPayloadId = 16;
+            selectedPrimaryPayloadId = 8;
         }
         else
         {

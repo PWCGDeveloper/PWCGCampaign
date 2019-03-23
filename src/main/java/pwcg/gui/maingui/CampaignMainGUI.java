@@ -52,7 +52,8 @@ import pwcg.gui.utils.ToolTipManager;
 
 public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
+    private static final String PWCG_VERSION = "5.1.3";
 	
 	private List<JButton> campaignButtonList = new ArrayList<JButton>();
 	
@@ -368,7 +369,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		JLabel spacer = new JLabel("    ", JLabel.LEFT);
 		versionPanel.add(spacer);
 
-		JLabel lversion = new JLabel("   PWCG Version 5.1.2", JLabel.LEFT);
+		JLabel lversion = new JLabel("   PWCG Version " + PWCG_VERSION, JLabel.LEFT);
 		lversion.setBackground(lbg);
 		lversion.setForeground(fg);
 		lversion.setOpaque(false);

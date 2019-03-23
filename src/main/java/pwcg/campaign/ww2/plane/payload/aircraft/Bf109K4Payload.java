@@ -17,7 +17,7 @@ public class Bf109K4Payload extends Bf109Payload implements IPlanePayload
 
     protected void initialize()
 	{        
-        setAvailablePayload(-1, "10001", PayloadElement.DB605DC_ENGINE);        
+        setAvailablePayload(-1, "10000", PayloadElement.DB605DC_ENGINE);        
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
         setAvailablePayload(1, "101", PayloadElement.SC250_X1);
         setAvailablePayload(2, "1001", PayloadElement.SC500_X1);
