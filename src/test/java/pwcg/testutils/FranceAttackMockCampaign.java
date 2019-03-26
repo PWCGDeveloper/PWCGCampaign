@@ -54,7 +54,6 @@ public class FranceAttackMockCampaign
     {
         PWCGContextManager.setRoF(true);
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
-        PWCGContextManager.getInstance().setCampaign(campaign);
 
         date = DateUtils.getDateYYYYMMDD("19180501");
         

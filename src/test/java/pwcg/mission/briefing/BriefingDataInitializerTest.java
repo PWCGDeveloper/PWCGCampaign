@@ -25,11 +25,14 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.gui.helper.BriefingAssignmentData;
+import pwcg.gui.helper.BriefingDataInitializer;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionFlightBuilder;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BriefingDataInitializerTest
@@ -67,10 +70,12 @@ public class BriefingDataInitializerTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        
         Mockito.when(mission.getCampaign()).thenReturn(campaign);
         Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
-        
+
+        Mockito.when(missionFlightBuilder.getPlayerFlightForSquadron(Mockito.anyInt())).thenReturn(flight);
+        //Mockito.when(missionFlightBuilder.getPlayerFlightForSquadron(Mockito.any())).thenReturn(flight);
+
         Mockito.when(flight.getPlanes()).thenReturn(planesInFlight);
         Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.PATROL);
 
@@ -84,6 +89,8 @@ public class BriefingDataInitializerTest
         Mockito.when(personnelManager.getSquadronPersonnel(Mockito.any())).thenReturn(squadronPersonnel);
         Mockito.when(squadronPersonnel.getSquadronMembersWithAces()).thenReturn(squadronMembers);
         Mockito.when(squadronMembers.getSquadronMemberCollection()).thenReturn(squadronPersonnelMap);
+
+        Mockito.when(squadron.getSquadronId()).thenReturn(SquadrontTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
         
         Mockito.when(pilot1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
         Mockito.when(pilot2.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
@@ -132,8 +139,8 @@ public class BriefingDataInitializerTest
     public void initializePayloadsFromMissionTest () throws PWCGException
     {             
         
-        BriefingDataInitializer briefingDataInitializer = new BriefingDataInitializer(mission, briefingAssignmentData);
-        briefingDataInitializer.initializeFromMission();
+        BriefingDataInitializer briefingDataInitializer = new BriefingDataInitializer(mission);
+        briefingAssignmentData = briefingDataInitializer.initializeFromMission(squadron);
         
         assert(briefingAssignmentData.getAssignedCrewPlanes().size() == 2);
         assert(briefingAssignmentData.getAssignedPilots().size() == 2);

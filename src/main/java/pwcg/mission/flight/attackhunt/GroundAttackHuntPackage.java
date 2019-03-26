@@ -28,8 +28,7 @@ public class GroundAttackHuntPackage extends FlightPackage
     public Flight createPackage () throws PWCGException 
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
 
         Coordinate targetGeneralLocation = GeneralTargetLocationGenerator.createTargetGeneralLocation(campaign, mission, squadron);
         Coordinate initialTargetCoordinates = getFrontPosition(squadron, targetGeneralLocation);

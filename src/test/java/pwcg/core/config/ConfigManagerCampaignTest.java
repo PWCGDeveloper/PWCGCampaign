@@ -40,7 +40,9 @@ public class ConfigManagerCampaignTest
         assertEquals(defaultConfigSets.size(), 10);
         assertEquals(initialConfigSetsFromFiles.size(), 12);
                 
-        verifyConfigSets(defaultConfigSets, initialConfigSetsFromFiles);
+        boolean allConfigsOk = verifyConfigSets(defaultConfigSets, initialConfigSetsFromFiles);
+        
+        assertTrue(allConfigsOk);
     }
     
     private boolean verifyConfigSets(Map<String, ConfigSet> defaultConfigSets, Map<String, ConfigSet> initialConfigSetsFromFiles)
@@ -68,7 +70,7 @@ public class ConfigManagerCampaignTest
         {
             if (!initialConfigSet.hasConfigItem(defaultConfigName))
             {
-                System.out.println("Missing from initial config set " + defaultConfigName);
+                System.out.println("Missing from initial config set  " + defaultConfigSet.getConfigSetName() + " " + defaultConfigName);
                 configSetOk = false;
             }
         }
@@ -77,7 +79,7 @@ public class ConfigManagerCampaignTest
         {
             if (!defaultConfigSet.hasConfigItem(initialConfigName))
             {
-                System.out.println("Missing from default config set " + initialConfigName);
+                System.out.println("Missing from default config set " + defaultConfigSet.getConfigSetName() + " " + initialConfigName);
                 configSetOk = false;
             }
         }

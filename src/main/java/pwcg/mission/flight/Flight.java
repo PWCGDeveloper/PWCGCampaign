@@ -847,8 +847,7 @@ public abstract class Flight extends Unit
 
         if (friendlyFighterSquadron != null)
         {
-            MissionBeginUnit missionBeginUnitEscort = new MissionBeginUnit();
-            missionBeginUnitEscort.initialize(this.getPosition());
+            MissionBeginUnit missionBeginUnitEscort = new MissionBeginUnit(this.getPosition());
 
             FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(friendlyFighterSquadron, flightInformation.getMission(), FlightTypes.ESCORT, flightInformation.getTargetCoords().copy());
             virtualEscortFlight = new VirtualEscortFlight(opposingFlightInformation, missionBeginUnitEscort, this);

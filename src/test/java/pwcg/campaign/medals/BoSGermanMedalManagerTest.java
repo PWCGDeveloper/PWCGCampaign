@@ -79,6 +79,7 @@ public class BoSGermanMedalManagerTest extends MedalManagerTestBase
     @Test
     public void testImages () throws PWCGException
     {            
+    	assert( medalManager.getAllAwardsForService().size() > 0);
     	for (Medal medal : medalManager.getAllAwardsForService())
     	{
 	        String medalPath = ContextSpecificImages.imagesMedals() + "Axis\\" + medal.getMedalImage();

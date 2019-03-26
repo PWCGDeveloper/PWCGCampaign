@@ -76,9 +76,7 @@ public class OpposingFlightBuilder
 
     private InterceptOpposingFlight getOpposingFlight(Squadron opposingSquadron, Coordinate startingPosition) throws PWCGException 
     {
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startingPosition.copy());
-                
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startingPosition.copy());
         FlightTypes opposingFlightType = getFlightType(opposingSquadron);
         FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(opposingSquadron, mission, opposingFlightType, targetCoordinates.copy());
         InterceptOpposingFlight opposingFlight = new InterceptOpposingFlight (opposingFlightInformation, missionBeginUnit, startingPosition);

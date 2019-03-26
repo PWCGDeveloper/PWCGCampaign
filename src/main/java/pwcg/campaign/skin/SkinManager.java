@@ -163,7 +163,8 @@ public class SkinManager
 
         if (skinsForPlanes.containsKey(planeName))
         {
-            SkinSet configuredSkins = skinsForPlanes.get(planeName).getConfiguredSkins();
+        	SkinsForPlane skinsForPlane = skinsForPlanes.get(planeName);
+            SkinSet configuredSkins = skinsForPlane.getConfiguredSkins();
             List<Skin>  skinsByName = new ArrayList<>(configuredSkins.getSkins().values());
             skinsByName = SkinFilter.skinFilterSkinName(skinsByName, skinName);
             

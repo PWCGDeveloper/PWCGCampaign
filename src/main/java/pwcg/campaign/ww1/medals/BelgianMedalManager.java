@@ -1,13 +1,9 @@
 package pwcg.campaign.ww1.medals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.core.exception.PWCGException;
 
 public class BelgianMedalManager extends RoFMedalManager 
 {
@@ -212,28 +208,4 @@ public class BelgianMedalManager extends RoFMedalManager
         
         return awardFighter(pilot, service, victoriesThisMission);
     }
-
-	@Override
-	public List<Medal> getAllAwardsForService() throws PWCGException
-	{
-		List<Medal> medals = new ArrayList<>();
-		medals.addAll(getWoundBadges());
-		medals.addAll(getAllBadges());
-		return medals;
-	}
-	
-	private List<Medal> getWoundBadges()
-	{
-		List<Medal> medals = new ArrayList<>();
-		medals.add( medals.get(BEL_WOUND_BADGE));		
-		return medals;
-	}
-	
-	private List<Medal> getAllBadges()
-	{
-		List<Medal> medals = new ArrayList<>();
-		medals.add( medals.get(PILOTS_BADGE));		
-		return medals;
-	}
-
 }

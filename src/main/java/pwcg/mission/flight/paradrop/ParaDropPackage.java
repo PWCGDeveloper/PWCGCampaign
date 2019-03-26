@@ -66,9 +66,7 @@ public class ParaDropPackage extends FlightPackage
     private ParaDropFlight makeParaDropFlight(Coordinate targetCoordinates) throws PWCGException
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
-            
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());        
         FlightInformation flightInformation = createFlightInformation(targetCoordinates);
         ParaDropFlight paradropFlight = new ParaDropFlight (flightInformation, missionBeginUnit);
         

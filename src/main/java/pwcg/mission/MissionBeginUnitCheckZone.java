@@ -14,7 +14,7 @@ public class MissionBeginUnitCheckZone extends MissionBeginUnit
 
     public MissionBeginUnitCheckZone (Coordinate unitPosition, int checkZoneRange)
     {
-        super();
+        super(unitPosition);
         checkZone = new SelfDeactivatingCheckZone(unitPosition, checkZoneRange);
         checkZone.linkTargets(missionBeginTimer, null);
     }

@@ -20,36 +20,35 @@ public class NewPilotRankDetermination
         List<String> ranks = rankHelper.getRanksByService(service);
 
         int rankIndex = 2;
-        int rankOdds = RandomNumberGenerator.getRandom(100);
         
-        int NewPilotRankOddsLowest = 15;
-        int NewPilotRankOddsLow = 25;
-        rankIndex = getReplacementPilotRankIndex(ranks, rankOdds, NewPilotRankOddsLowest, NewPilotRankOddsLow);
+        rankIndex = getReplacementPilotRankIndex(ranks);
 
         String rank = rankHelper.getRankByService(rankIndex, service);
         
         return rank;
     }
     
-    private int getReplacementPilotRankIndex(List<String> ranks, int rankOdds, int NewPilotRankOddsLowest, int NewPilotRankOddsLow)
+    private int getReplacementPilotRankIndex(List<String> ranks)
     {
-        int rankIndex;
-        if (rankOdds < NewPilotRankOddsLowest)
+        int rankIndex = 3;
+        if (ranks.size() < 5)
+    	{
+            rankIndex = 3;
+    	}
+        else
         {
-            rankIndex = 4;
-            if (ranks.size() < 5)
+            int NewPilotRankOddsLowest = 30;
+            int rankOdds = RandomNumberGenerator.getRandom(100);
+            if (rankOdds < NewPilotRankOddsLowest)
+            {
+                rankIndex = 4;
+            }
+            else
             {
                 rankIndex = 3;
             }
         }
-        else if (rankOdds < (NewPilotRankOddsLowest + NewPilotRankOddsLow))
-        {
-            rankIndex = 3;
-        }
-        else
-        {
-            rankIndex = 2;
-        }
+    	
         return rankIndex;
     }
 

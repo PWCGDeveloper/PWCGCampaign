@@ -6,25 +6,25 @@
       "label": "Always Air Start",
       "help": "Always air start - set to 1 for shorter missions"
     },
-    "DistanceFromPlayerFieldZone": {
-      "value": "15000",
-      "label": "Exclusion zone around player field",
-      "help": "Distance (meters) from player field to exclude AI flights"
-    },
-    "DistanceToPlayerFieldOverrideOdds": {
-      "value": "2",
-      "label": "Odds of overriding exclusion zone",
-      "help": "Odds that a flight will be in the exclusion zone"
-    },
-    "EnemyFlightsToKeepMax": {
+    "AlliedFlightsToKeep": {
       "value": "6",
-      "label": "Max Enemy Flights",
-      "help": "Upper bound of enemy flights to keep"
+      "label": "Max Allied Flights",
+      "help": "Upper bound of Allied flights to keep"
     },
-    "EnemyFlightsToKeepMin": {
-      "value": "3",
-      "label": "Min Enemy Flights",
-      "help": "Lower bound of enemy flights to keep"
+    "AxisFlightsToKeep": {
+      "value": "6",
+      "label": "Max Axis Flights",
+      "help": "Upper bound of Axis flights to keep"
+    },
+    "AlliedPlanesToSpawnMax": {
+      "value": "16",
+      "label": "Max Allied Planes to Spawn",
+      "help": "Upper bound of Allied planes to spawn"
+    },
+    "AxisPlanesToSpawnMax": {
+      "value": "12",
+      "label": "Max Axis Planes to Spawn",
+      "help": "Upper bound of Axis planes to spawn"
     },
     "AiFighterFlightsForGroundCampaignMax": {
       "value": "1",

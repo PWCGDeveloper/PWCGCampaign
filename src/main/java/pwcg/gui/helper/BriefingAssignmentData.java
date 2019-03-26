@@ -1,14 +1,16 @@
-package pwcg.mission.briefing;
+package pwcg.gui.helper;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
 public class BriefingAssignmentData
 {
+	private Squadron squadron;
     private Map<Integer, CrewPlanePayloadPairing> assignedCrewPlanes = new HashMap<>();
     private Map<Integer, SquadronMember> assignedPilots = new HashMap<>();
     private Map<Integer, SquadronMember> unAssignedPilots = new HashMap<>();
@@ -105,4 +107,16 @@ public class BriefingAssignmentData
     {
         return unAssignedPlanes;
     }
+
+	public Squadron getSquadron() 
+	{
+		return squadron;
+	}
+
+	public void setSquadron(Squadron squadron) 
+	{
+		this.squadron = squadron;
+	}
+    
+    
 }

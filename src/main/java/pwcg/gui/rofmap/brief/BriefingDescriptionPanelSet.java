@@ -23,6 +23,7 @@ import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.helper.BriefingMissionHandler;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -31,7 +32,7 @@ import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.IMissionDescription;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionDescriptionFactory;
-import pwcg.mission.briefing.BriefingMissionHandler;
+import pwcg.mission.flight.Flight;
 
 public class BriefingDescriptionPanelSet extends PwcgGuiContext implements ActionListener
 {
@@ -47,8 +48,9 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
 	    
         this.campaignHomeGui =  campaignHomeGui;
 
+        Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
 		briefingMissionHandler = new BriefingMissionHandler(mission);
-		briefingMissionHandler.initializeFromMission();
+		briefingMissionHandler.initializeFromMission(myFlight.getSquadron());
 
 		SoundManager.getInstance().playSound("BriefingStart.WAV");
 	}

@@ -64,7 +64,7 @@ public class BoSFlightFactory extends FlightFactory
         int scrambleMissionOdds = 0;
         int patrolMissionOdds = 0;
         int lowAltPatrolMissionOdds = 0;
-        int capMissionOdds = 0;
+        int lowAltCapMissionOdds = 0;
 
         if (squadron.determineSquadronCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
         {
@@ -79,8 +79,8 @@ public class BoSFlightFactory extends FlightFactory
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedPatrolMissionKey);
             lowAltPatrolMissionOdds = patrolMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedLowAltPatrolMissionKey);
-            capMissionOdds = lowAltPatrolMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedCAPMissionKey);
+            lowAltCapMissionOdds = lowAltPatrolMissionOdds
+                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedLowAltCapMissionKey);
         }
         else
         {
@@ -95,11 +95,11 @@ public class BoSFlightFactory extends FlightFactory
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisPatrolMissionKey);
             lowAltPatrolMissionOdds = patrolMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisLowAltPatrolMissionKey);
-            capMissionOdds = lowAltPatrolMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisCAPMissionKey);
+            lowAltCapMissionOdds = lowAltPatrolMissionOdds
+                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisLowAltCapMissionKey);
         }
 
-        int missionOdds = RandomNumberGenerator.getRandom(capMissionOdds);
+        int missionOdds = RandomNumberGenerator.getRandom(lowAltCapMissionOdds);
 
         if (missionOdds < offensiveMissionOdds)
         {
@@ -139,9 +139,13 @@ public class BoSFlightFactory extends FlightFactory
         {
             flightType = FlightTypes.LOW_ALT_PATROL;
         }
-        else
+        else if (missionOdds < lowAltCapMissionOdds)
         {
             flightType = FlightTypes.LOW_ALT_CAP;
+        }
+        else
+        {
+            flightType = FlightTypes.PATROL;
         }
 
         return flightType;

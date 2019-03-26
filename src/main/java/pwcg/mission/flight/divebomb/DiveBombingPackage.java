@@ -27,9 +27,7 @@ public class DiveBombingPackage extends FlightPackage
 
 		// Now the actual artillery spot mission
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
-        
+	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
         FlightInformation flightInformation = createFlightInformation(targetCoordinates);
         DiveBombingFlight diveBombingFlight = new DiveBombingFlight(flightInformation, missionBeginUnit);
 		diveBombingFlight.linkGroundUnitsToFlight(groundUnitCollection);

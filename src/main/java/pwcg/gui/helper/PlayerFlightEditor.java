@@ -1,4 +1,4 @@
-package pwcg.mission.briefing;
+package pwcg.gui.helper;
 
 import java.util.ArrayList;
 import java.util.List;

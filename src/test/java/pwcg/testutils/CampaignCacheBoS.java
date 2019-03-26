@@ -13,9 +13,7 @@ import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightTypes;
 
 public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCache
-{
-    public static final String WRITTEN = "Written";
-    
+{    
     protected Campaign makeCampaignFromModel(CampaignGeneratorModel generatorModel) throws PWCGException
     {
         CampaignGenerator generator = new CampaignGenerator(generatorModel);
@@ -44,10 +42,9 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
         makeProfile(SquadrontTestProfile.KG53_PROFILE);
         makeProfile(SquadrontTestProfile.STG77_PROFILE);
         makeProfile(SquadrontTestProfile.TG2_PROFILE);
+        makeProfile(SquadrontTestProfile.FG_362_PROFILE);
         makeProfile(SquadrontTestProfile.RAF_184_PROFILE);
         makeProfile(SquadrontTestProfile.REGIMENT_11_PROFILE);
-
-        makeWrittenProfile();
     }
     
     private void makeWrittenProfile() throws PWCGException

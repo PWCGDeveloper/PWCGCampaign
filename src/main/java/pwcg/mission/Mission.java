@@ -151,7 +151,7 @@ public class Mission
         	missionFrontLines.buildFrontLineIcons();
             missionPlaneLimiter.createPlaneCountersToLimitPlanesSpawned(this);
 
-        	if (campaign.getCampaignData().isCoop())
+        	if (!campaign.getCampaignData().isCoop())
         	{
         		finalizeForSinglePlayer();
         	}

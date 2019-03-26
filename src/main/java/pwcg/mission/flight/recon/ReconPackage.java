@@ -42,9 +42,7 @@ public class ReconPackage extends FlightPackage
 
         // Now the actual mission
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
-
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());        
         ReconFlight recon = null;        
         FlightInformation flightInformation = createFlightInformation(initialTargetCoordinates);
         if (isPlayerFlight)

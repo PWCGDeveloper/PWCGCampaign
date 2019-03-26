@@ -1,10 +1,8 @@
-package pwcg.aar.outofmission.phase1.elapsedtime;
+package pwcg.campaign.plane;
 
 import java.util.Date;
 
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;

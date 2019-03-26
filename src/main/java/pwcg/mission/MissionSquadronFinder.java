@@ -33,13 +33,13 @@ public class MissionSquadronFinder
         this.mission = mission;
     }
 
-    public void findAiSquadronsForSinglePlayer() throws PWCGException
+    public void findAiSquadronsForMission() throws PWCGException
     {
         if (mission.getMissionProfile() == MissionProfile.DAY_TACTICAL_MISSION)
         {
             findSquadronsFoDayTacticalMission();
         }
-        if (mission.getMissionProfile() == MissionProfile.DAY_STRATEGIC_MISSION)
+        else if (mission.getMissionProfile() == MissionProfile.DAY_STRATEGIC_MISSION)
         {
             // TODO make night tactical
             findSquadronsFoDayTacticalMission();

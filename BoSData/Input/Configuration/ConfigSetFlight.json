@@ -85,11 +85,6 @@
       "value": "8000",
       "label": "Takeoff Waypoint Distance",
       "help": "Distance to Takeoff Waypoint in meters"
-    },
-    "VictoriesForAcedom": {
-      "value": "10",
-      "label": "Victories For Acedom",
-      "help": "How many victories an ace must have before he is included"
     }
   }
 }

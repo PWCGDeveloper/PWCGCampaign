@@ -18,9 +18,7 @@ public class FerryPackage
 	                             Squadron squad) throws PWCGException 
 	{
 		// The actual mission is just flying from your old airfield to the new
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(campaign.getSquadronMoveEvent().getLastAirfield().getPosition().copy());
-        
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(campaign.getSquadronMoveEvent().getLastAirfield().getPosition().copy());        
         IAirfield toAirfield = squad.determineCurrentAirfieldCurrentMap(campaign.getDate());
         FlightInformation flightInformation = FlightInformationFactory.buildPlayerFlightInformation(squad, mission, FlightTypes.FERRY, toAirfield.getPosition().copy());
 		FerryFlight ferry = new FerryFlight (flightInformation, missionBeginUnit, false);

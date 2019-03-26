@@ -1,8 +1,6 @@
 package pwcg.campaign.ww1.medals;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
@@ -315,72 +313,4 @@ public class BritishMedalManager extends RoFMedalManager
         // If we made no awards based on recon criteria, maybe we award based on scout criteria
         return awardFighter(pilot, service, victoriesThisMission);
     }
-    
-	@Override
-	public List<Medal> getAllAwardsForService() throws PWCGException
-	{
-		List<Medal> medals = new ArrayList<>();
-		medals = getRAFMedals();
-		medals.addAll(getRNASMedals());
-		medals.addAll(getRFCMedals());
-		medals.addAll(getWoundBadges());
-		medals.addAll(getAllBadges());
-		return medals;
-	}
-
-	private List<Medal> getRAFMedals()
-	{
-		List<Medal> medals = new ArrayList<>();
-		
-		medals.add( medals.get(DFC));
-		medals.add( medals.get(DFC_BAR_1));
-		medals.add( medals.get(DSO));
-		medals.add( medals.get(DSO_BAR));
-		medals.add( medals.get(DFC_BAR_2));
-		medals.add( medals.get(VC));
-
-		return medals;
-	}
-	
-
-	private List<Medal> getRNASMedals()
-	{
-		List<Medal> medals = new ArrayList<>();
-
-		medals.add( medals.get(DSC));
-		medals.add( medals.get(DSC_BAR));
-		medals.add( medals.get(DSO));
-		medals.add( medals.get(DSO_BAR));
-		medals.add( medals.get(VC));
-
-		return medals;
-	}
-
-
-	private List<Medal> getRFCMedals()
-	{
-		List<Medal> medals = new ArrayList<>();
-
-		medals.add( medals.get(MC));
-		medals.add( medals.get(DSO));
-		medals.add( medals.get(DSO_BAR));
-		medals.add( medals.get(VC));
-
-		return medals;
-	}
-
-	private List<Medal> getWoundBadges()
-	{
-		List<Medal> medals = new ArrayList<>();
-		medals.add( medals.get(WOUND_STRIPE));		
-		return medals;
-	}
-	
-	private List<Medal> getAllBadges()
-	{
-		List<Medal> medals = new ArrayList<>();
-		medals.add( medals.get(PILOTS_BADGE));		
-		return medals;
-	}
-
 }

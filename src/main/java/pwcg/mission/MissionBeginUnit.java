@@ -21,11 +21,7 @@ public class MissionBeginUnit
 
 	protected ArrayList<MissionBeginUnit> linkedUnits = new ArrayList<MissionBeginUnit>();
 
-	public MissionBeginUnit()
-	{
-	}
-
-	public void initialize(Coordinate position) throws PWCGException 
+	public MissionBeginUnit(Coordinate position)
 	{
 	    this.position = position.copy();
         createUnitTimer();

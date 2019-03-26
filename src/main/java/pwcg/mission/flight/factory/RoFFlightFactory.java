@@ -83,7 +83,7 @@ public class RoFFlightFactory extends FlightFactory
         int scrambleMissionOdds = 0;
         int patrolMissionOdds = 0;
         int lowAltPatrolMissionOdds = 0;
-        int capMissionOdds = 0;
+        int lowAltCapMissionOdds = 0;
 
         if (isPlayerFlight)
         {
@@ -110,8 +110,8 @@ public class RoFFlightFactory extends FlightFactory
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedPatrolMissionKey);
             lowAltPatrolMissionOdds = patrolMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedLowAltPatrolMissionKey);
-            capMissionOdds = lowAltPatrolMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedCAPMissionKey);
+            lowAltCapMissionOdds = lowAltPatrolMissionOdds
+                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedLowAltCapMissionKey);
         }
         else
         {
@@ -130,12 +130,12 @@ public class RoFFlightFactory extends FlightFactory
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisPatrolMissionKey);
             lowAltPatrolMissionOdds = patrolMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisLowAltPatrolMissionKey);
-            capMissionOdds = lowAltPatrolMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisCAPMissionKey);
+            lowAltCapMissionOdds = lowAltPatrolMissionOdds
+                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisLowAltPatrolMissionKey);
         }
 
         // Missions
-        int missionOdds = RandomNumberGenerator.getRandom(capMissionOdds);
+        int missionOdds = RandomNumberGenerator.getRandom(lowAltCapMissionOdds);
         if (missionOdds < offensiveMissionOdds)
         {
             flightType = FlightTypes.OFFENSIVE;
@@ -189,9 +189,13 @@ public class RoFFlightFactory extends FlightFactory
         {
             flightType = FlightTypes.LOW_ALT_PATROL;
         }
-        else
+        else if (missionOdds < lowAltCapMissionOdds)
         {
             flightType = FlightTypes.LOW_ALT_CAP;
+        }
+        else
+        {
+            flightType = FlightTypes.PATROL;
         }
 
         return flightType;

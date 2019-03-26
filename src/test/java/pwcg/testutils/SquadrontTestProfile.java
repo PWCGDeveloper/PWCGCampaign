@@ -16,7 +16,7 @@ public enum SquadrontTestProfile
     ESC_2_PROFILE("Esc2", 101002, "19170801"),
     RAF_184_PROFILE("RAF184", 103083184, "19440801"),
     REGIMENT_11_PROFILE("Reg11", 10111011, "19430301"),
-	FG_362_PROFILE("Reg11", 102362377, "19440801");
+	FG_362_PROFILE("FG362", 102362377, "19440801");
 
    private int squadronId;
    private String dateString;

@@ -60,18 +60,14 @@ public class BalloonDefensePackage extends FlightPackage
         Flight balloonDefenseFlight = null;
 		if(isPlayerFlight)
 		{
-	        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-	        missionBeginUnit.initialize(startCoords.copy());
-	        
+	        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
 	        FlightInformation flightInformation = createFlightInformation(balloonUnit.getPwcgGroundUnitInformation().getPosition());
             PlayerBalloonDefenseFlight playerCoverUnit = new PlayerBalloonDefenseFlight(flightInformation, missionBeginUnit, balloonUnit);          
 			balloonDefenseFlight = playerCoverUnit;
 		}
 		else
 		{
-            MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-            missionBeginUnit.initialize(startCoords.copy());
-            
+	        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
             FlightInformation flightInformation = createFlightInformation(balloonUnit.getPwcgGroundUnitInformation().getPosition());
 			AiBalloonDefenseFlight nonPlayerCoverUnit = new AiBalloonDefenseFlight(flightInformation, missionBeginUnit, balloonUnit);
 			balloonDefenseFlight = nonPlayerCoverUnit;
@@ -92,9 +88,7 @@ public class BalloonDefensePackage extends FlightPackage
             
             if (enemyScoutSquadron != null)
             {
-                MissionBeginUnit missionBeginUnitBust = new MissionBeginUnit();
-                missionBeginUnitBust.initialize(balloonUnit.getPwcgGroundUnitInformation().getPosition().copy());
-    
+                MissionBeginUnit missionBeginUnitBust = new MissionBeginUnit(balloonUnit.getPwcgGroundUnitInformation().getPosition().copy());    
                 FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(enemyScoutSquadron, mission, FlightTypes.BALLOON_BUST, balloonUnit.getPwcgGroundUnitInformation().getPosition());
                 BalloonBustFlight enemyBustFlight = new BalloonBustFlight(opposingFlightInformation, missionBeginUnitBust);
                 enemyBustFlight.createUnitMission();       

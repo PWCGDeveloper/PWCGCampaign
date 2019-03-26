@@ -44,9 +44,7 @@ public class BombingPackage extends FlightPackage
     {
         // Now the actual bombing mission
 	    Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-	    missionBeginUnit.initialize(startCoords.copy());
-	        
+	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
         FlightInformation flightInformation = createFlightInformation(targetCoordinates);
         BombingFlight bombingFlight = new BombingFlight (flightInformation, missionBeginUnit);
 

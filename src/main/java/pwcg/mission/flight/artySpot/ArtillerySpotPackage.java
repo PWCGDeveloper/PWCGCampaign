@@ -56,8 +56,7 @@ public class ArtillerySpotPackage extends FlightPackage
         Side squadronSide = squadron.determineSide();
         ArtillerySpotArtilleryGroup friendlyArtillery = getFriendlyArtillery(groundUnits, squadronSide);
         
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
         
         FlightInformation flightInformation = createFlightInformation(targetCoordinates);
         PlayerArtillerySpotFlight artySpotPlayer = new PlayerArtillerySpotFlight (flightInformation, missionBeginUnit);
@@ -71,8 +70,7 @@ public class ArtillerySpotPackage extends FlightPackage
     private Flight createAiFlight(Coordinate targetCoordinates, Coordinate startCoords) throws PWCGException
     {
         Flight artySpot;
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
         
         FlightInformation flightInformation = createFlightInformation(targetCoordinates);
         ArtillerySpotFlight artySpotAI = new ArtillerySpotFlight (flightInformation, missionBeginUnit);

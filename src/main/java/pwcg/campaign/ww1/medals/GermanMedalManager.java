@@ -1,8 +1,5 @@
 package pwcg.campaign.ww1.medals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
@@ -10,7 +7,6 @@ import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.ww1.country.RoFServiceManager;
-import pwcg.core.exception.PWCGException;
 
 public class GermanMedalManager extends RoFMedalManager 
 {
@@ -436,97 +432,4 @@ public class GermanMedalManager extends RoFMedalManager
         // If we made no awards based on recon criteria, maybe we award based on scout criteria
         return awardFighter(pilot, service, victoriesThisMission);
     }
-
-
-	@Override
-	public List<Medal> getAllAwardsForService() throws PWCGException
-	{
-		List<Medal> allAwardsForService = getAllNationalMedals();
-		
-		allAwardsForService.addAll(getBavariaMedals());
-		allAwardsForService.addAll(getBavariaMedals());
-		allAwardsForService.addAll(getWurttenburgMedalsInOrder());
-		allAwardsForService.addAll(getSaxonyMedalsInOrder());
-		allAwardsForService.addAll(getArmyWoundBadges());
-		allAwardsForService.addAll(getNavyWoundBadges());
-		allAwardsForService.addAll(getPrussianBadges());
-		allAwardsForService.addAll(getBavarianBadges());
-		
-		return allAwardsForService;
-	}
-
-	private List<Medal> getAllNationalMedals()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-
-		medalsInOrder.add( medals.get(IRON_CROSS_2));
-		medalsInOrder.add( medals.get(IRON_CROSS_1));
-		medalsInOrder.add( medals.get(ORDER_HOUSE_HOHENZOLLERN));
-		medalsInOrder.add( medals.get(POUR_LE_MERIT));
-		medalsInOrder.add( medals.get(ORDER_RED_EAGLE));
-		
-		return medalsInOrder;
-	}
-
-	private List<Medal> getBavariaMedals()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		
-		medalsInOrder.add( medals.get(B_MEDAL_BRAVERY));
-		medalsInOrder.add( medals.get(B_MILITARY_MERIT));
-		medalsInOrder.add( medals.get(B_MAX_JOSEPH));
-
-		return medalsInOrder;
-	}
-
-	private List<Medal> getWurttenburgMedalsInOrder()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		
-		medalsInOrder.add( medals.get(W_MILITARY_MERIT));
-		medalsInOrder.add( medals.get(W_FREDRICH_ORDER));
-
-		return medalsInOrder;
-	}
-
-	private List<Medal> getSaxonyMedalsInOrder()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		
-		medalsInOrder.add( medals.get(S_WAR_MERIT_CROSS));
-		medalsInOrder.add( medals.get(S_ORDER_ALBERT));
-		medalsInOrder.add( medals.get(S_MILITARY_ORDER_ST_HENRY));
-
-		return medalsInOrder;
-	}
-
-	public List<Medal> getArmyWoundBadges()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(WOUND_BADGE_BLACK));		
-		medalsInOrder.add( medals.get(WOUND_BADGE_SILVER));		
-		return medalsInOrder;
-	}
-	
-	public List<Medal> getNavyWoundBadges()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(NAVAL_WOUND_BADGE_BLACK));		
-		medalsInOrder.add( medals.get(NAVAL_WOUND_BADGE_SILVER));		
-		return medalsInOrder;
-	}
-
-	public List<Medal> getBavarianBadges()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(B_PILOTS_BADGE));		
-		return medalsInOrder;
-	}
-
-	public List<Medal> getPrussianBadges()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(PILOTS_BADGE));		
-		return medalsInOrder;
-	}
 }

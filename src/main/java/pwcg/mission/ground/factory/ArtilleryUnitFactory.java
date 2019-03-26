@@ -22,8 +22,7 @@ public class ArtilleryUnitFactory
 
     public GroundUnit createGroundArtilleryBattery () throws PWCGException
     {
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(targetDefinition.getTargetPosition());
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(targetDefinition.getTargetPosition().copy());            
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, missionBeginUnit, targetDefinition);
 

@@ -1,4 +1,4 @@
-package pwcg.mission.briefing;
+package pwcg.gui.helper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberSorter;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.rofmap.brief.BriefParametersContextBuilder;
 import pwcg.gui.rofmap.brief.BriefingCrewPlanePayloadSorter;
@@ -28,10 +29,10 @@ public class BriefingMissionHandler
         this.mission = mission;
     }
     
-    public void initializeFromMission() throws PWCGException
+    public void initializeFromMission(Squadron squadron) throws PWCGException
     {
-        BriefingDataInitializer pilotHelper = new BriefingDataInitializer(mission, briefingAssignmentData);
-        pilotHelper.initializeFromMission();
+        BriefingDataInitializer pilotHelper = new BriefingDataInitializer(mission);
+        briefingAssignmentData = pilotHelper.initializeFromMission(squadron);
 
         BriefingPayloadHelper payloadHelper = new BriefingPayloadHelper(mission, briefingAssignmentData);
         payloadHelper.initializePayloadsFromMission();

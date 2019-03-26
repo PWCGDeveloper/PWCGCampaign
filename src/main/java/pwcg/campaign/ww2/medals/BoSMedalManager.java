@@ -6,7 +6,6 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.medals.Medal;
 import pwcg.campaign.medals.MedalManager;
 import pwcg.core.exception.PWCGException;
 
@@ -60,19 +59,4 @@ public abstract class BoSMedalManager extends MedalManager
         
         return medalManagers;
     }
-    
-
-	@Override
-	public List<Medal> getAllAwardsForService() throws PWCGException
-	{
-		List<Medal> allAwards = new ArrayList<>();
-		allAwards.addAll(medals.values());
-		allAwards.addAll(getWoundBadges());
-		allAwards.addAll(getAllBadges());
-		return allAwards;
-	}
-	
-	abstract protected List<Medal>getWoundBadges();
-	abstract protected List<Medal>getAllBadges();
-
 }

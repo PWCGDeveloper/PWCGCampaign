@@ -1,8 +1,5 @@
 package pwcg.campaign.ww2.medals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.medals.Medal;
@@ -136,20 +133,4 @@ public class AmericanMedalManager extends BoSMedalManager
 
         return awardFighter(pilot, service, victoriesThisMission);
     }
-
-	@Override
-	protected List<Medal> getWoundBadges()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(PURPLE_HEART));		
-		return medalsInOrder;
-	}
-
-	@Override
-	protected List<Medal> getAllBadges()
-	{
-		List<Medal> medalsInOrder = new ArrayList<>();
-		medalsInOrder.add( medals.get(PILOTS_BADGE));		
-		return medalsInOrder;
-	}
 }

@@ -43,9 +43,7 @@ public class LowAltBombingPackage extends FlightPackage
                     throws PWCGException
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
-            
+	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
         FlightInformation flightInformation = createFlightInformation(targetCoordinates);
         LowAltBombingFlight bombingFlight = new LowAltBombingFlight (flightInformation, missionBeginUnit);
         BombingAltitudeLevel bombingAltitude = BombingAltitudeLevel.LOW;

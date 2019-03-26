@@ -160,6 +160,7 @@ public class ImageCache
         }
         catch (IOException e)
         {
+            Logger.log(LogLevel.ERROR, "Error readingimage file " + imagePath);
             Logger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }

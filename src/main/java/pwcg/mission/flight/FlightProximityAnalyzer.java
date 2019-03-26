@@ -77,7 +77,7 @@ public class FlightProximityAnalyzer
         List<VirtualWayPointCoordinate> thisFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(playerFlight);
         List<VirtualWayPointCoordinate> thatFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(aiFlight);
 
-        double closestDistanceToThatFlight = -1.0;
+        double closestDistanceToThatFlight = PositionFinder.ABSURDLY_LARGE_DISTANCE;
         // Compare the minute by minute plots to see when a flight intersects a
         // player flight or another flight
         for (int timeSliceOfFlight = 0; timeSliceOfFlight < 10000000; ++timeSliceOfFlight)
@@ -93,15 +93,12 @@ public class FlightProximityAnalyzer
                     if (playerFlight.isPlayerFlight())
                     {
                         aiFlight.setContactWithPlayer(timeSliceOfFlight);
-                    }
-                    else
-                    {
                         playerFlight.setFirstContactWithEnemy(timeSliceOfFlight, aiFlight);
                         aiFlight.setFirstContactWithEnemy(timeSliceOfFlight, playerFlight);
                     }
                 }
                 
-                if (closestDistanceToThatFlight == -1.0 || distance < closestDistanceToThatFlight)
+                if (distance < closestDistanceToThatFlight)
                 {
                     if (playerFlight.isPlayerFlight())
                     {

@@ -36,9 +36,7 @@ public class ScramblePackage extends FlightPackage
 		Coordinate targetWaypoint = getTargetWaypoint(mission, startCoords);
 		
 		// Now the actual mission
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
-
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());        
         FlightInformation flightInformation = createFlightInformation(targetWaypoint);
 		PlayerScrambleFlight scramble = new PlayerScrambleFlight (flightInformation, missionBeginUnit);
 		scramble.createUnitMission();
@@ -67,9 +65,7 @@ public class ScramblePackage extends FlightPackage
             double distanceToTargetWP = MathUtils.calcDist(opposingStartCoords, opposingTargetCoords);
             double angleToTargetWP = MathUtils.calcAngle(opposingStartCoords, opposingTargetCoords);
             opposingStartCoords = MathUtils.calcNextCoord(opposingStartCoords, angleToTargetWP, (distanceToTargetWP/2));
-
-	        MissionBeginUnit missionBeginUnitOpposing = new MissionBeginUnit();
-	        missionBeginUnitOpposing.initialize(opposingTargetCoords.copy());
+	        MissionBeginUnit missionBeginUnitOpposing = new MissionBeginUnit(opposingTargetCoords.copy());        
 
 	        FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(opposingSquad, mission, FlightTypes.SCRAMBLE_OPPOSE, opposingTargetCoords);
 			ScrambleOpposingFlight scrambleOpposing = new ScrambleOpposingFlight (opposingFlightInformation, missionBeginUnitOpposing, opposingStartCoords);

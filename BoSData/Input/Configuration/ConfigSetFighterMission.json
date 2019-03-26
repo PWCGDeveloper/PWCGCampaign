@@ -41,10 +41,10 @@
       "label": "Allied Low Altitude Patrol Mission",
       "help": "Odds of creating a Low Altitude Patrol - Allied"
     },
-    "AlliedCAPMission": {
-      "value": "20",
-      "label": "Allied CAP Mission",
-      "help": "Odds of creating a Battlefield CAP - Allied"
+    "AlliedLowAltCapMission": {
+      "value": "10",
+      "label": "Allied Low Alt CAP Mission",
+      "help": "Odds of creating a low altitude CAP - Allied"
     },
     
     "AxisBalloonBustMission": {
@@ -87,10 +87,10 @@
       "label": "Axis Low Altitude Patrol Mission",
       "help": "Odds of creating a Low Altitude Patrol - Axis"
     },
-    "AxisCAPMission": {
+    "AxisLowAltCapMission": {
       "value": "10",
-      "label": "Axis CAP Mission",
-      "help": "Odds of creating a Battlefield CAP - Axis"
+      "label": "Axis Low Alt CAP Mission",
+      "help": "Odds of creating a low altitude CAP - Axis"
     }
   }
 }

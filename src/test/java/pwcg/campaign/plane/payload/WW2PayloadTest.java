@@ -39,8 +39,6 @@ public class WW2PayloadTest
         
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign);
 		Mockito.when(flight.getSquadron()).thenReturn(squadron);
-
-        PWCGContextManager.getInstance().setCampaign(campaign);
 	}
 
 	@Test

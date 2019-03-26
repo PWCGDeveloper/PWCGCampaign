@@ -29,9 +29,7 @@ public class LoneWolfPackage extends PatrolPackage
 		                squadron.determineSquadronCountry(campaign.getDate()));
 		
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
-        
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());        
         FlightInformation flightInformation = createFlightInformation(targetWaypoint);
 		LoneWolfFlight patrol = new LoneWolfFlight (flightInformation, missionBeginUnit);
 		patrol.createUnitMission();		

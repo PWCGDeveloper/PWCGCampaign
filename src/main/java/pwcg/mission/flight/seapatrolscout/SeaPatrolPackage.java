@@ -42,8 +42,7 @@ public class SeaPatrolPackage extends FlightPackage
         Coordinate targetPosition = selectedShippingLane.getShippingLaneBorders().getCoordinateInBox();
 		
 		// Now the sea patrol mission
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());            
         
         FlightInformation flightInformation = createFlightInformation(targetPosition);
 		SeaPatrolFlight seaPatrol = new SeaPatrolFlight (flightInformation, missionBeginUnit);
@@ -120,9 +119,7 @@ public class SeaPatrolPackage extends FlightPackage
 			// And the opposing mission
 			// Target is the start of the opposing flight while the player field 
 			// is the target for the opposing flight.
-            MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-            missionBeginUnit.initialize(startingPosition.copy());
-            
+            MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startingPosition.copy());            
             FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(opposingSquad, mission, FlightTypes.SEA_PATROL, targetPosition.copy());
 			opposingFlight = new SeaPlaneOpposingFlight (opposingFlightInformation, missionBeginUnit);
 			opposingFlight.createUnitMission();

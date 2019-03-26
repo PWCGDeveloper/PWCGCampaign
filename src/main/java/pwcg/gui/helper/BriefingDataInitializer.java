@@ -1,12 +1,12 @@
-package pwcg.mission.briefing;
+package pwcg.gui.helper;
 
-import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
@@ -15,36 +15,37 @@ import pwcg.mission.flight.plane.PlaneMCU;
 public class BriefingDataInitializer
 {
     private Mission mission;
-    private BriefingAssignmentData briefingAssignmentData = new BriefingAssignmentData();
     
-	public BriefingDataInitializer(Mission mission, BriefingAssignmentData briefingAssignmentData)
+	public BriefingDataInitializer(Mission mission)
 	{
         this.mission = mission;
-        this.briefingAssignmentData = briefingAssignmentData;
 	}
 	
-	public void initializeFromMission() throws PWCGException
+	public BriefingAssignmentData initializeFromMission(Squadron squadron) throws PWCGException
 	{	    
-	    briefingAssignmentData.reset();
+	    BriefingAssignmentData briefingAssignmentData = new BriefingAssignmentData();
+	    briefingAssignmentData.setSquadron(squadron);
         
-	    SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
-	    SquadronPersonnel playerPersonnel = mission.getCampaign().getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId());
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesNoWounded(playerPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), (mission.getCampaign().getDate()));
+	    SquadronPersonnel playerPersonnel = mission.getCampaign().getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesNoWounded(
+        		playerPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), (mission.getCampaign().getDate()));
         for (SquadronMember squadronMember : squadronMembers.getSquadronMemberCollection().values())
         {
             briefingAssignmentData.addPilot(squadronMember);
         }
         
-        Equipment squadronPlanes = mission.getCampaign().getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId());
+        Equipment squadronPlanes = mission.getCampaign().getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId());
         for (EquippedPlane squadronPlane : squadronPlanes.getActiveEquippedPlanes().values())
         {
             briefingAssignmentData.addPlane(squadronPlane);
         }
 	    
-        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
+        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(squadron.getSquadronId());
 	    for (PlaneMCU plane : playerFlight.getPlanes())
 	    {
 	        briefingAssignmentData.assignPilot(plane.getPilot().getSerialNumber(), plane.getSerialNumber());
 	    }
+	    
+	    return briefingAssignmentData;
 	}
 }

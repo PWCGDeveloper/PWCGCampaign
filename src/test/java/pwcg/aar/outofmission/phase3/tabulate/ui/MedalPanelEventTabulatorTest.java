@@ -13,6 +13,10 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.AARTestSetup;
 import pwcg.aar.tabulate.debrief.MedalPanelEventTabulator;
 import pwcg.aar.ui.display.model.AARMedalPanelData;
+import pwcg.campaign.api.ICountry;
+import pwcg.campaign.context.Country;
+import pwcg.campaign.factory.MedalManagerFactory;
+import pwcg.campaign.medals.IMedalManager;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.ww1.medals.FrenchMedalManager;
@@ -27,8 +31,13 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
     @Mock
     private Squadron squadron2;
 
+    @Mock 
+    private ICountry country;
+
+    protected IMedalManager medalManager;
+
     private Map<Integer, Map<String, Medal>> medalsAwarded = new HashMap<>();
-    
+
     @Before
     public void setup() throws PWCGException
     {
@@ -36,6 +45,9 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
 
         Mockito.when(squadron1.determineDisplayName(Mockito.any())).thenReturn("Esc 103");
         Mockito.when(squadron2.determineDisplayName(Mockito.any())).thenReturn("Esc 48");
+        
+        Mockito.when(country.isCountry(Country.FRANCE)).thenReturn(true);
+        medalManager = MedalManagerFactory.createMedalManager(country, campaign);
 
         medalsAwarded.clear();
     }
@@ -52,7 +64,7 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
         medalsAwarded.put(pilot2.getSerialNumber(), new HashMap<String, Medal>());
         Mockito.when(campaignMemberAwardsInMission.getCampaignMemberMedals()).thenReturn(medalsAwarded);
 
-        Map<Integer, Medal> frenchMedals = FrenchMedalManager.getMedals();
+        Map<Integer, Medal> frenchMedals = medalManager.getMedals();
         Medal cdg = frenchMedals.get(FrenchMedalManager.CROIX_DE_GUERRE);
         Medal cdgBronzeStar = frenchMedals.get(FrenchMedalManager.CROIX_DE_GUERRE_BRONZE_STAR);
         Medal cdgSilverPalm = frenchMedals.get(FrenchMedalManager.CROIX_DE_GUERRE_SILVER_PALM);
@@ -78,7 +90,7 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
         medalsAwarded.put(pilot2.getSerialNumber(), new HashMap<String, Medal>());
         Mockito.when(campaignMemberAwardsOutOfMission.getCampaignMemberMedals()).thenReturn(medalsAwarded);
 
-        Map<Integer, Medal> frenchMedals = FrenchMedalManager.getMedals();
+        Map<Integer, Medal> frenchMedals = medalManager.getMedals();
         Medal cdg = frenchMedals.get(FrenchMedalManager.CROIX_DE_GUERRE);
         Medal cdgBronzeStar = frenchMedals.get(FrenchMedalManager.CROIX_DE_GUERRE_BRONZE_STAR);
         Medal cdgSilverPalm = frenchMedals.get(FrenchMedalManager.CROIX_DE_GUERRE_SILVER_PALM);

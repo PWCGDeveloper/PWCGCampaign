@@ -83,9 +83,7 @@ public class KubanAttackMockCampaign
 
 
         missionBeginUnit = new MissionBeginUnitCheckZone(myTestPosition, 10000);
-        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(Coalition.COALITION_ALLIED);
-        
-        PWCGContextManager.getInstance().setCampaign(campaign);
+        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(Coalition.COALITION_ALLIED);        
     }
 
 }

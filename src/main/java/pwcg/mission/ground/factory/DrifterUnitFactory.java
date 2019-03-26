@@ -22,8 +22,7 @@ public class DrifterUnitFactory
 
     public GroundUnit createDrifterUnit () throws PWCGException 
     {
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(targetDefinition.getTargetPosition().copy());
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(targetDefinition.getTargetPosition().copy());            
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(campaign, missionBeginUnit, targetDefinition);
         DrifterUnit drifterUnit = new DrifterUnit(groundUnitInformation);
         drifterUnit.createUnitMission();

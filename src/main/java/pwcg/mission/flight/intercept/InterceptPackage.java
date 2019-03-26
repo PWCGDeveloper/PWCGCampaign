@@ -86,9 +86,7 @@ public class InterceptPackage extends FlightPackage
     private InterceptFlight createInterceptFlight(Campaign campaign, Coordinate targetCoordinates) throws PWCGException
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
-        
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
         FlightInformation flightInformation = createFlightInformation(targetCoordinates);
 		InterceptFlight interceptFlight = new InterceptFlight (flightInformation, missionBeginUnit);
 

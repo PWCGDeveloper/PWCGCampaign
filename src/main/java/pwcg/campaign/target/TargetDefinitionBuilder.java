@@ -47,7 +47,7 @@ public class TargetDefinitionBuilder
         }
         
         targetDefinition.setDate(campaign.getDate());
-        targetDefinition.setPlayerTarget((squadron.getSquadronId() == squadron.getSquadronId()));
+        targetDefinition.setPlayerTarget((Squadron.isPlayerSquadron(campaign, squadron.getSquadronId())));
         
         targetDefinition.setPreferredRadius(productSpecific.getInitialTargetRadiusFromGeneralTargetLocation(flightType));
         targetDefinition.setMaximumRadius(productSpecific.getMaxTargetRadiusFromGeneralTargetLocation(flightType));
@@ -108,7 +108,7 @@ public class TargetDefinitionBuilder
         targetDefinition.setAttackingCountry(squadron.determineSquadronCountry(campaign.getDate()));
         targetDefinition.setTargetCountry(targetCountry);
         targetDefinition.setDate(campaign.getDate());
-        targetDefinition.setPlayerTarget((squadron.getSquadronId() == squadron.getSquadronId()));
+        targetDefinition.setPlayerTarget((Squadron.isPlayerSquadron(campaign, squadron.getSquadronId())));
         
         targetDefinition.setPreferredRadius(productSpecific.getInitialTargetRadiusFromGeneralTargetLocation(flightType));
         targetDefinition.setMaximumRadius(productSpecific.getMaxTargetRadiusFromGeneralTargetLocation(flightType));

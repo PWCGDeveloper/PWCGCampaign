@@ -25,6 +25,7 @@ public class CombatReportIOJsonTest
     {
         PWCGContextManager.setRoF(false);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
+        CampaignIOJson.writeJson(campaign);
     }
 
     @Test

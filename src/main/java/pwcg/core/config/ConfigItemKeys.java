@@ -34,7 +34,7 @@ public class ConfigItemKeys
     public static final String AxisScrambleMissionKey = "AxisScrambleMission";
     public static final String AxisPatrolMissionKey = "AxisPatrolMission";
     public static final String AxisLowAltPatrolMissionKey = "AxisLowAltPatrolMission";
-    public static final String AxisCAPMissionKey = "AxisCAPMission";
+    public static final String AxisLowAltCapMissionKey = "AxisLowAltCapMission";
 
 	public static final String AlliedOffensiveMissionKey = "AlliedOffensiveMission";
 	public static final String AlliedInterceptMissionKey = "AlliedInterceptMission";
@@ -44,7 +44,7 @@ public class ConfigItemKeys
 	public static final String AlliedScrambleMissionKey = "AlliedScrambleMission";
     public static final String AlliedPatrolMissionKey = "AlliedPatrolMission";
     public static final String AlliedLowAltPatrolMissionKey = "AlliedLowAltPatrolMission";
-    public static final String AlliedCAPMissionKey = "AlliedCAPMission";
+    public static final String AlliedLowAltCapMissionKey = "AlliedLowAltCapMission";
 
 	public static final String IsEscortedOddsKey = "IsEscortedOdds";
 
@@ -91,8 +91,6 @@ public class ConfigItemKeys
 
 	public static final String AiFighterFlightsForGroundCampaignMaxKey = "AiFighterFlightsForGroundCampaignMax";
 	public static final String AiFighterFlightsForFighterCampaignMaxKey = "AiFighterFlightsForFighterCampaignMax";
-	public static final String DistanceFromPlayerFieldZoneKey = "DistanceFromPlayerFieldZone";
-	public static final String DistanceToPlayerFieldOverrideOddsKey = "DistanceToPlayerFieldOverrideOdds";
 
 	public static final String RandomizePlanesPerSideKey = "RandomizePlanesPerSide";
 	public static final String MaxAmbientBalloonsKey = "MaxAmbientBalloons";

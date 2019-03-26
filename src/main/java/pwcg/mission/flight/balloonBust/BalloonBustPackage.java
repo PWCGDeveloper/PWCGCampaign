@@ -54,9 +54,7 @@ public class BalloonBustPackage extends FlightPackage
 
     private BalloonBustFlight createFlight(Coordinate startCoords, BalloonDefenseGroup balloonUnit) throws PWCGException
     {
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
-
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
         FlightInformation flightInformation = createFlightInformation(balloonUnit.getPwcgGroundUnitInformation().getPosition());
         BalloonBustFlight balloonBust = new BalloonBustFlight (flightInformation, missionBeginUnit);
 		balloonBust.addLinkedUnit(balloonUnit);
@@ -92,9 +90,7 @@ public class BalloonBustPackage extends FlightPackage
     {
         if(isPlayerFlight)
 		{
-            MissionBeginUnit missionBeginUnitCover = new MissionBeginUnit();
-            missionBeginUnitCover.initialize(balloonUnit.getPwcgGroundUnitInformation().getPosition().copy());
-
+            MissionBeginUnit missionBeginUnitCover = new MissionBeginUnit(balloonUnit.getPwcgGroundUnitInformation().getPosition().copy());
             if (enemyScoutSquadron != null)
             {
                 FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(enemyScoutSquadron, mission, FlightTypes.BALLOON_DEFENSE, balloonUnit.getPwcgGroundUnitInformation().getPosition());

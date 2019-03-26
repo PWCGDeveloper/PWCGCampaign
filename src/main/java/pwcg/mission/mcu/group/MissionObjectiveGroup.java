@@ -21,7 +21,7 @@ import pwcg.mission.mcu.McuTimer;
 public class MissionObjectiveGroup
 {
     private McuMissionObjective missionObjective = new McuMissionObjective();
-    private MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
+    private MissionBeginUnit missionBeginUnit;
     private McuTimer missionObjectiveTimer = new McuTimer();
     
     private int index = IndexGenerator.getInstance().getNextIndex();;
@@ -35,14 +35,12 @@ public class MissionObjectiveGroup
     {
         Flight playerFlight = mission.getMissionFlightBuilder().getReferencePlayerFlight();
         Coordinate squadronLocation = playerFlight.getSquadron().determineCurrentPosition(campaign.getDate());
-        
-        missionBeginUnit.initialize(squadronLocation);
-        
+        missionBeginUnit = new MissionBeginUnit(squadronLocation.copy());            
+                
         missionObjective.setCoalition(playerFlight.getSquadron().getCountry());
         missionObjective.setSuccess(1);
         missionObjective.setPosition(squadronLocation);
 
-        missionBeginUnit.initialize(playerFlight.getSquadron().determineCurrentAirfieldCurrentMap(campaign.getDate()).getPosition());
         missionObjectiveTimer.setPosition(squadronLocation);
         missionBeginUnit.linkToMissionBegin(missionObjectiveTimer.getIndex());
         missionObjectiveTimer.setTarget(missionObjective.getIndex());
@@ -52,8 +50,7 @@ public class MissionObjectiveGroup
     {
         Flight playerFlight = mission.getMissionFlightBuilder().getReferencePlayerFlight();
         Coordinate squadronLocation = playerFlight.getSquadron().determineCurrentPosition(campaign.getDate());
-
-        missionBeginUnit.initialize(squadronLocation);
+        missionBeginUnit = new MissionBeginUnit(squadronLocation.copy());            
 
         missionObjective.setCoalition(playerFlight.getSquadron().getCountry());
         missionObjective.setPosition(squadronLocation);

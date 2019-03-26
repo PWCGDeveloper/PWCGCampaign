@@ -33,9 +33,7 @@ public class SpyExtractPackage extends FlightPackage
         targetCoordinates = moveTargetAwayFromEnemy(startCoords.copy(), targetCoordinates.copy());
 
 		// Now the actual artillery spot mission
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
-        
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());            
         FlightInformation flightInformation = createFlightInformation(targetCoordinates);
 		SpyExtractFlight spyFlight = new SpyExtractFlight (flightInformation, missionBeginUnit);
 		spyFlight.linkGroundUnitsToFlight(groundUnitCollection);

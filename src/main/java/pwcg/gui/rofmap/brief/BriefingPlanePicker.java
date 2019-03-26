@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.briefing.BriefingMissionHandler;
+import pwcg.gui.helper.BriefingMissionHandler;
 
 public class BriefingPlanePicker
 {

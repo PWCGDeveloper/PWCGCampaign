@@ -2,11 +2,11 @@ package pwcg.campaign.outofmission;
 
 import java.util.Date;
 
-import pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionPlaneFinder;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.plane.OutOfMissionPlaneFinder;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;

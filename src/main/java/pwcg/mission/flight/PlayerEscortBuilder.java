@@ -21,8 +21,7 @@ public class PlayerEscortBuilder
 
         if (friendlyFighterSquadron != null)
         {
-            MissionBeginUnit missionBeginUnitEscort = new MissionBeginUnit();
-            missionBeginUnitEscort.initialize(playerFlightInformation.getDepartureAirfield().getPosition());
+            MissionBeginUnit missionBeginUnitEscort = new MissionBeginUnit(playerFlightInformation.getDepartureAirfield().getPosition());
     
             FlightInformation escortFlightInformation = FlightInformationFactory.buildEscortForPlayerFlight(playerFlight.getFlightInformation(), friendlyFighterSquadron);
             EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, missionBeginUnitEscort, playerFlight);

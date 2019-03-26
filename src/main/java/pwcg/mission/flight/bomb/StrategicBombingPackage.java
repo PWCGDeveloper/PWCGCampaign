@@ -57,9 +57,7 @@ public class StrategicBombingPackage extends FlightPackage
     private StrategicBombingFlight createStrategicBombingFlight(Squadron squadron, boolean isPlayerFlight, TargetDefinition targetDefinition) throws PWCGException
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
-
+	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
         FlightInformation flightInformation = createFlightInformation(targetDefinition.getTargetPosition());
         StrategicBombingFlight strategicBombingFlight = new StrategicBombingFlight(flightInformation, missionBeginUnit);
         strategicBombingFlight.setBombingAltitudeLevel(BombingAltitudeLevel.HIGH);
@@ -140,10 +138,7 @@ public class StrategicBombingPackage extends FlightPackage
                     // player field
                     // is the target for the opposing flight.
                     Coordinate homeDefenseCoords = opposingSquad.determineCurrentPosition(campaign.getDate());
-                    MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-                    missionBeginUnit.initialize(homeDefenseCoords.copy());
-
-                    
+            	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(homeDefenseCoords.copy());	        
                     FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(opposingSquad, mission, FlightTypes.INTERCEPT, bombing.getTargetCoords().copy());
                     InterceptFlight homeDefenseFlight = new InterceptFlight(opposingFlightInformation, missionBeginUnit);
                     homeDefenseFlight.createUnitMission();
@@ -212,10 +207,7 @@ public class StrategicBombingPackage extends FlightPackage
         {
             // Send out supporting flights before the player flight
             Coordinate startPosition = MathUtils.calcNextCoord(rootStartPosition, targetToStartAngle, (i + 1) * 4000.0);
-
-            MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-            missionBeginUnit.initialize(startPosition.copy());
-
+    	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startPosition.copy());	        
             FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(squadron, mission, FlightTypes.STRATEGIC_BOMB, targetPosition.copy());
             StrategicSupportingFlight bombingFlight = new StrategicSupportingFlight(opposingFlightInformation, missionBeginUnit, startPosition.copy());
             bombingFlight.createUnitMission();

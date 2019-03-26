@@ -69,10 +69,8 @@ public class EscortPackage extends FlightPackage
 
 	private PlayerEscortFlight createPlayerEscortMission(Flight flightEscortedByPlayer) throws PWCGException
 	{
-		MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        Coordinate playerSquadronPosition = squadron.determineCurrentPosition(campaign.getDate());
-        missionBeginUnit.initialize(playerSquadronPosition.copy());
-
+        Coordinate squadronPosition = squadron.determineCurrentPosition(campaign.getDate());
+	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(squadronPosition.copy());	        
         FlightInformation flightInformation = createFlightInformation(flightEscortedByPlayer.getPlanes().get(0).getPosition().copy());
 		PlayerEscortFlight playerEscort = new PlayerEscortFlight(flightInformation, missionBeginUnit, flightEscortedByPlayer);
 		playerEscort.addLinkedUnit(flightEscortedByPlayer);

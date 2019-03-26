@@ -34,9 +34,7 @@ public class PlayerEscortedFlightBuilder
 	
 	public Flight createEscortedFlight (Coordinate enemyGroundUnitCoordinates) throws PWCGException 
 	{
-		MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(friendlyBombSquadron.determineCurrentPosition(campaign.getDate()));
-
+		MissionBeginUnit missionBeginUnit = new MissionBeginUnit(friendlyBombSquadron.determineCurrentPosition(campaign.getDate()));
         FlightInformation escortedFlightInformation = FlightInformationFactory.buildAiFlightInformation(friendlyBombSquadron, mission, FlightTypes.BOMB, enemyGroundUnitCoordinates.copy());
         escortedFlightInformation.setEscortedByPlayerFlight(true);
         bombingFlightEscortedByPlayer = new BombingFlight (escortedFlightInformation, missionBeginUnit);

@@ -36,9 +36,7 @@ public class PatrolPackage extends FlightPackage
 		                squadron.determineSquadronCountry(campaign.getDate()));
 		
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
-        
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());        
         FlightInformation flightInformation = createFlightInformation(targetWaypoint);
 		PatrolFlight patrol = new PatrolFlight (flightInformation, missionBeginUnit);
 		patrol.createUnitMission();

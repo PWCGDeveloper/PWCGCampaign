@@ -34,6 +34,7 @@ public class AiFlightBuilder
     public List<Flight> createAiFlights() throws PWCGException
     {
         MissionSquadronFinder missionSquadronFinder = new MissionSquadronFinder(campaign, mission);
+        missionSquadronFinder.findAiSquadronsForMission();
         createFlightsForSquadrons(missionSquadronFinder.getAxisSquads());
         createFlightsForSquadrons(missionSquadronFinder.getAlliedSquads());
         return missionFlights;

@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.io.json.AircraftIOJson;
 import pwcg.core.exception.PWCGException;
@@ -141,57 +142,6 @@ public class PlaneTypeFactory
         return plane;
     }
 
-    public PlaneType getActivePlaneBySideDateAndRole(Side side, Date date, Role role) throws PWCGException
-    {
-        List<PlaneType> possiblePlanes = new ArrayList<>();
-        for (PlaneType planeType : planeTypes.values())
-        {
-            if (planeType.getSide() == side)
-            {
-                if (!(planeType.getIntroduction().after(date)))
-                {
-                    if (planeType.isRole(role))
-                    {
-                        possiblePlanes.add(planeType);
-                    }
-                }
-            }
-        }
-        
-        PlaneType selectedPlane = null;
-        if (possiblePlanes.size() > 0)
-        {
-            int index = RandomNumberGenerator.getRandom(possiblePlanes.size());
-            selectedPlane = possiblePlanes.get(index);
-        }
-
-        return selectedPlane;
-    }
-
-    public PlaneType getActivePlaneBySideAndDate(Side side, Date date) throws PWCGException
-    {
-        List<PlaneType> possiblePlanes = new ArrayList<>();
-        for (PlaneType planeType : planeTypes.values())
-        {
-            if (planeType.getSide() == side)
-            {
-                if (!(planeType.getIntroduction().after(date)))
-                {
-                    possiblePlanes.add(planeType);
-                }
-            }
-        }
-        
-        PlaneType selectedPlane = null;
-        if (possiblePlanes.size() > 0)
-        {
-            int index = RandomNumberGenerator.getRandom(possiblePlanes.size());
-            selectedPlane = possiblePlanes.get(index);
-        }
-
-        return selectedPlane;
-    }
-
     public PlaneType createPlaneTypeByType (String planteTypeName) throws PWCGException
     {
         PlaneType plane = null;
@@ -323,6 +273,58 @@ public class PlaneTypeFactory
         return planeTypesForArchType;
     }
 
+
+    public PlaneType findActivePlaneTypeByCountryDateAndRole(ICountry country, Date date, Role role) throws PWCGException
+    {
+        List<PlaneType> possiblePlanes = new ArrayList<>();
+        for (PlaneType planeType : planeTypes.values())
+        {
+            if (planeType.isUsedBy(country))
+            {
+                if (!(planeType.getIntroduction().after(date)))
+                {
+                    if (planeType.isRole(role))
+                    {
+                        possiblePlanes.add(planeType);
+                    }
+                }
+            }
+        }
+        
+        PlaneType selectedPlane = null;
+        if (possiblePlanes.size() > 0)
+        {
+            int index = RandomNumberGenerator.getRandom(possiblePlanes.size());
+            selectedPlane = possiblePlanes.get(index);
+        }
+
+        return selectedPlane;
+    }
+
+    public PlaneType findAnyPlaneTypeForCountryAndDate(ICountry country, Date date) throws PWCGException
+    {
+        List<PlaneType> possiblePlanes = new ArrayList<>();
+        for (PlaneType planeType : planeTypes.values())
+        {
+            if (planeType.isUsedBy(country))
+            {
+                if (!(planeType.getIntroduction().after(date)))
+                {
+                    possiblePlanes.add(planeType);
+                }
+            }
+        }
+        
+        PlaneType selectedPlane = null;
+        if (possiblePlanes.size() > 0)
+        {
+            int index = RandomNumberGenerator.getRandom(possiblePlanes.size());
+            selectedPlane = possiblePlanes.get(index);
+        }
+
+        return selectedPlane;
+    }
+    
     private PlaneType getPlaneByDisplayName(String pwcgDesc) 
     {
         PlaneType plane = null;

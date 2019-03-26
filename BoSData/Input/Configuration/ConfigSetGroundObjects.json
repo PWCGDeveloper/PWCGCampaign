@@ -26,11 +26,6 @@
       "label": "Max distance to target",
       "help": "Max distance from front to ground target"
     },
-    "RandomShips": {
-      "value": "5",
-      "label": "Number of ships above base",
-      "help": "The possible number of ships above the base value"
-    },
     "WindsockDistance": {
       "value": "60",
       "label": "Windsock Distance",

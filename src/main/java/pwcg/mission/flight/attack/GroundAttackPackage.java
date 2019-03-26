@@ -32,8 +32,7 @@ public class GroundAttackPackage extends FlightPackage
     private GroundAttackFlight createFlight(GroundUnitCollection groundUnitCollection) throws PWCGException
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
 
         Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
 

@@ -85,8 +85,7 @@ public class PackageAirfieldScramble
         Squadron scrambleSquad = fighterSquadrons.get(0);
 
         Coordinate scrambleCoords = scrambleSquad.determineCurrentPosition(campaign.getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(scrambleCoords.copy());
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(scrambleCoords.copy());
 
         FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(scrambleSquad, mission, FlightTypes.SCRAMBLE, scrambleCoords.copy());
         ScrambleFlight scramble =  new ScrambleFlight(opposingFlightInformation, missionBeginUnit);

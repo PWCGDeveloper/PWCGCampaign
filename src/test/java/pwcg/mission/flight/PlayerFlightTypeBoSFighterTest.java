@@ -38,7 +38,7 @@ public class PlayerFlightTypeBoSFighterTest
         campaigns.put(SquadrontTestProfile.JG_51_PROFILE_MOSCOW, germanEastCampaign);
         campaigns.put(SquadrontTestProfile.JG_51_PROFILE_WEST, germanWestCampaign);
         campaigns.put(SquadrontTestProfile.FG_362_PROFILE, americanCampaign);
-        campaigns.put(SquadrontTestProfile.FG_362_PROFILE, britishCampaign);
+        campaigns.put(SquadrontTestProfile.RAF_184_PROFILE, britishCampaign);
         campaigns.put(SquadrontTestProfile.REGIMENT_11_PROFILE, russianCampaign);
     }
 

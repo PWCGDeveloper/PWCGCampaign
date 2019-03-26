@@ -6,6 +6,7 @@ import java.util.HashMap;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
@@ -55,7 +56,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 
 	public String createDescription() throws PWCGException 
     {
-		Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
+		Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 
         MapWeather mapWeather = PWCGContextManager.getInstance().getCurrentMap().getMapWeather();
         setClouds(mapWeather.getWeatherDescription());

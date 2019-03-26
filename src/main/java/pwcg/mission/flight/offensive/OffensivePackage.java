@@ -42,8 +42,7 @@ public class OffensivePackage extends FlightPackage
     private OffensiveFlight createFlight(Coordinate targetWaypoint) throws PWCGException
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());        
         FlightInformation flightInformation = createFlightInformation(targetWaypoint);
 		OffensiveFlight offensive = new OffensiveFlight (flightInformation, missionBeginUnit);
 		offensive.createUnitMission();

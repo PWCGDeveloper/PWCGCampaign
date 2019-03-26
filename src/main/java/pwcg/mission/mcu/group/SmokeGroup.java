@@ -23,7 +23,7 @@ import pwcg.mission.mcu.effect.SmokeVillage;
 
 public class SmokeGroup
 {
-    private MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
+    private MissionBeginUnit missionBeginUnit;
     
     private McuTimer smokeActivateTriggeredTimer = new McuTimer();
     private McuTimer smokeInitiateTimer = new McuTimer();
@@ -52,7 +52,7 @@ public class SmokeGroup
     public void buildSmokeGroup(Mission mission, Coordinate smokeEffectPosition, SmokeEffect requestedSmokeEffect) throws PWCGException 
     {
         this.position = smokeEffectPosition;
-        missionBeginUnit.initialize(position.copy());
+        missionBeginUnit = new MissionBeginUnit(position.copy());            
 
         addSmokeEffect(requestedSmokeEffect, smokeEffectPosition);
         

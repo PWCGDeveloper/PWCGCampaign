@@ -1,4 +1,4 @@
-package pwcg.mission.briefing;
+package pwcg.gui.helper;
 
 import java.util.List;
 
@@ -74,9 +74,7 @@ public class BriefingPayloadHelper
 
     private void assignPayloadsToCrewPlanes() throws PWCGException
     {
-        SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
-        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
-
+        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
         for (PlaneMCU plane : playerFlight.getPlanes())
         {
             SquadronMember pilotOfPlane = plane.getPilot();
@@ -90,9 +88,7 @@ public class BriefingPayloadHelper
 
     private void assignModificationsToCrewPlanes() throws PWCGException
     {
-        SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
-        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
-
+        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
         for (PlaneMCU plane : playerFlight.getPlanes())
         {
             SquadronMember pilotOfPlane = plane.getPilot();
@@ -136,9 +132,7 @@ public class BriefingPayloadHelper
     
     private void setPayloadFromPayloadFactory(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
-        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
-
+        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
         IPayloadFactory payloadFactory = PWCGContextManager.getInstance().getPayloadFactory();
         IPlanePayload payload = payloadFactory.createPlanePayload(crewPlane.getPlane().getType());
         payload.createWeaponsPayload(playerFlight);

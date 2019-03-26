@@ -11,6 +11,7 @@ import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadDesignation;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.helper.BriefingPayloadHelper;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
 @RunWith(MockitoJUnitRunner.class)

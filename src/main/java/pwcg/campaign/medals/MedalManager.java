@@ -1,5 +1,6 @@
 package pwcg.campaign.medals;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -17,7 +18,7 @@ import pwcg.core.utils.Logger.LogLevel;
 
 public abstract class MedalManager implements IMedalManager 
 {
-	protected static  Map<Integer, Medal> medals = new TreeMap<Integer, Medal>();
+	protected Map<Integer, Medal> medals = new TreeMap<Integer, Medal>();
 
 	protected abstract Medal awardFighter(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException ;
     protected abstract Medal awardBomber(SquadronMember pilot, ArmedService service, int victoriesThisMission) throws PWCGException ;
@@ -116,7 +117,7 @@ public abstract class MedalManager implements IMedalManager
         return medal;
     }
     
-    public static Map<Integer, Medal> getMedals()
+    public Map<Integer, Medal> getMedals()
     {
         return medals;
     }
@@ -125,7 +126,9 @@ public abstract class MedalManager implements IMedalManager
     {
         return medals.get(medalId);
     }
-    
-    
 
+	public List<Medal> getAllAwardsForService() throws PWCGException
+	{
+		return new ArrayList<>(medals.values());
+	}
 }

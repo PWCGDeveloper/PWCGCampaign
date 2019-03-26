@@ -31,10 +31,7 @@ public class ContactPatrolPackage extends FlightPackage
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
         Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
-        
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
-                
+	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
         FlightInformation flightInformation = createFlightInformation(targetCoordinates);
         ContactPatrolFlight contactPatrol = new ContactPatrolFlight (flightInformation, missionBeginUnit);
         contactPatrol.createUnitMission();

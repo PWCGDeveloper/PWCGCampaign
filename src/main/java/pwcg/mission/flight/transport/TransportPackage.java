@@ -32,9 +32,7 @@ public class TransportPackage extends FlightPackage
         Coordinate targetCoordinates = transportReferenceLocationSelector.getTargetCoordinate();
         
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
-            
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());            
         FlightInformation flightInformation = createFlightInformation(targetCoordinates);
         TransportFlight transportFlight = new TransportFlight (flightInformation, missionBeginUnit);
         transportFlight.createUnitMission();

@@ -43,11 +43,8 @@ public class SeaAntiShippingPackage extends FlightPackage
                         startCoords, 
                         squadron.determineSquadronCountry(campaign.getDate()).getSide().getOppositeSide());
 
-        Coordinate targetPosition = selectedShippingLane.getShippingLaneBorders().getCoordinateInBox();
-		
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(startCoords.copy());
-        
+        Coordinate targetPosition = selectedShippingLane.getShippingLaneBorders().getCoordinateInBox();		
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
         FlightInformation flightInformation = createFlightInformation(targetPosition);
 		SeaAntiShippingFlight seaPatrol = new SeaAntiShippingFlight (flightInformation, missionBeginUnit);
 		generateConvoysForPlayerFlight(isPlayerFlight, selectedShippingLane, targetPosition, seaPatrol);
@@ -143,10 +140,7 @@ public class SeaAntiShippingPackage extends FlightPackage
 			double angle = MathUtils.calcAngle(targetPosition, opposingField.getPosition());
 			
 			Coordinate startingPosition = MathUtils.calcNextCoord(targetPosition, angle, distance);
-
-            MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-            missionBeginUnit.initialize(startingPosition.copy());
-            
+	        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startingPosition.copy());            
             FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(opposingSquad, mission, FlightTypes.SEA_PATROL, targetPosition);
 			opposingFlight = new SeaAntiShippingOpposingFlight (opposingFlightInformation, missionBeginUnit, startingPosition);
 			opposingFlight.createUnitMission();

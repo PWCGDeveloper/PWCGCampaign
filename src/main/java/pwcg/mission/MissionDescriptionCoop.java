@@ -43,8 +43,6 @@ public class MissionDescriptionCoop implements IMissionDescription
 
 	public String createDescription() throws PWCGException 
     {
-		Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
-
         MapWeather mapWeather = PWCGContextManager.getInstance().getCurrentMap().getMapWeather();
         setClouds(mapWeather.getWeatherDescription());
         setWind(mapWeather.getWindLayers().get(0));
@@ -52,7 +50,7 @@ public class MissionDescriptionCoop implements IMissionDescription
         MissionOptions missionOptions = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions();
         setMissionDateTime(DateUtils.getDateAsMissionFileFormat(campaign.getDate()), missionOptions.getMissionTime().getMissionTime());
 
-        buildTitleDescription(campaign.getCampaignData().getName(), playerFlight.getFlightType().toString());
+        buildTitleDescription(campaign.getCampaignData().getName());
 
         HashMap<String, Flight> squadronMap = new HashMap<String, Flight>();
         for (Flight flight : mission.getMissionFlightBuilder().getMissionFlights())
@@ -107,9 +105,9 @@ public class MissionDescriptionCoop implements IMissionDescription
         return result.toString();
     }
 
-	private void buildTitleDescription(String campaignName, String missionType) 
+	private void buildTitleDescription(String campaignName) 
 	{
-		this.title = campaignName + " " + campaignDateString + " " + missionType;
+		this.title = campaignName + " " + campaignDateString + " Coop Mission";
 	}
 
 	@Override

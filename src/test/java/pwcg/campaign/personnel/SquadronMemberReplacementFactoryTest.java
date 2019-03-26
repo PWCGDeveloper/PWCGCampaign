@@ -38,7 +38,7 @@ public class SquadronMemberReplacementFactoryTest
     }
 
     @Test
-    public void testCreatePlayer() throws PWCGException
+    public void testCreateReplacementPilot() throws PWCGException
     {                
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
 
@@ -47,7 +47,7 @@ public class SquadronMemberReplacementFactoryTest
         
         assert(replacement.isPlayer() == false);
         assert(replacement.getSerialNumber() >= SerialNumber.AI_STARTING_SERIAL_NUMBER);
-        assert(replacement.getRank().equals("Oberfeldwebel"));
+        assert(replacement.getRank().equals("Oberfeldwebel") || replacement.getRank().equals("Leutnant"));
         assert(replacement.getSquadronId() == Squadron.REPLACEMENT);
     }
     

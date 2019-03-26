@@ -57,8 +57,7 @@ public class ArtillerySpotBatteryFactory
 
     private MissionBeginUnit createMBU(Coordinate artilleryPosition) throws PWCGException
     {
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit();
-        missionBeginUnit.initialize(artilleryPosition);
+        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(artilleryPosition.copy());            
         return missionBeginUnit;
     }
 
