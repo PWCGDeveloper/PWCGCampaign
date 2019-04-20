@@ -31,7 +31,6 @@ public class CampaignJournalGUI extends JPanel
 	
 	private JTextArea narrativeText = new JTextArea("");
 
-	// Display an existing combat report
 	public CampaignJournalGUI(CombatReport combatReport)
 	{
 		super();
@@ -96,13 +95,7 @@ public class CampaignJournalGUI extends JPanel
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}
-	
-	
-	
-	/**
-	 * @return
-	 * @throws PWCGException 
-	 */
+
 	private JPanel makeHeader() throws PWCGException  
 	{
 		JPanel headerPanel = new JPanel(new BorderLayout());
@@ -198,30 +191,20 @@ public class CampaignJournalGUI extends JPanel
 		return headerPanel;
 	}
 
-    private JLabel makePilotsInMissionLabel(Font font)
+    private JLabel makePilotsInMissionLabel(Font font) throws PWCGException
     {
-        JLabel lPilot = null;
-		if (combatReport.getPilots() == null || combatReport.getPilots().isEmpty())
-		{
-    		lPilot = new JLabel("Pilot: " + combatReport.getPilot() + "          ", JLabel.LEFT);
-    		lPilot.setOpaque(false);
-    		lPilot.setFont(font);
-		}
-		else
-		{
-		    String pilotNames = "";
-		    for (String pilotName : combatReport.getPilots())
-		    {
-		        if (!pilotNames.isEmpty())
-		        {
-		            pilotNames += ", ";
-		        }
-                pilotNames += pilotName;
-		    }
-            lPilot = new JLabel("Pilots in mission: " + pilotNames, JLabel.LEFT);
-            lPilot.setOpaque(false);
-            lPilot.setFont(font);
-		}
+        String pilotNames = "";
+        for (String pilotName : combatReport.getFlightPilots())
+        {
+            if (!pilotNames.isEmpty())
+            {
+                pilotNames += ", ";
+            }
+            pilotNames += pilotName;
+        }
+        JLabel lPilot = new JLabel("Pilots in mission: " + pilotNames, JLabel.LEFT);
+        lPilot.setOpaque(false);
+        lPilot.setFont(font);
         return lPilot;
     }
 

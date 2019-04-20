@@ -10,10 +10,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.aar.data.CampaignUpdateData;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.aar.data.AARPersonnelLosses;
+import pwcg.aar.data.CampaignUpdateData;
 import pwcg.aar.inmission.phase3.reconcile.ReconciledInMissionData;
 import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
 import pwcg.aar.prelim.AARPreliminaryData;

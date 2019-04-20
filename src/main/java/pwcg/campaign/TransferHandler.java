@@ -46,9 +46,8 @@ public class TransferHandler
 
 	private TransferEvent createTransferEvent(int leaveTimeForTransfer, Squadron oldSquad, Squadron newSquad) throws PWCGException
 	{
-		TransferEvent transferEvent = new TransferEvent();
-        transferEvent.setPilot(player);
-        transferEvent.setTransferIn(true);
+		TransferEvent transferEvent = new TransferEvent(newSquad.getSquadronId());
+        transferEvent.setPilotName(player.getNameAndRank());
         transferEvent.setDate(campaign.getDate());
         transferEvent.setSquadron(newSquad.determineDisplayName(campaign.getDate()));
         transferEvent.setTransferTo(newSquad.getSquadronId());

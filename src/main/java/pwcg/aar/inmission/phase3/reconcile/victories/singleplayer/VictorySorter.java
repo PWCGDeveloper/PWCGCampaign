@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,16 +7,11 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBalloon;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
-import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.Role;
 import pwcg.core.exception.PWCGException;
 
-public class VictorySorter
+class VictorySorter
 {
-    private Campaign campaign;
-
     private List<LogVictory> firmAirVictories = new ArrayList <LogVictory>();
     private List<LogVictory> firmGroundVictories = new ArrayList <LogVictory>();
     private List<LogVictory> firmBalloonVictories = new ArrayList <LogVictory>();
@@ -30,23 +25,15 @@ public class VictorySorter
         FUZZY
     }
 
-    public VictorySorter (Campaign campaign)
+    VictorySorter ()
     {
-        this.campaign = campaign;
     }
 
-    public void sortVictories(List<LogVictory> logVictories) throws PWCGException 
+    void sortVictories(List<LogVictory> logVictories) throws PWCGException 
     {                
         for (LogVictory logVictory : logVictories)
         {
-            ICountry victimCountry = getVictimCountry(logVictory.getVictim());
-            if (campaign.determineCountry().isSameSide(victimCountry))  
-            {
-                continue;
-            }
-            
-            VictoryState victoryState = isFuzzy(logVictory);
-            
+            VictoryState victoryState = isFuzzy(logVictory);            
             if (victoryState == VictoryState.FUZZY)
             {
                 sortFuzzyVictory(logVictory);
@@ -124,43 +111,32 @@ public class VictorySorter
         return false;
     }
 
-    private ICountry getVictimCountry(LogAIEntity logEntity) throws PWCGException 
-    {
-        if (logEntity != null)
-        {
-            return logEntity.getCountry();
-
-        }
-        
-        return CountryFactory.makeNeutralCountry();
-    }
-
-    public List<LogVictory> getFirmAirVictories()
+    List<LogVictory> getFirmAirVictories()
     {
         return firmAirVictories;
     }
 
-    public List<LogVictory> getFirmGroundVictories()
+    List<LogVictory> getFirmGroundVictories()
     {
         return firmGroundVictories;
     }
 
-    public List<LogVictory> getFirmBalloonVictories()
+    List<LogVictory> getFirmBalloonVictories()
     {
         return firmBalloonVictories;
     }
 
-    public List<LogVictory> getFuzzyAirVictories()
+    List<LogVictory> getFuzzyAirVictories()
     {
         return fuzzyAirVictories;
     }
 
-    public List<LogVictory> getFuzzyBalloonVictories()
+    List<LogVictory> getFuzzyBalloonVictories()
     {
         return fuzzyBalloonVictories;
     }
 
-    public List<LogVictory> getAllUnconfirmed()
+    List<LogVictory> getAllUnconfirmed()
     {
         List<LogVictory> unconfirmed = new ArrayList<LogVictory>();
         extractUnconfirmed(firmAirVictories, unconfirmed);

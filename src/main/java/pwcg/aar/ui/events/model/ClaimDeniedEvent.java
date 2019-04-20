@@ -4,9 +4,10 @@ public class ClaimDeniedEvent extends AARPilotEvent
 {
 	private String type = "";
 	
-	public ClaimDeniedEvent ()
-	{
-	}
+    public ClaimDeniedEvent(int squadronId)
+    {
+        super(squadronId);
+    }
 
 	public String getType() {
 		return type;

@@ -1,31 +1,37 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import java.util.List;
 import java.util.Map;
 
+import pwcg.aar.inmission.phase3.reconcile.victories.IClaimResolver;
+import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
 
-public class ClaimResolver
+public class ClaimResolverSinglePlayer implements IClaimResolver
 {
     private Campaign campaign;
     private VerifiedVictoryGenerator verifiedVictoryGenerator;
     private ClaimDenier claimDenier;
     private ReconciledVictoryData reconciledMissionData = new ReconciledVictoryData();
+    private Map<Integer, PlayerDeclarations> playerDeclarations;
 
-    public ClaimResolver(
+    public ClaimResolverSinglePlayer(
                     Campaign campaign,
                     VerifiedVictoryGenerator verifiedVictoryGenerator,
-                    ClaimDenier claimDenier) 
+                    ClaimDenier claimDenier,
+                    Map<Integer, PlayerDeclarations> playerDeclarations) 
     {        
         this.campaign = campaign;
         this.verifiedVictoryGenerator = verifiedVictoryGenerator;
         this.claimDenier = claimDenier;
+        this.playerDeclarations = playerDeclarations;
     }
-    
-    public ReconciledVictoryData resolvePlayerClaims(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
+
+    @Override
+    public ReconciledVictoryData resolvePlayerClaims() throws PWCGException
     {
         confirmVictories(playerDeclarations);
         claimsDenied(playerDeclarations);       

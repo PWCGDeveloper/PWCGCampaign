@@ -3,12 +3,15 @@ package pwcg.gui.rofmap.event;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JTabbedPane;
 
+import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.AceLeaveEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.colors.ColorMap;
@@ -20,10 +23,14 @@ import pwcg.gui.utils.ImageResizingPanel;
 public class AARPilotLeavePanel extends AAREventPanel
 {
     private static final long serialVersionUID = 1L;
+    private SquadronMember referencePlayer;
+    private AARCoordinator aarCoordinator;
 
     public AARPilotLeavePanel()
 	{
         super();
+        this.aarCoordinator = AARCoordinator.getInstance();
+        this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
 	}
 
     public void makePanel() throws PWCGException  
@@ -71,15 +78,17 @@ public class AARPilotLeavePanel extends AAREventPanel
 	private HashMap<String, CampaignReportAceLeaveGUI> createPilotLeaveList() throws PWCGException 
 	{
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-
         HashMap<String, CampaignReportAceLeaveGUI> pilotLeaveGuiList = new HashMap<String, CampaignReportAceLeaveGUI>();
 
-        for (AceLeaveEvent aceLeaveEvent : aarContext.getUiDebriefData().getAceLeavePanelData().getAcesOnLeaveDuringElapsedTime())
+        List<AceLeaveEvent> aceLeaveEvents = aarCoordinator.getAarContext().getAarTabulatedData().getUiDebriefData().getAceLeavePanelData().getAcesOnLeaveDuringElapsedTime();
+        for (AceLeaveEvent aceLeaveEvent : aceLeaveEvents)
 		{
-            CampaignReportAceLeaveGUI leaveGui = new CampaignReportAceLeaveGUI(aceLeaveEvent, campaign);
-            String tabName = "Leave: " + aceLeaveEvent.getPilot().getNameAndRank();
-            
-            pilotLeaveGuiList.put(tabName, leaveGui);
+            if (aceLeaveEvent.getSquadronId() == referencePlayer.getSquadronId())
+            {
+                CampaignReportAceLeaveGUI leaveGui = new CampaignReportAceLeaveGUI(aceLeaveEvent, campaign);
+                String tabName = "Leave: " + aceLeaveEvent.getPilotName();
+                pilotLeaveGuiList.put(tabName, leaveGui);
+            }
 		}
         
         return pilotLeaveGuiList;

@@ -1,6 +1,5 @@
 package pwcg.campaign;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +12,7 @@ import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -51,10 +51,12 @@ public class CombatReportBuilder
     
     private CombatReport createCombatReportHeader() throws PWCGException
     {
+        combatReport.setPilotSerialNumber(reportSquadronMember.getSerialNumber());
+        combatReport.setReportPilotName(reportSquadronMember.getNameAndRank());
         combatReport.setSquadron(reportSquadronMember.determineSquadron().determineDisplayName(campaign.getDate()));
         
-        MissionHeader missionHeader = aarCoordinator.getAarContext().getUiCombatReportData().getCombatReportPanelData().getMissionHeader();
-        
+        MissionHeader missionHeader = aarCoordinator.getAarContext().getAarTabulatedData().findUiCombatReportDataForSquadron(reportSquadronMember.getSquadronId()).
+                        getCombatReportPanelData().getMissionHeader();
         Date combatReportDate = DateUtils.getDateYYYYMMDD(missionHeader.getDate());
         
         combatReport.setDate(combatReportDate);
@@ -88,21 +90,19 @@ public class CombatReportBuilder
 
     private void setPilotsForSinglePlayer() throws PWCGException
     {
-        combatReport.setPilot(reportSquadronMember.getNameAndRank());
+        combatReport.setReportPilotName(reportSquadronMember.getNameAndRank());
     }   
 
     private void setPilotsForCoop()
     {
-        List<String> squadroMemberInMissionNames = new ArrayList<>();
         SquadronMembers campaignMembersInMission = aarCoordinator.getAarContext().getPreliminaryData().getCampaignMembersInMission();
         for (SquadronMember squadronMember : campaignMembersInMission.getSquadronMemberList())
         {
             if (squadronMember.getSquadronId() == reportSquadronMember.getSquadronId())
             {
-                squadroMemberInMissionNames.add(squadronMember.getNameAndRank());
+                combatReport.addFlightPilot(squadronMember.getNameAndRank());
             }
         }
-        combatReport.setPilots(squadroMemberInMissionNames);
     }   
 
     private String createCombatReportMissionStatement() throws PWCGException
@@ -131,12 +131,16 @@ public class CombatReportBuilder
 
     private String createPilotLostReport() throws PWCGException
     {
+        Map<Integer, PilotStatusEvent> squadronMembersLostInMission = aarCoordinator.getAarContext().getAarTabulatedData()
+                        .findUiCombatReportDataForSquadron(reportSquadronMember.getSquadronId()).
+                        getCombatReportPanelData().getSquadronMembersLostInMission();
+
         String pilotsLostStatement = "";
-        String pilotsLostAppend = "";
-        for (PilotStatusEvent pilotLostEvent : aarCoordinator.getAarContext().getUiCombatReportData().getCombatReportPanelData().getSquadronMembersLostInMission().values())
+        String pilotsLostAppend = "";            
+        for (PilotStatusEvent pilotLostEvent : squadronMembersLostInMission.values())
         {
             pilotsLostAppend += "    " + 
-                            pilotLostEvent.getPilot().getNameAndRank() + ": " + 
+                            pilotLostEvent.getPilotName() + ": " + 
                             SquadronMemberStatus.pilotStatusToStatusDescription(pilotLostEvent.getStatus()) + "\n";
         }
         
@@ -151,11 +155,16 @@ public class CombatReportBuilder
 
     private String createEquipmentLostReport() throws PWCGException
     {
+        Map<Integer, PlaneStatusEvent> squadronPlanesLostInMission = aarCoordinator.getAarContext().getAarTabulatedData()
+                    .findUiCombatReportDataForSquadron(reportSquadronMember.getSquadronId()).
+                    getCombatReportPanelData().getSquadronPlanesLostInMission();
+
         String planesLostStatement = "";
-        String planesLostAppend = "";
-        for (PlaneStatusEvent planeLostEvent : aarCoordinator.getAarContext().getUiCombatReportData().getCombatReportPanelData().getSquadronPlanesLostInMission().values())
+        String planesLostAppend = "";        
+        for (PlaneStatusEvent planeLostEvent :squadronPlanesLostInMission.values())
         {
-            planesLostAppend += "    " + planeLostEvent.getPlane().getDisplayName() + ": " + planeLostEvent.getPlane().getSerialNumber() + "\n";
+            EquippedPlane lostPlane = campaign.getEquipmentManager().getPlaneFromAnySquadron(planeLostEvent.getPlaneSerialNumber());
+            planesLostAppend += "    " + lostPlane.getDisplayName() + ": " + lostPlane.getSerialNumber() + "\n";
         }
         
         if (planesLostAppend.length() > 0)
@@ -167,9 +176,11 @@ public class CombatReportBuilder
     }
     
     private String createCrewsInMissionReport() throws PWCGException
-    {
+    {        
+        Map<Integer, SquadronMember> pilotsInMission = aarCoordinator.getAarContext().getAarTabulatedData().
+                        findUiCombatReportDataForSquadron(reportSquadronMember.getSquadronId()).getCombatReportPanelData().getCrewsInMission();
+
         String missionStatement;
-        Map<Integer, SquadronMember> pilotsInMission = aarCoordinator.getAarContext().getUiCombatReportData().getCombatReportPanelData().getCrewsInMission();
         missionStatement = "This mission was flown by:\n";
         for (SquadronMember pilotSquadronMember : pilotsInMission.values())
         {
@@ -185,10 +196,12 @@ public class CombatReportBuilder
 
     private String createClaimStatusReport() throws PWCGException
     {
+        List<VictoryEvent> victoryEvents = aarCoordinator.getAarContext().getAarTabulatedData().
+                        findUiCombatReportDataForSquadron(reportSquadronMember.getSquadronId()).getCombatReportPanelData().getVictoriesForSquadronMembersInMission();
+
         String claimStatusStatement = "";
         String victoryAppend = "";
-
-        for (VictoryEvent victoryEvent :aarCoordinator.getAarContext().getUiCombatReportData().getCombatReportPanelData().getVictoriesForSquadronMembersInMission())
+        for (VictoryEvent victoryEvent : victoryEvents)
         {            
             VictoryDescription victoryDescription = new VictoryDescription(campaign, victoryEvent.getVictory());
             String victoryDescriptionText = victoryDescription.createVictoryDescription();
@@ -196,7 +209,10 @@ public class CombatReportBuilder
         }
         
         
-        for (ClaimDeniedEvent claimDeniedEvent : aarCoordinator.getAarContext().getUiCombatReportData().getCombatReportPanelData().getClaimsDenied())
+        List<ClaimDeniedEvent> claimDeniedEvents = aarCoordinator.getAarContext().getAarTabulatedData().
+                        findUiCombatReportDataForSquadron(reportSquadronMember.getSquadronId()).getCombatReportPanelData().getClaimsDenied();
+
+        for (ClaimDeniedEvent claimDeniedEvent : claimDeniedEvents)
         {
             victoryAppend += "    Claim denied for " + claimDeniedEvent.getType() + "\n\n";               
         }

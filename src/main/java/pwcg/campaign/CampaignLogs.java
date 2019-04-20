@@ -19,7 +19,6 @@ import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.VictoryDescription;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
@@ -100,7 +99,7 @@ public class CampaignLogs
 	{
 		ClaimDeniedEvent logEvent = (ClaimDeniedEvent) event;
 		String planeName = logEvent.getType();
-		String logEntry = "A claim for a  " + planeName + ", made by " + logEvent.getPilot().getNameAndRank() + ",  has been denied";
+		String logEntry = "A claim for a  " + planeName + ", made by " + logEvent.getPilotName() + ",  has been denied";
 		addCampaignLog(logEvent.getDate(), logEntry);
 	}
 
@@ -108,18 +107,15 @@ public class CampaignLogs
 	{
 		MedalEvent logEvent = (MedalEvent) event;
 		String medalName = logEvent.getMedal();
-		String pilotName = logEvent.getPilot().getRank() + " " + logEvent.getPilot().getName();
-		String logEntry = "The  " + medalName + " has been awarded to " + pilotName;
+		String logEntry = "The  " + medalName + " has been awarded to " + logEvent.getPilotName();
 		addCampaignLog(logEvent.getDate(), logEntry);
 	}
 
 	private void addSquadronMoveToCampaignLogs(Campaign campaign, AAREvent event) throws PWCGException
 	{
 		SquadronMoveEvent logEvent = (SquadronMoveEvent) event;
-		Squadron squadron = logEvent.getSquadron();
-
-		String airfieldName = logEvent.getNewAirfield().getName();
-		String logEntry = squadron.determineDisplayName(campaign.getDate()) + " has moved to " + airfieldName;
+		String airfieldName = logEvent.getNewAirfield();
+		String logEntry = logEvent.getSquadron() + " has moved to " + airfieldName;
 		addCampaignLog(logEvent.getDate(), logEntry);
 	}
 
@@ -127,8 +123,7 @@ public class CampaignLogs
 	{
 		PromotionEvent logEvent = (PromotionEvent) event;
 		String newRankName = logEvent.getNewRank();
-		String pilotName = logEvent.getPilot().getName();
-		String logEntry = pilotName + " has been promoted to " + newRankName;
+		String logEntry = logEvent.getPilotName() + " has been promoted to " + newRankName;
 		addCampaignLog(logEvent.getDate(), logEntry);
 	}
 
@@ -137,26 +132,22 @@ public class CampaignLogs
 		PilotStatusEvent logEvent = (PilotStatusEvent) event;
 		if (logEvent.getStatus() == SquadronMemberStatus.STATUS_KIA)
 		{
-			String pilotName = logEvent.getPilot().getRank() + " " + logEvent.getPilot().getName();
-			String logEntry = pilotName + " has been killed in action";
+			String logEntry = logEvent.getPilotName() + " has been killed in action";
 			addCampaignLog(logEvent.getDate(), logEntry);
 		}
 		else if (logEvent.getStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
 		{
-			String pilotName = logEvent.getPilot().getRank() + " " + logEvent.getPilot().getName();
-			String logEntry = pilotName + " has been seriously wounded in action";
+			String logEntry = logEvent.getPilotName() + " has been seriously wounded in action";
 			addCampaignLog(logEvent.getDate(), logEntry);
 		}
 		else if (logEvent.getStatus() == SquadronMemberStatus.STATUS_WOUNDED)
 		{
-			String pilotName = logEvent.getPilot().getRank() + " " + logEvent.getPilot().getName();
-			String logEntry = pilotName + " has been wounded in action";
+			String logEntry = logEvent.getPilotName() + " has been wounded in action";
 			addCampaignLog(logEvent.getDate(), logEntry);
 		}
 		else if (logEvent.getStatus() == SquadronMemberStatus.STATUS_CAPTURED)
 		{
-			String pilotName = logEvent.getPilot().getRank() + " " + logEvent.getPilot().getName();
-			String logEntry = pilotName + " has been made a prisoner of war";
+			String logEntry = logEvent.getPilotName() + " has been made a prisoner of war";
 			addCampaignLog(logEvent.getDate(), logEntry);
 		}
 	}
@@ -164,12 +155,7 @@ public class CampaignLogs
 	private void addTransferToCampaignLogs(AAREvent event)
 	{
 		TransferEvent logEvent = (TransferEvent) event;
-		String pilotName = logEvent.getPilot().getRank() + " " + logEvent.getPilot().getName();
-		String logEntry = pilotName + " has transferred out of the squadron";
-		if (logEvent.isTransferIn())
-		{
-			logEntry = pilotName + " has transferred into the squadron";
-		}
+		String logEntry = logEvent.getPilotName() + " has transferred out of the squadron";
 		addCampaignLog(logEvent.getDate(), logEntry);
 	}
 
@@ -184,8 +170,7 @@ public class CampaignLogs
 	private void addAceKilledToCampaignLogs(AAREvent event)
 	{
 		AceKilledEvent logEvent = (AceKilledEvent) event;
-		String aceName = logEvent.getPilot().determineRankAbbrev() + " " + logEvent.getPilot().getName();
-		String logEntry = "The great ace " + aceName + " was reported to be killed in action today";
+		String logEntry = "The great ace " + logEvent.getPilotName() + " was reported to be killed in action today";
 		addCampaignLog(logEvent.getDate(), logEntry);
 	}
 

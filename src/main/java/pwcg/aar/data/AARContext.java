@@ -8,10 +8,10 @@ import pwcg.aar.inmission.phase3.reconcile.ReconciledInMissionData;
 import pwcg.aar.outofmission.phase1.elapsedtime.ReconciledOutOfMissionData;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
-import pwcg.aar.tabulate.combatreport.UICombatReportData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
+
 
 public class AARContext
 {
@@ -33,14 +33,12 @@ public class AARContext
     private ReconciledOutOfMissionData cumulativeMissionData = new ReconciledOutOfMissionData();
 
     // Tabulated
-    private CampaignUpdateData campaignUpdateData = new CampaignUpdateData(campaign);
-    private UICombatReportData uiCombatReportData;
-    private UIDebriefData uiDebriefData = new UIDebriefData();
-
+    private AARTabulatedData aarTabulatedData;
+    
     public AARContext(Campaign campaign)
     {
         this.campaign = campaign;
-        uiCombatReportData = new UICombatReportData(campaign);
+        this.aarTabulatedData = new AARTabulatedData(campaign);
     }
 
     public void resetContextForNextTimeIncrement() throws PWCGException
@@ -56,7 +54,7 @@ public class AARContext
         missionEvaluationData = new AARMissionEvaluationData();
         reconciledInMissionData = new ReconciledInMissionData();
         reconciledOutOfMissionData = new ReconciledOutOfMissionData();
-        campaignUpdateData = new CampaignUpdateData(campaign);
+        aarTabulatedData = new AARTabulatedData(campaign);
     }
     
     public AARPreliminaryData getPreliminaryData()
@@ -81,17 +79,7 @@ public class AARContext
 
     public CampaignUpdateData getCampaignUpdateData()
     {
-        return campaignUpdateData;
-    }
-
-    public UICombatReportData getUiCombatReportData()
-    {
-        return uiCombatReportData;
-    }
-
-    public UIDebriefData getUiDebriefData()
-    {
-        return uiDebriefData;
+        return aarTabulatedData.getCampaignUpdateData();
     }
 
     public AARMissionEvaluationData getMissionEvaluationData()
@@ -126,17 +114,7 @@ public class AARContext
 
     public void setCampaignUpdateData(CampaignUpdateData campaignUpdateData)
     {
-        this.campaignUpdateData = campaignUpdateData;
-    }
-
-    public void setUiCombatReportData(UICombatReportData uiCombatReportData)
-    {
-        this.uiCombatReportData = uiCombatReportData;
-    }
-
-    public void setUiDebriefData(UIDebriefData uiDebriefData)
-    {
-        this.uiDebriefData = uiDebriefData;
+        this.aarTabulatedData.setCampaignUpdateData(campaignUpdateData);
     }
     
     public ReconciledOutOfMissionData getCumulativeMissionData()
@@ -162,5 +140,15 @@ public class AARContext
     public void setReasonForExtendedTime(ExtendedTimeReason reasonForExtendedTime)
     {
         this.reasonForExtendedTime = reasonForExtendedTime;
+    }
+
+    public AARTabulatedData getAarTabulatedData()
+    {
+        return aarTabulatedData;
+    }
+
+    public void setAarTabulatedData(AARTabulatedData aarTabulatedData)
+    {
+        this.aarTabulatedData = aarTabulatedData;
     }
 }

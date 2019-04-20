@@ -5,17 +5,13 @@ import java.util.Map;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AAREquipmentLosses;
 import pwcg.aar.data.AARPersonnelLosses;
-import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase3.reconcile.equipment.EquipmentResultsInMissionHandler;
 import pwcg.aar.inmission.phase3.reconcile .personnel.PersonnelResultsInMissionHandler;
-import pwcg.aar.inmission.phase3.reconcile.victories.ClaimDenier;
-import pwcg.aar.inmission.phase3.reconcile.victories.ClaimResolver;
-import pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarations;
+import pwcg.aar.inmission.phase3.reconcile.victories.ClaimResolverFactory;
+import pwcg.aar.inmission.phase3.reconcile.victories.IClaimResolver;
 import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
-import pwcg.aar.inmission.phase3.reconcile.victories.VerifiedVictoryGenerator;
-import pwcg.aar.prelim.PwcgMissionData;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
 
 public class AARPhase3ReconcileCoordinator
@@ -43,16 +39,9 @@ public class AARPhase3ReconcileCoordinator
 
     private void reconcileVictories(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
-        ClaimResolver missionResolver = createClaimResolver(campaign, aarContext.getMissionEvaluationData(), aarContext.getPreliminaryData().getPwcgMissionData());
-        ReconciledVictoryData reconciledVictoryData = missionResolver.resolvePlayerClaims(playerDeclarations);
+        IClaimResolver missionResolver = ClaimResolverFactory.createClaimResolver(campaign, aarContext, playerDeclarations);
+        ReconciledVictoryData reconciledVictoryData = missionResolver.resolvePlayerClaims();
         reconciledInMissionData.setReconciledVictoryData(reconciledVictoryData);
-    }
-
-    private ClaimResolver createClaimResolver(Campaign campaign, AARMissionEvaluationData evaluationData, PwcgMissionData pwcgMissionData) throws PWCGException
-    {
-        ClaimDenier claimDenier = new ClaimDenier(campaign, PWCGContextManager.getInstance().getPlaneTypeFactory());
-        VerifiedVictoryGenerator verifiedVictoryGenerator = new VerifiedVictoryGenerator(campaign, aarContext);
-       return new ClaimResolver(campaign, verifiedVictoryGenerator, claimDenier);
     }
 
     private void personnelChangesInMission() throws PWCGException 

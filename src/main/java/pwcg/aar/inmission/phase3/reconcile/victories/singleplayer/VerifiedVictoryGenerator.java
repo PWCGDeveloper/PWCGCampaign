@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import java.util.Map;
 
@@ -18,11 +18,14 @@ public class VerifiedVictoryGenerator
         this.aarContext = aarContext;
     }
 
+    // TODO COOP CLAIM rethink player declarations.  Definitely keep for SP.  
+    // Probably keep for MP too but for MP assign without claim.
+    // Need factory to create variants.
     public ConfirmedVictories createVerifiedictories(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         AARMissionEvaluationData evaluationData = aarContext.getMissionEvaluationData();
 
-        VictorySorter victorySorter = new VictorySorter(campaign);
+        VictorySorter victorySorter = new VictorySorter();
         victorySorter.sortVictories(evaluationData.getVictoryResults());
         PlayerDeclarationResolution playerClaimResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
         

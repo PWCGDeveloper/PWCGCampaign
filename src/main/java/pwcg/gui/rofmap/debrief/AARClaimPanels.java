@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pwcg.aar.AARCoordinator;
-import pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarations;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;

@@ -1,7 +1,6 @@
 package pwcg.gui.rofmap.event;
 
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
-import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -9,13 +8,11 @@ public class CampaignReportSquadronMoveGUI extends CampaignDocumentGUI
 {
 	private static final long serialVersionUID = 1L;
 	private SquadronMoveEvent squadronMoveEvent = null;
-	private Campaign campaign;
 
-	public CampaignReportSquadronMoveGUI(SquadronMoveEvent squadronMoveEvent, Campaign campaign)
+	public CampaignReportSquadronMoveGUI(SquadronMoveEvent squadronMoveEvent)
 	{
 		super();
 
-        this.campaign = campaign;
         this.squadronMoveEvent = squadronMoveEvent;
 		makePanel();		
 	}
@@ -28,10 +25,10 @@ public class CampaignReportSquadronMoveGUI extends CampaignDocumentGUI
 
     protected String getBodyText() throws PWCGException
     {
-        String squadronMoveText = "Squadron: " + squadronMoveEvent.getSquadron().determineDisplayName(campaign.getDate()) + "\n";
+        String squadronMoveText = "Squadron: " + squadronMoveEvent.getSquadron() + "\n";
         squadronMoveText += "Date: " + DateUtils.getDateStringPretty(squadronMoveEvent.getDate()) + "\n";
-        squadronMoveText += squadronMoveEvent.getSquadron().determineDisplayName(squadronMoveEvent.getDate()) + 
-                        " has been moved to " + squadronMoveEvent.getNewAirfield().getName() + ".\n";   
+        squadronMoveText += squadronMoveEvent.getSquadron() + 
+                        " has been moved to " + squadronMoveEvent.getNewAirfield() + ".\n";   
         
         
         return squadronMoveText;

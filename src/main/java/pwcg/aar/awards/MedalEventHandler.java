@@ -32,7 +32,7 @@ public class MedalEventHandler
 		}
 		
         ArmedService service = squadronMember.determineService(campaign.getDate());
-        IMedalManager mm = MedalManagerFactory.createMedalManager(campaign);
+        IMedalManager mm = MedalManagerFactory.createMedalManager(squadronMember.determineCountry(campaign.getDate()), campaign);
 		Medal medal = mm.award(campaign, squadronMember, service,  victoriesThisMission);
 		if (medal != null)
 		{
@@ -47,7 +47,7 @@ public class MedalEventHandler
 
     public void awardWoundMedals(SquadronMember squadronMember) throws PWCGException 
     {
-        IMedalManager mm = MedalManagerFactory.createMedalManager(campaign);
+        IMedalManager mm = MedalManagerFactory.createMedalManager(squadronMember.determineCountry(campaign.getDate()), campaign);
         Medal woundMedal = mm.getWoundedAward(squadronMember, squadronMember.determineService(campaign.getDate()));
         if (woundMedal != null)
         {

@@ -1,42 +1,53 @@
 package pwcg.aar.tabulate.combatreport;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pwcg.aar.data.AARContext;
 import pwcg.aar.ui.display.model.AARCombatReportMapData;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
 public class AARCombatReportTabulateCoordinator
 {
     private Campaign campaign;
     private AARContext aarContext;
-    private UICombatReportData combatReportUiData;
+    private List<UICombatReportData> combatReportUiDataSet = new ArrayList<>();;
 
     public AARCombatReportTabulateCoordinator (Campaign campaign, AARContext aarContext)
     {
         this.campaign = campaign;
         this.aarContext = aarContext;
-        this.combatReportUiData = new UICombatReportData(campaign);
     }
     
-    public UICombatReportData tabulate() throws PWCGException 
+    public List<UICombatReportData> tabulate() throws PWCGException 
     {
         tabulateCombatReport();
-        tabulateCombatReportMap();
-        return combatReportUiData;
+        return combatReportUiDataSet;
     }
 
     private void tabulateCombatReport() throws PWCGException
     {
-        CombatReportTabulator combatReportTabulator = new CombatReportTabulator(campaign, aarContext);
-        AARCombatReportPanelData combatReportData = combatReportTabulator.tabulateForAARCombatReportPanel();
-        combatReportUiData.setCombatReportPanelData(combatReportData);
+        List<Squadron> playerSquadronsInMission = aarContext.getPreliminaryData().getPlayerSquadronsInMission();
+        for (Squadron playerSquadron : playerSquadronsInMission)
+        {
+            CombatReportTabulator combatReportTabulator = new CombatReportTabulator(campaign, playerSquadron, aarContext);
+            AARCombatReportPanelData combatReportData = combatReportTabulator.tabulateForAARCombatReportPanel();
+            AARCombatReportMapData combatReportMapData = tabulateCombatReportMap();
+            
+            UICombatReportData combatReportUiData = new UICombatReportData(playerSquadron.getSquadronId());
+            combatReportUiData.setCombatReportPanelData(combatReportData);
+            combatReportUiData.setCombatReportMapData(combatReportMapData);
+            combatReportUiDataSet.add(combatReportUiData);
+        }
     }
     
-    private void tabulateCombatReportMap() throws PWCGException
+    private AARCombatReportMapData tabulateCombatReportMap() throws PWCGException
     {
-        AARCombatReportMapData combatReportMapData = new AARCombatReportMapData(campaign);
+        AARCombatReportMapData combatReportMapData = new AARCombatReportMapData();
         combatReportMapData.addChronologicalEvents(aarContext.getMissionEvaluationData().getChronologicalEvents());
-        combatReportUiData.setCombatReportMapData(combatReportMapData);
+        return combatReportMapData;
     }
 }

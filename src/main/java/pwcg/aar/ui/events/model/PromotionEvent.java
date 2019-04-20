@@ -5,9 +5,22 @@ public class PromotionEvent extends AARPilotEvent
     private String oldRank = "";
     private String newRank = "";
     private String promotingGeneral = "";
+    private int serialNumber = 0;
 
-    public PromotionEvent()
+    public PromotionEvent(int squadronId, int serialNumber)
     {
+        super(squadronId);
+        this.serialNumber = serialNumber;
+    }
+
+    public int getSerialNumber()
+    {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(int serialNumber)
+    {
+        this.serialNumber = serialNumber;
     }
 
     public String getNewRank()

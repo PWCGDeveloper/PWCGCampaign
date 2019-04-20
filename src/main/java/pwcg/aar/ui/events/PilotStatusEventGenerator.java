@@ -52,8 +52,9 @@ public class PilotStatusEventGenerator
 
     protected PilotStatusEvent makePilotLostEvent(SquadronMember pilot, int pilotStatus) throws PWCGException
     {
-        PilotStatusEvent pilotLostEvent = new PilotStatusEvent();
-        pilotLostEvent.setPilot(pilot);
+        PilotStatusEvent pilotLostEvent = new PilotStatusEvent(pilot.getSquadronId());
+        pilotLostEvent.setPilotName(pilot.getNameAndRank());
+        pilotLostEvent.setSerialNumber(pilot.getSerialNumber());
         pilotLostEvent.setDate(campaign.getDate());
         Squadron squadron = pilot.determineSquadron();
         if (squadron != null)

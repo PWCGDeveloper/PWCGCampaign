@@ -9,6 +9,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerClaimResolverFirm;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;

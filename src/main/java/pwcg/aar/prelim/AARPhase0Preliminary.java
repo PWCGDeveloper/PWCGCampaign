@@ -3,6 +3,8 @@ package pwcg.aar.prelim;
 import java.util.List;
 
 import pwcg.aar.inmission.phase1.parse.AARMissionFileLogResultMatcher;
+import pwcg.aar.prelim.claims.AARClaimPanelData;
+import pwcg.aar.prelim.claims.AARClaimPanelEventTabulator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
@@ -75,9 +77,12 @@ public class AARPhase0Preliminary
 
     private void tabulateClaimPanelData() throws PWCGException
     {
-        AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData);
-        AARClaimPanelData claimPanelData = claimPanelEventTabulator.tabulateForAARClaimPanel();
-        aarPreliminarytData.setClaimPanelData(claimPanelData);
+        if (!campaign.getCampaignData().isCoop())
+        {
+            AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData);
+            AARClaimPanelData claimPanelData = claimPanelEventTabulator.tabulateForAARClaimPanel();
+            aarPreliminarytData.setClaimPanelData(claimPanelData);
+        }
     }
 
 }

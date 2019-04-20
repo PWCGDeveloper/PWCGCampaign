@@ -33,24 +33,8 @@ public class PromotionPanelEventTabulator
         promotionEventsForCampaignMembers.addAll(promotionEventsForCampaignMembersOutOfMission);
         promotionEventsForCampaignMembers.addAll(promotionEventsForCampaignMemberInMission);
         
-        List<PromotionEvent> promotionEventsForSquadronMembers = getPromotionsForCurrentSquadron(promotionEventsForCampaignMembers);
-        promotionPanelData.setPromotionEventsDuringElapsedTime(promotionEventsForSquadronMembers);
+        promotionPanelData.setPromotionEventsDuringElapsedTime(promotionEventsForCampaignMembers);
                 
         return promotionPanelData;
     }
-    
-    private List<PromotionEvent> getPromotionsForCurrentSquadron(List<PromotionEvent> promotionEventsForCampaignMembers) throws PWCGException
-    {
-        List<PromotionEvent> promotionEventsForSquadronMembers = new ArrayList<>();
-        
-        for (PromotionEvent promotionEvent : promotionEventsForCampaignMembers)
-        {
-            if (promotionEvent.getSquadron().equals(campaign.determineSquadron().determineDisplayName(campaign.getDate())))
-            {
-                promotionEventsForSquadronMembers.add(promotionEvent);
-            }
-        }
-        return promotionEventsForSquadronMembers;
-    }
-
 }

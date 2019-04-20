@@ -11,11 +11,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.aar.prelim.AARClaimPanelData;
-import pwcg.aar.prelim.AARClaimPanelEventTabulator;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
+import pwcg.aar.prelim.claims.AARClaimPanelData;
+import pwcg.aar.prelim.claims.AARClaimPanelEventTabulator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;

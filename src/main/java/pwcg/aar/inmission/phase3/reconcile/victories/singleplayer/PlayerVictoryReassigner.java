@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
@@ -7,16 +7,16 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
-public class PlayerVictoryReassigner
+class PlayerVictoryReassigner
 {
     private Campaign campaign;
     
-    public PlayerVictoryReassigner (Campaign campaign)
+    PlayerVictoryReassigner (Campaign campaign)
     {
         this.campaign = campaign;
     }
 
-    public void resetUnclamedPlayerVictoriesForAssignmentToOthers(VictorySorter victorySorter) throws PWCGException
+    void resetUnclamedPlayerVictoriesForAssignmentToOthers(VictorySorter victorySorter) throws PWCGException
     {
         for (LogVictory resultVictory : victorySorter.getFirmAirVictories())
         {

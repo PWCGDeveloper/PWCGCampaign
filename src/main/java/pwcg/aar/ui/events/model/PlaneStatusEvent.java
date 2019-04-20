@@ -1,16 +1,27 @@
 package pwcg.aar.ui.events.model;
 
-import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
 
 public class PlaneStatusEvent extends AAREvent
 {
-    private EquippedPlane  plane;
+    private int planeSerialNumber;
+    private int squadronId;
 	private int planeStatus = PlaneStatus.STATUS_DEPLOYED;
 	
-	public PlaneStatusEvent ()
-	{
-	}
+    public PlaneStatusEvent (int squadronId)
+    {
+        this.squadronId = squadronId;
+    }
+
+    public int getSquadronId()
+    {
+        return squadronId;
+    }
+
+    public void setSquadronId(int squadronId)
+    {
+        this.squadronId = squadronId;
+    }
 
     public int getPlaneStatus()
     {
@@ -22,13 +33,13 @@ public class PlaneStatusEvent extends AAREvent
         this.planeStatus = planeStatus;
     }
 
-    public EquippedPlane getPlane()
+    public int getPlaneSerialNumber()
     {
-        return plane;
+        return planeSerialNumber;
     }
 
-    public void setPlane(EquippedPlane plane)
+    public void setPlaneSerialNumber(int planeSerialNumber)
     {
-        this.plane = plane;
+        this.planeSerialNumber = planeSerialNumber;
     }
 }

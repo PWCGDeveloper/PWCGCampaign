@@ -5,8 +5,6 @@ import java.util.Date;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.ExtendedTimeReason;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -35,18 +33,6 @@ public class AARExtendedTimeHandler
         stepToNewDate(dateAfterLeave);
         aarContext.setReasonForExtendedTime(ExtendedTimeReason.TRANSFER);
         campaign.setCurrentMission(null);
-    }
-
-    public void timePassedForSquadronNotViable() throws PWCGException
-    {
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
-        while (!squadron.isSquadronViable(campaign))
-        {
-            aarContext.setReasonForExtendedTime(ExtendedTimeReason.NO_PILOTS);
-            AAROutOfMissionStepper stepper = new AAROutOfMissionStepper(campaign, aarContext);
-            stepper.oneStep();
-            campaign.setCurrentMission(null);
-        }
     }
 
     private void stepToNewDate(Date newDate) throws PWCGException

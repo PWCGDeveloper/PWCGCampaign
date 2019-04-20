@@ -10,21 +10,13 @@ public class CampaignReportPilotStatusGUI extends CampaignDocumentGUI
 	private static final long serialVersionUID = 1L;
 	private PilotStatusEvent pilotLostEvent = null;
 	
-	// Display an existing combat report
 	public CampaignReportPilotStatusGUI(PilotStatusEvent pilotLostEvent)
 	{
 		super();
-
         this.pilotLostEvent = pilotLostEvent;
-
         makePanel();        
 	}
-   
-    
 
-    /**
-     * @return
-     */
     protected String getHeaderText() throws PWCGException
     {
         String header = "";
@@ -48,10 +40,6 @@ public class CampaignReportPilotStatusGUI extends CampaignDocumentGUI
         return header;
     }
 
-    /**
-     * @return
-     * @throws PWCGException
-     */
     protected String getBodyText() throws PWCGException
     {
         String pilotLostText = "Squadron: " + pilotLostEvent.getSquadron() + "\n";
@@ -62,37 +50,33 @@ public class CampaignReportPilotStatusGUI extends CampaignDocumentGUI
         return pilotLostText;
     }
 
-
-    /**
-     * @return
-     */
     private String getPilotLostString()
     {
         String pilotLostString = "";
         if (pilotLostEvent.getStatus() == SquadronMemberStatus.STATUS_KIA)
         {
             pilotLostString = "We regret to inform command that " + 
-                pilotLostEvent.getPilot().getNameAndRank() + 
+                pilotLostEvent.getPilotName() + 
                 " has been killed in action.\n";                
         }
 
         else if (pilotLostEvent.getStatus() == SquadronMemberStatus.STATUS_CAPTURED)
         {
             pilotLostString = "We regret to inform command that " + 
-                pilotLostEvent.getPilot().getNameAndRank() + 
+                pilotLostEvent.getPilotName() + 
                 " has been brought down behind enemy lines and is missing in action.\n";                
         }
         else if (pilotLostEvent.getStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
         {
             pilotLostString = "We regret to inform command that " + 
-                pilotLostEvent.getPilot().getNameAndRank() + 
+                pilotLostEvent.getPilotName() + 
                 " has been seriously injured in combat with enemy forces.\n  " +
                 "He will be unavailable for an extended period of time";                
         }
         else if (pilotLostEvent.getStatus() == SquadronMemberStatus.STATUS_WOUNDED)
         {
             pilotLostString = "It is my duty to inform command that " + 
-                pilotLostEvent.getPilot().getNameAndRank() + 
+                pilotLostEvent.getPilotName() + 
                 " has been injured in combat with enemy forces.\n  " +
                 "He will be unavailable for a period of some weeks";                
         }

@@ -27,8 +27,7 @@ public class EquipmentLossPanelEventTabulator
     {
         PlaneStatusEventGenerator planeLossEventGenerator = new PlaneStatusEventGenerator(campaign);
         Map<Integer, PlaneStatusEvent> allPlanesLost = determineAllPlanesLostInMission(planeLossEventGenerator);
-        Map<Integer, PlaneStatusEvent> squadronPlanesLost = determinePlanesLostForSquadron(allPlanesLost);
-        equipmentLossPanelData.setEquipmentLost(squadronPlanesLost);
+        equipmentLossPanelData.setEquipmentLost(allPlanesLost);
                 
         return equipmentLossPanelData;
     }
@@ -42,18 +41,5 @@ public class EquipmentLossPanelEventTabulator
         Map<Integer, PlaneStatusEvent> planesLostElapsedTime = planeLossEventGenerator.createPlaneLossEvents(aarContext.getReconciledOutOfMissionData().getEquipmentLossesOutOfMission());
         allPlanesLost.putAll(planesLostElapsedTime);
         return allPlanesLost;
-    }
-
-    private Map<Integer, PlaneStatusEvent> determinePlanesLostForSquadron(Map<Integer, PlaneStatusEvent> allPlanesLost)
-    {
-        Map<Integer, PlaneStatusEvent> squadronPlanesLost = new HashMap<>();
-        for (PlaneStatusEvent planeLostEvent : allPlanesLost.values())
-        {
-            if (planeLostEvent.getPlane().getSquadronId() == campaign.getSquadronId())
-            {
-                squadronPlanesLost.put(planeLostEvent.getPlane().getSerialNumber(), planeLostEvent);                
-            }
-        }
-        return squadronPlanesLost;
     }
 }

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JTabbedPane;
 
@@ -12,6 +13,7 @@ import pwcg.aar.ui.events.model.AceKilledEvent;
 import pwcg.aar.ui.events.model.NewspaperEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
@@ -25,13 +27,17 @@ public class AARNewsPanel extends AAREventPanel
 {
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
+    private Campaign campaign;
+    private SquadronMember referencePlayer;
 
     private HashMap<String, ImageResizingPanel> newsGuiList = new HashMap<String, ImageResizingPanel>();
 
-    public AARNewsPanel()
+    public AARNewsPanel(Campaign campaign)
 	{
         super();
+        this.campaign = campaign;
         this.aarCoordinator = AARCoordinator.getInstance();
+        this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
 	}
 
 	public void makePanel() throws PWCGException  
@@ -99,21 +105,26 @@ public class AARNewsPanel extends AAREventPanel
 
     private void makeHistoricalAceEvents(Campaign campaign) throws PWCGException
     {
-        for (AceKilledEvent aceKilledEvent : aarCoordinator.getAarContext().getUiDebriefData().getNewsPanelData().getAcesKilledDuringElapsedTime())
+        List<AceKilledEvent> aceKilledEvents = aarCoordinator.getAarContext().getAarTabulatedData().getUiDebriefData().getNewsPanelData().getAcesKilledDuringElapsedTime();
+        for (AceKilledEvent aceKilledEvent : aceKilledEvents)
         {
             CampaignReportAceNewspaperGUI newspaperGui = new CampaignReportAceNewspaperGUI(aceKilledEvent, campaign);
-            String tabName = "News: " + aceKilledEvent.getPilot().getNameAndRank();
+            String tabName = "News: " + aceKilledEvent.getPilotName();
             newsGuiList.put(tabName, newspaperGui);
         }
     }
 
     private void makeHistoricalNewspaperEvents() throws PWCGException
     {
-        for (NewspaperEvent newspaperEvent : aarCoordinator.getAarContext().getUiDebriefData().getNewsPanelData().getNewspaperEventsDuringElapsedTime())
+        List<NewspaperEvent> newspaperEvents = aarCoordinator.getAarContext().getAarTabulatedData().getUiDebriefData().getNewsPanelData().getNewspaperEventsDuringElapsedTime();
+        for (NewspaperEvent newspaperEvent : newspaperEvents)
 		{
-            CampaignReportNewspaperGUI newspaperGui = new CampaignReportNewspaperGUI(newspaperEvent);
-            String tabName = "News from the front: " + DateUtils.getDateStringPretty(newspaperEvent.getDate());
-            newsGuiList.put(tabName, newspaperGui);
+        	if (referencePlayer.determineCountry(campaign.getDate()).getSide() == newspaperEvent.getSide())
+        	{
+	            CampaignReportNewspaperGUI newspaperGui = new CampaignReportNewspaperGUI(newspaperEvent);
+	            String tabName = "News from the front: " + DateUtils.getDateStringPretty(newspaperEvent.getDate());
+	            newsGuiList.put(tabName, newspaperGui);
+        	}
 		}
     }
 	

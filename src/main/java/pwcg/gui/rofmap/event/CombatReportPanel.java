@@ -183,7 +183,7 @@ public class CombatReportPanel extends ImageResizingPanel implements ActionListe
 		lSquadron.setFont(font);
 		headerLeftPanel.add(lSquadron);
 		
-		JLabel lPilot = new JLabel("Pilot: " + combatReport.getPilot() + "          ", JLabel.LEFT);
+		JLabel lPilot = new JLabel("Pilot: " + combatReport.getReportPilotName() + "          ", JLabel.LEFT);
 		lPilot.setOpaque(false);
 		lPilot.setFont(font);
 		headerLeftPanel.add(lPilot);

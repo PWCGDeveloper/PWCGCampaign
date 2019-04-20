@@ -4,9 +4,10 @@ import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.aar.inmission.phase1.parse.event.IAType3;
 import pwcg.aar.inmission.phase2.logeval.AARDestroyedStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
-import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
@@ -19,24 +20,23 @@ public class AARPilotStatusDeadEvaluator
     private IAType3 destroyedEventForCrewmembersPlane = null;
     private LogPilot logPilot = null;
     private int oddsOfDeathDueToAiStupidity;
-    private IAirfield field;
+    private Campaign campaign;
     private AARDestroyedStatusEvaluator destroyedStatusEvaluator;
 
-    public AARPilotStatusDeadEvaluator(AARDestroyedStatusEvaluator destroyedStatusEvaluator)
+    public AARPilotStatusDeadEvaluator(Campaign campaign, AARDestroyedStatusEvaluator destroyedStatusEvaluator)
     {
+        this.campaign = campaign;
     	this.destroyedStatusEvaluator = destroyedStatusEvaluator;
     }
 
     public void initialize(Coordinate downAt,
                       	   LogPilot resultCrewmember,
                       	   IAType3 destroyedEventForPilot, 
-                      	   IAirfield field,
                       	   int oddsOfDeathDueToAiStupidity)
     {
         this.downAt = downAt;
         this.logPilot = resultCrewmember;
         this.destroyedEventForCrewmembersPlane = destroyedEventForPilot;
-        this.field = field;
         this.oddsOfDeathDueToAiStupidity = oddsOfDeathDueToAiStupidity;
     }
 
@@ -122,9 +122,11 @@ public class AARPilotStatusDeadEvaluator
         {
             if (downAt != null)
             {
-                if (field != null)
+            	SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(logPilot.getSerialNumber());
+            	Coordinate fieldPosition = pilot.determineSquadron().determineCurrentPosition(campaign.getDate());
+                if (fieldPosition != null)
                 {
-                    double distanceToHomeField = MathUtils.calcDist(downAt, field.getPosition());
+                    double distanceToHomeField = MathUtils.calcDist(downAt, fieldPosition);
                     if (distanceToHomeField < 3000.0)
                     {
                         isDead = false;

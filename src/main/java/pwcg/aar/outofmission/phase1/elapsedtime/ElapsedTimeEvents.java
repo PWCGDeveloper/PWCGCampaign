@@ -1,11 +1,13 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
+import java.util.List;
+
 import pwcg.aar.ui.events.model.EndOfWarEvent;
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
 
 public class ElapsedTimeEvents
 {
-    private SquadronMoveEvent squadronMoveEvent;
+    private List<SquadronMoveEvent> squadronMoveEvents;
     private EndOfWarEvent endOfWarEvent;
 
     public EndOfWarEvent getEndOfWarEvent()
@@ -18,13 +20,13 @@ public class ElapsedTimeEvents
         this.endOfWarEvent = endOfWarEvent;
     }
 
-    public SquadronMoveEvent getSquadronMoveEvent()
+    public List<SquadronMoveEvent> getSquadronMoveEvents()
     {
-        return squadronMoveEvent;
+        return squadronMoveEvents;
     }
 
-    public void setSquadronMoveEvent(SquadronMoveEvent squadronMoveEvent)
+    public void addSquadronMoveEvent(SquadronMoveEvent squadronMoveEvent)
     {
-        this.squadronMoveEvent = squadronMoveEvent;
+        this.squadronMoveEvents.add(squadronMoveEvent);
     }
 }

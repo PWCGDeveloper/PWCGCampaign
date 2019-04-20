@@ -7,6 +7,7 @@ import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.PlaneStatus;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
@@ -113,7 +114,7 @@ public class LogPlane extends LogAIEntity
         SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(pilotSerialNumber);
         if (squadronMember != null)
         {
-            if (squadronMember.getSquadronId() == campaign.getSquadronId())
+            if (Squadron.isPlayerSquadron(campaign, squadronId))
             {
                 return true;
             }

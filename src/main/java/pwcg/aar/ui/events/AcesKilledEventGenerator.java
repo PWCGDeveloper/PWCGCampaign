@@ -55,9 +55,9 @@ public class AcesKilledEventGenerator
         {
             String status = SquadronMemberStatus.pilotStatusToStatusDescription(ace.getPilotActiveStatus());
     
-            aceKilledEvent = new AceKilledEvent();
+            aceKilledEvent = new AceKilledEvent(ace.getSquadronId(), ace.getSerialNumber());
     
-            aceKilledEvent.setPilot(ace);
+            aceKilledEvent.setPilotName(ace.getNameAndRank());
             aceKilledEvent.setDate(campaign.getDate());
             String squadName = "";
             if (!(squad == null))           

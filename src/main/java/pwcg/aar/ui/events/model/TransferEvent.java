@@ -2,22 +2,14 @@ package pwcg.aar.ui.events.model;
 
 public class TransferEvent extends AARPilotEvent
 {
-	private boolean transferIn = false;
     private int transferFrom;
     private int transferTo;
     private int leaveTime = 0;
 	
-	public TransferEvent ()
-	{
-	}
-
-	public boolean isTransferIn() {
-		return transferIn;
-	}
-
-	public void setTransferIn(boolean transferIn) {
-		this.transferIn = transferIn;
-	}
+    public TransferEvent(int squadronId)
+    {
+        super(squadronId);
+    }
 
 	public int getTransferTo()
     {

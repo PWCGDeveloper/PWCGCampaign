@@ -16,11 +16,13 @@ import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadmember.Victory;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
 public class CombatReportTabulator 
 {
     private Campaign campaign;
+    private Squadron squadron;
     private AARContext aarContext;
     
     private PilotStatusEventGenerator pilotStatusEventGenerator;
@@ -28,10 +30,11 @@ public class CombatReportTabulator
     private VictoryEventGenerator victoryEventGenerator;
     private AARCombatReportPanelData combatReportData = new AARCombatReportPanelData();
     
-    public CombatReportTabulator (Campaign campaign, AARContext aarContext)
+    public CombatReportTabulator (Campaign campaign, Squadron squadron, AARContext aarContext)
     {
         this.aarContext = aarContext;
         this.campaign = campaign;
+        this.squadron = squadron;
         
         pilotStatusEventGenerator = new PilotStatusEventGenerator(campaign);
         planeStatusEventGenerator = new PlaneStatusEventGenerator(campaign);
@@ -57,7 +60,7 @@ public class CombatReportTabulator
     private void createCrewsInMission() throws PWCGException
     {
         Map<Integer, SquadronMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getSquadronMemberCollection();
-        SquadronMembers squadronMembersInMission = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesForSquadron(campaignMembersInMission, campaign.getDate(), campaign.getSquadronId());
+        SquadronMembers squadronMembersInMission = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesForSquadron(campaignMembersInMission, campaign.getDate(), squadron.getSquadronId());
         combatReportData.addPilotsInMission(squadronMembersInMission);
     }
 
@@ -71,7 +74,7 @@ public class CombatReportTabulator
         Map<Integer, PilotStatusEvent> pilotsLostInMission = pilotStatusEventGenerator.createPilotLossEvents(aarContext.getReconciledInMissionData().getPersonnelLossesInMission());
         for (PilotStatusEvent pilotLostEvent : pilotsLostInMission.values())
         {
-            if (pilotLostEvent.getPilot().getSquadronId() == campaign.getSquadronId())
+            if (pilotLostEvent.getSquadronId() == squadron.getSquadronId())
             {
                 combatReportData.addPilotLostInMission(pilotLostEvent);
             }
@@ -83,7 +86,7 @@ public class CombatReportTabulator
         Map<Integer, PlaneStatusEvent> planesLostInMission = planeStatusEventGenerator.createPlaneLossEvents(aarContext.getReconciledInMissionData().getEquipmentLossesInMission());
         for (PlaneStatusEvent planeLostEvent : planesLostInMission.values())
         {
-            if (planeLostEvent.getPlane().getSquadronId() == campaign.getSquadronId())
+            if (planeLostEvent.getSquadronId() == squadron.getSquadronId())
             {
                 combatReportData.addPlaneLostInMission(planeLostEvent);
             }
@@ -96,7 +99,7 @@ public class CombatReportTabulator
         List<VictoryEvent> victoriesInMission = victoryEventGenerator.createPilotVictoryEvents(victoryAwardByPilot);
         for (VictoryEvent victoryEvent : victoriesInMission)
         {
-            if (victoryEvent.getPilot().getSquadronId() == campaign.getSquadronId())
+            if (victoryEvent.getSquadronId() == squadron.getSquadronId())
             {
                 combatReportData.addVictoryForSquadronMembers(victoryEvent);
             }

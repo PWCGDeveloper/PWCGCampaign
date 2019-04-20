@@ -1,7 +1,7 @@
 package pwcg.aar.tabulate.debrief;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.data.UIDebriefData;
+import pwcg.aar.data.ui.UIDebriefData;
 import pwcg.aar.ui.display.model.AARAceLeavePanelData;
 import pwcg.aar.ui.display.model.AAREquipmentLossPanelData;
 import pwcg.aar.ui.display.model.AARMedalPanelData;

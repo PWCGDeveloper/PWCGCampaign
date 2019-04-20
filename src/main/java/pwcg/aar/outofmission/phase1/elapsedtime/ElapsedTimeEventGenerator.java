@@ -6,6 +6,7 @@ import pwcg.aar.data.AARContext;
 import pwcg.aar.ui.events.model.EndOfWarEvent;
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -47,8 +48,11 @@ public class ElapsedTimeEventGenerator
     private void squadronMove() throws PWCGException
     {
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
-        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(aarContext.getNewDate());
-        elapsedTimeEvents.setSquadronMoveEvent(squadronMoveEvent);
+        for (SquadronMember player : campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
+        {
+	        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(aarContext.getNewDate(),player.determineSquadron());
+	        elapsedTimeEvents.addSquadronMoveEvent(squadronMoveEvent);
+        }
     }
 
 }

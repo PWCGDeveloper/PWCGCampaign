@@ -26,13 +26,8 @@ public class PilotLossPanelEventTabulator
     public AARPilotLossPanelData tabulateForAARPilotLossPanel() throws PWCGException
     {
         PilotStatusEventGenerator pilotLossEventGenerator = new PilotStatusEventGenerator(campaign);
-        
         Map<Integer, PilotStatusEvent> allPilotsLost = determineAllPilotsLostInMission(pilotLossEventGenerator);
-        
-        Map<Integer, PilotStatusEvent> squadronPilotsLost = determinePilotsLostForSquadron(allPilotsLost);
-
-        pilotLossPanelData.setSquadMembersLost(squadronPilotsLost);
-                
+        pilotLossPanelData.setSquadMembersLost(allPilotsLost);
         return pilotLossPanelData;
     }
 
@@ -45,18 +40,5 @@ public class PilotLossPanelEventTabulator
         Map<Integer, PilotStatusEvent> pilotsLostElapsedTime = pilotLossEventGenerator.createPilotLossEvents(aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission());
         allPilotsLost.putAll(pilotsLostElapsedTime);
         return allPilotsLost;
-    }
-
-    private Map<Integer, PilotStatusEvent> determinePilotsLostForSquadron(Map<Integer, PilotStatusEvent> allPilotsLost)
-    {
-        Map<Integer, PilotStatusEvent> squadronPilotsLost = new HashMap<>();
-        for (PilotStatusEvent pilotLostEvent : allPilotsLost.values())
-        {
-            if (pilotLostEvent.getPilot().getSquadronId() == campaign.getSquadronId())
-            {
-                squadronPilotsLost.put(pilotLostEvent.getPilot().getSerialNumber(), pilotLostEvent);                
-            }
-        }
-        return squadronPilotsLost;
     }
 }

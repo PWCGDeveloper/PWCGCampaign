@@ -10,6 +10,8 @@ import javax.swing.JTabbedPane;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.colors.ColorMap;
@@ -23,12 +25,14 @@ public class AARPilotsTransferredPanel extends AAREventPanel
     private static final long serialVersionUID = 1L;
     private Campaign campaign;
     private AARCoordinator aarCoordinator;
+    private SquadronMember referencePlayer;
 
     public AARPilotsTransferredPanel(Campaign campaign)
 	{
         super();
         this.campaign = campaign;
         this.aarCoordinator = AARCoordinator.getInstance();
+        this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
 	}
 
 	public void makePanel() throws PWCGException  
@@ -61,9 +65,7 @@ public class AARPilotsTransferredPanel extends AAREventPanel
         eventTabPane.setBackground(bgColor);
         eventTabPane.setOpaque(false);
        
-        makeTransferTabs(eventTabPane, aarCoordinator.getAarContext().getUiDebriefData().getTransferPanelData().getTransferOutOfSquadron());
-        makeTransferTabs(eventTabPane, aarCoordinator.getAarContext().getUiDebriefData().getTransferPanelData().getTransferIntoSquadron());
-
+        makeTransferTabs(eventTabPane, aarCoordinator.getAarContext().getAarTabulatedData().getUiDebriefData().getTransferPanelData().getTransfers());
         return eventTabPane;
     }
 
@@ -83,9 +85,12 @@ public class AARPilotsTransferredPanel extends AAREventPanel
 
         for (TransferEvent transferEvent : transferEventsForSquadron)
         {
-            AARTransferPanel transferGui = new AARTransferPanel(campaign, transferEvent);
-            String tabName = "Pilot Transferred: " + transferEvent.getPilot().getNameAndRank();
-            pilotTransferredGuiList.put(tabName, transferGui);
+            if (transferEvent.getTransferTo() == referencePlayer.getSquadronId() || transferEvent.getTransferFrom() == referencePlayer.getSquadronId())
+            {
+                AARTransferPanel transferGui = new AARTransferPanel(campaign, transferEvent);
+                String tabName = "Pilot Transferred: " + transferEvent.getPilotName();
+                pilotTransferredGuiList.put(tabName, transferGui);
+            }
         }
         
         return pilotTransferredGuiList;

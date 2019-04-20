@@ -44,8 +44,8 @@ public class VictoryEventGenerator
 
     private VictoryEvent makeVictoryEvent(SquadronMember pilot, Victory victory) throws PWCGException
     {
-        VictoryEvent victoryEvent = new VictoryEvent();
-        victoryEvent.setPilot(pilot);
+        VictoryEvent victoryEvent = new VictoryEvent(pilot.getSquadronId());
+        victoryEvent.setPilotName(pilot.getNameAndRank());
         victoryEvent.setDate(campaign.getDate());
         Squadron squadronName = PWCGContextManager.getInstance().getSquadronManager().getSquadron(pilot.getSquadronId());
         victoryEvent.setSquadron(squadronName.determineDisplayName(campaign.getDate()));

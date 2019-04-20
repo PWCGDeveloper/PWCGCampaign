@@ -9,8 +9,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.aar.data.CampaignUpdateData;
 import pwcg.aar.data.AARContext;
+import pwcg.aar.data.CampaignUpdateData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContextManager;

@@ -37,7 +37,8 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
     private static final long serialVersionUID = 1L;
 
 	private CampaignHomeGUI parent = null;
-	private Campaign campaign = null;
+    private Campaign campaign = null;
+    private SquadronMember referencePlayer = null;
 	private JTextField tLeaveTime;
 
 	public CampaignLeavePanelSet  (CampaignHomeGUI parent)
@@ -45,7 +46,8 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
         super();
 
 		this.parent = parent;
-		this.campaign =     PWCGContextManager.getInstance().getCampaign();
+        this.campaign = PWCGContextManager.getInstance().getCampaign();
+        this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
 	}
 	
 	public void makeVisible(boolean visible) 
@@ -212,7 +214,7 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
             throw new PWCGUserException ("Your country cannot spare you for that long");
         }
 
-        LeaveEvent leaveEvent = new LeaveEvent();
+        LeaveEvent leaveEvent = new LeaveEvent(referencePlayer.getSquadronId());
         leaveEvent.setLeaveTime(leaveTimeDays);
 
         parent.campaignTimePassed(leaveEvent.getLeaveTime(), leaveEvent, EventPanelReason.EVENT_PANEL_REASON_LEAVE);

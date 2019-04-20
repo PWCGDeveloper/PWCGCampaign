@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.PWCGContextManager;

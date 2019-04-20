@@ -7,7 +7,10 @@ import java.util.HashMap;
 import javax.swing.JTabbedPane;
 
 import pwcg.aar.AARCoordinator;
+import pwcg.aar.ui.display.model.AARCombatReportPanelData;
 import pwcg.aar.ui.events.model.PilotStatusEvent;
+import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.colors.ColorMap;
@@ -20,11 +23,13 @@ public class AARPilotLossPanel extends AAREventPanel
 {
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
+    private SquadronMember referencePlayer;
 
     public AARPilotLossPanel()
 	{
         super();
         this.aarCoordinator = AARCoordinator.getInstance();
+        this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
 	}
 
 	public void makePanel() throws PWCGException  
@@ -71,13 +76,19 @@ public class AARPilotLossPanel extends AAREventPanel
 
 	private HashMap<String, CampaignReportPilotStatusGUI> createPilotLostSubTabs() throws PWCGException 
 	{
+        AARCombatReportPanelData combatReportData = aarCoordinator.getAarContext().getAarTabulatedData()
+                        .findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportPanelData();
+
         HashMap<String, CampaignReportPilotStatusGUI> pilotLostGuiList = new HashMap<String, CampaignReportPilotStatusGUI>();
 
-        for (PilotStatusEvent pilotStatusEvent : aarCoordinator.getAarContext().getUiCombatReportData().getCombatReportPanelData().getSquadronMembersLostInMission().values())
+        for (PilotStatusEvent pilotStatusEvent : combatReportData.getSquadronMembersLostInMission().values())
 		{
-            CampaignReportPilotStatusGUI pilotLostGui = new CampaignReportPilotStatusGUI(pilotStatusEvent);
-            String tabName = "Pilot Lost: " + pilotStatusEvent.getPilot().getNameAndRank();
-            pilotLostGuiList.put(tabName, pilotLostGui);
+            if (pilotStatusEvent.getSquadronId() == referencePlayer.getSquadronId())
+            {
+                CampaignReportPilotStatusGUI pilotLostGui = new CampaignReportPilotStatusGUI(pilotStatusEvent);
+                String tabName = "Pilot Lost: " + pilotStatusEvent.getPilotName();
+                pilotLostGuiList.put(tabName, pilotLostGui);
+            }
 		}
         
         return pilotLostGuiList;

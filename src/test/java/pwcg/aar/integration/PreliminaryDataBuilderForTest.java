@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
-import pwcg.aar.prelim.AARClaimPanelData;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionData;
+import pwcg.aar.prelim.claims.AARClaimPanelData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;

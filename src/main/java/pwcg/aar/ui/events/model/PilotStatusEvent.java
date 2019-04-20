@@ -5,10 +5,12 @@ import pwcg.campaign.squadmember.SquadronMemberStatus;
 public class PilotStatusEvent  extends AARPilotEvent
 {
 	private int status = SquadronMemberStatus.STATUS_ACTIVE;
-	
-	public PilotStatusEvent ()
-	{
-	}
+    private int serialNumber;
+
+    public PilotStatusEvent(int squadronId)
+    {
+        super(squadronId);
+    }
 
 	public int getStatus() {
 		return status;
@@ -17,4 +19,14 @@ public class PilotStatusEvent  extends AARPilotEvent
 	public void setStatus(int status) {
 		this.status = status;
 	}
+
+    public int getSerialNumber()
+    {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(int serialNumber)
+    {
+        this.serialNumber = serialNumber;
+    }
 }

@@ -1,26 +1,45 @@
 package pwcg.aar.ui.events.model;
 
-import pwcg.campaign.squadmember.SquadronMember;
-
 public class AARPilotEvent extends AAREvent
 {
-	private String squadron = "";
-	private SquadronMember  pilot = null;
+    public static final int ALL_SQUADRONS = -1;
 
-	public String getSquadron() {
-		return squadron;
-	}
+    private Integer squadronId = ALL_SQUADRONS;
+    private String squadron = "";
+    private String pilotName;
+    
+    public AARPilotEvent(int squadronId)
+    {
+        this.squadronId = squadronId;
+    }
 
-	public void setSquadron(String squadron) {
-		this.squadron = squadron;
-	}
-	
-	public SquadronMember getPilot() 
-	{
-		return pilot;
-	}
+    public Integer getSquadronId()
+    {
+        return squadronId;
+    }
 
-	public void setPilot(SquadronMember pilot) {
-		this.pilot = pilot;
-	}
+    public void setSquadronId(Integer squadronId)
+    {
+        this.squadronId = squadronId;
+    }
+
+    public String getSquadron()
+    {
+        return squadron;
+    }
+
+    public void setSquadron(String squadron)
+    {
+        this.squadron = squadron;
+    }
+    
+    public String getPilotName()
+    {
+        return pilotName;
+    }
+
+    public void setPilotName(String pilotName)
+    {
+        this.pilotName = pilotName;
+    }
 }

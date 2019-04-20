@@ -36,11 +36,7 @@ public class HistoricalAceTransferHandler
     private void aceTransferred() throws PWCGException
     {
         CampaignPersonnelManager campaignPersonnelManager = campaign.getPersonnelManager();            
-        List<Ace> acesBefore = PWCGContextManager.getInstance().getAceManager().getActiveAcesForSquadron(
-        		campaignPersonnelManager.getCampaignAces(),
-        		campaign.getDate(),
-        		campaign.getSquadronId());
-
+        List<Ace> acesBefore = PWCGContextManager.getInstance().getAceManager().getActiveAcesForCampaign(campaignPersonnelManager.getCampaignAces(), campaign.getDate());
         for (Ace aceBefore : acesBefore)
         {
             if (aceBefore.getActiveStatus() > SquadronMemberStatus.STATUS_CAPTURED)

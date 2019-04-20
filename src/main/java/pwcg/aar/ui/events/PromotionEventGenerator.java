@@ -42,8 +42,8 @@ public class PromotionEventGenerator
 
     private PromotionEvent makePromotionEvent(SquadronMember pilot, String newRank) throws PWCGException
     {
-        PromotionEvent promotionEvent = new PromotionEvent();
-        promotionEvent.setPilot(pilot);
+        PromotionEvent promotionEvent = new PromotionEvent(pilot.getSquadronId(), pilot.getSerialNumber());
+        promotionEvent.setPilotName(pilot.getNameAndRank());
         Squadron squadron = pilot.determineSquadron();
         if (squadron != null)
         {

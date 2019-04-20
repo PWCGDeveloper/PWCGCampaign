@@ -8,8 +8,7 @@ import pwcg.aar.ui.events.model.TransferEvent;
 public class TransferPanelData
 {
     private TransferEvent playerTransferEvent = null;
-    private List<TransferEvent> transferIntoSquadron = new ArrayList<>();
-    private List<TransferEvent> transferOutOfSquadron = new ArrayList<>();
+    private List<TransferEvent> transfers = new ArrayList<>();
     
     public TransferEvent getPlayerTransferEvent()
     {
@@ -20,26 +19,14 @@ public class TransferPanelData
     {
         this.playerTransferEvent = playerTransferEvent;
     }
-    
-    public List<TransferEvent> getTransferIntoSquadron()
+
+    public List<TransferEvent> getTransfers()
     {
-        return transferIntoSquadron;
-    }
-    
-    public void setTransferIntoSquadron(List<TransferEvent> transferIntoSquadron)
-    {
-        this.transferIntoSquadron = transferIntoSquadron;
-    }
-    
-    public List<TransferEvent> getTransferOutOfSquadron()
-    {
-        return transferOutOfSquadron;
-    }
-    
-    public void setTransferOutOfSquadron(List<TransferEvent> transferOutOfSquadron)
-    {
-        this.transferOutOfSquadron = transferOutOfSquadron;
+        return transfers;
     }
 
-    
+    public void setTransfers(List<TransferEvent> transfers)
+    {
+        this.transfers = transfers;
+    }
 }

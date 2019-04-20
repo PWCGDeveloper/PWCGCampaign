@@ -20,6 +20,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.io.json.CombatReportIOJson;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
@@ -36,6 +37,8 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
 {
     private static final long serialVersionUID = 1L;
 
+    private SquadronMember referencePlayer;
+    
     private JPanel journalPagesGridPanel = new JPanel();
     private JPanel pageTurnerPanel = null;
 
@@ -54,6 +57,7 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
     public CampaignJournalPanelSet()
     {
         super();
+        this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
     }
 
     public void makeVisible(boolean visible) 
@@ -92,9 +96,8 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
 
 	private void loadCombatReportsForCampagn() throws PWCGException
 	{
-
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        journalReports = CombatReportIOJson.readJson(campaign);
+        journalReports = CombatReportIOJson.readJson(campaign,referencePlayer.getSerialNumber());
 	}
 
 	private void mapCombatReportsToPages()

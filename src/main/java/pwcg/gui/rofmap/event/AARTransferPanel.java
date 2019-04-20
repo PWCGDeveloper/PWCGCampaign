@@ -34,22 +34,22 @@ public class AARTransferPanel extends CampaignDocumentGUI
         Squadron fromSquadron = squadronManager.getSquadron(transferEvent.getTransferFrom());
         Squadron toSquadron = squadronManager.getSquadron(transferEvent.getTransferTo());
 
-        String transferMessage = transferEvent.getPilot().getNameAndRank() + " has been transferred" + "\n";
+        String transferMessage = transferEvent.getPilotName() + " has been transferred" + "\n";
                         
         if (fromSquadron != null && toSquadron != null)
         {
-            transferMessage = transferEvent.getPilot().getNameAndRank() + " has been transferred from\n" + 
+            transferMessage = transferEvent.getPilotName() + " has been transferred from\n" + 
                             fromSquadron.determineDisplayName(campaign.getDate()) + 
                             " to " + toSquadron.determineDisplayName(campaign.getDate())+ "\n";
         }
         else if (toSquadron != null)
         {
-            transferMessage = transferEvent.getPilot().getNameAndRank() + 
+            transferMessage = transferEvent.getPilotName() + 
                             " has been transferred to " + toSquadron.determineDisplayName(campaign.getDate()) + "\n";
         }
         else if (fromSquadron != null)
         {
-            transferMessage = transferEvent.getPilot().getNameAndRank() + 
+            transferMessage = transferEvent.getPilotName() + 
                             " has been transferred from " + fromSquadron.determineDisplayName(campaign.getDate()) + "\n";
         }
         

@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 public enum UnknownVictoryAssignments
 {

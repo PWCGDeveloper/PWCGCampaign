@@ -6,8 +6,9 @@ import java.util.List;
 
 public class CombatReport 
 {
-    private List<String> pilots = new ArrayList<>();
-    private String pilot = "";
+    private List<String> flightPilots = new ArrayList<>();
+    private Integer pilotSerialNumber = 0;
+    private String reportPilotName = "";
 	private String squadron = "";
 	private Date date;
 	private String time = "";
@@ -21,26 +22,26 @@ public class CombatReport
 	public CombatReport ()
 	{
 	}
-
-    public void setPilots(List<String> pilots)
-    {
-        this.pilots = pilots;
-    }
-
-    public String getPilot()
+	
+	public void addFlightPilot(String pilotName)
 	{
-		return pilot;
+	    flightPilots.add(pilotName);
 	}
 
-	public void setPilot(String pilot)
-	{
-		this.pilot = pilot;
-	}
-
-    public List<String> getPilots()
+	public Integer getPilotSerialNumber()
     {
-        return pilots;
+        return pilotSerialNumber;
     }
+
+    public void setPilotSerialNumber(Integer pilotSerialNumber)
+    {
+        this.pilotSerialNumber = pilotSerialNumber;
+    }
+
+    public List<String> getFlightPilots() 
+	{
+		return flightPilots;
+	}
 
 	public String getSquadron()
 	{
@@ -50,6 +51,16 @@ public class CombatReport
 	public void setSquadron(String squadron)
 	{
 		this.squadron = squadron;
+	}
+
+	public String getReportPilotName() 
+	{
+		return reportPilotName;
+	}
+
+	public void setReportPilotName(String reportPilotName) 
+	{
+		this.reportPilotName = reportPilotName;
 	}
 
 	public Date getDate()

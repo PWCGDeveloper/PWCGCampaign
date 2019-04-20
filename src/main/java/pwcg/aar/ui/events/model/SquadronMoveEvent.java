@@ -1,93 +1,64 @@
 package pwcg.aar.ui.events.model;
 
-import java.util.Date;
-
-import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.squadron.Squadron;
-
 public class SquadronMoveEvent  extends AAREvent
 {
-    private IAirfield newAirfield = null;
-    private IAirfield lastAirfield = null;
+    private String newAirfield = null;
+    private String lastAirfield = null;
     private String status = "";
-    private Squadron squadron = null;
+    private String squadron = null;
     private boolean needsFerryMission = false;
 
     public SquadronMoveEvent ()
     {
     }
 
-    public Squadron getSquadron()
+    public String getNewAirfield()
     {
-        return this.squadron;
+        return newAirfield;
     }
 
-    public void setSquadron(Squadron squadron)
-    {
-        this.squadron = squadron;
-    }
-
-    public String getStatus() 
-    {
-        return status;
-    }
-
-    public void setStatus(String status) 
-    {
-        this.status = status;
-    }
-
-    public IAirfield getNewAirfield()
-    {
-        return this.newAirfield;
-    }
-
-    public void setNewAirfield(IAirfield newAirfield)
+    public void setNewAirfield(String newAirfield)
     {
         this.newAirfield = newAirfield;
     }
 
-    public IAirfield getLastAirfield()
+    public String getLastAirfield()
     {
-        return this.lastAirfield;
+        return lastAirfield;
     }
 
-    public void setLastAirfield(IAirfield lastAirfield)
+    public void setLastAirfield(String lastAirfield)
     {
         this.lastAirfield = lastAirfield;
     }
 
+    public String getStatus()
+    {
+        return status;
+    }
+
+    public void setStatus(String status)
+    {
+        this.status = status;
+    }
+
+    public String getSquadron()
+    {
+        return squadron;
+    }
+
+    public void setSquadron(String squadron)
+    {
+        this.squadron = squadron;
+    }
+
     public boolean isNeedsFerryMission()
     {
-        return this.needsFerryMission;
+        return needsFerryMission;
     }
 
     public void setNeedsFerryMission(boolean needsFerryMission)
     {
         this.needsFerryMission = needsFerryMission;
-    }
-
-    @Override
-    public Date getDate()
-    {
-        return super.getDate();
-    }
-
-    @Override
-    public void setDate(Date date)
-    {
-        super.setDate(date);
-    }
-
-    @Override
-    public boolean isNewsWorthy()
-    {
-        return super.isNewsWorthy();
-    }
-
-    @Override
-    public void setNewsWorthy(boolean isNewsWorthy)
-    {
-        super.setNewsWorthy(isNewsWorthy);
     }
 }

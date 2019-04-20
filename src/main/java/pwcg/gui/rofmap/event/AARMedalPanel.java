@@ -3,11 +3,15 @@ package pwcg.gui.rofmap.event;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JTabbedPane;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.MedalEvent;
+import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.colors.ColorMap;
@@ -20,12 +24,16 @@ public class AARMedalPanel extends AAREventPanel
 {
     private static final long serialVersionUID = 1L;
 
+    private Campaign campaign;
     private AARCoordinator aarCoordinator;
+    private SquadronMember referencePlayer;
 
-    public AARMedalPanel()
+    public AARMedalPanel(Campaign campaign)
 	{
         super();
+        this.campaign = campaign;
         this.aarCoordinator = AARCoordinator.getInstance();
+        this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
 	}
 
 	public void makePanel() throws PWCGException  
@@ -73,13 +81,16 @@ public class AARMedalPanel extends AAREventPanel
 
 	private HashMap<String, CampaignReportMedalGUI> createPilotMedalList() throws PWCGException 
 	{
+        List<MedalEvent> medalsAwarded = aarCoordinator.getAarContext().getAarTabulatedData().getUiDebriefData().getMedalPanelData().getMedalsAwarded();
         HashMap<String, CampaignReportMedalGUI> pilotMedalGuiList = new HashMap<String, CampaignReportMedalGUI>();
-
-        for (MedalEvent medalEvent : aarCoordinator.getAarContext().getUiDebriefData().getMedalPanelData().getMedalsAwarded())
+        for (MedalEvent medalEvent : medalsAwarded)
         {
-            CampaignReportMedalGUI medalGui = new CampaignReportMedalGUI(medalEvent);
-            String tabName = "Medal Awarded: " + medalEvent.getPilot().getNameAndRank();
-            pilotMedalGuiList.put(tabName, medalGui);
+            if (medalEvent.getSquadronId() == referencePlayer.getSquadronId())
+            {
+                CampaignReportMedalGUI medalGui = new CampaignReportMedalGUI(campaign, medalEvent);
+                String tabName = "Medal Awarded: " + medalEvent.getPilotName();
+                pilotMedalGuiList.put(tabName, medalGui);
+            }
         }
         
         return pilotMedalGuiList;

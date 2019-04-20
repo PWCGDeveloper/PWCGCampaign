@@ -130,13 +130,13 @@ public class AARMainPanel extends AARPanel implements ActionListener
             AARPilotLeavePanel pilotsLeavePanelSet = new AARPilotLeavePanel();
             allEventPanels.add(pilotsLeavePanelSet);
 
-            AARMedalPanel pilotsMedalPanelSet = new AARMedalPanel();
+            AARMedalPanel pilotsMedalPanelSet = new AARMedalPanel(campaign);
             allEventPanels.add(pilotsMedalPanelSet);
 
-            AARPromotionPanel pilotsPromotionPanelSet = new AARPromotionPanel();
+            AARPromotionPanel pilotsPromotionPanelSet = new AARPromotionPanel(campaign);
             allEventPanels.add(pilotsPromotionPanelSet);
 
-            AARNewsPanel newsPanelSet = new AARNewsPanel();
+            AARNewsPanel newsPanelSet = new AARNewsPanel(campaign);
             allEventPanels.add(newsPanelSet);
             
             for (AAREventPanel eventPanel : allEventPanels)

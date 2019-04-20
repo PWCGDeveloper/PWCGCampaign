@@ -11,7 +11,6 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.squadmember.SerialNumber;
@@ -32,14 +31,14 @@ public class AARPilotStatusEvaluator
     
     public AARPilotStatusEvaluator(Campaign campaign, PwcgMissionData pwcgMissionData, AARDestroyedStatusEvaluator destroyedStatusEvaluator, AARLogEventData logEventData, AARVehicleBuilder aarVehicleBuilder)
     {
-        pilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(destroyedStatusEvaluator);
-        pilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(campaign.getDate());
-        pilotStatusWoundedEvaluator = new AARPilotStatusWoundedEvaluator();
-
         this.campaign = campaign;
         this.pwcgMissionData = pwcgMissionData;
         this.logEventData = logEventData;
         this.aarVehicleBuilder = aarVehicleBuilder;
+
+        pilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
+        pilotStatusCapturedEvaluator = new AARPilotStatusCapturedEvaluator(campaign.getDate());
+        pilotStatusWoundedEvaluator = new AARPilotStatusWoundedEvaluator();
     }
 
     public void determineFateOfCrewsInMission () throws PWCGException 
@@ -104,13 +103,10 @@ public class AARPilotStatusEvaluator
     {        
         int oddsOfDeathDueToAiStupidity = 10;
         IAType3 destroyedEventForPlane = logEventData.getDestroyedEventForPlaneByBot(resultCrewmember.getBotId());        
-        IAirfield field =  campaign.getPlayerAirfield();
-
         pilotStatusDeadEvaluator.initialize(
                         resultPlane.getLandAt(), 
                         resultCrewmember,
                         destroyedEventForPlane, 
-                        field,
                         oddsOfDeathDueToAiStupidity);
 
         boolean isDead = pilotStatusDeadEvaluator.isCrewMemberDead();

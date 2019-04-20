@@ -26,102 +26,35 @@ public class TransferPanelEventTabulator
         
     public TransferPanelData tabulateForAARTransferPanel() throws PWCGException
     {
-        transferIntoSquadron();
-        transferOutOfSquadron();
-        
+        createTransferEvents();        
         return transferPanelData;
     }
     
-    private void transferIntoSquadron() throws PWCGException
+    private void createTransferEvents() throws PWCGException
     {
         TransferEventGenerator transferEventGenerator = new TransferEventGenerator(campaign);
         List<TransferEvent> allTransferInEvents = new ArrayList<>();
 
-        List<TransferEvent> transferEventsForSquadronAces = transferInForAces(transferEventGenerator);
+        List<TransferEvent> transferEventsForSquadronAces = transferAces(transferEventGenerator);
         allTransferInEvents.addAll(transferEventsForSquadronAces);
         
-        List<TransferEvent> transferEventsForSquadronMembers = transferInForSquadronMembers(transferEventGenerator);
+        List<TransferEvent> transferEventsForSquadronMembers = transferSquadronMembers(transferEventGenerator);
         allTransferInEvents.addAll(transferEventsForSquadronMembers);
         
-        transferPanelData.setTransferIntoSquadron(allTransferInEvents);
+        transferPanelData.setTransfers(allTransferInEvents);
     }
 
-    private List<TransferEvent> transferInForAces(TransferEventGenerator transferEventGenerator) throws PWCGException
+    private List<TransferEvent> transferAces(TransferEventGenerator transferEventGenerator) throws PWCGException
     {
-        List <TransferRecord> acesTransferredIn = new ArrayList<>();
-        acesTransferredIn.addAll(aarContext.getReconciledOutOfMissionData().getResupplyData().getAcesTransferred().getSquadronMembersTransferredToSquadron(campaign.getSquadronId()));
-        List<TransferEvent> transferEventsForAces = transferEventGenerator.createPilotTransferEventsIntoSquadron(acesTransferredIn);
-        List<TransferEvent> transferEventsForSquadronAces = getTransfersInForCurrentSquadron(transferEventsForAces);
-        return transferEventsForSquadronAces;
+        List <TransferRecord> acesTransferredIn = aarContext.getReconciledOutOfMissionData().getResupplyData().getAcesTransferred().getSquadronMembersTransferred();
+        List<TransferEvent> transferEventsForAces = transferEventGenerator.createPilotTransferEvents(acesTransferredIn);
+        return transferEventsForAces;
     }
 
-    private List<TransferEvent> transferInForSquadronMembers(TransferEventGenerator transferEventGenerator) throws PWCGException
+    private List<TransferEvent> transferSquadronMembers(TransferEventGenerator transferEventGenerator) throws PWCGException
     {
-        List <TransferRecord> squadronMembersTransferredIn = new ArrayList<>();
-        squadronMembersTransferredIn.addAll(aarContext.getReconciledOutOfMissionData().getResupplyData().getSquadronTransferData().getSquadronMembersTransferredToSquadron(campaign.getSquadronId()));
-        List<TransferEvent> transferEventsForCampaignMembers = transferEventGenerator.createPilotTransferEventsIntoSquadron(squadronMembersTransferredIn);
-        List<TransferEvent> transferEventsForSquadronMembers = getTransfersInForCurrentSquadron(transferEventsForCampaignMembers);
+        List <TransferRecord> squadronMembersTransferredIn = aarContext.getReconciledOutOfMissionData().getResupplyData().getSquadronTransferData().getSquadronMembersTransferred();
+        List<TransferEvent> transferEventsForSquadronMembers = transferEventGenerator.createPilotTransferEvents(squadronMembersTransferredIn);
         return transferEventsForSquadronMembers;
     }
-    
-    private void transferOutOfSquadron() throws PWCGException
-    {
-        TransferEventGenerator transferEventGenerator = new TransferEventGenerator(campaign);
-        List<TransferEvent> allTransferInEvents = new ArrayList<>();
-
-        List<TransferEvent> transferEventsForSquadronAces = tranferOutForAces(transferEventGenerator);
-        allTransferInEvents.addAll(transferEventsForSquadronAces);
-        
-        List<TransferEvent> transferEventsForSquadronMembers = tranferOutForSquadronMembers(transferEventGenerator);
-        allTransferInEvents.addAll(transferEventsForSquadronMembers);
-        
-        transferPanelData.setTransferOutOfSquadron(allTransferInEvents);
-    }
-
-    private List<TransferEvent> tranferOutForSquadronMembers(TransferEventGenerator transferEventGenerator) throws PWCGException
-    {
-        List <TransferRecord> transferEventsOut = new ArrayList<>();
-        transferEventsOut.addAll(aarContext.getReconciledOutOfMissionData().getResupplyData().getSquadronTransferData().getSquadronMembersTransferredFromSquadron(campaign.getSquadronId()));
-        List<TransferEvent> transferEventsForCampaignMembers = transferEventGenerator.createPilotTransferEventsOutOfSquadron(transferEventsOut);
-        List<TransferEvent> transferEventsForSquadronMembers = getTransfersOutForCurrentSquadron(transferEventsForCampaignMembers);
-        return transferEventsForSquadronMembers;
-    }
-
-    private List<TransferEvent> tranferOutForAces(TransferEventGenerator transferEventGenerator) throws PWCGException
-    {
-        List <TransferRecord> acesTransferredOut = new ArrayList<>();
-        acesTransferredOut.addAll(aarContext.getReconciledOutOfMissionData().getResupplyData().getAcesTransferred().getSquadronMembersTransferredFromSquadron(campaign.getSquadronId()));
-        List<TransferEvent> transferEventsForAces = transferEventGenerator.createPilotTransferEventsOutOfSquadron(acesTransferredOut);
-        List<TransferEvent> transferEventsForSquadronAces = getTransfersOutForCurrentSquadron(transferEventsForAces);
-        return transferEventsForSquadronAces;
-    }
-    
-    private List<TransferEvent> getTransfersInForCurrentSquadron(List<TransferEvent> transferEventsForCampaignMembers) throws PWCGException
-    {
-        List<TransferEvent> transferEventsForSquadronMembers = new ArrayList<>();
-        
-        for (TransferEvent transferEvent : transferEventsForCampaignMembers)
-        {
-            if (transferEvent.getTransferTo() == campaign.getSquadronId())
-            {
-                transferEventsForSquadronMembers.add(transferEvent);
-            }
-        }
-        return transferEventsForSquadronMembers;
-    }
-    
-    private List<TransferEvent> getTransfersOutForCurrentSquadron(List<TransferEvent> transferEventsForCampaignMembers) throws PWCGException
-    {
-        List<TransferEvent> transferEventsForSquadronMembers = new ArrayList<>();
-        
-        for (TransferEvent transferEvent : transferEventsForCampaignMembers)
-        {
-            if (transferEvent.getTransferFrom() == campaign.getSquadronId())
-            {
-                transferEventsForSquadronMembers.add(transferEvent);
-            }
-        }
-        return transferEventsForSquadronMembers;
-    }
-
 }

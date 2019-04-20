@@ -19,8 +19,7 @@ public class AARTimePassedAfterMission
     {
         int daysForMission = calculateDaysForMission();        
         Date newDate = DateUtils.advanceTimeDays(campaign.getDate(), daysForMission);
-        Date finalNewDate = AARAdjustDateForNightMissions.adjustForNightMissions(campaign, newDate);
-        return finalNewDate;
+        return newDate;
     }
     
 

@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -19,8 +20,11 @@ import pwcg.aar.MissionFileCleaner;
 import pwcg.aar.MissionResultLogFileCleaner;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBase;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
+import pwcg.aar.ui.display.model.AARCombatReportPanelData;
 import pwcg.aar.ui.events.model.AARPilotEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DirectoryReader;
@@ -48,6 +52,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 	private static final long serialVersionUID = 1L;
 
     private Campaign campaign;
+    private SquadronMember referencePlayer;
 	private CampaignHomeGUI home = null;
 	private Thread initiatorThread = null;
 	private JTextArea eventTextPane = new JTextArea();
@@ -65,6 +70,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
         this.campaign = campaign;
         this.home = home;
         this.aarCoordinator = AARCoordinator.getInstance();
+        this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
 	}
 
 	public void makePanels() 
@@ -88,9 +94,11 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 		}
 	}
 
-    private void setSoundForScreen()
+    private void setSoundForScreen() throws PWCGException
     {
-        CampaignMissionWin missionWin = new CampaignMissionWin(aarCoordinator.getAarContext().getUiCombatReportData().getCombatReportPanelData());
+        AARCombatReportPanelData combatPanelData = aarCoordinator.getAarContext().getAarTabulatedData().
+                        findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportPanelData();
+        CampaignMissionWin missionWin = new CampaignMissionWin(combatPanelData);
         MusicManager.playMissionStatusTheme(missionWin.isMissionAWin());
     }
 	
@@ -159,8 +167,11 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
 	protected void makeMapEvents() throws PWCGException  
 	{
-		LogDamage lastDamageEvent = null;
-		for (LogBase event : aarCoordinator.getAarContext().getUiCombatReportData().getCombatReportMapData().getChronologicalEvents())
+        List<LogBase> logEvents = aarCoordinator.getAarContext().getAarTabulatedData().
+                        findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportMapData().getChronologicalEvents();
+
+        LogDamage lastDamageEvent = null;
+		for (LogBase event : logEvents)
 		{
 		    DebriefMapPanel mapPanel = (DebriefMapPanel)mapScroll.getMapPanel();
 		    
@@ -255,9 +266,12 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
     private void showMissionEvents() throws PWCGException 
     {        
-        if (!aarCoordinator.getAarContext().getUiCombatReportData().getCombatReportMapData().getChronologicalEvents().isEmpty())
+        List<LogBase> logEvents = aarCoordinator.getAarContext().getAarTabulatedData().
+                        findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportMapData().getChronologicalEvents();
+
+        if (!logEvents.isEmpty())
         {
-            AARMainPanel eventDisplay = new AARMainPanel(campaign, home, EventPanelReason.EVENT_PANEL_REASON_AAR, new AARPilotEvent());
+            AARMainPanel eventDisplay = new AARMainPanel(campaign, home, EventPanelReason.EVENT_PANEL_REASON_AAR, new AARPilotEvent(referencePlayer.getSquadronId()));
             eventDisplay.makePanels();
             
             CampaignGuiContextManager.getInstance().pushToContextStack(eventDisplay);

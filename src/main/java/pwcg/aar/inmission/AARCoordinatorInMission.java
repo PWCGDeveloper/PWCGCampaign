@@ -10,7 +10,7 @@ import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.AARPhase2EvaluateCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.AARPhase3ReconcileCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.ReconciledInMissionData;
-import pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarations;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 

@@ -11,7 +11,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
-import pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarations;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;

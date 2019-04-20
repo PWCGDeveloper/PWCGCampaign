@@ -30,8 +30,6 @@ import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
-import pwcg.gui.campaign.coop.CoopPilotAccept;
-import pwcg.gui.campaign.coop.CoopUserAccept;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;

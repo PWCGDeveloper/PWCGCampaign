@@ -1,5 +1,6 @@
 package pwcg.campaign.io.json;
 
+import java.util.Arrays;
 import java.util.Map;
 
 import org.junit.Before;
@@ -31,6 +32,7 @@ public class CombatReportIOJsonTest
     @Test
     public void combatReportJsonTest() throws PWCGException
     {
+    	combatReport.setPilotSerialNumbers(Arrays.asList(12345, 12346));
         combatReport.setDate(campaign.getDate());
         writeCombatReport();
         readCombatReport();
@@ -43,8 +45,11 @@ public class CombatReportIOJsonTest
     
     public void readCombatReport() throws PWCGException
     {
-        Map<String, CombatReport> combatReports = CombatReportIOJson.readJson(campaign);
-        assert (combatReports.size() > 0);
+        Map<String, CombatReport> combatReports1 = CombatReportIOJson.readJson(campaign, 12345);
+        assert (combatReports1.size() > 0);
+        
+        Map<String, CombatReport> combatReports2 = CombatReportIOJson.readJson(campaign, 12346);
+        assert (combatReports2.size() > 0);
     }
 
 }

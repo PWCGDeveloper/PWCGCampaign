@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.campaign.Campaign;
@@ -33,11 +33,11 @@ public class ClaimDenier
         String planeDesc = getPlaneDescription(declaration);
         SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
         
-        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(); 
+        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(player.getSquadronId()); 
         claimDenied.setDate(campaign.getDate());
         claimDenied.setSquadron(player.determineSquadron().determineDisplayName(campaign.getDate()));
         claimDenied.setType(planeDesc);
-        claimDenied.setPilot(player);
+        claimDenied.setPilotName(player.getNameAndRank());
         
         return claimDenied;
     }

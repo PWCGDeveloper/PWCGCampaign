@@ -34,9 +34,10 @@ public class NewspaperEventGenerator
         
         for (String filename : dateBasedNewspaperFiles)
         {
-            if (!isNewspaperForOurSide(filename))
+        	Side side = Side.AXIS;
+            if (filename.contains("Allied"))
             {
-                continue;
+            	side = Side.ALLIED;
             }
 
             Date newsPaperDate = getNewspaperDate(filename);
@@ -45,7 +46,7 @@ public class NewspaperEventGenerator
                 continue;
             }
 
-            NewspaperEvent newspaperEvent = makeNewspaperEvent(newspaperDir, filename, newsPaperDate);
+            NewspaperEvent newspaperEvent = makeNewspaperEvent(newspaperDir, filename, newsPaperDate, side);
             newspaperEventList.add(newspaperEvent);
         }
         return newspaperEventList;
@@ -67,17 +68,6 @@ public class NewspaperEventGenerator
         }
         
         return dateBasedNewspaperFiles;
-    }
-    
-    private boolean isNewspaperForOurSide (String filename) throws PWCGException
-    {
-        if ((campaign.determineCountry().getSide() == Side.ALLIED && filename.contains("Allied")) ||
-            (campaign.determineCountry().getSide() == Side.AXIS && filename.contains("German")))
-        {
-            return true;
-        }
-        
-        return false;
     }
 
     private boolean isNewspaperWithinDateBoundaries (Date newsPaperDate)
@@ -110,10 +100,11 @@ public class NewspaperEventGenerator
         return oldNewsDate;
     }
 
-    private NewspaperEvent makeNewspaperEvent(String newspaperDir, String filename, Date newsPaperDate)
+    private NewspaperEvent makeNewspaperEvent(String newspaperDir, String filename, Date newsPaperDate, Side side)
     {
         NewspaperEvent newspaperEvent = new NewspaperEvent();
         newspaperEvent.setDate(newsPaperDate);
+        newspaperEvent.setSide(side);
         newspaperEvent.setNewspaperFile(newspaperDir + "\\" + filename);
         return newspaperEvent;
     }

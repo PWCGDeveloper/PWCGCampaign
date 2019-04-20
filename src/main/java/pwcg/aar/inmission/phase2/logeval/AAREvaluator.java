@@ -65,7 +65,7 @@ public class AAREvaluator
     
     private AARMissionEvaluationData createMissionEvaluation() throws PWCGException
     {
-        AARCrewBuilder crewBuilder= new AARCrewBuilder(campaign, aarVehicleBuilder.getLogPlanes());
+        AARCrewBuilder crewBuilder= new AARCrewBuilder(aarVehicleBuilder.getLogPlanes());
 
         AARMissionEvaluationData evaluationData = new AARMissionEvaluationData();
         evaluationData.setPlaneAiEntities(aarVehicleBuilder.getLogPlanes());

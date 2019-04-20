@@ -22,22 +22,21 @@ public class SquadronMoveHandler
         this.campaign = campaign;
     }
 
-    public SquadronMoveEvent squadronMoves(Date newDate) throws PWCGException 
+    public SquadronMoveEvent squadronMoves(Date newDate, Squadron squadron) throws PWCGException 
     {
         SquadronMoveEvent squadronMoveEvent = null;
         
-        Squadron squad = campaign.determineSquadron();
-        String airfieldNameNow = squad.determineCurrentAirfieldName(campaign.getDate());
-        String airfieldNameNext = squad.determineCurrentAirfieldName(newDate);
+        String airfieldNameNow = squadron.determineCurrentAirfieldName(campaign.getDate());
+        String airfieldNameNext = squadron.determineCurrentAirfieldName(newDate);
         
         if (!airfieldNameNext.equalsIgnoreCase(airfieldNameNow))
         {
             
             squadronMoveEvent = new SquadronMoveEvent();
-            squadronMoveEvent.setLastAirfield(squad.determineCurrentAirfieldAnyMap(campaign.getDate()));
-            squadronMoveEvent.setNewAirfield(squad.determineCurrentAirfieldAnyMap(newDate));
+            squadronMoveEvent.setLastAirfield(squadron.determineCurrentAirfieldAnyMap(campaign.getDate()).getName());
+            squadronMoveEvent.setNewAirfield(squadron.determineCurrentAirfieldAnyMap(newDate).getName());
             squadronMoveEvent.setDate(campaign.getDate());
-            squadronMoveEvent.setSquadron(squad);
+            squadronMoveEvent.setSquadron(squadron.determineDisplayName(campaign.getDate()));
             
             boolean needsFerry = needsFerryMission(airfieldNameNow, airfieldNameNext);
             squadronMoveEvent.setNeedsFerryMission(needsFerry);

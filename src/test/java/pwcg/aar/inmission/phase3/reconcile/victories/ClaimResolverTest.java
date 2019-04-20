@@ -13,6 +13,12 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.ClaimDenier;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.ClaimResolverSinglePlayer;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.ConfirmedVictories;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.VerifiedVictoryGenerator;
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
@@ -84,7 +90,7 @@ public class ClaimResolverTest
             verifiedVictories.addVictory(missionResultVictory);
         }
 
-        ClaimResolver claimResolver = new ClaimResolver(campaign, verifiedVictoryGenerator, claimDenier);
+        IClaimResolver claimResolver = new ClaimResolverSinglePlayer(campaign, verifiedVictoryGenerator, claimDenier);
         ReconciledVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims(playerDeclarations);
         assert (reconciledMissionData.getVictoryAwardsByPilot().size() == 1);
         assert (reconciledMissionData.getVictoryAwardsByPilot().get(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER).size() == 3);
@@ -94,7 +100,7 @@ public class ClaimResolverTest
     @Test
     public void testClaimNotAccepted() throws PWCGException
     {
-        ClaimResolver claimResolver = new ClaimResolver(campaign, verifiedVictoryGenerator, claimDenier);
+        IClaimResolver claimResolver = new ClaimResolverSinglePlayer(campaign, verifiedVictoryGenerator, claimDenier);
         ReconciledVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims(playerDeclarations);
         assert (reconciledMissionData.getVictoryAwardsByPilot().size() == 0);
         assert (reconciledMissionData.getPlayerClaimsDenied().size() == 0);
@@ -105,7 +111,7 @@ public class ClaimResolverTest
     {
         Mockito.when(claimDenier.determineClaimDenied(Matchers.<Integer>any(), Matchers.<PlayerVictoryDeclaration>any())).thenReturn(new ClaimDeniedEvent());
 
-        ClaimResolver claimResolver = new ClaimResolver(campaign, verifiedVictoryGenerator, claimDenier);
+        IClaimResolver claimResolver = new ClaimResolverSinglePlayer(campaign, verifiedVictoryGenerator, claimDenier);
         ReconciledVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims(playerDeclarations);
         assert (reconciledMissionData.getVictoryAwardsByPilot().size() == 0);
         assert (reconciledMissionData.getPlayerClaimsDenied().size() == 3);

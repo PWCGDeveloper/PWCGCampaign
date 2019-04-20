@@ -7,6 +7,11 @@ public class VictoryEvent extends AARPilotEvent
 {
     private Victory victory;
 
+    public VictoryEvent(int squadronId)
+    {
+        super(squadronId);
+    }
+
     public Victory getVictory()
     {
         return victory;

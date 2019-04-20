@@ -36,22 +36,23 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
 	private static final long serialVersionUID = 1L;
 	
 	private MedalEvent medalEvent = null;
+	private SquadronMember medalRecipient;
 
-	public CampaignReportMedalGUI(MedalEvent medalEvent) throws PWCGException
+	public CampaignReportMedalGUI(Campaign campaign, MedalEvent medalEvent) throws PWCGException
 	{
 		super(ContextSpecificImages.imagesMedals() + "medalAwardAllied.jpg");
 
-        ICountry country = CountryFactory.makeCountryByCountry(medalEvent.getPilot().getCountry());
+        this.medalEvent = medalEvent;
+		this.medalRecipient = campaign.getPersonnelManager().getAnyCampaignMember(medalEvent.getSerialNumber());
+		
+        ICountry country = CountryFactory.makeCountryByCountry(medalRecipient.getCountry());
         if (country.getSide() == Side.AXIS)
         {
             imagePath = ContextSpecificImages.imagesMedals() + "medalAwardGerman.jpg";
             setImage(imagePath);
         }
-
 		setLayout(new GridLayout(0,1));
-		
-		this.medalEvent = medalEvent;
-		
+	
 		makeGUI();		
 	}
 	
@@ -59,7 +60,6 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
 	{		
 		try
 		{
-			// The medal award panel
 			JPanel medalAwardPanel = formMedaUI();
 	        this.add(medalAwardPanel);
 
@@ -72,12 +72,7 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
 			ErrorDialog.internalError(e.getMessage());
 		}		
 	}
-    
-    /**
-     * @param medalEvent
-     * @return
-     * @throws PWCGException 
-     */
+
     private JPanel formMedaUI() throws PWCGException
     {
         JPanel medalTextAndPilotPicPanel = new JPanel(new BorderLayout());
@@ -100,11 +95,8 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
 
         medalTextAndPilotPicPanel.setBorder(BorderFactory.createEmptyBorder(topBottomBorder, leftRightBorder, topBottomBorder,leftRightBorder)); 
 
-
-        // Medal        
-        // The medal manager has the image
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-	    ICountry country = CountryFactory.makeCountryByCountry(medalEvent.getPilot().getCountry());
+	    ICountry country = CountryFactory.makeCountryByCountry(medalRecipient.getCountry());
         Medal medal =  MedalManager.getMedalFromAnyManager(country, campaign, medalEvent.getMedal());
         if (medal != null)
         {
@@ -112,34 +104,25 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
             medalTextAndPilotPicPanel.add(lMedal, BorderLayout.WEST);
         }
 
-        // Medal text and pilot pic
         JPanel tMedal = formMedalTextBox();
         medalTextAndPilotPicPanel.add(tMedal, BorderLayout.CENTER);
 
-        // Pilot Pic        
         JLabel pilotLabel = formPilotPicture();
         medalTextAndPilotPicPanel.add(pilotLabel, BorderLayout.EAST);
 
         return medalTextAndPilotPicPanel;
     }
 
-	   
-    /**
-     * @param medalEvent
-     * @return
-     */
     private JLabel formPilotPicture()
     {
         JLabel pilotLabel = new JLabel();
         
-        // Picture
-        SquadronMember pilot = medalEvent.getPilot();
+        SquadronMember pilot = medalRecipient;
         if (pilot != null)
         {
             ImageIcon imageIcon = pilot.determinePilotPicture();  
             if (imageIcon != null)
             {
-                // Picture label
                 pilotLabel = new JLabel(imageIcon);
                 pilotLabel.setOpaque(false);
                 pilotLabel.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
@@ -156,14 +139,7 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
 
         return pilotLabel;
     }
-    
-    
-    
-    /**
-     * @param medalEvent
-     * @return
-     * @throws PWCGException 
-     */
+
     private JPanel formMedalTextBox() throws PWCGException
     {
         String headerText = getHeaderText();
@@ -175,11 +151,6 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
         return campaignDocumentPage;
     }
 
-    
-    /**
-     * @param medalEvent
-     * @return
-     */
     private String getHeaderText()
     {
         String medalHeaderText = "Award for valor";
@@ -187,32 +158,18 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
         return medalHeaderText;
     }
 
-    
-	/**
-	 * @param medalEvent
-	 * @return
-	 */
 	private String getBodyText()
 	{
         String medalText = "Squadron: " + medalEvent.getSquadron() + "\n";
         medalText += "Date: " + DateUtils.getDateStringPretty(medalEvent.getDate()) + "\n";
-        medalText += medalEvent.getPilot().getNameAndRank() + " has been awarded the " + medalEvent.getMedal() + ".\n";               
+        medalText += medalRecipient.getNameAndRank() + " has been awarded the " + medalEvent.getMedal() + ".\n";               
 
         return medalText;
 	}
-	
 
-    /**
-     * Create the medal image
-     * 
-     * @param medalEvent
-     * @param bgColor
-     * @param medal
-     * @return
-     */
     private JLabel createMedalImage(Medal medal)
     {
-        SquadronMember pilot = medalEvent.getPilot();
+        SquadronMember pilot = medalRecipient;
         
         String medalPath = ContextSpecificImages.imagesMedals();
         ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());

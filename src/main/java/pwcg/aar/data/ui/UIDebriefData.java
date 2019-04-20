@@ -1,4 +1,4 @@
-package pwcg.aar.data;
+package pwcg.aar.data.ui;
 
 import pwcg.aar.ui.display.model.AARAceLeavePanelData;
 import pwcg.aar.ui.display.model.AAREquipmentLossPanelData;
@@ -10,9 +10,9 @@ import pwcg.aar.ui.display.model.TransferPanelData;
 
 public class UIDebriefData
 {
+    private AARNewsPanelData newsPanelData = new AARNewsPanelData();
     private AARAceLeavePanelData aceLeavePanelData = new AARAceLeavePanelData();
     private AARMedalPanelData medalPanelData = new AARMedalPanelData();
-    private AARNewsPanelData newsPanelData = new AARNewsPanelData();
     private AARPilotLossPanelData pilotLossPanelData = new AARPilotLossPanelData();
     private AAREquipmentLossPanelData equipmentLossPanelData = new AAREquipmentLossPanelData();
     private AARPromotionPanelData promotionPanelData = new AARPromotionPanelData();
@@ -20,35 +20,14 @@ public class UIDebriefData
 
     public void merge(UIDebriefData source)
     {
-        aceLeavePanelData.getAcesOnLeaveDuringElapsedTime().addAll(source.getAceLeavePanelData().getAcesOnLeaveDuringElapsedTime());
-        medalPanelData.getMedalsAwarded().addAll(source.getMedalPanelData().getMedalsAwarded());
         newsPanelData.getAcesKilledDuringElapsedTime().addAll(source.getNewsPanelData().getAcesKilledDuringElapsedTime());
         newsPanelData.getNewspaperEventsDuringElapsedTime().addAll(source.getNewsPanelData().getNewspaperEventsDuringElapsedTime());
+        aceLeavePanelData.getAcesOnLeaveDuringElapsedTime().addAll(source.getAceLeavePanelData().getAcesOnLeaveDuringElapsedTime());
+        medalPanelData.getMedalsAwarded().addAll(source.getMedalPanelData().getMedalsAwarded());
         pilotLossPanelData.getSquadMembersLost().putAll(source.getPilotLossPanelData().getSquadMembersLost());
         equipmentLossPanelData.getEquipmentLost().putAll(source.getEquipmentLossPanelData().getEquipmentLost());
         promotionPanelData.getPromotionEventsDuringElapsedTime().addAll(source.getPromotionPanelData().getPromotionEventsDuringElapsedTime());
-        transferPanelData.getTransferIntoSquadron().addAll(source.getTransferPanelData().getTransferIntoSquadron());
-        transferPanelData.getTransferOutOfSquadron().addAll(source.getTransferPanelData().getTransferOutOfSquadron());
-    }
-
-    public AARAceLeavePanelData getAceLeavePanelData()
-    {
-        return aceLeavePanelData;
-    }
-
-    public void addAceLeavePanelData(AARAceLeavePanelData aceLeavePanelData)
-    {
-    	this.aceLeavePanelData.getAcesOnLeaveDuringElapsedTime().addAll(aceLeavePanelData.getAcesOnLeaveDuringElapsedTime());
-    }
-
-    public AARMedalPanelData getMedalPanelData()
-    {
-        return medalPanelData;
-    }
-
-    public void setMedalPanelData(AARMedalPanelData medalPanelData)
-    {
-        this.medalPanelData = medalPanelData;
+        transferPanelData.getTransfers().addAll(source.getTransferPanelData().getTransfers());
     }
 
     public AARNewsPanelData getNewsPanelData()
@@ -59,6 +38,25 @@ public class UIDebriefData
     public void setNewsPanelData(AARNewsPanelData newsPanelData)
     {
         this.newsPanelData = newsPanelData;
+    }
+    public AARAceLeavePanelData getAceLeavePanelData()
+    {
+        return aceLeavePanelData;
+    }
+
+    public void addAceLeavePanelData(AARAceLeavePanelData aceLeavePanelData)
+    {
+        this.aceLeavePanelData.getAcesOnLeaveDuringElapsedTime().addAll(aceLeavePanelData.getAcesOnLeaveDuringElapsedTime());
+    }
+
+    public AARMedalPanelData getMedalPanelData()
+    {
+        return medalPanelData;
+    }
+
+    public void setMedalPanelData(AARMedalPanelData medalPanelData)
+    {
+        this.medalPanelData = medalPanelData;
     }
 
     public AARPilotLossPanelData getPilotLossPanelData()

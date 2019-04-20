@@ -4,10 +4,10 @@ public class LeaveEvent extends AARPilotEvent
 {
     private int leaveTime = 0;
 	
-	public LeaveEvent ()
-	{
-	}
-
+    public LeaveEvent(int squadronId)
+    {
+        super(squadronId);
+    }
 
     public int getLeaveTime()
     {

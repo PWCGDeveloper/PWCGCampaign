@@ -14,8 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.aar.AARCoordinator;
-import pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarations;
-import pwcg.aar.inmission.phase3.reconcile.victories.PlayerVictoryDeclaration;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;

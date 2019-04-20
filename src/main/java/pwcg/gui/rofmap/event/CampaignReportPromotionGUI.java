@@ -6,6 +6,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -13,13 +14,13 @@ public class CampaignReportPromotionGUI extends CampaignDocumentGUI
 {
 	private static final long serialVersionUID = 1L;
 	private PromotionEvent promotionEvent = null;
+    private SquadronMember promotionRecipient;
 
-	public CampaignReportPromotionGUI(PromotionEvent promotionEvent)
+	public CampaignReportPromotionGUI(Campaign campaign, PromotionEvent promotionEvent) throws PWCGException
 	{
 		super();
-		
 		this.promotionEvent = promotionEvent;
-		
+		this.promotionRecipient = campaign.getPersonnelManager().getAnyCampaignMember(promotionEvent.getSerialNumber());
 		makePanel();		
 	}
 
@@ -27,11 +28,11 @@ public class CampaignReportPromotionGUI extends CampaignDocumentGUI
     {
         // Promotion text
         Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        String promotionHeaerText = promotionEvent.getPilot().determineService(campaign.getDate()).getName() + "\n\n";
+        String promotionHeaderText = promotionRecipient.determineService(campaign.getDate()).getName() + "\n\n";
 
-        promotionHeaerText += "To all who shall see these presents, greeting: \n\n";
+        promotionHeaderText += "To all who shall see these presents, greeting: \n\n";
         
-        return promotionHeaerText;
+        return promotionHeaderText;
     }
 
     protected String getBodyText() throws PWCGException
@@ -48,17 +49,17 @@ public class CampaignReportPromotionGUI extends CampaignDocumentGUI
 
         promotionText += "\n\nGiven under the hand of OFFICER on DATE";
         
-        promotionText = promotionText.replaceAll("NAME", promotionEvent.getOldRank() + " " + promotionEvent.getPilot().getName());
+        promotionText = promotionText.replaceAll("NAME", promotionEvent.getOldRank() + " " + promotionRecipient.getName());
         promotionText = promotionText.replaceAll("RANK", promotionEvent.getNewRank());
         promotionText = promotionText.replaceAll("DATE", DateUtils.getDateStringPretty(campaign.getDate()));
         
-        ArmedService service = promotionEvent.getPilot().determineService(campaign.getDate());
+        ArmedService service = promotionRecipient.determineService(campaign.getDate());
         
         promotionText = promotionText.replaceAll("SERVICE", service.getName());
-        ICountry country = CountryFactory.makeCountryByCountry(promotionEvent.getPilot().getCountry());
+        ICountry country = CountryFactory.makeCountryByCountry(promotionRecipient.getCountry());
         promotionText = promotionText.replaceAll("NATION", country.getCountryName());
 
-        promotionText = promotionText.replaceAll("OFFICER", promotionEvent.getPilot().determineService(campaign.getDate()).getGeneralRankForService() + " " + promotionEvent.getPromotingGeneral());
+        promotionText = promotionText.replaceAll("OFFICER", promotionRecipient.determineService(campaign.getDate()).getGeneralRankForService() + " " + promotionEvent.getPromotingGeneral());
 
         return promotionText;
 	}

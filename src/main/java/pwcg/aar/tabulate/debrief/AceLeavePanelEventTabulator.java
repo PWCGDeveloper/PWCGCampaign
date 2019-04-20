@@ -23,7 +23,8 @@ public class AceLeavePanelEventTabulator
         
     public AARAceLeavePanelData tabulateForAARAceLeavePanel() throws PWCGException
     {
-        for (TransferRecord aceTransferRecord : aarContext.getReconciledOutOfMissionData().getResupplyData().getAcesTransferred().getSquadronMembersTransferredFromSquadron(campaign.getSquadronId()))
+        for (TransferRecord aceTransferRecord : aarContext.getReconciledOutOfMissionData().getResupplyData().getAcesTransferred().
+                        getSquadronMembersTransferred())
         {
             if (aceTransferRecord.getTransferTo() == SquadronMemberStatus.STATUS_ON_LEAVE)
             {
@@ -37,8 +38,8 @@ public class AceLeavePanelEventTabulator
     
     private AceLeaveEvent makeLeaveEvent(TransferRecord aceTransferRecord) throws PWCGException
     {
-        AceLeaveEvent aceLeaveEvent = new AceLeaveEvent();
-        aceLeaveEvent.setPilot(aceTransferRecord.getSquadronMember());
+        AceLeaveEvent aceLeaveEvent = new AceLeaveEvent((aceTransferRecord.getSquadronMember().getSquadronId()));
+        aceLeaveEvent.setPilotName(aceTransferRecord.getSquadronMember().getNameAndRank());
         aceLeaveEvent.setDate(campaign.getDate());
         aceLeaveEvent.setSquadron(SquadronMemberStatus.ON_LEAVE_STATUS);
         

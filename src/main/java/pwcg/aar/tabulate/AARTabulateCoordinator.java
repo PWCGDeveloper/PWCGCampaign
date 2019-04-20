@@ -1,8 +1,11 @@
 package pwcg.aar.tabulate;
 
+import java.util.List;
+
 import pwcg.aar.data.AARContext;
+import pwcg.aar.data.AARTabulatedData;
 import pwcg.aar.data.CampaignUpdateData;
-import pwcg.aar.data.UIDebriefData;
+import pwcg.aar.data.ui.UIDebriefData;
 import pwcg.aar.tabulate.campaignupdate.AARCampaignUpdateTabulator;
 import pwcg.aar.tabulate.combatreport.AARCombatReportTabulateCoordinator;
 import pwcg.aar.tabulate.combatreport.UICombatReportData;
@@ -14,6 +17,7 @@ public class AARTabulateCoordinator
 {
     private Campaign campaign;
     private AARContext aarContext;
+    private AARTabulatedData tabulatedData = new AARTabulatedData();
 
     public AARTabulateCoordinator (
                     Campaign campaign, 
@@ -23,25 +27,26 @@ public class AARTabulateCoordinator
         this.aarContext = aarContext;
     }
     
-    public void tabulate() throws PWCGException 
+    public AARTabulatedData tabulate() throws PWCGException 
     {
         tabulateCombatReport();
-        tabulateDebriefUI();
+        tabulateFlightDebriefUI();
         tabulateAARForCampaignUpdate();
+        return tabulatedData;
     }
     
     private void tabulateCombatReport() throws PWCGException
     {
         AARCombatReportTabulateCoordinator combatReportTabulator = new AARCombatReportTabulateCoordinator(campaign, aarContext);
-        UICombatReportData combatReportUiData = combatReportTabulator.tabulate();
-        aarContext.setUiCombatReportData(combatReportUiData);
+        List<UICombatReportData> combatReportUiDataSet = combatReportTabulator.tabulate();
+        tabulatedData.setUiCombatReportData(combatReportUiDataSet);
     }
 
-    private void tabulateDebriefUI() throws PWCGException 
+    private void tabulateFlightDebriefUI() throws PWCGException 
     {
         AARDebriefTabulateCoordinator uiDebriefTabulator = new AARDebriefTabulateCoordinator(campaign, aarContext);
-        UIDebriefData uiDebriefData = uiDebriefTabulator.tabulateForDebriefUI(); 
-        aarContext.getUiDebriefData().merge(uiDebriefData);
+        UIDebriefData uiDebriefData = uiDebriefTabulator.tabulateForDebriefUI();
+        tabulatedData.setUiDebriefData(uiDebriefData);
     }
     
     private void tabulateAARForCampaignUpdate() throws PWCGException 

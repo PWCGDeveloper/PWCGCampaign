@@ -16,6 +16,8 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogGroundUnit;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryReassigner;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.VictorySorter;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.Country;

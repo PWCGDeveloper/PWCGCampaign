@@ -4,11 +4,12 @@ public class AceLeaveEvent  extends AARPilotEvent
 {
 	private String status = "";
 
-	public AceLeaveEvent ()
-	{
-	}
+    public AceLeaveEvent(int squadronId)
+    {
+        super(squadronId);
+    }
 
-	public String getStatus() {
+    public String getStatus() {
 		return status;
 	}
 

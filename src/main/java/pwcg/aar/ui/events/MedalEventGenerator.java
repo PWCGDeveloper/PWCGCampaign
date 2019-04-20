@@ -43,8 +43,8 @@ public class MedalEventGenerator
     
     private MedalEvent makeMedalEvent(SquadronMember pilot, Medal medal) throws PWCGException
     {
-        MedalEvent medalEvent = new MedalEvent();
-        medalEvent.setPilot(pilot);
+        MedalEvent medalEvent = new MedalEvent(pilot.getSquadronId(),pilot.getSerialNumber());
+        medalEvent.setPilotName(pilot.getNameAndRank());
         medalEvent.setMedal(medal.getMedalName());
         medalEvent.setDate(campaign.getDate());
         Squadron squadron = pilot.determineSquadron();

@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import java.util.Map;
 
@@ -21,7 +21,7 @@ public class PlayerDeclarationResolution
     private PlayerClaimResolverFirm claimResolverFirm = new PlayerClaimResolverFirm();
     private PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
     
-    public PlayerDeclarationResolution (Campaign campaign, AARMissionEvaluationData evaluationData, VictorySorter victorySorter, Map<Integer, PlayerDeclarations> playerDeclarations)
+    PlayerDeclarationResolution (Campaign campaign, AARMissionEvaluationData evaluationData, VictorySorter victorySorter, Map<Integer, PlayerDeclarations> playerDeclarations)
     {
         this.campaign = campaign;
         this.evaluationData = evaluationData;
@@ -29,7 +29,7 @@ public class PlayerDeclarationResolution
         this.playerDeclarations = playerDeclarations;
     }
 
-    public ConfirmedVictories determinePlayerAirResultsWithClaims  () throws PWCGException 
+    ConfirmedVictories determinePlayerAirResultsWithClaims  () throws PWCGException 
     {
         for (Integer playerSerialNumber : playerDeclarations.keySet())
         {
@@ -154,7 +154,7 @@ public class PlayerDeclarationResolution
         {
             if (resultVictory.getVictor() instanceof LogPlane)
             {
-                SquadronMember squadronMember = campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMember(playerSerialNumber);
+                SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
                 LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
                 if (PlayerVictoryResolver.isPlayerVictory(squadronMember, victorPlanePlane.getPilotSerialNumber()))
                 {

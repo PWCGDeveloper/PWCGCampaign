@@ -3,8 +3,8 @@ package pwcg.aar.integration;
 import java.util.HashMap;
 import java.util.Map;
 
-import pwcg.aar.inmission.phase3.reconcile.victories.PlayerDeclarations;
-import pwcg.aar.inmission.phase3.reconcile.victories.PlayerVictoryDeclaration;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
 import pwcg.campaign.squadmember.SquadronMember;
 
 public class PlayerDeclarationsBuilder

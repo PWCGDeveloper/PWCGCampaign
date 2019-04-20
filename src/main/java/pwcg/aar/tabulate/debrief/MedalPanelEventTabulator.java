@@ -32,24 +32,8 @@ public class MedalPanelEventTabulator
         List<MedalEvent> medalEventsForCampaignMembers = new ArrayList<>();
         medalEventsForCampaignMembers.addAll(medalEventsForCampaignMembersOutOfMission);
         medalEventsForCampaignMembers.addAll(medalEventsForCampaignMembersInMission);
-        
-        List<MedalEvent> medalEventsForSquadronMembers = getMedalsForCurrentSquadron(medalEventsForCampaignMembers);
-        medalPanelData.setMedalsAwarded(medalEventsForSquadronMembers);
+        medalPanelData.setMedalsAwarded(medalEventsForCampaignMembers);
 
         return medalPanelData;
     }
-    
-    private List<MedalEvent> getMedalsForCurrentSquadron(List<MedalEvent> medalEventsForCampaignMembers) throws PWCGException
-    {
-        List<MedalEvent> medalEventsForSquadronMembers = new ArrayList<>();
-        for (MedalEvent medalEvent : medalEventsForCampaignMembers)
-        {
-            if (medalEvent.getPilot().getSquadronId() == campaign.getSquadronId())
-            {
-                medalEventsForSquadronMembers.add(medalEvent);
-            }
-        }
-        return medalEventsForSquadronMembers;
-    }
-
 }

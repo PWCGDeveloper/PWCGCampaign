@@ -16,32 +16,6 @@ public class SquadronTransferData
     {
         squadronMembersTransferred.addAll(source.squadronMembersTransferred);
     }
-
-    public List<TransferRecord> getSquadronMembersTransferredToSquadron(int squadronId)
-    {
-        List<TransferRecord> squadronMembersTransferredIn = new ArrayList<>();
-        for (TransferRecord squadronTransferRecord : squadronMembersTransferred)
-        {
-            if (squadronTransferRecord.getTransferTo() == squadronId)
-            {
-                squadronMembersTransferredIn.add(squadronTransferRecord);
-            }
-        }
-        return squadronMembersTransferredIn;
-    }
-
-    public List<TransferRecord> getSquadronMembersTransferredFromSquadron(Integer squadronId)
-    {
-        List<TransferRecord> squadronMembersTransferredOut = new ArrayList<>();
-        for (TransferRecord squadronTransferRecord : squadronMembersTransferred)
-        {
-            if (squadronTransferRecord.getTransferFrom() == squadronId)
-            {
-                squadronMembersTransferredOut.add(squadronTransferRecord);
-            }
-        }
-        return squadronMembersTransferredOut;
-    }
     
     public int getTransferCount()
     {

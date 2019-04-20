@@ -2,6 +2,7 @@ package pwcg.aar.outofmission.phase1.elapsedtime;
 
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
@@ -19,11 +20,12 @@ public class OutOfMissionCommandChangeHandler
     {
         AARPersonnelLosses personnelLosses = new AARPersonnelLosses();
         
-        for (SquadronMember player : campaign.getPlayers())
+        for (SquadronMember player : campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
         {
             if (player.determineIsSquadronMemberCommander())
             {
-                for (SquadronMember squadronMember : campaign.getPersonnelManager().getPlayerPersonnel().getSquadronMembers().getSquadronMemberList())
+            	SquadronPersonnel playerPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(player.getSquadronId());
+                for (SquadronMember squadronMember : playerPersonnel.getSquadronMembers().getSquadronMemberList())
                 {
                     if (!squadronMember.isPlayer() && squadronMember.determineIsSquadronMemberCommander())
                     {
