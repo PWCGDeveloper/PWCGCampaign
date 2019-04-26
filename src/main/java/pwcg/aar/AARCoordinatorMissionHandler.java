@@ -25,12 +25,7 @@ public class AARCoordinatorMissionHandler
         this.aarContext = aarContext;
     }
 
-    public void handleInMissionAAR(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
-    {
-        inMission(playerDeclarations);
-    }
-
-    private void inMission(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
+    public void tabulateMissionAAR(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         determineInMissionResults(playerDeclarations);
         elapsedTimeDuringMission();

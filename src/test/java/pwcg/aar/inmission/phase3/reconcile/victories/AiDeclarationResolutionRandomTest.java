@@ -97,9 +97,7 @@ public class AiDeclarationResolutionRandomTest
         Mockito.when(victorySorter.getFirmBalloonVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getFuzzyAirVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getAllUnconfirmed()).thenReturn(randomVictories);
-        Mockito.when(campaign.getPlayers()).thenReturn(players);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(campaign.determineSquadron()).thenReturn(squadron);
         Mockito.when(squadron.getSquadronId()).thenReturn(Squadron.REPLACEMENT);
 
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);

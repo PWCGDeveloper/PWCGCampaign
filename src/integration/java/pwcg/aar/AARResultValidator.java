@@ -1,4 +1,4 @@
-package pwcg.aar.integration;
+package pwcg.aar;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -19,9 +19,10 @@ public class AARResultValidator
 
     public void validateInMission(int playerMissionsFlown, int expectedPlayerVictories) throws PWCGException
     {
+        SquadronMember player = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
         assert(campaign.getDate().after(DateUtils.getDateYYYYMMDD("19411101")));
-        assert(campaign.getPlayers().get(0).getVictories().size() == expectedResults.getPlayerAirVictories());
-        assert(campaign.getPlayers().get(0).getGroundVictories().size() == expectedResults.getPlayerGroundVictories());
+        assert(player.getVictories().size() == expectedResults.getPlayerAirVictories());
+        assert(player.getGroundVictories().size() == expectedResults.getPlayerGroundVictories());
         
         SquadronMember otherPilot = campaign.getPersonnelManager().getAnyCampaignMember(expectedResults.getSquadronMemberPilotSerialNumber());        
         assert(otherPilot.getVictories().size() == expectedResults.getSquadronMemberAirVictories());
@@ -31,15 +32,16 @@ public class AARResultValidator
             SquadronMember lostPilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
             assert(lostPilot.getPilotActiveStatus() <= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
         }
-        assert(campaign.getPlayers().get(0).getMissionFlown()  == (playerMissionsFlown+1));
-        assert(campaign.getPlayers().get(0).getVictories().size() == expectedPlayerVictories);
+        assert(player.getMissionFlown()  == (playerMissionsFlown+1));
+        assert(player.getVictories().size() == expectedPlayerVictories);
     }
 
     public void validateLeave() throws PWCGException
     {
+        SquadronMember player = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
         assert(campaign.getDate().after(DateUtils.getDateYYYYMMDD("19411101")));
-        assert(campaign.getPlayers().get(0).getVictories().size() == 0);
-        assert(campaign.getPlayers().get(0).getGroundVictories().size() == 0);
+        assert(player.getVictories().size() == 0);
+        assert(player.getGroundVictories().size() == 0);
         
         for (Integer serialNumber : expectedResults.getLostPilots())
         {

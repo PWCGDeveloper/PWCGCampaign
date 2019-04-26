@@ -43,7 +43,7 @@ public class AARCoordinator
         try
         {
             parseLogs();
-            evaluateInMission(playerDeclarations);
+            performMissionAAR(playerDeclarations);
         }
         catch (Exception e)
         {
@@ -51,29 +51,14 @@ public class AARCoordinator
             MissionResultErrorBundleCreator errorBundleCreator = new MissionResultErrorBundleCreator();
             errorBundleFileName = errorBundleCreator.createErrorBundle();
         }
-    }
+    }    
     
-    public void parseLogs() throws PWCGException
-    {
-        AARLogEvaluationCoordinator logEvaluationCoordinator = new AARLogEvaluationCoordinator();
-        AARMissionLogRawData missionLogRawData = logEvaluationCoordinator.performAARPhase1Parse(aarContext.getPreliminaryData().getMissionLogFileSet());
-        aarContext.setMissionLogRawData(missionLogRawData);
-    }
-
-    public void evaluateInMission(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
-    {
-        AARCoordinatorMissionHandler missionHandler = new AARCoordinatorMissionHandler(campaign, aarContext);
-        missionHandler.handleInMissionAAR(playerDeclarations);
-    }
-
-
     public void completeAAR() throws PWCGException
     {
         campaign.write();
         campaign.setCurrentMission(null);
     }
-    
-    
+
     public void submitLeave(Campaign campaign, int timePassedDays) throws PWCGException
     {
         try
@@ -114,13 +99,6 @@ public class AARCoordinator
         campaign.setCurrentMission(null);
     }
 
-    public void reset(Campaign campaign)
-    {
-        this.campaign = campaign;
-        errorBundleFileName = "";
-        aarContext = new AARContext(campaign);
-    }
-
     public String getErrorBundleFileName()
     {
         return errorBundleFileName;
@@ -129,5 +107,25 @@ public class AARCoordinator
     public AARContext getAarContext()
     {
         return aarContext;
+    }
+    
+    void reset(Campaign campaign)
+    {
+        this.campaign = campaign;
+        errorBundleFileName = "";
+        aarContext = new AARContext(campaign);
+    }
+
+    void performMissionAAR(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
+    {
+        AARCoordinatorMissionHandler missionHandler = new AARCoordinatorMissionHandler(campaign, aarContext);
+        missionHandler.tabulateMissionAAR(playerDeclarations);
+    }
+
+    void parseLogs() throws PWCGException
+    {
+        AARLogEvaluationCoordinator logEvaluationCoordinator = new AARLogEvaluationCoordinator();
+        AARMissionLogRawData missionLogRawData = logEvaluationCoordinator.performAARPhase1Parse(aarContext.getPreliminaryData().getMissionLogFileSet());
+        aarContext.setMissionLogRawData(missionLogRawData);
     }
 }

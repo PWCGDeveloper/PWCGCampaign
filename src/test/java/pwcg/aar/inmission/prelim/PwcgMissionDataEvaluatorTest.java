@@ -41,7 +41,6 @@ public class PwcgMissionDataEvaluatorTest
         Date campaignDate = DateUtils.getDateYYYYMMDD("19420420");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(campaign.determineSquadron()).thenReturn(squadron);
         Mockito.when(squadron.getSquadronId()).thenReturn(thisSquadronId);
     }
 

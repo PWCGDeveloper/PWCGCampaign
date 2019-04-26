@@ -65,7 +65,7 @@ public class AARClaimPanelEventTabulatorTest
         PWCGContextManager.setRoF(false);
         campaignDate = DateUtils.getDateYYYYMMDD("19420420");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
-        Mockito.when(campaign.determineSquadron()).thenReturn(squad);
+        Mockito.when(campaign.determinePlayerSquadrons()).thenReturn(squad);
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
         
         Mockito.when(aarPreliminarytData.getPwcgMissionData()).thenReturn(pwcgMissionData);

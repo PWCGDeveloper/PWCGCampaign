@@ -1,4 +1,4 @@
-package pwcg.aar.integration;
+package pwcg.aar;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package pwcg.aar.integration;
+package pwcg.aar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.aar.AARCoordinator;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.prelim.AARPreliminaryData;
@@ -21,7 +20,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AARCoordinatorInMissionTest
@@ -38,19 +37,19 @@ public class AARCoordinatorInMissionTest
     {
         PWCGContextManager.setRoF(false);
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
-        campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.JG_51_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
         expectedResults = new ExpectedResults(campaign);
         aarCoordinator = AARCoordinator.getInstance();
         aarCoordinator.reset(campaign);
         
-        playerMissionsFlown = campaign.getPlayers().get(0).getMissionFlown();
+        playerMissionsFlown = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0).getMissionFlown();
     }
 
     @Test
     public void runMissionAAR () throws PWCGException
     {
         createArtifacts ();
-        aarCoordinator.evaluateInMission(playerDeclarations);
+        aarCoordinator.performMissionAAR(playerDeclarations);
         expectedResults.buildExpectedResultsFromAARContext(aarCoordinator.getAarContext());
         
         AARResultValidator resultValidator = new AARResultValidator(expectedResults);
@@ -73,14 +72,14 @@ public class AARCoordinatorInMissionTest
 
     private void makePreliminary() throws PWCGException
     {
-        PreliminaryDataBuilderForTest preliminaryDataBuilder = new PreliminaryDataBuilderForTest(campaign, squadronsInMission);
+        PreliminaryDataBuilder preliminaryDataBuilder = new PreliminaryDataBuilder(campaign, squadronsInMission);
         AARPreliminaryData preliminaryData = preliminaryDataBuilder.makePreliminaryForTestMission();
         aarCoordinator.getAarContext().setPreliminaryData(preliminaryData);
     }
 
     private void makePlayerDeclarations() throws PWCGException
     {
-        SquadronMember player = campaign.getPlayers().get(0);
+        SquadronMember player = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
         PlayerDeclarationsBuilder  declarationsBuilder = new PlayerDeclarationsBuilder();
         playerDeclarations = declarationsBuilder.makePlayerDeclarations(player);
     }

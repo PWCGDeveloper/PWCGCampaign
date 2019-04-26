@@ -21,6 +21,7 @@ import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
+import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -29,8 +30,8 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheRoF;
 import pwcg.testutils.SquadronMemberPicker;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CampaignSquadronPersonnelUpdaterTest
@@ -49,7 +50,7 @@ public class CampaignSquadronPersonnelUpdaterTest
     {
         PWCGContextManager.setRoF(true);
         
-        campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
         aarContext = new AARContext(campaign);
         aarContext.setNewDate(DateUtils.advanceTimeDays(campaign.getDate(), 3));
 
@@ -63,8 +64,8 @@ public class CampaignSquadronPersonnelUpdaterTest
     @After
     public void reset() throws PWCGException
     {
-    	SquadronPersonnel squadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(101103);
-        for (SquadronMember squadronMember : squadronMembers.getSquadronMembersWithAces().getSquadronMemberList())
+        SquadronPersonnel personnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadrontTestProfile.ESC_103_PROFILE.getSquadronId());
+        for (SquadronMember squadronMember : personnel.getSquadronMembersWithAces().getSquadronMemberList())
         {
             squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_ACTIVE, null, null);
         }

@@ -1,4 +1,4 @@
-package pwcg.aar.integration;
+package pwcg.aar;
 
 import java.util.Date;
 import java.util.Map;
@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.aar.AAROutOfMissionStepper;
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
@@ -22,7 +21,7 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AARCoordinatorLossAndReplacementAnalyzer
@@ -34,7 +33,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.JG_51_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test

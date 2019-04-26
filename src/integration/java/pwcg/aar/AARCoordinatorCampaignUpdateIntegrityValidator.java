@@ -1,4 +1,4 @@
-package pwcg.aar.integration;
+package pwcg.aar;
 
 import java.util.Date;
 import java.util.Map;
@@ -20,7 +20,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AARCoordinatorCampaignUpdateIntegrityValidator
@@ -35,7 +35,7 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.JG_51_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test

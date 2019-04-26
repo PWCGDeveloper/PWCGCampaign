@@ -46,8 +46,8 @@ public class OutOfMissionVictoryEventHandlerTest
         PWCGContextManager.setRoF(true);
         campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_103_PROFILE);
         
-        Mockito.when(squadronMember.determineService(Matchers.<Date>any())).thenReturn(campaign.determineSquadron().determineServiceForSquadron(campaign.getDate()));
-        Mockito.when(squadronMember.determineSquadron()).thenReturn(campaign.determineSquadron());
+        Mockito.when(squadronMember.determineService(Matchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(squadronMember.determineSquadron()).thenReturn(campaign.determinePlayerSquadrons().get(0));
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         
         outOfMissionSquadronMembers = new SquadronMembers();

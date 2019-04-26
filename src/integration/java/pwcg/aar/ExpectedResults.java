@@ -1,4 +1,4 @@
-package pwcg.aar.integration;
+package pwcg.aar;
 
 import java.util.ArrayList;
 import java.util.List;

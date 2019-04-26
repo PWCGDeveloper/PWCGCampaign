@@ -15,21 +15,27 @@ import pwcg.aar.inmission.phase1.parse.IAARLogParser;
 import pwcg.aar.inmission.phase1.parse.event.rof.AType3;
 import pwcg.aar.inmission.phase2.logeval.AARDestroyedStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
-import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SerialNumber;
+import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AARPilotStatusDeadEvaluatorTest
 {
+    @Mock private Campaign campaign;
     @Mock private IAARLogParser aarLogParser;
     @Mock private Coordinate downAt;
-    @Mock private IAirfield field;
     @Mock private LogPilot resultCrewmember;
     @Mock private AARDestroyedStatusEvaluator destroyedStatusEvaluator;
     @Mock private AType3 destroyedEventForPlane;
+    @Mock private SquadronMember pilot;
+    @Mock private Squadron squadron;
+    @Mock private CampaignPersonnelManager personnelManager;
     
     private List<LogPilot> deadCrewMembers = new ArrayList<>();
     
@@ -40,6 +46,11 @@ public class AARPilotStatusDeadEvaluatorTest
         Mockito.when(resultCrewmember.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
         Mockito.when(destroyedStatusEvaluator.getDeadLogPilots()).thenReturn(deadCrewMembers);
         deadCrewMembers.clear();
+        
+        Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
+        Mockito.when(personnelManager.getAnyCampaignMember(Mockito.anyInt())).thenReturn(pilot);
+        Mockito.when(pilot.determineSquadron()).thenReturn(squadron);
+        
     }
 
     @Test
@@ -54,16 +65,15 @@ public class AARPilotStatusDeadEvaluatorTest
         Coordinate fieldAt = new Coordinate();
         downAt.setXPos(100.0);
         downAt.setZPos(100.0);
-        Mockito.when(field.getPosition()).thenReturn(fieldAt);
+        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(destroyedStatusEvaluator);
+        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
         aarPilotStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         null, 
-                        field,
                         oddsOfDeathDueToAiStupidity);
         
         boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
@@ -84,16 +94,15 @@ public class AARPilotStatusDeadEvaluatorTest
         Coordinate fieldAt = new Coordinate();
         downAt.setXPos(100.0);
         downAt.setZPos(100.0);
-        Mockito.when(field.getPosition()).thenReturn(fieldAt);
+        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(destroyedStatusEvaluator);
+        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
         aarPilotStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
-                        field,
                         oddsOfDeathDueToAiStupidity);
         
         boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
@@ -114,16 +123,15 @@ public class AARPilotStatusDeadEvaluatorTest
         Coordinate fieldAt = new Coordinate();
         downAt.setXPos(100.0);
         downAt.setZPos(100.0);
-        Mockito.when(field.getPosition()).thenReturn(fieldAt);
+        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(destroyedStatusEvaluator);
+        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
         aarPilotStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
-                        field,
                         oddsOfDeathDueToAiStupidity);
         
         boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
@@ -143,16 +151,15 @@ public class AARPilotStatusDeadEvaluatorTest
         Coordinate fieldAt = new Coordinate();
         downAt.setXPos(100.0);
         downAt.setZPos(100.0);
-        Mockito.when(field.getPosition()).thenReturn(fieldAt);
+        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(destroyedStatusEvaluator);
+        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
         aarPilotStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
-                        field,
                         oddsOfDeathDueToAiStupidity);
         
         boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
@@ -172,16 +179,15 @@ public class AARPilotStatusDeadEvaluatorTest
         Coordinate fieldAt = new Coordinate();
         downAt.setXPos(5000.0);
         downAt.setZPos(5000.0);
-        Mockito.when(field.getPosition()).thenReturn(fieldAt);
+        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 100;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(destroyedStatusEvaluator);
+        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
         aarPilotStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
-                        field,
                         oddsOfDeathDueToAiStupidity);
         
         boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
@@ -200,16 +206,15 @@ public class AARPilotStatusDeadEvaluatorTest
         Coordinate fieldAt = new Coordinate();
         downAt.setXPos(100.0);
         downAt.setZPos(100.0);
-        Mockito.when(field.getPosition()).thenReturn(fieldAt);
+        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(destroyedStatusEvaluator);
+        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
         aarPilotStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
-                        field,
                         oddsOfDeathDueToAiStupidity);
         
         boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
@@ -229,16 +234,15 @@ public class AARPilotStatusDeadEvaluatorTest
         Coordinate fieldAt = new Coordinate();
         downAt.setXPos(100.0);
         downAt.setZPos(100.0);
-        Mockito.when(field.getPosition()).thenReturn(fieldAt);
+        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(destroyedStatusEvaluator);
+        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
         aarPilotStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
-                        field,
                         oddsOfDeathDueToAiStupidity);
         
         boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
@@ -258,16 +262,15 @@ public class AARPilotStatusDeadEvaluatorTest
         Coordinate fieldAt = new Coordinate();
         fieldAt.setXPos(100.0);
         fieldAt.setZPos(100.0);
-        Mockito.when(field.getPosition()).thenReturn(fieldAt);
+        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 30;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(destroyedStatusEvaluator);
+        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
         aarPilotStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
-                        field,
                         oddsOfDeathDueToAiStupidity);
         
         boolean dead = aarPilotStatusDeadEvaluator.isCrewMemberDead();
@@ -287,16 +290,15 @@ public class AARPilotStatusDeadEvaluatorTest
         Coordinate fieldAt = new Coordinate();
         fieldAt.setXPos(10000.0);
         fieldAt.setZPos(10000.0);
-        Mockito.when(field.getPosition()).thenReturn(fieldAt);
+        Mockito.when(squadron.determineCurrentPosition(Mockito.any())).thenReturn(fieldAt);
 
         int oddsOfDeathDueToAiStupidity = 50;
         
-        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(destroyedStatusEvaluator);
+        AARPilotStatusDeadEvaluator aarPilotStatusDeadEvaluator = new AARPilotStatusDeadEvaluator(campaign, destroyedStatusEvaluator);
         aarPilotStatusDeadEvaluator.initialize(
                         downAt, 
                         resultCrewmember,
                         destroyedEventForPlane, 
-                        field,
                         oddsOfDeathDueToAiStupidity);
         
         boolean wasKilledAtLeastOnce = false;

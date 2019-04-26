@@ -18,8 +18,8 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheRoF;
 import pwcg.testutils.CampaignPersonnelTestHelper;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PersonnelResultsInMissionHandlerTest
@@ -35,7 +35,7 @@ public class PersonnelResultsInMissionHandlerTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
-        campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
         
         aceStatusList = new ArrayList<>();
         pilotStatusList = new ArrayList<>();
@@ -62,7 +62,7 @@ public class PersonnelResultsInMissionHandlerTest
 
     private void createSquadronMembersInMission() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPlayers().get(0);
+        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
         addSquadronPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
 
         SquadronMember sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");

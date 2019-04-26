@@ -53,7 +53,6 @@ public class AARCrewBuilderTest
         PWCGContextManager.setRoF(true);
         
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(campaign.getSquadronId()).thenReturn(501011);
         
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.ACE_STARTING_SERIAL_NUMBER+1)).thenReturn(aceInMission1);
@@ -91,19 +90,19 @@ public class AARCrewBuilderTest
     @Test
     public void testSquadronMembers () throws PWCGException
     {        
-        AARCrewBuilder crewBuilder = new AARCrewBuilder(campaign, planeAiEntities);
-        List<LogPilot> inSquad = crewBuilder.buildSquadronMembersFromLogPlanes();
+        AARCrewBuilder crewBuilder = new AARCrewBuilder(planeAiEntities);
+        List<LogPilot> inSquad = crewBuilder.buildPilotsFromLogPlanes();
         assert(pilotIsInList(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, inSquad) == true);
         assert(pilotIsInList(SerialNumber.ACE_STARTING_SERIAL_NUMBER+1, inSquad) == true);
-        assert(pilotIsInList(SerialNumber.ACE_STARTING_SERIAL_NUMBER+2, inSquad) == false);
+        assert(pilotIsInList(SerialNumber.ACE_STARTING_SERIAL_NUMBER+2, inSquad) == true);
         assert(pilotIsInList(SerialNumber.AI_STARTING_SERIAL_NUMBER+1, inSquad) == true);
-        assert(pilotIsInList(SerialNumber.AI_STARTING_SERIAL_NUMBER+2, inSquad) == false);
+        assert(pilotIsInList(SerialNumber.AI_STARTING_SERIAL_NUMBER+2, inSquad) == true);
     }
 
     @Test
     public void testAcesMembers () throws PWCGException
     {        
-        AARCrewBuilder crewBuilder = new AARCrewBuilder(campaign, planeAiEntities);
+        AARCrewBuilder crewBuilder = new AARCrewBuilder(planeAiEntities);
         List<LogPilot> aces = crewBuilder.buildAcesFromLogPlanes();
         assert(pilotIsInList(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, aces) == false);
         assert(pilotIsInList(SerialNumber.ACE_STARTING_SERIAL_NUMBER+1, aces) == true);

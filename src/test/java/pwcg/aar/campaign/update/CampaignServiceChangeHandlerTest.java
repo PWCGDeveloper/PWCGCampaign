@@ -7,9 +7,9 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
-import pwcg.aar.campaign.update.CampaignServiceChangeHandler;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
@@ -22,7 +22,7 @@ import pwcg.campaign.ww1.country.RoFServiceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheRoF;
+import pwcg.testutils.SquadrontTestProfile;
 
 public class CampaignServiceChangeHandlerTest
 {
@@ -35,14 +35,15 @@ public class CampaignServiceChangeHandlerTest
     @Test
     public void testRafTransition() throws PWCGException 
     {
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheRoF.RFC_2_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.RFC_2_PROFILE);
+        ArmedService service = campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate());
+        ICountry country = service.getCountry();
+        SquadronPersonnel personnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadrontTestProfile.RFC_2_PROFILE.getSquadronId());
 
-        ArmedService service = campaign.determineSquadron().determineServiceForSquadron(campaign.getDate());
-        assertTrue (campaign.determineCountry().getCountry() == Country.BRITAIN);
+        assertTrue (country.getCountry() == Country.BRITAIN);
         assertTrue (service.getName().equals(RoFServiceManager.RFC_NAME));
 
-        SquadronPersonnel rfcPersonnel = campaign.getPersonnelManager().getPlayerPersonnel();
-        SquadronMembers rfcSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(rfcPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers rfcSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : rfcSquadronMembers.getSquadronMemberList())
         {
             IRankHelper rank = RankFactory.createRankHelper();
@@ -53,12 +54,11 @@ public class CampaignServiceChangeHandlerTest
         CampaignServiceChangeHandler serviceChangeHandler = new CampaignServiceChangeHandler(campaign);
         serviceChangeHandler.handleChangeOfService(DateUtils.getRAFDate());
                 
-        service = campaign.determineSquadron().determineServiceForSquadron(DateUtils.getRAFDate());
-        assertTrue (campaign.determineCountry().getCountry() == Country.BRITAIN);
+        service = campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(DateUtils.getRAFDate());
+        assertTrue (service.getCountry().getCountry() == Country.BRITAIN);
         assertTrue (service.getName().equals(RoFServiceManager.RAF_NAME));
 
-        SquadronPersonnel rafPersonnel = campaign.getPersonnelManager().getPlayerPersonnel();
-        SquadronMembers rafSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(rafPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers rafSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : rafSquadronMembers.getSquadronMemberList())
         {
             IRankHelper rank = RankFactory.createRankHelper();
@@ -71,14 +71,14 @@ public class CampaignServiceChangeHandlerTest
     @Test
     public void testLafayetteEscTransition() throws PWCGException 
     {
-        Campaign campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_124_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_124_PROFILE);
+        ArmedService service = campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate());
+        SquadronPersonnel personnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadrontTestProfile.ESC_124_PROFILE.getSquadronId());
 
-        ArmedService service = campaign.determineSquadron().determineServiceForSquadron(campaign.getDate());
-        assertTrue (campaign.determineCountry().getCountry() == Country.FRANCE);
+        assertTrue (service.getCountry().getCountry() == Country.FRANCE);
         assertTrue (service.getName().equals(RoFServiceManager.LAVIATION_MILITAIRE_NAME));
 
-        SquadronPersonnel lafayettePersonnel = campaign.getPersonnelManager().getPlayerPersonnel();
-        SquadronMembers lafayetteSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayer(lafayettePersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers lafayetteSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayer(personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : lafayetteSquadronMembers.getSquadronMemberList())
         {
             assertTrue (squadronMember.getCountry() == Country.FRANCE);
@@ -91,11 +91,10 @@ public class CampaignServiceChangeHandlerTest
         
         CampaignServiceChangeHandler serviceChangeHandler = new CampaignServiceChangeHandler(campaign);
         serviceChangeHandler.handleChangeOfService(lafEscTransitionDate);                
-        service = campaign.determineSquadron().determineServiceForSquadron(lafEscTransitionDate);
+        service = campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(lafEscTransitionDate);
         assertTrue (service.getName().equals(RoFServiceManager.USAS_NAME));
 
-        SquadronPersonnel usasPersonnel = campaign.getPersonnelManager().getPlayerPersonnel();
-        SquadronMembers usasSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayer(usasPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers usasSquadronMembers = SquadronMemberFilter.filterActiveAIAndPlayer(personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember squadronMember : usasSquadronMembers.getSquadronMemberList())
         {
             assertTrue (squadronMember.getCountry() == Country.USA);

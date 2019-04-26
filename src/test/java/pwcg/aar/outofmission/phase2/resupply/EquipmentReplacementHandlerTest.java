@@ -35,7 +35,7 @@ public class EquipmentReplacementHandlerTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.JG_51_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
         Mockito.when(armedService.getServiceId()).thenReturn(20101);
      }
 

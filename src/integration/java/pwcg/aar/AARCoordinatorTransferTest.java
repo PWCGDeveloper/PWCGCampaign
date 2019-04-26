@@ -1,17 +1,16 @@
-package pwcg.aar.integration;
+package pwcg.aar;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AARCoordinatorTransferTest
@@ -25,7 +24,7 @@ public class AARCoordinatorTransferTest
     {
         PWCGContextManager.setRoF(false);
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
-        campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.JG_51_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
         expectedResults = new ExpectedResults(campaign);
         aarCoordinator = AARCoordinator.getInstance();
         aarCoordinator.reset(campaign);

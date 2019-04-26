@@ -25,8 +25,8 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheRoF;
 import pwcg.testutils.CampaignPersonnelTestHelper;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CampaignMemberAwardsGeneratorInMissionTest
@@ -69,7 +69,7 @@ public class CampaignMemberAwardsGeneratorInMissionTest
         squadronMembersInMission.clear();
 
         PWCGContextManager.setRoF(true);
-        campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
         
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(preliminaryData.getCampaignMembersInMission()).thenReturn(campaignMembersInMission);

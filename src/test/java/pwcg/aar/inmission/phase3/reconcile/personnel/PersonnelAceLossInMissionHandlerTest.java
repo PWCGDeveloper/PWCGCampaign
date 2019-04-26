@@ -16,7 +16,7 @@ import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheRoF;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PersonnelAceLossInMissionHandlerTest
@@ -28,7 +28,7 @@ public class PersonnelAceLossInMissionHandlerTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
-        campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
         
         LogPilot wernerVoss = new LogPilot();
         wernerVoss.setSerialNumber(101175);
@@ -44,7 +44,7 @@ public class PersonnelAceLossInMissionHandlerTest
     }
 
     @Test
-    public void testPilotIsPlayer() throws PWCGException
+    public void testHistoricalAcesKille() throws PWCGException
     {
         PersonnelAceLossInMissionHandler aceLossInMissionHandler = new PersonnelAceLossInMissionHandler(campaign);
         Map<Integer, Ace> acesKilled = aceLossInMissionHandler.acesShotDownInMission(aceStatusList);

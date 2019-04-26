@@ -26,7 +26,7 @@ public class ResupplySquadronChooserTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        campaign = CampaignCache.makeCampaign(CampaignCacheBoS.JG_51_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test

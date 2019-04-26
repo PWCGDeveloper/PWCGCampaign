@@ -16,8 +16,8 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheRoF;
 import pwcg.testutils.CampaignPersonnelTestHelper;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PersonnelSquadronLossHandlerTest
@@ -29,7 +29,7 @@ public class PersonnelSquadronLossHandlerTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
-        campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
         
         pilotStatusList = new ArrayList<>();
     }
@@ -45,7 +45,7 @@ public class PersonnelSquadronLossHandlerTest
     @Test
     public void testEverybodyKilled() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPlayers().get(0);
+        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
         addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_KIA);
 
         SquadronMember SergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");
@@ -70,7 +70,7 @@ public class PersonnelSquadronLossHandlerTest
     @Test
     public void testMixedStatusWithMaimed() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPlayers().get(0);
+        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
         addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
 
         SquadronMember sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");
@@ -96,7 +96,7 @@ public class PersonnelSquadronLossHandlerTest
     @Test
     public void testMixedStatusWithCaptured() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPlayers().get(0);
+        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
         addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_CAPTURED);
 
         SquadronMember sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");

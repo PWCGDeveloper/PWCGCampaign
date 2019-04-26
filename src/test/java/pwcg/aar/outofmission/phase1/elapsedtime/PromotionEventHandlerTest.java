@@ -53,7 +53,7 @@ public class PromotionEventHandlerTest
     @Test
     public void promoteCorporalToSergentRecon () throws PWCGException
     {     
-        Mockito.when(squadronMember.determineService(Matchers.<Date>any())).thenReturn(campaign.determineSquadron().determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(squadronMember.determineService(Matchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerRecon.PilotRankMedMinMissions);
         Mockito.when(squadronMember.getRank()).thenReturn("Corporal");
         Mockito.when(squadronMember.determineSquadron()).thenReturn(squadron);
@@ -68,7 +68,7 @@ public class PromotionEventHandlerTest
     @Test
     public void promoteCorporalToSergentStrategic () throws PWCGException
     {     
-        Mockito.when(squadronMember.determineService(Matchers.<Date>any())).thenReturn(campaign.determineSquadron().determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(squadronMember.determineService(Matchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerStrategic.PilotRankMedMinMissions);
         Mockito.when(squadronMember.getRank()).thenReturn("Corporal");
         Mockito.when(squadronMember.determineSquadron()).thenReturn(squadron);
@@ -86,7 +86,7 @@ public class PromotionEventHandlerTest
         List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(PromotionEventHandlerFighter.PilotRankMedVictories, campaign.getDate());
         Mockito.when(squadronMemberVictories.getAirToAirVictories()).thenReturn(victories.size());
 
-        Mockito.when(squadronMember.determineService(Matchers.<Date>any())).thenReturn(campaign.determineSquadron().determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(squadronMember.determineService(Matchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(squadronMember.getVictories()).thenReturn(victories);
         Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerFighter.PilotRankMedMinMissions);
         Mockito.when(squadronMember.getRank()).thenReturn("Corporal");
@@ -105,7 +105,7 @@ public class PromotionEventHandlerTest
         List<Victory> victories = VictoryMaker.makeMultipleAlliedVictories(PromotionEventHandlerFighter.PilotRankMedVictories-1, campaign.getDate());
         Mockito.when(squadronMemberVictories.getAirToAirVictories()).thenReturn(victories.size());
 
-        Mockito.when(squadronMember.determineService(Matchers.<Date>any())).thenReturn(campaign.determineSquadron().determineServiceForSquadron(campaign.getDate()));
+        Mockito.when(squadronMember.determineService(Matchers.<Date>any())).thenReturn(campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(campaign.getDate()));
         Mockito.when(squadronMember.getVictories()).thenReturn(victories);
         Mockito.when(squadronMember.getMissionFlown()).thenReturn(PromotionEventHandlerFighter.PilotRankMedMinMissions);
         Mockito.when(squadronMember.getRank()).thenReturn("Corporal");

@@ -35,8 +35,8 @@ import pwcg.campaign.ww1.country.RoFCountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheRoF;
 import pwcg.testutils.CampaignPersonnelTestHelper;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AARPhase3ReconcileCoordinatorTest
@@ -67,7 +67,7 @@ public class AARPhase3ReconcileCoordinatorTest
     {
         PWCGContextManager.setRoF(true);
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
-        campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
         
         aceStatusList = new ArrayList<>();
         pilotStatusList = new ArrayList<>();
@@ -126,7 +126,7 @@ public class AARPhase3ReconcileCoordinatorTest
             playerDeclarationSet.addDeclaration(declaration);
         }
         
-        playerDeclarations.put(campaign.getPlayers().get(0).getSerialNumber(), playerDeclarationSet);
+        playerDeclarations.put(campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0).getSerialNumber(), playerDeclarationSet);
     }
 
     private void createVictory(LogPlane victor, Integer pilotSerialNumber, Integer planeSerialNumber)
@@ -149,7 +149,7 @@ public class AARPhase3ReconcileCoordinatorTest
 
     private void createCampaignMembersInMission() throws PWCGException
     {        
-        playerInFlight = campaign.getPlayers().get(0);
+        playerInFlight = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
         addSquadronPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
         playerPlaneVictor.setPilotSerialNumber(playerInFlight.getSerialNumber());
         playerPlaneVictor.setCountry(new RoFCountry(Country.FRANCE));

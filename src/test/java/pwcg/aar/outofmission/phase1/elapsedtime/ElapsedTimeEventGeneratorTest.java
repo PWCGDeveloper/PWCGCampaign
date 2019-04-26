@@ -49,7 +49,6 @@ public class ElapsedTimeEventGeneratorTest
         campaignDate = DateUtils.getDateYYYYMMDD("19170420");
         newDate = DateUtils.getDateYYYYMMDD("19170430");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
-        Mockito.when(campaign.determineSquadron()).thenReturn(squad);
         Mockito.when(squad.determineCurrentAirfieldAnyMap(campaignDate)).thenReturn(currentAirfield);
         Mockito.when(squad.determineCurrentAirfieldAnyMap(newDate)).thenReturn(newAirfield);
 

@@ -1,4 +1,4 @@
-package pwcg.aar.integration;
+package pwcg.aar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,13 +24,13 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.data.MissionHeader;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 
-public class PreliminaryDataBuilderForTest
+public class PreliminaryDataBuilder
 {
     private Campaign campaign;
     private AARPreliminaryData preliminaryData = new AARPreliminaryData();
     private List<Squadron> squadronsInMission = new ArrayList<>();
 
-    public PreliminaryDataBuilderForTest (Campaign campaign, List<Squadron> squadronsInMission)
+    public PreliminaryDataBuilder (Campaign campaign, List<Squadron> squadronsInMission)
     {
         this.campaign = campaign;
         this.squadronsInMission = squadronsInMission;
@@ -51,11 +51,13 @@ public class PreliminaryDataBuilderForTest
     {
         SquadronMembers squadronMembersInMission = new SquadronMembers();
         
-        squadronMembersInMission.addToSquadronMemberCollection(campaign.getPlayers().get(0));
+        SquadronMember player = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+        squadronMembersInMission.addToSquadronMemberCollection(player);
 
         for (Squadron squadron : squadronsInMission)
         {
-            SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(),campaign.getDate());
+            SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(
+                            campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(),campaign.getDate());
             List<SquadronMember> squadronMembersList = squadronMembers.getSquadronMemberList();
             for (int i = 0; i < 4; ++i)
             {

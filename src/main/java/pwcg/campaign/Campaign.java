@@ -9,6 +9,7 @@ import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.io.json.CampaignIOJson;
 import pwcg.campaign.personnel.InitialSquadronBuilder;
@@ -402,5 +403,17 @@ public class Campaign
     public void setPersonnelManager(CampaignPersonnelManager personnelManager)
     {
         this.personnelManager = personnelManager;
+    }
+
+    public List<Squadron> determinePlayerSquadrons() throws PWCGException
+    {
+        List<Squadron> playerSquadrons = new ArrayList<>();
+        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        for (SquadronMember player : personnelManager.getAllPlayers().getSquadronMemberList())
+        {
+            Squadron playerSquadron = squadronManager.getSquadron(player.getSquadronId());
+            playerSquadrons.add(playerSquadron);
+        }
+        return playerSquadrons;
     }
 }

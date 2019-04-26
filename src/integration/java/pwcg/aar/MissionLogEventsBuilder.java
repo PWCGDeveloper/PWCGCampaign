@@ -1,4 +1,4 @@
-package pwcg.aar.integration;
+package pwcg.aar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +34,6 @@ public class MissionLogEventsBuilder
     private int nextMissionLogId = 400000;
     private Map<Integer, String> serialNumberToPlaneId = new HashMap<>();
     private List<String> destroyedPlanes = new ArrayList<>();
-    private SquadronMember player;
     private SquadronMember squadronMate;
     private SquadronMember friendlyPilotFromDifferentSquadron;
     private ExpectedResults expectedResults;
@@ -63,7 +62,7 @@ public class MissionLogEventsBuilder
 
     private void makePilotsForVictories() throws PWCGException
     {
-        player = campaign.getPlayers().get(0);
+        SquadronMember player = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
         for (SquadronMember pilot : preliminaryData.getCampaignMembersInMission().getSquadronMemberCollection().values())
         {
             if (pilot.getSquadronId() != player.getSquadronId())
@@ -145,6 +144,7 @@ public class MissionLogEventsBuilder
     {
         Coordinate crashLocation = new Coordinate(100000, 0, 100000);
 
+        SquadronMember player = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
         String playerPlaneId = serialNumberToPlaneId.get(player.getSerialNumber());
         IAType12 playerPlane = logEventData.getVehicle(playerPlaneId);
 

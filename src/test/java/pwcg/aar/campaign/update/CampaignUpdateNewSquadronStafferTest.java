@@ -15,7 +15,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 public class CampaignUpdateNewSquadronStafferTest
 {
@@ -26,7 +26,7 @@ public class CampaignUpdateNewSquadronStafferTest
     {
         PWCGContextManager.setRoF(false);
         
-        campaign = CampaignCache.makeCampaign(CampaignCacheBoS.JG_51_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
 

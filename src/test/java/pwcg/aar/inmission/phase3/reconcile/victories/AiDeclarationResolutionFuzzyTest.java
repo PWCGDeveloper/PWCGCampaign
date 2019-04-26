@@ -86,11 +86,8 @@ public class AiDeclarationResolutionFuzzyTest
         players = new ArrayList<>();
         players.add(player);
 
-        Mockito.when(campaign.getPlayers()).thenReturn(players);
         Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(campaign.determineSquadron()).thenReturn(squadron);
-        Mockito.when(campaign.getSquadronId()).thenReturn(501011);
         Mockito.when(campaignData.getName()).thenReturn(PLAYER_NAME);
 
         Mockito.when(squadron.getSquadronId()).thenReturn(501011);

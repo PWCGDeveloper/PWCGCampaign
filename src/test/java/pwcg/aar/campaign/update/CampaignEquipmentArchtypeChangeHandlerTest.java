@@ -13,7 +13,7 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CampaignEquipmentArchtypeChangeHandlerTest
@@ -24,7 +24,7 @@ public class CampaignEquipmentArchtypeChangeHandlerTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        campaign = CampaignCache.makeCampaignForceCreation(CampaignCacheBoS.JG_51_PROFILE_2);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_STALINGRAD);
     }
     
     @Test

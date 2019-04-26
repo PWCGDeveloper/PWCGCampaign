@@ -51,7 +51,10 @@ public class ElapsedTimeEventGenerator
         for (SquadronMember player : campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
         {
 	        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(aarContext.getNewDate(),player.determineSquadron());
-	        elapsedTimeEvents.addSquadronMoveEvent(squadronMoveEvent);
+	        if (squadronMoveEvent != null)
+	        {
+	            elapsedTimeEvents.addSquadronMoveEvent(squadronMoveEvent);
+	        }
         }
     }
 
