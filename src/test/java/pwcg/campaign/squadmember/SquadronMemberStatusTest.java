@@ -18,7 +18,6 @@ import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadron.Squadron;

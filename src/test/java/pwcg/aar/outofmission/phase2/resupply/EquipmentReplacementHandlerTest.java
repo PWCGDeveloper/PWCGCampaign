@@ -22,7 +22,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EquipmentReplacementHandlerTest
@@ -54,8 +54,7 @@ public class EquipmentReplacementHandlerTest
     private void deactivateCampaignEquipment() throws PWCGException
     {
         Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 10);
-        Squadron playerSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
-
+        Squadron playerSquadron = campaign.determinePlayerSquadrons().get(0);
         int numInactivated = 0;
         for (Equipment equipment: campaign.getEquipmentManager().getEquipmentAllSquadrons().values())
         {
@@ -99,10 +98,11 @@ public class EquipmentReplacementHandlerTest
         Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 10);
 
         int numInactivated = 0;
-        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(campaign.getSquadronId());
+        Squadron playerSquadron = campaign.determinePlayerSquadrons().get(0);
+        Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getSquadronId());
         for (EquippedPlane equippedPlane : equipment.getActiveEquippedPlanes().values())
         {
-            Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(campaign.getSquadronId());
+            Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(playerSquadron.getSquadronId());
             if (squadron.getSquadronId() == equippedPlane.getSquadronId())
             {
                 System.out.println("Deactivate: " + equippedPlane.getSerialNumber() + " for " + equippedPlane.getSquadronId());

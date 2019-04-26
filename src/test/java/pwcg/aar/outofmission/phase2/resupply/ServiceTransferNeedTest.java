@@ -20,7 +20,7 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheRoF;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ServiceTransferNeedTest
@@ -31,7 +31,7 @@ public class ServiceTransferNeedTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
-        campaign = CampaignCache.makeCampaign(CampaignCacheRoF.JASTA_11_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
      }
 
     @Test

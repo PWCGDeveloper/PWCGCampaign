@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,6 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.AiDeclarationResolver;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.ConfirmedVictories;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.UnknownVictoryAssignments;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.VictorySorter;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.Campaign;

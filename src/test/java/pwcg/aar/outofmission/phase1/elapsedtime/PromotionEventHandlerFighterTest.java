@@ -20,7 +20,7 @@ import pwcg.campaign.squadmember.SquadronMemberVictories;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheRoF;
+import pwcg.testutils.SquadrontTestProfile;
 import pwcg.testutils.VictoryMaker;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -38,7 +38,7 @@ public class PromotionEventHandlerFighterTest
     public void setupForTestEnvironment() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
-        campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
         Mockito.when(squadronMember.getSquadronMemberVictories()).thenReturn(squadronMemberVictories);
     }
 

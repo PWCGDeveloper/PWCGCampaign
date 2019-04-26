@@ -56,7 +56,7 @@ public class SquadronMoveHandlerTest
         Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Aussonvillers");
 
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
-        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate);
+        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squad);
         assert (squadronMoveEvent == null);
         
     }
@@ -70,8 +70,8 @@ public class SquadronMoveHandlerTest
         Mockito.when(newAirfield.getName()).thenReturn("Bailleul");
         
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
-        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate);
-        assert (squadronMoveEvent.getLastAirfield()equals("Aussonvillers"));
+        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squad);
+        assert (squadronMoveEvent.getLastAirfield().equals("Aussonvillers"));
         assert (squadronMoveEvent.getNewAirfield().equals("Bailleul"));
         assert (squadronMoveEvent.getDate().equals(campaignDate));
         assert (squadronMoveEvent.isNeedsFerryMission() == false);
@@ -87,7 +87,7 @@ public class SquadronMoveHandlerTest
         Mockito.when(newAirfield.getName()).thenReturn("Hoog Huys");
 
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
-        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate);
+        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squad);
         assert (squadronMoveEvent.getLastAirfield().equals("Aussonvillers"));
         assert (squadronMoveEvent.getNewAirfield().equals("Hoog Huys"));
         assert (squadronMoveEvent.getDate().equals(campaignDate));
@@ -104,7 +104,7 @@ public class SquadronMoveHandlerTest
         Mockito.when(newAirfield.getName()).thenReturn("Lomme,Lille");
 
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
-        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate);
+        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squad);
         assert (squadronMoveEvent.getLastAirfield().equals("Houplin,S Lille"));
         assert (squadronMoveEvent.getNewAirfield().equals("Lomme,Lille"));
         assert (squadronMoveEvent.getDate().equals(campaignDate));

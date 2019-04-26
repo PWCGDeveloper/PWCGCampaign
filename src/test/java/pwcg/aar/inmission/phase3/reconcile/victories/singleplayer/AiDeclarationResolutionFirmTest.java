@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +14,6 @@ import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.AiDeclarationResolver;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.ConfirmedVictories;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.VictorySorter;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignData;
@@ -24,6 +21,7 @@ import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,12 +29,14 @@ public class AiDeclarationResolutionFirmTest
 {
     private static final String PLAYER_NAME = "Pilot Player";
 
+    @Mock private Campaign campaign;
+    @Mock private CampaignPersonnelManager personnelManager;
+    @Mock private SquadronMembers playerMembers;
+
     @Mock private List<LogVictory> confirmedAiVictories = new ArrayList<LogVictory>();
     @Mock private AARMissionEvaluationData evaluationData;
-    @Mock private Campaign campaign;
     @Mock private CampaignData campaignData;
     @Mock private AARContext aarContext;
-    @Mock private CampaignPersonnelManager personnelManager;
     @Mock private PwcgMissionDataEvaluator pwcgMissionDataEvaluator;
     @Mock private VictorySorter victorySorter;
     @Mock private SquadronMember player;
@@ -58,6 +58,9 @@ public class AiDeclarationResolutionFirmTest
         
         Mockito.when(aarContext.getMissionEvaluationData()).thenReturn(evaluationData);
         Mockito.when(evaluationData.getVictoryResults()).thenReturn(firmVictories);   
+        Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);   
+        Mockito.when(personnelManager.getAllPlayers()).thenReturn(playerMembers);   
+        Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
 
         playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         playerVictor.setPlaneSerialNumber(SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 1);
@@ -88,7 +91,6 @@ public class AiDeclarationResolutionFirmTest
         Mockito.when(victorySorter.getFirmBalloonVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getFuzzyAirVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getAllUnconfirmed()).thenReturn(emptyList);
-        Mockito.when(campaign.getPlayers()).thenReturn(players);
         Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(campaignData.getName()).thenReturn(PLAYER_NAME);

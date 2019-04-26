@@ -1,36 +1,29 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerClaimResolverFirm;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerClaimResolverFuzzy;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PlayerClaimResolverFirmTest
-{    
-    @Mock private SquadronMember player;
-
+public class PlayerClaimResolverFuzzyTest
+{
     @Before
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
-        Mockito.when(player.isPlayer()).thenReturn(true);
-        Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
     }
 
     @Test
-    public void testPlayerFirmVictoryFound() throws PWCGException
+    public void testPlayerFuzzyVictoryFound() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
@@ -46,14 +39,15 @@ public class PlayerClaimResolverFirmTest
         PlayerVictoryDeclaration playerDeclaration = new PlayerVictoryDeclaration();
         playerDeclaration.setAircraftType("se5a");
 
-        PlayerClaimResolverFirm claimResolverFirm = new PlayerClaimResolverFirm();
-        String planeDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirm(player, playerDeclaration, resultVictory);
+        PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
+        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
         
         assert (planeDisplayName.equals("S.E.5a"));
     }
+    
 
     @Test
-    public void testPlayerFirmVictoryNotFoundBecausePlaneMismatch() throws PWCGException
+    public void testPlayerFuzzyVictoryNotFoundBecausePlaneMismatch() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
@@ -69,14 +63,14 @@ public class PlayerClaimResolverFirmTest
         PlayerVictoryDeclaration playerDeclaration = new PlayerVictoryDeclaration();
         playerDeclaration.setAircraftType("sopcamel");
 
-        PlayerClaimResolverFirm claimResolverFirm = new PlayerClaimResolverFirm();
-        String planeDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirm(player, playerDeclaration, resultVictory);
+        PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
+        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
         
         assert (planeDisplayName.isEmpty());
     }
 
     @Test
-    public void testPlayerFirmVictoryNotFoundBecauseVictoryPlaneNotFound() throws PWCGException
+    public void testPlayerFuzzyVictoryNotFoundBecauseVictoryPlaneNotFound() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("notarealplane");
@@ -92,14 +86,14 @@ public class PlayerClaimResolverFirmTest
         PlayerVictoryDeclaration playerDeclaration = new PlayerVictoryDeclaration();
         playerDeclaration.setAircraftType("se5a");
 
-        PlayerClaimResolverFirm claimResolverFirm = new PlayerClaimResolverFirm();
-        String planeDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirm(player, playerDeclaration, resultVictory);
+        PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
+        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
         
         assert (planeDisplayName.isEmpty());
     }
 
     @Test
-    public void testPlayerFirmVictoryNotFoundBecauseClaimPlaneNotFound() throws PWCGException
+    public void testPlayerFuzzyVictoryNotFoundBecauseClaimPlaneNotFound() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
@@ -115,14 +109,14 @@ public class PlayerClaimResolverFirmTest
         PlayerVictoryDeclaration playerDeclaration = new PlayerVictoryDeclaration();
         playerDeclaration.setAircraftType("notarealplane");
 
-        PlayerClaimResolverFirm claimResolverFirm = new PlayerClaimResolverFirm();
-        String planeDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirm(player, playerDeclaration, resultVictory);
+        PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
+        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
         
         assert (planeDisplayName.isEmpty());
     }
 
     @Test
-    public void testPlayerFirmVictoryNotFoundBecauseVictoryAlreadyConfirmed() throws PWCGException
+    public void testPlayerFuzzyVictoryNotFoundBecauseVictoryAlreadyConfirmed() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
@@ -139,9 +133,10 @@ public class PlayerClaimResolverFirmTest
         PlayerVictoryDeclaration playerDeclaration = new PlayerVictoryDeclaration();
         playerDeclaration.setAircraftType("se5a");
 
-        PlayerClaimResolverFirm claimResolverFirm = new PlayerClaimResolverFirm();
-        String planeDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirm(player, playerDeclaration, resultVictory);
+        PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
+        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
         
         assert (planeDisplayName.isEmpty());
     }
+
 }

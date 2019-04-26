@@ -37,7 +37,6 @@ public class HistoricalAceTransferHandlerTest
     {
         PWCGContextManager.setRoF(true);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170430"));
-        Mockito.when(campaign.getSquadronId()).thenReturn(501011);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         
         campaignAces = PWCGContextManager.getInstance().getAceManager().loadFromHistoricalAces(DateUtils.getDateYYYYMMDD("19170430")); 

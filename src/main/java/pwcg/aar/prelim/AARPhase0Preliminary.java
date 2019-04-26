@@ -6,6 +6,8 @@ import pwcg.aar.inmission.phase1.parse.AARMissionFileLogResultMatcher;
 import pwcg.aar.prelim.claims.AARClaimPanelData;
 import pwcg.aar.prelim.claims.AARClaimPanelEventTabulator;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.Side;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DirectoryReader;
@@ -79,7 +81,9 @@ public class AARPhase0Preliminary
     {
         if (!campaign.getCampaignData().isCoop())
         {
-            AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData);
+            SquadronMember singlePlayer = campaign.getPersonnelManager().getSinglePlayer();
+            Side side = singlePlayer.determineSquadron().determineSquadronCountry(campaign.getDate()).getSide();
+            AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData, side);
             AARClaimPanelData claimPanelData = claimPanelEventTabulator.tabulateForAARClaimPanel();
             aarPreliminarytData.setClaimPanelData(claimPanelData);
         }

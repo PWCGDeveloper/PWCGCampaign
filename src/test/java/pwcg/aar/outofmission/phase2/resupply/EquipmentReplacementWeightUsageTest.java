@@ -17,7 +17,7 @@ import pwcg.campaign.resupply.depo.EquipmentReplacementWeightUsage;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EquipmentReplacementWeightUsageTest
@@ -30,7 +30,7 @@ public class EquipmentReplacementWeightUsageTest
     {
         PWCGContextManager.setRoF(false);
         earlyCampaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
-        lateCampaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_MOSCOW_WEST);
+        lateCampaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_WEST);
     }
     
     @Test
@@ -105,7 +105,7 @@ public class EquipmentReplacementWeightUsageTest
     @Test
     public void testGermanLateReplacementArchTypes() throws PWCGException
     {
-        lateCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW_WEST);
+        lateCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_WEST);
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);
@@ -132,7 +132,7 @@ public class EquipmentReplacementWeightUsageTest
     @Test
     public void testAmericanReplacementArchTypes() throws PWCGException
     {
-        lateCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW_WEST);
+        lateCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_WEST);
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(10102);
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);
@@ -146,7 +146,7 @@ public class EquipmentReplacementWeightUsageTest
     @Test
     public void testBritishReplacementArchTypes() throws PWCGException
     {
-        lateCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW_WEST);
+        lateCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_WEST);
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(10103);
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);

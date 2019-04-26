@@ -78,6 +78,16 @@ public class CampaignPersonnelManager
         return allPlayers;
     }    
 
+    public SquadronMember getSinglePlayer() throws PWCGException
+    {
+        SquadronMembers allPlayers =  getAllPlayers();
+        if (allPlayers.getSquadronMemberList().size() > 1) 
+        {
+            throw new PWCGException("Found multiple players in single player only code segment");
+        }
+        return allPlayers.getSquadronMemberList().get(0);
+    }    
+
     private Map<Integer, SquadronMember> getAllNonAceCampaignMembers() throws PWCGException
     {
         Map<Integer, SquadronMember> allCampaignMembers =  new HashMap<>();

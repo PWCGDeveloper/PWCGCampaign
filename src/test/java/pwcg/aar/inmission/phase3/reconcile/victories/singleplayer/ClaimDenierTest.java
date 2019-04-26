@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +21,7 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
@@ -30,6 +31,7 @@ public class ClaimDenierTest
     @Mock private PlayerVictoryDeclaration declaration;
     @Mock private Campaign campaign;
     @Mock private CampaignPersonnelManager personnelManager;
+    @Mock private SquadronMembers playerMembers;
     @Mock private SquadronMember player;
     @Mock private SquadronMember pilot;
     @Mock private Squadron squadron;
@@ -46,9 +48,10 @@ public class ClaimDenierTest
         players = new ArrayList<>();
         players.add(player);
 
-        Mockito.when(campaign.getPlayers()).thenReturn(players);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(personnelManager.getAnyCampaignMember(Matchers.<Integer>any())).thenReturn(pilot);
+        Mockito.when(personnelManager.getAllPlayers()).thenReturn(playerMembers);   
+        Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
         Mockito.when(pilot.determineSquadron()).thenReturn(squadron);
         Mockito.when(squadron.determineDisplayName(Mockito.any())).thenReturn("Esc 3");
         

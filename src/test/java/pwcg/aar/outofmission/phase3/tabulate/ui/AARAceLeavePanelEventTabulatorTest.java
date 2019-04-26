@@ -37,7 +37,7 @@ public class AARAceLeavePanelEventTabulatorTest extends AARTestSetup
         
         Mockito.when(ace.determineSquadron()).thenReturn(squadronEsc103);
 
-        Mockito.when(acesTransferred.getSquadronMembersTransferredFromSquadron(Mockito.any())).thenReturn(transferRecords);
+        Mockito.when(acesTransferred.getSquadronMembersTransferred()).thenReturn(transferRecords);
         
         transferRecords.clear();
     }

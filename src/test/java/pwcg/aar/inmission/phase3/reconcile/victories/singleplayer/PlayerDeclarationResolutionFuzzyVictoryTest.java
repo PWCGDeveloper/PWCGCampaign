@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +19,6 @@ import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.ConfirmedVicto
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarationResolution;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.VictorySorter;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignPersonnelManager;
@@ -28,6 +27,7 @@ import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -40,6 +40,7 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
     @Mock private PlayerVictoryDeclaration mockPlayerDeclaration;
     @Mock private AARMissionEvaluationData evaluationData;
     @Mock private VictorySorter victorySorter;
+    @Mock private SquadronMembers playerMembers;
     @Mock private SquadronMember player;
     @Mock private SquadronMember ai;
     @Mock private PlaneTypeFactory planeFactory;
@@ -61,6 +62,10 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
         
         fuzzyVictories.clear();
         
+        Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
+        Mockito.when(personnelManager.getAllPlayers()).thenReturn(playerMembers);   
+        Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
+
         playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         aiVictor.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
         
@@ -76,7 +81,6 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
         Mockito.when(victorySorter.getFuzzyBalloonVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getFirmAirVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getAllUnconfirmed()).thenReturn(emptyList);
-        Mockito.when(campaign.getPlayers()).thenReturn(players);
         Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getBeginningOfWar());
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);

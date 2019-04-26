@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +16,12 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogGroundUnit;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryReassigner;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.VictorySorter;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.ww1.country.RoFCountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -31,8 +30,9 @@ import pwcg.core.location.Coordinate;
 public class VictorySorterTest
 {
     @Mock private Campaign campaign;
-    @Mock private SquadronMember player;
     @Mock private CampaignPersonnelManager personnelManager;
+    @Mock private SquadronMembers playerMembers;
+    @Mock private SquadronMember player;
 
     private List<LogVictory> logVictories = new ArrayList<>();
     private List<SquadronMember> players = new ArrayList<>();
@@ -42,10 +42,13 @@ public class VictorySorterTest
     {
         players = new ArrayList<>();
         players.add(player);
+        
+        Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);   
+        Mockito.when(personnelManager.getAllPlayers()).thenReturn(playerMembers);   
+        Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
 
-        Mockito.when(campaign.determineCountry()).thenReturn(new RoFCountry(Country.FRANCE));
-        Mockito.when(campaign.getPlayers()).thenReturn(players);
-        Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
+        Mockito.when(player.getCountry()).thenReturn(Country.FRANCE);        
+                
         Mockito.when(personnelManager.getAnyCampaignMember(Mockito.any())).thenReturn(player);
         Mockito.when(player.isPlayer()).thenReturn(true);
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
@@ -64,7 +67,7 @@ public class VictorySorterTest
     @Test
     public void testVictorySorting () throws PWCGException
     {
-        VictorySorter victorySorter = new VictorySorter(campaign);
+        VictorySorter victorySorter = new VictorySorter();
         victorySorter.sortVictories(logVictories);
         
         assert(victorySorter.getFirmBalloonVictories().size() == 1);

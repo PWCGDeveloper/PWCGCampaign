@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,11 +15,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.ConfirmedVictories;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarationResolution;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.VictorySorter;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignPersonnelManager;
@@ -28,6 +23,7 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.ww1.country.RoFCountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -41,6 +37,7 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     @Mock private PlayerVictoryDeclaration mockPlayerDeclaration;
     @Mock private AARMissionEvaluationData evaluationData;
     @Mock private VictorySorter victorySorter;
+    @Mock private SquadronMembers playerMembers;
     @Mock private SquadronMember player;
     @Mock private SquadronMember ai;
     @Mock private PlaneTypeFactory planeFactory;
@@ -64,6 +61,10 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         
         firmVictories.clear();
         
+        Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
+        Mockito.when(personnelManager.getAllPlayers()).thenReturn(playerMembers);   
+        Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
+
         playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         playerVictor.setCountry(new RoFCountry(Country.FRANCE));
         
@@ -82,7 +83,6 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         Mockito.when(victorySorter.getFirmBalloonVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getFuzzyAirVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getAllUnconfirmed()).thenReturn(emptyList);
-        Mockito.when(campaign.getPlayers()).thenReturn(players);
         Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getBeginningOfWar());
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);

@@ -10,7 +10,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.plane.Role;
 import pwcg.core.exception.PWCGException;
 
-class VictorySorter
+public class VictorySorter
 {
     private List<LogVictory> firmAirVictories = new ArrayList <LogVictory>();
     private List<LogVictory> firmGroundVictories = new ArrayList <LogVictory>();

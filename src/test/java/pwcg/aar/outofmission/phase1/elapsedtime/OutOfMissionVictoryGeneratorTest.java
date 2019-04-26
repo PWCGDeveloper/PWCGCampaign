@@ -16,8 +16,8 @@ import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheRoF;
 import pwcg.testutils.CampaignPersonnelTestHelper;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OutOfMissionVictoryGeneratorTest
@@ -29,7 +29,7 @@ public class OutOfMissionVictoryGeneratorTest
     {
         PWCGContextManager.setRoF(true);
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
-        campaign = CampaignCache.makeCampaign(CampaignCacheRoF.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
     }
 
     @Test

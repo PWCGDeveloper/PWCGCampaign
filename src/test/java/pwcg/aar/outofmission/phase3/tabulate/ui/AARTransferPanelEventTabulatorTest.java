@@ -31,17 +31,17 @@ public class AARTransferPanelEventTabulatorTest extends AARTestSetup
         List<TransferRecord> squadronMemberTransferredIn = new ArrayList<>();
         TransferRecord squadronMemberTransfer = new TransferRecord(pilot1, 101048, 101103);
         squadronMemberTransferredIn.add(squadronMemberTransfer);        
-        Mockito.when(squadronMembersTransferred.getSquadronMembersTransferredToSquadron(campaign.getSquadronId())).thenReturn(squadronMemberTransferredIn);
+        Mockito.when(squadronMembersTransferred.getSquadronMembersTransferred()).thenReturn(squadronMemberTransferredIn);
 
         List<TransferRecord> acesTransferredIn = new ArrayList<>();
         TransferRecord aceTransfer = new TransferRecord(ace1, 101048, 101103);
         acesTransferredIn.add(aceTransfer);        
-        Mockito.when(acesTransferred.getSquadronMembersTransferredToSquadron(campaign.getSquadronId())).thenReturn(acesTransferredIn);
+        Mockito.when(acesTransferred.getSquadronMembersTransferred()).thenReturn(acesTransferredIn);
         
         TransferPanelEventTabulator transferPanelEventTabulator = new TransferPanelEventTabulator(campaign, aarContext);
         TransferPanelData transferPanelData = transferPanelEventTabulator.tabulateForAARTransferPanel();
         
-        List<TransferEvent> transferEvents = transferPanelData.getTransferIntoSquadron();
+        List<TransferEvent> transferEvents = transferPanelData.getTransfers();
 
         assert (transferEvents.size() == 2);
     }
@@ -52,17 +52,17 @@ public class AARTransferPanelEventTabulatorTest extends AARTestSetup
         List<TransferRecord> squadronMemberTransferredOut = new ArrayList<>();
         TransferRecord squadronMemberTransfer = new TransferRecord(pilot1, 101103, 101048);
         squadronMemberTransferredOut.add(squadronMemberTransfer);        
-        Mockito.when(squadronMembersTransferred.getSquadronMembersTransferredFromSquadron(campaign.getSquadronId())).thenReturn(squadronMemberTransferredOut);
+        Mockito.when(squadronMembersTransferred.getSquadronMembersTransferred()).thenReturn(squadronMemberTransferredOut);
 
         List<TransferRecord> acesTransferredIn = new ArrayList<>();
         TransferRecord aceTransfer = new TransferRecord(ace1, 101103, 101048);
         acesTransferredIn.add(aceTransfer);        
-        Mockito.when(acesTransferred.getSquadronMembersTransferredFromSquadron(campaign.getSquadronId())).thenReturn(acesTransferredIn);
+        Mockito.when(acesTransferred.getSquadronMembersTransferred()).thenReturn(acesTransferredIn);
         
         TransferPanelEventTabulator transferPanelEventTabulator = new TransferPanelEventTabulator(campaign, aarContext);
         TransferPanelData transferPanelData = transferPanelEventTabulator.tabulateForAARTransferPanel();
         
-        List<TransferEvent> transferEvents = transferPanelData.getTransferOutOfSquadron();
+        List<TransferEvent> transferEvents = transferPanelData.getTransfers();
 
         assert (transferEvents.size() == 2);
     }

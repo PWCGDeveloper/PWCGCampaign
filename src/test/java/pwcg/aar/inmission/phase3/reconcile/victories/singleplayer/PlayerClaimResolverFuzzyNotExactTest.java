@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories;
+package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,11 +10,12 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerClaimResolverFuzzy;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PlayerClaimResolverFuzzyTest
+public class PlayerClaimResolverFuzzyNotExactTest
 {
     @Before
     public void setup() throws PWCGException
@@ -23,9 +24,10 @@ public class PlayerClaimResolverFuzzyTest
     }
 
     @Test
-    public void testPlayerFuzzyVictoryFound() throws PWCGException
+    public void testPlayerFuzzyNotExactVictoryFoundWithExactMatch() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
+        victim.setRole(Role.ROLE_FIGHTER);
         victim.setVehicleType("se5a");
 
         LogPlane victor = new LogPlane(2);
@@ -40,16 +42,16 @@ public class PlayerClaimResolverFuzzyTest
         playerDeclaration.setAircraftType("se5a");
 
         PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
-        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
+        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzyNotExact(playerDeclaration, resultVictory);
         
         assert (planeDisplayName.equals("S.E.5a"));
     }
-    
 
     @Test
-    public void testPlayerFuzzyVictoryNotFoundBecausePlaneMismatch() throws PWCGException
+    public void testPlayerFuzzyNotExactVictoryFoundWithNotExactMatch() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
+        victim.setRole(Role.ROLE_FIGHTER);
         victim.setVehicleType("se5a");
 
         LogPlane victor = new LogPlane(2);
@@ -64,15 +66,16 @@ public class PlayerClaimResolverFuzzyTest
         playerDeclaration.setAircraftType("sopcamel");
 
         PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
-        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
+        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzyNotExact(playerDeclaration, resultVictory);
         
-        assert (planeDisplayName.isEmpty());
+        assert (planeDisplayName.equals("S.E.5a"));
     }
 
     @Test
-    public void testPlayerFuzzyVictoryNotFoundBecauseVictoryPlaneNotFound() throws PWCGException
+    public void testPlayerFuzzyNotExactVictoryNotFoundBecauseRoleIsDifferent() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
+        victim.setRole(Role.ROLE_BOMB);
         victim.setVehicleType("notarealplane");
 
         LogPlane victor = new LogPlane(2);
@@ -87,15 +90,16 @@ public class PlayerClaimResolverFuzzyTest
         playerDeclaration.setAircraftType("se5a");
 
         PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
-        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
+        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzyNotExact(playerDeclaration, resultVictory);
         
         assert (planeDisplayName.isEmpty());
     }
 
     @Test
-    public void testPlayerFuzzyVictoryNotFoundBecauseClaimPlaneNotFound() throws PWCGException
+    public void testPlayerFuzzyNotExactVictoryNotFoundBecauseClaimPlaneNotFound() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
+        victim.setRole(Role.ROLE_FIGHTER);
         victim.setVehicleType("se5a");
 
         LogPlane victor = new LogPlane(2);
@@ -110,15 +114,16 @@ public class PlayerClaimResolverFuzzyTest
         playerDeclaration.setAircraftType("notarealplane");
 
         PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
-        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
+        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzyNotExact(playerDeclaration, resultVictory);
         
         assert (planeDisplayName.isEmpty());
     }
 
     @Test
-    public void testPlayerFuzzyVictoryNotFoundBecauseVictoryAlreadyConfirmed() throws PWCGException
+    public void testPlayerFuzzyNotExactVictoryNotFoundBecauseVictoryAlreadyConfirmed() throws PWCGException
     {
         LogPlane victim = new LogPlane(1);
+        victim.setRole(Role.ROLE_FIGHTER);
         victim.setVehicleType("se5a");
 
         LogPlane victor = new LogPlane(2);
@@ -134,9 +139,8 @@ public class PlayerClaimResolverFuzzyTest
         playerDeclaration.setAircraftType("se5a");
 
         PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
-        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
+        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzyNotExact(playerDeclaration, resultVictory);
         
         assert (planeDisplayName.isEmpty());
     }
-
 }

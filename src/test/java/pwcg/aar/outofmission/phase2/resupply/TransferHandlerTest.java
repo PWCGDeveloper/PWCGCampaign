@@ -23,7 +23,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheRoF;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TransferHandlerTest
@@ -36,7 +36,7 @@ public class TransferHandlerTest
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(true);
-        campaign = CampaignCache.makeCampaign(CampaignCacheRoF.JASTA_11_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
         Mockito.when(armedService.getServiceId()).thenReturn(50101);
      }
 

@@ -16,7 +16,7 @@ import pwcg.campaign.resupply.equipment.SquadronEquipmentNeed;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.CampaignCacheBoS;
+import pwcg.testutils.SquadrontTestProfile;
 
 public class ResupplySquadronChooserTest
 {

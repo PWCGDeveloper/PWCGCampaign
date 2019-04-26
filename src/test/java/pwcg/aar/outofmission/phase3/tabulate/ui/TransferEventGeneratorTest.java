@@ -34,13 +34,13 @@ public class TransferEventGeneratorTest extends AARTestSetup
         transferRecords.add(squadronMemberTransfer2);        
 
         TransferEventGenerator transferEventGenerator = new TransferEventGenerator(campaign);
-        List<TransferEvent> transferEvents = transferEventGenerator.createPilotTransferEventsIntoSquadron(transferRecords);
+        List<TransferEvent> transferEvents = transferEventGenerator.createPilotTransferEvents(transferRecords);
         TransferEvent transferEvent1 = (TransferEvent)transferEvents.get(0);
         TransferEvent transferEvent2 = (TransferEvent)transferEvents.get(1);
 
         assert (transferEvents.size() == 2);
-        assert (transferEvent1.getTransferTo() == campaign.getSquadronId());
-        assert (transferEvent2.getTransferTo() == campaign.getSquadronId());
+        assert (transferEvent1.getTransferTo() == 101103);
+        assert (transferEvent2.getTransferTo() == 101103);
     }
     
     
@@ -54,13 +54,13 @@ public class TransferEventGeneratorTest extends AARTestSetup
         transferRecords.add(squadronMemberTransfer2);        
 
         TransferEventGenerator transferEventGenerator = new TransferEventGenerator(campaign);
-        List<TransferEvent> transferEvents = transferEventGenerator.createPilotTransferEventsOutOfSquadron(transferRecords);
+        List<TransferEvent> transferEvents = transferEventGenerator.createPilotTransferEvents(transferRecords);
         TransferEvent transferEvent1 = (TransferEvent)transferEvents.get(0);
         TransferEvent transferEvent2 = (TransferEvent)transferEvents.get(1);
 
         assert (transferEvents.size() == 2);
-        assert (transferEvent1.getTransferTo() != campaign.getSquadronId());
-        assert (transferEvent2.getTransferTo() != campaign.getSquadronId());
+        assert (transferEvent1.getTransferTo() != 101103);
+        assert (transferEvent2.getTransferTo() != 101103);
     }
 
 }

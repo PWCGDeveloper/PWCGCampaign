@@ -49,7 +49,6 @@ public class SquadronTransferNeedTest
         
         PWCGContextManager.setRoF(false);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170430"));
-        Mockito.when(campaign.getSquadronId()).thenReturn(501011);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         Mockito.when(campaignPersonnelManager.getSquadronPersonnel(Matchers.<Integer>any())).thenReturn(squadronPersonnel);
         Mockito.when(squadronPersonnel.getSquadronMembersWithAces()).thenReturn(activeSquadronMembers);

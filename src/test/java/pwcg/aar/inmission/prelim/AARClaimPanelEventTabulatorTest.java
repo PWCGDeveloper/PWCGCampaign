@@ -1,7 +1,9 @@
 package pwcg.aar.inmission.prelim;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Before;
@@ -17,7 +19,6 @@ import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.aar.prelim.claims.AARClaimPanelData;
 import pwcg.aar.prelim.claims.AARClaimPanelEventTabulator;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap;
@@ -32,26 +33,13 @@ import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 @RunWith(MockitoJUnitRunner.class)
 public class AARClaimPanelEventTabulatorTest
 {
-    @Mock
-    private Campaign campaign;
-    
-    @Mock
-    private Squadron squad;
+    @Mock private Campaign campaign;
+    @Mock private Squadron squad;
+    @Mock private PwcgMissionDataEvaluator pwcgMissionDataEvaluator;
+    @Mock private AARPreliminaryData aarPreliminarytData;
+    @Mock private PwcgMissionData pwcgMissionData;
+    @Mock private MissionHeader missionHeader;
 
-    @Mock
-    private PwcgMissionDataEvaluator pwcgMissionDataEvaluator;
-
-    @Mock
-    private AARPreliminaryData aarPreliminarytData;
-
-    @Mock
-    private PwcgMissionData pwcgMissionData;
-
-    @Mock
-    private MissionHeader missionHeader;
-    
-    @Mock
-    private ICountry country;
     
     private Map<Integer, PwcgGeneratedMissionPlaneData> missionPlanes  = new HashMap<>();
     
@@ -65,7 +53,9 @@ public class AARClaimPanelEventTabulatorTest
         PWCGContextManager.setRoF(false);
         campaignDate = DateUtils.getDateYYYYMMDD("19420420");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
-        Mockito.when(campaign.determinePlayerSquadrons()).thenReturn(squad);
+        List<Squadron> playerSquadrons = new ArrayList<>();
+        playerSquadrons.add(squad);
+        Mockito.when(campaign.determinePlayerSquadrons()).thenReturn(playerSquadrons);
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
         
         Mockito.when(aarPreliminarytData.getPwcgMissionData()).thenReturn(pwcgMissionData);
@@ -102,12 +92,9 @@ public class AARClaimPanelEventTabulatorTest
     @Test
     public void germanMission () throws PWCGException
     {             
-        Mockito.when(squad.determineSquadronCountry(campaign.getDate())).thenReturn(country);
-        Mockito.when(country.getSide()).thenReturn(Side.AXIS);
-
         Mockito.when(missionHeader.getMapName()).thenReturn(PWCGMap.STALINGRAD_MAP_NAME);
 
-        AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData);
+        AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData, Side.AXIS);
         AARClaimPanelData claimPanelData = claimPanelEventTabulator.tabulateForAARClaimPanel();
         assert (claimPanelData.getEnemyPlaneTypesInMission().size() == 2);
         assert (claimPanelData.getMapId() == FrontMapIdentifier.STALINGRAD_MAP);
@@ -117,13 +104,10 @@ public class AARClaimPanelEventTabulatorTest
     @Test
     public void russianMission () throws PWCGException
     {             
-        Mockito.when(squad.determineSquadronCountry(campaign.getDate())).thenReturn(country);
-        Mockito.when(country.getSide()).thenReturn(Side.ALLIED);
-
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
         Mockito.when(missionHeader.getMapName()).thenReturn(PWCGMap.STALINGRAD_MAP_NAME);
 
-        AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData);
+        AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData, Side.ALLIED);
         AARClaimPanelData claimPanelData = claimPanelEventTabulator.tabulateForAARClaimPanel();
         assert (claimPanelData.getEnemyPlaneTypesInMission().size() == 1);
         assert (claimPanelData.getMapId() == FrontMapIdentifier.STALINGRAD_MAP);

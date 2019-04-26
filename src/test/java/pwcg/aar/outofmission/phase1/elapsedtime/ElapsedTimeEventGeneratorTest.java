@@ -1,6 +1,8 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,8 +14,11 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.CampaignUpdateData;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -21,23 +26,15 @@ import pwcg.core.utils.DateUtils;
 @RunWith(MockitoJUnitRunner.class)
 public class ElapsedTimeEventGeneratorTest
 {
-    @Mock
-    private Campaign campaign;
-    
-    @Mock
-    private AARContext aarContext;
-    
-    @Mock
-    private CampaignUpdateData campaignUpdateData;
-    
-    @Mock
-    private Squadron squad;
-    
-    @Mock
-    private IAirfield currentAirfield;
-    
-    @Mock
-    private IAirfield newAirfield;
+    @Mock private Campaign campaign;
+    @Mock private CampaignPersonnelManager personnelManager;
+    @Mock private SquadronMembers playerMembers;
+    @Mock private SquadronMember player;
+    @Mock private AARContext aarContext;
+    @Mock private CampaignUpdateData campaignUpdateData;
+    @Mock private Squadron squad;
+    @Mock private IAirfield currentAirfield;
+    @Mock private IAirfield newAirfield;
 
     private Date campaignDate;
     private Date newDate;
@@ -54,6 +51,13 @@ public class ElapsedTimeEventGeneratorTest
 
         Mockito.when(aarContext.getCampaignUpdateData()).thenReturn(campaignUpdateData);
         Mockito.when(aarContext.getNewDate()).thenReturn(newDate);
+        
+        Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
+        Mockito.when(personnelManager.getAllPlayers()).thenReturn(playerMembers);
+        List<SquadronMember> players = new ArrayList<>();
+        players.add(player);
+        Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
+        Mockito.when(player.determineSquadron()).thenReturn(squad);   
     }
 
     @Test
@@ -65,7 +69,7 @@ public class ElapsedTimeEventGeneratorTest
         ElapsedTimeEventGenerator elapsedTimeEventGenerator = new ElapsedTimeEventGenerator(campaign, aarContext);
         ElapsedTimeEvents elapsedTimeEvents = elapsedTimeEventGenerator.createElapsedTimeEvents();
         assert (elapsedTimeEvents.getEndOfWarEvent() == null);
-        assert (elapsedTimeEvents.getSquadronMoveEvent() == null);
+        assert (elapsedTimeEvents.getSquadronMoveEvents().size() == 0);
         
     }
 
@@ -78,7 +82,7 @@ public class ElapsedTimeEventGeneratorTest
         ElapsedTimeEventGenerator elapsedTimeEventGenerator = new ElapsedTimeEventGenerator(campaign, aarContext);
         ElapsedTimeEvents elapsedTimeEvents = elapsedTimeEventGenerator.createElapsedTimeEvents();
         assert (elapsedTimeEvents.getEndOfWarEvent() == null);
-        assert (elapsedTimeEvents.getSquadronMoveEvent() != null);
+        assert (elapsedTimeEvents.getSquadronMoveEvents().size() > 0);
         
     }
 
@@ -98,7 +102,7 @@ public class ElapsedTimeEventGeneratorTest
         ElapsedTimeEventGenerator elapsedTimeEventGenerator = new ElapsedTimeEventGenerator(campaign, aarContext);
         ElapsedTimeEvents elapsedTimeEvents = elapsedTimeEventGenerator.createElapsedTimeEvents();
         assert (elapsedTimeEvents.getEndOfWarEvent() != null);
-        assert (elapsedTimeEvents.getSquadronMoveEvent() == null);
+        assert (elapsedTimeEvents.getSquadronMoveEvents().size() == 0);
         
     }
 
