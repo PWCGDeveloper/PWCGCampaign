@@ -89,22 +89,30 @@ public class AiDeclarationResolutionFuzzyTest
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(campaignData.getName()).thenReturn(PLAYER_NAME);
 
-        Mockito.when(squadron.getSquadronId()).thenReturn(501011);
-
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        Mockito.when(player.getSquadronId()).thenReturn(501011);
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(playerVictor);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER)).thenReturn(player);
 
         Mockito.when(aiSquadMember1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
-        Mockito.when(aiSquadMember1.getSquadronId()).thenReturn(501011);
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(aiVictorOne);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(aiSquadMember1);
 
         Mockito.when(aiSquadMember2.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 2);
-        Mockito.when(aiSquadMember2.getSquadronId()).thenReturn(501011);
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 2)).thenReturn(aiVictorTwo);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER + 2)).thenReturn(aiSquadMember2);
+        
+        List<Squadron> playerSquadronsInMission = new ArrayList<>();
+        playerSquadronsInMission.add(squadron);
+        Mockito.when(preliminaryData.getPlayerSquadronsInMission()).thenReturn(playerSquadronsInMission);
+
+        int squadronId = 501011;
+        playerVictor.setSquadronId(squadronId);
+        aiVictorOne.setSquadronId(squadronId);
+        aiVictorTwo.setSquadronId(squadronId);
+        Mockito.when(player.getSquadronId()).thenReturn(squadronId);
+        Mockito.when(aiSquadMember1.getSquadronId()).thenReturn(squadronId);
+        Mockito.when(aiSquadMember2.getSquadronId()).thenReturn(squadronId);
+        Mockito.when(squadron.getSquadronId()).thenReturn(squadronId);
     }
 
     private void createVictory(Integer victimSerialNumber) throws PWCGException

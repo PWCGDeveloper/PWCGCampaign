@@ -82,11 +82,6 @@ public class AiPilotSkillGenerator
 			{
 				pilotQuality = AiSkillLevel.VETERAN;
 			}
-			
-			if (serviceQualityValue > 78)
-			{
-				pilotQuality = AiSkillLevel.ACE;
-			}
 		}
 		
 		return pilotQuality;
@@ -105,7 +100,7 @@ public class AiPilotSkillGenerator
 		
 		if (squadronQualityValue > 60)
 		{
-			if (serviceQualityValue > 55)
+            if (serviceQualityValue > 78)
 			{
 				pilotQuality = AiSkillLevel.VETERAN;
 			}

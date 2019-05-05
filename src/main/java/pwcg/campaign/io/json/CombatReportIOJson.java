@@ -16,7 +16,7 @@ public class CombatReportIOJson
 {
 	public static void writeJson(Campaign campaign, CombatReport combatReport) throws PWCGException
 	{
-        String combatReportPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\CombatReports\\" + combatReport.getPilotSerialNumber() + "\\";
+        String combatReportPath = buildCombatReportPath(campaign, combatReport.getPilotSerialNumber());
         File combatReportDir = new File(combatReportPath);
         if (!combatReportDir.exists())
         {
@@ -30,15 +30,21 @@ public class CombatReportIOJson
 	{
 	    Map<String, CombatReport> combatReportsForCampaign = new TreeMap<>();
 		FileUtils fileUtils = new FileUtils();
-        String combatReportPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\CombatReports\\" + pilotSerialNumber + "\\";
+        String combatReportPath = buildCombatReportPath(campaign, pilotSerialNumber);
 	    List<File> combatReportFiles = fileUtils.getFilesWithFilter(combatReportPath, ".CombatReport.json");
 		for (File combatReportFile : combatReportFiles)
 		{
 			JsonObjectReader<CombatReport> jsoReader = new JsonObjectReader<>(CombatReport.class);
-			CombatReport combatReport = jsoReader.readJsonFile(campaign.getCampaignPath(), combatReportFile.getName()); 
+			CombatReport combatReport = jsoReader.readJsonFile(combatReportPath, combatReportFile.getName()); 
 			combatReportsForCampaign.put(DateUtils.getDateStringYYYYMMDD(combatReport.getDate()), combatReport);
 		}
 		
 		return combatReportsForCampaign;
 	}
+
+    private static String buildCombatReportPath(Campaign campaign, Integer pilotSerialNumber)
+    {
+        String combatReportPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\CombatReports\\" + pilotSerialNumber + "\\";
+        return combatReportPath;
+    }
 }

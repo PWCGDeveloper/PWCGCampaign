@@ -32,41 +32,21 @@ import pwcg.core.exception.PWCGException;
 @RunWith(MockitoJUnitRunner.class)
 public class AiDeclarationResolutionRandomTest
 {
-    @Mock
-    private List<LogVictory> confirmedAiVictories = new ArrayList<LogVictory>();
-
-    @Mock
-    private AARMissionEvaluationData evaluationData;
-
-    @Mock
-    private Campaign campaign;
-
-    @Mock
-    private Squadron squadron;
-
-    @Mock
-    private CampaignPersonnelManager personnelManager;
-    
-    @Mock
-    private AARContext aarContext;
-
-    @Mock 
-    private AARPreliminaryData preliminaryData;
-    
+    @Mock private List<LogVictory> confirmedAiVictories = new ArrayList<LogVictory>();
+    @Mock private AARMissionEvaluationData evaluationData;
+    @Mock private Campaign campaign;
+    @Mock private Squadron squadron;
+    @Mock private CampaignPersonnelManager personnelManager;
+    @Mock private AARContext aarContext;
+    @Mock private AARPreliminaryData preliminaryData;
+    @Mock private PwcgMissionDataEvaluator pwcgMissionDataEvaluator;
+    @Mock private VictorySorter victorySorter;
+    @Mock private SquadronMember player;
+    @Mock private Squadron playerSquadron;
+    @Mock private SquadronMember aiSquadMember;
+            
     private SquadronMembers campaignMembersInmission = new SquadronMembers();
 
-    @Mock
-    private PwcgMissionDataEvaluator pwcgMissionDataEvaluator;
-    
-    @Mock
-    private VictorySorter victorySorter;
-    
-    @Mock
-    private SquadronMember player;
-    
-    @Mock
-    private SquadronMember aiSquadMember;
-        
     private List<LogVictory> randomVictories = new ArrayList<>();        
     private List<LogVictory> emptyList = new ArrayList<>();        
     private List<SquadronMember> players = new ArrayList<>();
@@ -77,6 +57,7 @@ public class AiDeclarationResolutionRandomTest
     @Before
     public void setup() throws PWCGException
     {
+        
         PWCGContextManager.setRoF(false);
 
         randomVictories.clear();
@@ -84,7 +65,7 @@ public class AiDeclarationResolutionRandomTest
 
         playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         aiVictor.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
-        
+                
         players = new ArrayList<>();
         players.add(player);
 
@@ -105,6 +86,16 @@ public class AiDeclarationResolutionRandomTest
         Mockito.when(aarContext.getMissionEvaluationData()).thenReturn(evaluationData);
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(preliminaryData.getCampaignMembersInMission()).thenReturn(campaignMembersInmission);
+        List<Squadron> playerSquadronsInMission = new ArrayList<>();
+        playerSquadronsInMission.add(playerSquadron);
+        Mockito.when(preliminaryData.getPlayerSquadronsInMission()).thenReturn(playerSquadronsInMission);
+
+        int squadronId = 501011;
+        Mockito.when(playerSquadron.getSquadronId()).thenReturn(squadronId);
+        playerVictor.setSquadronId(squadronId);
+        aiVictor.setSquadronId(squadronId);
+        Mockito.when(player.getSquadronId()).thenReturn(squadronId);
+        Mockito.when(aiSquadMember.getSquadronId()).thenReturn(squadronId);
     }
 
     private void createVictory(Integer victimSerialNumber, UnknownVictoryAssignments unknownVictoryAssignment)

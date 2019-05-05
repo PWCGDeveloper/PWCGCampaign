@@ -28,13 +28,6 @@ public class HistoricalAceTransferHandler
 
     public SquadronTransferData determineAceTransfers() throws PWCGException
     {
-        aceTransferred();
-        
-        return acesTransferred;
-    }
-    
-    private void aceTransferred() throws PWCGException
-    {
         CampaignPersonnelManager campaignPersonnelManager = campaign.getPersonnelManager();            
         List<Ace> acesBefore = PWCGContextManager.getInstance().getAceManager().getActiveAcesForCampaign(campaignPersonnelManager.getCampaignAces(), campaign.getDate());
         for (Ace aceBefore : acesBefore)
@@ -51,5 +44,7 @@ public class HistoricalAceTransferHandler
                 }
             }
         }
+
+        return acesTransferred;
     }
 }

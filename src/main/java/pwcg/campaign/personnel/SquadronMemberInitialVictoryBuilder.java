@@ -89,17 +89,17 @@ public class SquadronMemberInitialVictoryBuilder
         if (rankPos == 2)
         {
             minAdjustment = (serviceQuality / 10) - 10;
-            maxAdjustment = (serviceQuality / 10) - 5;
+            maxAdjustment = (serviceQuality / 10) - 7;
         }
         else if (rankPos == 1)
         {
             minAdjustment = (serviceQuality / 10) - 8;
-            maxAdjustment = (serviceQuality / 10) - 4;
+            maxAdjustment = (serviceQuality / 10) - 5;
         }
         else if (rankPos == 0)
         {
-            minAdjustment = (serviceQuality / 10) - 5;
-            maxAdjustment = (serviceQuality / 10) - 3;
+            minAdjustment = (serviceQuality / 10) - 6;
+            maxAdjustment = (serviceQuality / 10) - 4;
         }
 
         minVictories += minAdjustment;
@@ -114,18 +114,18 @@ public class SquadronMemberInitialVictoryBuilder
         int maxAdjustment = 0;
         if (rankPos == 2)
         {
-            minAdjustment = (squadronQuality / 10) - 8;
-            maxAdjustment = (squadronQuality / 10) - 4;
+            minAdjustment = (squadronQuality / 10) - 10;
+            maxAdjustment = (squadronQuality / 10) - 6;
         }
         else if (rankPos == 1)
         {
-            minAdjustment = (squadronQuality / 10) - 7;
-            maxAdjustment = (squadronQuality / 10) - 4;
+            minAdjustment = (squadronQuality / 10) - 8;
+            maxAdjustment = (squadronQuality / 10) - 5;
         }
         else if (rankPos == 0)
         {
-            minAdjustment = (squadronQuality / 10) - 5;
-            maxAdjustment = (squadronQuality / 10) - 3;
+            minAdjustment = (squadronQuality / 10) - 6;
+            maxAdjustment = (squadronQuality / 10) - 4;
         }
 
         minVictories += minAdjustment;
@@ -142,28 +142,28 @@ public class SquadronMemberInitialVictoryBuilder
         {
             if (serviceQuality > 80)
             {
-                int extraLuftwaffeVictories = (serviceQuality - 80) * 2;
+                int extraLuftwaffeVictories = (serviceQuality - 80);
                 int minAdjustment = 0;
                 int maxAdjustment = 0;
                 if (rankPos == 3)
                 {
                     minAdjustment = 0;
-                    maxAdjustment = extraLuftwaffeVictories / 6;
+                    maxAdjustment = 0;
                 }
                 else if (rankPos == 2)
                 {
-                    minAdjustment = extraLuftwaffeVictories / 8;
-                    maxAdjustment = extraLuftwaffeVictories / 6;
+                    minAdjustment = 0;
+                    maxAdjustment = 0;
                 }
                 else if (rankPos == 1)
                 {
-                    minAdjustment = extraLuftwaffeVictories / 5;
-                    maxAdjustment = extraLuftwaffeVictories / 3;
+                    minAdjustment = extraLuftwaffeVictories - 8;
+                    maxAdjustment = extraLuftwaffeVictories - 3;
                 }
                 else if (rankPos == 0)
                 {
-                    minAdjustment = extraLuftwaffeVictories / 4;
-                    maxAdjustment = extraLuftwaffeVictories / 2;
+                    minAdjustment = extraLuftwaffeVictories - 6;
+                    maxAdjustment = extraLuftwaffeVictories - 2;
                 }
                                 
                 minVictories += minAdjustment;

@@ -127,7 +127,7 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
         MedalPanelEventTabulator medalPanelEventTabulator = new MedalPanelEventTabulator(campaign, aarContext);
         AARMedalPanelData medalPanelData = medalPanelEventTabulator.tabulateForAARMedalPanel();
         
-        assert(medalPanelData.getMedalsAwarded().size() == 2);
+        assert(medalPanelData.getMedalsAwarded().size() == 3);
     }
 
 }

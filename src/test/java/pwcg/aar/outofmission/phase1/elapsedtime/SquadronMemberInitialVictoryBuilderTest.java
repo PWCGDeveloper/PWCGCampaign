@@ -31,22 +31,11 @@ public class SquadronMemberInitialVictoryBuilderTest
     @Test
     public void testInitialVictoriesGermanFighter () throws PWCGException
     {
-        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_STALINGRAD);
 
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(20112052);
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
-        
-        for (int squadronId : campaign.getPersonnelManager().getCampaignPersonnel().keySet())
-        {
-            SquadronPersonnel personnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
-            System.out.println("Squadron id: " + squadronId + "     Squadron: " + personnel.getSquadron().getFileName());
-            if (squadronId == 20112052)
-            {
-                System.out.println("Squadron id: " + squadronId + "     Squadron: " + personnel.getSquadron().getFileName());
-            }
-        }
-        
         SquadronPersonnel jg52Personnel = campaign.getPersonnelManager().getSquadronPersonnel(20112052);
 
         SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(jg52Personnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
@@ -55,11 +44,11 @@ public class SquadronMemberInitialVictoryBuilderTest
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
             if (rankPos == 0)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 8, 20);
+                validateVictoryRange (squadronMember.getVictories().size(), 6, 30);
             }
             else  if (rankPos == 1)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 3, 15);
+                validateVictoryRange (squadronMember.getVictories().size(), 3, 20);
             }
             else  if (rankPos == 2)
             {
@@ -122,11 +111,11 @@ public class SquadronMemberInitialVictoryBuilderTest
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
             if (rankPos == 0)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 8, 20);
+                validateVictoryRange (squadronMember.getVictories().size(), 6, 30);
             }
             else  if (rankPos == 1)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 1, 15);
+                validateVictoryRange (squadronMember.getVictories().size(), 1, 20);
             }
             else  if (rankPos == 2)
             {
@@ -156,7 +145,7 @@ public class SquadronMemberInitialVictoryBuilderTest
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
             if (rankPos == 0)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 8, 17);
+                validateVictoryRange (squadronMember.getVictories().size(), 6, 17);
             }
             else  if (rankPos == 1)
             {
@@ -164,7 +153,7 @@ public class SquadronMemberInitialVictoryBuilderTest
             }
             else  if (rankPos == 2)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 0, 6);
+                validateVictoryRange (squadronMember.getVictories().size(), 0, 7);
             }
             else
             {
@@ -176,6 +165,10 @@ public class SquadronMemberInitialVictoryBuilderTest
 
     private void validateVictoryRange(int numVictories, int min, int max)
     {
+        if (numVictories < min || numVictories > max)
+        {
+            System.out.println("Victoris not in range : " + numVictories + "     Min: " + min + "     Max: " + max);
+        }
         assert(numVictories >= min);
         assert(numVictories <= max);
     }

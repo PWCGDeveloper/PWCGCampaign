@@ -46,9 +46,6 @@ public class CombatReportIOJsonTest
     {
         Map<String, CombatReport> combatReports1 = CombatReportIOJson.readJson(campaign, 12345);
         assert (combatReports1.size() > 0);
-        
-        Map<String, CombatReport> combatReports2 = CombatReportIOJson.readJson(campaign, 12346);
-        assert (combatReports2.size() > 0);
     }
 
 }
