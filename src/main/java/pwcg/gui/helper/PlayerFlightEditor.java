@@ -14,6 +14,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.Unit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightPositionHelperPlayerStart;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
@@ -41,7 +42,7 @@ public class PlayerFlightEditor
 
     private void updatePlanesFromBriefing(List<CrewPlanePayloadPairing> crewPlanes) throws PWCGException
     {
-        int numInFormation = 0;
+        int numInFormation = Unit.NUM_IN_FORMATION_START;
         for (CrewPlanePayloadPairing crewPlane : crewPlanes)
         {
             createPlaneBasedOnBriefingSelections(numInFormation, crewPlane);
@@ -63,7 +64,7 @@ public class PlayerFlightEditor
     private void createPlaneBasedOnBriefingSelections(int numInFormation, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
         PlaneMCU plane = null;
-        if (numInFormation == 0)
+        if (numInFormation == Unit.NUM_IN_FORMATION_START)
         {
             plane = updateLeader(crewPlane);
         }

@@ -111,11 +111,6 @@ public class AARContext
     {
         this.reconciledOutOfMissionData = reconciledOutOfMissionData;
     }
-
-    public void setCampaignUpdateData(CampaignUpdateData campaignUpdateData)
-    {
-        this.aarTabulatedData.setCampaignUpdateData(campaignUpdateData);
-    }
     
     public ReconciledOutOfMissionData getCumulativeMissionData()
     {

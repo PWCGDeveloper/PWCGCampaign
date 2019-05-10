@@ -16,6 +16,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.Unit;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.McuTREntity;
 
@@ -30,7 +31,7 @@ public abstract class Vehicle implements Cloneable, IVehicle
 	protected String script = "";
 	protected String model = "";
 	protected String Desc = "";
-	protected int numberInFormation = 0;
+	protected int numberInFormation = Unit.NUM_IN_FORMATION_START;
 	protected int vulnerable = 1;
 	protected int engageable = 1;
 	protected int limitAmmo = 1;

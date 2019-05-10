@@ -236,7 +236,7 @@ public class Campaign
         return false;
     }
 
-	private boolean isValidCampaignForProduct() throws PWCGException 
+	public boolean isValidCampaignForProduct() throws PWCGException 
 	{
 		Date campaignDate = campaignData.getDate();
         if (campaignDate.before(DateUtils.getDateYYYYMMDD("19300101")) && !PWCGContextManager.isRoF())

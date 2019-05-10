@@ -32,7 +32,7 @@ public class MissionFlightWriter
 
     private void writeFlights(List<Flight> flights, BufferedWriter writer) throws PWCGException
     {
-        for (Flight flight : mission.getMissionFlightBuilder().getMissionFlights())
+        for (Flight flight : flights)
         {
             flight.write(writer);
             for (Unit linkedUnit : flight.getLinkedUnits())

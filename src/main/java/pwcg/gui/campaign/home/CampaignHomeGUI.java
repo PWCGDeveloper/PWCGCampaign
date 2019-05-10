@@ -53,6 +53,7 @@ import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.ReferencePlayerFInder;
 import pwcg.gui.utils.ToolTipManager;
 import pwcg.gui.utils.UIUtils;
 import pwcg.mission.Mission;
@@ -65,6 +66,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
     
     private CampaignMainGUI parent = null;
     private Campaign campaign = null;
+    private SquadronMember referencePlayer = null;
     private JButton loneWolfMission = null;
     private List<JButton> activeButtons = new ArrayList<JButton>();
     private boolean needContextRefresh = false;
@@ -74,6 +76,10 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         super();
         this.parent = parent;
         this.campaign = campaign;
+        this.referencePlayer = ReferencePlayerFInder.findReferencePlayer(campaign);
+        
+        PWCGContextManager.getInstance().setReferencePlayer(referencePlayer);
+        
         this.makeGUI();
     }
 
@@ -341,9 +347,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         }
         else
         {
-        	// TODO COOP Have to make this screen ... with no human participants added mission create will not work
-        	MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        	
+        	MissionHumanParticipants participatingPlayers = buildParticipatingPlayers();        	
             if (campaign.getCurrentMission() == null)
             {
                 MissionGenerator missionGenerator = new MissionGenerator(participatingPlayers);
@@ -363,6 +367,21 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         }
 
         return mission;
+    }
+
+    private MissionHumanParticipants buildParticipatingPlayers()
+    {
+        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
+        if (campaign.getCampaignData().isCoop())
+        {
+            // TODO COOP Have to make this screen ... with no human participants added mission create will not work
+        }
+        else
+        {
+            participatingPlayers.addSquadronMember(this.referencePlayer);
+        }
+        
+        return participatingPlayers;
     }
 
     private boolean endOfEast() throws PWCGException 

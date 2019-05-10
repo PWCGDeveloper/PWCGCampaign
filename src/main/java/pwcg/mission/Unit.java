@@ -19,6 +19,8 @@ public abstract class Unit  implements IPWCGObject
     abstract public String getName() throws PWCGException ;
     abstract public MissionBeginUnit getMissionBeginUnit();
 
+    public static final Integer NUM_IN_FORMATION_START = 1;
+    
 	public Unit()
 	{
 	}

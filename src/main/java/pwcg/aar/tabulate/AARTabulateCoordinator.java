@@ -27,12 +27,13 @@ public class AARTabulateCoordinator
         this.aarContext = aarContext;
     }
     
-    public AARTabulatedData tabulate() throws PWCGException 
+    public void tabulate() throws PWCGException 
     {
         tabulateCombatReport();
         tabulateFlightDebriefUI();
         tabulateAARForCampaignUpdate();
-        return tabulatedData;
+        
+        aarContext.setAarTabulatedData(tabulatedData);
     }
     
     private void tabulateCombatReport() throws PWCGException
@@ -53,6 +54,6 @@ public class AARTabulateCoordinator
     {
         AARCampaignUpdateTabulator campaignUpdateTabulator = new AARCampaignUpdateTabulator(campaign, aarContext);
         CampaignUpdateData campaignUpdateData = campaignUpdateTabulator.tabulateAARForCampaignUpdate();
-        aarContext.setCampaignUpdateData(campaignUpdateData);
+        tabulatedData.setCampaignUpdateData(campaignUpdateData);
     }
 }

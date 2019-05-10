@@ -24,6 +24,7 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogCategory;
+import pwcg.mission.Unit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuAttack;
@@ -48,7 +49,7 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
     protected Skin skin = null;
     protected AiSkillLevel aiSkillLevel = AiSkillLevel.NOVICE;
     protected int coopStart = 0;
-    protected int numberInFormation = 0;
+    protected int numberInFormation = Unit.NUM_IN_FORMATION_START;
     protected int vulnerable = 1;
     protected int engageable = 1;
     protected int limitAmmo = 1;

@@ -15,6 +15,7 @@ import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.Unit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.crew.FlightCrewBuilder;
 
@@ -70,7 +71,7 @@ public class PlaneMCUFactory
 
 	private void initializePlaneParameters() throws PWCGException
 	{
-		int numInFormation = 1;
+		int numInFormation = Unit.NUM_IN_FORMATION_START;
         for (PlaneMCU plane : planesForFlight)
         {
             setPlaceInFormation(numInFormation, plane);
@@ -85,7 +86,7 @@ public class PlaneMCUFactory
 	{
 		if (flight.isVirtual())
 		{
-		    aiPlane.setNumberInFormation(0);
+		    aiPlane.setNumberInFormation(Unit.NUM_IN_FORMATION_START);
 		}
 		else
 		{

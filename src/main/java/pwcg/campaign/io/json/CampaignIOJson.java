@@ -42,15 +42,18 @@ public class CampaignIOJson
         CampaignData campaignData = jsoReader1.readJsonFile(campaignDir, "Campaign.json"); 
         campaign.setCampaignData(campaignData);
 
-        JsonObjectReader<CampaignAces> jsoReader3 = new JsonObjectReader<>(CampaignAces.class);
-        CampaignAces campaignAces = jsoReader3.readJsonFile(campaignDir, "CampaignAces.json"); 
-        campaign.getPersonnelManager().setCampaignAces(campaignAces);
-
-        JsonObjectReader<CampaignLogs> jsonWriter4 = new JsonObjectReader<>(CampaignLogs.class);
-        CampaignLogs campaignLogs = jsonWriter4.readJsonFile(campaignDir, "CampaignLog.json"); 
-        campaign.setCampaignLogs(campaignLogs);
-
-        CampaignPersonnelIOJson.readJson(campaign);
-        CampaignEquipmentOJson.readJson(campaign);
+        if (campaign.isValidCampaignForProduct())
+        {
+            JsonObjectReader<CampaignAces> jsoReader3 = new JsonObjectReader<>(CampaignAces.class);
+            CampaignAces campaignAces = jsoReader3.readJsonFile(campaignDir, "CampaignAces.json"); 
+            campaign.getPersonnelManager().setCampaignAces(campaignAces);
+    
+            JsonObjectReader<CampaignLogs> jsonWriter4 = new JsonObjectReader<>(CampaignLogs.class);
+            CampaignLogs campaignLogs = jsonWriter4.readJsonFile(campaignDir, "CampaignLog.json"); 
+            campaign.setCampaignLogs(campaignLogs);
+    
+            CampaignPersonnelIOJson.readJson(campaign);
+            CampaignEquipmentOJson.readJson(campaign);
+        }
     }
 }
