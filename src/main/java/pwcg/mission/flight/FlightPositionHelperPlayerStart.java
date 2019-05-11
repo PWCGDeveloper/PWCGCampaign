@@ -29,6 +29,10 @@ public class FlightPositionHelperPlayerStart
         {
             createPlanePositionCloseToFirstWP();
         }
+        else if (flight.isParkedStart())
+        {
+            createPlanePositionParked();
+        }
         else
         {
             createPlanePositionRunway();
@@ -55,6 +59,12 @@ public class FlightPositionHelperPlayerStart
             int startOnRunwayVal = productSpecificConfiguration.startOnRunway();
             plane.setStartInAir(startOnRunwayVal);
         }
+    }
+
+    private void createPlanePositionParked() throws PWCGException
+    {
+        FlightPositionHelperParkedStart flightPositionHelperParkedStart = new FlightPositionHelperParkedStart(campaign, flight);
+        flightPositionHelperParkedStart.createPlanePositionParkedStart();
     }
 
     private void createPlanePositionCloseToFirstWP() throws PWCGException
