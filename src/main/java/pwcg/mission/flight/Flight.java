@@ -684,7 +684,7 @@ public abstract class Flight extends Unit
         {
             for (McuWaypoint waypoint : missionWP)
             {
-                allMissionPointsForPlane.add(waypoint.copy());
+                allMissionPointsForPlane.add(waypoint);
             }
         }
 
