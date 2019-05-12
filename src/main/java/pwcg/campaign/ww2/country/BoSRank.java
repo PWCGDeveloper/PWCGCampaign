@@ -136,6 +136,18 @@ public class BoSRank implements IRankHelper
             return abbrev;
         }
 
+        abbrev = getRankAbbrevByService (rank, usaaf);
+        if (abbrev.length() > 0)
+        {
+            return abbrev;
+        }
+
+        abbrev = getRankAbbrevByService (rank, raf);
+        if (abbrev.length() > 0)
+        {
+            return abbrev;
+        }
+
         return "";
     }
 

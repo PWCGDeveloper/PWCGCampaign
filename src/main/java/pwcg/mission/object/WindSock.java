@@ -55,7 +55,7 @@ public class WindSock
         Coordinate windSockCoordMoveLeft = MathUtils.calcNextCoord(flight.getAirfield().getTakeoffLocation().getPosition(), angleWindSockLeft, windsockDistance);
 
         double angleBack = MathUtils.adjustAngle(takeoffOrientation, 180);
-        Coordinate windsockPos = MathUtils.calcNextCoord(windSockCoordMoveLeft, angleBack, 20.0);
+        Coordinate windsockPos = MathUtils.calcNextCoord(windSockCoordMoveLeft, angleBack, -20.0);
 
         return new WindSock(windsockPos);
     }
