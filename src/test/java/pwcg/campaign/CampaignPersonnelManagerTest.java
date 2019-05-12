@@ -55,7 +55,7 @@ public class CampaignPersonnelManagerTest
     @Test
     public void testReplacementRetrieval() throws PWCGException
     {
-        List<ArmedService> armedServices = ArmedServiceFactory.createServiceManager().getAllArmedServices();
+        List<ArmedService> armedServices = ArmedServiceFactory.createServiceManager().getAllActiveArmedServices(campaign.getDate());
         for (ArmedService service : armedServices)
         {
             PersonnelReplacementsService replacementsForService = campaign.getPersonnelManager().getPersonnelReplacementsService(service.getServiceId());

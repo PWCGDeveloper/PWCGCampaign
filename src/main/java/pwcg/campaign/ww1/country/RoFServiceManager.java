@@ -519,24 +519,6 @@ public class RoFServiceManager extends ArmedServiceManager implements IArmedServ
     }
 
     @Override
-    public ArmedService getArmedService(int serviceId) throws PWCGException
-    {
-        return super.getArmedService(serviceId);
-    }
-
-    @Override
-    public List<ArmedService> getAllArmedServices() throws PWCGException
-    {
-        return super.getAllArmedServices();
-    }
-
-    @Override
-    public List<ArmedService> getAxisServices(Date date) throws PWCGException
-    {
-        return super.getAxisServices(date);
-    }
-
-    @Override
     public ArmedService getPrimaryServiceForNation(Country country, Date date) throws PWCGException
     {
         if (country == Country.AUSTRIA)

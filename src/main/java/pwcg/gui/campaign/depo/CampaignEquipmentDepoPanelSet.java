@@ -78,7 +78,7 @@ public class CampaignEquipmentDepoPanelSet extends PwcgGuiContext implements Act
 			tabs.setOpaque(false);
 			
 			IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
-			for (ArmedService service : serviceManager.getAllArmedServices())
+			for (ArmedService service : serviceManager.getAllActiveArmedServices(campaign.getDate()))
 			{
 			    CampaignEquipmentDepoPanel serviceEquipmentDepoTab = new CampaignEquipmentDepoPanel(campaign, service);
 			    serviceEquipmentDepoTab.makePanel();

@@ -47,6 +47,23 @@ public abstract class ArmedServiceManager
         return allServices;
     }
 
+    public List<ArmedService> getAllActiveArmedServices(Date date) throws PWCGException
+    {
+        List<ArmedService> allServices = new ArrayList<ArmedService>();
+        for (List<ArmedService> armedServicesForCountry : armedServicesByCountry.values())
+        {
+            for (ArmedService service: armedServicesForCountry)
+            {
+                if (!(date.before(service.getServiceStartDate())))
+                {
+                    allServices.addAll(armedServicesForCountry);
+                }
+            }
+        }
+        
+        return allServices;
+    }
+
     public List<ArmedService> getAlliedServices(Date date) throws PWCGException
     {
         List<ArmedService> alliedServices = new ArrayList<ArmedService>();

@@ -46,7 +46,7 @@ public class AARResupplyCoordinator
     private void squadronTransfers() throws PWCGException
     {
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
-        for (ArmedService armedService : serviceManager.getAllArmedServices())
+        for (ArmedService armedService : serviceManager.getAllActiveArmedServices(campaign.getDate()))
         {
             ResupplyNeedBuilder transferNeedBuilder = new ResupplyNeedBuilder(campaign, armedService);
             TransferHandler squadronTransferHandler = new TransferHandler(campaign, transferNeedBuilder);
@@ -58,7 +58,7 @@ public class AARResupplyCoordinator
     private void equipmentResupply() throws PWCGException
     {
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
-        for (ArmedService armedService : serviceManager.getAllArmedServices())
+        for (ArmedService armedService : serviceManager.getAllActiveArmedServices(campaign.getDate()))
         {
             replaceWithdrawnPlanes(armedService);
             replaceLostPlanes(armedService);

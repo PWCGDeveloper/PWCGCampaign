@@ -29,7 +29,7 @@ public class InitialReplacementStafferTest
         PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
 
-        List<ArmedService> armedServices = ArmedServiceFactory.createServiceManager().getAllArmedServices();
+        List<ArmedService> armedServices = ArmedServiceFactory.createServiceManager().getAllActiveArmedServices(campaign.getDate());
         for (ArmedService service : armedServices)
         {
             InitialReplacementStaffer initialReplacementStaffer = new InitialReplacementStaffer(campaign, service);

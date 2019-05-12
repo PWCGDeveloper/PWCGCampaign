@@ -66,7 +66,7 @@ public class CampaignGenerator
 
     private void staffReplacements() throws PWCGException
     {
-        List<ArmedService> armedServices = ArmedServiceFactory.createServiceManager().getAllArmedServices();
+        List<ArmedService> armedServices = ArmedServiceFactory.createServiceManager().getAllActiveArmedServices(campaign.getDate());
         for (ArmedService armedService : armedServices)
         {
             CampaignEquipmentGenerator equipmentGenerator = new CampaignEquipmentGenerator(campaign, armedService);

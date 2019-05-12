@@ -18,6 +18,8 @@ public interface IArmedServiceManager
 
     List<ArmedService> getAllArmedServices() throws PWCGException;
 
+    List<ArmedService> getAllActiveArmedServices(Date date) throws PWCGException;
+
     List<ArmedService> getAlliedServices(Date date) throws PWCGException;
 
     List<ArmedService> getAxisServices(Date date) throws PWCGException;
