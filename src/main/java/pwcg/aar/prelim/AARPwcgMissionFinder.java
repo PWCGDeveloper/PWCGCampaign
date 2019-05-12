@@ -21,8 +21,8 @@ public class AARPwcgMissionFinder
     
     public List<PwcgMissionData> getSortedPwcgMissionsForCampaign() throws PWCGException
     {
-        directoryReader.sortilesInDir(campaign.getCampaignPath());
-        List<String> pwcgMissionFileNames = directoryReader.getSortedFilesWithFilter(".MissionData.json");
+        directoryReader.sortilesInDir(CampaignMissionIOJson.buildMissionDataPath(campaign));
+        List<String> pwcgMissionFileNames = directoryReader.getSortedFilesWithFilter(CampaignMissionIOJson.MISSION_DATA_SUFFIX);
 
         return loadPwcgMissionDataSets(pwcgMissionFileNames);
     }

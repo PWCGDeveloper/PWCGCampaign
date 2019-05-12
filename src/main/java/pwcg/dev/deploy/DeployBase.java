@@ -1,11 +1,7 @@
 package pwcg.dev.deploy;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.HashMap;
 
 import pwcg.core.utils.FileUtils;
@@ -89,7 +85,8 @@ public abstract class DeployBase
 
 						if (wanted)
 						{
-							copyFile(files[n], nextDirectory);
+						    FileUtils fileUtils = new FileUtils();
+						    fileUtils.copyFile(files[n], nextDirectory);
 						}
 					}
 				}
@@ -99,21 +96,6 @@ public abstract class DeployBase
 		{
 			Logger.log(LogLevel.INFO, "Directory not being copied is " + sourceDirName);
 		}
-	}
-
-	public void copyFile(File source, File destination) throws IOException 
-	{
-		//
-		// if the destination is a dir, what we really want to do is create
-		// a file with the same name in that dir
-		//
-		if (destination.isDirectory())
-		{
-			destination = new File(destination, source.getName());
-		}
-		
-		FileInputStream input = new FileInputStream(source);
-		copyFile(input, destination);
 	}
 
 	protected HashMap<String, Object> loadUnwantedFileTypes() 
@@ -133,26 +115,6 @@ public abstract class DeployBase
 		unwantedFileTypes.put(".project", null);
 
 		return unwantedFileTypes;
-	}
-
-	public static void copyFile(InputStream input, File destination) throws IOException 
-	{
-		OutputStream output = null;
-
-		output = new FileOutputStream(destination);
-
-		byte[] buffer = new byte[1024];
-
-		int bytesRead = input.read(buffer);
-
-		while (bytesRead >= 0) {
-			output.write(buffer, 0, bytesRead);
-			bytesRead = input.read(buffer);
-		}
-
-		input.close();
-
-		output.close();
 	}
 	
 	protected HashMap<String, Object> loadDirectoriesToCopyPWCG() 

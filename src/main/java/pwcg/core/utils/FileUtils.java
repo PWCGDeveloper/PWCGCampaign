@@ -1,8 +1,12 @@
 package pwcg.core.utils;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -176,4 +180,36 @@ public class FileUtils
         }
     }
 
+
+    public void copyFile(File source, File destination) throws IOException 
+    {
+        if (destination.isDirectory())
+        {
+            destination = new File(destination, source.getName());
+        }
+        
+        FileInputStream input = new FileInputStream(source);
+        copyFile(input, destination);
+    }
+
+
+    public void copyFile(InputStream input, File destination) throws IOException 
+    {
+        OutputStream output = null;
+
+        output = new FileOutputStream(destination);
+
+        byte[] buffer = new byte[1024];
+
+        int bytesRead = input.read(buffer);
+
+        while (bytesRead >= 0) {
+            output.write(buffer, 0, bytesRead);
+            bytesRead = input.read(buffer);
+        }
+
+        input.close();
+
+        output.close();
+    }
 }

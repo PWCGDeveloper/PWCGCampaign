@@ -54,6 +54,9 @@ public class Campaign
         {
             return false;
         }
+        
+        CampaignV5V6Converter converter = new CampaignV5V6Converter(this);
+        converter.convert();
 
         InitialSquadronBuilder initialSquadronBuilder = new InitialSquadronBuilder();
         initialSquadronBuilder.buildNewSquadrons(this);

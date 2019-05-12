@@ -14,6 +14,8 @@ import pwcg.core.utils.FileUtils;
 
 public class CombatReportIOJson 
 {
+    public final static String COMBAT_REPORT_SUFFIX = ".CombatReport.json";
+
 	public static void writeJson(Campaign campaign, CombatReport combatReport) throws PWCGException
 	{
         String combatReportPath = buildCombatReportPath(campaign, combatReport.getPilotSerialNumber());
@@ -23,7 +25,7 @@ public class CombatReportIOJson
             combatReportDir.mkdirs();
         }
         JsonWriter<CombatReport> jsonWriter = new JsonWriter<>();
-        jsonWriter.writeAsJson(combatReport, combatReportPath, DateUtils.getDateStringYYYYMMDD(combatReport.getDate()) + ".CombatReport.json");
+        jsonWriter.writeAsJson(combatReport, combatReportPath, DateUtils.getDateStringYYYYMMDD(combatReport.getDate()) + "COMBAT_REPORT_SUFFIX");
 	}
 
 	public static Map<String, CombatReport> readJson(Campaign campaign, Integer pilotSerialNumber) throws PWCGException
@@ -31,18 +33,27 @@ public class CombatReportIOJson
 	    Map<String, CombatReport> combatReportsForCampaign = new TreeMap<>();
 		FileUtils fileUtils = new FileUtils();
         String combatReportPath = buildCombatReportPath(campaign, pilotSerialNumber);
-	    List<File> combatReportFiles = fileUtils.getFilesWithFilter(combatReportPath, ".CombatReport.json");
+	    List<File> combatReportFiles = fileUtils.getFilesWithFilter(combatReportPath, COMBAT_REPORT_SUFFIX);
 		for (File combatReportFile : combatReportFiles)
 		{
 			JsonObjectReader<CombatReport> jsoReader = new JsonObjectReader<>(CombatReport.class);
 			CombatReport combatReport = jsoReader.readJsonFile(combatReportPath, combatReportFile.getName()); 
+			convertV5ToV6(pilotSerialNumber, combatReport);			
 			combatReportsForCampaign.put(DateUtils.getDateStringYYYYMMDD(combatReport.getDate()), combatReport);
 		}
 		
 		return combatReportsForCampaign;
 	}
 
-    private static String buildCombatReportPath(Campaign campaign, Integer pilotSerialNumber)
+    private static void convertV5ToV6(Integer pilotSerialNumber, CombatReport combatReport)
+    {
+        if (combatReport.getPilotSerialNumber() <= 0)
+        {
+            combatReport.setPilotSerialNumber(pilotSerialNumber);
+        }
+    }
+
+    public static String buildCombatReportPath(Campaign campaign, Integer pilotSerialNumber)
     {
         String combatReportPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\CombatReports\\" + pilotSerialNumber + "\\";
         return combatReportPath;
