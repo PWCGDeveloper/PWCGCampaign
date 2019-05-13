@@ -30,7 +30,9 @@ import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuAttack;
 import pwcg.mission.mcu.McuTREntity;
 import pwcg.mission.mcu.McuTimer;
-import pwcg.mission.mcu.group.PlaneRemover;
+import pwcg.mission.mcu.group.IPlaneRemover;
+import pwcg.mission.mcu.group.PlaneRemoverCoop;
+import pwcg.mission.mcu.group.PlaneRemoverSinglePlayer;
 
 /**
  * Plane is an instance of a plane.  It derives from plane type and adds a crew, payload, fuel state, and
@@ -40,7 +42,7 @@ import pwcg.mission.mcu.group.PlaneRemover;
  *
  */
 public class PlaneMCU extends EquippedPlane implements Cloneable
-{    
+{        
     protected String name = "";
     protected int index;
     protected int linkTrId;
@@ -64,7 +66,7 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
     protected int aiRTBDecision = 1;
     protected int deleteAfterDeath = 1;
 
-    protected PlaneRemover planeRemover = null;
+    protected IPlaneRemover planeRemover = null;
     protected IPlanePayload payload = null;
 
     protected McuTREntity entity = new McuTREntity();
@@ -73,10 +75,12 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
     protected McuTimer attackTimer = new McuTimer();
     protected McuAttack attackEntity = new McuAttack();
     
+    private Campaign campaign;
     private SquadronMember pilot;
     
-    public PlaneMCU(EquippedPlane equippedPlane, ICountry country, SquadronMember pilot)
+    public PlaneMCU(Campaign campaign, EquippedPlane equippedPlane, ICountry country, SquadronMember pilot)
     {
+        this.campaign = campaign;
         this.pilot = pilot;
         
         equippedPlane.copyTemplate(this);
@@ -136,10 +140,18 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
         }
     }
 
-    public void createPlaneRemover (Flight flight) throws PWCGException 
+    public void createPlaneRemover (Flight flight, PlaneMCU playerPlane) throws PWCGException 
     {
-        planeRemover = new PlaneRemover();
-        planeRemover.initialize(flight, this);
+        if (campaign.getCampaignData().isCoop())
+        {
+            planeRemover = new PlaneRemoverCoop();
+            planeRemover.initialize(flight, this, playerPlane);
+        }
+        else
+        {
+            planeRemover = new PlaneRemoverSinglePlayer();
+            planeRemover.initialize(flight, this, playerPlane);
+        }
     }
 
     public boolean isPlayerPlane(Integer playerSerialNumber)
@@ -532,7 +544,7 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
         this.setSide(country.getSide());
     }
 
-    public PlaneRemover getPlaneRemover()
+    public IPlaneRemover getPlaneRemover()
     {
         return this.planeRemover;
     }

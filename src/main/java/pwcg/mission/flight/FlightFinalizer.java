@@ -18,7 +18,7 @@ import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuMessage;
 import pwcg.mission.mcu.McuWaypoint;
-import pwcg.mission.mcu.group.PlaneRemover;
+import pwcg.mission.mcu.group.IPlaneRemover;
 import pwcg.mission.mcu.group.VirtualWayPoint;
 
 public class FlightFinalizer 
@@ -191,7 +191,8 @@ public class FlightFinalizer
                 PlaneMCU plane = flight.getPlanes().get(i);
                 if (!plane.getPilot().isPlayer())
                 {
-                    plane.createPlaneRemover(flight);
+                    PlaneMCU playerPlane = flight.getMission().getMissionFlightBuilder().getPlayerFlights().get(0).getPlayerPlanes().get(0);
+                    plane.createPlaneRemover(flight, playerPlane);
                 }
                 
                 for (VirtualWayPoint virtualWaypoint : ((VirtualWaypointPackage) flight.getWaypointPackage()).getVirtualWaypoints())
@@ -200,7 +201,7 @@ public class FlightFinalizer
                     // the flight becomes active.
                     // Only one virtual WP will ever trigger, so the plane
                     // remover will be instantiated only once.
-                    PlaneRemover planeRemover = plane.getPlaneRemover();
+                    IPlaneRemover planeRemover = plane.getPlaneRemover();
                     if (planeRemover != null)
                     {
                         virtualWaypoint.onTriggerAddTarget(plane, planeRemover.getEntryPoint().getIndex());

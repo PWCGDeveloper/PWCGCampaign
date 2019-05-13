@@ -65,7 +65,7 @@ public class PlaneMCUFactory
     
     public PlaneMCU createPlaneMcuByPlaneType (EquippedPlane equippedPlane, ICountry country, SquadronMember pilot)
     {
-        PlaneMCU plane = new PlaneMCU(equippedPlane, country, pilot);
+        PlaneMCU plane = new PlaneMCU(campaign, equippedPlane, country, pilot);
         return plane;
     }
 
