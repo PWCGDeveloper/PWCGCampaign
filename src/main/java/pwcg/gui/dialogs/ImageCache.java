@@ -9,6 +9,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.ref.SoftReference;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
@@ -21,7 +22,7 @@ import pwcg.core.utils.PWCGLogger.LogLevel;
 public class ImageCache 
 {
 	private static ImageCache instance = null;
-	private static HashMap<String, BufferedImage> bufferedImageCache = new HashMap<String, BufferedImage>();
+	private static HashMap<String, SoftReference<BufferedImage>> bufferedImageCache = new HashMap<>();
 	private static HashMap<String, ImageIcon> imageIconCache = new HashMap<String, ImageIcon>();
 	
 	private ImageCache ()
@@ -42,19 +43,29 @@ public class ImageCache
 	{
 		try
         {
-            BufferedImage image = bufferedImageCache.get(imagePath);
+		    SoftReference<BufferedImage> ref = bufferedImageCache.get(imagePath);
+            BufferedImage image = ref != null ? ref.get() : null;
             if (image == null)
             {
-            	File file = new File(imagePath);
-            	if (file.exists())
-            	{
-            		image = ImageIO.read(new File(imagePath));
-            		bufferedImageCache.put(imagePath, image);
-            	}
-            	else
-            	{
-            	    PWCGLogger.log(LogLevel.ERROR, "Image not found: " + imagePath);
-            	}
+                synchronized (this) {
+                    // Try to fetch again to avoid a race condition where two threads try to load an image
+                    ref = bufferedImageCache.get(imagePath);
+                    image = ref != null ? ref.get() : null;
+
+                    if (image != null)
+                        return image;
+
+                    File file = new File(imagePath);
+                    if (file.exists())
+                    {
+                        image = ImageIO.read(new File(imagePath));
+                        bufferedImageCache.put(imagePath, new SoftReference<>(image));
+                    }
+                    else
+                    {
+                        PWCGLogger.log(LogLevel.ERROR, "Image not found: " + imagePath);
+                    }
+                }
             }
             
             return image;
