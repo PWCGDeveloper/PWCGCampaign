@@ -1,4 +1,4 @@
-package pwcg.gui.campaign.coop;
+package pwcg.gui.utils;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -18,8 +18,6 @@ import javax.swing.JPanel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.gui.utils.ToolTipManager;
 
 public class MultiSelectGUI implements ActionListener
 {

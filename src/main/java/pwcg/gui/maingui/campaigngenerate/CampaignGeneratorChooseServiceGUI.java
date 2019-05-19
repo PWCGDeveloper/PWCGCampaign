@@ -1,4 +1,4 @@
-package pwcg.gui.maingui;
+package pwcg.gui.maingui.campaigngenerate;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

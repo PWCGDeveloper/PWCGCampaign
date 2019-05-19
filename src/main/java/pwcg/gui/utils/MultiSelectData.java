@@ -1,4 +1,4 @@
-package pwcg.gui.campaign.coop;
+package pwcg.gui.utils;
 
 public class MultiSelectData
 {

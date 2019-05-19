@@ -34,6 +34,11 @@ import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
+import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorPanelSet;
+import pwcg.gui.maingui.config.ConfigurationGlobalGUI;
+import pwcg.gui.maingui.config.ConfigurationPlanesOwnedPanelSet;
+import pwcg.gui.maingui.config.ConfigurationSkinAnalysisPanelSet;
+import pwcg.gui.maingui.coop.CoopAdminGui;
 import pwcg.gui.rofmap.MapPanelBase;
 import pwcg.gui.rofmap.brief.PwcgGuiModSupport;
 import pwcg.gui.rofmap.editmap.EditorMapGUI;
@@ -320,8 +325,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
         makeMenuButton ("Music", "Music", buttonPanel);
         makeMenuButton ("Skin Analysis", "Skin Analysis", buttonPanel);
         makeMenuButton ("PWCG Information", "PWCG Information", buttonPanel);
-        makeMenuButton ("Administer Coop Participation", "Administer Coop Participation", buttonPanel);
-        makeMenuButton ("Administer Coop Pilot Creation", "Administer Coop Pilot Creation", buttonPanel);
+        makeMenuButton ("Administer Coop", "Administer Coop", buttonPanel);
         
         if (displayFrontLineEditor)
         {
@@ -505,13 +509,17 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 			{
 				System.exit(0);
 			}
-            if (action.equals("Skin Analysis"))
+			else if (action.equals("Skin Analysis"))
             {
                 showSkinAnalysis();
             }
-            if (action.equals("Planes Owned"))
+            else if (action.equals("Planes Owned"))
             {
                 showPlanesOwned();
+            }
+            else if (action.equals("Administer Coop"))
+            {
+                showCoopAdmin();
             }
             else if (action.equals("Configuration"))
             {
@@ -565,12 +573,22 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        ConfigurationPlanesOwnedPanelSet planwesOwned = new ConfigurationPlanesOwnedPanelSet(this);
-        planwesOwned.makePanels();
+        ConfigurationPlanesOwnedPanelSet planesOwned = new ConfigurationPlanesOwnedPanelSet(this);
+        planesOwned.makePanels();
 
-        CampaignGuiContextManager.getInstance().pushToContextStack(planwesOwned);
+        CampaignGuiContextManager.getInstance().pushToContextStack(planesOwned);
     }
 
+    private void showCoopAdmin() throws PWCGException 
+    {
+        SoundManager.getInstance().playSound("BookOpen.WAV");
+
+        CoopAdminGui coopAdmin = new CoopAdminGui();
+        coopAdmin.makePanels();
+
+        CampaignGuiContextManager.getInstance().pushToContextStack(coopAdmin);
+    }
+    
     private void showSkinAnalysis() throws PWCGException 
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");

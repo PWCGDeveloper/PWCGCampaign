@@ -1,4 +1,4 @@
-package pwcg.gui.maingui;
+package pwcg.gui.maingui.campaigngenerate;
 
 import java.util.Date;
 import java.util.List;

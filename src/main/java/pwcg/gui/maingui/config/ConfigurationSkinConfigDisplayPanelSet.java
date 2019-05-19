@@ -1,4 +1,4 @@
-package pwcg.gui.maingui;
+package pwcg.gui.maingui.config;
 
 import java.awt.BorderLayout;
 import java.awt.Font;

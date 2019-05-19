@@ -1,4 +1,4 @@
-package pwcg.gui.maingui;
+package pwcg.gui.maingui.campaigngenerate;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -22,6 +22,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.maingui.CampaignMainGUI;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGFrame;

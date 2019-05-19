@@ -1,4 +1,4 @@
-package pwcg.gui.maingui;
+package pwcg.gui.maingui.campaigngenerate;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;

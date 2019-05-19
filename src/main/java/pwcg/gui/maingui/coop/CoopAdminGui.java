@@ -1,4 +1,4 @@
-package pwcg.gui.maingui;
+package pwcg.gui.maingui.coop;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -6,8 +6,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -16,30 +14,26 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
-import pwcg.core.config.ConfigManagerGlobal;
-import pwcg.core.config.ConfigSet;
-import pwcg.core.config.ConfigSetKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
-import pwcg.gui.config.ConfigurationParametersGUI;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
-import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class ConfigurationGlobalGUI extends PwcgGuiContext implements ActionListener
+public class CoopAdminGui extends PwcgGuiContext implements ActionListener
 {
     private static final long serialVersionUID = 1L;
-    private Map<String, ConfigurationParametersGUI> configurationGUIs = new HashMap<String, ConfigurationParametersGUI>();
     private ButtonGroup buttonGroup = new ButtonGroup();
-    private ConfigManagerGlobal configManager = null;
+    private CoopUserAccept coopUserAccept = new CoopUserAccept();
+    private CoopPilotAccept coopPilotAccept = new CoopPilotAccept();
+    private CoopHostPassword coopHostPassword = new CoopHostPassword();
 
-    public ConfigurationGlobalGUI()
+    public CoopAdminGui()
     {
         super();
     }
@@ -48,9 +42,11 @@ public class ConfigurationGlobalGUI extends PwcgGuiContext implements ActionList
     {
         try
         {
-            configManager = ConfigManagerGlobal.getInstance();
-            
-            setRightPanel(makeCategoryPanel());
+        	coopUserAccept.makePanels();
+        	coopPilotAccept.makePanels();
+        	coopHostPassword.makePanels();
+        	
+            setRightPanel(makeCoopAdminActionSelectPanel());
             setCenterPanel(makeCenterPanel());
             setLeftPanel(makeNavigatePanel());
         }
@@ -80,18 +76,15 @@ public class ConfigurationGlobalGUI extends PwcgGuiContext implements ActionList
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JButton acceptButton = PWCGButtonFactory.makeMenuButton("Accept Config Changes", "Accept", this);
+        JButton acceptButton = PWCGButtonFactory.makeMenuButton("Finished", "Finished", this);
         buttonPanel.add(acceptButton);
-
-        JButton cancelButton = PWCGButtonFactory.makeMenuButton("Cancel Config Changes", "Cancel", this);
-        buttonPanel.add(cancelButton);
 
         navPanel.add(buttonPanel, BorderLayout.NORTH);
         
         return navPanel;
     }
 
-    public JPanel makeCategoryPanel() throws PWCGException  
+    public JPanel makeCoopAdminActionSelectPanel() throws PWCGException  
     {
         String imagePath = getSideImageMain("ConfigRight.jpg");
 
@@ -102,14 +95,15 @@ public class ConfigurationGlobalGUI extends PwcgGuiContext implements ActionList
         buttonPanel.setOpaque(false);
         
 
-        JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Global Configuration Categories:");
+        JLabel label = PWCGButtonFactory.makeMenuLabelLarge("Select Coop Admin Action:");
         buttonPanel.add(label);
 
         JLabel spacer = PWCGButtonFactory.makeMenuLabelLarge("   ");
         buttonPanel.add(spacer);
 
-        buttonPanel.add(makeCategoryRadioButton("User Preferences"));
-        buttonPanel.add(makeCategoryRadioButton("GUI"));
+        buttonPanel.add(makeActionSelectRadioButton("Change Host Password"));
+        buttonPanel.add(makeActionSelectRadioButton("Administer Coop Users"));
+        buttonPanel.add(makeActionSelectRadioButton("Administer Coop Pilots"));
         
         add (buttonPanel);
 
@@ -118,14 +112,14 @@ public class ConfigurationGlobalGUI extends PwcgGuiContext implements ActionList
         return configPanel;
     }
 
-    private JRadioButton makeCategoryRadioButton(String buttonText) throws PWCGException 
+    private JRadioButton makeActionSelectRadioButton(String buttonText) throws PWCGException 
     {
         Color fgColor = ColorMap.CHALK_FOREGROUND;
 
         Font font = MonitorSupport.getPrimaryFont();
 
         JRadioButton button = new JRadioButton(buttonText);
-        button.setActionCommand("Configuration Parameters: " + buttonText);
+        button.setActionCommand(buttonText);
         button.setHorizontalAlignment(SwingConstants.LEFT );
         button.setBorderPainted(false);
         button.addActionListener(this);
@@ -138,64 +132,31 @@ public class ConfigurationGlobalGUI extends PwcgGuiContext implements ActionList
         return button;
     }
 
-    ConfigurationParametersGUI createConfigPanel(String action) throws PWCGException 
-    {
-        ConfigSet configSet = null;
-
-        if (action.contains("GUI"))
-        {
-        	configSet = configManager.getMergedConfigSet(ConfigSetKeys.ConfigSetGUI);
-        }
-        else if (action.contains("User Preferences"))
-        {
-        	configSet = configManager.getMergedConfigSet(ConfigSetKeys.ConfigSetUserPref);
-        }
-        
-        ConfigurationParametersGUI currentConfig = new ConfigurationParametersGUI (this, configManager, configSet);
-        currentConfig.makeGUI();
-        
-        return currentConfig;
-    }
-
     public void actionPerformed(ActionEvent ae)
     {
         try
         {
             String action = ae.getActionCommand();
-            if (action.equalsIgnoreCase("Accept"))
+            if (action.equalsIgnoreCase("Finished"))
             {
-                for (ConfigurationParametersGUI configUI : configurationGUIs.values())
-                {
-                    configUI.recordChanges();
-                }
-                
-                configManager.write();
-                SoundManager.getInstance().initialize();
-                CampaignGuiContextManager.getInstance().popFromContextStack();
-                return;
-            }
-            else if (action.equalsIgnoreCase("Cancel"))
-            {
-                configManager.readConfig();
+            	coopUserAccept.writeResults();
+            	coopPilotAccept.writeResults();
+            	coopHostPassword.writeResults();
 
                 CampaignGuiContextManager.getInstance().popFromContextStack();
                 return;
             }
-            else if (action.contains("Configuration Parameters"))
+            else if (action.equalsIgnoreCase("Change Host Password"))
             {
-                ConfigurationParametersGUI newConfig = null;
-                
-                if (configurationGUIs.containsKey(action))
-                {
-                    newConfig = configurationGUIs.get(action);
-                }
-                else
-                {
-                    newConfig = createConfigPanel(action);
-                    configurationGUIs.put(action, newConfig);
-                }
-                
-                CampaignGuiContextManager.getInstance().changeCurrentContext(null, newConfig, null);
+                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopHostPassword, null);
+            }
+            else if (action.contains("Administer Coop Users"))
+            {
+                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopUserAccept, null);
+            }
+            else if (action.contains("Administer Coop Pilots"))
+            {
+                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopPilotAccept, null);
             }
         }
         catch (Throwable e)

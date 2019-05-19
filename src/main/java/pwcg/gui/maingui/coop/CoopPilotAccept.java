@@ -1,14 +1,10 @@
-package pwcg.gui.campaign.coop;
+package pwcg.gui.maingui.coop;
 
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
@@ -20,14 +16,13 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.coop.model.CoopPilot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
-import pwcg.gui.CampaignGuiContextManager;
-import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.gui.utils.PWCGButtonFactory;
+import pwcg.gui.utils.MultiSelectData;
+import pwcg.gui.utils.SelectorGUI;
 
-public class CoopPilotAccept extends PwcgGuiContext implements ActionListener
+public class CoopPilotAccept extends ImageResizingPanel
 {
 	private static final long serialVersionUID = 1L;
     private SelectorGUI selector;
@@ -36,15 +31,15 @@ public class CoopPilotAccept extends PwcgGuiContext implements ActionListener
 
 	public CoopPilotAccept()
 	{
-	    super();
+	    super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
 	}
 	
 	public void makePanels() 
 	{
 		try
 		{
-	        setCenterPanel(makeAcceptancePanel());
-	        setLeftPanel(makeNavigatePanel());
+	        JPanel centerPanel = makeAcceptancePanel();
+	        this.add(centerPanel, BorderLayout.CENTER);
 	        loadPanels();
 		}
 		catch (Throwable e)
@@ -86,68 +81,15 @@ public class CoopPilotAccept extends PwcgGuiContext implements ActionListener
         return selectData;
     }
 
-    public JPanel makeNavigatePanel() throws PWCGException  
-    {
-        String imagePath = getSideImageMain("ConfigLeft.jpg");
-
-        JPanel navPanel = new ImageResizingPanel(imagePath);
-        navPanel.setLayout(new BorderLayout());
-
-        JPanel buttonPanel = new JPanel(new GridLayout(0,1));
-        buttonPanel.setOpaque(false);
-
-        JButton acceptButton = PWCGButtonFactory.makeMenuButton("Accept", "Accept", this);
-        buttonPanel.add(acceptButton);
-
-        JButton cancelButton = PWCGButtonFactory.makeMenuButton("Cancel", "Cancel", this);
-        buttonPanel.add(cancelButton);
-
-        navPanel.add(buttonPanel, BorderLayout.NORTH);
-        
-        return navPanel;
-    }
-
 	public JPanel makeAcceptancePanel() throws PWCGException 
 	{	
-        String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-        ImageResizingPanel centerPanel = new ImageResizingPanel(imagePath);
-        centerPanel.setLayout(new BorderLayout());
-        
 	    selector = new SelectorGUI();
 	    boolean allowReject = false;
         JPanel acceptPanel = selector.build(allowReject);
-        centerPanel.add(acceptPanel, BorderLayout.CENTER);
-		
-		add(centerPanel, BorderLayout.CENTER);
-		
-		return centerPanel;
+		return acceptPanel;
 	}
 
-	public void actionPerformed(ActionEvent ae)
-	{
-		try
-		{
-			String action = ae.getActionCommand();
-			if (action.equalsIgnoreCase("Accept"))
-			{
-			    acceptHumanPilot();
-                CampaignGuiContextManager.getInstance().popFromContextStack();
-			}
-			else if (action.equalsIgnoreCase("Cancel"))
-			{
-		        CampaignGuiContextManager.getInstance().popFromContextStack();
-				return;
-			}
-		}
-		catch (Throwable e)
-		{
-			Logger.logException(e);
-			ErrorDialog.internalError(e.getMessage());
-		}
-	}
-	
-
-    private void acceptHumanPilot() throws PWCGException
+    public void writeResults() throws PWCGException
     {
         for (MultiSelectData selectData: selector.getAccepted())
         {

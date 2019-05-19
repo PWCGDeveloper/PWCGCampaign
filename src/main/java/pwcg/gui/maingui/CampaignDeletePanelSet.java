@@ -32,17 +32,11 @@ public class CampaignDeletePanelSet extends PwcgGuiContext implements ActionList
     private List<JCheckBox> campaignCheckBoxes = new ArrayList<JCheckBox>();
     private CampaignMainGUI parent = null;
 
-    /**
-     * 
-     */
     public CampaignDeletePanelSet(CampaignMainGUI parent)
     {
         this.parent = parent;
     }
-    
-    /**
-     * Make the left/center/right panels
-     */
+
     public void makePanels() 
     {
         try
@@ -57,10 +51,6 @@ public class CampaignDeletePanelSet extends PwcgGuiContext implements ActionList
         }
     }
 
-    /**
-     * @throws PWCGException 
-     * @
-     */
     private JPanel makeButtonPanel() throws PWCGException
     {
         String imagePath = getSideImageMain("CampaignDeleteNav.jpg");
@@ -87,13 +77,6 @@ public class CampaignDeletePanelSet extends PwcgGuiContext implements ActionList
         return configPanel;
     }
 
-
-    /**
-     * Create radio buttons for simple ground config
-     * 
-     * @return
-     * @throws PWCGException
-     */
     private JPanel makeCampaignSelectPanel() throws PWCGException
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "paperHalf.jpg";
@@ -127,9 +110,6 @@ public class CampaignDeletePanelSet extends PwcgGuiContext implements ActionList
     }
     
 
-    /**
-     * 
-     */
     @Override
     public void actionPerformed(ActionEvent ae)
     {        
@@ -156,9 +136,6 @@ public class CampaignDeletePanelSet extends PwcgGuiContext implements ActionList
         }
     }
 
-    /**
-     * 
-     */
     private void deleteSelectedCampaigns()
     {
         CampaignRemover campaignRemover = new CampaignRemover();
