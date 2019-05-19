@@ -15,6 +15,9 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGenerator;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.io.json.CoopPilotIOJson;
+import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.coop.model.CoopPilot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.Logger;
@@ -175,8 +178,31 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         CampaignGenerator generator = new CampaignGenerator(generatorModel);
         Campaign campaign = generator.generate();
         
-        campaign.write();
+        writeCampaign(campaign);
         
         return campaign;
+    }
+    
+
+    private void writeCampaign(Campaign campaign) throws PWCGException
+    {
+        campaign.write();
+        if (campaign.getCampaignData().isCoop())
+        {
+        	SquadronMember hostPilot = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+        	
+        	CoopPilot hostPilotRecord = new CoopPilot();
+        	hostPilotRecord.setApproved(true);
+        	hostPilotRecord.setCampaignName(campaign.getCampaignData().getName());
+        	hostPilotRecord.setNote("Auto create host pilot");
+        	hostPilotRecord.setPilotName(hostPilot.getName());
+        	hostPilotRecord.setPilotRank(hostPilot.getRank());
+        	hostPilotRecord.setSerialNumber(hostPilot.getSerialNumber());
+        	hostPilotRecord.setSquadronId(hostPilotRecord.getSquadronId());
+        	hostPilotRecord.setUsername("Host");
+        	
+        	CoopPilotIOJson.writeJson(hostPilotRecord);
+        }
+        PWCGContextManager.getInstance().setCampaign(campaign);
     }
 }

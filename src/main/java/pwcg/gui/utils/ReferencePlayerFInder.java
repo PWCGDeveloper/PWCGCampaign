@@ -12,8 +12,7 @@ public class ReferencePlayerFInder
         {
             if (campaign.getCampaignData().isCoop())
             {
-                // TODO Coop - need screen to choose campaign member
-                return null;
+                return campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
             }
             else
             {

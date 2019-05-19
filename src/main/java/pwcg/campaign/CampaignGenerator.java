@@ -32,12 +32,6 @@ public class CampaignGenerator
         return campaign;
     }
 
-    public void writeCampaign() throws PWCGException
-    {
-        campaign.write();
-        PWCGContextManager.getInstance().setCampaign(campaign);
-    }
-
     private void createCampaignBasis() throws PWCGException
     {
         setMapForNewCampaign();
