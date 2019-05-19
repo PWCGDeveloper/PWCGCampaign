@@ -8,8 +8,28 @@ import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 
 public class CoopHostUserBuilder 
-{
-	public CoopUser makeHostUser(String password) throws PWCGException
+{	
+	public CoopUser getHostUser() throws PWCGException
+    {
+		CoopUser hostUser = null;
+        List<CoopUser> coopUsers = CoopUserIOJson.readCoopUsers();
+        for (CoopUser coopUser : coopUsers)
+        {
+            if (coopUser.getUsername().equals("Host"))
+            {
+            	hostUser = coopUser;
+            }
+        }
+        
+        if (hostUser == null)
+        {
+        	hostUser = makeHostUser("HostPassword");
+        }
+        
+		return hostUser;
+    }
+
+	private CoopUser makeHostUser(String password) throws PWCGException
 	{
 		CoopUser hostUser = new CoopUser();
 		hostUser.setUsername("Host");

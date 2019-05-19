@@ -47,7 +47,6 @@ public class CoopHostPassword extends ImageResizingPanel
 		}
 	}
 	
-
     private void loadPanels() throws PWCGException
     {
         List<CoopUser> coopUsers = CoopUserIOJson.readCoopUsers();
@@ -62,7 +61,7 @@ public class CoopHostPassword extends ImageResizingPanel
         if (coopHostRecord == null)
         {
         	CoopHostUserBuilder hostBuilder = new CoopHostUserBuilder();
-        	coopHostRecord = hostBuilder.makeHostUser("HostPassword");
+        	coopHostRecord = hostBuilder.getHostUser();
         }
 
         hostPasswordTextBox.setText(coopHostRecord.getPassword());
