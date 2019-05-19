@@ -9,8 +9,8 @@ import pwcg.core.utils.Logger.LogLevel;
 
 public class BoSDeploy extends DeployBase
 {
-	static String sourceRootDir = "E:\\PWCG\\workspacePWCGGradle\\PWCGCampaign";
-	static String targetDir = "E:\\PWCG\\BosDeploy";
+	static String sourceRootDir = "D:\\PWCG\\workspacePwcg6\\PWCGCampaign";
+	static String targetDir = "D:\\PWCG\\BosDeploy";
 	
 	static boolean reallyDoDeploy = true;
 
