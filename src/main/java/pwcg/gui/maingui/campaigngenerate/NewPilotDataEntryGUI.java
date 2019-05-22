@@ -29,16 +29,16 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.io.json.CoopUserIOJson;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 import pwcg.gui.campaign.config.CampaignConfigurationSimpleGUIController;
@@ -51,7 +51,7 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.PWCGJButton;
 
-public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements ActionListener
+public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -62,24 +62,20 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
     
 	private static Font font = null;
 	
-    private JTextField campaignNameTextBox;
     private JTextField playerNameTextBox;
     private JTextArea squadronTextBox;
 	private JComboBox<String> cbRegion;
-	private JComboBox<String> cbMap;
-	private JComboBox<String> cbDate;
 	private JComboBox<String> cbRole;
 	private JComboBox<String> cbRank;
 	private JComboBox<String> cbSquadron;
+	private JComboBox<String> cbCoopUser;
     
     private JLabel lSquad;
     private JLabel lRank;
+    private JLabel lCoopUser;
     private JLabel lRole;
-    private JLabel lCampaignName;
     private JLabel lPlayerName;
     private JLabel lRegion;
-    private JLabel lDate;
-    private JLabel lMap;
 
     private CampaignGeneratorDO campaignGeneratorDO = new CampaignGeneratorDO();
     private CampaignGeneratorState campaignGeneratorState;
@@ -89,7 +85,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
     private ButtonModel singlePlayerButtonModel = null;
     private ButtonModel coopButtonModel = null;
 
-	public CampaignGeneratorDataEntryGUI(IPilotGeneratorUI parent) 
+	public NewPilotDataEntryGUI(IPilotGeneratorUI parent) 
 	{
         super(ContextSpecificImages.menuPathMain() + "CampaignGenCenter.jpg");
         this.parent = parent;	    
@@ -136,20 +132,14 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
             rowCount = spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount = spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 
-            rowCount = createCampaignNameWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
-            rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
-
             rowCount = createPlayerNameWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
+            rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
+            
+            rowCount = createCoopUserSelectWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount = createRegionWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
-
-            rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
-            rowCount = createCampaignMapWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
-
-            rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
-            rowCount = createCampaignStartDateWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
 
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount = createCampaignRoleWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
@@ -238,8 +228,38 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         ++rowCount;
         return rowCount;
     }
+    
 
-    private int createNextStepWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
+    private int createCoopUserSelectWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
+                    JPanel campaignGeneratePanel, int rowCount) throws PWCGException
+    {
+        spacerColumn (campaignGeneratePanel, 0, rowCount);
+        
+        lCoopUser = createCampaignGenMenuLabel("Player: ", labelConstraints, campaignGeneratePanel, rowCount);
+        campaignGeneratePanel.add(lCoopUser, labelConstraints);
+
+        cbCoopUser = new JComboBox<String>();
+        cbCoopUser.setOpaque(false);
+        cbCoopUser.setBackground(jComboBoxBackgroundColor);
+        cbCoopUser.setFont(font);
+        
+        dataConstraints.gridx = 2;
+        dataConstraints.gridy = rowCount;
+        campaignGeneratePanel.add(cbCoopUser, dataConstraints);
+
+        cbCoopUser.setSelectedIndex(cbCoopUser.getItemCount()-1);
+        cbCoopUser.setActionCommand("CoopUserChanged");
+        cbCoopUser.addActionListener(this);
+
+        spacerColumn (campaignGeneratePanel, 3, rowCount);
+        List<CoopUser> coopUsers = CoopUserIOJson.readCoopUsers();
+        makeUserChoices(coopUsers);
+        
+        ++rowCount;
+        return rowCount;
+    }
+
+	private int createNextStepWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
                     JPanel campaignGeneratePanel, int rowCount) throws PWCGException
     {
         JLabel lNextStep = createCampaignGenMenuLabel("Press for Next/Previous Step: ", labelConstraints, campaignGeneratePanel, rowCount);
@@ -353,28 +373,6 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         return roles;
     }
 
-    private int createCampaignNameWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
-                    JPanel campaignGeneratePanel, int rowCount) throws PWCGException
-    {
-        spacerColumn (campaignGeneratePanel, 0, rowCount);
-
-        lCampaignName = createCampaignGenMenuLabel("Campaign Name:", labelConstraints, campaignGeneratePanel, rowCount);
-        campaignGeneratePanel.add(lCampaignName, labelConstraints);
-
-        campaignNameTextBox = new JTextField(50);
-        campaignNameTextBox.setFont(font);
-        campaignNameTextBox.setBackground(textBoxBackgroundColor);
-        
-        dataConstraints.gridx = 2;
-        dataConstraints.gridy = rowCount;
-        campaignGeneratePanel.add(campaignNameTextBox, dataConstraints);
-
-        spacerColumn (campaignGeneratePanel, 3, rowCount + 0);
-
-        ++rowCount;
-        return rowCount;
-    }
-
     private int createPlayerNameWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
                     JPanel campaignGeneratePanel, int rowCount) throws PWCGException
     {
@@ -445,68 +443,6 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         	++rowCount;
         }
         
-        return rowCount;
-    }
-
-    private int createCampaignMapWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
-	        JPanel campaignGeneratePanel, int rowCount) throws PWCGException
-	{
-        spacerColumn (campaignGeneratePanel, 0, rowCount);
-        
-        lMap = createCampaignGenMenuLabel("Campaign Map: ", labelConstraints, campaignGeneratePanel, rowCount);
-        campaignGeneratePanel.add(lMap, labelConstraints);
-        
-        cbMap = new JComboBox<String>();
-        cbMap.addItem("All Maps");
-        for (PWCGMap map : PWCGContextManager.getInstance().getAllMaps())
-        {
-            cbMap.addItem(map.getMapName());
-        }
-        
-        cbMap.setOpaque(false);
-        cbMap.setBackground(jComboBoxBackgroundColor);
-        cbMap.setSelectedIndex(0);
-        cbMap.setActionCommand("MapChanged");
-        cbMap.addActionListener(this);
-        cbMap.setFont(font);
-
-        dataConstraints.gridx = 2;
-        dataConstraints.gridy = rowCount;
-        campaignGeneratePanel.add(cbMap, dataConstraints);
-
-        spacerColumn (campaignGeneratePanel, 3, rowCount);
-
-        ++rowCount;
-
-        return rowCount;
-	}
-
-    private int createCampaignStartDateWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
-                    JPanel campaignGeneratePanel, int rowCount) throws PWCGException
-    {
-        spacerColumn (campaignGeneratePanel, 0, rowCount);
-        
-        lDate = createCampaignGenMenuLabel("Campaign Start Date: ", labelConstraints, campaignGeneratePanel, rowCount);
-        campaignGeneratePanel.add(lDate, labelConstraints);
-        
-        cbDate = new JComboBox<String>();
-        makeStartDateChoices();
-        
-        cbDate.setOpaque(false);
-        cbDate.setBackground(jComboBoxBackgroundColor);
-        cbDate.setSelectedIndex(0);
-        cbDate.setActionCommand("DateChanged");
-        cbDate.addActionListener(this);
-        cbDate.setFont(font);
-
-        dataConstraints.gridx = 2;
-        dataConstraints.gridy = rowCount;
-        campaignGeneratePanel.add(cbDate, dataConstraints);
-
-        spacerColumn (campaignGeneratePanel, 3, rowCount);
-
-        ++rowCount;
-
         return rowCount;
     }
 
@@ -641,11 +577,6 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 	{
 	    initializeWidgets();
 
-        if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME)
-        {
-            lCampaignName.setForeground(labelColorSelected);
-        }
-
         if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME)
         {
             lPlayerName.setForeground(labelColorSelected);
@@ -667,19 +598,6 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
             
 	        lRole.setForeground(labelColorSelected);
             cbRole.setEnabled(true);
-	    }
-
-	    if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_MAP)
-	    {
-	        lMap.setForeground(labelColorSelected);
-            cbMap.setEnabled(true);
-	    }
-
-	    if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_DATE)
-	    {
-	    	makeStartDateChoices();
-	    	lDate.setForeground(labelColorSelected);
-            cbDate.setEnabled(true);
 	    }
 
 	    if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_RANK)
@@ -722,20 +640,15 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 	    }
 	    
         cbRole.setEnabled(false);
-        cbMap.setEnabled(false);
-        cbDate.setEnabled(false);
         cbRank.setEnabled(false);
         cbSquadron.setEnabled(false);
         
-        lCampaignName.setForeground(labelColorNotSelected);
         lPlayerName.setForeground(labelColorNotSelected);
         if (lRegion != null)
         {
             lRegion.setForeground(labelColorNotSelected);
         }
         lRole.setForeground(labelColorNotSelected);
-        lMap.setForeground(labelColorNotSelected);
-        lDate.setForeground(labelColorNotSelected);
         lRank.setForeground(labelColorNotSelected);
         lSquad.setForeground(labelColorNotSelected);
     }
@@ -767,52 +680,18 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 		cbRank.addActionListener(this);
 	}
 
-	private void makeStartDateChoices() throws PWCGException 
-	{
-	    try
-	    {
-    		cbDate.removeAllItems();
-	    	for (String startDate : getDatesForMap())
-	    	{
-	    		cbDate.addItem(startDate);
-	    	}
-	    }
-	    catch (Exception exp)
-	    {
-            Logger.logException(exp);
-            throw exp;
-	    }
-	}
-	
-    
-    private List<String> getDatesForMap() throws PWCGException
+    private void makeUserChoices(List<CoopUser> coopUsers) 
     {
-    	List<String> startDates = new ArrayList<>();
-        for (String startDate : PWCGContextManager.getInstance().getCampaignStartDates())
-        {
-            Date date = DateUtils.getDateWithValidityCheck(startDate);            
-            if (!campaignGeneratorDO.getService().getServiceStartDate().after(date) && 
-                 campaignGeneratorDO.getService().getServiceEndDate().after(date))
-            {
-            	PWCGMap map = PWCGContextManager.getInstance().getMapByMapId(campaignGeneratorDO.getFrontMap());
-            	if (map == null)
-            	{
-                	startDates.add(startDate);
-            	}
-            	else
-            	{
-            	    
-            		if (map.getFrontDatesForMap().isMapActive(date))
-            		{
-                    	startDates.add(startDate);
-            		}
-            	}
+		cbCoopUser.removeActionListener(this);
+		cbCoopUser.removeAllItems();
 
-            }
-        }
-        
-        return startDates;
-    }
+		for (CoopUser coopUser : coopUsers)
+		{
+			cbCoopUser.addItem(coopUser.getUsername());
+		}
+		
+		cbCoopUser.addActionListener(this);
+	}
 
 
 	private void makeSquadronChoices(Date campaignDate, ArmedService dateCorrectedService) throws PWCGException 
@@ -840,9 +719,6 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 	{
 		try
 		{
-            String campaignName = (String)campaignNameTextBox.getText();
-            campaignGeneratorDO.setCampaignName(campaignName);
-            
             String playerName = (String)playerNameTextBox.getText();
             campaignGeneratorDO.setPlayerName(playerName);
             
@@ -857,28 +733,15 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
                 Role role = Role.descToRole(roleDesc);
                 campaignGeneratorDO.setRole(role);
             }
-            else if (ae.getActionCommand().equalsIgnoreCase("MapChanged"))
-			{
-		        String mapName = (String)cbMap.getSelectedItem();
-		        PWCGMap map = PWCGContextManager.getInstance().getMapByMapName(mapName);
-		        if (map == null)
-		        {
-				    campaignGeneratorDO.setFrontMap(null);
-		        }
-		        else
-		        {
-				    campaignGeneratorDO.setFrontMap(map.getMapIdentifier());
-		        }
-			}
-            else if (ae.getActionCommand().equalsIgnoreCase("DateChanged"))
-			{
-                Date campaignDate =  getDateFromComboBox();
-			    campaignGeneratorDO.setStartDate(campaignDate);
-			}
 			else if (ae.getActionCommand().equalsIgnoreCase("RankChanged"))
 			{
 		        String rank = (String)cbRank.getSelectedItem();
 		        campaignGeneratorDO.setRank(rank);
+			}
+			else if (ae.getActionCommand().equalsIgnoreCase("CoopUserChanged"))
+			{
+		        String coopUser = (String)cbCoopUser.getSelectedItem();
+		        campaignGeneratorDO.setCoopUser(coopUser);
 			}
             else if (ae.getActionCommand().equalsIgnoreCase("SquadronChanged"))
             {
@@ -919,19 +782,6 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 			Logger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
-	}
-
-
-    private Date getDateFromComboBox() throws PWCGException 
-	{
-    	Date campaignDate = null;
-        String dateStr = (String)cbDate.getSelectedItem();
-        if (dateStr != null)
-        {
-        	campaignDate = DateUtils.getDateWithValidityCheck(dateStr);
-        }
-        
-        return campaignDate;
 	}
 
     public CampaignGeneratorDO getCampaignGeneratorDO()

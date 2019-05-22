@@ -29,7 +29,8 @@ public class CoopHostPilotBuilder
         	hostPilotRecord.setSerialNumber(hostPilot.getSerialNumber());
         	hostPilotRecord.setSquadronId(hostPilotRecord.getSquadronId());
         	hostPilotRecord.setUsername(coopHostRecord.getUsername());
-        	
+        	hostPilotRecord.setApproved(true);
+
         	CoopPilotIOJson.writeJson(hostPilotRecord);
         }
         PWCGContextManager.getInstance().setCampaign(campaign);

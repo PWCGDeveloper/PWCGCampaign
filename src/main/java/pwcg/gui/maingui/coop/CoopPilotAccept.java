@@ -129,7 +129,6 @@ public class CoopPilotAccept extends ImageResizingPanel
     private void updateHumanPilotRecord(CoopPilot acceptedPilot, int newPilotSerialNumber) throws PWCGException
     {
         acceptedPilot.setSerialNumber(newPilotSerialNumber);
-        
         acceptedPilot.setApproved(true);
         CoopPilotIOJson.writeJson(acceptedPilot);
     }

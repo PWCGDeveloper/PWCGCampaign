@@ -32,9 +32,9 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 
 	private static final long serialVersionUID = 1L;
 	
-	private CampaignGeneratorPanelSet parent = null;
+	private IPilotGeneratorUI parent = null;
 
-	public CampaignGeneratorChooseServiceGUI(CampaignGeneratorPanelSet parent)
+	public CampaignGeneratorChooseServiceGUI(IPilotGeneratorUI parent)
 	{
 		super();
         this.setLayout(new BorderLayout());

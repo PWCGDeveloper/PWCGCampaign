@@ -15,6 +15,7 @@ public class CampaignGeneratorDO
     private FrontMapIdentifier frontMap = null;
     private String campaignName = "";
     private String playerName = "";
+    private String coopUser = "";
     private String region = "";
     private String rankName = null;
     private String squadName = "";
@@ -115,7 +116,7 @@ public class CampaignGeneratorDO
         this.playerName = playerName;
     }
 
-public String getRegion()
+    public String getRegion()
     {
         return region;
     }
@@ -184,6 +185,15 @@ public String getRegion()
     {
         this.isCoop = isCoop;
     }
-    
+
+	public String getCoopUser() 
+	{
+		return coopUser;
+	}
+
+	public void setCoopUser(String coopUser) 
+	{
+		this.coopUser = coopUser;
+	}    
     
 }

@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,33 +11,27 @@ import javax.swing.JPanel;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.CampaignGenerator;
-import pwcg.campaign.CampaignGeneratorModel;
-import pwcg.campaign.CoopHostPilotBuilder;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadmember.SquadronMemberReplacer;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
-import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.dialogs.ErrorDialog;
-import pwcg.gui.maingui.CampaignMainGUI;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.gui.utils.PWCGFrame;
 
-public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionListener, IPilotGeneratorUI
+public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListener, IPilotGeneratorUI
 {    
     private static final long serialVersionUID = 1L;
 
-    private CampaignMainGUI mainGUI = null;
-    private JButton createCampaignButton = null;
-    private CampaignGeneratorDataEntryGUI dataEntry = null;
+    private JButton newPilotCreateButton = null;
+    private NewPilotDataEntryGUI dataEntry = null;
+    private Campaign campaign;
 
-    public CampaignGeneratorPanelSet(CampaignMainGUI mainGUI)
+    public NewPilotGeneratorUI(Campaign campaign)
     {
-        this.mainGUI = mainGUI;
+    	this.campaign = campaign;
     }
 
     public void makePanels() 
@@ -76,9 +69,9 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         JPanel buttonPanel = new JPanel(new GridLayout(6,1));
         buttonPanel.setOpaque(false);
 
-        createCampaignButton = PWCGButtonFactory.makeMenuButton("Create Campaign", "Create Campaign", this);
-        buttonPanel.add(createCampaignButton);
-        createCampaignButton.setEnabled(false);
+        newPilotCreateButton = PWCGButtonFactory.makeMenuButton("Create Pilot", "Create Pilot", this);
+        buttonPanel.add(newPilotCreateButton);
+        newPilotCreateButton.setEnabled(false);
         
         JLabel dummyLabel3 = new JLabel("     ");       
         dummyLabel3.setOpaque(false);
@@ -94,12 +87,12 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
 
     public void enableCompleteAction(boolean enabled)
     {
-        createCampaignButton.setEnabled(enabled);
+        newPilotCreateButton.setEnabled(enabled);
     }
 
     public JPanel makeDataEntryPanel() throws PWCGException 
     {
-        dataEntry = new CampaignGeneratorDataEntryGUI(this);
+        dataEntry = new NewPilotDataEntryGUI(this);
         dataEntry.makePanels();
         
         return dataEntry;
@@ -116,18 +109,10 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
             {
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
-            else if (action.equalsIgnoreCase("Create Campaign"))
+            else if (action.equalsIgnoreCase("Create Pilot"))
             {
-                Campaign campaign = makeCampaign();
-            
-                CampaignGeneratorDO campaignGeneratorDO = dataEntry.getCampaignGeneratorDO();
-                campaign.open(campaignGeneratorDO.getCampaignName());                    
-                PWCGContextManager.getInstance().setCampaign(campaign);
-                
-                CampaignHomeGUI campaignGUI = new CampaignHomeGUI (mainGUI, campaign);
-                PWCGFrame.getInstance().setPanel(campaignGUI);
-                
-                return;
+                createPilot();
+                CampaignGuiContextManager.getInstance().popFromContextStack();
             }
         }
         catch (Exception e)
@@ -141,8 +126,10 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
     {
         CampaignGeneratorDO campaignGeneratorDO = new CampaignGeneratorDO();
         campaignGeneratorDO.setService(service);
+        campaignGeneratorDO.setCampaignName(campaign.getCampaignData().getName());
+        campaignGeneratorDO.setStartDate(campaign.getDate());
         
-        dataEntry = new CampaignGeneratorDataEntryGUI(this);
+        dataEntry = new NewPilotDataEntryGUI(this);
         dataEntry.setCampaignGeneratorDO(campaignGeneratorDO);
         dataEntry.makePanels();
         dataEntry.evaluateUI();
@@ -150,46 +137,15 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         CampaignGuiContextManager.getInstance().changeCurrentContext(null, dataEntry, null);
     }
 
-    private Campaign makeCampaign() throws PWCGUserException, Exception
+    private void createPilot() throws PWCGUserException, Exception
     {
         CampaignGeneratorDO campaignGeneratorDO = dataEntry.getCampaignGeneratorDO();
-        
-        ArmedService service = campaignGeneratorDO.getService();
-        String campaignName = campaignGeneratorDO.getCampaignName();
         String playerName = campaignGeneratorDO.getPlayerName();
-        String region = campaignGeneratorDO.getRegion();
         String squadronName = campaignGeneratorDO.getSquadName();
         String rank = campaignGeneratorDO.getRank();
-        Date startDate = campaignGeneratorDO.getStartDate();
-        boolean isCoop = campaignGeneratorDO.isCoop();
+        String coopuser = campaignGeneratorDO.getCoopUser();
 
-        CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
-        generatorModel.setCampaignDate(startDate);
-        generatorModel.setCampaignName(campaignName);
-        generatorModel.setPlayerName(playerName);
-        generatorModel.setPlayerRank(rank);
-        generatorModel.setPlayerRegion(region);
-        generatorModel.setService(service);
-        generatorModel.setSquadronName(squadronName);
-        generatorModel.setCoop(isCoop);
-
-        CampaignGenerator generator = new CampaignGenerator(generatorModel);
-        Campaign campaign = generator.generate();
-        
-        writeCampaign(campaign);
-        
-        return campaign;
-    }
-    
-
-    private void writeCampaign(Campaign campaign) throws PWCGException
-    {
-        campaign.write();
-        if (campaign.getCampaignData().isCoop())
-        {
-        	CoopHostPilotBuilder coopPilotBuilder = new CoopHostPilotBuilder();
-        	coopPilotBuilder.buildHostPilotForCoop(campaign);
-        }
-        PWCGContextManager.getInstance().setCampaign(campaign);
+        SquadronMemberReplacer squadronMemberReplacer = new SquadronMemberReplacer(campaign);
+        squadronMemberReplacer.createPilot(playerName, rank, squadronName, coopuser);
     }
 }

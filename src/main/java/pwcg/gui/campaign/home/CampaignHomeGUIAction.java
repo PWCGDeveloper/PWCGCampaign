@@ -30,6 +30,7 @@ import pwcg.gui.campaign.transfer.CampaignLeavePanelSet;
 import pwcg.gui.campaign.transfer.CampaignTransferPanelSet;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.HelpDialog;
+import pwcg.gui.maingui.campaigngenerate.NewPilotGeneratorUI;
 import pwcg.gui.rofmap.brief.BriefingDescriptionPanelSet;
 import pwcg.gui.rofmap.debrief.DebriefMissionDescriptionPanel;
 import pwcg.gui.rofmap.event.AARMainPanel;
@@ -230,7 +231,7 @@ public class CampaignHomeGUIAction
     private void showAddHumanPilot() throws PWCGException
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        CampaignAddHumanPilotPanelSet addPilotDisplay = new CampaignAddHumanPilotPanelSet();
+        NewPilotGeneratorUI addPilotDisplay = new NewPilotGeneratorUI(campaign);
         addPilotDisplay.makePanels();        
         CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
     }

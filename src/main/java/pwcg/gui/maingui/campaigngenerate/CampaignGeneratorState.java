@@ -29,10 +29,6 @@ public class CampaignGeneratorState
         this.campaignGeneratorDO = campaignGeneratorDO;
     }
 
-    /**
-     * Go to the next step in the campaign creation work flow
-     * @throws PWCGException 
-     */
     public void goToNextStep() throws PWCGException
     {
         if (currentStep == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME)
@@ -96,12 +92,7 @@ public class CampaignGeneratorState
             currentStep = CampaignGeneratorWorkflow.COMPLETE;
         }
     }
-    
-       
-    /**
-     * Go to the previous step in the campaign creation work flow
-     * @throws PWCGException 
-     */
+
     public void goToPreviousStep() throws PWCGException
     {   
         if (currentStep == CampaignGeneratorWorkflow.COMPLETE)
@@ -153,9 +144,6 @@ public class CampaignGeneratorState
         }        
     }
 
-    /**
-     * @return
-     */
     public boolean isComplete()
     {
         if (currentStep == CampaignGeneratorWorkflow.COMPLETE)
@@ -166,9 +154,6 @@ public class CampaignGeneratorState
         return false;
     }
 
-    /**
-     * @return
-     */
     public CampaignGeneratorWorkflow getCurrentStep()
     {
         return currentStep;

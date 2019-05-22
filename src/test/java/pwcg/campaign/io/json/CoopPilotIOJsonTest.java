@@ -34,6 +34,7 @@ public class CoopPilotIOJsonTest
         coopPilot.setSerialNumber(12345);
         coopPilot.setSquadronId(999);
         coopPilot.setUsername("Me");
+        coopPilot.setApproved(true);
         
         CoopPilotIOJson.writeJson(coopPilot);
     }
@@ -51,6 +52,7 @@ public class CoopPilotIOJsonTest
                 assert (coopPilot.getSerialNumber() == 12345);
                 assert (coopPilot.getSquadronId() == 999);
                 assert (coopPilot.getUsername().equals("Me"));
+                assert (coopPilot.isApproved() == true);
                 pilotFound = true;
             }
         }
