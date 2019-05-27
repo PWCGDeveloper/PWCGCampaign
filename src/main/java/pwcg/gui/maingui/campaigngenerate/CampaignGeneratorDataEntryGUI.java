@@ -62,9 +62,11 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
     
 	private static Font font = null;
 	
+    private ButtonGroup coopGroup = new ButtonGroup();
+    private ButtonModel singlePlayerButtonModel = null;
+    private ButtonModel coopButtonModel = null;
     private JTextField campaignNameTextBox;
     private JTextField playerNameTextBox;
-    private JTextArea squadronTextBox;
 	private JComboBox<String> cbRegion;
 	private JComboBox<String> cbMap;
 	private JComboBox<String> cbDate;
@@ -72,22 +74,21 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 	private JComboBox<String> cbRank;
 	private JComboBox<String> cbSquadron;
     
-    private JLabel lSquad;
-    private JLabel lRank;
-    private JLabel lRole;
+    private JLabel lCampaignType;
     private JLabel lCampaignName;
     private JLabel lPlayerName;
     private JLabel lRegion;
-    private JLabel lDate;
     private JLabel lMap;
+    private JLabel lDate;
+    private JLabel lRole;
+    private JLabel lRank;
+    private JLabel lSquad;
+
+    private JTextArea squadronTextBox;
 
     private CampaignGeneratorDO campaignGeneratorDO = new CampaignGeneratorDO();
     private CampaignGeneratorState campaignGeneratorState;
     private IPilotGeneratorUI parent = null;
-
-    private ButtonGroup coopGroup = new ButtonGroup();
-    private ButtonModel singlePlayerButtonModel = null;
-    private ButtonModel coopButtonModel = null;
 
 	public CampaignGeneratorDataEntryGUI(IPilotGeneratorUI parent) 
 	{
@@ -590,8 +591,8 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         JPanel coopButtonPanelGrid = new JPanel(new GridLayout(0,1));
         coopButtonPanelGrid.setOpaque(false);
         
-        JLabel coopLabel = makeCoopLabel(CampaignConfigurationSimpleGUIController.ACTION_SET_COOP + ":");      
-        coopButtonPanelGrid.add(coopLabel);
+        lCampaignType = makeCoopLabel(CampaignConfigurationSimpleGUIController.CAMPAIGN_TYPE + ":");      
+        coopButtonPanelGrid.add(lCampaignType);
 
         JRadioButton singlePlayerButton = PWCGButtonFactory.makeRadioButton("Single Player Mode", "Mission Mode: Single Player", "Select single player mode for generated missions", false, this);       
         coopButtonPanelGrid.add(singlePlayerButton);
@@ -640,24 +641,33 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 	public void evaluateUI() throws PWCGException 
 	{
 	    initializeWidgets();
+        
+        if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_TYPE)
+        {
+        	lCampaignType.setForeground(labelColorSelected);
+        	singlePlayerButtonModel.setEnabled(true);
+        	coopButtonModel.setEnabled(true);
+        }
 
-        if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME)
+        else if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME)
         {
             lCampaignName.setForeground(labelColorSelected);
+            campaignNameTextBox.setEnabled(true);
         }
 
-        if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME)
+        else if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME)
         {
             lPlayerName.setForeground(labelColorSelected);
+            playerNameTextBox.setEnabled(true);
         }
 
-	    if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_REGION)
+        else if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_REGION)
 	    {
 	        lRegion.setForeground(labelColorSelected);
             cbRegion.setEnabled(true);
 	    }
 
-	    if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_ROLE)
+        else if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_ROLE)
 	    {
 	        setRolesInUI();
 	        
@@ -669,27 +679,27 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
             cbRole.setEnabled(true);
 	    }
 
-	    if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_MAP)
+        else if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_MAP)
 	    {
 	        lMap.setForeground(labelColorSelected);
             cbMap.setEnabled(true);
 	    }
 
-	    if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_DATE)
+        else if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_DATE)
 	    {
 	    	makeStartDateChoices();
 	    	lDate.setForeground(labelColorSelected);
             cbDate.setEnabled(true);
 	    }
 
-	    if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_RANK)
+        else if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_RANK)
 	    {
 	        cbRank.setSelectedItem(campaignGeneratorDO.getRank());
 	        lRank.setForeground(labelColorSelected);
             cbRank.setEnabled(true);
 	    }
 
-	    if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_SQUADRON)
+        else if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_SQUADRON)
 	    {
 	        lSquad.setForeground(labelColorSelected);
 	        
@@ -721,12 +731,17 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 	        cbRegion.setEnabled(false);
 	    }
 	    
+	    singlePlayerButtonModel.setEnabled(false);
+	    coopButtonModel.setEnabled(false);
+	    campaignNameTextBox.setEnabled(false);
+	    playerNameTextBox.setEnabled(false);
         cbRole.setEnabled(false);
         cbMap.setEnabled(false);
         cbDate.setEnabled(false);
         cbRank.setEnabled(false);
         cbSquadron.setEnabled(false);
         
+        lCampaignType.setForeground(labelColorNotSelected);
         lCampaignName.setForeground(labelColorNotSelected);
         lPlayerName.setForeground(labelColorNotSelected);
         if (lRegion != null)

@@ -8,11 +8,12 @@ import pwcg.gui.utils.StringValidity;
 
 public class CampaignGeneratorState
 {
-    private CampaignGeneratorWorkflow currentStep = CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME;
+    private CampaignGeneratorWorkflow currentStep = CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_TYPE;
     private CampaignGeneratorDO campaignGeneratorDO = new CampaignGeneratorDO();
 
     public enum CampaignGeneratorWorkflow
     {
+        CHOOSE_CAMPAIGN_TYPE,
         CHOOSE_CAMPAIGN_NAME,
         CHOOSE_PLAYER_NAME,
         CHOOSE_REGION,
@@ -31,7 +32,12 @@ public class CampaignGeneratorState
 
     public void goToNextStep() throws PWCGException
     {
-        if (currentStep == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME)
+        if (currentStep == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_TYPE)
+        {
+            currentStep = CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME;
+        }
+
+        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME)
         {
             if (StringValidity.isAlpha(campaignGeneratorDO.getCampaignName()))
             {
@@ -141,6 +147,16 @@ public class CampaignGeneratorState
         else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_REGION)
         {
             currentStep = CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME;
+        }        
+        
+        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME)
+        {
+            currentStep = CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME;
+        }        
+        
+        else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME)
+        {
+            currentStep = CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_TYPE;
         }        
     }
 

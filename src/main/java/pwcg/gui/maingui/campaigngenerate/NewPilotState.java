@@ -15,7 +15,7 @@ public class NewPilotState
     public enum PilotGeneratorWorkflow
     {
         CHOOSE_PLAYER_NAME,
-        CHOOSE_COOP_HOST,
+        CHOOSE_COOP_USER,
         CHOOSE_REGION,
         CHOOSE_ROLE,
         CHOOSE_RANK,
@@ -35,21 +35,9 @@ public class NewPilotState
     {
         if (currentStep == PilotGeneratorWorkflow.CHOOSE_PLAYER_NAME)
         {
-            if (StringValidity.isAlpha(campaignGeneratorDO.getCampaignName()))
-            {
-                currentStep = PilotGeneratorWorkflow.CHOOSE_PLAYER_NAME;
-            }
-            else
-            {
-                throw new PWCGException ("Name must be English characters");
-            }
-        }
-        
-        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_PLAYER_NAME)
-        {
             if (StringValidity.isAlpha(campaignGeneratorDO.getPlayerName()))
             {
-                currentStep = PilotGeneratorWorkflow.CHOOSE_COOP_HOST;
+                currentStep = PilotGeneratorWorkflow.CHOOSE_COOP_USER;
                 if (!campaign.getCampaignData().isCoop())
                 {
                     currentStep = PilotGeneratorWorkflow.CHOOSE_ROLE;
@@ -65,7 +53,7 @@ public class NewPilotState
             }
         }
         
-        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_COOP_HOST)
+        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_COOP_USER)
         {
             currentStep = PilotGeneratorWorkflow.CHOOSE_ROLE;
             if (useRegion())
@@ -119,7 +107,7 @@ public class NewPilotState
         	}
         	else if (campaign.getCampaignData().isCoop())
         	{
-                currentStep = PilotGeneratorWorkflow.CHOOSE_COOP_HOST;
+                currentStep = PilotGeneratorWorkflow.CHOOSE_COOP_USER;
         	}
         	else
         	{
@@ -131,7 +119,7 @@ public class NewPilotState
         {
         	if (campaign.getCampaignData().isCoop())
         	{
-                currentStep = PilotGeneratorWorkflow.CHOOSE_COOP_HOST;
+                currentStep = PilotGeneratorWorkflow.CHOOSE_COOP_USER;
         	}
         	else
         	{
@@ -139,7 +127,7 @@ public class NewPilotState
         	}
         }
         
-        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_COOP_HOST)
+        else if (currentStep == PilotGeneratorWorkflow.CHOOSE_COOP_USER)
         {
             currentStep = PilotGeneratorWorkflow.CHOOSE_PLAYER_NAME;
         }        

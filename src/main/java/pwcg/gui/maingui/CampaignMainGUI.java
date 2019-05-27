@@ -226,8 +226,6 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 
 			CampaignGuiContextManager.getInstance().clearContextStack();
             CampaignGuiContextManager.getInstance().pushToContextStack(this);
-
-			//refresh();
 		}
 		catch (Exception e)
 		{
@@ -418,7 +416,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
     				}
     				else if (campaign.getCampaignData().isCoop())
     				{
-    					icon = "Coop.jpg";
+    					icon = "CoopIcon.jpg";
     				}
     				else
     				{

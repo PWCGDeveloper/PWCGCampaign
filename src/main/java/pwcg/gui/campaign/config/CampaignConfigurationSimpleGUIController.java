@@ -12,7 +12,7 @@ public class CampaignConfigurationSimpleGUIController
 {
     static public final String ACTION_SET_AIR_DENSITY = "Air Density";
     static public final String ACTION_SET_GROUND_DENSITY = "Ground Density";
-    static public final String ACTION_SET_COOP = "Mission Mode";
+    static public final String CAMPAIGN_TYPE = "Campaign Type";
     
     private Campaign campaign;
 
