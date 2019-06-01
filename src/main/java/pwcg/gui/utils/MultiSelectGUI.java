@@ -122,6 +122,12 @@ public class MultiSelectGUI implements ActionListener
         return checkBox;
     }
     
+    public void setTextColor(String key, Color color)
+    {
+        JCheckBox selection = checkBoxes.get(key);
+        selection.setForeground(color);
+    }
+    
     @Override
     public void actionPerformed(ActionEvent ae)
     {

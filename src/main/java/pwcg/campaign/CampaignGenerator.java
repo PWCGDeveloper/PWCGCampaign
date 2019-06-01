@@ -42,6 +42,7 @@ public class CampaignGenerator
     private void createCampaign() throws PWCGException
 	{
 		campaign = new Campaign();
+		campaign.initializeCampaignDirectories();
         campaign.initializeCampaignConfigs();
         campaign.setDate(generatorModel.getCampaignDate());
         campaign.getCampaignData().setName(generatorModel.getCampaignName());

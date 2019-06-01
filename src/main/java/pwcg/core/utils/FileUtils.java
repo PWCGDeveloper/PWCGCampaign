@@ -19,6 +19,16 @@ import pwcg.core.exception.PWCGException;
 
 public class FileUtils
 {
+
+	public void createConfigDirIfNeeded(String campaignConfigDir)
+    {
+        File dir = new File(campaignConfigDir);
+        if (!dir.exists())
+        {
+            dir.mkdir();
+        }
+    }
+
     public void deleteRecursive(String deleteDir)
     {
         File deleteRoot = new File(deleteDir);

@@ -24,6 +24,7 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
+import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
@@ -48,7 +49,8 @@ public class Campaign
     public boolean open(String campaignName) throws PWCGException 
     {
         campaignData.setName(campaignName);
-        
+
+        initializeCampaignDirectories();
         initializeCampaignConfigs();
         if (!readValidCampaign())
         {
@@ -88,24 +90,31 @@ public class Campaign
 		return true;
 	}
 
+	public void initializeCampaignDirectories() 
+	{
+        FileUtils fileUtils = new FileUtils();
+		
+        String campaignCombatReportsDir = getCampaignPath() + "CombatReports\\";
+        fileUtils.createConfigDirIfNeeded(campaignCombatReportsDir);
+
+        String campaignConfigDir = getCampaignPath() + "config\\";
+        fileUtils.createConfigDirIfNeeded(campaignConfigDir);
+		
+        String campaignEquipmentDir = getCampaignPath() + "Equipment\\";
+        fileUtils.createConfigDirIfNeeded(campaignEquipmentDir);
+		
+        String campaignMissionDataDir = getCampaignPath() + "MissionData\\";
+        fileUtils.createConfigDirIfNeeded(campaignMissionDataDir);
+		
+        String campaignPersonnelDir = getCampaignPath() + "Personnel\\";
+        fileUtils.createConfigDirIfNeeded(campaignPersonnelDir);
+	}
+
     public void  initializeCampaignConfigs() throws PWCGException 
     {
         String campaignConfigDir = getCampaignPath() + "config\\";
-        createConfigDirIfNeeded(campaignConfigDir);
-        
         campaignConfigManager = new ConfigManagerCampaign(campaignConfigDir);
         campaignConfigManager.initialize();
-    }
-
-    private String createConfigDirIfNeeded(String campaignConfigDir)
-    {
-        File dir = new File(campaignConfigDir);
-        if (!dir.exists())
-        {
-            dir.mkdir();
-        }
-
-        return campaignConfigDir;
     }
 
     public boolean isHumanSquadron(int squadronId)

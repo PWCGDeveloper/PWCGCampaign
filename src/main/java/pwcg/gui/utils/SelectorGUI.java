@@ -114,6 +114,16 @@ public class SelectorGUI implements ActionListener
         notAccepted.addSelection(selectData);
     }
 
+    public void setAcceptedItemOK(String key)
+    {
+    	accepted.setTextColor(key, Color.BLACK);
+    }
+
+    public void setAcceptedItemWarn(String key)
+    {
+    	accepted.setTextColor(key, Color.RED);
+    }
+
     public void actionPerformed(ActionEvent ae)
     {
         try

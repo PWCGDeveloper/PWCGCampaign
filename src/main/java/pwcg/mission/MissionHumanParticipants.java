@@ -10,7 +10,15 @@ import pwcg.campaign.squadmember.SquadronMember;
 public class MissionHumanParticipants 
 {
 	private Map<Integer, List<SquadronMember>> participatingPlayers = new HashMap<>();
-	
+
+	public void addSquadronMembers(List<SquadronMember> participatingPlayers)
+	{
+		for (SquadronMember participatingPlayer : participatingPlayers)
+		{
+			addSquadronMember(participatingPlayer);
+		}
+	}
+
 	public void addSquadronMember(SquadronMember participatingPlayer)
 	{
 		if (!participatingPlayers.containsKey(participatingPlayer.getSquadronId()))

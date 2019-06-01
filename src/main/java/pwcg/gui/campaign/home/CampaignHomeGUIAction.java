@@ -1,20 +1,15 @@
 package pwcg.gui.campaign.home;
 
 import java.awt.event.ActionEvent;
-import java.util.List;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.AARPilotEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
-import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
-import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.PWCGErrorBundler;
 import pwcg.gui.CampaignGuiContextManager;
@@ -32,6 +27,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.HelpDialog;
 import pwcg.gui.maingui.campaigngenerate.NewPilotGeneratorUI;
 import pwcg.gui.rofmap.brief.BriefingDescriptionPanelSet;
+import pwcg.gui.rofmap.brief.CoopPilotChooser;
 import pwcg.gui.rofmap.debrief.DebriefMissionDescriptionPanel;
 import pwcg.gui.rofmap.event.AARMainPanel;
 import pwcg.gui.rofmap.event.AARMainPanel.EventPanelReason;
@@ -41,21 +37,18 @@ import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ReferencePlayerFInder;
 import pwcg.gui.utils.UIUtils;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
 
 public class CampaignHomeGUIAction
 {
     private CampaignHomeGUI parent = null;
     private Campaign campaign = null;
-    private SquadronMember referencePlayer = null;
 
     public CampaignHomeGUIAction(CampaignHomeGUI parent, Campaign campaign) 
     {
         super();
         this.parent = parent;
         this.campaign = campaign;
-        this.referencePlayer = ReferencePlayerFInder.findReferencePlayer(campaign);
     }
     
 
@@ -73,12 +66,23 @@ public class CampaignHomeGUIAction
             }
             else if (action.equalsIgnoreCase("CampMission"))
             {
-                Mission mission = makeMission(false);
-                showBriefingMap(mission);
+            	if (campaign.getCampaignData().isCoop())
+            	{
+                	showCoopPilotChooser();
+            	}
+            	else
+            	{
+	                MissionHumanParticipants participatingPlayers = buildParticipatingPlayersSinglePlayer();
+	            	GuiMissionInitiator missionInitiator = new GuiMissionInitiator(campaign, participatingPlayers);
+	                Mission mission = missionInitiator.makeMission(false);
+	                showBriefingMap(mission);
+            	}
             }
             else if (action.equalsIgnoreCase("CampMissionLoneWolf"))
             {
-                Mission mission = makeMission(true);
+                MissionHumanParticipants participatingPlayers = buildParticipatingPlayersSinglePlayer();
+             	GuiMissionInitiator missionInitiator = new GuiMissionInitiator(campaign, participatingPlayers);
+                Mission mission = missionInitiator.makeMission(true);
                 showBriefingMap(mission);
             }
             else if (action.equalsIgnoreCase("CampFlowTransfer"))
@@ -154,80 +158,6 @@ public class CampaignHomeGUIAction
         }
     }
 
-
-    private Mission makeMission(boolean isLoneWolf) throws PWCGException 
-    {
-        Mission mission = null;
-
-        if (!(campaign.getDate().before(DateUtils.getEndOfWar())))
-        {
-            throw new PWCGUserException ("The war is over.  Go home.");
-        }
-        else if (endOfEast())
-        {
-            throw new PWCGUserException ("Eastern front operations have ended.  Transfer or go home.");
-        }
-        else
-        {
-        	MissionHumanParticipants participatingPlayers = buildParticipatingPlayers();        	
-            if (campaign.getCurrentMission() == null)
-            {
-                MissionGenerator missionGenerator = new MissionGenerator(participatingPlayers);
-                if (isLoneWolf)
-                {
-                    mission = missionGenerator.makeLoneWolfMission(participatingPlayers);
-                }
-                else
-                {
-                    mission = missionGenerator.makeMission(participatingPlayers);                    
-                }
-            }
-            else
-            {
-                mission = campaign.getCurrentMission();
-            }
-        }
-
-        return mission;
-    }
-
-    private MissionHumanParticipants buildParticipatingPlayers()
-    {
-        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        if (campaign.getCampaignData().isCoop())
-        {
-            // TODO COOP Have to make this screen ... with no human participants added mission create will not work
-        }
-        else
-        {
-            participatingPlayers.addSquadronMember(this.referencePlayer);
-        }
-        
-        return participatingPlayers;
-    }
-
-    private boolean endOfEast() throws PWCGException 
-    {
-        // We want to know if we are on the Galician map.
-        // Get the maps for the airfield.  If the airfield is on the Galician
-        // map then it can only be on that map (some Western airfields are
-        // on both the France and Channel maps)
-    	
-    	SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
-        String airfieldName = referencePlayer.determineSquadron().determineCurrentAirfieldName(campaign.getDate());
-        List<FrontMapIdentifier> mapsForAirfield =  AirfieldManager.getMapIdForAirfield(airfieldName);
-        FrontMapIdentifier mapId = mapsForAirfield.get(0);
-
-        if (mapId == FrontMapIdentifier.GALICIA_MAP)
-        {
-            if (campaign.getDate().after(DateUtils.getEndOfWWIRussia()))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     private void showAddHumanPilot() throws PWCGException
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
@@ -244,6 +174,13 @@ public class CampaignHomeGUIAction
         BriefingDescriptionPanelSet briefingMap = new BriefingDescriptionPanelSet(parent, mission);
         briefingMap.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(briefingMap);
+    }
+
+    private void showCoopPilotChooser() throws PWCGException 
+    {
+    	CoopPilotChooser coopPilotChooser = new CoopPilotChooser(campaign, parent);
+    	coopPilotChooser.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(coopPilotChooser);
     }
 
     private void showTransfer() throws PWCGException 
@@ -386,4 +323,13 @@ public class CampaignHomeGUIAction
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotPanel);
         }
     }
+    
+    private MissionHumanParticipants buildParticipatingPlayersSinglePlayer()
+    {
+        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
+	    SquadronMember referencePlayer = ReferencePlayerFInder.findReferencePlayer(campaign);
+        participatingPlayers.addSquadronMember(referencePlayer);        
+        return participatingPlayers;
+    }
+
 }
