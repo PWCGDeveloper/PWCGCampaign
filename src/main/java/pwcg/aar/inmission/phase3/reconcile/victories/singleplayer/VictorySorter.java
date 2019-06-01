@@ -5,6 +5,7 @@ import java.util.List;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBalloon;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.plane.Role;
@@ -57,7 +58,7 @@ public class VictorySorter
         {
             firmGroundVictories.add(logVictory);
         }
-        else
+        else if (isVictimPlane(logVictory))
         {
             firmAirVictories.add(logVictory);
         }
@@ -73,7 +74,7 @@ public class VictorySorter
         {
             // We don't do anything with fuzzy ground victories
         }
-        else
+        else if (isVictimPlane(logVictory))
         {
             fuzzyAirVictories.add(logVictory);
         }
@@ -108,6 +109,20 @@ public class VictorySorter
             }
         }
         
+        return false;
+    }
+
+    private boolean isVictimPlane(LogVictory logVictory) throws PWCGException
+    {
+        LogAIEntity logVictim = logVictory.getVictim();
+        if (logVictim != null)
+        {
+            if (logVictim instanceof LogPlane)
+            {
+                return true;
+            }
+        }
+
         return false;
     }
 
