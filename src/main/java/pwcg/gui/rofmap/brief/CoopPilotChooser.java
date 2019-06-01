@@ -1,17 +1,23 @@
 package pwcg.gui.rofmap.brief;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.coop.model.CoopPilot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -19,8 +25,10 @@ import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.campaign.home.GuiMissionInitiator;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
+import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
@@ -30,8 +38,11 @@ public class CoopPilotChooser extends PwcgGuiContext implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private CoopPilotChooserPanel coopPilotAccept;
+    private JPanel coopPilotErrorPanel;
+    private List<String> errorMessages = new ArrayList<>();
     private CampaignHomeGUI campaignHomeGui;
     private Campaign campaign;
+    private JButton missionButton;
     private MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
     public CoopPilotChooser(Campaign campaign,CampaignHomeGUI campaignHomeGui)
@@ -45,10 +56,12 @@ public class CoopPilotChooser extends PwcgGuiContext implements ActionListener
     {
         try
         {
-        	coopPilotAccept = new CoopPilotChooserPanel(campaign);
+        	coopPilotAccept = new CoopPilotChooserPanel(campaign, this);
             coopPilotAccept.makePanels();
             setCenterPanel(coopPilotAccept);
             setLeftPanel(makeNavigatePanel());
+            buildErrorPanel();
+            evaluateErrors();
         }
         catch (Throwable e)
         {
@@ -57,7 +70,88 @@ public class CoopPilotChooser extends PwcgGuiContext implements ActionListener
         }
     }
 
-    public JPanel makeNavigatePanel() throws PWCGException  
+    private void buildErrorPanel() throws PWCGException 
+    {
+        String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
+        coopPilotErrorPanel = new ImageResizingPanel(imagePath);
+        coopPilotErrorPanel.setLayout(new GridLayout(0, 2));
+        this.add(BorderLayout.SOUTH, coopPilotErrorPanel);
+	}
+    
+    public void evaluateErrors() throws PWCGException
+    {
+    	errorMessages.clear();
+    	coopPilotErrorPanel.removeAll();
+
+    	formErrorMessages();
+    	
+		addBlankErrorLine();
+    	addErrorMessages();    	
+		addBlankErrorLine();
+		
+		if (errorMessages.isEmpty())
+		{
+			missionButton.setEnabled(true);
+		}
+		else
+		{
+			missionButton.setEnabled(false);
+		}
+
+    	coopPilotErrorPanel.revalidate();
+    }
+
+	private void formErrorMessages() throws PWCGException 
+	{
+		List<CoopPilot> selectedCoopPilots = coopPilotAccept.getAcceptedCoopPilots();
+    	if (selectedCoopPilots.isEmpty())
+    	{
+            errorMessages.add("No pilots selected for mission");
+    	}
+    	
+    	Map <String, CoopPilot> coopPilotsByCoopUser = new HashMap<>();
+    	for (CoopPilot coopPilot : selectedCoopPilots)
+    	{
+    		if (coopPilotsByCoopUser.containsKey(coopPilot.getUsername()))
+    		{
+                errorMessages.add("More than one pilot in mission for player " + coopPilot.getUsername() + " Pilot Name: " + coopPilot.getPilotName());
+    		}
+    		else
+    		{
+    			coopPilotsByCoopUser.put(coopPilot.getUsername(), coopPilot);
+    		}
+    	}
+	}
+
+	private void addErrorMessages() throws PWCGException 
+	{
+	    Font font = MonitorSupport.getPrimaryFontLarge();
+    	
+		for (String errorMessage : errorMessages)
+    	{
+    		JLabel spacer = new JLabel("   ");
+    		spacer.setFont(font);
+    		coopPilotErrorPanel.add(spacer);
+
+    		JLabel errorLabel = new JLabel(errorMessage);
+    		errorLabel.setFont(font);
+    		coopPilotErrorPanel.add(errorLabel);
+    	}
+	}
+
+	private void addBlankErrorLine() throws PWCGException 
+	{
+	    Font font = MonitorSupport.getPrimaryFontLarge();
+    	
+		JLabel spacer = new JLabel("   ");
+		spacer.setFont(font);
+		coopPilotErrorPanel.add(spacer);
+		spacer = new JLabel("   ");
+		spacer.setFont(font);
+		coopPilotErrorPanel.add(spacer);
+	}
+
+	public JPanel makeNavigatePanel() throws PWCGException  
     {
         String imagePath = getSideImageMain("ConfigLeft.jpg");
 
@@ -67,7 +161,7 @@ public class CoopPilotChooser extends PwcgGuiContext implements ActionListener
         JPanel buttonPanel = new JPanel(new GridLayout(0,1));
         buttonPanel.setOpaque(false);
 
-        JButton missionButton = PWCGButtonFactory.makeMenuButton("Coop Mission", "CampCoopMission", this);
+        missionButton = PWCGButtonFactory.makeMenuButton("Coop Mission", "CampCoopMission", this);
         buttonPanel.add(missionButton);
 
         JButton scrubButton = PWCGButtonFactory.makeMenuButton("Scrub Mission", "ScrubMission", this);
@@ -85,7 +179,7 @@ public class CoopPilotChooser extends PwcgGuiContext implements ActionListener
             String action = ae.getActionCommand();
             if (action.equalsIgnoreCase("CampCoopMission"))
             {
-            	List<SquadronMember> selectedCoopPilots = coopPilotAccept.getAcceptedPilots();
+            	List<SquadronMember> selectedCoopPilots = coopPilotAccept.getAcceptedSquadronMembers();
             	participatingPlayers.addSquadronMembers(selectedCoopPilots);
             	
              	GuiMissionInitiator missionInitiator = new GuiMissionInitiator(campaign, participatingPlayers);

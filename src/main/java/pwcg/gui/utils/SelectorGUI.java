@@ -23,10 +23,16 @@ public class SelectorGUI implements ActionListener
 
     private MultiSelectGUI accepted;
     private MultiSelectGUI notAccepted;
+    private ISelectorGUICallback selectCallback;
 
 	public SelectorGUI()
 	{
 	    super();
+	}
+	
+	public void registerCallback(ISelectorGUICallback selectCallback)
+	{
+		this.selectCallback = selectCallback;
 	}
 	
 	public JPanel build(boolean allowReject) throws PWCGException 
@@ -136,6 +142,7 @@ public class SelectorGUI implements ActionListener
                 {
                     accepted.addSelection(acceptedItem);
                     notAccepted.removeSelection(acceptedItem.getName());
+                    invokeCallback();
                 }
             }
             else if (action.equalsIgnoreCase("Reject"))
@@ -145,6 +152,7 @@ public class SelectorGUI implements ActionListener
                 {
                     notAccepted.addSelection(rejectedItem);
                     accepted.removeSelection(rejectedItem.getName());
+                    invokeCallback();
                 }
             }
         }
@@ -154,4 +162,12 @@ public class SelectorGUI implements ActionListener
             ErrorDialog.internalError(e.getMessage());
         }
     }
+
+	private void invokeCallback() 
+	{
+		if (selectCallback != null)
+		{
+			selectCallback.onSelectCallback();
+		}
+	}
 }

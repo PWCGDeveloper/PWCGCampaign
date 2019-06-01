@@ -17,22 +17,25 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ContextSpecificImages;
+import pwcg.gui.utils.ISelectorGUICallback;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.MultiSelectData;
 import pwcg.gui.utils.SelectorGUI;
 
-public class CoopPilotChooserPanel extends ImageResizingPanel
+public class CoopPilotChooserPanel extends ImageResizingPanel implements ISelectorGUICallback
 {
 	private static final long serialVersionUID = 1L;
     private SelectorGUI selector;
+    private CoopPilotChooser parent;
     private Campaign campaign;
 	
     private Map<String, CoopPilot> coopPilotRecords = new TreeMap<>();
 
-	public CoopPilotChooserPanel(Campaign campaign)
+	public CoopPilotChooserPanel(Campaign campaign, CoopPilotChooser parent)
 	{
 	    super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
 	    this.campaign = campaign;
+	    this.parent = parent;
 	}
 	
 	public void makePanels() 
@@ -85,21 +88,48 @@ public class CoopPilotChooserPanel extends ImageResizingPanel
 	public JPanel makeAcceptancePanel() throws PWCGException 
 	{	
 	    selector = new SelectorGUI();
+	    selector.registerCallback(this);
 	    boolean allowReject = true;
         JPanel acceptPanel = selector.build(allowReject);
 		return acceptPanel;
 	}
 	
-	public List<SquadronMember> getAcceptedPilots() throws PWCGException
+	public List<SquadronMember> getAcceptedSquadronMembers() throws PWCGException
 	{
-		List<SquadronMember> selectedCoopPilots = new ArrayList<>();
+		List<SquadronMember> selectedPlayers = new ArrayList<>();
 		List<MultiSelectData> selectedRecords = selector.getAccepted();
 		for (MultiSelectData selectedRecord : selectedRecords)
 		{
 			CoopPilot selectedCoopPilot = coopPilotRecords.get(selectedRecord.getName());
 			SquadronMember selectedPlayer = campaign.getPersonnelManager().getAnyCampaignMember(selectedCoopPilot.getSerialNumber());
-			selectedCoopPilots.add(selectedPlayer);
+			selectedPlayers.add(selectedPlayer);
+		}
+		return selectedPlayers;
+	}
+	
+	
+	public List<CoopPilot> getAcceptedCoopPilots() throws PWCGException
+	{
+		List<CoopPilot> selectedCoopPilots = new ArrayList<>();
+		List<MultiSelectData> selectedRecords = selector.getAccepted();
+		for (MultiSelectData selectedRecord : selectedRecords)
+		{
+			CoopPilot selectedCoopPilot = coopPilotRecords.get(selectedRecord.getName());
+			selectedCoopPilots.add(selectedCoopPilot);
 		}
 		return selectedCoopPilots;
+	}
+
+	@Override
+	public void onSelectCallback() 
+	{
+		try
+		{
+			parent.evaluateErrors();
+		}
+		catch (Exception e)
+		{
+			Logger.logException(e);
+		}
 	}
 }
