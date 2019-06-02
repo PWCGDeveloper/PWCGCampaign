@@ -32,6 +32,7 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
     private CoopUserAccept coopUserAccept = new CoopUserAccept();
     private CoopPilotAccept coopPilotAccept = new CoopPilotAccept();
     private CoopHostPassword coopHostPassword = new CoopHostPassword();
+    private CoopCreateUser coopCreateUser = new CoopCreateUser();
 
     public CoopAdminGui()
     {
@@ -45,10 +46,12 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
         	coopUserAccept.makePanels();
         	coopPilotAccept.makePanels();
         	coopHostPassword.makePanels();
+        	coopCreateUser.makePanels();
         	
             setRightPanel(makeCoopAdminActionSelectPanel());
             setCenterPanel(makeCenterPanel());
             setLeftPanel(makeNavigatePanel());
+            
         }
         catch (Throwable e)
         {
@@ -57,7 +60,7 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
         }
     }
 
-    public JPanel makeCenterPanel()  
+	public JPanel makeCenterPanel()  
     {       
         String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
         ImageResizingPanel blankPanel = new ImageResizingPanel(imagePath);
@@ -104,6 +107,7 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
         buttonPanel.add(makeActionSelectRadioButton("Change Host Password"));
         buttonPanel.add(makeActionSelectRadioButton("Administer Coop Users"));
         buttonPanel.add(makeActionSelectRadioButton("Administer Coop Pilots"));
+        buttonPanel.add(makeActionSelectRadioButton("Add Coop User"));
         
         add (buttonPanel);
 
@@ -142,6 +146,7 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
             	coopUserAccept.writeResults();
             	coopPilotAccept.writeResults();
             	coopHostPassword.writeResults();
+            	coopCreateUser.writeResults();
 
                 CampaignGuiContextManager.getInstance().popFromContextStack();
                 return;
@@ -157,6 +162,10 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
             else if (action.contains("Administer Coop Pilots"))
             {
                 CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopPilotAccept, null);
+            }
+            else if (action.contains("Add Coop User"))
+            {
+                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopCreateUser, null);
             }
         }
         catch (Throwable e)

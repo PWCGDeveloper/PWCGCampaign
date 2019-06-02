@@ -67,7 +67,6 @@ public class CoopHostPassword extends ImageResizingPanel
         hostPasswordTextBox.setText(coopHostRecord.getPassword());
     }
 
-
     private JPanel makePasswordEntryPanel() throws PWCGException 
     {
 	    Font font = MonitorSupport.getPrimaryFontLarge();
