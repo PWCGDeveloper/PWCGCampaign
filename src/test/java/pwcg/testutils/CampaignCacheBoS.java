@@ -45,6 +45,7 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
         makeProfile(SquadrontTestProfile.FG_362_PROFILE);
         makeProfile(SquadrontTestProfile.RAF_184_PROFILE);
         makeProfile(SquadrontTestProfile.REGIMENT_11_PROFILE);
+        makeWrittenProfile();
     }
     
     private void makeWrittenProfile() throws PWCGException

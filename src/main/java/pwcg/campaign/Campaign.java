@@ -69,6 +69,7 @@ public class Campaign
     public void write() throws PWCGException
     {
         CampaignIOJson.writeJson(this);
+        initializeCampaignDirectories();
     }
     
 	private boolean readValidCampaign()
