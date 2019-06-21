@@ -1,85 +1,52 @@
 package pwcg.mission.flight.paradrop;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.group.Bridge;
-import pwcg.campaign.group.GroupManager;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.target.unit.TargetBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightPackage;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.GroundUnitCollection;
 
-public class ParaDropPackage extends FlightPackage
+public class ParaDropPackage implements IFlightPackage
 {
-    public ParaDropPackage(Mission mission, Campaign campaign, Squadron squadron, FlightTypes flightType, boolean isPlayerFlight)
+    private FlightInformation flightInformation;
+
+    public ParaDropPackage(FlightInformation flightInformation)
     {
-        super(mission, campaign, squadron, isPlayerFlight);
-        this.flightType = flightType;
+        this.flightInformation = flightInformation;
     }
 
     public Flight createPackage () throws PWCGException 
 	{
 	    ParaDropFlight paradropFlight = null;
         paradropFlight = createPackageTarget ();
-        addEscortIfNeeded(paradropFlight);
 		return paradropFlight;
 	}
 
 	public ParaDropFlight createPackageTarget () throws PWCGException 
 	{
         GroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
-        Coordinate groundUnitCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
-        Coordinate targetCoordinates = getTargetLocation(groundUnitCoordinates);
-        ParaDropFlight paradropFlight = makeParaDropFlight(targetCoordinates);
+        ParaDropFlight paradropFlight = makeParaDropFlight();
         paradropFlight.linkGroundUnitsToFlight(groundUnitCollection);
         return paradropFlight;
 	}
-	
-	private Coordinate getTargetLocation(Coordinate groundUnitCoordinates) throws PWCGException
-	{
-	    if (flightType == FlightTypes.PARATROOP_DROP)
-	    {
-	        return getTargetBridgeLocationForParaDrop(groundUnitCoordinates);
-	    }
-	    else
-	    {
-	        return groundUnitCoordinates;
-	    }
-	}
 
-    private Coordinate getTargetBridgeLocationForParaDrop(Coordinate groundUnitCoordinates) throws PWCGException
+    private ParaDropFlight makeParaDropFlight() throws PWCGException
     {
-        GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
-        Side enemySide = squadron.determineEnemyCountry(campaign, campaign.getDate()).getSide();
-        Bridge targetBridge = groupManager.getBridgeFinder().findClosestBridgeForSide(enemySide, campaign.getDate(), groundUnitCoordinates);
-        Coordinate targetCoordinates = targetBridge.getPosition().copy();
-        return targetCoordinates;
-    }
-
-    private ParaDropFlight makeParaDropFlight(Coordinate targetCoordinates) throws PWCGException
-    {
-        Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
+        Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());        
-        FlightInformation flightInformation = createFlightInformation(targetCoordinates);
-        ParaDropFlight paradropFlight = new ParaDropFlight (flightInformation, missionBeginUnit);
-        
+        ParaDropFlight paradropFlight = new ParaDropFlight (flightInformation, missionBeginUnit);        
         paradropFlight.createUnitMission();
-
         return paradropFlight;
     }
 
-    private void addEscortIfNeeded(ParaDropFlight paradropFlight) throws PWCGException
+    private GroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {
-        if (!mission.isNightMission())
-        {
-            addPossibleEscort(paradropFlight);
-        }
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
+        return targetBuilder.getGroundUnits();
     }
+
 }

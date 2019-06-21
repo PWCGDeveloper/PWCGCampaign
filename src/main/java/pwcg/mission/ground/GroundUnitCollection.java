@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.target.GroundUnitCollectionType;
-import pwcg.campaign.target.GroundUnitType;
 import pwcg.campaign.target.TargetDefinition;
+import pwcg.campaign.target.unit.GroundUnitCollectionType;
+import pwcg.campaign.target.unit.GroundUnitType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.ground.unittypes.GroundDirectFireUnit;

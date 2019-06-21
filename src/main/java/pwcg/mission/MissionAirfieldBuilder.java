@@ -48,14 +48,12 @@ public class MissionAirfieldBuilder
         
         return selectedFields;
     }
-    
-    
 
 	private CoordinateBox createMissionBordersForAirfields() throws PWCGException, PWCGException
 	{
 		ConfigManager configManager = campaign.getCampaignConfigManager();
         int keepAirfieldSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepAirfieldSpreadKey);
-        CoordinateBox missionBorders = mission.getMissionFlightBuilder().getMissionBorders(keepAirfieldSpread);
-		return missionBorders;
+        CoordinateBox keepAirfieldsBorder = mission.getMissionBorders().expandBox(keepAirfieldSpread);
+		return keepAirfieldsBorder;
 	}
 }

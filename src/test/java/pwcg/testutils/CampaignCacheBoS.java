@@ -44,6 +44,7 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
         makeProfile(SquadrontTestProfile.TG2_PROFILE);
         makeProfile(SquadrontTestProfile.FG_362_PROFILE);
         makeProfile(SquadrontTestProfile.RAF_184_PROFILE);
+        makeProfile(SquadrontTestProfile.COOP_PROFILE);
         makeProfile(SquadrontTestProfile.REGIMENT_11_PROFILE);
         makeWrittenProfile();
     }
@@ -64,7 +65,7 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
         		participatingPlayers.addSquadronMember(player);
         	}
 
-            Mission mission = new Mission();
+            Mission mission = new Mission(participatingPlayers);
             mission.initialize(writtenCampaign);
             mission.generate(participatingPlayers, FlightTypes.PATROL);
             mission.finalizeMission();

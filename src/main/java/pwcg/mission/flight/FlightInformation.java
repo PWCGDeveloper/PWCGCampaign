@@ -1,29 +1,42 @@
 package pwcg.mission.flight;
 
+import java.util.List;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.plane.PlaneMCU;
 
 public class FlightInformation
 {
     private Campaign campaign;
     private Mission mission;
     private Squadron squadron;
-    private FlightTypes flightType = FlightTypes.ANY;
+    private FlightTypes flightType;
     private boolean isPlayerFlight = false;
     private boolean isEscortedByPlayerFlight = false;
     private boolean isEscortForPlayerFlight = false;
-    private Coordinate targetCoords;
+    private List<SquadronMember> participatingPlayers;
+    private TargetDefinition targetDefinition = new TargetDefinition();
+    private List<PlaneMCU> planes;
     
-    public FlightInformation(Campaign campaign)
+    public FlightInformation(Mission mission)
     {
-        this.campaign = campaign;
+        this.mission = mission;
+        this.campaign = mission.getCampaign();
+    }
+    
+    public List<SquadronMember> getParticipatingPlayersForFlight()
+    {
+		return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getSquadronId());
     }
     
     public Mission getMission()
@@ -88,15 +101,30 @@ public class FlightInformation
 
     public Coordinate getTargetCoords()
     {
-        return targetCoords;
+        return targetDefinition.getTargetPosition();
     }
-
-    public void setTargetCoords(Coordinate targetCoords)
+    
+    public List<SquadronMember> getParticipatingPlayers() 
     {
-        this.targetCoords = targetCoords;
-    }
+		return participatingPlayers;
+	}
 
-    public boolean isVirtual()
+	public void setCampaign(Campaign campaign) 
+	{
+		this.campaign = campaign;
+	}
+	
+	public TargetDefinition getTargetDefinition() 
+	{
+		return targetDefinition;
+	}
+
+	public void setTargetDefinition(TargetDefinition targetDefinition) 
+	{
+		this.targetDefinition = targetDefinition;
+	}
+
+	public boolean isVirtual()
     {
         boolean isVirtual = true;
         if (isPlayerFlight || isEscortedByPlayerFlight || isEscortForPlayerFlight)
@@ -133,13 +161,22 @@ public class FlightInformation
         }
         return parkedStart;
     }
-
     
     public IAirfield getDepartureAirfield() throws PWCGException
     {
         String airfieldName = squadron.determineCurrentAirfieldName(campaign.getDate());
         IAirfield departureAirfield = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
         return departureAirfield;
+    }
+
+    public List<PlaneMCU> getPlanes()
+    {
+        return planes;
+    }
+
+    public void setPlanes(List<PlaneMCU> planes)
+    {
+        this.planes = planes;
     }
 
     public Campaign getCampaign()

@@ -6,7 +6,6 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.FlightInformation;
@@ -28,15 +27,6 @@ public class ParaDropFlight extends GroundTargetAttackFlight
 	{
 		super.createUnitMission();
 		super.createAttackArea(this.getMaximumFlightAltitude());
-	}
-
-	@Override
-	public int calcNumPlanes() throws PWCGException 
-	{
-        int transportMinimum = 1;
-        int transportAdditional = 4;
-        numPlanesInFlight = transportMinimum + RandomNumberGenerator.getRandom(transportAdditional);        
-        return numPlanesInFlight;
 	}
 
 	@Override

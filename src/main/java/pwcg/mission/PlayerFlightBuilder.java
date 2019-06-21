@@ -1,7 +1,7 @@
 package pwcg.mission;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.factory.PWCGFlightFactory;
+import pwcg.campaign.factory.PWCGFlightFactoryFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
@@ -25,29 +25,29 @@ public class PlayerFlightBuilder
         this.mission = mission;
     }
     
-    public Flight createPlayerFlight(FlightTypes flightType, Squadron squadron) throws PWCGException 
+    public Flight createPlayerFlight(FlightTypes requestedFlightType, Squadron squadron) throws PWCGException 
     {
-        // get plane to allow determination of role
-        FlightFactory flightFactory = PWCGFlightFactory.createFlightFactory(campaign);
+        FlightTypes flightType = finalizeFlightType(requestedFlightType, squadron);        
+        buildFlight(flightType, squadron);
+        return playerFlight;
+    }
+
+    private void buildFlight(FlightTypes flightType, Squadron squadron) throws PWCGException
+    {
+        FlightFactory flightFactory = PWCGFlightFactoryFactory.createFlightFactory(campaign);
+        playerFlight = flightFactory.buildFlight(mission, squadron, flightType, true);        
+        triggerLinkedUnitCZFromMyFlight(playerFlight);
+        validatePlayerFlight();
+    }
+
+    private FlightTypes finalizeFlightType(FlightTypes flightType, Squadron squadron) throws PWCGException
+    {
+        FlightFactory flightFactory = PWCGFlightFactoryFactory.createFlightFactory(campaign);
         if (flightType == FlightTypes.ANY)
         {
             flightType = flightFactory.buildFlight(squadron, true);
         }
-        
-        if (flightType == FlightTypes.FERRY)
-        {
-            playerFlight = flightFactory.buildFerryFlight(mission, squadron, true);
-        }
-        else
-        {
-            playerFlight = flightFactory.buildFlight(mission, squadron, flightType, true);
-        }
-        
-        triggerLinkedUnitCZFromMyFlight(playerFlight);
-        
-        validatePlayerFlight();
-        
-        return playerFlight;
+        return flightType;
     }
 
     private void validatePlayerFlight() throws PWCGException

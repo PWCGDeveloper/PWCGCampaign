@@ -86,8 +86,7 @@ public class MissionFrontLineIconBuilder
 
 	private List<McuIcon> createFrontPoints(List<FrontLinePoint> frontPointsForSide) throws PWCGException
 	{
-	    CoordinateBox missionBorders = mission.getMissionFlightBuilder().getMissionBorders(10000);
-
+        CoordinateBox missionBorders = mission.getMissionBorders().expandBox(10000);
 		List<McuIcon> iconsForFront = new ArrayList<>();
         for (int i = 0; i < frontPointsForSide.size(); ++i)
         {

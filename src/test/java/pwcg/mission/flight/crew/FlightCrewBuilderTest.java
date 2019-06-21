@@ -1,9 +1,12 @@
 package pwcg.mission.flight.crew;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
@@ -11,9 +14,11 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
 
+@RunWith(MockitoJUnitRunner.class)
 public class FlightCrewBuilderTest 
 {
     Campaign campaign;
@@ -28,8 +33,11 @@ public class FlightCrewBuilderTest
     @Test
     public void testPlayerFlightGeneration() throws PWCGException
     {
+    	FlightInformation flightInformation = new FlightInformation(campaign, campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList());
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.KG53_PROFILE.getSquadronId());
-        FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(campaign, squadron);
+        flightInformation.setSquadron(squadron);
+        
+        FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
         List<SquadronMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
         List<SquadronMember> players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
@@ -50,8 +58,11 @@ public class FlightCrewBuilderTest
     @Test
     public void testAiFlightGeneration() throws PWCGException
     {
+    	FlightInformation flightInformation = new FlightInformation(campaign, new ArrayList<>());
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(20111052);
-        FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(campaign, squadron);
+        flightInformation.setSquadron(squadron);
+
+        FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
         List<SquadronMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
         List<SquadronMember> players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();

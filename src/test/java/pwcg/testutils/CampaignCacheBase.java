@@ -8,10 +8,12 @@ import java.util.Map;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGeneratorModel;
+import pwcg.campaign.CampaignHumanPilotHandler;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.RankFactory;
+import pwcg.campaign.squadmember.AiPilotRemovalChooser;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -31,7 +33,7 @@ public abstract class CampaignCacheBase implements ICampaignCache
 
     protected void makeProfile(SquadrontTestProfile profile) throws PWCGException
     {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile (profile.getDateString(), profile.getSquadronId());
+        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile (profile);
         campaignProfiles.put(profile.getKey(), generatorModel);
     }
 
@@ -79,18 +81,75 @@ public abstract class CampaignCacheBase implements ICampaignCache
             CampaignGeneratorModel model = campaignProfiles.get(profile.getKey());
             Campaign campaign = makeCampaignFromModel(model);
             campaignCache.put(profile.getKey(), campaign);
+            
+            if (model.isCoop())
+            {
+	            List<SquadronMember> players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            assert(players.size() == 1);
+	            
+	            addMorePilotsForCoop(campaign, "Squadron Mate", "Leutnant", SquadrontTestProfile.COOP_PROFILE.getSquadronId());
+	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            assert(players.size() == 2);
+	            
+	            addMorePilotsForCoop(campaign, "Friendly Fighter", "Leutnant", 20112052);
+	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            assert(players.size() == 3);
+	            
+	            addMorePilotsForCoop(campaign, "Friendly Bombermaj", "Major", 20131053);
+	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            assert(players.size() == 4);
+	            
+	            addMorePilotsForCoop(campaign, "Friendly Bombercpt", "Hauptmann", 20131053);
+	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            assert(players.size() == 5);
+	            
+	            addMorePilotsForCoop(campaign, "Friendly Divebomber", "Oberleutnant", 20122077);
+	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            assert(players.size() == 6);
+	            
+	            
+	            addMorePilotsForCoop(campaign, "Enemy Fighter", "Leyitenant", 10111011);
+	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            assert(players.size() == 7);
+	            
+	            addMorePilotsForCoop(campaign, "Enemy Bomber", "Major", 10131132);
+	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            assert(players.size() == 8);
+	            
+	            addMorePilotsForCoop(campaign, "Enemy Bomber", "Kapitan", 10131132);
+	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            assert(players.size() == 9);
+	            
+	            addMorePilotsForCoop(campaign, "Enemy Groundattack", "Starshyi Leyitenant", 10121503);
+	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            assert(players.size() == 10);
+	            
+            }
             return campaign;
         }
         
         throw new PWCGException("No campaign found for profile " + profile.getKey());
     }
     
-    public static CampaignGeneratorModel makeCampaignModelForProfile(String dateYYMMDD, int squadronId) throws PWCGException
+    protected void addMorePilotsForCoop(Campaign campaign, String name, String rank, int squadronId) throws PWCGException
+    {
+        AiPilotRemovalChooser pilotRemovalChooser = new AiPilotRemovalChooser(campaign);
+        SquadronMember squadronMemberToReplace = pilotRemovalChooser.findAiPilotToRemove(rank, squadronId);
+        
+        CampaignHumanPilotHandler humanPilotHandler = new CampaignHumanPilotHandler(campaign);
+        humanPilotHandler.addNewPilot(
+                name, 
+                rank, 
+                squadronMemberToReplace.getSerialNumber(), 
+                squadronId);
+    }
+    
+	public static CampaignGeneratorModel makeCampaignModelForProfile(SquadrontTestProfile profile) throws PWCGException
     {
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
-        Squadron squadron = squadronManager.getSquadron(squadronId);
+        Squadron squadron = squadronManager.getSquadron(profile.getSquadronId());
         
-        Date campaignDate = DateUtils.getDateYYYYMMDD(dateYYMMDD);
+        Date campaignDate = DateUtils.getDateYYYYMMDD(profile.getDateString());
         ArmedService service = squadron.determineServiceForSquadron(campaignDate);
         String squadronName = squadron.determineDisplayName(campaignDate);
         
@@ -105,6 +164,7 @@ public abstract class CampaignCacheBase implements ICampaignCache
         generatorModel.setPlayerRegion("");
         generatorModel.setService(service);
         generatorModel.setSquadronName(squadronName);
+        generatorModel.setCoop(profile.isCoop());
 
         return generatorModel;
     }

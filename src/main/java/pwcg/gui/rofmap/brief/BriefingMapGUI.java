@@ -576,7 +576,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 
     private void mapFlightBox() throws PWCGException  
     {    
-        CoordinateBox missionBorders = briefingMissionHandler.getMission().getMissionFlightBuilder().getMissionBorders(5000);
+        CoordinateBox missionBorders = briefingMissionHandler.getMission().getMissionBorders().expandBox(5000);
         BriefingMapPanel mapPanel = (BriefingMapPanel)mapScroll.getMapPanel();
         mapPanel.setMissionBorders(missionBorders);
     }

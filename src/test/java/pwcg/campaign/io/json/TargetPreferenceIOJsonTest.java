@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.target.TargetPreferenceSet;
+import pwcg.campaign.target.locator.targettype.TargetPreferenceSet;
 import pwcg.core.exception.PWCGException;
 
 @RunWith(MockitoJUnitRunner.class)

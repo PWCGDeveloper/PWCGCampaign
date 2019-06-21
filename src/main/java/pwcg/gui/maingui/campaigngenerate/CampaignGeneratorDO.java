@@ -14,7 +14,7 @@ public class CampaignGeneratorDO
     private ArmedService service = null;
     private FrontMapIdentifier frontMap = null;
     private String campaignName = "";
-    private String playerName = "";
+    private String playerPilotName = "";
     private String coopUser = "";
     private String region = "";
     private String rankName = null;
@@ -30,7 +30,7 @@ public class CampaignGeneratorDO
             return false;
         }
         
-        if (playerName.isEmpty())
+        if (playerPilotName.isEmpty())
         {
             return false;
         }
@@ -106,14 +106,14 @@ public class CampaignGeneratorDO
         this.campaignName = campaignName;
     }
     
-   public String getPlayerName()
+   public String getPlayerPilotName()
     {
-        return playerName;
+        return playerPilotName;
     }
 
-    public void setPlayerName(String playerName)
+    public void setPlayerPilotName(String playerPilotName)
     {
-        this.playerName = playerName;
+        this.playerPilotName = playerPilotName;
     }
 
     public String getRegion()

@@ -34,7 +34,7 @@ public class MissionAirfieldIconBuilder
     private void createAirfieldIconsForSide(Campaign campaign, Mission mission, Side side) throws PWCGException
     {
         List<IAirfield> airfields = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirFieldsForSide(campaign.getDate(), side);
-    	CoordinateBox missionBorders = mission.getMissionFlightBuilder().getMissionBorders(1000);
+        CoordinateBox missionBorders = mission.getMissionBorders().expandBox(1000);
 		for (IAirfield airfield : airfields)
 		{
 			if (missionBorders.isInBox(airfield.getPosition()))

@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.target.ShippingLanes;
+import pwcg.campaign.target.locator.ShippingLanes;
 import pwcg.core.exception.PWCGException;
 
 @RunWith(MockitoJUnitRunner.class)

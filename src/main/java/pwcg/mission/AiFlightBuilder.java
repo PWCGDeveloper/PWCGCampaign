@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.factory.PWCGFlightFactory;
+import pwcg.campaign.factory.PWCGFlightFactoryFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.config.ConfigItemKeys;
@@ -55,7 +55,7 @@ public class AiFlightBuilder
                 continue;
             }
 
-            FlightFactory flightFactory = PWCGFlightFactory.createFlightFactory(campaign);
+            FlightFactory flightFactory = PWCGFlightFactoryFactory.createFlightFactory(campaign);
             FlightTypes flightType = flightFactory.buildFlight(squadron, false);
             Flight flight = flightFactory.buildFlight(mission, squadron, flightType, false);
             if (flight != null)

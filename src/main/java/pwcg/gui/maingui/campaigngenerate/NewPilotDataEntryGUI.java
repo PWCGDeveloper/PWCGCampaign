@@ -58,7 +58,7 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
     
 	private static Font font = null;
 	
-    private JTextField playerNameTextBox;
+    private JTextField playerPilotNameTextBox;
     private JTextArea squadronTextBox;
 	private JComboBox<String> cbRegion;
 	private JComboBox<String> cbRole;
@@ -118,7 +118,7 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
 			    rowCount = spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, i);
 			}
 	        
-            rowCount = createPlayerNameWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
+            rowCount = createPlayerPilotNameWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             rowCount =  spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             
             rowCount = createCoopUserSelectWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
@@ -359,21 +359,21 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
         return roles;
     }
 
-    private int createPlayerNameWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
+    private int createPlayerPilotNameWidget(GridBagConstraints labelConstraints, GridBagConstraints dataConstraints,
                     JPanel campaignGeneratePanel, int rowCount) throws PWCGException
     {
         spacerColumn (campaignGeneratePanel, 0, rowCount);
 
-        lPlayerName = createCampaignGenMenuLabel("Player Name:", labelConstraints, campaignGeneratePanel, rowCount);
+        lPlayerName = createCampaignGenMenuLabel("Pilot Name:", labelConstraints, campaignGeneratePanel, rowCount);
         campaignGeneratePanel.add(lPlayerName, labelConstraints);
 
-        playerNameTextBox = new JTextField(50);
-        playerNameTextBox.setFont(font);
-        playerNameTextBox.setBackground(textBoxBackgroundColor);
+        playerPilotNameTextBox = new JTextField(50);
+        playerPilotNameTextBox.setFont(font);
+        playerPilotNameTextBox.setBackground(textBoxBackgroundColor);
         
         dataConstraints.gridx = 2;
         dataConstraints.gridy = rowCount;
-        campaignGeneratePanel.add(playerNameTextBox, dataConstraints);
+        campaignGeneratePanel.add(playerPilotNameTextBox, dataConstraints);
 
         spacerColumn (campaignGeneratePanel, 3, rowCount + 0);
 
@@ -502,7 +502,7 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
         if (newPilotState.getCurrentStep() == PilotGeneratorWorkflow.CHOOSE_PLAYER_NAME)
         {
             lPlayerName.setForeground(labelColorSelected);
-    	    playerNameTextBox.setEnabled(true);
+    	    playerPilotNameTextBox.setEnabled(true);
 
         }
 
@@ -569,7 +569,7 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
 	        cbRegion.setEnabled(false);
 	    }
 
-	    playerNameTextBox.setEnabled(false);
+	    playerPilotNameTextBox.setEnabled(false);
 	    cbCoopUser.setEnabled(false);
 	    cbRole.setEnabled(false);
         cbRank.setEnabled(false);
@@ -652,8 +652,8 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
 	{
 		try
 		{
-            String playerName = (String)playerNameTextBox.getText();
-            campaignGeneratorDO.setPlayerName(playerName);
+            String playerName = (String)playerPilotNameTextBox.getText();
+            campaignGeneratorDO.setPlayerPilotName(playerName);
             
             if (ae.getActionCommand().equalsIgnoreCase("RegionChanged"))
             {

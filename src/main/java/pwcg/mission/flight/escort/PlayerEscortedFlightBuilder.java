@@ -1,13 +1,11 @@
 package pwcg.mission.flight.escort;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.AttackMcuSequence;
 import pwcg.mission.flight.Flight;
@@ -18,24 +16,20 @@ import pwcg.mission.flight.bomb.BombingFlight;
 
 public class PlayerEscortedFlightBuilder
 {
-	private Campaign campaign;
-	private Mission mission;
-    private Squadron playerSquadron;
+    private FlightInformation flightInformation;
     private Squadron friendlyBombSquadron;
 	private BombingFlight bombingFlightEscortedByPlayer;
 	
-	public PlayerEscortedFlightBuilder (Campaign campaign, Mission mission, Squadron playerSquadron, Squadron friendlyBombSquadron) throws PWCGException 
+	public PlayerEscortedFlightBuilder (FlightInformation flightInformation, Squadron friendlyBombSquadron) throws PWCGException 
 	{
-		this.campaign = campaign;
-		this.mission = mission;
-        this.playerSquadron = playerSquadron;
+        this.flightInformation = flightInformation;
         this.friendlyBombSquadron = friendlyBombSquadron;
 	}
 	
 	public Flight createEscortedFlight (Coordinate enemyGroundUnitCoordinates) throws PWCGException 
 	{
-		MissionBeginUnit missionBeginUnit = new MissionBeginUnit(friendlyBombSquadron.determineCurrentPosition(campaign.getDate()));
-        FlightInformation escortedFlightInformation = FlightInformationFactory.buildAiFlightInformation(friendlyBombSquadron, mission, FlightTypes.BOMB, enemyGroundUnitCoordinates.copy());
+		MissionBeginUnit missionBeginUnit = new MissionBeginUnit(friendlyBombSquadron.determineCurrentPosition(flightInformation.getCampaign().getDate()));
+        FlightInformation escortedFlightInformation = FlightInformationFactory.buildAiFlightInformation(friendlyBombSquadron, flightInformation.getMission(), FlightTypes.BOMB);
         escortedFlightInformation.setEscortedByPlayerFlight(true);
         bombingFlightEscortedByPlayer = new BombingFlight (escortedFlightInformation, missionBeginUnit);
 		bombingFlightEscortedByPlayer.createUnitMission();
@@ -45,10 +39,10 @@ public class PlayerEscortedFlightBuilder
 
 	private void moveEscortedFlightCloseToPlayer(Coordinate targetCoordinates, Coordinate escortedFlightIngressPosition) throws PWCGException
 	{
-        Coordinate playerSquadronPosition = playerSquadron.determineCurrentPosition(campaign.getDate());
+        Coordinate playerSquadronPosition = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
 
-        FrontLinesForMap frontMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        Coordinate closestFrontToTarget = frontMap.findClosestFrontCoordinateForSide(targetCoordinates, playerSquadron.determineSide());
+        FrontLinesForMap frontMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(flightInformation.getCampaign().getDate());
+        Coordinate closestFrontToTarget = frontMap.findClosestFrontCoordinateForSide(targetCoordinates, flightInformation.getSquadron().determineSide());
                         
         double angleToTarget = MathUtils.calcAngle(closestFrontToTarget, playerSquadronPosition);
 		Coordinate rendevousCoords = MathUtils.calcNextCoord(closestFrontToTarget, angleToTarget, 10000.0);

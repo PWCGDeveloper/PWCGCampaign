@@ -1,23 +1,21 @@
 package pwcg.mission.flight.contactpatrol;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.target.unit.TargetBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightPackage;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.GroundUnitCollection;
 
-public class ContactPatrolPackage extends FlightPackage
+public class ContactPatrolPackage implements IFlightPackage
 {
-    public ContactPatrolPackage(Mission mission, Campaign campaign, Squadron squadron, boolean isPlayerFlight)
+    private FlightInformation flightInformation;
+
+    public ContactPatrolPackage(FlightInformation flightInformation)
     {
-        super(mission, campaign, squadron, isPlayerFlight);
-        this.flightType = FlightTypes.CONTACT_PATROL;
+        this.flightInformation = flightInformation;
     }
 
     public Flight createPackage () throws PWCGException 
@@ -29,13 +27,18 @@ public class ContactPatrolPackage extends FlightPackage
 
     private ContactPatrolFlight createFlight(GroundUnitCollection groundUnitCollection) throws PWCGException
     {
-        Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
-        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
+        Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
 	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
-        FlightInformation flightInformation = createFlightInformation(targetCoordinates);
         ContactPatrolFlight contactPatrol = new ContactPatrolFlight (flightInformation, missionBeginUnit);
         contactPatrol.createUnitMission();
         contactPatrol.linkGroundUnitsToFlight(groundUnitCollection);
         return contactPatrol;
-    }	
+    }
+
+    private GroundUnitCollection createGroundUnitsForFlight() throws PWCGException
+    {
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
+        return targetBuilder.getGroundUnits();
+    }
 }

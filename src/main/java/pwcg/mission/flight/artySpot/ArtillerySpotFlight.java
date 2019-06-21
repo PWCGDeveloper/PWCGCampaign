@@ -3,11 +3,8 @@ package pwcg.mission.flight.artySpot;
 import java.util.List;
 
 import pwcg.campaign.target.TacticalTarget;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.Unit;
@@ -23,19 +20,6 @@ public class ArtillerySpotFlight extends Flight
     {
         super (flightInformation, missionBeginUnit);
     }
-
-	@Override
-	public int calcNumPlanes() throws PWCGException 
-	{
-		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
-		
-		int ArtillerySpotMinimum = configManager.getIntConfigParam(ConfigItemKeys.ArtillerySpotMinimumKey);
-		int ArtillerySpotAdditional = configManager.getIntConfigParam(ConfigItemKeys.ArtillerySpotAdditionalKey) + 1;
-		int numPlanes = ArtillerySpotMinimum + RandomNumberGenerator.getRandom(ArtillerySpotAdditional);
-		
-		return numPlanes;
-
-	}
 
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 

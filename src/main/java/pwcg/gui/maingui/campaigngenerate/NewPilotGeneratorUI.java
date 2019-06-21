@@ -140,7 +140,7 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
     private void createPilot() throws PWCGUserException, Exception
     {
         CampaignGeneratorDO campaignGeneratorDO = dataEntry.getCampaignGeneratorDO();
-        String playerName = campaignGeneratorDO.getPlayerName();
+        String playerName = campaignGeneratorDO.getPlayerPilotName();
         String squadronName = campaignGeneratorDO.getSquadName();
         String rank = campaignGeneratorDO.getRank();
         String coopuser = campaignGeneratorDO.getCoopUser();

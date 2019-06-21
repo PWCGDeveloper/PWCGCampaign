@@ -20,12 +20,12 @@ public class SquadronMemberReplacer
         this.campaign = campaign;
     }
 	
-    public void createPilot(String playerName, String rank, String squadronName, String coopUser) throws PWCGUserException, Exception
+    public void createPilot(String playerPilotName, String rank, String squadronName, String coopUser) throws PWCGUserException, Exception
     {        
         Squadron newPlayerSquadron = getNewPlayerSquadron(squadronName);
     	SquadronPersonnel newPlayerSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(newPlayerSquadron.getSquadronId());
 
-        SquadronMember newSquadronMewmber = addnewPilotToCampaign(playerName, rank, newPlayerSquadron, newPlayerSquadronPersonnel);        
+        SquadronMember newSquadronMewmber = addnewPilotToCampaign(playerPilotName, rank, newPlayerSquadron, newPlayerSquadronPersonnel);        
         removeAiSquadronMember(rank, newPlayerSquadron, newPlayerSquadronPersonnel);
         
         if (campaign.getCampaignData().isCoop())
@@ -40,11 +40,11 @@ public class SquadronMemberReplacer
 		return newPlayerSquadron;
 	}
 
-	private SquadronMember addnewPilotToCampaign(String playerName, String rank, Squadron newPlayerSquadron,
+	private SquadronMember addnewPilotToCampaign(String playerPilotName, String rank, Squadron newPlayerSquadron,
 			SquadronPersonnel newPlayerSquadronPersonnel) throws PWCGException {
 		CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setPlayerRank(rank);
-        generatorModel.setPlayerName(playerName);
+        generatorModel.setPlayerName(playerPilotName);
         generatorModel.setService(newPlayerSquadron.determineServiceForSquadron(campaign.getDate()));
         
         SquadronMemberFactory squadronMemberFactory = new SquadronMemberFactory(campaign, newPlayerSquadron, newPlayerSquadronPersonnel);

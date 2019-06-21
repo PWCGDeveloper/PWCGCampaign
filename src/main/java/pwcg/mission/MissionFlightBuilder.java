@@ -10,9 +10,9 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.location.CoordinateBox;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightProximityAnalyzer;
+import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.plane.PlaneMCU;
 
@@ -207,7 +207,7 @@ public class MissionFlightBuilder
 
     public boolean hasPlayerFighterFlightType()
     {
-        return hasPlayerFlightWithFlightTypes(FlightTypes.getFighterFlightTypes());
+        return hasPlayerFlightWithFlightTypes(FlightTypes.getFlightTypesByCategory(FlightTypeCategory.FIGHTER));
     }
 
     public Flight getPlayerFlightForSquadron(int squadronId)
@@ -220,11 +220,6 @@ public class MissionFlightBuilder
             }
         }
         return null;
-    }
-
-    public CoordinateBox getMissionBorders(Integer additionalSpread) throws PWCGException
-    {
-        return MissionBorderBuilder.buildCoordinateBox(playerFlights, 20000, additionalSpread);
     }
 
     public Flight getPlayerFlight(SquadronMember player) throws PWCGException

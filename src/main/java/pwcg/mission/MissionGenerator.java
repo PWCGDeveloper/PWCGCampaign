@@ -3,6 +3,7 @@ package pwcg.mission;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.CoordinateBox;
 import pwcg.mission.flight.FlightTypes;
 
 public class MissionGenerator
@@ -30,9 +31,10 @@ public class MissionGenerator
     private Mission makeSingleMission(MissionHumanParticipants participatingPlayers, FlightTypes flightType) throws PWCGException 
     {
         campaign.setCurrentMission(null);        
-        Mission mission = new Mission();
+        MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
+        CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
+        Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
         campaign.setCurrentMission(mission);
-        mission.initialize(campaign);
         mission.generate(participatingPlayers, flightType);
         
         return mission;

@@ -15,10 +15,10 @@ import pwcg.mission.mcu.McuWaypoint;
 public class StrategicSupportingFlight extends BombingFlight
 {
 	Coordinate startCoords = null;
-	
+
     public StrategicSupportingFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit, Coordinate startCoords)
     {
-        super (flightInformation, missionBeginUnit);
+        super(flightInformation, missionBeginUnit);
         this.startCoords = startCoords.copy();
     }
 
@@ -38,9 +38,7 @@ public class StrategicSupportingFlight extends BombingFlight
 
     public void createUnitMission() throws PWCGException 
     {
-        calcPlanesInFlight();
         createWaypointPackage();
-        createPlanes();
         createWaypoints();
         createActivation();
         createFormation();

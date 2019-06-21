@@ -20,7 +20,6 @@ public class CoordinateBox
     public static CoordinateBox coordinateBoxFromCorners (Coordinate sw, Coordinate ne) throws PWCGException
     {
         CoordinateBox coordinateBox = new CoordinateBox();
-        
         coordinateBox.sw = sw;
         coordinateBox.ne = ne;
         coordinateBox.calcCenterOfBox();        
@@ -101,13 +100,14 @@ public class CoordinateBox
         }
     }
 
-    public void expandBox(int meters) throws PWCGException
+    public CoordinateBox expandBox(int meters) throws PWCGException
     {
+        CoordinateBox coordinateBox = this.copy();
         if (meters < 0)
         {
             if ((getBoxWidth() < Math.abs(meters)) || getBoxHeight() < Math.abs(meters))
             {
-                return;
+                return coordinateBox;
             }
         }
         
@@ -118,6 +118,8 @@ public class CoordinateBox
         ne.setZPos(ne.getZPos() + meters);
         
         calcCenterOfBox();
+        
+        return coordinateBox;
     }
     
     public boolean isInBox (Coordinate itemPosition)
@@ -201,6 +203,15 @@ public class CoordinateBox
         ne = MathUtils.calcNextCoord(center, 90, boxSize / 2);
         ne = MathUtils.calcNextCoord(ne, 0, boxSize / 2);
         return ne;
+    }
+    
+    private CoordinateBox copy()
+    {
+        CoordinateBox coordinateBox = new CoordinateBox();
+        coordinateBox.sw = this.sw.copy();
+        coordinateBox.ne = this.ne.copy();
+        coordinateBox.center = this.center.copy();
+        return coordinateBox;
     }
 
     public Coordinate chooseCoordinateWithinBox() throws PWCGException

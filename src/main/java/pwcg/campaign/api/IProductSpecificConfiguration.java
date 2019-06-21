@@ -29,6 +29,9 @@ public interface IProductSpecificConfiguration
     int getBombApproachDistance();
     int getBombFinalApproachDistance();
     int getMinClimbWPAlt();
+    int getLargeMissionRadius();
+    int getMediumMissionRadius();
+    int getSmallMissionRadius();
     int getNumAssaultSegments(BattleSize battleSize);
     int getMaxSeaLaneDistance();
     int getCloseToFrontDistance();

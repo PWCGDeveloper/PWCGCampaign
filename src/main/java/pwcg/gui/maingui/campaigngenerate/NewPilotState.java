@@ -35,7 +35,7 @@ public class NewPilotState
     {
         if (currentStep == PilotGeneratorWorkflow.CHOOSE_PLAYER_NAME)
         {
-            if (StringValidity.isAlpha(campaignGeneratorDO.getPlayerName()))
+            if (StringValidity.isAlpha(campaignGeneratorDO.getPlayerPilotName()))
             {
                 currentStep = PilotGeneratorWorkflow.CHOOSE_COOP_USER;
                 if (!campaign.getCampaignData().isCoop())

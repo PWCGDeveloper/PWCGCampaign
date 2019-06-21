@@ -2,7 +2,8 @@ package pwcg.campaign.target;
 
 public enum TacticalTarget
 {
-    TARGET_NONE("whatever you see", TargetCategory.TARGET_CATEGORY_SOFT),
+    TARGET_NONE("No Target", TargetCategory.TARGET_CATEGORY_NONE),
+    TARGET_ANY("Build on the fly", TargetCategory.TARGET_CATEGORY_NONE),
     TARGET_ASSAULT("assaulting troops", TargetCategory.TARGET_CATEGORY_ARMORED),
     TARGET_DEFENSE("defending troops", TargetCategory.TARGET_CATEGORY_ARMORED),
     TARGET_INFANTRY("infantry", TargetCategory.TARGET_CATEGORY_SOFT),
@@ -17,7 +18,8 @@ public enum TacticalTarget
     TARGET_FACTORY("factory", TargetCategory.TARGET_CATEGORY_STRATEGIC),
     TARGET_CITY("city", TargetCategory.TARGET_CATEGORY_STRATEGIC), 
     TARGET_PORT("port facility", TargetCategory.TARGET_CATEGORY_STRATEGIC),
-    TARGET_RAIL("railway facility", TargetCategory.TARGET_CATEGORY_STRATEGIC);
+    TARGET_RAIL("railway facility", TargetCategory.TARGET_CATEGORY_STRATEGIC),
+    TARGET_AIR("aircraft", TargetCategory.TARGET_CATEGORY_AIR_TO_AIR);
     
     private String targetName;
     private TargetCategory targetCategory;

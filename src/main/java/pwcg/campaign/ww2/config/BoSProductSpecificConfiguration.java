@@ -26,6 +26,9 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     private static final int INTERCEPT_RADIUS = 60000;
     private static final int CLOSE_TO_FRONT_DISTANCE = 60000;
     private static final int MAX_DISTANCE_FROM_PLAYER_BOX = 60000;
+    private static final int MISSION_RADIUS_LARGE = 100000;
+    private static final int MISSION_RADIUS_MEDIUM = 50000;
+    private static final int MISSION_RADIUS_SMALL = 30000;
 
     @Override
     public boolean useWaypointGoal()
@@ -354,5 +357,23 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     public int getMaxDistanceForVirtualFlightFromPlayerBox()
     {
         return MAX_DISTANCE_FROM_PLAYER_BOX;
+    }
+
+    @Override
+    public int getLargeMissionRadius()
+    {
+        return MISSION_RADIUS_LARGE;
+    }
+
+    @Override
+    public int getMediumMissionRadius()
+    {
+        return MISSION_RADIUS_MEDIUM;
+    }
+
+    @Override
+    public int getSmallMissionRadius()
+    {
+        return MISSION_RADIUS_SMALL;
     }
 }

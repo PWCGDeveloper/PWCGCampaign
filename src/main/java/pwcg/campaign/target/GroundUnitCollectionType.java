@@ -1,9 +1,0 @@
-package pwcg.campaign.target;
-
-public enum GroundUnitCollectionType
-{
-    INFANTRY_GROUND_UNIT_COLLECTION,
-    BALLOON_GROUND_UNIT_COLLECTION,
-    TRANSPORT_GROUND_UNIT_COLLECTION,
-    STATIC_GROUND_UNIT_COLLECTION,
-}

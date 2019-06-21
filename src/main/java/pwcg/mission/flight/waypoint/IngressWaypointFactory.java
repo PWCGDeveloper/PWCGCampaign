@@ -3,6 +3,7 @@ package pwcg.mission.flight.waypoint;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
 
 public class IngressWaypointFactory
@@ -11,7 +12,7 @@ public class IngressWaypointFactory
     public static IIngressWaypoint getIngressGenerator(Flight flight, Coordinate lastPosition, Coordinate targetPosition, int waypointSpeed, int flightAlt) throws PWCGException, PWCGException
     {
         IIngressWaypoint ingressWaypointGenerator = null;
-        if ((!flight.isFighterFlight()) && flight.isPlayerFlight())
+        if ((!flight.getFlightType().isCategory(FlightTypeCategory.FIGHTER)) && flight.isPlayerFlight())
         {
             ingressWaypointGenerator =  new IngressWaypointEscortedFlight(flight, lastPosition, targetPosition, waypointSpeed, flightAlt);
         }

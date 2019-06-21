@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.Role;
@@ -18,28 +19,21 @@ public class PackageAirfieldScramble
 {
     private Mission mission;
     private Campaign campaign;
+    private Side side;
+    private Coordinate scrambleCoordinates;
     
-    public PackageAirfieldScramble (Mission mission, Campaign campaign)
+    public PackageAirfieldScramble (Mission mission, Campaign campaign, Side side, Coordinate scrambleCoordinates)
     {
         this.campaign = campaign;
         this.mission = mission;
+        this.side = side;
+        this.scrambleCoordinates = scrambleCoordinates;
     }
     
-    public Flight createEnemyScramble(Flight flight, Coordinate scrambleCoordinates) throws PWCGException
-    {
-        Flight enemyScramble = null;
-        if (flight.isPlayerFlight() && !campaign.getCampaignData().isCoop())
-        {
-            enemyScramble = createEnemyScrambleForAirfieldAttack(flight, scrambleCoordinates);
-        }
-        
-        return enemyScramble;
-    }
-
-    protected Flight createEnemyScrambleForAirfieldAttack(Flight flight, Coordinate scrambleCoordinates) throws PWCGException 
+    public Flight createEnemyScramble() throws PWCGException
     {
         ScrambleFlight scramble = null;
-        List<Squadron> residentSquadrons = getResidentSquadrons(flight, scrambleCoordinates);
+        List<Squadron> residentSquadrons = getResidentSquadrons();
         if (residentSquadrons != null && residentSquadrons.size() > 0)
         {
             List<Squadron> fighterSquadrons = getFighterSquadrons(residentSquadrons);
@@ -51,7 +45,7 @@ public class PackageAirfieldScramble
         return scramble;
     }
 
-    private List<Squadron> getResidentSquadrons(Flight flight, Coordinate scrambleCoordinates) throws PWCGException
+    private List<Squadron> getResidentSquadrons() throws PWCGException
     {
         SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
 
@@ -60,7 +54,7 @@ public class PackageAirfieldScramble
                 campaign, 
                 scrambleCoordinates, 
                 0, 10000.0, 
-                flight.getSquadron().determineSide().getOppositeSide(),
+                side,
                 campaign.getDate());
         
         return squadrons;
@@ -87,7 +81,7 @@ public class PackageAirfieldScramble
         Coordinate scrambleCoords = scrambleSquad.determineCurrentPosition(campaign.getDate());
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(scrambleCoords.copy());
 
-        FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(scrambleSquad, mission, FlightTypes.SCRAMBLE, scrambleCoords.copy());
+        FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(scrambleSquad, mission, FlightTypes.SCRAMBLE);
         ScrambleFlight scramble =  new ScrambleFlight(opposingFlightInformation, missionBeginUnit);
         scramble.createUnitMission();
         return scramble;

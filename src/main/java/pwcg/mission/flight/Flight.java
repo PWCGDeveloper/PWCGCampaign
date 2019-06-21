@@ -31,7 +31,6 @@ import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.Unit;
 import pwcg.mission.flight.escort.VirtualEscortFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
-import pwcg.mission.flight.plane.PlaneMCUFactory;
 import pwcg.mission.flight.waypoint.ActualWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -83,7 +82,6 @@ public abstract class Flight extends Unit
     protected List<IAirfield> airfieldTargets = new ArrayList<IAirfield>();
     
     abstract protected void createFlightSpecificTargetAssociations() throws PWCGException;
-    abstract protected int calcNumPlanes() throws PWCGException;
     abstract public String getMissionObjective() throws PWCGException ;
     abstract protected List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException;
 
@@ -93,13 +91,12 @@ public abstract class Flight extends Unit
         flightId = IndexGenerator.getInstance().getNextIndex();
         this.flightInformation = flightInformation;
         this.missionBeginUnit = missionBeginUnit;
+        this.planes = flightInformation.getPlanes();
     }
 
     public void createUnitMission() throws PWCGException 
     {
-        calcPlanesInFlight();
         createWaypointPackage();
-        createPlanes();
         createWaypoints();
         setPlayerInitialPosition();
         createActivation();
@@ -108,15 +105,6 @@ public abstract class Flight extends Unit
         moveAirstartCloseToInitialWaypoint();
     }
     
-    protected void calcPlanesInFlight() throws PWCGException
-    {
-        numPlanesInFlight = calcNumPlanes();
-        if (numPlanesInFlight > 8)
-        {
-            numPlanesInFlight = 8;
-        }
-    }
-
     protected void createWaypointPackage() throws PWCGException
     {
         if (flightInformation.isPlayerFlight())
@@ -188,16 +176,6 @@ public abstract class Flight extends Unit
         }
         
         return false;
-    }
-
-    protected int modifyNumPlanes(int numPlanes)
-    {
-        if (numPlanes % 2 == 1)
-        {
-            return numPlanes + 1;
-        }
-        
-        return numPlanes;
     }
 
     public ICountry getCountry() throws PWCGException
@@ -336,12 +314,6 @@ public abstract class Flight extends Unit
     {
         FlightFinalizer finalizer = new FlightFinalizer(this);
         finalizer.finalizeFlight();
-    }
-
-    protected void createPlanes() throws PWCGException 
-    {        
-        PlaneMCUFactory planeGeneratorPlayer = new PlaneMCUFactory(flightInformation.getCampaign(), flightInformation.getSquadron(), this);
-        planes = planeGeneratorPlayer.createPlanesForFlight(numPlanesInFlight);
     }
     
     protected void enableNonVirtualFlight()
@@ -827,37 +799,6 @@ public abstract class Flight extends Unit
         }
     }
 
-    public void createEscortForPlayerFlight() throws PWCGException 
-    {
-        PlayerEscortBuilder playerEscortBuilder = new PlayerEscortBuilder();
-        Flight escortForPlayerFlight = playerEscortBuilder.createEscortForPlayerFlight(this);
-        if (escortForPlayerFlight != null)
-        {
-            addLinkedUnit(escortForPlayerFlight);
-        }
-    }
-    
-    public void createVirtualEscortFlight() throws PWCGException 
-    {
-        Squadron friendlyFighterSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
-                        flightInformation.getCampaign(), 
-                        flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate()), 
-                        Role.ROLE_FIGHTER, 
-                        flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()).getSide());
-
-        if (friendlyFighterSquadron != null)
-        {
-            MissionBeginUnit missionBeginUnitEscort = new MissionBeginUnit(this.getPosition());
-
-            FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(friendlyFighterSquadron, flightInformation.getMission(), FlightTypes.ESCORT, flightInformation.getTargetCoords().copy());
-            virtualEscortFlight = new VirtualEscortFlight(opposingFlightInformation, missionBeginUnitEscort, this);
-            virtualEscortFlight.createUnitMission();
-            virtualEscortFlight.createEscortPositionCloseToFirstWP();
-
-            addLinkedUnit(virtualEscortFlight);
-        }
-    }
-
     public static boolean isFighterMission(FlightTypes flightType)
     {
         boolean isFighterMission = false;
@@ -1019,28 +960,6 @@ public abstract class Flight extends Unit
         GroundUnit groundUnit = (GroundUnit)linkedUnit;             
         String targetName =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(groundUnit.getPosition().copy()).getName();
         return " near " + targetName;
-    }
-
-    public boolean isFighterFlight()
-    {
-        if (this.flightInformation.getFlightType() == FlightTypes.PATROL           ||
-            this.flightInformation.getFlightType() == FlightTypes.LOW_ALT_PATROL   ||
-            this.flightInformation.getFlightType() == FlightTypes.OFFENSIVE        ||
-            this.flightInformation.getFlightType() == FlightTypes.INTERCEPT        ||
-            this.flightInformation.getFlightType() == FlightTypes.LOW_ALT_CAP      ||
-            this.flightInformation.getFlightType() == FlightTypes.ESCORT           ||
-            this.flightInformation.getFlightType() == FlightTypes.SCRAMBLE         ||
-            this.flightInformation.getFlightType() == FlightTypes.SCRAMBLE_OPPOSE  ||
-            this.flightInformation.getFlightType() == FlightTypes.HOME_DEFENSE     ||
-            this.flightInformation.getFlightType() == FlightTypes.LONE_WOLF        ||
-            this.flightInformation.getFlightType() == FlightTypes.BALLOON_BUST     ||
-            this.flightInformation.getFlightType() == FlightTypes.BALLOON_DEFENSE  ||
-            this.flightInformation.getFlightType() == FlightTypes.SCRAMBLE_OPPOSE)
-        {
-            return true;
-        }
-            
-        return false;
     }
     
     protected String formMissionObjectiveLocation(Coordinate targetLocation) throws PWCGException 

@@ -9,7 +9,6 @@ import pwcg.campaign.group.AirfieldManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
@@ -37,15 +36,6 @@ public class TransportFlight extends Flight
 	    AirfieldManager airfieldManager = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager();
 	    arrivalAirfield = airfieldManager.getAirfieldFinder().findClosestAirfieldForSide(getTargetCoords(), getCampaign().getDate(), getSquadron().getCountry().getSide());    
     }
-
-    @Override
-	public int calcNumPlanes() throws PWCGException 
-	{
-		int transportMinimum = 1;
-		int transportAdditional = 4;
-		numPlanesInFlight = transportMinimum + RandomNumberGenerator.getRandom(transportAdditional);		
-        return modifyNumPlanes(numPlanesInFlight);
-	}
 
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 

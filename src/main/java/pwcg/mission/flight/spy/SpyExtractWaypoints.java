@@ -2,21 +2,17 @@ package pwcg.mission.flight.spy;
 
 import java.util.List;
 
-import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.waypoint.TargetLocationFinder;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class SpyExtractWaypoints extends WaypointGeneratorBase
 {
-    private static double SPY_EXTRACT_RADIUS = 150000.0;
-    
 	public SpyExtractWaypoints(Coordinate startCoords, 
 					  		Coordinate targetCoords, 
 					  		Flight flight,
@@ -40,9 +36,7 @@ public class SpyExtractWaypoints extends WaypointGeneratorBase
 
     private Coordinate getSpyExtractLocation(Coordinate startPosition) throws PWCGException
     {
-        Side enemySide = flight.getSquadron().determineEnemyCountry(campaign, campaign.getDate()).getSide(); 
-	    TargetLocationFinder targetLocationFinder = new TargetLocationFinder(campaign, enemySide, startPosition, SPY_EXTRACT_RADIUS);
-		Coordinate pickupLocation = targetLocationFinder.createTargetCoordinates();
+		Coordinate pickupLocation = targetCoords.copy();
         pickupLocation.setYPos(getFlightAlt());
         return pickupLocation;
     }

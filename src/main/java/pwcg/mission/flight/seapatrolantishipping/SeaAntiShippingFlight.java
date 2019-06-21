@@ -5,7 +5,6 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.FlightInformation;
@@ -27,15 +26,6 @@ public class SeaAntiShippingFlight extends GroundTargetAttackFlight
 	{
         super.createUnitMission();
         super.createAttackArea(SEA_ATTACK_ALT);
-	}
-
-	@Override
-	public int calcNumPlanes() 
-	{
-		numPlanesInFlight = 1 + RandomNumberGenerator.getRandom(2);
-		
-		return numPlanesInFlight;
-
 	}
 
 	@Override

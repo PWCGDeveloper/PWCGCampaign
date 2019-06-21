@@ -28,18 +28,6 @@ public class OffensiveFlight extends Flight
     {
         super (flightInformation, missionBeginUnit);
     }
-    
-	@Override
-	public int calcNumPlanes() throws PWCGException 
-	{
-		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
-		
-		int OffensivePatrolMinimum = configManager.getIntConfigParam(ConfigItemKeys.OffensivePatrolMinimumKey);
-		int OffensivePatrolAdditional = configManager.getIntConfigParam(ConfigItemKeys.OffensivePatrolAdditionalKey) + 1;
-		numPlanesInFlight = OffensivePatrolMinimum + RandomNumberGenerator.getRandom(OffensivePatrolAdditional);
-		
-        return modifyNumPlanes(numPlanesInFlight);
-	}
 
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 

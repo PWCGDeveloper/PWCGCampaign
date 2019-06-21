@@ -1,60 +1,27 @@
 package pwcg.mission.flight.offensive;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.api.Side;
-import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.target.GeneralTargetLocationGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightPackage;
-import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.waypoint.TargetLocationFinder;
+import pwcg.mission.flight.IFlightPackage;
 
-public class OffensivePackage extends FlightPackage
+public class OffensivePackage implements IFlightPackage
 {
-    private static double OFFENSIVE_RADIUS = 150000.0;
+    private FlightInformation flightInformation;
 
-    public OffensivePackage(Mission mission, Campaign campaign, Squadron squadron, boolean isPlayerFlight)
+    public OffensivePackage(FlightInformation flightInformation)
     {
-        super(mission, campaign, squadron, isPlayerFlight);
-        this.flightType = FlightTypes.OFFENSIVE;
+        this.flightInformation = flightInformation;
     }
 
     public Flight createPackage () throws PWCGException 
 	{
-        Coordinate targetWaypoint = getOffensivePatrolCoordinate();
-        OffensiveFlight offensive = createFlight(targetWaypoint);
-		return offensive;
-	}
-
-    private Coordinate getOffensivePatrolCoordinate() throws PWCGException
-    {
-        Coordinate targetGeneralLocation = GeneralTargetLocationGenerator.createTargetGeneralLocation(campaign, mission, squadron);        
-        Side enemySide = squadron.determineSquadronCountry(campaign.getDate()).getSide().getOppositeSide();
-        Coordinate targetWaypoint = getTargetWaypoint(targetGeneralLocation, enemySide);
-        return targetWaypoint;
-    }
-
-    private OffensiveFlight createFlight(Coordinate targetWaypoint) throws PWCGException
-    {
-        Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
+        Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());        
-        FlightInformation flightInformation = createFlightInformation(targetWaypoint);
 		OffensiveFlight offensive = new OffensiveFlight (flightInformation, missionBeginUnit);
 		offensive.createUnitMission();
         return offensive;
     }
-
-	protected Coordinate getTargetWaypoint(Coordinate referenceCoordinate, Side targetSide) throws PWCGException 
-	{
-        Side enemySide = squadron.determineSquadronCountry(campaign.getDate()).getSide().getOppositeSide();
-        TargetLocationFinder targetLocationFinder = new TargetLocationFinder(campaign, enemySide, referenceCoordinate, OFFENSIVE_RADIUS);
-        Coordinate pickupLocation = targetLocationFinder.createTargetCoordinates();
-		return pickupLocation;
-	}
-
 }

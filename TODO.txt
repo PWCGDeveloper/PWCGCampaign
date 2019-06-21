@@ -1,5 +1,33 @@
 https://github.com/PWCGDeveloper/PWCG.git
 
+
+Key Tests for PWCG 6.0
+FlightInformationFactory
+FlightPlaneBuilder
+ShipConvoyGenerator
+MissionBorderBuilder
+Target position for every flight type
+
+Add ambient scrambles
+Rethink flight keeper in light of many coop players
+
+Flight.createVirtualEscortFlight needs to be removed from flight - post flight generation processing?  i.e. make the flights first and then build dependent flights.
+- escorts for flights - rules depends on number of flights, player vs ai,  and coop/sp
+- flights to be escorted - rules depends on number of flights, player vs ai,  and coop/sp
+    - Never create escort mission for AI
+    - In coop make flight small
+- intercept targets - can we drive a player formation into an intercept?  probably not.
+	- intercept opposing roles.  Need class to generate opposing flight role based on intercept type
+	- intercept opposing roles.  Need to add ground units for low alt intercept
+- balloon bust - balloon cover for  - rules depends on number of flights, player vs ai,  and coop/sp
+- balloon defense - balloon attack for  - rules depends on number of flights, player vs ai,  and coop/sp
+- Sea Patrol - really does need an opposing flight - should eb a form of intercept
+- enemy scramble - maybe for airfield attacks or offensive flights
+- nighttime strategic bombing - supporting flights for night time bomber stream
+- nighttime strategic bombing - home defense
+- nighttime any - create spotlight decorator
+- Large plane sea patrol - opposing flight
+
 Problems:
 Chronological events not being recorded
 Multiple entries in squadron log
@@ -21,41 +49,7 @@ Handling wounded scenarios for multiple pilots
 		- disable mission button
 		- disable advance time button
 
-Ju52
-Add transport mission
-- Officer
-- Cargo
-- Nighttime parachute drops
-Add parachute drop mission
 
-Add mission relevance: i.e. mission assignments are accurate based on period and place
-Needs:
-- Squadron role
-- Mission type
-- Mission location
-- Target Map
-- Target area
-- Target Type
-- Start Date
-- End Date
-
-How it works:
-Check for relevant mission
-Odds of assigning
-Get squadron role ... player or AI doesn't matter
-If squadron should be involved in special mission (determine by role)
-- Create specific mission type
-- With specific target type
-- At Target Location
-
-
-Aircraft inventory
-- Start at squadron size + 2
-- Add one new best plane each day
-- Retire old planes
-- Add squadron inventory screen
-- Maintain losses
-- Lose days if inventory < half
 
 Weather
 - separate BOS and RoF config keys

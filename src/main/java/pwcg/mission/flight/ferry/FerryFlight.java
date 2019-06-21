@@ -28,13 +28,6 @@ public class FerryFlight extends Flight
 	}
 
 	@Override
-	public int calcNumPlanes() 
-	{
-		return 1;
-
-	}
-
-	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
 		FerryWaypoints waypointGenerator = new FerryWaypoints(

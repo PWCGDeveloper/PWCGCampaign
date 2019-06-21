@@ -68,7 +68,7 @@ public class AAAManager
 	{
 		ConfigManager configManager = campaign.getCampaignConfigManager();
         int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);        
-        CoordinateBox missionBorders = mission.getMissionFlightBuilder().getMissionBorders(keepGroupSpread);
+        CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
 		return missionBorders;
 	}
 }

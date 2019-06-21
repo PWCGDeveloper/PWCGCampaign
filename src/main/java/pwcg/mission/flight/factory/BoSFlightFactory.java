@@ -54,7 +54,7 @@ public class BoSFlightFactory extends FlightFactory
         }
     }
 
-    protected FlightTypes getFighterFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
+    private FlightTypes getFighterFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
     {
         FlightTypes flightType = FlightTypes.PATROL;
 
@@ -182,14 +182,14 @@ public class BoSFlightFactory extends FlightFactory
     }
 
 
-    protected FlightTypes getAttackFlightType() throws PWCGException 
+    private FlightTypes getAttackFlightType() throws PWCGException 
     {
         FlightTypes flightType = FlightTypes.GROUND_ATTACK;
 
         return flightType;
     }
 
-    protected FlightTypes getBomberFlightType() 
+    private FlightTypes getBomberFlightType() 
                         throws PWCGException 
     {
         FlightTypes flightType = FlightTypes.BOMB;
@@ -202,7 +202,7 @@ public class BoSFlightFactory extends FlightFactory
         return flightType;
     }
 
-    protected FlightTypes getDiveBomberFlightType() 
+    private FlightTypes getDiveBomberFlightType() 
                         throws PWCGException 
     {
         FlightTypes flightType = FlightTypes.DIVE_BOMB;
@@ -211,7 +211,7 @@ public class BoSFlightFactory extends FlightFactory
         return flightType;
     }
 
-    protected FlightTypes getStrategicBomberFlightType() 
+    private FlightTypes getStrategicBomberFlightType() 
     {
         FlightTypes flightType = FlightTypes.STRATEGIC_BOMB;
 

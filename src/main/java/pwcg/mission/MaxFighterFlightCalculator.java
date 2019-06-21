@@ -5,6 +5,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
 
 public class MaxFighterFlightCalculator
@@ -23,7 +24,7 @@ public class MaxFighterFlightCalculator
         int maxFighterToKeepIfGroundCampaign = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AiFighterFlightsForGroundCampaignMaxKey);
         int maxFighterToKeepIfFighterCampaign = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AiFighterFlightsForFighterCampaignMaxKey);
         int numFighterFlightsToKeep = 0;
-        if (campaign.isFighterCampaign() && mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(FlightTypes.getFighterFlightTypes()))
+        if (campaign.isFighterCampaign() && mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(FlightTypes.getFlightTypesByCategory(FlightTypeCategory.FIGHTER)))
         {
             numFighterFlightsToKeep =  RandomNumberGenerator.getRandom(maxFighterToKeepIfFighterCampaign)+1;
         }

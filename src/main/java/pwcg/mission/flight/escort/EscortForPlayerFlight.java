@@ -9,7 +9,6 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
@@ -52,9 +51,7 @@ public class EscortForPlayerFlight extends Flight
     @Override
     public void createUnitMission() throws PWCGException  
     {
-        calcPlanesInFlight();
         createWaypointPackage();
-        createPlanes();
         createPlaneInitialPosition();
         createWaypoints();
         createActivation();
@@ -169,19 +166,6 @@ public class EscortForPlayerFlight extends Flight
             plane.populateEntity(this, flightLeader);
             ++i;
         }
-    }
-
-    @Override
-    public int calcNumPlanes() throws PWCGException 
-    {
-        ConfigManagerCampaign configManager = flightInformation.getCampaign().getCampaignConfigManager();
-        
-        int GroundAttackMinimum = configManager.getIntConfigParam(ConfigItemKeys.PatrolAdditionalKey);
-        int GroundAttackAdditional = configManager.getIntConfigParam(ConfigItemKeys.PatrolAdditionalKey) + 1;
-        numPlanesInFlight = GroundAttackMinimum + RandomNumberGenerator.getRandom(GroundAttackAdditional);
-        
-        return modifyNumPlanes(numPlanesInFlight);
-
     }
 
     public String getMissionObjective() throws PWCGException 

@@ -1,58 +1,53 @@
 package pwcg.mission.flight.escort;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.target.unit.TargetBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightPackage;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.GroundUnitCollection;
 
-public class EscortPackage extends FlightPackage
+public class EscortPackage implements IFlightPackage
 {
-    private Squadron friendlyBombSquadron;
-    
-    public EscortPackage(Mission mission, Campaign campaign, Squadron squadron, boolean isPlayerFlight)
+    private FlightInformation flightInformation;    
+    public EscortPackage(FlightInformation flightInformation)
     {
-        super(mission, campaign, squadron, isPlayerFlight);
-        this.flightType = FlightTypes.ESCORT;
+        this.flightInformation = flightInformation;
     }
 
     public Flight createPackage () throws PWCGException 
     {
-	    if(!isPlayerFlight)
+	    if(!flightInformation.isPlayerFlight())
         {
 	        throw new PWCGMissionGenerationException ("Attempt to create non player escort package");
         }
-	    getSquadronToBeEscorted();
-	    
+	    	    
         GroundUnitCollection enemyGroundUnits = createTargetForPlayerEscortedFlight();
+
+        Squadron friendlyBombSquadron = getSquadronToBeEscorted();
+        PlayerEscortedFlightBuilder playerEscortedFlightBuilder = new PlayerEscortedFlightBuilder(flightInformation, friendlyBombSquadron);
         
-        PlayerEscortedFlightBuilder playerEscortedFlightBuilder = new PlayerEscortedFlightBuilder(campaign, mission, squadron, friendlyBombSquadron);
-        
-        Coordinate targetCoordinates = enemyGroundUnits.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
+        Coordinate targetCoordinates = enemyGroundUnits.getTargetCoordinatesFromGroundUnits(flightInformation.getSquadron().determineEnemySide());
         Flight flightEscortedByPlayer = playerEscortedFlightBuilder.createEscortedFlight(targetCoordinates);
         flightEscortedByPlayer.linkGroundUnitsToFlight(enemyGroundUnits);
 
 		PlayerEscortFlight playerEscortFlight = createPlayerEscortMission(flightEscortedByPlayer);
-		
 		return playerEscortFlight;
 	}
 
     private Squadron getSquadronToBeEscorted() throws PWCGException
     {
-        friendlyBombSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
-                        campaign, 
-                        squadron.determineCurrentPosition(campaign.getDate()), 
-                        Role.ROLE_BOMB, 
-                        squadron.determineSquadronCountry(campaign.getDate()).getSide());
+        Squadron friendlyBombSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
+                flightInformation.getCampaign(), 
+                flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate()), 
+                Role.ROLE_BOMB, 
+                flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()).getSide());
         
         if (friendlyBombSquadron == null)
         {
@@ -61,20 +56,20 @@ public class EscortPackage extends FlightPackage
         return friendlyBombSquadron;
     }
 
-	private GroundUnitCollection createTargetForPlayerEscortedFlight() throws PWCGException
-	{
-	    GroundUnitCollection enemyGroundUnits = createGroundUnitsForFlight();
-		return enemyGroundUnits;
-	}
-
 	private PlayerEscortFlight createPlayerEscortMission(Flight flightEscortedByPlayer) throws PWCGException
 	{
-        Coordinate squadronPosition = squadron.determineCurrentPosition(campaign.getDate());
+        Coordinate squadronPosition = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
 	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(squadronPosition.copy());	        
-        FlightInformation flightInformation = createFlightInformation(flightEscortedByPlayer.getPlanes().get(0).getPosition().copy());
 		PlayerEscortFlight playerEscort = new PlayerEscortFlight(flightInformation, missionBeginUnit, flightEscortedByPlayer);
 		playerEscort.addLinkedUnit(flightEscortedByPlayer);
 		playerEscort.createUnitMission();
 		return playerEscort;
 	}
+
+    private GroundUnitCollection createTargetForPlayerEscortedFlight() throws PWCGException
+    {
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
+        return targetBuilder.getGroundUnits();
+    }
 }

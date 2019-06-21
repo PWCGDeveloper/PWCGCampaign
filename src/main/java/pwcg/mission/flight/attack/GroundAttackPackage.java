@@ -1,45 +1,44 @@
 package pwcg.mission.flight.attack;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.target.unit.TargetBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightPackage;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.GroundUnitCollection;
 
-public class GroundAttackPackage extends FlightPackage
+public class GroundAttackPackage implements IFlightPackage
 {
-    public GroundAttackPackage(Mission mission, Campaign campaign, Squadron squadron, boolean isPlayerFlight)
+    private FlightInformation flightInformation;
+
+    public GroundAttackPackage(FlightInformation flightInformation)
     {
-        super(mission, campaign, squadron, isPlayerFlight);
-        this.flightType = FlightTypes.GROUND_ATTACK;
+        this.flightInformation = flightInformation;
     }
 
 	public Flight createPackage () throws PWCGException 
 	{
         GroundUnitCollection groundUnits = createGroundUnitsForFlight();
         GroundAttackFlight groundAttackFlight = createFlight(groundUnits);
-        addPossibleEscort(groundAttackFlight);        
-        addPossibleEnemyScramble(groundAttackFlight, groundUnits);
 		return groundAttackFlight;
 	}
 
     private GroundAttackFlight createFlight(GroundUnitCollection groundUnitCollection) throws PWCGException
     {
-        Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
+        Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
-
-        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
-
-        FlightInformation flightInformation = createFlightInformation(targetCoordinates);
         GroundAttackFlight groundAttackFlight = new GroundAttackFlight (flightInformation, missionBeginUnit);
 		groundAttackFlight.linkGroundUnitsToFlight(groundUnitCollection);
 		groundAttackFlight.createUnitMission();
         return groundAttackFlight;
+    }
+
+    private GroundUnitCollection createGroundUnitsForFlight() throws PWCGException
+    {
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
+        return targetBuilder.getGroundUnits();
     }
 }

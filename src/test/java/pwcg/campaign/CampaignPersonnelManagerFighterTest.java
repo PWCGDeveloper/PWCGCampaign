@@ -11,7 +11,8 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.testutils.CampaignCacheBase;
+import pwcg.testutils.CampaignCache;
+import pwcg.testutils.SquadrontTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CampaignPersonnelManagerFighterTest
@@ -25,9 +26,7 @@ public class CampaignPersonnelManagerFighterTest
     @Test
     public void getSquadronMembersTest () throws PWCGException
     {            	    
-        CampaignGeneratorModel generatorModel = CampaignCacheBase.makeCampaignModelForProfile("19170901", 101103);
-        CampaignGenerator generator = new CampaignGenerator(generatorModel);
-        Campaign campaign = generator.generate();
+        Campaign campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
 
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(101103);
         SquadronMembers squadronMembersNoPlayerNoAces = SquadronMemberFilter.filterActiveAI(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());        

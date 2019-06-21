@@ -36,7 +36,7 @@ public class VirtualWaypointGenerator
         // Determine which VWPs to keep
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int boxExpansionForFirstVWPToKeep = RandomNumberGenerator.getRandom(productSpecific.getMaxDistanceForVirtualFlightFromPlayerBox());
-        CoordinateBox missionBorders = flight.getMission().getMissionFlightBuilder().getMissionBorders(boxExpansionForFirstVWPToKeep);
+        CoordinateBox missionBorders = flight.getMission().getMissionBorders().expandBox(boxExpansionForFirstVWPToKeep);
         for (int i = 0; i < plotCoordinates.size(); ++i)
         {
             VirtualWayPointCoordinate vwp = plotCoordinates.get(i);

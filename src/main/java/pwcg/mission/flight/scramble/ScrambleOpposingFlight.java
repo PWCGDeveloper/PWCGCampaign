@@ -3,11 +3,8 @@ package pwcg.mission.flight.scramble;
 import java.io.BufferedWriter;
 import java.util.List;
 
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
@@ -33,18 +30,6 @@ public class ScrambleOpposingFlight extends Flight
 		{
 			plane.setFuel(.6);
 		}
-	}
-
-	@Override
-	public int calcNumPlanes() throws PWCGException 
-	{
-		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
-		
-		int GroundAttackMinimum = configManager.getIntConfigParam(ConfigItemKeys.GroundAttackMinimumKey);
-		int GroundAttackAdditional = configManager.getIntConfigParam(ConfigItemKeys.GroundAttackAdditionalKey) + 1;
-		numPlanesInFlight = GroundAttackMinimum + RandomNumberGenerator.getRandom(GroundAttackAdditional);
-		
-        return modifyNumPlanes(numPlanesInFlight);
 	}
 
 	@Override

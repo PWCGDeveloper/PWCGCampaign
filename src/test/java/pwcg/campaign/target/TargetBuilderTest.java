@@ -16,6 +16,7 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.target.unit.TargetBuilder;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;

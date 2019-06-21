@@ -1,16 +1,11 @@
 package pwcg.mission.flight.intercept;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
-import pwcg.mission.Mission;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.FlightInformation;
 
 public class HomeDefensePackage extends InterceptPackage
 {
-    public HomeDefensePackage(Mission mission, Campaign campaign, Squadron squadron, boolean isPlayerFlight)
+    public HomeDefensePackage(FlightInformation flightInformation)
     {
-        super(mission, campaign, squadron, isPlayerFlight);
-
-		flightType = FlightTypes.HOME_DEFENSE;
+        super(flightInformation);
     }
 }

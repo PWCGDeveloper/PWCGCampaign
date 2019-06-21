@@ -73,7 +73,7 @@ public class MissionSquadronFinder
         PWCGMap map = PWCGContextManager.getInstance().getCurrentMap();
         FrontLinesForMap frontLinesForMap = map.getFrontLinesForMap(campaign.getDate());
 
-        CoordinateBox missionBorders = mission.getMissionFlightBuilder().getMissionBorders(5000);
+        CoordinateBox missionBorders = mission.getMissionBorders().expandBox(5000);
         Coordinate closestAlliedFrontPosition = frontLinesForMap.findClosestFrontCoordinateForSide(missionBorders.getCenter(), Side.ALLIED);
         alliedSquads = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsBySide(campaign, closestAlliedFrontPosition, 5,
                         initialSquadronSearchRadiusKey, Side.ALLIED, campaign.getDate());
@@ -154,7 +154,7 @@ public class MissionSquadronFinder
         FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         int initialSquadronSearchRadiusKey = configManager.getIntConfigParam(ConfigItemKeys.InitialSquadronSearchRadiusKey);
 
-        CoordinateBox missionBorders = mission.getMissionFlightBuilder().getMissionBorders(5000);
+        CoordinateBox missionBorders = mission.getMissionBorders().expandBox(5000);
         Coordinate closestAlliedFrontPosition = frontLinesForMap.findClosestFrontCoordinateForSide(missionBorders.getCenter(), Side.ALLIED);
         List<Squadron> otherAlliedSquads = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign,
                         closestAlliedFrontPosition, 3, initialSquadronSearchRadiusKey, acceptableRoles, Side.ALLIED, campaign.getDate());

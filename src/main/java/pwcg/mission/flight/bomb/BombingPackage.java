@@ -1,26 +1,25 @@
 package pwcg.mission.flight.bomb;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.target.unit.TargetBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightPackage;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.flight.bomb.BombingWaypoints.BombingAltitudeLevel;
 import pwcg.mission.ground.GroundUnitCollection;
 
-public class BombingPackage extends FlightPackage
+public class BombingPackage implements IFlightPackage
 {
-    public BombingPackage(Mission mission, Campaign campaign, Squadron squadron, boolean isPlayerFlight)
+    private FlightInformation flightInformation;
+
+    public BombingPackage(FlightInformation flightInformation)
     {
-        super(mission, campaign, squadron, isPlayerFlight);
-        this.flightType = FlightTypes.BOMB;
+        this.flightInformation = flightInformation;
     }
 
+    @Override
     public Flight createPackage () throws PWCGException 
 	{
 	    BombingFlight bombingFlight = createPackageTacticalTarget ();
@@ -30,11 +29,10 @@ public class BombingPackage extends FlightPackage
 	public BombingFlight createPackageTacticalTarget () throws PWCGException 
 	{
         GroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
-        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
+        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(flightInformation.getSquadron().determineEnemySide());
 
         BombingFlight bombingFlight = makeBombingFlight(targetCoordinates);
         bombingFlight.linkGroundUnitsToFlight(groundUnitCollection);
-        addPossibleEnemyScramble(bombingFlight, groundUnitCollection);
 
         return bombingFlight;
 	}
@@ -43,9 +41,8 @@ public class BombingPackage extends FlightPackage
                     throws PWCGException
     {
         // Now the actual bombing mission
-	    Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
+	    Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
 	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
-        FlightInformation flightInformation = createFlightInformation(targetCoordinates);
         BombingFlight bombingFlight = new BombingFlight (flightInformation, missionBeginUnit);
 
 	    // Set the altitude based on the aircraft type
@@ -54,5 +51,12 @@ public class BombingPackage extends FlightPackage
 	    bombingFlight.createUnitMission();
 	    
 	    return bombingFlight;
+    }
+
+    private GroundUnitCollection createGroundUnitsForFlight() throws PWCGException
+    {
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
+        return targetBuilder.getGroundUnits();
     }
 }

@@ -19,24 +19,18 @@ import pwcg.mission.flight.FlightTypes;
 
 public class OpposingFlightBuilder
 {
-    private Campaign campaign;
-    private Mission mission;
-    private Squadron squadron;
-    private Coordinate targetCoordinates;
+    private FlightInformation flightInformation;
     private List<Role> opposingFlightRoles;
 
-    public OpposingFlightBuilder(Mission mission, Squadron squadron, Coordinate targetCoordinates, List<Role> opposingFlightRoles)
+    public OpposingFlightBuilder(FlightInformation flightInformation, List<Role> opposingFlightRoles)
     {
-        this.mission = mission;
-        this.squadron = squadron;
-        this.campaign = mission.getCampaign();
-        this.targetCoordinates = targetCoordinates;
+        this.flightInformation = flightInformation;
         this.opposingFlightRoles = opposingFlightRoles;
     }
 
     public List<InterceptOpposingFlight> buildOpposingFlights() throws PWCGException
     {
-        OpposingFlightSquadronChooser opposingFlightSquadronChooser = new OpposingFlightSquadronChooser(mission, squadron, targetCoordinates, opposingFlightRoles);
+        OpposingFlightSquadronChooser opposingFlightSquadronChooser = new OpposingFlightSquadronChooser(flightInformation, opposingFlightRoles);
         List<Squadron> opposingSquadrons = opposingFlightSquadronChooser.getOpposingSquadrons();            
         return createOpposingFlights(opposingSquadrons);
     }
@@ -59,14 +53,14 @@ public class OpposingFlightBuilder
     {
         InterceptOpposingFlight interceptOpposingFlight = null;
 
-        String opposingFieldName = opposingSquadron.determineCurrentAirfieldName(campaign.getDate());
+        String opposingFieldName = opposingSquadron.determineCurrentAirfieldName(flightInformation.getCampaign().getDate());
         if (opposingFieldName != null)
         {
             IAirfield opposingField =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(opposingFieldName);
-            double angleFromFieldToTarget = MathUtils.calcAngle(targetCoordinates, opposingField.getPosition());
+            double angleFromFieldToTarget = MathUtils.calcAngle(flightInformation.getTargetCoords(), opposingField.getPosition());
                 
-            double distancePlayerFromTarget = MathUtils.calcDist(squadron.determineCurrentPosition(campaign.getDate()), targetCoordinates);
-            Coordinate startingPosition = MathUtils.calcNextCoord(targetCoordinates, angleFromFieldToTarget, distancePlayerFromTarget);
+            double distancePlayerFromTarget = MathUtils.calcDist(flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate()), flightInformation.getTargetCoords());
+            Coordinate startingPosition = MathUtils.calcNextCoord(flightInformation.getTargetCoords(), angleFromFieldToTarget, distancePlayerFromTarget);
                 
             interceptOpposingFlight = getOpposingFlight(opposingSquadron, startingPosition);
         }
@@ -78,7 +72,6 @@ public class OpposingFlightBuilder
     {
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startingPosition.copy());
         FlightTypes opposingFlightType = getFlightType(opposingSquadron);
-        FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(opposingSquadron, mission, opposingFlightType, targetCoordinates.copy());
         InterceptOpposingFlight opposingFlight = new InterceptOpposingFlight (opposingFlightInformation, missionBeginUnit, startingPosition);
         opposingFlight.createUnitMission();
         opposingFlight.getMissionBeginUnit().setStartTime(2);                
@@ -87,11 +80,11 @@ public class OpposingFlightBuilder
     
     private FlightTypes getFlightType(Squadron opposingSquadron) throws PWCGException
     {
-        if (opposingSquadron.determineSquadronPrimaryRole(campaign.getDate()) == Role.ROLE_DIVE_BOMB)
+        if (opposingSquadron.determineSquadronPrimaryRole(flightInformation.getCampaign().getDate()) == Role.ROLE_DIVE_BOMB)
         {
             return FlightTypes.GROUND_ATTACK;
         }
-        else if (opposingSquadron.determineSquadronPrimaryRole(campaign.getDate()) == Role.ROLE_DIVE_BOMB)
+        else if (opposingSquadron.determineSquadronPrimaryRole(flightInformation.getCampaign().getDate()) == Role.ROLE_DIVE_BOMB)
         {   
             return FlightTypes.DIVE_BOMB;
         }

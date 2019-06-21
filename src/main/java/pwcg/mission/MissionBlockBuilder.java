@@ -36,7 +36,7 @@ public class MissionBlockBuilder
 
         ConfigManager configManager = mission.getCampaign().getCampaignConfigManager();
         int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);
-        CoordinateBox missionBorders = mission.getMissionFlightBuilder().getMissionBorders(keepGroupSpread);
+        CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
 
         GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
         for (Block block : groupData.getStandaloneBlocks())
@@ -56,7 +56,7 @@ public class MissionBlockBuilder
 
         ConfigManager configManager = mission.getCampaign().getCampaignConfigManager();
         int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);
-        CoordinateBox missionBorders = mission.getMissionFlightBuilder().getMissionBorders(keepGroupSpread);
+        CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
 
         GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
         for (Block rrStation : groupData.getRailroadList())
@@ -76,7 +76,7 @@ public class MissionBlockBuilder
 
         ConfigManager configManager = mission.getCampaign().getCampaignConfigManager();
         int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);
-        CoordinateBox missionBorders = mission.getMissionFlightBuilder().getMissionBorders(keepGroupSpread);
+        CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
 
         GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
         for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())

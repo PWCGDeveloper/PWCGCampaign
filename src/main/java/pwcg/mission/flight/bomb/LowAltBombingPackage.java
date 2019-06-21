@@ -1,25 +1,22 @@
 package pwcg.mission.flight.bomb;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.target.TacticalTarget;
+import pwcg.campaign.target.unit.TargetBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightPackage;
-import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.flight.bomb.BombingWaypoints.BombingAltitudeLevel;
 import pwcg.mission.ground.GroundUnitCollection;
 
-public class LowAltBombingPackage extends FlightPackage
+public class LowAltBombingPackage implements IFlightPackage
 {
-    public LowAltBombingPackage(Mission mission, Campaign campaign, Squadron squadron, boolean isPlayerFlight)
+    private FlightInformation flightInformation;
+
+    public LowAltBombingPackage(FlightInformation flightInformation)
     {
-        super(mission, campaign, squadron, isPlayerFlight);
-        this.flightType = FlightTypes.LOW_ALT_BOMB;
+        this.flightInformation = flightInformation;
     }
 
     public Flight createPackage () throws PWCGException 
@@ -30,8 +27,8 @@ public class LowAltBombingPackage extends FlightPackage
 
     public LowAltBombingFlight createPackageTacticalTarget () throws PWCGException 
     {
-        GroundUnitCollection groundUnitCollection = createSpecificGroundUnitsForFlight(TacticalTarget.TARGET_ASSAULT);
-        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(squadron.determineEnemySide());
+        GroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
+        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(flightInformation.getSquadron().determineEnemySide());
         
         LowAltBombingFlight bombingFlight = makeBombingFlight(targetCoordinates);
         bombingFlight.linkGroundUnitsToFlight(groundUnitCollection);
@@ -42,15 +39,21 @@ public class LowAltBombingPackage extends FlightPackage
     private LowAltBombingFlight makeBombingFlight(Coordinate targetCoordinates)
                     throws PWCGException
     {
-        Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
+        Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
 	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
-        FlightInformation flightInformation = createFlightInformation(targetCoordinates);
         LowAltBombingFlight bombingFlight = new LowAltBombingFlight (flightInformation, missionBeginUnit);
         BombingAltitudeLevel bombingAltitude = BombingAltitudeLevel.LOW;
         bombingFlight.setBombingAltitudeLevel(bombingAltitude);         
         bombingFlight.createUnitMission();
         
         return bombingFlight;
+    }
+
+    private GroundUnitCollection createGroundUnitsForFlight() throws PWCGException
+    {
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
+        return targetBuilder.getGroundUnits();
     }
 
 }

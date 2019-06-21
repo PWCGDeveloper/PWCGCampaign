@@ -5,51 +5,75 @@ import java.util.List;
 
 public enum FlightTypes
 {
-    ANY,
-    PATROL,
-    OFFENSIVE,
-    INTERCEPT,
-    ESCORT,
-    SCRAMBLE,
-    SCRAMBLE_OPPOSE,
-    HOME_DEFENSE,
-    LONE_WOLF,
-    BALLOON_BUST,
-    BALLOON_DEFENSE,
-    SEA_PATROL,
-    LOW_ALT_CAP,
-    LOW_ALT_PATROL,
+    PATROL(FlightTypeCategory.FIGHTER),
+    OFFENSIVE(FlightTypeCategory.FIGHTER),
+    INTERCEPT(FlightTypeCategory.FIGHTER),
+    SCRAMBLE(FlightTypeCategory.FIGHTER),
+    HOME_DEFENSE(FlightTypeCategory.FIGHTER),
+    LONE_WOLF(FlightTypeCategory.FIGHTER),
+    SEA_PATROL(FlightTypeCategory.FIGHTER),
 
-    GROUND_ATTACK,
-    BOMB,
-    LOW_ALT_BOMB,
-    DIVE_BOMB,
-    ANTI_SHIPPING,
-    STRATEGIC_BOMB,
+    LOW_ALT_CAP(FlightTypeCategory.FIGHTER, FlightTypeCategory.ATTACK),
+    LOW_ALT_PATROL(FlightTypeCategory.FIGHTER, FlightTypeCategory.ATTACK),
+    BALLOON_BUST(FlightTypeCategory.FIGHTER, FlightTypeCategory.ATTACK),
+    BALLOON_DEFENSE(FlightTypeCategory.FIGHTER, FlightTypeCategory.ATTACK),
+
+    GROUND_ATTACK(FlightTypeCategory.ATTACK),
+    BOMB(FlightTypeCategory.ATTACK),
+    LOW_ALT_BOMB(FlightTypeCategory.ATTACK),
+    DIVE_BOMB(FlightTypeCategory.ATTACK),
+    ANTI_SHIPPING(FlightTypeCategory.ATTACK),
+    CONTACT_PATROL(FlightTypeCategory.ATTACK),
+    ARTILLERY_SPOT(FlightTypeCategory.ATTACK),
+    CARGO_DROP(FlightTypeCategory.ATTACK),
+    PARATROOP_DROP(FlightTypeCategory.ATTACK),
+
+    STRATEGIC_BOMB(FlightTypeCategory.STRATEGIC),
     
-    TRANSPORT,
-    RECON,
-    PORT_RECON,
-    CONTACT_PATROL,
-    ARTILLERY_SPOT,
-    PARATROOP_DROP,
-    CARGO_DROP,
-    SPY_EXTRACT,
+    ESCORT(FlightTypeCategory.DEPENDENT),
+    SCRAMBLE_OPPOSE(FlightTypeCategory.DEPENDENT), 
+
+    TRANSPORT(FlightTypeCategory.OTHER),
+    RECON(FlightTypeCategory.OTHER),
+    SPY_EXTRACT(FlightTypeCategory.OTHER),
+    PORT_RECON(FlightTypeCategory.OTHER),
+    FERRY(FlightTypeCategory.OTHER),
     
-    FERRY,
-    GROUND_FORCES;
-    
-    public static List<FlightTypes> getFighterFlightTypes()
+    GROUND_FORCES(FlightTypeCategory.INVALID),
+    ANY(FlightTypeCategory.INVALID);
+
+	List<FlightTypeCategory> categories = new ArrayList<>();
+	
+	private FlightTypes(FlightTypeCategory ... categoryList)
+	{
+		for (FlightTypeCategory category : categoryList)
+		{
+			categories.add(category);
+		}
+	}
+
+	public boolean isCategory(FlightTypeCategory categoryToFind) 
+	{
+		for (FlightTypeCategory category : categories)
+		{
+			if (category == categoryToFind)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+    public static List<FlightTypes> getFlightTypesByCategory(FlightTypeCategory category)
     {
-        List<FlightTypes> fighterFlightTypes = new ArrayList<>();
-        fighterFlightTypes.add(PATROL);
-        fighterFlightTypes.add(OFFENSIVE);
-        fighterFlightTypes.add(INTERCEPT);
-        fighterFlightTypes.add(LONE_WOLF);
-        fighterFlightTypes.add(BALLOON_BUST);
-        fighterFlightTypes.add(BALLOON_DEFENSE);
-        fighterFlightTypes.add(LOW_ALT_CAP);
-        fighterFlightTypes.add(LOW_ALT_PATROL);
-        return fighterFlightTypes;
+        List<FlightTypes> flightTypesByCategory = new ArrayList<>();
+        for (FlightTypes flightType : FlightTypes.values()) 
+        {
+            if (flightType.categories.contains(category))
+            {
+                flightTypesByCategory.add(flightType);
+            }
+         }
+        return flightTypesByCategory;
     }
 }

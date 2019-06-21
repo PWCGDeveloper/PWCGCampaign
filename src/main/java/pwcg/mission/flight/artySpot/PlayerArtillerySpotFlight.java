@@ -80,12 +80,6 @@ public class PlayerArtillerySpotFlight extends ArtillerySpotFlight
 	}
 
 	@Override
-	public int calcNumPlanes() 
-	{
-		return 1;
-	}
-
-	@Override
     protected void createFlightSpecificTargetAssociations()
 	{
         linkWPToPlane(getLeadPlane(), getWaypointPackage().getWaypointsForLeadPlane());

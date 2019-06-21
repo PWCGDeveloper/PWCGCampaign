@@ -9,10 +9,8 @@ import pwcg.core.location.Orientation;
 
 public class TargetDefinition
 {
-    private TargetCategory targetCategory = TargetCategory.TARGET_CATEGORY_NONE;
     private TacticalTarget targetType = TacticalTarget.TARGET_NONE;
     private boolean isPlayerTarget = false;
-    private Coordinate targetGeneralPosition;
     private Coordinate targetPosition;
     private Orientation targetOrientation;
     private Squadron attackingSquadron;
@@ -27,24 +25,9 @@ public class TargetDefinition
     {
     }
     
-    public Coordinate getTargetGeneralPosition()
-    {
-        return targetGeneralPosition;
-    }
-
-    public void setTargetGeneralPosition(Coordinate targetGeneralLocation)
-    {
-        this.targetGeneralPosition = targetGeneralLocation;
-    }
-
     public TargetCategory getTargetCategory()
     {
-        return targetCategory;
-    }
-
-    public void setTargetCategory(TargetCategory targetCategory)
-    {
-        this.targetCategory = targetCategory;
+        return targetType.getTargetCategory();
     }
 
     public TacticalTarget getTargetType()

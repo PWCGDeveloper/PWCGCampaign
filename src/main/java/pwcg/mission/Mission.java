@@ -11,7 +11,9 @@ import pwcg.campaign.io.json.CampaignMissionIOJson;
 import pwcg.campaign.ww2.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.Logger;
+import pwcg.mission.ambient.AmbientGroundUnitBuilder;
 import pwcg.mission.data.PwcgGeneratedMission;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
@@ -24,6 +26,8 @@ import pwcg.mission.options.MissionOptions;
 public class Mission
 {
     private Campaign campaign;
+    private MissionHumanParticipants participatingPlayers;
+    private CoordinateBox missionBorders;
 
     private MissionFlightBuilder missionFlightBuilder;
     private SinglePlayerMissionPlaneLimiter missionPlaneLimiter = new SinglePlayerMissionPlaneLimiter();
@@ -41,22 +45,27 @@ public class Mission
     private boolean isFinalized = false;
     private MissionProfile missionProfile = MissionProfile.DAY_TACTICAL_MISSION;
 
-    public Mission()
+    public Mission(Campaign campaign, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders) throws PWCGException
     {
-        MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
-        subtitleHandler.clear();
+        this.campaign = campaign;
+        this.participatingPlayers = participatingPlayers;
+        this.missionBorders = missionBorders;
+    	
+        initialize();
     }
 
-    public void initialize(Campaign campaign) throws PWCGException 
+    private void initialize() throws PWCGException 
     {
         Logger.eraseLog();
+        MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
+        subtitleHandler.clear();
+        
+        PWCGContextManager.getInstance().getSkinManager().clearSkinsInUse();
 
-        this.campaign = campaign;
         missionGroundUnitManager = new MissionGroundUnitResourceManager();
         ambientGroundUnitBuilder = new AmbientGroundUnitBuilder(campaign, this);
         missionFlightBuilder = new MissionFlightBuilder(campaign, this);
         missionFrontLines = new MissionFrontLineIconBuilder(campaign, this);
-        PWCGContextManager.getInstance().getSkinManager().clearSkinsInUse();
     }
 
     public void generate(MissionHumanParticipants participatingPlayers, FlightTypes flightType) throws PWCGException 
@@ -64,7 +73,7 @@ public class Mission
         PWCGContextManager.getInstance().getCurrentMap().getMapWeather().createWindDirection();
 
     	missionFlightBuilder.generateFlights(participatingPlayers, flightType);
-
+    	missionFlightBuilder.generateAssociatedFlights();
         createFirePots();
 
         MissionOptions missionOptions = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions();
@@ -95,7 +104,6 @@ public class Mission
                  
         missionFile.writeMission();
 
-        // Mission description
         IMissionDescription missionDescription = MissionDescriptionFactory.buildMissionDescription(campaign, this);
         String missionDescriptionText = missionDescription.createDescription();
         
@@ -141,7 +149,6 @@ public class Mission
     {
         if (!isFinalized)
         {
-
             MissionOptions missionOptions = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions();
             setMissionScript(missionOptions);
 
@@ -287,6 +294,14 @@ public class Mission
     {
         return missionProfile;
     }
-    
-    
+
+	public MissionHumanParticipants getParticipatingPlayers() 
+	{
+		return participatingPlayers;
+	}
+
+    public CoordinateBox getMissionBorders()
+    {
+        return missionBorders;
+    }
 }

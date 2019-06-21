@@ -19,18 +19,6 @@ public class InterceptFlight extends Flight
     {
         super (flightInformation, missionBeginUnit);
     }
-    
-	@Override
-	public int calcNumPlanes() throws PWCGException 
-	{
-		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
-
-		int InterceptMinimum = configManager.getIntConfigParam(ConfigItemKeys.InterceptMinimumKey);
-		int InterceptAdditional = configManager.getIntConfigParam(ConfigItemKeys.InterceptAdditionalKey) + 1;
-		numPlanesInFlight = InterceptMinimum + RandomNumberGenerator.getRandom(InterceptAdditional);
-		
-        return modifyNumPlanes(numPlanesInFlight);
-	}
 
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 

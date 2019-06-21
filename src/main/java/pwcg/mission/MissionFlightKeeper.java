@@ -9,6 +9,7 @@ import pwcg.campaign.plane.Role;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
 
 public class MissionFlightKeeper
@@ -60,7 +61,7 @@ public class MissionFlightKeeper
         List<Flight> keptFlights = new ArrayList<Flight>();
         for (Flight flight : enemyAiFlights)
         {
-            boolean isFighterFlight = isConsideredExcessFighterFLight(flight);
+            boolean isFighterFlight = isConsideredExcessFighterFlight(flight);
             if (isFighterFlight)
             {
                 if ((numFighterKept < maxFighterToKeep) && (keptFlights.size() < maxToKeep))
@@ -81,11 +82,11 @@ public class MissionFlightKeeper
         return keptFlights;
     }
     
-    private boolean isConsideredExcessFighterFLight(Flight enemyFlight)
+    private boolean isConsideredExcessFighterFlight(Flight enemyFlight)
     {
-    	boolean isPlayerFlightFighter = mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(FlightTypes.getFighterFlightTypes());
+    	boolean isPlayerFlightFighter = mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(FlightTypes.getFlightTypesByCategory(FlightTypeCategory.FIGHTER));
         boolean isEnemyFighterSquadron = enemyFlight.getPlanes().get(0).isPrimaryRole(Role.ROLE_FIGHTER);
-        boolean isEnemyFighterFlight = enemyFlight.isFighterFlight();
+        boolean isEnemyFighterFlight = enemyFlight.getFlightType().isCategory(FlightTypeCategory.FIGHTER);
         
         if (isEnemyFighterFlight)
         {

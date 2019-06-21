@@ -11,12 +11,6 @@ public class LoneWolfFlight extends PatrolFlight
     {
         super (flightInformation, missionBeginUnit);
     }
-    
-	@Override
-	public int calcNumPlanes() 
-	{
-	    return 1;
-	}
 
 	public String getMissionObjective() throws PWCGException 
 	{

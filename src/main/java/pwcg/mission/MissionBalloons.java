@@ -72,7 +72,7 @@ public class MissionBalloons
 
                 AmbientBalloonDefensePackage ambientBalloonPackage = new AmbientBalloonDefensePackage();
             	Coordinate ambientBalloonReferencePosition = determineAmbientBalloonReferencePosition(mission);
-                BalloonDefenseGroup balloonGroup = ambientBalloonPackage.createPackage(campaign, mission, balloonSide, ambientBalloonReferencePosition);
+                BalloonDefenseGroup balloonGroup = ambientBalloonPackage.createPackage(balloonSide, ambientBalloonReferencePosition);
 
                 boolean alreadyTaken = isBalloonPositionTaken(balloonPositions, balloonGroup);
                 if (!alreadyTaken)

@@ -1,29 +1,26 @@
 package pwcg.mission.flight.intercept;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.Mission;
+import pwcg.mission.flight.FlightInformation;
 
 public class OpposingFlightSquadronChooser
 {
-    private Mission mission;
-    private Squadron squadron;
-    private Coordinate targetCoordinates;
+    private FlightInformation flightInformation;
     private List<Role> opposingFlightRoles;
 
-    public OpposingFlightSquadronChooser(Mission mission, Squadron squadron, Coordinate targetCoordinates, List<Role> opposingFlightRoles)
+    public OpposingFlightSquadronChooser(FlightInformation flightInformation, List<Role> opposingFlightRoles)
     {
-        this.mission = mission;
-        this.squadron = squadron;
-        this.targetCoordinates = targetCoordinates;
+        this.flightInformation = flightInformation;
         this.opposingFlightRoles = opposingFlightRoles;
     }
 
@@ -44,35 +41,36 @@ public class OpposingFlightSquadronChooser
 
     private List<Squadron> selectOpposingSquadrons(List<Squadron> viableOpposingSquads, int numSquadronsToGet)
     {
-        List<Squadron> selectedOpposingSquads = new ArrayList<>();;
+        Map<Integer, Squadron> selectedOpposingSquads = new HashMap<>();
         HashSet<Integer> alreadyPicked = new HashSet<>();
         while (selectedOpposingSquads.size() < numSquadronsToGet)
         {
             int index= RandomNumberGenerator.getRandom(viableOpposingSquads.size());
-            if (!selectedOpposingSquads.contains(index))
+            Squadron opposingSquadron = viableOpposingSquads.get(index);
+            if (!selectedOpposingSquads.containsKey(opposingSquadron.getSquadronId()))
             {
-                selectedOpposingSquads.add(viableOpposingSquads.get(index));
+                selectedOpposingSquads.put(opposingSquadron.getSquadronId(), opposingSquadron);
                 alreadyPicked.add(index);
             }
         }
-        return selectedOpposingSquads;
+        return new ArrayList<>(selectedOpposingSquads.values());
     }
 
     private List<Squadron> getViableOpposingSquadrons() throws PWCGException
     {
         List<Squadron> possibleOpposingSquadsByRole = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(
-                mission.getCampaign(), 
-                targetCoordinates.copy(), 
+                flightInformation.getMission().getCampaign(), 
+                flightInformation.getTargetCoords().copy(), 
                 1, 
                 250000.0, 
                 opposingFlightRoles, 
-                squadron.determineEnemySide(), 
-                mission.getCampaign().getDate());
+                flightInformation.getSquadron().determineEnemySide(), 
+                flightInformation.getCampaign().getDate());
 
         List<Squadron> viableOpposingSquads = new ArrayList<>();
         for (Squadron squadron : possibleOpposingSquadsByRole)
         {
-            if (squadron.isSquadronViable(mission.getCampaign()))
+            if (squadron.isSquadronViable(flightInformation.getCampaign()))
             {
                 viableOpposingSquads.add(squadron);
             }

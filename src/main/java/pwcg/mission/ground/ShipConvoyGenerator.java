@@ -3,50 +3,26 @@ package pwcg.mission.ground;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.target.ShippingLane;
-import pwcg.campaign.target.TacticalTarget;
-import pwcg.campaign.target.TargetDefinition;
-import pwcg.campaign.target.TargetDefinitionBuilder;
+import pwcg.campaign.target.locator.ShippingLane;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.ground.factory.ShippingUnitFactory;
 import pwcg.mission.ground.unittypes.transport.ShipConvoyUnit;
 import pwcg.mission.ground.unittypes.transport.ShipConvoyUnit.ShipConvoyTypes;
 
 public class ShipConvoyGenerator
 {
-    public List<ShipConvoyUnit> generateConvoys(Campaign campaign, ShippingLane shippingLane, Coordinate targetPosition, boolean isPlayerFlight) throws PWCGException 
+    public List<ShipConvoyUnit> generateConvoys(FlightInformation flightInformation, ShippingLane shippingLane) throws PWCGException 
     {
-        CoordinateBox coordinateBorders = shippingLane.getShippingLaneBorders();
-
         List<ShipConvoyUnit> alliedConvoys = new ArrayList<ShipConvoyUnit>();
         List<ShipConvoyUnit> axisConvoys = new ArrayList<ShipConvoyUnit>();
         List<ShipConvoyUnit> convoys = new ArrayList<ShipConvoyUnit>();
         int numConvoys = RandomNumberGenerator.getRandom(6);
         for (int i = 0; i < numConvoys; ++i)
         {
-            if (i > 0)
-            {
-                targetPosition = coordinateBorders.getCoordinateInBox();
-            }
-
-            ICountry shipCountry = CountryFactory.makeMapReferenceCountry(Side.ALLIED);
-            int shipCountryRoll = RandomNumberGenerator.getRandom(100);
-            if (shipCountryRoll < 50)
-            {
-                shipCountry = CountryFactory.makeMapReferenceCountry(Side.AXIS);
-            }
-            
-            TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
-            TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, shipCountry, TacticalTarget.TARGET_SHIPPING, targetPosition, isPlayerFlight);
-
-            ShippingUnitFactory shippingFactory = new ShippingUnitFactory(campaign, targetDefinition);
+            ShippingUnitFactory shippingFactory = new ShippingUnitFactory(flightInformation.getCampaign(), flightInformation.getTargetDefinition());
             ShipConvoyUnit convoy = shippingFactory.createShippingUnit();
             if (convoy.getPwcgGroundUnitInformation().getCountry().getSide() == Side.ALLIED)
             {

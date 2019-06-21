@@ -161,5 +161,4 @@ public class Coordinate implements Cloneable
 		
 		return isEqual;
 	}
-    
 }

@@ -5,12 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.plane.Balloon;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
@@ -80,19 +77,6 @@ public class AiBalloonDefenseFlight extends Flight
 	public Coordinate getCoordinatesToIntersectWithPlayer() throws PWCGException 
 	{
  		return getTargetCoords();
-	}
-
-	@Override
-	public int calcNumPlanes() throws PWCGException 
-	{
-		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
-		
-		int BalloonBustMinimum = configManager.getIntConfigParam(ConfigItemKeys.BalloonDefenseMinimumKey);
-		int BalloonBustAdditional = configManager.getIntConfigParam(ConfigItemKeys.BalloonDefenseAdditionalKey) + 1;
-		numPlanesInFlight = BalloonBustMinimum + RandomNumberGenerator.getRandom(BalloonBustAdditional) + 1;
-		
-		return numPlanesInFlight;
-
 	}
 
     @Override

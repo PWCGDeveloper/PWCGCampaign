@@ -8,7 +8,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.campaign.target.TargetDefinition;
-import pwcg.campaign.target.TargetDefinitionBuilder;
+import pwcg.campaign.target.TargetDefinitionBuilderFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -138,7 +138,7 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     public void createShippingUnitTest () throws PWCGException 
     {
         boolean isPlayerTarget = true;
-        TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
+        TargetDefinitionBuilderFactory targetDefinitionBuilder = new TargetDefinitionBuilderFactory();
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, country, TacticalTarget.TARGET_SHIPPING, new Coordinate (100000, 0, 100000), isPlayerTarget);
 
         ShippingUnitFactory groundUnitFactory =  new ShippingUnitFactory(campaign, targetDefinition);        
@@ -151,7 +151,7 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     public void createTroopConcentrationTest () throws PWCGException 
     {
         boolean isPlayerTarget = true;
-        TargetDefinitionBuilder targetDefinitionBuilder = new TargetDefinitionBuilder();
+        TargetDefinitionBuilderFactory targetDefinitionBuilder = new TargetDefinitionBuilderFactory();
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, country, TacticalTarget.TARGET_TROOP_CONCENTRATION, new Coordinate (100000, 0, 100000), isPlayerTarget);
 
         TroopConcentrationFactory groundUnitFactory =  new TroopConcentrationFactory(campaign, targetDefinition);        

@@ -859,7 +859,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
             campaignGeneratorDO.setCampaignName(campaignName);
             
             String playerName = (String)playerNameTextBox.getText();
-            campaignGeneratorDO.setPlayerName(playerName);
+            campaignGeneratorDO.setPlayerPilotName(playerName);
             
             if (ae.getActionCommand().equalsIgnoreCase("RegionChanged"))
             {

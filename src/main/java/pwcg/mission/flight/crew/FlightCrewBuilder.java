@@ -5,80 +5,86 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.Campaign;
+import pwcg.campaign.squadmember.SerialNumber;
+import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberSorter;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.flight.FlightInformation;
 
 public class FlightCrewBuilder
 {
-    private Campaign campaign;
-    private Squadron squadron;
+    private FlightInformation flightInformation;
 
     private Map <Integer, SquadronMember> assignedCrewMap = new HashMap <>();
     private Map <Integer, SquadronMember> unassignedCrewMap = new HashMap <>();
     
-	public FlightCrewBuilder(Campaign campaign, Squadron squadron)
+	public FlightCrewBuilder(FlightInformation flightInformation)
 	{
-        this.campaign = campaign;
-        this.squadron = squadron;
+        this.flightInformation = flightInformation;
 	}
 
     public List<SquadronMember> createCrewAssignmentsForFlight(int numCrewNeeded) throws PWCGException 
     {
-        CrewFactory crewFactory = new CrewFactory(campaign, squadron);
+        CrewFactory crewFactory = new CrewFactory(flightInformation.getCampaign(), flightInformation.getSquadron());
         crewFactory.createCrews();
         unassignedCrewMap = crewFactory.getCrewsForSquadron();
         
-        assignPlayerToCrew();
+        assignPlayersToCrew();
         assignAiPilotsToPlanes(numCrewNeeded);
         
         return sortCrewsByRank();
     }
 
-    private void assignPlayerToCrew() throws PWCGException
+    private void assignPlayersToCrew() throws PWCGException
     {
-        if (Squadron.isPlayerSquadron(campaign, squadron.getSquadronId()))
+        if (Squadron.isPlayerSquadron(flightInformation.getCampaign(), flightInformation.getSquadron().getSquadronId()))
         {
-            SquadronMember playerCrew = null;
-            for (SquadronMember pilot : unassignedCrewMap.values())
+            List<SquadronMember> participatingPlayerCrews = new ArrayList<>();
+            for (SquadronMember pilot : flightInformation.getParticipatingPlayers())
             {
-                if (pilot.isPlayer())
-                {
-                    playerCrew = pilot;
-                    break;
-                }
+            	participatingPlayerCrews.add(pilot);
             }
 
-            if (playerCrew != null)
+            for (SquadronMember  participatingPlayerCrew : participatingPlayerCrews)
             {
-                assignedCrewMap.put(playerCrew.getSerialNumber(), playerCrew);
-                unassignedCrewMap.remove(playerCrew.getSerialNumber());
-            }
-            else
-            {
-                throw new PWCGException("Unable to find player crew in players squadron");
+                assignedCrewMap.put(participatingPlayerCrew.getSerialNumber(), participatingPlayerCrew);
+                unassignedCrewMap.remove(participatingPlayerCrew.getSerialNumber());
             }
         }
     }
 
-    private void assignAiPilotsToPlanes(int numCrewNeeded) throws PWCGException
+	private void assignAiPilotsToPlanes(int numCrewNeeded) throws PWCGException
     {
         while (assignedCrewMap.size() < numCrewNeeded)
         {
-            List<Integer> unassignedCrewSerialNumbers = new ArrayList<>(unassignedCrewMap.keySet());
-            int crewIndex = RandomNumberGenerator.getRandom(unassignedCrewSerialNumbers.size());
-            int selectedSerialNumber = unassignedCrewSerialNumbers.get(crewIndex);
+            List<Integer> unassignedAiCrewSerialNumbers = buildUNassignedAiCrewMembers();
+            int crewIndex = RandomNumberGenerator.getRandom(unassignedAiCrewSerialNumbers.size());
+            int selectedSerialNumber = unassignedAiCrewSerialNumbers.get(crewIndex);
             SquadronMember crewToAssign = unassignedCrewMap.get(selectedSerialNumber);
             assignedCrewMap.put(crewToAssign.getSerialNumber(), crewToAssign);
             unassignedCrewMap.remove(crewToAssign.getSerialNumber());
         }
     }
     
+	private List<Integer> buildUNassignedAiCrewMembers()
+	{
+        List<Integer> unassignedAiCrewSerialNumbers = new ArrayList<>();
+        List<Integer> unassignedCrewSerialNumbers = new ArrayList<>(unassignedCrewMap.keySet());
+        for (int unassignedCrewSerialNumber : unassignedCrewSerialNumbers)
+        {
+        	if (SerialNumber.getSerialNumberClassification(unassignedCrewSerialNumber) == SerialNumberClassification.AI)
+        	{
+        		unassignedAiCrewSerialNumbers.add(unassignedCrewSerialNumber);
+        	}
+        }
+        return unassignedAiCrewSerialNumbers;
+	}
+	
     private List<SquadronMember> sortCrewsByRank() throws PWCGException
     {
-        return SquadronMemberSorter.sortSquadronMembers(campaign, assignedCrewMap);
+        return SquadronMemberSorter.sortSquadronMembers(flightInformation.getCampaign(), assignedCrewMap);
     }
 }

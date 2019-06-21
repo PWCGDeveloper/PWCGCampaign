@@ -58,7 +58,7 @@ public class CrewFactory
                         if (!squadronMemberToBeReplaced.isPlayer())
                         {
                             crewsForSquadron.put(player.getSerialNumber(), player);
-                            crewsForSquadron.remove(squadronMemberToBeReplaced);
+                            crewsForSquadron.remove(squadronMemberToBeReplaced.getSerialNumber());
                             break;
                         }
                     }

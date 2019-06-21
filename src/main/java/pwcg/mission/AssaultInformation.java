@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.target.GroundUnitCollectionType;
-import pwcg.campaign.target.GroundUnitType;
+import pwcg.campaign.target.unit.GroundUnitCollectionType;
+import pwcg.campaign.target.unit.GroundUnitType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;

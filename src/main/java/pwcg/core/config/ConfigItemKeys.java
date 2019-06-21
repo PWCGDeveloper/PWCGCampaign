@@ -55,29 +55,17 @@ public class ConfigItemKeys
 	
 	public static final String PatrolDistanceBaseKey = "PatrolDistanceBase";
 	public static final String PatrolDistanceRandomKey = "PatrolDistanceRandom";
-	public static final String OffensivePatrolMinimumKey = "OffensivePatrolMinimum";
-	public static final String OffensivePatrolAdditionalKey = "OffensivePatrolAdditional";
-	public static final String InterceptMinimumKey = "InterceptMinimum";
-	public static final String InterceptAdditionalKey = "InterceptAdditional";
-	public static final String BalloonBustMinimumKey = "BalloonBustMinimum";
-	public static final String BalloonBustAdditionalKey = "BalloonBustAdditional";
-	public static final String BalloonDefenseMinimumKey = "BalloonDefenseMinimum";
-	public static final String BalloonDefenseAdditionalKey = "BalloonDefenseAdditional";
-	public static final String GroundAttackMinimumKey = "GroundAttackMinimum";
-	public static final String GroundAttackAdditionalKey = "GroundAttackAdditional";
-	public static final String PatrolMinimumKey = "PatrolMinimum";
-	public static final String PatrolAdditionalKey = "PatrolAdditional";
-
-	public static final String ArtillerySpotMinimumKey = "ArtillerySpotMinimum";
-	public static final String ArtillerySpotAdditionalKey = "ArtillerySpotAdditional";
-	public static final String BombingMinimumKey = "BombingMinimum";
-	public static final String BombingAdditionalKey = "BombingAdditional";
-	public static final String ReconMinimumKey = "ReconMinimum";
-	public static final String ReconAdditionalKey = "ReconAdditional";
-	public static final String ScrambleMinimumKey = "ScrambleMinimum";
-	public static final String ScrambleAdditionalKey = "ScrambleAdditional";
 	public static final String GroundAttackIngressDistanceKey = "GroundAttackIngressDistance";
 	public static final String GroundAttackAltitudeKey = "GroundAttackAltitude";
+
+	public static final String PatrolMinimumKey = "PatrolMinimum";
+	public static final String PatrolAdditionalKey = "PatrolAdditional";
+	public static final String BombingMinimumKey = "BombingMinimum";
+	public static final String BombingAdditionalKey = "BombingAdditional";
+	public static final String GroundAttackMinimumKey = "GroundAttackMinimum";
+	public static final String GroundAttackAdditionalKey = "GroundAttackAdditional";
+	public static final String TransportMinimumKey = "TransportMinimum";
+	public static final String TransportAdditionalKey = "TransportAdditional";
 
 	// Mission Limiters
 	public static final String SquadronGeneratesMissionOddsKey = "SquadronGeneratesMissionOdds";

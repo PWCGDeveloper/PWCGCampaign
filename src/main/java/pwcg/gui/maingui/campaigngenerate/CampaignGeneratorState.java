@@ -51,7 +51,7 @@ public class CampaignGeneratorState
         
         else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME)
         {
-            if (StringValidity.isAlpha(campaignGeneratorDO.getPlayerName()))
+            if (StringValidity.isAlpha(campaignGeneratorDO.getPlayerPilotName()))
             {
                 currentStep = CampaignGeneratorWorkflow.CHOOSE_MAP;
                 if (PWCGContextManager.isRoF())

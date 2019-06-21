@@ -3,13 +3,10 @@ package pwcg.mission.flight.escort;
 import java.io.BufferedWriter;
 import java.util.List;
 
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
@@ -223,19 +220,6 @@ public class PlayerEscortFlight extends Flight
         egressTimer.setPosition(getTargetCoords().copy());              
         egressTimer.setTimer(2);                
     }
-
-	@Override
-	public int calcNumPlanes() throws PWCGException 
-	{
-		ConfigManagerCampaign configManager = getCampaign().getCampaignConfigManager();
-		
-		int GroundAttackMinimum = configManager.getIntConfigParam(ConfigItemKeys.PatrolAdditionalKey);
-		int GroundAttackAdditional = configManager.getIntConfigParam(ConfigItemKeys.PatrolAdditionalKey) + 1;
-		numPlanesInFlight = GroundAttackMinimum + RandomNumberGenerator.getRandom(GroundAttackAdditional);
-		
-        return modifyNumPlanes(numPlanesInFlight);
-
-	}
 
 	@Override
 	protected void createActivation() throws PWCGException 

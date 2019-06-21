@@ -156,7 +156,7 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         
         ArmedService service = campaignGeneratorDO.getService();
         String campaignName = campaignGeneratorDO.getCampaignName();
-        String playerName = campaignGeneratorDO.getPlayerName();
+        String playerName = campaignGeneratorDO.getPlayerPilotName();
         String region = campaignGeneratorDO.getRegion();
         String squadronName = campaignGeneratorDO.getSquadName();
         String rank = campaignGeneratorDO.getRank();

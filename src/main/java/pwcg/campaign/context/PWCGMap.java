@@ -8,9 +8,9 @@ import java.util.TreeMap;
 
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.GroupManager;
-import pwcg.campaign.target.DrifterManager;
-import pwcg.campaign.target.ShippingLaneManager;
-import pwcg.campaign.target.TargetPreferenceManager;
+import pwcg.campaign.target.locator.ShippingLaneManager;
+import pwcg.campaign.target.locator.targettype.TargetPreferenceManager;
+import pwcg.campaign.target.unit.DrifterManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.options.MapWeather;
 import pwcg.mission.options.MissionOptions;

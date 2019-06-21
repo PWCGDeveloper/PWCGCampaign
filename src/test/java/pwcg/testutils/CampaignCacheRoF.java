@@ -41,42 +41,5 @@ public class CampaignCacheRoF extends CampaignCacheBase
         makeProfile(SquadrontTestProfile.ESC_124_PROFILE);
         makeProfile(SquadrontTestProfile.RFC_2_PROFILE);
         makeProfile(SquadrontTestProfile.ESC_2_PROFILE);
-
-
-        makeJasta11Profile();
-        makeEsc124Profile();
-        makeEsc103Profile();
-        makeEsc2Profile();
-        makeRFC2Profile();
-    }
-    
-    private void makeRFC2Profile() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19180331", 102002);
-        campaignProfiles.put(RFC_2_PROFILE, generatorModel);
-    }
-
-    private void makeEsc124Profile() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19180218", 101124);
-        campaignProfiles.put(ESC_124_PROFILE, generatorModel);
-    }
-
-    private void makeJasta11Profile() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19170501", 501011);
-        campaignProfiles.put(JASTA_11_PROFILE, generatorModel);
-    }
-    
-    private void makeEsc103Profile() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19170701", 101103);
-        campaignProfiles.put(ESC_103_PROFILE, generatorModel);
-    }
-    
-    private void makeEsc2Profile() throws PWCGException
-    {
-        CampaignGeneratorModel generatorModel = makeCampaignModelForProfile ("19170801", 101002);
-        campaignProfiles.put(ESC_2_PROFILE, generatorModel);
     }
 }
