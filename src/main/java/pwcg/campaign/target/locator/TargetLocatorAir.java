@@ -6,6 +6,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
@@ -42,15 +43,12 @@ public class TargetLocatorAir
     
     public Coordinate getInterceptCoordinate() throws PWCGException
     {
+        
         if (flightInformation.isPlayerFlight())
         {
-            InterceptPlayerCoordinateGenerator coordinateGenerator = new InterceptPlayerCoordinateGenerator(
-                    flightInformation.getCampaign(), 
-                    flightInformation.getMission(), 
-                    flightInformation.getSquadron());
-            coordinateGenerator.createTargetCoordinates();          
-            Coordinate targetCoordinates = coordinateGenerator.getTargetCoordinates();
-            return targetCoordinates;
+            InterceptPlayerCoordinateGenerator coordinateGenerator = new InterceptPlayerCoordinateGenerator(flightInformation);
+            TargetDefinition interceptedFlightTarget = coordinateGenerator.createTargetCoordinates();
+            return interceptedFlightTarget.getTargetPosition();
         }
         else
         {

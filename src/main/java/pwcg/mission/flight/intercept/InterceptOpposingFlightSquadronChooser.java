@@ -1,6 +1,7 @@
 package pwcg.mission.flight.intercept;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -9,19 +10,19 @@ import java.util.Map;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.target.TargetCategory;
+import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightInformation;
 
-public class OpposingFlightSquadronChooser
+public class InterceptOpposingFlightSquadronChooser
 {
-    private FlightInformation flightInformation;
-    private List<Role> opposingFlightRoles;
+    private FlightInformation playerFlightInformation;
 
-    public OpposingFlightSquadronChooser(FlightInformation flightInformation, List<Role> opposingFlightRoles)
+    public InterceptOpposingFlightSquadronChooser(FlightInformation playerFlightInformation)
     {
-        this.flightInformation = flightInformation;
-        this.opposingFlightRoles = opposingFlightRoles;
+        this.playerFlightInformation = playerFlightInformation;
     }
 
     public List<Squadron> getOpposingSquadrons() throws PWCGException
@@ -58,19 +59,21 @@ public class OpposingFlightSquadronChooser
 
     private List<Squadron> getViableOpposingSquadrons() throws PWCGException
     {
+        List<Role> opposingFlightRoles = determineOpposingRoles();
+        
         List<Squadron> possibleOpposingSquadsByRole = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(
-                flightInformation.getMission().getCampaign(), 
-                flightInformation.getTargetCoords().copy(), 
+                playerFlightInformation.getMission().getCampaign(), 
+                playerFlightInformation.getTargetCoords().copy(), 
                 1, 
                 250000.0, 
                 opposingFlightRoles, 
-                flightInformation.getSquadron().determineEnemySide(), 
-                flightInformation.getCampaign().getDate());
+                playerFlightInformation.getSquadron().determineEnemySide(), 
+                playerFlightInformation.getCampaign().getDate());
 
         List<Squadron> viableOpposingSquads = new ArrayList<>();
         for (Squadron squadron : possibleOpposingSquadsByRole)
         {
-            if (squadron.isSquadronViable(flightInformation.getCampaign()))
+            if (squadron.isSquadronViable(playerFlightInformation.getCampaign()))
             {
                 viableOpposingSquads.add(squadron);
             }
@@ -78,9 +81,26 @@ public class OpposingFlightSquadronChooser
         return viableOpposingSquads;
     }
     
+    private List<Role> determineOpposingRoles()
+    {
+        TargetDefinition interceptedFlightTargetDefinitions = playerFlightInformation.getTargetDefinition().getLinkedFlightTargetDefinition();
+        if (interceptedFlightTargetDefinitions.getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRATEGIC)
+        {
+            return new ArrayList<>(Arrays.asList(Role.ROLE_BOMB, Role.ROLE_STRAT_BOMB, Role.ROLE_RECON));
+        }
+        else
+        {
+            return new ArrayList<>(Arrays.asList(Role.ROLE_BOMB, Role.ROLE_ATTACK, Role.ROLE_DIVE_BOMB, Role.ROLE_STRAT_BOMB, Role.ROLE_RECON));
+        }
+    }
+
     private int determineNumberOfOpposingFlights() 
     {
         int numOpposingFlights = 1 + RandomNumberGenerator.getRandom(3);
+        if (playerFlightInformation.getCampaign().getCampaignData().isCoop())
+        {
+            numOpposingFlights = 1;
+        }
         return numOpposingFlights;
     }
 

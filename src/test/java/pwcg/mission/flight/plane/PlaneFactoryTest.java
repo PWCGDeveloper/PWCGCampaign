@@ -16,32 +16,41 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
+import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.TestParticipatingHumanBuilder;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlaneFactoryTest
 {
     Campaign campaign;
-    
-    @Mock
-    Flight flight;
+    FlightInformation flightInformation;
+    @Mock Flight flight;
 
     @Before
     public void setup() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.KG53_PROFILE);
+        
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.GROUND_ATTACK);
+        flightInformation = new FlightInformation(mission);
     }
 
     @Test
     public void testPlayerPlaneGeneration() throws PWCGException
     {
         Mockito.when(flight.isVirtual()).thenReturn(false);
-
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.KG53_PROFILE.getSquadronId());
-        PlaneMCUFactory planeFactory = new PlaneMCUFactory(campaign, squadron, flight);
+        
+        PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
         List<PlaneMCU> assignedPlanes = planeFactory.createPlanesForFlight(4);
         
         boolean playerFound = false;
@@ -71,7 +80,7 @@ public class PlaneFactoryTest
         Mockito.when(flight.isVirtual()).thenReturn(true);
 
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(20111052);
-        PlaneMCUFactory planeFactory = new PlaneMCUFactory(campaign, squadron, flight);
+        PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
         List<PlaneMCU> assignedPlanes = planeFactory.createPlanesForFlight(4);
         
         List<SquadronMember> players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();

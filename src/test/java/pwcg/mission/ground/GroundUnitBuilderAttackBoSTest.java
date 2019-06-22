@@ -11,7 +11,6 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.target.TacticalTarget;
-import pwcg.campaign.target.TargetCategory;
 import pwcg.campaign.target.TargetDefinition;
 import pwcg.campaign.target.unit.GroundUnitBuilderAttack;
 import pwcg.core.exception.PWCGException;
@@ -33,7 +32,6 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
         
         targetDefinition.setAttackingCountry(country);
         targetDefinition.setTargetCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
-        targetDefinition.setTargetGeneralPosition(myTestPosition);
         targetDefinition.setTargetPosition(new Coordinate(100000, 0, 150000));
         targetDefinition.setTargetOrientation(new Orientation());
         targetDefinition.setDate(date);
@@ -46,7 +44,6 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     @Test
     public void createTrainTargetTest () throws PWCGException 
     {
-        targetDefinition.setTargetCategory(TargetCategory.TARGET_CATEGORY_ARMORED);
         targetDefinition.setTargetType(TacticalTarget.TARGET_TRAIN);
 
         GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
@@ -58,7 +55,6 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     @Test
     public void createAirfieldUnitTest () throws PWCGException 
     {
-        targetDefinition.setTargetCategory(TargetCategory.TARGET_CATEGORY_MEDIUM);
         targetDefinition.setTargetType(TacticalTarget.TARGET_AIRFIELD);
 
         GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
@@ -70,7 +66,6 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     @Test
     public void createTruckConvoyTest () throws PWCGException 
     {
-        targetDefinition.setTargetCategory(TargetCategory.TARGET_CATEGORY_SOFT);
         targetDefinition.setTargetType(TacticalTarget.TARGET_TRANSPORT);
 
         GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
@@ -82,7 +77,6 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     @Test
     public void createGroundArtilleryBatteryTest () throws PWCGException 
     {
-        targetDefinition.setTargetCategory(TargetCategory.TARGET_CATEGORY_SOFT);
         targetDefinition.setTargetType(TacticalTarget.TARGET_ARTILLERY);
 
         GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
@@ -94,7 +88,6 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     @Test
     public void createDrifterTest () throws PWCGException 
     {
-        targetDefinition.setTargetCategory(TargetCategory.TARGET_CATEGORY_MEDIUM);
         targetDefinition.setTargetType(TacticalTarget.TARGET_DRIFTER);
 
         GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
@@ -106,7 +99,6 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     @Test
     public void createAssaultTest () throws PWCGException 
     {
-        targetDefinition.setTargetCategory(TargetCategory.TARGET_CATEGORY_ARMORED);
         targetDefinition.setTargetType(TacticalTarget.TARGET_ASSAULT);
 
         GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
@@ -118,7 +110,6 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     @Test
     public void createDefenseTest () throws PWCGException 
     {
-        targetDefinition.setTargetCategory(TargetCategory.TARGET_CATEGORY_ARMORED);
         targetDefinition.setTargetType(TacticalTarget.TARGET_DEFENSE);
 
         GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
@@ -130,7 +121,6 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     @Test
     public void createShippingTest () throws PWCGException 
     {
-        targetDefinition.setTargetCategory(TargetCategory.TARGET_CATEGORY_MEDIUM);
         targetDefinition.setTargetType(TacticalTarget.TARGET_SHIPPING);
 
         GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
@@ -142,7 +132,6 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     @Test
     public void createTroopConcentrationTest () throws PWCGException 
     {
-        targetDefinition.setTargetCategory(TargetCategory.TARGET_CATEGORY_MEDIUM);
         targetDefinition.setTargetType(TacticalTarget.TARGET_TROOP_CONCENTRATION);
 
         GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);

@@ -26,7 +26,7 @@ public class TargetTypeAvailability
     private Side side;
     private Date date;
     
-    TargetTypeAvailability(Side side, Date date)
+    public TargetTypeAvailability(Side side, Date date)
     {
         this.side = side;
         this.date = date;

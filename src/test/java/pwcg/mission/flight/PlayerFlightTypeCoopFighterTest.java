@@ -10,6 +10,8 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
@@ -19,6 +21,7 @@ import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PatrolFlightValidator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.TestParticipatingHumanBuilder;
 
 public class PlayerFlightTypeCoopFighterTest
 {
@@ -170,9 +173,9 @@ public class PlayerFlightTypeCoopFighterTest
     
     private void generateMission(SquadrontTestProfile profile, Campaign campaign, FlightTypes flightType) throws PWCGException
     {
-        mission = new Mission();
-        mission.initialize(campaign);
-        mission.generate(CampaignCache.buildParticipatingPlayers(profile), flightType);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(flightType);
         mission.finalizeMission();
     }
     

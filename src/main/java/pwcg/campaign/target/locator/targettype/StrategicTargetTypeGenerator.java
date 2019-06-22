@@ -22,13 +22,13 @@ public class StrategicTargetTypeGenerator
 {
     private Side side;
     private Date date;
-    private Coordinate referenceLocation;
+    private Coordinate targetLocation;
     
     public StrategicTargetTypeGenerator(Side side, Date date, Coordinate referenceLocation)
     {
         this.side = side;
         this.date = date;
-        this.referenceLocation = referenceLocation;
+        this.targetLocation = referenceLocation;
     }
     
     public TacticalTarget createTargetType() throws PWCGException
@@ -47,7 +47,7 @@ public class StrategicTargetTypeGenerator
         Map<TacticalTarget, List<IFixedPosition>> targetAvailability = new HashMap<>();
         while (targetAvailability.size() == 0 && strategicBombingRadius < PositionFinder.ABSURDLY_LARGE_DISTANCE)
         {
-            StrategicTargetLocator strategicTargetLocator = new StrategicTargetLocator(strategicBombingRadius, side, date, referenceLocation);
+            StrategicTargetLocator strategicTargetLocator = new StrategicTargetLocator(strategicBombingRadius, side, date, targetLocation);
             targetAvailability = strategicTargetLocator.getStrategicTargetAvailability();
             strategicBombingRadius += 20000;
         }

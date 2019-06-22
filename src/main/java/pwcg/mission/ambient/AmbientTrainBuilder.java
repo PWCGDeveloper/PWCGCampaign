@@ -81,7 +81,7 @@ public class AmbientTrainBuilder extends AmbientUnitBuilder
         boolean isPlayerTarget = true;
         ICountry trainCountry = CountryFactory.makeMapReferenceCountry(targetSide);
         TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionGround(trainCountry, TacticalTarget.TARGET_TRAIN, station.getPosition(), isPlayerTarget);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(trainCountry, TacticalTarget.TARGET_TRAIN, station.getPosition(), isPlayerTarget);
 
         TrainUnitFactory trainfactory =  new TrainUnitFactory(campaign, targetDefinition);
         GroundTrainUnit trainUnit = trainfactory.createTrainUnit();

@@ -9,6 +9,8 @@ import pwcg.campaign.target.TacticalTarget;
 import pwcg.campaign.target.TargetCategory;
 import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.bomb.StrategicBombingFlight;
@@ -17,10 +19,10 @@ import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.TestParticipatingHumanBuilder;
 
 public class PlayerFlightTypeBoSBombTest
 {
-    Mission mission;
     Campaign campaign;
 
     @Before
@@ -33,9 +35,9 @@ public class PlayerFlightTypeBoSBombTest
     @Test
     public void bombFlightTest() throws PWCGException
     {
-        mission = new Mission();
-        mission.initialize(campaign);
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.KG53_PROFILE), FlightTypes.BOMB);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.BOMB);
         BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
@@ -55,9 +57,9 @@ public class PlayerFlightTypeBoSBombTest
     @Test
     public void lowAltBombFlightTest() throws PWCGException
     {
-        mission = new Mission();
-        mission.initialize(campaign);
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.KG53_PROFILE), FlightTypes.LOW_ALT_BOMB);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.LOW_ALT_BOMB);
         BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
@@ -77,9 +79,9 @@ public class PlayerFlightTypeBoSBombTest
     @Test
     public void strategicBombFlightTest() throws PWCGException
     {
-        mission = new Mission();
-        mission.initialize(campaign);
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.KG53_PROFILE), FlightTypes.STRATEGIC_BOMB);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.STRATEGIC_BOMB);
         StrategicBombingFlight flight = (StrategicBombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
@@ -97,7 +99,6 @@ public class PlayerFlightTypeBoSBombTest
     {
         assert (targetDefinition.getAttackingCountry() != null);
         assert (targetDefinition.getTargetCountry() != null);
-        assert (targetDefinition.getTargetGeneralPosition() != null);
         assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
         assert (targetDefinition.getTargetType() != TacticalTarget.TARGET_NONE);
     }

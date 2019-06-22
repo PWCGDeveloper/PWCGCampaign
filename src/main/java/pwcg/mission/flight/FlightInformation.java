@@ -24,7 +24,6 @@ public class FlightInformation
     private boolean isPlayerFlight = false;
     private boolean isEscortedByPlayerFlight = false;
     private boolean isEscortForPlayerFlight = false;
-    private List<SquadronMember> participatingPlayers;
     private TargetDefinition targetDefinition = new TargetDefinition();
     private List<PlaneMCU> planes;
     
@@ -104,9 +103,9 @@ public class FlightInformation
         return targetDefinition.getTargetPosition();
     }
     
-    public List<SquadronMember> getParticipatingPlayers() 
+    public List<SquadronMember> getFlightParticipatingPlayers() 
     {
-		return participatingPlayers;
+		return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getSquadronId());
 	}
 
 	public void setCampaign(Campaign campaign) 

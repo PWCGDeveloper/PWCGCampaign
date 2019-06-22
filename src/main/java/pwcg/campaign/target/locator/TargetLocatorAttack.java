@@ -31,7 +31,8 @@ public class TargetLocatorAttack
     public TargetLocatorAttack(TargetDefinition targetDefinition, Coordinate missionCenter)
     {
         this.targetDefinition = targetDefinition;
-        currentSearchRadius = targetDefinition.getPreferredRadius();
+        this.currentSearchRadius = targetDefinition.getPreferredRadius();
+        this.missionCenter = missionCenter;
     }
     
     public void locateTarget() throws PWCGException

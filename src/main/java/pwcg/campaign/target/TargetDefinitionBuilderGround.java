@@ -41,7 +41,7 @@ public class TargetDefinitionBuilderGround
         return targetDefinition;
     }
 
-    public TargetDefinition buildTargetDefinitionGround (
+    public TargetDefinition buildTargetDefinitionAmbient (
             ICountry targetCountry, 
             TacticalTarget targetType, 
             Coordinate targetPosition,

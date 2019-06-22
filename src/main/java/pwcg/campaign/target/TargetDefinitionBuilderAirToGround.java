@@ -24,12 +24,11 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
     }
 
     public TargetDefinition buildTargetDefinition () throws PWCGException
-    {
-        Coordinate missionCenter = flightInformation.getMission().getMissionBorders().getCenter();
-        
+    {        
         TacticalTarget targetType = determinePredefinedTacticalTarget(flightInformation.getFlightType());
         if (targetType == TacticalTarget.TARGET_ANY)
         {
+            Coordinate missionCenter = flightInformation.getMission().getMissionBorders().getCenter();
             TargetTypeAvailabilityInputs targetTypeAvailabilityInputs = createTargetingInputs(missionCenter);
             targetType = createTargetType(targetTypeAvailabilityInputs);
         }
@@ -70,6 +69,25 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         targetDefinition.setAttackingSquadron(flightInformation.getSquadron());
         targetDefinition.setTargetName(TargetDefinitionBuilderUtils.buildTargetName(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()), targetType));
 
+        determineAttackingAndDefendingCountries(targetType);
+        
+        targetDefinition.setDate(flightInformation.getCampaign().getDate());
+        targetDefinition.setPlayerTarget((Squadron.isPlayerSquadron(flightInformation.getCampaign(), flightInformation.getSquadron().getSquadronId())));
+        
+        targetDefinition.setPreferredRadius(productSpecific.getInitialTargetRadiusFromGeneralTargetLocation(flightInformation.getFlightType()));
+        targetDefinition.setMaximumRadius(productSpecific.getMaxTargetRadiusFromGeneralTargetLocation(flightInformation.getFlightType()));
+        
+        TargetLocatorAttack targetLocator = new TargetLocatorAttack(targetDefinition,flightInformation.getMission().getMissionBorders().getCenter());
+        targetLocator.locateTarget();
+        targetDefinition.setTargetPosition(targetLocator.getTargetLocation());
+        targetDefinition.setTargetOrientation(targetLocator.getTargetOrientation());
+    }
+
+    private void determineAttackingAndDefendingCountries(TacticalTarget targetType) throws PWCGException
+    {
+        targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
+        targetDefinition.setTargetCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
+
         if (flightInformation.getFlightType() == FlightTypes.BALLOON_DEFENSE)
         {
             targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
@@ -84,17 +102,6 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
             targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
             targetDefinition.setTargetCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
         }
-        
-        targetDefinition.setDate(flightInformation.getCampaign().getDate());
-        targetDefinition.setPlayerTarget((Squadron.isPlayerSquadron(flightInformation.getCampaign(), flightInformation.getSquadron().getSquadronId())));
-        
-        targetDefinition.setPreferredRadius(productSpecific.getInitialTargetRadiusFromGeneralTargetLocation(flightInformation.getFlightType()));
-        targetDefinition.setMaximumRadius(productSpecific.getMaxTargetRadiusFromGeneralTargetLocation(flightInformation.getFlightType()));
-        
-        TargetLocatorAttack targetLocator = new TargetLocatorAttack(targetDefinition,flightInformation.getMission().getMissionBorders().getCenter());
-        targetLocator.locateTarget();
-        targetDefinition.setTargetPosition(targetLocator.getTargetLocation());
-        targetDefinition.setTargetOrientation(targetLocator.getTargetOrientation());
     }
 
 

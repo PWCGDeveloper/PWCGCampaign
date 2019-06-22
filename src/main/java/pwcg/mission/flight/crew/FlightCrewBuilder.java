@@ -43,7 +43,7 @@ public class FlightCrewBuilder
         if (Squadron.isPlayerSquadron(flightInformation.getCampaign(), flightInformation.getSquadron().getSquadronId()))
         {
             List<SquadronMember> participatingPlayerCrews = new ArrayList<>();
-            for (SquadronMember pilot : flightInformation.getParticipatingPlayers())
+            for (SquadronMember pilot : flightInformation.getFlightParticipatingPlayers())
             {
             	participatingPlayerCrews.add(pilot);
             }

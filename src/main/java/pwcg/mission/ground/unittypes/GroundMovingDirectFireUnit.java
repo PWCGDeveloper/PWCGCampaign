@@ -83,9 +83,7 @@ public abstract class GroundMovingDirectFireUnit extends GroundDirectFireUnit im
         waypointTimer = new McuTimer();
         waypointTimer.setName("WP Timer for " + pwcgGroundUnitInformation.getName());
         waypointTimer.setDesc("WP for " + pwcgGroundUnitInformation.getName());
-        waypointTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
-        
-        // TODO IMPROVEMENT Delete after the last WP
+        waypointTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());        
 	}
 	
     @Override

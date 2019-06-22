@@ -26,6 +26,7 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGroundUnitResourceManager;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.GroundUnitCollection;
 
@@ -39,9 +40,9 @@ public class TargetBuilderTest
     @Mock private ICountry friendlyCountry;
     @Mock private ICountry enemyCountry;
     @Mock private ConfigManagerCampaign configManager;
+    @Mock private FlightInformation flightInformation;
     
     private MissionGroundUnitResourceManager groundUnitResourceManager = new MissionGroundUnitResourceManager();
-    private Coordinate referencePosition = new Coordinate(150000, 0, 150000);
 
     @Before
     public void setup() throws PWCGException
@@ -54,7 +55,6 @@ public class TargetBuilderTest
         Mockito.when(campaign.getDate()).thenReturn(date);
         Mockito.when(targetDefinition.getTargetCountry()).thenReturn(enemyCountry);
         Mockito.when(targetDefinition.getAttackingCountry()).thenReturn(friendlyCountry);
-        Mockito.when(targetDefinition.getTargetGeneralPosition()).thenReturn(referencePosition);
         Mockito.when(targetDefinition.getTargetPosition()).thenReturn(new Coordinate(216336, 0, 184721));
         Mockito.when(targetDefinition.getTargetOrientation()).thenReturn(new Orientation(90));
         Mockito.when(enemyCountry.getSide()).thenReturn(Side.ALLIED);
@@ -65,15 +65,19 @@ public class TargetBuilderTest
         Mockito.when(friendlyCountry.getCountry()).thenReturn(Country.GERMANY);
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
         Mockito.when(mission.getMissionGroundUnitManager()).thenReturn(groundUnitResourceManager);
+        Mockito.when(flightInformation.getMission()).thenReturn(mission);
+        Mockito.when(flightInformation.getSquadron()).thenReturn(squadron);
+        Mockito.when(flightInformation.getCampaign()).thenReturn(campaign);
+        Mockito.when(flightInformation.getTargetDefinition()).thenReturn(targetDefinition);
     }
     
     @Test
     public void createShippingTest() throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_SHIPPING);
-
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
-        targetBuilder.buildTarget(FlightTypes.ANTI_SHIPPING);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.ANTI_SHIPPING);
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);        
@@ -83,9 +87,9 @@ public class TargetBuilderTest
     public void createAssaultTest()  throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_ASSAULT);
-
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
-        targetBuilder.buildTarget(FlightTypes.BOMB);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);        
         assert(groundUnits.getAllAxisGroundUnits().size() > 0);        
@@ -95,9 +99,9 @@ public class TargetBuilderTest
     public void createTroopConcentrationTest()  throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_TROOP_CONCENTRATION);
-
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
-        targetBuilder.buildTarget(FlightTypes.LOW_ALT_BOMB);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.LOW_ALT_BOMB);
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);        
@@ -107,9 +111,9 @@ public class TargetBuilderTest
     public void createTransportTest()  throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_TRANSPORT);
-
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
-        targetBuilder.buildTarget(FlightTypes.BOMB);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                
@@ -119,9 +123,9 @@ public class TargetBuilderTest
     public void createTrainTest()  throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_TRAIN);
-
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
-        targetBuilder.buildTarget(FlightTypes.BOMB);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                        
@@ -131,9 +135,9 @@ public class TargetBuilderTest
     public void createArtilleryBatteryTest()  throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_ARTILLERY);
-
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
-        targetBuilder.buildTarget(FlightTypes.GROUND_ATTACK);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.GROUND_ATTACK);
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                
@@ -143,9 +147,9 @@ public class TargetBuilderTest
     public void createAirfieldTest()  throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_AIRFIELD);
-
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
-        targetBuilder.buildTarget(FlightTypes.BOMB);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                        
@@ -157,9 +161,9 @@ public class TargetBuilderTest
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_BALLOON);
         Mockito.when(enemyCountry.getSide()).thenReturn(Side.AXIS);
         Mockito.when(friendlyCountry.getSide()).thenReturn(Side.ALLIED);
-
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
-        targetBuilder.buildTarget(FlightTypes.BALLOON_DEFENSE);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BALLOON_DEFENSE);
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() == 0);
         assert(groundUnits.getAllAxisGroundUnits().size() > 0);                                                
@@ -169,9 +173,9 @@ public class TargetBuilderTest
     public void createBalloonTest()  throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_BALLOON);
-
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
-        targetBuilder.buildTarget(FlightTypes.BALLOON_BUST);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BALLOON_BUST);
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                                
@@ -181,9 +185,9 @@ public class TargetBuilderTest
     public void createDrifterTest()  throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_DRIFTER);
-
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
-        targetBuilder.buildTarget(FlightTypes.DIVE_BOMB);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.DIVE_BOMB);
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                                
@@ -193,9 +197,9 @@ public class TargetBuilderTest
     public void createPortTest()  throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_PORT);
-
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
-        targetBuilder.buildTarget(FlightTypes.BOMB);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                                
@@ -205,9 +209,9 @@ public class TargetBuilderTest
     public void createRailTest()  throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_RAIL);
-
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
-        targetBuilder.buildTarget(FlightTypes.BOMB);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                                        
@@ -217,9 +221,9 @@ public class TargetBuilderTest
     public void createFactoryTest()  throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_FACTORY);
-
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
-        targetBuilder.buildTarget(FlightTypes.BOMB);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                                
@@ -229,9 +233,9 @@ public class TargetBuilderTest
     public void createCityTest()  throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_CITY);
-
-        TargetBuilder targetBuilder = new TargetBuilder(campaign, squadron, mission, targetDefinition);
-        targetBuilder.buildTarget(FlightTypes.BOMB);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
+        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                                

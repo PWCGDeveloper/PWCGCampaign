@@ -8,6 +8,8 @@ import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightTypes;
@@ -65,9 +67,9 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
         		participatingPlayers.addSquadronMember(player);
         	}
 
-            Mission mission = new Mission(participatingPlayers);
-            mission.initialize(writtenCampaign);
-            mission.generate(participatingPlayers, FlightTypes.PATROL);
+            CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+            Mission mission = new Mission(writtenCampaign, participatingPlayers, missionBorders);
+            mission.generate(FlightTypes.PATROL);
             mission.finalizeMission();
         }
     }

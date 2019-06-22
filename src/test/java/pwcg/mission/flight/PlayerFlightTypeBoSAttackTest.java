@@ -10,6 +10,8 @@ import pwcg.campaign.target.TacticalTarget;
 import pwcg.campaign.target.TargetCategory;
 import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.attack.GroundAttackFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
@@ -17,10 +19,10 @@ import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.TestParticipatingHumanBuilder;
 
 public class PlayerFlightTypeBoSAttackTest
 {
-    Mission mission;
     Campaign campaign;
     
     @Before
@@ -34,9 +36,9 @@ public class PlayerFlightTypeBoSAttackTest
     @Test
     public void groundAttackFlightTest() throws PWCGException
     {
-        mission = new Mission();
-        mission.initialize(campaign);
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.REGIMENT_503_PROFILE), FlightTypes.GROUND_ATTACK);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.GROUND_ATTACK);
         GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
@@ -57,7 +59,6 @@ public class PlayerFlightTypeBoSAttackTest
     {
         assert (targetDefinition.getAttackingCountry() != null);
         assert (targetDefinition.getTargetCountry() != null);
-        assert (targetDefinition.getTargetGeneralPosition() != null);
         assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
         assert (targetDefinition.getTargetType() != TacticalTarget.TARGET_NONE);
     }

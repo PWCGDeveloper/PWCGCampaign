@@ -9,6 +9,8 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberReplacer;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorDO;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionHumanParticipants;
@@ -239,9 +241,9 @@ public class CoopPlayerInclusionTest
     
     private void generateMission(MissionHumanParticipants participatingPlayers, FlightTypes flightType) throws PWCGException
     {
-        mission = new Mission();
-        mission.initialize(coopCampaign);
-        mission.generate(participatingPlayers, flightType);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        mission = new Mission(coopCampaign, participatingPlayers, missionBorders);
+        mission.generate(flightType);
         mission.finalizeMission();
     }
     

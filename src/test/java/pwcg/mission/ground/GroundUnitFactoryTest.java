@@ -6,12 +6,14 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.context.Country;
+import pwcg.campaign.target.ITargetDefinitionBuilder;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.campaign.target.TargetDefinition;
 import pwcg.campaign.target.TargetDefinitionBuilderFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.artySpot.ArtillerySpotArtilleryGroup;
 import pwcg.mission.ground.factory.AAAUnitFactory;
 import pwcg.mission.ground.factory.AssaultFactory;
@@ -124,6 +126,7 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createDrifterUnitTest () throws PWCGException 
     {
+        //TODO not specifying target type anymore
         TargetDefinition targetDefinition = new TargetDefinition();
         targetDefinition.setTargetCountry(country);
         targetDefinition.setTargetPosition(new Coordinate (100000, 0, 100000));
@@ -137,10 +140,11 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createShippingUnitTest () throws PWCGException 
     {
-        boolean isPlayerTarget = true;
-        TargetDefinitionBuilderFactory targetDefinitionBuilder = new TargetDefinitionBuilderFactory();
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, country, TacticalTarget.TARGET_SHIPPING, new Coordinate (100000, 0, 100000), isPlayerTarget);
-
+        //TODO not specifying target type anymore
+        FlightInformation flightInformation = new FlightInformation(mission);
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
+        
         ShippingUnitFactory groundUnitFactory =  new ShippingUnitFactory(campaign, targetDefinition);        
         ShipConvoyUnit groundUnit = (ShipConvoyUnit)groundUnitFactory.createShippingUnit();
         assert (groundUnit.getSpawners().size() > 0);
@@ -150,9 +154,9 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createTroopConcentrationTest () throws PWCGException 
     {
-        boolean isPlayerTarget = true;
-        TargetDefinitionBuilderFactory targetDefinitionBuilder = new TargetDefinitionBuilderFactory();
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionNoFlight(campaign, country, TacticalTarget.TARGET_TROOP_CONCENTRATION, new Coordinate (100000, 0, 100000), isPlayerTarget);
+        FlightInformation flightInformation = new FlightInformation(mission);
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
 
         TroopConcentrationFactory groundUnitFactory =  new TroopConcentrationFactory(campaign, targetDefinition);        
         GroundTroopConcentration groundUnit = (GroundTroopConcentration)groundUnitFactory.createTroopConcentration();

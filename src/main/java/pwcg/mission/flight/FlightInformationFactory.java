@@ -44,7 +44,7 @@ public class FlightInformationFactory
         return aiFlightInformation;
     }
 
-    public static FlightInformation buildEscortForPlayerFlight(FlightInformation playerFlightInformation, Squadron friendlyFighterSquadron) throws PWCGException
+    public static FlightInformation buildEscortForPlayerFlightInformation(FlightInformation playerFlightInformation, Squadron friendlyFighterSquadron) throws PWCGException
     {
         FlightInformation escortFlightInformation = new FlightInformation(playerFlightInformation.getMission());
         escortFlightInformation.setFlightType(FlightTypes.ESCORT);
@@ -57,7 +57,22 @@ public class FlightInformationFactory
 
         return escortFlightInformation;
     }
-    
+
+    public static FlightInformation buildInterceptOpposingInformation(Squadron squadron, Mission mission, FlightTypes flightType, TargetDefinition targetDefinition) throws PWCGException
+    {
+        FlightInformation interceptedFlightInformation = new FlightInformation(mission);
+        interceptedFlightInformation.setFlightType(FlightTypes.ESCORT);
+        interceptedFlightInformation.setMission(mission);
+        interceptedFlightInformation.setSquadron(squadron);
+        interceptedFlightInformation.setPlayerFlight(false);
+        interceptedFlightInformation.setEscortForPlayerFlight(false);
+        interceptedFlightInformation.setEscortedByPlayerFlight(false);
+        interceptedFlightInformation.setTargetDefinition(targetDefinition);
+        buildPlanes (interceptedFlightInformation);
+
+        return interceptedFlightInformation;
+    }
+
     public static void buildTargetDefinition (FlightInformation flightInformation) throws PWCGException
     {
         ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
@@ -70,6 +85,10 @@ public class FlightInformationFactory
     {
         FlightPlaneBuilder flightPlaneBuilder = new FlightPlaneBuilder(playerFlightInformation);
         List<PlaneMCU> planes = flightPlaneBuilder.createPlanesForFlight();
+        if (planes.size() == 0)
+        {
+            throw new PWCGException("No planes for flight");
+        }
         playerFlightInformation.setPlanes(planes);
     }
 

@@ -3,6 +3,7 @@ package pwcg.mission.flight.plane;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
@@ -34,6 +35,12 @@ public class PlaneMCUFactory
         
         return planesForFlight;
     }
+    
+    public static PlaneMCU createPlaneMcuByPlaneType (Campaign campaign, EquippedPlane equippedPlane, ICountry country, SquadronMember pilot)
+    {
+        PlaneMCU plane = new PlaneMCU(campaign, equippedPlane, country, pilot);
+        return plane;
+    }
 
 	private List<EquippedPlane> buildEquipmentForFLlght(int numPlanes) throws PWCGException 
 	{
@@ -59,7 +66,7 @@ public class PlaneMCUFactory
         	{
 	            EquippedPlane equippedPlane = planesTypesForFlight.get(index);
 	            SquadronMember pilot = crewsForFlight.get(index);            
-	            PlaneMCU plane = createPlaneMcuByPlaneType(equippedPlane, flightInformation.getSquadron().getCountry(), pilot);
+	            PlaneMCU plane = createPlaneMcuByPlaneType(flightInformation.getCampaign(), equippedPlane, flightInformation.getSquadron().getCountry(), pilot);
 	
 	            plane.setIndex(IndexGenerator.getInstance().getNextIndex());
 	            planesForFlight.add(plane);
@@ -73,12 +80,6 @@ public class PlaneMCUFactory
         
         initializePlaneParameters(planesForFlight);
 		return planesForFlight;
-    }
-    
-    public PlaneMCU createPlaneMcuByPlaneType (EquippedPlane equippedPlane, ICountry country, SquadronMember pilot)
-    {
-        PlaneMCU plane = new PlaneMCU(flightInformation.getCampaign(), equippedPlane, country, pilot);
-        return plane;
     }
 
 	private void initializePlaneParameters(List<PlaneMCU> planesForFlight) throws PWCGException
@@ -96,7 +97,7 @@ public class PlaneMCUFactory
 
 	private void setPlaceInFormation(int numInFormation, PlaneMCU aiPlane)
 	{
-		if (flightInformation.getParticipatingPlayers().size() == 0)
+		if (flightInformation.getFlightParticipatingPlayers().size() == 0)
 		{
 		    aiPlane.setNumberInFormation(Unit.NUM_IN_FORMATION_START);
 		}

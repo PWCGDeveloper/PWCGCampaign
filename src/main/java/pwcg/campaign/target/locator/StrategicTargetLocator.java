@@ -21,19 +21,17 @@ import pwcg.core.utils.RandomNumberGenerator;
 
 public class StrategicTargetLocator
 {
-    private Coordinate referenceLocation;
+    private Coordinate targetLocation;
     private int preferredRadius;
     private Date date;
     private Side side;
-    private static final double minDistance = 40000.0;
-
 
     public StrategicTargetLocator(int preferredRadius, Side side, Date date, Coordinate referenceLocation) throws PWCGException
     {
         this.preferredRadius = preferredRadius;
         this.side = side;
         this.date = date;
-        this.referenceLocation = referenceLocation;
+        this.targetLocation = referenceLocation;
     }
 
     public Map<TacticalTarget, List<IFixedPosition>> getStrategicTargetAvailability() throws PWCGException
@@ -140,8 +138,8 @@ public class StrategicTargetLocator
     
                     if (block.createCountry(date).getSide() == side)
                     {
-                        double distanceToTarget = MathUtils.calcDist(referenceLocation, block.getPosition());
-                        if (distanceToTarget > minDistance && distanceToTarget < preferredRadius)
+                        double distanceToTarget = MathUtils.calcDist(targetLocation, block.getPosition());
+                        if (distanceToTarget < preferredRadius)
                         {
                             targets.add(block);
                         }
@@ -162,7 +160,7 @@ public class StrategicTargetLocator
         {
             for (IAirfield targetField : targetFields)
             {
-                double distanceToTarget = MathUtils.calcDist(referenceLocation, targetField.getPosition());
+                double distanceToTarget = MathUtils.calcDist(targetLocation, targetField.getPosition());
                 if (distanceToTarget < preferredRadius)
                 {
                     targets.add(targetField);

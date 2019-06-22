@@ -71,7 +71,7 @@ public class AmbientBalloonDefensePackage
         
         TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
         boolean isPlayerTarget = false;
-        TargetDefinition ambientBalloonTargetDefinition = targetDefinitionBuilder.buildTargetDefinitionGround(balloonCountry, TacticalTarget.TARGET_BALLOON, balloonPosition, isPlayerTarget);
+        TargetDefinition ambientBalloonTargetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(balloonCountry, TacticalTarget.TARGET_BALLOON, balloonPosition, isPlayerTarget);
         GroundUnitBalloonFactory balloonFactory = new GroundUnitBalloonFactory(campaign, ambientBalloonTargetDefinition);
         BalloonDefenseGroup balloonUnit = balloonFactory.createBalloonUnit();
 		return balloonUnit;

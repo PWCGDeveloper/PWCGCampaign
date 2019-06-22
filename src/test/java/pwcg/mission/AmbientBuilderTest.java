@@ -12,6 +12,8 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.mission.ambient.AmbientBattleBuilder;
 import pwcg.mission.ambient.AmbientTrainBuilder;
 import pwcg.mission.ambient.AmbientTruckConvoyBuilder;
@@ -22,10 +24,11 @@ import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.TestParticipatingHumanBuilder;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AmbientBuilderTest
-{
+{    
     @Before
     public void setup() throws PWCGException
     {
@@ -36,9 +39,10 @@ public class AmbientBuilderTest
     public void createAmbientBattle () throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
-        Mission mission = new Mission();
-        mission.initialize(campaign);
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.STG77_PROFILE), FlightTypes.DIVE_BOMB);
+        MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
+        mission.generate(FlightTypes.DIVE_BOMB);
         
         AmbientBattleBuilder ambientBattleBuilder = new AmbientBattleBuilder(campaign, mission);
         List<AssaultInformation> battles = ambientBattleBuilder.generateAmbientBattles();
@@ -56,9 +60,10 @@ public class AmbientBuilderTest
     public void createAmbientTrucks () throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
-        Mission mission = new Mission();
-        mission.initialize(campaign);
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.STG77_PROFILE), FlightTypes.DIVE_BOMB);
+        MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
+        mission.generate(FlightTypes.DIVE_BOMB);
         
         AmbientTruckConvoyBuilder ambientTruckConvoyBuilder = new AmbientTruckConvoyBuilder(campaign, mission);
         List<GroundTruckConvoyUnit> ambientTrucks = ambientTruckConvoyBuilder.generateAmbientTrucks();
@@ -75,9 +80,10 @@ public class AmbientBuilderTest
     public void createAmbientTrains () throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
-        Mission mission = new Mission();
-        mission.initialize(campaign);
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.STG77_PROFILE), FlightTypes.DIVE_BOMB);
+        MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
+        mission.generate(FlightTypes.DIVE_BOMB);
         
         AmbientTrainBuilder ambientTrainBuilder = new AmbientTrainBuilder(campaign, mission);
         List<GroundTrainUnit> ambientTrains = ambientTrainBuilder.generateAmbientTrains();
@@ -94,9 +100,10 @@ public class AmbientBuilderTest
     public void createAmbientAAA () throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
-        Mission mission = new Mission();
-        mission.initialize(campaign);
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.STG77_PROFILE), FlightTypes.DIVE_BOMB);
+        MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
+        mission.generate(FlightTypes.DIVE_BOMB);
         
         AAAManager aaaManager = new AAAManager(campaign, mission);
         List<GroundUnitSpawning> AAA = aaaManager.getAAAForMission();

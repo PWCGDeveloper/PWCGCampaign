@@ -7,8 +7,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionHumanParticipants;
@@ -16,13 +17,13 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.TestParticipatingHumanBuilder;
 
 @RunWith(MockitoJUnitRunner.class)
 public class VehicleSetBuilderComprehensiveTest
 {
     Mission mission;
     Campaign campaign;
-    MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
     @Before 
     public void setup() throws PWCGException
@@ -47,14 +48,10 @@ public class VehicleSetBuilderComprehensiveTest
     @Test
     public void patrolFlightTest() throws PWCGException
     {
-    	for (SquadronMember player: campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
-    	{
-    		participatingPlayers.addSquadronMember(player);
-    	}
-    	
-        mission = new Mission();
-        mission.initialize(campaign);
-        mission.generate(participatingPlayers, FlightTypes.PATROL);
+        MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
+    	CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        mission = new Mission(campaign, participatingPlayers, missionBorders);
+        mission.generate( FlightTypes.PATROL);
         mission.generateAllGroundUnitTypesForTest();
         mission.finalizeMission();
     }

@@ -35,7 +35,7 @@ public class MissionGenerator
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
         Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
         campaign.setCurrentMission(mission);
-        mission.generate(participatingPlayers, flightType);
+        mission.generate(flightType);
         
         return mission;
     }

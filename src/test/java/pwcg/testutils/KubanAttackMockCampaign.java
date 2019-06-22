@@ -79,7 +79,7 @@ public class KubanAttackMockCampaign
         missionBorders = CoordinateBox.coordinateBoxFromCenter(myTestPosition, 100000);
         Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
         Mockito.when(missionFlightBuilder.isInFlightPath(Matchers.any())).thenReturn(true);
-        Mockito.when(missionFlightBuilder.getMissionBorders(Matchers.<Integer>any())).thenReturn(missionBorders);
+        Mockito.when(mission.getMissionBorders()).thenReturn(missionBorders);
 
 
         missionBeginUnit = new MissionBeginUnitCheckZone(myTestPosition, 10000);

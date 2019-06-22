@@ -27,7 +27,6 @@ public class IngressWaypointFactoryTest
     public void testBombingMissionForPlayer() throws PWCGException, PWCGException
     {
         Mockito.when(flight.isPlayerFlight()).thenReturn(true);
-        Mockito.when(flight.isFighterFlight()).thenReturn(false);
         Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.BOMB);
         
         IIngressWaypoint ingressWaypointGenerator = IngressWaypointFactory.getIngressGenerator(flight, lastPosition, targetCoords, 320, 3000);
@@ -38,7 +37,6 @@ public class IngressWaypointFactoryTest
     public void testBombingMissionFoAI() throws PWCGException, PWCGException
     {
         Mockito.when(flight.isPlayerFlight()).thenReturn(false);
-        Mockito.when(flight.isFighterFlight()).thenReturn(false);
         Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.STRATEGIC_BOMB);
 
         IIngressWaypoint ingressWaypointGenerator = IngressWaypointFactory.getIngressGenerator(flight, lastPosition, targetCoords, 320, 3000);
@@ -49,7 +47,6 @@ public class IngressWaypointFactoryTest
     public void testPlayerFighterPatrolMissionNearFront() throws PWCGException, PWCGException
     {
         Mockito.when(flight.isPlayerFlight()).thenReturn(true);
-        Mockito.when(flight.isFighterFlight()).thenReturn(true);
         Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.PATROL);
 
         IIngressWaypoint ingressWaypointGenerator = IngressWaypointFactory.getIngressGenerator(flight, lastPosition, targetCoords, 320, 3000);
@@ -60,7 +57,6 @@ public class IngressWaypointFactoryTest
     public void testAiOffensivePatrolMissionNearFront() throws PWCGException, PWCGException
     {
         Mockito.when(flight.isPlayerFlight()).thenReturn(false);
-        Mockito.when(flight.isFighterFlight()).thenReturn(true);
         Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.OFFENSIVE);
 
         IIngressWaypoint ingressWaypointGenerator = IngressWaypointFactory.getIngressGenerator(flight, lastPosition, targetCoords, 320, 3000);
@@ -71,7 +67,6 @@ public class IngressWaypointFactoryTest
     public void testAiGroundAttackMissionNearFront() throws PWCGException, PWCGException
     {
         Mockito.when(flight.isPlayerFlight()).thenReturn(false);
-        Mockito.when(flight.isFighterFlight()).thenReturn(false);
         Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.GROUND_ATTACK);
 
         IIngressWaypoint ingressWaypointGenerator = IngressWaypointFactory.getIngressGenerator(flight, lastPosition, targetCoords, 320, 3000);
@@ -82,7 +77,6 @@ public class IngressWaypointFactoryTest
     public void testHomeDefense() throws PWCGException, PWCGException
     {
         Mockito.when(flight.isPlayerFlight()).thenReturn(false);
-        Mockito.when(flight.isFighterFlight()).thenReturn(true);
         Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.HOME_DEFENSE);
 
         IIngressWaypoint ingressWaypointGenerator = IngressWaypointFactory.getIngressGenerator(flight, lastPosition, targetCoords, 320, 3000);
@@ -93,7 +87,6 @@ public class IngressWaypointFactoryTest
     public void testScrambleOppose() throws PWCGException, PWCGException
     {
         Mockito.when(flight.isPlayerFlight()).thenReturn(false);
-        Mockito.when(flight.isFighterFlight()).thenReturn(true);
         Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.SCRAMBLE_OPPOSE);
 
         IIngressWaypoint ingressWaypointGenerator = IngressWaypointFactory.getIngressGenerator(flight, lastPosition, targetCoords, 320, 3000);

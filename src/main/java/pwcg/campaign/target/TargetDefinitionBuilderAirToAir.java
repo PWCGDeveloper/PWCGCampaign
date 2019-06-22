@@ -10,6 +10,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.intercept.InterceptPlayerCoordinateGenerator;
 
 public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
 {
@@ -23,11 +24,8 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
 
     public TargetDefinition buildTargetDefinition () throws PWCGException
     {
-
         createBasicTargetDefinition();
-        
-        createTargetRadius();
-        
+        createTargetRadius();        
         createTargetLocation();
         return targetDefinition;
     }
@@ -57,6 +55,18 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         Coordinate targetLocation = getTargetLocationForFlightType();
         targetDefinition.setTargetPosition(targetLocation);
         targetDefinition.setTargetOrientation(new Orientation());
+        
+        if (flightInformation.getFlightType() == FlightTypes.INTERCEPT || flightInformation.getFlightType() == FlightTypes.HOME_DEFENSE)
+        {
+            buildLinkedFlightTagetDefinition();
+        }
+    }
+
+    private void buildLinkedFlightTagetDefinition() throws PWCGException
+    {
+        InterceptPlayerCoordinateGenerator coordinateGenerator = new InterceptPlayerCoordinateGenerator(flightInformation);
+        TargetDefinition linkedFlightTargetDefinition = coordinateGenerator.createTargetCoordinates();
+        targetDefinition.setLinkedFlightTargetDefinition(linkedFlightTargetDefinition);
     }
 
     private Coordinate getTargetLocationForFlightType() throws PWCGException

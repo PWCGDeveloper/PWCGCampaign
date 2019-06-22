@@ -1,94 +1,57 @@
 package pwcg.mission.flight.intercept;
 
-import java.util.List;
-
-import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IProductSpecificConfiguration;
-import pwcg.campaign.context.FrontLinePoint;
-import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
-import pwcg.campaign.group.Block;
-import pwcg.campaign.group.GroupManager;
-import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.target.StrategicTargetBuilder;
 import pwcg.campaign.target.TargetDefinition;
+import pwcg.campaign.target.TargetDefinitionBuilderAirToGround;
+import pwcg.campaign.target.TargetDefinitionBuilderStrategic;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.Mission;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 
 public class InterceptPlayerCoordinateGenerator
 {
-    public static double CLOSE_ENOUGH_FOR_INTERCEPT = 80000.0;
+    private FlightInformation flightInformation;
 
-    private Campaign campaign;
-    private Mission mission;
-    private FlightTypes flightType;
-    private Squadron squadron;
-    private Coordinate targetCoordinates = null;
-
-    public InterceptPlayerCoordinateGenerator(Campaign campaign, Mission mission, Squadron squadron)
+    public InterceptPlayerCoordinateGenerator(FlightInformation flightInformation)
     {
-        this.campaign = campaign;
-        this.mission = mission;
-        this.squadron = squadron;
+        this.flightInformation = flightInformation;
     }
     
-    public void createTargetCoordinates() throws PWCGException
+    public TargetDefinition createTargetCoordinates() throws PWCGException
     {
-        if (flightType == FlightTypes.HOME_DEFENSE)
+        if (flightInformation.getFlightType() == FlightTypes.HOME_DEFENSE)
         {
-            getStrategicTargetCoordinates();
-        }
-        else if (flightType == FlightTypes.LOW_ALT_CAP)
-        {
-            getFrontTargetCoordinates();
+            return getStrategicTarget();
         }
         else
         {
-            createPlayerInterceptLocation();
-        }
-    }
-
-    private void getStrategicTargetCoordinates() throws PWCGException 
-    {
-        StrategicTargetBuilder targetManager = new StrategicTargetBuilder();        
-        TargetDefinition targetDefinition = targetManager.getStrategicTarget(campaign, mission, squadron);
-        targetCoordinates = targetDefinition.getTargetPosition();
+            return getAnyInterceptTarget();
+        }        
     }
     
-    private void getFrontTargetCoordinates() throws PWCGException 
+    private TargetDefinition getAnyInterceptTarget() throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        List<FrontLinePoint> frontPointsPatrol = frontLinesForMap.findClosestFrontPositionsForSide(
-                squadron.determineCurrentPosition(campaign.getDate()), 
-                CLOSE_ENOUGH_FOR_INTERCEPT, 
-                squadron.determineEnemySide());
-        
-        if (frontPointsPatrol.size() == 0)
+        int roll = RandomNumberGenerator.getRandom(100);
+        if (roll < 20)
         {
-            frontPointsPatrol = frontLinesForMap.findClosestFrontPositionsForSide(
-                    squadron.determineCurrentPosition(campaign.getDate()), 
-                    CLOSE_ENOUGH_FOR_INTERCEPT * 1.5, 
-                    squadron.determineEnemySide());        
+            return getStrategicTarget();
         }
-   
-        int selectedIndex = RandomNumberGenerator.getRandom(frontPointsPatrol.size());
-        targetCoordinates = frontPointsPatrol.get(selectedIndex).getPosition().copy();
-    }
-    
-    private void createPlayerInterceptLocation() throws PWCGException
-    {
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
-        Block block = groupManager.getBlockFinder().getBlockWithinRadius(squadron.determineCurrentPosition(campaign.getDate()), productSpecific.getInterceptRadius());
-        targetCoordinates = block.getPosition();
+        else
+        {
+            return getTacticaTarget();
+        }
     }
 
-    public Coordinate getTargetCoordinates()
+    private TargetDefinition getTacticaTarget() throws PWCGException
     {
-        return targetCoordinates;
+        TargetDefinitionBuilderAirToGround targetDefinitionBuilder = new TargetDefinitionBuilderAirToGround(flightInformation);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
+        return targetDefinition;
+    }
+
+    private TargetDefinition getStrategicTarget() throws PWCGException 
+    {
+        TargetDefinitionBuilderStrategic targetDefinitionBuilder = new TargetDefinitionBuilderStrategic(flightInformation);
+        return targetDefinitionBuilder.buildTargetDefinition();
     }
 }

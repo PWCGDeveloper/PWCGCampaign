@@ -14,20 +14,30 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
+import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.TestParticipatingHumanBuilder;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FlightCrewBuilderCoopTest 
 {
     Campaign coopCampaign;
+    private Mission mission;
 
     @Before
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
         coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_PROFILE);
+
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        mission = new Mission(coopCampaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(coopCampaign), missionBorders);
+        mission.generate(FlightTypes.GROUND_ATTACK);
     }
 
     @Test
@@ -42,7 +52,7 @@ public class FlightCrewBuilderCoopTest
     		}
     	}
     	
-    	FlightInformation flightInformation = new FlightInformation(coopCampaign, participatingPlayers);
+        FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.COOP_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
         
@@ -80,7 +90,7 @@ public class FlightCrewBuilderCoopTest
     		}
     	}
     	
-    	FlightInformation flightInformation = new FlightInformation(coopCampaign, participatingPlayers);
+        FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.COOP_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
         
@@ -119,7 +129,7 @@ public class FlightCrewBuilderCoopTest
     		}
     	}
     	
-    	FlightInformation flightInformation = new FlightInformation(coopCampaign, participatingPlayers);
+        FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(10131132);
         flightInformation.setSquadron(squadron);
         

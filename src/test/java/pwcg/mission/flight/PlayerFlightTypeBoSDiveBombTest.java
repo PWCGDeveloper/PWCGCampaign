@@ -9,12 +9,15 @@ import pwcg.campaign.target.TacticalTarget;
 import pwcg.campaign.target.TargetCategory;
 import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.divebomb.DiveBombingFlight;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.TestParticipatingHumanBuilder;
 
 public class PlayerFlightTypeBoSDiveBombTest
 {
@@ -31,9 +34,9 @@ public class PlayerFlightTypeBoSDiveBombTest
     @Test
     public void diveBombFlightTest() throws PWCGException
     {
-        mission = new Mission();
-        mission.initialize(campaign);
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.STG77_PROFILE), FlightTypes.DIVE_BOMB);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.DIVE_BOMB);
         DiveBombingFlight flight = (DiveBombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
@@ -50,7 +53,6 @@ public class PlayerFlightTypeBoSDiveBombTest
     {
         assert (targetDefinition.getAttackingCountry() != null);
         assert (targetDefinition.getTargetCountry() != null);
-        assert (targetDefinition.getTargetGeneralPosition() != null);
         assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
         assert (targetDefinition.getTargetType() != TacticalTarget.TARGET_NONE);
     }

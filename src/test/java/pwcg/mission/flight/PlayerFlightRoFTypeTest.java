@@ -14,6 +14,8 @@ import pwcg.campaign.target.TacticalTarget;
 import pwcg.campaign.target.TargetCategory;
 import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.artySpot.PlayerArtillerySpotFlight;
 import pwcg.mission.flight.attack.GroundAttackFlight;
@@ -34,6 +36,7 @@ import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
 import pwcg.mission.flight.validate.PlayerReconFlightValidator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.TestParticipatingHumanBuilder;
 
 @RunWith(Parameterized.class)
 public class PlayerFlightRoFTypeTest 
@@ -55,9 +58,9 @@ public class PlayerFlightRoFTypeTest
 	{
 		Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
 
-        Mission mission = new Mission();
-        mission.initialize(campaign);        
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.ESC_2_PROFILE), FlightTypes.GROUND_ATTACK);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.GROUND_ATTACK);
         GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
@@ -74,10 +77,10 @@ public class PlayerFlightRoFTypeTest
 	public void bombFlightTest() throws PWCGException
 	{
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
-
-        Mission mission = new Mission();
-        mission.initialize(campaign);        
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.ESC_2_PROFILE), FlightTypes.BOMB);
+        
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.BOMB);
         BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
@@ -95,9 +98,9 @@ public class PlayerFlightRoFTypeTest
 	{
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
 
-        Mission mission = new Mission();
-        mission.initialize(campaign);        
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.ESC_2_PROFILE), FlightTypes.STRATEGIC_BOMB);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.STRATEGIC_BOMB);
         StrategicBombingFlight flight = (StrategicBombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
@@ -112,9 +115,9 @@ public class PlayerFlightRoFTypeTest
 	{
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_103_PROFILE);
 
-        Mission mission = new Mission();
-        mission.initialize(campaign);        
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.ESC_103_PROFILE), FlightTypes.PATROL);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.PATROL);
         PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
@@ -127,10 +130,9 @@ public class PlayerFlightRoFTypeTest
     public void balloonBustFlightTest() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
-
-        Mission mission = new Mission();
-        mission.initialize(campaign);        
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.JASTA_11_PROFILE), FlightTypes.BALLOON_BUST);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.BALLOON_BUST);
         BalloonBustFlight flight = (BalloonBustFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
         
@@ -144,10 +146,9 @@ public class PlayerFlightRoFTypeTest
     public void balloonDefenseFlightTest() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
-
-        Mission mission = new Mission();
-        mission.initialize(campaign);        
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.JASTA_11_PROFILE), FlightTypes.BALLOON_DEFENSE);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.BALLOON_DEFENSE);
         PlayerBalloonDefenseFlight flight = (PlayerBalloonDefenseFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
         
@@ -161,10 +162,9 @@ public class PlayerFlightRoFTypeTest
 	public void interceptFlightTest() throws PWCGException
 	{
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
-
-	    Mission mission = new Mission();
-        mission.initialize(campaign);        
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.JASTA_11_PROFILE), FlightTypes.INTERCEPT);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.INTERCEPT);
         InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
@@ -178,9 +178,9 @@ public class PlayerFlightRoFTypeTest
 	{
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_103_PROFILE);
 
-	    Mission mission = new Mission();
-        mission.initialize(campaign);        
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.ESC_103_PROFILE), FlightTypes.OFFENSIVE);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.OFFENSIVE);
         OffensiveFlight flight = (OffensiveFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
@@ -194,9 +194,9 @@ public class PlayerFlightRoFTypeTest
 	{
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
 
-	    Mission mission = new Mission();
-        mission.initialize(campaign);        
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.ESC_2_PROFILE), FlightTypes.RECON);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.RECON);
         PlayerReconFlight flight = (PlayerReconFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
@@ -210,9 +210,9 @@ public class PlayerFlightRoFTypeTest
 	{
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_103_PROFILE);
 
-	    Mission mission = new Mission();
-        mission.initialize(campaign);        
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.ESC_103_PROFILE), FlightTypes.ESCORT);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.ESCORT);
         PlayerEscortFlight flight = (PlayerEscortFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
@@ -226,9 +226,9 @@ public class PlayerFlightRoFTypeTest
 	{
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
 		
-	    Mission mission = new Mission();
-        mission.initialize(campaign);        
-        mission.generate(CampaignCache.buildParticipatingPlayers(SquadrontTestProfile.ESC_2_PROFILE), FlightTypes.ARTILLERY_SPOT);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.ARTILLERY_SPOT);
         PlayerArtillerySpotFlight flight = (PlayerArtillerySpotFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
@@ -245,7 +245,6 @@ public class PlayerFlightRoFTypeTest
 	{
         assert (targetDefinition.getAttackingCountry() != null);
         assert (targetDefinition.getTargetCountry() != null);
-        assert (targetDefinition.getTargetGeneralPosition() != null);
         assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
         assert (targetDefinition.getTargetType() != TacticalTarget.TARGET_NONE);
 	}

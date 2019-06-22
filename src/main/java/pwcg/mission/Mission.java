@@ -39,6 +39,7 @@ public class Mission
     private AmbientGroundUnitBuilder ambientGroundUnitBuilder;
     private MissionWaypointIconBuilder missionWaypointIconBuilder = new MissionWaypointIconBuilder();
     private MissionAirfieldIconBuilder missionAirfieldIconBuilder = new MissionAirfieldIconBuilder();
+    private MissionAssociateFlightBuilder missionAssociateFlightBuilder = new MissionAssociateFlightBuilder();
     private MissionFrontLineIconBuilder missionFrontLines;
     private MissionEffects missionEffects = new MissionEffects();
     private VehicleSetBuilderComprehensive vehicleSetBuilder = new VehicleSetBuilderComprehensive();
@@ -68,16 +69,36 @@ public class Mission
         missionFrontLines = new MissionFrontLineIconBuilder(campaign, this);
     }
 
-    public void generate(MissionHumanParticipants participatingPlayers, FlightTypes flightType) throws PWCGException 
+    public void generate(FlightTypes flightType) throws PWCGException 
     {
+        validate();
+
         PWCGContextManager.getInstance().getCurrentMap().getMapWeather().createWindDirection();
 
     	missionFlightBuilder.generateFlights(participatingPlayers, flightType);
-    	missionFlightBuilder.generateAssociatedFlights();
+    	missionAssociateFlightBuilder.buildAssociatedFlights(this);
         createFirePots();
 
         MissionOptions missionOptions = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions();
         missionOptions.createFlightSpecificMissionOptions(this);
+    }
+
+    private void validate() throws PWCGException
+    {
+        if (participatingPlayers.getAllParticipatingPlayers().size() == 0)
+        {
+            throw new PWCGException("No participating players for mission");
+        }
+
+        if (missionBorders == null || missionBorders.getCenter() == null)
+        {
+            throw new PWCGException("No mission borders for mission");
+        }
+
+        if (campaign == null)
+        {
+            throw new PWCGException("No campaign for mission");
+        }
     }
     
     public void generateAllGroundUnitTypesForTest() throws PWCGException

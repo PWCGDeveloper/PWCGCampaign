@@ -31,7 +31,8 @@ public class CrewFactory
 
     private void createCrewsForSquadron() throws PWCGException
     {
-        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesNoWounded(campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesNoWounded(
+                campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         for (SquadronMember pilot : squadronMembers.getSquadronMemberList())
         {
             crewsForSquadron.put(pilot.getSerialNumber(), pilot);

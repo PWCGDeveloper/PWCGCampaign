@@ -28,9 +28,9 @@ public class FlightPlaneBuilder
     {
     	int targetPlanesInMission = calcTargetPlanesInFlight();
     	
-    	if (targetPlanesInMission < flightInformation.getParticipatingPlayers().size())
+    	if (targetPlanesInMission < flightInformation.getFlightParticipatingPlayers().size())
     	{
-    		targetPlanesInMission = flightInformation.getParticipatingPlayers().size();
+    		targetPlanesInMission = flightInformation.getFlightParticipatingPlayers().size();
     	}
     	
     	int numPilotsAvailable = calcActivePilotsAvailable();
@@ -53,8 +53,7 @@ public class FlightPlaneBuilder
     	int squadronId = flightInformation.getSquadron().getSquadronId();
     	SquadronPersonnel squadronPersonnel = flightInformation.getCampaign().getPersonnelManager().getSquadronPersonnel(squadronId);
     	SquadronMembers activeAiSquadronMembers = squadronPersonnel.getActiveAiSquadronMembers();
-    	SquadronMembers activePlayers = squadronPersonnel.getActivePlayers();
-		return (activeAiSquadronMembers.getSquadronMemberList().size() + activePlayers.getSquadronMemberList().size());
+		return (activeAiSquadronMembers.getSquadronMemberList().size() + flightInformation.getFlightParticipatingPlayers().size());
 	}
     
     private int calcNumPlanesAvailable() 

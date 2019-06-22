@@ -2,10 +2,7 @@ package pwcg.testutils;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.MissionHumanParticipants;
 
 public class CampaignCache
 {
@@ -35,17 +32,4 @@ public class CampaignCache
             return bosCampaignCache.makeCampaignForceCreation(campaignProfile);
         }
     }
-    
-    public static MissionHumanParticipants buildParticipatingPlayers(SquadrontTestProfile campaignProfile) throws PWCGException
-    {
-        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        Campaign campaign = makeCampaignForceCreation(campaignProfile);
-        SquadronMembers players = campaign.getPersonnelManager().getAllPlayers();
-        for (SquadronMember player : players.getSquadronMemberList())
-        {
-            participatingPlayers.addSquadronMember(player);
-        }
-        return participatingPlayers;
-    }
-
 }
