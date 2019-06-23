@@ -491,7 +491,7 @@ public class RoFServiceManager extends ArmedServiceManager implements IArmedServ
                 for (ArmedService service: servicesForCountry)
                 {
                     // RFC and RNAS before transition
-                    if (service.getName().equals(RoFServiceManager.RFC) || service.getName().equals(RoFServiceManager.RNAS))
+                    if (service.getServiceId() == RoFServiceManager.RFC || service.getServiceId() == RoFServiceManager.RNAS)
                     {
                         if (date.before(DateUtils.getRAFDate()))
                         {
@@ -499,7 +499,7 @@ public class RoFServiceManager extends ArmedServiceManager implements IArmedServ
                         }
                     }
                     // RAF before transition
-                    else if (service.getName().equals(RoFServiceManager.RAF))
+                    else if (service.getServiceId() == RoFServiceManager.RAF)
                     {
                         if (!date.before(DateUtils.getRAFDate()))
                         {

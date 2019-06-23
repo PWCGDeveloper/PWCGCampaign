@@ -24,7 +24,6 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
@@ -362,21 +361,7 @@ public class ConfigurationPlanesOwnedPanelSet extends PwcgGuiContext implements 
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}
-	
-	public void dump()
-	{
-		Logger.log(LogLevel.DEBUG, "Print planes owned");
-		for (int i = 0; i < selectionBoxes.size(); ++i)
-		{
-			JCheckBox selectionBox = selectionBoxes.get(i).checkBox;
-			
-			if (selectionBox.isSelected())
-			{
-				Logger.log(LogLevel.DEBUG, "    " + selectionBox.getText() + ": " + selectionBox.isSelected());
-			}
-		}
-	}
-	
+
 	private class PlaneOwned
 	{
 		JCheckBox checkBox = null;

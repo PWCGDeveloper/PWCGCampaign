@@ -68,7 +68,7 @@ public class OutOfMissionVictoryEventHandler
         }
         
         ArmedService service = squadronMember.determineService(campaign.getDate());
-        if (service.equals(BoSServiceManager.LUFTWAFFE))
+        if (service.getServiceId() == BoSServiceManager.LUFTWAFFE)
         {
             victoryOdds += 30;
         }

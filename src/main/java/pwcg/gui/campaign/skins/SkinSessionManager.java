@@ -82,7 +82,7 @@ public class SkinSessionManager
         List<Skin> allLooseSkins = PWCGContextManager.getInstance().getSkinManager().getLooseSkinByPlane(selectedPlane);
         for (Skin looseSkin : allLooseSkins)
         {
-            if (!knownSkinsForPlane.contains(looseSkin.getSkinName()))
+            if (!isKnownSkin(knownSkinsForPlane, looseSkin.getSkinName()))
             {
                 looseSkins.add(looseSkin);
             }
@@ -91,11 +91,18 @@ public class SkinSessionManager
         return looseSkins;
     }
 
-    /**
-     * @param planeType
-     * @return
-     * @throws PWCGException 
-     */
+    private boolean isKnownSkin(List<Skin> knownSkinsForPlane, String skinName)
+    {
+        for (Skin knownSkin : knownSkinsForPlane)
+        {
+            if (knownSkin.getSkinName().equals(skinName))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private List<Skin> getConfiguredSkins(List<Skin> skins) throws PWCGException
     {
         List<Skin> skinNames = new ArrayList<>();

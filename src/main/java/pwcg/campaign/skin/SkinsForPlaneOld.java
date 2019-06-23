@@ -7,67 +7,21 @@ import java.util.TreeMap;
 
 public class SkinsForPlaneOld
 {
-	private String planeType;
-	private Map<String, Skin> configuredSkins = new TreeMap<String, Skin>();
-	private Map<String, Skin> doNotUse = new TreeMap<String, Skin>();
-	private Map<String, Skin> aceSkins = new TreeMap<String, Skin>();
-	private Map<String, String> looseSkins = new TreeMap<String, String>();
+	private Map<String, Skin> configuredSkins = new TreeMap<>();
+	private Map<String, Skin> doNotUse = new TreeMap<>();
+	private Map<String, Skin> aceSkins = new TreeMap<>();
+	private Map<String, String> looseSkins = new TreeMap<>();
+    private Map<String, Skin> squadronSkins = new TreeMap<>();
 	private List<String> skinsInUse = new ArrayList<String>();
-	private List<Skin> squadronSkins = new ArrayList<Skin>();
 
 	public SkinsForPlaneOld()
 	{
 	}
 
-	public String getPlaneType()
-	{
-		return planeType;
-	}
-
-	public void setPlaneType(String planeTpe)
-	{
-		this.planeType = planeTpe;
-	}
-
-	public List<String> getSkinsInUse()
-	{
-		return skinsInUse;
-	}
-
-	public void setSkinsInUse(List<String> skinsInUse)
-	{
-		this.skinsInUse = skinsInUse;
-	}
-
-	public void setLooseSkins(Map<String, String> looseSkins)
-	{
-		this.looseSkins = looseSkins;
-	}
-
-	public void setConfiguredSkins(Map<String, Skin> configuredSkins)
-	{
-		this.configuredSkins = configuredSkins;
-	}
-
-	public void setDoNotUse(Map<String, Skin> doNotUse)
-	{
-		this.doNotUse = doNotUse;
-	}
-
-	public void setAceSkins(Map<String, Skin> aceSkins)
-	{
-		this.aceSkins = aceSkins;
-	}
-
-	public void setSquadronSkins(List<Skin> squadronSkins)
-	{
-		this.squadronSkins = squadronSkins;
-	}
-
 	public void addSquadronSkin(Skin skin)
 	{
 		skin.setCategory("Squadron");
-		squadronSkins.add(skin);
+		squadronSkins.put(skin.getSkinName(), skin);
 
 		removeLooseSkin(skin.getSkinName());
 	}
@@ -105,11 +59,6 @@ public class SkinsForPlaneOld
 		}
 	}
 
-	/**
-	 * Loose skins are skins that are present in the graphics directory but have
-	 * no configuration associated with them. Loose skins should be converted to
-	 * configured skins over time
-	 */
 	public void addLooseSkin(String looseSkin)
 	{
 		String skinNameUpper = looseSkin.toUpperCase();
@@ -117,7 +66,7 @@ public class SkinsForPlaneOld
 		if (!configuredSkins.containsKey(skinNameUpper))
 		{
 			// If it's a squadron skin then it's not a loose skin
-			if (!squadronSkins.contains(skinNameUpper))
+			if (!squadronSkins.containsKey(skinNameUpper))
 			{
 				// If it's a ace skin then it's not a loose skin
 				if (!aceSkins.containsKey(skinNameUpper))
@@ -129,11 +78,6 @@ public class SkinsForPlaneOld
 
 	}
 
-	/**
-	 * @param squadName
-	 * @param planeId
-	 * @return
-	 */
 	public List<Skin> filterSkinsInUse(List<Skin> skinSet)
 	{
 		List<Skin> filteredSkinSet = new ArrayList<Skin>();
@@ -156,18 +100,11 @@ public class SkinsForPlaneOld
 		skinsInUse.add(skin.getSkinName());
 	}
 
-	/**
-	 * @param skin
-	 * @return
-	 */
 	public boolean isSkinInUse(Skin skin)
 	{
 		return (skinsInUse.contains(skin.getSkinName()));
 	}
 
-	/**
-	 * 
-	 */
 	public void clearSkinsInUse()
 	{
 		skinsInUse.clear();
@@ -176,7 +113,7 @@ public class SkinsForPlaneOld
 	public List<Skin> getAllUsedByPWCG()
 	{
 		List<Skin> allConfiguredSkins = new ArrayList<Skin>();
-		allConfiguredSkins.addAll(squadronSkins);
+		allConfiguredSkins.addAll(squadronSkins.values());
 		allConfiguredSkins.addAll(aceSkins.values());
 		allConfiguredSkins.addAll(configuredSkins.values());
 
@@ -199,11 +136,6 @@ public class SkinsForPlaneOld
 		return isConfiguerd;
 	}
 
-	/**
-	 * Get a description of the category into which the skin falls
-	 * 
-	 * @param skinName
-	 */
 	public String getSkinCategory(String skinName)
 	{
 		for (Skin skin : getAllUsedByPWCG())
@@ -222,45 +154,5 @@ public class SkinsForPlaneOld
 		}
 
 		return "Loose";
-	}
-
-	public List<Skin> getDoNotUse()
-	{
-		return new ArrayList<Skin>(doNotUse.values());
-	}
-
-	public List<String> getLooseSkins()
-	{
-		return new ArrayList<String>(looseSkins.values());
-	}
-
-	public List<Skin> getConfiguredSkins()
-	{
-		return new ArrayList<Skin>(configuredSkins.values());
-	}
-
-	public List<Skin> getSquadronSkins()
-	{
-		return new ArrayList<Skin>(squadronSkins);
-	}
-
-	public List<Skin> getAceSkins()
-	{
-		return new ArrayList<Skin>(aceSkins.values());
-	}
-
-	public boolean isConfiguredSkin(String skinName)
-	{
-		return configuredSkins.containsKey(skinName);
-	}
-
-	public boolean isDoNotUse(String skinName)
-	{
-		return doNotUse.containsKey(skinName);
-	}
-
-	public boolean isAceUse(String skinName)
-	{
-		return aceSkins.containsKey(skinName);
 	}
 }

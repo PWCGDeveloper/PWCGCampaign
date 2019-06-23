@@ -292,9 +292,6 @@ public class Squadron
             displayName = squadHistoryEntry.getSquadName();
 		}
 		
-		FrenchSquadronAbbreviationHelper frenchSquadronAbbreviationHelper = new FrenchSquadronAbbreviationHelper();
-		displayName = frenchSquadronAbbreviationHelper.determineFrenchDisplayName(this, date, displayName);
-		
 		return displayName;
 	}
 	
