@@ -19,13 +19,14 @@ public class FlightInformation
 {
     private Campaign campaign;
     private Mission mission;
-    private Squadron squadron;
     private FlightTypes flightType;
+    private Squadron squadron;
+    private List<PlaneMCU> planes;
+    private Coordinate targetSearchStartLocation;
+    private TargetDefinition targetDefinition = new TargetDefinition();
     private boolean isPlayerFlight = false;
     private boolean isEscortedByPlayerFlight = false;
     private boolean isEscortForPlayerFlight = false;
-    private TargetDefinition targetDefinition = new TargetDefinition();
-    private List<PlaneMCU> planes;
     
     public FlightInformation(Mission mission)
     {
@@ -181,5 +182,15 @@ public class FlightInformation
     public Campaign getCampaign()
     {
         return campaign;
+    }
+
+    public Coordinate getTargetSearchStartLocation()
+    {
+        return targetSearchStartLocation;
+    }
+
+    public void setTargetSearchStartLocation(Coordinate targetSearchStartLocation)
+    {
+        this.targetSearchStartLocation = targetSearchStartLocation;
     }
 }

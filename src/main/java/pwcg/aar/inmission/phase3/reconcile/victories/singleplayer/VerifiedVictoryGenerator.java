@@ -17,10 +17,6 @@ public class VerifiedVictoryGenerator
         this.campaign = campaign;
         this.aarContext = aarContext;
     }
-
-    // TODO COOP CLAIM rethink player declarations.  Definitely keep for SP.  
-    // Probably keep for MP too but for MP assign without claim.
-    // Need factory to create variants.
     public ConfirmedVictories createVerifiedictories(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         AARMissionEvaluationData evaluationData = aarContext.getMissionEvaluationData();

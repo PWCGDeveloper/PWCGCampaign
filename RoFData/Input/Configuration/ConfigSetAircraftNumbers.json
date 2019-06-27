@@ -61,6 +61,6 @@
       "value": "15",
       "label": "Patrol Distance Random",
       "help": "Random element for additional patrol distance (km)"
-    },
+    }
   }
 }

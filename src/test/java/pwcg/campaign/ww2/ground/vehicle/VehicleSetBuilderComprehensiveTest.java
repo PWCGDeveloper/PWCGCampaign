@@ -51,7 +51,7 @@ public class VehicleSetBuilderComprehensiveTest
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
     	CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         mission = new Mission(campaign, participatingPlayers, missionBorders);
-        mission.generate( FlightTypes.PATROL);
+        mission.generate(FlightTypes.ANY);
         mission.generateAllGroundUnitTypesForTest();
         mission.finalizeMission();
     }

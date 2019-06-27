@@ -17,29 +17,29 @@ public class StrategicBombingFlight extends BombingFlight
     {
         String objective = "Bomb the specified objective.  ";
 
-        if (targetDefinition.getTargetType() == TacticalTarget.TARGET_FACTORY)
+        if (flightInformation.getTargetDefinition().getTargetType() == TacticalTarget.TARGET_FACTORY)
         {
-            objective = "Bomb the factories near " + targetDefinition.getTargetName();
+            objective = "Bomb the factories near " + flightInformation.getTargetDefinition().getTargetName();
         }
-        else if (targetDefinition.getTargetType() == TacticalTarget.TARGET_CITY)
+        else if (flightInformation.getTargetDefinition().getTargetType() == TacticalTarget.TARGET_CITY)
         {
-            objective = "Bomb available targets at " + targetDefinition.getTargetName();
+            objective = "Bomb available targets at " + flightInformation.getTargetDefinition().getTargetName();
         }
-        else if (targetDefinition.getTargetType() == TacticalTarget.TARGET_RAIL)
+        else if (flightInformation.getTargetDefinition().getTargetType() == TacticalTarget.TARGET_RAIL)
         {
-            objective = "Bomb the rail station at " + targetDefinition.getTargetName();
+            objective = "Bomb the rail station at " + flightInformation.getTargetDefinition().getTargetName();
         }
-        else if (targetDefinition.getTargetType() == TacticalTarget.TARGET_AIRFIELD)
+        else if (flightInformation.getTargetDefinition().getTargetType() == TacticalTarget.TARGET_AIRFIELD)
         {
-            objective = "Bomb the airfield at " + targetDefinition.getTargetName();
+            objective = "Bomb the airfield at " + flightInformation.getTargetDefinition().getTargetName();
         }
-        else if (targetDefinition.getTargetType() == TacticalTarget.TARGET_PORT)
+        else if (flightInformation.getTargetDefinition().getTargetType() == TacticalTarget.TARGET_PORT)
         {
-            objective = "Bomb the port facilities at " + targetDefinition.getTargetName();
+            objective = "Bomb the port facilities at " + flightInformation.getTargetDefinition().getTargetName();
         }
-        else if (targetDefinition.getTargetType() == TacticalTarget.TARGET_SHIPPING)
+        else if (flightInformation.getTargetDefinition().getTargetType() == TacticalTarget.TARGET_SHIPPING)
         {
-            objective = "Bomb shipping that has been detected.  Expected shipping types include: " + targetDefinition.getTargetName() + ".";
+            objective = "Bomb shipping that has been detected.  Expected shipping types include: " + flightInformation.getTargetDefinition().getTargetName() + ".";
         }
 
         return objective;

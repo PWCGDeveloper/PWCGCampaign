@@ -1,6 +1,5 @@
 package pwcg.mission.flight.crew;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -17,40 +16,39 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
+import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
-import pwcg.testutils.TestParticipatingHumanBuilder;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FlightCrewBuilderCoopTest 
 {
     Campaign coopCampaign;
-    private Mission mission;
 
     @Before
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
         coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_PROFILE);
-
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        mission = new Mission(coopCampaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(coopCampaign), missionBorders);
-        mission.generate(FlightTypes.GROUND_ATTACK);
     }
 
     @Test
     public void testOneOfTwoPlayerFlightGeneration() throws PWCGException
     {
-    	List<SquadronMember> participatingPlayers = new ArrayList<>();
+        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
     	for (SquadronMember player : coopCampaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
     	{
     		if (player.getName().contentEquals("Squadron Mate"))
     		{
-    			participatingPlayers.add(player);
+    			participatingPlayers.addSquadronMember(player);
     		}
     	}
+    	
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(coopCampaign, participatingPlayers, missionBorders);
+        mission.generate(FlightTypes.GROUND_ATTACK);
     	
         FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.COOP_PROFILE.getSquadronId());
@@ -81,15 +79,19 @@ public class FlightCrewBuilderCoopTest
     @Test
     public void testTwoPlayerFlightGeneration() throws PWCGException
     {
-    	List<SquadronMember> participatingPlayers = new ArrayList<>();
+        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
     	for (SquadronMember player : coopCampaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
     	{
     		if (player.getSquadronId() == SquadrontTestProfile.COOP_PROFILE.getSquadronId())
     		{
-    			participatingPlayers.add(player);
+    			participatingPlayers.addSquadronMember(player);
     		}
     	}
     	
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(coopCampaign, participatingPlayers, missionBorders);
+        mission.generate(FlightTypes.GROUND_ATTACK);
+
         FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.COOP_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
@@ -103,11 +105,11 @@ public class FlightCrewBuilderCoopTest
         for (SquadronMember crew : assignedCrewMap)
         {
             assert(squadronPersonnel.isActiveSquadronMember(crew.getSerialNumber()));
-            if (crew.getSerialNumber() == participatingPlayers.get(0).getSerialNumber())
+            if (crew.getSerialNumber() == participatingPlayers.getAllParticipatingPlayers().get(0).getSerialNumber())
             {
                 player1Found = true;
             }
-            if (crew.getSerialNumber() == participatingPlayers.get(1).getSerialNumber())
+            if (crew.getSerialNumber() == participatingPlayers.getAllParticipatingPlayers().get(1).getSerialNumber())
             {
                 player2Found = true;
             }
@@ -120,15 +122,19 @@ public class FlightCrewBuilderCoopTest
     @Test
     public void testTwoPlayerEnemySquadronFlightGeneration() throws PWCGException
     {
-    	List<SquadronMember> participatingPlayers = new ArrayList<>();
+        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
     	for (SquadronMember player : coopCampaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
     	{
     		if (player.getSquadronId() == 10131132)
     		{
-    			participatingPlayers.add(player);
+    			participatingPlayers.addSquadronMember(player);
     		}
     	}
-    	
+        
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
+        Mission mission = new Mission(coopCampaign, participatingPlayers, missionBorders);
+        mission.generate(FlightTypes.GROUND_ATTACK);
+
         FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(10131132);
         flightInformation.setSquadron(squadron);
@@ -142,11 +148,11 @@ public class FlightCrewBuilderCoopTest
         for (SquadronMember crew : assignedCrewMap)
         {
             assert(squadronPersonnel.isActiveSquadronMember(crew.getSerialNumber()));
-            if (crew.getSerialNumber() == participatingPlayers.get(0).getSerialNumber())
+            if (crew.getSerialNumber() == participatingPlayers.getAllParticipatingPlayers().get(0).getSerialNumber())
             {
                 player1Found = true;
             }
-            if (crew.getSerialNumber() == participatingPlayers.get(1).getSerialNumber())
+            if (crew.getSerialNumber() == participatingPlayers.getAllParticipatingPlayers().get(1).getSerialNumber())
             {
                 player2Found = true;
             }

@@ -25,7 +25,7 @@ public class CombatReportIOJson
             combatReportDir.mkdirs();
         }
         JsonWriter<CombatReport> jsonWriter = new JsonWriter<>();
-        jsonWriter.writeAsJson(combatReport, combatReportPath, DateUtils.getDateStringYYYYMMDD(combatReport.getDate()) + "COMBAT_REPORT_SUFFIX");
+        jsonWriter.writeAsJson(combatReport, combatReportPath, DateUtils.getDateStringYYYYMMDD(combatReport.getDate()) + COMBAT_REPORT_SUFFIX);
 	}
 
 	public static Map<String, CombatReport> readJson(Campaign campaign, Integer pilotSerialNumber) throws PWCGException

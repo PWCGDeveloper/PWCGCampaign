@@ -1,11 +1,14 @@
 package pwcg.mission.flight;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberReplacer;
 import pwcg.core.exception.PWCGException;
@@ -14,12 +17,7 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorDO;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionHumanParticipants;
-import pwcg.mission.flight.intercept.InterceptFlight;
-import pwcg.mission.flight.offensive.OffensiveFlight;
-import pwcg.mission.flight.patrol.PatrolFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
-import pwcg.mission.flight.validate.GroundUnitValidator;
-import pwcg.mission.flight.validate.PatrolFlightValidator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
 
@@ -46,6 +44,13 @@ public class CoopPlayerInclusionTest
     	germanFighterPilot.setCoopUser("GermanFighterUser");
     	createHumanPilot(germanFighterPilot);
     	
+        CampaignGeneratorDO germanFighterPilotII = new CampaignGeneratorDO();
+        germanFighterPilotII.setPlayerPilotName("German Secondfighter");
+        germanFighterPilotII.setRank("Leutnant");
+        germanFighterPilotII.setSquadName("I./JG52");
+        germanFighterPilotII.setCoopUser("GermanSecondFighterUser");
+        createHumanPilot(germanFighterPilotII);
+
     	CampaignGeneratorDO germanBomberPilot = new CampaignGeneratorDO();
     	germanBomberPilot.setPlayerPilotName("German Bomber");
     	germanBomberPilot.setRank("Leutnant");
@@ -108,137 +113,109 @@ public class CoopPlayerInclusionTest
     }
 
     @Test
-    public void patrolFlightTest() throws PWCGException
+    public void coopMultiPlayerTest() throws PWCGException
     {
-    	MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("German Fighter"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("German Bomber"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Fighter"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Il"));
-    	
-        patrolFlightTestImpl(participatingPlayers);
-    }
-    
-    private void patrolFlightTestImpl(MissionHumanParticipants participatingPlayers) throws PWCGException
-    {
-        generateMission(participatingPlayers, FlightTypes.PATROL);
+        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
+        participatingPlayers.addSquadronMember(getSquadronMemberByName("German Fighter"));
+        participatingPlayers.addSquadronMember(getSquadronMemberByName("German Bomber"));
+        participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Fighter"));
+        participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Il"));
 
-        PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-        PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
-        patrolFlightValidator.validatePatrolFlight(flight);
-        assert (flight.getFlightType() == FlightTypes.PATROL);
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
+        generateMission(participatingPlayers, FlightTypes.ANY);
+        assert(mission.getMissionFlightBuilder().getPlayerFlights().size() == 4);
         verifyEnemyFlights();
-    }
-
-    @Test
-    public void lowAltPatrolFlightTest() throws PWCGException
-    {
-    	MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("German Fighter"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("German Bomber"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Fighter"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Il"));
-    	
-        patrolFlightTestImpl(participatingPlayers);
-        lowAltPatrolFlightTestImpl(participatingPlayers);
-    }
-
-    private void lowAltPatrolFlightTestImpl(MissionHumanParticipants participatingPlayers) throws PWCGException
-    {
-        generateMission(participatingPlayers, FlightTypes.LOW_ALT_PATROL);
-
-        PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-        PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
-        patrolFlightValidator.validatePatrolFlight(flight);
-        assert (flight.getFlightType() == FlightTypes.LOW_ALT_PATROL);        
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
-        verifyEnemyFlights();
-    }
-
-    @Test
-    public void lowAltCapFlightTest() throws PWCGException
-    {
-    	MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("German Fighter"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("German Bomber"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Fighter"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Il"));
-    	
-    	lowAltCapFlightTestImpl(participatingPlayers);
-    }
-
-    private void lowAltCapFlightTestImpl(MissionHumanParticipants participatingPlayers) throws PWCGException
-    {
-        generateMission(participatingPlayers, FlightTypes.LOW_ALT_CAP);
-
-        InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-        PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
-        patrolFlightValidator.validatePatrolFlight(flight);
-        assert (flight.getFlightType() == FlightTypes.LOW_ALT_CAP);
-        for (PlaneMCU plane : flight.getPlanes())
+        boolean germanFighterFound = false;
+        boolean germanBomberFound = false;
+        boolean russianFighterFound = false;
+        boolean russianBomberFound = false;
+        for (Flight flight : mission.getMissionFlightBuilder().getPlayerFlights())
         {
-            assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
+            assert (flight.isPlayerFlight() == true);
+            assert (flight.isAirStart() == false);
+            
+            List<PlaneMCU> playerPlanesForFlight = flight.getPlayerPlanes();
+            assert (playerPlanesForFlight.size() == 1);
+            
+            PlaneMCU playerPlane = playerPlanesForFlight.get(0);
+            if (playerPlane.getName().contains("German Fighter"))
+            {
+                germanFighterFound = true;
+                assert(playerPlane.isPrimaryRole(Role.ROLE_FIGHTER));
+            }
+            else if (playerPlane.getName().contains("German Bomber"))
+            {
+                germanBomberFound = true;
+                assert(playerPlane.isPrimaryRole(Role.ROLE_BOMB));
+                assert(flight.isBombingFlight() == true);
+            }
+            else if (playerPlane.getName().contains("Russian Fighter"))
+            {
+                russianFighterFound = true;
+                assert(playerPlane.isPrimaryRole(Role.ROLE_FIGHTER));
+            }
+            else if (playerPlane.getName().contains("Russian Il"))
+            {
+                russianBomberFound = true;
+                assert(playerPlane.isPrimaryRole(Role.ROLE_ATTACK));
+            }
+            
         }
-        
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
-        verifyEnemyFlights();
-    }
-
-    @Test
-    public void interceptFlightTest() throws PWCGException
-    {
-    	MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("German Fighter"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("German Bomber"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Fighter"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Il"));
-    	
-    	interceptFlightTestImpl(participatingPlayers);
-    }
-
-    private void interceptFlightTestImpl(MissionHumanParticipants participatingPlayers) throws PWCGException
-    {
-        generateMission(participatingPlayers, FlightTypes.INTERCEPT);
-
-        InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-        PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
-        patrolFlightValidator.validatePatrolFlight(flight);
-        assert (flight.getFlightType() == FlightTypes.INTERCEPT);        
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
-        verifyEnemyFlights();
-    }
-
-    @Test
-    public void offensiveFlightTest() throws PWCGException
-    {
-    	MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("German Fighter"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("German Bomber"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Fighter"));
-    	participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Il"));
-    	
-    	offensiveFlightTestImpl(participatingPlayers);
-    }
-
-    private void offensiveFlightTestImpl(MissionHumanParticipants participatingPlayers) throws PWCGException
-    {
-        generateMission(participatingPlayers, FlightTypes.OFFENSIVE);
-        
-        OffensiveFlight flight = (OffensiveFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-        PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
-        patrolFlightValidator.validatePatrolFlight(flight);
-        assert (flight.getFlightType() == FlightTypes.OFFENSIVE);
-        
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
-        verifyEnemyFlights();
+        assert(germanFighterFound);
+        assert(germanBomberFound);
+        assert(russianFighterFound);
+        assert(russianBomberFound);
     }
     
+
+    @Test
+    public void coopMultiPlayerWithSameSquadronTest() throws PWCGException
+    {
+        MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
+        participatingPlayers.addSquadronMember(getSquadronMemberByName("German Fighter"));
+        participatingPlayers.addSquadronMember(getSquadronMemberByName("German Secondfighter"));
+        participatingPlayers.addSquadronMember(getSquadronMemberByName("Russian Fighter"));
+
+        generateMission(participatingPlayers, FlightTypes.ANY);
+        assert(mission.getMissionFlightBuilder().getPlayerFlights().size() == 2);
+        verifyEnemyFlights();
+        boolean germanFighterFound = false;
+        boolean germanFighter2Found = false;
+        boolean russianFighterFound = false;
+        for (Flight flight : mission.getMissionFlightBuilder().getPlayerFlights())
+        {
+            assert (flight.isPlayerFlight() == true);
+            assert (flight.isAirStart() == false);
+            
+            List<PlaneMCU> playerPlanesForFlight = flight.getPlayerPlanes();
+            
+            for (PlaneMCU playerPlane : playerPlanesForFlight)
+            {
+                if (playerPlane.getName().contains("German Fighter"))
+                {
+                    germanFighterFound = true;
+                    assert (playerPlanesForFlight.size() == 2);
+                    assert(playerPlane.isPrimaryRole(Role.ROLE_FIGHTER));
+                }
+                else if (playerPlane.getName().contains("German Secondfighter"))
+                {
+                    germanFighter2Found = true;
+                    assert (playerPlanesForFlight.size() == 2);
+                    assert(playerPlane.isPrimaryRole(Role.ROLE_FIGHTER));
+                }
+                else if (playerPlane.getName().contains("Russian Fighter"))
+                {
+                    russianFighterFound = true;
+                    assert (playerPlanesForFlight.size() == 1);
+                    assert(playerPlane.isPrimaryRole(Role.ROLE_FIGHTER));
+                }
+            }
+        }
+        assert(germanFighterFound);
+        assert(germanFighter2Found);
+        assert(russianFighterFound);
+    }
+    
+
     private void generateMission(MissionHumanParticipants participatingPlayers, FlightTypes flightType) throws PWCGException
     {
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);

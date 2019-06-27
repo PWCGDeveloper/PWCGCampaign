@@ -21,7 +21,7 @@ import pwcg.mission.flight.bomb.LowAltBombingPackage;
 import pwcg.mission.flight.bomb.StrategicBombingPackage;
 import pwcg.mission.flight.contactpatrol.ContactPatrolPackage;
 import pwcg.mission.flight.divebomb.DiveBombingPackage;
-import pwcg.mission.flight.escort.EscortPackage;
+import pwcg.mission.flight.escort.PlayerEscortPackage;
 import pwcg.mission.flight.ferry.FerryPackage;
 import pwcg.mission.flight.intercept.HomeDefensePackage;
 import pwcg.mission.flight.intercept.InterceptPackage;
@@ -90,7 +90,7 @@ public abstract class FlightFactory
         {
             if (isPlayerFlight)
             {
-                flightPackage = new EscortPackage(flightInformation);
+                flightPackage = new PlayerEscortPackage(flightInformation);
             }
         }
         else if (flightType == FlightTypes.GROUND_ATTACK)

@@ -69,7 +69,7 @@ public class GroundUnitValidator
             else if (linkedUnit instanceof GroundUnitSpawning)
             {
                 GroundUnitSpawning target = (GroundUnitSpawning)linkedUnit;
-                assert(target.getSpawners().size() > 1);
+                assert(target.getSpawners().size() > 0);
                 
             }
             else if (linkedUnit instanceof GroundUnit)

@@ -3,7 +3,6 @@ package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.UnknownVictoryAssignments;
 
-// TODO COOP: Rethink unknown and random assignment
 public class LogUnknown extends LogAIEntity
 {
     private UnknownVictoryAssignments unknownVictoryAssignment = UnknownVictoryAssignments.UNKNOWN_ASSIGNMENT;

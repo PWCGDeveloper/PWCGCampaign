@@ -21,6 +21,7 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
@@ -30,7 +31,7 @@ import pwcg.testutils.TestParticipatingHumanBuilder;
 public class PlaneFactoryTest
 {
     Campaign campaign;
-    FlightInformation flightInformation;
+    Mission mission;
     @Mock Flight flight;
 
     @Before
@@ -40,9 +41,8 @@ public class PlaneFactoryTest
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.KG53_PROFILE);
         
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
-        mission.generate(FlightTypes.GROUND_ATTACK);
-        flightInformation = new FlightInformation(mission);
+        mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
+        mission.generate(FlightTypes.BOMB);
     }
 
     @Test
@@ -50,6 +50,9 @@ public class PlaneFactoryTest
     {
         Mockito.when(flight.isVirtual()).thenReturn(false);
         
+        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.KG53_PROFILE.getSquadronId());
+        FlightInformation flightInformation = FlightInformationFactory.buildPlayerFlightInformation(squadron, mission, FlightTypes.BOMB);
+
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
         List<PlaneMCU> assignedPlanes = planeFactory.createPlanesForFlight(4);
         
@@ -78,8 +81,10 @@ public class PlaneFactoryTest
     public void testAiPlaneGeneration() throws PWCGException
     {
         Mockito.when(flight.isVirtual()).thenReturn(true);
-
+        
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(20111052);
+        FlightInformation flightInformation = FlightInformationFactory.buildAiFlightInformation(squadron, mission, FlightTypes.BOMB);
+
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
         List<PlaneMCU> assignedPlanes = planeFactory.createPlanesForFlight(4);
         

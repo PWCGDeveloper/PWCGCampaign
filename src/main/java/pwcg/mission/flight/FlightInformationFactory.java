@@ -19,10 +19,12 @@ public class FlightInformationFactory
         FlightInformation playerFlightInformation = new FlightInformation(mission);
         playerFlightInformation.setFlightType(flightType);
         playerFlightInformation.setMission(mission);
+        playerFlightInformation.setCampaign(mission.getCampaign());
         playerFlightInformation.setSquadron(squadron);
         playerFlightInformation.setPlayerFlight(true);
         playerFlightInformation.setEscortForPlayerFlight(false);
         playerFlightInformation.setEscortedByPlayerFlight(false);
+        playerFlightInformation.setTargetSearchStartLocation(mission.getMissionBorders().getCenter());
         buildTargetDefinition (playerFlightInformation);
         buildPlanes (playerFlightInformation);
         
@@ -34,10 +36,12 @@ public class FlightInformationFactory
         FlightInformation aiFlightInformation = new FlightInformation(mission);
         aiFlightInformation.setFlightType(flightType);
         aiFlightInformation.setMission(mission);
+        aiFlightInformation.setCampaign(mission.getCampaign());
         aiFlightInformation.setSquadron(squadron);
         aiFlightInformation.setPlayerFlight(false);
         aiFlightInformation.setEscortForPlayerFlight(false);
         aiFlightInformation.setEscortedByPlayerFlight(false);
+        aiFlightInformation.setTargetSearchStartLocation(mission.getMissionBorders().getCenter());
         buildTargetDefinition (aiFlightInformation);
         buildPlanes (aiFlightInformation);
 
@@ -48,14 +52,33 @@ public class FlightInformationFactory
     {
         FlightInformation escortFlightInformation = new FlightInformation(playerFlightInformation.getMission());
         escortFlightInformation.setFlightType(FlightTypes.ESCORT);
-        escortFlightInformation.setMission(escortFlightInformation.getMission());
+        escortFlightInformation.setMission(playerFlightInformation.getMission());
+        escortFlightInformation.setCampaign(playerFlightInformation.getCampaign());
         escortFlightInformation.setSquadron(friendlyFighterSquadron);
         escortFlightInformation.setPlayerFlight(false);
         escortFlightInformation.setEscortForPlayerFlight(true);
         escortFlightInformation.setEscortedByPlayerFlight(false);
+        escortFlightInformation.setTargetSearchStartLocation(playerFlightInformation.getTargetCoords());
         buildPlanes (escortFlightInformation);
 
         return escortFlightInformation;
+    }
+    
+    public static FlightInformation buildEscortedByPlayerFlightInformation(FlightInformation escortFlightInformation, Squadron friendlyBomberSquadron) throws PWCGException
+    {
+        FlightInformation escortedFlightInformation = new FlightInformation(escortFlightInformation.getMission());
+        escortedFlightInformation.setFlightType(FlightTypes.BOMB);
+        escortedFlightInformation.setMission(escortFlightInformation.getMission());
+        escortedFlightInformation.setCampaign(escortFlightInformation.getCampaign());
+        escortedFlightInformation.setSquadron(friendlyBomberSquadron);
+        escortedFlightInformation.setPlayerFlight(false);
+        escortedFlightInformation.setEscortForPlayerFlight(false);
+        escortedFlightInformation.setEscortedByPlayerFlight(true);
+        escortedFlightInformation.setTargetSearchStartLocation(escortFlightInformation.getTargetCoords());
+        buildPlanes (escortedFlightInformation);
+        buildTargetDefinition (escortedFlightInformation);
+
+        return escortedFlightInformation;
     }
 
     public static FlightInformation buildInterceptOpposingInformation(Squadron squadron, Mission mission, FlightTypes flightType, TargetDefinition targetDefinition) throws PWCGException
@@ -63,6 +86,7 @@ public class FlightInformationFactory
         FlightInformation interceptedFlightInformation = new FlightInformation(mission);
         interceptedFlightInformation.setFlightType(FlightTypes.ESCORT);
         interceptedFlightInformation.setMission(mission);
+        interceptedFlightInformation.setCampaign(mission.getCampaign());
         interceptedFlightInformation.setSquadron(squadron);
         interceptedFlightInformation.setPlayerFlight(false);
         interceptedFlightInformation.setEscortForPlayerFlight(false);

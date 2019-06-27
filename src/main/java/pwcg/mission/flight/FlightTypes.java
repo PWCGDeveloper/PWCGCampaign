@@ -12,6 +12,8 @@ public enum FlightTypes
     HOME_DEFENSE(FlightTypeCategory.FIGHTER),
     LONE_WOLF(FlightTypeCategory.FIGHTER),
     SEA_PATROL(FlightTypeCategory.FIGHTER),
+    ESCORT(FlightTypeCategory.FIGHTER),
+    SCRAMBLE_OPPOSE(FlightTypeCategory.FIGHTER), 
 
     LOW_ALT_CAP(FlightTypeCategory.FIGHTER, FlightTypeCategory.ATTACK),
     LOW_ALT_PATROL(FlightTypeCategory.FIGHTER, FlightTypeCategory.ATTACK),
@@ -29,9 +31,6 @@ public enum FlightTypes
     PARATROOP_DROP(FlightTypeCategory.ATTACK),
 
     STRATEGIC_BOMB(FlightTypeCategory.STRATEGIC),
-    
-    ESCORT(FlightTypeCategory.DEPENDENT),
-    SCRAMBLE_OPPOSE(FlightTypeCategory.DEPENDENT), 
 
     TRANSPORT(FlightTypeCategory.OTHER),
     RECON(FlightTypeCategory.OTHER),

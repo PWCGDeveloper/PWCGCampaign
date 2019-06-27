@@ -28,8 +28,8 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         TacticalTarget targetType = determinePredefinedTacticalTarget(flightInformation.getFlightType());
         if (targetType == TacticalTarget.TARGET_ANY)
         {
-            Coordinate missionCenter = flightInformation.getMission().getMissionBorders().getCenter();
-            TargetTypeAvailabilityInputs targetTypeAvailabilityInputs = createTargetingInputs(missionCenter);
+            Coordinate targetSearchStartLocation = flightInformation.getTargetSearchStartLocation();
+            TargetTypeAvailabilityInputs targetTypeAvailabilityInputs = createTargetingInputs(targetSearchStartLocation);
             targetType = createTargetType(targetTypeAvailabilityInputs);
         }
         buildTargetDefinitionForTacticalFlight(targetType);          
@@ -104,13 +104,12 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         }
     }
 
-
-    private TargetTypeAvailabilityInputs createTargetingInputs(Coordinate targetGeneralLocation) throws PWCGException
+    private TargetTypeAvailabilityInputs createTargetingInputs(Coordinate targetSearchStartLocation) throws PWCGException
     {
         TargetTypeAvailabilityInputGenerator targetTypeAvailabilityInputGenerator = new TargetTypeAvailabilityInputGenerator();
         ICountry enemyCountry = flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate());
         TargetTypeAvailabilityInputs targetTypeAvailabilityInputs = targetTypeAvailabilityInputGenerator.createTargetAvailabilityInputs(
-                flightInformation.getCampaign(), flightInformation.getFlightType(), enemyCountry.getSide(), targetGeneralLocation);
+                flightInformation.getCampaign(), flightInformation.getFlightType(), enemyCountry.getSide(), targetSearchStartLocation);
         return targetTypeAvailabilityInputs;
     }
 

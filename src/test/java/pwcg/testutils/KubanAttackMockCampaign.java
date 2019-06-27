@@ -16,6 +16,7 @@ import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -28,6 +29,9 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.MissionFlightBuilder;
 import pwcg.mission.MissionGroundUnitResourceManager;
+import pwcg.mission.MissionHumanParticipants;
+import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.mcu.Coalition;
 
 public class KubanAttackMockCampaign
@@ -40,6 +44,9 @@ public class KubanAttackMockCampaign
     @Mock protected SquadronPersonnel squadronPersonnel;
     @Mock protected CampaignEquipmentManager equipmentManager;
     @Mock protected Equipment squadronEquipment;
+    @Mock protected SquadronMember player;
+    @Mock protected FlightInformation flightInformation;
+    @Mock protected MissionHumanParticipants humanParticipants;
 
     protected ICountry country = CountryFactory.makeCountryByCountry(Country.GERMANY);
     protected MissionBeginUnitCheckZone missionBeginUnit;
@@ -48,7 +55,6 @@ public class KubanAttackMockCampaign
     
     protected Date date;
     protected MissionGroundUnitResourceManager missionGroundUnitResourceManager = new MissionGroundUnitResourceManager();
-    protected CoordinateBox missionBorders;
     protected Squadron squadron;
 
     public void mockCampaignSetup() throws PWCGException
@@ -75,15 +81,25 @@ public class KubanAttackMockCampaign
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
         Mockito.when(mission.getMissionGroundUnitManager()).thenReturn(missionGroundUnitResourceManager);
         
-        
-        missionBorders = CoordinateBox.coordinateBoxFromCenter(myTestPosition, 100000);
+        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(myTestPosition, 100000);
         Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
         Mockito.when(missionFlightBuilder.isInFlightPath(Matchers.any())).thenReturn(true);
         Mockito.when(mission.getMissionBorders()).thenReturn(missionBorders);
-
+        Mockito.when(mission.getCampaign()).thenReturn(campaign);
 
         missionBeginUnit = new MissionBeginUnitCheckZone(myTestPosition, 10000);
         missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(Coalition.COALITION_ALLIED);        
+        
+        buildMockFlightInformation();
     }
+    
+    public void buildMockFlightInformation()
+    {
+        Mockito.when(flightInformation.getCampaign()).thenReturn(campaign);
+        Mockito.when(flightInformation.getMission()).thenReturn(mission);
+        Mockito.when(flightInformation.getSquadron()).thenReturn(squadron);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.DIVE_BOMB);
+    }
+
 
 }

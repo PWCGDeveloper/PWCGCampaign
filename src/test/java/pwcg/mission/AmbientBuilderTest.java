@@ -42,7 +42,7 @@ public class AmbientBuilderTest
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
-        mission.generate(FlightTypes.DIVE_BOMB);
+        mission.generate(FlightTypes.ANY);
         
         AmbientBattleBuilder ambientBattleBuilder = new AmbientBattleBuilder(campaign, mission);
         List<AssaultInformation> battles = ambientBattleBuilder.generateAmbientBattles();
@@ -63,7 +63,7 @@ public class AmbientBuilderTest
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
-        mission.generate(FlightTypes.DIVE_BOMB);
+        mission.generate(FlightTypes.ANY);
         
         AmbientTruckConvoyBuilder ambientTruckConvoyBuilder = new AmbientTruckConvoyBuilder(campaign, mission);
         List<GroundTruckConvoyUnit> ambientTrucks = ambientTruckConvoyBuilder.generateAmbientTrucks();
@@ -83,7 +83,7 @@ public class AmbientBuilderTest
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
-        mission.generate(FlightTypes.DIVE_BOMB);
+        mission.generate(FlightTypes.ANY);
         
         AmbientTrainBuilder ambientTrainBuilder = new AmbientTrainBuilder(campaign, mission);
         List<GroundTrainUnit> ambientTrains = ambientTrainBuilder.generateAmbientTrains();
@@ -103,7 +103,7 @@ public class AmbientBuilderTest
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
-        mission.generate(FlightTypes.DIVE_BOMB);
+        mission.generate(FlightTypes.ANY);
         
         AAAManager aaaManager = new AAAManager(campaign, mission);
         List<GroundUnitSpawning> AAA = aaaManager.getAAAForMission();

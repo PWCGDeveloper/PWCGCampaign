@@ -52,8 +52,6 @@ public abstract class Flight extends Unit
     protected int flightId = -1;
     protected FlightInformation flightInformation;
 
-    protected TargetDefinition targetDefinition = new TargetDefinition();
-
     protected List<PlaneMCU> planes = new ArrayList<PlaneMCU>();
     protected int numPlanesInFlight = 4;
 
@@ -262,7 +260,6 @@ public abstract class Flight extends Unit
         {
             if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_INGRESS) ||
                 waypoint.getWpAction().equals(WaypointAction.WP_ACTION_RENDEZVOUS) ||
-                
                 waypoint.isTargetWaypoint())
             {
                 keepIt = true;
@@ -305,6 +302,8 @@ public abstract class Flight extends Unit
                 waypoint.setPosition(newIngressPosition);
             }
         }
+        
+        rendezvousCoords.setYPos(this.planes.get(0).getPosition().getYPos());
 
         FlightPositionHelperAirStart flightPositionHelperAirStart = new FlightPositionHelperAirStart(flightInformation.getCampaign(), this);
         flightPositionHelperAirStart.createPlanePositionAirStart(rendezvousCoords, new Orientation());
@@ -1035,10 +1034,7 @@ public abstract class Flight extends Unit
         {
             addLinkedUnit(groundUnit);              
         }
-        
-        setTargetDefinition(groundUnits.getTargetDefinition());
     }
-
     
     public List<Bridge> getBridgeTargets()
     {
@@ -1157,17 +1153,12 @@ public abstract class Flight extends Unit
 
     public TargetCategory getTargetCategory()
     {
-        return targetDefinition.getTargetCategory();
-    }
-
-    public void setTargetDefinition(TargetDefinition targetDefinition)
-    {
-        this.targetDefinition = targetDefinition;
+        return flightInformation.getTargetDefinition().getTargetCategory();
     }
 
     public TargetDefinition getTargetDefinition()
     {
-        return targetDefinition;
+        return flightInformation.getTargetDefinition();
     }
 
     public MissionBeginUnit getMissionBeginUnit()

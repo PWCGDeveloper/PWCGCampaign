@@ -145,7 +145,7 @@ public class SquadronMemberInitialVictoryBuilderTest
             int rankPos = rankHelper.getRankPosByService(squadronMember.getRank(), service);
             if (rankPos == 0)
             {
-                validateVictoryRange (squadronMember.getVictories().size(), 6, 17);
+                validateVictoryRange (squadronMember.getVictories().size(), 5, 17);
             }
             else  if (rankPos == 1)
             {

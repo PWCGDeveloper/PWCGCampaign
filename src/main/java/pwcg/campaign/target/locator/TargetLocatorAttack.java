@@ -25,7 +25,7 @@ public class TargetLocatorAttack
     private TargetDefinition targetDefinition;
     private Coordinate missionCenter;
     private Coordinate targetLocation;
-    private Orientation targetOrientation;
+    private Orientation targetOrientation = new Orientation();
     private int currentSearchRadius = 0;
     
     public TargetLocatorAttack(TargetDefinition targetDefinition, Coordinate missionCenter)

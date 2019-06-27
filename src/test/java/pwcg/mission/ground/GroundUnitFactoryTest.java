@@ -6,14 +6,11 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.context.Country;
-import pwcg.campaign.target.ITargetDefinitionBuilder;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.campaign.target.TargetDefinition;
-import pwcg.campaign.target.TargetDefinitionBuilderFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.artySpot.ArtillerySpotArtilleryGroup;
 import pwcg.mission.ground.factory.AAAUnitFactory;
 import pwcg.mission.ground.factory.AssaultFactory;
@@ -34,10 +31,17 @@ import pwcg.testutils.KubanAttackMockCampaign;
 @RunWith(MockitoJUnitRunner.class)
 public class GroundUnitFactoryTest extends KubanAttackMockCampaign
 {
+    private TargetDefinition targetDefinition = new TargetDefinition();
+
     @Before
     public void setup() throws PWCGException
     {
         mockCampaignSetup();
+        targetDefinition = new TargetDefinition();
+        targetDefinition.setTargetCountry(country);
+        targetDefinition.setTargetPosition(new Coordinate (100000, 0, 100000));
+        targetDefinition.setTargetOrientation(new Orientation());
+        targetDefinition.setTargetType(TacticalTarget.TARGET_ANY);
     }
 
     @Test
@@ -126,11 +130,8 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createDrifterUnitTest () throws PWCGException 
     {
-        //TODO not specifying target type anymore
-        TargetDefinition targetDefinition = new TargetDefinition();
-        targetDefinition.setTargetCountry(country);
-        targetDefinition.setTargetPosition(new Coordinate (100000, 0, 100000));
-        targetDefinition.setTargetOrientation(new Orientation());
+        targetDefinition.setTargetType(TacticalTarget.TARGET_DRIFTER);
+
         DrifterUnitFactory groundUnitFactory =  new DrifterUnitFactory(campaign, targetDefinition);
         DrifterUnit groundUnit = (DrifterUnit)groundUnitFactory.createDrifterUnit();
         assert (groundUnit.getSpawners().size() > 0);
@@ -140,10 +141,7 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     @Test
     public void createShippingUnitTest () throws PWCGException 
     {
-        //TODO not specifying target type anymore
-        FlightInformation flightInformation = new FlightInformation(mission);
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
+        targetDefinition.setTargetType(TacticalTarget.TARGET_SHIPPING);
         
         ShippingUnitFactory groundUnitFactory =  new ShippingUnitFactory(campaign, targetDefinition);        
         ShipConvoyUnit groundUnit = (ShipConvoyUnit)groundUnitFactory.createShippingUnit();
@@ -153,14 +151,16 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
 
     @Test
     public void createTroopConcentrationTest () throws PWCGException 
-    {
-        FlightInformation flightInformation = new FlightInformation(mission);
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
+    {        
+        TargetDefinition targetDefinition = new TargetDefinition();
+        targetDefinition.setTargetCountry(country);
+        targetDefinition.setTargetPosition(new Coordinate (100000, 0, 100000));
+        targetDefinition.setTargetOrientation(new Orientation());
+        targetDefinition.setTargetType(TacticalTarget.TARGET_TROOP_CONCENTRATION);
 
         TroopConcentrationFactory groundUnitFactory =  new TroopConcentrationFactory(campaign, targetDefinition);        
         GroundTroopConcentration groundUnit = (GroundTroopConcentration)groundUnitFactory.createTroopConcentration();
-        assert (groundUnit.getVehicles().size() > 5);
+        assert (groundUnit.getVehicles().size() > 0);
         assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
     }
 

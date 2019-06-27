@@ -12,7 +12,7 @@ import pwcg.mission.mcu.McuAttackArea;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuTimer;
 
-// TODO Coop test to make sure attack is not broken
+// TODO COOP test to make sure attack is not broken - bind to plane and not coalition
 public class AttackMcuSequence
 {    
     public static final int CHECK_ZONE_DEFAULT_DISTANCE = 12000;

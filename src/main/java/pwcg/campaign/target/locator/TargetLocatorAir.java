@@ -3,12 +3,15 @@ package pwcg.campaign.target.locator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.FrontLinePoint;
+import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.intercept.InterceptAiCoordinateGenerator;
@@ -76,7 +79,25 @@ public class TargetLocatorAir
         ShippingLane selectedShippingLane = shippingLaneManager.getTargetShippingLane(mission.getMissionBorders().getCenter(), getEnemySide());
         return selectedShippingLane.getShippingLaneBorders().getCoordinateInBox();
     }
-    
+
+    public Coordinate getEscortRendezvousCoordinate() throws PWCGException
+    {
+        Coordinate nearbyEnemyFrontPoint = getFrontCoordinate();
+        FrontLinesForMap frontLines = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(flightInformation.getCampaign().getDate());
+        FrontLinePoint nearbyFriendlyFrontPoint = frontLines.findCloseFrontPositionForSide(nearbyEnemyFrontPoint, 15000, getFriendlySide());
+        
+        double angle = MathUtils.calcAngle(nearbyEnemyFrontPoint, nearbyFriendlyFrontPoint.getPosition());
+
+        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        Coordinate rendezvousLocation = MathUtils.calcNextCoord(nearbyFriendlyFrontPoint.getPosition(), angle, productSpecific.getCloseToFrontDistance());
+        return rendezvousLocation;
+     }
+
+    private Side getFriendlySide() throws PWCGException
+    {
+        return flightInformation.getSquadron().determineSide();
+    }
+
     private Side getEnemySide() throws PWCGException
     {
         return flightInformation.getSquadron().determineEnemySide();
