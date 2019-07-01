@@ -4,6 +4,9 @@ import java.util.Map;
 
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
+import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
+import pwcg.aar.inmission.phase3.reconcile.victories.common.GroundDeclarationResolver;
+import pwcg.aar.inmission.phase3.reconcile.victories.common.VictorySorter;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 
@@ -17,6 +20,7 @@ public class VerifiedVictoryGenerator
         this.campaign = campaign;
         this.aarContext = aarContext;
     }
+    
     public ConfirmedVictories createVerifiedictories(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
     {
         AARMissionEvaluationData evaluationData = aarContext.getMissionEvaluationData();

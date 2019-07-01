@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
+package pwcg.aar.inmission.phase3.reconcile.victories.common;
 
 import java.util.ArrayList;
 import java.util.List;

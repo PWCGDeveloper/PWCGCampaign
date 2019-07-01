@@ -14,6 +14,8 @@ import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
+import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
+import pwcg.aar.inmission.phase3.reconcile.victories.common.VictorySorter;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignData;

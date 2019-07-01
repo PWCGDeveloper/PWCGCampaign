@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
+package pwcg.aar.inmission.phase3.reconcile.victories.common;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,17 +13,17 @@ import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadmember.VictoryBuilder;
 import pwcg.core.exception.PWCGException;
 
-class VictoryEventHandler 
+public class VictoryEventHandler 
 {
     private Campaign campaign;
     private Map<Integer, List<Victory>> victories = new HashMap<>();
 
-	VictoryEventHandler (Campaign campaign) 
+	public VictoryEventHandler (Campaign campaign) 
 	{
 	    this.campaign = campaign;
 	}
 
-	Map<Integer, List<Victory>> recordVictories(ConfirmedVictories missionVictories) throws PWCGException 
+	public Map<Integer, List<Victory>> recordVictories(ConfirmedVictories missionVictories) throws PWCGException 
 	{
 		for (LogVictory resultVictory : missionVictories.getConfirmedVictories())
 		{

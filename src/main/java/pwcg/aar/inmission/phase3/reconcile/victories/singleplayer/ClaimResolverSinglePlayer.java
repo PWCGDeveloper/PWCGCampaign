@@ -5,6 +5,8 @@ import java.util.Map;
 
 import pwcg.aar.inmission.phase3.reconcile.victories.IClaimResolver;
 import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
+import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
+import pwcg.aar.inmission.phase3.reconcile.victories.common.VictoryEventHandler;
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.Victory;

@@ -1,4 +1,4 @@
-package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
+package pwcg.aar.inmission.phase3.reconcile.victories.common;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +26,11 @@ public class VictorySorter
         FUZZY
     }
 
-    VictorySorter ()
+    public VictorySorter ()
     {
     }
 
-    void sortVictories(List<LogVictory> logVictories) throws PWCGException 
+    public void sortVictories(List<LogVictory> logVictories) throws PWCGException 
     {                
         for (LogVictory logVictory : logVictories)
         {
@@ -126,32 +126,32 @@ public class VictorySorter
         return false;
     }
 
-    List<LogVictory> getFirmAirVictories()
+    public List<LogVictory> getFirmAirVictories()
     {
         return firmAirVictories;
     }
 
-    List<LogVictory> getFirmGroundVictories()
+    public List<LogVictory> getFirmGroundVictories()
     {
         return firmGroundVictories;
     }
 
-    List<LogVictory> getFirmBalloonVictories()
+    public List<LogVictory> getFirmBalloonVictories()
     {
         return firmBalloonVictories;
     }
 
-    List<LogVictory> getFuzzyAirVictories()
+    public List<LogVictory> getFuzzyAirVictories()
     {
         return fuzzyAirVictories;
     }
 
-    List<LogVictory> getFuzzyBalloonVictories()
+    public List<LogVictory> getFuzzyBalloonVictories()
     {
         return fuzzyBalloonVictories;
     }
 
-    List<LogVictory> getAllUnconfirmed()
+    public List<LogVictory> getAllUnconfirmed()
     {
         List<LogVictory> unconfirmed = new ArrayList<LogVictory>();
         extractUnconfirmed(firmAirVictories, unconfirmed);

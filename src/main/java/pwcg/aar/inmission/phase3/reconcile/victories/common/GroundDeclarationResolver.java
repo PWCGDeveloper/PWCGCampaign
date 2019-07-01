@@ -1,18 +1,18 @@
-package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
+package pwcg.aar.inmission.phase3.reconcile.victories.common;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 
-class GroundDeclarationResolver
+public class GroundDeclarationResolver
 {
     private ConfirmedVictories confirmedGroundVictories = new ConfirmedVictories();
     private VictorySorter victorySorter;
 
-    GroundDeclarationResolver (VictorySorter victorySorter)
+    public GroundDeclarationResolver (VictorySorter victorySorter)
     {
         this.victorySorter = victorySorter;
     }
     
-    ConfirmedVictories determineGroundResults()
+    public ConfirmedVictories determineGroundResults()
     {
         for (LogVictory resultVictory : victorySorter.getFirmGroundVictories())
         {

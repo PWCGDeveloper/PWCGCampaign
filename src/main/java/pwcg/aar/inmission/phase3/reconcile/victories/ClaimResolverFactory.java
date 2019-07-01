@@ -17,7 +17,7 @@ public class ClaimResolverFactory
     {
         if (campaign.getCampaignData().isCoop())
         {
-            return new ClaimResolverCoop(campaign);
+            return new ClaimResolverCoop(campaign, aarContext.getMissionEvaluationData().getVictoryResults());
         }
         else
         {
