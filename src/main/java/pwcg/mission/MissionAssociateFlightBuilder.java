@@ -10,6 +10,8 @@ import pwcg.mission.flight.escort.PlayerEscortFlightLinker;
 import pwcg.mission.flight.escort.PlayerEscortedFlightBuilder;
 import pwcg.mission.flight.intercept.InterceptOpposingFlight;
 import pwcg.mission.flight.intercept.InterceptOpposingFlightBuilder;
+import pwcg.mission.flight.scramble.ScrambleOpposingFlight;
+import pwcg.mission.flight.scramble.ScrambleOpposingFlightBuilder;
 
 public class MissionAssociateFlightBuilder
 {
@@ -30,7 +32,7 @@ public class MissionAssociateFlightBuilder
                 }
                 else if (flight.getFlightType() == FlightTypes.SCRAMBLE)
                 {
-                    throw new PWCGException("Associated flight not implemented for flight type " + flight.getFlightType());
+                    makeLinkedScrambleFlights(flight);
                 }
                 else if (flight.getFlightType() == FlightTypes.HOME_DEFENSE)
                 {
@@ -49,6 +51,16 @@ public class MissionAssociateFlightBuilder
                     // TODO Flying Circus
                 }
             }
+        }
+    }
+
+    private void makeLinkedScrambleFlights(Flight flight) throws PWCGException
+    {
+        ScrambleOpposingFlightBuilder opposingFlightBuilder = new ScrambleOpposingFlightBuilder(flight.getFlightInformation());
+        List<ScrambleOpposingFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
+        for (ScrambleOpposingFlight opposingFlight: opposingFlights)
+        {
+            flight.addLinkedUnit(opposingFlight);
         }
     }
 

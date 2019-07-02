@@ -12,9 +12,9 @@ import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 
-public class BoSFlightFactory extends FlightFactory
+public class BoSFlightCoopFactory extends FlightFactory
 {
-    public BoSFlightFactory (Campaign campaign) 
+    public BoSFlightCoopFactory (Campaign campaign) 
     {
         super(campaign);
     }
@@ -56,8 +56,6 @@ public class BoSFlightFactory extends FlightFactory
 
         int offensiveMissionOdds = 0;
         int interceptMissionOdds = 0;
-        int escortMissionOdds = 0;
-        int scrambleMissionOdds = 0;
         int patrolMissionOdds = 0;
         int lowAltPatrolMissionOdds = 0;
         int lowAltCapMissionOdds = 0;
@@ -67,11 +65,7 @@ public class BoSFlightFactory extends FlightFactory
             offensiveMissionOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedOffensiveMissionKey);
             interceptMissionOdds = offensiveMissionOdds
                             + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedInterceptMissionKey);
-            escortMissionOdds = interceptMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedEscortMissionKey);
-            scrambleMissionOdds = escortMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedScrambleMissionKey);
-            patrolMissionOdds = scrambleMissionOdds
+            patrolMissionOdds = interceptMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedPatrolMissionKey);
             lowAltPatrolMissionOdds = patrolMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedLowAltPatrolMissionKey);
@@ -83,11 +77,7 @@ public class BoSFlightFactory extends FlightFactory
             offensiveMissionOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisOffensiveMissionKey);
             interceptMissionOdds = offensiveMissionOdds
                             + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisInterceptMissionKey);
-            escortMissionOdds = interceptMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisEscortMissionKey);
-            scrambleMissionOdds = escortMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisScrambleMissionKey);
-            patrolMissionOdds = scrambleMissionOdds
+            patrolMissionOdds = interceptMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisPatrolMissionKey);
             lowAltPatrolMissionOdds = patrolMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisLowAltPatrolMissionKey);
@@ -104,28 +94,6 @@ public class BoSFlightFactory extends FlightFactory
         else if (missionOdds < interceptMissionOdds)
         {
             flightType = FlightTypes.INTERCEPT;
-        }
-        else if (missionOdds < escortMissionOdds)
-        {
-            if (isPlayerFlight)
-            {
-                flightType = FlightTypes.ESCORT;
-            }
-            else
-            {
-                flightType = FlightTypes.PATROL;
-            }
-        }
-        else if (missionOdds < scrambleMissionOdds)
-        {
-            if (isPlayerFlight && !campaign.getCampaignData().isCoop())
-            {
-                flightType = FlightTypes.SCRAMBLE;
-            }
-            else
-            {
-                flightType = FlightTypes.PATROL;
-            }
         }
         else if (missionOdds < patrolMissionOdds)
         {

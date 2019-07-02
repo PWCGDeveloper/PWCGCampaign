@@ -13,13 +13,10 @@ import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class ScrambleOpposingFlight extends Flight
-{
-	Coordinate startCoords = null;
-	
-    public ScrambleOpposingFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit, Coordinate startCoords)
+{	
+    public ScrambleOpposingFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
     {
         super (flightInformation, missionBeginUnit);
-        this.startCoords = startCoords;
     }
 
 	public void createUnitMission() throws PWCGException  
@@ -31,13 +28,13 @@ public class ScrambleOpposingFlight extends Flight
 			plane.setFuel(.6);
 		}
 	}
-
+	
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
 		ScrambleOpposingWaypoints waypointGenerator = new ScrambleOpposingWaypoints(
 					startPosition, 
-					getTargetCoords(), 
+					flightInformation.getTargetCoords(), 
 		       		this,
 		       		mission);
 

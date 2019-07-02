@@ -2,6 +2,7 @@ package pwcg.campaign.factory;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.mission.flight.factory.BoSFlightCoopFactory;
 import pwcg.mission.flight.factory.BoSFlightFactory;
 import pwcg.mission.flight.factory.FlightFactory;
 import pwcg.mission.flight.factory.RoFFlightFactory;
@@ -17,7 +18,16 @@ public class PWCGFlightFactoryFactory
         }
         else
         {
-            return new BoSFlightFactory(campaign);
+            if (campaign.getCampaignData().isCoop())
+            {
+                return new BoSFlightCoopFactory(campaign);
+                
+            }
+            else
+            {
+                return new BoSFlightFactory(campaign);
+                
+            }
         }
     }
 }
