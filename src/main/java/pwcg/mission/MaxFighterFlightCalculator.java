@@ -26,11 +26,11 @@ public class MaxFighterFlightCalculator
         int numFighterFlightsToKeep = 0;
         if (campaign.isFighterCampaign() && mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(FlightTypes.getFlightTypesByCategory(FlightTypeCategory.FIGHTER)))
         {
-            numFighterFlightsToKeep =  RandomNumberGenerator.getRandom(maxFighterToKeepIfFighterCampaign)+1;
+            numFighterFlightsToKeep =  maxFighterToKeepIfFighterCampaign;
         }
         else
         {
-            numFighterFlightsToKeep = RandomNumberGenerator.getRandom(maxFighterToKeepIfGroundCampaign+1);
+            numFighterFlightsToKeep = maxFighterToKeepIfGroundCampaign;
         }
         
         return reduceFlightsForPeriodOfLowActivity(numFighterFlightsToKeep);

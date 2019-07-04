@@ -36,12 +36,12 @@ public class SinglePlayerMissionPlaneLimiter
         alliedPlaneCounter.setPlaneCounter(maxAlliedPlanes);
         axisPlaneCounter.setPlaneCounter(maxAxisPlanes);
 
-        for (Flight flight : mission.getMissionFlightBuilder().getAlliedAiFlights())
+        for (Flight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED))
         {
             alliedPlaneCounter.setPlaneCounterForFlight(flight);
         }
         
-        for (Flight flight : mission.getMissionFlightBuilder().getAxisAiFlights())
+        for (Flight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.AXIS))
         {
             axisPlaneCounter.setPlaneCounterForFlight(flight);
         }

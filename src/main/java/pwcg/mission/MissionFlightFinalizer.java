@@ -3,6 +3,7 @@ package pwcg.mission;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.balloondefense.AiBalloonDefenseFlight;
@@ -52,8 +53,8 @@ public class MissionFlightFinalizer
 
     private void setFlightAttackMcu() throws PWCGException  
     {
-        List<Flight> axisFlights = mission.getMissionFlightBuilder().getAllAxisFlights();
-        List<Flight> alliedFlights = mission.getMissionFlightBuilder().getAllAlliedFlights();
+        List<Flight> axisFlights = mission.getMissionFlightBuilder().getAllFlightsForSide(Side.AXIS);
+        List<Flight> alliedFlights = mission.getMissionFlightBuilder().getAllFlightsForSide(Side.ALLIED);
         
         for (Flight axisFlight : axisFlights)
         {

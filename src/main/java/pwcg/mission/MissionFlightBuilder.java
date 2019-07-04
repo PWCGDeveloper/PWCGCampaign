@@ -89,60 +89,44 @@ public class MissionFlightBuilder
         return flightPathProximityCalculator.isInFlightPath(position);
     }
 
-    public List<Flight> getAllAlliedFlights() throws PWCGException
+    public List<Flight> getAllFlightsForSide(Side side) throws PWCGException
     {
-        List<Flight> alliedFlights = new ArrayList<Flight>();
+        List<Flight> flightsForSide = new ArrayList<Flight>();
         for (Flight flight : this.getAllAerialFlights())
         {
-            if (flight.getCountry().getSide() == Side.ALLIED)
+            if (flight.getCountry().getSide() == side)
             {
-                alliedFlights.add(flight);
+                flightsForSide.add(flight);
             }
         }
-
-        return alliedFlights;
+        return flightsForSide;
     }
 
-    public List<Flight> getAllAxisFlights() throws PWCGException
+    public List<Flight> getAiFlightsForSide(Side side) throws PWCGException
     {
-        List<Flight> axisFlights = new ArrayList<Flight>();
-        for (Flight flight : this.getAllAerialFlights())
-        {
-            if (flight.getCountry().getSide() == Side.AXIS)
-            {
-                axisFlights.add(flight);
-            }
-        }
-
-        return axisFlights;
-    }
-
-    public List<Flight> getAlliedAiFlights() throws PWCGException
-    {
-        List<Flight> alliedFlights = new ArrayList<Flight>();
+        List<Flight> aiFlightsForSide = new ArrayList<Flight>();
         for (Flight flight : aiFlights)
         {
-            if (flight.getCountry().getSide() == Side.ALLIED)
+            if (flight.getCountry().getSide() == side)
             {
-                alliedFlights.add(flight);
+                aiFlightsForSide.add(flight);
             }
         }
-
-        return alliedFlights;
+        return aiFlightsForSide;
     }
 
-    public List<Flight> getAxisAiFlights() throws PWCGException
+    public List<Flight> getPlayerFlightsForSide(Side side) throws PWCGException
     {
-        List<Flight> axisFlights = new ArrayList<Flight>();
-        for (Flight flight : aiFlights)
+        List<Flight> aiFlightsForSide = new ArrayList<Flight>();
+        for (Flight flight : playerFlights)
         {
-            if (flight.getCountry().getSide() == Side.AXIS)
+            if (flight.getCountry().getSide() == side)
             {
-                axisFlights.add(flight);
+                aiFlightsForSide.add(flight);
             }
         }
 
-        return axisFlights;
+        return aiFlightsForSide;
     }
 
     public List<Flight> getAllAerialFlights()
@@ -188,7 +172,6 @@ public class MissionFlightBuilder
                 return true;
             }
         }
-
         return false;
     }
 
@@ -201,7 +184,6 @@ public class MissionFlightBuilder
                 return true;
             }
         }
-
         return false;
     }
 

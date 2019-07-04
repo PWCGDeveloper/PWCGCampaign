@@ -1028,6 +1028,11 @@ public abstract class Flight extends Unit
         return false;
     }
 
+    public boolean isFlightHasFighterPlanes()
+    {
+        return getPlanes().get(0).isPrimaryRole(Role.ROLE_FIGHTER);
+    }
+
     public void linkGroundUnitsToFlight(GroundUnitCollection groundUnits) throws PWCGException
     {
         for (Unit groundUnit : groundUnits.getAllGroundUnits())

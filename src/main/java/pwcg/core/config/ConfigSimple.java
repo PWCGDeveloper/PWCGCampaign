@@ -76,8 +76,8 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.AlliedPlanesToSpawnMaxKey, "16");
         setParamForSimpleConfigChange(ConfigItemKeys.AxisPlanesToSpawnMaxKey, "20");
         
-        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "8");
-        setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "6");
+        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "7");
+        setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "4");
 
         setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackMinimumKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackAdditionalKey, "4");
