@@ -148,7 +148,7 @@ public class MissionFlightKeeperTest
         Campaign coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.RAF_184_PROFILE);
         coopCampaign.setCampaignConfigManager(configManagerCampaign);
 
-        Mockito.when(missionFlightBuilder.hasPlayerFlightWithFlightTypes(Matchers.anyList())).thenReturn(true);
+        Mockito.when(missionFlightBuilder.hasPlayerFlightWithFlightTypes(Matchers.anyListOf(FlightTypes.class))).thenReturn(true);
 
         alliedPlayerFlights.add(alliedPlayerFlight1);
         
@@ -183,7 +183,7 @@ public class MissionFlightKeeperTest
         Campaign coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.RAF_184_PROFILE);
         coopCampaign.setCampaignConfigManager(configManagerCampaign);
 
-        Mockito.when(missionFlightBuilder.hasPlayerFlightWithFlightTypes(Matchers.anyList())).thenReturn(false);
+        Mockito.when(missionFlightBuilder.hasPlayerFlightWithFlightTypes(Matchers.anyListOf(FlightTypes.class))).thenReturn(false);
 
         alliedPlayerFlights.add(alliedPlayerFlight1);
         
@@ -217,7 +217,7 @@ public class MissionFlightKeeperTest
         Campaign coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_PROFILE);
         coopCampaign.setCampaignConfigManager(configManagerCampaign);
 
-        Mockito.when(missionFlightBuilder.hasPlayerFlightWithFlightTypes(Matchers.anyList())).thenReturn(true);
+        Mockito.when(missionFlightBuilder.hasPlayerFlightWithFlightTypes(Matchers.anyListOf(FlightTypes.class))).thenReturn(true);
 
         alliedPlayerFlights.add(alliedPlayerFlight1);
         alliedPlayerFlights.add(alliedPlayerFlight2);
@@ -253,7 +253,7 @@ public class MissionFlightKeeperTest
         Campaign coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_PROFILE);
         coopCampaign.setCampaignConfigManager(configManagerCampaign);
 
-        Mockito.when(missionFlightBuilder.hasPlayerFlightWithFlightTypes(Matchers.anyList())).thenReturn(false);
+        Mockito.when(missionFlightBuilder.hasPlayerFlightWithFlightTypes(Matchers.anyListOf(FlightTypes.class))).thenReturn(false);
 
         alliedPlayerFlights.add(alliedPlayerFlight1);
         alliedPlayerFlights.add(alliedPlayerFlight2);
