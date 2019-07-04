@@ -95,6 +95,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         makePlainButtons(buttonPanel);
 
         campaignButtonPanel.add (buttonPanel, BorderLayout.NORTH);
+        enableButtonsAsNeeded();
 
         return campaignButtonPanel;
     }
@@ -304,8 +305,6 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
         CampaignGuiContextManager.getInstance().clearContextStack();
         CampaignGuiContextManager.getInstance().pushToContextStack(this);
-
-        enableButtonsAsNeeded();
     }
 
     public void actionPerformed(ActionEvent ae)
@@ -394,15 +393,18 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
     public void enableButtonsAsNeeded() throws PWCGException  
     {
-        if (campaign.isCampaignActive() && !campaign.getCampaignData().isCoop())
-        {            
-            if (GreatAce.isGreatAce(campaign))
-            {
-                loneWolfMission.setEnabled(true);
-            }
-            else
-            {
-                loneWolfMission.setEnabled(false);
+        if (loneWolfMission != null)
+        {
+            if (campaign.isCampaignActive() && !campaign.getCampaignData().isCoop())
+            {            
+                if (GreatAce.isGreatAce(campaign))
+                {
+                    loneWolfMission.setEnabled(true);
+                }
+                else
+                {
+                    loneWolfMission.setEnabled(false);
+                }
             }
         }
     }
