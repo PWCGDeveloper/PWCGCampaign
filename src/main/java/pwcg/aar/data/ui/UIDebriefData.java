@@ -18,18 +18,6 @@ public class UIDebriefData
     private AARPromotionPanelData promotionPanelData = new AARPromotionPanelData();
     private TransferPanelData transferPanelData = new TransferPanelData();
 
-    public void merge(UIDebriefData source)
-    {
-        newsPanelData.getAcesKilledDuringElapsedTime().addAll(source.getNewsPanelData().getAcesKilledDuringElapsedTime());
-        newsPanelData.getNewspaperEventsDuringElapsedTime().addAll(source.getNewsPanelData().getNewspaperEventsDuringElapsedTime());
-        aceLeavePanelData.getAcesOnLeaveDuringElapsedTime().addAll(source.getAceLeavePanelData().getAcesOnLeaveDuringElapsedTime());
-        medalPanelData.getMedalsAwarded().addAll(source.getMedalPanelData().getMedalsAwarded());
-        pilotLossPanelData.getSquadMembersLost().putAll(source.getPilotLossPanelData().getSquadMembersLost());
-        equipmentLossPanelData.getEquipmentLost().putAll(source.getEquipmentLossPanelData().getEquipmentLost());
-        promotionPanelData.getPromotionEventsDuringElapsedTime().addAll(source.getPromotionPanelData().getPromotionEventsDuringElapsedTime());
-        transferPanelData.getTransfers().addAll(source.getTransferPanelData().getTransfers());
-    }
-
     public AARNewsPanelData getNewsPanelData()
     {
         return newsPanelData;

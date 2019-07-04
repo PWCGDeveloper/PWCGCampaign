@@ -7,12 +7,12 @@
       "help": "Always air start - set to 1 for shorter missions"
     },
     "AlliedFlightsToKeep": {
-      "value": "6",
+      "value": "5",
       "label": "Max Allied Flights",
       "help": "Upper bound of Allied flights to keep"
     },
     "AxisFlightsToKeep": {
-      "value": "6",
+      "value": "3",
       "label": "Max Axis Flights",
       "help": "Upper bound of Axis flights to keep"
     },

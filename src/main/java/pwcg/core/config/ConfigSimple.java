@@ -22,8 +22,8 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.AlliedPlanesToSpawnMaxKey, "6");
         setParamForSimpleConfigChange(ConfigItemKeys.AxisPlanesToSpawnMaxKey, "8");
 
-        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "4");
-        setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "3");
+        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "3");
+        setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "2");
 
         setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackMinimumKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackAdditionalKey, "1");
@@ -49,8 +49,8 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.AlliedPlanesToSpawnMaxKey, "8");
         setParamForSimpleConfigChange(ConfigItemKeys.AxisPlanesToSpawnMaxKey, "12");
 
-        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "8");
-        setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "6");
+        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "5");
+        setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "3");
 
         setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackMinimumKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackAdditionalKey, "2");
@@ -76,8 +76,8 @@ public class ConfigSimple
         setParamForSimpleConfigChange(ConfigItemKeys.AlliedPlanesToSpawnMaxKey, "16");
         setParamForSimpleConfigChange(ConfigItemKeys.AxisPlanesToSpawnMaxKey, "20");
         
-        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "12");
-        setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "9");
+        setParamForSimpleConfigChange(ConfigItemKeys.AlliedFlightsToKeepKey, "8");
+        setParamForSimpleConfigChange(ConfigItemKeys.AxisFlightsToKeepKey, "6");
 
         setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackMinimumKey, "2");
         setParamForSimpleConfigChange(ConfigItemKeys.GroundAttackAdditionalKey, "4");
