@@ -28,9 +28,8 @@ public class FlightCrewBuilder
 
     public List<SquadronMember> createCrewAssignmentsForFlight(int numCrewNeeded) throws PWCGException 
     {
-        CrewFactory crewFactory = new CrewFactory(flightInformation.getCampaign(), flightInformation.getSquadron());
-        crewFactory.createCrews();
-        unassignedCrewMap = crewFactory.getCrewsForSquadron();
+        CrewFactory crewFactory = new CrewFactory(flightInformation);
+        unassignedCrewMap = crewFactory.createCrews();
         
         assignPlayersToCrew();
         assignAiPilotsToPlanes(numCrewNeeded);

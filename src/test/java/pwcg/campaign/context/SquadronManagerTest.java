@@ -9,6 +9,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -106,5 +107,27 @@ public class SquadronManagerTest
         assert(foundStg2);
         assert(!found132Reg);
         assert(!foundHs129);
+    }
+    
+    @Test
+    public void getSquadronByProximityAndRoleAndSideTest() throws PWCGException
+    {
+        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        List<Squadron> squadrons = squadronManager.getActiveSquadrons(campaign.getDate());
+
+        for (Squadron squadron : squadrons)
+        {
+            Squadron nearbySquadron = squadronManager.getSquadronByProximityAndRoleAndSide(
+                    campaign, squadron.determineCurrentPosition(campaign.getDate()), Role.ROLE_BOMB, Side.ALLIED);
+            assert(nearbySquadron != null);
+            assert(nearbySquadron.determineSide() == Side.ALLIED);
+            assert(nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_BOMB) == true);
+            
+            nearbySquadron = squadronManager.getSquadronByProximityAndRoleAndSide(
+                    campaign, squadron.determineCurrentPosition(campaign.getDate()), Role.ROLE_FIGHTER, Side.AXIS);
+            assert(nearbySquadron != null);
+            assert(nearbySquadron.determineSide() == Side.AXIS);
+            assert(nearbySquadron.getSquadronRoles().isSquadronThisRole(campaign.getDate(), Role.ROLE_FIGHTER) == true);
+        }
     }
 }

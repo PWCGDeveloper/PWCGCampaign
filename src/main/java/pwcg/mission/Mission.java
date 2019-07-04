@@ -197,7 +197,6 @@ public class Mission
 	{
 	    if (!campaign.getCampaignData().isCoop())
 	    {
-	        // TODO COOP Icons tied to planes not coalitions
     		missionWaypointIconBuilder.createWaypointIcons(missionFlightBuilder.getReferencePlayerFlight());
     		missionAirfieldIconBuilder.createWaypointIcons(campaign, this);
     		missionObjectiveSuccess.createSuccessMissionObjective(campaign, this);

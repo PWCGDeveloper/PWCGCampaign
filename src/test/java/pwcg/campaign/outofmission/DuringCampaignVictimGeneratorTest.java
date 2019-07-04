@@ -49,7 +49,7 @@ public class DuringCampaignVictimGeneratorTest
     }
 
     @Test
-    public void testNotFromPLayerSquadron () throws PWCGException
+    public void testNotFromPlayerSquadron () throws PWCGException
     {               
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
         DuringCampaignVictimGenerator  victimGenerator = new DuringCampaignVictimGenerator(campaign, squadron);

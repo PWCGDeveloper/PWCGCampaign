@@ -341,7 +341,6 @@ public class SquadronManager
 		return squadronsWithRole;
 	}
 
-	// TODO COOP TEST THIS!!!
     public Squadron getSquadronByProximityAndRoleAndSide(Campaign campaign, Coordinate position, Role role, Side side) throws PWCGException 
     {
         ConfigManager configManager = campaign.getCampaignConfigManager();

@@ -1,7 +1,6 @@
 package pwcg.mission.flight.crew;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
@@ -10,23 +9,28 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.MissionHumanParticipants;
+import pwcg.mission.flight.FlightInformation;
 
 public class CrewFactory
 {
     private Campaign campaign;
     private Squadron squadron;
+    private MissionHumanParticipants participatingPlayers;
     private Map <Integer, SquadronMember> crewsForSquadron = new HashMap <>();
     
-	public CrewFactory(Campaign campaign, Squadron squadron)
+	public CrewFactory(FlightInformation flightInformation)
 	{
-        this.campaign = campaign;
-        this.squadron = squadron;
+        this.campaign = flightInformation.getCampaign();
+        this.squadron = flightInformation.getSquadron();
+        this.participatingPlayers = flightInformation.getMission().getParticipatingPlayers();
 	}
 
-    public void createCrews() throws PWCGException 
+    public Map <Integer, SquadronMember> createCrews() throws PWCGException 
     {
         createCrewsForSquadron();
         ensurePlayerIsAssigned();
+        return crewsForSquadron;
     }
 
     private void createCrewsForSquadron() throws PWCGException
@@ -39,37 +43,34 @@ public class CrewFactory
         }
     }
 
-    // TODO COOP Need to assign player in mission from squadron to crew
     private void ensurePlayerIsAssigned() throws PWCGException
     {
-        if (!campaign.getCampaignData().isCoop())
+        for (SquadronMember player : participatingPlayers.getAllParticipatingPlayers())
         {
-            if (Squadron.isPlayerSquadron(campaign, squadron.getSquadronId()))
-            {
-                List<SquadronMember> playersForSquadron = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()).getSquadronMembers().getSquadronMemberList();
-                for (SquadronMember player : playersForSquadron)
-                {
-                    if (crewsForSquadron.containsKey(player.getSerialNumber()))
-                    {
-                        return;
-                    }
-            
-                    for (SquadronMember squadronMemberToBeReplaced : crewsForSquadron.values())
-                    {
-                        if (!squadronMemberToBeReplaced.isPlayer())
-                        {
-                            crewsForSquadron.put(player.getSerialNumber(), player);
-                            crewsForSquadron.remove(squadronMemberToBeReplaced.getSerialNumber());
-                            break;
-                        }
-                    }
-                }
-            }
+            addPlayerToMissionIfNeeded(player);
         }
     }
 
-    public Map<Integer, SquadronMember> getCrewsForSquadron()
+    private void addPlayerToMissionIfNeeded(SquadronMember player)
     {
-        return crewsForSquadron;
+        if (player.getSquadronId() != squadron.getSquadronId())
+        {
+            return;
+        }
+         
+        if (crewsForSquadron.containsKey(player.getSerialNumber()))
+        {
+            return;
+        }
+         
+        for (SquadronMember squadronMemberToBeReplaced : crewsForSquadron.values())
+        {
+            if (!squadronMemberToBeReplaced.isPlayer())
+            {
+                crewsForSquadron.put(player.getSerialNumber(), player);
+                crewsForSquadron.remove(squadronMemberToBeReplaced.getSerialNumber());
+                break;
+            }
+        }
     }
 }

@@ -70,7 +70,7 @@ public class FlightPlaneBuilder
 		return numPlanesInMission;
 	}
 
-	protected List<PlaneMCU> createPlanes(int numPlanesInFlight) throws PWCGException 
+	private List<PlaneMCU> createPlanes(int numPlanesInFlight) throws PWCGException 
     {        
         PlaneMCUFactory planeGeneratorPlayer = new PlaneMCUFactory(flightInformation);
         List<PlaneMCU> planes = planeGeneratorPlayer.createPlanesForFlight(numPlanesInFlight);

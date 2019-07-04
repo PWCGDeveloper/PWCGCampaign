@@ -21,7 +21,6 @@ public class SquadronTransferFinder
     private List<Integer> anySquadrons = new ArrayList<Integer>();
     
     
-    // TODO COOP TEST THIS!!!
     public SquadronTransferFinder(Campaign campaign, SquadronMember squadronMember)
     {
         this.campaign = campaign;

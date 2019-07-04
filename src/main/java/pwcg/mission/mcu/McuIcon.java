@@ -4,20 +4,16 @@ package pwcg.mission.mcu;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.CountryDesignator;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.Balloon;
 import pwcg.campaign.utils.LCIndexGenerator;
 import pwcg.campaign.ww1.plane.RoFPlaneAttributeMapping;
-import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
 import pwcg.mission.MissionStringHandler;
@@ -44,7 +40,6 @@ public class McuIcon extends BaseFlightMcu
         
         MissionStringHandler.getInstance().registerMissionText(lCName, iconText);
         
-        // TODO COOP Icons tied to planes not coalitions
         coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
         coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));
     }
@@ -225,12 +220,6 @@ public class McuIcon extends BaseFlightMcu
             throw new PWCGIOException(e.getMessage());
         }
 	}	
-
-    public ICountry getCountry(Date date) throws PWCGException
-    {
-        CountryDesignator countryDesignator = new CountryDesignator();
-        return countryDesignator.determineCountry(this.position, date);
-    }
     
     public void setColorBlue()
     {

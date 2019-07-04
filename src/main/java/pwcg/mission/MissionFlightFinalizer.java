@@ -72,7 +72,6 @@ public class MissionFlightFinalizer
         }
     }
 
-    // TODO COOP TEST THIS - verify setting virtual flight triggers to player plane ids
     private void setCzTriggers() throws PWCGException  
     {
         for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
@@ -90,7 +89,6 @@ public class MissionFlightFinalizer
         }
     }
 
-    // TODO COOP TEST THIS - verify setting virtual flight triggers to player plane ids
     private void triggerOtherFlightCZFromPlayerFlight(Flight virtualFlight) throws PWCGException 
     {
     	if (!virtualFlight.isVirtual())

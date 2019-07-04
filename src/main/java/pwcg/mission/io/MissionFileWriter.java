@@ -28,7 +28,6 @@ import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.io.MissionBlockWriter;
 import pwcg.mission.object.WindSock;
 
-// TODO COOP Move this package to pwcg.campaign.mission.io
 public abstract class MissionFileWriter implements IMissionFile 
 {
     protected String missionFileName = "";

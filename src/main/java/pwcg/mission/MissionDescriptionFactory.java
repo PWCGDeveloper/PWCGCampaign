@@ -2,7 +2,6 @@ package pwcg.mission;
 
 import pwcg.campaign.Campaign;
 
-// TODO COOP TEST
 public class MissionDescriptionFactory 
 {
 	public static IMissionDescription buildMissionDescription(Campaign campaign, Mission mission)

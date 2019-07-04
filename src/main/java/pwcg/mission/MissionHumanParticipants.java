@@ -47,6 +47,11 @@ public class MissionHumanParticipants
 		return new ArrayList<Integer>(participatingPlayers.keySet());
 	}
 	
+	public boolean isSquadronInMission(Squadron squadron)
+	{
+	       return participatingPlayers.containsKey(squadron.getSquadronId());
+	}
+	
 	public boolean isPlayerInMission(Squadron squadron, SquadronMember player)
 	{
 		List<SquadronMember> playersForSquadron =  getParticipatingPlayersForSquadron(squadron.getSquadronId());

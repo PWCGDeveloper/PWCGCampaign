@@ -15,7 +15,6 @@ public class MissionWaypointIconBuilder
 {
     private ArrayList<McuIcon> waypointIcons = new ArrayList<McuIcon>();
 
-    // TODO COOP Icons tied to planes not coalitions
     public void createWaypointIcons(Flight playerFlight) 
     {        
     	waypointIcons.clear();

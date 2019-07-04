@@ -69,7 +69,6 @@ public class PlayerEscortedFlightBuilder
 
     private GroundUnitCollection createTargetForPlayerEscortedFlight() throws PWCGException
     {
-        // TODO this will not use the precise target info from the previously created ground units ... build the ground units after the bombing flight?
         TargetBuilder targetBuilder = new TargetBuilder(escortedFlightInformation);
         targetBuilder.buildTarget();
         return targetBuilder.getGroundUnits();
