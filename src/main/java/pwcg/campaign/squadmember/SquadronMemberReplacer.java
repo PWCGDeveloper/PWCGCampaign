@@ -34,14 +34,16 @@ public class SquadronMemberReplacer
         }
     }
 
-	private Squadron getNewPlayerSquadron(String squadronName) throws PWCGException {
+	private Squadron getNewPlayerSquadron(String squadronName) throws PWCGException 
+	{
 		SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
         Squadron newPlayerSquadron = squadronManager.getSquadronByName(squadronName, campaign.getDate());
 		return newPlayerSquadron;
 	}
 
 	private SquadronMember addnewPilotToCampaign(String playerPilotName, String rank, Squadron newPlayerSquadron,
-			SquadronPersonnel newPlayerSquadronPersonnel) throws PWCGException {
+			SquadronPersonnel newPlayerSquadronPersonnel) throws PWCGException 
+	{
 		CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setPlayerRank(rank);
         generatorModel.setPlayerName(playerPilotName);

@@ -11,7 +11,6 @@ import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.aar.prelim.claims.AARClaimPanelData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
@@ -24,13 +23,13 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.data.MissionHeader;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 
-public class PreliminaryDataBuilder
+public class TestPreliminaryDataBuilder
 {
     private Campaign campaign;
     private AARPreliminaryData preliminaryData = new AARPreliminaryData();
     private List<Squadron> squadronsInMission = new ArrayList<>();
 
-    public PreliminaryDataBuilder (Campaign campaign, List<Squadron> squadronsInMission)
+    public TestPreliminaryDataBuilder (Campaign campaign, List<Squadron> squadronsInMission)
     {
         this.campaign = campaign;
         this.squadronsInMission = squadronsInMission;
@@ -102,7 +101,6 @@ public class PreliminaryDataBuilder
         
         AARClaimPanelData claimPanelData = new AARClaimPanelData();
         claimPanelData.setEnemyPlaneTypesInMission(enemyPlaneTypesInMission);
-        claimPanelData.setMapId(FrontMapIdentifier.MOSCOW_MAP);
         
         preliminaryData.setClaimPanelData(claimPanelData);
     }

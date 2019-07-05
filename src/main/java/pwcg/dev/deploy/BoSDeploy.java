@@ -2,6 +2,8 @@ package pwcg.dev.deploy;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.utils.Logger;
@@ -38,11 +40,11 @@ public class BoSDeploy extends DeployBase
 
 			deploy.cleanUnwanted(targetRoot);
 			
-			HashMap<String, Object> unwantedFiles = deploy.loadUnwantedFiles();
-			HashMap<String, Object> unwantedFileTypes = deploy.loadUnwantedFileTypes();
+			Map<String, Object> unwantedFiles = deploy.loadUnwantedFiles();
+			Map<String, Object> unwantedFileTypes = deploy.loadUnwantedFileTypes();
 			
-			HashMap<String, Object> directoriesToCopy = deploy.loadDirectoriesToCopyPWCG();
-			HashMap<String, Object> directoriesToMake = deploy.loadDirectoriesToMakePWCG();
+			Map<String, Object> directoriesToCopy = deploy.loadDirectoriesToCopyPWCG();
+			Map<String, Object> directoriesToMake = deploy.loadDirectoriesToMakePWCG();
 			deploy.copyDirectory(sourceRoot, targetRoot, directoriesToCopy, directoriesToMake, unwantedFiles, unwantedFileTypes);
 			
 			Logger.log(LogLevel.INFO, "************  DONE  **********");
@@ -68,6 +70,7 @@ public class BoSDeploy extends DeployBase
 		super.loadDirectoriesToCopyPWCG();
 
         directoriesToCopy.put("BoSData", null);
+        directoriesToCopy.put("Coop", null);
 
         // Maps
         directoriesToCopy.put("Stalingrad", null);
@@ -137,14 +140,16 @@ public class BoSDeploy extends DeployBase
 	 * 
 	 * @return
 	 */
-	protected HashMap<String, Object> loadDirectoriesToMakePWCG() 
+	protected Map<String, Object> loadDirectoriesToMakePWCG() 
 	{
 		// Directories to make
-		HashMap<String, Object> directoriesToMake = new HashMap<String, Object>();
+		Map<String, Object> directoriesToMake = new TreeMap<String, Object>();
 		directoriesToMake.put("Campaigns", null);
 		directoriesToMake.put("Report", null);
         directoriesToMake.put("User", null);
         directoriesToMake.put("Personnel", null);
+        directoriesToMake.put("Pilots", null);
+        directoriesToMake.put("Users", null);
 		
 		return directoriesToMake;
 	}

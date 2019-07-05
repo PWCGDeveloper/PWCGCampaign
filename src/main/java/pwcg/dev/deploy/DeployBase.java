@@ -3,6 +3,7 @@ package pwcg.dev.deploy;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.Logger;
@@ -36,10 +37,10 @@ public abstract class DeployBase
 	public void copyDirectory(
 			File source, 
 			File destination, 
-			HashMap<String, Object> directoriesToCopy, 
-			HashMap<String, Object> directoriesToMake,
-			HashMap<String, Object> filesToxclude,
-			HashMap<String, Object> fileTypesToxclude) throws IOException 
+			Map<String, Object> directoriesToCopy, 
+			Map<String, Object> directoriesToMake,
+			Map<String, Object> filesToxclude,
+			Map<String, Object> fileTypesToxclude) throws IOException 
 	{
 		File nextDirectory = new File(destination, source.getName());
 		String sourceDirName = source.getName();

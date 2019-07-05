@@ -219,6 +219,6 @@ public class AARClaimPanel extends ImageResizingPanel implements ActionListener
 
 	private void setMapForDebrief() throws PWCGException
 	{	    
-        PWCGContextManager.getInstance().changeContext(AARCoordinator.getInstance().getAarContext().getPreliminaryData().getClaimPanelData().getMapId());
+        PWCGContextManager.getInstance().changeContext(AARCoordinator.getInstance().getAarContext().getPreliminaryData().getPwcgMissionData().getMapId());
 	}
 }

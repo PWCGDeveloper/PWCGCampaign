@@ -147,5 +147,6 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
 
         SquadronMemberReplacer squadronMemberReplacer = new SquadronMemberReplacer(campaign);
         squadronMemberReplacer.createPilot(playerName, rank, squadronName, coopuser);
+        campaign.write();
     }
 }

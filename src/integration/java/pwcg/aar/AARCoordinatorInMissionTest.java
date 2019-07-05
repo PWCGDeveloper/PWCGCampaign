@@ -72,7 +72,7 @@ public class AARCoordinatorInMissionTest
 
     private void makePreliminary() throws PWCGException
     {
-        PreliminaryDataBuilder preliminaryDataBuilder = new PreliminaryDataBuilder(campaign, squadronsInMission);
+        TestPreliminaryDataBuilder preliminaryDataBuilder = new TestPreliminaryDataBuilder(campaign, squadronsInMission);
         AARPreliminaryData preliminaryData = preliminaryDataBuilder.makePreliminaryForTestMission();
         aarCoordinator.getAarContext().setPreliminaryData(preliminaryData);
     }

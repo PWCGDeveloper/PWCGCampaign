@@ -22,7 +22,6 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -97,7 +96,6 @@ public class AARClaimPanelEventTabulatorTest
         AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData, Side.AXIS);
         AARClaimPanelData claimPanelData = claimPanelEventTabulator.tabulateForAARClaimPanel();
         assert (claimPanelData.getEnemyPlaneTypesInMission().size() == 2);
-        assert (claimPanelData.getMapId() == FrontMapIdentifier.STALINGRAD_MAP);
         
     }
     
@@ -110,7 +108,6 @@ public class AARClaimPanelEventTabulatorTest
         AARClaimPanelEventTabulator claimPanelEventTabulator = new AARClaimPanelEventTabulator(campaign, aarPreliminarytData, Side.ALLIED);
         AARClaimPanelData claimPanelData = claimPanelEventTabulator.tabulateForAARClaimPanel();
         assert (claimPanelData.getEnemyPlaneTypesInMission().size() == 1);
-        assert (claimPanelData.getMapId() == FrontMapIdentifier.STALINGRAD_MAP);
         
     }
 }
