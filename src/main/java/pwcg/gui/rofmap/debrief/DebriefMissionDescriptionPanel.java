@@ -6,6 +6,8 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -13,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import pwcg.aar.AARCoordinator;
+import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -34,6 +37,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
     private SquadronMember referencePlayer = null;
     private AARCoordinator aarCoordinator;
     private CampaignHomeGUI homeGui;
+    private Campaign campaign;
 
 	private static final long serialVersionUID = 1L;
     private JTextArea missionTextArea = new JTextArea();
@@ -44,6 +48,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
 	    
     	this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
         this.homeGui = homeGui;        
+        this.campaign = campaign;        
         this.aarCoordinator = AARCoordinator.getInstance();
 	}
 
@@ -76,7 +81,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
         buttonGrid.setLayout(new GridLayout(0,1));
         buttonGrid.setOpaque(false);
             
-        JButton submitButton = PWCGButtonFactory.makeMenuButton("Claims", "Claims", this);
+        JButton submitButton = PWCGButtonFactory.makeMenuButton("Continue", "Continue", this);
         buttonGrid.add(submitButton);
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
@@ -160,9 +165,16 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
             {
                 backToCampaign();
             }
-            else if (action.equals("Claims"))
+            else if (action.equals("Continue"))
             {
-                showClaims();
+                if (campaign.getCampaignData().isCoop())
+                {
+                    submitReportDirectlyForCoop();
+                }
+                else
+                {
+                    showClaims();
+                }
             }
         }
         catch (Exception e)
@@ -179,6 +191,34 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
         AARPanelSet combatReportDisplay = new AARPanelSet(homeGui);
         combatReportDisplay.makePanel();
         CampaignGuiContextManager.getInstance().pushToContextStack(combatReportDisplay);
+    }
+    
+    
+    private void submitReportDirectlyForCoop() throws PWCGException
+    {
+        SoundManager.getInstance().playSound("Stapling.WAV");   
+        AARSubmitter submitter = new AARSubmitter();
+        Map<Integer, PlayerDeclarations> playerDeclarations = new HashMap<>();
+        String aarError = submitter.submitAAR(playerDeclarations);
+        if (aarError != null && !aarError.isEmpty())
+        {
+            ErrorDialog.internalError("Error during AAR process - please post " + aarError);
+        }
+        else
+        {
+            showDebrief();
+        }
+    }   
+
+
+    private void showDebrief() throws PWCGException 
+    {
+        DebriefMapGUI debriefMap = new DebriefMapGUI(campaign, homeGui);
+        debriefMap.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(debriefMap);
+    
+        // Reset the mission after a combat report has been submitted
+        campaign.setCurrentMission(null);
     }
 
     private void backToCampaign() throws PWCGException

@@ -65,8 +65,7 @@ public class AARPanelSet extends AARPanel implements ActionListener
 		JPanel infoPanel = makeInfoPanel();
 		aarMainPanel.add(infoPanel, BorderLayout.NORTH);
 		
-		aarClaimPanel = makeAARPanel();
-		aarMainPanel.add(aarClaimPanel, BorderLayout.CENTER);
+        invokesClaimsForSinglePlayer(aarMainPanel);
 		
 		return aarMainPanel;
 	}
@@ -174,7 +173,8 @@ public class AARPanelSet extends AARPanel implements ActionListener
             
             if (action.equalsIgnoreCase("Submit Report"))
             {
-                submitReport();
+                Map<Integer, PlayerDeclarations> playerDeclarations = aarClaimPanel.getPlayerDeclarations();
+                submitReport(playerDeclarations);
             }
             else if (action.equals("Cancel"))
             {
@@ -198,15 +198,18 @@ public class AARPanelSet extends AARPanel implements ActionListener
             ErrorDialog.internalError(e.getMessage());
         }
     }
-	
-    private void submitReport() throws PWCGException
+
+    private void invokesClaimsForSinglePlayer(ImageResizingPanel aarMainPanel) throws PWCGException
     {
-        SoundManager.getInstance().playSound("Stapling.WAV");
-   
-        Map<Integer, PlayerDeclarations> playerDeclarations = aarClaimPanel.getPlayerDeclarations();
-        
-        AARCoordinator.getInstance().submitAAR(playerDeclarations);
-        String aarError = AARCoordinator.getInstance().getErrorBundleFileName();
+        aarClaimPanel = makeAARPanel();
+        aarMainPanel.add(aarClaimPanel, BorderLayout.CENTER);
+    }
+    
+    private void submitReport(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
+    {
+        SoundManager.getInstance().playSound("Stapling.WAV");   
+        AARSubmitter submitter = new AARSubmitter();
+        String aarError = submitter.submitAAR(playerDeclarations);
         if (aarError != null && !aarError.isEmpty())
         {
             ErrorDialog.internalError("Error during AAR process - please post " + aarError);
@@ -219,9 +222,9 @@ public class AARPanelSet extends AARPanel implements ActionListener
 
     private void showDebrief() throws PWCGException 
     {
-        DebriefMapGUI debriefGMap = new DebriefMapGUI(campaign, home);
-        debriefGMap.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(debriefGMap);
+        DebriefMapGUI debriefMap = new DebriefMapGUI(campaign, home);
+        debriefMap.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(debriefMap);
 
         // Reset the mission after a combat report has been submitted
         campaign.setCurrentMission(null);
