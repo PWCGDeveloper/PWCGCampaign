@@ -28,6 +28,7 @@ public class ColorMap
 	public static final Color PAPER_FOREGROUND = new Color(0, 0, 0);
 	public static final Color PAPERPART_BACKGROUND = new Color(215, 210, 190);
 	public static final Color PAPERPART_FOREGROUND = new Color(0, 0, 0);
+    public static final Color PAPER_OFFSET = new Color(250, 235, 210);
 	public static final Color NEWSPAPER_BACKGROUND = new Color(230, 225, 210);
 	public static final Color NEWSPAPER_FOREGROUND = new Color(0, 0, 0);
 	public static final Color WOOD_BACKGROUND = new Color(65, 65, 60);

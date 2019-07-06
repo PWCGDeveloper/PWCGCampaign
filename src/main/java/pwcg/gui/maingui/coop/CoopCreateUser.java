@@ -9,10 +9,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 import pwcg.campaign.io.json.CoopUserIOJson;
 import pwcg.coop.model.CoopUser;
@@ -67,15 +69,21 @@ public class CoopCreateUser extends ImageResizingPanel implements ActionListener
 	    JPanel centerPanel = new JPanel();
 	    centerPanel.setLayout(new BorderLayout());
 	    centerPanel.setOpaque(false);
+
+	    JPanel dataEntryPanel = new JPanel();
+	    dataEntryPanel.setLayout(new BorderLayout());
+	    dataEntryPanel.setOpaque(false);
 	    
 		JPanel descPanel = buildCoopUserLabel(font);
 		JPanel textPanel = buildCoopUserTextField(font);
 		JPanel buttonPanel = buildCoopUserButtons(font);
 
-        centerPanel.add(descPanel, BorderLayout.WEST);
-        centerPanel.add(textPanel, BorderLayout.CENTER);
-        centerPanel.add(buttonPanel, BorderLayout.EAST);
+        dataEntryPanel.add(descPanel, BorderLayout.WEST);
+        dataEntryPanel.add(textPanel, BorderLayout.CENTER);
+        dataEntryPanel.add(buttonPanel, BorderLayout.SOUTH);
 
+        centerPanel.add(dataEntryPanel, BorderLayout.NORTH);
+        
 		return centerPanel;
 
 	}
@@ -114,7 +122,11 @@ public class CoopCreateUser extends ImageResizingPanel implements ActionListener
 	    createUserButton.setActionCommand("Create Coop User");
 	    createUserButton.addActionListener(this);
 	    createUserButton.setFont(font);
-	    createUserButton.setBackground(ColorMap.PAPER_BACKGROUND);
+	    createUserButton.setBackground(ColorMap.PAPER_OFFSET);
+	    
+	    Border raisedBorder = BorderFactory.createRaisedBevelBorder();
+	    createUserButton.setBorder(raisedBorder);
+
 	    controlPanel.add(createUserButton);
 		return controlPanel;
 	}

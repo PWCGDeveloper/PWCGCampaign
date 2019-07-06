@@ -5,11 +5,14 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.colors.ColorMap;
@@ -45,7 +48,7 @@ public class PWCGButtonFactory extends JButton
 
     public static JButton makePaperButtonWithBorder(String buttonText, String commandText, ActionListener actionListener) throws PWCGException 
     {
-        Color bgColor = ColorMap.PAPER_BACKGROUND;
+        Color bgColor = ColorMap.PAPER_OFFSET;
         Color fgColor = ColorMap.PAPER_FOREGROUND;
         Font font = MonitorSupport.getPrimaryFont();
         
@@ -139,13 +142,16 @@ public class PWCGButtonFactory extends JButton
         button.setActionCommand(commandText);
         button.setBackground(bgColor);
         button.setForeground(fgColor);
-        button.setOpaque(false);
+        button.setOpaque(true);
         button.setFont(font);
         button.setBorderPainted(true);
         button.setHorizontalAlignment(SwingConstants.CENTER);
         button.addActionListener(actionListener);
         
-        button.setBorder(new RoundedBorder(8)); //10 is the radius
+        //Border raisedBorder = BorderFactory.createRaisedBevelBorder();
+        //button.setBorder(new RoundedBorder(8)); //10 is the radius
+        Border raisedBorder = BorderFactory.createSoftBevelBorder(BevelBorder.RAISED);
+        button.setBorder(raisedBorder); 
 
         return button;
     }
