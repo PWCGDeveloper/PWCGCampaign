@@ -56,7 +56,9 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         targetDefinition.setTargetPosition(targetLocation);
         targetDefinition.setTargetOrientation(new Orientation());
         
-        if (flightInformation.getFlightType() == FlightTypes.INTERCEPT || flightInformation.getFlightType() == FlightTypes.HOME_DEFENSE)
+        if (flightInformation.getFlightType() == FlightTypes.INTERCEPT || 
+            flightInformation.getFlightType() == FlightTypes.HOME_DEFENSE || 
+            flightInformation.getFlightType() == FlightTypes.SCRAMBLE)
         {
             buildLinkedFlightTagetDefinition();
         }

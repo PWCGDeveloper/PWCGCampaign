@@ -20,7 +20,7 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
 
-public class PlayerFlightTypeBoSTest
+public class PlayerFlightTypeBoSTransportTest
 {
     Campaign campaign;
 
