@@ -126,7 +126,7 @@ public class AARPhase3ReconcileCoordinatorTest
             playerDeclarationSet.addDeclaration(declaration);
         }
         
-        playerDeclarations.put(campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0).getSerialNumber(), playerDeclarationSet);
+        playerDeclarations.put(campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0).getSerialNumber(), playerDeclarationSet);
     }
 
     private void createVictory(LogPlane victor, Integer pilotSerialNumber, Integer planeSerialNumber)
@@ -149,7 +149,7 @@ public class AARPhase3ReconcileCoordinatorTest
 
     private void createCampaignMembersInMission() throws PWCGException
     {        
-        playerInFlight = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+        playerInFlight = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
         addSquadronPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
         playerPlaneVictor.setPilotSerialNumber(playerInFlight.getSerialNumber());
         playerPlaneVictor.setCountry(new RoFCountry(Country.FRANCE));

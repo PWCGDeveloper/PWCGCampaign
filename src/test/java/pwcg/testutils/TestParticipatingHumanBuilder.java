@@ -10,7 +10,7 @@ public class TestParticipatingHumanBuilder
     public static MissionHumanParticipants buildTestParticipatingHumans(Campaign campaign) throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        for (SquadronMember player: campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
+        for (SquadronMember player: campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
         {
             participatingPlayers.addSquadronMember(player);
         }

@@ -101,7 +101,7 @@ public class CoopPlayerInclusionTest
     
     private SquadronMember getSquadronMemberByName(String pilotName) throws PWCGException
     {
-    	for (SquadronMember player : coopCampaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
+    	for (SquadronMember player : coopCampaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
     	{
     		if (player.getName().contentEquals(pilotName))
     		{

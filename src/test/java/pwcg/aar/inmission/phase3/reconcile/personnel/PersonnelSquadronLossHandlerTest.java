@@ -45,7 +45,7 @@ public class PersonnelSquadronLossHandlerTest
     @Test
     public void testEverybodyKilled() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
         addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_KIA);
 
         SquadronMember SergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");
@@ -70,7 +70,7 @@ public class PersonnelSquadronLossHandlerTest
     @Test
     public void testMixedStatusWithMaimed() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
         addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
 
         SquadronMember sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");
@@ -96,7 +96,7 @@ public class PersonnelSquadronLossHandlerTest
     @Test
     public void testMixedStatusWithCaptured() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
         addPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_CAPTURED);
 
         SquadronMember sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");

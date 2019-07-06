@@ -9,13 +9,15 @@ import pwcg.core.exception.PWCGException;
 
 public class CoopHostUserBuilder 
 {	
+    public static final String HOST_USER_NAME = "Host";
+        
 	public CoopUser getHostUser() throws PWCGException
     {
 		CoopUser hostUser = null;
         List<CoopUser> coopUsers = CoopUserIOJson.readCoopUsers();
         for (CoopUser coopUser : coopUsers)
         {
-            if (coopUser.getUsername().equals("Host"))
+            if (coopUser.getUsername().equals(HOST_USER_NAME))
             {
             	hostUser = coopUser;
             }
@@ -32,7 +34,7 @@ public class CoopHostUserBuilder
 	private CoopUser makeHostUser(String password) throws PWCGException
 	{
 		CoopUser hostUser = new CoopUser();
-		hostUser.setUsername("Host");
+		hostUser.setUsername(HOST_USER_NAME);
 		hostUser.setPassword(password);
 		hostUser.setApproved(true);
 		hostUser.setNote("Campaign Host");

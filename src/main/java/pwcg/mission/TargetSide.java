@@ -22,7 +22,7 @@ public class TargetSide
 	
 	private static Side determineSinglePlayerCampaignSide(Campaign campaign) throws PWCGException
 	{
-		SquadronMembers allPlayers = campaign.getPersonnelManager().getAllPlayers();
+		SquadronMembers allPlayers = campaign.getPersonnelManager().getAllActivePlayers();
 		return allPlayers.getSquadronMemberList().get(0).determineCountry(campaign.getDate()).getSide().getOppositeSide();
 	}
 	

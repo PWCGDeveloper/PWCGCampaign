@@ -32,7 +32,7 @@ import pwcg.gui.rofmap.event.AARMainPanel.EventPanelReason;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.gui.utils.ReferencePlayerFInder;
+import pwcg.gui.utils.ReferencePlayerFinder;
 import pwcg.gui.utils.ToolTipManager;
 
 public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
@@ -51,7 +51,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         super();
         this.parent = parent;
         this.campaign = campaign;
-        this.referencePlayer = ReferencePlayerFInder.findReferencePlayer(campaign);
+        this.referencePlayer = ReferencePlayerFinder.findReferencePlayer(campaign);
         
         PWCGContextManager.getInstance().setReferencePlayer(referencePlayer);
         

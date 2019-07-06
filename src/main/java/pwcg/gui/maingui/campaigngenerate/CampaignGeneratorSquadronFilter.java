@@ -7,6 +7,7 @@ import java.util.List;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.CampaignAces;
 import pwcg.campaign.context.AceManager;
+import pwcg.campaign.context.MapForAirfieldFinder;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.SquadronManager;
@@ -113,7 +114,7 @@ public class CampaignGeneratorSquadronFilter
 		}
 		
     	String airfieldName = squad.determineCurrentAirfieldName(campaignDate);
-    	List<FrontMapIdentifier> airfieldMaps = PWCGContextManager.getInstance().getMapForAirfield(airfieldName);
+    	List<FrontMapIdentifier> airfieldMaps = MapForAirfieldFinder.getMapForAirfield(airfieldName);
     	
     	for (FrontMapIdentifier airfieldMap : airfieldMaps)
     	{

@@ -48,8 +48,6 @@ public interface IPWCGContextManager
 
     IAirfield getAirfieldAllMaps(String airfieldName);
 
-    List<FrontMapIdentifier> getMapForAirfield(String airfieldName);
-
     IPayloadFactory getPayloadFactory() throws PWCGException;
 
     void initializeMap() throws PWCGException;
@@ -69,4 +67,6 @@ public interface IPWCGContextManager
 	void setReferencePlayer(SquadronMember referencePlayer);
 
 	SquadronMember getReferencePlayer();
+
+    List<PWCGMap> getMaps();
 }

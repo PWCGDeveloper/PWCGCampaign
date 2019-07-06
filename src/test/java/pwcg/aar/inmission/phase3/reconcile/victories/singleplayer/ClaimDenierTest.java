@@ -50,7 +50,7 @@ public class ClaimDenierTest
 
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(personnelManager.getAnyCampaignMember(Matchers.<Integer>any())).thenReturn(pilot);
-        Mockito.when(personnelManager.getAllPlayers()).thenReturn(playerMembers);   
+        Mockito.when(personnelManager.getAllActivePlayers()).thenReturn(playerMembers);   
         Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
         Mockito.when(pilot.determineSquadron()).thenReturn(squadron);
         Mockito.when(squadron.determineDisplayName(Mockito.any())).thenReturn("Esc 3");

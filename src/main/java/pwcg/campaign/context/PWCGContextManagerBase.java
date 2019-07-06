@@ -15,8 +15,6 @@ import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
@@ -77,11 +75,10 @@ public abstract class PWCGContextManagerBase implements IPWCGContextManager
         this.campaign = campaign;
         if (campaign != null)
         {
-        	Squadron representativePlayerSquadron = getRepresentativeSquadronForCampaign(campaign);
-            List<FrontMapIdentifier> mapIdentifiers = getMapForAirfield(representativePlayerSquadron.determineCurrentAirfieldName(campaign.getDate()));
-            if (mapIdentifiers.size() > 0)
+        	FrontMapIdentifier mapIdentifier = MapFinderForCampaign.findMapForCampaign(campaign);
+            if (mapIdentifier != null)
             {
-                changeContext(mapIdentifiers.get(0));
+                changeContext(mapIdentifier);
                 resetForMovingFront();
             }
         }
@@ -193,14 +190,6 @@ public abstract class PWCGContextManagerBase implements IPWCGContextManager
         return allMaps;
     }
 
-	private Squadron getRepresentativeSquadronForCampaign(Campaign campaign) throws PWCGException 
-	{
-		SquadronMembers players = campaign.getPersonnelManager().getAllPlayers();
-		SquadronMember representativePlayer = players.getSquadronMemberList().get(0);
-		Squadron representativePlayerSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(representativePlayer.getSquadronId());
-		return representativePlayerSquadron;
-	}
-
     @Override
     public IAirfield getAirfieldAllMaps(String airfieldName)
     {
@@ -225,27 +214,6 @@ public abstract class PWCGContextManagerBase implements IPWCGContextManager
 
         return airfield;
     }
-
-    @Override
-    public List<FrontMapIdentifier> getMapForAirfield(String airfieldName)
-    {
-        List<FrontMapIdentifier> mapsForAirfield = new ArrayList<>();
-        for (PWCGMap map : pwcgMaps.values())
-        {
-            AirfieldManager airfieldManager = map.getAirfieldManager();
-            if (airfieldManager != null)
-            {
-                IAirfield airfield = airfieldManager.getAirfield(airfieldName);
-                
-                if (airfield != null)
-                {
-                    mapsForAirfield.add(map.getMapIdentifier());
-                }
-            }
-        }
-
-        return mapsForAirfield;
-    }
     
     @Override
     public SquadronManager getSquadronManager()
@@ -269,6 +237,13 @@ public abstract class PWCGContextManagerBase implements IPWCGContextManager
     public PlaneTypeFactory getPlaneTypeFactory()
     {
         return planeTypeFactory;
+    }
+    
+
+    @Override
+    public List<PWCGMap> getMaps()
+    {
+        return new ArrayList<PWCGMap>(pwcgMaps.values());
     }
 
     @Override

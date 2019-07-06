@@ -46,8 +46,8 @@ public class CampaignPersonnelManagerTest
     @Test
     public void testPlayerRetrieval() throws PWCGException
     {
-    	assert(campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().size() == 1);
-    	SquadronMember playerByPlayers = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+    	assert(campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().size() == 1);
+    	SquadronMember playerByPlayers = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
         SquadronMember playerBySerialNumber = campaign.getPersonnelManager().getAnyCampaignMember(playerByPlayers.getSerialNumber());
         assert(playerBySerialNumber.isPlayer());
     }

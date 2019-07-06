@@ -52,7 +52,7 @@ public class CoopHostPassword extends ImageResizingPanel
         List<CoopUser> coopUsers = CoopUserIOJson.readCoopUsers();
         for (CoopUser coopUser : coopUsers)
         {
-            if (coopUser.getUsername().equals("Host"))
+            if (coopUser.getUsername().equals(CoopHostUserBuilder.HOST_USER_NAME))
             {
             	coopHostRecord = coopUser;
             }

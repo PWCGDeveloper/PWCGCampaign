@@ -61,7 +61,7 @@ public class AiDeclarationResolutionFirmTest
         Mockito.when(aarContext.getMissionEvaluationData()).thenReturn(evaluationData);
         Mockito.when(evaluationData.getVictoryResults()).thenReturn(firmVictories);   
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);   
-        Mockito.when(personnelManager.getAllPlayers()).thenReturn(playerMembers);   
+        Mockito.when(personnelManager.getAllActivePlayers()).thenReturn(playerMembers);   
         Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
 
         playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);

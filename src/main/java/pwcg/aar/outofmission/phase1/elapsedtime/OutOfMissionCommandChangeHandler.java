@@ -20,7 +20,7 @@ public class OutOfMissionCommandChangeHandler
     {
         AARPersonnelLosses personnelLosses = new AARPersonnelLosses();
         
-        for (SquadronMember player : campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
+        for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
         {
             if (player.determineIsSquadronMemberCommander())
             {

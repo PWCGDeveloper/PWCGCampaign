@@ -84,44 +84,44 @@ public abstract class CampaignCacheBase implements ICampaignCache
             
             if (model.isCoop())
             {
-	            List<SquadronMember> players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 1);
 	            
 	            addMorePilotsForCoop(campaign, "Squadron Mate", "Leutnant", SquadrontTestProfile.COOP_PROFILE.getSquadronId());
-	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 2);
 	            
 	            addMorePilotsForCoop(campaign, "Friendly Fighter", "Leutnant", 20112052);
-	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 3);
 	            
 	            addMorePilotsForCoop(campaign, "Friendly Bombermaj", "Major", 20131053);
-	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 4);
 	            
 	            addMorePilotsForCoop(campaign, "Friendly Bombercpt", "Hauptmann", 20131053);
-	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 5);
 	            
 	            addMorePilotsForCoop(campaign, "Friendly Divebomber", "Oberleutnant", 20122077);
-	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 6);
 	            
 	            
 	            addMorePilotsForCoop(campaign, "Enemy Fighter", "Leyitenant", 10111011);
-	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 7);
 	            
 	            addMorePilotsForCoop(campaign, "Enemy Bomber", "Major", 10131132);
-	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 8);
 	            
 	            addMorePilotsForCoop(campaign, "Enemy Bomber", "Kapitan", 10131132);
-	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 9);
 	            
 	            addMorePilotsForCoop(campaign, "Enemy Groundattack", "Starshyi Leyitenant", 10121503);
-	            players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 10);
 	            
             }

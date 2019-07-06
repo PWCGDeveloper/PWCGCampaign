@@ -14,7 +14,7 @@ public class CoopHostPilotBuilder
     {
         if (campaign.getCampaignData().isCoop())
         {
-        	SquadronMember hostPilot = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+        	SquadronMember hostPilot = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
         	
         	CoopHostUserBuilder hostBuilder = new CoopHostUserBuilder();
         	CoopUser coopHostRecord = hostBuilder.getHostUser();

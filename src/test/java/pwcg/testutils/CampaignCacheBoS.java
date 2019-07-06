@@ -62,7 +62,7 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
             writtenCampaign.write();
             
             MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        	for (SquadronMember player: writtenCampaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
+        	for (SquadronMember player: writtenCampaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
         	{
         		participatingPlayers.addSquadronMember(player);
         	}

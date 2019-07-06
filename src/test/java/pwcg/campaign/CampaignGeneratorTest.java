@@ -38,8 +38,8 @@ public class CampaignGeneratorTest
     public void createWWICampaign () throws PWCGException
     {        
     	Campaign campaign = generateCampaign(101003, DateUtils.getDateYYYYMMDD("19161001"));
-    	assert(campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().size() == 1);
-    	SquadronMember player = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+    	assert(campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().size() == 1);
+    	SquadronMember player = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
         assert (player.determineSquadron().getSquadronId() == 101003);
         assert (player.determineSquadron().determineSquadronCountry(campaign.getDate()).getCountry() == Country.FRANCE);
         assert (campaign.getCampaignData().getName().equals(CampaignCacheRoF.TEST_CAMPAIGN_NAME));

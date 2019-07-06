@@ -62,7 +62,7 @@ public class PersonnelResultsInMissionHandlerTest
 
     private void createSquadronMembersInMission() throws PWCGException
     {
-        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+        SquadronMember playerInFlight = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
         addSquadronPilot(playerInFlight.getSerialNumber(), SquadronMemberStatus.STATUS_WOUNDED);
 
         SquadronMember sergentInFlight = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Sergent");

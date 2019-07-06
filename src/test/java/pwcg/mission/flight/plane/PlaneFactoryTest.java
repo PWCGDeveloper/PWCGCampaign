@@ -64,7 +64,7 @@ public class PlaneFactoryTest
             assert(squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
             assert(plane.getCallsign() == Callsign.SEAGULL);
             assert(plane.getCallnum() == callnum++);
-            List<SquadronMember> players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+            List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
             for (SquadronMember player : players)
             {
                 if (plane.getPilot().getSerialNumber() == player.getSerialNumber())
@@ -88,7 +88,7 @@ public class PlaneFactoryTest
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
         List<PlaneMCU> assignedPlanes = planeFactory.createPlanesForFlight(4);
         
-        List<SquadronMember> players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+        List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
         boolean playerFound = false;
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());        
         int callnum = 1;

@@ -30,7 +30,7 @@ public class CampaignV5V6Converter
                 return;
             }
             
-            List<SquadronMember> players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+            List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
             if (players.size() != 1)
             {
                 return;

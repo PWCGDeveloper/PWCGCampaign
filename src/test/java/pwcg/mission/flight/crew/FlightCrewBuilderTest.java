@@ -49,7 +49,7 @@ public class FlightCrewBuilderTest
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
         List<SquadronMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
-        List<SquadronMember> players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+        List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
         boolean playerFound = false;
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadrontTestProfile.KG53_PROFILE.getSquadronId());        
         for (SquadronMember crew : assignedCrewMap)
@@ -74,7 +74,7 @@ public class FlightCrewBuilderTest
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
         List<SquadronMember> assignedCrewMap = flightCrewBuilder.createCrewAssignmentsForFlight(4);
         
-        List<SquadronMember> players = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+        List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());        
         boolean playerFound = false;
         for (SquadronMember crew : assignedCrewMap)

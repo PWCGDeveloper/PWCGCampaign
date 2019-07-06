@@ -38,7 +38,7 @@ public class FlightCrewBuilderCoopTest
     public void testOneOfTwoPlayerFlightGeneration() throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-    	for (SquadronMember player : coopCampaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
+    	for (SquadronMember player : coopCampaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
     	{
     		if (player.getName().contentEquals("Squadron Mate"))
     		{
@@ -80,7 +80,7 @@ public class FlightCrewBuilderCoopTest
     public void testTwoPlayerFlightGeneration() throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-    	for (SquadronMember player : coopCampaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
+    	for (SquadronMember player : coopCampaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
     	{
     		if (player.getSquadronId() == SquadrontTestProfile.COOP_PROFILE.getSquadronId())
     		{
@@ -123,7 +123,7 @@ public class FlightCrewBuilderCoopTest
     public void testTwoPlayerEnemySquadronFlightGeneration() throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-    	for (SquadronMember player : coopCampaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
+    	for (SquadronMember player : coopCampaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
     	{
     		if (player.getSquadronId() == 10131132)
     		{

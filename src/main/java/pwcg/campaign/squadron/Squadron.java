@@ -17,6 +17,7 @@ import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontLinePoint;
+import pwcg.campaign.context.MapForAirfieldFinder;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
@@ -540,7 +541,7 @@ public class Squadron
         squadronInfo.append("Airfield: " + determineCurrentAirfieldName(campaignDate) + "\n");
         
     	String airfieldName = determineCurrentAirfieldName(campaignDate);
-    	List<FrontMapIdentifier> airfieldMapIdentifiers = PWCGContextManager.getInstance().getMapForAirfield(airfieldName);
+    	List<FrontMapIdentifier> airfieldMapIdentifiers = MapForAirfieldFinder.getMapForAirfield(airfieldName);
     	PWCGMap map = PWCGContextManager.getInstance().getMapByMapId(airfieldMapIdentifiers.get(0));
         squadronInfo.append("Map: " + map.getMapName() + "\n");
 

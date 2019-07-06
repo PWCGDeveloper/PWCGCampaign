@@ -35,7 +35,7 @@ public class MissionBorderBuilderTest
     @Test
     public void singlePlayerMissionBoxTest() throws PWCGException
     {
-        SquadronMember player = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+        SquadronMember player = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
         participatingPlayers.addSquadronMember(player);
         
         for (int i = 0; i < 10; ++i)
@@ -56,7 +56,7 @@ public class MissionBorderBuilderTest
     @Test
     public void multiPlayerMissionBoxTest() throws PWCGException
     {
-        for (SquadronMember player: campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
+        for (SquadronMember player: campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
         {
             participatingPlayers.addSquadronMember(player);
         }

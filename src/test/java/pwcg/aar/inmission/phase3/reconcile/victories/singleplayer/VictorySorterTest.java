@@ -39,7 +39,7 @@ public class VictorySorterTest
         players.add(player);
         
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);   
-        Mockito.when(personnelManager.getAllPlayers()).thenReturn(playerMembers);   
+        Mockito.when(personnelManager.getAllActivePlayers()).thenReturn(playerMembers);   
         Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
 
         Mockito.when(player.getCountry()).thenReturn(Country.FRANCE);        

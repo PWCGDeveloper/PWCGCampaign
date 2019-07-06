@@ -53,7 +53,7 @@ public class ElapsedTimeEventGeneratorTest
         Mockito.when(aarContext.getNewDate()).thenReturn(newDate);
         
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
-        Mockito.when(personnelManager.getAllPlayers()).thenReturn(playerMembers);
+        Mockito.when(personnelManager.getAllActivePlayers()).thenReturn(playerMembers);
         List<SquadronMember> players = new ArrayList<>();
         players.add(player);
         Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   

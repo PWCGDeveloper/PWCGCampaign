@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.context.MapForAirfieldFinder;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.ArmedServiceFactory;
@@ -73,7 +74,7 @@ public class CampaignGenerator
     {
         Squadron squad = PWCGContextManager.getInstance().getSquadronManager().getSquadronByName(generatorModel.getSquadronName(), generatorModel.getCampaignDate());
         IAirfield airfield = squad.determineCurrentAirfieldAnyMap(generatorModel.getCampaignDate());
-        List<FrontMapIdentifier> airfieldMaps = PWCGContextManager.getInstance().getMapForAirfield(airfield.getName());
+        List<FrontMapIdentifier> airfieldMaps = MapForAirfieldFinder.getMapForAirfield(airfield.getName());
         FrontMapIdentifier initialAirfieldMap = airfieldMaps.get(0);
 
         PWCGContextManager.getInstance().changeContext(initialAirfieldMap);

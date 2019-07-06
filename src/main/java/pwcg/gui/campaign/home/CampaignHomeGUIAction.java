@@ -34,7 +34,7 @@ import pwcg.gui.rofmap.event.AARMainPanel.EventPanelReason;
 import pwcg.gui.rofmap.intelmap.IntelMapGUI;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
-import pwcg.gui.utils.ReferencePlayerFInder;
+import pwcg.gui.utils.ReferencePlayerFinder;
 import pwcg.gui.utils.UIUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionHumanParticipants;
@@ -327,7 +327,7 @@ public class CampaignHomeGUIAction
     private MissionHumanParticipants buildParticipatingPlayersSinglePlayer()
     {
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-	    SquadronMember referencePlayer = ReferencePlayerFInder.findReferencePlayer(campaign);
+	    SquadronMember referencePlayer = ReferencePlayerFinder.findReferencePlayer(campaign);
         participatingPlayers.addSquadronMember(referencePlayer);        
         return participatingPlayers;
     }

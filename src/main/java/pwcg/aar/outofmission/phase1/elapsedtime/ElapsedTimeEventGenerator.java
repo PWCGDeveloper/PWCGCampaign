@@ -48,7 +48,7 @@ public class ElapsedTimeEventGenerator
     private void squadronMove() throws PWCGException
     {
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
-        for (SquadronMember player : campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList())
+        for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
         {
 	        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(aarContext.getNewDate(), player.determineSquadron());
 	        if (squadronMoveEvent != null)

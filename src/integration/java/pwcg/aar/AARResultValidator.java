@@ -19,7 +19,7 @@ public class AARResultValidator
 
     public void validateInMission(int playerMissionsFlown, int expectedPlayerVictories) throws PWCGException
     {
-        SquadronMember player = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+        SquadronMember player = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
         assert(campaign.getDate().after(DateUtils.getDateYYYYMMDD("19411101")));
         assert(player.getVictories().size() == expectedResults.getPlayerAirVictories());
         assert(player.getGroundVictories().size() == expectedResults.getPlayerGroundVictories());
@@ -38,7 +38,7 @@ public class AARResultValidator
 
     public void validateLeave() throws PWCGException
     {
-        SquadronMember player = campaign.getPersonnelManager().getAllPlayers().getSquadronMemberList().get(0);
+        SquadronMember player = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
         assert(campaign.getDate().after(DateUtils.getDateYYYYMMDD("19411101")));
         assert(player.getVictories().size() == 0);
         assert(player.getGroundVictories().size() == 0);

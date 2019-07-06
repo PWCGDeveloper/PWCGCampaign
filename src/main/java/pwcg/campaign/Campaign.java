@@ -223,7 +223,7 @@ public class Campaign
 
 	public boolean isBattle() throws PWCGException
 	{
-        for (SquadronMember player : this.personnelManager.getAllPlayers().getSquadronMemberList())
+        for (SquadronMember player : this.personnelManager.getAllActivePlayers().getSquadronMemberList())
         {
             Squadron squadron =  PWCGContextManager.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
 		    if (PWCGContextManager.getInstance().getBattleManager().getBattleForCampaign(this.campaignData.getCampaignMap(), squadron.determineCurrentPosition(this.getDate()), this.getDate()) != null)
@@ -237,7 +237,7 @@ public class Campaign
 	
     public boolean isFighterCampaign() throws PWCGException 
     {
-        for (SquadronMember player : this.personnelManager.getAllPlayers().getSquadronMemberList())
+        for (SquadronMember player : this.personnelManager.getAllActivePlayers().getSquadronMemberList())
         {
             Squadron squadron =  PWCGContextManager.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
             if (squadron.isSquadronThisPrimaryRole(getDate(), Role.ROLE_FIGHTER))
@@ -272,7 +272,7 @@ public class Campaign
     		return true;
     	}
     	
-        for (SquadronMember player : this.personnelManager.getAllPlayers().getSquadronMemberList())
+        for (SquadronMember player : this.personnelManager.getAllActivePlayers().getSquadronMemberList())
         {
             if (player.getPilotActiveStatus() > SquadronMemberStatus.STATUS_CAPTURED)
             {
@@ -285,7 +285,7 @@ public class Campaign
 
     public boolean isCampaignCanFly() throws PWCGException
     {
-        for (SquadronMember player : this.personnelManager.getAllPlayers().getSquadronMemberList())
+        for (SquadronMember player : this.personnelManager.getAllActivePlayers().getSquadronMemberList())
         {
             if (player.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
             {
@@ -318,7 +318,7 @@ public class Campaign
 
     private SquadronMember getReferenceCampaignMember() throws PWCGException
     {
-        List<SquadronMember> players = this.getPersonnelManager().getAllPlayers().getSquadronMemberList();
+        List<SquadronMember> players = this.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
         int index = RandomNumberGenerator.getRandom(players.size());
         SquadronMember referencePlayer = players.get(index);
         return referencePlayer;
@@ -422,7 +422,7 @@ public class Campaign
     {
         List<Squadron> playerSquadrons = new ArrayList<>();
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
-        for (SquadronMember player : personnelManager.getAllPlayers().getSquadronMemberList())
+        for (SquadronMember player : personnelManager.getAllActivePlayers().getSquadronMemberList())
         {
             Squadron playerSquadron = squadronManager.getSquadron(player.getSquadronId());
             playerSquadrons.add(playerSquadron);
