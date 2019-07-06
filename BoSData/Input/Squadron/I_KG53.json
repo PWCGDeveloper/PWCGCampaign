@@ -12,14 +12,14 @@
     },
     {
       "archType": "me262",
-      "squadronIntroduction": "19440801",
+      "squadronIntroduction": "19441001",
       "squadronWithdrawal": "19450601"
     }
   ],
   "conversionPeriods": [
     {
       "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440731"
+      "conversionCompleteDate": "19441001"
     }
   ],  
   "airfields": {

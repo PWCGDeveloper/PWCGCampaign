@@ -18,11 +18,11 @@
     {
       "archType": "fw190d",
       "squadronIntroduction": "19441001",
-      "squadronWithdrawal": "19450207"
+      "squadronWithdrawal": "19450131"
     },
     {
       "archType": "me262",
-      "squadronIntroduction": "19450208",
+      "squadronIntroduction": "19450201",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -36,8 +36,8 @@
       "conversionCompleteDate": "19440731"
     },
     {
-      "conversionStartDate": "19450201",
-      "conversionCompleteDate": "19450208"
+      "conversionStartDate": "19450120",
+      "conversionCompleteDate": "19450201"
     }
     
   ],  
@@ -129,7 +129,7 @@
         "skill": 70
       },
       {
-        "date": "19450207",
+        "date": "19450201",
         "squadName": "I./JG44",
         "armedServiceName": "Luftwaffe",
         "skill": 90
@@ -168,12 +168,16 @@
         ]
       },
       {
-        "startDate": "19450202",
+        "startDate": "19450201",
         "endDate": "19450601",
         "weightedRoles": [
           {
             "role": "ROLE_FIGHTER",
-            "weight": 100
+            "weight": 90
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 10
           }
         ]
       }

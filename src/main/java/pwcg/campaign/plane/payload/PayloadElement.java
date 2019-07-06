@@ -44,13 +44,15 @@ public enum PayloadElement
     KG50x7(PayloadElementCategory.ORDNANCE_BOMB, "50 kg Bomb x7", 350),
     KG100x7(PayloadElementCategory.ORDNANCE_BOMB, "100 kg Bomb x7", 700),
     KG100x4(PayloadElementCategory.ORDNANCE_BOMB, "100 kg Bomb x4", 400),
+    KG250x2(PayloadElementCategory.ORDNANCE_BOMB, "250 kg Bomb x2", 500),
     KG300x1(PayloadElementCategory.ORDNANCE_BOMB, "300 kg Bomb x1", 300),
     LE_PRIEUR_ROCKETS(PayloadElementCategory.ORDNANCE_BOMB, "Le Prieur rockets", 20),
 
     //WW II
     BUBBLE_CANOPY(PayloadElementCategory.PLANE_PART, "Bubble Canopy", 0),
     REMOVE_HEADREST(PayloadElementCategory.PLANE_PART, "Remove Headrest", 0),
-	GLASS_HEADREST(PayloadElementCategory.PLANE_PART, "Glass Headrest", 0),
+    GLASS_HEADREST(PayloadElementCategory.PLANE_PART, "Glass Headrest", 0),
+    ARMORED_HEADREST(PayloadElementCategory.PLANE_PART, "Armored Headrest", 0),
 	ARMORED_WINDSCREEN(PayloadElementCategory.PLANE_PART, "Armored Windscreen", 10),
     WINDSCREEN(PayloadElementCategory.PLANE_PART, "Windscreen", 2),
     MIRROR(PayloadElementCategory.PLANE_PART, "Mirror", 0),
@@ -60,6 +62,8 @@ public enum PayloadElement
     SIREN(PayloadElementCategory.PLANE_PART, "Siren", 5),
     SPITFIRE_IX_WINGTIPS(PayloadElementCategory.PLANE_PART, "Clipped Wings", 0),
     EXTRA_ARMOR(PayloadElementCategory.PLANE_PART, "Armor", 300),
+    REMOVE_ARMOR(PayloadElementCategory.PLANE_PART, "Remove Armor", 300),
+    AUTO_VALVE(PayloadElementCategory.PLANE_PART, "Auto Valve", 0),
 	TURRET(PayloadElementCategory.PLANE_PART, "Turret", 250),
     BELLY_TURRET(PayloadElementCategory.PLANE_PART, "Belly Turret", 250),
     NOSE_TURRET(PayloadElementCategory.PLANE_PART, "Nose Turret", 250),
@@ -84,6 +88,7 @@ public enum PayloadElement
 
 	STANDARD(PayloadElementCategory.WEAPON, "Standard Payload", 0),
     ADDITIONAL_AMMO(PayloadElementCategory.WEAPON, "Additional Ammo", 200),
+    REMOVE_INNER_GUNS(PayloadElementCategory.WEAPON, "Remove Inner Guns", 0),
 
     MAB_250(PayloadElementCategory.ORDNANCE_BOMB, "MAB 250", 1000),
 	FAB50SV_X2(PayloadElementCategory.ORDNANCE_BOMB, "50 kg Bomb x2", 100),

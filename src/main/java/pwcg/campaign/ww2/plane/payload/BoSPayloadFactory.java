@@ -36,6 +36,7 @@ import pwcg.campaign.ww2.plane.payload.aircraft.La5NS2Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.La5S8Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Lagg3S29Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Ma202Ser8Payload;
+import pwcg.campaign.ww2.plane.payload.aircraft.Me262APayload;
 import pwcg.campaign.ww2.plane.payload.aircraft.MiG3Ser24Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.P39L1Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.P40E1Payload;
@@ -140,6 +141,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.Ma202_SER8)
         {
             return new Ma202Ser8Payload(planeType);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.ME262_A)
+        {
+            return new Me262APayload(planeType);
         }
 
         // Russian

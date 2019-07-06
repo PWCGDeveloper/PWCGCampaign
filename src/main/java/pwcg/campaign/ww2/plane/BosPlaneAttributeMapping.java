@@ -18,6 +18,7 @@ public enum BosPlaneAttributeMapping implements IPlaneAttributeMapping
     FW190_A5("fw190a5", "static_bf109_net"),
     FW190_A8("fw190a8", "static_bf109_net"),
     FW190_D9("fw190d9", "static_bf109_net"),
+    ME262_A("me262a", "static_bf109_net"),
         
     Ma202_SER8("mc202s8", "static_bf109_net"),
 

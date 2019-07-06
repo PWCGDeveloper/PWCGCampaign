@@ -1,0 +1,25 @@
+{
+  "type": "me262a",
+  "archType": "me262",
+  "side": "AXIS",
+  "primaryUsedBy": [
+    "GERMANY"
+  ],
+  "displayName": "Me-262 A",
+  "script": "LuaScripts\\WorldObjects\\Planes\\me262a.txt",
+  "model": "graphics\\planes\\fw190a3\\me262a.mgm",
+  "desc": "",
+  "cruisingSpeed": 500,
+  "climbOutRate": 1600,
+  "goodness": 99,
+  "endurance": 1.0,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19441001",
+  "endProduction": "19450601",
+  "withdrawal": "19450601"
+}

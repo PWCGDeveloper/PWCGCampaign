@@ -42,6 +42,8 @@ public class BoSContextManager extends PWCGContextManagerBase implements IPWCGCo
         campaignStartDates.add("01/10/1944");
         campaignStartDates.add("01/11/1944");
         campaignStartDates.add("01/12/1944");
+        campaignStartDates.add("01/01/1945");
+        campaignStartDates.add("01/02/1945");
     }
 
     @Override

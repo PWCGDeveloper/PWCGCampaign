@@ -229,7 +229,7 @@ public class PlaneTypeFactory
         return planeTypesForArchType;
     }
 
-    public List<PlaneType> createOlderPlaneTypesForArchType(String planeArchType, Date date) throws PWCGException
+    private List<PlaneType> createOlderPlaneTypesForArchType(String planeArchType, Date date) throws PWCGException
     {
         List<PlaneType> planeTypesForArchType = new ArrayList<>();
         for (PlaneType thisPlane : planeTypes.values())
