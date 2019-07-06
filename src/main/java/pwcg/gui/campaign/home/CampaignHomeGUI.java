@@ -41,7 +41,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
     
     private CampaignMainGUI parent = null;
     private Campaign campaign = null;
-    private SquadronMember referencePlayer = null;
+    private JButton changeReferencePilot = null;
     private JButton loneWolfMission = null;
     private List<JButton> activeButtons = new ArrayList<JButton>();
     private boolean needContextRefresh = false;
@@ -51,8 +51,8 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         super();
         this.parent = parent;
         this.campaign = campaign;
-        this.referencePlayer = ReferencePlayerFinder.findReferencePlayer(campaign);
         
+        SquadronMember referencePlayer = ReferencePlayerFinder.findReferencePlayer(campaign);
         PWCGContextManager.getInstance().setReferencePlayer(referencePlayer);
         
         this.makeGUI();
@@ -107,6 +107,12 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
         activeButtons.clear();
         
+        if (campaign.getCampaignData().isCoop())
+        {
+            changeReferencePilot = makeMenuButton("Change Reference Pilot", "CampChangeReferencePilot", "Change the reference pilot for the UI");
+            addButton(buttonPanel, changeReferencePilot);
+        }
+
         if (isDisplayMissionButton())
         {
             JButton createButton = makeMenuButton("Mission", "CampMission", "Generate a mission");

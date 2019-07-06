@@ -85,6 +85,10 @@ public class CampaignHomeGUIAction
                 Mission mission = missionInitiator.makeMission(true);
                 showBriefingMap(mission);
             }
+            else if (action.equalsIgnoreCase("CampChangeReferencePilot"))
+            {
+                showChangeReferencePilot();
+            }
             else if (action.equalsIgnoreCase("CampFlowTransfer"))
             {
                 showTransfer();
@@ -181,6 +185,13 @@ public class CampaignHomeGUIAction
     	CoopPilotChooser coopPilotChooser = new CoopPilotChooser(campaign, parent);
     	coopPilotChooser.makePanels();
         CampaignGuiContextManager.getInstance().pushToContextStack(coopPilotChooser);
+    }
+
+    private void showChangeReferencePilot() throws PWCGException
+    {
+        ReferencePilotSelector referencePilotSelector = new ReferencePilotSelector(campaign, parent);
+        referencePilotSelector.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(referencePilotSelector);
     }
 
     private void showTransfer() throws PWCGException 
