@@ -167,13 +167,13 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
             }
             else if (action.equals("Continue"))
             {
-                if (campaign.getCampaignData().isCoop())
+                if (aarCoordinator.getAarContext().getPreliminaryData().getPwcgMissionData().getMissionHeader().isSingleHumanSquadron())
                 {
-                    submitReportDirectlyForCoop();
+                    showClaims();
                 }
                 else
                 {
-                    showClaims();
+                    submitReportDirectlyForCoop();
                 }
             }
         }

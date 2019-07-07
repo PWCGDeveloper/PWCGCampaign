@@ -10,6 +10,7 @@ public class MissionHeader
     private String mapName;
     private String airfield = "";
     private String duty = "";
+    private boolean singleHumanSquadron = true;
     private int altitude = 100;
 
     public String getSquadron()
@@ -100,5 +101,15 @@ public class MissionHeader
     public void setMissionFileName(String missionFileName)
     {
         this.missionFileName = missionFileName;
+    }
+
+    public boolean isSingleHumanSquadron()
+    {
+        return singleHumanSquadron;
+    }
+
+    public void setSingleHumanSquadron(boolean singleHumanSquadron)
+    {
+        this.singleHumanSquadron = singleHumanSquadron;
     }
 }

@@ -38,6 +38,15 @@ public class MissionHeaderGenerator
         String formattedTime = DateUtils.getDateAsMissionFileFormat(campaign.getDate());
         missionHeader.setTime(formattedTime);
         
+        if (mission.getMissionFlightBuilder().getPlayerFlights().size() > 1)
+        {
+            missionHeader.setSingleHumanSquadron(false);
+        }
+        else
+        {
+            missionHeader.setSingleHumanSquadron(true);
+        }
+        
         return missionHeader;
     }
 }
