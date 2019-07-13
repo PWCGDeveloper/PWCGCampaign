@@ -5,7 +5,7 @@
   "primaryUsedBy": [
     "RUSSIA"
   ],
-  "displayName": "U2-VS",
+  "displayName": "U-2VS",
   "script": "LuaScripts\\WorldObjects\\Planes\\u2vs.txt",
   "model": "graphics\\planes\\u2vs\\u2vs.mgm",
   "desc": "",
