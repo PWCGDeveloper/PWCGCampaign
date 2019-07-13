@@ -112,11 +112,6 @@ public class PlayerFlightTypeCoopFighterTest
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_CAP);
-        for (PlaneMCU plane : flight.getPlanes())
-        {
-            assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
-        }
-        
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
         verifyEnemyFlights(campaign);
