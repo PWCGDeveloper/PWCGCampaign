@@ -51,17 +51,21 @@ public class BoSHotSpotTranslator implements IHotSpotTranslator
     {
     	if (numHotSPots > 6)
     	{
-    		return 3;
+    		return 5;
     	}
     	else if (numHotSPots > 4)
     	{
-    		return 2;
+    		return 4;
     	}
     	else if (numHotSPots > 2)
     	{
-    		return 1;
+    		return 2;
     	}
-    	
+        else if (numHotSPots > 1)
+        {
+            return 1;
+        }
+
     	return 0;
     }
 
