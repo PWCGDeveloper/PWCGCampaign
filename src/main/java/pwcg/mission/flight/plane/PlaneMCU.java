@@ -15,6 +15,7 @@ import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
@@ -154,15 +155,16 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
         }
     }
 
-    public boolean isPlayerPlane(Integer playerSerialNumber)
+    public boolean isActivePlayerPlane() throws PWCGException
     {
         boolean isPlayerPlane = false;
         if (getAiLevel() == AiSkillLevel.PLAYER)
         {
             isPlayerPlane = true;
         }
-
-        if (pilot.getSerialNumber() == playerSerialNumber)
+        
+        SquadronMembers squadronMembers = campaign.getPersonnelManager().getAllActivePlayers();
+        if (squadronMembers.isSquadronMember(serialNumber))
         {
             isPlayerPlane = true;
         }

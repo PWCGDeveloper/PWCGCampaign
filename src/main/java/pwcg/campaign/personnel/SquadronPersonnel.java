@@ -136,31 +136,30 @@ public class SquadronPersonnel
 
         return false;
     }
-    
-    public SquadronMembers getActivePlayers()
-    {
-        SquadronMembers activePlayers = new SquadronMembers();
-        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
-        {
-            if (squadronMember.getPilotActiveStatus() >= SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
-            {
-            	if (squadronMember.isPlayer())
-            	{
-            		activePlayers.addToSquadronMemberCollection(squadronMember);
-            	}
-            }
-        }
-
-        return activePlayers;
-    }
 
     public SquadronMembers getSquadronMembers()
     {
         return squadronMembers;
     }
 
+    public SquadronMembers getPlayersByStatus(int status)
+    {
+        SquadronMembers activePlayers = new SquadronMembers();
+        for (SquadronMember squadronMember : squadronMembers.getSquadronMemberList())
+        {
+            if (squadronMember.getPilotActiveStatus() >= status)
+            {
+                if (squadronMember.isPlayer())
+                {
+                    activePlayers.addToSquadronMemberCollection(squadronMember);
+                }
+            }
+        }
+        return activePlayers;
+    }
+
 	public boolean isPlayerCommander() throws PWCGException {
-		SquadronMembers players = getActivePlayers();
+		SquadronMembers players = getPlayersByStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
 		for (SquadronMember player : players.getSquadronMemberList())
 		{
             IRankHelper rank = RankFactory.createRankHelper();

@@ -1,25 +1,17 @@
 package pwcg.mission;
 
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.core.constants.AiSkillLevel;
+import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.options.MissionOptions;
 
-/**
- * Convert a mission to Coop
- * 
- * @author Patrick Wilson
- *
- */
+
 public class MissionCoopConverter
 {
-    /**
-     * Set coop parameters
-     * 
-     * @
-     */
 
-    public void convertToCoop(MissionFlightBuilder missionFlightBuilder) 
+    public void convertToCoop(MissionFlightBuilder missionFlightBuilder) throws PWCGException 
     {
         MissionOptions missionOptions = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions();
         missionOptions.setMissionType(MissionOptions.COOP_MISSION);
@@ -28,7 +20,15 @@ public class MissionCoopConverter
         {
             for (PlaneMCU plane : flight.getPlanes())
             {
-                plane.setCoopStart(1);
+                if (plane.isActivePlayerPlane())
+                {
+                    plane.setCoopStart(1);
+                    plane.setAiLevel(AiSkillLevel.ACE);
+                }
+                else
+                {
+                    plane.setCoopStart(0);
+                }
             }
         }
     }

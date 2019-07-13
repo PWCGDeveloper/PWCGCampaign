@@ -14,12 +14,14 @@ import javax.swing.JPanel;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.AARPilotEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.GreatAce;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.Logger;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.CampaignRosterBasePanelFactory;
@@ -271,12 +273,34 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
     public void createPilotContext() throws PWCGException 
     {
-		MusicManager.playCampaignTheme(campaign.determineCampaignSide());
+		MusicManager.playCampaignTheme(determineCampaignSideForMusic());
 
         CampaignRosterBasePanelFactory pilotListDisplay = new CampaignRosterSquadronPanelFactory(this);
         pilotListDisplay.makePilotList();
         createSquadronMemberContext(pilotListDisplay);
     }
+
+
+    private Side determineCampaignSideForMusic() throws PWCGException
+    {
+        if (campaign.getCampaignData().isCoop())
+        {
+            int diceRoll = RandomNumberGenerator.getRandom(100);
+            if (diceRoll < 50)
+            {
+                return Side.ALLIED;
+            }
+            else
+            {
+                return Side.AXIS;
+            }
+        }
+        else
+        {
+            SquadronMember referencePlayer = campaign.getReferenceCampaignMember();
+            return referencePlayer.determineCountry(campaign.getDate()).getSide();
+        }
+     }
 
     private void createTopAceContext() throws PWCGException 
     {

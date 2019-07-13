@@ -1,15 +1,20 @@
 package pwcg.mission;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.PWCGFlightFactoryFactory;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
@@ -109,7 +114,7 @@ public class AiFlightBuilder
         int squadronGeneratesFlightOdds = configManager.getIntConfigParam(ConfigItemKeys.SquadronGeneratesMissionOddsKey);
         int squadronGeneratesFlightModifier = configManager.getIntConfigParam(ConfigItemKeys.SquadronGeneratesMissionModifierKey);
         
-        if (!campaign.isBattle())
+        if (!isBattleForFlightGenerationOdds())
         {
             squadronGeneratesFlightOdds -= squadronGeneratesFlightModifier;
         }
@@ -124,4 +129,22 @@ public class AiFlightBuilder
             return false;
         }
     }
+
+    public boolean isBattleForFlightGenerationOdds() throws PWCGException
+    {
+        for (SquadronMember player : campaign.getPersonnelManager().getFlyingPlayers().getSquadronMemberList())
+        {
+            Squadron squadron =  PWCGContextManager.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+            FrontMapIdentifier map = campaign.getCampaignData().getCampaignMap();
+            Coordinate coordinate = squadron.determineCurrentPosition(campaign.getDate());
+            Date date = campaign.getDate();
+            if (PWCGContextManager.getInstance().getBattleManager().getBattleForCampaign(map, coordinate, date) != null)
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
 }

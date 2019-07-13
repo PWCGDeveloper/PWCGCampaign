@@ -21,7 +21,10 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.utils.AutoStart;
 import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.campaign.utils.TestDriver;
@@ -421,7 +424,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
     				}
     				else
     				{
-    				    String nation = campaign.determineCampaignCountry().getNationality();
+    				    String nation = determineCampaignCountryForIcon(campaign).getNationality();
     					icon = nation + "Pilot.jpg";
     				}
     
@@ -478,6 +481,19 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		return campaignPanel;
 	}
 	
+    
+    private ICountry determineCampaignCountryForIcon(Campaign campaign) throws PWCGException
+    {
+        if (campaign.getCampaignData().isCoop())
+        {
+            return CountryFactory.makeNeutralCountry();
+        }
+        else
+        {
+            SquadronMember referencePlayer = campaign.getReferenceCampaignMember();
+            return CountryFactory.makeCountryByCountry(referencePlayer.getCountry());
+        }
+     }
 
 	public void startAtDebrief() throws PWCGException 
 	{

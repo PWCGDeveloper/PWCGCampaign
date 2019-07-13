@@ -9,6 +9,7 @@ import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
@@ -69,10 +70,20 @@ public class CampaignPersonnelManager
 
     public SquadronMembers getAllActivePlayers() throws PWCGException
     {
+        return getPlayersForStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED);
+    }
+
+    public SquadronMembers getFlyingPlayers() throws PWCGException
+    {
+        return getPlayersForStatus(SquadronMemberStatus.STATUS_ACTIVE);
+    }
+    
+    private SquadronMembers getPlayersForStatus(int status) throws PWCGException
+    {
     	SquadronMembers allPlayers =  new SquadronMembers();
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
-        	SquadronMembers playersInSquadron = squadronPersonnel.getActivePlayers();
+        	SquadronMembers playersInSquadron = squadronPersonnel.getPlayersByStatus(status);
         	allPlayers.addSquadronMembers(playersInSquadron);
         }
         return allPlayers;

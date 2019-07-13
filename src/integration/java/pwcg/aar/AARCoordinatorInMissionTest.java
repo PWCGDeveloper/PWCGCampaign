@@ -42,7 +42,7 @@ public class AARCoordinatorInMissionTest
         aarCoordinator = AARCoordinator.getInstance();
         aarCoordinator.reset(campaign);
         
-        playerMissionsFlown = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0).getMissionFlown();
+        playerMissionsFlown = campaign.getPersonnelManager().getFlyingPlayers().getSquadronMemberList().get(0).getMissionFlown();
     }
 
     @Test
@@ -79,7 +79,7 @@ public class AARCoordinatorInMissionTest
 
     private void makePlayerDeclarations() throws PWCGException
     {
-        SquadronMember player = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
+        SquadronMember player = campaign.getPersonnelManager().getFlyingPlayers().getSquadronMemberList().get(0);
         PlayerDeclarationsBuilder  declarationsBuilder = new PlayerDeclarationsBuilder();
         playerDeclarations = declarationsBuilder.makePlayerDeclarations(player);
     }

@@ -7,7 +7,6 @@ import java.util.List;
 
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.CountryFactory;
@@ -17,7 +16,6 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -220,20 +218,6 @@ public class Campaign
 		
 		return campaignPath; 
 	}
-
-	public boolean isBattle() throws PWCGException
-	{
-        for (SquadronMember player : this.personnelManager.getAllActivePlayers().getSquadronMemberList())
-        {
-            Squadron squadron =  PWCGContextManager.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-		    if (PWCGContextManager.getInstance().getBattleManager().getBattleForCampaign(this.campaignData.getCampaignMap(), squadron.determineCurrentPosition(this.getDate()), this.getDate()) != null)
-		    {
-		        return true;
-		    }
-        }
-        
-	    return false;
-	}
 	
     public boolean isFighterCampaign() throws PWCGException 
     {
@@ -272,51 +256,24 @@ public class Campaign
     		return true;
     	}
     	
-        for (SquadronMember player : this.personnelManager.getAllActivePlayers().getSquadronMemberList())
-        {
-            if (player.getPilotActiveStatus() > SquadronMemberStatus.STATUS_CAPTURED)
-            {
-                return true;
-            }
-        }
+    	if (personnelManager.getAllActivePlayers().getSquadronMemberList().size() > 0)
+    	{
+    	    return true;
+    	}
         
         return false;
     }
 
     public boolean isCampaignCanFly() throws PWCGException
     {
-        for (SquadronMember player : this.personnelManager.getAllActivePlayers().getSquadronMemberList())
+        if (personnelManager.getFlyingPlayers().getSquadronMemberList().size() > 0)
         {
-            if (player.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }
 
-    public Side determineCampaignSide() throws PWCGException
-    {
-    	if (campaignData.isCoop())
-    	{
-    		int diceRoll = RandomNumberGenerator.getRandom(100);
-    		if (diceRoll < 50)
-    		{
-    			return Side.ALLIED;
-    		}
-    		else
-    		{
-    			return Side.AXIS;
-    		}
-    	}
-    	else
-    	{
-    		SquadronMember referencePlayer = getReferenceCampaignMember();
-    		return referencePlayer.determineCountry(this.getDate()).getSide();
-    	}
-     }
-
-    private SquadronMember getReferenceCampaignMember() throws PWCGException
+    public SquadronMember getReferenceCampaignMember() throws PWCGException
     {
         List<SquadronMember> players = this.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
         int index = RandomNumberGenerator.getRandom(players.size());
@@ -324,7 +281,6 @@ public class Campaign
         return referencePlayer;
     }
 
-    // TODo COOP Examine need for this method.  prefer not to do anything by reference
     public ICountry determineCampaignCountry() throws PWCGException
     {
         if (campaignData.isCoop())
