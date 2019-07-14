@@ -54,7 +54,7 @@ public class EquipmentArchTypeChangeHandler
             
             for (Integer planeSerialNumber : planesToRemove)
             {
-                squadronEquipment.removeEquippedPlane(planeSerialNumber);
+                squadronEquipment.deactivateEquippedPlaneFromSquadron(planeSerialNumber, campaign.getDate());
             }
         }
     }

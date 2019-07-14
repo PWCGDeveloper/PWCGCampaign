@@ -50,7 +50,7 @@ public class EquipmentReplacementHandler
             Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(selectedSquadronNeed.getSquadronId());
             List<String> activeArchTypes = squadron.getActiveArchTypes(campaign.getDate());
             
-            EquippedPlane replacement = serviceAvailableReplacements.getEquipment().removeBestEquippedPlaneForArchType(activeArchTypes);        
+            EquippedPlane replacement = serviceAvailableReplacements.getEquipment().removeBestEquippedFromDepo(activeArchTypes);        
             if (replacement != null)
             {
                 EquipmentResupplyRecord equipmentResupplyRecord = new EquipmentResupplyRecord(replacement, selectedSquadronNeed.getSquadronId());

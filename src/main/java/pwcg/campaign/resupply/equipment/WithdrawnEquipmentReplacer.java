@@ -40,7 +40,7 @@ public class WithdrawnEquipmentReplacer
         {
             if (campaign.getDate().after(plane.getWithdrawal()))
             {
-                equipment.removeEquippedPlane(plane.getSerialNumber());
+                equipment.deactivateEquippedPlaneFromSquadron(plane.getSerialNumber(), campaign.getDate());
                 ++planesRemoved;
             }
         }

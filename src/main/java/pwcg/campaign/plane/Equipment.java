@@ -75,7 +75,7 @@ public class Equipment
         equippedPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);
     }
 
-    public EquippedPlane removeBestEquippedPlaneForArchType(List<String> activeArchTypes)
+    public EquippedPlane removeBestEquippedFromDepo(List<String> activeArchTypes)
     {
         EquippedPlane selectedPlane = null;
         for (EquippedPlane equippedPlane : getPlanesForArchTypes(activeArchTypes))
@@ -87,7 +87,7 @@ public class Equipment
         }
         if (selectedPlane != null)
         {
-            return removeEquippedPlane(selectedPlane.getSerialNumber());
+            return removeEquippedPlaneFromDepo(selectedPlane.getSerialNumber());
         }
         else
         {
@@ -121,7 +121,18 @@ public class Equipment
         return new ArrayList<String>(archTypeMap.values());
     }
 
-    public EquippedPlane removeEquippedPlane(Integer planeSerialNumber)
+    public EquippedPlane deactivateEquippedPlaneFromSquadron(Integer planeSerialNumber, Date date)
+    {
+        EquippedPlane equippedPlane = equippedPlanes.get(planeSerialNumber);
+        if (equippedPlane != null)
+        {
+            equippedPlane.setPlaneStatus(PlaneStatus.STATUS_REMOVED_FROM_SERVICE);
+            equippedPlane.setDateRemovedFromService(date);
+        }
+        return equippedPlane;
+    }
+
+    public EquippedPlane removeEquippedPlaneFromDepo(Integer planeSerialNumber)
     {
         return equippedPlanes.remove(planeSerialNumber);
     }
