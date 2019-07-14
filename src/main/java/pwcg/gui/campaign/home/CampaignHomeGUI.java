@@ -350,6 +350,10 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
                 return;
             }
+            else if (action.equalsIgnoreCase("CampPilots"))
+            {
+                createPilotContext();
+            }
             else if (action.equalsIgnoreCase("CampTopAces"))
             {
                 createTopAceContext();

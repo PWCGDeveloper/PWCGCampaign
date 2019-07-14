@@ -55,11 +55,7 @@ public class CampaignEquipmentManager
                 return equippedPlane;
             }        
         }
-        
-        Equipment equipment = equipmentAllSquadrons.get(20112051);
-        EquippedPlane equippedPlane = equipment.getEquippedPlanes().get(serialNumber);
-
-        throw new PWCGException ("Unable to locate equipped plane for serial number " + serialNumber);
+         throw new PWCGException ("Unable to locate equipped plane for serial number " + serialNumber);
     }
 
     public EquippedPlane getAnyActivePlaneFromSquadron(Integer squadronId) throws PWCGException
