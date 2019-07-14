@@ -18,10 +18,10 @@ public class TargetDefinitionBuilderFactory
     	{
     	    return new TargetDefinitionBuilderAirToGround(flightInformation);
     	}
-    	else if(flightType.isCategory(FlightTypeCategory.FIGHTER) || flightType.isCategory(FlightTypeCategory.OTHER))
-    	{
+        else if(flightType.isCategory(FlightTypeCategory.FIGHTER) || flightType.isCategory(FlightTypeCategory.OTHER))
+        {
             return new TargetDefinitionBuilderAirToAir(flightInformation);
-    	}
+        }
 
     	throw new PWCGException("No target definition builder for flight type " + flightInformation.getFlightType());
     }

@@ -798,47 +798,15 @@ public abstract class Flight extends Unit
         }
     }
 
-    public static boolean isFighterMission(FlightTypes flightType)
+    public boolean isFighterMission()
     {
         boolean isFighterMission = false;
-        if (flightType == FlightTypes.PATROL ||
-            flightType == FlightTypes.OFFENSIVE ||
-            flightType == FlightTypes.INTERCEPT ||
-            flightType == FlightTypes.ESCORT ||
-            flightType == FlightTypes.SCRAMBLE ||
-            flightType == FlightTypes.SCRAMBLE_OPPOSE)
+        if (this.getFlightType().isCategory(FlightTypeCategory.FIGHTER))
         {
             isFighterMission = true;
         }
 
         return isFighterMission;
-    }
-
-    public boolean isReconOrAttackMission(FlightTypes flightType)
-    {
-        boolean isReconOrAttackMission = false;
-        if (flightType == FlightTypes.CONTACT_PATROL ||
-            flightType == FlightTypes.RECON)
-        {
-            isReconOrAttackMission = true;
-        }
-        
-        if (this.isBombingFlight())
-        {
-            isReconOrAttackMission = true;
-        }
-        return isReconOrAttackMission;
-    }
-
-    public boolean isStrategicMission(FlightTypes flightType)
-    {
-        boolean isStrategicMission = false;
-        if (flightType == FlightTypes.STRATEGIC_BOMB)
-        {
-            isStrategicMission = true;
-        }
-
-        return isStrategicMission;
     }
 
     public void dump() throws PWCGException

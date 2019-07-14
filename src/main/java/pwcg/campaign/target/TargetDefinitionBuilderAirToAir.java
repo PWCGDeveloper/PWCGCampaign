@@ -106,7 +106,14 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         }
         else if (flightInformation.getFlightType() == FlightTypes.ESCORT)
         {
-            return targetLocatorAir.getEscortRendezvousCoordinate();
+            if (flightInformation.isPlayerFlight())
+            {
+                return targetLocatorAir.getPlayerEscortRendezvousCoordinate();
+            }
+            else
+            {
+                return targetLocatorAir.getEscortForPlayerRendezvousCoordinate();
+            }
         }
 
         throw new PWCGException("No target locations for flight type " + flightInformation.getFlightType());

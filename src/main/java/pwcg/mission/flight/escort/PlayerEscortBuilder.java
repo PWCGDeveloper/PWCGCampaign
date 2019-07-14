@@ -4,10 +4,14 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightInformationFactory;
+import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
+import pwcg.mission.flight.waypoint.WaypointType;
+import pwcg.mission.mcu.McuWaypoint;
 
 public class PlayerEscortBuilder
 {
@@ -24,8 +28,13 @@ public class PlayerEscortBuilder
         if (friendlyFighterSquadron != null)
         {
             MissionBeginUnit missionBeginUnitEscort = new MissionBeginUnit(playerFlightInformation.getDepartureAirfield().getPosition());
-    
-            FlightInformation escortFlightInformation = FlightInformationFactory.buildEscortForPlayerFlightInformation(playerFlight.getFlightInformation(), friendlyFighterSquadron);
+            
+            McuWaypoint rendezvousWP = WaypointGeneratorBase.findWaypointByType(playerFlight.getAllWaypoints(), 
+                    WaypointType.INGRESS_WAYPOINT.getName());
+
+            Coordinate rendezvous = rendezvousWP.getPosition().copy();
+            FlightInformation escortFlightInformation = FlightInformationFactory.buildEscortForPlayerFlightInformation(playerFlight.getFlightInformation(), 
+                    friendlyFighterSquadron, rendezvous);
             EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, missionBeginUnitEscort, playerFlight);
             escortForPlayerFlight.createUnitMission();       
             return escortForPlayerFlight;

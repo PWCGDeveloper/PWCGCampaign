@@ -80,7 +80,7 @@ public class TargetLocatorAir
         return selectedShippingLane.getShippingLaneBorders().getCoordinateInBox();
     }
 
-    public Coordinate getEscortRendezvousCoordinate() throws PWCGException
+    public Coordinate getPlayerEscortRendezvousCoordinate() throws PWCGException
     {
         Coordinate nearbyEnemyFrontPoint = getFrontCoordinate();
         FrontLinesForMap frontLines = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(flightInformation.getCampaign().getDate());
@@ -91,7 +91,12 @@ public class TargetLocatorAir
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         Coordinate rendezvousLocation = MathUtils.calcNextCoord(nearbyFriendlyFrontPoint.getPosition(), angle, productSpecific.getCloseToFrontDistance());
         return rendezvousLocation;
-     }
+    }
+
+    public Coordinate getEscortForPlayerRendezvousCoordinate()
+    {
+        return new Coordinate();
+    }
 
     private Side getFriendlySide() throws PWCGException
     {

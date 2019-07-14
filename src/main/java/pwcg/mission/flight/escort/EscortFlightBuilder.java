@@ -1,16 +1,15 @@
 package pwcg.mission.flight.escort;
 
 import pwcg.campaign.Campaign;
-import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
 
 public class EscortFlightBuilder
 {
-    public void addPossibleEscort(Campaign campaign, Mission mission, Flight escortedFlight) throws PWCGException 
+    public void addEscort(Mission mission, Flight escortedFlight) throws PWCGException 
     {
+        Campaign campaign = mission.getCampaign();
         Flight escortFlight = null;
         if (escortedFlight.isPlayerFlight())
         {
@@ -18,9 +17,9 @@ public class EscortFlightBuilder
         }
         else if (!campaign.getCampaignData().isCoop())
         {
-            escortFlight = addPossibleEscortForEnemyFlight(campaign, mission, escortedFlight);
+            escortFlight = createEscortForAiFlight(mission, escortedFlight);
         }
-
+        
         if (escortFlight != null)
         {
             escortedFlight.addLinkedUnit(escortFlight);
@@ -34,26 +33,11 @@ public class EscortFlightBuilder
         return escortForPlayerFlight;
     }
 
-    private Flight addPossibleEscortForEnemyFlight(Campaign campaign, Mission mission, Flight escortedFlight) throws PWCGException, PWCGException
-    {
-        if (!campaign.getCampaignData().isCoop())
-        {
-            if (mission.getMissionFlightBuilder().hasPlayerFighterFlightType())
-            {
-                if (campaign.isFighterCampaign())
-                {
-                    int escortedOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsEscortedOddsKey);
-                    int escortedDiceRoll = RandomNumberGenerator.getRandom(100);        
-                    if (escortedDiceRoll < escortedOdds)
-                    {
-                        VirtualEscortFlightBuilder virtualEscortFlightBuilder = new VirtualEscortFlightBuilder();
-                        return virtualEscortFlightBuilder.createVirtualEscortFlight(escortedFlight);
-                    }
-                }
-            }
-        }
-        
-        return null;
-    }
 
+    private Flight createEscortForAiFlight(Mission mission, Flight escortedFlight) throws PWCGException 
+    {
+        VirtualEscortFlightBuilder virtualEscortFlightBuilder = new VirtualEscortFlightBuilder();
+        Flight escortForAiFlight = virtualEscortFlightBuilder.createVirtualEscortFlight(escortedFlight);
+        return escortForAiFlight;
+    }
 }

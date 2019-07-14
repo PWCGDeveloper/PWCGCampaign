@@ -5,6 +5,8 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.escort.EscortFlightBuilder;
+import pwcg.mission.flight.escort.NeedsEscortDecider;
 import pwcg.mission.flight.escort.PlayerEscortFlight;
 import pwcg.mission.flight.escort.PlayerEscortFlightLinker;
 import pwcg.mission.flight.escort.PlayerEscortedFlightBuilder;
@@ -22,7 +24,7 @@ public class MissionAssociateFlightBuilder
         {
             if (flight.isPlayerFlight())
             {
-                if (flight.getFlightType() == FlightTypes.INTERCEPT)
+                if (flight.getFlightType() == FlightTypes.INTERCEPT || flight.getFlightType() == FlightTypes.HOME_DEFENSE)
                 {
                     makeLinkedInterceptFlights(flight);
                 }
@@ -33,10 +35,6 @@ public class MissionAssociateFlightBuilder
                 else if (flight.getFlightType() == FlightTypes.SCRAMBLE)
                 {
                     makeLinkedScrambleFlights(flight);
-                }
-                else if (flight.getFlightType() == FlightTypes.HOME_DEFENSE)
-                {
-                    makeLinkedHomeDefenseFlight(flight);
                 }
                 else if (flight.getFlightType() == FlightTypes.BALLOON_BUST)
                 {
@@ -49,6 +47,13 @@ public class MissionAssociateFlightBuilder
                 else if (flight.getFlightType() == FlightTypes.SEA_PATROL)
                 {
                     // TODO Flying Circus
+                }
+                
+                NeedsEscortDecider needsEscortDecider = new NeedsEscortDecider();
+                if (needsEscortDecider.needsEscort(mission, flight))
+                {
+                    EscortFlightBuilder escortFlightBuilder = new EscortFlightBuilder();
+                    escortFlightBuilder.addEscort(mission, flight);
                 }
             }
         }
@@ -85,11 +90,4 @@ public class MissionAssociateFlightBuilder
         
         escortFlight.addLinkedUnit(escortedFlight);
     }
-
-    private void makeLinkedHomeDefenseFlight(Flight flight) throws PWCGException
-    {
-        InterceptOpposingFlightBuilder opposingFlightBuilder = new InterceptOpposingFlightBuilder(flight.getFlightInformation());
-        opposingFlightBuilder.buildOpposingFlights();
-    }
-
 }

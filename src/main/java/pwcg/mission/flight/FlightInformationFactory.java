@@ -7,6 +7,7 @@ import pwcg.campaign.target.ITargetDefinitionBuilder;
 import pwcg.campaign.target.TargetDefinition;
 import pwcg.campaign.target.TargetDefinitionBuilderFactory;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.plane.FlightPlaneBuilder;
 import pwcg.mission.flight.plane.PlaneMCU;
@@ -48,7 +49,9 @@ public class FlightInformationFactory
         return aiFlightInformation;
     }
 
-    public static FlightInformation buildEscortForPlayerFlightInformation(FlightInformation playerFlightInformation, Squadron friendlyFighterSquadron) throws PWCGException
+    public static FlightInformation buildEscortForPlayerFlightInformation(FlightInformation playerFlightInformation, 
+            Squadron friendlyFighterSquadron,
+            Coordinate rendezvous) throws PWCGException
     {
         FlightInformation escortFlightInformation = new FlightInformation(playerFlightInformation.getMission());
         escortFlightInformation.setFlightType(FlightTypes.ESCORT);
@@ -59,7 +62,11 @@ public class FlightInformationFactory
         escortFlightInformation.setEscortForPlayerFlight(true);
         escortFlightInformation.setEscortedByPlayerFlight(false);
         escortFlightInformation.setTargetSearchStartLocation(playerFlightInformation.getTargetCoords());
+        
         buildPlanes (escortFlightInformation);
+        buildTargetDefinition (escortFlightInformation);
+        rendezvous.setYPos(rendezvous.getYPos() + 500.0);
+        escortFlightInformation.getTargetDefinition().setTargetPosition(rendezvous);
 
         return escortFlightInformation;
     }

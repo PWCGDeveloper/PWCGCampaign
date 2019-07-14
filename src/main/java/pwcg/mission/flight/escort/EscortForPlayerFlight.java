@@ -22,13 +22,6 @@ import pwcg.mission.mcu.McuForceComplete;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
-/**
- * Three escort flights: player is the escort, escort for the player, virtual escort.
- * This version of escort flight covers the player's flight
- * 
- * @author Patrick Wilson
- *
- */
 public class EscortForPlayerFlight extends Flight
 {
     protected McuCover cover = null;
