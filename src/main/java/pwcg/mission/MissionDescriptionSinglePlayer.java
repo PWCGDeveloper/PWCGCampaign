@@ -10,6 +10,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.escort.EscortForPlayerFlight;
 import pwcg.mission.options.MapWeather;
 import pwcg.mission.options.MissionOptions;
 
@@ -23,7 +24,8 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
     private String singlePlayerHtmlTemplate = 
                     "<br><SQUADRON> stationed at <AIRFIELD>" +
                     "<br> <DATE>" +
-                    "<br>Primary Objective <OBJECTIVE>";
+                    "<br>Primary Objective <OBJECTIVE>" +
+                    "<br> <ESCORTED_BY>";
     
 	private String descSinglePlayerTemplate = 
 		"Aircraft  <AIRCRAFT>\n" +
@@ -36,7 +38,9 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 		"    <WIND>\n" +
 		"\n" +
 		"Primary Objective \n" +
-		"    <OBJECTIVE>\n" +
+        "    <OBJECTIVE>\n" +
+        "\n" +
+        "<ESCORTED_BY>\n" +
 		"\n";
 
 	private String campaignDateString = "";
@@ -67,6 +71,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
         setAircraft(playerFlight.getPlanes().get(0).getDisplayName());
         setAirfield(playerFlight.getAirfield().getName());
         setObjective(playerFlight.getMissionObjective());
+        setEscortedBy(playerFlight);
         setSquadron(playerFlight.getSquadron().determineDisplayName(campaign.getDate()));
         buildTitleDescription(campaign.getCampaignData().getName(), playerFlight.getFlightType().toString());
 
@@ -109,7 +114,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 		setTime(missionTime);
 	}
 	   
-    public void setObjective(String replacement)
+    private void setObjective(String replacement)
     {
         descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<OBJECTIVE>", replacement);
         singlePlayerHtmlTemplate = replace(singlePlayerHtmlTemplate, "<OBJECTIVE>", replacement);
@@ -120,12 +125,12 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 		descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<TIME>", missionTime);
 	}
 	
-	public void setClouds(String replacement)
+	private void setClouds(String replacement)
 	{
 		descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<CLOUDS>", replacement);
 	}
 	
-	public void setWind(MapWeather.WindLayer layer) throws PWCGException
+	private void setWind(MapWeather.WindLayer layer) throws PWCGException
 	{
 		int windFrom = new Double(MathUtils.adjustAngle (layer.direction, 180)).intValue();		
 		String windCond = "Wind speed is " + layer.speed + " M/S." + 
@@ -134,7 +139,21 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 		descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<WIND>", windCond);
 	}
 	
-	public void setFlight(ICountry country, Flight flight) throws PWCGException 
+	private void setEscortedBy(Flight playerFlight) throws PWCGException
+	{
+        String escortedByText = "";
+        EscortForPlayerFlight escortForPlayerFlight = playerFlight.getEscortForPlayer();
+        if (escortForPlayerFlight != null)
+        {
+            escortedByText = "Escorted by " + escortForPlayerFlight.getLeadPlane().getDisplayName() + "s of " + escortForPlayerFlight.getSquadron().determineDisplayName(campaign.getDate());
+        }
+	    
+	    descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<ESCORTED_BY>", escortedByText);
+	    singlePlayerHtmlTemplate = replace(singlePlayerHtmlTemplate, "<ESCORTED_BY>", escortedByText);
+	}
+
+	
+	private void setFlight(ICountry country, Flight flight) throws PWCGException 
 	{
 		Campaign campaign =     PWCGContextManager.getInstance().getCampaign();
 		

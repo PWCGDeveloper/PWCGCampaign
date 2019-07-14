@@ -69,15 +69,11 @@ public class EscortForPlayerFlight extends Flight
         getMissionBeginUnit().linkToMissionBegin(getActivationTimer().getIndex());
         getActivationTimer().setTarget(getFormationTimer().getIndex());
         
-        McuWaypoint ingressWP = WaypointGeneratorBase.findWaypointByType(getPlayerFlight().getAllWaypoints(), 
-                        WaypointType.INGRESS_WAYPOINT.getName());
-
+        McuWaypoint ingressWP = WaypointGeneratorBase.findWaypointByType(playerFlight.getAllWaypoints(), WaypointType.INGRESS_WAYPOINT.getName());
         ingressWP.setTarget(getCoverTimer().getIndex());
 
-        McuWaypoint egressWP = WaypointGeneratorBase.findWaypointByType(getPlayerFlight().getAllWaypoints(), 
-                        WaypointType.EGRESS_WAYPOINT.getName());
-
-        egressWP.setTarget(getForceCompleteTimer().getIndex());
+        McuWaypoint egressWP = WaypointGeneratorBase.findWaypointByType(playerFlight.getAllWaypoints(), WaypointType.EGRESS_WAYPOINT.getName());
+        egressWP.setTarget(forceCompleteTimer.getIndex());
 
         getForceCompleteTimer().setTarget(getWaypointPackage().getWaypointsForLeadPlane().get(0).getIndex());
     }

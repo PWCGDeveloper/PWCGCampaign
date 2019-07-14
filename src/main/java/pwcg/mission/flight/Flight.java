@@ -29,6 +29,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.Unit;
+import pwcg.mission.flight.escort.EscortForPlayerFlight;
 import pwcg.mission.flight.escort.VirtualEscortFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.ActualWaypointPackage;
@@ -994,6 +995,19 @@ public abstract class Flight extends Unit
         }
         
         return false;
+    }
+    
+    public EscortForPlayerFlight getEscortForPlayer()
+    {
+        EscortForPlayerFlight escortForPlayerFlight = null;
+        for (Unit unit : getLinkedUnits())
+        {
+            if (unit instanceof EscortForPlayerFlight)
+            {
+                escortForPlayerFlight = (EscortForPlayerFlight)unit;
+            }
+        }
+        return escortForPlayerFlight;
     }
 
     public boolean isFlightHasFighterPlanes()
