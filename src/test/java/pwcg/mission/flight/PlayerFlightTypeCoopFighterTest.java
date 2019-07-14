@@ -16,7 +16,6 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
-import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PatrolFlightValidator;
 import pwcg.testutils.CampaignCache;

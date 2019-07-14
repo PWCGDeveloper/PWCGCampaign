@@ -87,7 +87,7 @@ public class AARTabulatedData
                 return uiCombatReportDataForSquadron;
             }
         }
-        throw new PWCGException("No combat report data for squadron " + squadronId);
+        return new UICombatReportData(squadronId);
     }
 
 }
