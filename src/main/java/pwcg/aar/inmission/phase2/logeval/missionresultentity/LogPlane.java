@@ -122,6 +122,13 @@ public class LogPlane extends LogAIEntity
         
         return false;
     }
+    
+    public SquadronMember getSquadronMemberForLogEvent(Campaign campaign) throws PWCGException
+    {
+        SquadronMember squadronMember = null;
+        squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(getPilotSerialNumber());
+        return squadronMember;
+    }
 
     public LogPilot getLogPilot()
     {

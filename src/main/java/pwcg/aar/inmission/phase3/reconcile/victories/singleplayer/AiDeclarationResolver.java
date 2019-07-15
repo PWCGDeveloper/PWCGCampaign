@@ -11,6 +11,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.VictorySorter;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -112,14 +113,18 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
 
     private SquadronMember flightMemberForVictory(LogVictory resultVictory) throws PWCGException
     {
+        ICountry victimCountry = resultVictory.getVictim().getCountry();
         SquadronMembers squadronMembersInMissionOtherThanPlayer = getAiMissionSquadronMembers();
         for (SquadronMember pilotVictor: squadronMembersInMissionOtherThanPlayer.getSquadronMemberList())
         {
-            if (pilotVictor != null)
+            if (pilotVictor.determineCountry(campaign.getDate()).getSide() != victimCountry.getSide())
             {
-                if (!alreadyhasVictory(pilotVictor.getSerialNumber()))
+                if (pilotVictor != null)
                 {
-                    return pilotVictor;
+                    if (!alreadyhasVictory(pilotVictor.getSerialNumber()))
+                    {
+                        return pilotVictor;
+                    }
                 }
             }
         }

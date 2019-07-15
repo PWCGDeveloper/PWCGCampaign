@@ -75,7 +75,6 @@ public class EscortForPlayerFlight extends Flight
         McuWaypoint egressWP = WaypointGeneratorBase.findWaypointByType(playerFlight.getAllWaypoints(), WaypointType.EGRESS_WAYPOINT.getName());
         egressWP.setTarget(forceCompleteTimer.getIndex());
 
-        getForceCompleteTimer().setTarget(getWaypointPackage().getWaypointsForLeadPlane().get(0).getIndex());
     }
 
     public void createCover() throws PWCGException 
@@ -86,13 +85,11 @@ public class EscortForPlayerFlight extends Flight
         Coordinate coverPosition = ingressWP.getPosition().copy();
         coverPosition.setYPos(coverPosition.getYPos() + 400);
         
-        // Cover the escorted flight
         cover  = new McuCover();
         cover.setPosition(coverPosition);
         cover.setObject(planes.get(0).getEntity().getIndex());
         cover.setTarget(playerFlight.getPlanes().get(0).getEntity().getIndex());
 
-        // Activate the cover command
         coverTimer  = new McuTimer();
         coverTimer.setName("Cover Timer for " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
         coverTimer.setDesc("Cover " + playerFlight.getFlightInformation().getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
@@ -118,6 +115,8 @@ public class EscortForPlayerFlight extends Flight
         forceCompleteTimer.setPosition(flightInformation.getTargetCoords().copy());
         forceCompleteTimer.setTimer(2);
         forceCompleteTimer.setTarget(forceCompleteEntity.getIndex());
+        forceCompleteTimer.setTarget(getWaypointPackage().getWaypointsForLeadPlane().get(0).getIndex());
+
     }
 
     protected void createPlaneInitialPosition() throws PWCGException 
