@@ -71,6 +71,7 @@ public class PlayerFlightRoFTypeTest
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
+        EscortForPlayerValidator.validateEscortForPlayer(flight);
 	}
 	
 	@Test

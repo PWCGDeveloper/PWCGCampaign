@@ -32,12 +32,15 @@ public class PlayerEscortBuilder
             McuWaypoint rendezvousWP = WaypointGeneratorBase.findWaypointByType(playerFlight.getAllWaypoints(), 
                     WaypointType.INGRESS_WAYPOINT.getName());
 
-            Coordinate rendezvous = rendezvousWP.getPosition().copy();
-            FlightInformation escortFlightInformation = FlightInformationFactory.buildEscortForPlayerFlightInformation(playerFlight.getFlightInformation(), 
-                    friendlyFighterSquadron, rendezvous);
-            EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, missionBeginUnitEscort, playerFlight);
-            escortForPlayerFlight.createUnitMission();       
-            return escortForPlayerFlight;
+            if (rendezvousWP != null)
+            {
+                Coordinate rendezvous = rendezvousWP.getPosition().copy();
+                FlightInformation escortFlightInformation = FlightInformationFactory.buildEscortForPlayerFlightInformation(playerFlight.getFlightInformation(), 
+                        friendlyFighterSquadron, rendezvous);
+                EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, missionBeginUnitEscort, playerFlight);
+                escortForPlayerFlight.createUnitMission();       
+                return escortForPlayerFlight;
+            }
         }
         
         return null;

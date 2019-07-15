@@ -63,8 +63,8 @@ public class WithdrawnEquipmentReplacerTest
         WithdrawnEquipmentReplacer withdrawnEquipmentReplacer = new WithdrawnEquipmentReplacer(campaign, equipment, squadron);
         int numAdded = withdrawnEquipmentReplacer.replaceWithdrawnEquipment();
         assert(numAdded == 6);
-        assert(equipment.getEquippedPlanes().size() == 14);
-        for (EquippedPlane equippedPlane: equipment.getEquippedPlanes().values())
+        assert(equipment.getActiveEquippedPlanes().size() == 14);
+        for (EquippedPlane equippedPlane: equipment.getActiveEquippedPlanes().values())
         {
             assert(equippedPlane.getType().equals("bf109f4") || equippedPlane.getType().equals("bf109g2"));
         }
@@ -92,9 +92,9 @@ public class WithdrawnEquipmentReplacerTest
         WithdrawnEquipmentReplacer withdrawnEquipmentReplacer = new WithdrawnEquipmentReplacer(campaign, equipment, squadron);
         int numAdded = withdrawnEquipmentReplacer.replaceWithdrawnEquipment();
         assert(numAdded == 0);
-        assert(equipment.getEquippedPlanes().size() == 14);
+        assert(equipment.getActiveEquippedPlanes().size() == 14);
         boolean me109F2Found = false;
-        for (EquippedPlane equippedPlane: equipment.getEquippedPlanes().values())
+        for (EquippedPlane equippedPlane: equipment.getActiveEquippedPlanes().values())
         {
             if (equippedPlane.getType().equals("bf109f2"))
             {
@@ -123,13 +123,20 @@ public class WithdrawnEquipmentReplacerTest
             equipment.addEquippedPlane(equippedPlane);
         }
 
+        assert(equipment.getActiveEquippedPlanes().size() == 11);
+
         WithdrawnEquipmentReplacer withdrawnEquipmentReplacer = new WithdrawnEquipmentReplacer(campaign, equipment, squadron);
         int numAdded = withdrawnEquipmentReplacer.replaceWithdrawnEquipment();
         assert(numAdded == 3);
-        assert(equipment.getEquippedPlanes().size() == 11);
-        for (EquippedPlane equippedPlane: equipment.getEquippedPlanes().values())
+        assert(equipment.getActiveEquippedPlanes().size() == 11);
+        for (EquippedPlane equippedPlane: equipment.getActiveEquippedPlanes().values())
         {
             assert(equippedPlane.getType().equals("bf109f4") || equippedPlane.getType().equals("bf109g2"));
+        }
+
+        for (EquippedPlane equippedPlane: equipment.getRecentlyInactiveEquippedPlanes(campaign.getDate()).values())
+        {
+            assert(equippedPlane.getType().equals("bf109f2"));
         }
     }
 
@@ -155,8 +162,8 @@ public class WithdrawnEquipmentReplacerTest
         WithdrawnEquipmentReplacer withdrawnEquipmentReplacer = new WithdrawnEquipmentReplacer(campaign, equipment, squadron);
         int numAdded = withdrawnEquipmentReplacer.replaceWithdrawnEquipment();
         assert(numAdded == 7);
-        assert(equipment.getEquippedPlanes().size() == 10);
-        for (EquippedPlane equippedPlane: equipment.getEquippedPlanes().values())
+        assert(equipment.getActiveEquippedPlanes().size() == 10);
+        for (EquippedPlane equippedPlane: equipment.getActiveEquippedPlanes().values())
         {
             assert(equippedPlane.getType().equals("bf109f4") || equippedPlane.getType().equals("bf109g2"));
         }

@@ -22,4 +22,10 @@ public class EscortForPlayerValidator
         assert(leadEscortPlane.getPosition().getZPos() == ingressWP.getPosition().getZPos());
         assert(leadEscortPlane.getPosition().getYPos() > ingressWP.getPosition().getYPos());
     }
+
+    public static void validateNoEscortForPlayer(Flight flight)
+    {
+        EscortForPlayerFlight escortForPlayerFlight = flight.getEscortForPlayer();
+        assert(escortForPlayerFlight == null);
+    }
 }

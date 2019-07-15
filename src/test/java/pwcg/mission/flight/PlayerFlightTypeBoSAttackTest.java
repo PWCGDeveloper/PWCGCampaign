@@ -53,6 +53,7 @@ public class PlayerFlightTypeBoSAttackTest
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
+        EscortForPlayerValidator.validateEscortForPlayer(flight);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

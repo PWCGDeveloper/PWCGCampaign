@@ -41,7 +41,7 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepoInitializer replacementEquipper = new EquipmentDepoInitializer(campaign, luftwaffe);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getEquippedPlanes().size() == 45);
+        assert(equipment.getAvailableDepoPlanes().size() == 45);
         
         boolean me110e2Found = false;
         boolean he111h6Found = false;
@@ -49,7 +49,7 @@ public class InitialReplacementEquipperTest
         boolean ju87d3Found = false;
         boolean ju52Found = false;
         
-        for (EquippedPlane replacementPlane : equipment.getEquippedPlanes().values())
+        for (EquippedPlane replacementPlane : equipment.getAvailableDepoPlanes().values())
         {
             if (replacementPlane.getType().equals("bf110e2"))
             {
@@ -91,7 +91,7 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepoInitializer replacementEquipper = new EquipmentDepoInitializer(campaign, vvs);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getEquippedPlanes().size() == 112);
+        assert(equipment.getAvailableDepoPlanes().size() == 112);
         
         boolean i16Found = false;
         boolean mig3 = false;
@@ -100,7 +100,7 @@ public class InitialReplacementEquipperTest
         boolean pe2Found = false;
         boolean il2Found = false;
         
-        for (EquippedPlane replacementPlane : equipment.getEquippedPlanes().values())
+        for (EquippedPlane replacementPlane : equipment.getAvailableDepoPlanes().values())
         {
             if (replacementPlane.getType().equals("i16t24"))
             {
@@ -147,11 +147,11 @@ public class InitialReplacementEquipperTest
         
         EquipmentDepoInitializer replacementEquipper = new EquipmentDepoInitializer(campaign, regiaAeronautica);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getEquippedPlanes().size() == 1);
+        assert(equipment.getAvailableDepoPlanes().size() == 1);
         
         boolean macchiFound = false;
         
-        for (EquippedPlane replacementPlane : equipment.getEquippedPlanes().values())
+        for (EquippedPlane replacementPlane : equipment.getAvailableDepoPlanes().values())
         {
             if (replacementPlane.getType().equals("mc202s8"))
             {

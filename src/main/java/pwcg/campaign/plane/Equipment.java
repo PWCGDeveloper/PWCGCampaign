@@ -19,6 +19,20 @@ public class Equipment
         return equippedPlanes.get(planeSerialNumber);
     }
 
+    public Map<Integer, EquippedPlane> getAvailableDepoPlanes()
+    {
+        Map<Integer, EquippedPlane> availableDepoPlanes = new HashMap<>();
+        for (EquippedPlane equippedPlane : equippedPlanes.values())
+        {
+            if (equippedPlane.getPlaneStatus() == PlaneStatus.STATUS_DEPO)
+            {
+                availableDepoPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);
+            }
+        }
+        return availableDepoPlanes;
+    }
+
+
     public Map<Integer, EquippedPlane> getActiveEquippedPlanes()
     {
         Map<Integer, EquippedPlane> activeEquippedPlanes = new HashMap<>();
@@ -63,11 +77,6 @@ public class Equipment
     public void setEquippedPlanes(Map<Integer, EquippedPlane> equippedPlanes)
     {
         this.equippedPlanes = equippedPlanes;
-    }
-    
-    public Map<Integer, EquippedPlane> getEquippedPlanes()
-    {
-        return equippedPlanes;
     }
 
     public void addEquippedPlane(EquippedPlane equippedPlane)

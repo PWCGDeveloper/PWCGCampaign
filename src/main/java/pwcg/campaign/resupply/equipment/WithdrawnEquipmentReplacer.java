@@ -62,7 +62,7 @@ public class WithdrawnEquipmentReplacer
 
     private int calculatePlanesNeeded(int planesRemoved)
     {
-        int minNeeded = Squadron.MIN_REEQUIPMENT_SIZE - equipment.getEquippedPlanes().size();
+        int minNeeded = Squadron.MIN_REEQUIPMENT_SIZE - equipment.getActiveEquippedPlanes().size();
         int numNeeded = planesRemoved;
         if (minNeeded > planesRemoved)
         {

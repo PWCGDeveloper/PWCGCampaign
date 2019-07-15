@@ -44,6 +44,7 @@ public class PlayerFlightTypeBoSTransportTest
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.PARATROOP_DROP);
+        EscortForPlayerValidator.validateEscortForPlayer(flight);
     }
 
     @Test
@@ -59,6 +60,7 @@ public class PlayerFlightTypeBoSTransportTest
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.CARGO_DROP);
+        EscortForPlayerValidator.validateEscortForPlayer(flight);
     }
 
     @Test
@@ -71,6 +73,7 @@ public class PlayerFlightTypeBoSTransportTest
         flight.finalizeFlight();
 
         assert (flight.getFlightType() == FlightTypes.TRANSPORT);
+        EscortForPlayerValidator.validateNoEscortForPlayer(flight);
     }
 
 
@@ -87,6 +90,7 @@ public class PlayerFlightTypeBoSTransportTest
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.BOMB);
+        EscortForPlayerValidator.validateEscortForPlayer(flight);
     }
 
     @Test
@@ -102,6 +106,7 @@ public class PlayerFlightTypeBoSTransportTest
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB);
+        EscortForPlayerValidator.validateEscortForPlayer(flight);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

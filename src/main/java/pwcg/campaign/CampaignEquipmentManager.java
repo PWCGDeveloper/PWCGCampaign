@@ -49,7 +49,7 @@ public class CampaignEquipmentManager
     {
         for (Equipment equipment : equipmentAllSquadrons.values())
         {
-            EquippedPlane equippedPlane = equipment.getEquippedPlanes().get(serialNumber);
+            EquippedPlane equippedPlane = equipment.getEquippedPlane(serialNumber);
             if (equippedPlane != null)
             {
                 return equippedPlane;
@@ -92,7 +92,7 @@ public class CampaignEquipmentManager
         int replacementCount = 0;
         for (EquipmentDepo replacementService : equipmentDepo.values())
         {
-            replacementCount += replacementService.getEquipment().getEquippedPlanes().size();
+            replacementCount += replacementService.getEquipment().getActiveEquippedPlanes().size();
         }
         
         return replacementCount;

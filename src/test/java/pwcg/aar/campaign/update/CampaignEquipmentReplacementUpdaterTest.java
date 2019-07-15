@@ -64,7 +64,7 @@ public class CampaignEquipmentReplacementUpdaterTest
         for (Integer serviceId : campaign.getEquipmentManager().getEquipmentReplacements().keySet())
         {
             EquipmentDepo replacementEquipmentForService = campaign.getEquipmentManager().getEquipmentReplacementsForService(serviceId);
-            replacementsAvailable.put(serviceId, replacementEquipmentForService.getEquipment().getEquippedPlanes().size());
+            replacementsAvailable.put(serviceId, replacementEquipmentForService.getEquipment().getAvailableDepoPlanes().size());
         }
         return replacementsAvailable;
     }

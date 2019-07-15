@@ -148,6 +148,9 @@ public class SquadronHistoryValidationTest
         else if (transitionDate.equals(DateUtils.getDateYYYYMMDD("19440801")))
         {
         }
+        else if (transitionDate.equals(DateUtils.getDateYYYYMMDD("19450201")))
+        {
+        }
         else if (transitionDate.equals(DateUtils.getDateYYYYMMDD("19450207")))
         {
         }

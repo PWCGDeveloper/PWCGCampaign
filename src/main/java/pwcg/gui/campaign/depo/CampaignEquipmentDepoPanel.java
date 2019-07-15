@@ -149,7 +149,7 @@ public class CampaignEquipmentDepoPanel extends ImagePanel
     {
         List<EquippedPlane> depoForRole = new ArrayList<>();
         EquipmentDepo aircraftOnInventory = campaign.getEquipmentManager().getEquipmentReplacementsForService(service.getServiceId());
-        for (EquippedPlane equippedPlane : aircraftOnInventory.getEquipment().getEquippedPlanes().values())
+        for (EquippedPlane equippedPlane : aircraftOnInventory.getEquipment().getAvailableDepoPlanes().values())
         {
             if (equippedPlane.getRoles().get(0) == role)
             {
