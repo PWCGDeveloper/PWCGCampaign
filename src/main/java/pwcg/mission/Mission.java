@@ -42,6 +42,7 @@ public class Mission
     private AmbientGroundUnitBuilder ambientGroundUnitBuilder;
     private MissionWaypointIconBuilder missionWaypointIconBuilder = new MissionWaypointIconBuilder();
     private MissionAirfieldIconBuilder missionAirfieldIconBuilder = new MissionAirfieldIconBuilder();
+    private MissionSquadronIconBuilder missionSquadronIconBuilder;
     private MissionAssociateFlightBuilder missionAssociateFlightBuilder = new MissionAssociateFlightBuilder();
     private MissionFrontLineIconBuilder missionFrontLines;
     private MissionEffects missionEffects = new MissionEffects();
@@ -73,6 +74,7 @@ public class Mission
         ambientGroundUnitBuilder = new AmbientGroundUnitBuilder(campaign, this);
         missionFlightBuilder = new MissionFlightBuilder(campaign, this);
         missionFrontLines = new MissionFrontLineIconBuilder(campaign);
+        missionSquadronIconBuilder = new MissionSquadronIconBuilder(campaign);
     }
 
     public void generate(FlightTypes overrideFlightType) throws PWCGException 
@@ -191,6 +193,10 @@ public class Mission
 
             assignIndirectFireTargets();
 
+            if (missionFlightBuilder.getPlayerFlights().size() > 1) {
+                missionSquadronIconBuilder.createSquadronIcons(missionFlightBuilder.getPlayerFlights());
+            }
+
         	if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
         	{
         		finalizeForSinglePlayer();
@@ -298,6 +304,10 @@ public class Mission
 	{
 		return missionAirfieldIconBuilder;
 	}
+
+    public MissionSquadronIconBuilder getMissionSquadronIconBuilder() {
+        return missionSquadronIconBuilder;
+    }
 
     public MissionBattleManager getMissionBattleManager()
     {

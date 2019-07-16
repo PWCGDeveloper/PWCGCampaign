@@ -4,6 +4,7 @@ package pwcg.mission.mcu;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
@@ -16,6 +17,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.MissionStringHandler;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.objective.MissionObjectiveFactory;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.ground.org.IGroundUnitCollection;
@@ -198,6 +201,17 @@ public class McuIcon extends BaseFlightMcu
 
         coalitions.add(CoalitionFactory.getCoalitionBySide(Side.ALLIED));
         coalitions.add(CoalitionFactory.getCoalitionBySide(Side.AXIS));
+    }
+
+    public McuIcon(IFlight flight, Date date) throws PWCGException {
+        super();
+        position = flight.getFlightHomePosition().copy();
+        position.setXPos(position.getXPos() + 5000);
+        iconId = McuIconIdType.ICON_ID_FREE_FLIGHT;
+        setName(flight.getSquadron().determineDisplayName(date));
+        setDesc(MissionObjectiveFactory.formMissionObjective(flight, date));
+
+        coalitions.add(CoalitionFactory.getCoalitionBySide(flight.getFlightInformation().getCountry().getSide()));
     }
 
     public void write(BufferedWriter writer) throws PWCGIOException
