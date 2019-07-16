@@ -18,7 +18,7 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionWaypointIconBuilder
 {
-    private ArrayList<McuIcon> waypointIcons = new ArrayList<McuIcon>();
+    private List<McuIcon> waypointIcons = new ArrayList<>();
 
     public void createWaypointIcons(List<IFlight> playerFlights) throws PWCGException
     {
@@ -30,10 +30,9 @@ public class MissionWaypointIconBuilder
 
     private void createWaypointIconsForFlight(IFlight playerFlight) throws PWCGException
     {
-        waypointIcons.clear();
-
         List<McuWaypoint> waypoints = playerFlight.getWaypointPackage().getAllWaypoints();
 
+        McuIcon firstIcon = null;
         McuIcon prevIcon = null;
 
         MissionPoint takeoff = playerFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_TAKEOFF);
@@ -41,6 +40,7 @@ public class MissionWaypointIconBuilder
         {
             McuIcon icon = new McuIcon(WaypointAction.WP_ACTION_TAKEOFF, takeoff, playerFlight.getFlightInformation().getCountry().getSide());
             prevIcon = icon;
+            firstIcon = icon;
             waypointIcons.add(icon);
         }
 
@@ -48,6 +48,10 @@ public class MissionWaypointIconBuilder
         {
             McuWaypoint waypoint = waypoints.get(i);
             McuIcon icon = new McuIcon(waypoint, playerFlight.getFlightInformation().getCountry().getSide());
+            if (firstIcon == null)
+            {
+                firstIcon = icon;
+            }
             if (prevIcon != null)
             {
                 prevIcon.setTarget(icon.getIndex());
@@ -119,6 +123,7 @@ public class MissionWaypointIconBuilder
             McuIcon icon = new McuIcon(WaypointAction.WP_ACTION_LANDING, landing, playerFlight.getFlightInformation().getCountry().getSide());
             if (prevIcon != null)
                 prevIcon.setTarget(icon.getIndex());
+            icon.setTarget(firstIcon.getIndex());
             waypointIcons.add(icon);
         }
     }
