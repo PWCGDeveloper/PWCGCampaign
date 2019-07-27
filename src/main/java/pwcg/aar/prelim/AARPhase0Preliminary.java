@@ -74,7 +74,7 @@ public class AARPhase0Preliminary
     {        
         AARHeaderParser aarHeaderParser = new AARHeaderParser();        
     	AARMissionFileLogResultMatcher matcher = new AARMissionFileLogResultMatcher(campaign, aarHeaderParser);
-        return new AARMostRecentLogSetFinder(matcher);
+        return new AARMostRecentLogSetFinder(campaign, matcher);
     }
 
     private void tabulateClaimPanelData() throws PWCGException
