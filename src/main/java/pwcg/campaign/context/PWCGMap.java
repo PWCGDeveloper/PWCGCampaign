@@ -1,8 +1,10 @@
 package pwcg.campaign.context;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -52,6 +54,7 @@ public abstract class PWCGMap
     protected MapWeather mapWeather = null;
     protected String mapName = "";
     protected Point mapCenter = new Point(700, 700);
+    protected List<Integer> armedServicesActiveForMap = new ArrayList<>();
 
     
     public PWCGMap()
@@ -103,6 +106,18 @@ public abstract class PWCGMap
         frontNameIdentifierMap.put(BODENPLATTE_MAP_NAME, FrontMapIdentifier.BODENPLATTE_MAP);            
 
         return frontNameIdentifierMap.get(name);
+    }
+    
+    public boolean isMapHasService(int serviceId)
+    {
+        for (int mapServiceId : armedServicesActiveForMap)
+        {
+            if (mapServiceId == serviceId)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public FrontMapIdentifier getMapIdentifier()

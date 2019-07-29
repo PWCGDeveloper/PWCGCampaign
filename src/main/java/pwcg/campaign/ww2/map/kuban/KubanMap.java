@@ -3,6 +3,7 @@ package pwcg.campaign.ww2.map.kuban;
 import java.awt.Point;
 
 import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.ww2.country.BoSServiceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -26,7 +27,16 @@ public class KubanMap extends PWCGMap
         
         frontParameters = new KubanFrontParameters();
 
+        buildArmedServicesActiveForMap();
+        
         super.configure();
+    }
+    
+    private void buildArmedServicesActiveForMap()
+    {
+        armedServicesActiveForMap.add(BoSServiceManager.VVS);
+        armedServicesActiveForMap.add(BoSServiceManager.LUFTWAFFE);
+        armedServicesActiveForMap.add(BoSServiceManager.REGIA_AERONAUTICA);
     }
 
     @Override

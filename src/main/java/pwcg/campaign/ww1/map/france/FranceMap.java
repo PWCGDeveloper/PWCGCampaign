@@ -3,6 +3,7 @@ package pwcg.campaign.ww1.map.france;
 import java.awt.Point;
 
 import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.ww1.country.RoFServiceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -13,12 +14,7 @@ public class FranceMap extends PWCGMap
     {
         super();
     }
-    
-    
-    /**
-     * Configure all of the manager objects for this map
-     * @throws PWCGException 
-     */
+
     public void configure() throws PWCGException
     {
         this.mapName = FRANCE_MAP_NAME;        
@@ -29,8 +25,20 @@ public class FranceMap extends PWCGMap
         this.mapWeather = new FranceMapWeather();
         
         frontParameters = new FranceFrontParameters();
-
+        buildArmedServicesActiveForMap();
+        
         super.configure();
+    }
+    
+    private void buildArmedServicesActiveForMap()
+    {
+        armedServicesActiveForMap.add(RoFServiceManager.AVIATION_MILITAIRE_BELGE);
+        armedServicesActiveForMap.add(RoFServiceManager.LAVIATION_MILITAIRE);
+        armedServicesActiveForMap.add(RoFServiceManager.RFC);
+        armedServicesActiveForMap.add(RoFServiceManager.RNAS);
+        armedServicesActiveForMap.add(RoFServiceManager.RAF);
+        armedServicesActiveForMap.add(RoFServiceManager.USAS);
+        armedServicesActiveForMap.add(RoFServiceManager.DEUTSCHE_LUFTSTREITKRAFTE);
     }
     
     @Override

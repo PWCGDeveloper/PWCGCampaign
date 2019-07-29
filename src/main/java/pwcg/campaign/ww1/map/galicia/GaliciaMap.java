@@ -3,6 +3,7 @@ package pwcg.campaign.ww1.map.galicia;
 import java.awt.Point;
 
 import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.ww1.country.RoFServiceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -13,12 +14,7 @@ public class GaliciaMap extends PWCGMap
     {
         super();
     }
-    
-    
-    /**
-     * Configure all of the manager objects for this map
-     * @throws PWCGException 
-     */
+
     public void configure() throws PWCGException
     {
         this.mapName = GALICIA_MAP_NAME;        
@@ -29,10 +25,18 @@ public class GaliciaMap extends PWCGMap
         this.mapWeather = new GaliciaMapWeather();
         
         frontParameters = new GaliciaFrontParameters();
+        buildArmedServicesActiveForMap();
 
         super.configure();
     }
     
+    private void buildArmedServicesActiveForMap()
+    {
+        armedServicesActiveForMap.add(RoFServiceManager.RUSSIAN_AIR_SERVICE);
+        armedServicesActiveForMap.add(RoFServiceManager.AUSTRO_HUNGARIAN_AIR_SERVICE);
+        armedServicesActiveForMap.add(RoFServiceManager.DEUTSCHE_LUFTSTREITKRAFTE);
+    }
+
     @Override
     protected void configureTransitionDates() throws PWCGException
     {

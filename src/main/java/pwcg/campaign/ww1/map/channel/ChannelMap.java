@@ -3,6 +3,7 @@ package pwcg.campaign.ww1.map.channel;
 import java.awt.Point;
 
 import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.ww1.country.RoFServiceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -24,10 +25,24 @@ public class ChannelMap extends PWCGMap
         this.mapWeather = new ChannelMapWeather();
         
         frontParameters = new ChannelFrontParameters();
+        buildArmedServicesActiveForMap();
 
         super.configure();
     }
     
+    private void buildArmedServicesActiveForMap()
+    {
+        armedServicesActiveForMap.add(RoFServiceManager.AVIATION_MILITAIRE_BELGE);
+        armedServicesActiveForMap.add(RoFServiceManager.LAVIATION_MILITAIRE);
+        armedServicesActiveForMap.add(RoFServiceManager.LAVIATION_MARINE);
+        armedServicesActiveForMap.add(RoFServiceManager.RFC);
+        armedServicesActiveForMap.add(RoFServiceManager.RNAS);
+        armedServicesActiveForMap.add(RoFServiceManager.RAF);
+        armedServicesActiveForMap.add(RoFServiceManager.USAS);
+        armedServicesActiveForMap.add(RoFServiceManager.DEUTSCHE_LUFTSTREITKRAFTE);
+        armedServicesActiveForMap.add(RoFServiceManager.MARINE_FLIEGER_CORP);
+    }
+
     @Override
     protected void configureTransitionDates() throws PWCGException
     {

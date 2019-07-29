@@ -4,12 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.ArmedService;
+import pwcg.campaign.ArmedServiceFinder;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.factory.CampaignModeFactory;
 import pwcg.campaign.squadmember.ISquadronMemberReplacer;
@@ -26,9 +28,10 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
 {    
     private static final long serialVersionUID = 1L;
 
-    private JButton newPilotCreateButton = null;
-    private NewPilotDataEntryGUI dataEntry = null;
     private Campaign campaign;
+    private JButton newPilotCreateButton;
+    private NewPilotDataEntryGUI dataEntry;
+
 
     public NewPilotGeneratorUI(Campaign campaign)
     {
@@ -97,6 +100,12 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         dataEntry.makePanels();
         
         return dataEntry;
+    }
+
+    public List<ArmedService> getArmedServices() throws PWCGException
+    {
+        ArmedServiceFinder armedServiceFinder = new ArmedServiceFinder(campaign);
+        return armedServiceFinder.getArmedServices();
     }
 
     @Override

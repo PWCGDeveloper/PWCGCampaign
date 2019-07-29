@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -17,6 +18,7 @@ import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.CoopHostPilotBuilder;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.Logger;
@@ -104,6 +106,12 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         dataEntry.makePanels();
         
         return dataEntry;
+    }
+    
+    public List<ArmedService> getArmedServices() throws PWCGException
+    {
+        List<ArmedService> allServices = ArmedServiceFactory.createServiceManager().getAllArmedServices();
+        return allServices;
     }
 
     @Override

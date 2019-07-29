@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -71,8 +70,7 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 
 		// Make a button for each service
         ButtonGroup serviceButtonGroup = new ButtonGroup();
-		List<ArmedService> allServices = ArmedServiceFactory.createServiceManager().getAllArmedServices();
-		for (ArmedService service : allServices)
+		for (ArmedService service : parent.getArmedServices())
 		{
 	        String icon = service.getServiceIcon() + ".jpg";
 	        JRadioButton serviceButton = makeRadioButton(service, icon);

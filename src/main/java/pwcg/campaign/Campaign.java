@@ -6,13 +6,12 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
-import pwcg.campaign.api.ICountry;
+import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.CampaignModeFactory;
 import pwcg.campaign.io.json.CampaignIOJson;
 import pwcg.campaign.mode.ICampaignActive;
-import pwcg.campaign.mode.ICampaignCountryBuilder;
 import pwcg.campaign.mode.ICampaignDescriptionBuilder;
 import pwcg.campaign.personnel.InitialSquadronBuilder;
 import pwcg.campaign.personnel.SquadronPersonnel;
@@ -262,10 +261,17 @@ public class Campaign
         return referencePlayer;
     }
 
-    public ICountry determineCampaignCountry() throws PWCGException
+    public Side determineCampaignSide() throws PWCGException
     {
-        ICampaignCountryBuilder countryBuilder = CampaignModeFactory.makeCampaignCountryBuilder(this);
-        return countryBuilder.determineCampaignCountry();
+        if (campaignData.getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
+        {
+            return Side.NEUTRAL;
+        }
+        else
+        {
+            List<Squadron> squadrons = determinePlayerSquadrons();
+            return squadrons.get(0).determineSide();
+        }
     }
 
     public List<Squadron> determinePlayerSquadrons() throws PWCGException

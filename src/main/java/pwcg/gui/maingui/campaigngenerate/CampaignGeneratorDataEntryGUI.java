@@ -132,7 +132,6 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 			{
 			    rowCount = spacerFullRow(labelConstraints, dataConstraints, campaignGeneratePanel, i);
 			}
-
 	        
             rowCount = createCoopWidget(labelConstraints, dataConstraints, campaignGeneratePanel, rowCount);
             coopGroup.setSelected(singlePlayerButtonModel, true);
@@ -236,7 +235,6 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         ArmedService dateCorrectedService = ArmedServiceFactory.createServiceManager().getArmedServiceById(serviceId, campaignDate);
         
         makeRankChoices(dateCorrectedService);
-        
 
         ++rowCount;
         return rowCount;
@@ -689,6 +687,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 
         else if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_MAP)
 	    {
+            makeMapChoices();
 	        lMap.setForeground(labelColorSelected);
             cbMap.setEnabled(true);
 	    }
@@ -807,6 +806,28 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
             throw exp;
 	    }
 	}
+	
+	private void makeMapChoices() throws PWCGException 
+	{
+	    try
+	    {
+	        cbMap.removeAllItems();
+	        cbMap.addItem("All Maps");
+	        for (PWCGMap map : PWCGContextManager.getInstance().getAllMaps())
+	        {
+	            if (map.isMapHasService(campaignGeneratorDO.getService().getServiceId())) 
+	            {
+	                cbMap.addItem(map.getMapName());
+	            }
+	        }
+	    }
+	    catch (Exception exp)
+	    {
+	        Logger.logException(exp);
+	        throw exp;
+	    }
+	}
+
 	
     
     private List<String> getDatesForMap() throws PWCGException
