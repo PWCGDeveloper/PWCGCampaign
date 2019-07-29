@@ -1,4 +1,4 @@
-package pwcg.campaign;
+package pwcg.ui.display.model;
 
 import java.util.Date;
 import java.util.List;
@@ -9,6 +9,8 @@ import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.aar.ui.events.model.PilotStatusEvent;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
+import pwcg.campaign.Campaign;
+import pwcg.campaign.CombatReport;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
@@ -62,7 +64,7 @@ public class CombatReportBuilder
         combatReport.setDate(combatReportDate);
         combatReport.setTime(missionHeader.getTime());
         
-        if (campaign.getCampaignData().isCoop())
+        if (campaign.isCoop())
         {
             setPilotsForCoop();            
         }

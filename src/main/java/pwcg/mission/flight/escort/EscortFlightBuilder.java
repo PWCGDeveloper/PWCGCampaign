@@ -1,6 +1,7 @@
 package pwcg.mission.flight.escort;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
@@ -15,7 +16,8 @@ public class EscortFlightBuilder
         {
             escortFlight = createEscortForPlayerFlight(escortedFlight);
         }
-        else if (!campaign.getCampaignData().isCoop())
+        else if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE ||
+                 campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COOP)
         {
             escortFlight = createEscortForAiFlight(mission, escortedFlight);
         }

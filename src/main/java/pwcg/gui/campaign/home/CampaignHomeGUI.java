@@ -109,7 +109,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
         activeButtons.clear();
         
-        if (campaign.getCampaignData().isCoop())
+        if (campaign.isCoop())
         {
             changeReferencePilot = makeMenuButton("Change Reference Pilot", "CampChangeReferencePilot", "Change the reference pilot for the UI");
             addButton(buttonPanel, changeReferencePilot);
@@ -120,16 +120,19 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             JButton createButton = makeMenuButton("Mission", "CampMission", "Generate a mission");
             addButton(buttonPanel, createButton);
 
-            if (!campaign.getCampaignData().isCoop())
+            if (!campaign.isCoop())
             {
                 loneWolfMission = makeMenuButton("Lone Wolf Mission", "CampMissionLoneWolf", "Generate a lone wolf mission");
                 addButton(buttonPanel, loneWolfMission);
             }
+        }
 
+        if (isDisplayAARButton())
+        {
             JButton combatReportButton = makeMenuButton("Combat Report", "CampFlowCombatReport", "File an After Action Report (AAR) for a mission");
             addButton(buttonPanel, combatReportButton);
         }
-        
+
         JLabel space1 = new JLabel("");
         buttonPanel.add(space1);
 
@@ -213,7 +216,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             return true;
         }
 
-        if (campaign.getCampaignData().isCoop())
+        if (campaign.isCoop())
         {
             return true;
         }
@@ -236,6 +239,16 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         return true;
     }
 
+    private boolean isDisplayAARButton() throws PWCGException
+    {
+        if (!campaign.isCampaignActive())
+        {
+            return false;
+        }
+ 
+        return true;
+    }
+
     private boolean isDisplayTransferButton() throws PWCGException
     {
         if (!campaign.isCampaignActive())
@@ -248,7 +261,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             return false;
         }
         
-        if (campaign.getCampaignData().isCoop())
+        if (campaign.isCoop())
         {
             return false;
         }
@@ -283,7 +296,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
     private Side determineCampaignSideForMusic() throws PWCGException
     {
-        if (campaign.getCampaignData().isCoop())
+        if (campaign.isCoop())
         {
             int diceRoll = RandomNumberGenerator.getRandom(100);
             if (diceRoll < 50)
@@ -429,7 +442,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
     {
         if (loneWolfMission != null)
         {
-            if (campaign.isCampaignActive() && !campaign.getCampaignData().isCoop())
+            if (campaign.isCampaignActive() && !campaign.isCoop())
             {            
                 if (GreatAce.isGreatAce(campaign))
                 {

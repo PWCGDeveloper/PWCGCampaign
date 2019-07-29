@@ -30,7 +30,7 @@ public class CoopPlayerInclusionTest
     public void fighterFlightTests() throws Exception
     {
         PWCGContextManager.setRoF(false);
-        coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_PROFILE);
+        coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE);
         PWCGContextManager.getInstance().setCampaign(coopCampaign);
         generateHumanPilots();
     }

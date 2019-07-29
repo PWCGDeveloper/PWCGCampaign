@@ -24,21 +24,19 @@ public class CampaignV5V6Converter
     public void convert()
     {
         try
+        {
+            if (!campaign.isCoop())
             {
-            if (campaign.getCampaignData().isCoop())
-            {
-                return;
+                List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
+                if (players.size() != 1)
+                {
+                    return;
+                }
+                
+                Integer pilotSerialNumber = players.get(0).getSerialNumber();
+                moveCombatReports(pilotSerialNumber);
+                moveMissionData();
             }
-            
-            List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
-            if (players.size() != 1)
-            {
-                return;
-            }
-            
-            Integer pilotSerialNumber = players.get(0).getSerialNumber();
-            moveCombatReports(pilotSerialNumber);
-            moveMissionData();
         }
         catch(Exception e)
         {

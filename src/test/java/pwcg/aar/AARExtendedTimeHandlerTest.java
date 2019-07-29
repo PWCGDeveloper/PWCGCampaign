@@ -14,6 +14,7 @@ import pwcg.aar.data.AARContext;
 import pwcg.aar.data.ExtendedTimeReason;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.plane.EquippedPlane;
@@ -40,7 +41,7 @@ public class AARExtendedTimeHandlerTest
     {
         PWCGContextManager.setRoF(false);
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
-        campaign.getCampaignData().setCoop(false);
+        campaign.getCampaignData().setCampaignMode(CampaignMode.CAMPAIGN_MODE_SINGLE);
         aarContext = new AARContext(campaign);
     }
     

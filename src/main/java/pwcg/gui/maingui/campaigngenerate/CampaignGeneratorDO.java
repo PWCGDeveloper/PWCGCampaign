@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.ArmedService;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.RankFactory;
@@ -21,7 +22,7 @@ public class CampaignGeneratorDO
     private String squadName = "";
     private Date startDate = null;
     private Role role = Role.ROLE_FIGHTER;
-    private boolean isCoop = false;
+    private CampaignMode campaignMode = CampaignMode.CAMPAIGN_MODE_NONE;
 
     public boolean isDataSetValid()
     {
@@ -176,16 +177,6 @@ public class CampaignGeneratorDO
 		this.frontMap = frontMap;
 	}
 
-    public boolean isCoop()
-    {
-        return isCoop;
-    }
-
-    public void setCoop(boolean isCoop)
-    {
-        this.isCoop = isCoop;
-    }
-
 	public String getCoopUser() 
 	{
 		return coopUser;
@@ -194,6 +185,15 @@ public class CampaignGeneratorDO
 	public void setCoopUser(String coopUser) 
 	{
 		this.coopUser = coopUser;
-	}    
-    
+	}
+
+    public CampaignMode getCampaignMode()
+    {
+        return campaignMode;
+    }
+
+    public void setCampaignMode(CampaignMode campaignMode)
+    {
+        this.campaignMode = campaignMode;
+    }        
 }

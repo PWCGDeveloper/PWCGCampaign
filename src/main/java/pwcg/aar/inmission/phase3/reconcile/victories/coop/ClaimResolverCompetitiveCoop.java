@@ -14,14 +14,14 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
 
-public class ClaimResolverCoop implements IClaimResolver
+public class ClaimResolverCompetitiveCoop implements IClaimResolver
 {
     private Campaign campaign;
     private List<LogVictory> logVictories;
     private ReconciledVictoryData reconciledMissionData = new ReconciledVictoryData();
 
 
-    public ClaimResolverCoop (Campaign campaign, List<LogVictory> logVictories)
+    public ClaimResolverCompetitiveCoop (Campaign campaign, List<LogVictory> logVictories)
     {
         this.campaign = campaign;
         this.logVictories = logVictories;

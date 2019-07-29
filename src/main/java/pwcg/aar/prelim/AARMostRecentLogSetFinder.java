@@ -12,24 +12,30 @@ import pwcg.core.utils.DateUtils;
 public class AARMostRecentLogSetFinder
 {
     private AARMissionFileLogResultMatcher matcher;
+    private AARLogSetFinder logSetFinder;
+    private AARPwcgMissionFinder pwcgMissionFinder;
     private AARMissionLogFileSet aarLogFileMissionFile;
     private PwcgMissionData pwcgMissionData;
     private Campaign campaign;
 
-    public AARMostRecentLogSetFinder(Campaign campaign, AARMissionFileLogResultMatcher matcher)
+    public AARMostRecentLogSetFinder(Campaign campaign, AARMissionFileLogResultMatcher matcher, AARLogSetFinder logSetFinder,AARPwcgMissionFinder pwcgMissionFinder)
     {
         this.campaign = campaign;
         this.matcher = matcher;
+        this.logSetFinder = logSetFinder;
+        this.pwcgMissionFinder = pwcgMissionFinder;
     }
 
-    public void getMostRecentAARLogFileMissionDataSetForCampaign(List<String> sortedLogSets, List<PwcgMissionData> sortedPwcgMissionDataForCampaign) throws PWCGException
+    public void determineMostRecentAARLogFileMissionDataSetForCampaign() throws PWCGException
     {        
-        pwcgMissionData = getMissionDataForCampaignDate(sortedPwcgMissionDataForCampaign);
+        pwcgMissionData = getMissionDataForCampaignDate();
+        List<String> sortedLogSets = logSetFinder.getSortedLogFileSets();
         aarLogFileMissionFile = matcher.matchMissionFileAndLogFile(pwcgMissionData, sortedLogSets);
     }
-    
-    private PwcgMissionData getMissionDataForCampaignDate(List<PwcgMissionData> sortedPwcgMissionDataForCampaign) throws PWCGException
+
+    private PwcgMissionData getMissionDataForCampaignDate() throws PWCGException
     {
+        List<PwcgMissionData> sortedPwcgMissionDataForCampaign = pwcgMissionFinder.getSortedPwcgMissionsForCampaign();
         for (PwcgMissionData missionData : sortedPwcgMissionDataForCampaign)
         {
             Date missionDataDate = DateUtils.getDateYYYYMMDD(missionData.getMissionHeader().getDate());
@@ -38,8 +44,7 @@ public class AARMostRecentLogSetFinder
                 return missionData;
             }
         }
-        
-        throw new PWCGException("Could not find mission data for campaign on date " + DateUtils.getDateStringYYYYMMDD(campaign.getDate()));
+        return null;
     }
 
     public AARMissionLogFileSet getAarLogFileMissionFile()
@@ -47,8 +52,28 @@ public class AARMostRecentLogSetFinder
         return aarLogFileMissionFile;
     }
 
+    public void setAarLogFileMissionFile(AARMissionLogFileSet aarLogFileMissionFile)
+    {
+        this.aarLogFileMissionFile = aarLogFileMissionFile;
+    }
+
     public PwcgMissionData getPwcgMissionData()
     {
         return pwcgMissionData;
+    }
+
+    public void setPwcgMissionData(PwcgMissionData pwcgMissionData)
+    {
+        this.pwcgMissionData = pwcgMissionData;
+    }
+    
+    public boolean isLogSetComplete()
+    {
+        if (pwcgMissionData == null || aarLogFileMissionFile == null)
+        {
+            return false;
+        }
+        
+        return true;
     }
 }

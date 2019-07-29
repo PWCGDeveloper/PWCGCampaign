@@ -43,7 +43,7 @@ public class MissionFlightFinalizer
 
     private void convertForCoop() throws PWCGException, PWCGException
     {
-        if (campaign.getCampaignData().isCoop())
+        if (campaign.isCoop())
         {
             MissionCoopConverter coopConverter = new MissionCoopConverter();
             coopConverter.convertToCoop(mission.getMissionFlightBuilder());

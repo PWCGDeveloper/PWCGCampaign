@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.Role;
@@ -39,7 +40,7 @@ public class MissionBalloons
             } 
         }
         
-        if (!campaign.getCampaignData().isCoop())
+        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
         {
 	        Squadron squad =  mission.getMissionFlightBuilder().getReferencePlayerFlight().getSquadron();
 	        if (squad.isSquadronThisRole(campaign.getDate(), Role.ROLE_STRAT_BOMB) || 

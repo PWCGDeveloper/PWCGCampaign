@@ -89,14 +89,9 @@ public class CampaignPersonnelManager
         return allPlayers;
     }    
 
-    // TODO will have to eliminate this if SP is going to expand beyond 1 player
     public SquadronMember getSinglePlayer() throws PWCGException
     {
         SquadronMembers allPlayers =  getAllActivePlayers();
-        if (allPlayers.getSquadronMemberList().size() > 1) 
-        {
-            throw new PWCGException("Found multiple players in single player only code segment");
-        }
         return allPlayers.getSquadronMemberList().get(0);
     }    
 

@@ -1,12 +1,13 @@
 package pwcg.core.location;
 
+import pwcg.campaign.api.Side;
 import pwcg.mission.mcu.McuIcon;
 
 public class McuIconToLocationConverter
 {
-	public static McuIcon locationToIcon(PWCGLocation location, String description)
+	public static McuIcon locationToIcon(PWCGLocation location, String description, Side side)
 	{
-		McuIcon icon = new McuIcon(description, description);
+		McuIcon icon = new McuIcon(description, description, side);
 		icon.setName(location.getName());
 		icon.setDesc(location.getName());
 		icon.setPosition(location.getPosition());

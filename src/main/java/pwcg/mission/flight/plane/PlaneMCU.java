@@ -143,7 +143,7 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
 
     public void createPlaneRemover (Flight flight, PlaneMCU playerPlane) throws PWCGException 
     {
-        if (campaign.getCampaignData().isCoop())
+        if (campaign.isCoop())
         {
             planeRemover = new PlaneRemoverCoop();
             planeRemover.initialize(flight, this, playerPlane);

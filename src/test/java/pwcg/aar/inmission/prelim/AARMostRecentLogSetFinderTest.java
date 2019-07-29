@@ -12,7 +12,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase1.parse.AARMissionFileLogResultMatcher;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
+import pwcg.aar.prelim.AARLogSetFinder;
 import pwcg.aar.prelim.AARMostRecentLogSetFinder;
+import pwcg.aar.prelim.AARPwcgMissionFinder;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
@@ -24,6 +26,8 @@ public class AARMostRecentLogSetFinderTest
 {
 
     @Mock private AARMissionFileLogResultMatcher matcher;
+    @Mock private AARLogSetFinder logSetFinder;
+    @Mock private AARPwcgMissionFinder pwcgMissionFinder;
     @Mock private PwcgMissionData evalPwcgMissionData1;
     @Mock private PwcgMissionData evalPwcgMissionData2;
     @Mock private MissionHeader missionHeader1;
@@ -36,7 +40,7 @@ public class AARMostRecentLogSetFinderTest
     @Before
     public void setup() throws PWCGException
     {
-        Mockito.when(matcher.matchMissionFileAndLogFile(evalPwcgMissionData1, sortedLogSets)).thenReturn(aarLogFileMissionFile);
+        Mockito.when(logSetFinder.getSortedLogFileSets()).thenReturn(sortedLogSets);
         Mockito.when(evalPwcgMissionData1.getMissionDescription()).thenReturn("Mission1");
         Mockito.when(evalPwcgMissionData2.getMissionDescription()).thenReturn("Mission2");
         Mockito.when(evalPwcgMissionData1.getMissionHeader()).thenReturn(missionHeader1);
@@ -45,6 +49,13 @@ public class AARMostRecentLogSetFinderTest
         Mockito.when(missionHeader1.getDate()).thenReturn("19420101");
         Mockito.when(missionHeader2.getDate()).thenReturn("19420103");
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420101"));
+
+        List<PwcgMissionData> missionDataForCampaign = new ArrayList<>();
+        missionDataForCampaign.add(evalPwcgMissionData2);
+        missionDataForCampaign.add(evalPwcgMissionData1);
+        Mockito.when(pwcgMissionFinder.getSortedPwcgMissionsForCampaign()).thenReturn(missionDataForCampaign);
+
+        Mockito.when(matcher.matchMissionFileAndLogFile(evalPwcgMissionData1, sortedLogSets)).thenReturn(aarLogFileMissionFile);
     }
     
     @Test
@@ -60,9 +71,9 @@ public class AARMostRecentLogSetFinderTest
         sortedLogSets.add("LogSet2");
         sortedLogSets.add("LogSet3");
 
-        AARMostRecentLogSetFinder logSetFinder = new AARMostRecentLogSetFinder(campaign, matcher);
-        logSetFinder.getMostRecentAARLogFileMissionDataSetForCampaign(sortedLogSets, sortedPwcgMissionDataForCampaign);
-        PwcgMissionData missionData = logSetFinder.getPwcgMissionData();
+        AARMostRecentLogSetFinder mostRecentogSetFinder = new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, pwcgMissionFinder);
+        mostRecentogSetFinder.determineMostRecentAARLogFileMissionDataSetForCampaign();
+        PwcgMissionData missionData = mostRecentogSetFinder.getPwcgMissionData();
         String missionDescription = missionData.getMissionDescription();
         assert(missionDescription.equals("Mission2"));
     }
@@ -80,9 +91,9 @@ public class AARMostRecentLogSetFinderTest
         sortedLogSets.add("LogSet2");
         sortedLogSets.add("LogSet3");
 
-        AARMostRecentLogSetFinder logSetFinder = new AARMostRecentLogSetFinder(campaign, matcher);
-        logSetFinder.getMostRecentAARLogFileMissionDataSetForCampaign(sortedLogSets, sortedPwcgMissionDataForCampaign);
-        PwcgMissionData missionData = logSetFinder.getPwcgMissionData();
+        AARMostRecentLogSetFinder mostRecentogSetFinder = new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, pwcgMissionFinder);
+        mostRecentogSetFinder.determineMostRecentAARLogFileMissionDataSetForCampaign();
+        PwcgMissionData missionData = mostRecentogSetFinder.getPwcgMissionData();
         String missionDescription = missionData.getMissionDescription();
         assert(missionDescription.equals("Mission1"));
     }
@@ -100,8 +111,8 @@ public class AARMostRecentLogSetFinderTest
         sortedLogSets.add("LogSet2");
         sortedLogSets.add("LogSet3");
 
-        AARMostRecentLogSetFinder logSetFinder = new AARMostRecentLogSetFinder(campaign, matcher);
-        logSetFinder.getMostRecentAARLogFileMissionDataSetForCampaign(sortedLogSets, sortedPwcgMissionDataForCampaign);
+        AARMostRecentLogSetFinder mostRecentogSetFinder = new AARMostRecentLogSetFinder(campaign, matcher, logSetFinder, pwcgMissionFinder);
+        mostRecentogSetFinder.determineMostRecentAARLogFileMissionDataSetForCampaign();
         assert(false);
     }
 

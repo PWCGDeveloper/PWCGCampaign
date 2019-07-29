@@ -21,173 +21,181 @@ import pwcg.mission.MissionStringHandler;
 public class McuIcon extends BaseFlightMcu
 {
 
-	private int enabled = 1;
-	private int lCName = 0;
-	private int lCDesc = 0;
-	private int rColor = 255;
-	private int gColor = 255;
-	private int bColor = 255;
-	private McuIconIdType iconId = McuIconIdType.ICON_ID_NORMAL;
+    private int enabled = 1;
+    private int lCName = 0;
+    private int lCDesc = 0;
+    private int rColor = 255;
+    private int gColor = 255;
+    private int bColor = 255;
+    private McuIconIdType iconId = McuIconIdType.ICON_ID_NORMAL;
     private McuIconLineType lineType = McuIconLineType.ICON_LINE_TYPE_NONE;
-	private List<Coalition> coalitions = new ArrayList<Coalition>();
+    private List<Coalition> coalitions = new ArrayList<Coalition>();
 
-	public McuIcon (String iconName, String iconText)
-	{
-		super();
+    public McuIcon(String iconName, String iconText, Side side)
+    {
+        super();
 
         name = iconName;
         desc = iconName;
-        
+
         MissionStringHandler.getInstance().registerMissionText(lCName, iconText);
-        
+        coalitions.add(Coalition.getCoalitionBySide(side));
+    }
+
+    public McuIcon(String iconName, String iconText)
+    {
+        super();
+
+        name = iconName;
+        desc = iconName;
+
+        MissionStringHandler.getInstance().registerMissionText(lCName, iconText);
         coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
         coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));
     }
 
-	public McuIcon (McuWaypoint waypoint)
-	{
-		super();
-		position = waypoint.getPosition().copy();
-
-		iconId = McuIconIdType.ICON_ID_WAYPOINT;
-
-		name = waypoint.getName();
-
-		IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-		if (productSpecificConfiguration.usePosition1()) {
-			rColor = 0;
-			gColor = 0;
-			bColor = 0;
-
-			lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
-
-			desc = waypoint.getName() + "<br>Speed to waypoint: <kmh-mph-v>" + waypoint.getSpeed() + "</kmh-mph-v> <kmh-mph-u/>";
-		} else {
-			desc = waypoint.getName() + "<br>Speed to waypoint: " + waypoint.getSpeed() + " km/h<br>Altitude at waypoint: " + ((int) waypoint.getPosition().getYPos()) + " m";
-		}
-
-		lCName = LCIndexGenerator.getInstance().getNextIndex();
-		lCDesc = LCIndexGenerator.getInstance().getNextIndex();
-		MissionStringHandler.getInstance().registerMissionText(lCName, name);
-		MissionStringHandler.getInstance().registerMissionText(lCDesc, desc);
-
-		coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
-		coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));
-	}
-
-    public McuIcon(McuTakeoff takeoff) {
-		super();
-		position = takeoff.getPosition().copy();
-		iconId = McuIconIdType.ICON_ID_TAKEOFF;
-		name = "Take Off";
-		desc = "Take Off";
-
-		IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-		if (productSpecificConfiguration.usePosition1()) {
-			rColor = 0;
-			gColor = 0;
-			bColor = 0;
-
-			lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
-		}
-
-		lCName = LCIndexGenerator.getInstance().getNextIndex();
-		lCDesc = lCName;
-
-		MissionStringHandler.getInstance().registerMissionText(lCName, name);
-
-		coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
-		coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));
-	}
-
-    public McuIcon(McuLanding landing) {
-		super();
-		position = landing.getPosition().copy();
-		iconId = McuIconIdType.ICON_ID_LAND;
-		name = "Land";
-		desc = "Land";
-
-		IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-		if (productSpecificConfiguration.usePosition1()) {
-			rColor = 0;
-			gColor = 0;
-			bColor = 0;
-
-			lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
-		}
-		
-		lCName = LCIndexGenerator.getInstance().getNextIndex();
-		lCDesc = lCName;
-
-		MissionStringHandler.getInstance().registerMissionText(lCName, name);
-        
-        coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
-        coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));
-	}
-
-    public McuIcon (Balloon balloon)
+    public McuIcon(McuWaypoint waypoint, Side side)
     {
         super();
-        
+        position = waypoint.getPosition().copy();
+
+        iconId = McuIconIdType.ICON_ID_WAYPOINT;
+
+        name = waypoint.getName();
+
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        if (productSpecificConfiguration.usePosition1())
+        {
+            rColor = 0;
+            gColor = 0;
+            bColor = 0;
+
+            lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
+
+            desc = waypoint.getName() + "<br>Speed to waypoint: <kmh-mph-v>" + waypoint.getSpeed() + "</kmh-mph-v> <kmh-mph-u/>";
+        }
+        else
+        {
+            desc = waypoint.getName() + "<br>Speed to waypoint: " + waypoint.getSpeed() + " km/h<br>Altitude at waypoint: "
+                    + ((int) waypoint.getPosition().getYPos()) + " m";
+        }
+
+        lCName = LCIndexGenerator.getInstance().getNextIndex();
+        lCDesc = LCIndexGenerator.getInstance().getNextIndex();
+        MissionStringHandler.getInstance().registerMissionText(lCName, name);
+        MissionStringHandler.getInstance().registerMissionText(lCDesc, desc);
+        coalitions.add(Coalition.getCoalitionBySide(side));
+    }
+
+    public McuIcon(McuTakeoff takeoff, Side side)
+    {
+        super();
+        position = takeoff.getPosition().copy();
+        iconId = McuIconIdType.ICON_ID_TAKEOFF;
+        name = "Take Off";
+        desc = "Take Off";
+
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        if (productSpecificConfiguration.usePosition1())
+        {
+            rColor = 0;
+            gColor = 0;
+            bColor = 0;
+
+            lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
+        }
+
+        lCName = LCIndexGenerator.getInstance().getNextIndex();
+        lCDesc = lCName;
+
+        MissionStringHandler.getInstance().registerMissionText(lCName, name);
+        coalitions.add(Coalition.getCoalitionBySide(side));
+    }
+
+    public McuIcon(McuLanding landing, Side side)
+    {
+        super();
+        position = landing.getPosition().copy();
+        iconId = McuIconIdType.ICON_ID_LAND;
+        name = "Land";
+        desc = "Land";
+
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        if (productSpecificConfiguration.usePosition1())
+        {
+            rColor = 0;
+            gColor = 0;
+            bColor = 0;
+
+            lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
+        }
+
+        lCName = LCIndexGenerator.getInstance().getNextIndex();
+        lCDesc = lCName;
+
+        MissionStringHandler.getInstance().registerMissionText(lCName, name);
+        coalitions.add(Coalition.getCoalitionBySide(side));
+    }
+
+    public McuIcon(Balloon balloon, Side side)
+    {
+        super();
+
         this.iconId = McuIconIdType.ICON_ID_ENEMY_BALLOON;
         name = RoFPlaneAttributeMapping.BALLOON.getPlaneType();
         desc = RoFPlaneAttributeMapping.BALLOON.getPlaneType();
         position = balloon.getPosition().copy();
-        
+
         lCName = LCIndexGenerator.getInstance().getNextIndex();
         lCDesc = lCName;
 
         MissionStringHandler.getInstance().registerMissionText(lCName, name);
-        
+
         coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
         coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));
     }
 
-
-    public McuIcon (IAirfield airfield)
+    public McuIcon(IAirfield airfield, Side side)
     {
         super();
-        
+
         this.iconId = McuIconIdType.ICON_ID_AIRFIELD;
         name = airfield.getName();
         desc = airfield.getName();
         position = airfield.getPosition().copy();
-        
+
         lCName = LCIndexGenerator.getInstance().getNextIndex();
         lCDesc = lCName;
 
         MissionStringHandler.getInstance().registerMissionText(lCName, name);
-        
-        coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
-        coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));
+        coalitions.add(Coalition.getCoalitionBySide(side));
     }
 
-    public McuIcon (FrontLinePoint frontLinePoint)
-	{
+    public McuIcon(FrontLinePoint frontLinePoint)
+    {
         name = "";
         desc = "";
-        
+
         lCName = LCIndexGenerator.getInstance().getNextIndex();
         lCDesc = lCName;
         MissionStringHandler.getInstance().registerMissionText(lCName, name);
 
         position = frontLinePoint.getPosition().copy();
         this.lineType = McuIconLineType.ICON_LINE_TYPE_POSITION0;
-        
+
         coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
         coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));
-	}
+    }
 
-	
     public void write(BufferedWriter writer) throws PWCGIOException
-	{
-		try
+    {
+        try
         {
             writer.write("MCU_Icon");
             writer.newLine();
             writer.write("{");
             writer.newLine();
-            
+
             super.write(writer);
 
             writer.write("  Enabled = " + enabled + ";");
@@ -196,7 +204,7 @@ public class McuIcon extends BaseFlightMcu
             writer.newLine();
             writer.write("  LCDesc = " + lCDesc + ";");
             writer.newLine();
-             writer.write("  RColor = " + rColor + ";");
+            writer.write("  RColor = " + rColor + ";");
             writer.newLine();
             writer.write("  GColor = " + gColor + ";");
             writer.newLine();
@@ -219,29 +227,31 @@ public class McuIcon extends BaseFlightMcu
             Logger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
-	}	
-    
+    }
+
     public void setColorBlue()
     {
-    	rColor = 0;
-    	gColor = 0;
-    	bColor = 255;
+        rColor = 0;
+        gColor = 0;
+        bColor = 255;
     }
 
     public void setColorRed()
     {
-    	rColor = 255;
-    	gColor = 0;
-    	bColor = 0;
+        rColor = 255;
+        gColor = 0;
+        bColor = 0;
     }
 
-	public int getEnabled() {
-		return enabled;
-	}
+    public int getEnabled()
+    {
+        return enabled;
+    }
 
-	public void setEnabled(int enabled) {
-		this.enabled = enabled;
-	}
+    public void setEnabled(int enabled)
+    {
+        this.enabled = enabled;
+    }
 
     public void setLineType(McuIconLineType lineType)
     {

@@ -5,7 +5,6 @@ import java.awt.BorderLayout;
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
-import pwcg.campaign.CombatReportBuilder;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -14,6 +13,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.debrief.AAREventPanel;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
+import pwcg.ui.display.model.CombatReportBuilder;
 
 public class AARCombatReportPanel extends AAREventPanel
 {

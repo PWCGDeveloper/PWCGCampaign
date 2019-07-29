@@ -11,7 +11,8 @@ import javax.swing.JPanel;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.squadmember.SquadronMemberReplacer;
+import pwcg.campaign.factory.CampaignModeFactory;
+import pwcg.campaign.squadmember.ISquadronMemberReplacer;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.Logger;
@@ -145,7 +146,7 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         String rank = campaignGeneratorDO.getRank();
         String coopuser = campaignGeneratorDO.getCoopUser();
 
-        SquadronMemberReplacer squadronMemberReplacer = new SquadronMemberReplacer(campaign);
+        ISquadronMemberReplacer squadronMemberReplacer = CampaignModeFactory.makeSquadronMemberReplacer(campaign);
         squadronMemberReplacer.createPilot(playerName, rank, squadronName, coopuser);
         campaign.write();
     }

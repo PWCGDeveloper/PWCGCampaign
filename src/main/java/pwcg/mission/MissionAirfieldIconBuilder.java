@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
@@ -19,7 +20,7 @@ public class MissionAirfieldIconBuilder
 
     public void createWaypointIcons(Campaign campaign, Mission mission) throws PWCGException 
     {        
-        if (campaign.getCampaignData().isCoop())
+        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
         {
             createAirfieldIconsForSide(campaign, mission, Side.ALLIED);
             createAirfieldIconsForSide(campaign, mission, Side.AXIS);
@@ -39,7 +40,7 @@ public class MissionAirfieldIconBuilder
 		{
 			if (missionBorders.isInBox(airfield.getPosition()))
 			{
-		        McuIcon airfieldIcon = new McuIcon(airfield);
+		        McuIcon airfieldIcon = new McuIcon(airfield, airfield.getCountry(campaign.getDate()).getSide());
 	            airfieldIcons.add(airfieldIcon);
 			}
 		}

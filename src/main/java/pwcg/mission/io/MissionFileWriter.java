@@ -101,7 +101,7 @@ public abstract class MissionFileWriter implements IMissionFile
 
     private void writeMissionObjectives(BufferedWriter writer) throws PWCGException
     {
-        if (!mission.getCampaign().getCampaignData().isCoop())
+        if (!mission.getCampaign().isCoop())
         {
             mission.getMissionObjectiveSuccess().write(writer);
             mission.getMissionObjectiveFailure().write(writer);
@@ -186,7 +186,7 @@ public abstract class MissionFileWriter implements IMissionFile
     protected String getMissionFilePath(String fileName) throws PWCGException 
 	{
 		String filepath = "..\\Data\\Missions\\" + fileName;
-		if (mission.getCampaign().getCampaignData().isCoop())
+		if (mission.getCampaign().isCoop())
 		{
 			filepath = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir() + "Multiplayer\\Cooperative\\" + fileName;
 

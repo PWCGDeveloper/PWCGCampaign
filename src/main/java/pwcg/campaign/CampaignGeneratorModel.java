@@ -16,7 +16,7 @@ public class CampaignGeneratorModel
     private String squadronName;
     private Date campaignDate;
     private String playerRegion;
-    private boolean isCoop = false;
+    private CampaignMode campaignMode = CampaignMode.CAMPAIGN_MODE_NONE;
 
     public ArmedService getService()
     {
@@ -88,16 +88,16 @@ public class CampaignGeneratorModel
         this.playerRegion = playerRegion;
     }
 
-    public boolean isCoop()
+    public CampaignMode getCampaignMode()
     {
-        return isCoop;
+        return campaignMode;
     }
 
-    public void setCoop(boolean isCoop)
+    public void setCampaignMode(CampaignMode campaignMode)
     {
-        this.isCoop = isCoop;
+        this.campaignMode = campaignMode;
     }
-    
+
     public Squadron getCampaignSquadron() throws PWCGException
     {
     	SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();

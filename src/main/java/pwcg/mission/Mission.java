@@ -4,6 +4,7 @@ import java.util.List;
 
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.context.PWCGContextManager;
@@ -179,7 +180,7 @@ public class Mission
         	missionFrontLines.buildFrontLineIcons();
             missionPlaneLimiter.createPlaneCountersToLimitPlanesSpawned(this);
 
-        	if (!campaign.getCampaignData().isCoop())
+        	if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
         	{
         		finalizeForSinglePlayer();
         	}
@@ -195,7 +196,8 @@ public class Mission
 
 	private void finalizeForSinglePlayer() throws PWCGException 
 	{
-	    if (!campaign.getCampaignData().isCoop())
+	    // TODO need icons for coop as well as SP
+        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
 	    {
     		missionWaypointIconBuilder.createWaypointIcons(missionFlightBuilder.getReferencePlayerFlight());
     		missionAirfieldIconBuilder.createWaypointIcons(campaign, this);

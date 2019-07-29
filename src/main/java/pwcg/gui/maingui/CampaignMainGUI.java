@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.CountryFactory;
@@ -418,10 +419,14 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
     				{
     					icon = "RIP.jpg";
     				}
-    				else if (campaign.getCampaignData().isCoop())
-    				{
-    					icon = "CoopIcon.jpg";
-    				}
+                    else if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COOP)
+                    {
+                        icon = "CoopIcon.jpg";
+                    }
+                    else if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
+                    {
+                        icon = "CoopCompIcon.jpg";
+                    }
     				else
     				{
     				    String nation = determineCampaignCountryForIcon(campaign).getNationality();
@@ -484,7 +489,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
     
     private ICountry determineCampaignCountryForIcon(Campaign campaign) throws PWCGException
     {
-        if (campaign.getCampaignData().isCoop())
+        if (campaign.isCoop())
         {
             return CountryFactory.makeNeutralCountry();
         }

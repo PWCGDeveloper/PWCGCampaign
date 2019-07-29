@@ -114,7 +114,10 @@ public class CoopPilotChooser extends PwcgGuiContext implements ActionListener
     	{
     		if (coopPilotsByCoopUser.containsKey(coopPilot.getUsername()))
     		{
-                errorMessages.add("More than one pilot in mission for player " + coopPilot.getUsername() + " Pilot Name: " + coopPilot.getPilotName());
+    		    if (!coopPilot.getUsername().equals(CoopPilotChooserPanel.NO_USER_FOR_PILOT))
+    		    {
+    		        errorMessages.add("More than one pilot in mission for player " + coopPilot.getUsername() + " Pilot Name: " + coopPilot.getPilotName());
+    		    }
     		}
     		else
     		{

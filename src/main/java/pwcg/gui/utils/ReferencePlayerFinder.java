@@ -16,7 +16,7 @@ public class ReferencePlayerFinder
     {
         try
         {
-            if (campaign.getCampaignData().isCoop())
+            if (campaign.isCoop())
             {
                 return getHostPlayer(campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList());
             }

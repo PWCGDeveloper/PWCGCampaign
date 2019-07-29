@@ -214,7 +214,7 @@ public class MissionFlightKeeperTest
     @Test
     public void coopFighterTest() throws PWCGException
     {
-        Campaign coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_PROFILE);
+        Campaign coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE);
         coopCampaign.setCampaignConfigManager(configManagerCampaign);
 
         Mockito.when(missionFlightBuilder.hasPlayerFlightWithFlightTypes(Matchers.anyListOf(FlightTypes.class))).thenReturn(true);
@@ -250,7 +250,7 @@ public class MissionFlightKeeperTest
     @Test
     public void coopBomberTest() throws PWCGException
     {
-        Campaign coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_PROFILE);
+        Campaign coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE);
         coopCampaign.setCampaignConfigManager(configManagerCampaign);
 
         Mockito.when(missionFlightBuilder.hasPlayerFlightWithFlightTypes(Matchers.anyListOf(FlightTypes.class))).thenReturn(false);

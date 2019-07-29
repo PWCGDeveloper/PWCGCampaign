@@ -71,7 +71,7 @@ public class MissionDescriptionFile
     protected String getMissionFilePath(Campaign campaign, String fileName) throws PWCGException 
     {
         String filepath = "..\\Data\\Missions\\" + fileName;
-        if (campaign.getCampaignData().isCoop())
+        if (campaign.isCoop())
         {
             filepath = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir() + "Multiplayer\\Cooperative\\" + fileName;
 

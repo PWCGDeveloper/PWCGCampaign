@@ -25,6 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.ArmedService;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
@@ -64,7 +65,8 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 	
     private ButtonGroup coopGroup = new ButtonGroup();
     private ButtonModel singlePlayerButtonModel = null;
-    private ButtonModel coopButtonModel = null;
+    private ButtonModel coopCooperativeButtonModel = null;
+    private ButtonModel coopCompetitiveButtonModel = null;
     private JTextField campaignNameTextBox;
     private JTextField playerNameTextBox;
 	private JComboBox<String> cbRegion;
@@ -599,10 +601,15 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         singlePlayerButtonModel = singlePlayerButton.getModel();
         coopGroup.add(singlePlayerButton);
 
-        JRadioButton coopButton = PWCGButtonFactory.makeRadioButton("Coop Mode", "Mission Mode: Coop", "Select coop player mode for generated missions", false, this);              
-        coopButtonPanelGrid.add(coopButton);
-        coopButtonModel = coopButton.getModel();
-        coopGroup.add(coopButton);
+        JRadioButton coopCooperativeButton = PWCGButtonFactory.makeRadioButton("Coop Cooperative Mode", "Mission Mode: Coop Cooperative", "Select coop player mode for generated missions", false, this);              
+        coopButtonPanelGrid.add(coopCooperativeButton);
+        coopCooperativeButtonModel = coopCooperativeButton.getModel();
+        coopGroup.add(coopCooperativeButton);
+
+        JRadioButton coopCompetitiveButton = PWCGButtonFactory.makeRadioButton("Coop Competitive Mode", "Mission Mode: Coop Competitive", "Select coop player mode for generated missions", false, this);              
+        coopButtonPanelGrid.add(coopCompetitiveButton);
+        coopCompetitiveButtonModel = coopCompetitiveButton.getModel();
+        coopGroup.add(coopCompetitiveButton);
 
         coopButtonPanel.add(coopButtonPanelGrid, BorderLayout.SOUTH);
         
@@ -646,7 +653,8 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         {
         	lCampaignType.setForeground(labelColorSelected);
         	singlePlayerButtonModel.setEnabled(true);
-        	coopButtonModel.setEnabled(true);
+        	coopCooperativeButtonModel.setEnabled(true);
+            coopCompetitiveButtonModel.setEnabled(true);
         }
 
         else if (campaignGeneratorState.getCurrentStep() == CampaignGeneratorWorkflow.CHOOSE_CAMPAIGN_NAME)
@@ -732,7 +740,8 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 	    }
 	    
 	    singlePlayerButtonModel.setEnabled(false);
-	    coopButtonModel.setEnabled(false);
+        coopCooperativeButtonModel.setEnabled(false);
+        coopCompetitiveButtonModel.setEnabled(false);
 	    campaignNameTextBox.setEnabled(false);
 	    playerNameTextBox.setEnabled(false);
         cbRole.setEnabled(false);
@@ -917,14 +926,19 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
             }
             else if (ae.getActionCommand().contains("Single"))
             {
-                campaignGeneratorDO.setCoop(false);
+                campaignGeneratorDO.setCampaignMode(CampaignMode.CAMPAIGN_MODE_SINGLE);
                 coopGroup.setSelected(singlePlayerButtonModel, true);
             }
-            else if (ae.getActionCommand().contains("Coop"))
+            else if (ae.getActionCommand().contains("Coop Cooperative Mode"))
             {
-                campaignGeneratorDO.setCoop(true);
-                coopGroup.setSelected(coopButtonModel, true);
-           }
+                campaignGeneratorDO.setCampaignMode(CampaignMode.CAMPAIGN_MODE_COOP);
+                coopGroup.setSelected(coopCooperativeButtonModel, true);
+            }
+            else if (ae.getActionCommand().contains("Coop Competitive Mode"))
+            {
+                campaignGeneratorDO.setCampaignMode(CampaignMode.CAMPAIGN_MODE_COMPETITIVE);
+                coopGroup.setSelected(coopCompetitiveButtonModel, true);
+            }
             
             revalidate();
             repaint();

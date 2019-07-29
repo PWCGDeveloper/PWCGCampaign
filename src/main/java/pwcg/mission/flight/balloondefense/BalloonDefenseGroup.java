@@ -146,7 +146,7 @@ public class BalloonDefenseGroup extends GroundUnit
 		spawner.setOrientation(orient.copy());
 		spawner.setObject(balloon.getEntity().getIndex());
 
-		balloonIcon = new McuIcon(balloon);
+		balloonIcon = new McuIcon(balloon, pwcgGroundUnitInformation.getCountry().getSide());
 	}
 
 	@Override

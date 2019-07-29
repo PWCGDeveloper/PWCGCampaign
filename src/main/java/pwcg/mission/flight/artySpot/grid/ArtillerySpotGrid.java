@@ -19,12 +19,12 @@ public class ArtillerySpotGrid
 	
 	private ArtillerySpotGridElement[][] gridElements = new ArtillerySpotGridElement[GRID_ELEMENTS][GRID_ELEMENTS];
 	
-	private ArtillerySpotMapGrid artySpotMapGrid = new ArtillerySpotMapGrid();
-	private ArtillerySpotMedia artillerySpotMedia = null;
+	private ArtillerySpotMapGrid artySpotMapGrid;
+	private ArtillerySpotMedia artillerySpotMedia;
     private ArtillerySpotActivateSet artillerySpotActivateSet= null;
-    private ArtillerySpotMasterTrigger artillerySpotMasterTrigger = null;
-    private ArtillerySpotDeactivate artySpotDeactivate = null;
-    private ArtillerySpotForceComplete artillerySpotForceComplete = null;
+    private ArtillerySpotMasterTrigger artillerySpotMasterTrigger;
+    private ArtillerySpotDeactivate artySpotDeactivate;
+    private ArtillerySpotForceComplete artillerySpotForceComplete;
 
     private double placementAngle = 270;
 
@@ -34,6 +34,8 @@ public class ArtillerySpotGrid
 
 	public void create (ArtillerySpotArtilleryGroup friendlyArtillery, Coordinate gridPosition, ICountry artilleryCountry) throws PWCGException 
 	{
+	    artySpotMapGrid = new ArtillerySpotMapGrid(artilleryCountry.getSide());
+	    
 	    placementAngle = calcPlacementAngle(artilleryCountry);
 		
         // Forces artillery to complete firing task

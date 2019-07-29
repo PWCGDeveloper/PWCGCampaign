@@ -28,7 +28,7 @@ public class MissionBorderBuilderTest
     {
         PWCGContextManager.setRoF(false);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_STALINGRAD);
-        coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_PROFILE);
+        coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE);
         participatingPlayers = new MissionHumanParticipants();
     }
 

@@ -3,6 +3,7 @@ package pwcg.mission.flight.factory;
 import java.util.Date;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
@@ -118,7 +119,7 @@ public class BoSFlightFactory extends FlightFactory
         }
         else if (missionOdds < scrambleMissionOdds)
         {
-            if (isPlayerFlight && !campaign.getCampaignData().isCoop())
+            if (isPlayerFlight && campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
             {
                 flightType = FlightTypes.SCRAMBLE;
             }

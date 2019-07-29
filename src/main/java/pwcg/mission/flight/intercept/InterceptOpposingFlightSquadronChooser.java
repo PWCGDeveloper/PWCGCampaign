@@ -97,7 +97,7 @@ public class InterceptOpposingFlightSquadronChooser
     private int determineNumberOfOpposingFlights() 
     {
         int numOpposingFlights = 1 + RandomNumberGenerator.getRandom(3);
-        if (playerFlightInformation.getCampaign().getCampaignData().isCoop())
+        if (playerFlightInformation.getCampaign().isCoop())
         {
             numOpposingFlights = 1;
         }

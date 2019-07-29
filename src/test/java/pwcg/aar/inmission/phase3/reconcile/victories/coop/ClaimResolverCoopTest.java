@@ -56,7 +56,7 @@ public class ClaimResolverCoopTest
     @Test
     public void testClaimAccepted() throws PWCGException
     {
-        IClaimResolver claimResolver = new ClaimResolverCoop(campaign, logVictoryHelper.getLogVictories());
+        IClaimResolver claimResolver = new ClaimResolverCompetitiveCoop(campaign, logVictoryHelper.getLogVictories());
         ReconciledVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims();
         assert (reconciledMissionData.getVictoryAwardsByPilot().size() == 1);
         assert (reconciledMissionData.getVictoryAwardsByPilot().get(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER).size() == 5);

@@ -18,7 +18,7 @@ public class PWCGFlightFactoryFactory
         }
         else
         {
-            if (campaign.getCampaignData().isCoop())
+            if (campaign.isCoop())
             {
                 return new BoSFlightCoopFactory(campaign);
                 

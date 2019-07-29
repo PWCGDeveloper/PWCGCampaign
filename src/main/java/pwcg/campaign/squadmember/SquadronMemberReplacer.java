@@ -11,16 +11,16 @@ import pwcg.coop.model.CoopPilot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 
-public class SquadronMemberReplacer 
+public class SquadronMemberReplacer  implements ISquadronMemberReplacer
 {
-    private Campaign campaign;
+    protected Campaign campaign;
     
     public SquadronMemberReplacer(Campaign campaign)
     {
         this.campaign = campaign;
     }
 	
-    public void createPilot(String playerPilotName, String rank, String squadronName, String coopUser) throws PWCGUserException, Exception
+    public SquadronMember createPilot(String playerPilotName, String rank, String squadronName, String coopUser) throws PWCGUserException, Exception
     {        
         Squadron newPlayerSquadron = getNewPlayerSquadron(squadronName);
     	SquadronPersonnel newPlayerSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(newPlayerSquadron.getSquadronId());
@@ -28,10 +28,12 @@ public class SquadronMemberReplacer
         SquadronMember newSquadronMewmber = addnewPilotToCampaign(playerPilotName, rank, newPlayerSquadron, newPlayerSquadronPersonnel);        
         removeAiSquadronMember(rank, newPlayerSquadron, newPlayerSquadronPersonnel);
         
-        if (campaign.getCampaignData().isCoop())
+        if (campaign.isCoop())
         {
             createCoopPilot(newSquadronMewmber, coopUser);
         }
+        
+        return newSquadronMewmber;
     }
 
 	private Squadron getNewPlayerSquadron(String squadronName) throws PWCGException 

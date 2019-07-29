@@ -12,27 +12,24 @@ public class CoopHostPilotBuilder
     
     public void buildHostPilotForCoop(Campaign campaign) throws PWCGException
     {
-        if (campaign.getCampaignData().isCoop())
-        {
-        	SquadronMember hostPilot = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
+        SquadronMember hostPilot = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
         	
-        	CoopHostUserBuilder hostBuilder = new CoopHostUserBuilder();
-        	CoopUser coopHostRecord = hostBuilder.getHostUser();
+    	CoopHostUserBuilder hostBuilder = new CoopHostUserBuilder();
+    	CoopUser coopHostRecord = hostBuilder.getHostUser();
+    	
+    	CoopPilot hostPilotRecord = new CoopPilot();
+    	hostPilotRecord.setApproved(true);
+    	hostPilotRecord.setCampaignName(campaign.getCampaignData().getName());
+    	hostPilotRecord.setNote("Auto create host pilot");
+    	hostPilotRecord.setPilotName(hostPilot.getName());
+    	hostPilotRecord.setPilotRank(hostPilot.getRank());
+    	hostPilotRecord.setSerialNumber(hostPilot.getSerialNumber());
+    	hostPilotRecord.setSquadronId(hostPilotRecord.getSquadronId());
+    	hostPilotRecord.setUsername(coopHostRecord.getUsername());
+    	hostPilotRecord.setApproved(true);
 
-        	
-        	CoopPilot hostPilotRecord = new CoopPilot();
-        	hostPilotRecord.setApproved(true);
-        	hostPilotRecord.setCampaignName(campaign.getCampaignData().getName());
-        	hostPilotRecord.setNote("Auto create host pilot");
-        	hostPilotRecord.setPilotName(hostPilot.getName());
-        	hostPilotRecord.setPilotRank(hostPilot.getRank());
-        	hostPilotRecord.setSerialNumber(hostPilot.getSerialNumber());
-        	hostPilotRecord.setSquadronId(hostPilotRecord.getSquadronId());
-        	hostPilotRecord.setUsername(coopHostRecord.getUsername());
-        	hostPilotRecord.setApproved(true);
+    	CoopPilotIOJson.writeJson(hostPilotRecord);
 
-        	CoopPilotIOJson.writeJson(hostPilotRecord);
-        }
-        PWCGContextManager.getInstance().setCampaign(campaign);
+    	PWCGContextManager.getInstance().setCampaign(campaign);
     }
 }

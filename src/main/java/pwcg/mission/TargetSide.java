@@ -1,6 +1,7 @@
 package pwcg.mission;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
@@ -10,7 +11,7 @@ public class TargetSide
 {
 	public static Side ambientTargetSide(Campaign campaign) throws PWCGException
 	{
-		if (campaign.getCampaignData().isCoop())
+		if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
 		{
 			return chooseRandomSide();
 		}

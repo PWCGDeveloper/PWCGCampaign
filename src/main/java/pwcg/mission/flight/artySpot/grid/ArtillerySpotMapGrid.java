@@ -2,6 +2,7 @@ package pwcg.mission.flight.artySpot.grid;
 
 import java.io.BufferedWriter;
 
+import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
@@ -11,19 +12,14 @@ import pwcg.mission.mcu.McuIconLineType;
 
 public class ArtillerySpotMapGrid 
 {
+    private Side side;
 	private McuIcon[][] gridIcons = new McuIcon[ArtillerySpotGrid.GRID_ELEMENTS + 1][ArtillerySpotGrid.GRID_ELEMENTS + 1];
-	
-	/**
-	 * 
-	 */
-	public ArtillerySpotMapGrid ()
+
+	public ArtillerySpotMapGrid (Side side)
 	{
+	    this.side = side;
 	}
-	
-    /**
-     * @param artySpotGrid
-     * @throws PWCGException 
-     */
+
     public void create (ArtillerySpotGrid artySpotGrid) throws PWCGException 
     {
         createIcons(artySpotGrid);
@@ -31,16 +27,13 @@ public class ArtillerySpotMapGrid
         setMcuPosition(artySpotGrid);
     }
 
-    /**
-     * @param artySpotGrid
-     */
     private void createIcons(ArtillerySpotGrid artySpotGrid)
     {
         for (int columnIndex = 0; columnIndex < ArtillerySpotGrid.GRID_ELEMENTS + 1; ++columnIndex)
         {
             for (int rowIndex = 0; rowIndex < ArtillerySpotGrid.GRID_ELEMENTS + 1; ++rowIndex)
             {
-                McuIcon gridIcon = new McuIcon("", "");
+                McuIcon gridIcon = new McuIcon("", "",side);
                 gridIcon.setEnabled(1);
                 gridIcon.setLineType(McuIconLineType.ICON_LINE_TYPE_THIN);
                 
@@ -48,11 +41,7 @@ public class ArtillerySpotMapGrid
             }
         }
     }
-    
-    /**
-     * @param artySpotGridElements
-     * @throws PWCGException
-     */
+
     private void setMcuTargets () throws PWCGException 
     {        
         for (int columnIndex = 0; columnIndex < ArtillerySpotGrid.GRID_ELEMENTS + 1; ++columnIndex)
@@ -75,11 +64,7 @@ public class ArtillerySpotMapGrid
             }
         }
     }
-    
-    /**
-     * @param position
-     * @throws PWCGException 
-     */
+
     private void setMcuPosition (ArtillerySpotGrid artySpotGrid) throws PWCGException 
     {
         ArtillerySpotGridElement[][]  artySpotGridElements = artySpotGrid.getGridElements();
@@ -108,12 +93,7 @@ public class ArtillerySpotMapGrid
             }
         }
     }
-    
 
-    /**
-     * @param writer
-     * @throws PWCGIOException 
-     */
     public void write(BufferedWriter writer) throws PWCGIOException 
     {
         for (int columnIndex = 0; columnIndex < ArtillerySpotGrid.GRID_ELEMENTS + 1; ++columnIndex)

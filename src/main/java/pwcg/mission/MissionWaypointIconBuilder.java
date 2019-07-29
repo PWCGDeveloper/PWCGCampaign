@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.mcu.McuIcon;
@@ -15,7 +16,7 @@ public class MissionWaypointIconBuilder
 {
     private ArrayList<McuIcon> waypointIcons = new ArrayList<McuIcon>();
 
-    public void createWaypointIcons(Flight playerFlight) 
+    public void createWaypointIcons(Flight playerFlight) throws PWCGException 
     {        
     	waypointIcons.clear();
     	
@@ -25,7 +26,7 @@ public class MissionWaypointIconBuilder
 
         McuTakeoff takeoff = playerFlight.getTakeoff();
         if (takeoff != null) {
-            McuIcon icon = new McuIcon(takeoff);
+            McuIcon icon = new McuIcon(takeoff, playerFlight.getCountry().getSide());
             prevIcon = icon;
             waypointIcons.add(icon);
         }
@@ -33,7 +34,7 @@ public class MissionWaypointIconBuilder
         for (int i = 0; i < waypoints.size(); ++i)
         {
             McuWaypoint waypoint = waypoints.get(i);
-            McuIcon icon = new McuIcon(waypoint);
+            McuIcon icon = new McuIcon(waypoint, playerFlight.getCountry().getSide());
             if (prevIcon != null)
             {
                 prevIcon.setTarget(icon.getIndex());
@@ -44,7 +45,7 @@ public class MissionWaypointIconBuilder
 
         McuLanding landing = playerFlight.getLanding();
         if (landing != null) {
-            McuIcon icon = new McuIcon(landing);
+            McuIcon icon = new McuIcon(landing, playerFlight.getCountry().getSide());
             if (prevIcon != null)
                 prevIcon.setTarget(icon.getIndex());
             waypointIcons.add(icon);

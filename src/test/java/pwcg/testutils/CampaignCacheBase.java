@@ -9,6 +9,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignHumanPilotHandler;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.SquadronManager;
@@ -82,12 +83,12 @@ public abstract class CampaignCacheBase implements ICampaignCache
             Campaign campaign = makeCampaignFromModel(model);
             campaignCache.put(profile.getKey(), campaign);
             
-            if (model.isCoop())
+            if (model.getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE)
             {
 	            List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 1);
 	            
-	            addMorePilotsForCoop(campaign, "Squadron Mate", "Leutnant", SquadrontTestProfile.COOP_PROFILE.getSquadronId());
+	            addMorePilotsForCoop(campaign, "Squadron Mate", "Leutnant", SquadrontTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
 	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 2);
 	            
@@ -164,7 +165,7 @@ public abstract class CampaignCacheBase implements ICampaignCache
         generatorModel.setPlayerRegion("");
         generatorModel.setService(service);
         generatorModel.setSquadronName(squadronName);
-        generatorModel.setCoop(profile.isCoop());
+        generatorModel.setCampaignMode(profile.getCampaignMode());
 
         return generatorModel;
     }

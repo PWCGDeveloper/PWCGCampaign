@@ -38,7 +38,7 @@ public class NewPilotState
             if (StringValidity.isAlpha(campaignGeneratorDO.getPlayerPilotName()))
             {
                 currentStep = PilotGeneratorWorkflow.CHOOSE_COOP_USER;
-                if (!campaign.getCampaignData().isCoop())
+                if (!campaign.isCoop())
                 {
                     currentStep = PilotGeneratorWorkflow.CHOOSE_ROLE;
                     if (useRegion())
@@ -105,7 +105,7 @@ public class NewPilotState
         	{
                 currentStep = PilotGeneratorWorkflow.CHOOSE_REGION;
         	}
-        	else if (campaign.getCampaignData().isCoop())
+        	else if (campaign.isCoop())
         	{
                 currentStep = PilotGeneratorWorkflow.CHOOSE_COOP_USER;
         	}
@@ -117,7 +117,7 @@ public class NewPilotState
         
         else if (currentStep == PilotGeneratorWorkflow.CHOOSE_REGION)
         {
-        	if (campaign.getCampaignData().isCoop())
+        	if (campaign.isCoop())
         	{
                 currentStep = PilotGeneratorWorkflow.CHOOSE_COOP_USER;
         	}

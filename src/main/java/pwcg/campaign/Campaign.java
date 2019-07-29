@@ -9,8 +9,11 @@ import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.context.SquadronManager;
-import pwcg.campaign.factory.CountryFactory;
+import pwcg.campaign.factory.CampaignModeFactory;
 import pwcg.campaign.io.json.CampaignIOJson;
+import pwcg.campaign.mode.ICampaignActive;
+import pwcg.campaign.mode.ICampaignCountryBuilder;
+import pwcg.campaign.mode.ICampaignDescriptionBuilder;
 import pwcg.campaign.personnel.InitialSquadronBuilder;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Role;
@@ -57,6 +60,10 @@ public class Campaign
         
         CampaignV5V6Converter converter = new CampaignV5V6Converter(this);
         converter.convert();
+        
+        CampaignModeChooser campaignModeChooser = new CampaignModeChooser(this);
+        CampaignMode campaignMode = campaignModeChooser.chooseCampaignMode();
+        this.getCampaignData().setCampaignMode(campaignMode);
 
         InitialSquadronBuilder initialSquadronBuilder = new InitialSquadronBuilder();
         initialSquadronBuilder.buildNewSquadrons(this);
@@ -134,25 +141,8 @@ public class Campaign
 
     public String getCampaignDescription() throws PWCGException
     {
-        String campaignDescription = "";        
-
-        if (this.campaignData.isCoop())
-        {
-            campaignDescription = "Coop Campaign";
-        }
-        else
-        {
-            SquadronMember referencePlayer = getReferenceCampaignMember();
-
-            campaignDescription += referencePlayer.getNameAndRank();
-            campaignDescription += "     " + DateUtils.getDateString(getDate());
-            
-            Squadron squadron =  PWCGContextManager.getInstance().getSquadronManager().getSquadron(referencePlayer.getSquadronId());
-            campaignDescription += "     " + squadron.determineDisplayName(getDate());
-            campaignDescription += "     " + squadron.determineCurrentAirfieldName(campaignData.getDate());
-        }
-        
-        return campaignDescription;
+        ICampaignDescriptionBuilder campaignDescriptionBuilder = CampaignModeFactory.makeCampaignDescriptionBuilder(this);
+        return campaignDescriptionBuilder.getCampaignDescription();
     }
 
     public boolean useMovingFrontInCampaign() throws PWCGException
@@ -251,17 +241,8 @@ public class Campaign
 
     public boolean isCampaignActive() throws PWCGException
     {
-    	if (this.getCampaignData().isCoop())
-    	{
-    		return true;
-    	}
-    	
-    	if (personnelManager.getAllActivePlayers().getSquadronMemberList().size() > 0)
-    	{
-    	    return true;
-    	}
-        
-        return false;
+        ICampaignActive campaignActive = CampaignModeFactory.makeCampaignActive(this);
+        return campaignActive.isCampaignActive();
     }
 
     public boolean isCampaignCanFly() throws PWCGException
@@ -283,17 +264,32 @@ public class Campaign
 
     public ICountry determineCampaignCountry() throws PWCGException
     {
-        if (campaignData.isCoop())
-        {
-            return CountryFactory.makeNeutralCountry();
-        }
-        else
-        {
-            SquadronMember referencePlayer = getReferenceCampaignMember();
-            return CountryFactory.makeCountryByCountry(referencePlayer.getCountry());
-        }
-     }
+        ICampaignCountryBuilder countryBuilder = CampaignModeFactory.makeCampaignCountryBuilder(this);
+        return countryBuilder.determineCampaignCountry();
+    }
 
+    public List<Squadron> determinePlayerSquadrons() throws PWCGException
+    {
+        List<Squadron> playerSquadrons = new ArrayList<>();
+        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        for (SquadronMember player : personnelManager.getAllActivePlayers().getSquadronMemberList())
+        {
+            Squadron playerSquadron = squadronManager.getSquadron(player.getSquadronId());
+            playerSquadrons.add(playerSquadron);
+        }
+        return playerSquadrons;
+    }
+
+    public boolean isCoop()
+    {
+        if (campaignData.getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
+        {
+            return false;
+        }
+        
+        return true;
+    }
+    
     public SerialNumber getSerialNumber()
     {
         return campaignData.getSerialNumber();
@@ -372,17 +368,5 @@ public class Campaign
     public void setPersonnelManager(CampaignPersonnelManager personnelManager)
     {
         this.personnelManager = personnelManager;
-    }
-
-    public List<Squadron> determinePlayerSquadrons() throws PWCGException
-    {
-        List<Squadron> playerSquadrons = new ArrayList<>();
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
-        for (SquadronMember player : personnelManager.getAllActivePlayers().getSquadronMemberList())
-        {
-            Squadron playerSquadron = squadronManager.getSquadron(player.getSquadronId());
-            playerSquadrons.add(playerSquadron);
-        }
-        return playerSquadrons;
     }
 }

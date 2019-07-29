@@ -1,16 +1,14 @@
 package pwcg.aar.prelim;
 
-import java.util.List;
-
-import pwcg.aar.inmission.phase1.parse.AARMissionFileLogResultMatcher;
+import pwcg.aar.AARFactory;
 import pwcg.aar.prelim.claims.AARClaimPanelData;
 import pwcg.aar.prelim.claims.AARClaimPanelEventTabulator;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.DirectoryReader;
 
 public class AARPhase0Preliminary
 {
@@ -28,26 +26,14 @@ public class AARPhase0Preliminary
         tabulateClaimPanelData();   
         determineActiveCampaignMembersInMission();
         determineActiveCampaignMembersNotInMission();
-        
         return aarPreliminarytData;
     }
 
     private void readPwcgMissionData() throws PWCGException
     {        
-    	AARPwcgMissionFinder pwcgMissionFinder = new AARPwcgMissionFinder(campaign);
-    	List<PwcgMissionData> sortedPwcgMissionDataForCampaign = pwcgMissionFinder.getSortedPwcgMissionsForCampaign();
-    
-    	DirectoryReader directoryReader = new DirectoryReader();
-    	AARLogSetFinder logSetFinder = new AARLogSetFinder(directoryReader);
-    	List<String> sortedLogSets = logSetFinder.getSortedLogFileSets();
-    	
-    	AARMostRecentLogSetFinder mostRecentLogSetFinder = createAARMostRecentLogSetFinder(campaign);
-    	if (sortedPwcgMissionDataForCampaign.size() > 0)
-    	{
-    	    mostRecentLogSetFinder.getMostRecentAARLogFileMissionDataSetForCampaign(sortedLogSets, sortedPwcgMissionDataForCampaign);     
-    	}
-    	
-        if (mostRecentLogSetFinder.getAarLogFileMissionFile() == null)
+    	AARMostRecentLogSetFinder mostRecentLogSetFinder = AARFactory.makeMostRecentLogSetFinder(campaign);
+    	mostRecentLogSetFinder.determineMostRecentAARLogFileMissionDataSetForCampaign();
+        if (!mostRecentLogSetFinder.isLogSetComplete())
         {
         	throw new PWCGException ("Failed to find most recent log file data set");
         }
@@ -70,16 +56,10 @@ public class AARPhase0Preliminary
         aarPreliminarytData.setCampaignMembersOutOfMission(campaignMembersOutOfMission);
     }
 
-    private AARMostRecentLogSetFinder createAARMostRecentLogSetFinder(Campaign campaign) throws PWCGException
-    {        
-        AARHeaderParser aarHeaderParser = new AARHeaderParser();        
-    	AARMissionFileLogResultMatcher matcher = new AARMissionFileLogResultMatcher(campaign, aarHeaderParser);
-        return new AARMostRecentLogSetFinder(campaign, matcher);
-    }
-
     private void tabulateClaimPanelData() throws PWCGException
     {
-        if (!campaign.getCampaignData().isCoop())
+        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE ||
+            campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COOP)
         {
             SquadronMember singlePlayer = campaign.getPersonnelManager().getSinglePlayer();
             Side side = singlePlayer.determineSquadron().determineSquadronCountry(campaign.getDate()).getSide();
@@ -88,5 +68,4 @@ public class AARPhase0Preliminary
             aarPreliminarytData.setClaimPanelData(claimPanelData);
         }
     }
-
 }

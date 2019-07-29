@@ -31,7 +31,7 @@ public class FlightCrewBuilderCoopTest
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContextManager.setRoF(false);
-        coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_PROFILE);
+        coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class FlightCrewBuilderCoopTest
         mission.generate(FlightTypes.GROUND_ATTACK);
     	
         FlightInformation flightInformation = new FlightInformation(mission);
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.COOP_PROFILE.getSquadronId());
+        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
         
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
@@ -59,7 +59,7 @@ public class FlightCrewBuilderCoopTest
         
         boolean playerFound = false;
         boolean playerShouldNotBeFound = true;
-        SquadronPersonnel squadronPersonnel = coopCampaign.getPersonnelManager().getSquadronPersonnel(SquadrontTestProfile.COOP_PROFILE.getSquadronId());        
+        SquadronPersonnel squadronPersonnel = coopCampaign.getPersonnelManager().getSquadronPersonnel(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());        
         for (SquadronMember crew : assignedCrewMap)
         {
             assert(squadronPersonnel.isActiveSquadronMember(crew.getSerialNumber()));
@@ -82,7 +82,7 @@ public class FlightCrewBuilderCoopTest
         MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
     	for (SquadronMember player : coopCampaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
     	{
-    		if (player.getSquadronId() == SquadrontTestProfile.COOP_PROFILE.getSquadronId())
+    		if (player.getSquadronId() == SquadrontTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId())
     		{
     			participatingPlayers.addSquadronMember(player);
     		}
@@ -93,7 +93,7 @@ public class FlightCrewBuilderCoopTest
         mission.generate(FlightTypes.GROUND_ATTACK);
 
         FlightInformation flightInformation = new FlightInformation(mission);
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.COOP_PROFILE.getSquadronId());
+        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
         
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
@@ -101,7 +101,7 @@ public class FlightCrewBuilderCoopTest
         
         boolean player1Found = false;
         boolean player2Found = false;
-        SquadronPersonnel squadronPersonnel = coopCampaign.getPersonnelManager().getSquadronPersonnel(SquadrontTestProfile.COOP_PROFILE.getSquadronId());        
+        SquadronPersonnel squadronPersonnel = coopCampaign.getPersonnelManager().getSquadronPersonnel(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());        
         for (SquadronMember crew : assignedCrewMap)
         {
             assert(squadronPersonnel.isActiveSquadronMember(crew.getSerialNumber()));

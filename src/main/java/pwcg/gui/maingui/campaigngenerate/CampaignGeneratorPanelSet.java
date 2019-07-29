@@ -14,6 +14,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGenerator;
 import pwcg.campaign.CampaignGeneratorModel;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.CoopHostPilotBuilder;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
@@ -161,7 +162,7 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         String squadronName = campaignGeneratorDO.getSquadName();
         String rank = campaignGeneratorDO.getRank();
         Date startDate = campaignGeneratorDO.getStartDate();
-        boolean isCoop = campaignGeneratorDO.isCoop();
+        CampaignMode campaignMode =  campaignGeneratorDO.getCampaignMode();
 
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setCampaignDate(startDate);
@@ -171,7 +172,7 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         generatorModel.setPlayerRegion(region);
         generatorModel.setService(service);
         generatorModel.setSquadronName(squadronName);
-        generatorModel.setCoop(isCoop);
+        generatorModel.setCampaignMode(campaignMode);
 
         CampaignGenerator generator = new CampaignGenerator(generatorModel);
         Campaign campaign = generator.generate();
@@ -185,7 +186,7 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
     private void writeCampaign(Campaign campaign) throws PWCGException
     {
         campaign.write();
-        if (campaign.getCampaignData().isCoop())
+        if (campaign.isCoop())
         {
         	CoopHostPilotBuilder coopPilotBuilder = new CoopHostPilotBuilder();
         	coopPilotBuilder.buildHostPilotForCoop(campaign);

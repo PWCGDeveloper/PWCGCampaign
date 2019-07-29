@@ -581,7 +581,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private boolean ensurePlayerIsInMission() throws PWCGException
     {
-    	if (campaignHomeGui.getCampaign().getCampaignData().isCoop())
+    	if (campaignHomeGui.getCampaign().isCoop())
     	{
     		return true;
     	}

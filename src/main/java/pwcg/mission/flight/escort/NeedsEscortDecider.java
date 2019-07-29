@@ -1,6 +1,7 @@
 package pwcg.mission.flight.escort;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -11,7 +12,9 @@ public class NeedsEscortDecider
 {
     public boolean needsEscort(Mission mission, Flight escortedFlight) throws PWCGException
     {
-        if (!mission.getCampaign().getCampaignData().isCoop())
+        Campaign campaign = mission.getCampaign();
+        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE ||
+            campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COOP)
         {
             if (escortedFlight.isPlayerFlight())
             {
@@ -39,7 +42,8 @@ public class NeedsEscortDecider
     private boolean aiNeedsEscort(Mission mission, Flight escortedFlight) throws PWCGException, PWCGException
     {
         Campaign campaign = mission.getCampaign();
-        if (!campaign.getCampaignData().isCoop())
+        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE ||
+            campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COOP)
         {
             if (mission.getMissionFlightBuilder().hasPlayerFighterFlightType())
             {

@@ -47,7 +47,7 @@ public class CampaignGenerator
         campaign.initializeCampaignConfigs();
         campaign.setDate(generatorModel.getCampaignDate());
         campaign.getCampaignData().setName(generatorModel.getCampaignName());
-        campaign.getCampaignData().setCoop(generatorModel.isCoop());
+        campaign.getCampaignData().setCampaignMode(generatorModel.getCampaignMode());
 	}
 
     private void staffSquadrons() throws PWCGException

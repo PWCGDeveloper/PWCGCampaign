@@ -66,7 +66,7 @@ public class CampaignHomeGUIAction
             }
             else if (action.equalsIgnoreCase("CampMission"))
             {
-            	if (campaign.getCampaignData().isCoop())
+            	if (campaign.isCoop())
             	{
                 	showCoopPilotChooser();
             	}

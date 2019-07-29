@@ -11,6 +11,7 @@ public class CampaignData
 	private Date date = null;
 	private String name = "";
     private boolean isCoop = false;
+    private CampaignMode campaignMode = CampaignMode.CAMPAIGN_MODE_NONE;
     private SerialNumber serialNumber = new SerialNumber();
     private FrontMapIdentifier campaignMap;
 
@@ -33,16 +34,6 @@ public class CampaignData
 	{
 		this.name = name;
 	}
-	
-    public boolean isCoop()
-    {
-        return isCoop;
-    }
-
-    public void setCoop(boolean isCoop)
-    {
-        this.isCoop = isCoop;
-    }
 
     public SerialNumber getSerialNumber()
     {
@@ -63,6 +54,19 @@ public class CampaignData
 	{
 		this.campaignMap = campaignMap;
 	}
-	
-	
+
+    public CampaignMode getCampaignMode()
+    {
+        return campaignMode;
+    }
+
+    public void setCampaignMode(CampaignMode campaignMode)
+    {
+        this.campaignMode = campaignMode;
+    }
+
+    public boolean isCoop()
+    {
+        return isCoop;
+    }
 }
