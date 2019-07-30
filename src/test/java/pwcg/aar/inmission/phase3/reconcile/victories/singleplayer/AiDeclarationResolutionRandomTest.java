@@ -17,18 +17,20 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.VictorySorter;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.AiDeclarationResolver;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.UnknownVictoryAssignments;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.api.ICountry;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AiDeclarationResolutionRandomTest
@@ -64,9 +66,9 @@ public class AiDeclarationResolutionRandomTest
         randomVictories.clear();
         campaignMembersInmission.clear();
 
-        playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);        
         aiVictor.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
-                
+
         players = new ArrayList<>();
         players.add(player);
 
@@ -79,11 +81,16 @@ public class AiDeclarationResolutionRandomTest
         Mockito.when(victorySorter.getFuzzyAirVictories()).thenReturn(emptyList);
         Mockito.when(victorySorter.getAllUnconfirmed()).thenReturn(randomVictories);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
+        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420101"));
         Mockito.when(squadron.getSquadronId()).thenReturn(Squadron.REPLACEMENT);
 
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         Mockito.when(aiSquadMember.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
 
+        ICountry victorCountry = CountryFactory.makeCountryByCountry(Country.GERMANY);
+        Mockito.when(player.determineCountry(campaign.getDate())).thenReturn(victorCountry);
+        Mockito.when(aiSquadMember.determineCountry(campaign.getDate())).thenReturn(victorCountry);
+        
         Mockito.when(aarContext.getMissionEvaluationData()).thenReturn(evaluationData);
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
         Mockito.when(preliminaryData.getCampaignMembersInMission()).thenReturn(campaignMembersInmission);
@@ -103,6 +110,9 @@ public class AiDeclarationResolutionRandomTest
     {        
         LogPlane victim = new LogPlane(3);
         victim.setPilotSerialNumber(victimSerialNumber);
+        
+        ICountry victimCountry = CountryFactory.makeCountryByCountry(Country.RUSSIA);
+        victim.setCountry(victimCountry);
         
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);

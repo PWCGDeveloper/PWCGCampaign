@@ -248,7 +248,6 @@ public class SquadronMember implements Cloneable
     {
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
         Squadron squadron = squadronManager.getSquadron(squadronId);
-
         if (squadron == null)
         {
             throw new PWCGException("No country found. Squadron is " + squadronId);

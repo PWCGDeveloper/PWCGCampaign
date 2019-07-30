@@ -29,8 +29,11 @@ public class AARMostRecentLogSetFinder
     public void determineMostRecentAARLogFileMissionDataSetForCampaign() throws PWCGException
     {        
         pwcgMissionData = getMissionDataForCampaignDate();
-        List<String> sortedLogSets = logSetFinder.getSortedLogFileSets();
-        aarLogFileMissionFile = matcher.matchMissionFileAndLogFile(pwcgMissionData, sortedLogSets);
+        if (pwcgMissionData != null)
+        {
+            List<String> sortedLogSets = logSetFinder.getSortedLogFileSets();
+            aarLogFileMissionFile = matcher.matchMissionFileAndLogFile(pwcgMissionData, sortedLogSets);
+        }
     }
 
     private PwcgMissionData getMissionDataForCampaignDate() throws PWCGException
