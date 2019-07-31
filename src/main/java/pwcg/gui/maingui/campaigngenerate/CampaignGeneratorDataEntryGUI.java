@@ -950,12 +950,12 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
                 campaignGeneratorDO.setCampaignMode(CampaignMode.CAMPAIGN_MODE_SINGLE);
                 coopGroup.setSelected(singlePlayerButtonModel, true);
             }
-            else if (ae.getActionCommand().contains("Coop Cooperative Mode"))
+            else if (ae.getActionCommand().contains("Coop Cooperative"))
             {
                 campaignGeneratorDO.setCampaignMode(CampaignMode.CAMPAIGN_MODE_COOP);
                 coopGroup.setSelected(coopCooperativeButtonModel, true);
             }
-            else if (ae.getActionCommand().contains("Coop Competitive Mode"))
+            else if (ae.getActionCommand().contains("Coop Competitive"))
             {
                 campaignGeneratorDO.setCampaignMode(CampaignMode.CAMPAIGN_MODE_COMPETITIVE);
                 coopGroup.setSelected(coopCompetitiveButtonModel, true);

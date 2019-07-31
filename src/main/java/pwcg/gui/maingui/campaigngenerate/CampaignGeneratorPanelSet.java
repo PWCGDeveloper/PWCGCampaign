@@ -173,6 +173,7 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         CampaignMode campaignMode =  campaignGeneratorDO.getCampaignMode();
 
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
+        generatorModel.setCampaignMode(campaignMode);
         generatorModel.setCampaignDate(startDate);
         generatorModel.setCampaignName(campaignName);
         generatorModel.setPlayerName(playerName);
@@ -180,7 +181,6 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         generatorModel.setPlayerRegion(region);
         generatorModel.setService(service);
         generatorModel.setSquadronName(squadronName);
-        generatorModel.setCampaignMode(campaignMode);
 
         CampaignGenerator generator = new CampaignGenerator(generatorModel);
         Campaign campaign = generator.generate();
