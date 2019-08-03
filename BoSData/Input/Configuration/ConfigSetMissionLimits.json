@@ -116,10 +116,10 @@
       "label": "Use 10x Flak",
       "help": "Flak fires at 10x rate"
     },
-    "UseAirfieldMGs": {
-      "value": "1",
-      "label": "use Airfield MGs",
-      "help": "Put MGs on Airfields"
+    "MissionBoxSize": {
+      "value": "30",
+      "label": "Size in km of mission box",
+      "help": "Size of the box that PWCG direct flights into.  Smaller means more flights in a tight area"
     },
     "UseAmbientGroundUnits": {
       "value": "1",
