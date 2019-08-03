@@ -86,9 +86,12 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         buttonGrid.setLayout(new GridLayout(0,1));
         buttonGrid.setOpaque(false);
             
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
-        makeButton(buttonGrid, "Back to Campaign");
-
+        if (briefingMissionHandler.getMission().isFinalized())
+        {
+            buttonGrid.add(PWCGButtonFactory.makeDummy());
+            makeButton(buttonGrid, "Back to Campaign");
+        }
+        
         buttonGrid.add(PWCGButtonFactory.makeDummy());
         makeButton(buttonGrid, "Scrub Mission");
 

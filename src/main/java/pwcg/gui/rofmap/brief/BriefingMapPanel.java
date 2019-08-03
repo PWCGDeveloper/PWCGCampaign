@@ -31,6 +31,7 @@ import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.VirtualWaypointPlotter;
 import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
+import pwcg.mission.mcu.McuWaypoint;
 
 public class BriefingMapPanel extends MapPanelBase implements ActionListener
 {
@@ -197,6 +198,13 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
                     Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 8, point.y - 8, 16, 16);
                     g2.fill(circle);
                 }
+                if (mapPoint.isTarget)
+                {
+                    g.setColor(Color.RED);
+                    Point point = super.coordinateToPoint(mapPoint.coord);
+                    Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 8, point.y - 8, 16, 16);
+                    g2.fill(circle);
+                }
             }
         }
         
@@ -225,12 +233,41 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
     }
 
     public void makeMapPanelVirtualPoints(Flight flight) throws PWCGException
+    {       
+        FlightMap flightMap = getFlightMap(flight);
+        if (flight.getCountry().getSideNoNeutral() == Side.ALLIED)
+        {
+            alliedVirtualPoints.add(flightMap);
+        }
+        else
+        {
+            axisVirtualPoints.add(flightMap);
+        }
+    }
+
+    private FlightMap getFlightMap(Flight flight) throws PWCGException
     {
         FlightMap flightMap = new FlightMap();
         flightMap.flightType = flight.getFlightType().toString();
         flightMap.planeType = flight.getPlanes().get(0).getDisplayName();
         
-        // VWPs are usually created later.  If we display this we have to make them now
+        for (McuWaypoint waypoint : flight.getWaypointPackage().getWaypointsForLeadPlane())
+        {
+            BriefingMapPoint mapPoint = BriefingMapPointFactory.waypointToMapPoint(waypoint);
+            flightMap.mapPoints.add(mapPoint);
+        }
+        
+        List<VirtualWayPointCoordinate> plotCoordinates = getPlotCoordinatesForFlight(flight);        
+        for (VirtualWayPointCoordinate vwp : plotCoordinates)
+        {
+            BriefingMapPoint mapPoint = BriefingMapPointFactory.virtualWaypointToMapPoint(vwp);
+            flightMap.mapPoints.add(mapPoint);
+        }
+        return flightMap;
+    }
+
+    private List<VirtualWayPointCoordinate> getPlotCoordinatesForFlight(Flight flight) throws PWCGException
+    {
         List<VirtualWayPointCoordinate> plotCoordinates = null;
         if (flight.isVirtual())
         {
@@ -250,21 +287,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
             VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
             plotCoordinates = virtualWaypointPlotter.plotCoordinatesByMinute(flight);
         }
-        
-        for (VirtualWayPointCoordinate vwp : plotCoordinates)
-        {
-            BriefingMapPoint mapPoint = virtualWaypointToMapPoint(vwp);
-            flightMap.mapPoints.add(mapPoint);
-        }
-        
-        if (flight.getCountry().getSideNoNeutral() == Side.ALLIED)
-        {
-            alliedVirtualPoints.add(flightMap);
-        }
-        else
-        {
-            axisVirtualPoints.add(flightMap);
-        }
+        return plotCoordinates;
     }
 
 	public void mouseMovedCallback(MouseEvent e) 
@@ -403,15 +426,6 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 		}
 
 	}
-
-    private BriefingMapPoint virtualWaypointToMapPoint(VirtualWayPointCoordinate vwp)
-    {
-        BriefingMapPoint mapPoint = new BriefingMapPoint();
-        mapPoint.desc = "";
-        mapPoint.coord = vwp.getCoordinate().copy();
-        
-        return mapPoint;
-    }
 
 	private int determineSelectedWaypointIndex(int x, int y)
 	{

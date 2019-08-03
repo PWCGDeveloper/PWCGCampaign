@@ -39,7 +39,6 @@ import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 import pwcg.mission.flight.plane.PlaneMCU;
@@ -51,7 +50,6 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     private static final long serialVersionUID = 1L;
     private CampaignHomeGUI campaignHomeGui = null;
     private ImageResizingPanel pilotPanel = null;
-    private JButton acceptMissionButton = null;
     private BriefingMissionHandler briefingMissionHandler = null;
     private Map<Integer, BriefingPlaneModificationsPicker> planeModifications = new HashMap<>();
 
@@ -102,47 +100,27 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         buttonGrid.add(backToMapButton);
         buttonGrid.add(PWCGButtonFactory.makeDummy());
 
-        acceptMissionButton = PWCGButtonFactory.makeMenuButton("Accept Mission", "Accept Mission", this);
-        buttonGrid.add(acceptMissionButton);
-        buttonGrid.add(PWCGButtonFactory.makeDummy());
-
-        enableAcceptButton();
-
+        if (!briefingMissionHandler.getMission().isFinalized())
+        {
+            JButton acceptMissionButton = PWCGButtonFactory.makeMenuButton("Accept Mission", "Accept Mission", this);
+            buttonGrid.add(acceptMissionButton);
+            buttonGrid.add(PWCGButtonFactory.makeDummy());
+        }
+        else
+        {
+            JButton backToCampaignButton = PWCGButtonFactory.makeMenuButton("Back To Campaign", "Back To Campaign", this);
+            buttonGrid.add(backToCampaignButton);
+            buttonGrid.add(PWCGButtonFactory.makeDummy());
+        }
+        
         if (PwcgGuiModSupport.isRunningIntegrated() || PwcgGuiModSupport.isRunningDebrief())
         {
             JButton flyMissionButton = PWCGButtonFactory.makeMenuButton("Fly Mission", "Fly Mission", this);
             buttonGrid.add(flyMissionButton);
         }
-
-        if (briefingMissionHandler.getMission().isFinalized())
-        {
-            acceptMissionButton.setEnabled(false);
-        }
-
         pilotAssignmentNavPanel.add(buttonGrid, BorderLayout.NORTH);
 
         return pilotAssignmentNavPanel;
-    }
-
-    private void enableAcceptButton()
-    {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        if (campaign.getCurrentMission() != null)
-        {
-            Mission mission = campaign.getCurrentMission();
-            if (mission.isFinalized())
-            {
-                acceptMissionButton.setEnabled(false);
-            }
-            else
-            {
-                acceptMissionButton.setEnabled(true);
-            }
-        }
-        else
-        {
-            acceptMissionButton.setEnabled(true);
-        }
     }
 
     public JPanel makePilotPanel() throws PWCGException
@@ -360,6 +338,10 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
             else if (action.equals("Accept Mission"))
             {
                 acceptMission();
+            }
+            else if (action.equals("Back To Campaign"))
+            {
+                backToCampaign();
             }
             else if (action.equals("Fly Mission"))
             {
@@ -579,6 +561,19 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
 
+
+    private void backToCampaign() throws PWCGException, PWCGException
+    {
+        campaignHomeGui.clean();
+        campaignHomeGui.createPilotContext();
+
+        campaignHomeGui.enableButtonsAsNeeded();
+        CampaignGuiContextManager.getInstance().popFromContextStack();
+    }
+
+    
+    
+    
     private boolean ensurePlayerIsInMission() throws PWCGException
     {
     	if (campaignHomeGui.getCampaign().isCoop())

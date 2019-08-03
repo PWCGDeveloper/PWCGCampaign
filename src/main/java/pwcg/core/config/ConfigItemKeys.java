@@ -74,6 +74,7 @@ public class ConfigItemKeys
 	public static final String AlliedPlanesToSpawnMaxKey = "AlliedPlanesToSpawnMax";
 	public static final String AxisPlanesToSpawnMaxKey = "AxisPlanesToSpawnMax";
 
+    public static final String MissionBoxSizeKey = "MissionBoxSize";
 	public static final String AlliedFlightsToKeepKey = "AlliedFlightsToKeep";
 	public static final String AxisFlightsToKeepKey = "AxisFlightsToKeep";
 

@@ -161,9 +161,12 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 		JPanel buttonGrid = new JPanel();
 		buttonGrid.setLayout(new GridLayout(0,1));
 		buttonGrid.setOpaque(false);
-		    
+	    
         buttonGrid.add(PWCGButtonFactory.makeDummy());
-        makeButton(buttonGrid, "Scrub Mission");
+        makeButton(buttonGrid, "Back to Campaign");
+        
+		buttonGrid.add(PWCGButtonFactory.makeDummy());
+		makeButton(buttonGrid, "Scrub Mission");
 
         buttonGrid.add(PWCGButtonFactory.makeDummy());
         makeButton(buttonGrid, "Briefing Description");
@@ -313,10 +316,6 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 	    return waypointBorderPanel;
     }
 
-
-    /**
-     * @param constraints
-     */
     private void createTimeDisplay()
     {
         MissionTime missionTime = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions().getMissionTime();
@@ -339,7 +338,6 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
             cbMissionTime.setEnabled(false);
         }
     }
-
 
     private void createFuelDisplay()
     {
@@ -471,6 +469,10 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
             {
                 forwardToPilotSelection();
             }
+            else if (action.equals("Back to Campaign"))
+            {
+                backToCampaign();
+            }
             else if (action.equals("Scrub Mission"))
             {
                 scrubMission();
@@ -501,6 +503,15 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         Campaign campaign  = PWCGContextManager.getInstance().getCampaign();
         campaign.setCurrentMission(null);
         
+        campaignHomeGui.clean();
+        campaignHomeGui.createPilotContext();
+
+        campaignHomeGui.enableButtonsAsNeeded();
+        CampaignGuiContextManager.getInstance().popFromContextStack();
+    }
+    
+    private void backToCampaign() throws PWCGException
+    {
         campaignHomeGui.clean();
         campaignHomeGui.createPilotContext();
 

@@ -164,11 +164,11 @@ public class FrontLinesForMap
     }
 
 
-    public List<FrontLinePoint> findClosestFrontPositionsForSide(Coordinate referenceLocation, double radius, Side side) throws PWCGException 
+    public List<FrontLinePoint> findClosestFrontPositionsForSide(Coordinate referenceLocation, double initialRadius, Side side) throws PWCGException 
     {
         PositionFinder<FrontLinePoint> positionFinder = new PositionFinder<FrontLinePoint>();
         List<FrontLinePoint> frontLines = findAllFrontLinesForSide(side);
-        List<FrontLinePoint> frontPointsWithinRadius = positionFinder.findWithinExpandingRadius(frontLines, referenceLocation, radius, 2000000.0);
+        List<FrontLinePoint> frontPointsWithinRadius = positionFinder.findWithinExpandingRadius(frontLines, referenceLocation, initialRadius, 2000000.0);
         return frontPointsWithinRadius;
     }
 

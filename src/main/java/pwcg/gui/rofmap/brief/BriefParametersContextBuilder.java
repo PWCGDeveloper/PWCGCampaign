@@ -60,13 +60,13 @@ public class BriefParametersContextBuilder
 
 	private void addPlayerFlightWaypoint(McuWaypoint prevWaypoint, McuWaypoint waypoint) throws PWCGException
 	{
-		BriefingMapPoint waypointMapPoint = waypointToMapPoint(waypoint);
-		 WaypointEditor waypointEditor = createWaypointEditor(prevWaypoint, waypoint);
-		 EditorWaypointGroup editorWaypointGroup = new EditorWaypointGroup ();
-		 editorWaypointGroup.setWaypointEditor(waypointEditor);
-		 editorWaypointGroup.setWaypointInBriefing(waypoint);
-		 editorWaypointGroup.setBriefingMapPoint(waypointMapPoint);
-		 briefParametersContext.appendEditorGroup(editorWaypointGroup);
+	    BriefingMapPoint waypointMapPoint = waypointToMapPoint(waypoint);
+	    WaypointEditor waypointEditor = createWaypointEditor(prevWaypoint, waypoint);
+	    EditorWaypointGroup editorWaypointGroup = new EditorWaypointGroup ();
+	    editorWaypointGroup.setWaypointEditor(waypointEditor);
+	    editorWaypointGroup.setWaypointInBriefing(waypoint);
+	    editorWaypointGroup.setBriefingMapPoint(waypointMapPoint);
+	    briefParametersContext.appendEditorGroup(editorWaypointGroup);
 	}
 
     private WaypointEditor createWaypointEditor(McuWaypoint previousWP, McuWaypoint thisWP) throws PWCGException
@@ -79,19 +79,7 @@ public class BriefParametersContextBuilder
 
 	private BriefingMapPoint waypointToMapPoint(McuWaypoint waypoint)
 	{
-		BriefingMapPoint mapPoint = new BriefingMapPoint();
-		mapPoint.desc = waypoint.getWpAction().getAction();
-		mapPoint.coord = waypoint.getPosition().copy();
-		
-		if ((waypoint.getWpAction() == WaypointAction.WP_ACTION_RENDEZVOUS) || 
-			(waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL) || 
-            (waypoint.getWpAction() == WaypointAction.WP_ACTION_RECON) || 
-			(waypoint.getWpAction() == WaypointAction.WP_ACTION_LANDING_APPROACH))
-		{
-			mapPoint.editable = false;
-		}
-
-		
+		BriefingMapPoint mapPoint = BriefingMapPointFactory.waypointToMapPoint(waypoint);
 		return mapPoint;
 	}
 
@@ -101,10 +89,7 @@ public class BriefParametersContextBuilder
 		McuTakeoff takeoffEntity = playerFlight.getTakeoff();
 		if (takeoffEntity != null)
 		{
-			BriefingMapPoint takeoff = new BriefingMapPoint();
-			takeoff.desc = "Airfield";
-			takeoff.coord = takeoffEntity.getPosition().copy();
-			takeoff.editable = false;
+	        BriefingMapPoint takeoff = BriefingMapPointFactory.createTakeoff(mission);
 
 			EditorWaypointGroup editorWaypointGroup = new EditorWaypointGroup();
 			editorWaypointGroup.setBriefingMapPoint(takeoff);
@@ -121,10 +106,7 @@ public class BriefParametersContextBuilder
 		McuLanding landingEntity = playerFlight.getLanding();
 		if (landingEntity != null)
 		{
-			BriefingMapPoint landing = new BriefingMapPoint();
-			landing.desc = "Airfield";
-			landing.coord = landingEntity.getPosition().copy();
-			landing.editable = false;
+            BriefingMapPoint landing = BriefingMapPointFactory.createLanding(mission);
 
 			EditorWaypointGroup editorWaypointGroup = new EditorWaypointGroup();
 			editorWaypointGroup.setBriefingMapPoint(landing);
@@ -135,12 +117,9 @@ public class BriefParametersContextBuilder
 		}
 	}
 	
-	private void addAttackPoint(Coordinate targetLocation) 
+	private void addAttackPoint(Coordinate targetLocation) throws PWCGException 
 	{
-		BriefingMapPoint target = new BriefingMapPoint();
-		target.desc = "Target";
-		target.coord = targetLocation.copy();
-		target.editable = false;
+        BriefingMapPoint target = BriefingMapPointFactory.createLanding(mission);
 
 		EditorWaypointGroup editorWaypointGroup = new EditorWaypointGroup();
 		editorWaypointGroup.setBriefingMapPoint(target);

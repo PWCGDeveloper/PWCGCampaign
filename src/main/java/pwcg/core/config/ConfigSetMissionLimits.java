@@ -9,7 +9,8 @@ public class ConfigSetMissionLimits
 
 		configSet.addConfigItem(ConfigItemKeys.MGSpacingKey, new ConfigItem("2500"));
 		configSet.addConfigItem(ConfigItemKeys.UseAmbientGroundUnitsKey, new ConfigItem("0"));
-		configSet.addConfigItem(ConfigItemKeys.UseAirfieldMGsKey, new ConfigItem("0"));
+        configSet.addConfigItem(ConfigItemKeys.UseAirfieldMGsKey, new ConfigItem("0"));
+        configSet.addConfigItem(ConfigItemKeys.MissionBoxSizeKey, new ConfigItem("30000"));
 		
         configSet.addConfigItem(ConfigItemKeys.SquadronGeneratesMissionOddsKey, new ConfigItem("100"));
         configSet.addConfigItem(ConfigItemKeys.SquadronGeneratesMissionModifierKey, new ConfigItem("20"));
