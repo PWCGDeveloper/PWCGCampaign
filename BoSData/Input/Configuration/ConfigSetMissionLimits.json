@@ -121,6 +121,11 @@
       "label": "Size in km of mission box",
       "help": "Size of the box that PWCG direct flights into.  Smaller means more flights in a tight area"
     },
+    "UseAirfieldMGs": {
+      "value": "1",
+      "label": "use Airfield MGs",
+      "help": "Put MGs on Airfields"
+    },
     "UseAmbientGroundUnits": {
       "value": "1",
       "label": "Create random ground units in mission",

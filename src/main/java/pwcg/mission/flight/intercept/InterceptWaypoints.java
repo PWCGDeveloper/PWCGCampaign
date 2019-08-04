@@ -33,7 +33,7 @@ public class InterceptWaypoints extends WaypointGeneratorBase
     }
     
     private static final int NUM_LEGS_IN_INTERCEPT_CIRCLE = 6;
-    private static final int NUM_SEGMENTS_IN_INTERCEPT_CREEP = 3;
+    private static final int NUM_SEGMENTS_IN_INTERCEPT_CREEP = 2;
 
 	public InterceptWaypoints(Coordinate startCoords, 
 					  Coordinate targetCoords, 
