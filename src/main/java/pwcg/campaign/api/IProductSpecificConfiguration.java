@@ -32,6 +32,7 @@ public interface IProductSpecificConfiguration
     int getLargeMissionRadius();
     int getMediumMissionRadius();
     int getSmallMissionRadius();
+    int getVerySmallMissionRadius();
     int getNumAssaultSegments(BattleSize battleSize);
     int getMaxSeaLaneDistance();
     int getCloseToFrontDistance();

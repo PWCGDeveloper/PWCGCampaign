@@ -4,9 +4,11 @@ import java.util.Date;
 
 import pwcg.campaign.api.Side;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.Mission;
 
 public class PathAlongFrontData
 {
+    private Mission mission;
     private Coordinate targetGeneralLocation;
     private Date date;
     private Side side = Side.ALLIED;
@@ -14,6 +16,16 @@ public class PathAlongFrontData
     private int randomDistanceMax = 15000;
     private int offsetTowardsEnemy = 0;
     private boolean returnAlongRoute = false;
+    
+    public Mission getMission()
+    {
+        return mission;
+    }
+
+    public void setMission(Mission mission)
+    {
+        this.mission = mission;
+    }
 
     public Coordinate getTargetGeneralLocation()
     {

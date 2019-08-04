@@ -61,7 +61,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
     {
 		Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 
-        MapWeather mapWeather = mission.getMissionOptions().getMissionWeather();
+        MapWeather mapWeather = PWCGContextManager.getInstance().getCurrentMap().getMapWeather();
         setClouds(mapWeather.getWeatherDescription());
         setWind(mapWeather.getWindLayers().get(0));
 

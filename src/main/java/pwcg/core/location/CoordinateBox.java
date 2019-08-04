@@ -16,13 +16,17 @@ public class CoordinateBox
     protected Coordinate sw = new Coordinate();
     protected Coordinate ne = new Coordinate();
     protected Coordinate center = new Coordinate();
+    protected Coordinate north = new Coordinate();
+    protected Coordinate south = new Coordinate();
+    protected Coordinate east = new Coordinate();
+    protected Coordinate west = new Coordinate();
     
     public static CoordinateBox coordinateBoxFromCorners (Coordinate sw, Coordinate ne) throws PWCGException
     {
         CoordinateBox coordinateBox = new CoordinateBox();
         coordinateBox.sw = sw;
         coordinateBox.ne = ne;
-        coordinateBox.calcCenterOfBox();        
+        coordinateBox.calcBoxImportantLocations();        
         return coordinateBox;
     }
     
@@ -31,7 +35,7 @@ public class CoordinateBox
         CoordinateBox coordinateBox = new CoordinateBox();
         coordinateBox.calculateSW(center, boxSize);
         coordinateBox.calculateNE(center, boxSize);
-        coordinateBox.calcCenterOfBox();
+        coordinateBox.calcBoxImportantLocations();
         return coordinateBox;
     }
     
@@ -40,7 +44,7 @@ public class CoordinateBox
         CoordinateBox coordinateBox = new CoordinateBox();
         coordinateBox.calculateSWCornerFromTwoCoordinates(coordinate1, coordinate2);
         coordinateBox.calculateNECornerFromTwoCoordinates(coordinate1, coordinate2);
-        coordinateBox.calcCenterOfBox();
+        coordinateBox.calcBoxImportantLocations();
         return coordinateBox;
     }
     
@@ -48,7 +52,7 @@ public class CoordinateBox
     {
         CoordinateBox coordinateBox = new CoordinateBox();
         coordinateBox.setBoxCornersFromCoordinates(coordinates);
-        coordinateBox.calcCenterOfBox();
+        coordinateBox.calcBoxImportantLocations();
         return coordinateBox;
     }
 
@@ -117,7 +121,7 @@ public class CoordinateBox
         ne.setXPos(ne.getXPos() + meters);
         ne.setZPos(ne.getZPos() + meters);
         
-        calcCenterOfBox();
+        calcBoxImportantLocations();
         
         return coordinateBox;
     }
@@ -153,7 +157,16 @@ public class CoordinateBox
         return targetCoord;
     }
 
-    protected Coordinate calcCenterOfBox () throws PWCGException
+    protected void calcBoxImportantLocations() throws PWCGException
+    {
+        calcCenterOfBox();
+        calcNorthOfBox();
+        calcSouthOfBox();
+        calcEastOfBox();
+        calcWestOfBox();
+    }
+    
+    protected Coordinate calcCenterOfBox() throws PWCGException
     {
         double xDistance = ne.getXPos() - sw.getXPos();
         double zDistance = ne.getZPos() - sw.getZPos();
@@ -161,8 +174,39 @@ public class CoordinateBox
         center = new Coordinate();
         center.setXPos(sw.getXPos() + (xDistance / 2));
         center.setZPos(sw.getZPos() + (zDistance / 2));
-        
         return center;
+    }
+    
+    protected Coordinate calcNorthOfBox() throws PWCGException
+    {
+        north = new Coordinate();
+        north.setXPos(ne.getXPos());
+        north.setZPos(center.getZPos());
+        return north;
+    }
+
+    protected Coordinate calcSouthOfBox() throws PWCGException
+    {
+        south = new Coordinate();
+        south.setXPos(sw.getXPos());
+        south.setZPos(center.getZPos());
+        return south;
+    }
+
+    protected Coordinate calcEastOfBox() throws PWCGException
+    {
+        east = new Coordinate();
+        east.setXPos(center.getXPos());
+        east.setZPos(ne.getZPos());
+        return east;
+    }
+
+    protected Coordinate calcWestOfBox() throws PWCGException
+    {
+        west = new Coordinate();
+        west.setXPos(center.getXPos());
+        west.setZPos(sw.getZPos());
+        return west;
     }
 
     protected void calculateSWCornerFromTwoCoordinates (Coordinate coordinate1, Coordinate coordinate2) throws PWCGException
@@ -227,21 +271,6 @@ public class CoordinateBox
         approximatePosition.setZPos(approximatePosition.getZPos() + offsety);
         return approximatePosition;
     }
-
-    public Coordinate getSW()
-    {
-        return sw;
-    }
-
-    public Coordinate getNE()
-    {
-        return ne;
-    }
-
-    public Coordinate getCenter()
-    {
-        return center;
-    }
  
     public double getLongestEdge()
     {
@@ -301,5 +330,40 @@ public class CoordinateBox
         {
             ne.setZPos(frontParameters.getzMax());
         }
+    }
+    
+    public Coordinate getSW()
+    {
+        return sw;
+    }
+
+    public Coordinate getNE()
+    {
+        return ne;
+    }
+
+    public Coordinate getCenter()
+    {
+        return center;
+    }
+
+    public Coordinate getNorth()
+    {
+        return north;
+    }
+
+    public Coordinate getSouth()
+    {
+        return south;
+    }
+
+    public Coordinate getEast()
+    {
+        return east;
+    }
+
+    public Coordinate getWest()
+    {
+        return west;
     }
 }

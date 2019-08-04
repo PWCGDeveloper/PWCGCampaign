@@ -39,7 +39,7 @@ public class MissionDescriptionCoop implements IMissionDescription
 
     public String createDescription() throws PWCGException
     {
-        MapWeather mapWeather = mission.getMissionOptions().getMissionWeather();
+        MapWeather mapWeather = PWCGContextManager.getInstance().getCurrentMap().getMapWeather();
         setClouds(mapWeather.getWeatherDescription());
         setWind(mapWeather.getWindLayers().get(0));
 

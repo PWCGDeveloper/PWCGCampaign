@@ -52,16 +52,18 @@ public class AveragePlayerLocationFinder
     {
         FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
 
+        // No mistake here: if distance from edge is less than medium then move it by small
+        
         double distanceFromMapEdge = MathUtils.calcDist(centralLocation, frontLinesForMap.getFirstPositionForSide(Side.ALLIED).getPosition());
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        if (distanceFromMapEdge < productSpecific.getSmallMissionRadius())
+        if (distanceFromMapEdge < productSpecific.getMediumMissionRadius())
         {
             double angleAwayFromEdge = MathUtils.calcAngle(frontLinesForMap.getFirstPositionForSide(Side.ALLIED).getPosition(), centralLocation);
             centralLocation = MathUtils.calcNextCoord(centralLocation, angleAwayFromEdge, productSpecific.getSmallMissionRadius());
         }
         
         double distanceFromOtherMapEdge = MathUtils.calcDist(centralLocation, frontLinesForMap.getLastPositionForSide(Side.ALLIED).getPosition());
-        if (distanceFromOtherMapEdge < productSpecific.getSmallMissionRadius())
+        if (distanceFromOtherMapEdge < productSpecific.getMediumMissionRadius())
         {
             double angleAwayFromEdge = MathUtils.calcAngle(frontLinesForMap.getLastPositionForSide(Side.ALLIED).getPosition(), centralLocation);
             centralLocation = MathUtils.calcNextCoord(centralLocation, angleAwayFromEdge, productSpecific.getSmallMissionRadius());

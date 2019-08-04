@@ -29,6 +29,7 @@ public class RoFProductSpecificConfiguration implements IProductSpecificConfigur
     private static final int MISSION_RADIUS_LARGE = 50000;
     private static final int MISSION_RADIUS_MEDIUM = 30000;
     private static final int MISSION_RADIUS_SMALL = 15000;
+    private static final int MISSION_RADIUS_VERY_SMALL = 5000;
 
     @Override
     public boolean useWaypointGoal()
@@ -335,5 +336,11 @@ public class RoFProductSpecificConfiguration implements IProductSpecificConfigur
     public int getSmallMissionRadius()
     {
         return MISSION_RADIUS_SMALL;
+    }
+
+    @Override
+    public int getVerySmallMissionRadius()
+    {
+        return MISSION_RADIUS_VERY_SMALL;
     }
 }

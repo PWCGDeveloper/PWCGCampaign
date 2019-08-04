@@ -40,14 +40,14 @@ public class BridgeFinder
                 bridgesForSide, 
                 referenceLocation, 
                 radius, 
-                radius * 2);
+                radius);
         return selectedBridge;
     }
 
     public List<Bridge> findBridgesForSideWithinRadius(Side side, Date date, Coordinate targetGeneralLocation, double radius) throws PWCGException 
     {
         PositionFinder<Bridge> positionFinder = new PositionFinder<Bridge>();
-        List<Bridge> selectedBridges = positionFinder.findWithinExpandingRadius(findAllBridgesForSide(side, date), targetGeneralLocation, radius, radius * 2);
+        List<Bridge> selectedBridges = positionFinder.findWithinExpandingRadius(findAllBridgesForSide(side, date), targetGeneralLocation, radius, radius);
         return selectedBridges;
     }
 

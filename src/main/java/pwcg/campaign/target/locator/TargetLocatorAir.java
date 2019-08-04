@@ -30,7 +30,7 @@ public class TargetLocatorAir
     {
         Coordinate missionCenter = flightInformation.getMission().getMissionBorders().getCenter();
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        TargetLocationFinder targetLocationFinder = new TargetLocationFinder(flightInformation.getCampaign(), getEnemySide(), missionCenter, productSpecific.getMediumMissionRadius());
+        TargetLocationFinder targetLocationFinder = new TargetLocationFinder(flightInformation.getCampaign(), getEnemySide(), missionCenter, productSpecific.getVerySmallMissionRadius());
         Coordinate targetWaypoint = targetLocationFinder.findLocationAtFront();
         return targetWaypoint;
     }
@@ -39,7 +39,8 @@ public class TargetLocatorAir
     {
         Coordinate missionCenter = flightInformation.getMission().getMissionBorders().getCenter();
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        TargetLocationFinder targetLocationFinder = new TargetLocationFinder(flightInformation.getCampaign(), getEnemySide(), missionCenter, productSpecific.getMediumMissionRadius());
+        
+        TargetLocationFinder targetLocationFinder = new TargetLocationFinder(flightInformation.getCampaign(), getEnemySide(), missionCenter, productSpecific.getVerySmallMissionRadius());
         Coordinate targetWaypoint = targetLocationFinder.findTargetCoordinatesBehindEnemyLines();
         return targetWaypoint;
     }

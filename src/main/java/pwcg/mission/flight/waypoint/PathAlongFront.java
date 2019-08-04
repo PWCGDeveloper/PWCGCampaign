@@ -10,6 +10,7 @@ import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -154,19 +155,16 @@ public class PathAlongFront
         final int closestToEdge = 10;
         goNorth = true;
         
-        List<FrontLinePoint> frontLines = frontLinesForMap.getFrontLines(pathAlongFrontData.getSide());
         if (currentPointIndex < closestToEdge)
         {
             goNorth = false;
         }
-        else if (currentPointIndex > (frontLines.size() - closestToEdge) )
-        {
-            goNorth = true;
-        }
         else
         {
-            int goNorthRoll = RandomNumberGenerator.getRandom(100);
-            if (goNorthRoll < 50)
+            CoordinateBox missionBox = pathAlongFrontData.getMission().getMissionBorders();
+            double distanceToNorth = MathUtils.calcDist(pathAlongFrontData.getTargetGeneralLocation(), missionBox.getNorth());
+            double distanceToSouth = MathUtils.calcDist(pathAlongFrontData.getTargetGeneralLocation(), missionBox.getSouth());
+            if (distanceToNorth < distanceToSouth)
             {
                 goNorth = false;
             }

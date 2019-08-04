@@ -30,7 +30,6 @@ public abstract class MissionOptions
     protected String playerConfig = "";
     protected MissionTime missionTime = null;
     protected Mission mission = null;
-    protected MapWeather missionWeather = null;
 
     public MissionOptions()
     {       
@@ -39,8 +38,7 @@ public abstract class MissionOptions
     public void createFlightSpecificMissionOptions(Mission mission) throws PWCGException 
     {
     	this.mission = mission;
-    	missionWeather = PWCGContextManager.getInstance().getCurrentMap().getMapWeather();
-    	missionWeather.createMissionWeather(mission);
+        PWCGContextManager.getInstance().getCurrentMap().getMapWeather().createMissionWeather(mission);
         createMissionTime();
     }
     
@@ -122,9 +120,4 @@ public abstract class MissionOptions
 	{
 		return missionType;
 	}
-
-    public MapWeather getMissionWeather()
-    {
-        return missionWeather;
-    }
 }

@@ -18,14 +18,6 @@ public abstract class OffensiveWaypoints extends WaypointGeneratorBase
 		super(startCoords, targetCoords, flight, mission);
 	}
 	
-	protected void createTargetWaypoints(Coordinate startPosition) throws PWCGException  
-	{
-        createOffensivePatrolWaypoints();
-	}
-	
-	protected abstract void createOffensivePatrolWaypoints() throws PWCGException ;
-
-
 	protected McuWaypoint createWP(Coordinate coord) throws PWCGException 
 	{
 		coord.setYPos(getFlightAlt());

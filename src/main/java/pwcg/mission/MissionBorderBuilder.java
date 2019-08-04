@@ -29,8 +29,8 @@ public class MissionBorderBuilder
 
     public CoordinateBox buildCoordinateBox () throws PWCGException
     {
-        Coordinate centralLocation = findAveragePlayerLocation();
-        Coordinate missionCenterCoordinate = findMissionCenter(centralLocation);
+        Coordinate averagePlayerLocation = findAveragePlayerLocation();
+        Coordinate missionCenterCoordinate = findMissionCenter(averagePlayerLocation);
         int missionBoxRadius = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.MissionBoxSizeKey) * 1000;
         CoordinateBox missionBox = CoordinateBox.coordinateBoxFromCenter(missionCenterCoordinate, missionBoxRadius);
         return missionBox;
@@ -43,10 +43,10 @@ public class MissionBorderBuilder
         return averagePlayerLocationFinder.findAveragePlayerLocation(participatingPlayers);
     }
 
-    private Coordinate findMissionCenter(Coordinate centralLocation) throws PWCGException
+    private Coordinate findMissionCenter(Coordinate averagePlayerLocation) throws PWCGException
     {
         FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        Coordinate frontLineCoordinateCloseToCentralLocation = frontLinesForMap.findClosestFrontCoordinateForSide(centralLocation,Side.AXIS);
+        Coordinate frontLineCoordinateCloseToCentralLocation = frontLinesForMap.findClosestFrontCoordinateForSide(averagePlayerLocation, Side.AXIS);
 
         Coordinate missionCenterCoordinateAxis = findAxisFrontCoordinateWithinRadiusOfMissionCenter(frontLineCoordinateCloseToCentralLocation);
         Coordinate missionCenterCoordinateAllied = findAlliedCoordinateNearAxisCoordinate(frontLineCoordinateCloseToCentralLocation);

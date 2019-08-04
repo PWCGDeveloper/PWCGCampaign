@@ -65,6 +65,7 @@ public class ContactPatrolWaypoints extends WaypointGeneratorBase
 	    depthOfPenetration -= (depthOfPenetrationMax / 2);
 	            
 	    PathAlongFrontData pathAlongFrontData = new PathAlongFrontData();
+	    pathAlongFrontData.setMission(mission);
 	    pathAlongFrontData.setDate(campaign.getDate());
 	    pathAlongFrontData.setOffsetTowardsEnemy(depthOfPenetration);
 	    pathAlongFrontData.setPathDistance(patrolDistanceBase);

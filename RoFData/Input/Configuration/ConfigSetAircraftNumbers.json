@@ -58,7 +58,7 @@
       "help": "Base for maximum patrol distance (km)"
     },
     "PatrolDistanceRandom": {
-      "value": "15",
+      "value": "10",
       "label": "Patrol Distance Random",
       "help": "Random element for additional patrol distance (km)"
     }

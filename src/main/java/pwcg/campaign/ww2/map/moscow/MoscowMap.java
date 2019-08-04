@@ -21,9 +21,16 @@ public class MoscowMap extends PWCGMap
         this.mapIdentifier = FrontMapIdentifier.MOSCOW_MAP;
         this.mapCenter = new Point(700, 700);
         
-        this.missionOptions = new MoscowMissionOptions();
-        this.mapWeather = new MoscowMapWeather();
-        
+        if (missionOptions == null)
+        {
+            missionOptions = new MoscowMissionOptions();
+        }
+
+        if (mapWeather == null)
+        {
+            mapWeather = new MoscowMapWeather();
+        }
+
         frontParameters = new MoscowFrontParameters();
         buildArmedServicesActiveForMap();
         super.configure();

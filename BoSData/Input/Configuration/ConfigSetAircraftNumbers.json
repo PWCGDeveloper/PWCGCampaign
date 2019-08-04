@@ -52,12 +52,12 @@
       "help": "Distance between target and setup waypoints (meters)"
     },
     "PatrolDistanceBase": {
-      "value": "30",
+      "value": "20",
       "label": "Patrol Distance Base",
       "help": "Base for maximum patrol distance (km)"
     },
     "PatrolDistanceRandom": {
-      "value": "30",
+      "value": "20",
       "label": "Patrol Distance Random",
       "help": "Random element for additional patrol distance (km)"
     }

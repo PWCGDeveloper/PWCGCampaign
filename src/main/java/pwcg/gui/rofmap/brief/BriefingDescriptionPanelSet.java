@@ -60,11 +60,8 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
 		try
 		{
 			this.removeAll();
-	
 			setLeftPanel(makeButtonPanel());
-
 			setCenterPanel(makeBriefingPanel());
-			
 	        setMissionText();
 		}
 		catch (Exception e)

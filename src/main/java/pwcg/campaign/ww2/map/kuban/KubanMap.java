@@ -22,9 +22,16 @@ public class KubanMap extends PWCGMap
 
         this.mapCenter = new Point(700, 700);
         
-        this.missionOptions = new KubanMissionOptions();
-        this.mapWeather = new KubanMapWeather();
-        
+        if (missionOptions == null)
+        {
+            missionOptions = new KubanMissionOptions();
+        }
+
+        if (mapWeather == null)
+        {
+            this.mapWeather = new KubanMapWeather();
+        }
+
         frontParameters = new KubanFrontParameters();
 
         buildArmedServicesActiveForMap();

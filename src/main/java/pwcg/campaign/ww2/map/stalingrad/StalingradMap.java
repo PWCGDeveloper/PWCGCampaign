@@ -21,8 +21,15 @@ public class StalingradMap extends PWCGMap
         this.mapIdentifier = FrontMapIdentifier.STALINGRAD_MAP;
         this.mapCenter = new Point(700, 700);
         
-        this.missionOptions = new StalingradMissionOptions();
-        this.mapWeather = new StalingradMapWeather();
+        if (missionOptions == null)
+        {
+            missionOptions = new StalingradMissionOptions();
+        }
+
+        if (mapWeather == null)
+        {
+            this.mapWeather = new StalingradMapWeather();
+        }
         
         frontParameters = new StalingradFrontParameters();
         buildArmedServicesActiveForMap();

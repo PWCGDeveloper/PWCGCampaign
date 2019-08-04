@@ -32,7 +32,7 @@ public class PositionFinder <T>
         while (selectedLocations.isEmpty())
         {
             selectedLocations = findWithinRadius(listOfPositions, referenceLocation, radius);
-            if (radius > maxRadius)
+            if (radius >= maxRadius)
             {
                 break;
             }

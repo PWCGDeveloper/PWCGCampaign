@@ -29,6 +29,7 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     private static final int MISSION_RADIUS_LARGE = 100000;
     private static final int MISSION_RADIUS_MEDIUM = 50000;
     private static final int MISSION_RADIUS_SMALL = 30000;
+    private static final int MISSION_RADIUS_VERY_SMALL = 10000;
 
     @Override
     public boolean useWaypointGoal()
@@ -126,27 +127,27 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
         int initialDistance = 10000;
         if (flightType == FlightTypes.PATROL)
         {
-            initialDistance = 20000;
+            initialDistance = 10000;
         }
         else if (flightType == FlightTypes.LONE_WOLF)
         {
-            initialDistance = 20000;
+            initialDistance = 10000;
         }
         else if (flightType == FlightTypes.OFFENSIVE)
         {
-            initialDistance = 15000;
+            initialDistance = 10000;
         }
         else if (flightType == FlightTypes.INTERCEPT)
         {
-            initialDistance = 30000;
+            initialDistance = 10000;
         }
         else if (flightType == FlightTypes.CONTACT_PATROL)
         {
-            initialDistance = 20000;
+            initialDistance = 10000;
         }
         else if (flightType == FlightTypes.GROUND_ATTACK)
         {
-            initialDistance = 15000;
+            initialDistance = 10000;
         }
         else if (flightType == FlightTypes.DIVE_BOMB)
         {
@@ -154,7 +155,7 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
         }
         else if (flightType == FlightTypes.SPY_EXTRACT)
         {
-            initialDistance = 120000;
+            initialDistance = 10000;
         }
         else if (flightType == FlightTypes.BOMB)
         {
@@ -166,11 +167,11 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
         }
         else if (flightType == FlightTypes.LOW_ALT_PATROL)
         {
-            initialDistance = 15000;                    
+            initialDistance = 10000;                    
         }
         else if (flightType == FlightTypes.LOW_ALT_CAP)
         {
-            initialDistance = 15000;                    
+            initialDistance = 10000;                    
         }
         else if (flightType == FlightTypes.LOW_ALT_BOMB)
         {
@@ -182,15 +183,15 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
         }
         else if (flightType == FlightTypes.PARATROOP_DROP)
         {
-            initialDistance = 50000;
+            initialDistance = 30000;
         }
         else if (flightType == FlightTypes.CARGO_DROP)
         {
-            initialDistance = 50000;
+            initialDistance = 30000;
         }
         else if (flightType == FlightTypes.TRANSPORT)
         {
-            initialDistance = 50000;
+            initialDistance = 30000;
         }
         else if (flightType == FlightTypes.ANTI_SHIPPING)
         {
@@ -211,78 +212,78 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     @Override
     public int getMaxTargetRadiusFromGeneralTargetLocation(FlightTypes flightType)
     {
-        int initialDistance = 130000;
+        int initialDistance = 60000;
         if (flightType == FlightTypes.PATROL)
         {
-            initialDistance = 80000;
+            initialDistance = 50000;
         }
         else if (flightType == FlightTypes.LONE_WOLF)
         {
-            initialDistance = 80000;
+            initialDistance = 50000;
         }
         else if (flightType == FlightTypes.LOW_ALT_PATROL)
         {
-            initialDistance = 80000;                    
+            initialDistance = 50000;                    
         }
         else if (flightType == FlightTypes.LOW_ALT_CAP)
         {
-            initialDistance = 90000;                    
+            initialDistance = 50000;                    
         }
         else if (flightType == FlightTypes.LOW_ALT_BOMB)
         {
-            initialDistance = 110000;                    
+            initialDistance = 70000;                    
         }
         else if (flightType == FlightTypes.OFFENSIVE)
         {
-            initialDistance = 150000;
+            initialDistance = 50000;
         }
         else if (flightType == FlightTypes.INTERCEPT)
         {
-            initialDistance = 110000;
+            initialDistance = 50000;
         }
         else if (flightType == FlightTypes.CONTACT_PATROL)
         {
-            initialDistance = 160000;
+            initialDistance = 70000;
         }
         else if (flightType == FlightTypes.GROUND_ATTACK)
         {
-            initialDistance = 160000;
+            initialDistance = 50000;
         }
         else if (flightType == FlightTypes.DIVE_BOMB)
         {
-            initialDistance = 160000;
+            initialDistance = 70000;
         }
         else if (flightType == FlightTypes.SPY_EXTRACT)
         {
-            initialDistance = 160000;
+            initialDistance = 70000;
         }
         else if (flightType == FlightTypes.BOMB)
         {
-            initialDistance = 180000;                    
+            initialDistance = 70000;                    
         }
         else if (flightType == FlightTypes.RECON)
         {
-            initialDistance = 180000;                    
+            initialDistance = 100000;                    
         }
         else if (flightType == FlightTypes.PARATROOP_DROP)
         {
-            initialDistance = 180000;
+            initialDistance = 100000;
         }
         else if (flightType == FlightTypes.TRANSPORT)
         {
-            initialDistance = 180000;
+            initialDistance = 100000;
         }
         else if (flightType == FlightTypes.ANTI_SHIPPING)
         {
-            initialDistance = 180000;                    
+            initialDistance = 100000;                    
         }
         else if (flightType == FlightTypes.SEA_PATROL)
         {
-            initialDistance = 180000;                    
+            initialDistance = 100000;                    
         }
         else if (flightType == FlightTypes.STRATEGIC_BOMB)
         {
-            initialDistance = 180000;                    
+            initialDistance = 100000;                    
         }
 
         return initialDistance;
@@ -375,5 +376,11 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     public int getSmallMissionRadius()
     {
         return MISSION_RADIUS_SMALL;
+    }
+
+    @Override
+    public int getVerySmallMissionRadius()
+    {
+        return MISSION_RADIUS_VERY_SMALL;
     }
 }

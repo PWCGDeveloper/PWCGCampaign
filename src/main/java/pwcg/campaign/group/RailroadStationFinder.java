@@ -52,7 +52,7 @@ public class RailroadStationFinder
     public List<Block> getTrainPositionWithinRadiusBySide(Side side, Date date, Coordinate targetGeneralLocation, double radius) throws PWCGException
     {
         PositionFinder<Block> positionFinder = new PositionFinder<Block>();
-        List<Block> selectedStations = positionFinder.findWithinExpandingRadius(getTrainPositionsBySide(side, date), targetGeneralLocation, radius, 300000.0);
+        List<Block> selectedStations = positionFinder.findWithinExpandingRadius(getTrainPositionsBySide(side, date), targetGeneralLocation, radius, radius);
         return selectedStations;
     }
     
