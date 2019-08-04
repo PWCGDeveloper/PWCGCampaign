@@ -3,7 +3,6 @@ package pwcg.mission.flight;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
 import pwcg.mission.Mission;
@@ -24,38 +23,10 @@ public class FlightProximityAnalyzer
         plotPlayerFlightEncounters();
     }
 
-    public double proximityToPlayerAirbase(Flight aiFlight) throws PWCGException 
-    {
-        double closestDistanceToEnemyPlayerField = PositionFinder.ABSURDLY_LARGE_DISTANCE;
-
-        // TODO COOP test close to enemy airfield and not friendly
-        for (Flight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
-        {
-            if (playerFlight.getSquadron().determineSide() != aiFlight.getSquadron().determineSide())
-            {
-                Coordinate playerFieldCoordinte = playerFlight.getSquadron().determineCurrentPosition(aiFlight.getCampaign().getDate());
-                VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
-                List<VirtualWayPointCoordinate> aiFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(aiFlight);
-                for (VirtualWayPointCoordinate vwp : aiFlightPath)
-                {
-                    double distanceToPlayerField = MathUtils.calcDist(playerFieldCoordinte, vwp.getCoordinate());
-                    if (closestDistanceToEnemyPlayerField > distanceToPlayerField)
-                    {
-                        closestDistanceToEnemyPlayerField = distanceToPlayerField;
-                    }
-                }
-            }
-        }
-        
-        return closestDistanceToEnemyPlayerField;
-    }
-
     private void plotPlayerFlightEncounters() throws PWCGException 
     {
         int playerEncounerDistance = VirtualWayPoint.VWP_TRIGGGER_DISTANCE;
-
-        // TODO COOP test close to enemy flights and not friendly
-        for (Flight aiFlight : mission.getMissionFlightBuilder().getMissionFlights())
+        for (Flight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
         {
             if (!aiFlight.isPlayerFlight())
             {
@@ -93,8 +64,6 @@ public class FlightProximityAnalyzer
                     if (playerFlight.isPlayerFlight())
                     {
                         aiFlight.setContactWithPlayer(timeSliceOfFlight);
-                        playerFlight.setFirstContactWithEnemy(timeSliceOfFlight, aiFlight);
-                        aiFlight.setFirstContactWithEnemy(timeSliceOfFlight, playerFlight);
                     }
                 }
                 

@@ -11,7 +11,6 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightProximityAnalyzer;
 import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.plane.PlaneMCU;
@@ -34,9 +33,6 @@ public class MissionFlightBuilder
         createPlayerFlights(participatingPlayers, flightType);
         createAiFlights();
         moveAiFlightsToStartPositions();
-
-        FlightProximityAnalyzer flightAnalyzer = new FlightProximityAnalyzer(mission);
-        flightAnalyzer.plotFlightEncounters();
     }
 
     public void finalizeMissionFlights() throws PWCGException
@@ -251,7 +247,7 @@ public class MissionFlightBuilder
         this.playerFlights.add(playerFlight);
     }
 
-    public List<Flight> getMissionFlights()
+    public List<Flight> getAiFlights()
     {
         return aiFlights;
     }

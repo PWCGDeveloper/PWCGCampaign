@@ -66,7 +66,7 @@ public class RoFMissionFile  extends MissionFileWriter
 		try
         {
             MissionOptions missionOptions = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions();
-            MapWeather mapWeather = PWCGContextManager.getInstance().getCurrentMap().getMapWeather();
+            MapWeather mapWeather = missionOptions.getMissionWeather();
 
             writer.write("Options");
             writer.newLine();

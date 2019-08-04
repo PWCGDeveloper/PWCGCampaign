@@ -67,8 +67,7 @@ public abstract class Flight extends Unit
 
     protected List<Integer> contactWithPlayer = new ArrayList<Integer>();
     protected double closestContactWithPlayerDistance = -1.0;
-    protected int firstContactWithEnemy = -1;
-    protected Flight firstContactWithEnemyFlight = null;
+    protected boolean flightHasBeenIncluded = false;
 
     protected int missionStartTimeAdjustment = 0;
     
@@ -774,31 +773,6 @@ public abstract class Flight extends Unit
         contactWithPlayer.add(contact);
     }
 
-    public int getFirstContactWithEnemy()
-    {
-        return firstContactWithEnemy;
-    }
-
-    public Flight getFirstContactWithEnemyFlight()
-    {
-        return firstContactWithEnemyFlight;
-    }
-
-    public void setFirstContactWithEnemy(int firstContactWithEnemy, Flight enemyFlight)
-    {
-        if (this.firstContactWithEnemy == -1 || this.firstContactWithEnemy > firstContactWithEnemy)
-        {
-            this.firstContactWithEnemy = firstContactWithEnemy;
-            this.firstContactWithEnemyFlight = enemyFlight;
-            // Make the escort move in lock step
-            if (virtualEscortFlight != null)
-            {
-                virtualEscortFlight.setFirstContactWithEnemy(firstContactWithEnemy, enemyFlight);
-
-            }
-        }
-    }
-
     public boolean isFighterMission()
     {
         boolean isFighterMission = false;
@@ -1207,4 +1181,15 @@ public abstract class Flight extends Unit
     {
         return flightInformation.isParkedStart();
     }
+    
+    public boolean isFlightHasBeenIncluded()
+    {
+        return flightHasBeenIncluded;
+    }
+    
+    public void setFlightHasBeenIncluded(boolean flightHasBeenIncluded)
+    {
+        this.flightHasBeenIncluded = flightHasBeenIncluded;
+    }
+
 }

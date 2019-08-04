@@ -48,7 +48,7 @@ public class MissionAnalyzer
             writer.newLine();
             writer.newLine();
 
-            List<Flight> alliedFlights = mission.getMissionFlightBuilder().getMissionFlights();
+            List<Flight> alliedFlights = mission.getMissionFlightBuilder().getAiFlights();
             for (int i = 1; i < alliedFlights.size(); ++i)
             {
             	writer.write("Flight");

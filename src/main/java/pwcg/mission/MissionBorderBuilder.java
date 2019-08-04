@@ -1,6 +1,5 @@
 package pwcg.mission;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
@@ -10,8 +9,6 @@ import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
-import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -38,6 +35,12 @@ public class MissionBorderBuilder
         CoordinateBox missionBox = CoordinateBox.coordinateBoxFromCenter(missionCenterCoordinate, missionBoxRadius);
         return missionBox;
 
+    }
+
+    private Coordinate findAveragePlayerLocation() throws PWCGException
+    {
+        AveragePlayerLocationFinder averagePlayerLocationFinder = new AveragePlayerLocationFinder(campaign);
+        return averagePlayerLocationFinder.findAveragePlayerLocation(participatingPlayers);
     }
 
     private Coordinate findMissionCenter(Coordinate centralLocation) throws PWCGException
@@ -75,27 +78,4 @@ public class MissionBorderBuilder
         return alliedCoordinateCloseToAxisCoordinate;
     }
 
-    private Coordinate findAveragePlayerLocation() throws PWCGException
-    {
-        List<Coordinate> playerLocations = new ArrayList<>();
-        for (SquadronMember player : participatingPlayers.getAllParticipatingPlayers())
-        {
-            Squadron squadron = player.determineSquadron();
-            Coordinate squadronLocation = squadron.determineCurrentAirfieldAnyMap(campaign.getDate()).getPosition();
-            playerLocations.add(squadronLocation);
-        }
-        
-        double xSum = 0.0;
-        double zSum = 0.0;
-        for (Coordinate playerLocation : playerLocations)
-        {
-            xSum += playerLocation.getXPos();
-            zSum += playerLocation.getZPos();
-        }
-        double xAvg = xSum / playerLocations.size();
-        double zAvg = zSum / playerLocations.size();
-        
-        Coordinate centralLocation = new Coordinate(xAvg, 0.0, zAvg);
-        return centralLocation;
-    }
 }

@@ -567,7 +567,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
             }
         }
         
-        for (Flight flight : mission.getMissionFlightBuilder().getMissionFlights())
+        for (Flight flight : mission.getMissionFlightBuilder().getAiFlights())
         {
             mapPanel.makeMapPanelVirtualPoints (flight);
             

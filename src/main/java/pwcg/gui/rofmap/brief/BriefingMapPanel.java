@@ -218,12 +218,11 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         Point nePoint = super.coordinateToPoint(ne);
         Point nwPoint = super.coordinateToPoint(nw);
         
-        g.setColor(Color.WHITE);
+        g.setColor(Color.YELLOW);
         g2.draw(new Line2D.Float(swPoint.x, swPoint.y, sePoint.x, sePoint.y));
         g2.draw(new Line2D.Float(sePoint.x, sePoint.y, nePoint.x, nePoint.y));
         g2.draw(new Line2D.Float(nePoint.x, nePoint.y, nwPoint.x, nwPoint.y));
         g2.draw(new Line2D.Float(nwPoint.x, nwPoint.y, swPoint.x, swPoint.y));
-
     }
 
     public void  clearVirtualPoints()

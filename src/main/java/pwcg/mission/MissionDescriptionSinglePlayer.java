@@ -61,7 +61,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
     {
 		Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 
-        MapWeather mapWeather = PWCGContextManager.getInstance().getCurrentMap().getMapWeather();
+        MapWeather mapWeather = mission.getMissionOptions().getMissionWeather();
         setClouds(mapWeather.getWeatherDescription());
         setWind(mapWeather.getWindLayers().get(0));
 
@@ -76,7 +76,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
         buildTitleDescription(campaign.getCampaignData().getName(), playerFlight.getFlightType().toString());
 
         HashMap<String, Flight> squadronMap = new HashMap<String, Flight>();
-        for (Flight flight : mission.getMissionFlightBuilder().getMissionFlights())
+        for (Flight flight : mission.getMissionFlightBuilder().getAiFlights())
         {
             squadronMap.put(flight.getSquadron().determineDisplayName(campaign.getDate()), flight);
         }

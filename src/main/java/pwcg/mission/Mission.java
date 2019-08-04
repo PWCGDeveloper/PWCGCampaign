@@ -46,6 +46,7 @@ public class Mission
     private VehicleSetBuilderComprehensive vehicleSetBuilder = new VehicleSetBuilderComprehensive();
     private boolean isFinalized = false;
     private MissionProfile missionProfile = MissionProfile.DAY_TACTICAL_MISSION;
+    private MissionOptions missionOptions;
 
     public Mission(Campaign campaign, MissionHumanParticipants participatingPlayers, CoordinateBox missionBorders) throws PWCGException
     {
@@ -74,13 +75,11 @@ public class Mission
     {
         validate();
 
-        PWCGContextManager.getInstance().getCurrentMap().getMapWeather().createWindDirection();
-
     	missionFlightBuilder.generateFlights(participatingPlayers, flightType);
     	missionAssociateFlightBuilder.buildAssociatedFlights(this);
         createFirePots();
 
-        MissionOptions missionOptions = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions();
+        missionOptions = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions();
         missionOptions.createFlightSpecificMissionOptions(this);
     }
 
@@ -325,5 +324,15 @@ public class Mission
     public CoordinateBox getMissionBorders()
     {
         return missionBorders;
+    }
+
+    public MissionOptions getMissionOptions()
+    {
+        return missionOptions;
+    }
+
+    public void setMissionOptions(MissionOptions missionOptions)
+    {
+        this.missionOptions = missionOptions;
     }
 }

@@ -34,25 +34,12 @@ public abstract class MapWeather
     public MapWeather ()
     {
     }
-    	
-    public void createWindDirection()
-    {
-		// Prevailing direction is west to east
-		int eastOrWest = RandomNumberGenerator.getRandom(100);
-		if (eastOrWest > 80)
-		{
-			windDirection = 180 + RandomNumberGenerator.getRandom(180);
-		}
-		else
-		{
-			windDirection = RandomNumberGenerator.getRandom(180);
-		}
-    }
 
 	public void createMissionWeather(Mission mission) throws PWCGException 
 	{		
 	    this.mission = mission;
 	    int weatherSeverity = createCloud();
+	    createWindDirection();
         createWind(weatherSeverity);
     }
 
@@ -62,6 +49,20 @@ public abstract class MapWeather
     protected abstract String getHeavySkys() throws PWCGException;
     protected abstract String getOvercastSkys() throws PWCGException;
     public abstract Season getSeason(Date date);
+    
+    protected void createWindDirection()
+    {
+        // Prevailing direction is west to east
+        int eastOrWest = RandomNumberGenerator.getRandom(100);
+        if (eastOrWest > 80)
+        {
+            windDirection = 180 + RandomNumberGenerator.getRandom(180);
+        }
+        else
+        {
+            windDirection = RandomNumberGenerator.getRandom(180);
+        }
+    }
 
     protected int createCloud() throws PWCGException 
     {

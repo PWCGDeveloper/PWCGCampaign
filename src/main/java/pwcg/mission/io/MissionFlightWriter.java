@@ -25,7 +25,7 @@ public class MissionFlightWriter
 	    writeFlights(mission.getMissionFlightBuilder().getPlayerFlights(), writer);
         if (!TestDriver.getInstance().isCreatePlayerOnly())
         {
-            writeFlights(mission.getMissionFlightBuilder().getMissionFlights(), writer);
+            writeFlights(mission.getMissionFlightBuilder().getAiFlights(), writer);
             writePlaneCounters(writer);
         }
 	}

@@ -184,7 +184,30 @@ public class FrontLinesForMap
     {
         return findClosestFrontPositionForSide(referenceLocation, side).getPosition();
     }
-
+    
+    public FrontLinePoint getFirstPositionForSide(Side side) throws PWCGException
+    {        
+        if (side == Side.ALLIED)
+        {
+            return frontLinesAllied.get(0);
+        }
+        else
+        {
+            return frontLinesAxis.get(0);
+        }
+    }
+    
+    public FrontLinePoint getLastPositionForSide(Side side) throws PWCGException
+    {        
+        if (side == Side.ALLIED)
+        {
+            return frontLinesAllied.get(frontLinesAllied.size()-1);
+        }
+        else
+        {
+            return frontLinesAxis.get(frontLinesAxis.size()-1);
+        }
+    }
 
     public void deletePoint(int frontIndexToDelete, Side side) throws PWCGException
     {

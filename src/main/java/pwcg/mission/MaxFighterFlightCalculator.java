@@ -19,7 +19,7 @@ public class MaxFighterFlightCalculator
         this.mission = mission;
     }
     
-    public int getMaxFighterFlightsForMission() throws PWCGException
+    public int getMaxFighterFlightsForMission(int maxFlightsForSide) throws PWCGException
     {
         int maxFighterToKeepIfGroundCampaign = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AiFighterFlightsForGroundCampaignMaxKey);
         int maxFighterToKeepIfFighterCampaign = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AiFighterFlightsForFighterCampaignMaxKey);
@@ -33,7 +33,27 @@ public class MaxFighterFlightCalculator
             numFighterFlightsToKeep = maxFighterToKeepIfGroundCampaign;
         }
         
+        if (numFighterFlightsToKeep > 0)
+        {
+            numFighterFlightsToKeep = reduceFighterFlightsIfNotEnoughBomberFlights(maxFlightsForSide, numFighterFlightsToKeep);
+        }
+        
         return reduceFlightsForPeriodOfLowActivity(numFighterFlightsToKeep);
+    }
+    
+    private int reduceFighterFlightsIfNotEnoughBomberFlights(int maxFlightsForSide, int numFighterFlightsToKeep)
+    {
+        int numBomberFlightsToKeep = maxFlightsForSide - numFighterFlightsToKeep;
+        if (numBomberFlightsToKeep < 3)
+        {
+            numFighterFlightsToKeep = RandomNumberGenerator.getRandom(numFighterFlightsToKeep) + 1;
+        }
+        else
+        {
+            numFighterFlightsToKeep = RandomNumberGenerator.getRandom(numFighterFlightsToKeep - 1) + 2;
+        }
+        
+        return numFighterFlightsToKeep;
     }
 
     private int reduceFlightsForPeriodOfLowActivity(int numFighterFlightsToKeep) throws PWCGException

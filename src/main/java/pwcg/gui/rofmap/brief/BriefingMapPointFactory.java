@@ -27,7 +27,7 @@ public class BriefingMapPointFactory
 			mapPoint.editable = false;
 		}
 
-		if (waypoint.isTargetWaypoint())
+		if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
 		{
 		    mapPoint.isTarget = true;
 		}
