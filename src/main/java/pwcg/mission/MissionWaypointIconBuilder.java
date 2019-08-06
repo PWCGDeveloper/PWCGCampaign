@@ -16,7 +16,15 @@ public class MissionWaypointIconBuilder
 {
     private ArrayList<McuIcon> waypointIcons = new ArrayList<McuIcon>();
 
-    public void createWaypointIcons(Flight playerFlight) throws PWCGException 
+    public void createWaypointIcons(List<Flight> playerFlights) throws PWCGException 
+    {
+        for (Flight playerFlight : playerFlights)
+        {
+            createWaypointIconsForFlight(playerFlight);
+        }
+    }
+    
+    private void createWaypointIconsForFlight(Flight playerFlight) throws PWCGException 
     {        
     	waypointIcons.clear();
     	

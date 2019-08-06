@@ -178,6 +178,8 @@ public class Mission
             missionFlightBuilder.finalizeMissionFlights();
         	missionFrontLines.buildFrontLineIcons();
             missionPlaneLimiter.createPlaneCountersToLimitPlanesSpawned(this);
+            missionWaypointIconBuilder.createWaypointIcons(missionFlightBuilder.getPlayerFlights());
+            missionAirfieldIconBuilder.createWaypointIcons(campaign, this);
 
         	if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
         	{
@@ -195,11 +197,8 @@ public class Mission
 
 	private void finalizeForSinglePlayer() throws PWCGException 
 	{
-	    // TODO need icons for coop as well as SP
         if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
 	    {
-    		missionWaypointIconBuilder.createWaypointIcons(missionFlightBuilder.getReferencePlayerFlight());
-    		missionAirfieldIconBuilder.createWaypointIcons(campaign, this);
     		missionObjectiveSuccess.createSuccessMissionObjective(campaign, this);
     		missionObjectiveFailure.createFailureMissionObjective(campaign, this);
 	    }
