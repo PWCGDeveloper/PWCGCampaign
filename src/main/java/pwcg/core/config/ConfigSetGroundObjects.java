@@ -12,7 +12,6 @@ public class ConfigSetGroundObjects
 		configSet.addConfigItem(ConfigItemKeys.KeepAAASpreadKey, new ConfigItem("10000"));			// Distance from waypoint box to keep AAA
 		configSet.addConfigItem(ConfigItemKeys.KeepGroupSpreadKey, new ConfigItem("50000"));			// Distance from waypoint box to keep a group (city, new ConfigItem("large airfield)
 		configSet.addConfigItem(ConfigItemKeys.AirfieldInclusionRadiusKey, new ConfigItem("50000")); // Distance from which to draw flights from
-		configSet.addConfigItem(ConfigItemKeys.MaxGroundTargetDistanceKey, new ConfigItem("10000")); // Max flying distance for most tactical ground targets.
 		return configSet;
 	}
 }

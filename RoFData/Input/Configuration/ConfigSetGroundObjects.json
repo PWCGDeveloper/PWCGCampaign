@@ -21,11 +21,6 @@
       "label": "Keep Group Spread",
       "help": "Distance from waypoint box to keep a group (city, large airfield)"
     },
-    "MaxGroundTargetDistance": {
-      "value": "30000",
-      "label": "Max distance to target",
-      "help": "Max distance from front to ground target"
-    },
     "WindsockDistance": {
       "value": "50",
       "label": "Windsock Distance",

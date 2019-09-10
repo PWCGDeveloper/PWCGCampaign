@@ -35,6 +35,8 @@ public class PlayerFlightTypeBoSEscortTest
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
         mission.generate(FlightTypes.ESCORT);
+        mission.finalizeMission();
+        
         PlayerEscortFlight flight = (PlayerEscortFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 

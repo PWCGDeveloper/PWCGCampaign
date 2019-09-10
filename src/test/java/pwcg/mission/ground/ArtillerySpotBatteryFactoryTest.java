@@ -45,7 +45,6 @@ public class ArtillerySpotBatteryFactoryTest
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19171010"));
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(squadron.determineCurrentAirfieldName(DateUtils.getDateYYYYMMDD("19171010"))).thenReturn("Bellevue Ferme");
-        Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MaxGroundTargetDistanceKey)).thenReturn(50000);
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
     }
 

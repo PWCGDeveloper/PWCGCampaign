@@ -102,7 +102,6 @@ public class ConfigItemKeys
 	public static final String KeepAAASpreadKey = "KeepAAASpread";
 	public static final String KeepGroupSpreadKey = "KeepGroupSpread";
 	public static final String AirfieldInclusionRadiusKey = "AirfieldInclusionRadius";
-	public static final String MaxGroundTargetDistanceKey = "MaxGroundTargetDistance";
 
 	// Mission AI
 	public static final String FighterAISkillAdjustmentKey = "FighterAISkillAdjustment";

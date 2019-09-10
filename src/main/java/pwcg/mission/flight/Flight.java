@@ -670,6 +670,20 @@ public abstract class Flight extends Unit
         }
     }
 
+    public List<PlaneMCU> getAiPlanes() throws PWCGException 
+    {
+        List<PlaneMCU> aiPlanes = new ArrayList<>();
+        for (PlaneMCU plane : planes)
+        {
+            if (!plane.getPilot().isPlayer())
+            {
+                aiPlanes.add(plane);
+            }
+        }
+
+        return aiPlanes;
+    }
+
     public List<PlaneMCU> getPlayerPlanes() throws PWCGException 
     {
         List<PlaneMCU> playerPlanes = new ArrayList<>();

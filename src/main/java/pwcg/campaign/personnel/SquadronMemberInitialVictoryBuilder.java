@@ -145,17 +145,8 @@ public class SquadronMemberInitialVictoryBuilder
                 int extraLuftwaffeVictories = (serviceQuality - 80);
                 int minAdjustment = 0;
                 int maxAdjustment = 0;
-                if (rankPos == 3)
-                {
-                    minAdjustment = 0;
-                    maxAdjustment = 0;
-                }
-                else if (rankPos == 2)
-                {
-                    minAdjustment = 0;
-                    maxAdjustment = 0;
-                }
-                else if (rankPos == 1)
+
+                if (rankPos == 1)
                 {
                     minAdjustment = extraLuftwaffeVictories - 8;
                     maxAdjustment = extraLuftwaffeVictories - 3;

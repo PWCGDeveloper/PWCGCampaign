@@ -48,7 +48,6 @@ public class GroundUnitFactoryRoFTest
         PWCGContextManager.setRoF(false);
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));
-        Mockito.when(configManager.getIntConfigParam(ConfigItemKeys.MaxGroundTargetDistanceKey)).thenReturn(50000);
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
 
         missionBeginUnit = new MissionBeginUnitCheckZone(myTestPosition, 10000);

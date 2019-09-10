@@ -2,7 +2,6 @@ package pwcg.core.utils;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Date;
 
 public class RandomNumberGenerator 
 {
@@ -71,6 +70,6 @@ public class RandomNumberGenerator
 
     private static void getSecureRandomDateSeed()
     {
-        generator = new SecureRandom(String.valueOf(new Date().getTime()).getBytes());
+        generator = new SecureRandom();
     }
 }

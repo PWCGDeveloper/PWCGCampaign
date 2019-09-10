@@ -11,6 +11,7 @@ import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.group.VirtualWayPoint;
+import pwcg.mission.utils.AiAdjuster;
 
 public class MissionFlightFinalizer
 {
@@ -30,6 +31,9 @@ public class MissionFlightFinalizer
         {
             flight.finalizeFlight();
         }
+        
+        AiAdjuster aiAdjuster = new AiAdjuster(campaign);
+        aiAdjuster.adjustAI(mission);
 
         MissionFlightKeeper missionFlightKeeper = new MissionFlightKeeper(campaign, mission);
         List<Flight> finalizedMissionFlights = missionFlightKeeper.keepLimitedFlights();
