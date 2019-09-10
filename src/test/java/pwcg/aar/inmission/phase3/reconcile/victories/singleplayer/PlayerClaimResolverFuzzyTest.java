@@ -7,10 +7,10 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerClaimResolverFuzzy;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.squadmember.SerialNumber;
+import pwcg.campaign.ww1.country.RoFCountry;
 import pwcg.core.exception.PWCGException;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -27,10 +27,12 @@ public class PlayerClaimResolverFuzzyTest
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
+        victim.setCountry(new RoFCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        victor.setCountry(new RoFCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -51,10 +53,12 @@ public class PlayerClaimResolverFuzzyTest
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
+        victim.setCountry(new RoFCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        victor.setCountry(new RoFCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -74,10 +78,12 @@ public class PlayerClaimResolverFuzzyTest
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("notarealplane");
+        victim.setCountry(new RoFCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        victor.setCountry(new RoFCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -97,10 +103,12 @@ public class PlayerClaimResolverFuzzyTest
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
+        victim.setCountry(new RoFCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        victor.setCountry(new RoFCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -120,16 +128,44 @@ public class PlayerClaimResolverFuzzyTest
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
+        victim.setCountry(new RoFCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
         victor.setVehicleType("albatrosd3");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        victor.setCountry(new RoFCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
         resultVictory.setVictor(victor);
         resultVictory.setConfirmed(true);
         
+        PlayerVictoryDeclaration playerDeclaration = new PlayerVictoryDeclaration();
+        playerDeclaration.setAircraftType("se5a");
+
+        PlayerClaimResolverFuzzy claimResolverFuzzy = new PlayerClaimResolverFuzzy();
+        String planeDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(playerDeclaration, resultVictory);
+        
+        assert (planeDisplayName.isEmpty());
+    }
+
+    
+    @Test
+    public void testNoFriendlyVictories () throws PWCGException
+    {   
+        LogPlane victim = new LogPlane(1);
+        victim.setVehicleType("albatrosd3");
+        victim.setCountry(new RoFCountry(Country.GERMANY));
+
+        LogPlane victor = new LogPlane(2);
+        victor.setVehicleType("albatrosd3");
+        victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        victor.setCountry(new RoFCountry(Country.GERMANY));
+
+        LogVictory resultVictory = new LogVictory(10);
+        resultVictory.setVictim(victim);
+        resultVictory.setVictor(victor);
+
         PlayerVictoryDeclaration playerDeclaration = new PlayerVictoryDeclaration();
         playerDeclaration.setAircraftType("se5a");
 

@@ -81,14 +81,17 @@ public class PlayerDeclarationResolution
     {
         for (LogVictory resultVictory : victorySorter.getFirmAirVictories())
         {
-            if (!resultVictory.isConfirmed())
+            SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+            if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
-                SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
-                String shotDownPlaneDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirm(player, victoryDeclaration, resultVictory);
-                if (!shotDownPlaneDisplayName.isEmpty())
+                if (!resultVictory.isConfirmed())
                 {
-                    generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, shotDownPlaneDisplayName);
-                    return true;
+                    String shotDownPlaneDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirm(player, victoryDeclaration, resultVictory);
+                    if (!shotDownPlaneDisplayName.isEmpty())
+                    {
+                        generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, shotDownPlaneDisplayName);
+                        return true;
+                    }
                 }
             }
         }
@@ -100,11 +103,15 @@ public class PlayerDeclarationResolution
     {
         for (LogVictory resultVictory : victorySorter.getFirmAirVictories())
         {
-            String shotDownPlaneDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirmNotExact(victoryDeclaration, resultVictory);
-            if (!shotDownPlaneDisplayName.isEmpty())
+            SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+            if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
-                generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, shotDownPlaneDisplayName);
-                return true;
+                String shotDownPlaneDisplayName = claimResolverFirm.getShotDownPlaneDisplayNameAsFirmNotExact(player, victoryDeclaration, resultVictory);
+                if (!shotDownPlaneDisplayName.isEmpty())
+                {
+                    generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, shotDownPlaneDisplayName);
+                    return true;
+                }
             }
         }
         
@@ -115,11 +122,15 @@ public class PlayerDeclarationResolution
     {
         for (LogVictory resultVictory : victorySorter.getFuzzyAirVictories())
         {
-            String shotDownPlaneDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(victoryDeclaration, resultVictory);
-            if (!shotDownPlaneDisplayName.isEmpty())
+            SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+            if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
-                generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, shotDownPlaneDisplayName);
-                return true;
+                String shotDownPlaneDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzy(victoryDeclaration, resultVictory);
+                if (!shotDownPlaneDisplayName.isEmpty())
+                {
+                    generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, shotDownPlaneDisplayName);
+                    return true;
+                }
             }
         }
         
@@ -130,11 +141,15 @@ public class PlayerDeclarationResolution
     {
         for (LogVictory resultVictory : victorySorter.getFuzzyAirVictories())
         {
-            String shotDownPlaneDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzyNotExact(victoryDeclaration, resultVictory);
-            if (!shotDownPlaneDisplayName.isEmpty())
+            SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+            if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
-                generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, shotDownPlaneDisplayName);
-                return true;
+                String shotDownPlaneDisplayName = claimResolverFuzzy.getShotDownPlaneDisplayNameAsFuzzyNotExact(player, victoryDeclaration, resultVictory);
+                if (!shotDownPlaneDisplayName.isEmpty())
+                {
+                    generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, shotDownPlaneDisplayName);
+                    return true;
+                }
             }
         }
         
@@ -154,14 +169,18 @@ public class PlayerDeclarationResolution
     {
         for (LogVictory resultVictory : victorySorter.getFirmBalloonVictories())
         {
-            if (resultVictory.getVictor() instanceof LogPlane)
+            SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+            if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
-                SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
-                LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
-                if (PlayerVictoryResolver.isPlayerVictory(squadronMember, victorPlanePlane.getPilotSerialNumber()))
+                if (resultVictory.getVictor() instanceof LogPlane)
                 {
-                    generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, resultVictory.getVictim().getVehicleType());
-                    return true;
+                    SquadronMember squadronMember = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+                    LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
+                    if (PlayerVictoryResolver.isPlayerVictory(squadronMember, victorPlanePlane.getPilotSerialNumber()))
+                    {
+                        generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, resultVictory.getVictim().getVehicleType());
+                        return true;
+                    }
                 }
             }
         }
@@ -173,8 +192,12 @@ public class PlayerDeclarationResolution
     {
         for (LogVictory resultVictory : victorySorter.getFuzzyBalloonVictories())
         {
-            generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, resultVictory.getVictim().getVehicleType());
-            return true;
+            SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
+            if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
+            {
+                generatePlayerVictoryIfNotAlreadyConfirmed(playerSerialNumber, victoryDeclaration, resultVictory, resultVictory.getVictim().getVehicleType());
+                return true;
+            }
         }
         
         return false;
@@ -197,13 +220,4 @@ public class PlayerDeclarationResolution
         }
     }
 
-    public void setClaimResolverFirm(PlayerClaimResolverFirm claimResolverFirm)
-    {
-        this.claimResolverFirm = claimResolverFirm;
-    }
-
-    public void setClaimResolverFuzzy(PlayerClaimResolverFuzzy claimResolverFuzzy)
-    {
-        this.claimResolverFuzzy = claimResolverFuzzy;
-    }
 }

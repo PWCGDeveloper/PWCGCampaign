@@ -23,12 +23,14 @@ import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryD
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignPersonnelManager;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
+import pwcg.campaign.ww1.country.RoFCountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -94,35 +96,8 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(aiVictor);
 
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
+        Mockito.when(player.getCountry()).thenReturn(Country.GERMANY);
         Mockito.when(ai.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
-    }
-
-    private void createVictory(Integer victimSerialNumber, String aircraftType, Role approximateRole)
-    {        
-        LogPlane victim = new LogPlane(1);
-        victim.setPilotSerialNumber(victimSerialNumber);
-        victim.setVehicleType(aircraftType);
-        victim.setRole(approximateRole);
-
-        LogVictory resultVictory = new LogVictory(10);
-        resultVictory.setVictim(victim);
-        resultVictory.setCrossedPlayerPath(true);
-        
-        fuzzyVictories.add(resultVictory);
-    }
-    
-    private void createPlayerDeclarations(int numDeclarations) throws PWCGException
-    {
-        playerDeclarationSet = new PlayerDeclarations();
-        for (int i = 0; i < numDeclarations; ++i)
-        {
-            PlayerVictoryDeclaration declaration = new PlayerVictoryDeclaration();
-            declaration.confirmDeclaration(true, "S.E.5a");
-            playerDeclarationSet.addDeclaration(declaration);
-        }
-        
-        playerDeclarations.clear();
-        playerDeclarations.put(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, playerDeclarationSet);
     }
     
     @Test
@@ -211,5 +186,60 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
         
         assert (confirmedPlayerVictories.getConfirmedVictories().size() == 0);
     }
+    
+    @Test
+    public void testNoFriendlyVictories () throws PWCGException
+    {   
+        
+        createPlayerDeclarations(1);
+        createFriendlyVictory(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001);
 
+        PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
+        ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
+        
+        assert (confirmedPlayerVictories.getConfirmedVictories().size() == 0);
+    }
+
+    private void createVictory(Integer victimSerialNumber, String aircraftType, Role approximateRole)
+    {        
+        LogPlane victim = new LogPlane(1);
+        victim.setPilotSerialNumber(victimSerialNumber);
+        victim.setVehicleType(aircraftType);
+        victim.setRole(approximateRole);
+        victim.setCountry(new RoFCountry(Country.BRITAIN));
+
+        LogVictory resultVictory = new LogVictory(10);
+        resultVictory.setVictim(victim);
+        resultVictory.setCrossedPlayerPath(true);
+
+        fuzzyVictories.add(resultVictory);
+    }
+
+    private void createFriendlyVictory(Integer victorSerialNumber, Integer victimSerialNumber)
+    {        
+        LogPlane victim = new LogPlane(3);
+        victim.setPilotSerialNumber(victimSerialNumber);
+        victim.setVehicleType("albatrosd3");
+        victim.setCountry(new RoFCountry(Country.GERMANY));
+
+        LogVictory resultVictory = new LogVictory(10);
+        resultVictory.setVictim(victim);
+        resultVictory.setCrossedPlayerPath(true);
+        
+        fuzzyVictories.add(resultVictory);
+    }
+
+    private void createPlayerDeclarations(int numDeclarations) throws PWCGException
+    {
+        playerDeclarationSet = new PlayerDeclarations();
+        for (int i = 0; i < numDeclarations; ++i)
+        {
+            PlayerVictoryDeclaration declaration = new PlayerVictoryDeclaration();
+            declaration.confirmDeclaration(true, "S.E.5a");
+            playerDeclarationSet.addDeclaration(declaration);
+        }
+        
+        playerDeclarations.clear();
+        playerDeclarations.put(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, playerDeclarationSet);
+    }
 }

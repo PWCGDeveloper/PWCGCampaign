@@ -20,26 +20,29 @@ public class PlayerClaimResolverFirm
         
         if (!resultVictory.isConfirmed())
         {
-            if (resultVictory.getVictor() instanceof LogPlane)
+            if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
-                LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
-                if (PlayerVictoryResolver.isPlayerVictory(player, victorPlanePlane.getPilotSerialNumber()))
+                if (resultVictory.getVictor() instanceof LogPlane)
                 {
-                    if (resultVictory.getVictim() instanceof LogPlane)
+                    LogPlane victorPlanePlane = (LogPlane)resultVictory.getVictor();
+                    if (PlayerVictoryResolver.isPlayerVictory(player, victorPlanePlane.getPilotSerialNumber()))
                     {
-                        LogPlane victimPlane = (LogPlane)resultVictory.getVictim();
-                        PlaneType shotDownPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(victimPlane.getVehicleType());
-                        PlaneType claimedPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
-        
-                        if (shotDownPlane == null || claimedPlane == null)
+                        if (resultVictory.getVictim() instanceof LogPlane)
                         {
-                            Logger.log(LogLevel.ERROR, 
-                                            "resolveAsFirmVictory: No plane found for claimed type " + playerDeclaration.getAircraftType() );
-                            
-                        }
-                        else if (shotDownPlane.getType().equals(claimedPlane.getType()))
-                        {
-                            shotDownPlaneDisplayName = claimPlaneNameFinder.getShotDownPlaneDisplayName(playerDeclaration, resultVictory);
+                            LogPlane victimPlane = (LogPlane)resultVictory.getVictim();
+                            PlaneType shotDownPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(victimPlane.getVehicleType());
+                            PlaneType claimedPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+            
+                            if (shotDownPlane == null || claimedPlane == null)
+                            {
+                                Logger.log(LogLevel.ERROR, 
+                                                "resolveAsFirmVictory: No plane found for claimed type " + playerDeclaration.getAircraftType() );
+                                
+                            }
+                            else if (shotDownPlane.getType().equals(claimedPlane.getType()))
+                            {
+                                shotDownPlaneDisplayName = claimPlaneNameFinder.getShotDownPlaneDisplayName(playerDeclaration, resultVictory);
+                            }
                         }
                     }
                 }
@@ -50,21 +53,24 @@ public class PlayerClaimResolverFirm
     }
         
 
-    public String getShotDownPlaneDisplayNameAsFirmNotExact(PlayerVictoryDeclaration playerDeclaration, LogVictory resultVictory) throws PWCGException
+    public String getShotDownPlaneDisplayNameAsFirmNotExact(SquadronMember player, PlayerVictoryDeclaration playerDeclaration, LogVictory resultVictory) throws PWCGException
     {
         String shotDownPlaneDisplayName = "";
         if (!resultVictory.isConfirmed())
         {
-            Role victimApproximateRole = Role.getApproximateRole(resultVictory.getVictim().getRole());
-            
-            PlaneType declaredPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
-            if (declaredPlane != null)
+            if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
-                Role declarationApproximateRole = Role.getApproximateRole(declaredPlane.determinePrimaryRole());
+                Role victimApproximateRole = Role.getApproximateRole(resultVictory.getVictim().getRole());
                 
-                if (declarationApproximateRole == victimApproximateRole)
+                PlaneType declaredPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+                if (declaredPlane != null)
                 {
-                    shotDownPlaneDisplayName = claimPlaneNameFinder.getShotDownPlaneDisplayName(playerDeclaration, resultVictory);
+                    Role declarationApproximateRole = Role.getApproximateRole(declaredPlane.determinePrimaryRole());
+                    
+                    if (declarationApproximateRole == victimApproximateRole)
+                    {
+                        shotDownPlaneDisplayName = claimPlaneNameFinder.getShotDownPlaneDisplayName(playerDeclaration, resultVictory);
+                    }
                 }
             }
         }

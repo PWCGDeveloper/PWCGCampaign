@@ -97,42 +97,9 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         Mockito.when(evaluationData.getPlaneInMissionBySerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1)).thenReturn(aiVictor);
 
         Mockito.when(player.isPlayer()).thenReturn(true);
+        Mockito.when(player.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
         Mockito.when(ai.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
-    }
-
-    private void createVictory(Integer victorSerialNumber, Integer victimSerialNumber)
-    {        
-        LogPlane victim = new LogPlane(3);
-        victim.setPilotSerialNumber(victimSerialNumber);
-        victim.setVehicleType("albatrosd3");
-        victim.setCountry(new RoFCountry(Country.GERMANY));
-
-        LogPlane victor = new LogPlane(4);
-        victor.setVehicleType("spad7");
-        victor.setPilotSerialNumber(victorSerialNumber);
-        victor.setCountry(new RoFCountry(Country.FRANCE));
-
-        LogVictory resultVictory = new LogVictory(10);
-        resultVictory.setVictor(victor);
-        resultVictory.setVictim(victim);
-        resultVictory.setCrossedPlayerPath(true);
-        
-        firmVictories.add(resultVictory);
-    }
-    
-    private void createPlayerDeclarations(int numDeclarations) throws PWCGException
-    {
-        playerDeclarationSet = new PlayerDeclarations();
-        for (int i = 0; i < numDeclarations; ++i)
-        {
-            PlayerVictoryDeclaration declaration = new PlayerVictoryDeclaration();
-            declaration.confirmDeclaration(true, "albatrosd3");
-            playerDeclarationSet.addDeclaration(declaration);
-        }        
-        
-        playerDeclarations.clear();
-        playerDeclarations.put(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, playerDeclarationSet);
     }
     
     @Test
@@ -202,6 +169,74 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
         
         assert (confirmedPlayerVictories.getConfirmedVictories().size() == 0);
+    }
+    
+    @Test
+    public void testNoFriendlyVictories () throws PWCGException
+    {   
+        
+        createPlayerDeclarations(1);
+        createFriendlyVictory(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, SerialNumber.AI_STARTING_SERIAL_NUMBER + 1001);
+
+        PlayerDeclarationResolution declarationResolution = new PlayerDeclarationResolution(campaign, evaluationData, victorySorter, playerDeclarations);
+        ConfirmedVictories confirmedPlayerVictories = declarationResolution.determinePlayerAirResultsWithClaims();
+        
+        assert (confirmedPlayerVictories.getConfirmedVictories().size() == 0);
+    }
+
+
+    private void createVictory(Integer victorSerialNumber, Integer victimSerialNumber)
+    {        
+        LogPlane victim = new LogPlane(3);
+        victim.setPilotSerialNumber(victimSerialNumber);
+        victim.setVehicleType("albatrosd3");
+        victim.setCountry(new RoFCountry(Country.GERMANY));
+
+        LogPlane victor = new LogPlane(4);
+        victor.setVehicleType("spad7");
+        victor.setPilotSerialNumber(victorSerialNumber);
+        victor.setCountry(new RoFCountry(Country.FRANCE));
+
+        LogVictory resultVictory = new LogVictory(10);
+        resultVictory.setVictor(victor);
+        resultVictory.setVictim(victim);
+        resultVictory.setCrossedPlayerPath(true);
+        
+        firmVictories.add(resultVictory);
+    }
+
+    private void createFriendlyVictory(Integer victorSerialNumber, Integer victimSerialNumber)
+    {        
+        LogPlane victim = new LogPlane(3);
+        victim.setPilotSerialNumber(victimSerialNumber);
+        victim.setVehicleType("spad7");
+        victim.setCountry(new RoFCountry(Country.FRANCE));
+
+        LogPlane victor = new LogPlane(4);
+        victor.setVehicleType("spad7");
+        victor.setPilotSerialNumber(victorSerialNumber);
+        victor.setCountry(new RoFCountry(Country.FRANCE));
+
+        LogVictory resultVictory = new LogVictory(10);
+        resultVictory.setVictor(victor);
+        resultVictory.setVictim(victim);
+        resultVictory.setCrossedPlayerPath(true);
+        
+        firmVictories.add(resultVictory);
+    }
+
+    private void createPlayerDeclarations(int numDeclarations) throws PWCGException
+    {
+        playerDeclarationSet = new PlayerDeclarations();
+        for (int i = 0; i < numDeclarations; ++i)
+        {
+            PlayerVictoryDeclaration declaration = new PlayerVictoryDeclaration();
+            declaration.confirmDeclaration(true, "albatrosd3");
+            playerDeclarationSet.addDeclaration(declaration);
+        }        
+        
+        playerDeclarations.clear();
+        playerDeclarations.put(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, playerDeclarationSet);
     }
 
 }

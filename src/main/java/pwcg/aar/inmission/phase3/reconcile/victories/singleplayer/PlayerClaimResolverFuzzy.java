@@ -4,6 +4,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.Role;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
 public class PlayerClaimResolverFuzzy
@@ -31,20 +32,23 @@ public class PlayerClaimResolverFuzzy
         return shotDownPlaneDisplayName;
     }
 
-    public String getShotDownPlaneDisplayNameAsFuzzyNotExact(PlayerVictoryDeclaration playerDeclaration, LogVictory resultVictory) throws PWCGException
+    public String getShotDownPlaneDisplayNameAsFuzzyNotExact(SquadronMember player, PlayerVictoryDeclaration playerDeclaration, LogVictory resultVictory) throws PWCGException
     {
         String shotDownPlaneDisplayName = "";
         if (!resultVictory.isConfirmed())
         {
-            Role victimApproximateRole = Role.getApproximateRole(resultVictory.getVictim().getRole());
-            PlaneType declaredPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
-            if (declaredPlane != null)
+            if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
-                Role declarationApproximateRole = Role.getApproximateRole(declaredPlane.determinePrimaryRole());
-                    
-                if (declarationApproximateRole == victimApproximateRole)
+                Role victimApproximateRole = Role.getApproximateRole(resultVictory.getVictim().getRole());
+                PlaneType declaredPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+                if (declaredPlane != null)
                 {
-                    shotDownPlaneDisplayName = claimPlaneNameFinder.getShotDownPlaneDisplayName(playerDeclaration, resultVictory);
+                    Role declarationApproximateRole = Role.getApproximateRole(declaredPlane.determinePrimaryRole());
+                        
+                    if (declarationApproximateRole == victimApproximateRole)
+                    {
+                        shotDownPlaneDisplayName = claimPlaneNameFinder.getShotDownPlaneDisplayName(playerDeclaration, resultVictory);
+                    }
                 }
             }
         }

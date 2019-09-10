@@ -20,6 +20,11 @@ public class BoSCountry extends CountryBase implements Cloneable, ICountry
 
     public BoSCountry(Country country)
     {
+        if (country == null)
+        {
+            country = Country.NEUTRAL;
+        }
+        
         this.country = country;
     }
 
