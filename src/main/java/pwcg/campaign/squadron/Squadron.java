@@ -452,6 +452,11 @@ public class Squadron
             return false;
         }
         
+        if (campaign.getEquipmentManager().getEquipmentForSquadron(squadronId) == null)
+        {
+            return false;
+        }
+        
         if (!campaign.getEquipmentManager().getEquipmentForSquadron(squadronId).isSquadronEquipmentViable())
         {
             return false;
