@@ -9,8 +9,6 @@ import pwcg.mission.flight.patrol.PatrolPackage;
 
 public class LoneWolfPackage extends PatrolPackage
 {
-    private FlightInformation flightInformation;
-
     public LoneWolfPackage(FlightInformation flightInformation)
     {
         super(flightInformation);

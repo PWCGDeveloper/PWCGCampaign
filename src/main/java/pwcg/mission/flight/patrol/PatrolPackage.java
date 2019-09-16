@@ -9,7 +9,7 @@ import pwcg.mission.flight.IFlightPackage;
 
 public class PatrolPackage implements IFlightPackage
 {
-    private FlightInformation flightInformation;
+    protected FlightInformation flightInformation;
 
     public PatrolPackage(FlightInformation flightInformation)
     {
