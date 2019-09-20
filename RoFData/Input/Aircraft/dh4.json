@@ -9,7 +9,7 @@
   "cruisingSpeed": 150,
   "climbOutRate": 150,
   "goodness": 55,
-  "endurance": 6.0,
+  "range": 1000,
   "isFlyable": true,
   "planeSize": "PLANE_SIZE_MEDIUM",
   "roles": [

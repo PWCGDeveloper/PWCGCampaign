@@ -111,15 +111,20 @@
       "label": "Artillery Spot Time",
       "help": "Time in minutes to be on station for Artillery Spot"
     },
-    "Use10xFlak": {
-      "value": "0",
-      "label": "Use 10x Flak",
-      "help": "Flak fires at 10x rate"
-    },
     "MissionBoxSize": {
       "value": "30",
       "label": "Size in km of mission box",
       "help": "Size of the box that PWCG direct flights into.  Smaller means more flights in a tight area"
+    },
+    "MissionBoxMinDistanceFromBase": {
+      "value": "40",
+      "label": "Min dist in km mission center from base",
+      "help": "Minimum distance of mission center from base (Not used in competitive mode)"
+    },
+    "MissionBoxMaxDistancePercentRange": {
+      "value": "25",
+      "label": "Percent of aircraft range to mission center",
+      "help": "Maximum distance to mission center based on aircraft range"
     },
     "UseAirfieldMGs": {
       "value": "1",

@@ -11,6 +11,8 @@ public class ConfigSetMissionLimits
 		configSet.addConfigItem(ConfigItemKeys.UseAmbientGroundUnitsKey, new ConfigItem("0"));
         configSet.addConfigItem(ConfigItemKeys.UseAirfieldMGsKey, new ConfigItem("0"));
         configSet.addConfigItem(ConfigItemKeys.MissionBoxSizeKey, new ConfigItem("30000"));
+        configSet.addConfigItem(ConfigItemKeys.MissionBoxMinDistanceFromBaseKey, new ConfigItem("40000"));
+        configSet.addConfigItem(ConfigItemKeys.MissionBoxMaxDistancePercentRangeKey, new ConfigItem("40"));
 		
         configSet.addConfigItem(ConfigItemKeys.SquadronGeneratesMissionOddsKey, new ConfigItem("100"));
         configSet.addConfigItem(ConfigItemKeys.SquadronGeneratesMissionModifierKey, new ConfigItem("20"));
@@ -37,7 +39,6 @@ public class ConfigSetMissionLimits
 		
         configSet.addConfigItem(ConfigItemKeys.MaxAmbientBalloonsKey, new ConfigItem("1"));
         configSet.addConfigItem(ConfigItemKeys.TimeOnArtillerySpotKey, new ConfigItem("5"));
-        configSet.addConfigItem(ConfigItemKeys.Use10xFlakKey, new ConfigItem("0"));
         configSet.addConfigItem(ConfigItemKeys.MaxSmokeInMissionKey, new ConfigItem("100"));
         configSet.addConfigItem(ConfigItemKeys.MaxSmokeInAreaKey, new ConfigItem("3"));
 

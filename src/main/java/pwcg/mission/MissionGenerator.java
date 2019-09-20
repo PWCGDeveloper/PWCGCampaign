@@ -17,18 +17,18 @@ public class MissionGenerator
 
     public Mission makeMission(MissionHumanParticipants participatingPlayers) throws PWCGException 
     {
-        Mission mission = makeSingleMission(participatingPlayers, FlightTypes.ANY);
+        Mission mission = buildMission(participatingPlayers, FlightTypes.ANY);
         return mission;
     }
 
     public Mission makeLoneWolfMission(MissionHumanParticipants participatingPlayers) throws PWCGException 
     {
         FlightTypes flightType = FlightTypes.LONE_WOLF;
-        Mission mission = makeSingleMission(participatingPlayers, flightType);
+        Mission mission = buildMission(participatingPlayers, flightType);
         return mission;
     }
 
-    private Mission makeSingleMission(MissionHumanParticipants participatingPlayers, FlightTypes flightType) throws PWCGException 
+    private Mission buildMission(MissionHumanParticipants participatingPlayers, FlightTypes flightType) throws PWCGException 
     {
         campaign.setCurrentMission(null);        
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);

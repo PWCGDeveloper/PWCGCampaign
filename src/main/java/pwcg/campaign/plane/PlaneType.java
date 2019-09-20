@@ -34,7 +34,7 @@ public class PlaneType implements Cloneable
     protected int cruisingSpeed;
     protected int climbOutRate;
     protected int goodness = 50;
-    protected double endurance = 2.0;
+    protected int range = 400;
     protected boolean isFlyable = false;
     protected PlaneSize planeSize = PlaneSize.PLANE_SIZE_SMALL;
     protected ArrayList<Role> roles = new ArrayList<Role>();
@@ -68,7 +68,7 @@ public class PlaneType implements Cloneable
         planeType.cruisingSpeed = this.cruisingSpeed;
         planeType.climbOutRate = this.climbOutRate;
         planeType.goodness = this.goodness;
-        planeType.endurance = this.endurance;
+        planeType.range = this.range;
 
         planeType.isFlyable = this.isFlyable;
         planeType.planeSize = this.planeSize;
@@ -322,14 +322,14 @@ public class PlaneType implements Cloneable
         return roles;
     }
 
-    public double getEndurance()
+    public int getRange()
     {
-        return endurance;
+        return range;
     }
 
-    public void setEndurance(double endurance)
+    public void setRange(int range)
     {
-        this.endurance = endurance;
+        this.range = range;
     }
 
     public int getGoodness()
