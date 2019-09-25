@@ -6,16 +6,78 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IMissionAltitudeGenerator;
+import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.bomb.BombingWaypoints.BombingAltitudeLevel;
+import pwcg.mission.flight.FlightTypes;
 
 public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
 {
+    public int determineFlightAltitude(Campaign campaign, FlightTypes flightType) throws PWCGException 
+    {
+        if (flightType == FlightTypes.LOW_ALT_CAP  || 
+            flightType == FlightTypes.LOW_ALT_PATROL)
+        {
+            return determineLowAltitudePatrolAltitude();
+        }
+        else if (flightType == FlightTypes.LOW_ALT_BOMB)
+        {
+            return determineLowAltitudeBombingAltitude();
+        }
+        else if (flightType == FlightTypes.GROUND_ATTACK)
+        {
+            return determineGroundAttackAltitude();
+        }
+        else if (flightType == FlightTypes.BOMB)
+        {
+            return determineHighAltitudeBombingAltitude();
+        }
+        else if (flightType == FlightTypes.STRATEGIC_BOMB)
+        {
+            return determineStrategicAltitudeBombingAltitude();
+        }
+        else if (flightType == FlightTypes.DIVE_BOMB)
+        {
+            return determineDiveBombFlightAltitude();
+        }
+        else if (flightType == FlightTypes.PARATROOP_DROP || flightType == FlightTypes.CARGO_DROP)
+        {
+            return determineParaDropFlightAltitude();
+        }
+        else if (flightType == FlightTypes.SCRAMBLE)
+        {
+            return determineScrambleFlightAltitude();
+        }
+        else if (flightType == FlightTypes.TRANSPORT)
+        {
+            return determineTransportFlightAltitude();
+        }
+        else if (flightType == FlightTypes.SPY_EXTRACT)
+        {
+            return determineSpyExtractFlightAltitude();
+        }
+        else if (flightType == FlightTypes.SPY_EXTRACT)
+        {
+            return determineSpyExtractFlightAltitude();
+        }
+        else if (flightType == FlightTypes.CONTACT_PATROL)
+        {
+            return determineContactPatrolFlightAltitude();
+        }
+        else if (flightType == FlightTypes.ARTILLERY_SPOT)
+        {
+            return determineArtillerySpotFlightAltitude();
+        }
+        else
+        {
+            return determineDefaultFlightAltitude(campaign);
+        }
+    }
 
-    public int flightAltitude(Campaign campaign) throws PWCGException 
+    private int determineDefaultFlightAltitude(Campaign campaign) throws PWCGException 
     {
         int altitude = 4000;
 
@@ -63,38 +125,111 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
         return altitude;
     }
 
-    public int getBombingAltitude(BombingAltitudeLevel bombingAltitudeLevel)
+    private int determineHighAltitudeBombingAltitude()
     {
-        // Default to medium
         int altitude = 3000;
-        int randomAlt = RandomNumberGenerator.getRandom(800);
-
-        if (bombingAltitudeLevel == BombingAltitudeLevel.HIGH)
-        {
-            altitude = 3000;
-            randomAlt = RandomNumberGenerator.getRandom(2000);
-        }
-        else if (bombingAltitudeLevel == BombingAltitudeLevel.LOW)
-        {
-            altitude = 1000;
-            randomAlt = RandomNumberGenerator.getRandom(600);
-        }
-        else
-        {
-            altitude = 3000;
-            randomAlt = RandomNumberGenerator.getRandom(1000);
-        }
-
+        int randomAlt = RandomNumberGenerator.getRandom(2000);
         altitude = altitude + randomAlt;            
-
+        return altitude;
+    }
+    
+    
+    private int determineStrategicAltitudeBombingAltitude()
+    {
+        int altitude = 4000;
+        int randomAlt = RandomNumberGenerator.getRandom(3000);
+        altitude = altitude + randomAlt;            
         return altitude;
     }
 
-    public int getLowAltitudePatrolAltitude()
+
+    private int determineLowAltitudePatrolAltitude()
     {
         int altitude = 1500;
         int randomAlt = RandomNumberGenerator.getRandom(1000);
         altitude = altitude + randomAlt;            
+        return altitude;
+    }
+
+    private int determineLowAltitudeBombingAltitude()
+    {
+        int altitude = 1000;
+        int randomAlt = RandomNumberGenerator.getRandom(600);
+        altitude = altitude + randomAlt;            
+        return altitude;
+    }
+
+    private int determineGroundAttackAltitude() 
+    {
+        int altitude = 800;
+        int randomAlt = RandomNumberGenerator.getRandom(400);
+        altitude = altitude + randomAlt;            
+
+        return altitude;
+    }
+    
+    private int determineDiveBombFlightAltitude() 
+    {
+        int altitude = 4100;
+        return altitude;
+    }
+    
+    private int determineParaDropFlightAltitude() throws PWCGException 
+    {
+        int altitude = 800;
+        int randomAltitude = RandomNumberGenerator.getRandom(800);
+        int additionalAltitudeForMountains = 0;
+
+        FrontMapIdentifier map = PWCGContextManager.getInstance().getCurrentMap().getMapIdentifier();
+        if (map == FrontMapIdentifier.KUBAN_MAP)
+        {
+            additionalAltitudeForMountains = 1000;
+        }
+        
+        return altitude + randomAltitude + additionalAltitudeForMountains;
+    }
+    
+    private int determineScrambleFlightAltitude() 
+    {
+        int altitude = 2000;
+        int randomAlt = RandomNumberGenerator.getRandom(1000);
+        
+        altitude = altitude + randomAlt;
+        
+        return altitude;
+    }
+    
+    private int determineTransportFlightAltitude() throws PWCGException 
+    {
+        int altitude = 2000;
+        int randomAltitude = RandomNumberGenerator.getRandom(2000);
+        int additionalAltitudeForMountains = 0;
+
+        FrontMapIdentifier map = PWCGContextManager.getInstance().getCurrentMap().getMapIdentifier();
+        if (map == FrontMapIdentifier.KUBAN_MAP)
+        {
+            additionalAltitudeForMountains = 1000;
+        }
+        return altitude + randomAltitude + additionalAltitudeForMountains;
+    }
+
+    private int determineArtillerySpotFlightAltitude() 
+    {
+        int altitude = 200 + RandomNumberGenerator.getRandom(300);
+        return altitude;
+    }
+
+    private int determineContactPatrolFlightAltitude() 
+    {
+        int altitude = 500;
+        int randomAlt = RandomNumberGenerator.getRandom(150);
+        altitude = altitude + randomAlt;            
+        return altitude;
+    }
+
+    private int determineSpyExtractFlightAltitude() 
+    {
+        int altitude = 500 + RandomNumberGenerator.getRandom(100);        
         return altitude;
     }
 

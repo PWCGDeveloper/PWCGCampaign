@@ -45,7 +45,7 @@ public class EscortForPlayerFlight extends Flight
     public void createUnitMission() throws PWCGException  
     {
         createWaypointPackage();
-        createPlaneInitialPosition();
+        createEscortPlaneInitialPosition();
         createWaypoints();
         createActivation();
         createFormation();
@@ -119,7 +119,7 @@ public class EscortForPlayerFlight extends Flight
 
     }
 
-    protected void createPlaneInitialPosition() throws PWCGException 
+    protected void createEscortPlaneInitialPosition() throws PWCGException 
     {
         PlaneMCU flightLeader = getFlightLeader();
 

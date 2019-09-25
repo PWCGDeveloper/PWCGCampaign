@@ -111,7 +111,7 @@ public abstract class GroundUnit extends Unit
         return pwcgGroundUnitInformation.getCountry();
     }
     
-    public Coordinate getPosition() throws PWCGException
+    public Coordinate getHomePosition() throws PWCGException
     {
         return pwcgGroundUnitInformation.getPosition();
     }

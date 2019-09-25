@@ -1,60 +1,71 @@
 package pwcg.mission.flight.paradrop;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.ClimbWaypointGenerator;
+import pwcg.mission.flight.waypoint.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.GroundAttackWaypointHelper;
+import pwcg.mission.flight.waypoint.IIngressWaypoint;
+import pwcg.mission.flight.waypoint.IngressWaypointNearFront;
 import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class ParaDropWaypoints extends WaypointGeneratorBase
+public class ParaDropWaypoints
 {    
-	public ParaDropWaypoints(Coordinate startCoords, 
-					  		Coordinate targetCoords, 
-					  		Flight flight,
-					  		Mission mission) throws PWCGException 
-	{
-		super(startCoords, targetCoords, flight, mission);
-		
-		this.flightAlt = determineFlightAltitude();
-	}
-	
-	@Override
-	public List<McuWaypoint> createWaypoints() throws PWCGException 
-	{
-	    super.createWaypoints();
-		setWaypointsNonFighterPriority();
+    private Flight flight;
+    private Campaign campaign;
+    private List<McuWaypoint> waypoints = new ArrayList<McuWaypoint>();
 
-		return waypoints;
-	}
-
-	protected void createTargetWaypoints(Coordinate ingressPosition) throws PWCGException  
-	{
-		int attackAltitude = determineFlightAltitude();
-		GroundAttackWaypointHelper groundAttackWaypointHelper = new GroundAttackWaypointHelper(ingressPosition, targetCoords, attackAltitude, waypointSpeed);
-		List<McuWaypoint> groundAttackWaypoints = groundAttackWaypointHelper.createTargetWaypoints();
-		waypoints.addAll(groundAttackWaypoints);
-	}
-
-    @Override
-    protected int determineFlightAltitude() throws PWCGException 
+    public ParaDropWaypoints(Flight flight) throws PWCGException
     {
-        int altitude = 800;
-        int randomAltitude = RandomNumberGenerator.getRandom(800);
-        int additionalAltitudeForMountains = 0;
-
-        FrontMapIdentifier map = PWCGContextManager.getInstance().getCurrentMap().getMapIdentifier();
-        if (map == FrontMapIdentifier.KUBAN_MAP)
-        {
-            additionalAltitudeForMountains = 1000;
-        }
-        
-        return altitude + randomAltitude + additionalAltitudeForMountains;
+        this.flight = flight;
+        this.campaign = flight.getCampaign();
     }
+
+    public List<McuWaypoint> createWaypoints() throws PWCGException
+    {
+        if (flight.isPlayerFlight())
+        {
+            ClimbWaypointGenerator climbWaypointGenerator = new ClimbWaypointGenerator(campaign, flight);
+            List<McuWaypoint> climbWPs = climbWaypointGenerator.createClimbWaypoints(flight.getFlightInformation().getAltitude());
+            waypoints.addAll(climbWPs);
+        }
+
+        McuWaypoint ingressWaypoint = createIngressWaypoint(flight);
+        waypoints.add(ingressWaypoint);
+        
+        List<McuWaypoint> targetWaypoints = createTargetWaypoints(ingressWaypoint.getPosition());
+        waypoints.addAll(targetWaypoints);
+
+        
+        McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
+        waypoints.add(egressWaypoint);
+        
+        McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
+        waypoints.add(approachWaypoint);
+
+        WaypointGeneratorBase.setWaypointsNonFighterPriority(waypoints);
+
+        return waypoints;
+    }
+
+    private McuWaypoint createIngressWaypoint(Flight flight) throws PWCGException  
+    {
+        IIngressWaypoint ingressWaypointGenerator = new IngressWaypointNearFront(flight);
+        McuWaypoint ingressWaypoint = ingressWaypointGenerator.createIngressWaypoint();
+        return ingressWaypoint;
+    }
+
+    private List<McuWaypoint> createTargetWaypoints(Coordinate ingressPosition) throws PWCGException  
+	{
+		GroundAttackWaypointHelper groundAttackWaypointHelper = new GroundAttackWaypointHelper(flight, ingressPosition, flight.getFlightAltitude());
+		List<McuWaypoint> groundAttackWaypoints = groundAttackWaypointHelper.createTargetWaypoints();
+        return groundAttackWaypoints;
+	}
 }

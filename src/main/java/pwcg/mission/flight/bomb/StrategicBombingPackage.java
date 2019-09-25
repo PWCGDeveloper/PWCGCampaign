@@ -7,7 +7,6 @@ import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.flight.bomb.BombingWaypoints.BombingAltitudeLevel;
 import pwcg.mission.ground.GroundUnitFactory;
 import pwcg.mission.ground.factory.AAAUnitFactory;
 import pwcg.mission.ground.unittypes.GroundUnitSpawning;
@@ -36,7 +35,6 @@ public class StrategicBombingPackage implements IFlightPackage
         Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
 	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
         StrategicBombingFlight strategicBombingFlight = new StrategicBombingFlight(flightInformation, missionBeginUnit);
-        strategicBombingFlight.setBombingAltitudeLevel(BombingAltitudeLevel.HIGH);
         strategicBombingFlight.createUnitMission();
 
         return strategicBombingFlight;

@@ -11,34 +11,35 @@ import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class OffensiveWaypointsAirfield extends OffensiveWaypoints
 {
-	public OffensiveWaypointsAirfield(Coordinate startCoords, 
-					  	  Coordinate targetCoords, 
-					  	  Flight flight,
-					  	  Mission mission) throws PWCGException 
+    private List<McuWaypoint> targetWaypoints = new ArrayList<McuWaypoint>();
+    
+	public OffensiveWaypointsAirfield(Flight flight) throws PWCGException 
 	{
-		super(startCoords, targetCoords, flight, mission);
+		super(flight);
 	}
 	
-    protected void createTargetWaypoints(Coordinate startWaypoint) throws PWCGException
+    protected List<McuWaypoint> createTargetWaypoints(Coordinate ingressPosition) throws PWCGException
 	{
 	    List <IFixedPosition> allFixedPositionsInRadius = findEnemyAirieldsForOffensivePatrol();
 	        
 	    SortedFixedPositions sortedFixedPositions = new SortedFixedPositions();
 	    sortedFixedPositions.sortPositionsByDirecton(allFixedPositionsInRadius);
 	    IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-	    List <IFixedPosition> sortedPositions = sortedFixedPositions.getSortedPositionsWithMaxDistanceTTravelled(campaign, targetCoords, productSpecific.getSmallMissionRadius());
+	    List <IFixedPosition> sortedPositions = sortedFixedPositions.getSortedPositionsWithMaxDistanceTTravelled(campaign, flight.getTargetCoords(), productSpecific.getSmallMissionRadius());
 	    
 	    for (IFixedPosition transportBlock : sortedPositions)
 	    {
-	        createWP(transportBlock);
+	        McuWaypoint offensiveWaypoint = createWP(transportBlock);
+	        targetWaypoints.add(offensiveWaypoint);
 	    }
+	    
+	    return targetWaypoints;
 	}
 
     private List<IFixedPosition> findEnemyAirieldsForOffensivePatrol() throws PWCGException
@@ -51,7 +52,7 @@ public class OffensiveWaypointsAirfield extends OffensiveWaypoints
         while (!stopLooking(enemyAirfields, maxRadius))
         {
             enemyAirfields =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().
-                    getAirfieldsWithinRadiusBySide(mission.getMissionBorders().getCenter(), campaign.getDate(), maxRadius, enemySide);
+                    getAirfieldsWithinRadiusBySide(flight.getMission().getMissionBorders().getCenter(), campaign.getDate(), maxRadius, enemySide);
             maxRadius += 10000.0;
         }
 
@@ -81,11 +82,11 @@ public class OffensiveWaypointsAirfield extends OffensiveWaypoints
     }
 
 
-    protected void createWP(IFixedPosition field) throws PWCGException 
+    protected McuWaypoint createWP(IFixedPosition field) throws PWCGException 
     {
         flight.addAirfieldTargets((IAirfield)field);               
-        McuWaypoint wp = super.createWP(field.getPosition().copy());
-        waypoints.add(wp);
+        McuWaypoint offensiveWaypoint = super.createWP(field.getPosition().copy());
+        return offensiveWaypoint;
     }
 
 }

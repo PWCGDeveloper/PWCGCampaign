@@ -1,5 +1,6 @@
 package pwcg.mission.flight.waypoint;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
@@ -8,40 +9,68 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class IngressWaypointNearFront extends IngressWaypointBase
+public class IngressWaypointNearFront implements IIngressWaypoint
 {
-    public IngressWaypointNearFront(Flight flight, Coordinate lastPosition, Coordinate targetPosition, int waypointSpeed, int waypointAltitude) throws PWCGException 
+    private Campaign campaign;
+    private Flight flight;
+
+    public IngressWaypointNearFront(Flight flight) throws PWCGException 
     {
-        super(flight, lastPosition, targetPosition, waypointSpeed, waypointAltitude);
+        this.campaign = flight.getCampaign();
+        this.flight = flight;
     }
 
     public McuWaypoint createIngressWaypoint() throws PWCGException  
     {
-        Coordinate groundIngressCoords = getBestIngressPositionToFront();
+        Coordinate groundIngressCoords = getBestIngressPosition();
         
         Coordinate coord = new Coordinate();
         coord.setXPos(groundIngressCoords.getXPos());
         coord.setZPos(groundIngressCoords.getZPos());
-        coord.setYPos(waypointAltitude);
+        coord.setYPos(flight.getFlightAltitude());
 
         McuWaypoint ingressWP = WaypointFactory.createIngressWaypointType();
         ingressWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        ingressWP.setSpeed(waypointSpeed);
+        ingressWP.setSpeed(flight.getFlightCruisingSpeed());
         ingressWP.setPosition(coord);   
         ingressWP.setTargetWaypoint(false);
         
         return ingressWP;
     }
 
-    private Coordinate getBestIngressPositionToFront() throws PWCGException 
+    private Coordinate getBestIngressPosition() throws PWCGException 
+    {
+        if (flight.isVirtual())
+        {
+            return getBestIngressPositionForCommonAIFlights();
+        }
+        else
+        {
+            return getBestIngressPositionBehindFriendlyLines();
+        }
+    }
+
+    private Coordinate getBestIngressPositionForCommonAIFlights() throws PWCGException 
     {
         FrontLinesForMap frontLinesForMap =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        Coordinate closestFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(targetPosition, flight.getSquadron().determineSide());
+        Coordinate closestFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(flight.getTargetCoords(), flight.getSquadron().determineSide());
         
         Coordinate flightHomeCoordinates = flight.getSquadron().determineCurrentPosition(campaign.getDate());
         double angleFromFrontToHome = MathUtils.calcAngle(closestFrontLinesToTarget, flightHomeCoordinates);
         
         Coordinate ingressCoordinate = MathUtils.calcNextCoord(closestFrontLinesToTarget, angleFromFrontToHome, WaypointGeneratorBase.INGRESS_DISTANCE_FROM_FRONT);
+        return ingressCoordinate;
+    }
+
+    private Coordinate getBestIngressPositionBehindFriendlyLines() throws PWCGException 
+    {
+        FrontLinesForMap frontLinesForMap =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        Coordinate closestFriendlyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(flight.getTargetCoords(), flight.getSquadron().determineSide());
+        Coordinate closestEnemyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(flight.getTargetCoords(), flight.getSquadron().determineSide().getOppositeSide());
+        
+        double angleFurtherBehindFriendltLines = MathUtils.calcAngle(closestEnemyFrontLinesToTarget, closestFriendlyFrontLinesToTarget);
+        
+        Coordinate ingressCoordinate = MathUtils.calcNextCoord(closestFriendlyFrontLinesToTarget, angleFurtherBehindFriendltLines, WaypointGeneratorBase.INGRESS_DISTANCE_FROM_FRONT);
         return ingressCoordinate;
     }
 }

@@ -31,14 +31,8 @@ public class SeaAntiShippingFlight extends GroundTargetAttackFlight
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-		SeaAntiShippingWaypoints waypointGenerator = new SeaAntiShippingWaypoints(
-				startPosition, 
-				getTargetCoords(), 
-				this,
-				mission);
-
-        List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
-        
+		SeaAntiShippingWaypoints waypointGenerator = new SeaAntiShippingWaypoints(this);
+        List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();        
         return waypointList;
 	}
 

@@ -1,59 +1,98 @@
 package pwcg.mission.flight.ferry;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.ClimbWaypointGenerator;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class FerryWaypoints extends WaypointGeneratorBase
+public class FerryWaypoints
 {
     private IAirfield fromAirfield;
     private IAirfield toAirfield;
 
-	public FerryWaypoints(IAirfield fromAirfield, 
-	                      IAirfield toAirfield, 
-					      Flight flight,
-					      Mission mission) throws PWCGException 
-	{
- 		super(fromAirfield.getPosition().copy(), toAirfield.getPosition().copy(), flight, mission);
- 	     
+    private Flight flight;
+    private Campaign campaign;
+    private List<McuWaypoint> waypoints = new ArrayList<McuWaypoint>();
+
+    public FerryWaypoints(Flight flight, IAirfield fromAirfield, IAirfield toAirfield) throws PWCGException
+    {
+        this.flight = flight;
         this.toAirfield = toAirfield;
         this.fromAirfield = fromAirfield;
-	}
+        this.campaign = flight.getCampaign();
+    }
 
-    public List<McuWaypoint> createWaypoints() throws PWCGException 
+    public List<McuWaypoint> createWaypoints() throws PWCGException
     {
-        createStartWaypoint();
-        createApproachWaypoint(toAirfield);
-        dumpWaypoints();
-                
+        if (flight.isPlayerFlight())
+        {
+            ClimbWaypointGenerator climbWaypointGenerator = new ClimbWaypointGenerator(campaign, flight);
+            List<McuWaypoint> climbWPs = climbWaypointGenerator.createClimbWaypoints(flight.getFlightInformation().getAltitude());
+            waypoints.addAll(climbWPs);
+        }
+
+        List<McuWaypoint> targetWaypoints = createTargetWaypoints();
+        waypoints.addAll(targetWaypoints);
+        
+        McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
+        waypoints.add(approachWaypoint);
+
+        WaypointGeneratorBase.setWaypointsNonFighterPriority(waypoints);
+
         return waypoints;
     }
 
-    protected void createStartWaypoint() throws PWCGException  
+    private List<McuWaypoint> createTargetWaypoints() throws PWCGException
     {
-        double takeoffOrientation = fromAirfield.getTakeoffLocation().getOrientation().getyOri();
-        int InitialWaypointDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointDistanceKey);
-        startCoords = MathUtils.calcNextCoord(fromAirfield.getTakeoffLocation().getPosition().copy(), takeoffOrientation, InitialWaypointDistance);
-        int InitialWaypointAltitude = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointAltitudeKey);
-        startCoords.setYPos(InitialWaypointAltitude);
+        List<McuWaypoint> targetWaypoints = new ArrayList<>();
+        
+        McuWaypoint firstHopWP = createFirstHopWaypoint();
+        targetWaypoints.add(firstHopWP);
 
-		McuWaypoint startWP = WaypointFactory.createMoveToWaypointType();
-        startWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        startWP.setSpeed(waypointSpeed - 10);
-        startWP.setPosition(startCoords);
-        waypoints.add(startWP);
+        McuWaypoint secondHopWP = createSecondHopWaypoint();
+        targetWaypoints.add(secondHopWP);
+        
+        return targetWaypoints;
     }
-			
-	protected void createTargetWaypoints(Coordinate notUsed)  
-	{
-	}
+
+    private McuWaypoint createFirstHopWaypoint() throws PWCGException  
+    {
+        double wpOrientation = MathUtils.calcAngle(fromAirfield.getTakeoffLocation().getPosition(), toAirfield.getTakeoffLocation().getPosition());
+        int InitialWaypointDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointDistanceKey);
+        Coordinate hopCoords = MathUtils.calcNextCoord(fromAirfield.getTakeoffLocation().getPosition().copy(), wpOrientation, InitialWaypointDistance);
+        int InitialWaypointAltitude = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointAltitudeKey);
+        hopCoords.setYPos(InitialWaypointAltitude);
+
+        McuWaypoint hopWP = WaypointFactory.createMoveToWaypointType();
+        hopWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
+        hopWP.setSpeed(flight.getFlightCruisingSpeed());
+        hopWP.setPosition(hopCoords);
+        return hopWP;
+    }
+
+    private McuWaypoint createSecondHopWaypoint() throws PWCGException  
+    {
+        double wpOrientation = MathUtils.calcAngle(toAirfield.getTakeoffLocation().getPosition(), fromAirfield.getTakeoffLocation().getPosition());
+        int InitialWaypointDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointDistanceKey);
+        Coordinate hopCoords = MathUtils.calcNextCoord(toAirfield.getTakeoffLocation().getPosition().copy(), wpOrientation, InitialWaypointDistance);
+        int InitialWaypointAltitude = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointAltitudeKey);
+        hopCoords.setYPos(InitialWaypointAltitude);
+
+        McuWaypoint hopWP = WaypointFactory.createMoveToWaypointType();
+        hopWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
+        hopWP.setSpeed(flight.getFlightCruisingSpeed());
+        hopWP.setPosition(hopCoords);
+        return hopWP;
+    }
 }

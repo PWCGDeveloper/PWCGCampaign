@@ -84,7 +84,7 @@ public class AssaultInformation
         List<Coordinate> coordinates = new ArrayList<>();
         for (GroundUnit groundUnit : groundUnitCollection.getAllGroundUnits())
         {
-            coordinates.add(groundUnit.getPosition());
+            coordinates.add(groundUnit.getHomePosition());
         }
 
         battleBox = CoordinateBox.coordinateBoxFromCoordinateList(coordinates);

@@ -1,82 +1,106 @@
 package pwcg.mission.flight.artySpot;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.ClimbWaypointGenerator;
+import pwcg.mission.flight.waypoint.EgressWaypointGenerator;
+import pwcg.mission.flight.waypoint.IIngressWaypoint;
+import pwcg.mission.flight.waypoint.IngressWaypointNearFront;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class ArtillerySpotWaypoints extends WaypointGeneratorBase
+public class ArtillerySpotWaypoints
 {
-	public ArtillerySpotWaypoints(Coordinate startCoords, 
-					  		Coordinate targetCoords, 
-					  		Flight flight,
-					  		Mission mission) throws PWCGException 
-	{
-		super(startCoords, targetCoords, flight, mission);
-	}
+    private Flight flight;
+    private Campaign campaign;
+    private List<McuWaypoint> waypoints = new ArrayList<McuWaypoint>();
 
-	public List<McuWaypoint> createWaypoints() throws PWCGException 
-	{
-        super.createWaypoints();
-        setWaypointsNonFighterPriority();
-		dumpWaypoints();
+    protected boolean escortedByPlayer = false;
 
-		return waypoints;
-	}
+    public ArtillerySpotWaypoints(Flight flight) throws PWCGException
+    {
+        this.flight = flight;
+        this.campaign = flight.getCampaign();
+    }
+
+    public List<McuWaypoint> createWaypoints() throws PWCGException
+    {
+        if (flight.isPlayerFlight())
+        {
+            ClimbWaypointGenerator climbWaypointGenerator = new ClimbWaypointGenerator(campaign, flight);
+            List<McuWaypoint> climbWPs = climbWaypointGenerator.createClimbWaypoints(flight.getFlightInformation().getAltitude());
+            waypoints.addAll(climbWPs);
+        }
+
+        McuWaypoint ingressWaypoint = createIngressWaypoint(flight);
+        waypoints.add(ingressWaypoint);
+        
+        createTargetWaypoints(ingressWaypoint.getPosition());
+        
+        McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
+        waypoints.add(egressWaypoint);
+        
+        McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
+        waypoints.add(approachWaypoint);
+
+        WaypointGeneratorBase.setWaypointsNonFighterPriority(waypoints);
+
+        return waypoints;
+    }
+    
+
+    protected McuWaypoint createIngressWaypoint(Flight flight) throws PWCGException  
+    {
+        IIngressWaypoint ingressWaypointGenerator = new IngressWaypointNearFront(flight);
+        McuWaypoint ingressWaypoint = ingressWaypointGenerator.createIngressWaypoint();
+        return ingressWaypoint;
+    }
 
 	protected void createTargetWaypoints(Coordinate startPosition) throws PWCGException  
 	{
-		McuWaypoint t1WP = WaypointFactory.createArtillerySpotWaypointType();
+		McuWaypoint artillerySpotInitialWaypoint = WaypointFactory.createArtillerySpotWaypointType();
 
-		t1WP.setTriggerArea(McuWaypoint.TARGET_AREA);
-		t1WP.setSpeed(waypointSpeed);
+		artillerySpotInitialWaypoint.setTriggerArea(McuWaypoint.TARGET_AREA);
+		artillerySpotInitialWaypoint.setSpeed(flight.getFlightCruisingSpeed());
+        artillerySpotInitialWaypoint.setTargetWaypoint(true);
 
-		Coordinate coord = targetCoords.copy();
-        double wpAltitude = getWaypointAltitude(startPosition, coord, getFlightAlt());
-        coord.setYPos(wpAltitude);
-		t1WP.setPosition(coord);	
+		Coordinate initialArtillerySpotCoord = flight.getTargetCoords();
+		initialArtillerySpotCoord.setYPos(flight.getFlightAltitude());
+		artillerySpotInitialWaypoint.setPosition(initialArtillerySpotCoord);	
 
-		t1WP.setTargetWaypoint(true);
-
-		waypoints.add(t1WP);		
+		waypoints.add(artillerySpotInitialWaypoint);		
 		
 		int iterNum = 1;
 		
 		double angle = RandomNumberGenerator.getRandom(360);	
 		
-		createNextWaypoint(t1WP, iterNum, angle);
+		createNextWaypoint(artillerySpotInitialWaypoint, iterNum, angle);
 	}
-	
-	/**
-	 * @param lastWP
-	 * @param iterNum
-	 * @param angle
-	 * @throws PWCGException 
-	 * @
-	 */
+
 	private void createNextWaypoint(McuWaypoint lastWP, int iterNum, double angle) throws PWCGException  
 	{
-		McuWaypoint t2WP = WaypointFactory.createArtillerySpotWaypointType();
+		McuWaypoint artillerySpotAdditionalWaypoint = WaypointFactory.createArtillerySpotWaypointType();
 		++ iterNum;
 
-		t2WP.setTriggerArea(McuWaypoint.TARGET_AREA);
-		t2WP.setSpeed(waypointSpeed);
+		artillerySpotAdditionalWaypoint.setTriggerArea(McuWaypoint.TARGET_AREA);
+		artillerySpotAdditionalWaypoint.setSpeed(flight.getFlightCruisingSpeed());
 
 		double distance = 2000.0;
-		Coordinate coord = MathUtils.calcNextCoord(lastWP.getPosition(), angle, distance);
-        double wpAltitude = getWaypointAltitude(lastWP.getPosition(), coord, getFlightAlt());
-        coord.setYPos(wpAltitude);
-		t2WP.setPosition(coord);	
-		t2WP.setTargetWaypoint(true);
+		Coordinate nextArtillerySpotCoordinate = MathUtils.calcNextCoord(lastWP.getPosition(), angle, distance);
+        nextArtillerySpotCoordinate.setYPos(flight.getFlightAltitude());
+		artillerySpotAdditionalWaypoint.setPosition(nextArtillerySpotCoordinate);	
+		artillerySpotAdditionalWaypoint.setTargetWaypoint(true);
 
-		waypoints.add(t2WP);
+		waypoints.add(artillerySpotAdditionalWaypoint);
 		
 		if (iterNum == 20)
 		{
@@ -85,19 +109,6 @@ public class ArtillerySpotWaypoints extends WaypointGeneratorBase
 
 		angle = MathUtils.adjustAngle (angle, 45);		
 		
-		createNextWaypoint(t2WP, iterNum, angle);
+		createNextWaypoint(artillerySpotAdditionalWaypoint, iterNum, angle);
 	}	
-	
-	
-	/* (non-Javadoc)
-	 * @see rof.campaign.mission.WaypointGeneratorBase#flightAltitude()
-	 */
-	@Override
-	protected int determineFlightAltitude() 
-	{
-
-		int altitude = 200 + RandomNumberGenerator.getRandom(200);
-		
-		return altitude;
-	}
 }

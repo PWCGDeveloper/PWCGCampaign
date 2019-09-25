@@ -10,7 +10,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightPositionHelperAirStart;
+import pwcg.mission.flight.AirStartFormationSetter;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -36,8 +36,8 @@ public class VirtualEscortFlight extends Flight
         escortFlightCoords.setZPos(escortedFlightCoords.getZPos()+ 100);
         escortFlightCoords.setYPos(escortedFlightCoords.getYPos() + 300);
 
-        FlightPositionHelperAirStart flightPositionHelperAirStart = new FlightPositionHelperAirStart(getCampaign(), this);
-        flightPositionHelperAirStart.createPlanePositionAirStart(escortFlightCoords.copy(), escortedFlightOrient.copy());
+        AirStartFormationSetter flightPositionHelperAirStart = new AirStartFormationSetter(getCampaign(), this);
+        flightPositionHelperAirStart.resetAirStartFormation(escortFlightCoords.copy(), escortedFlightOrient.copy());
 	}
 
     @Override

@@ -11,28 +11,19 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class ReconWaypointsAirfield extends ReconWaypoints
 {
-	public ReconWaypointsAirfield(Coordinate startCoords, 
-					  	  Coordinate targetCoords, 
-					  	  Flight flight,
-					  	  Mission mission) throws PWCGException 
+    private List<McuWaypoint> targetWaypoints = new ArrayList<McuWaypoint>();
+
+	public ReconWaypointsAirfield(Flight flight) throws PWCGException 
 	{
-		super(startCoords, targetCoords, flight, mission);
+		super(flight);
 	}
-	
 
-    
-
-    /**
-     * @throws PWCGException 
-     * @
-     */
-    protected void createReconWaypoints() throws PWCGException  
+    protected List<McuWaypoint> createTargetWaypoints(Coordinate ingressPosition) throws PWCGException
     {
         Side enemySide = flight.getCountry().getSide().getOppositeSide();
 
@@ -42,13 +33,12 @@ public class ReconWaypointsAirfield extends ReconWaypoints
         
         while (enemyAirfields.size() <= 2)
         {
-            enemyAirfields =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getAirfieldsWithinRadiusBySide(targetCoords, campaign.getDate(), maxRadius, enemySide);
+            enemyAirfields =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getAirfieldsWithinRadiusBySide(
+                    flight.getTargetCoords(), campaign.getDate(), maxRadius, enemySide);
                         
             maxRadius += 10000.0;
         }
-        
-        
-        // Not more WPs than we have targets
+
         int numWaypoints = 2 + RandomNumberGenerator.getRandom(4);
         if (numWaypoints > enemyAirfields.size())
         {
@@ -56,7 +46,7 @@ public class ReconWaypointsAirfield extends ReconWaypoints
         }
         
         List <IAirfield> remainingAirfields = enemyAirfields;
-        Coordinate lastCoord = targetCoords.copy();
+        Coordinate lastCoord = flight.getTargetCoords().copy();
         for (int i = 0; i < numWaypoints; ++i)
         {
             int index = getNextAirfield(remainingAirfields, lastCoord);
@@ -66,19 +56,14 @@ public class ReconWaypointsAirfield extends ReconWaypoints
             flight.addAirfieldTargets(field);
 
             McuWaypoint wp = super.createWP(field.getPosition().copy());
-            waypoints.add(wp);
+            targetWaypoints.add(wp);
 
             lastCoord = field.getPosition().copy();
             remainingAirfields.remove(index);
         }
+        return targetWaypoints;
     }
-    
-    /**
-     * @param remainingAirfields
-     * @param lastCoord
-     * @return
-     * @
-     */
+
     private int getNextAirfield(List <IAirfield> remainingAirfields, Coordinate lastCoord) 
     {
         int index = 0;

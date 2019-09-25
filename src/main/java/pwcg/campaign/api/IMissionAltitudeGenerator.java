@@ -2,11 +2,9 @@ package pwcg.campaign.api;
 
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.bomb.BombingWaypoints.BombingAltitudeLevel;
+import pwcg.mission.flight.FlightTypes;
 
 public interface IMissionAltitudeGenerator
 {
-    int flightAltitude(Campaign campaign) throws PWCGException;
-    int getBombingAltitude(BombingAltitudeLevel bombingAltitudeLevel);
-    int getLowAltitudePatrolAltitude();
+    public int determineFlightAltitude(Campaign campaign, FlightTypes flightType) throws PWCGException;
 }

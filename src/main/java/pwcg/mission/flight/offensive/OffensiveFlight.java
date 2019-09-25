@@ -36,15 +36,15 @@ public class OffensiveFlight extends Flight
 
 	    if (offensiveFlightType == OffensiveFlightTypes.OFFENSIVE_FLIGHT_TRANSPORT)
 	    {
-	        waypoints = new OffensiveWaypointsTransport(startPosition, getTargetCoords(), this, mission);
+	        waypoints = new OffensiveWaypointsTransport(this);
 	    }
 	    else if (offensiveFlightType == OffensiveFlightTypes.OFFENSIVE_FLIGHT_AIRFIELD)
 	    {
-	        waypoints = new OffensiveWaypointsAirfield(startPosition, getTargetCoords(), this, mission);
+	        waypoints = new OffensiveWaypointsAirfield(this);
 	    }
 	    else
 	    {
-	        waypoints = new OffensiveWaypointsFront(startPosition, getTargetCoords(), this, mission);
+	        waypoints = new OffensiveWaypointsFront(this);
 	    }
 
 	    return waypoints.createWaypoints();

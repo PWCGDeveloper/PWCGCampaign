@@ -3,14 +3,12 @@ package pwcg.mission.flight.bomb;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.bomb.BombingWaypoints.BombingAltitudeLevel;
 
 public class StrategicBombingFlight extends BombingFlight
 {
     public StrategicBombingFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
     {
         super (flightInformation, missionBeginUnit);
-        bombingAltitudeLevel = BombingAltitudeLevel.HIGH;
     }
 
     public String getMissionObjective()

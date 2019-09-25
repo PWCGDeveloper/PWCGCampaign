@@ -30,11 +30,7 @@ public class GroundAttackFlight extends GroundTargetAttackFlight
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-		GroundAttackWaypoints waypointGenerator = new GroundAttackWaypoints(
-					startPosition, 
-		       		getTargetCoords(), 
-		       		this,
-		       		mission);
+		GroundAttackWaypoints waypointGenerator = new GroundAttackWaypoints(this);
 
 		List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
 	    

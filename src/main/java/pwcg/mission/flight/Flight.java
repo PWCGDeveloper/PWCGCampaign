@@ -34,7 +34,6 @@ import pwcg.mission.flight.escort.VirtualEscortFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.ActualWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
-import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.ground.GroundUnitCollection;
@@ -96,11 +95,12 @@ public abstract class Flight extends Unit
     {
         createWaypointPackage();
         createWaypoints();
-        setPlayerInitialPosition();
+        setInitialPosition();        
+        createTakeoff();
+        createLanding();
         createActivation();
         createFormation();
         setFlightPayload();
-        moveAirstartCloseToInitialWaypoint();
     }
     
     protected void createWaypointPackage() throws PWCGException
@@ -119,12 +119,6 @@ public abstract class Flight extends Unit
         }
     }
 
-    protected void setFlightPayload() throws PWCGException
-    {
-        FlightPayloadBuilder flightPayloadHelper = new FlightPayloadBuilder(this);
-        flightPayloadHelper.setFlightPayload();
-    }
-
     protected void createWaypoints() throws PWCGException
     {
         Coordinate startPosition = flightInformation.getDepartureAirfield().getTakeoffLocation().getPosition().copy();
@@ -132,63 +126,15 @@ public abstract class Flight extends Unit
         waypointPackage.setWaypoints(waypointList);
     }
 
-    protected void setPlayerInitialPosition() throws PWCGException
+    protected void setInitialPosition() throws PWCGException
     {
-        if (flightInformation.isPlayerFlight())
-        {
-            if (!flightInformation.isAirStart())
-            {
-                createTakeoff();
-            }
-            else
-            {
-                advancePlayerAirStart();
-            }
-            
-            FlightPositionHelperPlayerStart flightPositionHelperPlayerStart = new FlightPositionHelperPlayerStart(flightInformation.getCampaign(), this);
-            flightPositionHelperPlayerStart.createPlayerPlanePosition();
-
-            createLanding();
-        }
+        FlightInitialPositionSetter flightInitialPositionSetter = new FlightInitialPositionSetter(this);
+        flightInitialPositionSetter.setFlightInitialPosition();
     }
-
-    protected void moveAirstartCloseToInitialWaypoint() throws PWCGException
+    
+    protected void createTakeoff() throws PWCGException
     {
-        if (flightInformation.isAirStart())
-        {
-            FlightPositionHelperPlayerStart flightPositionHelperPlayerStart = new FlightPositionHelperPlayerStart(flightInformation.getCampaign(), this);
-            flightPositionHelperPlayerStart.createPlayerPlanePosition();
-        }
-    }
-
-    public boolean isBombingFlight()
-    {
-        if (flightInformation.getFlightType() == FlightTypes.BOMB ||
-            flightInformation.getFlightType() == FlightTypes.LOW_ALT_BOMB ||
-            flightInformation.getFlightType() == FlightTypes.GROUND_ATTACK ||
-            flightInformation.getFlightType() == FlightTypes.DIVE_BOMB ||
-            flightInformation.getFlightType() == FlightTypes.ANTI_SHIPPING ||
-            flightInformation.getFlightType() == FlightTypes.STRATEGIC_BOMB)
-        {
-            return true;
-        }
-        
-        return false;
-    }
-
-    public ICountry getCountry() throws PWCGException
-    {
-        return flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate());
-    }
-
-    public Coordinate getPosition() throws PWCGException
-    {
-        return flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-    }
-
-    public String getName() throws PWCGException
-    {
-        return flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate());
+        takeoff = TakeoffBuilder.createTakeoff(this);
     }
 
     protected void createLanding() throws PWCGException, PWCGException
@@ -196,157 +142,7 @@ public abstract class Flight extends Unit
         LandingBuilder landingBuilder = new LandingBuilder(flightInformation.getCampaign());
         landing = landingBuilder.createLanding(flightInformation.getDepartureAirfield());
     }
-
-    public void createTargetAssociationsForFlight() throws PWCGException
-    {
-        createFlightSpecificTargetAssociations();
-        createLandingAssociation();
-    }
-
-    public void createSimpleTargetAssociations() throws PWCGException
-    {
-        if (flightInformation.isVirtual())
-        {
-            waypointPackage.duplicateWaypointsForFlight(this);
-            for (PlaneMCU plane : getPlanes())
-            {
-                List<McuWaypoint>waypointsToLink = waypointPackage.getWaypointsForPlane(plane);
-                createWaypointTargetAssociationsSimple(plane, waypointsToLink);
-            }
-        }
-        else
-        {
-            List<McuWaypoint>waypointsToLink = waypointPackage.getWaypointsForLeadPlane();
-            createWaypointTargetAssociationsSimple(getLeadPlane(), waypointsToLink);
-        }
-    }
-
-    private void createWaypointTargetAssociationsSimple(PlaneMCU plane, List<McuWaypoint>waypointsToLink)
-    {
-        linkWPToPlane(plane, waypointsToLink);
-        
-        if (waypointsToLink.size() > 0)
-        {
-            McuWaypoint prevWP = null;
-
-            // TL each waypoint to the next one
-            for (McuWaypoint waypoint: waypointsToLink)
-            {
-                if (prevWP != null)
-                {
-                    prevWP.setTarget(waypoint.getIndex());
-                }
-                
-                prevWP = waypoint;
-            }                        
-        }
-    }
-
-    private void createLandingAssociation()
-    {
-        if (landing != null)
-        {
-            McuWaypoint approachWP = waypointPackage.getWaypointsForLeadPlane().get(waypointPackage.getWaypointsForLeadPlane().size() - 1);
-            approachWP.setTarget(getLanding().getIndex());
-        }
-    }
-
-    protected void advancePlayerAirStart()
-    {
-        List<McuWaypoint> keptWaypoints = new ArrayList<McuWaypoint>();
-        List<McuWaypoint> waypoints = waypointPackage.getWaypointsForLeadPlane();
-        boolean keepIt = false;
-        for (McuWaypoint waypoint : waypoints)
-        {
-            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_INGRESS) ||
-                waypoint.getWpAction().equals(WaypointAction.WP_ACTION_RENDEZVOUS) ||
-                waypoint.isTargetWaypoint())
-            {
-                keepIt = true;
-            }
-
-            if (keepIt)
-            {
-                keptWaypoints.add(waypoint);
-            }
-        }
-
-        waypointPackage.setWaypoints(keptWaypoints);
-    }
-
-    public void resetFlightForPlayerEscort(Coordinate rendezvousCoords, Coordinate targetCoordinates) throws PWCGException
-    {        
-        List<McuWaypoint> originalFlightWaypoints = waypointPackage.getWaypointsForLeadPlane();
-        // List<McuWaypoint> modifiedFlightWaypoints = new ArrayList<McuWaypoint>();
-        
-        // How far should we go from the rendezvous to the first WP
-        double distanceBetweenAirStartAndFirstWP = 5000;
-        double distanceBetweenAirStartAndTarget = MathUtils.calcDist(rendezvousCoords, targetCoordinates);
-        if (distanceBetweenAirStartAndTarget < distanceBetweenAirStartAndFirstWP)
-        {
-            distanceBetweenAirStartAndFirstWP = distanceBetweenAirStartAndTarget / 2;
-        }
-        
-        // Angle from rendezvous to ingress WP
-        double angleToFirstWP = MathUtils.calcAngle(rendezvousCoords, targetCoordinates);
-                        
-        // reset the ingress and egress WPs
-        for (McuWaypoint waypoint : originalFlightWaypoints)
-        {
-            double wpAltitiude = waypoint.getPosition().getYPos();
-            
-            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_INGRESS) || waypoint.getWpAction().equals(WaypointAction.WP_ACTION_EGRESS))
-            {
-                Coordinate newIngressPosition = MathUtils.calcNextCoord(rendezvousCoords, angleToFirstWP, distanceBetweenAirStartAndFirstWP);
-                newIngressPosition.setYPos(wpAltitiude);
-                waypoint.setPosition(newIngressPosition);
-            }
-        }
-        
-        rendezvousCoords.setYPos(this.planes.get(0).getPosition().getYPos());
-
-        FlightPositionHelperAirStart flightPositionHelperAirStart = new FlightPositionHelperAirStart(flightInformation.getCampaign(), this);
-        flightPositionHelperAirStart.createPlanePositionAirStart(rendezvousCoords, new Orientation());
-    }
-
-    public void finalizeFlight() throws PWCGException 
-    {
-        FlightFinalizer finalizer = new FlightFinalizer(this);
-        finalizer.finalizeFlight();
-    }
     
-    protected void enableNonVirtualFlight()
-    {
-        if (!flightInformation.isVirtual())
-        {
-            for (PlaneMCU plane : planes)
-            {
-                plane.getEntity().setEnabled(1);
-            }
-        }
-    }
-
-    public void createFormation() throws PWCGException
-    {
-
-        formationEntity = new McuFormation();
-        formationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition());
-
-        formationTimer = new McuTimer();
-        formationTimer.setName(flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()) + ": Formation Timer");
-        formationTimer.setDesc("Formation timer entity for " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
-        formationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
-        formationTimer.setTarget(formationEntity.getIndex());
-        formationTimer.setTimer(2);
-    }
-
-    public void createTakeoff() throws PWCGException
-    {
-        takeoff = new McuTakeoff();
-        takeoff.setPosition(flightInformation.getDepartureAirfield().getTakeoffLocation().getPosition().copy());
-        takeoff.setOrientation(flightInformation.getDepartureAirfield().getTakeoffLocation().getOrientation().copy());
-    }
-
     protected void createActivation() throws PWCGException, PWCGException 
     {
         if (flightInformation.isPlayerFlight())
@@ -390,6 +186,128 @@ public abstract class Flight extends Unit
             activationTimer.setDesc("Activation Timer for " + getName());
             activationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
             activationTimer.setTarget(activationEntity.getIndex());
+        }
+    }
+
+
+    protected void setFlightPayload() throws PWCGException
+    {
+        FlightPayloadBuilder flightPayloadHelper = new FlightPayloadBuilder(this);
+        flightPayloadHelper.setFlightPayload();
+    }
+
+    public boolean isBombingFlight()
+    {
+        if (flightInformation.getFlightType() == FlightTypes.BOMB ||
+            flightInformation.getFlightType() == FlightTypes.LOW_ALT_BOMB ||
+            flightInformation.getFlightType() == FlightTypes.GROUND_ATTACK ||
+            flightInformation.getFlightType() == FlightTypes.DIVE_BOMB ||
+            flightInformation.getFlightType() == FlightTypes.ANTI_SHIPPING ||
+            flightInformation.getFlightType() == FlightTypes.STRATEGIC_BOMB)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    public ICountry getCountry() throws PWCGException
+    {
+        return flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate());
+    }
+
+    public Coordinate getHomePosition() throws PWCGException
+    {
+        return flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
+    }
+
+    public String getName() throws PWCGException
+    {
+        return flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate());
+    }
+
+    public void createTargetAssociationsForFlight() throws PWCGException
+    {
+        createFlightSpecificTargetAssociations();
+        createLandingAssociation();
+    }
+
+    public void createSimpleTargetAssociations() throws PWCGException
+    {
+        if (flightInformation.isVirtual())
+        {
+            waypointPackage.duplicateWaypointsForFlight(this);
+            for (PlaneMCU plane : getPlanes())
+            {
+                List<McuWaypoint>waypointsToLink = waypointPackage.getWaypointsForPlane(plane);
+                createWaypointTargetAssociationsSimple(plane, waypointsToLink);
+            }
+        }
+        else
+        {
+            List<McuWaypoint>waypointsToLink = waypointPackage.getWaypointsForLeadPlane();
+            createWaypointTargetAssociationsSimple(getLeadPlane(), waypointsToLink);
+        }
+    }
+
+    protected void createFormation() throws PWCGException
+    {
+
+        formationEntity = new McuFormation();
+        formationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition());
+
+        formationTimer = new McuTimer();
+        formationTimer.setName(flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()) + ": Formation Timer");
+        formationTimer.setDesc("Formation timer entity for " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
+        formationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
+        formationTimer.setTarget(formationEntity.getIndex());
+        formationTimer.setTimer(2);
+    }
+
+    private void createWaypointTargetAssociationsSimple(PlaneMCU plane, List<McuWaypoint>waypointsToLink)
+    {
+        linkWPToPlane(plane, waypointsToLink);
+        
+        if (waypointsToLink.size() > 0)
+        {
+            McuWaypoint prevWP = null;
+
+            // TL each waypoint to the next one
+            for (McuWaypoint waypoint: waypointsToLink)
+            {
+                if (prevWP != null)
+                {
+                    prevWP.setTarget(waypoint.getIndex());
+                }
+                
+                prevWP = waypoint;
+            }                        
+        }
+    }
+
+    private void createLandingAssociation()
+    {
+        if (landing != null)
+        {
+            McuWaypoint approachWP = waypointPackage.getWaypointsForLeadPlane().get(waypointPackage.getWaypointsForLeadPlane().size() - 1);
+            approachWP.setTarget(getLanding().getIndex());
+        }
+    }
+
+    public void finalizeFlight() throws PWCGException 
+    {
+        FlightFinalizer finalizer = new FlightFinalizer(this);
+        finalizer.finalizeFlight();
+    }
+    
+    protected void enableNonVirtualFlight()
+    {
+        if (!flightInformation.isVirtual())
+        {
+            for (PlaneMCU plane : planes)
+            {
+                plane.getEntity().setEnabled(1);
+            }
         }
     }
 
@@ -914,7 +832,7 @@ public abstract class Flight extends Unit
     private String getObjectiveName(Unit linkedUnit) throws PWCGException
     {
         GroundUnit groundUnit = (GroundUnit)linkedUnit;             
-        String targetName =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(groundUnit.getPosition().copy()).getName();
+        String targetName =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(groundUnit.getHomePosition().copy()).getName();
         return " near " + targetName;
     }
     
@@ -952,6 +870,25 @@ public abstract class Flight extends Unit
         return wayPoints.get(0).getPosition().copy();
     }
 
+    public int getFlightCruisingSpeed()
+    {
+        int cruisingSpeed = planes.get(0).getCruisingSpeed();
+        for (PlaneMCU plane : planes)
+        {
+            if (plane.getCruisingSpeed() < cruisingSpeed)
+            {
+                cruisingSpeed = plane.getCruisingSpeed();
+            }
+        }
+        
+        return cruisingSpeed;
+    }
+
+    public int getFlightAltitude()
+    {
+        return flightInformation.getAltitude();
+    }
+    
     public int getMaximumFlightAltitude()
     {
         int altitude = 100;
@@ -1173,7 +1110,7 @@ public abstract class Flight extends Unit
 
     public Coordinate getTargetCoords() throws PWCGException
     {
-        return flightInformation.getTargetCoords();
+        return flightInformation.getTargetCoords().copy();
     }
 
     public boolean isPlayerFlight()

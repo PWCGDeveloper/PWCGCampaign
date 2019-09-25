@@ -32,14 +32,8 @@ public class DiveBombingFlight extends GroundTargetAttackFlight
 	{
 	    List<McuWaypoint> waypointList = null;
 	    
-        DiveBombingWaypoints waypointGenerator = new DiveBombingWaypoints(
-                startPosition, 
-                getTargetCoords(), 
-                this,
-                mission);
-
+        DiveBombingWaypoints waypointGenerator = new DiveBombingWaypoints(this);
         waypointList = waypointGenerator.createWaypoints();
-
 	    return waypointList;
 	}
 

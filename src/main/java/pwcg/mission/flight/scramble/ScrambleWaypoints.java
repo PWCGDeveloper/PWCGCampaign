@@ -48,8 +48,8 @@ public class ScrambleWaypoints
 		int InitialWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointDistanceKey);
 		startCoords = MathUtils.calcNextCoord(flight.getAirfield().getTakeoffLocation().getPosition().copy(), takeoffOrientation, InitialWaypointDistance);
 
-		int InitialWaypointAltitude = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointAltitudeKey);
-		startCoords.setYPos(InitialWaypointAltitude);
+		int initialWaypointAltitude = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointAltitudeKey);
+		startCoords.setYPos(initialWaypointAltitude);
 
 		McuWaypoint startWP = WaypointFactory.createPatrolWaypointType();
 		startWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);

@@ -7,7 +7,6 @@ import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.flight.bomb.BombingWaypoints.BombingAltitudeLevel;
 import pwcg.mission.ground.GroundUnitCollection;
 
 public class BombingPackage implements IFlightPackage
@@ -40,14 +39,10 @@ public class BombingPackage implements IFlightPackage
     private BombingFlight makeBombingFlight(Coordinate targetCoordinates)
                     throws PWCGException
     {
-        // Now the actual bombing mission
 	    Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
 	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
         BombingFlight bombingFlight = new BombingFlight (flightInformation, missionBeginUnit);
 
-	    // Set the altitude based on the aircraft type
-	    BombingAltitudeLevel bombingAltitude = BombingAltitudeLevel.MED;
-	    bombingFlight.setBombingAltitudeLevel(bombingAltitude);	        
 	    bombingFlight.createUnitMission();
 	    
 	    return bombingFlight;

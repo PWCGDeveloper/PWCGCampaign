@@ -33,15 +33,15 @@ public class ReconFlight extends Flight
 	    
 	    if (reconFlightType == ReconFlightTypes.RECON_FLIGHT_TRANSPORT)
 	    {
-	        waypoints = new ReconWaypointsTransport(startPosition, getTargetCoords(), this, mission);
+	        waypoints = new ReconWaypointsTransport(this);
 	    }
 	    else if (reconFlightType == ReconFlightTypes.RECON_FLIGHT_AIRFIELD)
         {
-	        waypoints = new ReconWaypointsAirfield(startPosition, getTargetCoords(), this, mission);
+	        waypoints = new ReconWaypointsAirfield(this);
         }
 	    else
 	    {
-            waypoints = new ReconWaypointsFront(startPosition, getTargetCoords(), this, mission);
+            waypoints = new ReconWaypointsFront(this);
 	    }
 		
 		return waypoints.createWaypoints();

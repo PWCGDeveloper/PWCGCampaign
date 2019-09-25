@@ -1,110 +1,108 @@
 package pwcg.mission.flight.seapatrolscout;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.plane.Role;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
-import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class SeaPlaneOpposingWaypoints extends WaypointGeneratorBase
+public class SeaPlaneOpposingWaypoints
 {
-	public SeaPlaneOpposingWaypoints(Coordinate startCoords, 
-					  		Coordinate targetCoords, 
-					  		Flight flight,
-					  		Mission mission) throws PWCGException 
-	{
-		super(startCoords, targetCoords, flight, mission);
-	}
-	
-    
-    
-    /**
-     * @return
-     * @throws PWCGException 
-     * @
-     */
-    public List<McuWaypoint> createWaypoints() throws PWCGException 
+    private Flight flight;
+    private List<McuWaypoint> waypoints = new ArrayList<McuWaypoint>();
+
+    public SeaPlaneOpposingWaypoints(Flight flight) throws PWCGException
     {
-        super.createWaypoints();
-        if (flight.getPlanes().get(0).isRole(Role.ROLE_SEA_PLANE_LARGE))
-        {
-            super.setWaypointsNonFighterPriority();
-        }
+        this.flight = flight;
+    }
+
+    public List<McuWaypoint> createWaypoints() throws PWCGException
+    {
+        McuWaypoint ingressWaypoint = createIngressWaypoint();
+        waypoints.add(ingressWaypoint);
+        
+        List<McuWaypoint> targetWaypoints = createTargetWaypoints();
+        waypoints.addAll(targetWaypoints);
+
+        McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
+        waypoints.add(egressWaypoint);
+        
+        McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
+        waypoints.add(approachWaypoint);
 
         return waypoints;
     }
 
-	@Override
-	protected void createTargetWaypoints(Coordinate targetCoords) throws PWCGException  
+    private McuWaypoint createIngressWaypoint() throws PWCGException  
+    {
+        Double angleToTarget = MathUtils.calcAngle(flight.getHomePosition(), flight.getTargetCoords());
+        Orientation orientation = new Orientation();
+        orientation.setyOri(angleToTarget);
+
+        double angleFromTarget = MathUtils.adjustAngle(angleToTarget, 180);
+        Coordinate scrambleOpposeIngressPosition =  MathUtils.calcNextCoord(flight.getTargetCoords(), angleFromTarget, 20000.0);
+        scrambleOpposeIngressPosition.setYPos(flight.getFlightAltitude());
+
+        McuWaypoint scrambleOpposeIngressWP = WaypointFactory.createPatrolWaypointType();
+        scrambleOpposeIngressWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
+        scrambleOpposeIngressWP.setSpeed(flight.getFlightCruisingSpeed());
+        scrambleOpposeIngressWP.setPosition(scrambleOpposeIngressPosition);    
+        scrambleOpposeIngressWP.setTargetWaypoint(false);
+        scrambleOpposeIngressWP.setOrientation(orientation);
+        return scrambleOpposeIngressWP;
+    }
+
+	protected List<McuWaypoint> createTargetWaypoints() throws PWCGException  
 	{		
-		createTargetApproachWaypoint();
+        List<McuWaypoint> targetWaypoints = new ArrayList<>();
+
+        McuWaypoint targetApproachWP = createTargetApproachWaypoint();
+        targetWaypoints.add(targetApproachWP);
+        
+        McuWaypoint targetWP = createTargetWaypoint();
+        targetWaypoints.add(targetWP);
 		
-		createTargetWaypoint();
-	}
-	
-	@Override
-	protected void createEgressWaypoint(Coordinate coord) throws PWCGException  
-	{
-		// Move back towards base for egress
-		String airfieldName = flight.getSquadron().determineCurrentAirfieldName(campaign.getDate());
-		IAirfield field =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
-		Coordinate baseCoords = field.getPosition().copy();
-		double angle = MathUtils.calcAngle(baseCoords, targetCoords);
-		Coordinate egressCoords = MathUtils.calcNextCoord(baseCoords, angle, 10000.0);
-		super.createEgressWaypoint(egressCoords);		
+        return targetWaypoints;
 	}
 
 	protected McuWaypoint createTargetApproachWaypoint() throws PWCGException  
 	{
 		double angle = 80.0;
 		double distance = 4000.0;
-		Coordinate coord = MathUtils.calcNextCoord(targetCoords, angle, distance);
-		coord.setYPos(getFlightAlt());
+		Coordinate coord = MathUtils.calcNextCoord(flight.getTargetCoords(), angle, distance);
+		coord.setYPos(flight.getFlightAltitude());
 
 		McuWaypoint targetApproachWP = WaypointFactory.createPatrolWaypointType();
 
 		targetApproachWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-		targetApproachWP.setDesc(flight.getSquadron().determineDisplayName(campaign.getDate()), WaypointType.PATROL_WAYPOINT.getName());
-		targetApproachWP.setSpeed(waypointSpeed);
+		targetApproachWP.setDesc(flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()), WaypointType.PATROL_WAYPOINT.getName());
+		targetApproachWP.setSpeed(flight.getFlightCruisingSpeed());
 		targetApproachWP.setTargetWaypoint(false);
 		targetApproachWP.setPosition(coord);
-				
-		waypoints.add(targetApproachWP);	
-		
+						
 		return targetApproachWP;
 	}
 	
-	private void createTargetWaypoint() throws PWCGException  
+	private McuWaypoint createTargetWaypoint() throws PWCGException  
 	{
- 		Coordinate coord = targetCoords.copy();
-		coord.setYPos(getFlightAlt());
+ 		Coordinate coord = flight.getTargetCoords().copy();
+		coord.setYPos(flight.getFlightAltitude());
 
 		McuWaypoint targetWP = WaypointFactory.createPatrolWaypointType();
 		targetWP.setTriggerArea(McuWaypoint.TARGET_AREA);
-		targetWP.setDesc(flight.getSquadron().determineDisplayName(campaign.getDate()),WaypointType.PATROL_WAYPOINT.getName());
-		targetWP.setSpeed(waypointSpeed);
+		targetWP.setDesc(flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()),WaypointType.PATROL_WAYPOINT.getName());
+		targetWP.setSpeed(flight.getFlightCruisingSpeed());
 		targetWP.setPosition(coord);	
 		targetWP.setTargetWaypoint(true);
-
-		waypoints.add(targetWP);
+		
+        return targetWP;
 	}	
-
-    @Override
-    protected int determineFlightAltitude() 
-    {
-        int baseFlightAlt = 800;
-        int randomAlt = RandomNumberGenerator.getRandom(500);
-        
-        return baseFlightAlt += randomAlt;
-    }
 }

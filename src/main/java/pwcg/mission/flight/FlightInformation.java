@@ -27,7 +27,8 @@ public class FlightInformation
     private boolean isPlayerFlight = false;
     private boolean isEscortedByPlayerFlight = false;
     private boolean isEscortForPlayerFlight = false;
-    
+    private int altitude;
+
     public FlightInformation(Mission mission)
     {
         this.mission = mission;
@@ -193,4 +194,16 @@ public class FlightInformation
     {
         this.targetSearchStartLocation = targetSearchStartLocation;
     }
+
+    public int getAltitude()
+    {
+        return altitude;
+    }
+
+    public void setAltitude(int altitude)
+    {
+        this.altitude = altitude;
+    }
+    
+    
 }

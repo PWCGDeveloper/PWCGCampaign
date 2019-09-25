@@ -1,5 +1,9 @@
 package pwcg.mission.flight.waypoint;
 
+import pwcg.campaign.Campaign;
+import pwcg.campaign.context.FrontLinePoint;
+import pwcg.campaign.context.FrontLinesForMap;
+import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -7,31 +11,38 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class IngressWaypointScrambleOpposition extends IngressWaypointBase
+public class IngressWaypointScrambleOpposition implements IIngressWaypoint
 {
-    public IngressWaypointScrambleOpposition(Flight flight, Coordinate lastPosition, Coordinate targetPosition, int waypointSpeed, int waypointAltitude) throws PWCGException 
+    private Campaign campaign;
+    private Flight flight;
+        
+    public IngressWaypointScrambleOpposition(Flight flight) throws PWCGException 
     {
-        super(flight, lastPosition, targetPosition, waypointSpeed, waypointAltitude);
+        this.campaign = flight.getCampaign();
+        this.flight = flight;
     }
 
     public McuWaypoint createIngressWaypoint() throws PWCGException  
     {
+        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinePoint nearbyFrontPoint = frontLinesForMap.findCloseFrontPositionForSide(flight.getHomePosition(), 20000, flight.getSquadron().getCountry().getSide());
+        Coordinate nearbyFrontPosition = nearbyFrontPoint.getPosition();
+                
         int attackIngressDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.GroundAttackIngressDistanceKey);
-        double ingressAngle = MathUtils.calcAngle(lastPosition, flight.getTargetCoords());
-        Coordinate groundIngressCoords = MathUtils.calcNextCoord(flight.getTargetCoords(), ingressAngle, attackIngressDistance);
+        double ingressAngle = MathUtils.calcAngle(nearbyFrontPosition, flight.getTargetCoords());
+        Coordinate ingressCoords = MathUtils.calcNextCoord(flight.getTargetCoords(), ingressAngle, attackIngressDistance);
         
         Coordinate coord = new Coordinate();
-        coord.setXPos(groundIngressCoords.getXPos());
-        coord.setZPos(groundIngressCoords.getZPos());
-        coord.setYPos(waypointAltitude);
+        coord.setXPos(ingressCoords.getXPos());
+        coord.setZPos(ingressCoords.getZPos());
+        coord.setYPos(flight.getFlightAltitude());
 
         McuWaypoint ingressWP = WaypointFactory.createIngressWaypointType();
         ingressWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-        ingressWP.setSpeed(waypointSpeed);
+        ingressWP.setSpeed(flight.getFlightCruisingSpeed());
         ingressWP.setPosition(coord);   
         ingressWP.setTargetWaypoint(true);
         
         return ingressWP;
     }
-
 }

@@ -59,11 +59,8 @@ public class PlayerEscortFlight extends Flight
      @Override
     public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException
     {
-        Coordinate rendevousPoint = flightInformation.getTargetCoords();
-        PlayerEscortWaypoints waypointGenerator = new PlayerEscortWaypoints(startPosition.copy(), rendevousPoint, this, mission);
-
+        PlayerEscortWaypoints waypointGenerator = new PlayerEscortWaypoints(this);
         List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
-
         return waypointList;
     }
 

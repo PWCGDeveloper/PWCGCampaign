@@ -22,21 +22,18 @@ public class PatrolFlight extends Flight
     {
         createWaypointPackage();
         createWaypoints();
-        setPlayerInitialPosition();
+        setInitialPosition();        
+        createTakeoff();
+        createLanding();
         createActivation();
         createFormation();
         setFlightPayload();
-        moveAirstartCloseToInitialWaypoint();
     }
 
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-		PatrolFrontWaypoints waypointGenerator = new PatrolFrontWaypoints(
-				startPosition, 
-				getTargetCoords(), 
-				this,
-				mission);
+		PatrolFrontWaypoints waypointGenerator = new PatrolFrontWaypoints(this);
 
         List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
         

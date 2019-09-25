@@ -30,11 +30,7 @@ public class FerryFlight extends Flight
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-		FerryWaypoints waypointGenerator = new FerryWaypoints(
-		                fromAirfield, 
-		                toAirfield, 
-		                this,
-		                mission);
+		FerryWaypoints waypointGenerator = new FerryWaypoints(this, fromAirfield, toAirfield);
 
         List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
         

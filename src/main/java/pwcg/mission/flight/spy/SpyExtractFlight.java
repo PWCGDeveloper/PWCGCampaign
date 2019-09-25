@@ -26,11 +26,7 @@ public class SpyExtractFlight extends Flight
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-		SpyExtractWaypoints waypointGenerator = new SpyExtractWaypoints(
-					startPosition, 
-		       		getTargetCoords(), 
-		       		this,
-		       		mission);
+		SpyExtractWaypoints waypointGenerator = new SpyExtractWaypoints(this);
 
 		List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
 		

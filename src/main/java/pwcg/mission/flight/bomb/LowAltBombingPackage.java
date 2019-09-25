@@ -7,7 +7,6 @@ import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.flight.bomb.BombingWaypoints.BombingAltitudeLevel;
 import pwcg.mission.ground.GroundUnitCollection;
 
 public class LowAltBombingPackage implements IFlightPackage
@@ -42,8 +41,6 @@ public class LowAltBombingPackage implements IFlightPackage
         Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
 	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
         LowAltBombingFlight bombingFlight = new LowAltBombingFlight (flightInformation, missionBeginUnit);
-        BombingAltitudeLevel bombingAltitude = BombingAltitudeLevel.LOW;
-        bombingFlight.setBombingAltitudeLevel(bombingAltitude);         
         bombingFlight.createUnitMission();
         
         return bombingFlight;

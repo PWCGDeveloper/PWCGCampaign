@@ -8,7 +8,6 @@ import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.plane.PlaneMCU;
 
 public class FlightPositionHelperPlayerStart
@@ -69,19 +68,6 @@ public class FlightPositionHelperPlayerStart
 
     private void createPlanePositionCloseToFirstWP() throws PWCGException
     {
-        Coordinate firstDestinationCoordinate = flight.findFirstWaypointPosition();
-
-        // Calculate plane position about 5 KM from the first destination
-        double angleBetweenBaseAndFirstDest = MathUtils.calcAngle(flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation().getPosition().copy(), firstDestinationCoordinate);
-        double angleToPlacePlanes = MathUtils.adjustAngle(angleBetweenBaseAndFirstDest, 180);
-        
-        Coordinate startCoordinate = MathUtils.calcNextCoord(firstDestinationCoordinate, angleToPlacePlanes, 5000);
-        startCoordinate.setYPos(firstDestinationCoordinate.getYPos());
-
-        // orientation
-        Orientation startOrientation = new Orientation(angleBetweenBaseAndFirstDest);
-
-        FlightPositionHelperAirStart flightPositionHelperAirStart = new FlightPositionHelperAirStart(campaign, flight);
-        flightPositionHelperAirStart.createPlanePositionAirStart(startCoordinate, startOrientation);
+        FlightPositionHelperAirStart.createPlanePositionCloseToFirstWP(flight);
     }
 }

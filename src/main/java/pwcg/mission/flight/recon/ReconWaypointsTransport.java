@@ -18,39 +18,34 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class ReconWaypointsTransport extends ReconWaypoints
 {
-	public ReconWaypointsTransport(Coordinate startCoords, 
-					  	  Coordinate targetCoords, 
-					  	  Flight flight,
-					  	  Mission mission) throws PWCGException 
-	{
-		super(startCoords, targetCoords, flight, mission);
-	}
-	
+    private List<McuWaypoint> targetWaypoints = new ArrayList<McuWaypoint>();
 
-	/**
-	 * @throws PWCGException 
-	 * @
-	 */
-	protected void createReconWaypoints() throws PWCGException  
-	{
+    public ReconWaypointsTransport(Flight flight) throws PWCGException 
+    {
+        super(flight);
+    }
+
+    protected List<McuWaypoint> createTargetWaypoints(Coordinate ingressPosition) throws PWCGException
+    {
         Side enemySide = flight.getCountry().getSide().getOppositeSide();
         ICountry enemycountry = CountryFactory.makeMapReferenceCountry(enemySide);
 
-	    // Find transportation targets
         List <FixedPosition> allFixedPositionsInRadius = new ArrayList<FixedPosition>();
         double maxRadius = 40000.0;
         
         while (allFixedPositionsInRadius.size() <= 2)
         {
     	    GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
-    	    List<Bridge> bridges = groupData.getBridgeFinder().findBridgesForSideWithinRadius(enemycountry.getSide(), campaign.getDate(), targetCoords, maxRadius);
-    	    List<Block> trainStations = groupData.getRailroadStationFinder().getTrainPositionWithinRadiusBySide(enemycountry.getSide(), campaign.getDate(), targetCoords, maxRadius);
+    	    List<Bridge> bridges = groupData.getBridgeFinder().findBridgesForSideWithinRadius(
+    	            enemycountry.getSide(), campaign.getDate(), flight.getTargetCoords(), maxRadius);
+    	    
+    	    List<Block> trainStations = groupData.getRailroadStationFinder().getTrainPositionWithinRadiusBySide(
+    	            enemycountry.getSide(), campaign.getDate(), flight.getTargetCoords(), maxRadius);
     	    
             allFixedPositionsInRadius.addAll(bridges);
             allFixedPositionsInRadius.addAll(trainStations);
@@ -69,7 +64,7 @@ public class ReconWaypointsTransport extends ReconWaypoints
         Map<String, FixedPosition> locationsIncluded = new HashMap<String, FixedPosition>();
 
         List <FixedPosition> remainingFixedPositions = allFixedPositionsInRadius;
-        Coordinate lastCoord = targetCoords.copy();
+        Coordinate lastCoord = flight.getTargetCoords().copy();
         for (int i = 0; i < numWaypoints; ++i)
         {
             int index = getNextFixedPosition(remainingFixedPositions, lastCoord, locationsIncluded);
@@ -87,17 +82,14 @@ public class ReconWaypointsTransport extends ReconWaypoints
             }
             
             McuWaypoint wp = super.createWP(fixedPosition.getPosition().copy());
-            waypoints.add(wp);
+            targetWaypoints.add(wp);
 
             lastCoord = fixedPosition.getPosition().copy();
             remainingFixedPositions.remove(index);
         }
+        return targetWaypoints;
 	}
-	
-	/**
-	 * @param coord
-	 * @return
-	 */
+
 	private String formLocationKey(Coordinate coord)
 	{
         int x = new Double(coord.getXPos()).intValue();
@@ -106,13 +98,7 @@ public class ReconWaypointsTransport extends ReconWaypoints
         
         return key;
 	}
-	
-	/**
-	 * @param remainingFixedPositions
-	 * @param lastCoord
-	 * @return
-	 * @
-	 */
+
 	private int getNextFixedPosition(List <FixedPosition> remainingFixedPositions, Coordinate lastCoord, Map<String, FixedPosition> locationsIncluded) 
 	{
 	    int index = 0;

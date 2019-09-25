@@ -102,7 +102,7 @@ public class MissionBalloons
 		boolean alreadyTaken = false;
 		for (Coordinate balloonPosition : balloonPositions)
 		{
-		    if (MathUtils.calcDist(balloonGroup.getPosition(), balloonPosition) < 2000.0)
+		    if (MathUtils.calcDist(balloonGroup.getHomePosition(), balloonPosition) < 2000.0)
 		    {
 		        alreadyTaken = true;
 		    }

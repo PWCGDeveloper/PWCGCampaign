@@ -40,11 +40,9 @@ public class TransportFlight extends Flight
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-        TransportWaypoints waypointGenerator = new TransportWaypoints(
+        TransportWaypoints waypointGenerator = new TransportWaypoints(this, 
                 getSquadron().determineCurrentAirfieldCurrentMap(getCampaign().getDate()), 
-                arrivalAirfield, 
-                this,
-                mission);
+                arrivalAirfield);
 
         List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
 

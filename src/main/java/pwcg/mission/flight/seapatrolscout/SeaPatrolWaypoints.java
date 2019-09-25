@@ -3,68 +3,87 @@ package pwcg.mission.flight.seapatrolscout;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.ClimbWaypointGenerator;
+import pwcg.mission.flight.waypoint.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class SeaPatrolWaypoints extends WaypointGeneratorBase
+public class SeaPatrolWaypoints
 {
-	public SeaPatrolWaypoints(Coordinate startCoords, 
-					    	  	   Coordinate targetCoords, 
-					    	  	   Flight flight,
-					    	  	   Mission mission) throws PWCGException 
-	{
- 		super(startCoords, targetCoords, flight, mission);
-	}
-			
-   
-    
-    /**
-     * @return
-     * @throws PWCGException 
-     * @
-     */
-    public List<McuWaypoint> createWaypoints() throws PWCGException 
+    private Flight flight;
+    private Campaign campaign;
+    private List<McuWaypoint> waypoints = new ArrayList<McuWaypoint>();
+
+    public SeaPatrolWaypoints(Flight flight) throws PWCGException
     {
-        super.createWaypoints();
-        if (flight.getPlanes().get(0).isRole(Role.ROLE_SEA_PLANE_LARGE))
+        this.flight = flight;
+        this.campaign = flight.getCampaign();
+    }
+
+    public List<McuWaypoint> createWaypoints() throws PWCGException
+    {
+        if (flight.isPlayerFlight())
         {
-            super.setWaypointsNonFighterPriority();
+            ClimbWaypointGenerator climbWaypointGenerator = new ClimbWaypointGenerator(campaign, flight);
+            List<McuWaypoint> climbWPs = climbWaypointGenerator.createClimbWaypoints(flight.getFlightInformation().getAltitude());
+            waypoints.addAll(climbWPs);
         }
+
+        McuWaypoint ingressWaypoint = createIngressWaypoint();
+        waypoints.add(ingressWaypoint);
+        
+        List<McuWaypoint> targetWaypoints = createTargetWaypoints(ingressWaypoint.getPosition());
+        waypoints.addAll(targetWaypoints);
+
+        McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
+        waypoints.add(egressWaypoint);
+        
+        McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
+        waypoints.add(approachWaypoint);
+
+        WaypointGeneratorBase.setWaypointsNonFighterPriority(waypoints);
 
         return waypoints;
     }
 
-	/* (non-Javadoc)
-	 * @see rof.campaign.mission.WaypointGeneratorBase#createTargetWaypoints(rof.campaign.mcu.Coordinate)
-	 */
-	protected void createTargetWaypoints(Coordinate startPosition) throws PWCGException  
-	{
-		createPatrolWaypoints();
-	}
-	
-	/**
-	 * @throws PWCGException 
-	 * @
-	 */
-	protected void createPatrolWaypoints() throws PWCGException  
-	{
-		// Total waypoints in the patrol pattern
+    private McuWaypoint createIngressWaypoint() throws PWCGException  
+    {
+        double angleToPatrolArea = MathUtils.calcAngle(flight.getHomePosition(), flight.getTargetCoords());
+        double distanceToIngress = MathUtils.calcDist(flight.getHomePosition(), flight.getTargetCoords());
+        distanceToIngress = distanceToIngress / 2;
+        
+        Coordinate midPointCoords = MathUtils.calcNextCoord(flight.getHomePosition(), angleToPatrolArea, distanceToIngress);
+        midPointCoords.setYPos(flight.getFlightAltitude());
+
+        McuWaypoint midPointWP = WaypointFactory.createMoveToWaypointType();
+        midPointWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
+        midPointWP.setSpeed(flight.getFlightCruisingSpeed());
+        midPointWP.setPosition(midPointCoords);
+        midPointWP.setName("Mid Waypoint");
+        return midPointWP;
+    }
+
+    protected List<McuWaypoint> createTargetWaypoints(Coordinate startPosition) throws PWCGException  
+    {
+        List<McuWaypoint> targetWaypoints = new ArrayList<>();
+
+        // Total waypoints in the patrol pattern
 		int numWaypoints = 3 + RandomNumberGenerator.getRandom(2);
 		
 		// This is the waypoint where we will meet the enemy
 		int targetWaypointIndex = RandomNumberGenerator.getRandom(numWaypoints);
 		
 		// This is where we will meet the enemy
-		McuWaypoint targetWP = createWP(targetCoords, WaypointType.RECON_WAYPOINT.getName());
+		McuWaypoint targetWP = createWP(flight.getTargetCoords(), WaypointType.RECON_WAYPOINT.getName());
 		
 		// pattern orientation is the basic direction we are going
 		int patternOrientation = RandomNumberGenerator.getRandom(360);
@@ -125,53 +144,33 @@ public class SeaPatrolWaypoints extends WaypointGeneratorBase
 			}
 		}
 
-		// Now form the complete list
 		for (int i = before.size() - 1; i >= 0; --i)
 		{
-			waypoints.add(before.get(i));
+		    targetWaypoints.add(before.get(i));
 		}
 		
-		waypoints.add(targetWP);
+		targetWaypoints.add(targetWP);
 		
 		for (McuWaypoint afterWp : after)
 		{
-			waypoints.add(afterWp);
+		    targetWaypoints.add(afterWp);
 		}
 		
-
+        return after;
 	}
-	
-	/**
-	 * @param coord
-	 * @return
-	 * @throws PWCGException 
-	 * @
-	 */
+    
 	private McuWaypoint createWP(Coordinate coord, String wpName) throws PWCGException 
 	{
 		coord.setXPos(coord.getXPos());
 		coord.setZPos(coord.getZPos());
-		coord.setYPos(getFlightAlt());
+		coord.setYPos(flight.getFlightAltitude());
 
 		McuWaypoint patrolWaypoint = WaypointFactory.createPatrolWaypointType();
 		patrolWaypoint.setTriggerArea(McuWaypoint.COMBAT_AREA);
 		patrolWaypoint.setDesc(flight.getSquadron().determineDisplayName(campaign.getDate()), wpName);
-		patrolWaypoint.setSpeed(waypointSpeed);
+		patrolWaypoint.setSpeed(flight.getFlightCruisingSpeed());
 		patrolWaypoint.setPosition(coord);
 		
 		return patrolWaypoint;
 	}
-	
-	/**
-	 * Lower altitudes for sea plane flights
-	 */
-	@Override
-	protected int determineFlightAltitude() 
-	{
-		int baseFlightAlt = 1200;
-		int randomAlt = RandomNumberGenerator.getRandom(500);
-		
-		return baseFlightAlt += randomAlt;
-	}
-	
 }

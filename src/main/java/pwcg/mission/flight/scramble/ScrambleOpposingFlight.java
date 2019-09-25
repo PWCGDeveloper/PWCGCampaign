@@ -32,11 +32,7 @@ public class ScrambleOpposingFlight extends Flight
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-		ScrambleOpposingWaypoints waypointGenerator = new ScrambleOpposingWaypoints(
-					startPosition, 
-					flightInformation.getTargetCoords(), 
-		       		this,
-		       		mission);
+		ScrambleOpposingWaypoints waypointGenerator = new ScrambleOpposingWaypoints(this);
 
         List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
         

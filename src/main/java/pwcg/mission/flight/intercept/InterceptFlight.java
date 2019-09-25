@@ -20,14 +20,8 @@ public class InterceptFlight extends Flight
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-		InterceptWaypoints waypointGenerator = new InterceptWaypoints(
-				startPosition, 
-				getTargetCoords(), 
-				this,
-				mission);
-
-        List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
-        
+		InterceptWaypoints waypointGenerator = new InterceptWaypoints(this);
+        List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();        
         return waypointList;
 	}
 

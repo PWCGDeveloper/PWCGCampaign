@@ -3,52 +3,69 @@ package pwcg.mission.flight.seapatrolantishipping;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.plane.Role;
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.ClimbWaypointGenerator;
+import pwcg.mission.flight.waypoint.EgressWaypointGenerator;
+import pwcg.mission.flight.waypoint.IIngressWaypoint;
+import pwcg.mission.flight.waypoint.IngressWaypointNearFront;
 import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class SeaAntiShippingWaypoints extends WaypointGeneratorBase
+public class SeaAntiShippingWaypoints
 {
-	private int xOffset = 0;
-	private int zOffset = 0;
-		
-	public SeaAntiShippingWaypoints(Coordinate startCoords, 
-					    	  	   Coordinate targetCoords, 
-					    	  	   Flight flight,
-					    	  	   Mission mission) throws PWCGException 
-	{
- 		super(startCoords, targetCoords, flight, mission);
-		
-		xOffset = (-100) - (RandomNumberGenerator.getRandom(1000));
-		zOffset = (-100) + RandomNumberGenerator.getRandom(1000);			
-	}
+    private Flight flight;
+    private Campaign campaign;
+    private List<McuWaypoint> waypoints = new ArrayList<McuWaypoint>();
 
-    public List<McuWaypoint> createWaypoints() throws PWCGException 
+    public SeaAntiShippingWaypoints(Flight flight) throws PWCGException
     {
-        super.createWaypoints();
-        if (flight.getPlanes().get(0).isRole(Role.ROLE_SEA_PLANE_LARGE))
+        this.flight = flight;
+        this.campaign = flight.getCampaign();
+    }
+
+    public List<McuWaypoint> createWaypoints() throws PWCGException
+    {
+        if (flight.isPlayerFlight())
         {
-            super.setWaypointsNonFighterPriority();
+            ClimbWaypointGenerator climbWaypointGenerator = new ClimbWaypointGenerator(campaign, flight);
+            List<McuWaypoint> climbWPs = climbWaypointGenerator.createClimbWaypoints(flight.getFlightInformation().getAltitude());
+            waypoints.addAll(climbWPs);
         }
+
+        McuWaypoint ingressWaypoint = createIngressWaypoint();
+        waypoints.add(ingressWaypoint);
+        
+        List<McuWaypoint> targetWaypoints = createTargetWaypoints();
+        waypoints.addAll(targetWaypoints);
+
+        
+        McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
+        waypoints.add(egressWaypoint);
+        
+        McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
+        waypoints.add(approachWaypoint);
 
         return waypoints;
     }
 
-	protected void createTargetWaypoints(Coordinate startPosition) throws PWCGException  
-	{
-		createPatrolWaypoints();
-	}
+    private McuWaypoint createIngressWaypoint() throws PWCGException  
+    {
+        IIngressWaypoint ingressWaypointGenerator = new IngressWaypointNearFront(flight);
+        McuWaypoint ingressWaypoint = ingressWaypointGenerator.createIngressWaypoint();
+        return ingressWaypoint;
+    }
 
-	protected void createPatrolWaypoints() throws PWCGException  
+    private List<McuWaypoint> createTargetWaypoints() throws PWCGException  
 	{
+        List<McuWaypoint> targetWaypoints = new ArrayList<>();
+
 		// Total waypoints in the patrol pattern
 		int numWaypoints = 3 + RandomNumberGenerator.getRandom(2);
 		
@@ -56,7 +73,7 @@ public class SeaAntiShippingWaypoints extends WaypointGeneratorBase
 		int targetWaypointIndex = RandomNumberGenerator.getRandom(numWaypoints);
 		
 		// This is where we will meet the enemy
-		McuWaypoint targetWP = createWP(targetCoords, WaypointType.RECON_WAYPOINT.getName());
+		McuWaypoint targetWP = createWP(flight.getTargetCoords(), WaypointType.RECON_WAYPOINT.getName());
 		
 		// pattern orientation is the basic direction we are going
 		int patternOrientation = RandomNumberGenerator.getRandom(360);
@@ -120,42 +137,32 @@ public class SeaAntiShippingWaypoints extends WaypointGeneratorBase
 		// Now form the complete list
 		for (int i = before.size() - 1; i >= 0; --i)
 		{
-			waypoints.add(before.get(i));
+			targetWaypoints.add(before.get(i));
 		}
 		
-		waypoints.add(targetWP);
+		targetWaypoints.add(targetWP);
 		
 		for (McuWaypoint afterWp : after)
 		{
-			waypoints.add(afterWp);
+			targetWaypoints.add(afterWp);
 		}
 		
-
+        return after;
 	}
 
 	private McuWaypoint createWP(Coordinate coord, String wpName) throws PWCGException 
 	{
-		coord.setXPos(coord.getXPos() + xOffset);
-		coord.setZPos(coord.getZPos() + zOffset);
-		coord.setYPos(getFlightAlt());
+		coord.setXPos(coord.getXPos());
+		coord.setZPos(coord.getZPos());
+		coord.setYPos(flight.getFlightAltitude());
 
 		McuWaypoint wp = WaypointFactory.createPatrolWaypointType();
 		wp.setTriggerArea(McuWaypoint.COMBAT_AREA);
 		wp.setDesc(flight.getSquadron().determineDisplayName(campaign.getDate()), wpName);
-		wp.setSpeed(waypointSpeed);
+		wp.setSpeed(flight.getFlightCruisingSpeed());
 
 		wp.setPosition(coord);
 		
 		return wp;
-	}
-
-	@Override
-	protected int determineFlightAltitude() 
-	{
-		int baseFlightAlt = 300;
-		int randomAlt = RandomNumberGenerator.getRandom(300);
-		
-		return baseFlightAlt += randomAlt;
-	}
-	
+	}	
 }

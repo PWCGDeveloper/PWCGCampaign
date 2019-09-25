@@ -20,10 +20,7 @@ public class BalloonBustFlight extends Flight
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-		BalloonBustWaypoints waypointGenerator = new BalloonBustWaypoints(startPosition, 
-			       getTargetCoords(), 
-			       this,
-			       mission);
+		BalloonBustWaypoints waypointGenerator = new BalloonBustWaypoints(this);
 
         List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
         

@@ -32,11 +32,7 @@ public class ParaDropFlight extends GroundTargetAttackFlight
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-        ParaDropWaypoints waypointGenerator = new ParaDropWaypoints(
-                startPosition, 
-                getTargetCoords(), 
-                this,
-                mission);
+        ParaDropWaypoints waypointGenerator = new ParaDropWaypoints(this);
 
         List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
 

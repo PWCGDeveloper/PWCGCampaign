@@ -60,10 +60,7 @@ public class PlayerArtillerySpotFlight extends ArtillerySpotFlight
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-		PlayerArtySpotWaypoints am = new PlayerArtySpotWaypoints(startPosition, 
-													 getTargetCoords(),
-													 this,
-												 	 getMission());
+		PlayerArtySpotWaypoints am = new PlayerArtySpotWaypoints(this);
 		return am.createWaypoints();
 	}
 

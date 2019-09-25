@@ -15,7 +15,7 @@ public abstract class Unit  implements IPWCGObject
 
     abstract public void createUnitMission() throws PWCGException ;
     abstract public ICountry getCountry() throws PWCGException ;
-    abstract public Coordinate getPosition() throws PWCGException ;
+    abstract public Coordinate getHomePosition() throws PWCGException ;
     abstract public String getName() throws PWCGException ;
     abstract public MissionBeginUnit getMissionBeginUnit();
 

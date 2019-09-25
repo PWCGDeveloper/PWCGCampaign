@@ -37,7 +37,6 @@ public class PlayerEscortedFlightBuilder
 		
         GroundUnitCollection targetUnit = createTargetForPlayerEscortedFlight();
         bombingFlightEscortedByPlayer.linkGroundUnitsToFlight(targetUnit);
-        bombingFlightEscortedByPlayer.resetFlightForPlayerEscort(escortFlightInformation.getTargetCoords().copy(), escortedFlightInformation.getTargetCoords());
         
         return bombingFlightEscortedByPlayer;
     }
@@ -73,5 +72,4 @@ public class PlayerEscortedFlightBuilder
         targetBuilder.buildTarget();
         return targetBuilder.getGroundUnits();
     }
-
 }

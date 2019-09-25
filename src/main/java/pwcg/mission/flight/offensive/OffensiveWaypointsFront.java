@@ -1,5 +1,6 @@
 package pwcg.mission.flight.offensive;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.api.IProductSpecificConfiguration;
@@ -8,7 +9,6 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.waypoint.PathAlongFront;
 import pwcg.mission.flight.waypoint.PathAlongFrontData;
@@ -17,13 +17,14 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class OffensiveWaypointsFront extends OffensiveWaypoints
 {
-    public OffensiveWaypointsFront(Coordinate startCoords, Coordinate targetCoords, Flight flight, Mission mission) throws PWCGException
+    private List<McuWaypoint> targetWaypoints = new ArrayList<McuWaypoint>();
+    
+    public OffensiveWaypointsFront(Flight flight) throws PWCGException 
     {
-        super(startCoords, targetCoords, flight, mission);
+        super(flight);
     }
-
-    @Override
-    protected void createTargetWaypoints(Coordinate ingressPosition) throws PWCGException
+    
+    protected List<McuWaypoint> createTargetWaypoints(Coordinate ingressPosition) throws PWCGException
     {
         PathAlongFrontData pathAlongFrontData = buildPathAlongFrontData(ingressPosition);
         PathAlongFront pathAlongFront = new PathAlongFront();
@@ -34,8 +35,9 @@ public class OffensiveWaypointsFront extends OffensiveWaypoints
             McuWaypoint waypoint = createWP(patrolCoordinate.copy());
             waypoint.setTargetWaypoint(true);
             waypoint.setName(WaypointType.PATROL_WAYPOINT.getName());
-            waypoints.add(waypoint);
+            targetWaypoints.add(waypoint);
         }
+        return targetWaypoints;
     }
 
     protected PathAlongFrontData buildPathAlongFrontData(Coordinate startPosition) throws PWCGException
@@ -50,7 +52,7 @@ public class OffensiveWaypointsFront extends OffensiveWaypoints
         depthOfPenetration *= -1;
 
         PathAlongFrontData pathAlongFrontData = new PathAlongFrontData();
-        pathAlongFrontData.setMission(mission);
+        pathAlongFrontData.setMission(flight.getMission());
         pathAlongFrontData.setDate(campaign.getDate());
         pathAlongFrontData.setOffsetTowardsEnemy(depthOfPenetration);
         pathAlongFrontData.setPathDistance(patrolDistanceBase / 2);

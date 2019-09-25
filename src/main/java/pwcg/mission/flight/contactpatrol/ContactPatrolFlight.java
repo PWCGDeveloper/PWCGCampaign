@@ -20,10 +20,7 @@ public class ContactPatrolFlight extends Flight
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-		ContactPatrolWaypoints waypoints = new ContactPatrolWaypoints(startPosition, 
-		        getTargetCoords(),
-		        this,
-		        mission);
+		ContactPatrolWaypoints waypoints = new ContactPatrolWaypoints(this);
 		return waypoints.createWaypoints();
 	}
 

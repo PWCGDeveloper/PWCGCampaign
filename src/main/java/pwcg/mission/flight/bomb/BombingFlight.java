@@ -9,14 +9,11 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.GroundTargetAttackFlight;
-import pwcg.mission.flight.bomb.BombingWaypoints.BombingAltitudeLevel;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class BombingFlight extends GroundTargetAttackFlight
 {
     static private int BOMB_ATTACK_TIME = 180;
-
-	protected BombingAltitudeLevel bombingAltitudeLevel = BombingAltitudeLevel.MED;
 
 	public BombingFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
     {
@@ -32,15 +29,8 @@ public class BombingFlight extends GroundTargetAttackFlight
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-        BombingWaypoints waypointGenerator = new BombingWaypoints(
-                startPosition, 
-                getTargetCoords(), 
-                this,
-                mission,
-                bombingAltitudeLevel);
-
+        BombingWaypoints waypointGenerator = new BombingWaypoints(this);
         List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
-
 	    return waypointList;
 	}
 
@@ -48,15 +38,5 @@ public class BombingFlight extends GroundTargetAttackFlight
 	public void write(BufferedWriter writer) throws PWCGException 
 	{
 		super.write(writer);
-	}
-
-	public BombingAltitudeLevel getBombingAltitude() 
-	{
-		return bombingAltitudeLevel;
-	}
-
-	public void setBombingAltitudeLevel(BombingAltitudeLevel bombingAltitudeLevel) 
-	{
-		this.bombingAltitudeLevel = bombingAltitudeLevel;
 	}
 }

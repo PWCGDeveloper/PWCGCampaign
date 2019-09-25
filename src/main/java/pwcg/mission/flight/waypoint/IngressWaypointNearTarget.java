@@ -7,37 +7,39 @@ import pwcg.mission.flight.AttackMcuSequence;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class IngressWaypointNearTarget extends IngressWaypointBase
+public class IngressWaypointNearTarget implements IIngressWaypoint
 {
-    public IngressWaypointNearTarget(Flight flight, Coordinate lastPosition, Coordinate targetPosition, int waypointSpeed, int waypointAltitude) throws PWCGException 
+    private Flight flight;
+
+    public IngressWaypointNearTarget(Flight flight) throws PWCGException 
     {
-        super(flight, lastPosition, targetPosition, waypointSpeed, waypointAltitude);
+        this.flight = flight;
     }
 
     public McuWaypoint createIngressWaypoint() throws PWCGException  
     {
-        Coordinate groundIngressCoords = getBestGroundAttackCoordinate();
-        groundIngressCoords.setYPos(waypointAltitude);
+        Coordinate ingressCoords = getIngressWaypointNearTarget();
+        ingressCoords.setYPos(flight.getFlightAltitude());
 
         McuWaypoint ingressWP = WaypointFactory.createIngressWaypointType();
         ingressWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        ingressWP.setSpeed(waypointSpeed);
-        ingressWP.setPosition(groundIngressCoords);   
+        ingressWP.setSpeed(flight.getFlightCruisingSpeed());
+        ingressWP.setPosition(ingressCoords);   
         ingressWP.setTargetWaypoint(false);
         
         return ingressWP;
     }
 
-    private Coordinate getBestGroundAttackCoordinate() throws PWCGException 
+    private Coordinate getIngressWaypointNearTarget() throws PWCGException 
     {
-        double angleToIntercept = MathUtils.calcAngle(lastPosition, targetPosition);
-        double distanceToIntercept = MathUtils.calcDist(lastPosition, targetPosition);
-        Coordinate ingressCoordinate = MathUtils.calcNextCoord(lastPosition, angleToIntercept, distanceToIntercept / 2);
+        double angleToIntercept = MathUtils.calcAngle(flight.getHomePosition(), flight.getTargetCoords());
+        double distanceToIntercept = MathUtils.calcDist(flight.getHomePosition(), flight.getTargetCoords());
+        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getHomePosition(), angleToIntercept, distanceToIntercept / 2);
         
-        double distance = MathUtils.calcDist(targetPosition, ingressCoordinate);
+        double distance = MathUtils.calcDist(flight.getTargetCoords(), ingressCoordinate);
         if (distance < (AttackMcuSequence.CHECK_ZONE_DEFAULT_DISTANCE + 10000))
         {
-            ingressCoordinate = moveIngressZoneAwayFromTarget(ingressCoordinate, targetPosition);
+            ingressCoordinate = moveIngressZoneAwayFromTarget(ingressCoordinate, flight.getTargetCoords());
         }
         
         return ingressCoordinate;

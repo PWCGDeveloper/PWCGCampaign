@@ -1,42 +1,74 @@
 package pwcg.mission.flight.attack;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.ClimbWaypointGenerator;
+import pwcg.mission.flight.waypoint.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.GroundAttackWaypointHelper;
+import pwcg.mission.flight.waypoint.IIngressWaypoint;
+import pwcg.mission.flight.waypoint.IngressWaypointNearFront;
 import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class GroundAttackWaypoints extends WaypointGeneratorBase
+public class GroundAttackWaypoints
 {
+    private Flight flight;
+    private Campaign campaign;
+    private List<McuWaypoint> waypoints = new ArrayList<McuWaypoint>();
 
-	public GroundAttackWaypoints(Coordinate startCoords, 
-					  			 Coordinate targetCoords, 
-					  			 Flight flight,
-					  			 Mission mission) throws PWCGException 
-	{
-		super(startCoords, targetCoords, flight, mission);
-	}
-
-    @Override
-    public List<McuWaypoint> createWaypoints() throws PWCGException 
+    public GroundAttackWaypoints(Flight flight) throws PWCGException
     {
-        super.createWaypoints();
-        setWaypointsNonFighterPriority();
+        this.flight = flight;
+        this.campaign = flight.getCampaign();
+    }
+
+    public List<McuWaypoint> createWaypoints() throws PWCGException
+    {
+        if (flight.isPlayerFlight())
+        {
+            ClimbWaypointGenerator climbWaypointGenerator = new ClimbWaypointGenerator(campaign, flight);
+            List<McuWaypoint> climbWPs = climbWaypointGenerator.createClimbWaypoints(flight.getFlightInformation().getAltitude());
+            waypoints.addAll(climbWPs);
+        }
+
+        McuWaypoint ingressWaypoint = createIngressWaypoint(flight);
+        waypoints.add(ingressWaypoint);
+        
+        List<McuWaypoint> targetWaypoints = createTargetWaypoints(ingressWaypoint.getPosition());
+        waypoints.addAll(targetWaypoints);
+
+        
+        McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
+        waypoints.add(egressWaypoint);
+        
+        McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
+        waypoints.add(approachWaypoint);
+
+        WaypointGeneratorBase.setWaypointsNonFighterPriority(waypoints);
 
         return waypoints;
     }
 
-	protected void createTargetWaypoints(Coordinate ingressPosition) throws PWCGException  
+    private McuWaypoint createIngressWaypoint(Flight flight) throws PWCGException  
+    {
+        IIngressWaypoint ingressWaypointGenerator = new IngressWaypointNearFront(flight);
+        McuWaypoint ingressWaypoint = ingressWaypointGenerator.createIngressWaypoint();
+        return ingressWaypoint;
+    }
+
+	protected List<McuWaypoint> createTargetWaypoints(Coordinate ingressPosition) throws PWCGException  
 	{
-		int attackAltitude = createAttackAltitude();
-		GroundAttackWaypointHelper groundAttackWaypointHelper = new GroundAttackWaypointHelper(ingressPosition, targetCoords, attackAltitude, waypointSpeed);
+	    int attackAltitude = createAttackAltitude();
+		GroundAttackWaypointHelper groundAttackWaypointHelper = new GroundAttackWaypointHelper(flight, ingressPosition, attackAltitude);
 		List<McuWaypoint> groundAttackWaypoints = groundAttackWaypointHelper.createTargetWaypoints();
-		waypoints.addAll(groundAttackWaypoints);
+        return groundAttackWaypoints;
 	}
 
 	private int createAttackAltitude()
@@ -46,15 +78,4 @@ public class GroundAttackWaypoints extends WaypointGeneratorBase
 		randomVariation = 100 - randomVariation;
 		return 1000 + randomVariation;
 	}
-
-	@Override
-	protected int determineFlightAltitude() 
-	{
-		int altitude = 800;
-		int randomAlt = RandomNumberGenerator.getRandom(400);
-		altitude = altitude + randomAlt;			
-
-		return altitude;
-	}
-
 }

@@ -20,11 +20,7 @@ public class SeaPatrolFlight extends Flight
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-		SeaPatrolWaypoints waypointGenerator = new SeaPatrolWaypoints(
-				startPosition, 
-				getTargetCoords(), 
-				this,
-				mission);
+		SeaPatrolWaypoints waypointGenerator = new SeaPatrolWaypoints(this);
 
         List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
         

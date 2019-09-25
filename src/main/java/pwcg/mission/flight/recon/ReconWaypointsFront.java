@@ -1,12 +1,12 @@
 package pwcg.mission.flight.recon;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.waypoint.PathAlongFront;
 import pwcg.mission.flight.waypoint.PathAlongFrontData;
@@ -16,30 +16,20 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class ReconWaypointsFront extends ReconWaypoints
 {
-	protected int xOffset = 0;
-	protected int zOffset = 0;
-	
-	public ReconWaypointsFront(Coordinate startCoords, 
-					  	  Coordinate targetCoords, 
-					  	  Flight flight,
-					  	  Mission mission) throws PWCGException 
-{
-		super(startCoords, targetCoords, flight, mission);
-	
+    private List<McuWaypoint> targetWaypoints = new ArrayList<McuWaypoint>();
+    private int xOffset = 0;
+    private int zOffset = 0;
+
+    public ReconWaypointsFront(Flight flight) throws PWCGException 
+    {
+        super(flight);
         xOffset = 100 - RandomNumberGenerator.getRandom(200);
         zOffset = 100 - RandomNumberGenerator.getRandom(200);
-	}
-
-    @Override
-    public void createReconWaypoints() throws PWCGException 
-    {
-        super.createWaypoints();
-        setWaypointsNonFighterPriority();
     }
 
-    protected void createTargetWaypoints(Coordinate startPosition) throws PWCGException  
-    {   
-        PathAlongFrontData pathAlongFrontData = buildPathAlongFrontData(startPosition);
+    protected List<McuWaypoint> createTargetWaypoints(Coordinate ingressPosition) throws PWCGException
+    {
+        PathAlongFrontData pathAlongFrontData = buildPathAlongFrontData(ingressPosition);
         PathAlongFront pathAlongFront = new PathAlongFront();
         List<Coordinate> patrolCoordinates = pathAlongFront.createPathAlongFront(pathAlongFrontData);
         
@@ -48,8 +38,9 @@ public class ReconWaypointsFront extends ReconWaypoints
             McuWaypoint waypoint = createWP(patrolCoordinate.copy());
             waypoint.setTargetWaypoint(true);
             waypoint.setName(WaypointType.RECON_WAYPOINT.getName());
-            waypoints.add(waypoint);
+            targetWaypoints.add(waypoint);
         }
+        return targetWaypoints;
     }
 
     protected PathAlongFrontData buildPathAlongFrontData(Coordinate startPosition) throws PWCGException
@@ -64,7 +55,7 @@ public class ReconWaypointsFront extends ReconWaypoints
         depthOfPenetration *= -1;
                 
         PathAlongFrontData pathAlongFrontData = new PathAlongFrontData();
-        pathAlongFrontData.setMission(mission);
+        pathAlongFrontData.setMission(flight.getMission());
         pathAlongFrontData.setDate(campaign.getDate());
         pathAlongFrontData.setOffsetTowardsEnemy(depthOfPenetration);
         pathAlongFrontData.setPathDistance(patrolDistanceBase);
@@ -80,11 +71,11 @@ public class ReconWaypointsFront extends ReconWaypoints
 	{
 		coord.setXPos(coord.getXPos() + xOffset);
 		coord.setZPos(coord.getZPos() + zOffset);
-		coord.setYPos(getFlightAlt());
+		coord.setYPos(flight.getFlightAltitude());
 
 		McuWaypoint wp = WaypointFactory.createReconWaypointType();
 		wp.setTriggerArea(McuWaypoint.TARGET_AREA);
-		wp.setSpeed(waypointSpeed);
+		wp.setSpeed(flight.getFlightCruisingSpeed());
 		wp.setPosition(coord);
 		
 		return wp;

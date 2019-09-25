@@ -24,11 +24,7 @@ public class SeaAntiShippingOpposingFlight extends Flight
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
-		SeaAntiShippingOpposingWaypoints waypointGenerator = new SeaAntiShippingOpposingWaypoints(
-					startPosition, 
-					getTargetCoords(), 
-		       		this,
-		       		mission);
+		SeaAntiShippingOpposingWaypoints waypointGenerator = new SeaAntiShippingOpposingWaypoints(this);
 
         List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
         
