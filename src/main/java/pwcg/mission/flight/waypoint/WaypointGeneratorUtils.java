@@ -8,46 +8,13 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class WaypointGeneratorBase 
+public class WaypointGeneratorUtils 
 {
     public static int INGRESS_DISTANCE_FROM_FRONT = 10000;
-	
-
-    public static double getWaypointAltitude(Campaign campaign, Coordinate previousPosition, Coordinate nextPosition, double waypointSpeed, double desiredAltitude) 
-                    throws PWCGException 
-    {
-        double distanceBetweenWP =  MathUtils.calcDist(previousPosition, nextPosition);
-        double minutesToNextWP = (distanceBetweenWP / 1000.0 / waypointSpeed) * 60;
-        double maxAcheivableAltitudeGain = minutesToNextWP * 400.0;
-
-        double maxAcheivableAltitude = previousPosition.getYPos() + maxAcheivableAltitudeGain;
-        if (maxAcheivableAltitude < (desiredAltitude * .8))
-        {
-            maxAcheivableAltitude = desiredAltitude * .8;
-        }
-
-        double wpAltitude = desiredAltitude;
-        if (maxAcheivableAltitude < desiredAltitude)
-        {
-            wpAltitude = maxAcheivableAltitude;
-        }
-
-        // Never too low
-        int InitialWaypointAltitude = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointAltitudeKey);
-        if (wpAltitude < InitialWaypointAltitude)
-        {
-            wpAltitude = InitialWaypointAltitude;
-        }
-        
-        return wpAltitude;
-    }
 
 	public static McuWaypoint findWaypointByType(List<McuWaypoint> waypointList, String type)
 	{

@@ -2,6 +2,8 @@ package pwcg.mission.flight;
 
 import java.util.List;
 
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -253,15 +255,14 @@ public class FlightFinalizer
 
             Coordinate planeCoords = new Coordinate();
 
-            ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();
-
             // Since we always face east, subtract from z to get your mates
             // behind you
-            int AircraftSpacingHorizontal = configManager.getIntConfigParam(ConfigItemKeys.AircraftSpacingHorizontalKey);
+            IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+            int AircraftSpacingHorizontal = productSpecificConfiguration.getAircraftSpacingHorizontal();
             planeCoords.setXPos(flightLeaderPos.getXPos() - (i * AircraftSpacingHorizontal));
             planeCoords.setZPos(flightLeaderPos.getZPos() - (i * AircraftSpacingHorizontal));
 
-            int AircraftSpacingVertical = configManager.getIntConfigParam(ConfigItemKeys.AircraftSpacingVerticalKey);
+            int AircraftSpacingVertical = productSpecificConfiguration.getAircraftSpacingVertical();
             planeCoords.setYPos(flightLeaderPos.getYPos() + (i * AircraftSpacingVertical));
             plane.setPosition(planeCoords);
 

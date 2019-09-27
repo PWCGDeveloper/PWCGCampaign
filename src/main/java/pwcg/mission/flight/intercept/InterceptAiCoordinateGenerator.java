@@ -1,28 +1,26 @@
 package pwcg.mission.flight.intercept;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.Mission;
 
 public class InterceptAiCoordinateGenerator
 {
-    private Campaign campaign;
-    private Squadron squadron;
+    private Mission mission;
     
-    public InterceptAiCoordinateGenerator(Campaign campaign, Squadron squadron)
+    public InterceptAiCoordinateGenerator(Mission mission)
     {
-        this.campaign = campaign;
-        this.squadron = squadron;
+        this.mission = mission;
     }
     
     public Coordinate createTargetCoordinates() throws PWCGException
     {
-        GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();        
-        Block selectedTarget = groupManager.getBlockFinder().getBlockWithinRadius(squadron.determineCurrentPosition(campaign.getDate()), 30000.0);
+        GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        double missionTargetRadius = (mission.getMissionBorders().getBoxWidth() / 2) + 5000;
+        Block selectedTarget = groupManager.getBlockFinder().getBlockWithinRadius(mission.getMissionBorders().getCenter(), missionTargetRadius);
         return selectedTarget.getPosition();
     }
 }

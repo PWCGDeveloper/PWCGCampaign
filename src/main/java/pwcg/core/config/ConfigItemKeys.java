@@ -54,7 +54,6 @@ public class ConfigItemKeys
 	
 	public static final String PatrolDistanceBaseKey = "PatrolDistanceBase";
 	public static final String PatrolDistanceRandomKey = "PatrolDistanceRandom";
-	public static final String GroundAttackIngressDistanceKey = "GroundAttackIngressDistance";
 	public static final String GroundAttackAltitudeKey = "GroundAttackAltitude";
 
 	public static final String PatrolMinimumKey = "PatrolMinimum";
@@ -138,12 +137,7 @@ public class ConfigItemKeys
 	public static final String ScreenSizeHeightKey = "ScreenSizeHeight";
 	public static final String ScreenSizeWidthKey = "ScreenSizeWidth";
 
-	public static final String AircraftSpacingHorizontalKey = "AircraftSpacingHorizontal";
-	public static final String AircraftSpacingVerticalKey = "AircraftSpacingVertical";
-	public static final String TakeoffSpacingKey = "TakeoffSpacing";
-
 	public static final String InitialWaypointDistanceKey = "InitialWaypointDistance";
-	public static final String InitialWaypointAltitudeKey = "InitialWaypointAltitude";
 	public static final String ApproachWaypointAltitudeKey = "ApproachWaypointAltitude";
 	public static final String LandingDistanceKey = "LandingDistance";
 	public static final String RandomAdditionalAltitudeKey = "RandomAdditionalAltitude";

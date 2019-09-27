@@ -56,7 +56,7 @@ public class TargetLocatorAir
         }
         else
         {
-            InterceptAiCoordinateGenerator coordinateGenerator = new InterceptAiCoordinateGenerator(flightInformation.getCampaign(), flightInformation.getSquadron());
+            InterceptAiCoordinateGenerator coordinateGenerator = new InterceptAiCoordinateGenerator(flightInformation.getMission());
             Coordinate targetCoordinates = coordinateGenerator.createTargetCoordinates();
             return targetCoordinates;
         }

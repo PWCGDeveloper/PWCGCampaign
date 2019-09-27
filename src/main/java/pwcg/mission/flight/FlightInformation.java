@@ -4,7 +4,9 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.api.IMissionAltitudeGenerator;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.factory.MissionAltitudeGeneratorFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.TargetDefinition;
@@ -200,10 +202,9 @@ public class FlightInformation
         return altitude;
     }
 
-    public void setAltitude(int altitude)
+    public void calculateAltitude() throws PWCGException
     {
-        this.altitude = altitude;
-    }
-    
-    
+        IMissionAltitudeGenerator missionAltitudeGenerator = MissionAltitudeGeneratorFactory.createMissionAltitudeGenerator();
+        this.altitude = missionAltitudeGenerator.determineFlightAltitude(campaign, flightType);
+    }    
 }

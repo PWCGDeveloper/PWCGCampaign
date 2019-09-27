@@ -1,16 +1,6 @@
 {
   "configSetName": "ConfigSetFlight",
   "configMap": {
-    "AircraftSpacingHorizontal": {
-      "value": "250",
-      "label": "Aircraft Spacing Horizontal",
-      "help": "Initial spacing: horizontal"
-    },
-    "AircraftSpacingVertical": {
-      "value": "150",
-      "label": "Aircraft Spacing Vertical",
-      "help": "Initial spacing: vertical"
-    },
     "ApproachWaypointAltitude": {
       "value": "500",
       "label": "Approach Waypoint Altitude",
@@ -46,11 +36,6 @@
       "label": "Base Alt Period 6",
       "help": "Base altitude late war"
     },
-    "InitialWaypointAltitude": {
-      "value": "1500",
-      "label": "Initial Waypoint Altitude",
-      "help": "Altitude of initial waypoint"
-    },
     "InitialWaypointDistance": {
       "value": "12000",
       "label": "Initial Waypoint Distance",
@@ -65,11 +50,6 @@
       "value": "3000",
       "label": "Random Additional Altitude",
       "help": "Random altitude in addition to base"
-    },
-    "TakeoffSpacing": {
-      "value": "40",
-      "label": "Takeoff Spacing",
-      "help": "Distance in meters between planes on the ground"
     },
     "TakeoffTime": {
       "value": "30",

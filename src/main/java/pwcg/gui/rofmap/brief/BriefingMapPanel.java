@@ -193,7 +193,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
                 }
                 if (i == (flightMap.mapPoints.size()-1) )
                 {
-                    g.setColor(Color.ORANGE);
+                    g.setColor(Color.BLUE);
                     Point point = super.coordinateToPoint(mapPoint.coord);
                     Ellipse2D.Double circle = new Ellipse2D.Double(point.x - 8, point.y - 8, 16, 16);
                     g2.fill(circle);
@@ -208,6 +208,11 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
             }
         }
         
+        drawMissionBorders(g, g2);
+    }
+
+    private void drawMissionBorders(Graphics g, Graphics2D g2)
+    {
         Coordinate sw = missionBorders.getSW().copy();
         Coordinate se = new Coordinate(missionBorders.getNE().getXPos(), 0.0, missionBorders.getSW().getZPos());
         Coordinate ne = missionBorders.getNE().copy();

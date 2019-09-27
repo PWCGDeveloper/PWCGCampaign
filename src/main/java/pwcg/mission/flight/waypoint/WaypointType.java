@@ -5,6 +5,7 @@ public enum WaypointType
     STARTING_WAYPOINT("Starting"),
     TAKEOFF_WAYPOINT("TakeOff"),
     CLIMB_WAYPOINT("Climb"),
+    AIR_START_WAYPOINT("AirStart"),
 	INGRESS_WAYPOINT("Ingress"),
 	EGRESS_WAYPOINT("Egress"),
 	LANDING_APPROACH_WAYPOINT("Landing Approach"),

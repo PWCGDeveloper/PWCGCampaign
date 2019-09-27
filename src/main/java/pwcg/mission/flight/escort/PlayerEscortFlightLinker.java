@@ -4,7 +4,7 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
+import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -78,7 +78,7 @@ public class PlayerEscortFlightLinker
     private void linkSeparationToEgressWP(McuWaypoint nextWP)
     {
         List<McuWaypoint> escortedWaypoints = escortedFlight.getAllWaypoints();
-        McuWaypoint escortedEgress = WaypointGeneratorBase.findWaypointByType(escortedWaypoints, WaypointType.EGRESS_WAYPOINT.getName());
+        McuWaypoint escortedEgress = WaypointGeneratorUtils.findWaypointByType(escortedWaypoints, WaypointType.EGRESS_WAYPOINT.getName());
         escortedEgress.setTarget(escortFlight.getForceCompleteTimer().getIndex());
         escortFlight.getForceCompleteTimer().setTarget(escortFlight.getEgressTimer().getIndex());
         escortFlight.getEgressTimer().setTarget(nextWP.getIndex());

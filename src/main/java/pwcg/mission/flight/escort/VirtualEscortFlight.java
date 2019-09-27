@@ -36,7 +36,7 @@ public class VirtualEscortFlight extends Flight
         escortFlightCoords.setZPos(escortedFlightCoords.getZPos()+ 100);
         escortFlightCoords.setYPos(escortedFlightCoords.getYPos() + 300);
 
-        AirStartFormationSetter flightPositionHelperAirStart = new AirStartFormationSetter(getCampaign(), this);
+        AirStartFormationSetter flightPositionHelperAirStart = new AirStartFormationSetter(this);
         flightPositionHelperAirStart.resetAirStartFormation(escortFlightCoords.copy(), escortedFlightOrient.copy());
 	}
 

@@ -28,7 +28,8 @@ public class FlightInformationFactory
         playerFlightInformation.setTargetSearchStartLocation(mission.getMissionBorders().getCenter());
         buildTargetDefinition (playerFlightInformation);
         buildPlanes (playerFlightInformation);
-        
+        setAltitude (playerFlightInformation);
+
         return playerFlightInformation;
     }
 
@@ -45,6 +46,7 @@ public class FlightInformationFactory
         aiFlightInformation.setTargetSearchStartLocation(mission.getMissionBorders().getCenter());
         buildTargetDefinition (aiFlightInformation);
         buildPlanes (aiFlightInformation);
+        setAltitude (aiFlightInformation);
 
         return aiFlightInformation;
     }
@@ -64,6 +66,7 @@ public class FlightInformationFactory
         escortFlightInformation.setTargetSearchStartLocation(playerFlightInformation.getTargetCoords());
         
         buildPlanes (escortFlightInformation);
+        setAltitude (escortFlightInformation);
         buildTargetDefinition (escortFlightInformation);
         rendezvous.setYPos(rendezvous.getYPos() + 500.0);
         escortFlightInformation.getTargetDefinition().setTargetPosition(rendezvous);
@@ -71,6 +74,11 @@ public class FlightInformationFactory
         return escortFlightInformation;
     }
     
+    private static void setAltitude(FlightInformation flightInformation) throws PWCGException
+    {
+        flightInformation.calculateAltitude();
+    }
+
     public static FlightInformation buildEscortedByPlayerFlightInformation(FlightInformation escortFlightInformation, Squadron friendlyBomberSquadron) throws PWCGException
     {
         FlightInformation escortedFlightInformation = new FlightInformation(escortFlightInformation.getMission());
@@ -84,6 +92,7 @@ public class FlightInformationFactory
         escortedFlightInformation.setTargetSearchStartLocation(escortFlightInformation.getTargetCoords());
         buildPlanes (escortedFlightInformation);
         buildTargetDefinition (escortedFlightInformation);
+        setAltitude (escortFlightInformation);
 
         return escortedFlightInformation;
     }
@@ -100,6 +109,7 @@ public class FlightInformationFactory
         interceptedFlightInformation.setEscortedByPlayerFlight(false);
         interceptedFlightInformation.setTargetDefinition(targetDefinition);
         buildPlanes (interceptedFlightInformation);
+        setAltitude (interceptedFlightInformation);
 
         return interceptedFlightInformation;
     }

@@ -52,6 +52,8 @@ public class PlayerFlightTypeBoSFighterTest
 		patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.PATROL);
         EscortForPlayerValidator.validateNoEscortForPlayer(flight);
+
+        validateAiFlightWaypoints(mission);
 	}
 
 	@Test
@@ -84,6 +86,8 @@ public class PlayerFlightTypeBoSFighterTest
 		patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.OFFENSIVE);
         EscortForPlayerValidator.validateNoEscortForPlayer(flight);
+
+        validateAiFlightWaypoints(mission);
 	}
 
 	@Test
@@ -99,6 +103,8 @@ public class PlayerFlightTypeBoSFighterTest
 		escortFlightValidator.validateEscortFlight();
         assert(flight.getFlightType() == FlightTypes.ESCORT);
         EscortForPlayerValidator.validateNoEscortForPlayer(flight);
+
+        validateAiFlightWaypoints(mission);
 	}
 
     @Test
@@ -114,6 +120,8 @@ public class PlayerFlightTypeBoSFighterTest
         patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.SCRAMBLE);
         EscortForPlayerValidator.validateNoEscortForPlayer(flight);
+
+        validateAiFlightWaypoints(mission);
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)
@@ -140,16 +148,6 @@ public class PlayerFlightTypeBoSFighterTest
             
             for (McuWaypoint waypoint : aiFlight.getWaypointPackage().getWaypointsForLeadPlane())
             {
-                if (!(waypoint.getName().contains("Landing")))
-                {
-                    Coordinate waypointPosition = waypoint.getPosition();
-                    double distanceWaypointToCenter = MathUtils.calcDist(missionCenter, waypointPosition);
-                    if (distanceWaypointToCenter > 50000)
-                    {
-                        failed = true;
-                    }
-                }
-
                 double distanceMissioNCenterToTarget = MathUtils.calcDist(missionCenter, aiFlight.getTargetCoords());
                 if (distanceMissioNCenterToTarget > 50000)
                 {
@@ -169,7 +167,7 @@ public class PlayerFlightTypeBoSFighterTest
 
                     Coordinate closestFrontLinesToMissionCenter = frontLinesForMap.findClosestFrontCoordinateForSide(missionCenter, aiFlight.getSquadron().determineSide());
                     double distanceIngressToMissionCenter = MathUtils.calcDist(closestFrontLinesToMissionCenter, waypointPosition);
-                    if (distanceIngressToMissionCenter > 30000)
+                    if (distanceIngressToMissionCenter > 50000)
                     {
                         failed = true;
                     }
@@ -177,5 +175,7 @@ public class PlayerFlightTypeBoSFighterTest
                 }
             }
         }
+        
+        assert(!failed);
     }
 }

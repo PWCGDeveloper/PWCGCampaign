@@ -5,6 +5,8 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -13,7 +15,7 @@ import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
 import pwcg.mission.flight.waypoint.ClimbWaypointGenerator;
 import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
+import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class FerryWaypoints
@@ -48,7 +50,7 @@ public class FerryWaypoints
         McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
         waypoints.add(approachWaypoint);
 
-        WaypointGeneratorBase.setWaypointsNonFighterPriority(waypoints);
+        WaypointGeneratorUtils.setWaypointsNonFighterPriority(waypoints);
 
         return waypoints;
     }
@@ -71,8 +73,10 @@ public class FerryWaypoints
         double wpOrientation = MathUtils.calcAngle(fromAirfield.getTakeoffLocation().getPosition(), toAirfield.getTakeoffLocation().getPosition());
         int InitialWaypointDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointDistanceKey);
         Coordinate hopCoords = MathUtils.calcNextCoord(fromAirfield.getTakeoffLocation().getPosition().copy(), wpOrientation, InitialWaypointDistance);
-        int InitialWaypointAltitude = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointAltitudeKey);
-        hopCoords.setYPos(InitialWaypointAltitude);
+        
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int initialWaypointAltitude = productSpecificConfiguration.getInitialWaypointAltitude();
+        hopCoords.setYPos(initialWaypointAltitude);
 
         McuWaypoint hopWP = WaypointFactory.createMoveToWaypointType();
         hopWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
@@ -86,8 +90,10 @@ public class FerryWaypoints
         double wpOrientation = MathUtils.calcAngle(toAirfield.getTakeoffLocation().getPosition(), fromAirfield.getTakeoffLocation().getPosition());
         int InitialWaypointDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointDistanceKey);
         Coordinate hopCoords = MathUtils.calcNextCoord(toAirfield.getTakeoffLocation().getPosition().copy(), wpOrientation, InitialWaypointDistance);
-        int InitialWaypointAltitude = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointAltitudeKey);
-        hopCoords.setYPos(InitialWaypointAltitude);
+        
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int initialWaypointAltitude = productSpecificConfiguration.getInitialWaypointAltitude();
+        hopCoords.setYPos(initialWaypointAltitude);
 
         McuWaypoint hopWP = WaypointFactory.createMoveToWaypointType();
         hopWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);

@@ -16,7 +16,6 @@ public class ConfigSetAircraftNumbers
 		configSet.addConfigItem(ConfigItemKeys.TransportMinimumKey, new ConfigItem("1"));				// Minimum number of aircraft
 		configSet.addConfigItem(ConfigItemKeys.TransportAdditionalKey, new ConfigItem("2"));			// Maximum additional aircraft
 		
-		configSet.addConfigItem(ConfigItemKeys.GroundAttackIngressDistanceKey, new ConfigItem("12000"));
 		configSet.addConfigItem(ConfigItemKeys.GroundAttackAltitudeKey, new ConfigItem("150"));
 		configSet.addConfigItem(ConfigItemKeys.PatrolDistanceBaseKey, new ConfigItem("10"));
 		configSet.addConfigItem(ConfigItemKeys.PatrolDistanceRandomKey, new ConfigItem("10"));	

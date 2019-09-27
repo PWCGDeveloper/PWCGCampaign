@@ -37,4 +37,10 @@ public interface IProductSpecificConfiguration
     int getMaxSeaLaneDistance();
     int getCloseToFrontDistance();
     int getMaxDistanceForVirtualFlightFromPlayerBox();
+    int getMaxDistanceForVirtualFlightAirStart();
+    int getInitialWaypointAltitude();
+    int getGroundAttackIngressDistance();
+    int getAircraftSpacingHorizontal();
+    int getAircraftSpacingVertical();
+    int getTakeoffSpacing();
 }

@@ -58,7 +58,7 @@ public class IngressWaypointNearFront implements IIngressWaypoint
         Coordinate flightHomeCoordinates = flight.getSquadron().determineCurrentPosition(campaign.getDate());
         double angleFromFrontToHome = MathUtils.calcAngle(closestFrontLinesToTarget, flightHomeCoordinates);
         
-        Coordinate ingressCoordinate = MathUtils.calcNextCoord(closestFrontLinesToTarget, angleFromFrontToHome, WaypointGeneratorBase.INGRESS_DISTANCE_FROM_FRONT);
+        Coordinate ingressCoordinate = MathUtils.calcNextCoord(closestFrontLinesToTarget, angleFromFrontToHome, WaypointGeneratorUtils.INGRESS_DISTANCE_FROM_FRONT);
         return ingressCoordinate;
     }
 
@@ -70,7 +70,7 @@ public class IngressWaypointNearFront implements IIngressWaypoint
         
         double angleFurtherBehindFriendltLines = MathUtils.calcAngle(closestEnemyFrontLinesToTarget, closestFriendlyFrontLinesToTarget);
         
-        Coordinate ingressCoordinate = MathUtils.calcNextCoord(closestFriendlyFrontLinesToTarget, angleFurtherBehindFriendltLines, WaypointGeneratorBase.INGRESS_DISTANCE_FROM_FRONT);
+        Coordinate ingressCoordinate = MathUtils.calcNextCoord(closestFriendlyFrontLinesToTarget, angleFurtherBehindFriendltLines, WaypointGeneratorUtils.INGRESS_DISTANCE_FROM_FRONT);
         return ingressCoordinate;
     }
 }

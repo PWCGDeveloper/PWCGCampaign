@@ -1,10 +1,11 @@
 package pwcg.mission.flight.waypoint;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.core.config.ConfigItemKeys;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -28,7 +29,9 @@ public class IngressWaypointScrambleOpposition implements IIngressWaypoint
         FrontLinePoint nearbyFrontPoint = frontLinesForMap.findCloseFrontPositionForSide(flight.getHomePosition(), 20000, flight.getSquadron().getCountry().getSide());
         Coordinate nearbyFrontPosition = nearbyFrontPoint.getPosition();
                 
-        int attackIngressDistance = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.GroundAttackIngressDistanceKey);
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int attackIngressDistance = productSpecificConfiguration.getGroundAttackIngressDistance();
+        
         double ingressAngle = MathUtils.calcAngle(nearbyFrontPosition, flight.getTargetCoords());
         Coordinate ingressCoords = MathUtils.calcNextCoord(flight.getTargetCoords(), ingressAngle, attackIngressDistance);
         

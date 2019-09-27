@@ -2,7 +2,7 @@ package pwcg.mission.flight.escort;
 
 import java.util.List;
 
-import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
+import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -12,13 +12,13 @@ public class RendezvousWaypointFinder
     {
     	McuWaypoint rendezvousWaypoint = null;
     	
-    	rendezvousWaypoint = WaypointGeneratorBase.findWaypointByType(waypoints, WaypointType.INGRESS_WAYPOINT.getName());
+    	rendezvousWaypoint = WaypointGeneratorUtils.findWaypointByType(waypoints, WaypointType.INGRESS_WAYPOINT.getName());
     	if (rendezvousWaypoint != null)
     	{
     		return rendezvousWaypoint;
     	}
     	
-    	rendezvousWaypoint = WaypointGeneratorBase.findWaypointByType(waypoints, WaypointType.INGRESS_WAYPOINT.getName());
+    	rendezvousWaypoint = WaypointGeneratorUtils.findWaypointByType(waypoints, WaypointType.INGRESS_WAYPOINT.getName());
     	if (rendezvousWaypoint != null)
     	{
     		return rendezvousWaypoint;

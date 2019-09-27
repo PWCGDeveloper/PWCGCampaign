@@ -37,7 +37,7 @@ public class TargetLocatorAttack
     
     public void locateTarget() throws PWCGException
     {
-        List<TacticalTarget> targetTypes = targetDefinition.getTargetType();
+        TacticalTarget targetType = targetDefinition.getTargetType();
      
         while (targetLocation == null)
         {

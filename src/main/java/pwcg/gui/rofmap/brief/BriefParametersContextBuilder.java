@@ -119,7 +119,7 @@ public class BriefParametersContextBuilder
 	
 	private void addAttackPoint(Coordinate targetLocation) throws PWCGException 
 	{
-        BriefingMapPoint target = BriefingMapPointFactory.createLanding(mission);
+        BriefingMapPoint target = BriefingMapPointFactory.createAttackPoint(targetLocation);
 
 		EditorWaypointGroup editorWaypointGroup = new EditorWaypointGroup();
 		editorWaypointGroup.setBriefingMapPoint(target);

@@ -30,6 +30,12 @@ public class RoFProductSpecificConfiguration implements IProductSpecificConfigur
     private static final int MISSION_RADIUS_MEDIUM = 30000;
     private static final int MISSION_RADIUS_SMALL = 15000;
     private static final int MISSION_RADIUS_VERY_SMALL = 5000;
+    private static final int AIR_START_MAX_DISTANCE_FROM_INGRESS = 20000;
+    private static final int INITIAL_WAYPOINT_ALTITUDE = 800;
+    private static final int GROUND_ATTACK_INGRESS_DISTANCE = 5000;
+    private static final int AIRCRAFT_SPACING_HORIZONTAL = 150;
+    private static final int AIRCRAFT_SPACING_VERTICAL = 100;
+    private static final int TAKEOFF_SPACING = 30;
 
     @Override
     public boolean useWaypointGoal()
@@ -342,5 +348,41 @@ public class RoFProductSpecificConfiguration implements IProductSpecificConfigur
     public int getVerySmallMissionRadius()
     {
         return MISSION_RADIUS_VERY_SMALL;
+    }
+
+    @Override
+    public int getMaxDistanceForVirtualFlightAirStart()
+    {
+        return AIR_START_MAX_DISTANCE_FROM_INGRESS;
+    }
+
+    @Override
+    public int getInitialWaypointAltitude()
+    {
+        return INITIAL_WAYPOINT_ALTITUDE;
+    }
+
+    @Override
+    public int getGroundAttackIngressDistance()
+    {
+        return GROUND_ATTACK_INGRESS_DISTANCE;
+    }
+
+    @Override
+    public int getAircraftSpacingHorizontal()
+    {
+        return AIRCRAFT_SPACING_HORIZONTAL;
+    }
+
+    @Override
+    public int getAircraftSpacingVertical()
+    {
+        return AIRCRAFT_SPACING_VERTICAL;
+    }
+
+    @Override
+    public int getTakeoffSpacing()
+    {
+        return TAKEOFF_SPACING;
     }
 }

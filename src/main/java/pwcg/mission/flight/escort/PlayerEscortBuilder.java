@@ -9,7 +9,7 @@ import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightInformationFactory;
-import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
+import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -29,7 +29,7 @@ public class PlayerEscortBuilder
         {
             MissionBeginUnit missionBeginUnitEscort = new MissionBeginUnit(playerFlightInformation.getDepartureAirfield().getPosition());
             
-            McuWaypoint rendezvousWP = WaypointGeneratorBase.findWaypointByType(playerFlight.getAllWaypoints(), 
+            McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllWaypoints(), 
                     WaypointType.INGRESS_WAYPOINT.getName());
 
             if (rendezvousWP != null)

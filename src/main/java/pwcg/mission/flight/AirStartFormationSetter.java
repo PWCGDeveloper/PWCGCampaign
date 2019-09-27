@@ -1,8 +1,7 @@
 package pwcg.mission.flight;
 
-import pwcg.campaign.Campaign;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -10,12 +9,10 @@ import pwcg.mission.flight.plane.PlaneMCU;
 
 public class AirStartFormationSetter
 {
-    private Campaign campaign;
     private Flight flight;
     
-    public AirStartFormationSetter (Campaign campaign, Flight flight)
+    public AirStartFormationSetter (Flight flight)
     {
-        this.campaign = campaign;
         this.flight = flight;
     }
     
@@ -27,13 +24,13 @@ public class AirStartFormationSetter
         for (PlaneMCU plane : flight.getPlanes())
         {
             Coordinate planeCoords = new Coordinate();
-
-            ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-            int AircraftSpacingHorizontal = configManager.getIntConfigParam(ConfigItemKeys.AircraftSpacingHorizontalKey);
+            
+            IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+            int AircraftSpacingHorizontal = productSpecificConfiguration.getAircraftSpacingHorizontal();
             planeCoords.setXPos(startCoordinate.getXPos() - (i * AircraftSpacingHorizontal));
             planeCoords.setZPos(startCoordinate.getZPos() - (i * AircraftSpacingHorizontal));
 
-            int AircraftSpacingVertical = configManager.getIntConfigParam(ConfigItemKeys.AircraftSpacingVerticalKey);
+            int AircraftSpacingVertical = productSpecificConfiguration.getAircraftSpacingVertical();
             planeCoords.setYPos(startCoordinate.getYPos() + (i * AircraftSpacingVertical));
             
             plane.setPosition(planeCoords);

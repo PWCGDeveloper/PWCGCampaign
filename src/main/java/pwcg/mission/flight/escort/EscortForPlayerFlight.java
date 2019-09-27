@@ -4,8 +4,8 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -15,7 +15,7 @@ import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
+import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuCover;
 import pwcg.mission.mcu.McuForceComplete;
@@ -69,17 +69,17 @@ public class EscortForPlayerFlight extends Flight
         getMissionBeginUnit().linkToMissionBegin(getActivationTimer().getIndex());
         getActivationTimer().setTarget(getFormationTimer().getIndex());
         
-        McuWaypoint ingressWP = WaypointGeneratorBase.findWaypointByType(playerFlight.getAllWaypoints(), WaypointType.INGRESS_WAYPOINT.getName());
+        McuWaypoint ingressWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllWaypoints(), WaypointType.INGRESS_WAYPOINT.getName());
         ingressWP.setTarget(getCoverTimer().getIndex());
 
-        McuWaypoint egressWP = WaypointGeneratorBase.findWaypointByType(playerFlight.getAllWaypoints(), WaypointType.EGRESS_WAYPOINT.getName());
+        McuWaypoint egressWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllWaypoints(), WaypointType.EGRESS_WAYPOINT.getName());
         egressWP.setTarget(forceCompleteTimer.getIndex());
 
     }
 
     public void createCover() throws PWCGException 
     {
-        McuWaypoint ingressWP = WaypointGeneratorBase.findWaypointByType(playerFlight.getAllWaypoints(), 
+        McuWaypoint ingressWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllWaypoints(), 
                         WaypointType.INGRESS_WAYPOINT.getName());
 
         Coordinate coverPosition = ingressWP.getPosition().copy();
@@ -124,7 +124,7 @@ public class EscortForPlayerFlight extends Flight
         PlaneMCU flightLeader = getFlightLeader();
 
         // Initial position is at the ingress WP
-        McuWaypoint ingressWP = WaypointGeneratorBase.findWaypointByType(playerFlight.getAllWaypoints(), 
+        McuWaypoint ingressWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllWaypoints(), 
                         WaypointType.INGRESS_WAYPOINT.getName());
 
         Coordinate coverPosition = ingressWP.getPosition().copy();
@@ -134,15 +134,13 @@ public class EscortForPlayerFlight extends Flight
         for (PlaneMCU plane : planes)
         {
             Coordinate planeCoords = coverPosition.copy();
-
-            ConfigManagerCampaign configManager = flightInformation.getCampaign().getCampaignConfigManager();
-            int AircraftSpacingHorizontal = configManager.getIntConfigParam(ConfigItemKeys.AircraftSpacingHorizontalKey);
             
+            IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+            int AircraftSpacingHorizontal = productSpecificConfiguration.getAircraftSpacingHorizontal();
             planeCoords.setXPos(coverPosition.getXPos() - (i * AircraftSpacingHorizontal));
             planeCoords.setZPos(coverPosition.getZPos() - (i * AircraftSpacingHorizontal));
 
-            int AircraftSpacingVertical = configManager.getIntConfigParam(ConfigItemKeys.AircraftSpacingVerticalKey);
-            
+            int AircraftSpacingVertical = productSpecificConfiguration.getAircraftSpacingVertical();            
             planeCoords.setYPos(coverPosition.getYPos() + (i * AircraftSpacingVertical));
             plane.setPosition(planeCoords);
 

@@ -44,15 +44,25 @@ public class WaypointFactory
 		return waypoint;
 	}
 
-	public static McuWaypoint createEgressWaypointType()
+	public static McuWaypoint createAirStartWaypointType()
 	{
-		McuWaypoint waypoint = new McuWaypoint(WaypointType.EGRESS_WAYPOINT);
-		waypoint.setWpAction(WaypointAction.WP_ACTION_EGRESS);
+		McuWaypoint waypoint = new McuWaypoint(WaypointType.AIR_START_WAYPOINT);
+		waypoint.setWpAction(WaypointAction.WP_ACTION_START);
 		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
 		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		
 		return waypoint;
 	}
+
+    public static McuWaypoint createEgressWaypointType()
+    {
+        McuWaypoint waypoint = new McuWaypoint(WaypointType.EGRESS_WAYPOINT);
+        waypoint.setWpAction(WaypointAction.WP_ACTION_EGRESS);
+        waypoint.setPriority(WaypointPriority.PRIORITY_LOW);            
+        waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
+        
+        return waypoint;
+    }
 
 	public static McuWaypoint createLandingApproachWaypointType()
 	{

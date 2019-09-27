@@ -32,7 +32,6 @@ public class MissionFlightBuilder
     {
         createPlayerFlights(participatingPlayers, flightType);
         createAiFlights();
-        moveAiFlightsToStartPositions();
     }
 
     public void finalizeMissionFlights() throws PWCGException
@@ -69,14 +68,6 @@ public class MissionFlightBuilder
     {
         AiFlightBuilder aiFlightBuilder = new AiFlightBuilder(campaign, mission);
         aiFlights = aiFlightBuilder.createAiFlights();
-    }
-
-    private void moveAiFlightsToStartPositions() throws PWCGException
-    {
-        for (Flight flight : aiFlights)
-        {
-            flight.moveToStartPosition();
-        }
     }
 
     public boolean isInFlightPath(Coordinate position) throws PWCGException

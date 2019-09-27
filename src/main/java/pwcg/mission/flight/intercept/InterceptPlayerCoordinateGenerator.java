@@ -4,7 +4,6 @@ import pwcg.campaign.target.TargetDefinition;
 import pwcg.campaign.target.TargetDefinitionBuilderAirToGround;
 import pwcg.campaign.target.TargetDefinitionBuilderStrategic;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 
@@ -25,23 +24,10 @@ public class InterceptPlayerCoordinateGenerator
         }
         else
         {
-            return getAnyInterceptTarget();
+            return getTacticaTarget();
         }        
     }
     
-    private TargetDefinition getAnyInterceptTarget() throws PWCGException
-    {
-        int roll = RandomNumberGenerator.getRandom(100);
-        if (roll < 20)
-        {
-            return getStrategicTarget();
-        }
-        else
-        {
-            return getTacticaTarget();
-        }
-    }
-
     private TargetDefinition getTacticaTarget() throws PWCGException
     {
         TargetDefinitionBuilderAirToGround targetDefinitionBuilder = new TargetDefinitionBuilderAirToGround(flightInformation);

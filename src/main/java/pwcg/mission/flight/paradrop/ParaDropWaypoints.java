@@ -13,7 +13,7 @@ import pwcg.mission.flight.waypoint.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.GroundAttackWaypointHelper;
 import pwcg.mission.flight.waypoint.IIngressWaypoint;
 import pwcg.mission.flight.waypoint.IngressWaypointNearFront;
-import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
+import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class ParaDropWaypoints
@@ -50,7 +50,7 @@ public class ParaDropWaypoints
         McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
         waypoints.add(approachWaypoint);
 
-        WaypointGeneratorBase.setWaypointsNonFighterPriority(waypoints);
+        WaypointGeneratorUtils.setWaypointsNonFighterPriority(waypoints);
 
         return waypoints;
     }

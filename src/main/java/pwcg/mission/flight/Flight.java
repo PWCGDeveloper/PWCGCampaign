@@ -25,7 +25,6 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 import pwcg.core.utils.MathUtils;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.Unit;
@@ -67,8 +66,6 @@ public abstract class Flight extends Unit
     protected List<Integer> contactWithPlayer = new ArrayList<Integer>();
     protected double closestContactWithPlayerDistance = -1.0;
     protected boolean flightHasBeenIncluded = false;
-
-    protected int missionStartTimeAdjustment = 0;
     
     private MissionBeginUnit missionBeginUnit;
 
@@ -332,51 +329,6 @@ public abstract class Flight extends Unit
         }
     }
 
-    public void moveToStartPosition() throws PWCGException 
-    {
-        // Never move the player flight
-        if (flightInformation.isPlayerFlight())
-        {
-            return;
-        }
-
-        // Do not move a scramble opposing flights
-        if (flightInformation.getFlightType() == FlightTypes.SCRAMBLE_OPPOSE)
-        {
-            return;
-        }
-
-        // Flights escorted by the player go to the bombing approach
-        if (!flightInformation.isVirtual())
-        {
-            if (waypointPackage instanceof ActualWaypointPackage)
-            {
-                ActualWaypointPackage actualWaypoints = (ActualWaypointPackage) waypointPackage;
-                actualWaypoints.movePlayerEscortFlightToBombApproach();
-
-                return;
-            }
-        }
-
-        // Set the mission start time adjustment to +/- 10 minutes
-        // The mission will be advanced or delayed when VWPs are assigned
-        missionStartTimeAdjustment = 15 - RandomNumberGenerator.getRandom(30);
-
-        // Provide the same adjustment to a virtual escort
-        if (this.virtualEscortFlight != null)
-        {
-            virtualEscortFlight.setMissionStartTimeAdjustment(missionStartTimeAdjustment);
-        }
-    }
-    
-    /**
-     * Link a set of MCUs (WP, attackArea, etc) to a plane.
-     * For virtual flights every plane needs a set of links
-     * FOr non spawned flights only the leader need be linked
-     * 
-     * @param plane
-     * @param itemsToLink
-     */
     protected void linkWPToPlane(PlaneMCU plane, List<McuWaypoint>waypointsToLink)
     {
         // Get the flight leader entity
@@ -738,16 +690,6 @@ public abstract class Flight extends Unit
     public double getClosestContactWithPlayerDistance()
     {
         return this.closestContactWithPlayerDistance;
-    }
-
-    public int getMissionStartTimeAdjustment()
-    {
-        return missionStartTimeAdjustment;
-    }
-
-    public void setMissionStartTimeAdjustment(int missionStartTimeAdjustment)
-    {
-        this.missionStartTimeAdjustment = missionStartTimeAdjustment;
     }
 
     public void setClosestContactWithPlayerDistance(double newClosestDistance)

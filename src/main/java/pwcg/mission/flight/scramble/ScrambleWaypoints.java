@@ -3,6 +3,8 @@ package pwcg.mission.flight.scramble;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -48,8 +50,9 @@ public class ScrambleWaypoints
 		int InitialWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointDistanceKey);
 		startCoords = MathUtils.calcNextCoord(flight.getAirfield().getTakeoffLocation().getPosition().copy(), takeoffOrientation, InitialWaypointDistance);
 
-		int initialWaypointAltitude = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointAltitudeKey);
-		startCoords.setYPos(initialWaypointAltitude);
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int initialWaypointAltitude = productSpecificConfiguration.getInitialWaypointAltitude();
+        startCoords.setYPos(initialWaypointAltitude);
 
 		McuWaypoint startWP = WaypointFactory.createPatrolWaypointType();
 		startWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);

@@ -2,23 +2,17 @@ package pwcg.mission.flight;
 
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.PlaneType.PlaneSize;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.plane.PlaneMCU;
 
 public class RunwayPlacer
-{
-	private Campaign campaign;
-	
-    public RunwayPlacer (Campaign campaign)
+{	
+    public RunwayPlacer ()
     {
-    	this.campaign = campaign;
     }
 
     public List<Coordinate> getFlightTakeoffPositions(Flight flight) throws PWCGException
@@ -55,9 +49,11 @@ public class RunwayPlacer
         {
             offsetForBigPlane = 25;
         }
-        
-        ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
-        int takeoffSpacing = configManager.getIntConfigParam(ConfigItemKeys.TakeoffSpacingKey) + offsetForBigPlane;
+
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int takeoffSpacing = productSpecificConfiguration.getTakeoffSpacing();
+        takeoffSpacing += offsetForBigPlane;
+
         return takeoffSpacing;
     }
 

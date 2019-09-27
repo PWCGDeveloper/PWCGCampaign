@@ -7,7 +7,7 @@ import pwcg.campaign.ww2.config.BoSMissionAltitudeGenerator;
 
 public class MissionAltitudeGeneratorFactory
 {
-    public static IMissionAltitudeGenerator createMissionAltitudeGeneratorFactory()
+    public static IMissionAltitudeGenerator createMissionAltitudeGenerator()
     {
         if (PWCGContextManager.isRoF())
         {

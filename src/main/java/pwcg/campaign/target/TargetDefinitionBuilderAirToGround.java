@@ -67,7 +67,8 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
 
         targetDefinition.setTargetType(targetType);
         targetDefinition.setAttackingSquadron(flightInformation.getSquadron());
-        targetDefinition.setTargetName(TargetDefinitionBuilderUtils.buildTargetName(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()), targetType));
+        targetDefinition.setTargetName(TargetDefinitionBuilderUtils.buildTargetName(
+                flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()), targetType));
 
         determineAttackingAndDefendingCountries(targetType);
         

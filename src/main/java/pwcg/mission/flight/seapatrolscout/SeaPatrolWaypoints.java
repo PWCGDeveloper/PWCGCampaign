@@ -13,7 +13,7 @@ import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
 import pwcg.mission.flight.waypoint.ClimbWaypointGenerator;
 import pwcg.mission.flight.waypoint.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.flight.waypoint.WaypointGeneratorBase;
+import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -50,7 +50,7 @@ public class SeaPatrolWaypoints
         McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
         waypoints.add(approachWaypoint);
 
-        WaypointGeneratorBase.setWaypointsNonFighterPriority(waypoints);
+        WaypointGeneratorUtils.setWaypointsNonFighterPriority(waypoints);
 
         return waypoints;
     }

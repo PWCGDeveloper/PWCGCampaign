@@ -42,7 +42,7 @@ public class FlightPositionHelperPlayerStart
     {
         PlaneMCU flightLeader = flight.getFlightLeader();
 
-        RunwayPlacer runwayPlacer = new RunwayPlacer(campaign);
+        RunwayPlacer runwayPlacer = new RunwayPlacer();
         List<Coordinate> takeOffPositions = runwayPlacer.getFlightTakeoffPositions(flight);
 
         for (PlaneMCU plane : flight.getPlanes())
@@ -68,6 +68,6 @@ public class FlightPositionHelperPlayerStart
 
     private void createPlanePositionCloseToFirstWP() throws PWCGException
     {
-        FlightPositionHelperAirStart.createPlanePositionCloseToFirstWP(flight);
+        FlightPositionHelperAirStart.createPlayerPlanePositionCloseToFirstWP(flight);
     }
 }

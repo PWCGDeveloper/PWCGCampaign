@@ -13,15 +13,9 @@ import pwcg.mission.mcu.BaseFlightMcu;
 
 public class VirtualWaypointPlotter
 {
-
-    /**
-     * @throws PWCGException 
-     * @
-     */
     public List<VirtualWayPointCoordinate> plotCoordinatesByMinute(Flight flight) throws PWCGException 
     {        
         List<BaseFlightMcu> allMissionPoints = flight.getAllMissionPoints();
-        PlaneMCU leadPlane = flight.getPlanes().get(0);
 
         // For the case where a mission has no WPs
         if (allMissionPoints == null || allMissionPoints.size() == 0)
@@ -29,15 +23,12 @@ public class VirtualWaypointPlotter
             return this.generateVwpForNoWaypoints(flight);
         }
         
-        double cruiseSpeedKPH = leadPlane.getCruisingSpeed();
+        double cruiseSpeedKPH = flight.getFlightCruisingSpeed();
                         
         // Meters every minute
         double movementPerInterval = (cruiseSpeedKPH / 60) * 1000;
         
         List<VirtualWayPointCoordinate> flightPath = new ArrayList<VirtualWayPointCoordinate>();
-
-        // If the start is delayed then we add some hover time at the beginning
-        this.adjustForDelayedStart(flight);
         
         // Traverse each leg of the virtual flight, generating virtual coordinates
         // for each leg
@@ -48,6 +39,7 @@ public class VirtualWaypointPlotter
             Coordinate legStartPosition = null;
             if (lastMissionPoint == null)
             {
+                PlaneMCU leadPlane = flight.getPlanes().get(0);
                 legStartPosition = leadPlane.getPosition().copy();
             }
             else
@@ -66,15 +58,7 @@ public class VirtualWaypointPlotter
 
         return flightPath;
     }
-    
-    
-    
-    /**
-     * @param movementPerInterval
-     * @param missionPoint
-     * @param legStartPosition
-     * @throws PWCGException
-     */
+
     private List<VirtualWayPointCoordinate> generateVwpForLeg(
                     int wpIndex,
                     double movementPerInterval, 
@@ -122,32 +106,6 @@ public class VirtualWaypointPlotter
         }
         
         return flightPathForLeg;
-    }
-        
-        
-    /**
-     * Generate fake VWPs at the aircraft start point to simulate delayed departure
-     * 
-     * @param missionStartTimeAdjustment
-     * @param legStartPosition
-     * @param orientation
-     * @return
-     */
-    private List<VirtualWayPointCoordinate> adjustForDelayedStart(Flight flight)
-    {
-        List<VirtualWayPointCoordinate> delayedStartLeg = new ArrayList<VirtualWayPointCoordinate>();
-        
-        PlaneMCU leadPlane = flight.getPlanes().get(0);
-
-        // Plane start is delayed - just hover at the start point
-        for (int i = 0; i < flight.getMissionStartTimeAdjustment(); ++i)
-        {
-            VirtualWayPointCoordinate virtualWayPointCoordinate = createVwpCoordinate(0, leadPlane.getPosition(), leadPlane.getOrientation());
-
-            delayedStartLeg.add(virtualWayPointCoordinate);
-        }
-        
-        return delayedStartLeg;
     }
 
     private List<VirtualWayPointCoordinate> generateVwpForNoWaypoints(Flight flight)

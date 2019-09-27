@@ -46,11 +46,6 @@
       "label": "Ground Attack Altitude",
       "help": "Altitude atground attack"
     },
-    "GroundAttackIngressDistance": {
-      "value": "10000",
-      "label": "Ground Attack Ingress Distance",
-      "help": "Distance between target and setup waypoints (meters)"
-    },
     "PatrolDistanceBase": {
       "value": "20",
       "label": "Patrol Distance Base",

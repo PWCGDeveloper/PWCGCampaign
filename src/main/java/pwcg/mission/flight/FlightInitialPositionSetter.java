@@ -24,7 +24,7 @@ public class FlightInitialPositionSetter
         }
         else
         {
-            FlightPositionHelperAirStart.createPlanePositionCloseToFirstWP(flight);
+            FlightPositionHelperAirStart.createAiPlanePositionAirStartPosition(flight);
         }
     }
     
