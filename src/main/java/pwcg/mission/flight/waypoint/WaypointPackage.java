@@ -53,48 +53,74 @@ public abstract class WaypointPackage
         flightWaypointsByPlane.put(flight.getPlanes().get(0).getIndex(), waypoints);    
     }
 
+    
+    public McuWaypoint getWaypointByActionForLeadPlane(WaypointAction requestedAction)
+    {
+        for (McuWaypoint waypoint : getWaypointsForLeadPlane())
+        {
+            if (waypoint.getWpAction() == requestedAction)
+            {
+                return waypoint;
+            }
+        }
+        
+        return null;
+    }
+
+    public McuWaypoint getWaypointByActionForLeadPlaneWithFailure(WaypointAction requestedAction) throws PWCGException
+    {
+        McuWaypoint rendezvousWP = getWaypointByActionForLeadPlane(requestedAction);
+        if (rendezvousWP == null)
+        {
+            throw new PWCGException("No waypoint found for action: " + requestedAction);
+        }
+        return rendezvousWP;
+    }
+
     public void duplicateWaypointsForFlight(Flight flight) throws PWCGException
     {
-        List<McuWaypoint> waypoints = flightWaypointsByPlane.get(flight.getPlanes().get(0).getIndex());
-        
+        resetFollowingPlaneWaypoints(flight);        
+        List<McuWaypoint> waypoints = flightWaypointsByPlane.get(flight.getPlanes().get(0).getIndex());        
         for (McuWaypoint waypoint : waypoints)
         {
-            // Generate the formation for each plane at this position
-            FormationGenerator formationGenerator = new FormationGenerator();
-            List<Coordinate> planePositionsAtWP = formationGenerator.createPlaneInitialPosition(
-                            flight.getPlanes(), 
-                            waypoint.getPosition().copy(),
-                            waypoint.getOrientation().copy()); 
+            resetFollowingPLanePositionForWaypoint(flight, waypoint);
+        }
+    }
 
-            // Cycle through the planes, creating  new WP for each plane
-            for (int planeIndex = 0; planeIndex < flight.getPlanes().size(); ++planeIndex)
-            {
-                // The flight leader will use the original WP set
-                if (planeIndex > 0)
-                {
-                    PlaneMCU plane = flight.getPlanes().get(planeIndex);
-                    
-                    // Add a new WP set for each plane
-                    if (!flightWaypointsByPlane.containsKey(plane.getIndex()))
-                    {
-                        List<McuWaypoint> planeWayPoints = new ArrayList<McuWaypoint>();
-                        flightWaypointsByPlane.put(plane.getIndex(), planeWayPoints);
-                    }
-                    
-                    // Create a new WP for this plane
-                    List<McuWaypoint> planeWayPoints = flightWaypointsByPlane.get(plane.getIndex());
+    private void resetFollowingPlaneWaypoints(Flight flight)
+    {
+        for (int planeIndex = 1; planeIndex < flight.getPlanes().size(); ++planeIndex)
+        {
+            PlaneMCU plane = flight.getPlanes().get(planeIndex);
+            List<McuWaypoint> planeWayPoints = new ArrayList<McuWaypoint>();
+            flightWaypointsByPlane.put(plane.getIndex(), planeWayPoints);
+        }
+    }
+    
+    private void resetFollowingPLanePositionForWaypoint(Flight flight, McuWaypoint waypoint) throws PWCGException
+    {
+        FormationGenerator formationGenerator = new FormationGenerator();
+        List<Coordinate> planePositionsAtWP = formationGenerator.createPlaneInitialPosition(
+                        flight.getPlanes(), 
+                        waypoint.getPosition().copy(),
+                        waypoint.getOrientation().copy()); 
 
-                    // The WP is the same as the original with a slightly different position
-                    McuWaypoint planeWaypoint = waypoint.copy();
-                    planeWaypoint.setPosition(planePositionsAtWP.get(planeIndex));
-                    
-                    // Offset WP location based on formation generator
-                    planeWaypoint.setPosition(planePositionsAtWP.get(planeIndex).copy());
-                    
-                    // Add the WP to this plane's WP set
-                    planeWayPoints.add(planeWaypoint);
-                }
-            }
+        for (int planeIndex = 1; planeIndex < flight.getPlanes().size(); ++planeIndex)
+        {
+            PlaneMCU plane = flight.getPlanes().get(planeIndex);
+            
+            // Create a new WP for this plane
+            List<McuWaypoint> planeWayPoints = flightWaypointsByPlane.get(plane.getIndex());
+
+            // The WP is the same as the original with a slightly different position
+            McuWaypoint planeWaypoint = waypoint.copy();
+            planeWaypoint.setPosition(planePositionsAtWP.get(planeIndex));
+            
+            // Offset WP location based on formation generator
+            planeWaypoint.setPosition(planePositionsAtWP.get(planeIndex).copy());
+            
+            // Add the WP to this plane's WP set
+            planeWayPoints.add(planeWaypoint);
         }
     }
 }

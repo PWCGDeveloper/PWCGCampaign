@@ -51,7 +51,7 @@ public class VirtualEscortFlight extends Flight
     protected List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) 
     {
         List<McuWaypoint> waypoints = new ArrayList<McuWaypoint>();
-        for (McuWaypoint escortedWaypoint : escortedFlight.getAllWaypoints())
+        for (McuWaypoint escortedWaypoint : escortedFlight.getAllFlightWaypoints())
         {
             double altitude = escortedWaypoint.getPosition().getYPos() + 400.0;
 

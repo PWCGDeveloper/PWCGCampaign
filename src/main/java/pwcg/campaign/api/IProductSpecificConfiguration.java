@@ -43,4 +43,6 @@ public interface IProductSpecificConfiguration
     int getAircraftSpacingHorizontal();
     int getAircraftSpacingVertical();
     int getTakeoffSpacing();
+    int getRendezvousDistanceFromFront();
+    int getAdditionalAltitudeForEscort();
 }

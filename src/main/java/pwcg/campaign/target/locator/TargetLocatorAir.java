@@ -3,19 +3,17 @@ package pwcg.campaign.target.locator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.FrontLinePoint;
-import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.intercept.InterceptAiCoordinateGenerator;
 import pwcg.mission.flight.intercept.InterceptPlayerCoordinateGenerator;
+import pwcg.mission.flight.waypoint.BehindFriendlyLinesPositionCalculator;
 
 public class TargetLocatorAir
 {
@@ -83,15 +81,12 @@ public class TargetLocatorAir
 
     public Coordinate getPlayerEscortRendezvousCoordinate() throws PWCGException
     {
-        Coordinate nearbyEnemyFrontPoint = getFrontCoordinate();
-        FrontLinesForMap frontLines = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(flightInformation.getCampaign().getDate());
-        FrontLinePoint nearbyFriendlyFrontPoint = frontLines.findCloseFrontPositionForSide(nearbyEnemyFrontPoint, 15000, getFriendlySide());
-        
-        double angle = MathUtils.calcAngle(nearbyEnemyFrontPoint, nearbyFriendlyFrontPoint.getPosition());
-
+        Coordinate nearbyEnemyFrontPosition = getFrontCoordinate();
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        Coordinate rendezvousLocation = MathUtils.calcNextCoord(nearbyFriendlyFrontPoint.getPosition(), angle, productSpecific.getCloseToFrontDistance());
-        return rendezvousLocation;
+        int rendezvousDistanceFromFront = productSpecific.getRendezvousDistanceFromFront();
+        Coordinate homePosition = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
+        return BehindFriendlyLinesPositionCalculator.getPointBehindFriendlyLines(
+                nearbyEnemyFrontPosition, homePosition, rendezvousDistanceFromFront, flightInformation.getCampaign().getDate(), getFriendlySide());
     }
 
     public Coordinate getEscortForPlayerRendezvousCoordinate()

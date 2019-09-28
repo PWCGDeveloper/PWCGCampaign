@@ -339,7 +339,7 @@ public abstract class Flight extends Unit
         }
     }
 
-    public List<McuWaypoint> getAllWaypoints()
+    public List<McuWaypoint> getAllFlightWaypoints()
     {
         List<McuWaypoint> returnWaypoints = waypointPackage.getWaypointsForLeadPlane();
         if (waypointPackage.getWaypointsForLeadPlane().size() == 0)
@@ -421,7 +421,7 @@ public abstract class Flight extends Unit
         double flightWPDistance = 0.0;
         int i = 0;
         McuWaypoint prevWP = null;
-        for (McuWaypoint wp : getAllWaypoints())
+        for (McuWaypoint wp : getAllFlightWaypoints())
         {
             if (i == 0)
             {
@@ -793,14 +793,14 @@ public abstract class Flight extends Unit
     public Coordinate findFirstWaypointPosition()
     {
         // after we have created the mission, move the bombers such that they start near the ingress point
-        List <McuWaypoint> wayPoints = getAllWaypoints();
+        List <McuWaypoint> wayPoints = getAllFlightWaypoints();
         return wayPoints.get(0).getPosition().copy();
      }
 
     public Coordinate findIngressWaypointPosition()
     {
         // after we have created the mission, move the bombers such that they start near the ingress point
-        List <McuWaypoint> wayPoints = getAllWaypoints();
+        List <McuWaypoint> wayPoints = getAllFlightWaypoints();
         for (McuWaypoint waypoint : wayPoints)
         {
             if (waypoint.getName().equals(WaypointType.INGRESS_WAYPOINT.getName()))
@@ -834,7 +834,7 @@ public abstract class Flight extends Unit
     public int getMaximumFlightAltitude()
     {
         int altitude = 100;
-        List<McuWaypoint> waypoints = getAllWaypoints();
+        List<McuWaypoint> waypoints = getAllFlightWaypoints();
         for (McuWaypoint waypoint : waypoints)
         {
             int thisAlt = new Double(waypoint.getPosition().getYPos()).intValue();

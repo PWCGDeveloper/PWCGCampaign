@@ -28,14 +28,14 @@ public class MissionGenerator
         return mission;
     }
 
-    private Mission buildMission(MissionHumanParticipants participatingPlayers, FlightTypes flightType) throws PWCGException 
+    private Mission buildMission(MissionHumanParticipants participatingPlayers, FlightTypes overrideFlightType) throws PWCGException 
     {
         campaign.setCurrentMission(null);        
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox();
         Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
         campaign.setCurrentMission(mission);
-        mission.generate(flightType);
+        mission.generate(overrideFlightType);
         
         return mission;
     }

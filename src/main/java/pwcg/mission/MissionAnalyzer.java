@@ -84,7 +84,7 @@ public class MissionAnalyzer
             writer.newLine();
             writer.write("  Player Contact    : " + flight.getFirstContactWithPlayer());
             writer.newLine();
-            List<McuWaypoint> waypoints = flight.getAllWaypoints();
+            List<McuWaypoint> waypoints = flight.getAllFlightWaypoints();
             
             if (dumpWP)
             {

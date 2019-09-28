@@ -36,6 +36,8 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     private static final int AIRCRAFT_SPACING_HORIZONTAL = 300;
     private static final int AIRCRAFT_SPACING_VERTICAL = 200;
     private static final int TAKEOFF_SPACING = 40;
+    private static final int RENDEZVOUS_DISTANCE_FROM_FRONT = 20000;
+    private static final int ADDITIONAL_ALTITUDE_FOR_ESCORT = 800;
 
     @Override
     public boolean useWaypointGoal()
@@ -424,5 +426,17 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     public int getTakeoffSpacing()
     {
         return TAKEOFF_SPACING;
+    }
+
+    @Override
+    public int getRendezvousDistanceFromFront()
+    {
+        return RENDEZVOUS_DISTANCE_FROM_FRONT;
+    }
+
+    @Override
+    public int getAdditionalAltitudeForEscort()
+    {
+        return ADDITIONAL_ALTITUDE_FOR_ESCORT;
     }
 }

@@ -67,7 +67,7 @@ public class PlayerEscortWaypoints
 		Coordinate coord = new Coordinate();
 		coord.setXPos(flight.getTargetCoords().getXPos() + 50.0);
 		coord.setZPos(flight.getTargetCoords().getZPos());
-		coord.setYPos(flight.getTargetCoords().getYPos() + 500.0);
+		coord.setYPos(flight.getFlightAltitude());
 
 		McuWaypoint rendezvousWaypoint = WaypointFactory.createRendezvousWaypointType();
 		rendezvousWaypoint.setTriggerArea(McuWaypoint.COMBAT_AREA);		

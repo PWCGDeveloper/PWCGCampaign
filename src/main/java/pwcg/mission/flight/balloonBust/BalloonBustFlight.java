@@ -39,4 +39,5 @@ public class BalloonBustFlight extends Flight
     {
         this.createSimpleTargetAssociations();
     }
+
 }

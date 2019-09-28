@@ -109,7 +109,7 @@ public abstract class GroundTargetAttackFlight extends Flight
     {
         List<BaseFlightMcu> allMissionPoints = new ArrayList<BaseFlightMcu>();
         
-        List<McuWaypoint> allWaypoints = this.getAllWaypoints();
+        List<McuWaypoint> allWaypoints = this.getAllFlightWaypoints();
         for (McuWaypoint waypoint : allWaypoints)
         {
             allMissionPoints.add(waypoint);

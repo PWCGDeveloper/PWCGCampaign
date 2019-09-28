@@ -98,7 +98,7 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
 
 
     public void setTarget(int target) {
-        super.setTarget(target);;
+        super.setTarget(target);
     }
 
 	public boolean isTargetWaypoint() {

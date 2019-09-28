@@ -28,7 +28,7 @@ public class MissionWaypointIconBuilder
     {        
     	waypointIcons.clear();
     	
-        List<McuWaypoint> waypoints = playerFlight.getAllWaypoints();
+        List<McuWaypoint> waypoints = playerFlight.getAllFlightWaypoints();
 
         McuIcon prevIcon = null;
 

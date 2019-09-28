@@ -69,17 +69,17 @@ public class EscortForPlayerFlight extends Flight
         getMissionBeginUnit().linkToMissionBegin(getActivationTimer().getIndex());
         getActivationTimer().setTarget(getFormationTimer().getIndex());
         
-        McuWaypoint ingressWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllWaypoints(), WaypointType.INGRESS_WAYPOINT.getName());
+        McuWaypoint ingressWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllFlightWaypoints(), WaypointType.INGRESS_WAYPOINT.getName());
         ingressWP.setTarget(getCoverTimer().getIndex());
 
-        McuWaypoint egressWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllWaypoints(), WaypointType.EGRESS_WAYPOINT.getName());
+        McuWaypoint egressWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllFlightWaypoints(), WaypointType.EGRESS_WAYPOINT.getName());
         egressWP.setTarget(forceCompleteTimer.getIndex());
 
     }
 
     public void createCover() throws PWCGException 
     {
-        McuWaypoint ingressWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllWaypoints(), 
+        McuWaypoint ingressWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllFlightWaypoints(), 
                         WaypointType.INGRESS_WAYPOINT.getName());
 
         Coordinate coverPosition = ingressWP.getPosition().copy();
@@ -124,7 +124,7 @@ public class EscortForPlayerFlight extends Flight
         PlaneMCU flightLeader = getFlightLeader();
 
         // Initial position is at the ingress WP
-        McuWaypoint ingressWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllWaypoints(), 
+        McuWaypoint ingressWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllFlightWaypoints(), 
                         WaypointType.INGRESS_WAYPOINT.getName());
 
         Coordinate coverPosition = ingressWP.getPosition().copy();

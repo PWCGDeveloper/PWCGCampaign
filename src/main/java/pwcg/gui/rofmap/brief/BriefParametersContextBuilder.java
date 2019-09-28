@@ -55,7 +55,6 @@ public class BriefParametersContextBuilder
 		     
 		     prevWaypoint = waypoint;
 		}
-		
 	}
 
 	private void addPlayerFlightWaypoint(McuWaypoint prevWaypoint, McuWaypoint waypoint) throws PWCGException

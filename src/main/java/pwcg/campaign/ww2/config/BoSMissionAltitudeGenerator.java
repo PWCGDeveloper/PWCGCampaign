@@ -71,6 +71,10 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
         {
             return determineArtillerySpotFlightAltitude();
         }
+        else if (flightType == FlightTypes.ESCORT)
+        {
+            return determineHighAltitudeBombingAltitude() + 500;
+        }
         else
         {
             return determineDefaultFlightAltitude(campaign);

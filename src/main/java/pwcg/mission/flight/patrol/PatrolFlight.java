@@ -59,4 +59,5 @@ public class PatrolFlight extends Flight
     {
         this.createSimpleTargetAssociations();
     }
+
 }

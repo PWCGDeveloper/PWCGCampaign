@@ -1,12 +1,15 @@
 package pwcg.mission.flight.waypoint;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class IngressWaypointNearFront implements IIngressWaypoint
@@ -46,7 +49,14 @@ public class IngressWaypointNearFront implements IIngressWaypoint
         }
         else
         {
-            return getBestIngressPositionBehindFriendlyLines();
+            if (flight.getFlightType() == FlightTypes.ESCORT)
+            {
+                return getBestIngressPositionForEscortRendezvous();
+            }
+            else
+            {
+                return getBestIngressPositionBehindFriendlyLines();
+            }
         }
     }
 
@@ -65,12 +75,33 @@ public class IngressWaypointNearFront implements IIngressWaypoint
     private Coordinate getBestIngressPositionBehindFriendlyLines() throws PWCGException 
     {
         FrontLinesForMap frontLinesForMap =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        Coordinate closestFriendlyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(flight.getTargetCoords(), flight.getSquadron().determineSide());
         Coordinate closestEnemyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(flight.getTargetCoords(), flight.getSquadron().determineSide().getOppositeSide());
-        
-        double angleFurtherBehindFriendltLines = MathUtils.calcAngle(closestEnemyFrontLinesToTarget, closestFriendlyFrontLinesToTarget);
-        
-        Coordinate ingressCoordinate = MathUtils.calcNextCoord(closestFriendlyFrontLinesToTarget, angleFurtherBehindFriendltLines, WaypointGeneratorUtils.INGRESS_DISTANCE_FROM_FRONT);
-        return ingressCoordinate;
+        Coordinate closestFriendlyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(flight.getTargetCoords(), flight.getSquadron().determineSide());
+        int distanceBehindFrontForIngress = getDistanceFromFront();
+
+        return BehindFriendlyLinesPositionCalculator.getPointBehindFriendlyLines(
+                closestEnemyFrontLinesToTarget, closestFriendlyFrontLinesToTarget, distanceBehindFrontForIngress, campaign.getDate(), flight.getSquadron().determineSide());
+    }
+
+    private Coordinate getBestIngressPositionForEscortRendezvous() throws PWCGException 
+    {
+        FrontLinesForMap frontLinesForMap =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        Coordinate closestEnemyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(flight.getTargetCoords(), flight.getSquadron().determineSide().getOppositeSide());
+        int distanceBehindFrontForIngress = getDistanceFromFront();
+
+        return BehindFriendlyLinesPositionCalculator.getPointBehindFriendlyLines(
+                closestEnemyFrontLinesToTarget, flight.getHomePosition(), distanceBehindFrontForIngress, campaign.getDate(), flight.getSquadron().determineSide());
+    }
+
+    private int getDistanceFromFront()
+    {
+        int distanceBehindFrontForIngress =  WaypointGeneratorUtils.INGRESS_DISTANCE_FROM_FRONT;
+        if (flight.getFlightType() == FlightTypes.ESCORT)
+        {
+            IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+            int rendezvousDistanceFromFront = productSpecific.getRendezvousDistanceFromFront();
+            distanceBehindFrontForIngress += rendezvousDistanceFromFront;
+        }
+        return distanceBehindFrontForIngress;
     }
 }

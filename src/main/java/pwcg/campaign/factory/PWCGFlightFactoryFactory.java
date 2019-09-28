@@ -30,4 +30,17 @@ public class PWCGFlightFactoryFactory
             }
         }
     }
+    
+    public static FlightFactory createSpecialFlightFactory(Campaign campaign)
+    {
+        if (PWCGContextManager.isRoF())
+        {
+            return new RoFSpecialFlightFactory(campaign);
+        }
+        else
+        {
+            return new BoSSpecialFlightFactory(campaign);
+        }
+    }
+
 }

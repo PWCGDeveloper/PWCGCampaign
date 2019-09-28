@@ -4,36 +4,46 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class PlayerEscortFlightLinker
 {
-    protected PlayerEscortFlight escortFlight = null;
-    protected Flight escortedFlight = null;
+    private PlayerEscortFlight escortFlight = null;
+    private Flight escortedFlight = null;
 
     public PlayerEscortFlightLinker(PlayerEscortFlight escortFlight, Flight escortedFlight)
     {
         this.escortFlight = escortFlight;;
-        this.escortedFlight = escortedFlight;;
+        this.escortedFlight = escortedFlight;
     }
 
     public void linkEscortedFlight() throws PWCGException
     {
-        createRendezvousTargetAssociations();
+        linkRendezvousWPToCover();
+        linkIngressToRendezvous();
         createSeparationTargetAssociations();
         linkCover();
     }
 
-    private void createRendezvousTargetAssociations()
+    private void linkRendezvousWPToCover() throws PWCGException
+    {
+        McuWaypoint rendezvousWP = escortFlight.getWaypointPackage().getWaypointByActionForLeadPlaneWithFailure(WaypointAction.WP_ACTION_RENDEZVOUS);
+        McuWaypoint escortedIngressWP = escortedFlight.getAllFlightWaypoints().get(0);
+        rendezvousWP.setTarget(escortFlight.getCoverTimer().getIndex());
+        escortFlight.getCoverTimer().setTarget(escortFlight.getEscortedFlightWaypointTimer().getIndex());
+        escortFlight.getEscortedFlightWaypointTimer().setTarget(escortedIngressWP.getIndex());
+    }
+
+    private void linkIngressToRendezvous()
     {
         McuWaypoint prevWP = null;
         for (McuWaypoint nextWP : escortFlight.getWaypointPackage().getWaypointsForLeadPlane())
         {
             if (nextWP.getName().equals(WaypointType.RENDEZVOUS_WAYPOINT.getName()))
             {
-                linkRendezvousWPToCover(nextWP);
                 prevWP.setTarget(nextWP.getIndex());
                 break;
             }
@@ -45,14 +55,6 @@ public class PlayerEscortFlightLinker
 
             prevWP = nextWP;
         }
-    }
-
-    private void linkRendezvousWPToCover(McuWaypoint rendezvousWP)
-    {
-        McuWaypoint escortedIngressWP = escortedFlight.getAllWaypoints().get(0);
-        rendezvousWP.setTarget(escortFlight.getCoverTimer().getIndex());
-        escortFlight.getCoverTimer().setTarget(escortFlight.getEscortedFlightWaypointTimer().getIndex());
-        escortFlight.getEscortedFlightWaypointTimer().setTarget(escortedIngressWP.getIndex());
     }
 
     private void createSeparationTargetAssociations()
@@ -77,7 +79,7 @@ public class PlayerEscortFlightLinker
 
     private void linkSeparationToEgressWP(McuWaypoint nextWP)
     {
-        List<McuWaypoint> escortedWaypoints = escortedFlight.getAllWaypoints();
+        List<McuWaypoint> escortedWaypoints = escortedFlight.getAllFlightWaypoints();
         McuWaypoint escortedEgress = WaypointGeneratorUtils.findWaypointByType(escortedWaypoints, WaypointType.EGRESS_WAYPOINT.getName());
         escortedEgress.setTarget(escortFlight.getForceCompleteTimer().getIndex());
         escortFlight.getForceCompleteTimer().setTarget(escortFlight.getEgressTimer().getIndex());

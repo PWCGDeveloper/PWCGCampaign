@@ -29,7 +29,7 @@ public class PlayerEscortBuilder
         {
             MissionBeginUnit missionBeginUnitEscort = new MissionBeginUnit(playerFlightInformation.getDepartureAirfield().getPosition());
             
-            McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllWaypoints(), 
+            McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllFlightWaypoints(), 
                     WaypointType.INGRESS_WAYPOINT.getName());
 
             if (rendezvousWP != null)

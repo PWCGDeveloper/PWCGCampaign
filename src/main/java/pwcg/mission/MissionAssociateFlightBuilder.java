@@ -8,6 +8,7 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.escort.EscortFlightBuilder;
 import pwcg.mission.flight.escort.NeedsEscortDecider;
 import pwcg.mission.flight.escort.PlayerEscortFlight;
+import pwcg.mission.flight.escort.PlayerEscortFlightAdjuster;
 import pwcg.mission.flight.escort.PlayerEscortFlightLinker;
 import pwcg.mission.flight.escort.PlayerEscortedFlightBuilder;
 import pwcg.mission.flight.intercept.InterceptOpposingFlight;
@@ -84,6 +85,9 @@ public class MissionAssociateFlightBuilder
         PlayerEscortFlight escortFlight = (PlayerEscortFlight)flight;
         PlayerEscortedFlightBuilder playerEscortedFlightBuilder = new PlayerEscortedFlightBuilder();
         Flight escortedFlight = playerEscortedFlightBuilder.createEscortedFlight(escortFlight);
+        
+        PlayerEscortFlightAdjuster playerEscortFlightAdjuster = new PlayerEscortFlightAdjuster(escortFlight, escortedFlight);
+        playerEscortFlightAdjuster.adjustEscortedFlightForEscort();
         
         PlayerEscortFlightLinker playerEscortFlightLinker = new PlayerEscortFlightLinker(escortFlight, escortedFlight);
         playerEscortFlightLinker.linkEscortedFlight();
