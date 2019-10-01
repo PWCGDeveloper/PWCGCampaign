@@ -75,7 +75,7 @@ public class GroundUnitValidator
             else if (linkedUnit instanceof GroundUnit)
             {
                 GroundUnit target = (GroundUnit)linkedUnit;
-                assert(target.getVehicles().size() > 1);
+                assert(target.getVehicles().size() > 0);
             }
         }
     }

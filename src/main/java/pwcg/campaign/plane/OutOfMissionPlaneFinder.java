@@ -25,6 +25,11 @@ public class OutOfMissionPlaneFinder
         
         if (planeType == null)
         {
+            planeType = findEarliestPlaneTypeForSquadron(squadron, date);
+        }
+
+        if (planeType == null)
+        {
             throw new PWCGException("Unable to find any plane for squadron " + squadron.determineDisplayName(date) + " on date " + DateUtils.getDateStringYYYYMMDD(date));
         }
 
@@ -49,6 +54,11 @@ public class OutOfMissionPlaneFinder
         PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().findAnyPlaneTypeForCountryAndDate(
                 squadron.determineSquadronCountry(date), date);
         return planeType;        
-        
+    }
+
+    private PlaneType findEarliestPlaneTypeForSquadron(Squadron squadron, Date date) throws PWCGException
+    {
+        PlaneType planeType = squadron.determineEarliestPlane(date);
+        return planeType;
     }
 }
