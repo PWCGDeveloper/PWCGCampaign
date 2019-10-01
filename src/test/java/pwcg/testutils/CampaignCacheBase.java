@@ -108,7 +108,6 @@ public abstract class CampaignCacheBase implements ICampaignCache
 	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 6);
 	            
-	            
 	            addMorePilotsForCoop(campaign, "Enemy Fighter", "Leyitenant", 10111011);
 	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 7);

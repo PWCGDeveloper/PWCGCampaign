@@ -9,19 +9,7 @@ public class SquadronUnavailablePlaneMapper
     {
         for (SquadronPlaneAssignment planeAssignment : squadron.getPlaneAssignments())
         {
-            if (planeAssignment.getArchType().equals("tempest"))
-            {
-                planeAssignment.setArchType("spitfire");
-            }
-            else  if (planeAssignment.getArchType().equals("p51"))
-            {
-                planeAssignment.setArchType("p47");
-            }
-            else  if (planeAssignment.getArchType().equals("p38"))
-            {
-                planeAssignment.setArchType("p47");
-            }
-            else  if (planeAssignment.getArchType().equals("b25"))
+            if (planeAssignment.getArchType().equals("b25"))
             {
                 planeAssignment.setArchType("a20");
             }

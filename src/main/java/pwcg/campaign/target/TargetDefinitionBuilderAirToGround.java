@@ -49,7 +49,7 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         {
             return TacticalTarget.TARGET_BALLOON;
         }
-        else if (flightType == FlightTypes.ANTI_SHIPPING)
+        else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
         {
             return TacticalTarget.TARGET_SHIPPING;
         }

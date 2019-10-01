@@ -1,0 +1,25 @@
+{
+  "type": "p38j25",
+  "archType": "p38",
+  "side": "ALLIED",
+  "primaryUsedBy": [
+    "USA"
+  ],
+  "displayName": "P-38J-25",
+  "script": "LuaScripts\\WorldObjects\\Planes\\p38j25.txt",
+  "model": "graphics\\planes\\p38j25\\p38j25.mgm",
+  "desc": "",
+  "cruisingSpeed": 360,
+  "climbOutRate": 2000,
+  "goodness": 65,
+  "range": 1500,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER",
+    "ROLE_ATTACK"
+  ],
+  "introduction": "19440101",
+  "endProduction": "19450601",
+  "withdrawal": "19450601"
+}

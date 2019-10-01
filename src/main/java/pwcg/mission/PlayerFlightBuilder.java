@@ -7,6 +7,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.factory.FlightFactory;
+import pwcg.mission.flight.factory.IFlightTypeFactory;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.ground.unittypes.infantry.GroundPillBoxFlareUnit;
 import pwcg.mission.mcu.McuCheckZone;
@@ -34,7 +35,7 @@ public class PlayerFlightBuilder
 
     private void buildFlight(FlightTypes flightType, Squadron squadron) throws PWCGException
     {
-        FlightFactory flightFactory = PWCGFlightFactoryFactory.createFlightFactory(campaign);
+        FlightFactory flightFactory = new FlightFactory(campaign);
         playerFlight = flightFactory.buildFlight(mission, squadron, flightType, true);        
         triggerLinkedUnitCZFromMyFlight(playerFlight);
         validatePlayerFlight();
@@ -42,10 +43,10 @@ public class PlayerFlightBuilder
 
     private FlightTypes finalizeFlightType(FlightTypes flightType, Squadron squadron) throws PWCGException
     {
-        FlightFactory flightFactory = PWCGFlightFactoryFactory.createFlightFactory(campaign);
+        IFlightTypeFactory flightTypeFactory = PWCGFlightFactoryFactory.createFlightFactory(campaign);
         if (flightType == FlightTypes.ANY)
         {
-            flightType = flightFactory.buildFlight(squadron, true);
+            flightType = flightTypeFactory.getFlightType(squadron, true);
         }
         return flightType;
     }

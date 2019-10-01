@@ -38,13 +38,16 @@ import pwcg.campaign.ww2.plane.payload.aircraft.Lagg3S29Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Ma202Ser8Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Me262APayload;
 import pwcg.campaign.ww2.plane.payload.aircraft.MiG3Ser24Payload;
+import pwcg.campaign.ww2.plane.payload.aircraft.P38J25Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.P39L1Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.P40E1Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.P47D28Payload;
+import pwcg.campaign.ww2.plane.payload.aircraft.P51D15Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Pe2S35Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Pe2S87Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.SpitfireMkIXePayload;
 import pwcg.campaign.ww2.plane.payload.aircraft.SpitfireMkVbPayload;
+import pwcg.campaign.ww2.plane.payload.aircraft.TempestMKVS2Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.U2VSPayload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Yak1S127Payload;
 import pwcg.campaign.ww2.plane.payload.aircraft.Yak1S69Payload;
@@ -184,7 +187,11 @@ public class BoSPayloadFactory implements IPayloadFactory
         {
             return new MiG3Ser24Payload(planeType);
         }
-        else if (attributeMapping == BosPlaneAttributeMapping.P39L1)
+        else if (attributeMapping == BosPlaneAttributeMapping.P38_J25)
+        {
+            return new P38J25Payload(planeType);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.P39_L1)
         {
             return new P39L1Payload(planeType);
         }
@@ -195,6 +202,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.P47_D28)
         {
             return new P47D28Payload(planeType);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.P51_D15)
+        {
+            return new P51D15Payload(planeType);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.PE2_S35)
         {
@@ -215,6 +226,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.SPITFIRE_MKIXE)
         {
             return new SpitfireMkIXePayload(planeType);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.TEMPEST_MKVS2)
+        {
+            return new TempestMKVS2Payload(planeType);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.YAK1_S69)
         {

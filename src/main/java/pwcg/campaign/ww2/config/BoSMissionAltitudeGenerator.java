@@ -27,21 +27,21 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
         {
             return determineLowAltitudeBombingAltitude();
         }
-        else if (flightType == FlightTypes.GROUND_ATTACK)
+        else if (flightType == FlightTypes.GROUND_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_ATTACK)
         {
             return determineGroundAttackAltitude();
         }
-        else if (flightType == FlightTypes.BOMB)
+        else if (flightType == FlightTypes.BOMB || flightType == FlightTypes.ANTI_SHIPPING_BOMB)
         {
             return determineHighAltitudeBombingAltitude();
+        }
+        else if (flightType == FlightTypes.DIVE_BOMB || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
+        {
+            return determineDiveBombFlightAltitude();
         }
         else if (flightType == FlightTypes.STRATEGIC_BOMB)
         {
             return determineStrategicAltitudeBombingAltitude();
-        }
-        else if (flightType == FlightTypes.DIVE_BOMB)
-        {
-            return determineDiveBombFlightAltitude();
         }
         else if (flightType == FlightTypes.PARATROOP_DROP || flightType == FlightTypes.CARGO_DROP)
         {

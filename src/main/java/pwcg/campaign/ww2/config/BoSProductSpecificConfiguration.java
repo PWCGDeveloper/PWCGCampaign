@@ -22,7 +22,6 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     private static final int CROSS_DIAMETER = 25000;
     private static final int CREEPING_LINE_LENGTH = 15000;
     private static final int CREEPING_LINE_CROSS = 8000;
-    private static final int MAX_SEA_LANE_DISTANCE = 100000;
     private static final int INTERCEPT_RADIUS = 60000;
     private static final int CLOSE_TO_FRONT_DISTANCE = 60000;
     private static final int MAX_DISTANCE_FROM_PLAYER_BOX = 60000;
@@ -201,7 +200,7 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
         {
             initialDistance = 30000;
         }
-        else if (flightType == FlightTypes.ANTI_SHIPPING)
+        else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
         {
             initialDistance = 50000;                    
         }
@@ -281,7 +280,7 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
         {
             initialDistance = 100000;
         }
-        else if (flightType == FlightTypes.ANTI_SHIPPING)
+        else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
         {
             initialDistance = 100000;                    
         }
@@ -343,12 +342,6 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     {
         return CREEPING_LINE_CROSS;
     }
-
-	@Override
-	public int getMaxSeaLaneDistance()
-	{
-		return MAX_SEA_LANE_DISTANCE;
-	}	
 
     @Override
     public int getInterceptRadius()

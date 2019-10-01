@@ -1,18 +1,10 @@
 package pwcg.testutils;
 
-import java.io.File;
-
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGenerator;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.location.CoordinateBox;
-import pwcg.mission.Mission;
-import pwcg.mission.MissionHumanParticipants;
-import pwcg.mission.flight.FlightTypes;
 
 public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCache
 {    
@@ -48,29 +40,6 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
         makeProfile(SquadrontTestProfile.RAF_184_PROFILE);
         makeProfile(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE);
         makeProfile(SquadrontTestProfile.REGIMENT_11_PROFILE);
-        makeWrittenProfile();
-    }
-    
-    private void makeWrittenProfile() throws PWCGException
-    {
-        String pwcgCampaignDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir();
-        String writtenDir = pwcgCampaignDir + TEST_CAMPAIGN_NAME;
-        File writtenDirFile = new File(writtenDir);
-        if (!writtenDirFile.exists())
-        {
-            Campaign writtenCampaign = makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
-            writtenCampaign.write();
-            
-            MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
-        	for (SquadronMember player: writtenCampaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
-        	{
-        		participatingPlayers.addSquadronMember(player);
-        	}
-
-            CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-            Mission mission = new Mission(writtenCampaign, participatingPlayers, missionBorders);
-            mission.generate(FlightTypes.PATROL);
-            mission.finalizeMission();
-        }
+        makeProfile(SquadrontTestProfile.REGIMENT_321_PROFILE);
     }
 }

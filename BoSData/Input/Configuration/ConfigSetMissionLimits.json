@@ -96,16 +96,6 @@
       "label": "Randomize Planes Per Side",
       "help": "Choose to randomize planes per side for more varied missions"
     },
-    "SquadronGeneratesMissionModifier": {
-      "value": "20",
-      "label": "Flight Generation Odds Modifier",
-      "help": "Downward modifier for quiet times"
-    },
-    "SquadronGeneratesMissionOdds": {
-      "value": "100",
-      "label": "Flight Generation Odds",
-      "help": "Odds that a squadron generates a flight"
-    },
     "TimeOnArtillerySpot": {
       "value": "5",
       "label": "Artillery Spot Time",

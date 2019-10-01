@@ -32,9 +32,9 @@ public class IngressWaypointNearTarget implements IIngressWaypoint
 
     private Coordinate getIngressWaypointNearTarget() throws PWCGException 
     {
-        double angleToIntercept = MathUtils.calcAngle(flight.getHomePosition(), flight.getTargetCoords());
-        double distanceToIntercept = MathUtils.calcDist(flight.getHomePosition(), flight.getTargetCoords());
-        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getHomePosition(), angleToIntercept, distanceToIntercept / 2);
+        double angleToTarget = MathUtils.calcAngle(flight.getHomePosition(), flight.getTargetCoords());
+        double distanceToTarget = MathUtils.calcDist(flight.getHomePosition(), flight.getTargetCoords());
+        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getHomePosition(), angleToTarget, distanceToTarget / 2);
         
         double distance = MathUtils.calcDist(flight.getTargetCoords(), ingressCoordinate);
         if (distance < (AttackMcuSequence.CHECK_ZONE_DEFAULT_DISTANCE + 10000))

@@ -2,7 +2,6 @@ package pwcg.mission.flight.seapatrolantishipping;
 
 import java.util.List;
 
-import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.campaign.target.locator.ShippingLane;
 import pwcg.campaign.target.locator.ShippingLaneManager;
@@ -53,11 +52,8 @@ public class SeaAntiShippingPackage implements IFlightPackage
 
 	private ShippingLane getEnemyShippingLane() throws PWCGException 
 	{
-	    
-        ShippingLaneManager shippingLaneManager = PWCGContextManager.getInstance().getCurrentMap().getShippingLaneManager();
-        Coordinate referenceCoordinate = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-        Side enemySide = flightInformation.getSquadron().determineEnemySide();
-        ShippingLane selectedShippingLane = shippingLaneManager.getTargetShippingLane(referenceCoordinate, enemySide);;
+        ShippingLaneManager shippingLaneManager = PWCGContextManager.getInstance().getCurrentMap().getShippingLaneManager();        
+        ShippingLane selectedShippingLane = shippingLaneManager.getClosestShippingLane(flightInformation.getMission().getMissionBorders().getCenter());
 	    return selectedShippingLane;
 	}
 }

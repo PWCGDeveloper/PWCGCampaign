@@ -23,7 +23,7 @@ public class BombingFlight extends GroundTargetAttackFlight
 	public void createUnitMission() throws PWCGException  
 	{
 		super.createUnitMission();
-		super.createAttackArea(this.getMaximumFlightAltitude());
+		super.createAttackArea(flightInformation.getAltitude());
 	}
 
 	@Override

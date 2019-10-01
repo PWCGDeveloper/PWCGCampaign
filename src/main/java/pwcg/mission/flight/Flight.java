@@ -199,7 +199,9 @@ public abstract class Flight extends Unit
             flightInformation.getFlightType() == FlightTypes.LOW_ALT_BOMB ||
             flightInformation.getFlightType() == FlightTypes.GROUND_ATTACK ||
             flightInformation.getFlightType() == FlightTypes.DIVE_BOMB ||
-            flightInformation.getFlightType() == FlightTypes.ANTI_SHIPPING ||
+            flightInformation.getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB || 
+            flightInformation.getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK || 
+            flightInformation.getFlightType() == FlightTypes.ANTI_SHIPPING_DIVE_BOMB ||
             flightInformation.getFlightType() == FlightTypes.STRATEGIC_BOMB)
         {
             return true;
@@ -829,22 +831,6 @@ public abstract class Flight extends Unit
     public int getFlightAltitude()
     {
         return flightInformation.getAltitude();
-    }
-    
-    public int getMaximumFlightAltitude()
-    {
-        int altitude = 100;
-        List<McuWaypoint> waypoints = getAllFlightWaypoints();
-        for (McuWaypoint waypoint : waypoints)
-        {
-            int thisAlt = new Double(waypoint.getPosition().getYPos()).intValue();
-            if (thisAlt > altitude)
-            {
-                altitude = thisAlt;
-            }
-        }
-        
-        return altitude;
     }
 
     public boolean isLowAltFlightType()

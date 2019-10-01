@@ -52,7 +52,10 @@ public class SeaPatrolPackage implements IFlightPackage
         ShippingLane selectedShippingLane = null;
         
         ShippingLaneManager shippingLaneManager = PWCGContextManager.getInstance().getCurrentMap().getShippingLaneManager();
-        selectedShippingLane = shippingLaneManager.getTargetShippingLane(referenceCoordinate, flightInformation.getSquadron().getCountry().getSide());
+        selectedShippingLane = shippingLaneManager.getTargetShippingLane(
+                referenceCoordinate, 
+                flightInformation.getSquadron().determineSquadronRange(flightInformation.getCampaign().getDate()), 
+                flightInformation.getSquadron().getCountry().getSide());
         
         return selectedShippingLane;
     }

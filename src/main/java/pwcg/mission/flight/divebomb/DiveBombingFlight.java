@@ -13,8 +13,8 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class DiveBombingFlight extends GroundTargetAttackFlight
 {
-    static private int DIVE_BOMB_ALT = 1700;
-    static private int DIVE_BOMB_ATTACK_TIME = 180;
+    static public int DIVE_BOMB_ALT = 1700;
+    static public int DIVE_BOMB_ATTACK_TIME = 180;
 
     public DiveBombingFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
     {

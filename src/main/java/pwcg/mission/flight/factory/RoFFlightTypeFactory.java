@@ -1,11 +1,7 @@
 package pwcg.mission.flight.factory;
 
-import java.util.Date;
-
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
@@ -15,19 +11,20 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 
 
-public class RoFFlightFactory extends FlightFactory
+public class RoFFlightTypeFactory implements IFlightTypeFactory
 {
-    public RoFFlightFactory (Campaign campaign) 
+    protected Campaign campaign;
+    
+    public RoFFlightTypeFactory (Campaign campaign) 
     {
-        super(campaign);
+        this.campaign = campaign;
     }
 
 
     @Override
-    protected FlightTypes getActualFlightType(Squadron squadron, Date date, boolean isMyFlight) 
-                    throws PWCGException
+    public FlightTypes getFlightType(Squadron squadron, boolean isMyFlight) throws PWCGException
     {
-        Role missionRole = squadron.getSquadronRoles().selectRoleForMission(date);
+        Role missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
 
         if (missionRole == Role.ROLE_BOMB)
         {
@@ -66,7 +63,7 @@ public class RoFFlightFactory extends FlightFactory
         }
         else
         {
-            throw new PWCGMissionGenerationException("No valid role for squadron: " + squadron.determineDisplayName(date));
+            throw new PWCGMissionGenerationException("No valid role for squadron: " + squadron.determineDisplayName(campaign.getDate()));
         }
     }
 
@@ -80,7 +77,6 @@ public class RoFFlightFactory extends FlightFactory
         int balloonBustMissionOdds = 0;
         int balloonDefenseMissionOdds = 0;
         int escortMissionOdds = 0;
-        int scrambleMissionOdds = 0;
         int patrolMissionOdds = 0;
         int lowAltPatrolMissionOdds = 0;
         int lowAltCapMissionOdds = 0;
@@ -104,9 +100,7 @@ public class RoFFlightFactory extends FlightFactory
                             + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedBalloonDefenseMissionKey);
             escortMissionOdds = balloonDefenseMissionOdds
                             + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedEscortMissionKey);
-            scrambleMissionOdds = escortMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedScrambleMissionKey);
-            patrolMissionOdds = scrambleMissionOdds
+            patrolMissionOdds = escortMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedPatrolMissionKey);
             lowAltPatrolMissionOdds = patrolMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedLowAltPatrolMissionKey);
@@ -124,9 +118,7 @@ public class RoFFlightFactory extends FlightFactory
                             + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisBalloonDefenseMissionKey);
             escortMissionOdds = balloonDefenseMissionOdds
                             + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisEscortMissionKey);
-            scrambleMissionOdds = escortMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisScrambleMissionKey);
-            patrolMissionOdds = scrambleMissionOdds
+            patrolMissionOdds = escortMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisPatrolMissionKey);
             lowAltPatrolMissionOdds = patrolMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisLowAltPatrolMissionKey);
@@ -164,17 +156,6 @@ public class RoFFlightFactory extends FlightFactory
             if (isPlayerFlight)
             {
                 flightType = FlightTypes.ESCORT;
-            }
-            else
-            {
-                flightType = FlightTypes.PATROL;
-            }
-        }
-        else if (missionOdds < scrambleMissionOdds)
-        {
-            if (isPlayerFlight)
-            {
-                flightType = FlightTypes.SCRAMBLE;
             }
             else
             {
@@ -260,18 +241,6 @@ public class RoFFlightFactory extends FlightFactory
     protected FlightTypes getStrategicBomberFlightType() 
     {
         FlightTypes flightType = FlightTypes.STRATEGIC_BOMB;
-
-        FrontMapIdentifier mapId = PWCGContextManager.getInstance().getCurrentMap().getMapIdentifier();
-        if (mapId == FrontMapIdentifier.CHANNEL_MAP)
-        {
-            int missionOddsRoll = RandomNumberGenerator.getRandom(100);
-            int antiShippingMissionOdds = 20;
-            if (missionOddsRoll < antiShippingMissionOdds)
-            {
-                flightType = FlightTypes.ANTI_SHIPPING;
-            }
-        }
-
         return flightType;
     }
 
@@ -282,7 +251,7 @@ public class RoFFlightFactory extends FlightFactory
         int missionOddsRoll = RandomNumberGenerator.getRandom(100);
         if (missionOddsRoll < antiShippingOdds)
         {
-            flightType = FlightTypes.ANTI_SHIPPING;
+            flightType = FlightTypes.ANTI_SHIPPING_ATTACK;
         }
         else
         {
@@ -294,6 +263,6 @@ public class RoFFlightFactory extends FlightFactory
 
     private FlightTypes getLargeSeaPlaneFlightType() 
     {
-        return FlightTypes.ANTI_SHIPPING;
+        return FlightTypes.ANTI_SHIPPING_BOMB;
     }
 }

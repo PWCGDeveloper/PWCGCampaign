@@ -13,8 +13,8 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class GroundAttackFlight extends GroundTargetAttackFlight
 {
-    static private int GROUND_ATTACK_ALT = 500;
-    static private int GROUND_ATTACK_TIME = 360;
+    static public int GROUND_ATTACK_ALT = 500;
+    static public int GROUND_ATTACK_TIME = 360;
     	
     public GroundAttackFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
     {

@@ -28,7 +28,7 @@ public class FlightSizeCalculatorTest
 	public void calcPlanesInFlightGroundAttackTest() throws PWCGException
 	{
 		calcPlanesInFlightGroundAttack(FlightTypes.GROUND_ATTACK);
-		calcPlanesInFlightGroundAttack(FlightTypes.ANTI_SHIPPING);
+		calcPlanesInFlightGroundAttack(FlightTypes.ANTI_SHIPPING_ATTACK);
 
 	}
 

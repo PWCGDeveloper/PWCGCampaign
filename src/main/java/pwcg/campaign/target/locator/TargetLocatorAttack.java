@@ -189,10 +189,8 @@ public class TargetLocatorAttack
 
     private void getTargetLocationShippingLanes() throws PWCGException
     {
-        ShippingLane shippingLane = PWCGContextManager.getInstance().getCurrentMap().getShippingLaneManager().getTargetShippingLane(
-                missionCenter, 
-                targetDefinition.getTargetCountry().getSide().getOppositeSide());
-
+        ShippingLaneManager shippingLaneManager = PWCGContextManager.getInstance().getCurrentMap().getShippingLaneManager();        
+        ShippingLane shippingLane = shippingLaneManager.getClosestShippingLane(missionCenter);
         if (shippingLane != null)
         {
             targetLocation = shippingLane.getShippingLaneBox().getCoordinateInBox();

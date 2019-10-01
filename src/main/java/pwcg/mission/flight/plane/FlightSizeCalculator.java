@@ -32,13 +32,14 @@ public class FlightSizeCalculator
     		randomNumPlanes = 0;
     		adjustMinMax = false;
     	}
-    	else if (flightType == FlightTypes.GROUND_ATTACK || flightType == FlightTypes.ANTI_SHIPPING)
+    	else if (flightType == FlightTypes.GROUND_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_ATTACK)
     	{
     		minNumPlanes = configManager.getIntConfigParam(ConfigItemKeys.GroundAttackMinimumKey);
     		randomNumPlanes = configManager.getIntConfigParam(ConfigItemKeys.GroundAttackAdditionalKey) + 1;
     	}
     	else if (flightType == FlightTypes.BOMB || flightType == FlightTypes.DIVE_BOMB || 
-    			 flightType == FlightTypes.LOW_ALT_BOMB || flightType == FlightTypes.STRATEGIC_BOMB)
+    			 flightType == FlightTypes.LOW_ALT_BOMB || flightType == FlightTypes.STRATEGIC_BOMB ||
+    			 flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
     	{
     		minNumPlanes = configManager.getIntConfigParam(ConfigItemKeys.BombingMinimumKey);
     		randomNumPlanes = configManager.getIntConfigParam(ConfigItemKeys.BombingAdditionalKey) + 1;

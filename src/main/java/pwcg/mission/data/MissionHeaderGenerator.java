@@ -31,7 +31,7 @@ public class MissionHeaderGenerator
 
         
         missionHeader.setDuty("" + myFlight.getFlightType());  // String to enum and back
-        missionHeader.setAltitude(myFlight.getMaximumFlightAltitude()); 
+        missionHeader.setAltitude(myFlight.getFlightAltitude()); 
         
         missionHeader.setMapName(PWCGContextManager.getInstance().getCurrentMap().getMapName()); 
 

@@ -75,7 +75,7 @@ public class TargetBuilderTest
     public void createShippingTest() throws PWCGException
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_SHIPPING);
-        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.ANTI_SHIPPING);
+        Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.ANTI_SHIPPING_BOMB);
         TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
         targetBuilder.buildTarget();
         GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();

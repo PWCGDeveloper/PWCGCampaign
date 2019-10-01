@@ -1,7 +1,5 @@
 package pwcg.mission.flight.factory;
 
-import java.util.Date;
-
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -37,7 +35,7 @@ import pwcg.mission.flight.seapatrolscout.SeaPatrolPackage;
 import pwcg.mission.flight.spy.SpyExtractPackage;
 import pwcg.mission.flight.transport.TransportPackage;
 
-public abstract class FlightFactory
+public class FlightFactory
 {
     protected Campaign campaign;
     
@@ -149,7 +147,7 @@ public abstract class FlightFactory
         {
             flightPackage = new HomeDefensePackage(flightInformation);
         }
-        else if (flightType == FlightTypes.ANTI_SHIPPING)
+        else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
         {
             flightPackage = new SeaAntiShippingPackage(flightInformation);
         }
@@ -174,20 +172,7 @@ public abstract class FlightFactory
         return flight;
     }
 
-    public FlightTypes buildFlight(Squadron squadron, boolean isMyFlight) 
-                    throws PWCGException
-    {
-        TestFlightFactory testFlightFactory = new TestFlightFactory(campaign);
-        FlightTypes testFlightType = testFlightFactory.getActualFlightType(squadron, campaign.getDate(), isMyFlight);
-        if (testFlightType != FlightTypes.ANY)
-        {
-            return testFlightType;
-        }
-        
-        return getActualFlightType(squadron, campaign.getDate(), isMyFlight);
-    }
-
-    protected FlightInformation createFlightInformation(
+    private FlightInformation createFlightInformation(
     		Mission mission,
     		Squadron squadron,
     		FlightTypes flightType,
@@ -204,6 +189,4 @@ public abstract class FlightFactory
         }
         return flightInformation;
     }
-
-    protected abstract FlightTypes getActualFlightType(Squadron squadron,  Date date, boolean isMyFlight) throws PWCGException;
 }

@@ -1,9 +1,6 @@
 package pwcg.mission.flight.factory;
 
-import java.util.Date;
-
 import pwcg.campaign.Campaign;
-import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
@@ -13,17 +10,19 @@ import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 
-public class BoSFlightFactory extends FlightFactory
+public class BoSFlightTypeFactory implements IFlightTypeFactory
 {
-    public BoSFlightFactory (Campaign campaign) 
+    protected Campaign campaign;
+    
+    public BoSFlightTypeFactory (Campaign campaign) 
     {
-        super(campaign);
+        this.campaign = campaign;
     }
 
     @Override
-    protected FlightTypes getActualFlightType(Squadron squadron, Date date, boolean isPlayerFlight) throws PWCGException
+    public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
     {
-        Role missionRole = squadron.getSquadronRoles().selectRoleForMission(date);
+        Role missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
 
         if (missionRole == Role.ROLE_DIVE_BOMB)
         {
@@ -47,7 +46,7 @@ public class BoSFlightFactory extends FlightFactory
         }
         else
         {
-            throw new PWCGMissionGenerationException("No valid role for squadron: " + squadron.determineDisplayName(date));
+            throw new PWCGMissionGenerationException("No valid role for squadron: " + squadron.determineDisplayName(campaign.getDate()));
         }
     }
 
@@ -58,7 +57,6 @@ public class BoSFlightFactory extends FlightFactory
         int offensiveMissionOdds = 0;
         int interceptMissionOdds = 0;
         int escortMissionOdds = 0;
-        int scrambleMissionOdds = 0;
         int patrolMissionOdds = 0;
         int lowAltPatrolMissionOdds = 0;
         int lowAltCapMissionOdds = 0;
@@ -70,9 +68,7 @@ public class BoSFlightFactory extends FlightFactory
                             + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedInterceptMissionKey);
             escortMissionOdds = interceptMissionOdds
                             + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedEscortMissionKey);
-            scrambleMissionOdds = escortMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedScrambleMissionKey);
-            patrolMissionOdds = scrambleMissionOdds
+            patrolMissionOdds = escortMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedPatrolMissionKey);
             lowAltPatrolMissionOdds = patrolMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedLowAltPatrolMissionKey);
@@ -86,9 +82,7 @@ public class BoSFlightFactory extends FlightFactory
                             + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisInterceptMissionKey);
             escortMissionOdds = interceptMissionOdds
                             + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisEscortMissionKey);
-            scrambleMissionOdds = escortMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisScrambleMissionKey);
-            patrolMissionOdds = scrambleMissionOdds
+            patrolMissionOdds = escortMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisPatrolMissionKey);
             lowAltPatrolMissionOdds = patrolMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisLowAltPatrolMissionKey);
@@ -111,17 +105,6 @@ public class BoSFlightFactory extends FlightFactory
             if (isPlayerFlight)
             {
                 flightType = FlightTypes.ESCORT;
-            }
-            else
-            {
-                flightType = FlightTypes.PATROL;
-            }
-        }
-        else if (missionOdds < scrambleMissionOdds)
-        {
-            if (isPlayerFlight && campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
-            {
-                flightType = FlightTypes.SCRAMBLE;
             }
             else
             {

@@ -41,7 +41,7 @@ public class GuiMissionInitiator
         {
             if (campaign.getCurrentMission() == null)
             {
-                MissionGenerator missionGenerator = new MissionGenerator(participatingPlayers);
+                MissionGenerator missionGenerator = new MissionGenerator(campaign);
                 if (isLoneWolf)
                 {
                     mission = missionGenerator.makeLoneWolfMission(participatingPlayers);

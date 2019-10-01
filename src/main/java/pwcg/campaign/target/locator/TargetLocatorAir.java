@@ -74,8 +74,8 @@ public class TargetLocatorAir
     public Coordinate getSeaLaneCoordinate() throws PWCGException
     {
         Mission mission = flightInformation.getMission();
-        ShippingLaneManager shippingLaneManager = PWCGContextManager.getInstance().getCurrentMap().getShippingLaneManager();
-        ShippingLane selectedShippingLane = shippingLaneManager.getTargetShippingLane(mission.getMissionBorders().getCenter(), getEnemySide());
+        ShippingLaneManager shippingLaneManager = PWCGContextManager.getInstance().getCurrentMap().getShippingLaneManager();        
+        ShippingLane selectedShippingLane = shippingLaneManager.getClosestShippingLane(mission.getMissionBorders().getCenter());
         return selectedShippingLane.getShippingLaneBorders().getCoordinateInBox();
     }
 

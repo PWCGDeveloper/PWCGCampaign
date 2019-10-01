@@ -120,7 +120,6 @@ public class FlightInformationFactory
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
         flightInformation.setTargetDefinition(targetDefinition);
     }
-    
 
     private static void buildPlanes(FlightInformation playerFlightInformation) throws PWCGException
     {

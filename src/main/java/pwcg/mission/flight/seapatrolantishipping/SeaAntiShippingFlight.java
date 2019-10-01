@@ -8,13 +8,15 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.GroundTargetAttackFlight;
+import pwcg.mission.flight.attack.GroundAttackFlight;
+import pwcg.mission.flight.divebomb.DiveBombingFlight;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class SeaAntiShippingFlight extends GroundTargetAttackFlight
 {
-    static private int SEA_ATTACK_ALT = 600;
-    static private int SEA_ATTACK_TIME = 360;
+    static private int SEA_ATTACK_TIME = 180;
 
     
     public SeaAntiShippingFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
@@ -25,7 +27,7 @@ public class SeaAntiShippingFlight extends GroundTargetAttackFlight
 	public void createUnitMission() throws PWCGException  
 	{
         super.createUnitMission();
-        super.createAttackArea(SEA_ATTACK_ALT);
+        super.createAttackArea(getAttackAltitude());
 	}
 
 	@Override
@@ -48,6 +50,27 @@ public class SeaAntiShippingFlight extends GroundTargetAttackFlight
 	                    "Engage any enemy shipping that you encounter";
 
 	    return objective;
+	}
+	
+	private int getAttackAltitude() throws PWCGException
+	{
+	    if (flightInformation.getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB)
+	    {
+	        return flightInformation.getAltitude();
+	    }
+	    else if (flightInformation.getFlightType() == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
+        {
+            return DiveBombingFlight.DIVE_BOMB_ALT;
+        }
+	    else if (flightInformation.getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK)
+        {
+	        return GroundAttackFlight.GROUND_ATTACK_ALT;
+        }
+	    else
+	        
+	    {
+	        throw new PWCGException ("Unexpected anti shipping flight type " + flightInformation.getFlightType());
+	    }
 	}
 
 }

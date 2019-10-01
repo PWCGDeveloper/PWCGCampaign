@@ -1,7 +1,5 @@
 package pwcg.mission.flight.factory;
 
-import java.util.Date;
-
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.plane.Role;
@@ -12,17 +10,19 @@ import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 
-public class BoSFlightCoopFactory extends FlightFactory
+public class BoSFlightCoopFactory implements IFlightTypeFactory
 {
+    protected Campaign campaign;
+    
     public BoSFlightCoopFactory (Campaign campaign) 
     {
-        super(campaign);
+        this.campaign = campaign;
     }
 
     @Override
-    protected FlightTypes getActualFlightType(Squadron squadron, Date date, boolean isPlayerFlight) throws PWCGException
+    public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
     {
-        Role missionRole = squadron.getSquadronRoles().selectRoleForMission(date);
+        Role missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
 
         if (missionRole == Role.ROLE_DIVE_BOMB)
         {
@@ -46,7 +46,7 @@ public class BoSFlightCoopFactory extends FlightFactory
         }
         else
         {
-            throw new PWCGMissionGenerationException("No valid role for squadron: " + squadron.determineDisplayName(date));
+            throw new PWCGMissionGenerationException("No valid role for squadron: " + squadron.determineDisplayName(campaign.getDate()));
         }
     }
 

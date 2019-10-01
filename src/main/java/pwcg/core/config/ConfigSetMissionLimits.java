@@ -14,8 +14,6 @@ public class ConfigSetMissionLimits
         configSet.addConfigItem(ConfigItemKeys.MissionBoxMinDistanceFromBaseKey, new ConfigItem("40000"));
         configSet.addConfigItem(ConfigItemKeys.MissionBoxMaxDistancePercentRangeKey, new ConfigItem("40"));
 		
-        configSet.addConfigItem(ConfigItemKeys.SquadronGeneratesMissionOddsKey, new ConfigItem("100"));
-        configSet.addConfigItem(ConfigItemKeys.SquadronGeneratesMissionModifierKey, new ConfigItem("20"));
         configSet.addConfigItem(ConfigItemKeys.AlliedPlanesToSpawnMaxKey, new ConfigItem("6"));
         configSet.addConfigItem(ConfigItemKeys.AxisPlanesToSpawnMaxKey, new ConfigItem("10"));
         configSet.addConfigItem(ConfigItemKeys.RandomizePlanesPerSideKey, new ConfigItem("1"));		

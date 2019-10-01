@@ -1,0 +1,24 @@
+{
+  "type": "tempestmkvs2",
+  "archType": "tempest",
+  "side": "ALLIED",
+  "primaryUsedBy": [
+    "BRITAIN"
+  ],
+  "displayName": "Tempest Mk.V ser.2",
+  "script": "LuaScripts\\WorldObjects\\Planes\\tempestmkvs2.txt",
+  "model": "graphics\\planes\\tempestmkvs2\\tempestmkvs2.mgm",
+  "desc": "",
+  "cruisingSpeed": 390,
+  "climbOutRate": 1700,
+  "goodness": 80,
+  "range": 700,
+  "isFlyable": true,
+  "planeSize": "PLANE_SIZE_SMALL",
+  "roles": [
+    "ROLE_FIGHTER"
+  ],
+  "introduction": "19430801",
+  "endProduction": "19450601",
+  "withdrawal": "19450601"
+}

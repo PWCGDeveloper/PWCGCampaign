@@ -146,13 +146,14 @@ public class PlayerFlightTypeBoSFighterTest
                 failed = true;
             }
             
+            double distanceMissioNCenterToTarget = MathUtils.calcDist(missionCenter, aiFlight.getTargetCoords());
+            if (distanceMissioNCenterToTarget > 50000)
+            {
+                failed = true;
+            }
+
             for (McuWaypoint waypoint : aiFlight.getWaypointPackage().getWaypointsForLeadPlane())
             {
-                double distanceMissioNCenterToTarget = MathUtils.calcDist(missionCenter, aiFlight.getTargetCoords());
-                if (distanceMissioNCenterToTarget > 50000)
-                {
-                    failed = true;
-                }
 
                 if ((waypoint.getName().contains("Ingress")))
                 {

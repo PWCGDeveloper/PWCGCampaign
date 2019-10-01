@@ -71,7 +71,7 @@ public class Mission
         missionFrontLines = new MissionFrontLineIconBuilder(campaign, this);
     }
 
-    public void generate(FlightTypes overrideFlightType) throws PWCGException 
+    void generate(FlightTypes overrideFlightType) throws PWCGException 
     {
         validate();
 

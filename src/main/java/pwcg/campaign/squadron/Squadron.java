@@ -660,6 +660,13 @@ public class Squadron
         return skillNow;
 	}
 
+    public double determineSquadronRange(Date date) throws PWCGException 
+    {
+        double squadronRange = this.determineBestPlane(date).getRange() * 1000;
+        squadronRange *= 0.45;
+        return squadronRange;
+    }
+
 	public void setSkill(int skill) 
 	{
 		this.skill = skill;

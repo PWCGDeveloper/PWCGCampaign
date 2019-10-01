@@ -120,6 +120,5 @@
       "value": "2",
       "label": "Mission Spacing Min Days Dec",
       "help": "Minimum number of days between missions"
-    }
-  }
+    }  }
 }

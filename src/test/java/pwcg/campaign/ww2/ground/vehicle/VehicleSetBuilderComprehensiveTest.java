@@ -8,10 +8,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
+import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.vehicle.IVehicle;
@@ -49,9 +48,8 @@ public class VehicleSetBuilderComprehensiveTest
     public void patrolFlightTest() throws PWCGException
     {
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
-    	CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        mission = new Mission(campaign, participatingPlayers, missionBorders);
-        mission.generate(FlightTypes.ANY);
+    	MissionGenerator missionGenerator = new MissionGenerator(campaign);
+    	mission = missionGenerator.makeMissionFromFlightType(participatingPlayers, FlightTypes.PATROL);
         mission.generateAllGroundUnitTypesForTest();
         mission.finalizeMission();
     }

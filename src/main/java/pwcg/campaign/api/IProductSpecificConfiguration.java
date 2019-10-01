@@ -34,7 +34,6 @@ public interface IProductSpecificConfiguration
     int getSmallMissionRadius();
     int getVerySmallMissionRadius();
     int getNumAssaultSegments(BattleSize battleSize);
-    int getMaxSeaLaneDistance();
     int getCloseToFrontDistance();
     int getMaxDistanceForVirtualFlightFromPlayerBox();
     int getMaxDistanceForVirtualFlightAirStart();

@@ -1,150 +1,72 @@
 package pwcg.mission;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.PWCGFlightFactoryFactory;
-import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.factory.FlightFactory;
+import pwcg.mission.flight.factory.IFlightTypeFactory;
 
 public class AiFlightBuilder
 {
     private Campaign campaign;
     private Mission mission;
-    private ConfigManager configManager;
 
     AiFlightBuilder (Campaign campaign, Mission mission)
     {
         this.campaign = campaign;
         this.mission = mission;
-        
-        configManager = campaign.getCampaignConfigManager();
     }
     
     private List<Flight> missionFlights = new ArrayList<Flight>();
 
-    public List<Flight> createAiFlights() throws PWCGException
-    {
-        MissionSquadronFinder missionSquadronFinder = new MissionSquadronFinder(campaign, mission);
-        missionSquadronFinder.findAiSquadronsForMission();
-        createFlightsForSquadrons(missionSquadronFinder.getAxisSquads());
-        createFlightsForSquadrons(missionSquadronFinder.getAlliedSquads());
-        return missionFlights;
-    }    
-
-    private void createFlightsForSquadrons(List<Squadron> squads) throws PWCGException 
+    public List<Flight> createAiFlights() throws PWCGException 
     {
         TestDriver testDriver = TestDriver.getInstance();
         if (testDriver.isCreatePlayerOnly())
         {
-            return;
+            return missionFlights;
         }
         
-        for (Squadron squadron : squads)
+        List<Squadron> aiSquadronsForMission = determineParticipatingSquadrons();
+        for (Squadron squadron : aiSquadronsForMission)
         {
-            if (!squadronWillGenerateAFlight(squadron))
-            {
-                continue;
-            }
-
-            FlightFactory flightFactory = PWCGFlightFactoryFactory.createFlightFactory(campaign);
-            FlightTypes flightType = flightFactory.buildFlight(squadron, false);
-            Flight flight = flightFactory.buildFlight(mission, squadron, flightType, false);
+            FlightTypes flightType = determineFlightType(squadron);
+            Flight flight = buildFlight(flightType, squadron);
             if (flight != null)
             {
                 missionFlights.add(flight);
             }
         }
+        return missionFlights;
     }
     
-    private boolean squadronWillGenerateAFlight(Squadron squadron) throws PWCGException
+    private List<Squadron> determineParticipatingSquadrons() throws PWCGException
     {
-        if (squadronHasPlayerFlight(squadron.getSquadronId()))
-        {
-            return false;
-        }
-
-        if (squadron.determineIsNightSquadron())
-        {
-            return false;
-        }
+        AiSquadronIncluder aiSquadronIncluder = new AiSquadronIncluder(mission);
+        List<Squadron> aiSquadronsForMission = aiSquadronIncluder.decideSquadronsForMission();
         
-        if (!squadronGeneratesFlightRandom())
-        {
-            return false;
-        }
+        return aiSquadronsForMission;
+    }    
 
-        if (!squadron.isSquadronViable(campaign))
-        {
-            return false;
-        }
-
-        return true;
-    }
-    
-    private boolean squadronHasPlayerFlight(int squadronId)
+    private FlightTypes determineFlightType(Squadron squadron) throws PWCGException 
     {
-    	for (Flight playerFlight: mission.getMissionFlightBuilder().getPlayerFlights())
-    	{
-            if (playerFlight.getSquadron().getSquadronId() == squadronId)
-            {
-                return true;
-            }
-
-    	}
-
-    	return false;
+        IFlightTypeFactory flightTypeFactory = PWCGFlightFactoryFactory.createFlightFactory(campaign);
+        FlightTypes flightType = flightTypeFactory.getFlightType(squadron, false);
+        return flightType;
     }
 
-    private boolean squadronGeneratesFlightRandom() throws PWCGException 
+    private Flight buildFlight(FlightTypes flightType, Squadron squadron) throws PWCGException
     {
-        int squadronGeneratesFlightOdds = configManager.getIntConfigParam(ConfigItemKeys.SquadronGeneratesMissionOddsKey);
-        int squadronGeneratesFlightModifier = configManager.getIntConfigParam(ConfigItemKeys.SquadronGeneratesMissionModifierKey);
-        
-        if (!isBattleForFlightGenerationOdds())
-        {
-            squadronGeneratesFlightOdds -= squadronGeneratesFlightModifier;
-        }
-        
-        int roll = RandomNumberGenerator.getRandom(100);
-        if (roll < squadronGeneratesFlightOdds)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public boolean isBattleForFlightGenerationOdds() throws PWCGException
-    {
-        for (SquadronMember player : campaign.getPersonnelManager().getFlyingPlayers().getSquadronMemberList())
-        {
-            Squadron squadron =  PWCGContextManager.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
-            FrontMapIdentifier map = campaign.getCampaignData().getCampaignMap();
-            Coordinate coordinate = squadron.determineCurrentPosition(campaign.getDate());
-            Date date = campaign.getDate();
-            if (PWCGContextManager.getInstance().getBattleManager().getBattleForCampaign(map, coordinate, date) != null)
-            {
-                return true;
-            }
-        }
-        
-        return false;
+        FlightFactory flightFactory = new FlightFactory(campaign);
+        Flight flight = flightFactory.buildFlight(mission, squadron, flightType, true);
+        return flight;        
     }
 
 }

@@ -16,6 +16,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorDO;
 import pwcg.mission.Mission;
+import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.testutils.CampaignCache;
@@ -218,9 +219,8 @@ public class CoopPlayerInclusionTest
 
     private void generateMission(MissionHumanParticipants participatingPlayers, FlightTypes flightType) throws PWCGException
     {
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        mission = new Mission(coopCampaign, participatingPlayers, missionBorders);
-        mission.generate(flightType);
+        MissionGenerator missionGenerator = new MissionGenerator(coopCampaign);
+        mission = missionGenerator.makeMission(participatingPlayers);
         mission.finalizeMission();
     }
     
