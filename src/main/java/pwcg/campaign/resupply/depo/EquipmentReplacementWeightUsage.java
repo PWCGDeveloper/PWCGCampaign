@@ -24,17 +24,20 @@ public class EquipmentReplacementWeightUsage
         
         for (Squadron squadron : squadronsForService)
         {
-            List<PlaneArchType> currentAircraftArchTypes = squadron.determineCurrentAircraftArchTypes(campaignDate);
-            for (PlaneArchType planeArchType : currentAircraftArchTypes)
+            if (squadron.isCanFly(campaignDate))
             {
-                if (!aircraftUsageByArchType.containsKey(planeArchType.getPlaneArchTypeName()))
+                List<PlaneArchType> currentAircraftArchTypes = squadron.determineCurrentAircraftArchTypes(campaignDate);
+                for (PlaneArchType planeArchType : currentAircraftArchTypes)
                 {
-                    aircraftUsageByArchType.put(planeArchType.getPlaneArchTypeName(), new Integer(0)); 
+                    if (!aircraftUsageByArchType.containsKey(planeArchType.getPlaneArchTypeName()))
+                    {
+                        aircraftUsageByArchType.put(planeArchType.getPlaneArchTypeName(), new Integer(0)); 
+                    }
+                    
+                    Integer numUsagesOfArchtype = aircraftUsageByArchType.get(planeArchType.getPlaneArchTypeName());
+                    ++numUsagesOfArchtype;
+                    aircraftUsageByArchType.put(planeArchType.getPlaneArchTypeName(), numUsagesOfArchtype);
                 }
-                
-                Integer numUsagesOfArchtype = aircraftUsageByArchType.get(planeArchType.getPlaneArchTypeName());
-                ++numUsagesOfArchtype;
-                aircraftUsageByArchType.put(planeArchType.getPlaneArchTypeName(), numUsagesOfArchtype);
             }
         }
         

@@ -10,9 +10,8 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContextManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
+import pwcg.mission.MissionGenerator;
 import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
@@ -51,13 +50,13 @@ public class PlayerFlightTypeCoopFighterTest
         {
         	Campaign campaign = campaigns.get(profile);
             PWCGContextManager.getInstance().setCampaign(campaign);
-            patrolFlightTestImpl(profile, campaign);
+            patrolFlightTestImpl(campaign);
         }
     }
     
-    private void patrolFlightTestImpl(SquadrontTestProfile profile, Campaign campaign) throws PWCGException
+    private void patrolFlightTestImpl(Campaign campaign) throws PWCGException
     {
-        generateMission(profile, campaign, FlightTypes.PATROL);
+        generateMission(campaign, FlightTypes.PATROL);
 
         PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
@@ -75,13 +74,13 @@ public class PlayerFlightTypeCoopFighterTest
         {
         	Campaign campaign = campaigns.get(profile);
             PWCGContextManager.getInstance().setCampaign(campaign);
-            lowAltPatrolFlightTestImpl(profile, campaign);
+            lowAltPatrolFlightTestImpl( campaign);
         }
     }
 
-    private void lowAltPatrolFlightTestImpl(SquadrontTestProfile profile, Campaign campaign) throws PWCGException
+    private void lowAltPatrolFlightTestImpl(Campaign campaign) throws PWCGException
     {
-        generateMission(profile, campaign, FlightTypes.LOW_ALT_PATROL);
+        generateMission(campaign, FlightTypes.LOW_ALT_PATROL);
 
         PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
@@ -99,13 +98,13 @@ public class PlayerFlightTypeCoopFighterTest
         {
         	Campaign campaign = campaigns.get(profile);
             PWCGContextManager.getInstance().setCampaign(campaign);
-            lowAltCapFlightTestImpl(profile, campaign);
+            lowAltCapFlightTestImpl(campaign);
         }
     }
 
-    private void lowAltCapFlightTestImpl(SquadrontTestProfile profile, Campaign campaign) throws PWCGException
+    private void lowAltCapFlightTestImpl(Campaign campaign) throws PWCGException
     {
-        generateMission(profile, campaign, FlightTypes.LOW_ALT_CAP);
+        generateMission(campaign, FlightTypes.LOW_ALT_CAP);
 
         InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
@@ -123,13 +122,13 @@ public class PlayerFlightTypeCoopFighterTest
         {
         	Campaign campaign = campaigns.get(profile);
             PWCGContextManager.getInstance().setCampaign(campaign);
-            interceptFlightTestImpl(profile, campaign);
+            interceptFlightTestImpl(campaign);
         }
     }
 
-    private void interceptFlightTestImpl(SquadrontTestProfile profile, Campaign campaign) throws PWCGException
+    private void interceptFlightTestImpl(Campaign campaign) throws PWCGException
     {
-        generateMission(profile, campaign, FlightTypes.INTERCEPT);
+        generateMission(campaign, FlightTypes.INTERCEPT);
 
         InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
@@ -147,13 +146,13 @@ public class PlayerFlightTypeCoopFighterTest
         {
         	Campaign campaign = campaigns.get(profile);
             PWCGContextManager.getInstance().setCampaign(campaign);
-            offensiveFlightTestImpl(profile, campaign);
+            offensiveFlightTestImpl(campaign);
         }
     }
 
-    private void offensiveFlightTestImpl(SquadrontTestProfile profile, Campaign campaign) throws PWCGException
+    private void offensiveFlightTestImpl(Campaign campaign) throws PWCGException
     {
-        generateMission(profile, campaign, FlightTypes.OFFENSIVE);
+        generateMission(campaign, FlightTypes.OFFENSIVE);
         
         OffensiveFlight flight = (OffensiveFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
@@ -165,11 +164,10 @@ public class PlayerFlightTypeCoopFighterTest
         verifyEnemyFlights(campaign);
     }
     
-    private void generateMission(SquadrontTestProfile profile, Campaign campaign, FlightTypes flightType) throws PWCGException
+    private void generateMission(Campaign campaign, FlightTypes flightType) throws PWCGException
     {
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
-        mission.generate(flightType);
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), flightType);
         mission.finalizeMission();
     }
     

@@ -36,7 +36,8 @@ public class PlayerFlightBuilder
     private void buildFlight(FlightTypes flightType, Squadron squadron) throws PWCGException
     {
         FlightFactory flightFactory = new FlightFactory(campaign);
-        playerFlight = flightFactory.buildFlight(mission, squadron, flightType, true);        
+        boolean isPlayerFlight = true;
+        playerFlight = flightFactory.buildFlight(mission, squadron, flightType, isPlayerFlight);        
         triggerLinkedUnitCZFromMyFlight(playerFlight);
         validatePlayerFlight();
     }

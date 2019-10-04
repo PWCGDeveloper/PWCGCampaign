@@ -201,6 +201,11 @@ public class FlightInformation
     {
         return altitude;
     }
+    
+    public void setAltitude(int altitude)
+    {
+        this.altitude = altitude;
+    }
 
     public void calculateAltitude() throws PWCGException
     {

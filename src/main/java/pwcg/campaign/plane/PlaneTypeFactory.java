@@ -250,6 +250,23 @@ public class PlaneTypeFactory
         
         return planeTypesForArchType;
     }
+    
+
+    public List<PlaneType> createPlanesByIntroduction(String planeArchType) throws PWCGException
+    {
+        TreeMap<Date, PlaneType> planeTypesTypeByIntroduction = new TreeMap<>();
+        for (PlaneType thisPlane : planeTypes.values())
+        {
+            if (thisPlane.getArchType().equals(planeArchType))
+            {
+                planeTypesTypeByIntroduction.put(thisPlane.getIntroduction(), thisPlane);
+            }
+        }
+
+        List<PlaneType> planeTypesForArchType = new ArrayList<>(planeTypesTypeByIntroduction.values());
+        return planeTypesForArchType;
+    }
+
 
     public List<PlaneType> createActivePlaneTypesForDateAndSide(Side side, Date date) throws PWCGException
     {

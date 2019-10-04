@@ -13,9 +13,8 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
+import pwcg.mission.MissionGenerator;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
@@ -34,9 +33,8 @@ public class FlightCrewBuilderTest
         PWCGContextManager.setRoF(false);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.KG53_PROFILE);
 
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
-        mission.generate(FlightTypes.GROUND_ATTACK);
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK);
     }
 
     @Test

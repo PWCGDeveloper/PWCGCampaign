@@ -65,7 +65,8 @@ public class AiFlightBuilder
     private Flight buildFlight(FlightTypes flightType, Squadron squadron) throws PWCGException
     {
         FlightFactory flightFactory = new FlightFactory(campaign);
-        Flight flight = flightFactory.buildFlight(mission, squadron, flightType, true);
+        boolean isPlayerFlight = false;
+        Flight flight = flightFactory.buildFlight(mission, squadron, flightType, isPlayerFlight);
         return flight;        
     }
 

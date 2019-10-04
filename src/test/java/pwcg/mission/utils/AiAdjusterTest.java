@@ -9,9 +9,8 @@ import pwcg.campaign.plane.Role;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
+import pwcg.mission.MissionGenerator;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.plane.PlaneMCU;
@@ -36,10 +35,9 @@ public class AiAdjusterTest
     {
         campaign.getCampaignConfigManager().setParam(ConfigItemKeys.FighterAISkillAdjustmentKey, new Integer(4).toString());
         campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, new Integer(0).toString());
-
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
-        mission.generate(FlightTypes.ESCORT);
+        
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
         mission.finalizeMission();
 
         for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
@@ -63,10 +61,9 @@ public class AiAdjusterTest
     {
         campaign.getCampaignConfigManager().setParam(ConfigItemKeys.FighterAISkillAdjustmentKey, new Integer(-4).toString());
         campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, new Integer(0).toString());
-
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
-        mission.generate(FlightTypes.ESCORT);
+        
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
         mission.finalizeMission();
 
         for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
@@ -91,9 +88,8 @@ public class AiAdjusterTest
         campaign.getCampaignConfigManager().setParam(ConfigItemKeys.FighterAISkillAdjustmentKey, new Integer(0).toString());
         campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, new Integer(4).toString());
 
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
-        mission.generate(FlightTypes.ESCORT);
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
         mission.finalizeMission();
 
         for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
@@ -127,9 +123,8 @@ public class AiAdjusterTest
         campaign.getCampaignConfigManager().setParam(ConfigItemKeys.FighterAISkillAdjustmentKey, new Integer(1).toString());
         campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, new Integer(1).toString());
 
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
-        mission.generate(FlightTypes.ESCORT);
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
         mission.finalizeMission();
 
         for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())

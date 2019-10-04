@@ -7,6 +7,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -23,12 +24,18 @@ public class PlayerEscortFlightAdjuster
 
     public void adjustEscortedFlightForEscort() throws PWCGException
     {
+        moveAirStartToRendezvous();
         moveAirStartWaypoint();
         moveIngressWaypoint();
         moveEgressWaypoint();
         adjustEscortedAltitudeToMatchEscortAltitude();
     }
     
+    private void moveAirStartToRendezvous() throws PWCGException
+    {
+        FlightPositionSetter.setEscortedFlightToRendezvous(escortFlight, escortedFlight);
+    }
+
     private void moveAirStartWaypoint() throws PWCGException
     {
         McuWaypoint airStartWP = escortedFlight.getWaypointPackage().getWaypointByActionForLeadPlaneWithFailure(WaypointAction.WP_ACTION_START);

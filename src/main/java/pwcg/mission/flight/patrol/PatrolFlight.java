@@ -20,14 +20,7 @@ public class PatrolFlight extends Flight
     @Override
     public void createUnitMission() throws PWCGException 
     {
-        createWaypointPackage();
-        createWaypoints();
-        setInitialPosition();        
-        createTakeoff();
-        createLanding();
-        createActivation();
-        createFormation();
-        setFlightPayload();
+        super.createUnitMission();
     }
 
 	@Override

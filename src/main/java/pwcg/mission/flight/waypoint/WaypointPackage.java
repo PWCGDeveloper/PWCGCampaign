@@ -47,6 +47,16 @@ public abstract class WaypointPackage
         return flightWaypointsByPlane.get(plane.getIndex());
     }
 
+    public List<McuWaypoint> getWaypointsForPlaneId(Integer planeId)
+    {
+        return flightWaypointsByPlane.get(planeId);
+    }
+
+    public Map<Integer, List<McuWaypoint>> getAllWaypointsSets()
+    {
+        return flightWaypointsByPlane;
+    }
+
     public void setWaypoints(List<McuWaypoint> waypoints)
     {
         flightWaypointsByPlane.clear();

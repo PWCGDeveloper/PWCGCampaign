@@ -1,6 +1,5 @@
 package pwcg.mission.flight;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.PlaneType.PlaneSize;
@@ -10,11 +9,11 @@ import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.plane.PlaneMCU;
 
-public class FlightPositionHelperParkedStart
+public class FlightPositionParkedStart
 {
     private Flight flight;
 
-    public FlightPositionHelperParkedStart (Campaign campaign, Flight flight)
+    public FlightPositionParkedStart (Flight flight)
     {
         this.flight = flight;
     }

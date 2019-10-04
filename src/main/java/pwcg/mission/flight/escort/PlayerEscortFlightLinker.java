@@ -31,10 +31,10 @@ public class PlayerEscortFlightLinker
     private void linkRendezvousWPToCover() throws PWCGException
     {
         McuWaypoint rendezvousWP = escortFlight.getWaypointPackage().getWaypointByActionForLeadPlaneWithFailure(WaypointAction.WP_ACTION_RENDEZVOUS);
-        McuWaypoint escortedIngressWP = escortedFlight.getAllFlightWaypoints().get(0);
+        McuWaypoint escortedAirStartWP = escortedFlight.getAllFlightWaypoints().get(0);
         rendezvousWP.setTarget(escortFlight.getCoverTimer().getIndex());
         escortFlight.getCoverTimer().setTarget(escortFlight.getEscortedFlightWaypointTimer().getIndex());
-        escortFlight.getEscortedFlightWaypointTimer().setTarget(escortedIngressWP.getIndex());
+        escortFlight.getEscortedFlightWaypointTimer().setTarget(escortedAirStartWP.getIndex());
     }
 
     private void linkIngressToRendezvous()
@@ -42,15 +42,13 @@ public class PlayerEscortFlightLinker
         McuWaypoint prevWP = null;
         for (McuWaypoint nextWP : escortFlight.getWaypointPackage().getWaypointsForLeadPlane())
         {
-            if (nextWP.getName().equals(WaypointType.RENDEZVOUS_WAYPOINT.getName()))
-            {
-                prevWP.setTarget(nextWP.getIndex());
-                break;
-            }
-
             if (prevWP != null)
             {
                 prevWP.setTarget(nextWP.getIndex());
+                if (nextWP.getName().equals(WaypointType.RENDEZVOUS_WAYPOINT.getName()))
+                {
+                    break;
+                }
             }
 
             prevWP = nextWP;

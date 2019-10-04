@@ -55,6 +55,8 @@ public class EquipmentReplacementWeightUsageTest
         assert(!aircraftUsageByArchType.containsKey("fw190"));
         assert(!aircraftUsageByArchType.containsKey("yak"));
         assert(!aircraftUsageByArchType.containsKey("il2"));
+        assert(!aircraftUsageByArchType.containsKey("fw190d"));
+        assert(!aircraftUsageByArchType.containsKey("me262"));
         
         int me109Weight = aircraftUsageByArchType.get("bf109");
         int ju88Weight = aircraftUsageByArchType.get("ju88");
@@ -105,7 +107,7 @@ public class EquipmentReplacementWeightUsageTest
     @Test
     public void testGermanLateReplacementArchTypes() throws PWCGException
     {
-        lateCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_WEST);
+        lateCampaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_WEST);
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
         SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);
@@ -116,6 +118,8 @@ public class EquipmentReplacementWeightUsageTest
         assert(aircraftUsageByArchType.containsKey("bf109"));
         assert(aircraftUsageByArchType.containsKey("ju88"));
         assert(aircraftUsageByArchType.containsKey("fw190"));
+        assert(aircraftUsageByArchType.containsKey("fw190d"));
+        assert(aircraftUsageByArchType.containsKey("me262"));
 
         assert(!aircraftUsageByArchType.containsKey("bf110"));
         assert(!aircraftUsageByArchType.containsKey("he111"));
@@ -126,6 +130,7 @@ public class EquipmentReplacementWeightUsageTest
         
         int me109Weight = aircraftUsageByArchType.get("bf109");
         int ju88Weight = aircraftUsageByArchType.get("ju88");
+        
         assert(me109Weight > ju88Weight);
     }
 

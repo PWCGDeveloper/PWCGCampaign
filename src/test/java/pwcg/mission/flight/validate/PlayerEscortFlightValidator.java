@@ -62,9 +62,10 @@ public class PlayerEscortFlightValidator
 
 	private void validateWaypointLinkage() throws PWCGException 
 	{
-		McuWaypoint escortedIngressWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_INGRESS);
-		assert(escortedIngressWP.getIndex() == escortedFlight.getWaypointPackage().getWaypointsForLeadPlane().get(0).getIndex());
+		McuWaypoint escortedAirStartWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_START);
+		assert(escortedAirStartWP.getIndex() == escortedFlight.getWaypointPackage().getWaypointsForLeadPlane().get(0).getIndex());
 		
+        McuWaypoint escortedIngressWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_INGRESS);
         McuWaypoint escortedEgressWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_EGRESS);
         McuWaypoint escortedTargetWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_TARGET_APPROACH);
         McuWaypoint escortedTargetFinalWP = getEscortedFlightWaypoint(WaypointAction.WP_ACTION_TARGET_FINAL);
@@ -96,7 +97,7 @@ public class PlayerEscortFlightValidator
 					assert(isIndexInTargetList(leadBomber.getEntity().getIndex(), cover.getTargets()));
 					assert(isIndexInTargetList(cover.getIndex(), coverTimer.getTargets()));
 					assert(isIndexInTargetList(escortedFlightWaypointTimer.getIndex(), coverTimer.getTargets()));
-                    assert(isIndexInTargetList(escortedIngressWP.getIndex(), escortedFlightWaypointTimer.getTargets()));
+                    assert(isIndexInTargetList(escortedAirStartWP.getIndex(), escortedFlightWaypointTimer.getTargets()));
                     assert(isIndexInTargetList(escortedTargetWP.getIndex(), escortedIngressWP.getTargets()));
                     assert(isIndexInTargetList(escortedTargetFinalWP.getIndex(), escortedTargetWP.getTargets()));
 					

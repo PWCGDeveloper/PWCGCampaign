@@ -12,8 +12,6 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberReplacer;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.location.CoordinateBox;
 import pwcg.gui.maingui.campaigngenerate.CampaignGeneratorDO;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;

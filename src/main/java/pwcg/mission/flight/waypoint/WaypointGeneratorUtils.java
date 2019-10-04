@@ -8,8 +8,10 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.plane.Role;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.flight.Flight;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class WaypointGeneratorUtils 
@@ -109,15 +111,18 @@ public class WaypointGeneratorUtils
         return false;
     }
 
-	public static void setWaypointsNonFighterPriority(List<McuWaypoint> waypoints)
+	public static void setWaypointsNonFighterPriority(Flight flight, List<McuWaypoint> waypoints)
 	{
-		for (McuWaypoint waypoint : waypoints)
-		{
-			if (waypoint.getPriority().getPriorityValue() < WaypointPriority.PRIORITY_MED.getPriorityValue())
-			{
-				waypoint.setPriority(WaypointPriority.PRIORITY_MED);
-			}
-		}
+	    if (!flight.getPlanes().get(0).isPrimaryRole(Role.ROLE_FIGHTER))
+	    {
+    		for (McuWaypoint waypoint : waypoints)
+    		{
+    			if (waypoint.getPriority().getPriorityValue() < WaypointPriority.PRIORITY_MED.getPriorityValue())
+    			{
+    				waypoint.setPriority(WaypointPriority.PRIORITY_MED);
+    			}
+    		}
+	    }
 	}
 
 	public static List<McuWaypoint> getTargetWaypoints(List<McuWaypoint> playerWaypoints)

@@ -13,14 +13,14 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
+import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.TestParticipatingHumanBuilder;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FlightCrewBuilderCoopTest 
@@ -46,10 +46,9 @@ public class FlightCrewBuilderCoopTest
     		}
     	}
     	
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(coopCampaign, participatingPlayers, missionBorders);
-        mission.generate(FlightTypes.GROUND_ATTACK);
-    	
+        MissionGenerator missionGenerator = new MissionGenerator(coopCampaign);
+        Mission mission = missionGenerator.makeMissionFromFlightType(participatingPlayers, FlightTypes.GROUND_ATTACK);
+        
         FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
@@ -87,10 +86,9 @@ public class FlightCrewBuilderCoopTest
     			participatingPlayers.addSquadronMember(player);
     		}
     	}
-    	
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(coopCampaign, participatingPlayers, missionBorders);
-        mission.generate(FlightTypes.GROUND_ATTACK);
+
+        MissionGenerator missionGenerator = new MissionGenerator(coopCampaign);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(coopCampaign), FlightTypes.GROUND_ATTACK);
 
         FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
@@ -130,10 +128,9 @@ public class FlightCrewBuilderCoopTest
     			participatingPlayers.addSquadronMember(player);
     		}
     	}
-        
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(coopCampaign, participatingPlayers, missionBorders);
-        mission.generate(FlightTypes.GROUND_ATTACK);
+
+        MissionGenerator missionGenerator = new MissionGenerator(coopCampaign);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(coopCampaign), FlightTypes.GROUND_ATTACK);
 
         FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(10131132);

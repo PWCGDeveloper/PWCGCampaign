@@ -33,6 +33,7 @@ import pwcg.mission.flight.validate.PatrolFlightValidator;
 import pwcg.mission.flight.validate.PlayerArtillerySpotFlightValidator;
 import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
 import pwcg.mission.flight.validate.PlayerReconFlightValidator;
+import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadrontTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
@@ -71,6 +72,7 @@ public class PlayerFlightRoFTypeTest
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
         EscortForPlayerValidator.validateEscortForPlayer(flight);
+        PositionEvaluator.evaluateAiFlight(mission);
 	}
 	
 	@Test
@@ -90,6 +92,7 @@ public class PlayerFlightRoFTypeTest
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
+        PositionEvaluator.evaluateAiFlight(mission);
 	}
 	
 	@Test
@@ -105,6 +108,7 @@ public class PlayerFlightRoFTypeTest
 		GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
 		groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
+        PositionEvaluator.evaluateAiFlight(mission);
         assert(flight.getFlightType() == FlightTypes.STRATEGIC_BOMB);
 	}
 
@@ -118,6 +122,7 @@ public class PlayerFlightRoFTypeTest
         PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
+        PositionEvaluator.evaluateAiFlight(mission);
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.PATROL);
@@ -136,6 +141,7 @@ public class PlayerFlightRoFTypeTest
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
+        PositionEvaluator.evaluateAiFlight(mission);
     }
 
     @Test
@@ -151,6 +157,7 @@ public class PlayerFlightRoFTypeTest
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
+        PositionEvaluator.evaluateAiFlight(mission);
     }
 
 	@Test
@@ -165,6 +172,7 @@ public class PlayerFlightRoFTypeTest
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.INTERCEPT);
+        PositionEvaluator.evaluateAiFlight(mission);
 	}
 
 	@Test
@@ -180,6 +188,7 @@ public class PlayerFlightRoFTypeTest
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.OFFENSIVE);
+        PositionEvaluator.evaluateAiFlight(mission);
 	}
 
 	@Test
@@ -195,6 +204,7 @@ public class PlayerFlightRoFTypeTest
 		PlayerReconFlightValidator reconFlightValidator = new PlayerReconFlightValidator();
 		reconFlightValidator.validateReconFlight(flight);
         assert(flight.getFlightType() == FlightTypes.RECON);
+        PositionEvaluator.evaluateAiFlight(mission);
 	}
 
 	@Test
@@ -210,6 +220,7 @@ public class PlayerFlightRoFTypeTest
 		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);
 		escortFlightValidator.validateEscortFlight();
         assert(flight.getFlightType() == FlightTypes.ESCORT);
+        PositionEvaluator.evaluateAiFlight(mission);
 	}
 
 	@Test
@@ -229,6 +240,7 @@ public class PlayerFlightRoFTypeTest
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
+        PositionEvaluator.evaluateAiFlight(mission);
 	}
 	
 	public void validateTargetDefinition(TargetDefinition targetDefinition)

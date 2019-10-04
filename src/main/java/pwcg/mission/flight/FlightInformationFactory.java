@@ -92,7 +92,7 @@ public class FlightInformationFactory
         escortedFlightInformation.setTargetSearchStartLocation(escortFlightInformation.getTargetCoords());
         buildPlanes (escortedFlightInformation);
         buildTargetDefinition (escortedFlightInformation);
-        setAltitude (escortFlightInformation);
+        escortedFlightInformation.setAltitude(escortFlightInformation.getAltitude() - 500);
 
         return escortedFlightInformation;
     }

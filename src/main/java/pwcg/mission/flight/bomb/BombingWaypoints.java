@@ -49,7 +49,7 @@ public class BombingWaypoints
         McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
         waypoints.add(approachWaypoint);
 
-        WaypointGeneratorUtils.setWaypointsNonFighterPriority(waypoints);
+        WaypointGeneratorUtils.setWaypointsNonFighterPriority(flight, waypoints);
 
         return waypoints;
     }

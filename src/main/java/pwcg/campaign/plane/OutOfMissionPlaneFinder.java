@@ -25,7 +25,7 @@ public class OutOfMissionPlaneFinder
         
         if (planeType == null)
         {
-            planeType = findEarliestPlaneTypeForSquadron(squadron, date);
+            planeType = findEarliestPlaneTypeForSquadron(squadron);
         }
 
         if (planeType == null)
@@ -56,9 +56,9 @@ public class OutOfMissionPlaneFinder
         return planeType;        
     }
 
-    private PlaneType findEarliestPlaneTypeForSquadron(Squadron squadron, Date date) throws PWCGException
+    private PlaneType findEarliestPlaneTypeForSquadron(Squadron squadron) throws PWCGException
     {
-        PlaneType planeType = squadron.determineEarliestPlane(date);
+        PlaneType planeType = squadron.determineEarliestPlane();
         return planeType;
     }
 }

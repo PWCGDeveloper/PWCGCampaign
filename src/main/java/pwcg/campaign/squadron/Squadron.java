@@ -107,26 +107,6 @@ public class Squadron
 		return currentAircraftByQuality;
 	}
 
-    public List<PlaneType> determineAircraftListByIntroduction(Date now) throws PWCGException
-    {
-        TreeMap<Date, PlaneType> currentAircraftByIntroduction = new TreeMap<>();
-        
-        for (SquadronPlaneAssignment planeAssignment : planeAssignments)
-        {
-            List<PlaneType> planeTypesForArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().createOlderPlaneTypesForArchType(planeAssignment.getArchType(), now);
-            for (PlaneType planeType : planeTypesForArchType)
-            {
-                PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeType.getType());
-                currentAircraftByIntroduction.put(plane.getIntroduction(), plane);
-            }           
-        }
-        
-        List<PlaneType> currentAircraftByIntroductionList = new ArrayList<PlaneType>();
-        currentAircraftByIntroductionList.addAll(currentAircraftByIntroduction.values());
-        
-        return currentAircraftByIntroductionList;
-    }
-
     public List<PlaneArchType> determineCurrentAircraftArchTypes(Date now) throws PWCGException
     {
         List<PlaneArchType> currentPlaneArchTypes = new ArrayList<>();
@@ -233,6 +213,19 @@ public class Squadron
 		    return false;
 		}
 		
+		if (date.after(DateUtils.getEndOfWWIIRussia()))
+		{
+		    Date lastDate = null;
+		    for (Date airfieldStartDate : airfields.keySet())
+		    {
+		        lastDate = airfieldStartDate;
+		    }
+		    if (lastDate.before(DateUtils.getEndOfWWIIRussia()))
+		    {
+		        return false;
+		    }
+		}
+				
         PlaneType currentAircraft = determineBestPlane(date);
         if (currentAircraft == null)
         {
@@ -540,9 +533,19 @@ public class Squadron
         return bestPlane;
     }
     
-    public PlaneType determineEarliestPlane(Date date) throws PWCGException
+    public PlaneType determineEarliestPlane() throws PWCGException
     {
-        List<PlaneType> planes = this.determineAircraftListByIntroduction(date);
+        TreeMap<Date, PlaneType> planeTypesTypeByIntroduction = new TreeMap<>();
+        for (SquadronPlaneAssignment planeAssignment : planeAssignments)
+        {
+            List<PlaneType> planeTypesForArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlanesByIntroduction(planeAssignment.getArchType());
+            for (PlaneType planeType : planeTypesForArchType)
+            {
+                planeTypesTypeByIntroduction.put(planeType.getIntroduction(), planeType);
+            }
+        }
+ 
+        List<PlaneType> planes = new ArrayList<>(planeTypesTypeByIntroduction.values());
         return planes.get(0);
     }
 

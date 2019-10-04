@@ -15,9 +15,8 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
+import pwcg.mission.MissionGenerator;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.attack.GroundAttackFlight;
@@ -50,9 +49,8 @@ public class FlightAiSettingsValidator
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
 
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
-        mission.generate( FlightTypes.GROUND_ATTACK);
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK);
         GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
@@ -63,10 +61,9 @@ public class FlightAiSettingsValidator
     public void groundAttackFlightWithFighterTest() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_103_PROFILE);
-
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
-        mission.generate( FlightTypes.GROUND_ATTACK);
+        
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK);
         GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
@@ -77,10 +74,9 @@ public class FlightAiSettingsValidator
 	public void bombFlightTest() throws PWCGException
 	{
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
-
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
-        mission.generate( FlightTypes.BOMB);
+        
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB);
         BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
@@ -91,10 +87,9 @@ public class FlightAiSettingsValidator
 	public void strategicBombFlightTest() throws PWCGException
 	{
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
-
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
-        mission.generate( FlightTypes.STRATEGIC_BOMB);
+        
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.STRATEGIC_BOMB);
         StrategicBombingFlight flight = (StrategicBombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
@@ -106,9 +101,8 @@ public class FlightAiSettingsValidator
 	{
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_103_PROFILE);
 
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
-        mission.generate( FlightTypes.PATROL);
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.PATROL);
         PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
@@ -120,9 +114,8 @@ public class FlightAiSettingsValidator
 	{
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
 
-        CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
-        Mission mission = new Mission(campaign, TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), missionBorders);
-        mission.generate( FlightTypes.INTERCEPT);
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.INTERCEPT);
         InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		

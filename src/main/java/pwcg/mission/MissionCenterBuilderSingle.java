@@ -71,10 +71,16 @@ public class MissionCenterBuilderSingle implements IMissionCenterBuilder
         int maxRange = planeForSquadron.getRange();
         
         int maxPercentOfRange = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.MissionBoxMaxDistancePercentRangeKey);
-        if (maxPercentOfRange > 48)
+        if (maxPercentOfRange > 45)
         {
-            maxPercentOfRange = 48;
+            maxPercentOfRange = 45;
         }
+
+        if (maxPercentOfRange < 25)
+        {
+            maxPercentOfRange = 25;
+        }
+
         int missionCenterMaxDistanceFromBase = new Double((new Integer(maxRange).doubleValue()) * (new Integer(maxPercentOfRange).doubleValue() / 100.0)).intValue();
         missionCenterMaxDistanceFromBase *= 1000;
         

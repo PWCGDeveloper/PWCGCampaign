@@ -33,6 +33,7 @@ import pwcg.mission.flight.escort.VirtualEscortFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.ActualWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
+import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.ground.GroundUnitCollection;
@@ -125,8 +126,7 @@ public abstract class Flight extends Unit
 
     protected void setInitialPosition() throws PWCGException
     {
-        FlightInitialPositionSetter flightInitialPositionSetter = new FlightInitialPositionSetter(this);
-        flightInitialPositionSetter.setFlightInitialPosition();
+        FlightPositionSetter.setPlayerFlightInitialPosition(this);
     }
     
     protected void createTakeoff() throws PWCGException
@@ -792,11 +792,21 @@ public abstract class Flight extends Unit
         return missionObjectiveLocation;
     }
 
-    public Coordinate findFirstWaypointPosition()
+    public McuWaypoint findFirstStartWaypoint()
     {
-        // after we have created the mission, move the bombers such that they start near the ingress point
-        List <McuWaypoint> wayPoints = getAllFlightWaypoints();
-        return wayPoints.get(0).getPosition().copy();
+        List<McuWaypoint> waypoints = getWaypointPackage().getWaypointsForLeadPlane();
+        for (McuWaypoint waypoint : waypoints)
+        {
+            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_INGRESS) ||
+                waypoint.getWpAction().equals(WaypointAction.WP_ACTION_RENDEZVOUS) ||
+                waypoint.getWpAction().equals(WaypointAction.WP_ACTION_START) ||
+                waypoint.isTargetWaypoint())
+            {
+                return waypoint;
+            }
+        }
+
+        return waypoints.get(0);
      }
 
     public Coordinate findIngressWaypointPosition()

@@ -10,7 +10,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightPositionHelperPlayerStart;
+import pwcg.mission.flight.FlightPositionSetter;
 import pwcg.mission.mcu.McuCover;
 import pwcg.mission.mcu.McuForceComplete;
 import pwcg.mission.mcu.McuTimer;
@@ -46,8 +46,7 @@ public class PlayerEscortFlight extends Flight
         createActivation();
         createCover();
         
-        FlightPositionHelperPlayerStart flightPositionHelperPlayerStart = new FlightPositionHelperPlayerStart(getCampaign(), this);
-        flightPositionHelperPlayerStart.createPlayerPlanePosition();
+        FlightPositionSetter.setPlayerFlightInitialPosition(this);
     }
 
     @Override
@@ -125,8 +124,7 @@ public class PlayerEscortFlight extends Flight
     protected void createActivation() throws PWCGException
     {
         // Do this again to compensate for the movement of the escorted flight
-        FlightPositionHelperPlayerStart flightPositionHelperPlayerStart = new FlightPositionHelperPlayerStart(getCampaign(), this);
-        flightPositionHelperPlayerStart.createPlayerPlanePosition();
+        FlightPositionSetter.setPlayerFlightInitialPosition(this);
         super.createActivation();
     }
 
