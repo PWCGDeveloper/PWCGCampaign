@@ -14,7 +14,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignEquipmentManager;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
@@ -46,7 +47,7 @@ public class SquadronEquipmentNeedTest
         activeEquippedPlaneCollection.clear();
         inactiveEquippedPlaneCollection.clear();
         
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420430"));
         Mockito.when(campaign.getEquipmentManager()).thenReturn(campaignEquipmentManager);
         Mockito.when(campaignEquipmentManager.getEquipmentForSquadron(Matchers.any())).thenReturn(equipment);

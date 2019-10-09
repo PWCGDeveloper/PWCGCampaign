@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -139,7 +139,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         }
         
         // For debug: plot likely encounter points
-        ConfigManagerCampaign configManager = PWCGContextManager.getInstance().getCampaign().getCampaignConfigManager();
+        ConfigManagerCampaign configManager = PWCGContext.getInstance().getCampaign().getCampaignConfigManager();
         int showAllFlightsInBreifingKey = configManager.getIntConfigParam(ConfigItemKeys.ShowAllFlightsInBreifingKey);
         if (showAllFlightsInBreifingKey == 1)
         {
@@ -321,7 +321,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 
     private void createTimeDisplay()
     {
-        MissionTime missionTime = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions().getMissionTime();
+        MissionTime missionTime = PWCGContext.getInstance().getCurrentMap().getMissionOptions().getMissionTime();
 		
         cbMissionTime = new JComboBox<String>();
         cbMissionTime.setActionCommand("ChangeTime");
@@ -503,7 +503,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
 
     private void scrubMission() throws PWCGException
     {
-        Campaign campaign  = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign  = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);
         
         campaignHomeGui.clean();
@@ -561,7 +561,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         
         mapPanel.clearVirtualPoints();
         
-        Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
+        Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
         for (Unit unit : myFlight.getLinkedUnits())
         {
             if (unit instanceof Flight)

@@ -11,7 +11,8 @@ import pwcg.campaign.CampaignEquipmentManager;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.personnel.SquadronPersonnel;
@@ -59,12 +60,12 @@ public class KubanAttackMockCampaign
 
     public void mockCampaignSetup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
-        PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
 
         date = DateUtils.getDateYYYYMMDD("19430401");
         
-        squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(20121002); // I./St.G.2
+        squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20121002); // I./St.G.2
 
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(date);

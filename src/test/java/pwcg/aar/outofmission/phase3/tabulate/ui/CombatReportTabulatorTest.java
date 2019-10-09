@@ -26,7 +26,7 @@ import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.aar.ui.events.model.PilotStatusEvent;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadmember.Victory;
@@ -93,7 +93,7 @@ public class CombatReportTabulatorTest extends AARTestSetup
         planesLost.put(plane1.getSerialNumber(), planeStatusEvent);
         Mockito.when(planeStatusEventGenerator.createPlaneLossEvents(Matchers.<AAREquipmentLosses>any())).thenReturn(planesLost);
 
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(101103);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(101103);
         CombatReportTabulator combatReportPanelEventTabulator = new CombatReportTabulator(campaign, squadron, aarContext);
         combatReportPanelEventTabulator.setPilotStatusEventGenerator(pilotStatusEventGenerator);
         combatReportPanelEventTabulator.setPlaneStatusEventGenerator(planeStatusEventGenerator);

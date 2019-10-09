@@ -1,0 +1,161 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102056,
+  "name": "No 56 Squadron RFC",
+  "skill": 100,
+  "planeAssignments": [
+    {
+      "archType": "se5",
+      "squadronIntroduction": "19170405",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19170405": "Proven",
+    "19170407": "Lealvillers",
+    "19170531": "Baizieux 2",
+    "19170705": "La Gorgue",
+    "19171120": "Villers Bretonneux",
+    "19180121": "Baizieux 2",
+    "19180325": "Lealvillers",
+    "19181029": "La Targette"
+  },
+  "skins": [
+    {
+      "skinName": "SE5A_56_19170407",
+      "planeType": "se5a",
+      "startDate": "19150801",
+      "endDate": "19170825",
+      "squadId": 102056,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5A_56_19170826",
+      "planeType": "se5a",
+      "startDate": "19170826",
+      "endDate": "19170910",
+      "squadId": 102056,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5A_102056A_ANS",
+      "planeType": "se5a",
+      "startDate": "19170911",
+      "endDate": "19170924",
+      "squadId": 102056,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5A_56_19170925",
+      "planeType": "se5a",
+      "startDate": "19170925",
+      "endDate": "19171110",
+      "squadId": 102056,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5A_102056A_18A",
+      "planeType": "se5a",
+      "startDate": "19171111",
+      "endDate": "19171231",
+      "squadId": 102056,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5A_56_19170925",
+      "planeType": "se5a",
+      "startDate": "19180101",
+      "endDate": "19180210",
+      "squadId": 102056,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5A_102056C_18A",
+      "planeType": "se5a",
+      "startDate": "19180211",
+      "endDate": "19180321",
+      "squadId": 102056,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102056_030",
+      "planeType": "se5a",
+      "startDate": "19180322",
+      "endDate": "19180510",
+      "squadId": 102056,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5A_56B18",
+      "planeType": "se5a",
+      "startDate": "19180511",
+      "endDate": "19180630",
+      "squadId": 102056,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5A_56C18",
+      "planeType": "se5a",
+      "startDate": "19180701",
+      "endDate": "19180831",
+      "squadId": 102056,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5A_56A18",
+      "planeType": "se5a",
+      "startDate": "19180901",
+      "endDate": "19181201",
+      "squadId": 102056,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+      
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 56 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

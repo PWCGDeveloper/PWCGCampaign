@@ -7,7 +7,7 @@ import java.util.ListIterator;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -44,7 +44,7 @@ public class PathAlongFront
 
     private FrontLinePoint initializePathing(PathAlongFrontData pathAlongFrontData) throws PWCGException
     {
-        frontLinesForMap =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(pathAlongFrontData.getDate());
+        frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(pathAlongFrontData.getDate());
         currentPointIndex = frontLinesForMap.findIndexForClosestPosition(pathAlongFrontData.getTargetGeneralLocation(), pathAlongFrontData.getSide());
         FrontLinePoint startPoint = frontLinesForMap.findAllFrontLinesForSide(pathAlongFrontData.getSide()).get(currentPointIndex);
         coordinatesForPath.add(startPoint.getPosition());

@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.CombatReportIOJson;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -57,7 +57,7 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
     public CampaignJournalPanelSet()
     {
         super();
-        this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
     }
 
     public void makeVisible(boolean visible) 
@@ -96,7 +96,7 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
 
 	private void loadCombatReportsForCampagn() throws PWCGException
 	{
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         journalReports = CombatReportIOJson.readJson(campaign,referencePlayer.getSerialNumber());
 	}
 
@@ -432,7 +432,7 @@ public class CampaignJournalPanelSet extends PwcgGuiContext implements ActionLis
     {
         for (CampaignJournalGUI activeCampaignJournal : activeCampaignJournals)
         {
-            Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+            Campaign campaign = PWCGContext.getInstance().getCampaign();
             activeCampaignJournal.writeCombatReport(campaign);
         }        
     }

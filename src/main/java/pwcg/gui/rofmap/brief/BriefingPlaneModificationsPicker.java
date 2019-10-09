@@ -9,7 +9,7 @@ import java.util.Map;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadDesignation;
@@ -70,7 +70,7 @@ public class BriefingPlaneModificationsPicker
 
     private void makePlaneModificationCheckBoxes() throws PWCGException 
     {
-        IPayloadFactory payloadfactory = PWCGContextManager.getInstance().getPayloadFactory();
+        IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payload = payloadfactory.createPlanePayload(crewPlane.getPlane().getType());
         
         for (PayloadDesignation payloadDesignation : payload.getPayloadDesignations())
@@ -86,7 +86,7 @@ public class BriefingPlaneModificationsPicker
 
     private String getPayloadMaskForChosenModifications(String planeTypeName, String payloadDescription) throws PWCGException
     {
-        IPayloadFactory payloadfactory = PWCGContextManager.getInstance().getPayloadFactory();
+        IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payload = payloadfactory.createPlanePayload(planeTypeName);
         
         return payload.getPayloadMaskByDescription(payloadDescription);

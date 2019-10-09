@@ -65,13 +65,13 @@ public class FrontLinePoint extends PWCGLocation
     {
         if (getName().equals(FrontLinePoint.ALLIED_FRONT_LINE))
         {
-            FrontLinesForMap frontLinesForMap =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(date);
+            FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
             Coordinate closestAxis = frontLinesForMap.findClosestFrontCoordinateForSide(this.getPosition(), Side.AXIS);
             return MathUtils.calcAngle(this.getPosition(), closestAxis);
         }
         else
         {   
-            FrontLinesForMap frontLinesForMap =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(date);
+            FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
             Coordinate closestAllied = frontLinesForMap.findClosestFrontCoordinateForSide(this.getPosition(), Side.ALLIED);
             return MathUtils.calcAngle(this.getPosition(), closestAllied);
         }        

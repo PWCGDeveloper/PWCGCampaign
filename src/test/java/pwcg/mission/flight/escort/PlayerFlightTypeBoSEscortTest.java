@@ -4,7 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
@@ -24,7 +25,7 @@ public class PlayerFlightTypeBoSEscortTest
     @Before
     public void fighterFlightTests() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
     }
 

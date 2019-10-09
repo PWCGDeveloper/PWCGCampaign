@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DirectoryReader;
 
@@ -28,7 +28,7 @@ public class AARLogFileSetFactory
     {
         String fileSetIdentifier = extractMissionDateFromMissionLogFileName(logFileNameForMission);
         
-        String simulatorDataDir = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir();
+        String simulatorDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir();
         directoryReader.sortilesInDir(simulatorDataDir);
         for (String logFileName : directoryReader.getFiles()) 
         {
@@ -42,7 +42,7 @@ public class AARLogFileSetFactory
     private void addLogFileToResultSet(String logFileName)
     {
         int fileIndex = extractMissionSequenceFromMissionLogFileName(logFileName);
-        String simulatorDataDir = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir();
+        String simulatorDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir();
         String filepath = simulatorDataDir + logFileName;
         logFileSetsAvailable.put(fileIndex, filepath);
     }

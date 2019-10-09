@@ -1,0 +1,75 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501050,
+  "name": "Jasta 50",
+  "skill": 55,
+  "planeAssignments": [
+    {
+      "archType": "albatrosd",
+      "squadronIntroduction": "19180111",
+      "squadronWithdrawal": "19181001"
+    },
+    {
+      "archType": "fokkerd7",
+      "squadronIntroduction": "19180715",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180111": "Marchais",
+    "19180315": "Marchais",
+    "19180821": "Sissonne",
+    "19180923": "Boncourt",
+    "19180925": "Leffincourt,E Reims",
+    "19180928": "Chassonge Ferme,Stenay/Verdun",
+    "19181009": "Bellevue Ferme",
+    "19181017": "Marville"
+  },
+  "skins": [
+    {
+      "skinName": "AD5_501050_ANS",
+      "planeType": "albatrosd5",
+      "startDate": "19140801",
+      "endDate": "19180321",
+      "squadId": 501050,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J50_APR1918",
+      "planeType": "albatrosd5",
+      "startDate": "19180321",
+      "endDate": "19181201",
+      "squadId": 501050,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7_501050_ANS",
+      "planeType": "fokkerd7",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501050,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

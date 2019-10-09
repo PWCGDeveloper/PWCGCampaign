@@ -13,7 +13,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
@@ -34,7 +35,7 @@ public class PersonnelResultsInMissionHandlerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
         
         aceStatusList = new ArrayList<>();

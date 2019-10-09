@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.api.IRankHelper;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
@@ -48,7 +48,7 @@ public class CampaignAddHumanPilotPanelSet extends PwcgGuiContext implements Act
 	public CampaignAddHumanPilotPanelSet  ()
 	{
         super();
-		this.campaign = PWCGContextManager.getInstance().getCampaign();
+		this.campaign = PWCGContext.getInstance().getCampaign();
 	}
 	
 	public void makeVisible(boolean visible) 
@@ -92,7 +92,7 @@ public class CampaignAddHumanPilotPanelSet extends PwcgGuiContext implements Act
         cbPilotRank.setFont(font);
 
         IRankHelper rankHelper = RankFactory.createRankHelper();
-    	SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+    	SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         for (String rank : rankHelper.getRanksByService(referencePlayer.determineSquadron().determineServiceForSquadron(campaign.getDate())))
         {
             cbPilotRank.addItem(rank);
@@ -187,7 +187,7 @@ public class CampaignAddHumanPilotPanelSet extends PwcgGuiContext implements Act
         cbReplacePilot.setBackground(ColorMap.PAPER_BACKGROUND);
         cbReplacePilot.setFont(font);
         
-    	SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+    	SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
     	Map<Integer, SquadronMember> squadronMemberCollection = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId()).getSquadronMembersWithAces().getSquadronMemberCollection();
         SquadronMembers aiSquadronMembers = SquadronMemberFilter.filterActiveAI(squadronMemberCollection, campaign.getDate());
         for (SquadronMember aiSquadronMember : aiSquadronMembers.sortPilots(campaign.getDate()))
@@ -238,7 +238,7 @@ public class CampaignAddHumanPilotPanelSet extends PwcgGuiContext implements Act
         String[] replaceInfoArray = replaceInfo.split(":");
         int serialNumberToReplace = new Integer(replaceInfoArray[0]);
         
-    	SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+    	SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
     	SquadronPersonnel playerSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId());
 
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();

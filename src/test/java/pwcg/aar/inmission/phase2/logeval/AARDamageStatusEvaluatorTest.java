@@ -15,7 +15,8 @@ import pwcg.aar.inmission.phase1.parse.event.IAType2;
 import pwcg.aar.inmission.phase1.parse.event.rof.AType2;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -51,7 +52,7 @@ public class AARDamageStatusEvaluatorTest
     @Before
     public void setup () throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
     }
 
     @Test

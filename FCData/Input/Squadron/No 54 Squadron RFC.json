@@ -1,0 +1,121 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102054,
+  "name": "No 54 Squadron RFC",
+  "skill": 40,
+  "planeAssignments": [
+    {
+      "archType": "soppup",
+      "squadronIntroduction": "19161201",
+      "squadronWithdrawal": "19171210"
+    },
+    {
+      "archType": "sopcamel",
+      "squadronIntroduction": "19171211",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19161226": "Poperinghe",
+    "19170101": "Warfusee",
+    "19170418": "Villers Bretonneux",
+    "19170618": "Proven",
+    "19170716": "Proven",
+    "19170908": "Hondschoote",
+    "19171206": "Bruay",
+    "19171218": "Lealvillers",
+    "19180101": "Warfusee",
+    "19180322": "Baizieux 2",
+    "19180328": "Mazingarbe",
+    "19180329": "La Targette",
+    "19180601": "La Lovie",
+    "19180611": "Mont St. Eloi",
+    "19180616": "Filescamp Ferme",
+    "19180630": "Baizieux 2",
+    "19180714": "Bonne Maisson",
+    "19180804": "La Targette",
+    "19181017": "Baizieux 2"
+  },
+  "skins": [
+    {
+      "skinName": "SP_RFC54_AUG17",
+      "planeType": "soppup",
+      "startDate": "19170826",
+      "endDate": "19171210",
+      "squadId": 102054,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SC_RFC54_DEC17",
+      "planeType": "sopcamel",
+      "startDate": "19171211",
+      "endDate": "19180124",
+      "squadId": 102054,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102054_020",
+      "planeType": "sopcamel",
+      "startDate": "19180125",
+      "endDate": "19180629",
+      "squadId": 102054,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SC_102054_ANS",
+      "planeType": "sopcamel",
+      "startDate": "19180630",
+      "endDate": "19181201",
+      "squadId": 102054,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+      
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 54 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19180401",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      },
+      {
+        "startDate": "19180401",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 70
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

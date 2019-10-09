@@ -8,7 +8,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogGroundUnit;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
@@ -63,7 +63,7 @@ public class VictoryEntity
 
     private void initializeForPlane(Date victoryDate, LogPlane logPlane, String pilotName) throws PWCGException
     {                    
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(logPlane.getSquadronId());
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(logPlane.getSquadronId());
         LogPilot logPilot = logPlane.getLogPilot();
 
         airOrGround = Victory.AIR_VICTORY;

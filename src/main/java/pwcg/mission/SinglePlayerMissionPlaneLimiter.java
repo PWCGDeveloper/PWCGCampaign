@@ -2,7 +2,7 @@ package pwcg.mission;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
@@ -49,7 +49,7 @@ public class SinglePlayerMissionPlaneLimiter
 
     private void initMaxPlanesPerSide() throws PWCGException 
     {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         ConfigManager configManager = campaign.getCampaignConfigManager();
         
         maxAlliedPlanes = configManager.getIntConfigParam(ConfigItemKeys.AlliedPlanesToSpawnMaxKey);

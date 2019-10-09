@@ -2,7 +2,7 @@ package pwcg.aar.prelim;
 
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DirectoryReader;
 
@@ -17,7 +17,7 @@ public class AARLogSetFinder
     
     public List<String> getSortedLogFileSets() throws PWCGException
     {
-        String simulatorDataDir = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir();
+        String simulatorDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir();
         directoryReader.sortilesInDir(simulatorDataDir);
         List<String> sortedLogSets = directoryReader.getSortedFilesWithFilter("[0].txt");
 

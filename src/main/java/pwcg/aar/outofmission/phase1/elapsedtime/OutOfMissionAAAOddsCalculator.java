@@ -2,12 +2,12 @@ package pwcg.aar.outofmission.phase1.elapsedtime;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.squadron.SquadronRoleSet;
-import pwcg.campaign.ww2.country.BoSServiceManager;
+import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 
@@ -30,7 +30,7 @@ public class OutOfMissionAAAOddsCalculator
     
     private int intitialOddsBasedOnSquadronRole(SquadronMember squadronMember) throws PWCGException
     {
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
         SquadronRoleSet squadronRoles = squadron.getSquadronRoles();
         Role roleThisMission = squadronRoles.selectRoleForMission(campaign.getDate());
         

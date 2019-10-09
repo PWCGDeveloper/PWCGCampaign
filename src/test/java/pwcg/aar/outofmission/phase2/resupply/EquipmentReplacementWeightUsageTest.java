@@ -10,7 +10,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.resupply.depo.EquipmentReplacementWeightUsage;
@@ -28,7 +29,7 @@ public class EquipmentReplacementWeightUsageTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         earlyCampaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
         lateCampaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_WEST);
     }
@@ -38,7 +39,7 @@ public class EquipmentReplacementWeightUsageTest
     {
         earlyCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(earlyCampaign.getDate(), service);
         
         EquipmentReplacementWeightUsage equipmentReplacementWeightUsage = new EquipmentReplacementWeightUsage(earlyCampaign.getDate());
@@ -68,7 +69,7 @@ public class EquipmentReplacementWeightUsageTest
     {
         earlyCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(10101);
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(earlyCampaign.getDate(), service);
         
         EquipmentReplacementWeightUsage equipmentReplacementWeightUsage = new EquipmentReplacementWeightUsage(earlyCampaign.getDate());
@@ -94,7 +95,7 @@ public class EquipmentReplacementWeightUsageTest
     {
         earlyCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20202);
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(earlyCampaign.getDate(), service);
         
         EquipmentReplacementWeightUsage equipmentReplacementWeightUsage = new EquipmentReplacementWeightUsage(earlyCampaign.getDate());
@@ -109,7 +110,7 @@ public class EquipmentReplacementWeightUsageTest
     {
         lateCampaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_WEST);
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(20101);
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);
         
         EquipmentReplacementWeightUsage equipmentReplacementWeightUsage = new EquipmentReplacementWeightUsage(lateCampaign.getDate());
@@ -139,7 +140,7 @@ public class EquipmentReplacementWeightUsageTest
     {
         lateCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_WEST);
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(10102);
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);
         
         EquipmentReplacementWeightUsage equipmentReplacementWeightUsage = new EquipmentReplacementWeightUsage(lateCampaign.getDate());
@@ -153,7 +154,7 @@ public class EquipmentReplacementWeightUsageTest
     {
         lateCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_WEST);
         ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(10103);
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);
         
         EquipmentReplacementWeightUsage equipmentReplacementWeightUsage = new EquipmentReplacementWeightUsage(lateCampaign.getDate());

@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.medals.Medal;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
@@ -46,7 +46,7 @@ public class Ace extends SquadronMember
 
     public void mergeWithHistorical(Campaign campaign) throws PWCGException
     {
-        HistoricalAce historicalAce = PWCGContextManager.getInstance().getAceManager().getHistoricalAceBySerialNumber(getSerialNumber());
+        HistoricalAce historicalAce = PWCGContext.getInstance().getAceManager().getHistoricalAceBySerialNumber(getSerialNumber());
 
         if (historicalAce == null)
         {

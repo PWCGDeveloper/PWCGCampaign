@@ -8,7 +8,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.plane.PlaneType;
@@ -776,14 +776,14 @@ public abstract class Flight extends Unit
     private String getObjectiveName(Unit linkedUnit) throws PWCGException
     {
         GroundUnit groundUnit = (GroundUnit)linkedUnit;             
-        String targetName =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(groundUnit.getHomePosition().copy()).getName();
+        String targetName =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(groundUnit.getHomePosition().copy()).getName();
         return " near " + targetName;
     }
     
     protected String formMissionObjectiveLocation(Coordinate targetLocation) throws PWCGException 
     {
         String missionObjectiveLocation = "";
-        String targetName =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(targetLocation).getName();
+        String targetName =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(targetLocation).getName();
         if (!targetName.isEmpty())
         {
             missionObjectiveLocation =   " near " + targetName;

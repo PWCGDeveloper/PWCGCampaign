@@ -23,7 +23,7 @@ public class BehindEnemyLines
 
     public boolean isBehindEnemyLinesForCapture(FrontMapIdentifier mapId, Coordinate landingCoordinates, Side friendlySide) throws PWCGException 
     {
-    	FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getMapByMapId(mapId).getFrontLinesForMap(date);
+    	FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMapByMapId(mapId).getFrontLinesForMap(date);
         
         Side enemySide = friendlySide.getOppositeSide();
 
@@ -65,7 +65,7 @@ public class BehindEnemyLines
 
     public boolean inReportingRange(FrontMapIdentifier mapId, Coordinate landingCoordinates, Side friendlySide) throws PWCGException 
     {
-    	FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getMapByMapId(mapId).getFrontLinesForMap(date);
+    	FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMapByMapId(mapId).getFrontLinesForMap(date);
 
         Side enemySide = friendlySide.getOppositeSide();
 
@@ -105,7 +105,7 @@ public class BehindEnemyLines
     {
         Side enemySide = friendlySide.getOppositeSide();
        
-    	FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getMapByMapId(mapId).getFrontLinesForMap(date);
+    	FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getMapByMapId(mapId).getFrontLinesForMap(date);
         Coordinate enemyCoordinates = frontLinesForMap.findClosestFrontCoordinateForSide(landingCoordinates, enemySide);
 
         double distanceToEnemy = MathUtils.calcDist(landingCoordinates, enemyCoordinates);
@@ -116,7 +116,7 @@ public class BehindEnemyLines
     private boolean notBehindLinesByAirfield(Coordinate landingCoordinates, Side pilotSide, boolean behindEnemyLines)
                     throws PWCGException
     {
-        IAirfield closestAirfield =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().findClosestAirfield(landingCoordinates);
+        IAirfield closestAirfield =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().findClosestAirfield(landingCoordinates);
         if (closestAirfield != null)
         {
             if (closestAirfield.getCountry(date).getCountry() == Country.NEUTRAL)
@@ -141,7 +141,7 @@ public class BehindEnemyLines
     private boolean behindLinesByGroup(Coordinate landingCoordinates, Side pilotSide, boolean behindEnemyLines)
                     throws PWCGException
     {
-        PWCGLocation closestTown =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(landingCoordinates);
+        PWCGLocation closestTown =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(landingCoordinates);
         if (closestTown != null)
         {
             if (closestTown.getCountry(date).getSide() == Side.NEUTRAL)

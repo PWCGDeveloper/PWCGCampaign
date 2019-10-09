@@ -1,0 +1,92 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501110,
+  "name": "Schlasta 10",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "archType": "dfwc",
+      "squadronIntroduction": "19151220",
+      "squadronWithdrawal": "19170730"
+    },
+    {
+      "archType": "halberstadtcl",
+      "squadronIntroduction": "19170601",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19151220": "Chery-les-Pouilly,S",
+    "19160220": "Sivry",
+    "19170401": "Ichteghem",
+    "19171101": "Nurlu,NE Moislains",
+    "19180901": "Den Aap"
+  },
+  "skins": [
+    {
+      "skinName": "DFC5_10_16",
+      "planeType": "dfwc5",
+      "startDate": "19140801",
+      "endDate": "19170731",
+      "squadId": 501110,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "DFC5_07_17",
+      "planeType": "dfwc5",
+      "startDate": "19170801",
+      "endDate": "19181201",
+      "squadId": 501110,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "HCL2_GENERIC_2",
+      "planeType": "halberstadtcl2",
+      "startDate": "19170601",
+      "endDate": "19180401",
+      "squadId": 501110,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "HCL2_GENERIC_1",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180402",
+      "endDate": "19181201",
+      "squadId": 501110,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "HCL2A_STD_MAR18",
+      "planeType": "halberstadtcl2au",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501110,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

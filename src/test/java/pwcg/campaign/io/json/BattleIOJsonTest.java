@@ -5,7 +5,8 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Battles;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -14,7 +15,7 @@ public class BattleIOJsonTest
     @Test
     public void readJsonTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         Battles battles = BattleIOJson.readJson();
         assert (battles.getBattles().size() > 0);
     }
@@ -22,7 +23,7 @@ public class BattleIOJsonTest
     @Test
     public void readJsonBoSTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         Battles battles = BattleIOJson.readJson();
         assert (battles.getBattles().size() > 0);
     }

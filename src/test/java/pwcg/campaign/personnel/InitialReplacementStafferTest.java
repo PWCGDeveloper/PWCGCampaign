@@ -8,8 +8,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -25,8 +26,8 @@ public class InitialReplacementStafferTest
     @Test
     public void generateReplacementsTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
-        PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
 
         List<ArmedService> armedServices = ArmedServiceFactory.createServiceManager().getAllActiveArmedServices(campaign.getDate());

@@ -30,7 +30,7 @@ public class MapFinderForCampaign
     {
         SquadronMembers players = campaign.getPersonnelManager().getAllActivePlayers();
         SquadronMember representativePlayer = players.getSquadronMemberList().get(0);
-        Squadron representativePlayerSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(representativePlayer.getSquadronId());
+        Squadron representativePlayerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(representativePlayer.getSquadronId());
         return representativePlayerSquadron;
     }
 }

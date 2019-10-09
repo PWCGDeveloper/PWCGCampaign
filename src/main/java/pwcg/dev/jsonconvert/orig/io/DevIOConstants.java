@@ -18,6 +18,7 @@ public class DevIOConstants
 	public static String INDEX = "Index";
     
     // RoF Airfield
+    public static String GROUP   = "Group";
     public static String AIRFIELD   = "Airfield";
 	public static String LINK 		= "LinkTrId";
 	public static String MODEL		= "Model";

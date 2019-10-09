@@ -15,7 +15,8 @@ import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.data.CampaignUpdateData;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -39,7 +40,7 @@ public class PersonnelOutOfMissionLossesHandlerTest
     @Before
     public void setupForTestEnvironment() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
         
         Mockito.when(aarContext.getCampaignUpdateData()).thenReturn(campaignUpdateData);

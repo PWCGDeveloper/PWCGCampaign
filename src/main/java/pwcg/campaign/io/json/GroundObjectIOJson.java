@@ -1,6 +1,6 @@
 package pwcg.campaign.io.json;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.GroundStructureGroup;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
@@ -23,6 +23,6 @@ public class GroundObjectIOJson
 	}
 	
 	private static String formPath(String mapName) {
-	    return PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\";
+	    return PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\";
 	}
 }

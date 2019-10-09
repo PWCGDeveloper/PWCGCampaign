@@ -26,7 +26,8 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
@@ -343,7 +344,7 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
         Map<String, Role> rolesSorted = new TreeMap<String,Role>();
         
         Date date = campaignGeneratorDO.getStartDate();
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getFlyableSquadronsByService(campaignGeneratorDO.getService(), date);
         
         for (Squadron squadron : squadronsForService)
@@ -400,7 +401,7 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
                     JPanel campaignGeneratePanel, int rowCount) throws PWCGException
     {
         ICountry country = CountryFactory.makeCountryByService(campaignGeneratorDO.getService());
-        if (country.isCountry(Country.GERMANY) && PWCGContextManager.isRoF())
+        if (country.isCountry(Country.GERMANY) && PWCGContext.getProduct() != PWCGProduct.BOS)
         {
         	spacerColumn (campaignGeneratePanel, 0, rowCount + 0);
         	
@@ -593,7 +594,7 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
             return "";
         }
 
-        Squadron squad = PWCGContextManager.getInstance().getSquadronManager().getSquadronByName(squadronName, campaignDate);
+        Squadron squad = PWCGContext.getInstance().getSquadronManager().getSquadronByName(squadronName, campaignDate);
         return squad.determineSquadronInfo(campaignDate);
     }
 

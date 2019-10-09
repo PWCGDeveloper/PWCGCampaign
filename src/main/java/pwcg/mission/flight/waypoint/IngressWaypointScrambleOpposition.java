@@ -4,7 +4,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -25,7 +25,7 @@ public class IngressWaypointScrambleOpposition implements IIngressWaypoint
 
     public McuWaypoint createIngressWaypoint() throws PWCGException  
     {
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         FrontLinePoint nearbyFrontPoint = frontLinesForMap.findCloseFrontPositionForSide(flight.getHomePosition(), 20000, flight.getSquadron().getCountry().getSide());
         Coordinate nearbyFrontPosition = nearbyFrontPoint.getPosition();
                 

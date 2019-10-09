@@ -14,7 +14,8 @@ import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase1.parse.event.IAType17;
 import pwcg.aar.inmission.phase1.parse.event.rof.AType17;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogWaypoint;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
@@ -30,7 +31,7 @@ public class AARWaypointBuilderTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
     }
 
     @Test

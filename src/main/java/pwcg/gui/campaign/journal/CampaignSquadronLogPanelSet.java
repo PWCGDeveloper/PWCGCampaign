@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignLog;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
@@ -58,7 +58,7 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
         calculateCharsPerLine(screenSize);
         adjustTextForFontSize();
 
-		this.campaign = PWCGContextManager.getInstance().getCampaign();
+		this.campaign = PWCGContext.getInstance().getCampaign();
 	}
 
     private void adjustTextForFontSize()

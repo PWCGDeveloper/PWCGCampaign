@@ -2,7 +2,7 @@ package pwcg.gui.rofmap.event;
 
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -30,7 +30,7 @@ public class AARTransferPanel extends CampaignDocumentGUI
 
     protected String getBodyText() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron fromSquadron = squadronManager.getSquadron(transferEvent.getTransferFrom());
         Squadron toSquadron = squadronManager.getSquadron(transferEvent.getTransferTo());
 

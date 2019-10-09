@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
+import pwcg.product.rof.ground.vehicle.Artillery;
 import pwcg.campaign.target.TacticalTarget;
-import pwcg.campaign.ww1.ground.vehicle.Artillery;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;

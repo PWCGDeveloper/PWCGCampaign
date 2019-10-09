@@ -1,0 +1,40 @@
+{
+  "configSetName": "ConfigSetUserPref",
+  "configMap": {
+    "DeleteAllMissionLogs": {
+      "value": "1",
+      "label": "Delete All Mission Log Files",
+      "help": "Set to 1 to delete all mission log files after AAR"
+    },
+    "MusicVolume": {
+      "value": "10",
+      "label": "Volume control for music",
+      "help": "10 is normal, less reduces volume, cannot raise above 10"
+    },
+    "PlayMusic": {
+      "value": "1",
+      "label": "Play Music",
+      "help": "Set to 1 to play music"
+    },
+    "PlaySounds": {
+      "value": "1",
+      "label": "Play Sounds",
+      "help": "Set to 1 to play sounds"
+    },
+    "SaveOldMissions": {
+      "value": "1",
+      "label": "Past missions to save",
+      "help": "Missions deleted after AAR - how far back to save"
+    },
+    "SoundVolume": {
+      "value": "10",
+      "label": "Volume control for sounds",
+      "help": "10 is normal, less reduces volume, cannot raise above 10"
+    },
+    "UseCoop": {
+      "value": "0",
+      "label": "Use Coop",
+      "help": "Set to 1 to create a coop mission"
+    }
+  }
+}

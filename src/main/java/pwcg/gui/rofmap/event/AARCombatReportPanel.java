@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -30,8 +30,8 @@ public class AARCombatReportPanel extends AAREventPanel
         super();
         this.shouldDisplay = true;
         this.aarCoordinator = AARCoordinator.getInstance();
-		this.campaign = PWCGContextManager.getInstance().getCampaign();
-		this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+		this.campaign = PWCGContext.getInstance().getCampaign();
+		this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 
 	public void makePanel()  
@@ -76,7 +76,7 @@ public class AARCombatReportPanel extends AAREventPanel
 	{
 		try
 		{
-	        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+	        Campaign campaign = PWCGContext.getInstance().getCampaign();
 			campaignCombatReportGUI.writeCombatReport(campaign);
 		}
 		catch (Exception e)

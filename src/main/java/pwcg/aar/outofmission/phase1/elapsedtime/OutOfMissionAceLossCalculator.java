@@ -6,7 +6,7 @@ import java.util.Map;
 
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
@@ -24,14 +24,14 @@ public class OutOfMissionAceLossCalculator
 
     public Map<Integer, Ace> acesKilledHistorically() throws PWCGException
     {
-        PWCGContextManager.getInstance().getAceManager().loadFromHistoricalAces(aarContext.getNewDate());
+        PWCGContext.getInstance().getAceManager().loadFromHistoricalAces(aarContext.getNewDate());
 
         Map<Integer, Ace> acesKilled = new HashMap<>();
-        List<Ace> deadAces = PWCGContextManager.getInstance().getAceManager().acesKilledHistoricallyInTimePeriod(campaign.getDate(), aarContext.getNewDate());
+        List<Ace> deadAces = PWCGContext.getInstance().getAceManager().acesKilledHistoricallyInTimePeriod(campaign.getDate(), aarContext.getNewDate());
 
         for (Ace deadAce : deadAces)
         {
-            Ace deadAceThisCampaign = PWCGContextManager.getInstance().getAceManager().getAceWithCampaignAdjustment(
+            Ace deadAceThisCampaign = PWCGContext.getInstance().getAceManager().getAceWithCampaignAdjustment(
                     campaign, campaign.getPersonnelManager().getCampaignAces(), deadAce.getSerialNumber(), campaign.getDate());
 
             if (deadAceThisCampaign != null)

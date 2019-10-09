@@ -6,7 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.core.exception.PWCGException;
 
@@ -16,7 +17,7 @@ public class HistoricalAceIOJsonTest
     @Test
     public void readJsonRoFTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         List<HistoricalAce> aces = HistoricalAceIOJson.readJson();
         assert (aces.size() > 0);
     }
@@ -24,7 +25,7 @@ public class HistoricalAceIOJsonTest
     @Test
     public void readJsonBoSTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         List<HistoricalAce> aces = HistoricalAceIOJson.readJson();
         assert (aces.size() > 0);
     }

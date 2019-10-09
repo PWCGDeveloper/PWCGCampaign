@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 
@@ -23,8 +23,8 @@ public abstract class CampaignRosterBasePanelFactory
 	public CampaignRosterBasePanelFactory(ActionListener parent) throws PWCGException  
 	{
 	    this.parent = parent;
-		this.campaign = PWCGContextManager.getInstance().getCampaign();
-		this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+		this.campaign = PWCGContext.getInstance().getCampaign();
+		this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 	
 	abstract public void makePilotList() throws PWCGException ;

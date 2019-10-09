@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PositionsManager;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadron.Squadron;
@@ -55,7 +55,7 @@ public class AmbientBalloonDefensePackage
         Squadron squad = getBalloonSquadronForClosestCountry(balloonSide, positionCoordinate);
         if (squad != null)
         {
-            Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+            Campaign campaign = PWCGContext.getInstance().getCampaign();
             country = squad.determineSquadronCountry(campaign.getDate());
         }
         
@@ -96,7 +96,7 @@ public class AmbientBalloonDefensePackage
 	{		
 		Squadron squad = null;
 		List<Squadron> squadrons = new ArrayList<Squadron>();
-		squadrons =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsBySide(campaign, 
+		squadrons =  PWCGContext.getInstance().getSquadronManager().getNearestSquadronsBySide(campaign, 
 		        balloonPosition, 1, 200000.0, side, campaign.getDate());
 		if (squadrons.size() > 0)
 		{

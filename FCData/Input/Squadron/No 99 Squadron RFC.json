@@ -1,0 +1,43 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102099,
+  "name": "No 99 Squadron RFC",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "archType": "dh4",
+      "squadronIntroduction": "19180425",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180425": "Droglandt"
+  },
+  "skins": [],
+          
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 99 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

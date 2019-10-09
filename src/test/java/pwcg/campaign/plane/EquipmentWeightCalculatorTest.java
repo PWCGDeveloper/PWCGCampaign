@@ -12,7 +12,8 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.resupply.depo.EquipmentWeightCalculator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -25,14 +26,14 @@ public class EquipmentWeightCalculatorTest
     @Before 
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);      
+        PWCGContext.setProduct(PWCGProduct.BOS);      
     }
 
     @Test
     public void testEquipSquadronGermanFighter() throws PWCGException
     {
-        PlaneType me109F4 = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneById("bf109f4");
-        PlaneType me109G2 = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneById("bf109g2");
+        PlaneType me109F4 = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneById("bf109f4");
+        PlaneType me109G2 = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneById("bf109g2");
         List<PlaneType> planeTypes = new ArrayList<>();
         planeTypes.add(me109F4);
         planeTypes.add(me109G2);

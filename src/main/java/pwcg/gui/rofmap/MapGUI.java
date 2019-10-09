@@ -3,7 +3,7 @@ package pwcg.gui.rofmap;
 import java.awt.Point;
 import java.util.Date;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.PwcgGuiContext;
 
@@ -32,7 +32,7 @@ public abstract class MapGUI extends PwcgGuiContext
 	{
 		if (initialPosition == null)
 		{
-		    initialPosition = PWCGContextManager.getInstance().getCurrentMap().getMapCenter();
+		    initialPosition = PWCGContext.getInstance().getCurrentMap().getMapCenter();
 		}
 		else
 		{

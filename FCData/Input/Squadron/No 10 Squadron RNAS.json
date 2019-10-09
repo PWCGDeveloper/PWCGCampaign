@@ -1,0 +1,177 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102210,
+  "name": "No 10 Squadron RNAS",
+  "skill": 50,
+  "planeAssignments": [
+    {
+      "archType": "nieuport",
+      "squadronIntroduction": "19160401",
+      "squadronWithdrawal": "19170201"
+    },
+    {
+      "archType": "soptriplane",
+      "squadronIntroduction": "19170201",
+      "squadronWithdrawal": "19170831"
+    },
+    {
+      "archType": "sopcamel",
+      "squadronIntroduction": "19170715",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19170301": "Proven",
+    "19170325": "Abeele (East)",
+    "19170515": "Poperinghe",
+    "19171004": "Proven",
+    "19180401": "Lealvillers",
+    "19180409": "Baizieux 2",
+    "19180427": "Coxyde",
+    "19180530": "Coxyde",
+    "19180709": "Coxyde",
+    "19180722": "Hondschoote"
+  },
+  "skins": [
+    {
+      "skinName": "N11_RFC_GREEN",
+      "planeType": "nieuport11",
+      "startDate": "19160401",
+      "endDate": "19160601",
+      "squadId": 102210,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N17B_RFC_GREEN",
+      "planeType": "nieuport17brit",
+      "startDate": "19160601",
+      "endDate": "19170201",
+      "squadId": 102210,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "ST_RNAS10 BF_EARLY",
+      "planeType": "soptriplane",
+      "startDate": "19170201",
+      "endDate": "19170630",
+      "squadId": 102210,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "ST_RNAS10 BF_LATE",
+      "planeType": "soptriplane",
+      "startDate": "19170701",
+      "endDate": "19170831",
+      "squadId": 102210,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SC_102210_ANS",
+      "planeType": "sopcamel",
+      "startDate": "19160401",
+      "endDate": "19171026",
+      "squadId": 102210,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SC_102210B_ANS",
+      "planeType": "sopcamel",
+      "startDate": "19171027",
+      "endDate": "19171231",
+      "squadId": 102210,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SC_102210_ANS",
+      "planeType": "sopcamel",
+      "startDate": "19180101",
+      "endDate": "19180121",
+      "squadId": 102210,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SC_102210C_ANS",
+      "planeType": "sopcamel",
+      "startDate": "19180122",
+      "endDate": "19180321",
+      "squadId": 102210,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102210_020",
+      "planeType": "sopcamel",
+      "startDate": "19180322",
+      "endDate": "19181022",
+      "squadId": 102210,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SC_103017_ANS",
+      "planeType": "sopcamel",
+      "startDate": "19181028",
+      "endDate": "19181201",
+      "squadId": 102210,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 210 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+
+  "serviceId": 10202,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19180401",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      },
+      {
+        "startDate": "19180401",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 70
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

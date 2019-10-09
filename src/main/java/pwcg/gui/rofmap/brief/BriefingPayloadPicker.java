@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadDesignation;
@@ -43,7 +43,7 @@ public class BriefingPayloadPicker
 
     private List<String> getAvailablePayloadTypes(String planeTypeName) throws PWCGException 
     {
-        IPayloadFactory payloadfactory = PWCGContextManager.getInstance().getPayloadFactory();
+        IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payload = payloadfactory.createPlanePayload(planeTypeName);
         
         List<String> payloadDescriptions = new ArrayList<>();
@@ -60,7 +60,7 @@ public class BriefingPayloadPicker
 
     private int getPayloadIndex(String planeTypeName, String payloadDescription) throws PWCGException
     {
-        IPayloadFactory payloadfactory = PWCGContextManager.getInstance().getPayloadFactory();
+        IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payload = payloadfactory.createPlanePayload(planeTypeName);
         
         return payload.getPayloadIdByDescription(payloadDescription);

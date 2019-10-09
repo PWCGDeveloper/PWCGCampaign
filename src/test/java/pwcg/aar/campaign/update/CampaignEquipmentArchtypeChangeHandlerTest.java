@@ -7,7 +7,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.AARCoordinator;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.core.exception.PWCGException;
@@ -23,7 +24,7 @@ public class CampaignEquipmentArchtypeChangeHandlerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_STALINGRAD);
     }
     

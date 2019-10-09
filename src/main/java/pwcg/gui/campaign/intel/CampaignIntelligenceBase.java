@@ -17,7 +17,7 @@ import javax.swing.JTextArea;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.EquippedPlane;
@@ -47,8 +47,8 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
 	public CampaignIntelligenceBase() throws PWCGException  
 	{
         super();
-		this.campaign = PWCGContextManager.getInstance().getCampaign();
-		this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+		this.campaign = PWCGContext.getInstance().getCampaign();
+		this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         this.setLayout(new BorderLayout());
         this.setOpaque(false);
 	}    
@@ -135,11 +135,11 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
         List<Role> acceptableRoles = new ArrayList<Role>();
         acceptableRoles.add(role);
 
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         String airfieldName = referencePlayer.determineSquadron().determineCurrentAirfieldName(campaign.getDate());
-        IAirfield field =  PWCGContextManager.getInstance().getAirfieldAllMaps(airfieldName);
+        IAirfield field =  PWCGContext.getInstance().getAirfieldAllMaps(airfieldName);
 
-        List<Squadron> squadrons = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(
+        List<Squadron> squadrons = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(
                 campaign, field.getPosition(), 5, 55000, acceptableRoles, side, campaign.getDate());
 
         for (Squadron squadron : squadrons)
@@ -167,7 +167,7 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
                 ++beginIndex;
                 String squadronIdString = action.substring(beginIndex).trim();
                 int squadronId = new Integer(squadronIdString).intValue();
-                Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronId);
+                Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
                 String squadronDesc = formSquadronDesc(squadron);
                 squadronInteltext.setText(squadronDesc);
             }

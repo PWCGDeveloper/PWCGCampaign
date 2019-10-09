@@ -12,7 +12,8 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
@@ -24,14 +25,14 @@ public class PlaneTypeFactoryTest
     @Before 
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420302"));
     }
 
     @Test
     public void testCreatePlane() throws PWCGException
     {
-        PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
+        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         PlaneType planeType =  planeTypeFactory.createPlaneTypeByType("bf110e2");
         assert(planeType.getType().equals("bf110e2"));
         assert(planeType.getArchType().equals("bf110"));
@@ -40,7 +41,7 @@ public class PlaneTypeFactoryTest
     @Test
     public void testCreatePlaneByDesc() throws PWCGException
     {
-        PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
+        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         PlaneType planeType =  planeTypeFactory.createPlaneTypeByAnyName("Bf 109 F-4");
         assert(planeType.getType().equals("bf109f4"));
         assert(planeType.getArchType().equals("bf109"));
@@ -49,7 +50,7 @@ public class PlaneTypeFactoryTest
     @Test
     public void testAllPlaneTypes() throws PWCGException
     {
-        PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
+        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         Map<String, PlaneType> planeTypes =  planeTypeFactory.getPlaneTypes();
         assert(planeTypes.size() > 30);
         for (PlaneType planeType : planeTypes.values())
@@ -66,7 +67,7 @@ public class PlaneTypeFactoryTest
     @Test
     public void testCreatePlanesForArchType() throws PWCGException
     {
-        PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
+        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         List<PlaneType> planeTypes =  planeTypeFactory.createPlaneTypesForArchType("bf109");
         assert(planeTypes.size() == 7);
         for (PlaneType planeType : planeTypes)
@@ -80,7 +81,7 @@ public class PlaneTypeFactoryTest
     {
         Date planeDate = DateUtils.getDateYYYYMMDD("19420402");
         
-        PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
+        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         List<PlaneType> planeTypes =  planeTypeFactory.createActivePlaneTypesForArchType("bf109", planeDate);
         assert(planeTypes.size() == 3);
         for (PlaneType planeType : planeTypes)
@@ -92,7 +93,7 @@ public class PlaneTypeFactoryTest
     @Test
     public void testCreateActiveFightersForCampaign() throws PWCGException
     {
-        PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
+        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         List<PlaneType> planeTypes =  planeTypeFactory.getAllFightersForCampaign(campaign);
         assert(planeTypes.size() == 12);
     }

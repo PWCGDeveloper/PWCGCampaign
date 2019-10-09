@@ -8,7 +8,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.CoordinateBox;
@@ -34,7 +34,7 @@ public class MissionAirfieldIconBuilder
 
     private void createAirfieldIconsForSide(Campaign campaign, Mission mission, Side side) throws PWCGException
     {
-        List<IAirfield> airfields = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirFieldsForSide(campaign.getDate(), side);
+        List<IAirfield> airfields = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirFieldsForSide(campaign.getDate(), side);
         CoordinateBox missionBorders = mission.getMissionBorders().expandBox(1000);
 		for (IAirfield airfield : airfields)
 		{

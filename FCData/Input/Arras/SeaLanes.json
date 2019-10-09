@@ -1,0 +1,126 @@
+{
+  "axisShippingLanes": [
+    {
+      "neCorner": {
+        "xPos": 160000.0,
+        "yPos": 0.0,
+        "zPos": 130000.0
+      },
+      "swCorner": {
+        "xPos": 100000.0,
+        "yPos": 0.0,
+        "zPos": 175000.0
+      },
+      "country": "GERMANY",
+      "startDate": "19140801",
+      "endDate": "19181111"
+    }
+  ],
+  "alliedShippingLanes": [
+    {
+      "neCorner": {
+        "xPos": 80000.0,
+        "yPos": 0.0,
+        "zPos": 89000.0
+      },
+      "swCorner": {
+        "xPos": 65000.0,
+        "yPos": 0.0,
+        "zPos": 120000.0
+      },
+      "country": "BRITAIN",
+      "startDate": "19140801",
+      "endDate": "19181111"
+    },
+    {
+      "neCorner": {
+        "xPos": 118000.0,
+        "yPos": 0.0,
+        "zPos": 115000.0
+      },
+      "swCorner": {
+        "xPos": 90000.0,
+        "yPos": 0.0,
+        "zPos": 155000.0
+      },
+      "country": "BRITAIN",
+      "startDate": "19140801",
+      "endDate": "19181111"
+    },
+    {
+      "neCorner": {
+        "xPos": 160000.0,
+        "yPos": 0.0,
+        "zPos": 95000.0
+      },
+      "swCorner": {
+        "xPos": 120000.0,
+        "yPos": 0.0,
+        "zPos": 135000.0
+      },
+      "country": "BRITAIN",
+      "startDate": "19140801",
+      "endDate": "19181111"
+    },
+    {
+      "neCorner": {
+        "xPos": 190000.0,
+        "yPos": 0.0,
+        "zPos": 118000.0
+      },
+      "swCorner": {
+        "xPos": 140000.0,
+        "yPos": 0.0,
+        "zPos": 140000.0
+      },
+      "country": "BRITAIN",
+      "startDate": "19140801",
+      "endDate": "19181111"
+    },
+    {
+      "neCorner": {
+        "xPos": 160000.0,
+        "yPos": 0.0,
+        "zPos": 130000.0
+      },
+      "swCorner": {
+        "xPos": 115000.0,
+        "yPos": 0.0,
+        "zPos": 215000.0
+      },
+      "country": "BRITAIN",
+      "startDate": "19140801",
+      "endDate": "19181111"
+    },
+    {
+      "neCorner": {
+        "xPos": 115000.0,
+        "yPos": 0.0,
+        "zPos": 180000.0
+      },
+      "swCorner": {
+        "xPos": 93000.0,
+        "yPos": 0.0,
+        "zPos": 192000.0
+      },
+      "country": "BRITAIN",
+      "startDate": "19140801",
+      "endDate": "19181111"
+    },
+    {
+      "neCorner": {
+        "xPos": 132000.0,
+        "yPos": 0.0,
+        "zPos": 190000.0
+      },
+      "swCorner": {
+        "xPos": 115000.0,
+        "yPos": 0.0,
+        "zPos": 115000.0
+      },
+      "country": "BRITAIN",
+      "startDate": "19140801",
+      "endDate": "19181111"
+    }
+  ]
+}

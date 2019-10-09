@@ -2,7 +2,7 @@ package pwcg.mission.options;
 
 import java.util.Date;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.options.MapSeasonalParameters.Season;
@@ -38,13 +38,13 @@ public abstract class MissionOptions
     public void createFlightSpecificMissionOptions(Mission mission) throws PWCGException 
     {
     	this.mission = mission;
-        PWCGContextManager.getInstance().getCurrentMap().getMapWeather().createMissionWeather(mission);
+        PWCGContext.getInstance().getCurrentMap().getMapWeather().createMissionWeather(mission);
         createMissionTime();
     }
     
     public MapSeasonalParameters getSeasonBasedParameters(Date date) throws PWCGException
     {
-        Season season = PWCGContextManager.getInstance().getCurrentMap().getMapWeather().getSeason(date);
+        Season season = PWCGContext.getInstance().getCurrentMap().getMapWeather().getSeason(date);
         if (season == Season.WINTER)
         {
         	return winter;

@@ -2,7 +2,7 @@ package pwcg.mission.flight.seapatrolantishipping;
 
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.target.locator.ShippingLane;
 import pwcg.campaign.target.locator.ShippingLaneManager;
 import pwcg.core.exception.PWCGException;
@@ -52,7 +52,7 @@ public class SeaAntiShippingPackage implements IFlightPackage
 
 	private ShippingLane getEnemyShippingLane() throws PWCGException 
 	{
-        ShippingLaneManager shippingLaneManager = PWCGContextManager.getInstance().getCurrentMap().getShippingLaneManager();        
+        ShippingLaneManager shippingLaneManager = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager();        
         ShippingLane selectedShippingLane = shippingLaneManager.getClosestShippingLane(flightInformation.getMission().getMissionBorders().getCenter());
 	    return selectedShippingLane;
 	}

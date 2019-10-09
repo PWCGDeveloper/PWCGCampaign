@@ -1,0 +1,164 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501034,
+  "name": "Jasta 34b",
+  "skill": 70,
+  "planeAssignments": [
+    {
+      "archType": "albatrosd",
+      "squadronIntroduction": "19170318",
+      "squadronWithdrawal": "19180501"
+    },
+    {
+      "archType": "pfalzd3a",
+      "squadronIntroduction": "19180110",
+      "squadronWithdrawal": "19180615"
+    },
+    {
+      "archType": "fokkerdr1",
+      "squadronIntroduction": "19180410",
+      "squadronWithdrawal": "19180828"
+    },
+    {
+      "archType": "fokkerd7",
+      "squadronIntroduction": "19180615",
+      "squadronWithdrawal": "19180801"
+    },
+    {
+      "archType": "pfalzd12",
+      "squadronIntroduction": "19180826",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19170225": "Mars-la-Tour",
+    "19171014": "Puisieux Ferme,Laon",
+    "19171122": "Chassonge Ferme,Stenay/Verdun",
+    "19180316": "Pronville,nr Queant",
+    "19180327": "Balatre,E Roye",
+    "19180418": "Assevillers",
+    "19180801": "Cappy S",
+    "19180811": "Assevillers",
+    "19180829": "Houplin,S Lille",
+    "19180905": "Pronville,nr Queant",
+    "19181001": "Houplin,S Lille",
+    "19181007": "Assevillers"
+  },
+  "skins": [
+    {
+      "skinName": "AD2L_3CAMO_LATE",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501034,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD3_J34_MAY1917",
+      "planeType": "albatrosd3",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501034,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_501034_ANS",
+      "planeType": "albatrosd5",
+      "startDate": "19140801",
+      "endDate": "19180405",
+      "squadId": 501034,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_501034_18A",
+      "planeType": "albatrosd5",
+      "startDate": "19180406",
+      "endDate": "19181201",
+      "squadId": 501034,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "501034",
+      "planeType": "pfalzd3a",
+      "startDate": "19140801",
+      "endDate": "19180405",
+      "squadId": 501034,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "PD3A_J34_APR18",
+      "planeType": "pfalzd3a",
+      "startDate": "19180406",
+      "endDate": "19181201",
+      "squadId": 501034,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "501034",
+      "planeType": "fokkerdr1",
+      "startDate": "19180406",
+      "endDate": "19181201",
+      "squadId": 501034,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "501034",
+      "planeType": "fokkerd7",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501034,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7F_J34_MAY18",
+      "planeType": "fokkerd7f",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501034,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "PD12_2690",
+      "planeType": "pfalzd12",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501034,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

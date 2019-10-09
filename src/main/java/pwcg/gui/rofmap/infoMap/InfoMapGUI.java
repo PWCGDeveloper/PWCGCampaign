@@ -19,8 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
@@ -59,8 +60,8 @@ public class InfoMapGUI extends MapGUI implements ActionListener
     {        
         super(mapDate);
 
-        PWCGContextManager.getInstance().initializeMap();
-        PWCGContextManager.getInstance().setCampaign(null);
+        PWCGContext.getInstance().initializeMap();
+        PWCGContext.getInstance().setCampaign(null);
     }
 
     public void makeGUI() 
@@ -205,19 +206,28 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         JLabel mapLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Map");
         mapGrid.add(mapLabel);
         
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             mapGrid.add(makeRadioButton(PWCGMap.FRANCE_MAP_NAME, MAP_DELIMITER + PWCGMap.FRANCE_MAP_NAME, mapButtonGroup));
             mapGrid.add(makeRadioButton(PWCGMap.CHANNEL_MAP_NAME, MAP_DELIMITER + PWCGMap.CHANNEL_MAP_NAME, mapButtonGroup));
             mapGrid.add(makeRadioButton(PWCGMap.GALICIA_MAP_NAME, MAP_DELIMITER + PWCGMap.GALICIA_MAP_NAME, mapButtonGroup));
         }
-        else
+        else if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
             mapGrid.add(makeRadioButton(PWCGMap.MOSCOW_MAP_NAME, MAP_DELIMITER + PWCGMap.MOSCOW_MAP_NAME, mapButtonGroup));
             mapGrid.add(makeRadioButton(PWCGMap.STALINGRAD_MAP_NAME, MAP_DELIMITER + PWCGMap.STALINGRAD_MAP_NAME, mapButtonGroup));
             mapGrid.add(makeRadioButton(PWCGMap.KUBAN_MAP_NAME, MAP_DELIMITER + PWCGMap.KUBAN_MAP_NAME, mapButtonGroup));
             mapGrid.add(makeRadioButton(PWCGMap.BODENPLATTE_MAP_NAME, MAP_DELIMITER + PWCGMap.BODENPLATTE_MAP_NAME, mapButtonGroup));
         }
+        else if (PWCGContext.getProduct() == PWCGProduct.FC)
+        {
+            mapGrid.add(makeRadioButton(PWCGMap.ARRAS_MAP_NAME, MAP_DELIMITER + PWCGMap.ARRAS_MAP_NAME, mapButtonGroup));
+        }
+        else
+        {
+            throw new PWCGException("No valid product selected");
+        }
+
         return mapPanel;
     }
 
@@ -231,7 +241,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
         
         cbDate.setModel(model);
 
-        mapDate = PWCGContextManager.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
+        mapDate = PWCGContext.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
     }
 
     private JPanel makeGroundStructureCheckBoxes() throws PWCGException
@@ -366,11 +376,11 @@ public class InfoMapGUI extends MapGUI implements ActionListener
                 int indexOfMapName = MAP_DELIMITER.length();
                 String mapName = action.substring(indexOfMapName);
                 FrontMapIdentifier mapIdentifier = PWCGMap.getFrontMapIdentifierForName(mapName);
-                PWCGContextManager.getInstance().changeContext(mapIdentifier);
+                PWCGContext.getInstance().changeContext(mapIdentifier);
                 
                 setDateSelectionsByPossibleStartDatesAndMovingFront();
                 
-                Date newMapDate = PWCGContextManager.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
+                Date newMapDate = PWCGContext.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
                 setMapDate(newMapDate);
                 infoMapPanel.setData();
 
@@ -404,7 +414,7 @@ public class InfoMapGUI extends MapGUI implements ActionListener
 
     public void refreshSquadronPlacement() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         squadronManager.initialize();
         infoMapPanel.setData();
     }

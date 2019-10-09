@@ -1,7 +1,7 @@
 package pwcg.mission.flight.ferry;
 
 import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
@@ -19,7 +19,7 @@ public class FerryPackage implements IFlightPackage
 
 	public Flight createPackage () throws PWCGException 
 	{
-	    IAirfield fromAirfield = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());
+	    IAirfield fromAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(fromAirfield.getPosition().copy());        
 		FerryFlight ferry = new FerryFlight (flightInformation, missionBeginUnit, false);
 		ferry.createUnitMission();

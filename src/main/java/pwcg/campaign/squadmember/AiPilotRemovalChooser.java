@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
@@ -70,7 +70,7 @@ public class AiPilotRemovalChooser
         SquadronMembers squadronMembers = squadronPersonnel.getSquadronMembers();
         SquadronMembers activeSquadronMembers = SquadronMemberFilter.filterActiveAI(squadronMembers.getSquadronMemberCollection(), campaign.getDate());
         
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronId);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
 
         List<SquadronMember> squadronMembersOfSimilarRank = new ArrayList<>();
@@ -104,7 +104,7 @@ public class AiPilotRemovalChooser
         SquadronMembers squadronMembers = squadronPersonnel.getSquadronMembers();
         SquadronMembers activeSquadronMembers = SquadronMemberFilter.filterActiveAI(squadronMembers.getSquadronMemberCollection(), campaign.getDate());
         
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronId);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
 
         List<SquadronMember> squadronMembersOfAnyNonCommandRank = new ArrayList<>();

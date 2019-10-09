@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -143,7 +143,7 @@ public class AARClaimPanel extends ImageResizingPanel implements ActionListener
         for (String planeName : planeTypesInMission)
         {
             String planeDisplayName = planeName;
-            PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeName);
+            PlaneType plane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeName);
             if (plane != null)
             {
                 planeDisplayName = plane.getDisplayName();
@@ -168,7 +168,7 @@ public class AARClaimPanel extends ImageResizingPanel implements ActionListener
 			}
 			else
 			{
-			    PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
+			    PlaneType planeType = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
 			    if (planeType != null)
 			    {
     			    if (planeType.getType().equalsIgnoreCase(planeType.getType()))
@@ -219,6 +219,6 @@ public class AARClaimPanel extends ImageResizingPanel implements ActionListener
 
 	private void setMapForDebrief() throws PWCGException
 	{	    
-        PWCGContextManager.getInstance().changeContext(AARCoordinator.getInstance().getAarContext().getPreliminaryData().getPwcgMissionData().getMapId());
+        PWCGContext.getInstance().changeContext(AARCoordinator.getInstance().getAarContext().getPreliminaryData().getPwcgMissionData().getMapId());
 	}
 }

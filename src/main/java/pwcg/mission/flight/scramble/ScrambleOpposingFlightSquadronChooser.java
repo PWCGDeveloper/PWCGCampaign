@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -59,7 +59,7 @@ public class ScrambleOpposingFlightSquadronChooser
     {
         List<Role> opposingFlightRoles = determineOpposingRoles();
         
-        List<Squadron> possibleOpposingSquadsByRole = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(
+        List<Squadron> possibleOpposingSquadsByRole = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(
                 playerFlightInformation.getMission().getCampaign(), 
                 playerFlightInformation.getTargetCoords().copy(), 
                 1, 

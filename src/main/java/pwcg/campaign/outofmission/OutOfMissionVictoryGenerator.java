@@ -6,7 +6,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -123,10 +123,10 @@ public class OutOfMissionVictoryGenerator
         Coordinate squadronPosition = victorPilot.determineSquadron().determineCurrentPosition(date);
         if (squadronPosition != null)
         {
-            FrontLinesForMap frontLines = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(date);
+            FrontLinesForMap frontLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
             FrontLinePoint eventPosition = frontLines.findCloseFrontPositionForSide(squadronPosition, 100000, enemySide);
     
-            eventLocationDescription =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(eventPosition.getPosition()).getName();
+            eventLocationDescription =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(eventPosition.getPosition()).getName();
             if (eventLocationDescription == null || eventLocationDescription.isEmpty())
             {
                 eventLocationDescription = "";

@@ -4,7 +4,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
 import pwcg.core.exception.PWCGException;
@@ -53,7 +53,7 @@ public class TargetLocationFinder
     {
         Coordinate flightTargetCoordinates = null;
 
-        GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
         PWCGLocation town = groupManager.getTownFinder().findTownForSideWithinRadius(side, campaign.getDate(), targetGeneralLocation, radius);
         if (town != null)
         {
@@ -68,7 +68,7 @@ public class TargetLocationFinder
     public Coordinate findLocationNearBridge() throws PWCGException
     {
         Coordinate flightTargetCoordinates = null;
-        GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
         Bridge bridge = groupManager.getBridgeFinder().findBridgeForSideWithinRadius(side, campaign.getDate(), targetGeneralLocation, radius);
         if (bridge != null)
         {
@@ -82,14 +82,14 @@ public class TargetLocationFinder
     
     public Coordinate findLocationBehindEnemyLines() throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());        
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());        
         Coordinate flightTargetCoordinates = frontLinesForMap.findPositionBehindLinesForSide(targetGeneralLocation, radius, 10000, 20000, side);
         return flightTargetCoordinates;
     }
     
     public Coordinate findLocationAtFront() throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());        
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());        
         FrontLinePoint targetCountryFrontPoint = frontLinesForMap.findCloseFrontPositionForSide(targetGeneralLocation, radius, side);
         return targetCountryFrontPoint.getPosition();
     }

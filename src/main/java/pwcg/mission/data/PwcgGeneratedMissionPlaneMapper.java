@@ -6,7 +6,8 @@ import java.util.Map;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -34,7 +35,7 @@ public class PwcgGeneratedMissionPlaneMapper
         }
         
         // Always add balloons for RoF
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             alliedPlaneMap.put(PlaneType.BALLOON, PlaneType.BALLOON);
             axisPlaneMap.put(PlaneType.BALLOON, PlaneType.BALLOON);
@@ -43,7 +44,7 @@ public class PwcgGeneratedMissionPlaneMapper
 
     private Side determinePlaneSide(Campaign campaign, PwcgGeneratedMissionPlaneData missionPlane) throws PWCGException
     {
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(missionPlane.getSquadronId());            
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(missionPlane.getSquadronId());            
         Side side = squadron.determineSquadronCountry(campaign.getDate()).getSide();
         return side;
     }

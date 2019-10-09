@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -32,7 +32,7 @@ public class SkinLoader
     {
         try
         {
-            List<PlaneType> allPlanes = PWCGContextManager.getInstance().getPlaneTypeFactory().getAllPlanes();
+            List<PlaneType> allPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAllPlanes();
             for(PlaneType plane : allPlanes)
             {
                 SkinsForPlane skinsForPlane = new SkinsForPlane();

@@ -1,0 +1,83 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501123,
+  "name": "Schlasta 23b",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "archType": "rolc",
+      "squadronIntroduction": "19160901",
+      "squadronWithdrawal": "19170728"
+    },
+    {
+      "archType": "halberstadtcl",
+      "squadronIntroduction": "19170709",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160901": "Bellevue Ferme",
+    "19161101": "Ham",
+    "19171117": "La Petrie",
+    "19180317": "Nurlu,NE Moislains",
+    "19180404": "Pont-a-Marcq",
+    "19180526": "Eppeville"
+  },
+  "skins": [
+    {
+      "skinName": "RC2A_PW_E_DEF",
+      "planeType": "rolc2a",
+      "startDate": "19140801",
+      "endDate": "19170428",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "RC2A_PW_G_DEF",
+      "planeType": "rolc2a",
+      "startDate": "19170428",
+      "endDate": "19181201",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "HCL2_SCH23_09-17",
+      "planeType": "halberstadtcl2",
+      "startDate": "19171109",
+      "endDate": "19180325",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "HCL2_SCH23_04-18",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180326",
+      "endDate": "19180601",
+      "squadId": 501123,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

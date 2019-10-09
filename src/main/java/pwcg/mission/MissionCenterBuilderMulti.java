@@ -7,7 +7,7 @@ import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -40,7 +40,7 @@ public class MissionCenterBuilderMulti implements IMissionCenterBuilder
 
     private Coordinate findMissionCenter(Coordinate averagePlayerLocation) throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         Coordinate frontLineCoordinateCloseToCentralLocation = frontLinesForMap.findClosestFrontCoordinateForSide(averagePlayerLocation, Side.AXIS);
 
         Coordinate missionCenterCoordinateAxis = findAxisFrontCoordinateWithinRadiusOfMissionCenter(frontLineCoordinateCloseToCentralLocation);
@@ -57,7 +57,7 @@ public class MissionCenterBuilderMulti implements IMissionCenterBuilder
     {
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
 
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> nearbyFrontPointsAxis = frontLinesForMap.findClosestFrontPositionsForSide(
                 frontLineCoordinateCloseToCentralLocation, productSpecific.getSmallMissionRadius(), Side.AXIS);
         
@@ -68,7 +68,7 @@ public class MissionCenterBuilderMulti implements IMissionCenterBuilder
 
     private Coordinate findAlliedCoordinateNearAxisCoordinate(Coordinate axisCoordinate) throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         Coordinate alliedCoordinateCloseToAxisCoordinate = frontLinesForMap.findClosestFrontCoordinateForSide(axisCoordinate, Side.ALLIED);
         return alliedCoordinateCloseToAxisCoordinate;
     }

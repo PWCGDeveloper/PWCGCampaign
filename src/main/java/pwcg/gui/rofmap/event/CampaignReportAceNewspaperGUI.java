@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 
 import pwcg.aar.ui.events.model.AceKilledEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
@@ -41,7 +41,7 @@ public class CampaignReportAceNewspaperGUI extends ImageResizingPanel implements
 			Color bgColor = ColorMap.NEWSPAPER_BACKGROUND;
 			
 			// Picture
-			SquadronMember pilot = PWCGContextManager.getInstance().getAceManager().getHistoricalAceBySerialNumber(aceEvent.getSerialNumber());
+			SquadronMember pilot = PWCGContext.getInstance().getAceManager().getHistoricalAceBySerialNumber(aceEvent.getSerialNumber());
 			if (pilot != null)
 			{
 				ImageIcon imageIcon = pilot.determinePilotPicture();  

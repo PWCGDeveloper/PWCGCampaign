@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.HotSpot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -124,14 +124,14 @@ public class EmptySpaceFinder
 
     private void findBlocksInArea() throws PWCGException
     {
-        GroupManager groupManager  = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupManager  = PWCGContext.getInstance().getCurrentMap().getGroupManager();
         blocksInArea = groupManager.getBlockFinder().getBlocksWithinRadius(coordinateBox.getCenter(), coordinateBox.getLongestEdge() + 1000.0);
     }
     
 
     private void findAirfieldsInArea() throws PWCGException
     {
-        AirfieldManager airfieldManager  = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager();
+        AirfieldManager airfieldManager  = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
         airfieldsInArea = airfieldManager.getAirfieldFinder().getWithinRadius(coordinateBox.getCenter(), coordinateBox.getLongestEdge() + 1000.0);
     }
 

@@ -16,7 +16,8 @@ import pwcg.aar.awards.PromotionEventHandlerFighter;
 import pwcg.aar.awards.PromotionEventHandlerRecon;
 import pwcg.aar.awards.PromotionEventHandlerStrategic;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberVictories;
@@ -45,7 +46,7 @@ public class PromotionEventHandlerTest
     @Before
     public void setupForTestEnvironment() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
         Mockito.when(squadronMember.getSquadronMemberVictories()).thenReturn(squadronMemberVictories);
     }

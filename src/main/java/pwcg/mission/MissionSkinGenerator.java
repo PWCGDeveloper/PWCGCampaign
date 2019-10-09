@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -41,13 +41,13 @@ public class MissionSkinGenerator
         if (plane.getAiLevel() != AiSkillLevel.NOVICE)
         {            
             // Choose a personal skin for that squadron if one is available
-            List<Skin> squadronSkins = PWCGContextManager.getInstance().getSkinManager().getSkinsByPlaneSquadronDateInUse(plane.getType(), squad.getSquadronId(), date);
+            List<Skin> squadronSkins = PWCGContext.getInstance().getSkinManager().getSkinsByPlaneSquadronDateInUse(plane.getType(), squad.getSquadronId(), date);
             Skin skin = chooseSquadronPersonalSkin(plane, squadronSkins);
 
             // Non squadron personal skin is a less good option
             if (skin == null)
             {
-                List<Skin> nonSquadronPersonalSkin = PWCGContextManager.getInstance().getSkinManager().getPersonalSkinsByPlaneCountryDateInUse(
+                List<Skin> nonSquadronPersonalSkin = PWCGContext.getInstance().getSkinManager().getPersonalSkinsByPlaneCountryDateInUse(
                                 plane.getType(), 
                                 squad.determineSquadronCountry(date).getCountryName(), 
                                 date);
@@ -58,7 +58,7 @@ public class MissionSkinGenerator
         else
         {
             // For generic skins we don't care if they are in use
-            List<Skin> factorySkins = PWCGContextManager.getInstance().getSkinManager().getSkinsBySquadronPlaneDate(plane.getType(), Skin.FACTORY_GENERIC, date);
+            List<Skin> factorySkins = PWCGContext.getInstance().getSkinManager().getSkinsBySquadronPlaneDate(plane.getType(), Skin.FACTORY_GENERIC, date);
             chooseNoviceSkin(plane, factorySkins);
         }
      }
@@ -70,7 +70,7 @@ public class MissionSkinGenerator
         if (skin != null)
         {
             plane.setPlaneSkin(skin);
-            PWCGContextManager.getInstance().getSkinManager().getSkinsInUse().addSkinInUse(skin);
+            PWCGContext.getInstance().getSkinManager().getSkinsInUse().addSkinInUse(skin);
             Logger.log(LogLevel.DEBUG, "SKIN: Assign squadron personal: " + skin.getSkinName());
         }
         else
@@ -91,7 +91,7 @@ public class MissionSkinGenerator
             if (skin != null)
             {
                 plane.setPlaneSkin(skin);
-                PWCGContextManager.getInstance().getSkinManager().getSkinsInUse().addSkinInUse(skin);
+                PWCGContext.getInstance().getSkinManager().getSkinsInUse().addSkinInUse(skin);
                 Logger.log(LogLevel.DEBUG, "SKIN: Assign non squadron personal: " + skin.getSkinName());
             }
             else
@@ -152,7 +152,7 @@ public class MissionSkinGenerator
         Skin selectedSkin = null;
         
         // Start by setting to squadron livery
-        List<Skin> squadronSkins = PWCGContextManager.getInstance().getSkinManager().getSquadronSkinsByPlaneSquadronDate(plane.getType(), squadron.getSquadronId(), date);
+        List<Skin> squadronSkins = PWCGContext.getInstance().getSkinManager().getSquadronSkinsByPlaneSquadronDate(plane.getType(), squadron.getSquadronId(), date);
         for (Skin squadSkin : squadronSkins)
         {
             if (squadSkin.getPlane() == null)
@@ -189,7 +189,7 @@ public class MissionSkinGenerator
 
 	private void setUserAssignedPilotSkin(SquadronMember pilot, PlaneMCU plane) 
 	{
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         
 		// Specific pilot designated skins override generic skins
 		for (Skin pilotSkin : pilot.getSkins())
@@ -210,7 +210,7 @@ public class MissionSkinGenerator
     		    }
     
                 plane.setPlaneSkin(pilotSkin);
-                PWCGContextManager.getInstance().getSkinManager().getSkinsInUse().addSkinInUse(pilotSkin);
+                PWCGContext.getInstance().getSkinManager().getSkinsInUse().addSkinInUse(pilotSkin);
 		    }
 		    catch (Exception exp)
 		    {

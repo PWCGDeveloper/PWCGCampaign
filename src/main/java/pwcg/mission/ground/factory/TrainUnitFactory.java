@@ -1,7 +1,7 @@
 package pwcg.mission.ground.factory;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.target.TargetDefinition;
@@ -52,7 +52,7 @@ public class TrainUnitFactory
 
     private Coordinate getTrainDestination() throws PWCGException
     {
-        GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         Block destinationStation = groupData.getRailroadStationFinder().getDestinationTrainPosition(targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry(), campaign.getDate());
         if (destinationStation != null)
         {

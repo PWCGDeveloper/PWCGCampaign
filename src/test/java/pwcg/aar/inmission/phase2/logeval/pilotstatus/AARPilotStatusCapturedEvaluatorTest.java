@@ -10,8 +10,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.BehindEnemyLines;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
@@ -25,7 +26,7 @@ public class AARPilotStatusCapturedEvaluatorTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
     }
 
     /**

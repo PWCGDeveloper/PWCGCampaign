@@ -5,7 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
 import pwcg.core.exception.PWCGException;
@@ -27,7 +27,7 @@ public class AAABridgeBuilder
 	public List<GroundUnitSpawning> createAAAForBridges() throws PWCGException
 	{
 		List<GroundUnitSpawning> bridgeAAA = new ArrayList<>();
-        GroupManager groupData = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
 
 		for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())
 		{

@@ -11,7 +11,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
@@ -34,7 +35,7 @@ public class EquipmentReplacementHandlerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
         Mockito.when(armedService.getServiceId()).thenReturn(20101);
      }
@@ -60,7 +61,7 @@ public class EquipmentReplacementHandlerTest
         {
             for (EquippedPlane equippedPlane : equipment.getActiveEquippedPlanes().values())
             {
-                Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(equippedPlane.getSquadronId());
+                Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(equippedPlane.getSquadronId());
                 if (squadron.getService() == armedService.getServiceId())
                 {
                     if (playerSquadron.getSquadronId() != equippedPlane.getSquadronId())
@@ -102,7 +103,7 @@ public class EquipmentReplacementHandlerTest
         Equipment equipment = campaign.getEquipmentManager().getEquipmentForSquadron(playerSquadron.getSquadronId());
         for (EquippedPlane equippedPlane : equipment.getActiveEquippedPlanes().values())
         {
-            Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(playerSquadron.getSquadronId());
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadron.getSquadronId());
             if (squadron.getSquadronId() == equippedPlane.getSquadronId())
             {
                 System.out.println("Deactivate: " + equippedPlane.getSerialNumber() + " for " + equippedPlane.getSquadronId());

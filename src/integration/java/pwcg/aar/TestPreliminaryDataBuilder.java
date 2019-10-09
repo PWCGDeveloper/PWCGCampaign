@@ -10,7 +10,7 @@ import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.aar.prelim.claims.AARClaimPanelData;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
@@ -133,7 +133,7 @@ public class TestPreliminaryDataBuilder
         missionHeader.setDuty("PATROL");
         missionHeader.setAltitude(3000); 
         
-        missionHeader.setMapName(PWCGContextManager.getInstance().getCurrentMap().getMapName()); 
+        missionHeader.setMapName(PWCGContext.getInstance().getCurrentMap().getMapName()); 
 
         String formattedTime = DateUtils.getDateAsMissionFileFormat(campaign.getDate());
         missionHeader.setTime(formattedTime);

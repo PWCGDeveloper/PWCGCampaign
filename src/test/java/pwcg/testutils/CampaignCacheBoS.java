@@ -3,7 +3,8 @@ package pwcg.testutils;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGenerator;
 import pwcg.campaign.CampaignGeneratorModel;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCache
@@ -12,14 +13,14 @@ public class CampaignCacheBoS extends CampaignCacheBase implements ICampaignCach
     {
         CampaignGenerator generator = new CampaignGenerator(generatorModel);
         Campaign campaign = generator.generate();          
-        PWCGContextManager.getInstance().setCampaign(campaign);
+        PWCGContext.getInstance().setCampaign(campaign);
         return campaign;
     }
 
     protected void initialize() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
-        PWCGContextManager.getInstance();
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.getInstance();
         if (campaignProfiles.isEmpty())
         {
             loadCampaignProfiles();

@@ -8,7 +8,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.SquadHistory;
 import pwcg.campaign.SquadHistoryEntry;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -19,7 +20,7 @@ public class SquadronIOJsonTest
     @Test
     public void readJsonRoFSquadronsTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         List<Squadron> squadrons = SquadronIOJson.readJson();
         assert (squadrons.size() > 0);
 
@@ -81,7 +82,7 @@ public class SquadronIOJsonTest
     @Test
     public void readJsonBoSSquadronsTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         List<Squadron> squadrons = SquadronIOJson.readJson();
         assert (squadrons.size() > 0);
         

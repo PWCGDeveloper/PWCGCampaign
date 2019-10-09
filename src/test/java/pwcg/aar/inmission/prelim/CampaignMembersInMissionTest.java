@@ -13,7 +13,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.prelim.CampaignMembersInMissionFinder;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -34,7 +35,7 @@ public class CampaignMembersInMissionTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.REGIMENT_503_PROFILE);
     }
 

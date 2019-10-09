@@ -7,7 +7,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -47,7 +47,7 @@ public class MissionCenterBuilderSingle implements IMissionCenterBuilder
 
         Coordinate squadronPosition = determineSquadronCoordinates();
         
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> frontPointsAxis = frontLinesForMap.findAllFrontLinesForSide(Side.AXIS);
         List<FrontLinePoint> selectedFrontPointsAxis = new ArrayList<>();
         for (FrontLinePoint frontLinePoint : frontPointsAxis)
@@ -100,7 +100,7 @@ public class MissionCenterBuilderSingle implements IMissionCenterBuilder
 
     private Coordinate findAlliedCoordinateNearAxisCoordinate(Coordinate axisCoordinate) throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         Coordinate alliedCoordinateCloseToAxisCoordinate = frontLinesForMap.findClosestFrontCoordinateForSide(axisCoordinate, Side.ALLIED);
         return alliedCoordinateCloseToAxisCoordinate;
     }

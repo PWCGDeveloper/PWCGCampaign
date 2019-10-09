@@ -2,7 +2,7 @@ package pwcg.campaign;
 
 import java.util.Date;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -100,7 +100,7 @@ public class CampaignGeneratorModel
 
     public Squadron getCampaignSquadron() throws PWCGException
     {
-    	SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+    	SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron playerSquadron = squadronManager.getSquadronByName(squadronName, campaignDate);
         return playerSquadron;
     }

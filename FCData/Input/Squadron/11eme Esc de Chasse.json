@@ -1,0 +1,48 @@
+{
+  "country": "BELGIUM",
+  "squadronId": 109011,
+  "name": "11eme Esc de Chasse",
+  "skill": 40,
+  "planeAssignments": [
+    {
+      "archType": "hanhd1",
+      "squadronIntroduction": "19180428",
+      "squadronWithdrawal": "19181201"
+    },
+    {
+      "archType": "sopcamel",
+      "squadronIntroduction": "19180428",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180428": "Proven"
+  },
+  "skins": [
+    {
+      "skinName": "SC_BMA11DEFAULT",
+      "planeType": "sopcamel",
+      "startDate": "19180101",
+      "endDate": "19181201",
+      "squadId": 109011,
+      "country": "Belgium",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10903,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IFixedPosition;
 import pwcg.campaign.api.IProductSpecificConfiguration;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.group.Block;
@@ -52,7 +52,7 @@ public class OffensiveWaypointsTransport extends OffensiveWaypoints
         double maxRadius = productSpecific.getVerySmallMissionRadius();
         while (!stopLooking(allFixedPositionsInRadius, maxRadius))
         {
-            GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+            GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
             List<Bridge> bridges = groupData.getBridgeFinder().
                     findBridgesForSideWithinRadius(enemycountry.getSide(), campaign.getDate(), flight.getMission().getMissionBorders().getCenter(), maxRadius);
             List<Block> trainStations = groupData.getRailroadStationFinder().

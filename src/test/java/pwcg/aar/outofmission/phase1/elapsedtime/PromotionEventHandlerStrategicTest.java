@@ -13,7 +13,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.awards.PromotionEventHandler;
 import pwcg.aar.awards.PromotionEventHandlerStrategic;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -30,7 +31,7 @@ public class PromotionEventHandlerStrategicTest
     @Before
     public void setupForTestEnvironment() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
     }
 

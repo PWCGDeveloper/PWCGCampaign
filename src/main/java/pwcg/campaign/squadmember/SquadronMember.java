@@ -14,7 +14,7 @@ import pwcg.campaign.PictureManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.medals.Medal;
@@ -228,7 +228,7 @@ public class SquadronMember implements Cloneable
     public ArmedService determineService(Date date) throws PWCGException
     {
         ArmedService service = null;
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron squadron = squadronManager.getSquadron(squadronId);
 
         // Use the pilots squadron
@@ -246,7 +246,7 @@ public class SquadronMember implements Cloneable
 
     public ICountry determineCountry(Date date) throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron squadron = squadronManager.getSquadron(squadronId);
         if (squadron == null)
         {
@@ -261,7 +261,7 @@ public class SquadronMember implements Cloneable
         Squadron squadron = null;
         if (squadronId > 0)
         {
-            squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronId);
+            squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
         }
 
         return squadron;
@@ -269,7 +269,7 @@ public class SquadronMember implements Cloneable
 
     public boolean determineIsSquadronMemberCommander() throws PWCGException
     {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         IRankHelper rankObj = RankFactory.createRankHelper();
         int rankPos = rankObj.getRankPosByService(getRank(), determineService(campaign.getDate()));
         if (rankPos == 0)

@@ -10,7 +10,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
@@ -41,7 +42,7 @@ public class ArtillerySpotBatteryFactoryTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19171010"));
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(squadron.determineCurrentAirfieldName(DateUtils.getDateYYYYMMDD("19171010"))).thenReturn("Bellevue Ferme");

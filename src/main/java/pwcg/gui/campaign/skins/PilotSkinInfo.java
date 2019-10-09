@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.skin.Skin;
@@ -34,8 +34,8 @@ public class PilotSkinInfo
      */
     public void initialize() throws PWCGException
     {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
+        SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         Squadron squadron = referencePlayer.determineSquadron();
         
         // Make an entry for each plane initialized to "No Skin"

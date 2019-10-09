@@ -7,7 +7,8 @@ import org.junit.Test;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -17,13 +18,13 @@ public class SkinManagerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
     }
 
     @Test
     public void skinLoaderInitializeTest() throws PWCGException
     {
-        SkinManager skinManager = PWCGContextManager.getInstance().getSkinManager();
+        SkinManager skinManager = PWCGContext.getInstance().getSkinManager();
         List<Skin> testSkins;
         String planeType = "fokkerd7";
         ICountry iCountry = CountryFactory.makeCountryByCountry(Country.GERMANY);

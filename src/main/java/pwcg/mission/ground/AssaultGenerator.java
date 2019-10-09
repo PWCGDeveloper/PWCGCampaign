@@ -9,7 +9,7 @@ import pwcg.campaign.api.IAssaultGenerator;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
@@ -62,7 +62,7 @@ public abstract class AssaultGenerator  implements IAssaultGenerator
     
     protected int determineCenterOfBattle() throws PWCGException
     {
-        FrontLinesForMap frontLineMarker =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(date);
+        FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
         List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(targetDefinition.getTargetCountry().getSide());
         int centerFrontIndex = frontLineMarker.findIndexForClosestPosition(targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry().getSide());
         if (centerFrontIndex < 10)
@@ -88,7 +88,7 @@ public abstract class AssaultGenerator  implements IAssaultGenerator
             finishFrontIndex = startFrontIndex + numAssaults;
         }
         
-        FrontLinesForMap frontLineMarker =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(date);
+        FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
         for (int thisIndex = startFrontIndex; thisIndex <= finishFrontIndex; ++thisIndex)
         {
             Coordinate battleCoordinate = frontLineMarker.getCoordinates(thisIndex, targetDefinition.getTargetCountry().getSide());

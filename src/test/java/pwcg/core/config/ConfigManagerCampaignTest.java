@@ -1,6 +1,7 @@
 package pwcg.core.config;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
 
@@ -8,7 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.CampaignIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -26,7 +28,7 @@ public class ConfigManagerCampaignTest
     @Test
     public void testGlobalConfigurationInitialize() throws PWCGException 
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
         CampaignIOJson.writeJson(campaign);
         

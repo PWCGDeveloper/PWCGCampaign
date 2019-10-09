@@ -6,7 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.skin.SkinSet;
 import pwcg.campaign.skin.SkinSetType;
 import pwcg.core.exception.PWCGException;
@@ -17,7 +18,7 @@ public class SkinIOJsonTest
     @Test
     public void readJsonRoFSkinsConfiguredTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         Map<String, SkinSet> skins = SkinIOJson.readSkinSet(SkinSetType.SKIN_CONFIGURED.getSkinSetName());
         assert (skins.size() > 0);
     }
@@ -25,7 +26,7 @@ public class SkinIOJsonTest
     @Test
     public void readJsonRoFSkinsDoNotUseTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         Map<String, SkinSet> skins = SkinIOJson.readSkinSet(SkinSetType.SKIN_DO_NOT_USE.getSkinSetName());
         assert (skins.size() > 0);
     }
@@ -33,7 +34,7 @@ public class SkinIOJsonTest
     @Test
     public void readJsonBoSSkinsConfiguredTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         Map<String, SkinSet> skins = SkinIOJson.readSkinSet(SkinSetType.SKIN_CONFIGURED.getSkinSetName());
         assert (skins.size() > 0);
     }
@@ -41,7 +42,7 @@ public class SkinIOJsonTest
     @Test
     public void readJsonBoSSkinsDoNotUseTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         Map<String, SkinSet> skins = SkinIOJson.readSkinSet(SkinSetType.SKIN_DO_NOT_USE.getSkinSetName());
         assert (skins.size() > 0);
     }

@@ -1,7 +1,7 @@
 package pwcg.aar.inmission.phase3.reconcile.victories.singleplayer;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -17,8 +17,8 @@ public class PlayerClaimResolverFuzzy
         
         if (!resultVictory.isConfirmed())
         {
-            PlaneType shotDownPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(resultVictory.getVictim().getVehicleType());
-            PlaneType claimedPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+            PlaneType shotDownPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(resultVictory.getVictim().getVehicleType());
+            PlaneType claimedPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
                 
             if (shotDownPlane != null && claimedPlane != null)
             {
@@ -40,7 +40,7 @@ public class PlayerClaimResolverFuzzy
             if (!VictoryResolverSameSideDetector.isSameSide(player, resultVictory))
             {
                 Role victimApproximateRole = Role.getApproximateRole(resultVictory.getVictim().getRole());
-                PlaneType declaredPlane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
+                PlaneType declaredPlane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(playerDeclaration.getAircraftType());
                 if (declaredPlane != null)
                 {
                     Role declarationApproximateRole = Role.getApproximateRole(declaredPlane.determinePrimaryRole());

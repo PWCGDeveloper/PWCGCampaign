@@ -5,7 +5,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IMissionAltitudeGenerator;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.MissionAltitudeGeneratorFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -168,7 +168,7 @@ public class FlightInformation
     public IAirfield getDepartureAirfield() throws PWCGException
     {
         String airfieldName = squadron.determineCurrentAirfieldName(campaign.getDate());
-        IAirfield departureAirfield = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
+        IAirfield departureAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
         return departureAirfield;
     }
 

@@ -1,0 +1,78 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102084,
+  "name": "No 84 Squadron RFC",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "archType": "se5",
+      "squadronIntroduction": "19170919",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19171001": "Lealvillers",
+    "19171112": "Le Hameau",
+    "19171229": "Villers Bretonneux",
+    "19180323": "Lealvillers",
+    "19180328": "Bruay"
+  },
+  "skins": [
+    {
+      "skinName": "SE5A_PW_GB84STD_E",
+      "planeType": "se5a",
+      "startDate": "19170919",
+      "endDate": "19171001",
+      "squadId": 102084,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5A_RFC84_OCT17",
+      "planeType": "se5a",
+      "startDate": "19171002",
+      "endDate": "19180322",
+      "squadId": 102084,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102084_020",
+      "planeType": "se5a",
+      "startDate": "19180323",
+      "endDate": "19181201",
+      "squadId": 102084,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+        
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 84 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

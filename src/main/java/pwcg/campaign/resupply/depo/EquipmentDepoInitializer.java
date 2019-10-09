@@ -4,7 +4,7 @@ import java.util.List;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
@@ -28,7 +28,7 @@ public class EquipmentDepoInitializer
 
     public Equipment createReplacementPoolForService() throws PWCGException
     {
-        List<Squadron> activeSquadronsForService = PWCGContextManager.getInstance().getSquadronManager().getFlyableSquadronsByService(service, campaign.getDate());
+        List<Squadron> activeSquadronsForService = PWCGContext.getInstance().getSquadronManager().getFlyableSquadronsByService(service, campaign.getDate());
         for (Squadron squadron : activeSquadronsForService)
         {
             EquipmentWeightCalculator equipmentWeightCalculator = createPlaneCalculator(squadron);            

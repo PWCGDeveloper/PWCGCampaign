@@ -17,7 +17,7 @@ import javax.swing.JTextArea;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -46,7 +46,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
 	{
 	    super();
 	    
-    	this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+    	this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         this.homeGui = homeGui;        
         this.campaign = campaign;        
         this.aarCoordinator = AARCoordinator.getInstance();

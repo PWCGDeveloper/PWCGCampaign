@@ -19,7 +19,8 @@ import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -68,7 +69,7 @@ public class CampaignMemberAwardsGeneratorInMissionTest
     {
         squadronMembersInMission.clear();
 
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
         
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);

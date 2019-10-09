@@ -8,11 +8,11 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARPersonnelLosses;
-import pwcg.aar.outofmission.phase2.resupply.HistoricalAceTransferHandler;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
 import pwcg.campaign.CampaignPersonnelManager;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.resupply.personnel.SquadronTransferData;
 import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.core.exception.PWCGException;
@@ -35,11 +35,11 @@ public class HistoricalAceTransferHandlerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170430"));
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         
-        campaignAces = PWCGContextManager.getInstance().getAceManager().loadFromHistoricalAces(DateUtils.getDateYYYYMMDD("19170430")); 
+        campaignAces = PWCGContext.getInstance().getAceManager().loadFromHistoricalAces(DateUtils.getDateYYYYMMDD("19170430")); 
         Mockito.when(campaignPersonnelManager.getCampaignAces()).thenReturn(campaignAces);
         
     }

@@ -1,6 +1,6 @@
 package pwcg.mission;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
@@ -13,7 +13,7 @@ public class MissionCoopConverter
 
     public void convertToCoop(MissionFlightBuilder missionFlightBuilder) throws PWCGException 
     {
-        MissionOptions missionOptions = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions();
+        MissionOptions missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
         missionOptions.setMissionType(MissionOptions.COOP_MISSION);
 
         for (Flight flight : missionFlightBuilder.getAllAerialFlights())

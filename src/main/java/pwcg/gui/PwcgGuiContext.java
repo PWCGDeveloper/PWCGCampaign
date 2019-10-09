@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
@@ -100,7 +100,7 @@ public abstract class PwcgGuiContext extends ImagePanel
 
     protected void finishedWithCampaignScreen() throws PWCGException
     {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         campaign.write();
         
         CampaignGuiContextManager.getInstance().popFromContextStack();

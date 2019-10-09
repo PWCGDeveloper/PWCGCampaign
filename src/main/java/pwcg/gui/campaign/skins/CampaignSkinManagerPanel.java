@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -43,7 +43,7 @@ public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionLi
         {
             setLeftPanel(makeLeftPanel());
             setRightPanel(createRightPanel());
-            SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+            SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
             createCenterPanel(referencePlayer);                
         }
         catch (Exception e)
@@ -128,7 +128,7 @@ public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionLi
 
     private void showSkinsForPilot(String action) throws PWCGException 
     {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         SquadronMember pilot = UIUtils.getPilotFromAction(campaign, action);
         if (pilot != null)
         {

@@ -3,7 +3,7 @@ package pwcg.gui.campaign.home;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -67,7 +67,7 @@ public class GuiMissionInitiator
         // map then it can only be on that map (some Western airfields are
         // on both the France and Channel maps)
     	
-    	SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+    	SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         String airfieldName = referencePlayer.determineSquadron().determineCurrentAirfieldName(campaign.getDate());
         List<FrontMapIdentifier> mapsForAirfield =  AirfieldManager.getMapIdForAirfield(airfieldName);
         FrontMapIdentifier mapId = mapsForAirfield.get(0);

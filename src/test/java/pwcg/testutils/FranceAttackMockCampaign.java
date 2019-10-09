@@ -9,7 +9,8 @@ import org.mockito.Mockito;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadron.Squadron;
@@ -52,12 +53,12 @@ public class FranceAttackMockCampaign
 
     public void mockCampaignSetup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
-        PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
+        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
 
         date = DateUtils.getDateYYYYMMDD("19180501");
         
-        squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(501115);
+        squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(501115);
 
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(date);

@@ -1,0 +1,114 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102070,
+  "name": "No 70 Squadron RFC",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "archType": "sopstr",
+      "squadronIntroduction": "19160524",
+      "squadronWithdrawal": "19170715"
+    },
+    {
+      "archType": "sopcamel",
+      "squadronIntroduction": "19170716",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160531": "Marieux",
+    "19161216": "Bruay",
+    "19170402": "Marieux",
+    "19170514": "Filescamp Ferme",
+    "19170627": "Warfusee",
+    "19170908": "Abeele (East)",
+    "19180314": "Marieux",
+    "19180328": "Marieux",
+    "19180416": "La Targette",
+    "19180708": "Filescamp Ferme",
+    "19180801": "Baizieux 2",
+    "19180922": "Houtem"
+  },
+  "skins": [
+    {
+      "skinName": "SS_RNAS-RFC_STD10",
+      "planeType": "sopstr",
+      "startDate": "19160524",
+      "endDate": "19170715",
+      "squadId": 102070,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SC_RFC_GENERIC",
+      "planeType": "sopcamel",
+      "startDate": "19170716",
+      "endDate": "19170826",
+      "squadId": 102070,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SC_RFC70_AUG17",
+      "planeType": "sopcamel",
+      "startDate": "19170827",
+      "endDate": "19180322",
+      "squadId": 102070,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102070_030",
+      "planeType": "sopcamel",
+      "startDate": "19180323",
+      "endDate": "19181201",
+      "squadId": 102070,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+    
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 70 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+    
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19170716",
+        "weightedRoles": [
+          {
+            "role": "ROLE_BOMB",
+            "weight": 90
+          }
+        ]
+      },
+      {
+        "startDate": "19170716",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 70
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

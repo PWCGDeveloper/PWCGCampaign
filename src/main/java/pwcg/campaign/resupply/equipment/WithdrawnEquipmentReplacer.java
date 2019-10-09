@@ -3,7 +3,7 @@ package pwcg.campaign.resupply.equipment;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
@@ -75,7 +75,7 @@ public class WithdrawnEquipmentReplacer
     private String determinePlaneType() throws PWCGException
     {
         String planeArchTypeName = chooseArchTypeForSquadron();
-        PlaneArchType planeArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneArchType(planeArchTypeName);
+        PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(planeArchTypeName);
         String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign.getDate(), planeArchType);
         return planeTypeName;
     }

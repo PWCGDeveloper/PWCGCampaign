@@ -3,13 +3,17 @@ package pwcg.gui.rofmap.editmap;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -22,8 +26,9 @@ import javax.swing.SwingConstants;
 
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -51,14 +56,15 @@ public class EditorMapGUI extends MapGUI implements ActionListener
     private FrontLineEditor frontLineCreator = null;
 
     private JCheckBox displayAirfields = null;
+    private JCheckBox displayCities = null;
 
     public EditorMapGUI(Date mapDate) throws PWCGException  
     {        
         super(mapDate);
 
         // Default to static front.France map
-        PWCGContextManager.getInstance().initializeMap();
-        PWCGContextManager.getInstance().setCampaign(null);
+        PWCGContext.getInstance().initializeMap();
+        PWCGContext.getInstance().setCampaign(null);
     }
 
     public void makeGUI() 
@@ -232,19 +238,28 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         JLabel mapLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Map");
         mapGrid.add(mapLabel);
         
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             mapGrid.add(makeRadioButton(PWCGMap.FRANCE_MAP_NAME, MAP_DELIMITER + PWCGMap.FRANCE_MAP_NAME, mapButtonGroup));
             mapGrid.add(makeRadioButton(PWCGMap.CHANNEL_MAP_NAME, MAP_DELIMITER + PWCGMap.CHANNEL_MAP_NAME, mapButtonGroup));
             mapGrid.add(makeRadioButton(PWCGMap.GALICIA_MAP_NAME, MAP_DELIMITER + PWCGMap.GALICIA_MAP_NAME, mapButtonGroup));
         }
-        else
+        else if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
             mapGrid.add(makeRadioButton(PWCGMap.MOSCOW_MAP_NAME, MAP_DELIMITER + PWCGMap.MOSCOW_MAP_NAME, mapButtonGroup));
             mapGrid.add(makeRadioButton(PWCGMap.STALINGRAD_MAP_NAME, MAP_DELIMITER + PWCGMap.STALINGRAD_MAP_NAME, mapButtonGroup));
             mapGrid.add(makeRadioButton(PWCGMap.KUBAN_MAP_NAME, MAP_DELIMITER + PWCGMap.KUBAN_MAP_NAME, mapButtonGroup));
             mapGrid.add(makeRadioButton(PWCGMap.BODENPLATTE_MAP_NAME, MAP_DELIMITER + PWCGMap.BODENPLATTE_MAP_NAME, mapButtonGroup));
         }
+        else if (PWCGContext.getProduct() == PWCGProduct.FC)
+        {
+            mapGrid.add(makeRadioButton(PWCGMap.ARRAS_MAP_NAME, MAP_DELIMITER + PWCGMap.ARRAS_MAP_NAME, mapButtonGroup));
+        }
+        else
+        {
+            throw new PWCGException("No valid product selected");
+        }
+
         return mapPanel;
     }
 
@@ -278,6 +293,9 @@ public class EditorMapGUI extends MapGUI implements ActionListener
 
         displayAirfields = makeCheckBoxButton("Airfields", "Airfields");
         groundStructureGrid.add(displayAirfields);
+
+        displayCities = makeCheckBoxButton("Cities", "Cities");
+        groundStructureGrid.add(displayCities);        
 
         JLabel spaceLabel2 = PWCGButtonFactory.makePaperLabelMedium(" ");
         groundStructureGrid.add(spaceLabel2);
@@ -353,7 +371,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
             }   
             else if (action.contains("Refresh"))
             {               
-                PWCGContextManager.getInstance().initializeMap();
+                PWCGContext.getInstance().initializeMap();
                 editorMapPanel.resetFromActual();
             }   
             else if (action.contains("Mirror"))
@@ -375,11 +393,11 @@ public class EditorMapGUI extends MapGUI implements ActionListener
                 int indexOfMapName = MAP_DELIMITER.length();
                 String mapName = action.substring(indexOfMapName);
                 FrontMapIdentifier mapIdentifier = PWCGMap.getFrontMapIdentifierForName(mapName);
-                PWCGContextManager.getInstance().changeContext(mapIdentifier);
+                PWCGContext.getInstance().changeContext(mapIdentifier);
                 
                 setDateSelectionsByPossibleStartDatesAndMovingFront();
                 
-                Date newMapDate = PWCGContextManager.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
+                Date newMapDate = PWCGContext.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
                 setMapDate(newMapDate);
                 editorMapPanel.setData();
                 
@@ -412,6 +430,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
             }
             
             editorMapPanel.setWhatToDisplay(EditorMapPanel.DISPLAY_AIRFIELDS, displayAirfields.isSelected());
+            editorMapPanel.setWhatToDisplay(EditorMapPanel.DISPLAY_CITIES, displayCities.isSelected());
         }
         catch (Exception e)
         {
@@ -430,8 +449,8 @@ public class EditorMapGUI extends MapGUI implements ActionListener
 
     private void buildFrontLines() throws PWCGException
     {
-        List<FrontLinePoint> alliedLines = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(mapDate).getFrontLines(Side.ALLIED);
-        List<FrontLinePoint> axisLines = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(mapDate).getFrontLines(Side.AXIS);
+        List<FrontLinePoint> alliedLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(mapDate).getFrontLines(Side.ALLIED);
+        List<FrontLinePoint> axisLines = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(mapDate).getFrontLines(Side.AXIS);
         List<FrontLinePoint> allFrontLines = new ArrayList<>();
         allFrontLines.addAll(alliedLines);
         allFrontLines.addAll(axisLines);

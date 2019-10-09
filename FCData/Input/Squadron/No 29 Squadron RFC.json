@@ -1,0 +1,111 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102029,
+  "name": "No 29 Squadron RFC",
+  "skill": 70,
+  "planeAssignments": [
+    {
+      "archType": "dh2",
+      "squadronIntroduction": "19160325",
+      "squadronWithdrawal": "19170310"
+    },
+    {
+      "archType": "nieuport",
+      "squadronIntroduction": "19170311",
+      "squadronWithdrawal": "19180322"
+    },
+    {
+      "archType": "se5",
+      "squadronIntroduction": "19180323",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160325": "Poperinghe",
+    "19160415": "Abeele (East)",
+    "19161023": "Le Hameau",
+    "19170705": "Le Creche",
+    "19180316": "Poperinghe",
+    "19180410": "Poperinghe",
+    "19180422": "Poperinghe",
+    "19180801": "Poperinghe"
+  },
+  "skins": [
+    {
+      "skinName": "DH2_RFC29_DEFAULT",
+      "planeType": "dh2",
+      "startDate": "19160325",
+      "endDate": "19170310",
+      "squadId": 102029,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102029",
+      "planeType": "nieuport17brit",
+      "startDate": "19170311",
+      "endDate": "19170826",
+      "squadId": 102029,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N17B_RFC29_AUG17",
+      "planeType": "nieuport17brit",
+      "startDate": "19170827",
+      "endDate": "19171227",
+      "squadId": 102029,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N17B_RFC29_DEC17",
+      "planeType": "nieuport17brit",
+      "startDate": "19171228",
+      "endDate": "19180322",
+      "squadId": 102029,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102029_010",
+      "planeType": "se5a",
+      "startDate": "19180323",
+      "endDate": "19181201",
+      "squadId": 102029,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+    
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 29 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

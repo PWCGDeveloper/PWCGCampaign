@@ -15,7 +15,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
@@ -90,7 +90,7 @@ public class MissionLogEventsBuilder
         for (SquadronMember pilot : preliminaryData.getCampaignMembersInMission().getSquadronMemberCollection().values())
         {
             SquadronPlaneAssignment planeAssignment = AARCoordinatorInMissionTest.getPlaneForSquadron(pilot.getSquadronId());
-            PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
+            PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
             List<PlaneType> planeTypesForSquadron = planeTypeFactory.createActivePlaneTypesForArchType(planeAssignment.getArchType(), campaign.getDate());
             int index = RandomNumberGenerator.getRandom(planeTypesForSquadron.size());
             PlaneType planeType = planeTypesForSquadron.get(index);

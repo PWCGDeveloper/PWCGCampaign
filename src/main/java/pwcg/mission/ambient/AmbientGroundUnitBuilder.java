@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.AssaultInformation;
@@ -38,7 +39,7 @@ public class AmbientGroundUnitBuilder
             generateAmbientTrucks();        
             createFrontLineAAA();
             
-            if (!PWCGContextManager.isRoF())
+            if (PWCGContext.getProduct() == PWCGProduct.BOS)
             {
                 generateAmbientBattles();
             }

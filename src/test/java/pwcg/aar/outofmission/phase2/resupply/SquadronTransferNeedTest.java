@@ -14,7 +14,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.resupply.personnel.SquadronPersonnelNeed;
 import pwcg.campaign.squadmember.SerialNumber;
@@ -47,7 +48,7 @@ public class SquadronTransferNeedTest
         activeSquadronMemberCollection.clear();
         inactiveSquadronMemberCollection.clear();
         
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170430"));
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         Mockito.when(campaignPersonnelManager.getSquadronPersonnel(Matchers.<Integer>any())).thenReturn(squadronPersonnel);

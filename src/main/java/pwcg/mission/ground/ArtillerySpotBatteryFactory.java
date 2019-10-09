@@ -3,7 +3,7 @@ package pwcg.mission.ground;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PositionsManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.TacticalTarget;
@@ -65,7 +65,7 @@ public class ArtillerySpotBatteryFactory
     {
         PositionsManager positionsManager = new PositionsManager(campaign.getDate());
         String airfieldName = squadron.determineCurrentAirfieldName(campaign.getDate());
-        IAirfield field =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
+        IAirfield field =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
         Coordinate artilleryPosition = positionsManager.getClosestDefinitePosition(country.getSide(), field.getPosition().copy());
         
         // Make sure that the artillery is in range

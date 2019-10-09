@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.SquadronMovingFrontOverlay;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
@@ -16,12 +16,12 @@ public class SquadronMovingFrontIOJson
 		List<SquadronMovingFrontOverlay> overlayList = new ArrayList<>();
 		
 		FileUtils fileUtils = new FileUtils();
-		List<File> jsonFiles = fileUtils.getFilesWithFilter(PWCGContextManager.getInstance().getDirectoryManager().getPwcgSquadronMovingFrontDir(), ".json");
+		List<File> jsonFiles = fileUtils.getFilesWithFilter(PWCGContext.getInstance().getDirectoryManager().getPwcgSquadronMovingFrontDir(), ".json");
 
 		for (File jsonFile : jsonFiles)
 		{
 			JsonObjectReader<SquadronMovingFrontOverlay> jsoReader = new JsonObjectReader<>(SquadronMovingFrontOverlay.class);
-			SquadronMovingFrontOverlay overlay = jsoReader.readJsonFile(PWCGContextManager.getInstance().getDirectoryManager().getPwcgSquadronMovingFrontDir(), jsonFile.getName()); 
+			SquadronMovingFrontOverlay overlay = jsoReader.readJsonFile(PWCGContext.getInstance().getDirectoryManager().getPwcgSquadronMovingFrontDir(), jsonFile.getName()); 
 			overlayList.add(overlay);
 		}
 		

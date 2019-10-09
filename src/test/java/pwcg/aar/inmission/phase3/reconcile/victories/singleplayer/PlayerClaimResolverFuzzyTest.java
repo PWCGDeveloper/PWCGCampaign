@@ -8,10 +8,11 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.ww1.country.RoFCountry;
 import pwcg.core.exception.PWCGException;
+import pwcg.product.rof.country.RoFCountry;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerClaimResolverFuzzyTest
@@ -19,7 +20,7 @@ public class PlayerClaimResolverFuzzyTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
     }
 
     @Test

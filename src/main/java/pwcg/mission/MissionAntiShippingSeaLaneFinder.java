@@ -3,7 +3,7 @@ package pwcg.mission;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
@@ -27,7 +27,7 @@ public class MissionAntiShippingSeaLaneFinder
         List<FrontMapIdentifier> squadronMaps = AirfieldManager.getMapIdForAirfield(squadron.determineCurrentAirfieldName(campaign.getDate()));
         if (squadronMaps.contains(FrontMapIdentifier.KUBAN_MAP))
         {
-            PWCGMap map = PWCGContextManager.getInstance().getMapByMapId(FrontMapIdentifier.KUBAN_MAP);
+            PWCGMap map = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.KUBAN_MAP);
             ShippingLaneManager shippingLaneManager = map.getShippingLaneManager();
             shippingLane = shippingLaneManager.getClosestShippingLaneBySide(squadron.determineCurrentPosition(campaign.getDate()), squadron.determineEnemySide());
         }

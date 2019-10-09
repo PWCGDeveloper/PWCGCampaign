@@ -14,7 +14,7 @@ import pwcg.aar.ui.events.model.MedalEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.medals.MedalManager;
@@ -95,7 +95,7 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
 
         medalTextAndPilotPicPanel.setBorder(BorderFactory.createEmptyBorder(topBottomBorder, leftRightBorder, topBottomBorder,leftRightBorder)); 
 
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
 	    ICountry country = CountryFactory.makeCountryByCountry(medalRecipient.getCountry());
         Medal medal =  MedalManager.getMedalFromAnyManager(country, campaign, medalEvent.getMedal());
         if (medal != null)

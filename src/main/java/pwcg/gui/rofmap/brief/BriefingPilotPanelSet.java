@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.PayloadDesignation;
@@ -223,7 +223,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private void addPayloadColumn(JPanel assignedPilotPanel, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        IPayloadFactory payloadFactory = PWCGContextManager.getInstance().getPayloadFactory();
+        IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
         PayloadDesignation payloadDesignation = payloadFactory.getPlanePayloadDesignation(crewPlane.getPlane().getType(), crewPlane.getPayloadId());
         String planePayloadDescription = payloadDesignation.getPayloadDescription();
         JButton payloadButton = PWCGButtonFactory.makeBriefingChalkBoardButton(planePayloadDescription,
@@ -523,7 +523,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private void scrubMission() throws PWCGException
     {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);
 
         campaignHomeGui.clean();
@@ -551,7 +551,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         briefingMissionHandler.finalizeMission();
         verifyLoggingEnabled();
 
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(briefingMissionHandler.getMission());
 
         campaignHomeGui.clean();
@@ -581,7 +581,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     		return true;
     	}
     	
-        Flight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
+        Flight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
         List<PlaneMCU> playerPlanes = playerFlight.getPlayerPlanes();
         for (PlaneMCU playerPlane : playerPlanes)
         {
@@ -598,7 +598,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private boolean ensurePlayerOwnsPlane() throws PWCGException
     {
-        Flight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
+        Flight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
         List<PlaneMCU> playerPlanes = playerFlight.getPlayerPlanes();
         for (PlaneMCU playerPlane : playerPlanes)
         {
@@ -651,7 +651,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private void makeDataFileForMission() throws PWCGException
     {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         String campaignName = campaign.getCampaignData().getName();
 
         String missionFileName = MissionFileWriter.getMissionFileName(campaign) + ".mission";

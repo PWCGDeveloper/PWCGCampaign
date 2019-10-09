@@ -1,0 +1,62 @@
+{
+  "country": "USA",
+  "squadronId": 103094,
+  "name": "94th Aero",
+  "skill": 65,
+  "planeAssignments": [
+    {
+      "archType": "nieuport28",
+      "squadronIntroduction": "19180409",
+      "squadronWithdrawal": "19180725"
+    },
+    {
+      "archType": "spad",
+      "squadronIntroduction": "19180623",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180401": "Malzeville",
+    "19180602": "Toul",
+    "19180628": "Ville-Savoye",
+    "19180709": "Maizy,N Fismes",
+    "19180826": "Brabant en Argonne"
+  },
+  "skins": [
+    {
+      "skinName": "103094",
+      "planeType": "nieuport28",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 103094,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "103094",
+      "planeType": "spad13",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 103094,
+      "country": "USA",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 10301,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

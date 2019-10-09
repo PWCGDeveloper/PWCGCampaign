@@ -1,0 +1,202 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501010,
+  "name": "Jasta 10",
+  "skill": 85,
+  "planeAssignments": [
+    {
+      "archType": "fokkere",
+      "squadronIntroduction": "19150801",
+      "squadronWithdrawal": "19161001"
+    },
+    {
+      "archType": "albatrosd",
+      "squadronIntroduction": "19160916",
+      "squadronWithdrawal": "19180225"
+    },
+    {
+      "archType": "fokkerdr1",
+      "squadronIntroduction": "19170901",
+      "squadronWithdrawal": "19170923"
+    },
+    {
+      "archType": "pfalzd3a",
+      "squadronIntroduction": "19170815",
+      "squadronWithdrawal": "19180601"
+    },
+    {
+      "archType": "fokkerd7",
+      "squadronIntroduction": "19180428",
+      "squadronWithdrawal": "19180801"
+    }
+  ],
+  "airfields": {
+    "19160916": "Phalempin,N Douai",
+    "19161028": "Sivry",
+    "19161212": "Chassonge Ferme,Stenay/Verdun",
+    "19170223": "Leffincourt,E Reims",
+    "19170502": "Douai",
+    "19170525": "Menin",
+    "19170702": "La Neuville",
+    "19171121": "Beaucamp",
+    "19180320": "Pronville,nr Queant",
+    "19180327": "Mesnil-Bruntel",
+    "19180403": "Balatre,E Roye",
+    "19180412": "Cappy N",
+    "19180414": "Lomme,Lille",
+    "19180521": "Besny-et-Loisy",
+    "19180526": "Puisieux Ferme,Laon",
+    "19180729": "Puisieux Ferme,Laon",
+    "19180810": "Assevillers",
+    "19180830": "Mesnil-Bruntel",
+    "19180925": "Bellevue Ferme",
+    "19181009": "Marville"
+  },
+  "skins": [
+    {
+      "skinName": "FE3_BERR",
+      "planeType": "fokkere3",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD2_DEFAULT_3CAMO",
+      "planeType": "albatrosd2",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD2L_3CAMO_LATE",
+      "planeType": "albatrosd2late",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD3_J10_MAR1917",
+      "planeType": "albatrosd3",
+      "startDate": "19170101",
+      "endDate": "19170423",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "501010",
+      "planeType": "albatrosd3",
+      "startDate": "19170424",
+      "endDate": "19181201",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "501010",
+      "planeType": "albatrosd5",
+      "startDate": "19140801",
+      "endDate": "19171014",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J10_OCT17",
+      "planeType": "albatrosd5",
+      "startDate": "19171015",
+      "endDate": "19180320",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J10_DEF_APR18",
+      "planeType": "albatrosd5",
+      "startDate": "19180320",
+      "endDate": "19181201",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "501010",
+      "planeType": "pfalzd3a",
+      "startDate": "19140801",
+      "endDate": "19180319",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "PD3A_501010_ANS",
+      "planeType": "pfalzd3a",
+      "startDate": "19180320",
+      "endDate": "19181201",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FDR1_J10_DEC17",
+      "planeType": "fokkerdr1",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "501010",
+      "planeType": "fokkerd7",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7F_J10_MAY18",
+      "planeType": "fokkerd7f",
+      "startDate": "19180401",
+      "endDate": "19181111",
+      "squadId": 501010,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

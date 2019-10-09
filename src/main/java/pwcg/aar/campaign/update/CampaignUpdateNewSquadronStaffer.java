@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.personnel.InitialSquadronStaffer;
 import pwcg.campaign.personnel.SquadronPersonnel;
@@ -23,7 +23,7 @@ public class CampaignUpdateNewSquadronStaffer
 
     public List<Integer> staffNewSquadrons() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         for (Squadron squadron : squadronManager.getActiveSquadrons(campaign.getDate()))
         {
             if (campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId()) == null)

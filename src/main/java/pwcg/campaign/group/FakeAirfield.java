@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Date;
 
 import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.ww2.airfield.BoSAirfield;
+import pwcg.product.bos.airfield.BoSAirfield;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;

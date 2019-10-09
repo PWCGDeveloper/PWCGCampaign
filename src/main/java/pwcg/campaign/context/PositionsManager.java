@@ -83,7 +83,7 @@ public class PositionsManager
 										    int odds) throws PWCGException 
 	{
 		
-		FrontLinesForMap frontLineMarker =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(date);
+		FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
 		List<FrontLinePoint>frontLines = frontLineMarker.getFrontLines(side);
 
 		for (int i = 1; i < frontLines.size(); ++i)

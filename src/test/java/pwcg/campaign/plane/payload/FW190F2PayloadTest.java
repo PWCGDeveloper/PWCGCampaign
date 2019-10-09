@@ -8,15 +8,16 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.TargetCategory;
-import pwcg.campaign.ww2.plane.BosPlaneAttributeMapping;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FW190F2PayloadTest 
@@ -36,7 +37,7 @@ public class FW190F2PayloadTest
 	@Before
 	public void setup() throws PWCGException
 	{
-		PWCGContextManager.setRoF(false);
+		PWCGContext.setProduct(PWCGProduct.BOS);
         
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign);
 		Mockito.when(flight.getSquadron()).thenReturn(squadron);
@@ -45,8 +46,8 @@ public class FW190F2PayloadTest
 	@Test
 	public void payloadNormalTest() throws PWCGException
 	{
-		PlaneType fw190A5 = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.FW190_A5.getPlaneType());
-		IPayloadFactory payloadFactory = PWCGContextManager.getInstance().getPayloadFactory();
+		PlaneType fw190A5 = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.FW190_A5.getPlaneType());
+		IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
     	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(fw190A5.getType());
     	testPatrolPayload(payloadGenerator);
     	testInterceptPayload(payloadGenerator);
@@ -56,8 +57,8 @@ public class FW190F2PayloadTest
 	@Test
 	public void payloadFw190F2Test() throws PWCGException
 	{
-		PlaneType fw190f2 = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.FW190_A5.getPlaneType());
-		IPayloadFactory payloadFactory = PWCGContextManager.getInstance().getPayloadFactory();
+		PlaneType fw190f2 = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByType(BosPlaneAttributeMapping.FW190_A5.getPlaneType());
+		IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
     	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(fw190f2.getType());
     	testGroundAttackPayload(payloadGenerator);
 	}

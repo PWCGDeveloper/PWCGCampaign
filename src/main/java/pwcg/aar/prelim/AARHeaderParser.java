@@ -9,7 +9,7 @@ import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
 import pwcg.aar.inmission.phase1.parse.Atypes;
 import pwcg.aar.inmission.phase1.parse.event.IAType0;
 import pwcg.aar.inmission.phase1.parse.event.LogEventFactory;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
@@ -25,7 +25,7 @@ public class AARHeaderParser
         String missionFileName = AARMissionLogFileSet.NOT_AVAILABLE;
         try
         {
-            String simulatorDataDir = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir();
+            String simulatorDataDir = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir();
             File logFileWithHeader = new File(simulatorDataDir + logFileName);
             BufferedReader reader = new BufferedReader(new FileReader(logFileWithHeader));
             String line;

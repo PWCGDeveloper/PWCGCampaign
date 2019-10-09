@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
@@ -27,7 +27,7 @@ public class MissionBalloons
 
     public void createAmbientBalloons(Mission mission) throws PWCGException 
     {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         ConfigManager configManager = campaign.getCampaignConfigManager();
 
         List<Coordinate> balloonPositions = new ArrayList<Coordinate>();

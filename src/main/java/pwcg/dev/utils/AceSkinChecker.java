@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import pwcg.campaign.context.AceManager;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.HistoricalAce;
@@ -37,7 +37,7 @@ public class AceSkinChecker
             skinName = skinName + ".dds";
         }
 
-        String filename = System.getProperty("user.dir") + PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir() + "\\graphics\\skins\\" + aircraftName + "\\" + skinName;
+        String filename = System.getProperty("user.dir") + PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir() + "\\graphics\\skins\\" + aircraftName + "\\" + skinName;
         File file = new File(filename);
         if (file.exists())
         {
@@ -56,7 +56,7 @@ public class AceSkinChecker
 
             List<HistoricalAce> historicalAces = aceManager.getHistoricalAces();
             
-            List<PlaneType> allPlanes = PWCGContextManager.getInstance().getPlaneTypeFactory().getAllPlanes();
+            List<PlaneType> allPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAllPlanes();
             
             for (HistoricalAce ace : historicalAces)
             {

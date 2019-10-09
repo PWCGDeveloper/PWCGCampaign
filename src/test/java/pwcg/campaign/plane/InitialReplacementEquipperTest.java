@@ -10,7 +10,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IArmedServiceManager;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.resupply.depo.EquipmentDepoInitializer;
 import pwcg.campaign.squadmember.SerialNumber;
@@ -27,7 +28,7 @@ public class InitialReplacementEquipperTest
     @Before 
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);      
+        PWCGContext.setProduct(PWCGProduct.BOS);      
     }
 
     @Test

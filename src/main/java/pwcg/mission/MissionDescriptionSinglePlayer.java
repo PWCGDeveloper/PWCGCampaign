@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
@@ -61,11 +61,11 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
     {
 		Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 
-        MapWeather mapWeather = PWCGContextManager.getInstance().getCurrentMap().getMapWeather();
+        MapWeather mapWeather = PWCGContext.getInstance().getCurrentMap().getMapWeather();
         setClouds(mapWeather.getWeatherDescription());
         setWind(mapWeather.getWindLayers().get(0));
 
-        MissionOptions missionOptions = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions();
+        MissionOptions missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
         setMissionDateTime(DateUtils.getDateAsMissionFileFormat(campaign.getDate()), missionOptions.getMissionTime().getMissionTime());
 
         setAircraft(playerFlight.getPlanes().get(0).getDisplayName());
@@ -155,7 +155,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 	
 	private void setFlight(ICountry country, Flight flight) throws PWCGException 
 	{
-		Campaign campaign =     PWCGContextManager.getInstance().getCampaign();
+		Campaign campaign =     PWCGContext.getInstance().getCampaign();
 		
 		String squadron = flight.getSquadron().determineDisplayName(campaign.getDate());
 		String aircraft = flight.getPlanes().get(0).getDisplayName();

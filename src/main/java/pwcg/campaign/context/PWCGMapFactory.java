@@ -1,14 +1,15 @@
 package pwcg.campaign.context;
 
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
-import pwcg.campaign.ww1.map.channel.ChannelMap;
-import pwcg.campaign.ww1.map.france.FranceMap;
-import pwcg.campaign.ww1.map.galicia.GaliciaMap;
-import pwcg.campaign.ww2.map.bodenplatte.BodenplatteMap;
-import pwcg.campaign.ww2.map.kuban.KubanMap;
-import pwcg.campaign.ww2.map.moscow.MoscowMap;
-import pwcg.campaign.ww2.map.stalingrad.StalingradMap;
 import pwcg.core.exception.PWCGException;
+import pwcg.product.bos.map.bodenplatte.BodenplatteMap;
+import pwcg.product.bos.map.kuban.KubanMap;
+import pwcg.product.bos.map.moscow.MoscowMap;
+import pwcg.product.bos.map.stalingrad.StalingradMap;
+import pwcg.product.fc.map.arras.ArrasMap;
+import pwcg.product.rof.map.channel.ChannelMap;
+import pwcg.product.rof.map.france.FranceMap;
+import pwcg.product.rof.map.galicia.GaliciaMap;
 
 public class PWCGMapFactory
 {
@@ -49,6 +50,11 @@ public class PWCGMapFactory
         if (frontMapIdentifier == FrontMapIdentifier.KUBAN_MAP)
         {
             map = new KubanMap();
+            map.configure();
+        }
+        if (frontMapIdentifier == FrontMapIdentifier.ARRAS_MAP)
+        {
+            map = new ArrasMap();
             map.configure();
         }
 

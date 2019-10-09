@@ -9,8 +9,9 @@ import java.util.TreeMap;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -58,12 +59,12 @@ public class AirfieldDistanceOrganizer
 
         try
         {
-        	PWCGContextManager.setRoF(false);
+        	PWCGContext.setProduct(PWCGProduct.BOS);
         	            
-            PWCGContextManager.getInstance();
-            PWCGContextManager.getInstance().changeContext(frontMapIdentifier);;
+            PWCGContext.getInstance();
+            PWCGContext.getInstance().changeContext(frontMapIdentifier);;
                                  
-            AirfieldManager manager = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager();
+            AirfieldManager manager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
 
             alliedAirfieldSet = sortAirfieldsByDistance(manager.getAirFieldsForSide(startDate, Side.ALLIED), startDate, Side.ALLIED);
             System.out.println("\n\n\nAllied");

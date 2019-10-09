@@ -20,8 +20,9 @@ import pwcg.aar.prelim.claims.AARClaimPanelData;
 import pwcg.aar.prelim.claims.AARClaimPanelEventTabulator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -49,7 +50,7 @@ public class AARClaimPanelEventTabulatorTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaignDate = DateUtils.getDateYYYYMMDD("19420420");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
         List<Squadron> playerSquadrons = new ArrayList<>();

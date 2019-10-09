@@ -1,13 +1,14 @@
 package pwcg.aar.inmission.phase1.parse.event;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 
 public class LogEventFactory
 {
     public static IAType0 createAType0(String campaignName, String line) throws PWCGException 
     {
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             return new pwcg.aar.inmission.phase1.parse.event.rof.AType0(campaignName, line);
         }
@@ -19,7 +20,7 @@ public class LogEventFactory
 
     public static IAType10 createAType10(String line) throws PWCGException 
     {
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             return new pwcg.aar.inmission.phase1.parse.event.rof.AType10(line);
         }
@@ -31,7 +32,7 @@ public class LogEventFactory
 
     public static IAType12 createAType12(String line) throws PWCGException 
     {
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             return new pwcg.aar.inmission.phase1.parse.event.rof.AType12(line);
         }
@@ -43,7 +44,7 @@ public class LogEventFactory
 
     public static IAType17 createAType17(String line) throws PWCGException 
     {
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             return new pwcg.aar.inmission.phase1.parse.event.rof.AType17(line);
         }
@@ -55,7 +56,7 @@ public class LogEventFactory
 
     public static IAType2 createAType2(String line) throws PWCGException 
     {
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             return new pwcg.aar.inmission.phase1.parse.event.rof.AType2(line);
         }
@@ -67,7 +68,7 @@ public class LogEventFactory
 
     public static IAType3 createAType3(String line) throws PWCGException 
     {
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             return new pwcg.aar.inmission.phase1.parse.event.rof.AType3(line);
         }
@@ -79,7 +80,7 @@ public class LogEventFactory
 
     public static IAType6 createAType6(String line) throws PWCGException 
     {
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             return new pwcg.aar.inmission.phase1.parse.event.rof.AType6(line);
         }
@@ -91,7 +92,7 @@ public class LogEventFactory
 
     public static IAType18 createAType18(String line) throws PWCGException
     {
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             throw new PWCGException("Bailout events should not be generated in RoF");
         }

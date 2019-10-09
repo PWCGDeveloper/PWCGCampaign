@@ -5,7 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.MapForAirfieldFinder;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.squadron.Squadron;
@@ -52,7 +52,7 @@ public class CampaignGenerator
 
     private void staffSquadrons() throws PWCGException
     {
-        List<Squadron> activeSquadronsOnCampaignStartDate = PWCGContextManager.getInstance().getSquadronManager().getActiveSquadrons(generatorModel.getCampaignDate());
+        List<Squadron> activeSquadronsOnCampaignStartDate = PWCGContext.getInstance().getSquadronManager().getActiveSquadrons(generatorModel.getCampaignDate());
         for (Squadron squadron : activeSquadronsOnCampaignStartDate)
         {
             CampaignSquadronGenerator squadronGenerator = new CampaignSquadronGenerator(campaign, squadron);
@@ -72,12 +72,12 @@ public class CampaignGenerator
 
     private void setMapForNewCampaign() throws PWCGException
     {
-        Squadron squad = PWCGContextManager.getInstance().getSquadronManager().getSquadronByName(generatorModel.getSquadronName(), generatorModel.getCampaignDate());
+        Squadron squad = PWCGContext.getInstance().getSquadronManager().getSquadronByName(generatorModel.getSquadronName(), generatorModel.getCampaignDate());
         IAirfield airfield = squad.determineCurrentAirfieldAnyMap(generatorModel.getCampaignDate());
         List<FrontMapIdentifier> airfieldMaps = MapForAirfieldFinder.getMapForAirfield(airfield.getName());
         FrontMapIdentifier initialAirfieldMap = airfieldMaps.get(0);
 
-        PWCGContextManager.getInstance().changeContext(initialAirfieldMap);
+        PWCGContext.getInstance().changeContext(initialAirfieldMap);
     }
 
 	private void validateCampaignInputs()
@@ -125,7 +125,7 @@ public class CampaignGenerator
 
 	private void setCampaignAces() throws PWCGException
 	{
-		CampaignAces aces =  PWCGContextManager.getInstance().getAceManager().loadFromHistoricalAces(generatorModel.getCampaignDate());
+		CampaignAces aces =  PWCGContext.getInstance().getAceManager().loadFromHistoricalAces(generatorModel.getCampaignDate());
         campaign.getPersonnelManager().setCampaignAces(aces);
 	}
 

@@ -9,7 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
@@ -73,7 +73,7 @@ public class MissionDescriptionFile
         String filepath = "..\\Data\\Missions\\" + fileName;
         if (campaign.isCoop())
         {
-            filepath = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir() + "Multiplayer\\Cooperative\\" + fileName;
+            filepath = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir() + "Multiplayer\\Cooperative\\" + fileName;
 
         }
         

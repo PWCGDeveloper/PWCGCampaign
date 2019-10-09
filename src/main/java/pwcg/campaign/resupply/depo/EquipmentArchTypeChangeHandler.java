@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
@@ -37,7 +37,7 @@ public class EquipmentArchTypeChangeHandler
 
     private void removeOutdatedArchTypes() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         for (Squadron squadron : squadronManager.getActiveSquadrons(campaign.getDate()))
         {
             Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId());

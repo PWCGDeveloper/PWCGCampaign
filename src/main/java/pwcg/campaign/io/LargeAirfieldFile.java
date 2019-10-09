@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
@@ -21,7 +21,7 @@ public class LargeAirfieldFile
 
         try 
         {
-            String iconFileLocation = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\" + "AirfieldILarge.config";           
+            String iconFileLocation = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\" + "AirfieldILarge.config";           
             largeAirfields = readLargeFieldFile(iconFileLocation);            
         } 
         catch (IOException e) 

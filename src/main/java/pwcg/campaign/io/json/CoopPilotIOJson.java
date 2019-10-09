@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.coop.model.CoopPilot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
@@ -22,7 +22,7 @@ public class CoopPilotIOJson
     public static void writeJson(CoopPilot coopPilot) throws PWCGException
 	{
 		JsonWriter<CoopPilot> jsonWriter = new JsonWriter<>();
-        String coopPilotDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCoopDir() + "Pilots\\";
+        String coopPilotDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Pilots\\";
 		jsonWriter.writeAsJson(coopPilot, coopPilotDir, coopPilot.getPilotName() + ".json");
 	}
 
@@ -30,7 +30,7 @@ public class CoopPilotIOJson
 	{
 	    List<CoopPilot> coopPilots = new ArrayList<>();
 		
-		String coopPilotDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCoopDir() + "Pilots\\";
+		String coopPilotDir = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Pilots\\";
 		FileUtils fileUtils = new FileUtils();
 		List<File> jsonFiles = fileUtils.getFilesWithFilter(coopPilotDir, ".json");
 		for (File jsonFile : jsonFiles)

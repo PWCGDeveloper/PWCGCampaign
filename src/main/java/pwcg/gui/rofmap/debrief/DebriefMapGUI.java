@@ -23,7 +23,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
 import pwcg.aar.ui.events.model.AARPilotEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -70,7 +70,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
         this.campaign = campaign;
         this.home = home;
         this.aarCoordinator = AARCoordinator.getInstance();
-        this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 
 	public void makePanels() 

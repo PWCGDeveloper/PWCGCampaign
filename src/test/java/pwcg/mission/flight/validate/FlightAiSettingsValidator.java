@@ -9,7 +9,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -41,7 +42,7 @@ public class FlightAiSettingsValidator
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
     }
 
     @Test
@@ -129,7 +130,7 @@ public class FlightAiSettingsValidator
             for (PlaneMCU plane : flight.getPlanes())
             {
                 SquadronMember squadronMember = mission.getCampaign().getPersonnelManager().getAnyCampaignMember(plane.getPilot().getSerialNumber());
-                Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
+                Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
                 Role primaryRole = squadron.determineSquadronPrimaryRole(mission.getCampaign().getDate());
                 if (primaryRole == Role.ROLE_FIGHTER)
                 {

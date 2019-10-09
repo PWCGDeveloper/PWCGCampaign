@@ -1,7 +1,7 @@
 package pwcg.core.utils;
 
 import pwcg.campaign.context.FrontParameters;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
@@ -112,7 +112,7 @@ public class MathUtils
 		polarZ = coord1.getZPos() + zPolarDiff;
 		
 		// limit checks
-		FrontParameters frontParameters = PWCGContextManager.getInstance().getCurrentMap().getFrontParameters();
+		FrontParameters frontParameters = PWCGContext.getInstance().getCurrentMap().getFrontParameters();
 
 		if (polarX < 0.0)
 		{

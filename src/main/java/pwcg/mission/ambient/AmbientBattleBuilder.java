@@ -9,7 +9,7 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.AssaultGeneratorFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.target.TacticalTarget;
@@ -154,7 +154,7 @@ public class AmbientBattleBuilder
     {
         CoordinateBox missionBorders = mission.getMissionBorders().expandBox(3000);
         
-        FrontLinesForMap frontLinesForMap =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> closestFrontLinePoints = new ArrayList<>();
         for (FrontLinePoint frontLinePoint : frontLinesForMap.getFrontLines(defendingCountry.getSide()))
         {

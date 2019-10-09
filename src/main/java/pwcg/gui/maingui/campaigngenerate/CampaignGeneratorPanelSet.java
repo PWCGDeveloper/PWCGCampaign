@@ -17,7 +17,7 @@ import pwcg.campaign.CampaignGenerator;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.CoopHostPilotBuilder;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
@@ -131,7 +131,7 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
             
                 CampaignGeneratorDO campaignGeneratorDO = dataEntry.getCampaignGeneratorDO();
                 campaign.open(campaignGeneratorDO.getCampaignName());                    
-                PWCGContextManager.getInstance().setCampaign(campaign);
+                PWCGContext.getInstance().setCampaign(campaign);
                 
                 CampaignHomeGUI campaignGUI = new CampaignHomeGUI (mainGUI, campaign);
                 PWCGFrame.getInstance().setPanel(campaignGUI);
@@ -199,6 +199,6 @@ public class CampaignGeneratorPanelSet extends PwcgGuiContext implements ActionL
         	CoopHostPilotBuilder coopPilotBuilder = new CoopHostPilotBuilder();
         	coopPilotBuilder.buildHostPilotForCoop(campaign);
         }
-        PWCGContextManager.getInstance().setCampaign(campaign);
+        PWCGContext.getInstance().setCampaign(campaign);
     }
 }

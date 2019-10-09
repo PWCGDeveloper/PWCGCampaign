@@ -18,7 +18,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.MapForAirfieldFinder;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.ArmedServiceFactory;
@@ -91,10 +91,10 @@ public class Squadron
 			{
 				if (withdrawal.after(now) || withdrawal.equals((now)))
 				{
-				    List<PlaneType> planeTypesForArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().createActivePlaneTypesForArchType(planeAssignment.getArchType(), now);
+				    List<PlaneType> planeTypesForArchType = PWCGContext.getInstance().getPlaneTypeFactory().createActivePlaneTypesForArchType(planeAssignment.getArchType(), now);
 				    for (PlaneType planeType : planeTypesForArchType)
 				    {
-				        PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeType.getType());
+				        PlaneType plane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeType.getType());
 				        currentAircraftByGoodness.put(plane.getGoodness(), plane);
 				    }
 				}
@@ -120,7 +120,7 @@ public class Squadron
             {
                 if (withdrawal.after(now) || withdrawal.equals((now)))
                 {
-                    PlaneArchType planeArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneArchType(planeAssignment.getArchType());
+                    PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(planeAssignment.getArchType());
                     currentPlaneArchTypes.add(planeArchType);
                 }
             }           
@@ -175,7 +175,7 @@ public class Squadron
         String airfieldName = determineCurrentAirfieldName(campaignDate);
         if (airfieldName != null)
         {
-            field =  PWCGContextManager.getInstance().getAirfieldAllMaps(airfieldName);
+            field =  PWCGContext.getInstance().getAirfieldAllMaps(airfieldName);
         }
         
         return field;
@@ -188,7 +188,7 @@ public class Squadron
         String airfieldName = determineCurrentAirfieldName(campaignDate);
         if (airfieldName != null)
         {
-            field =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
+            field =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(airfieldName);
         }
         
         return field;
@@ -356,8 +356,8 @@ public class Squadron
 		}
 
 		
-		Campaign campaign =     PWCGContextManager.getInstance().getCampaign();
-		List<Ace> aces =  PWCGContextManager.getInstance().getAceManager().
+		Campaign campaign =     PWCGContext.getInstance().getCampaign();
+		List<Ace> aces =  PWCGContext.getInstance().getAceManager().
 		                getActiveAcesForSquadron(campaign.getPersonnelManager().getCampaignAces(), campaign.getDate(), getSquadronId());
 
 		squadronDescription += "\nAces on staff \n";
@@ -391,7 +391,7 @@ public class Squadron
         
         ICountry squadronCountry = CountryFactory.makeCountryByCountry(country);
         Side enemySide = squadronCountry.getSideNoNeutral().getOppositeSide();
-        squads =  PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsBySide(campaign, squadronPosition, 1, 10000.0, enemySide, date);
+        squads =  PWCGContext.getInstance().getSquadronManager().getNearestSquadronsBySide(campaign, squadronPosition, 1, 10000.0, enemySide, date);
 
         // Use an enemy squadron as a reference country.
         // If no enemy squadron use the enemy map reference nation
@@ -538,7 +538,7 @@ public class Squadron
         TreeMap<Date, PlaneType> planeTypesTypeByIntroduction = new TreeMap<>();
         for (SquadronPlaneAssignment planeAssignment : planeAssignments)
         {
-            List<PlaneType> planeTypesForArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlanesByIntroduction(planeAssignment.getArchType());
+            List<PlaneType> planeTypesForArchType = PWCGContext.getInstance().getPlaneTypeFactory().createPlanesByIntroduction(planeAssignment.getArchType());
             for (PlaneType planeType : planeTypesForArchType)
             {
                 planeTypesTypeByIntroduction.put(planeType.getIntroduction(), planeType);
@@ -576,7 +576,7 @@ public class Squadron
         
     	String airfieldName = determineCurrentAirfieldName(campaignDate);
     	List<FrontMapIdentifier> airfieldMapIdentifiers = MapForAirfieldFinder.getMapForAirfield(airfieldName);
-    	PWCGMap map = PWCGContextManager.getInstance().getMapByMapId(airfieldMapIdentifiers.get(0));
+    	PWCGMap map = PWCGContext.getInstance().getMapByMapId(airfieldMapIdentifiers.get(0));
         squadronInfo.append("Map: " + map.getMapName() + "\n");
 
 
@@ -590,7 +590,7 @@ public class Squadron
     {
         Side enemySide = determineEnemyCountry(campaign, date).getSide();
         Coordinate squadronPosition = determineCurrentPosition(date);
-        FrontLinePoint closestFrontPosition = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(date).findClosestFrontPositionForSide(squadronPosition, enemySide);
+        FrontLinePoint closestFrontPosition = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date).findClosestFrontPositionForSide(squadronPosition, enemySide);
         double distanceToFront = MathUtils.calcDist(squadronPosition, closestFrontPosition.getPosition());
         
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
@@ -645,7 +645,7 @@ public class Squadron
     {
         if (nightDate != null)
         {
-            Date campaignDate = PWCGContextManager.getInstance().getCampaign().getDate();
+            Date campaignDate = PWCGContext.getInstance().getCampaign().getDate();
             if (nightDate.before(campaignDate))
             {
                 return true;

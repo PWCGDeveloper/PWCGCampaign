@@ -8,7 +8,7 @@ import java.util.Map;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.core.exception.PWCGException;
@@ -43,7 +43,7 @@ public class MissionBlockDamage
     
     private boolean isCloseToFront(FixedPosition fixedPosition) throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(mission.getCampaign().getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(mission.getCampaign().getDate());
         
         Coordinate closestAllied = frontLinesForMap.findClosestFrontCoordinateForSide(fixedPosition.getPosition(), Side.ALLIED);
         if (MathUtils.calcDist(fixedPosition.getPosition(), closestAllied) < 10000)
@@ -62,7 +62,7 @@ public class MissionBlockDamage
     
     private boolean isCloseToAirfield(FixedPosition fixedPosition) throws PWCGException
     {
-        AirfieldManager airfieldManager = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager();
+        AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
         IAirfield field = airfieldManager.getAirfieldFinder().findClosestAirfield(fixedPosition.getPosition());
         if (MathUtils.calcDist(fixedPosition.getPosition(), field.getPosition()) < 5)
         {

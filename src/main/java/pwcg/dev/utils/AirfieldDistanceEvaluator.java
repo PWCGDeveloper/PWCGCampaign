@@ -6,9 +6,10 @@ import java.util.Map;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
@@ -35,7 +36,7 @@ public class AirfieldDistanceEvaluator
     public static void main(String[] args) throws PWCGException
     {
 	    UserDir.setUserDir();
-	    PWCGContextManager.setRoF(false);
+	    PWCGContext.setProduct(PWCGProduct.BOS);
 	    
         AirfieldDistanceEvaluator airfieldReporter = new AirfieldDistanceEvaluator();
         airfieldReporter.process();
@@ -46,7 +47,7 @@ public class AirfieldDistanceEvaluator
 
         try
         {
-            PWCGContextManager.getInstance();
+            PWCGContext.getInstance();
                         
             for (int i = 0; i < mapTransitionDates.length - 1; ++i)
             {
@@ -72,7 +73,7 @@ public class AirfieldDistanceEvaluator
 
     private void analyzeSquadrons(AirfieldSet airfieldSet, Date dateNow, Side sideSquadrons) throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         
         Map <String, IAirfield> fighterFields = airfieldSet.getFighterFields();
         Map <String, IAirfield> bomberFields = airfieldSet.getBomberFields();

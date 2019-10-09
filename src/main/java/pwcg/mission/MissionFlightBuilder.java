@@ -5,7 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -44,7 +44,7 @@ public class MissionFlightBuilder
     {
         for (Integer squadronId : participatingPlayers.getParticipatingSquadronIds())
         {
-            Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronId);
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
             PlayerFlightBuilder playerFlightBuilder = new PlayerFlightBuilder(campaign, mission);
             Flight playerFlight = playerFlightBuilder.createPlayerFlight(flightType, squadron);
             playerFlights.add(playerFlight);

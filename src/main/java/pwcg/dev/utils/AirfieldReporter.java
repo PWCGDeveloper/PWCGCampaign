@@ -6,7 +6,7 @@ import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.core.exception.PWCGException;
@@ -22,7 +22,7 @@ public class AirfieldReporter
         	Date date = DateUtils.getDateYYYYMMDD("19420101");
             AirfieldManager manager = new AirfieldManager();
             
-            PWCGContextManager.getInstance();
+            PWCGContext.getInstance();
             
             manager.configure(PWCGMap.STALINGRAD_MAP_NAME);
             
@@ -50,7 +50,7 @@ public class AirfieldReporter
     {
         Double distanceToFront = 0.0;
         
-        FrontLinesForMap frontLines =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(date);
+        FrontLinesForMap frontLines =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
         FrontLinePoint closestFront = frontLines.findClosestFrontPositionForSide(field.getPosition(), side);
         
         distanceToFront = MathUtils.calcDist(field.getPosition(), closestFront.getPosition());

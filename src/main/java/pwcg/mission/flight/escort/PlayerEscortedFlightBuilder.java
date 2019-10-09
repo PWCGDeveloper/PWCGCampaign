@@ -1,6 +1,6 @@
 package pwcg.mission.flight.escort;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.unit.TargetBuilder;
@@ -53,7 +53,7 @@ public class PlayerEscortedFlightBuilder
 
     private Squadron determineSquadronToBeEscorted() throws PWCGException
     {
-        Squadron friendlyBombSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
+        Squadron friendlyBombSquadron = PWCGContext.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
                 escortFlightInformation.getCampaign(), 
                 escortFlightInformation.getSquadron().determineCurrentPosition(escortFlightInformation.getCampaign().getDate()), 
                 Role.ROLE_BOMB, 

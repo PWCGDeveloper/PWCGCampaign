@@ -1,7 +1,7 @@
 package pwcg.gui.rofmap.event;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -15,7 +15,7 @@ public class CampaignReportLeaveGUI extends CampaignDocumentGUI
 	public CampaignReportLeaveGUI(Campaign campaign)
 	{
 		super();
-    	this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+    	this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         this.campaign = campaign;
 		makePanel() ;
 	}
@@ -28,7 +28,7 @@ public class CampaignReportLeaveGUI extends CampaignDocumentGUI
 
     protected String getBodyText() throws PWCGException
     {
-        Squadron squadron =  PWCGContextManager.getInstance().getSquadronManager().getSquadron(referencePlayer.getSquadronId());
+        Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(referencePlayer.getSquadronId());
                 
         String leaveText = "Squadron: " + squadron.determineDisplayName(campaign.getDate()) + "\n";
         leaveText += "Date: " + campaign.getDate() + "\n";        

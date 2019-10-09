@@ -1,0 +1,49 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102039,
+  "name": "No 39 Squadron (HD)",
+  "skill": 35,
+  "planeAssignments": [
+    {
+      "archType": "soppup",
+      "squadronIntroduction": "19170501",
+      "squadronWithdrawal": "19170919"
+    },
+    {
+      "archType": "bristolf2b",
+      "squadronIntroduction": "19170920",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19170501": "Manston"
+  },
+  "skins": [],
+  
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+          "squadName": "No 39 Squadron RAF (HD)",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+    
+  "serviceId": 10201,
+  "nightDate": "19170820",
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

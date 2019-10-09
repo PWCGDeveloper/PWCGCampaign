@@ -4,7 +4,6 @@ import java.util.List;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IPWCGObject;
-import pwcg.campaign.ww1.ground.vehicle.VehicleDefinition;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;

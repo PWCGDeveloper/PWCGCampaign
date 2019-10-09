@@ -9,7 +9,7 @@ import java.util.TreeMap;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IAirfieldConfiguration;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.AirfieldConfigurationFactory;
@@ -41,7 +41,7 @@ public class AirfieldManager
     {
         List<FrontMapIdentifier> mapsForAirfield = new ArrayList<FrontMapIdentifier>();
 
-        for (PWCGMap map : PWCGContextManager.getInstance().getAllMaps())
+        for (PWCGMap map : PWCGContext.getInstance().getAllMaps())
         {
             AirfieldManager airfieldManager = map.getAirfieldManager();
             if (airfieldManager != null)

@@ -4,7 +4,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.locator.ShippingLane;
 import pwcg.core.config.ConfigItemKeys;
@@ -67,7 +67,7 @@ public class MissionBorderBuilder
         CoordinateBox missionBox = null;
         if (playerSquadronsInMission.size() == 1)
         {
-            Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(playerSquadronsInMission.get(0));
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadronsInMission.get(0));
             MissionAntiShippingSeaLaneFinder seaLaneFinder = new MissionAntiShippingSeaLaneFinder(campaign);
             ShippingLane shippingLane = seaLaneFinder.getShippingLaneForMission(squadron);
             if (shippingLane != null)
@@ -97,7 +97,7 @@ public class MissionBorderBuilder
         CoordinateBox missionBox = null;
         if (playerSquadronsInMission.size() == 1)
         {
-            Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(playerSquadronsInMission.get(0));
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadronsInMission.get(0));
             int missionBoxRadius = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.MissionBoxSizeKey) * 1000;
             int randomAngle = RandomNumberGenerator.getRandom(360);
             int randomDistance = RandomNumberGenerator.getRandom(20000);

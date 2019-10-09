@@ -9,7 +9,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.campaign.target.TargetCategory;
 import pwcg.campaign.target.TargetDefinition;
@@ -50,7 +51,7 @@ public class PlayerFlightRoFTypeTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
     }
 
 	@Test

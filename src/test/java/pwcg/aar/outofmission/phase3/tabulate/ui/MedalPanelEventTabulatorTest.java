@@ -19,7 +19,7 @@ import pwcg.campaign.factory.MedalManagerFactory;
 import pwcg.campaign.medals.IMedalManager;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.ww1.medals.FrenchMedalManager;
+import pwcg.product.rof.medals.FrenchMedalManager;
 import pwcg.core.exception.PWCGException;
 
 @RunWith(MockitoJUnitRunner.class)

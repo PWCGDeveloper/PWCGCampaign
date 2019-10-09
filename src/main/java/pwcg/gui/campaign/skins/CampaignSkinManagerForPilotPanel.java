@@ -22,7 +22,7 @@ import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.plane.PlaneType;
@@ -245,10 +245,10 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
         JLabel label = makeLabel ("Squadron Aircraft:");
         aircraftButtonGrid.add(label);
 
-        SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         Squadron squad = referencePlayer.determineSquadron();
 
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         List<PlaneType> squadronPlanes = squad.determineCurrentAircraftList(campaign.getDate());
 
         List<PlaneType> squadronPlanesByBest = PlaneSorter.sortPlanesByGoodness(squadronPlanes);
@@ -451,7 +451,7 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
              {
                  skinName = skin.getSkinName();
                  
-                 skinGroup = PWCGContextManager.getInstance().getSkinManager().getSkinCategory(planeName, skinName);
+                 skinGroup = PWCGContext.getInstance().getSkinManager().getSkinCategory(planeName, skinName);
              }
                  
              JPanel skinInfoGrid = createSkinEntry(planeName, skinName, skinGroup);
@@ -473,7 +473,7 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
 
          String planeDisplayName = "";
          
-         PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeName);
+         PlaneType plane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeName);
          if (plane != null)
          {
              planeDisplayName = plane.getDisplayName();
@@ -594,7 +594,7 @@ public class CampaignSkinManagerForPilotPanel extends ImageResizingPanel impleme
         Skin skin = null;
         if (!selectedSkinName.equals(NO_SKIN))
         {
-            skin = PWCGContextManager.getInstance().getSkinManager().getConfiguredSkinByName(selectedPlane, selectedSkinName);
+            skin = PWCGContext.getInstance().getSkinManager().getConfiguredSkinByName(selectedPlane, selectedSkinName);
             if (skin == null)
             {
                 skin = new Skin();

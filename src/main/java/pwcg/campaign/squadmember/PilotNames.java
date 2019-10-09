@@ -10,7 +10,7 @@ import java.util.Map;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
@@ -48,44 +48,44 @@ public class PilotNames
 		{
 			instance = new PilotNames();
 			
-			String namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesBritain.txt";
+			String namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesBritain.txt";
 			read(namesFile, lastNamesBritain);
-			namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesBritain.txt";
+			namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesBritain.txt";
 			read(namesFile, firstNamesBritain);
 	
-			namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesFrance.txt";
+			namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesFrance.txt";
 			read(namesFile, lastNamesFrance);
-			namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesFrance.txt";
+			namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesFrance.txt";
 			read(namesFile, firstNamesFrance);
 			
-			namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesFlemish.txt";
+			namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesFlemish.txt";
 			read(namesFile, lastNamesFlemish);
-			namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesFlemish.txt";
+			namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesFlemish.txt";
 			read(namesFile, firstNamesFlemish);
 	
-			namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesUSA.txt";
+			namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesUSA.txt";
 			read(namesFile, lastNamesUSA);
-			namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesUSA.txt";
+			namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesUSA.txt";
 			read(namesFile, firstNamesUSA);
             
-            namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesRussia.txt";
+            namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesRussia.txt";
             read(namesFile, lastNamesRussia);
-            namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesRussia.txt";
+            namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesRussia.txt";
             read(namesFile, firstNamesRussia);
             
-            namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesGermany.txt";
+            namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesGermany.txt";
             read(namesFile, lastNamesGermany);
-            namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesGermany.txt";
+            namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesGermany.txt";
             read(namesFile, firstNamesGermany);
             
-            namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesItaly.txt";
+            namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesItaly.txt";
             read(namesFile, lastNamesItaly);
-            namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesItaly.txt";
+            namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesItaly.txt";
             read(namesFile, firstNamesItaly);
 
-            namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesHungary.txt";
+            namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "LastNamesHungary.txt";
             read(namesFile, lastNamesHungary);
-            namesFile = PWCGContextManager.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesHungary.txt";
+            namesFile = PWCGContext.getInstance().getDirectoryManager().getPwcgNamesDir() + "FirstNamesHungary.txt";
             read(namesFile, firstNamesHungary);
     		
     		instance.validateAscii();

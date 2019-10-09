@@ -1,7 +1,7 @@
 package pwcg.mission.data;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -33,7 +33,7 @@ public class MissionHeaderGenerator
         missionHeader.setDuty("" + myFlight.getFlightType());  // String to enum and back
         missionHeader.setAltitude(myFlight.getFlightAltitude()); 
         
-        missionHeader.setMapName(PWCGContextManager.getInstance().getCurrentMap().getMapName()); 
+        missionHeader.setMapName(PWCGContext.getInstance().getCurrentMap().getMapName()); 
 
         String formattedTime = DateUtils.getDateAsMissionFileFormat(campaign.getDate());
         missionHeader.setTime(formattedTime);

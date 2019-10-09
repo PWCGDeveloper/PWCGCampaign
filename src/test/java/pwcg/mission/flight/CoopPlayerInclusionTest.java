@@ -7,7 +7,8 @@ import org.junit.Test;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberReplacer;
@@ -28,9 +29,9 @@ public class CoopPlayerInclusionTest
     @Before
     public void fighterFlightTests() throws Exception
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE);
-        PWCGContextManager.getInstance().setCampaign(coopCampaign);
+        PWCGContext.getInstance().setCampaign(coopCampaign);
         generateHumanPilots();
     }
 

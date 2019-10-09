@@ -3,7 +3,8 @@ package pwcg.gui.maingui.campaigngenerate;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.utils.StringValidity;
 
@@ -135,7 +136,7 @@ public class NewPilotState
 
 	private boolean useRegion() 
 	{
-		if (PWCGContextManager.isRoF())
+		if (PWCGContext.getProduct() == PWCGProduct.ROF || PWCGContext.getProduct() == PWCGProduct.FC)
 		{
 		    ICountry country = campaignGeneratorDO.getService().getCountry();
 		    if (country.getCountry() == Country.GERMANY)

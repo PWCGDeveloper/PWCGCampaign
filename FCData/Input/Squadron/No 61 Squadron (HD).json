@@ -1,0 +1,60 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102061,
+  "name": "No 61 Squadron (HD)",
+  "skill": 35,
+  "planeAssignments": [
+    {
+      "archType": "soppup",
+      "squadronIntroduction": "19170501",
+      "squadronWithdrawal": "19180201"
+    },
+    {
+      "archType": "se5",
+      "squadronIntroduction": "19180201",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19170501": "Rochford"
+  },
+  "skins": [
+    {
+      "skinName": "SE5A_RFC61_STD",
+      "planeType": "se5a",
+      "startDate": "19170101",
+      "endDate": "19181201",
+      "squadId": 102061,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 61 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  
+  "serviceId": 10201,
+  "nightDate": "19170820",
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

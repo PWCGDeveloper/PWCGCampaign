@@ -7,7 +7,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IArmedServiceManager;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.personnel.SquadronMemberFilter;
@@ -18,10 +19,10 @@ import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.ww1.country.RoFServiceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
 import pwcg.core.utils.DateUtils;
+import pwcg.product.rof.country.RoFServiceManager;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBase;
 import pwcg.testutils.SquadrontTestProfile;
@@ -32,7 +33,7 @@ public class CampaignIOJsonTest
     @Test
     public void campaignIOJsonTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
 
         deleteCampaign();
         writeCampaign();
@@ -50,7 +51,7 @@ public class CampaignIOJsonTest
     {
         Campaign campaign = new Campaign();
         campaign.open(CampaignCacheBase.TEST_CAMPAIGN_NAME);
-        PWCGContextManager.getInstance().setCampaign(campaign);
+        PWCGContext.getInstance().setCampaign(campaign);
 
         validateCoreCampaign(campaign);        
         validateFighterSquadronMembers(campaign);        

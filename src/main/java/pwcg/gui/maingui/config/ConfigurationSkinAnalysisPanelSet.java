@@ -22,7 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -198,7 +198,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
      */
     public JPanel makeAxisPanel() throws PWCGException 
     {
-        List<PlaneType> axisPlanes = PWCGContextManager.getInstance().getPlaneTypeFactory().getAxisPlanes();
+        List<PlaneType> axisPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAxisPlanes();
         return makePlanePanel(axisPlanes);
     }
 
@@ -208,7 +208,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
      */
     public JPanel makeAlliedPanel() throws PWCGException 
     {
-        List<PlaneType> alliedPlanes = PWCGContextManager.getInstance().getPlaneTypeFactory().getAlliedPlanes();
+        List<PlaneType> alliedPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAlliedPlanes();
         return makePlanePanel(alliedPlanes);
     }
     
@@ -411,7 +411,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
                 JCheckBox selectionBox = selectionBoxes.get(planeTypeDesc);
                 if (selectionBox.isSelected())
                 {
-                    PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
+                    PlaneType planeType = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
                     planeTypesToDisplay.put(planeTypeDesc, planeType);
                 }
             }

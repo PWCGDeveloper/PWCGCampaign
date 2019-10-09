@@ -3,25 +3,33 @@ package pwcg.gui.rofmap.editmap;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
+import javax.imageio.ImageIO;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.group.GroupManager;
+import pwcg.campaign.group.TownFinder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.LocationSet;
+import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.Logger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.rofmap.MapGUI;
@@ -30,6 +38,7 @@ import pwcg.gui.rofmap.MapPanelBase;
 public class EditorMapPanel extends MapPanelBase
 {
 	public static int DISPLAY_AIRFIELDS = 0;
+	public static int DISPLAY_CITIES = 0;
 
     public static int EDIT_MODE_NONE = 0;
 
@@ -68,6 +77,8 @@ public class EditorMapPanel extends MapPanelBase
 	{
 		try
 		{
+	        //Graphics2D graphicsFromImage = (Graphics2D) image.getGraphics();
+
 			paintBaseMap(g);
 			
 			g.setColor(Color.black);
@@ -77,16 +88,29 @@ public class EditorMapPanel extends MapPanelBase
 			    return;
 			}
 			
+	          
+            if (whatToDisplay[DISPLAY_CITIES])
+            {
+                GroupManager groupManager =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
+                TownFinder townFinder = groupManager.getTownFinder();
+                LocationSet towns = townFinder.getTownLocations();
+                for (PWCGLocation town : towns.getLocations())
+                {
+                    drawPointsWithName(g, town.getPosition(), town.getName());
+                }
+            }
+
 			if (whatToDisplay[DISPLAY_AIRFIELDS])
 			{
-		        AirfieldManager airfieldData =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager();
+		        AirfieldManager airfieldData =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
 		        Map<String, IAirfield> allAF = airfieldData.getAllAirfields();
 		        for (IAirfield af : allAF.values())
 		        {
-		            drawPointsByCountry(g, af.getPosition(), af.createCountry(parent.getMapDate()));
-		        }        
-			}
-            
+		            drawCross(g, af.getPosition(), af.getName());
+		        }
+		        //writeFile(graphicsFromImage);
+			}            
+
             for (FrontLinePoint frontLinePoint : frontLineEditor.getUserCreatedFrontLines())
             {
                 drawPointsByCountry(g, frontLinePoint.getPosition(), frontLinePoint.getCountry());
@@ -139,31 +163,40 @@ public class EditorMapPanel extends MapPanelBase
         g2.fill(circle);
 	}
 
+
+    private void drawPointsWithName(Graphics g, Coordinate coordinate, String name) 
+    {
+        Color color = ColorMap.BELGIAN_GOLD;
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 18)); 
+        drawPoints(g, coordinate, color);
+        Graphics2D g2 = (Graphics2D) g;
+        Point point = super.coordinateToPoint(coordinate);
+        g2.drawString(name, point.x+15, point.y+3);
+
+    }
+
+    private void drawCross(Graphics g, Coordinate coordinate, String name) 
+    {
+        Color color = Color.WHITE;
+        
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 18)); 
+        Graphics2D g2 = (Graphics2D) g;
+
+        g2.setStroke(new BasicStroke(3));
+        
+        g.setColor(color);
+
+        Point point = super.coordinateToPoint(coordinate);
+
+        g2.drawLine(point.x-3,  point.y-3, point.x+3, point.y+3);
+        g2.drawLine(point.x-3,  point.y+3, point.x+3, point.y-3);
+        
+        g2.drawString(name, point.x+8, point.y+3);
+    }
+
 	@Override
     protected void paintFrontLines(Graphics g, boolean drawPoints) throws PWCGException 
     {
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setStroke(new BasicStroke(3));
-         
-        // First draw the front
-        Point prev = null;
-        for (FrontLinePoint frontCoord : frontLineEditor.getUserCreatedFrontLines())
-        {
-            Point point = coordinateToPoint(frontCoord.getPosition());
-            g2.setColor(ColorMap.PAPERPART_FOREGROUND);
-
-            if (prev != null)
-            {
-                g2.draw(new Line2D.Float(prev.x, prev.y, point.x, point.y));
-            }
-            
-            int size = 10;
-            int halfWay = size / 2;
-            Ellipse2D.Double circle = new Ellipse2D.Double(point.x - halfWay, point.y - halfWay, size, size);
-            g2.fill(circle);
-
-            prev = point;
-        }
     }
 
     @Override
@@ -313,4 +346,9 @@ public class EditorMapPanel extends MapPanelBase
         repaintMap();
     }
 
+    public void writeFile(Graphics g) throws IOException
+    {
+        Graphics2D g2 = (Graphics2D) g;
+        ImageIO.write(image, "jpg", new File("D:\\PWCG\\MAPFILE.jpg"));
+    }
 }

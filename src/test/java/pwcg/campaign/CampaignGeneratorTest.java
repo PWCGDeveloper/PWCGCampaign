@@ -9,8 +9,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
@@ -30,8 +31,8 @@ public class CampaignGeneratorTest
 	@Before
 	public void setup() throws PWCGException
 	{
-    	PWCGContextManager.setRoF(true);
-        PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
+    	PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
 	}
 	
     @Test
@@ -62,7 +63,7 @@ public class CampaignGeneratorTest
                     int squadronId,
                     Date campaignDate) throws PWCGException 
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         
         Squadron squadron = squadronManager.getSquadron(squadronId);
         
@@ -84,7 +85,7 @@ public class CampaignGeneratorTest
         CampaignGenerator generator = new CampaignGenerator(generatorModel);
         Campaign campaign = generator.generate();          
 
-        PWCGContextManager.getInstance().setCampaign(campaign);
+        PWCGContext.getInstance().setCampaign(campaign);
         
         return campaign;
     }

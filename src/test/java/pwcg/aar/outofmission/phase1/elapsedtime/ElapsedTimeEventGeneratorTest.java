@@ -16,7 +16,8 @@ import pwcg.aar.data.CampaignUpdateData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
@@ -42,7 +43,7 @@ public class ElapsedTimeEventGeneratorTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         campaignDate = DateUtils.getDateYYYYMMDD("19170420");
         newDate = DateUtils.getDateYYYYMMDD("19170430");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);

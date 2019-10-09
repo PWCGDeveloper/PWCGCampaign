@@ -8,7 +8,7 @@ import java.util.Map;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.squadron.Squadron;
@@ -47,7 +47,7 @@ public class AirfieldInEnemyTerritory
 
 	private void determineProperPlacementForDate(FrontMapIdentifier mapId, Date startDate) throws PWCGException
 	{
-		SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+		SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
 		for (Squadron squadron : squadronManager.getActiveSquadrons(startDate))
 		{
 		    determineSquadronIsOnCorrectSide(mapId, startDate, squadron);

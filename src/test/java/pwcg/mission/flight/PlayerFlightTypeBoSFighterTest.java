@@ -4,8 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.campaign.target.TargetCategory;
 import pwcg.campaign.target.TargetDefinition;
@@ -31,8 +32,8 @@ public class PlayerFlightTypeBoSFighterTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
-        PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
     }
 

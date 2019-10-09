@@ -11,7 +11,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
@@ -29,13 +29,13 @@ public class MissionAnalyzer
 	{
 		try
         {
-		    File reportDir = new File(PWCGContextManager.getInstance().getDirectoryManager().getPwcgReportDir());
+		    File reportDir = new File(PWCGContext.getInstance().getDirectoryManager().getPwcgReportDir());
 		    if (!reportDir.exists())
 		    {
 		        reportDir.mkdirs();
 		    }
             Campaign campaign = mission.getCampaign();
-            String filename = PWCGContextManager.getInstance().getDirectoryManager().getPwcgReportDir() + campaign.getCampaignData().getName() + " MissionAnalysis.txt";
+            String filename = PWCGContext.getInstance().getDirectoryManager().getPwcgReportDir() + campaign.getCampaignData().getName() + " MissionAnalysis.txt";
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
 
             writer.write("Player flights");

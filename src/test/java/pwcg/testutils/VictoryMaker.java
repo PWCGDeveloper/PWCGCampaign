@@ -7,7 +7,7 @@ import java.util.List;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadmember.VictoryEntity;
-import pwcg.campaign.ww1.plane.RoFPlaneAttributeMapping;
+import pwcg.product.rof.plane.RoFPlaneAttributeMapping;
 
 public class VictoryMaker
 {

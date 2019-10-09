@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadron.Squadron;
@@ -142,7 +142,7 @@ public class ConfigurationSkinConfigDisplayPanelSet extends PwcgGuiContext imple
      */
     String generateReportHeader()
     {
-        Map<String, List<Skin>> allSkinsInPWCG = PWCGContextManager.getInstance().getSkinManager().getAllSkinsByPlane();
+        Map<String, List<Skin>> allSkinsInPWCG = PWCGContext.getInstance().getSkinManager().getAllSkinsByPlane();
         int numSkinsInPWCG = 0;
         for (List<Skin> skinSet : allSkinsInPWCG.values())
         {
@@ -162,7 +162,7 @@ public class ConfigurationSkinConfigDisplayPanelSet extends PwcgGuiContext imple
         JPanel reportBodyPanel = new JPanel(new GridLayout(0,5));
         reportBodyPanel.setOpaque(false);
                 
-        Map<String, List<Skin>> allSkinsInPWCG = PWCGContextManager.getInstance().getSkinManager().getAllSkinsByPlane();
+        Map<String, List<Skin>> allSkinsInPWCG = PWCGContext.getInstance().getSkinManager().getAllSkinsByPlane();
         
         for (String planeTypeDesc : planeTypesToDisplay.keySet())
         {
@@ -225,7 +225,7 @@ public class ConfigurationSkinConfigDisplayPanelSet extends PwcgGuiContext imple
             }
             else
             {
-                Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(skin.getSquadId());
+                Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(skin.getSquadId());
                 if (squadron != null)
                 {
                     squadronName = "" + squadron.getSquadronId();

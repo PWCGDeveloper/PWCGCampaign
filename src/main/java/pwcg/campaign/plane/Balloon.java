@@ -8,7 +8,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.utils.IndexGenerator;
-import pwcg.campaign.ww1.plane.RoFPlaneAttributeMapping;
+import pwcg.product.rof.plane.RoFPlaneAttributeMapping;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;

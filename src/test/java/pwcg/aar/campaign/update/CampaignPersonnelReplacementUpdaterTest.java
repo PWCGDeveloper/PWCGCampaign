@@ -13,12 +13,13 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.ww2.country.BoSServiceManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.product.bos.country.BoSServiceManager;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CampaignPersonnelReplacementUpdaterTest 
@@ -39,7 +40,7 @@ public class CampaignPersonnelReplacementUpdaterTest
     @Before
     public void setup() throws PWCGException
     {
-    	PWCGContextManager.setRoF(false);
+    	PWCGContext.setProduct(PWCGProduct.BOS);
     	replacementServices.clear();
     	
     	Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));

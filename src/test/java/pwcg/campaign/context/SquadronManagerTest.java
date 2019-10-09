@@ -23,14 +23,14 @@ public class SquadronManagerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test
     public void getSquadronTest() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron squadron = squadronManager.getSquadron(20111052);
         assert(squadron.determineDisplayName(campaign.getDate()).equals("I./JG52"));
     }
@@ -38,7 +38,7 @@ public class SquadronManagerTest
     @Test
     public void getActiveSquadronsTest() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadrons = squadronManager.getActiveSquadrons(campaign.getDate());
         
         boolean foundJG52 = false;
@@ -74,7 +74,7 @@ public class SquadronManagerTest
     @Test
     public void getActiveSquadronsForSideTest() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron germanSquadron = squadronManager.getSquadron(20111052);
         Side side = germanSquadron.determineSide();
         List<Squadron> squadrons = squadronManager.getActiveSquadronsForSide(side, campaign.getDate());
@@ -112,7 +112,7 @@ public class SquadronManagerTest
     @Test
     public void getSquadronByProximityAndRoleAndSideTest() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadrons = squadronManager.getActiveSquadrons(campaign.getDate());
 
         for (Squadron squadron : squadrons)

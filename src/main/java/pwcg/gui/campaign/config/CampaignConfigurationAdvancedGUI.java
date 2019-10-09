@@ -17,7 +17,7 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSet;
 import pwcg.core.config.ConfigSetKeys;
@@ -105,7 +105,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 	public JPanel makeCategoryPanel() throws PWCGException  
 	{
         String imagePath = null;
-        if (PWCGContextManager.getInstance().getCampaign() != null)
+        if (PWCGContext.getInstance().getCampaign() != null)
         {
             imagePath = getSideImage("AdvancedConfigCampaignRight.jpg");
         }
@@ -237,7 +237,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 	{
 		try
 		{
-	        Campaign campaign =     PWCGContextManager.getInstance().getCampaign();
+	        Campaign campaign =     PWCGContext.getInstance().getCampaign();
 
 			String action = ae.getActionCommand();
 			if (action.equalsIgnoreCase("Accept"))
@@ -248,7 +248,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 				}
 				
 				campaign.getCampaignConfigManager().write();
-				PWCGContextManager.getInstance().resetForMovingFront();
+				PWCGContext.getInstance().resetForMovingFront();
 		        CampaignGuiContextManager.getInstance().popFromContextStack();
 				return;
 			}

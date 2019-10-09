@@ -1,0 +1,74 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501476,
+  "name": "FA 276",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "archType": "dfwc",
+      "squadronIntroduction": "19150807",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19150807": "Moislains",
+    "19170502": "Le Belcamp",
+    "19180327": "Erchin",
+    "19180912": "Helesmes,N Denain"
+  },
+  "skins": [
+    {
+      "skinName": "DFC5_PW_F276_4_E",
+      "planeType": "dfwc5",
+      "startDate": "19140801",
+      "endDate": "19171001",
+      "squadId": 501476,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "DFC5_PW_F276_E_M",
+      "planeType": "dfwc5",
+      "startDate": "19171001",
+      "endDate": "19180401",
+      "squadId": 501476,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "DFC5_PW_F276_3_L",
+      "planeType": "dfwc5",
+      "startDate": "19180401",
+      "endDate": "19181201",
+      "squadId": 501476,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_RECON",
+            "weight": 40
+          },
+          {
+            "role": "ROLE_BOMB",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_ARTILLERY_SPOT",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

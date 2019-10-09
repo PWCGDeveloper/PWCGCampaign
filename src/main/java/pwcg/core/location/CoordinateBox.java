@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.context.FrontParameters;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -311,7 +311,7 @@ public class CoordinateBox
 
     public void keepWithinMap() throws PWCGException
     {
-        FrontParameters frontParameters = PWCGContextManager.getInstance().getCurrentMap().getFrontParameters();
+        FrontParameters frontParameters = PWCGContext.getInstance().getCurrentMap().getFrontParameters();
 
 
         if (sw.getXPos() < frontParameters.getxMin())

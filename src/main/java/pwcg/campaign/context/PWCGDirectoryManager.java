@@ -7,10 +7,10 @@ public class PWCGDirectoryManager
     private String pwcgDataDir;
     private String pwcgCampaignDir;
 
-    public PWCGDirectoryManager(boolean isRoF)
+    public PWCGDirectoryManager(PWCGProduct product)
     {
         createRootDir();
-        createPwcgDataDir(isRoF);
+        createPwcgDataDir(product);
         createCampaignDir();
     }
 
@@ -21,11 +21,15 @@ public class PWCGDirectoryManager
         pwcgRootDir = userDir + "\\";
     }
     
-    private void createPwcgDataDir(boolean isRoF)
+    private void createPwcgDataDir(PWCGProduct product)
     {
-        if (isRoF)
+        if (product == PWCGProduct.ROF)
         {
             pwcgDataDir = pwcgRootDir + "RoFData\\";
+        }
+        else if (product == PWCGProduct.FC)
+        {
+            pwcgDataDir = pwcgRootDir + "FCData\\";
         }
         else
         {

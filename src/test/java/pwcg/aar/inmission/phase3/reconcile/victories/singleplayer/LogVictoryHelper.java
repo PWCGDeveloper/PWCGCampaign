@@ -10,8 +10,8 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.Country;
+import pwcg.product.rof.country.RoFCountry;
 import pwcg.campaign.squadmember.SerialNumber;
-import pwcg.campaign.ww1.country.RoFCountry;
 import pwcg.core.location.Coordinate;
 
 public class LogVictoryHelper

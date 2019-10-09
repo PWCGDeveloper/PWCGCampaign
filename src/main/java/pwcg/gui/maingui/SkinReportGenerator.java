@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -59,7 +59,7 @@ public class SkinReportGenerator
     {
         for (String planeTypeDesc : skinsToWrite.keySet())
         {
-            PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
+            PlaneType plane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
             List<MissingSkin> missingSkinSet = skinsToWrite.get(planeTypeDesc);
             
             // The plane

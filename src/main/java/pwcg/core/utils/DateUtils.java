@@ -12,7 +12,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 
 public class DateUtils 
@@ -212,7 +213,7 @@ public class DateUtils
 
     public static Date getEndOfWar() throws PWCGException
     {
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF || PWCGContext.getProduct() == PWCGProduct.FC)
         {
             return getDateNoCheck("11/11/1918");            
         }
@@ -224,7 +225,7 @@ public class DateUtils
 
     public static Date getBeginningOfWar() throws PWCGException
     {
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF || PWCGContext.getProduct() == PWCGProduct.FC)
         {
             return getDateNoCheck("01/08/1914");            
         }
@@ -236,9 +237,13 @@ public class DateUtils
 
     public static Date getBeginningOfGame() throws PWCGException
     {
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             return getDateNoCheck("01/01/1916");            
+        }
+        else if (PWCGContext.getProduct() == PWCGProduct.FC)
+        {
+            return getDateNoCheck("01/08/1917");            
         }
         else
         {              
@@ -281,13 +286,13 @@ public class DateUtils
 	    try
 	    {
     		List<Date> transitionDates = new ArrayList<Date>();
-    		String inputDir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir();		
+    		String inputDir = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir();		
     		
     		DirectoryReader directoryReader = new DirectoryReader();
             directoryReader.sortilesInDir(inputDir);
             for (String frontDateDirName : directoryReader.getDirectories()) 
             {
-                String frontDateDirs = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + frontDateDirName;
+                String frontDateDirs = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + frontDateDirName;
                 File frontDateDir = new File(frontDateDirs);
                 if (frontDateDir.isDirectory() && frontDateDir.getName().contains("19"))
                 {

@@ -7,7 +7,7 @@ import java.util.List;
 import pwcg.aar.ui.events.model.AAREvent;
 import pwcg.aar.ui.events.model.AceKilledEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.HistoricalAce;
@@ -47,7 +47,7 @@ public class HistoricalAceAwardsGenerator
 
     private void generateEventsForAce(Ace aceAtPreviousDate) throws PWCGException
     {
-        HistoricalAce historicalAce = PWCGContextManager.getInstance().getAceManager().getHistoricalAceBySerialNumber(aceAtPreviousDate.getSerialNumber());
+        HistoricalAce historicalAce = PWCGContext.getInstance().getAceManager().getHistoricalAceBySerialNumber(aceAtPreviousDate.getSerialNumber());
         if (historicalAce != null)
         {
             Ace aceAtNewDate = historicalAce.getAtDate(newDate);

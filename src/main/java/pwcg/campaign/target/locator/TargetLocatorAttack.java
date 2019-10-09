@@ -5,7 +5,7 @@ import java.util.List;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
@@ -93,7 +93,7 @@ public class TargetLocatorAttack
 
     private void getTargetLocationEnemyFrontLines() throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(targetDefinition.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(targetDefinition.getDate());
         FrontLinePoint frontLinePoint = frontLinesForMap.findCloseFrontPositionForSide(
                 missionCenter, 
                 currentSearchRadius, 
@@ -108,7 +108,7 @@ public class TargetLocatorAttack
 
     private void getTargetLocationFriendlyFrontLines() throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(targetDefinition.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(targetDefinition.getDate());
         FrontLinePoint frontLinePoint = frontLinesForMap.findCloseFrontPositionForSide(
                 missionCenter, 
                 currentSearchRadius, 
@@ -123,7 +123,7 @@ public class TargetLocatorAttack
 
     private void getTargetLocationTrainStation() throws PWCGException
     {
-        GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         Block station = groupData.getRailroadStationFinder().getNearbyTrainPosition(
                 targetDefinition.getTargetCountry().getSide(), 
                 targetDefinition.getDate(), 
@@ -139,7 +139,7 @@ public class TargetLocatorAttack
 
     private void getTargetLocationBridge() throws PWCGException
     {
-        GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();    
+        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();    
         Bridge bridge = groupManager.getBridgeFinder().findBridgeForSideWithinRadius(
                 targetDefinition.getTargetCountry().getSide(), 
                 targetDefinition.getDate(), 
@@ -155,7 +155,7 @@ public class TargetLocatorAttack
 
     private void getTargetLocationRiver() throws PWCGException
     {
-        DrifterManager drifterManager = PWCGContextManager.getInstance().getCurrentMap().getDrifterManager();
+        DrifterManager drifterManager = PWCGContext.getInstance().getCurrentMap().getDrifterManager();
         PWCGLocation selectedBargePosition = drifterManager.getBargePositions().getSelectedLocationWithinRadiusBySide(
                 targetDefinition.getTargetCountry().getSide(), 
                 targetDefinition.getDate(), 
@@ -171,7 +171,7 @@ public class TargetLocatorAttack
 
     private void getTargetLocationAirfield() throws PWCGException
     {
-        AirfieldManager airfieldManager = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager();
+        AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
         PositionFinder<IAirfield> positionFinder = new PositionFinder<IAirfield>();
         List<IAirfield> potentialTargetAirfields = airfieldManager.getAirFieldsForSide(targetDefinition.getDate(), targetDefinition.getTargetCountry().getSide());
         IAirfield airfield = positionFinder.selectPositionWithinExpandingRadius(
@@ -189,7 +189,7 @@ public class TargetLocatorAttack
 
     private void getTargetLocationShippingLanes() throws PWCGException
     {
-        ShippingLaneManager shippingLaneManager = PWCGContextManager.getInstance().getCurrentMap().getShippingLaneManager();        
+        ShippingLaneManager shippingLaneManager = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager();        
         ShippingLane shippingLane = shippingLaneManager.getClosestShippingLane(missionCenter);
         if (shippingLane != null)
         {
@@ -209,7 +209,7 @@ public class TargetLocatorAttack
 
     public Coordinate getBehindLinesTargetPosition(int minDistanceBehindLines, int maxDistanceBehindLines) throws PWCGException 
     {
-        FrontLinesForMap frontLinesForMap =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(targetDefinition.getDate());
+        FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(targetDefinition.getDate());
         Coordinate behindLinesPosition = frontLinesForMap.findPositionBehindLinesForSide(
                 missionCenter, 
                 targetDefinition.getPreferredRadius(), 

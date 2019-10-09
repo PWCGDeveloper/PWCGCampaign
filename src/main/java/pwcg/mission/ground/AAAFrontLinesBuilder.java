@@ -7,7 +7,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -31,7 +31,7 @@ public class AAAFrontLinesBuilder
 	
 	public List<GroundUnitSpawning> generateAAAEmplacements () throws PWCGException
 	{
-        frontLinesForMap =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
 
 		generateAAAEmplacementsForSide(Side.ALLIED);
 		generateAAAEmplacementsForSide(Side.AXIS);

@@ -15,7 +15,7 @@ import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.AARPilotEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.GreatAce;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -55,7 +55,7 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         this.campaign = campaign;
         
         SquadronMember referencePlayer = ReferencePlayerFinder.findReferencePlayer(campaign);
-        PWCGContextManager.getInstance().setReferencePlayer(referencePlayer);
+        PWCGContext.getInstance().setReferencePlayer(referencePlayer);
         
         this.makeGUI();
     }

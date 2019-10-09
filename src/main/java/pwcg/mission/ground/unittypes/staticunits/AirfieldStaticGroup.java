@@ -6,7 +6,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.VehicleFactory;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.core.config.ConfigItemKeys;
@@ -38,7 +38,7 @@ public class AirfieldStaticGroup extends GroundUnit
 	@Override
 	public void createUnitMission() throws PWCGException  
 	{
-        AirfieldManager airfieldManager = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager();
+        AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
         this.airfield = airfieldManager.getAirfieldFinder().findClosestAirfield(pwcgGroundUnitInformation.getPosition());
 
         createTrucks();

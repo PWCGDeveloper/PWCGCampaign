@@ -5,7 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
 import pwcg.core.exception.PWCGException;
@@ -28,7 +28,7 @@ public class AAARailroadBuilder
 
 	public List<GroundUnitSpawning> createAAAForRailroads() throws PWCGException
 	{
-        GroupManager groupData = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
 
 		for (Block railroadStation : groupData.getRailroadList())
 		{

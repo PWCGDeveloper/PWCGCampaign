@@ -7,7 +7,7 @@ import java.util.Map;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
@@ -40,7 +40,7 @@ public class ReconWaypointsTransport extends ReconWaypoints
         
         while (allFixedPositionsInRadius.size() <= 2)
         {
-    	    GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+    	    GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
     	    List<Bridge> bridges = groupData.getBridgeFinder().findBridgesForSideWithinRadius(
     	            enemycountry.getSide(), campaign.getDate(), flight.getTargetCoords(), maxRadius);
     	    

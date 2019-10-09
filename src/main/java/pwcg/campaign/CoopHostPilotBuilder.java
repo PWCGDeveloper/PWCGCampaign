@@ -1,6 +1,6 @@
 package pwcg.campaign;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.CoopPilotIOJson;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.coop.model.CoopPilot;
@@ -30,6 +30,6 @@ public class CoopHostPilotBuilder
 
     	CoopPilotIOJson.writeJson(hostPilotRecord);
 
-    	PWCGContextManager.getInstance().setCampaign(campaign);
+    	PWCGContext.getInstance().setCampaign(campaign);
     }
 }

@@ -3,7 +3,7 @@ package pwcg.campaign.skin;
 import java.util.Map;
 
 import pwcg.campaign.context.AceManager;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -20,7 +20,7 @@ public class AceSkinLoader
 
     public void loadHistoricalAceSkins() throws PWCGException
     {
-        AceManager aceManager = PWCGContextManager.getInstance().getAceManager();
+        AceManager aceManager = PWCGContext.getInstance().getAceManager();
         for (HistoricalAce ace : aceManager.getHistoricalAces())
         {
             registerHistoricalAceSkins(ace);

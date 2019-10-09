@@ -6,7 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
 
@@ -16,7 +17,7 @@ public class AircraftIOJsonTest
     @Test
     public void readJsonTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         Map<String, PlaneType> aircraft = AircraftIOJson.readJson();
         assert (aircraft.size() > 0);
     }
@@ -24,7 +25,7 @@ public class AircraftIOJsonTest
     @Test
     public void readJsonBoSTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         Map<String, PlaneType> aircraft = AircraftIOJson.readJson();
         assert (aircraft.size() > 0);
     }

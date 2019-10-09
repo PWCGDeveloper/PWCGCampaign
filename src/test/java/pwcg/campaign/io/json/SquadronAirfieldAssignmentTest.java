@@ -10,7 +10,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -58,7 +59,7 @@ public class SquadronAirfieldAssignmentTest
     @Test
     public void verifyValidBoSAirfieldMoveDatesTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         List<Squadron> squadrons = SquadronIOJson.readJson();
         assert (squadrons.size() > 0);
         
@@ -78,7 +79,7 @@ public class SquadronAirfieldAssignmentTest
     @Test
     public void verifyCompleteBoSAirfieldMoveDatesTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         List<Squadron> squadrons = SquadronIOJson.readJson();
         assert (squadrons.size() > 0);
         

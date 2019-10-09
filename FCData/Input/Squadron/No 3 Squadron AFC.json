@@ -1,0 +1,66 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102103,
+  "name": "No 3 Squadron AFC",
+  "skill": 50,
+  "planeAssignments": [
+    {
+      "archType": "re8",
+      "squadronIntroduction": "19170909",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19170910": "Savy Berlette",
+    "19171109": "Eecke",
+    "19180322": "Eecke",
+    "19180408": "Baizieux 2",
+    "19180504": "Grivesnes"
+  },
+  "skins": [
+    {
+      "skinName": "102903",
+      "planeType": "re8",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102103,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+    
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 3 Squadron AFC",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_RECON",
+            "weight": 40
+          },
+          {
+            "role": "ROLE_BOMB",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_ARTILLERY_SPOT",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

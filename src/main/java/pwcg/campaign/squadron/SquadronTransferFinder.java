@@ -6,7 +6,7 @@ import java.util.Set;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.AceManager;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -29,7 +29,7 @@ public class SquadronTransferFinder
 
     public int chooseSquadronForTransfer() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
        
         for (Squadron possibleSquadron : squadronManager.getActiveSquadrons(campaign.getDate()))
         {
@@ -56,7 +56,7 @@ public class SquadronTransferFinder
             return true;
         }
 
-        AceManager aceManager = PWCGContextManager.getInstance().getAceManager();
+        AceManager aceManager = PWCGContext.getInstance().getAceManager();
         Set<Integer> aceCommandedSquadrons = aceManager.getAceCommandedSquadrons();
 
         if (aceCommandedSquadrons.contains(possibleSquadron.getSquadronId()))
@@ -79,7 +79,7 @@ public class SquadronTransferFinder
 
     private boolean squadronMemberHasCurrentSquadron() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron squadronMemberCurrentSquadron = squadronManager.getSquadron(squadronMember.getSquadronId());
         if (squadronMemberCurrentSquadron == null)
         {
@@ -91,7 +91,7 @@ public class SquadronTransferFinder
 
     private boolean isBestFitSquadron(Squadron possibleSquadron) throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron squadronMemberCurrentSquadron = squadronManager.getSquadron(squadronMember.getSquadronId());
         if (squadronMemberCurrentSquadron != null)
         {

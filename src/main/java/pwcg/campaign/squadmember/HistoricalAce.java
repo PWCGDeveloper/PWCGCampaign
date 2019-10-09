@@ -9,7 +9,7 @@ import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
@@ -121,7 +121,7 @@ public class HistoricalAce extends SquadronMember
         Squadron squadron = null;
         if (lastHistoricalAceSquadron != null)
         {
-            squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(lastHistoricalAceSquadron.squadron);
+            squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(lastHistoricalAceSquadron.squadron);
         }
 
         return squadron;
@@ -269,7 +269,7 @@ public class HistoricalAce extends SquadronMember
         String rankName = "";
 
         int squadId = getCurrentSquadron(date, false);
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadId);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadId);
 
         if (squadron != null && currentRank != null)
         {

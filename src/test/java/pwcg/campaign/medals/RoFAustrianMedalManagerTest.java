@@ -13,16 +13,17 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.MedalManagerFactory;
-import pwcg.campaign.ww1.country.RoFServiceManager;
-import pwcg.campaign.ww1.medals.AustrianMedalManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.dialogs.ImageCache;
 import pwcg.gui.utils.ContextSpecificImages;
+import pwcg.product.rof.country.RoFServiceManager;
+import pwcg.product.rof.medals.AustrianMedalManager;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RoFAustrianMedalManagerTest extends MedalManagerTestBase
@@ -30,7 +31,7 @@ public class RoFAustrianMedalManagerTest extends MedalManagerTestBase
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         super.setup();
         Mockito.when(country.isCountry(Country.AUSTRIA)).thenReturn(true);
         ICountry country = CountryFactory.makeCountryByCountry(Country.AUSTRIA);

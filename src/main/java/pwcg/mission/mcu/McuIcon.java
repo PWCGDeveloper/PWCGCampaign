@@ -13,7 +13,7 @@ import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.Balloon;
 import pwcg.campaign.utils.LCIndexGenerator;
-import pwcg.campaign.ww1.plane.RoFPlaneAttributeMapping;
+import pwcg.product.rof.plane.RoFPlaneAttributeMapping;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
 import pwcg.mission.MissionStringHandler;

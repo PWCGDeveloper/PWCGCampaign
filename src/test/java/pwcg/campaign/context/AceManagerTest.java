@@ -65,8 +65,8 @@ public class AceManagerTest
     	campaignAces.setCampaignAces(acesInCampaign);
 
 
-        PWCGContextManager.setRoF(true);
-        PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
+        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
     	aceManager = new AceManager();
      	aceManager.configure();
     }

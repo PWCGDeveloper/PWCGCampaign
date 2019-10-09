@@ -11,7 +11,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
@@ -32,7 +33,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
@@ -57,7 +58,7 @@ public class AARCoordinatorLossAndReplacementAnalyzer
 	    do 
 	    {
 	    	++cycleNum;
-	    	int activeSquadrons = PWCGContextManager.getInstance().getSquadronManager().getActiveSquadrons(campaign.getDate()).size();
+	    	int activeSquadrons = PWCGContext.getInstance().getSquadronManager().getActiveSquadrons(campaign.getDate()).size();
 	    	int victories = aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getTotalAirToAirVictories();
 	    	int losses = aarContext.getReconciledOutOfMissionData().getPersonnelLossesOutOfMission().getSquadMembersLost().size();
 	    	int replacements = campaign.getPersonnelManager().getReplacementCount();

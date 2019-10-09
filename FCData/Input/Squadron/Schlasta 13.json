@@ -1,0 +1,116 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501113,
+  "name": "Schlasta 13",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "archType": "rolc",
+      "squadronIntroduction": "19160729",
+      "squadronWithdrawal": "19170711"
+    },
+    {
+      "archType": "halberstadtcl",
+      "squadronIntroduction": "19170701",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160729": "Hermies,Cambrai",
+    "19170121": "Roucourt, Bohain",
+    "19171115": "Lagnicourt",
+    "19180409": "Moislains",
+    "19180526": "Vivaise",
+    "19180730": "Rulers",
+    "19180823": "Bellevue Ferme",
+    "19180912": "Sivry",
+    "19181021": "Sivry"
+  },
+  "skins": [
+    {
+      "skinName": "RC2A_PW_A_DEF",
+      "planeType": "rolc2a",
+      "startDate": "19140801",
+      "endDate": "19160704",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "RC2A_PW_C_DEF",
+      "planeType": "rolc2a",
+      "startDate": "19160704",
+      "endDate": "19160922",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "RC2A_PW_E_DEF",
+      "planeType": "rolc2a",
+      "startDate": "19160922",
+      "endDate": "19170321",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "RC2A_PW_G_DEF",
+      "planeType": "rolc2a",
+      "startDate": "19170321",
+      "endDate": "19181201",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "HCL2_SCH13_09-17",
+      "planeType": "halberstadtcl2",
+      "startDate": "19140801",
+      "endDate": "19180321",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "HCL2_SCH13_04-18",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180322",
+      "endDate": "19181201",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "HCL2A_PW_S13_A_M",
+      "planeType": "halberstadtcl2au",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501113,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

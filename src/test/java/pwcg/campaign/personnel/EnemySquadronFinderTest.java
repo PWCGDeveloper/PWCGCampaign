@@ -13,7 +13,8 @@ import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.squadron.Squadron;
@@ -37,7 +38,7 @@ public class EnemySquadronFinderTest
     @Before
     public void setupForTestEnvironment() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         
         Coordinate squadronAirfieldPosition = new Coordinate(100000.0, 0.0, 100000.0);
         ICountry squadronCountry = CountryFactory.makeCountryByCountry(Country.GERMANY);

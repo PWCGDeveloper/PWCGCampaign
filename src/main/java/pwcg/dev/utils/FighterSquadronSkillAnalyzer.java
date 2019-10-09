@@ -3,7 +3,7 @@ package pwcg.dev.utils;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -32,7 +32,7 @@ public class FighterSquadronSkillAnalyzer
 	
 	private void findPlane(Date startDate) throws PWCGException  
 	{		
-		List<Squadron> allSq =  PWCGContextManager.getInstance().getSquadronManager().getAllSquadrons();
+		List<Squadron> allSq =  PWCGContext.getInstance().getSquadronManager().getAllSquadrons();
 		int totalSkill = 0;
 		int totalFighterSquads = 0;
 		for (Squadron squad : allSq)

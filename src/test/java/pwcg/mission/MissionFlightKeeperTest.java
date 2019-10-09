@@ -13,7 +13,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -69,7 +70,7 @@ public class MissionFlightKeeperTest
         Mockito.when(axisSquadron.determineSide()).thenReturn(Side.AXIS);
         Mockito.when(alliedSquadron.determineSide()).thenReturn(Side.ALLIED);
 
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
         Mockito.when(missionFlightBuilder.getAiFlightsForSide(Side.ALLIED)).thenReturn(alliedAiFlights);
         Mockito.when(missionFlightBuilder.getAiFlightsForSide(Side.AXIS)).thenReturn(axisAiFlights);

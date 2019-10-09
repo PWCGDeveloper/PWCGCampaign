@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignHumanPilotHandler;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.CoopPilotIOJson;
 import pwcg.campaign.squadmember.AiPilotRemovalChooser;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -109,7 +109,7 @@ public class CoopPilotAccept extends ImageResizingPanel
     {
         Campaign campaign = new Campaign();
         campaign.open(acceptedPilot.getCampaignName());    
-        PWCGContextManager.getInstance().setCampaign(campaign);
+        PWCGContext.getInstance().setCampaign(campaign);
 
         AiPilotRemovalChooser pilotRemovalChooser = new AiPilotRemovalChooser(campaign);
         SquadronMember squadronMemberToReplace = pilotRemovalChooser.findAiPilotToRemove(acceptedPilot.getPilotRank(), acceptedPilot.getSquadronId());

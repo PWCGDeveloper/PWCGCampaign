@@ -4,7 +4,7 @@ import java.util.List;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.plane.EquippedPlane;
@@ -48,7 +48,7 @@ public class EquipmentDepoReplenisher
 
     private List<Squadron> getSquadronsForService(ArmedService service) throws PWCGException 
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         return squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
     }
 
@@ -78,7 +78,7 @@ public class EquipmentDepoReplenisher
     {        
         EquipmentReplacementCalculator equipmentArchtypeReplacementFinder = new EquipmentReplacementCalculator(campaign);
         String archTypeForReplacementPlane = equipmentArchtypeReplacementFinder.getArchTypeForReplacementPlane(squadronsForService);
-        PlaneArchType planeArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneArchType(archTypeForReplacementPlane);
+        PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(archTypeForReplacementPlane);
         return planeArchType;
     }
 }

@@ -4,7 +4,7 @@ import java.util.Date;
 
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.io.json.BattleIOJson;
 import pwcg.core.exception.PWCGException;
@@ -85,7 +85,7 @@ public class BattleManager
     
     private boolean isBattleNearPlayer(Coordinate position, Battle battle, FrontMapIdentifier matchingMap, Date date) throws PWCGException
     {
-        FrontLinesForMap frontLineMarker =  PWCGContextManager.getInstance().getMapByMapId(matchingMap).getFrontLinesForMap(date);
+        FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getMapByMapId(matchingMap).getFrontLinesForMap(date);
         Coordinate closestFrontLines = frontLineMarker.findClosestFrontCoordinateForSide(position, Side.ALLIED);
         CoordinateBox coordinateBox = CoordinateBox.coordinateBoxFromCorners(battle.getSWCorner(), battle.getNECorner());
 

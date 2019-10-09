@@ -1,0 +1,83 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501124,
+  "name": "Schlasta 24b",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "archType": "rolc",
+      "squadronIntroduction": "19160901",
+      "squadronWithdrawal": "19170701"
+    },
+    {
+      "archType": "halberstadtcl",
+      "squadronIntroduction": "19170701",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160901": "Bellevue Ferme",
+    "19161101": "Clastres",
+    "19170201": "Helesmes,N Denain",
+    "19180401": "Douai",
+    "19180806": "Hermies,Cambrai",
+    "19180913": "Sivry"
+  },
+  "skins": [
+    {
+      "skinName": "RC2A_PW_E_DEF",
+      "planeType": "rolc2a",
+      "startDate": "19140801",
+      "endDate": "19170411",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "RC2A_PW_G_DEF",
+      "planeType": "rolc2a",
+      "startDate": "19170411",
+      "endDate": "19181201",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "HCL2_SCH24_09-17",
+      "planeType": "halberstadtcl2",
+      "startDate": "19140801",
+      "endDate": "19180325",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "HCL2_SCH24_04-18",
+      "planeType": "halberstadtcl2",
+      "startDate": "19180326",
+      "endDate": "19181201",
+      "squadId": 501124,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

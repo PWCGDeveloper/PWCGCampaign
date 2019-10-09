@@ -7,7 +7,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.CampaignPersonnelFilter;
 import pwcg.campaign.personnel.SquadronMemberFilterSpecification;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -25,7 +26,7 @@ public class CampaignPersonnelManagerReconTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
     }
 

@@ -6,8 +6,9 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.target.locator.targettype.TargetTypeAvailability;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -22,7 +23,7 @@ public class TargetTypeAvailabilityTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         
         targetTypeAvailability = new TargetTypeAvailability(Side.AXIS, DateUtils.getDateYYYYMMDD("19430401"));
     }
@@ -30,8 +31,8 @@ public class TargetTypeAvailabilityTest
     @Test
     public void kubanDrifterTargetAvailabilityTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
-        PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
         double distanceOfClosestInstanceToReference = targetTypeAvailability.getTargetTypeAvailability(TacticalTarget.TARGET_DRIFTER, new Coordinate(216336, 0, 184721), 80000);
         assert(distanceOfClosestInstanceToReference < PositionFinder.ABSURDLY_LARGE_DISTANCE);
     }
@@ -39,8 +40,8 @@ public class TargetTypeAvailabilityTest
     @Test
     public void moscpwDrifterTargetAvailabilityTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
-        PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
         double distanceOfClosestInstanceToReference = targetTypeAvailability.getTargetTypeAvailability(TacticalTarget.TARGET_DRIFTER, new Coordinate(216336, 0, 184721), 80000);
         assert(distanceOfClosestInstanceToReference == PositionFinder.ABSURDLY_LARGE_DISTANCE);
     }

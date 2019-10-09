@@ -1,0 +1,93 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501078,
+  "name": "Jasta 78b",
+  "skill": 40,
+  "planeAssignments": [
+    {
+      "archType": "albatrosd",
+      "squadronIntroduction": "19171201",
+      "squadronWithdrawal": "19180425"
+    },
+    {
+      "archType": "pfalzd3a",
+      "squadronIntroduction": "19180401",
+      "squadronWithdrawal": "19180714"
+    },
+    {
+      "archType": "fokkerd7",
+      "squadronIntroduction": "19180701",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19171201": "Lomme,Lille"
+  },
+  "skins": [
+    {
+      "skinName": "AD5_J78_OCT1917",
+      "planeType": "albatrosd5",
+      "startDate": "19171010",
+      "endDate": "19180320",
+      "squadId": 501078,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J78_APR1918",
+      "planeType": "albatrosd5",
+      "startDate": "19180320",
+      "endDate": "19181201",
+      "squadId": 501078,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "PD3A_J78_SEPT1917",
+      "planeType": "pfalzd3a",
+      "startDate": "19171010",
+      "endDate": "19180320",
+      "squadId": 501078,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "PD3A_501078_ANS",
+      "planeType": "pfalzd3a",
+      "startDate": "19180320",
+      "endDate": "19181201",
+      "squadId": 501078,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7_J78_MAY1918",
+      "planeType": "fokkerd7",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501078,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

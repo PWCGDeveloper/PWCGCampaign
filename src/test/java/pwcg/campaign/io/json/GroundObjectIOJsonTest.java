@@ -4,7 +4,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.GroundStructureGroup;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
@@ -15,7 +16,7 @@ public class GroundObjectIOJsonTest
     @Test
     public void readJsonFranceTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         String mapName = "France";
         validateGroundStructuresRoF(mapName);
     }
@@ -23,7 +24,7 @@ public class GroundObjectIOJsonTest
     @Test
     public void readJsonChannelTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         String mapName = "Channel";
         validateGroundStructuresRoF(mapName);
     }
@@ -31,7 +32,7 @@ public class GroundObjectIOJsonTest
     @Test
     public void readJsonGaliciaTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         String mapName = "Galicia";
         validateGroundStructuresRoF(mapName);
     }
@@ -40,7 +41,7 @@ public class GroundObjectIOJsonTest
     @Test
     public void readJsonMoscowTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         String mapName = "Moscow";
         validateGroundStructuresBoS(mapName);
     }
@@ -48,7 +49,7 @@ public class GroundObjectIOJsonTest
     @Test
     public void readJsonStalingradTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         String mapName = "Stalingrad";
         validateGroundStructuresBoS(mapName);
     }
@@ -56,7 +57,7 @@ public class GroundObjectIOJsonTest
     @Test
     public void readJsonKubanTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         String mapName = "Kuban";
         validateGroundStructuresBoS(mapName);
     }
@@ -64,7 +65,7 @@ public class GroundObjectIOJsonTest
     @Test
     public void readJsonBoddenplatteTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         String mapName = "Bodenplatte";
         validateGroundStructuresBoS(mapName);        
     }

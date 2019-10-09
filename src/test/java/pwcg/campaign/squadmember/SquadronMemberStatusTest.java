@@ -17,7 +17,8 @@ import pwcg.campaign.CampaignAces;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.IRankHelper;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadron.Squadron;
@@ -42,7 +43,7 @@ public class SquadronMemberStatusTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         campaignDate = DateUtils.getDateYYYYMMDD("19170601");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
@@ -51,7 +52,7 @@ public class SquadronMemberStatusTest
         List<Ace> aces = new ArrayList<>();
         Mockito.when(campaignAces.getCampaignAcesBySquadron(Mockito.anyInt())).thenReturn(aces);
 
-        squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(101003); 
+        squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(101003); 
         squadronPersonnel = new SquadronPersonnel(campaign, squadron);
 
         squadronMemberFactory = new  SquadronMemberFactory (campaign, squadron, squadronPersonnel);

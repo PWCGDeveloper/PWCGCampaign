@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
@@ -43,7 +43,7 @@ public class InitialSquadronEquipper
         List<PlaneType> planeTypesInSquadron = new ArrayList<>();
         for (PlaneArchType planeArchType : currentAircraftArchTypes)
         {
-            List<PlaneType> planeTypesForArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().createActivePlaneTypesForArchType(planeArchType.getPlaneArchTypeName(), campaign.getDate());
+            List<PlaneType> planeTypesForArchType = PWCGContext.getInstance().getPlaneTypeFactory().createActivePlaneTypesForArchType(planeArchType.getPlaneArchTypeName(), campaign.getDate());
             planeTypesInSquadron.addAll(planeTypesForArchType);
         }
         

@@ -1,0 +1,122 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102208,
+  "name": "No 8 Squadron RNAS",
+  "skill": 85,
+  "planeAssignments": [
+    {
+      "archType": "nieuport",
+      "squadronIntroduction": "19161025",
+      "squadronWithdrawal": "19161115"
+    },
+    {
+      "archType": "soppup",
+      "squadronIntroduction": "19161025",
+      "squadronWithdrawal": "19170228"
+    },
+    {
+      "archType": "soptriplane",
+      "squadronIntroduction": "19170301",
+      "squadronWithdrawal": "19170905"
+    },
+    {
+      "archType": "sopcamel",
+      "squadronIntroduction": "19170715",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19160415": "Poperinghe",
+    "19161026": "Lealvillers",
+    "19170207": "La Lovie",
+    "19170328": "Mazingarbe",
+    "19170516": "La Targette",
+    "19180228": "La Lovie",
+    "19180329": "La Lovie",
+    "19180402": "La Gorgue",
+    "19180408": "Mazingarbe",
+    "19180730": "Mont St. Eloi"
+  },
+  "skins": [
+    {
+      "skinName": "SS_RNAS_STD_EARLY",
+      "planeType": "sopstr",
+      "startDate": "19161025",
+      "endDate": "19161201",
+      "squadId": 102208,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "N11_RFC_GREEN",
+      "planeType": "nieuport11",
+      "startDate": "19161025",
+      "endDate": "19161201",
+      "squadId": 102208,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SC_RNAS8_AUG17",
+      "planeType": "sopcamel",
+      "startDate": "19170915",
+      "endDate": "19180322",
+      "squadId": 102208,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102208_020",
+      "planeType": "sopcamel",
+      "startDate": "19180323",
+      "endDate": "19181201",
+      "squadId": 102208,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 208 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+    
+  "serviceId": 10202,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19180401",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      },
+      {
+        "startDate": "19180401",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 70
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

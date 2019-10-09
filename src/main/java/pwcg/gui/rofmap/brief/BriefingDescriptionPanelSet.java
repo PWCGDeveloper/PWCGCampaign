@@ -13,7 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -48,7 +48,7 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
 	    
         this.campaignHomeGui =  campaignHomeGui;
 
-        Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
+        Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
 		briefingMissionHandler = new BriefingMissionHandler(mission);
 		briefingMissionHandler.initializeFromMission(myFlight.getSquadron());
 
@@ -140,7 +140,7 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
 
     public void setMissionText() throws PWCGException 
     {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         IMissionDescription missionDescription =MissionDescriptionFactory.buildMissionDescription(campaign, briefingMissionHandler.getMission());
         String missionDescriptionText = missionDescription.createDescription();
         
@@ -211,7 +211,7 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
 
     private void scrubMission() throws PWCGException
     {
-        Campaign campaign  = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign  = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);
         
         campaignHomeGui.clean();
@@ -223,7 +223,7 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
 
     private void backToCampaign() throws PWCGException
     {
-        Campaign campaign  = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign  = PWCGContext.getInstance().getCampaign();
 
         briefingMissionHandler.updateMissionBriefingParameters();
         campaign.setCurrentMission(briefingMissionHandler.getMission());

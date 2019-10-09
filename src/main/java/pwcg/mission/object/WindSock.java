@@ -6,7 +6,7 @@ import java.io.IOException;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IProductSpecificConfiguration;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.utils.IndexGenerator;
@@ -49,7 +49,7 @@ public class WindSock
 
         Double angleWindSockLeft = MathUtils.adjustAngle(takeoffOrientation, -90);
         
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         ConfigManager configManager = campaign.getCampaignConfigManager();
         int windsockDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
         Coordinate windSockCoordMoveLeft = MathUtils.calcNextCoord(flight.getAirfield().getTakeoffLocation().getPosition(), angleWindSockLeft, windsockDistance);

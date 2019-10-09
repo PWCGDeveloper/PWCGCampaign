@@ -12,7 +12,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -37,14 +38,14 @@ public class AiPilotRemovalChooserTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaignDate = DateUtils.getDateYYYYMMDD("19420801");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         Mockito.when(campaignPersonnelManager.getSquadronPersonnel(Matchers.anyInt())).thenReturn(squadronPersonnel);
 
-        squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(10131132); 
+        squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(10131132); 
         
         Mockito.when(squadronMember1.getRank()).thenReturn("Major");
         Mockito.when(squadronMember1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);

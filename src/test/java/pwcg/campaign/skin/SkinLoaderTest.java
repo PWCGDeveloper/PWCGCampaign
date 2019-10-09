@@ -4,7 +4,8 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 
 public class SkinLoaderTest
@@ -12,7 +13,7 @@ public class SkinLoaderTest
     @Test
     public void skinLoaderRoFTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         SkinLoader skinLoader = new SkinLoader();
         Map<String, SkinsForPlane> skinsForPlanes = skinLoader.loadPwcgSkins();
         
@@ -26,7 +27,7 @@ public class SkinLoaderTest
     @Test
     public void skinLoaderBoSTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         SkinLoader skinLoader = new SkinLoader();
         Map<String, SkinsForPlane> skinsForPlanes = skinLoader.loadPwcgSkins();
         

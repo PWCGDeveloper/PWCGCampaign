@@ -10,17 +10,18 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.MedalManagerFactory;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.ww1.country.RoFServiceManager;
-import pwcg.campaign.ww1.medals.GermanMedalManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.dialogs.ImageCache;
 import pwcg.gui.utils.ContextSpecificImages;
+import pwcg.product.rof.country.RoFServiceManager;
+import pwcg.product.rof.medals.GermanMedalManager;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RoFGermanMedalManagerTest extends MedalManagerTestBase
@@ -28,7 +29,7 @@ public class RoFGermanMedalManagerTest extends MedalManagerTestBase
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         service = ArmedServiceFactory.createServiceManager().getArmedServiceById(RoFServiceManager.DEUTSCHE_LUFTSTREITKRAFTE, DateUtils.getDateYYYYMMDD("19171001"));
 
         super.setup();

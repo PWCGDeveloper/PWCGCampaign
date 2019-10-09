@@ -1,6 +1,6 @@
 package pwcg.core.config;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 
 public class ConfigManagerGlobal extends ConfigManager
@@ -8,7 +8,7 @@ public class ConfigManagerGlobal extends ConfigManager
     static protected ConfigManagerGlobal instance = null;
 	public ConfigManagerGlobal ()
 	{
-        super(PWCGContextManager.getInstance().getDirectoryManager().getPwcgUserDir());
+        super(PWCGContext.getInstance().getDirectoryManager().getPwcgUserDir());
 	}
 
 	public static ConfigManagerGlobal getInstance() throws PWCGException 

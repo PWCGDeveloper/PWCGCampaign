@@ -6,8 +6,9 @@ import org.mockito.Mock;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.testutils.CampaignCache;
@@ -23,17 +24,17 @@ public class AirfieldManagerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
-        PWCGContextManager.getInstance().setCampaign(campaign);
+        PWCGContext.getInstance().setCampaign(campaign);
     }
 
 	@Test
 	public void airfieldValidityCheckFranceTest() throws PWCGException 
 	{
-        PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
-        PWCGContextManager.getInstance().setTestUseMovingFront(false);
-        AirfieldManager airfieldManager = PWCGContextManager.getInstance().getMapByMapId(FrontMapIdentifier.FRANCE_MAP).getAirfieldManager();
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
+        PWCGContext.getInstance().setTestUseMovingFront(false);
+        AirfieldManager airfieldManager = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.FRANCE_MAP).getAirfieldManager();
         for (IAirfield airfield : airfieldManager.getAllAirfields().values())
         {
             assert (airfield.getTakeoffLocation() != null);

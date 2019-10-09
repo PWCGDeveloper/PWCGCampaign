@@ -6,7 +6,7 @@ import pwcg.aar.inmission.phase1.parse.event.rof.AType12;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.plane.Balloon;
-import pwcg.campaign.ww1.country.RoFCountry;
+import pwcg.product.rof.country.RoFCountry;
 import pwcg.core.exception.PWCGException;
 
 public class TestATypeFactory

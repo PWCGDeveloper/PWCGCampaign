@@ -6,7 +6,8 @@ import org.junit.Test;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
@@ -24,7 +25,7 @@ public class SquadronMemberInitialVictoryBuilderTest
     @Before
     public void setupForTestEnvironment() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
     }
 
 
@@ -33,7 +34,7 @@ public class SquadronMemberInitialVictoryBuilderTest
     {
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_STALINGRAD);
 
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(20112052);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20112052);
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
         SquadronPersonnel jg52Personnel = campaign.getPersonnelManager().getSquadronPersonnel(20112052);
@@ -67,7 +68,7 @@ public class SquadronMemberInitialVictoryBuilderTest
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
 
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(10111126);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(10111126);
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
         
@@ -100,7 +101,7 @@ public class SquadronMemberInitialVictoryBuilderTest
     {
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_WEST);
 
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(20112052);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20112052);
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
         SquadronPersonnel jg52Personnel = campaign.getPersonnelManager().getSquadronPersonnel(20112052);
@@ -134,7 +135,7 @@ public class SquadronMemberInitialVictoryBuilderTest
     {
         Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.FG_362_PROFILE);
 
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(102362377);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(102362377);
         ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
         IRankHelper rankHelper = RankFactory.createRankHelper();
         SquadronPersonnel fg362Personnel = campaign.getPersonnelManager().getSquadronPersonnel(102362377);

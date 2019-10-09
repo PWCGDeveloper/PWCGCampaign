@@ -9,7 +9,7 @@ import java.util.Map;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IFixedPosition;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.target.TacticalTarget;
@@ -122,7 +122,7 @@ public class StrategicTargetLocator
     {
         List<IFixedPosition> targets = new ArrayList<IFixedPosition>();
 
-        GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
         List<Block> blocks = groupManager.getStandaloneBlocks();
         
         while (targets.size() == 0 && preferredRadius < PositionFinder.ABSURDLY_LARGE_DISTANCE)
@@ -155,7 +155,7 @@ public class StrategicTargetLocator
     private List<IFixedPosition> getAirfieldTargets() throws PWCGException 
     {
         List<IFixedPosition> targets = new ArrayList<IFixedPosition>();
-        List<IAirfield> targetFields = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirFieldsForSide(date, side);
+        List<IAirfield> targetFields = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirFieldsForSide(date, side);
         while (targets.size() == 0 && preferredRadius < PositionFinder.ABSURDLY_LARGE_DISTANCE)
         {
             for (IAirfield targetField : targetFields)

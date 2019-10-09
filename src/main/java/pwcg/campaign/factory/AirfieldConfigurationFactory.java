@@ -1,15 +1,16 @@
 package pwcg.campaign.factory;
 
 import pwcg.campaign.api.IAirfieldConfiguration;
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.ww1.airfield.RoFAirfieldConfiguration;
-import pwcg.campaign.ww2.airfield.BoSAirfieldConfiguration;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
+import pwcg.product.rof.airfield.RoFAirfieldConfiguration;
+import pwcg.product.bos.airfield.BoSAirfieldConfiguration;
 
 public class AirfieldConfigurationFactory
 {
     public static IAirfieldConfiguration createAirfieldConfiguration()
     {
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             return new RoFAirfieldConfiguration();
         }

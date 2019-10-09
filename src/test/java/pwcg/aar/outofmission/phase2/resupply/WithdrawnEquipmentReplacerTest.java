@@ -10,7 +10,8 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
@@ -35,7 +36,7 @@ public class WithdrawnEquipmentReplacerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(squadron.getSquadronId()).thenReturn(20111051);
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
         equipment = new Equipment();

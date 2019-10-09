@@ -4,7 +4,7 @@ import pwcg.aar.ui.events.model.PromotionEvent;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -27,7 +27,7 @@ public class CampaignReportPromotionGUI extends CampaignDocumentGUI
     protected String getHeaderText() throws PWCGException
     {
         // Promotion text
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         String promotionHeaderText = promotionRecipient.determineService(campaign.getDate()).getName() + "\n\n";
 
         promotionHeaderText += "To all who shall see these presents, greeting: \n\n";
@@ -37,7 +37,7 @@ public class CampaignReportPromotionGUI extends CampaignDocumentGUI
 
     protected String getBodyText() throws PWCGException
 	{
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         
         String promotionText = "Know ye that reposing special trust and confidence in the fidelity and abilities of ";
         promotionText += "NAME I do hereby appoint him RANK of the SERVICE of NATION, ";

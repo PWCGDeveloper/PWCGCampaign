@@ -25,15 +25,16 @@ import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.aar.ui.events.model.ClaimDeniedEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.Victory;
-import pwcg.campaign.ww1.country.RoFCountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.product.rof.country.RoFCountry;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignPersonnelTestHelper;
 import pwcg.testutils.SquadrontTestProfile;
@@ -65,8 +66,8 @@ public class AARPhase3ReconcileCoordinatorTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
-        PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
+        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
         
         aceStatusList = new ArrayList<>();

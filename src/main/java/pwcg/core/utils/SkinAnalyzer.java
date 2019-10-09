@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.skin.SkinsForPlane;
@@ -27,7 +27,7 @@ public class SkinAnalyzer
 
 	private void initMissingSkinMap() throws PWCGException
 	{
-        List<PlaneType> allPlanes = PWCGContextManager.getInstance().getPlaneTypeFactory().getAllPlanes();
+        List<PlaneType> allPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAllPlanes();
         
         missingSkinListMap.clear();
         
@@ -40,9 +40,9 @@ public class SkinAnalyzer
 
 	private void findMissingConfiguredSkins() throws PWCGException 
 	{
-		for (PlaneType plane : PWCGContextManager.getInstance().getPlaneTypeFactory().getAllPlanes())
+		for (PlaneType plane : PWCGContext.getInstance().getPlaneTypeFactory().getAllPlanes())
 		{
-			SkinsForPlane skinsForPlane = PWCGContextManager.getInstance().getSkinManager().getSkinsForPlane(plane.getType());
+			SkinsForPlane skinsForPlane = PWCGContext.getInstance().getSkinManager().getSkinsForPlane(plane.getType());
 		
 			for (Skin skin : skinsForPlane.getConfiguredSkins().getSkins().values())
 			{
@@ -56,9 +56,9 @@ public class SkinAnalyzer
 	
 	private void findMissingSquadronSkins() throws PWCGException 
 	{
-		for (PlaneType plane : PWCGContextManager.getInstance().getPlaneTypeFactory().getAllPlanes())
+		for (PlaneType plane : PWCGContext.getInstance().getPlaneTypeFactory().getAllPlanes())
 		{
-			SkinsForPlane skinsForPlane = PWCGContextManager.getInstance().getSkinManager().getSkinsForPlane(plane.getType());
+			SkinsForPlane skinsForPlane = PWCGContext.getInstance().getSkinManager().getSkinsForPlane(plane.getType());
 		
 			for (Skin skin : skinsForPlane.getSquadronSkins().getSkins().values())
 			{
@@ -71,9 +71,9 @@ public class SkinAnalyzer
 	}
 	private void findMissingAceSkins() throws PWCGException 
 	{
-		for (PlaneType plane : PWCGContextManager.getInstance().getPlaneTypeFactory().getAllPlanes())
+		for (PlaneType plane : PWCGContext.getInstance().getPlaneTypeFactory().getAllPlanes())
 		{
-			SkinsForPlane skinsForPlane = PWCGContextManager.getInstance().getSkinManager().getSkinsForPlane(plane.getType());
+			SkinsForPlane skinsForPlane = PWCGContext.getInstance().getSkinManager().getSkinsForPlane(plane.getType());
 		
 			for (Skin skin : skinsForPlane.getAceSkins().getSkins().values())
 			{

@@ -6,7 +6,7 @@ import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
@@ -92,7 +92,7 @@ public class TargetTypeAvailability
 
     private Coordinate isFrontLinePositionAvailable(Coordinate targetGeneralLocation) throws PWCGException
     {
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(date);
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(date);
         FrontLinePoint frontLinePoint = frontLinesForMap.findClosestFrontPositionForSide(targetGeneralLocation, side);
         if (frontLinePoint != null)
         {
@@ -104,7 +104,7 @@ public class TargetTypeAvailability
     
     private Coordinate isSeaLaneAvailable(Coordinate targetGeneralLocation) throws PWCGException
     {
-        ShippingLaneManager shippingLaneManager = PWCGContextManager.getInstance().getCurrentMap().getShippingLaneManager();
+        ShippingLaneManager shippingLaneManager = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager();
         ShippingLane shippingLane = shippingLaneManager.getClosestShippingLaneBySide(targetGeneralLocation, side);
         if (shippingLane != null)
         {
@@ -116,7 +116,7 @@ public class TargetTypeAvailability
     
     private Coordinate isBridgeAvailable(Coordinate targetGeneralLocation) throws PWCGException
     {
-        GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
         Bridge bridge = groupManager.getBridgeFinder().findClosestBridgeForSide(side, date, targetGeneralLocation);
         if (bridge != null)
         {
@@ -128,7 +128,7 @@ public class TargetTypeAvailability
 
     private Coordinate isRailroadStationAvailable(Coordinate targetGeneralLocation) throws PWCGException
     {
-        GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
         Block railroadStation = groupManager.getRailroadStationFinder().getClosestTrainPositionBySide(side, date, targetGeneralLocation);
         if (railroadStation != null)
         {
@@ -140,7 +140,7 @@ public class TargetTypeAvailability
 
     private Coordinate isAirfieldAvailable(Coordinate targetGeneralLocation) throws PWCGException
     {
-        AirfieldManager airfieldManager = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager();
+        AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
         IAirfield airfield = airfieldManager.getAirfieldFinder().findClosestAirfieldForSide(targetGeneralLocation, date, side);
         if (airfield != null)
         {
@@ -152,7 +152,7 @@ public class TargetTypeAvailability
 
     private Coordinate isDrifterAvailable(Coordinate targetGeneralLocation) throws PWCGException
     {
-        DrifterManager drifterManager = PWCGContextManager.getInstance().getCurrentMap().getDrifterManager();
+        DrifterManager drifterManager = PWCGContext.getInstance().getCurrentMap().getDrifterManager();
         PWCGLocation drifterLocation = drifterManager.getBargePositions().findClosestLocationForSide(targetGeneralLocation, date, side);
         if (drifterLocation != null)
         {

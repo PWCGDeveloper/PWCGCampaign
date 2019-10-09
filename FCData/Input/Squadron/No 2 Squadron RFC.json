@@ -1,0 +1,59 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102002,
+  "name": "No 2 Squadron RFC",
+  "skill": 25,
+  "planeAssignments": [
+    {
+      "archType": "fe2",
+      "squadronIntroduction": "19140801",
+      "squadronWithdrawal": "19170110"
+    },
+    {
+      "archType": "re8",
+      "squadronIntroduction": "19170101",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19150801": "Savy Berlette",
+    "19180609": "Soncamp Farm",
+    "19181020": "Mont St. Eloi",
+    "19181026": "Lealvillers"
+  },
+  "skins": [],
+  
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 2 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_RECON",
+            "weight": 40
+          },
+          {
+            "role": "ROLE_BOMB",
+            "weight": 30
+          },
+          {
+            "role": "ROLE_ARTILLERY_SPOT",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

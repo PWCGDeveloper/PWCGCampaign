@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -41,7 +41,7 @@ public class CampaignEquipmentChalkBoard extends ImageResizingPanel
         try
         {
             this.setLayout(new BorderLayout()); 
-        	SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        	SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
             JPanel squadronPanel = createEquipmentListPanel(campaign.getEquipmentManager().getEquipmentForSquadron(referencePlayer.getSquadronId()).getActiveEquippedPlanes());
             this.add(squadronPanel, BorderLayout.CENTER);
         }

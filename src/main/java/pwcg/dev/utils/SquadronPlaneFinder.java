@@ -3,7 +3,7 @@ package pwcg.dev.utils;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
@@ -39,7 +39,7 @@ public class SquadronPlaneFinder
     
     private void findPlane(String planeId, Date startDate, Date endDate) throws PWCGException  
     {       
-        List<Squadron> allSq =  PWCGContextManager.getInstance().getSquadronManager().getAllSquadrons();
+        List<Squadron> allSq =  PWCGContext.getInstance().getSquadronManager().getAllSquadrons();
         Logger.log(LogLevel.DEBUG, "PlaneType Id: " + planeId);
         for (Squadron squad : allSq)
         {
@@ -64,8 +64,8 @@ public class SquadronPlaneFinder
     
     private void printPlanes() throws PWCGException  
     {       
-        List<Squadron> allSq =  PWCGContextManager.getInstance().getSquadronManager().getAllSquadrons();
-        PlaneTypeFactory planeTypeFactory = PWCGContextManager.getInstance().getPlaneTypeFactory();
+        List<Squadron> allSq =  PWCGContext.getInstance().getSquadronManager().getAllSquadrons();
+        PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
         for (Squadron squad : allSq)
         {
             System.out.println("Squadron: " + squad.getSquadronId());

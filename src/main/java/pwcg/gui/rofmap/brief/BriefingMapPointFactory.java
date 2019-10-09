@@ -1,6 +1,6 @@
 package pwcg.gui.rofmap.brief;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
@@ -38,7 +38,7 @@ public class BriefingMapPointFactory
 	public static BriefingMapPoint createTakeoff(Mission mission) throws PWCGException 
 	{
         BriefingMapPoint takeoff =null;
-        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
+        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
 		McuTakeoff takeoffEntity = playerFlight.getTakeoff();
 		if (takeoffEntity != null)
 		{
@@ -54,7 +54,7 @@ public class BriefingMapPointFactory
 	public static BriefingMapPoint createLanding(Mission mission) throws PWCGException 
 	{
         BriefingMapPoint landing =null;
-		Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContextManager.getInstance().getReferencePlayer());
+		Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
 		McuLanding landingEntity = playerFlight.getLanding();
 		if (landingEntity != null)
 		{

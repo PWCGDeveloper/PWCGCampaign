@@ -7,7 +7,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.squadron.Squadron;
@@ -54,7 +54,7 @@ public class TransportReferenceLocationSelector
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
 
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> frontPointsWithinRadius = frontLinesForMap.findClosestFrontPositionsForSide(startCoords, CLOSE_ENOUGH_FOR_TRANSPORT, squadron.getCountry().getSide());
         List<FrontLinePoint> frontPointsFarEnoughAway = getPointsFarEnoughAway(startCoords, frontPointsWithinRadius);        
         return choosePoint(frontPointsWithinRadius, frontPointsFarEnoughAway);
@@ -91,7 +91,7 @@ public class TransportReferenceLocationSelector
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
 
-        AirfieldManager airfieldManager = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager();
+        AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
         List<IAirfield> airfieldsWithinRadius = airfieldManager.getAirfieldFinder().getAirfieldsWithinRadiusBySide(startCoords, campaign.getDate(), CLOSE_ENOUGH_FOR_TRANSPORT, squadron.getCountry().getSide());
         List<IAirfield> airfieldsFarEnoughAway = getAirfieldsFarEnoughAway(startCoords, airfieldsWithinRadius);        
         return chooseAirfield(airfieldsWithinRadius, airfieldsFarEnoughAway);
@@ -128,7 +128,7 @@ public class TransportReferenceLocationSelector
     {
         Coordinate startCoords = squadron.determineCurrentPosition(campaign.getDate());
 
-        GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
         List<PWCGLocation> townsWithinRadius = groupManager.getTownFinder().findAllTownsForSide(squadron.getCountry().getSide(), campaign.getDate());
                 
         List<PWCGLocation> townsWithinLimits = getTownsWithinLimits(startCoords, townsWithinRadius);        

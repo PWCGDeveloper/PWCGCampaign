@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
@@ -83,7 +83,7 @@ public class PlayerFlightEditor
 
     private void setPayloadFromBriefing(PlaneMCU plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        IPayloadFactory payloadfactory = PWCGContextManager.getInstance().getPayloadFactory();
+        IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payload = payloadfactory.createPlanePayload(plane.getType());
         payload.setSelectedPayloadId(crewPlane.getPayloadId());
         plane.setPlanePayload(payload);
@@ -105,7 +105,7 @@ public class PlayerFlightEditor
 
     private void configurePlaneForCrew(PlaneMCU plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         AiSkillLevel aiLevel = crewPlane.getPilot().getAiSkillLevel();
         SquadronMember squadronMember = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId()).getSquadronMember(crewPlane.getPilot().getSerialNumber());
         if (squadronMember.isPlayer())

@@ -2,7 +2,7 @@ package pwcg.mission.ambient;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -21,7 +21,7 @@ public abstract class AmbientUnitBuilder
  
     protected boolean isBehindFrontLines(Coordinate position, Side targetSide) throws PWCGException
     {
-        Coordinate closestFrontCoordinate = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate()).findClosestFrontCoordinateForSide(position, targetSide);            
+        Coordinate closestFrontCoordinate = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate()).findClosestFrontCoordinateForSide(position, targetSide);            
         if (MathUtils.calcDist(closestFrontCoordinate, position) > 5000.0)
         {
             return true;

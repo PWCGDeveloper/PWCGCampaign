@@ -15,7 +15,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignEquipmentManager;
 import pwcg.campaign.CampaignPersonnelManager;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
@@ -69,7 +70,7 @@ public class BriefingDataInitializerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(mission.getCampaign()).thenReturn(campaign);
         Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
 

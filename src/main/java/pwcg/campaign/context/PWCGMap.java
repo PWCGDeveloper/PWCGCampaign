@@ -29,7 +29,8 @@ public abstract class PWCGMap
         MOSCOW_MAP,
         STALINGRAD_MAP,
         KUBAN_MAP,
-        BODENPLATTE_MAP
+        BODENPLATTE_MAP,
+        ARRAS_MAP
     }
 
     public static final String FRANCE_MAP_NAME = "France";
@@ -40,6 +41,8 @@ public abstract class PWCGMap
     public static final String STALINGRAD_MAP_NAME = "Stalingrad";
     public static final String KUBAN_MAP_NAME = "Kuban";
     public static final String BODENPLATTE_MAP_NAME = "Bodenplatte";
+
+    public static final String ARRAS_MAP_NAME = "Arras";
 
     protected FrontMapIdentifier mapIdentifier = null;
     protected Map<Date, FrontLinesForMap> frontLinesForMapByDate = new TreeMap<>();
@@ -104,6 +107,8 @@ public abstract class PWCGMap
         frontNameIdentifierMap.put(STALINGRAD_MAP_NAME, FrontMapIdentifier.STALINGRAD_MAP);
         frontNameIdentifierMap.put(KUBAN_MAP_NAME, FrontMapIdentifier.KUBAN_MAP);            
         frontNameIdentifierMap.put(BODENPLATTE_MAP_NAME, FrontMapIdentifier.BODENPLATTE_MAP);            
+
+        frontNameIdentifierMap.put(ARRAS_MAP_NAME, FrontMapIdentifier.ARRAS_MAP);            
 
         return frontNameIdentifierMap.get(name);
     }

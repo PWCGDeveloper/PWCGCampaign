@@ -12,8 +12,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -39,8 +40,8 @@ public class SquadronMoveHandlerTest
     @Before
     public void setupForTestEnvironment() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
-        PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
+        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
                 
         campaignDate = DateUtils.getDateYYYYMMDD("19170420");
         newDate = DateUtils.getDateYYYYMMDD("19170430");

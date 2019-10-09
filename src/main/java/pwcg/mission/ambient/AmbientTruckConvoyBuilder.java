@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
@@ -55,13 +55,13 @@ public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
     {
         ArrayList<Bridge> selectedBridges = new ArrayList<Bridge>();
 
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         ConfigManager configManager = campaign.getCampaignConfigManager();
 
         int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);        
         CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
 
-        GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())
         {
             if (bridge.createCountry(campaign.getDate()).getSide() == targetSide)

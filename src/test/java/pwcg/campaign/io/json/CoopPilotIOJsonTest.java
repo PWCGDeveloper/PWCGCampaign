@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.coop.model.CoopPilot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
@@ -14,7 +15,7 @@ public class CoopPilotIOJsonTest
     @Test
     public void campaignIOJsonTest() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
 
         deleteCoopPilot();
         writeCoopPilot();
@@ -63,7 +64,7 @@ public class CoopPilotIOJsonTest
     private void deleteCoopPilot()
     {
         FileUtils fileUtils = new FileUtils();
-        String coopPilotPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCoopDir() + "Pilots\\Test Pilot.json";
+        String coopPilotPath = PWCGContext.getInstance().getDirectoryManager().getPwcgCoopDir() + "Pilots\\Test Pilot.json";
         fileUtils.deleteFile(coopPilotPath);
     }
 }

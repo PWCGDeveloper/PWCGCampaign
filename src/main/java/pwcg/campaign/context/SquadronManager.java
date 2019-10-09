@@ -304,7 +304,7 @@ public class SquadronManager
 			String currentFieldNameForSquad = squadron.determineCurrentAirfieldName(date);
 			if (currentFieldNameForSquad != null)
 			{
-    			IAirfield currentFieldForSquad =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(currentFieldNameForSquad);
+    			IAirfield currentFieldForSquad =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(currentFieldNameForSquad);
     			
     			if (currentFieldForSquad != null)
     			{
@@ -373,7 +373,7 @@ public class SquadronManager
 
     private void setAirfieldsForMovingFront() throws PWCGException, PWCGException
     {
-        boolean useMovingFront = PWCGContextManager.getInstance().determineUseMovingFront();
+        boolean useMovingFront = PWCGContext.getInstance().determineUseMovingFront();
         if (useMovingFront)
         {
             List<SquadronMovingFrontOverlay> overlays = SquadronMovingFrontIOJson.readJson();
@@ -397,7 +397,7 @@ public class SquadronManager
             String currentFieldNameForSquad = squadron.determineCurrentAirfieldName(date);
             if (currentFieldNameForSquad != null)
             {
-                IAirfield currentFieldForSquad =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(currentFieldNameForSquad);
+                IAirfield currentFieldForSquad =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(currentFieldNameForSquad);
                 if (currentFieldForSquad != null)
                 {
                     if (squadron.isCanFly(date))

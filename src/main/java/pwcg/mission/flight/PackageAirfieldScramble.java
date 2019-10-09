@@ -5,7 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
@@ -47,7 +47,7 @@ public class PackageAirfieldScramble
 
     private List<Squadron> getResidentSquadrons() throws PWCGException
     {
-        SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager =  PWCGContext.getInstance().getSquadronManager();
 
         List<Squadron> squadrons = null;
         squadrons = squadronManager.getNearestSquadronsBySide(

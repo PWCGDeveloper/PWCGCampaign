@@ -1,7 +1,7 @@
 package pwcg.campaign.squadmember;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.config.ConfigItemKeys;
@@ -39,7 +39,7 @@ public abstract class VictoryDescriptionBuilderBase
     protected String getPlaneDescription(String planeType) throws PWCGException
     {
         String planeName = "Enemy Aircraft";
-        PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeType);
+        PlaneType plane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeType);
         if (plane != null)
         {
             planeName = plane.getDisplayName();

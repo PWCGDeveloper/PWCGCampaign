@@ -29,8 +29,9 @@ import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
@@ -338,7 +339,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         Map<String, Role> rolesSorted = new TreeMap<String,Role>();
         
         Date date = campaignGeneratorDO.getStartDate();
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getFlyableSquadronsByService(campaignGeneratorDO.getService(), date);
         
         for (Squadron squadron : squadronsForService)
@@ -417,7 +418,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
                     JPanel campaignGeneratePanel, int rowCount) throws PWCGException
     {
         ICountry country = CountryFactory.makeCountryByService(campaignGeneratorDO.getService());
-        if (country.isCountry(Country.GERMANY) && PWCGContextManager.isRoF())
+        if (country.isCountry(Country.GERMANY) && PWCGContext.getProduct() != PWCGProduct.BOS)
         {
         	spacerColumn (campaignGeneratePanel, 0, rowCount + 0);
         	
@@ -459,7 +460,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
         
         cbMap = new JComboBox<String>();
         cbMap.addItem("All Maps");
-        for (PWCGMap map : PWCGContextManager.getInstance().getAllMaps())
+        for (PWCGMap map : PWCGContext.getInstance().getAllMaps())
         {
             cbMap.addItem(map.getMapName());
         }
@@ -770,7 +771,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
             return "";
         }
 
-        Squadron squad = PWCGContextManager.getInstance().getSquadronManager().getSquadronByName(squadronName, campaignDate);
+        Squadron squad = PWCGContext.getInstance().getSquadronManager().getSquadronByName(squadronName, campaignDate);
         return squad.determineSquadronInfo(campaignDate);
     }
 
@@ -813,7 +814,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 	    {
 	        cbMap.removeAllItems();
 	        cbMap.addItem("All Maps");
-	        for (PWCGMap map : PWCGContextManager.getInstance().getAllMaps())
+	        for (PWCGMap map : PWCGContext.getInstance().getAllMaps())
 	        {
 	            if (map.isMapHasService(campaignGeneratorDO.getService().getServiceId())) 
 	            {
@@ -833,13 +834,13 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
     private List<String> getDatesForMap() throws PWCGException
     {
     	List<String> startDates = new ArrayList<>();
-        for (String startDate : PWCGContextManager.getInstance().getCampaignStartDates())
+        for (String startDate : PWCGContext.getInstance().getCampaignStartDates())
         {
             Date date = DateUtils.getDateWithValidityCheck(startDate);            
             if (!campaignGeneratorDO.getService().getServiceStartDate().after(date) && 
                  campaignGeneratorDO.getService().getServiceEndDate().after(date))
             {
-            	PWCGMap map = PWCGContextManager.getInstance().getMapByMapId(campaignGeneratorDO.getFrontMap());
+            	PWCGMap map = PWCGContext.getInstance().getMapByMapId(campaignGeneratorDO.getFrontMap());
             	if (map == null)
             	{
                 	startDates.add(startDate);
@@ -905,7 +906,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
             else if (ae.getActionCommand().equalsIgnoreCase("MapChanged"))
 			{
 		        String mapName = (String)cbMap.getSelectedItem();
-		        PWCGMap map = PWCGContextManager.getInstance().getMapByMapName(mapName);
+		        PWCGMap map = PWCGContext.getInstance().getMapByMapName(mapName);
 		        if (map == null)
 		        {
 				    campaignGeneratorDO.setFrontMap(null);

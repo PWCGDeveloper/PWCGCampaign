@@ -7,7 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -24,7 +25,7 @@ public class CampaignUpdateNewSquadronStafferTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
     }
@@ -41,7 +42,7 @@ public class CampaignUpdateNewSquadronStafferTest
         assert(squadronsAdded.size() > 0);
         for (int squadronId : squadronsAdded)
         {
-            Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronId);
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
             assert(squadron.isCanFly(newDate));
             
             SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);

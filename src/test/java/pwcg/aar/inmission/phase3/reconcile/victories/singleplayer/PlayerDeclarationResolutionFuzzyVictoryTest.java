@@ -17,22 +17,20 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.ConfirmedVictories;
 import pwcg.aar.inmission.phase3.reconcile.victories.common.VictorySorter;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarationResolution;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
-import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.ww1.country.RoFCountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.product.rof.country.RoFCountry;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerDeclarationResolutionFuzzyVictoryTest
@@ -61,7 +59,7 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         
         fuzzyVictories.clear();
         

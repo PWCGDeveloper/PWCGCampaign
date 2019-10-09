@@ -18,7 +18,8 @@ import pwcg.aar.inmission.phase1.parse.event.rof.AType17;
 import pwcg.aar.inmission.phase1.parse.event.rof.AType3;
 import pwcg.aar.inmission.phase2.logeval.victory.AARAreaOfCombat;
 import pwcg.aar.inmission.phase2.logeval.victory.AARRandomAssignmentCalculator;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
@@ -34,7 +35,7 @@ public class AARRandomAssignmentCalculatorTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         chronologicalAType.clear();
     }
 

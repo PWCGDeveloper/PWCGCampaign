@@ -6,7 +6,8 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.resupply.InitialSquadronEquipper;
 import pwcg.campaign.resupply.depo.EquipmentWeightCalculator;
 import pwcg.campaign.squadmember.SerialNumber;
@@ -21,14 +22,14 @@ public class InitialSquadronEquipperTest
     @Before 
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);      
+        PWCGContext.setProduct(PWCGProduct.BOS);      
     }
 
     @Test
     public void testEquipSquadronGermanFighter() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);        
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
         
         EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
@@ -47,7 +48,7 @@ public class InitialSquadronEquipperTest
     public void testEquipSquadronGermanBomber() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.KG53_PROFILE);        
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.KG53_PROFILE.getSquadronId());
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.KG53_PROFILE.getSquadronId());
         
         EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
@@ -66,7 +67,7 @@ public class InitialSquadronEquipperTest
     public void testEquipSquadronGermanDiveBomber() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.STG77_PROFILE);        
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.STG77_PROFILE.getSquadronId());
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.STG77_PROFILE.getSquadronId());
         
         EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
@@ -85,7 +86,7 @@ public class InitialSquadronEquipperTest
     public void testEquipSquadronGermanTransport() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.TG2_PROFILE);        
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.TG2_PROFILE.getSquadronId());
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.TG2_PROFILE.getSquadronId());
         
         EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);
@@ -104,7 +105,7 @@ public class InitialSquadronEquipperTest
     public void testEquipSquadronRussianAttack() throws PWCGException
     {
         Campaign campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.REGIMENT_503_PROFILE);        
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.REGIMENT_503_PROFILE.getSquadronId());
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.REGIMENT_503_PROFILE.getSquadronId());
         
         EquipmentWeightCalculator equipmentWeightCalculator = new EquipmentWeightCalculator(campaign.getDate());
         InitialSquadronEquipper squadronEquipper = new InitialSquadronEquipper(campaign, squadron, equipmentWeightCalculator);

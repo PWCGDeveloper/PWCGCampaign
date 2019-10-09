@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.core.exception.PWCGException;
@@ -35,7 +35,7 @@ public class ArmedServiceFinder
     private List<ArmedService> getArmedServicesSameSide() throws PWCGException
     {
         List<ArmedService> servicesForMap = new ArrayList<>();
-        PWCGMap map = PWCGContextManager.getInstance().getCurrentMap();
+        PWCGMap map = PWCGContext.getInstance().getCurrentMap();
         List<ArmedService> allServices = ArmedServiceFactory.createServiceManager().getAllArmedServices();
         for (ArmedService armedService : allServices)
         {
@@ -54,7 +54,7 @@ public class ArmedServiceFinder
     private List<ArmedService> getArmedServicesAllSides() throws PWCGException
     {
         List<ArmedService> servicesForMap = new ArrayList<>();
-        PWCGMap map = PWCGContextManager.getInstance().getCurrentMap();
+        PWCGMap map = PWCGContext.getInstance().getCurrentMap();
         List<ArmedService> allServices = ArmedServiceFactory.createServiceManager().getAllArmedServices();
         for (ArmedService armedService : allServices)
         {

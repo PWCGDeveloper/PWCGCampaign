@@ -1,0 +1,84 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501057,
+  "name": "Jasta 57",
+  "skill": 40,
+  "planeAssignments": [
+    {
+      "archType": "albatrosd",
+      "squadronIntroduction": "19180124",
+      "squadronWithdrawal": "19180915"
+    },
+    {
+      "archType": "fokkerd7",
+      "squadronIntroduction": "19180720",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180124": "Lagnicourt",
+    "19180423": "Menin",
+    "19180607": "Mesnil le Petit",
+    "19180709": "Neuflize",
+    "19180822": "Roucourt, Bohain",
+    "19181001": "Mesnil St Nicaise",
+    "19181013": "Riencourt,Arras"
+  },
+  "skins": [
+    {
+      "skinName": "AD5_501057_ANS",
+      "planeType": "albatrosd5",
+      "startDate": "19140801",
+      "endDate": "19171010",
+      "squadId": 501057,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_J57_OCT1917",
+      "planeType": "albatrosd5",
+      "startDate": "19171010",
+      "endDate": "19180417",
+      "squadId": 501057,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "AD5_501057_18A",
+      "planeType": "albatrosd5",
+      "startDate": "19180417",
+      "endDate": "19181201",
+      "squadId": 501057,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "FD7_501057_ANS",
+      "planeType": "fokkerd7",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501057,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

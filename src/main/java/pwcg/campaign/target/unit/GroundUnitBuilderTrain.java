@@ -1,7 +1,7 @@
 package pwcg.campaign.target.unit;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.target.TargetDefinition;
@@ -22,7 +22,7 @@ public class GroundUnitBuilderTrain
         GroundUnitCollection groundUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION);
         groundUnitCollection.addGroundUnit(GroundUnitType.TRANSPORT_UNIT, targetUnit);
         
-        GroupManager groupManager = PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
         Block trainStation = groupManager.getRailroadStationFinder().getClosestTrainPosition(targetDefinition.getTargetPosition());
         mission.getMissionGroundUnitManager().registerTrainStation(trainStation);
         return groundUnitCollection;

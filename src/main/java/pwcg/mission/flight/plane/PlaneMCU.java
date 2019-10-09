@@ -7,7 +7,7 @@ import java.util.Date;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IProductSpecificConfiguration;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.EquippedPlane;
@@ -78,6 +78,10 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
     
     private Campaign campaign;
     private SquadronMember pilot;
+    
+    public PlaneMCU()
+    {
+    }
     
     public PlaneMCU(Campaign campaign, EquippedPlane equippedPlane, ICountry country, SquadronMember pilot)
     {
@@ -174,7 +178,7 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
 
     public IPlanePayload buildPlanePayload(Flight flight) throws PWCGException
     {
-        IPayloadFactory payloadFactory = PWCGContextManager.getInstance().getPayloadFactory();
+        IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
         payload = payloadFactory.createPlanePayload(this.getType());
         payload.createWeaponsPayload(flight);
                 
@@ -201,7 +205,7 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
 
     public void setPlaneSkinWithCheck(Skin newSkin)
     {
-        Campaign campaign =     PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign =     PWCGContext.getInstance().getCampaign();
         Date campaignDate = campaign.getDate();
 
         if (!(campaignDate.before(newSkin.getStartDate())))

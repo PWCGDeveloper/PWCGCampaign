@@ -1,0 +1,965 @@
+{
+  "locationSetName": "FrontLines",
+  "locations": [
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 252000.0,
+        "yPos": 0.0,
+        "zPos": 75500.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 251000.0,
+        "yPos": 0.0,
+        "zPos": 79600.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 249300.0,
+        "yPos": 0.0,
+        "zPos": 83800.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 248200.0,
+        "yPos": 0.0,
+        "zPos": 89600.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 247400.0,
+        "yPos": 0.0,
+        "zPos": 93400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 246600.0,
+        "yPos": 0.0,
+        "zPos": 98200.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 245800.0,
+        "yPos": 0.0,
+        "zPos": 104000.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 246800.0,
+        "yPos": 0.0,
+        "zPos": 110600.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 247000.0,
+        "yPos": 0.0,
+        "zPos": 113400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 246600.0,
+        "yPos": 0.0,
+        "zPos": 117800.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 247333.0,
+        "yPos": 0.0,
+        "zPos": 124933.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 247600.0,
+        "yPos": 0.0,
+        "zPos": 129200.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 247466.0,
+        "yPos": 0.0,
+        "zPos": 134666.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 247600.0,
+        "yPos": 0.0,
+        "zPos": 142133.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 246800.0,
+        "yPos": 0.0,
+        "zPos": 150133.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 247200.0,
+        "yPos": 0.0,
+        "zPos": 156266.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 251600.0,
+        "yPos": 0.0,
+        "zPos": 163066.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 259600.0,
+        "yPos": 0.0,
+        "zPos": 170800.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 256666.0,
+        "yPos": 0.0,
+        "zPos": 167866.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 262000.0,
+        "yPos": 0.0,
+        "zPos": 180400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 262266.0,
+        "yPos": 0.0,
+        "zPos": 174266.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 264666.0,
+        "yPos": 0.0,
+        "zPos": 188533.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 264933.0,
+        "yPos": 0.0,
+        "zPos": 196000.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 258933.0,
+        "yPos": 0.0,
+        "zPos": 203466.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 251600.0,
+        "yPos": 0.0,
+        "zPos": 210000.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 247333.0,
+        "yPos": 0.0,
+        "zPos": 208533.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 241200.0,
+        "yPos": 0.0,
+        "zPos": 210000.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 229466.0,
+        "yPos": 0.0,
+        "zPos": 212400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 226000.0,
+        "yPos": 0.0,
+        "zPos": 215866.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 236000.0,
+        "yPos": 0.0,
+        "zPos": 212400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 218800.0,
+        "yPos": 0.0,
+        "zPos": 219066.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 211866.0,
+        "yPos": 0.0,
+        "zPos": 220400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 202533.0,
+        "yPos": 0.0,
+        "zPos": 222000.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 194533.0,
+        "yPos": 0.0,
+        "zPos": 222933.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 186533.0,
+        "yPos": 0.0,
+        "zPos": 224400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 178933.0,
+        "yPos": 0.0,
+        "zPos": 224666.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 173866.0,
+        "yPos": 0.0,
+        "zPos": 227066.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 166000.0,
+        "yPos": 0.0,
+        "zPos": 226000.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 158933.0,
+        "yPos": 0.0,
+        "zPos": 226400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 152800.0,
+        "yPos": 0.0,
+        "zPos": 226400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 147066.0,
+        "yPos": 0.0,
+        "zPos": 226400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 144000.0,
+        "yPos": 0.0,
+        "zPos": 225866.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 138800.0,
+        "yPos": 0.0,
+        "zPos": 226000.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 136133.0,
+        "yPos": 0.0,
+        "zPos": 229600.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 131600.0,
+        "yPos": 0.0,
+        "zPos": 231733.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 128400.0,
+        "yPos": 0.0,
+        "zPos": 232133.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 124800.0,
+        "yPos": 0.0,
+        "zPos": 233733.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 120400.0,
+        "yPos": 0.0,
+        "zPos": 235733.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 116533.0,
+        "yPos": 0.0,
+        "zPos": 237333.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 111200.0,
+        "yPos": 0.0,
+        "zPos": 238133.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 107600.0,
+        "yPos": 0.0,
+        "zPos": 240000.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 99866.0,
+        "yPos": 0.0,
+        "zPos": 239866.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 94000.0,
+        "yPos": 0.0,
+        "zPos": 238800.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 86133.0,
+        "yPos": 0.0,
+        "zPos": 239733.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 80133.0,
+        "yPos": 0.0,
+        "zPos": 239600.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 73066.0,
+        "yPos": 0.0,
+        "zPos": 238933.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 68133.0,
+        "yPos": 0.0,
+        "zPos": 238133.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 59466.0,
+        "yPos": 0.0,
+        "zPos": 235466.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 53466.0,
+        "yPos": 0.0,
+        "zPos": 235066.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    },
+    {
+      "country": {
+        "country": "RUSSIA"
+      },
+      "name": "AlliedFrontLine",
+      "position": {
+        "xPos": 47466.0,
+        "yPos": 0.0,
+        "zPos": 236400.0
+      },
+      "orientation": {
+        "xOri": 0.0,
+        "yOri": 270.0,
+        "zOri": 0.0
+      }
+    }
+  ]
+}

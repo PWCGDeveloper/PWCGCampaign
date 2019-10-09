@@ -7,7 +7,7 @@ import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CombatReport;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.FileUtils;
@@ -55,7 +55,7 @@ public class CombatReportIOJson
 
     public static String buildCombatReportPath(Campaign campaign, Integer pilotSerialNumber)
     {
-        String combatReportPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\CombatReports\\" + pilotSerialNumber + "\\";
+        String combatReportPath = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir() + campaign.getCampaignData().getName() + "\\CombatReports\\" + pilotSerialNumber + "\\";
         return combatReportPath;
     }
 }

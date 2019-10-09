@@ -13,8 +13,9 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.unit.TargetBuilder;
 import pwcg.core.config.ConfigItemKeys;
@@ -47,8 +48,8 @@ public class TargetBuilderTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
-        PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
                 
         Date date = DateUtils.getDateYYYYMMDD("1943030");
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);

@@ -9,7 +9,7 @@ import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.api.IStaticPlaneSelector;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.StaticPlaneSelectorFactory;
 import pwcg.campaign.plane.PlaneType;
@@ -45,7 +45,7 @@ public class AirfieldStaticPlanePlacer
     {
         IStaticPlane selectedStaticPlane = null;
         
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         
         ICountry country = airfield.createCountry(date);
         if (country.isNeutral())
@@ -65,7 +65,7 @@ public class AirfieldStaticPlanePlacer
         	squadronForField = allSquadronsForSide.get(index);
         }
             
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
     
         // All planes for all squadrons at this airfield
         List<String> planeNames = new ArrayList<String>();

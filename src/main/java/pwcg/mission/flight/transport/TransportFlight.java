@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
@@ -33,7 +33,7 @@ public class TransportFlight extends Flight
 
 	private void determineTargetAirfield() throws PWCGException
     {
-	    AirfieldManager airfieldManager = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager();
+	    AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
 	    arrivalAirfield = airfieldManager.getAirfieldFinder().findClosestAirfieldForSide(getTargetCoords(), getCampaign().getDate(), getSquadron().getCountry().getSide());    
     }
 

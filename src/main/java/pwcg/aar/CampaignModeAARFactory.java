@@ -11,7 +11,7 @@ import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarat
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.VerifiedVictoryGenerator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 
 public class CampaignModeAARFactory
 {
@@ -23,7 +23,7 @@ public class CampaignModeAARFactory
         }
         else
         {
-            ClaimDenier claimDenier = new ClaimDenier(campaign, PWCGContextManager.getInstance().getPlaneTypeFactory());
+            ClaimDenier claimDenier = new ClaimDenier(campaign, PWCGContext.getInstance().getPlaneTypeFactory());
             VerifiedVictoryGenerator verifiedVictoryGenerator = new VerifiedVictoryGenerator(campaign, aarContext);
             return new ClaimResolverSinglePlayer(campaign, verifiedVictoryGenerator, claimDenier, playerDeclarations);
         }

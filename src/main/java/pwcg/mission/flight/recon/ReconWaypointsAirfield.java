@@ -5,7 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -33,7 +33,7 @@ public class ReconWaypointsAirfield extends ReconWaypoints
         
         while (enemyAirfields.size() <= 2)
         {
-            enemyAirfields =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getAirfieldsWithinRadiusBySide(
+            enemyAirfields =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getAirfieldsWithinRadiusBySide(
                     flight.getTargetCoords(), campaign.getDate(), maxRadius, enemySide);
                         
             maxRadius += 10000.0;

@@ -7,9 +7,9 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IMissionFile;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.CampaignMissionIOJson;
-import pwcg.campaign.ww2.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
@@ -23,6 +23,7 @@ import pwcg.mission.io.MissionDescriptionFile;
 import pwcg.mission.io.MissionFileFactory;
 import pwcg.mission.mcu.group.MissionObjectiveGroup;
 import pwcg.mission.options.MissionOptions;
+import pwcg.product.bos.ground.vehicle.VehicleSetBuilderComprehensive;
 
 public class Mission
 {
@@ -63,7 +64,7 @@ public class Mission
         MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
         subtitleHandler.clear();
         
-        PWCGContextManager.getInstance().getSkinManager().clearSkinsInUse();
+        PWCGContext.getInstance().getSkinManager().clearSkinsInUse();
 
         missionGroundUnitManager = new MissionGroundUnitResourceManager();
         ambientGroundUnitBuilder = new AmbientGroundUnitBuilder(campaign, this);
@@ -79,7 +80,7 @@ public class Mission
     	missionAssociateFlightBuilder.buildAssociatedFlights(this);
         createFirePots();
 
-        missionOptions = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions();
+        missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
         missionOptions.createFlightSpecificMissionOptions(this);
     }
 
@@ -110,7 +111,7 @@ public class Mission
 
     private void createAmbientUnits() throws PWCGException, PWCGException
     {
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             missionBalloons.createAmbientBalloons(this);
         }
@@ -170,7 +171,7 @@ public class Mission
     {
         if (!isFinalized)
         {
-            MissionOptions missionOptions = PWCGContextManager.getInstance().getCurrentMap().getMissionOptions();
+            MissionOptions missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
             setMissionScript(missionOptions);
 
             createAmbientUnits();

@@ -2,7 +2,7 @@ package pwcg.dev.jsonconvert;
 
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroundStructureGroup;
 import pwcg.campaign.group.airfield.AirfieldBlock;
@@ -43,13 +43,13 @@ public class GroundObjectIOJsonConverter {
 		groundStructureGroup.setAirfieldBlocks(groundObjectsFile.getAirfieldBlocks());
 
 		JsonWriter<GroundStructureGroup> jsonWriter = new JsonWriter<>();			
-		jsonWriter.writeAsJson(groundStructureGroup, PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "GroundStructures.json");
+		jsonWriter.writeAsJson(groundStructureGroup, PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "GroundStructures.json");
 	}
 
 	private void readJson(String mapName) throws PWCGException, PWCGIOException
 	{
 		JsonObjectReader<GroundStructureGroup> jsonReader = new JsonObjectReader<>(GroundStructureGroup.class);
-		GroundStructureGroup groundStructureGroup = jsonReader.readJsonFile(PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "GroundStructures.json");
+		GroundStructureGroup groundStructureGroup = jsonReader.readJsonFile(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "GroundStructures.json");
 		for (AirfieldBlock airfieldBlock : groundStructureGroup.getAirfieldBlocks())
 		{
 			System.out.println(airfieldBlock.getModel());

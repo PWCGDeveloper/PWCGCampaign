@@ -4,7 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.campaign.target.TargetCategory;
 import pwcg.campaign.target.TargetDefinition;
@@ -27,7 +28,7 @@ public class PlayerFlightTypeBoSDiveBombTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
     }
 

@@ -8,7 +8,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.CampaignAces;
 import pwcg.campaign.context.AceManager;
 import pwcg.campaign.context.MapForAirfieldFinder;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.Role;
@@ -25,7 +25,7 @@ public class CampaignGeneratorSquadronFilter
 		List<String> validSquadrons = new ArrayList<>();
 	    try
 	    {
-    		SquadronManager squadManager =  PWCGContextManager.getInstance().getSquadronManager();
+    		SquadronManager squadManager =  PWCGContext.getInstance().getSquadronManager();
     		List<Squadron> squadronList = squadManager.getFlyableSquadronsByService(dateCorrectedService, campaignDate);
             Logger.log(LogLevel.DEBUG, "makeSquadronChoices squadron list size: " + squadronList.size());
     		for (Squadron squad : squadronList)
@@ -92,7 +92,7 @@ public class CampaignGeneratorSquadronFilter
 	
 	private boolean rejectBecauseCommandConflict(Squadron squad, Date campaignDate, boolean playerIsCommander) throws PWCGException
 	{
-		AceManager aceManager = PWCGContextManager.getInstance().getAceManager();
+		AceManager aceManager = PWCGContext.getInstance().getAceManager();
 		CampaignAces aces =  aceManager.loadFromHistoricalAces(campaignDate);
 		List<Ace> squadronAces =  aceManager.getActiveAcesForSquadron(aces, campaignDate, squad.getSquadronId());
 		if (squadronAces.size() > 0)

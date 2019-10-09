@@ -3,7 +3,7 @@ package pwcg.mission.ground.unittypes.infantry;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.campaign.ww1.ground.vehicle.PillBox;
+import pwcg.product.rof.ground.vehicle.PillBox;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;

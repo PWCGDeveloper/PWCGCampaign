@@ -8,7 +8,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -60,10 +60,10 @@ public class EnemySquadronFinder
         IAirfield airfield = squadron.determineCurrentAirfieldAnyMap(date);
         if (airfield != null)
         {
-            nearbyEnemySquadrons = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, airfield.getPosition(), 1, 200000.0, acceptableRoles, enemySide, date);
+            nearbyEnemySquadrons = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(campaign, airfield.getPosition(), 1, 200000.0, acceptableRoles, enemySide, date);
         }
         
-        List<Squadron> nearbyActiveEnemySquadrons = PWCGContextManager.getInstance().getSquadronManager().reduceToFlyable(nearbyEnemySquadrons, date);
+        List<Squadron> nearbyActiveEnemySquadrons = PWCGContext.getInstance().getSquadronManager().reduceToFlyable(nearbyEnemySquadrons, date);
         return nearbyActiveEnemySquadrons;
     }
 
@@ -71,7 +71,7 @@ public class EnemySquadronFinder
     {
         ICountry country = squadron.getCountry();
         Side enemySide = country.getSide().getOppositeSide();
-        return PWCGContextManager.getInstance().getSquadronManager().getActiveSquadronsForSide(enemySide, date);
+        return PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForSide(enemySide, date);
     }
 
     private List<Squadron> getViableSquadrons(List<Squadron> possibleSquadrons) throws PWCGException

@@ -4,7 +4,7 @@ import java.util.Map;
 
 import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.squadmember.HistoricalAce;
@@ -138,7 +138,7 @@ public class CampaignPilotAwardsUpdater
 
     private void addToHistoricalAceRecordForPersistence(Integer serialNumber, Victory victory)
     {
-        HistoricalAce historicalAce = PWCGContextManager.getInstance().getAceManager().getHistoricalAceBySerialNumber(serialNumber);
+        HistoricalAce historicalAce = PWCGContext.getInstance().getAceManager().getHistoricalAceBySerialNumber(serialNumber);
         if (historicalAce != null)
         {
             historicalAce.addVictory(victory);

@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.coop.model.CoopPilot;
 import pwcg.core.exception.PWCGException;
@@ -213,7 +213,7 @@ public class CoopPilotChooser extends PwcgGuiContext implements ActionListener
 
     private void scrubMission() throws PWCGException
     {
-        Campaign campaign  = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign  = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(null);
         
         campaignHomeGui.clean();

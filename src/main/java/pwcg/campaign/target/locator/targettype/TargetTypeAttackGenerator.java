@@ -3,7 +3,7 @@ package pwcg.campaign.target.locator.targettype;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -102,7 +102,7 @@ public class TargetTypeAttackGenerator
 
     private TacticalTarget getPreferredTargetType() throws PWCGException
     {        
-        TargetPreferenceManager targetPreferenceManager = PWCGContextManager.getInstance().getCurrentMap().getTargetPreferenceManager();
+        TargetPreferenceManager targetPreferenceManager = PWCGContext.getInstance().getCurrentMap().getTargetPreferenceManager();
         TacticalTarget targetType = targetPreferenceManager.getTargetPreferenceSet().getTargetPreferenceToUse(targetTypeAvailabilityInputs.getDate(), targetTypeAvailabilityInputs.getSide());
         if (isPreferredAvailable(targetType))
         {

@@ -7,7 +7,7 @@ import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IFixedPosition;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -51,7 +51,7 @@ public class OffensiveWaypointsAirfield extends OffensiveWaypoints
         List <IAirfield> enemyAirfields = new ArrayList<>();
         while (!stopLooking(enemyAirfields, maxRadius))
         {
-            enemyAirfields =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().
+            enemyAirfields =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().
                     getAirfieldsWithinRadiusBySide(flight.getMission().getMissionBorders().getCenter(), campaign.getDate(), maxRadius, enemySide);
             maxRadius += 10000.0;
         }

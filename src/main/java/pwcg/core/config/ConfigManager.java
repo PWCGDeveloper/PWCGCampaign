@@ -3,7 +3,7 @@ package pwcg.core.config;
 import java.util.HashMap;
 import java.util.Map;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.ConfigurationIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
@@ -62,7 +62,7 @@ public abstract class ConfigManager
 
     public Map<String, ConfigSet> readInitialConfigSets() throws PWCGException 
     {
-        return ConfigurationIOJson.readJson(PWCGContextManager.getInstance().getDirectoryManager().getPwcgConfigurationDir());
+        return ConfigurationIOJson.readJson(PWCGContext.getInstance().getDirectoryManager().getPwcgConfigurationDir());
     }
 
     private void readUserConfigSets() throws PWCGException 

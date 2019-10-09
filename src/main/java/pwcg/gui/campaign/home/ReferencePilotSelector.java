@@ -14,7 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.CoopPilotIOJson;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
@@ -128,7 +128,7 @@ public class ReferencePilotSelector extends PwcgGuiContext implements ActionList
                 SquadronMember referencePlayer = coopPilotsInCampaign.get(coopPilotSelector.getSelectedItem());
                 if (referencePlayer != null)
                 {
-                    PWCGContextManager.getInstance().setReferencePlayer(referencePlayer);
+                    PWCGContext.getInstance().setReferencePlayer(referencePlayer);
                 }
                 
                 campaignHomeGui.clean();

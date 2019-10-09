@@ -3,7 +3,7 @@ package pwcg.campaign.target.locator;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.TargetDefinition;
@@ -74,7 +74,7 @@ public class TargetLocatorAir
     public Coordinate getSeaLaneCoordinate() throws PWCGException
     {
         Mission mission = flightInformation.getMission();
-        ShippingLaneManager shippingLaneManager = PWCGContextManager.getInstance().getCurrentMap().getShippingLaneManager();        
+        ShippingLaneManager shippingLaneManager = PWCGContext.getInstance().getCurrentMap().getShippingLaneManager();        
         ShippingLane selectedShippingLane = shippingLaneManager.getClosestShippingLane(mission.getMissionBorders().getCenter());
         return selectedShippingLane.getShippingLaneBorders().getCoordinateInBox();
     }

@@ -10,7 +10,7 @@ import javax.swing.JTabbedPane;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.PromotionEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -33,7 +33,7 @@ public class AARPromotionPanel extends AAREventPanel
         super();
         this.campaign = campaign;
         this.aarCoordinator = AARCoordinator.getInstance();
-        this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 
 	public void makePanel()  

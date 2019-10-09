@@ -9,7 +9,8 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
@@ -29,19 +30,19 @@ public class CampaignEquipmentReplacementUpdaterTest
     @Before
     public void setup() throws PWCGException
     {
-    	PWCGContextManager.setRoF(false);
+    	PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.KG53_PROFILE);
     }
     
     @Test
     public void testArchTypesInProductionForServiceLife() throws PWCGException 
     {
-        SquadronManager squadronmanager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronmanager = PWCGContext.getInstance().getSquadronManager();
         for (Squadron squadron: squadronmanager.getAllSquadrons())
         {
             for (SquadronPlaneAssignment planeAssignment: squadron.getPlaneAssignments())
             {
-                PlaneArchType planeArchType = PWCGContextManager.getInstance().getPlaneTypeFactory().getPlaneArchType(planeAssignment.getArchType());
+                PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(planeAssignment.getArchType());
                 String selectedPlaneType = EquipmentReplacementUtils.getTypeForReplacement(planeAssignment.getSquadronWithdrawal(), planeArchType);
                 assert(selectedPlaneType.length() > 0);
             }

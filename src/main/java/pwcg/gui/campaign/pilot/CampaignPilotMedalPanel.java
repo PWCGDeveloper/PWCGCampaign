@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.medals.MedalManager;
@@ -165,7 +165,7 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 		for (int i = firstMedal; i < lastMedal; ++i)
 		{
 			// The medal manager has the image
-		    Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+		    Campaign campaign = PWCGContext.getInstance().getCampaign();
 		    ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());
 			Medal medal =  MedalManager.getMedalFromAnyManager(country, campaign, pilot.getMedals().get(i).getMedalName());
 			

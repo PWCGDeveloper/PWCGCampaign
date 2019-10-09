@@ -6,7 +6,7 @@ import java.util.Map;
 
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadron.Squadron;
@@ -47,7 +47,7 @@ public class VictoryEventGenerator
         VictoryEvent victoryEvent = new VictoryEvent(pilot.getSquadronId());
         victoryEvent.setPilotName(pilot.getNameAndRank());
         victoryEvent.setDate(campaign.getDate());
-        Squadron squadronName = PWCGContextManager.getInstance().getSquadronManager().getSquadron(pilot.getSquadronId());
+        Squadron squadronName = PWCGContext.getInstance().getSquadronManager().getSquadron(pilot.getSquadronId());
         victoryEvent.setSquadron(squadronName.determineDisplayName(campaign.getDate()));
 
         victoryEvent.setVictory(victory);

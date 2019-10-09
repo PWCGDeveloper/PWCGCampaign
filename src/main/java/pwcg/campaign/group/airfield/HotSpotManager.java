@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.JsonObjectReader;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
@@ -44,7 +44,7 @@ public class HotSpotManager
 	private void readJson() throws PWCGException, PWCGIOException
 	{
 		JsonObjectReader<AirfieldHotSpotCollection> jsonReader = new JsonObjectReader<>(AirfieldHotSpotCollection.class);
-		AirfieldHotSpotCollection airfieldHotSpotCollection = jsonReader.readJsonFile(PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir(), "AirfieldHotspots.json");
+		AirfieldHotSpotCollection airfieldHotSpotCollection = jsonReader.readJsonFile(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir(), "AirfieldHotspots.json");
 		for (String hotspotCollectionKey : airfieldHotSpotCollection.getAirfieldHotSpots().keySet())
 		{
 			List<AirfieldHotSpotDefinition> hotSpotsForField = airfieldHotSpotCollection.getAirfieldHotSpots().get(hotspotCollectionKey);

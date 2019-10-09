@@ -2,7 +2,7 @@ package pwcg.campaign.squadmember;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGeneratorModel;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.io.json.CoopPilotIOJson;
 import pwcg.campaign.personnel.SquadronPersonnel;
@@ -38,7 +38,7 @@ public class SquadronMemberReplacer  implements ISquadronMemberReplacer
 
 	private Squadron getNewPlayerSquadron(String squadronName) throws PWCGException 
 	{
-		SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+		SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron newPlayerSquadron = squadronManager.getSquadronByName(squadronName, campaign.getDate());
 		return newPlayerSquadron;
 	}

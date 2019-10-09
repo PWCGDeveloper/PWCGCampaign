@@ -7,7 +7,7 @@ import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IRankHelper;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
@@ -29,7 +29,7 @@ public class CampaignServiceChangeHandler
 
     public void handleChangeOfService(Date newDate) throws PWCGException 
     {
-        for (Squadron squadron : PWCGContextManager.getInstance().getSquadronManager().getActiveSquadrons(campaign.getDate()))
+        for (Squadron squadron : PWCGContext.getInstance().getSquadronManager().getActiveSquadrons(campaign.getDate()))
         {
             handleChangeOfServiceForSquadron(squadron, newDate);
         }

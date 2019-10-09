@@ -1,0 +1,87 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501065,
+  "name": "Jasta 65",
+  "skill": 35,
+  "planeAssignments": [
+    {
+      "archType": "albatrosd",
+      "squadronIntroduction": "19180204",
+      "squadronWithdrawal": "19180830"
+    },
+    {
+      "archType": "fokkerd7",
+      "squadronIntroduction": "19180720",
+      "squadronWithdrawal": "19181015"
+    },
+    {
+      "archType": "pfalzd12",
+      "squadronIntroduction": "19181001",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180204": "Chassonge Ferme,Stenay/Verdun",
+    "19180506": "Mars-la-Tour",
+    "19180916": "Sivry",
+    "19181008": "Besny-et-Loisy",
+    "19181021": "Bellevue Ferme"
+  },
+  "skins": [
+    {
+      "skinName": "AD5_501065_ANS",
+      "planeType": "albatrosd5",
+      "startDate": "19140801",
+      "endDate": "19180403",
+      "squadId": 501065,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "501065",
+      "planeType": "albatrosd5",
+      "startDate": "19180403",
+      "endDate": "19181201",
+      "squadId": 501065,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "501065",
+      "planeType": "fokkerd7",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501065,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "PD12_2600",
+      "planeType": "pfalzd12",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501065,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

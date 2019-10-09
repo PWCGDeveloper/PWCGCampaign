@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
@@ -63,7 +63,7 @@ public class CampaignConfigurationSimpleGUI extends PwcgGuiContext implements Ac
 
 	private void initializeButtons() throws PWCGException 
 	{
-        Campaign campaign =     PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign =     PWCGContext.getInstance().getCampaign();
 		ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
 		
 		String currentAirSetting = configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigAirKey);

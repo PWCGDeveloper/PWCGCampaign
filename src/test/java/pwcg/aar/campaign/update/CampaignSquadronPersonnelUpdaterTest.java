@@ -18,7 +18,8 @@ import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.outofmission.phase1.elapsedtime.OutOfMissionCommandChangeHandler;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IRankHelper;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
@@ -48,7 +49,7 @@ public class CampaignSquadronPersonnelUpdaterTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
         aarContext = new AARContext(campaign);

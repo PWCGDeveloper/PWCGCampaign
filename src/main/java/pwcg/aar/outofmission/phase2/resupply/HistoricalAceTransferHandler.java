@@ -5,7 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignPersonnelManager;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.resupply.personnel.SquadronTransferData;
 import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.campaign.squadmember.Ace;
@@ -29,12 +29,12 @@ public class HistoricalAceTransferHandler
     public SquadronTransferData determineAceTransfers() throws PWCGException
     {
         CampaignPersonnelManager campaignPersonnelManager = campaign.getPersonnelManager();            
-        List<Ace> acesBefore = PWCGContextManager.getInstance().getAceManager().getActiveAcesForCampaign(campaignPersonnelManager.getCampaignAces(), campaign.getDate());
+        List<Ace> acesBefore = PWCGContext.getInstance().getAceManager().getActiveAcesForCampaign(campaignPersonnelManager.getCampaignAces(), campaign.getDate());
         for (Ace aceBefore : acesBefore)
         {
             if (aceBefore.getActiveStatus() > SquadronMemberStatus.STATUS_CAPTURED)
             {
-                HistoricalAce ha = PWCGContextManager.getInstance().getAceManager().getHistoricalAceBySerialNumber(aceBefore.getSerialNumber());
+                HistoricalAce ha = PWCGContext.getInstance().getAceManager().getHistoricalAceBySerialNumber(aceBefore.getSerialNumber());
                 Ace aceAfter = ha.getAtDate(newDate);
 
                 if (!(aceBefore.getSquadronId() == aceAfter.getSquadronId()))

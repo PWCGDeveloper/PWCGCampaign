@@ -19,7 +19,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogWaypoint;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadmember.VictoryBuilder;
 import pwcg.campaign.squadmember.VictoryDescription;
@@ -224,7 +224,7 @@ public class DebriefMapPanel  extends MapPanelBase
         
         if (displayVictim.length() > 0)
         {
-            Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+            Campaign campaign = PWCGContext.getInstance().getCampaign();
             
             VictoryBuilder victoryBuilder = new VictoryBuilder(campaign);
             Victory victory = victoryBuilder.buildVictory(campaign.getDate(), victoryEvent);

@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 
 import pwcg.aar.ui.events.model.LeaveEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
@@ -46,8 +46,8 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
         super();
 
 		this.parent = parent;
-        this.campaign = PWCGContextManager.getInstance().getCampaign();
-        this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        this.campaign = PWCGContext.getInstance().getCampaign();
+        this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 	
 	public void makeVisible(boolean visible) 

@@ -16,7 +16,7 @@ import java.util.Map;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.AirfieldManager;
@@ -90,7 +90,7 @@ public class InfoMapPanel extends MapPanelBase
 			
 			if (whatToDisplay[DISPLAY_AIRFIELDS])
 			{
-		        AirfieldManager airfieldData =  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager();
+		        AirfieldManager airfieldData =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
 		        Map<String, IAirfield> allAF = airfieldData.getAllAirfields();
 		        for (IAirfield af : allAF.values())
 		        {
@@ -100,7 +100,7 @@ public class InfoMapPanel extends MapPanelBase
 			
 			if (whatToDisplay[DISPLAY_TOWNS])
 			{
-		        GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+		        GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
 		        List<PWCGLocation> mapLegends = groupData.getTownLocations().getLocations();
 		        for (PWCGLocation mapLegend : mapLegends)
 		        {
@@ -110,7 +110,7 @@ public class InfoMapPanel extends MapPanelBase
             
             if (whatToDisplay[DISPLAY_RAILROADS])
             {
-                GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+                GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
                 List<Block> railroads = groupData.getRailroadList();
                 for (Block railroad : railroads)
                 {
@@ -120,7 +120,7 @@ public class InfoMapPanel extends MapPanelBase
             
             if (whatToDisplay[DISPLAY_BRIDGES])
             {
-                GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+                GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
                 List<Bridge> bridges = groupData.getBridgeFinder().findAllBridges();
                 for (Bridge bridge : bridges)
                 {
@@ -130,7 +130,7 @@ public class InfoMapPanel extends MapPanelBase
             
             if (whatToDisplay[DISPLAY_FIGHTER])
             {
-                SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
+                SquadronManager squadronManager =  PWCGContext.getInstance().getSquadronManager();
                 List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
@@ -143,7 +143,7 @@ public class InfoMapPanel extends MapPanelBase
             
             if (whatToDisplay[DISPLAY_BOMBER])
             {
-                SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
+                SquadronManager squadronManager =  PWCGContext.getInstance().getSquadronManager();
                 List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
@@ -158,7 +158,7 @@ public class InfoMapPanel extends MapPanelBase
             
             if (whatToDisplay[DISPLAY_ATTACK])
             {
-                SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
+                SquadronManager squadronManager =  PWCGContext.getInstance().getSquadronManager();
                 List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
@@ -172,7 +172,7 @@ public class InfoMapPanel extends MapPanelBase
             
             if (whatToDisplay[DISPLAY_RECON])
             {
-                SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
+                SquadronManager squadronManager =  PWCGContext.getInstance().getSquadronManager();
                 List<Squadron> allSquadrons = squadronManager.getActiveSquadronsForMap(parent.getMapDate());
                 for (Squadron squadron : allSquadrons)
                 {
@@ -347,10 +347,10 @@ public class InfoMapPanel extends MapPanelBase
             {
                 Coordinate clickCoord = this.pointToCoordinate(clickPoint);
 
-               field = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getNearbyAirfield(clickCoord, 5000.0);
+               field = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getNearbyAirfield(clickCoord, 5000.0);
                 if (field == null)
                 {
-                    field = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getNearbyAirfield(clickCoord, 5000.0);
+                    field = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getNearbyAirfield(clickCoord, 5000.0);
                 }
                     
             }
@@ -414,7 +414,7 @@ public class InfoMapPanel extends MapPanelBase
     {
         List <Squadron> selectedSquadrons = new ArrayList<Squadron>();
             
-        SquadronManager squadronManager =  PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager =  PWCGContext.getInstance().getSquadronManager();
         List<Squadron> allSquadrons = squadronManager.getActiveSquadrons(parent.getMapDate());
                 
         for (Squadron squadron : allSquadrons)
@@ -432,7 +432,7 @@ public class InfoMapPanel extends MapPanelBase
             {
                 // Is the squadron based near a field that was clicked on
                 Coordinate clickCoord = this.pointToCoordinate(clickPoint);
-                IAirfield nearbyField = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getNearbyAirfield(clickCoord, 5000.0);
+                IAirfield nearbyField = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getNearbyAirfield(clickCoord, 5000.0);
                 if (nearbyField != null)
                 {
                     String squadronFieldName = squadron.determineCurrentAirfieldName(parent.getMapDate());

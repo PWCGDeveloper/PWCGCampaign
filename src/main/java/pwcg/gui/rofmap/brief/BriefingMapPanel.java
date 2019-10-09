@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -137,7 +137,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 
     private void drawVirtualPoints(Graphics g, List<FlightMap> flightMaps, boolean connect) throws PWCGException 
     {
-        ConfigManagerCampaign configManager = PWCGContextManager.getInstance().getCampaign().getCampaignConfigManager();
+        ConfigManagerCampaign configManager = PWCGContext.getInstance().getCampaign().getCampaignConfigManager();
         int showAllFlightsInBreifingKey = configManager.getIntConfigParam(ConfigItemKeys.ShowAllFlightsInBreifingKey);
         
         if (showAllFlightsInBreifingKey != 1)

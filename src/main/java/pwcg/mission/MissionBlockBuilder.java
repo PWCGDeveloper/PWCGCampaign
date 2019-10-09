@@ -3,7 +3,7 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.FixedPosition;
@@ -38,7 +38,7 @@ public class MissionBlockBuilder
         int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);
         CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
 
-        GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         for (Block block : groupData.getStandaloneBlocks())
         {
             if (missionBorders.isInBox(block.getPosition()))
@@ -58,7 +58,7 @@ public class MissionBlockBuilder
         int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);
         CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
 
-        GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         for (Block rrStation : groupData.getRailroadList())
         {
             if (missionBorders.isInBox(rrStation.getPosition()))
@@ -78,7 +78,7 @@ public class MissionBlockBuilder
         int keepGroupSpread = configManager.getIntConfigParam(ConfigItemKeys.KeepGroupSpreadKey);
         CoordinateBox missionBorders = mission.getMissionBorders().expandBox(keepGroupSpread);
 
-        GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())
         {
             if (missionBorders.isInBox(bridge.getPosition()))

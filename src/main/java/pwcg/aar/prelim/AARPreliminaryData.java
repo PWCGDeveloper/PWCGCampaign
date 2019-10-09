@@ -7,7 +7,7 @@ import java.util.Set;
 
 import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
 import pwcg.aar.prelim.claims.AARClaimPanelData;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
@@ -83,7 +83,7 @@ public class AARPreliminaryData
             }
         }
         
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> playerSquadronsInMission = new ArrayList<>();
         for (Integer squadronId : uniqueSquadronsInMission)
         {

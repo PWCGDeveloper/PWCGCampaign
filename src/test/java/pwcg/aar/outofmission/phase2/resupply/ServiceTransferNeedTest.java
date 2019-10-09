@@ -8,7 +8,8 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.resupply.ISquadronNeed;
 import pwcg.campaign.resupply.ServiceResupplyNeed;
@@ -30,7 +31,7 @@ public class ServiceTransferNeedTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
      }
 

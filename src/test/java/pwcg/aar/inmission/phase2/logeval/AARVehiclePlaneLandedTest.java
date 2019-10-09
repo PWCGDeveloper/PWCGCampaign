@@ -18,7 +18,8 @@ import pwcg.aar.inmission.phase1.parse.event.IAType6;
 import pwcg.aar.inmission.phase1.parse.event.rof.AType3;
 import pwcg.aar.inmission.phase1.parse.event.rof.AType6;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
@@ -49,7 +50,7 @@ public class AARVehiclePlaneLandedTest
     @Before
     public void setup () throws PWCGException
     {        
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
 
         planeAiEntities = makePlaneEntities();
 

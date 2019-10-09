@@ -2,7 +2,8 @@ package pwcg.gui.maingui.campaigngenerate;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.gui.utils.StringValidity;
 
@@ -54,7 +55,7 @@ public class CampaignGeneratorState
             if (StringValidity.isAlpha(campaignGeneratorDO.getPlayerPilotName()))
             {
                 currentStep = CampaignGeneratorWorkflow.CHOOSE_MAP;
-                if (PWCGContextManager.isRoF())
+                if (PWCGContext.getProduct() == PWCGProduct.ROF || PWCGContext.getProduct() == PWCGProduct.FC)
                 {
                     ICountry country = campaignGeneratorDO.getService().getCountry();
                     if (country.getCountry() == Country.GERMANY)
@@ -129,7 +130,7 @@ public class CampaignGeneratorState
         else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_MAP)
         {
             currentStep = CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME;
-            if (PWCGContextManager.isRoF())
+            if (PWCGContext.getProduct() == PWCGProduct.ROF)
             {
                 ICountry country = campaignGeneratorDO.getService().getCountry();
                 if (country.getCountry() == Country.GERMANY)

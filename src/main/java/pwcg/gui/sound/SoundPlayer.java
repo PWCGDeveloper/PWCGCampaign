@@ -12,7 +12,7 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
@@ -39,7 +39,7 @@ public class SoundPlayer
             boolean bigEndian = false;
             AudioFormat littleEndianFormat =  new AudioFormat(sampleRate, sampleInbits, moscows, signed, bigEndian);
             
-            String soundFilePath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgAudioDir() + soundFile;
+            String soundFilePath = PWCGContext.getInstance().getDirectoryManager().getPwcgAudioDir() + soundFile;
 
             clip = AudioSystem.getClip();
             audio = AudioSystem.getAudioInputStream(new File(soundFilePath));

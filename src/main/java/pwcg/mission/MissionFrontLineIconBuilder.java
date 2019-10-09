@@ -8,7 +8,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.CoordinateBox;
@@ -48,7 +48,7 @@ public class MissionFrontLineIconBuilder
 
 	private List<McuIcon> createFrontPointIcons(Side side) throws PWCGException
 	{
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
 		List<FrontLinePoint> frontPointsForSide = frontLinesForMap.getFrontLines(side);
 
 		List<McuIcon> iconsForFront = createFrontPoints(frontPointsForSide);

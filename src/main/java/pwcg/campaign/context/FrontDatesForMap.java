@@ -32,7 +32,7 @@ public class FrontDatesForMap
 
     public void cleanUnwantedDateDirectories(String mapName) throws PWCGException
     {
-        String frontPath = PWCGContextManager.getInstance().getDirectoryManager().getPwcgInputDir() + mapName;
+        String frontPath = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName;
         File frontPathHandle = new File(frontPath);
         if (!frontPathHandle.exists())
         {
@@ -76,7 +76,7 @@ public class FrontDatesForMap
 
     public Date getFrontDateForDate(Date date) throws PWCGException
     {
-        boolean useMovingFront = PWCGContextManager.getInstance().determineUseMovingFront();
+        boolean useMovingFront = PWCGContext.getInstance().determineUseMovingFront();
 
         Date closestFrontDate = null;
         if (useMovingFront)

@@ -1,17 +1,23 @@
 package pwcg.campaign.factory;
 
 import pwcg.campaign.api.IHotSpotTranslator;
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.ww1.airfield.RoFHotSpotTranslator;
-import pwcg.campaign.ww2.airfield.BoSHotSpotTranslator;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
+import pwcg.product.bos.airfield.BoSHotSpotTranslator;
+import pwcg.product.fc.airfield.FCHotSpotTranslator;
+import pwcg.product.rof.airfield.RoFHotSpotTranslator;
 
 public class HotSpotTranslatorFactory
 {
     public static IHotSpotTranslator createHotSpotTranslatorFactory()
     {
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             return new RoFHotSpotTranslator();
+        }
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
+        {
+            return new FCHotSpotTranslator();
         }
         else
         {

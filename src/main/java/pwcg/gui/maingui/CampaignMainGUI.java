@@ -23,7 +23,8 @@ import javax.swing.UIManager;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.utils.AutoStart;
@@ -136,13 +137,13 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
         {
             if (arg.contains("integrated"))
             {
-                PWCGContextManager.setRoF(true);
+                PWCGContext.setProduct(PWCGProduct.ROF);
                 PwcgGuiModSupport.setRunningIntegrated(true);
                 runningFromGuiMod = true;
             }
             else if (arg.contains("debrief"))
             {
-                PWCGContextManager.setRoF(true);
+                PWCGContext.setProduct(PWCGProduct.ROF);
                 PwcgGuiModSupport.setRunningDebrief(true);
                 runningFromGuiMod = true;
             }
@@ -155,20 +156,25 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
             {
                 if (args[0].equals("RoF"))
                 {
-                    PWCGContextManager.setRoF(true);
+                    PWCGContext.setProduct(PWCGProduct.ROF);
                     Logger.log(LogLevel.INFO, "Set product to RoF");
                 }
                 else if (args[0].equals("BoS"))
                 {
-                    PWCGContextManager.setRoF(false);
+                    PWCGContext.setProduct(PWCGProduct.BOS);
                     Logger.log(LogLevel.INFO, "Set product to BoS");
+                }
+                else if (args[0].equals("FC"))
+                {
+                    PWCGContext.setProduct(PWCGProduct.FC);
+                    Logger.log(LogLevel.INFO, "Set product to FC");
                 }
             }
         }
         
         
         // Kick off initialization
-        PWCGContextManager.getInstance();
+        PWCGContext.getInstance();
     }
 
     private void setupUI() throws PWCGException
@@ -178,7 +184,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 
         PWCGFrame.getInstance();
 
-        PWCGContextManager.getInstance().initializeMap();               
+        PWCGContext.getInstance().initializeMap();               
         makeGUI();
     }
 
@@ -187,7 +193,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		try
 		{
 			// On the main screen we will always baseline from the main map for the product
-            PWCGContextManager.getInstance().initializeMap();    
+            PWCGContext.getInstance().initializeMap();    
 		}
 		catch (Exception e)
 		{
@@ -203,12 +209,12 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		    CampaignGuiContextManager.getInstance().pushToContextStack(this);
 
             // On the main screen we will always baseline from the main map for the product
-		    PWCGContextManager.getInstance().setCampaign(null);
-            PWCGContextManager.getInstance().initializeMap();    
+		    PWCGContext.getInstance().setCampaign(null);
+            PWCGContext.getInstance().initializeMap();    
 
 			setButtonsEnabled();
 
-			PWCGContextManager.getInstance().setCampaign(null);
+			PWCGContext.getInstance().setCampaign(null);
 			
             JPanel campaignPanel = makeCampaignPanel();
 	        CampaignGuiContextManager.getInstance().changeCurrentContext(null, null, campaignPanel);
@@ -266,7 +272,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 
 	private boolean validateInstallDirectory()
 	{
-		String missionFilepath = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir() + "Missions";
+		String missionFilepath = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir() + "Missions";
 		try
 		{
 			File file = new File(missionFilepath);
@@ -511,7 +517,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 	{
 		Campaign campaign = new Campaign();
 		campaign.open(campaignName);	
-		PWCGContextManager.getInstance().setCampaign(campaign);
+		PWCGContext.getInstance().setCampaign(campaign);
 
 		CampaignHomeGUI campaignGUI = new CampaignHomeGUI (this, campaign);
 		PWCGFrame.getInstance().setPanel(campaignGUI);
@@ -633,7 +639,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
         
-        Date mapDate = PWCGContextManager.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
+        Date mapDate = PWCGContext.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
         InfoMapGUI infoMapGUI = new InfoMapGUI(mapDate);
         infoMapGUI.makeGUI();
 
@@ -642,7 +648,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 
     private void showPWCGEditMap() throws PWCGException 
     {
-        Date mapDate = PWCGContextManager.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
+        Date mapDate = PWCGContext.getInstance().getCurrentMap().getFrontDatesForMap().getEarliestMapDate();
         EditorMapGUI editMapGUI = new EditorMapGUI(mapDate);
         editMapGUI.makeGUI();
 

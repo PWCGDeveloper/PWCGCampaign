@@ -16,7 +16,8 @@ import pwcg.aar.prelim.AARHeaderParser;
 import pwcg.aar.prelim.PwcgMissionData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignData;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.data.MissionHeader;
 
@@ -35,7 +36,7 @@ public class AARMissionFileLogResultMatcherTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
         Mockito.when(campaignData.getName()).thenReturn("Patrik Schorner");
     }

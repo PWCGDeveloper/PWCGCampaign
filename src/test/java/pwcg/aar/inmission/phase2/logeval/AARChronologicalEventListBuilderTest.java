@@ -13,11 +13,6 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
-import pwcg.aar.inmission.phase2.logeval.AARChronologicalEventListBuilder;
-import pwcg.aar.inmission.phase2.logeval.AARDamageStatusEvaluator;
-import pwcg.aar.inmission.phase2.logeval.AAREvaluator;
-import pwcg.aar.inmission.phase2.logeval.AARVehicleBuilder;
-import pwcg.aar.inmission.phase2.logeval.AARWaypointBuilder;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBalloon;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBase;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
@@ -25,7 +20,8 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogWaypoint;
 import pwcg.aar.inmission.phase2.logeval.victory.AARVictoryEvaluator;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 
 
@@ -42,7 +38,7 @@ public class AARChronologicalEventListBuilderTest
     @Before
     public void setupForTestEnvironment() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
     }
 
     @Test

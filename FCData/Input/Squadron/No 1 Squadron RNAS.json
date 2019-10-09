@@ -1,0 +1,134 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102201,
+  "name": "No 1 Squadron RNAS",
+  "skill": 85,
+  "planeAssignments": [
+    {
+      "archType": "nieuport",
+      "squadronIntroduction": "19160201",
+      "squadronWithdrawal": "19161231"
+    },
+    {
+      "archType": "soptriplane",
+      "squadronIntroduction": "19161215",
+      "squadronWithdrawal": "19171209"
+    },
+    {
+      "archType": "sopcamel",
+      "squadronIntroduction": "19171210",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19150801": "La Lovie",
+    "19160901": "La Lovie",
+    "19161203": "Coxyde",
+    "19170215": "Villers Bretonneux",
+    "19170601": "Abeele (East)",
+    "19170718": "Poperinghe",
+    "19170814": "Proven",
+    "19171102": "Poperinghe",
+    "19180216": "La Lovie",
+    "19180327": "Abeele (West)",
+    "19180328": "Lealvillers",
+    "19180412": "Warfusee",
+    "19180727": "Le Creche",
+    "19180806": "Grivesnes",
+    "19180814": "Baizieux 2",
+    "19180919": "Baizieux 2",
+    "19181027": "La Targette"
+  },
+  "skins": [
+    {
+      "skinName": "N17B_RFC_GREEN",
+      "planeType": "nieuport17brit",
+      "startDate": "19161203",
+      "endDate": "19170214",
+      "squadId": 102201,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "ST_RNAS1 BF_EARLY",
+      "planeType": "soptriplane",
+      "startDate": "19160615",
+      "endDate": "19170826",
+      "squadId": 102201,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "ST_RNAS1 BF_LATE",
+      "planeType": "soptriplane",
+      "startDate": "19170827",
+      "endDate": "19171209",
+      "squadId": 102201,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SC_RFC_GENERIC",
+      "planeType": "sopcamel",
+      "startDate": "19171210",
+      "endDate": "19180322",
+      "squadId": 102201,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102201_010",
+      "planeType": "sopcamel",
+      "startDate": "19180323",
+      "endDate": "19181201",
+      "squadId": 102201,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 201 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+
+  "serviceId": 10202,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19180401",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      },
+      {
+        "startDate": "19180401",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 70
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 30
+          }
+        ]
+      }
+    ]
+  }
+}

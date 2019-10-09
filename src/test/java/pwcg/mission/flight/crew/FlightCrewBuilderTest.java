@@ -8,7 +8,8 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -30,7 +31,7 @@ public class FlightCrewBuilderTest
     @Before
     public void fighterFlightTests() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.KG53_PROFILE);
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
@@ -41,7 +42,7 @@ public class FlightCrewBuilderTest
     public void testPlayerFlightGeneration() throws PWCGException
     {
     	FlightInformation flightInformation = new FlightInformation(mission);
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.KG53_PROFILE.getSquadronId());
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.KG53_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
         
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);
@@ -66,7 +67,7 @@ public class FlightCrewBuilderTest
     public void testAiFlightGeneration() throws PWCGException
     {
     	FlightInformation flightInformation = new FlightInformation(mission);
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(20111052);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20111052);
         flightInformation.setSquadron(squadron);
 
         FlightCrewBuilder flightCrewBuilder = new FlightCrewBuilder(flightInformation);

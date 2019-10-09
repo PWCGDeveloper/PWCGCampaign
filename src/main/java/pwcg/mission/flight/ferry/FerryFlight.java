@@ -3,7 +3,7 @@ package pwcg.mission.flight.ferry;
 import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
@@ -23,7 +23,7 @@ public class FerryFlight extends Flight
     {
         super (flightInformation, missionBeginUnit);
 		this.isTransfer = isTransfer;
-        fromAirfield = PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());
+        fromAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());
         toAirfield = flightInformation.getSquadron().determineCurrentAirfieldCurrentMap(flightInformation.getCampaign().getDate());
 	}
 

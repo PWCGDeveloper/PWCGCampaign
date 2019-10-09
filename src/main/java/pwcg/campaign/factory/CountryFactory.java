@@ -5,9 +5,11 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.ICountryFactory;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
-import pwcg.campaign.ww1.country.RoFCountryFactory;
-import pwcg.campaign.ww2.country.BoSCountryFactory;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
+import pwcg.product.bos.country.BoSCountryFactory;
+import pwcg.product.fc.country.FCCountryFactory;
+import pwcg.product.rof.country.RoFCountryFactory;
 
 public class CountryFactory
 {
@@ -45,13 +47,17 @@ public class CountryFactory
     private static ICountryFactory getCountryFactory()
     {
         ICountryFactory countryFactory = null;
-        if (PWCGContextManager.isRoF())
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {
             countryFactory = new RoFCountryFactory();
         }
-        else
+        else if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
             countryFactory = new BoSCountryFactory();
+        }
+        else if (PWCGContext.getProduct() == PWCGProduct.FC)
+        {
+            countryFactory = new FCCountryFactory();
         }
         
         return countryFactory;

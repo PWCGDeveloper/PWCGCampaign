@@ -7,10 +7,10 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IMissionFile;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.utils.TestDriver;
-import pwcg.campaign.ww2.ground.vehicle.VehicleSetBuilderComprehensive;
+import pwcg.product.bos.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.DateUtils;
@@ -188,7 +188,7 @@ public abstract class MissionFileWriter implements IMissionFile
 		String filepath = "..\\Data\\Missions\\" + fileName;
 		if (mission.getCampaign().isCoop())
 		{
-			filepath = PWCGContextManager.getInstance().getDirectoryManager().getSimulatorDataDir() + "Multiplayer\\Cooperative\\" + fileName;
+			filepath = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir() + "Multiplayer\\Cooperative\\" + fileName;
 
 		}
 		

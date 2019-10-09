@@ -13,8 +13,9 @@ import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -35,8 +36,8 @@ public class AARCoordinatorInMissionTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
-        PWCGContextManager.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
         campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
         expectedResults = new ExpectedResults(campaign);
         aarCoordinator = AARCoordinator.getInstance();
@@ -94,7 +95,7 @@ public class AARCoordinatorInMissionTest
     
     public static SquadronPlaneAssignment getPlaneForSquadron(int SquadronId) throws PWCGException
     {
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadronId);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronId);
         List<SquadronPlaneAssignment> squadronPlaneAssignments = squadron.getPlaneAssignments();
         return squadronPlaneAssignments.get(0);
     }

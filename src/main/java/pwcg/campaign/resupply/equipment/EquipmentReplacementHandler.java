@@ -4,7 +4,7 @@ import java.util.List;
 
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.resupply.ISquadronNeed;
 import pwcg.campaign.resupply.ResupplyNeedBuilder;
@@ -47,7 +47,7 @@ public class EquipmentReplacementHandler
                 break;
             }
 
-            Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(selectedSquadronNeed.getSquadronId());
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(selectedSquadronNeed.getSquadronId());
             List<String> activeArchTypes = squadron.getActiveArchTypes(campaign.getDate());
             
             EquippedPlane replacement = serviceAvailableReplacements.getEquipment().removeBestEquippedFromDepo(activeArchTypes);        

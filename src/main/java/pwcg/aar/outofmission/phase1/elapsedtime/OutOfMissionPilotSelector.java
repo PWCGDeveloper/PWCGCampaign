@@ -1,7 +1,7 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
@@ -38,7 +38,7 @@ public class OutOfMissionPilotSelector
 
     private static boolean isSquadronViable(Campaign campaign, SquadronMember squadronMember) throws PWCGException
     {
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
         if (squadron != null)
         {
             return squadron.isSquadronViable(campaign);

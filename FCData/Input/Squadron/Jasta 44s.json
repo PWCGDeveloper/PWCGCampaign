@@ -1,0 +1,61 @@
+{
+  "country": "GERMANY",
+  "squadronId": 501044,
+  "name": "Jasta 44s",
+  "skill": 40,
+  "planeAssignments": [
+    {
+      "archType": "albatrosd",
+      "squadronIntroduction": "19171223",
+      "squadronWithdrawal": "19180905"
+    },
+    {
+      "archType": "fokkerd7",
+      "squadronIntroduction": "19180813",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19171223": "Leffincourt",
+    "19180311": "Villeselve",
+    "19180422": "Ham",
+    "19181009": "Menin"
+  },
+  "skins": [
+    {
+      "skinName": "AD5_501000_18A",
+      "planeType": "albatrosd5",
+      "startDate": "19180408",
+      "endDate": "19181201",
+      "squadId": 501044,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "501000_000",
+      "planeType": "fokkerd7",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 501044,
+      "country": "Germany",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+  "serviceId": 50101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

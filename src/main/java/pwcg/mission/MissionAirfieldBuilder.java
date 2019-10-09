@@ -6,7 +6,7 @@ import java.util.TreeMap;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
@@ -37,7 +37,7 @@ public class MissionAirfieldBuilder
 
         TreeMap<String, IAirfield> selectedFields = new TreeMap<>();
 
-        for (IAirfield field :  PWCGContextManager.getInstance().getCurrentMap().getAirfieldManager().getAllAirfields().values())
+        for (IAirfield field :  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAllAirfields().values())
         {
         	if (missionBorders.isInBox(field.getPosition()))
             {

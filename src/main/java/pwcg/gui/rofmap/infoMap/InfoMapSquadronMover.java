@@ -2,7 +2,7 @@ package pwcg.gui.rofmap.infoMap;
 
 import java.util.Date;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.SquadronIOJson;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -15,7 +15,7 @@ public class InfoMapSquadronMover
     {
         if (squadronIdToMove > 0)
         {
-            Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronIdToMove);
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronIdToMove);
             if (squadron != null)
             {
                 squadron.assignAirfield(assignmentDate, targetAirfield);

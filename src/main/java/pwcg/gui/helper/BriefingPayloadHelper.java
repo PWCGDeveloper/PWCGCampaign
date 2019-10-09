@@ -2,7 +2,7 @@ package pwcg.gui.helper;
 
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
@@ -133,7 +133,7 @@ public class BriefingPayloadHelper
     private void setPayloadFromPayloadFactory(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
         Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
-        IPayloadFactory payloadFactory = PWCGContextManager.getInstance().getPayloadFactory();
+        IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payload = payloadFactory.createPlanePayload(crewPlane.getPlane().getType());
         payload.createWeaponsPayload(playerFlight);
         crewPlane.setPayloadId(payload.getSelectedPayloadId());

@@ -2,7 +2,7 @@ package pwcg.campaign.plane;
 
 import java.util.Date;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -44,14 +44,14 @@ public class OutOfMissionPlaneFinder
 
     private PlaneType findAlternativePlaneTypeForSquadron(Squadron squadron, Role role, Date date) throws PWCGException
     {
-        PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().findActivePlaneTypeByCountryDateAndRole(
+        PlaneType planeType = PWCGContext.getInstance().getPlaneTypeFactory().findActivePlaneTypeByCountryDateAndRole(
                 squadron.determineSquadronCountry(date), date, role);
         return planeType;        
     }
 
     private PlaneType findAnyPlaneTypeForCountryAndDate(Squadron squadron, Date date) throws PWCGException
     {
-        PlaneType planeType = PWCGContextManager.getInstance().getPlaneTypeFactory().findAnyPlaneTypeForCountryAndDate(
+        PlaneType planeType = PWCGContext.getInstance().getPlaneTypeFactory().findAnyPlaneTypeForCountryAndDate(
                 squadron.determineSquadronCountry(date), date);
         return planeType;        
     }

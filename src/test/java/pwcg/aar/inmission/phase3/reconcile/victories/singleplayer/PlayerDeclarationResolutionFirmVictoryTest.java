@@ -21,14 +21,15 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
-import pwcg.campaign.ww1.country.RoFCountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.product.rof.country.RoFCountry;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerDeclarationResolutionFirmVictoryTest
@@ -59,7 +60,7 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         
         firmVictories.clear();
         

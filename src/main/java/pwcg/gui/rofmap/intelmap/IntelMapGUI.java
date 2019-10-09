@@ -20,9 +20,10 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -52,8 +53,8 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 	{
 		super(mapDate);
 		setLayout(new BorderLayout());
-		this.campaign = PWCGContextManager.getInstance().getCampaign();
-		this.referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+		this.campaign = PWCGContext.getInstance().getCampaign();
+		this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 
 	public void makePanels() 
@@ -67,7 +68,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 
 			// Initialize to the players current map
 	        List<FrontMapIdentifier> airfieldMaps = AirfieldManager.getMapIdForAirfield(referencePlayer.determineSquadron().determineCurrentAirfieldName(campaign.getDate()));
-            PWCGContextManager.getInstance().changeContext(airfieldMaps.get(0));
+            PWCGContext.getInstance().changeContext(airfieldMaps.get(0));
 								
 			setRightPanel(makeRightPanel(-1));
 			setCenterPanel(createMapPanel());
@@ -91,7 +92,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         mapPanel.setData();
         mapPanel.setMapBackground(100);
 
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         makeMapPanelPoints(campaign.getDate());
         
         centerIntelMap();
@@ -207,7 +208,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 		Font font = MonitorSupport.getPrimaryFontSmall();
 
 		String squadronText = "";
-		Squadron squadron =  PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadId);
+		Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(squadId);
 		if (squadron != null)
 		{
 			squadronText = squadron.determineSquadronDescription(mapDate);
@@ -238,44 +239,57 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         JLabel mapLabel = PWCGButtonFactory.makeMenuLabelLarge("Choose Map");
         mapGrid.add(mapLabel);
         
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
-        if (PWCGContextManager.isRoF())
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
+        if (PWCGContext.getProduct() == PWCGProduct.ROF)
         {            
             mapGrid.add(makeRadioButton(PWCGMap.FRANCE_MAP_NAME, MAP_DELIMITER + PWCGMap.FRANCE_MAP_NAME, mapButtonGroup));
             mapGrid.add(makeRadioButton(PWCGMap.CHANNEL_MAP_NAME, MAP_DELIMITER + PWCGMap.CHANNEL_MAP_NAME, mapButtonGroup));
 
-            PWCGMap galiciaMap = PWCGContextManager.getInstance().getMapByMapId(FrontMapIdentifier.GALICIA_MAP);
+            PWCGMap galiciaMap = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.GALICIA_MAP);
             if (campaign.getDate().before(galiciaMap.getFrontDatesForMap().getEarliestMapDate()))
             {
                 mapGrid.add(makeRadioButton(PWCGMap.GALICIA_MAP_NAME, MAP_DELIMITER + PWCGMap.GALICIA_MAP_NAME, mapButtonGroup));
             }
         }
-        else
+        else if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
-            PWCGMap moscowMap = PWCGContextManager.getInstance().getMapByMapId(FrontMapIdentifier.MOSCOW_MAP);
+            PWCGMap moscowMap = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.MOSCOW_MAP);
             if (moscowMap.getFrontDatesForMap().isMapActive(campaign.getDate()))
             {
                 mapGrid.add(makeRadioButton(PWCGMap.MOSCOW_MAP_NAME, MAP_DELIMITER + PWCGMap.MOSCOW_MAP_NAME, mapButtonGroup));
             }
             
-            PWCGMap stalingradMap = PWCGContextManager.getInstance().getMapByMapId(FrontMapIdentifier.STALINGRAD_MAP);
+            PWCGMap stalingradMap = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.STALINGRAD_MAP);
             if (stalingradMap.getFrontDatesForMap().isMapActive(campaign.getDate()))
             {
                 mapGrid.add(makeRadioButton(PWCGMap.STALINGRAD_MAP_NAME, MAP_DELIMITER + PWCGMap.STALINGRAD_MAP_NAME, mapButtonGroup));
             }
             
-            PWCGMap kubanMap = PWCGContextManager.getInstance().getMapByMapId(FrontMapIdentifier.KUBAN_MAP);
+            PWCGMap kubanMap = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.KUBAN_MAP);
             if (kubanMap.getFrontDatesForMap().isMapActive(campaign.getDate()))
             {
                 mapGrid.add(makeRadioButton(PWCGMap.KUBAN_MAP_NAME, MAP_DELIMITER + PWCGMap.KUBAN_MAP_NAME, mapButtonGroup));
             }
             
-            PWCGMap bodenplatteMap = PWCGContextManager.getInstance().getMapByMapId(FrontMapIdentifier.BODENPLATTE_MAP);
+            PWCGMap bodenplatteMap = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.BODENPLATTE_MAP);
             if (bodenplatteMap.getFrontDatesForMap().isMapActive(campaign.getDate()))
             {
                 mapGrid.add(makeRadioButton(PWCGMap.BODENPLATTE_MAP_NAME, MAP_DELIMITER + PWCGMap.BODENPLATTE_MAP_NAME, mapButtonGroup));
             }
         }
+        else if (PWCGContext.getProduct() == PWCGProduct.FC)
+        {
+            PWCGMap arrasMap = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.ARRAS_MAP);
+            if (arrasMap.getFrontDatesForMap().isMapActive(campaign.getDate()))
+            {
+                mapGrid.add(makeRadioButton(PWCGMap.ARRAS_MAP_NAME, MAP_DELIMITER + PWCGMap.ARRAS_MAP_NAME, mapButtonGroup));
+            }
+        }
+        else
+        {
+            throw new PWCGException("No valid product selected");
+        }
+        
         return mapPanel;
     }
 
@@ -316,7 +330,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
                 int indexOfMapName = MAP_DELIMITER.length();
                 String mapName = action.substring(indexOfMapName);
                 FrontMapIdentifier mapIdentifier = PWCGMap.getFrontMapIdentifierForName(mapName);
-                PWCGContextManager.getInstance().changeContext(mapIdentifier);
+                PWCGContext.getInstance().changeContext(mapIdentifier);
                 JPanel mapCenterPanel = createMapPanel();
                 this.setCenterPanel(mapCenterPanel); 
 

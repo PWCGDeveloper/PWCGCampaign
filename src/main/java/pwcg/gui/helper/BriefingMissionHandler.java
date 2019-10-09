@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -80,7 +80,7 @@ public class BriefingMissionHandler
 
     public void pushEditsToMission() throws PWCGException
     {
-        SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+        SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
         PlayerFlightEditor planeGeneratorPlayer = new PlayerFlightEditor(mission.getCampaign(), playerFlight);
         planeGeneratorPlayer.updatePlayerPlanes(getCrewsSorted());
@@ -93,7 +93,7 @@ public class BriefingMissionHandler
             updateMissionBriefingParameters();
             mission.finalizeMission();
 
-            Campaign campaign  = PWCGContextManager.getInstance().getCampaign();
+            Campaign campaign  = PWCGContext.getInstance().getCampaign();
             campaign.setCurrentMission(mission);
         }
     }
@@ -102,13 +102,13 @@ public class BriefingMissionHandler
     {
         if (!mission.isFinalized())
         {
-            SquadronMember referencePlayer = PWCGContextManager.getInstance().getReferencePlayer();
+            SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
             Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
 
             playerFlight.updateWaypoints(briefParametersContext.getWaypointsInBriefing());
             playerFlight.setFuel(briefParametersContext.getSelectedFuel());
             
-            PWCGContextManager.getInstance().getCurrentMap().getMissionOptions().getMissionTime().setMissionTime(briefParametersContext.getSelectedTime());
+            PWCGContext.getInstance().getCurrentMap().getMissionOptions().getMissionTime().setMissionTime(briefParametersContext.getSelectedTime());
         }
     }
 

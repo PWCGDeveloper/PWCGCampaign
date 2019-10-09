@@ -7,7 +7,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
@@ -40,7 +40,7 @@ public class WaypointGeneratorUtils
         boolean goNorth = true;
         
         // At northern edge - go south
-        FrontLinesForMap frontLineMarker =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(side);
         if (startFrontIndex < closestToEdge)
         {
@@ -83,7 +83,7 @@ public class WaypointGeneratorUtils
         }
         
         // Don't go too far South
-        FrontLinesForMap frontLineMarker =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(side);
         if (frontIndex > frontLines.size())
         {
@@ -101,7 +101,7 @@ public class WaypointGeneratorUtils
             return true;
         }
         
-        FrontLinesForMap frontLineMarker =  PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
+        FrontLinesForMap frontLineMarker =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         List<FrontLinePoint> frontLines = frontLineMarker.getFrontLines(side);
         if (!goNorth && (frontIndex > (frontLines.size() - 4)))
         {

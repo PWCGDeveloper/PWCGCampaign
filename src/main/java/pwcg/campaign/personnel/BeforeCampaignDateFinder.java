@@ -2,7 +2,7 @@ package pwcg.campaign.personnel;
 
 import java.util.Date;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 
 public class BeforeCampaignDateFinder
@@ -11,9 +11,9 @@ public class BeforeCampaignDateFinder
     public static Date useEarliestPossibleDate(Date initialDate) throws PWCGException
     {
         Date earliestUsableDate = initialDate;
-        if (initialDate.before(PWCGContextManager.getInstance().getEarliestPwcgDate()))
+        if (initialDate.before(PWCGContext.getInstance().getEarliestPwcgDate()))
         {
-            earliestUsableDate = PWCGContextManager.getInstance().getEarliestPwcgDate();
+            earliestUsableDate = PWCGContext.getInstance().getEarliestPwcgDate();
         }
         return earliestUsableDate;
     }

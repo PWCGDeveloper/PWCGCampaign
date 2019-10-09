@@ -1,6 +1,6 @@
 package pwcg.mission.flight.escort;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -19,7 +19,7 @@ public class PlayerEscortBuilder
     {
         FlightInformation playerFlightInformation = playerFlight.getFlightInformation();
         
-        Squadron friendlyFighterSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
+        Squadron friendlyFighterSquadron = PWCGContext.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
                         playerFlightInformation.getCampaign(), 
                         playerFlightInformation.getSquadron().determineCurrentPosition(playerFlightInformation.getCampaign().getDate()), 
                         Role.ROLE_FIGHTER, 

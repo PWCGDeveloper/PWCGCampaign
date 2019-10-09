@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -20,7 +20,7 @@ public class VirtualEscortFlightBuilder
     public Flight createVirtualEscortFlight(Flight escortedFlight) throws PWCGException 
     {
         List<Role> fighterRole = new ArrayList<Role>(Arrays.asList(Role.ROLE_FIGHTER));
-        List<Squadron> friendlyFighterSquadrons = PWCGContextManager.getInstance().getSquadronManager().getNearestSquadronsByRole(
+        List<Squadron> friendlyFighterSquadrons = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(
                 escortedFlight.getCampaign(),
                 escortedFlight.getHomePosition(),
                 1,

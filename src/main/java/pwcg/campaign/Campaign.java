@@ -7,7 +7,8 @@ import java.util.List;
 
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.CampaignModeFactory;
 import pwcg.campaign.io.json.CampaignIOJson;
@@ -158,7 +159,7 @@ public class Campaign
     public static List<String> getCampaignNames() throws PWCGUserException 
     {       
         List<String> campaignList = new ArrayList<String>();
-        String campaignRootDirName = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir();
+        String campaignRootDirName = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir();
         File campaignRootDir = new File(campaignRootDirName);
 
         if (!campaignRootDir.exists() || !campaignRootDir.isDirectory())
@@ -196,7 +197,7 @@ public class Campaign
 	
 	public String getCampaignPath()
 	{
-		String dir = PWCGContextManager.getInstance().getDirectoryManager().getPwcgCampaignsDir();
+		String dir = PWCGContext.getInstance().getDirectoryManager().getPwcgCampaignsDir();
 		String campaignPath = dir + campaignData.getName() + "\\"; 
 		
 		File campaignDir = new File(campaignPath); 
@@ -212,7 +213,7 @@ public class Campaign
     {
         for (SquadronMember player : this.personnelManager.getAllActivePlayers().getSquadronMemberList())
         {
-            Squadron squadron =  PWCGContextManager.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
+            Squadron squadron =  PWCGContext.getInstance().getSquadronManager().getSquadron(player.getSquadronId());
             if (squadron.isSquadronThisPrimaryRole(getDate(), Role.ROLE_FIGHTER))
             {
                 return true;
@@ -225,14 +226,21 @@ public class Campaign
 	public boolean isValidCampaignForProduct() throws PWCGException 
 	{
 		Date campaignDate = campaignData.getDate();
-        if (campaignDate.before(DateUtils.getDateYYYYMMDD("19300101")) && !PWCGContextManager.isRoF())
+		if (PWCGContext.getProduct() == PWCGProduct.ROF || PWCGContext.getProduct() == PWCGProduct.FC)
+		{
+	        if (campaignDate.after(DateUtils.getDateYYYYMMDD("19300101")))
+	        {
+	            return false;
+	        }
+		    
+		}        
+        if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
-            return false;
-        }
-        
-        if (campaignDate.after(DateUtils.getDateYYYYMMDD("19300101")) && PWCGContextManager.isRoF())
-        {
-            return false;
+            if (campaignDate.before(DateUtils.getDateYYYYMMDD("19300101")))
+            {
+                return false;
+            }
+            
         }
 		
 		return true;
@@ -277,7 +285,7 @@ public class Campaign
     public List<Squadron> determinePlayerSquadrons() throws PWCGException
     {
         List<Squadron> playerSquadrons = new ArrayList<>();
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         for (SquadronMember player : personnelManager.getAllActivePlayers().getSquadronMemberList())
         {
             Squadron playerSquadron = squadronManager.getSquadron(player.getSquadronId());

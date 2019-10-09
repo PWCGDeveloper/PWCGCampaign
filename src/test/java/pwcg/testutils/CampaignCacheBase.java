@@ -11,7 +11,7 @@ import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.CampaignHumanPilotHandler;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IRankHelper;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.squadmember.AiPilotRemovalChooser;
@@ -53,7 +53,7 @@ public abstract class CampaignCacheBase implements ICampaignCache
             campaign = makeCampaignForceCreation(profile);
         }
         
-        PWCGContextManager.getInstance().setCampaign(campaign);
+        PWCGContext.getInstance().setCampaign(campaign);
         validateCampaign(profile, campaign);
         
         return campaign;
@@ -146,7 +146,7 @@ public abstract class CampaignCacheBase implements ICampaignCache
     
 	public static CampaignGeneratorModel makeCampaignModelForProfile(SquadrontTestProfile profile) throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron squadron = squadronManager.getSquadron(profile.getSquadronId());
         
         Date campaignDate = DateUtils.getDateYYYYMMDD(profile.getDateString());

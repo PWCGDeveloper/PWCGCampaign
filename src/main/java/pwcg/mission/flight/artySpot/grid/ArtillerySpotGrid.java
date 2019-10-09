@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
@@ -124,7 +124,7 @@ public class ArtillerySpotGrid
 	    }
 	    
 	    // Reverse it it if the map is Russia
-	    if (PWCGContextManager.getInstance().getCurrentMap().getMapIdentifier() == FrontMapIdentifier.GALICIA_MAP)
+	    if (PWCGContext.getInstance().getCurrentMap().getMapIdentifier() == FrontMapIdentifier.GALICIA_MAP)
 	    {
             placementAngle = MathUtils.adjustAngle(placementAngle, 180);
 	    }

@@ -1,0 +1,122 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102060,
+  "name": "No 60 Squadron RFC",
+  "skill": 80,
+  "planeAssignments": [
+    {
+      "archType": "nieuport",
+      "squadronIntroduction": "19160501",
+      "squadronWithdrawal": "19170815"
+    },
+    {
+      "archType": "se5",
+      "squadronIntroduction": "19170715",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19140801": "Savy Berlette",
+    "19150801": "Bailleul",
+    "19150911": "Droglandt",
+    "19151212": "Bailleul",
+    "19160601": "Filescamp Ferme",
+    "19160803": "Villers Bretonneux",
+    "19160823": "Le Hameau",
+    "19160901": "Mont St. Eloi",
+    "19170118": "Le Hameau",
+    "19170905": "Droglandt",
+    "19180308": "Abeele (West)",
+    "19180327": "Marieux",
+    "19180412": "Filescamp Ferme",
+    "19180917": "Baizieux 2"
+  },
+  "skins": [
+    {
+      "skinName": "N11_RFC_GREEN",
+      "planeType": "nieuport11",
+      "startDate": "19140801",
+      "endDate": "19170826",
+      "squadId": 102060,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102060",
+      "planeType": "nieuport17brit",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102060,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102060",
+      "planeType": "nieuport17",
+      "startDate": "19140801",
+      "endDate": "19181201",
+      "squadId": 102060,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5A_102060_ANS",
+      "planeType": "se5a",
+      "startDate": "19170101",
+      "endDate": "19170826",
+      "squadId": 102060,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "SE5A_RFC60_AUG17",
+      "planeType": "se5a",
+      "startDate": "19170827",
+      "endDate": "19171022",
+      "squadId": 102060,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    },
+    {
+      "skinName": "102060_020",
+      "planeType": "se5a",
+      "startDate": "19180323",
+      "endDate": "19181201",
+      "squadId": 102060,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+      
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 60 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+  
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -10,7 +10,8 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -36,7 +37,7 @@ public class PlaneFactoryTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.KG53_PROFILE);
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
@@ -48,7 +49,7 @@ public class PlaneFactoryTest
     {
         Mockito.when(flight.isVirtual()).thenReturn(false);
         
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.KG53_PROFILE.getSquadronId());
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.KG53_PROFILE.getSquadronId());
         FlightInformation flightInformation = FlightInformationFactory.buildPlayerFlightInformation(squadron, mission, FlightTypes.BOMB);
 
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
@@ -80,7 +81,7 @@ public class PlaneFactoryTest
     {
         Mockito.when(flight.isVirtual()).thenReturn(true);
         
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(20111052);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20111052);
         FlightInformation flightInformation = FlightInformationFactory.buildAiFlightInformation(squadron, mission, FlightTypes.BOMB);
 
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.resupply.InitialSquadronEquipper;
@@ -24,7 +24,7 @@ public class CampaignUpdateNewSquadronEquipper
 
     public List<Integer> equipNewSquadrons() throws PWCGException
     {
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         for (Squadron squadron : squadronManager.getActiveSquadrons(campaign.getDate()))
         {
             if (campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId()) == null)

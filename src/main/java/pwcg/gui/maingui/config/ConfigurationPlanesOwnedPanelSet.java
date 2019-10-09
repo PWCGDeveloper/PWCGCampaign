@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.core.exception.PWCGException;
@@ -215,7 +215,7 @@ public class ConfigurationPlanesOwnedPanelSet extends PwcgGuiContext implements 
      */
     public JPanel makeAxisPanel() throws PWCGException 
     {
-        List<PlaneType> axisPlanes = PWCGContextManager.getInstance().getPlaneTypeFactory().getAxisPlanes();
+        List<PlaneType> axisPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAxisPlanes();
         return makePlanePanel(axisPlanes);
     }
 
@@ -225,7 +225,7 @@ public class ConfigurationPlanesOwnedPanelSet extends PwcgGuiContext implements 
      */
     public JPanel makeAlliedPanel() throws PWCGException 
     {
-        List<PlaneType> alliedPlanes = PWCGContextManager.getInstance().getPlaneTypeFactory().getAlliedPlanes();
+        List<PlaneType> alliedPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAlliedPlanes();
         return makePlanePanel(alliedPlanes);
     }
     

@@ -2,7 +2,7 @@ package pwcg.mission.flight.balloonBust;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
@@ -29,7 +29,7 @@ public class BalloonBustPackage implements IFlightPackage
         Side enemySide = flightInformation.getSquadron().determineEnemySide();
 
         Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-        Squadron enemyScoutSquadron = PWCGContextManager.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
+        Squadron enemyScoutSquadron = PWCGContext.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
                         flightInformation.getCampaign(), 
                         flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate()), 
                         Role.ROLE_FIGHTER, 

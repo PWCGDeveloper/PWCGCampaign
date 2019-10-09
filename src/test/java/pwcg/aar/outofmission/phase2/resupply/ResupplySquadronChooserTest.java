@@ -8,7 +8,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.resupply.ISquadronNeed;
 import pwcg.campaign.resupply.ResupplySquadronChooser;
@@ -25,7 +26,7 @@ public class ResupplySquadronChooserTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContextManager.setRoF(false);
+        PWCGContext.setProduct(PWCGProduct.BOS);
         campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
@@ -100,7 +101,7 @@ public class ResupplySquadronChooserTest
     private Map<Integer, ISquadronNeed> getSquadronNeeds(int playerPlanesNeeded, int i_jg52PlanesNeeded, int ii_jg52PlanesNeeded) throws PWCGException
     {
         Map<Integer, ISquadronNeed> needs = new HashMap<>();
-        SquadronManager squadronManager = PWCGContextManager.getInstance().getSquadronManager();
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         
         Squadron playerSquadron = squadronManager.getSquadron(20111051);
         SquadronEquipmentNeed playerSquadronEquipmentNeed = new SquadronEquipmentNeed(campaign, playerSquadron);

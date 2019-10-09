@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.PictureManager;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -201,7 +201,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
         JPanel pilotPicPanel = new JPanel(new BorderLayout());
         pilotPicPanel.setOpaque(false);
 
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         
         PWCGJButton planeButton = makePlanePicture(campaign.getDate());
         PWCGJButton pilotButton = makePilotPicture();
@@ -334,7 +334,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
         String pilotSerialNumberString = action.substring(index + 1);
         Integer serialNumber = new Integer(pilotSerialNumberString);
 
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
         if (pilot == null)
         {
@@ -352,7 +352,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private void openMedalBox(String action) throws PWCGException 
     {
-        Campaign campaign = PWCGContextManager.getInstance().getCampaign();
+        Campaign campaign = PWCGContext.getInstance().getCampaign();
         SquadronMember pilot = UIUtils.getPilotFromAction(campaign, action);
         if (pilot != null)
         {

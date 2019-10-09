@@ -7,7 +7,7 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 
@@ -73,7 +73,7 @@ public class VictoryBuilder
 
     private String getEventLocation(Coordinate eventPosition) throws PWCGException
     {
-        String eventLocation =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(eventPosition).getName();
+        String eventLocation =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(eventPosition).getName();
         if (eventLocation == null || eventLocation.isEmpty())
         {
             eventLocation = "";

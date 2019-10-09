@@ -1,7 +1,7 @@
 package pwcg.mission.ground.factory;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.target.TargetDefinition;
@@ -57,7 +57,7 @@ public class TruckUnitFactory
 
     private Coordinate getConvoyDestination() throws PWCGException
     {
-        GroupManager groupData =  PWCGContextManager.getInstance().getCurrentMap().getGroupManager();
+        GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
         Bridge destinationBridge = groupData.getBridgeFinder().findDestinationBridge(targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry().getSide(), campaign.getDate());
         if (destinationBridge != null)
         {

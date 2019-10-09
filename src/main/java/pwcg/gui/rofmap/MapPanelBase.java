@@ -18,7 +18,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.FrontParameters;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.MapLoaderFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -84,7 +84,7 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
 	{
         String mapImagePath = ContextSpecificImages.imagesMaps();
 
-		String prefix = PWCGContextManager.getInstance().getCurrentMap().getMapName();
+		String prefix = PWCGContext.getInstance().getCurrentMap().getMapName();
 
  		String mapImage = prefix + "Map100.jpg";
 		if (scaleLevel == 50)
@@ -135,7 +135,7 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
 			setSize(mapSize);
 			setLayout(null);
 			
-			FrontParameters frontParameters = PWCGContextManager.getInstance().getCurrentMap().getFrontParameters();
+			FrontParameters frontParameters = PWCGContext.getInstance().getCurrentMap().getFrontParameters();
 			
 			ratioWidth = mapSize.width / frontParameters.getzMax() ;
 			ratioHeight = mapSize.height / frontParameters.getxMax() ;
@@ -256,7 +256,7 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(3));
          
-        FrontLinesForMap frontLinesForMap = PWCGContextManager.getInstance().getCurrentMap().getFrontLinesForMap(parent.getMapDate());
+        FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(parent.getMapDate());
         List<FrontLinePoint>frontLinesAllied = frontLinesForMap.getFrontLines(Side.ALLIED);
         Point prev = null;
         for (FrontLinePoint frontCoord : frontLinesAllied)

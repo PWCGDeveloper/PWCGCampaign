@@ -8,7 +8,8 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.TargetCategory;
@@ -35,7 +36,7 @@ public class WW2PayloadTest
 	@Before
 	public void setup() throws PWCGException
 	{
-		PWCGContextManager.setRoF(false);
+		PWCGContext.setProduct(PWCGProduct.BOS);
         
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign);
 		Mockito.when(flight.getSquadron()).thenReturn(squadron);
@@ -44,9 +45,9 @@ public class WW2PayloadTest
 	@Test
 	public void payloadTest() throws PWCGException
 	{
-		IPayloadFactory payloadFactory = PWCGContextManager.getInstance().getPayloadFactory();
+		IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
 		
-        for (PlaneType planeType : PWCGContextManager.getInstance().getPlaneTypeFactory().getAllPlanes())
+        for (PlaneType planeType : PWCGContext.getInstance().getPlaneTypeFactory().getAllPlanes())
         {
         	IPlanePayload payloadGenerator = payloadFactory.createPlanePayload(planeType.getType());
         	testPatrolPayload(payloadGenerator);

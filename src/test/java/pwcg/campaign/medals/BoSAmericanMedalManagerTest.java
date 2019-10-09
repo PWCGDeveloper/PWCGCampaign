@@ -13,16 +13,17 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.MedalManagerFactory;
-import pwcg.campaign.ww2.country.BoSServiceManager;
-import pwcg.campaign.ww2.medals.AmericanMedalManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.dialogs.ImageCache;
 import pwcg.gui.utils.ContextSpecificImages;
+import pwcg.product.bos.country.BoSServiceManager;
+import pwcg.product.bos.medals.AmericanMedalManager;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BoSAmericanMedalManagerTest extends MedalManagerTestBase
@@ -31,7 +32,7 @@ public class BoSAmericanMedalManagerTest extends MedalManagerTestBase
     @Before
     public void setup() throws PWCGException
     {
-    	PWCGContextManager.setRoF(false);
+    	PWCGContext.setProduct(PWCGProduct.BOS);
         super.setup();
         ICountry country = CountryFactory.makeCountryByCountry(Country.USA);
         medalManager = MedalManagerFactory.createMedalManager(country, campaign);

@@ -21,7 +21,8 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignData;
 import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.resupply.personnel.SquadronTransferData;
 import pwcg.campaign.squadmember.Ace;
@@ -74,7 +75,7 @@ public abstract class AARTestSetup
 
     protected void setupAARMocks() throws PWCGException
     {
-        PWCGContextManager.setRoF(true);
+        PWCGContext.setProduct(PWCGProduct.ROF);
         players = new ArrayList<>();
         players.add(player);
         

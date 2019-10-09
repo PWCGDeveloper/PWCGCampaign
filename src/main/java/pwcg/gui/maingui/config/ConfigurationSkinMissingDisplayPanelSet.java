@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -174,7 +174,7 @@ public class ConfigurationSkinMissingDisplayPanelSet extends PwcgGuiContext impl
                 
         for (String planeTypeDesc : selectedMissingSkins.keySet())
         {
-            PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
+            PlaneType plane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(planeTypeDesc);
             List<MissingSkin> missingSkinSet = selectedMissingSkins.get(planeTypeDesc);
             
             if (missingSkinSet.size() > 0)

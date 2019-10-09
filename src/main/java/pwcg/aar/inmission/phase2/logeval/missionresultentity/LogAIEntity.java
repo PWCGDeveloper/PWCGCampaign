@@ -2,7 +2,7 @@ package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 
 import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.Role;
 import pwcg.core.exception.PWCGException;
@@ -27,7 +27,7 @@ public abstract class LogAIEntity extends LogBase
         setName(atype12.getName());
         setVehicleType(atype12.getType());
         
-        PlaneType plane = PWCGContextManager.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(atype12.getType());
+        PlaneType plane = PWCGContext.getInstance().getPlaneTypeFactory().createPlaneTypeByAnyName(atype12.getType());
         if (plane != null)
         {
             Role approximateRole = Role.getApproximateRole(plane.determinePrimaryRole());

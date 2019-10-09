@@ -1,6 +1,6 @@
 package pwcg.campaign;
 
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberFactory;
@@ -18,7 +18,7 @@ public class CampaignHumanPilotHandler
 
     public int addNewPilot(String humanPilotName, String humanPilotRank, int pilotToReplaceSerialNumber, int squadronId) throws PWCGException
     {
-        Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronId);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
         SquadronPersonnel squadronSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
 
         SquadronMember newPlayer = addHumanPilot(humanPilotName, humanPilotRank, squadron, squadronSquadronPersonnel);

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContextManager;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -31,7 +31,7 @@ public class OutOfMissionAAALossCalculator
     {
         for (SquadronMember squadronMember : aarContext.getPreliminaryData().getCampaignMembersOutOfMission().getSquadronMemberCollection().values())
         {
-            Squadron squadron = PWCGContextManager.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
             if (squadron.isSquadronViable(campaign))
             {
                 calculatePilotShotDownByAAA(squadronMember);

@@ -1,0 +1,58 @@
+{
+  "country": "BRITAIN",
+  "squadronId": 102085,
+  "name": "No 85 Squadron RFC",
+  "skill": 75,
+  "planeAssignments": [
+    {
+      "archType": "se5",
+      "squadronIntroduction": "19180401",
+      "squadronWithdrawal": "19181201"
+    }
+  ],
+  "airfields": {
+    "19180401": "Hondschoote",
+    "19180525": "Hondschoote",
+    "19180611": "Merville",
+    "19180813": "Warfusee",
+    "19180905": "Savy Berlette"
+  },
+  "skins": [
+    {
+      "skinName": "102085_010",
+      "planeType": "se5a",
+      "startDate": "19180501",
+      "endDate": "19181201",
+      "squadId": 102085,
+      "country": "Britain",
+      "category": "Squadron",
+      "definedInGame": false
+    }
+  ],
+        
+  "squadHistory": {
+    "squadHistoryEntries": [
+	  {
+         "date": "19180401",
+         "squadName": "No 85 Squadron RAF",
+         "armedServiceName": "Royal Air Force"
+	  }
+    ]
+  },
+    
+  "serviceId": 10201,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19150801",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 100
+          }
+        ]
+      }
+    ]
+  }
+}
