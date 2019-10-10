@@ -45,16 +45,13 @@ public class BodenplatteMap extends PWCGMap
         this.frontDatesForMap.addFrontDate("19440901");
         this.frontDatesForMap.addFrontDate("19441001");
         this.frontDatesForMap.addFrontDate("19441101");
-        /*
         this.frontDatesForMap.addFrontDate("19441220");
-        this.frontDatesForMap.addFrontDate("19441224");
-        this.frontDatesForMap.addFrontDate("19440801");
-        this.frontDatesForMap.addFrontDate("19440801");
-        this.frontDatesForMap.addFrontDate("19440801");
-        this.frontDatesForMap.addFrontDate("19440801");
-        this.frontDatesForMap.addFrontDate("19440801");
-        this.frontDatesForMap.addFrontDate("19440801");
-        */
+        this.frontDatesForMap.addFrontDate("19441225");
+        this.frontDatesForMap.addFrontDate("19441229");
+        this.frontDatesForMap.addFrontDate("19450207");
+        this.frontDatesForMap.addFrontDate("19450310");
+        this.frontDatesForMap.addFrontDate("19450325");
+        this.frontDatesForMap.addFrontDate("19450404");
     }
 
 }

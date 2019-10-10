@@ -111,9 +111,11 @@ public class EditorMapPanel extends MapPanelBase
 		        //writeFile(graphicsFromImage);
 			}            
 
+            Coordinate prevCoordinate = null;
             for (FrontLinePoint frontLinePoint : frontLineEditor.getUserCreatedFrontLines())
             {
-                drawPointsByCountry(g, frontLinePoint.getPosition(), frontLinePoint.getCountry());
+                drawPointsByCountry(g, frontLinePoint.getPosition(), prevCoordinate, frontLinePoint.getCountry());
+                prevCoordinate = frontLinePoint.getPosition().copy();
             }
 		}
 		catch (Exception e)
@@ -122,7 +124,7 @@ public class EditorMapPanel extends MapPanelBase
 		}
 	}
 
-    private void drawPointsByCountry(Graphics g, Coordinate coordinate, ICountry country) 
+    private void drawPointsByCountry(Graphics g, Coordinate coordinate, Coordinate prevCoordinate, ICountry country) 
     {
         Color color = ColorMap.UNKNOWN;
                         
@@ -143,10 +145,10 @@ public class EditorMapPanel extends MapPanelBase
             color = ColorMap.NEUTRAL;
         }
         
-        drawPoints(g, coordinate, color);
+        drawPoints(g, coordinate, prevCoordinate, color);
     }
 
-	private void drawPoints(Graphics g, Coordinate coordinate, Color color) 
+	private void drawPoints(Graphics g, Coordinate coordinate, Coordinate prevCoordinate, Color color) 
 	{
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(3));
@@ -161,6 +163,12 @@ public class EditorMapPanel extends MapPanelBase
 
         Ellipse2D.Double circle = new Ellipse2D.Double(point.x - halfWay, point.y - halfWay, size, size);
         g2.fill(circle);
+        
+        if (prevCoordinate != null)
+        {
+            Point prevPoint = super.coordinateToPoint(prevCoordinate);
+            g2.drawLine(prevPoint.x,  prevPoint.y, point.x, point.y);
+        }
 	}
 
 
@@ -168,7 +176,7 @@ public class EditorMapPanel extends MapPanelBase
     {
         Color color = ColorMap.BELGIAN_GOLD;
         g.setFont(new Font("TimesRoman", Font.PLAIN, 18)); 
-        drawPoints(g, coordinate, color);
+        drawPoints(g, coordinate, null, color);
         Graphics2D g2 = (Graphics2D) g;
         Point point = super.coordinateToPoint(coordinate);
         g2.drawString(name, point.x+15, point.y+3);
