@@ -10,7 +10,7 @@ import pwcg.core.utils.MathUtils;
 
 public class FrontLineCreator
 {
-    private int oppositeFrontLineAngle = 270;
+    private int oppositeFrontLineAngle = 90;
         
     public FrontLineCreator()
     {
