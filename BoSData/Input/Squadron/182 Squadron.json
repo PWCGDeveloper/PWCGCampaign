@@ -12,7 +12,9 @@
     }
   ],
   "airfields": {
-    "19441001": "Woensdrecht"
+    "19441001": "Woensdrecht",
+    "19441101": "Volkel",
+    "19441220": "Volkel"
   },
   "skins": [],
   "squadHistory": {

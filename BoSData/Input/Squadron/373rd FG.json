@@ -12,7 +12,9 @@
     }
   ],
   "airfields": {
-    "19441001": "St.Trond"
+    "19441001": "St.Trond",
+    "19441101": "St.Trond",
+    "19441220": "St.Trond"
   },
   "skins": [],
   "squadHistory": {
