@@ -11,16 +11,13 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
-    "19440901": "Grimbergen"
+    "19440901": "Grimbergen",
+    "19441001": "Eindhoven"
   },
-  "skins": [
-  ],
+  "skins": [],
   "squadHistory": {
-    "squadHistoryEntries": [
-    ]
+    "squadHistoryEntries": []
   },
   "serviceId": 10103,
   "squadronRoles": {
@@ -41,6 +38,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "GANNET"
   }

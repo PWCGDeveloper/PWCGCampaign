@@ -11,8 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
     "19411001": "Vjazma",
     "19411020": "Temkino",
@@ -38,10 +36,10 @@
     "19430927": "Marfovka",
     "19431004": "Marfovka",
     "19431008": "Marfovka",
-    "19440901": "Volkel"
+    "19440901": "Volkel",
+    "19441001": "Dortmund"
   },
   "skins": [],
-  "serviceId": 20101,
   "squadHistory": {
     "squadHistoryEntries": [
       {
@@ -52,6 +50,7 @@
       }
     ]
   },
+  "serviceId": 20101,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
@@ -66,6 +65,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "PELICAN"
   }

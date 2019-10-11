@@ -16,12 +16,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19441001"
-    }
-  ],  
   "airfields": {
     "19411001": "Vjazma",
     "19411020": "Novoye Selo",
@@ -47,10 +41,11 @@
     "19430927": "Bagerovo",
     "19431004": "Bagerovo",
     "19431008": "Zamorsk",
-    "19440901": "Volkel"
+    "19440901": "Volkel",
+    "19441001": "Essen-Mulheim"
   },
   "skins": [
-  {
+    {
       "skinName": "II_KG53",
       "planeType": "he111h6",
       "startDate": "19400801",
@@ -101,7 +96,6 @@
         "armedServiceName": "Luftwaffe",
         "skill": 50
       }
-      
     ]
   },
   "serviceId": 20101,
@@ -129,6 +123,12 @@
       }
     ]
   },
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19441001"
+    }
+  ],
   "callsigns": {
     "19410801": "SEAGULL"
   }
