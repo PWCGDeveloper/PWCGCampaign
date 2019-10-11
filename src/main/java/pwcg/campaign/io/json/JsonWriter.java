@@ -12,18 +12,23 @@ import pwcg.core.utils.Logger;
 public class JsonWriter<T>
 {
 
-	public void writeAsJson(T javaObject, String directory, String filename) throws PWCGException
-	{
-		try (Writer writer = new FileWriter(directory + filename))
-		{
-			Gson gson = new GsonBuilder().setPrettyPrinting().setDateFormat("yyyyMMdd").create();
-			gson.toJson(javaObject, writer);
-			writer.close();
-		}
-		catch (Exception e)
-		{
-			Logger.logException(e);
-			throw new PWCGException(e.getMessage());
-		}
-	}
+    public void writeAsJson(T javaObject, String directory, String filename) throws PWCGException
+    {
+        try (Writer writer = new FileWriter(directory + filename))
+        {
+            Gson gson = new GsonBuilder()
+                    .setPrettyPrinting()
+                    .setDateFormat("yyyyMMdd")
+                    .enableComplexMapKeySerialization()
+                    .create();
+
+            gson.toJson(javaObject, writer);
+            writer.close();
+        }
+        catch (Exception e)
+        {
+            Logger.logException(e);
+            throw new PWCGException(e.getMessage());
+        }
+    }
 }

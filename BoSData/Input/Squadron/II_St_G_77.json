@@ -16,12 +16,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440731"
-    }
-  ],  
   "airfields": {
     "19411001": "Dugino",
     "19411020": "Varvarovka",
@@ -47,7 +41,7 @@
     "19430927": "Kerch",
     "19431004": "Kerch",
     "19431008": "Marfovka",
-    "19440801": "Hopsten"
+    "19440901": "Asch"
   },
   "skins": [
     {
@@ -96,6 +90,12 @@
       }
     ]
   },
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440731"
+    }
+  ],
   "callsigns": {
     "19410801": "CRANE"
   }

@@ -21,16 +21,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-    {
-      "conversionStartDate": "19430302",
-      "conversionCompleteDate": "19430321"
-    },
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440731"
-    }
-  ],  
   "airfields": {
     "19411001": "Karpovo",
     "19411020": "Kolodezi",
@@ -56,10 +46,10 @@
     "19430927": "Taman",
     "19431004": "Taman",
     "19431008": "Kerch",
-    "19440801": "Zellhausen"
+    "19440901": "Venlo"
   },
   "skins": [
-      {
+    {
       "skinName": "II_Sch_G_1",
       "planeType": "bf109e7",
       "startDate": "19410801",
@@ -71,10 +61,10 @@
     }
   ],
   "squadHistory": {
-      "squadHistoryEntries": [
+    "squadHistoryEntries": [
       {
         "date": "19440801",
-        "squadName": "II./JG511",
+        "squadName": "II./JG51",
         "armedServiceName": "Luftwaffe",
         "skill": 50
       }
@@ -109,6 +99,16 @@
       }
     ]
   },
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19430302",
+      "conversionCompleteDate": "19430321"
+    },
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440731"
+    }
+  ],
   "callsigns": {
     "19410801": "BRAMBLING"
   }

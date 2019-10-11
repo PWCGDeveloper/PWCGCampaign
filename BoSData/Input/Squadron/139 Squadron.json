@@ -6,18 +6,16 @@
   "skill": 70,
   "planeAssignments": [
     {
-      "archType": "b25",
+      "archType": "a20",
       "squadronIntroduction": "19420801",
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
-    "19440801": "Ghent"
+    "19440901": "Sint-Denijs-Westrem"
   },
   "skins": [
-      {
+    {
       "skinName": "139 Squadron",
       "planeType": "a20b",
       "startDate": "19420801",
@@ -29,8 +27,7 @@
     }
   ],
   "squadHistory": {
-    "squadHistoryEntries": [
-    ]
+    "squadHistoryEntries": []
   },
   "serviceId": 10103,
   "squadronRoles": {
@@ -47,6 +44,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "DUCK"
   }

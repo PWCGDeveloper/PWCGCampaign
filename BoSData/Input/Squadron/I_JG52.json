@@ -11,12 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440731"
-    }
-  ],  
   "airfields": {
     "19411001": "Dugino",
     "19411020": "Sychevka",
@@ -42,7 +36,7 @@
     "19430927": "Taman",
     "19431004": "Taman",
     "19431008": "Taman",
-    "19440801": "Rheine"   
+    "19440901": "Eindhoven"
   },
   "skins": [
     {
@@ -67,7 +61,7 @@
     }
   ],
   "squadHistory": {
-      "squadHistoryEntries": [
+    "squadHistoryEntries": [
       {
         "date": "19440801",
         "squadName": "I./JG27",
@@ -109,6 +103,12 @@
       }
     ]
   },
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440731"
+    }
+  ],
   "callsigns": {
     "19411001": "ROOK"
   }

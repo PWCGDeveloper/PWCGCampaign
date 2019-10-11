@@ -16,12 +16,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440731"
-    }
-  ],  
   "airfields": {
     "19411001": "Novoye Selo",
     "19411020": "Gzhatsk",
@@ -47,7 +41,7 @@
     "19430927": "Zaporojskaya",
     "19431004": "Zaporojskaya",
     "19431008": "Kerch 2",
-    "19440801": "Delmenhorst"
+    "19440901": "Gilze-Rijen"
   },
   "skins": [
     {
@@ -62,7 +56,7 @@
     }
   ],
   "squadHistory": {
-      "squadHistoryEntries": [
+    "squadHistoryEntries": [
       {
         "date": "19440801",
         "squadName": "I./JG6",
@@ -104,6 +98,12 @@
       }
     ]
   },
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440731"
+    }
+  ],
   "callsigns": {
     "19410801": "DUCK"
   }

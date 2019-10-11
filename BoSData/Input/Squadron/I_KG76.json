@@ -11,12 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440731"
-    }
-  ],  
   "airfields": {
     "19411001": "Novoye Selo",
     "19411020": "Varvarovka",
@@ -42,7 +36,7 @@
     "19430927": "Bagerovo",
     "19431004": "Bagerovo",
     "19431008": "Alibay",
-    "19440801": "Achmer"   
+    "19440901": "Heesch"
   },
   "skins": [],
   "squadHistory": {
@@ -80,6 +74,12 @@
       }
     ]
   },
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440731"
+    }
+  ],
   "callsigns": {
     "19410801": "GANNET"
   }

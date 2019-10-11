@@ -26,21 +26,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-    {
-      "conversionStartDate": "19420514",
-      "conversionCompleteDate": "19420529"
-    },
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440731"
-    },
-    {
-      "conversionStartDate": "19450120",
-      "conversionCompleteDate": "19450201"
-    }
-    
-  ],  
   "airfields": {
     "19411001": "Gzhatsk",
     "19411020": "Gzhatsk",
@@ -66,7 +51,7 @@
     "19430927": "Zaporojskaya",
     "19431004": "Zaporojskaya",
     "19431008": "Kerch",
-    "19440801": "Furstenau"
+    "19440901": "Schijndel"
   },
   "skins": [
     {
@@ -118,10 +103,10 @@
       "country": "Germany",
       "category": "Squadron",
       "definedInGame": false
-    }    
+    }
   ],
   "squadHistory": {
-      "squadHistoryEntries": [
+    "squadHistoryEntries": [
       {
         "date": "19440801",
         "squadName": "I./JG26",
@@ -183,6 +168,20 @@
       }
     ]
   },
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19420514",
+      "conversionCompleteDate": "19420529"
+    },
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440731"
+    },
+    {
+      "conversionStartDate": "19450120",
+      "conversionCompleteDate": "19450201"
+    }
+  ],
   "callsigns": {
     "19410801": "THRUSH"
   }

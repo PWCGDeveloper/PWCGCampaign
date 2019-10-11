@@ -3,6 +3,7 @@
 
 # Log file
 *.log
+PWCGErrorLog.txt
 
 # BlueJ files
 *.ctxt

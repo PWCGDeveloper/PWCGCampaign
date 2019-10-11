@@ -16,12 +16,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440731"
-    }
-  ],  
   "airfields": {
     "19420801": "Zimovskoy",
     "19420906": "Golubinskiy",
@@ -36,7 +30,7 @@
     "19430927": "Taman",
     "19431004": "Taman",
     "19431008": "Bagerovo",
-    "19440801": "Merzhausen"
+    "19440901": "Aachen"
   },
   "skins": [
     {
@@ -71,7 +65,7 @@
     }
   ],
   "squadHistory": {
-      "squadHistoryEntries": [
+    "squadHistoryEntries": [
       {
         "date": "19440801",
         "squadName": "I./JG1",
@@ -113,6 +107,12 @@
       }
     ]
   },
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440731"
+    }
+  ],
   "callsigns": {
     "19410801": "SWIFT"
   }

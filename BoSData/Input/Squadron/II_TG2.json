@@ -37,10 +37,21 @@
     "19430918": "Taman",
     "19430927": "Marfovka",
     "19431004": "Marfovka",
-    "19431008": "Marfovka"
+    "19431008": "Marfovka",
+    "19440901": "Volkel"
   },
   "skins": [],
   "serviceId": 20101,
+  "squadHistory": {
+    "squadHistoryEntries": [
+      {
+        "date": "19440901",
+        "squadName": "II./TG1",
+        "armedServiceName": "Luftwaffe",
+        "skill": 45
+      }
+    ]
+  },
   "squadronRoles": {
     "squadronRolePeriods": [
       {

@@ -11,12 +11,6 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-    {
-      "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440731"
-    }
-  ],  
   "airfields": {
     "19411001": "Losinski",
     "19411020": "Kolodezi",
@@ -42,7 +36,7 @@
     "19430927": "Zaporojskaya",
     "19431004": "Zaporojskaya",
     "19431008": "Kerch-2",
-    "19440801": "Bonninghardt"
+    "19440901": "Ophoven"
   },
   "skins": [
     {
@@ -77,7 +71,7 @@
     }
   ],
   "squadHistory": {
-      "squadHistoryEntries": [
+    "squadHistoryEntries": [
       {
         "date": "19440801",
         "squadName": "I./JG77",
@@ -119,6 +113,12 @@
       }
     ]
   },
+  "conversionPeriods": [
+    {
+      "conversionStartDate": "19440101",
+      "conversionCompleteDate": "19440731"
+    }
+  ],
   "callsigns": {
     "19410801": "ORIOLE"
   }

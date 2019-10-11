@@ -11,16 +11,12 @@
       "squadronWithdrawal": "19450601"
     }
   ],
-  "conversionPeriods": [
-  ],  
   "airfields": {
-    "19440801": "Asch"
+    "19440901": "St.Trond"
   },
-  "skins": [
-  ],
+  "skins": [],
   "squadHistory": {
-    "squadHistoryEntries": [
-    ]
+    "squadHistoryEntries": []
   },
   "serviceId": 10102,
   "squadronRoles": {
@@ -41,6 +37,7 @@
       }
     ]
   },
+  "conversionPeriods": [],
   "callsigns": {
     "19410801": "RAVEN"
   }
