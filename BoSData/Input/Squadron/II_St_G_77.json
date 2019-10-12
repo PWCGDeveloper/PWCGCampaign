@@ -8,7 +8,7 @@
     {
       "archType": "ju87",
       "squadronIntroduction": "19410801",
-      "squadronWithdrawal": "19440731"
+      "squadronWithdrawal": "19440831"
     },
     {
       "archType": "fw190",
@@ -48,7 +48,7 @@
     "19441225": "Krefeld",
     "19441229": "Krefeld",    
     "19450207": "Koln-Butzweilerhof",
-    "19450310": "Limburg-Linter",
+    "19450310": "Merzhausen",
     "19450404": "Ettinghausen"
   },
   "skins": [
@@ -78,7 +78,7 @@
     "squadronRolePeriods": [
       {
         "startDate": "19400101",
-        "endDate": "19440731",
+        "endDate": "19440831",
         "weightedRoles": [
           {
             "role": "ROLE_DIVE_BOMB",
@@ -101,7 +101,7 @@
   "conversionPeriods": [
     {
       "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440731"
+      "conversionCompleteDate": "19440831"
     }
   ],
   "callsigns": {

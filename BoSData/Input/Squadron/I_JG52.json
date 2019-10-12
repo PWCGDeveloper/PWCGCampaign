@@ -83,7 +83,7 @@
     "squadronRolePeriods": [
       {
         "startDate": "19400101",
-        "endDate": "19440731",
+        "endDate": "19440831",
         "weightedRoles": [
           {
             "role": "ROLE_FIGHTER",
@@ -114,7 +114,7 @@
   "conversionPeriods": [
     {
       "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440731"
+      "conversionCompleteDate": "19440831"
     }
   ],
   "callsigns": {

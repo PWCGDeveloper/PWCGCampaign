@@ -1,0 +1,47 @@
+{
+  "country": "GERMANY",
+  "squadronId": 20111044,
+  "name": "I./JG44",
+  "fileName": "I_JG44.json",
+  "skill": 95,
+  "planeAssignments": [
+    {
+      "archType": "me262",
+      "squadronIntroduction": "19450201",
+      "squadronWithdrawal": "19450601"
+    }
+  ],
+  "airfields": {
+    "19450201": "Eudenbach/Asbach",
+    "19450207": "Kirchhellen",
+    "19450310": "Frankfurt/Rhein-Main",
+    "19450404": "Hopsten"
+  },
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 20101,
+  "squadronRoles": {
+    "squadronRolePeriods": [
+      {
+        "startDate": "19450201",
+        "endDate": "19450601",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 90
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  },
+  "conversionPeriods": [],
+  "callsigns": {
+    "19410801": "SWAN"
+  }
+}

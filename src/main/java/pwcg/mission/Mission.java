@@ -120,7 +120,7 @@ public class Mission
         ambientGroundUnitBuilder.generateAmbientGroundUnits();
     }
 
-    private void write() throws PWCGException 
+    public void write() throws PWCGException 
     {
         IMissionFile missionFile = MissionFileFactory.createMissionFile(this);
                  
@@ -189,8 +189,6 @@ public class Mission
         	
             MissionAnalyzer analyzer = new MissionAnalyzer();
             analyzer.analyze(this);
-
-            this.write();
         }
 
         isFinalized = true;

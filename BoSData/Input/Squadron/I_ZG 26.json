@@ -8,7 +8,7 @@
     {
       "archType": "bf110",
       "squadronIntroduction": "19410101",
-      "squadronWithdrawal": "19440731"
+      "squadronWithdrawal": "19440831"
     },
     {
       "archType": "fw190",
@@ -109,7 +109,7 @@
   "conversionPeriods": [
     {
       "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440731"
+      "conversionCompleteDate": "19440831"
     }
   ],
   "callsigns": {

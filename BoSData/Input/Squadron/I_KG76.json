@@ -41,10 +41,10 @@
     "19441101": "Koln-Wahn",
     "19441220": "Koln-Wahn",
     "19441225": "Koln-Wahn",
-    "19441229": "Koln-Wahn",    
+    "19441229": "Koln-Wahn",
     "19450207": "Limburg-Linter",
     "19450310": "Altenstadt",
-    "19450404": "Bad Lippspringe"
+    "19450404": "Vorden"
   },
   "skins": [],
   "squadHistory": {
@@ -85,7 +85,7 @@
   "conversionPeriods": [
     {
       "conversionStartDate": "19440101",
-      "conversionCompleteDate": "19440731"
+      "conversionCompleteDate": "19440831"
     }
   ],
   "callsigns": {

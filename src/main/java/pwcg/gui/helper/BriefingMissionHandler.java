@@ -92,6 +92,7 @@ public class BriefingMissionHandler
         {
             updateMissionBriefingParameters();
             mission.finalizeMission();
+            mission.write();
 
             Campaign campaign  = PWCGContext.getInstance().getCampaign();
             campaign.setCurrentMission(mission);
