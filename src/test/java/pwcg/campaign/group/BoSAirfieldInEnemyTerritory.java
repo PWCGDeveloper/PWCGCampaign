@@ -77,7 +77,7 @@ public class BoSAirfieldInEnemyTerritory extends AirfieldInEnemyTerritory
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.BODENPLATTE_MAP);
 
         BoSAirfieldInEnemyTerritory airfieldFinder = new BoSAirfieldInEnemyTerritory();
-        airfieldFinder.findEnemy(FrontMapIdentifier.BODENPLATTE_MAP, DateUtils.getDateYYYYMMDD("19440801"), DateUtils.getDateYYYYMMDD("19450503"));
+        airfieldFinder.findEnemy(FrontMapIdentifier.BODENPLATTE_MAP, DateUtils.getDateYYYYMMDD("19440901"), DateUtils.getDateYYYYMMDD("19450503"));
     }
 
 }

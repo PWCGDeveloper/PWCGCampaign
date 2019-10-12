@@ -174,7 +174,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         usaaf.setGeneralRankForService("General");
         usaaf.setDailyPersonnelReplacementRate(15);
         usaaf.setDailyEquipmentReplacementRate(30);
-        usaaf.setStartDate(DateUtils.getDateYYYYMMDD("19440801"));
+        usaaf.setStartDate(DateUtils.getDateYYYYMMDD("19440901"));
 
         List<String> usaafPics = new ArrayList<String>();
         usaafPics.add("American");
@@ -207,7 +207,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         raf.setGeneralRankForService("General");
         raf.setDailyPersonnelReplacementRate(15);
         raf.setDailyEquipmentReplacementRate(30);
-        raf.setStartDate(DateUtils.getDateYYYYMMDD("19440801"));
+        raf.setStartDate(DateUtils.getDateYYYYMMDD("19440901"));
 
         List<String> rafPics = new ArrayList<String>();
         rafPics.add("British");

@@ -2,912 +2,2326 @@
   "locationSetName": "Airfields",
   "locations": [
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 139029.0,
+            "yPos": 192.0,
+            "zPos": 213739.0
+          },
+          "endPos": {
+            "xPos": 139548.0,
+            "yPos": 191.0,
+            "zPos": 214583.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Aachen",
       "position": {
-        "xPos": 139120.0,
+        "xPos": 139029.0,
         "yPos": 192.0,
-        "zPos": 213784.0
+        "zPos": 213739.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 62.0,
+        "yOri": 58.41143975898307,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 310106.0,
+            "yPos": 58.0,
+            "zPos": 336127.0
+          },
+          "endPos": {
+            "xPos": 311220.0,
+            "yPos": 57.0,
+            "zPos": 336769.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 310473.0,
+            "yPos": 58.0,
+            "zPos": 337427.0
+          },
+          "endPos": {
+            "xPos": 311121.0,
+            "yPos": 57.0,
+            "zPos": 336316.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 310662.0,
+            "yPos": 57.0,
+            "zPos": 337551.0
+          },
+          "endPos": {
+            "xPos": 310457.0,
+            "yPos": 57.0,
+            "zPos": 336023.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Achmer",
       "position": {
-        "xPos": 310098.0,
+        "xPos": 310106.0,
         "yPos": 58.0,
-        "zPos": 336120.0
+        "zPos": 336127.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 30.0,
+        "yOri": 29.954916977895902,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 76960.0,
+            "yPos": 130.0,
+            "zPos": 411676.0
+          },
+          "endPos": {
+            "xPos": 77557.0,
+            "yPos": 129.0,
+            "zPos": 410758.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Altenstadt",
       "position": {
-        "xPos": 77055.0,
+        "xPos": 76960.0,
         "yPos": 130.0,
-        "zPos": 411685.0
+        "zPos": 411676.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 297.0,
+        "yOri": 303.0370284099382,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 156310.0,
+            "yPos": 99.0,
+            "zPos": 171647.0
+          },
+          "endPos": {
+            "xPos": 157115.0,
+            "yPos": 98.0,
+            "zPos": 172866.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Asch",
       "position": {
-        "xPos": 156313.0,
+        "xPos": 156310.0,
         "yPos": 99.0,
-        "zPos": 171657.0
+        "zPos": 171647.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 56.0,
+        "yOri": 56.56013079421776,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 41006.0,
+            "yPos": 133.0,
+            "zPos": 411428.0
+          },
+          "endPos": {
+            "xPos": 41932.0,
+            "yPos": 132.0,
+            "zPos": 412074.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Babenhausen",
       "position": {
-        "xPos": 41013.0,
+        "xPos": 41006.0,
         "yPos": 133.0,
-        "zPos": 411429.0
+        "zPos": 411428.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 31.0,
+        "yOri": 34.900559882302254,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 245434.0,
+            "yPos": 134.0,
+            "zPos": 395821.0
+          },
+          "endPos": {
+            "xPos": 245735.0,
+            "yPos": 133.0,
+            "zPos": 396681.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Bad Lippspringe",
       "position": {
-        "xPos": 245531.0,
+        "xPos": 245434.0,
         "yPos": 134.0,
-        "zPos": 395910.0
+        "zPos": 395821.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 49.0,
+        "yOri": 70.70995378081128,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 132902.0,
+            "yPos": 59.0,
+            "zPos": 282611.0
+          },
+          "endPos": {
+            "xPos": 132447.0,
+            "yPos": 58.0,
+            "zPos": 283813.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Bonn-Hangelar_3960",
       "position": {
-        "xPos": 132855.0,
+        "xPos": 132902.0,
         "yPos": 59.0,
-        "zPos": 282669.0
+        "zPos": 282611.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 107.0,
+        "yOri": 110.7334471208917,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 222371.0,
+            "yPos": 47.0,
+            "zPos": 237289.0
+          },
+          "endPos": {
+            "xPos": 221872.0,
+            "yPos": 46.0,
+            "zPos": 236393.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Bonninghardt-Sud",
       "position": {
-        "xPos": 222339.0,
+        "xPos": 222371.0,
         "yPos": 47.0,
-        "zPos": 237246.0
+        "zPos": 237289.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 242.0,
+        "yOri": 240.88570716651196,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 121818.0,
+            "yPos": 561.0,
+            "zPos": 354377.0
+          },
+          "endPos": {
+            "xPos": 121632.0,
+            "yPos": 561.0,
+            "zPos": 353459.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Breitscheid",
       "position": {
-        "xPos": 121823.0,
+        "xPos": 121818.0,
         "yPos": 561.0,
-        "zPos": 354317.0
+        "zPos": 354377.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 260.0,
+        "yOri": 258.54610858390777,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 119962.0,
+            "yPos": 59.0,
+            "zPos": 46876.0
+          },
+          "endPos": {
+            "xPos": 118308.0,
+            "yPos": 58.0,
+            "zPos": 46454.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 118867.0,
+            "yPos": 58.0,
+            "zPos": 47872.0
+          },
+          "endPos": {
+            "xPos": 118601.0,
+            "yPos": 58.0,
+            "zPos": 46277.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Chievres",
       "position": {
-        "xPos": 118336.0,
+        "xPos": 119962.0,
         "yPos": 59.0,
-        "zPos": 46468.0
+        "zPos": 46876.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 15.0,
+        "yOri": 194.31303252010423,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 256430.0,
+            "yPos": 77.0,
+            "zPos": 286339.0
+          },
+          "endPos": {
+            "xPos": 256786.0,
+            "yPos": 76.0,
+            "zPos": 287085.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Coesfeld-Lette",
       "position": {
-        "xPos": 256470.0,
+        "xPos": 256430.0,
         "yPos": 77.0,
-        "zPos": 286372.0
+        "zPos": 286339.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 68.0,
+        "yOri": 64.48897303546656,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 184937.0,
+            "yPos": 10.0,
+            "zPos": 94259.0
+          },
+          "endPos": {
+            "xPos": 184399.0,
+            "yPos": 10.0,
+            "zPos": 95586.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Deurne",
       "position": {
-        "xPos": 184935.0,
+        "xPos": 184937.0,
         "yPos": 10.0,
-        "zPos": 94252.0
+        "zPos": 94259.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 112.0,
+        "yOri": 112.06890178003702,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 217909.0,
+            "yPos": 73.0,
+            "zPos": 311668.0
+          },
+          "endPos": {
+            "xPos": 217498.0,
+            "yPos": 72.0,
+            "zPos": 310753.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Dortmund",
       "position": {
-        "xPos": 217914.0,
+        "xPos": 217909.0,
         "yPos": 73.0,
-        "zPos": 311654.0
+        "zPos": 311668.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 246.0,
+        "yOri": 245.81132175598134,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 335498.0,
+            "yPos": 30.0,
+            "zPos": 305920.0
+          },
+          "endPos": {
+            "xPos": 334731.0,
+            "yPos": 29.0,
+            "zPos": 306664.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Drope",
       "position": {
-        "xPos": 335428.0,
+        "xPos": 335498.0,
         "yPos": 30.0,
-        "zPos": 305874.0
+        "zPos": 305920.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 118.0,
+        "yOri": 135.87207224650473,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 189929.0,
+            "yPos": 38.0,
+            "zPos": 254873.0
+          },
+          "endPos": {
+            "xPos": 189920.0,
+            "yPos": 37.0,
+            "zPos": 255788.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Dusseldorf-Lohausen",
       "position": {
-        "xPos": 189939.0,
+        "xPos": 189929.0,
         "yPos": 38.0,
-        "zPos": 254878.0
+        "zPos": 254873.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 90.0,
+        "yOri": 90.56354687081401,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 210586.0,
+            "yPos": 23.0,
+            "zPos": 160558.0
+          },
+          "endPos": {
+            "xPos": 210843.0,
+            "yPos": 22.0,
+            "zPos": 161976.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 209573.0,
+            "yPos": 23.0,
+            "zPos": 161361.0
+          },
+          "endPos": {
+            "xPos": 210843.0,
+            "yPos": 22.0,
+            "zPos": 161933.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Eindhoven",
       "position": {
-        "xPos": 210592.0,
+        "xPos": 210586.0,
         "yPos": 23.0,
-        "zPos": 160569.0
+        "zPos": 160558.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 80.0,
+        "yOri": 79.72715836998677,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 202546.0,
+            "yPos": 115.0,
+            "zPos": 267484.0
+          },
+          "endPos": {
+            "xPos": 203112.0,
+            "yPos": 114.0,
+            "zPos": 268988.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Essen-Mulheim",
       "position": {
-        "xPos": 202570.0,
+        "xPos": 202546.0,
         "yPos": 115.0,
-        "zPos": 267569.0
+        "zPos": 267484.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 70.0,
+        "yOri": 69.37718624019539,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 110120.0,
+            "yPos": 216.0,
+            "zPos": 404357.0
+          },
+          "endPos": {
+            "xPos": 109637.0,
+            "yPos": 215.0,
+            "zPos": 403445.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Ettinghausen",
       "position": {
-        "xPos": 109661.0,
+        "xPos": 110120.0,
         "yPos": 216.0,
-        "zPos": 403499.0
+        "zPos": 404357.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 63.0,
+        "yOri": 242.0940700935685,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 121920.0,
+            "yPos": 301.0,
+            "zPos": 297715.0
+          },
+          "endPos": {
+            "xPos": 121369.0,
+            "yPos": 301.0,
+            "zPos": 296794.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Eudenbach/Asbach",
       "position": {
-        "xPos": 121403.0,
+        "xPos": 121920.0,
         "yPos": 301.0,
-        "zPos": 296822.0
+        "zPos": 297715.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 60.0,
+        "yOri": 239.1094882724032,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 150010.0,
+            "yPos": 57.0,
+            "zPos": 90287.0
+          },
+          "endPos": {
+            "xPos": 149097.0,
+            "yPos": 56.0,
+            "zPos": 90960.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Evere",
       "position": {
-        "xPos": 149986.0,
+        "xPos": 150010.0,
         "yPos": 57.0,
-        "zPos": 90350.0
+        "zPos": 90287.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 153.0,
+        "yOri": 143.60494629413333,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 78181.0,
+            "yPos": 275.0,
+            "zPos": 102337.0
+          },
+          "endPos": {
+            "xPos": 78399.0,
+            "yPos": 275.0,
+            "zPos": 103908.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 77880.0,
+            "yPos": 275.0,
+            "zPos": 103602.0
+          },
+          "endPos": {
+            "xPos": 79041.0,
+            "yPos": 275.0,
+            "zPos": 103220.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Florennes",
       "position": {
-        "xPos": 78171.0,
+        "xPos": 78181.0,
         "yPos": 275.0,
-        "zPos": 102336.0
+        "zPos": 102337.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 82.0,
+        "yOri": 82.09979476945283,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 61612.0,
+            "yPos": 127.0,
+            "zPos": 380869.0
+          },
+          "endPos": {
+            "xPos": 60967.0,
+            "yPos": 126.0,
+            "zPos": 382213.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Frankfurt-Eschborn",
       "position": {
-        "xPos": 61596.0,
+        "xPos": 61612.0,
         "yPos": 127.0,
-        "zPos": 380902.0
+        "zPos": 380869.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 115.0,
+        "yOri": 115.63684793029857,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 50805.0,
+            "yPos": 111.0,
+            "zPos": 384310.0
+          },
+          "endPos": {
+            "xPos": 49958.0,
+            "yPos": 110.0,
+            "zPos": 383034.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Frankfurt/Rhein-Main",
       "position": {
-        "xPos": 50807.0,
+        "xPos": 50805.0,
         "yPos": 111.0,
-        "zPos": 384320.0
+        "zPos": 384310.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 234.0,
+        "yOri": 236.42406734200108,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 329600.0,
+            "yPos": 39.0,
+            "zPos": 317116.0
+          },
+          "endPos": {
+            "xPos": 330801.0,
+            "yPos": 38.0,
+            "zPos": 316696.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Furstenau",
       "position": {
-        "xPos": 329645.0,
+        "xPos": 329600.0,
         "yPos": 39.0,
-        "zPos": 317105.0
+        "zPos": 317116.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 342.0,
+        "yOri": 340.7248302810924,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 68904.0,
+            "yPos": 127.0,
+            "zPos": 422006.0
+          },
+          "endPos": {
+            "xPos": 69543.0,
+            "yPos": 126.0,
+            "zPos": 422798.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Gelnhausen",
       "position": {
-        "xPos": 68929.0,
+        "xPos": 68904.0,
         "yPos": 127.0,
-        "zPos": 422025.0
+        "zPos": 422006.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 52.0,
+        "yOri": 51.10277965365579,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 225360.0,
+            "yPos": 14.0,
+            "zPos": 130101.0
+          },
+          "endPos": {
+            "xPos": 224080.0,
+            "yPos": 13.0,
+            "zPos": 130302.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 225366.0,
+            "yPos": 13.0,
+            "zPos": 130016.0
+          },
+          "endPos": {
+            "xPos": 224112.0,
+            "yPos": 13.0,
+            "zPos": 129556.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 225153.0,
+            "yPos": 13.0,
+            "zPos": 129480.0
+          },
+          "endPos": {
+            "xPos": 224881.0,
+            "yPos": 13.0,
+            "zPos": 130689.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Gilze-Rijen",
       "position": {
-        "xPos": 225155.0,
+        "xPos": 225360.0,
         "yPos": 14.0,
-        "zPos": 129482.0
+        "zPos": 130101.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 103.0,
+        "yOri": 171.07565052208665,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 46127.0,
+            "yPos": 177.0,
+            "zPos": 396111.0
+          },
+          "endPos": {
+            "xPos": 46003.0,
+            "yPos": 177.0,
+            "zPos": 395163.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Gotzenhain",
       "position": {
-        "xPos": 46113.0,
+        "xPos": 46127.0,
         "yPos": 177.0,
-        "zPos": 396082.0
+        "zPos": 396111.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 263.0,
+        "yOri": 262.5479225565953,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 246212.0,
+            "yPos": 13.0,
+            "zPos": 182156.0
+          },
+          "endPos": {
+            "xPos": 244990.0,
+            "yPos": 12.0,
+            "zPos": 182301.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "GraveKeent",
       "position": {
-        "xPos": 246124.0,
+        "xPos": 246212.0,
         "yPos": 13.0,
-        "zPos": 182178.0
+        "zPos": 182156.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 175.0,
+        "yOri": 173.23304151681873,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 283629.0,
+            "yPos": 49.0,
+            "zPos": 320759.0
+          },
+          "endPos": {
+            "xPos": 284126.0,
+            "yPos": 48.0,
+            "zPos": 319669.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Greven-Lette",
       "position": {
-        "xPos": 283632.0,
+        "xPos": 283629.0,
         "yPos": 49.0,
-        "zPos": 320733.0
+        "zPos": 320759.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 295.0,
+        "yOri": 294.511245129563,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 158126.0,
+            "yPos": 23.0,
+            "zPos": 88625.0
+          },
+          "endPos": {
+            "xPos": 157796.0,
+            "yPos": 22.0,
+            "zPos": 87685.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Grimbergen",
       "position": {
-        "xPos": 158128.0,
+        "xPos": 158126.0,
         "yPos": 23.0,
-        "zPos": 88610.0
+        "zPos": 88625.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 244.0,
+        "yOri": 250.65567072787886,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 39869.0,
+            "yPos": 139.0,
+            "zPos": 416371.0
+          },
+          "endPos": {
+            "xPos": 38838.0,
+            "yPos": 138.0,
+            "zPos": 416309.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Gross-Ostheim",
       "position": {
-        "xPos": 39896.0,
+        "xPos": 39869.0,
         "yPos": 139.0,
-        "zPos": 416447.0
+        "zPos": 416371.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 188.0,
+        "yOri": 183.4413826133811,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 260956.0,
+            "yPos": 66.0,
+            "zPos": 362733.0
+          },
+          "endPos": {
+            "xPos": 260183.0,
+            "yPos": 65.0,
+            "zPos": 363618.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Gutersloh",
       "position": {
-        "xPos": 260148.0,
-        "yPos": 65.0,
-        "zPos": 363608.0
+        "xPos": 260956.0,
+        "yPos": 66.0,
+        "zPos": 362733.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 315.0,
+        "yOri": 131.13546856401882,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 240483.0,
+            "yPos": 15.0,
+            "zPos": 174151.0
+          },
+          "endPos": {
+            "xPos": 239236.0,
+            "yPos": 14.0,
+            "zPos": 174135.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Heesch",
       "position": {
-        "xPos": 240465.0,
+        "xPos": 240483.0,
         "yPos": 15.0,
-        "zPos": 174153.0
+        "zPos": 174151.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 181.0,
+        "yOri": 180.73511000014275,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 318284.0,
+            "yPos": 45.0,
+            "zPos": 338776.0
+          },
+          "endPos": {
+            "xPos": 319350.0,
+            "yPos": 44.0,
+            "zPos": 339412.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 318294.0,
+            "yPos": 45.0,
+            "zPos": 338684.0
+          },
+          "endPos": {
+            "xPos": 319464.0,
+            "yPos": 44.0,
+            "zPos": 338191.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 319519.0,
+            "yPos": 44.0,
+            "zPos": 338186.0
+          },
+          "endPos": {
+            "xPos": 319248.0,
+            "yPos": 44.0,
+            "zPos": 339342.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Hesepe",
       "position": {
-        "xPos": 318327.0,
+        "xPos": 318284.0,
         "yPos": 45.0,
-        "zPos": 338673.0
+        "zPos": 338776.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 335.0,
+        "yOri": 30.82126939403084,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 307048.0,
+            "yPos": 40.0,
+            "zPos": 309961.0
+          },
+          "endPos": {
+            "xPos": 307253.0,
+            "yPos": 39.0,
+            "zPos": 312736.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 306840.0,
+            "yPos": 40.0,
+            "zPos": 311305.0
+          },
+          "endPos": {
+            "xPos": 307981.0,
+            "yPos": 39.0,
+            "zPos": 311213.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 307147.0,
+            "yPos": 39.0,
+            "zPos": 310290.0
+          },
+          "endPos": {
+            "xPos": 307974.0,
+            "yPos": 39.0,
+            "zPos": 310969.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Hopsten",
       "position": {
-        "xPos": 307085.0,
+        "xPos": 307048.0,
         "yPos": 40.0,
-        "zPos": 310424.0
+        "zPos": 309961.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 86.0,
+        "yOri": 85.77501340006958,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 131807.0,
+            "yPos": 139.0,
+            "zPos": 244838.0
+          },
+          "endPos": {
+            "xPos": 130809.0,
+            "yPos": 139.0,
+            "zPos": 243489.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Kelz",
       "position": {
-        "xPos": 132210.0,
+        "xPos": 131807.0,
         "yPos": 139.0,
-        "zPos": 243603.0
+        "zPos": 244838.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 178.0,
+        "yOri": 233.5056950518879,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 226893.0,
+            "yPos": 66.0,
+            "zPos": 263582.0
+          },
+          "endPos": {
+            "xPos": 226372.0,
+            "yPos": 66.0,
+            "zPos": 262771.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Kirchhellen",
       "position": {
-        "xPos": 226766.0,
+        "xPos": 226893.0,
         "yPos": 66.0,
-        "zPos": 263641.0
+        "zPos": 263582.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 256.0,
+        "yOri": 237.2826306678843,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 135499.0,
+            "yPos": 303.0,
+            "zPos": 417965.0
+          },
+          "endPos": {
+            "xPos": 134883.0,
+            "yPos": 303.0,
+            "zPos": 418852.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Kirtorf",
       "position": {
-        "xPos": 135481.0,
+        "xPos": 135499.0,
         "yPos": 303.0,
-        "zPos": 417986.0
+        "zPos": 417965.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 124.0,
+        "yOri": 124.77904187467757,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 320262.0,
+            "yPos": 27.0,
+            "zPos": 287000.0
+          },
+          "endPos": {
+            "xPos": 319846.0,
+            "yPos": 26.0,
+            "zPos": 286253.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Klausheide",
       "position": {
-        "xPos": 320235.0,
+        "xPos": 320262.0,
         "yPos": 27.0,
-        "zPos": 286933.0
+        "zPos": 287000.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 240.0,
+        "yOri": 240.88681793478048,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 155703.0,
+            "yPos": 53.0,
+            "zPos": 263945.0
+          },
+          "endPos": {
+            "xPos": 156904.0,
+            "yPos": 53.0,
+            "zPos": 264403.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Koln-Butzweilerhof",
       "position": {
-        "xPos": 155726.0,
+        "xPos": 155703.0,
         "yPos": 53.0,
-        "zPos": 263956.0
+        "zPos": 263945.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 20.0,
+        "yOri": 20.874293863439878,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 150684.0,
+            "yPos": 58.0,
+            "zPos": 275790.0
+          },
+          "endPos": {
+            "xPos": 151608.0,
+            "yPos": 57.0,
+            "zPos": 276175.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Koln-Ostheim",
       "position": {
-        "xPos": 150669.0,
+        "xPos": 150684.0,
         "yPos": 58.0,
-        "zPos": 275842.0
+        "zPos": 275790.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 16.0,
+        "yOri": 22.619864948040426,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 142635.0,
+            "yPos": 70.0,
+            "zPos": 281298.0
+          },
+          "endPos": {
+            "xPos": 143049.0,
+            "yPos": 70.0,
+            "zPos": 280109.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Koln-Wahn",
       "position": {
-        "xPos": 142668.0,
+        "xPos": 142635.0,
         "yPos": 70.0,
-        "zPos": 281287.0
+        "zPos": 281298.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 287.0,
+        "yOri": 289.1976961035306,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 198855.0,
+            "yPos": 38.0,
+            "zPos": 245942.0
+          },
+          "endPos": {
+            "xPos": 199604.0,
+            "yPos": 38.0,
+            "zPos": 245634.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Krefeld",
       "position": {
-        "xPos": 198827.0,
+        "xPos": 198855.0,
         "yPos": 38.0,
-        "zPos": 245947.0
+        "zPos": 245942.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 339.0,
+        "yOri": 337.6468023130106,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 194598.0,
+            "yPos": 34.0,
+            "zPos": 247704.0
+          },
+          "endPos": {
+            "xPos": 195213.0,
+            "yPos": 33.0,
+            "zPos": 248662.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Krefeld-Linn",
       "position": {
-        "xPos": 194614.0,
+        "xPos": 194598.0,
         "yPos": 34.0,
-        "zPos": 247722.0
+        "zPos": 247704.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 58.0,
+        "yOri": 57.30106175566596,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 134631.0,
+            "yPos": 105.0,
+            "zPos": 113630.0
+          },
+          "endPos": {
+            "xPos": 135829.0,
+            "yPos": 104.0,
+            "zPos": 114699.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 134701.0,
+            "yPos": 105.0,
+            "zPos": 114492.0
+          },
+          "endPos": {
+            "xPos": 135303.0,
+            "yPos": 104.0,
+            "zPos": 113195.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "LeCulot",
       "position": {
-        "xPos": 134629.0,
+        "xPos": 134631.0,
         "yPos": 105.0,
-        "zPos": 113640.0
+        "zPos": 113630.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 40.0,
+        "yOri": 41.74318768941993,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 86701.0,
+            "yPos": 187.0,
+            "zPos": 346346.0
+          },
+          "endPos": {
+            "xPos": 86846.0,
+            "yPos": 186.0,
+            "zPos": 347769.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Limburg-Linter",
       "position": {
-        "xPos": 86704.0,
+        "xPos": 86701.0,
         "yPos": 187.0,
-        "zPos": 346375.0
+        "zPos": 346346.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 84.0,
+        "yOri": 84.18179056840145,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 43179.0,
+            "yPos": 226.0,
+            "zPos": 352917.0
+          },
+          "endPos": {
+            "xPos": 42364.0,
+            "yPos": 225.0,
+            "zPos": 352319.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Mainz-Finthen",
       "position": {
-        "xPos": 43196.0,
+        "xPos": 43179.0,
         "yPos": 226.0,
-        "zPos": 352895.0
+        "zPos": 352917.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 214.0,
+        "yOri": 216.26907354507193,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 152444.0,
+            "yPos": 40.0,
+            "zPos": 94038.0
+          },
+          "endPos": {
+            "xPos": 153344.0,
+            "yPos": 40.0,
+            "zPos": 96224.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 151391.0,
+            "yPos": 40.0,
+            "zPos": 95690.0
+          },
+          "endPos": {
+            "xPos": 153008.0,
+            "yPos": 40.0,
+            "zPos": 96356.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 152132.0,
+            "yPos": 40.0,
+            "zPos": 93589.0
+          },
+          "endPos": {
+            "xPos": 151176.0,
+            "yPos": 39.0,
+            "zPos": 95204.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Melsbroek",
       "position": {
-        "xPos": 152459.0,
+        "xPos": 152444.0,
         "yPos": 40.0,
-        "zPos": 94067.0
+        "zPos": 94038.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 68.0,
+        "yOri": 67.62250153998156,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 83973.0,
+            "yPos": 377.0,
+            "zPos": 375465.0
+          },
+          "endPos": {
+            "xPos": 83406.0,
+            "yPos": 376.0,
+            "zPos": 376554.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Merzhausen",
       "position": {
-        "xPos": 83909.0,
-        "yPos": 376.0,
-        "zPos": 375528.0
+        "xPos": 83973.0,
+        "yPos": 377.0,
+        "zPos": 375465.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 116.0,
+        "yOri": 117.50424212281357,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 269787.0,
+            "yPos": 50.0,
+            "zPos": 324041.0
+          },
+          "endPos": {
+            "xPos": 268645.0,
+            "yPos": 49.0,
+            "zPos": 324054.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 268221.0,
+            "yPos": 50.0,
+            "zPos": 324339.0
+          },
+          "endPos": {
+            "xPos": 268143.0,
+            "yPos": 50.0,
+            "zPos": 323206.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Munster-Handorf",
       "position": {
-        "xPos": 269777.0,
+        "xPos": 269787.0,
         "yPos": 50.0,
-        "zPos": 324048.0
+        "zPos": 324041.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 180.0,
+        "yOri": 179.34779950735262,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 95744.0,
+            "yPos": 173.0,
+            "zPos": 411938.0
+          },
+          "endPos": {
+            "xPos": 95304.0,
+            "yPos": 172.0,
+            "zPos": 412890.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Nidda",
       "position": {
-        "xPos": 95672.0,
+        "xPos": 95744.0,
         "yPos": 173.0,
-        "zPos": 412046.0
+        "zPos": 411938.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 115.0,
+        "yOri": 114.80566575481602,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 164763.0,
+            "yPos": 83.0,
+            "zPos": 170575.0
+          },
+          "endPos": {
+            "xPos": 165495.0,
+            "yPos": 83.0,
+            "zPos": 169293.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Ophoven",
       "position": {
-        "xPos": 164766.0,
+        "xPos": 164763.0,
         "yPos": 83.0,
-        "zPos": 170567.0
+        "zPos": 170575.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 299.0,
+        "yOri": 299.72562544839377,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 234946.0,
+            "yPos": 195.0,
+            "zPos": 393642.0
+          },
+          "endPos": {
+            "xPos": 233562.0,
+            "yPos": 194.0,
+            "zPos": 392934.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Paderborn",
       "position": {
-        "xPos": 234945.0,
+        "xPos": 234946.0,
         "yPos": 195.0,
-        "zPos": 393634.0
+        "zPos": 393642.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 206.0,
+        "yOri": 207.0925003000879,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 179313.0,
+            "yPos": 57.0,
+            "zPos": 165116.0
+          },
+          "endPos": {
+            "xPos": 178410.0,
+            "yPos": 57.0,
+            "zPos": 163944.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "PetitBrogel",
       "position": {
-        "xPos": 179309.0,
+        "xPos": 179313.0,
         "yPos": 57.0,
-        "zPos": 165117.0
+        "zPos": 165116.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 231.0,
+        "yOri": 232.38654604138262,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 317612.0,
+            "yPos": 36.0,
+            "zPos": 300340.0
+          },
+          "endPos": {
+            "xPos": 317201.0,
+            "yPos": 35.0,
+            "zPos": 301534.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Plantlunne",
       "position": {
-        "xPos": 317696.0,
+        "xPos": 317612.0,
         "yPos": 36.0,
-        "zPos": 300384.0
+        "zPos": 300340.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 115.0,
+        "yOri": 108.99454420227599,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 342867.0,
+            "yPos": 26.0,
+            "zPos": 336523.0
+          },
+          "endPos": {
+            "xPos": 342197.0,
+            "yPos": 25.0,
+            "zPos": 337436.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Quackenbruck",
       "position": {
-        "xPos": 342845.0,
+        "xPos": 342867.0,
         "yPos": 26.0,
-        "zPos": 336540.0
+        "zPos": 336523.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 127.0,
+        "yOri": 126.27287739763129,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 300397.0,
+            "yPos": 40.0,
+            "zPos": 299993.0
+          },
+          "endPos": {
+            "xPos": 301527.0,
+            "yPos": 40.0,
+            "zPos": 299365.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 300411.0,
+            "yPos": 40.0,
+            "zPos": 300101.0
+          },
+          "endPos": {
+            "xPos": 301657.0,
+            "yPos": 40.0,
+            "zPos": 300534.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 301261.0,
+            "yPos": 40.0,
+            "zPos": 300495.0
+          },
+          "endPos": {
+            "xPos": 300445.0,
+            "yPos": 39.0,
+            "zPos": 299050.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Rheine",
       "position": {
-        "xPos": 300465.0,
+        "xPos": 300397.0,
         "yPos": 40.0,
-        "zPos": 300123.0
+        "zPos": 299993.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 18.0,
+        "yOri": 330.93678646755217,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 222163.0,
+            "yPos": 24.0,
+            "zPos": 187190.0
+          },
+          "endPos": {
+            "xPos": 221984.0,
+            "yPos": 23.0,
+            "zPos": 185807.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Rips",
       "position": {
-        "xPos": 222165.0,
-        "yPos": 23.0,
-        "zPos": 187171.0
+        "xPos": 222163.0,
+        "yPos": 24.0,
+        "zPos": 187190.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 263.0,
+        "yOri": 262.62527490603856,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 227992.0,
+            "yPos": 14.0,
+            "zPos": 166495.0
+          },
+          "endPos": {
+            "xPos": 228165.0,
+            "yPos": 13.0,
+            "zPos": 167913.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Schijndel",
       "position": {
-        "xPos": 227994.0,
+        "xPos": 227992.0,
         "yPos": 14.0,
-        "zPos": 166494.0
+        "zPos": 166495.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 83.0,
+        "yOri": 83.04412933523622,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 168985.0,
+            "yPos": 10.0,
+            "zPos": 39338.0
+          },
+          "endPos": {
+            "xPos": 169473.0,
+            "yPos": 10.0,
+            "zPos": 40135.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Sint-Denijs-Westrem",
       "position": {
-        "xPos": 169007.0,
+        "xPos": 168985.0,
         "yPos": 10.0,
-        "zPos": 39421.0
+        "zPos": 39338.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 55.0,
+        "yOri": 58.5210264511913,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 137209.0,
+            "yPos": 70.0,
+            "zPos": 144305.0
+          },
+          "endPos": {
+            "xPos": 137943.0,
+            "yPos": 69.0,
+            "zPos": 145519.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 137157.0,
+            "yPos": 69.0,
+            "zPos": 145113.0
+          },
+          "endPos": {
+            "xPos": 138313.0,
+            "yPos": 69.0,
+            "zPos": 144214.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 137775.0,
+            "yPos": 69.0,
+            "zPos": 145510.0
+          },
+          "endPos": {
+            "xPos": 137864.0,
+            "yPos": 69.0,
+            "zPos": 144109.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "St.Trond",
       "position": {
-        "xPos": 137859.0,
+        "xPos": 137209.0,
         "yPos": 70.0,
-        "zPos": 144147.0
+        "zPos": 144305.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 94.0,
+        "yOri": 58.842302982032365,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 225906.0,
+            "yPos": 146.0,
+            "zPos": 374325.0
+          },
+          "endPos": {
+            "xPos": 226527.0,
+            "yPos": 145.0,
+            "zPos": 375024.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Stormede",
       "position": {
-        "xPos": 225966.0,
+        "xPos": 225906.0,
         "yPos": 146.0,
-        "zPos": 374343.0
+        "zPos": 374325.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 50.0,
+        "yOri": 48.381727324276355,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 299535.0,
+            "yPos": 32.0,
+            "zPos": 265480.0
+          },
+          "endPos": {
+            "xPos": 300288.0,
+            "yPos": 32.0,
+            "zPos": 266587.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 299450.0,
+            "yPos": 32.0,
+            "zPos": 265472.0
+          },
+          "endPos": {
+            "xPos": 298951.0,
+            "yPos": 32.0,
+            "zPos": 266692.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Twente",
       "position": {
-        "xPos": 299122.0,
+        "xPos": 299535.0,
         "yPos": 32.0,
-        "zPos": 266407.0
+        "zPos": 265480.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 342.0,
+        "yOri": 55.77580457092854,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 200677.0,
+            "yPos": 43.0,
+            "zPos": 218151.0
+          },
+          "endPos": {
+            "xPos": 199713.0,
+            "yPos": 43.0,
+            "zPos": 217236.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Venlo",
       "position": {
-        "xPos": 200682.0,
+        "xPos": 200677.0,
         "yPos": 43.0,
-        "zPos": 218139.0
+        "zPos": 218151.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 221.0,
+        "yOri": 223.5061963560078,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 232523.0,
+            "yPos": 21.0,
+            "zPos": 182384.0
+          },
+          "endPos": {
+            "xPos": 233501.0,
+            "yPos": 21.0,
+            "zPos": 183918.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        },
+        {
+          "startPos": {
+            "xPos": 232950.0,
+            "yPos": 21.0,
+            "zPos": 183967.0
+          },
+          "endPos": {
+            "xPos": 233487.0,
+            "yPos": 21.0,
+            "zPos": 182460.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Volkel",
       "position": {
-        "xPos": 232552.0,
+        "xPos": 232523.0,
         "yPos": 21.0,
-        "zPos": 182429.0
+        "zPos": 182384.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 57.0,
+        "yOri": 57.48049761983009,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 317914.0,
+            "yPos": 45.0,
+            "zPos": 346968.0
+          },
+          "endPos": {
+            "xPos": 319029.0,
+            "yPos": 45.0,
+            "zPos": 347045.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Vorden",
       "position": {
-        "xPos": 317934.0,
+        "xPos": 317914.0,
         "yPos": 45.0,
-        "zPos": 346959.0
+        "zPos": 346968.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 5.0,
+        "yOri": 3.9504768608837484,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 221581.0,
+            "yPos": 78.0,
+            "zPos": 335952.0
+          },
+          "endPos": {
+            "xPos": 221749.0,
+            "yPos": 77.0,
+            "zPos": 336796.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Werl",
       "position": {
-        "xPos": 221632.0,
+        "xPos": 221581.0,
         "yPos": 78.0,
-        "zPos": 335960.0
+        "zPos": 335952.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 90.0,
+        "yOri": 78.742297027933,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 51792.0,
+            "yPos": 138.0,
+            "zPos": 364681.0
+          },
+          "endPos": {
+            "xPos": 52071.0,
+            "yPos": 137.0,
+            "zPos": 365585.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Wiesbaden-Erbenheim",
       "position": {
-        "xPos": 51791.0,
+        "xPos": 51792.0,
         "yPos": 138.0,
-        "zPos": 364696.0
+        "zPos": 364681.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 73.0,
+        "yOri": 72.84829267991199,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 211775.0,
+            "yPos": 20.0,
+            "zPos": 87806.0
+          },
+          "endPos": {
+            "xPos": 212429.0,
+            "yPos": 19.0,
+            "zPos": 88348.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Woensdrecht",
       "position": {
-        "xPos": 211789.0,
+        "xPos": 211775.0,
         "yPos": 20.0,
-        "zPos": 87824.0
+        "zPos": 87806.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 39.0,
+        "yOri": 39.65011111331017,
         "zOri": 0.0
       }
     },
     {
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 48171.0,
+            "yPos": 114.0,
+            "zPos": 414279.0
+          },
+          "endPos": {
+            "xPos": 48992.0,
+            "yPos": 113.0,
+            "zPos": 414746.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
       "name": "Zellhausen",
       "position": {
-        "xPos": 48167.0,
+        "xPos": 48171.0,
         "yPos": 114.0,
-        "zPos": 414286.0
+        "zPos": 414279.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 27.0,
+        "yOri": 29.632020419577472,
         "zOri": 0.0
       }
     }

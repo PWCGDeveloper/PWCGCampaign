@@ -7,7 +7,7 @@
   "planeAssignments": [
     {
       "archType": "p47",
-      "squadronIntroduction": "19440801",
+      "squadronIntroduction": "19440901",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -15,6 +15,8 @@
     "19441001": "St.Trond",
     "19441101": "St.Trond",
     "19441220": "St.Trond",
+    "19441225": "St.Trond",
+    "19441229": "St.Trond",
     "19450207": "Ophoven",
     "19450310": "Venlo",
     "19450404": "Koln-Butzweilerhof"

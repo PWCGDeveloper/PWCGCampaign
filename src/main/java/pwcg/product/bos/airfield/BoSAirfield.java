@@ -104,7 +104,7 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
         this.position = desc.getPosition().copy();
         this.orientation = desc.getOrientation().copy();
         this.name = desc.getName();
-        for (Runway r : desc.runways)
+        for (Runway r : desc.getRunways())
             this.runways.add(r.copy());
     }
 
@@ -270,6 +270,9 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 
 		if (runway == null)
 			return "";
+		
+        if (runway.getParkingLocation() == null)
+            return "";
 
 		String chart;
 
@@ -304,6 +307,11 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 				Coordinate extendedRunwayEnd = MathUtils.calcNextCoord(r.getEndPos(), r.getHeading(), 300);
 				if (MathUtils.distFromLine(extendedRunwayStart, extendedRunwayEnd, pos) < 120)
 					return true;
+				
+				if (r.getParkingLocation() == null)
+				{
+				    return false;
+				}
 
 				Coordinate prevPoint = r.getParkingLocation().getPosition();
 				for (Coordinate p : r.getTaxiToStart()) {
@@ -331,10 +339,5 @@ public class BoSAirfield extends FixedPosition implements IAirfield, Cloneable
 		}
 
 		return false;
-	}
-
-	static public class AirfieldDescriptor extends PWCGLocation
-	{
-		public List<Runway> runways = new ArrayList<>();
 	}
 }

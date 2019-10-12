@@ -17,7 +17,7 @@
     },
     {
       "archType": "bf109",
-      "squadronIntroduction": "19440801",
+      "squadronIntroduction": "19440901",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -71,7 +71,7 @@
   "squadHistory": {
     "squadHistoryEntries": [
       {
-        "date": "19440801",
+        "date": "19440901",
         "squadName": "II./JG51",
         "armedServiceName": "Luftwaffe",
         "skill": 50
@@ -92,7 +92,7 @@
         ]
       },
       {
-        "startDate": "19440801",
+        "startDate": "19440901",
         "endDate": "19450601",
         "weightedRoles": [
           {

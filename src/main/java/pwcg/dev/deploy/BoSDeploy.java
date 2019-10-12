@@ -109,7 +109,15 @@ public class BoSDeploy extends DeployBase
         directoriesToCopy.put("19431008", null);
 
         // Bodenplatte dates
-        directoriesToCopy.put("19440801", null);
+        directoriesToCopy.put("19440901", null);
+        directoriesToCopy.put("19441001", null);
+        directoriesToCopy.put("19441101", null);
+        directoriesToCopy.put("19441220", null);
+        directoriesToCopy.put("19441225", null);
+        directoriesToCopy.put("19441229", null);
+        directoriesToCopy.put("19450207", null);
+        directoriesToCopy.put("19450310", null);
+        directoriesToCopy.put("19450404", null);
 
 		return directoriesToCopy;
 	}

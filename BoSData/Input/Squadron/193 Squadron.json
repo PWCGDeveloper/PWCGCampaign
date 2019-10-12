@@ -7,7 +7,7 @@
   "planeAssignments": [
     {
       "archType": "spitfire",
-      "squadronIntroduction": "19440801",
+      "squadronIntroduction": "19440901",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -16,8 +16,10 @@
     "19441001": "Gilze-Rijen",
     "19441101": "Schijndel",
     "19441220": "Schijndel",
+    "19441225": "Schijndel",
     "19441229": "Rips",
     "19450207": "Gilze-Rijen",
+    "19450310": "Gilze-Rijen",
     "19450404": "Krefeld"
   },
   "skins": [],

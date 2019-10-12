@@ -225,16 +225,30 @@ public class Squadron
 		        return false;
 		    }
 		}
-				
-        PlaneType currentAircraft = determineBestPlane(date);
-        if (currentAircraft == null)
+        
+        if (!hasFlyablePlane(date))
         {
             Logger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Cannot fly aircraft is null");
             return false;
         }
-		
-        Logger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Can fly fom airfield " + currentAirfield);
-		return true; 
+        else
+        {
+            Logger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Can fly fom airfield " + currentAirfield);
+            return true; 
+        }
+	}
+	
+	public boolean hasFlyablePlane(Date date) throws PWCGException
+	{
+        List<PlaneType> currentAircraftSet = this.determineCurrentAircraftList(date);
+        for (PlaneType currentAircraft : currentAircraftSet)
+        {
+            if (currentAircraft.isFlyable())
+            {
+                return true;
+            }
+        }
+        return false;
 	}
 
     public Date determineActivetDate() throws PWCGException 

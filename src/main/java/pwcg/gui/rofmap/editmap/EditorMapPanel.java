@@ -356,7 +356,6 @@ public class EditorMapPanel extends MapPanelBase
 
     public void writeFile(Graphics g) throws IOException
     {
-        Graphics2D g2 = (Graphics2D) g;
         ImageIO.write(image, "jpg", new File("D:\\PWCG\\MAPFILE.jpg"));
     }
 }

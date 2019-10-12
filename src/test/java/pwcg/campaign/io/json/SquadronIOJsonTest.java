@@ -95,4 +95,15 @@ public class SquadronIOJsonTest
         
         assert(success);
     }
+
+    @Test
+    public void writeJsonBoSSquadronsTest() throws PWCGException
+    {
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        List<Squadron> squadrons = SquadronIOJson.readJson();
+        
+        JsonWriter<Squadron> jsonWriter = new JsonWriter<>();
+        String squadronDir = PWCGContext.getInstance().getDirectoryManager().getPwcgSquadronDir();
+        jsonWriter.writeAsJson(squadrons.get(0), squadronDir, "TestSquadron");
+    }
 }

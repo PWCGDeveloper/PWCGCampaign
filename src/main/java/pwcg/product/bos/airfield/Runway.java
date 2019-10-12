@@ -58,15 +58,30 @@ public class Runway
     {
         return taxiToStart;
     }
-
-    public void setTaxiToStart(List<Coordinate> taxiToStart)
+    
+    public void setStartPos(Coordinate startPos)
     {
-        this.taxiToStart = taxiToStart;
+        this.startPos = startPos;
+    }
+
+    public void setEndPos(Coordinate endPos)
+    {
+        this.endPos = endPos;
+    }
+
+    public void setParkingLocation(PWCGLocation parkingLocation)
+    {
+        this.parkingLocation = parkingLocation;
     }
 
     public List<Coordinate> getTaxiFromEnd()
     {
         return taxiFromEnd;
+    }
+
+    public void setTaxiToStart(List<Coordinate> taxiToStart)
+    {
+        this.taxiToStart = taxiToStart;
     }
 
     public void setTaxiFromEnd(List<Coordinate> taxiFromEnd)

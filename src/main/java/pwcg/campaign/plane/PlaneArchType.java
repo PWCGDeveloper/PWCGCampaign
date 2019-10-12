@@ -63,6 +63,10 @@ public class PlaneArchType
         {
             archTypeDescription = "A-20";
         }
+        else if (archType.equals("b25")) 
+        {
+            archTypeDescription = "B-25";
+        }
         else if (archType.contains("bf109")) 
         {
             archTypeDescription = "Me-109";
@@ -115,6 +119,10 @@ public class PlaneArchType
         {
             archTypeDescription = "MiG-3";
         }
+        else if (archType.contains("p38")) 
+        {
+            archTypeDescription = "P-38";
+        }
         else if (archType.contains("p39")) 
         {
             archTypeDescription = "P-39";
@@ -123,6 +131,14 @@ public class PlaneArchType
         {
             archTypeDescription = "P-40";
         }
+        else if (archType.contains("p47")) 
+        {
+            archTypeDescription = "P-47";
+        }
+        else if (archType.contains("p51")) 
+        {
+            archTypeDescription = "P-51";
+        }
         else if (archType.contains("pe2")) 
         {
             archTypeDescription = "Pe-2";
@@ -130,6 +146,10 @@ public class PlaneArchType
         else if (archType.contains("spitfire")) 
         {
             archTypeDescription = "Spitfire";
+        }
+        else if (archType.contains("tempest")) 
+        {
+            archTypeDescription = "Tempest";
         }
         else if (archType.contains("yak")) 
         {

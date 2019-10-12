@@ -55,7 +55,7 @@ public class InfoMapPanel extends MapPanelBase
 
     private InfoMapSquadronMover squadronMover = new InfoMapSquadronMover();
     
-    private boolean enableEditing = false;
+    private boolean enableEditing = true;
 
 	public InfoMapPanel(MapGUI parent) throws PWCGException  
 	{
@@ -212,7 +212,7 @@ public class InfoMapPanel extends MapPanelBase
         }
         else if (country.getSide() == Side.ALLIED)
         {
-            color = ColorMap.RUSSIAN_RED;
+            color = ColorMap.BRITISH_RNAS_RED;
         }
         else if (country.isNeutral())
         {
@@ -304,37 +304,33 @@ public class InfoMapPanel extends MapPanelBase
     @Override
     public void leftClickCallback(MouseEvent e) 
     {       
-        super.leftClickCallback(e);
-    }
-
-
-
-    /* (non-Javadoc)
-     * @see rof.campaign.gui.rofmap.MapPanelBase#leftClickCallback(java.awt.event.MouseEvent)
-     */
-    @Override
-    public void rightClickCallback(MouseEvent e) 
-    {       
         try
         {
             Point clickPoint = new Point();
             clickPoint.x = e.getX();
             clickPoint.y = e.getY();
-            
-            // Squadron info
+    
             if(!showSquadronInfo(e, clickPoint))
             {
-                // IAirfield name
-                if (!showAirfieldName(e, clickPoint))
-                {
-                    // last option is display
-                    displayCoordinates(e);
-                }
+                super.leftClickCallback(e);
             }
         }
         catch (PWCGException exp)
         {
             exp.printStackTrace();
+        }
+    }
+
+    @Override
+    public void rightClickCallback(MouseEvent e) 
+    {       
+        Point clickPoint = new Point();
+        clickPoint.x = e.getX();
+        clickPoint.y = e.getY();
+        
+        if (!showAirfieldName(e, clickPoint))
+        {
+            displayCoordinates(e);
         }
     }
 

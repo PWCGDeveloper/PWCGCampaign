@@ -1,7 +1,5 @@
 package pwcg.product.bos.airfield;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -21,7 +19,7 @@ public class BoSAirfieldConfiguration implements IAirfieldConfiguration
 
         String pwcgInputDir = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\";
         AirfieldDescriptorSet airfieldDescriptors = BoSAirfieldDescriptorIOJson.readJson(pwcgInputDir, AIRFIELD_LOCATION_FILE_NAME);
-        for (BoSAirfield.AirfieldDescriptor desc : airfieldDescriptors.locations)
+        for (AirfieldDescriptor desc : airfieldDescriptors.getLocations())
         {
             BoSAirfield field = new BoSAirfield();
             field.initializeAirfieldFromDescriptor(desc);
@@ -29,11 +27,5 @@ public class BoSAirfieldConfiguration implements IAirfieldConfiguration
         }
 
         return airfields;
-    }
-
-    static public class AirfieldDescriptorSet
-    {
-        public String locationSetName = "";
-        public List <BoSAirfield.AirfieldDescriptor> locations = new ArrayList<>();
     }
 }

@@ -40,7 +40,6 @@ public class SquadronManager
         List<Squadron> squadrons = SquadronIOJson.readJson(); 
 		for (Squadron squadron : squadrons)
 		{
-		    SquadronUnavailablePlaneMapper.mapPlaneToAvailableType(squadron);
 			squadronMap.put(squadron.getSquadronId(), squadron);
 		}
 		

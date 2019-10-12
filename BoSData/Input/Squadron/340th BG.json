@@ -7,7 +7,7 @@
   "planeAssignments": [
     {
       "archType": "a20",
-      "squadronIntroduction": "19440801",
+      "squadronIntroduction": "19440901",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -19,6 +19,7 @@
     "19441225": "Deurne",
     "19441229": "Evere",
     "19450207": "St.Trond",
+    "19450310": "St.Trond",
     "19450404": "Kelz"
   },
   "skins": [

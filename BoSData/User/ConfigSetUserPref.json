@@ -1,6 +1,11 @@
 {
   "configSetName": "ConfigSetUserPref",
   "configMap": {
+    "DeleteAllMissionLogs": {
+      "value": "0",
+      "label": "Delete All Mission Log Files",
+      "help": "Set to 1 to delete all mission log files after AAR"
+    },
     "SoundVolume": {
       "value": "3",
       "label": "Volume control for sounds",

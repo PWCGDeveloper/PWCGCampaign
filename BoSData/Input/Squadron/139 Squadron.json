@@ -6,7 +6,7 @@
   "skill": 70,
   "planeAssignments": [
     {
-      "archType": "a20",
+      "archType": "b25",
       "squadronIntroduction": "19420801",
       "squadronWithdrawal": "19450601"
     }
@@ -16,20 +16,13 @@
     "19441001": "Grimbergen",
     "19441101": "Woensdrecht",
     "19441220": "Woensdrecht",
+    "19441225": "Woensdrecht",
+    "19441229": "Woensdrecht",
+    "19450207": "Woensdrecht",
+    "19450310": "Woensdrecht",
     "19450404": "Venlo"
   },
-  "skins": [
-    {
-      "skinName": "139 Squadron",
-      "planeType": "a20b",
-      "startDate": "19420801",
-      "endDate": "19450601",
-      "squadId": 103002139,
-      "country": "BRITAIN",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
+  "skins": [],
   "squadHistory": {
     "squadHistoryEntries": []
   },
@@ -37,7 +30,7 @@
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19440801",
+        "startDate": "19440901",
         "endDate": "19450601",
         "weightedRoles": [
           {

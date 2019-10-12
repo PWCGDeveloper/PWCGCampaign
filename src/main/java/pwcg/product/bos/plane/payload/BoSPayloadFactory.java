@@ -5,9 +5,11 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadDesignation;
+import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.plane.BoSPlaneAttributeFactory;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 import pwcg.product.bos.plane.payload.aircraft.A20BPayload;
+import pwcg.product.bos.plane.payload.aircraft.B25DRAFPayload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109E7Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109F2Payload;
 import pwcg.product.bos.plane.payload.aircraft.Bf109F4Payload;
@@ -52,7 +54,6 @@ import pwcg.product.bos.plane.payload.aircraft.U2VSPayload;
 import pwcg.product.bos.plane.payload.aircraft.Yak1S127Payload;
 import pwcg.product.bos.plane.payload.aircraft.Yak1S69Payload;
 import pwcg.product.bos.plane.payload.aircraft.Yak7BS36Payload;
-import pwcg.core.exception.PWCGException;
 
 public class BoSPayloadFactory implements IPayloadFactory
 {
@@ -218,6 +219,10 @@ public class BoSPayloadFactory implements IPayloadFactory
         else if (attributeMapping == BosPlaneAttributeMapping.A20B)
         {
             return new A20BPayload(planeType);
+        }
+        else if (attributeMapping == BosPlaneAttributeMapping.B25)
+        {
+            return new B25DRAFPayload(planeType);
         }
         else if (attributeMapping == BosPlaneAttributeMapping.SPITFIRE_MKVB)
         {

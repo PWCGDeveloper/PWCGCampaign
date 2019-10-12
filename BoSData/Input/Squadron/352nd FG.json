@@ -7,7 +7,7 @@
   "planeAssignments": [
     {
       "archType": "p51",
-      "squadronIntroduction": "19440801",
+      "squadronIntroduction": "19440901",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -19,6 +19,7 @@
     "19441225": "Evere",
     "19441229": "LeCulot",
     "19450207": "Asch",
+    "19450310": "Asch",
     "19450404": "Koln-Wahn"
   },
   "skins": [],

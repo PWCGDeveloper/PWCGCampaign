@@ -98,7 +98,7 @@
         "skill": 40
       },
       {
-        "date": "19440801",
+        "date": "19440901",
         "squadName": "I./KG51",
         "armedServiceName": "Luftwaffe",
         "skill": 50
@@ -119,7 +119,7 @@
         ]
       },
       {
-        "startDate": "19440801",
+        "startDate": "19440901",
         "endDate": "19450601",
         "weightedRoles": [
           {

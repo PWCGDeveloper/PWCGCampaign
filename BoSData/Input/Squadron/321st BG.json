@@ -7,7 +7,7 @@
   "planeAssignments": [
     {
       "archType": "a20",
-      "squadronIntroduction": "19440801",
+      "squadronIntroduction": "19440901",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -16,6 +16,7 @@
     "19441001": "Evere",
     "19441101": "Deurne",
     "19441220": "Chievres",
+    "19441225": "Chievres",
     "19441229": "Melsbroek",
     "19450207": "LeCulot",
     "19450310": "St.Trond",

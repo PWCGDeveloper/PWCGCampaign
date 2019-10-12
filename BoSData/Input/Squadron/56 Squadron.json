@@ -16,6 +16,7 @@
     "19441001": "Eindhoven",
     "19441101": "Rips",
     "19441220": "Rips",
+    "19441225": "Rips",
     "19441229": "Heesch",
     "19450207": "Volkel",
     "19450310": "Schijndel",
@@ -29,7 +30,7 @@
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19440801",
+        "startDate": "19440901",
         "endDate": "19450601",
         "weightedRoles": [
           {

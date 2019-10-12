@@ -7,7 +7,7 @@
   "planeAssignments": [
     {
       "archType": "tempest",
-      "squadronIntroduction": "19440801",
+      "squadronIntroduction": "19440901",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -15,6 +15,7 @@
     "19441001": "Woensdrecht",
     "19441101": "Volkel",
     "19441220": "Volkel",
+    "19441225": "Volkel",
     "19441229": "GraveKeent",
     "19450207": "Schijndel",
     "19450310": "Heesch",

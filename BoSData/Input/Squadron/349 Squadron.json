@@ -7,7 +7,7 @@
   "planeAssignments": [
     {
       "archType": "spitfire",
-      "squadronIntroduction": "19440801",
+      "squadronIntroduction": "19440901",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -15,6 +15,8 @@
     "19441001": "Gilze-Rijen",
     "19441101": "Gilze-Rijen",
     "19441220": "Gilze-Rijen",
+    "19441225": "Gilze-Rijen",
+    "19441229": "Gilze-Rijen",
     "19450207": "Rips",
     "19450310": "GraveKeent",
     "19450404": "Coesfeld-Lette"

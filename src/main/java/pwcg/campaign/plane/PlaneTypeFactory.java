@@ -369,11 +369,8 @@ public class PlaneTypeFactory
         {
             if (abrevName.equalsIgnoreCase(thisPlane.getType()))
             {
-                if (thisPlane.isFlyable())
-                {
-                    plane = thisPlane;
-                    break;
-                }
+                plane = thisPlane;
+                break;
             }
         }
 
