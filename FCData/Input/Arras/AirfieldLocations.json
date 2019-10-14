@@ -2,2342 +2,1742 @@
   "locationSetName": "Airfields",
   "locations": [
     {
-      "name": "Petit Synthe",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 35298.0,
+            "yPos": 40.0,
+            "zPos": 55321.0
+          },
+          "endPos": {
+            "xPos": 35445.0,
+            "yPos": 39.0,
+            "zPos": 55364.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield1",
       "position": {
-        "xPos": 76585.0,
-        "yPos": 0.0,
-        "zPos": 174098.0
+        "xPos": 35298.0,
+        "yPos": 40.0,
+        "zPos": 55321.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 188.0,
+        "yOri": 16.30509562065656,
         "zOri": 0.0
       }
     },
     {
-      "name": "Abeele (East)",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 70014.0,
+            "yPos": 160.0,
+            "zPos": 57771.0
+          },
+          "endPos": {
+            "xPos": 69984.0,
+            "yPos": 159.0,
+            "zPos": 57619.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield10",
       "position": {
-        "xPos": 54124.0,
-        "yPos": 0.0,
-        "zPos": 198846.0
+        "xPos": 70014.0,
+        "yPos": 160.0,
+        "zPos": 57771.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 37.0,
+        "yOri": 258.8351198224514,
         "zOri": 0.0
       }
     },
     {
-      "name": "Ploegsteert",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 75226.0,
+            "yPos": 157.0,
+            "zPos": 56711.0
+          },
+          "endPos": {
+            "xPos": 75181.0,
+            "yPos": 156.0,
+            "zPos": 56823.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield11",
       "position": {
-        "xPos": 42655.0,
-        "yPos": 0.0,
-        "zPos": 211892.0
+        "xPos": 75226.0,
+        "yPos": 157.0,
+        "zPos": 56711.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 170.0,
+        "yOri": 111.8895567699047,
         "zOri": 0.0
       }
     },
     {
-      "name": "Abeele (West)",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 83027.0,
+            "yPos": 110.0,
+            "zPos": 62218.0
+          },
+          "endPos": {
+            "xPos": 82983.0,
+            "yPos": 110.0,
+            "zPos": 62404.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield12",
       "position": {
-        "xPos": 55164.0,
-        "yPos": 0.0,
-        "zPos": 196856.0
+        "xPos": 83027.0,
+        "yPos": 110.0,
+        "zPos": 62218.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 190.0,
+        "yOri": 103.30917869540048,
         "zOri": 0.0
       }
     },
     {
-      "name": "Pluckley",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 84491.0,
+            "yPos": 114.0,
+            "zPos": 60592.0
+          },
+          "endPos": {
+            "xPos": 84397.0,
+            "yPos": 113.0,
+            "zPos": 60431.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield13",
       "position": {
-        "xPos": 94710.0,
-        "yPos": 0.0,
-        "zPos": 61479.0
+        "xPos": 84491.0,
+        "yPos": 114.0,
+        "zPos": 60592.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 316.0,
+        "yOri": 239.72144091497807,
         "zOri": 0.0
       }
     },
     {
-      "name": "Abeelhoek",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 88017.0,
+            "yPos": 100.0,
+            "zPos": 62281.0
+          },
+          "endPos": {
+            "xPos": 88091.0,
+            "yPos": 100.0,
+            "zPos": 62154.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield14",
       "position": {
-        "xPos": 60893.0,
-        "yPos": 0.0,
-        "zPos": 239123.0
+        "xPos": 88017.0,
+        "yPos": 100.0,
+        "zPos": 62281.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 281.0,
+        "yOri": 300.2283785078325,
         "zOri": 0.0
       }
     },
     {
-      "name": "Poperinghe",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 86744.0,
+            "yPos": 100.0,
+            "zPos": 72591.0
+          },
+          "endPos": {
+            "xPos": 86784.0,
+            "yPos": 100.0,
+            "zPos": 72803.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield15",
       "position": {
-        "xPos": 59708.0,
-        "yPos": 0.0,
-        "zPos": 200647.0
+        "xPos": 86744.0,
+        "yPos": 100.0,
+        "zPos": 72591.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 261.0,
+        "yOri": 79.31508759999728,
         "zOri": 0.0
       }
     },
     {
-      "name": "Abele",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 87818.0,
+            "yPos": 102.0,
+            "zPos": 75094.0
+          },
+          "endPos": {
+            "xPos": 87998.0,
+            "yPos": 102.0,
+            "zPos": 75119.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield16",
       "position": {
-        "xPos": 65491.0,
-        "yPos": 0.0,
-        "zPos": 232535.0
+        "xPos": 87818.0,
+        "yPos": 102.0,
+        "zPos": 75094.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 131.0,
+        "yOri": 7.907162702958458,
         "zOri": 0.0
       }
     },
     {
-      "name": "Proven",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 87108.0,
+            "yPos": 140.0,
+            "zPos": 45343.0
+          },
+          "endPos": {
+            "xPos": 87246.0,
+            "yPos": 139.0,
+            "zPos": 45466.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield17",
       "position": {
-        "xPos": 63910.0,
-        "yPos": 0.0,
-        "zPos": 195253.0
+        "xPos": 87108.0,
+        "yPos": 140.0,
+        "zPos": 45343.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 306.0,
+        "yOri": 41.71075732150817,
         "zOri": 0.0
       }
     },
     {
-      "name": "Aertrycke",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 92252.0,
+            "yPos": 142.0,
+            "zPos": 48288.0
+          },
+          "endPos": {
+            "xPos": 92354.0,
+            "yPos": 141.0,
+            "zPos": 48215.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield18",
       "position": {
-        "xPos": 89299.0,
-        "yPos": 0.0,
-        "zPos": 225113.0
+        "xPos": 92252.0,
+        "yPos": 142.0,
+        "zPos": 48288.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 240.0,
+        "yOri": 324.40922140811017,
         "zOri": 0.0
       }
     },
     {
-      "name": "Quelmes",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 97790.0,
+            "yPos": 142.0,
+            "zPos": 46677.0
+          },
+          "endPos": {
+            "xPos": 97859.0,
+            "yPos": 141.0,
+            "zPos": 46875.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield19",
       "position": {
-        "xPos": 44748.0,
-        "yPos": 0.0,
-        "zPos": 158634.0
+        "xPos": 97790.0,
+        "yPos": 142.0,
+        "zPos": 46677.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 82.0,
+        "yOri": 70.78732818281436,
         "zOri": 0.0
       }
     },
     {
-      "name": "Airfield",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 40651.0,
+            "yPos": 73.0,
+            "zPos": 46847.0
+          },
+          "endPos": {
+            "xPos": 40817.0,
+            "yPos": 72.0,
+            "zPos": 46718.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield2",
       "position": {
-        "xPos": 117455.0,
-        "yPos": 0.0,
-        "zPos": 102722.0
+        "xPos": 40651.0,
+        "yPos": 73.0,
+        "zPos": 46847.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 4.0,
+        "yOri": 322.1489194678793,
         "zOri": 0.0
       }
     },
     {
-      "name": "Quesnoy",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 102100.0,
+            "yPos": 61.0,
+            "zPos": 59609.0
+          },
+          "endPos": {
+            "xPos": 102168.0,
+            "yPos": 60.0,
+            "zPos": 59779.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield20",
       "position": {
-        "xPos": 42870.0,
-        "yPos": 0.0,
-        "zPos": 222943.0
+        "xPos": 102100.0,
+        "yPos": 61.0,
+        "zPos": 59609.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 350.0,
+        "yOri": 68.19859051364818,
         "zOri": 0.0
       }
     },
     {
-      "name": "All Hallows",
-      "position": {
-        "xPos": 127809.0,
-        "yPos": 0.0,
-        "zPos": 54491.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 157.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Raversijide",
-      "position": {
-        "xPos": 98331.0,
-        "yPos": 0.0,
-        "zPos": 211063.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 150.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Alquines",
-      "position": {
-        "xPos": 46223.0,
-        "yPos": 0.0,
-        "zPos": 150417.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 20.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Rochford",
-      "position": {
-        "xPos": 139324.0,
-        "yPos": 0.0,
-        "zPos": 59816.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 271.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Arembouts",
-      "position": {
-        "xPos": 73342.0,
-        "yPos": 0.0,
-        "zPos": 177376.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 189.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Romarin",
-      "position": {
-        "xPos": 44106.0,
-        "yPos": 0.0,
-        "zPos": 208991.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 124.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Bailleul",
-      "position": {
-        "xPos": 45955.0,
-        "yPos": 0.0,
-        "zPos": 200994.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 193.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Rulers",
-      "position": {
-        "xPos": 68776.0,
-        "yPos": 0.0,
-        "zPos": 226145.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 250.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Bavichove",
-      "position": {
-        "xPos": 60227.0,
-        "yPos": 0.0,
-        "zPos": 241254.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 47.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Rumbeke",
-      "position": {
-        "xPos": 65797.0,
-        "yPos": 0.0,
-        "zPos": 230091.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 41.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Beaumont",
-      "position": {
-        "xPos": 172317.0,
-        "yPos": 0.0,
-        "zPos": 93122.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 88.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Runwell",
-      "position": {
-        "xPos": 145640.0,
-        "yPos": 0.0,
-        "zPos": 47148.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 271.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Bekesbourne",
-      "position": {
-        "xPos": 103295.0,
-        "yPos": 0.0,
-        "zPos": 90418.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 286.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Rye",
-      "position": {
-        "xPos": 70479.0,
-        "yPos": 0.0,
-        "zPos": 61983.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 302.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Bergues",
-      "position": {
-        "xPos": 70000.0,
-        "yPos": 0.0,
-        "zPos": 181871.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 73.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Seeflugstation Flandern II",
-      "position": {
-        "xPos": 100312.0,
-        "yPos": 0.0,
-        "zPos": 217214.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 324.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Beveren",
-      "position": {
-        "xPos": 71630.0,
-        "yPos": 0.0,
-        "zPos": 229978.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 131.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Sheerness",
-      "position": {
-        "xPos": 124273.0,
-        "yPos": 0.0,
-        "zPos": 63925.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 209.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Bisseghem",
-      "position": {
-        "xPos": 54964.0,
-        "yPos": 0.0,
-        "zPos": 235957.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 3.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Sible Hedingham",
-      "position": {
-        "xPos": 182276.0,
-        "yPos": 0.0,
-        "zPos": 52305.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 0.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Blackheath Common",
-      "position": {
-        "xPos": 170607.0,
-        "yPos": 0.0,
-        "zPos": 75112.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 236.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Snelleghem",
-      "position": {
-        "xPos": 94819.0,
-        "yPos": 0.0,
-        "zPos": 228360.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 285.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Boisdenghem",
-      "position": {
-        "xPos": 46231.0,
-        "yPos": 0.0,
-        "zPos": 157252.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 349.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Sole Street",
-      "position": {
-        "xPos": 97774.0,
-        "yPos": 0.0,
-        "zPos": 79915.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 279.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Braintree",
-      "position": {
-        "xPos": 174035.0,
-        "yPos": 0.0,
-        "zPos": 49213.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 173.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Sparappelhoek",
-      "position": {
-        "xPos": 86623.0,
-        "yPos": 0.0,
-        "zPos": 225299.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 103.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Bray Dunes",
-      "position": {
-        "xPos": 81016.0,
-        "yPos": 0.0,
-        "zPos": 183889.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 233.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "St. Ingelvert",
-      "position": {
-        "xPos": 59974.0,
-        "yPos": 0.0,
-        "zPos": 131415.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 290.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Broad Salts",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 105344.0,
+            "yPos": 85.0,
+            "zPos": 55507.0
+          },
+          "endPos": {
+            "xPos": 105401.0,
+            "yPos": 85.0,
+            "zPos": 55701.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield21",
       "position": {
         "xPos": 105344.0,
-        "yPos": 0.0,
-        "zPos": 105273.0
+        "yPos": 85.0,
+        "zPos": 55507.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 245.0,
+        "yOri": 73.62645067294972,
         "zOri": 0.0
       }
     },
     {
-      "name": "St. Marguerite",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 112637.0,
+            "yPos": 70.0,
+            "zPos": 34956.0
+          },
+          "endPos": {
+            "xPos": 112590.0,
+            "yPos": 69.0,
+            "zPos": 35087.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield22",
       "position": {
-        "xPos": 45996.0,
-        "yPos": 0.0,
-        "zPos": 223182.0
+        "xPos": 112637.0,
+        "yPos": 70.0,
+        "zPos": 34956.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 110.0,
+        "yOri": 109.73690149550089,
         "zOri": 0.0
       }
     },
     {
-      "name": "Broomfield",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 114969.0,
+            "yPos": 78.0,
+            "zPos": 44617.0
+          },
+          "endPos": {
+            "xPos": 115075.0,
+            "yPos": 77.0,
+            "zPos": 44738.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield23",
       "position": {
-        "xPos": 115474.0,
-        "yPos": 0.0,
-        "zPos": 91611.0
+        "xPos": 114969.0,
+        "yPos": 78.0,
+        "zPos": 44617.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 176.0,
+        "yOri": 48.780568534301096,
         "zOri": 0.0
       }
     },
     {
-      "name": "St. Marie Cappel",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 116210.0,
+            "yPos": 92.0,
+            "zPos": 42249.0
+          },
+          "endPos": {
+            "xPos": 116054.0,
+            "yPos": 92.0,
+            "zPos": 42310.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield24",
       "position": {
-        "xPos": 50408.0,
-        "yPos": 0.0,
-        "zPos": 185259.0
+        "xPos": 116210.0,
+        "yPos": 92.0,
+        "zPos": 42249.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 93.0,
+        "yOri": 158.64322732659522,
         "zOri": 0.0
       }
     },
     {
-      "name": "Broomfield Court",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 117663.0,
+            "yPos": 27.0,
+            "zPos": 52858.0
+          },
+          "endPos": {
+            "xPos": 117803.0,
+            "yPos": 26.0,
+            "zPos": 52908.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield25",
       "position": {
-        "xPos": 163093.0,
-        "yPos": 0.0,
-        "zPos": 44377.0
+        "xPos": 117663.0,
+        "yPos": 27.0,
+        "zPos": 52858.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 238.0,
+        "yOri": 19.653824058053306,
         "zOri": 0.0
       }
     },
     {
-      "name": "St. Omer",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 126725.0,
+            "yPos": 51.0,
+            "zPos": 55548.0
+          },
+          "endPos": {
+            "xPos": 126610.0,
+            "yPos": 51.0,
+            "zPos": 55719.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield26",
       "position": {
-        "xPos": 44265.0,
-        "yPos": 0.0,
-        "zPos": 166240.0
+        "xPos": 126725.0,
+        "yPos": 51.0,
+        "zPos": 55548.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 90.0,
+        "yOri": 123.92140858178192,
         "zOri": 0.0
       }
     },
     {
-      "name": "Burnham-on-Crouch",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 126872.0,
+            "yPos": 21.0,
+            "zPos": 97335.0
+          },
+          "endPos": {
+            "xPos": 126989.0,
+            "yPos": 20.0,
+            "zPos": 97401.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield27",
       "position": {
-        "xPos": 146145.0,
-        "yPos": 0.0,
-        "zPos": 69472.0
+        "xPos": 126872.0,
+        "yPos": 21.0,
+        "zPos": 97335.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 236.0,
+        "yOri": 29.42745640318974,
         "zOri": 0.0
       }
     },
     {
-      "name": "St. Pol Sur Mer",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 116361.0,
+            "yPos": 34.0,
+            "zPos": 86596.0
+          },
+          "endPos": {
+            "xPos": 116250.0,
+            "yPos": 34.0,
+            "zPos": 86426.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield28",
       "position": {
-        "xPos": 78638.0,
-        "yPos": 0.0,
-        "zPos": 174006.0
+        "xPos": 116361.0,
+        "yPos": 34.0,
+        "zPos": 86596.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 148.0,
+        "yOri": 236.8578262330005,
         "zOri": 0.0
       }
     },
     {
-      "name": "Cajebert",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 110442.0,
+            "yPos": 25.0,
+            "zPos": 94204.0
+          },
+          "endPos": {
+            "xPos": 110302.0,
+            "yPos": 25.0,
+            "zPos": 94090.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield29",
       "position": {
-        "xPos": 43567.0,
-        "yPos": 0.0,
-        "zPos": 225690.0
+        "xPos": 110442.0,
+        "yPos": 25.0,
+        "zPos": 94204.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 209.0,
+        "yOri": 219.15543412261314,
         "zOri": 0.0
       }
     },
     {
-      "name": "Stalhille",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 44726.0,
+            "yPos": 72.0,
+            "zPos": 42091.0
+          },
+          "endPos": {
+            "xPos": 44574.0,
+            "yPos": 72.0,
+            "zPos": 42016.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield3",
       "position": {
-        "xPos": 100843.0,
-        "yPos": 0.0,
-        "zPos": 224903.0
+        "xPos": 44726.0,
+        "yPos": 72.0,
+        "zPos": 42091.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 182.0,
+        "yOri": 206.26270158510133,
         "zOri": 0.0
       }
     },
     {
-      "name": "Campagne",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 103587.0,
+            "yPos": 59.0,
+            "zPos": 97179.0
+          },
+          "endPos": {
+            "xPos": 103575.0,
+            "yPos": 58.0,
+            "zPos": 96983.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield30",
       "position": {
-        "xPos": 56753.0,
-        "yPos": 0.0,
-        "zPos": 144092.0
+        "xPos": 103587.0,
+        "yPos": 59.0,
+        "zPos": 97179.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 317.0,
+        "yOri": 266.49646835521554,
         "zOri": 0.0
       }
     },
     {
-      "name": "Steenwerck",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 96793.0,
+            "yPos": 29.0,
+            "zPos": 107631.0
+          },
+          "endPos": {
+            "xPos": 96934.0,
+            "yPos": 28.0,
+            "zPos": 107713.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield31",
       "position": {
-        "xPos": 40402.0,
-        "yPos": 0.0,
-        "zPos": 203875.0
+        "xPos": 96793.0,
+        "yPos": 29.0,
+        "zPos": 107631.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 262.0,
+        "yOri": 30.180582248209955,
         "zOri": 0.0
       }
     },
     {
-      "name": "Capel-le-Ferne",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 90353.0,
+            "yPos": 29.0,
+            "zPos": 95896.0
+          },
+          "endPos": {
+            "xPos": 90243.0,
+            "yPos": 28.0,
+            "zPos": 96000.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield32",
       "position": {
-        "xPos": 86610.0,
-        "yPos": 0.0,
-        "zPos": 95922.0
+        "xPos": 90353.0,
+        "yPos": 29.0,
+        "zPos": 95896.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 261.0,
+        "yOri": 136.60600298928225,
         "zOri": 0.0
       }
     },
     {
-      "name": "Stene",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 87098.0,
+            "yPos": 29.0,
+            "zPos": 103685.0
+          },
+          "endPos": {
+            "xPos": 87185.0,
+            "yPos": 28.0,
+            "zPos": 103572.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield33",
       "position": {
-        "xPos": 97676.0,
-        "yPos": 0.0,
-        "zPos": 214207.0
+        "xPos": 87098.0,
+        "yPos": 29.0,
+        "zPos": 103685.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 3.0,
+        "yOri": 307.5930878715048,
         "zOri": 0.0
       }
     },
     {
-      "name": "Cappelle Le Grand",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 85953.0,
+            "yPos": 29.0,
+            "zPos": 107129.0
+          },
+          "endPos": {
+            "xPos": 85937.0,
+            "yPos": 28.0,
+            "zPos": 107286.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield34",
       "position": {
-        "xPos": 74494.0,
-        "yPos": 0.0,
-        "zPos": 175654.0
+        "xPos": 85953.0,
+        "yPos": 29.0,
+        "zPos": 107129.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 170.0,
+        "yOri": 95.81897090139456,
         "zOri": 0.0
       }
     },
     {
-      "name": "Stow Maries",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 85349.0,
+            "yPos": 61.0,
+            "zPos": 114327.0
+          },
+          "endPos": {
+            "xPos": 85339.0,
+            "yPos": 60.0,
+            "zPos": 114184.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield35",
       "position": {
-        "xPos": 150852.0,
-        "yPos": 0.0,
-        "zPos": 55208.0
+        "xPos": 85349.0,
+        "yPos": 61.0,
+        "zPos": 114327.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 238.0,
+        "yOri": 265.9998142394869,
         "zOri": 0.0
       }
     },
     {
-      "name": "Chantrelle",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 82896.0,
+            "yPos": 61.0,
+            "zPos": 112956.0
+          },
+          "endPos": {
+            "xPos": 82997.0,
+            "yPos": 60.0,
+            "zPos": 112840.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield36",
       "position": {
-        "xPos": 42293.0,
-        "yPos": 0.0,
-        "zPos": 226750.0
+        "xPos": 82896.0,
+        "yPos": 61.0,
+        "zPos": 112956.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 341.0,
+        "yOri": 311.0457522844789,
         "zOri": 0.0
       }
     },
     {
-      "name": "Swingfield",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 77707.0,
+            "yPos": 68.0,
+            "zPos": 120036.0
+          },
+          "endPos": {
+            "xPos": 77706.0,
+            "yPos": 67.0,
+            "zPos": 120204.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield37",
       "position": {
-        "xPos": 92591.0,
-        "yPos": 0.0,
-        "zPos": 93857.0
+        "xPos": 77707.0,
+        "yPos": 68.0,
+        "zPos": 120036.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 182.0,
+        "yOri": 90.34104227885884,
         "zOri": 0.0
       }
     },
     {
-      "name": "Clacton",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 76567.0,
+            "yPos": 53.0,
+            "zPos": 123134.0
+          },
+          "endPos": {
+            "xPos": 76566.0,
+            "yPos": 53.0,
+            "zPos": 122898.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield38",
       "position": {
-        "xPos": 163258.0,
-        "yPos": 0.0,
-        "zPos": 89989.0
+        "xPos": 76567.0,
+        "yPos": 53.0,
+        "zPos": 123134.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 140.0,
+        "yOri": 269.7572227262332,
         "zOri": 0.0
       }
     },
     {
-      "name": "Teteghem",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 74929.0,
+            "yPos": 59.0,
+            "zPos": 121147.0
+          },
+          "endPos": {
+            "xPos": 74671.0,
+            "yPos": 58.0,
+            "zPos": 121193.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield39",
       "position": {
-        "xPos": 76285.0,
-        "yPos": 0.0,
-        "zPos": 181441.0
+        "xPos": 74929.0,
+        "yPos": 59.0,
+        "zPos": 121147.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 306.0,
+        "yOri": 169.89070150750482,
         "zOri": 0.0
       }
     },
     {
-      "name": "Clairmarais",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 47474.0,
+            "yPos": 121.0,
+            "zPos": 59375.0
+          },
+          "endPos": {
+            "xPos": 47444.0,
+            "yPos": 120.0,
+            "zPos": 59543.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield4",
       "position": {
-        "xPos": 50038.0,
-        "yPos": 0.0,
-        "zPos": 171415.0
+        "xPos": 47474.0,
+        "yPos": 121.0,
+        "zPos": 59375.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 226.0,
+        "yOri": 100.1246716553978,
         "zOri": 0.0
       }
     },
     {
-      "name": "Thielt",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 72097.0,
+            "yPos": 81.0,
+            "zPos": 127022.0
+          },
+          "endPos": {
+            "xPos": 72101.0,
+            "yPos": 81.0,
+            "zPos": 126823.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield40",
       "position": {
-        "xPos": 77015.0,
-        "yPos": 0.0,
-        "zPos": 241219.0
+        "xPos": 72097.0,
+        "yPos": 81.0,
+        "zPos": 127022.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 43.0,
+        "yOri": 271.1515188939638,
         "zOri": 0.0
       }
     },
     {
-      "name": "Clemskerke",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 73461.0,
+            "yPos": 66.0,
+            "zPos": 113020.0
+          },
+          "endPos": {
+            "xPos": 73446.0,
+            "yPos": 66.0,
+            "zPos": 112829.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield41",
       "position": {
-        "xPos": 101192.0,
-        "yPos": 0.0,
-        "zPos": 221435.0
+        "xPos": 73461.0,
+        "yPos": 66.0,
+        "zPos": 113020.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 315.0,
+        "yOri": 265.50954807888365,
         "zOri": 0.0
       }
     },
     {
-      "name": "Throwley",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 73947.0,
+            "yPos": 74.0,
+            "zPos": 105844.0
+          },
+          "endPos": {
+            "xPos": 74067.0,
+            "yPos": 74.0,
+            "zPos": 105741.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield42",
       "position": {
-        "xPos": 96961.0,
-        "yPos": 0.0,
-        "zPos": 73897.0
+        "xPos": 73947.0,
+        "yPos": 74.0,
+        "zPos": 105844.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 57.0,
+        "yOri": 319.35940784434484,
         "zOri": 0.0
       }
     },
     {
-      "name": "Cocove",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 67383.0,
+            "yPos": 87.0,
+            "zPos": 129247.0
+          },
+          "endPos": {
+            "xPos": 67264.0,
+            "yPos": 86.0,
+            "zPos": 129351.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield43",
       "position": {
-        "xPos": 55969.0,
-        "yPos": 0.0,
-        "zPos": 154542.0
+        "xPos": 67383.0,
+        "yPos": 87.0,
+        "zPos": 129247.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 36.0,
+        "yOri": 138.84817946092505,
         "zOri": 0.0
       }
     },
     {
-      "name": "Utykerke",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 64167.0,
+            "yPos": 110.0,
+            "zPos": 130995.0
+          },
+          "endPos": {
+            "xPos": 64257.0,
+            "yPos": 110.0,
+            "zPos": 131096.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield44",
       "position": {
-        "xPos": 108131.0,
-        "yPos": 0.0,
-        "zPos": 228543.0
+        "xPos": 64167.0,
+        "yPos": 110.0,
+        "zPos": 130995.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 17.0,
+        "yOri": 48.296115972546325,
         "zOri": 0.0
       }
     },
     {
-      "name": "Commines",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 68768.0,
+            "yPos": 53.0,
+            "zPos": 116587.0
+          },
+          "endPos": {
+            "xPos": 68875.0,
+            "yPos": 53.0,
+            "zPos": 116723.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield45",
       "position": {
-        "xPos": 48845.0,
-        "yPos": 0.0,
-        "zPos": 221694.0
+        "xPos": 68768.0,
+        "yPos": 53.0,
+        "zPos": 116587.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 224.0,
+        "yOri": 51.805580441864784,
         "zOri": 0.0
       }
     },
     {
-      "name": "Varsenaire",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 64603.0,
+            "yPos": 102.0,
+            "zPos": 124494.0
+          },
+          "endPos": {
+            "xPos": 64631.0,
+            "yPos": 102.0,
+            "zPos": 124661.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield46",
       "position": {
-        "xPos": 97337.0,
-        "yPos": 0.0,
-        "zPos": 231537.0
+        "xPos": 64603.0,
+        "yPos": 102.0,
+        "zPos": 124494.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 261.0,
+        "yOri": 80.48205083905124,
         "zOri": 0.0
       }
     },
     {
-      "name": "Coolkereke",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 65287.0,
+            "yPos": 70.0,
+            "zPos": 115683.0
+          },
+          "endPos": {
+            "xPos": 65509.0,
+            "yPos": 69.0,
+            "zPos": 115979.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield47",
       "position": {
-        "xPos": 102542.0,
-        "yPos": 0.0,
-        "zPos": 237288.0
+        "xPos": 65287.0,
+        "yPos": 70.0,
+        "zPos": 115683.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 158.0,
+        "yOri": 53.13010235415598,
         "zOri": 0.0
       }
     },
     {
-      "name": "Vilsseghem",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 63880.0,
+            "yPos": 79.0,
+            "zPos": 109257.0
+          },
+          "endPos": {
+            "xPos": 63735.0,
+            "yPos": 78.0,
+            "zPos": 109291.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield48",
       "position": {
-        "xPos": 103720.0,
-        "yPos": 0.0,
-        "zPos": 222905.0
+        "xPos": 63880.0,
+        "yPos": 79.0,
+        "zPos": 109257.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 4.0,
+        "yOri": 166.8035368077815,
         "zOri": 0.0
       }
     },
     {
-      "name": "Coucou",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 69460.0,
+            "yPos": 76.0,
+            "zPos": 89654.0
+          },
+          "endPos": {
+            "xPos": 69420.0,
+            "yPos": 75.0,
+            "zPos": 89915.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield49",
       "position": {
-        "xPos": 50642.0,
-        "yPos": 0.0,
-        "zPos": 227186.0
+        "xPos": 69460.0,
+        "yPos": 76.0,
+        "zPos": 89654.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 16.0,
+        "yOri": 98.71316728807811,
         "zOri": 0.0
       }
     },
     {
-      "name": "Walmer",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 56168.0,
+            "yPos": 128.0,
+            "zPos": 58166.0
+          },
+          "endPos": {
+            "xPos": 56076.0,
+            "yPos": 128.0,
+            "zPos": 58392.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield5",
       "position": {
-        "xPos": 96384.0,
-        "yPos": 0.0,
-        "zPos": 107602.0
+        "xPos": 56168.0,
+        "yPos": 128.0,
+        "zPos": 58166.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 315.0,
+        "yOri": 112.15023792835078,
         "zOri": 0.0
       }
     },
     {
-      "name": "Coudekerque",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 61700.0,
+            "yPos": 98.0,
+            "zPos": 87095.0
+          },
+          "endPos": {
+            "xPos": 61795.0,
+            "yPos": 97.0,
+            "zPos": 86744.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield50",
       "position": {
-        "xPos": 74856.0,
-        "yPos": 0.0,
-        "zPos": 178975.0
+        "xPos": 61700.0,
+        "yPos": 98.0,
+        "zPos": 87095.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 16.0,
+        "yOri": 285.14456258457335,
         "zOri": 0.0
       }
     },
     {
-      "name": "Wambrechies",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 55230.0,
+            "yPos": 114.0,
+            "zPos": 106128.0
+          },
+          "endPos": {
+            "xPos": 55307.0,
+            "yPos": 113.0,
+            "zPos": 106248.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield51",
       "position": {
-        "xPos": 39786.0,
-        "yPos": 0.0,
-        "zPos": 225147.0
+        "xPos": 55230.0,
+        "yPos": 114.0,
+        "zPos": 106128.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 218.0,
+        "yOri": 57.313063458989454,
         "zOri": 0.0
       }
     },
     {
-      "name": "Coxyde",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 57331.0,
+            "yPos": 134.0,
+            "zPos": 128953.0
+          },
+          "endPos": {
+            "xPos": 57211.0,
+            "yPos": 133.0,
+            "zPos": 129120.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield52",
       "position": {
-        "xPos": 86249.0,
-        "yPos": 0.0,
-        "zPos": 194919.0
+        "xPos": 57331.0,
+        "yPos": 134.0,
+        "zPos": 128953.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 221.0,
+        "yOri": 125.69962133900093,
         "zOri": 0.0
       }
     },
     {
-      "name": "Wervicq",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 54093.0,
+            "yPos": 137.0,
+            "zPos": 127021.0
+          },
+          "endPos": {
+            "xPos": 54041.0,
+            "yPos": 137.0,
+            "zPos": 126852.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield53",
       "position": {
-        "xPos": 50851.0,
-        "yPos": 0.0,
-        "zPos": 224344.0
+        "xPos": 54093.0,
+        "yPos": 137.0,
+        "zPos": 127021.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 72.0,
+        "yOri": 252.89727103094765,
         "zOri": 0.0
       }
     },
     {
-      "name": "Creve Couer Farm",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 47123.0,
+            "yPos": 125.0,
+            "zPos": 126063.0
+          },
+          "endPos": {
+            "xPos": 47264.0,
+            "yPos": 124.0,
+            "zPos": 125981.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield54",
       "position": {
-        "xPos": 49141.0,
-        "yPos": 0.0,
-        "zPos": 175985.0
+        "xPos": 47123.0,
+        "yPos": 125.0,
+        "zPos": 126063.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 309.0,
+        "yOri": 329.81941775179007,
         "zOri": 0.0
       }
     },
     {
-      "name": "West Cappelle",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 41721.0,
+            "yPos": 97.0,
+            "zPos": 122529.0
+          },
+          "endPos": {
+            "xPos": 41946.0,
+            "yPos": 96.0,
+            "zPos": 122732.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield55",
       "position": {
-        "xPos": 65515.0,
-        "yPos": 0.0,
-        "zPos": 185557.0
+        "xPos": 41721.0,
+        "yPos": 97.0,
+        "zPos": 122529.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 49.0,
+        "yOri": 42.05747954363137,
         "zOri": 0.0
       }
     },
     {
-      "name": "Crochte",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 37661.0,
+            "yPos": 98.0,
+            "zPos": 98670.0
+          },
+          "endPos": {
+            "xPos": 37741.0,
+            "yPos": 98.0,
+            "zPos": 98808.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield56",
       "position": {
-        "xPos": 66391.0,
-        "yPos": 0.0,
-        "zPos": 178051.0
+        "xPos": 37661.0,
+        "yPos": 98.0,
+        "zPos": 98670.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 157.0,
+        "yOri": 59.8986954344003,
         "zOri": 0.0
       }
     },
     {
-      "name": "Westgate-on-Sea",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 36525.0,
+            "yPos": 59.0,
+            "zPos": 90805.0
+          },
+          "endPos": {
+            "xPos": 36646.0,
+            "yPos": 58.0,
+            "zPos": 90843.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield57",
       "position": {
-        "xPos": 117078.0,
-        "yPos": 0.0,
-        "zPos": 102831.0
+        "xPos": 36525.0,
+        "yPos": 59.0,
+        "zPos": 90805.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 77.0,
+        "yOri": 17.434874694799298,
         "zOri": 0.0
       }
     },
     {
-      "name": "Croix",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 47400.0,
+            "yPos": 117.0,
+            "zPos": 92914.0
+          },
+          "endPos": {
+            "xPos": 47377.0,
+            "yPos": 116.0,
+            "zPos": 93074.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield58",
       "position": {
-        "xPos": 39521.0,
-        "yPos": 0.0,
-        "zPos": 232504.0
+        "xPos": 47400.0,
+        "yPos": 117.0,
+        "zPos": 92914.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 337.0,
+        "yOri": 98.18022988249751,
         "zOri": 0.0
       }
     },
     {
-      "name": "Wevelghem",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 38395.0,
+            "yPos": 76.0,
+            "zPos": 83085.0
+          },
+          "endPos": {
+            "xPos": 38455.0,
+            "yPos": 75.0,
+            "zPos": 82926.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield59",
       "position": {
-        "xPos": 54193.0,
-        "yPos": 0.0,
-        "zPos": 233370.0
+        "xPos": 38395.0,
+        "yPos": 76.0,
+        "zPos": 83085.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 70.0,
+        "yOri": 290.6744247608739,
         "zOri": 0.0
       }
     },
     {
-      "name": "Cuerne",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 56760.0,
+            "yPos": 142.0,
+            "zPos": 41413.0
+          },
+          "endPos": {
+            "xPos": 56895.0,
+            "yPos": 141.0,
+            "zPos": 41516.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield6",
       "position": {
-        "xPos": 58184.0,
-        "yPos": 0.0,
-        "zPos": 240449.0
+        "xPos": 56760.0,
+        "yPos": 142.0,
+        "zPos": 41413.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 24.0,
+        "yOri": 37.342290306286124,
         "zOri": 0.0
       }
     },
     {
-      "name": "Widford",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 39048.0,
+            "yPos": 85.0,
+            "zPos": 76944.0
+          },
+          "endPos": {
+            "xPos": 39074.0,
+            "yPos": 85.0,
+            "zPos": 77102.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield60",
       "position": {
-        "xPos": 156699.0,
-        "yPos": 0.0,
-        "zPos": 43065.0
+        "xPos": 39048.0,
+        "yPos": 85.0,
+        "zPos": 76944.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 283.0,
+        "yOri": 80.65532809790031,
         "zOri": 0.0
       }
     },
     {
-      "name": "Den Aap",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 57955.0,
+            "yPos": 153.0,
+            "zPos": 45313.0
+          },
+          "endPos": {
+            "xPos": 57826.0,
+            "yPos": 153.0,
+            "zPos": 45132.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield7",
       "position": {
-        "xPos": 65065.0,
-        "yPos": 0.0,
-        "zPos": 227992.0
+        "xPos": 57955.0,
+        "yPos": 153.0,
+        "zPos": 45313.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 339.0,
+        "yOri": 234.52225500992523,
         "zOri": 0.0
       }
     },
     {
-      "name": "Wittersham",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 60249.0,
+            "yPos": 135.0,
+            "zPos": 50983.0
+          },
+          "endPos": {
+            "xPos": 60372.0,
+            "yPos": 135.0,
+            "zPos": 51046.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield8",
       "position": {
-        "xPos": 78342.0,
-        "yPos": 0.0,
-        "zPos": 57790.0
+        "xPos": 60249.0,
+        "yPos": 135.0,
+        "zPos": 50983.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 155.0,
+        "yOri": 27.121303404158667,
         "zOri": 0.0
       }
     },
     {
-      "name": "Detling",
+      "runways": [
+        {
+          "startPos": {
+            "xPos": 62219.0,
+            "yPos": 142.0,
+            "zPos": 37379.0
+          },
+          "endPos": {
+            "xPos": 62291.0,
+            "yPos": 141.0,
+            "zPos": 37674.0
+          },
+          "taxiToStart": [],
+          "taxiFromEnd": []
+        }
+      ],
+      "name": "ArrasAirfield9",
       "position": {
-        "xPos": 109763.0,
-        "yPos": 0.0,
-        "zPos": 52075.0
+        "xPos": 62219.0,
+        "yPos": 142.0,
+        "zPos": 37379.0
       },
       "orientation": {
         "xOri": 0.0,
-        "yOri": 234.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Wormingford",
-      "position": {
-        "xPos": 180348.0,
-        "yPos": 0.0,
-        "zPos": 67637.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 313.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Dover",
-      "position": {
-        "xPos": 88677.0,
-        "yPos": 0.0,
-        "zPos": 103024.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 150.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Writtle",
-      "position": {
-        "xPos": 157642.0,
-        "yPos": 0.0,
-        "zPos": 41902.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 19.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Dover (Guston Road)",
-      "position": {
-        "xPos": 90340.0,
-        "yPos": 0.0,
-        "zPos": 102577.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 58.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Wye",
-      "position": {
-        "xPos": 102020.0,
-        "yPos": 0.0,
-        "zPos": 69248.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 329.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Dover (Swingate)",
-      "position": {
-        "xPos": 91363.0,
-        "yPos": 0.0,
-        "zPos": 103887.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 357.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Wynghene",
-      "position": {
-        "xPos": 81702.0,
-        "yPos": 0.0,
-        "zPos": 238277.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 69.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Droglandt",
-      "position": {
-        "xPos": 58093.0,
-        "yPos": 0.0,
-        "zPos": 191255.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 158.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Zande",
-      "position": {
-        "xPos": 88385.0,
-        "yPos": 0.0,
-        "zPos": 214416.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 206.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Dronkart",
-      "position": {
-        "xPos": 49596.0,
-        "yPos": 0.0,
-        "zPos": 232163.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 320.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Zeebrugge",
-      "position": {
-        "xPos": 112700.0,
-        "yPos": 0.0,
-        "zPos": 232000.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 345.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Duinhoek",
-      "position": {
-        "xPos": 83328.0,
-        "yPos": 0.0,
-        "zPos": 189498.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 69.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Zuyenkerke",
-      "position": {
-        "xPos": 104478.0,
-        "yPos": 0.0,
-        "zPos": 228541.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 352.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Dymchurch",
-      "position": {
-        "xPos": 81527.0,
-        "yPos": 0.0,
-        "zPos": 81851.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 6.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Zuylcoote",
-      "position": {
-        "xPos": 82157.0,
-        "yPos": 0.0,
-        "zPos": 187226.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 220.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Eastchurch",
-      "position": {
-        "xPos": 119677.0,
-        "yPos": 0.0,
-        "zPos": 69846.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 199.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "lydd",
-      "position": {
-        "xPos": 70742.0,
-        "yPos": 0.0,
-        "zPos": 73349.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 182.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Easthorpe",
-      "position": {
-        "xPos": 171749.0,
-        "yPos": 0.0,
-        "zPos": 64158.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 143.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Eecke",
-      "position": {
-        "xPos": 50408.0,
-        "yPos": 0.0,
-        "zPos": 190857.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 93.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Eeghem",
-      "position": {
-        "xPos": 76801.0,
-        "yPos": 0.0,
-        "zPos": 237712.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 42.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Engel",
-      "position": {
-        "xPos": 86565.0,
-        "yPos": 0.0,
-        "zPos": 222142.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 245.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Eringhem",
-      "position": {
-        "xPos": 61249.0,
-        "yPos": 0.0,
-        "zPos": 172371.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 281.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Esquerdes",
-      "position": {
-        "xPos": 40636.0,
-        "yPos": 0.0,
-        "zPos": 162853.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 351.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Felixstowe",
-      "position": {
-        "xPos": 180795.0,
-        "yPos": 0.0,
-        "zPos": 102627.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 180.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Frinsted",
-      "position": {
-        "xPos": 106768.0,
-        "yPos": 0.0,
-        "zPos": 59289.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 239.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Furnes",
-      "position": {
-        "xPos": 83637.0,
-        "yPos": 0.0,
-        "zPos": 197684.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 302.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Gheluwe",
-      "position": {
-        "xPos": 54104.0,
-        "yPos": 0.0,
-        "zPos": 225437.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 1.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Ghistelles",
-      "position": {
-        "xPos": 93059.0,
-        "yPos": 0.0,
-        "zPos": 216797.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 338.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Godmersham Park",
-      "position": {
-        "xPos": 99592.0,
-        "yPos": 0.0,
-        "zPos": 76263.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 209.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Goldhanger",
-      "position": {
-        "xPos": 158301.0,
-        "yPos": 0.0,
-        "zPos": 63058.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 136.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Grain",
-      "position": {
-        "xPos": 124764.0,
-        "yPos": 0.0,
-        "zPos": 60155.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 142.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Guines",
-      "position": {
-        "xPos": 59489.0,
-        "yPos": 0.0,
-        "zPos": 141501.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 290.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Hadleigh",
-      "position": {
-        "xPos": 191588.0,
-        "yPos": 0.0,
-        "zPos": 82818.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 41.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Halluin",
-      "position": {
-        "xPos": 50852.0,
-        "yPos": 0.0,
-        "zPos": 229591.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 170.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Handzaeme",
-      "position": {
-        "xPos": 75316.0,
-        "yPos": 0.0,
-        "zPos": 220138.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 0.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Harlebeeke",
-      "position": {
-        "xPos": 53987.0,
-        "yPos": 0.0,
-        "zPos": 241679.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 195.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Harty",
-      "position": {
-        "xPos": 115978.0,
-        "yPos": 0.0,
-        "zPos": 72807.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 28.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Hawkinge",
-      "position": {
-        "xPos": 87723.0,
-        "yPos": 0.0,
-        "zPos": 91183.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 353.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Herseaux",
-      "position": {
-        "xPos": 44397.0,
-        "yPos": 0.0,
-        "zPos": 239552.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 285.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Herzeele",
-      "position": {
-        "xPos": 62126.0,
-        "yPos": 0.0,
-        "zPos": 188010.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 226.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Heule",
-      "position": {
-        "xPos": 56969.0,
-        "yPos": 0.0,
-        "zPos": 236328.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 230.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Hey",
-      "position": {
-        "xPos": 50759.0,
-        "yPos": 0.0,
-        "zPos": 174739.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 268.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Hondschoote",
-      "position": {
-        "xPos": 73155.0,
-        "yPos": 0.0,
-        "zPos": 191542.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 271.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Hoog Huys",
-      "position": {
-        "xPos": 54499.0,
-        "yPos": 0.0,
-        "zPos": 173732.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 151.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Hoogte",
-      "position": {
-        "xPos": 68798.0,
-        "yPos": 0.0,
-        "zPos": 237362.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 160.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Houtem",
-      "position": {
-        "xPos": 75602.0,
-        "yPos": 0.0,
-        "zPos": 193068.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 74.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Houttave",
-      "position": {
-        "xPos": 102754.0,
-        "yPos": 0.0,
-        "zPos": 227540.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 309.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Hunton",
-      "position": {
-        "xPos": 98590.0,
-        "yPos": 0.0,
-        "zPos": 40696.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 237.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Ichteghem",
-      "position": {
-        "xPos": 82657.0,
-        "yPos": 0.0,
-        "zPos": 224445.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 41.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Ingelmunster",
-      "position": {
-        "xPos": 66853.0,
-        "yPos": 0.0,
-        "zPos": 239424.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 19.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Iseghem",
-      "position": {
-        "xPos": 65023.0,
-        "yPos": 0.0,
-        "zPos": 234970.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 279.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Jabbecke",
-      "position": {
-        "xPos": 93637.0,
-        "yPos": 0.0,
-        "zPos": 226021.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 144.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Kingsnorth",
-      "position": {
-        "xPos": 123998.0,
-        "yPos": 0.0,
-        "zPos": 52589.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 262.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Kriekhoek",
-      "position": {
-        "xPos": 64624.0,
-        "yPos": 0.0,
-        "zPos": 240978.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 191.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "La Lovie",
-      "position": {
-        "xPos": 62382.0,
-        "yPos": 0.0,
-        "zPos": 200372.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 101.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "La martiere",
-      "position": {
-        "xPos": 45519.0,
-        "yPos": 0.0,
-        "zPos": 233637.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 323.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "LaPanne",
-      "position": {
-        "xPos": 84808.0,
-        "yPos": 0.0,
-        "zPos": 191887.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 88.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Le Belcamp",
-      "position": {
-        "xPos": 48332.0,
-        "yPos": 0.0,
-        "zPos": 228106.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 251.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Le Creche",
-      "position": {
-        "xPos": 42136.0,
-        "yPos": 0.0,
-        "zPos": 206229.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 282.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Le Fresne",
-      "position": {
-        "xPos": 54660.0,
-        "yPos": 0.0,
-        "zPos": 146799.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 158.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Le Rossignol",
-      "position": {
-        "xPos": 42577.0,
-        "yPos": 0.0,
-        "zPos": 209661.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 133.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Leers",
-      "position": {
-        "xPos": 37275.0,
-        "yPos": 0.0,
-        "zPos": 239751.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 344.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Leffinghe",
-      "position": {
-        "xPos": 94945.0,
-        "yPos": 0.0,
-        "zPos": 211397.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 20.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Leffrinckhouke",
-      "position": {
-        "xPos": 79143.0,
-        "yPos": 0.0,
-        "zPos": 183290.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 318.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Leigh Green",
-      "position": {
-        "xPos": 83276.0,
-        "yPos": 0.0,
-        "zPos": 58493.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 224.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Les Moeres",
-      "position": {
-        "xPos": 75482.0,
-        "yPos": 0.0,
-        "zPos": 189275.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 135.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Levington",
-      "position": {
-        "xPos": 187820.0,
-        "yPos": 0.0,
-        "zPos": 101312.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 256.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Leysdown",
-      "position": {
-        "xPos": 118568.0,
-        "yPos": 0.0,
-        "zPos": 75057.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 339.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Lichtervelde",
-      "position": {
-        "xPos": 79588.0,
-        "yPos": 0.0,
-        "zPos": 229798.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 192.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Linselles",
-      "position": {
-        "xPos": 45647.0,
-        "yPos": 0.0,
-        "zPos": 226386.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 254.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Little Clacton",
-      "position": {
-        "xPos": 168728.0,
-        "yPos": 0.0,
-        "zPos": 91266.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 148.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Lophem",
-      "position": {
-        "xPos": 91243.0,
-        "yPos": 0.0,
-        "zPos": 233303.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 167.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Lympne",
-      "position": {
-        "xPos": 84261.0,
-        "yPos": 0.0,
-        "zPos": 80397.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 103.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Mael",
-      "position": {
-        "xPos": 96489.0,
-        "yPos": 0.0,
-        "zPos": 239614.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 212.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Manston",
-      "position": {
-        "xPos": 113759.0,
-        "yPos": 0.0,
-        "zPos": 104550.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 178.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Marcke",
-      "position": {
-        "xPos": 52545.0,
-        "yPos": 0.0,
-        "zPos": 237136.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 262.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Marden",
-      "position": {
-        "xPos": 94955.0,
-        "yPos": 0.0,
-        "zPos": 46330.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 183.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Marquise",
-      "position": {
-        "xPos": 54009.0,
-        "yPos": 0.0,
-        "zPos": 127259.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 163.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Meetkerke",
-      "position": {
-        "xPos": 101861.0,
-        "yPos": 0.0,
-        "zPos": 231174.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 120.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Menin",
-      "position": {
-        "xPos": 54604.0,
-        "yPos": 0.0,
-        "zPos": 230035.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 44.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Meulbeke",
-      "position": {
-        "xPos": 70499.0,
-        "yPos": 0.0,
-        "zPos": 238284.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 69.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Moorslede",
-      "position": {
-        "xPos": 62544.0,
-        "yPos": 0.0,
-        "zPos": 225825.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 255.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Mouveaux",
-      "position": {
-        "xPos": 42779.0,
-        "yPos": 0.0,
-        "zPos": 230487.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 199.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Nachtegal",
-      "position": {
-        "xPos": 61896.0,
-        "yPos": 0.0,
-        "zPos": 230622.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 352.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "New Romney",
-      "position": {
-        "xPos": 75166.0,
-        "yPos": 0.0,
-        "zPos": 75588.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 83.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "North Benfleet",
-      "position": {
-        "xPos": 138751.0,
-        "yPos": 0.0,
-        "zPos": 47599.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 181.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Oostcamp",
-      "position": {
-        "xPos": 91020.0,
-        "yPos": 0.0,
-        "zPos": 235610.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 353.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Oostnieuwkerke",
-      "position": {
-        "xPos": 68089.0,
-        "yPos": 0.0,
-        "zPos": 222812.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 121.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Oostroosbeke",
-      "position": {
-        "xPos": 65288.0,
-        "yPos": 0.0,
-        "zPos": 242223.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 0.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Oudezeele",
-      "position": {
-        "xPos": 55843.0,
-        "yPos": 0.0,
-        "zPos": 184863.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 339.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Oye plage",
-      "position": {
-        "xPos": 72978.0,
-        "yPos": 0.0,
-        "zPos": 154384.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 122.0,
-        "zOri": 0.0
-      }
-    },
-    {
-      "name": "Perenchies",
-      "position": {
-        "xPos": 39674.0,
-        "yPos": 0.0,
-        "zPos": 215649.0
-      },
-      "orientation": {
-        "xOri": 0.0,
-        "yOri": 334.0,
+        "yOri": 76.28409700933449,
         "zOri": 0.0
       }
     }

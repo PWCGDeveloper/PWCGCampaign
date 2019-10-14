@@ -53,6 +53,7 @@ public class ArrasMap extends PWCGMap
         this.frontDatesForMap.addMapDateRange(DateUtils.getDateYYYYMMDD("19170801"), DateUtils.getDateYYYYMMDD("19181201"));
 
         this.frontDatesForMap.addFrontDate("19170801");
+        /*
         this.frontDatesForMap.addFrontDate("19180326");
         this.frontDatesForMap.addFrontDate("19180404");
         this.frontDatesForMap.addFrontDate("19180419");
@@ -66,6 +67,7 @@ public class ArrasMap extends PWCGMap
         this.frontDatesForMap.addFrontDate("19181025");
         this.frontDatesForMap.addFrontDate("19181105");
         this.frontDatesForMap.addFrontDate("19181110");
+        */
     }
 
 }

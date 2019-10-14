@@ -21,15 +21,15 @@ public class CityNameBuilder
 {    
     public static void main(String[] args) throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.setProduct(PWCGProduct.FC);
 
         CityNameBuilder jsonConverter = new CityNameBuilder();
-        jsonConverter.getCityNames("Bodenplatte");
+        jsonConverter.getCityNames("Arras");
     }
 
     private void getCityNames (String mapName) throws PWCGException 
     {
-        String filename = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\Rheinland_Cities.Group";     
+        String filename = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\Arras_ALL.Group";     
         readGroundObjectsFromFile(filename, mapName);
 
     }
