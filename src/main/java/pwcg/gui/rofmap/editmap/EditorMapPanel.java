@@ -46,6 +46,7 @@ public class EditorMapPanel extends MapPanelBase
     public static int EDIT_MODE_ADD_FRONT = 2;
     public static int EDIT_MODE_DELETE_FRONT = 3;
     public static int EDIT_MODE_EDIT_FRONT = 4;
+    public static int EDIT_MODE_ADD_MAP_LOCATIONS = 5;
 
 	private static final long serialVersionUID = 1L;
 	
@@ -54,11 +55,13 @@ public class EditorMapPanel extends MapPanelBase
     private Boolean[] whatToDisplay = new Boolean[8];
 
     private FrontLineEditor frontLineEditor = null;
+    private MapLocationEditor mapLocationEditor = null;
 
 
 	public EditorMapPanel(MapGUI parent) throws PWCGException  
 	{
 		super(parent);
+		mapLocationEditor = new MapLocationEditor(this);
 	}
 
 	public void setData() throws PWCGException 
@@ -254,6 +257,11 @@ public class EditorMapPanel extends MapPanelBase
             else if (editMode == EDIT_MODE_DELETE_FRONT)
             {
                 frontLineEditor.deletePoint(e);
+                repaintMap();
+            }
+            else if (editMode == EDIT_MODE_ADD_MAP_LOCATIONS)
+            {
+                mapLocationEditor.createCity(parent.getName(), e);
                 repaintMap();
             }
             else if (editMode == EDIT_MODE_NONE)

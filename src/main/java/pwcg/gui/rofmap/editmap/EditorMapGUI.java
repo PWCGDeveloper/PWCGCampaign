@@ -188,6 +188,7 @@ public class EditorMapGUI extends MapGUI implements ActionListener
         editButtonPanel.add(makeRadioButton("Add Front", "Edit Mode:AddFront", editModeButtonGroup));
         editButtonPanel.add(makeRadioButton("Delete Front", "Edit Mode:DeleteFront", editModeButtonGroup));
         editButtonPanel.add(makeRadioButton("Create Front", "Edit Mode:CreateFront", editModeButtonGroup));
+        editButtonPanel.add(makeRadioButton("Edit City", "Edit Mode:EditCity", editModeButtonGroup));
         editButtonPanel.add(makeRadioButton("No Edit", "Edit Mode:EditNone", editModeButtonGroup));
         selectionPanel.add(editButtonPanel);
     }
@@ -418,6 +419,10 @@ public class EditorMapGUI extends MapGUI implements ActionListener
                 else if (action.contains("EditFront"))
                 {
                     editorMapPanel.setEditMode(EditorMapPanel.EDIT_MODE_EDIT_FRONT);
+                }
+                else if (action.contains("EditCity"))
+                {
+                    editorMapPanel.setEditMode(EditorMapPanel.EDIT_MODE_ADD_MAP_LOCATIONS);
                 }
                 else if (action.contains("EditNone"))
                 {
