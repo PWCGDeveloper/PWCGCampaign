@@ -3,7 +3,7 @@
   "archType": "pfalzd3a",
   "side": "AXIS",
   "displayName": "Pfalz D.IIIa",
-  "script": "LuaScripts\\WorldObjects\\pfalzd3a.txt",
+  "script": "LuaScripts\\WorldObjects\\Planes\\pfalzd3a.txt",
   "model": "graphics\\planes\\pfalzd3a\\pfalzd3a.mgm",
   "desc": "",
   "cruisingSpeed": 140,

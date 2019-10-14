@@ -1,73 +1,28 @@
 {
   "country": "BRITAIN",
-  "squadronId": 102048,
+  "squadronId": 302048,
   "name": "No 48 Squadron RFC",
+  "fileName": "No 48 Squadron RFC.json",
   "skill": 45,
   "planeAssignments": [
     {
-      "archType": "bristolf2b",
-      "squadronIntroduction": "19170308",
+      "archType": "sopcamel",
+      "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19170701": "Eecke",
-    "19170915": "Proven",
-    "19171222": "Cachy-Bois I_Abbe",
-    "19180324": "Baizieux 2",
-    "19180328": "Savy Berlette",
-    "19180803": "Baizieux 2",
-    "19180826": "Filescamp Ferme",
-    "19180930": "Abeele (West)"
+    "19170801": "Beauvalt"
   },
-  "skins": [
-    {
-      "skinName": "102048",
-      "planeType": "bristolf2bf2",
-      "startDate": "19170826",
-      "endDate": "19171222",
-      "squadId": 102048,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "F2BF2_RFC48_DEC17",
-      "planeType": "bristolf2bf2",
-      "startDate": "19171223",
-      "endDate": "19180201",
-      "squadId": 102048,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "102048",
-      "planeType": "bristolf2bf3",
-      "startDate": "19180202",
-      "endDate": "19180323",
-      "squadId": 102048,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-        
+  "skins": [],
   "squadHistory": {
-    "squadHistoryEntries": [
-	  {
-         "date": "19180401",
-         "squadName": "No 48 Squadron RAF",
-         "armedServiceName": "Royal Air Force"
-	  }
-    ]
+    "squadHistoryEntries": []
   },
-  
-  "serviceId": 10201,
+  "serviceId": 30201,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19150801",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {
@@ -89,5 +44,7 @@
         ]
       }
     ]
-  }
+  },
+  "conversionPeriods": [],
+  "callsigns": {}
 }

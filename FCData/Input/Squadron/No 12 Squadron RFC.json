@@ -1,66 +1,28 @@
 {
   "country": "BRITAIN",
-  "squadronId": 102012,
+  "squadronId": 302012,
   "name": "No 12 Squadron RFC",
+  "fileName": "No 12 Squadron RFC.json",
   "skill": 25,
   "planeAssignments": [
     {
-      "archType": "fe2",
-      "squadronIntroduction": "19150901",
-      "squadronWithdrawal": "19170215"
-    },
-    {
-      "archType": "re8",
-      "squadronIntroduction": "19170210",
+      "archType": "sopcamel",
+      "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19140801": "Abeele (West)",
-    "19150906": "St. Marie Cappel",
-    "19170509": "Savy Berlette",
-    "19170707": "Auchel",
-    "19171216": "Merville",
-    "19180322": "Soncamp Farm"
+    "19170801": "Estee Blanche"
   },
-  "skins": [
-    {
-      "skinName": "FE2B_RFC_DEFAULT",
-      "planeType": "fe2b",
-      "startDate": "19150101",
-      "endDate": "19171231",
-      "squadId": 102012,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "RE8_RFC12_DEFAULT",
-      "planeType": "re8",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": 102012,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-
+  "skins": [],
   "squadHistory": {
-    "squadHistoryEntries": [
-	  {
-         "date": "19180401",
-         "squadName": "No 12 Squadron RAF",
-         "armedServiceName": "Royal Air Force"
-	  }
-    ]
+    "squadHistoryEntries": []
   },
-  
-  "serviceId": 10201,
+  "serviceId": 30201,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19150801",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {
@@ -78,5 +40,7 @@
         ]
       }
     ]
-  }
+  },
+  "conversionPeriods": [],
+  "callsigns": {}
 }

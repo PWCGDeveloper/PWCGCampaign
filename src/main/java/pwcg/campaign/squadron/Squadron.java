@@ -510,6 +510,11 @@ public class Squadron
         return false;
     }
 
+    public void setConversionPeriods(List<SquadronConversionPeriod> conversionPeriods)
+    {
+        this.conversionPeriods = conversionPeriods;
+    }
+
     public boolean isSquadronThisRole (Date date, Role requestedRole) throws PWCGException 
     {
         return squadronRoles.isSquadronThisRole(date, requestedRole);
@@ -825,5 +830,10 @@ public class Squadron
     public void setFileName(String fileName)
     {
         this.fileName = fileName;
+    }
+
+    public void setPlaneAssignments(List<SquadronPlaneAssignment> planeAssignments)
+    {
+        this.planeAssignments = planeAssignments;
     }
 }

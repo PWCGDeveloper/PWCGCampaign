@@ -1,57 +1,28 @@
 {
   "country": "GERMANY",
-  "squadronId": 501493,
+  "squadronId": 401493,
   "name": "FA 293b",
+  "fileName": "FA 293b.json",
   "skill": 25,
   "planeAssignments": [
     {
-      "archType": "dfwc",
-      "squadronIntroduction": "19150801",
+      "archType": "albatrosd",
+      "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19150801": "Bellevue Ferme",
-    "19170525": "Pronville,nr Queant",
-    "19180729": "Le Belcamp"
+    "19170801": "Vermand"
   },
-  "skins": [
-    {
-      "skinName": "DFC5_PW_F293_1_E",
-      "planeType": "dfwc5",
-      "startDate": "19140801",
-      "endDate": "19171001",
-      "squadId": 501493,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "DFC5_PW_F293_A_M",
-      "planeType": "dfwc5",
-      "startDate": "19171001",
-      "endDate": "19180401",
-      "squadId": 501493,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "DFC5_PW_F293_4_L",
-      "planeType": "dfwc5",
-      "startDate": "19180401",
-      "endDate": "19181201",
-      "squadId": 501493,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-  "serviceId": 50101,
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 40101,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19150801",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {
@@ -69,5 +40,7 @@
         ]
       }
     ]
-  }
+  },
+  "conversionPeriods": [],
+  "callsigns": {}
 }

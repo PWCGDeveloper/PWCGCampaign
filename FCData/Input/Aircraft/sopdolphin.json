@@ -3,7 +3,7 @@
   "archType": "sopdolphin",
   "side": "ALLIED",
   "displayName": "Sopwith Dolphin",
-  "script": "LuaScripts\\WorldObjects\\sopdolphin.txt",
+  "script": "LuaScripts\\WorldObjects\\Planes\\sopdolphin.txt",
   "model": "graphics\\planes\\sopdolphin\\sopdolphin.mgm",
   "desc": "",
   "cruisingSpeed": 170,

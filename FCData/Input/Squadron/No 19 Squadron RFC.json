@@ -1,146 +1,28 @@
 {
   "country": "BRITAIN",
-  "squadronId": 102019,
+  "squadronId": 302019,
   "name": "No 19 Squadron RFC",
+  "fileName": "No 19 Squadron RFC.json",
   "skill": 45,
   "planeAssignments": [
     {
-      "archType": "dh2",
-      "squadronIntroduction": "19160201",
-      "squadronWithdrawal": "19161015"
-    },
-    {
-      "archType": "spad",
-      "squadronIntroduction": "19161001",
-      "squadronWithdrawal": "19180131"
-    },
-    {
-      "archType": "sopdolphin",
-      "squadronIntroduction": "19180109",
+      "archType": "sopcamel",
+      "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19160801": "Filescamp Ferme",
-    "19170402": "Baizieux 2",
-    "19170531": "Baizieux 2",
-    "19170814": "Poperinghe",
-    "19170905": "Bailleul",
-    "19171225": "Bailleul",
-    "19180213": "Bailleul",
-    "19180323": "Abeele (East)",
-    "19180331": "Filescamp Ferme",
-    "19180817": "Bailleul",
-    "19180923": "Savy Berlette"
+    "19170801": "Grand Ruilecourt"
   },
-  "skins": [
-    {
-      "skinName": "FE2B_RFC_DEFAULT",
-      "planeType": "fe2b",
-      "startDate": "19160201",
-      "endDate": "19160731",
-      "squadId": 102019,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "DH2_19RFC_STD",
-      "planeType": "dh2",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": 102019,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "N11_RFC_GREEN",
-      "planeType": "nieuport11",
-      "startDate": "19160201",
-      "endDate": "19160731",
-      "squadId": 102019,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "N11_19RFC_STD",
-      "planeType": "nieuport11",
-      "startDate": "19160801",
-      "endDate": "19181201",
-      "squadId": 102019,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "S7E_RFC19_DEFAULT",
-      "planeType": "spad7early",
-      "startDate": "19161001",
-      "endDate": "19161130",
-      "squadId": 102019,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "S7E_RFC19_DEFAULT",
-      "planeType": "spad7early",
-      "startDate": "19170401",
-      "endDate": "19170531",
-      "squadId": 102019,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "S7L_RFC19_STD",
-      "planeType": "spad7",
-      "startDate": "19170816",
-      "endDate": "19170910",
-      "squadId": 102019,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "102019",
-      "planeType": "sopdolphin",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": 102019,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "S13_RFC19_JUN17",
-      "planeType": "spad13",
-      "startDate": "19140801",
-      "endDate": "19181201",
-      "squadId": 102019,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-
-    "squadHistory": {
-    "squadHistoryEntries": [
-	  {
-         "date": "19180401",
-         "squadName": "No 19 Squadron RAF",
-         "armedServiceName": "Royal Air Force"
-	  }
-    ]
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": []
   },
-  
-  "serviceId": 10201,
+  "serviceId": 30201,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19150801",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {
@@ -150,5 +32,7 @@
         ]
       }
     ]
-  }
+  },
+  "conversionPeriods": [],
+  "callsigns": {}
 }

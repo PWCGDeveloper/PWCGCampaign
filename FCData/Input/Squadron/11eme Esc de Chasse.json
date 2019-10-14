@@ -1,40 +1,28 @@
 {
   "country": "BELGIUM",
-  "squadronId": 109011,
+  "squadronId": 302011,
   "name": "11eme Esc de Chasse",
+  "fileName": "11eme Esc de Chasse.json",
   "skill": 40,
   "planeAssignments": [
     {
-      "archType": "hanhd1",
-      "squadronIntroduction": "19180428",
-      "squadronWithdrawal": "19181201"
-    },
-    {
       "archType": "sopcamel",
-      "squadronIntroduction": "19180428",
+      "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19180428": "Proven"
+    "19170801": "Sercus"
   },
-  "skins": [
-    {
-      "skinName": "SC_BMA11DEFAULT",
-      "planeType": "sopcamel",
-      "startDate": "19180101",
-      "endDate": "19181201",
-      "squadId": 109011,
-      "country": "Belgium",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-  "serviceId": 10903,
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 30201,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19150801",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {
@@ -44,5 +32,7 @@
         ]
       }
     ]
-  }
+  },
+  "conversionPeriods": [],
+  "callsigns": {}
 }

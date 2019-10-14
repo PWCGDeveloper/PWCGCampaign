@@ -3,7 +3,7 @@
   "archType": "fokkerd7",
   "side": "AXIS",
   "displayName": "Fokker D.VIIF",
-  "script": "LuaScripts\\WorldObjects\\fokkerd7f.txt",
+  "script": "LuaScripts\\WorldObjects\\Planes\\fokkerd7f.txt",
   "model": "graphics\\planes\\fokkerd7f\\fokkerd7f.mgm",
   "desc": "",
   "cruisingSpeed": 150,

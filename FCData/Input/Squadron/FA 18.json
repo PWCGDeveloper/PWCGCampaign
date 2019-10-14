@@ -1,57 +1,28 @@
 {
   "country": "GERMANY",
-  "squadronId": 501218,
+  "squadronId": 401218,
   "name": "FA 18",
+  "fileName": "FA 18.json",
   "skill": 25,
   "planeAssignments": [
     {
-      "archType": "dfwc",
-      "squadronIntroduction": "19150801",
+      "archType": "albatrosd",
+      "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19150801": "Epinoy,NW Cambrai",
-    "19151021": "Liesse",
-    "19171115": "Chassonge Ferme,Stenay/Verdun"
+    "19170801": "Gouzeaucourt"
   },
-  "skins": [
-    {
-      "skinName": "DFC5_PW_F18_8_E",
-      "planeType": "dfwc5",
-      "startDate": "19140801",
-      "endDate": "19171001",
-      "squadId": 501218,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "DFC5_PW_F18_5_M",
-      "planeType": "dfwc5",
-      "startDate": "19171001",
-      "endDate": "19180401",
-      "squadId": 501218,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "DFC5_PW_F18_7_L",
-      "planeType": "dfwc5",
-      "startDate": "19180401",
-      "endDate": "19181201",
-      "squadId": 501218,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-  "serviceId": 50101,
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 40101,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19150801",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {
@@ -69,5 +40,7 @@
         ]
       }
     ]
-  }
+  },
+  "conversionPeriods": [],
+  "callsigns": {}
 }

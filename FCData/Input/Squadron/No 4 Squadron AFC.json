@@ -1,61 +1,29 @@
 {
   "country": "BRITAIN",
-  "squadronId": 102104,
+  "squadronId": 302104,
   "name": "No 4 Squadron AFC",
+  "fileName": "No 4 Squadron AFC.json",
   "skill": 65,
   "planeAssignments": [
     {
       "archType": "sopcamel",
-      "squadronIntroduction": "19171218",
+      "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19171218": "Mazingarbe",
-    "19180429": "Romarin",
-    "19180630": "La Gorgue",
-    "19180929": "La Gorgue",
-    "19181020": "Auchel"
+    "19170801": "Bruay"
   },
-  "skins": [
-    {
-      "skinName": "SC_102504_ANS",
-      "planeType": "sopcamel",
-      "startDate": "19171218",
-      "endDate": "19180322",
-      "squadId": 102104,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "SC_AFC4_MAR18",
-      "planeType": "sopcamel",
-      "startDate": "19180323",
-      "endDate": "19181201",
-      "squadId": 102104,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-    
+  "skins": [],
   "squadHistory": {
-    "squadHistoryEntries": [
-	  {
-         "date": "19180401",
-         "squadName": "No 4 Squadron AFC",
-         "armedServiceName": "Royal Air Force"
-	  }
-    ]
+    "squadHistoryEntries": []
   },
-  
-  "serviceId": 10201,
+  "serviceId": 30201,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19150801",
-        "endDate": "19180401",
+        "startDate": "19170801",
+        "endDate": "19181201",
         "weightedRoles": [
           {
             "role": "ROLE_FIGHTER",
@@ -68,7 +36,7 @@
         ]
       },
       {
-        "startDate": "19180401",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {
@@ -82,5 +50,7 @@
         ]
       }
     ]
-  }
+  },
+  "conversionPeriods": [],
+  "callsigns": {}
 }

@@ -3,7 +3,7 @@
   "archType": "sopcamel",
   "side": "ALLIED",
   "displayName": "Sopwith Camel",
-  "script": "LuaScripts\\WorldObjects\\sopcamel.txt",
+  "script": "LuaScripts\\WorldObjects\\Planes\\sopcamel.txt",
   "model": "graphics\\planes\\sopcamel\\sopcamel.mgm",
   "desc": "",
   "cruisingSpeed": 150,

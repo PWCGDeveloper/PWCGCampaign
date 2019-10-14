@@ -3,7 +3,7 @@
   "archType": "se5",
   "side": "ALLIED",
   "displayName": "S.E.5a",
-  "script": "LuaScripts\\WorldObjects\\se5a.txt",
+  "script": "LuaScripts\\WorldObjects\\Planes\\se5a.txt",
   "model": "graphics\\planes\\se5a\\se5a.mgm",
   "desc": "",
   "cruisingSpeed": 190,

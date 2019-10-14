@@ -1,80 +1,29 @@
 {
   "country": "BRITAIN",
-  "squadronId": 102046,
+  "squadronId": 302046,
   "name": "No 46 Squadron RFC",
+  "fileName": "No 46 Squadron RFC.json",
   "skill": 59,
   "planeAssignments": [
     {
-      "archType": "soppup",
-      "squadronIntroduction": "19170501",
-      "squadronWithdrawal": "19171130"
-    },
-    {
       "archType": "sopcamel",
-      "squadronIntroduction": "19171110",
+      "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19161012": "Eecke",
-    "19170425": "Filescamp Ferme",
-    "19170512": "La Gorgue",
-    "19170706": "Bruay",
-    "19170830": "St. Marie Cappel",
-    "19170907": "Mont St. Eloi",
-    "19180516": "Baizieux 2",
-    "19180617": "La Gorgue",
-    "19180814": "Moreuil"
+    "19170801": "Arras North 2"
   },
-  "skins": [
-    {
-      "skinName": "SP_46",
-      "planeType": "soppup",
-      "startDate": "19140801",
-      "endDate": "19171130",
-      "squadId": 102046,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "SC_46_2",
-      "planeType": "sopcamel",
-      "startDate": "19140801",
-      "endDate": "19180322",
-      "squadId": 102046,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "SC_102046_ANS",
-      "planeType": "sopcamel",
-      "startDate": "19180323",
-      "endDate": "19181201",
-      "squadId": 102046,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-        
+  "skins": [],
   "squadHistory": {
-    "squadHistoryEntries": [
-	  {
-         "date": "19180401",
-         "squadName": "No 46 Squadron RAF",
-         "armedServiceName": "Royal Air Force"
-	  }
-    ]
+    "squadHistoryEntries": []
   },
-  
-  "serviceId": 10201,
+  "serviceId": 30201,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19150801",
-        "endDate": "19171110",
+        "startDate": "19170801",
+        "endDate": "19181201",
         "weightedRoles": [
           {
             "role": "ROLE_FIGHTER",
@@ -83,7 +32,7 @@
         ]
       },
       {
-        "startDate": "19171110",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {
@@ -97,5 +46,7 @@
         ]
       }
     ]
-  }
+  },
+  "conversionPeriods": [],
+  "callsigns": {}
 }

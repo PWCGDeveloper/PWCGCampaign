@@ -1,64 +1,28 @@
 {
   "country": "BRITAIN",
-  "squadronId": 102065,
+  "squadronId": 302065,
   "name": "No 65 Squadron RFC",
+  "fileName": "No 65 Squadron RFC.json",
   "skill": 60,
   "planeAssignments": [
     {
       "archType": "sopcamel",
-      "squadronIntroduction": "19170724",
+      "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19171024": "La Lovie",
-    "19171104": "Houtem",
-    "19180217": "Abeele (East)",
-    "19180321": "Poperinghe",
-    "19180324": "Bailleul",
-    "19180326": "Mazingarbe",
-    "19180406": "Villers Bretonneux",
-    "19180812": "La Gorgue",
-    "19180816": "Bailleul"
+    "19170801": "Mondicourt"
   },
-  "skins": [
-    {
-      "skinName": "SC_102065_ANS",
-      "planeType": "sopcamel",
-      "startDate": "19171010",
-      "endDate": "19180322",
-      "squadId": 102065,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "102065_020",
-      "planeType": "sopcamel",
-      "startDate": "19180323",
-      "endDate": "19181201",
-      "squadId": 102065,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-
+  "skins": [],
   "squadHistory": {
-    "squadHistoryEntries": [
-	  {
-         "date": "19180401",
-         "squadName": "No 65 Squadron RAF",
-         "armedServiceName": "Royal Air Force"
-	  }
-    ]
+    "squadHistoryEntries": []
   },
-  
-  "serviceId": 10201,
+  "serviceId": 30201,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19150801",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {
@@ -72,5 +36,7 @@
         ]
       }
     ]
-  }
+  },
+  "conversionPeriods": [],
+  "callsigns": {}
 }

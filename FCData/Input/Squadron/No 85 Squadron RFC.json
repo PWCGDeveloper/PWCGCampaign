@@ -1,50 +1,28 @@
 {
   "country": "BRITAIN",
-  "squadronId": 102085,
+  "squadronId": 302085,
   "name": "No 85 Squadron RFC",
+  "fileName": "No 85 Squadron RFC.json",
   "skill": 75,
   "planeAssignments": [
     {
-      "archType": "se5",
-      "squadronIntroduction": "19180401",
+      "archType": "sopcamel",
+      "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19180401": "Hondschoote",
-    "19180525": "Hondschoote",
-    "19180611": "Merville",
-    "19180813": "Warfusee",
-    "19180905": "Savy Berlette"
+    "19170801": "Conteville"
   },
-  "skins": [
-    {
-      "skinName": "102085_010",
-      "planeType": "se5a",
-      "startDate": "19180501",
-      "endDate": "19181201",
-      "squadId": 102085,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-        
+  "skins": [],
   "squadHistory": {
-    "squadHistoryEntries": [
-	  {
-         "date": "19180401",
-         "squadName": "No 85 Squadron RAF",
-         "armedServiceName": "Royal Air Force"
-	  }
-    ]
+    "squadHistoryEntries": []
   },
-    
-  "serviceId": 10201,
+  "serviceId": 30201,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19150801",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {
@@ -54,5 +32,7 @@
         ]
       }
     ]
-  }
+  },
+  "conversionPeriods": [],
+  "callsigns": {}
 }

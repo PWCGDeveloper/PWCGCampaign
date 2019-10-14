@@ -3,7 +3,7 @@
   "archType": "halberstadtcl",
   "side": "AXIS",
   "displayName": "Halberstadt CL.II 200hp",
-  "script": "LuaScripts\\WorldObjects\\halberstadtcl2au.txt",
+  "script": "LuaScripts\\WorldObjects\\Planes\\halberstadtcl2au.txt",
   "model": "graphics\\planes\\halberstadtcl2au\\halberstadtcl2au.mgm",
   "desc": "",
   "cruisingSpeed": 130,

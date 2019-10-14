@@ -1,43 +1,28 @@
 {
   "country": "BRITAIN",
-  "squadronId": 102002,
+  "squadronId": 302002,
   "name": "No 2 Squadron RFC",
+  "fileName": "No 2 Squadron RFC.json",
   "skill": 25,
   "planeAssignments": [
     {
-      "archType": "fe2",
-      "squadronIntroduction": "19140801",
-      "squadronWithdrawal": "19170110"
-    },
-    {
-      "archType": "re8",
-      "squadronIntroduction": "19170101",
+      "archType": "sopcamel",
+      "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19150801": "Savy Berlette",
-    "19180609": "Soncamp Farm",
-    "19181020": "Mont St. Eloi",
-    "19181026": "Lealvillers"
+    "19170801": "Bryas"
   },
   "skins": [],
-  
   "squadHistory": {
-    "squadHistoryEntries": [
-	  {
-         "date": "19180401",
-         "squadName": "No 2 Squadron RAF",
-         "armedServiceName": "Royal Air Force"
-	  }
-    ]
+    "squadHistoryEntries": []
   },
-  
-  "serviceId": 10201,
+  "serviceId": 30201,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19150801",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {
@@ -55,5 +40,7 @@
         ]
       }
     ]
-  }
+  },
+  "conversionPeriods": [],
+  "callsigns": {}
 }

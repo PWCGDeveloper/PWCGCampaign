@@ -1,75 +1,28 @@
 {
   "country": "BRITAIN",
-  "squadronId": 102024,
+  "squadronId": 302024,
   "name": "No 24 Squadron RFC",
+  "fileName": "No 24 Squadron RFC.json",
   "skill": 85,
   "planeAssignments": [
     {
-      "archType": "dh2",
-      "squadronIntroduction": "19160208",
-      "squadronWithdrawal": "19170601"
-    },
-    {
-      "archType": "soppup",
-      "squadronIntroduction": "19170515",
-      "squadronWithdrawal": "19171225"
-    },
-    {
-      "archType": "se5",
-      "squadronIntroduction": "19171225",
+      "archType": "sopcamel",
+      "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19160210": "Baizieux 2",
-    "19170417": "Villers Bretonneux",
-    "19170710": "Baizieux 2",
-    "19170923": "La Lovie",
-    "19171124": "Marieux",
-    "19171230": "Lealvillers",
-    "19180322": "Moreuil",
-    "19180326": "Baizieux 2",
-    "19180328": "Mazingarbe",
-    "19180814": "Villers Bretonneux"
+    "19170801": "Mont St Eloi"
   },
-  "skins": [
-    {
-      "skinName": "102024_020",
-      "planeType": "se5a",
-      "startDate": "19171225",
-      "endDate": "19180322",
-      "squadId": 102024,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "SE5A_102024_18A",
-      "planeType": "se5a",
-      "startDate": "19180323",
-      "endDate": "19181201",
-      "squadId": 102024,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-    
+  "skins": [],
   "squadHistory": {
-    "squadHistoryEntries": [
-	  {
-         "date": "19180401",
-         "squadName": "No 24 Squadron RAF",
-         "armedServiceName": "Royal Air Force"
-	  }
-    ]
+    "squadHistoryEntries": []
   },
-  
-  "serviceId": 10201,
+  "serviceId": 30201,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19150801",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {
@@ -79,5 +32,7 @@
         ]
       }
     ]
-  }
+  },
+  "conversionPeriods": [],
+  "callsigns": {}
 }

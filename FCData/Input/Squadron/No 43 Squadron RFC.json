@@ -1,90 +1,29 @@
 {
   "country": "BRITAIN",
-  "squadronId": 102043,
+  "squadronId": 302043,
   "name": "No 43 Squadron RFC",
+  "fileName": "No 43 Squadron RFC.json",
   "skill": 25,
   "planeAssignments": [
     {
-      "archType": "sopstr",
-      "squadronIntroduction": "19170117",
-      "squadronWithdrawal": "19171004"
-    },
-    {
       "archType": "sopcamel",
-      "squadronIntroduction": "19171005",
+      "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19170117": "Lealvillers",
-    "19170510": "Auchel",
-    "19170530": "Mont St. Eloi",
-    "19180115": "La Gorgue",
-    "19180603": "Grivesnes",
-    "19180621": "La Gorgue",
-    "19180712": "Vauxcere",
-    "19180727": "Marieux",
-    "19181006": "Mazingarbe"
+    "19170801": "Le Hameau"
   },
-  "skins": [
-    {
-      "skinName": "SS_RNAS-RFC_STD10",
-      "planeType": "sopstr",
-      "startDate": "19170117",
-      "endDate": "19170825",
-      "squadId": 102043,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "SS_RFC43_AUG17",
-      "planeType": "sopstr",
-      "startDate": "19170826",
-      "endDate": "19171004",
-      "squadId": 102043,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "SC_RFC43_AUG17",
-      "planeType": "sopcamel",
-      "startDate": "19171005",
-      "endDate": "19180322",
-      "squadId": 102043,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "102043_020",
-      "planeType": "sopcamel",
-      "startDate": "19180323",
-      "endDate": "19181201",
-      "squadId": 102043,
-      "country": "Britain",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-        
+  "skins": [],
   "squadHistory": {
-    "squadHistoryEntries": [
-	  {
-         "date": "19180401",
-         "squadName": "No 43 Squadron RAF",
-         "armedServiceName": "Royal Air Force"
-	  }
-    ]
+    "squadHistoryEntries": []
   },
-  
-  "serviceId": 10201,
+  "serviceId": 30201,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19150801",
-        "endDate": "19171005",
+        "startDate": "19170801",
+        "endDate": "19181201",
         "weightedRoles": [
           {
             "role": "ROLE_RECON",
@@ -101,7 +40,7 @@
         ]
       },
       {
-        "startDate": "19171005",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {
@@ -115,5 +54,7 @@
         ]
       }
     ]
-  }
+  },
+  "conversionPeriods": [],
+  "callsigns": {}
 }

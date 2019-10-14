@@ -3,7 +3,7 @@
   "archType": "spad",
   "side": "ALLIED",
   "displayName": "SPAD 13.C1",
-  "script": "LuaScripts\\WorldObjects\\spad13.txt",
+  "script": "LuaScripts\\WorldObjects\\Planes\\spad13.txt",
   "model": "graphics\\planes\\spad13\\spad13.mgm",
   "desc": "",
   "cruisingSpeed": 180,

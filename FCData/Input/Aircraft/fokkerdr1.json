@@ -3,7 +3,7 @@
   "archType": "fokkerdr1",
   "side": "AXIS",
   "displayName": "Fokker Dr.I",
-  "script": "LuaScripts\\WorldObjects\\fokkerdr1.txt",
+  "script": "LuaScripts\\WorldObjects\\Planes\\fokkerdr1.txt",
   "model": "graphics\\planes\\fokkerdr1\\fokkerdr1.mgm",
   "desc": "",
   "cruisingSpeed": 130,

@@ -3,7 +3,7 @@
   "archType": "bristolf2b",
   "side": "ALLIED",
   "displayName": "Bristol F2B (F.II)",
-  "script": "LuaScripts\\WorldObjects\\bristolf2bf2.txt",
+  "script": "LuaScripts\\WorldObjects\\Planes\\bristolf2bf2.txt",
   "model": "graphics\\planes\\bristolf2bf2\\bristolf2bf2.mgm",
   "desc": "",
   "cruisingSpeed": 150,

@@ -1,57 +1,28 @@
 {
   "country": "GERMANY",
-  "squadronId": 501207,
+  "squadronId": 401207,
   "name": "FA 7",
+  "fileName": "FA 7.json",
   "skill": 25,
   "planeAssignments": [
     {
-      "archType": "dfwc",
-      "squadronIntroduction": "19160322",
+      "archType": "albatrosd",
+      "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
   ],
   "airfields": {
-    "19150801": "Mesnil-Bruntel",
-    "19171101": "Vivaise",
-    "19180601": "Epinoy,NW Cambrai"
+    "19170801": "Iwuy"
   },
-  "skins": [
-    {
-      "skinName": "DFC5_PW_F7_E",
-      "planeType": "dfwc5",
-      "startDate": "19140801",
-      "endDate": "19171001",
-      "squadId": 501207,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "DFC5_PW_F7_E_M",
-      "planeType": "dfwc5",
-      "startDate": "19171001",
-      "endDate": "19180401",
-      "squadId": 501207,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    },
-    {
-      "skinName": "DFC5_PW_F7_U_L",
-      "planeType": "dfwc5",
-      "startDate": "19180401",
-      "endDate": "19181201",
-      "squadId": 501207,
-      "country": "Germany",
-      "category": "Squadron",
-      "definedInGame": false
-    }
-  ],
-  "serviceId": 50101,
+  "skins": [],
+  "squadHistory": {
+    "squadHistoryEntries": []
+  },
+  "serviceId": 40101,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
-        "startDate": "19150801",
+        "startDate": "19170801",
         "endDate": "19181201",
         "weightedRoles": [
           {
@@ -69,5 +40,7 @@
         ]
       }
     ]
-  }
+  },
+  "conversionPeriods": [],
+  "callsigns": {}
 }
