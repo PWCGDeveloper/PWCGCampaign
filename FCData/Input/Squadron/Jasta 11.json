@@ -8,6 +8,16 @@
     {
       "archType": "albatrosd",
       "squadronIntroduction": "19170801",
+      "squadronWithdrawal": "19180101"
+    },
+	    {
+      "archType": "fokkerdri",
+      "squadronIntroduction": "19171101",
+      "squadronWithdrawal": "19180710"
+    },
+	{
+      "archType": "fokkerd7",
+      "squadronIntroduction": "19180605",
       "squadronWithdrawal": "19181201"
     }
   ],

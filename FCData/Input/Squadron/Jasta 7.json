@@ -6,8 +6,18 @@
   "skill": 80,
   "planeAssignments": [
     {
-      "archType": "albatrosd",
+      "archType": "pfalz",
       "squadronIntroduction": "19170801",
+      "squadronWithdrawal": "19180720"
+    },
+	{
+      "archType": "fokkerdri",
+      "squadronIntroduction": "19180120",
+      "squadronWithdrawal": "19180801"
+    },
+	{
+      "archType": "fokkerd7",
+      "squadronIntroduction": "19180701",
       "squadronWithdrawal": "19181201"
     }
   ],

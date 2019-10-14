@@ -6,7 +6,7 @@
   "skill": 75,
   "planeAssignments": [
     {
-      "archType": "sopcamel",
+      "archType": "se5",
       "squadronIntroduction": "19170801",
       "squadronWithdrawal": "19181201"
     }
@@ -23,13 +23,26 @@
     "squadronRolePeriods": [
       {
         "startDate": "19170801",
-        "endDate": "19181201",
+        "endDate": "19180406",
         "weightedRoles": [
           {
             "role": "ROLE_FIGHTER",
             "weight": 100
           }
         ]
+      },
+	  {
+        "startDate": "19180407",
+        "endDate": "19181201",
+        "weightedRoles": [
+          {
+            "role": "ROLE_FIGHTER",
+            "weight": 90
+          },
+          {
+            "role": "ROLE_ATTACK",
+            "weight": 10
+          }		]
       }
     ]
   },
