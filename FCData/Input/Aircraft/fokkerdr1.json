@@ -15,6 +15,7 @@
   "roles": [
     "ROLE_FIGHTER"
   ],
-  "introduction": "19170815",
+  "introduction": "19170701",
+  "endProduction": "19180701",
   "withdrawal": "19181201"
 }

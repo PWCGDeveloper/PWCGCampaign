@@ -41,19 +41,19 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     @Override
     public boolean useWaypointGoal()
     {
-        return true;
+        return false;
     }
 
     @Override
     public boolean usePlaneDir()
     {
-        return false;
+        return true;
     }
 
     @Override
     public boolean useFlagDir()
     {
-        return false;
+        return true;
     }
 
     @Override
@@ -65,13 +65,13 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     @Override
     public boolean usePosition1()
     {
-        return false;
+        return true;
     }
 
     @Override
     public TakeoffFormation getTakeoffFormation()
     {
-        return TakeoffFormation.LINE_ABREAST;
+        return TakeoffFormation.STAGGERED;
     }
 
     @Override

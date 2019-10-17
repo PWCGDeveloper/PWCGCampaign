@@ -28,7 +28,11 @@ public class FCPlaneAttributeFactory
 	{
 		IPlaneAttributeMapping FCPlaneAttributeMapping = createPlaneAttributeMap(planeType);
 		String[] staticPlaneMatches = FCPlaneAttributeMapping.getStaticPlaneMatches();
-		int index = RandomNumberGenerator.getRandom(staticPlaneMatches.length);
-		return new FCStaticPlane(staticPlaneMatches[index]);
+		if (staticPlaneMatches.length > 0)
+		{
+    		int index = RandomNumberGenerator.getRandom(staticPlaneMatches.length);
+    		return new FCStaticPlane(staticPlaneMatches[index]);
+		}
+		return null;
 	}
 }

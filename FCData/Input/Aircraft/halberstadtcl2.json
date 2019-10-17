@@ -18,6 +18,7 @@
     "ROLE_BOMB",
     "ROLE_ARTILLERY_SPOT"
   ],
-  "introduction": "19170301",
+  "introduction": "19170601",
+  "endProduction": "19181201",
   "withdrawal": "19181111"
 }

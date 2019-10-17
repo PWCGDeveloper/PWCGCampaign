@@ -49,6 +49,10 @@ public class ClimbWaypointGenerator
 		if (isGenerateClimbWaypoints())
 		{
 		    int numClimbLegs = new Double(flightAlt).intValue() / new Integer(flight.getPlanes().get(0).getClimbOutRate());
+		    if (numClimbLegs > 5)
+		    {
+		        numClimbLegs = 5;
+		    }
 		    
 		    if (numClimbLegs > 0)
 		    {

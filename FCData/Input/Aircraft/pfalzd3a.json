@@ -1,6 +1,6 @@
 {
   "type": "pfalzd3a",
-  "archType": "pfalzd3a",
+  "archType": "pfalz",
   "side": "AXIS",
   "displayName": "Pfalz D.IIIa",
   "script": "LuaScripts\\WorldObjects\\Planes\\pfalzd3a.txt",
@@ -16,5 +16,6 @@
     "ROLE_FIGHTER"
   ],
   "introduction": "19170501",
-  "withdrawal": "19180801"
+  "endProduction": "19180601",
+  "withdrawal": "19180901"
 }

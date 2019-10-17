@@ -52,7 +52,9 @@ public enum PayloadElement
     P51_ROCKETS(PayloadElementCategory.ORDNANCE_BOMB, "P51 rockets", 80),
     P38_BOMBS(PayloadElementCategory.ORDNANCE_BOMB, "P38 Bombs", 80),
     P38_ROCKETS(PayloadElementCategory.ORDNANCE_BOMB, "P38 rockets", 80),
+    BOMBS(PayloadElementCategory.ORDNANCE_BOMB, "Bombs", 60),
 
+    
     //WW II
     BUBBLE_CANOPY(PayloadElementCategory.PLANE_PART, "Bubble Canopy", 0),
     REMOVE_HEADREST(PayloadElementCategory.PLANE_PART, "Remove Headrest", 0),
@@ -89,6 +91,16 @@ public enum PayloadElement
     ETC501(PayloadElementCategory.PLANE_PART, "ETC 501 Bomb Rack", 100),
     OCTANE_150_FUEL(PayloadElementCategory.PLANE_PART, "150 Octane Fuel", 100),
     LB_11_BOOST(PayloadElementCategory.PLANE_PART, "11 lb. Boost", 100),
+
+    AMMO_COUNTER(PayloadElementCategory.PLANE_PART, "Ammo Counter", 0),
+    ALTITUDE_GUAGE(PayloadElementCategory.PLANE_PART, "Altitude Guage", 0),
+    ATTITUDE_GUAGE(PayloadElementCategory.PLANE_PART, "Attitude Guage", 0),
+    TEMPERATURE_GUAGE(PayloadElementCategory.PLANE_PART, "Temperature Guage", 0),
+    FUEL_GUAGE(PayloadElementCategory.PLANE_PART, "Fuel Guage", 0),
+    SPEED_GUAGE(PayloadElementCategory.PLANE_PART, "Speed guage", 0),
+    IRON_SIGHT(PayloadElementCategory.PLANE_PART, "Iron SIght", 0),
+    ALDIS_SIGHT(PayloadElementCategory.PLANE_PART, "Aldis SIght", 0),
+    WING_CUTOUT(PayloadElementCategory.PLANE_PART, "Wing Cutout", 0),
 
     EMPTY(PayloadElementCategory.CARGO, "EMpty", 0),
     PARATROOPERS(PayloadElementCategory.CARGO, "Paratroopers", 1000),
@@ -192,8 +204,12 @@ public enum PayloadElement
     MK108_30(PayloadElementCategory.WEAPON, "MK 108 30mm", 50),
 	BK37_HE_GUNPOD(PayloadElementCategory.WEAPON, "37mm Gun Pod (HE)", 100),
 	BK37_AP_GUNPOD(PayloadElementCategory.WEAPON, "37mm Gun Pod (AP)", 100),
-	BREDA_GUNPOD(PayloadElementCategory.WEAPON, "Breda Gun Pod", 50),
+    BREDA_GUNPOD(PayloadElementCategory.WEAPON, "Breda Gun Pod", 50),
+    LEWIS_TOP(PayloadElementCategory.WEAPON, "Lewis Gun Top", 50),
+    LEWIS_WING(PayloadElementCategory.WEAPON, "Lewis Gun Wing", 50),
+    TWIN_GUN_TURRET(PayloadElementCategory.WEAPON, "Twin Gun Turret", 50),
 
+    
 	NONE(PayloadElementCategory.PLANE_PART, "No Modifications", 0);
 	
 	private String description;

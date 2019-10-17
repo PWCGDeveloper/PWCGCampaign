@@ -545,7 +545,6 @@ Werfel
 Scheuermann
 Rehberg
 Krauszer
-Alexander Behm
 Destinn
 Knauer
 Breslau
@@ -643,7 +642,6 @@ Schumacher
 Thalmann
 Brauswetter
 Wenzel
-Behm Canal
 Seckbach
 Haberfeld
 Maeckler
@@ -1022,7 +1020,6 @@ Honig
 Cossmann
 Boettcher
 Haarmann
-Roger Behm
 Kaestenbaum
 Berglar
 Hoffbauer
@@ -1106,7 +1103,6 @@ Falkenberg
 Kornhaeusel
 Pilcz
 Schottel
-Marc Behm
 Schoettel
 Deutschmeister
 Wulf
@@ -1477,7 +1473,6 @@ Gegenbaur
 Oppert
 Erlbaum
 Gutfreund
-Forrest Behm
 Waghalter
 Grob
 Wenz
@@ -1795,7 +1790,6 @@ Stebler
 Reuss
 Schneiderman
 Steinberger
-Charles Behm
 Hoffman
 Wurzelbacher
 Wepper
@@ -1813,7 +1807,6 @@ Taube
 Bendel
 Wolf
 Furtwaengler
-Rich Behm
 Luchsinger
 Huwyler
 Lindau
@@ -1929,10 +1922,9 @@ Zaugg
 Kosel
 Klugmann
 Baumann
-Bollmann
+Boellmann
 Tauler
 Fric
-Magnus von Behm
 Dorn
 Theil
 Waechter
@@ -2130,12 +2122,10 @@ Rietschel
 Schonlein
 Staudenmaier
 Kummel
-Beethoven
-Ernst Behm
 Lichtenfels
 Erhard
 Ganser
-Art Behm
+Behm
 Raabe
 Lutz
 Armbruster

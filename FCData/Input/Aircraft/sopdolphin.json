@@ -16,6 +16,7 @@
     "ROLE_FIGHTER",
     "ROLE_ATTACK"
   ],
-  "introduction": "19170801",
+  "introduction": "19170701",
+  "endProduction": "19181201",
   "withdrawal": "19181111"
 }

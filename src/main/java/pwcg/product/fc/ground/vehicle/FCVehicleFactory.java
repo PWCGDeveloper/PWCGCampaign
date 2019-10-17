@@ -175,13 +175,22 @@ public class FCVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createATArtillery(ICountry country) throws PWCGException
     {
-        throw new PWCGException ("AT not implemented for Flying Circus");
+        Artillery artillery = new Artillery();
+        artillery.makeRandomVehicleFromSet(country);
+        
+        return artillery;
     }
 
     @Override
     public IVehicle cloneATArtillery(IVehicle source) throws PWCGException
     {
-        throw new PWCGException ("AT not implemented for Flying Circus");
+        if (source instanceof Artillery)
+        {
+            Artillery sourceArtillery = (Artillery)source;
+            return sourceArtillery.copy();
+        }
+        
+        throw new PWCGException ("Attempt to clone incorrect vehicle type");
     }
 
     @Override
