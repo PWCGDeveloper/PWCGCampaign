@@ -24,7 +24,7 @@ public class FCVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createShip(ICountry country, ShipConvoyTypes shipConvoyType) throws PWCGException
     {
-        Ship ship = new Ship(shipConvoyType);
+        Ship ship = new Ship();
         ship.makeRandomVehicleFromSet(country);
         return ship;
     }
@@ -217,13 +217,7 @@ public class FCVehicleFactory implements IVehicleFactory
     @Override
     public IVehicle createRadioBeacon(Flight flight)  throws PWCGException
     {
-        RadioBeacon radioBeacon = new RadioBeacon();
-        radioBeacon.makeRandomVehicleFromSet(flight.getCountry());
-
-        radioBeacon.initialize(flight);
-        radioBeacon.populateEntity();
-        
-        return radioBeacon;
+        throw new PWCGException ("Radio beacons not implemented for FC");
     }
 
     @Override

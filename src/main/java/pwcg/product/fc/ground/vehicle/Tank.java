@@ -25,7 +25,7 @@ class Tank extends Vehicle
         }
     };
     
-    private static final List<VehicleDefinition> britishTank = new ArrayList<VehicleDefinition>() 
+    private static final List<VehicleDefinition> alliedTank = new ArrayList<VehicleDefinition>() 
     {
         private static final long serialVersionUID = 1L;
         {
@@ -43,7 +43,7 @@ class Tank extends Vehicle
     {
         List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
         allvehicleDefinitions.addAll(germanTank);
-        allvehicleDefinitions.addAll(britishTank);
+        allvehicleDefinitions.addAll(alliedTank);
         return allvehicleDefinitions;
     }
 
@@ -53,7 +53,7 @@ class Tank extends Vehicle
         List<VehicleDefinition> vehicleSet = null;;
         if (country.getSideNoNeutral() == Side.ALLIED)
         {
-            vehicleSet = britishTank;
+            vehicleSet = alliedTank;
         }
         else if (country.getSideNoNeutral() == Side.AXIS)
         {

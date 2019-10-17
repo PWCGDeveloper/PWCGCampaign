@@ -15,11 +15,11 @@ public class VehicleSetBuilderComprehensive
 
     public List<IVehicle> makeOneOfEachType() throws PWCGException
     {
+        makeAllATGuns();
         makeAllAAAGuns();
         makeAllAAAMachineGuns();
         makeAllArtillery();
         makeAllDrifters();
-        makeAllRadioBeacons();
         makeAllShips();
         makeAllSpotLights();
         makeAllTanks();
@@ -64,16 +64,16 @@ public class VehicleSetBuilderComprehensive
         allVehicles.addAll(vehicles);
     }
     
-    private void makeAllDrifters() throws PWCGException
+    private void makeAllATGuns() throws PWCGException
     {
-        VehicleSetBuilder<Drifter> vehicleSetBuilder = new VehicleSetBuilder<>(Drifter.class);
+        VehicleSetBuilder<ATArtillery> vehicleSetBuilder = new VehicleSetBuilder<>(ATArtillery.class);
         List<IVehicle> vehicles = vehicleSetBuilder.makeVehicles();
         allVehicles.addAll(vehicles);
     }
     
-    private void makeAllRadioBeacons() throws PWCGException
+    private void makeAllDrifters() throws PWCGException
     {
-        VehicleSetBuilder<RadioBeacon> vehicleSetBuilder = new VehicleSetBuilder<>(RadioBeacon.class);
+        VehicleSetBuilder<Drifter> vehicleSetBuilder = new VehicleSetBuilder<>(Drifter.class);
         List<IVehicle> vehicles = vehicleSetBuilder.makeVehicles();
         allVehicles.addAll(vehicles);
     }

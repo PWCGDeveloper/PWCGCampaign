@@ -27,16 +27,14 @@ class TrainLocomotive extends Vehicle implements ITrainLocomotive
     {
         private static final long serialVersionUID = 1L;
         {
-            add(new VehicleDefinition("trains\\", "trains\\g8\\", "g8", Country.GERMANY));
             add(new VehicleDefinition("trains\\", "trains\\e\\", "e", Country.GERMANY));
         }
     };
 
-    private static final List<VehicleDefinition> britishLocomotives = new ArrayList<VehicleDefinition>()
+    private static final List<VehicleDefinition> alliedLocomotives = new ArrayList<VehicleDefinition>()
     {
         private static final long serialVersionUID = 1L;
         {
-            add(new VehicleDefinition("trains\\", "trains\\g8\\", "g8", Country.BRITAIN));
             add(new VehicleDefinition("trains\\", "trains\\e\\", "e", Country.BRITAIN));
         }
     };
@@ -50,7 +48,7 @@ class TrainLocomotive extends Vehicle implements ITrainLocomotive
     {
         List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
         allvehicleDefinitions.addAll(germanLocomotives);
-        allvehicleDefinitions.addAll(britishLocomotives);
+        allvehicleDefinitions.addAll(alliedLocomotives);
         return allvehicleDefinitions;
     }
 
@@ -65,7 +63,7 @@ class TrainLocomotive extends Vehicle implements ITrainLocomotive
         }
         else if (country.getSideNoNeutral() == Side.ALLIED)
         {
-            vehicleSet = britishLocomotives;
+            vehicleSet = alliedLocomotives;
         }
 
         makeRandomVehicleInstance(vehicleSet);

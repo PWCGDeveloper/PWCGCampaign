@@ -30,43 +30,15 @@ class Truck extends Vehicle
     {
         private static final long serialVersionUID = 1L;
         {
-            add(new VehicleDefinition("vehicles\\", "vehicles\\ford\\", "ford-g917", Country.GERMANY));
-            add(new VehicleDefinition("vehicles\\", "vehicles\\ford\\", "ford-g917", Country.GERMANY));
-            add(new VehicleDefinition("vehicles\\", "vehicles\\ford\\", "ford-g917", Country.GERMANY));
             add(new VehicleDefinition("vehicles\\", "vehicles\\opel\\", "opel-blitz", Country.GERMANY));
-            add(new VehicleDefinition("vehicles\\", "vehicles\\opel\\", "opel-blitz", Country.GERMANY));
-            add(new VehicleDefinition("vehicles\\", "vehicles\\opel\\", "opel-blitz", Country.GERMANY));
-            add(new VehicleDefinition("vehicles\\", "vehicles\\opel\\", "opel-blitz", Country.GERMANY));
-            add(new VehicleDefinition("vehicles\\", "vehicles\\opel\\", "opel-blitz", Country.GERMANY));
-            add(new VehicleDefinition("vehicles\\", "vehicles\\sdkfz251\\", "sdkfz251-1c", Country.GERMANY));
-            add(new VehicleDefinition("vehicles\\", "vehicles\\sdkfz251\\", "sdkfz251-1c", Country.GERMANY));
-            add(new VehicleDefinition("vehicles\\", "vehicles\\sdkfz251\\", "sdkfz251-szf", Country.GERMANY));
-        }
-    };
-    
-    private static final List<VehicleDefinition> germanCars = new ArrayList<VehicleDefinition>() 
-    {
-        private static final long serialVersionUID = 1L;
-        {
-            add(new VehicleDefinition("vehicles\\", "vehicles\\horch\\", "horch830", Country.GERMANY));
         }
     };
 
-    private static final List<VehicleDefinition> britishTrucks = new ArrayList<VehicleDefinition>() 
+    private static final List<VehicleDefinition> alliedTrucks = new ArrayList<VehicleDefinition>() 
     {
         private static final long serialVersionUID = 1L;
         {
-            add(new VehicleDefinition("vehicles\\", "vehicles\\gaz\\", "gaz-aa", Country.BRITAIN));
-            add(new VehicleDefinition("vehicles\\", "vehicles\\zis\\", "zis5", Country.BRITAIN));
-            add(new VehicleDefinition("vehicles\\", "vehicles\\zis\\", "bm13", Country.BRITAIN));
-        }
-    };
-    
-    private static final List<VehicleDefinition> britishCars = new ArrayList<VehicleDefinition>() 
-    {
-        private static final long serialVersionUID = 1L;
-        {
-            add(new VehicleDefinition("vehicles\\", "vehicles\\gaz\\", "gaz-m", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "vehicles\\opel\\", "opel-blitz", Country.BRITAIN));
         }
     };
 
@@ -87,9 +59,7 @@ class Truck extends Vehicle
     {
         List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
         allvehicleDefinitions.addAll(germanTrucks);
-        allvehicleDefinitions.addAll(germanCars);
-        allvehicleDefinitions.addAll(britishTrucks);
-        allvehicleDefinitions.addAll(britishCars);
+        allvehicleDefinitions.addAll(alliedTrucks);
         return allvehicleDefinitions;
     }
 
@@ -99,23 +69,11 @@ class Truck extends Vehicle
 		this.country = country;
         
 		List<VehicleDefinition> vehicleSet = null;
-		if (truckType == TruckType.TRUCK_CARGO)
+        displayName = "Truck";
+        vehicleSet = germanTrucks;          
+        if (country.getSideNoNeutral() == Side.ALLIED)
         {
-            displayName = "Truck";
-            vehicleSet = germanTrucks;          
-            if (country.getSideNoNeutral() == Side.ALLIED)
-            {
-                vehicleSet = britishTrucks;                       
-            }
-        }
-        else if (truckType == TruckType.CAR)
-        {
-            displayName = "AAA Truck";
-            vehicleSet = germanCars;          
-            if (country.getSideNoNeutral() == Side.ALLIED)
-            {
-                vehicleSet = britishCars;                       
-            }
+            vehicleSet = alliedTrucks;                       
         }
 
 		makeRandomVehicleInstance(vehicleSet);

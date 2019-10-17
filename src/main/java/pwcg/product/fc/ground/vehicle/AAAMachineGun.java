@@ -23,7 +23,7 @@ class AAAMachineGun extends Vehicle
         }
     };
 
-    private static final List<VehicleDefinition> britishAAAMachineGuns = new ArrayList<VehicleDefinition>() 
+    private static final List<VehicleDefinition> alliedAAAMachineGuns = new ArrayList<VehicleDefinition>() 
     {
         private static final long serialVersionUID = 1L;
         {
@@ -42,7 +42,7 @@ class AAAMachineGun extends Vehicle
     {
         List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
         allvehicleDefinitions.addAll(germanAAAMachineGuns);
-        allvehicleDefinitions.addAll(britishAAAMachineGuns);
+        allvehicleDefinitions.addAll(alliedAAAMachineGuns);
         return allvehicleDefinitions;
     }
 
@@ -52,7 +52,7 @@ class AAAMachineGun extends Vehicle
         List<VehicleDefinition> vehicleSet = null;;
         if (country.getSideNoNeutral() == Side.ALLIED)
         {
-            vehicleSet = britishAAAMachineGuns;
+            vehicleSet = alliedAAAMachineGuns;
         }
         else if (country.getSideNoNeutral() == Side.AXIS)
         {

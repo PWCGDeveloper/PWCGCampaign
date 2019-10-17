@@ -25,7 +25,7 @@ public class SpotLight extends Vehicle
         }
     };
 
-    private static final List<VehicleDefinition> britishSpotLight = new ArrayList<VehicleDefinition>() 
+    private static final List<VehicleDefinition> alliedSpotLight = new ArrayList<VehicleDefinition>() 
     {
         private static final long serialVersionUID = 1L;
         {
@@ -43,7 +43,7 @@ public class SpotLight extends Vehicle
     {
         List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
         allvehicleDefinitions.addAll(germanSpotLight);
-        allvehicleDefinitions.addAll(britishSpotLight);
+        allvehicleDefinitions.addAll(alliedSpotLight);
         return allvehicleDefinitions;
     }
 
@@ -53,7 +53,7 @@ public class SpotLight extends Vehicle
         List<VehicleDefinition> vehicleSet = null;;
         if (country.getSideNoNeutral() == Side.ALLIED)
         {
-            vehicleSet = britishSpotLight;
+            vehicleSet = alliedSpotLight;
         }
         else if (country.getSideNoNeutral() == Side.AXIS)
         {

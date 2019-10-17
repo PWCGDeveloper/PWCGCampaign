@@ -44,16 +44,7 @@ class TrainCar extends Vehicle
         }
     };
 
-    private static final List<VehicleDefinition> germanAAACar = new ArrayList<VehicleDefinition>() 
-    {
-        private static final long serialVersionUID = 1L;
-        {
-            add(new VehicleDefinition("trains\\", "trains\\platformaa-mg34\\", "platformaa-mg34", Country.GERMANY));
-            add(new VehicleDefinition("trains\\", "trains\\platformaa-flak38\\", "platformaa-flak38", Country.GERMANY));
-        }
-    };
-
-    private static final List<VehicleDefinition> britishTrainCar = new ArrayList<VehicleDefinition>() 
+    private static final List<VehicleDefinition> alliedTrainCar = new ArrayList<VehicleDefinition>() 
     {
         private static final long serialVersionUID = 1L;
         {
@@ -70,7 +61,7 @@ class TrainCar extends Vehicle
         }
     };
 
-    private static final List<VehicleDefinition> britishTankerCar = new ArrayList<VehicleDefinition>() 
+    private static final List<VehicleDefinition> alliedTankerCar = new ArrayList<VehicleDefinition>() 
     {
         private static final long serialVersionUID = 1L;
         {
@@ -79,15 +70,6 @@ class TrainCar extends Vehicle
         }
     };
 
-    private static final List<VehicleDefinition> britishAAACar = new ArrayList<VehicleDefinition>() 
-    {
-        private static final long serialVersionUID = 1L;
-        {
-            add(new VehicleDefinition("trains\\", "trains\\platformaa-m4\\", "platformaa-m4", Country.BRITAIN));
-            add(new VehicleDefinition("trains\\", "trains\\platformaa-61k\\", "platformaa-61k", Country.BRITAIN));
-        }
-    };
-        
 	protected TrainCar()
 	{
 	}
@@ -98,10 +80,8 @@ class TrainCar extends Vehicle
         List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
         allvehicleDefinitions.addAll(germanTrainCar);
         allvehicleDefinitions.addAll(germanTankerCar);
-        allvehicleDefinitions.addAll(germanAAACar);
-        allvehicleDefinitions.addAll(britishTrainCar);
-        allvehicleDefinitions.addAll(britishTankerCar);
-        allvehicleDefinitions.addAll(britishAAACar);
+        allvehicleDefinitions.addAll(alliedTrainCar);
+        allvehicleDefinitions.addAll(alliedTankerCar);
         return allvehicleDefinitions;
     }
 
@@ -115,16 +95,7 @@ class TrainCar extends Vehicle
             vehicleSet = germanTankerCar;          
             if (country.getSideNoNeutral() == Side.ALLIED)
             {
-                vehicleSet = britishTankerCar;                       
-            }
-        }
-        else if (roll < 30)
-        {
-            displayName = "AAA Car";
-            vehicleSet = germanAAACar;          
-            if (country.getSideNoNeutral() == Side.ALLIED)
-            {
-                vehicleSet = britishAAACar;                       
+                vehicleSet = alliedTankerCar;                       
             }
         }
         else
@@ -133,7 +104,7 @@ class TrainCar extends Vehicle
             vehicleSet = germanTrainCar;          
             if (country.getSideNoNeutral() == Side.ALLIED)
             {
-                vehicleSet = britishTrainCar;                       
+                vehicleSet = alliedTrainCar;                       
             }
         }
 

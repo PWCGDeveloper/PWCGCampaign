@@ -22,10 +22,6 @@ public class Drifter extends Vehicle
         private static final long serialVersionUID = 1L;
         {
             add(new VehicleDefinition("ships\\", "ships\\rivershipgeorgia\\", "rivershipgeorgia", Country.GERMANY));
-            add(new VehicleDefinition("ships\\", "ships\\rivershipgeorgia\\", "rivershipgeorgiaaaa", Country.GERMANY));
-            add(new VehicleDefinition("ships\\", "ships\\1124bm13\\", "1124bm13", Country.GERMANY));
-            add(new VehicleDefinition("ships\\", "ships\\1124\\", "1124", Country.GERMANY));
-            add(new VehicleDefinition("ships\\", "ships\\rivergunshipa\\", "rivergunshipa", Country.GERMANY));
         }
     };
 
@@ -34,10 +30,6 @@ public class Drifter extends Vehicle
         private static final long serialVersionUID = 1L;
         {
             add(new VehicleDefinition("ships\\", "ships\\rivershipgeorgia\\", "rivershipgeorgia", Country.BRITAIN));
-            add(new VehicleDefinition("ships\\", "ships\\rivershipgeorgia\\", "rivershipgeorgiaaaa", Country.BRITAIN));
-            add(new VehicleDefinition("ships\\", "ships\\1124bm13\\", "1124bm13", Country.BRITAIN));
-            add(new VehicleDefinition("ships\\", "ships\\1124\\", "1124", Country.BRITAIN));
-            add(new VehicleDefinition("ships\\", "ships\\rivergunshipa\\", "rivergunshipa", Country.BRITAIN));
         }
     };
     

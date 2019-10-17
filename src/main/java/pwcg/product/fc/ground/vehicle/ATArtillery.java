@@ -15,58 +15,58 @@ import pwcg.core.location.Orientation;
 import pwcg.mission.ground.vehicle.VehicleDefinition;
 import pwcg.mission.mcu.McuTREntity;
 
-class Artillery extends Vehicle
+class ATArtillery extends Vehicle
 {
-    private static final List<VehicleDefinition> germanArtillery = new ArrayList<VehicleDefinition>() 
+    private static final List<VehicleDefinition> germanATArtillery = new ArrayList<VehicleDefinition>() 
     {
         private static final long serialVersionUID = 1L;
         {
-            add(new VehicleDefinition("vehicles\\", "artillery\\lefh18\\", "lefh18", Country.GERMANY));
+            add(new VehicleDefinition("vehicles\\", "artillery\\pak35\\", "pak35", Country.GERMANY));
         }
     };
 
-    private static final List<VehicleDefinition> alliedArtillery = new ArrayList<VehicleDefinition>() 
+    private static final List<VehicleDefinition> alliedATArtillery = new ArrayList<VehicleDefinition>() 
     {
         private static final long serialVersionUID = 1L;
         {
-            add(new VehicleDefinition("vehicles\\", "artillery\\ml20\\", "ml20", Country.BRITAIN));
+            add(new VehicleDefinition("vehicles\\", "artillery\\53k\\", "53k", Country.BRITAIN));
         }
     };
-	
-	public Artillery()
-	{
+    
+    public ATArtillery()
+    {
         super();
-	}
+    }
 
     @Override
     public List<VehicleDefinition> getAllVehicleDefinitions()
     {
         List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
-        allvehicleDefinitions.addAll(germanArtillery);
-        allvehicleDefinitions.addAll(alliedArtillery);
+        allvehicleDefinitions.addAll(germanATArtillery);
+        allvehicleDefinitions.addAll(alliedATArtillery);
         return allvehicleDefinitions;
     }
 
     @Override
-    public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
+	public void makeRandomVehicleFromSet(ICountry country) throws PWCGException
     {
         List<VehicleDefinition> vehicleSet = null;;
         if (country.getSideNoNeutral() == Side.ALLIED)
         {
-            vehicleSet = alliedArtillery;
+            vehicleSet = alliedATArtillery;
         }
         else if (country.getSideNoNeutral() == Side.AXIS)
         {
-            vehicleSet = germanArtillery;
+            vehicleSet = germanATArtillery;
         }
         
-        displayName = "Artillery";
+        displayName = "Anti Tank Gun";
         makeRandomVehicleInstance(vehicleSet);
     }
 
-	public Artillery copy () 
+	public ATArtillery copy () 
 	{
-		Artillery gun = new Artillery();
+		ATArtillery gun = new ATArtillery();
 		
 		gun.index = IndexGenerator.getInstance().getNextIndex();
 		

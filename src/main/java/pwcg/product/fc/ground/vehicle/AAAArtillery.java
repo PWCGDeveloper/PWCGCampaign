@@ -20,18 +20,14 @@ class AAAArtillery extends Vehicle
         private static final long serialVersionUID = 1L;
         {
             add(new VehicleDefinition("vehicles\\", "artillery\\flak36\\", "flak36", Country.GERMANY));
-            add(new VehicleDefinition("vehicles\\", "artillery\\flak37\\", "flak37", Country.GERMANY));
-            add(new VehicleDefinition("vehicles\\", "artillery\\flak38\\", "flak38", Country.GERMANY));
         }
     };
 
-    private static final List<VehicleDefinition> britishAAAArtillery = new ArrayList<VehicleDefinition>() 
+    private static final List<VehicleDefinition> alliedAAAArtillery = new ArrayList<VehicleDefinition>() 
     {
         private static final long serialVersionUID = 1L;
         {
             add(new VehicleDefinition("vehicles\\", "artillery\\52k\\", "52k", Country.BRITAIN));
-            add(new VehicleDefinition("vehicles\\", "artillery\\61k\\", "61k", Country.BRITAIN));
-            add(new VehicleDefinition("vehicles\\", "artillery\\72k\\", "72k", Country.BRITAIN));
         }
     };
     
@@ -45,7 +41,7 @@ class AAAArtillery extends Vehicle
     {
         List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
         allvehicleDefinitions.addAll(germanAAAArtillery);
-        allvehicleDefinitions.addAll(britishAAAArtillery);
+        allvehicleDefinitions.addAll(alliedAAAArtillery);
         return allvehicleDefinitions;
     }
 
@@ -55,7 +51,7 @@ class AAAArtillery extends Vehicle
         List<VehicleDefinition> vehicleSet = null;;
         if (country.getSideNoNeutral() == Side.ALLIED)
         {
-            vehicleSet = britishAAAArtillery;
+            vehicleSet = alliedAAAArtillery;
         }
         else if (country.getSideNoNeutral() == Side.AXIS)
         {
@@ -96,11 +92,4 @@ class AAAArtillery extends Vehicle
 		
 		return mg;
 	}
-
-    @Override
-    public void makeVehicleFromDefinition(VehicleDefinition vehicleDefinition) throws PWCGException
-    {
-        // TODO Auto-generated method stub
-        
-    }
 }

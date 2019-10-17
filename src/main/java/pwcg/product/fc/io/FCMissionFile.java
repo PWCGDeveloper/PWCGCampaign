@@ -7,7 +7,6 @@ import java.util.Map;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.factory.VehicleFactory;
 import pwcg.campaign.group.FakeAirfield;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.core.exception.PWCGException;
@@ -17,9 +16,6 @@ import pwcg.core.utils.Logger;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBlockDamage;
 import pwcg.mission.MissionBlockSmoke;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.ground.vehicle.IVehicleFactory;
 import pwcg.mission.io.MissionFileWriter;
 import pwcg.mission.mcu.group.SmokeGroup;
 import pwcg.mission.options.MapSeasonalParameters;
@@ -53,7 +49,6 @@ public class FCMissionFile extends MissionFileWriter
     protected void writeProductSpecific(BufferedWriter writer) throws PWCGException
     {
         writeFieldsInMission(writer);
-        writeRadioBeacon(writer);
         writeFakeAirfieldForAiReturnToBase(writer);
         writeSmoke(writer);
 
@@ -67,19 +62,6 @@ public class FCMissionFile extends MissionFileWriter
             if (!field.isGroup())
             {
                 field.write(writer);
-            }
-        }
-    }
-
-    private void writeRadioBeacon(BufferedWriter writer) throws PWCGException
-    {
-        IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        for (Flight playerFlight:  mission.getMissionFlightBuilder().getPlayerFlights())
-        {
-            IVehicle radioBeacon = vehicleFactory.createRadioBeacon(playerFlight);
-            if (radioBeacon != null)
-            {
-                radioBeacon.write(writer);
             }
         }
     }

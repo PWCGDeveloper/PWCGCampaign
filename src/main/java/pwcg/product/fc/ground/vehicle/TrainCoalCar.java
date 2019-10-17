@@ -26,7 +26,7 @@ public class TrainCoalCar extends TrainCar
         }
     };
     
-    private static final List<VehicleDefinition> britishCoalCars = new ArrayList<VehicleDefinition>() 
+    private static final List<VehicleDefinition> alliedCoalCars = new ArrayList<VehicleDefinition>() 
     {
         private static final long serialVersionUID = 1L;
         {
@@ -51,7 +51,7 @@ public class TrainCoalCar extends TrainCar
     {
         List<VehicleDefinition> allvehicleDefinitions = new ArrayList<>();
         allvehicleDefinitions.addAll(germanCoalCars);
-        allvehicleDefinitions.addAll(britishCoalCars);
+        allvehicleDefinitions.addAll(alliedCoalCars);
         return allvehicleDefinitions;
     }
 
@@ -61,7 +61,7 @@ public class TrainCoalCar extends TrainCar
         List<VehicleDefinition> vehicleSet = null;;
         if (country.getSideNoNeutral() == Side.ALLIED)
         {
-            vehicleSet = britishCoalCars;
+            vehicleSet = alliedCoalCars;
         }
         else if (country.getSideNoNeutral() == Side.AXIS)
         {
