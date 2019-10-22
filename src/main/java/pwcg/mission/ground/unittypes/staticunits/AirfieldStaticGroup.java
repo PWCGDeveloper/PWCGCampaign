@@ -7,20 +7,20 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.factory.VehicleFactory;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.ground.GroundUnitInformation;
-import pwcg.mission.ground.GroundUnitSize;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.ground.vehicle.IVehicleFactory;
+import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.ground.vehicle.VehicleFactory;
 
 public class AirfieldStaticGroup extends GroundUnit
 {
@@ -46,15 +46,12 @@ public class AirfieldStaticGroup extends GroundUnit
 
     private void createTrucks() throws PWCGException 
     {
-        IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        IVehicle truckType = vehicleFactory.createCargoTruck(pwcgGroundUnitInformation.getCountry());
-
+        IVehicle truckType = VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.Truck);
         int numTrucks = calcNumUnits();
-
         Coordinate initialTruckLocation = findTruckStartLocation();
         for (int i = 0; i < numTrucks; ++i)
         {
-            IVehicle truck = vehicleFactory.cloneTruck(truckType);
+            IVehicle truck = truckType.clone();
             
             Coordinate truckLocation = findTruckLocation(initialTruckLocation, i);
             truck.setPosition(truckLocation);

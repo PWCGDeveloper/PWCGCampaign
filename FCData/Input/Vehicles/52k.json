@@ -1,0 +1,16 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\52k\\",
+  "vehicleType": "52k",
+  "displayName": "anti aircraft gun",
+  "countries": [
+    "BRITAIN",
+    "FRANCE",
+	"BELGIUM",
+	"USA"
+  ],
+  "startDate": "19140801",
+  "endDate": "19181201",  
+  "rarityWeight": 80,
+  "vehicleClass": "AAAArtillery"
+}

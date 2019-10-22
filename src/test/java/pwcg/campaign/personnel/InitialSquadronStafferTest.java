@@ -13,7 +13,7 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class InitialSquadronStafferTest
@@ -28,9 +28,9 @@ public class InitialSquadronStafferTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
-        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
 
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20111052);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
         
         InitialSquadronStaffer initialSquadronStaffer = new InitialSquadronStaffer(campaign, squadron);
         SquadronPersonnel squadronPersonnel = initialSquadronStaffer.generatePersonnel();        
@@ -42,11 +42,11 @@ public class InitialSquadronStafferTest
     @Test
     public void generateReconPersonnelTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
-        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.ESC_2_PROFILE);
+        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RFC_2_PROFILE);
 
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(101002);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.RFC_2_PROFILE.getSquadronId());
         
         InitialSquadronStaffer initialSquadronStaffer = new InitialSquadronStaffer(campaign, squadron);
         SquadronPersonnel squadronPersonnel = initialSquadronStaffer.generatePersonnel();        
@@ -58,11 +58,11 @@ public class InitialSquadronStafferTest
     @Test
     public void generatePersonnelWithAcesTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
-        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
+        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
 
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(501011);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
         
         InitialSquadronStaffer initialSquadronStaffer = new InitialSquadronStaffer(campaign, squadron);
         SquadronPersonnel squadronPersonnel = initialSquadronStaffer.generatePersonnel();        

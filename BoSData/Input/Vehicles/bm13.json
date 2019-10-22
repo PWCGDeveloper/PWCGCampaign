@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\zis\\",
+  "vehicleType": "bm13",
+  "displayName": "truck",
+  "countries": [
+    "RUSSIA"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 5,
+  "vehicleClass": "Truck"
+}

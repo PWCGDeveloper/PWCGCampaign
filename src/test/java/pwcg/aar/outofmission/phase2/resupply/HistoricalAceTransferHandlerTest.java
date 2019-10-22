@@ -35,7 +35,7 @@ public class HistoricalAceTransferHandlerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170430"));
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
         

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.factory.VehicleFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
@@ -17,13 +16,13 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.ground.vehicle.IVehicleFactory;
+import pwcg.mission.ground.vehicle.VehicleClass;
 
 public class GroundTroopConcentration extends GroundUnit
 {
     private ArrayList<IVehicle> tanks = new ArrayList<IVehicle>();
     private ArrayList<IVehicle> trucks = new ArrayList<IVehicle>();
-    private ArrayList<IVehicle> ammo = new ArrayList<IVehicle>();
+    private ArrayList<IVehicle> artilleryGuns = new ArrayList<IVehicle>();
  	
 	protected double heading = 90.0;
 
@@ -52,12 +51,8 @@ public class GroundTroopConcentration extends GroundUnit
 
     private void createTrucks() throws PWCGException
     {
-        IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        IVehicle truckType = vehicleFactory.createCargoTruck(pwcgGroundUnitInformation.getCountry());
-
+        IVehicle truckType = pwcg.mission.ground.vehicle.VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.Truck);
         int numTrucks = calcNumTrucks();
-
-        
         int numPerRow = new Double(Math.sqrt(numTrucks)).intValue();
         
         double tentSpacing = 15.0;
@@ -74,7 +69,7 @@ public class GroundTroopConcentration extends GroundUnit
             Coordinate tentPosition = MathUtils.calcNextCoord(columnPosition, 180, (row * tentSpacing));
             
             
-            IVehicle truck = vehicleFactory.cloneTruck(truckType);
+            IVehicle truck = truckType.clone();
             truck.setPosition(tentPosition);
 
             Orientation orient = new Orientation();
@@ -109,11 +104,8 @@ public class GroundTroopConcentration extends GroundUnit
 
     private void createArtillery() throws PWCGException
     {
-        IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        IVehicle artillery = vehicleFactory.createArtillery(pwcgGroundUnitInformation.getCountry());
-
-        int numArtillery = calcNumArtillery();
-        
+        IVehicle artilleryType = pwcg.mission.ground.vehicle.VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.ArtilleryHowitzer);
+        int numArtillery = calcNumArtillery();        
         int numPerRow = new Double(Math.sqrt(numArtillery)).intValue();
         
         double ammoSpacing = 15.0;
@@ -124,19 +116,17 @@ public class GroundTroopConcentration extends GroundUnit
         {
             // Form a square
             int column = i % numPerRow;
-            
-            
             Coordinate columnPosition = MathUtils.calcNextCoord(ammoCenterPosition, 90, (column * ammoSpacing));
             Coordinate ammoPosition = MathUtils.calcNextCoord(columnPosition, 180, (i * ammoSpacing));
             
-            IVehicle ammoBox = vehicleFactory.cloneArtillery(artillery);
-            ammoBox.setPosition(ammoPosition);
+            IVehicle artillery = artilleryType.clone();
+            artillery.setPosition(ammoPosition);
 
             Orientation orient = new Orientation();
             orient.setyOri(heading);
-            ammoBox.setOrientation(orient);
+            artillery.setOrientation(orient);
             
-            ammo.add(ammoBox);
+            artilleryGuns.add(artillery);
         }       
     }
 
@@ -164,16 +154,13 @@ public class GroundTroopConcentration extends GroundUnit
 
     private void createTanks() throws PWCGException
     {
-        IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        IVehicle tankType = vehicleFactory.createTank(pwcgGroundUnitInformation.getCountry());
-
+        IVehicle tankType = pwcg.mission.ground.vehicle.VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.Tank);
         Coordinate basePosition = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), 300.0, 150.0);
-
         int numTanks = calcNumTanks();
         
         for (int i = 0; i < numTanks; ++i)
         {
-            IVehicle tank = vehicleFactory.cloneTank(tankType);
+            IVehicle tank = tankType.clone();
             
             Coordinate truckPosition = getRandomPosition(basePosition, 100);
             tank.setPosition(truckPosition);
@@ -216,7 +203,7 @@ public class GroundTroopConcentration extends GroundUnit
 		
         vehicles.addAll(trucks);
         vehicles.addAll(tanks);
-        vehicles.addAll(ammo);
+        vehicles.addAll(artilleryGuns);
         
 		return vehicles;
 	}
@@ -249,7 +236,7 @@ public class GroundTroopConcentration extends GroundUnit
                 tent.write(writer);
             }
             
-            for (IVehicle ammoBox: ammo)
+            for (IVehicle ammoBox: artilleryGuns)
             {
                 ammoBox.write(writer);
             }

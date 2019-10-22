@@ -18,7 +18,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronMemberPicker;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SquadronMemberFilterTest
@@ -33,11 +33,11 @@ public class SquadronMemberFilterTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         
         while (woundedSquadronMembers.size() < 5)
         {
-            SquadronMember squadronMember = SquadronMemberPicker.pickNonAceCampaignMember(campaign, SquadrontTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+            SquadronMember squadronMember = SquadronMemberPicker.pickNonAceCampaignMember(campaign, SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
             squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_WOUNDED, campaign.getDate(), DateUtils.advanceTimeDays(campaign.getDate(), 10));
             if (!campaignMemberUsed(squadronMember.getSerialNumber()))
             {
@@ -47,7 +47,7 @@ public class SquadronMemberFilterTest
         
         while (maimedSquadronMembers.size() < 4)
         {
-            SquadronMember squadronMember = SquadronMemberPicker.pickNonAceCampaignMember(campaign, SquadrontTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+            SquadronMember squadronMember = SquadronMemberPicker.pickNonAceCampaignMember(campaign, SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
             squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED, campaign.getDate(), null);
             if (!campaignMemberUsed(squadronMember.getSerialNumber()))
             {
@@ -57,7 +57,7 @@ public class SquadronMemberFilterTest
         
         while (deadSquadronMembers.size() < 3)
         {
-            SquadronMember squadronMember = SquadronMemberPicker.pickNonAceCampaignMember(campaign, SquadrontTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+            SquadronMember squadronMember = SquadronMemberPicker.pickNonAceCampaignMember(campaign, SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
             squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, campaign.getDate(), null);
             if (!campaignMemberUsed(squadronMember.getSerialNumber()))
             {
@@ -67,7 +67,7 @@ public class SquadronMemberFilterTest
         
         while (capturedSquadronMembers.size() < 2)
         {
-            SquadronMember squadronMember = SquadronMemberPicker.pickNonAceCampaignMember(campaign, SquadrontTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+            SquadronMember squadronMember = SquadronMemberPicker.pickNonAceCampaignMember(campaign, SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
             squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_CAPTURED, campaign.getDate(), null);
             if (!campaignMemberUsed(squadronMember.getSerialNumber()))
             {

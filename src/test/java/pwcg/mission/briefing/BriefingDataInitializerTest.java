@@ -33,7 +33,7 @@ import pwcg.mission.MissionFlightBuilder;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.plane.PlaneMCU;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BriefingDataInitializerTest
@@ -91,7 +91,7 @@ public class BriefingDataInitializerTest
         Mockito.when(squadronPersonnel.getSquadronMembersWithAces()).thenReturn(squadronMembers);
         Mockito.when(squadronMembers.getSquadronMemberCollection()).thenReturn(squadronPersonnelMap);
 
-        Mockito.when(squadron.getSquadronId()).thenReturn(SquadrontTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+        Mockito.when(squadron.getSquadronId()).thenReturn(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
         
         Mockito.when(pilot1.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+1);
         Mockito.when(pilot2.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);

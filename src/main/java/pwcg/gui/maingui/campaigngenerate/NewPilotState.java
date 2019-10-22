@@ -136,7 +136,7 @@ public class NewPilotState
 
 	private boolean useRegion() 
 	{
-		if (PWCGContext.getProduct() == PWCGProduct.ROF || PWCGContext.getProduct() == PWCGProduct.FC)
+		if (PWCGContext.getProduct() == PWCGProduct.FC)
 		{
 		    ICountry country = campaignGeneratorDO.getService().getCountry();
 		    if (country.getCountry() == Country.GERMANY)

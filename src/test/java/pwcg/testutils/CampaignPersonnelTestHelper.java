@@ -39,6 +39,7 @@ public class CampaignPersonnelTestHelper
         SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
         for (SquadronMember aiSquadMember : squadronMembers.getSquadronMemberList())
         {
+            System.out.println("Nanme: " + aiSquadMember.getNameAndRank() + "  from " + aiSquadMember.getSquadronId());
             if (aiSquadMember.getRank().equals(rank))
             {
                 if (!(aiSquadMember instanceof Ace))

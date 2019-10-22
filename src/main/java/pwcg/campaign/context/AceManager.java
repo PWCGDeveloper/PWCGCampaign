@@ -273,19 +273,22 @@ public class AceManager
 	{
 		if (campaign != null)
 		{
-            if (Squadron.isPlayerSquadron(campaign, aceClone.getSquadronId()))
-			{
-				if (campaign.getPersonnelManager().getSquadronPersonnel(aceClone.getSquadronId()).isPlayerCommander())
-				{
-				    IRankHelper rankObj = RankFactory.createRankHelper();
-                    String commandRankRank = rankObj.getRankByService(0, aceClone.determineService(date));
-					if (aceClone.getRank().equalsIgnoreCase(commandRankRank))
-					{
-						String newRank = rankObj.getRankByService(1, aceClone.determineService(date));
-						aceClone.setRank(newRank);
-					}
-				}
-			}
+		    if (aceClone.getSquadronId() > 0)
+		    {
+                if (Squadron.isPlayerSquadron(campaign, aceClone.getSquadronId()))
+    			{
+    				if (campaign.getPersonnelManager().getSquadronPersonnel(aceClone.getSquadronId()).isPlayerCommander())
+    				{
+    				    IRankHelper rankObj = RankFactory.createRankHelper();
+                        String commandRankRank = rankObj.getRankByService(0, aceClone.determineService(date));
+    					if (aceClone.getRank().equalsIgnoreCase(commandRankRank))
+    					{
+    						String newRank = rankObj.getRankByService(1, aceClone.determineService(date));
+    						aceClone.setRank(newRank);
+    					}
+    				}
+    			}
+		    }
 		}
 	}
 

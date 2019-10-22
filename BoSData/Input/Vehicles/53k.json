@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\53k\\",
+  "vehicleType": "53k",
+  "displayName": "anti tank gun",
+  "countries": [
+    "RUSSIA"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 20,
+  "vehicleClass": "ArtilleryAntiTank"
+}

@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\flakvierling38\\",
+  "vehicleType": "flakvierling38",
+  "displayName": "anti aircraft gun",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 30,
+  "vehicleClass": "AAAArtillery"
+}

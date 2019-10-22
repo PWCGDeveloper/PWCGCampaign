@@ -17,7 +17,7 @@ import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PersonnelAceLossInMissionHandlerTest
@@ -28,8 +28,8 @@ public class PersonnelAceLossInMissionHandlerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
+        PWCGContext.setProduct(PWCGProduct.FC);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
         
         LogPilot wernerVoss = new LogPilot();
         wernerVoss.setSerialNumber(101175);

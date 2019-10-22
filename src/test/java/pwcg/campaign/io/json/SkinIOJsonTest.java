@@ -18,17 +18,17 @@ public class SkinIOJsonTest
     @Test
     public void readJsonRoFSkinsConfiguredTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         Map<String, SkinSet> skins = SkinIOJson.readSkinSet(SkinSetType.SKIN_CONFIGURED.getSkinSetName());
-        assert (skins.size() > 0);
+        assert (skins.size() == 0);
     }
     
     @Test
     public void readJsonRoFSkinsDoNotUseTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         Map<String, SkinSet> skins = SkinIOJson.readSkinSet(SkinSetType.SKIN_DO_NOT_USE.getSkinSetName());
-        assert (skins.size() > 0);
+        assert (skins.size() == 0);
     }
     
     @Test

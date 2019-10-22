@@ -13,28 +13,10 @@ import pwcg.core.location.LocationSet;
 public class LocationIOJsonTest
 {
     @Test
-    public void readJsonFranceTest() throws PWCGException
+    public void readJsonArrasTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        String directory = System.getProperty("user.dir") + "\\RoFData\\Input\\France\\19160101\\";
-        LocationSet locationSet = LocationIOJson.readJson(directory, "FrontLines");
-        assert (locationSet.getLocations().size() > 0);
-    }
-
-    @Test
-    public void readJsonChannelTest() throws PWCGException
-    {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        String directory = System.getProperty("user.dir") + "\\RoFData\\Input\\Channel\\19160101\\";
-        LocationSet locationSet = LocationIOJson.readJson(directory, "FrontLines");
-        assert (locationSet.getLocations().size() > 0);
-    }
-
-    @Test
-    public void readJsonGaliciaTest() throws PWCGException
-    {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        String directory = System.getProperty("user.dir") + "\\RoFData\\Input\\Galicia\\19160101\\";
+        PWCGContext.setProduct(PWCGProduct.FC);
+        String directory = System.getProperty("user.dir") + "\\FCData\\Input\\Arras\\19170801\\";
         LocationSet locationSet = LocationIOJson.readJson(directory, "FrontLines");
         assert (locationSet.getLocations().size() > 0);
     }
@@ -62,6 +44,15 @@ public class LocationIOJsonTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         String directory = System.getProperty("user.dir") + "\\BoSData\\Input\\Kuban\\19420601\\";
+        LocationSet locationSet = LocationIOJson.readJson(directory, "FrontLines");
+        assert (locationSet.getLocations().size() > 0);
+    }
+
+    @Test
+    public void readJsonBodenplatteTest() throws PWCGException
+    {
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        String directory = System.getProperty("user.dir") + "\\BoSData\\Input\\Bodenplatte\\19440901\\";
         LocationSet locationSet = LocationIOJson.readJson(directory, "FrontLines");
         assert (locationSet.getLocations().size() > 0);
     }

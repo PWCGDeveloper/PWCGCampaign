@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\pz38t\\",
+  "vehicleType": "marderiii-h",
+  "displayName": "Marder III",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19420101",
+  "endDate": "19460724",
+  "rarityWeight": 10,
+  "vehicleClass": "Tank"
+}

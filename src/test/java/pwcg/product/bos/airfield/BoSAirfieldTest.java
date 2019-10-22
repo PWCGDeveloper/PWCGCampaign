@@ -8,8 +8,11 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.campaign.context.IPWCGContextManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.group.airfield.Airfield;
+import pwcg.campaign.group.airfield.Runway;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 
@@ -139,7 +142,7 @@ public class BoSAirfieldTest
 	@Test
 	public void airfieldCheckMoscowTest() throws PWCGException
 	{
-        BoSAirfield airfield = (BoSAirfield) PWCGContext.getInstance().getAirfieldAllMaps(airfieldName);
+        Airfield airfield = (Airfield) PWCGContext.getInstance().getAirfieldAllMaps(airfieldName);
 
 		PWCGContext.getInstance().getCurrentMap().getMapWeather().setWindDirection(180);
         assert(airfield.getChart().equals(refChart));
@@ -148,7 +151,7 @@ public class BoSAirfieldTest
 	@Test
 	public void windTest() throws PWCGException
 	{
-		BoSAirfield airfield = (BoSAirfield) PWCGContext.getInstance().getAirfieldAllMaps("Rogachevko");
+		Airfield airfield = (Airfield) PWCGContext.getInstance().getAirfieldAllMaps("Rogachevko");
 
 		PWCGContext.getInstance().getCurrentMap().getMapWeather().setWindDirection(0);
 		assert((int) airfield.getTakeoffLocation().getOrientation().getyOri() == 225);
@@ -170,12 +173,17 @@ public class BoSAirfieldTest
 
 	    for (PWCGMap map : contextManager.getAllMaps())
 	    {
+	        if (map.getMapIdentifier() == FrontMapIdentifier.BODENPLATTE_MAP || map.getMapIdentifier() == FrontMapIdentifier.ARRAS_MAP)
+	        {
+	            continue;
+	        }
+	        
 	        AirfieldManager airfieldManager = map.getAirfieldManager();
 	        if (airfieldManager != null)
 	        {
 	            for (String airfieldName : airfieldManager.getAllAirfields().keySet())
 	            {
-	                BoSAirfield airfield = (BoSAirfield) airfieldManager.getAirfield(airfieldName);
+	                Airfield airfield = (Airfield) airfieldManager.getAirfield(airfieldName);
 
 	                for (Runway runway : airfield.getAllRunways())
 	                {

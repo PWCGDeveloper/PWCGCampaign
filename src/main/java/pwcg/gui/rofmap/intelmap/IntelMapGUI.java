@@ -240,18 +240,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
         mapGrid.add(mapLabel);
         
         Campaign campaign = PWCGContext.getInstance().getCampaign();
-        if (PWCGContext.getProduct() == PWCGProduct.ROF)
-        {            
-            mapGrid.add(makeRadioButton(PWCGMap.FRANCE_MAP_NAME, MAP_DELIMITER + PWCGMap.FRANCE_MAP_NAME, mapButtonGroup));
-            mapGrid.add(makeRadioButton(PWCGMap.CHANNEL_MAP_NAME, MAP_DELIMITER + PWCGMap.CHANNEL_MAP_NAME, mapButtonGroup));
-
-            PWCGMap galiciaMap = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.GALICIA_MAP);
-            if (campaign.getDate().before(galiciaMap.getFrontDatesForMap().getEarliestMapDate()))
-            {
-                mapGrid.add(makeRadioButton(PWCGMap.GALICIA_MAP_NAME, MAP_DELIMITER + PWCGMap.GALICIA_MAP_NAME, mapButtonGroup));
-            }
-        }
-        else if (PWCGContext.getProduct() == PWCGProduct.BOS)
+        if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
             PWCGMap moscowMap = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.MOSCOW_MAP);
             if (moscowMap.getFrontDatesForMap().isMapActive(campaign.getDate()))

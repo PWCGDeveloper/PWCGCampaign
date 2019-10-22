@@ -24,7 +24,7 @@ import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -38,7 +38,7 @@ public class PlaneFactoryTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.KG53_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB);
@@ -49,14 +49,14 @@ public class PlaneFactoryTest
     {
         Mockito.when(flight.isVirtual()).thenReturn(false);
         
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.KG53_PROFILE.getSquadronId());
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.KG53_PROFILE.getSquadronId());
         FlightInformation flightInformation = FlightInformationFactory.buildPlayerFlightInformation(squadron, mission, FlightTypes.BOMB);
 
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
         List<PlaneMCU> assignedPlanes = planeFactory.createPlanesForFlight(4);
         
         boolean playerFound = false;
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadrontTestProfile.KG53_PROFILE.getSquadronId());        
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.KG53_PROFILE.getSquadronId());        
         int callnum = 1;
         for (PlaneMCU plane : assignedPlanes)
         {

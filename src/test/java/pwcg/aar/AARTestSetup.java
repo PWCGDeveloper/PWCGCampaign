@@ -33,6 +33,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.data.MissionHeader;
+import pwcg.testutils.SquadronTestProfile;
 
 public abstract class AARTestSetup
 {
@@ -75,7 +76,7 @@ public abstract class AARTestSetup
 
     protected void setupAARMocks() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         players = new ArrayList<>();
         players.add(player);
         
@@ -90,10 +91,10 @@ public abstract class AARTestSetup
 
     private void mockCampaign() throws PWCGException
     {
-        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170701"));
+        Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170901"));
         Mockito.when(campaign.getCampaignData()).thenReturn(campaignData);
         Mockito.when(squadronEsc103.determineDisplayName(Mockito.any())).thenReturn("Esc 103");
-        Mockito.when(squadronEsc103.getSquadronId()).thenReturn(101103);
+        Mockito.when(squadronEsc103.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         Mockito.when(campaignData.getName()).thenReturn("Player Name");
 
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
@@ -112,7 +113,7 @@ public abstract class AARTestSetup
     private void mockAARContext() throws PWCGException
     {
         Mockito.when(aarContext.getPreliminaryData()).thenReturn(preliminaryData);
-        Mockito.when(aarContext.getNewDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170704"));
+        Mockito.when(aarContext.getNewDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170901"));
         Mockito.when(aarContext.getCampaignUpdateData()).thenReturn(campaignUpdateData);
         Mockito.when(aarContext.getReconciledInMissionData()).thenReturn(reconciledInMissionData);
         Mockito.when(aarContext.getReconciledOutOfMissionData()).thenReturn(reconciledOutOfMissionData);
@@ -144,7 +145,7 @@ public abstract class AARTestSetup
     private void mockPersonnel() throws PWCGException
     {
         Mockito.when(player.getSerialNumber()).thenReturn(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        Mockito.when(player.getSquadronId()).thenReturn(101103);
+        Mockito.when(player.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         Mockito.when(player.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(player.determineSquadron()).thenReturn(squadronEsc103);
 
@@ -153,9 +154,9 @@ public abstract class AARTestSetup
         Mockito.when(pilot2.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+2);
         Mockito.when(pilot3.getSerialNumber()).thenReturn(SerialNumber.AI_STARTING_SERIAL_NUMBER+3);
 
-        Mockito.when(pilot1.getSquadronId()).thenReturn(101103);
-        Mockito.when(pilot2.getSquadronId()).thenReturn(101103);
-        Mockito.when(pilot3.getSquadronId()).thenReturn(101103);
+        Mockito.when(pilot1.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(pilot2.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(pilot3.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
 
         Mockito.when(pilot1.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(pilot2.getCountry()).thenReturn(Country.FRANCE);
@@ -170,10 +171,10 @@ public abstract class AARTestSetup
         Mockito.when(ace3.getSerialNumber()).thenReturn(SerialNumber.ACE_STARTING_SERIAL_NUMBER+3);
         Mockito.when(ace4.getSerialNumber()).thenReturn(SerialNumber.ACE_STARTING_SERIAL_NUMBER+4);
 
-        Mockito.when(ace1.getSquadronId()).thenReturn(101103);
-        Mockito.when(ace2.getSquadronId()).thenReturn(101103);
-        Mockito.when(ace3.getSquadronId()).thenReturn(101103);
-        Mockito.when(ace4.getSquadronId()).thenReturn(101103);
+        Mockito.when(ace1.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(ace2.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(ace3.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(ace4.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
 
         Mockito.when(ace1.determineSquadron()).thenReturn(squadronEsc103);
         Mockito.when(ace2.determineSquadron()).thenReturn(squadronEsc103);
@@ -185,9 +186,9 @@ public abstract class AARTestSetup
         Mockito.when(ace3.getCountry()).thenReturn(Country.FRANCE);
         Mockito.when(ace4.getCountry()).thenReturn(Country.FRANCE);
         
-        Mockito.when(plane1.getSquadronId()).thenReturn(101103);
-        Mockito.when(plane2.getSquadronId()).thenReturn(101103);
-        Mockito.when(plane3.getSquadronId()).thenReturn(101103);
+        Mockito.when(plane1.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(plane2.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(plane3.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
     }
 
 }

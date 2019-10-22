@@ -1,0 +1,16 @@
+{
+  "scriptDir": "trains\\",
+  "modelDir": "trains\\g8\\",
+  "vehicleType": "g8",
+  "displayName": "locomotive",
+  "countries": [
+    "GERMANY",
+    "RUSSIA",
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 30,
+  "vehicleClass": "TrainLocomotive"
+}

@@ -1,0 +1,13 @@
+{
+  "scriptDir": "ships\\",
+  "modelDir": "ships\\landboata\\",
+  "vehicleType": "landboata",
+  "displayName": "landing craft",
+  "countries": [
+    "RUSSIA"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 5,
+  "vehicleClass": "ShipCargo"
+}

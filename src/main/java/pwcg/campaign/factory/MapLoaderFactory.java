@@ -3,19 +3,15 @@ package pwcg.campaign.factory;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.product.bos.map.BoSMapLoader;
-import pwcg.product.rof.map.RoFMapLoader;
+import pwcg.product.fc.map.FCMapLoader;
 
 public class MapLoaderFactory
 {
     public static Runnable createMapLoader()
     {
-        if (PWCGContext.getProduct() == PWCGProduct.ROF)
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            return new RoFMapLoader();
-        }
-        else if (PWCGContext.getProduct() == PWCGProduct.FC)
-        {
-            return new RoFMapLoader();
+            return new FCMapLoader();
         }
         else
         {

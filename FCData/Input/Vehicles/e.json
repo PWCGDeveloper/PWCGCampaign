@@ -1,0 +1,17 @@
+{
+  "scriptDir": "trains\\",
+  "modelDir": "trains\\e\\",
+  "vehicleType": "e",
+  "displayName": "locomotive",
+  "countries": [
+    "GERMANY",
+    "FRANCE",
+    "USA",
+	"BELGIUM",
+    "BRITAIN"
+  ],
+  "startDate": "19140801",
+  "endDate": "19181201",
+  "rarityWeight": 30,
+  "vehicleClass": "TrainLocomotive"
+}

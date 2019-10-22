@@ -1,0 +1,15 @@
+{
+  "scriptDir": "trains\\",
+  "modelDir": "trains\\platformaa-61k\\",
+  "vehicleType": "platformaa-61k",
+  "displayName": "train car",
+  "countries": [
+    "RUSSIA",
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 20,
+  "vehicleClass": "TrainCarAAA"
+}

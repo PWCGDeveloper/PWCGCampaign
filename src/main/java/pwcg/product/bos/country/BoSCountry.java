@@ -5,7 +5,6 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.CountryBase;
-import pwcg.product.rof.country.RoFCountry;
 
 
 
@@ -59,7 +58,7 @@ public class BoSCountry extends CountryBase implements Cloneable, ICountry
 
 	public static ICountry getCountryByService (ArmedService service)
 	{
-        ICountry country = new RoFCountry(Country.NEUTRAL);
+        ICountry country = new BoSCountry(Country.NEUTRAL);
 	    
 		// World War II
 		if (service.getServiceId() == BoSServiceManager.LUFTWAFFE)
@@ -177,11 +176,11 @@ public class BoSCountry extends CountryBase implements Cloneable, ICountry
     {
         if (getSide() == Side.ALLIED)
         {
-            return new RoFCountry(GERMANY_CODE);
+            return new BoSCountry(GERMANY_CODE);
         }
         else
         {
-            return new RoFCountry(RUSSIA_CODE);
+            return new BoSCountry(RUSSIA_CODE);
         }
     }
 

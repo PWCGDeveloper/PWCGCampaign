@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\maksim4-aa\\",
+  "vehicleType": "maksim4-aa",
+  "displayName": "AAA machine gun",
+  "countries": [
+    "RUSSIA"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 20,
+  "vehicleClass": "AAAMachineGun"
+}

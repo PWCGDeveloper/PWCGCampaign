@@ -15,7 +15,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DuringCampaignVictimGeneratorTest
@@ -27,13 +27,13 @@ public class DuringCampaignVictimGeneratorTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
-        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test
     public void testVictimGeneration () throws PWCGException
     {               
-        Squadron victorSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());        
+        Squadron victorSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());        
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
         Squadron victimSquadron = enemySquadronFinder.getRandomEnemyViableSquadron(victorSquadron, campaign.getDate());
 
@@ -52,7 +52,7 @@ public class DuringCampaignVictimGeneratorTest
     @Test
     public void testNotFromPlayerSquadron () throws PWCGException
     {               
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadrontTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
         DuringCampaignVictimGenerator  victimGenerator = new DuringCampaignVictimGenerator(campaign, squadron);
         SquadronMember victim = victimGenerator.generateVictimAiCrew();
         assert(victim == null);

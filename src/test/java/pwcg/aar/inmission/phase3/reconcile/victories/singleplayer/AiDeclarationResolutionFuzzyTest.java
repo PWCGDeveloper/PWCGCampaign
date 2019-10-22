@@ -32,6 +32,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AiDeclarationResolutionFuzzyTest
@@ -116,7 +117,7 @@ public class AiDeclarationResolutionFuzzyTest
         playerSquadronsInMission.add(squadron);
         Mockito.when(preliminaryData.getPlayerSquadronsInMission()).thenReturn(playerSquadronsInMission);
 
-        int squadronId = 501011;
+        int squadronId = SquadronTestProfile.JASTA_11_PROFILE.getSquadronId();
         playerVictor.setSquadronId(squadronId);
         aiVictorOne.setSquadronId(squadronId);
         aiVictorTwo.setSquadronId(squadronId);

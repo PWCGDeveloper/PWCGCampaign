@@ -17,7 +17,7 @@ import pwcg.mission.flight.paradrop.ParaDropFlight;
 import pwcg.mission.flight.transport.TransportFlight;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
 
 public class PlayerFlightTypeBoSTransportTest
@@ -28,7 +28,7 @@ public class PlayerFlightTypeBoSTransportTest
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.TG2_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.TG2_PROFILE);
     }
 
     @Test

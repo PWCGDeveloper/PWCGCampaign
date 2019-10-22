@@ -20,7 +20,7 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MissionBorderBuilderTest
@@ -34,9 +34,9 @@ public class MissionBorderBuilderTest
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_STALINGRAD);
-        campaignAntiShipping = CampaignCache.makeCampaign(SquadrontTestProfile.REGIMENT_321_PROFILE);
-        coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_STALINGRAD);
+        campaignAntiShipping = CampaignCache.makeCampaign(SquadronTestProfile.REGIMENT_321_PROFILE);
+        coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
         participatingPlayers = new MissionHumanParticipants();
     }
 

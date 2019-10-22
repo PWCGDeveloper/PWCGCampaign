@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\pziv-g\\",
+  "vehicleType": "pziv-g",
+  "displayName": "PzKw Mk IV",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19420301",
+  "endDate": "19460724",
+  "rarityWeight": 30,
+  "vehicleClass": "Tank"
+}

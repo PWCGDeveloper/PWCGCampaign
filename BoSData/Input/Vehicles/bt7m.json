@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\bt7m\\",
+  "vehicleType": "bt7m",
+  "displayName": "Light Tank",
+  "countries": [
+    "RUSSIA"
+  ],
+  "startDate": "19390901",
+  "endDate": "19440209",
+  "rarityWeight": 40,
+  "vehicleClass": "Tank"
+}

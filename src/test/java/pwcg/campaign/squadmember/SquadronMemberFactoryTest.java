@@ -24,7 +24,8 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.CampaignCacheRoF;
+import pwcg.testutils.CampaignCacheBase;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SquadronMemberFactoryTest
@@ -41,8 +42,8 @@ public class SquadronMemberFactoryTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        campaignDate = DateUtils.getDateYYYYMMDD("19170601");
+        PWCGContext.setProduct(PWCGProduct.FC);
+        campaignDate = DateUtils.getDateYYYYMMDD("19170801");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
         Mockito.when(campaign.getSerialNumber()).thenReturn(serialNumber);
         Mockito.when(campaign.getPersonnelManager()).thenReturn(campaignPersonnelManager);
@@ -50,7 +51,7 @@ public class SquadronMemberFactoryTest
         List<Ace> aces = new ArrayList<>();
         Mockito.when(campaignAces.getCampaignAcesBySquadron(Mockito.anyInt())).thenReturn(aces);
         
-        squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(101003); 
+        squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.ESC_3_PROFILE.getSquadronId()); 
         squadronPersonnel = new SquadronPersonnel(campaign, squadron);
     }
 
@@ -65,8 +66,8 @@ public class SquadronMemberFactoryTest
 
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setCampaignDate(campaignDate);
-        generatorModel.setCampaignName(CampaignCacheRoF.TEST_CAMPAIGN_NAME);
-        generatorModel.setPlayerName(CampaignCacheRoF.TEST_PLAYER_NAME);
+        generatorModel.setCampaignName(CampaignCacheBase.TEST_CAMPAIGN_NAME);
+        generatorModel.setPlayerName(CampaignCacheBase.TEST_PLAYER_NAME);
         generatorModel.setPlayerRank(rankName);
         generatorModel.setPlayerRegion("");
         generatorModel.setService(service);

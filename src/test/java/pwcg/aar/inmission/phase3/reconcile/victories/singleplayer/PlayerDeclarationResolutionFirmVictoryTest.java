@@ -29,7 +29,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.product.rof.country.RoFCountry;
+import pwcg.product.fc.country.FCCountry;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerDeclarationResolutionFirmVictoryTest
@@ -60,7 +60,7 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         
         firmVictories.clear();
         
@@ -69,10 +69,10 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         Mockito.when(playerMembers.getSquadronMemberList()).thenReturn(players);   
 
         playerVictor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        playerVictor.setCountry(new RoFCountry(Country.FRANCE));
+        playerVictor.setCountry(new FCCountry(Country.FRANCE));
         
         aiVictor.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER + 1);
-        aiVictor.setCountry(new RoFCountry(Country.FRANCE));
+        aiVictor.setCountry(new FCCountry(Country.FRANCE));
         
         createMocks();
     }
@@ -190,13 +190,13 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     {        
         LogPlane victim = new LogPlane(3);
         victim.setPilotSerialNumber(victimSerialNumber);
-        victim.setVehicleType("albatrosd3");
-        victim.setCountry(new RoFCountry(Country.GERMANY));
+        victim.setVehicleType("albatrosd5");
+        victim.setCountry(new FCCountry(Country.GERMANY));
 
         LogPlane victor = new LogPlane(4);
-        victor.setVehicleType("spad7");
+        victor.setVehicleType("spad13");
         victor.setPilotSerialNumber(victorSerialNumber);
-        victor.setCountry(new RoFCountry(Country.FRANCE));
+        victor.setCountry(new FCCountry(Country.FRANCE));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictor(victor);
@@ -210,13 +210,13 @@ public class PlayerDeclarationResolutionFirmVictoryTest
     {        
         LogPlane victim = new LogPlane(3);
         victim.setPilotSerialNumber(victimSerialNumber);
-        victim.setVehicleType("spad7");
-        victim.setCountry(new RoFCountry(Country.FRANCE));
+        victim.setVehicleType("spad13");
+        victim.setCountry(new FCCountry(Country.FRANCE));
 
         LogPlane victor = new LogPlane(4);
-        victor.setVehicleType("spad7");
+        victor.setVehicleType("spad13");
         victor.setPilotSerialNumber(victorSerialNumber);
-        victor.setCountry(new RoFCountry(Country.FRANCE));
+        victor.setCountry(new FCCountry(Country.FRANCE));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictor(victor);
@@ -232,7 +232,7 @@ public class PlayerDeclarationResolutionFirmVictoryTest
         for (int i = 0; i < numDeclarations; ++i)
         {
             PlayerVictoryDeclaration declaration = new PlayerVictoryDeclaration();
-            declaration.confirmDeclaration(true, "albatrosd3");
+            declaration.confirmDeclaration(true, "albatrosd5");
             playerDeclarationSet.addDeclaration(declaration);
         }        
         

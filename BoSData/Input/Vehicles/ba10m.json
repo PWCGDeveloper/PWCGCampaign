@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\ba10m\\",
+  "vehicleType": "ba10m",
+  "displayName": "Armored car",
+  "countries": [
+    "RUSSIA"
+  ],
+  "startDate": "19390901",
+  "endDate": "19420501",
+  "rarityWeight": 10,
+  "vehicleClass": "Tank"
+}

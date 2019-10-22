@@ -1,6 +1,6 @@
 {
   "country": "BELGIUM",
-  "squadronId": 302011,
+  "squadronId": 304011,
   "name": "11eme Esc de Chasse",
   "fileName": "11eme Esc de Chasse.json",
   "skill": 40,
@@ -18,7 +18,7 @@
   "squadHistory": {
     "squadHistoryEntries": []
   },
-  "serviceId": 30201,
+  "serviceId": 30401,
   "squadronRoles": {
     "squadronRolePeriods": [
       {

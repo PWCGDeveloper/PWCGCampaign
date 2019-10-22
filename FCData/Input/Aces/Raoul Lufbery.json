@@ -5,7 +5,7 @@
       "date": "19150729"
     },
     {
-      "squadron": 101124,
+      "squadron": 301124,
       "date": "19160601"
     },
     {
@@ -57,7 +57,7 @@
     },
     {
       "skinName": "S7L_SPA124LUFBERY",
-      "planeType": "spad7",
+      "planeType": "spad13",
       "startDate": "19140801",
       "endDate": "19181201",
       "squadId": -1,

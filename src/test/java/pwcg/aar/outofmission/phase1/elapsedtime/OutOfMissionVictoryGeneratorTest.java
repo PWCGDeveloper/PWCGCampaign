@@ -18,7 +18,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignPersonnelTestHelper;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OutOfMissionVictoryGeneratorTest
@@ -28,9 +28,9 @@ public class OutOfMissionVictoryGeneratorTest
     @Before
     public void setupForTestEnvironment() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
+        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
     }
 
     @Test
@@ -38,10 +38,10 @@ public class OutOfMissionVictoryGeneratorTest
     {     
         SquadronMember aiSquadMember = CampaignPersonnelTestHelper.getSquadronMemberByRank(campaign, "Corporal");        
         Squadron squadronMemberSquadron = aiSquadMember.determineSquadron();
-        DuringCampaignVictimGenerator duringCampaignVictimGenerator = new DuringCampaignVictimGenerator(campaign, squadronMemberSquadron);
 
         EnemySquadronFinder enemySquadronFinder = new EnemySquadronFinder(campaign);
         Squadron victimSquadron = enemySquadronFinder.getRandomEnemyViableSquadron(squadronMemberSquadron, campaign.getDate());
+        DuringCampaignVictimGenerator duringCampaignVictimGenerator = new DuringCampaignVictimGenerator(campaign, victimSquadron);
         
         OutOfMissionVictoryGenerator victoryGenerator = new OutOfMissionVictoryGenerator(campaign, victimSquadron, duringCampaignVictimGenerator, aiSquadMember);
         Victory victory = victoryGenerator.generateOutOfMissionVictory(campaign.getDate());

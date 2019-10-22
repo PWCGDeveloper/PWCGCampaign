@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\m1a1gun-aa\\",
+  "vehicleType": "m1a1gun-aa",
+  "displayName": "anti aircraft gun",
+  "countries": [
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 80,
+  "vehicleClass": "AAAArtillery"
+}

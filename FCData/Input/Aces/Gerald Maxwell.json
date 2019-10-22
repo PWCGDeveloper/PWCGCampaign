@@ -5,7 +5,7 @@
       "date": "19150801"
     },
     {
-      "squadron": 102056,
+      "squadron": 302056,
       "date": "19170424"
     },
     {
@@ -13,7 +13,7 @@
       "date": "19171001"
     },
     {
-      "squadron": 102056,
+      "squadron": 302056,
       "date": "19180601"
     },
     {
@@ -52,7 +52,7 @@
       "planeType": "se5a",
       "startDate": "19140801",
       "endDate": "19181111",
-      "squadId": 102056,
+      "squadId": 302056,
       "country": "Britain",
       "category": "Ace",
       "definedInGame": false

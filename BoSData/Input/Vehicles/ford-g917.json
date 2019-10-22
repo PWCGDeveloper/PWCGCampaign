@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\ford\\",
+  "vehicleType": "ford-g917",
+  "displayName": "truck",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 50,
+  "vehicleClass": "Truck"
+}

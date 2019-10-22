@@ -32,6 +32,7 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CombatReportTabulatorTest extends AARTestSetup
@@ -67,7 +68,7 @@ public class CombatReportTabulatorTest extends AARTestSetup
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
 
         List<ClaimDeniedEvent> claimsDenied = new ArrayList<>();
-        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(101103);
+        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         claimDenied.setPilotName("Any Pilot");
         claimsDenied.add(claimDenied);
         Mockito.when(reconciledVictoryData.getPlayerClaimsDenied()).thenReturn(claimsDenied);
@@ -75,25 +76,25 @@ public class CombatReportTabulatorTest extends AARTestSetup
         Mockito.when(aarContext.getReconciledInMissionData()).thenReturn(reconciledInMissionData);
 
         List<VictoryEvent> victories = new ArrayList<>();
-        VictoryEvent victoriesForPilot = new VictoryEvent(101103);
+        VictoryEvent victoriesForPilot = new VictoryEvent(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         victoriesForPilot.setPilotName("Any Pilot");
         victories.add(victoriesForPilot);
         Mockito.when(victoryEventGenerator.createPilotVictoryEvents(Matchers.<Map<Integer, List<Victory>>>any())).thenReturn(victories);
         
         Map<Integer, PilotStatusEvent> pilotsLost = new HashMap<>();
-        PilotStatusEvent pilotStatusEvent = new PilotStatusEvent(101103);
+        PilotStatusEvent pilotStatusEvent = new PilotStatusEvent(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         pilotStatusEvent.setPilotName("Any Pilot");
         pilotsLost.put(pilot1.getSerialNumber(), pilotStatusEvent);
         Mockito.when(pilotStatusEventGenerator.createPilotLossEvents(Matchers.<AARPersonnelLosses>any())).thenReturn(pilotsLost);
         
         
         Map<Integer, PlaneStatusEvent> planesLost = new HashMap<>();
-        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent(101103);
+        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         planeStatusEvent.setPlaneSerialNumber(99999);
         planesLost.put(plane1.getSerialNumber(), planeStatusEvent);
         Mockito.when(planeStatusEventGenerator.createPlaneLossEvents(Matchers.<AAREquipmentLosses>any())).thenReturn(planesLost);
 
-        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(101103);
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         CombatReportTabulator combatReportPanelEventTabulator = new CombatReportTabulator(campaign, squadron, aarContext);
         combatReportPanelEventTabulator.setPilotStatusEventGenerator(pilotStatusEventGenerator);
         combatReportPanelEventTabulator.setPlaneStatusEventGenerator(planeStatusEventGenerator);

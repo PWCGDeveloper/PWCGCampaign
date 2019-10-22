@@ -13,7 +13,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HistoricalAceAwardsGeneratorTest
@@ -23,8 +23,8 @@ public class HistoricalAceAwardsGeneratorTest
     @Before
     public void setupForTestEnvironment() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.ESC_103_PROFILE);
+        PWCGContext.setProduct(PWCGProduct.FC);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.ESC_103_PROFILE);
     }
 
     @Test

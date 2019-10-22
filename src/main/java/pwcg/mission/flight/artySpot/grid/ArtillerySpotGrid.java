@@ -124,7 +124,7 @@ public class ArtillerySpotGrid
 	    }
 	    
 	    // Reverse it it if the map is Russia
-	    if (PWCGContext.getInstance().getCurrentMap().getMapIdentifier() == FrontMapIdentifier.GALICIA_MAP)
+	    if (PWCGContext.getInstance().getCurrentMap().getMapIdentifier() != FrontMapIdentifier.ARRAS_MAP)
 	    {
             placementAngle = MathUtils.adjustAngle(placementAngle, 180);
 	    }

@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\sdkfz10-flak38\\",
+  "vehicleType": "sdkfz10-flak38",
+  "displayName": "half track",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 10,
+  "vehicleClass": "TruckAAA"
+}

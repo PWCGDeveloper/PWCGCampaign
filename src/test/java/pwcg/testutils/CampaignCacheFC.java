@@ -35,8 +35,10 @@ public class CampaignCacheFC extends CampaignCacheBase
     protected void loadCampaignProfiles() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.FC);
-        makeProfile(SquadrontTestProfile.JASTA_11_PROFILE);
-        makeProfile(SquadrontTestProfile.ESC_103_PROFILE);
-        makeProfile(SquadrontTestProfile.RFC_2_PROFILE);
+        makeProfile(SquadronTestProfile.JASTA_11_PROFILE);
+        makeProfile(SquadronTestProfile.ESC_103_PROFILE);
+        makeProfile(SquadronTestProfile.ESC_3_PROFILE);
+        makeProfile(SquadronTestProfile.RFC_2_PROFILE);
+        makeProfile(SquadronTestProfile.RFC_46_PROFILE);
     }
 }

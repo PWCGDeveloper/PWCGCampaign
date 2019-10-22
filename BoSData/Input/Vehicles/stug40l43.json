@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\stug40l43\\",
+  "vehicleType": "stug40l43",
+  "displayName": "Stug III",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19420201",
+  "endDate": "19460724",
+  "rarityWeight": 40,
+  "vehicleClass": "Tank"
+}

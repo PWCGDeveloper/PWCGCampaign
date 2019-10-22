@@ -16,7 +16,8 @@ public class GroundUnitInformation
 {
     protected ICountry country = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
     protected MissionBeginUnit missionBeginUnit = null;
-	protected String name = "";
+    protected String name = "";
+    protected Date date;
     protected Coordinate position = new Coordinate();
     protected Coordinate destination = new Coordinate();
 	protected Orientation orientation = new Orientation();
@@ -107,5 +108,15 @@ public class GroundUnitInformation
     public void setUnitSize(GroundUnitSize unitSize)
     {
         this.unitSize = unitSize;
+    }
+
+    public Date getDate()
+    {
+        return date;
+    }
+
+    public void setDate(Date date)
+    {
+        this.date = date;
     }
 }

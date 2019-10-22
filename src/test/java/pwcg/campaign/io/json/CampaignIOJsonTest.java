@@ -22,10 +22,10 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
 import pwcg.core.utils.DateUtils;
-import pwcg.product.rof.country.RoFServiceManager;
+import pwcg.product.fc.country.FCServiceManager;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.CampaignCacheBase;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CampaignIOJsonTest
@@ -33,7 +33,7 @@ public class CampaignIOJsonTest
     @Test
     public void campaignIOJsonTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
 
         deleteCampaign();
         writeCampaign();
@@ -43,7 +43,7 @@ public class CampaignIOJsonTest
 
     private void writeCampaign() throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
         CampaignIOJson.writeJson(campaign);
     }
 
@@ -69,7 +69,7 @@ public class CampaignIOJsonTest
             assert (player.getSerialNumber() >= SerialNumber.PLAYER_STARTING_SERIAL_NUMBER && player.getSerialNumber() < SerialNumber.AI_STARTING_SERIAL_NUMBER);
         }
         
-        assert (campaign.getDate().equals(DateUtils.getDateYYYYMMDD("19170501")));
+        assert (campaign.getDate().equals(DateUtils.getDateYYYYMMDD(SquadronTestProfile.JASTA_11_PROFILE.getDateString())));
         assert (campaign.getCampaignData().getName().equals(CampaignCacheBase.TEST_CAMPAIGN_NAME));
     	SquadronMember player = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
         assert (player.getName().equals(CampaignCacheBase.TEST_PLAYER_NAME));
@@ -78,13 +78,13 @@ public class CampaignIOJsonTest
     private void validatePersonnelReplacements(Campaign campaign) throws PWCGException
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
-    	ArmedService germanArmedService = armedServiceManager.getArmedServiceByName(RoFServiceManager.DEUTSCHE_LUFTSTREITKRAFTE_NAME, campaign.getDate());
+    	ArmedService germanArmedService = armedServiceManager.getArmedServiceByName(FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE_NAME, campaign.getDate());
         PersonnelReplacementsService germanReplacements = campaign.getPersonnelManager().getPersonnelReplacementsService(germanArmedService.getServiceId());
         assert(germanReplacements.getReplacements().getActiveCount(campaign.getDate()) == 20);
         assert(germanReplacements.getDailyReplacementRate() == 15);
         assert(germanReplacements.getLastReplacementDate().equals(campaign.getDate()));
 
-        ArmedService belgianArmedService = armedServiceManager.getArmedServiceByName(RoFServiceManager.AVIATION_MILITAIRE_BELGE_NAME, campaign.getDate());
+        ArmedService belgianArmedService = armedServiceManager.getArmedServiceByName(FCServiceManager.AVIATION_MILITAIRE_BELGE_NAME, campaign.getDate());
         PersonnelReplacementsService belgianReplacements = campaign.getPersonnelManager().getPersonnelReplacementsService(belgianArmedService.getServiceId());
         assert(belgianReplacements.getReplacements().getActiveCount(campaign.getDate()) == 20);
         assert(belgianReplacements.getDailyReplacementRate() == 1);
@@ -92,7 +92,7 @@ public class CampaignIOJsonTest
 
     private void validateReconSquadronMembers(Campaign campaign) throws PWCGException
     {
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(101002);
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.RFC_2_PROFILE.getSquadronId());
         SquadronMembers reconSquadronPersonnel = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());        
         assert (reconSquadronPersonnel.getSquadronMemberList().size() == 12);
         for (SquadronMember squadronMember : reconSquadronPersonnel.getSquadronMemberList())
@@ -104,7 +104,7 @@ public class CampaignIOJsonTest
 
     private void validateFighterSquadronMembers(Campaign campaign) throws PWCGException
     {
-        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(501011);
+        SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
         SquadronMembers fighterSquadronPersonnel = SquadronMemberFilter.filterActiveAIAndPlayerAndAces(squadronPersonnel.getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());        
         assert (campaign.getSerialNumber().getNextPilotSerialNumber() > SerialNumber.AI_STARTING_SERIAL_NUMBER + 100);
         assert (fighterSquadronPersonnel.getSquadronMemberList().size() >= 12);
@@ -130,7 +130,7 @@ public class CampaignIOJsonTest
 
     private void validateFighterEquipment(Campaign campaign) throws PWCGException
     {
-        Equipment fighterSquadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(501011);
+        Equipment fighterSquadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
         assert (campaign.getSerialNumber().getNextPlaneSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
         assert (fighterSquadronEquipment.getActiveEquippedPlanes().size() >= 14);
         for (EquippedPlane equippedPlane : fighterSquadronEquipment.getActiveEquippedPlanes().values())
@@ -142,13 +142,13 @@ public class CampaignIOJsonTest
 
     private void validateReconEquipment(Campaign campaign) throws PWCGException
     {
-        Equipment reconSquadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(101002);
+        Equipment reconSquadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(SquadronTestProfile.RFC_2_PROFILE.getSquadronId());
         assert (campaign.getSerialNumber().getNextPlaneSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER + 100);
         assert (reconSquadronEquipment.getActiveEquippedPlanes().size() >= 14);
         for (EquippedPlane equippedPlane : reconSquadronEquipment.getActiveEquippedPlanes().values())
         {
             assert (equippedPlane.getSerialNumber() > SerialNumber.PLANE_STARTING_SERIAL_NUMBER);
-            assert (equippedPlane.getArchType().equals("re8") || equippedPlane.getArchType().equals("sopstr"));
+            assert (equippedPlane.getArchType().contains("bristol"));
         }
     }
 

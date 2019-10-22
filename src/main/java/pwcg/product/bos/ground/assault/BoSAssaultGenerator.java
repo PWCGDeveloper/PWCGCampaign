@@ -79,6 +79,7 @@ public class BoSAssaultGenerator extends AssaultGenerator implements IAssaultGen
 
     private void createAssault() throws PWCGException
     {
+        assaultingMG();
         assaultingTanks();
         if (battleSize == BattleSize.BATTLE_SIZE_ASSAULT || battleSize == BattleSize.BATTLE_SIZE_OFFENSIVE)
         {
@@ -89,6 +90,7 @@ public class BoSAssaultGenerator extends AssaultGenerator implements IAssaultGen
 
     private void createDefenders() throws PWCGException
     {
+        defendingMG();
         defendingATGuns();
         if (battleSize == BattleSize.BATTLE_SIZE_ASSAULT || battleSize == BattleSize.BATTLE_SIZE_OFFENSIVE)
         {
@@ -142,7 +144,7 @@ public class BoSAssaultGenerator extends AssaultGenerator implements IAssaultGen
     { 
         assaultingAAAMG();
         assaultingAAAArty();
-        
+        assaultingMG();
     }
 
     private void assaultingAAAMG() throws PWCGException
@@ -159,6 +161,44 @@ public class BoSAssaultGenerator extends AssaultGenerator implements IAssaultGen
         AAAUnitFactory groundUnitAAAFactory = new AAAUnitFactory(campaign, assaultInformation.getAggressor(), aaaArtyAssaultPosition);
         GroundUnit assaultAaaMgUnit = groundUnitAAAFactory.createAAAArtilleryBattery(1, 1);
         assaultInformation.addGroundUnit(GroundUnitType.AAA_ARTY_UNIT, assaultAaaMgUnit);
+    }
+
+    private void assaultingMG() throws PWCGException
+    { 
+        String name = assaultInformation.getAggressor().getCountryName() + " MG";
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                missionBeginUnit, 
+                assaultInformation.getAggressor(),
+                name, 
+                TacticalTarget.TARGET_INFANTRY, 
+                assaultInformation.getAssaultPosition(), 
+                assaultInformation.getDefensePosition(), 
+                assaultInformation.getAssaultOrientation(), 
+                determineIsPlayer());
+
+        AssaultFactory assaultFactory =  new AssaultFactory();
+        GroundUnit defenseAntiTankUnit = assaultFactory.createMachineGunUnit (groundUnitInformation);
+        assaultInformation.addGroundUnit(GroundUnitType.MG_UNIT, defenseAntiTankUnit);
+    }
+
+    private void defendingMG() throws PWCGException
+    { 
+        String name = assaultInformation.getDefender().getCountryName() + " MG";
+        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
+                campaign, 
+                missionBeginUnit, 
+                assaultInformation.getDefender(),
+                name, 
+                TacticalTarget.TARGET_INFANTRY, 
+                assaultInformation.getDefensePosition(), 
+                assaultInformation.getAssaultPosition(), 
+                assaultInformation.getDefenseOrientation(), 
+                determineIsPlayer());
+
+        AssaultFactory assaultFactory =  new AssaultFactory();
+        GroundUnit defenseAntiTankUnit = assaultFactory.createMachineGunUnit (groundUnitInformation);
+        assaultInformation.addGroundUnit(GroundUnitType.MG_UNIT, defenseAntiTankUnit);
     }
 
     private void defendingATGuns() throws PWCGException

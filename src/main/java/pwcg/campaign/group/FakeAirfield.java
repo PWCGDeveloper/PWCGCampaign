@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Date;
 
 import pwcg.campaign.api.IAirfield;
-import pwcg.product.bos.airfield.BoSAirfield;
+import pwcg.campaign.group.airfield.Airfield;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
@@ -48,7 +48,7 @@ public class FakeAirfield extends FixedPosition implements Cloneable
         damageThreshold = 1;
         deleteAfterDeath = 1;
         
-        chart = ((BoSAirfield) airfield).getChart();
+        chart = ((Airfield) airfield).getChart();
 
         populateEntity();
     }

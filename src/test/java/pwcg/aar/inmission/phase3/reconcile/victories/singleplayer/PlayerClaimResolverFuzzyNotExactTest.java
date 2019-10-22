@@ -16,7 +16,7 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.product.rof.country.RoFCountry;
+import pwcg.product.fc.country.FCCountry;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerClaimResolverFuzzyNotExactTest
@@ -26,7 +26,7 @@ public class PlayerClaimResolverFuzzyNotExactTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         Mockito.when(player.getCountry()).thenReturn(Country.GERMANY);
     }
 
@@ -36,12 +36,12 @@ public class PlayerClaimResolverFuzzyNotExactTest
         LogPlane victim = new LogPlane(1);
         victim.setRole(Role.ROLE_FIGHTER);
         victim.setVehicleType("se5a");
-        victim.setCountry(new RoFCountry(Country.BRITAIN));
+        victim.setCountry(new FCCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
-        victor.setVehicleType("albatrosd3");
+        victor.setVehicleType("albatrosd5");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victor.setCountry(new RoFCountry(Country.GERMANY));
+        victor.setCountry(new FCCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -62,12 +62,12 @@ public class PlayerClaimResolverFuzzyNotExactTest
         LogPlane victim = new LogPlane(1);
         victim.setRole(Role.ROLE_FIGHTER);
         victim.setVehicleType("se5a");
-        victim.setCountry(new RoFCountry(Country.BRITAIN));
+        victim.setCountry(new FCCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
-        victor.setVehicleType("albatrosd3");
+        victor.setVehicleType("albatrosd5");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victor.setCountry(new RoFCountry(Country.GERMANY));
+        victor.setCountry(new FCCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -90,7 +90,7 @@ public class PlayerClaimResolverFuzzyNotExactTest
         victim.setVehicleType("notarealplane");
 
         LogPlane victor = new LogPlane(2);
-        victor.setVehicleType("albatrosd3");
+        victor.setVehicleType("albatrosd5");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
         LogVictory resultVictory = new LogVictory(10);
@@ -114,7 +114,7 @@ public class PlayerClaimResolverFuzzyNotExactTest
         victim.setVehicleType("se5a");
 
         LogPlane victor = new LogPlane(2);
-        victor.setVehicleType("albatrosd3");
+        victor.setVehicleType("albatrosd5");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
         LogVictory resultVictory = new LogVictory(10);
@@ -138,7 +138,7 @@ public class PlayerClaimResolverFuzzyNotExactTest
         victim.setVehicleType("se5a");
 
         LogPlane victor = new LogPlane(2);
-        victor.setVehicleType("albatrosd3");
+        victor.setVehicleType("albatrosd5");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
 
         LogVictory resultVictory = new LogVictory(10);
@@ -161,13 +161,13 @@ public class PlayerClaimResolverFuzzyNotExactTest
     {   
         LogPlane victim = new LogPlane(1);
         victim.setRole(Role.ROLE_FIGHTER);
-        victim.setVehicleType("albatrosd3");
-        victim.setCountry(new RoFCountry(Country.GERMANY));
+        victim.setVehicleType("albatrosd5");
+        victim.setCountry(new FCCountry(Country.GERMANY));
 
         LogPlane victor = new LogPlane(2);
-        victor.setVehicleType("albatrosd3");
+        victor.setVehicleType("albatrosd5");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victim.setCountry(new RoFCountry(Country.GERMANY));
+        victim.setCountry(new FCCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);

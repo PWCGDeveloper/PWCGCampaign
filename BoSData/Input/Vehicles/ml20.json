@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\ml20\\",
+  "vehicleType": "ml20",
+  "displayName": "howitzer",
+  "countries": [
+    "RUSSIA"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 80,
+  "vehicleClass": "ArtilleryHowitzer"
+}

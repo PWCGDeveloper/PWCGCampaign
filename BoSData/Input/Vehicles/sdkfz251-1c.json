@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\sdkfz251\\",
+  "vehicleType": "sdkfz251-1c",
+  "displayName": "half track",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 30,
+  "vehicleClass": "Truck"
+}

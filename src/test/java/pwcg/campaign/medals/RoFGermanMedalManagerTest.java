@@ -20,8 +20,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.dialogs.ImageCache;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.product.rof.country.RoFServiceManager;
-import pwcg.product.rof.medals.GermanMedalManager;
+import pwcg.product.fc.country.FCServiceManager;
+import pwcg.product.fc.medals.GermanMedalManager;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RoFGermanMedalManagerTest extends MedalManagerTestBase
@@ -29,8 +29,8 @@ public class RoFGermanMedalManagerTest extends MedalManagerTestBase
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        service = ArmedServiceFactory.createServiceManager().getArmedServiceById(RoFServiceManager.DEUTSCHE_LUFTSTREITKRAFTE, DateUtils.getDateYYYYMMDD("19171001"));
+        PWCGContext.setProduct(PWCGProduct.FC);
+        service = ArmedServiceFactory.createServiceManager().getArmedServiceById(FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE, DateUtils.getDateYYYYMMDD("19171001"));
 
         super.setup();
         Mockito.when(country.isCountry(Country.GERMANY)).thenReturn(true);

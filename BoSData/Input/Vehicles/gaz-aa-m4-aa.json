@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\gaz\\",
+  "vehicleType": "gaz-aa-m4-aa",
+  "displayName": "truck",
+  "countries": [
+    "RUSSIA"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 10,
+  "vehicleClass": "TruckAAA"
+}

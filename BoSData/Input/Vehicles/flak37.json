@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\flak37\\",
+  "vehicleType": "flak37",
+  "displayName": "anti aircraft gun",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 30,
+  "vehicleClass": "AAAArtillery"
+}

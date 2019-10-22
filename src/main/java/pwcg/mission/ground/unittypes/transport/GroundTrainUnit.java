@@ -3,7 +3,6 @@ package pwcg.mission.ground.unittypes.transport;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.campaign.factory.VehicleFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Orientation;
@@ -14,7 +13,8 @@ import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundMovingUnit;
 import pwcg.mission.ground.vehicle.ITrainLocomotive;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.ground.vehicle.IVehicleFactory;
+import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.ground.vehicle.VehicleFactory;
 import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -28,30 +28,43 @@ public class GroundTrainUnit extends GroundMovingUnit
 
 	protected void createUnits() throws PWCGException 
 	{		
-        IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        ITrainLocomotive locomotive = makeLocomotive(vehicleFactory);
-        makeCars(vehicleFactory, locomotive);
+	    ITrainLocomotive locomotive = makeLocomotive();
+        makeCoalCar(locomotive);
+        makeAAACar(locomotive);
+        makeCars(locomotive);
+        makeAAACar(locomotive);
 		this.spawningVehicle = locomotive;
 	}
 
-	private ITrainLocomotive makeLocomotive(IVehicleFactory vehicleFactory) throws PWCGException
+    private void makeCoalCar(ITrainLocomotive locomotive) throws PWCGException
+    {
+        IVehicle coalCar = VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.TrainCoalCar);
+        locomotive.addCar(coalCar);
+    }
+
+    private void makeAAACar(ITrainLocomotive locomotive) throws PWCGException
+    {
+        IVehicle aaaCar = VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.TrainCarAAA);
+        locomotive.addCar(aaaCar);
+    }
+
+    private ITrainLocomotive makeLocomotive() throws PWCGException
 	{
-		ITrainLocomotive locomotive = vehicleFactory.createTrainLocomotive(pwcgGroundUnitInformation.getCountry());
+        ITrainLocomotive locomotive = VehicleFactory.createLocomotive(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate());
 
         locomotive.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 		locomotive.setOrientation(new Orientation());
-		locomotive.populateEntity();
 		locomotive.getEntity().setEnabled(1);
 		return locomotive;
 	}
 
-	private void makeCars(IVehicleFactory vehicleFactory, ITrainLocomotive locomotive)
+	private void makeCars(ITrainLocomotive locomotive)
 	        throws PWCGException, PWCGException
 	{
 		int numCars = calcNumCars();
 		for (int i = 0; i < numCars; ++i)
 		{	
-	        IVehicle car = vehicleFactory.createTrainCar(pwcgGroundUnitInformation.getCountry());
+	        IVehicle car = VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.TrainCar);
 			locomotive.addCar(car);
 		}
 	}

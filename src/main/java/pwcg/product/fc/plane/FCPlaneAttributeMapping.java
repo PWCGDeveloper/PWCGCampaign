@@ -18,7 +18,8 @@ public enum FCPlaneAttributeMapping implements IPlaneAttributeMapping
     DOLPHIN("sopdolphin"),
     CAMEL("sopcamel"),
     BRISTOLF2BF2("bristolf2bf2"),
-    BRISTOLF2BF3("bristolf2bf3");
+    BRISTOLF2BF3("bristolf2bf3"), 
+    BALLOON("Balloon");
     
 	private String planeType;
 	private String[] staticPlaneMatches;

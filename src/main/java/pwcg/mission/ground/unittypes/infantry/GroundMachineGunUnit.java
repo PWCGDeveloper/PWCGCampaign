@@ -3,7 +3,6 @@ package pwcg.mission.ground.unittypes.infantry;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.product.rof.ground.vehicle.MachineGun;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
@@ -12,6 +11,7 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundDirectFireUnit;
+import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.McuSpawn;
 
 public class GroundMachineGunUnit extends GroundDirectFireUnit
@@ -23,8 +23,7 @@ public class GroundMachineGunUnit extends GroundDirectFireUnit
 
     public void createUnits() throws PWCGException  
     {
-        spawningVehicle = new MachineGun();
-        spawningVehicle.makeRandomVehicleFromSet(pwcgGroundUnitInformation.getCountry());
+        spawningVehicle = pwcg.mission.ground.vehicle.VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.MachineGun);
         spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation());
         spawningVehicle.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
         spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
@@ -67,15 +66,15 @@ public class GroundMachineGunUnit extends GroundDirectFireUnit
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
-            setMinMaxRequested(1, 2);
+            setMinMaxRequested(2, 3);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
         {
-            setMinMaxRequested(2, 3);
+            setMinMaxRequested(3, 6);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
         {
-            setMinMaxRequested(2, 4);
+            setMinMaxRequested(5, 8);
         }
         
         return calculateForMinMaxRequested();

@@ -3,7 +3,6 @@ package pwcg.mission.ground.unittypes.infantry;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.campaign.factory.VehicleFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
@@ -13,7 +12,7 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundDirectFireUnit;
-import pwcg.mission.ground.vehicle.IVehicleFactory;
+import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.McuSpawn;
 
 public class GroundAntiTankArtillery extends GroundDirectFireUnit
@@ -25,8 +24,7 @@ public class GroundAntiTankArtillery extends GroundDirectFireUnit
 
     public void createUnits() throws PWCGException 
     {
-        IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        spawningVehicle = vehicleFactory.createATArtillery(pwcgGroundUnitInformation.getCountry());
+        spawningVehicle = pwcg.mission.ground.vehicle.VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.ArtilleryAntiTank);
         spawningVehicle.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
         spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
         spawningVehicle.populateEntity();

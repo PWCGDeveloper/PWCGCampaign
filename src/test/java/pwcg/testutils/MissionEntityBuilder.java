@@ -15,7 +15,7 @@ public class MissionEntityBuilder
         Ace aceKilledInMission = new Ace();
         aceKilledInMission.setSerialNumber(aceSerialNumber);
         aceKilledInMission.setName(aceName);
-        aceKilledInMission.setSquadronId(101103);
+        aceKilledInMission.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         aceKilledInMission.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, date, null);
         aceKilledInMission.setInactiveDate(date);
         for (int i = 0; i < numVictories; ++i)
@@ -32,7 +32,7 @@ public class MissionEntityBuilder
         SquadronMember squadronMember = new Ace();
         squadronMember.setSerialNumber(serialNumber);
         squadronMember.setName(pilotName);
-        squadronMember.setSquadronId(101103);
+        squadronMember.setSquadronId(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         squadronMember.setPilotActiveStatus(status, statusDate, returnDate);
         return squadronMember;
     }

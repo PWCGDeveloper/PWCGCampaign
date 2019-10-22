@@ -1,7 +1,7 @@
 package pwcg.campaign.io.json;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.group.airfield.AirfieldHotSpotCollection;
+import pwcg.campaign.group.airfield.hotspot.AirfieldHotSpotCollection;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 

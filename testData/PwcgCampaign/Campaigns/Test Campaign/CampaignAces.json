@@ -7561,7 +7561,7 @@
         },
         {
           "skinName": "S7L_SPA124LUFBERY",
-          "planeType": "spad7",
+          "planeType": "spad13",
           "startDate": "19140801",
           "endDate": "19181201",
           "squadId": -1,
@@ -10636,7 +10636,7 @@
       "skins": [
         {
           "skinName": "S7L_SPA100_HAEGEL",
-          "planeType": "spad7",
+          "planeType": "spad13",
           "startDate": "19140801",
           "endDate": "19181201",
           "squadId": -1,
@@ -12239,7 +12239,7 @@
         },
         {
           "skinName": "S7L_RFC19PENTLAND",
-          "planeType": "spad7",
+          "planeType": "spad13",
           "startDate": "19140801",
           "endDate": "19181201",
           "squadId": -1,
@@ -15067,7 +15067,7 @@
         },
         {
           "skinName": "S7L_SPA48TURENNE",
-          "planeType": "spad7",
+          "planeType": "spad13",
           "startDate": "19140801",
           "endDate": "19181201",
           "squadId": -1,
@@ -35480,7 +35480,7 @@
         },
         {
           "skinName": "S7L_N3_GUYNEMER",
-          "planeType": "spad7",
+          "planeType": "spad13",
           "startDate": "19140801",
           "endDate": "19181201",
           "squadId": -1,

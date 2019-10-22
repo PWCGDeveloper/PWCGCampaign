@@ -17,7 +17,7 @@ public class HistoricalAceIOJsonTest
     @Test
     public void readJsonRoFTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         List<HistoricalAce> aces = HistoricalAceIOJson.readJson();
         assert (aces.size() > 0);
     }

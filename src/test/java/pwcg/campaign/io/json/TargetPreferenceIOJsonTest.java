@@ -13,29 +13,13 @@ import pwcg.core.exception.PWCGException;
 public class TargetPreferenceIOJsonTest
 {
     @Test
-    public void readJsonFranceTest() throws PWCGException
+    public void readJsonArrasTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        TargetPreferenceSet targetPreference = TargetPreferenceIOJson.readJson("France");
-        assert (targetPreference.getTargetPreferences().size() > 0);
+        PWCGContext.setProduct(PWCGProduct.FC);
+        TargetPreferenceSet targetPreference = TargetPreferenceIOJson.readJson("Arras");
+        assert (targetPreference.getTargetPreferences().size() == 0);
     }
 
-    @Test
-    public void readJsonChannelTest() throws PWCGException
-    {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        TargetPreferenceSet targetPreference = TargetPreferenceIOJson.readJson("Channel");
-        assert (targetPreference.getTargetPreferences().size() > 0);
-    }
-
-    @Test
-    public void readJsonGaliciaTest() throws PWCGException
-    {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        TargetPreferenceSet targetPreference = TargetPreferenceIOJson.readJson("Galicia");
-        assert (targetPreference.getTargetPreferences().size() > 0);
-    }
-    
     @Test
     public void readJsonMoscowTest() throws PWCGException
     {
@@ -60,4 +44,11 @@ public class TargetPreferenceIOJsonTest
         assert (targetPreference.getTargetPreferences().size() > 0);
     }
 
+    @Test
+    public void readJsonBodenplatteTest() throws PWCGException
+    {
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        TargetPreferenceSet targetPreference = TargetPreferenceIOJson.readJson("Bodenplatte");
+        assert (targetPreference.getTargetPreferences().size() > 0);
+    }
 }

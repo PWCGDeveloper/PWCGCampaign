@@ -10,7 +10,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SquadronPersonnelTest {
@@ -21,13 +21,13 @@ public class SquadronPersonnelTest {
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
     }
 
     @Test
     public void isHumanSquadronTest() throws PWCGException
     {
-        SquadronPersonnel squadronpersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadrontTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
+        SquadronPersonnel squadronpersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
         assert(squadronpersonnel.isPlayerSquadron());
     }
 

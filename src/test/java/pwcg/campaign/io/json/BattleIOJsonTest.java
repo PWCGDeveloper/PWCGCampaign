@@ -15,7 +15,7 @@ public class BattleIOJsonTest
     @Test
     public void readJsonTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         Battles battles = BattleIOJson.readJson();
         assert (battles.getBattles().size() > 0);
     }

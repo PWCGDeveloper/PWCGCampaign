@@ -12,7 +12,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 public class AirfieldManagerTest
 {
@@ -24,17 +24,17 @@ public class AirfieldManagerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
+        PWCGContext.setProduct(PWCGProduct.FC);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
         PWCGContext.getInstance().setCampaign(campaign);
     }
 
 	@Test
 	public void airfieldValidityCheckFranceTest() throws PWCGException 
 	{
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
         PWCGContext.getInstance().setTestUseMovingFront(false);
-        AirfieldManager airfieldManager = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.FRANCE_MAP).getAirfieldManager();
+        AirfieldManager airfieldManager = PWCGContext.getInstance().getMapByMapId(FrontMapIdentifier.ARRAS_MAP).getAirfieldManager();
         for (IAirfield airfield : airfieldManager.getAllAirfields().values())
         {
             assert (airfield.getTakeoffLocation() != null);

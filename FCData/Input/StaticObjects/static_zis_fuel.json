@@ -1,0 +1,15 @@
+{
+  "scriptDir": "Blocks\\",
+  "modelDir": "blocks\\",
+  "vehicleType": "static_zis_fuel",
+  "displayName": "truck",
+  "countries": [
+    "FRANCE",
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19140801",
+  "endDate": "19181201",
+  "rarityWeight": 60,
+  "vehicleClass": "StaticAirfield"
+}

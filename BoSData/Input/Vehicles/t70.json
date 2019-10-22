@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\t70\\",
+  "vehicleType": "t70",
+  "displayName": "Light Tank",
+  "countries": [
+    "RUSSIA"
+  ],
+  "startDate": "19430105",
+  "endDate": "19460724",
+  "rarityWeight": 20,
+  "vehicleClass": "Tank"
+}

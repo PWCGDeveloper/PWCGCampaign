@@ -45,7 +45,7 @@ public class AARBotVehicleMapperTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
     }
 
     @Test

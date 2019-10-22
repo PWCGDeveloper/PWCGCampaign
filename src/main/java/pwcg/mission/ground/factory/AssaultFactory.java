@@ -5,12 +5,9 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.artillery.GroundArtilleryUnit;
 import pwcg.mission.ground.unittypes.infantry.GroundAntiTankArtillery;
-import pwcg.mission.ground.unittypes.infantry.GroundAssaultInfantryUnit;
 import pwcg.mission.ground.unittypes.infantry.GroundAssaultTankUnit;
-import pwcg.mission.ground.unittypes.infantry.GroundInfantryUnit;
+import pwcg.mission.ground.unittypes.infantry.GroundMachineGunFlareUnit;
 import pwcg.mission.ground.unittypes.infantry.GroundMachineGunUnit;
-import pwcg.mission.ground.unittypes.infantry.GroundPillBoxFlareUnit;
-import pwcg.mission.ground.unittypes.infantry.GroundPillBoxUnit;
 
 public class AssaultFactory
 {    
@@ -32,20 +29,6 @@ public class AssaultFactory
         return tankAssaultUnit;
     }
 
-    public GroundUnit createStandingInfantryUnit (GroundUnitInformation groundUnitInformation) throws PWCGException 
-    {
-        GroundInfantryUnit infantryAssaultUnit = new GroundInfantryUnit(groundUnitInformation);
-        infantryAssaultUnit.createUnitMission();
-        return infantryAssaultUnit;
-    }
-
-    public GroundUnit createAssaultInfantryUnit (GroundUnitInformation groundUnitInformation) throws PWCGException 
-    {
-        GroundAssaultInfantryUnit infantryAssaultUnit = new GroundAssaultInfantryUnit(groundUnitInformation);
-        infantryAssaultUnit.createUnitMission();
-        return infantryAssaultUnit;
-    }
-
     public GroundUnit createMachineGunUnit (GroundUnitInformation groundUnitInformation) throws PWCGException 
     {
         GroundMachineGunUnit mgUnit = new GroundMachineGunUnit(groundUnitInformation);
@@ -53,16 +36,9 @@ public class AssaultFactory
         return mgUnit;
     }
 
-    public GroundUnit createPillBoxUnit (GroundUnitInformation groundUnitInformation) throws PWCGException 
+    public GroundUnit createMachineGunFlareUnit (GroundUnitInformation groundUnitInformation) throws PWCGException 
     {
-        GroundPillBoxUnit pillBoxUnit = new GroundPillBoxUnit(groundUnitInformation);
-        pillBoxUnit.createUnitMission();
-        return pillBoxUnit;
-    }
-
-    public GroundUnit createPillBoxFlareUnit (GroundUnitInformation groundUnitInformation) throws PWCGException 
-    {
-        GroundPillBoxFlareUnit pillBoxUnit = new GroundPillBoxFlareUnit(groundUnitInformation);
+        GroundMachineGunFlareUnit pillBoxUnit = new GroundMachineGunFlareUnit(groundUnitInformation);
         pillBoxUnit.createUnitMission();
         return pillBoxUnit;
     }

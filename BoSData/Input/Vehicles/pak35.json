@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\pak35\\",
+  "vehicleType": "pak35",
+  "displayName": "anti tank gun",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19390901",
+  "endDate": "19430101",
+  "rarityWeight": 80,
+  "vehicleClass": "ArtilleryAntiTank"
+}

@@ -1,0 +1,17 @@
+{
+  "scriptDir": "ships\\",
+  "modelDir": "ships\\largetankershiptype1\\",
+  "vehicleType": "largetankershiptype1",
+  "displayName": "tanker",
+  "countries": [
+    "GERMANY",
+    "FRANCE",
+    "USA",
+	"BELGIUM",
+    "BRITAIN"
+  ],
+  "startDate": "19140801",
+  "endDate": "19181201",
+  "rarityWeight": 10,
+  "vehicleClass": "ShipCargo"
+}

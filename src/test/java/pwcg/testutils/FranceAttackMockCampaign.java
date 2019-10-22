@@ -53,8 +53,8 @@ public class FranceAttackMockCampaign
 
     public void mockCampaignSetup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
+        PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
 
         date = DateUtils.getDateYYYYMMDD("19180501");
         

@@ -13,6 +13,7 @@ import pwcg.aar.ui.events.TransferEventGenerator;
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.core.exception.PWCGException;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TransferEventGeneratorTest extends AARTestSetup
@@ -28,9 +29,9 @@ public class TransferEventGeneratorTest extends AARTestSetup
     public void testTransferInEvent() throws PWCGException 
     {
         List<TransferRecord> transferRecords = new ArrayList<>();
-        TransferRecord squadronMemberTransfer1 = new TransferRecord(pilot1, 101048, 101103);
+        TransferRecord squadronMemberTransfer1 = new TransferRecord(pilot1, SquadronTestProfile.ESC_3_PROFILE.getSquadronId(), SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         transferRecords.add(squadronMemberTransfer1);        
-        TransferRecord squadronMemberTransfer2 = new TransferRecord(pilot2, 101048, 101103);
+        TransferRecord squadronMemberTransfer2 = new TransferRecord(pilot2, SquadronTestProfile.ESC_3_PROFILE.getSquadronId(), SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         transferRecords.add(squadronMemberTransfer2);        
 
         TransferEventGenerator transferEventGenerator = new TransferEventGenerator(campaign);
@@ -39,8 +40,8 @@ public class TransferEventGeneratorTest extends AARTestSetup
         TransferEvent transferEvent2 = (TransferEvent)transferEvents.get(1);
 
         assert (transferEvents.size() == 2);
-        assert (transferEvent1.getTransferTo() == 101103);
-        assert (transferEvent2.getTransferTo() == 101103);
+        assert (transferEvent1.getTransferTo() == SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        assert (transferEvent2.getTransferTo() == SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
     }
     
     
@@ -48,9 +49,9 @@ public class TransferEventGeneratorTest extends AARTestSetup
     public void testInSquadronAceUpdate() throws PWCGException 
     {
         List<TransferRecord> transferRecords = new ArrayList<>();
-        TransferRecord squadronMemberTransfer1 = new TransferRecord(pilot1, 101103, 101048);
+        TransferRecord squadronMemberTransfer1 = new TransferRecord(pilot1, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
         transferRecords.add(squadronMemberTransfer1);        
-        TransferRecord squadronMemberTransfer2 = new TransferRecord(pilot2, 101103, 101048);
+        TransferRecord squadronMemberTransfer2 = new TransferRecord(pilot2, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
         transferRecords.add(squadronMemberTransfer2);        
 
         TransferEventGenerator transferEventGenerator = new TransferEventGenerator(campaign);
@@ -59,8 +60,8 @@ public class TransferEventGeneratorTest extends AARTestSetup
         TransferEvent transferEvent2 = (TransferEvent)transferEvents.get(1);
 
         assert (transferEvents.size() == 2);
-        assert (transferEvent1.getTransferTo() != 101103);
-        assert (transferEvent2.getTransferTo() != 101103);
+        assert (transferEvent1.getTransferTo() != SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        assert (transferEvent2.getTransferTo() != SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
     }
 
 }

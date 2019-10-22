@@ -13,7 +13,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.product.rof.country.RoFServiceManager;
+import pwcg.product.fc.country.FCServiceManager;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ArmedServiceManagerTest
@@ -21,72 +21,64 @@ public class ArmedServiceManagerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
     }
 
     @Test
     public void testGetArmedServiceByNameTest() throws PWCGException
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
-        ArmedService armedService = armedServiceManager.getArmedServiceByName(RoFServiceManager.DEUTSCHE_LUFTSTREITKRAFTE_NAME,
-                DateUtils.getDateYYYYMMDD("19171001"));
-        assert (armedService.getServiceId() == RoFServiceManager.DEUTSCHE_LUFTSTREITKRAFTE);
-    }
-
-    @Test
-    public void testGetArmedServiceByIdTest() throws PWCGException
-    {
-        IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
-        ArmedService armedService = armedServiceManager.getArmedServiceById(RoFServiceManager.LAVIATION_MARINE, DateUtils.getDateYYYYMMDD("19171001"));
-        assert (armedService.getName().equals(RoFServiceManager.LAVIATION_MARINE_NAME));
+        ArmedService armedService = armedServiceManager.getArmedServiceByName(FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE_NAME,
+                DateUtils.getDateYYYYMMDD("19170801"));
+        assert (armedService.getServiceId() == FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE);
     }
 
     @Test
     public void testGetArmedServiceByService() throws PWCGException
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
-        ArmedService armedService = armedServiceManager.getArmedService(RoFServiceManager.LAVIATION_MILITAIRE);
-        assert (armedService.getName().equals(RoFServiceManager.LAVIATION_MILITAIRE_NAME));
+        ArmedService armedService = armedServiceManager.getArmedService(FCServiceManager.LAVIATION_MILITAIRE);
+        assert (armedService.getName().equals(FCServiceManager.LAVIATION_MILITAIRE_NAME));
     }
 
     @Test
     public void testGetRFCArmedServiceByIdTest() throws PWCGException
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
-        ArmedService armedService = armedServiceManager.getArmedServiceById(RoFServiceManager.RFC, DateUtils.getDateYYYYMMDD("19171001"));
-        assert (armedService.getName().equals(RoFServiceManager.RFC_NAME));
+        ArmedService armedService = armedServiceManager.getArmedServiceById(FCServiceManager.RFC, DateUtils.getDateYYYYMMDD("19170801"));
+        assert (armedService.getName().equals(FCServiceManager.RFC_NAME));
     }
 
     @Test
     public void testGetRNASArmedServiceByIdTest() throws PWCGException
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
-        ArmedService armedService = armedServiceManager.getArmedServiceById(RoFServiceManager.RNAS, DateUtils.getDateYYYYMMDD("19171001"));
-        assert (armedService.getName().equals(RoFServiceManager.RNAS_NAME));
+        ArmedService armedService = armedServiceManager.getArmedServiceById(FCServiceManager.RNAS, DateUtils.getDateYYYYMMDD("19170801"));
+        assert (armedService.getName().equals(FCServiceManager.RNAS_NAME));
     }
 
     @Test
     public void testGetRAFFromRFCArmedServiceByIdTest() throws PWCGException
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
-        ArmedService armedService = armedServiceManager.getArmedServiceById(RoFServiceManager.RFC, DateUtils.getDateYYYYMMDD("19180501"));
-        assert (armedService.getName().equals(RoFServiceManager.RAF_NAME));
+        ArmedService armedService = armedServiceManager.getArmedServiceById(FCServiceManager.RFC, DateUtils.getDateYYYYMMDD("19180501"));
+        assert (armedService.getName().equals(FCServiceManager.RAF_NAME));
     }
 
     @Test
     public void testGetRAFFromRNASArmedServiceByIdTest() throws PWCGException
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
-        ArmedService armedService = armedServiceManager.getArmedServiceById(RoFServiceManager.RNAS, DateUtils.getDateYYYYMMDD("19180501"));
-        assert (armedService.getName().equals(RoFServiceManager.RAF_NAME));
+        ArmedService armedService = armedServiceManager.getArmedServiceById(FCServiceManager.RNAS, DateUtils.getDateYYYYMMDD("19180501"));
+        assert (armedService.getName().equals(FCServiceManager.RAF_NAME));
     }
 
     @Test
     public void testGetArmedService() throws PWCGException
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
-        ArmedService armedService = armedServiceManager.getArmedService(RoFServiceManager.LAVIATION_MILITAIRE);
-        assert (armedService.getName().equals(RoFServiceManager.LAVIATION_MILITAIRE_NAME));
+        ArmedService armedService = armedServiceManager.getArmedService(FCServiceManager.LAVIATION_MILITAIRE);
+        assert (armedService.getName().equals(FCServiceManager.LAVIATION_MILITAIRE_NAME));
     }
 
     @Test
@@ -94,23 +86,23 @@ public class ArmedServiceManagerTest
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
         List<ArmedService> armedServices = armedServiceManager.getAllArmedServices();
-        assert (armedServices.size() == 11);
+        assert (armedServices.size() == 7);
     }
 
     @Test
     public void testGetAxisArmedService() throws PWCGException
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
-        List<ArmedService> armedServices = armedServiceManager.getAxisServices(DateUtils.getDateYYYYMMDD("19171001"));
-        assert (armedServices.size() == 3);
+        List<ArmedService> armedServices = armedServiceManager.getAxisServices(DateUtils.getDateYYYYMMDD("19170801"));
+        assert (armedServices.size() == 1);
     }
 
     @Test
     public void testGetAlliedArmedService() throws PWCGException
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
-        List<ArmedService> armedServices = armedServiceManager.getAlliedServices(DateUtils.getDateYYYYMMDD("19171001"));
-        assert (armedServices.size() == 7);
+        List<ArmedService> armedServices = armedServiceManager.getAlliedServices(DateUtils.getDateYYYYMMDD("19170801"));
+        assert (armedServices.size() == 5);
     }
 
     @Test
@@ -118,7 +110,7 @@ public class ArmedServiceManagerTest
     {
         IArmedServiceManager armedServiceManager = ArmedServiceFactory.createServiceManager();
         List<ArmedService> armedServices = armedServiceManager.getAlliedServices(DateUtils.getDateYYYYMMDD("19181001"));
-        assert (armedServices.size() == 6);
+        assert (armedServices.size() == 4);
     }
 
 }

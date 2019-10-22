@@ -13,32 +13,14 @@ import pwcg.core.exception.PWCGException;
 public class ShippingLaneIOJsonTest
 {
     @Test
-    public void readJsonFranceTest() throws PWCGException
-    {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        ShippingLanes shippingLanes = ShippingLaneIOJson.readJson("Channel");
-        assert (shippingLanes.getAlliedShippingLanes().size() > 0);
-        assert (shippingLanes.getAxisShippingLanes().size() > 0);
-    }
-
-    @Test
     public void readJsonChannelTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        ShippingLanes shippingLanes = ShippingLaneIOJson.readJson("France");
+        PWCGContext.setProduct(PWCGProduct.FC);
+        ShippingLanes shippingLanes = ShippingLaneIOJson.readJson("Arras");
         assert (shippingLanes.getAlliedShippingLanes().size() == 0);
         assert (shippingLanes.getAxisShippingLanes().size() == 0);
     }
 
-    @Test
-    public void readJsonGaliciaTest() throws PWCGException
-    {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        ShippingLanes shippingLanes = ShippingLaneIOJson.readJson("Galicia");
-        assert (shippingLanes.getAlliedShippingLanes().size() == 0);
-        assert (shippingLanes.getAxisShippingLanes().size() == 0);
-    }
-    
     @Test
     public void readJsonMoscowTest() throws PWCGException
     {
@@ -64,6 +46,15 @@ public class ShippingLaneIOJsonTest
         ShippingLanes shippingLanes = ShippingLaneIOJson.readJson("Kuban");
         assert (shippingLanes.getAlliedShippingLanes().size() > 0);
         assert (shippingLanes.getAxisShippingLanes().size() > 0);
+    }
+
+    @Test
+    public void readJsonBodenplatteTest() throws PWCGException
+    {
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        ShippingLanes shippingLanes = ShippingLaneIOJson.readJson("Bodenplatte");
+        assert (shippingLanes.getAlliedShippingLanes().size() == 0);
+        assert (shippingLanes.getAxisShippingLanes().size() == 0);
     }
 
 }

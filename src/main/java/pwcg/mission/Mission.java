@@ -8,7 +8,6 @@ import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.CampaignMissionIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -19,11 +18,11 @@ import pwcg.mission.data.PwcgGeneratedMission;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.mission.io.MissionDescriptionFile;
 import pwcg.mission.io.MissionFileFactory;
 import pwcg.mission.mcu.group.MissionObjectiveGroup;
 import pwcg.mission.options.MissionOptions;
-import pwcg.product.bos.ground.vehicle.VehicleSetBuilderComprehensive;
 
 public class Mission
 {
@@ -111,10 +110,13 @@ public class Mission
 
     private void createAmbientUnits() throws PWCGException, PWCGException
     {
-        if (PWCGContext.getProduct() == PWCGProduct.ROF)
+        // TODO FC when balloons arrive
+        /*
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
             missionBalloons.createAmbientBalloons(this);
         }
+        */
         
         ambientGroundUnitBuilder = new AmbientGroundUnitBuilder(campaign, this);
         ambientGroundUnitBuilder.generateAmbientGroundUnits();

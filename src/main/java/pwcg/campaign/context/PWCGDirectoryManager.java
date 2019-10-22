@@ -23,11 +23,7 @@ public class PWCGDirectoryManager
     
     private void createPwcgDataDir(PWCGProduct product)
     {
-        if (product == PWCGProduct.ROF)
-        {
-            pwcgDataDir = pwcgRootDir + "RoFData\\";
-        }
-        else if (product == PWCGProduct.FC)
+        if (product == PWCGProduct.FC)
         {
             pwcgDataDir = pwcgRootDir + "FCData\\";
         }
@@ -112,10 +108,20 @@ public class PWCGDirectoryManager
         return pwcgDataDir + "User\\";
     }
 
-	public String getPwcgSkinsDir()
-	{
+    public String getPwcgSkinsDir()
+    {
         return getPwcgInputDir() + "Skins\\";
-	}
+    }
+
+    public String getPwcgVehiclesDir()
+    {
+        return getPwcgInputDir() + "Vehicles\\";
+    }
+
+    public String getPwcgStaticObjectDir()
+    {
+        return getPwcgInputDir() + "StaticObjects\\";
+    }
 
     public String getPwcgAcesDir()
     {

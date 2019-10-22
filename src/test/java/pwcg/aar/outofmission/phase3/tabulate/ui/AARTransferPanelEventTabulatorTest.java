@@ -15,6 +15,7 @@ import pwcg.aar.ui.display.model.TransferPanelData;
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.core.exception.PWCGException;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AARTransferPanelEventTabulatorTest extends AARTestSetup
@@ -29,12 +30,12 @@ public class AARTransferPanelEventTabulatorTest extends AARTestSetup
     public void testTransferInEvent() throws PWCGException 
     {
         List<TransferRecord> squadronMemberTransferredIn = new ArrayList<>();
-        TransferRecord squadronMemberTransfer = new TransferRecord(pilot1, 101048, 101103);
+        TransferRecord squadronMemberTransfer = new TransferRecord(pilot1, SquadronTestProfile.ESC_3_PROFILE.getSquadronId(), SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         squadronMemberTransferredIn.add(squadronMemberTransfer);        
         Mockito.when(squadronMembersTransferred.getSquadronMembersTransferred()).thenReturn(squadronMemberTransferredIn);
 
         List<TransferRecord> acesTransferredIn = new ArrayList<>();
-        TransferRecord aceTransfer = new TransferRecord(ace1, 101048, 101103);
+        TransferRecord aceTransfer = new TransferRecord(ace1, SquadronTestProfile.ESC_3_PROFILE.getSquadronId(), SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         acesTransferredIn.add(aceTransfer);        
         Mockito.when(acesTransferred.getSquadronMembersTransferred()).thenReturn(acesTransferredIn);
         
@@ -50,12 +51,12 @@ public class AARTransferPanelEventTabulatorTest extends AARTestSetup
     public void testTransferOutEvent() throws PWCGException 
     {
         List<TransferRecord> squadronMemberTransferredOut = new ArrayList<>();
-        TransferRecord squadronMemberTransfer = new TransferRecord(pilot1, 101103, 101048);
+        TransferRecord squadronMemberTransfer = new TransferRecord(pilot1, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
         squadronMemberTransferredOut.add(squadronMemberTransfer);        
         Mockito.when(squadronMembersTransferred.getSquadronMembersTransferred()).thenReturn(squadronMemberTransferredOut);
 
         List<TransferRecord> acesTransferredIn = new ArrayList<>();
-        TransferRecord aceTransfer = new TransferRecord(ace1, 101103, 101048);
+        TransferRecord aceTransfer = new TransferRecord(ace1, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
         acesTransferredIn.add(aceTransfer);        
         Mockito.when(acesTransferred.getSquadronMembersTransferred()).thenReturn(acesTransferredIn);
         

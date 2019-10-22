@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\gmc-cckw\\",
+  "vehicleType": "gmc-cckw",
+  "displayName": "truck",
+  "countries": [
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 100,
+  "vehicleClass": "Truck"
+}

@@ -30,7 +30,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.product.rof.country.RoFCountry;
+import pwcg.product.fc.country.FCCountry;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerDeclarationResolutionFuzzyVictoryTest
@@ -59,7 +59,7 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         
         fuzzyVictories.clear();
         
@@ -204,7 +204,7 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
         victim.setPilotSerialNumber(victimSerialNumber);
         victim.setVehicleType(aircraftType);
         victim.setRole(approximateRole);
-        victim.setCountry(new RoFCountry(Country.BRITAIN));
+        victim.setCountry(new FCCountry(Country.BRITAIN));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -217,8 +217,8 @@ public class PlayerDeclarationResolutionFuzzyVictoryTest
     {        
         LogPlane victim = new LogPlane(3);
         victim.setPilotSerialNumber(victimSerialNumber);
-        victim.setVehicleType("albatrosd3");
-        victim.setCountry(new RoFCountry(Country.GERMANY));
+        victim.setVehicleType("albatrosd5");
+        victim.setCountry(new FCCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);

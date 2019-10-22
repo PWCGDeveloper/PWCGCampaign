@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\pziv-h1\\",
+  "vehicleType": "pziv-h1",
+  "displayName": "Tiger I",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19430101",
+  "endDate": "19460724",
+  "rarityWeight": 10,
+  "vehicleClass": "Tank"
+}

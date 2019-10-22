@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\t34-76stz\\",
+  "vehicleType": "t34-76stz",
+  "displayName": "T34",
+  "countries": [
+    "RUSSIA"
+  ],
+  "startDate": "19390901",
+  "endDate": "19420801",
+  "rarityWeight": 80,
+  "vehicleClass": "Tank"
+}

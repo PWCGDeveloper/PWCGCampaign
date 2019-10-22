@@ -5,7 +5,7 @@ import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.group.airfield.HotSpot;
+import pwcg.campaign.group.airfield.hotspot.HotSpot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;

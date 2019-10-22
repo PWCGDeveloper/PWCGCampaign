@@ -22,8 +22,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.dialogs.ImageCache;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.product.rof.country.RoFServiceManager;
-import pwcg.product.rof.medals.AmericanMedalManager;
+import pwcg.product.fc.country.FCServiceManager;
+import pwcg.product.fc.medals.AmericanMedalManager;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RoFAmericanMedalManagerTest extends MedalManagerTestBase
@@ -31,7 +31,7 @@ public class RoFAmericanMedalManagerTest extends MedalManagerTestBase
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         super.setup();
         Mockito.when(country.isCountry(Country.USA)).thenReturn(true);
         ICountry country = CountryFactory.makeCountryByCountry(Country.USA);
@@ -43,7 +43,7 @@ public class RoFAmericanMedalManagerTest extends MedalManagerTestBase
     public void testAmericanMedals () throws PWCGException
     {            	
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19180801"));
-	    service = ArmedServiceFactory.createServiceManager().getArmedServiceById(RoFServiceManager.USAS, campaign.getDate());
+	    service = ArmedServiceFactory.createServiceManager().getArmedServiceById(FCServiceManager.USAS, campaign.getDate());
         Mockito.when(player.determineService(Matchers.<Date>any())).thenReturn(service);
 
         awardMedal(AmericanMedalManager.PILOTS_BADGE, 0, 0);
@@ -56,7 +56,7 @@ public class RoFAmericanMedalManagerTest extends MedalManagerTestBase
     public void testMoHFail () throws PWCGException
     {            
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19180801"));
-	    service = ArmedServiceFactory.createServiceManager().getArmedServiceById(RoFServiceManager.USAS, campaign.getDate());
+	    service = ArmedServiceFactory.createServiceManager().getArmedServiceById(FCServiceManager.USAS, campaign.getDate());
         Mockito.when(player.determineService(Matchers.<Date>any())).thenReturn(service);
 
         awardMedal(AmericanMedalManager.PILOTS_BADGE, 0, 0);

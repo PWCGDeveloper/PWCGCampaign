@@ -11,7 +11,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FlightSizeCalculatorTest 
@@ -22,7 +22,7 @@ public class FlightSizeCalculatorTest
     public void fighterFlightTests() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.KG53_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.KG53_PROFILE);
     }
 
 	@Test

@@ -5,18 +5,13 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.product.fc.country.FCServiceManager;
-import pwcg.product.rof.country.RoFServiceManager;
 
 public class ArmedServiceFactory
 {
 	static IArmedServiceManager serviceManager;
     public static IArmedServiceManager createServiceManager()
     {
-        if (PWCGContext.getProduct() == PWCGProduct.ROF)
-        {
-            serviceManager = RoFServiceManager.getInstance();
-        }
-        else if (PWCGContext.getProduct() == PWCGProduct.FC)
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
             serviceManager = FCServiceManager.getInstance();
         }

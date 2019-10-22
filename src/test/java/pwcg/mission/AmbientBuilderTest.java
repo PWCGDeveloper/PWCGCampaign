@@ -24,7 +24,7 @@ import pwcg.mission.ground.unittypes.GroundUnitSpawning;
 import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -39,7 +39,7 @@ public class AmbientBuilderTest
     @Test
     public void createAmbientBattle () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
@@ -60,7 +60,7 @@ public class AmbientBuilderTest
     @Test
     public void createAmbientTrucks () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
@@ -80,7 +80,7 @@ public class AmbientBuilderTest
     @Test
     public void createAmbientTrains () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
@@ -100,7 +100,7 @@ public class AmbientBuilderTest
     @Test
     public void createAmbientAAA () throws PWCGException
     {
-        Campaign campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         MissionHumanParticipants participatingPlayers = TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign);
         CoordinateBox missionBorders = CoordinateBox.coordinateBoxFromCenter(new Coordinate(100000.0, 0.0, 100000.0), 75000);
         Mission mission = new Mission(campaign, participatingPlayers, missionBorders);

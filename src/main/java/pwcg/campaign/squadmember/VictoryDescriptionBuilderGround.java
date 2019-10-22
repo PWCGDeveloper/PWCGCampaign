@@ -1,10 +1,10 @@
 package pwcg.campaign.squadmember;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.IGroundUnitNames;
-import pwcg.campaign.factory.GroundUnitNameFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.mission.ground.vehicle.IVehicleDefinition;
+import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
 public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBase
 {    
@@ -84,7 +84,7 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
 
     // On <victory victory.getDate()> near <location>.
     // A <victory.getVictim() ground unit> was destroyed by a <ground unit name> 
-    public String createVictoryDescriptionGroundToGround()
+    public String createVictoryDescriptionGroundToGround() throws PWCGException
     {
         String victoryDesc = "";
         
@@ -123,14 +123,13 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
     }
     
 
-    private String getGroundUnitName(String groundUnitType)
+    private String getGroundUnitName(String groundUnitType) throws PWCGException
     {
-        IGroundUnitNames groundUnitNames = GroundUnitNameFactory.createGroundUnitNames();
-        String groundUnitName = groundUnitNames.getGroundUnitDisplayName(groundUnitType);
-        
-        if (groundUnitName.isEmpty())
+        IVehicleDefinition vehicleDefinition = VehicleDefinitionManager.getInstance().getVehicleDefinitionByVehicleType(groundUnitType);
+        String groundUnitName = "vehicle";
+        if (vehicleDefinition != null)
         {
-            groundUnitName = groundUnitType;
+            groundUnitName = vehicleDefinition.getDisplayName();
         }
         
         return groundUnitName;

@@ -21,7 +21,6 @@ import pwcg.core.utils.Logger.LogLevel;
 
 public abstract class PWCGContextManagerBase implements IPWCGContextManager
 {
-    RoFContext rofContextManager;
     BoSContext bosContextManager;
 
     protected Map<FrontMapIdentifier, PWCGMap> pwcgMaps = new HashMap<FrontMapIdentifier, PWCGMap>();

@@ -22,7 +22,8 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.testutils.CampaignCacheRoF;
+import pwcg.testutils.CampaignCacheBase;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CampaignGeneratorTest
@@ -31,20 +32,20 @@ public class CampaignGeneratorTest
 	@Before
 	public void setup() throws PWCGException
 	{
-    	PWCGContext.setProduct(PWCGProduct.ROF);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
+    	PWCGContext.setProduct(PWCGProduct.FC);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.ARRAS_MAP);
 	}
 	
     @Test
     public void createWWICampaign () throws PWCGException
     {        
-    	Campaign campaign = generateCampaign(101003, DateUtils.getDateYYYYMMDD("19161001"));
+    	Campaign campaign = generateCampaign(SquadronTestProfile.ESC_3_PROFILE.getSquadronId(), DateUtils.getDateYYYYMMDD("19171001"));
     	assert(campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().size() == 1);
     	SquadronMember player = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList().get(0);
-        assert (player.determineSquadron().getSquadronId() == 101003);
+        assert (player.determineSquadron().getSquadronId() == SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
         assert (player.determineSquadron().determineSquadronCountry(campaign.getDate()).getCountry() == Country.FRANCE);
-        assert (campaign.getCampaignData().getName().equals(CampaignCacheRoF.TEST_CAMPAIGN_NAME));
-        assert(campaign.getPersonnelManager().getAllSquadronPersonnel().size() > 100);
+        assert (campaign.getCampaignData().getName().equals(CampaignCacheBase.TEST_CAMPAIGN_NAME));
+        assert(campaign.getPersonnelManager().getAllSquadronPersonnel().size() > 30);
         
         for (SquadronPersonnel squadronPersonnel : campaign.getPersonnelManager().getAllSquadronPersonnel())
         {
@@ -75,8 +76,8 @@ public class CampaignGeneratorTest
 
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setCampaignDate(campaignDate);
-        generatorModel.setCampaignName(CampaignCacheRoF.TEST_CAMPAIGN_NAME);
-        generatorModel.setPlayerName(CampaignCacheRoF.TEST_PLAYER_NAME);
+        generatorModel.setCampaignName(CampaignCacheBase.TEST_CAMPAIGN_NAME);
+        generatorModel.setPlayerName(CampaignCacheBase.TEST_PLAYER_NAME);
         generatorModel.setPlayerRank(rankName);
         generatorModel.setPlayerRegion("");
         generatorModel.setService(service);

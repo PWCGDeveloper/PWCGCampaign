@@ -21,7 +21,7 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CampaignMembersInMissionTest
@@ -36,7 +36,7 @@ public class CampaignMembersInMissionTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaignForceCreation(SquadrontTestProfile.REGIMENT_503_PROFILE);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.REGIMENT_503_PROFILE);
     }
 
 

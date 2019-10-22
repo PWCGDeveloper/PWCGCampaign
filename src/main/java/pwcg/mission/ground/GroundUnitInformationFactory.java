@@ -31,6 +31,7 @@ public class GroundUnitInformationFactory
         groundUnitInformation.setMissionBeginUnit(missionBeginUnit);
         groundUnitInformation.setCountry(country);
         groundUnitInformation.setName(name);
+        groundUnitInformation.setDate(campaign.getDate());
         groundUnitInformation.setTargetType(targetType);
         groundUnitInformation.setPosition(startCoords);
         groundUnitInformation.setDestination(targetCoords);
@@ -50,6 +51,7 @@ public class GroundUnitInformationFactory
         groundUnitInformation.setMissionBeginUnit(missionBeginUnit);
         groundUnitInformation.setCountry(targetDefinition.getTargetCountry());
         groundUnitInformation.setName(targetDefinition.getTargetName());
+        groundUnitInformation.setDate(campaign.getDate());
         groundUnitInformation.setTargetType(targetDefinition.getTargetType());
         groundUnitInformation.setPosition(targetDefinition.getTargetPosition());
         groundUnitInformation.setDestination(targetDefinition.getTargetPosition());

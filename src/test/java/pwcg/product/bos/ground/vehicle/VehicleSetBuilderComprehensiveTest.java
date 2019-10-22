@@ -14,9 +14,9 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.ground.vehicle.IVehicle;
+import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -29,7 +29,7 @@ public class VehicleSetBuilderComprehensiveTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JG_51_PROFILE_MOSCOW);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_MOSCOW);
         campaign.setDate(DateUtils.getDateYYYYMMDD("19411103"));
     }
 
@@ -38,11 +38,7 @@ public class VehicleSetBuilderComprehensiveTest
     {
         VehicleSetBuilderComprehensive vehicleSetBuilder = new VehicleSetBuilderComprehensive();
         vehicleSetBuilder.makeOneOfEachType();
-        
-        for (IVehicle vehicle : vehicleSetBuilder.getAllVehicles())
-        {
-            assert (vehicle.getAllVehicleDefinitions().size() > 0);
-        }
+        assert (vehicleSetBuilder.getAllVehicles().size() > 0);
     }
 
     @Test

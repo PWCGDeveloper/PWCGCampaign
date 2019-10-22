@@ -5,7 +5,7 @@
       "date": "19150801"
     },
     {
-      "squadron": 101100,
+      "squadron": 301100,
       "date": "19180323"
     },
     {
@@ -33,7 +33,7 @@
   "skins": [
     {
       "skinName": "S7L_SPA100_HAEGEL",
-      "planeType": "spad7",
+      "planeType": "spad13",
       "startDate": "19140801",
       "endDate": "19181201",
       "squadId": -1,

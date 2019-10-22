@@ -14,7 +14,7 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.CampaignIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 public class ConfigManagerCampaignTest
 {
@@ -29,7 +29,7 @@ public class ConfigManagerCampaignTest
     public void testGlobalConfigurationInitialize() throws PWCGException 
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
         CampaignIOJson.writeJson(campaign);
         
         String campaignConfigDir = campaign.getCampaignPath() + "config\\";

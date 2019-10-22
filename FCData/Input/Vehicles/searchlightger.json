@@ -1,0 +1,17 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\searchlightger\\",
+  "vehicleType": "searchlightger",
+  "displayName": "search light",
+  "countries": [
+    "GERMANY",
+    "FRANCE",
+    "USA",
+	"BELGIUM",
+    "BRITAIN"
+  ],
+  "startDate": "19140801",
+  "endDate": "19181201",
+  "rarityWeight": 80,
+  "vehicleClass": "SearchLight"
+}

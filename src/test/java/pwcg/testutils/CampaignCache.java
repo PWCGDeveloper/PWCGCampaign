@@ -7,39 +7,30 @@ import pwcg.core.exception.PWCGException;
 
 public class CampaignCache
 {
-    private static ICampaignCache rofCampaignCache = new CampaignCacheRoF();
     private static ICampaignCache bosCampaignCache = new CampaignCacheBoS();
-    private static ICampaignCache fcCampaignCache = new CampaignCacheBoS();
+    private static ICampaignCache fcCampaignCache = new CampaignCacheFC();
     
-    public static Campaign makeCampaign(SquadrontTestProfile campaignProfile) throws PWCGException
+    public static Campaign makeCampaign(SquadronTestProfile campaignProfile) throws PWCGException
     {
-        if (PWCGContext.getProduct() == PWCGProduct.ROF)
-        {
-            return rofCampaignCache.makeCampaign(campaignProfile);
-        }
-        else if (PWCGContext.getProduct() == PWCGProduct.BOS)
-        {
-            return bosCampaignCache.makeCampaign(campaignProfile);
-        }
-        else
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
             return fcCampaignCache.makeCampaign(campaignProfile);
         }
+        else
+        {
+            return bosCampaignCache.makeCampaign(campaignProfile);
+        }
     }
     
-    public static Campaign makeCampaignForceCreation(SquadrontTestProfile campaignProfile) throws PWCGException
+    public static Campaign makeCampaignForceCreation(SquadronTestProfile campaignProfile) throws PWCGException
     {
-        if (PWCGContext.getProduct() == PWCGProduct.ROF)
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
-            return rofCampaignCache.makeCampaignForceCreation(campaignProfile);
-        }
-        else if (PWCGContext.getProduct() == PWCGProduct.BOS)
-        {
-            return bosCampaignCache.makeCampaignForceCreation(campaignProfile);
+            return fcCampaignCache.makeCampaignForceCreation(campaignProfile);
         }
         else
         {
-            return fcCampaignCache.makeCampaignForceCreation(campaignProfile);
+            return bosCampaignCache.makeCampaignForceCreation(campaignProfile);
         }
     }
 }

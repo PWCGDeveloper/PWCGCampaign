@@ -27,6 +27,7 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ClaimResolverTest
@@ -46,7 +47,7 @@ public class ClaimResolverTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
 
         verifiedVictories = new ConfirmedVictories();
         playerDeclarationSet = new PlayerDeclarations();
@@ -75,12 +76,12 @@ public class ClaimResolverTest
         {
             LogPlane victor = new LogPlane(10+1);
             victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-            victor.setSquadronId(501011);
+            victor.setSquadronId(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
             victor.intializePilot(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
             
             LogPlane victim = new LogPlane(100+i);
             victim.setPilotSerialNumber(SerialNumber.AI_STARTING_SERIAL_NUMBER);
-            victim.setSquadronId(102056);
+            victim.setSquadronId(302056);
             victim.intializePilot(SerialNumber.AI_STARTING_SERIAL_NUMBER);
 
             LogVictory missionResultVictory = new LogVictory(1000+i);
@@ -109,7 +110,7 @@ public class ClaimResolverTest
     @Test
     public void testClaimDenied() throws PWCGException
     {
-        Mockito.when(claimDenier.determineClaimDenied(Matchers.<Integer>any(), Matchers.<PlayerVictoryDeclaration>any())).thenReturn(new ClaimDeniedEvent(101103));
+        Mockito.when(claimDenier.determineClaimDenied(Matchers.<Integer>any(), Matchers.<PlayerVictoryDeclaration>any())).thenReturn(new ClaimDeniedEvent(SquadronTestProfile.ESC_103_PROFILE.getSquadronId()));
 
         IClaimResolver claimResolver = new ClaimResolverSinglePlayer(campaign, verifiedVictoryGenerator, claimDenier, playerDeclarations);
         ReconciledVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims();

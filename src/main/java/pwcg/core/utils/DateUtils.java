@@ -213,7 +213,7 @@ public class DateUtils
 
     public static Date getEndOfWar() throws PWCGException
     {
-        if (PWCGContext.getProduct() == PWCGProduct.ROF || PWCGContext.getProduct() == PWCGProduct.FC)
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
             return getDateNoCheck("11/11/1918");            
         }
@@ -225,7 +225,7 @@ public class DateUtils
 
     public static Date getBeginningOfWar() throws PWCGException
     {
-        if (PWCGContext.getProduct() == PWCGProduct.ROF || PWCGContext.getProduct() == PWCGProduct.FC)
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
             return getDateNoCheck("01/08/1914");            
         }
@@ -237,11 +237,7 @@ public class DateUtils
 
     public static Date getBeginningOfGame() throws PWCGException
     {
-        if (PWCGContext.getProduct() == PWCGProduct.ROF)
-        {
-            return getDateNoCheck("01/01/1916");            
-        }
-        else if (PWCGContext.getProduct() == PWCGProduct.FC)
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
             return getDateNoCheck("01/08/1917");            
         }

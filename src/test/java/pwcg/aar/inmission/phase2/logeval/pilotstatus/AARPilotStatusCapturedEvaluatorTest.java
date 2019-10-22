@@ -50,7 +50,7 @@ public class AARPilotStatusCapturedEvaluatorTest
         aarPilotStatusCapturedEvaluator.setBehindEnemyLines(behindEnemyLines);
         for(int i = 0; i < 100; ++i)
         {
-            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.FRANCE_MAP, new Coordinate(), Side.AXIS);
+            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.ARRAS_MAP, new Coordinate(), Side.AXIS);
             assert(captured == true);
         }
     }
@@ -79,7 +79,7 @@ public class AARPilotStatusCapturedEvaluatorTest
         boolean escapedAtLeastOnce = false;
         for(int i = 0; i < 100; ++i)
         {
-            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.FRANCE_MAP, new Coordinate(), Side.AXIS);
+            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.ARRAS_MAP, new Coordinate(), Side.AXIS);
             if (captured)
             {
                 wasCapturedAtLeastOnce = true;
@@ -115,7 +115,7 @@ public class AARPilotStatusCapturedEvaluatorTest
         aarPilotStatusCapturedEvaluator.setBehindEnemyLines(behindEnemyLines);
         for(int i = 0; i < 100; ++i)
         {
-            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.FRANCE_MAP, new Coordinate(), Side.AXIS);
+            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.ARRAS_MAP, new Coordinate(), Side.AXIS);
             assert(captured == false);
         }
     }
@@ -141,7 +141,7 @@ public class AARPilotStatusCapturedEvaluatorTest
         aarPilotStatusCapturedEvaluator.setBehindEnemyLines(behindEnemyLines);
         for(int i = 0; i < 100; ++i)
         {
-            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.FRANCE_MAP, null, Side.AXIS);
+            boolean captured = aarPilotStatusCapturedEvaluator.isCrewMemberCaptured(FrontMapIdentifier.ARRAS_MAP, null, Side.AXIS);
             assert(captured == false);
         }
     }

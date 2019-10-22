@@ -134,13 +134,13 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
         {
             if (arg.contains("integrated"))
             {
-                PWCGContext.setProduct(PWCGProduct.ROF);
+                PWCGContext.setProduct(PWCGProduct.FC);
                 PwcgGuiModSupport.setRunningIntegrated(true);
                 runningFromGuiMod = true;
             }
             else if (arg.contains("debrief"))
             {
-                PWCGContext.setProduct(PWCGProduct.ROF);
+                PWCGContext.setProduct(PWCGProduct.FC);
                 PwcgGuiModSupport.setRunningDebrief(true);
                 runningFromGuiMod = true;
             }
@@ -151,12 +151,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
         {
             if (args.length > 0)
             {
-                if (args[0].equals("RoF"))
-                {
-                    PWCGContext.setProduct(PWCGProduct.ROF);
-                    Logger.log(LogLevel.INFO, "Set product to RoF");
-                }
-                else if (args[0].equals("BoS"))
+                if (args[0].equals("BoS"))
                 {
                     PWCGContext.setProduct(PWCGProduct.BOS);
                     Logger.log(LogLevel.INFO, "Set product to BoS");

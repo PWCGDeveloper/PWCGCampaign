@@ -22,7 +22,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MissionFlightKeeperTest
@@ -190,7 +190,7 @@ public class MissionFlightKeeperTest
     @Test
     public void singlePlayerFighterTest() throws PWCGException
     {
-        Campaign coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.RAF_184_PROFILE);
+        Campaign coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         coopCampaign.setCampaignConfigManager(configManagerCampaign);
 
         Mockito.when(missionFlightBuilder.hasPlayerFlightWithFlightTypes(Matchers.anyListOf(FlightTypes.class))).thenReturn(true);
@@ -228,7 +228,7 @@ public class MissionFlightKeeperTest
     @Test
     public void singlePlayerBomberTest() throws PWCGException
     {
-        Campaign coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.RAF_184_PROFILE);
+        Campaign coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.RAF_184_PROFILE);
         coopCampaign.setCampaignConfigManager(configManagerCampaign);
 
         Mockito.when(missionFlightBuilder.hasPlayerFlightWithFlightTypes(Matchers.anyListOf(FlightTypes.class))).thenReturn(false);
@@ -266,7 +266,7 @@ public class MissionFlightKeeperTest
     @Test
     public void coopFighterTest() throws PWCGException
     {
-        Campaign coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE);
+        Campaign coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
         coopCampaign.setCampaignConfigManager(configManagerCampaign);
 
         Mockito.when(missionFlightBuilder.hasPlayerFlightWithFlightTypes(Matchers.anyListOf(FlightTypes.class))).thenReturn(true);
@@ -306,7 +306,7 @@ public class MissionFlightKeeperTest
     @Test
     public void coopBomberTest() throws PWCGException
     {
-        Campaign coopCampaign = CampaignCache.makeCampaign(SquadrontTestProfile.COOP_COMPETITIVE_PROFILE);
+        Campaign coopCampaign = CampaignCache.makeCampaign(SquadronTestProfile.COOP_COMPETITIVE_PROFILE);
         coopCampaign.setCampaignConfigManager(configManagerCampaign);
 
         Mockito.when(missionFlightBuilder.hasPlayerFlightWithFlightTypes(Matchers.anyListOf(FlightTypes.class))).thenReturn(false);

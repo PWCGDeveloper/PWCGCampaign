@@ -20,19 +20,21 @@ import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.product.fc.country.FCServiceManager;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ServiceTransferNeedTest
 {
     private Campaign campaign;
+    private static final int JASTA_16 = 401016;
     
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
+        PWCGContext.setProduct(PWCGProduct.FC);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
      }
 
     @Test
@@ -41,30 +43,30 @@ public class ServiceTransferNeedTest
         deactivateSquadronPersonnel();
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.PERSONNEL);
-        ServiceResupplyNeed serviceTransferNeed = new ServiceResupplyNeed(campaign, 50101, squadronNeedFactory);
+        ServiceResupplyNeed serviceTransferNeed = new ServiceResupplyNeed(campaign, FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE, squadronNeedFactory);
         serviceTransferNeed.determineResupplyNeed();
         
         assert (serviceTransferNeed.hasNeedySquadron() == true);
         
-        boolean jasta12Needs = false;
+        boolean jasta16Needs = false;
         while (serviceTransferNeed.hasNeedySquadron())
         {
             ISquadronNeed selectedSquadronNeed = serviceTransferNeed.chooseNeedySquadron();
-            if (selectedSquadronNeed.getSquadronId() == 501012)
+            if (selectedSquadronNeed.getSquadronId() == JASTA_16)
             {
-                jasta12Needs = true;
+                jasta16Needs = true;
                 break;
             }
         }
-        assert (jasta12Needs);
+        assert (jasta16Needs);
     }
     
 
     private void deactivateSquadronPersonnel() throws PWCGException
     {
-        SquadronMembers jasta12SquadronMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getSquadronPersonnel(501012).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
+        SquadronMembers jasta16SquadronMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getSquadronPersonnel(JASTA_16).getSquadronMembersWithAces().getSquadronMemberCollection(), campaign.getDate());
         int numInactivated = 0;
-        for (SquadronMember squadronMember : jasta12SquadronMembers.getSquadronMemberList())
+        for (SquadronMember squadronMember : jasta16SquadronMembers.getSquadronMemberList())
         {
             if (!squadronMember.isPlayer())
             {

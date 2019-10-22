@@ -6,8 +6,8 @@ import pwcg.aar.inmission.phase1.parse.event.rof.AType12;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.plane.Balloon;
-import pwcg.product.rof.country.RoFCountry;
 import pwcg.core.exception.PWCGException;
+import pwcg.product.fc.country.FCCountry;
 
 public class TestATypeFactory
 {
@@ -28,7 +28,7 @@ public class TestATypeFactory
     {
         ++id;
 
-        AType12 aType12 = new AType12("AType:12 ID:1488895 TYPE:albatrosd3 COUNTRY:101 NAME:Lt Pierre Trudeau PID:-1 POS(119648.406,152.195,44274.488)");
+        AType12 aType12 = new AType12("AType:12 ID:1488895 TYPE:albatrosd5 COUNTRY:101 NAME:Lt Pierre Trudeau PID:-1 POS(119648.406,152.195,44274.488)");
         aType12.setId(new Integer(id).toString());
         return aType12;
     }
@@ -62,11 +62,11 @@ public class TestATypeFactory
         
         if (countryCode == Country.FRANCE)
         {
-            country = new RoFCountry(Country.FRANCE);            
+            country = new FCCountry(Country.FRANCE);            
         }
         else
         {
-            country = new RoFCountry(Country.GERMANY);            
+            country = new FCCountry(Country.GERMANY);            
         }
         
         aType12.setCountry(country);

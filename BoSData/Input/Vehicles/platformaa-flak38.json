@@ -1,0 +1,13 @@
+{
+  "scriptDir": "trains\\",
+  "modelDir": "trains\\platformaa-flak38\\",
+  "vehicleType": "platformaa-flak38",
+  "displayName": "train car",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 20,
+  "vehicleClass": "TrainCarAAA"
+}

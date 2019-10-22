@@ -12,7 +12,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
-import pwcg.product.rof.country.RoFCountry;
+import pwcg.product.fc.country.FCCountry;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlayerClaimResolverFuzzyTest
@@ -20,7 +20,7 @@ public class PlayerClaimResolverFuzzyTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
     }
 
     @Test
@@ -28,12 +28,12 @@ public class PlayerClaimResolverFuzzyTest
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
-        victim.setCountry(new RoFCountry(Country.BRITAIN));
+        victim.setCountry(new FCCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
-        victor.setVehicleType("albatrosd3");
+        victor.setVehicleType("albatrosd5");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victor.setCountry(new RoFCountry(Country.GERMANY));
+        victor.setCountry(new FCCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -54,12 +54,12 @@ public class PlayerClaimResolverFuzzyTest
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
-        victim.setCountry(new RoFCountry(Country.BRITAIN));
+        victim.setCountry(new FCCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
-        victor.setVehicleType("albatrosd3");
+        victor.setVehicleType("albatrosd5");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victor.setCountry(new RoFCountry(Country.GERMANY));
+        victor.setCountry(new FCCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -79,12 +79,12 @@ public class PlayerClaimResolverFuzzyTest
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("notarealplane");
-        victim.setCountry(new RoFCountry(Country.BRITAIN));
+        victim.setCountry(new FCCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
-        victor.setVehicleType("albatrosd3");
+        victor.setVehicleType("albatrosd5");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victor.setCountry(new RoFCountry(Country.GERMANY));
+        victor.setCountry(new FCCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -104,12 +104,12 @@ public class PlayerClaimResolverFuzzyTest
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
-        victim.setCountry(new RoFCountry(Country.BRITAIN));
+        victim.setCountry(new FCCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
-        victor.setVehicleType("albatrosd3");
+        victor.setVehicleType("albatrosd5");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victor.setCountry(new RoFCountry(Country.GERMANY));
+        victor.setCountry(new FCCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -129,12 +129,12 @@ public class PlayerClaimResolverFuzzyTest
     {
         LogPlane victim = new LogPlane(1);
         victim.setVehicleType("se5a");
-        victim.setCountry(new RoFCountry(Country.BRITAIN));
+        victim.setCountry(new FCCountry(Country.BRITAIN));
 
         LogPlane victor = new LogPlane(2);
-        victor.setVehicleType("albatrosd3");
+        victor.setVehicleType("albatrosd5");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victor.setCountry(new RoFCountry(Country.GERMANY));
+        victor.setCountry(new FCCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);
@@ -155,13 +155,13 @@ public class PlayerClaimResolverFuzzyTest
     public void testNoFriendlyVictories () throws PWCGException
     {   
         LogPlane victim = new LogPlane(1);
-        victim.setVehicleType("albatrosd3");
-        victim.setCountry(new RoFCountry(Country.GERMANY));
+        victim.setVehicleType("albatrosd5");
+        victim.setCountry(new FCCountry(Country.GERMANY));
 
         LogPlane victor = new LogPlane(2);
-        victor.setVehicleType("albatrosd3");
+        victor.setVehicleType("albatrosd5");
         victor.setPilotSerialNumber(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);
-        victor.setCountry(new RoFCountry(Country.GERMANY));
+        victor.setCountry(new FCCountry(Country.GERMANY));
 
         LogVictory resultVictory = new LogVictory(10);
         resultVictory.setVictim(victim);

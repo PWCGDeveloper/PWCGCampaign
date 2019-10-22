@@ -1,0 +1,16 @@
+{
+  "scriptDir": "ships\\",
+  "modelDir": "ships\\rivergunshipa\\",
+  "vehicleType": "rivergunshipa",
+  "displayName": "river boat",
+  "countries": [
+    "GERMANY",
+    "RUSSIA",
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 10,
+  "vehicleClass": "Drifter"
+}

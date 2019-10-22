@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.product.rof.ground.vehicle.Artillery;
 import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
@@ -17,6 +16,7 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
+import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuSubtitle;
@@ -24,7 +24,7 @@ import pwcg.mission.mcu.McuTimer;
 
 public class ArtillerySpotArtilleryGroup extends GroundUnit
 {	
-	protected ArrayList<Artillery> arty = new ArrayList<Artillery>();
+	protected ArrayList<IVehicle> arty = new ArrayList<IVehicle>();
 
 	protected McuTimer activateTimer = new McuTimer();
 	protected McuActivate activate = new McuActivate();
@@ -66,15 +66,13 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
 
     protected void createArtillery() throws PWCGException 
     {
-        Artillery gunType = new Artillery();
-        gunType.makeRandomVehicleFromSet(pwcgGroundUnitInformation.getCountry());
-
+        IVehicle gunType = pwcg.mission.ground.vehicle.VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.ArtilleryHowitzer);
         int numArtillery = calcNumUnits();
                 
         for (int i = 0; i < numArtillery; ++i)
         {
-            Artillery gun = gunType.copy();
-            gun.getEntity().setEnabled(1);
+            IVehicle gun = gunType.clone();
+            gunType.getEntity().setEnabled(1);
 
             Coordinate position = getRandomPosition();
             gun.setPosition(position);
@@ -173,7 +171,7 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
 	    pwcgGroundUnitInformation.getMissionBeginUnit().linkToMissionBegin(activateTimer.getIndex());
 		activateTimer.setTarget(activate.getIndex());
 		
-		for (Artillery gun : arty)
+		for (IVehicle gun : arty)
 		{
 			activate.setObject(gun.getEntity().getIndex());
 			deactivate.setObject(gun.getEntity().getIndex());
@@ -195,7 +193,7 @@ public class ArtillerySpotArtilleryGroup extends GroundUnit
     		deactivateTimer.write(writer);
     		deactivate.write(writer);
     		
-    		for (Artillery gun: arty)
+    		for (IVehicle gun: arty)
     		{
     			gun.write(writer);
     		}

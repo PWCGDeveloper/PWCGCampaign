@@ -62,7 +62,6 @@ public class SquadronAirfieldAssignmentTest
         validMoveDates.add("19441229");
         validMoveDates.add("19450207");
         validMoveDates.add("19450310");
-        validMoveDates.add("19450325");
         validMoveDates.add("19450404");
     }
     
@@ -111,10 +110,18 @@ public class SquadronAirfieldAssignmentTest
         boolean success = true;
         try 
         {
+            boolean firstDate = true;
             for (Date airfieldDate : airfields.keySet())
             {
-                String airfieldDateString = DateUtils.getDateStringYYYYMMDD(airfieldDate);
-                validateBoSSquadAirfieldDate(squadron, airfieldDateString);
+                if (!firstDate)
+                {
+                    String airfieldDateString = DateUtils.getDateStringYYYYMMDD(airfieldDate);  
+                    validateBoSSquadAirfieldDate(squadron, airfieldDateString);
+                }
+                else
+                {
+                    firstDate = false;
+                }
             }
         }
         catch (PWCGException e)
@@ -142,48 +149,56 @@ public class SquadronAirfieldAssignmentTest
     
     private boolean verifyCompleteBoSAirfieldMoveDatesForSquadron(Squadron squadron) throws PWCGException
     {
-        Map <Date, String> airfields = squadron.getAirfields();
         boolean success = true;
-        try 
+        List<String> airfieldDatesForSquadron = new ArrayList<>();
+        for (Date airfieldDate : squadron.getAirfields().keySet())
         {
-            List<Date> airfieldDatesObjectsForSquadron = new ArrayList<>(airfields.keySet());
-            List<String> airfieldDatesForSquadron = new ArrayList<>();
-            for (Date airfieldDate : airfieldDatesObjectsForSquadron)
+            airfieldDatesForSquadron.add(DateUtils.getDateStringYYYYMMDD(airfieldDate));
+        }
+        
+        List<String> frontDatesForSquadron = getDatesFromFirstAppearance(airfieldDatesForSquadron.get(0));
+        for (int i = 0; i < airfieldDatesForSquadron.size(); ++i)
+        {
+            try
             {
-                airfieldDatesForSquadron.add(DateUtils.getDateStringYYYYMMDD(airfieldDate));
-            }
-            
-            int firstTransitionDatePosition = findFirstTransitionDatePosition(airfieldDatesForSquadron.get(0));
-            int easternFrontTransitionDates = validMoveDates.size() - 1;
-            int westernFrontTransitionDates = validMoveDates.size();
-            
-            if ((airfieldDatesForSquadron.size() != (easternFrontTransitionDates - firstTransitionDatePosition)) && 
-                (airfieldDatesForSquadron.size() != (westernFrontTransitionDates - firstTransitionDatePosition)))
-            {
-                String errorMsg = "incomplete airfield move date for squadron " + squadron.getSquadronId(); 
-                System.out.println(errorMsg);
-                success = false;
-            }
-            
-            for (int i = 0; i < airfieldDatesForSquadron.size(); ++i)
-            {
-                String airfieldDate = airfieldDatesForSquadron.get(i);
-                String moveDate = validMoveDates.get(firstTransitionDatePosition + i);
-                if (!airfieldDate.equals(moveDate))
+                String forSquadron = airfieldDatesForSquadron.get(i);
+                String frontMoveDateString = frontDatesForSquadron.get(i);
+                
                 {
-                    String errorMsg = "unmatched airfield move date " + airfieldDate + " for squadron " + squadron.getSquadronId(); 
-                    System.out.println(errorMsg);
-                    success = false;
+                    if (!(frontMoveDateString.equals(forSquadron)))
+                    {
+                        String errorMsg = "unmatched airfield move date " + forSquadron + " for squadron " + squadron.getSquadronId(); 
+                        System.out.println(errorMsg);
+                        success = false;
+                    }
                 }
             }
-        }
-        catch (PWCGException e)
-        {
-            System.out.println(e.getMessage());
-            success = false;
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+                success = false;
+            }
         }
         
         return success;
+    }
+
+    private List<String> getDatesFromFirstAppearance(String startDate)
+    {
+        List<String>datesFromFirstAppearance = new ArrayList<>();
+        boolean startDateFound = false;
+        for (String frontDate : validMoveDates)
+        {
+            if (frontDate.equals(startDate))
+            {
+                startDateFound = true;
+            }
+            if (startDateFound)
+            {
+                datesFromFirstAppearance.add(frontDate);
+            }
+        }
+        return datesFromFirstAppearance;
     }
 
     private int findFirstTransitionDatePosition(String date) throws PWCGException

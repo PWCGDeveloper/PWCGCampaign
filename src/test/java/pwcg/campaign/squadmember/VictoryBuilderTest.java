@@ -153,7 +153,7 @@ public class VictoryBuilderTest
 
         LogGroundUnit logVictim = new LogGroundUnit(1000);
         logVictim.setName(victim.getNameAndRank());
-        logVictim.setVehicleType("Truck");
+        logVictim.setVehicleType("gaz-aa");
 
         LogVictory logVictory = new LogVictory(10);
         logVictory.setLocation(new Coordinate (100000, 0, 100000));
@@ -164,12 +164,12 @@ public class VictoryBuilderTest
         Victory victory = victoryBuilder.buildVictory(DateUtils.getDateYYYYMMDD("19421103"), logVictory);
         
         assert (victory.getVictor().getPilotName().equals(victor.getNameAndRank()));
-        assert (victory.getVictim().getType().equals("Truck"));
+        assert (victory.getVictim().getType().equals("gaz-aa"));
         
         VictoryDescription victoryDescription = new VictoryDescription(campaign, victory);
         String victoryDescriptionText = victoryDescription.createVictoryDescription();
         
-        String verificationSegment=  "A Truck was destroyed by Ofw Hans Schmidt of I./JG52";
+        String verificationSegment=  "A truck was destroyed by Ofw Hans Schmidt of I./JG52";
 
         assert(victoryDescriptionText.contains(verificationSegment));
     }

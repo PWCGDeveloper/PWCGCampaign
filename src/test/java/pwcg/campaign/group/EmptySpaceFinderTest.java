@@ -7,8 +7,8 @@ import org.junit.Test;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.group.airfield.hotspot.HotSpot;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.group.airfield.HotSpot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 

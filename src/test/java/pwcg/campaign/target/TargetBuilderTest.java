@@ -60,7 +60,7 @@ public class TargetBuilderTest
         Mockito.when(targetDefinition.getTargetOrientation()).thenReturn(new Orientation(90));
         Mockito.when(enemyCountry.getSide()).thenReturn(Side.ALLIED);
         Mockito.when(enemyCountry.getSideNoNeutral()).thenReturn(Side.AXIS);
-        Mockito.when(enemyCountry.getCountry()).thenReturn(Country.FRANCE);
+        Mockito.when(enemyCountry.getCountry()).thenReturn(Country.RUSSIA);
         Mockito.when(friendlyCountry.getSide()).thenReturn(Side.AXIS);
         Mockito.when(friendlyCountry.getSideNoNeutral()).thenReturn(Side.AXIS);
         Mockito.when(friendlyCountry.getCountry()).thenReturn(Country.GERMANY);

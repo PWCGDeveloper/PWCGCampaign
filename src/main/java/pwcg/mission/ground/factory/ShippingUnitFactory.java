@@ -11,7 +11,7 @@ import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.unittypes.transport.ShipConvoyUnit;
-import pwcg.mission.ground.unittypes.transport.ShipConvoyUnit.ShipConvoyTypes;
+import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.Coalition;
 
 public class ShippingUnitFactory
@@ -27,13 +27,13 @@ public class ShippingUnitFactory
 
     public ShipConvoyUnit createShippingUnit () throws PWCGException 
     {
-        ShipConvoyTypes shipType = chooseShipType();
+        VehicleClass shipType = chooseShipType();
         ShipConvoyUnit shipConvoyUnit = generateConvoy(shipType);
         return shipConvoyUnit;
     }
 
 
-    public ShipConvoyUnit generateConvoy(ShipConvoyTypes shipType) throws PWCGException 
+    public ShipConvoyUnit generateConvoy(VehicleClass shipType) throws PWCGException 
     {
         MissionBeginUnitCheckZone missionBeginUnitShips = createMissionBegin();        
         GroundUnitInformation groundUnitInformation = createGroundUnitInformationForUnit(missionBeginUnitShips);
@@ -61,62 +61,38 @@ public class ShippingUnitFactory
         return groundUnitInformation;
     }
 
-    private ShipConvoyTypes chooseShipType()
+    private VehicleClass chooseShipType()
     {
         int shipTypeRoll = RandomNumberGenerator.getRandom(100);
-        ShipConvoyTypes shipType = ShipConvoyTypes.MERCHANT;
+        VehicleClass shipType = VehicleClass.ShipCargo;
         if (targetDefinition.getTargetCountry().getSide() == Side.AXIS)
         {
-            if (targetDefinition.getTargetCountry().getSide() == Side.AXIS)
+            if (shipTypeRoll < 20)
             {
-                if (shipTypeRoll < 20)
-                {
-                    shipType = ShipConvoyTypes.SUBMARINE;
-                }
-                else if (shipTypeRoll < 85)
-                {
-                    shipType = ShipConvoyTypes.MERCHANT;
-                }
-                else
-                {
-                    shipType = ShipConvoyTypes.WARSHIP;
-                }
+                shipType = VehicleClass.Submarine;
+            }
+            else if (shipTypeRoll < 85)
+            {
+                shipType = VehicleClass.ShipCargo;
             }
             else
             {
-                if (shipTypeRoll < 70)
-                {
-                    shipType = ShipConvoyTypes.SUBMARINE;
-                }
-                else
-                {
-                    shipType = ShipConvoyTypes.WARSHIP;
-                }
+                shipType = VehicleClass.ShipWarship;
             }
         }
         else
         {
-            if (targetDefinition.getTargetCountry().getSide() == Side.ALLIED)
+            if (shipTypeRoll < 10)
             {
-                if (shipTypeRoll < 75)
-                {
-                    shipType = ShipConvoyTypes.MERCHANT;
-                }
-                else
-                {
-                    shipType = ShipConvoyTypes.WARSHIP;
-                }
+                shipType = VehicleClass.Submarine;
+            }
+            else if (shipTypeRoll < 70)
+            {
+                shipType = VehicleClass.ShipCargo;
             }
             else
             {
-                if (shipTypeRoll < 20)
-                {
-                    shipType = ShipConvoyTypes.MERCHANT;
-                }
-                else
-                {
-                    shipType = ShipConvoyTypes.WARSHIP;
-                }
+                shipType = VehicleClass.ShipWarship;
             }
         }
         return shipType;

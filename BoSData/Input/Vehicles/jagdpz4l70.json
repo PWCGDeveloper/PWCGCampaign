@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\jagdpz4l70\\",
+  "vehicleType": "jagdpz4l70",
+  "displayName": "Jpz IV",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19430601",
+  "endDate": "19460724",
+  "rarityWeight": 10,
+  "vehicleClass": "Tank"
+}

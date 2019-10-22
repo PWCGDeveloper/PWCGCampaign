@@ -10,19 +10,13 @@ import pwcg.mission.flight.factory.FCFlightTypeCoopFactory;
 import pwcg.mission.flight.factory.FCFlightTypeFactory;
 import pwcg.mission.flight.factory.FCFlightTypeSpecialFactory;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
-import pwcg.mission.flight.factory.RoFFlightTypeFactory;
-import pwcg.mission.flight.factory.RoFFlightTypeSpecialFactory;
 
 public class PWCGFlightFactoryFactory
 {
     
     public static IFlightTypeFactory createFlightFactory(Campaign campaign)
     {
-        if (PWCGContext.getProduct() == PWCGProduct.ROF)
-        {
-            return new RoFFlightTypeFactory(campaign);
-        }
-        else if (PWCGContext.getProduct() == PWCGProduct.FC)
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
             if (campaign.isCoop())
             {
@@ -48,11 +42,7 @@ public class PWCGFlightFactoryFactory
 
     public static IFlightTypeFactory createSpecialFlightFactory(Campaign campaign)
     {
-        if (PWCGContext.getProduct() == PWCGProduct.ROF)
-        {
-            return new RoFFlightTypeSpecialFactory(campaign);
-        }
-        else if (PWCGContext.getProduct() == PWCGProduct.FC)
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
         {
             return new FCFlightTypeSpecialFactory(campaign);
         }

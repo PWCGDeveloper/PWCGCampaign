@@ -16,15 +16,15 @@ import pwcg.core.utils.MathUtils;
 public class BehindEnemyLinesTest
 {
 	private BehindEnemyLines behindEnemyLines;
-	private Coordinate referenceCoordinateOnAlliedLines =  new Coordinate(276155.0, 0.0,68288.0);
-	private FrontMapIdentifier mapId = FrontMapIdentifier.FRANCE_MAP;
+	private Coordinate referenceCoordinateOnAlliedLines =  new Coordinate(128000.0, 0.0,80933.0);
+	private FrontMapIdentifier mapId = FrontMapIdentifier.ARRAS_MAP;
 	
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         PWCGContext.getInstance().changeContext(mapId);
-    	behindEnemyLines = new BehindEnemyLines(DateUtils.getDateYYYYMMDD("19170101"));
+    	behindEnemyLines = new BehindEnemyLines(DateUtils.getDateYYYYMMDD("19170801"));
     }
 
     @Test
@@ -48,8 +48,8 @@ public class BehindEnemyLinesTest
     @Test
     public void testNearGroup () throws PWCGException
     {            	
-        Coordinate spotNearGroup =  new Coordinate(165000.0, 0.0, 57000.0);
-    	boolean isBehindLines = behindEnemyLines.isBehindEnemyLinesForCapture(mapId, spotNearGroup, Side.ALLIED);
+        Coordinate spotNearGroup =  new Coordinate(96000.0, 0.0, 75000.0);
+    	boolean isBehindLines = behindEnemyLines.isBehindEnemyLinesForCapture(mapId, spotNearGroup, Side.AXIS);
     	assert (isBehindLines == false);
     	assert (behindEnemyLines.getReasonCode().equals("Friendly Group"));
     }
@@ -57,7 +57,7 @@ public class BehindEnemyLinesTest
     @Test
     public void testNearAirfield () throws PWCGException
     {            	
-        Coordinate spotNearAirfield =  new Coordinate(105000.0, 0.0, 160000.0);
+        Coordinate spotNearAirfield =  new Coordinate(86790.0, 0.0, 85526.0);
     	boolean isBehindLines = behindEnemyLines.isBehindEnemyLinesForCapture(mapId, spotNearAirfield, Side.ALLIED);
     	assert (isBehindLines == false);
     	assert (behindEnemyLines.getReasonCode().equals("Friendly Airfield"));

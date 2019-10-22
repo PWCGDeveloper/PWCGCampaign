@@ -6,7 +6,7 @@ import pwcg.campaign.api.IRankHelper;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.product.rof.country.RoFServiceManager;
+import pwcg.product.fc.country.FCServiceManager;
 
 public class GermanMedalManager extends FCMedalManager 
 {
@@ -79,7 +79,7 @@ public class GermanMedalManager extends FCMedalManager
 
 	public Medal getWoundedAward(SquadronMember pilot, ArmedService service) 
 	{
-		if (service.getServiceId() == RoFServiceManager.DEUTSCHE_LUFTSTREITKRAFTE)
+		if (service.getServiceId() == FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE)
 		{
 		    if (!hasMedal(pilot, medals.get(WOUND_BADGE_BLACK)))
 		    {
@@ -89,18 +89,6 @@ public class GermanMedalManager extends FCMedalManager
 		    {
                 return medals.get(WOUND_BADGE_SILVER);
 		    }
-		}
-		
-		if (service.getServiceId() == RoFServiceManager.MARINE_FLIEGER_CORP)
-		{
-            if (!hasMedal(pilot, medals.get(NAVAL_WOUND_BADGE_BLACK)))
-            {
-                return medals.get(NAVAL_WOUND_BADGE_BLACK);
-            }
-            else if (!hasMedal(pilot, medals.get(NAVAL_WOUND_BADGE_SILVER)))
-            {
-                return medals.get(NAVAL_WOUND_BADGE_SILVER);
-            }
 		}
 		
 		return null;

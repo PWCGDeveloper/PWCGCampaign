@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\m1gun\\",
+  "vehicleType": "m1gun",
+  "displayName": "howitzer",
+  "countries": [
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 80,
+  "vehicleClass": "ArtilleryHowitzer"
+}

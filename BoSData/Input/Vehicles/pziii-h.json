@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\pziii-h\\",
+  "vehicleType": "pziii-h",
+  "displayName": "PzKw Mk III",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19390901",
+  "endDate": "19430301",
+  "rarityWeight": 40,
+  "vehicleClass": "Tank"
+}

@@ -1,0 +1,17 @@
+{
+  "scriptDir": "ships\\",
+  "modelDir": "ships\\rivershipgeorgia\\",
+  "vehicleType": "rivershipgeorgiaaaa",
+  "displayName": "river boat",
+  "countries": [
+    "GERMANY",
+    "FRANCE",
+    "USA",
+	"BELGIUM",
+    "BRITAIN"
+  ],
+  "startDate": "19140801",
+  "endDate": "19181201",
+  "rarityWeight": 10,
+  "vehicleClass": "DrifterAAA"
+}

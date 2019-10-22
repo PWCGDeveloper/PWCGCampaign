@@ -1,0 +1,16 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\ndb\\",
+  "vehicleType": "ndb",
+  "displayName": "radio beacon",
+  "countries": [
+    "GERMANY",
+    "RUSSIA",
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 80,
+  "vehicleClass": "RadioBeacon"
+}

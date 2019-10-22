@@ -23,8 +23,9 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
+import pwcg.product.fc.country.FCServiceManager;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TransferHandlerTest
@@ -36,9 +37,9 @@ public class TransferHandlerTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.JASTA_11_PROFILE);
-        Mockito.when(armedService.getServiceId()).thenReturn(50101);
+        PWCGContext.setProduct(PWCGProduct.FC);
+        campaign = CampaignCache.makeCampaignForceCreation(SquadronTestProfile.JASTA_11_PROFILE);
+        Mockito.when(armedService.getServiceId()).thenReturn(FCServiceManager.DEUTSCHE_LUFTSTREITKRAFTE);
      }
 
     @Test
@@ -94,7 +95,7 @@ public class TransferHandlerTest
         for (SquadronMember squadronMember : allActiveCampaignMembers.getSquadronMemberList())
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());
-            if (!squadronMember.isPlayer() && squadron.getSquadronId() == squadronMember.getSquadronId())
+            if (!squadronMember.isPlayer() && squadron.getSquadronId() == SquadronTestProfile.JASTA_11_PROFILE.getSquadronId())
             {
                 Date inactiveDate = DateUtils.removeTimeDays(campaign.getDate(), 10);
                 squadronMember.setPilotActiveStatus(SquadronMemberStatus.STATUS_KIA, inactiveDate, null);

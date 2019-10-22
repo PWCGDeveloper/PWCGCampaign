@@ -23,19 +23,12 @@ public abstract class PWCGMap
     
     public enum FrontMapIdentifier
     {
-        FRANCE_MAP,
-        CHANNEL_MAP,
-        GALICIA_MAP,
         MOSCOW_MAP,
         STALINGRAD_MAP,
         KUBAN_MAP,
         BODENPLATTE_MAP,
         ARRAS_MAP
     }
-
-    public static final String FRANCE_MAP_NAME = "France";
-    public static final String CHANNEL_MAP_NAME = "Channel";
-    public static final String GALICIA_MAP_NAME = "Galicia";
 
     public static final String MOSCOW_MAP_NAME = "Moscow";
     public static final String STALINGRAD_MAP_NAME = "Stalingrad";
@@ -98,10 +91,6 @@ public abstract class PWCGMap
     public static FrontMapIdentifier getFrontMapIdentifierForName(String name)
     {
         Map<String, FrontMapIdentifier> frontNameIdentifierMap = new HashMap<String, FrontMapIdentifier>();
-        
-        frontNameIdentifierMap.put(FRANCE_MAP_NAME, FrontMapIdentifier.FRANCE_MAP);            
-        frontNameIdentifierMap.put(CHANNEL_MAP_NAME, FrontMapIdentifier.CHANNEL_MAP);
-        frontNameIdentifierMap.put(GALICIA_MAP_NAME, FrontMapIdentifier.GALICIA_MAP);   
         
         frontNameIdentifierMap.put(MOSCOW_MAP_NAME, FrontMapIdentifier.MOSCOW_MAP);            
         frontNameIdentifierMap.put(STALINGRAD_MAP_NAME, FrontMapIdentifier.STALINGRAD_MAP);

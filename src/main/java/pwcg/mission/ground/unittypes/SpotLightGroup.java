@@ -5,15 +5,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.factory.VehicleFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.ground.vehicle.IVehicleFactory;
+import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.ground.vehicle.VehicleFactory;
 import pwcg.mission.mcu.McuSpawn;
 
 public class SpotLightGroup extends GroundUnitSpawning
@@ -53,9 +53,7 @@ public class SpotLightGroup extends GroundUnitSpawning
 
     public void createUnits() throws PWCGException  
     {
-        IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-
-        spawningVehicle = vehicleFactory.createSpotLight(pwcgGroundUnitInformation.getCountry());
+        spawningVehicle = VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.SearchLight);
         spawningVehicle.setOrientation(new Orientation());
         spawningVehicle.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
         spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());

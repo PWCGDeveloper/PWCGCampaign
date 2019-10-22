@@ -1,0 +1,17 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\ba10m\\",
+  "vehicleType": "ba10m",
+  "displayName": "Armored car",
+  "countries": [
+    "BRITAIN",
+    "FRANCE",
+	"USA",
+	"BELGIUM",
+	"GERMANY"
+  ],
+  "startDate": "19140801",
+  "endDate": "19181201",
+  "rarityWeight": 10,
+  "vehicleClass": "Tank"
+}

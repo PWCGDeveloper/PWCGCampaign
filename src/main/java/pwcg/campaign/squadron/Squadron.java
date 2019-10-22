@@ -70,7 +70,8 @@ public class Squadron
 	
 	public static boolean isPlayerSquadron (Campaign campaign, int squadronId)
 	{
-        if (campaign.getPersonnelManager().getSquadronPersonnel(squadronId).isPlayerSquadron())
+	    SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
+        if (squadronPersonnel != null && squadronPersonnel.isPlayerSquadron())
         {
             return true;
         }

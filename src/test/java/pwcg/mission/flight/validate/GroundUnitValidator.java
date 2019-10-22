@@ -9,8 +9,7 @@ import pwcg.mission.flight.balloondefense.BalloonDefenseGroup;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.GroundUnitSpawning;
 import pwcg.mission.ground.unittypes.artillery.GroundAAABattery;
-import pwcg.mission.ground.unittypes.infantry.GroundPillBoxFlareUnit;
-import pwcg.mission.ground.unittypes.infantry.GroundPillBoxUnit;
+import pwcg.mission.ground.unittypes.infantry.GroundMachineGunFlareUnit;
 import pwcg.mission.ground.unittypes.infantry.GroundTroopConcentration;
 import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 
@@ -51,14 +50,9 @@ public class GroundUnitValidator
                 BalloonDefenseGroup target = (BalloonDefenseGroup)linkedUnit;
                 assert(target.getBalloon() != null);
             }
-            else if (linkedUnit instanceof GroundPillBoxUnit)
+            else if (linkedUnit instanceof GroundMachineGunFlareUnit)
             {
-                GroundPillBoxUnit target = (GroundPillBoxUnit)linkedUnit;
-                assert(target.getSpawners().size() == 1);
-            }
-            else if (linkedUnit instanceof GroundPillBoxFlareUnit)
-            {
-                GroundPillBoxFlareUnit target = (GroundPillBoxFlareUnit)linkedUnit;
+                GroundMachineGunFlareUnit target = (GroundMachineGunFlareUnit)linkedUnit;
                 assert(target.getSpawners().size() == 1);
             }
             else if (linkedUnit instanceof GroundAAABattery)
@@ -93,16 +87,6 @@ public class GroundUnitValidator
             {
                 BalloonDefenseGroup target = (BalloonDefenseGroup)linkedUnit;
                 assert(target.getBalloon() != null);
-            }
-            else if (linkedUnit instanceof GroundPillBoxUnit)
-            {
-                GroundPillBoxUnit target = (GroundPillBoxUnit)linkedUnit;
-                assert(target.getSpawners().size() == 1);
-            }
-            else if (linkedUnit instanceof GroundPillBoxUnit)
-            {
-                GroundPillBoxUnit target = (GroundPillBoxUnit)linkedUnit;
-                assert(target.getSpawners().size() == 1);
             }
             else if (linkedUnit instanceof GroundTroopConcentration)
             {

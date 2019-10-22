@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\flak36\\",
+  "vehicleType": "flak36",
+  "displayName": "anti aircraft gun",
+  "countries": [
+	"GERMANY"
+  ],
+  "startDate": "19140801",
+  "endDate": "19181201",
+  "rarityWeight": 80,
+  "vehicleClass": "AAAArtillery"
+}

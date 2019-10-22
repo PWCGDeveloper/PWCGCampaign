@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\m2mg\\",
+  "vehicleType": "m2mg",
+  "displayName": "machine gun",
+  "countries": [
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 80,
+  "vehicleClass": "MachineGun"
+}

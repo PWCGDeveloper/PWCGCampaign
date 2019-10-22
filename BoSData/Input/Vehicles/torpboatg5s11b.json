@@ -1,0 +1,15 @@
+{
+  "scriptDir": "ships\\",
+  "modelDir": "ships\\torpboatg5s11b\\",
+  "vehicleType": "torpboatg5s11b",
+  "displayName": "torpedo boat",
+  "countries": [
+    "RUSSIA",
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 80,
+  "vehicleClass": "ShipWarship"
+}

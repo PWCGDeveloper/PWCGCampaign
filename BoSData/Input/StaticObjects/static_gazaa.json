@@ -1,0 +1,15 @@
+{
+  "scriptDir": "Blocks\\",
+  "modelDir": "blocks\\",
+  "vehicleType": "static_gazaa",
+  "displayName": "truck",
+  "countries": [
+    "RUSSIA",
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 30,
+  "vehicleClass": "StaticAirfield"
+}

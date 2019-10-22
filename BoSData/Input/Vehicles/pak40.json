@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\pak40\\",
+  "vehicleType": "pak40",
+  "displayName": "anti tank gun",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19420601",
+  "endDate": "19460724",
+  "rarityWeight": 10,
+  "vehicleClass": "ArtilleryAntiTank"
+}

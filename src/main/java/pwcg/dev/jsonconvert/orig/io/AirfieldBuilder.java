@@ -9,7 +9,10 @@ import java.util.TreeMap;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.Block;
-import pwcg.campaign.io.json.BoSAirfieldDescriptorIOJson;
+import pwcg.campaign.group.airfield.AirfieldDescriptor;
+import pwcg.campaign.group.airfield.AirfieldDescriptorSet;
+import pwcg.campaign.group.airfield.Runway;
+import pwcg.campaign.io.json.AirfieldDescriptorIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Orientation;
@@ -18,9 +21,6 @@ import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.Parsers;
 import pwcg.mission.flight.plane.PlaneMCU;
-import pwcg.product.bos.airfield.AirfieldDescriptor;
-import pwcg.product.bos.airfield.AirfieldDescriptorSet;
-import pwcg.product.bos.airfield.Runway;
 
 public class AirfieldBuilder 
 {    
@@ -236,6 +236,6 @@ public class AirfieldBuilder
         airfieldDescriptorSet = new AirfieldDescriptorSet();
         airfieldDescriptorSet.setLocationSetName("Airfields");
         airfieldDescriptorSet.setLocations(locations);
-        BoSAirfieldDescriptorIOJson.writeJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "AirfieldLocations.json", airfieldDescriptorSet);
+        AirfieldDescriptorIOJson.writeJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "AirfieldLocations.json", airfieldDescriptorSet);
     }
 }

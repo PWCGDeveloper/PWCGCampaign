@@ -1,0 +1,16 @@
+{
+  "scriptDir": "ships\\",
+  "modelDir": "ships\\largecargoshiptype1\\",
+  "vehicleType": "largecargoshiptype1",
+  "displayName": "cargo ship",
+  "countries": [
+    "GERMANY",
+    "RUSSIA",
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 80,
+  "vehicleClass": "ShipCargo"
+}

@@ -1,0 +1,16 @@
+{
+  "scriptDir": "trains\\",
+  "modelDir": "trains\\traincars\\",
+  "vehicleType": "platformemptynb",
+  "displayName": "train car",
+  "countries": [
+    "GERMANY",
+    "RUSSIA",
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 20,
+  "vehicleClass": "TrainCar"
+}

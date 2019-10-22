@@ -6,7 +6,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.group.airfield.AirfieldHotSpotCollection;
+import pwcg.campaign.group.airfield.hotspot.AirfieldHotSpotCollection;
 import pwcg.core.exception.PWCGException;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -15,7 +15,7 @@ public class AirfieldHotSpotsIOJsonTest
     @Test
     public void readJsonTest() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         AirfieldHotSpotCollection airfieldHotSpotCollection = AirfieldHotSpotsIOJson.readJson();
         assert (airfieldHotSpotCollection.getAirfieldHotSpots().size() > 0);
     }

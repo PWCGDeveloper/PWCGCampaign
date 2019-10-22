@@ -1,0 +1,17 @@
+{
+  "scriptDir": "ships\\",
+  "modelDir": "ships\\destroyertype7\\",
+  "vehicleType": "destroyertype7",
+  "displayName": "destroyer",
+  "countries": [
+    "GERMANY",
+    "FRANCE",
+    "USA",
+	"BELGIUM",
+    "BRITAIN"
+  ],
+  "startDate": "19140801",
+  "endDate": "19181201",
+  "rarityWeight": 20,
+  "vehicleClass": "ShipWarship"
+}

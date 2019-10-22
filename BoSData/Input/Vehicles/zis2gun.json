@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\zis2gun\\",
+  "vehicleType": "zis2gun",
+  "displayName": "anti tank gun",
+  "countries": [
+    "RUSSIA"
+  ],
+  "startDate": "19420601",
+  "endDate": "19460724",
+  "rarityWeight": 40,
+  "vehicleClass": "ArtilleryAntiTank"
+}

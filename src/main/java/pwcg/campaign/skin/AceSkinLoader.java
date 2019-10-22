@@ -39,7 +39,7 @@ public class AceSkinLoader
             }
             else
             {
-                Logger.log(LogLevel.ERROR, "Invalid plane for HistoricalAce skin <" + ace.getSerialNumber() + "><"  + aceSkin.getSkinName() + ">" );
+                //Logger.log(LogLevel.ERROR, "Invalid plane for HistoricalAce skin <" + ace.getSerialNumber() + "><"  + aceSkin.getSkinName() + ">" );
             }
         }
     }

@@ -22,17 +22,10 @@ import pwcg.core.utils.DateUtils;
 @RunWith(MockitoJUnitRunner.class)
 public class SquadronMoveHandlerTest
 {
-    @Mock
-    private Campaign campaign;
-    
-    @Mock
-    Squadron squad;
-    
-    @Mock
-    IAirfield currentAirfield;
-    
-    @Mock
-    IAirfield newAirfield;
+    @Mock private Campaign campaign;
+    @Mock Squadron squad;
+    @Mock IAirfield currentAirfield;
+    @Mock IAirfield newAirfield;
 
     private Date campaignDate;
     private Date newDate;
@@ -40,11 +33,11 @@ public class SquadronMoveHandlerTest
     @Before
     public void setupForTestEnvironment() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        PWCGContext.getInstance().changeContext(FrontMapIdentifier.FRANCE_MAP);
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
                 
-        campaignDate = DateUtils.getDateYYYYMMDD("19170420");
-        newDate = DateUtils.getDateYYYYMMDD("19170430");
+        campaignDate = DateUtils.getDateYYYYMMDD("19411120");
+        newDate = DateUtils.getDateYYYYMMDD("19411215");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
         Mockito.when(squad.determineCurrentAirfieldAnyMap(campaignDate)).thenReturn(currentAirfield);
         Mockito.when(squad.determineCurrentAirfieldAnyMap(newDate)).thenReturn(newAirfield);
@@ -53,8 +46,8 @@ public class SquadronMoveHandlerTest
     @Test
     public void noSquadronMove () throws PWCGException
     {             
-        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Aussonvillers");
-        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Aussonvillers");
+        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Ivanskoe");
+        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Ivanskoe");
 
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
         SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squad);
@@ -63,53 +56,35 @@ public class SquadronMoveHandlerTest
     }
 
     @Test
-    public void squadronMoveNoFerryBecauseTooFar () throws PWCGException
+    public void squadronMoveNoFerryBecuaseSameMap () throws PWCGException
     {             
-        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Aussonvillers");
-        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Bailleul");
-        Mockito.when(currentAirfield.getName()).thenReturn("Aussonvillers");
-        Mockito.when(newAirfield.getName()).thenReturn("Bailleul");
-        
+        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Ivanskoe");
+        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Mozhaysk");
+        Mockito.when(currentAirfield.getName()).thenReturn("Ivanskoe");
+        Mockito.when(newAirfield.getName()).thenReturn("Mozhaysk");
+
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
         SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squad);
-        assert (squadronMoveEvent.getLastAirfield().equals("Aussonvillers"));
-        assert (squadronMoveEvent.getNewAirfield().equals("Bailleul"));
+        assert (squadronMoveEvent.getLastAirfield().equals("Ivanskoe"));
+        assert (squadronMoveEvent.getNewAirfield().equals("Mozhaysk"));
         assert (squadronMoveEvent.getDate().equals(campaignDate));
-        assert (squadronMoveEvent.isNeedsFerryMission() == false);
+        assert (squadronMoveEvent.isNeedsFerryMission() == true);
         
     }
 
     @Test
     public void squadronMoveNoFerryBecuaseDifferentMap () throws PWCGException
     {             
-        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Aussonvillers");
-        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Hoog Huys");
-        Mockito.when(currentAirfield.getName()).thenReturn("Aussonvillers");
-        Mockito.when(newAirfield.getName()).thenReturn("Hoog Huys");
+        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Ivanskoe");
+        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Surovikino");
+        Mockito.when(currentAirfield.getName()).thenReturn("Ivanskoe");
+        Mockito.when(newAirfield.getName()).thenReturn("Surovikino");
 
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
         SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squad);
-        assert (squadronMoveEvent.getLastAirfield().equals("Aussonvillers"));
-        assert (squadronMoveEvent.getNewAirfield().equals("Hoog Huys"));
+        assert (squadronMoveEvent.getLastAirfield().equals("Ivanskoe"));
+        assert (squadronMoveEvent.getNewAirfield().equals("Surovikino"));
         assert (squadronMoveEvent.getDate().equals(campaignDate));
         assert (squadronMoveEvent.isNeedsFerryMission() == false);
-        
-    }
-
-    @Test
-    public void squadronMoveNeedsFerry () throws PWCGException
-    {             
-        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Houplin,S Lille");
-        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Lomme,Lille");
-        Mockito.when(currentAirfield.getName()).thenReturn("Houplin,S Lille");
-        Mockito.when(newAirfield.getName()).thenReturn("Lomme,Lille");
-
-        SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
-        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squad);
-        assert (squadronMoveEvent.getLastAirfield().equals("Houplin,S Lille"));
-        assert (squadronMoveEvent.getNewAirfield().equals("Lomme,Lille"));
-        assert (squadronMoveEvent.getDate().equals(campaignDate));
-        assert (squadronMoveEvent.isNeedsFerryMission() == true);
-        
     }
 }

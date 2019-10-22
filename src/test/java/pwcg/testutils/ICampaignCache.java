@@ -5,6 +5,6 @@ import pwcg.core.exception.PWCGException;
 
 public interface ICampaignCache
 {
-    Campaign makeCampaign(SquadrontTestProfile profile) throws PWCGException;
-    Campaign makeCampaignForceCreation(SquadrontTestProfile profile) throws PWCGException;
+    Campaign makeCampaign(SquadronTestProfile profile) throws PWCGException;
+    Campaign makeCampaignForceCreation(SquadronTestProfile profile) throws PWCGException;
 }

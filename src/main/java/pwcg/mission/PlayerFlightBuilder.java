@@ -9,7 +9,7 @@ import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.factory.FlightFactory;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
 import pwcg.mission.flight.plane.PlaneMCU;
-import pwcg.mission.ground.unittypes.infantry.GroundPillBoxFlareUnit;
+import pwcg.mission.ground.unittypes.infantry.GroundMachineGunFlareUnit;
 import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.group.FlareSequence;
 
@@ -81,9 +81,9 @@ public class PlayerFlightBuilder
                 checkZone.triggerCheckZoneByFlight(playerFlight);
             }
             
-            if (unit instanceof GroundPillBoxFlareUnit)
+            if (unit instanceof GroundMachineGunFlareUnit)
             {
-                GroundPillBoxFlareUnit flareUnit = (GroundPillBoxFlareUnit) unit;
+                GroundMachineGunFlareUnit flareUnit = (GroundMachineGunFlareUnit) unit;
                 FlareSequence flareSequence = flareUnit.getFlares();
                 MissionBeginUnitCheckZone mbucz = flareSequence.getMissionBeginUnit();
                 McuCheckZone checkZone = mbucz.getSelfDeactivatingCheckZone().getCheckZone();

@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.factory.VehicleFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
@@ -17,23 +16,17 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundMovingDirectFireUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.ground.vehicle.IVehicleFactory;
+import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.ground.vehicle.VehicleFactory;
 import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class ShipConvoyUnit extends GroundMovingDirectFireUnit
 {
-    public enum ShipConvoyTypes
-    {
-        SUBMARINE,
-        WARSHIP,
-        MERCHANT
-    };
+    private VehicleClass shipConvoyType = VehicleClass.ShipCargo;
     
-    private ShipConvoyTypes shipConvoyType = ShipConvoyTypes.MERCHANT;
-
-	public ShipConvoyUnit(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation, ShipConvoyTypes shipConvoyType) 
+	public ShipConvoyUnit(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation, VehicleClass shipConvoyType) 
 	{
 	    super(pwcgGroundUnitInformation);
         this.shipConvoyType = shipConvoyType;
@@ -52,7 +45,7 @@ public class ShipConvoyUnit extends GroundMovingDirectFireUnit
         Coordinate firstPosition = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), angle, 2000.0);
         
         // Try to keep subs on the surface
-        if (shipConvoyType == ShipConvoyTypes.SUBMARINE)
+        if (shipConvoyType == VehicleClass.Submarine)
         {
             firstPosition.setYPos(0.5);
         }
@@ -66,7 +59,7 @@ public class ShipConvoyUnit extends GroundMovingDirectFireUnit
         waypoint2.setPosition(pwcgGroundUnitInformation.getDestination().copy());
         waypoint.setTargetWaypoint(true);
         waypoint.getPosition().setYPos(0.0);
-        if (shipConvoyType == ShipConvoyTypes.SUBMARINE)
+        if (shipConvoyType == VehicleClass.Submarine)
         {
             waypoint.getPosition().setYPos(-5.0);
         }
@@ -88,9 +81,7 @@ public class ShipConvoyUnit extends GroundMovingDirectFireUnit
 
 	protected void createUnits() throws PWCGException  
 	{
-        IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        IVehicle ship = vehicleFactory.createShip(pwcgGroundUnitInformation.getCountry(), shipConvoyType);
-
+	    IVehicle ship = VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), shipConvoyType);
         ship.setOrientation(new Orientation());
         ship.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
         ship.populateEntity();
@@ -131,7 +122,7 @@ public class ShipConvoyUnit extends GroundMovingDirectFireUnit
 
     protected int calcNumUnits()
     {
-        if (shipConvoyType == ShipConvoyTypes.SUBMARINE)
+        if (shipConvoyType == VehicleClass.Submarine)
         {
             setMinMaxRequested(1, 1);
         }
@@ -207,9 +198,9 @@ public class ShipConvoyUnit extends GroundMovingDirectFireUnit
         }
     }
 
-    public ShipConvoyTypes getShipConvoyType()
+    public VehicleClass getShipConvoyType()
     {
-        return this.shipConvoyType;
+        return shipConvoyType;
     }
 }	
 

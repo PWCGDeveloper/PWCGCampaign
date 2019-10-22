@@ -8,13 +8,13 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.utils.IndexGenerator;
-import pwcg.product.rof.plane.RoFPlaneAttributeMapping;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.mcu.McuTREntity;
+import pwcg.product.fc.plane.FCPlaneAttributeMapping;
 
 public class Balloon
 {
@@ -267,7 +267,7 @@ public class Balloon
        {
            return true;
        }
-       else if (name.toLowerCase().contains(new String(RoFPlaneAttributeMapping.BALLOON.getPlaneType()).toLowerCase()))
+       else if (name.toLowerCase().contains(new String(FCPlaneAttributeMapping.BALLOON.getPlaneType()).toLowerCase()))
        {
            return true;
        }

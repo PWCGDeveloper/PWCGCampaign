@@ -22,8 +22,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.gui.dialogs.ImageCache;
 import pwcg.gui.utils.ContextSpecificImages;
-import pwcg.product.rof.country.RoFServiceManager;
-import pwcg.product.rof.medals.BelgianMedalManager;
+import pwcg.product.fc.country.FCServiceManager;
+import pwcg.product.fc.medals.BelgianMedalManager;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RoFBelgianMedalManagerTest extends MedalManagerTestBase
@@ -31,7 +31,7 @@ public class RoFBelgianMedalManagerTest extends MedalManagerTestBase
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         super.setup();
         Mockito.when(country.isCountry(Country.BELGIUM)).thenReturn(true);
         ICountry country = CountryFactory.makeCountryByCountry(Country.BELGIUM);
@@ -43,7 +43,7 @@ public class RoFBelgianMedalManagerTest extends MedalManagerTestBase
     public void testBelgianMedals () throws PWCGException
     {            	
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19180801"));
-	    service = ArmedServiceFactory.createServiceManager().getArmedServiceById(RoFServiceManager.AVIATION_MILITAIRE_BELGE, campaign.getDate());
+	    service = ArmedServiceFactory.createServiceManager().getArmedServiceById(FCServiceManager.AVIATION_MILITAIRE_BELGE, campaign.getDate());
         Mockito.when(player.determineService(Matchers.<Date>any())).thenReturn(service);
 
         awardMedal(BelgianMedalManager.PILOTS_BADGE, 0, 0);
@@ -61,7 +61,7 @@ public class RoFBelgianMedalManagerTest extends MedalManagerTestBase
     public void testMedalFail () throws PWCGException
     {            
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19180801"));
-	    service = ArmedServiceFactory.createServiceManager().getArmedServiceById(RoFServiceManager.USAS, campaign.getDate());
+	    service = ArmedServiceFactory.createServiceManager().getArmedServiceById(FCServiceManager.USAS, campaign.getDate());
         Mockito.when(player.determineService(Matchers.<Date>any())).thenReturn(service);
 
         awardMedal(BelgianMedalManager.PILOTS_BADGE, 0, 0);

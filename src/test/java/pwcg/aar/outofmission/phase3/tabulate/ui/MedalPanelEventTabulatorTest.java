@@ -19,8 +19,9 @@ import pwcg.campaign.factory.MedalManagerFactory;
 import pwcg.campaign.medals.IMedalManager;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.product.rof.medals.FrenchMedalManager;
 import pwcg.core.exception.PWCGException;
+import pwcg.product.fc.medals.FrenchMedalManager;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MedalPanelEventTabulatorTest extends AARTestSetup
@@ -44,7 +45,7 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
         setupAARMocks();
 
         Mockito.when(squadron1.determineDisplayName(Mockito.any())).thenReturn("Esc 103");
-        Mockito.when(squadron2.determineDisplayName(Mockito.any())).thenReturn("Esc 48");
+        Mockito.when(squadron2.determineDisplayName(Mockito.any())).thenReturn("Esc 3");
         
         Mockito.when(country.isCountry(Country.FRANCE)).thenReturn(true);
         medalManager = MedalManagerFactory.createMedalManager(country, campaign);
@@ -55,8 +56,8 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
     @Test
     public void testMedalsAwardedInMission() throws PWCGException 
     {
-        Mockito.when(pilot1.getSquadronId()).thenReturn(101103);
-        Mockito.when(pilot2.getSquadronId()).thenReturn(101103);
+        Mockito.when(pilot1.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(pilot2.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         Mockito.when(pilot1.determineSquadron()).thenReturn(squadron1);
         Mockito.when(pilot2.determineSquadron()).thenReturn(squadron1);
 
@@ -81,8 +82,8 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
     @Test
     public void testMedalsAwarded() throws PWCGException 
     {
-        Mockito.when(pilot1.getSquadronId()).thenReturn(101103);
-        Mockito.when(pilot2.getSquadronId()).thenReturn(101103);
+        Mockito.when(pilot1.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(pilot2.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
         Mockito.when(pilot1.determineSquadron()).thenReturn(squadron1);
         Mockito.when(pilot2.determineSquadron()).thenReturn(squadron1);
 
@@ -107,8 +108,8 @@ public class MedalPanelEventTabulatorTest extends AARTestSetup
     @Test
     public void testMedalsAwardedButOneIsNotInSquadron() throws PWCGException 
     {
-        Mockito.when(pilot1.getSquadronId()).thenReturn(101103);
-        Mockito.when(pilot2.getSquadronId()).thenReturn(101048);
+        Mockito.when(pilot1.getSquadronId()).thenReturn(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
+        Mockito.when(pilot2.getSquadronId()).thenReturn(SquadronTestProfile.ESC_3_PROFILE.getSquadronId());
         Mockito.when(pilot1.determineSquadron()).thenReturn(squadron1);
         Mockito.when(pilot2.determineSquadron()).thenReturn(squadron2);
 

@@ -3,7 +3,6 @@ package pwcg.mission.ground.unittypes.artillery;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.campaign.factory.VehicleFactory;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
@@ -12,7 +11,7 @@ import pwcg.core.utils.Logger;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundRepeatSpawningUnit;
-import pwcg.mission.ground.vehicle.IVehicleFactory;
+import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.McuSpawn;
 
 public class GroundAAABattery extends GroundRepeatSpawningUnit
@@ -33,18 +32,16 @@ public class GroundAAABattery extends GroundRepeatSpawningUnit
     }   
 
     public void createUnits() throws PWCGException 
-    {
-        IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        
+    {        
         if (isMg)
         {
-            spawningVehicle = vehicleFactory.createAAAMachineGun(pwcgGroundUnitInformation.getCountry());
+            spawningVehicle = pwcg.mission.ground.vehicle.VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.AAAMachineGun);
             checkZoneMeters = MG_CHECK_ZONE;
             checkAttackAreaMeters = MG_ATTACK_AREA;
         }
         else
         {
-            spawningVehicle = vehicleFactory.createAAAArtillery(pwcgGroundUnitInformation.getCountry());
+            spawningVehicle = pwcg.mission.ground.vehicle.VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.AAAArtillery);
             checkZoneMeters = ARTY_CHECK_ZONE;
             checkAttackAreaMeters = ARTY_ATTACK_AREA;
         }

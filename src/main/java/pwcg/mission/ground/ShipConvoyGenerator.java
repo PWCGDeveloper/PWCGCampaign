@@ -10,7 +10,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.ground.factory.ShippingUnitFactory;
 import pwcg.mission.ground.unittypes.transport.ShipConvoyUnit;
-import pwcg.mission.ground.unittypes.transport.ShipConvoyUnit.ShipConvoyTypes;
+import pwcg.mission.ground.vehicle.VehicleClass;
 
 public class ShipConvoyGenerator
 {
@@ -36,7 +36,7 @@ public class ShipConvoyGenerator
         
         for (ShipConvoyUnit alliedConvoy : alliedConvoys)
         {
-            if (alliedConvoy.getShipConvoyType() != ShipConvoyTypes.MERCHANT)
+            if (alliedConvoy.getShipConvoyType() != VehicleClass.ShipCargo)
             {
                 for (ShipConvoyUnit axisConvoy : axisConvoys)
                 {
@@ -48,7 +48,7 @@ public class ShipConvoyGenerator
         
         for (ShipConvoyUnit axisConvoy : axisConvoys)
         {
-            if (axisConvoy.getShipConvoyType() != ShipConvoyTypes.MERCHANT)
+            if (axisConvoy.getShipConvoyType() != VehicleClass.ShipCargo)
             {
                 for (ShipConvoyUnit alliedConvoy : alliedConvoys)
                 {

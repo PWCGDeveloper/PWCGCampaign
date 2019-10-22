@@ -17,7 +17,7 @@ import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.testutils.CampaignCache;
-import pwcg.testutils.SquadrontTestProfile;
+import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
 
 public class PlayerFlightTypeBoSDiveBombTest
@@ -29,7 +29,7 @@ public class PlayerFlightTypeBoSDiveBombTest
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
-        campaign = CampaignCache.makeCampaign(SquadrontTestProfile.STG77_PROFILE);
+        campaign = CampaignCache.makeCampaign(SquadronTestProfile.STG77_PROFILE);
     }
 
     @Test

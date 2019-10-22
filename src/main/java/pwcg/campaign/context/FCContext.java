@@ -2,8 +2,8 @@ package pwcg.campaign.context;
 
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.plane.payload.IPayloadFactory;
-import pwcg.product.rof.plane.payload.RoFPayloadFactory;
 import pwcg.core.exception.PWCGException;
+import pwcg.product.fc.plane.payload.FCPayloadFactory;
 
 public class FCContext extends PWCGContextManagerBase implements IPWCGContextManager
 {
@@ -45,7 +45,7 @@ public class FCContext extends PWCGContextManagerBase implements IPWCGContextMan
     @Override
     public IPayloadFactory getPayloadFactory() throws PWCGException  
     {
-        return new RoFPayloadFactory();
+        return new FCPayloadFactory();
     }
 
     @Override

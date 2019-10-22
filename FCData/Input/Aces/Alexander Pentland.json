@@ -5,7 +5,7 @@
       "date": "19150801"
     },
     {
-      "squadron": 102019,
+      "squadron": 302019,
       "date": "19170720"
     },
     {
@@ -55,7 +55,7 @@
     },
     {
       "skinName": "S7L_RFC19PENTLAND",
-      "planeType": "spad7",
+      "planeType": "spad13",
       "startDate": "19140801",
       "endDate": "19181201",
       "squadId": -1,

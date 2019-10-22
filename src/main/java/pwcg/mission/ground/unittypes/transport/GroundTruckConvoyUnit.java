@@ -3,7 +3,6 @@ package pwcg.mission.ground.unittypes.transport;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.campaign.factory.VehicleFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
@@ -14,7 +13,8 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.unittypes.GroundMovingUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.ground.vehicle.IVehicleFactory;
+import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.ground.vehicle.VehicleFactory;
 import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -31,9 +31,7 @@ public class GroundTruckConvoyUnit extends GroundMovingUnit
     @Override
     public void createUnits() throws PWCGException  
     {
-        IVehicleFactory vehicleFactory = VehicleFactory.createVehicleFactory();
-        IVehicle truck = vehicleFactory.createCargoTruck(pwcgGroundUnitInformation.getCountry());
-
+        IVehicle truck = VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.Truck);
         truck.setOrientation(new Orientation());
         truck.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
         truck.populateEntity();

@@ -21,6 +21,7 @@ import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
+import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AARCrewBuilderTest
@@ -51,7 +52,7 @@ public class AARCrewBuilderTest
     @Before
     public void setup () throws PWCGException 
     {        
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         
@@ -61,11 +62,11 @@ public class AARCrewBuilderTest
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+1)).thenReturn(aiInSquadron);
         Mockito.when(personnelManager.getAnyCampaignMember(SerialNumber.AI_STARTING_SERIAL_NUMBER+2)).thenReturn(aiNotInSquadron);
 
-        Mockito.when(player.getSquadronId()).thenReturn(501011);
-        Mockito.when(aceInMission1.getSquadronId()).thenReturn(501011);
-        Mockito.when(aceInMission2.getSquadronId()).thenReturn(501012);
-        Mockito.when(aiInSquadron.getSquadronId()).thenReturn(501011);
-        Mockito.when(aiNotInSquadron.getSquadronId()).thenReturn(501012);
+        Mockito.when(player.getSquadronId()).thenReturn(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
+        Mockito.when(aceInMission1.getSquadronId()).thenReturn(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
+        Mockito.when(aceInMission2.getSquadronId()).thenReturn(SquadronTestProfile.JASTA_16_PROFILE.getSquadronId());
+        Mockito.when(aiInSquadron.getSquadronId()).thenReturn(SquadronTestProfile.JASTA_11_PROFILE.getSquadronId());
+        Mockito.when(aiNotInSquadron.getSquadronId()).thenReturn(SquadronTestProfile.JASTA_16_PROFILE.getSquadronId());
 
         planeAiEntities = new HashMap <>();
         addPlane(SerialNumber.PLAYER_STARTING_SERIAL_NUMBER);

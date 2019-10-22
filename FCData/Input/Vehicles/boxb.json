@@ -1,0 +1,17 @@
+{
+  "scriptDir": "trains\\",
+  "modelDir": "trains\\traincars\\",
+  "vehicleType": "boxb",
+  "displayName": "train car",
+  "countries": [
+    "GERMANY",
+    "RUSSIA",
+    "USA",
+	"BELGIUM",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 50,
+  "vehicleClass": "TrainCar"
+}

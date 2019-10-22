@@ -33,7 +33,7 @@ public class AcesKilledEventGeneratorTest
     public void setupForTestEnvironment() throws PWCGException
     {
          
-        PWCGContext.setProduct(PWCGProduct.ROF);
+        PWCGContext.setProduct(PWCGProduct.FC);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170420"));
     }
 

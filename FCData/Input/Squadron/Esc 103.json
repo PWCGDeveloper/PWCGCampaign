@@ -1,6 +1,6 @@
 {
   "country": "FRANCE",
-  "squadronId": 302103,
+  "squadronId": 301103,
   "name": "Esc 103",
   "fileName": "Esc 103.json",
   "skill": 85,
@@ -18,7 +18,7 @@
   "squadHistory": {
     "squadHistoryEntries": []
   },
-  "serviceId": 30201,
+  "serviceId": 30101,
   "squadronRoles": {
     "squadronRolePeriods": [
       {

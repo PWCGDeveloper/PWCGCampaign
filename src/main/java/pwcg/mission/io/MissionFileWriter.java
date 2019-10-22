@@ -10,7 +10,6 @@ import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.utils.TestDriver;
-import pwcg.product.bos.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.DateUtils;
@@ -25,7 +24,7 @@ import pwcg.mission.ground.unittypes.GroundUnitSpawning;
 import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.io.MissionBlockWriter;
+import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.mission.object.WindSock;
 
 public abstract class MissionFileWriter implements IMissionFile 
@@ -164,7 +163,6 @@ public abstract class MissionFileWriter implements IMissionFile
     private void writeVehiclesForTest(BufferedWriter writer) throws PWCGException
     {
         VehicleSetBuilderComprehensive vehicleSetBuilderComprehensive = mission.getVehicleSetBuilder();
-
         for (IVehicle vehicle: vehicleSetBuilderComprehensive.getAllVehicles())
         {
             vehicle.write(writer);

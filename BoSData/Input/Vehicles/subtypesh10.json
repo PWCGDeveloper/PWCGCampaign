@@ -1,0 +1,16 @@
+{
+  "scriptDir": "ships\\",
+  "modelDir": "ships\\subtypesh10\\",
+  "vehicleType": "subtypesh10",
+  "displayName": "torpedo boat",
+  "countries": [
+    "GERMANY",
+    "RUSSIA",
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 30,
+  "vehicleClass": "Submarine"
+}

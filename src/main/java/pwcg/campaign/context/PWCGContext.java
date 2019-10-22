@@ -4,7 +4,6 @@ import pwcg.core.utils.Logger;
 
 public class PWCGContext 
 {
-    protected static RoFContext rofContextManager = null;
     protected static BoSContext bosContextManager = null;
     protected static FCContext fcContextManager = null;
     protected static PWCGProduct product = PWCGProduct.BOS;
@@ -17,17 +16,7 @@ public class PWCGContext
     {
         try
         {
-            if (product == PWCGProduct.ROF)
-            {
-                if (PWCGContext.rofContextManager == null)
-                {
-                    PWCGContext.rofContextManager = new RoFContext();
-                    PWCGContext.rofContextManager.initialize();
-                }
-                
-                return PWCGContext.rofContextManager;
-            }
-            else if (product == PWCGProduct.BOS)
+            if (product == PWCGProduct.BOS)
             {
                 if (PWCGContext.bosContextManager == null)
                 {

@@ -1,7 +1,7 @@
 {
   "squadrons": [
     {
-      "squadron": 101003,
+      "squadron": 301003,
       "date": "19150801"
     },
     {
@@ -9,7 +9,7 @@
       "date": "19160317"
     },
     {
-      "squadron": 101003,
+      "squadron": 301003,
       "date": "19160617"
     },
     {
@@ -63,7 +63,7 @@
     },
     {
       "skinName": "S7L_N3_GUYNEMER",
-      "planeType": "spad7",
+      "planeType": "spad13",
       "startDate": "19140801",
       "endDate": "19181201",
       "squadId": -1,

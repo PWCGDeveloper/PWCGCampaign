@@ -7,7 +7,7 @@ import java.util.List;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadmember.VictoryEntity;
-import pwcg.product.rof.plane.RoFPlaneAttributeMapping;
+import pwcg.product.fc.plane.FCPlaneAttributeMapping;
 
 public class VictoryMaker
 {
@@ -46,14 +46,14 @@ public class VictoryMaker
         victor.setAirOrGround(Victory.AIR_VICTORY);
         victor.setPilotStatus(SquadronMemberStatus.STATUS_ACTIVE);
         victor.setSquadronName("Esc 3");
-        victor.setType(RoFPlaneAttributeMapping.SPAD7.getPlaneType());
+        victor.setType(FCPlaneAttributeMapping.SPAD13.getPlaneType());
         victory.setVictor(victor);
 
         VictoryEntity victim = new VictoryEntity();
         victim.setAirOrGround(Victory.AIR_VICTORY);
         victim.setPilotStatus(SquadronMemberStatus.STATUS_KIA);
         victim.setSquadronName("Jasta 2");
-        victim.setType(RoFPlaneAttributeMapping.ALBATROSD5.getPlaneType());
+        victim.setType(FCPlaneAttributeMapping.ALBATROSD5.getPlaneType());
         victory.setVictim(victim);
         
         return victory;
@@ -71,14 +71,14 @@ public class VictoryMaker
         victor.setAirOrGround(Victory.AIR_VICTORY);
         victor.setPilotStatus(SquadronMemberStatus.STATUS_ACTIVE);
         victor.setSquadronName("Jasta 2");
-        victor.setType(RoFPlaneAttributeMapping.ALBATROSD5.getPlaneType());
+        victor.setType(FCPlaneAttributeMapping.ALBATROSD5.getPlaneType());
         victory.setVictor(victor);
         
         VictoryEntity victim = new VictoryEntity();
         victim.setAirOrGround(Victory.AIR_VICTORY);
         victim.setPilotStatus(SquadronMemberStatus.STATUS_KIA);
         victim.setSquadronName("Esc 3");
-        victim.setType(RoFPlaneAttributeMapping.SPAD7.getPlaneType());
+        victim.setType(FCPlaneAttributeMapping.SPAD13.getPlaneType());
         victory.setVictim(victim);
         
         return victory;

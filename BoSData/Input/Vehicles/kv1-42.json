@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\kv1-42\\",
+  "vehicleType": "kv1-42",
+  "displayName": "KV1",
+  "countries": [
+    "RUSSIA"
+  ],
+  "startDate": "19410201",
+  "endDate": "19460724",
+  "rarityWeight": 10,
+  "vehicleClass": "Tank"
+}

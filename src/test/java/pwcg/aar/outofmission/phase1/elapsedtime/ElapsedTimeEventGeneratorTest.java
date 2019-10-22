@@ -43,16 +43,14 @@ public class ElapsedTimeEventGeneratorTest
     @Before
     public void setup() throws PWCGException
     {
-        PWCGContext.setProduct(PWCGProduct.ROF);
-        campaignDate = DateUtils.getDateYYYYMMDD("19170420");
-        newDate = DateUtils.getDateYYYYMMDD("19170430");
+        PWCGContext.setProduct(PWCGProduct.BOS);
+        campaignDate = DateUtils.getDateYYYYMMDD("19420901");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
         Mockito.when(squad.determineCurrentAirfieldAnyMap(campaignDate)).thenReturn(currentAirfield);
         Mockito.when(squad.determineCurrentAirfieldAnyMap(newDate)).thenReturn(newAirfield);
 
         Mockito.when(aarContext.getCampaignUpdateData()).thenReturn(campaignUpdateData);
-        Mockito.when(aarContext.getNewDate()).thenReturn(newDate);
-        
+       
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
         Mockito.when(personnelManager.getAllActivePlayers()).thenReturn(playerMembers);
         List<SquadronMember> players = new ArrayList<>();
@@ -64,8 +62,11 @@ public class ElapsedTimeEventGeneratorTest
     @Test
     public void noSquadronMoveOrEndOfWar () throws PWCGException
     {             
-        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Aussonvillers");
-        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Aussonvillers");
+        newDate = DateUtils.getDateYYYYMMDD("19420902");
+        Mockito.when(aarContext.getNewDate()).thenReturn(newDate);
+ 
+        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Tuzov");
+        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Tuzov");
 
         ElapsedTimeEventGenerator elapsedTimeEventGenerator = new ElapsedTimeEventGenerator(campaign, aarContext);
         ElapsedTimeEvents elapsedTimeEvents = elapsedTimeEventGenerator.createElapsedTimeEvents();
@@ -77,8 +78,13 @@ public class ElapsedTimeEventGeneratorTest
     @Test
     public void squadronMove () throws PWCGException
     {             
-        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Aussonvillers");
-        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Bailleul");
+        campaignDate = DateUtils.getDateYYYYMMDD("19420901");
+        newDate = DateUtils.getDateYYYYMMDD("19420909");
+        Mockito.when(aarContext.getNewDate()).thenReturn(newDate);
+        Mockito.when(squad.determineCurrentAirfieldAnyMap(newDate)).thenReturn(newAirfield);
+
+        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Tuzov");
+        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Kalach");
 
         ElapsedTimeEventGenerator elapsedTimeEventGenerator = new ElapsedTimeEventGenerator(campaign, aarContext);
         ElapsedTimeEvents elapsedTimeEvents = elapsedTimeEventGenerator.createElapsedTimeEvents();
@@ -90,13 +96,13 @@ public class ElapsedTimeEventGeneratorTest
     @Test
     public void endOfWar () throws PWCGException
     {    
-        campaignDate = DateUtils.getDateYYYYMMDD("19181020");
-        newDate = DateUtils.getDateYYYYMMDD("19181112");
+        campaignDate = DateUtils.getDateYYYYMMDD("19450502");
+        newDate = DateUtils.getDateYYYYMMDD("19450508");
         Mockito.when(aarContext.getNewDate()).thenReturn(newDate);
 
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
-        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Aussonvillers");
-        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Aussonvillers");
+        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Tuzov");
+        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Tuzov");
         Mockito.when(squad.determineCurrentAirfieldAnyMap(campaignDate)).thenReturn(currentAirfield);
         Mockito.when(squad.determineCurrentAirfieldAnyMap(newDate)).thenReturn(newAirfield);
 

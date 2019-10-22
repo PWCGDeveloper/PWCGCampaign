@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\lefh18\\",
+  "vehicleType": "lefh18",
+  "displayName": "howitzer",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19140801",
+  "endDate": "19181201",
+  "rarityWeight": 80,
+  "vehicleClass": "ArtilleryHowitzer"
+}

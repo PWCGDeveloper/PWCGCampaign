@@ -55,7 +55,7 @@ public class CampaignGeneratorState
             if (StringValidity.isAlpha(campaignGeneratorDO.getPlayerPilotName()))
             {
                 currentStep = CampaignGeneratorWorkflow.CHOOSE_MAP;
-                if (PWCGContext.getProduct() == PWCGProduct.ROF || PWCGContext.getProduct() == PWCGProduct.FC)
+                if (PWCGContext.getProduct() == PWCGProduct.FC)
                 {
                     ICountry country = campaignGeneratorDO.getService().getCountry();
                     if (country.getCountry() == Country.GERMANY)
@@ -130,7 +130,7 @@ public class CampaignGeneratorState
         else if (currentStep == CampaignGeneratorWorkflow.CHOOSE_MAP)
         {
             currentStep = CampaignGeneratorWorkflow.CHOOSE_PLAYER_NAME;
-            if (PWCGContext.getProduct() == PWCGProduct.ROF)
+            if (PWCGContext.getProduct() == PWCGProduct.FC)
             {
                 ICountry country = campaignGeneratorDO.getService().getCountry();
                 if (country.getCountry() == Country.GERMANY)

@@ -32,14 +32,14 @@ public abstract class CampaignCacheBase implements ICampaignCache
     protected abstract void initialize() throws PWCGException;
 
 
-    protected void makeProfile(SquadrontTestProfile profile) throws PWCGException
+    protected void makeProfile(SquadronTestProfile profile) throws PWCGException
     {
         CampaignGeneratorModel generatorModel = makeCampaignModelForProfile (profile);
         campaignProfiles.put(profile.getKey(), generatorModel);
     }
 
     @Override
-    public Campaign makeCampaign(SquadrontTestProfile profile) throws PWCGException
+    public Campaign makeCampaign(SquadronTestProfile profile) throws PWCGException
     {
         initialize();
         
@@ -59,7 +59,7 @@ public abstract class CampaignCacheBase implements ICampaignCache
         return campaign;
     }
     
-    private void validateCampaign(SquadrontTestProfile profile, Campaign campaign) throws PWCGException
+    private void validateCampaign(SquadronTestProfile profile, Campaign campaign) throws PWCGException
     {
         List<SquadronMember> squadronMembers = campaign.getPersonnelManager().getSquadronPersonnel(profile.getSquadronId()).getSquadronMembers().getSquadronMemberList();
         for (SquadronMember squadronMember : squadronMembers)
@@ -74,7 +74,7 @@ public abstract class CampaignCacheBase implements ICampaignCache
     }
 
     @Override
-    public Campaign makeCampaignForceCreation(SquadrontTestProfile profile) throws PWCGException
+    public Campaign makeCampaignForceCreation(SquadronTestProfile profile) throws PWCGException
     {
         initialize();
         if (campaignProfiles.containsKey(profile.getKey()))
@@ -88,7 +88,7 @@ public abstract class CampaignCacheBase implements ICampaignCache
 	            List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 1);
 	            
-	            addMorePilotsForCoop(campaign, "Squadron Mate", "Leutnant", SquadrontTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
+	            addMorePilotsForCoop(campaign, "Squadron Mate", "Leutnant", SquadronTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
 	            players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
 	            assert(players.size() == 2);
 	            
@@ -144,7 +144,7 @@ public abstract class CampaignCacheBase implements ICampaignCache
                 squadronId);
     }
     
-	public static CampaignGeneratorModel makeCampaignModelForProfile(SquadrontTestProfile profile) throws PWCGException
+	public static CampaignGeneratorModel makeCampaignModelForProfile(SquadronTestProfile profile) throws PWCGException
     {
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron squadron = squadronManager.getSquadron(profile.getSquadronId());
@@ -158,8 +158,8 @@ public abstract class CampaignCacheBase implements ICampaignCache
     
         CampaignGeneratorModel generatorModel = new CampaignGeneratorModel();
         generatorModel.setCampaignDate(campaignDate);
-        generatorModel.setCampaignName(CampaignCacheRoF.TEST_CAMPAIGN_NAME);
-        generatorModel.setPlayerName(CampaignCacheRoF.TEST_PLAYER_NAME);
+        generatorModel.setCampaignName(TEST_CAMPAIGN_NAME);
+        generatorModel.setPlayerName(TEST_PLAYER_NAME);
         generatorModel.setPlayerRank(rankName);
         generatorModel.setPlayerRegion("");
         generatorModel.setService(service);

@@ -1,166 +1,22 @@
 {
   "battles": [
     {
-      "name": "Verdun",
-      "neCorner": {
-        "xPos": 115000.0,
-        "yPos": 0.0,
-        "zPos": 285000.0
-      },
-      "swCorner": {
-        "xPos": 44000.0,
-        "yPos": 0.0,
-        "zPos": 210000.0
-      },
-      "aggressorcountry": "GERMANY",
-      "defendercountry": "FRANCE",
-      "startDate": "19160215",
-      "stopDate": "19160701",
-      "map": "FRANCE_MAP"
-    },
-    {
-      "name": "Somme",
-      "neCorner": {
-        "xPos": 220000.0,
-        "yPos": 0.0,
-        "zPos": 115000.0
-      },
-      "swCorner": {
-        "xPos": 150000.0,
-        "yPos": 0.0,
-        "zPos": 22000.0
-      },
-      "aggressorcountry": "BRITAIN",
-      "defendercountry": "GERMANY",
-      "startDate": "19160701",
-      "stopDate": "19161113",
-      "map": "FRANCE_MAP"
-    },
-    {
-      "name": "Flers-Courcelette",
-      "neCorner": {
-        "xPos": 180000.0,
-        "yPos": 0.0,
-        "zPos": 100000.0
-      },
-      "swCorner": {
-        "xPos": 160000.0,
-        "yPos": 0.0,
-        "zPos": 31000.0
-      },
-      "aggressorcountry": "BRITAIN",
-      "defendercountry": "GERMANY",
-      "startDate": "19160915",
-      "stopDate": "19160922",
-      "map": "FRANCE_MAP"
-    },
-    {
-      "name": "Aisne",
-      "neCorner": {
-        "xPos": 170000.0,
-        "yPos": 0.0,
-        "zPos": 140000.0
-      },
-      "swCorner": {
-        "xPos": 90000.0,
-        "yPos": 0.0,
-        "zPos": 40000.0
-      },
-      "aggressorcountry": "FRANCE",
-      "defendercountry": "GERMANY",
-      "startDate": "19170416",
-      "stopDate": "19170515",
-      "map": "FRANCE_MAP"
-    },
-    {
-      "name": "Arras",
-      "neCorner": {
-        "xPos": 240000.0,
-        "yPos": 0.0,
-        "zPos": 100000.0
-      },
-      "swCorner": {
-        "xPos": 160000.0,
-        "yPos": 0.0,
-        "zPos": 22000.0
-      },
-      "aggressorcountry": "BRITAIN",
-      "defendercountry": "GERMANY",
-      "startDate": "19170409",
-      "stopDate": "19170516",
-      "map": "FRANCE_MAP"
-    },
-    {
-      "name": "Arras",
-      "neCorner": {
-        "xPos": 240000.0,
-        "yPos": 0.0,
-        "zPos": 100000.0
-      },
-      "swCorner": {
-        "xPos": 160000.0,
-        "yPos": 0.0,
-        "zPos": 22000.0
-      },
-      "aggressorcountry": "BRITAIN",
-      "defendercountry": "GERMANY",
-      "startDate": "19170409",
-      "stopDate": "19170516",
-      "map": "CHANNEL_MAP"
-    },
-    {
-      "name": "Messines",
-      "neCorner": {
-        "xPos": 70000.0,
-        "yPos": 0.0,
-        "zPos": 220000.0
-      },
-      "swCorner": {
-        "xPos": 55000.0,
-        "yPos": 0.0,
-        "zPos": 195000.0
-      },
-      "aggressorcountry": "BRITAIN",
-      "defendercountry": "GERMANY",
-      "startDate": "19170607",
-      "stopDate": "19170614",
-      "map": "CHANNEL_MAP"
-    },
-    {
-      "name": "Passchendaele",
-      "neCorner": {
-        "xPos": 90000.0,
-        "yPos": 0.0,
-        "zPos": 220000.0
-      },
-      "swCorner": {
-        "xPos": 40000.0,
-        "yPos": 0.0,
-        "zPos": 195000.0
-      },
-      "aggressorcountry": "BRITAIN",
-      "defendercountry": "GERMANY",
-      "startDate": "19170731",
-      "stopDate": "19171106",
-      "map": "CHANNEL_MAP"
-    },
-    {
       "name": "Cambrai",
       "neCorner": {
-        "xPos": 240000.0,
+        "xPos": 90000.0,
         "yPos": 0.0,
         "zPos": 100000.0
       },
       "swCorner": {
-        "xPos": 200000.0,
+        "xPos": 50000.0,
         "yPos": 0.0,
-        "zPos": 40000.0
+        "zPos": 50000.0
       },
       "aggressorcountry": "BRITAIN",
       "defendercountry": "GERMANY",
       "startDate": "19171120",
       "stopDate": "19171208",
-      "map": "FRANCE_MAP"
+      "map": "ARRAS_MAP"
     },
     {
       "name": "Kaiserschlacht Phase 1",
@@ -178,7 +34,7 @@
       "defendercountry": "BRITAIN",
       "startDate": "19180321",
       "stopDate": "19180604",
-      "map": "FRANCE_MAP"
+      "map": "ARRAS_MAP"
     },
     {
       "name": "Kaiserschlacht Phase 2",
@@ -196,7 +52,7 @@
       "defendercountry": "BRITAIN",
       "startDate": "19180429",
       "stopDate": "19180717",
-      "map": "FRANCE_MAP"
+      "map": "ARRAS_MAP"
     },
     {
       "name": "100 Days Offensive Phase 1",
@@ -214,7 +70,7 @@
       "defendercountry": "GERMANY",
       "startDate": "19180718",
       "stopDate": "19181005",
-      "map": "FRANCE_MAP"
+      "map": "ARRAS_MAP"
     },
     {
       "name": "100 Days Offensive Phase 2",
@@ -232,7 +88,7 @@
       "defendercountry": "GERMANY",
       "startDate": "19181005",
       "stopDate": "19181015",
-      "map": "FRANCE_MAP"
+      "map": "ARRAS_MAP"
     },
     {
       "name": "Marne",
@@ -250,7 +106,7 @@
       "defendercountry": "GERMANY",
       "startDate": "19180715",
       "stopDate": "19180806",
-      "map": "FRANCE_MAP"
+      "map": "ARRAS_MAP"
     },
     {
       "name": "St Mihiel",
@@ -268,7 +124,7 @@
       "defendercountry": "GERMANY",
       "startDate": "19180912",
       "stopDate": "19180919",
-      "map": "FRANCE_MAP"
+      "map": "ARRAS_MAP"
     },
     {
       "name": "Argonne Forest",
@@ -286,61 +142,7 @@
       "defendercountry": "GERMANY",
       "startDate": "19180926",
       "stopDate": "19181111",
-      "map": "FRANCE_MAP"
-    },
-    {
-      "name": "Lake Naroch",
-      "neCorner": {
-        "xPos": 200000.0,
-        "yPos": 0.0,
-        "zPos": 200000.0
-      },
-      "swCorner": {
-        "xPos": 0.0,
-        "yPos": 0.0,
-        "zPos": 0.0
-      },
-      "aggressorcountry": "RUSSIA",
-      "defendercountry": "GERMANY",
-      "startDate": "19160318",
-      "stopDate": "19160418",
-      "map": "GALICIA_MAP"
-    },
-    {
-      "name": "Lutsk",
-      "neCorner": {
-        "xPos": 200000.0,
-        "yPos": 0.0,
-        "zPos": 200000.0
-      },
-      "swCorner": {
-        "xPos": 0.0,
-        "yPos": 0.0,
-        "zPos": 0.0
-      },
-      "aggressorcountry": "RUSSIA",
-      "defendercountry": "GERMANY",
-      "startDate": "19160604",
-      "stopDate": "19161122",
-      "map": "GALICIA_MAP"
-    },
-    {
-      "name": "Brusilov Second",
-      "neCorner": {
-        "xPos": 200000.0,
-        "yPos": 0.0,
-        "zPos": 200000.0
-      },
-      "swCorner": {
-        "xPos": 0.0,
-        "yPos": 0.0,
-        "zPos": 0.0
-      },
-      "aggressorcountry": "RUSSIA",
-      "defendercountry": "GERMANY",
-      "startDate": "19170705",
-      "stopDate": "19171010",
-      "map": "GALICIA_MAP"
+      "map": "ARRAS_MAP"
     }
   ]
 }

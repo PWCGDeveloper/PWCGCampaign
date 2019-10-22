@@ -1,6 +1,6 @@
 {
   "country": "USA",
-  "squadronId": 302094,
+  "squadronId": 303094,
   "name": "94th Aero",
   "fileName": "94th Aero.json",
   "skill": 65,
@@ -18,7 +18,7 @@
   "squadHistory": {
     "squadHistoryEntries": []
   },
-  "serviceId": 30201,
+  "serviceId": 30301,
   "squadronRoles": {
     "squadronRolePeriods": [
       {
