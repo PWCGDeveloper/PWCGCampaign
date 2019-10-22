@@ -11,6 +11,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.group.airfield.staticobject.StaticObjectDefinitionManager;
 import pwcg.campaign.plane.PlaneTypeFactory;
 import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
@@ -18,8 +19,9 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
+import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
-public abstract class PWCGContextManagerBase implements IPWCGContextManager
+public abstract class PWCGContextBase implements IPWCGContextManager
 {
     BoSContext bosContextManager;
 
@@ -31,6 +33,8 @@ public abstract class PWCGContextManagerBase implements IPWCGContextManager
     protected SquadronManager squadronManager = new SquadronManager();
     protected BattleManager battleManager = new BattleManager();
     protected SkinManager skinManager = new SkinManager();
+    protected VehicleDefinitionManager vehicleDefinitionManager = new VehicleDefinitionManager();
+    protected StaticObjectDefinitionManager staticObjectDefinitionManager = new StaticObjectDefinitionManager();
     protected PlaneTypeFactory planeTypeFactory = new PlaneTypeFactory();
     protected boolean testMode = false;
     
@@ -60,6 +64,8 @@ public abstract class PWCGContextManagerBase implements IPWCGContextManager
         squadronManager.initialize();
         battleManager.initialize();
         skinManager.initialize();
+        vehicleDefinitionManager.initialize();
+        staticObjectDefinitionManager.initialize();
     }
 
     @Override
@@ -238,11 +244,22 @@ public abstract class PWCGContextManagerBase implements IPWCGContextManager
         return planeTypeFactory;
     }
     
-
     @Override
     public List<PWCGMap> getMaps()
     {
         return new ArrayList<PWCGMap>(pwcgMaps.values());
+    }
+
+    @Override
+    public VehicleDefinitionManager getVehicleDefinitionManager()
+    {
+        return vehicleDefinitionManager;
+    }
+
+    @Override
+    public StaticObjectDefinitionManager getStaticObjectDefinitionManager()
+    {
+        return staticObjectDefinitionManager;
     }
 
     @Override

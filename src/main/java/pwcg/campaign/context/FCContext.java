@@ -5,7 +5,7 @@ import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.fc.plane.payload.FCPayloadFactory;
 
-public class FCContext extends PWCGContextManagerBase implements IPWCGContextManager
+public class FCContext extends PWCGContextBase implements IPWCGContextManager
 {
     protected FCContext()
     {

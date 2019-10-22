@@ -4,6 +4,8 @@
   "vehicleType": "subtypesh10",
   "displayName": "torpedo boat",
   "countries": [
+    "GERMANY",
+    "ITALY",
     "RUSSIA",
     "USA",
     "BRITAIN"

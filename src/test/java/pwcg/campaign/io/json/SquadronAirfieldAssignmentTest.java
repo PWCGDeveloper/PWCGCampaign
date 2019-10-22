@@ -200,19 +200,4 @@ public class SquadronAirfieldAssignmentTest
         }
         return datesFromFirstAppearance;
     }
-
-    private int findFirstTransitionDatePosition(String date) throws PWCGException
-    {
-        for (int i = 0; i < validMoveDates.size(); ++i)
-        {
-            String validMoveDate = validMoveDates.get(i);
-            if (validMoveDate.equals(date))
-            {
-                return i;
-            }
-        }
-        
-        String errorMsg = "invalid airfield move date " + date; 
-        throw new PWCGException(errorMsg);
-    }
 }

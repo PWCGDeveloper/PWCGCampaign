@@ -13,26 +13,13 @@ import pwcg.mission.ground.vehicle.VehicleRequestDefinition;
 
 public class StaticObjectDefinitionManager
 {
-    private static StaticObjectDefinitionManager instance = null;
-    
     private List<VehicleDefinition> allStaticObjectsDefinitions = new ArrayList<>();
 
-    private StaticObjectDefinitionManager()
+    public StaticObjectDefinitionManager()
     {
     }
     
-    public static StaticObjectDefinitionManager getInstance() throws PWCGException
-    {
-        if (instance == null)
-        {
-            instance = new StaticObjectDefinitionManager();
-            instance.readVehicles();
-        }
-        
-        return instance;
-    }
-    
-    public void readVehicles() throws PWCGException
+    public void initialize() throws PWCGException
     {
         allStaticObjectsDefinitions = StaticObjectIOJson.readJson();
     }

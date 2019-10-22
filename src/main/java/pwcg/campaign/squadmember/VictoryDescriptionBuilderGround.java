@@ -1,10 +1,10 @@
 package pwcg.campaign.squadmember;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.ground.vehicle.IVehicleDefinition;
-import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
 public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBase
 {    
@@ -125,7 +125,7 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
 
     private String getGroundUnitName(String groundUnitType) throws PWCGException
     {
-        IVehicleDefinition vehicleDefinition = VehicleDefinitionManager.getInstance().getVehicleDefinitionByVehicleType(groundUnitType);
+        IVehicleDefinition vehicleDefinition = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleType(groundUnitType);
         String groundUnitName = "vehicle";
         if (vehicleDefinition != null)
         {

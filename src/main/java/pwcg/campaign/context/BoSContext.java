@@ -5,7 +5,7 @@ import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.product.bos.plane.payload.BoSPayloadFactory;
 import pwcg.core.exception.PWCGException;
 
-public class BoSContext extends PWCGContextManagerBase implements IPWCGContextManager
+public class BoSContext extends PWCGContextBase implements IPWCGContextManager
 { 
     /**
      * 

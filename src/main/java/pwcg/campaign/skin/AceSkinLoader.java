@@ -6,8 +6,6 @@ import pwcg.campaign.context.AceManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
 
 public class AceSkinLoader
 {

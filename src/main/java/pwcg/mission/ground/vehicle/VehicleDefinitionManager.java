@@ -10,23 +10,15 @@ import pwcg.core.utils.WeightCalculator;
 
 public class VehicleDefinitionManager
 {
-    private static VehicleDefinitionManager instance = null;
-    
     private List<VehicleDefinition> allVehiclesDefinitions = new ArrayList<>();
 
-    private VehicleDefinitionManager()
+    public VehicleDefinitionManager()
     {
     }
     
-    public static VehicleDefinitionManager getInstance() throws PWCGException
+    public void initialize() throws PWCGException
     {
-        if (instance == null)
-        {
-            instance = new VehicleDefinitionManager();
-            instance.readVehicles();
-        }
-        
-        return instance;
+        readVehicles();
     }
     
     private void readVehicles() throws PWCGException
