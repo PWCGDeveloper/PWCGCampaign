@@ -4,7 +4,8 @@
   "vehicleType": "flak37",
   "displayName": "anti aircraft gun",
   "countries": [
-    "GERMANY"
+    "GERMANY",
+    "ITALY"
   ],
   "startDate": "19390901",
   "endDate": "19460724",

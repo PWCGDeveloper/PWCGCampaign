@@ -4,7 +4,8 @@
   "vehicleType": "marderiii-h",
   "displayName": "Marder III",
   "countries": [
-    "GERMANY"
+    "GERMANY",
+    "ITALY"
   ],
   "startDate": "19420101",
   "endDate": "19460724",

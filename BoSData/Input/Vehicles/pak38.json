@@ -4,7 +4,8 @@
   "vehicleType": "pak38",
   "displayName": "anti tank gun",
   "countries": [
-    "GERMANY"
+    "GERMANY",
+    "ITALY"
   ],
   "startDate": "19420601",
   "endDate": "19460724",

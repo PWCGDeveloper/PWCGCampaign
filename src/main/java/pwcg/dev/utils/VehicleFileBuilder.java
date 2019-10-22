@@ -21,12 +21,14 @@ public class VehicleFileBuilder
             {
                 List<Country> axis = new ArrayList<>();
                 axis.add(Country.GERMANY);
+                axis.add(Country.ITALY);
 
                 List<Country> russia = new ArrayList<>();
                 russia.add(Country.RUSSIA);
 
                 List<Country> all = new ArrayList<>();
                 all.add(Country.GERMANY);
+                all.add(Country.ITALY);
                 all.add(Country.RUSSIA);
                 all.add(Country.USA);
                 all.add(Country.BRITAIN);

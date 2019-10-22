@@ -4,7 +4,8 @@
   "vehicleType": "jagdpz4l70",
   "displayName": "Jpz IV",
   "countries": [
-    "GERMANY"
+    "GERMANY",
+    "ITALY"
   ],
   "startDate": "19430601",
   "endDate": "19460724",

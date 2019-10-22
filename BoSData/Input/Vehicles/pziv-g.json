@@ -4,7 +4,8 @@
   "vehicleType": "pziv-g",
   "displayName": "PzKw Mk IV",
   "countries": [
-    "GERMANY"
+    "GERMANY",
+    "ITALY"
   ],
   "startDate": "19420301",
   "endDate": "19460724",

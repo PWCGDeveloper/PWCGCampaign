@@ -4,7 +4,8 @@
   "vehicleType": "pz38t",
   "displayName": "Pz 38t",
   "countries": [
-    "GERMANY"
+    "GERMANY",
+    "ITALY"
   ],
   "startDate": "19390901",
   "endDate": "19430201",

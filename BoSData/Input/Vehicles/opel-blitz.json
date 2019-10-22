@@ -4,7 +4,8 @@
   "vehicleType": "opel-blitz",
   "displayName": "truck",
   "countries": [
-    "GERMANY"
+    "GERMANY",
+    "ITALY"
   ],
   "startDate": "19390901",
   "endDate": "19460724",

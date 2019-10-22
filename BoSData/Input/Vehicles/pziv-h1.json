@@ -4,7 +4,8 @@
   "vehicleType": "pziv-h1",
   "displayName": "Tiger I",
   "countries": [
-    "GERMANY"
+    "GERMANY",
+    "ITALY"
   ],
   "startDate": "19430101",
   "endDate": "19460724",

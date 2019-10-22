@@ -4,7 +4,8 @@
   "vehicleType": "stug40l43",
   "displayName": "Stug III",
   "countries": [
-    "GERMANY"
+    "GERMANY",
+    "ITALY"
   ],
   "startDate": "19420201",
   "endDate": "19460724",

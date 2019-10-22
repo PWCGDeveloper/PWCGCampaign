@@ -4,7 +4,8 @@
   "vehicleType": "searchlightger",
   "displayName": "search light",
   "countries": [
-    "GERMANY"
+    "GERMANY",
+    "ITALY"
   ],
   "startDate": "19390901",
   "endDate": "19460724",

@@ -4,7 +4,8 @@
   "vehicleType": "sdkfz7-flakvierling38",
   "displayName": "half track",
   "countries": [
-    "GERMANY"
+    "GERMANY",
+    "ITALY"
   ],
   "startDate": "19390901",
   "endDate": "19460724",
