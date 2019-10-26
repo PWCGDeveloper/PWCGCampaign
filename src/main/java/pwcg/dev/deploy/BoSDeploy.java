@@ -15,6 +15,7 @@ public class BoSDeploy extends DeployBase
         targetFinalDir = "D:\\PWCG\\Deploy\\PWCGBoS";
 	}
 
+    @Override
 	protected HashMap<String, Object> loadDirectoriesToCopyPWCG() 
 	{		
 		super.loadDirectoriesToCopyPWCG();
@@ -71,4 +72,13 @@ public class BoSDeploy extends DeployBase
 
 		return directoriesToCopy;
 	}
+	
+	   
+    @Override
+    protected HashMap<String, Object> loadUnwantedFiles() 
+    {
+        super.loadUnwantedFiles();
+        unwantedFiles.put("PWCGFC.ico", null);
+        return unwantedFiles;
+    }
 }

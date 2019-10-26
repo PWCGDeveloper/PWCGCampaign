@@ -14,6 +14,8 @@ import pwcg.core.utils.Logger.LogLevel;
 public abstract class DeployBase 
 {
 	protected HashMap<String, Object> directoriesToCopy = new HashMap<String, Object>();
+	protected HashMap<String, Object> unwantedFiles = new HashMap<String, Object>();
+
 	protected String sourceRootDir = "D:\\PWCG\\workspacePwcg\\PWCGCampaign";
 	protected String deployDir = "D:\\PWCG\\Deploy";
 	protected String targetDir = "D:\\PWCG\\Deploy\\PWCGCampaign";
@@ -35,7 +37,6 @@ public abstract class DeployBase
             return;
         }
         
-        FCDeploy deploy = new FCDeploy();
         try
         {
             deleteExistingDeploy(targetFinalDir);
@@ -45,14 +46,14 @@ public abstract class DeployBase
             File target = new File(targetDir);
             File targetFinal = new File(targetFinalDir);
 
-            deploy.cleanUnwanted(deployRoot);
+            cleanUnwanted(deployRoot);
             
-            HashMap<String, Object> unwantedFiles = deploy.loadUnwantedFiles();
-            HashMap<String, Object> unwantedFileTypes = deploy.loadUnwantedFileTypes();
+            HashMap<String, Object> unwantedFiles = loadUnwantedFiles();
+            HashMap<String, Object> unwantedFileTypes = loadUnwantedFileTypes();
              
-            Map<String, Object> directoriesToCopy = deploy.loadDirectoriesToCopyPWCG();
-            Map<String, Object> directoriesToMake = deploy.loadDirectoriesToMakePWCG();
-            deploy.copyDirectory(sourceRoot, deployRoot, directoriesToCopy, directoriesToMake, unwantedFiles, unwantedFileTypes);
+            Map<String, Object> directoriesToCopy = loadDirectoriesToCopyPWCG();
+            Map<String, Object> directoriesToMake = loadDirectoriesToMakePWCG();
+            copyDirectory(sourceRoot, deployRoot, directoriesToCopy, directoriesToMake, unwantedFiles, unwantedFileTypes);
             
             target.renameTo(targetFinal);
 
@@ -207,33 +208,31 @@ public abstract class DeployBase
         // Under Medals
 		directoriesToCopy.put("Allied", null);
         directoriesToCopy.put("Axis", null);
-        
-		// From Input/Aces
-		directoriesToCopy.put("Pictures", null);
 		
+        // From Input
         directoriesToCopy.put("Aces", null);
         directoriesToCopy.put("Aircraft", null);
         directoriesToCopy.put("Configuration", null);
+        directoriesToCopy.put("Ranks", null);
         directoriesToCopy.put("Skins", null);
         directoriesToCopy.put("Squadron", null);
-        directoriesToCopy.put("SquadronMovingFront", null);
+        directoriesToCopy.put("StaticObjects", null);
+        directoriesToCopy.put("Vehicles", null);
+        
+        // From Input/Aces
+        directoriesToCopy.put("Pictures", null);
+        
+        // From Input/Skins
         directoriesToCopy.put("Configured", null);
-        directoriesToCopy.put("DoNotUse", null);
-        directoriesToCopy.put("Ranks", null);
 
 		return directoriesToCopy;
 	}
 
     protected HashMap<String, Object> loadUnwantedFiles() 
     {
-        // No directories to make
-        HashMap<String, Object> unwantedFiles = new HashMap<String, Object>();
-        
-        
         unwantedFiles.put(".classpath", null);
         unwantedFiles.put(".project", null);
         unwantedFiles.put("CopyImageFile.bat", null);
-        unwantedFiles.put("PWCGRoF.ico", null);
         unwantedFiles.put("TODO.txt", null);
         unwantedFiles.put("PWCGErrorLog.txt", null);
         unwantedFiles.put("LICENSE", null);
