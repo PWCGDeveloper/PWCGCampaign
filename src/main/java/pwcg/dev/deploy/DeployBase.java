@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
+import pwcg.campaign.utils.TestDriver;
 import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
@@ -12,6 +14,55 @@ import pwcg.core.utils.Logger.LogLevel;
 public abstract class DeployBase 
 {
 	protected HashMap<String, Object> directoriesToCopy = new HashMap<String, Object>();
+	protected String sourceRootDir = "D:\\PWCG\\workspacePwcg\\PWCGCampaign";
+	protected String deployDir = "D:\\PWCG\\Deploy";
+	protected String targetDir = "D:\\PWCG\\Deploy\\PWCGCampaign";
+	protected String targetFinalDir = "";
+
+    static boolean reallyDoDeploy = true;
+
+    public void doDeploy()
+    {
+        if (!reallyDoDeploy)
+        {
+            Logger.log(LogLevel.ERROR, "************  NO DEPLOY  **********");
+            return;
+        }
+        
+        if (TestDriver.getInstance().isEnabled())
+        {
+            Logger.log(LogLevel.ERROR, "************  NO DEPLOY - TEST DRIVER ENABLED  **********");
+            return;
+        }
+        
+        FCDeploy deploy = new FCDeploy();
+        try
+        {
+            deleteExistingDeploy(targetFinalDir);
+ 
+            File deployRoot = new File(deployDir);
+            File sourceRoot = new File(sourceRootDir);
+            File target = new File(targetDir);
+            File targetFinal = new File(targetFinalDir);
+
+            deploy.cleanUnwanted(deployRoot);
+            
+            HashMap<String, Object> unwantedFiles = deploy.loadUnwantedFiles();
+            HashMap<String, Object> unwantedFileTypes = deploy.loadUnwantedFileTypes();
+             
+            Map<String, Object> directoriesToCopy = deploy.loadDirectoriesToCopyPWCG();
+            Map<String, Object> directoriesToMake = deploy.loadDirectoriesToMakePWCG();
+            deploy.copyDirectory(sourceRoot, deployRoot, directoriesToCopy, directoriesToMake, unwantedFiles, unwantedFileTypes);
+            
+            target.renameTo(targetFinal);
+
+            Logger.log(LogLevel.INFO, "************  DONE  **********");
+        }
+        catch (Exception e)
+        {
+            Logger.log(LogLevel.ERROR, e.getMessage());
+        }
+    }
 
     public void cleanUnwanted(File dirToClean)
     throws IOException 
@@ -34,7 +85,7 @@ public abstract class DeployBase
         }
     }
 
-	public void copyDirectory(
+	protected void copyDirectory(
 			File source, 
 			File destination, 
 			Map<String, Object> directoriesToCopy, 
@@ -111,6 +162,8 @@ public abstract class DeployBase
 		unwantedFileTypes.put(".bat", null);
 		unwantedFileTypes.put(".gradle", null);
         unwantedFileTypes.put("gradlew", null);
+        unwantedFileTypes.put(".gitattributes", null);
+        unwantedFileTypes.put(".gitignore", null);
         unwantedFileTypes.put(".ant", null);
 		unwantedFileTypes.put(".classpath", null);
 		unwantedFileTypes.put(".project", null);
@@ -171,11 +224,41 @@ public abstract class DeployBase
 		return directoriesToCopy;
 	}
 
+    protected HashMap<String, Object> loadUnwantedFiles() 
+    {
+        // No directories to make
+        HashMap<String, Object> unwantedFiles = new HashMap<String, Object>();
+        
+        
+        unwantedFiles.put(".classpath", null);
+        unwantedFiles.put(".project", null);
+        unwantedFiles.put("CopyImageFile.bat", null);
+        unwantedFiles.put("PWCGRoF.ico", null);
+        unwantedFiles.put("TODO.txt", null);
+        unwantedFiles.put("PWCGErrorLog.txt", null);
+        unwantedFiles.put("LICENSE", null);
+
+        return unwantedFiles;
+    }
 
 	protected static void deleteExistingDeploy(String targetDir) {
 		FileUtils fileUtils = new FileUtils();
 		fileUtils.deleteRecursive(targetDir);
 	}
 
+
+    protected Map<String, Object> loadDirectoriesToMakePWCG() 
+    {
+        // Directories to make
+        Map<String, Object> directoriesToMake = new TreeMap<String, Object>();
+        directoriesToMake.put("Campaigns", null);
+        directoriesToMake.put("Report", null);
+        directoriesToMake.put("User", null);
+        directoriesToMake.put("Personnel", null);
+        directoriesToMake.put("Pilots", null);
+        directoriesToMake.put("Users", null);
+        
+        return directoriesToMake;
+    }
 
 }

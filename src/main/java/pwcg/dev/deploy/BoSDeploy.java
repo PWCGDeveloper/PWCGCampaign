@@ -1,70 +1,20 @@
 package pwcg.dev.deploy;
 
-import java.io.File;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
-
-import pwcg.campaign.utils.TestDriver;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
 
 public class BoSDeploy extends DeployBase
 {
-	static String sourceRootDir = "D:\\PWCG\\workspacePwcg6\\PWCGCampaign";
-	static String targetDir = "D:\\PWCG\\BosDeploy";
-	
-	static boolean reallyDoDeploy = true;
-
-	static public void main (String[] args)
-	{
-        if (!reallyDoDeploy)
-        {
-            Logger.log(LogLevel.ERROR, "************  NO DEPLOY  **********");
-            return;
-        }
-        
-        if (TestDriver.getInstance().isEnabled())
-        {
-            Logger.log(LogLevel.ERROR, "************  NO DEPLOY - TEST DRIVER ENABLED  **********");
-            return;
-        }
-        
-		BoSDeploy deploy = new BoSDeploy();
-		try
-		{
-			deleteExistingDeploy(targetDir);
- 
-			File targetRoot = new File(targetDir);
-			File sourceRoot = new File(sourceRootDir);
-
-			deploy.cleanUnwanted(targetRoot);
-			
-			Map<String, Object> unwantedFiles = deploy.loadUnwantedFiles();
-			Map<String, Object> unwantedFileTypes = deploy.loadUnwantedFileTypes();
-			
-			Map<String, Object> directoriesToCopy = deploy.loadDirectoriesToCopyPWCG();
-			Map<String, Object> directoriesToMake = deploy.loadDirectoriesToMakePWCG();
-			deploy.copyDirectory(sourceRoot, targetRoot, directoriesToCopy, directoriesToMake, unwantedFiles, unwantedFileTypes);
-			
-			Logger.log(LogLevel.INFO, "************  DONE  **********");
-		}
-		catch (Exception e)
-		{
-			Logger.log(LogLevel.ERROR, e.getMessage());
-		}
-	}
+    static public void main (String[] args)
+    {
+        BoSDeploy bosDeploy = new BoSDeploy();
+        bosDeploy.doDeploy();
+    }
 
 	public BoSDeploy()
 	{
+        targetFinalDir = "D:\\PWCG\\Deploy\\PWCGBoS";
 	}
 
-
-	/**
-	 * Directories to copy - we copy the contents
-	 * 
-	 * @return
-	 */
 	protected HashMap<String, Object> loadDirectoriesToCopyPWCG() 
 	{		
 		super.loadDirectoriesToCopyPWCG();
@@ -121,45 +71,4 @@ public class BoSDeploy extends DeployBase
 
 		return directoriesToCopy;
 	}
-
-	/**
-	 * Project files that should not be deployed
-	 * 
-	 * @return
-	 */
-	protected HashMap<String, Object> loadUnwantedFiles() 
-	{
-		// No directories to make
-		HashMap<String, Object> unwantedFiles = new HashMap<String, Object>();
-		
-		
-		unwantedFiles.put(".classpath", null);
-		unwantedFiles.put(".project", null);
-		unwantedFiles.put("CopyImageFile.bat", null);
-		unwantedFiles.put("PWCGRoF.ico", null);
-		unwantedFiles.put("TODO.txt", null);
-
-		return unwantedFiles;
-	}
-
-	
-	/**
-	 * Directories to make - we make the directory without copying the contents
-	 * 
-	 * @return
-	 */
-	protected Map<String, Object> loadDirectoriesToMakePWCG() 
-	{
-		// Directories to make
-		Map<String, Object> directoriesToMake = new TreeMap<String, Object>();
-		directoriesToMake.put("Campaigns", null);
-		directoriesToMake.put("Report", null);
-        directoriesToMake.put("User", null);
-        directoriesToMake.put("Personnel", null);
-        directoriesToMake.put("Pilots", null);
-        directoriesToMake.put("Users", null);
-		
-		return directoriesToMake;
-	}
-
 }
