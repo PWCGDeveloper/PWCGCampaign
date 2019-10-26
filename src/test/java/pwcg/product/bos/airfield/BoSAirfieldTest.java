@@ -149,24 +149,6 @@ public class BoSAirfieldTest
 	}
 
 	@Test
-	public void windTest() throws PWCGException
-	{
-		Airfield airfield = (Airfield) PWCGContext.getInstance().getAirfieldAllMaps("Rogachevko");
-
-		PWCGContext.getInstance().getCurrentMap().getMapWeather().setWindDirection(0);
-		assert((int) airfield.getTakeoffLocation().getOrientation().getyOri() == 225);
-
-		PWCGContext.getInstance().getCurrentMap().getMapWeather().setWindDirection(90);
-		assert((int) airfield.getTakeoffLocation().getOrientation().getyOri() == 278);
-
-		PWCGContext.getInstance().getCurrentMap().getMapWeather().setWindDirection(180);
-		assert((int) airfield.getTakeoffLocation().getOrientation().getyOri() == 45);
-
-		PWCGContext.getInstance().getCurrentMap().getMapWeather().setWindDirection(270);
-		assert((int) airfield.getTakeoffLocation().getOrientation().getyOri() == 98);
-	}
-
-	@Test
 	public void pathTest() throws PWCGException
 	{
 	    IPWCGContextManager contextManager = PWCGContext.getInstance();

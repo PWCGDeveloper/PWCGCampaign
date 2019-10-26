@@ -208,11 +208,6 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
         SoundManager.getInstance().playSound("Stapling.WAV");
 
         int leaveTimeDays = getLeaveTime();
-        
-        if (leaveTimeDays < 0 || leaveTimeDays > 60)
-        {
-            throw new PWCGUserException ("Your country cannot spare you for that long");
-        }
 
         LeaveEvent leaveEvent = new LeaveEvent(referencePlayer.getSquadronId());
         leaveEvent.setLeaveTime(leaveTimeDays);

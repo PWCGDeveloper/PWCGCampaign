@@ -17,6 +17,7 @@ import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.resupply.depo.EquipmentReplacementWeightUsage;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.product.bos.country.BoSServiceManager;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -139,7 +140,7 @@ public class EquipmentReplacementWeightUsageTest
     public void testAmericanReplacementArchTypes() throws PWCGException
     {
         lateCampaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_WEST);
-        ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(10102);
+        ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(BoSServiceManager.USAAF);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);
         
@@ -153,7 +154,7 @@ public class EquipmentReplacementWeightUsageTest
     public void testBritishReplacementArchTypes() throws PWCGException
     {
         lateCampaign = CampaignCache.makeCampaign(SquadronTestProfile.JG_51_PROFILE_WEST);
-        ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(10103);
+        ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(BoSServiceManager.RAF);
         SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(lateCampaign.getDate(), service);
         

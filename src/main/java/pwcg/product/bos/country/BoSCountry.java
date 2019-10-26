@@ -92,14 +92,6 @@ public class BoSCountry extends CountryBase implements Cloneable, ICountry
         {
             return countryToCountryCode(Country.GERMANY);
         }
-        else if (country == Country.USA)
-        {
-            return countryToCountryCode(Country.RUSSIA);
-        }
-        else if (country == Country.BRITAIN)
-        {
-            return countryToCountryCode(Country.RUSSIA);
-        }
 
         return getCountryCode();
     }

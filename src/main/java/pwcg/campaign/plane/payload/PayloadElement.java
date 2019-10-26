@@ -48,6 +48,7 @@ public enum PayloadElement
     KG100x4(PayloadElementCategory.ORDNANCE_BOMB, "100 kg Bomb x4", 400),
     KG250x2(PayloadElementCategory.ORDNANCE_BOMB, "250 kg Bomb x2", 500),
     KG300x1(PayloadElementCategory.ORDNANCE_BOMB, "300 kg Bomb x1", 300),
+    KG500x1(PayloadElementCategory.ORDNANCE_BOMB, "500 kg Bomb x1", 300),
     LE_PRIEUR_ROCKETS(PayloadElementCategory.ORDNANCE_BOMB, "Le Prieur rockets", 20),
     P51_ROCKETS(PayloadElementCategory.ORDNANCE_BOMB, "P51 rockets", 80),
     P38_BOMBS(PayloadElementCategory.ORDNANCE_BOMB, "P38 Bombs", 80),

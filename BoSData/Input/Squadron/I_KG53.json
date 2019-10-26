@@ -12,7 +12,7 @@
     },
     {
       "archType": "me262",
-      "squadronIntroduction": "19441001",
+      "squadronIntroduction": "19440901",
       "squadronWithdrawal": "19450601"
     }
   ],
@@ -42,14 +42,14 @@
     "19431004": "Bagerovo",
     "19431008": "Zamorsk",
     "19440901": "Volkel",
-    "19441001": "Essen-Mulheim",
-    "19441101": "Dortmund",
-    "19441220": "Dortmund",
-    "19441225": "Dortmund",
-    "19441229": "Dortmund",
-    "19450207": "Dortmund",
-    "19450310": "Munster-Handorf",
-    "19450404": "Gelnhausen"
+    "19441001": "Twente",
+    "19441101": "Twente",
+    "19441220": "Twente",
+    "19441225": "Twente",
+    "19441229": "Twente",
+    "19450207": "Twente",
+    "19450310": "Twente",
+    "19450404": "Rheine"
   },
   "skins": [
     {
