@@ -27,13 +27,12 @@ import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogCategory;
 import pwcg.mission.Unit;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightStartPosition;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuAttack;
 import pwcg.mission.mcu.McuTREntity;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.group.IPlaneRemover;
-import pwcg.mission.mcu.group.PlaneRemoverCoop;
-import pwcg.mission.mcu.group.PlaneRemoverSinglePlayer;
 
 /**
  * Plane is an instance of a plane.  It derives from plane type and adds a crew, payload, fuel state, and
@@ -67,7 +66,6 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
     protected int aiRTBDecision = 1;
     protected int deleteAfterDeath = 1;
 
-    protected IPlaneRemover planeRemover = null;
     protected IPlanePayload payload = null;
 
     protected McuTREntity entity = new McuTREntity();
@@ -93,8 +91,7 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
         this.setName(pilot.getNameAndRank());
         this.setDesc(pilot.getNameAndRank());
         
-        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        startInAir = productSpecificConfiguration.startInAir();
+        startInAir = FlightStartPosition.START_IN_AIR;
     }
 
     public void initializeAttackEntity(int index)
@@ -142,20 +139,6 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
         if (flightLeader.getIndex() != index)
         {
             entity.setTarget(flightLeader.getEntity().getIndex());
-        }
-    }
-
-    public void createPlaneRemover (Flight flight, PlaneMCU playerPlane) throws PWCGException 
-    {
-        if (campaign.isCoop())
-        {
-            planeRemover = new PlaneRemoverCoop();
-            planeRemover.initialize(flight, this, playerPlane);
-        }
-        else
-        {
-            planeRemover = new PlaneRemoverSinglePlayer();
-            planeRemover.initialize(flight, this, playerPlane);
         }
     }
 
@@ -332,11 +315,6 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
             onSpawnTimer.write(writer);
             attackTimer.write(writer);
             attackEntity.write(writer);
-
-            if (planeRemover != null)
-            {
-                planeRemover.write(writer);
-            }
         }
         catch (IOException e)
         {
@@ -344,15 +322,10 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
             throw new PWCGIOException(e.getMessage());
         }
     }
-    
 
-    /**
-     * @return
-     */
     public boolean getStartInAir()
     {
-        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int startInAirVal = productSpecificConfiguration.startInAir();
+        int startInAirVal = FlightStartPosition.START_IN_AIR;
         if (startInAir == startInAirVal)
         {
             return true;
@@ -550,11 +523,6 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
         this.setSide(country.getSide());
     }
 
-    public IPlaneRemover getPlaneRemover()
-    {
-        return this.planeRemover;
-    }
-
     public double getFuel()
     {
         return fuel;
@@ -605,5 +573,11 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
     public void setLinkTrId(int linkTrId)
     {
         this.linkTrId = linkTrId;
+    }
+
+    public IPlaneRemover getPlaneRemover()
+    {
+        // Removed because it deletes planes accidentally
+        return null;
     }
 }

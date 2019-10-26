@@ -1,107 +1,29 @@
-package pwcg.product.bos.io;
+package pwcg.mission.io;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
-import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.group.FakeAirfield;
-import pwcg.campaign.group.FixedPosition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionBlockDamage;
-import pwcg.mission.MissionBlockSmoke;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.ground.vehicle.VehicleFactory;
-import pwcg.mission.io.MissionFileWriter;
-import pwcg.mission.mcu.group.SmokeGroup;
 import pwcg.mission.options.MapSeasonalParameters;
 import pwcg.mission.options.MapWeather;
 import pwcg.mission.options.MapWeather.WindLayer;
 import pwcg.mission.options.MissionOptions;
 
-
-public class BoSMissionFile extends MissionFileWriter
-{	
-	public BoSMissionFile (Mission mission)
+public class MissionFileOptionWriter
+{
+    private Mission mission;
+    
+	public MissionFileOptionWriter (Mission mission)
 	{
-		super(mission);
+		this.mission = mission;
 	}
-    
-    @Override
-    protected List<FixedPosition> adjustBlockDamage(List<FixedPosition> fixedPositions) throws PWCGException
-    {
-        MissionBlockDamage missionBlockDamage = new MissionBlockDamage(mission);      
-        return missionBlockDamage.setDamageToFixedPositions(fixedPositions);
-    }
-    
-    @Override
-    protected void adjustBlockSmoke(List<FixedPosition> fixedPositions) throws PWCGException
-    {
-        MissionBlockSmoke missionBlockSmoke = new MissionBlockSmoke(mission);      
-        missionBlockSmoke.addSmokeToDamagedAreas(fixedPositions);
-    }
-
-    @Override
-    protected void writeProductSpecific(BufferedWriter writer) throws PWCGException
-    {
-        writeFieldsInMission(writer);
-        writeRadioBeacon(writer);
-        writeFakeAirfieldForAiReturnToBase(writer);
-        writeSmoke(writer);
-
-    }
-
-    private void writeFieldsInMission(BufferedWriter writer) throws PWCGException
-    {
-        List<IAirfield>  fieldsForPatrol = mission.getFieldsForPatrol();
-        for (IAirfield field : fieldsForPatrol)
-        {
-            if (!field.isGroup())
-            {
-                field.write(writer);
-            }
-        }
-    }
-
-    private void writeRadioBeacon(BufferedWriter writer) throws PWCGException
-    {
-        for (Flight playerFlight:  mission.getMissionFlightBuilder().getPlayerFlights())
-        {
-            IVehicle radioBeacon = VehicleFactory.createVehicle(playerFlight.getCountry(), mission.getCampaign().getDate(), VehicleClass.RadioBeacon);
-            if (radioBeacon != null)
-            {
-                radioBeacon.write(writer);
-            }
-        }
-    }
-
-    private void writeFakeAirfieldForAiReturnToBase(BufferedWriter writer) throws PWCGException
-    {
-        Map<String, IAirfield> allAirFields =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAllAirfields();
-        for (IAirfield airfield : allAirFields.values())
-        {
-            FakeAirfield fakeAirfiield = new FakeAirfield(airfield, mission.getCampaign().getDate());
-            fakeAirfiield.write(writer);
-        }
-    }
-
-    private void writeSmoke(BufferedWriter writer) throws PWCGException
-    {
-        for (SmokeGroup smokeGroup : mission.getMissionEffects().getSmokeGroups())
-        {
-            smokeGroup.write(writer);
-        }
-    }
-
-    protected void writeMissionOptions(BufferedWriter writer) throws PWCGException 
+	
+	public void writeMissionOptions(BufferedWriter writer) throws PWCGException 
     {
         try
         {
@@ -192,7 +114,29 @@ public class BoSMissionFile extends MissionFileWriter
             writer.newLine();
             writer.write("    101 : 1;");
             writer.newLine();
+            writer.write("    102 : 1;");
+            writer.newLine();
+            writer.write("    103 : 1;");
+            writer.newLine();
             writer.write("    201 : 2;");
+            writer.newLine();
+            writer.write("    202 : 2;");
+            writer.newLine();
+            writer.write("    203 : 2;");
+            writer.newLine();
+            writer.write("    301 : 3;");
+            writer.newLine();
+            writer.write("    302 : 3;");
+            writer.newLine();
+            writer.write("    303 : 3;");
+            writer.newLine();
+            writer.write("    304 : 3;");
+            writer.newLine();
+            writer.write("    305 : 3;");
+            writer.newLine();
+            writer.write("    401 : 4;");
+            writer.newLine();
+            writer.write("    402 : 4;");
             writer.newLine();
             writer.write("  }");
             writer.newLine();
@@ -208,5 +152,4 @@ public class BoSMissionFile extends MissionFileWriter
             throw new PWCGIOException(e.getMessage());
         }
     }
-
 }

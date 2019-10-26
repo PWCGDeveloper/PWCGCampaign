@@ -17,6 +17,6 @@ public class PlaneRemoverSinglePlayer extends PlaneRemoverCoop
         
         // For single player we want to remove based on proximity to the player and not any plane
         // in a coalition.  Do this by adding an OL to the players plane.
-        deletePlane.setObject(playerPlane.getEntity().getIndex());
+        outOfEnemyRangeProximity.setObject(playerPlane.getEntity().getIndex());
     }
 }

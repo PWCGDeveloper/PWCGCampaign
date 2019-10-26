@@ -4,10 +4,14 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.group.FakeAirfield;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
@@ -17,6 +21,8 @@ import pwcg.core.utils.Logger;
 import pwcg.mission.AssaultInformation;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBlockBuilder;
+import pwcg.mission.MissionBlockDamage;
+import pwcg.mission.MissionBlockSmoke;
 import pwcg.mission.ambient.AmbientGroundUnitBuilder;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.ground.unittypes.GroundUnit;
@@ -24,24 +30,20 @@ import pwcg.mission.ground.unittypes.GroundUnitSpawning;
 import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
+import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.ground.vehicle.VehicleFactory;
 import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
+import pwcg.mission.mcu.group.SmokeGroup;
 import pwcg.mission.object.WindSock;
 
-public abstract class MissionFileWriter implements IMissionFile 
-{
-    protected String missionFileName = "";
-    
-    protected Mission mission = null;
+public class MissionFileWriter implements IMissionFile 
+{    
+    private Mission mission = null;
 	
 	public MissionFileWriter (Mission mission)
 	{
 		this.mission = mission;
 	}
-	
-    protected abstract List<FixedPosition> adjustBlockDamage(List<FixedPosition> fixedPositions) throws PWCGException;
-    protected abstract void adjustBlockSmoke(List<FixedPosition> fixedPositions) throws PWCGException;
-    protected abstract void writeProductSpecific(BufferedWriter writer) throws PWCGException;
-    protected abstract void writeMissionOptions(BufferedWriter writer) throws PWCGIOException, PWCGException;
 
     @Override
     public void writeMission() throws PWCGException 
@@ -75,6 +77,12 @@ public abstract class MissionFileWriter implements IMissionFile
             throw new PWCGIOException(e.getMessage());
         }
 	}
+
+    private void writeMissionOptions(BufferedWriter writer) throws PWCGException
+    {
+        MissionFileOptionWriter optionWriter = new MissionFileOptionWriter(mission);
+        optionWriter.writeMissionOptions(writer);
+    }
 
     private BufferedWriter createWriter() throws PWCGException, IOException
     {
@@ -181,7 +189,7 @@ public abstract class MissionFileWriter implements IMissionFile
     	}
     }
 
-    protected String getMissionFilePath(String fileName) throws PWCGException 
+    private String getMissionFilePath(String fileName) throws PWCGException 
 	{
 		String filepath = "..\\Data\\Missions\\" + fileName;
 		if (mission.getCampaign().isCoop())
@@ -200,4 +208,71 @@ public abstract class MissionFileWriter implements IMissionFile
 		
 		return filename;
 	}
+	
+    
+    private List<FixedPosition> adjustBlockDamage(List<FixedPosition> fixedPositions) throws PWCGException
+    {
+        MissionBlockDamage missionBlockDamage = new MissionBlockDamage(mission);      
+        return missionBlockDamage.setDamageToFixedPositions(fixedPositions);
+    }
+    
+    private void adjustBlockSmoke(List<FixedPosition> fixedPositions) throws PWCGException
+    {
+        MissionBlockSmoke missionBlockSmoke = new MissionBlockSmoke(mission);      
+        missionBlockSmoke.addSmokeToDamagedAreas(fixedPositions);
+    }
+
+    private void writeProductSpecific(BufferedWriter writer) throws PWCGException
+    {
+        writeFieldsInMission(writer);
+        writeRadioBeacon(writer);
+        writeFakeAirfieldForAiReturnToBase(writer);
+        writeSmoke(writer);
+
+    }
+
+    private void writeFieldsInMission(BufferedWriter writer) throws PWCGException
+    {
+        List<IAirfield>  fieldsForPatrol = mission.getFieldsForPatrol();
+        for (IAirfield field : fieldsForPatrol)
+        {
+            if (!field.isGroup())
+            {
+                field.write(writer);
+            }
+        }
+    }
+
+    private void writeRadioBeacon(BufferedWriter writer) throws PWCGException
+    {
+        if (PWCGContext.getProduct() == PWCGProduct.BOS)
+        {
+            for (Flight playerFlight:  mission.getMissionFlightBuilder().getPlayerFlights())
+            {
+                IVehicle radioBeacon = VehicleFactory.createVehicle(playerFlight.getCountry(), mission.getCampaign().getDate(), VehicleClass.RadioBeacon);
+                if (radioBeacon != null)
+                {
+                    radioBeacon.write(writer);
+                }
+            }
+        }
+    }
+
+    private void writeFakeAirfieldForAiReturnToBase(BufferedWriter writer) throws PWCGException
+    {
+        Map<String, IAirfield> allAirFields =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAllAirfields();
+        for (IAirfield airfield : allAirFields.values())
+        {
+            FakeAirfield fakeAirfiield = new FakeAirfield(airfield, mission.getCampaign().getDate());
+            fakeAirfiield.write(writer);
+        }
+    }
+
+    private void writeSmoke(BufferedWriter writer) throws PWCGException
+    {
+        for (SmokeGroup smokeGroup : mission.getMissionEffects().getSmokeGroups())
+        {
+            smokeGroup.write(writer);
+        }
+    }
 }

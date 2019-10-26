@@ -8,7 +8,6 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IStaticPlane;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjectPlacer;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjects;
@@ -214,34 +213,11 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
 
 	private Runway selectRunway() throws PWCGException
 	{
-		// Note: wind direction is as specified in mission file, i.e. heading wind blows to
-		// Adjust by 180 degrees to give standard direction
-		double windDirection = MathUtils.adjustAngle(PWCGContext.getInstance().getCurrentMap().getMapWeather().getWindDirection(), 180);
+		RunwayChooser runwayChooser = new RunwayChooser();
+		runwayChooser.selectRunway(runways);
 
-		double bestOffset = 1000.0;
-		Runway bestRunway = null;
-		boolean invertRunway = false;
-
-		for (Runway r : runways) {
-			double offset = MathUtils.calcNumberOfDegrees(windDirection, r.getHeading());
-			boolean invert = false;
-
-			if (offset > 90.0) {
-				offset = 180 - offset;
-				invert = true;
-			}
-
-			if (offset < bestOffset) {
-				bestOffset = offset;
-				bestRunway = r;
-				invertRunway = invert;
-			}
-		}
-
-		if (invertRunway)
-			return bestRunway.invert();
-		else
-			return bestRunway.copy();
+		Runway bestRunway = runwayChooser.getBestRunway();
+        return bestRunway.copy();
 	}
 
 	private String getChartPoint(int ptype, Coordinate point) throws PWCGException

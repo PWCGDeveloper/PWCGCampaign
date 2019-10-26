@@ -10,10 +10,10 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.dialogs.ErrorDialog;
+import pwcg.gui.display.model.CombatReportBuilder;
 import pwcg.gui.rofmap.debrief.AAREventPanel;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
-import pwcg.ui.display.model.CombatReportBuilder;
 
 public class AARCombatReportPanel extends AAREventPanel
 {

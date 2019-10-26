@@ -2,8 +2,6 @@ package pwcg.mission.flight;
 
 import java.util.List;
 
-import pwcg.campaign.api.IProductSpecificConfiguration;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -34,8 +32,7 @@ public class FlightPositionRunwayStart
 
             plane.populateEntity(flight, flightLeader);
             
-            IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-            int startOnRunwayVal = productSpecificConfiguration.startOnRunway();
+            int startOnRunwayVal = FlightStartPosition.START_ON_RUNWAY;
             plane.setStartInAir(startOnRunwayVal);
         }
     }

@@ -8,9 +8,6 @@ import pwcg.mission.ground.BattleSize;
 
 public class FCProductSpecificConfiguration implements IProductSpecificConfiguration
 {
-    private static final int START_IN_AIR = 1;
-    private static final int START_ON_RUNWAY = 0;
-    private static final int START_PARKED = 0;
     private static final int INTERCEPT_LOOP_ANGLE = 60;
     private static final int INNER_LOOP_DISTANCE = 6000;
     private static final int CLIMB_DISTANCE = 5000;
@@ -72,24 +69,6 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     public TakeoffFormation getTakeoffFormation()
     {
         return TakeoffFormation.STAGGERED;
-    }
-
-    @Override
-    public int startInAir()
-    {
-        return START_IN_AIR;
-    }
-
-    @Override
-    public int startOnRunway()
-    {
-        return START_ON_RUNWAY;
-    }
-
-    @Override
-    public int startParked()
-    {
-        return START_PARKED;
     }
     
     @Override

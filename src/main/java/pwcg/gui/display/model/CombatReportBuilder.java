@@ -1,4 +1,4 @@
-package pwcg.ui.display.model;
+package pwcg.gui.display.model;
 
 import java.util.Date;
 import java.util.List;

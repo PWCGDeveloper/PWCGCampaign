@@ -44,7 +44,7 @@ public class PlaneRemoverCoop implements IPlaneRemover
 
     public void initialize(Flight flight, PlaneMCU planeToRemove, PlaneMCU playerPlane) throws PWCGException 
     {
-        initialize(flight, playerPlane);
+        initialize(flight, planeToRemove);
     }
     
     protected void initialize(Flight flight, PlaneMCU planeToRemove) throws PWCGException 

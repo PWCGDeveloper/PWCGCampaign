@@ -163,7 +163,6 @@ public class AirfieldBuilderArras
         Runway runway = new Runway();
         runway.setStartPos(runwayStart.getPosition().copy());
         runway.setEndPos(runwayEnd.getPosition().copy());
-        runway.setStartPos(runwayStart.getPosition().copy());
         airfieldRunwayList.add(runway);
     }
 

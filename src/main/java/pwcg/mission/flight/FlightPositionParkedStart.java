@@ -1,7 +1,5 @@
 package pwcg.mission.flight;
 
-import pwcg.campaign.api.IProductSpecificConfiguration;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.PlaneType.PlaneSize;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -37,8 +35,7 @@ public class FlightPositionParkedStart
             // This must be done last
             plane.populateEntity(flight, flightLeader);
 
-            IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-            int startParkedVal = productSpecificConfiguration.startParked();
+            int startParkedVal = FlightStartPosition.START_PARKED;
             plane.setStartInAir(startParkedVal);
 
             ++i;
