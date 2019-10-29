@@ -5,7 +5,6 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.waypoint.WaypointAction;
-import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class PatrolFlightValidator 

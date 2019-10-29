@@ -7,7 +7,6 @@ import pwcg.mission.flight.AttackMcuSequence;
 import pwcg.mission.flight.GroundTargetAttackFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.WaypointAction;
-import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class GroundAttackFlightValidator 

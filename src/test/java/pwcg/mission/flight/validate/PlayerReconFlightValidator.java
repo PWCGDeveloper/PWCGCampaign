@@ -3,11 +3,9 @@ package pwcg.mission.flight.validate;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.recon.PlayerReconFlight;
 import pwcg.mission.flight.recon.ReconPhotoMcuSet;
 import pwcg.mission.flight.waypoint.WaypointAction;
-import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuCounter;
 import pwcg.mission.mcu.McuMedia;
 import pwcg.mission.mcu.McuTimer;

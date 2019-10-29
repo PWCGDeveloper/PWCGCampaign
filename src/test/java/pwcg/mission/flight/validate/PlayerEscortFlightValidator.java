@@ -11,7 +11,6 @@ import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.escort.PlayerEscortFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.WaypointAction;
-import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuCover;
 import pwcg.mission.mcu.McuForceComplete;
 import pwcg.mission.mcu.McuTimer;

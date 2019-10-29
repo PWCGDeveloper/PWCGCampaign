@@ -5,7 +5,6 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.artySpot.PlayerArtillerySpotFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
-import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
