@@ -1,7 +1,7 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "vehicles\\pziv-h1\\",
-  "vehicleType": "pziv-h1",
+  "modelDir": "vehicles\\pzvi-h1\\",
+  "vehicleType": "pzvi-h1",
   "displayName": "Tiger I",
   "countries": [
     "GERMANY",
