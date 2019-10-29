@@ -66,17 +66,10 @@ public class PlayerArtillerySpotFlightValidator
 	{
 		boolean artySpotFound = false;
 
-		for (McuWaypoint waypoint : attackFlight.getWaypointPackage().getWaypointsForLeadPlane())
-		{
-			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TAKEOFF))
-			{
-				assert(waypoint.getPriority() == WaypointPriority.PRIORITY_HIGH);
-			}
-			else
-			{
-				assert(waypoint.getPriority() == WaypointPriority.PRIORITY_MED);
-			}
-			
+        WaypointPriorityValidator.validateWaypointTypes(attackFlight);
+
+        for (McuWaypoint waypoint : attackFlight.getWaypointPackage().getWaypointsForLeadPlane())
+		{			
 			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_SPOT))
 			{
 				artySpotFound = true;

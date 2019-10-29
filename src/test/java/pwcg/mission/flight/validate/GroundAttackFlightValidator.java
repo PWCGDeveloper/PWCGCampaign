@@ -63,31 +63,27 @@ public class GroundAttackFlightValidator
 		boolean attackIngressFound = false;
 		boolean attackFinalFound = false;
 		boolean attackEgressFound = false;
+		
+		WaypointPriorityValidator.validateWaypointTypes(attackFlight);
 
-		for (McuWaypoint waypoint : attackFlight.getWaypointPackage().getWaypointsForLeadPlane())
-		{
-			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TAKEOFF))
-			{
-				assert(waypoint.getPriority() == WaypointPriority.PRIORITY_HIGH);
-			}
-			else
-			{
-				assert(waypoint.getPriority() == WaypointPriority.PRIORITY_MED);
-			}
-			
-			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_APPROACH))
-			{
-				attackIngressFound = true;
-			}
-			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_FINAL))
-			{
-				attackFinalFound = true;
-			}
-			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_EGRESS))
-			{
-				attackEgressFound = true;
-			}
-		}
+        for (List<McuWaypoint> waypoints : attackFlight.getWaypointPackage().getAllWaypointsSets().values())
+        {
+            for (McuWaypoint waypoint : waypoints)
+            {
+    			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_APPROACH))
+    			{
+    				attackIngressFound = true;
+    			}
+    			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_FINAL))
+    			{
+    				attackFinalFound = true;
+    			}
+    			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_EGRESS))
+    			{
+    				attackEgressFound = true;
+    			}
+    		}
+        }
 		
 		assert(attackIngressFound);
 		assert(attackFinalFound);

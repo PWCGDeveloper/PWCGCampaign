@@ -40,7 +40,7 @@ import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
 
 @RunWith(Parameterized.class)
-public class PlayerFlightRoFTypeTest 
+public class PlayerFlightFCTypeTest 
 {    
     @Parameterized.Parameters
     public static List<Object[]> data() 

@@ -17,7 +17,6 @@ import pwcg.mission.flight.waypoint.IngressWaypointNearFront;
 import pwcg.mission.flight.waypoint.PathAlongFront;
 import pwcg.mission.flight.waypoint.PathAlongFrontData;
 import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -54,8 +53,6 @@ public class ContactPatrolWaypoints
         
         McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
         waypoints.add(approachWaypoint);
-
-        WaypointGeneratorUtils.setWaypointsNonFighterPriority(flight, waypoints);
 
         return waypoints;
     }

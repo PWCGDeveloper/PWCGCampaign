@@ -5,7 +5,6 @@ import java.util.List;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
@@ -149,9 +148,6 @@ public class FlightFinalizer
 
     private void finalizeVirtualFlight() throws PWCGException 
     {
-        ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();
-
-        // Create virtual waypoints
         if (flight.getWaypointPackage() instanceof VirtualWaypointPackage)
         {
             buildVirtualWaypoints();            

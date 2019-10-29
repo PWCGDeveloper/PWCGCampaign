@@ -77,4 +77,20 @@ public enum FlightTypes
          }
         return flightTypesByCategory;
     }
+    
+    public static boolean isHighPriorityFlight(FlightTypes flightType)
+    {
+        if (flightType == FlightTypes.BOMB ||
+            flightType == FlightTypes.ANTI_SHIPPING_BOMB ||
+            flightType == FlightTypes.STRATEGIC_BOMB ||
+            flightType == FlightTypes.PARATROOP_DROP ||
+            flightType == FlightTypes.CARGO_DROP ||
+            flightType == FlightTypes.TRANSPORT ||
+            flightType == FlightTypes.RECON)
+        {
+            return true;
+        }
+         
+        return false;
+    }
 }

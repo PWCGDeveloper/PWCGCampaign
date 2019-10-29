@@ -12,6 +12,7 @@ import pwcg.campaign.plane.Role;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class WaypointGeneratorUtils 
@@ -111,19 +112,35 @@ public class WaypointGeneratorUtils
         return false;
     }
 
-	public static void setWaypointsNonFighterPriority(Flight flight, List<McuWaypoint> waypoints)
+	public static void setWaypointsNonFighterPriority(Flight flight)
 	{
-	    if (!flight.getPlanes().get(0).isPrimaryRole(Role.ROLE_FIGHTER))
+	    for (List<McuWaypoint> waypoints : flight.getWaypointPackage().getAllWaypointsSets().values())
 	    {
-    		for (McuWaypoint waypoint : waypoints)
-    		{
-    			if (waypoint.getPriority().getPriorityValue() < WaypointPriority.PRIORITY_MED.getPriorityValue())
-    			{
-    				waypoint.setPriority(WaypointPriority.PRIORITY_MED);
-    			}
-    		}
+            for (McuWaypoint waypoint : waypoints)
+            {
+                setWaypointPriorityForNonFIghters(flight, waypoint);
+    	    }
 	    }
 	}
+
+    private static void setWaypointPriorityForNonFIghters(Flight flight, McuWaypoint waypoint)
+    {
+        if (!flight.getPlanes().get(0).isPrimaryRole(Role.ROLE_FIGHTER))
+        {
+            if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TAKEOFF)
+            {
+                waypoint.setPriority(WaypointPriority.PRIORITY_HIGH);
+            }
+            else
+            {
+                waypoint.setPriority(WaypointPriority.PRIORITY_MED);
+                if (FlightTypes.isHighPriorityFlight(flight.getFlightType()))
+                {
+                    waypoint.setPriority(WaypointPriority.PRIORITY_HIGH);
+                }
+            }
+        }
+    }
 
 	public static List<McuWaypoint> getTargetWaypoints(List<McuWaypoint> playerWaypoints)
     {

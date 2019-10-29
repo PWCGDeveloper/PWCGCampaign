@@ -15,7 +15,6 @@ import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
 import pwcg.mission.flight.waypoint.ClimbWaypointGenerator;
 import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class FerryWaypoints
@@ -49,8 +48,6 @@ public class FerryWaypoints
         
         McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
         waypoints.add(approachWaypoint);
-
-        WaypointGeneratorUtils.setWaypointsNonFighterPriority(flight, waypoints);
 
         return waypoints;
     }

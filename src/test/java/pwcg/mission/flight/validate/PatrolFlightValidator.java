@@ -49,17 +49,10 @@ public class PatrolFlightValidator
     {
         boolean patrolFound = false;
 
+        WaypointPriorityValidator.validateWaypointTypes(flight);
+
         for (McuWaypoint waypoint : flight.getWaypointPackage().getWaypointsForLeadPlane())
         {
-            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TAKEOFF))
-            {
-                assert(waypoint.getPriority() == WaypointPriority.PRIORITY_HIGH);
-            }
-            else
-            {
-                assert(waypoint.getPriority() == WaypointPriority.PRIORITY_LOW);
-            }
-            
             if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_PATROL))
             {
                 patrolFound = true;

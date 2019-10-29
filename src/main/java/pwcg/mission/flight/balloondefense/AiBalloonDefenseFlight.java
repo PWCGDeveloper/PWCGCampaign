@@ -26,12 +26,6 @@ public class AiBalloonDefenseFlight extends Flight
     }
 
 	@Override
-	public void createUnitMission() throws PWCGException  
-	{
-	    super.createUnitMission();
-	}
-
-	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
         int waypointSpeed = getPlanes().get(0).getCruisingSpeed();

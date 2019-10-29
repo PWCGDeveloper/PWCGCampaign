@@ -13,7 +13,6 @@ import pwcg.mission.flight.waypoint.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.GroundAttackWaypointHelper;
 import pwcg.mission.flight.waypoint.IIngressWaypoint;
 import pwcg.mission.flight.waypoint.IngressWaypointNearFront;
-import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class DiveBombingWaypoints
@@ -49,8 +48,6 @@ public class DiveBombingWaypoints
         
         McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
         waypoints.add(approachWaypoint);
-
-        WaypointGeneratorUtils.setWaypointsNonFighterPriority(flight, waypoints);
 
         return waypoints;
     }

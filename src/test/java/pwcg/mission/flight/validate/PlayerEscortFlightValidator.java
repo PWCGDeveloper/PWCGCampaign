@@ -159,17 +159,10 @@ public class PlayerEscortFlightValidator
 	{
 		boolean rendezvousFound = false;
 
+		WaypointPriorityValidator.validateWaypointTypes(playerFlight);
+
 		for (McuWaypoint waypoint : playerFlight.getWaypointPackage().getWaypointsForLeadPlane())
 		{
-			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TAKEOFF))
-			{
-				assert(waypoint.getPriority() == WaypointPriority.PRIORITY_HIGH);
-			}
-			else
-			{
-				assert(waypoint.getPriority() == WaypointPriority.PRIORITY_LOW);
-			}
-			
 			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_RENDEZVOUS))
 			{
 				rendezvousFound = true;

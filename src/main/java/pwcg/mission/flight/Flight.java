@@ -34,6 +34,7 @@ import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.ActualWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.ground.GroundUnitCollection;
@@ -93,7 +94,8 @@ public abstract class Flight extends Unit
     {
         createWaypointPackage();
         createWaypoints();
-        setInitialPosition();        
+        FlightPositionSetter.setPlayerFlightInitialPosition(this);
+        WaypointGeneratorUtils.setWaypointsNonFighterPriority(this);
         createTakeoff();
         createLanding();
         createActivation();
@@ -124,11 +126,6 @@ public abstract class Flight extends Unit
         waypointPackage.setWaypoints(waypointList);
     }
 
-    protected void setInitialPosition() throws PWCGException
-    {
-        FlightPositionSetter.setPlayerFlightInitialPosition(this);
-    }
-    
     protected void createTakeoff() throws PWCGException
     {
         takeoff = TakeoffBuilder.createTakeoff(this);

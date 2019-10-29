@@ -17,12 +17,6 @@ public class PatrolFlight extends Flight
 		super (flightInformation, missionBeginUnit);
 	}
 
-    @Override
-    public void createUnitMission() throws PWCGException 
-    {
-        super.createUnitMission();
-    }
-
 	@Override
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{

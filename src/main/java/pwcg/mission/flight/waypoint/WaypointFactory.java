@@ -16,7 +16,7 @@ public class WaypointFactory
 	
 	public static McuWaypoint createTakeOffWaypointType()
 	{
-		McuWaypoint waypoint = new McuWaypoint(WaypointType.CLIMB_WAYPOINT);
+		McuWaypoint waypoint = new McuWaypoint(WaypointType.TAKEOFF_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_TAKEOFF);
 		waypoint.setPriority(WaypointPriority.PRIORITY_HIGH);			
 		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);

@@ -3,6 +3,7 @@ package pwcg.mission.flight.validate;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.recon.PlayerReconFlight;
 import pwcg.mission.flight.recon.ReconPhotoMcuSet;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -72,21 +73,13 @@ public class PlayerReconFlightValidator
 		return isIndexInTargetList;
 	}
 
-	private void validateWaypointTypes(PlayerReconFlight attackFlight) 
+	private void validateWaypointTypes(PlayerReconFlight flight) 
 	{
-		boolean reconFound = false;
-
-		for (McuWaypoint waypoint : attackFlight.getWaypointPackage().getWaypointsForLeadPlane())
+		WaypointPriorityValidator.validateWaypointTypes(flight);
+		
+        boolean reconFound = false;
+		for (McuWaypoint waypoint : flight.getWaypointPackage().getWaypointsForLeadPlane())
 		{
-			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TAKEOFF))
-			{
-				assert(waypoint.getPriority() == WaypointPriority.PRIORITY_HIGH);
-			}
-			else
-			{
-				assert(waypoint.getPriority() == WaypointPriority.PRIORITY_MED);
-			}
-			
 			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_RECON))
 			{
 				reconFound = true;

@@ -29,10 +29,4 @@ public class InterceptOpposingFlight extends BombingFlight
         
         return waypointList;
 	}
-	
-	@Override
-    public void createUnitMission() throws PWCGException 
-    {
-        super.createUnitMission();
-    }
 }
