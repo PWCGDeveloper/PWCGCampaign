@@ -12,10 +12,10 @@ public class BoSCountry extends CountryBase implements Cloneable, ICountry
 {
     public static int NEUTRAL_CODE = 0;
     public static int RUSSIA_CODE = 101;
+    public static int BRITAIN_CODE = 102;
+    public static int USA_CODE = 103;
     public static int GERMANY_CODE = 201;
     public static int ITALY_CODE = 202;
-    public static int USA_CODE = 102;
-    public static int BRITAIN_CODE = 103;
 
     public BoSCountry(Country country)
     {

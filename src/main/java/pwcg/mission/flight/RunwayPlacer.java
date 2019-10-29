@@ -47,7 +47,7 @@ public class RunwayPlacer
         }
         else if (flightLeader.getPlaneSize() == PlaneSize.PLANE_SIZE_LARGE)
         {
-            offsetForBigPlane = 25;
+            offsetForBigPlane = 20;
         }
 
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();

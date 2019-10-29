@@ -31,7 +31,7 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     private static final int GROUND_ATTACK_INGRESS_DISTANCE = 10000;
     private static final int AIRCRAFT_SPACING_HORIZONTAL = 300;
     private static final int AIRCRAFT_SPACING_VERTICAL = 200;
-    private static final int TAKEOFF_SPACING = 40;
+    private static final int TAKEOFF_SPACING = 35;
     private static final int RENDEZVOUS_DISTANCE_FROM_FRONT = 20000;
     private static final int ADDITIONAL_ALTITUDE_FOR_ESCORT = 800;
 
