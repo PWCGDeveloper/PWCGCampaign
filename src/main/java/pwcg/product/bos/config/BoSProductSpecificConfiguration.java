@@ -108,36 +108,36 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     }
     
     @Override
-    public int getInitialTargetRadiusFromGeneralTargetLocation(FlightTypes flightType)
+    public int getAdditionalInitialTargetRadius(FlightTypes flightType)
     {
-        int initialDistance = 10000;
+        int initialDistance = 0;
         if (flightType == FlightTypes.PATROL)
         {
-            initialDistance = 10000;
+            initialDistance = 0;
         }
         else if (flightType == FlightTypes.LONE_WOLF)
         {
-            initialDistance = 10000;
+            initialDistance = 0;
         }
         else if (flightType == FlightTypes.OFFENSIVE)
         {
-            initialDistance = 10000;
+            initialDistance = 0;
         }
         else if (flightType == FlightTypes.INTERCEPT)
         {
-            initialDistance = 10000;
+            initialDistance = 0;
         }
         else if (flightType == FlightTypes.CONTACT_PATROL)
         {
-            initialDistance = 10000;
+            initialDistance = 0;
         }
         else if (flightType == FlightTypes.GROUND_ATTACK)
         {
-            initialDistance = 10000;
+            initialDistance = 0;
         }
         else if (flightType == FlightTypes.DIVE_BOMB)
         {
-            initialDistance = 15000;
+            initialDistance = 0;
         }
         else if (flightType == FlightTypes.SPY_EXTRACT)
         {
@@ -145,39 +145,39 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
         }
         else if (flightType == FlightTypes.BOMB)
         {
-            initialDistance = 15000;                    
+            initialDistance = 0;                    
         }
         else if (flightType == FlightTypes.ESCORT)
         {
-            initialDistance = 15000;                    
+            initialDistance = 0;                    
         }
         else if (flightType == FlightTypes.LOW_ALT_PATROL)
         {
-            initialDistance = 10000;                    
+            initialDistance = 0;                    
         }
         else if (flightType == FlightTypes.LOW_ALT_CAP)
         {
-            initialDistance = 10000;                    
+            initialDistance = 0;                    
         }
         else if (flightType == FlightTypes.LOW_ALT_BOMB)
         {
-            initialDistance = 15000;                    
+            initialDistance = 0;                    
         }
         else if (flightType == FlightTypes.RECON)
         {
-            initialDistance = 15000;                    
+            initialDistance = 0;                    
         }
         else if (flightType == FlightTypes.PARATROOP_DROP)
         {
-            initialDistance = 30000;
+            initialDistance = 5000;
         }
         else if (flightType == FlightTypes.CARGO_DROP)
         {
-            initialDistance = 30000;
+            initialDistance = 5000;
         }
         else if (flightType == FlightTypes.TRANSPORT)
         {
-            initialDistance = 30000;
+            initialDistance = 5000;
         }
         else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
         {
@@ -196,68 +196,68 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     }
     
     @Override
-    public int getMaxTargetRadiusFromGeneralTargetLocation(FlightTypes flightType)
+    public int getAdditionalMaxTargetRadius(FlightTypes flightType)
     {
-        int initialDistance = 60000;
+        int initialDistance = 20000;
         if (flightType == FlightTypes.PATROL)
         {
-            initialDistance = 50000;
+            initialDistance = 20000;
         }
         else if (flightType == FlightTypes.LONE_WOLF)
         {
-            initialDistance = 50000;
+            initialDistance = 20000;
         }
         else if (flightType == FlightTypes.LOW_ALT_PATROL)
         {
-            initialDistance = 50000;                    
+            initialDistance = 20000;                    
         }
         else if (flightType == FlightTypes.LOW_ALT_CAP)
         {
-            initialDistance = 50000;                    
+            initialDistance = 20000;                    
         }
         else if (flightType == FlightTypes.LOW_ALT_BOMB)
         {
-            initialDistance = 70000;                    
+            initialDistance = 20000;                    
         }
         else if (flightType == FlightTypes.OFFENSIVE)
         {
-            initialDistance = 50000;
+            initialDistance = 20000;
         }
         else if (flightType == FlightTypes.INTERCEPT)
         {
-            initialDistance = 50000;
+            initialDistance = 20000;
         }
         else if (flightType == FlightTypes.CONTACT_PATROL)
         {
-            initialDistance = 70000;
+            initialDistance = 20000;
         }
         else if (flightType == FlightTypes.GROUND_ATTACK)
         {
-            initialDistance = 50000;
+            initialDistance = 20000;
         }
         else if (flightType == FlightTypes.DIVE_BOMB)
         {
-            initialDistance = 70000;
+            initialDistance = 20000;
         }
         else if (flightType == FlightTypes.SPY_EXTRACT)
         {
-            initialDistance = 70000;
+            initialDistance = 20000;
         }
         else if (flightType == FlightTypes.BOMB)
         {
-            initialDistance = 70000;                    
+            initialDistance = 20000;                    
         }
         else if (flightType == FlightTypes.RECON)
         {
-            initialDistance = 100000;                    
+            initialDistance = 20000;                    
         }
         else if (flightType == FlightTypes.PARATROOP_DROP)
         {
-            initialDistance = 100000;
+            initialDistance = 20000;
         }
         else if (flightType == FlightTypes.TRANSPORT)
         {
-            initialDistance = 100000;
+            initialDistance = 20000;
         }
         else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
         {

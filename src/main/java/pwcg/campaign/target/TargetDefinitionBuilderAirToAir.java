@@ -1,8 +1,6 @@
 package pwcg.campaign.target;
 
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.api.IProductSpecificConfiguration;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.locator.TargetLocatorAir;
 import pwcg.core.exception.PWCGException;
@@ -30,11 +28,12 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         return targetDefinition;
     }
 
-    private void createTargetRadius()
+    private void createTargetRadius() throws PWCGException
     {
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        targetDefinition.setPreferredRadius(productSpecific.getInitialTargetRadiusFromGeneralTargetLocation(flightInformation.getFlightType()));
-        targetDefinition.setMaximumRadius(productSpecific.getMaxTargetRadiusFromGeneralTargetLocation(flightInformation.getFlightType()));
+        TargetRadius targetRadius = new TargetRadius();
+        targetRadius.calculateTargetRadius(flightInformation.getFlightType(), flightInformation.getMission().getMissionBorders().getAreaRadius());
+        targetDefinition.setPreferredRadius(new Double(targetRadius.getInitialTargetRadius()).intValue());
+        targetDefinition.setMaximumRadius(new Double(targetRadius.getMaxTargetRadius()).intValue());
     }
 
     private void createBasicTargetDefinition() throws PWCGException

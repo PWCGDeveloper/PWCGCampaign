@@ -12,8 +12,8 @@ public interface IProductSpecificConfiguration
     boolean useCallSign();
     boolean usePosition1();
     TakeoffFormation getTakeoffFormation();
-    int getInitialTargetRadiusFromGeneralTargetLocation(FlightTypes flightType);
-    int getMaxTargetRadiusFromGeneralTargetLocation(FlightTypes flightType);
+    int getAdditionalInitialTargetRadius(FlightTypes flightType);
+    int getAdditionalMaxTargetRadius(FlightTypes flightType);
     int getInitialFrontLineRadius();
     int geNeutralZone();
     int getInterceptRadius();

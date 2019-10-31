@@ -56,7 +56,6 @@ public class CoordinateBox
         return coordinateBox;
     }
 
-    
     public static CoordinateBox coordinateBoxFromFlights (List<Flight> flights) throws PWCGException
     {
         List<Coordinate> flightWaypointCoordinates = new ArrayList<>();
@@ -330,6 +329,16 @@ public class CoordinateBox
         {
             ne.setZPos(frontParameters.getzMax());
         }
+    }
+    
+    public double getAreaRadius() throws PWCGException
+    {
+        double areaDiameter = getBoxWidth();
+        if (getBoxHeight() > areaDiameter)
+        {
+            areaDiameter = getBoxHeight();
+        }
+        return areaDiameter / 2.0;
     }
     
     public Coordinate getSW()

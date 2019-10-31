@@ -19,7 +19,7 @@ public class InterceptAiCoordinateGenerator
     public Coordinate createTargetCoordinates() throws PWCGException
     {
         GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
-        double missionTargetRadius = (mission.getMissionBorders().getBoxWidth() / 2) + 5000;
+        double missionTargetRadius = mission.getMissionBorders().getAreaRadius();
         Block selectedTarget = groupManager.getBlockFinder().getBlockWithinRadius(mission.getMissionBorders().getCenter(), missionTargetRadius);
         return selectedTarget.getPosition();
     }

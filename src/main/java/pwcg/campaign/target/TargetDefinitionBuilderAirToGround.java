@@ -1,8 +1,5 @@
 package pwcg.campaign.target;
 
-import pwcg.campaign.api.ICountry;
-import pwcg.campaign.api.IProductSpecificConfiguration;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.locator.TargetLocatorAttack;
 import pwcg.campaign.target.locator.targettype.TargetTypeAttackGenerator;
@@ -62,9 +59,6 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
 
     private void buildTargetDefinitionForTacticalFlight (TacticalTarget targetType) throws PWCGException
     {
-                
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-
         targetDefinition.setTargetType(targetType);
         targetDefinition.setAttackingSquadron(flightInformation.getSquadron());
         targetDefinition.setTargetName(TargetDefinitionBuilderUtils.buildTargetName(
@@ -75,8 +69,10 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         targetDefinition.setDate(flightInformation.getCampaign().getDate());
         targetDefinition.setPlayerTarget((Squadron.isPlayerSquadron(flightInformation.getCampaign(), flightInformation.getSquadron().getSquadronId())));
         
-        targetDefinition.setPreferredRadius(productSpecific.getInitialTargetRadiusFromGeneralTargetLocation(flightInformation.getFlightType()));
-        targetDefinition.setMaximumRadius(productSpecific.getMaxTargetRadiusFromGeneralTargetLocation(flightInformation.getFlightType()));
+        TargetRadius targetRadius = new TargetRadius();
+        targetRadius.calculateTargetRadius(flightInformation.getFlightType(), flightInformation.getMission().getMissionBorders().getAreaRadius());
+        targetDefinition.setPreferredRadius(new Double(targetRadius.getInitialTargetRadius()).intValue());
+        targetDefinition.setMaximumRadius(new Double(targetRadius.getMaxTargetRadius()).intValue());
         
         TargetLocatorAttack targetLocator = new TargetLocatorAttack(targetDefinition,flightInformation.getMission().getMissionBorders().getCenter());
         targetLocator.locateTarget();
@@ -108,9 +104,7 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
     private TargetTypeAvailabilityInputs createTargetingInputs(Coordinate targetSearchStartLocation) throws PWCGException
     {
         TargetTypeAvailabilityInputGenerator targetTypeAvailabilityInputGenerator = new TargetTypeAvailabilityInputGenerator();
-        ICountry enemyCountry = flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate());
-        TargetTypeAvailabilityInputs targetTypeAvailabilityInputs = targetTypeAvailabilityInputGenerator.createTargetAvailabilityInputs(
-                flightInformation.getCampaign(), flightInformation.getFlightType(), enemyCountry.getSide(), targetSearchStartLocation);
+        TargetTypeAvailabilityInputs targetTypeAvailabilityInputs = targetTypeAvailabilityInputGenerator.createTargetAvailabilityInputs(flightInformation);
         return targetTypeAvailabilityInputs;
     }
 

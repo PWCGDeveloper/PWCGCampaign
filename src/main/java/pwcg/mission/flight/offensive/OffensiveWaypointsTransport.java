@@ -48,20 +48,19 @@ public class OffensiveWaypointsTransport extends OffensiveWaypoints
     {
         ICountry enemycountry = CountryFactory.makeMapReferenceCountry(flight.getCountry().getSide().getOppositeSide());
         List <IFixedPosition> allFixedPositionsInRadius = new ArrayList<>();
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        double maxRadius = productSpecific.getVerySmallMissionRadius();
-        while (!stopLooking(allFixedPositionsInRadius, maxRadius))
+        double missionTargetRadius = flight.getMission().getMissionBorders().getAreaRadius();
+        while (!stopLooking(allFixedPositionsInRadius, missionTargetRadius))
         {
             GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
             List<Bridge> bridges = groupData.getBridgeFinder().
-                    findBridgesForSideWithinRadius(enemycountry.getSide(), campaign.getDate(), flight.getMission().getMissionBorders().getCenter(), maxRadius);
+                    findBridgesForSideWithinRadius(enemycountry.getSide(), campaign.getDate(), flight.getMission().getMissionBorders().getCenter(), missionTargetRadius);
             List<Block> trainStations = groupData.getRailroadStationFinder().
-                    getTrainPositionWithinRadiusBySide(enemycountry.getSide(), campaign.getDate(), flight.getMission().getMissionBorders().getCenter(), maxRadius);
+                    getTrainPositionWithinRadiusBySide(enemycountry.getSide(), campaign.getDate(), flight.getMission().getMissionBorders().getCenter(), missionTargetRadius);
             
             allFixedPositionsInRadius.addAll(bridges);
             allFixedPositionsInRadius.addAll(trainStations);
             
-            maxRadius += 10000.0;
+            missionTargetRadius += 10000.0;
         }
         return allFixedPositionsInRadius;
     }

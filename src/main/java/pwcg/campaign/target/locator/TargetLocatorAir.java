@@ -27,8 +27,8 @@ public class TargetLocatorAir
     public Coordinate getFrontCoordinate() throws PWCGException
     {
         Coordinate missionCenter = flightInformation.getMission().getMissionBorders().getCenter();
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        TargetLocationFinder targetLocationFinder = new TargetLocationFinder(flightInformation.getCampaign(), getEnemySide(), missionCenter, productSpecific.getVerySmallMissionRadius());
+        double missionRadius = flightInformation.getMission().getMissionBorders().getAreaRadius();
+        TargetLocationFinder targetLocationFinder = new TargetLocationFinder(flightInformation.getCampaign(), getEnemySide(), missionCenter, missionRadius);
         Coordinate targetWaypoint = targetLocationFinder.findLocationAtFront();
         return targetWaypoint;
     }
@@ -36,9 +36,8 @@ public class TargetLocatorAir
     public Coordinate getEnemyTerritoryPatrolCoordinate() throws PWCGException
     {
         Coordinate missionCenter = flightInformation.getMission().getMissionBorders().getCenter();
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        
-        TargetLocationFinder targetLocationFinder = new TargetLocationFinder(flightInformation.getCampaign(), getEnemySide(), missionCenter, productSpecific.getVerySmallMissionRadius());
+        double missionRadius = flightInformation.getMission().getMissionBorders().getAreaRadius();        
+        TargetLocationFinder targetLocationFinder = new TargetLocationFinder(flightInformation.getCampaign(), getEnemySide(), missionCenter, missionRadius);
         Coordinate targetWaypoint = targetLocationFinder.findTargetCoordinatesBehindEnemyLines();
         return targetWaypoint;
     }

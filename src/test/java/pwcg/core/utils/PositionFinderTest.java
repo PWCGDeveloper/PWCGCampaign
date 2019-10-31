@@ -24,8 +24,8 @@ public class PositionFinderTest
         PWCGContext.setProduct(PWCGProduct.BOS);
         PositionFinder<IAirfield> positionFinder = new PositionFinder<IAirfield>();
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        double radius = productSpecific.getInitialTargetRadiusFromGeneralTargetLocation(FlightTypes.GROUND_ATTACK);
-        double maxDistance = productSpecific.getMaxTargetRadiusFromGeneralTargetLocation(FlightTypes.GROUND_ATTACK);
+        double radius = productSpecific.getAdditionalInitialTargetRadius(FlightTypes.GROUND_ATTACK);
+        double maxDistance = productSpecific.getAdditionalMaxTargetRadius(FlightTypes.GROUND_ATTACK);
         AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
         IAirfield airfield = positionFinder.selectPositionWithinExpandingRadius(airfieldManager.getAirFieldsForSide(DateUtils.getDateYYYYMMDD("19420701"), Side.AXIS), new Coordinate(10000, 0, 10000), radius, maxDistance);
         assert(airfield != null);

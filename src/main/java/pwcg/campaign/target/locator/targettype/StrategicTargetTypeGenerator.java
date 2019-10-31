@@ -7,10 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.api.IFixedPosition;
-import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.target.TacticalTarget;
+import pwcg.campaign.target.TargetRadius;
 import pwcg.campaign.target.locator.StrategicTargetLocator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -31,19 +30,19 @@ public class StrategicTargetTypeGenerator
         this.targetLocation = referenceLocation;
     }
     
-    public TacticalTarget createTargetType() throws PWCGException
+    public TacticalTarget createTargetType(double missionRadius) throws PWCGException
     {
-        List<TacticalTarget> targetTypes = createAvailableTargetTypes();
+        List<TacticalTarget> targetTypes = createAvailableTargetTypes(missionRadius);
         int index = RandomNumberGenerator.getRandom(targetTypes.size());
         return targetTypes.get(index);
     }
 
-    private List <TacticalTarget> createAvailableTargetTypes() throws PWCGException
+    private List <TacticalTarget> createAvailableTargetTypes(double missionRadius) throws PWCGException
     {
-        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int strategicBombingRadius = productSpecificConfiguration.getInitialTargetRadiusFromGeneralTargetLocation(FlightTypes.STRATEGIC_BOMB);
+        TargetRadius targetRadius = new TargetRadius();
+        targetRadius.calculateTargetRadius(FlightTypes.STRATEGIC_BOMB, missionRadius);
+        int strategicBombingRadius = new Double(targetRadius.getInitialTargetRadius()).intValue();
 
-        
         Map<TacticalTarget, List<IFixedPosition>> targetAvailability = new HashMap<>();
         while (targetAvailability.size() == 0 && strategicBombingRadius < PositionFinder.ABSURDLY_LARGE_DISTANCE)
         {

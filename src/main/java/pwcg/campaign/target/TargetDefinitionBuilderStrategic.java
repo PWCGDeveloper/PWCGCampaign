@@ -2,8 +2,6 @@ package pwcg.campaign.target;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IFixedPosition;
-import pwcg.campaign.api.IProductSpecificConfiguration;
-import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.target.locator.StrategicTargetLocator;
 import pwcg.campaign.target.locator.targettype.StrategicTargetTypeGenerator;
@@ -11,7 +9,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightTypes;
 
 public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilder
 {
@@ -26,17 +23,18 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
     public TargetDefinition buildTargetDefinition () throws PWCGException
     {
         Coordinate missionCenter = flightInformation.getMission().getMissionBorders().getCenter();
-        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
 
         ICountry targetCountry = flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate());
         StrategicTargetTypeGenerator strategicTargetTypeGenerator = new StrategicTargetTypeGenerator(targetCountry.getSide(), flightInformation.getCampaign().getDate(), missionCenter);
-        TacticalTarget targetType = strategicTargetTypeGenerator.createTargetType();
+        TacticalTarget targetType = strategicTargetTypeGenerator.createTargetType(flightInformation.getMission().getMissionBorders().getAreaRadius());
 
-        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-        int strategicBombingRadius = productSpecificConfiguration.getInitialTargetRadiusFromGeneralTargetLocation(FlightTypes.STRATEGIC_BOMB);
+        TargetRadius targetRadius = new TargetRadius();
+        targetRadius.calculateTargetRadius(flightInformation.getFlightType(), flightInformation.getMission().getMissionBorders().getAreaRadius());
+        targetDefinition.setPreferredRadius(new Double(targetRadius.getInitialTargetRadius()).intValue());
+        targetDefinition.setMaximumRadius(new Double(targetRadius.getMaxTargetRadius()).intValue());
 
         StrategicTargetLocator strategicTargetLocator = new StrategicTargetLocator(
-                strategicBombingRadius, 
+                new Double(targetRadius.getInitialTargetRadius()).intValue(), 
                 targetCountry.getSide(), 
                 flightInformation.getCampaign().getDate(), 
                 missionCenter);
@@ -50,9 +48,6 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
         targetDefinition.setTargetCountry(targetCountry);
         targetDefinition.setDate(flightInformation.getCampaign().getDate());
         targetDefinition.setPlayerTarget((Squadron.isPlayerSquadron(flightInformation.getCampaign(), flightInformation.getSquadron().getSquadronId())));
-        
-        targetDefinition.setPreferredRadius(productSpecific.getInitialTargetRadiusFromGeneralTargetLocation(flightInformation.getFlightType()));
-        targetDefinition.setMaximumRadius(productSpecific.getMaxTargetRadiusFromGeneralTargetLocation(flightInformation.getFlightType()));
 
         targetDefinition.setTargetPosition(place.getPosition());
         targetDefinition.setTargetOrientation(new Orientation());
