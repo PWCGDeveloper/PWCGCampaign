@@ -13,7 +13,7 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class BombingFlight extends GroundTargetAttackFlight
 {
-    static private int BOMB_ATTACK_TIME = 180;
+    static private int BOMB_ATTACK_TIME = 240;
 
 	public BombingFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
     {

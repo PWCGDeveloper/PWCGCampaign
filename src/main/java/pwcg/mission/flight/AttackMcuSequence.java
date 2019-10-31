@@ -7,6 +7,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.mcu.AttackAreaFactory;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuAttackArea;
 import pwcg.mission.mcu.McuDeactivate;
@@ -20,32 +21,17 @@ public class AttackMcuSequence
     private MissionBeginUnitCheckZone missionBeginUnit;
     private McuTimer activateTimer = new McuTimer();
     private McuTimer deactivateTimer = new McuTimer();
-    private McuAttackArea attackArea = new McuAttackArea();
     protected McuDeactivate deactivateEntity = new McuDeactivate();
+    private  McuAttackArea attackArea = new McuAttackArea();
 
     public AttackMcuSequence()
     {
     }
 
-    public void createAttackArea(String name, Coordinate targetCoords, int altitude, int attackTIme) throws PWCGException 
+    public void createAttackArea(String name, FlightTypes flightType, Coordinate targetCoords, int altitude, int attackTime) throws PWCGException 
     {
-        attackArea.setAttackGround(0);
-        attackArea.setAttackGTargets(1);
-        attackArea.setAttackAir(0);
-        attackArea.setName("Attack Area for " + name);
-        attackArea.setDesc("Attack Area for " + name);
-        attackArea.setAttackArea(4000);
-        attackArea.setTime(attackTIme);
-        
-        attackArea.setOrientation(new Orientation());
-        
-        Coordinate attackAreaCoords = targetCoords.copy();
-        attackAreaCoords.setYPos(altitude);
-        
-        attackArea.setPosition(attackAreaCoords);   
-        
-        createSequence(attackArea, name, targetCoords, attackTIme) ;
-        
+        attackArea = AttackAreaFactory.createAttackArea(flightType, name, targetCoords, altitude, attackTime);
+        createSequence(attackArea, name, targetCoords, attackTime) ;
     }
     
     public void createTriggerForPlane(PlaneMCU plane, Coordinate targetCoords)

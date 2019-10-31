@@ -88,7 +88,7 @@ public abstract class GroundTargetAttackFlight extends Flight
             for (PlaneMCU plane : planes)
             {
                 AttackMcuSequence attackMcuSequence = new AttackMcuSequence();
-                attackMcuSequence.createAttackArea(getSquadron().determineDisplayName(getCampaign().getDate()), getTargetCoords(), altitude, attackTime);
+                attackMcuSequence.createAttackArea(getSquadron().determineDisplayName(getCampaign().getDate()), this.getFlightType(), getTargetCoords(), altitude, attackTime);
                 attackMcuSequence.createTriggerForPlane(plane, getTargetCoords());
                 
                 attackMcuSequences.put(plane.getIndex(), attackMcuSequence);
@@ -97,7 +97,7 @@ public abstract class GroundTargetAttackFlight extends Flight
         else
         {
             AttackMcuSequence attackMcuSequence = new AttackMcuSequence();
-            attackMcuSequence.createAttackArea(getSquadron().determineDisplayName(getCampaign().getDate()), getTargetCoords(), altitude, attackTime);
+            attackMcuSequence.createAttackArea(getSquadron().determineDisplayName(getCampaign().getDate()), this.getFlightType(), getTargetCoords(), altitude, attackTime);
             attackMcuSequence.createTriggerForFlight(this, getTargetCoords());
             
             attackMcuSequences.put(getLeadPlane().getIndex(), attackMcuSequence);
