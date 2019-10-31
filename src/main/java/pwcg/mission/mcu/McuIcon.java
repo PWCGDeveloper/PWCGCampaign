@@ -72,12 +72,11 @@ public class McuIcon extends BaseFlightMcu
 
             lineType = McuIconLineType.ICON_LINE_TYPE_POSITION1;
 
-            desc = waypoint.getName() + "<br>Speed to waypoint: <kmh-mph-v>" + waypoint.getSpeed() + "</kmh-mph-v> <kmh-mph-u/>";
+            desc = waypoint.getName();
         }
         else
         {
-            desc = waypoint.getName() + "<br>Speed to waypoint: " + waypoint.getSpeed() + " km/h<br>Altitude at waypoint: "
-                    + ((int) waypoint.getPosition().getYPos()) + " m";
+            desc = waypoint.getName();
         }
 
         lCName = LCIndexGenerator.getInstance().getNextIndex();
