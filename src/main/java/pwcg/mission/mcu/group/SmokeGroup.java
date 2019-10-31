@@ -52,9 +52,10 @@ public class SmokeGroup
     public void buildSmokeGroup(Mission mission, Coordinate smokeEffectPosition, SmokeEffect requestedSmokeEffect) throws PWCGException 
     {
         this.position = smokeEffectPosition;
+        position.setYPos(0.0);
         missionBeginUnit = new MissionBeginUnit(position.copy());            
 
-        addSmokeEffect(requestedSmokeEffect, smokeEffectPosition);
+        addSmokeEffect(requestedSmokeEffect);
         
         buildActivate(mission.getMissionFlightBuilder().getPlayersInMission());
         buildDeactivate(mission.getMissionFlightBuilder().getPlayersInMission());
@@ -65,7 +66,7 @@ public class SmokeGroup
         setNames();
     }
 
-    private void addSmokeEffect(SmokeEffect requestedSmokeEffect, Coordinate smokeEffectPosition) throws PWCGException
+    private void addSmokeEffect(SmokeEffect requestedSmokeEffect) throws PWCGException
     {
         Effect smokeEffect = null;
         if (requestedSmokeEffect == SmokeEffect.SMOKE_CITY)
@@ -81,7 +82,7 @@ public class SmokeGroup
             smokeEffect = new SmokeVillage();
         }
         
-        smokeEffect.setPosition(smokeEffectPosition);
+        smokeEffect.setPosition(position);
         
         smokeEffect.populateEntity();
         smokeEffects.add(smokeEffect);

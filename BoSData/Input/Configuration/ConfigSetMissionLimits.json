@@ -102,7 +102,7 @@
       "help": "Time in minutes to be on station for Artillery Spot"
     },
     "MissionBoxSize": {
-      "value": "30",
+      "value": "60",
       "label": "Size in km of mission box",
       "help": "Size of the box that PWCG direct flights into.  Smaller means more flights in a tight area"
     },
