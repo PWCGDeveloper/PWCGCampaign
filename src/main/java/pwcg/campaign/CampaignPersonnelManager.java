@@ -12,6 +12,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
+import pwcg.gui.utils.ReferencePlayerFinder;
 
 public class CampaignPersonnelManager 
 {
@@ -77,7 +78,17 @@ public class CampaignPersonnelManager
     {
         return getPlayersForStatus(SquadronMemberStatus.STATUS_ACTIVE);
     }
-    
+
+    public SquadronMember getSinglePlayer() throws PWCGException
+    {
+        return ReferencePlayerFinder.findReferencePlayer(campaign);
+    }    
+
+    public SquadronMembers getDeadPlayers() throws PWCGException
+    {
+        return getPlayersForStatus(SquadronMemberStatus.STATUS_KIA);
+    }    
+
     private SquadronMembers getPlayersForStatus(int status) throws PWCGException
     {
     	SquadronMembers allPlayers =  new SquadronMembers();
@@ -87,12 +98,6 @@ public class CampaignPersonnelManager
         	allPlayers.addSquadronMembers(playersInSquadron);
         }
         return allPlayers;
-    }    
-
-    public SquadronMember getSinglePlayer() throws PWCGException
-    {
-        SquadronMembers allPlayers =  getAllActivePlayers();
-        return allPlayers.getSquadronMemberList().get(0);
     }    
 
     private Map<Integer, SquadronMember> getAllNonAceCampaignMembers() throws PWCGException

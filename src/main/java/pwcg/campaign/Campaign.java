@@ -28,6 +28,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.gui.utils.ReferencePlayerFinder;
 import pwcg.mission.Mission;
 
 public class Campaign
@@ -263,9 +264,7 @@ public class Campaign
 
     public SquadronMember getReferenceCampaignMember() throws PWCGException
     {
-        List<SquadronMember> players = this.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
-        int index = RandomNumberGenerator.getRandom(players.size());
-        SquadronMember referencePlayer = players.get(index);
+        SquadronMember referencePlayer = ReferencePlayerFinder.findReferencePlayer(this);
         return referencePlayer;
     }
 
@@ -278,7 +277,14 @@ public class Campaign
         else
         {
             List<Squadron> squadrons = determinePlayerSquadrons();
-            return squadrons.get(0).determineSide();
+            if (squadrons.size() == 0)
+            {
+                return ReferencePlayerFinder.getRepresentativeSquadronForCampaign(this).determineSide();
+            }
+            else
+            {
+                return squadrons.get(0).determineSide();
+            }
         }
     }
 
