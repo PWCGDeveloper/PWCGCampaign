@@ -35,7 +35,6 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
     private NewPilotDataEntryGUI dataEntry;
     private CampaignHomeGUI parent = null;
 
-
     public NewPilotGeneratorUI(Campaign campaign, CampaignHomeGUI parent)
     {
         this.campaign = campaign;
@@ -126,6 +125,7 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
             else if (action.equalsIgnoreCase("Create Pilot"))
             {
                 createPilot();
+                parent.createPilotContext();
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
         }
@@ -164,6 +164,5 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         campaign.write();        
         campaign.open(campaign.getCampaignData().getName());
         PWCGContext.getInstance().setCampaign(campaign);
-        parent.createPilotContext();
     }
 }

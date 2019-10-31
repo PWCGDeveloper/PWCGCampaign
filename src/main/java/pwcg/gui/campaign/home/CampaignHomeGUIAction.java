@@ -328,7 +328,7 @@ public class CampaignHomeGUIAction
                 Ace ace = (Ace)pilot;
                 squad =  ace.determineSquadron();;
             }
-            CampaignPilotPanelSet pilotPanel = new CampaignPilotPanelSet(squad, pilot);
+            CampaignPilotPanelSet pilotPanel = new CampaignPilotPanelSet(squad, pilot, parent);
             pilotPanel.makePanels();
             
             CampaignGuiContextManager.getInstance().pushToContextStack(pilotPanel);

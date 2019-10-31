@@ -28,6 +28,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.ImageCache;
@@ -53,14 +54,16 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
     protected String changeSkinAction = "";
 	protected String openMedalBoxAction = "";
     protected String openLogBookAction = "";
-	
-	public CampaignPilotPanelSet(Squadron squad, SquadronMember pilot)
-	{
-        super();
+    private CampaignHomeGUI parent = null;
+
+    public CampaignPilotPanelSet(Squadron squad, SquadronMember pilot, CampaignHomeGUI parent)
+    {
+         super();
 
         this.pilot = pilot;
         this.squad = squad;
-		
+        this.parent = parent;
+
         changePilotPictureAction = "Change Picture";
 		openMedalBoxAction = "Open Medal Box:";
 		openLogBookAction = "View Pilot Log:";
@@ -396,7 +399,6 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 			    
                 makePanels();
                 
-                
                 CampaignGuiContextManager.getInstance().changeCurrentContext(null, getCenterPanel(), null);
 			}
             else if (action.startsWith("Open Medal Box"))
@@ -405,6 +407,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
             }
             else if (action.startsWith("PilotFinished"))
             {
+                parent.createPilotContext();
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
 			
