@@ -165,7 +165,7 @@ public class CampaignHomeGUIAction
     private void showAddHumanPilot() throws PWCGException
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        NewPilotGeneratorUI addPilotDisplay = new NewPilotGeneratorUI(campaign);
+        NewPilotGeneratorUI addPilotDisplay = new NewPilotGeneratorUI(campaign, parent);
         addPilotDisplay.makePanels();        
         CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
     }

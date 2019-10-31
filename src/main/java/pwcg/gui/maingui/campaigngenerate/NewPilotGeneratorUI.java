@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.ArmedServiceFinder;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CampaignModeFactory;
 import pwcg.campaign.squadmember.ISquadronMemberReplacer;
 import pwcg.core.exception.PWCGException;
@@ -20,6 +21,7 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
@@ -31,11 +33,13 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
     private Campaign campaign;
     private JButton newPilotCreateButton;
     private NewPilotDataEntryGUI dataEntry;
+    private CampaignHomeGUI parent = null;
 
 
-    public NewPilotGeneratorUI(Campaign campaign)
+    public NewPilotGeneratorUI(Campaign campaign, CampaignHomeGUI parent)
     {
-    	this.campaign = campaign;
+        this.campaign = campaign;
+        this.parent = parent;
     }
 
     public void makePanels() 
@@ -144,7 +148,7 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         dataEntry.makePanels();
         dataEntry.evaluateUI();
         
-        CampaignGuiContextManager.getInstance().changeCurrentContext(null, dataEntry, null);
+        CampaignGuiContextManager.getInstance().changeCurrentContext(null, dataEntry, null);        
     }
 
     private void createPilot() throws PWCGUserException, Exception
@@ -157,6 +161,9 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
 
         ISquadronMemberReplacer squadronMemberReplacer = CampaignModeFactory.makeSquadronMemberReplacer(campaign);
         squadronMemberReplacer.createPilot(playerName, rank, squadronName, coopuser);
-        campaign.write();
+        campaign.write();        
+        campaign.open(campaign.getCampaignData().getName());
+        PWCGContext.getInstance().setCampaign(campaign);
+        parent.createPilotContext();
     }
 }

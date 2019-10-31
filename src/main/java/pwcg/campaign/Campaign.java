@@ -27,7 +27,6 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.Logger;
-import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.gui.utils.ReferencePlayerFinder;
 import pwcg.mission.Mission;
 
