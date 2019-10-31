@@ -24,7 +24,7 @@ public class FCFlightTypeCoopFactory implements IFlightTypeFactory
     {
         Role missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
 
-        if (missionRole == Role.ROLE_BOMB)
+        if (missionRole == Role.ROLE_BOMB || missionRole == Role.ROLE_RECON || missionRole == Role.ROLE_ARTILLERY_SPOT)
         {
             return getBomberFlightType();
         }
