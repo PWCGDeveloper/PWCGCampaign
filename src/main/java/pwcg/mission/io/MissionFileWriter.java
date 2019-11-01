@@ -14,6 +14,8 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.group.FakeAirfield;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.utils.TestDriver;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.DateUtils;
@@ -70,13 +72,30 @@ public class MissionFileWriter implements IMissionFile
             writeMissionTrailer(writer);
             writer.flush();
             writer.close();
+            
+            buildMissionBinaryFile();
+            
         }
         catch (IOException e)
         {
             Logger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
+        catch (InterruptedException e)
+        {
+            Logger.logException(e);
+            throw new PWCGIOException(e.getMessage());
+        }
 	}
+    
+    private void buildMissionBinaryFile() throws PWCGException, InterruptedException
+    {
+        int buildConfigFile = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.BuildBinaryMissionFileKey);
+        if (buildConfigFile != 0)
+        {
+            MissionFileBinaryBuilder.buildMissionBinaryFile(mission.getCampaign(), getMissionFileName(mission.getCampaign()));
+        }
+    }
 
     private void writeMissionOptions(BufferedWriter writer) throws PWCGException
     {
@@ -87,7 +106,7 @@ public class MissionFileWriter implements IMissionFile
     private BufferedWriter createWriter() throws PWCGException, IOException
     {
         String filename = getMissionFileName(mission.getCampaign()) ;
-        String filePsth = getMissionFilePath(filename) + ".mission";
+        String filePsth = getMissionFullFilePath(filename);
         BufferedWriter writer = new BufferedWriter(new FileWriter(filePsth));
         return writer;
     }
@@ -189,16 +208,10 @@ public class MissionFileWriter implements IMissionFile
     	}
     }
 
-    private String getMissionFilePath(String fileName) throws PWCGException 
+    private String getMissionFullFilePath(String fileName) throws PWCGException 
 	{
-		String filepath = "..\\Data\\Missions\\" + fileName;
-		if (mission.getCampaign().isCoop())
-		{
-			filepath = PWCGContext.getInstance().getDirectoryManager().getSimulatorDataDir() + "Multiplayer\\Cooperative\\" + fileName;
-
-		}
-		
-		return filepath;
+        String filepath = PWCGContext.getInstance().getDirectoryManager().getMissionFilePath(mission.getCampaign());        
+		return filepath + fileName +  ".mission";
 	}
 
 	public static String getMissionFileName(Campaign campaign) 

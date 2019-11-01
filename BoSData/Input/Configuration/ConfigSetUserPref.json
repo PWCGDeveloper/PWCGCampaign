@@ -1,6 +1,11 @@
 {
   "configSetName": "ConfigSetUserPref",
   "configMap": {
+    "BuildBinaryMissionFile": {
+      "value": "1",
+      "label": "Build Binary Mission File",
+      "help": "Set to 1 to build a binary mission file after accepting a mission"
+    },
     "DeleteAllMissionLogs": {
       "value": "1",
       "label": "Delete All Mission Log Files",

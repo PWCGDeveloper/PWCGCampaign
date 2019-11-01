@@ -2,6 +2,7 @@ package pwcg.gui.rofmap.brief;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -535,6 +536,8 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private void acceptMission() throws PWCGException, PWCGException
     {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
         briefingMissionHandler.pushEditsToMission();
         if (!ensurePlayerIsInMission())
         {
@@ -553,14 +556,15 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         campaign.setCurrentMission(briefingMissionHandler.getMission());
-
+        
         campaignHomeGui.clean();
         campaignHomeGui.createPilotContext();
-
         campaignHomeGui.enableButtonsAsNeeded();
+        
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+
         CampaignGuiContextManager.getInstance().popFromContextStack();
     }
-
 
     private void backToCampaign() throws PWCGException, PWCGException
     {

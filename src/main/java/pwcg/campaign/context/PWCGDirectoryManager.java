@@ -1,5 +1,10 @@
 package pwcg.campaign.context;
 
+import java.io.File;
+
+import pwcg.campaign.Campaign;
+import pwcg.core.exception.PWCGException;
+
 public class PWCGDirectoryManager
 {
     private String simulatorRootDir = "";
@@ -17,8 +22,11 @@ public class PWCGDirectoryManager
     private void createRootDir()
     {
         String userDir = System.getProperty("user.dir");
-        simulatorRootDir = userDir + "\\..\\";
         pwcgRootDir = userDir + "\\";
+
+        File simulatorDir = new File(userDir).getParentFile();
+        simulatorRootDir = simulatorDir.getAbsolutePath() + "\\";
+
     }
     
     private void createPwcgDataDir(PWCGProduct product)
@@ -31,6 +39,23 @@ public class PWCGDirectoryManager
         {
             pwcgDataDir = pwcgRootDir + "BoSData\\";
         }
+    }
+
+    public String getMissionFilePath(Campaign campaign) throws PWCGException 
+    {
+        String filepath = getSimulatorDataDir() + "Missions\\";
+        if (campaign.isCoop())
+        {
+            filepath = getSimulatorDataDir() + "Multiplayer\\Cooperative\\";
+        }
+        
+        return filepath;
+    }
+
+    public String getMissionRewritePath() throws PWCGException 
+    {
+        String filepath = getSimulatorRootDir() + "bin\\resaver\\";
+        return filepath;
     }
 
     private void createCampaignDir()
@@ -127,7 +152,6 @@ public class PWCGDirectoryManager
     {
         return getPwcgInputDir() + "Aces\\";
     }
-
 
     public String getSimulatorRootDir()
     {
