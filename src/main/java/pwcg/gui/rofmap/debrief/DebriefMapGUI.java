@@ -186,8 +186,10 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 					lastDamageEvent = thisDamageEvent;
 				}
 			}
-			
-            mapPanel.addEvent(event);
+			else
+			{
+	            mapPanel.addEvent(event);
+			}
 		}
 	}
 
