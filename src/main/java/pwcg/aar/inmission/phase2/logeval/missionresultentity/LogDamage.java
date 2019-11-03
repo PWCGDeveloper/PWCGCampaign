@@ -6,7 +6,8 @@ public class LogDamage extends LogBase
 {
     private LogAIEntity victor = new LogUnknown();
     private LogAIEntity victim = new LogUnknown();
-    protected Coordinate location;
+    private Coordinate location;
+    private double damageLevel = 0.0;
 
     public LogDamage(int sequenceNumber)
     {
@@ -41,5 +42,15 @@ public class LogDamage extends LogBase
     public void setLocation(Coordinate location)
     {
         this.location = location;
+    }
+
+    public double getDamageLevel()
+    {
+        return damageLevel;
+    }
+
+    public void setDamageLevel(double damageLevel)
+    {
+        this.damageLevel = damageLevel;
     }
 }

@@ -1,16 +1,14 @@
-package pwcg.aar.inmission.phase1.parse.event.rof;
+package pwcg.aar.inmission.phase1.parse.event;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.aar.inmission.phase1.parse.event.ATypeBase;
-import pwcg.aar.inmission.phase1.parse.event.IAType6;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 
-// AType:6 PID:157695 POS(76476.383, 110.834, 173652.109)
+// T:138300 AType:6 PID:302079 POS(64488.945, 174.336, 41086.227)
 public class AType6 extends ATypeBase implements IAType6
 {
 	private String pid = "";
@@ -18,7 +16,7 @@ public class AType6 extends ATypeBase implements IAType6
 
     public AType6(String line) throws PWCGException
     {    
-        super();
+        super(AType.ATYPE6);
         parse(line);
     }
     

@@ -1,5 +1,6 @@
 package pwcg.aar.inmission.phase2.logeval;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,8 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogTurret;
 import pwcg.aar.prelim.PwcgMissionDataEvaluator;
 import pwcg.campaign.plane.Balloon;
 import pwcg.campaign.plane.Role;
+import pwcg.campaign.squadmember.SerialNumber;
+import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
@@ -155,6 +158,19 @@ public class AARVehicleBuilder
                 logTurrets.put(atype12.getId(), planeResult.createTurret(atype12));
             }
         }
+    }
+
+    public List<LogPlane> getPlayerLogPlanes()
+    {
+        List<LogPlane> playerLogPlanes = new ArrayList<>();
+        for (LogPlane logPlane : logPlanes.values())
+        {
+            if (SerialNumber.getSerialNumberClassification(logPlane.getPilotSerialNumber()) == SerialNumberClassification.PLAYER)
+            {
+                playerLogPlanes.add(logPlane);
+            }
+        }
+        return playerLogPlanes;
     }
 
     public Map<String, LogPlane> getLogPlanes()

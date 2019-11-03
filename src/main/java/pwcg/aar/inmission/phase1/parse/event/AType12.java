@@ -1,10 +1,8 @@
-package pwcg.aar.inmission.phase1.parse.event.bos;
+package pwcg.aar.inmission.phase1.parse.event;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.aar.inmission.phase1.parse.event.ATypeBase;
-import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.utils.IndexGenerator;
@@ -23,8 +21,15 @@ public class AType12 extends ATypeBase implements IAType12
 
     public AType12(String line) throws PWCGException
     {    
-        super();
+        super(AType.ATYPE12);
         parse(line);
+    }
+
+    public AType12(String line, String id) throws PWCGException
+    {    
+        super(AType.ATYPE12);
+        parse(line);
+        this.id = id;
     }
 
     public AType12(
@@ -34,7 +39,7 @@ public class AType12 extends ATypeBase implements IAType12
             ICountry country,
             String pid) throws PWCGException
     {    
-        super();
+        super(AType.ATYPE12);
         this.id = id;
         this.type = type;
         this.name = name;

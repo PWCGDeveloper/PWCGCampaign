@@ -13,9 +13,11 @@ import javax.swing.JPanel;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.ArmedServiceFinder;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CampaignModeFactory;
 import pwcg.campaign.squadmember.ISquadronMemberReplacer;
+import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.Logger;
@@ -160,9 +162,13 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         String coopuser = campaignGeneratorDO.getCoopUser();
 
         ISquadronMemberReplacer squadronMemberReplacer = CampaignModeFactory.makeSquadronMemberReplacer(campaign);
-        squadronMemberReplacer.createPilot(playerName, rank, squadronName, coopuser);
+        SquadronMember newSquadronMember = squadronMemberReplacer.createPilot(playerName, rank, squadronName, coopuser);
         campaign.write();        
         campaign.open(campaign.getCampaignData().getName());
         PWCGContext.getInstance().setCampaign(campaign);
+        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
+        {
+            PWCGContext.getInstance().setReferencePlayer(newSquadronMember);
+        }
     }
 }

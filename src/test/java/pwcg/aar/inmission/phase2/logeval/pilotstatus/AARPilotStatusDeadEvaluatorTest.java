@@ -12,7 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.aar.inmission.phase1.parse.IAARLogParser;
-import pwcg.aar.inmission.phase1.parse.event.rof.AType3;
+import pwcg.aar.inmission.phase1.parse.event.AType3;
 import pwcg.aar.inmission.phase2.logeval.AARDestroyedStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPilot;
 import pwcg.campaign.Campaign;

@@ -12,7 +12,7 @@ import pwcg.aar.inmission.phase2.logeval.AARVehicleBuilder;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogUnknown;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
-import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyByPlayerDamaged;
+import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyByAccumulatedDamaged;
 import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyVictoryEvaluator;
 import pwcg.aar.inmission.phase2.logeval.victory.AARRandomAssignment;
 import pwcg.core.exception.PWCGException;
@@ -24,7 +24,7 @@ public class AARFuzzyVictoryEvaluatorTest
     private AARVehicleBuilder vehicleBuilder;
 
     @Mock
-    private AARFuzzyByPlayerDamaged fuzzyByPlayerDamaged;
+    private AARFuzzyByAccumulatedDamaged fuzzyByPlayerDamaged;
     
     @Mock
     private AARRandomAssignment randomAssignment;

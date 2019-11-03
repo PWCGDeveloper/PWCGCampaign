@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import pwcg.aar.inmission.phase1.parse.AARMissionLogFileSet;
-import pwcg.aar.inmission.phase1.parse.Atypes;
+import pwcg.aar.inmission.phase1.parse.event.AType;
 import pwcg.aar.inmission.phase1.parse.event.IAType0;
 import pwcg.aar.inmission.phase1.parse.event.LogEventFactory;
 import pwcg.campaign.context.PWCGContext;
@@ -53,7 +53,7 @@ public class AARHeaderParser
     
     public String parseLine(String campaignName, String line) throws PWCGException, PWCGIOException 
     {
-        String atype0Tag = Atypes.getAType(0);
+        String atype0Tag = AType.ATYPE0.getAtypeLogIdentifier();
         if (line.contains(atype0Tag))
         {
             IAType0 missionHeader = LogEventFactory.createAType0(campaignName, line);

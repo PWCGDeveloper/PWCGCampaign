@@ -1,11 +1,8 @@
-package pwcg.aar.inmission.phase1.parse.event.rof;
+package pwcg.aar.inmission.phase1.parse.event;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.aar.inmission.phase1.parse.event.ATypeBase;
-import pwcg.aar.inmission.phase1.parse.event.IAType10;
-import pwcg.aar.inmission.phase1.parse.event.IAType17;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
@@ -20,13 +17,13 @@ public class AType17 extends ATypeBase implements IAType17
 
     public AType17(String line) throws PWCGException  
     {
-        super();
+        super(AType.ATYPE17);
         parse(line);
     }
 
     public AType17(IAType10 atype10)  
     {
-        super();
+        super(AType.ATYPE17);
         id = atype10.getId();
         location = atype10.getLocation().copy();
     }

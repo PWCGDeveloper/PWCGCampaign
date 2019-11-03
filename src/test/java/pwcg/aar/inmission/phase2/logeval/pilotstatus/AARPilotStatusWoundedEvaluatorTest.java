@@ -8,8 +8,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import pwcg.aar.inmission.phase1.parse.event.AType2;
 import pwcg.aar.inmission.phase1.parse.event.IAType2;
-import pwcg.aar.inmission.phase1.parse.event.rof.AType2;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.SquadronMemberStatus;

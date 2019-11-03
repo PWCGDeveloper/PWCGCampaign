@@ -1,10 +1,8 @@
-package pwcg.aar.inmission.phase1.parse.event.rof;
+package pwcg.aar.inmission.phase1.parse.event;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.aar.inmission.phase1.parse.event.ATypeBase;
-import pwcg.aar.inmission.phase1.parse.event.IAType10;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
@@ -12,7 +10,7 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 
-// AType:10 PLID:130047 PID:131071 BUL:1850 SH:0 BOMB:0 RCT:0 (280249.000,4.706,29009.000) IDS:a1e32593-94c5-4e1a-a4ac-a583aaee570e LOGIN:580c2eb7-fc7f-4d4e-b25f-098946515ce1 NAME:Patrik Schorner TYPE:R.E.8 COUNTRY:102 FORM:1 FIELD:0 INAIR:0 PARENT:-1 PAYLOAD:5 FUEL:1.000 SKIN: WM:1                 
+// missionReport(2018-03-19_08-04-13)[0].txt:T:15 AType:10 PLID:302079 PID:303103 BUL:3056 SH:0 BOMB:17 RCT:0 (64429.594,174.325,41093.000) IDS:beadb889-54ff-4b2c-ba6c-185bc706600b LOGIN:6cfc9723-e261-44cc-b59c-1a1abc71edb5 NAME:PatrickAWlson TYPE:He 111 H-6 COUNTRY:201 FORM:1 FIELD:236543 INAIR:1 PARENT:-1 ISPL:1 ISTSTART:1
 public class AType10 extends ATypeBase implements IAType10
 {
 	private String id;
@@ -23,13 +21,13 @@ public class AType10 extends ATypeBase implements IAType10
 
     public AType10(String line) throws PWCGException 
     {
-        super();
+        super(AType.ATYPE10);
         parse(line);
     }
     
     private void parse (String line) throws PWCGException 
 	{
-		id = getString(line, "AType:10 ID:", " TYPE:");
+		id = getString(line, "AType:10 PLID:", " TYPE:");
 		type = getString(line, " TYPE:", " COUNTRY:");
 		location = findCoordinate(line, "RCT:");
 

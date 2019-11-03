@@ -44,7 +44,7 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
         
         for (LogVictory resultVictory : victorySorter.getFuzzyAirVictories())
         {
-            resolveAiFuzzyClaim(resultVictory);
+            resolveAiClaimByProximity(resultVictory);
         }
         
         for (LogVictory resultVictory : victorySorter.getAllUnconfirmed())
@@ -74,7 +74,7 @@ public class AiDeclarationResolver  extends PlayerVictoryResolver
         }
     }
 
-    private void resolveAiFuzzyClaim(LogVictory resultVictory) throws PWCGException 
+    private void resolveAiClaimByProximity(LogVictory resultVictory) throws PWCGException 
     {
         if (!resultVictory.isConfirmed())
         {

@@ -1,8 +1,8 @@
 package pwcg.testutils;
 
 import pwcg.aar.inmission.phase1.parse.AARLogParser;
+import pwcg.aar.inmission.phase1.parse.event.AType12;
 import pwcg.aar.inmission.phase1.parse.event.IAType12;
-import pwcg.aar.inmission.phase1.parse.event.rof.AType12;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.plane.Balloon;
@@ -13,53 +13,35 @@ public class TestATypeFactory
 {
     static public int id = 100;
     
-    static public AType12 makeFrenchPlane() throws PWCGException
+    static public AType12 makeFrenchPlane(String frenchPilotName, String frenchPilotBotId) throws PWCGException
     {
         ++id;
-
-        
-        
-        AType12 aType12 = new AType12("AType:12 ID:1488895 TYPE:spad7 COUNTRY:101 NAME:Lt Pierre Trudeau PID:-1 POS(119648.406,152.195,44274.488)");
-        aType12.setId(new Integer(id).toString());
+        AType12 aType12Parsed = new AType12("AType:12 ID:1488895 TYPE:spad13 COUNTRY:101 NAME:Lt Pierre Trudeau PID:-1 POS(119648.406,152.195,44274.488)", new Integer(id).toString());
+        AType12 aType12 = new AType12(frenchPilotBotId, aType12Parsed.getType(), frenchPilotName, aType12Parsed.getCountry(), aType12Parsed.getPid());
         return aType12;
     }
     
-    static public AType12 makeGermanPlane() throws PWCGException
+    static public AType12 makeGermanPlane(String germanPilotName, String germanPilotBotId) throws PWCGException
     {
         ++id;
-
-        AType12 aType12 = new AType12("AType:12 ID:1488895 TYPE:albatrosd5 COUNTRY:101 NAME:Lt Pierre Trudeau PID:-1 POS(119648.406,152.195,44274.488)");
-        aType12.setId(new Integer(id).toString());
+        AType12 aType12Parsed = new AType12("AType:12 ID:1488895 TYPE:albatrosd5 COUNTRY:101 NAME:Lt Pierre Trudeau PID:-1 POS(119648.406,152.195,44274.488)", new Integer(id).toString());
+        AType12 aType12 = new AType12(germanPilotBotId, aType12Parsed.getType(), germanPilotName, aType12Parsed.getCountry(), aType12Parsed.getPid());
         return aType12;
     }
     
     static public AType12 makeBalloon(ICountry country) throws PWCGException
     {
         ++id;
-
-        AType12 aType12 = new AType12();
-        
         Balloon balloon;
-
         balloon = new Balloon(country);
-        
-        aType12.setCountry(country);
-        aType12.setName(balloon.getType());
-        aType12.setId(new Integer (id).toString());
-        aType12.setPid(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
-        aType12.setType(balloon.getName());
-        
+        AType12 aType12 = new AType12(new Integer (id).toString(), balloon.getName(), balloon.getType(), country, AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
         return aType12;
     }
     
     static public AType12 makeTruck(Country countryCode) throws PWCGException
     {
-        ++id;
-
-        AType12 aType12 = new AType12();
-        
+        ++id;        
         ICountry country;
-        
         if (countryCode == Country.FRANCE)
         {
             country = new FCCountry(Country.FRANCE);            
@@ -68,28 +50,14 @@ public class TestATypeFactory
         {
             country = new FCCountry(Country.GERMANY);            
         }
-        
-        aType12.setCountry(country);
-        aType12.setName("Truck");
-        aType12.setId(new Integer (id).toString());
-        aType12.setPid(AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
-        aType12.setType("Truck");
-        
+        AType12 aType12 = new AType12(new Integer (id).toString(), "Truck", "Truck", country, AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
         return aType12;
     }
     
     static public AType12 makePilotBot(IAType12 plane) throws PWCGException
     {
         ++id;
-
-        AType12 aType12 = new AType12();
-        
-        aType12.setCountry(plane.getCountry());
-        aType12.setName("Bot");
-        aType12.setId(new Integer (id).toString());
-        aType12.setPid(plane.getId());
-        aType12.setType("Common Bot");
-        
+        AType12 aType12 = new AType12(new Integer (id).toString(), "Common Bot", "Bot", plane.getCountry(), plane.getId());
         return aType12;
     }
 }

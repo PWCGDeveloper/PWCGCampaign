@@ -1,10 +1,8 @@
-package pwcg.aar.inmission.phase1.parse.event.bos;
+package pwcg.aar.inmission.phase1.parse.event;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import pwcg.aar.inmission.phase1.parse.event.ATypeBase;
-import pwcg.aar.inmission.phase1.parse.event.IAType18;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
@@ -20,7 +18,7 @@ public class AType18 extends ATypeBase implements IAType18
 
     public AType18(String line) throws PWCGException
     {
-        super();
+        super(AType.ATYPE18);
         parse(line);
     }
 

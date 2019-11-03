@@ -11,8 +11,8 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
+import pwcg.aar.inmission.phase1.parse.event.AType17;
 import pwcg.aar.inmission.phase1.parse.event.IAType17;
-import pwcg.aar.inmission.phase1.parse.event.rof.AType17;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogWaypoint;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;

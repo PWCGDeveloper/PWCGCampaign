@@ -5,7 +5,7 @@ import pwcg.aar.inmission.phase1.parse.AARLogEventData;
 import pwcg.aar.inmission.phase2.logeval.equipmentstatus.AAREquipmentStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.pilotstatus.AARPilotStatusEvaluator;
 import pwcg.aar.inmission.phase2.logeval.victory.AARAreaOfCombat;
-import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyByPlayerDamaged;
+import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyByAccumulatedDamaged;
 import pwcg.aar.inmission.phase2.logeval.victory.AARFuzzyVictoryEvaluator;
 import pwcg.aar.inmission.phase2.logeval.victory.AARRandomAssignment;
 import pwcg.aar.inmission.phase2.logeval.victory.AARRandomAssignmentCalculator;
@@ -94,7 +94,7 @@ public class AAREvaluator
     
     private AARFuzzyVictoryEvaluator createAARFuzzyVictoryEvaluator(AARAreaOfCombat areaOfCombat)
     {
-        AARFuzzyByPlayerDamaged fuzzyByPlayerDamaged = new AARFuzzyByPlayerDamaged(aarDamageStatusEvaluator);
+        AARFuzzyByAccumulatedDamaged fuzzyByPlayerDamaged = new AARFuzzyByAccumulatedDamaged(aarDamageStatusEvaluator);
         AARRandomAssignment randomAssignment = createAARRandomAssignment(aarContext.getMissionLogRawData().getLogEventData(), areaOfCombat);
         return new AARFuzzyVictoryEvaluator(aarVehicleBuilder, fuzzyByPlayerDamaged, randomAssignment);        
     }

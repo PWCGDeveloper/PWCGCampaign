@@ -72,7 +72,7 @@ public class AARChronologicalEventListBuilder
 
     private void addDamageEventsToChronologicalList()
     {
-        for (LogDamage logDamage : evaluator.getAarDamageStatusEvaluator().getVehiclesDamagedByPlayer())
+        for (LogDamage logDamage : evaluator.getAarDamageStatusEvaluator().getAllDamageEvents())
         {
             Logger.log(LogLevel.DEBUG, "" + logDamage.getSequenceNum() + ": " + "Damage: " + logDamage.getVictor().getId() + " over " + logDamage.getVictim().getId());
             chronologicalEvents.put(logDamage.getSequenceNum(), logDamage);

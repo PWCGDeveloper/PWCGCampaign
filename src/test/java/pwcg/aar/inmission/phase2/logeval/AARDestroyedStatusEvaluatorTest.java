@@ -12,11 +12,10 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.inmission.phase1.parse.AARLogEventData;
+import pwcg.aar.inmission.phase1.parse.event.AType3;
 import pwcg.aar.inmission.phase1.parse.event.IAType17;
 import pwcg.aar.inmission.phase1.parse.event.IAType3;
-import pwcg.aar.inmission.phase1.parse.event.rof.AType3;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogAIEntity;
-import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -25,33 +24,16 @@ import pwcg.core.exception.PWCGException;
 @RunWith(MockitoJUnitRunner.class)
 public class AARDestroyedStatusEvaluatorTest
 {
-    @Mock
-    private AARDamageStatusEvaluator aarDamageStatusEvaluator;
-    
-    @Mock
-    private LogAIEntity DestroyedVictim1;
+    @Mock private AARDamageStatusEvaluator aarDamageStatusEvaluator;
+    @Mock private LogAIEntity DestroyedVictim1;
+    @Mock private LogAIEntity DestroyedVictor1;
+    @Mock private AARLogEventData logEventData;
+    @Mock private AARVehicleBuilder aarVehicleBuilder;
+    @Mock private AType3 logDestroyedEvent1;
+    @Mock private AType3 logDestroyedEvent2;
+    @Mock private AType3 logDestroyedEvent3;
+    @Mock private AARCrossedPathWithPlayerEvaluator aarCrossedPathWithPlayerEvaluator;
 
-    @Mock
-    private LogAIEntity DestroyedVictor1;
-
-    @Mock
-    private AARLogEventData logEventData;
-    
-    @Mock
-    private AARVehicleBuilder aarVehicleBuilder;
-    
-    @Mock
-    private AType3 logDestroyedEvent1;
-    
-    @Mock
-    private AType3 logDestroyedEvent2;
-    
-    @Mock
-    private AType3 logDestroyedEvent3;
-
-    @Mock
-    AARCrossedPathWithPlayerEvaluator aarCrossedPathWithPlayerEvaluator;
-    
     @Before
     public void setup () throws PWCGException
     {
@@ -153,7 +135,7 @@ public class AARDestroyedStatusEvaluatorTest
 
         Mockito.when(aarCrossedPathWithPlayerEvaluator.isCrossedPathWithPlayerFlight(
                         Matchers.<LogVictory>any(),
-                        Matchers.<List<LogDamage>>any(),
+                        Matchers.<AARPlayerLocator>any(),
                         Matchers.<List<IAType17>>any())).thenReturn(true);
         
         

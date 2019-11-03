@@ -11,11 +11,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import pwcg.aar.inmission.phase1.parse.event.AType17;
+import pwcg.aar.inmission.phase1.parse.event.AType3;
 import pwcg.aar.inmission.phase1.parse.event.IAType17;
 import pwcg.aar.inmission.phase1.parse.event.IAType3;
 import pwcg.aar.inmission.phase1.parse.event.IATypeBase;
-import pwcg.aar.inmission.phase1.parse.event.rof.AType17;
-import pwcg.aar.inmission.phase1.parse.event.rof.AType3;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 

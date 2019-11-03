@@ -2,10 +2,10 @@ package pwcg.aar.inmission.phase2.logeval.victory;
 
 import java.util.List;
 
+import pwcg.aar.inmission.phase1.parse.event.AType3;
 import pwcg.aar.inmission.phase1.parse.event.IAType17;
 import pwcg.aar.inmission.phase1.parse.event.IAType3;
 import pwcg.aar.inmission.phase1.parse.event.IATypeBase;
-import pwcg.aar.inmission.phase1.parse.event.rof.AType3;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 

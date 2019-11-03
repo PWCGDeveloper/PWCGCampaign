@@ -119,7 +119,7 @@ public class AARChronologicalEventListBuilderTest
             LogDamage damage = new LogDamage(i);
             missionResultDamageList.add(damage);
         }
-        Mockito.when(aarDamageStatusEvaluator.getVehiclesDamagedByPlayer()).thenReturn(missionResultDamageList);
+        Mockito.when(aarDamageStatusEvaluator.getAllDamageEvents()).thenReturn(missionResultDamageList);
         
         return i;
     }

@@ -11,9 +11,11 @@ public abstract class ATypeBase
 {	
     private static int sequenceNumCounter = 0;
 	private int sequenceNum = 0;
+	private AType atype;
 	
-	public ATypeBase ()
+	public ATypeBase (AType atype)
 	{
+	    this.atype = atype;
 	    this.sequenceNum = sequenceNumCounter;
 	    ++sequenceNumCounter;
 	}
@@ -93,5 +95,10 @@ public abstract class ATypeBase
 		return sequenceNum;
 	}
 	
+    public AType getAtype()
+    {
+        return atype;
+    }
+
     public abstract void write(BufferedWriter writer) throws PWCGIOException;
 }

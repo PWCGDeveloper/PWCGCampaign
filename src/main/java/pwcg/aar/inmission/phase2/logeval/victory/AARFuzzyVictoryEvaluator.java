@@ -9,12 +9,12 @@ import pwcg.core.exception.PWCGException;
 public class AARFuzzyVictoryEvaluator 
 {
     private AARVehicleBuilder vehicleBuilder;
-    private AARFuzzyByPlayerDamaged fuzzyByPlayerDamaged;
+    private AARFuzzyByAccumulatedDamaged fuzzyByPlayerDamaged;
     private AARRandomAssignment randomAssignment;
     
     public AARFuzzyVictoryEvaluator(
                     AARVehicleBuilder vehicleBuilder, 
-                    AARFuzzyByPlayerDamaged fuzzyByPlayerDamaged,
+                    AARFuzzyByAccumulatedDamaged fuzzyByPlayerDamaged,
                     AARRandomAssignment randomAssignment)
     {
         this.vehicleBuilder = vehicleBuilder;
