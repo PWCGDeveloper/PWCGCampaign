@@ -89,7 +89,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 	{
         try
         {
-              
+            cleanup();
             evaluateArgs(args);
             
             setupUI();
@@ -124,6 +124,16 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
             Logger.logException(e);
         }
 	}
+
+    private void cleanup()
+    {
+        File badFile = new File("BoSData\\Input\\Vehicles\\pziv-h1.json");
+        if (badFile.exists())
+        {
+            badFile.delete();
+        }
+        
+    }
 
     private void evaluateArgs(String[] args) throws PWCGException
     {
