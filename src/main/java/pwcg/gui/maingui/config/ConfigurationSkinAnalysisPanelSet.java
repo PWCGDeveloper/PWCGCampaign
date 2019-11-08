@@ -50,26 +50,18 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
     private CampaignMainGUI parent = null;
 	private Map<String, JCheckBox> selectionBoxes = new HashMap<String, JCheckBox>();
 	private SkinAnalyzer skinAnalyzer = new SkinAnalyzer();
-	
-	/**
-	 * 
-	 */
+
 	public ConfigurationSkinAnalysisPanelSet(CampaignMainGUI parent) 
 	{
 		setLayout(new BorderLayout());
 
 		this.parent = parent;
 	}
-	
 
-    /**
-     * 
-     */
     public void makePanels()
     {
         try
         {
-            // Perform the analysis once
             skinAnalyzer.analyze();
             
             setLeftPanel(makeButtonPanel());
@@ -82,11 +74,6 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         }
     }
 
-	
-	/**
-	 * @return
-	 * @throws PWCGException
-	 */
 	public JPanel makeButtonPanel() throws PWCGException 
 	{
         String imagePath = getSideImageMain("SkinAnalysisNav.jpg");
@@ -140,13 +127,6 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         return campaignButtonPanel;
  	}
 
-    
-    /**
-     * @param imageName
-     * @return
-     * @throws PWCGException 
-     * @
-     */
     private JButton makePlainButton(String buttonText, String commandText, String toolTiptext) throws PWCGException
     {
         JButton button = PWCGButtonFactory.makeMenuButton(buttonText, commandText, this);
@@ -155,12 +135,6 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         return button;
     }
 
-
-
-    /**
-     * @return
-     * @throws PWCGException
-     */
     public JPanel makeCenterPanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "paperFull.jpg";
@@ -177,11 +151,6 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         return planeSelectionPanel;
     }
 
-    
-    /**
-     * @throws PWCGException 
-     * @
-     */
     public JPanel makeBlankPanel() throws PWCGException 
     {        
         JPanel blankPanel = new JPanel(new GridLayout(0, 2));
@@ -192,29 +161,18 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         return blankPanel;
     }
 
-
-    /**
-     * @throws PWCGException
-     */
     public JPanel makeAxisPanel() throws PWCGException 
     {
         List<PlaneType> axisPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAxisPlanes();
         return makePlanePanel(axisPlanes);
     }
 
-
-    /**
-     * @throws PWCGException
-     */
     public JPanel makeAlliedPanel() throws PWCGException 
     {
         List<PlaneType> alliedPlanes = PWCGContext.getInstance().getPlaneTypeFactory().getAlliedPlanes();
         return makePlanePanel(alliedPlanes);
     }
-    
-	/**
-	 * @throws PWCGException
-	 */
+
 	public JPanel makePlanePanel(List<PlaneType> planes) throws PWCGException 
 	{
         JPanel planeListOuterPanel = new JPanel(new BorderLayout());
@@ -231,11 +189,6 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         return planeListOuterPanel;
 	}
 
-
-    /**
-     * @param planes
-     * @return
-     */
     private TreeMap<String, PlaneType> sortPlanesByType(List<PlaneType> planes)
     {
         TreeMap<String, PlaneType> planeMap = new TreeMap<String, PlaneType>();
@@ -250,12 +203,6 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         return planeMap;
     }
 
-
-    /**
-     * @param buttonBG
-     * @param planeMap
-     * @throws PWCGException
-     */
     private JPanel createPlanePanel(TreeMap<String, PlaneType> planeMap) throws PWCGException
     {
         Dimension frameSize = MonitorSupport.getPWCGFrameSize();
@@ -284,15 +231,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         
         return planeListPanel;
     }
-    
 
-    /**
-     * @param planeDesc
-     * @param planeName
-     * @return
-     * @throws PWCGException 
-     * @
-     */
     private JCheckBox makeCheckBox(PlaneType plane) throws PWCGException 
     {
         JCheckBox checkBox= new JCheckBox();
@@ -309,11 +248,6 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         return checkBox;
     }
 
-
-
-	/* (non-Javadoc)
-	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-	 */
 	public void actionPerformed(ActionEvent ae)
 	{
 		try
@@ -352,10 +286,6 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
 		}
 	}
 
-
-    /**
-     * Select all planes
-     */
     private void selectAllPlanes()
     {
         for (JCheckBox checkBox: selectionBoxes.values())
@@ -364,10 +294,6 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         }
     }
 
-
-    /**
-     * Deselect allplanes
-     */
     private void deselectAllPlanes()
     {
         for (JCheckBox checkBox: selectionBoxes.values())
@@ -376,10 +302,6 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         }
     }
 
-
-    /**
-     * Display missing skins for selected planes
-     */
     private void displayMissingSkinsForSelectedPlanes()
     {
         try
@@ -397,10 +319,6 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         }
     }
 
-
-    /**
-     * Display configured skins for selected planes
-     */
     private void displayConfiguredSkinsForSelectedPlanes()
     {
         try
@@ -427,11 +345,6 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         }
     }
 
-    
-
-    /**
-     * Generate a text report for missing skins for selected planes
-     */
     private void generateReportMissingSkinsForSelectedPlanes()
     {
         try
@@ -452,12 +365,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
             ErrorDialog.internalError("Could not write missing skin report: " + e.getMessage());
         }
     }
-   
-    
-    /**
-     * Display skins for selected planes
-     * Shows unique instances (i.e. a skin will appear only one time)
-     */
+
     private Map<String, List<MissingSkin>> formSelectedSkinsUnique()
     {
         Map<String, List<MissingSkin>> selectedMissingSkins = new HashMap<String, List<MissingSkin>>();

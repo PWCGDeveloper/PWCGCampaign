@@ -48,6 +48,8 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
 
         int offensiveMissionOdds = 0;
         int interceptMissionOdds = 0;
+        int balloonBustMissionOdds = 0;
+        int balloonDefenseMissionOdds = 0;
         int escortMissionOdds = 0;
         int patrolMissionOdds = 0;
         int lowAltPatrolMissionOdds = 0;
@@ -58,7 +60,11 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
             offensiveMissionOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedOffensiveMissionKey);
             interceptMissionOdds = offensiveMissionOdds
                             + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedInterceptMissionKey);
-            escortMissionOdds = interceptMissionOdds
+            balloonBustMissionOdds = interceptMissionOdds
+                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedBalloonBustMissionKey);
+            balloonDefenseMissionOdds = balloonBustMissionOdds
+                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedBalloonDefenseMissionKey);
+            escortMissionOdds = balloonDefenseMissionOdds
                             + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedEscortMissionKey);
             patrolMissionOdds = escortMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedPatrolMissionKey);
@@ -72,7 +78,11 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
             offensiveMissionOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisOffensiveMissionKey);
             interceptMissionOdds = offensiveMissionOdds
                             + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisInterceptMissionKey);
-            escortMissionOdds = interceptMissionOdds
+            balloonBustMissionOdds = interceptMissionOdds
+                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisBalloonBustMissionKey);
+            balloonDefenseMissionOdds = balloonBustMissionOdds
+                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisBalloonDefenseMissionKey);
+            escortMissionOdds = balloonDefenseMissionOdds
                             + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisEscortMissionKey);
             patrolMissionOdds = escortMissionOdds
                     + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisPatrolMissionKey);
@@ -91,6 +101,14 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
         else if (missionOdds < interceptMissionOdds)
         {
             flightType = FlightTypes.INTERCEPT;
+        }
+        else if (missionOdds < balloonBustMissionOdds)
+        {
+            flightType = FlightTypes.BALLOON_BUST;
+        }
+        else if (missionOdds < balloonDefenseMissionOdds)
+        {
+            flightType = FlightTypes.BALLOON_DEFENSE;
         }
         else if (missionOdds < escortMissionOdds)
         {

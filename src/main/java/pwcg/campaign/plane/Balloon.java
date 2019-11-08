@@ -46,40 +46,34 @@ public class Balloon
 		index = IndexGenerator.getInstance().getNextIndex();
 		
 		type = "parseval";
-		String displayName = "French Balloon";
-
-        if (country.getCountry() == Country.BRITAIN)
-        {
-            type = "caquot";
-            displayName = "British Balloon";            
-        }
-        else if (country.getCountry() == Country.RUSSIA)
-        {
-            type = "parseval";
-            displayName = "Russian Balloon";
-        }
-		else if  (country.getSide() == Side.AXIS)
+		if  (country.getSide() == Side.AXIS)
 		{
 			type = "drachen";
-			displayName = "German Drachen Balloon";			
+			displayName = "German Balloon";			
 			
 			int odds = RandomNumberGenerator.getRandom(100);
 			if (odds < 50)
 			{
 				type = "aetype";
-				displayName = "German Nulle Balloon";
+				displayName = "German Balloon";
 			}
 		}
 		else
 		{
-	        type = "parseval";
-	        displayName = "French Balloon";
+            type = "parseval";
+            displayName = "British Balloon";         
+            
+            int odds = RandomNumberGenerator.getRandom(100);
+            if (odds < 50)
+            {
+                type = "caquot";
+                displayName = "British Balloon";
+            }
 		}
 		
 		this.name = displayName;
-		this.displayName = displayName;
 		this.country = country;
-		script = "LuaScripts\\WorldObjects\\" + type + ".txt";
+		script = "LuaScripts\\WorldObjects\\Balloons\\" + ".txt";
 		model = "graphics\\balloons\\" + type + "\\" + type + ".mgm";
 	}
 
@@ -327,6 +321,12 @@ public class Balloon
             writer.write("  DamageReport = " + damageReport + ";");
             writer.newLine();
             writer.write("  DamageThreshold = " + damageThreshold + ";");
+            writer.newLine();
+            writer.write("  DeleteAfterDeath = 1;");
+            writer.newLine();
+            writer.write("  Fuel = 1;");
+            writer.newLine();
+            writer.write("  PayloadId = 0;");
             writer.newLine();
 
             writer.write("}");
