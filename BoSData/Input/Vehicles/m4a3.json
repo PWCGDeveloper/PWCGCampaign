@@ -1,0 +1,14 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\m4a3\\",
+  "vehicleType": "m4a3",
+  "displayName": "Sherman",
+  "countries": [
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19421101",
+  "endDate": "19450901",
+  "rarityWeight": 120,
+  "vehicleClass": "Tank"
+}
