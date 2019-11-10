@@ -22,7 +22,7 @@ import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.factory.AAAUnitFactory;
 import pwcg.mission.ground.factory.AssaultFactory;
 import pwcg.mission.ground.unittypes.GroundUnit;
-import pwcg.mission.mcu.Coalition;
+import pwcg.mission.mcu.CoalitionFactory;
 
 public class BoSAssaultGenerator extends AssaultGenerator implements IAssaultGenerator
 {
@@ -56,7 +56,7 @@ public class BoSAssaultGenerator extends AssaultGenerator implements IAssaultGen
         Coordinate inBetweenPosition = MathUtils.calcNextCoord(assaultInformation.getAssaultPosition(), assaultAngle, inBetweenDistance);
          
         missionBeginUnit = new MissionBeginUnitCheckZone(inBetweenPosition, 20000);
-        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalitions(Coalition.getAllCoalitions());
+        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalitions(CoalitionFactory.getAllCoalitions());
         missionBeginUnit.setStartTime(2);
     }
 

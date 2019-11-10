@@ -17,6 +17,7 @@ import pwcg.aar.AARCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerVictoryDeclaration;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -139,7 +140,12 @@ public class AARClaimPanel extends ImageResizingPanel implements ActionListener
         cbPlane.setSize(300, 40);		
         cbPlane.setFont(font);
 
-        List<String> planeTypesInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getClaimPanelData().getEnemyPlaneTypesInMission();                   
+        List<String> planeTypesInMission = AARCoordinator.getInstance().getAarContext().getPreliminaryData().getClaimPanelData().getEnemyPlaneTypesInMission();
+        if (addBalloon()) 
+        {
+            planeTypesInMission.add(PlaneType.BALLOON);
+        }
+        
         for (String planeName : planeTypesInMission)
         {
             String planeDisplayName = planeName;
@@ -153,7 +159,16 @@ public class AARClaimPanel extends ImageResizingPanel implements ActionListener
         return cbPlane;
     }
 
-	public PlayerDeclarations getPlayerDeclarations() throws PWCGException 
+	private boolean addBalloon()
+    {
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public PlayerDeclarations getPlayerDeclarations() throws PWCGException 
 	{
 	    PlayerDeclarations playerDeclarations = new PlayerDeclarations();
 		for (int i = 0; i < numVictories; ++i)

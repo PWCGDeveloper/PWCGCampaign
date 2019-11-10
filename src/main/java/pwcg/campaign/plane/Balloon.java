@@ -73,7 +73,7 @@ public class Balloon
 		
 		this.name = displayName;
 		this.country = country;
-		script = "LuaScripts\\WorldObjects\\Balloons\\" + ".txt";
+		script = "LuaScripts\\WorldObjects\\Balloons\\" + type + ".txt";
 		model = "graphics\\balloons\\" + type + "\\" + type + ".mgm";
 	}
 

@@ -1,13 +1,13 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "artillery\\lefh18\\",
-  "vehicleType": "lefh18",
-  "displayName": "howitzer",
+  "modelDir": "artillery\\mg08\\",
+  "vehicleType": "mg08",
+  "displayName": "machine gun",
   "countries": [
     "GERMANY"
   ],
   "startDate": "19140801",
   "endDate": "19181201",
   "rarityWeight": 80,
-  "vehicleClass": "ArtilleryHowitzer"
+  "vehicleClass": "MachineGun"
 }

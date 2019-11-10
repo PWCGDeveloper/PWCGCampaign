@@ -7,7 +7,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.ground.unittypes.SpotLightGroup;
-import pwcg.mission.mcu.Coalition;
+import pwcg.mission.mcu.CoalitionFactory;
 
 public class GroundUnitFactory
 {    
@@ -25,7 +25,7 @@ public class GroundUnitFactory
     public SpotLightGroup createSpotLightGroup() throws PWCGException 
     {
         MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone(location.copy(), 12000);
-        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalitions(Coalition.getAllCoalitions());
+        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalitions(CoalitionFactory.getAllCoalitions());
 
         String nationality = country.getNationality();
         String name = nationality + " Spotlight Battery";

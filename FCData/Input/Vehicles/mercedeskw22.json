@@ -1,14 +1,10 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "vehicles\\gaz\\",
-  "vehicleType": "gaz-m",
+  "modelDir": "vehicles\\mercedeskw22\\",
+  "vehicleType": "mercedeskw22",
   "displayName": "staff car",
   "countries": [
-    "GERMANY",
-    "FRANCE",
-    "USA",
-	"BELGIUM",
-    "BRITAIN"
+    "GERMANY"
   ],
   "startDate": "19140801",
   "endDate": "19181201",

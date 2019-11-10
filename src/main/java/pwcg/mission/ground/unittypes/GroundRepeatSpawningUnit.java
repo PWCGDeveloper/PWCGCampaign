@@ -5,6 +5,7 @@ package pwcg.mission.ground.unittypes;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.mcu.Coalition;
+import pwcg.mission.mcu.CoalitionFactory;
 import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuAttackArea;
 import pwcg.mission.mcu.McuCheckZone;
@@ -63,7 +64,7 @@ public abstract class GroundRepeatSpawningUnit extends GroundUnitSpawning
         checkZone.setDesc("Check Zone");
         checkZone.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 
-        Coalition enemyCoalition = Coalition.getEnemyCoalition(pwcgGroundUnitInformation.getCountry());
+        Coalition enemyCoalition = CoalitionFactory.getEnemyCoalition(pwcgGroundUnitInformation.getCountry());
         checkZone.triggerCheckZoneByPlaneCoalition(enemyCoalition);
     }
 

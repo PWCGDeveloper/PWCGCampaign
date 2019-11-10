@@ -1,16 +1,16 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "vehicles\\gaz\\",
-  "vehicleType": "gaz-aa",
+  "modelDir": "vehicles\\thornyjtype\\",
+  "vehicleType": "thorny13pdr-aa",
   "displayName": "truck",
   "countries": [
-    "BRITAIN",
     "FRANCE",
+    "USA",
 	"BELGIUM",
-	"USA"
+    "BRITAIN"
   ],
   "startDate": "19140801",
   "endDate": "19181201",
-  "rarityWeight": 100,
-  "vehicleClass": "Truck"
+  "rarityWeight": 1,
+  "vehicleClass": "TruckAAA"
 }

@@ -10,6 +10,7 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.Coalition;
+import pwcg.mission.mcu.CoalitionFactory;
 import pwcg.mission.mcu.group.VirtualWayPoint;
 
 public class VirtualWaypointGenerator
@@ -83,7 +84,7 @@ public class VirtualWaypointGenerator
             virtualWaypoint = new VirtualWayPoint();
  
             // Initialize the WP
-            Coalition enemyCoalition = Coalition.getEnemyCoalition(flight.getCountry());
+            Coalition enemyCoalition = CoalitionFactory.getEnemyCoalition(flight.getCountry());
             virtualWaypoint.initialize(flight, vwpCoordinate, enemyCoalition);
 
             // Link the last VWP to this VWP

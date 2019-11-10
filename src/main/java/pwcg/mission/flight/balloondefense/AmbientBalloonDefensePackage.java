@@ -20,7 +20,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.ground.GroundUnitBalloonFactory;
-import pwcg.mission.mcu.Coalition;
+import pwcg.mission.mcu.CoalitionFactory;
 
 public class AmbientBalloonDefensePackage
 {
@@ -67,7 +67,7 @@ public class AmbientBalloonDefensePackage
 		Side side = balloonCountry.getSide();
 		Coordinate balloonPosition = getBalloonCoordinate(balloonCoordinate, side);
         MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone(balloonPosition.copy(), 12000);
-        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalitions(Coalition.getAllCoalitions());
+        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalitions(CoalitionFactory.getAllCoalitions());
         
         TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
         boolean isPlayerTarget = false;

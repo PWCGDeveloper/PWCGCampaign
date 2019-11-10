@@ -15,6 +15,7 @@ import pwcg.mission.ground.unittypes.GroundDirectFireUnit;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.Coalition;
+import pwcg.mission.mcu.CoalitionFactory;
 import pwcg.mission.mcu.McuFlare;
 import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.group.FlareSequence;
@@ -87,7 +88,7 @@ public class GroundMachineGunFlareUnit extends GroundDirectFireUnit
             flareColor = McuFlare.FLARE_COLOR_GREEN;
         }
         
-        Coalition friendlyCoalition  = Coalition.getFriendlyCoalition(pwcgGroundUnitInformation.getCountry());
+        Coalition friendlyCoalition  = CoalitionFactory.getFriendlyCoalition(pwcgGroundUnitInformation.getCountry());
 
         flares = new FlareSequence();
         flares.setFlare(friendlyCoalition, pwcgGroundUnitInformation.getPosition().copy(), flareColor, spawningVehicle.getEntity().getIndex());

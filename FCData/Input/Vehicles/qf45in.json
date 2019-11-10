@@ -1,0 +1,16 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\qf45in\\",
+  "vehicleType": "qf45in",
+  "displayName": "howitzer",
+  "countries": [
+    "FRANCE",
+    "USA",
+	"BELGIUM",
+    "BRITAIN"
+  ],
+  "startDate": "19140801",
+  "endDate": "19181201",
+  "rarityWeight": 80,
+  "vehicleClass": "ArtilleryHowitzer"
+}

@@ -1,6 +1,7 @@
 package pwcg.product.fc.plane;
 
 import pwcg.campaign.plane.IPlaneAttributeMapping;
+import pwcg.campaign.plane.PlaneType;
 
 public enum FCPlaneAttributeMapping implements IPlaneAttributeMapping
 {
@@ -19,7 +20,7 @@ public enum FCPlaneAttributeMapping implements IPlaneAttributeMapping
     CAMEL("sopcamel"),
     BRISTOLF2BF2("bristolf2bf2"),
     BRISTOLF2BF3("bristolf2bf3"), 
-    BALLOON("Balloon");
+    BALLOON(PlaneType.BALLOON);
     
 	private String planeType;
 	private String[] staticPlaneMatches;

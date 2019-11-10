@@ -10,6 +10,7 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.unittypes.artillery.GroundAAABattery;
 import pwcg.mission.mcu.Coalition;
+import pwcg.mission.mcu.CoalitionFactory;
 
 public class AAAUnitFactory
 {    
@@ -36,7 +37,7 @@ public class AAAUnitFactory
 
     private GroundAAABattery createAAABattery (int minUnits, int maxUnits, boolean isMG) throws PWCGException
     {
-        Coalition enemyCoalition =  Coalition.getEnemyCoalition(country);
+        Coalition enemyCoalition =  CoalitionFactory.getEnemyCoalition(country);
 
         MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone(position, 5000);
         missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(enemyCoalition);

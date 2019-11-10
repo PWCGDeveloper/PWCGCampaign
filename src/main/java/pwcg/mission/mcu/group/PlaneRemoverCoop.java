@@ -17,7 +17,7 @@ import pwcg.core.utils.Logger;
 import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.plane.PlaneMCU;
-import pwcg.mission.mcu.Coalition;
+import pwcg.mission.mcu.CoalitionFactory;
 import pwcg.mission.mcu.McuDelete;
 import pwcg.mission.mcu.McuProximity;
 import pwcg.mission.mcu.McuSubtitle;
@@ -50,8 +50,8 @@ public class PlaneRemoverCoop implements IPlaneRemover
     protected void initialize(Flight flight, PlaneMCU planeToRemove) throws PWCGException 
     {
         outOfEnemyRangeProximity = new McuProximity();
-        outOfEnemyRangeProximity.addCoalition(Coalition.getFriendlyCoalition(planeToRemove.getCountry()));
-        outOfEnemyRangeProximity.addCoalition(Coalition.getEnemyCoalition(planeToRemove.getCountry()));
+        outOfEnemyRangeProximity.addCoalition(CoalitionFactory.getFriendlyCoalition(planeToRemove.getCountry()));
+        outOfEnemyRangeProximity.addCoalition(CoalitionFactory.getEnemyCoalition(planeToRemove.getCountry()));
         
         // set position
         outOfEnemyRangeProximityTimer.setPosition(planeToRemove.getPosition().copy());

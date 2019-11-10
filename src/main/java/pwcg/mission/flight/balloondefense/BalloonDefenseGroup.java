@@ -11,17 +11,18 @@ import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointGoal;
 import pwcg.mission.flight.waypoint.WaypointPriority;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.factory.AAAUnitFactory;
 import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.ground.unittypes.artillery.GroundAAABattery;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.mcu.Coalition;
+import pwcg.mission.mcu.CoalitionFactory;
 import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.McuIcon;
 import pwcg.mission.mcu.McuSpawn;
@@ -71,7 +72,7 @@ public class BalloonDefenseGroup extends GroundUnit
 	protected void createWinch() 
 	{
         // Enemy invokes winch down
-        Coalition enemyCoalition = Coalition.getEnemyCoalition(pwcgGroundUnitInformation.getCountry());
+        Coalition enemyCoalition = CoalitionFactory.getEnemyCoalition(pwcgGroundUnitInformation.getCountry());
 	    
 		winchCheckZone = new McuCheckZone();
 		winchCheckZone.setZone(1000);
@@ -110,9 +111,6 @@ public class BalloonDefenseGroup extends GroundUnit
 		winchDownWP.setObject(balloon.getEntity().getIndex());
 	}
 
-	   /**
-     * 
-     */
     protected void createSpawnTimer() 
     {
         spawnTimer.setName("Spawn Timer");
@@ -120,12 +118,6 @@ public class BalloonDefenseGroup extends GroundUnit
         spawnTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
     }
 
-	/**
-	 * Create a mission for this flight
-	 * @throws PWCGException 
-	 * 
-	 * @
-	 */
 	public void createBalloon(ICountry country) throws PWCGException  
 	{
 		balloon = new Balloon (country);

@@ -6,6 +6,7 @@ import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.Ace;
+import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -34,10 +35,9 @@ public class PictureManager
 	public static String getPicturePath(SquadronMember pilot) throws PWCGUserException 
 	{
 		String picPath = null;
-		if (pilot instanceof Ace)
+		if (pilot instanceof Ace || pilot instanceof HistoricalAce)
 		{
-			Ace ace = (Ace) pilot;
-			picPath = getAcePicturePath(ace);
+			picPath = getAcePicturePath(pilot);
 		}
 		else
 		{
@@ -47,9 +47,9 @@ public class PictureManager
 		return picPath;
 	}
 
-	private static File getAcePictureFile(Ace ace) throws PWCGUserException 
+	private static File getAcePictureFile(SquadronMember ace) throws PWCGUserException 
 	{
-		String picPath = PWCGContext.getInstance().getDirectoryManager().getPwcgAcesDir() + "Pictures\\" + ace.getPicName();
+		String picPath = PWCGContext.getInstance().getDirectoryManager().getPwcgAcesDir() + "Pictures\\" + ace.getName();
 		
 		if (!picPath.contains(".jpg"))
 		{
@@ -86,10 +86,9 @@ public class PictureManager
 		return pic.getAbsolutePath();
 	}
 
-	private static String getAcePicturePath(Ace ace) throws PWCGUserException 
+	private static String getAcePicturePath(SquadronMember ace) throws PWCGUserException 
 	{
 		File pic = getAcePictureFile(ace);
-		
 		return pic.getAbsolutePath();
 	}
 

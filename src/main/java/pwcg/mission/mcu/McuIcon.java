@@ -39,7 +39,7 @@ public class McuIcon extends BaseFlightMcu
         desc = iconName;
 
         MissionStringHandler.getInstance().registerMissionText(lCName, iconText);
-        coalitions.add(Coalition.getCoalitionBySide(side));
+        coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
     public McuIcon(String iconName, String iconText)
@@ -50,8 +50,8 @@ public class McuIcon extends BaseFlightMcu
         desc = iconName;
 
         MissionStringHandler.getInstance().registerMissionText(lCName, iconText);
-        coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
-        coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));
+        coalitions.add(CoalitionFactory.getCoalitionBySide(Side.ALLIED));
+        coalitions.add(CoalitionFactory.getCoalitionBySide(Side.AXIS));
     }
 
     public McuIcon(McuWaypoint waypoint, Side side)
@@ -83,7 +83,7 @@ public class McuIcon extends BaseFlightMcu
         lCDesc = LCIndexGenerator.getInstance().getNextIndex();
         MissionStringHandler.getInstance().registerMissionText(lCName, name);
         MissionStringHandler.getInstance().registerMissionText(lCDesc, desc);
-        coalitions.add(Coalition.getCoalitionBySide(side));
+        coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
     public McuIcon(McuTakeoff takeoff, Side side)
@@ -108,7 +108,7 @@ public class McuIcon extends BaseFlightMcu
         lCDesc = lCName;
 
         MissionStringHandler.getInstance().registerMissionText(lCName, name);
-        coalitions.add(Coalition.getCoalitionBySide(side));
+        coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
     public McuIcon(McuLanding landing, Side side)
@@ -133,7 +133,7 @@ public class McuIcon extends BaseFlightMcu
         lCDesc = lCName;
 
         MissionStringHandler.getInstance().registerMissionText(lCName, name);
-        coalitions.add(Coalition.getCoalitionBySide(side));
+        coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
     public McuIcon(Balloon balloon, Side side)
@@ -150,8 +150,8 @@ public class McuIcon extends BaseFlightMcu
 
         MissionStringHandler.getInstance().registerMissionText(lCName, name);
 
-        coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
-        coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));
+        coalitions.add(CoalitionFactory.getCoalitionBySide(Side.ALLIED));
+        coalitions.add(CoalitionFactory.getCoalitionBySide(Side.AXIS));
     }
 
     public McuIcon(IAirfield airfield, Side side)
@@ -167,7 +167,7 @@ public class McuIcon extends BaseFlightMcu
         lCDesc = lCName;
 
         MissionStringHandler.getInstance().registerMissionText(lCName, name);
-        coalitions.add(Coalition.getCoalitionBySide(side));
+        coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
     public McuIcon(FrontLinePoint frontLinePoint)
@@ -182,8 +182,8 @@ public class McuIcon extends BaseFlightMcu
         position = frontLinePoint.getPosition().copy();
         this.lineType = McuIconLineType.ICON_LINE_TYPE_POSITION0;
 
-        coalitions.add(Coalition.getCoalitionBySide(Side.ALLIED));
-        coalitions.add(Coalition.getCoalitionBySide(Side.AXIS));
+        coalitions.add(CoalitionFactory.getCoalitionBySide(Side.ALLIED));
+        coalitions.add(CoalitionFactory.getCoalitionBySide(Side.AXIS));
     }
 
     public void write(BufferedWriter writer) throws PWCGIOException

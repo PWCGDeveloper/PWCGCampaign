@@ -1,17 +1,16 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "artillery\\dshk\\",
-  "vehicleType": "dshk",
-  "displayName": "machine gun",
+  "modelDir": "artillery\\hotchkissmle14\\",
+  "vehicleType": "hotchkissmle14-aa",
+  "displayName": "AAA machine gun",
   "countries": [
     "BRITAIN",
     "FRANCE",
 	"USA",
-	"BELGIUM",
-	"GERMANY"
+	"BELGIUM"
   ],
   "startDate": "19140801",
   "endDate": "19181201",
   "rarityWeight": 80,
-  "vehicleClass": "MachineGun"
+  "vehicleClass": "AAAMachineGun"
 }

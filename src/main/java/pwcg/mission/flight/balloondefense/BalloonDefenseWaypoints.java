@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.Balloon;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.Flight;
@@ -68,7 +67,7 @@ public class BalloonDefenseWaypoints
 		Coordinate coord = new Coordinate();
 		coord.setXPos(flight.getTargetCoords().getXPos() + 50.0);
 		coord.setZPos(flight.getTargetCoords().getZPos() + 50.0);
-		coord.setYPos(Balloon.BALLOON_ALTITUDE + 500.0);
+		coord.setYPos(flight.getFlightAltitude());
 
 		McuWaypoint balloonDefenseWP = WaypointFactory.createBalloonDefenseWaypointType();		
 		balloonDefenseWP.setTriggerArea(McuWaypoint.COMBAT_AREA);

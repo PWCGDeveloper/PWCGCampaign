@@ -12,6 +12,7 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 import pwcg.mission.mcu.Coalition;
+import pwcg.mission.mcu.CoalitionFactory;
 
 public class TrainUnitFactory
 {
@@ -36,7 +37,7 @@ public class TrainUnitFactory
 
     private MissionBeginUnitCheckZone createMissionBegin() throws PWCGException
     {
-        Coalition enemyCoalition  = Coalition.getCoalitionBySide(targetDefinition.getTargetCountry().getSide().getOppositeSide());
+        Coalition enemyCoalition  = CoalitionFactory.getCoalitionBySide(targetDefinition.getTargetCountry().getSide().getOppositeSide());
         MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone(targetDefinition.getTargetPosition(), 20000);
         missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(enemyCoalition);
         return missionBeginUnit;

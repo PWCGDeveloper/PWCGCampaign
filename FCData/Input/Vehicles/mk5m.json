@@ -1,0 +1,16 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\mk5m\\",
+  "vehicleType": "mk5m",
+  "displayName": "Tank",
+  "countries": [
+    "FRANCE",
+    "USA",
+	"BELGIUM",
+    "BRITAIN"
+  ],
+  "startDate": "19160801",
+  "endDate": "19181201",
+  "rarityWeight": 10,
+  "vehicleClass": "Tank"
+}

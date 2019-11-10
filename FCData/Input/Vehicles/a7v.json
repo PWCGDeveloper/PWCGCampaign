@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\a7v\\",
+  "vehicleType": "a7v",
+  "displayName": "Tank",
+  "countries": [
+	"GERMANY"
+  ],
+  "startDate": "19160801",
+  "endDate": "19181201",
+  "rarityWeight": 10,
+  "vehicleClass": "Tank"
+}

@@ -8,6 +8,7 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.unittypes.infantry.GroundTroopConcentration;
 import pwcg.mission.mcu.Coalition;
+import pwcg.mission.mcu.CoalitionFactory;
 
 public class TroopConcentrationFactory
 {
@@ -31,7 +32,7 @@ public class TroopConcentrationFactory
 
     private MissionBeginUnitCheckZone buildMissionBegin() throws PWCGException
     {
-        Coalition enemyCoalition  = Coalition.getCoalitionBySide(targetDefinition.getTargetCountry().getSide().getOppositeSide());
+        Coalition enemyCoalition  = CoalitionFactory.getCoalitionBySide(targetDefinition.getTargetCountry().getSide().getOppositeSide());
         MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone(targetDefinition.getTargetPosition(), 15000);
         missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(enemyCoalition);
         return missionBeginUnit;

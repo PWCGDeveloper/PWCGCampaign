@@ -1,0 +1,13 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "artillery\\mg08\\",
+  "vehicleType": "mg08-aa",
+  "displayName": "AAA machine gun",
+  "countries": [
+    "GERMANY"
+  ],
+  "startDate": "19140801",
+  "endDate": "19181201",
+  "rarityWeight": 80,
+  "vehicleClass": "AAAMachineGun"
+}

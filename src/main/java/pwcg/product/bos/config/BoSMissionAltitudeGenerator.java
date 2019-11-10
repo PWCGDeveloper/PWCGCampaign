@@ -8,6 +8,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IMissionAltitudeGenerator;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.plane.Balloon;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -74,6 +75,14 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
         else if (flightType == FlightTypes.ESCORT)
         {
             return determineHighAltitudeBombingAltitude() + 500;
+        }
+        else if (flightType == FlightTypes.BALLOON_BUST)
+        {
+            return determineBalloonBustAltitude();
+        }
+        else if (flightType == FlightTypes.BALLOON_DEFENSE)
+        {
+            return determineBalloonDefenseAltitude();
         }
         else
         {
@@ -237,4 +246,13 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
         return altitude;
     }
 
+    private int determineBalloonBustAltitude()
+    {
+        return Balloon.BALLOON_ALTITUDE + 300;
+    }
+
+    private int determineBalloonDefenseAltitude()
+    {
+        return Balloon.BALLOON_ALTITUDE + 500;
+    }
 }

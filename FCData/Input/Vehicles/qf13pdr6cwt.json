@@ -1,10 +1,9 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "artillery\\pak35\\",
-  "vehicleType": "pak35",
-  "displayName": "anti tank gun",
+  "modelDir": "artillery\\qf13pdr6cwt\\",
+  "vehicleType": "qf13pdr6cwt",
+  "displayName": "anti aircraft gun",
   "countries": [
-    "GERMANY",
     "FRANCE",
     "USA",
 	"BELGIUM",
@@ -13,5 +12,5 @@
   "startDate": "19140801",
   "endDate": "19181201",
   "rarityWeight": 80,
-  "vehicleClass": "ArtilleryAntiTank"
+  "vehicleClass": "AAAArtillery"
 }

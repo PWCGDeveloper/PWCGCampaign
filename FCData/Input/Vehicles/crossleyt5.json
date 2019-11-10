@@ -1,10 +1,9 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "vehicles\\gaz\\",
-  "vehicleType": "gaz-aa-m4-aa",
-  "displayName": "truck",
+  "modelDir": "vehicles\\crossleyt5\\",
+  "vehicleType": "crossleyt5",
+  "displayName": "staff car",
   "countries": [
-    "GERMANY",
     "FRANCE",
     "USA",
 	"BELGIUM",
@@ -12,6 +11,6 @@
   ],
   "startDate": "19140801",
   "endDate": "19181201",
-  "rarityWeight": 1,
-  "vehicleClass": "TruckAAA"
+  "rarityWeight": 10,
+  "vehicleClass": "Car"
 }

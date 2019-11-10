@@ -158,7 +158,7 @@ public class PlayerDeclarationResolution
 
     private void resolvePlayerBalloonClaim(Integer playerSerialNumber, PlayerVictoryDeclaration victoryDeclaration, boolean resolvedByFirmMatch) throws PWCGException
     {
-        resolveAsFirmBalloonVictory(playerSerialNumber, victoryDeclaration);
+        resolvedByFirmMatch = resolveAsFirmBalloonVictory(playerSerialNumber, victoryDeclaration);
         if (!resolvedByFirmMatch)
         {
             resolvedByFirmMatch = resolveAsFuzzyBalloonVictory(playerSerialNumber, victoryDeclaration);

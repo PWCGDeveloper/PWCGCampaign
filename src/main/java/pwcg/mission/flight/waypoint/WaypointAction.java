@@ -1,5 +1,7 @@
 package pwcg.mission.flight.waypoint;
 
+import pwcg.campaign.plane.PlaneType;
+
 public enum WaypointAction
 {
 	WP_ACTION_START("Start"),
@@ -15,7 +17,7 @@ public enum WaypointAction
 	WP_ACTION_SPY("Spy Drop"),
 
 	WP_ACTION_PATROL("Patrol"),
-	WP_ACTION_BALLOON("Balloon"),
+	WP_ACTION_BALLOON(PlaneType.BALLOON),
 	WP_ACTION_RENDEZVOUS("Rendezvous"),
 
 	WP_ACTION_TARGET_APPROACH("Target Approach"),

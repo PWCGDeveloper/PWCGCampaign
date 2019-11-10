@@ -7,6 +7,7 @@
     "RUSSIA"
   ],
   "startDate": "19421101",
-  "endDate": "240,
+  "endDate": "19450601",
+  "rarityWeight": 240,
   "vehicleClass": "Tank"
 }

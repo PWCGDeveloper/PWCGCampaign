@@ -1,6 +1,5 @@
 package pwcg.product.bos.map;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import pwcg.campaign.context.PWCGContext;
@@ -13,8 +12,11 @@ import pwcg.mission.options.MapWeather;
 import pwcg.mission.options.MissionOptions;
 
 
-public class BoSMapWeatherBase extends MapWeather
+public abstract class BoSMapWeatherBase extends MapWeather
 {
+    abstract public Season getSeason(Date date);
+;
+    
 	public BoSMapWeatherBase()
 	{
 	    super();
@@ -66,34 +68,6 @@ public class BoSMapWeatherBase extends MapWeather
         
         weather += "0" + cloudPattern + "\\sky.ini";
         return weather;
-    }
-
-    @Override
-    public Season getSeason(Date date)
-    {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        int month = calendar.get(Calendar.MONTH) + 1;
-
-        Season season = Season.SUMMER;
-        if (month == 11 || month == 12 || month == 1 || month == 2 || month == 3)
-        {
-            season = Season.WINTER;
-        }
-        else if (month == 4 | month == 5)
-        {
-            season = Season.SPRING;
-        }
-        else if (month == 6 || month == 7 || month == 8)
-        {
-            season = Season.SUMMER;
-        }
-        else if (month == 9 || month == 10)
-        {
-            season = Season.AUTUMN;
-        }
-
-        return season;
     }
 
     /**

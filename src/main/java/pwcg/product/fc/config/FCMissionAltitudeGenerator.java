@@ -8,6 +8,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IMissionAltitudeGenerator;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.plane.Balloon;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -70,6 +71,14 @@ public class FCMissionAltitudeGenerator implements IMissionAltitudeGenerator
         else if (flightType == FlightTypes.ARTILLERY_SPOT)
         {
             return determineArtillerySpotFlightAltitude();
+        }
+        else if (flightType == FlightTypes.BALLOON_BUST)
+        {
+            return determineBalloonBustAltitude();
+        }
+        else if (flightType == FlightTypes.BALLOON_DEFENSE)
+        {
+            return determineBalloonDefenseAltitude();
         }
         else if (flightType == FlightTypes.ESCORT)
         {
@@ -228,5 +237,15 @@ public class FCMissionAltitudeGenerator implements IMissionAltitudeGenerator
     {
         int altitude = 500 + RandomNumberGenerator.getRandom(100);        
         return altitude;
+    }
+
+    private int determineBalloonBustAltitude()
+    {
+        return Balloon.BALLOON_ALTITUDE + 300;
+    }
+
+    private int determineBalloonDefenseAltitude()
+    {
+        return Balloon.BALLOON_ALTITUDE + 500;
     }
 }

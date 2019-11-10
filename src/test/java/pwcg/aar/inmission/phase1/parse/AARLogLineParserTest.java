@@ -56,7 +56,7 @@ public class AARLogLineParserTest
         assert(bots.size() == 2);
         assert(vehicles.size() == 2);
         assert(turrets.size() == 0);
-        assert(waypointEvents.size() == 1);
+        assert(waypointEvents.size() == 0);
         assert(bailoutEvents.size() == 1);
     }
  }

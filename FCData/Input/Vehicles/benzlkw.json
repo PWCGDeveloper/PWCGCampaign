@@ -1,10 +1,10 @@
 {
   "scriptDir": "vehicles\\",
-  "modelDir": "vehicles\\ford\\",
-  "vehicleType": "ford-g917",
+  "modelDir": "vehicles\\benzlkw\\",
+  "vehicleType": "benzlkw",
   "displayName": "truck",
   "countries": [
-    "GERMANY"
+	"GERMANY"
   ],
   "startDate": "19140801",
   "endDate": "19181201",
