@@ -3,10 +3,10 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
@@ -27,9 +27,40 @@ public class MissionBalloons
 
     public void createAmbientBalloons(Mission mission) throws PWCGException 
     {
-        Campaign campaign = PWCGContext.getInstance().getCampaign();
-        ConfigManager configManager = campaign.getCampaignConfigManager();
+        if (!shouldMakeAmbientBalloons(mission))
+        {
+            return;
+        }
 
+        List<Coordinate> balloonPositions = generateBalloonPositions(mission);
+        makeDefinedNumberOfAmbientBalloons(mission, balloonPositions);
+    }
+
+    private boolean shouldMakeAmbientBalloons(Mission mission) throws PWCGException
+    {
+        if (PWCGContext.getProduct() == PWCGProduct.BOS)
+        {
+            return false;
+        }
+
+        if (!(mission.getCampaign().getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE))
+        {
+            return false;
+        }
+
+        Squadron squad =  mission.getMissionFlightBuilder().getReferencePlayerFlight().getSquadron();
+        if (squad.isSquadronThisRole(mission.getCampaign().getDate(), Role.ROLE_STRAT_BOMB) || 
+            squad.isSquadronThisRole(mission.getCampaign().getDate(), Role.ROLE_SEA_PLANE) || 
+            squad.isHomeDefense(mission.getCampaign().getDate()))
+        {
+            return false;
+        }
+        
+        return true;
+    }
+
+    private List<Coordinate> generateBalloonPositions(Mission mission)
+    {
         List<Coordinate> balloonPositions = new ArrayList<Coordinate>();
         for(Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
@@ -39,27 +70,14 @@ public class MissionBalloons
                 balloonPositions.add(balloonDefenseFlight.getBalloonPosition());
             } 
         }
-        
-        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
-        {
-	        Squadron squad =  mission.getMissionFlightBuilder().getReferencePlayerFlight().getSquadron();
-	        if (squad.isSquadronThisRole(campaign.getDate(), Role.ROLE_STRAT_BOMB) || 
-	            squad.isSquadronThisRole(campaign.getDate(), Role.ROLE_SEA_PLANE) || 
-	            squad.isHomeDefense(campaign.getDate()))
-	        {
-	            return;
-	        }
-        }
-
-        // Number of ambient balloons
+        return balloonPositions;
+    }
+    
+    private void makeDefinedNumberOfAmbientBalloons(Mission mission, List<Coordinate> balloonPositions) throws PWCGException
+    {
+        ConfigManager configManager = mission.getCampaign().getCampaignConfigManager();
         int maxAmbientBalloons = configManager.getIntConfigParam(ConfigItemKeys.MaxAmbientBalloonsKey);
-        if (maxAmbientBalloons == 0)
-        {
-            return;
-        }
-
         int numAmbientBalloons = 1 + RandomNumberGenerator.getRandom(maxAmbientBalloons);
-
         for (int i = 0; i < numAmbientBalloons; ++i)
         {
             try
@@ -109,32 +127,6 @@ public class MissionBalloons
 		}
 		return alreadyTaken;
 	}
-
-    public boolean hasAlliedBalloon() throws PWCGException
-    {
-        for (BalloonDefenseGroup balloonGroup : ambientBalloons)
-        {
-            if (balloonGroup.getCountry().getSide() == Side.ALLIED)
-            {
-                    return true;
-            }
-        }
-        
-        return false;
-    }
-
-    public boolean hasAxisBalloon() throws PWCGException
-    {
-        for (BalloonDefenseGroup balloonGroup : ambientBalloons)
-        {
-            if (balloonGroup.getCountry().getSide() == Side.AXIS)
-            {
-                return true;
-            }
-        }
-        
-        return false;
-    }
 
     public List<BalloonDefenseGroup> getAmbientBalloons()
     {

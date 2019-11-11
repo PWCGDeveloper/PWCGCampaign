@@ -110,14 +110,7 @@ public class Mission
 
     private void createAmbientUnits() throws PWCGException, PWCGException
     {
-        // TODO FC when balloons arrive
-        /*
-        if (PWCGContext.getProduct() == PWCGProduct.FC)
-        {
-            missionBalloons.createAmbientBalloons(this);
-        }
-        */
-        
+        missionBalloons.createAmbientBalloons(this);
         ambientGroundUnitBuilder = new AmbientGroundUnitBuilder(campaign, this);
         ambientGroundUnitBuilder.generateAmbientGroundUnits();
     }
