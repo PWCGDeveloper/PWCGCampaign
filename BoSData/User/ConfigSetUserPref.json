@@ -1,6 +1,11 @@
 {
   "configSetName": "ConfigSetUserPref",
   "configMap": {
+    "BuildBinaryTimeout": {
+      "value": "1",
+      "label": "Build Binary Mission File Timeout",
+      "help": "Number of minutesto build a binary mission file before timing out"
+    },
     "SoundVolume": {
       "value": "3",
       "label": "Volume control for sounds",
