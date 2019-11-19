@@ -31,7 +31,8 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 		"Aircraft  <AIRCRAFT>\n" +
 		"Squadron  <SQUADRON>\n" +
 		"Airbase  <AIRFIELD>\n" +
-		"Date  <DATE>\n" +
+        "Date  <DATE>\n" +
+        "Time  <TIME>\n" +
 		"\n" +
 		"Weather Report \n" +
 		"    <CLOUDS>\n" +

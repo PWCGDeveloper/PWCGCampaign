@@ -37,12 +37,11 @@ public class MissionSquadronFinder
     {
         if (mission.getMissionProfile() == MissionProfile.DAY_TACTICAL_MISSION)
         {
-            findSquadronsFoDayTacticalMission();
+            findSquadronsForTacticalMission();
         }
-        else if (mission.getMissionProfile() == MissionProfile.DAY_STRATEGIC_MISSION)
+        else if (mission.getMissionProfile() == MissionProfile.NIGHT_TACTICAL_MISSION)
         {
-            // TODO make night tactical
-            findSquadronsFoDayTacticalMission();
+            findSquadronsForTacticalMission();
         }
         else if (mission.getMissionProfile() == MissionProfile.DAY_STRATEGIC_MISSION)
         {
@@ -64,7 +63,7 @@ public class MissionSquadronFinder
         }
     }
 
-    private void findSquadronsFoDayTacticalMission() throws PWCGException
+    private void findSquadronsForTacticalMission() throws PWCGException
     {
         ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
 
@@ -195,12 +194,40 @@ public class MissionSquadronFinder
                 continue;
             }
 
+            if (!shouldFlyDayNight(squadron))
+            {
+                continue;
+            }
+
             acceptedSquadrons.add(squadron);
         }
 
         return acceptedSquadrons;
     }
 
+    private boolean shouldFlyDayNight(Squadron squadron) throws PWCGException
+    {
+        
+        if ((squadron.getNightOdds(campaign.getDate()) <= 0) && (mission.isNightMission()))
+        {
+            return false;
+        }
+        else if ((squadron.getNightOdds(campaign.getDate()) >= 100) && (!mission.isNightMission()))
+        {
+            return false;
+        }
+        else if (mission.isNightMission())
+        {
+            int roll = RandomNumberGenerator.getRandom(100);
+            if (roll >= squadron.getNightOdds(campaign.getDate()))
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
     private boolean isSquadronPersonnelDepleted(Squadron squadron) throws PWCGException
     {
         SquadronMembers squadronMembers = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesNoWounded(campaign.getPersonnelManager()

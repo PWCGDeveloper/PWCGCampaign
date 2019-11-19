@@ -44,6 +44,15 @@
       }
     ]
   },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 7
+      }
+    ]
+  },
   "conversionPeriods": [],
   "callsigns": {
     "19410801": "CRANE"

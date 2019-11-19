@@ -35,6 +35,7 @@ import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.ground.vehicle.VehicleFactory;
 import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
+import pwcg.mission.mcu.effect.FirePotSeries;
 import pwcg.mission.mcu.group.SmokeGroup;
 import pwcg.mission.object.WindSock;
 
@@ -241,7 +242,7 @@ public class MissionFileWriter implements IMissionFile
         writeRadioBeacon(writer);
         writeFakeAirfieldForAiReturnToBase(writer);
         writeSmoke(writer);
-
+        writeFirePots(writer);
     }
 
     private void writeFieldsInMission(BufferedWriter writer) throws PWCGException
@@ -286,6 +287,14 @@ public class MissionFileWriter implements IMissionFile
         for (SmokeGroup smokeGroup : mission.getMissionEffects().getSmokeGroups())
         {
             smokeGroup.write(writer);
+        }
+    }
+
+    private void writeFirePots(BufferedWriter writer) throws PWCGException
+    {
+        for (FirePotSeries firePotGroup : mission.getMissionEffects().getFirePotsForPlayerRunways())
+        {
+            firePotGroup.write(writer);
         }
     }
 }

@@ -12,6 +12,7 @@ import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.factory.FlightFactory;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
+import pwcg.mission.flight.factory.NightFlightTypeConverter;
 
 public class AiFlightBuilder
 {
@@ -38,6 +39,8 @@ public class AiFlightBuilder
         for (Squadron squadron : aiSquadronsForMission)
         {
             FlightTypes flightType = determineFlightType(squadron);
+            flightType = NightFlightTypeConverter.getFlightType(mission, flightType);
+
             Flight flight = buildFlight(flightType, squadron);
             if (flight != null)
             {
@@ -58,7 +61,8 @@ public class AiFlightBuilder
     private FlightTypes determineFlightType(Squadron squadron) throws PWCGException 
     {
         IFlightTypeFactory flightTypeFactory = PWCGFlightFactoryFactory.createFlightFactory(campaign);
-        FlightTypes flightType = flightTypeFactory.getFlightType(squadron, false);
+        boolean isPlayerFlight = false;
+        FlightTypes flightType = flightTypeFactory.getFlightType(squadron, isPlayerFlight);
         return flightType;
     }
 

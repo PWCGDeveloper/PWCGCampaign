@@ -1,28 +1,36 @@
 package pwcg.mission.flight.plane;
 
-import pwcg.campaign.Campaign;
+import pwcg.campaign.context.Country;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
 
 public class FlightSizeCalculator 
 {
 	private ConfigManagerCampaign configManager;
-	private FlightTypes flightType;
-	
-	public FlightSizeCalculator(Campaign campaign, FlightTypes flightType)
-	{
-		this.flightType = flightType;
-		this.configManager = campaign.getCampaignConfigManager();
-	}
+	private FlightInformation flightInformation;
 
-	public int calcPlanesInFlight() throws PWCGException
+	public FlightSizeCalculator(FlightInformation flightInformation)
+    {
+        this.flightInformation = flightInformation;
+        configManager = flightInformation.getCampaign().getCampaignConfigManager();
+    }
+
+    public int calcPlanesInFlight() throws PWCGException
     {
     	int minNumPlanes = 2;
     	int randomNumPlanes = 2;
     	boolean adjustMinMax = true;
+    	
+    	FlightTypes flightType = flightInformation.getFlightType();
         
     	if (flightType == FlightTypes.ARTILLERY_SPOT|| flightType == FlightTypes.CONTACT_PATROL ||
    		    flightType == FlightTypes.SPY_EXTRACT || flightType == FlightTypes.LONE_WOLF ||
@@ -57,7 +65,13 @@ public class FlightSizeCalculator
 	   	}
 
     	int numPlanesInFlight = minNumPlanes + RandomNumberGenerator.getRandom(randomNumPlanes);
-    	if (adjustMinMax == true)
+        
+        if (shouldBeEven())
+        {
+            numPlanesInFlight = evenNumberOfPlanes(numPlanesInFlight);
+        }
+
+        if (adjustMinMax == true)
     	{
     		numPlanesInFlight = adjustMinMaxPlanesInFlight(numPlanesInFlight, minNumPlanes, randomNumPlanes);
     	}
@@ -65,7 +79,33 @@ public class FlightSizeCalculator
         return numPlanesInFlight;
     }
 
-	private int adjustMinMaxPlanesInFlight(int numPlanesInFlight, int minNumPlanes, int randomNumPlanes)
+	private boolean shouldBeEven() throws PWCGException
+    {
+        Squadron squadron = flightInformation.getSquadron();
+        if (squadron.getCountry().getCountry() == Country.RUSSIA)
+        {
+            return false;
+        }
+        
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
+        {
+            return false;
+        }
+        
+        if ((squadron.getCountry().getCountry() != Country.GERMANY) && (flightInformation.getCampaign().getDate().before(DateUtils.getDateYYYYMMDD("19420301"))))
+        {
+            return false;
+        }
+        
+        if (!flightInformation.getFlightType().isCategory(FlightTypeCategory.FIGHTER))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private int adjustMinMaxPlanesInFlight(int numPlanesInFlight, int minNumPlanes, int randomNumPlanes)
 	{
         if (numPlanesInFlight > 8)
         {
@@ -78,7 +118,7 @@ public class FlightSizeCalculator
 		return numPlanesInFlight;
 	}
 
-    protected int modifyNumPlanes(int numPlanes)
+	private int evenNumberOfPlanes(int numPlanes)
     {
         if (numPlanes % 2 == 1)
         {

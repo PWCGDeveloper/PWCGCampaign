@@ -72,6 +72,15 @@
       }
     ]
   },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "nightMissionOdds": 20
+      }
+    ]
+  },
   "conversionPeriods": [],
   "callsigns": {
     "19410801": "PELICAN"

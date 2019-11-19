@@ -33,11 +33,8 @@ import pwcg.mission.mcu.Coalition;
 @RunWith(MockitoJUnitRunner.class)
 public class GroundUnitFactoryBoSTest
 {
-    @Mock
-    private Campaign campaign;
-    
-    @Mock
-    private ConfigManagerCampaign configManager;
+    @Mock private Campaign campaign;
+    @Mock private ConfigManagerCampaign configManager;
     
     private ICountry country = CountryFactory.makeCountryByCountry(Country.GERMANY);
     private MissionBeginUnitCheckZone missionBeginUnit;

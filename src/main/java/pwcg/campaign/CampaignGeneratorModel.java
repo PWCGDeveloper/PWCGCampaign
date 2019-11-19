@@ -6,6 +6,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
+import pwcg.core.exception.PWCGUserException;
+import pwcg.core.utils.DateUtils;
 
 public class CampaignGeneratorModel
 {
@@ -103,6 +105,49 @@ public class CampaignGeneratorModel
     	SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
         Squadron playerSquadron = squadronManager.getSquadronByName(squadronName, campaignDate);
         return playerSquadron;
+    }
+    
+
+    public void validateCampaignInputs() throws PWCGException
+    {
+        if (getCampaignDate() == null)
+        {
+            throw new PWCGUserException ("Invalid date - no campaign start date provided");
+        }
+
+
+        Date earliest = DateUtils.getBeginningOfGame();
+        Date latest = DateUtils.getEndOfWar();
+
+        if (getCampaignDate().before(earliest) || getCampaignDate().after(latest))
+        {
+            throw new PWCGUserException ("Invalid date - must be between start and end of war");
+        }
+
+        if (getCampaignName() == null || getCampaignName().length() == 0)
+        {
+            throw new PWCGUserException ("Invalid name - no campaign name provided");
+        }
+
+        if (getPlayerName() == null || getPlayerName().length() == 0)
+        {
+            throw new PWCGUserException ("Invalid name - no pilot name provided");
+        }
+
+        if (getPlayerRank() == null || getPlayerRank().length() == 0)
+        {
+            throw new PWCGUserException ("Invalid rank - no rank provided");
+        }
+
+        if (getSquadronName() == null || getSquadronName().length() == 0)
+        {
+            throw new PWCGUserException ("Invalid squaron - no squadron provided");
+        }
+        
+        if (getPlayerRegion() == null)
+        {
+            setPlayerRegion("");
+        }
     }
 
 }

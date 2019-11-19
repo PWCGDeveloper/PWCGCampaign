@@ -1,20 +1,13 @@
 package pwcg.mission;
 
-import java.util.List;
-
 import pwcg.campaign.Campaign;
-import pwcg.campaign.CampaignMode;
-import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.factory.PWCGFlightFactoryFactory;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.factory.IFlightTypeFactory;
 
 public class MissionGenerator
 {
-    Campaign campaign = null;
+    private Campaign campaign = null;
 
     public MissionGenerator(Campaign campaign)
     {
@@ -23,8 +16,7 @@ public class MissionGenerator
 
     public Mission makeMission(MissionHumanParticipants participatingPlayers) throws PWCGException 
     {
-        FlightTypes playerFlightType = getSpecialFlightType(participatingPlayers);
-        Mission mission = makeMissionFromFlightType(participatingPlayers, playerFlightType);
+        Mission mission = makeMissionFromFlightType(participatingPlayers, FlightTypes.ANY);
         return mission;
     }
 
@@ -56,22 +48,5 @@ public class MissionGenerator
         MissionBorderBuilder missionBorderBuilder = new MissionBorderBuilder(campaign, participatingPlayers);
         CoordinateBox missionBorders = missionBorderBuilder.buildCoordinateBox(overrideFlightType);
         return missionBorders;
-    }
-    
-    private FlightTypes getSpecialFlightType(MissionHumanParticipants participatingPlayers) throws PWCGException
-    {
-        if (!(campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE))
-        {
-            List<Integer> playerSquadronsInMission = participatingPlayers.getParticipatingSquadronIds();
-            if (playerSquadronsInMission.size() == 1)
-            {
-                Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadronsInMission.get(0));
-                IFlightTypeFactory flightTypeFactory = PWCGFlightFactoryFactory.createSpecialFlightFactory(campaign);
-                FlightTypes playerFlightType = flightTypeFactory.getFlightType(squadron, true);
-                return playerFlightType;
-            }
-        }
-        
-        return FlightTypes.ANY;
     }
 }

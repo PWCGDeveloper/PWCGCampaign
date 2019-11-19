@@ -108,6 +108,11 @@ public class PlayerFlightEditor
         SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         AiSkillLevel aiLevel = crewPlane.getPilot().getAiSkillLevel();
         SquadronMember squadronMember = campaign.getPersonnelManager().getSquadronPersonnel(referencePlayer.getSquadronId()).getSquadronMember(crewPlane.getPilot().getSerialNumber());
+        if (squadronMember == null)
+        {
+            squadronMember = campaign.getPersonnelManager().getCampaignAce(crewPlane.getPilot().getSerialNumber());
+        }
+        
         if (squadronMember.isPlayer())
         {
             aiLevel = AiSkillLevel.PLAYER;

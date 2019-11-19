@@ -50,13 +50,10 @@ public class StrategicBombingPackage implements IFlightPackage
     private GroundUnitFactory createSpotlight(TargetDefinition targetDefinition, StrategicBombingFlight strategicBombingFlight) throws PWCGException
     {
         GroundUnitFactory groundUnitFactory =  new GroundUnitFactory(flightInformation.getCampaign(), targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry());
-        if (flightInformation.getSquadron().determineIsNightSquadron())
+        if (flightInformation.getMission().isNightMission())
         {
-            if (flightInformation.getSquadron().determineIsNightSquadron())
-            {
-                SpotLightGroup spotLightGroup = groundUnitFactory.createSpotLightGroup();
-                strategicBombingFlight.addLinkedUnit(spotLightGroup);
-            }
+            SpotLightGroup spotLightGroup = groundUnitFactory.createSpotLightGroup();
+            strategicBombingFlight.addLinkedUnit(spotLightGroup);
         }
         return groundUnitFactory;
     }

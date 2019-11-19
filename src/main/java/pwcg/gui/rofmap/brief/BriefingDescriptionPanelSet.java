@@ -41,12 +41,14 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
 	private static final long serialVersionUID = 1L;
     private BriefingMissionHandler briefingMissionHandler = null;
     private JTextArea missionText = new JTextArea();
+    private Mission mission;
 
 	public BriefingDescriptionPanelSet(CampaignHomeGUI campaignHomeGui, Mission mission) throws PWCGException 
 	{
 	    super();
 	    
         this.campaignHomeGui =  campaignHomeGui;
+        this.mission =  mission;
 
         Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
 		briefingMissionHandler = new BriefingMissionHandler(mission);
@@ -141,17 +143,30 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
     public void setMissionText() throws PWCGException 
     {
         Campaign campaign = PWCGContext.getInstance().getCampaign();
+
+        String missionPrefix = getMissionPrefix();
+
         IMissionDescription missionDescription =MissionDescriptionFactory.buildMissionDescription(campaign, briefingMissionHandler.getMission());
         String missionDescriptionText = missionDescription.createDescription();
         
         StringBuffer missionDescriptionBuffer = new StringBuffer("");
-        missionDescriptionBuffer.append("Mission: \n");
+        missionDescriptionBuffer.append(missionPrefix);
         missionDescriptionBuffer.append(missionDescriptionText);
 
         String pilotList = makePilotList();
         missionDescriptionBuffer.append(pilotList.toString());
         
         missionText.setText(missionDescriptionBuffer.toString());
+    }
+
+    private String getMissionPrefix()
+    {
+        String missionPrefix = "Mission: \n";
+        if (mission.isNightMission())
+        {
+            missionPrefix = "Mission: Night Mission!\n";
+        }
+        return missionPrefix;
     }
 
     public String makePilotList() throws PWCGException 

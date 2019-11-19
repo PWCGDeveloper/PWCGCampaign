@@ -59,6 +59,15 @@
       }
     ]
   },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 5
+      }
+    ]
+  },
   "callsigns": {
     "19410801": "CANARY"
   }

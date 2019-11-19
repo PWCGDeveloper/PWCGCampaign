@@ -105,6 +105,15 @@
       }
     ]
   },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 3
+      }
+    ]
+  },
   "callsigns": {
     "19410801": "STORM"
   }

@@ -1,6 +1,5 @@
 package pwcg.campaign;
 
-import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
@@ -10,8 +9,6 @@ import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGUserException;
-import pwcg.core.utils.DateUtils;
 
 public class CampaignGenerator 
 {
@@ -25,7 +22,7 @@ public class CampaignGenerator
 
     public Campaign generate() throws PWCGException
     {
-        validateCampaignInputs();
+        generatorModel.validateCampaignInputs();
         createCampaignBasis();
         staffSquadrons();
         staffReplacements();
@@ -79,49 +76,6 @@ public class CampaignGenerator
 
         PWCGContext.getInstance().changeContext(initialAirfieldMap);
     }
-
-	private void validateCampaignInputs()
-	        throws PWCGUserException, PWCGException
-	{
-		if (generatorModel.getCampaignDate() == null)
-        {
-            throw new PWCGUserException ("Invalid date - no campaign start date provided");
-        }
-
-
-        Date earliest = DateUtils.getBeginningOfGame();
-        Date latest = DateUtils.getEndOfWar();
-
-        if (generatorModel.getCampaignDate().before(earliest) || generatorModel.getCampaignDate().after(latest))
-        {
-            throw new PWCGUserException ("Invalid date - must be between start and end of war");
-        }
-
-        if (generatorModel.getCampaignName() == null || generatorModel.getCampaignName().length() == 0)
-        {
-            throw new PWCGUserException ("Invalid name - no campaign name provided");
-        }
-
-        if (generatorModel.getPlayerName() == null || generatorModel.getPlayerName().length() == 0)
-        {
-            throw new PWCGUserException ("Invalid name - no pilot name provided");
-        }
-
-        if (generatorModel.getPlayerRank() == null || generatorModel.getPlayerRank().length() == 0)
-        {
-            throw new PWCGUserException ("Invalid rank - no rank provided");
-        }
-
-        if (generatorModel.getSquadronName() == null || generatorModel.getSquadronName().length() == 0)
-        {
-            throw new PWCGUserException ("Invalid squaron - no squadron provided");
-        }
-        
-        if (generatorModel.getPlayerRegion() == null)
-        {
-            generatorModel.setPlayerRegion("");
-        }
-	}
 
 	private void setCampaignAces() throws PWCGException
 	{

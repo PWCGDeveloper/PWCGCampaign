@@ -65,7 +65,7 @@ public class FlightPlaneBuilder
 
 	private int calcTargetPlanesInFlight() throws PWCGException 
     {
-    	FlightSizeCalculator flightSizeCalculator = new FlightSizeCalculator(flightInformation.getCampaign(), flightInformation.getFlightType());		
+    	FlightSizeCalculator flightSizeCalculator = new FlightSizeCalculator(flightInformation);		
     	int numPlanesInMission = flightSizeCalculator.calcPlanesInFlight();
 		return numPlanesInMission;
 	}

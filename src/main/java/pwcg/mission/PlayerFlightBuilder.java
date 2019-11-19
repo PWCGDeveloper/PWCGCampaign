@@ -1,6 +1,10 @@
 package pwcg.mission;
 
+import java.util.List;
+
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignMode;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.PWCGFlightFactoryFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
@@ -8,6 +12,7 @@ import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.factory.FlightFactory;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
+import pwcg.mission.flight.factory.NightFlightTypeConverter;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.ground.unittypes.infantry.GroundMachineGunFlareUnit;
 import pwcg.mission.mcu.McuCheckZone;
@@ -47,8 +52,16 @@ public class PlayerFlightBuilder
         IFlightTypeFactory flightTypeFactory = PWCGFlightFactoryFactory.createFlightFactory(campaign);
         if (flightType == FlightTypes.ANY)
         {
-            flightType = flightTypeFactory.getFlightType(squadron, true);
+            flightType = getSpecialFlightType(mission.getParticipatingPlayers());
+            if (flightType == FlightTypes.ANY)
+            {
+                boolean isPlayerFlight = true;
+                flightType = flightTypeFactory.getFlightType(squadron, isPlayerFlight);
+            }
         }
+        
+        flightType = NightFlightTypeConverter.getFlightType(mission, flightType);
+
         return flightType;
     }
 
@@ -93,4 +106,24 @@ public class PlayerFlightBuilder
             triggerLinkedUnitCZFromMyFlight(unit);
         }
     }
+        
+    private FlightTypes getSpecialFlightType(MissionHumanParticipants participatingPlayers) throws PWCGException
+    {
+        if (!(campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE))
+        {
+            List<Integer> playerSquadronsInMission = participatingPlayers.getParticipatingSquadronIds();
+            if (playerSquadronsInMission.size() == 1)
+            {
+                Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(playerSquadronsInMission.get(0));
+                IFlightTypeFactory flightTypeFactory = PWCGFlightFactoryFactory.createSpecialFlightFactory(campaign);
+                boolean isPlayerFlight = true;
+                FlightTypes playerFlightType = flightTypeFactory.getFlightType(squadron, isPlayerFlight);
+                return playerFlightType;
+            }
+        }
+        
+        return FlightTypes.ANY;
+    }
+
+
 }

@@ -6,6 +6,6 @@ public class Fire extends Effect
 	{
 		super();
 		
-		script = "luascripts\\worldobjects\\mapemitters\\static_fire.txt";
+		script = "luascripts\\worldobjects\\mapemitters\\landfire.txt";
 	}
 }

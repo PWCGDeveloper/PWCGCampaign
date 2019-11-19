@@ -110,6 +110,12 @@ public class CampaignPersonnelManager
         return allCampaignMembers;
     }    
 
+    public SquadronMember getCampaignAce(Integer serialNumber) throws PWCGException
+    {
+        SquadronMember squadronMember = campaignAces.retrieveAceBySerialNumber(serialNumber);
+        return squadronMember;
+    }    
+
     public SquadronMember getAnyCampaignMember(Integer serialNumber) throws PWCGException
     {
         SquadronMember squadronMember = campaignAces.retrieveAceBySerialNumber(serialNumber);

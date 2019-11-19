@@ -165,6 +165,15 @@
       }
     ]
   },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19440901",
+        "endDate": "19450601",
+        "nightMissionOdds": 5
+      }
+    ]
+  },
   "conversionPeriods": [
     {
       "conversionStartDate": "19420514",

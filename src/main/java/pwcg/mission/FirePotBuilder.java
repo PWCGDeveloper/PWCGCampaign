@@ -5,22 +5,29 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.flight.Flight;
 import pwcg.mission.mcu.effect.FirePotSeries;
 
 public class FirePotBuilder
 {
-    public FirePotSeries createFirePots(IAirfield airfield) throws PWCGException 
+    public FirePotSeries createFirePots(Flight flight) throws PWCGException 
     {
+        IAirfield airfield = flight.getSquadron().determineCurrentAirfieldAnyMap(flight.getCampaign().getDate());
+
         FirePotSeries firePotSeries = new FirePotSeries();
 
         PWCGLocation takeoffLocation = airfield.getTakeoffLocation();
-        double airfieldOrientation = takeoffLocation.getOrientation().getyOri();
+        PWCGLocation landingLocation = airfield.getLandingLocation();
+        double airfieldOrientation = MathUtils.calcAngle(takeoffLocation.getPosition(), landingLocation.getPosition());
+        
         Coordinate planePosition = takeoffLocation.getPosition().copy();
-
         Double angleOffsetFirePots = MathUtils.adjustAngle(airfieldOrientation, -90);
-        Coordinate positionLeftOfPlane = MathUtils.calcNextCoord(planePosition, angleOffsetFirePots, 30.0);
+        Coordinate positionLeftOfPlane = MathUtils.calcNextCoord(planePosition, angleOffsetFirePots, 60.0);
+        
+        double airfieldLength = MathUtils.calcDist(takeoffLocation.getPosition(), landingLocation.getPosition());
+        double distanceBetween = airfieldLength / FirePotSeries.NUM_FIRE_POT_PAIRS;
 
-        firePotSeries.createSeries(positionLeftOfPlane, airfieldOrientation, 20.0, 10);
+        firePotSeries.createSeries(positionLeftOfPlane, airfieldOrientation, distanceBetween);
         
         return firePotSeries;
     }

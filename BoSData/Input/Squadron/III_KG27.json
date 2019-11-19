@@ -65,6 +65,15 @@
       }
     ]
   },
+  "nightMissionOdds": {
+    "nightMissionPeriods": [
+      {
+        "startDate": "19400101",
+        "endDate": "19450601",
+        "nightMissionOdds": 20
+      }
+    ]
+  },
   "callsigns": {
     "19410801": "KITTIWAKE"
   }

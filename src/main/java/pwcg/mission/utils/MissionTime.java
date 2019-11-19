@@ -52,14 +52,7 @@ public class MissionTime
             setNightMissionTimes();
         }
     }
-    
 
-    /**
-     * @param sunriseSunsets
-     * @param month
-     * @param day
-     * @return
-     */
     private SunriseSunset setDayMissionTimes(List <SunriseSunset> sunriseSunsets, Date date)
     {
         Calendar calendar = Calendar.getInstance();
@@ -90,12 +83,7 @@ public class MissionTime
         // Bail out
         return sunriseSunsetToReturn;
     }
-    
-    /**
-     * @param hour
-     * @param minute
-     * @return
-     */
+
     private void setDayMissionTimes(int startHour, int startMinute, int stopHour, int stopMinute)
     {
         for (int hour = startHour; hour < stopHour; ++hour)
@@ -124,10 +112,6 @@ public class MissionTime
         }
     }
 
-    
-    /**
-     * @return
-     */
     private void setNightMissionTimes()
     {
         for (int hourIndex = 21; hourIndex < 27; ++hourIndex)
@@ -143,20 +127,11 @@ public class MissionTime
         }
     }
 
-    /**
-     * @param hour
-     * @param minute
-     * @return
-     */
     private String makeTimeString(int hour, int minute)
     {
         return makeHourString(hour) + ":" + makeMinuteString(minute) + ":00";
     }
 
-    /**
-     * @param hour
-     * @return
-     */
     private String makeHourString(int hour)
     {
         if (hour < 10)
@@ -168,11 +143,7 @@ public class MissionTime
             return (new Integer(hour).toString());
         }
     }
-    
-    /**
-     * @param minute
-     * @return
-     */
+
     private String makeMinuteString(int minute)
     {
         if (minute < 10)

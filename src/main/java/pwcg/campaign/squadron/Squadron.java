@@ -59,8 +59,8 @@ public class Squadron
 	private List<Skin> skins = new ArrayList<Skin>();
 	private SquadHistory squadHistory;
 	private int serviceId;
-	private Date nightDate;
 	private SquadronRoleSet squadronRoles = new SquadronRoleSet();
+	private NightMissionSet nightMissionOdds = new NightMissionSet();
 	private List<SquadronConversionPeriod> conversionPeriods = new ArrayList<>();
     private Map<Date, Callsign> callsigns = new TreeMap<>();
 
@@ -661,20 +661,6 @@ public class Squadron
         return squadronCountry;
     }
 
-    public boolean determineIsNightSquadron()
-    {
-        if (nightDate != null)
-        {
-            Date campaignDate = PWCGContext.getInstance().getCampaign().getDate();
-            if (nightDate.before(campaignDate))
-            {
-                return true;
-            }
-        }
-        
-        return false;
-    }
-
 	public ICountry getCountry() 
 	{
 		return CountryFactory.makeCountryByCountry(country);
@@ -798,14 +784,16 @@ public class Squadron
 		this.serviceId = serviceId;
 	}
 
-	public Date getNightDate()
+	public int getNightOdds(Date date)
 	{
-		return nightDate;
-	}
-
-	public void setNightDate(Date nightDate) 
-	{
-		this.nightDate = nightDate;
+	    if (nightMissionOdds == null)
+	    {
+	        return 0;
+	    }
+	    else
+	    {
+	        return nightMissionOdds.determineNighMissionOdds(date);
+	    }
 	}
 
     public List<Skin> getSkins()

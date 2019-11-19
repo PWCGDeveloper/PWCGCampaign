@@ -6,5 +6,5 @@ import pwcg.mission.flight.FlightTypes;
 
 public interface IFlightTypeFactory
 {
-    public FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException;
+    FlightTypes getFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException;
 }

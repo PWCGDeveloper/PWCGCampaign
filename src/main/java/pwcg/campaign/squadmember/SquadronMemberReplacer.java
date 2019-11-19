@@ -50,6 +50,10 @@ public class SquadronMemberReplacer  implements ISquadronMemberReplacer
         generatorModel.setPlayerRank(rank);
         generatorModel.setPlayerName(playerPilotName);
         generatorModel.setService(newPlayerSquadron.determineServiceForSquadron(campaign.getDate()));
+        generatorModel.setCampaignName(campaign.getCampaignData().getName());
+        generatorModel.setCampaignDate(campaign.getDate());
+        generatorModel.setSquadronName(newPlayerSquadron.determineDisplayName(campaign.getDate()));
+        generatorModel.validateCampaignInputs();
         
         SquadronMemberFactory squadronMemberFactory = new SquadronMemberFactory(campaign, newPlayerSquadron, newPlayerSquadronPersonnel);
         SquadronMember newPlayer = squadronMemberFactory.createPlayer(generatorModel);

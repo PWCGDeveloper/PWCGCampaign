@@ -15,7 +15,6 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.Logger;
 import pwcg.mission.ambient.AmbientGroundUnitBuilder;
 import pwcg.mission.data.PwcgGeneratedMission;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
@@ -74,6 +73,8 @@ public class Mission
     void generate(FlightTypes overrideFlightType) throws PWCGException 
     {
         validate();
+        MissionProfileGenerator missionProfileGenerator = new MissionProfileGenerator(campaign, participatingPlayers);
+        missionProfile = missionProfileGenerator.generateMissionProfile();
 
     	missionFlightBuilder.generateFlights(participatingPlayers, overrideFlightType);
     	missionAssociateFlightBuilder.buildAssociatedFlights(this);
@@ -147,11 +148,7 @@ public class Mission
     {
         if (isNightMission())
         {
-        	for (Flight flight: this.missionFlightBuilder.getPlayerFlights())
-        	{
-        		IAirfield airfield = flight.getSquadron().determineCurrentAirfieldAnyMap(campaign.getDate());
-        		missionEffects.createFirePots(airfield);
-        	}
+            missionEffects.createFirePots(this);
         }
     }
 

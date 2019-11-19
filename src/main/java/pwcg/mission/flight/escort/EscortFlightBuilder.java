@@ -10,6 +10,11 @@ public class EscortFlightBuilder
 {
     public void addEscort(Mission mission, Flight escortedFlight) throws PWCGException 
     {
+        if (mission.isNightMission())
+        {
+            return;
+        }
+        
         Campaign campaign = mission.getCampaign();
         Flight escortFlight = null;
         if (escortedFlight.isPlayerFlight())

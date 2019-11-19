@@ -49,7 +49,7 @@ public class AiSquadronIncluder
             return false;
         }
 
-        if (squadron.determineIsNightSquadron())
+        if (mission.isNightMission() && squadron.getNightOdds(campaign.getDate()) == 0)
         {
             return false;
         }

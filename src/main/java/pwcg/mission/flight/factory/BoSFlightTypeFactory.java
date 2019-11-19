@@ -24,30 +24,33 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
     {
         Role missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
 
+        FlightTypes flightType = null;
         if (missionRole == Role.ROLE_DIVE_BOMB)
         {
-            return getDiveBomberFlightType();
+            flightType = getDiveBomberFlightType();
         }
         else if (missionRole == Role.ROLE_BOMB)
         {
-            return getBomberFlightType();
+            flightType = getBomberFlightType();
         }
         else if (missionRole == Role.ROLE_FIGHTER)
         {
-            return getFighterFlightType(squadron, isPlayerFlight);
+            flightType = getFighterFlightType(squadron, isPlayerFlight);
         }
         else if (missionRole == Role.ROLE_ATTACK)
         {
-            return getAttackFlightType();
+            flightType = getAttackFlightType();
         }
         else if (missionRole == Role.ROLE_TRANSPORT)
         {
-            return getTransportFlightType(isPlayerFlight);
+            flightType = getTransportFlightType(isPlayerFlight);
         }
         else
         {
             throw new PWCGMissionGenerationException("No valid role for squadron: " + squadron.determineDisplayName(campaign.getDate()));
         }
+
+        return flightType;
     }
 
     private FlightTypes getFighterFlightType(Squadron squadron, boolean isPlayerFlight) throws PWCGException
