@@ -8,6 +8,7 @@ public class ConfigSetUserPref
 		configSet.setConfigSetName(ConfigSetKeys.ConfigSetUserPref);
 
         configSet.addConfigItem(ConfigItemKeys.BuildBinaryMissionFileKey, new ConfigItem("1"));
+        configSet.addConfigItem(ConfigItemKeys.BuildBinaryTimeoutKey, new ConfigItem("5"));
         configSet.addConfigItem(ConfigItemKeys.DeleteAllMissionLogsKey, new ConfigItem("0"));
         configSet.addConfigItem(ConfigItemKeys.SaveOldMissionsKey, new ConfigItem("2"));
         configSet.addConfigItem(ConfigItemKeys.PlaySoundsKey, new ConfigItem("1"));

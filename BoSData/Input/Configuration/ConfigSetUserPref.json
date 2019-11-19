@@ -6,6 +6,11 @@
       "label": "Build Binary Mission File",
       "help": "Set to 1 to build a binary mission file after accepting a mission"
     },
+    "BuildBinaryTimeout": {
+      "value": "5",
+      "label": "Build Binary Mission File Timeout",
+      "help": "Number of minutesto build a binary mission file before timing out"
+    },
     "DeleteAllMissionLogs": {
       "value": "1",
       "label": "Delete All Mission Log Files",

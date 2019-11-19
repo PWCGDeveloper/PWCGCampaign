@@ -3,6 +3,7 @@ package pwcg.core.config;
 public class ConfigItemKeys
 {
     public static final String BuildBinaryMissionFileKey = "BuildBinaryMissionFile";
+    public static final String BuildBinaryTimeoutKey = "BuildBinaryTimeout";
 	public static final String DeleteAllMissionLogsKey = "DeleteAllMissionLogs";
 	public static final String SaveOldMissionsKey = "SaveOldMissions";
 	public static final String PlaySoundsKey = "PlaySounds";

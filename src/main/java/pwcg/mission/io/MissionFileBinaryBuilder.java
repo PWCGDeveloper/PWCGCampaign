@@ -6,6 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
@@ -40,12 +42,13 @@ public class MissionFileBinaryBuilder implements buildCommandPath
         return fullCommand;
     }
     
-    private static void buildBinaryFile(String fullCommand)
+    private static void buildBinaryFile(String fullCommand) throws PWCGException
     {
         try
         {
             Process process = Runtime.getRuntime().exec(fullCommand);
-            boolean status = process.waitFor(5, TimeUnit.MINUTES);
+            int binaryBuildTimeout = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.BuildBinaryTimeoutKey);
+            boolean status = process.waitFor(binaryBuildTimeout, TimeUnit.MINUTES);
             if (status == true)
             {
                 Logger.log(LogLevel.INFO, "Succeeded creating binary mission file for: " + fullCommand);
