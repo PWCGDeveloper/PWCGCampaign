@@ -96,7 +96,7 @@ public class CoopPlayerInclusionTest
         String coopuser = campaignGeneratorDO.getCoopUser();
 
         SquadronMemberReplacer squadronMemberReplacer = new SquadronMemberReplacer(coopCampaign);
-        squadronMemberReplacer.createPilot(playerName, rank, squadronName, coopuser);
+        squadronMemberReplacer.createPersona(playerName, rank, squadronName, coopuser);
     }
     
     private SquadronMember getSquadronMemberByName(String pilotName) throws PWCGException

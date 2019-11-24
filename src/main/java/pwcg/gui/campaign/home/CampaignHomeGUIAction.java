@@ -27,7 +27,7 @@ import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.HelpDialog;
 import pwcg.gui.maingui.campaigngenerate.NewPilotGeneratorUI;
 import pwcg.gui.rofmap.brief.BriefingDescriptionPanelSet;
-import pwcg.gui.rofmap.brief.CoopPilotChooser;
+import pwcg.gui.rofmap.brief.CoopPersonaChooser;
 import pwcg.gui.rofmap.debrief.DebriefMissionDescriptionPanel;
 import pwcg.gui.rofmap.event.AARMainPanel;
 import pwcg.gui.rofmap.event.AARMainPanel.EventPanelReason;
@@ -68,7 +68,7 @@ public class CampaignHomeGUIAction
             {
             	if (campaign.isCoop() && campaign.getCurrentMission() == null)
             	{
-                	showCoopPilotChooser();
+                	showCoopPersonaChooser();
             	}
             	else
             	{
@@ -180,11 +180,11 @@ public class CampaignHomeGUIAction
         CampaignGuiContextManager.getInstance().pushToContextStack(briefingMap);
     }
 
-    private void showCoopPilotChooser() throws PWCGException 
+    private void showCoopPersonaChooser() throws PWCGException 
     {
-    	CoopPilotChooser coopPilotChooser = new CoopPilotChooser(campaign, parent);
-    	coopPilotChooser.makePanels();
-        CampaignGuiContextManager.getInstance().pushToContextStack(coopPilotChooser);
+    	CoopPersonaChooser coopPersonaChooser = new CoopPersonaChooser(campaign, parent);
+    	coopPersonaChooser.makePanels();
+        CampaignGuiContextManager.getInstance().pushToContextStack(coopPersonaChooser);
     }
 
     private void showChangeReferencePilot() throws PWCGException

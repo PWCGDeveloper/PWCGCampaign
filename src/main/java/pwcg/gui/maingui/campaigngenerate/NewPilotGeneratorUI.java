@@ -138,6 +138,25 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         }
     }
 
+    private void createPilot() throws PWCGUserException, Exception
+    {
+        CampaignGeneratorDO campaignGeneratorDO = dataEntry.getCampaignGeneratorDO();
+        String playerName = campaignGeneratorDO.getPlayerPilotName();
+        String squadronName = campaignGeneratorDO.getSquadName();
+        String rank = campaignGeneratorDO.getRank();
+        String coopuser = campaignGeneratorDO.getCoopUser();
+
+        ISquadronMemberReplacer squadronMemberReplacer = CampaignModeFactory.makeSquadronMemberReplacer(campaign);
+        SquadronMember newSquadronMember = squadronMemberReplacer.createPersona(playerName, rank, squadronName, coopuser);
+        campaign.write();        
+        campaign.open(campaign.getCampaignData().getName());
+        PWCGContext.getInstance().setCampaign(campaign);
+        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
+        {
+            PWCGContext.getInstance().setReferencePlayer(newSquadronMember);
+        }
+    }
+
     public void changeService(ArmedService service) throws PWCGException
     {
         CampaignGeneratorDO campaignGeneratorDO = new CampaignGeneratorDO();
@@ -151,24 +170,5 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         dataEntry.evaluateUI();
         
         CampaignGuiContextManager.getInstance().changeCurrentContext(null, dataEntry, null);        
-    }
-
-    private void createPilot() throws PWCGUserException, Exception
-    {
-        CampaignGeneratorDO campaignGeneratorDO = dataEntry.getCampaignGeneratorDO();
-        String playerName = campaignGeneratorDO.getPlayerPilotName();
-        String squadronName = campaignGeneratorDO.getSquadName();
-        String rank = campaignGeneratorDO.getRank();
-        String coopuser = campaignGeneratorDO.getCoopUser();
-
-        ISquadronMemberReplacer squadronMemberReplacer = CampaignModeFactory.makeSquadronMemberReplacer(campaign);
-        SquadronMember newSquadronMember = squadronMemberReplacer.createPilot(playerName, rank, squadronName, coopuser);
-        campaign.write();        
-        campaign.open(campaign.getCampaignData().getName());
-        PWCGContext.getInstance().setCampaign(campaign);
-        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
-        {
-            PWCGContext.getInstance().setReferencePlayer(newSquadronMember);
-        }
     }
 }

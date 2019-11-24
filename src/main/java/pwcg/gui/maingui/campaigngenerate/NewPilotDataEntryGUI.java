@@ -32,10 +32,10 @@ import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.RankFactory;
-import pwcg.campaign.io.json.CoopUserIOJson;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -234,13 +234,12 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
         dataConstraints.gridy = rowCount;
         campaignGeneratePanel.add(cbCoopUser, dataConstraints);
 
-        cbCoopUser.setSelectedIndex(cbCoopUser.getItemCount()-1);
         cbCoopUser.setActionCommand("CoopUserChanged");
         cbCoopUser.addActionListener(this);
 
         spacerColumn (campaignGeneratePanel, 3, rowCount);
-        List<CoopUser> coopUsers = CoopUserIOJson.readCoopUsers();
-        makeUserChoices(coopUsers);
+        List<CoopUser> coopUsers = CoopUserManager.getIntance().getAllCoopUsers();
+        makeCoopUserChoices(coopUsers);
         
         ++rowCount;
         return rowCount;
@@ -614,7 +613,7 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
 		cbRank.addActionListener(this);
 	}
 
-    private void makeUserChoices(List<CoopUser> coopUsers) 
+    private void makeCoopUserChoices(List<CoopUser> coopUsers) 
     {
 		cbCoopUser.removeActionListener(this);
 		cbCoopUser.removeAllItems();
@@ -623,7 +622,11 @@ public class NewPilotDataEntryGUI extends ImageResizingPanel implements ActionLi
 		{
 			cbCoopUser.addItem(coopUser.getUsername());
 		}
-		
+
+		cbCoopUser.setSelectedIndex(0);
+        String coopUsername = (String)cbCoopUser.getSelectedItem();
+        campaignGeneratorDO.setCoopUser(coopUsername);
+
 		cbCoopUser.addActionListener(this);
 	}
 

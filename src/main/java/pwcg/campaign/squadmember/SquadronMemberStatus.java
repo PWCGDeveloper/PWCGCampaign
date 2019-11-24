@@ -9,6 +9,7 @@ public class SquadronMemberStatus
     public static final int STATUS_SERIOUSLY_WOUNDED = -4;
     public static final int STATUS_CAPTURED = -5;
     public static final int STATUS_KIA = -6;
+    public static final int STATUS_RETIRED = -7;
 
     public static String ACTIVE_STATUS = "Active";
     public static String ON_LEAVE_STATUS = "On Leave";

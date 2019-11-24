@@ -25,7 +25,6 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.FileUtils;
 import pwcg.core.utils.Logger;
 import pwcg.gui.utils.ReferencePlayerFinder;
 import pwcg.mission.Mission;
@@ -51,7 +50,6 @@ public class Campaign
     {
         campaignData.setName(campaignName);
 
-        initializeCampaignDirectories();
         initializeCampaignConfigs();
         if (!readValidCampaign())
         {
@@ -73,8 +71,8 @@ public class Campaign
 
     public void write() throws PWCGException
     {
+        CampaignDirectoryBuilder.initializeCampaignDirectories(this);
         CampaignIOJson.writeJson(this);
-        initializeCampaignDirectories();
     }
     
 	private boolean readValidCampaign()
@@ -94,26 +92,6 @@ public class Campaign
 		}
 
 		return true;
-	}
-
-	public void initializeCampaignDirectories() 
-	{
-        FileUtils fileUtils = new FileUtils();
-		
-        String campaignCombatReportsDir = getCampaignPath() + "CombatReports\\";
-        fileUtils.createConfigDirIfNeeded(campaignCombatReportsDir);
-
-        String campaignConfigDir = getCampaignPath() + "config\\";
-        fileUtils.createConfigDirIfNeeded(campaignConfigDir);
-		
-        String campaignEquipmentDir = getCampaignPath() + "Equipment\\";
-        fileUtils.createConfigDirIfNeeded(campaignEquipmentDir);
-		
-        String campaignMissionDataDir = getCampaignPath() + "MissionData\\";
-        fileUtils.createConfigDirIfNeeded(campaignMissionDataDir);
-		
-        String campaignPersonnelDir = getCampaignPath() + "Personnel\\";
-        fileUtils.createConfigDirIfNeeded(campaignPersonnelDir);
 	}
 
     public void  initializeCampaignConfigs() throws PWCGException 

@@ -26,7 +26,6 @@ public class CampaignGenerator
         createCampaignBasis();
         staffSquadrons();
         staffReplacements();
-        
         return campaign;
     }
 
@@ -40,7 +39,6 @@ public class CampaignGenerator
     private void createCampaign() throws PWCGException
 	{
 		campaign = new Campaign();
-		campaign.initializeCampaignDirectories();
         campaign.initializeCampaignConfigs();
         campaign.setDate(generatorModel.getCampaignDate());
         campaign.getCampaignData().setName(generatorModel.getCampaignName());
@@ -82,5 +80,4 @@ public class CampaignGenerator
 		CampaignAces aces =  PWCGContext.getInstance().getAceManager().loadFromHistoricalAces(generatorModel.getCampaignDate());
         campaign.getPersonnelManager().setCampaignAces(aces);
 	}
-
 }

@@ -1,15 +1,12 @@
 package pwcg.gui.utils;
 
-import java.util.List;
-
 import pwcg.campaign.Campaign;
-import pwcg.campaign.CoopHostUserBuilder;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.io.json.CoopPilotIOJson;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.coop.model.CoopPilot;
+import pwcg.coop.CoopPersonaManager;
+import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 
@@ -22,7 +19,7 @@ public class ReferencePlayerFinder
         {
             if (campaign.isCoop())
             {
-                representativePlayer = getHostPlayer(campaign);
+                representativePlayer = getHostPersoForCoopCampaign(campaign);
             }
             else
             {
@@ -42,31 +39,27 @@ public class ReferencePlayerFinder
         return representativePlayer;
     }
 
+    public static SquadronMember getHostPersoForCoopCampaign(Campaign campaign) throws PWCGException
+    {
+        for (CoopPersona coopPersona : CoopPersonaManager.getIntance().getHostPersonaForCampaign(campaign))
+        {
+            for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
+            {
+                if (coopPersona.getPilotName().equals(player.getName()))
+                {
+                    return player;
+                }
+            }
+        }
+    
+        return null;
+    }
+
     public static Squadron getRepresentativeSquadronForCampaign(Campaign campaign) throws PWCGException
     {
         SquadronMember representativePlayer = findReferencePlayer(campaign);
         Squadron representativePlayerSquadron = PWCGContext.getInstance().getSquadronManager().getSquadron(representativePlayer.getSquadronId());
         return representativePlayerSquadron;
-    }
-
-    private static SquadronMember getHostPlayer(Campaign campaign) throws PWCGException
-    {
-        List<CoopPilot> coopPilots = CoopPilotIOJson.readCoopPilots();
-        for (CoopPilot coopPilot : coopPilots)
-        {
-            for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
-            {
-                if (coopPilot.getUsername().equals(CoopHostUserBuilder.HOST_USER_NAME))
-                {
-                    if (coopPilot.getPilotName().equals(player.getName()))
-                    {
-                        return player;
-                    }
-                }
-            }
-        }
-
-        return null;
     }
 
     private static SquadronMember getActivePlayer(Campaign campaign) throws PWCGException

@@ -62,6 +62,13 @@ public class MultiSelectGUI implements ActionListener
             buildCheckBoxGrid();
         }
     }
+
+    public void clear() throws PWCGException
+    { 
+        checkBoxes = new TreeMap<>();
+        selectDataSet = new TreeMap<>();
+        buildCheckBoxGrid();
+    }
     
     public List<MultiSelectData> getSelected()
     {

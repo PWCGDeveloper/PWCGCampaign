@@ -6,7 +6,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.swing.JButton;
@@ -15,10 +14,10 @@ import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.io.json.CoopPilotIOJson;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.coop.model.CoopPilot;
+import pwcg.coop.CoopPersonaManager;
+import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -33,10 +32,10 @@ import pwcg.gui.utils.PWCGButtonFactory;
 public class ReferencePilotSelector extends PwcgGuiContext implements ActionListener
 {
     private static final long serialVersionUID = 1L;
-    private JComboBox<String> coopPilotSelector;
+    private JComboBox<String> coopSquadronMemberSelector;
     private CampaignHomeGUI campaignHomeGui;
     private Campaign campaign;
-    private Map<String, SquadronMember> coopPilotsInCampaign = new HashMap<>();
+    private Map<String, SquadronMember> coopSquadronMembersInCampaign = new HashMap<>();
 
     public ReferencePilotSelector(Campaign campaign,CampaignHomeGUI campaignHomeGui)
     {
@@ -49,7 +48,7 @@ public class ReferencePilotSelector extends PwcgGuiContext implements ActionList
     {
         try
         {
-            setCenterPanel(makeCoopPilotSelectorPanel());
+            setCenterPanel(makeCoopPersonaSelectorPanel());
             setLeftPanel(makeNavigatePanel());
         }
         catch (Throwable e)
@@ -59,7 +58,7 @@ public class ReferencePilotSelector extends PwcgGuiContext implements ActionList
         }
     }
 
-    private JPanel makeCoopPilotSelectorPanel() throws PWCGException
+    private JPanel makeCoopPersonaSelectorPanel() throws PWCGException
     {
         ImageResizingPanel centerPanel = null;
         String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
@@ -67,35 +66,31 @@ public class ReferencePilotSelector extends PwcgGuiContext implements ActionList
         centerPanel.setLayout(new BorderLayout());
 
         Font font = MonitorSupport.getPrimaryFontLarge();
-        coopPilotSelector = new JComboBox<String>();
-        coopPilotSelector.setOpaque(false);
-        coopPilotSelector.setBackground(ColorMap.PAPER_BACKGROUND);
-        coopPilotSelector.setFont(font);
+        coopSquadronMemberSelector = new JComboBox<String>();
+        coopSquadronMemberSelector.setOpaque(false);
+        coopSquadronMemberSelector.setBackground(ColorMap.PAPER_BACKGROUND);
+        coopSquadronMemberSelector.setFont(font);
         
-        List<CoopPilot> coopPilots = CoopPilotIOJson.readCoopPilots();
-        for (CoopPilot coopPilot : coopPilots)
+        for (CoopPersona coopPersona : CoopPersonaManager.getIntance().getCoopPersonasForCampaign(campaign))
         {
-            if (campaign.getCampaignData().getName().equals(coopPilot.getCampaignName()))
+            SquadronMember coopSquadronMember = campaign.getPersonnelManager().getAnyCampaignMember(coopPersona.getSerialNumber());
+            if (coopSquadronMember != null)
             {
-                SquadronMember coopSquadronMember = campaign.getPersonnelManager().getAnyCampaignMember(coopPilot.getSerialNumber());
-                if (coopSquadronMember != null)
+                if (coopSquadronMember.getPilotActiveStatus() >= SquadronMemberStatus.STATUS_CAPTURED)
                 {
-                    if (coopSquadronMember.getPilotActiveStatus() >= SquadronMemberStatus.STATUS_CAPTURED)
-                    {
-                        String selectiontext = coopPilot.getPilotName() + ":" + coopPilot.getUsername();
-                        coopPilotSelector.addItem(selectiontext);
-                        coopPilotsInCampaign.put(selectiontext, coopSquadronMember);
-                    }
+                    String selectiontext = coopPersona.getPilotName() + ":" + coopPersona.getUsername();
+                    coopSquadronMemberSelector.addItem(selectiontext);
+                    coopSquadronMembersInCampaign.put(selectiontext, coopSquadronMember);
                 }
             }
         }
 
-        if (coopPilotSelector.getItemCount() > 0)
+        if (coopSquadronMemberSelector.getItemCount() > 0)
         {
-            coopPilotSelector.setSelectedIndex(0);
+            coopSquadronMemberSelector.setSelectedIndex(0);
         }
         
-        centerPanel.add(coopPilotSelector, BorderLayout.NORTH);
+        centerPanel.add(coopSquadronMemberSelector, BorderLayout.NORTH);
         
         return centerPanel;
     }
@@ -125,7 +120,7 @@ public class ReferencePilotSelector extends PwcgGuiContext implements ActionList
             String action = ae.getActionCommand();
             if (action.equalsIgnoreCase("AcceptReferencePilot"))
             {
-                SquadronMember referencePlayer = coopPilotsInCampaign.get(coopPilotSelector.getSelectedItem());
+                SquadronMember referencePlayer = coopSquadronMembersInCampaign.get(coopSquadronMemberSelector.getSelectedItem());
                 if (referencePlayer != null)
                 {
                     PWCGContext.getInstance().setReferencePlayer(referencePlayer);

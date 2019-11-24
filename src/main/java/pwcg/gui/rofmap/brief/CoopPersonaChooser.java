@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.coop.model.CoopPilot;
+import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.CampaignGuiContextManager;
@@ -34,18 +34,18 @@ import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionHumanParticipants;
 
-public class CoopPilotChooser extends PwcgGuiContext implements ActionListener
+public class CoopPersonaChooser extends PwcgGuiContext implements ActionListener
 {
     private static final long serialVersionUID = 1L;
-    private CoopPilotChooserPanel coopPilotAccept;
-    private JPanel coopPilotErrorPanel;
+    private CoopPersonaChooserPanel coopPersonaAccept;
+    private JPanel coopPersonaErrorPanel;
     private List<String> errorMessages = new ArrayList<>();
     private CampaignHomeGUI campaignHomeGui;
     private Campaign campaign;
     private JButton missionButton;
     private MissionHumanParticipants participatingPlayers = new MissionHumanParticipants();
 
-    public CoopPilotChooser(Campaign campaign,CampaignHomeGUI campaignHomeGui)
+    public CoopPersonaChooser(Campaign campaign,CampaignHomeGUI campaignHomeGui)
     {
         super();
         this.campaign = campaign;
@@ -56,9 +56,9 @@ public class CoopPilotChooser extends PwcgGuiContext implements ActionListener
     {
         try
         {
-        	coopPilotAccept = new CoopPilotChooserPanel(campaign, this);
-            coopPilotAccept.makePanels();
-            setCenterPanel(coopPilotAccept);
+        	coopPersonaAccept = new CoopPersonaChooserPanel(campaign, this);
+            coopPersonaAccept.makePanels();
+            setCenterPanel(coopPersonaAccept);
             setLeftPanel(makeNavigatePanel());
             buildErrorPanel();
             evaluateErrors();
@@ -73,15 +73,15 @@ public class CoopPilotChooser extends PwcgGuiContext implements ActionListener
     private void buildErrorPanel() throws PWCGException 
     {
         String imagePath = ContextSpecificImages.imagesMisc() + "Paper.jpg";
-        coopPilotErrorPanel = new ImageResizingPanel(imagePath);
-        coopPilotErrorPanel.setLayout(new GridLayout(0, 2));
-        this.add(BorderLayout.SOUTH, coopPilotErrorPanel);
+        coopPersonaErrorPanel = new ImageResizingPanel(imagePath);
+        coopPersonaErrorPanel.setLayout(new GridLayout(0, 2));
+        this.add(BorderLayout.SOUTH, coopPersonaErrorPanel);
 	}
     
     public void evaluateErrors() throws PWCGException
     {
     	errorMessages.clear();
-    	coopPilotErrorPanel.removeAll();
+    	coopPersonaErrorPanel.removeAll();
 
     	formErrorMessages();
     	
@@ -98,30 +98,30 @@ public class CoopPilotChooser extends PwcgGuiContext implements ActionListener
 			missionButton.setEnabled(false);
 		}
 
-    	coopPilotErrorPanel.revalidate();
+    	coopPersonaErrorPanel.revalidate();
     }
 
 	private void formErrorMessages() throws PWCGException 
 	{
-		List<CoopPilot> selectedCoopPilots = coopPilotAccept.getAcceptedCoopPilots();
-    	if (selectedCoopPilots.isEmpty())
+		List<CoopPersona> selectedCoopPersonas = coopPersonaAccept.getAcceptedCoopPersonas();
+    	if (selectedCoopPersonas.isEmpty())
     	{
             errorMessages.add("No pilots selected for mission");
     	}
     	
-    	Map <String, CoopPilot> coopPilotsByCoopUser = new HashMap<>();
-    	for (CoopPilot coopPilot : selectedCoopPilots)
+    	Map <String, CoopPersona> coopPersonasByCoopUser = new HashMap<>();
+    	for (CoopPersona coopPersona : selectedCoopPersonas)
     	{
-    		if (coopPilotsByCoopUser.containsKey(coopPilot.getUsername()))
+    		if (coopPersonasByCoopUser.containsKey(coopPersona.getUsername()))
     		{
-    		    if (!coopPilot.getUsername().equals(CoopPilotChooserPanel.NO_USER_FOR_PILOT))
+    		    if (!coopPersona.getUsername().equals(CoopPersonaChooserPanel.NO_USER_FOR_PILOT))
     		    {
-    		        errorMessages.add("More than one pilot in mission for player " + coopPilot.getUsername() + " Pilot Name: " + coopPilot.getPilotName());
+    		        errorMessages.add("More than one pilot in mission for player " + coopPersona.getUsername() + " Pilot Name: " + coopPersona.getPilotName());
     		    }
     		}
     		else
     		{
-    			coopPilotsByCoopUser.put(coopPilot.getUsername(), coopPilot);
+    			coopPersonasByCoopUser.put(coopPersona.getUsername(), coopPersona);
     		}
     	}
 	}
@@ -134,11 +134,11 @@ public class CoopPilotChooser extends PwcgGuiContext implements ActionListener
     	{
     		JLabel spacer = new JLabel("   ");
     		spacer.setFont(font);
-    		coopPilotErrorPanel.add(spacer);
+    		coopPersonaErrorPanel.add(spacer);
 
     		JLabel errorLabel = new JLabel(errorMessage);
     		errorLabel.setFont(font);
-    		coopPilotErrorPanel.add(errorLabel);
+    		coopPersonaErrorPanel.add(errorLabel);
     	}
 	}
 
@@ -148,10 +148,10 @@ public class CoopPilotChooser extends PwcgGuiContext implements ActionListener
     	
 		JLabel spacer = new JLabel("   ");
 		spacer.setFont(font);
-		coopPilotErrorPanel.add(spacer);
+		coopPersonaErrorPanel.add(spacer);
 		spacer = new JLabel("   ");
 		spacer.setFont(font);
-		coopPilotErrorPanel.add(spacer);
+		coopPersonaErrorPanel.add(spacer);
 	}
 
 	public JPanel makeNavigatePanel() throws PWCGException  
@@ -182,8 +182,8 @@ public class CoopPilotChooser extends PwcgGuiContext implements ActionListener
             String action = ae.getActionCommand();
             if (action.equalsIgnoreCase("CampCoopMission"))
             {
-            	List<SquadronMember> selectedCoopPilots = coopPilotAccept.getAcceptedSquadronMembers();
-            	participatingPlayers.addSquadronMembers(selectedCoopPilots);
+            	List<SquadronMember> selectedCoopPersonas = coopPersonaAccept.getAcceptedSquadronMembers();
+            	participatingPlayers.addSquadronMembers(selectedCoopPersonas);
             	
              	GuiMissionInitiator missionInitiator = new GuiMissionInitiator(campaign, participatingPlayers);
                 Mission mission = missionInitiator.makeMission(false);

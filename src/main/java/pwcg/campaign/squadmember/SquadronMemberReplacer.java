@@ -4,10 +4,9 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignGeneratorModel;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
-import pwcg.campaign.io.json.CoopPilotIOJson;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.coop.model.CoopPilot;
+import pwcg.coop.CoopPersonaManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 
@@ -20,7 +19,7 @@ public class SquadronMemberReplacer  implements ISquadronMemberReplacer
         this.campaign = campaign;
     }
 	
-    public SquadronMember createPilot(String playerPilotName, String rank, String squadronName, String coopUser) throws PWCGUserException, Exception
+    public SquadronMember createPersona(String playerPilotName, String rank, String squadronName, String coopUser) throws PWCGUserException, Exception
     {        
         Squadron newPlayerSquadron = getNewPlayerSquadron(squadronName);
     	SquadronPersonnel newPlayerSquadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(newPlayerSquadron.getSquadronId());
@@ -30,7 +29,7 @@ public class SquadronMemberReplacer  implements ISquadronMemberReplacer
         
         if (campaign.isCoop())
         {
-            createCoopPilot(newSquadronMewmber, coopUser);
+            CoopPersonaManager.getIntance().createCoopPersona(campaign, newSquadronMewmber, coopUser);
         }
         
         return newSquadronMewmber;
@@ -67,20 +66,5 @@ public class SquadronMemberReplacer  implements ISquadronMemberReplacer
 		AiPilotRemovalChooser pilotRemovalChooser = new AiPilotRemovalChooser(campaign);
         SquadronMember squadronMemberToReplace = pilotRemovalChooser.findAiPilotToRemove(rank, newPlayerSquadron.getSquadronId());
         newPlayerSquadronPersonnel.removeSquadronMember(squadronMemberToReplace);
-	}
-
-	private void createCoopPilot(SquadronMember newSquadronMewmber, String coopUser) throws PWCGException 
-	{
-        CoopPilot coopPilot = new CoopPilot();
-        coopPilot.setCampaignName(campaign.getCampaignData().getName());
-        coopPilot.setNote("Created by PWCG");
-        coopPilot.setPilotName(newSquadronMewmber.getName());
-        coopPilot.setPilotRank(newSquadronMewmber.getRank());
-        coopPilot.setSerialNumber(newSquadronMewmber.getSerialNumber());
-        coopPilot.setSquadronId(newSquadronMewmber.getSquadronId());
-        coopPilot.setUsername(coopUser);
-        coopPilot.setApproved(true);
-	
-        CoopPilotIOJson.writeJson(coopPilot);
 	}
 }

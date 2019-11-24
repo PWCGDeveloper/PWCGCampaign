@@ -9,10 +9,10 @@ import java.util.TreeMap;
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.io.json.CoopPilotIOJson;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.coop.model.CoopPilot;
+import pwcg.coop.CoopPersonaManager;
+import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -22,19 +22,19 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.MultiSelectData;
 import pwcg.gui.utils.SelectorGUI;
 
-public class CoopPilotChooserPanel extends ImageResizingPanel implements ISelectorGUICallback
+public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISelectorGUICallback
 {
 	private static final long serialVersionUID = 1L;
     private SelectorGUI selector;
-    private CoopPilotChooser parent;
+    private CoopPersonaChooser parent;
     private Campaign campaign;
 	
     private Map<String, SquadronMember> playerSquadronMembers = new TreeMap<>();
-    private Map<String, CoopPilot> campaignCoopPilots = new TreeMap<>();
+    private Map<String, CoopPersona> campaignCoopPersonas = new TreeMap<>();
     
     public static final String NO_USER_FOR_PILOT = "No User For Pilot";
 
-	public CoopPilotChooserPanel(Campaign campaign, CoopPilotChooser parent)
+	public CoopPersonaChooserPanel(Campaign campaign, CoopPersonaChooser parent)
 	{
 	    super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
 	    this.campaign = campaign;
@@ -60,57 +60,54 @@ public class CoopPilotChooserPanel extends ImageResizingPanel implements ISelect
     {
         for (SquadronMember player : campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList())
         {
-            CoopPilot coopPilot = findCoopPlayerForSquadronMember(player);
-            MultiSelectData selectData = buildSelectData(coopPilot);
+            CoopPersona coopPersona = findCoopPlayerForSquadronMember(player);
+            MultiSelectData selectData = buildSelectData(coopPersona);
             playerSquadronMembers.put(player.getName(), player);
-            campaignCoopPilots.put(player.getName(), coopPilot);
+            campaignCoopPersonas.put(player.getName(), coopPersona);
             selector.addNotAccepted(selectData);
         }
     }
     
-    private CoopPilot findCoopPlayerForSquadronMember(SquadronMember player) throws PWCGException
+    private CoopPersona findCoopPlayerForSquadronMember(SquadronMember player) throws PWCGException
     {
-        List<CoopPilot> coopPilots = CoopPilotIOJson.readCoopPilots();
-        for (CoopPilot coopPilot : coopPilots)
+        List<CoopPersona> coopPersonas = CoopPersonaManager.getIntance().getCoopPersonasForCampaign(campaign);
+        for (CoopPersona coopPersona : coopPersonas)
         {
-            if (campaign.getCampaignData().getName().equals(coopPilot.getCampaignName()))
+            if (player.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
             {
-                if (player.getPilotActiveStatus() == SquadronMemberStatus.STATUS_ACTIVE)
+                if (player.getName().equals(coopPersona.getPilotName()))
                 {
-                    if (player.getName().equals(coopPilot.getPilotName()))
-                    {
-                        return coopPilot;
-                    }
+                    return coopPersona;
                 }
             }
         }
-        return makeNoCoopPilot(player);
+        return makeNoCoopPersona(player);
     }
 
-    private CoopPilot makeNoCoopPilot(SquadronMember player)
+    private CoopPersona makeNoCoopPersona(SquadronMember player)
     {
-        CoopPilot noCoopPilot = new CoopPilot();
-        noCoopPilot.setCampaignName(campaign.getCampaignData().getName());
-        noCoopPilot.setApproved(true);
-        noCoopPilot.setPilotName(player.getName());
-        noCoopPilot.setPilotRank(player.getRank());
-        noCoopPilot.setSerialNumber(player.getSerialNumber());
-        noCoopPilot.setSquadronId(player.getSquadronId());
-        noCoopPilot.setUsername(NO_USER_FOR_PILOT);
+        CoopPersona noCoopPersona = new CoopPersona();
+        noCoopPersona.setCampaignName(campaign.getCampaignData().getName());
+        noCoopPersona.setApproved(true);
+        noCoopPersona.setPilotName(player.getName());
+        noCoopPersona.setPilotRank(player.getRank());
+        noCoopPersona.setSerialNumber(player.getSerialNumber());
+        noCoopPersona.setSquadronId(player.getSquadronId());
+        noCoopPersona.setUsername(NO_USER_FOR_PILOT);
         
-        return noCoopPilot;
+        return noCoopPersona;
     }
 
-    private MultiSelectData buildSelectData(CoopPilot coopPilot)
+    private MultiSelectData buildSelectData(CoopPersona coopPersona)
     {
         MultiSelectData selectData = new MultiSelectData();
-        selectData.setName(coopPilot.getPilotName());
-        selectData.setText("User: " + coopPilot.getUsername() +".  Pilot Name: "  + coopPilot.getPilotName());
+        selectData.setName(coopPersona.getPilotName());
+        selectData.setText("User: " + coopPersona.getUsername() +".  Pilot Name: "  + coopPersona.getPilotName());
         selectData.setInfo(
-                "User: " + coopPilot.getUsername() + 
-                ".  Campaign: "  + coopPilot.getCampaignName() + 
-                ".  Pilot Name: "  + coopPilot.getPilotName() + 
-                ".  Squadron: "  + coopPilot.getSquadronId());
+                "User: " + coopPersona.getUsername() + 
+                ".  Campaign: "  + coopPersona.getCampaignName() + 
+                ".  Pilot Name: "  + coopPersona.getPilotName() + 
+                ".  Squadron: "  + coopPersona.getSquadronId());
         return selectData;
     }
 
@@ -135,16 +132,16 @@ public class CoopPilotChooserPanel extends ImageResizingPanel implements ISelect
 		return selectedPlayers;
 	}
 	
-	public List<CoopPilot> getAcceptedCoopPilots() throws PWCGException
+	public List<CoopPersona> getAcceptedCoopPersonas() throws PWCGException
 	{
-        List<CoopPilot> selectedCoopPilots = new ArrayList<>();
+        List<CoopPersona> selectedCoopPersonas = new ArrayList<>();
         List<MultiSelectData> selectedRecords = selector.getAccepted();
 		for (MultiSelectData selectedRecord : selectedRecords)
 		{
-			CoopPilot selectedCoopPilot = campaignCoopPilots.get(selectedRecord.getName());
-			selectedCoopPilots.add(selectedCoopPilot);
+			CoopPersona selectedCoopPersona = campaignCoopPersonas.get(selectedRecord.getName());
+			selectedCoopPersonas.add(selectedCoopPersona);
 		}
-		return selectedCoopPilots;
+		return selectedCoopPersonas;
 	}
 
 	@Override

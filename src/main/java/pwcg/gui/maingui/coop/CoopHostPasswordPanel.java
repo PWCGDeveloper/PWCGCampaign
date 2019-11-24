@@ -3,15 +3,12 @@ package pwcg.gui.maingui.coop;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import pwcg.campaign.CoopHostUserBuilder;
-import pwcg.campaign.io.json.CoopUserIOJson;
-import pwcg.coop.model.CoopUser;
+import pwcg.coop.CoopUserManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.colors.ColorMap;
@@ -20,14 +17,13 @@ import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 
-public class CoopHostPassword extends ImageResizingPanel
+public class CoopHostPasswordPanel extends ImageResizingPanel
 {
 	private static final long serialVersionUID = 1L;
 	
-    private CoopUser coopHostRecord = null;
 	private JTextField hostPasswordTextBox;
 
-	public CoopHostPassword()
+	public CoopHostPasswordPanel()
 	{
 	    super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
 	}
@@ -49,22 +45,7 @@ public class CoopHostPassword extends ImageResizingPanel
 	
     private void loadPanels() throws PWCGException
     {
-        List<CoopUser> coopUsers = CoopUserIOJson.readCoopUsers();
-        for (CoopUser coopUser : coopUsers)
-        {
-            if (coopUser.getUsername().equals(CoopHostUserBuilder.HOST_USER_NAME))
-            {
-            	coopHostRecord = coopUser;
-            }
-        }
-        
-        if (coopHostRecord == null)
-        {
-        	CoopHostUserBuilder hostBuilder = new CoopHostUserBuilder();
-        	coopHostRecord = hostBuilder.getHostUser();
-        }
-
-        hostPasswordTextBox.setText(coopHostRecord.getPassword());
+        hostPasswordTextBox.setText(CoopUserManager.getIntance().getCoopHost().getPassword());
     }
 
     private JPanel makePasswordEntryPanel() throws PWCGException 
@@ -101,10 +82,6 @@ public class CoopHostPassword extends ImageResizingPanel
 	public void writeResults() throws PWCGException 
 	{
 		String password = hostPasswordTextBox.getText();
-		if ((password != null) && password.length() > 0)
-		{
-			coopHostRecord.setPassword(password);
-			CoopUserIOJson.writeJson(coopHostRecord);
-		}
+		CoopUserManager.getIntance().setHostPassword(password);
 	}
 }

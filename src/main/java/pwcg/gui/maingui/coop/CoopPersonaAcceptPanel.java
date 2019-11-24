@@ -2,18 +2,16 @@ package pwcg.gui.maingui.coop;
 
 import java.awt.BorderLayout;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 import javax.swing.JPanel;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignHumanPilotHandler;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.io.json.CoopPilotIOJson;
 import pwcg.campaign.squadmember.AiPilotRemovalChooser;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.coop.model.CoopPilot;
+import pwcg.coop.CoopPersonaManager;
+import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -22,14 +20,12 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.MultiSelectData;
 import pwcg.gui.utils.SelectorGUI;
 
-public class CoopPilotAccept extends ImageResizingPanel
+public class CoopPersonaAcceptPanel extends ImageResizingPanel
 {
 	private static final long serialVersionUID = 1L;
     private SelectorGUI selector;
 	
-    private Map<String, CoopPilot> coopPilotRecords = new TreeMap<>();
-
-	public CoopPilotAccept()
+	public CoopPersonaAcceptPanel()
 	{
 	    super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
 	}
@@ -51,12 +47,11 @@ public class CoopPilotAccept extends ImageResizingPanel
 
     private void loadPanels() throws PWCGException
     {
-        List<CoopPilot> coopPilots = CoopPilotIOJson.readCoopPilots();
-        for (CoopPilot coopPilot : coopPilots)
+        List<CoopPersona> coopPersonas = CoopPersonaManager.getIntance().getAllCoopPersonas();
+        for (CoopPersona coopPersona : coopPersonas)
         {
-            coopPilotRecords.put(coopPilot.getPilotName(), coopPilot);
-            MultiSelectData selectData = buildSelectData(coopPilot);
-            if (coopPilot.isApproved())
+            MultiSelectData selectData = buildSelectData(coopPersona);
+            if (coopPersona.isApproved())
             {
                 selector.addAccepted(selectData);
             }
@@ -67,17 +62,17 @@ public class CoopPilotAccept extends ImageResizingPanel
         }
     }
 
-    private MultiSelectData buildSelectData(CoopPilot coopPilot)
+    private MultiSelectData buildSelectData(CoopPersona coopPersona)
     {
         MultiSelectData selectData = new MultiSelectData();
-        selectData.setName(coopPilot.getPilotName());
-        selectData.setText("User: " + coopPilot.getUsername() +".  Pilot Name: "  + coopPilot.getPilotName());
+        selectData.setName(coopPersona.getPilotName());
+        selectData.setText("User: " + coopPersona.getUsername() +".  Pilot Name: "  + coopPersona.getPilotName());
         selectData.setInfo(
-                "User: " + coopPilot.getUsername() + 
-                ".  Campaign: "  + coopPilot.getCampaignName() + 
-                ".  Pilot Name: "  + coopPilot.getPilotName() + 
-                ".  Squadron: "  + coopPilot.getSquadronId() + 
-                ".  " + coopPilot.getNote());
+                "User: " + coopPersona.getUsername() + 
+                ".  Campaign: "  + coopPersona.getCampaignName() + 
+                ".  Pilot Name: "  + coopPersona.getPilotName() + 
+                ".  Squadron: "  + coopPersona.getSquadronId() + 
+                ".  " + coopPersona.getNote());
         return selectData;
     }
 
@@ -93,19 +88,16 @@ public class CoopPilotAccept extends ImageResizingPanel
     {
         for (MultiSelectData selectData: selector.getAccepted())
         {
-            CoopPilot acceptedPilot = coopPilotRecords.get(selectData.getName());
-            if (acceptedPilot != null)
+            CoopPersona acceptedPersona = CoopPersonaManager.getIntance().getCoopPersona(selectData.getName());
+            if (acceptedPersona != null)
             {
-                if (acceptedPilot.getSerialNumber() == 0)
-                {
-                    int newPilotSerialNumber = addHumanPilot(acceptedPilot);
-                    updateHumanPilotRecord(acceptedPilot, newPilotSerialNumber);
-                }
+                int newPilotSerialNumber = addHumanPilot(acceptedPersona);
+                CoopPersonaManager.getIntance().acceptPersonaIntoCampaign(selectData.getName(), newPilotSerialNumber);
             }
         }        
     }
     
-    private int addHumanPilot(CoopPilot acceptedPilot) throws PWCGException 
+    private int addHumanPilot(CoopPersona acceptedPilot) throws PWCGException 
     {
         Campaign campaign = new Campaign();
         campaign.open(acceptedPilot.getCampaignName());    
@@ -125,12 +117,4 @@ public class CoopPilotAccept extends ImageResizingPanel
         
         return newPilotSerialNumber;
     }
-    
-    private void updateHumanPilotRecord(CoopPilot acceptedPilot, int newPilotSerialNumber) throws PWCGException
-    {
-        acceptedPilot.setSerialNumber(newPilotSerialNumber);
-        acceptedPilot.setApproved(true);
-        CoopPilotIOJson.writeJson(acceptedPilot);
-    }
-
 }

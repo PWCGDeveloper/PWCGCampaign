@@ -1,9 +1,7 @@
 package pwcg.campaign.squadmember;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.io.json.CoopPilotIOJson;
-import pwcg.coop.model.CoopPilot;
-import pwcg.core.exception.PWCGException;
+import pwcg.coop.CoopPersonaManager;
 import pwcg.core.exception.PWCGUserException;
 
 public class SquadronMemberReplacerCoop extends SquadronMemberReplacer  implements ISquadronMemberReplacer
@@ -13,25 +11,10 @@ public class SquadronMemberReplacerCoop extends SquadronMemberReplacer  implemen
         super(campaign);
     }
 	
-    public SquadronMember createPilot(String playerPilotName, String rank, String squadronName, String coopUser) throws PWCGUserException, Exception
+    public SquadronMember createPersona(String playerPilotName, String rank, String squadronName, String coopUsername) throws PWCGUserException, Exception
     {        
-        SquadronMember newSquadronMewmber = super.createPilot(playerPilotName, rank, squadronName, coopUser);
-        createCoopPilot(newSquadronMewmber, coopUser);
+        SquadronMember newSquadronMewmber = super.createPersona(playerPilotName, rank, squadronName, coopUsername);
+        CoopPersonaManager.getIntance().createCoopPersona(campaign, newSquadronMewmber, coopUsername);
         return newSquadronMewmber;
     }
-
-	private void createCoopPilot(SquadronMember newSquadronMewmber, String coopUser) throws PWCGException 
-	{
-        CoopPilot coopPilot = new CoopPilot();
-        coopPilot.setCampaignName(campaign.getCampaignData().getName());
-        coopPilot.setNote("Created by PWCG");
-        coopPilot.setPilotName(newSquadronMewmber.getName());
-        coopPilot.setPilotRank(newSquadronMewmber.getRank());
-        coopPilot.setSerialNumber(newSquadronMewmber.getSerialNumber());
-        coopPilot.setSquadronId(newSquadronMewmber.getSquadronId());
-        coopPilot.setUsername(coopUser);
-        coopPilot.setApproved(true);
-	
-        CoopPilotIOJson.writeJson(coopPilot);
-	}
 }

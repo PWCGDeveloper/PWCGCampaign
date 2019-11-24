@@ -1,13 +1,12 @@
 package pwcg.gui.maingui.coop;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 import javax.swing.JPanel;
 
-import pwcg.campaign.io.json.CoopUserIOJson;
+import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
@@ -17,14 +16,12 @@ import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.MultiSelectData;
 import pwcg.gui.utils.SelectorGUI;
 
-public class CoopUserAccept extends ImageResizingPanel
+public class CoopUserAcceptRequestPanel extends ImageResizingPanel
 {
 	private static final long serialVersionUID = 1L;
     private SelectorGUI selector;
 	
-    private Map<String, CoopUser> coopUserRecords = new TreeMap<>();
-
-	public CoopUserAccept()
+	public CoopUserAcceptRequestPanel()
 	{
 	    super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
 	}
@@ -54,10 +51,9 @@ public class CoopUserAccept extends ImageResizingPanel
 
     private void loadPanels() throws PWCGException
     {
-        List<CoopUser> coopUsers = CoopUserIOJson.readCoopUsers();
+        List<CoopUser> coopUsers = CoopUserManager.getIntance().getAllCoopUsers();
         for (CoopUser coopUser : coopUsers)
         {
-            coopUserRecords.put(coopUser.getUsername(), coopUser);
             if (coopUser.isApproved())
             {
                 MultiSelectData selectData = buildSelectData(coopUser);
@@ -84,33 +80,28 @@ public class CoopUserAccept extends ImageResizingPanel
 
     public void writeResults() throws PWCGException
     {
-        writeAcceptedUsers();
-        writeRejectedUsers();
+        List<String> acceptedUsers = getAcceptedUsers();
+        List<String> rejectedUsers = getRejectedUsers();
+        CoopUserManager.getIntance().setUserAcceptedStatus(acceptedUsers, rejectedUsers);
     }
 
-    private void writeAcceptedUsers() throws PWCGException
+    private List<String> getAcceptedUsers() throws PWCGException
     {
+        List<String> acceptedUsers = new ArrayList<>();
         for (MultiSelectData selectData: selector.getAccepted())
         {
-            CoopUser acceptedUser = coopUserRecords.get(selectData.getName());
-            if (acceptedUser != null)
-            {
-                acceptedUser.setApproved(true);
-                CoopUserIOJson.writeJson(acceptedUser);
-            }
-        }        
+            acceptedUsers.add(selectData.getName());
+        }
+        return acceptedUsers;        
     }
 
-    private void writeRejectedUsers() throws PWCGException
+    private List<String> getRejectedUsers() throws PWCGException
     {
+        List<String> rejectedUsers = new ArrayList<>();
         for (MultiSelectData selectData: selector.getNotAccepted())
         {
-            CoopUser rejectedUser = coopUserRecords.get(selectData.getName());
-            if (rejectedUser != null)
-            {
-                rejectedUser.setApproved(false);
-                CoopUserIOJson.writeJson(rejectedUser);
-            }
-        }        
+            rejectedUsers.add(selectData.getName());
+        }
+        return rejectedUsers;        
     }
 }

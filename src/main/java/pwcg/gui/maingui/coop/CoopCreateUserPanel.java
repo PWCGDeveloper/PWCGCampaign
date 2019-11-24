@@ -5,9 +5,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,8 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
-import pwcg.campaign.io.json.CoopUserIOJson;
-import pwcg.coop.model.CoopUser;
+import pwcg.coop.CoopUserManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.colors.ColorMap;
@@ -26,15 +22,12 @@ import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 
-public class CoopCreateUser extends ImageResizingPanel implements ActionListener
+public class CoopCreateUserPanel extends ImageResizingPanel implements ActionListener
 {
     private static final long serialVersionUID = 1L;
-
-	private Map<String, CoopUser> existingCoopUsers = new HashMap<>();
-	private Map<String, CoopUser> addedCoopUsers = new HashMap<>();
 	private JTextField coopUserNameText;
 
-	public CoopCreateUser() 
+	public CoopCreateUserPanel() 
 	{
 	    super(ContextSpecificImages.imagesMisc() + "Paper.jpg");
 	}
@@ -43,7 +36,6 @@ public class CoopCreateUser extends ImageResizingPanel implements ActionListener
     {
         try
         {
-            loadExistingCoopUsers();
 	        JPanel centerPanel = makeCoopUserEntryPanel();
 	        this.add(centerPanel, BorderLayout.NORTH);
         }
@@ -53,14 +45,6 @@ public class CoopCreateUser extends ImageResizingPanel implements ActionListener
             ErrorDialog.internalError(e.getMessage());
         }
     }
-
-    private void loadExistingCoopUsers() throws PWCGException {
-    	List<CoopUser> existingCoopUserList = CoopUserIOJson.readCoopUsers();
-    	for (CoopUser existingCoopUser : existingCoopUserList)
-    	{
-    		existingCoopUsers.put(existingCoopUser.getUsername(), existingCoopUser);
-    	}
-	}
 
     private JPanel makeCoopUserEntryPanel() throws PWCGException 
     {
@@ -80,7 +64,7 @@ public class CoopCreateUser extends ImageResizingPanel implements ActionListener
 
         dataEntryPanel.add(descPanel, BorderLayout.WEST);
         dataEntryPanel.add(textPanel, BorderLayout.CENTER);
-        dataEntryPanel.add(buttonPanel, BorderLayout.SOUTH);
+        dataEntryPanel.add(buttonPanel, BorderLayout.EAST);
 
         centerPanel.add(dataEntryPanel, BorderLayout.NORTH);
         
@@ -112,7 +96,6 @@ public class CoopCreateUser extends ImageResizingPanel implements ActionListener
 		return descPanel;
 	}
 	
-
 	private JPanel buildCoopUserButtons(Font font) 
 	{
 		JPanel controlPanel = new JPanel (new GridLayout(0,1));
@@ -143,7 +126,7 @@ public class CoopCreateUser extends ImageResizingPanel implements ActionListener
             	{
             		ErrorDialog.userError("Username must be entered");
             	}
-            	else if (isDuplicateUser(username))
+            	else if (CoopUserManager.getIntance().isDuplicateUser(username))
             	{
             		ErrorDialog.userError("Username already in use");
             	}
@@ -161,33 +144,9 @@ public class CoopCreateUser extends ImageResizingPanel implements ActionListener
         }
     }
 
-	private boolean isDuplicateUser(String username) 
-	{
-		if (addedCoopUsers.containsKey(username) || existingCoopUsers.containsKey(username))
-		{
-			return true;
-		}
-		return false;
-	}
-
-	private void addCoopUser(String username) {
-		CoopUser coopUser = new CoopUser();
-		coopUser.setUsername(username);
-		coopUser.setPassword("PWCG");
-		coopUser.setNote("Created by host");
-		coopUser.setApproved(true);
-		
-		addedCoopUsers.put(coopUser.getUsername(), coopUser);
-	}
-
-	public void writeResults() throws PWCGException 
-	{
-		for (CoopUser addedCoopUser : addedCoopUsers.values())
-		{
-			CoopUserIOJson.writeJson(addedCoopUser);
-		}
-		
-		addedCoopUsers.clear();
-	}
+    private void addCoopUser(String username) throws PWCGException
+    {
+        CoopUserManager.getIntance().buildCoopUser(username);
+    }
 }
 

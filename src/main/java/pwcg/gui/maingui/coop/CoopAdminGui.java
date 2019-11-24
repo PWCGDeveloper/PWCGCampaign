@@ -29,10 +29,6 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
 {
     private static final long serialVersionUID = 1L;
     private ButtonGroup buttonGroup = new ButtonGroup();
-    private CoopUserAccept coopUserAccept = new CoopUserAccept();
-    private CoopPilotAccept coopPilotAccept = new CoopPilotAccept();
-    private CoopHostPassword coopHostPassword = new CoopHostPassword();
-    private CoopCreateUser coopCreateUser = new CoopCreateUser();
 
     public CoopAdminGui()
     {
@@ -42,12 +38,7 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
     public void makePanels() 
     {
         try
-        {
-        	coopUserAccept.makePanels();
-        	coopPilotAccept.makePanels();
-        	coopHostPassword.makePanels();
-        	coopCreateUser.makePanels();
-        	
+        {        	
             setRightPanel(makeCoopAdminActionSelectPanel());
             setCenterPanel(makeCenterPanel());
             setLeftPanel(makeNavigatePanel());
@@ -104,10 +95,11 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
         JLabel spacer = PWCGButtonFactory.makeMenuLabelLarge("   ");
         buttonPanel.add(spacer);
 
-        buttonPanel.add(makeActionSelectRadioButton("Change Host Password"));
-        buttonPanel.add(makeActionSelectRadioButton("Administer Coop Users"));
-        buttonPanel.add(makeActionSelectRadioButton("Administer Coop Pilots"));
+        buttonPanel.add(makeActionSelectRadioButton("Show Coop Participant Information"));
         buttonPanel.add(makeActionSelectRadioButton("Add Coop User"));
+        buttonPanel.add(makeActionSelectRadioButton("Remove Coop User"));
+        //buttonPanel.add(makeActionSelectRadioButton("Administer Coop User Requests"));
+        //buttonPanel.add(makeActionSelectRadioButton("Administer Coop Persona Requests"));
         
         add (buttonPanel);
 
@@ -143,29 +135,40 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
             String action = ae.getActionCommand();
             if (action.equalsIgnoreCase("Finished"))
             {
-            	coopUserAccept.writeResults();
-            	coopPilotAccept.writeResults();
-            	coopHostPassword.writeResults();
-            	coopCreateUser.writeResults();
-
                 CampaignGuiContextManager.getInstance().popFromContextStack();
                 return;
             }
-            else if (action.equalsIgnoreCase("Change Host Password"))
+
+            if (action.equalsIgnoreCase("Show Coop Participant Information"))
             {
-                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopHostPassword, null);
+                CoopPersonaInfoPanel coopPersonaInfoPanel = new CoopPersonaInfoPanel();
+                coopPersonaInfoPanel.makePanels();
+                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopPersonaInfoPanel, null);
             }
-            else if (action.contains("Administer Coop Users"))
+            else if (action.equalsIgnoreCase("Add Coop User"))
             {
+                CoopCreateUserPanel coopCreateUser = new CoopCreateUserPanel();
+                coopCreateUser.makePanels();
+                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopCreateUser, null);
+            }
+            else if (action.contains("Remove Coop User"))
+            {
+                CoopUserRemovePanel coopUserRemove = new CoopUserRemovePanel();
+                coopUserRemove.makePanels();
+                coopUserRemove.loadPanels();
+                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopUserRemove, null);
+            }
+            else if (action.contains("Administer Coop User Requests"))
+            {
+                CoopUserAcceptRequestPanel coopUserAccept = new CoopUserAcceptRequestPanel();
+                coopUserAccept.makePanels();
                 CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopUserAccept, null);
             }
-            else if (action.contains("Administer Coop Pilots"))
+            else if (action.contains("Administer Coop Persona Requests"))
             {
-                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopPilotAccept, null);
-            }
-            else if (action.contains("Add Coop User"))
-            {
-                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopCreateUser, null);
+                CoopPersonaAcceptPanel coopPersonaAccept = new CoopPersonaAcceptPanel();
+                coopPersonaAccept.makePanels();
+                CampaignGuiContextManager.getInstance().changeCurrentContext(null, coopPersonaAccept, null);
             }
         }
         catch (Throwable e)

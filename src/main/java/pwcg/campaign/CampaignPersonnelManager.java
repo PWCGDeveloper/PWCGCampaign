@@ -89,6 +89,11 @@ public class CampaignPersonnelManager
         return getPlayersForStatus(SquadronMemberStatus.STATUS_KIA);
     }    
 
+    public SquadronMembers getRetiredPlayers() throws PWCGException
+    {
+        return getPlayersForStatus(SquadronMemberStatus.STATUS_RETIRED);
+    }    
+
     private SquadronMembers getPlayersForStatus(int status) throws PWCGException
     {
     	SquadronMembers allPlayers =  new SquadronMembers();
