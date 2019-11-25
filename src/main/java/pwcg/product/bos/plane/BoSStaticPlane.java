@@ -2,6 +2,8 @@ package pwcg.product.bos.plane;
 
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.group.Block;
+import pwcg.campaign.group.BlockDefinition;
+import pwcg.campaign.group.BlockDefinitionManager;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -37,5 +39,11 @@ public class BoSStaticPlane extends Block implements IStaticPlane
 
         this.setPosition(coords);
         this.setOrientation(ori);
+
+        BlockDefinition blockDefinition = BlockDefinitionManager.getInstance().getBlockDefinition(staticPlaneName);
+        if (blockDefinition != null)
+        {
+            this.setDurability(blockDefinition.getDurability());
+        }
     }
 }

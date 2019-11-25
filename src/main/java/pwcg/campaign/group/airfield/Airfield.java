@@ -6,11 +6,14 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjectPlacer;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjects;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -349,5 +352,18 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
         }
 
         return false;
+    }
+
+    @Override
+    public ICountry getCountry(Date date) throws PWCGException {
+        SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+        Squadron squadronForField = squadronManager.getAnyActiveSquadronForAirfield(this, date);
+
+        if (squadronForField != null)
+        {
+            return squadronForField.getCountry();
+        }
+
+        return super.getCountry(date);
     }
 }

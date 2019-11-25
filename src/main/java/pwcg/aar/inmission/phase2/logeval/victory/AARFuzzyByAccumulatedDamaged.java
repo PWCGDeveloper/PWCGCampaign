@@ -19,7 +19,7 @@ public class AARFuzzyByAccumulatedDamaged
         LogAIEntity victim = victoryResult.getVictim();
         if (victim != null)
         {
-            LogAIEntity victor = aarDamageStatusEvaluator.getVictorByDamage(victoryResult.getVictim().getId());
+            LogAIEntity victor = aarDamageStatusEvaluator.getVictorByDamage(victoryResult.getVictim());
             return victor;
         }
         return null;

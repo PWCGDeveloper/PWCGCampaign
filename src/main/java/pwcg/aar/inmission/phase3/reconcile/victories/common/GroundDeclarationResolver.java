@@ -1,6 +1,8 @@
 package pwcg.aar.inmission.phase3.reconcile.victories.common;
 
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
+import pwcg.campaign.group.BlockDefinition;
+import pwcg.campaign.group.BlockDefinitionManager;
 
 public class GroundDeclarationResolver
 {
@@ -16,7 +18,11 @@ public class GroundDeclarationResolver
     {
         for (LogVictory resultVictory : victorySorter.getFirmGroundVictories())
         {
-            confirmedGroundVictories.addVictory(resultVictory);
+            BlockDefinition blockDefinition = BlockDefinitionManager.getInstance().getBlockDefinition(resultVictory.getVictim().getVehicleType());
+            if (blockDefinition == null || blockDefinition.getType().getIsTarget())
+            {
+                confirmedGroundVictories.addVictory(resultVictory);
+            }
         }
         
         return confirmedGroundVictories;

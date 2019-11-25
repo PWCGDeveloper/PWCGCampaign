@@ -30,6 +30,7 @@ public class AirfieldStaticPlanePlacer
         {
             staticPlane.setPosition(position);
             staticPlane.setOrientation(objectOrientation);
+            staticPlane.setCountry(airfield.getCountry(date).getCountry());
             
             return staticPlane;
         }

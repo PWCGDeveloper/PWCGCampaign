@@ -2,6 +2,8 @@ package pwcg.campaign.squadmember;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.group.BlockDefinition;
+import pwcg.campaign.group.BlockDefinitionManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.ground.vehicle.IVehicleDefinition;
@@ -137,6 +139,12 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
             return vehicleDefinitionByName.getDisplayName();
         }
         
+        BlockDefinition blockDefinition = BlockDefinitionManager.getInstance().getBlockDefinition(victoryEntity.getType());
+        if (blockDefinition != null)
+        {
+            return blockDefinition.getDesc();
+        }
+
         return "vehicle";
     }
 }
