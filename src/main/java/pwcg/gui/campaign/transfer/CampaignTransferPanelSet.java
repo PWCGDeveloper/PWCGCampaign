@@ -23,6 +23,7 @@ import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignAces;
+import pwcg.campaign.CampaignMode;
 import pwcg.campaign.TransferHandler;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
@@ -36,6 +37,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -51,8 +53,9 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
     private static final long serialVersionUID = 1L;
 
     private CampaignHomeGUI parent = null;
+    private CampaignAdminCoopPilotPanelSet alternateParent = null;
 	private Campaign campaign = null;	
-	private SquadronMember referencePlayer = null;	
+	private SquadronMember squadronMemberToTransfer = null;	
     private JComboBox<String> cbService;
 	private JComboBox<String> cbSquadron;
     private JComboBox<String> cbRole;
@@ -60,13 +63,14 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 	private JButton acceptButton = null;
     private ArmedService service = null;
 
-	public CampaignTransferPanelSet  (CampaignHomeGUI parent)
+	public CampaignTransferPanelSet  (CampaignHomeGUI parent, CampaignAdminCoopPilotPanelSet alternateParent, SquadronMember squadronMemberToTransfer)
 	{
         super();
 
 		this.parent = parent;
+        this.alternateParent = alternateParent;
+        this.squadronMemberToTransfer = squadronMemberToTransfer;
 		this.campaign = PWCGContext.getInstance().getCampaign();
-		this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
 	
 	public void makeVisible(boolean visible) 
@@ -76,20 +80,14 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 	public void makePanels() throws PWCGException  
 	{
 	    // Initialize things that might change based on the transfer
-        service = this.referencePlayer.determineService(campaign.getDate());
+        service = this.squadronMemberToTransfer.determineService(campaign.getDate());
 
 		// Not so great dependency - have to make the right panel first so accept button is not null
 		// when evaluate is called
         setLeftPanel(makeTransferNavPanel());
 		setCenterPanel(makeTransferCenterPanel());
 	}
-	
-	
-	/**
-	 * @return
-	 * @throws PWCGException 
-	 * @
-	 */
+
 	private JPanel makeTransferNavPanel() throws PWCGException  
 	{
         String imagePath = getSideImage("TransferNav.jpg");
@@ -113,12 +111,6 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 		return transferrPanel;
 	}
 
-	
-	
-	/**
-	 * @return
-	 * @
-	 */
 	private JPanel makeTransferCenterPanel()  
 	{
 		ImageResizingPanel transferCenterPanel = null;
@@ -150,7 +142,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 			}
 
 			// Transfer label
-			JLabel lName = new JLabel(referencePlayer.getNameAndRank(), JLabel.LEFT);
+			JLabel lName = new JLabel(squadronMemberToTransfer.getNameAndRank(), JLabel.LEFT);
 			lName.setOpaque(false);
 			lName.setFont(font);
 			components.clear();
@@ -201,10 +193,10 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 
     private void initializeValues() throws PWCGException 
     {
-        ArmedService playerService = referencePlayer.determineService(campaign.getDate());
+        ArmedService playerService = squadronMemberToTransfer.determineService(campaign.getDate());
         cbService.setSelectedItem(playerService.getName());
 
-        Squadron playerSquadron = referencePlayer.determineSquadron();        
+        Squadron playerSquadron = squadronMemberToTransfer.determineSquadron();        
 
         if (playerSquadron.isSquadronThisRole(campaign.getDate(), Role.ROLE_BOMB))
         {
@@ -290,7 +282,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
         cbService = new JComboBox<String>();
         
         List<ArmedService> services = null;
-        if (referencePlayer.determineCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
+        if (squadronMemberToTransfer.determineCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
         {
             services = ArmedServiceFactory.createServiceManager().getAlliedServices(campaign.getDate());
         }
@@ -417,14 +409,14 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 			Date campaignDate = campaign.getDate();
 			if (squad.isCanFly(campaignDate))
 			{
-				if(squad.getSquadronId() != referencePlayer.getSquadronId())
+				if(squad.getSquadronId() != squadronMemberToTransfer.getSquadronId())
 				{
 					if (squad.determineSquadronPrimaryRole(campaignDate) == role)
 					{
 					    String display = squad.determineDisplayName(campaign.getDate());
 					    CampaignAces aces =  PWCGContext.getInstance().getAceManager().loadFromHistoricalAces(campaignDate);
 					    List<Ace> squadronAces =  PWCGContext.getInstance().getAceManager().getActiveAcesForSquadron(aces, campaignDate, squad.getSquadronId());
-					    if (!referencePlayer.isCommander(campaignDate) || !squad.isCommandedByAce(squadronAces, campaignDate))
+					    if (!squadronMemberToTransfer.isCommander(campaignDate) || !squad.isCommandedByAce(squadronAces, campaignDate))
 					    {
 					        cbSquadron.addItem(display);
 					    }
@@ -492,11 +484,11 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
             else if (action.equalsIgnoreCase("Accept Transfer"))
             {
                 acceptTransfer();
+                CampaignGuiContextManager.getInstance().popFromContextStack();
             }
             else if (action.equalsIgnoreCase("Reject Transfer"))
             {
                 SoundManager.getInstance().playSound("Stapling.WAV");
-
                 CampaignGuiContextManager.getInstance().popFromContextStack();
             }
 		}
@@ -515,12 +507,32 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
     private void acceptTransfer() throws PWCGException 
     {        
         SoundManager.getInstance().playSound("Stapling.WAV");
-        
-        String newSquadName = getSelectedSquad();
-        TransferHandler transferHandler = new TransferHandler(campaign,referencePlayer);
-        Squadron newSquadron = PWCGContext.getInstance().getSquadronManager().getSquadronByName(newSquadName, campaign.getDate());
-        TransferEvent transferEvent = transferHandler.transferPlayer(referencePlayer.determineSquadron(), newSquadron);
+        TransferEvent transferEvent = transferPlayer();        
+        passTimeForSInglePlayerTransfer(transferEvent);
+    }
 
-        parent.campaignTimePassed(transferEvent.getLeaveTime(), transferEvent, EventPanelReason.EVENT_PANEL_REASON_TRANSFER);
+    private TransferEvent transferPlayer() throws PWCGException
+    {
+        String newSquadName = getSelectedSquad();
+        TransferHandler transferHandler = new TransferHandler(campaign, squadronMemberToTransfer);
+        Squadron newSquadron = PWCGContext.getInstance().getSquadronManager().getSquadronByName(newSquadName, campaign.getDate());
+        TransferEvent transferEvent = transferHandler.transferPlayer(squadronMemberToTransfer.determineSquadron(), newSquadron);
+        return transferEvent;
+    }
+
+    private void passTimeForSInglePlayerTransfer(TransferEvent transferEvent) throws PWCGException
+    {
+        if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
+        {
+            parent.campaignTimePassed(transferEvent.getLeaveTime(), transferEvent, EventPanelReason.EVENT_PANEL_REASON_TRANSFER);
+        }
+        else
+        {
+            campaign.write();
+            if (alternateParent != null)
+            {
+                alternateParent.makePanels();
+            }
+        }
     }
 }

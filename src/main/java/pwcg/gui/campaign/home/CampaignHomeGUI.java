@@ -144,13 +144,18 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
 
         JButton equipmentButton = makeMenuButton("Equipment", "Equipment", "Show equipment chalk board");
         addButton(buttonPanel, equipmentButton);
-
-        if (isAddHumanPilot())
+        
+        if (campaign.isCoop())
+        {
+            JButton addHumanPilotButton = makeMenuButton("Administer Coop Pilots", "AdminCoopPilots", "Administer coop pilots for this campaign");
+            addButton(buttonPanel, addHumanPilotButton);
+        }
+        else if (isAddHumanPilot())
         {
             JButton addHumanPilotButton = makeMenuButton("Add Pilot", "AddHumanPilot", "Add a human pilot");
             addButton(buttonPanel, addHumanPilotButton);
         }
-        
+
         JLabel space2 = new JLabel("");
         buttonPanel.add(space2);
 

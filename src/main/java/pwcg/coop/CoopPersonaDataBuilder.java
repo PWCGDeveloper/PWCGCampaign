@@ -43,10 +43,13 @@ public class CoopPersonaDataBuilder
         {
             if (coopPersona.getUsername().equalsIgnoreCase(username))
             {
-                SquadronMember playerSquadronMember = campaign.getPersonnelManager().getAnyCampaignMember(coopPersona.getSerialNumber());
-                if (playerSquadronMember != null)
+                if (coopPersona.getCampaignName().equalsIgnoreCase(campaign.getCampaignData().getName()))
                 {
-                    squadronMembersForUserInCampaign.add(playerSquadronMember);
+                    SquadronMember playerSquadronMember = campaign.getPersonnelManager().getAnyCampaignMember(coopPersona.getSerialNumber());
+                    if (playerSquadronMember != null)
+                    {
+                        squadronMembersForUserInCampaign.add(playerSquadronMember);
+                    }
                 }
             }            
         }
@@ -64,6 +67,8 @@ public class CoopPersonaDataBuilder
             coopDisplayRecord.setPilorNameAndRank(squadronMember.getNameAndRank());
             coopDisplayRecord.setCampaignName(campaign.getCampaignData().getName());
             coopDisplayRecord.setSquadronName(squadronMember.determineSquadron().determineDisplayName(campaign.getDate()));
+            coopDisplayRecord.setPilotStatus(squadronMember.getPilotActiveStatus());
+            coopDisplayRecord.setPilotSerialNumber(squadronMember.getSerialNumber());
             
             coopDisplayRecords.add(coopDisplayRecord);
         }

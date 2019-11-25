@@ -54,7 +54,7 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
     {
         loadCoopRecords();
 
-        JPanel recordListPanel = new JPanel(new GridLayout(0, 4, 50, 5));
+        JPanel recordListPanel = new JPanel(new GridLayout(0, 4, 10, 5));
         recordListPanel.setOpaque(false);
 
         JPanel recordListHolderPanel = new JPanel();

@@ -23,6 +23,7 @@ import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
+import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -36,11 +37,14 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
     private JButton newPilotCreateButton;
     private NewPilotDataEntryGUI dataEntry;
     private CampaignHomeGUI parent = null;
+    private CampaignAdminCoopPilotPanelSet alternateParent = null;
+    
 
-    public NewPilotGeneratorUI(Campaign campaign, CampaignHomeGUI parent)
+    public NewPilotGeneratorUI(Campaign campaign, CampaignHomeGUI parent, CampaignAdminCoopPilotPanelSet alternateParent)
     {
         this.campaign = campaign;
         this.parent = parent;
+        this.alternateParent = alternateParent;
     }
 
     public void makePanels() 
@@ -127,8 +131,16 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
             else if (action.equalsIgnoreCase("Create Pilot"))
             {
                 createPilot();
-                parent.createPilotContext();
-                CampaignGuiContextManager.getInstance().popFromContextStack();
+                if (parent != null)
+                {
+                    parent.createPilotContext();
+                    CampaignGuiContextManager.getInstance().popFromContextStack();
+                }
+                else if (alternateParent != null)
+                {
+                    alternateParent.makePanels();
+                    CampaignGuiContextManager.getInstance().popFromContextStack();
+                }
             }
         }
         catch (Exception e)

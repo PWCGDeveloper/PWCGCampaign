@@ -62,7 +62,7 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
 
     public JPanel makeNavigatePanel() throws PWCGException  
     {
-        String imagePath = getSideImageMain("ConfigLeft.jpg");
+        String imagePath = getSideImageMain("Barracks.jpg");
 
         JPanel navPanel = new ImageResizingPanel(imagePath);
         navPanel.setLayout(new BorderLayout());
@@ -80,7 +80,7 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
 
     public JPanel makeCoopAdminActionSelectPanel() throws PWCGException  
     {
-        String imagePath = getSideImageMain("ConfigRight.jpg");
+        String imagePath = getSideImageMain("Barracks2.jpg");
 
         JPanel configPanel = new ImageResizingPanel(imagePath);
         configPanel.setLayout(new BorderLayout());

@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.events.model.AARPilotEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
@@ -15,6 +16,7 @@ import pwcg.core.utils.PWCGErrorBundler;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.config.CampaignConfigurationAdvancedGUI;
 import pwcg.gui.campaign.config.CampaignConfigurationSimpleGUI;
+import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
 import pwcg.gui.campaign.depo.CampaignEquipmentDepoPanelSet;
 import pwcg.gui.campaign.intel.CampaignIntelligencePanelSet;
 import pwcg.gui.campaign.journal.CampaignJournalPanelSet;
@@ -105,6 +107,10 @@ public class CampaignHomeGUIAction
             {
                 showJournal();
             }
+            else if (action.equalsIgnoreCase("AdminCoopPilots"))
+            {
+                showAdminCoopPilots();
+            }
             else if (action.equalsIgnoreCase("CampFlowLog"))
             {
                 showCampaignLog();
@@ -165,7 +171,7 @@ public class CampaignHomeGUIAction
     private void showAddHumanPilot() throws PWCGException
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        NewPilotGeneratorUI addPilotDisplay = new NewPilotGeneratorUI(campaign, parent);
+        NewPilotGeneratorUI addPilotDisplay = new NewPilotGeneratorUI(campaign, parent, null);
         addPilotDisplay.makePanels();        
         CampaignGuiContextManager.getInstance().pushToContextStack(addPilotDisplay);
     }
@@ -197,7 +203,8 @@ public class CampaignHomeGUIAction
     private void showTransfer() throws PWCGException 
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
-        CampaignTransferPanelSet transferDisplay = new CampaignTransferPanelSet(parent);
+        SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+        CampaignTransferPanelSet transferDisplay = new CampaignTransferPanelSet(parent, null, referencePlayer);
         transferDisplay.makePanels();        
         CampaignGuiContextManager.getInstance().pushToContextStack(transferDisplay);
     }
@@ -258,6 +265,16 @@ public class CampaignHomeGUIAction
         journalDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(journalDisplay);
+    }
+
+    private void showAdminCoopPilots() throws PWCGException 
+    {
+        SoundManager.getInstance().playSound("BookOpen.WAV");
+
+        CampaignAdminCoopPilotPanelSet adminCoopPilotDisplay = new CampaignAdminCoopPilotPanelSet(campaign);
+        adminCoopPilotDisplay.makePanels();
+
+        CampaignGuiContextManager.getInstance().pushToContextStack(adminCoopPilotDisplay);
     }
 
     private void showCampaignLog() throws PWCGException 
