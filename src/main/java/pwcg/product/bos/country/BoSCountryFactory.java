@@ -5,6 +5,9 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.ICountryFactory;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGMap;
+import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 
 public class BoSCountryFactory implements ICountryFactory
 {
@@ -18,7 +21,19 @@ public class BoSCountryFactory implements ICountryFactory
     {
         if (side == Side.ALLIED)
         {
-            return new BoSCountry(BoSCountry.RUSSIA_CODE);
+            PWCGMap map = PWCGContext.getInstance().getCurrentMap();
+            if (map == null)
+            {
+                return new BoSCountry(BoSCountry.RUSSIA_CODE);
+            }
+            else if (map.getMapIdentifier() == FrontMapIdentifier.BODENPLATTE_MAP)
+            {
+                return new BoSCountry(BoSCountry.USA_CODE);
+            }
+            else
+            {
+                return new BoSCountry(BoSCountry.RUSSIA_CODE);
+            }
         }
         else
         {

@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.util.Date;
 
 import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.airfield.Airfield;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
@@ -36,7 +38,16 @@ public class FakeAirfield extends FixedPosition implements Cloneable
         
         linkTrId = entity.getIndex();
         
-        country = airfield.getCountry(date).getCountry();
+        Squadron squadron = PWCGContext.getInstance().getSquadronManager().getAnyActiveSquadronForAirfield(airfield, date);
+        if (squadron != null)
+        {
+            country = squadron.getCountry().getCountry();
+        }
+        else
+        {
+            country = airfield.getCountry(date).getCountry();
+        }
+        
         position = airfield.getFakeAirfieldLocation().getPosition().copy();
         orientation = airfield.getFakeAirfieldLocation().getOrientation().copy();
         
