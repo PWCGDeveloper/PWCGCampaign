@@ -75,33 +75,21 @@ public class GroundObjectsFile
         }
 	}
 
-    /**
-     * @return the railroadStations
-     */
     public List<Block> getRailroadStations()
     {
         return railroadStations;
     }
 
-    /**
-     * @return the standaloneBlocks
-     */
     public List<Block> getStandaloneBlocks()
     {
         return standaloneBlocks;
     }
 
-    /**
-     * @return the bridges
-     */
     public List<Bridge> getBridges()
     {
         return bridges;
     }
 
-    /**
-     * @return the airfieldBlocks
-     */
     public List<AirfieldBlock> getAirfieldBlocks()
     {
         return airfieldBlocks;

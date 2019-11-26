@@ -1,9 +1,6 @@
 package pwcg.dev.jsonconvert;
 
-import java.util.List;
-
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroundStructureGroup;
 import pwcg.campaign.group.airfield.AirfieldBlock;
 import pwcg.campaign.io.json.JsonObjectReader;
@@ -13,10 +10,7 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.dev.jsonconvert.orig.io.GroundObjectsFile;
 
 public class GroundObjectIOJsonConverter {
-
-	List<List<Block>> railroadsJson = null;
     
-
     public void convert(String mapName)
     {
     	try
