@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.group.FixedPosition;
@@ -17,6 +16,7 @@ import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.Mission;
 import pwcg.mission.ground.unittypes.GroundUnitSpawning;
 import pwcg.mission.ground.vehicle.IVehicle;
 
@@ -48,19 +48,16 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
     @Override
     public void write(BufferedWriter writer) throws PWCGException
     {
-        // Write any vehicles on the airfield
         for (IVehicle airfieldObject : airfieldObjects.getAirfieldObjects())
         {
             airfieldObject.write(writer);
         }
 
-        // Write airfield AAA
         for (GroundUnitSpawning airfieldAAA : airfieldObjects.getAaaForAirfield())
         {
             airfieldAAA.write(writer);
         }
 
-        // Write any static planes
         for (IStaticPlane staticPlane : airfieldObjects.getStaticPlanes())
         {
             staticPlane.write(writer);
@@ -109,16 +106,15 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
 
     public double getPlaneOrientation()
     {
-        // BoS does not use airfield orientation
         return orientation.getyOri();
     }
 
     @Override
-    public void addAirfieldObjects(Campaign campaign) throws PWCGException
+    public void addAirfieldObjects(Mission mission) throws PWCGException
     {
-        if (!(createCountry(campaign.getDate()).isNeutral()))
+        if (!(createCountry(mission.getCampaign().getDate()).isNeutral()))
         {
-            AirfieldObjectPlacer airfieldObjectPlacer = new AirfieldObjectPlacer(campaign, this);
+            AirfieldObjectPlacer airfieldObjectPlacer = new AirfieldObjectPlacer(mission, this);
             airfieldObjects = airfieldObjectPlacer.createAirfieldObjectsWithEmptySpace();
         }
     }
@@ -126,14 +122,7 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
     @Override
     public boolean isGroup()
     {
-        // BoS airfields are not real fields
         return false;
-    }
-
-    @Override
-    public void setAAA(GroundUnitSpawning aaa)
-    {
-        // BoS airfields do not have AAA
     }
 
     @Override

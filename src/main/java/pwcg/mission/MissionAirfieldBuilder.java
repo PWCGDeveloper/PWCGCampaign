@@ -41,7 +41,7 @@ public class MissionAirfieldBuilder
         {
         	if (missionBorders.isInBox(field.getPosition()))
             {
-                field.addAirfieldObjects(campaign);        	    
+                field.addAirfieldObjects(mission);        	    
                 selectedFields.put(field.getName(), field);
             }
         }

@@ -21,7 +21,7 @@ public class CoopDisplayRecord
         this.username = username;
     }
 
-    public String getPilorNameAndRank()
+    public String getPilotNameAndRank()
     {
         return pilorNameAndRank;
     }

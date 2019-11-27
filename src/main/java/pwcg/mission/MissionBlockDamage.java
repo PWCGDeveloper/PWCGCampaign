@@ -64,7 +64,8 @@ public class MissionBlockDamage
     {
         AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
         IAirfield field = airfieldManager.getAirfieldFinder().findClosestAirfield(fixedPosition.getPosition());
-        if (MathUtils.calcDist(fixedPosition.getPosition(), field.getPosition()) < 5)
+        double distanceFromField = MathUtils.calcDist(fixedPosition.getPosition(), field.getPosition());
+        if (distanceFromField < 5000)
         {
             return true;
         }

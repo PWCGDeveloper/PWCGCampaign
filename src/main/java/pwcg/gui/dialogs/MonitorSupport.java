@@ -12,9 +12,6 @@ import pwcg.gui.utils.PWCGFrame;
 
 public class MonitorSupport 
 {
-	/**
-	 * @return
-	 */
 	public static Dimension getPWCGFrameSize()
 	{
         Dimension frameSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -24,10 +21,7 @@ public class MonitorSupport
 
 		return frameSize;
 	}
-	
-	/**
-     * @return
-     */
+
     public static Dimension getPWCGMonitorSize()
     {
         Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -53,11 +47,6 @@ public class MonitorSupport
         return screenSize;
     }
 
-    
-    
-    /**
-     * @return
-     */
     public static Insets calculateInset(int top, int left, int bottom, int right)
     {
         // Calculate the writable area of the text and generate margins scaled to screen size
@@ -69,11 +58,6 @@ public class MonitorSupport
         return new Insets(marginTop, marginLeft, marginBottom, marginRight);
     }
 
-    
-    
-    /**
-     * @return
-     */
     public static int calculateInsetVertical(int insetBaseValue)
     {
         double ratioDivisor = getScreenRatioDivisor();
@@ -86,13 +70,6 @@ public class MonitorSupport
         return insetVertical.intValue();
     }
 
-    
-    
-    /**
-     * 
-     * 
-     * @return
-     */
     public static int calculateInsetHorixontal(int insetBaseValue)
     {
         double ratioDivisor = getScreenRatioDivisor();
@@ -105,13 +82,6 @@ public class MonitorSupport
         return insetHorizontal.intValue();
     }
 
-    
-    /**
-     * A larger number creates a smaller margin
-     * Larger screens need a relatively larger offset
-     * 
-     * @return
-     */
     private static double getScreenRatioDivisor()
     {
         double ratioDivisor = 900.0;
@@ -141,11 +111,6 @@ public class MonitorSupport
         return ratioDivisor;
     }
 
-	/**
-	 * @return
-	 * @throws PWCGException 
-	 * @
-	 */
 	public static Font getPrimaryFont() throws PWCGException
 	{
 	    // for small screens override medium font with small
@@ -167,16 +132,9 @@ public class MonitorSupport
 		
 		return font;
 	}
-	
 
-    /**
-     * @return
-     * @throws PWCGException 
-     * @
-     */
     public static int getPilotPlateHeight() throws PWCGException
     {
-        // for small screens override lmedium font with small
         if (getPWCGFrameSize().getHeight() < 900)
         {
             return 25;
@@ -189,11 +147,6 @@ public class MonitorSupport
         return 40;
     }
 
-	/**
-	 * @return
-	 * @throws PWCGException 
-	 * @
-	 */
 	public static Font getPrimaryFontSmall() throws PWCGException
 	{
 		String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PrimaryFontKey);
@@ -215,11 +168,6 @@ public class MonitorSupport
 		return font;
 	}
 
-	
-	/**
-	 * @return
-	 * @
-	 */
 	public static Font getPrimaryFontSmallNotBold() throws PWCGException
 	{
 		String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PrimaryFontKey);
@@ -241,10 +189,6 @@ public class MonitorSupport
 		return font;
 	}
 
-	/**
-	 * @return
-	 * @
-	 */
 	public static Font getPrimaryFontLarge() throws PWCGException
 	{
         // for small screens override lmedium font with small
@@ -272,10 +216,6 @@ public class MonitorSupport
 		return font;
 	}
 
-	/**
-	 * @return
-	 * @
-	 */
 	public static Font getMissionDescriptionFont() throws PWCGException
 	{
 		String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.MissionDescriptionFontKey);
@@ -297,10 +237,6 @@ public class MonitorSupport
 		return font;
 	}
 
-    /**
-     * @return
-     * @
-     */
     public static Font getChalkboardFont() throws PWCGException
     {
         String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.ChalkboardFontKey);
@@ -371,13 +307,7 @@ public class MonitorSupport
 		
 		return font;
 	}
-    
-    
-    /**
-     * @return
-     * @throws PWCGException 
-     * @
-     */
+
     public static Font getPilotLogBookFont() throws PWCGException 
     {
         String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.PilotFontKey);
@@ -398,13 +328,7 @@ public class MonitorSupport
         
         return font;
     }
-    
-    
-    /**
-     * @return
-     * @throws PWCGException 
-     * @
-     */
+
     public static Font getTypewriterFont() throws PWCGException 
     {
         String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.TypewriterFontKey);
@@ -425,13 +349,7 @@ public class MonitorSupport
         
         return font;
     }
-    
-    
-    /**
-     * @return
-     * @throws PWCGException 
-     * @
-     */
+
     public static Font getCursiveFont() throws PWCGException 
     {
         String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.CursiveFontKey);
@@ -452,13 +370,7 @@ public class MonitorSupport
         
         return font;
     }
-    
-    
-    /**
-     * @return
-     * @throws PWCGException 
-     * @
-     */
+
     public static Font getDecorativeFont() throws PWCGException 
     {
         String fontName = ConfigManagerGlobal.getInstance().getStringConfigParam(ConfigItemKeys.DecorativeFontKey);
@@ -479,12 +391,7 @@ public class MonitorSupport
         
         return font;
     }
-    
 
-	/**
-	 * @return
-	 * @
-	 */
 	public static Font getSpecialFont(String fontName, int fontStyle, int fontSize) 
 	{
 		Font font = new Font(
@@ -494,10 +401,7 @@ public class MonitorSupport
 		
 		return font;
 	}
-	
-	/**
-	 * @return
-	 */
+
 	public static boolean isSmallScreen()
 	{
         if (getPWCGFrameSize().getHeight() < 900)

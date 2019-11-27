@@ -16,26 +16,24 @@ import pwcg.campaign.group.airfield.hotspot.HotSpot;
 import pwcg.campaign.group.airfield.hotspot.HotSpotType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.Mission;
 import pwcg.mission.ground.factory.AAAUnitFactory;
+import pwcg.mission.ground.factory.SpotLightFactory;
 import pwcg.mission.ground.unittypes.GroundUnitSpawning;
 import pwcg.mission.ground.vehicle.IVehicle;
 
 public class AirfieldObjectPlacer
 {
 	private AirfieldObjects airfieldObjects = new AirfieldObjects();
+    private Mission mission;
     private Campaign campaign;
     private IAirfield airfield;
     
-    public AirfieldObjectPlacer(Campaign campaign, IAirfield airfield)
+    public AirfieldObjectPlacer(Mission mission, IAirfield airfield)
     {
-        this.campaign = campaign;
+        this.mission = mission;
+        this.campaign = mission.getCampaign();
         this.airfield = airfield;
-    }
-
-    public AirfieldObjects createAirfieldObjectsDefinedHotSpotsOnly() throws PWCGException 
-    {        
-        createAirfieldObjectsDefinedHotSpots();        
-        return airfieldObjects;
     }
 
     public AirfieldObjects createAirfieldObjectsWithEmptySpace() throws PWCGException 
@@ -47,19 +45,23 @@ public class AirfieldObjectPlacer
 
     private void createAirfieldObjectsDefinedHotSpots() throws PWCGException 
     {        
-        IHotSpotTranslator hotSpotTranslator = HotSpotTranslatorFactory.createHotSpotTranslatorFactory();
+        IHotSpotTranslator hotSpotTranslator = HotSpotTranslatorFactory.createHotSpotTranslatorFactory(mission);
         
         List<HotSpot> hotSpots = hotSpotTranslator.getHotSpots(airfield, campaign.getDate());
         
         for (HotSpot hotSpot : hotSpots)
         {       
-            if (hotSpot.getHotSpotType() == HotSpotType.HOTSPOT_PLANE)
+            if (hotSpot.getHotSpotType() == HotSpotType.HOTSPOT_SPOTLIGHT)
             {
-                addStaticPlane(hotSpot);
+                addSpotlight(hotSpot);
             }
             else if (hotSpot.getHotSpotType() == HotSpotType.HOTSPOT_AAA)
             {
                 addAAA(hotSpot);
+            }
+            else if (hotSpot.getHotSpotType() == HotSpotType.HOTSPOT_PLANE)
+            {
+                addStaticPlane(hotSpot);
             }
             else 
             {
@@ -117,6 +119,19 @@ public class AirfieldObjectPlacer
         return selectedHotSpots;
     }
 
+    private void addSpotlight(HotSpot hotSpot) throws PWCGException
+    {
+        if (!airfield.createCountry(campaign.getDate()).isNeutral())
+        {
+            SpotLightFactory groundUnitFactory = new SpotLightFactory(campaign, airfield.getCountry(campaign.getDate()), hotSpot.getPosition());
+            GroundUnitSpawning spotlight = groundUnitFactory.createSpotLightGroup(1, 1);
+            if (spotlight != null)
+            {
+                airfieldObjects.addAaaForAirfield(spotlight);
+            }
+        }
+    }
+
     private void addAAA(HotSpot hotSpot) throws PWCGException
     {
         if (!airfield.createCountry(campaign.getDate()).isNeutral())
@@ -125,7 +140,7 @@ public class AirfieldObjectPlacer
             GroundUnitSpawning aaaMg = groundUnitFactory.createAAAMGBattery(1, 1);
             if (aaaMg != null)
             {
-            	airfieldObjects.getAaaForAirfield().add(aaaMg);
+            	airfieldObjects.addAaaForAirfield(aaaMg);
             }
         }
     }
@@ -136,7 +151,7 @@ public class AirfieldObjectPlacer
         IStaticPlane staticPlane = airfieldStaticPlane.getStaticPlane(airfield, campaign.getDate(), hotSpot.getPosition());
         if (staticPlane != null)
         {
-        	airfieldObjects.getStaticPlanes().add(staticPlane);
+        	airfieldObjects.addStaticPlane(staticPlane);
         }
     }
 

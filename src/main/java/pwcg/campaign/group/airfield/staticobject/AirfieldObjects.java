@@ -11,7 +11,8 @@ public class AirfieldObjects
 {
 	private List<IVehicle> airfieldObjects = new ArrayList<IVehicle>();
 	private List<IStaticPlane> staticPlanes = new ArrayList<IStaticPlane>();
-	private List<GroundUnitSpawning> aaaForAirfield = new ArrayList<GroundUnitSpawning>();
+    private List<GroundUnitSpawning> aaaForAirfield = new ArrayList<GroundUnitSpawning>();
+    private List<GroundUnitSpawning> spotlightsForAirfield = new ArrayList<GroundUnitSpawning>();
 
 	public List<IVehicle> getAirfieldObjects()
 	{
@@ -33,13 +34,23 @@ public class AirfieldObjects
 		this.staticPlanes.add(staticPlane);
 	}
 
-	public List<GroundUnitSpawning> getAaaForAirfield()
-	{
-		return aaaForAirfield;
-	}
+    public List<GroundUnitSpawning> getAaaForAirfield()
+    {
+        return aaaForAirfield;
+    }
 
-	public void addAaaForAirfield(GroundUnitSpawning aaa)
-	{
-		this.aaaForAirfield.add(aaa);
-	}
+    public void addAaaForAirfield(GroundUnitSpawning aaa)
+    {
+        this.aaaForAirfield.add(aaa);
+    }
+
+    public List<GroundUnitSpawning> getSpotlightsForAirfield()
+    {
+        return spotlightsForAirfield;
+    }
+
+    public void addSpotlightsForAirfield(GroundUnitSpawning aaa)
+    {
+        this.spotlightsForAirfield.add(aaa);
+    }
 }

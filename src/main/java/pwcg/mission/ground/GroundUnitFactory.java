@@ -24,7 +24,7 @@ public class GroundUnitFactory
 
     public SpotLightGroup createSpotLightGroup() throws PWCGException 
     {
-        MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone(location.copy(), 12000);
+        MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone(location.copy(), 30000);
         missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalitions(CoalitionFactory.getAllCoalitions());
 
         String nationality = country.getNationality();

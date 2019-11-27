@@ -9,25 +9,37 @@ import pwcg.campaign.api.IHotSpotTranslator;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
-import pwcg.campaign.group.airfield.hotspot.AirfieldHotSpotDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.Mission;
 
 public class AirfieldHotSpotTranslator implements IHotSpotTranslator
 {
-
+    private Mission mission;
+    
+    public AirfieldHotSpotTranslator(Mission mission)
+    {
+        this.mission = mission;
+    }
+    
     public List<HotSpot> getHotSpots(IAirfield airfield, Date date) throws PWCGException
     {
         List<HotSpot> hotSpots = getNearbyAirfieldHotSpots(airfield, date);
         
-        int numAAAHotSPots = determineNumAAAHotSpots(hotSpots.size());
+        int numSpotlightHotSPots = determineNumSpotlightHotSpots(hotSpots.size());
+        for (int i = 0; i < numSpotlightHotSPots; ++i)
+        {
+            hotSpots.get(i).setHotSpotType(HotSpotType.HOTSPOT_SPOTLIGHT);
+        }
+        
+        int numAAAHotSPots = determineNumAAAHotSpots(hotSpots.size(), numSpotlightHotSPots);
         for (int i = 0; i < numAAAHotSPots; ++i)
         {
             hotSpots.get(i).setHotSpotType(HotSpotType.HOTSPOT_AAA);
         }
-                
+   
         for (int i = numAAAHotSPots; i < hotSpots.size(); ++i)
         {
             int roll =  RandomNumberGenerator.getRandom(100);
@@ -44,26 +56,33 @@ public class AirfieldHotSpotTranslator implements IHotSpotTranslator
         return hotSpots;
     }
     
-    private int determineNumAAAHotSpots(int numHotSPots)
+    private int determineNumSpotlightHotSpots(int numHotSPots)
+    {
+        if (mission.isNightMission())
+        {
+            if (numHotSPots > 6)
+            {
+                return 2;
+            }
+            else if (numHotSPots > 2)
+            {
+                return 1;
+            }
+        }
+        
+        return 0;
+    }
+
+    private int determineNumAAAHotSpots(int numHotSPots, int numSpotlightHotSPots)
     {
     	if (numHotSPots > 6)
     	{
-    		return 5;
+    		return 5 - numSpotlightHotSPots;
     	}
-    	else if (numHotSPots > 4)
+    	else
     	{
-    		return 4;
+    		return numHotSPots - numSpotlightHotSPots;
     	}
-    	else if (numHotSPots > 2)
-    	{
-    		return 2;
-    	}
-        else if (numHotSPots > 1)
-        {
-            return 1;
-        }
-
-    	return 0;
     }
 
 

@@ -67,7 +67,7 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
         {
             JLabel usernameLabel = makeVersionPanel(coopDisplayRecord.getUsername());
             JLabel campaignNameLabel = makeVersionPanel(coopDisplayRecord.getCampaignName());
-            JLabel pilotNameLabel = makeVersionPanel(coopDisplayRecord.getPilorNameAndRank());
+            JLabel pilotNameLabel = makeVersionPanel(coopDisplayRecord.getPilotNameAndRank());
             JLabel squadronNameLabel = makeVersionPanel(coopDisplayRecord.getSquadronName());
             recordListPanel.add(usernameLabel);
             recordListPanel.add(campaignNameLabel);

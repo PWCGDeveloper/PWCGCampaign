@@ -17,6 +17,8 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
     protected void initialize()
     {
         setAvailablePayload(-5, "100000000", PayloadElement.AUTO_VALVE);
+        setAvailablePayload(-4, "10000", PayloadElement.REMOVE_ARMOR);
+        setAvailablePayload(-3, "10000", PayloadElement.EXTRA_ARMOR);
         setAvailablePayload(-2, "1000", PayloadElement.ARMORED_HEADREST);
         setAvailablePayload(-1, "10", PayloadElement.GYRO_GUNSIGHT);
         setAvailablePayload(0, "1", PayloadElement.STANDARD);
@@ -24,12 +26,6 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
         setAvailablePayload(2, "101", PayloadElement.R4M_X26);
         setAvailablePayload(3, "10000001", PayloadElement.KG500x1);
     }
-
-    /*
-     * TODO bring these back
-        setAvailablePayload(-4, "10000", PayloadElement.REMOVE_ARMOR);
-        setAvailablePayload(-3, "10000", PayloadElement.EXTRA_ARMOR);
-	*/
 
     @Override
     public IPlanePayload copy()
