@@ -12,7 +12,7 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.Logger;
 import pwcg.mission.mcu.McuTREntity;
 
-class TrainLocomotive extends Vehicle implements ITrainLocomotive
+public class TrainLocomotive extends Vehicle implements IVehicle
 {
     private List<IVehicle> cars = new ArrayList<>();
 
@@ -132,7 +132,6 @@ class TrainLocomotive extends Vehicle implements ITrainLocomotive
         super.setPosition(coord);
     }
 
-    @Override
     public void addCar(IVehicle car)
     {
         this.cars.add(car);

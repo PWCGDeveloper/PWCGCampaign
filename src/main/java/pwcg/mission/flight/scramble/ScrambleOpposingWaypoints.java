@@ -42,7 +42,7 @@ public class ScrambleOpposingWaypoints
 
     private McuWaypoint createIngressWaypoint() throws PWCGException  
     {
-        Double angleToTarget = MathUtils.calcAngle(flight.getHomePosition(), flight.getTargetCoords());
+        Double angleToTarget = MathUtils.calcAngle(flight.getPosition(), flight.getTargetCoords());
         Orientation orientation = new Orientation();
         orientation.setyOri(angleToTarget);
 

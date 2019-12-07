@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.api.IStaticPlane;
-import pwcg.mission.ground.unittypes.GroundUnitSpawning;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
 
 public class AirfieldObjects
 {
 	private List<IVehicle> airfieldObjects = new ArrayList<IVehicle>();
 	private List<IStaticPlane> staticPlanes = new ArrayList<IStaticPlane>();
-    private List<GroundUnitSpawning> aaaForAirfield = new ArrayList<GroundUnitSpawning>();
-    private List<GroundUnitSpawning> spotlightsForAirfield = new ArrayList<GroundUnitSpawning>();
+    private List<IGroundUnitCollection> aaaForAirfield = new ArrayList<>();
+    private List<IGroundUnitCollection> spotlightsForAirfield = new ArrayList<>();
 
 	public List<IVehicle> getAirfieldObjects()
 	{
@@ -34,22 +34,22 @@ public class AirfieldObjects
 		this.staticPlanes.add(staticPlane);
 	}
 
-    public List<GroundUnitSpawning> getAaaForAirfield()
+    public List<IGroundUnitCollection> getAaaForAirfield()
     {
         return aaaForAirfield;
     }
 
-    public void addAaaForAirfield(GroundUnitSpawning aaa)
+    public void addAaaForAirfield(IGroundUnitCollection aaaMg)
     {
-        this.aaaForAirfield.add(aaa);
+        this.aaaForAirfield.add(aaaMg);
     }
 
-    public List<GroundUnitSpawning> getSpotlightsForAirfield()
+    public List<IGroundUnitCollection> getSpotlightsForAirfield()
     {
         return spotlightsForAirfield;
     }
 
-    public void addSpotlightsForAirfield(GroundUnitSpawning aaa)
+    public void addSpotlightsForAirfield(IGroundUnitCollection aaa)
     {
         this.spotlightsForAirfield.add(aaa);
     }

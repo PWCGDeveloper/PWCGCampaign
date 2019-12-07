@@ -12,8 +12,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.ground.factory.AAAUnitFactory;
-import pwcg.mission.ground.unittypes.GroundUnitSpawning;
+import pwcg.mission.ground.factory.AAAUnitBuilder;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class AAABridgeBuilder 
 {
@@ -24,9 +24,9 @@ public class AAABridgeBuilder
 		this.campaign = campaign;
 	}
 
-	public List<GroundUnitSpawning> createAAAForBridges() throws PWCGException
+	public List<IGroundUnitCollection> createAAAForBridges() throws PWCGException
 	{
-		List<GroundUnitSpawning> bridgeAAA = new ArrayList<>();
+		List<IGroundUnitCollection> bridgeAAA = new ArrayList<>();
         GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
 
 		for (Bridge bridge : groupData.getBridgeFinder().findAllBridges())
@@ -38,8 +38,8 @@ public class AAABridgeBuilder
 	            double distance = 100 + RandomNumberGenerator.getRandom(400);
 	            Coordinate aaaPosition = MathUtils.calcNextCoord(bridge.getPosition(), angle, distance);
 	            
-	            AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign, bridge.getCountry(campaign.getDate()), aaaPosition);
-	            GroundUnitSpawning aaaArty = groundUnitFactory.createAAAArtilleryBattery(2, 2);
+	            AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, bridge.getCountry(campaign.getDate()), aaaPosition);
+	            IGroundUnitCollection aaaArty = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
 	            bridgeAAA.add(aaaArty);
 	        }
 		}

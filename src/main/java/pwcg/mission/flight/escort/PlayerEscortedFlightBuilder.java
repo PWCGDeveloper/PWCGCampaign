@@ -3,7 +3,6 @@ package pwcg.mission.flight.escort;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.target.unit.TargetBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.mission.MissionBeginUnit;
@@ -11,7 +10,8 @@ import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.bomb.BombingFlight;
-import pwcg.mission.ground.GroundUnitCollection;
+import pwcg.mission.ground.builder.TargetBuilderGenerator;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class PlayerEscortedFlightBuilder
 {
@@ -35,7 +35,7 @@ public class PlayerEscortedFlightBuilder
         BombingFlight bombingFlightEscortedByPlayer = new BombingFlight (escortedFlightInformation, missionBeginUnit);
 		bombingFlightEscortedByPlayer.createUnitMission();
 		
-        GroundUnitCollection targetUnit = createTargetForPlayerEscortedFlight();
+        IGroundUnitCollection targetUnit = createTargetForPlayerEscortedFlight();
         bombingFlightEscortedByPlayer.linkGroundUnitsToFlight(targetUnit);
         
         return bombingFlightEscortedByPlayer;
@@ -66,9 +66,9 @@ public class PlayerEscortedFlightBuilder
         return friendlyBombSquadron;
     }
 
-    private GroundUnitCollection createTargetForPlayerEscortedFlight() throws PWCGException
+    private IGroundUnitCollection createTargetForPlayerEscortedFlight() throws PWCGException
     {
-        TargetBuilder targetBuilder = new TargetBuilder(escortedFlightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(escortedFlightInformation);
         targetBuilder.buildTarget();
         return targetBuilder.getGroundUnits();
     }

@@ -19,6 +19,7 @@ import pwcg.campaign.target.locator.targettype.TargetTypeAvailabilityInputs;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
+import pwcg.mission.target.TacticalTarget;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TargetTypeAttackGeneratorTest

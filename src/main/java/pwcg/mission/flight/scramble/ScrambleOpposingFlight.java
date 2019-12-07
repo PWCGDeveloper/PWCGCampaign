@@ -45,12 +45,6 @@ public class ScrambleOpposingFlight extends Flight
 		super.write(writer);
 	}
 
-	public String getMissionObjective() 
-	{
-		String objective = "";
-		return objective;
-	}
-
     @Override
     protected void createFlightSpecificTargetAssociations() throws PWCGException
     {

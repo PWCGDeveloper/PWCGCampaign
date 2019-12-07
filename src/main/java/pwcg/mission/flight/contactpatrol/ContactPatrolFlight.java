@@ -24,17 +24,6 @@ public class ContactPatrolFlight extends Flight
 		return waypoints.createWaypoints();
 	}
 
-	public String getMissionObjective() throws PWCGException 
-	{
-		String objective = "Perform reconnaissance at the specified front location.  " + 
-				"Make contact with friendly troop concentrations to establish front lines.";
-		
-        objective = "Perform reconnaissance" + formMissionObjectiveLocation(getTargetCoords().copy()) + 
-                        ".  Make contact with friendly troop concentrations to establish front lines.";
-		
-		return objective;
-	}
-
     @Override
     protected void createFlightSpecificTargetAssociations() throws PWCGException
     {

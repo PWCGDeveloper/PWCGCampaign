@@ -20,17 +20,13 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
-import pwcg.mission.AssaultInformation;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBlockBuilder;
 import pwcg.mission.MissionBlockDamage;
 import pwcg.mission.MissionBlockSmoke;
 import pwcg.mission.ambient.AmbientGroundUnitBuilder;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.ground.unittypes.GroundUnit;
-import pwcg.mission.ground.unittypes.GroundUnitSpawning;
-import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
-import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.ground.vehicle.VehicleFactory;
@@ -164,25 +160,22 @@ public class MissionFileWriter implements IMissionFile
     {
         AmbientGroundUnitBuilder ambientGroundUnitBuilder = mission.getAmbientGroundUnitBuilder();
 
-        for (GroundTrainUnit trainUnit: ambientGroundUnitBuilder.getAmbientTrains())
+        for (IGroundUnitCollection trainUnit: ambientGroundUnitBuilder.getAmbientTrains())
         {
             trainUnit.write(writer);
         }
         
-        for (GroundTruckConvoyUnit truckUnit: ambientGroundUnitBuilder.getAmbientTrucks())
+        for (IGroundUnitCollection truckUnit: ambientGroundUnitBuilder.getAmbientTrucks())
         {
             truckUnit.write(writer);
         }
         
-        for (AssaultInformation battle: ambientGroundUnitBuilder.getAmbientBattles())
+        for (IGroundUnitCollection battle: ambientGroundUnitBuilder.getAmbientBattles())
         {
-            for (GroundUnit grountUnit : battle.getGroundUnitCollection().getAllGroundUnits())
-            {
-                grountUnit.write(writer);
-            }
+            battle.write(writer);
         }
         
-        for (GroundUnitSpawning aaa : ambientGroundUnitBuilder.getAAA())
+        for (IGroundUnitCollection aaa : ambientGroundUnitBuilder.getAAA())
         {
             aaa.write(writer);
         }

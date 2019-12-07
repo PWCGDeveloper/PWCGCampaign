@@ -1,0 +1,13 @@
+{
+  "scriptDir": "Balloons\\",
+  "modelDir": "balloons\\drachen\\",
+  "vehicleType": "drachen",
+  "displayName": "Balloon",
+  "countries": [
+	"GERMANY"
+  ],
+  "startDate": "19400101",
+  "endDate": "19450601",
+  "rarityWeight": 10,
+  "vehicleClass": "Balloon"
+}

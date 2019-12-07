@@ -1,13 +1,13 @@
 package pwcg.mission.flight.bomb;
 
-import pwcg.campaign.target.unit.TargetBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.ground.GroundUnitCollection;
+import pwcg.mission.ground.builder.TargetBuilderGenerator;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class LowAltBombingPackage implements IFlightPackage
 {
@@ -26,7 +26,7 @@ public class LowAltBombingPackage implements IFlightPackage
 
     public LowAltBombingFlight createPackageTacticalTarget () throws PWCGException 
     {
-        GroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
+        IGroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
         Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(flightInformation.getSquadron().determineEnemySide());
         
         LowAltBombingFlight bombingFlight = makeBombingFlight(targetCoordinates);
@@ -46,9 +46,9 @@ public class LowAltBombingPackage implements IFlightPackage
         return bombingFlight;
     }
 
-    private GroundUnitCollection createGroundUnitsForFlight() throws PWCGException
+    private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
         return targetBuilder.getGroundUnits();
     }

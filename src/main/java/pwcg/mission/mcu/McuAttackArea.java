@@ -5,36 +5,59 @@ import java.io.IOException;
 
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
-import pwcg.mission.flight.waypoint.WaypointGoal;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 
 public class McuAttackArea extends BaseFlightMcu
 {
-	private int attackGround  = 0;
+    public enum AttackAreaType
+    {
+        AIR_TARGETS,
+        GROUND_TARGETS,
+        INDIRECT
+    }
+    
+	private int attackIndirect  = 0;
 	private int attackAir  = 0;
 	private int attackGTargets = 0;
-	private int attackArea = 2000;
+	private int attackRadius = 2000;
 	private int time = 60;
 	private WaypointPriority priority = WaypointPriority.PRIORITY_HIGH;
-	private WaypointGoal goalType = WaypointGoal.GOAL_PRIMARY;
 
-	public McuAttackArea ()
+	public McuAttackArea (AttackAreaType attackAreaType)
 	{
  		super();
  		setName("Command AttackArea");
+ 		
+        if (attackAreaType == AttackAreaType.AIR_TARGETS)
+        {
+           attackAir = 1;
+        }
+        else if (attackAreaType == AttackAreaType.GROUND_TARGETS)
+        {
+            attackGTargets = 1;
+        }
+        else
+        {
+            attackIndirect = 1;
+        }
 	}
 	
-	   
+    private McuAttackArea()
+    {
+        super();
+        setName("Command AttackArea");
+    }
+
     public McuAttackArea copy ()
     {
         McuAttackArea clone = new McuAttackArea();
         
         super.clone(clone);
         
-        clone.attackGround = this.attackGround;
+        clone.attackIndirect = this.attackIndirect;
         clone.attackAir = this.attackAir;
         clone.attackGTargets = this.attackGTargets;
-        clone.attackArea = this.attackArea;
+        clone.attackRadius = this.attackRadius;
         clone.time = this.time;
         clone.priority = this.priority;
             
@@ -52,17 +75,16 @@ public class McuAttackArea extends BaseFlightMcu
             
             super.write(writer);
             
-            writer.write("  AttackGround = " + attackGround + ";");
+            writer.write("  AttackGround = " + attackIndirect + ";");
             writer.newLine();
             writer.write("  AttackAir = " + attackAir + ";");
             writer.newLine();
             writer.write("  AttackGTargets = " + attackGTargets + ";");
             writer.newLine();
-            writer.write("  AttackArea = " + attackArea + ";");
+            writer.write("  AttackArea = " + attackRadius + ";");
             writer.newLine();
             writer.write("  Time = " + time + ";");
             writer.newLine();
-            writeMCUGoal(writer, goalType.getGoal());
             writer.write("  Priority = " + priority.getPriorityValue() + ";");
             writer.newLine();
 
@@ -78,38 +100,6 @@ public class McuAttackArea extends BaseFlightMcu
         }
 	}
 
-	public int getAttackGround() {
-		return attackGround;
-	}
-
-	public void setAttackGround(int attackGround) {
-		this.attackGround = attackGround;
-	}
-
-	public int getAttackAir() {
-		return attackAir;
-	}
-
-	public void setAttackAir(int attackAir) {
-		this.attackAir = attackAir;
-	}
-
-	public int getAttackGTargets() {
-		return attackGTargets;
-	}
-
-	public void setAttackGTargets(int attackGTargets) {
-		this.attackGTargets = attackGTargets;
-	}
-
-	public int getAttackArea() {
-		return attackArea;
-	}
-
-	public void setAttackArea(int attackArea) {
-		this.attackArea = attackArea;
-	}
-
 	public int getTime() {
 		return time;
 	}
@@ -118,28 +108,18 @@ public class McuAttackArea extends BaseFlightMcu
 		this.time = time;
 	}
 
-
 	public WaypointPriority getPriority()
 	{
 		return priority;
 	}
-
 
 	public void setPriority(WaypointPriority priority)
 	{
 		this.priority = priority;
 	}
 
-
-	public WaypointGoal getGoalType()
-	{
-		return goalType;
-	}
-
-
-	public void setGoalType(WaypointGoal goalType)
-	{
-		this.goalType = goalType;
-	}
-	
+    public void setAttackRadius(int attackRadius)
+    {
+        this.attackRadius = attackRadius;
+    }
 }

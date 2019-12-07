@@ -3,10 +3,7 @@ package pwcg.aar.inmission.phase1.parse;
 import java.util.List;
 
 import pwcg.aar.inmission.phase1.parse.event.AType;
-import pwcg.aar.inmission.phase1.parse.event.AType17;
-import pwcg.aar.inmission.phase1.parse.event.IAType10;
 import pwcg.aar.inmission.phase1.parse.event.IAType12;
-import pwcg.aar.inmission.phase1.parse.event.IAType17;
 import pwcg.aar.inmission.phase1.parse.event.IAType18;
 import pwcg.aar.inmission.phase1.parse.event.IAType2;
 import pwcg.aar.inmission.phase1.parse.event.IAType3;

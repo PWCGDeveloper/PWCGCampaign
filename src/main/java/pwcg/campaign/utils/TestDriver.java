@@ -4,9 +4,9 @@ import java.util.List;
 
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.target.TacticalTarget;
 
 public class TestDriver
 {

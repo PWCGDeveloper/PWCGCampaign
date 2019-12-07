@@ -77,9 +77,7 @@ public class ArtillerySpotWaypoints
 		waypoints.add(artillerySpotInitialWaypoint);		
 		
 		int iterNum = 1;
-		
 		double angle = RandomNumberGenerator.getRandom(360);	
-		
 		createNextWaypoint(artillerySpotInitialWaypoint, iterNum, angle);
 	}
 

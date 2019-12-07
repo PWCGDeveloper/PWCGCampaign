@@ -10,7 +10,7 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.ground.unittypes.GroundUnitSpawning;
+import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.mcu.McuIcon;
 import pwcg.mission.mcu.McuTREntity;
 
@@ -19,7 +19,7 @@ public class AirfieldBlock extends FixedPosition implements Cloneable
 	private int id = 0;
 	private boolean isGroup = false;
 	private Date startDate = null;
-	private GroundUnitSpawning aaa = null;
+	private GroundUnit aaa = null;
 	private McuIcon airfieldOrientationIcon = null;
     private McuTREntity entity = new McuTREntity();
 
@@ -238,7 +238,7 @@ public class AirfieldBlock extends FixedPosition implements Cloneable
 		this.startDate = startDate;
 	}
 
-	public void setAAA(GroundUnitSpawning aaa)
+	public void setAAA(GroundUnit aaa)
 	{
 		this.aaa = aaa;
 	}

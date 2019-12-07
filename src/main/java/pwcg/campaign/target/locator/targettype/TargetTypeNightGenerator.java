@@ -3,9 +3,9 @@ package pwcg.campaign.target.locator.targettype;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.target.TacticalTarget;
 
 public class TargetTypeNightGenerator
 {

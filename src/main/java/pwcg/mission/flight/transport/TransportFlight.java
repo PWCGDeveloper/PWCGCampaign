@@ -7,7 +7,6 @@ import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
@@ -56,13 +55,6 @@ public class TransportFlight extends Flight
 	}
 
     @Override
-    public String getMissionObjective() throws PWCGMissionGenerationException, PWCGException
-    {
-        String objective = "Transport supplies to the airfield at " + arrivalAirfield.getName() + ".";
-        return objective;
-    }
-
-    @Override
     protected void createFlightSpecificTargetAssociations() throws PWCGException
     {
         this.createSimpleTargetAssociations();
@@ -73,5 +65,10 @@ public class TransportFlight extends Flight
     {
         LandingBuilder landingBuilder = new LandingBuilder(flightInformation.getCampaign());
         landing = landingBuilder.createLanding(arrivalAirfield);
+    }
+
+    public IAirfield getArrivalAirfield()
+    {
+        return arrivalAirfield;
     }
 }

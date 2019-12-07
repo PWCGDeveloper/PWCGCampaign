@@ -1,84 +1,65 @@
 package pwcg.mission.ground.unittypes.infantry;
 
 import java.io.BufferedWriter;
-import java.io.IOException;
 
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
-import pwcg.core.location.Orientation;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.unittypes.GroundDirectFireUnit;
-import pwcg.mission.ground.vehicle.IVehicle;
-import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.ground.org.GroundElementFactory;
+import pwcg.mission.ground.org.GroundUnitNumberCalculator;
+import pwcg.mission.ground.org.IGroundElement;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.CoalitionFactory;
 import pwcg.mission.mcu.McuFlare;
-import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.group.FlareSequence;
 
-public class GroundMachineGunFlareUnit extends GroundDirectFireUnit
+public class GroundMachineGunFlareUnit extends GroundMachineGunUnit
 {
     private FlareSequence flares = new FlareSequence();
 
-	public GroundMachineGunFlareUnit(GroundUnitInformation pwcgGroundUnitInformation) 
-	{
-        super (pwcgGroundUnitInformation);
-	}	
+    public GroundMachineGunFlareUnit(GroundUnitInformation pwcgGroundUnitInformation)
+    {
+        super(pwcgGroundUnitInformation);
+    }   
 
-	protected void createUnits() throws PWCGException  
-	{
-	    IVehicle flareMachineGun = pwcg.mission.ground.vehicle.VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.MachineGun);
 
-        flareMachineGun.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
-        flareMachineGun.setPosition(pwcgGroundUnitInformation.getPosition().copy());           
-        flareMachineGun.populateEntity();
-        flareMachineGun.getEntity().setEnabled(1);
-
-       this.spawningVehicle = flareMachineGun;
-
-       createFlares();
-	}
-
-    protected int calcNumUnits()
+    @Override
+    protected int calcNumUnits() throws PWCGException
     {
         if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
-            setMinMaxRequested(1, 1);
+            return GroundUnitNumberCalculator.calcNumUnits(1, 1);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
-            setMinMaxRequested(1, 1);
+            return GroundUnitNumberCalculator.calcNumUnits(1, 1);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
         {
-            setMinMaxRequested(1, 2);
+            return GroundUnitNumberCalculator.calcNumUnits(2, 2);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
         {
-            setMinMaxRequested(2, 2);
+            return GroundUnitNumberCalculator.calcNumUnits(2, 2);
         }
         
-        return calculateForMinMaxRequested();
+        throw new PWCGException ("No unit size provided for ground unit");
     }
 
-    protected void createSpawners() throws PWCGException  
+    @Override
+    public void createGroundUnit() throws PWCGException
     {
-        // Face towards enemy
-        double pillBoxFacingAngle = MathUtils.calcAngle(pwcgGroundUnitInformation.getPosition(), pwcgGroundUnitInformation.getDestination());
-        Orientation pillBoxOrient = new Orientation();
-        pillBoxOrient.setyOri(pillBoxFacingAngle);
-        
-        McuSpawn spawn = new McuSpawn();
-        spawn.setName("Pillbox Spawn");      
-        spawn.setDesc("Pillbox Spawn");
-        spawn.setPosition(pwcgGroundUnitInformation.getPosition().copy());
+        super.createGroundUnit();
+        createFlares();
+    }
 
-        spawners.add(spawn);
-    }   
+    @Override
+    protected void addElements()
+    {
+        IGroundElement areaFire = GroundElementFactory.createGroundElementDirectFire(pwcgGroundUnitInformation, vehicle);
+        this.addGroundElement(areaFire);           
+    }
 
     public void createFlares() throws PWCGException 
     {
@@ -91,61 +72,18 @@ public class GroundMachineGunFlareUnit extends GroundDirectFireUnit
         Coalition friendlyCoalition  = CoalitionFactory.getFriendlyCoalition(pwcgGroundUnitInformation.getCountry());
 
         flares = new FlareSequence();
-        flares.setFlare(friendlyCoalition, pwcgGroundUnitInformation.getPosition().copy(), flareColor, spawningVehicle.getEntity().getIndex());
+        flares.setFlare(friendlyCoalition, pwcgGroundUnitInformation.getPosition().copy(), flareColor, vehicle.getEntity().getIndex());
     }
 
+    @Override
     public void write(BufferedWriter writer) throws PWCGException 
     {       
-        try
-        {
-            writer.write("Group");
-            writer.newLine();
-            writer.write("{");
-            writer.newLine();
-            
-            writer.write("  Name = \"Pillbox With Flares\";");
-            writer.newLine();
-            writer.write("  Index = " + index + ";");
-            writer.newLine();
-            writer.write("  Desc = \"Pillbox With Flares\";");
-            writer.newLine();
-
-            pwcgGroundUnitInformation.getMissionBeginUnit().write(writer);
-
-            // This could happen if the user did not install 3rd party infantry
-            spawnTimer.write(writer);
-            spawningVehicle.write(writer);
-            for (McuSpawn spawn : spawners)
-            {
-                spawn.write(writer);
-            }
-
-            if (attackTimer != null)
-            {
-                attackTimer.write(writer);
-                attackEntity.write(writer);
-            }
-            
-            flares.write(writer);
-
-            writer.write("}");
-            writer.newLine();
-        }
-        catch (IOException e)
-        {
-            Logger.logException(e);
-            throw new PWCGIOException(e.getMessage());
-        }
+        super.write(writer);
+        flares.write(writer);
     }
 
-
-    /**
-     * @return
-     */
     public FlareSequence getFlares()
     {
         return flares;
     }
-
-    
 }	

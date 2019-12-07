@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.plane.Balloon;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -13,13 +12,14 @@ import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.waypoint.WaypointFactory;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class AiBalloonDefenseFlight extends Flight
 {
-	protected BalloonDefenseGroup balloonUnit = null;
+	protected IGroundUnitCollection balloonUnit = null;
 
-    public AiBalloonDefenseFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit, BalloonDefenseGroup balloonUnit)
+    public AiBalloonDefenseFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit, IGroundUnitCollection balloonUnit)
     {
         super (flightInformation, missionBeginUnit);
         this.balloonUnit = balloonUnit;     
@@ -43,9 +43,9 @@ public class AiBalloonDefenseFlight extends Flight
 
     private McuWaypoint makeBalloonConverIngressWP(Coordinate startPosition,  int waypointSpeed) throws PWCGException
     {
-        double balloonCoverApproachAngle = MathUtils.calcAngle(balloonUnit.getHomePosition(), startPosition);               
-        Coordinate balloonCoverIngressPosition = MathUtils.calcNextCoord(balloonUnit.getHomePosition(), balloonCoverApproachAngle, 3000.0);
-        balloonCoverIngressPosition.setYPos(balloonUnit.getHomePosition().getYPos() + 500);
+        double balloonCoverApproachAngle = MathUtils.calcAngle(balloonUnit.getPosition(), startPosition);               
+        Coordinate balloonCoverIngressPosition = MathUtils.calcNextCoord(balloonUnit.getPosition(), balloonCoverApproachAngle, 3000.0);
+        balloonCoverIngressPosition.setYPos(balloonUnit.getPosition().getYPos() + 500);
 
         McuWaypoint balloonDefenseIngressWP = WaypointFactory.createIngressWaypointType();
         balloonDefenseIngressWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
@@ -57,8 +57,8 @@ public class AiBalloonDefenseFlight extends Flight
 
     private McuWaypoint makeBalloonCoverWP(int waypointSpeed) throws PWCGException
     {
-        Coordinate balloonCoverPosition = balloonUnit.getHomePosition().copy();
-		balloonCoverPosition.setYPos(balloonUnit.getHomePosition().getYPos() + 500);
+        Coordinate balloonCoverPosition = balloonUnit.getPosition().copy();
+		balloonCoverPosition.setYPos(balloonUnit.getPosition().getYPos() + 500);
 
 		McuWaypoint balloonDefenseWP = WaypointFactory.createBalloonDefenseWaypointType();
 		balloonDefenseWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
@@ -85,33 +85,14 @@ public class AiBalloonDefenseFlight extends Flight
 		super.write(writer);
 	}
 
-	public String getMissionObjective() throws PWCGException 
-	{
-        String objective = "Defend our balloon" + formMissionObjectiveLocation(getTargetCoords().copy()) + ".";       
-
-        return objective;
-	}
-
     public Coordinate getBalloonPosition()
     {
         if (balloonUnit != null)
         {
-            return this.balloonUnit.getBalloon().getPosition();
+            return this.balloonUnit.getPosition();
         }
         
         return null;
     }
-
-    public void setBalloonCheckZoneForPlayer(List<Integer> playerPlaneIds)
-    {
-        balloonUnit.setBalloonCheckZoneForPlayer(playerPlaneIds);
-    }
-
-    public Balloon getBalloon()
-    {
-        return this.balloonUnit.getBalloon();
-    }
-
-
 }	
 

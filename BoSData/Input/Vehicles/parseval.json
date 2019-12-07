@@ -1,0 +1,15 @@
+{
+  "scriptDir": "Balloons\\",
+  "modelDir": "balloons\\parseval\\",
+  "vehicleType": "parseval",
+  "displayName": "Balloon",
+  "countries": [
+    "RUSSIA",
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19400101",
+  "endDate": "19450601",
+  "rarityWeight": 10,
+  "vehicleClass": "Balloon"
+}

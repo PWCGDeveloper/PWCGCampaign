@@ -10,8 +10,8 @@ import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.IUnit;
 import pwcg.mission.MissionSkinGenerator;
-import pwcg.mission.Unit;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.ActualWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
@@ -52,7 +52,7 @@ public class FlightFinalizer
         }
 
         // Finalize linked flights
-        for (Unit unit : flight.getLinkedUnits())
+        for (IUnit unit : flight.getLinkedUnits())
         {
             if (unit instanceof Flight)
             {

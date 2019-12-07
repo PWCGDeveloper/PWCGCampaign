@@ -24,11 +24,7 @@ public class AirfieldStaticPlanePlacer
 
     public IStaticPlane getStaticPlane(IAirfield airfield, Date date, Coordinate position) throws PWCGException  
     {
-        // Finally put the object in its place - orientation is random
-        double orientation = RandomNumberGenerator.getRandom(360);
-        Orientation objectOrientation = new Orientation();
-        objectOrientation.setyOri(orientation);
-
+        Orientation objectOrientation = Orientation.createRandomOrientation();
         IStaticPlane staticPlane = getStaticPlaneForField(airfield, date);
         if (staticPlane != null)
         {

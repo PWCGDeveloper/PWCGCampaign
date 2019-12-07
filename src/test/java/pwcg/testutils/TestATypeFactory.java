@@ -5,7 +5,6 @@ import pwcg.aar.inmission.phase1.parse.event.AType12;
 import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.plane.Balloon;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.fc.country.FCCountry;
 
@@ -32,9 +31,7 @@ public class TestATypeFactory
     static public AType12 makeBalloon(ICountry country) throws PWCGException
     {
         ++id;
-        Balloon balloon;
-        balloon = new Balloon(country);
-        AType12 aType12 = new AType12(new Integer (id).toString(), balloon.getName(), balloon.getType(), country, AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
+        AType12 aType12 = new AType12(new Integer (id).toString(), "Balloon", "Balloon", country, AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
         return aType12;
     }
     

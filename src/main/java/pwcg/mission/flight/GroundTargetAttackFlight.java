@@ -6,15 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.Unit;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.WaypointAction;
-import pwcg.mission.ground.unittypes.GroundUnit;
-import pwcg.mission.ground.unittypes.staticunits.AirfieldStaticGroup;
-import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -142,80 +137,6 @@ public abstract class GroundTargetAttackFlight extends Flight
         return allMissionPointsForPlane;
     }
 
-    public String getMissionObjective() throws PWCGException 
-    {
-        String objective = "Attack the specified objective using all available means.";
-        for (Unit linkedUnit : linkedUnits)
-        {
-            String objectiveLocation =  getMissionObjectiveLocation(flightInformation.getSquadron(), flightInformation.getCampaign().getDate(), linkedUnit);
-            
-            if (!linkedUnit.getCountry().isSameSide(this.getCountry()))
-            {
-                if (linkedUnit instanceof AirfieldStaticGroup)
-                {
-                    AirfieldStaticGroup target = (AirfieldStaticGroup)linkedUnit;
-                    objective = "Attack the airfield at " + target.getAirfield().getName();
-                    break;
-                }
-                else if (linkedUnit instanceof GroundTrainUnit)
-                {
-                    objective = "Attack the trains and rail facilities " + objectiveLocation;
-                    break;
-                }
-                else if (linkedUnit instanceof GroundUnit)
-                {
-                    GroundUnit groundUnit = (GroundUnit)linkedUnit;             
-
-                    TacticalTarget targetType = groundUnit.getPwcgGroundUnitInformation().getTargetType();
-                    if (targetType == TacticalTarget.TARGET_INFANTRY)
-                    {
-                        objective = "Attack enemy troops " + objectiveLocation; 
-                        break;
-                    }
-                    if (targetType == TacticalTarget.TARGET_ASSAULT)
-                    {
-                        objective = "Attack assaulting enemy troops " + objectiveLocation; 
-                        break;
-                    }
-                    else if (targetType == TacticalTarget.TARGET_DEFENSE)
-                    {
-                        objective = "Attack defending enemy troops " + objectiveLocation; 
-                        break;
-                    }
-                    else if (targetType == TacticalTarget.TARGET_ARTILLERY)
-                    {
-                        objective = "Attack the artillery battery " + objectiveLocation; 
-                    }
-                    else if (targetType == TacticalTarget.TARGET_TRANSPORT)
-                    {
-                        objective = "Attack the transport and road facilities " + objectiveLocation; 
-                        break;
-                    }
-                    else if (targetType == TacticalTarget.TARGET_SHIPPING)
-                    {
-                        objective = "Attack the shipping " + objectiveLocation; 
-                        break;
-                    }
-                    else if (targetType == TacticalTarget.TARGET_BALLOON)
-                    {
-                        objective = "Attack the balloons " + objectiveLocation; 
-                        break;
-                    }
-                    else if (targetType == TacticalTarget.TARGET_DRIFTER)
-                    {
-                        objective = "Attack the light shipping " + objectiveLocation; 
-                        break;
-                    }
-                    else if (targetType == TacticalTarget.TARGET_TROOP_CONCENTRATION)
-                    {
-                        objective = "Attack troop concentrations " + objectiveLocation; 
-                    }
-                }
-            }
-        }
-        
-        return objective;
-    }
 
     @Override
     public void write(BufferedWriter writer) throws PWCGException 

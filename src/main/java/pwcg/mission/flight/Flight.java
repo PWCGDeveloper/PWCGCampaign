@@ -2,20 +2,16 @@ package pwcg.mission.flight;
 
 import java.io.BufferedWriter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.target.TargetCategory;
-import pwcg.campaign.target.TargetDefinition;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -25,11 +21,13 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.IUnit;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.Unit;
 import pwcg.mission.flight.escort.EscortForPlayerFlight;
 import pwcg.mission.flight.escort.VirtualEscortFlight;
+import pwcg.mission.flight.objective.MissionObjectiveFactory;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.ActualWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
@@ -37,9 +35,7 @@ import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointType;
-import pwcg.mission.ground.GroundUnitCollection;
-import pwcg.mission.ground.unittypes.GroundUnit;
-import pwcg.mission.ground.unittypes.staticunits.AirfieldStaticGroup;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuFormation;
@@ -47,6 +43,8 @@ import pwcg.mission.mcu.McuLanding;
 import pwcg.mission.mcu.McuTakeoff;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.target.TargetCategory;
+import pwcg.mission.target.TargetDefinition;
 
 public abstract class Flight extends Unit
 {
@@ -78,7 +76,6 @@ public abstract class Flight extends Unit
     protected List<IAirfield> airfieldTargets = new ArrayList<IAirfield>();
     
     abstract protected void createFlightSpecificTargetAssociations() throws PWCGException;
-    abstract public String getMissionObjective() throws PWCGException ;
     abstract protected List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException;
 
     public Flight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
@@ -212,7 +209,7 @@ public abstract class Flight extends Unit
         return flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate());
     }
 
-    public Coordinate getHomePosition() throws PWCGException
+    public Coordinate getPosition() throws PWCGException
     {
         return flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
     }
@@ -343,7 +340,7 @@ public abstract class Flight extends Unit
         List<McuWaypoint> returnWaypoints = waypointPackage.getWaypointsForLeadPlane();
         if (waypointPackage.getWaypointsForLeadPlane().size() == 0)
         {
-            for (Unit linkedUnit : this.getLinkedUnits())
+            for (IUnit linkedUnit : this.getLinkedUnits())
             {
                 if (linkedUnit instanceof Flight)
                 {
@@ -370,7 +367,7 @@ public abstract class Flight extends Unit
         List<McuWaypoint> returnWaypoints = waypointPackage.getWaypointsForPlane(plane);
         if (waypointPackage.getWaypointsForLeadPlane().size() == 0)
         {
-            for (Unit linkedUnit : this.getLinkedUnits())
+            for (IUnit linkedUnit : this.getLinkedUnits())
             {
                 if (linkedUnit instanceof Flight)
                 {
@@ -394,7 +391,7 @@ public abstract class Flight extends Unit
 
     public WaypointPackage getLinkedWaypoints()
     {
-        for (Unit linkedUnit : linkedUnits)
+        for (IUnit linkedUnit : linkedUnits)
         {
             if (linkedUnit instanceof Flight)
             {
@@ -739,56 +736,6 @@ public abstract class Flight extends Unit
         return false;
     }
 
-    protected String getMissionObjectiveLocation(Squadron squadron, Date date, Unit linkedUnit) throws PWCGException 
-    {
-        String objectiveLocation = "";
-        if (linkedUnit.getCountry().isEnemy(squadron.determineSquadronCountry(date)))
-        {
-            if (linkedUnit instanceof AirfieldStaticGroup)
-            {
-                AirfieldStaticGroup target = (AirfieldStaticGroup)linkedUnit;
-                if (target != null)
-                {
-                    
-                    String airfieldName = target.getAirfield().getName();
-                    if (!airfieldName.contains("Group"))
-                    {
-                        objectiveLocation = " at " + airfieldName;
-                    }
-                    else
-                    {
-                        objectiveLocation = getObjectiveName(linkedUnit);
-                    }
-                }
-            }
-            else if (linkedUnit instanceof GroundUnit)
-            {
-                objectiveLocation = getObjectiveName(linkedUnit);
-            }
-        }
-        
-        return objectiveLocation;
-    }
-
-    private String getObjectiveName(Unit linkedUnit) throws PWCGException
-    {
-        GroundUnit groundUnit = (GroundUnit)linkedUnit;             
-        String targetName =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(groundUnit.getHomePosition().copy()).getName();
-        return " near " + targetName;
-    }
-    
-    protected String formMissionObjectiveLocation(Coordinate targetLocation) throws PWCGException 
-    {
-        String missionObjectiveLocation = "";
-        String targetName =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(targetLocation).getName();
-        if (!targetName.isEmpty())
-        {
-            missionObjectiveLocation =   " near " + targetName;
-        }
-        
-        return missionObjectiveLocation;
-    }
-
     public McuWaypoint findFirstStartWaypoint()
     {
         List<McuWaypoint> waypoints = getWaypointPackage().getWaypointsForLeadPlane();
@@ -856,11 +803,11 @@ public abstract class Flight extends Unit
         
         return false;
     }
-    
+
     public EscortForPlayerFlight getEscortForPlayer()
     {
         EscortForPlayerFlight escortForPlayerFlight = null;
-        for (Unit unit : getLinkedUnits())
+        for (IUnit unit : getLinkedUnits())
         {
             if (unit instanceof EscortForPlayerFlight)
             {
@@ -869,18 +816,20 @@ public abstract class Flight extends Unit
         }
         return escortForPlayerFlight;
     }
+    
+    public String getMissionObjective() throws PWCGException
+    {
+        return MissionObjectiveFactory.formMissionObjective(this);
+    }
 
     public boolean isFlightHasFighterPlanes()
     {
         return getPlanes().get(0).isPrimaryRole(Role.ROLE_FIGHTER);
     }
 
-    public void linkGroundUnitsToFlight(GroundUnitCollection groundUnits) throws PWCGException
+    public void linkGroundUnitsToFlight(IGroundUnitCollection groundUnitCollection) throws PWCGException
     {
-        for (Unit groundUnit : groundUnits.getAllGroundUnits())
-        {
-            addLinkedUnit(groundUnit);              
-        }
+        addLinkedUnit(groundUnitCollection);              
     }
     
     public List<Bridge> getBridgeTargets()

@@ -13,16 +13,13 @@ import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class FerryFlight extends Flight
-{
-    private boolean isTransfer = true;
-    
+{    
     private IAirfield fromAirfield;
     private IAirfield toAirfield;
     
-    public FerryFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit, boolean isTransfer) throws PWCGException
+    public FerryFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit) throws PWCGException
     {
         super (flightInformation, missionBeginUnit);
-		this.isTransfer = isTransfer;
         fromAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());
         toAirfield = flightInformation.getSquadron().determineCurrentAirfieldCurrentMap(flightInformation.getCampaign().getDate());
 	}
@@ -35,22 +32,6 @@ public class FerryFlight extends Flight
         List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
         
         return waypointList;
-	}
-
-	public String getMissionObjective() 
-	{
-	    String objective = "";
-	
-	    if (isTransfer)
-	    {
-	        objective = "Join your new squadron " + " at " + toAirfield.getName(); 
-	    }
-	    else
-	    {
-            objective = "Move from " + fromAirfield.getName() + " to " + toAirfield.getName(); 
-	    }
-		
-		return objective;
 	}
 
     @Override

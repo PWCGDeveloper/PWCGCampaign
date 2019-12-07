@@ -11,13 +11,9 @@ import org.junit.runners.Parameterized;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
-import pwcg.campaign.target.TacticalTarget;
-import pwcg.campaign.target.TargetCategory;
-import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
-import pwcg.mission.flight.artySpot.PlayerArtillerySpotFlight;
 import pwcg.mission.flight.attack.GroundAttackFlight;
 import pwcg.mission.flight.balloonBust.BalloonBustFlight;
 import pwcg.mission.flight.balloondefense.PlayerBalloonDefenseFlight;
@@ -31,10 +27,12 @@ import pwcg.mission.flight.recon.PlayerReconFlight;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PatrolFlightValidator;
-import pwcg.mission.flight.validate.PlayerArtillerySpotFlightValidator;
 import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
 import pwcg.mission.flight.validate.PlayerReconFlightValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
+import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetCategory;
+import pwcg.mission.target.TargetDefinition;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
@@ -221,26 +219,6 @@ public class PlayerFlightFCTypeTest
 		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);
 		escortFlightValidator.validateEscortFlight();
         assert(flight.getFlightType() == FlightTypes.ESCORT);
-        PositionEvaluator.evaluateAiFlight(mission);
-	}
-
-	@Test
-	public void artillerySpotFlightTest() throws PWCGException
-	{
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RFC_2_PROFILE);
-        
-        MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ARTILLERY_SPOT);
-        PlayerArtillerySpotFlight flight = (PlayerArtillerySpotFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-		flight.finalizeFlight();
-		
-		PlayerArtillerySpotFlightValidator artillerySpotFlightValidator = new PlayerArtillerySpotFlightValidator();
-		artillerySpotFlightValidator.validateArtillerySpotFlight(flight);
-		validateTargetDefinition(flight.getTargetDefinition());
-        assert(flight.getFlightType() == FlightTypes.ARTILLERY_SPOT);
-        
-        GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
-        groundUnitValidator.validateGroundUnitsForMission(mission);
         PositionEvaluator.evaluateAiFlight(mission);
 	}
 	

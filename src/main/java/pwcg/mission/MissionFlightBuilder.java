@@ -122,7 +122,7 @@ public class MissionFlightBuilder
         allFlights.addAll(playerFlights);
         for (Flight playerFlight : playerFlights)
         {
-            for (Unit linkedUnit : playerFlight.getLinkedUnits())
+            for (IUnit linkedUnit : playerFlight.getLinkedUnits())
             {
                 if (linkedUnit instanceof Flight)
                 {
@@ -138,7 +138,7 @@ public class MissionFlightBuilder
                 allFlights.add(flight);
             }
 
-            for (Unit linkedUnit : flight.getLinkedUnits())
+            for (IUnit linkedUnit : flight.getLinkedUnits())
             {
                 if (linkedUnit instanceof Flight)
                 {

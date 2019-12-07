@@ -12,13 +12,13 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.ground.factory.AAAUnitFactory;
-import pwcg.mission.ground.unittypes.GroundUnitSpawning;
+import pwcg.mission.ground.factory.AAAUnitBuilder;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class AAARailroadBuilder 
 {
 	private Campaign campaign;
-	private List<GroundUnitSpawning> railroadAAA = new ArrayList<>();
+	private List<IGroundUnitCollection> railroadAAA = new ArrayList<>();
 
 	
     public AAARailroadBuilder(Campaign campaign) throws PWCGException
@@ -26,7 +26,7 @@ public class AAARailroadBuilder
         this.campaign = campaign;
 	}
 
-	public List<GroundUnitSpawning> createAAAForRailroads() throws PWCGException
+	public List<IGroundUnitCollection> createAAAForRailroads() throws PWCGException
 	{
         GroupManager groupData = PWCGContext.getInstance().getCurrentMap().getGroupManager();
 
@@ -48,8 +48,8 @@ public class AAARailroadBuilder
         double angle = RandomNumberGenerator.getRandom(360);
         double distance = 100 + RandomNumberGenerator.getRandom(200);
         Coordinate aaaPosition = MathUtils.calcNextCoord(railroadStation.getPosition(), angle, distance);               
-        AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign, railroadStation.getCountry(campaign.getDate()), aaaPosition);
-        GroundUnitSpawning aaaMg = groundUnitFactory.createAAAMGBattery(2, 2);
+        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, railroadStation.getCountry(campaign.getDate()), aaaPosition);
+        IGroundUnitCollection aaaMg = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
         railroadAAA.add(aaaMg);
     }
 
@@ -58,8 +58,8 @@ public class AAARailroadBuilder
         double angle = RandomNumberGenerator.getRandom(360);
         double distance = 300 + RandomNumberGenerator.getRandom(200);
         Coordinate aaaPosition = MathUtils.calcNextCoord(railroadStation.getPosition(), angle, distance);               
-        AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign, railroadStation.getCountry(campaign.getDate()), aaaPosition);
-        GroundUnitSpawning aaaArty = groundUnitFactory.createAAAArtilleryBattery(2, 2);
+        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, railroadStation.getCountry(campaign.getDate()), aaaPosition);
+        IGroundUnitCollection aaaArty = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
         railroadAAA.add(aaaArty);
     }
 }

@@ -1,11 +1,11 @@
 package pwcg.mission.flight.intercept;
 
-import pwcg.campaign.target.TargetDefinition;
-import pwcg.campaign.target.TargetDefinitionBuilderAirToGround;
-import pwcg.campaign.target.TargetDefinitionBuilderStrategic;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderAirToGround;
+import pwcg.mission.target.TargetDefinitionBuilderStrategic;
 
 public class InterceptPlayerCoordinateGenerator
 {

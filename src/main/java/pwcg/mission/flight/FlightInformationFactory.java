@@ -3,14 +3,14 @@ package pwcg.mission.flight;
 import java.util.List;
 
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.target.ITargetDefinitionBuilder;
-import pwcg.campaign.target.TargetDefinition;
-import pwcg.campaign.target.TargetDefinitionBuilderFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.plane.FlightPlaneBuilder;
 import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class FlightInformationFactory
 {

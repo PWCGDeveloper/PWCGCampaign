@@ -22,6 +22,7 @@ import pwcg.mission.io.MissionDescriptionFile;
 import pwcg.mission.io.MissionFileFactory;
 import pwcg.mission.mcu.group.MissionObjectiveGroup;
 import pwcg.mission.options.MissionOptions;
+import pwcg.mission.target.AssaultDefinition;
 
 public class Mission
 {
@@ -201,7 +202,7 @@ public class Mission
         return airfieldBuilder.getFieldsForPatrol();
     }
     
-    public void registerAssault(AssaultInformation missionBattle)
+    public void registerAssault(AssaultDefinition missionBattle)
     {
         missionBattleManager.addMissionBattle(missionBattle);
     }

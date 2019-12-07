@@ -1,40 +1,33 @@
 package pwcg.mission.ground.unittypes.infantry;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.unittypes.GroundDirectFireUnit;
+import pwcg.mission.ground.org.GroundElementFactory;
+import pwcg.mission.ground.org.GroundUnit;
+import pwcg.mission.ground.org.GroundUnitNumberCalculator;
+import pwcg.mission.ground.org.IGroundElement;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.mcu.McuSpawn;
 
-public class GroundMachineGunUnit extends GroundDirectFireUnit
+public class GroundMachineGunUnit extends GroundUnit
 {
-    public GroundMachineGunUnit(GroundUnitInformation pwcgGroundUnitInformation) throws PWCGException
+    public GroundMachineGunUnit(GroundUnitInformation pwcgGroundUnitInformation)
     {
-        super (pwcgGroundUnitInformation);
+        super(VehicleClass.MachineGun, pwcgGroundUnitInformation);
     }   
 
-    public void createUnits() throws PWCGException  
+    @Override
+    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
     {
-        spawningVehicle = pwcg.mission.ground.vehicle.VehicleFactory.createVehicle(pwcgGroundUnitInformation.getCountry(), pwcgGroundUnitInformation.getDate(), VehicleClass.MachineGun);
-        spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation());
-        spawningVehicle.setPosition(pwcgGroundUnitInformation.getPosition().copy());         
-        spawningVehicle.setOrientation(pwcgGroundUnitInformation.getOrientation().copy());
-        spawningVehicle.populateEntity();
-        spawningVehicle.getEntity().setEnabled(1);
-    }
+        List<Coordinate> spawnerLocations = new ArrayList<>();
 
-	protected void createSpawners() throws PWCGException  
-	{
         int numMachineGun = calcNumUnits();
-		
+        
         // MGs are behind the lines
         double initialPlacementAngle = MathUtils.adjustAngle (pwcgGroundUnitInformation.getOrientation().getyOri(), 180.0);      
         Coordinate machineGunCoords = MathUtils.calcNextCoord(pwcgGroundUnitInformation.getPosition(), initialPlacementAngle, 25.0);
@@ -47,79 +40,38 @@ public class GroundMachineGunUnit extends GroundDirectFireUnit
 
         for (int i = 0; i < numMachineGun; ++i)
         {   
-            McuSpawn spawn = new McuSpawn();
-            spawn.setName("Machine Gun Spawn " + (i + 1));      
-            spawn.setDesc("Machine Gun Spawn " + (i + 1));
-            spawn.setPosition(machineGunCoords);
-
-            spawners.add(spawn);
-
+            spawnerLocations.add(machineGunCoords);
             machineGunCoords = MathUtils.calcNextCoord(machineGunCoords, placementOrientation, machingGunSpacing);
         }       
-	}	
+        return spawnerLocations;       
+    }   
 
-    protected int calcNumUnits()
+    protected int calcNumUnits() throws PWCGException
     {
         if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
         {
-            setMinMaxRequested(1, 1);
+            return GroundUnitNumberCalculator.calcNumUnits(1, 1);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
-            setMinMaxRequested(2, 3);
+            return GroundUnitNumberCalculator.calcNumUnits(2, 3);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
         {
-            setMinMaxRequested(3, 6);
+            return GroundUnitNumberCalculator.calcNumUnits(3, 6);
         }
         else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
         {
-            setMinMaxRequested(5, 8);
+            return GroundUnitNumberCalculator.calcNumUnits(5, 10);
         }
         
-        return calculateForMinMaxRequested();
+        throw new PWCGException ("No unit size provided for ground unit");
     }
 
-    public void write(BufferedWriter writer) throws PWCGException 
-    {       
-        try
-        {
-            writer.write("Group");
-            writer.newLine();
-            writer.write("{");
-            writer.newLine();
-            
-            writer.write("  Name = \"Machine Gun\";");
-            writer.newLine();
-            writer.write("  Index = " + index + ";");
-            writer.newLine();
-            writer.write("  Desc = \"Machine Gun\";");
-            writer.newLine();
-
-            pwcgGroundUnitInformation.getMissionBeginUnit().write(writer);
-
-            // This could happen if the user did not install 3rd party infantry
-            spawnTimer.write(writer);
-            spawningVehicle.write(writer);
-            for (McuSpawn spawn : spawners)
-            {
-                spawn.write(writer);
-            }
-
-            if (attackTimer != null)
-            {
-                attackTimer.write(writer);
-                attackEntity.write(writer);
-            }
-
-            writer.write("}");
-            writer.newLine();
-        }
-        catch (IOException e)
-        {
-            Logger.logException(e);
-            throw new PWCGIOException(e.getMessage());
-        }
+    @Override
+    protected void addElements()
+    {
+        IGroundElement directFire = GroundElementFactory.createGroundElementDirectFire(pwcgGroundUnitInformation, vehicle);
+        this.addGroundElement(directFire);         
     }
-
 }	

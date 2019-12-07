@@ -14,6 +14,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PositionFinder;
+import pwcg.mission.target.TacticalTarget;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TargetTypeAvailabilityTest

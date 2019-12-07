@@ -7,6 +7,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IAirfieldObjectSelector;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IHotSpotTranslator;
 import pwcg.campaign.api.IStaticPlane;
 import pwcg.campaign.factory.AirfieldObjectSelectorFactory;
@@ -17,9 +18,10 @@ import pwcg.campaign.group.airfield.hotspot.HotSpotType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
-import pwcg.mission.ground.factory.AAAUnitFactory;
-import pwcg.mission.ground.factory.SpotLightFactory;
-import pwcg.mission.ground.unittypes.GroundUnitSpawning;
+import pwcg.mission.ground.GroundUnitSize;
+import pwcg.mission.ground.factory.AAAUnitBuilder;
+import pwcg.mission.ground.factory.SpotLightBuilder;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
 
 public class AirfieldObjectPlacer
@@ -121,14 +123,12 @@ public class AirfieldObjectPlacer
 
     private void addSpotlight(HotSpot hotSpot) throws PWCGException
     {
-        if (!airfield.createCountry(campaign.getDate()).isNeutral())
+        ICountry airfieldCountry = airfield.createCountry(campaign.getDate());
+        if (!airfieldCountry.isNeutral())
         {
-            SpotLightFactory groundUnitFactory = new SpotLightFactory(campaign, airfield.getCountry(campaign.getDate()), hotSpot.getPosition());
-            GroundUnitSpawning spotlight = groundUnitFactory.createSpotLightGroup(1, 1);
-            if (spotlight != null)
-            {
-                airfieldObjects.addAaaForAirfield(spotlight);
-            }
+            SpotLightBuilder groundUnitFactory =  new SpotLightBuilder(campaign);
+            IGroundUnitCollection spotLightGroup = groundUnitFactory.createOneSpotLight(airfieldCountry, hotSpot.getPosition());
+            airfieldObjects.addSpotlightsForAirfield(spotLightGroup);
         }
     }
 
@@ -136,8 +136,8 @@ public class AirfieldObjectPlacer
     {
         if (!airfield.createCountry(campaign.getDate()).isNeutral())
         {
-            AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign, airfield.getCountry(campaign.getDate()), hotSpot.getPosition());
-            GroundUnitSpawning aaaMg = groundUnitFactory.createAAAMGBattery(1, 1);
+            AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, airfield.getCountry(campaign.getDate()), hotSpot.getPosition());
+            IGroundUnitCollection aaaMg = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
             if (aaaMg != null)
             {
             	airfieldObjects.addAaaForAirfield(aaaMg);

@@ -12,11 +12,11 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.target.TargetCategory;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.target.TargetCategory;
 import pwcg.product.bos.plane.BosPlaneAttributeMapping;
 
 @RunWith(MockitoJUnitRunner.class)

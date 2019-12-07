@@ -90,7 +90,7 @@ public class IngressWaypointNearFront implements IIngressWaypoint
         int distanceBehindFrontForIngress = getDistanceFromFront();
 
         return BehindFriendlyLinesPositionCalculator.getPointBehindFriendlyLines(
-                closestEnemyFrontLinesToTarget, flight.getHomePosition(), distanceBehindFrontForIngress, campaign.getDate(), flight.getSquadron().determineSide());
+                closestEnemyFrontLinesToTarget, flight.getPosition(), distanceBehindFrontForIngress, campaign.getDate(), flight.getSquadron().determineSide());
     }
 
     private int getDistanceFromFront()

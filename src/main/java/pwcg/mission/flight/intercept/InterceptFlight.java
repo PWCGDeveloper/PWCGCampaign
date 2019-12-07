@@ -25,13 +25,6 @@ public class InterceptFlight extends Flight
         return waypointList;
 	}
 
-	public String getMissionObjective() throws PWCGException 
-	{
-		String objective = "Intercept enemy aircraft" + formMissionObjectiveLocation(getTargetCoords().copy()) + ".";		
-		
-		return objective;
-	}
-
     @Override
     protected void createFlightSpecificTargetAssociations() throws PWCGException
     {

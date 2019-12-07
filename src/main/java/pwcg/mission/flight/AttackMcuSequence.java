@@ -5,24 +5,24 @@ import java.io.BufferedWriter;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.AttackAreaFactory;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuAttackArea;
+import pwcg.mission.mcu.McuAttackArea.AttackAreaType;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuTimer;
+import pwcg.mission.mcu.group.SelfDeactivatingCheckZone;
 
-// TODO COOP test to make sure attack is not broken - bind to plane and not coalition
 public class AttackMcuSequence
 {    
-    public static final int CHECK_ZONE_DEFAULT_DISTANCE = 12000;
+    public static final int ATTACK_MCU_TRIGGER_DISTANCE = 12000;
 
-    private MissionBeginUnitCheckZone missionBeginUnit;
+    private SelfDeactivatingCheckZone selfDeactivatingCheckZone;
     private McuTimer activateTimer = new McuTimer();
     private McuTimer deactivateTimer = new McuTimer();
     protected McuDeactivate deactivateEntity = new McuDeactivate();
-    private  McuAttackArea attackArea = new McuAttackArea();
+    private  McuAttackArea attackArea = new McuAttackArea(AttackAreaType.GROUND_TARGETS);
 
     public AttackMcuSequence()
     {
@@ -30,6 +30,7 @@ public class AttackMcuSequence
 
     public void createAttackArea(String name, FlightTypes flightType, Coordinate targetCoords, int altitude, int attackTime) throws PWCGException 
     {
+        selfDeactivatingCheckZone = new SelfDeactivatingCheckZone(targetCoords, ATTACK_MCU_TRIGGER_DISTANCE);
         attackArea = AttackAreaFactory.createAttackArea(flightType, name, targetCoords, altitude, attackTime);
         createSequence(attackArea, name, targetCoords, attackTime) ;
     }
@@ -38,10 +39,7 @@ public class AttackMcuSequence
     {
         attackArea.setObject(plane.getLinkTrId());
 
-        missionBeginUnit = new MissionBeginUnitCheckZone(targetCoords, CHECK_ZONE_DEFAULT_DISTANCE);
-        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneBySingleObject(plane.getLinkTrId());
-        missionBeginUnit.setStartTime(2);
-        missionBeginUnit.linkToMissionBegin(activateTimer.getIndex());
+        selfDeactivatingCheckZone.setCheckZoneObject(plane.getLinkTrId());
     }
     
     public void createTriggerForFlight(Flight flight, Coordinate targetCoords)
@@ -49,12 +47,8 @@ public class AttackMcuSequence
         for (PlaneMCU plane: flight.getPlanes())
         {
             attackArea.setObject(plane.getLinkTrId());
+            selfDeactivatingCheckZone.setCheckZoneObject(plane.getLinkTrId());
         }
-        
-        missionBeginUnit = new MissionBeginUnitCheckZone(targetCoords, 12000);
-        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByFlight(flight);
-        missionBeginUnit.setStartTime(2);
-        missionBeginUnit.linkToMissionBegin(activateTimer.getIndex());
     }
 
     private void createSequence(BaseFlightMcu attackMcu, String name, Coordinate targetCoords, int attackTime) 
@@ -88,7 +82,7 @@ public class AttackMcuSequence
 
     public void write(BufferedWriter writer) throws PWCGException 
     {
-        missionBeginUnit.write(writer);
+        selfDeactivatingCheckZone.write(writer);
         activateTimer.write(writer);
         attackArea.write(writer);
         deactivateTimer.write(writer);

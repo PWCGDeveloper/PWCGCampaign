@@ -4,9 +4,9 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.campaign.target.TargetCategory;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.target.TargetCategory;
 
 public class P51D15Payload extends PlanePayload implements IPlanePayload
 {

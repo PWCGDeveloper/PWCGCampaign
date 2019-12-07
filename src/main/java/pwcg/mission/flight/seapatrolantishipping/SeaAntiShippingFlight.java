@@ -43,14 +43,6 @@ public class SeaAntiShippingFlight extends GroundTargetAttackFlight
     {
         super.write(writer);
     }
-
-	public String getMissionObjective() 
-	{
-	    String objective = "Patrol sea lanes on the specified route.  " + 
-	                    "Engage any enemy shipping that you encounter";
-
-	    return objective;
-	}
 	
 	private int getAttackAltitude() throws PWCGException
 	{

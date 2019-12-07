@@ -22,10 +22,7 @@ public class AirfieldHotSpotDefinition
         double angleForThisField = MathUtils.adjustAngle(orientation.getyOri(), angle);
         Coordinate hotSpotPosition = MathUtils.calcNextCoord(position.copy(), angleForThisField, distance);
 
-        // Finally put the object in its place - orientation is random
-        double objectOrientation = RandomNumberGenerator.getRandom(360);
-        Orientation hotSpotOrientation = new Orientation();
-        hotSpotOrientation.setyOri(objectOrientation);
+        Orientation hotSpotOrientation = Orientation.createRandomOrientation();
         
         HotSpot hotSpot = new HotSpot();
         hotSpot.setPosition(hotSpotPosition);

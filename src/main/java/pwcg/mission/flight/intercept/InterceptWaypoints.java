@@ -102,7 +102,7 @@ public class InterceptWaypoints
         innerLoopFirstWP.setPosition(coord);    
         innerLoopFirstWP.setTargetWaypoint(true);
         
-        double initialAngle = MathUtils.calcAngle(flight.getHomePosition(), flight.getTargetCoords());
+        double initialAngle = MathUtils.calcAngle(flight.getPosition(), flight.getTargetCoords());
         innerLoopFirstWP.getOrientation().setyOri(initialAngle);
         
         return innerLoopFirstWP;
@@ -132,15 +132,15 @@ public class InterceptWaypoints
         
         if (pattern  == InterceptSearchPattern.INTERCEPT_CROSS)
         {
-            angleToMovePattern = MathUtils.calcAngle(flight.getTargetCoords(), flight.getHomePosition());
+            angleToMovePattern = MathUtils.calcAngle(flight.getTargetCoords(), flight.getPosition());
         }
         else if (pattern  == InterceptSearchPattern.INTERCEPT_CREEP)
         {
-            angleToMovePattern = MathUtils.calcAngle(flight.getTargetCoords(), flight.getHomePosition());
+            angleToMovePattern = MathUtils.calcAngle(flight.getTargetCoords(), flight.getPosition());
         }
         else
         {
-            angleToMovePattern = MathUtils.calcAngle(flight.getTargetCoords(), flight.getHomePosition());
+            angleToMovePattern = MathUtils.calcAngle(flight.getTargetCoords(), flight.getPosition());
         }
         
         return angleToMovePattern;
@@ -280,7 +280,7 @@ public class InterceptWaypoints
             throw new PWCGException("No airfield found for squadron " + flight.getSquadron().getSquadronId() + ".  Should not have been included in mission");
         }
         
-        double angleFromFrontToField = MathUtils.calcAngle(flight.getHomePosition(), airfield.getPosition());
+        double angleFromFrontToField = MathUtils.calcAngle(flight.getPosition(), airfield.getPosition());
         double distanceFromFrontToField = MathUtils.calcDist(lastWaypointCoord, airfield.getPosition());
         Coordinate egressCoord = MathUtils.calcNextCoord(lastWaypointCoord, angleFromFrontToField, (distanceFromFrontToField / 2));
         egressCoord.setYPos(flight.getFlightAltitude());

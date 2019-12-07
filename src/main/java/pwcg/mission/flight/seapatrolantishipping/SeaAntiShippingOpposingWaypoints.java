@@ -40,7 +40,7 @@ public class SeaAntiShippingOpposingWaypoints
         List<McuWaypoint> targetWaypoints = createTargetWaypoints();
         waypoints.addAll(targetWaypoints);
 
-        McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, flight.getHomePosition());
+        McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, flight.getPosition());
         waypoints.add(egressWaypoint);
         
         McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);

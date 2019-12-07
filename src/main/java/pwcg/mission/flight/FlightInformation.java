@@ -9,13 +9,13 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.MissionAltitudeGeneratorFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.target.TargetDefinition;
 
 public class FlightInformation
 {

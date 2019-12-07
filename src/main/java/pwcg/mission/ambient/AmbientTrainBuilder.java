@@ -10,9 +10,6 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.GroupManager;
-import pwcg.campaign.target.TacticalTarget;
-import pwcg.campaign.target.TargetDefinition;
-import pwcg.campaign.target.TargetDefinitionBuilderGround;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -21,19 +18,22 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
 import pwcg.mission.TargetSide;
-import pwcg.mission.ground.factory.TrainUnitFactory;
-import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
+import pwcg.mission.ground.factory.TrainUnitBuilder;
+import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderGround;
 
 public class AmbientTrainBuilder extends AmbientUnitBuilder
 {
-    private List<GroundTrainUnit> ambientTrains = new ArrayList<GroundTrainUnit>();
+    private List<IGroundUnitCollection> ambientTrains = new ArrayList<>();
 
     public AmbientTrainBuilder (Campaign campaign, Mission mission)
     {
         super(campaign, mission);
     }
     
-    public List<GroundTrainUnit> generateAmbientTrains() throws PWCGException 
+    public List<IGroundUnitCollection> generateAmbientTrains() throws PWCGException 
     {
         Side targetSide = TargetSide.ambientTargetSide(campaign);
         int maxTrains = getMaxAmbientTrains();
@@ -83,8 +83,8 @@ public class AmbientTrainBuilder extends AmbientUnitBuilder
         TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(trainCountry, TacticalTarget.TARGET_TRAIN, station.getPosition(), isPlayerTarget);
 
-        TrainUnitFactory trainfactory =  new TrainUnitFactory(campaign, targetDefinition);
-        GroundTrainUnit trainUnit = trainfactory.createTrainUnit();
+        TrainUnitBuilder trainfactory =  new TrainUnitBuilder(mission, targetDefinition);
+        IGroundUnitCollection trainUnit = trainfactory.createTrainUnit();
         addAmbientTrain(trainUnit, station);
     }
 
@@ -109,7 +109,7 @@ public class AmbientTrainBuilder extends AmbientUnitBuilder
 		return maxTrains;
 	}
 
-    private void addAmbientTrain(GroundTrainUnit trainUnit, Block station)
+    private void addAmbientTrain(IGroundUnitCollection trainUnit, Block station)
     {
         if (!mission.getMissionGroundUnitManager().isTrainStationInUse(station.getIndex()))
         {

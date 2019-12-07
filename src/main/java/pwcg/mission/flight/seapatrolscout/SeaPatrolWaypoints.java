@@ -54,11 +54,11 @@ public class SeaPatrolWaypoints
 
     private McuWaypoint createIngressWaypoint() throws PWCGException  
     {
-        double angleToPatrolArea = MathUtils.calcAngle(flight.getHomePosition(), flight.getTargetCoords());
-        double distanceToIngress = MathUtils.calcDist(flight.getHomePosition(), flight.getTargetCoords());
+        double angleToPatrolArea = MathUtils.calcAngle(flight.getPosition(), flight.getTargetCoords());
+        double distanceToIngress = MathUtils.calcDist(flight.getPosition(), flight.getTargetCoords());
         distanceToIngress = distanceToIngress / 2;
         
-        Coordinate midPointCoords = MathUtils.calcNextCoord(flight.getHomePosition(), angleToPatrolArea, distanceToIngress);
+        Coordinate midPointCoords = MathUtils.calcNextCoord(flight.getPosition(), angleToPatrolArea, distanceToIngress);
         midPointCoords.setYPos(flight.getFlightAltitude());
 
         McuWaypoint midPointWP = WaypointFactory.createMoveToWaypointType();

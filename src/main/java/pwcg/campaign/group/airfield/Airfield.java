@@ -17,7 +17,7 @@ import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
-import pwcg.mission.ground.unittypes.GroundUnitSpawning;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
 
 public class Airfield extends FixedPosition implements IAirfield, Cloneable
@@ -53,7 +53,7 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
             airfieldObject.write(writer);
         }
 
-        for (GroundUnitSpawning airfieldAAA : airfieldObjects.getAaaForAirfield())
+        for (IGroundUnitCollection airfieldAAA : airfieldObjects.getAaaForAirfield())
         {
             airfieldAAA.write(writer);
         }

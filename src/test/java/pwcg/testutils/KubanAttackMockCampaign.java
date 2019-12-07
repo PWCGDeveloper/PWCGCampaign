@@ -88,7 +88,7 @@ public class KubanAttackMockCampaign
         Mockito.when(mission.getCampaign()).thenReturn(campaign);
 
         missionBeginUnit = new MissionBeginUnitCheckZone(myTestPosition, 10000);
-        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(Coalition.COALITION_ALLIED);        
+        missionBeginUnit.getSelfDeactivatingCheckZone().setCheckZoneCoalition(Coalition.COALITION_ALLIED);        
         
         buildMockFlightInformation();
     }

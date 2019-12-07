@@ -119,7 +119,7 @@ public class VirtualWayPoint
         
         // Path of CZ triggered
         vwpTimer.setTarget(nextVwpTimer.getIndex());
-        triggerCheckZone.setCZTarget(vwpTriggeredTimer.getIndex());
+        triggerCheckZone.setCheckZoneTarget(vwpTriggeredTimer.getIndex());
     
         // 1. Deactivate our deactivate timer
         vwpTriggeredTimer.setTarget(stopNextVwp.getIndex());
@@ -170,7 +170,7 @@ public class VirtualWayPoint
         checkZoneSubtitle.setName("checkZone Subtitle");
         checkZoneSubtitle.setText("VWP " +  squadronName +  " CZ triggered " + wpName);
         checkZoneSubtitle.setPosition(vwpCoordinate.getCoordinate().copy());
-        triggerCheckZone.getCheckZone().setTarget(checkZoneSubtitle.getIndex());
+        triggerCheckZone.setCheckZoneTarget(checkZoneSubtitle.getIndex());
         subTitleList.add(checkZoneSubtitle);
         
         subtitleHandler.registerMissionText(checkZoneSubtitle.getLcText(), checkZoneSubtitle.getText());

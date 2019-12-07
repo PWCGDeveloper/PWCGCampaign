@@ -8,22 +8,19 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.AssaultInformation;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.AAAManager;
-import pwcg.mission.ground.unittypes.GroundUnitSpawning;
-import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
-import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class AmbientGroundUnitBuilder
 {
     private Mission mission = null;
     private Campaign campaign = null;
 
-    private List<GroundTrainUnit> ambientTrains = new ArrayList<GroundTrainUnit>();
-    private List<GroundTruckConvoyUnit> ambientTrucks = new ArrayList<GroundTruckConvoyUnit>();
-    private List<GroundUnitSpawning> AAA = new ArrayList<GroundUnitSpawning>();
-    private List<AssaultInformation> ambientBattles = new ArrayList<AssaultInformation>();
+    private List<IGroundUnitCollection> ambientTrains = new ArrayList<>();
+    private List<IGroundUnitCollection> ambientTrucks = new ArrayList<>();
+    private List<IGroundUnitCollection> AAA = new ArrayList<>();
+    private List<IGroundUnitCollection> ambientBattles = new ArrayList<>();
 
     public AmbientGroundUnitBuilder (Campaign campaign, Mission mission)
     {
@@ -70,22 +67,22 @@ public class AmbientGroundUnitBuilder
         AAA = aaaManager.getAAAForMission();
     }
 
-    public List<GroundTrainUnit> getAmbientTrains()
+    public List<IGroundUnitCollection> getAmbientTrains()
     {
         return ambientTrains;
     }
 
-    public List<GroundTruckConvoyUnit> getAmbientTrucks()
+    public List<IGroundUnitCollection> getAmbientTrucks()
     {
         return ambientTrucks;
     }
 
-    public List<AssaultInformation> getAmbientBattles()
+    public List<IGroundUnitCollection> getAmbientBattles()
     {
         return ambientBattles;
     }
 
-    public List<GroundUnitSpawning> getAAA()
+    public List<IGroundUnitCollection> getAAA()
     {
         return AAA;
     }

@@ -4,12 +4,10 @@ import java.io.BufferedWriter;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.GroundTargetAttackFlight;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -44,17 +42,4 @@ public class ParaDropFlight extends GroundTargetAttackFlight
 	{
 		super.write(writer);
 	}
-	
-
-    @Override
-    public String getMissionObjective() throws PWCGMissionGenerationException, PWCGException
-    {
-        String objective = "Drop our paratroops" + formMissionObjectiveLocation(getTargetCoords().copy()) + ".";       
-        if (getFlightType() == FlightTypes.CARGO_DROP)
-        {
-            objective = "Perform a carrgo drop" + formMissionObjectiveLocation(getTargetCoords().copy()) + ".";     
-        }
-        
-        return objective;
-    }
 }

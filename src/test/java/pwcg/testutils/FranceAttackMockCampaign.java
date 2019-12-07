@@ -72,7 +72,7 @@ public class FranceAttackMockCampaign
         Mockito.when(mission.getMissionBorders()).thenReturn(missionBorders);
 
         missionBeginUnit = new MissionBeginUnitCheckZone(myTestPosition, 10000);
-        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(Coalition.COALITION_ALLIED);
+        missionBeginUnit.getSelfDeactivatingCheckZone().setCheckZoneCoalition(Coalition.COALITION_ALLIED);
     }
 
 }

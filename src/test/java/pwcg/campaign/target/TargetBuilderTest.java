@@ -17,7 +17,6 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.target.unit.TargetBuilder;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
@@ -29,7 +28,9 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionGroundUnitResourceManager;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.ground.GroundUnitCollection;
+import pwcg.mission.ground.builder.TargetBuilderGenerator;
+import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.TacticalTarget;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TargetBuilderTest
@@ -77,9 +78,9 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_SHIPPING);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.ANTI_SHIPPING_BOMB);
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
-        GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);        
     }
@@ -89,9 +90,9 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_ASSAULT);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
-        GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);        
         assert(groundUnits.getAllAxisGroundUnits().size() > 0);        
     }
@@ -101,9 +102,9 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_TROOP_CONCENTRATION);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.LOW_ALT_BOMB);
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
-        GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);        
     }
@@ -113,9 +114,9 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_TRANSPORT);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
-        GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                
     }
@@ -125,9 +126,9 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_TRAIN);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
-        GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                        
     }
@@ -137,9 +138,9 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_ARTILLERY);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.GROUND_ATTACK);
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
-        GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                
     }
@@ -149,9 +150,9 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_AIRFIELD);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
-        GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                        
     }
@@ -163,9 +164,9 @@ public class TargetBuilderTest
         Mockito.when(enemyCountry.getSide()).thenReturn(Side.AXIS);
         Mockito.when(friendlyCountry.getSide()).thenReturn(Side.ALLIED);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BALLOON_DEFENSE);
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
-        GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() == 0);
         assert(groundUnits.getAllAxisGroundUnits().size() > 0);                                                
     }
@@ -175,9 +176,9 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_BALLOON);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BALLOON_BUST);
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
-        GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                                
     }
@@ -187,9 +188,9 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_DRIFTER);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.DIVE_BOMB);
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
-        GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                                
     }
@@ -199,9 +200,9 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_PORT);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
-        GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                                
      }
@@ -211,9 +212,9 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_RAIL);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
-        GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                                        
     }
@@ -223,9 +224,9 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_FACTORY);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
-        GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                                
     }
@@ -235,9 +236,9 @@ public class TargetBuilderTest
     {
         Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_CITY);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.BOMB);
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
-        GroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
+        IGroundUnitCollection groundUnits = targetBuilder.getGroundUnits();
         assert(groundUnits.getAllAlliedGroundUnits().size() > 0);
         assert(groundUnits.getAllAxisGroundUnits().size() == 0);                                                
     }

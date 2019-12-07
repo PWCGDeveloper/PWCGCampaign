@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuFlare;
 import pwcg.mission.mcu.McuTimer;
@@ -12,8 +11,9 @@ import pwcg.mission.mcu.McuTimer;
 public class FlareSequence
 {
     public static final int FLARES_IN_SEQUENCE = 3;
+    public static final int FLARE_TRIGGER_DISTANCE = 200;
 
-    protected MissionBeginUnitCheckZone missionBeginUnit = null;
+    private SelfDeactivatingCheckZone selfDeactivatingCheckZone;
     protected McuTimer[] flareTimers = new McuTimer[FLARES_IN_SEQUENCE];
     protected McuFlare[] flares = new McuFlare[FLARES_IN_SEQUENCE];
 
@@ -25,14 +25,10 @@ public class FlareSequence
     {        
         buildFlareTimers(position, color, object);
 
-        missionBeginUnit = new MissionBeginUnitCheckZone(position.copy(), 1000);
-        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(friendlyCoalition);
+        selfDeactivatingCheckZone = new SelfDeactivatingCheckZone(position, FLARE_TRIGGER_DISTANCE);
+        selfDeactivatingCheckZone.setCheckZoneCoalition(friendlyCoalition);        
+        selfDeactivatingCheckZone.setCheckZoneTarget(flareTimers[0].getIndex());
         
-        SelfDeactivatingCheckZone checkZone = missionBeginUnit.getSelfDeactivatingCheckZone();
-        checkZone.setCZTarget(flareTimers[0].getIndex());
-        
-        // Link from MB to each timer
-        missionBeginUnit.linkToMissionBegin(flareTimers[0].getIndex());
         for (int i = 1; i < FLARES_IN_SEQUENCE; ++i)
         {
             flareTimers[i-1].setTarget(flareTimers[i].getIndex());
@@ -63,18 +59,12 @@ public class FlareSequence
 
     public void write(BufferedWriter writer) throws PWCGException 
     {
-        missionBeginUnit.write(writer);
-        
+        selfDeactivatingCheckZone.write(writer);
         for (int i = 0; i < FLARES_IN_SEQUENCE; ++i)
         {
             flareTimers[i].write(writer);
             flares[i].write(writer);
         }
-    }
-
-    public MissionBeginUnitCheckZone getMissionBeginUnit()
-    {
-        return missionBeginUnit;
     }
 
     public McuTimer[] getFlareTimers()

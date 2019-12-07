@@ -10,13 +10,13 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.target.TacticalTarget;
-import pwcg.campaign.target.TargetDefinition;
-import pwcg.campaign.target.unit.GroundUnitBuilderAttack;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.ground.unittypes.GroundUnit;
+import pwcg.mission.ground.builder.GroundUnitAttackBuilder;
+import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetDefinition;
 import pwcg.testutils.KubanAttackMockCampaign;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -46,9 +46,9 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_TRAIN);
 
-        GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
+        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
-        GroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
+        IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
     }
 
@@ -57,9 +57,9 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_AIRFIELD);
 
-        GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
+        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
-        GroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
+        IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
     }
 
@@ -68,9 +68,9 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_TRANSPORT);
 
-        GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
+        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
-        GroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
+        IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
     }
 
@@ -79,9 +79,9 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_ARTILLERY);
 
-        GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
+        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
-        GroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
+        IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
     }
 
@@ -90,9 +90,9 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_DRIFTER);
 
-        GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
+        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
-        GroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
+        IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
     }
 
@@ -101,9 +101,9 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_ASSAULT);
 
-        GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
+        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
-        GroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
+        IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
     }
 
@@ -112,9 +112,9 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_DEFENSE);
 
-        GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
+        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
-        GroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
+        IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
     }
 
@@ -123,9 +123,9 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_SHIPPING);
 
-        GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
+        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
-        GroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
+        IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
     }
 
@@ -134,15 +134,15 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_TROOP_CONCENTRATION);
 
-        GroundUnitBuilderAttack groundUnitBuilderAttack = new GroundUnitBuilderAttack(campaign, mission, targetDefinition);
+        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
-        GroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
+        IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
     }
 
-    private void validateTestResults(GroundUnitCollection groundUnitCollection) throws PWCGException
+    private void validateTestResults(IGroundUnitCollection groundUnitCollection) throws PWCGException
     {
-        List<GroundUnit> groundUnits = groundUnitCollection.getAllAlliedGroundUnits();
+        List<IGroundUnitCollection> groundUnits = groundUnitCollection.getAllAlliedGroundUnits();
         assert(groundUnits.size() > 0);
         assert(groundUnitCollection.getTargetCoordinatesFromGroundUnits(Side.ALLIED) != null);
     }

@@ -36,8 +36,8 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
+import pwcg.mission.IUnit;
 import pwcg.mission.Mission;
-import pwcg.mission.Unit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.escort.VirtualEscortFlight;
 import pwcg.mission.utils.MissionTime;
@@ -562,7 +562,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         mapPanel.clearVirtualPoints();
         
         Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
-        for (Unit unit : myFlight.getLinkedUnits())
+        for (IUnit unit : myFlight.getLinkedUnits())
         {
             if (unit instanceof Flight)
             {
@@ -574,7 +574,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         {
             mapPanel.makeMapPanelVirtualPoints (flight);
             
-            for (Unit unit : flight.getLinkedUnits())
+            for (IUnit unit : flight.getLinkedUnits())
             {
                 if (unit instanceof Flight)
                 {

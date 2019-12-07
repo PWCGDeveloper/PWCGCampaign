@@ -1,16 +1,16 @@
 package pwcg.mission.flight.bomb;
 
-import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.ground.GroundUnitFactory;
-import pwcg.mission.ground.factory.AAAUnitFactory;
-import pwcg.mission.ground.unittypes.GroundUnitSpawning;
-import pwcg.mission.ground.unittypes.SpotLightGroup;
+import pwcg.mission.ground.GroundUnitSize;
+import pwcg.mission.ground.factory.AAAUnitBuilder;
+import pwcg.mission.ground.factory.SpotLightBuilder;
+import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.TargetDefinition;
 
 public class StrategicBombingPackage implements IFlightPackage
 {
@@ -42,19 +42,18 @@ public class StrategicBombingPackage implements IFlightPackage
 
     private void createAAA(TargetDefinition targetDefinition, StrategicBombingFlight strategicBombingFlight) throws PWCGException
     {
-        AAAUnitFactory groundUnitFactory = new AAAUnitFactory(flightInformation.getCampaign(), targetDefinition.getTargetCountry(), targetDefinition.getTargetPosition());
-        GroundUnitSpawning aaaArty = groundUnitFactory.createAAAArtilleryBattery(3, 3);
+        AAAUnitBuilder groundUnitBuilder = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition.getTargetCountry(), targetDefinition.getTargetPosition());
+        IGroundUnitCollection aaaArty = groundUnitBuilder.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
         strategicBombingFlight.addLinkedUnit(aaaArty);
     }
 
-    private GroundUnitFactory createSpotlight(TargetDefinition targetDefinition, StrategicBombingFlight strategicBombingFlight) throws PWCGException
+    private void createSpotlight(TargetDefinition targetDefinition, StrategicBombingFlight strategicBombingFlight) throws PWCGException
     {
-        GroundUnitFactory groundUnitFactory =  new GroundUnitFactory(flightInformation.getCampaign(), targetDefinition.getTargetPosition(), targetDefinition.getTargetCountry());
+        SpotLightBuilder groundUnitBuilder =  new SpotLightBuilder(flightInformation.getCampaign());
         if (flightInformation.getMission().isNightMission())
         {
-            SpotLightGroup spotLightGroup = groundUnitFactory.createSpotLightGroup();
+            IGroundUnitCollection spotLightGroup = groundUnitBuilder.createSpotLightGroup(targetDefinition);
             strategicBombingFlight.addLinkedUnit(spotLightGroup);
         }
-        return groundUnitFactory;
     }
 }

@@ -12,8 +12,8 @@ import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.flight.balloondefense.BalloonDefenseGroup;
-import pwcg.mission.ground.GroundUnitBalloonFactory;
+import pwcg.mission.ground.factory.BalloonUnitBuilder;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class BalloonBustPackage implements IFlightPackage
 {
@@ -35,25 +35,26 @@ public class BalloonBustPackage implements IFlightPackage
                         Role.ROLE_FIGHTER, 
                         flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()).getSide().getOppositeSide());
         ICountry balloonCountry = determineBalloonCountry(enemySide, enemyScoutSquadron);
-        BalloonDefenseGroup balloonUnit = createBalloonUnit(flightInformation.getTargetCoords(), balloonCountry);
+        IGroundUnitCollection balloonUnit = createBalloonUnit(flightInformation.getTargetCoords(), balloonCountry);
 		BalloonBustFlight balloonBust = createFlight(startCoords, balloonUnit);
 
 		return balloonBust;
 	}
 
-    private BalloonBustFlight createFlight(Coordinate startCoords, BalloonDefenseGroup balloonUnit) throws PWCGException
+    private BalloonBustFlight createFlight(Coordinate startCoords, IGroundUnitCollection balloonUnit) throws PWCGException
     {
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
         BalloonBustFlight balloonBust = new BalloonBustFlight (flightInformation, missionBeginUnit);
-		balloonBust.addLinkedUnit(balloonUnit);
+        balloonBust.addLinkedUnit(balloonUnit);
 		balloonBust.createUnitMission();
         return balloonBust;
     }
 
-    private BalloonDefenseGroup createBalloonUnit(Coordinate balloonPosition, ICountry balloonCountry) throws PWCGException
+    private IGroundUnitCollection createBalloonUnit(Coordinate balloonPosition, ICountry balloonCountry) throws PWCGException
     {
-        GroundUnitBalloonFactory balloonFactory = new GroundUnitBalloonFactory(flightInformation.getCampaign(), flightInformation.getTargetDefinition());
-        return balloonFactory.createBalloonUnit();
+        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(flightInformation.getCampaign(), flightInformation.getTargetDefinition());
+        IGroundUnitCollection balloonUnit = groundUnitBuilderBalloonDefense.createBalloonUnit(balloonCountry);
+        return balloonUnit;
     }
 
     private ICountry determineBalloonCountry(Side enemySide, Squadron enemyScoutSquadron) throws PWCGException

@@ -11,15 +11,15 @@ import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
-import pwcg.campaign.target.TacticalTarget;
-import pwcg.campaign.target.locator.ShippingLane;
-import pwcg.campaign.target.locator.ShippingLaneManager;
-import pwcg.campaign.target.unit.DrifterManager;
+import pwcg.campaign.shipping.ShippingLane;
+import pwcg.campaign.shipping.ShippingLaneManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
+import pwcg.mission.ground.builder.DrifterManager;
+import pwcg.mission.target.TacticalTarget;
 
 public class TargetTypeAvailability
 {

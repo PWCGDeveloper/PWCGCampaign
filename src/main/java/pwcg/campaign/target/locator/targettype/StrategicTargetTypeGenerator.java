@@ -8,14 +8,14 @@ import java.util.Map;
 
 import pwcg.campaign.api.IFixedPosition;
 import pwcg.campaign.api.Side;
-import pwcg.campaign.target.TacticalTarget;
-import pwcg.campaign.target.TargetRadius;
-import pwcg.campaign.target.locator.StrategicTargetLocator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PositionFinder;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetRadius;
+import pwcg.mission.target.locator.StrategicTargetLocator;
 
 public class StrategicTargetTypeGenerator
 {

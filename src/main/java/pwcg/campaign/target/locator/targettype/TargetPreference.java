@@ -3,7 +3,7 @@ package pwcg.campaign.target.locator.targettype;
 import java.util.Date;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.target.TacticalTarget;
+import pwcg.mission.target.TacticalTarget;
 
 public class TargetPreference
 {

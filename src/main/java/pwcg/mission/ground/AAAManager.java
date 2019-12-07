@@ -10,7 +10,7 @@ import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
-import pwcg.mission.ground.unittypes.GroundUnitSpawning;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class AAAManager 
 {
@@ -23,39 +23,39 @@ public class AAAManager
 		this.mission = mission;
 	}
 
-	public List<GroundUnitSpawning> getAAAForMission () throws PWCGException
+	public List<IGroundUnitCollection> getAAAForMission () throws PWCGException
 	{
-		List<GroundUnitSpawning> allAAA = new ArrayList<>();
+		List<IGroundUnitCollection> allAAA = new ArrayList<>();
 		        
 		AAAFrontLinesBuilder aaaFrontLinesBuilder = new AAAFrontLinesBuilder(campaign);
-		List<GroundUnitSpawning> frontAAA = aaaFrontLinesBuilder.generateAAAEmplacements();
+		List<IGroundUnitCollection> frontAAA = aaaFrontLinesBuilder.generateAAAEmplacements();
 		allAAA.addAll(frontAAA);
 				
         String currentGroundSetting = campaign.getCampaignConfigManager().getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey);
         if (!currentGroundSetting.equals(ConfigSimple.CONFIG_LEVEL_LOW))
 		{
         	AAABridgeBuilder aaaBridgeBuilder = new AAABridgeBuilder(campaign);
-    		List<GroundUnitSpawning> bridgeAAA = aaaBridgeBuilder.createAAAForBridges();
+    		List<IGroundUnitCollection> bridgeAAA = aaaBridgeBuilder.createAAAForBridges();
     		allAAA.addAll(bridgeAAA);
 
     		AAARailroadBuilder aaaRailroadBuilder = new AAARailroadBuilder(campaign);
-    		List<GroundUnitSpawning> railroadAAA = aaaRailroadBuilder.createAAAForRailroads();
+    		List<IGroundUnitCollection> railroadAAA = aaaRailroadBuilder.createAAAForRailroads();
     		allAAA.addAll(railroadAAA);
 		}
 		
-        List<GroundUnitSpawning> selectedAAA = selectAAAForMission(allAAA);
+        List<IGroundUnitCollection> selectedAAA = selectAAAForMission(allAAA);
 		return selectedAAA;
 	}
 
 
-	private List<GroundUnitSpawning> selectAAAForMission(List<GroundUnitSpawning> allAAA) throws PWCGException, PWCGException
+	private List<IGroundUnitCollection> selectAAAForMission(List<IGroundUnitCollection> allAAA) throws PWCGException, PWCGException
 	{
 	    CoordinateBox missionBorders = getFrontBorders();
 
-		List<GroundUnitSpawning> selectedAAA = new ArrayList<>();
-		for (GroundUnitSpawning aaa : allAAA)
+		List<IGroundUnitCollection> selectedAAA = new ArrayList<>();
+		for (IGroundUnitCollection aaa : allAAA)
 		{
-			if (missionBorders.isInBox(aaa.getPwcgGroundUnitInformation().getPosition()))
+			if (missionBorders.isInBox(aaa.getPosition()))
 			{
 				selectedAAA.add(aaa);
 			}

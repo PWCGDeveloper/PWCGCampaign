@@ -27,13 +27,6 @@ public class BalloonBustFlight extends Flight
         return waypointList;
 	}
 
-	public String getMissionObjective() throws PWCGException 
-	{
-        String objective = "Destroy the enemy balloon" + formMissionObjectiveLocation(getTargetCoords().copy()) + ".";       
-
-		return objective;
-	}
-
     @Override
     protected void createFlightSpecificTargetAssociations() throws PWCGException
     {

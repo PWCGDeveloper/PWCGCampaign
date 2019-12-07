@@ -1,15 +1,13 @@
  package pwcg.mission.flight.balloondefense;
 
-import pwcg.campaign.api.Side;
-import pwcg.campaign.target.unit.GroundUnitType;
-import pwcg.campaign.target.unit.TargetBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.ground.GroundUnitCollection;
+import pwcg.mission.ground.factory.BalloonUnitBuilder;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class BalloonDefensePackage implements IFlightPackage
 {
@@ -23,28 +21,27 @@ public class BalloonDefensePackage implements IFlightPackage
 	public Flight createPackage () throws PWCGException 
 	{
         Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-        GroundUnitCollection groundUnits = createGroundUnitsForFlight();
-        Flight balloonDefenseFlight = createFlight(startCoords, groundUnits);
+        IGroundUnitCollection balloonUnit = createGroundUnitsForFlight();
+        Flight balloonDefenseFlight = createFlight(startCoords, balloonUnit);
 		return balloonDefenseFlight;
 	}
 
-    private Flight createFlight(Coordinate startCoords, GroundUnitCollection groundUnits) throws PWCGException
+    private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {
-        BalloonDefenseGroup balloonUnit = createBalloonUnit(groundUnits);
-		Flight balloonDefenseFlight = createBalloonDefenseFlight(startCoords, balloonUnit, groundUnits);
-		balloonDefenseFlight.linkGroundUnitsToFlight(groundUnits);
+        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(flightInformation.getCampaign(), flightInformation.getTargetDefinition());
+        IGroundUnitCollection balloonUnit = groundUnitBuilderBalloonDefense.createBalloonUnit(flightInformation.getSquadron().getCountry());
+        return balloonUnit;
+    }
+
+    private Flight createFlight(Coordinate startCoords, IGroundUnitCollection balloonUnit) throws PWCGException
+    {
+		Flight balloonDefenseFlight = createBalloonDefenseFlight(startCoords, balloonUnit);
+		balloonDefenseFlight.linkGroundUnitsToFlight(balloonUnit);
 		balloonDefenseFlight.createUnitMission();
         return balloonDefenseFlight;
     }
 
-    private BalloonDefenseGroup createBalloonUnit(GroundUnitCollection groundUnits) throws PWCGException
-    {
-        Side campaignSide = flightInformation.getSquadron().determineSide();
-        BalloonDefenseGroup balloonUnit = (BalloonDefenseGroup)groundUnits.getGroundUnitByType(GroundUnitType.BALLOON_UNIT, campaignSide);
-        return balloonUnit;
-    }
-
-    private Flight createBalloonDefenseFlight(Coordinate startCoords, BalloonDefenseGroup balloonUnit, GroundUnitCollection groundUnits) throws PWCGException
+    private Flight createBalloonDefenseFlight(Coordinate startCoords, IGroundUnitCollection balloonUnit) throws PWCGException
     {
         Flight balloonDefenseFlight = null;
 		if(flightInformation.isPlayerFlight())
@@ -61,13 +58,6 @@ public class BalloonDefensePackage implements IFlightPackage
 		}
 
         return balloonDefenseFlight;
-    }
-
-    private GroundUnitCollection createGroundUnitsForFlight() throws PWCGException
-    {
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
-        targetBuilder.buildTarget();
-        return targetBuilder.getGroundUnits();
     }
 
 }

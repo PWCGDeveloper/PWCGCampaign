@@ -27,20 +27,6 @@ public class PatrolFlight extends Flight
         return waypointList;
 	}
 
-	public String getMissionObjective() throws PWCGException 
-	{
-		String objective = "Patrol aircpace at the specified front location.  " + 
-				"Engage any enemy aircraft that you encounter.  ";
-        String objectiveName =  formMissionObjectiveLocation(getTargetCoords().copy());
-        if (!objectiveName.isEmpty())
-		{
-			objective = "Patrol airspace " + objectiveName + 
-					".  Engage any enemy aircraft that you encounter."; 
-		}
-		
-		return objective;
-	}
-
     @Override
     protected void createFlightSpecificTargetAssociations() throws PWCGException
     {

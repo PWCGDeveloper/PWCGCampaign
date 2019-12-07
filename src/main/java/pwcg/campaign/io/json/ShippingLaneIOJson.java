@@ -1,7 +1,7 @@
 package pwcg.campaign.io.json;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.target.locator.ShippingLanes;
+import pwcg.campaign.shipping.ShippingLanes;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 

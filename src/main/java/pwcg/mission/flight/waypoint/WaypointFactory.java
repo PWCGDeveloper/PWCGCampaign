@@ -9,7 +9,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.STARTING_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_START);
 		waypoint.setPriority(WaypointPriority.PRIORITY_HIGH);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		
 		return waypoint;
 	}
@@ -19,7 +18,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.TAKEOFF_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_TAKEOFF);
 		waypoint.setPriority(WaypointPriority.PRIORITY_HIGH);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		
 		return waypoint;
 	}
@@ -29,7 +27,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.CLIMB_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_CLIMB);
 		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		
 		return waypoint;
 	}
@@ -39,7 +36,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.INGRESS_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_INGRESS);
 		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		
 		return waypoint;
 	}
@@ -49,7 +45,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.AIR_START_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_START);
 		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		
 		return waypoint;
 	}
@@ -59,7 +54,6 @@ public class WaypointFactory
         McuWaypoint waypoint = new McuWaypoint(WaypointType.EGRESS_WAYPOINT);
         waypoint.setWpAction(WaypointAction.WP_ACTION_EGRESS);
         waypoint.setPriority(WaypointPriority.PRIORITY_LOW);            
-        waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
         
         return waypoint;
     }
@@ -69,7 +63,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.LANDING_APPROACH_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_LANDING_APPROACH);
 		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		
 		return waypoint;
 	}
@@ -79,7 +72,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.PATROL_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_PATROL);
 		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		
 		return waypoint;
 	}
@@ -89,7 +81,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.BALLOON_BUST_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_BALLOON);
 		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		
 		return waypoint;
 	}
@@ -99,7 +90,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.BALLOON_DEFENSE_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_BALLOON);
 		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		
 		return waypoint;
 	}
@@ -109,7 +99,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.RENDEZVOUS_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_RENDEZVOUS);
 		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		
 		return waypoint;
 	}
@@ -119,7 +108,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.RTB_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_EGRESS);
 		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		
 		return waypoint;
 	}
@@ -129,7 +117,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.TARGET_APPROACH_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_TARGET_APPROACH);
 		waypoint.setPriority(WaypointPriority.PRIORITY_MED);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		return waypoint;
 	}
 
@@ -138,7 +125,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.TARGET_FINAL_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_TARGET_FINAL);
 		waypoint.setPriority(WaypointPriority.PRIORITY_MED);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		return waypoint;
 	}
 
@@ -147,7 +133,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.TARGET_EGRESS_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_TARGET_EGRESS);
 		waypoint.setPriority(WaypointPriority.PRIORITY_MED);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		return waypoint;
 	}
 
@@ -156,7 +141,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.ARTILLERY_SPOT_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_SPOT);
 		waypoint.setPriority(WaypointPriority.PRIORITY_MED);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		return waypoint;
 	}
 
@@ -165,7 +149,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.RECON_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_RECON);
 		waypoint.setPriority(WaypointPriority.PRIORITY_MED);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		return waypoint;
 	}
 	
@@ -174,7 +157,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.SPY_EXTRACT_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_SPY);
 		waypoint.setPriority(WaypointPriority.PRIORITY_MED);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		return waypoint;
 	}
 
@@ -183,7 +165,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.MOVE_TO_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_MOVE_TO);
 		waypoint.setPriority(WaypointPriority.PRIORITY_MED);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		return waypoint;
 	}
 	
@@ -192,7 +173,6 @@ public class WaypointFactory
 		McuWaypoint waypoint = new McuWaypoint(waypointType);
 		waypoint.setWpAction(waypointAction);
 		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
-		waypoint.setGoalType(WaypointGoal.GOAL_DEFAULT);
 		
 		return waypoint;
 	}

@@ -13,7 +13,6 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
@@ -22,13 +21,15 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.MissionBeginUnitCheckZone;
-import pwcg.mission.ground.factory.AAAUnitFactory;
-import pwcg.mission.ground.factory.AssaultFactory;
-import pwcg.mission.ground.unittypes.artillery.GroundAAABattery;
-import pwcg.mission.ground.unittypes.artillery.GroundArtilleryUnit;
+import pwcg.mission.ground.factory.AAAUnitBuilder;
+import pwcg.mission.ground.unittypes.artillery.GroundAAArtilleryBattery;
+import pwcg.mission.ground.unittypes.artillery.GroundAAMachineGunBattery;
+import pwcg.mission.ground.unittypes.artillery.GroundArtilleryBattery;
+import pwcg.mission.ground.unittypes.infantry.AssaultGroundUnitFactory;
 import pwcg.mission.ground.unittypes.infantry.GroundAntiTankArtillery;
 import pwcg.mission.ground.unittypes.infantry.GroundAssaultTankUnit;
 import pwcg.mission.mcu.Coalition;
+import pwcg.mission.target.TacticalTarget;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GroundUnitFactoryBoSTest
@@ -49,8 +50,8 @@ public class GroundUnitFactoryBoSTest
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
 
         missionBeginUnit = new MissionBeginUnitCheckZone(myTestPosition, 10000);
-        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalition(Coalition.COALITION_ALLIED);
-}
+        missionBeginUnit.getSelfDeactivatingCheckZone().setCheckZoneCoalition(Coalition.COALITION_ALLIED);
+    }
     
     @Test
     public void createFriendlyArtilleryBatteryTest () throws PWCGException 
@@ -95,22 +96,25 @@ public class GroundUnitFactoryBoSTest
     @Test
     public void createAAAArtilleryBatteryTest () throws PWCGException 
     {
-        AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign, country, new Coordinate (100000, 0, 100000));
-        GroundAAABattery groundUnit = groundUnitFactory.createAAAArtilleryBattery(1, 4);
-        assert (groundUnit.getSpawners().size() >= 1);
-        assert (groundUnit.getSpawners().size() <= 4);
-        assert (groundUnit.isMg() == false);
-        assert (groundUnit.getPwcgGroundUnitInformation().getCountry().getCountry() == Country.GERMANY);
+        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, country, new Coordinate (100000, 0, 100000));
+        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
+        assert (groundUnitGroup.getGroundUnit().getSpawners().size() >= 1);
+        assert (groundUnitGroup.getGroundUnit().getSpawners().size() <= 4);
+        assert (groundUnitGroup instanceof GroundAAArtilleryBattery);
+        assert (groundUnitGroup.getGroundUnit().getCountry().getCountry() == Country.GERMANY);
+        groundUnitGroup.validate();
     }
 
     @Test
     public void createAAAMGBatteryTest () throws PWCGException 
     {
-        AAAUnitFactory groundUnitFactory = new AAAUnitFactory(campaign,country, new Coordinate (100000, 0, 100000));
-        GroundAAABattery groundUnit = groundUnitFactory.createAAAMGBattery(4, 4);
-        assert (groundUnit.getSpawners().size() == 4);
-        assert (groundUnit.isMg() == true);
-        assert (groundUnit.getPwcgGroundUnitInformation().getCountry().getCountry() == Country.GERMANY);
+        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign,country, new Coordinate (100000, 0, 100000));
+        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
+        assert (groundUnitGroup.getGroundUnit().getSpawners().size() >= 2);
+        assert (groundUnitGroup.getGroundUnit().getSpawners().size() <= 8);
+        assert (groundUnitGroup instanceof GroundAAMachineGunBattery);
+        assert (groundUnitGroup.getGroundUnit().getCountry().getCountry() == Country.GERMANY);
+        groundUnitGroup.validate();
     }
 
     @Test
@@ -119,7 +123,6 @@ public class GroundUnitFactoryBoSTest
         String name = country.getCountryName() + " AntiTank";
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
-                missionBeginUnit, 
                 country,
                 name, 
                 TacticalTarget.TARGET_INFANTRY, 
@@ -128,10 +131,11 @@ public class GroundUnitFactoryBoSTest
                 new Orientation(), 
                 true);
 
-        AssaultFactory groundUnitFactory = new AssaultFactory();
-        GroundArtilleryUnit groundUnit = (GroundArtilleryUnit)groundUnitFactory.createAssaultArtilleryUnit(groundUnitInformation);
-        assert (groundUnit.getSpawners().size() > 0);
-        assert (groundUnit.getPwcgGroundUnitInformation().getCountry().getCountry() == Country.GERMANY);
+        AssaultGroundUnitFactory groundUnitFactory = new AssaultGroundUnitFactory();
+        GroundArtilleryBattery groundUnitGroup = (GroundArtilleryBattery)groundUnitFactory.createAssaultArtilleryUnit(groundUnitInformation);
+        assert (groundUnitGroup.getGroundUnit().getSpawners().size() > 0);
+        assert (groundUnitGroup.getGroundUnit().getCountry().getCountry() == Country.GERMANY);
+        groundUnitGroup.validate();
     }
 
     @Test
@@ -140,7 +144,6 @@ public class GroundUnitFactoryBoSTest
         String name = country.getCountryName() + " AntiTank";
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
-                missionBeginUnit, 
                 country,
                 name, 
                 TacticalTarget.TARGET_ARTILLERY, 
@@ -149,10 +152,11 @@ public class GroundUnitFactoryBoSTest
                 new Orientation(), 
                 true);
 
-        AssaultFactory groundUnitFactory = new AssaultFactory();
-        GroundAntiTankArtillery groundUnit = (GroundAntiTankArtillery)groundUnitFactory.createAntiTankGunUnit(groundUnitInformation);
-        assert (groundUnit.getSpawners().size() > 0);
-        assert (groundUnit.getPwcgGroundUnitInformation().getCountry().getCountry() == Country.GERMANY);
+        AssaultGroundUnitFactory groundUnitFactory = new AssaultGroundUnitFactory();
+        GroundAntiTankArtillery groundUnitGroup = (GroundAntiTankArtillery)groundUnitFactory.createAntiTankGunUnit(groundUnitInformation);
+        assert (groundUnitGroup.getGroundUnit().getSpawners().size() > 0);
+        assert (groundUnitGroup.getGroundUnit().getCountry().getCountry() == Country.GERMANY);
+        groundUnitGroup.validate();
     }
 
     @Test
@@ -161,7 +165,6 @@ public class GroundUnitFactoryBoSTest
         String name = country.getCountryName() + " AntiTank";
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
-                missionBeginUnit, 
                 country,
                 name, 
                 TacticalTarget.TARGET_INFANTRY, 
@@ -170,29 +173,15 @@ public class GroundUnitFactoryBoSTest
                 new Orientation(), 
                 true);
 
-        AssaultFactory groundUnitFactory = new AssaultFactory();
-        GroundAssaultTankUnit groundUnit = (GroundAssaultTankUnit)groundUnitFactory.createAssaultTankUnit(groundUnitInformation);
-        assert (groundUnit.getSpawners().size() > 0);
-        assert (groundUnit.getPwcgGroundUnitInformation().getCountry().getCountry() == Country.GERMANY);
-    }
-
-    @Test
-    public void createStandingInfantryUnitTest () throws PWCGException 
-    {
-    }
-
-    @Test
-    public void createAssaultInfantryUnitTest () throws PWCGException 
-    {
+        AssaultGroundUnitFactory groundUnitFactory = new AssaultGroundUnitFactory();
+        GroundAssaultTankUnit groundUnitGroup = (GroundAssaultTankUnit)groundUnitFactory.createAssaultTankUnit(groundUnitInformation);
+        assert (groundUnitGroup.getGroundUnit().getSpawners().size() > 0);
+        assert (groundUnitGroup.getGroundUnit().getCountry().getCountry() == Country.GERMANY);
+        groundUnitGroup.validate();
     }
 
     @Test
     public void createMachineGunUnitTest () throws PWCGException 
-    {
-    }
-
-    @Test
-    public void createPillBoxUnitTest () throws PWCGException 
     {
     }
 
@@ -211,10 +200,6 @@ public class GroundUnitFactoryBoSTest
     {
     }
 
-    @Test
-    public void createTroopConcentrationTest () throws PWCGException 
-    {
-    }
 
     @Test
     public void createSpotLightGroupTest () throws PWCGException 

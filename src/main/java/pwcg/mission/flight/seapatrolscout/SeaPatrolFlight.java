@@ -27,14 +27,6 @@ public class SeaPatrolFlight extends Flight
         return waypointList;
 	}
 
-	public String getMissionObjective() 
-	{
-		String objective = "Patrol sea lanes on the specified route.  " + 
-				"Engage any enemy aircraft that you encounter";
-
-		return objective;
-	}
-
     @Override
     protected void createFlightSpecificTargetAssociations() throws PWCGException
     {

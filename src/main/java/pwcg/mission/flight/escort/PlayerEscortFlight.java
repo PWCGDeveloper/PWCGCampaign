@@ -142,18 +142,6 @@ public class PlayerEscortFlight extends Flight
         egressTimer.write(writer);
     }
 
-    public String getMissionObjective() throws PWCGException
-    {
-        String objective = "Escort our flight to the specified location and accompany them until they cross our lines.";
-        String objectiveName = formMissionObjectiveLocation(getTargetCoords().copy());
-        if (!objectiveName.isEmpty())
-        {
-            objective = "Escort our flight to the location" + objectiveName + ".  Accompany them until they cross our lines.";
-        }
-
-        return objective;
-    }
-
     public McuCover getCover()
     {
         return cover;
@@ -183,5 +171,4 @@ public class PlayerEscortFlight extends Flight
     {
         return egressTimer;
     }
-
 }

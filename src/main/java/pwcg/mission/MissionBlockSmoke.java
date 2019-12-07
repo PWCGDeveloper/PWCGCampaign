@@ -9,8 +9,6 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.ground.unittypes.GroundUnit;
 import pwcg.mission.mcu.group.SmokeEffect;
 import pwcg.mission.mcu.group.SmokeGroup;
 
@@ -33,7 +31,6 @@ public class MissionBlockSmoke
         maxSmokingPositions = configManager.getIntConfigParam(ConfigItemKeys.MaxSmokeInMissionKey);
 
         smokeNearBattle(filteredPositions);        
-        smokeNearInfantry(filteredPositions);
         smokeNearPlayer(filteredPositions);
         
         return smokingPositions;
@@ -63,36 +60,6 @@ public class MissionBlockSmoke
                 createSmoke(fixedPosition.getPosition(), SmokeEffect.SMOKE_CITY);
             }
         }
-    }
-
-    private void smokeNearInfantry(List<FixedPosition> fixedPositions) throws PWCGException
-    {
-        for (FixedPosition fixedPosition : fixedPositions)
-        {
-            if (isCloseToInfantry(fixedPosition))
-            {
-                createSmoke(fixedPosition.getPosition(), SmokeEffect.SMOKE_CITY_SMALL);
-            }
-        }
-    }
-
-    private boolean isCloseToInfantry(FixedPosition fixedPosition)
-    {
-        for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
-        {
-            for (Unit unit : flight.getLinkedUnits())
-            {
-                if (unit instanceof GroundUnit)
-                {
-                    GroundUnit groundUnit = (GroundUnit)unit;
-                    if (groundUnit.isCombatUnit())
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
     }
 
     private void smokeNearPlayer(List<FixedPosition> fixedPositions) throws PWCGException

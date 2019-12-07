@@ -58,10 +58,7 @@ public class BalloonDefenseWaypoints
         McuWaypoint ingressWaypoint = ingressWaypointGenerator.createIngressWaypoint();
         return ingressWaypoint;
     }
-    
-    
-	
-	
+
 	protected McuWaypoint createTargetWaypoints() throws PWCGException  
 	{
 		Coordinate coord = new Coordinate();

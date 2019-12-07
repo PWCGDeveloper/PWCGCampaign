@@ -26,7 +26,7 @@ public class McuCheckZone extends BaseFlightMcu
         super();
     }
 
-    public void triggerCheckZoneByPlaneCoalitions (List<Coalition> coalitions)
+    public void triggerCheckZoneByCoalitions (List<Coalition> coalitions)
     {
         planeCoalitions.clear();
         for (Coalition coalition: coalitions)
@@ -35,7 +35,7 @@ public class McuCheckZone extends BaseFlightMcu
         }
     }
     
-    public void triggerCheckZoneByPlaneCoalition (Coalition coalition)
+    public void triggerCheckZoneByCoalition (Coalition coalition)
     {
         planeCoalitions.clear();
         addPlaneCoalition(coalition);

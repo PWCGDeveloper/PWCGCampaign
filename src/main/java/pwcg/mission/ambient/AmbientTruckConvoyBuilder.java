@@ -10,9 +10,6 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.GroupManager;
-import pwcg.campaign.target.TacticalTarget;
-import pwcg.campaign.target.TargetDefinition;
-import pwcg.campaign.target.TargetDefinitionBuilderGround;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigManagerCampaign;
@@ -22,19 +19,22 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.TargetSide;
-import pwcg.mission.ground.factory.TruckUnitFactory;
-import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
+import pwcg.mission.ground.factory.TruckConvoyBuilder;
+import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderGround;
 
 public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
 {
-    private List<GroundTruckConvoyUnit> ambientTrucks = new ArrayList<>();
+    private List<IGroundUnitCollection> ambientTrucks = new ArrayList<>();
 
     public AmbientTruckConvoyBuilder (Campaign campaign, Mission mission)
     {
         super(campaign, mission);
     }
 
-    public List<GroundTruckConvoyUnit> generateAmbientTrucks() throws PWCGException 
+    public List<IGroundUnitCollection> generateAmbientTrucks() throws PWCGException 
     {
         Side targetSide = TargetSide.ambientTargetSide(campaign);
         int maxTrucks = getMaxTruckConvoys(campaign);
@@ -85,8 +85,8 @@ public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
             ICountry truckCountry = CountryFactory.makeMapReferenceCountry(targetSide);
             TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
             TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(truckCountry, TacticalTarget.TARGET_TRANSPORT, bridge.getPosition(), isPlayerTarget);
-            TruckUnitFactory groundUnitFactory =  new TruckUnitFactory(campaign, targetDefinition);
-            GroundTruckConvoyUnit truckUnit = groundUnitFactory.createTruckConvoy();
+            TruckConvoyBuilder groundUnitFactory =  new TruckConvoyBuilder(mission, targetDefinition);
+            IGroundUnitCollection truckUnit = groundUnitFactory.createTruckConvoy();
             if (truckUnit != null)
             {
                 addAmbientTruckConvoy(truckUnit, bridge);
@@ -115,7 +115,7 @@ public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
         return maxTrucks;
     }
 
-    private void addAmbientTruckConvoy(GroundTruckConvoyUnit truckUnit, Bridge bridge)
+    private void addAmbientTruckConvoy(IGroundUnitCollection truckUnit, Bridge bridge)
     {
         if (!mission.getMissionGroundUnitManager().isBridgeInUse(bridge.getIndex()))
         {

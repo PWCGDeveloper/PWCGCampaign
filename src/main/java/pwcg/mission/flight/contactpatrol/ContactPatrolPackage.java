@@ -1,13 +1,13 @@
 package pwcg.mission.flight.contactpatrol;
 
-import pwcg.campaign.target.unit.TargetBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.ground.GroundUnitCollection;
+import pwcg.mission.ground.builder.TargetBuilderGenerator;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class ContactPatrolPackage implements IFlightPackage
 {
@@ -20,12 +20,12 @@ public class ContactPatrolPackage implements IFlightPackage
 
     public Flight createPackage () throws PWCGException 
 	{
-        GroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
+        IGroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
         ContactPatrolFlight contactPatrol = createFlight(groundUnitCollection);
 		return contactPatrol;
 	}
 
-    private ContactPatrolFlight createFlight(GroundUnitCollection groundUnitCollection) throws PWCGException
+    private ContactPatrolFlight createFlight(IGroundUnitCollection groundUnitCollection) throws PWCGException
     {
         Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
 	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
@@ -35,9 +35,9 @@ public class ContactPatrolPackage implements IFlightPackage
         return contactPatrol;
     }
 
-    private GroundUnitCollection createGroundUnitsForFlight() throws PWCGException
+    private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
         return targetBuilder.getGroundUnits();
     }

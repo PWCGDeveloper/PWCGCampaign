@@ -7,6 +7,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.RandomNumberGenerator;
 
 public class Orientation implements Cloneable
 {
@@ -52,6 +53,12 @@ public class Orientation implements Cloneable
 		}
 		
 		this.yOri = yOri;
+	}
+	
+	public static Orientation createRandomOrientation()
+	{
+	    int direction = RandomNumberGenerator.getRandom(360);
+	    return new Orientation(direction);
 	}
 	
 	

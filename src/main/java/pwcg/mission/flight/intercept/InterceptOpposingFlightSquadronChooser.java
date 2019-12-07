@@ -10,11 +10,11 @@ import java.util.Map;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.target.TargetCategory;
-import pwcg.campaign.target.TargetDefinition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.target.TargetCategory;
+import pwcg.mission.target.TargetDefinition;
 
 public class InterceptOpposingFlightSquadronChooser
 {

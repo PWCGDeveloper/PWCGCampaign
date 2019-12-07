@@ -5,19 +5,20 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.target.AssaultDefinition;
 
 public class MissionBattleManager
 {
-    private List<AssaultInformation> missionBattles = new ArrayList<>();
+    private List<AssaultDefinition> missionBattles = new ArrayList<>();
 
-    public void addMissionBattle(AssaultInformation missionBattle)
+    public void addMissionBattle(AssaultDefinition missionBattle)
     {
         missionBattles.add(missionBattle);
     }
     
     public boolean isNearAnyBattle(Coordinate coordinate) throws PWCGException
     {
-        for (AssaultInformation missionBattle : missionBattles)
+        for (AssaultDefinition missionBattle : missionBattles)
         {
             if (missionBattle.isNearBattle(coordinate))
             {

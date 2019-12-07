@@ -10,40 +10,39 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PositionsManager;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.target.TacticalTarget;
-import pwcg.campaign.target.TargetDefinition;
-import pwcg.campaign.target.TargetDefinitionBuilderGround;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionBeginUnitCheckZone;
-import pwcg.mission.ground.GroundUnitBalloonFactory;
-import pwcg.mission.mcu.CoalitionFactory;
+import pwcg.mission.ground.factory.BalloonUnitBuilder;
+import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetDefinitionBuilderGround;
 
 public class AmbientBalloonDefensePackage
 {
+    public static final int BALLOON_SPAWN_TRIGGER_DISTANCE = 20000;
+
     private Campaign campaign;
     private Mission mission;
 
-    public AmbientBalloonDefensePackage()
+    public AmbientBalloonDefensePackage(Mission mission)
     {
+        this.mission = mission;
+        this.campaign = mission.getCampaign();
     }
 
 
-	public BalloonDefenseGroup createPackage (Side balloonSide, Coordinate referenceLocation) throws PWCGException 
+	public IGroundUnitCollection createPackage (Side balloonSide, Coordinate referenceLocation) throws PWCGException 
 	{
-		// Create a balloon defense package
 		Coordinate positionCoordinate = getNearestPositionCoordinate(balloonSide);
 		Coordinate balloonPosition = getBalloonCoordinate(positionCoordinate, balloonSide);
 		
 		
 		ICountry country = getAmbientBalloonCountry(positionCoordinate, balloonSide);
-		BalloonDefenseGroup balloonUnit = createBalloon (balloonPosition, country);
-		
-		List<Integer> playerPlaneIds = mission.getMissionFlightBuilder().determinePlayerPlaneIds();
-		balloonUnit.setBalloonCheckZoneForPlayer(playerPlaneIds);
+		IGroundUnitCollection balloonUnit = createBalloon (balloonPosition, country);
 
 		return balloonUnit;
 	}
@@ -62,18 +61,18 @@ public class AmbientBalloonDefensePackage
         return country;
 	}
 
-	private BalloonDefenseGroup createBalloon (Coordinate balloonCoordinate, ICountry balloonCountry) throws PWCGException 
+	private IGroundUnitCollection createBalloon (Coordinate balloonCoordinate, ICountry balloonCountry) throws PWCGException 
 	{
 		Side side = balloonCountry.getSide();
 		Coordinate balloonPosition = getBalloonCoordinate(balloonCoordinate, side);
-        MissionBeginUnitCheckZone missionBeginUnit = new MissionBeginUnitCheckZone(balloonPosition.copy(), 12000);
-        missionBeginUnit.getSelfDeactivatingCheckZone().getCheckZone().triggerCheckZoneByPlaneCoalitions(CoalitionFactory.getAllCoalitions());
         
         TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
         boolean isPlayerTarget = false;
         TargetDefinition ambientBalloonTargetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(balloonCountry, TacticalTarget.TARGET_BALLOON, balloonPosition, isPlayerTarget);
-        GroundUnitBalloonFactory balloonFactory = new GroundUnitBalloonFactory(campaign, ambientBalloonTargetDefinition);
-        BalloonDefenseGroup balloonUnit = balloonFactory.createBalloonUnit();
+        
+        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(campaign, ambientBalloonTargetDefinition);
+        IGroundUnitCollection balloonUnit = groundUnitBuilderBalloonDefense.createBalloonUnit(balloonCountry);
+
 		return balloonUnit;
 	}
 
@@ -109,11 +108,8 @@ public class AmbientBalloonDefensePackage
 	private Coordinate getBalloonCoordinate(Coordinate referenceCoordinate, Side side) 
 	{
 		Coordinate targetWaypoint = null;
-		
 		PositionsManager positionsManager = new PositionsManager(campaign.getDate());
-
 		targetWaypoint = positionsManager.getClosestDefinitePosition(side, referenceCoordinate.copy());
-
 		return targetWaypoint;
 	}
 

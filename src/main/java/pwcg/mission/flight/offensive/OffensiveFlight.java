@@ -73,53 +73,6 @@ public class OffensiveFlight extends Flight
         return offensiveFlightType;
     }
 
-    public String getMissionObjective() throws PWCGException 
-    {
-        String objective = "";
-
-        String objectiveName =  formMissionObjectiveLocation(getTargetCoords().copy());
-        if (offensiveFlightType == OffensiveFlightTypes.OFFENSIVE_FLIGHT_TRANSPORT)
-        {
-            if (!objectiveName.isEmpty())
-            {
-                objective = "Penetrate enemy airspace at the specified transport hubs" + objectiveName + 
-                                ".  Engage any enemy aircraft that you encounter.  ";
-            }
-            else
-            {
-                objective = "Penetrate enemy airspace at the specified transport hubs" + 
-                                ".  Engage any enemy aircraft that you encounter.  ";
-            }
-        }
-        else if (offensiveFlightType == OffensiveFlightTypes.OFFENSIVE_FLIGHT_AIRFIELD)
-        {
-            if (!objectiveName.isEmpty())
-            {
-                objective = "Penetrate enemy airspace at the specified airfields" + objectiveName + 
-                                ".  Engage any enemy aircraft that you encounter.  ";
-            }
-            else
-            {
-                objective = "Penetrate enemy airspace at the specified airfields" + 
-                                ".  Engage any enemy aircraft that you encounter.  ";
-            }
-        }
-        else
-        {
-            if (!objectiveName.isEmpty())
-            {
-                objective = "Penetrate enemy airspace" + objectiveName + 
-                                ".  Engage any enemy aircraft that you encounter.  ";
-            }
-            else
-            {
-                objective = "Penetrate enemy airspace at the specified front location" + 
-                                ".  Engage any enemy aircraft that you encounter.  ";
-            }
-        }
-        
-        return objective;
-    }
     
     @Override
     protected void createFlightSpecificTargetAssociations() throws PWCGException

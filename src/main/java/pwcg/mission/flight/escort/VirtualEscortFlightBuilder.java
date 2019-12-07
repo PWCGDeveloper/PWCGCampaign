@@ -22,7 +22,7 @@ public class VirtualEscortFlightBuilder
         List<Role> fighterRole = new ArrayList<Role>(Arrays.asList(Role.ROLE_FIGHTER));
         List<Squadron> friendlyFighterSquadrons = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(
                 escortedFlight.getCampaign(),
-                escortedFlight.getHomePosition(),
+                escortedFlight.getPosition(),
                 1,
                 50000.0,
                 fighterRole,
@@ -34,7 +34,7 @@ public class VirtualEscortFlightBuilder
             int index = RandomNumberGenerator.getRandom(friendlyFighterSquadrons.size());
             Squadron escortFighterSquadron = friendlyFighterSquadrons.get(index);
             
-            MissionBeginUnit missionBeginUnitEscort = new MissionBeginUnit(escortedFlight.getHomePosition());
+            MissionBeginUnit missionBeginUnitEscort = new MissionBeginUnit(escortedFlight.getPosition());
 
             FlightInformation escortFlightInformation = FlightInformationFactory.buildAiFlightInformation(
                     escortFighterSquadron, escortedFlight.getMission(), FlightTypes.ESCORT);

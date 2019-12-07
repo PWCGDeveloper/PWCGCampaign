@@ -11,11 +11,11 @@ import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
-import pwcg.campaign.plane.Balloon;
 import pwcg.campaign.utils.LCIndexGenerator;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
 import pwcg.mission.MissionStringHandler;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.product.fc.plane.FCPlaneAttributeMapping;
 
 public class McuIcon extends BaseFlightMcu
@@ -136,7 +136,7 @@ public class McuIcon extends BaseFlightMcu
         coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
-    public McuIcon(Balloon balloon, Side side)
+    public McuIcon(IGroundUnitCollection balloon, Side side)
     {
         super();
 

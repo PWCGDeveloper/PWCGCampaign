@@ -1,9 +1,9 @@
 package pwcg.campaign.target.locator.targettype;
 
 import pwcg.campaign.api.ICountry;
-import pwcg.campaign.target.TargetRadius;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.target.TargetRadius;
 
 public class TargetTypeAvailabilityInputGenerator
 {

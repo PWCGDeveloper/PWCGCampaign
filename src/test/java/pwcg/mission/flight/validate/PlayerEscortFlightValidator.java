@@ -5,7 +5,7 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.Unit;
+import pwcg.mission.IUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.escort.PlayerEscortFlight;
@@ -37,7 +37,7 @@ public class PlayerEscortFlightValidator
     
     private void validateEscortedFlight() throws PWCGException
     {
-        for (Unit unit : playerFlight.getLinkedUnits())
+        for (IUnit unit : playerFlight.getLinkedUnits())
         {
             if (unit instanceof Flight)
             {

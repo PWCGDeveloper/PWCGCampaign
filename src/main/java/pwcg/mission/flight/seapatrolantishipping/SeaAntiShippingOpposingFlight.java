@@ -3,7 +3,6 @@ package pwcg.mission.flight.seapatrolantishipping;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
@@ -30,12 +29,6 @@ public class SeaAntiShippingOpposingFlight extends Flight
         
         return waypointList;
 	}
-
-    @Override
-    public String getMissionObjective() throws PWCGMissionGenerationException, PWCGException
-    {
-        return "";
-    }
 
     @Override
     protected void createFlightSpecificTargetAssociations() throws PWCGException

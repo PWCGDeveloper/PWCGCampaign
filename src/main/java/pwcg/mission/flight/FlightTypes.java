@@ -14,12 +14,11 @@ public enum FlightTypes
     SEA_PATROL(FlightTypeCategory.FIGHTER),
     ESCORT(FlightTypeCategory.FIGHTER),
     SCRAMBLE_OPPOSE(FlightTypeCategory.FIGHTER), 
-
-    LOW_ALT_CAP(FlightTypeCategory.FIGHTER, FlightTypeCategory.ATTACK),
-    LOW_ALT_PATROL(FlightTypeCategory.FIGHTER, FlightTypeCategory.ATTACK),
+    LOW_ALT_CAP(FlightTypeCategory.FIGHTER, FlightTypeCategory.FIGHTER),
+    LOW_ALT_PATROL(FlightTypeCategory.FIGHTER, FlightTypeCategory.FIGHTER),
+    
     BALLOON_BUST(FlightTypeCategory.FIGHTER, FlightTypeCategory.ATTACK),
     BALLOON_DEFENSE(FlightTypeCategory.FIGHTER, FlightTypeCategory.ATTACK),
-
     GROUND_ATTACK(FlightTypeCategory.ATTACK),
     BOMB(FlightTypeCategory.ATTACK),
     LOW_ALT_BOMB(FlightTypeCategory.ATTACK),

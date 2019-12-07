@@ -15,14 +15,12 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
-import pwcg.mission.ambient.AmbientBattleBuilder;
+import pwcg.mission.ambient.AmbientBattleBuilder2;
 import pwcg.mission.ambient.AmbientTrainBuilder;
 import pwcg.mission.ambient.AmbientTruckConvoyBuilder;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.AAAManager;
-import pwcg.mission.ground.unittypes.GroundUnitSpawning;
-import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
-import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
+import pwcg.mission.ground.IGroundUnitCollection;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
@@ -45,11 +43,11 @@ public class AmbientBuilderTest
         Mission mission = new Mission(campaign, participatingPlayers, missionBorders);
         mission.generate(FlightTypes.ANY);
         
-        AmbientBattleBuilder ambientBattleBuilder = new AmbientBattleBuilder(campaign, mission);
-        List<AssaultInformation> battles = ambientBattleBuilder.generateAmbientBattles();
+        AmbientBattleBuilder2 ambientBattleBuilder = new AmbientBattleBuilder2(campaign, mission);
+        List<AssaultDefinition> battles = ambientBattleBuilder.generateAmbientBattles();
         
         assert (battles.size() < 3);
-        for (AssaultInformation battle : battles)
+        for (AssaultDefinition battle : battles)
         {
             assert(battle.getAggressor().getSide() != battle.getDefender().getSide());
             assert(battle.getGroundUnitCollection().getAllAlliedGroundUnits().size() > 0);
@@ -67,13 +65,13 @@ public class AmbientBuilderTest
         mission.generate(FlightTypes.ANY);
         
         AmbientTruckConvoyBuilder ambientTruckConvoyBuilder = new AmbientTruckConvoyBuilder(campaign, mission);
-        List<GroundTruckConvoyUnit> ambientTrucks = ambientTruckConvoyBuilder.generateAmbientTrucks();
+        List<IGroundUnitCollection> ambientTrucks = ambientTruckConvoyBuilder.generateAmbientTrucks();
 
         assert (ambientTrucks.size() < 6);
-        for (GroundTruckConvoyUnit ambientTruck : ambientTrucks)
+        for (IGroundUnitCollection ambientTruck : ambientTrucks)
         {
             assert(ambientTruck.getCountry().getSide() == Side.ALLIED);
-            assert(ambientTruck.getSpawners().size() > 1);
+            assert(ambientTruck.getGroundUnit().getSpawners().size() > 1);
         }
     }
 
@@ -87,13 +85,13 @@ public class AmbientBuilderTest
         mission.generate(FlightTypes.ANY);
         
         AmbientTrainBuilder ambientTrainBuilder = new AmbientTrainBuilder(campaign, mission);
-        List<GroundTrainUnit> ambientTrains = ambientTrainBuilder.generateAmbientTrains();
+        List<IGroundUnitCollection> ambientTrains = ambientTrainBuilder.generateAmbientTrains();
 
         assert (ambientTrains.size() < 3);
-        for (GroundTrainUnit ambientTrain : ambientTrains)
+        for (IGroundUnitCollection ambientTrain : ambientTrains)
         {
             assert(ambientTrain.getCountry().getSide() == Side.ALLIED);
-            assert(ambientTrain.getSpawners().size() == 1);
+            assert(ambientTrain.getGroundUnit().getSpawners().size() == 1);
         }
     }
 
@@ -107,12 +105,12 @@ public class AmbientBuilderTest
         mission.generate(FlightTypes.ANY);
         
         AAAManager aaaManager = new AAAManager(campaign, mission);
-        List<GroundUnitSpawning> AAA = aaaManager.getAAAForMission();
+        List<IGroundUnitCollection> AAA = aaaManager.getAAAForMission();
 
         assert (AAA.size() > 10);
-        for (GroundUnitSpawning aaaUnit : AAA)
+        for (IGroundUnitCollection aaaUnit : AAA)
         {
-            assert(aaaUnit.getSpawners().size() > 0);
+            assert(aaaUnit.getGroundUnit().getSpawners().size() > 0);
         }
     }
 }

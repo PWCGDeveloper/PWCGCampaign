@@ -3,8 +3,8 @@ package pwcg.mission.flight.seapatrolscout;
 import java.util.List;
 
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.target.locator.ShippingLane;
-import pwcg.campaign.target.locator.ShippingLaneManager;
+import pwcg.campaign.shipping.ShippingLane;
+import pwcg.campaign.shipping.ShippingLaneManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.MissionBeginUnit;
@@ -12,7 +12,7 @@ import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.ShipConvoyGenerator;
-import pwcg.mission.ground.unittypes.transport.ShipConvoyUnit;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class SeaPatrolPackage implements IFlightPackage
 {
@@ -36,8 +36,8 @@ public class SeaPatrolPackage implements IFlightPackage
         {
             // This is really an anti-air patrol but add random shipping
             ShipConvoyGenerator shipBattleGenerator = new ShipConvoyGenerator();
-            List<ShipConvoyUnit> otherConvoys = shipBattleGenerator.generateConvoys(flightInformation, selectedShippingLane);
-            for (ShipConvoyUnit convoy : otherConvoys)
+            List<IGroundUnitCollection> otherConvoys = shipBattleGenerator.generateConvoys(flightInformation, selectedShippingLane);
+            for (IGroundUnitCollection convoy : otherConvoys)
             {
                 seaPatrol.addLinkedUnit(convoy);
             }

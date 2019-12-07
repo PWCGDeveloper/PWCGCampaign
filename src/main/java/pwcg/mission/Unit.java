@@ -6,16 +6,14 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IPWCGObject;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 
-public abstract class Unit  implements IPWCGObject
+public abstract class Unit  implements IPWCGObject, IUnit
 {
     protected int index = IndexGenerator.getInstance().getNextIndex();	
-	protected ArrayList<Unit> linkedUnits = new ArrayList<Unit>();
+	protected ArrayList<IUnit> linkedUnits = new ArrayList<>();
 
     abstract public void createUnitMission() throws PWCGException ;
     abstract public ICountry getCountry() throws PWCGException ;
-    abstract public Coordinate getHomePosition() throws PWCGException ;
     abstract public String getName() throws PWCGException ;
     abstract public MissionBeginUnit getMissionBeginUnit();
 
@@ -25,12 +23,12 @@ public abstract class Unit  implements IPWCGObject
 	{
 	}
 
-	public ArrayList<Unit> getLinkedUnits() 
+	public ArrayList<IUnit> getLinkedUnits() 
 	{
 		return linkedUnits;
 	}
 
-    public void addLinkedUnit (Unit unit) throws PWCGException
+    public void addLinkedUnit (IUnit unit) throws PWCGException
     {
         if (unit != null)
         {

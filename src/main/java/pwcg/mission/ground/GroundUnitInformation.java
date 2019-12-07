@@ -4,31 +4,22 @@ import java.util.Date;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
-import pwcg.campaign.context.CountryDesignator;
 import pwcg.campaign.factory.CountryFactory;
-import pwcg.campaign.target.TacticalTarget;
-import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.MissionBeginUnit;
+import pwcg.mission.target.TacticalTarget;
 
 public class GroundUnitInformation
 {
-    protected ICountry country = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
-    protected MissionBeginUnit missionBeginUnit = null;
-    protected String name = "";
-    protected Date date;
-    protected Coordinate position = new Coordinate();
-    protected Coordinate destination = new Coordinate();
-	protected Orientation orientation = new Orientation();
-    protected TacticalTarget targetType = TacticalTarget.TARGET_NONE;
-    protected GroundUnitSize unitSize = GroundUnitSize.GROUND_UNIT_SIZE_TINY;
-
-	public ICountry getCountry(Date date) throws PWCGException
-	{
-		CountryDesignator countryDesignator = new CountryDesignator();
-		return countryDesignator.determineCountry(position, date);
-	}
+    private ICountry country = CountryFactory.makeCountryByCountry(Country.NEUTRAL);
+    private String name = "";
+    private Date date;
+    private Coordinate position = new Coordinate();
+    private Coordinate destination = new Coordinate();
+    private Coordinate fireTarget = new Coordinate();
+	private Orientation orientation = new Orientation();
+    private TacticalTarget targetType = TacticalTarget.TARGET_NONE;
+    private GroundUnitSize unitSize = GroundUnitSize.GROUND_UNIT_SIZE_TINY;
 
     public ICountry getCountry()
     {
@@ -38,16 +29,6 @@ public class GroundUnitInformation
     public void setCountry(ICountry country)
     {
         this.country = country;
-    }
-
-    public MissionBeginUnit getMissionBeginUnit()
-    {
-        return missionBeginUnit;
-    }
-
-    public void setMissionBeginUnit(MissionBeginUnit missionBeginUnit)
-    {
-        this.missionBeginUnit = missionBeginUnit;
     }
 
     public String getName()
@@ -78,6 +59,16 @@ public class GroundUnitInformation
     public void setDestination(Coordinate destination)
     {
         this.destination = destination;
+    }
+
+    public Coordinate getFireTarget()
+    {
+        return fireTarget;
+    }
+
+    public void setFireTarget(Coordinate fireTarget)
+    {
+        this.fireTarget = fireTarget;
     }
 
     public Orientation getOrientation()

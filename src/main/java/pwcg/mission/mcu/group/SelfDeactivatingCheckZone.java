@@ -2,15 +2,19 @@ package pwcg.mission.mcu.group;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.List;
 
 import pwcg.campaign.utils.IndexGenerator;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.mission.mcu.BaseFlightMcu;
+import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuTimer;
+import pwcg.mission.mcu.McuValidator;
 
 
 
@@ -118,14 +122,24 @@ public class SelfDeactivatingCheckZone
         checkZone.setZone(zone);
     }
 
-    public void setCZTarget(int targetMcuIndex)
+    public void setCheckZoneTarget(int targetMcuIndex)
     {
         checkZone.setTarget(targetMcuIndex);
     }
 
-    public void setCZObject(int objectMcuIndex)
+    public void setCheckZoneObject(int objectMcuIndex)
     {
         checkZone.setObject(objectMcuIndex);
+    }
+
+    public void setCheckZoneCoalition(Coalition coalition)
+    {
+        checkZone.triggerCheckZoneByCoalition(coalition);
+    }
+
+    public void setCheckZoneCoalitions(List<Coalition> coalitions)
+    {
+        checkZone.triggerCheckZoneByCoalitions(coalitions);
     }
 
     public McuCheckZone getCheckZone()
@@ -133,10 +147,41 @@ public class SelfDeactivatingCheckZone
         return checkZone;
     }
 
+    public McuTimer getActivateCZTimer()
+    {
+        return activateCZTimer;
+    }
+
     public McuTimer getDeactivateCZTimer()
     {
         return deactivateCZTimer;
     }
-    
-    
+
+    public void validate() throws PWCGException
+    {
+        if (!McuValidator.hasTarget(activateCZTimer, checkZone.getIndex()))
+        {
+            throw new PWCGException("SelfDeactivatingCheckZone: activate timer not linked to activate");
+        }
+        
+        if (!McuValidator.hasTarget(checkZone, deactivateCZTimer.getIndex()))
+        {
+            throw new PWCGException("SelfDeactivatingCheckZone: check zone not linked to deactivate");
+        }
+        
+        if (McuValidator.getNumTargets(checkZone) < 2)
+        {
+            throw new PWCGException("SelfDeactivatingCheckZone: check zone not linked to external entity");
+        }
+        
+        if (!McuValidator.hasTarget(deactivateCZTimer, deactivateCZ.getIndex()))
+        {
+            throw new PWCGException("SelfDeactivatingCheckZone: deactivate timer not linked to deactivate");
+        }
+        
+        if (!McuValidator.hasTarget(deactivateCZ, activateCZTimer.getIndex()))
+        {
+            throw new PWCGException("SelfDeactivatingCheckZone: deactivate timer not linked to activate timer");
+        }
+    }
 }

@@ -27,7 +27,7 @@ public class ActualWaypointPackage extends WaypointPackage
         waypointTimer = new McuTimer();
         waypointTimer.setName(flight.getName() + ": WP Timer");     
         waypointTimer.setDesc("WP Timer for " + flight.getName());
-        waypointTimer.setPosition(flight.getHomePosition());
+        waypointTimer.setPosition(flight.getPosition());
         waypointTimer.setTimer(1);
     }
 

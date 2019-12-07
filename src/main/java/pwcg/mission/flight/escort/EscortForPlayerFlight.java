@@ -154,19 +154,6 @@ public class EscortForPlayerFlight extends Flight
         }
     }
 
-    public String getMissionObjective() throws PWCGException 
-    {
-        String objective = "Escort to the specified location and accompany them until they cross our lines.";
-        String objectiveName =  formMissionObjectiveLocation(flightInformation.getTargetCoords().copy());
-        if (!objectiveName.isEmpty())
-        {
-            objective = "Escort to the location" + objectiveName + 
-                    ".  Accompany them until they cross our lines.";
-        }
-        
-        return objective;
-    }
-
     @Override
     protected List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException
     {

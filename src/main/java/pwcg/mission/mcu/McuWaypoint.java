@@ -7,7 +7,6 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 import pwcg.mission.flight.waypoint.WaypointAction;
-import pwcg.mission.flight.waypoint.WaypointGoal;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.flight.waypoint.WaypointType;
 
@@ -15,7 +14,6 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
 {
 	public WaypointType waypointType;
 	private WaypointAction wpAction;
-    private WaypointGoal goalType = WaypointGoal.GOAL_DEFAULT;
     private WaypointPriority priority = WaypointPriority.PRIORITY_LOW;
 
 	public static int TARGET_AREA = 500;
@@ -49,7 +47,6 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
 		clone.waypointType = waypointType;
 		clone.wpAction = wpAction;
 		clone.priority = priority;
-		clone.goalType = goalType;
 
 		clone.triggerArea = triggerArea;
 		clone.speed = speed;
@@ -108,16 +105,6 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
 	public void setTargetWaypoint(boolean isTargetWaypoint) {
 		this.isTargetWaypoint = isTargetWaypoint;
 	}
-
-
-    public WaypointGoal getGoalType() {
-        return goalType ;
-    }
-
-    public void setGoalType(WaypointGoal goalType) {
-        this.goalType = goalType;
-    }
-
 	
 	public void setDesc(String name, String desc) 
 	{
@@ -141,9 +128,7 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
     		writer.newLine();
     		writer.write("  Priority = " + priority.getPriorityValue() + ";");
     		writer.newLine();
-    		
-    		writeMCUGoal(writer, goalType.getGoal());
-    		
+    		    		
     		writer.write("}");
     		writer.newLine();
     		writer.newLine();

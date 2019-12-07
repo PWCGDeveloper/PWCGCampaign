@@ -9,6 +9,8 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class IngressWaypointNearTarget implements IIngressWaypoint
 {
+    public static final int INGRESS_TOO_CLOSE_TO_ATTACK = AttackMcuSequence.ATTACK_MCU_TRIGGER_DISTANCE + 12000;
+
     private Flight flight;
 
     public IngressWaypointNearTarget(Flight flight) throws PWCGException 
@@ -32,12 +34,12 @@ public class IngressWaypointNearTarget implements IIngressWaypoint
 
     private Coordinate getIngressWaypointNearTarget() throws PWCGException 
     {
-        double angleToTarget = MathUtils.calcAngle(flight.getHomePosition(), flight.getTargetCoords());
-        double distanceToTarget = MathUtils.calcDist(flight.getHomePosition(), flight.getTargetCoords());
-        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getHomePosition(), angleToTarget, distanceToTarget / 2);
+        double angleToTarget = MathUtils.calcAngle(flight.getPosition(), flight.getTargetCoords());
+        double distanceToTarget = MathUtils.calcDist(flight.getPosition(), flight.getTargetCoords());
+        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getPosition(), angleToTarget, distanceToTarget / 2);
         
         double distance = MathUtils.calcDist(flight.getTargetCoords(), ingressCoordinate);
-        if (distance < (AttackMcuSequence.CHECK_ZONE_DEFAULT_DISTANCE + 10000))
+        if (distance < INGRESS_TOO_CLOSE_TO_ATTACK)
         {
             ingressCoordinate = moveIngressZoneAwayFromTarget(ingressCoordinate, flight.getTargetCoords());
         }
@@ -48,7 +50,7 @@ public class IngressWaypointNearTarget implements IIngressWaypoint
     private Coordinate moveIngressZoneAwayFromTarget(Coordinate ingressCoordinate, Coordinate targetPosition) throws PWCGException
     {
         double angleAwayFromTarget = MathUtils.calcAngle(targetPosition, ingressCoordinate);
-        Coordinate movedIngressCoordinate = MathUtils.calcNextCoord(ingressCoordinate, angleAwayFromTarget, AttackMcuSequence.CHECK_ZONE_DEFAULT_DISTANCE + 10000);
+        Coordinate movedIngressCoordinate = MathUtils.calcNextCoord(ingressCoordinate, angleAwayFromTarget, INGRESS_TOO_CLOSE_TO_ATTACK);
         return movedIngressCoordinate;
     }
 

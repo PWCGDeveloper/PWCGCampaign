@@ -1,17 +1,13 @@
 package pwcg.mission.flight.artySpot;
 
-import java.util.List;
-
-import pwcg.campaign.api.Side;
-import pwcg.campaign.target.unit.TargetBuilder;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.ground.GroundUnitCollection;
-import pwcg.mission.ground.unittypes.GroundUnit;
+import pwcg.mission.ground.builder.TargetBuilderGenerator;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class ArtillerySpotPackage implements IFlightPackage
 {
@@ -31,12 +27,12 @@ public class ArtillerySpotPackage implements IFlightPackage
     private Flight createFlight() throws PWCGException
     {        
         Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-        GroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
+        IGroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
         Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(flightInformation.getSquadron().determineEnemySide());
 		Flight artySpot = null;
 		if (flightInformation.isPlayerFlight())
 		{
-		    artySpot = createPlayerFlight(groundUnitCollection, targetCoordinates, startCoords);
+		    throw new PWCGException("Player artillery spot not supported");
 		}
 		else
 		{
@@ -47,27 +43,11 @@ public class ArtillerySpotPackage implements IFlightPackage
         return artySpot;
     }
 
-    private GroundUnitCollection createGroundUnitsForFlight() throws PWCGException
+    private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {
-        TargetBuilder targetBuilder = new TargetBuilder(flightInformation);
+        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
         targetBuilder.buildTarget();
         return targetBuilder.getGroundUnits();
-    }
-
-    private Flight createPlayerFlight(GroundUnitCollection groundUnits, Coordinate targetCoordinates, Coordinate startCoords) throws PWCGException
-    {
-        Flight artySpot;
-        Side squadronSide = flightInformation.getSquadron().determineSide();
-        ArtillerySpotArtilleryGroup friendlyArtillery = getFriendlyArtillery(groundUnits, squadronSide);
-        
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
-        
-        PlayerArtillerySpotFlight artySpotPlayer = new PlayerArtillerySpotFlight (flightInformation, missionBeginUnit);
-        artySpotPlayer.createUnitMission();
-        artySpotPlayer.createArtyGrid(friendlyArtillery);
-        
-        artySpot = artySpotPlayer;
-        return artySpot;
     }
 
     private Flight createAiFlight(Coordinate targetCoordinates, Coordinate startCoords) throws PWCGException
@@ -79,19 +59,5 @@ public class ArtillerySpotPackage implements IFlightPackage
         artySpotAI.createUnitMission();
         artySpot = artySpotAI;
         return artySpot;
-    }
-
-    private ArtillerySpotArtilleryGroup getFriendlyArtillery(GroundUnitCollection groundUnits, Side campaignSide) throws PWCGException
-    {
-        List<GroundUnit> allGroundUnits = groundUnits.getAllGroundUnits();
-        for (GroundUnit groundUnit : allGroundUnits)
-        {
-            if (groundUnit instanceof ArtillerySpotArtilleryGroup)
-            {
-                return (ArtillerySpotArtilleryGroup)groundUnit;
-            }
-        }
-
-        throw new PWCGException("Unable to find friendly artillery unit for artillery spot");
     }
 }

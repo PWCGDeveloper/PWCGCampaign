@@ -7,9 +7,9 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.group.AirfieldManager;
+import pwcg.campaign.shipping.ShippingLane;
+import pwcg.campaign.shipping.ShippingLaneManager;
 import pwcg.campaign.squadron.Squadron;
-import pwcg.campaign.target.locator.ShippingLane;
-import pwcg.campaign.target.locator.ShippingLaneManager;
 import pwcg.core.exception.PWCGException;
 
 public class MissionAntiShippingSeaLaneFinder

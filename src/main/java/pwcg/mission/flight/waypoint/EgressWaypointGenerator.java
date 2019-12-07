@@ -25,7 +25,7 @@ public class EgressWaypointGenerator
 
     public static Coordinate createEgressCoordinates(Flight flight, Coordinate ingressWaypointCoord) throws PWCGException
     {
-        double angleFromFieldToFront = MathUtils.calcAngle(ingressWaypointCoord, flight.getHomePosition());
+        double angleFromFieldToFront = MathUtils.calcAngle(ingressWaypointCoord, flight.getPosition());
         int headingOffsetFromIngress = 90 - RandomNumberGenerator.getRandom(180);
         double angleOffsetFromIngress = MathUtils.adjustAngle(angleFromFieldToFront, headingOffsetFromIngress);
         Coordinate egressCoord = MathUtils.calcNextCoord(ingressWaypointCoord, angleOffsetFromIngress, 5000);

@@ -1,0 +1,67 @@
+package pwcg.mission.ground.unittypes.artillery;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitSize;
+import pwcg.mission.ground.org.GroundUnit;
+import pwcg.mission.ground.vehicle.VehicleClass;
+
+public class SpotlightUnit extends GroundUnit
+{    
+    public SpotlightUnit(GroundUnitInformation pwcgGroundUnitInformation)
+    {
+        super(VehicleClass.SearchLight, pwcgGroundUnitInformation);
+    }   
+
+
+    @Override
+    protected List<Coordinate> createSpawnerLocations() throws PWCGException 
+    {
+        List<Coordinate> spawnerLocations = new ArrayList<>();
+        
+        int numAAA = calcNumUnits();
+        for (int i = 0; i < numAAA; ++i)
+        {
+            Coordinate spawnPosition = pwcgGroundUnitInformation.getPosition().copy();
+            if (numAAA == 1)
+            {
+                spawnPosition = pwcgGroundUnitInformation.getPosition().copy();
+            }
+            else
+            {
+                if (i == 0)
+                {
+                    spawnPosition.setXPos(spawnPosition.getXPos() + 50);
+                }
+                else if (i == 1)
+                {
+                    spawnPosition.setXPos(spawnPosition.getXPos() - 50);
+                }
+            }
+            spawnerLocations.add(spawnPosition);
+        }
+        return spawnerLocations;
+    }
+
+    protected int calcNumUnits() throws PWCGException
+    {
+        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
+        {
+            return 1;
+        }
+        else
+        {
+            return 2;
+        }
+    }
+
+    @Override
+    protected void addElements()
+    {
+        // No elements for spotlight
+    }
+}

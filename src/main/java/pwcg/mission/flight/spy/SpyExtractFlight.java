@@ -89,11 +89,4 @@ public class SpyExtractFlight extends Flight
 		spyDropTimer.write(writer);
 	}
 
-	public String getMissionObjective() throws PWCGException 
-	{
-        String objective = "Extract our spy at the specified location" + formMissionObjectiveLocation(getTargetCoords().copy()) + ".  Don't get caught!";       
-		
-		return objective;
-	}
-
 }

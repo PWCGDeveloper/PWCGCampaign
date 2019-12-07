@@ -54,10 +54,10 @@ public class FlightPositionAirStart
     {
         Coordinate airStartCoordinateByOffset = getAiAirStartCoordinateByOffset(angleBetweenTargetAndInitialWaypoint);
         double distanceFromOffset = MathUtils.calcDist(flight.findFirstStartWaypoint().getPosition(), airStartCoordinateByOffset);
-        double distanceFromHome = MathUtils.calcDist(flight.findFirstStartWaypoint().getPosition(), flight.getHomePosition());
+        double distanceFromHome = MathUtils.calcDist(flight.findFirstStartWaypoint().getPosition(), flight.getPosition());
         if (distanceFromOffset > distanceFromHome)
         {
-            airStartCoordinateByOffset = flight.getHomePosition().copy();
+            airStartCoordinateByOffset = flight.getPosition().copy();
         }
         airStartCoordinateByOffset.setYPos(flight.getFlightAltitude());
         return airStartCoordinateByOffset;

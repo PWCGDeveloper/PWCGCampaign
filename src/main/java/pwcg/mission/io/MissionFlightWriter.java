@@ -6,8 +6,8 @@ import java.util.List;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
+import pwcg.mission.IUnit;
 import pwcg.mission.Mission;
-import pwcg.mission.Unit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.mcu.group.PlaneCounter;
 
@@ -35,7 +35,7 @@ public class MissionFlightWriter
         for (Flight flight : flights)
         {
             flight.write(writer);
-            for (Unit linkedUnit : flight.getLinkedUnits())
+            for (IUnit linkedUnit : flight.getLinkedUnits())
             {
                 linkedUnit.write(writer);
             }

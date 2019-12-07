@@ -19,11 +19,11 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.balloondefense.AiBalloonDefenseFlight;
 import pwcg.mission.flight.balloondefense.AmbientBalloonDefensePackage;
-import pwcg.mission.flight.balloondefense.BalloonDefenseGroup;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class MissionBalloons
 {
-    private List<BalloonDefenseGroup> ambientBalloons = new ArrayList<BalloonDefenseGroup>();
+    private List<IGroundUnitCollection> ambientBalloons = new ArrayList<>();
 
     public void createAmbientBalloons(Mission mission) throws PWCGException 
     {
@@ -89,9 +89,9 @@ public class MissionBalloons
                 	balloonSide = Side.AXIS;
                 }
 
-                AmbientBalloonDefensePackage ambientBalloonPackage = new AmbientBalloonDefensePackage();
+                AmbientBalloonDefensePackage ambientBalloonPackage = new AmbientBalloonDefensePackage(mission);
             	Coordinate ambientBalloonReferencePosition = determineAmbientBalloonReferencePosition(mission);
-                BalloonDefenseGroup balloonGroup = ambientBalloonPackage.createPackage(balloonSide, ambientBalloonReferencePosition);
+            	IGroundUnitCollection balloonGroup = ambientBalloonPackage.createPackage(balloonSide, ambientBalloonReferencePosition);
 
                 boolean alreadyTaken = isBalloonPositionTaken(balloonPositions, balloonGroup);
                 if (!alreadyTaken)
@@ -115,12 +115,12 @@ public class MissionBalloons
     	return ambientBalloonReferencePosition;
     }
 
-	private boolean isBalloonPositionTaken(List<Coordinate> balloonPositions, BalloonDefenseGroup balloonGroup) throws PWCGException 
+	private boolean isBalloonPositionTaken(List<Coordinate> balloonPositions, IGroundUnitCollection balloonGroup) throws PWCGException 
 	{
 		boolean alreadyTaken = false;
 		for (Coordinate balloonPosition : balloonPositions)
 		{
-		    if (MathUtils.calcDist(balloonGroup.getHomePosition(), balloonPosition) < 2000.0)
+		    if (MathUtils.calcDist(balloonGroup.getPosition(), balloonPosition) < 2000.0)
 		    {
 		        alreadyTaken = true;
 		    }
@@ -128,7 +128,7 @@ public class MissionBalloons
 		return alreadyTaken;
 	}
 
-    public List<BalloonDefenseGroup> getAmbientBalloons()
+    public List<IGroundUnitCollection> getAmbientBalloons()
     {
         return ambientBalloons;
     }

@@ -31,12 +31,6 @@ public class ScrambleFlight extends Flight
         return waypointList;
 	}
 
-	public String getMissionObjective() 
-	{
-		String objective = "Incoming enemy aircraft are near our airbase.  Get airborne and destroy them!";
-		return objective;
-	}
-
     @Override
     protected void createFlightSpecificTargetAssociations() throws PWCGException
     {

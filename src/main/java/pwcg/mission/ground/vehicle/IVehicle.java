@@ -10,6 +10,8 @@ import pwcg.mission.mcu.McuTREntity;
 
 public interface IVehicle extends IPWCGObject
 {
+    public void makeVehicleFromDefinition(ICountry vehicleCountry);
+    public IVehicle clone();
     public void populateEntity() throws PWCGException;
     public McuTREntity getEntity();
     public void setOrientation(Orientation orientation);
@@ -18,7 +20,8 @@ public interface IVehicle extends IPWCGObject
     public void setCountry(ICountry country);
     public void setPosition(Coordinate position);
     public String getDescription();
-    public void makeVehicleFromDefinition(ICountry vehicleCountry);
     public String getScript();
-    public IVehicle clone();
+    public ICountry getCountry();
+    public Coordinate getPosition();
+    public int getIndex();
 }

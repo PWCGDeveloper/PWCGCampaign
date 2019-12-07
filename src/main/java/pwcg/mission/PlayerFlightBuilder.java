@@ -14,9 +14,6 @@ import pwcg.mission.flight.factory.FlightFactory;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
 import pwcg.mission.flight.factory.NightFlightTypeConverter;
 import pwcg.mission.flight.plane.PlaneMCU;
-import pwcg.mission.ground.unittypes.infantry.GroundMachineGunFlareUnit;
-import pwcg.mission.mcu.McuCheckZone;
-import pwcg.mission.mcu.group.FlareSequence;
 
 public class PlayerFlightBuilder
 {
@@ -43,7 +40,6 @@ public class PlayerFlightBuilder
         FlightFactory flightFactory = new FlightFactory(campaign);
         boolean isPlayerFlight = true;
         playerFlight = flightFactory.buildFlight(mission, squadron, flightType, isPlayerFlight);        
-        triggerLinkedUnitCZFromMyFlight(playerFlight);
         validatePlayerFlight();
     }
 
@@ -82,31 +78,6 @@ public class PlayerFlightBuilder
         }
     }
 
-    private void triggerLinkedUnitCZFromMyFlight(Unit parent) throws PWCGException 
-    {
-        for (Unit unit : parent.linkedUnits)
-        {
-            MissionBeginUnit mbu = unit.getMissionBeginUnit();
-            if (mbu instanceof MissionBeginUnitCheckZone)
-            {
-                MissionBeginUnitCheckZone mbucz = (MissionBeginUnitCheckZone) mbu;
-                McuCheckZone checkZone = mbucz.getSelfDeactivatingCheckZone().getCheckZone();
-                checkZone.triggerCheckZoneByFlight(playerFlight);
-            }
-            
-            if (unit instanceof GroundMachineGunFlareUnit)
-            {
-                GroundMachineGunFlareUnit flareUnit = (GroundMachineGunFlareUnit) unit;
-                FlareSequence flareSequence = flareUnit.getFlares();
-                MissionBeginUnitCheckZone mbucz = flareSequence.getMissionBeginUnit();
-                McuCheckZone checkZone = mbucz.getSelfDeactivatingCheckZone().getCheckZone();
-                checkZone.triggerCheckZoneByFlight(playerFlight);
-            }
-
-            triggerLinkedUnitCZFromMyFlight(unit);
-        }
-    }
-        
     private FlightTypes getSpecialFlightType(MissionHumanParticipants participatingPlayers) throws PWCGException
     {
         if (!(campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COMPETITIVE))

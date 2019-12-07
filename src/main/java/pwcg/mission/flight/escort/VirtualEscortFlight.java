@@ -41,13 +41,6 @@ public class VirtualEscortFlight extends Flight
 	}
 
     @Override
-	public String getMissionObjective() 
-	{
-		String objective = "Escort our flight to the specified location and accompany them until they cross our lines.";
-		return objective;
-	}
-
-    @Override
     protected List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) 
     {
         List<McuWaypoint> waypoints = new ArrayList<McuWaypoint>();

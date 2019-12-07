@@ -6,14 +6,12 @@ import java.io.IOException;
 
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
-import pwcg.mission.flight.waypoint.WaypointGoal;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 
 public class McuCover extends BaseFlightMcu
 {
 	private int coverGroup = 1;
 	private WaypointPriority priority = WaypointPriority.PRIORITY_LOW;
-	private WaypointGoal goalType = WaypointGoal.GOAL_DEFAULT;
 
 	public McuCover ()
 	{
@@ -38,7 +36,6 @@ public class McuCover extends BaseFlightMcu
             writer.newLine();
             writer.write("  Priority = " + priority.getPriorityValue() + ";");
             writer.newLine();
-            writeMCUGoal(writer, goalType.getGoal());
 
             writer.write("}");
             writer.newLine();

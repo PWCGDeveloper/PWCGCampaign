@@ -6,10 +6,8 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.balloondefense.AiBalloonDefenseFlight;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
-import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.group.VirtualWayPoint;
 import pwcg.mission.utils.AiAdjuster;
 
@@ -83,7 +81,7 @@ public class MissionFlightFinalizer
         {
             // Trigger the flight on proximity to player
             triggerOtherFlightCZFromPlayerFlight(flight);
-            for (Unit linkedUnit  : flight.getLinkedUnits())
+            for (IUnit linkedUnit  : flight.getLinkedUnits())
             {
                 if (linkedUnit instanceof Flight)
                 {
@@ -111,16 +109,12 @@ public class MissionFlightFinalizer
                 if (vwp != null && vwp instanceof VirtualWayPoint)
                 {
                     VirtualWayPoint vwpCZ = (VirtualWayPoint)vwp;
-                    McuCheckZone checkZone = vwpCZ.getTriggerCheckZone().getCheckZone();
-                    checkZone.triggerCheckZoneByMultipleObjects(virtualFlight.getMission().getMissionFlightBuilder().determinePlayerPlaneIds());
+                    for (int planeIndex : virtualFlight.getMission().getMissionFlightBuilder().determinePlayerPlaneIds())
+                    {
+                        vwpCZ.getTriggerCheckZone().setCheckZoneObject(planeIndex);
+                    }
                 }
             }
-        }
-        
-        if (virtualFlight instanceof AiBalloonDefenseFlight)
-        {
-            AiBalloonDefenseFlight balloonDefenseFlight = (AiBalloonDefenseFlight)virtualFlight;
-            balloonDefenseFlight.setBalloonCheckZoneForPlayer(virtualFlight.getMission().getMissionFlightBuilder().determinePlayerPlaneIds());
         }
     }
 

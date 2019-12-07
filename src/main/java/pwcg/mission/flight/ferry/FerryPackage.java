@@ -21,7 +21,7 @@ public class FerryPackage implements IFlightPackage
 	{
 	    IAirfield fromAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(fromAirfield.getPosition().copy());        
-		FerryFlight ferry = new FerryFlight (flightInformation, missionBeginUnit, false);
+		FerryFlight ferry = new FerryFlight (flightInformation, missionBeginUnit);
 		ferry.createUnitMission();
 		return ferry;
 	}

@@ -5,9 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.api.Side;
-import pwcg.campaign.target.TacticalTarget;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.target.TacticalTarget;
 
 public class TargetPreferenceSet
 {
