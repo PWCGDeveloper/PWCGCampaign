@@ -13,7 +13,8 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.ground.builder.GroundUnitAttackBuilder;
+import pwcg.mission.ground.factory.GroundUnitAttackFactory;
+import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.TacticalTarget;
 import pwcg.mission.target.TargetDefinition;
@@ -46,7 +47,7 @@ public class GroundUnitBuilderAttackFCTest extends FranceAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_TRAIN);
 
-        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
+        GroundUnitAttackFactory groundUnitBuilderAttack = new GroundUnitAttackFactory(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
         IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
@@ -57,7 +58,7 @@ public class GroundUnitBuilderAttackFCTest extends FranceAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_AIRFIELD);
 
-        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
+        GroundUnitAttackFactory groundUnitBuilderAttack = new GroundUnitAttackFactory(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
         IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
@@ -68,7 +69,7 @@ public class GroundUnitBuilderAttackFCTest extends FranceAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_TRANSPORT);
 
-        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
+        GroundUnitAttackFactory groundUnitBuilderAttack = new GroundUnitAttackFactory(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
         IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
@@ -79,7 +80,7 @@ public class GroundUnitBuilderAttackFCTest extends FranceAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_ARTILLERY);
 
-        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
+        GroundUnitAttackFactory groundUnitBuilderAttack = new GroundUnitAttackFactory(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
         IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
@@ -90,7 +91,7 @@ public class GroundUnitBuilderAttackFCTest extends FranceAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_DRIFTER);
 
-        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
+        GroundUnitAttackFactory groundUnitBuilderAttack = new GroundUnitAttackFactory(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
         IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
@@ -101,7 +102,7 @@ public class GroundUnitBuilderAttackFCTest extends FranceAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_ASSAULT);
 
-        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
+        GroundUnitAttackFactory groundUnitBuilderAttack = new GroundUnitAttackFactory(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
         IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
@@ -112,7 +113,7 @@ public class GroundUnitBuilderAttackFCTest extends FranceAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_DEFENSE);
 
-        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
+        GroundUnitAttackFactory groundUnitBuilderAttack = new GroundUnitAttackFactory(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
         IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
@@ -123,7 +124,7 @@ public class GroundUnitBuilderAttackFCTest extends FranceAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_SHIPPING);
 
-        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
+        GroundUnitAttackFactory groundUnitBuilderAttack = new GroundUnitAttackFactory(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
         IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
@@ -134,7 +135,7 @@ public class GroundUnitBuilderAttackFCTest extends FranceAttackMockCampaign
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_TROOP_CONCENTRATION);
 
-        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(campaign, mission, targetDefinition);
+        GroundUnitAttackFactory groundUnitBuilderAttack = new GroundUnitAttackFactory(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
         IGroundUnitCollection groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         validateTestResults(groundUnitCollection);
@@ -142,7 +143,7 @@ public class GroundUnitBuilderAttackFCTest extends FranceAttackMockCampaign
 
     private void validateTestResults(IGroundUnitCollection groundUnitCollection) throws PWCGException
     {
-        List<IGroundUnitCollection> groundUnits = groundUnitCollection.getAllAlliedGroundUnits();
+        List<IGroundUnit> groundUnits = groundUnitCollection.getGroundUnits();
         assert(groundUnits.size() > 0);
         assert(groundUnitCollection.getTargetCoordinatesFromGroundUnits(Side.ALLIED) != null);
     }

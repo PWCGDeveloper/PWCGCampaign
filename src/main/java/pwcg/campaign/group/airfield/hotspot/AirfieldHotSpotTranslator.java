@@ -28,13 +28,13 @@ public class AirfieldHotSpotTranslator implements IHotSpotTranslator
     {
         List<HotSpot> hotSpots = getNearbyAirfieldHotSpots(airfield, date);
         
-        int numSpotlightHotSPots = determineNumSpotlightHotSpots(hotSpots.size());
-        for (int i = 0; i < numSpotlightHotSPots; ++i)
+        int numSearchLightHotSPots = determineNumSearchLightHotSpots(hotSpots.size());
+        for (int i = 0; i < numSearchLightHotSPots; ++i)
         {
-            hotSpots.get(i).setHotSpotType(HotSpotType.HOTSPOT_SPOTLIGHT);
+            hotSpots.get(i).setHotSpotType(HotSpotType.HOTSPOT_SEARCHLIGHT);
         }
         
-        int numAAAHotSPots = determineNumAAAHotSpots(hotSpots.size(), numSpotlightHotSPots);
+        int numAAAHotSPots = determineNumAAAHotSpots(hotSpots.size(), numSearchLightHotSPots);
         for (int i = 0; i < numAAAHotSPots; ++i)
         {
             hotSpots.get(i).setHotSpotType(HotSpotType.HOTSPOT_AAA);
@@ -56,7 +56,7 @@ public class AirfieldHotSpotTranslator implements IHotSpotTranslator
         return hotSpots;
     }
     
-    private int determineNumSpotlightHotSpots(int numHotSPots)
+    private int determineNumSearchLightHotSpots(int numHotSPots)
     {
         if (mission.isNightMission())
         {
@@ -73,15 +73,15 @@ public class AirfieldHotSpotTranslator implements IHotSpotTranslator
         return 0;
     }
 
-    private int determineNumAAAHotSpots(int numHotSPots, int numSpotlightHotSPots)
+    private int determineNumAAAHotSpots(int numHotSPots, int numSearchLightHotSPots)
     {
     	if (numHotSPots > 6)
     	{
-    		return 5 - numSpotlightHotSPots;
+    		return 5 - numSearchLightHotSPots;
     	}
     	else
     	{
-    		return numHotSPots - numSpotlightHotSPots;
+    		return numHotSPots - numSearchLightHotSPots;
     	}
     }
 

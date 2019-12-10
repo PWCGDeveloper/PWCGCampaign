@@ -28,7 +28,7 @@ public class BalloonUnit extends GroundUnit
 
     private void createWinch() throws PWCGException
     {
-        winchUnit = new BalloonWinch(this);
+        winchUnit = new BalloonWinch(this, pwcgGroundUnitInformation);
         winchUnit.createWinchUnit();
     }
 

@@ -1,22 +1,22 @@
-package pwcg.mission.ground.builder;
+package pwcg.mission.ground.factory;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.factory.AAAUnitBuilder;
-import pwcg.mission.ground.factory.AssaultBuilder;
+import pwcg.mission.ground.builder.AAAUnitBuilder;
+import pwcg.mission.ground.builder.AssaultBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.TargetDefinition;
 
-public class TargetBuilderGenerator
+public class TargetFactory
 {
     private FlightInformation flightInformation;
     private TargetDefinition targetDefinition;    
     private IGroundUnitCollection groundUnitCollection;
 
-    public TargetBuilderGenerator(FlightInformation flightInformation) throws PWCGException 
+    public TargetFactory(FlightInformation flightInformation) throws PWCGException 
     { 
         this.flightInformation = flightInformation;
         this.targetDefinition = flightInformation.getTargetDefinition();
@@ -49,7 +49,7 @@ public class TargetBuilderGenerator
 
     private void createTargetGroundUnits() throws PWCGException
     {
-        GroundUnitAttackBuilder groundUnitBuilderAttack = new GroundUnitAttackBuilder(flightInformation.getCampaign(), flightInformation.getMission(), targetDefinition);
+        GroundUnitAttackFactory groundUnitBuilderAttack = new GroundUnitAttackFactory(flightInformation.getCampaign(), flightInformation.getMission(), targetDefinition);
         groundUnitCollection = groundUnitBuilderAttack.createTargetGroundUnits();
         
         Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(targetDefinition.getTargetCountry().getSide());

@@ -19,7 +19,7 @@ import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.TargetSide;
-import pwcg.mission.ground.factory.TruckConvoyBuilder;
+import pwcg.mission.ground.builder.TruckConvoyBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.TacticalTarget;
 import pwcg.mission.target.TargetDefinition;

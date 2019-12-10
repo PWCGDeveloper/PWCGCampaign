@@ -14,7 +14,7 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.ground.factory.AAAUnitBuilder;
+import pwcg.mission.ground.builder.AAAUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class AAAFrontLinesBuilder 

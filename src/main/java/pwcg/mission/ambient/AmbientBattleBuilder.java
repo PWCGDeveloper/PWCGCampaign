@@ -18,7 +18,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
-import pwcg.mission.ground.factory.AssaultBuilder;
+import pwcg.mission.ground.builder.AssaultBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.TacticalTarget;
 import pwcg.mission.target.TargetDefinition;

@@ -3,6 +3,7 @@ package pwcg.mission.target.locator;
 import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.context.DrifterManager;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
@@ -17,8 +18,6 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.PositionFinder;
-import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.ground.builder.DrifterManager;
 import pwcg.mission.target.TacticalTarget;
 import pwcg.mission.target.TargetDefinition;
 

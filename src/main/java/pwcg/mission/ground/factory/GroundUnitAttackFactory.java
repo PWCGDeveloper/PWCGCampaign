@@ -1,27 +1,28 @@
-package pwcg.mission.ground.builder;
+package pwcg.mission.ground.factory;
 
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
-import pwcg.mission.ground.factory.AirfieldUnitBuilder;
-import pwcg.mission.ground.factory.ArtilleryUnitBuilder;
-import pwcg.mission.ground.factory.AssaultBuilder;
-import pwcg.mission.ground.factory.DrifterUnitBuilder;
-import pwcg.mission.ground.factory.MinimalAiTargetBuilder;
-import pwcg.mission.ground.factory.ShippingUnitBuilder;
-import pwcg.mission.ground.factory.TrainUnitBuilder;
-import pwcg.mission.ground.factory.TruckConvoyBuilder;
+import pwcg.mission.ground.builder.AirfieldUnitBuilder;
+import pwcg.mission.ground.builder.ArtilleryUnitBuilder;
+import pwcg.mission.ground.builder.AssaultBuilder;
+import pwcg.mission.ground.builder.DrifterUnitBuilder;
+import pwcg.mission.ground.builder.ShipTypeChooser;
+import pwcg.mission.ground.builder.ShippingUnitBuilder;
+import pwcg.mission.ground.builder.TrainUnitBuilder;
+import pwcg.mission.ground.builder.TruckConvoyBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.target.TacticalTarget;
 import pwcg.mission.target.TargetDefinition;
 
-public class GroundUnitAttackBuilder
+public class GroundUnitAttackFactory
 {
     private Campaign campaign;
     private Mission mission;
     private TargetDefinition targetDefinition;
 
-    public GroundUnitAttackBuilder(Campaign campaign, Mission mission, TargetDefinition targetDefinition)
+    public GroundUnitAttackFactory(Campaign campaign, Mission mission, TargetDefinition targetDefinition)
     {
         this.campaign = campaign;
         this.mission = mission;
@@ -52,8 +53,9 @@ public class GroundUnitAttackBuilder
         }
         else if (targetDefinition.getTargetType() == TacticalTarget.TARGET_SHIPPING)
         {
+            VehicleClass shipType = ShipTypeChooser.chooseShipType(targetDefinition.getTargetCountry().getSide());
             ShippingUnitBuilder shippingUnitBuilder = new ShippingUnitBuilder(campaign, targetDefinition);
-            return shippingUnitBuilder.createShippingUnit();
+            return shippingUnitBuilder.createShippingUnit(shipType);
         }
         else if (targetDefinition.getTargetType() == TacticalTarget.TARGET_ARTILLERY)
         {
@@ -62,7 +64,7 @@ public class GroundUnitAttackBuilder
         }
         else if (targetDefinition.getTargetType() == TacticalTarget.TARGET_TROOP_CONCENTRATION)
         {
-            MinimalAiTargetBuilder smallTargetBuilder = new MinimalAiTargetBuilder(campaign, targetDefinition);
+            MinimalAiTargetFactory smallTargetBuilder = new MinimalAiTargetFactory(campaign, targetDefinition);
             return smallTargetBuilder.createTroopConcentration();
         }
         else if (targetDefinition.getTargetType() == TacticalTarget.TARGET_ASSAULT || targetDefinition.getTargetType() == TacticalTarget.TARGET_DEFENSE)
@@ -72,7 +74,7 @@ public class GroundUnitAttackBuilder
         }
         else
         {
-            MinimalAiTargetBuilder smallTargetBuilder = new MinimalAiTargetBuilder(campaign, targetDefinition);
+            MinimalAiTargetFactory smallTargetBuilder = new MinimalAiTargetFactory(campaign, targetDefinition);
             return smallTargetBuilder.createTroopConcentration();
         }        
     }

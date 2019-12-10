@@ -11,12 +11,12 @@ import pwcg.core.utils.Logger;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointPriority;
+import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.CoalitionFactory;
 import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
-import pwcg.mission.target.TargetDefinition;
 
 public class BalloonWinch
 {
@@ -27,13 +27,13 @@ public class BalloonWinch
 	private McuWaypoint winchDownWP = null;
 	private McuTimer winchDownTimer = null;
 
-    private BalloonUnit balloonUnit = null;
+    private BalloonUnit balloonUnit = null;    
+    private GroundUnitInformation pwcgGroundUnitInformation;
 
-    private TargetDefinition targetDefinition;
-    
-	public BalloonWinch (BalloonUnit balloonUnit) 
+    public BalloonWinch (BalloonUnit balloonUnit, GroundUnitInformation pwcgGroundUnitInformation) 
 	{
 	    this.balloonUnit = balloonUnit;
+        this.pwcgGroundUnitInformation  = pwcgGroundUnitInformation;
 	}
 
 	public void createWinchUnit() throws PWCGException  
@@ -44,34 +44,34 @@ public class BalloonWinch
 
 	private void createWinch() throws PWCGException 
 	{
-        Coalition enemyCoalition = CoalitionFactory.getEnemyCoalition(targetDefinition.getTargetCountry());
+        Coalition enemyCoalition = CoalitionFactory.getEnemyCoalition(pwcgGroundUnitInformation.getCountry());
 	    
-        missionBeginUnit = new MissionBeginUnit(targetDefinition.getTargetPosition());
+        missionBeginUnit = new MissionBeginUnit(pwcgGroundUnitInformation.getPosition().copy());
         
 		winchCheckZone = new McuCheckZone();
 		winchCheckZone.setZone(1000);
 		winchCheckZone.triggerCheckZoneByCoalition(enemyCoalition);
 
-		winchCheckZone.setName("Winch Check Zone for " + targetDefinition.getTargetName());
-		winchCheckZone.setDesc("Winch Check Zone for " + targetDefinition.getTargetName());
-		winchCheckZone.setPosition(targetDefinition.getTargetPosition().copy());
+		winchCheckZone.setName("Winch Check Zone");
+		winchCheckZone.setDesc("Winch Check Zone");
+		winchCheckZone.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 		
 		// Make the winch down CZ Timer
 		winchCheckZoneTimer = new McuTimer();
-		winchCheckZoneTimer.setName("Winch Check Zone Timer for " + targetDefinition.getTargetName());
-		winchCheckZoneTimer.setDesc("Winch Check Zone Timer for " + targetDefinition.getTargetName());
-		winchCheckZoneTimer.setPosition(targetDefinition.getTargetPosition().copy());
+		winchCheckZoneTimer.setName("Winch Check Zone Timer");
+		winchCheckZoneTimer.setDesc("Winch Check Zone Timer");
+		winchCheckZoneTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 		
 		
 		// Make the winch down Timer
 		winchDownTimer = new McuTimer();
-		winchDownTimer.setName("Winch Check Zone Timer for " + targetDefinition.getTargetName());
-		winchDownTimer.setDesc("Winch Check Zone Timer for " + targetDefinition.getTargetName());
-		winchDownTimer.setPosition(targetDefinition.getTargetPosition().copy());
+		winchDownTimer.setName("Winch down timer");
+		winchDownTimer.setDesc("Winch down timer");
+		winchDownTimer.setPosition(pwcgGroundUnitInformation.getPosition().copy());
 		winchDownTimer.setTimer(60);
 		
 		// Make the winch down WP
-		Coordinate winchDownPos = balloonUnit.getPosition().copy();
+		Coordinate winchDownPos = pwcgGroundUnitInformation.getPosition().copy();
 		winchDownPos.setYPos(0.0);
 		
 		winchDownWP = WaypointFactory.createLandingApproachWaypointType();		

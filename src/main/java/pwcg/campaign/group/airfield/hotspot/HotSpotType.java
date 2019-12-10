@@ -7,5 +7,5 @@ public enum HotSpotType
     HOTSPOT_PLANE,
     HOTSPOT_ITEM,
     HOTSPOT_AAA,
-    HOTSPOT_SPOTLIGHT
+    HOTSPOT_SEARCHLIGHT
 }

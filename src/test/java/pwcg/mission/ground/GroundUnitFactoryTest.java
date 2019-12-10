@@ -9,14 +9,15 @@ import pwcg.campaign.context.Country;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.ground.factory.AAAUnitBuilder;
-import pwcg.mission.ground.factory.DrifterUnitBuilder;
-import pwcg.mission.ground.factory.ShippingUnitBuilder;
-import pwcg.mission.ground.factory.SpotLightBuilder;
+import pwcg.mission.ground.builder.AAAUnitBuilder;
+import pwcg.mission.ground.builder.DrifterUnitBuilder;
+import pwcg.mission.ground.builder.ShippingUnitBuilder;
+import pwcg.mission.ground.builder.SearchLightBuilder;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.artillery.GroundAAArtilleryBattery;
 import pwcg.mission.ground.unittypes.artillery.GroundAAMachineGunBattery;
 import pwcg.mission.ground.unittypes.artillery.GroundArtilleryBattery;
-import pwcg.mission.ground.unittypes.artillery.SpotlightUnit;
+import pwcg.mission.ground.unittypes.artillery.SearchLightUnit;
 import pwcg.mission.ground.unittypes.infantry.AssaultGroundUnitFactory;
 import pwcg.mission.ground.unittypes.infantry.DrifterUnit;
 import pwcg.mission.ground.unittypes.infantry.GroundAntiTankArtillery;
@@ -48,7 +49,7 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     {
         AAAUnitBuilder groundUnitFactory =  new AAAUnitBuilder(campaign, country, new Coordinate (100000, 0, 100000));
         IGroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
-        assert (groundUnitGroup.getGroundUnit().getSpawners().size() >= 2);
+        assert (groundUnitGroup.getGroundUnits().getSpawners().size() >= 2);
         assert (groundUnitGroup instanceof GroundAAArtilleryBattery);
         assert (groundUnitGroup.getCountry().getCountry() == Country.GERMANY);
     }
@@ -58,7 +59,7 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     {
         AAAUnitBuilder groundUnitFactory =  new AAAUnitBuilder(campaign, country, new Coordinate (100000, 0, 100000));
         IGroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
-        assert (groundUnitGroup.getGroundUnit().getSpawners().size() >= 3);
+        assert (groundUnitGroup.getGroundUnits().getSpawners().size() >= 3);
         assert (groundUnitGroup instanceof GroundAAMachineGunBattery);
         assert (groundUnitGroup.getCountry().getCountry() == Country.GERMANY);
     }
@@ -146,14 +147,14 @@ public class GroundUnitFactoryTest extends KubanAttackMockCampaign
     }
 
     @Test
-    public void createSpotLightGroupTest () throws PWCGException 
+    public void createSearchLightGroupTest () throws PWCGException 
     {
         targetDefinition.setTargetType(TacticalTarget.TARGET_AIRFIELD);
 
-        SpotLightBuilder groundUnitFactory =  new SpotLightBuilder(campaign);
-        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createSpotLightGroup(targetDefinition);
+        SearchLightBuilder groundUnitFactory =  new SearchLightBuilder(campaign);
+        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createSearchLightGroup(targetDefinition);
         assert (groundUnitGroup.getGroundUnit().getSpawners().size() == 1);
-        assert (groundUnitGroup instanceof SpotlightUnit);
+        assert (groundUnitGroup instanceof SearchLightUnit);
         assert (groundUnitGroup.getCountry().getCountry() == Country.GERMANY);
 
     }

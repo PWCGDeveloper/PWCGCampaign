@@ -12,7 +12,7 @@ public class AirfieldObjects
 	private List<IVehicle> airfieldObjects = new ArrayList<IVehicle>();
 	private List<IStaticPlane> staticPlanes = new ArrayList<IStaticPlane>();
     private List<IGroundUnitCollection> aaaForAirfield = new ArrayList<>();
-    private List<IGroundUnitCollection> spotlightsForAirfield = new ArrayList<>();
+    private List<IGroundUnitCollection> searchLightsForAirfield = new ArrayList<>();
 
 	public List<IVehicle> getAirfieldObjects()
 	{
@@ -44,13 +44,13 @@ public class AirfieldObjects
         this.aaaForAirfield.add(aaaMg);
     }
 
-    public List<IGroundUnitCollection> getSpotlightsForAirfield()
+    public List<IGroundUnitCollection> getSearchLightsForAirfield()
     {
-        return spotlightsForAirfield;
+        return searchLightsForAirfield;
     }
 
-    public void addSpotlightsForAirfield(IGroundUnitCollection aaa)
+    public void addSearchlightsForAirfield(IGroundUnitCollection aaa)
     {
-        this.spotlightsForAirfield.add(aaa);
+        this.searchLightsForAirfield.add(aaa);
     }
 }

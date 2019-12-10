@@ -11,30 +11,24 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.mission.IUnit;
-import pwcg.mission.ground.GroundUnitInformation;
-import pwcg.mission.mcu.Coalition;
-import pwcg.mission.mcu.group.SelfDeactivatingCheckZone;
+import pwcg.mission.mcu.McuValidator;
+import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
 import pwcg.mission.target.TacticalTarget;
 
 public class GroundUnitCollection implements IGroundUnitCollection
 {
     private final static int GROUND_UNIT_SPAWN_DISTANCE = 20000;
     
-    protected GroundUnitCollectionType groundUnitCollectionType;
-    protected String groundUnitCollectionName;
-    protected GroundUnitInformation pwcgGroundUnitInformation;
+    private GroundUnitCollectionData groundUnitCollectionData;
 
     private int index = IndexGenerator.getInstance().getNextIndex();  
 
     private List<IGroundUnit> groundUnits = new ArrayList<> ();
-    private SelfDeactivatingCheckZone selfDeactivatingCheckZone;
-    private List<Coalition> triggerCoalitions;
+    private MissionBeginSelfDeactivatingCheckZone missionBeginUnit;
 
-    public GroundUnitCollection (GroundUnitCollectionType groundUnitCollectionType, String groundUnitCollectionName, List<Coalition> triggerCoalitions)
+    public GroundUnitCollection (GroundUnitCollectionData groundUnitCollectionData)
     {
-        this.groundUnitCollectionType = groundUnitCollectionType;
-        this.groundUnitCollectionName = groundUnitCollectionName;
-        this.triggerCoalitions = triggerCoalitions;
+        this.groundUnitCollectionData = groundUnitCollectionData;
     }
 
     public Coordinate getTargetCoordinatesFromGroundUnits(Side side) throws PWCGException
@@ -50,7 +44,7 @@ public class GroundUnitCollection implements IGroundUnitCollection
         groundUnits.addAll(relatedGroundCollection.getGroundUnits());
     }
     
-    public void finishGroundUnitCollection()
+    public void finishGroundUnitCollection() throws PWCGException
     {
         createCheckZone();
         createTargetAssociations();
@@ -70,17 +64,17 @@ public class GroundUnitCollection implements IGroundUnitCollection
     }
 
 
-    private void createCheckZone()
+    private void createCheckZone() throws PWCGException
     {
-        selfDeactivatingCheckZone = new SelfDeactivatingCheckZone(pwcgGroundUnitInformation.getPosition(), GROUND_UNIT_SPAWN_DISTANCE);
-        selfDeactivatingCheckZone.setCheckZoneCoalitions(triggerCoalitions);
+        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone(getPosition(), GROUND_UNIT_SPAWN_DISTANCE);
+        missionBeginUnit.getCheckZone().setCheckZoneCoalitions(groundUnitCollectionData.getTriggerCoalitions());
     }
 
     private void createTargetAssociations()
     {
         for (IGroundUnit groundUnit : groundUnits)
         {
-            selfDeactivatingCheckZone.setCheckZoneTarget(groundUnit. getEntryPoint());
+            missionBeginUnit.getCheckZone().setCheckZoneTarget(groundUnit. getEntryPoint());
         }
     }
 
@@ -91,15 +85,27 @@ public class GroundUnitCollection implements IGroundUnitCollection
     }
 
     @Override
-    public Coordinate getPosition()
+    public Coordinate getPosition() throws PWCGException
     {
-        return pwcgGroundUnitInformation.getPosition();
+        GroundUnitCollectionTargetFinder groundUnitCollectionTargetFinder = new GroundUnitCollectionTargetFinder(this);
+        IGroundUnit targetUnit = groundUnitCollectionTargetFinder.findTargetUnit();
+        Coordinate targetCoordinates = targetUnit.getPosition();
+        return targetCoordinates;
+    }
+
+    @Override
+    public Coordinate getPosition(Side side) throws PWCGException
+    {
+        GroundUnitCollectionTargetFinder groundUnitCollectionTargetFinder = new GroundUnitCollectionTargetFinder(this);
+        IGroundUnit targetUnit = groundUnitCollectionTargetFinder.findTargetUnit(side);
+        Coordinate targetCoordinates = targetUnit.getPosition();
+        return targetCoordinates;
     }
 
     @Override
     public TacticalTarget getTargetType()
     {
-        return pwcgGroundUnitInformation.getTargetType();
+        return groundUnitCollectionData.getTargetType();
     }
 
     @Override
@@ -112,14 +118,14 @@ public class GroundUnitCollection implements IGroundUnitCollection
             writer.write("{");
             writer.newLine();
             
-            writer.write("  Name = \"" + groundUnitCollectionName + "\";");
+            writer.write("  Name = \"" + groundUnitCollectionData.getName() + "\";");
             writer.newLine();
             writer.write("  Index = " + index + ";");
             writer.newLine();
-            writer.write("  Desc = \"" + groundUnitCollectionName + "\";");
+            writer.write("  Desc = \"" + groundUnitCollectionData.getName() + "\";");
             writer.newLine();
 
-            selfDeactivatingCheckZone.write(writer);
+            missionBeginUnit.write(writer);
             for (IGroundUnit groundUnit : groundUnits)
             {
                 groundUnit.write(writer);
@@ -135,16 +141,26 @@ public class GroundUnitCollection implements IGroundUnitCollection
         }
     }
 
+    
+    @Override
+    public void validate() throws PWCGException
+    {
+        missionBeginUnit.validate();
+        for (IGroundUnit groundUnit : groundUnits)
+        {
+            int entryPoint = groundUnit.getEntryPoint();
+            if (!McuValidator.hasTarget(missionBeginUnit.getCheckZone().getCheckZone(), entryPoint))
+            {
+                throw new PWCGException("Unit not linked to check zone");
+            }
+            groundUnit.validate();
+        }
+    }
+    
     @Override
     public int getIndex()
     {
         return index;
-    }
-
-    @Override
-    public ICountry getCountry() throws PWCGException
-    {
-        return pwcgGroundUnitInformation.getCountry();
     }
 
     @Override
@@ -161,12 +177,18 @@ public class GroundUnitCollection implements IGroundUnitCollection
     @Override
     public GroundUnitCollectionType getGroundUnitCollectionType()
     {
-        return groundUnitCollectionType;
+        return groundUnitCollectionData.getGroundUnitCollectionType();
     }
 
     @Override
     public void addGroundUnit(IGroundUnit groundUnit)
     {
         groundUnits.add(groundUnit);
+    }
+
+    @Override
+    public ICountry getCountry() throws PWCGException
+    {
+        throw new PWCGException("Country for ground unit collection is undefined");
     }
 }

@@ -20,7 +20,7 @@ public enum VehicleClass
     Tank(false, "Tank", GroundUnitType.TANK_UNIT),
     
     RadioBeacon(false, "Radio Beacon", GroundUnitType.STATIC_UNIT),
-    SearchLight(false, "Search Light", GroundUnitType.STATIC_UNIT),
+    SearchLight(false, "Search Light", GroundUnitType.INFANTRY_UNIT),
 
     Car(false, "Car", GroundUnitType.TRANSPORT_UNIT),
     Drifter(false, "Barge", GroundUnitType.TRANSPORT_UNIT),

@@ -18,7 +18,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 import pwcg.mission.Mission;
 import pwcg.mission.TargetSide;
-import pwcg.mission.ground.factory.TrainUnitBuilder;
+import pwcg.mission.ground.builder.TrainUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.TacticalTarget;
 import pwcg.mission.target.TargetDefinition;

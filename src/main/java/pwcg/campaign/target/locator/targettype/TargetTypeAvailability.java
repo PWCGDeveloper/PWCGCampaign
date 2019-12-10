@@ -4,6 +4,7 @@ import java.util.Date;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.Side;
+import pwcg.campaign.context.DrifterManager;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
@@ -18,7 +19,6 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
-import pwcg.mission.ground.builder.DrifterManager;
 import pwcg.mission.target.TacticalTarget;
 
 public class TargetTypeAvailability

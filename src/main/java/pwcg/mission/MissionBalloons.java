@@ -59,7 +59,7 @@ public class MissionBalloons
         return true;
     }
 
-    private List<Coordinate> generateBalloonPositions(Mission mission)
+    private List<Coordinate> generateBalloonPositions(Mission mission) throws PWCGException
     {
         List<Coordinate> balloonPositions = new ArrayList<Coordinate>();
         for(Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())

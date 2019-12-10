@@ -13,7 +13,6 @@ import pwcg.campaign.group.GroupManager;
 import pwcg.campaign.shipping.ShippingLaneManager;
 import pwcg.campaign.target.locator.targettype.TargetPreferenceManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.ground.builder.DrifterManager;
 import pwcg.mission.options.MapWeather;
 import pwcg.mission.options.MissionOptions;
 

@@ -4,7 +4,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
-import pwcg.core.utils.RandomNumberGenerator;
 
 public class AirfieldHotSpotDefinition
 {

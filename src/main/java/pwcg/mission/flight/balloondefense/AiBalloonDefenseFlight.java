@@ -85,7 +85,7 @@ public class AiBalloonDefenseFlight extends Flight
 		super.write(writer);
 	}
 
-    public Coordinate getBalloonPosition()
+    public Coordinate getBalloonPosition() throws PWCGException
     {
         if (balloonUnit != null)
         {

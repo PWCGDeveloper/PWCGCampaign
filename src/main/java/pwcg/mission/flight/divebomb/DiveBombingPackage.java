@@ -6,7 +6,7 @@ import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
-import pwcg.mission.ground.builder.TargetBuilderGenerator;
+import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class DiveBombingPackage implements IFlightPackage
@@ -33,7 +33,7 @@ public class DiveBombingPackage implements IFlightPackage
 
     private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {
-        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(flightInformation);
+        TargetFactory targetBuilder = new TargetFactory(flightInformation);
         targetBuilder.buildTarget();
         return targetBuilder.getGroundUnits();
     }

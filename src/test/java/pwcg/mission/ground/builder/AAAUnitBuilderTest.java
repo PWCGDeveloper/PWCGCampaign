@@ -1,4 +1,4 @@
-package pwcg.mission.ground;
+package pwcg.mission.ground.builder;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,25 +18,16 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
 import pwcg.core.utils.DateUtils;
-import pwcg.mission.Mission;
-import pwcg.mission.ground.builder.AAAUnitBuilder;
-import pwcg.mission.ground.builder.AssaultBuilder;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
-import pwcg.mission.ground.unittypes.infantry.AssaultGroundUnitFactory;
-import pwcg.mission.ground.unittypes.infantry.GroundAntiTankArtillery;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.target.TacticalTarget;
-import pwcg.mission.target.TargetDefinition;
-import pwcg.mission.target.TargetDefinitionBuilderGround;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GroundUnitFactoryBoSTest
+public class AAAUnitBuilderTest
 {
     @Mock private Campaign campaign;
-    @Mock private Mission mission;
     @Mock private ConfigManagerCampaign configManager;
     
     private ICountry country = CountryFactory.makeCountryByCountry(Country.GERMANY);
@@ -55,13 +46,21 @@ public class GroundUnitFactoryBoSTest
     {
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, country, new Coordinate (100000, 0, 100000));
         IGroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
+        assert (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            assert (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery);
             assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
-            assert (groundUnit.getSpawners().size() >= 1);
-            assert (groundUnit.getSpawners().size() <= 4);
+            if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
+            {
+                assert (groundUnit.getSpawners().size() >= 1);
+                assert (groundUnit.getSpawners().size() <= 4);
+            }
+            else
+            {
+                throw new PWCGException("Unexpected unit type");
+            }
         }
+        groundUnitGroup.validate();
     }
 
     @Test
@@ -69,52 +68,48 @@ public class GroundUnitFactoryBoSTest
     {
         AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign,country, new Coordinate (100000, 0, 100000));
         IGroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAMGBattery(GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
+        assert (groundUnitGroup.getGroundUnits().size() == 1);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            assert (groundUnit.getVehicleClass() == VehicleClass.AAAMachineGun);
             assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
-            assert (groundUnit.getSpawners().size() >= 2);
-            assert (groundUnit.getSpawners().size() <= 8);
+            if (groundUnit.getVehicleClass() == VehicleClass.AAAMachineGun)
+            {
+                assert (groundUnit.getSpawners().size() >= 2);
+                assert (groundUnit.getSpawners().size() <= 8);
+            }
+            else
+            {
+                throw new PWCGException("Unexpected unit type");
+            }
         }
         groundUnitGroup.validate();
     }
+    
 
     @Test
-    public void createAssaultTest () throws PWCGException 
+    public void createAAAArtilleryBatteryWithSearchLightTest () throws PWCGException 
     {
-        TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
-                CountryFactory.makeCountryByCountry(Country.GERMANY), 
-                CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TacticalTarget.TARGET_ASSAULT, new Coordinate (102000, 0, 100000), true);
-
-        IGroundUnitCollection groundUnitGroup = AssaultBuilder.generateAssault(mission, targetDefinition);
+        AAAUnitBuilder groundUnitFactory = new AAAUnitBuilder(campaign, country, new Coordinate (100000, 0, 100000));
+        IGroundUnitCollection groundUnitGroup = groundUnitFactory.createAAAArtilleryBatteryWithSearchLight(GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM);
+        assert(groundUnitGroup.getGroundUnits().size() == 2);
+        assert (groundUnitGroup.getGroundUnits().size() == 2);
         for (IGroundUnit groundUnit : groundUnitGroup.getGroundUnits())
         {
-            assert (groundUnit.getVehicleClass() == VehicleClass.ArtilleryAntiTank);
             assert (groundUnit.getCountry().getCountry() == Country.GERMANY);
-            assert (groundUnit.getSpawners().size() >= 2);
-            assert (groundUnit.getSpawners().size() <= 8);
+            if (groundUnit.getVehicleClass() == VehicleClass.AAAArtillery)
+            {
+                assert (groundUnit.getSpawners().size() >= 1);
+                assert (groundUnit.getSpawners().size() <= 4);
+            }
+            else if (groundUnit.getVehicleClass() == VehicleClass.SearchLight)
+            {
+                assert (groundUnit.getSpawners().size() == 2);
+            }
+            else
+            {
+                throw new PWCGException("Unexpected unit type");
+            }
         }
-        groundUnitGroup.validate();
-    }
-
-    @Test
-    public void createAssaultTest () throws PWCGException 
-    {
-        String name = country.getCountryName() + " AntiTank";
-        GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                campaign, 
-                country,
-                name, 
-                TacticalTarget.TARGET_ARTILLERY, 
-                new Coordinate (100000, 0, 100000), 
-                new Coordinate (102000, 0, 100000), 
-                new Orientation(), 
-                true);
-
-        AssaultGroundUnitFactory groundUnitFactory = new AssaultGroundUnitFactory();
-        GroundAntiTankArtillery groundUnitGroup = (GroundAntiTankArtillery)groundUnitFactory.createAntiTankGunUnit(groundUnitInformation);
         groundUnitGroup.validate();
     }
 }

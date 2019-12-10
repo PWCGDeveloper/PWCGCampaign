@@ -5,14 +5,8 @@ import java.util.List;
 import pwcg.mission.IUnit;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.ground.balloon.BalloonDefenseGroup;
-import pwcg.mission.ground.org.GroundUnit;
-import pwcg.mission.ground.org.GroundUnitSpawning;
-import pwcg.mission.ground.org.IGroundUnit;
+import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnitCollection;
-import pwcg.mission.ground.unittypes.artillery.GroundAAArtilleryBattery;
-import pwcg.mission.ground.unittypes.infantry.GroundMachineGunFlareUnit;
-import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 
 public class GroundUnitValidator
 {
@@ -41,36 +35,25 @@ public class GroundUnitValidator
     {
         for (IUnit linkedUnit : flight.getLinkedUnits())
         {
-            if (linkedUnit instanceof GroundTrainUnit)
+            if (linkedUnit instanceof IGroundUnitCollection)
             {
-                IGroundUnitCollection target = (IGroundUnitCollection)linkedUnit;
-                assert(target.getGroundUnit().getSpawners().size() == 1);
-            }
-            else if (linkedUnit instanceof BalloonDefenseGroup)
-            {
-                IGroundUnitCollection target = (IGroundUnitCollection)linkedUnit;
-                assert(target.getGroundUnit().getSpawners() != null);
-            }
-            else if (linkedUnit instanceof GroundMachineGunFlareUnit)
-            {
-                IGroundUnitCollection target = (IGroundUnitCollection)linkedUnit;
-                assert(target.getGroundUnit().getSpawners().size() == 1);
-            }
-            else if (linkedUnit instanceof IGroundUnitCollection)
-            {
-                IGroundUnitCollection target = (IGroundUnitCollection)linkedUnit;
-                assert(target.getGroundUnit().getSpawners().size() > 0);
-            }
-            else if (linkedUnit instanceof GroundUnitSpawning)
-            {
-                IGroundUnitCollection target = (IGroundUnitCollection)linkedUnit;
-                assert(target.getGroundUnit().getSpawners().size() > 0);
-                
-            }
-            else if (linkedUnit instanceof GroundUnit)
-            {
-                IGroundUnit target = (IGroundUnit)linkedUnit;
-                assert(target.getVehicle() != null);
+                IGroundUnitCollection groundUnitCollection = (IGroundUnitCollection)linkedUnit;
+                if (((IGroundUnitCollection) linkedUnit).getGroundUnitCollectionType() == GroundUnitCollectionType.BALLOON_GROUND_UNIT_COLLECTION)
+                {
+                    assert(groundUnitCollection.getGroundUnits().size() == 3);
+                }
+                else if (((IGroundUnitCollection) linkedUnit).getGroundUnitCollectionType() == GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION)
+                {
+                    assert(groundUnitCollection.getGroundUnits().size() > 0);
+                }
+                else if (((IGroundUnitCollection) linkedUnit).getGroundUnitCollectionType() == GroundUnitCollectionType.STATIC_GROUND_UNIT_COLLECTION)
+                {
+                    assert(groundUnitCollection.getGroundUnits().size() > 0);
+                }
+                else if (((IGroundUnitCollection) linkedUnit).getGroundUnitCollectionType() == GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION)
+                {
+                    assert(groundUnitCollection.getGroundUnits().size() > 0);
+                }
             }
         }
     }
@@ -79,31 +62,10 @@ public class GroundUnitValidator
     {
         for (IUnit linkedUnit : flight.getLinkedUnits())
         {
-            if (linkedUnit instanceof GroundTrainUnit)
+            if (linkedUnit instanceof IGroundUnitCollection)
             {
-                IGroundUnitCollection target = (IGroundUnitCollection)linkedUnit;
-                assert(target.getGroundUnit().getSpawners().size() == 1);
-            }
-            else if (linkedUnit instanceof BalloonDefenseGroup)
-            {
-                IGroundUnitCollection target = (IGroundUnitCollection)linkedUnit;
-                assert(target.getGroundUnit().getSpawners() != null);
-            }
-            else if (linkedUnit instanceof GroundAAArtilleryBattery)
-            {
-                IGroundUnitCollection target = (IGroundUnitCollection)linkedUnit;
-                assert(target.getGroundUnit().getSpawners().size() > 0);
-            }
-            else if (linkedUnit instanceof GroundUnitSpawning)
-            {
-                IGroundUnitCollection target = (IGroundUnitCollection)linkedUnit;
-                assert(target.getGroundUnit().getSpawners().size() == 1);
-                
-            }
-            else if (linkedUnit instanceof GroundUnit)
-            {
-                IGroundUnit target = (IGroundUnit)linkedUnit;
-                assert(target.getVehicle() != null);
+                IGroundUnitCollection groundUnitCollection = (IGroundUnitCollection)linkedUnit;
+                assert(groundUnitCollection.getGroundUnits().size() == 1);
             }
         }
     }

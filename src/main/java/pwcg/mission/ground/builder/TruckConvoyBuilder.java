@@ -1,4 +1,4 @@
-package pwcg.mission.ground.factory;
+package pwcg.mission.ground.builder;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
@@ -10,12 +10,14 @@ import pwcg.mission.Mission;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.org.GroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.transport.GroundTruckAAConvoyUnit;
 import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
 import pwcg.mission.mcu.Coalition;
+import pwcg.mission.target.TacticalTarget;
 import pwcg.mission.target.TargetDefinition;
 
 public class TruckConvoyBuilder
@@ -47,7 +49,13 @@ public class TruckConvoyBuilder
         IGroundUnit aatruckConvoy = new GroundTruckAAConvoyUnit(groundUnitInformation);
         aatruckConvoy.createGroundUnit();
         
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION, "Truck Convoy", Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
+        GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
+                GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION, 
+                "Truck Convoy", 
+                TacticalTarget.TARGET_TRANSPORT,
+                Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
+        
+        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection(groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(truckConvoy);
         groundUnitCollection.addGroundUnit(aatruckConvoy);
         groundUnitCollection.finishGroundUnitCollection();

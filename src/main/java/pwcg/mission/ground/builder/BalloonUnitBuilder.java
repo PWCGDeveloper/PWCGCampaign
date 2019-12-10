@@ -1,4 +1,4 @@
-package pwcg.mission.ground.factory;
+package pwcg.mission.ground.builder;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -7,6 +7,7 @@ import pwcg.core.location.Orientation;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.org.GroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
@@ -33,11 +34,14 @@ public class BalloonUnitBuilder
     public IGroundUnitCollection createBalloonUnit (ICountry country) throws PWCGException
     {
         buildGroundUnitInformation(country);
-
-        groundUnitCollection = new GroundUnitCollection(
+        
+        GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.BALLOON_GROUND_UNIT_COLLECTION, 
                 "Balloon Unit", 
+                TacticalTarget.TARGET_BALLOON,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
+
+        groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
         
         buildBalloon();
         buildBalloonAAArtillery();

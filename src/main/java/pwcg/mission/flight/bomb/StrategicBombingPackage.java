@@ -7,8 +7,8 @@ import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.factory.AAAUnitBuilder;
-import pwcg.mission.ground.factory.SpotLightBuilder;
+import pwcg.mission.ground.builder.AAAUnitBuilder;
+import pwcg.mission.ground.builder.SearchLightBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.TargetDefinition;
 
@@ -26,7 +26,7 @@ public class StrategicBombingPackage implements IFlightPackage
         StrategicBombingFlight strategicBombingFlight = createStrategicBombingFlight();
 
         createAAA(flightInformation.getTargetDefinition(), strategicBombingFlight);
-        createSpotlight(flightInformation.getTargetDefinition(), strategicBombingFlight);
+        createSearchlight(flightInformation.getTargetDefinition(), strategicBombingFlight);
         return strategicBombingFlight;
     }
 
@@ -47,13 +47,13 @@ public class StrategicBombingPackage implements IFlightPackage
         strategicBombingFlight.addLinkedUnit(aaaArty);
     }
 
-    private void createSpotlight(TargetDefinition targetDefinition, StrategicBombingFlight strategicBombingFlight) throws PWCGException
+    private void createSearchlight(TargetDefinition targetDefinition, StrategicBombingFlight strategicBombingFlight) throws PWCGException
     {
-        SpotLightBuilder groundUnitBuilder =  new SpotLightBuilder(flightInformation.getCampaign());
+        SearchLightBuilder groundUnitBuilder =  new SearchLightBuilder(flightInformation.getCampaign());
         if (flightInformation.getMission().isNightMission())
         {
-            IGroundUnitCollection spotLightGroup = groundUnitBuilder.createSpotLightGroup(targetDefinition);
-            strategicBombingFlight.addLinkedUnit(spotLightGroup);
+            IGroundUnitCollection searchLightGroup = groundUnitBuilder.createSearchLightGroup(targetDefinition);
+            strategicBombingFlight.addLinkedUnit(searchLightGroup);
         }
     }
 }

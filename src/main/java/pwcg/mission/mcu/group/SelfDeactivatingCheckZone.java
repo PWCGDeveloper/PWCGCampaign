@@ -33,8 +33,8 @@ public class SelfDeactivatingCheckZone
 
     public SelfDeactivatingCheckZone (Coordinate coordinate, int zone)
     {
-        super();
         initialize(coordinate, zone);
+        linkTargets();
     }
 
     private void initialize(Coordinate coordinate, int zone) 
@@ -63,10 +63,8 @@ public class SelfDeactivatingCheckZone
         deactivateCZTimer.setTimer(0);
     }
 
-    public void linkTargets(BaseFlightMcu activateIn, BaseFlightMcu deactivatIn)
+    private void linkTargets()
     {
-        // 1. Link the incoming MCU to the activate timer
-        activateIn.setTarget(activateCZTimer.getIndex());
         activateCZTimer.setTarget(checkZone.getIndex());
 
         // 2. If the CZ triggers, deactivate the CZ to avoid repeat triggers
@@ -76,14 +74,12 @@ public class SelfDeactivatingCheckZone
         // Deactivate both the CZ and the activate timer
         deactivateCZ.setTarget(checkZone.getIndex());        
         deactivateCZ.setTarget(activateCZTimer.getIndex());    
-        
-        // We may have an alternative deactivate
-        if (deactivatIn != null)
-        {
-            deactivatIn.setTarget(deactivateCZTimer.getIndex());
-        }
     }
 
+    public void setAdditionalDeactivate(BaseFlightMcu additionalDeactivate)
+    {
+        additionalDeactivate.setTarget(deactivateCZTimer.getIndex());
+    }
     
     public void write(BufferedWriter writer) throws PWCGIOException
     {
@@ -116,10 +112,15 @@ public class SelfDeactivatingCheckZone
             throw new PWCGIOException(e.getMessage());
         }
     }
-
-    public void setZone(int zone)
+    
+    public int getActivateEntryPoint()
     {
-        checkZone.setZone(zone);
+        return activateCZTimer.getIndex();
+    }
+
+    public int getDeactivateEntryPoint()
+    {
+        return deactivateCZTimer.getIndex();
     }
 
     public void setCheckZoneTarget(int targetMcuIndex)
@@ -145,16 +146,6 @@ public class SelfDeactivatingCheckZone
     public McuCheckZone getCheckZone()
     {
         return checkZone;
-    }
-
-    public McuTimer getActivateCZTimer()
-    {
-        return activateCZTimer;
-    }
-
-    public McuTimer getDeactivateCZTimer()
-    {
-        return deactivateCZTimer;
     }
 
     public void validate() throws PWCGException

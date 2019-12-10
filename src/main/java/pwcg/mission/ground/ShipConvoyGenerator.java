@@ -8,8 +8,10 @@ import pwcg.campaign.shipping.ShippingLane;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.ground.factory.ShippingUnitBuilder;
+import pwcg.mission.ground.builder.ShipTypeChooser;
+import pwcg.mission.ground.builder.ShippingUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.vehicle.VehicleClass;
 
 public class ShipConvoyGenerator
 {
@@ -21,8 +23,9 @@ public class ShipConvoyGenerator
         int numConvoys = RandomNumberGenerator.getRandom(6);
         for (int i = 0; i < numConvoys; ++i)
         {
+            VehicleClass shipType = ShipTypeChooser.chooseShipType(flightInformation.getTargetDefinition().getTargetCountry().getSide());
             ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(flightInformation.getCampaign(), flightInformation.getTargetDefinition());
-            IGroundUnitCollection convoy = shippingFactory.createShippingUnit();
+            IGroundUnitCollection convoy = shippingFactory.createShippingUnit(shipType);
             if (convoy.getCountry().getSide() == Side.ALLIED)
             {
                 alliedConvoys.add(convoy);

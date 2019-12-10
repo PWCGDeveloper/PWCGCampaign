@@ -10,8 +10,8 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.config.ConfigItemKeys;
@@ -22,10 +22,8 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.MissionFlightBuilder;
 import pwcg.mission.MissionGroundUnitResourceManager;
-import pwcg.mission.mcu.Coalition;
 
 public class FranceAttackMockCampaign
 {
@@ -42,7 +40,6 @@ public class FranceAttackMockCampaign
     protected ConfigManagerCampaign configManager;
 
     protected ICountry country = CountryFactory.makeCountryByCountry(Country.GERMANY);
-    protected MissionBeginUnitCheckZone missionBeginUnit;
     protected Coordinate myTestPosition = new Coordinate (100000, 0, 100000);
     protected Coordinate mytargetLocation = new Coordinate (100000, 0, 150000);
     
@@ -70,9 +67,7 @@ public class FranceAttackMockCampaign
         Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
         Mockito.when(missionFlightBuilder.isInFlightPath(Matchers.any())).thenReturn(true);
         Mockito.when(mission.getMissionBorders()).thenReturn(missionBorders);
-
-        missionBeginUnit = new MissionBeginUnitCheckZone(myTestPosition, 10000);
-        missionBeginUnit.getSelfDeactivatingCheckZone().setCheckZoneCoalition(Coalition.COALITION_ALLIED);
+        Mockito.when(mission.getCampaign()).thenReturn(campaign);        
     }
 
 }

@@ -1,7 +1,6 @@
-package pwcg.mission.ground.factory;
+package pwcg.mission.ground.builder;
 
 import pwcg.campaign.Campaign;
-import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -9,6 +8,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.org.GroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
@@ -17,6 +17,7 @@ import pwcg.mission.ground.unittypes.transport.ShipSubmarineConvoyUnit;
 import pwcg.mission.ground.unittypes.transport.ShipWarshipConvoyUnit;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.Coalition;
+import pwcg.mission.target.TacticalTarget;
 import pwcg.mission.target.TargetDefinition;
 
 public class ShippingUnitBuilder
@@ -30,15 +31,14 @@ public class ShippingUnitBuilder
         this.targetDefinition  = targetDefinition;
     }
 
-    public IGroundUnitCollection createShippingUnit () throws PWCGException 
+    public IGroundUnitCollection createShippingUnit (VehicleClass shipType) throws PWCGException 
     {
-        VehicleClass shipType = chooseShipType();
         IGroundUnitCollection shipConvoyUnit = generateConvoy(shipType);
         return shipConvoyUnit;
     }
 
 
-    public IGroundUnitCollection generateConvoy(VehicleClass shipType) throws PWCGException 
+    private IGroundUnitCollection generateConvoy(VehicleClass shipType) throws PWCGException 
     {
         GroundUnitInformation groundUnitInformation = createGroundUnitInformationForUnit();
         
@@ -53,13 +53,23 @@ public class ShippingUnitBuilder
             shipGroup = new ShipWarshipConvoyUnit(groundUnitInformation);
             shipGroup.createGroundUnit();
         }
-        else
+        else if (shipType == VehicleClass.Submarine)
         {
             shipGroup = new ShipSubmarineConvoyUnit(groundUnitInformation);
             shipGroup.createGroundUnit();
         }
+        else
+        {
+            throw new PWCGException("Invalid vehicle type for ship builder " + shipType);
+        }
         
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION, "Ships", Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
+        GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
+                GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION, 
+                "Ships", 
+                TacticalTarget.TARGET_SHIPPING,
+                Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
+
+        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(shipGroup);
         groundUnitCollection.finishGroundUnitCollection();
         return groundUnitCollection;
@@ -72,43 +82,6 @@ public class ShippingUnitBuilder
         Coordinate destination = MathUtils.calcNextCoord(targetDefinition.getTargetPosition(), angle, 50000);
         groundUnitInformation.setDestination(destination);
         return groundUnitInformation;
-    }
-
-    private VehicleClass chooseShipType()
-    {
-        int shipTypeRoll = RandomNumberGenerator.getRandom(100);
-        VehicleClass shipType = VehicleClass.ShipCargo;
-        if (targetDefinition.getTargetCountry().getSide() == Side.AXIS)
-        {
-            if (shipTypeRoll < 20)
-            {
-                shipType = VehicleClass.Submarine;
-            }
-            else if (shipTypeRoll < 85)
-            {
-                shipType = VehicleClass.ShipCargo;
-            }
-            else
-            {
-                shipType = VehicleClass.ShipWarship;
-            }
-        }
-        else
-        {
-            if (shipTypeRoll < 10)
-            {
-                shipType = VehicleClass.Submarine;
-            }
-            else if (shipTypeRoll < 70)
-            {
-                shipType = VehicleClass.ShipCargo;
-            }
-            else
-            {
-                shipType = VehicleClass.ShipWarship;
-            }
-        }
-        return shipType;
     }
 
 }

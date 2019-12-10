@@ -33,7 +33,7 @@ public class ShipSubmarineConvoyUnit extends GroundUnit
     {
         List<Coordinate> spawnerLocations = new ArrayList<>();
 
-        int numShips = calcNumUnits();
+        int numShips = 1;
         
         double shipMovementOrient = MathUtils.calcAngle(pwcgGroundUnitInformation.getPosition(), pwcgGroundUnitInformation.getDestination());
         Orientation shipOrient = new Orientation();
@@ -48,11 +48,6 @@ public class ShipSubmarineConvoyUnit extends GroundUnit
             shipCoords = MathUtils.calcNextCoord(shipCoords, placementOrientation, 1000.0);
         }       
         return spawnerLocations;        
-    }
-
-    protected int calcNumUnits() throws PWCGException
-    {
-        return 1;
     }
 }	
 

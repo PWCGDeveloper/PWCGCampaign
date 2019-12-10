@@ -110,7 +110,7 @@ public class PlayerBalloonDefenseFlight extends Flight
 		coverTimer.setTarget(cover.getIndex());
 	}	
 
-	protected void createDeactivate() 
+	protected void createDeactivate() throws PWCGException 
 	{
 		// Deactivate the attack entity
 		deactivateAttackEntity = new McuDeactivate();

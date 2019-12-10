@@ -65,7 +65,7 @@ public abstract class GroundUnit implements IGroundUnit
             }
             else
             {
-                element.linkToNextElement(previousElement.getEntryPoint());
+                previousElement.linkToNextElement(element.getEntryPoint());
             }
             previousElement = element;
         }
@@ -157,6 +157,12 @@ public abstract class GroundUnit implements IGroundUnit
         return vehicle;
     }
 
+    @Override
+    public VehicleClass getVehicleClass()
+    {
+        return vehicleClass;
+    }
+    
     @Override
     public void setAiLevel(AiSkillLevel aiLevel)
     {

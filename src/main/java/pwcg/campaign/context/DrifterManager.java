@@ -1,4 +1,4 @@
-package pwcg.mission.ground.builder;
+package pwcg.campaign.context;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.LocationIOJson;

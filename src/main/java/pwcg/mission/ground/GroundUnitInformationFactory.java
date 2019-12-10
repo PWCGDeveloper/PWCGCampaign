@@ -29,7 +29,7 @@ public class GroundUnitInformationFactory
         groundUnitInformation.setPosition(startCoords);
         groundUnitInformation.setDestination(targetCoords);
         
-        GroundUnitSize unitSize = GroundUnitSizeBuilder.calcNumUnitsByConfig(campaign, isPlayerTarget);
+        GroundUnitSize unitSize = GroundUnitSize.calcNumUnitsByConfig(campaign, isPlayerTarget);
         groundUnitInformation.setUnitSize(unitSize);
         
         orientation = determineOrientation(startCoords, targetCoords, orientation);
@@ -48,7 +48,7 @@ public class GroundUnitInformationFactory
         groundUnitInformation.setPosition(targetDefinition.getTargetPosition());
         groundUnitInformation.setDestination(targetDefinition.getTargetPosition());
         
-        GroundUnitSize unitSize = GroundUnitSizeBuilder.calcNumUnitsByConfig(campaign, targetDefinition.isPlayerTarget());
+        GroundUnitSize unitSize = GroundUnitSize.calcNumUnitsByConfig(campaign, targetDefinition.isPlayerTarget());
         groundUnitInformation.setUnitSize(unitSize);
         
         Orientation orientation = determineOrientation(targetDefinition.getTargetPosition(), targetDefinition.getTargetPosition(), targetDefinition.getTargetOrientation());

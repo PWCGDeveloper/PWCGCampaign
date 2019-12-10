@@ -10,7 +10,7 @@ import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.bomb.BombingFlight;
-import pwcg.mission.ground.builder.TargetBuilderGenerator;
+import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class PlayerEscortedFlightBuilder
@@ -68,7 +68,7 @@ public class PlayerEscortedFlightBuilder
 
     private IGroundUnitCollection createTargetForPlayerEscortedFlight() throws PWCGException
     {
-        TargetBuilderGenerator targetBuilder = new TargetBuilderGenerator(escortedFlightInformation);
+        TargetFactory targetBuilder = new TargetFactory(escortedFlightInformation);
         targetBuilder.buildTarget();
         return targetBuilder.getGroundUnits();
     }

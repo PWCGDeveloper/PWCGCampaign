@@ -12,6 +12,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.utils.LCIndexGenerator;
+import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
 import pwcg.mission.MissionStringHandler;
@@ -136,7 +137,7 @@ public class McuIcon extends BaseFlightMcu
         coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
-    public McuIcon(IGroundUnitCollection balloon, Side side)
+    public McuIcon(IGroundUnitCollection balloon, Side side) throws PWCGException
     {
         super();
 

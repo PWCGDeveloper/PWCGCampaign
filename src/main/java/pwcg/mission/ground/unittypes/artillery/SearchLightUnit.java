@@ -10,9 +10,9 @@ import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.vehicle.VehicleClass;
 
-public class SpotlightUnit extends GroundUnit
+public class SearchLightUnit extends GroundUnit
 {    
-    public SpotlightUnit(GroundUnitInformation pwcgGroundUnitInformation)
+    public SearchLightUnit(GroundUnitInformation pwcgGroundUnitInformation)
     {
         super(VehicleClass.SearchLight, pwcgGroundUnitInformation);
     }   
@@ -49,7 +49,8 @@ public class SpotlightUnit extends GroundUnit
 
     protected int calcNumUnits() throws PWCGException
     {
-        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
+        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY ||
+            pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
         {
             return 1;
         }
@@ -62,6 +63,6 @@ public class SpotlightUnit extends GroundUnit
     @Override
     protected void addElements()
     {
-        // No elements for spotlight
+        // No elements for search light
     }
 }

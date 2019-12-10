@@ -10,6 +10,7 @@ import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 import pwcg.mission.mcu.McuMissionStart;
 import pwcg.mission.mcu.McuTimer;
+import pwcg.mission.mcu.McuValidator;
 
 public class MissionBeginUnit
 {
@@ -74,5 +75,14 @@ public class MissionBeginUnit
     {
         return missionBeginTimer.getIndex();
     }
+    
+    public void validate(int expectedTarget) throws PWCGException
+    {
+        if (!McuValidator.hasTarget(missionBeginTimer, expectedTarget))
+        {
+            throw new PWCGException("MissionBeginUnit: mission begin not linked to activate");
+        }
+    }
+
 }	
 

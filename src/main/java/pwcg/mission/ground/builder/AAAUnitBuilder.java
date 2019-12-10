@@ -1,4 +1,4 @@
-package pwcg.mission.ground.factory;
+package pwcg.mission.ground.builder;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
@@ -10,12 +10,13 @@ import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.GroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.artillery.GroundAAArtilleryBattery;
 import pwcg.mission.ground.unittypes.artillery.GroundAAMachineGunBattery;
-import pwcg.mission.ground.unittypes.artillery.SpotlightUnit;
+import pwcg.mission.ground.unittypes.artillery.SearchLightUnit;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.target.TacticalTarget;
 
@@ -38,7 +39,13 @@ public class AAAUnitBuilder
         IGroundUnit mgBattery = new GroundAAMachineGunBattery(groundUnitInformation);
         mgBattery.createGroundUnit();
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, "AA MG Battery", Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
+        GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
+                GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
+                "AA MG Battery", 
+                TacticalTarget.TARGET_INFANTRY,
+                Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
+
+        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(mgBattery);
         groundUnitCollection.finishGroundUnitCollection();
         return groundUnitCollection;
@@ -48,7 +55,7 @@ public class AAAUnitBuilder
     {
         if (mission.isNightMission())
         {
-            return createAAAArtilleryBatteryWithSpotlight(groundUnitSize);
+            return createAAAArtilleryBatteryWithSearchLight(groundUnitSize);
         }
         else
         {
@@ -62,24 +69,35 @@ public class AAAUnitBuilder
         IGroundUnit aaaBattery = new GroundAAArtilleryBattery(groundUnitInformation);
         aaaBattery.createGroundUnit();
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, "AA Artillery Battery", Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
+        GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
+                GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
+                "AA Artillery Battery", 
+                TacticalTarget.TARGET_INFANTRY,
+                Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
+
+        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(aaaBattery);
         groundUnitCollection.finishGroundUnitCollection();
         return groundUnitCollection;
     }
 
-    public IGroundUnitCollection createAAAArtilleryBatteryWithSpotlight (GroundUnitSize groundUnitSize) throws PWCGException
+    public IGroundUnitCollection createAAAArtilleryBatteryWithSearchLight (GroundUnitSize groundUnitSize) throws PWCGException
     {
         GroundUnitInformation groundUnitInformation = createAAGroundUnitInformation(groundUnitSize);
         IGroundUnit aaaBattery = new GroundAAArtilleryBattery(groundUnitInformation);
         aaaBattery.createGroundUnit();
         
-        IGroundUnit spotlightUnit = buildSpotLightUnit();
-        spotlightUnit.createGroundUnit();
+        IGroundUnit searchLightUnit = buildSearchLightUnit();
 
-        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, "AA Artillery Battery", Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
+        GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
+                GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
+                "AA Artillery Battery With Search Light", 
+                TacticalTarget.TARGET_INFANTRY,
+                Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
+
+        IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(aaaBattery);
-        groundUnitCollection.addGroundUnit(spotlightUnit);
+        groundUnitCollection.addGroundUnit(searchLightUnit);
         groundUnitCollection.finishGroundUnitCollection();
         return groundUnitCollection;
     }
@@ -97,16 +115,16 @@ public class AAAUnitBuilder
         return groundUnitInformation;
     }
     
-    private IGroundUnit buildSpotLightUnit() throws PWCGException 
+    private IGroundUnit buildSearchLightUnit() throws PWCGException 
     {
-        GroundUnitInformation groundUnitInformation = createSpotlightGroundUnitInformation();
-        IGroundUnit spotlightUnit = new SpotlightUnit(groundUnitInformation);
-        spotlightUnit.createGroundUnit();
-        return spotlightUnit;
+        GroundUnitInformation groundUnitInformation = createSearchlightGroundUnitInformation();
+        IGroundUnit searchLightUnit = new SearchLightUnit(groundUnitInformation);
+        searchLightUnit.createGroundUnit();
+        return searchLightUnit;
     }
     
 
-    private GroundUnitInformation createSpotlightGroundUnitInformation() throws PWCGException
+    private GroundUnitInformation createSearchlightGroundUnitInformation() throws PWCGException
     {
         String nationality = country.getNationality();
         String name = nationality + " Search Light";

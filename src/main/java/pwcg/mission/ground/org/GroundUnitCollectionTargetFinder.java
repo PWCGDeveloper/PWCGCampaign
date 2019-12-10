@@ -1,6 +1,7 @@
 package pwcg.mission.ground.org;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,16 +11,27 @@ import pwcg.core.exception.PWCGException;
 public class GroundUnitCollectionTargetFinder
 {
     private IGroundUnitCollection groundUnitCollection;
-    private Map<GroundUnitType, List<IGroundUnit>> groundUnitsForSideByUnitType;
+    private Map<GroundUnitType, List<IGroundUnit>> groundUnitsForSideByUnitType = new HashMap<>();
 
     public GroundUnitCollectionTargetFinder(IGroundUnitCollection groundUnitCollection)
     {
         this.groundUnitCollection = groundUnitCollection;
     }
+
+    public IGroundUnit findTargetUnit() throws PWCGException
+    {
+        buildGroundUnitMapForAllUnits();
+        return findTargetPosition();
+    }
     
     public IGroundUnit findTargetUnit(Side side) throws PWCGException
     {
-        buildGroundUnitMap(side);
+        buildGroundUnitMapForSide(side);
+        return findTargetPosition();
+    }
+
+    private IGroundUnit findTargetPosition() throws PWCGException
+    {
         if (groundUnitCollection.getGroundUnitCollectionType() == GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION)
         {
             return findInfantryTargetUnit();
@@ -42,19 +54,32 @@ public class GroundUnitCollectionTargetFinder
         }
     }
     
-    private void buildGroundUnitMap(Side side) throws PWCGException
+    private void buildGroundUnitMapForAllUnits() throws PWCGException
+    {
+        for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
+        {
+            buildGroundUnitMapForUnitSet(groundUnit);
+        }
+    }
+
+    private void buildGroundUnitMapForSide(Side side) throws PWCGException
     {
         List<IGroundUnit> groundUnitsForSide = groundUnitCollection.getGroundUnitsForSide(side);
         for (IGroundUnit groundUnit : groundUnitsForSide)
         {
-            if (!groundUnitsForSideByUnitType.containsKey(groundUnit.getGroundUnitType()))
-            {
-                List<IGroundUnit> groundUnitsForType = new ArrayList<>();
-                groundUnitsForSideByUnitType.put(groundUnit.getGroundUnitType(), groundUnitsForType);
-            }
-            List<IGroundUnit> groundUnitsForType = groundUnitsForSideByUnitType.get(groundUnit.getGroundUnitType());
-            groundUnitsForType.add(groundUnit);
+            buildGroundUnitMapForUnitSet(groundUnit);
         }
+    }
+
+    private void buildGroundUnitMapForUnitSet(IGroundUnit groundUnit)
+    {
+        if (!groundUnitsForSideByUnitType.containsKey(groundUnit.getGroundUnitType()))
+        {
+            List<IGroundUnit> groundUnitsForType = new ArrayList<>();
+            groundUnitsForSideByUnitType.put(groundUnit.getGroundUnitType(), groundUnitsForType);
+        }
+        List<IGroundUnit> groundUnitsForType = groundUnitsForSideByUnitType.get(groundUnit.getGroundUnitType());
+        groundUnitsForType.add(groundUnit);
     }
 
     private IGroundUnit findInfantryTargetUnit() throws PWCGException
@@ -70,14 +95,6 @@ public class GroundUnitCollectionTargetFinder
         else if (groundUnitsForSideByUnitType.containsKey(GroundUnitType.ARTILLERY_UNIT))
         {
             return groundUnitsForSideByUnitType.get(GroundUnitType.ARTILLERY_UNIT).get(0);
-        }
-        else if (groundUnitsForSideByUnitType.containsKey(GroundUnitType.INFANTRY_UNIT))
-        {
-            return groundUnitsForSideByUnitType.get(GroundUnitType.INFANTRY_UNIT).get(0);
-        }
-        else if (groundUnitsForSideByUnitType.containsKey(GroundUnitType.AAA_UNIT))
-        {
-            return groundUnitsForSideByUnitType.get(GroundUnitType.AAA_UNIT).get(0);
         }
         else if (groundUnitsForSideByUnitType.containsKey(GroundUnitType.AAA_UNIT))
         {

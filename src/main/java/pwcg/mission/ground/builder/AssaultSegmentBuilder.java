@@ -1,4 +1,4 @@
-package pwcg.mission.ground.factory;
+package pwcg.mission.ground.builder;
 
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
@@ -8,6 +8,7 @@ import pwcg.mission.ground.BattleSize;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.org.GroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
@@ -29,7 +30,14 @@ public class AssaultSegmentBuilder
 	{
         this.campaign = campaign;
         this.assaultDefinition = assaultDefinition;
-        this.battleSegmentUnitCollection = new GroundUnitCollection(GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, "Battle Segment", Coalition.getCoalitions());
+        
+        GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
+                GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
+                "Battle Segment", 
+                TacticalTarget.TARGET_ASSAULT,
+                Coalition.getCoalitions());
+
+        this.battleSegmentUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
 	}
 
 
@@ -178,7 +186,7 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 150.0);     
 
-        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(aaaMgDefensePosition, "AA Machine Gun");
+        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(aaaMgDefensePosition, "AA Machine Gun");
         IGroundUnit defenseAAMachineGunUnit = assaultFactory.createAAMachineGunUnitUnit(groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(defenseAAMachineGunUnit);
     }
@@ -189,7 +197,7 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 1000.0);     
 
-        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(aaaArtilleryDefensePosition, "AA Artillery");
+        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(aaaArtilleryDefensePosition, "AA Artillery");
         IGroundUnit assaultAAArtilleryUnit = assaultFactory.createAAArtilleryUnitUnit(groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(assaultAAArtilleryUnit);
     }

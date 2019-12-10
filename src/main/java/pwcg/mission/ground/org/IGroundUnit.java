@@ -8,6 +8,7 @@ import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.ground.vehicle.IVehicle;
+import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.McuSpawn;
 
 public interface IGroundUnit
@@ -22,6 +23,7 @@ public interface IGroundUnit
     String getName() throws PWCGException;
     List <McuSpawn> getSpawners();
     IVehicle getVehicle();
+    VehicleClass getVehicleClass();
     int getEntryPoint();
     GroundUnitType getGroundUnitType();
 

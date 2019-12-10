@@ -112,7 +112,7 @@ public class BaseFlightMcu extends BaseMcu
 	    
 		return targetList;
 	}
-
+	
 	public void setTarget(int target) 
 	{
 		String targetStr = new Integer(target).toString();

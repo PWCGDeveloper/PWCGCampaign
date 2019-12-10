@@ -19,8 +19,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.GroundUnitSize;
-import pwcg.mission.ground.factory.AAAUnitBuilder;
-import pwcg.mission.ground.factory.SpotLightBuilder;
+import pwcg.mission.ground.builder.AAAUnitBuilder;
+import pwcg.mission.ground.builder.SearchLightBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
 
@@ -53,9 +53,9 @@ public class AirfieldObjectPlacer
         
         for (HotSpot hotSpot : hotSpots)
         {       
-            if (hotSpot.getHotSpotType() == HotSpotType.HOTSPOT_SPOTLIGHT)
+            if (hotSpot.getHotSpotType() == HotSpotType.HOTSPOT_SEARCHLIGHT)
             {
-                addSpotlight(hotSpot);
+                addSearchlight(hotSpot);
             }
             else if (hotSpot.getHotSpotType() == HotSpotType.HOTSPOT_AAA)
             {
@@ -121,14 +121,14 @@ public class AirfieldObjectPlacer
         return selectedHotSpots;
     }
 
-    private void addSpotlight(HotSpot hotSpot) throws PWCGException
+    private void addSearchlight(HotSpot hotSpot) throws PWCGException
     {
         ICountry airfieldCountry = airfield.createCountry(campaign.getDate());
         if (!airfieldCountry.isNeutral())
         {
-            SpotLightBuilder groundUnitFactory =  new SpotLightBuilder(campaign);
-            IGroundUnitCollection spotLightGroup = groundUnitFactory.createOneSpotLight(airfieldCountry, hotSpot.getPosition());
-            airfieldObjects.addSpotlightsForAirfield(spotLightGroup);
+            SearchLightBuilder groundUnitFactory =  new SearchLightBuilder(campaign);
+            IGroundUnitCollection searchLightGroup = groundUnitFactory.createOneSearchLight(airfieldCountry, hotSpot.getPosition());
+            airfieldObjects.addSearchlightsForAirfield(searchLightGroup);
         }
     }
 

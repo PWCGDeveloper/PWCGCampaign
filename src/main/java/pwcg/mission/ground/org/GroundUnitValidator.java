@@ -56,7 +56,6 @@ public class GroundUnitValidator
     {
         for (IGroundElement element : groundUnit.getGroundElements())
         {
-
             element.validate();
         }
     }
