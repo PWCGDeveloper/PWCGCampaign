@@ -103,7 +103,7 @@ public class AAAUnitBuilderTest
             }
             else if (groundUnit.getVehicleClass() == VehicleClass.SearchLight)
             {
-                assert (groundUnit.getSpawners().size() == 2);
+                assert (groundUnit.getSpawners().size() == 1);
             }
             else
             {

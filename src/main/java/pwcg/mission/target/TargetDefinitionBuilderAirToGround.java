@@ -52,9 +52,12 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         }
         else if (flightType == FlightTypes.SPY_EXTRACT)
         {
-            return TacticalTarget.TARGET_TROOP_CONCENTRATION;
+            return TacticalTarget.TARGET_AAA;
         }
-        return TacticalTarget.TARGET_ANY;
+        else
+        {
+            return TacticalTarget.TARGET_ANY;
+        }
     }    
 
     private void buildTargetDefinitionForTacticalFlight (TacticalTarget targetType) throws PWCGException

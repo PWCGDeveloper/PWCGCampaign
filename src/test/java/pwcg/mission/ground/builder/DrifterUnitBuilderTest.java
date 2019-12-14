@@ -63,7 +63,7 @@ public class DrifterUnitBuilderTest
             }
             else if (groundUnit.getVehicleClass() == VehicleClass.DrifterAAA)
             {
-                assert (groundUnit.getSpawners().size() == 4);
+                assert (groundUnit.getSpawners().size() == 2);
             }
             else
             {

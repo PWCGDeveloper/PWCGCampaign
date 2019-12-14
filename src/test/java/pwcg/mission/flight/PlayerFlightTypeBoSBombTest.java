@@ -52,7 +52,7 @@ public class PlayerFlightTypeBoSBombTest
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
-        EscortForPlayerValidator.validateEscortForPlayer(flight);
+        EscortForPlayerValidator.validateEscortForPlayer(mission, flight);
         PositionEvaluator.evaluateAiFlight(mission);
     }
 
@@ -75,7 +75,7 @@ public class PlayerFlightTypeBoSBombTest
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
-        EscortForPlayerValidator.validateEscortForPlayer(flight);
+        EscortForPlayerValidator.validateEscortForPlayer(mission, flight);
         PositionEvaluator.evaluateAiFlight(mission);
     }
 

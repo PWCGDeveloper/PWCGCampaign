@@ -3,9 +3,7 @@ package pwcg.mission.flight.validate;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.AttackMcuSequence;
 import pwcg.mission.flight.GroundTargetAttackFlight;
-import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -18,7 +16,7 @@ public class GroundAttackFlightValidator
 		validateWaypointTypes(flight);
 	}
 
-	private void validateWaypointLinkage(GroundTargetAttackFlight attackFlight) 
+	private void validateWaypointLinkage(GroundTargetAttackFlight attackFlight) throws PWCGException 
 	{
 		McuWaypoint prevWaypoint = null;
 		for (McuWaypoint waypoint : attackFlight.getWaypointPackage().getWaypointsForLeadPlane())
@@ -33,10 +31,7 @@ public class GroundAttackFlightValidator
 				else
 				{
 					assert(!isNextWaypointLinked);
-					
-					PlaneMCU leadPlane = attackFlight.getLeadPlane();
-					AttackMcuSequence attackMcuSequence = attackFlight.getAttackMcuSequences().get(leadPlane.getIndex());
-					assert(attackMcuSequence != null);					
+					attackFlight.validate();
 				}
 			}
 			

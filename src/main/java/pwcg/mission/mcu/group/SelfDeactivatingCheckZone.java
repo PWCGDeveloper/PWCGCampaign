@@ -128,17 +128,17 @@ public class SelfDeactivatingCheckZone
         checkZone.setTarget(targetMcuIndex);
     }
 
-    public void setCheckZoneObject(int objectMcuIndex)
+    public void setCheckZoneTriggerObject(int objectMcuIndex)
     {
         checkZone.setObject(objectMcuIndex);
     }
 
-    public void setCheckZoneCoalition(Coalition coalition)
+    public void setCheckZoneTriggerCoalition(Coalition coalition)
     {
         checkZone.triggerCheckZoneByCoalition(coalition);
     }
 
-    public void setCheckZoneCoalitions(List<Coalition> coalitions)
+    public void setCheckZoneTriggerCoalitions(List<Coalition> coalitions)
     {
         checkZone.triggerCheckZoneByCoalitions(coalitions);
     }

@@ -12,8 +12,8 @@ import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
@@ -27,13 +27,11 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
-import pwcg.mission.MissionBeginUnitCheckZone;
 import pwcg.mission.MissionFlightBuilder;
 import pwcg.mission.MissionGroundUnitResourceManager;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.mcu.Coalition;
 
 public class KubanAttackMockCampaign
 {
@@ -50,7 +48,6 @@ public class KubanAttackMockCampaign
     @Mock protected MissionHumanParticipants humanParticipants;
 
     protected ICountry country = CountryFactory.makeCountryByCountry(Country.GERMANY);
-    protected MissionBeginUnitCheckZone missionBeginUnit;
     protected Coordinate myTestPosition = new Coordinate (100000, 0, 100000);
     protected Coordinate mytargetLocation = new Coordinate (100000, 0, 150000);
     
@@ -86,9 +83,6 @@ public class KubanAttackMockCampaign
         Mockito.when(missionFlightBuilder.isInFlightPath(Matchers.any())).thenReturn(true);
         Mockito.when(mission.getMissionBorders()).thenReturn(missionBorders);
         Mockito.when(mission.getCampaign()).thenReturn(campaign);
-
-        missionBeginUnit = new MissionBeginUnitCheckZone(myTestPosition, 10000);
-        missionBeginUnit.getSelfDeactivatingCheckZone().setCheckZoneCoalition(Coalition.COALITION_ALLIED);        
         
         buildMockFlightInformation();
     }

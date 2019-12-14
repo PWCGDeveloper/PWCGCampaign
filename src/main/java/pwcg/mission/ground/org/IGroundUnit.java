@@ -10,6 +10,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.McuSpawn;
+import pwcg.mission.target.TacticalTarget;
 
 public interface IGroundUnit
 {
@@ -30,4 +31,5 @@ public interface IGroundUnit
     Coordinate getPosition() throws PWCGException;
     void setAiLevel(AiSkillLevel aiLevel);
     void validate() throws PWCGException;
+    TacticalTarget getTargetType();
 }

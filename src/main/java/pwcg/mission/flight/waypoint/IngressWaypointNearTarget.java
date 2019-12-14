@@ -1,16 +1,15 @@
 package pwcg.mission.flight.waypoint;
 
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.AttackMcuSequence;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class IngressWaypointNearTarget implements IIngressWaypoint
 {
-    public static final int INGRESS_TOO_CLOSE_TO_ATTACK = AttackMcuSequence.ATTACK_MCU_TRIGGER_DISTANCE + 12000;
-
     private Flight flight;
 
     public IngressWaypointNearTarget(Flight flight) throws PWCGException 
@@ -39,19 +38,35 @@ public class IngressWaypointNearTarget implements IIngressWaypoint
         Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getPosition(), angleToTarget, distanceToTarget / 2);
         
         double distance = MathUtils.calcDist(flight.getTargetCoords(), ingressCoordinate);
-        if (distance < INGRESS_TOO_CLOSE_TO_ATTACK)
+        if (isIngressTooCloseToTarget(distance))
         {
             ingressCoordinate = moveIngressZoneAwayFromTarget(ingressCoordinate, flight.getTargetCoords());
         }
         
         return ingressCoordinate;
     }
+    
+    private boolean isIngressTooCloseToTarget(double distance)
+    {
+        int ingressTooCloseToAttackDistance = getIngressTooCloseToTargetDistance();
+        if (distance < ingressTooCloseToAttackDistance)
+        {
+            return true;
+        }
+        return false;
+    }
 
     private Coordinate moveIngressZoneAwayFromTarget(Coordinate ingressCoordinate, Coordinate targetPosition) throws PWCGException
     {
         double angleAwayFromTarget = MathUtils.calcAngle(targetPosition, ingressCoordinate);
-        Coordinate movedIngressCoordinate = MathUtils.calcNextCoord(ingressCoordinate, angleAwayFromTarget, INGRESS_TOO_CLOSE_TO_ATTACK);
+        Coordinate movedIngressCoordinate = MathUtils.calcNextCoord(ingressCoordinate, angleAwayFromTarget, getIngressTooCloseToTargetDistance());
         return movedIngressCoordinate;
     }
 
+    private int getIngressTooCloseToTargetDistance()
+    {
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int ingressTooCloseToAttackDistance = productSpecificConfiguration.getBombFinalApproachDistance() * 2;
+        return ingressTooCloseToAttackDistance;
+    }
 }

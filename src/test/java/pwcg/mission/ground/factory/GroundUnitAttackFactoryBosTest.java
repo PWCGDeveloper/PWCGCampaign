@@ -1,4 +1,4 @@
-package pwcg.mission.ground;
+package pwcg.mission.ground.factory;
 
 import java.util.List;
 
@@ -18,10 +18,10 @@ import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.TacticalTarget;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.testutils.FranceAttackMockCampaign;
+import pwcg.testutils.KubanAttackMockCampaign;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GroundUnitBuilderAttackFCTest extends FranceAttackMockCampaign
+public class GroundUnitAttackFactoryBosTest extends KubanAttackMockCampaign
 {
     private TargetDefinition targetDefinition = new TargetDefinition();
 
@@ -32,7 +32,7 @@ public class GroundUnitBuilderAttackFCTest extends FranceAttackMockCampaign
         mockCampaignSetup();
         
         targetDefinition.setAttackingCountry(country);
-        targetDefinition.setTargetCountry(CountryFactory.makeCountryByCountry(Country.FRANCE));
+        targetDefinition.setTargetCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
         targetDefinition.setTargetPosition(new Coordinate(100000, 0, 150000));
         targetDefinition.setTargetOrientation(new Orientation());
         targetDefinition.setDate(date);
@@ -133,7 +133,7 @@ public class GroundUnitBuilderAttackFCTest extends FranceAttackMockCampaign
     @Test
     public void createTroopConcentrationTest () throws PWCGException 
     {
-        targetDefinition.setTargetType(TacticalTarget.TARGET_TROOP_CONCENTRATION);
+        targetDefinition.setTargetType(TacticalTarget.TARGET_AAA);
 
         GroundUnitAttackFactory groundUnitBuilderAttack = new GroundUnitAttackFactory(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
@@ -143,7 +143,7 @@ public class GroundUnitBuilderAttackFCTest extends FranceAttackMockCampaign
 
     private void validateTestResults(IGroundUnitCollection groundUnitCollection) throws PWCGException
     {
-        List<IGroundUnit> groundUnits = groundUnitCollection.getGroundUnits();
+        List<IGroundUnit> groundUnits = groundUnitCollection.getGroundUnitsForSide(Side.ALLIED);
         assert(groundUnits.size() > 0);
         assert(groundUnitCollection.getTargetCoordinatesFromGroundUnits(Side.ALLIED) != null);
     }

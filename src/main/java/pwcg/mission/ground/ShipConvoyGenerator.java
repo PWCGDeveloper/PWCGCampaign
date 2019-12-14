@@ -26,7 +26,7 @@ public class ShipConvoyGenerator
             VehicleClass shipType = ShipTypeChooser.chooseShipType(flightInformation.getTargetDefinition().getTargetCountry().getSide());
             ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(flightInformation.getCampaign(), flightInformation.getTargetDefinition());
             IGroundUnitCollection convoy = shippingFactory.createShippingUnit(shipType);
-            if (convoy.getCountry().getSide() == Side.ALLIED)
+            if (convoy.getGroundUnits().get(0).getCountry().getSide() == Side.ALLIED)
             {
                 alliedConvoys.add(convoy);
             }

@@ -19,7 +19,6 @@ public class TargetTypeNightGenerator
     {
         List <TacticalTarget> targetTypes = new ArrayList<TacticalTarget>();
 
-        targetTypes.add (TacticalTarget.TARGET_TROOP_CONCENTRATION);
         targetTypes.add (TacticalTarget.TARGET_ARTILLERY);
         targetTypes.add (TacticalTarget.TARGET_ARTILLERY);
         targetTypes.add (TacticalTarget.TARGET_TRANSPORT);

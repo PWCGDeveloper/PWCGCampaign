@@ -2,44 +2,46 @@ package pwcg.mission.flight;
 
 import java.io.BufferedWriter;
 
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.mcu.AttackAreaFactory;
-import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuAttackArea;
 import pwcg.mission.mcu.McuAttackArea.AttackAreaType;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuTimer;
-import pwcg.mission.mcu.group.SelfDeactivatingCheckZone;
+import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
 
-public class AttackMcuSequence
+public class AirGroundAttackMcuSequence
 {    
-    public static final int ATTACK_MCU_TRIGGER_DISTANCE = 12000;
-
-    private SelfDeactivatingCheckZone selfDeactivatingCheckZone;
+    private MissionBeginSelfDeactivatingCheckZone missionBeginUnit;
     private McuTimer activateTimer = new McuTimer();
     private McuTimer deactivateTimer = new McuTimer();
     protected McuDeactivate deactivateEntity = new McuDeactivate();
     private  McuAttackArea attackArea = new McuAttackArea(AttackAreaType.GROUND_TARGETS);
 
-    public AttackMcuSequence()
+    public AirGroundAttackMcuSequence()
     {
     }
 
     public void createAttackArea(String name, FlightTypes flightType, Coordinate targetCoords, int altitude, int attackTime) throws PWCGException 
     {
-        selfDeactivatingCheckZone = new SelfDeactivatingCheckZone(targetCoords, ATTACK_MCU_TRIGGER_DISTANCE);
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int attackMcuTriggerDistance = productSpecificConfiguration.getBombFinalApproachDistance() + 1000;
+
+        missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone(targetCoords, attackMcuTriggerDistance);
         attackArea = AttackAreaFactory.createAttackArea(flightType, name, targetCoords, altitude, attackTime);
-        createSequence(attackArea, name, targetCoords, attackTime) ;
+        createSequence(name, targetCoords, attackTime) ;
+        linkTargets() ;
     }
     
     public void createTriggerForPlane(PlaneMCU plane, Coordinate targetCoords)
     {
         attackArea.setObject(plane.getLinkTrId());
-
-        selfDeactivatingCheckZone.setCheckZoneObject(plane.getLinkTrId());
+        missionBeginUnit.setCheckZoneTriggerObject(plane.getLinkTrId());
     }
     
     public void createTriggerForFlight(Flight flight, Coordinate targetCoords)
@@ -47,11 +49,11 @@ public class AttackMcuSequence
         for (PlaneMCU plane: flight.getPlanes())
         {
             attackArea.setObject(plane.getLinkTrId());
-            selfDeactivatingCheckZone.setCheckZoneObject(plane.getLinkTrId());
+            missionBeginUnit.setCheckZoneTriggerObject(plane.getLinkTrId());
         }
     }
 
-    private void createSequence(BaseFlightMcu attackMcu, String name, Coordinate targetCoords, int attackTime) 
+    private void createSequence(String name, Coordinate targetCoords, int attackTime) 
     {
         activateTimer.setName(name + ": Attack Area Timer");      
         activateTimer.setDesc("Attack Area Timer for " + name);
@@ -69,20 +71,20 @@ public class AttackMcuSequence
         deactivateTimer.setPosition(targetCoords.copy());              
         deactivateTimer.setTimer(attackTime);              
 
-        linkTargets(attackMcu) ;
     }
 
-    private void linkTargets(BaseFlightMcu attackMcu) 
+    private void linkTargets() 
     {
-        activateTimer.setTarget(attackMcu.getIndex());
+        missionBeginUnit.linkCheckZoneTarget(activateTimer.getIndex());
+        activateTimer.setTarget(attackArea.getIndex());
         activateTimer.setTarget(deactivateTimer.getIndex());
         deactivateTimer.setTarget(deactivateEntity.getIndex());
-        deactivateEntity.setTarget(attackMcu.getIndex());
+        deactivateEntity.setTarget(attackArea.getIndex());
     }
 
     public void write(BufferedWriter writer) throws PWCGException 
     {
-        selfDeactivatingCheckZone.write(writer);
+        missionBeginUnit.write(writer);
         activateTimer.write(writer);
         attackArea.write(writer);
         deactivateTimer.write(writer);

@@ -6,20 +6,19 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.IUnit;
-import pwcg.mission.ground.org.IGroundUnitCollection;
+import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.unittypes.staticunits.AirfieldTargetGroup;
 
 public class MissionObjective
 {
-    static String getMissionObjectiveLocation(Squadron squadron, Date date, IUnit linkedUnit) throws PWCGException 
+    static String getMissionObjectiveLocation(Squadron squadron, Date date, IGroundUnit enemyGroundUnit) throws PWCGException 
     {
         String objectiveLocation = "";
-        if (linkedUnit.getCountry().isEnemy(squadron.determineSquadronCountry(date)))
+        if (enemyGroundUnit.getCountry().isEnemy(squadron.determineSquadronCountry(date)))
         {
-            if (linkedUnit instanceof AirfieldTargetGroup)
+            if (enemyGroundUnit instanceof AirfieldTargetGroup)
             {
-                AirfieldTargetGroup target = (AirfieldTargetGroup)linkedUnit;
+                AirfieldTargetGroup target = (AirfieldTargetGroup)enemyGroundUnit;
                 if (target != null)
                 {
                     
@@ -30,20 +29,20 @@ public class MissionObjective
                     }
                     else
                     {
-                        objectiveLocation = getObjectiveName((IGroundUnitCollection)linkedUnit);
+                        objectiveLocation = getObjectiveName((IGroundUnit)enemyGroundUnit);
                     }
                 }
             }
-            else if (linkedUnit instanceof IGroundUnitCollection)
+            else if (enemyGroundUnit instanceof IGroundUnit)
             {
-                objectiveLocation = getObjectiveName((IGroundUnitCollection)linkedUnit);
+                objectiveLocation = getObjectiveName((IGroundUnit)enemyGroundUnit);
             }
         }
         
         return objectiveLocation;
     }
 
-    private static String getObjectiveName(IGroundUnitCollection groundUnit) throws PWCGException
+    private static String getObjectiveName(IGroundUnit groundUnit) throws PWCGException
     {
         String targetName =  PWCGContext.getInstance().getCurrentMap().getGroupManager().getTownFinder().findClosestTown(groundUnit.getPosition().copy()).getName();
         return " near " + targetName;

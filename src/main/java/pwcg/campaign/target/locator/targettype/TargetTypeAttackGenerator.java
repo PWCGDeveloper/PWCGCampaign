@@ -25,29 +25,53 @@ public class TargetTypeAttackGenerator
         {
             formTargetPriorities();
             consolidatePreferredTargets();
-            
-            if (preferredTargetTypes.size() == 0)
-            {
-                double maxDistance = targetTypeAvailabilityInputs.getMaxDistance();
-                maxDistance += 15000.0;
-                targetTypeAvailabilityInputs.setMaxDistance(maxDistance);
-            }
-
-            if (targetTypeAvailabilityInputs.getMaxDistance() > 400000.0)
-            {
-                throw new PWCGException("Failed to find a target type within a reasonable range");
-            }
+            expandTargetZone();
         }
-        
         
         return getTargetType();            
     }
 
-    public void formTargetPriorities() throws PWCGException 
+    private void expandTargetZone() throws PWCGException
     {
-        checkTargetAvailability(TacticalTarget.TARGET_TROOP_CONCENTRATION, 1);
+        if (preferredTargetTypes.size() == 0)
+        {
+            double maxDistance = targetTypeAvailabilityInputs.getMaxDistance();
+            maxDistance += 15000.0;
+            targetTypeAvailabilityInputs.setMaxDistance(maxDistance);
+        }
+
+        if (targetTypeAvailabilityInputs.getMaxDistance() > 400000.0)
+        {
+            throw new PWCGException("Failed to find a target type within a reasonable range");
+        }
+    }
+
+    public void formTargetPriorities() throws PWCGException
+    {
+        if (targetTypeAvailabilityInputs.isUseMinimalTargetSet())
+        {
+            formTargetPrioritiesForAiFlight();
+        }
+        else
+        {
+            formTargetPrioritiesForPlayerFlight();
+        }
+    }
+    
+    private void formTargetPrioritiesForPlayerFlight() throws PWCGException 
+    {
         checkTargetAvailability(TacticalTarget.TARGET_ASSAULT, 2);
         checkTargetAvailability(TacticalTarget.TARGET_DEFENSE, 2);
+        checkTargetAvailability(TacticalTarget.TARGET_ARTILLERY, 1);
+        checkTargetAvailability(TacticalTarget.TARGET_TRANSPORT, 3);
+        checkTargetAvailability(TacticalTarget.TARGET_TRAIN, 2);
+        checkTargetAvailability(TacticalTarget.TARGET_AIRFIELD, 1);
+        checkTargetAvailability(TacticalTarget.TARGET_DRIFTER, 1);
+        checkTargetAvailability(TacticalTarget.TARGET_SHIPPING, 1);
+    }
+
+    private void formTargetPrioritiesForAiFlight() throws PWCGException 
+    {
         checkTargetAvailability(TacticalTarget.TARGET_ARTILLERY, 1);
         checkTargetAvailability(TacticalTarget.TARGET_TRANSPORT, 3);
         checkTargetAvailability(TacticalTarget.TARGET_TRAIN, 2);
@@ -140,6 +164,4 @@ public class TargetTypeAttackGenerator
     {
         return longRangeTargetTypes;
     }
-    
-    
 }

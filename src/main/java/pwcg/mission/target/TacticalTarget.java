@@ -10,7 +10,7 @@ public enum TacticalTarget
     TARGET_TRANSPORT("transport units", TargetCategory.TARGET_CATEGORY_SOFT),
     TARGET_ARTILLERY("artillery battery", TargetCategory.TARGET_CATEGORY_SOFT),
     TARGET_TRAIN("train", TargetCategory.TARGET_CATEGORY_ARMORED),
-    TARGET_TROOP_CONCENTRATION("troop concentration", TargetCategory.TARGET_CATEGORY_SOFT),
+    TARGET_AAA("AAA", TargetCategory.TARGET_CATEGORY_SOFT),
     TARGET_AIRFIELD("airfield", TargetCategory.TARGET_CATEGORY_MEDIUM),
     TARGET_BALLOON("balloon", TargetCategory.TARGET_CATEGORY_SOFT),
     TARGET_SHIPPING("shipping", TargetCategory.TARGET_CATEGORY_HEAVY),

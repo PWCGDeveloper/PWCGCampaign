@@ -102,6 +102,15 @@ public class FlightInformation
         this.isEscortForPlayerFlight = isEscortForPlayerFlight;
     }
 
+    public boolean isPlayerRelatedFlight()
+    {
+        if (isPlayerFlight || isEscortedByPlayerFlight || isEscortForPlayerFlight)
+        {
+            return true;
+        }
+        return false;
+    }
+    
     public Coordinate getTargetCoords()
     {
         return targetDefinition.getTargetPosition();

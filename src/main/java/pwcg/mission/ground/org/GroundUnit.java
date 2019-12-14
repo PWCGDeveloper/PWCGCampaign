@@ -71,6 +71,13 @@ public abstract class GroundUnit implements IGroundUnit
         }
     }
 
+
+    @Override
+    public TacticalTarget getTargetType()
+    {
+        return pwcgGroundUnitInformation.getTargetType();
+    }
+
     @Override
     public boolean isUnitEngagedInCombat()
     {

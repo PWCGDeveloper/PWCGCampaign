@@ -26,7 +26,7 @@ public class TestDriver
     private TestFlightType testBombFlightType = new TestFlightType();
     private TestFlightType testStrategicBombFlightType = new TestFlightType();
     
-    private TacticalTarget testPlayerTacticalTargetType = TacticalTarget.TARGET_TROOP_CONCENTRATION;
+    private TacticalTarget testPlayerTacticalTargetType = TacticalTarget.TARGET_TRANSPORT;
     private TacticalTarget testAITacticalTargetType = TacticalTarget.TARGET_ASSAULT;
 
     private List<SquadronMember>assignedSquadMembers = null;

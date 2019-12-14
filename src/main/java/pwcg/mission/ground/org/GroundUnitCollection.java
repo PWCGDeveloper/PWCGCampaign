@@ -4,14 +4,12 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.mission.IUnit;
-import pwcg.mission.mcu.McuValidator;
 import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
 import pwcg.mission.target.TacticalTarget;
 
@@ -67,14 +65,14 @@ public class GroundUnitCollection implements IGroundUnitCollection
     private void createCheckZone() throws PWCGException
     {
         missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone(getPosition(), GROUND_UNIT_SPAWN_DISTANCE);
-        missionBeginUnit.getCheckZone().setCheckZoneCoalitions(groundUnitCollectionData.getTriggerCoalitions());
+        missionBeginUnit.setCheckZoneCoalitions(groundUnitCollectionData.getTriggerCoalitions());
     }
 
     private void createTargetAssociations()
     {
         for (IGroundUnit groundUnit : groundUnits)
         {
-            missionBeginUnit.getCheckZone().setCheckZoneTarget(groundUnit. getEntryPoint());
+            missionBeginUnit.linkCheckZoneTarget(groundUnit. getEntryPoint());
         }
     }
 
@@ -149,10 +147,7 @@ public class GroundUnitCollection implements IGroundUnitCollection
         for (IGroundUnit groundUnit : groundUnits)
         {
             int entryPoint = groundUnit.getEntryPoint();
-            if (!McuValidator.hasTarget(missionBeginUnit.getCheckZone().getCheckZone(), entryPoint))
-            {
-                throw new PWCGException("Unit not linked to check zone");
-            }
+            missionBeginUnit.validateTarget(entryPoint);
             groundUnit.validate();
         }
     }
@@ -184,11 +179,5 @@ public class GroundUnitCollection implements IGroundUnitCollection
     public void addGroundUnit(IGroundUnit groundUnit)
     {
         groundUnits.add(groundUnit);
-    }
-
-    @Override
-    public ICountry getCountry() throws PWCGException
-    {
-        throw new PWCGException("Country for ground unit collection is undefined");
     }
 }

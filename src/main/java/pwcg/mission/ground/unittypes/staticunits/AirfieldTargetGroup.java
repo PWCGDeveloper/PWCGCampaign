@@ -13,6 +13,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.GroundUnitInformation;
+import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
 import pwcg.mission.ground.vehicle.VehicleClass;
@@ -54,9 +55,26 @@ public class AirfieldTargetGroup extends GroundUnit
         return spawnerLocations;        
     }
 
-    private int calcNumUnits()
+    private int calcNumUnits() throws PWCGException
     {
-        return GroundUnitNumberCalculator.calcNumUnits(4, 8);
+        if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_TINY)
+        {
+            return GroundUnitNumberCalculator.calcNumUnits(1, 1);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_LOW)
+        {
+            return GroundUnitNumberCalculator.calcNumUnits(2, 4);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_MEDIUM)
+        {
+            return GroundUnitNumberCalculator.calcNumUnits(3, 6);
+        }
+        else if (pwcgGroundUnitInformation.getUnitSize() == GroundUnitSize.GROUND_UNIT_SIZE_HIGH)
+        {
+            return GroundUnitNumberCalculator.calcNumUnits(4, 8);
+        }
+        
+        throw new PWCGException ("No unit size provided for ground unit");
     }
 
 	private Coordinate findTruckStartLocation() throws PWCGException, PWCGException

@@ -35,7 +35,7 @@ public class TargetTypeAvailability
     public double getTargetTypeAvailability(TacticalTarget targetType, Coordinate targetGeneralLocation, double maxDistance) throws PWCGException
     {        
         Coordinate closestInstance = null;
-        if (targetType ==TacticalTarget.TARGET_TROOP_CONCENTRATION)
+        if (targetType ==TacticalTarget.TARGET_AAA)
         {
             closestInstance = isFrontLinePositionAvailable(targetGeneralLocation);
         }

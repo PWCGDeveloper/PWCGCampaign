@@ -4,23 +4,24 @@ import java.io.BufferedWriter;
 
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.Flight;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.GroundElementFactory;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
 import pwcg.mission.ground.org.IGroundElement;
-import pwcg.mission.mcu.Coalition;
-import pwcg.mission.mcu.CoalitionFactory;
 import pwcg.mission.mcu.McuFlare;
 import pwcg.mission.mcu.group.FlareSequence;
 
 public class GroundMachineGunFlareUnit extends GroundMachineGunUnit
 {
     private FlareSequence flares = new FlareSequence();
-
-    public GroundMachineGunFlareUnit(GroundUnitInformation pwcgGroundUnitInformation)
+    private Flight triggeringFlight;
+    
+    public GroundMachineGunFlareUnit(GroundUnitInformation pwcgGroundUnitInformation, Flight triggeringFlight)
     {
         super(pwcgGroundUnitInformation);
+        this.triggeringFlight = triggeringFlight;
     }   
 
 
@@ -69,10 +70,8 @@ public class GroundMachineGunFlareUnit extends GroundMachineGunUnit
             flareColor = McuFlare.FLARE_COLOR_GREEN;
         }
         
-        Coalition friendlyCoalition  = CoalitionFactory.getFriendlyCoalition(pwcgGroundUnitInformation.getCountry());
-
         flares = new FlareSequence();
-        flares.setFlare(friendlyCoalition, pwcgGroundUnitInformation.getPosition().copy(), flareColor, vehicle.getEntity().getIndex());
+        flares.setFlare(triggeringFlight, pwcgGroundUnitInformation.getPosition().copy(), flareColor, vehicle.getEntity().getIndex());
     }
 
     @Override

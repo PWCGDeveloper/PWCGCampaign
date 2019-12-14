@@ -12,6 +12,7 @@ public class TargetTypeAvailabilityInputs
     private double maxDistance;
     private Side side;
     private Date date;
+    private boolean useMinimalTargetSet = true;
 
     public Coordinate getTargetGeneralLocation()
     {
@@ -63,4 +64,13 @@ public class TargetTypeAvailabilityInputs
         this.date = date;
     }
 
+    public boolean isUseMinimalTargetSet()
+    {
+        return useMinimalTargetSet;
+    }
+
+    public void setUseMinimalTargetSet(boolean useMinimalTargetSet)
+    {
+        this.useMinimalTargetSet = useMinimalTargetSet;
+    }
 }

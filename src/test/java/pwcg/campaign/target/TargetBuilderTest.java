@@ -128,7 +128,7 @@ public class TargetBuilderTest
     @Test
     public void createTroopConcentrationTest()  throws PWCGException
     {
-        Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_TROOP_CONCENTRATION);
+        Mockito.when(targetDefinition.getTargetType()).thenReturn(TacticalTarget.TARGET_AAA);
         Mockito.when(flightInformation.getFlightType()).thenReturn(FlightTypes.LOW_ALT_BOMB);
         TargetFactory targetBuilder = new TargetFactory(flightInformation);
         targetBuilder.buildTarget();

@@ -6,6 +6,7 @@ import pwcg.mission.IUnit;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
+import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class GroundUnitValidator
@@ -65,7 +66,10 @@ public class GroundUnitValidator
             if (linkedUnit instanceof IGroundUnitCollection)
             {
                 IGroundUnitCollection groundUnitCollection = (IGroundUnitCollection)linkedUnit;
-                assert(groundUnitCollection.getGroundUnits().size() == 1);
+                for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
+                {
+                    assert(groundUnit.getSpawners().size() == 1);
+                }
             }
         }
     }

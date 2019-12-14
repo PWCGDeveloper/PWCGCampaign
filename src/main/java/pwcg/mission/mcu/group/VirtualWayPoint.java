@@ -359,9 +359,9 @@ public class VirtualWayPoint
             wpActivateTimer.write(writer);
         }
     }
-
-    public SelfDeactivatingCheckZone getTriggerCheckZone()
+    
+    public void setVirtualWaypointTriggerObject(int triggerObject)
     {
-        return checkZone;
+        checkZone.setCheckZoneTriggerObject(triggerObject);
     }
 }

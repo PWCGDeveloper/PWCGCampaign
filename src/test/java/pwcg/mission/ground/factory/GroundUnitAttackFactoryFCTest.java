@@ -1,4 +1,4 @@
-package pwcg.mission.ground;
+package pwcg.mission.ground.factory;
 
 import java.util.List;
 
@@ -14,13 +14,14 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.ground.factory.GroundUnitAttackFactory;
+import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.target.TacticalTarget;
 import pwcg.mission.target.TargetDefinition;
-import pwcg.testutils.KubanAttackMockCampaign;
+import pwcg.testutils.FranceAttackMockCampaign;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
+public class GroundUnitAttackFactoryFCTest extends FranceAttackMockCampaign
 {
     private TargetDefinition targetDefinition = new TargetDefinition();
 
@@ -31,7 +32,7 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
         mockCampaignSetup();
         
         targetDefinition.setAttackingCountry(country);
-        targetDefinition.setTargetCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
+        targetDefinition.setTargetCountry(CountryFactory.makeCountryByCountry(Country.FRANCE));
         targetDefinition.setTargetPosition(new Coordinate(100000, 0, 150000));
         targetDefinition.setTargetOrientation(new Orientation());
         targetDefinition.setDate(date);
@@ -132,7 +133,7 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
     @Test
     public void createTroopConcentrationTest () throws PWCGException 
     {
-        targetDefinition.setTargetType(TacticalTarget.TARGET_TROOP_CONCENTRATION);
+        targetDefinition.setTargetType(TacticalTarget.TARGET_AAA);
 
         GroundUnitAttackFactory groundUnitBuilderAttack = new GroundUnitAttackFactory(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();
@@ -142,7 +143,7 @@ public class GroundUnitBuilderAttackBoSTest extends KubanAttackMockCampaign
 
     private void validateTestResults(IGroundUnitCollection groundUnitCollection) throws PWCGException
     {
-        List<IGroundUnitCollection> groundUnits = groundUnitCollection.getAllAlliedGroundUnits();
+        List<IGroundUnit> groundUnits = groundUnitCollection.getGroundUnits();
         assert(groundUnits.size() > 0);
         assert(groundUnitCollection.getTargetCoordinatesFromGroundUnits(Side.ALLIED) != null);
     }

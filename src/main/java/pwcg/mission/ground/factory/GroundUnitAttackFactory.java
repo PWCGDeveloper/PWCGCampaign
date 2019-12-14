@@ -62,11 +62,6 @@ public class GroundUnitAttackFactory
             ArtilleryUnitBuilder artilleryUnitBuilder = new ArtilleryUnitBuilder(campaign, targetDefinition);            
             return artilleryUnitBuilder.createArtilleryBattery();
         }
-        else if (targetDefinition.getTargetType() == TacticalTarget.TARGET_TROOP_CONCENTRATION)
-        {
-            MinimalAiTargetFactory smallTargetBuilder = new MinimalAiTargetFactory(campaign, targetDefinition);
-            return smallTargetBuilder.createTroopConcentration();
-        }
         else if (targetDefinition.getTargetType() == TacticalTarget.TARGET_ASSAULT || targetDefinition.getTargetType() == TacticalTarget.TARGET_DEFENSE)
         {
             IGroundUnitCollection battleUnitCollection = AssaultBuilder.generateAssault(mission, targetDefinition);

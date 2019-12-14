@@ -15,7 +15,7 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public abstract class GroundTargetAttackFlight extends Flight
 {
-    protected Map<Integer, AttackMcuSequence> attackMcuSequences = new HashMap<Integer, AttackMcuSequence>();
+    protected Map<Integer, AirGroundAttackMcuSequence> attackMcuSequences = new HashMap<Integer, AirGroundAttackMcuSequence>();
     
     protected int attackTime = 180;
     
@@ -34,7 +34,7 @@ public abstract class GroundTargetAttackFlight extends Flight
            
             for (PlaneMCU plane : getPlanes())
             {
-                AttackMcuSequence attackMcuSequence = getAttackMcuSequences().get(plane.getIndex());
+                AirGroundAttackMcuSequence attackMcuSequence = attackMcuSequences.get(plane.getIndex());
                 List<McuWaypoint>waypointsToLink = getWaypointPackage().getWaypointsForPlane(plane);
                 
                 createWaypointTargetAssociationsWithAttack(plane, waypointsToLink, attackMcuSequence);
@@ -42,14 +42,14 @@ public abstract class GroundTargetAttackFlight extends Flight
         }
         else
         {
-            AttackMcuSequence attackMcuSequence = getAttackMcuSequences().get(getLeadPlane().getIndex());
+            AirGroundAttackMcuSequence attackMcuSequence = attackMcuSequences.get(getLeadPlane().getIndex());
             List<McuWaypoint>waypointsToLink =  getWaypointPackage().getWaypointsForLeadPlane();
             
             createWaypointTargetAssociationsWithAttack(getLeadPlane(), waypointsToLink, attackMcuSequence);
         }
     }
 
-    protected void createWaypointTargetAssociationsWithAttack(PlaneMCU plane, List<McuWaypoint>waypointsToLink, AttackMcuSequence attackMcuSequence)
+    private void createWaypointTargetAssociationsWithAttack(PlaneMCU plane, List<McuWaypoint>waypointsToLink, AirGroundAttackMcuSequence attackMcuSequence)
     {
         linkWPToPlane(plane, waypointsToLink);
         
@@ -82,7 +82,7 @@ public abstract class GroundTargetAttackFlight extends Flight
         {
             for (PlaneMCU plane : planes)
             {
-                AttackMcuSequence attackMcuSequence = new AttackMcuSequence();
+                AirGroundAttackMcuSequence attackMcuSequence = new AirGroundAttackMcuSequence();
                 attackMcuSequence.createAttackArea(getSquadron().determineDisplayName(getCampaign().getDate()), this.getFlightType(), getTargetCoords(), altitude, attackTime);
                 attackMcuSequence.createTriggerForPlane(plane, getTargetCoords());
                 
@@ -91,7 +91,7 @@ public abstract class GroundTargetAttackFlight extends Flight
         }
         else
         {
-            AttackMcuSequence attackMcuSequence = new AttackMcuSequence();
+            AirGroundAttackMcuSequence attackMcuSequence = new AirGroundAttackMcuSequence();
             attackMcuSequence.createAttackArea(getSquadron().determineDisplayName(getCampaign().getDate()), this.getFlightType(), getTargetCoords(), altitude, attackTime);
             attackMcuSequence.createTriggerForFlight(this, getTargetCoords());
             
@@ -143,29 +143,32 @@ public abstract class GroundTargetAttackFlight extends Flight
     {
         super.write(writer);
 
-        for (AttackMcuSequence attackMcuSequence : attackMcuSequences.values())
+        for (AirGroundAttackMcuSequence attackMcuSequence : attackMcuSequences.values())
         {
             attackMcuSequence.write(writer);
         }
     }
 
-    public Map<Integer, AttackMcuSequence> getAttackMcuSequences()
+    public void validate() throws PWCGException
     {
-        return attackMcuSequences;
-    }
+        if (isVirtual())
+        {
+            if (attackMcuSequences.size() != getPlanes().size())
+            {
+                throw new PWCGException("Incorrect number of attack sequences for virtual flight");
+            }
+        }
+        else
+        {
+            if (attackMcuSequences.size() != 1)
+            {
+                throw new PWCGException("Incorrect number of attack sequences for realized flight");
+            }
 
-    public void setAttackMcuSequences(Map<Integer, AttackMcuSequence> attackMcuSequences)
-    {
-        this.attackMcuSequences = attackMcuSequences;
+            if (!attackMcuSequences.containsKey(getLeadPlane().getIndex()))
+            {
+                throw new PWCGException("Incorrect association for attack sequence");
+            }
+        }
     }
-
-    public int getAttackTime()
-    {
-        return attackTime;
-    }
-
-    public void setAttackTime(int attackTime)
-    {
-        this.attackTime = attackTime;
-    } 
 }

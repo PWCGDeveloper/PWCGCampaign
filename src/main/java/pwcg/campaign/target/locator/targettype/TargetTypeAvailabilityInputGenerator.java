@@ -16,6 +16,15 @@ public class TargetTypeAvailabilityInputGenerator
         TargetRadius targetRadius = new TargetRadius();
         targetRadius.calculateTargetRadius(flightInformation.getFlightType(), flightInformation.getMission().getMissionBorders().getAreaRadius());
 
+        if (flightInformation.isPlayerRelatedFlight())
+        {
+            targetTypeAvailabilityInputs.setUseMinimalTargetSet(false);
+        }
+        else
+        {
+            targetTypeAvailabilityInputs.setUseMinimalTargetSet(true);
+        }
+        
         targetTypeAvailabilityInputs.setPreferredDistance(new Double(targetRadius.getInitialTargetRadius()).intValue());
         targetTypeAvailabilityInputs.setMaxDistance(new Double(targetRadius.getMaxTargetRadius()).intValue());
         targetTypeAvailabilityInputs.setDate(flightInformation.getCampaign().getDate());

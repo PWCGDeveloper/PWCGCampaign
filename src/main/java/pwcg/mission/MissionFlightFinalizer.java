@@ -111,7 +111,7 @@ public class MissionFlightFinalizer
                     VirtualWayPoint vwpCZ = (VirtualWayPoint)vwp;
                     for (int planeIndex : virtualFlight.getMission().getMissionFlightBuilder().determinePlayerPlaneIds())
                     {
-                        vwpCZ.getTriggerCheckZone().setCheckZoneObject(planeIndex);
+                        vwpCZ.setVirtualWaypointTriggerObject(planeIndex);
                     }
                 }
             }

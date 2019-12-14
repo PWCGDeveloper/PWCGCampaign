@@ -70,7 +70,7 @@ public class PlayerFlightFCTypeTest
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
-        EscortForPlayerValidator.validateEscortForPlayer(flight);
+        EscortForPlayerValidator.validateEscortForPlayer(mission, flight);
         PositionEvaluator.evaluateAiFlight(mission);
 	}
 	
