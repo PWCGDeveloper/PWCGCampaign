@@ -15,6 +15,7 @@ public class VirtualWayPointCoordinate
     private Coordinate coordinate = new Coordinate();
     private Orientation orientation = new Orientation();
     private int waypointindex = 0;
+    private int waypointWaitTimeSeconds = 0;
     
     public Coordinate getCoordinate()
     {
@@ -45,6 +46,14 @@ public class VirtualWayPointCoordinate
     {
         this.waypointindex = waypointindex;
     }
-    
-    
+
+    public int getWaypointWaitTimeSeconds()
+    {
+        return waypointWaitTimeSeconds;
+    }
+
+    public void setWaypointWaitTimeSeconds(int waypointWaitTimeSeconds)
+    {
+        this.waypointWaitTimeSeconds = waypointWaitTimeSeconds;
+    }
 }

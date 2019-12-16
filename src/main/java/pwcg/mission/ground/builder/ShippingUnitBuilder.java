@@ -71,6 +71,7 @@ public class ShippingUnitBuilder
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(shipGroup);
+        groundUnitCollection.setPrimaryGroundUnit(shipGroup);
         groundUnitCollection.finishGroundUnitCollection();
         return groundUnitCollection;
     }

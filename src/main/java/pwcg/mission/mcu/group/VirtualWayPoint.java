@@ -25,38 +25,27 @@ import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 
-public class VirtualWayPoint 
-{    
-    protected McuTimer vwpTimer = new McuTimer();
-
-    protected McuTimer masterSpawnTimer = new McuTimer();
-    protected McuTimer masterWpTriggerTimer = new McuTimer();
-
-    protected Map<Integer, VmpSpawnContainer> vmpSpawnContainers = new HashMap<Integer, VmpSpawnContainer>();
-    
+public final class VirtualWayPoint 
+{       
+    private Map<Integer, VmpSpawnContainer> vmpSpawnContainers = new HashMap<Integer, VmpSpawnContainer>();
     private int index = IndexGenerator.getInstance().getNextIndex();;
+    private VirtualWayPointCoordinate vwpCoordinate = null;
     
-    protected VirtualWayPointCoordinate vwpCoordinate = null;
-
-    protected List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
-    
-    protected boolean useSubtitles = false;
-
+    private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
+    private boolean useSubtitles = false;
 
     private SelfDeactivatingCheckZone checkZone;
-    
     private McuTimer nextVwpTimer = new McuTimer();
-
+    private McuTimer vwpTimer = new McuTimer();
+    private McuTimer masterSpawnTimer = new McuTimer();
+    private McuTimer masterWpTriggerTimer = new McuTimer();
     private McuTimer nextVirtualWaypointTimer = new McuTimer();
-
     private McuTimer killVwpTimer = new McuTimer();
     private McuTimer vwpTriggeredTimer = new McuTimer();
     private McuDeactivate stopNextVwp = new McuDeactivate();
     
     public static int VWP_TRIGGGER_DISTANCE = 20000;
     
-    public static int VWP_WAIT_TIME = 30;
-
     public VirtualWayPoint()
     {
         index = IndexGenerator.getInstance().getNextIndex();
@@ -68,7 +57,6 @@ public class VirtualWayPoint
                     Coalition coalition) throws PWCGException 
     {
         this.vwpCoordinate = vwpCoordinate;                 
-
         buildMcus(vwpCoordinate);
         makeSubtitles(flight);
         setTargetAssociations(vwpCoordinate);
@@ -124,7 +112,7 @@ public class VirtualWayPoint
         nextVwpTimer.setPosition(vwpCoordinate.getCoordinate().copy());
         nextVwpTimer.setName("VWP CZ Deactivate Timer");
         nextVwpTimer.setDesc("VWP CZ Deactivate Timer");
-        nextVwpTimer.setTimer(VWP_WAIT_TIME);
+        nextVwpTimer.setTimer(vwpCoordinate.getWaypointWaitTimeSeconds());
 
         vwpTriggeredTimer.setPosition(vwpCoordinate.getCoordinate().copy());
         vwpTriggeredTimer.setName("VWP Trigger Timer");
@@ -148,7 +136,7 @@ public class VirtualWayPoint
         masterWpTriggerTimer.setDesc("Master WP Trigger Timer");
     }
 
-    protected void makeSubtitles(Flight flight) throws PWCGException
+    private void makeSubtitles(Flight flight) throws PWCGException
     {     
         if (!useSubtitles)
         {
@@ -159,17 +147,9 @@ public class VirtualWayPoint
 
         String squadronName = flight.getSquadron().determineDisplayName(flight.getCampaign().getDate());
         
-        String wpName = "Unknown";
-        List<BaseFlightMcu>  planeMissionPoints = flight.getAllMissionPointsForPlane(flight.getPlanes().get(0));
-        if (planeMissionPoints != null && !planeMissionPoints.isEmpty())
-        {
-            BaseFlightMcu planeMissionPoint = planeMissionPoints.get(vwpCoordinate.getWaypointindex());
-            wpName = planeMissionPoint.getName();
-        }
-        
         McuSubtitle checkZoneSubtitle = new McuSubtitle();
         checkZoneSubtitle.setName("checkZone Subtitle");
-        checkZoneSubtitle.setText("VWP " +  squadronName +  " CZ triggered " + wpName);
+        checkZoneSubtitle.setText("VWP " +  squadronName +  " CZ triggered ");
         checkZoneSubtitle.setPosition(vwpCoordinate.getCoordinate().copy());
         checkZone.setCheckZoneTarget(checkZoneSubtitle.getIndex());
         subTitleList.add(checkZoneSubtitle);
@@ -177,7 +157,7 @@ public class VirtualWayPoint
         subtitleHandler.registerMissionText(checkZoneSubtitle.getLcText(), checkZoneSubtitle.getText());
     }
 
-    protected void generateSpawners(Flight flight) throws PWCGException
+    private void generateSpawners(Flight flight) throws PWCGException
     {
         FormationGenerator formationGenerator = new FormationGenerator();
         List<Coordinate> flightCoordinates = formationGenerator.createPlaneInitialPosition(flight.getPlanes(), vwpCoordinate.getCoordinate(), vwpCoordinate.getOrientation());
@@ -199,7 +179,7 @@ public class VirtualWayPoint
             // this VWP coordinate.
             List<BaseFlightMcu>  planeMissionPoints = flight.getAllMissionPointsForPlane(plane);
 
-            // Since every plane has a matching set of missionpoints, the index will be
+            // Since every plane has a matching set of mission points, the index will be
             // identical for each plane
             BaseFlightMcu planeMissionPoint = planeMissionPoints.get(vwpCoordinate.getWaypointindex());
             VmpSpawnContainer vmpSpawnContainer = new VmpSpawnContainer(planeMissionPoint);

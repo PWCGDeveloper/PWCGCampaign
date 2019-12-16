@@ -1,5 +1,6 @@
 package pwcg.mission;
 
+import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,20 +15,25 @@ import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
-import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.balloondefense.AiBalloonDefenseFlight;
 import pwcg.mission.flight.balloondefense.AmbientBalloonDefensePackage;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
-public class MissionBalloons
+public class AmbientBalloonBuilder
 {
     private List<IGroundUnitCollection> ambientBalloons = new ArrayList<>();
+    private Mission mission;
 
-    public void createAmbientBalloons(Mission mission) throws PWCGException 
+    public AmbientBalloonBuilder(Mission mission)
     {
-        if (!shouldMakeAmbientBalloons(mission))
+        this.mission = mission;
+    }
+    
+    public void createAmbientBalloons() throws PWCGException 
+    {
+        if (!shouldMakeAmbientBalloons())
         {
             return;
         }
@@ -36,7 +42,7 @@ public class MissionBalloons
         makeDefinedNumberOfAmbientBalloons(mission, balloonPositions);
     }
 
-    private boolean shouldMakeAmbientBalloons(Mission mission) throws PWCGException
+    private boolean shouldMakeAmbientBalloons() throws PWCGException
     {
         if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
@@ -91,11 +97,12 @@ public class MissionBalloons
 
                 AmbientBalloonDefensePackage ambientBalloonPackage = new AmbientBalloonDefensePackage(mission);
             	Coordinate ambientBalloonReferencePosition = determineAmbientBalloonReferencePosition(mission);
-            	IGroundUnitCollection balloonGroup = ambientBalloonPackage.createPackage(balloonSide, ambientBalloonReferencePosition);
 
-                boolean alreadyTaken = isBalloonPositionTaken(balloonPositions, balloonGroup);
+                boolean alreadyTaken = isBalloonPositionTaken(ambientBalloonReferencePosition);
                 if (!alreadyTaken)
                 {
+                    IGroundUnitCollection balloonGroup = ambientBalloonPackage.createPackage(balloonSide, ambientBalloonReferencePosition);
+                    mission.getMissionGroundUnitManager().registerBalloon(balloonGroup.getPrimaryGroundUnit());
                     ambientBalloons.add(balloonGroup);
                 }
             }
@@ -115,21 +122,16 @@ public class MissionBalloons
     	return ambientBalloonReferencePosition;
     }
 
-	private boolean isBalloonPositionTaken(List<Coordinate> balloonPositions, IGroundUnitCollection balloonGroup) throws PWCGException 
+	private boolean isBalloonPositionTaken(Coordinate requestedBalloonPosition) throws PWCGException 
 	{
-		boolean alreadyTaken = false;
-		for (Coordinate balloonPosition : balloonPositions)
-		{
-		    if (MathUtils.calcDist(balloonGroup.getPosition(), balloonPosition) < 2000.0)
-		    {
-		        alreadyTaken = true;
-		    }
-		}
-		return alreadyTaken;
+		return mission.getMissionGroundUnitManager().isBalloonPositionInUse(requestedBalloonPosition);
 	}
 
-    public List<IGroundUnitCollection> getAmbientBalloons()
+    public void write(BufferedWriter writer) throws PWCGException
     {
-        return ambientBalloons;
+        for (IGroundUnitCollection ambientBalloon : ambientBalloons)
+        {
+            ambientBalloon.write(writer);
+        }
     }
 }

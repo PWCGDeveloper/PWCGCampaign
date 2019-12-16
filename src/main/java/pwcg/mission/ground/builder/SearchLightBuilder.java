@@ -57,6 +57,7 @@ public class SearchLightBuilder
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(searchLightUnit);
+        groundUnitCollection.setPrimaryGroundUnit(searchLightUnit);
         groundUnitCollection.finishGroundUnitCollection();
         return groundUnitCollection;
     }

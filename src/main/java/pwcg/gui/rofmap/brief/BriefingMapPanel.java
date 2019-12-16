@@ -255,24 +255,30 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         flightMap.flightType = flight.getFlightType().toString();
         flightMap.planeType = flight.getPlanes().get(0).getDisplayName();
         
-        for (McuWaypoint waypoint : flight.getWaypointPackage().getWaypointsForLeadPlane())
+        if (flight.isVirtual())
         {
-            BriefingMapPoint mapPoint = BriefingMapPointFactory.waypointToMapPoint(waypoint);
-            flightMap.mapPoints.add(mapPoint);
+            List<VirtualWayPointCoordinate> plotCoordinates = getPlotCoordinatesForVirtualFlight(flight);        
+            for (VirtualWayPointCoordinate vwp : plotCoordinates)
+            {
+                BriefingMapPoint mapPoint = BriefingMapPointFactory.virtualWaypointToMapPoint(vwp);
+                flightMap.mapPoints.add(mapPoint);
+            }
+        }
+        else
+        {
+            for (McuWaypoint waypoint : flight.getWaypointPackage().getWaypointsForLeadPlane())
+            {
+                BriefingMapPoint mapPoint = BriefingMapPointFactory.waypointToMapPoint(waypoint);
+                flightMap.mapPoints.add(mapPoint);
+            }
         }
         
-        List<VirtualWayPointCoordinate> plotCoordinates = getPlotCoordinatesForFlight(flight);        
-        for (VirtualWayPointCoordinate vwp : plotCoordinates)
-        {
-            BriefingMapPoint mapPoint = BriefingMapPointFactory.virtualWaypointToMapPoint(vwp);
-            flightMap.mapPoints.add(mapPoint);
-        }
         return flightMap;
     }
 
-    private List<VirtualWayPointCoordinate> getPlotCoordinatesForFlight(Flight flight) throws PWCGException
+    private List<VirtualWayPointCoordinate> getPlotCoordinatesForVirtualFlight(Flight flight) throws PWCGException
     {
-        List<VirtualWayPointCoordinate> plotCoordinates = null;
+        List<VirtualWayPointCoordinate> plotCoordinates = new ArrayList<>();
         if (flight.isVirtual())
         {
             if (flight.getWaypointPackage() instanceof VirtualWaypointPackage)
@@ -281,16 +287,18 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
                 plotCoordinates = virtualWaypointPackage.getVirtualWaypointCoordinates();
                 if (plotCoordinates.size() == 0)
                 {
-                    VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
-                    plotCoordinates = virtualWaypointPlotter.plotCoordinatesByMinute(flight);                }
+                    VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter(flight);
+                    plotCoordinates = virtualWaypointPlotter.plotCoordinates();
+                }
             }
         }
         
-        if (plotCoordinates == null)
+        if (plotCoordinates.size() == 0)
         {
-            VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
-            plotCoordinates = virtualWaypointPlotter.plotCoordinatesByMinute(flight);
+            VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter(flight);
+            plotCoordinates = virtualWaypointPlotter.plotCoordinates();
         }
+
         return plotCoordinates;
     }
 
@@ -455,10 +463,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 		
 		return selectedMapPointIndex;
 	}
-	
-	/**
-	 * @return
-	 */
+
 	public Point upperLeft()
 	{
 		Point upperLeft = new Point();

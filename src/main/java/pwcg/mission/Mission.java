@@ -34,9 +34,9 @@ public class Mission
     private SinglePlayerMissionPlaneLimiter missionPlaneLimiter = new SinglePlayerMissionPlaneLimiter();
     private MissionObjectiveGroup missionObjectiveSuccess = new MissionObjectiveGroup();
     private MissionObjectiveGroup missionObjectiveFailure = new MissionObjectiveGroup();
-    private MissionBalloons missionBalloons = new MissionBalloons();
     private MissionBattleManager missionBattleManager = new MissionBattleManager();
     private MissionGroundUnitResourceManager missionGroundUnitManager;
+    private AmbientBalloonBuilder ambientBalloonBuilder;
     private AmbientGroundUnitBuilder ambientGroundUnitBuilder;
     private MissionWaypointIconBuilder missionWaypointIconBuilder = new MissionWaypointIconBuilder();
     private MissionAirfieldIconBuilder missionAirfieldIconBuilder = new MissionAirfieldIconBuilder();
@@ -66,6 +66,7 @@ public class Mission
         PWCGContext.getInstance().getSkinManager().clearSkinsInUse();
 
         missionGroundUnitManager = new MissionGroundUnitResourceManager();
+        ambientBalloonBuilder = new AmbientBalloonBuilder(this);
         ambientGroundUnitBuilder = new AmbientGroundUnitBuilder(campaign, this);
         missionFlightBuilder = new MissionFlightBuilder(campaign, this);
         missionFrontLines = new MissionFrontLineIconBuilder(campaign, this);
@@ -109,10 +110,10 @@ public class Mission
         vehicleSetBuilder.makeOneOfEachType();
         vehicleSetBuilder.scatterAroundPosition(new Coordinate(100, 0, 100));
     }
-
+    
     private void createAmbientUnits() throws PWCGException, PWCGException
     {
-        missionBalloons.createAmbientBalloons(this);
+        ambientBalloonBuilder.createAmbientBalloons();
         ambientGroundUnitBuilder = new AmbientGroundUnitBuilder(campaign, this);
         ambientGroundUnitBuilder.generateAmbientGroundUnits();
     }
@@ -232,11 +233,6 @@ public class Mission
         return missionGroundUnitManager;
     }
 
-    public MissionBalloons getMissionBalloons()
-    {
-        return missionBalloons;
-    }
-
     public SinglePlayerMissionPlaneLimiter getMissionPlaneCalculator()
     {
         return missionPlaneLimiter;
@@ -325,5 +321,10 @@ public class Mission
     public void setMissionOptions(MissionOptions missionOptions)
     {
         this.missionOptions = missionOptions;
+    }
+
+    public AmbientBalloonBuilder getAmbientBalloonBuilder()
+    {
+        return ambientBalloonBuilder;
     }
 }

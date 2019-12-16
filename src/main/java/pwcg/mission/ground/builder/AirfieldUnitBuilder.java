@@ -39,6 +39,7 @@ public class AirfieldUnitBuilder
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(airfieldGroup);
+        groundUnitCollection.setPrimaryGroundUnit(airfieldGroup);
         groundUnitCollection.finishGroundUnitCollection();
 
         return groundUnitCollection;

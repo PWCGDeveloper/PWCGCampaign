@@ -20,13 +20,13 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
+import pwcg.mission.AmbientBalloonBuilder;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBlockBuilder;
 import pwcg.mission.MissionBlockDamage;
 import pwcg.mission.MissionBlockSmoke;
 import pwcg.mission.ambient.AmbientGroundUnitBuilder;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.ground.vehicle.VehicleFactory;
@@ -159,26 +159,10 @@ public class MissionFileWriter implements IMissionFile
     private void writeAmbientGroundUnits(BufferedWriter writer) throws PWCGException
     {
         AmbientGroundUnitBuilder ambientGroundUnitBuilder = mission.getAmbientGroundUnitBuilder();
+        ambientGroundUnitBuilder.write(writer);
 
-        for (IGroundUnitCollection trainUnit: ambientGroundUnitBuilder.getAmbientTrains())
-        {
-            trainUnit.write(writer);
-        }
-        
-        for (IGroundUnitCollection truckUnit: ambientGroundUnitBuilder.getAmbientTrucks())
-        {
-            truckUnit.write(writer);
-        }
-        
-        for (IGroundUnitCollection battle: ambientGroundUnitBuilder.getAmbientBattles())
-        {
-            battle.write(writer);
-        }
-        
-        for (IGroundUnitCollection aaa : ambientGroundUnitBuilder.getAAA())
-        {
-            aaa.write(writer);
-        }
+        AmbientBalloonBuilder ambientBalloonBuilder = mission.getAmbientBalloonBuilder();
+        ambientBalloonBuilder.write(writer);
     }
 
     private void writeVehiclesForTest(BufferedWriter writer) throws PWCGException

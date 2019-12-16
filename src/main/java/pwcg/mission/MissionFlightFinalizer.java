@@ -8,6 +8,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
+import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.mcu.group.VirtualWayPoint;
 import pwcg.mission.utils.AiAdjuster;
 
@@ -36,7 +37,8 @@ public class MissionFlightFinalizer
         MissionFlightKeeper missionFlightKeeper = new MissionFlightKeeper(campaign, mission);
         List<Flight> finalizedMissionFlights = missionFlightKeeper.keepLimitedFlights();
 
-        setFlightAttackMcu();
+        setFlightAttackMcuForPlanes();
+        setFlightAttackMcuForBalloons();
         
         setCzTriggers();
         
@@ -52,8 +54,7 @@ public class MissionFlightFinalizer
         }
     }
 
-
-    private void setFlightAttackMcu() throws PWCGException  
+    private void setFlightAttackMcuForPlanes() throws PWCGException  
     {
         List<Flight> axisFlights = mission.getMissionFlightBuilder().getAllFlightsForSide(Side.AXIS);
         List<Flight> alliedFlights = mission.getMissionFlightBuilder().getAllFlightsForSide(Side.ALLIED);
@@ -71,6 +72,31 @@ public class MissionFlightFinalizer
             for (Flight axisFlight : axisFlights)
             {
                 alliedFlight.addFlightTarget(axisFlight);
+            }
+        }
+    }
+
+    private void setFlightAttackMcuForBalloons() throws PWCGException  
+    {
+        List<Flight> axisFlights = mission.getMissionFlightBuilder().getAllFlightsForSide(Side.AXIS);
+        List<Flight> alliedFlights = mission.getMissionFlightBuilder().getAllFlightsForSide(Side.ALLIED);
+
+        List<IGroundUnit> axisBalloons = mission.getMissionGroundUnitManager().getBalloonsForSide(Side.AXIS);
+        List<IGroundUnit> alliedBalloons = mission.getMissionGroundUnitManager().getBalloonsForSide(Side.ALLIED);
+        
+        for (IGroundUnit axisBalloon : axisBalloons)
+        {
+            for (Flight alliedFlight : alliedFlights)
+            {
+                alliedFlight.addGroundUnitTarget(axisBalloon);
+            }
+        }
+        
+        for (IGroundUnit alliedBalloon : alliedBalloons)
+        {
+            for (Flight axisFlight : axisFlights)
+            {
+                axisFlight.addGroundUnitTarget(alliedBalloon);
             }
         }
     }

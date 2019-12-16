@@ -47,6 +47,7 @@ public class AAAUnitBuilder
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(mgBattery);
+        groundUnitCollection.setPrimaryGroundUnit(mgBattery);
         groundUnitCollection.finishGroundUnitCollection();
         return groundUnitCollection;
     }
@@ -77,6 +78,7 @@ public class AAAUnitBuilder
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(aaaBattery);
+        groundUnitCollection.setPrimaryGroundUnit(aaaBattery);
         groundUnitCollection.finishGroundUnitCollection();
         return groundUnitCollection;
     }
@@ -98,6 +100,7 @@ public class AAAUnitBuilder
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(aaaBattery);
         groundUnitCollection.addGroundUnit(searchLightUnit);
+        groundUnitCollection.setPrimaryGroundUnit(aaaBattery);
         groundUnitCollection.finishGroundUnitCollection();
         return groundUnitCollection;
     }

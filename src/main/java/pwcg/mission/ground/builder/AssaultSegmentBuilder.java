@@ -52,8 +52,8 @@ public class AssaultSegmentBuilder
 
     private void createAssault() throws PWCGException
     {
-        assaultingMachineGun();
         assaultingTanks();
+        assaultingMachineGun();
         if (assaultDefinition.getBattleSize() == BattleSize.BATTLE_SIZE_ASSAULT || assaultDefinition.getBattleSize() == BattleSize.BATTLE_SIZE_OFFENSIVE)
         {
             assaultingArtillery();
@@ -68,7 +68,7 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsAttackerOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS);  
 
-        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(machineGunStartPosition, "MachineGun");
+        GroundUnitInformation groundUnitInformation = buildAssaultGroundUnitInformation(machineGunStartPosition, "Machine Gun");
         IGroundUnit assaultingMachineGunUnit = assaultFactory.createMachineGunUnit (groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(assaultingMachineGunUnit);
     }
@@ -186,7 +186,7 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation().getyOri(), AssaultDefinitionGenerator.DISTANCE_BETWEEN_COMBATANTS + 150.0);     
 
-        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(aaaMgDefensePosition, "AA Machine Gun");
+        GroundUnitInformation groundUnitInformation = buildDefenseGroundUnitInformation(aaaMgDefensePosition, "Machine Gun AA");
         IGroundUnit defenseAAMachineGunUnit = assaultFactory.createAAMachineGunUnitUnit(groundUnitInformation);
         battleSegmentUnitCollection.addGroundUnit(defenseAAMachineGunUnit);
     }
@@ -215,5 +215,26 @@ public class AssaultSegmentBuilder
                 assaultDefinition.getTowardsAttackerOrientation(), 
                 assaultDefinition.determineIsBattleForPlayer());
         return groundUnitInformation;
+    }
+    
+    public IGroundUnit getPrimaryGroundUnit() throws PWCGException
+    {
+        for (IGroundUnit groundUnit : battleSegmentUnitCollection.getGroundUnits())
+        {
+            if (groundUnit.getName().endsWith("Tank"))
+            {
+                return groundUnit;
+            }
+        }
+
+        for (IGroundUnit groundUnit : battleSegmentUnitCollection.getGroundUnits())
+        {
+            if (groundUnit.getName().endsWith("Machine Gun"))
+            {
+                return groundUnit;
+            }
+        }
+        
+        return battleSegmentUnitCollection.getGroundUnits().get(0);
     }
  }

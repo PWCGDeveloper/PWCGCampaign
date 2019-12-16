@@ -18,11 +18,10 @@ public class GroundUnitCollection implements IGroundUnitCollection
     private final static int GROUND_UNIT_SPAWN_DISTANCE = 20000;
     
     private GroundUnitCollectionData groundUnitCollectionData;
-
     private int index = IndexGenerator.getInstance().getNextIndex();  
-
-    private List<IGroundUnit> groundUnits = new ArrayList<> ();
     private MissionBeginSelfDeactivatingCheckZone missionBeginUnit;
+    private IGroundUnit primaryGroundUnit;
+    private List<IGroundUnit> groundUnits = new ArrayList<> ();
 
     public GroundUnitCollection (GroundUnitCollectionData groundUnitCollectionData)
     {
@@ -179,5 +178,24 @@ public class GroundUnitCollection implements IGroundUnitCollection
     public void addGroundUnit(IGroundUnit groundUnit)
     {
         groundUnits.add(groundUnit);
+    }
+
+    @Override
+    public IGroundUnit getPrimaryGroundUnit()
+    {
+        if (primaryGroundUnit == null)
+        {
+            return groundUnits.get(0);
+        }
+        else
+        {
+            return primaryGroundUnit;
+        }
+    }
+
+    @Override
+    public void setPrimaryGroundUnit(IGroundUnit groundUnit)
+    {
+        primaryGroundUnit = groundUnit;
     }
 }

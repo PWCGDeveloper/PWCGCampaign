@@ -4,6 +4,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Orientation;
+import pwcg.mission.Mission;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitInformationFactory;
 import pwcg.mission.ground.org.GroundUnitCollection;
@@ -20,14 +21,16 @@ import pwcg.mission.target.TargetDefinition;
 
 public class BalloonUnitBuilder
 {
+    private Mission mission;
     private Campaign campaign;
     private TargetDefinition targetDefinition;
     private GroundUnitInformation groundUnitInformation;
     private IGroundUnitCollection groundUnitCollection;
 
-    public BalloonUnitBuilder (Campaign campaign, TargetDefinition targetDefinition)
+    public BalloonUnitBuilder (Mission mission, TargetDefinition targetDefinition)
     {
-        this.campaign = campaign;
+        this.mission = mission;
+        this.campaign = mission.getCampaign();
         this.targetDefinition  = targetDefinition;
     }
 
@@ -68,7 +71,9 @@ public class BalloonUnitBuilder
     {
         IGroundUnit balloonUnit = new BalloonUnit(groundUnitInformation);
         balloonUnit.createGroundUnit();
+        groundUnitCollection.setPrimaryGroundUnit(balloonUnit);
         groundUnitCollection.addGroundUnit(balloonUnit);
+        registerBalloon(balloonUnit);
     }
     
     private void buildBalloonAAArtillery() throws PWCGException
@@ -84,4 +89,10 @@ public class BalloonUnitBuilder
         aaMachineGunBattery.createGroundUnit();
         groundUnitCollection.addGroundUnit(aaMachineGunBattery);
     }
+    
+    private void registerBalloon(IGroundUnit balloonUnit) throws PWCGException
+    {        
+        mission.getMissionGroundUnitManager().registerBalloon(balloonUnit);
+    }
+
 }

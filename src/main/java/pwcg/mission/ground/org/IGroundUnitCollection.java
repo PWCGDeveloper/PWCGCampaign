@@ -17,7 +17,9 @@ public interface IGroundUnitCollection extends IUnit
     void write(BufferedWriter writer) throws PWCGException;
     Coordinate getTargetCoordinatesFromGroundUnits(Side determineEnemySide) throws PWCGException;
     List<IGroundUnit> getGroundUnits();
+    IGroundUnit getPrimaryGroundUnit();
     void addGroundUnit(IGroundUnit groundUnit);
+    void setPrimaryGroundUnit(IGroundUnit groundUnit);
     void finishGroundUnitCollection() throws PWCGException;
     void merge(IGroundUnitCollection relatedGroundCollection);
     List<IGroundUnit> getGroundUnitsForSide(Side side) throws PWCGException;

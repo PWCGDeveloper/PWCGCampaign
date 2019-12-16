@@ -53,6 +53,7 @@ public class TrainUnitBuilder
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(train);
+        groundUnitCollection.setPrimaryGroundUnit(train);
         groundUnitCollection.finishGroundUnitCollection();
 
         return groundUnitCollection;

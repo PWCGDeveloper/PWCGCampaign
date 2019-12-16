@@ -1,5 +1,6 @@
 package pwcg.mission.ambient;
 
+import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,23 +68,27 @@ public class AmbientGroundUnitBuilder
         AAA = aaaManager.getAAAForMission();
     }
 
-    public List<IGroundUnitCollection> getAmbientTrains()
-    {
-        return ambientTrains;
-    }
 
-    public List<IGroundUnitCollection> getAmbientTrucks()
+    public void write(BufferedWriter writer) throws PWCGException
     {
-        return ambientTrucks;
-    }
+        for (IGroundUnitCollection ambientTrain : ambientTrains)
+        {
+            ambientTrain.write(writer);
+        }
 
-    public List<IGroundUnitCollection> getAmbientBattles()
-    {
-        return ambientBattles;
-    }
+        for (IGroundUnitCollection ambientTruck : ambientTrucks)
+        {
+            ambientTruck.write(writer);
+        }
 
-    public List<IGroundUnitCollection> getAAA()
-    {
-        return AAA;
+        for (IGroundUnitCollection ambientBattle : ambientBattles)
+        {
+            ambientBattle.write(writer);
+        }
+
+        for (IGroundUnitCollection aaa : AAA)
+        {
+            aaa.write(writer);
+        }
     }
  }

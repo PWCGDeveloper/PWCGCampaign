@@ -70,7 +70,7 @@ public class AmbientBalloonDefensePackage
         boolean isPlayerTarget = false;
         TargetDefinition ambientBalloonTargetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(balloonCountry, TacticalTarget.TARGET_BALLOON, balloonPosition, isPlayerTarget);
         
-        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(campaign, ambientBalloonTargetDefinition);
+        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(mission, ambientBalloonTargetDefinition);
         IGroundUnitCollection balloonUnit = groundUnitBuilderBalloonDefense.createBalloonUnit(balloonCountry);
 
 		return balloonUnit;

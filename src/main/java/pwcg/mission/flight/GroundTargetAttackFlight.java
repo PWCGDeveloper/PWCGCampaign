@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -100,43 +101,50 @@ public abstract class GroundTargetAttackFlight extends Flight
     }
 
     @Override
-    public List<BaseFlightMcu> getAllMissionPoints()
+    public List<Coordinate> getAllMissionCoordinates()
     {
-        List<BaseFlightMcu> allMissionPoints = new ArrayList<BaseFlightMcu>();
+        List<Coordinate> allMissionPointsForPlane = new ArrayList<>();
         
-        List<McuWaypoint> allWaypoints = this.getAllFlightWaypoints();
+        List<McuWaypoint> allWaypoints = this.getAllWaypointsForPlane(getLeadPlane());
         for (McuWaypoint waypoint : allWaypoints)
         {
-            allMissionPoints.add(waypoint);
+            allMissionPointsForPlane.add(waypoint.getPosition());
             
             if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
             {
-                allMissionPoints.add(attackMcuSequences.get(getLeadPlane().getIndex()).getAttackAreaMcu());
-            }
-        }
-        
-        return allMissionPoints;
-    }
-
-    @Override
-    public List<BaseFlightMcu> getAllMissionPointsForPlane(PlaneMCU plane)
-    {
-        List<BaseFlightMcu> allMissionPointsForPlane = new ArrayList<BaseFlightMcu>();
-        
-        List<McuWaypoint> allWaypoints = this.getAllWaypointsForPlane(plane);
-        for (McuWaypoint waypoint : allWaypoints)
-        {
-            allMissionPointsForPlane.add(waypoint);
-            
-            if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
-            {
-                allMissionPointsForPlane.add(attackMcuSequences.get(plane.getIndex()).getAttackAreaMcu());
+                allMissionPointsForPlane.add(attackMcuSequences.get(getLeadPlane().getIndex()).getAttackAreaMcu().getPosition());
             }
         }
         
         return allMissionPointsForPlane;
     }
 
+
+    @Override
+    public List<BaseFlightMcu> getAllMissionPoints()
+    {
+        return getAllMissionPointsForPlane(getLeadPlane());
+    }
+
+    @Override
+    public List<BaseFlightMcu> getAllMissionPointsForPlane(PlaneMCU plane)
+    {
+        List<BaseFlightMcu> allMissionPointsForPlane = new ArrayList<>();        
+        List<McuWaypoint> missionWP = waypointPackage.getWaypointsForPlane(plane);
+        if (missionWP != null)
+        {
+            for (McuWaypoint waypoint : missionWP)
+            {
+                allMissionPointsForPlane.add(waypoint);
+                if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
+                {
+                    allMissionPointsForPlane.add(attackMcuSequences.get(plane.getIndex()).getAttackAreaMcu());
+                }
+            }
+        }
+
+        return allMissionPointsForPlane;
+    }
 
     @Override
     public void write(BufferedWriter writer) throws PWCGException 

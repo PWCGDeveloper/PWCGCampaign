@@ -101,11 +101,11 @@ public class BalloonWinch
             writer.write("{");
             writer.newLine();
             
-            writer.write("  Name = Balloon Winch\";");
+            writer.write("  Name = \"Balloon Winch\";");
             writer.newLine();
             writer.write("  Index = " + index + ";");
             writer.newLine();
-            writer.write("  Desc = Balloon Winch\";");
+            writer.write("  Desc = \"Balloon Winch\";");
             writer.newLine();
 
             missionBeginUnit.write(writer);

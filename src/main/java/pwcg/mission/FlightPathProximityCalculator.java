@@ -6,8 +6,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.VirtualWaypointPlotter;
-import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
+import pwcg.mission.flight.FlightPathPlotter;
 
 public class FlightPathProximityCalculator
 {
@@ -20,13 +19,13 @@ public class FlightPathProximityCalculator
     
     public boolean isInFlightPath(Coordinate position) throws PWCGException 
     {
-        VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
+        FlightPathPlotter virtualWaypointPlotter = new FlightPathPlotter();
         for (Flight playerFlight : playerFlights)
         {
-	        List<VirtualWayPointCoordinate> vwpCoordinates = virtualWaypointPlotter.plotCoordinatesByMinute(playerFlight);
-	        for (VirtualWayPointCoordinate vwpCoordinate : vwpCoordinates)
+	        List<Coordinate>flightPlotCoordinates = virtualWaypointPlotter.plotCoordinatesByMinute(playerFlight);
+	        for (Coordinate flightPlotCoordinate : flightPlotCoordinates)
 	        {
-	            double distanceToPlayer = MathUtils.calcDist(vwpCoordinate.getCoordinate(), position);
+	            double distanceToPlayer = MathUtils.calcDist(flightPlotCoordinate, position);
 	            if (distanceToPlayer < 15000)
 	            {
 	                return true;

@@ -217,7 +217,7 @@ public class TargetBuilderTest
     @Test
     public void createBalloonDefenseTest()  throws PWCGException
     {
-        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(flightInformation.getCampaign(), flightInformation.getTargetDefinition());
+        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(mission, flightInformation.getTargetDefinition());
         IGroundUnitCollection balloonUnit = groundUnitBuilderBalloonDefense.createBalloonUnit(CountryFactory.makeCountryByCountry(Country.GERMANY));
         
         assert(balloonUnit.getGroundUnits().size() == 3);
@@ -251,7 +251,7 @@ public class TargetBuilderTest
     @Test
     public void createBalloonBustTest()  throws PWCGException
     {
-        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(flightInformation.getCampaign(), flightInformation.getTargetDefinition());
+        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(mission, flightInformation.getTargetDefinition());
         IGroundUnitCollection balloonUnit = groundUnitBuilderBalloonDefense.createBalloonUnit(CountryFactory.makeCountryByCountry(Country.RUSSIA));
 
         assert(balloonUnit.getGroundUnits().size() == 3);

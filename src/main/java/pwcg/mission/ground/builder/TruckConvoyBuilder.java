@@ -58,6 +58,7 @@ public class TruckConvoyBuilder
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection(groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(truckConvoy);
         groundUnitCollection.addGroundUnit(aatruckConvoy);
+        groundUnitCollection.setPrimaryGroundUnit(truckConvoy);
         groundUnitCollection.finishGroundUnitCollection();
 
         return groundUnitCollection;
@@ -85,12 +86,10 @@ public class TruckConvoyBuilder
         }
     }
     
-    
     private void registerBridgeInUse() throws PWCGException
     {        
         GroupManager groupManager = PWCGContext.getInstance().getCurrentMap().getGroupManager();
         Bridge bridge = groupManager.getBridgeFinder().findClosestBridge(targetDefinition.getTargetPosition());
         mission.getMissionGroundUnitManager().registerBridge(bridge);
     }
-
 }

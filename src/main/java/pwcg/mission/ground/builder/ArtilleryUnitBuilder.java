@@ -39,6 +39,7 @@ public class ArtilleryUnitBuilder
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(artilleryUnit);
+        groundUnitCollection.setPrimaryGroundUnit(artilleryUnit);
         groundUnitCollection.finishGroundUnitCollection();
 
         return groundUnitCollection;

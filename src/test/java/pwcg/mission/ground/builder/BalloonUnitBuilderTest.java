@@ -19,6 +19,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
+import pwcg.mission.MissionGroundUnitResourceManager;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
@@ -32,11 +33,15 @@ public class BalloonUnitBuilderTest
     @Mock private Campaign campaign;
     @Mock private Mission mission;
     @Mock private ConfigManagerCampaign configManager;
+    @Mock private MissionGroundUnitResourceManager missionGroundUnitManager;
+
     
     @Before
     public void setup() throws PWCGException
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
+        Mockito.when(mission.getCampaign()).thenReturn(campaign);
+        Mockito.when(mission.getMissionGroundUnitManager()).thenReturn(missionGroundUnitManager);
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
@@ -52,7 +57,7 @@ public class BalloonUnitBuilderTest
                 TacticalTarget.TARGET_BALLOON, new Coordinate (102000, 0, 100000), true);
 
 
-        BalloonUnitBuilder groundUnitFactory = new BalloonUnitBuilder(campaign, targetDefinition);
+        BalloonUnitBuilder groundUnitFactory = new BalloonUnitBuilder(mission, targetDefinition);
         IGroundUnitCollection groundUnitGroup = groundUnitFactory.createBalloonUnit(CountryFactory.makeCountryByCountry(Country.RUSSIA));
         validateBalloonUnit(groundUnitGroup, Country.RUSSIA);
         groundUnitGroup.validate();
@@ -68,7 +73,7 @@ public class BalloonUnitBuilderTest
                 TacticalTarget.TARGET_BALLOON, new Coordinate (102000, 0, 100000), true);
 
 
-        BalloonUnitBuilder groundUnitFactory = new BalloonUnitBuilder(campaign, targetDefinition);
+        BalloonUnitBuilder groundUnitFactory = new BalloonUnitBuilder(mission, targetDefinition);
         IGroundUnitCollection groundUnitGroup = groundUnitFactory.createBalloonUnit(CountryFactory.makeCountryByCountry(Country.GERMANY));
         validateBalloonUnit(groundUnitGroup, Country.GERMANY);
         groundUnitGroup.validate();

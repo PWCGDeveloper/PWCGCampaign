@@ -1,5 +1,6 @@
 package pwcg.mission.ground.builder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
@@ -7,6 +8,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.ground.org.GroundUnitCollection;
 import pwcg.mission.ground.org.GroundUnitCollectionData;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
+import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.target.AssaultDefinition;
@@ -30,13 +32,18 @@ public class AssaultBuilder
 
         IGroundUnitCollection battleUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
 
+        List<IGroundUnit> primaryAssaultSegmentGroundUnits = new ArrayList<>();
+        
         for (AssaultDefinition assaultDefinition : assaultDefinitions)
         {
             AssaultSegmentBuilder assaultSegmentBuilder = new AssaultSegmentBuilder(mission.getCampaign(), assaultDefinition);
             IGroundUnitCollection assaultSegmentUnits = assaultSegmentBuilder.generateAssaultSegment();
+            primaryAssaultSegmentGroundUnits.add(assaultSegmentUnits.getPrimaryGroundUnit());
             battleUnitCollection.merge(assaultSegmentUnits);
         }
+
         mission.registerAssault(assaultDefinitions.get(0));
+        battleUnitCollection.setPrimaryGroundUnit(primaryAssaultSegmentGroundUnits.get(0));
         battleUnitCollection.finishGroundUnitCollection();
         return battleUnitCollection;
     }

@@ -44,6 +44,7 @@ public class DrifterUnitBuilder
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
         groundUnitCollection.addGroundUnit(drifterUnit);
         groundUnitCollection.addGroundUnit(aaDrifterUnit);
+        groundUnitCollection.setPrimaryGroundUnit(drifterUnit);
         groundUnitCollection.finishGroundUnitCollection();
         return groundUnitCollection;
     }

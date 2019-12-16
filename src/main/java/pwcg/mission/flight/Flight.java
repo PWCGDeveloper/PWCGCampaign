@@ -35,6 +35,7 @@ import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointType;
+import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuActivate;
@@ -496,26 +497,27 @@ public abstract class Flight extends Unit
         return totalDistance;
     }
 
+    public List<Coordinate> getAllMissionCoordinates()
+    {
+        List<Coordinate> allMissionPointsForPlane = new ArrayList<>();
+        
+        List<McuWaypoint> allWaypoints = this.getAllWaypointsForPlane(getLeadPlane());
+        for (McuWaypoint waypoint : allWaypoints)
+        {
+            allMissionPointsForPlane.add(waypoint.getPosition());
+        }
+        
+        return allMissionPointsForPlane;
+    }
+
     public List<BaseFlightMcu> getAllMissionPoints()
     {
-        List<BaseFlightMcu> allMissionPoints = new ArrayList<BaseFlightMcu>();
-        
-        List<McuWaypoint> missionWP = waypointPackage.getWaypointsForLeadPlane();
-        if (missionWP != null)
-        {
-            for (McuWaypoint waypoint : missionWP)
-            {
-                allMissionPoints.add(waypoint.copy());
-            }
-        }
-
-        return allMissionPoints;
+        return getAllMissionPointsForPlane(getLeadPlane());
     }
 
     public List<BaseFlightMcu> getAllMissionPointsForPlane(PlaneMCU plane)
     {
-        List<BaseFlightMcu> allMissionPointsForPlane = new ArrayList<BaseFlightMcu>();
-        
+        List<BaseFlightMcu> allMissionPointsForPlane = new ArrayList<>();        
         List<McuWaypoint> missionWP = waypointPackage.getWaypointsForPlane(plane);
         if (missionWP != null)
         {
@@ -713,22 +715,25 @@ public abstract class Flight extends Unit
         }
     }
 
-    private boolean isAggressivePlane(PlaneType plane)
+    public void addGroundUnitTarget(IGroundUnit targetGroundUnit)
     {
-        if (plane.isRole(Role.ROLE_FIGHTER))
+        for (PlaneMCU plane : planes)
         {
-            if (!plane.isRole(Role.ROLE_RECON))
+            if (isAggressivePlane(plane))
             {
-                return true;
+                plane.addPlaneTarget(targetGroundUnit.getVehicle().getEntity().getIndex());
             }
         }
+    }
 
-        if (flightInformation.getFlightType() == FlightTypes.ESCORT ||
-            flightInformation.getFlightType() == FlightTypes.INTERCEPT ||
-            flightInformation.getFlightType() == FlightTypes.OFFENSIVE ||
-            flightInformation.getFlightType() == FlightTypes.PATROL ||
-            flightInformation.getFlightType() == FlightTypes.SCRAMBLE_OPPOSE ||
-            flightInformation.getFlightType() == FlightTypes.SCRAMBLE)
+    private boolean isAggressivePlane(PlaneType plane)
+    {
+        if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
+        {
+            return true;
+        }
+
+        if (flightInformation.getFlightType().isCategory(FlightTypeCategory.FIGHTER))
         {
             return true;
         }

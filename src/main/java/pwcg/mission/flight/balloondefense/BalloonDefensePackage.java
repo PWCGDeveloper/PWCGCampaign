@@ -28,7 +28,7 @@ public class BalloonDefensePackage implements IFlightPackage
 
     private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {
-        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(flightInformation.getCampaign(), flightInformation.getTargetDefinition());
+        BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(flightInformation.getMission(), flightInformation.getTargetDefinition());
         IGroundUnitCollection balloonUnit = groundUnitBuilderBalloonDefense.createBalloonUnit(flightInformation.getSquadron().getCountry());
         return balloonUnit;
     }

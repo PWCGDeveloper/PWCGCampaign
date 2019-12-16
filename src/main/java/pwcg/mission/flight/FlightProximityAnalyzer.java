@@ -3,10 +3,10 @@ package pwcg.mission.flight;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.group.VirtualWayPoint;
 
 public class FlightProximityAnalyzer
@@ -32,10 +32,7 @@ public class FlightProximityAnalyzer
             {
                 for (Flight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
                 {
-                    if (playerFlight.getSquadron().determineSide() != aiFlight.getSquadron().determineSide())
-                    {
-                        plotEncounter(playerFlight, aiFlight, playerEncounerDistance);
-                    }
+                    plotEncounter(playerFlight, aiFlight, playerEncounerDistance);
                 }
             }
         }
@@ -44,9 +41,9 @@ public class FlightProximityAnalyzer
     private void plotEncounter(Flight playerFlight, Flight aiFlight, double encounterRadius) throws PWCGException 
     {
         // Plot the minute by minute path of each flight
-        VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
-        List<VirtualWayPointCoordinate> thisFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(playerFlight);
-        List<VirtualWayPointCoordinate> thatFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(aiFlight);
+        FlightPathPlotter virtualWaypointPlotter = new FlightPathPlotter();
+        List<Coordinate> thisFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(playerFlight);
+        List<Coordinate> thatFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(aiFlight);
 
         double closestDistanceToThatFlight = PositionFinder.ABSURDLY_LARGE_DISTANCE;
         // Compare the minute by minute plots to see when a flight intersects a
@@ -55,10 +52,10 @@ public class FlightProximityAnalyzer
         {
             if (timeSliceOfFlight < thisFlightPath.size() && timeSliceOfFlight < thatFlightPath.size())
             {
-                VirtualWayPointCoordinate thisFlightCoordinate = thisFlightPath.get(timeSliceOfFlight);
-                VirtualWayPointCoordinate thatFlightCoordinate = thatFlightPath.get(timeSliceOfFlight);
+                Coordinate thisFlightCoordinate = thisFlightPath.get(timeSliceOfFlight);
+                Coordinate thatFlightCoordinate = thatFlightPath.get(timeSliceOfFlight);
 
-                double distance = MathUtils.calcDist(thisFlightCoordinate.getCoordinate(), thatFlightCoordinate.getCoordinate());
+                double distance = MathUtils.calcDist(thisFlightCoordinate, thatFlightCoordinate);
                 if (distance < encounterRadius)
                 {                    
                     if (playerFlight.isPlayerFlight())

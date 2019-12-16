@@ -24,24 +24,19 @@ public class VirtualWaypointGenerator
     
     public List<VirtualWayPoint> createVirtualWaypoints() throws PWCGException 
     {
-        VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter();
-        List<VirtualWayPointCoordinate> plotCoordinates = virtualWaypointPlotter.plotCoordinatesByMinute(flight);
+        VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter(flight);
+        List<VirtualWayPointCoordinate> plotCoordinates = virtualWaypointPlotter.plotCoordinates();
 
-        
-        // Reduce the number of VWPs by starting and ending the plot near the player
-        // Enemy flights spawn closer to the players start
-        // Friendly flights spawn after the players start        
         int startVWP = 0;
         int endVWP = plotCoordinates.size();
         
-        // Determine which VWPs to keep
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int boxExpansionForFirstVWPToKeep = RandomNumberGenerator.getRandom(productSpecific.getMaxDistanceForVirtualFlightFromPlayerBox());
         CoordinateBox missionBorders = flight.getMission().getMissionBorders().expandBox(boxExpansionForFirstVWPToKeep);
         for (int i = 0; i < plotCoordinates.size(); ++i)
         {
-            VirtualWayPointCoordinate vwp = plotCoordinates.get(i);
-            if (missionBorders.isInBox(vwp.getCoordinate()))
+            VirtualWayPointCoordinate vwpCoordinate = plotCoordinates.get(i);
+            if (missionBorders.isInBox(vwpCoordinate.getCoordinate()))
             {
                 // Start at the first VWP in the box
                 if (startVWP == 0)
@@ -52,64 +47,44 @@ public class VirtualWaypointGenerator
             }
         }
 
-        List<VirtualWayPoint> virtualWaypoints = buildVirtualWaypointsFromActual(plotCoordinates, startVWP, endVWP);
+        List<VirtualWayPoint> virtualWaypoints = buildVirtualWaypointsFromCoordinates(plotCoordinates, startVWP, endVWP);
         
         return virtualWaypoints;
     }
 
-    private List<VirtualWayPoint> buildVirtualWaypointsFromActual(
+    private List<VirtualWayPoint> buildVirtualWaypointsFromCoordinates(
             List<VirtualWayPointCoordinate> plotCoordinates,
             int startVWP, 
             int endVWP) throws PWCGException
     {
         VirtualWayPoint prevVirtualWaypoint = null;        
-        int virtWPIndex = 0;
-        int skippedVWPs = 0;
 
         List<VirtualWayPoint> virtualWaypoints = new ArrayList<VirtualWayPoint>();
-        while (true)
+        for (VirtualWayPointCoordinate plotCoordinate : plotCoordinates)
         {
-            // Last Virtual WP has already been processed.  Stop right now.
-            if (virtWPIndex == plotCoordinates.size())
-            {
-                break;
-            }
-            
-            
-            VirtualWayPointCoordinate vwpCoordinate = plotCoordinates.get(virtWPIndex);
-
-            // The next virtual WP
-            VirtualWayPoint virtualWaypoint = null;
-
-            virtualWaypoint = new VirtualWayPoint();
- 
-            // Initialize the WP
-            Coalition enemyCoalition = CoalitionFactory.getEnemyCoalition(flight.getCountry());
-            virtualWaypoint.initialize(flight, vwpCoordinate, enemyCoalition);
-
-            // Link the last VWP to this VWP
-            if (prevVirtualWaypoint != null)
-            {
-                prevVirtualWaypoint.linkToNextVirtualWaypoint(virtualWaypoint);
-            }
-            prevVirtualWaypoint = virtualWaypoint;
-            
-            if ((virtWPIndex >= startVWP) && (virtWPIndex <= endVWP))
-            {
-                int waitTime = VirtualWayPoint.VWP_WAIT_TIME + (skippedVWPs * VirtualWayPoint.VWP_WAIT_TIME);
-                virtualWaypoint.getNextVwpTimer().setTimer(waitTime);
-                virtualWaypoints.add(virtualWaypoint);
-                
-                skippedVWPs = 0;
-            }
-            else
-            {
-                ++skippedVWPs;
-            }
-            
-            ++virtWPIndex;
+            VirtualWayPoint virtualWaypoint = createVirtualWaypointFromPlot(plotCoordinate);
+            prevVirtualWaypoint = linkVirtualWaypoint(prevVirtualWaypoint, virtualWaypoint);
+            virtualWaypoints.add(virtualWaypoint);
         }
         return virtualWaypoints;
+    }
+
+    private VirtualWayPoint createVirtualWaypointFromPlot(VirtualWayPointCoordinate plotCoordinate) throws PWCGException
+    {
+        Coalition enemyCoalition = CoalitionFactory.getEnemyCoalition(flight.getCountry());
+        VirtualWayPoint virtualWaypoint = new VirtualWayPoint();
+        virtualWaypoint.initialize(flight, plotCoordinate, enemyCoalition);
+        return virtualWaypoint;
+    }
+
+    private VirtualWayPoint linkVirtualWaypoint(VirtualWayPoint prevVirtualWaypoint, VirtualWayPoint virtualWaypoint)
+    {
+        if (prevVirtualWaypoint != null)
+        {
+            prevVirtualWaypoint.linkToNextVirtualWaypoint(virtualWaypoint);
+        }
+        prevVirtualWaypoint = virtualWaypoint;
+        return prevVirtualWaypoint;
     }
 
 }
