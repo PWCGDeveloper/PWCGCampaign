@@ -8,6 +8,7 @@ import pwcg.campaign.api.IAirfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
+import pwcg.mission.flight.initialposition.IRunwayPlacer;
 
 public class RunwayPlacerLineAstern implements IRunwayPlacer
 {

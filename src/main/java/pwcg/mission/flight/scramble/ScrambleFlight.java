@@ -22,7 +22,7 @@ public class ScrambleFlight extends Flight
 	{
 		ScrambleWaypoints waypointGenerator = new ScrambleWaypoints(
 				startPosition, 
-				getTargetCoords(), 
+				getTargetPosition(), 
 				this,
 				mission);
 

@@ -33,7 +33,7 @@ public class TransportFlight extends Flight
 	private void determineTargetAirfield() throws PWCGException
     {
 	    AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
-	    arrivalAirfield = airfieldManager.getAirfieldFinder().findClosestAirfieldForSide(getTargetCoords(), getCampaign().getDate(), getSquadron().getCountry().getSide());    
+	    arrivalAirfield = airfieldManager.getAirfieldFinder().findClosestAirfieldForSide(getTargetPosition(), getCampaign().getDate(), getSquadron().getCountry().getSide());    
     }
 
 	@Override

@@ -111,7 +111,7 @@ public class FlightInformation
         return false;
     }
     
-    public Coordinate getTargetCoords()
+    public Coordinate getTargetPosition()
     {
         return targetDefinition.getTargetPosition();
     }

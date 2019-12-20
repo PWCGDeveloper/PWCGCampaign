@@ -27,6 +27,8 @@ import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.Unit;
 import pwcg.mission.flight.escort.EscortForPlayerFlight;
 import pwcg.mission.flight.escort.VirtualEscortFlight;
+import pwcg.mission.flight.initialposition.FlightPositionSetter;
+import pwcg.mission.flight.initialposition.TakeoffBuilder;
 import pwcg.mission.flight.objective.MissionObjectiveFactory;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.waypoint.ActualWaypointPackage;
@@ -34,7 +36,6 @@ import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointPackage;
-import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.mcu.BaseFlightMcu;
@@ -92,7 +93,7 @@ public abstract class Flight extends Unit
     {
         createWaypointPackage();
         createWaypoints();
-        FlightPositionSetter.setPlayerFlightInitialPosition(this);
+        FlightPositionSetter.setFlightInitialPosition(this);
         WaypointGeneratorUtils.setWaypointsNonFighterPriority(this);
         createTakeoff();
         createLanding();
@@ -500,6 +501,7 @@ public abstract class Flight extends Unit
     public List<Coordinate> getAllMissionCoordinates()
     {
         List<Coordinate> allMissionPointsForPlane = new ArrayList<>();
+        allMissionPointsForPlane.add(getLeadPlane().getPosition());
         
         List<McuWaypoint> allWaypoints = this.getAllWaypointsForPlane(getLeadPlane());
         for (McuWaypoint waypoint : allWaypoints)
@@ -758,21 +760,6 @@ public abstract class Flight extends Unit
         return waypoints.get(0);
      }
 
-    public Coordinate findIngressWaypointPosition()
-    {
-        // after we have created the mission, move the bombers such that they start near the ingress point
-        List <McuWaypoint> wayPoints = getAllFlightWaypoints();
-        for (McuWaypoint waypoint : wayPoints)
-        {
-            if (waypoint.getName().equals(WaypointType.INGRESS_WAYPOINT.getName()))
-            {
-                return waypoint.getPosition();
-            }
-        }
-        
-        return wayPoints.get(0).getPosition().copy();
-    }
-
     public int getFlightCruisingSpeed()
     {
         int cruisingSpeed = planes.get(0).getCruisingSpeed();
@@ -997,9 +984,9 @@ public abstract class Flight extends Unit
         return flightInformation.getDepartureAirfield();
     }
 
-    public Coordinate getTargetCoords() throws PWCGException
+    public Coordinate getTargetPosition() throws PWCGException
     {
-        return flightInformation.getTargetCoords().copy();
+        return flightInformation.getTargetPosition().copy();
     }
 
     public boolean isPlayerFlight()

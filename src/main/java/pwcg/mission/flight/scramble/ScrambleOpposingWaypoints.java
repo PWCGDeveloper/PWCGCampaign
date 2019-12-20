@@ -3,20 +3,24 @@ package pwcg.mission.flight.scramble;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
-import pwcg.mission.flight.waypoint.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.WaypointFactory;
+import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
+import pwcg.mission.flight.waypoint.approach.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.egress.EgressWaypointGenerator;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class ScrambleOpposingWaypoints
 {
     private Flight flight;
-    private List<McuWaypoint> waypoints = new ArrayList<McuWaypoint>();
+    private List<McuWaypoint> waypoints = new ArrayList<>();
 
     public ScrambleOpposingWaypoints(Flight flight) throws PWCGException
     {
@@ -37,17 +41,24 @@ public class ScrambleOpposingWaypoints
         McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
         waypoints.add(approachWaypoint);
 
+        waypoints = WaypointGeneratorUtils.prependInitialToExistingWaypoints(flight, waypoints);
+        
         return waypoints;
     }
 
     private McuWaypoint createIngressWaypoint() throws PWCGException  
     {
-        Double angleToTarget = MathUtils.calcAngle(flight.getPosition(), flight.getTargetCoords());
+        Double angleToTarget = MathUtils.calcAngle(flight.getPosition(), flight.getTargetPosition());
         Orientation orientation = new Orientation();
         orientation.setyOri(angleToTarget);
 
+        IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int minDistanceFromTarget = productSpecificConfiguration.getScrambleOpposeMinDistance();
+        int maxDistanceFromTarget = productSpecificConfiguration.getScrambleOpposeMaxDistance();
+        int distanceFromTarget = minDistanceFromTarget + (RandomNumberGenerator.getRandom(maxDistanceFromTarget - minDistanceFromTarget));
+        
         double angleFromTarget = MathUtils.adjustAngle(angleToTarget, 180);
-        Coordinate scrambleOpposeIngressPosition =  MathUtils.calcNextCoord(flight.getTargetCoords(), angleFromTarget, 20000.0);
+        Coordinate scrambleOpposeIngressPosition =  MathUtils.calcNextCoord(flight.getTargetPosition(), angleFromTarget, distanceFromTarget);
         scrambleOpposeIngressPosition.setYPos(flight.getFlightAltitude());
 
         McuWaypoint scrambleOpposeIngressWP = WaypointFactory.createPatrolWaypointType();
@@ -63,7 +74,7 @@ public class ScrambleOpposingWaypoints
     {
         List<McuWaypoint> targetWaypoints = new ArrayList<>();
 
-        Double angle = MathUtils.calcAngle(startPosition, flight.getTargetCoords());
+        Double angle = MathUtils.calcAngle(startPosition, flight.getTargetPosition());
         Orientation orientation = new Orientation();
         orientation.setyOri(angle);
 
@@ -78,10 +89,9 @@ public class ScrambleOpposingWaypoints
 
     private McuWaypoint createFirstScrambleWP(Orientation orientation) throws PWCGException
     {
-        Coordinate coord =  flight.getTargetCoords().copy();
+        Coordinate coord =  flight.getTargetPosition().copy();
         coord.setYPos(flight.getFlightAltitude());
 
-        // Two waypoints - one to the target and another beyond.
         McuWaypoint scrambleTargetWP = WaypointFactory.createPatrolWaypointType();
         scrambleTargetWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
         scrambleTargetWP.setSpeed(flight.getFlightCruisingSpeed());
@@ -95,7 +105,7 @@ public class ScrambleOpposingWaypoints
             throws PWCGException
     {
         // This will help the situation where all of the WPs get triggered and the flight deletes itself.
-        Coordinate secondCoord =  MathUtils.calcNextCoord(flight.getTargetCoords(), angle, 10000.0);
+        Coordinate secondCoord =  MathUtils.calcNextCoord(flight.getTargetPosition(), angle, 10000.0);
         secondCoord.setYPos(flight.getFlightAltitude());
 
         McuWaypoint scrambleFurtherWP = WaypointFactory.createPatrolWaypointType();

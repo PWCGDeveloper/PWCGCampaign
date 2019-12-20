@@ -47,7 +47,7 @@ public class SpyExtractFlight extends Flight
 
 	public void createSpyDrop(McuWaypoint targetWP) throws PWCGException 
 	{
-		Coordinate landCoords = getTargetCoords().copy();
+		Coordinate landCoords = getTargetPosition().copy();
 		landCoords.setYPos(0.0);
 		
 		spyDropTimer = new McuTimer();

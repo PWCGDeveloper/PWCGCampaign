@@ -8,7 +8,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightInformationFactory;
+import pwcg.mission.flight.plot.FlightInformationFactory;
 import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;

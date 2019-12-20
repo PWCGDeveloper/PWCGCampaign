@@ -3,7 +3,7 @@ package pwcg.product.fc.config;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.TakeoffFormation;
+import pwcg.mission.flight.initialposition.TakeoffFormation;
 import pwcg.mission.ground.BattleSize;
 
 public class FCProductSpecificConfiguration implements IProductSpecificConfiguration
@@ -34,6 +34,8 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     private static final int TAKEOFF_SPACING = 30;
     private static final int RENDEZVOUS_DISTANCE_FROM_FRONT = 8000;
     private static final int ADDITIONAL_ALTITUDE_FOR_ESCORT = 300;
+    private static final int SCRAMBLE_OPPOSE_MIN_DISTANCE = 3000;
+    private static final int SCRAMBLE_OPPOSE_MAX_DISTANCE = 10000;
 
     @Override
     public boolean useWaypointGoal()
@@ -410,5 +412,17 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     public int getAdditionalAltitudeForEscort()
     {
         return ADDITIONAL_ALTITUDE_FOR_ESCORT;
+    }
+
+    @Override
+    public int getScrambleOpposeMinDistance()
+    {
+        return SCRAMBLE_OPPOSE_MIN_DISTANCE;
+    }
+
+    @Override
+    public int getScrambleOpposeMaxDistance()
+    {
+        return SCRAMBLE_OPPOSE_MAX_DISTANCE;
     }
 }

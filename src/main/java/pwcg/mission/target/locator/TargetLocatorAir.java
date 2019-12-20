@@ -14,8 +14,8 @@ import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.intercept.InterceptAiCoordinateGenerator;
 import pwcg.mission.flight.intercept.InterceptPlayerCoordinateGenerator;
-import pwcg.mission.flight.waypoint.BehindFriendlyLinesPositionCalculator;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.utils.BehindFriendlyLinesPositionCalculator;
 
 public class TargetLocatorAir
 {

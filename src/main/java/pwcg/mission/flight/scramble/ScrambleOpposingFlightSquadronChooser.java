@@ -61,7 +61,7 @@ public class ScrambleOpposingFlightSquadronChooser
         
         List<Squadron> possibleOpposingSquadsByRole = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(
                 playerFlightInformation.getMission().getCampaign(), 
-                playerFlightInformation.getTargetCoords().copy(), 
+                playerFlightInformation.getTargetPosition().copy(), 
                 1, 
                 250000.0, 
                 opposingFlightRoles, 

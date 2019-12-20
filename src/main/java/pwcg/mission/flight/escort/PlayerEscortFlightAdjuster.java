@@ -7,8 +7,9 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightPositionSetter;
+import pwcg.mission.flight.initialposition.FlightPositionAirStart;
 import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class PlayerEscortFlightAdjuster
@@ -24,31 +25,11 @@ public class PlayerEscortFlightAdjuster
 
     public void adjustEscortedFlightForEscort() throws PWCGException
     {
-        moveAirStartToRendezvous();
-        moveAirStartWaypoint();
         moveIngressWaypoint();
+        moveAirStartWaypoint();
+        moveAirStartToRendezvous();
         moveEgressWaypoint();
         adjustEscortedAltitudeToMatchEscortAltitude();
-    }
-    
-    private void moveAirStartToRendezvous() throws PWCGException
-    {
-        FlightPositionSetter.setEscortedFlightToRendezvous(escortFlight, escortedFlight);
-    }
-
-    private void moveAirStartWaypoint() throws PWCGException
-    {
-        McuWaypoint airStartWP = escortedFlight.getWaypointPackage().getWaypointByActionForLeadPlaneWithFailure(WaypointAction.WP_ACTION_START);
-        McuWaypoint targetApproachWP = escortedFlight.getWaypointPackage().getWaypointByActionForLeadPlaneWithFailure(WaypointAction.WP_ACTION_TARGET_APPROACH);
-        McuWaypoint rendezvousWP = escortFlight.getWaypointPackage().getWaypointByActionForLeadPlaneWithFailure(WaypointAction.WP_ACTION_RENDEZVOUS);
-        
-        double partialDistanceBetweenRendezvousAndTargetApproach = (MathUtils.calcDist(rendezvousWP.getPosition(), targetApproachWP.getPosition()) / 3.0);
-        double angleBetweenRendezvousAndTargetApproach = MathUtils.calcAngle(rendezvousWP.getPosition(), targetApproachWP.getPosition());
-        Coordinate adjustedPositionForAirStartWP = MathUtils.calcNextCoord(rendezvousWP.getPosition(), angleBetweenRendezvousAndTargetApproach, partialDistanceBetweenRendezvousAndTargetApproach);
-        airStartWP.setPosition(adjustedPositionForAirStartWP);
-        
-        Orientation airStartOrientation = new Orientation(angleBetweenRendezvousAndTargetApproach);
-        airStartWP.setOrientation(airStartOrientation);
     }
     
     private void moveIngressWaypoint() throws PWCGException
@@ -57,13 +38,32 @@ public class PlayerEscortFlightAdjuster
         McuWaypoint rendezvousWP = escortFlight.getWaypointPackage().getWaypointByActionForLeadPlaneWithFailure(WaypointAction.WP_ACTION_RENDEZVOUS);
         McuWaypoint targetApproachWP = escortedFlight.getWaypointPackage().getWaypointByActionForLeadPlaneWithFailure(WaypointAction.WP_ACTION_TARGET_APPROACH);
 
-        double partialDistanceBetweenRendezvousAndTargetApproach = (MathUtils.calcDist(rendezvousWP.getPosition(), targetApproachWP.getPosition()) / 2.0);
-        double angleBetweenRendezvousAndTargetApproach = MathUtils.calcAngle(rendezvousWP.getPosition(), targetApproachWP.getPosition());
-        Coordinate adjustedPositionForIngressWP = MathUtils.calcNextCoord(rendezvousWP.getPosition(), angleBetweenRendezvousAndTargetApproach, partialDistanceBetweenRendezvousAndTargetApproach);
+        Coordinate adjustedPositionForIngressWP = rendezvousWP.getPosition();
+        adjustedPositionForIngressWP.setYPos(rendezvousWP.getPosition().getYPos() - 500);
         ingressWP.setPosition(adjustedPositionForIngressWP);
         
+        double angleBetweenRendezvousAndTargetApproach = MathUtils.calcAngle(rendezvousWP.getPosition(), targetApproachWP.getPosition());
         Orientation airStartOrientation = new Orientation(angleBetweenRendezvousAndTargetApproach);
         ingressWP.setOrientation(airStartOrientation);
+    }
+
+    private void moveAirStartWaypoint() throws PWCGException
+    {
+        McuWaypoint airStartWP = escortedFlight.getWaypointPackage().getWaypointByType(WaypointType.AIR_START_WAYPOINT);
+        McuWaypoint rendezvousWP = escortFlight.getWaypointPackage().getWaypointByActionForLeadPlaneWithFailure(WaypointAction.WP_ACTION_RENDEZVOUS);
+        
+        double angleAirfieldToRendezvous = MathUtils.calcAngle(escortedFlight.getPosition(), rendezvousWP.getPosition());
+        double angleAirfieldToRendezvousReversed = MathUtils.adjustAngle(angleAirfieldToRendezvous, 180);
+        Coordinate adjustedPositionForAirStartWP = MathUtils.calcNextCoord(rendezvousWP.getPosition(), angleAirfieldToRendezvousReversed, 3000.0);
+        airStartWP.setPosition(adjustedPositionForAirStartWP);
+   
+        Orientation airStartOrientation = new Orientation(angleAirfieldToRendezvous);
+        airStartWP.setOrientation(airStartOrientation);
+    }
+
+    private void moveAirStartToRendezvous() throws PWCGException
+    {
+        FlightPositionAirStart.createPlanePositionAirStart(escortedFlight);
     }
     
     private void moveEgressWaypoint() throws PWCGException

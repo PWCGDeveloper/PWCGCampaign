@@ -2,7 +2,6 @@ package pwcg.mission.flight.waypoint;
 
 public enum WaypointType
 {
-    STARTING_WAYPOINT("Starting"),
     TAKEOFF_WAYPOINT("TakeOff"),
     CLIMB_WAYPOINT("Climb"),
     AIR_START_WAYPOINT("AirStart"),
@@ -40,4 +39,20 @@ public enum WaypointType
     {
         return waypointName;
     }
+    
+    public static int getAltitudeForWaypointType(WaypointType waypointType, int flightAltitude)
+    {
+        if (waypointType == TAKEOFF_WAYPOINT ||
+            waypointType == CLIMB_WAYPOINT ||
+            waypointType == AIR_START_WAYPOINT)
+        {
+            int waypointAltitude = new Double(flightAltitude * .8).intValue();
+            if (waypointAltitude < 1000)
+            {
+                waypointAltitude = 10000;
+            }
+            return waypointAltitude;
+        }
+        return flightAltitude;
+    }   
 }

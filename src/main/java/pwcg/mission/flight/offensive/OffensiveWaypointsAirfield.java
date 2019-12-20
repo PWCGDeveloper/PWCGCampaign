@@ -30,7 +30,7 @@ public class OffensiveWaypointsAirfield extends OffensiveWaypoints
 	    SortedFixedPositions sortedFixedPositions = new SortedFixedPositions();
 	    sortedFixedPositions.sortPositionsByDirecton(allFixedPositionsInRadius);
 	    IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-	    List <IFixedPosition> sortedPositions = sortedFixedPositions.getSortedPositionsWithMaxDistanceTTravelled(campaign, flight.getTargetCoords(), productSpecific.getSmallMissionRadius());
+	    List <IFixedPosition> sortedPositions = sortedFixedPositions.getSortedPositionsWithMaxDistanceTTravelled(campaign, flight.getTargetPosition(), productSpecific.getSmallMissionRadius());
 	    
 	    for (IFixedPosition transportBlock : sortedPositions)
 	    {

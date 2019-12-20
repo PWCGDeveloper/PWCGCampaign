@@ -70,7 +70,7 @@ public class AiBalloonDefenseFlight extends Flight
 
 	public Coordinate getCoordinatesToIntersectWithPlayer() throws PWCGException 
 	{
- 		return getTargetCoords();
+ 		return getTargetPosition();
 	}
 
     @Override

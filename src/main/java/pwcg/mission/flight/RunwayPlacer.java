@@ -7,6 +7,8 @@ import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.PlaneType.PlaneSize;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.flight.initialposition.IRunwayPlacer;
+import pwcg.mission.flight.initialposition.TakeoffFormation;
 import pwcg.mission.flight.plane.PlaneMCU;
 
 public class RunwayPlacer

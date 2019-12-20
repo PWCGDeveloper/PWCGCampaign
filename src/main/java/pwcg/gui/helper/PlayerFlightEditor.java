@@ -15,8 +15,8 @@ import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Unit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightPositionSetter;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
+import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.plane.PlaneMCUFactory;
 
@@ -56,7 +56,7 @@ public class PlayerFlightEditor
 
     private void resetPlayerFlightInitialPosition() throws PWCGException
     {
-        FlightPositionSetter.setPlayerFlightInitialPosition(playerFlight);
+        FlightPositionSetter.setFlightInitialPosition(playerFlight);
     }
 
     private void createPlaneBasedOnBriefingSelections(int numInFormation, CrewPlanePayloadPairing crewPlane) throws PWCGException

@@ -12,9 +12,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
-import pwcg.mission.flight.waypoint.ClimbWaypointGenerator;
 import pwcg.mission.flight.waypoint.WaypointFactory;
+import pwcg.mission.flight.waypoint.approach.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.initial.InitialWaypointGenerator;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class FerryWaypoints
@@ -36,12 +36,9 @@ public class FerryWaypoints
 
     public List<McuWaypoint> createWaypoints() throws PWCGException
     {
-        if (flight.isPlayerFlight())
-        {
-            ClimbWaypointGenerator climbWaypointGenerator = new ClimbWaypointGenerator(campaign, flight);
-            List<McuWaypoint> climbWPs = climbWaypointGenerator.createClimbWaypoints(flight.getFlightInformation().getAltitude());
-            waypoints.addAll(climbWPs);
-        }
+        InitialWaypointGenerator climbWaypointGenerator = new InitialWaypointGenerator(flight);
+        List<McuWaypoint> initialWPs = climbWaypointGenerator.createInitialFlightWaypoints();
+        waypoints.addAll(initialWPs);
 
         List<McuWaypoint> targetWaypoints = createTargetWaypoints();
         waypoints.addAll(targetWaypoints);

@@ -105,14 +105,14 @@ public class EscortForPlayerFlight extends Flight
         forceCompleteEntity.setName("Escort Cover Force Complete");
         forceCompleteEntity.setDesc("Escort Cover Force Complete");
         forceCompleteEntity.setOrientation(new Orientation());
-        forceCompleteEntity.setPosition(flightInformation.getTargetCoords().copy());
+        forceCompleteEntity.setPosition(flightInformation.getTargetPosition().copy());
         forceCompleteEntity.setObject(planes.get(0).getEntity().getIndex());
         
         forceCompleteTimer  = new McuTimer();
         forceCompleteTimer.setName("Escort Cover Force Complete Timer");
         forceCompleteTimer.setDesc("Escort Cover Force Complete Timer");
         forceCompleteTimer.setOrientation(new Orientation());
-        forceCompleteTimer.setPosition(flightInformation.getTargetCoords().copy());
+        forceCompleteTimer.setPosition(flightInformation.getTargetPosition().copy());
         forceCompleteTimer.setTimer(2);
         forceCompleteTimer.setTarget(forceCompleteEntity.getIndex());
         forceCompleteTimer.setTarget(getWaypointPackage().getWaypointsForLeadPlane().get(0).getIndex());

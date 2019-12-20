@@ -33,6 +33,7 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
 		
 		name = waypointType.getName();
 		desc = waypointType.getName();
+		this.waypointType = waypointType;
 	}
 
 	private McuWaypoint () 
@@ -93,7 +94,6 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
 		this.wpAction = wpAction;
 	}
 
-
     public void setTarget(int target) {
         super.setTarget(target);
     }
@@ -111,7 +111,12 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
 		this.desc =  name + ": "  + desc;
 	}
 
-	public void write(BufferedWriter writer) throws PWCGIOException
+	public WaypointType getWaypointType()
+    {
+        return waypointType;
+    }
+
+    public void write(BufferedWriter writer) throws PWCGIOException
 	{
         try
         {

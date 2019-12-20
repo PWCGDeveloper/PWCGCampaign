@@ -12,14 +12,14 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
-import pwcg.mission.flight.waypoint.ClimbWaypointGenerator;
-import pwcg.mission.flight.waypoint.IIngressWaypoint;
-import pwcg.mission.flight.waypoint.IngressWaypointNearTarget;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.flight.waypoint.WaypointPatternFactory;
 import pwcg.mission.flight.waypoint.WaypointType;
+import pwcg.mission.flight.waypoint.approach.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.ingress.IIngressWaypoint;
+import pwcg.mission.flight.waypoint.ingress.IngressWaypointNearTarget;
+import pwcg.mission.flight.waypoint.initial.InitialWaypointGenerator;
+import pwcg.mission.flight.waypoint.intercept.WaypointPatternFactory;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class InterceptWaypoints
@@ -50,12 +50,9 @@ public class InterceptWaypoints
     {
         pattern = selectSearchPattern();
 
-        if (flight.isPlayerFlight())
-        {
-            ClimbWaypointGenerator climbWaypointGenerator = new ClimbWaypointGenerator(campaign, flight);
-            List<McuWaypoint> climbWPs = climbWaypointGenerator.createClimbWaypoints(flight.getFlightInformation().getAltitude());
-            waypoints.addAll(climbWPs);
-        }
+        InitialWaypointGenerator climbWaypointGenerator = new InitialWaypointGenerator(flight);
+        List<McuWaypoint> initialWPs = climbWaypointGenerator.createInitialFlightWaypoints();
+        waypoints.addAll(initialWPs);
 
         McuWaypoint ingressWaypoint = createIngressWaypoint();
         waypoints.add(ingressWaypoint);
@@ -102,7 +99,7 @@ public class InterceptWaypoints
         innerLoopFirstWP.setPosition(coord);    
         innerLoopFirstWP.setTargetWaypoint(true);
         
-        double initialAngle = MathUtils.calcAngle(flight.getPosition(), flight.getTargetCoords());
+        double initialAngle = MathUtils.calcAngle(flight.getPosition(), flight.getTargetPosition());
         innerLoopFirstWP.getOrientation().setyOri(initialAngle);
         
         return innerLoopFirstWP;
@@ -132,15 +129,15 @@ public class InterceptWaypoints
         
         if (pattern  == InterceptSearchPattern.INTERCEPT_CROSS)
         {
-            angleToMovePattern = MathUtils.calcAngle(flight.getTargetCoords(), flight.getPosition());
+            angleToMovePattern = MathUtils.calcAngle(flight.getTargetPosition(), flight.getPosition());
         }
         else if (pattern  == InterceptSearchPattern.INTERCEPT_CREEP)
         {
-            angleToMovePattern = MathUtils.calcAngle(flight.getTargetCoords(), flight.getPosition());
+            angleToMovePattern = MathUtils.calcAngle(flight.getTargetPosition(), flight.getPosition());
         }
         else
         {
-            angleToMovePattern = MathUtils.calcAngle(flight.getTargetCoords(), flight.getPosition());
+            angleToMovePattern = MathUtils.calcAngle(flight.getTargetPosition(), flight.getPosition());
         }
         
         return angleToMovePattern;
@@ -156,12 +153,12 @@ public class InterceptWaypoints
         if (pattern  == InterceptSearchPattern.INTERCEPT_CROSS)
         {
             distanceToMovePattern = productSpecific.getInterceptCrossDiameterDistance() / 2;
-            coordinatesAfterFixedMove = MathUtils.calcNextCoord(flight.getTargetCoords(), angleToMovePattern, distanceToMovePattern);
+            coordinatesAfterFixedMove = MathUtils.calcNextCoord(flight.getTargetPosition(), angleToMovePattern, distanceToMovePattern);
         }
         else if (pattern  == InterceptSearchPattern.INTERCEPT_CREEP)
         {
             distanceToMovePattern = productSpecific.getInterceptCreepCrossDistance() * 4;
-            coordinatesAfterFixedMove = MathUtils.calcNextCoord(flight.getTargetCoords(), angleToMovePattern, distanceToMovePattern);
+            coordinatesAfterFixedMove = MathUtils.calcNextCoord(flight.getTargetPosition(), angleToMovePattern, distanceToMovePattern);
             
             double shiftAngle = MathUtils.adjustAngle(angleToMovePattern, 90);
             double distanceToShiftPattern = productSpecific.getInterceptCreepLegDistance() * .5;
@@ -169,7 +166,7 @@ public class InterceptWaypoints
         }
         else
         {
-            coordinatesAfterFixedMove = flight.getTargetCoords().copy();
+            coordinatesAfterFixedMove = flight.getTargetPosition().copy();
             
             double shiftAngle = MathUtils.adjustAngle(angleToMovePattern, 90);
             double distanceToShiftPattern = productSpecific.getInterceptInnerLoopDistance() / 1.5;

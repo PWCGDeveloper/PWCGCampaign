@@ -28,7 +28,7 @@ import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.rofmap.MapPanelBase;
 import pwcg.gui.utils.MapPointInfoPopup;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.VirtualWaypointPlotter;
+import pwcg.mission.flight.virtual.VirtualWaypointPlotter;
 import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.mcu.McuWaypoint;

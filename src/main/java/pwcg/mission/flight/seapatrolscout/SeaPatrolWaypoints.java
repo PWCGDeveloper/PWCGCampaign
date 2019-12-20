@@ -9,11 +9,11 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
-import pwcg.mission.flight.waypoint.ClimbWaypointGenerator;
-import pwcg.mission.flight.waypoint.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointType;
+import pwcg.mission.flight.waypoint.approach.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.egress.EgressWaypointGenerator;
+import pwcg.mission.flight.waypoint.initial.InitialWaypointGenerator;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class SeaPatrolWaypoints
@@ -30,12 +30,9 @@ public class SeaPatrolWaypoints
 
     public List<McuWaypoint> createWaypoints() throws PWCGException
     {
-        if (flight.isPlayerFlight())
-        {
-            ClimbWaypointGenerator climbWaypointGenerator = new ClimbWaypointGenerator(campaign, flight);
-            List<McuWaypoint> climbWPs = climbWaypointGenerator.createClimbWaypoints(flight.getFlightInformation().getAltitude());
-            waypoints.addAll(climbWPs);
-        }
+        InitialWaypointGenerator climbWaypointGenerator = new InitialWaypointGenerator(flight);
+        List<McuWaypoint> initialWPs = climbWaypointGenerator.createInitialFlightWaypoints();
+        waypoints.addAll(initialWPs);
 
         McuWaypoint ingressWaypoint = createIngressWaypoint();
         waypoints.add(ingressWaypoint);
@@ -54,8 +51,8 @@ public class SeaPatrolWaypoints
 
     private McuWaypoint createIngressWaypoint() throws PWCGException  
     {
-        double angleToPatrolArea = MathUtils.calcAngle(flight.getPosition(), flight.getTargetCoords());
-        double distanceToIngress = MathUtils.calcDist(flight.getPosition(), flight.getTargetCoords());
+        double angleToPatrolArea = MathUtils.calcAngle(flight.getPosition(), flight.getTargetPosition());
+        double distanceToIngress = MathUtils.calcDist(flight.getPosition(), flight.getTargetPosition());
         distanceToIngress = distanceToIngress / 2;
         
         Coordinate midPointCoords = MathUtils.calcNextCoord(flight.getPosition(), angleToPatrolArea, distanceToIngress);
@@ -80,7 +77,7 @@ public class SeaPatrolWaypoints
 		int targetWaypointIndex = RandomNumberGenerator.getRandom(numWaypoints);
 		
 		// This is where we will meet the enemy
-		McuWaypoint targetWP = createWP(flight.getTargetCoords(), WaypointType.RECON_WAYPOINT.getName());
+		McuWaypoint targetWP = createWP(flight.getTargetPosition(), WaypointType.RECON_WAYPOINT.getName());
 		
 		// pattern orientation is the basic direction we are going
 		int patternOrientation = RandomNumberGenerator.getRandom(360);

@@ -147,7 +147,7 @@ public class PlayerBalloonDefenseFlight extends Flight
 
 	public Coordinate getCoordinatesToIntersectWithPlayer() throws PWCGException 
 	{
- 		return getTargetCoords();
+ 		return getTargetPosition();
 	}
 
 	@Override

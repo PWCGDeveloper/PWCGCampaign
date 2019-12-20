@@ -124,18 +124,12 @@ public class PlaneMCU extends EquippedPlane implements Cloneable
 
     public void populateEntity(Flight flight, PlaneMCU flightLeader)
     {
-        // Link this plane to the MCU
         this.linkTrId = entity.getIndex();
 
-        // Position is same as plane
         entity.setPosition(position);
         entity.setOrientation(orientation);
-
-        // Link this MCU back to the plane
         entity.setMisObjID(index);
 
-        // All planes other than the flight leader have the flight
-        // leader as a target
         if (flightLeader.getIndex() != index)
         {
             entity.setTarget(flightLeader.getEntity().getIndex());

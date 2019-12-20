@@ -84,8 +84,8 @@ public abstract class GroundTargetAttackFlight extends Flight
             for (PlaneMCU plane : planes)
             {
                 AirGroundAttackMcuSequence attackMcuSequence = new AirGroundAttackMcuSequence();
-                attackMcuSequence.createAttackArea(getSquadron().determineDisplayName(getCampaign().getDate()), this.getFlightType(), getTargetCoords(), altitude, attackTime);
-                attackMcuSequence.createTriggerForPlane(plane, getTargetCoords());
+                attackMcuSequence.createAttackArea(getSquadron().determineDisplayName(getCampaign().getDate()), this.getFlightType(), getTargetPosition(), altitude, attackTime);
+                attackMcuSequence.createTriggerForPlane(plane, getTargetPosition());
                 
                 attackMcuSequences.put(plane.getIndex(), attackMcuSequence);
             }
@@ -93,8 +93,8 @@ public abstract class GroundTargetAttackFlight extends Flight
         else
         {
             AirGroundAttackMcuSequence attackMcuSequence = new AirGroundAttackMcuSequence();
-            attackMcuSequence.createAttackArea(getSquadron().determineDisplayName(getCampaign().getDate()), this.getFlightType(), getTargetCoords(), altitude, attackTime);
-            attackMcuSequence.createTriggerForFlight(this, getTargetCoords());
+            attackMcuSequence.createAttackArea(getSquadron().determineDisplayName(getCampaign().getDate()), this.getFlightType(), getTargetPosition(), altitude, attackTime);
+            attackMcuSequence.createTriggerForFlight(this, getTargetPosition());
             
             attackMcuSequences.put(getLeadPlane().getIndex(), attackMcuSequence);
         }
@@ -104,7 +104,8 @@ public abstract class GroundTargetAttackFlight extends Flight
     public List<Coordinate> getAllMissionCoordinates()
     {
         List<Coordinate> allMissionPointsForPlane = new ArrayList<>();
-        
+        allMissionPointsForPlane.add(getLeadPlane().getPosition());
+
         List<McuWaypoint> allWaypoints = this.getAllWaypointsForPlane(getLeadPlane());
         for (McuWaypoint waypoint : allWaypoints)
         {

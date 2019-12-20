@@ -8,15 +8,19 @@ import java.util.TreeMap;
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.plot.FlightProximityAnalyzer;
 
 public class MissionFlightProximitySorter
 {
     private Map<Double, Flight> axisFlightsByContactDistance = new TreeMap<>();
     private Map<Double, Flight> alliedFlightsByContactDistance = new TreeMap<>();
         
-    public void mapEnemyDistanceToPlayerFlights(List<Flight> aiFlights) throws PWCGException
+    public void mapEnemyDistanceToPlayerFlights(Mission mission) throws PWCGException
     {
-        for (Flight aiFlight : aiFlights)
+        FlightProximityAnalyzer proximityAnalyzer = new FlightProximityAnalyzer(mission);
+        proximityAnalyzer.plotFlightEncounters();
+        
+        for (Flight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
         {
             if (aiFlight.getSquadron().determineSide() == Side.ALLIED)
             {

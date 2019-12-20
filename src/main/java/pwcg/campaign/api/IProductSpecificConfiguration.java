@@ -1,7 +1,7 @@
 package pwcg.campaign.api;
 
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.TakeoffFormation;
+import pwcg.mission.flight.initialposition.TakeoffFormation;
 import pwcg.mission.ground.BattleSize;
 
 public interface IProductSpecificConfiguration
@@ -41,4 +41,6 @@ public interface IProductSpecificConfiguration
     int getTakeoffSpacing();
     int getRendezvousDistanceFromFront();
     int getAdditionalAltitudeForEscort();
+    int getScrambleOpposeMinDistance();
+    int getScrambleOpposeMaxDistance();
 }

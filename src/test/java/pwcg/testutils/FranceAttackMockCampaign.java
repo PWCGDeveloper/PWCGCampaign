@@ -2,7 +2,6 @@ package pwcg.testutils;
 
 import java.util.Date;
 
-import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -65,7 +64,6 @@ public class FranceAttackMockCampaign
         
         missionBorders = CoordinateBox.coordinateBoxFromCenter(myTestPosition, 100000);
         Mockito.when(mission.getMissionFlightBuilder()).thenReturn(missionFlightBuilder);
-        Mockito.when(missionFlightBuilder.isInFlightPath(Matchers.any())).thenReturn(true);
         Mockito.when(mission.getMissionBorders()).thenReturn(missionBorders);
         Mockito.when(mission.getCampaign()).thenReturn(campaign);        
     }

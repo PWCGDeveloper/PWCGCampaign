@@ -9,7 +9,6 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
@@ -68,12 +67,6 @@ public class MissionFlightBuilder
     {
         AiFlightBuilder aiFlightBuilder = new AiFlightBuilder(campaign, mission);
         aiFlights = aiFlightBuilder.createAiFlights();
-    }
-
-    public boolean isInFlightPath(Coordinate position) throws PWCGException
-    {
-        FlightPathProximityCalculator flightPathProximityCalculator = new FlightPathProximityCalculator(playerFlights);
-        return flightPathProximityCalculator.isInFlightPath(position);
     }
 
     public List<Flight> getAllFlightsForSide(Side side) throws PWCGException

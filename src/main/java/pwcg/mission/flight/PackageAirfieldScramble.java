@@ -13,6 +13,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
+import pwcg.mission.flight.plot.FlightInformationFactory;
 import pwcg.mission.flight.scramble.ScrambleFlight;
 
 public class PackageAirfieldScramble

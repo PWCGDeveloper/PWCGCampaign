@@ -37,6 +37,19 @@ public abstract class WaypointPackage
         }
     }
 
+    public McuWaypoint getWaypointByType(WaypointType waypointType) throws PWCGException
+    {
+        for (McuWaypoint waypoint : getWaypointsForLeadPlane())
+        {
+            if (waypoint.getWaypointType() == waypointType)
+            {
+                return waypoint;
+            }
+        }
+        
+        throw new PWCGException("Waypoint of eexpected type not found : " + waypointType);
+    }
+
     public List<McuWaypoint> getWaypointsForLeadPlane()
     {
         return flightWaypointsByPlane.get(flight.getPlanes().get(0).getIndex());

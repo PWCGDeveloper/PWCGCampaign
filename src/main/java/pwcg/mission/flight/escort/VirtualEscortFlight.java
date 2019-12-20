@@ -5,12 +5,11 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.AirStartFormationSetter;
+import pwcg.mission.flight.initialposition.AirStartFormationSetter;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -28,7 +27,6 @@ public class VirtualEscortFlight extends Flight
     public void createEscortPositionCloseToFirstWP() throws PWCGException 
 	{
 		Coordinate escortedFlightCoords = escortedFlight.getPlanes().get(0).getPosition().copy();
-		Orientation escortedFlightOrient = escortedFlight.getPlanes().get(0).getOrientation().copy();
 		
         Coordinate escortFlightCoords = new Coordinate();
         
@@ -36,8 +34,7 @@ public class VirtualEscortFlight extends Flight
         escortFlightCoords.setZPos(escortedFlightCoords.getZPos()+ 100);
         escortFlightCoords.setYPos(escortedFlightCoords.getYPos() + 300);
 
-        AirStartFormationSetter flightPositionHelperAirStart = new AirStartFormationSetter(this);
-        flightPositionHelperAirStart.resetAirStartFormation(escortFlightCoords.copy(), escortedFlightOrient.copy());
+        AirStartFormationSetter.resetAirStartFormation(this, escortFlightCoords);
 	}
 
     @Override

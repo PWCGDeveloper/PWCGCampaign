@@ -8,10 +8,10 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.waypoint.PathAlongFront;
-import pwcg.mission.flight.waypoint.PathAlongFrontData;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointType;
+import pwcg.mission.flight.waypoint.frontlines.PathAlongFront;
+import pwcg.mission.flight.waypoint.frontlines.PathAlongFrontData;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class ReconWaypointsFront extends ReconWaypoints

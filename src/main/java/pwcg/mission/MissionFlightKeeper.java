@@ -8,7 +8,6 @@ import pwcg.campaign.api.Side;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightProximityAnalyzer;
 import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
 
@@ -16,7 +15,6 @@ public class MissionFlightKeeper
 {
     private Mission mission;
     private Campaign campaign;
-    private FlightProximityAnalyzer flightAnalyzer;
     private MissionFlightProximitySorter proximitySorter;
 
     public MissionFlightKeeper (Campaign campaign, Mission mission)
@@ -27,11 +25,8 @@ public class MissionFlightKeeper
 
     public List<Flight> keepLimitedFlights() throws PWCGException 
     {
-        flightAnalyzer = new FlightProximityAnalyzer(mission);
-        flightAnalyzer.plotFlightEncounters();
-        
         proximitySorter = new MissionFlightProximitySorter();
-        proximitySorter.mapEnemyDistanceToPlayerFlights(mission.getMissionFlightBuilder().getAiFlights());
+        proximitySorter.mapEnemyDistanceToPlayerFlights(mission);
 
         List<Flight> aiFlightsKept = new ArrayList<Flight>();
         List<Flight> axisAiFlights = keepLimitedAxisFlights();        

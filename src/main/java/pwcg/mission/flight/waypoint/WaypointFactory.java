@@ -4,15 +4,6 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class WaypointFactory
 {
-	public static McuWaypoint createStartWaypointType()
-	{
-		McuWaypoint waypoint = new McuWaypoint(WaypointType.STARTING_WAYPOINT);
-		waypoint.setWpAction(WaypointAction.WP_ACTION_START);
-		waypoint.setPriority(WaypointPriority.PRIORITY_HIGH);			
-		
-		return waypoint;
-	}
-	
 	public static McuWaypoint createTakeOffWaypointType()
 	{
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.TAKEOFF_WAYPOINT);
@@ -31,19 +22,19 @@ public class WaypointFactory
 		return waypoint;
 	}
 
+    public static McuWaypoint createAirStartWaypointType()
+    {
+        McuWaypoint waypoint = new McuWaypoint(WaypointType.AIR_START_WAYPOINT);
+        waypoint.setWpAction(WaypointAction.WP_ACTION_START);
+        waypoint.setPriority(WaypointPriority.PRIORITY_LOW);            
+        
+        return waypoint;
+    }
+
 	public static McuWaypoint createIngressWaypointType()
 	{
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.INGRESS_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_INGRESS);
-		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
-		
-		return waypoint;
-	}
-
-	public static McuWaypoint createAirStartWaypointType()
-	{
-		McuWaypoint waypoint = new McuWaypoint(WaypointType.AIR_START_WAYPOINT);
-		waypoint.setWpAction(WaypointAction.WP_ACTION_START);
 		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
 		
 		return waypoint;

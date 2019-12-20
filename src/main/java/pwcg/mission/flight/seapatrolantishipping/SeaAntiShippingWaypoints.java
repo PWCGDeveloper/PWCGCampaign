@@ -3,38 +3,32 @@ package pwcg.mission.flight.seapatrolantishipping;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
-import pwcg.mission.flight.waypoint.ClimbWaypointGenerator;
-import pwcg.mission.flight.waypoint.EgressWaypointGenerator;
-import pwcg.mission.flight.waypoint.GroundAttackWaypointHelper;
-import pwcg.mission.flight.waypoint.IIngressWaypoint;
-import pwcg.mission.flight.waypoint.IngressWaypointNearFront;
+import pwcg.mission.flight.waypoint.approach.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.attack.GroundAttackWaypointHelper;
+import pwcg.mission.flight.waypoint.egress.EgressWaypointGenerator;
+import pwcg.mission.flight.waypoint.ingress.IIngressWaypoint;
+import pwcg.mission.flight.waypoint.ingress.IngressWaypointNearFront;
+import pwcg.mission.flight.waypoint.initial.InitialWaypointGenerator;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class SeaAntiShippingWaypoints
 {
     private Flight flight;
-    private Campaign campaign;
     private List<McuWaypoint> waypoints = new ArrayList<McuWaypoint>();
 
     public SeaAntiShippingWaypoints(Flight flight) throws PWCGException
     {
         this.flight = flight;
-        this.campaign = flight.getCampaign();
     }
 
     public List<McuWaypoint> createWaypoints() throws PWCGException
     {
-        if (flight.isPlayerFlight())
-        {
-            ClimbWaypointGenerator climbWaypointGenerator = new ClimbWaypointGenerator(campaign, flight);
-            List<McuWaypoint> climbWPs = climbWaypointGenerator.createClimbWaypoints(flight.getFlightInformation().getAltitude());
-            waypoints.addAll(climbWPs);
-        }
+        InitialWaypointGenerator climbWaypointGenerator = new InitialWaypointGenerator(flight);
+        List<McuWaypoint> initialWPs = climbWaypointGenerator.createInitialFlightWaypoints();
+        waypoints.addAll(initialWPs);
 
         McuWaypoint ingressWaypoint = createIngressWaypoint();
         waypoints.add(ingressWaypoint);

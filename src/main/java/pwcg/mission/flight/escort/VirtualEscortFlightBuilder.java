@@ -12,8 +12,8 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.plot.FlightInformationFactory;
 
 public class VirtualEscortFlightBuilder
 {

@@ -8,10 +8,10 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
-import pwcg.mission.flight.waypoint.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointType;
+import pwcg.mission.flight.waypoint.approach.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.egress.EgressWaypointGenerator;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class SeaPlaneOpposingWaypoints
@@ -43,12 +43,12 @@ public class SeaPlaneOpposingWaypoints
 
     private McuWaypoint createIngressWaypoint() throws PWCGException  
     {
-        Double angleToTarget = MathUtils.calcAngle(flight.getPosition(), flight.getTargetCoords());
+        Double angleToTarget = MathUtils.calcAngle(flight.getPosition(), flight.getTargetPosition());
         Orientation orientation = new Orientation();
         orientation.setyOri(angleToTarget);
 
         double angleFromTarget = MathUtils.adjustAngle(angleToTarget, 180);
-        Coordinate scrambleOpposeIngressPosition =  MathUtils.calcNextCoord(flight.getTargetCoords(), angleFromTarget, 20000.0);
+        Coordinate scrambleOpposeIngressPosition =  MathUtils.calcNextCoord(flight.getTargetPosition(), angleFromTarget, 20000.0);
         scrambleOpposeIngressPosition.setYPos(flight.getFlightAltitude());
 
         McuWaypoint scrambleOpposeIngressWP = WaypointFactory.createPatrolWaypointType();
@@ -77,7 +77,7 @@ public class SeaPlaneOpposingWaypoints
 	{
 		double angle = 80.0;
 		double distance = 4000.0;
-		Coordinate coord = MathUtils.calcNextCoord(flight.getTargetCoords(), angle, distance);
+		Coordinate coord = MathUtils.calcNextCoord(flight.getTargetPosition(), angle, distance);
 		coord.setYPos(flight.getFlightAltitude());
 
 		McuWaypoint targetApproachWP = WaypointFactory.createPatrolWaypointType();
@@ -93,7 +93,7 @@ public class SeaPlaneOpposingWaypoints
 	
 	private McuWaypoint createTargetWaypoint() throws PWCGException  
 	{
- 		Coordinate coord = flight.getTargetCoords().copy();
+ 		Coordinate coord = flight.getTargetPosition().copy();
 		coord.setYPos(flight.getFlightAltitude());
 
 		McuWaypoint targetWP = WaypointFactory.createPatrolWaypointType();

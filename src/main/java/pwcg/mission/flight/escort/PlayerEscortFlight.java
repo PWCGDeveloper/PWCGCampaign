@@ -10,7 +10,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightPositionSetter;
+import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.mcu.McuCover;
 import pwcg.mission.mcu.McuForceComplete;
 import pwcg.mission.mcu.McuTimer;
@@ -46,7 +46,7 @@ public class PlayerEscortFlight extends Flight
         createActivation();
         createCover();
         
-        FlightPositionSetter.setPlayerFlightInitialPosition(this);
+        FlightPositionSetter.setFlightInitialPosition(this);
     }
 
     @Override
@@ -70,14 +70,14 @@ public class PlayerEscortFlight extends Flight
         forceCompleteEntity.setName("Escort Cover Force Complete");
         forceCompleteEntity.setDesc("Escort Cover Force Complete");
         forceCompleteEntity.setOrientation(new Orientation());
-        forceCompleteEntity.setPosition(getTargetCoords().copy());
+        forceCompleteEntity.setPosition(getTargetPosition().copy());
         forceCompleteEntity.setObject(planes.get(0).getEntity().getIndex());
 
         forceCompleteTimer = new McuTimer();
         forceCompleteTimer.setName("Escort Cover Force Complete Timer");
         forceCompleteTimer.setDesc("Escort Cover Force Complete Timer");
         forceCompleteTimer.setOrientation(new Orientation());
-        forceCompleteTimer.setPosition(getTargetCoords().copy());
+        forceCompleteTimer.setPosition(getTargetPosition().copy());
         forceCompleteTimer.setTimer(2);
         forceCompleteTimer.setTarget(forceCompleteEntity.getIndex());
     }
@@ -88,21 +88,21 @@ public class PlayerEscortFlight extends Flight
         escortedFlightWaypointTimer.setName("Escort Cover Ingress Timer");
         escortedFlightWaypointTimer.setDesc("Escort Cover Ingress Timer");
         escortedFlightWaypointTimer.setOrientation(new Orientation());
-        escortedFlightWaypointTimer.setPosition(getTargetCoords().copy());
+        escortedFlightWaypointTimer.setPosition(getTargetPosition().copy());
         escortedFlightWaypointTimer.setTimer(2);
 
         egressTimer = new McuTimer();
         egressTimer.setName("Escort Cover Egress Timer");
         egressTimer.setDesc("Escort Cover Egress Timer");
         egressTimer.setOrientation(new Orientation());
-        egressTimer.setPosition(getTargetCoords().copy());
+        egressTimer.setPosition(getTargetPosition().copy());
         egressTimer.setTimer(2);
     }
     
 
     private void createCover() throws PWCGException
     {
-        Coordinate rendevousPoint = flightInformation.getTargetCoords();
+        Coordinate rendevousPoint = flightInformation.getTargetPosition();
 
         // Cover the escorted flight
         cover = new McuCover();
@@ -124,7 +124,7 @@ public class PlayerEscortFlight extends Flight
     protected void createActivation() throws PWCGException
     {
         // Do this again to compensate for the movement of the escorted flight
-        FlightPositionSetter.setPlayerFlightInitialPosition(this);
+        FlightPositionSetter.setFlightInitialPosition(this);
         super.createActivation();
     }
 

@@ -9,15 +9,15 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.waypoint.ApproachWaypointGenerator;
-import pwcg.mission.flight.waypoint.ClimbWaypointGenerator;
-import pwcg.mission.flight.waypoint.EgressWaypointGenerator;
-import pwcg.mission.flight.waypoint.IIngressWaypoint;
-import pwcg.mission.flight.waypoint.IngressWaypointNearFront;
-import pwcg.mission.flight.waypoint.PathAlongFront;
-import pwcg.mission.flight.waypoint.PathAlongFrontData;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointType;
+import pwcg.mission.flight.waypoint.approach.ApproachWaypointGenerator;
+import pwcg.mission.flight.waypoint.egress.EgressWaypointGenerator;
+import pwcg.mission.flight.waypoint.frontlines.PathAlongFront;
+import pwcg.mission.flight.waypoint.frontlines.PathAlongFrontData;
+import pwcg.mission.flight.waypoint.ingress.IIngressWaypoint;
+import pwcg.mission.flight.waypoint.ingress.IngressWaypointNearFront;
+import pwcg.mission.flight.waypoint.initial.InitialWaypointGenerator;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class PatrolFrontWaypoints
@@ -34,12 +34,9 @@ public class PatrolFrontWaypoints
 
     public List<McuWaypoint> createWaypoints() throws PWCGException
     {
-        if (flight.isPlayerFlight())
-        {
-            ClimbWaypointGenerator climbWaypointGenerator = new ClimbWaypointGenerator(campaign, flight);
-            List<McuWaypoint> climbWPs = climbWaypointGenerator.createClimbWaypoints(flight.getFlightInformation().getAltitude());
-            waypoints.addAll(climbWPs);
-        }
+        InitialWaypointGenerator climbWaypointGenerator = new InitialWaypointGenerator(flight);
+        List<McuWaypoint> initialWPs = climbWaypointGenerator.createInitialFlightWaypoints();
+        waypoints.addAll(initialWPs);
 
         McuWaypoint ingressWaypoint = createIngressWaypoint();
         waypoints.add(ingressWaypoint);

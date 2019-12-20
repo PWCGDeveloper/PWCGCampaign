@@ -12,8 +12,8 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.FlightInformationFactory;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.plot.FlightInformationFactory;
 
 public class InterceptOpposingFlightBuilder
 {
@@ -62,11 +62,11 @@ public class InterceptOpposingFlightBuilder
     private Coordinate determineOpposingFlightStartPosition(String opposingFieldName) throws PWCGException
     {
         IAirfield opposingField =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(opposingFieldName);
-        double angleFromFieldToTarget = MathUtils.calcAngle(playerFlightInformation.getTargetCoords(), opposingField.getPosition());
+        double angleFromFieldToTarget = MathUtils.calcAngle(playerFlightInformation.getTargetPosition(), opposingField.getPosition());
             
         double distancePlayerFromTarget = MathUtils.calcDist(playerFlightInformation.getSquadron().determineCurrentPosition(
-                playerFlightInformation.getCampaign().getDate()), playerFlightInformation.getTargetCoords());
-        Coordinate startingPosition = MathUtils.calcNextCoord(playerFlightInformation.getTargetCoords(), angleFromFieldToTarget, distancePlayerFromTarget);
+                playerFlightInformation.getCampaign().getDate()), playerFlightInformation.getTargetPosition());
+        Coordinate startingPosition = MathUtils.calcNextCoord(playerFlightInformation.getTargetPosition(), angleFromFieldToTarget, distancePlayerFromTarget);
         return startingPosition;
     }
 

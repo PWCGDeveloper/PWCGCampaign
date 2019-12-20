@@ -35,7 +35,7 @@ public class BalloonBustPackage implements IFlightPackage
                         Role.ROLE_FIGHTER, 
                         flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()).getSide().getOppositeSide());
         ICountry balloonCountry = determineBalloonCountry(enemySide, enemyScoutSquadron);
-        IGroundUnitCollection balloonUnit = createBalloonUnit(flightInformation.getTargetCoords(), balloonCountry);
+        IGroundUnitCollection balloonUnit = createBalloonUnit(flightInformation.getTargetPosition(), balloonCountry);
 		BalloonBustFlight balloonBust = createFlight(startCoords, balloonUnit);
 
 		return balloonBust;

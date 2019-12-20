@@ -13,6 +13,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.waypoint.initial.InitialWaypointGenerator;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class WaypointGeneratorUtils 
@@ -159,4 +160,15 @@ public class WaypointGeneratorUtils
 
         return selectedWaypoints;
     }
+	
+	public static List<McuWaypoint> prependInitialToExistingWaypoints(Flight flight, List<McuWaypoint> waypoints) throws PWCGException
+    {
+        List<McuWaypoint> waypointsAfterAddingInitial = new ArrayList<>();
+        InitialWaypointGenerator initialWaypointGenerator = new InitialWaypointGenerator(flight);
+        List<McuWaypoint> initialWPs = initialWaypointGenerator.createInitialFlightWaypoints();
+        waypointsAfterAddingInitial.addAll(initialWPs);
+        waypointsAfterAddingInitial.addAll(waypoints);
+        return waypointsAfterAddingInitial;
+    }
+
 }

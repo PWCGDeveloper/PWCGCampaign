@@ -125,7 +125,7 @@ public class PlayerEscortFlightValidator
         Coordinate leadEscortedPlanePosition = leadBomber.getPosition();
         Coordinate rendezvousPosition = rendezvousWp.getPosition();
         double distance = MathUtils.calcDist(leadEscortedPlanePosition, rendezvousPosition);
-        assert(distance < 1000.0);
+        assert(distance < 5000.0);
     }
 	
 	private McuWaypoint getEscortedFlightWaypoint(WaypointAction wpActionIngress) throws PWCGException

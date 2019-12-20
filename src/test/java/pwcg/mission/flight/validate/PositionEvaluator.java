@@ -29,7 +29,7 @@ public class PositionEvaluator
                 continue;
             }
             
-            double distanceMissioNCenterToTarget = MathUtils.calcDist(missionCenter, aiFlight.getTargetCoords());
+            double distanceMissioNCenterToTarget = MathUtils.calcDist(missionCenter, aiFlight.getTargetPosition());
             if (distanceMissioNCenterToTarget > 100000)
             {
                 failed = true;

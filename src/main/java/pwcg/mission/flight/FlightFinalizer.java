@@ -13,6 +13,7 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.IUnit;
 import pwcg.mission.MissionSkinGenerator;
 import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.virtual.VirtualWaypointGenerator;
 import pwcg.mission.flight.waypoint.ActualWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.mcu.BaseFlightMcu;
