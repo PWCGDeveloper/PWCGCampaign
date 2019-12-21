@@ -26,7 +26,7 @@ public class Parsers
 		int start = line.indexOf("=");
 		int end = line.lastIndexOf(";");
 		String valString = line.substring(start + 2, end);
-		val = new Integer(valString);
+		val = Integer.valueOf(valString);
 		return val.intValue();
 	}
 	
@@ -75,7 +75,7 @@ public class Parsers
 		int start = line.indexOf("=");
 		int end = line.lastIndexOf(";");
 		String valString = line.substring(start + 2, end);
-		val = new Double(valString);
+		val = Double.valueOf(valString);
 		return val.intValue();
 	}
 
@@ -104,7 +104,7 @@ public class Parsers
 				String[] splitLine = valListString.split(",");
 				for (String val : splitLine)
 				{
-					Integer intVal = new Integer(val);
+					Integer intVal = Integer.valueOf(val);
 					values.add(intVal);
 				}
 			}
@@ -153,7 +153,7 @@ public class Parsers
             for (int i = 0; i < splitLine.length; ++i)
             {
                 String stringVal = splitLine[i];
-                pos[i] =  new Double(stringVal);
+                pos[i] =  Double.valueOf(stringVal);
             }
         }
         

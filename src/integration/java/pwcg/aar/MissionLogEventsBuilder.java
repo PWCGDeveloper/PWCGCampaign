@@ -259,7 +259,7 @@ public class MissionLogEventsBuilder
 
     private String makeNextId()
     {
-        String nextId = new Integer(nextMissionLogId).toString();
+        String nextId = Integer.valueOf(nextMissionLogId).toString();
         ++nextMissionLogId;
         return nextId;
     }

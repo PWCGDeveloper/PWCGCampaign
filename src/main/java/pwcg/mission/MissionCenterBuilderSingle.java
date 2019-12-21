@@ -81,7 +81,7 @@ public class MissionCenterBuilderSingle implements IMissionCenterBuilder
             maxPercentOfRange = 25;
         }
 
-        int missionCenterMaxDistanceFromBase = new Double((new Integer(maxRange).doubleValue()) * (new Integer(maxPercentOfRange).doubleValue() / 100.0)).intValue();
+        int missionCenterMaxDistanceFromBase = Double.valueOf((Integer.valueOf(maxRange).doubleValue()) * (Integer.valueOf(maxPercentOfRange).doubleValue() / 100.0)).intValue();
         missionCenterMaxDistanceFromBase *= 1000;
         
         if (missionCenterMaxDistanceFromBase < (missionCenterMinDistanceFromBase + 10000))

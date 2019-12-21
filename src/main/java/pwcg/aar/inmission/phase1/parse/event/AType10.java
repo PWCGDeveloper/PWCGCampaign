@@ -57,9 +57,9 @@ public class AType10 extends ATypeBase implements IAType10
             String locZStr = line.substring(startLocZPos, endLocZPos);
             
             Coordinate coords = new Coordinate();
-            coords.setXPos(new Double(locXStr));
-            coords.setYPos(new Double(locYStr));
-            coords.setZPos(new Double(locZStr));
+            coords.setXPos(Double.valueOf(locXStr));
+            coords.setYPos(Double.valueOf(locYStr));
+            coords.setZPos(Double.valueOf(locZStr));
             
             return coords;
         }

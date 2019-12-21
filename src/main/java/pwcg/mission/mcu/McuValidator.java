@@ -6,7 +6,7 @@ public class McuValidator
     {
         for (String target : mcu.getTargets())
         {
-            int actualTarget = new Integer(target);
+            int actualTarget = Integer.valueOf(target);
             if (actualTarget == expectedTarget)
             {
                 return true;
@@ -24,7 +24,7 @@ public class McuValidator
     {
         for (String object : mcu.getObjects())
         {
-            int actualObject = new Integer(object);
+            int actualObject = Integer.valueOf(object);
             if (actualObject == expectedObject)
             {
                 return true;

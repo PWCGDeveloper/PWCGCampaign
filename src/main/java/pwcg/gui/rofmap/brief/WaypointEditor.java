@@ -84,8 +84,8 @@ public class WaypointEditor
             headingAsInt = getHeading(previousWP, thisWP);
 	    }
 
-        distanceTextField = makeField(new Integer(distanceAsInt / 1000).toString());
-        headingTextField = makeField(new Integer(headingAsInt).toString());
+        distanceTextField = makeField(Integer.valueOf(distanceAsInt / 1000).toString());
+        headingTextField = makeField(Integer.valueOf(headingAsInt).toString());
 
         // Only altitude is editable
         descTextField.setEditable(false);
@@ -105,7 +105,7 @@ public class WaypointEditor
         if (previousWP != null)
         {
             int distanceAsInt = getDistance(previousWP, thisWP);
-            distanceTextField.setText(new Integer(distanceAsInt / 1000).toString());
+            distanceTextField.setText(Integer.valueOf(distanceAsInt / 1000).toString());
         }
         else
         {
@@ -124,7 +124,7 @@ public class WaypointEditor
         if (previousWP != null)
         {
             double angle = MathUtils.calcAngle(previousWP.getPosition(), thisWP.getPosition());
-            headingAsInt = new Double(angle).intValue();
+            headingAsInt = Double.valueOf(angle).intValue();
         }
         return headingAsInt;
     }
@@ -139,7 +139,7 @@ public class WaypointEditor
 	    if (previousWP != null)
 	    {
 	        double distanceExact = MathUtils.calcDist(previousWP.getPosition(), thisWP.getPosition());
-	        distanceAsInt = new Double(distanceExact).intValue();
+	        distanceAsInt = Double.valueOf(distanceExact).intValue();
 	    }
 	    
 	    return distanceAsInt;
@@ -154,7 +154,7 @@ public class WaypointEditor
         String yPos = "";
 	    if (thisWP.getPosition() != null)
 	    {
-	        int yPosAsInt = new Double(thisWP.getPosition().getYPos()).intValue();
+	        int yPosAsInt = Double.valueOf(thisWP.getPosition().getYPos()).intValue();
 	        yPos += yPosAsInt;
 	    }
         return yPos;

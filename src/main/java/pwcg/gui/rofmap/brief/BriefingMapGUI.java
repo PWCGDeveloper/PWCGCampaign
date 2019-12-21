@@ -547,8 +547,8 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         int beginIndex = fuelString.indexOf(' ');
         int endIndex = fuelString.indexOf('%');
         String valueString = fuelString.substring(beginIndex+1, endIndex);
-        int valueAsInt = new Integer (valueString);
-        Double selectedFuel = new Double (valueAsInt).doubleValue() / 100.0;
+        int valueAsInt = Integer.valueOf (valueString);
+        Double selectedFuel = Double.valueOf (valueAsInt).doubleValue() / 100.0;
         
         briefingMissionHandler.getBriefParametersContext().setSelectedFuel(selectedFuel);
     }

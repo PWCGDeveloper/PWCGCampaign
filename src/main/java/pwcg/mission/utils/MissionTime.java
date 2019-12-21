@@ -140,7 +140,7 @@ public class MissionTime
         }
         else
         {
-            return (new Integer(hour).toString());
+            return (Integer.valueOf(hour).toString());
         }
     }
 
@@ -152,7 +152,7 @@ public class MissionTime
         }
         else
         {
-            return (new Integer(minute).toString());
+            return (Integer.valueOf(minute).toString());
         }
     }
 
@@ -176,14 +176,14 @@ public class MissionTime
     public int getIndexForTime()
     {
         String[] timeElements = missionTime.split(":");
-        int missionHour = new Integer(timeElements[0]);
-        int missionMinute = new Integer(timeElements[1]);
+        int missionHour = Integer.valueOf(timeElements[0]);
+        int missionMinute = Integer.valueOf(timeElements[1]);
         
         for (int i = 0 ; i < missionTimes.size(); ++i)
         {
             String[] splitTime = missionTimes.get(i).split(":");
-            int thisHour = new Integer(splitTime[0]);
-            int thisMinute = new Integer(splitTime[1]);
+            int thisHour = Integer.valueOf(splitTime[0]);
+            int thisMinute = Integer.valueOf(splitTime[1]);
             
             if (missionHour < thisHour)
             {

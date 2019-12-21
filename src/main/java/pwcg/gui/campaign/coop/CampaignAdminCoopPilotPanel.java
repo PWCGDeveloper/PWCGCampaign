@@ -143,7 +143,7 @@ public class CampaignAdminCoopPilotPanel extends ImageResizingPanel implements A
     {
         try
         {
-            selectedPilotSerialNumber = new Integer(ae.getActionCommand());
+            selectedPilotSerialNumber = Integer.valueOf(ae.getActionCommand());
         }
         catch (Throwable e)
         {

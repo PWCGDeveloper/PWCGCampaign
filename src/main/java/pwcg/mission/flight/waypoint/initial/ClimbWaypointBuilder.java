@@ -38,7 +38,7 @@ public class ClimbWaypointBuilder
 		if (isGenerateClimbWaypoints())
 		{
 		    double flightAlt = flight.getFlightAltitude();
-		    int numClimbLegs = new Double(flightAlt).intValue() / new Integer(flight.getPlanes().get(0).getClimbOutRate());
+		    int numClimbLegs = Double.valueOf(flightAlt).intValue() / Integer.valueOf(flight.getPlanes().get(0).getClimbOutRate());
 		    if (numClimbLegs > 5)
 		    {
 		        numClimbLegs = 5;

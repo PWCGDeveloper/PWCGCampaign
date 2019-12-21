@@ -143,7 +143,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 		}
 		
         String labelSpacing = "";
-        int numSpacesForLabelSpacing = new Double(MonitorSupport.getPWCGFrameSize().getWidth() / 100 * 1.7).intValue();
+        int numSpacesForLabelSpacing = Double.valueOf(MonitorSupport.getPWCGFrameSize().getWidth() / 100 * 1.7).intValue();
 		for (int i = 0; i < numSpacesForLabelSpacing; ++i)
 		{
 		    labelSpacing += " ";
@@ -335,7 +335,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 
         int index = action.indexOf(":");
         String pilotSerialNumberString = action.substring(index + 1);
-        Integer serialNumber = new Integer(pilotSerialNumberString);
+        Integer serialNumber = Integer.valueOf(pilotSerialNumberString);
 
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);

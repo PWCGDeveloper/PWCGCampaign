@@ -92,7 +92,7 @@ public class VirtualWaypointPlotter
     private int calculateNumberOfVirtualWaypointsForLeg(Coordinate legStartPosition, Coordinate legEndPosition)
     {
         double distanceToWP = MathUtils.calcDist(legStartPosition, legEndPosition);
-        Double numberOfLegs = new Double(distanceToWP / 3000.0);
+        Double numberOfLegs = Double.valueOf(distanceToWP / 3000.0);
         numberOfLegs += 1.0;
         return numberOfLegs.intValue();
     }

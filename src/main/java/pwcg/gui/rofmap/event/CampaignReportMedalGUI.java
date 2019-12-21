@@ -81,14 +81,14 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
         int leftRightBorder = 40;
         if (MonitorSupport.getPWCGFrameSize().getWidth() > 1200)
         {
-            leftRightBorder = 40 + ((new Double(MonitorSupport.getPWCGFrameSize().getWidth()).intValue() - 1200) / 4);
+            leftRightBorder = 40 + ((Double.valueOf(MonitorSupport.getPWCGFrameSize().getWidth()).intValue() - 1200) / 4);
         }
 
         
         int topBottomBorder = 20;
         if (MonitorSupport.getPWCGFrameSize().getHeight() > 1200)
         {
-            int area = new Double(MonitorSupport.getPWCGFrameSize().getHeight()).intValue() / 3;
+            int area = Double.valueOf(MonitorSupport.getPWCGFrameSize().getHeight()).intValue() / 3;
             
             topBottomBorder = area / 6;
         }

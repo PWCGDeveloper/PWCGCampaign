@@ -67,7 +67,7 @@ public class AAAFrontLinesBuilder
 	        return true;
 	    }
         
-        int distanceToLastAAA = new Double(MathUtils.calcDist(lastAAAPosition, currentFrontPointPosition)).intValue();
+        int distanceToLastAAA = Double.valueOf(MathUtils.calcDist(lastAAAPosition, currentFrontPointPosition)).intValue();
         ConfigManagerCampaign configManager = campaign.getCampaignConfigManager();
         int mgSpacing =  configManager.getIntConfigParam(ConfigItemKeys.MGSpacingKey);
         

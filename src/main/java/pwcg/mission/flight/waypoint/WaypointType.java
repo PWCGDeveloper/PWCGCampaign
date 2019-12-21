@@ -46,7 +46,7 @@ public enum WaypointType
             waypointType == CLIMB_WAYPOINT ||
             waypointType == AIR_START_WAYPOINT)
         {
-            int waypointAltitude = new Double(flightAltitude * .8).intValue();
+            int waypointAltitude = Double.valueOf(flightAltitude * .8).intValue();
             if (waypointAltitude < 1000)
             {
                 waypointAltitude = 10000;

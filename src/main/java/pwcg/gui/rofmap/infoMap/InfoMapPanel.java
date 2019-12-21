@@ -492,7 +492,7 @@ public class InfoMapPanel extends MapPanelBase
             if (action.contains("Select Squadron:"))
             {
                 String[] parts = action.split(":");
-                int squadronId = new Integer(parts[1]);
+                int squadronId = Integer.valueOf(parts[1]);
                 squadronMover.setSquadronIdToMove(squadronId);
             }
             if (action.contains("Select Target Airfield:"))

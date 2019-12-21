@@ -166,7 +166,7 @@ public abstract class CampaignIntelligenceBase extends ImagePanel implements Act
                 int beginIndex = action.indexOf(":");
                 ++beginIndex;
                 String squadronIdString = action.substring(beginIndex).trim();
-                int squadronId = new Integer(squadronIdString).intValue();
+                int squadronId = Integer.valueOf(squadronIdString).intValue();
                 Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
                 String squadronDesc = formSquadronDesc(squadron);
                 squadronInteltext.setText(squadronDesc);

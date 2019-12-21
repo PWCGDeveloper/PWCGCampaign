@@ -144,11 +144,11 @@ public class CoordinateBox
     {
         Coordinate targetCoord = new Coordinate(); 
         
-        int zDistance = Math.abs(new Double(ne.getZPos() - sw.getZPos()).intValue());
-        int xDistance = Math.abs(new Double(ne.getXPos() - sw.getXPos()).intValue());
+        int zDistance = Math.abs(Double.valueOf(ne.getZPos() - sw.getZPos()).intValue());
+        int xDistance = Math.abs(Double.valueOf(ne.getXPos() - sw.getXPos()).intValue());
         
-        int zPos = new Double(ne.getZPos()).intValue() + RandomNumberGenerator.getRandom(zDistance);
-        int xPos = new Double(sw.getXPos()).intValue() + RandomNumberGenerator.getRandom(xDistance);
+        int zPos = Double.valueOf(ne.getZPos()).intValue() + RandomNumberGenerator.getRandom(zDistance);
+        int xPos = Double.valueOf(sw.getXPos()).intValue() + RandomNumberGenerator.getRandom(xDistance);
         
         targetCoord.setZPos(zPos);
         targetCoord.setXPos(xPos);
@@ -259,8 +259,8 @@ public class CoordinateBox
 
     public Coordinate chooseCoordinateWithinBox() throws PWCGException
     {
-        int distanceX = new Double(ne.getXPos() - sw.getXPos()).intValue();
-        int distanceZ = new Double(ne.getZPos() - sw.getZPos()).intValue();
+        int distanceX = Double.valueOf(ne.getXPos() - sw.getXPos()).intValue();
+        int distanceZ = Double.valueOf(ne.getZPos() - sw.getZPos()).intValue();
         
         int offsetX = RandomNumberGenerator.getRandom(distanceX);
         int offsety = RandomNumberGenerator.getRandom(distanceZ);

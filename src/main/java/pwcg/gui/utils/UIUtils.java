@@ -10,7 +10,7 @@ public class UIUtils
     {
         int index = action.indexOf(":");
         String pilotSerialNumberString = action.substring(index + 1);
-        Integer serialNumber = new Integer(pilotSerialNumberString);
+        Integer serialNumber = Integer.valueOf(pilotSerialNumberString);
 
         SquadronMember pilot = campaign.getPersonnelManager().getAnyCampaignMember(serialNumber);
         if (pilot == null)

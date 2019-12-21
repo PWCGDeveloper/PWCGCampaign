@@ -487,7 +487,7 @@ public abstract class Flight extends Unit
                 if (prevWP != null)
                 {
                     double distanceExact = MathUtils.calcDist(prevWP.getPosition(), wp.getPosition());
-                    distanceAsInt = new Double(distanceExact).intValue();
+                    distanceAsInt = Double.valueOf(distanceExact).intValue();
                     totalDistance += distanceAsInt;
                 }
     

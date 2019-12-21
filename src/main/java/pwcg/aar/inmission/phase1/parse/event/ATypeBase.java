@@ -39,9 +39,9 @@ public abstract class ATypeBase
             String locZStr = line.substring(startLocZPos, endLocZPos);
             
             Coordinate coords = new Coordinate();
-            coords.setXPos(new Double(locXStr));
-            coords.setYPos(new Double(locYStr));
-            coords.setZPos(new Double(locZStr));
+            coords.setXPos(Double.valueOf(locXStr));
+            coords.setYPos(Double.valueOf(locYStr));
+            coords.setZPos(Double.valueOf(locZStr));
             
             return coords;
         }
@@ -76,7 +76,7 @@ public abstract class ATypeBase
 	{
 		int startPos = line.indexOf(startTag) + startTag.length();
 		int endPos = line.indexOf(endTag);
-		int value = new Integer(line.substring(startPos, endPos));
+		int value = Integer.valueOf(line.substring(startPos, endPos));
 		
 		return value;
 	}
@@ -85,7 +85,7 @@ public abstract class ATypeBase
 	{
 		int startDamagePos = line.indexOf(startTag) + startTag.length();
 		int endDamagePos = line.indexOf(endTag);
-		double value = new Double(line.substring(startDamagePos, endDamagePos));
+		double value = Double.valueOf(line.substring(startDamagePos, endDamagePos));
 		
 		return value;
 	}

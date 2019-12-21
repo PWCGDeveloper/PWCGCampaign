@@ -68,8 +68,8 @@ public class ImageScaledPanel extends JPanel
 	{
 		if (image != null)
 		{
-		    Double imageWidth = new Integer(image.getWidth(this)).doubleValue();
-	        Double imageHeight = new Integer(image.getHeight(this)).doubleValue();
+		    Double imageWidth = Integer.valueOf(image.getWidth(this)).doubleValue();
+	        Double imageHeight = Integer.valueOf(image.getHeight(this)).doubleValue();
 	        Double imageRatio = imageWidth / imageHeight;
 	        
 	        

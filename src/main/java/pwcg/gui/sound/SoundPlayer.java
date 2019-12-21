@@ -98,9 +98,9 @@ public class SoundPlayer
             {
                 FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
     
-        		float volumeZeroToOne = new Double(new Double(newVolume) / 10.0).floatValue();
+        		float volumeZeroToOne = Double.valueOf(Double.valueOf(newVolume) / 10.0).floatValue();
                 float max = gainControl.getMaximum();
-                float min = new Double (-30.0).floatValue(); // negative values all seem to be zero?
+                float min = Double.valueOf (-30.0).floatValue(); // negative values all seem to be zero?
                 float range = max - min;
                 float dB = min + (range * volumeZeroToOne);
     

@@ -30,11 +30,11 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
 
         TargetRadius targetRadius = new TargetRadius();
         targetRadius.calculateTargetRadius(flightInformation.getFlightType(), flightInformation.getMission().getMissionBorders().getAreaRadius());
-        targetDefinition.setPreferredRadius(new Double(targetRadius.getInitialTargetRadius()).intValue());
-        targetDefinition.setMaximumRadius(new Double(targetRadius.getMaxTargetRadius()).intValue());
+        targetDefinition.setPreferredRadius(Double.valueOf(targetRadius.getInitialTargetRadius()).intValue());
+        targetDefinition.setMaximumRadius(Double.valueOf(targetRadius.getMaxTargetRadius()).intValue());
 
         StrategicTargetLocator strategicTargetLocator = new StrategicTargetLocator(
-                new Double(targetRadius.getInitialTargetRadius()).intValue(), 
+                Double.valueOf(targetRadius.getInitialTargetRadius()).intValue(), 
                 targetCountry.getSide(), 
                 flightInformation.getCampaign().getDate(), 
                 missionCenter);

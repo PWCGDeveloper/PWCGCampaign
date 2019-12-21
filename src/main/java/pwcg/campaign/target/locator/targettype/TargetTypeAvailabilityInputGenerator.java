@@ -25,8 +25,8 @@ public class TargetTypeAvailabilityInputGenerator
             targetTypeAvailabilityInputs.setUseMinimalTargetSet(true);
         }
         
-        targetTypeAvailabilityInputs.setPreferredDistance(new Double(targetRadius.getInitialTargetRadius()).intValue());
-        targetTypeAvailabilityInputs.setMaxDistance(new Double(targetRadius.getMaxTargetRadius()).intValue());
+        targetTypeAvailabilityInputs.setPreferredDistance(Double.valueOf(targetRadius.getInitialTargetRadius()).intValue());
+        targetTypeAvailabilityInputs.setMaxDistance(Double.valueOf(targetRadius.getMaxTargetRadius()).intValue());
         targetTypeAvailabilityInputs.setDate(flightInformation.getCampaign().getDate());
         targetTypeAvailabilityInputs.setTargetGeneralLocation(flightInformation.getTargetSearchStartLocation());
         targetTypeAvailabilityInputs.setSide(enemyCountry.getSide());

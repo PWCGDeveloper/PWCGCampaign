@@ -122,7 +122,7 @@ public class CampaignGeneratorChooseServiceGUI extends JPanel implements ActionL
 		try
 		{
 			String action = ae.getActionCommand();
-			ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(new Integer(action));
+			ArmedService service = ArmedServiceFactory.createServiceManager().getArmedService(Integer.valueOf(action));
 			parent.changeService(service);
 		}
 		catch (Exception e)

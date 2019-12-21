@@ -41,7 +41,7 @@ public class StrategicTargetTypeGenerator
     {
         TargetRadius targetRadius = new TargetRadius();
         targetRadius.calculateTargetRadius(FlightTypes.STRATEGIC_BOMB, missionRadius);
-        int strategicBombingRadius = new Double(targetRadius.getInitialTargetRadius()).intValue();
+        int strategicBombingRadius = Double.valueOf(targetRadius.getInitialTargetRadius()).intValue();
 
         Map<TacticalTarget, List<IFixedPosition>> targetAvailability = new HashMap<>();
         while (targetAvailability.size() == 0 && strategicBombingRadius < PositionFinder.ABSURDLY_LARGE_DISTANCE)

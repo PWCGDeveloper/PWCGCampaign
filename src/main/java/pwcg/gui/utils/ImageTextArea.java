@@ -54,7 +54,7 @@ public class ImageTextArea extends JTextArea
 		//Draw JTextArea background image  
 		//g.drawImage(image, 0, 0, null, this);  
 		
-		Image resizedImage = image.getScaledInstance(new Float(this.getWidth()).intValue(), new Float(this.getHeight()).intValue(), Image.SCALE_DEFAULT);
+		Image resizedImage = image.getScaledInstance(Float.valueOf(this.getWidth()).intValue(), Float.valueOf(this.getHeight()).intValue(), Image.SCALE_DEFAULT);
 		g.drawImage(resizedImage, 0, 0, null); // see javadoc for more info on the parameters
 		resizedImage.flush();
 

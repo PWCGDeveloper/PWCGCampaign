@@ -63,7 +63,7 @@ public class MonitorSupport
         double ratioDivisor = getScreenRatioDivisor();
 
         Dimension screenSize = MonitorSupport.getPWCGFrameSize();
-        Double screenHeight = new Double(screenSize.height);
+        Double screenHeight = Double.valueOf(screenSize.height);
         Double screenRatio = screenHeight / ratioDivisor;
         Double insetVertical = insetBaseValue * screenRatio;
 
@@ -75,7 +75,7 @@ public class MonitorSupport
         double ratioDivisor = getScreenRatioDivisor();
         
         Dimension screenSize = MonitorSupport.getPWCGFrameSize();
-        Double screenWidth = new Double(screenSize.width);
+        Double screenWidth = Double.valueOf(screenSize.width);
         Double screenRatio = screenWidth / ratioDivisor;
         Double insetHorizontal = insetBaseValue * screenRatio;
 

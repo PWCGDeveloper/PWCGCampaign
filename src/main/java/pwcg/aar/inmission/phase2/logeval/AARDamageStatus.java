@@ -56,7 +56,7 @@ public class AARDamageStatus
         {
             if (!accumulatedDamageByVictor.containsKey(victorId))
             {
-                accumulatedDamageByVictor.put(victorId, new Double(0.0));
+                accumulatedDamageByVictor.put(victorId, Double.valueOf(0.0));
             }
             
             LogDamage logDamage = vehicleDamaged.get(victorId);

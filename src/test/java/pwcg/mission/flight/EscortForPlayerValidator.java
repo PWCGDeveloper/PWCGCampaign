@@ -22,7 +22,7 @@ public class EscortForPlayerValidator
             assert(escortForPlayerFlight != null);
     
             PlaneMCU leadEscortedPlane = flight.getPlanes().get(0);
-            assert(escortForPlayerFlight.getCover().getTargets().get(0).equals(new Integer(leadEscortedPlane.getEntity().getIndex()).toString()));
+            assert(escortForPlayerFlight.getCover().getTargets().get(0).equals(Integer.valueOf(leadEscortedPlane.getEntity().getIndex()).toString()));
     
             McuWaypoint ingressWP = WaypointGeneratorUtils.findWaypointByType(flight.getAllFlightWaypoints(), WaypointType.INGRESS_WAYPOINT.getName());
             PlaneMCU leadEscortPlane = escortForPlayerFlight.getPlanes().get(0);

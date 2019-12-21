@@ -205,8 +205,8 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
 		Point point = new Point();
 		if (image != null)
 		{
-			point.x = new Double((rofCoord.getZPos() * ratioWidth)).intValue();
-			point.y = mapSize.height - new Double((rofCoord.getXPos() * ratioHeight)).intValue();
+			point.x = Double.valueOf((rofCoord.getZPos() * ratioWidth)).intValue();
+			point.y = mapSize.height - Double.valueOf((rofCoord.getXPos() * ratioHeight)).intValue();
 		}
 		
 		return point;
@@ -216,14 +216,14 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
 	{
 		Coordinate coord = new Coordinate();
 		
-		double x = new Double(point.x) / ratioWidth;
+		double x = Double.valueOf(point.x) / ratioWidth;
 		// ROF N-S goes low to high
 		int invertedY = mapSize.height - point.y;
-		double y = new Double(invertedY) / ratioHeight;
+		double y = Double.valueOf(invertedY) / ratioHeight;
 
 		Point coordAsInt = new Point();
-		coordAsInt.x = new Double(x).intValue();
-		coordAsInt.y = new Double(y).intValue();
+		coordAsInt.x = Double.valueOf(x).intValue();
+		coordAsInt.y = Double.valueOf(y).intValue();
 		
 		coord.setZPos(coordAsInt.x);
 		coord.setXPos(coordAsInt.y);
@@ -398,8 +398,8 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
 			mapScrollPositionNow.x = mouseEvent.getX();
 			mapScrollPositionNow.y = mouseEvent.getY();
 
-			int xMovement = new Double((mapScrollPositionNow.x - mapScrollPositionStart.x) * 0.75).intValue();
-			int yMovement = new Double((mapScrollPositionNow.y - mapScrollPositionStart.y) * 0.75).intValue();
+			int xMovement = Double.valueOf((mapScrollPositionNow.x - mapScrollPositionStart.x) * 0.75).intValue();
+			int yMovement = Double.valueOf((mapScrollPositionNow.y - mapScrollPositionStart.y) * 0.75).intValue();
 			
 			parent.getMapScroll().moveScrollBarPosition(xMovement, yMovement);
 

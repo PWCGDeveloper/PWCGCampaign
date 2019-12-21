@@ -111,7 +111,7 @@ public abstract class ConfigManager
 	public int getIntConfigParam(String parameterKey) throws PWCGException
 	{
         String stringValue = getConfigParam(parameterKey);
-        return new Integer(stringValue);
+        return Integer.valueOf(stringValue);
 	}
 
 	private String getConfigParam(String parameterKey) throws PWCGException

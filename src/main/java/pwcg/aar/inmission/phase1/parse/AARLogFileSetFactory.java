@@ -52,7 +52,7 @@ public class AARLogFileSetFactory
         int indexStart = logFileName.indexOf("[");
         int indexEnd = logFileName.indexOf("]");
         String fileindexStr = logFileName.substring(indexStart + 1, indexEnd);
-        int fileIndex = new Integer(fileindexStr);
+        int fileIndex = Integer.valueOf(fileindexStr);
         return fileIndex;
     }
 

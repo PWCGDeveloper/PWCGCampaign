@@ -24,7 +24,7 @@ public abstract class ConfigSetBase
 	public int getIntConfigParam(String key)
 	{
 		ConfigItem val = configSet.getConfigItem(key);
-		return new Integer(val.getValue());
+		return Integer.valueOf(val.getValue());
 	}
 
 	public void setParam(String key, String val) throws PWCGException

@@ -76,7 +76,7 @@ public class MissionDescriptionCoop implements IMissionDescription
 
     public void setWind(MapWeather.WindLayer layer) throws PWCGException
     {
-        int windFrom = new Double(MathUtils.adjustAngle(layer.direction, 180)).intValue();
+        int windFrom = Double.valueOf(MathUtils.adjustAngle(layer.direction, 180)).intValue();
         String windCond = "Wind speed is " + layer.speed + " M/S." + "\n    Wind direction is " + windFrom + ".";
 
         descCoopTemplate = replace(descCoopTemplate, "<WIND>", windCond);

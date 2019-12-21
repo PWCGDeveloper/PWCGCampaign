@@ -114,7 +114,7 @@ public class BriefingFlightParameters
 	            String altitudeText = waypointEditor.getAltitudeSetting().getText();
 	            if (StringValidity.isInteger(altitudeText))
 	            {
-	                int altitude = new Integer(altitudeText);
+	                int altitude = Integer.valueOf(altitudeText);
 	                editorWaypointGroup.updateAltitude(altitude);
 	            }
         	}

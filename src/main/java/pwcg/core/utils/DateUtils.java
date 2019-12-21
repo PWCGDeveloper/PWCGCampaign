@@ -93,7 +93,7 @@ public class DateUtils
 
     static public String getDateStringPretty(String year, String monthNum, String day)
     {
-        String month = DateUtils.monthAsString(new Integer(monthNum));
+        String month = DateUtils.monthAsString(Integer.valueOf(monthNum));
         
         String dateString = day + " " + month + " " + year;
 
@@ -337,7 +337,7 @@ public class DateUtils
         long end = afterCalendar.getTimeInMillis();
         long wholeDays = TimeUnit.MILLISECONDS.toDays(Math.abs(end - start));
 
-        return new Long(wholeDays).intValue();
+        return Long.valueOf(wholeDays).intValue();
     }
 
     static public boolean isDateInRange (Date date, Date startRange, Date endRange) throws PWCGException

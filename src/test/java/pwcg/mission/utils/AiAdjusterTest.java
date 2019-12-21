@@ -34,8 +34,8 @@ public class AiAdjusterTest
     @Test
     public void verifyFighterAdjustmentToAce() throws PWCGException
     {
-        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.FighterAISkillAdjustmentKey, new Integer(4).toString());
-        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, new Integer(0).toString());
+        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.FighterAISkillAdjustmentKey, Integer.valueOf(4).toString());
+        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, Integer.valueOf(0).toString());
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
@@ -60,8 +60,8 @@ public class AiAdjusterTest
     @Test
     public void verifyFighterAdjustmentToNovice() throws PWCGException
     {
-        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.FighterAISkillAdjustmentKey, new Integer(-4).toString());
-        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, new Integer(0).toString());
+        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.FighterAISkillAdjustmentKey, Integer.valueOf(-4).toString());
+        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, Integer.valueOf(0).toString());
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
@@ -86,8 +86,8 @@ public class AiAdjusterTest
     @Test
     public void verifyBomberAdjustmentToAce() throws PWCGException
     {
-        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.FighterAISkillAdjustmentKey, new Integer(0).toString());
-        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, new Integer(4).toString());
+        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.FighterAISkillAdjustmentKey, Integer.valueOf(0).toString());
+        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, Integer.valueOf(4).toString());
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
@@ -121,8 +121,8 @@ public class AiAdjusterTest
     @Test
     public void verifyAllAdjustmentToCommonOrBetter() throws PWCGException
     {
-        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.FighterAISkillAdjustmentKey, new Integer(1).toString());
-        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, new Integer(1).toString());
+        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.FighterAISkillAdjustmentKey, Integer.valueOf(1).toString());
+        campaign.getCampaignConfigManager().setParam(ConfigItemKeys.BomberAISkillAdjustmentKey, Integer.valueOf(1).toString());
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);

@@ -32,8 +32,8 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
     {
         TargetRadius targetRadius = new TargetRadius();
         targetRadius.calculateTargetRadius(flightInformation.getFlightType(), flightInformation.getMission().getMissionBorders().getAreaRadius());
-        targetDefinition.setPreferredRadius(new Double(targetRadius.getInitialTargetRadius()).intValue());
-        targetDefinition.setMaximumRadius(new Double(targetRadius.getMaxTargetRadius()).intValue());
+        targetDefinition.setPreferredRadius(Double.valueOf(targetRadius.getInitialTargetRadius()).intValue());
+        targetDefinition.setMaximumRadius(Double.valueOf(targetRadius.getMaxTargetRadius()).intValue());
     }
 
     private void createBasicTargetDefinition() throws PWCGException

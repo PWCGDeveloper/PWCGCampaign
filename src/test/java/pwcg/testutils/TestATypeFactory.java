@@ -15,7 +15,7 @@ public class TestATypeFactory
     static public AType12 makeFrenchPlane(String frenchPilotName, String frenchPilotBotId) throws PWCGException
     {
         ++id;
-        AType12 aType12Parsed = new AType12("AType:12 ID:1488895 TYPE:spad13 COUNTRY:101 NAME:Lt Pierre Trudeau PID:-1 POS(119648.406,152.195,44274.488)", new Integer(id).toString());
+        AType12 aType12Parsed = new AType12("AType:12 ID:1488895 TYPE:spad13 COUNTRY:101 NAME:Lt Pierre Trudeau PID:-1 POS(119648.406,152.195,44274.488)", Integer.valueOf(id).toString());
         AType12 aType12 = new AType12(frenchPilotBotId, aType12Parsed.getType(), frenchPilotName, aType12Parsed.getCountry(), aType12Parsed.getPid());
         return aType12;
     }
@@ -23,7 +23,7 @@ public class TestATypeFactory
     static public AType12 makeGermanPlane(String germanPilotName, String germanPilotBotId) throws PWCGException
     {
         ++id;
-        AType12 aType12Parsed = new AType12("AType:12 ID:1488895 TYPE:albatrosd5 COUNTRY:101 NAME:Lt Pierre Trudeau PID:-1 POS(119648.406,152.195,44274.488)", new Integer(id).toString());
+        AType12 aType12Parsed = new AType12("AType:12 ID:1488895 TYPE:albatrosd5 COUNTRY:101 NAME:Lt Pierre Trudeau PID:-1 POS(119648.406,152.195,44274.488)", Integer.valueOf(id).toString());
         AType12 aType12 = new AType12(germanPilotBotId, aType12Parsed.getType(), germanPilotName, aType12Parsed.getCountry(), aType12Parsed.getPid());
         return aType12;
     }
@@ -31,7 +31,7 @@ public class TestATypeFactory
     static public AType12 makeBalloon(ICountry country) throws PWCGException
     {
         ++id;
-        AType12 aType12 = new AType12(new Integer (id).toString(), "Balloon", "Balloon", country, AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
+        AType12 aType12 = new AType12(Integer.valueOf (id).toString(), "Balloon", "Balloon", country, AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
         return aType12;
     }
     
@@ -47,14 +47,14 @@ public class TestATypeFactory
         {
             country = new FCCountry(Country.GERMANY);            
         }
-        AType12 aType12 = new AType12(new Integer (id).toString(), "Truck", "Truck", country, AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
+        AType12 aType12 = new AType12(Integer.valueOf (id).toString(), "Truck", "Truck", country, AARLogParser.UNKNOWN_MISSION_LOG_ENTITY);
         return aType12;
     }
     
     static public AType12 makePilotBot(IAType12 plane) throws PWCGException
     {
         ++id;
-        AType12 aType12 = new AType12(new Integer (id).toString(), "Common Bot", "Bot", plane.getCountry(), plane.getId());
+        AType12 aType12 = new AType12(Integer.valueOf (id).toString(), "Common Bot", "Bot", plane.getCountry(), plane.getId());
         return aType12;
     }
 }

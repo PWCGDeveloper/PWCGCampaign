@@ -115,7 +115,7 @@ public class BaseFlightMcu extends BaseMcu
 	
 	public void setTarget(int target) 
 	{
-		String targetStr = new Integer(target).toString();
+		String targetStr = Integer.valueOf(target).toString();
 		targets.add(targetStr);
 	}
 
@@ -129,7 +129,7 @@ public class BaseFlightMcu extends BaseMcu
 
 	public void setObject(int object) 
 	{
-		String objectStr = new Integer(object).toString();
+		String objectStr = Integer.valueOf(object).toString();
 		objects.add(objectStr);
 	}
 	

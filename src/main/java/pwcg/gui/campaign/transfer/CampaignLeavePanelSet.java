@@ -222,7 +222,7 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 			throw new PWCGUserException ("Enter leave in weeks continuing");
 		}
 		
-		int leaveTime = new Integer(tLeaveTime.getText()).intValue();
+		int leaveTime = Integer.valueOf(tLeaveTime.getText()).intValue();
 		
 		return leaveTime;
 	}

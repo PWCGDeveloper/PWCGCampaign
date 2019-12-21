@@ -75,7 +75,7 @@ public class CampaignPersonnelIOJson
             JsonObjectReader<SquadronMembers> jsoReader = new JsonObjectReader<>(SquadronMembers.class);
             SquadronMembers squadronMembers = jsoReader.readJsonFile(campaignPersonnelDir, jsonFile.getName());
             
-            int squadronId = new Integer(FileUtils.stripFileExtension(jsonFile.getName()));
+            int squadronId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
             SquadronPersonnel squadronPersonnel = new SquadronPersonnel(campaign, squadron);
             squadronPersonnel.setSquadronMembers(squadronMembers);
@@ -94,7 +94,7 @@ public class CampaignPersonnelIOJson
             JsonObjectReader<PersonnelReplacementsService> jsoReader = new JsonObjectReader<>(PersonnelReplacementsService.class);
             PersonnelReplacementsService replacements = jsoReader.readJsonFile(campaignReplacementDir, jsonFile.getName());
             
-            int serviceId = new Integer(FileUtils.stripFileExtension(jsonFile.getName()));
+            int serviceId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
             campaign.getPersonnelManager().addPersonnelReplacementsService(serviceId, replacements);
         }
     }

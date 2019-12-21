@@ -92,8 +92,8 @@ public class ReconWaypointsTransport extends ReconWaypoints
 
 	private String formLocationKey(Coordinate coord)
 	{
-        int x = new Double(coord.getXPos()).intValue();
-        int z = new Double(coord.getZPos()).intValue();
+        int x = Double.valueOf(coord.getXPos()).intValue();
+        int z = Double.valueOf(coord.getZPos()).intValue();
         String key = "" + x + " " + z;
         
         return key;

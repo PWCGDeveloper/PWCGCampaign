@@ -113,7 +113,7 @@ public class Coordinate implements Cloneable
 	public static String format(double value)
 	{
 		int placesPlusDecimal = 3;
-		String doubleString = new Double(value).toString();
+		String doubleString = Double.valueOf(value).toString();
 		int decimalIndex = doubleString.indexOf('.');
 		// No decimal point fond - pad by three
 		if (decimalIndex == -1)

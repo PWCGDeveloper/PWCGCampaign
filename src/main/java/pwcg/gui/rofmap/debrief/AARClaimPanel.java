@@ -209,7 +209,7 @@ public class AARClaimPanel extends ImageResizingPanel implements ActionListener
 		int beginIndex = victoriesString.indexOf(":");
 		++beginIndex;
 		String numberString = victoriesString.substring(beginIndex).trim();
-		numVictories = new Integer(numberString).intValue();
+		numVictories = Integer.valueOf(numberString).intValue();
 		
 		try
 		{

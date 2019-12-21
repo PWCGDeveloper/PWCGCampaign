@@ -400,7 +400,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
                 int index = newPlaneChoice.indexOf(":");
                 index += 2;
                 String planeSerialNumberString = newPlaneChoice.substring(index);
-                Integer planeSerialNumber = new Integer(planeSerialNumberString);
+                Integer planeSerialNumber = Integer.valueOf(planeSerialNumberString);
 
                 briefingMissionHandler.changePlane(pilotSerialNumber, planeSerialNumber);
             }
@@ -488,7 +488,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     {
         int index = action.indexOf(":");
         String pilotSerialNumberString = action.substring(index + 1);
-        Integer pilotSerialNumber = new Integer(pilotSerialNumberString);
+        Integer pilotSerialNumber = Integer.valueOf(pilotSerialNumberString);
         return pilotSerialNumber;
     }
 

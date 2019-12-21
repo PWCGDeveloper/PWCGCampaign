@@ -31,7 +31,7 @@ public class EquipmentReplacementWeightUsage
                 {
                     if (!aircraftUsageByArchType.containsKey(planeArchType.getPlaneArchTypeName()))
                     {
-                        aircraftUsageByArchType.put(planeArchType.getPlaneArchTypeName(), new Integer(0)); 
+                        aircraftUsageByArchType.put(planeArchType.getPlaneArchTypeName(), Integer.valueOf(0)); 
                     }
                     
                     Integer numUsagesOfArchtype = aircraftUsageByArchType.get(planeArchType.getPlaneArchTypeName());

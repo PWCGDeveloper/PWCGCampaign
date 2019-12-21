@@ -74,8 +74,8 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         
         TargetRadius targetRadius = new TargetRadius();
         targetRadius.calculateTargetRadius(flightInformation.getFlightType(), flightInformation.getMission().getMissionBorders().getAreaRadius());
-        targetDefinition.setPreferredRadius(new Double(targetRadius.getInitialTargetRadius()).intValue());
-        targetDefinition.setMaximumRadius(new Double(targetRadius.getMaxTargetRadius()).intValue());
+        targetDefinition.setPreferredRadius(Double.valueOf(targetRadius.getInitialTargetRadius()).intValue());
+        targetDefinition.setMaximumRadius(Double.valueOf(targetRadius.getMaxTargetRadius()).intValue());
         
         TargetLocatorAttack targetLocator = new TargetLocatorAttack(targetDefinition,flightInformation.getMission().getMissionBorders().getCenter());
         targetLocator.locateTarget();

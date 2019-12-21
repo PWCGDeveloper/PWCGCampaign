@@ -73,7 +73,7 @@ public class CampaignEquipmentOJson
         {
             JsonObjectReader<Equipment> jsoReader = new JsonObjectReader<>(Equipment.class);
             Equipment squadronEquipment = jsoReader.readJsonFile(campaignEquipmentDir, jsonFile.getName());
-            int squadronId = new Integer(FileUtils.stripFileExtension(jsonFile.getName()));
+            int squadronId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
             campaign.getEquipmentManager().addEquipmentForSquadron(squadronId, squadronEquipment);
         }
     }
@@ -87,7 +87,7 @@ public class CampaignEquipmentOJson
         {
             JsonObjectReader<EquipmentDepo> jsoReader = new JsonObjectReader<>(EquipmentDepo.class);
             EquipmentDepo replacementEquipemnt = jsoReader.readJsonFile(campaignEquipmentReplacementDir, jsonFile.getName());
-            int serviceId = new Integer(FileUtils.stripFileExtension(jsonFile.getName()));
+            int serviceId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
             campaign.getEquipmentManager().addEquipmentDepoForService(serviceId, replacementEquipemnt);
         }
     }
