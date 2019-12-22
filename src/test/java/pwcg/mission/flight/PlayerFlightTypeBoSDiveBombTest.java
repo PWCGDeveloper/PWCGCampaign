@@ -50,7 +50,7 @@ public class PlayerFlightTypeBoSDiveBombTest
         groundUnitValidator.validateGroundUnitsForMission(mission);
         PositionEvaluator.evaluateAiFlight(mission);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
-        playerEscortedFlightValidator.validatePlayerEscortFlight();
+        playerEscortedFlightValidator.validateEscortForPlayer();
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

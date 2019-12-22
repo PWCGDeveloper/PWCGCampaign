@@ -55,7 +55,7 @@ public class PlayerFlightTypeBoSAttackTest
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
-        playerEscortedFlightValidator.validateNoEscortForPlayer();
+        playerEscortedFlightValidator.validateEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
     }
 

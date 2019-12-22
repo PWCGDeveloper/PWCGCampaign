@@ -99,23 +99,6 @@ public class FlightInformationFactory
         return escortedFlightInformation;
     }
 
-    public static FlightInformation buildInterceptOpposingInformation(Squadron squadron, Mission mission, FlightTypes flightType, TargetDefinition targetDefinition) throws PWCGException
-    {
-        FlightInformation interceptedFlightInformation = new FlightInformation(mission);
-        interceptedFlightInformation.setFlightType(FlightTypes.ESCORT);
-        interceptedFlightInformation.setMission(mission);
-        interceptedFlightInformation.setCampaign(mission.getCampaign());
-        interceptedFlightInformation.setSquadron(squadron);
-        interceptedFlightInformation.setPlayerFlight(false);
-        interceptedFlightInformation.setEscortForPlayerFlight(false);
-        interceptedFlightInformation.setEscortedByPlayerFlight(false);
-        interceptedFlightInformation.setTargetDefinition(targetDefinition);
-        buildPlanes (interceptedFlightInformation);
-        setAltitude (interceptedFlightInformation);
-
-        return interceptedFlightInformation;
-    }
-
     public static void buildTargetDefinition (FlightInformation flightInformation) throws PWCGException
     {
         ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);

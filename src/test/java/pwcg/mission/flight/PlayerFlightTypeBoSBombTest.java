@@ -54,7 +54,7 @@ public class PlayerFlightTypeBoSBombTest
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
-        playerEscortedFlightValidator.validateNoEscortForPlayer();
+        playerEscortedFlightValidator.validateEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
     }
 
@@ -78,7 +78,7 @@ public class PlayerFlightTypeBoSBombTest
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
-        playerEscortedFlightValidator.validateNoEscortForPlayer();
+        playerEscortedFlightValidator.validateEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
     }
 
@@ -98,6 +98,8 @@ public class PlayerFlightTypeBoSBombTest
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() >= 0);
         }
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        playerEscortedFlightValidator.validateEscortForPlayer();
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

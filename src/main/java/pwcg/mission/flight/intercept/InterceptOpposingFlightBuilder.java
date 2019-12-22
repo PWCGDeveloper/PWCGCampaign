@@ -10,10 +10,14 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.MissionBeginUnit;
+import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.attack.GroundAttackPackage;
+import pwcg.mission.flight.bomb.BombingPackage;
+import pwcg.mission.flight.divebomb.DiveBombingPackage;
 import pwcg.mission.flight.plot.FlightInformationFactory;
+import pwcg.mission.flight.recon.ReconPackage;
 
 public class InterceptOpposingFlightBuilder
 {
@@ -24,19 +28,19 @@ public class InterceptOpposingFlightBuilder
         this.playerFlightInformation = playerFlightInformation;
     }
 
-    public List<InterceptOpposingFlight> buildOpposingFlights() throws PWCGException
+    public List<Flight> buildOpposingFlights() throws PWCGException
     {
         InterceptOpposingFlightSquadronChooser opposingFlightSquadronChooser = new InterceptOpposingFlightSquadronChooser(playerFlightInformation);
         List<Squadron> opposingSquadrons = opposingFlightSquadronChooser.getOpposingSquadrons();            
         return createOpposingFlights(opposingSquadrons);
     }
     
-    private List<InterceptOpposingFlight> createOpposingFlights(List<Squadron> opposingSquadrons) throws PWCGException
+    private List<Flight> createOpposingFlights(List<Squadron> opposingSquadrons) throws PWCGException
     {
-        List<InterceptOpposingFlight> opposingFlights = new ArrayList<>();
+        List<Flight> opposingFlights = new ArrayList<>();
         for (Squadron squadron : opposingSquadrons)
         {
-            InterceptOpposingFlight opposingFlight = createOpposingFlight(squadron);
+            Flight opposingFlight = createOpposingFlight(squadron);
             if (opposingFlight != null)
             {
                 opposingFlights.add(opposingFlight);
@@ -45,9 +49,9 @@ public class InterceptOpposingFlightBuilder
         return opposingFlights;
     }
 
-    private InterceptOpposingFlight createOpposingFlight(Squadron opposingSquadron) throws PWCGException
+    private Flight createOpposingFlight(Squadron opposingSquadron) throws PWCGException
     {
-        InterceptOpposingFlight interceptOpposingFlight = null;
+        Flight interceptOpposingFlight = null;
 
         String opposingFieldName = opposingSquadron.determineCurrentAirfieldName(playerFlightInformation.getCampaign().getDate());
         if (opposingFieldName != null)
@@ -70,14 +74,13 @@ public class InterceptOpposingFlightBuilder
         return startingPosition;
     }
 
-    private InterceptOpposingFlight buildOpposingFlight(Squadron opposingSquadron, Coordinate startingPosition) throws PWCGException 
+    private Flight buildOpposingFlight(Squadron opposingSquadron, Coordinate startingPosition) throws PWCGException 
     {
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startingPosition.copy());
         FlightTypes opposingFlightType = getFlightType(opposingSquadron);
         
         FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(
                 opposingSquadron, playerFlightInformation.getMission(), opposingFlightType);
-        InterceptOpposingFlight opposingFlight = new InterceptOpposingFlight (opposingFlightInformation, missionBeginUnit, startingPosition);
+        Flight opposingFlight = buildOpposingFlight(opposingFlightInformation);
         opposingFlight.createUnitMission();
         opposingFlight.getMissionBeginUnit().setStartTime(2);                
         return opposingFlight;
@@ -100,6 +103,30 @@ public class InterceptOpposingFlightBuilder
         else
         {
             return FlightTypes.BOMB;            
+        }
+    }
+    
+    private Flight buildOpposingFlight(FlightInformation opposingFlightInformation) throws PWCGException
+    {
+        if (opposingFlightInformation.getFlightType() == FlightTypes.GROUND_ATTACK)
+        {
+            GroundAttackPackage bombingPackage = new GroundAttackPackage(opposingFlightInformation);
+            return bombingPackage.createPackage();
+        }
+        else if (opposingFlightInformation.getFlightType() == FlightTypes.DIVE_BOMB)
+        {   
+            DiveBombingPackage bombingPackage = new DiveBombingPackage(opposingFlightInformation);
+            return bombingPackage.createPackage();
+        }
+        else if (opposingFlightInformation.getFlightType() == FlightTypes.RECON)
+        {   
+            ReconPackage bombingPackage = new ReconPackage(opposingFlightInformation);
+            return bombingPackage.createPackage();
+        }
+        else
+        {
+            BombingPackage bombingPackage = new BombingPackage(opposingFlightInformation);
+            return bombingPackage.createPackage();
         }
     }
 }

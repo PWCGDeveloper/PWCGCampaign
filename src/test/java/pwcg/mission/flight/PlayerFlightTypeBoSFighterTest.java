@@ -81,7 +81,8 @@ public class PlayerFlightTypeBoSFighterTest
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.OFFENSIVE);
-        EscortForPlayerValidator.validateNoEscortForPlayer(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
 	}
 
@@ -96,7 +97,8 @@ public class PlayerFlightTypeBoSFighterTest
 		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);
 		escortFlightValidator.validateEscortFlight();
         assert(flight.getFlightType() == FlightTypes.ESCORT);
-        EscortForPlayerValidator.validateNoEscortForPlayer(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
 	}
 
@@ -111,7 +113,8 @@ public class PlayerFlightTypeBoSFighterTest
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.SCRAMBLE);
-        EscortForPlayerValidator.validateNoEscortForPlayer(flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
     }
 

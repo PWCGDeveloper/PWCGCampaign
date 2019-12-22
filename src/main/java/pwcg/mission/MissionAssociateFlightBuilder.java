@@ -11,7 +11,6 @@ import pwcg.mission.flight.escort.PlayerEscortFlight;
 import pwcg.mission.flight.escort.PlayerEscortFlightAdjuster;
 import pwcg.mission.flight.escort.PlayerEscortFlightLinker;
 import pwcg.mission.flight.escort.PlayerEscortedFlightBuilder;
-import pwcg.mission.flight.intercept.InterceptOpposingFlight;
 import pwcg.mission.flight.intercept.InterceptOpposingFlightBuilder;
 import pwcg.mission.flight.scramble.ScrambleOpposingFlight;
 import pwcg.mission.flight.scramble.ScrambleOpposingFlightBuilder;
@@ -73,8 +72,8 @@ public class MissionAssociateFlightBuilder
     private void makeLinkedInterceptFlights(Flight flight) throws PWCGException
     {
         InterceptOpposingFlightBuilder opposingFlightBuilder = new InterceptOpposingFlightBuilder(flight.getFlightInformation());
-        List<InterceptOpposingFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
-        for (InterceptOpposingFlight opposingFlight: opposingFlights)
+        List<Flight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
+        for (Flight opposingFlight: opposingFlights)
         {
             flight.addLinkedUnit(opposingFlight);
         }

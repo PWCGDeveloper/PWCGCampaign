@@ -74,9 +74,8 @@ public class ScrambleOpposingFlightBuilder
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startingPosition.copy());
         FlightTypes opposingFlightType = getFlightType(opposingSquadron);
         
-        // TODO I never build the linked flight target definition in the scramble package
-        FlightInformation opposingFlightInformation = FlightInformationFactory.buildInterceptOpposingInformation(
-                opposingSquadron, playerFlightInformation.getMission(), opposingFlightType, playerFlightInformation.getTargetDefinition().getLinkedFlightTargetDefinition());
+        FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(
+                opposingSquadron, playerFlightInformation.getMission(), opposingFlightType);
         ScrambleOpposingFlight opposingFlight = new ScrambleOpposingFlight (opposingFlightInformation, missionBeginUnit);
         opposingFlight.createUnitMission();
         opposingFlight.getMissionBeginUnit().setStartTime(2);                
@@ -92,10 +91,6 @@ public class ScrambleOpposingFlightBuilder
         else if (opposingSquadron.determineSquadronPrimaryRole(playerFlightInformation.getCampaign().getDate()) == Role.ROLE_DIVE_BOMB)
         {   
             return FlightTypes.DIVE_BOMB;
-        }
-        else if (opposingSquadron.determineSquadronPrimaryRole(playerFlightInformation.getCampaign().getDate()) == Role.ROLE_RECON)
-        {   
-            return FlightTypes.RECON;
         }
         else
         {
