@@ -36,8 +36,8 @@ public class FerryWaypoints
 
     public List<McuWaypoint> createWaypoints() throws PWCGException
     {
-        InitialWaypointGenerator climbWaypointGenerator = new InitialWaypointGenerator(flight);
-        List<McuWaypoint> initialWPs = climbWaypointGenerator.createInitialFlightWaypoints();
+        InitialWaypointGenerator initialWaypointGenerator = new InitialWaypointGenerator(flight);
+        List<McuWaypoint> initialWPs = initialWaypointGenerator.createInitialFlightWaypoints();
         waypoints.addAll(initialWPs);
 
         List<McuWaypoint> targetWaypoints = createTargetWaypoints();

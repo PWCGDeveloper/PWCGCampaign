@@ -12,7 +12,6 @@ import pwcg.core.utils.Logger;
 import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
-import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.mcu.McuCounter;
 import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
@@ -37,10 +36,7 @@ public class PlaneCounter
 
     private int index = IndexGenerator.getInstance().getNextIndex();;
 
-    /**
-     * 
-     */
-     public PlaneCounter()
+    public PlaneCounter()
     {
         index = IndexGenerator.getInstance().getNextIndex();
         
@@ -95,19 +91,13 @@ public class PlaneCounter
          subtitleHandler.registerMissionText(planeCounterSubtitle.getLcText(), planeCounterSubtitle.getText());
      }
 
-     /**
-     * @param flight
-     * @
-     */
     public void setPlaneCounterForFlight(Flight flight) 
      {
-         WaypointPackage wpPackage = flight.getWaypointPackage();
-         VirtualWaypointPackage virtualWPackage = null;
-         if (wpPackage instanceof VirtualWaypointPackage)
+         if (flight.isVirtual())
          {
-             virtualWPackage = (VirtualWaypointPackage)wpPackage;
+             VirtualWaypointPackage virtualWaypointPackage = flight.getVirtualWaypointPackage();
 
-             for (VirtualWayPoint vwp : virtualWPackage.getVirtualWaypoints())
+             for (VirtualWayPoint vwp : virtualWaypointPackage.getVirtualWaypoints())
              {
                  // Link this VWP spawners to the plane counter
                  vwp.registerPlaneCounter(this.planeCounter);
@@ -122,13 +112,6 @@ public class PlaneCounter
          }
      }
 
-     /**
-      * Write the mission to a file
-      * 
-      * @param writer
-     * @throws PWCGIOException 
-      * @
-      */
      public void write(BufferedWriter writer) throws PWCGIOException 
      {
          try

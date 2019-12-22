@@ -24,6 +24,7 @@ import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
 import pwcg.mission.flight.recon.PlayerReconFlight;
+import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PatrolFlightValidator;
@@ -70,7 +71,8 @@ public class PlayerFlightFCTypeTest
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
-        EscortForPlayerValidator.validateEscortForPlayer(mission, flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        playerEscortedFlightValidator.validateEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
 	}
 	
@@ -91,6 +93,8 @@ public class PlayerFlightFCTypeTest
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        playerEscortedFlightValidator.validateEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
 	}
 	
@@ -108,6 +112,8 @@ public class PlayerFlightFCTypeTest
 		groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
         PositionEvaluator.evaluateAiFlight(mission);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        playerEscortedFlightValidator.validateEscortForPlayer();
         assert(flight.getFlightType() == FlightTypes.STRATEGIC_BOMB);
 	}
 

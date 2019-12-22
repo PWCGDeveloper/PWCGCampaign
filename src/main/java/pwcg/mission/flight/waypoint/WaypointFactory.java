@@ -96,7 +96,7 @@ public class WaypointFactory
 
 	public static McuWaypoint createReturnToBaseWaypointType()
 	{
-		McuWaypoint waypoint = new McuWaypoint(WaypointType.RTB_WAYPOINT);
+		McuWaypoint waypoint = new McuWaypoint(WaypointType.RETURN_TO_BASE_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_EGRESS);
 		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
 		

@@ -24,9 +24,7 @@ public class InterceptOpposingFlight extends BombingFlight
 	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
 	{
 		InterceptOpposingWaypoints waypointGenerator = new InterceptOpposingWaypoints(this);
-
-        List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
-        
+        List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();        
         return waypointList;
 	}
 }

@@ -1,7 +1,5 @@
 package pwcg.mission.flight;
 
-import java.util.List;
-
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -13,9 +11,8 @@ import pwcg.core.utils.MathUtils;
 import pwcg.mission.IUnit;
 import pwcg.mission.MissionSkinGenerator;
 import pwcg.mission.flight.plane.PlaneMCU;
-import pwcg.mission.flight.virtual.VirtualWaypointGenerator;
-import pwcg.mission.flight.waypoint.ActualWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
+import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuMessage;
 import pwcg.mission.mcu.McuWaypoint;
@@ -149,32 +146,14 @@ public class FlightFinalizer
 
     private void finalizeVirtualFlight() throws PWCGException 
     {
-        if (flight.getWaypointPackage() instanceof VirtualWaypointPackage)
+        if (flight.isVirtual())
         {
-            buildVirtualWaypoints();            
-            linkVirtualWaypoints();
+            VirtualWaypointPackage virtualWaypointPackage = flight.getVirtualWaypointPackage();
+            virtualWaypointPackage.buildVirtualWaypoints();            
         }
         else
         {
             throw new PWCGMissionGenerationException("Non virtual AI flight");
-        }
-    }
-
-    private void buildVirtualWaypoints() throws PWCGException
-    {
-        VirtualWaypointGenerator virtualWaypointGenerator = new VirtualWaypointGenerator(flight);
-        List<VirtualWayPoint> virtualWaypoints = virtualWaypointGenerator.createVirtualWaypoints();
-
-        VirtualWaypointPackage virtualWaypointPackage = (VirtualWaypointPackage) flight.getWaypointPackage();
-        virtualWaypointPackage.setVirtualWaypoints(virtualWaypoints);
-    }
-
-    private void linkVirtualWaypoints()
-    {
-        BaseFlightMcu wpEntryMcu = flight.getWaypointPackage().getEntryMcu();
-        if (wpEntryMcu != null)
-        {
-            flight.getMissionBeginUnit().linkToMissionBegin(wpEntryMcu.getIndex());
         }
     }
 
@@ -185,9 +164,9 @@ public class FlightFinalizer
             PlaneMCU plane = flight.getPlanes().get(index);
             
             plane.initializeAttackEntity(index);
-            if (flight.getWaypointPackage() instanceof VirtualWaypointPackage)
+            if (flight.isVirtual())
             {
-                VirtualWaypointPackage virtualWaypointPackage = (VirtualWaypointPackage)flight.getWaypointPackage();
+                VirtualWaypointPackage virtualWaypointPackage = flight.getVirtualWaypointPackage();
                 for (VirtualWayPoint vwp : virtualWaypointPackage.getVirtualWaypoints())
                 {
                     vwp.onTriggerAddTarget(plane, plane.getOnSpawnTimer().getIndex());
@@ -195,8 +174,8 @@ public class FlightFinalizer
             }
             else
             {
-                ActualWaypointPackage actualWaypointPackage = (ActualWaypointPackage)flight.getWaypointPackage();
-                actualWaypointPackage.onTriggerAddTarget(plane.getOnSpawnTimer().getIndex());
+                WaypointPackage waypointPackage = flight.getWaypointPackage();
+                waypointPackage.onTriggerAddTarget(plane.getOnSpawnTimer().getIndex());
             }
         }
     }

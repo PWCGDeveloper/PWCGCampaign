@@ -48,7 +48,6 @@ public class PlayerBalloonDefenseFlight extends Flight
 	{
         super.createUnitMission();
         
-		// These are the balloon defense specific things
 		createAttackArea();
 		createCover();
 		createDeactivate();

@@ -12,6 +12,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.flight.attack.GroundAttackFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
@@ -53,7 +54,8 @@ public class PlayerFlightTypeBoSAttackTest
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
-        EscortForPlayerValidator.validateEscortForPlayer(mission, flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
     }
 

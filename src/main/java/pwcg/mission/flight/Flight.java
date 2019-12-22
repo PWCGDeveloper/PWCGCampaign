@@ -31,7 +31,6 @@ import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.initialposition.TakeoffBuilder;
 import pwcg.mission.flight.objective.MissionObjectiveFactory;
 import pwcg.mission.flight.plane.PlaneMCU;
-import pwcg.mission.flight.waypoint.ActualWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
@@ -64,6 +63,7 @@ public abstract class Flight extends Unit
     protected McuTakeoff takeoff = null;
     protected McuLanding landing = null;
     protected WaypointPackage waypointPackage = null;
+    protected VirtualWaypointPackage virtualWaypointPackage = null;
 
     protected List<Integer> contactWithPlayer = new ArrayList<Integer>();
     protected double closestContactWithPlayerDistance = -1.0;
@@ -104,25 +104,15 @@ public abstract class Flight extends Unit
     
     protected void createWaypointPackage() throws PWCGException
     {
-        if (flightInformation.isPlayerFlight())
-        {
-            waypointPackage = new ActualWaypointPackage(this);
-        }
-        else if (flightInformation.isVirtual())
-        {
-            waypointPackage = new VirtualWaypointPackage(this);
-        }
-        else
-        {
-            waypointPackage = new ActualWaypointPackage(this);
-        }
+        waypointPackage = new WaypointPackage(this);
+        virtualWaypointPackage = new VirtualWaypointPackage(waypointPackage);
     }
 
     protected void createWaypoints() throws PWCGException
     {
         Coordinate startPosition = flightInformation.getDepartureAirfield().getTakeoffLocation().getPosition().copy();
         List<McuWaypoint> waypointList = createWaypoints(flightInformation.getMission(), startPosition);
-        waypointPackage.setWaypoints(waypointList);
+        waypointPackage.initialize(waypointList);
     }
 
     protected void createTakeoff() throws PWCGException
@@ -445,6 +435,7 @@ public abstract class Flight extends Unit
         }
 
         waypointPackage.write(writer);
+        virtualWaypointPackage.write(writer);
 
         if (takeoff != null)
         {
@@ -583,9 +574,9 @@ public abstract class Flight extends Unit
         return pilotPlane;
     }
 
-    public void updateWaypoints(List<McuWaypoint> modifiedWaypoints) 
+    public void updateWaypoints(List<McuWaypoint> modifiedWaypoints) throws PWCGException 
     {
-        waypointPackage.setWaypoints(modifiedWaypoints);
+        waypointPackage.initialize(modifiedWaypoints);
     }
 
     public WaypointPackage getWaypointsNoSearch()
@@ -685,6 +676,11 @@ public abstract class Flight extends Unit
     public WaypointPackage getWaypointPackage()
     {
         return this.waypointPackage;
+    }
+
+    public VirtualWaypointPackage getVirtualWaypointPackage()
+    {
+        return this.virtualWaypointPackage;
     }
 
     public double getClosestContactWithPlayerDistance()

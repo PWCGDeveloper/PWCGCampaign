@@ -3,10 +3,12 @@ package pwcg.core.location;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Formatter;
+import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
+import pwcg.core.utils.MathUtils;
 
 public class Coordinate implements Cloneable
 {
@@ -84,10 +86,19 @@ public class Coordinate implements Cloneable
 		return out;
 	}
 	
-	/**
-	 * @param writer
-	 * @throws PWCGIOException
-	 */
+	public boolean isCloseToThisCoordinate(List<Coordinate> coordinatesToCheck, int distanceMeters)
+	{
+	    for (Coordinate coordinateToCheck : coordinatesToCheck)
+	    {
+	        int distance = Double.valueOf(MathUtils.calcDist(this, coordinateToCheck)).intValue();
+	        if (distance <= distanceMeters)
+	        {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+
 	public void write(BufferedWriter writer) throws PWCGIOException
 	{
         try
@@ -105,11 +116,7 @@ public class Coordinate implements Cloneable
             throw new PWCGIOException(e.getMessage());
         }
 	}
-	
-	/**
-	 * @param value
-	 * @return
-	 */
+
 	public static String format(double value)
 	{
 		int placesPlusDecimal = 3;
@@ -136,10 +143,7 @@ public class Coordinate implements Cloneable
 
 		return doubleString;
 	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
+
 	@Override
 	public boolean equals(Object other)
 	{

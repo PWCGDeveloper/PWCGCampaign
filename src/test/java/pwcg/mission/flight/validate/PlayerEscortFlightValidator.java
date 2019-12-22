@@ -49,12 +49,13 @@ public class PlayerEscortFlightValidator
         assert(escortedFlight != null);
         assert(escortedFlight.isVirtual() == false);
         assert(escortedFlight.isAirStart() == true);
+        assert(escortedFlight.isPlayerFlight() == false);
         
         for (PlaneMCU escortedPlane : escortedFlight.getPlanes())
         {
             assert(escortedPlane.getPosition().getYPos() > 1000.0);
         }
-        
+
         PlaneMCU leadEscortedPlane = escortedFlight.getPlanes().get(0);
         assert(leadEscortedPlane != null);
     }

@@ -32,7 +32,7 @@ public class AiBalloonDefenseFlight extends Flight
 
         List<McuWaypoint> wpList = new ArrayList<McuWaypoint>();
 
-        McuWaypoint balloonDefenseIngressWP = makeBalloonConverIngressWP(startPosition, waypointSpeed);
+        McuWaypoint balloonDefenseIngressWP = makeBalloonCoverIngressWP(startPosition, waypointSpeed);
         wpList.add(balloonDefenseIngressWP);
 
         McuWaypoint balloonDefenseWP = makeBalloonCoverWP(waypointSpeed);
@@ -41,7 +41,7 @@ public class AiBalloonDefenseFlight extends Flight
 		return wpList;
 	}
 
-    private McuWaypoint makeBalloonConverIngressWP(Coordinate startPosition,  int waypointSpeed) throws PWCGException
+    private McuWaypoint makeBalloonCoverIngressWP(Coordinate startPosition,  int waypointSpeed) throws PWCGException
     {
         double balloonCoverApproachAngle = MathUtils.calcAngle(balloonUnit.getPosition(), startPosition);               
         Coordinate balloonCoverIngressPosition = MathUtils.calcNextCoord(balloonUnit.getPosition(), balloonCoverApproachAngle, 3000.0);

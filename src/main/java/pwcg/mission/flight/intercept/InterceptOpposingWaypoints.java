@@ -8,11 +8,11 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.approach.ApproachWaypointGenerator;
 import pwcg.mission.flight.waypoint.egress.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.ingress.IIngressWaypoint;
 import pwcg.mission.flight.waypoint.ingress.IngressWaypointNearFront;
+import pwcg.mission.flight.waypoint.initial.InitialWaypointGenerator;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class InterceptOpposingWaypoints
@@ -27,6 +27,10 @@ public class InterceptOpposingWaypoints
 
     public List<McuWaypoint> createWaypoints() throws PWCGException
     {
+        InitialWaypointGenerator initialWaypointGenerator = new InitialWaypointGenerator(flight);
+        List<McuWaypoint> initialWPs = initialWaypointGenerator.createInitialFlightWaypoints();
+        waypoints.addAll(initialWPs);
+
         McuWaypoint ingressWaypoint = createIngressWaypoint(flight);
         waypoints.add(ingressWaypoint);
         
@@ -39,8 +43,6 @@ public class InterceptOpposingWaypoints
         
         McuWaypoint approachWaypoint = ApproachWaypointGenerator.createApproachWaypoint(flight);
         waypoints.add(approachWaypoint);
-
-        waypoints = WaypointGeneratorUtils.prependInitialToExistingWaypoints(flight, waypoints);
 
         return waypoints;
     }

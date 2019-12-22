@@ -108,7 +108,20 @@ public class FlightAiSettingsValidator
 		
         validatePlaneAI(mission);
 	}
-    
+
+    @Test
+    public void balloonDefenseFlightTest() throws PWCGException
+    {
+        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RFC_46_PROFILE);
+        
+        MissionGenerator missionGenerator = new MissionGenerator(campaign);
+        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BALLOON_DEFENSE);
+        Flight flight = (Flight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        flight.finalizeFlight();
+
+        validatePlaneAI(mission);
+    }
+
     private void validatePlaneAI(Mission mission) throws PWCGException
     {
         for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())

@@ -7,7 +7,6 @@ import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
-import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.mcu.group.VirtualWayPoint;
 import pwcg.mission.utils.AiAdjuster;
@@ -118,24 +117,17 @@ public class MissionFlightFinalizer
         }
     }
 
-    private void triggerOtherFlightCZFromPlayerFlight(Flight virtualFlight) throws PWCGException 
+    private void triggerOtherFlightCZFromPlayerFlight(Flight flight) throws PWCGException 
     {
-    	if (!virtualFlight.isVirtual())
-    	{
-    		return;
-    	}
-    	
-        // Makes linked activate on the players plane rather than any coalition
-        WaypointPackage waypointpackage = virtualFlight.getWaypointPackage();
-        if (waypointpackage != null && waypointpackage instanceof VirtualWaypointPackage)
+        if (flight.isVirtual())
         {
-            VirtualWaypointPackage virtualWaypointPackage = (VirtualWaypointPackage)waypointpackage;
+            VirtualWaypointPackage virtualWaypointPackage = flight.getVirtualWaypointPackage();
             for (VirtualWayPoint vwp : virtualWaypointPackage.getVirtualWaypoints())
             {
                 if (vwp != null && vwp instanceof VirtualWayPoint)
                 {
                     VirtualWayPoint vwpCZ = (VirtualWayPoint)vwp;
-                    for (int planeIndex : virtualFlight.getMission().getMissionFlightBuilder().determinePlayerPlaneIds())
+                    for (int planeIndex : flight.getMission().getMissionFlightBuilder().determinePlayerPlaneIds())
                     {
                         vwpCZ.setVirtualWaypointTriggerObject(planeIndex);
                     }
@@ -143,5 +135,4 @@ public class MissionFlightFinalizer
             }
         }
     }
-
 }

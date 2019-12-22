@@ -163,6 +163,8 @@ public class WaypointGeneratorUtils
 	
 	public static List<McuWaypoint> prependInitialToExistingWaypoints(Flight flight, List<McuWaypoint> waypoints) throws PWCGException
     {
+        flight.getWaypointPackage().initialize(waypoints);
+
         List<McuWaypoint> waypointsAfterAddingInitial = new ArrayList<>();
         InitialWaypointGenerator initialWaypointGenerator = new InitialWaypointGenerator(flight);
         List<McuWaypoint> initialWPs = initialWaypointGenerator.createInitialFlightWaypoints();

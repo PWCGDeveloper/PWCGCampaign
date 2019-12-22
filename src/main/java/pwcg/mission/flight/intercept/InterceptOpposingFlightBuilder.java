@@ -75,8 +75,8 @@ public class InterceptOpposingFlightBuilder
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startingPosition.copy());
         FlightTypes opposingFlightType = getFlightType(opposingSquadron);
         
-        FlightInformation opposingFlightInformation = FlightInformationFactory.buildInterceptOpposingInformation(
-                opposingSquadron, playerFlightInformation.getMission(), opposingFlightType, playerFlightInformation.getTargetDefinition().getLinkedFlightTargetDefinition());
+        FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(
+                opposingSquadron, playerFlightInformation.getMission(), opposingFlightType);
         InterceptOpposingFlight opposingFlight = new InterceptOpposingFlight (opposingFlightInformation, missionBeginUnit, startingPosition);
         opposingFlight.createUnitMission();
         opposingFlight.getMissionBeginUnit().setStartTime(2);                

@@ -281,9 +281,9 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         List<VirtualWayPointCoordinate> plotCoordinates = new ArrayList<>();
         if (flight.isVirtual())
         {
-            if (flight.getWaypointPackage() instanceof VirtualWaypointPackage)
+            if (flight.isVirtual())
             {
-                VirtualWaypointPackage virtualWaypointPackage = (VirtualWaypointPackage) flight.getWaypointPackage();
+                VirtualWaypointPackage virtualWaypointPackage = flight.getVirtualWaypointPackage();
                 plotCoordinates = virtualWaypointPackage.getVirtualWaypointCoordinates();
                 if (plotCoordinates.size() == 0)
                 {

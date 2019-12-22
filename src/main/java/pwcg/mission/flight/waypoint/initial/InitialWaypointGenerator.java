@@ -35,8 +35,8 @@ public class InitialWaypointGenerator
         List<McuWaypoint> initialWPs = new ArrayList<McuWaypoint>();
         if (!flight.isAirStart())
         {
-            ClimbWaypointBuilder climbWaypointGenerator = new ClimbWaypointBuilder(flight);
-            initialWPs = climbWaypointGenerator.createClimbWaypointsForPlayerFlight();
+            ClimbWaypointBuilder initialWaypointGenerator = new ClimbWaypointBuilder(flight);
+            initialWPs = initialWaypointGenerator.createClimbWaypointsForPlayerFlight();
         }
         else
         {
@@ -49,12 +49,9 @@ public class InitialWaypointGenerator
     private List<McuWaypoint> createAiInitialAirStartWaypoints() throws PWCGException
     {
         List<McuWaypoint> initialWPs = new ArrayList<McuWaypoint>();
-        if (flight.getFlightType() == FlightTypes.BALLOON_DEFENSE)
-        {
-            McuWaypoint airStartWP = AirStartNearIngressWaypointBuilder.buildAirStartNearIngress(flight);
-            initialWPs.add(airStartWP);
-        }
-        else if (flight.getFlightType() == FlightTypes.SCRAMBLE_OPPOSE)
+        if (flight.getFlightType() == FlightTypes.SCRAMBLE_OPPOSE ||
+            flight.getFlightType() == FlightTypes.BALLOON_DEFENSE ||
+            flight.getFlightType() == FlightTypes.ESCORT)
         {
             McuWaypoint airStartWP = AirStartNearIngressWaypointBuilder.buildAirStartNearIngress(flight);
             initialWPs.add(airStartWP);

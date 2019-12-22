@@ -4,29 +4,47 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.virtual.VirtualWaypointGenerator;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.group.VirtualWayPoint;
 
-public class VirtualWaypointPackage extends WaypointPackage
+public class VirtualWaypointPackage
 {
-    protected List<VirtualWayPoint> virtualWaypoints = new ArrayList<VirtualWayPoint>();
+    private List<VirtualWayPoint> virtualWaypoints = new ArrayList<VirtualWayPoint>();
+    private WaypointPackage waypointPackage;
 
-    public VirtualWaypointPackage(Flight flight)
+    public VirtualWaypointPackage(WaypointPackage waypointPackage)
     {
-        super(flight);
+        this.waypointPackage = waypointPackage;
     }
 
-    public BaseFlightMcu getEntryMcu()
+    public void buildVirtualWaypoints() throws PWCGException
     {
-        if (virtualWaypoints.size() > 0)
+        generateVirtualWaypoints();
+        linkVirtualWaypoints();
+    }
+    
+    private void generateVirtualWaypoints() throws PWCGException
+    {
+        VirtualWaypointGenerator virtualWaypointGenerator = new VirtualWaypointGenerator(waypointPackage.getFlight());
+        virtualWaypoints = virtualWaypointGenerator.createVirtualWaypoints();
+    }
+
+    private void linkVirtualWaypoints()
+    {
+        BaseFlightMcu wpEntryMcu = getEntryMcu();
+        if (wpEntryMcu != null)
         {
-            VirtualWayPoint firstVirtualWayPoint = virtualWaypoints.get(0);
-            return firstVirtualWayPoint.getEntryPoint();
+            waypointPackage.getFlight().getMissionBeginUnit().linkToMissionBegin(wpEntryMcu.getIndex());
         }
-        
-        return null;
+    }
+
+    private BaseFlightMcu getEntryMcu()
+    {
+        VirtualWayPoint firstVirtualWayPoint = virtualWaypoints.get(0);
+        return firstVirtualWayPoint.getEntryPoint();
     }
 
     public void write(BufferedWriter writer) throws PWCGIOException 
@@ -35,8 +53,6 @@ public class VirtualWaypointPackage extends WaypointPackage
         {
             virtualWaypoint.write(writer);
         }
-
-        super.write(writer);
     }
 
     public List<VirtualWayPoint> getVirtualWaypoints()

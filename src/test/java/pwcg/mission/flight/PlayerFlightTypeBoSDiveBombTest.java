@@ -12,6 +12,7 @@ import pwcg.mission.MissionGenerator;
 import pwcg.mission.flight.divebomb.DiveBombingFlight;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
+import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.mission.target.TacticalTarget;
 import pwcg.mission.target.TargetCategory;
@@ -48,6 +49,8 @@ public class PlayerFlightTypeBoSDiveBombTest
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
         PositionEvaluator.evaluateAiFlight(mission);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        playerEscortedFlightValidator.validatePlayerEscortFlight();
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

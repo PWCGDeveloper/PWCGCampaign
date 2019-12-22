@@ -14,6 +14,7 @@ import pwcg.mission.flight.bomb.StrategicBombingFlight;
 import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
+import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.mission.target.TacticalTarget;
 import pwcg.mission.target.TargetCategory;
@@ -52,7 +53,8 @@ public class PlayerFlightTypeBoSBombTest
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
-        EscortForPlayerValidator.validateEscortForPlayer(mission, flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
     }
 
@@ -75,7 +77,8 @@ public class PlayerFlightTypeBoSBombTest
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
-        EscortForPlayerValidator.validateEscortForPlayer(mission, flight);
+        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
+        playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
     }
 

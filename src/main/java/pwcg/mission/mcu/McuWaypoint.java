@@ -12,141 +12,152 @@ import pwcg.mission.flight.waypoint.WaypointType;
 
 public class McuWaypoint extends BaseFlightMcu implements Cloneable
 {
-	public WaypointType waypointType;
-	private WaypointAction wpAction;
+    public WaypointType waypointType;
+    private WaypointAction wpAction;
     private WaypointPriority priority = WaypointPriority.PRIORITY_LOW;
 
-	public static int TARGET_AREA = 500;
+    public static int TARGET_AREA = 500;
     public static int INITIAL_CLIMB_AREA = 200;
     public static int LAND_AREA = 300;
     public static int CLIMB_AREA = 500;
     public static int START_AREA = 500;
     public static int FLIGHT_AREA = 3000;
-	public static int COMBAT_AREA = 1000;
-	private int triggerArea = FLIGHT_AREA;
-	private int speed = 130;
-	private boolean isTargetWaypoint = false;
+    public static int COMBAT_AREA = 1000;
+    private int triggerArea = FLIGHT_AREA;
+    private int speed = 130;
+    private boolean isTargetWaypoint = false;
 
-	public McuWaypoint (WaypointType waypointType)
-	{
-		super();
-		
-		name = waypointType.getName();
-		desc = waypointType.getName();
-		this.waypointType = waypointType;
-	}
+    public McuWaypoint(WaypointType waypointType)
+    {
+        super();
 
-	private McuWaypoint () 
-	{
-		super();
-	}
+        name = waypointType.getName();
+        desc = waypointType.getName();
+        this.waypointType = waypointType;
+    }
 
-	public McuWaypoint copy()
-	{
-		McuWaypoint clone = new McuWaypoint();
-		
-		clone.waypointType = waypointType;
-		clone.wpAction = wpAction;
-		clone.priority = priority;
+    private McuWaypoint()
+    {
+        super();
+    }
 
-		clone.triggerArea = triggerArea;
-		clone.speed = speed;
-		clone.isTargetWaypoint = isTargetWaypoint;
-		
-		clone.name = name;
-		clone.desc = desc;
-		
-		clone.position = position.copy();		
-		clone.orientation = orientation.copy();
-				
-		return clone;
-	}
-	
-	public int getTriggerArea() {
-		return triggerArea;
-	}
+    public McuWaypoint copy()
+    {
+        McuWaypoint clone = new McuWaypoint();
 
-	public void setTriggerArea(int area) {
-		this.triggerArea = area;
-	}
+        clone.waypointType = waypointType;
+        clone.wpAction = wpAction;
+        clone.priority = priority;
 
-	public int getSpeed() {
-		return speed;
-	}
+        clone.triggerArea = triggerArea;
+        clone.speed = speed;
+        clone.isTargetWaypoint = isTargetWaypoint;
 
-	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
+        clone.name = name;
+        clone.desc = desc;
 
-	public WaypointPriority getPriority() {
-		return priority;
-	}
+        clone.position = position.copy();
+        clone.orientation = orientation.copy();
 
-	public void setPriority(WaypointPriority priority) {
-		this.priority = priority;
-	}
+        return clone;
+    }
 
-	public WaypointAction getWpAction() {
-		return wpAction;
-	}
+    public int getTriggerArea()
+    {
+        return triggerArea;
+    }
 
-	public void setWpAction(WaypointAction wpAction) {
-		this.wpAction = wpAction;
-	}
+    public void setTriggerArea(int area)
+    {
+        this.triggerArea = area;
+    }
 
-    public void setTarget(int target) {
+    public int getSpeed()
+    {
+        return speed;
+    }
+
+    public void setSpeed(int speed)
+    {
+        this.speed = speed;
+    }
+
+    public WaypointPriority getPriority()
+    {
+        return priority;
+    }
+
+    public void setPriority(WaypointPriority priority)
+    {
+        this.priority = priority;
+    }
+
+    public WaypointAction getWpAction()
+    {
+        return wpAction;
+    }
+
+    public void setWpAction(WaypointAction wpAction)
+    {
+        this.wpAction = wpAction;
+    }
+
+    public void setTarget(int target)
+    {
         super.setTarget(target);
     }
 
-	public boolean isTargetWaypoint() {
-		return isTargetWaypoint;
-	}
+    public boolean isTargetWaypoint()
+    {
+        return isTargetWaypoint;
+    }
 
-	public void setTargetWaypoint(boolean isTargetWaypoint) {
-		this.isTargetWaypoint = isTargetWaypoint;
-	}
-	
-	public void setDesc(String name, String desc) 
-	{
-		this.desc =  name + ": "  + desc;
-	}
+    public void setTargetWaypoint(boolean isTargetWaypoint)
+    {
+        this.isTargetWaypoint = isTargetWaypoint;
+    }
 
-	public WaypointType getWaypointType()
+    public void setDesc(String name, String desc)
+    {
+        this.desc = name + ": " + desc;
+    }
+
+    public WaypointType getWaypointType()
     {
         return waypointType;
     }
 
     public void write(BufferedWriter writer) throws PWCGIOException
-	{
+    {
         try
         {
-    		writer.write("MCU_Waypoint");
-    		writer.newLine();
-    		writer.write("{");
-    		writer.newLine();
-    		
-    		super.write(writer);
-    		
-    		writer.write("  Area = " + triggerArea + ";");
-    		writer.newLine();
-    		writer.write("  Speed = " + speed + ";");
-    		writer.newLine();
-    		writer.write("  Priority = " + priority.getPriorityValue() + ";");
-    		writer.newLine();
-    		    		
-    		writer.write("}");
-    		writer.newLine();
-    		writer.newLine();
-    		writer.newLine();
+            writer.write("MCU_Waypoint");
+            writer.newLine();
+            writer.write("{");
+            writer.newLine();
+
+            super.write(writer);
+
+            writer.write("  Area = " + triggerArea + ";");
+            writer.newLine();
+            writer.write("  Speed = " + speed + ";");
+            writer.newLine();
+            writer.write("  Priority = " + priority.getPriorityValue() + ";");
+            writer.newLine();
+
+            writer.write("}");
+            writer.newLine();
+            writer.newLine();
+            writer.newLine();
         }
         catch (IOException e)
         {
             Logger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
-	}
+    }
 
-    public void dump() 
+    public void dump()
     {
         Logger.log(LogLevel.DEBUG, "MCU_Waypoint");
         Logger.log(LogLevel.DEBUG, "    " + desc);
