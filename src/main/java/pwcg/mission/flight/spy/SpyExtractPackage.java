@@ -1,35 +1,31 @@
 package pwcg.mission.flight.spy;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class SpyExtractPackage implements IFlightPackage
 {
-    private FlightInformation flightInformation;
+    protected IFlightInformation flightInformation;
 
-    public SpyExtractPackage(FlightInformation flightInformation)
+    public SpyExtractPackage(IFlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }
 
-    public Flight createPackage () throws PWCGException 
-	{
+    public IFlight createPackage () throws PWCGException 
+    {
+        SpyExtractFlight spyFlight = new SpyExtractFlight (flightInformation);
+        spyFlight.createFlight();
+
         IGroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
-        Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());            
-		SpyExtractFlight spyFlight = new SpyExtractFlight (flightInformation, missionBeginUnit);
-		spyFlight.linkGroundUnitsToFlight(groundUnitCollection);
-		
-		spyFlight.createUnitMission();
-		
-		return spyFlight;
-	}
+        spyFlight.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(groundUnitCollection);
+
+        return spyFlight;
+    }
 
     private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {

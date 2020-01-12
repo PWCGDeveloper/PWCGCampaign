@@ -21,7 +21,7 @@ import pwcg.core.utils.DateUtils;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderGround;
 
@@ -47,7 +47,7 @@ public class ShipUnitBuilderTest
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
                 CountryFactory.makeCountryByCountry(Country.GERMANY), 
                 CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TacticalTarget.TARGET_ARTILLERY, new Coordinate (102000, 0, 100000), true);
+                TargetType.TARGET_ARTILLERY, new Coordinate (102000, 0, 100000), true);
 
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.ShipCargo);
@@ -75,7 +75,7 @@ public class ShipUnitBuilderTest
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
                 CountryFactory.makeCountryByCountry(Country.GERMANY), 
                 CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TacticalTarget.TARGET_ARTILLERY, new Coordinate (102000, 0, 100000), true);
+                TargetType.TARGET_ARTILLERY, new Coordinate (102000, 0, 100000), true);
 
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.ShipWarship);
@@ -103,7 +103,7 @@ public class ShipUnitBuilderTest
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
                 CountryFactory.makeCountryByCountry(Country.GERMANY), 
                 CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TacticalTarget.TARGET_ARTILLERY, new Coordinate (102000, 0, 100000), true);
+                TargetType.TARGET_ARTILLERY, new Coordinate (102000, 0, 100000), true);
 
         ShippingUnitBuilder shippingFactory = new ShippingUnitBuilder(campaign, targetDefinition);
         IGroundUnitCollection groundUnitGroup = shippingFactory.createShippingUnit(VehicleClass.Submarine);

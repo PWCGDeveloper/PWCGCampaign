@@ -17,7 +17,7 @@ import pwcg.mission.ground.unittypes.transport.ShipSubmarineConvoyUnit;
 import pwcg.mission.ground.unittypes.transport.ShipWarshipConvoyUnit;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.Coalition;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 
 public class ShippingUnitBuilder
@@ -66,7 +66,7 @@ public class ShippingUnitBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION, 
                 "Ships", 
-                TacticalTarget.TARGET_SHIPPING,
+                TargetType.TARGET_SHIPPING,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);

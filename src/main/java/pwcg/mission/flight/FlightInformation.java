@@ -4,6 +4,7 @@ import java.util.List;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IAirfield;
+import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IMissionAltitudeGenerator;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.MissionAltitudeGeneratorFactory;
@@ -14,16 +15,16 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.target.TargetDefinition;
 
-public class FlightInformation
+public class FlightInformation implements IFlightInformation
 {
     private Campaign campaign;
     private Mission mission;
     private FlightTypes flightType;
     private Squadron squadron;
-    private List<PlaneMCU> planes;
+    private List<PlaneMcu> planes;
     private Coordinate targetSearchStartLocation;
     private TargetDefinition targetDefinition = new TargetDefinition();
     private boolean isPlayerFlight = false;
@@ -37,11 +38,13 @@ public class FlightInformation
         this.campaign = mission.getCampaign();
     }
     
+    @Override
     public List<SquadronMember> getParticipatingPlayersForFlight()
     {
 		return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getSquadronId());
     }
     
+    @Override
     public Mission getMission()
     {
         return mission;
@@ -52,6 +55,7 @@ public class FlightInformation
         this.mission = mission;
     }
 
+    @Override
     public Squadron getSquadron()
     {
         return squadron;
@@ -62,6 +66,7 @@ public class FlightInformation
         this.squadron = squadron;
     }
 
+    @Override
     public FlightTypes getFlightType()
     {
         return flightType;
@@ -72,6 +77,7 @@ public class FlightInformation
         this.flightType = flightType;
     }
 
+    @Override
     public boolean isPlayerFlight()
     {
         return isPlayerFlight;
@@ -82,6 +88,7 @@ public class FlightInformation
         this.isPlayerFlight = isPlayerFlight;
     }
 
+    @Override
     public boolean isEscortedByPlayerFlight()
     {
         return isEscortedByPlayerFlight;
@@ -92,6 +99,7 @@ public class FlightInformation
         this.isEscortedByPlayerFlight = isPlayerEscortedFlight;
     }
 
+    @Override
     public boolean isEscortForPlayerFlight()
     {
         return isEscortForPlayerFlight;
@@ -102,6 +110,7 @@ public class FlightInformation
         this.isEscortForPlayerFlight = isEscortForPlayerFlight;
     }
 
+    @Override
     public boolean isPlayerRelatedFlight()
     {
         if (isPlayerFlight || isEscortedByPlayerFlight || isEscortForPlayerFlight)
@@ -111,32 +120,36 @@ public class FlightInformation
         return false;
     }
     
+    @Override
     public Coordinate getTargetPosition()
     {
         return targetDefinition.getTargetPosition();
     }
     
+    @Override
     public List<SquadronMember> getFlightParticipatingPlayers() 
     {
 		return mission.getParticipatingPlayers().getParticipatingPlayersForSquadron(squadron.getSquadronId());
 	}
 
-	public void setCampaign(Campaign campaign) 
+    public void setCampaign(Campaign campaign) 
 	{
 		this.campaign = campaign;
 	}
 	
-	public TargetDefinition getTargetDefinition() 
+	@Override
+    public TargetDefinition getTargetDefinition() 
 	{
 		return targetDefinition;
 	}
 
-	public void setTargetDefinition(TargetDefinition targetDefinition) 
+    public void setTargetDefinition(TargetDefinition targetDefinition) 
 	{
 		this.targetDefinition = targetDefinition;
 	}
 
-	public boolean isVirtual()
+	@Override
+    public boolean isVirtual()
     {
         boolean isVirtual = true;
         if (isPlayerFlight || isEscortedByPlayerFlight || isEscortForPlayerFlight)
@@ -146,6 +159,7 @@ public class FlightInformation
         return isVirtual;
     }
 
+    @Override
     public boolean isAirStart() throws PWCGException
     {
         boolean airstart = true;
@@ -160,6 +174,7 @@ public class FlightInformation
         return airstart;
     }
 
+    @Override
     public boolean isParkedStart() throws PWCGException
     {
         boolean parkedStart = false;
@@ -174,6 +189,7 @@ public class FlightInformation
         return parkedStart;
     }
     
+    @Override
     public IAirfield getDepartureAirfield() throws PWCGException
     {
         String airfieldName = squadron.determineCurrentAirfieldName(campaign.getDate());
@@ -181,24 +197,27 @@ public class FlightInformation
         return departureAirfield;
     }
 
-    public List<PlaneMCU> getPlanes()
+    @Override
+    public List<PlaneMcu> getPlanes()
     {
         return planes;
     }
 
-    public void setPlanes(List<PlaneMCU> planes)
+    public void setPlanes(List<PlaneMcu> planes)
     {
         this.planes = planes;
     }
 
+    @Override
     public Campaign getCampaign()
     {
         return campaign;
     }
 
+    @Override
     public Coordinate getTargetSearchStartLocation()
     {
-        return targetSearchStartLocation;
+        return targetSearchStartLocation.copy();
     }
 
     public void setTargetSearchStartLocation(Coordinate targetSearchStartLocation)
@@ -206,6 +225,7 @@ public class FlightInformation
         this.targetSearchStartLocation = targetSearchStartLocation;
     }
 
+    @Override
     public int getAltitude()
     {
         return altitude;
@@ -216,9 +236,47 @@ public class FlightInformation
         this.altitude = altitude;
     }
 
+    @Override
     public void calculateAltitude() throws PWCGException
     {
         IMissionAltitudeGenerator missionAltitudeGenerator = MissionAltitudeGeneratorFactory.createMissionAltitudeGenerator();
         this.altitude = missionAltitudeGenerator.determineFlightAltitude(campaign, flightType);
-    }    
+    }
+    
+
+    @Override
+    public boolean isFighterMission()
+    {
+        boolean isFighterMission = false;
+        if (flightType.isCategory(FlightTypeCategory.FIGHTER))
+        {
+            isFighterMission = true;
+        }
+
+        return isFighterMission;
+    }
+
+    @Override
+    public ICountry getCountry()
+    {
+        return squadron.getCountry();
+    }
+
+    @Override
+    public Coordinate getFlightHomePosition() throws PWCGException
+    {
+        return squadron.determineCurrentPosition(campaign.getDate());
+    }
+
+    @Override
+    public String getAirfieldName()
+    {
+        return squadron.determineCurrentAirfieldName(campaign.getDate());
+    }
+
+    @Override
+    public IAirfield getAirfield()
+    {
+        return squadron.determineCurrentAirfieldCurrentMap(campaign.getDate());
+    }
 }

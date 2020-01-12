@@ -6,17 +6,17 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 
 public class NeedsEscortDecider
 {
-    public boolean needsEscort(Mission mission, Flight escortedFlight) throws PWCGException
+    public boolean needsEscort(Mission mission, IFlight escortedFlight) throws PWCGException
     {
         Campaign campaign = mission.getCampaign();
         if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE ||
             campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COOP)
         {
-            if (escortedFlight.isPlayerFlight())
+            if (escortedFlight.getFlightData().getFlightInformation().isPlayerFlight())
             {
                 return playerNeedsEscort(mission, escortedFlight);
             }
@@ -29,9 +29,9 @@ public class NeedsEscortDecider
         return false;
     }
     
-    private boolean playerNeedsEscort(Mission mission, Flight escortedFlight) throws PWCGException, PWCGException
+    private boolean playerNeedsEscort(Mission mission, IFlight escortedFlight) throws PWCGException, PWCGException
     {
-        if (!escortedFlight.isFighterMission())
+        if (!escortedFlight.getFlightData().getFlightInformation().isFighterMission())
         {
             return true;
         }
@@ -39,7 +39,7 @@ public class NeedsEscortDecider
         return false;
     }
     
-    private boolean aiNeedsEscort(Mission mission, Flight escortedFlight) throws PWCGException, PWCGException
+    private boolean aiNeedsEscort(Mission mission, IFlight escortedFlight) throws PWCGException, PWCGException
     {
         Campaign campaign = mission.getCampaign();
         if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE ||
@@ -47,13 +47,16 @@ public class NeedsEscortDecider
         {
             if (mission.getMissionFlightBuilder().hasPlayerFighterFlightType())
             {
-                if (campaign.isFighterCampaign())
+                if (!escortedFlight.getFlightData().getFlightInformation().isEscortedByPlayerFlight())
                 {
-                    int escortedOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsEscortedOddsKey);
-                    int escortedDiceRoll = RandomNumberGenerator.getRandom(100);        
-                    if (escortedDiceRoll < escortedOdds)
+                    if (campaign.isFighterCampaign())
                     {
-                        return true;
+                        int escortedOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.IsEscortedOddsKey);
+                        int escortedDiceRoll = RandomNumberGenerator.getRandom(100);        
+                        if (escortedDiceRoll < escortedOdds)
+                        {
+                            return true;
+                        }
                     }
                 }
             }

@@ -2,34 +2,44 @@ package pwcg.mission.flight.divebomb;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class DiveBombingPackage implements IFlightPackage
 {
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
 
-    public DiveBombingPackage(FlightInformation flightInformation)
+    public DiveBombingPackage(IFlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }
 
-    public Flight createPackage () throws PWCGException 
-	{
-        IGroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
-        Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
-        DiveBombingFlight diveBombingFlight = new DiveBombingFlight(flightInformation, missionBeginUnit);
-		diveBombingFlight.linkGroundUnitsToFlight(groundUnitCollection);
-		
-        diveBombingFlight.createUnitMission();
+    @Override
+    public IFlight createPackage () throws PWCGException 
+    {
+        IFlight bombingFlight = createPackageTacticalTarget ();
+        return bombingFlight;
+    }
 
-		return diveBombingFlight;
-	}
+    public IFlight createPackageTacticalTarget () throws PWCGException 
+    {
+        IGroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
+        Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(flightInformation.getSquadron().determineEnemySide());
+
+        IFlight diveBombingFlight = makeDiveBombingFlight(targetCoordinates);
+        diveBombingFlight.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(groundUnitCollection);
+        return diveBombingFlight;
+    }
+
+    private IFlight makeDiveBombingFlight(Coordinate targetCoordinates) throws PWCGException
+    {
+        DiveBombingFlight diveBombingFlight = new DiveBombingFlight (flightInformation);
+        diveBombingFlight.createFlight();
+        return diveBombingFlight;
+    }
 
     private IGroundUnitCollection createGroundUnitsForFlight() throws PWCGException
     {

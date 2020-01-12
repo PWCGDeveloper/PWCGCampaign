@@ -14,7 +14,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.PositionFinder;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TargetTypeAvailabilityTest
@@ -34,7 +34,7 @@ public class TargetTypeAvailabilityTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
-        double distanceOfClosestInstanceToReference = targetTypeAvailability.getTargetTypeAvailability(TacticalTarget.TARGET_DRIFTER, new Coordinate(216336, 0, 184721), 80000);
+        double distanceOfClosestInstanceToReference = targetTypeAvailability.getTargetTypeAvailability(TargetType.TARGET_DRIFTER, new Coordinate(216336, 0, 184721), 80000);
         assert(distanceOfClosestInstanceToReference < PositionFinder.ABSURDLY_LARGE_DISTANCE);
     }
     
@@ -43,7 +43,7 @@ public class TargetTypeAvailabilityTest
     {
         PWCGContext.setProduct(PWCGProduct.BOS);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
-        double distanceOfClosestInstanceToReference = targetTypeAvailability.getTargetTypeAvailability(TacticalTarget.TARGET_DRIFTER, new Coordinate(216336, 0, 184721), 80000);
+        double distanceOfClosestInstanceToReference = targetTypeAvailability.getTargetTypeAvailability(TargetType.TARGET_DRIFTER, new Coordinate(216336, 0, 184721), 80000);
         assert(distanceOfClosestInstanceToReference == PositionFinder.ABSURDLY_LARGE_DISTANCE);
     }
     

@@ -4,8 +4,8 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 
 public class Me262APayload extends PlanePayload implements IPlanePayload
 {
@@ -35,21 +35,21 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
     }
 
     @Override
-    public int createWeaponsPayload(Flight flight)
+    public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
-        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
         {
             selectGroundAttackPayload(flight);
         }
-        else if (flight.getFlightType() == FlightTypes.INTERCEPT)
+        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.INTERCEPT)
         {
             selectInterceptPayload();
         }
         return selectedPrimaryPayloadId;
     }    
 
-    protected void selectGroundAttackPayload(Flight flight)
+    protected void selectGroundAttackPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 3;
     }

@@ -7,7 +7,10 @@ import pwcg.mission.mcu.McuAttackArea.AttackAreaType;
 
 public class AttackAreaFactory
 {
-    public static McuAttackArea createAttackArea(FlightTypes flightType, String name, Coordinate targetCoords, int altitude, int attackTime)
+    public static final int ATTACK_AREA_SELECT_TARGET_DISTANCE = 7000;
+    public static final int ATTACK_AREA_BOMB_DROP_DISTANCE = 1000;
+    
+    public static McuAttackArea createAttackArea(FlightTypes flightType, Coordinate targetCoords, int altitude, int attackTime)
     {
         McuAttackArea attackArea = null;
         if (flightType == FlightTypes.BOMB || 
@@ -17,7 +20,7 @@ public class AttackAreaFactory
             flightType == FlightTypes.CARGO_DROP)
         {
             attackArea = new McuAttackArea(AttackAreaType.INDIRECT);
-            attackArea.setAttackRadius(500);
+            attackArea.setAttackRadius(ATTACK_AREA_BOMB_DROP_DISTANCE);
         }
         else if (flightType == FlightTypes.ANTI_SHIPPING_ATTACK || 
                 flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB ||
@@ -25,15 +28,15 @@ public class AttackAreaFactory
                 flightType == FlightTypes.GROUND_ATTACK)
         {
             attackArea = new McuAttackArea(AttackAreaType.GROUND_TARGETS);
-            attackArea.setAttackRadius(7000);
+            attackArea.setAttackRadius(ATTACK_AREA_SELECT_TARGET_DISTANCE);
         }
         else
         {
             attackArea = new McuAttackArea(AttackAreaType.AIR_TARGETS);
         }
 
-        attackArea.setName("Attack Area for " + name);
-        attackArea.setDesc("Attack Area for " + name);
+        attackArea.setName("Attack Area");
+        attackArea.setDesc("Attack Area");
         attackArea.setTime(attackTime);
 
         attackArea.setOrientation(new Orientation());

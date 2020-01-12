@@ -13,7 +13,7 @@ import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.target.AssaultDefinition;
 import pwcg.mission.target.AssaultDefinitionGenerator;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 
 public class AssaultBuilder
@@ -27,7 +27,7 @@ public class AssaultBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
                 "Battle", 
-                TacticalTarget.TARGET_ASSAULT,
+                TargetType.TARGET_ASSAULT,
                 Coalition.getCoalitions());
 
         IGroundUnitCollection battleUnitCollection = new GroundUnitCollection (groundUnitCollectionData);

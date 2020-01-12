@@ -5,17 +5,17 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.intercept.InterceptPlayerCoordinateGenerator;
 import pwcg.mission.target.locator.TargetLocatorAir;
 
 public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
 {
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
     private TargetDefinition targetDefinition = new TargetDefinition();
 
-    public TargetDefinitionBuilderAirToAir (FlightInformation flightInformation)
+    public TargetDefinitionBuilderAirToAir (IFlightInformation flightInformation)
     {
     	this.flightInformation = flightInformation;
     }
@@ -25,6 +25,16 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         createBasicTargetDefinition();
         createTargetRadius();        
         createTargetLocation();
+        return targetDefinition;
+    }
+
+    @Override
+    public TargetDefinition buildSpecificTargetDefinition(TargetType targetType) throws PWCGException
+    {
+        createBasicTargetDefinition();
+        Coordinate targetLocation = flightInformation.getTargetPosition();
+        targetDefinition.setTargetPosition(targetLocation);
+        targetDefinition.setTargetOrientation(new Orientation());
         return targetDefinition;
     }
 
@@ -38,9 +48,9 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
 
     private void createBasicTargetDefinition() throws PWCGException
     {
-        targetDefinition.setTargetType(TacticalTarget.TARGET_AIR);
+        targetDefinition.setTargetType(TargetType.TARGET_AIR);
         targetDefinition.setAttackingSquadron(flightInformation.getSquadron());
-        targetDefinition.setTargetName(buildTargetName(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()), TacticalTarget.TARGET_AIR));
+        targetDefinition.setTargetName(buildTargetName(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()), TargetType.TARGET_AIR));
 
         targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
         targetDefinition.setTargetCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
@@ -94,14 +104,6 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         {
             return targetLocatorAir.getTransportAirfieldCoordinate();
         }
-        else if (flightInformation.getFlightType() == FlightTypes.FERRY)
-        {
-            return targetLocatorAir.getFerryAirfieldCoordinate();
-        }
-        else if (flightInformation.getFlightType() == FlightTypes.SEA_PATROL)
-        {
-            return targetLocatorAir.getSeaLaneCoordinate();
-        }
         else if (flightInformation.getFlightType() == FlightTypes.SCRAMBLE)
         {
             return targetLocatorAir.getScrambleCoordinate();
@@ -121,7 +123,7 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
         throw new PWCGException("No target locations for flight type " + flightInformation.getFlightType());
     }
 
-    private String buildTargetName(ICountry targetCountry, TacticalTarget targetType)
+    private String buildTargetName(ICountry targetCountry, TargetType targetType)
     {
         String nationality = targetCountry.getNationality();
         String name = nationality + " " + targetType.getTargetName();

@@ -26,7 +26,7 @@ import pwcg.mission.MissionBlockBuilder;
 import pwcg.mission.MissionBlockDamage;
 import pwcg.mission.MissionBlockSmoke;
 import pwcg.mission.ambient.AmbientGroundUnitBuilder;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.ground.vehicle.VehicleFactory;
@@ -176,7 +176,7 @@ public class MissionFileWriter implements IMissionFile
 
     private void writeWindSock(BufferedWriter writer) throws PWCGException
     {
-    	for (Flight playerFlight: mission.getMissionFlightBuilder().getPlayerFlights())
+    	for (IFlight playerFlight: mission.getMissionFlightBuilder().getPlayerFlights())
     	{
 	        WindSock windSock = WindSock.createWindSock(playerFlight);
 	        if (windSock != null)
@@ -238,9 +238,10 @@ public class MissionFileWriter implements IMissionFile
     {
         if (PWCGContext.getProduct() == PWCGProduct.BOS)
         {
-            for (Flight playerFlight:  mission.getMissionFlightBuilder().getPlayerFlights())
+            for (IFlight playerFlight:  mission.getMissionFlightBuilder().getPlayerFlights())
             {
-                IVehicle radioBeacon = VehicleFactory.createVehicle(playerFlight.getCountry(), mission.getCampaign().getDate(), VehicleClass.RadioBeacon);
+                IVehicle radioBeacon = VehicleFactory.createVehicle(
+                        playerFlight.getFlightData().getFlightInformation().getCountry(), mission.getCampaign().getDate(), VehicleClass.RadioBeacon);
                 if (radioBeacon != null)
                 {
                     radioBeacon.write(writer);

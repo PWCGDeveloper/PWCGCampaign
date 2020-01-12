@@ -7,9 +7,9 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 
 public class MissionFlightKeeper
 {
@@ -23,14 +23,14 @@ public class MissionFlightKeeper
         this.campaign = campaign;
     }
 
-    public List<Flight> keepLimitedFlights() throws PWCGException 
+    public List<IFlight> keepLimitedFlights() throws PWCGException 
     {
         proximitySorter = new MissionFlightProximitySorter();
         proximitySorter.mapEnemyDistanceToPlayerFlights(mission);
 
-        List<Flight> aiFlightsKept = new ArrayList<Flight>();
-        List<Flight> axisAiFlights = keepLimitedAxisFlights();        
-        List<Flight> alliedAiFlights = keepLimitedAlliedFlights();
+        List<IFlight> aiFlightsKept = new ArrayList<IFlight>();
+        List<IFlight> axisAiFlights = keepLimitedAxisFlights();        
+        List<IFlight> alliedAiFlights = keepLimitedAlliedFlights();
 
         aiFlightsKept.addAll(alliedAiFlights);
         aiFlightsKept.addAll(axisAiFlights);
@@ -38,27 +38,27 @@ public class MissionFlightKeeper
         return aiFlightsKept;
     }
 
-    private List<Flight> keepLimitedAlliedFlights() throws PWCGException
+    private List<IFlight> keepLimitedAlliedFlights() throws PWCGException
     {
-        List<Flight> alliedAiFlights = proximitySorter.getFlightsByProximity(Side.ALLIED);
+        List<IFlight> alliedAiFlights = proximitySorter.getFlightsByProximity(Side.ALLIED);
         int configuredAlliedAiFlights = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedFlightsToKeepKey);
         int maxAlliedAiFlights =  calculateFlightsToKeepForSide(Side.ALLIED, configuredAlliedAiFlights);
-        List<Flight> alliedAiFlightsKept = selectFlightsToKeep(maxAlliedAiFlights, Side.ALLIED, alliedAiFlights);
+        List<IFlight> alliedAiFlightsKept = selectFlightsToKeep(maxAlliedAiFlights, Side.ALLIED, alliedAiFlights);
         return alliedAiFlightsKept;
     }
 
-    private List<Flight> keepLimitedAxisFlights() throws PWCGException
+    private List<IFlight> keepLimitedAxisFlights() throws PWCGException
     {
-        List<Flight> axisAiFlights = proximitySorter.getFlightsByProximity(Side.AXIS);
+        List<IFlight> axisAiFlights = proximitySorter.getFlightsByProximity(Side.AXIS);
         int configuredAxisAiFlights = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisFlightsToKeepKey);
         int maxAxisAiFlights =  calculateFlightsToKeepForSide(Side.AXIS, configuredAxisAiFlights);
-        List<Flight> axisAiFlightsKept = selectFlightsToKeep(maxAxisAiFlights, Side.AXIS, axisAiFlights);
+        List<IFlight> axisAiFlightsKept = selectFlightsToKeep(maxAxisAiFlights, Side.AXIS, axisAiFlights);
         return axisAiFlightsKept;
     }
 
     private int calculateFlightsToKeepForSide(Side side, int configuredFlightsToKeep) throws PWCGException
     {
-        List<Flight> playerFlights = mission.getMissionFlightBuilder().getPlayerFlightsForSide(side);
+        List<IFlight> playerFlights = mission.getMissionFlightBuilder().getPlayerFlightsForSide(side);
         int aiFlightsToKeep = configuredFlightsToKeep - playerFlights.size();
         if (aiFlightsToKeep < 0)
         {
@@ -67,13 +67,13 @@ public class MissionFlightKeeper
         return aiFlightsToKeep;
     }
     
-    private List<Flight> selectFlightsToKeep(int maxToKeep, Side side, List<Flight> aiFlights) throws PWCGException
+    private List<IFlight> selectFlightsToKeep(int maxToKeep, Side side, List<IFlight> aiFlights) throws PWCGException
     {
         int maxFighterToKeep = getMaxFighterFlights(maxToKeep);
         int numFighterKept = 0;
         
-        List<Flight> keptFlights = new ArrayList<Flight>();
-        for (Flight flight : aiFlights)
+        List<IFlight> keptFlights = new ArrayList<IFlight>();
+        for (IFlight flight : aiFlights)
         {
             boolean isFighterFlight = isConsideredExcessFighterFlight(flight);
             if (isFighterFlight)
@@ -96,11 +96,11 @@ public class MissionFlightKeeper
         return keptFlights;
     }
     
-    private boolean isConsideredExcessFighterFlight(Flight aiFlight)
+    private boolean isConsideredExcessFighterFlight(IFlight aiFlight)
     {
     	boolean isPlayerFlightFighter = mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(FlightTypes.getFlightTypesByCategory(FlightTypeCategory.FIGHTER));
-        boolean isAiFighterSquadron = aiFlight.isFlightHasFighterPlanes();
-        boolean isAiFighterFlight = aiFlight.getFlightType().isCategory(FlightTypeCategory.FIGHTER);
+        boolean isAiFighterSquadron = aiFlight.getFlightData().getFlightPlanes().isFlightHasFighterPlanes();
+        boolean isAiFighterFlight = aiFlight.getFlightData().getFlightInformation().getFlightType().isCategory(FlightTypeCategory.FIGHTER);
         
         if (isAiFighterFlight)
         {

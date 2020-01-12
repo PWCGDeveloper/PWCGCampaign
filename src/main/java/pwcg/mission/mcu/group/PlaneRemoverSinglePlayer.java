@@ -1,8 +1,8 @@
 package pwcg.mission.mcu.group;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.plane.PlaneMcu;
 
 public class PlaneRemoverSinglePlayer extends PlaneRemoverCoop
 {
@@ -11,7 +11,7 @@ public class PlaneRemoverSinglePlayer extends PlaneRemoverCoop
         super();
     }
 
-    public void initialize(Flight flight, PlaneMCU planeToRemove, PlaneMCU playerPlane) throws PWCGException 
+    public void initialize(IFlight flight, PlaneMcu planeToRemove, PlaneMcu playerPlane) throws PWCGException 
     {
         super.initialize(flight, planeToRemove);
         

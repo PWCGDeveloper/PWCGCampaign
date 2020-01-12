@@ -1,0 +1,23 @@
+package pwcg.mission.flight.waypoint.missionpoint;
+
+import java.util.List;
+
+import pwcg.core.exception.PWCGException;
+import pwcg.mission.mcu.McuWaypoint;
+
+public interface IMissionPointSetWaypoints
+{
+    List<McuWaypoint> getAllWaypoints();
+    
+    boolean containsWaypoint(long waypointIdToFind);
+
+    McuWaypoint getWaypointById(long waypointId) throws PWCGException;
+
+    void replaceWaypoint(McuWaypoint waypoint) throws PWCGException;
+
+    void addWaypointAfterWaypoint(McuWaypoint newWaypoint, long waypointIdAfter) throws PWCGException;
+
+    void addWaypointBeforeWaypoint(McuWaypoint newWaypoint, long waypointIdBefore) throws PWCGException;
+
+    void removeUnwantedWaypoints(List<McuWaypoint> waypointsInBriefing) throws PWCGException;
+}

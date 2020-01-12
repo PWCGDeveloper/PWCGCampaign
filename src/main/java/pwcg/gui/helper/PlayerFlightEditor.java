@@ -13,20 +13,19 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.Unit;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
-import pwcg.mission.flight.plane.PlaneMCU;
 import pwcg.mission.flight.plane.PlaneMCUFactory;
+import pwcg.mission.flight.plane.PlaneMcu;
 
 public class PlayerFlightEditor
 {
     private Campaign campaign;
-    private Flight playerFlight;
-    private List<PlaneMCU> updatedPlaneSet = new ArrayList<PlaneMCU>();
+    private IFlight playerFlight;
+    private List<PlaneMcu> updatedPlaneSet = new ArrayList<PlaneMcu>();
     
-    public PlayerFlightEditor(Campaign campaign, Flight playerFlight)
+    public PlayerFlightEditor(Campaign campaign, IFlight playerFlight)
     {
         this.campaign = campaign;
         this.playerFlight = playerFlight;
@@ -41,7 +40,7 @@ public class PlayerFlightEditor
 
     private void updatePlanesFromBriefing(List<CrewPlanePayloadPairing> crewPlanes) throws PWCGException
     {
-        int numInFormation = Unit.NUM_IN_FORMATION_START;
+        int numInFormation = 1;
         for (CrewPlanePayloadPairing crewPlane : crewPlanes)
         {
             createPlaneBasedOnBriefingSelections(numInFormation, crewPlane);
@@ -51,7 +50,7 @@ public class PlayerFlightEditor
 
     private void replacePlanesInPlayerFlight() throws PWCGException
     {
-        playerFlight.setPlanes(updatedPlaneSet);
+        playerFlight.getFlightData().getFlightPlanes().setPlanes(updatedPlaneSet);
     }
 
     private void resetPlayerFlightInitialPosition() throws PWCGException
@@ -61,8 +60,8 @@ public class PlayerFlightEditor
 
     private void createPlaneBasedOnBriefingSelections(int numInFormation, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        PlaneMCU plane = null;
-        if (numInFormation == Unit.NUM_IN_FORMATION_START)
+        PlaneMcu plane = null;
+        if (numInFormation == 1)
         {
             plane = updateLeader(crewPlane);
         }
@@ -72,7 +71,7 @@ public class PlayerFlightEditor
         }
 
         plane.setNumberInFormation(numInFormation);
-        plane.setCallsign(playerFlight.getSquadron().determineCurrentCallsign(campaign.getDate()));
+        plane.setCallsign(playerFlight.getFlightData().getFlightInformation().getSquadron().determineCurrentCallsign(campaign.getDate()));
         plane.setCallnum(numInFormation);
         setPayloadFromBriefing(plane, crewPlane);
         setModificationsFromBriefing(plane, crewPlane);
@@ -81,7 +80,7 @@ public class PlayerFlightEditor
         updatedPlaneSet.add(plane);
     }
 
-    private void setPayloadFromBriefing(PlaneMCU plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
+    private void setPayloadFromBriefing(PlaneMcu plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
         IPayloadFactory payloadfactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payload = payloadfactory.createPlanePayload(plane.getType());
@@ -89,7 +88,7 @@ public class PlayerFlightEditor
         plane.setPlanePayload(payload);
     }
 
-    private void setModificationsFromBriefing(PlaneMCU plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
+    private void setModificationsFromBriefing(PlaneMcu plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
         IPlanePayload payload = plane.getPlanePayload();
         payload.clearModifications();
@@ -103,7 +102,7 @@ public class PlayerFlightEditor
         plane.setPlanePayload(payload);
     }
 
-    private void configurePlaneForCrew(PlaneMCU plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
+    private void configurePlaneForCrew(PlaneMcu plane, CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
         SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
         AiSkillLevel aiLevel = crewPlane.getPilot().getAiSkillLevel();
@@ -123,20 +122,22 @@ public class PlayerFlightEditor
         plane.setAiLevel(aiLevel);
     }
 
-    private PlaneMCU updateFlightMember(CrewPlanePayloadPairing crewPlane) throws PWCGException
+    private PlaneMcu updateFlightMember(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        PlaneMCU flightmember = playerFlight.getLeadPlane();
-        PlaneMCU updatedPlaneMcu = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), playerFlight.getCountry(), crewPlane.getPilot());
+        PlaneMcu flightmember = playerFlight.getFlightData().getFlightPlanes().getFlightLeader();
+        PlaneMcu updatedPlaneMcu = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), 
+                playerFlight.getFlightData().getFlightInformation().getCountry(), crewPlane.getPilot());
         updatedPlaneMcu.setIndex(IndexGenerator.getInstance().getNextIndex());
         updatedPlaneMcu.getEntity().setTarget(flightmember.getLinkTrId());
 
         return updatedPlaneMcu;
     }
 
-    private PlaneMCU updateLeader(CrewPlanePayloadPairing crewPlane) throws PWCGException
+    private PlaneMcu updateLeader(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        PlaneMCU flightLeader = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), playerFlight.getCountry(), crewPlane.getPilot());
-        PlaneMCU flightLeaderPlaneMcu = playerFlight.getLeadPlane();        
+        PlaneMcu flightLeader = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), 
+                playerFlight.getFlightData().getFlightInformation().getCountry(), crewPlane.getPilot());
+        PlaneMcu flightLeaderPlaneMcu = playerFlight.getFlightData().getFlightPlanes().getFlightLeader();        
         flightLeader.setIndex(flightLeaderPlaneMcu.getIndex());
         flightLeader.setLinkTrId(flightLeaderPlaneMcu.getLinkTrId());
         flightLeader.getEntity().setIndex(flightLeaderPlaneMcu.getEntity().getIndex());

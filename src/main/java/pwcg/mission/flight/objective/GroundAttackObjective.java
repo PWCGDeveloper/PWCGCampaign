@@ -1,33 +1,29 @@
 package pwcg.mission.flight.objective;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.IUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.staticunits.AirfieldTargetGroup;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 public class GroundAttackObjective
 {
-    static String getMissionObjective(Flight flight) throws PWCGException 
+    static String getMissionObjective(IFlight flight) throws PWCGException 
     {
-        FlightInformation flightInformation = flight.getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
         
         String objective = "Attack the specified objective using all available means.";
-        for (IUnit linkedUnit : flight.getLinkedUnits())
+        for (IGroundUnitCollection linkedUnit : flight.getFlightData().getLinkedGroundUnits().getLinkedGroundUnits())
         {
-            if (linkedUnit instanceof IGroundUnitCollection)
+            IGroundUnitCollection groundUnitCollection = (IGroundUnitCollection)linkedUnit;
+            for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
             {
-                IGroundUnitCollection groundUnitCollection = (IGroundUnitCollection)linkedUnit;
-                for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
+                if (!groundUnit.getCountry().isSameSide(flight.getFlightData().getFlightInformation().getCountry()))
                 {
-                    if (!groundUnit.getCountry().isSameSide(flight.getCountry()))
-                    {
-                        objective = getObjectiveFromEnemyUnit(groundUnit, flightInformation);
-                        break;
-                    }
+                    objective = getObjectiveFromEnemyUnit(groundUnit, flightInformation);
+                    break;
                 }
             }
         }
@@ -35,57 +31,57 @@ public class GroundAttackObjective
         return objective;
     }
 
-    private static String getObjectiveFromEnemyUnit(IGroundUnit enemyGroundUnit, FlightInformation flightInformation) throws PWCGException
+    private static String getObjectiveFromEnemyUnit(IGroundUnit enemyGroundUnit, IFlightInformation flightInformation) throws PWCGException
     {
         String objectiveLocation =  MissionObjective.getMissionObjectiveLocation(
                 flightInformation.getSquadron(), flightInformation.getCampaign().getDate(), enemyGroundUnit);
         
         String objective = "Attack the specified objective using all available means.";
-        TacticalTarget targetType = enemyGroundUnit.getTargetType();
+        TargetType targetType = enemyGroundUnit.getTargetType();
         
         
-        if (targetType == TacticalTarget.TARGET_ASSAULT)
+        if (targetType == TargetType.TARGET_ASSAULT)
         {
             objective = "Attack assaulting enemy troops" + objectiveLocation; 
         }
-        else if (targetType == TacticalTarget.TARGET_DEFENSE)
+        else if (targetType == TargetType.TARGET_DEFENSE)
         {
             objective = "Attack defending enemy troops" + objectiveLocation; 
         }
-        else if (targetType == TacticalTarget.TARGET_INFANTRY)
+        else if (targetType == TargetType.TARGET_INFANTRY)
         {
             objective = "Attack enemy troops" + objectiveLocation; 
         }
-        else if (targetType == TacticalTarget.TARGET_AIRFIELD)
+        else if (targetType == TargetType.TARGET_AIRFIELD)
         {
             AirfieldTargetGroup target = (AirfieldTargetGroup)enemyGroundUnit;
             objective = "Attack the airfield at " + target.getAirfield().getName();
         }
-        else if (targetType == TacticalTarget.TARGET_TRAIN)
+        else if (targetType == TargetType.TARGET_TRAIN)
         {
             objective = "Attack the trains and rail facilities" + objectiveLocation;
         }
-        else if (targetType == TacticalTarget.TARGET_ARTILLERY)
+        else if (targetType == TargetType.TARGET_ARTILLERY)
         {
             objective = "Attack the artillery battery" + objectiveLocation; 
         }
-        else if (targetType == TacticalTarget.TARGET_TRANSPORT)
+        else if (targetType == TargetType.TARGET_TRANSPORT)
         {
             objective = "Attack the transport and road facilities" + objectiveLocation; 
         }
-        else if (targetType == TacticalTarget.TARGET_SHIPPING)
+        else if (targetType == TargetType.TARGET_SHIPPING)
         {
             objective = "Attack the shipping" + objectiveLocation; 
         }
-        else if (targetType == TacticalTarget.TARGET_BALLOON)
+        else if (targetType == TargetType.TARGET_BALLOON)
         {
             objective = "Attack the balloons" + objectiveLocation; 
         }
-        else if (targetType == TacticalTarget.TARGET_DRIFTER)
+        else if (targetType == TargetType.TARGET_DRIFTER)
         {
             objective = "Attack the light shipping" + objectiveLocation; 
         }
-        else if (targetType == TacticalTarget.TARGET_AAA)
+        else if (targetType == TargetType.TARGET_AAA)
         {
             objective = "Attack AAA" + objectiveLocation; 
         }

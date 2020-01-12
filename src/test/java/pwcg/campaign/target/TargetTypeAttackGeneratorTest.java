@@ -19,7 +19,7 @@ import pwcg.campaign.target.locator.targettype.TargetTypeAvailabilityInputs;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TargetTypeAttackGeneratorTest
@@ -44,7 +44,7 @@ public class TargetTypeAttackGeneratorTest
         Mockito.when(targetTypeAvailabilityInputs.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));
         Mockito.when(campaign.useMovingFrontInCampaign()).thenReturn(true);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
-        testPlaceAndTarget(TacticalTarget.TARGET_DRIFTER, true);
+        testPlaceAndTarget(TargetType.TARGET_DRIFTER, true);
     }
     
     @Test
@@ -53,7 +53,7 @@ public class TargetTypeAttackGeneratorTest
         Mockito.when(targetTypeAvailabilityInputs.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19430401"));
         Mockito.when(campaign.useMovingFrontInCampaign()).thenReturn(true);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.KUBAN_MAP);
-        testPlaceAndTarget(TacticalTarget.TARGET_SHIPPING, true);
+        testPlaceAndTarget(TargetType.TARGET_SHIPPING, true);
     }
     
     @Test
@@ -62,7 +62,7 @@ public class TargetTypeAttackGeneratorTest
         Mockito.when(targetTypeAvailabilityInputs.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19411001"));
         Mockito.when(campaign.useMovingFrontInCampaign()).thenReturn(true);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
-        testPlaceAndTarget(TacticalTarget.TARGET_DRIFTER, false);
+        testPlaceAndTarget(TargetType.TARGET_DRIFTER, false);
     }
     
     @Test
@@ -71,14 +71,14 @@ public class TargetTypeAttackGeneratorTest
         Mockito.when(targetTypeAvailabilityInputs.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19411001"));
         Mockito.when(campaign.useMovingFrontInCampaign()).thenReturn(true);
         PWCGContext.getInstance().changeContext(FrontMapIdentifier.MOSCOW_MAP);
-        testPlaceAndTarget(TacticalTarget.TARGET_SHIPPING, false);
+        testPlaceAndTarget(TargetType.TARGET_SHIPPING, false);
     }
 
-    private void testPlaceAndTarget(TacticalTarget targetType, boolean assertion) throws PWCGException
+    private void testPlaceAndTarget(TargetType targetType, boolean assertion) throws PWCGException
     {
         TargetTypeAttackGenerator targetTypeAttackGenerator = new TargetTypeAttackGenerator(targetTypeAvailabilityInputs);        
         targetTypeAttackGenerator.formTargetPriorities();
-        List <TacticalTarget> preferredTargetTypes = targetTypeAttackGenerator.getPreferredTargetTypes();
+        List <TargetType> preferredTargetTypes = targetTypeAttackGenerator.getPreferredTargetTypes();
         assert(preferredTargetTypes.contains(targetType) == assertion);
     }
 

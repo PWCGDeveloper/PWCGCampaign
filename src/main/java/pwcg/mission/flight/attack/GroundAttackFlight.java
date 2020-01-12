@@ -1,45 +1,60 @@
 package pwcg.mission.flight.attack;
 
-import java.io.BufferedWriter;
-import java.util.List;
-
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.GroundTargetAttackFlight;
+import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightPayloadBuilder;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.initialposition.FlightPositionSetter;
+import pwcg.mission.flight.waypoint.WaypointPriority;
+import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
+import pwcg.mission.flight.waypoint.begin.FlightWaypointGroupFactory;
+import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
+import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
+import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class GroundAttackFlight extends GroundTargetAttackFlight
+public class GroundAttackFlight extends Flight implements IFlight
 {
-    static public int GROUND_ATTACK_ALT = 500;
-    static public int GROUND_ATTACK_TIME = 360;
-    	
-    public GroundAttackFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
+    public GroundAttackFlight(IFlightInformation flightInformation)
     {
-        super (flightInformation, missionBeginUnit, GROUND_ATTACK_TIME);
+        super (flightInformation);
     }
 
-	public void createUnitMission() throws PWCGException  
-	{
-		super.createUnitMission();
-        super.createAttackArea(GROUND_ATTACK_ALT);
-	}
+    public void createFlight() throws PWCGException
+    {
+        flightData.initialize(this);
+        createWaypoints();
+        FlightPositionSetter.setFlightInitialPosition(this);
+        WaypointPriority.setWaypointsNonFighterPriority(this);
+        setFlightPayload();
+    }
+    
+    private void createWaypoints() throws PWCGException
+    {
+        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(IngressWaypointPattern.INGRESS_NEAR_FRONT, this);
 
-	@Override
-	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
-	{
-		GroundAttackWaypoints waypointGenerator = new GroundAttackWaypoints(this);
+        IMissionPointSet flightBegin = FlightWaypointGroupFactory.createFlightBegin(this, AirStartPattern.AIR_START_NEAR_AIRFIELD, ingressWaypoint);
+        flightData.getWaypointPackage().addMissionPointSet(MissionPointSetType.MISSION_POINT_SET_FLIGHT_BEGIN, flightBegin);
 
-		List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
-	    
-        return waypointList;
-	}
+        GroundAttackWaypointFactory missionWaypointFactory = new GroundAttackWaypointFactory(this);
+        IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
+        flightData.getWaypointPackage().addMissionPointSet(MissionPointSetType.MISSION_POINT_SET_MISSION_ATTACK, missionWaypoints);
+        
+        IMissionPointSet flightEnd = FlightWaypointGroupFactory.createFlightEndAtHomeField(this);
+        flightData.getWaypointPackage().addMissionPointSet(MissionPointSetType.MISSION_POINT_SET_FLIGHT_END, flightEnd);
+    }
+
+    private void setFlightPayload() throws PWCGException
+    {
+        FlightPayloadBuilder flightPayloadHelper = new FlightPayloadBuilder(this);
+        flightPayloadHelper.setFlightPayload();
+    }
 
     @Override
-    public void write(BufferedWriter writer) throws PWCGException 
+    public void finalize() throws PWCGException
     {
-        super.write(writer);
+        flightData.getWaypointPackage().finalize();
     }
 }

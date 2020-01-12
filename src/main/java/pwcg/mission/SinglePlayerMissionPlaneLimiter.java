@@ -7,7 +7,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.group.PlaneCounter;
 
 public class SinglePlayerMissionPlaneLimiter
@@ -29,19 +29,19 @@ public class SinglePlayerMissionPlaneLimiter
 
     private void setPlaneCounter(Mission mission) throws PWCGException 
     {
-        Coordinate mcuCoordinate = mission.getMissionFlightBuilder().getReferencePlayerFlight().getPosition();
+        Coordinate mcuCoordinate = mission.getMissionFlightBuilder().getReferencePlayerFlight().getFlightData().getFlightInformation().getFlightHomePosition();
         alliedPlaneCounter.initialize(mcuCoordinate);
         axisPlaneCounter.initialize(mcuCoordinate);
         
         alliedPlaneCounter.setPlaneCounter(maxAlliedPlanes);
         axisPlaneCounter.setPlaneCounter(maxAxisPlanes);
 
-        for (Flight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED))
+        for (IFlight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.ALLIED))
         {
             alliedPlaneCounter.setPlaneCounterForFlight(flight);
         }
         
-        for (Flight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.AXIS))
+        for (IFlight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.AXIS))
         {
             axisPlaneCounter.setPlaneCounterForFlight(flight);
         }
@@ -58,11 +58,11 @@ public class SinglePlayerMissionPlaneLimiter
 
     private void adjustForPlayerFlights() throws PWCGException
     {
-        for (Flight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
+        for (IFlight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
         {
-            int planesInPlayerFlight = playerFlight.getPlanes().size();
+            int planesInPlayerFlight = playerFlight.getFlightData().getFlightPlanes().getFlightSize();
             
-            if (playerFlight.getSquadron().determineSide() == Side.ALLIED)
+            if (playerFlight.getFlightData().getFlightInformation().getSquadron().determineSide() == Side.ALLIED)
             {
                 maxAlliedPlanes -= planesInPlayerFlight;
                 if (maxAlliedPlanes < 2)

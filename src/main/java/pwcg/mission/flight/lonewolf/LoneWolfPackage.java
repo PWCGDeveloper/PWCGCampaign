@@ -1,27 +1,23 @@
 package pwcg.mission.flight.lonewolf;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.patrol.PatrolPackage;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.IFlightPackage;
 
-public class LoneWolfPackage extends PatrolPackage
+public class LoneWolfPackage implements IFlightPackage
 {
-    public LoneWolfPackage(FlightInformation flightInformation)
+    protected IFlightInformation flightInformation;
+
+    public LoneWolfPackage(IFlightInformation flightInformation)
     {
-        super(flightInformation);
+        this.flightInformation = flightInformation;
     }
 
-    @Override
-    public Flight createPackage () throws PWCGException 
-	{
-        Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());        
-		LoneWolfFlight patrol = new LoneWolfFlight (flightInformation, missionBeginUnit);
-		patrol.createUnitMission();		
-		return patrol;
-	}
-
+    public IFlight createPackage () throws PWCGException 
+    {
+        LoneWolfFlight patrolFlight = new LoneWolfFlight (flightInformation);
+        patrolFlight.createFlight();
+        return patrolFlight;
+    }
 }

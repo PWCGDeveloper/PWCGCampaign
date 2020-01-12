@@ -15,15 +15,15 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FlightSizeCalculatorTest 
 {
-    @Mock private FlightInformation flightInformation;
+    @Mock private IFlightInformation flightInformation;
     @Mock private Squadron squadron;
     private Campaign campaign;
     private ICountry country;

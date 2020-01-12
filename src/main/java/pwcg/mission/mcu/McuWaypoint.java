@@ -12,6 +12,8 @@ import pwcg.mission.flight.waypoint.WaypointType;
 
 public class McuWaypoint extends BaseFlightMcu implements Cloneable
 {
+    private static long masterWaypointId = 1;
+    
     public WaypointType waypointType;
     private WaypointAction wpAction;
     private WaypointPriority priority = WaypointPriority.PRIORITY_LOW;
@@ -26,14 +28,17 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
     private int triggerArea = FLIGHT_AREA;
     private int speed = 130;
     private boolean isTargetWaypoint = false;
+    private long waypointID = 0;
 
     public McuWaypoint(WaypointType waypointType)
     {
         super();
 
-        name = waypointType.getName();
-        desc = waypointType.getName();
+        this.name = waypointType.getName();
+        this.desc = waypointType.getName();
         this.waypointType = waypointType;
+        this.waypointID = masterWaypointId;
+        ++masterWaypointId;
     }
 
     private McuWaypoint()
@@ -45,6 +50,7 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
     {
         McuWaypoint clone = new McuWaypoint();
 
+        clone.waypointID = waypointID;
         clone.waypointType = waypointType;
         clone.wpAction = wpAction;
         clone.priority = priority;
@@ -125,6 +131,11 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
     public WaypointType getWaypointType()
     {
         return waypointType;
+    }
+    
+    public long getWaypointID()
+    {
+        return waypointID;
     }
 
     public void write(BufferedWriter writer) throws PWCGIOException

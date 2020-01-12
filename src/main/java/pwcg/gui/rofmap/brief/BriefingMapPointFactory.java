@@ -1,69 +1,60 @@
 package pwcg.gui.rofmap.brief;
 
-import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 import pwcg.mission.flight.waypoint.WaypointAction;
-import pwcg.mission.mcu.McuLanding;
-import pwcg.mission.mcu.McuTakeoff;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class BriefingMapPointFactory
 {
-	public static BriefingMapPoint waypointToMapPoint(McuWaypoint waypoint)
-	{
-		BriefingMapPoint mapPoint = new BriefingMapPoint();
-		mapPoint.desc = waypoint.getWpAction().getAction();
-		mapPoint.coord = waypoint.getPosition().copy();
-		
-		if ((waypoint.getWpAction() == WaypointAction.WP_ACTION_RENDEZVOUS) || 
-			(waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL) || 
-            (waypoint.getWpAction() == WaypointAction.WP_ACTION_RECON) || 
-			(waypoint.getWpAction() == WaypointAction.WP_ACTION_LANDING_APPROACH))
-		{
-			mapPoint.editable = false;
-		}
+    public static BriefingMapPoint waypointToMapPoint(McuWaypoint waypoint)
+    {
+        BriefingMapPoint mapPoint = new BriefingMapPoint();
+        mapPoint.desc = waypoint.getWpAction().getAction();
+        mapPoint.coord = waypoint.getPosition().copy();
+        mapPoint.editable = waypoint.getWpAction().isEditable();
+        return mapPoint;
+    }
+    
+    public static BriefingMapPoint missionPointToMapPoint(MissionPoint missionPoint)
+    {
+        BriefingMapPoint mapPoint = new BriefingMapPoint();
+        mapPoint.desc = missionPoint.getAction().getAction();
+        mapPoint.coord = missionPoint.getPosition().copy();
+        mapPoint.editable = missionPoint.getAction().isEditable();
+        return mapPoint;
+    }
 
-		if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
-		{
-		    mapPoint.isTarget = true;
-		}
-		
-		return mapPoint;
-	}
-
-	public static BriefingMapPoint createTakeoff(Mission mission) throws PWCGException 
+	public static BriefingMapPoint createTakeoff(IFlight flight) throws PWCGException 
 	{
         BriefingMapPoint takeoff =null;
-        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
-		McuTakeoff takeoffEntity = playerFlight.getTakeoff();
-		if (takeoffEntity != null)
+        MissionPoint takeoffMissionPoint = flight.getFlightData().getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_TAKEOFF);
+        if (takeoffMissionPoint != null)
 		{
 			takeoff = new BriefingMapPoint();
 			takeoff.desc = "Airfield";
-			takeoff.coord = takeoffEntity.getPosition().copy();
+			takeoff.coord = takeoffMissionPoint.getPosition();
 			takeoff.editable = false;
 		}
 		
 		return takeoff;
 	}
 	
-	public static BriefingMapPoint createLanding(Mission mission) throws PWCGException 
+	public static BriefingMapPoint createLanding(IFlight flight) throws PWCGException 
 	{
-        BriefingMapPoint landing =null;
-		Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
-		McuLanding landingEntity = playerFlight.getLanding();
-		if (landingEntity != null)
+        BriefingMapPoint briefingMapLanding =null;
+        MissionPoint landingMissionPoint = flight.getFlightData().getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_LANDING);
+        if (landingMissionPoint != null)
 		{
-			landing = new BriefingMapPoint();
-			landing.desc = "Airfield";
-			landing.coord = landingEntity.getPosition().copy();
-			landing.editable = false;
+			briefingMapLanding = new BriefingMapPoint();
+			briefingMapLanding.desc = "Land";
+			briefingMapLanding.coord = landingMissionPoint.getPosition();
+			briefingMapLanding.editable = false;
 		}
-        return landing;
+        return briefingMapLanding;
 	}
 	   
     public static BriefingMapPoint createAttackPoint(Coordinate targetLocation) 

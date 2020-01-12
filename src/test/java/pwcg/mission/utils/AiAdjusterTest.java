@@ -12,9 +12,9 @@ import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
@@ -41,9 +41,9 @@ public class AiAdjusterTest
         mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
         mission.finalizeMission();
 
-        for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMCU plane: flight.getAiPlanes())
+            for (PlaneMcu plane: flight.getAiPlanes())
             {
                 if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
                 {
@@ -67,9 +67,9 @@ public class AiAdjusterTest
         mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
         mission.finalizeMission();
 
-        for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMCU plane: flight.getAiPlanes())
+            for (PlaneMcu plane: flight.getAiPlanes())
             {
                 if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
                 {
@@ -93,9 +93,9 @@ public class AiAdjusterTest
         mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
         mission.finalizeMission();
 
-        for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMCU plane: flight.getAiPlanes())
+            for (PlaneMcu plane: flight.getAiPlanes())
             {
                 if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
                 {
@@ -109,9 +109,9 @@ public class AiAdjusterTest
             }
         }
 
-        for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMCU plane: flight.getPlayerPlanes())
+            for (PlaneMcu plane: flight.getPlayerPlanes())
             {
                 assert(plane.getAiLevel() == AiSkillLevel.PLAYER);
             }
@@ -128,9 +128,9 @@ public class AiAdjusterTest
         mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
         mission.finalizeMission();
 
-        for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMCU plane: flight.getAiPlanes())
+            for (PlaneMcu plane: flight.getAiPlanes())
             {
                 if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
                 {

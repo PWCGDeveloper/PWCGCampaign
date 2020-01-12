@@ -19,7 +19,7 @@ public class TargetDefinitionBuilderGround
     public TargetDefinition buildTargetDefinitionBattle (
             ICountry attackingCountry, 
             ICountry targetCountry, 
-            TacticalTarget targetType, 
+            TargetType targetType, 
             Coordinate targetPosition,
             boolean isPlayerTarget) throws PWCGException
     {
@@ -43,7 +43,7 @@ public class TargetDefinitionBuilderGround
 
     public TargetDefinition buildTargetDefinitionAmbient (
             ICountry targetCountry, 
-            TacticalTarget targetType, 
+            TargetType targetType, 
             Coordinate targetPosition,
             boolean isPlayerTarget) throws PWCGException
     {
@@ -64,7 +64,7 @@ public class TargetDefinitionBuilderGround
         return targetDefinition;
     }
 
-    private String buildTargetName(ICountry targetCountry, TacticalTarget targetType)
+    private String buildTargetName(ICountry targetCountry, TargetType targetType)
     {
         String nationality = targetCountry.getNationality();
         String name = nationality + " " + targetType.getTargetName();

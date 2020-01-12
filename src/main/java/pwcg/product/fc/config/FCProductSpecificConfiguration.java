@@ -13,8 +13,6 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     private static final int CLIMB_DISTANCE = 5000;
     private static final int NEUTRAL_ZONE = 3000;
     private static final int FRONT_LINE_MISSION_RADIUS = 15000;
-    private static final int BOMB_APPROACH_DISTANCE = 10000;
-    private static final int BOMB_APPROACH_FINAL_DISTANCE = 6000;
     private static final int MIN_CLIMB_WP_ALT = 1200;
     private static final int CROSS_DIAMETER = 15000;
     private static final int CREEPING_LINE_LENGTH = 10000;
@@ -32,10 +30,13 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     private static final int AIRCRAFT_SPACING_HORIZONTAL = 150;
     private static final int AIRCRAFT_SPACING_VERTICAL = 100;
     private static final int TAKEOFF_SPACING = 30;
-    private static final int RENDEZVOUS_DISTANCE_FROM_FRONT = 8000;
     private static final int ADDITIONAL_ALTITUDE_FOR_ESCORT = 300;
     private static final int SCRAMBLE_OPPOSE_MIN_DISTANCE = 3000;
     private static final int SCRAMBLE_OPPOSE_MAX_DISTANCE = 10000;
+    private static final int INGRESS_ADDITIONAL_DISTANCE_FROM_TARGET = 6000;
+    private static final int ATTACK_AREA_SELECT_TARGET_DISTANCE = 5000;
+    private static final int ATTACK_AREA_BOMB_DROP_DISTANCE = 500;
+    private static final int INGRESS_DISTANCE_FROM_FRONT = 6000;
 
     @Override
     public boolean useWaypointGoal()
@@ -72,13 +73,13 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     {
         return TakeoffFormation.STAGGERED;
     }
-    
+
     @Override
     public int getClimbDistance()
     {
         return CLIMB_DISTANCE;
     }
-    
+
     @Override
     public int getInitialFrontLineRadius()
     {
@@ -89,18 +90,6 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     public int geNeutralZone()
     {
         return NEUTRAL_ZONE;
-    }
-
-    @Override
-    public int getBombApproachDistance()
-    {
-        return BOMB_APPROACH_DISTANCE;
-    }
-
-    @Override
-    public int getBombFinalApproachDistance()
-    {
-        return BOMB_APPROACH_FINAL_DISTANCE;
     }
 
     @Override
@@ -120,7 +109,7 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     {
         return MIN_CLIMB_WP_ALT;
     }
-    
+
     @Override
     public int getAdditionalInitialTargetRadius(FlightTypes flightType)
     {
@@ -159,27 +148,27 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
         }
         else if (flightType == FlightTypes.BOMB)
         {
-            initialDistance = 0;                    
+            initialDistance = 0;
         }
         else if (flightType == FlightTypes.ESCORT)
         {
-            initialDistance = 0;                    
+            initialDistance = 0;
         }
         else if (flightType == FlightTypes.LOW_ALT_PATROL)
         {
-            initialDistance = 0;                    
+            initialDistance = 0;
         }
         else if (flightType == FlightTypes.LOW_ALT_CAP)
         {
-            initialDistance = 0;                    
+            initialDistance = 0;
         }
         else if (flightType == FlightTypes.LOW_ALT_BOMB)
         {
-            initialDistance = 0;                    
+            initialDistance = 0;
         }
         else if (flightType == FlightTypes.RECON)
         {
-            initialDistance = 0;                    
+            initialDistance = 0;
         }
         else if (flightType == FlightTypes.PARATROOP_DROP)
         {
@@ -193,22 +182,19 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
         {
             initialDistance = 5000;
         }
-        else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
+        else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK
+                || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
         {
-            initialDistance = 50000;                    
-        }
-        else if (flightType == FlightTypes.SEA_PATROL)
-        {
-            initialDistance = 50000;                    
+            initialDistance = 50000;
         }
         else if (flightType == FlightTypes.STRATEGIC_BOMB)
         {
-            initialDistance = 30000;                    
+            initialDistance = 30000;
         }
 
         return initialDistance;
     }
-    
+
     @Override
     public int getAdditionalMaxTargetRadius(FlightTypes flightType)
     {
@@ -223,15 +209,15 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
         }
         else if (flightType == FlightTypes.LOW_ALT_PATROL)
         {
-            initialDistance = 10000;                    
+            initialDistance = 10000;
         }
         else if (flightType == FlightTypes.LOW_ALT_CAP)
         {
-            initialDistance = 10000;                    
+            initialDistance = 10000;
         }
         else if (flightType == FlightTypes.LOW_ALT_BOMB)
         {
-            initialDistance = 10000;                    
+            initialDistance = 10000;
         }
         else if (flightType == FlightTypes.OFFENSIVE)
         {
@@ -259,11 +245,11 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
         }
         else if (flightType == FlightTypes.BOMB)
         {
-            initialDistance = 10000;                    
+            initialDistance = 10000;
         }
         else if (flightType == FlightTypes.RECON)
         {
-            initialDistance = 10000;                    
+            initialDistance = 10000;
         }
         else if (flightType == FlightTypes.PARATROOP_DROP)
         {
@@ -273,17 +259,14 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
         {
             initialDistance = 10000;
         }
-        else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
+        else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK
+                || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
         {
-            initialDistance = 100000;                    
-        }
-        else if (flightType == FlightTypes.SEA_PATROL)
-        {
-            initialDistance = 100000;                    
+            initialDistance = 100000;
         }
         else if (flightType == FlightTypes.STRATEGIC_BOMB)
         {
-            initialDistance = 100000;                    
+            initialDistance = 100000;
         }
 
         return initialDistance;
@@ -403,12 +386,6 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     }
 
     @Override
-    public int getRendezvousDistanceFromFront()
-    {
-        return RENDEZVOUS_DISTANCE_FROM_FRONT;
-    }
-
-    @Override
     public int getAdditionalAltitudeForEscort()
     {
         return ADDITIONAL_ALTITUDE_FOR_ESCORT;
@@ -424,5 +401,47 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     public int getScrambleOpposeMaxDistance()
     {
         return SCRAMBLE_OPPOSE_MAX_DISTANCE;
+    }
+
+    @Override
+    public int getRendezvousDistanceFromFront()
+    {
+        return getAttackAreaSelectTargetRadius() + INGRESS_ADDITIONAL_DISTANCE_FROM_TARGET;
+    }
+
+    @Override
+    public int getBombApproachDistance()
+    {
+        return getBombFinalApproachDistance() + 5000;
+    }
+
+    @Override
+    public int getBombFinalApproachDistance()
+    {
+        return getAttackAreaTriggerRadius() - 1000;
+    }
+
+    @Override
+    public int getAttackAreaSelectTargetRadius()
+    {
+        return ATTACK_AREA_SELECT_TARGET_DISTANCE;
+    }
+
+    @Override
+    public int getAttackAreaBombDropRadius()
+    {
+        return ATTACK_AREA_BOMB_DROP_DISTANCE;
+    }
+
+    @Override
+    public int getAttackAreaTriggerRadius()
+    {
+        return getAttackAreaSelectTargetRadius() + 2000;
+    }
+
+    @Override
+    public int getDefaultIngressDistanceFromFront()
+    {
+        return INGRESS_DISTANCE_FROM_FRONT;
     }
 }

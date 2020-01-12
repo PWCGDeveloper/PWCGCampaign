@@ -9,9 +9,8 @@ import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
-import pwcg.mission.IUnit;
 import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 public class GroundUnitCollection implements IGroundUnitCollection
 {
@@ -100,7 +99,7 @@ public class GroundUnitCollection implements IGroundUnitCollection
     }
 
     @Override
-    public TacticalTarget getTargetType()
+    public TargetType getTargetType()
     {
         return groundUnitCollectionData.getTargetType();
     }
@@ -138,7 +137,6 @@ public class GroundUnitCollection implements IGroundUnitCollection
         }
     }
 
-    
     @Override
     public void validate() throws PWCGException
     {
@@ -149,23 +147,6 @@ public class GroundUnitCollection implements IGroundUnitCollection
             missionBeginUnit.validateTarget(entryPoint);
             groundUnit.validate();
         }
-    }
-    
-    @Override
-    public int getIndex()
-    {
-        return index;
-    }
-
-    @Override
-    public List<IUnit> getLinkedUnits()
-    {
-        return new ArrayList<>();
-    }
-
-    @Override
-    public void addLinkedUnit(IUnit unit) throws PWCGException
-    {        
     }
 
     @Override

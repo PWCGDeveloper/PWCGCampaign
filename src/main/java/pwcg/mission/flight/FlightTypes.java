@@ -11,7 +11,6 @@ public enum FlightTypes
     SCRAMBLE(FlightTypeCategory.FIGHTER),
     HOME_DEFENSE(FlightTypeCategory.FIGHTER),
     LONE_WOLF(FlightTypeCategory.FIGHTER),
-    SEA_PATROL(FlightTypeCategory.FIGHTER),
     ESCORT(FlightTypeCategory.FIGHTER),
     SCRAMBLE_OPPOSE(FlightTypeCategory.FIGHTER), 
     LOW_ALT_CAP(FlightTypeCategory.FIGHTER, FlightTypeCategory.FIGHTER),
@@ -36,8 +35,6 @@ public enum FlightTypes
     TRANSPORT(FlightTypeCategory.OTHER),
     RECON(FlightTypeCategory.OTHER),
     SPY_EXTRACT(FlightTypeCategory.OTHER),
-    PORT_RECON(FlightTypeCategory.OTHER),
-    FERRY(FlightTypeCategory.OTHER),
     
     GROUND_FORCES(FlightTypeCategory.INVALID),
     ANY(FlightTypeCategory.INVALID);
@@ -90,6 +87,40 @@ public enum FlightTypes
             return true;
         }
          
+        return false;
+    }
+
+    public static boolean isLowAltFlightType(FlightTypes flightType)
+    {
+        if (flightType == FlightTypes.ARTILLERY_SPOT    ||
+            flightType == FlightTypes.CONTACT_PATROL    ||
+            flightType == FlightTypes.GROUND_ATTACK     ||
+            flightType == FlightTypes.SCRAMBLE          ||
+            flightType == FlightTypes.SCRAMBLE          ||
+            flightType == FlightTypes.SCRAMBLE          ||
+            flightType == FlightTypes.SPY_EXTRACT)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+    
+
+    public static boolean isBombingFlight(FlightTypes flightType)
+    {
+        if (flightType == FlightTypes.BOMB ||
+            flightType == FlightTypes.LOW_ALT_BOMB ||
+            flightType == FlightTypes.GROUND_ATTACK ||
+            flightType == FlightTypes.DIVE_BOMB ||
+            flightType == FlightTypes.ANTI_SHIPPING_BOMB || 
+            flightType == FlightTypes.ANTI_SHIPPING_ATTACK || 
+            flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB ||
+            flightType == FlightTypes.STRATEGIC_BOMB)
+        {
+            return true;
+        }
+        
         return false;
     }
 }

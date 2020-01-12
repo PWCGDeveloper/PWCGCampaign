@@ -6,24 +6,26 @@ import pwcg.campaign.target.locator.targettype.TargetTypeAvailabilityInputGenera
 import pwcg.campaign.target.locator.targettype.TargetTypeAvailabilityInputs;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.core.location.Orientation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.target.locator.TargetLocatorAttack;
 
 public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuilder
 {
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
     private TargetDefinition targetDefinition = new TargetDefinition();
 
-    public TargetDefinitionBuilderAirToGround (FlightInformation flightInformation)
+    public TargetDefinitionBuilderAirToGround (IFlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }
 
+    @Override
     public TargetDefinition buildTargetDefinition () throws PWCGException
     {        
-        TacticalTarget targetType = determinePredefinedTacticalTarget(flightInformation.getFlightType());
-        if (targetType == TacticalTarget.TARGET_ANY)
+        TargetType targetType = determinePredefinedTacticalTarget(flightInformation.getFlightType());
+        if (targetType == TargetType.TARGET_ANY)
         {
             Coordinate targetSearchStartLocation = flightInformation.getTargetSearchStartLocation();
             TargetTypeAvailabilityInputs targetTypeAvailabilityInputs = createTargetingInputs(targetSearchStartLocation);
@@ -34,33 +36,43 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         return targetDefinition;
     }
 
-    private TacticalTarget determinePredefinedTacticalTarget(FlightTypes flightType) 
+    @Override
+    public TargetDefinition buildSpecificTargetDefinition(TargetType targetType) throws PWCGException
+    {
+        buildTargetDefinitionForTacticalFlight(targetType);          
+        Coordinate targetLocation = flightInformation.getTargetPosition();
+        targetDefinition.setTargetPosition(targetLocation);
+        targetDefinition.setTargetOrientation(new Orientation());
+        return targetDefinition;
+    }
+
+    private TargetType determinePredefinedTacticalTarget(FlightTypes flightType) 
     {
         if (flightType == FlightTypes.LOW_ALT_BOMB || flightType == FlightTypes.LOW_ALT_CAP || 
             flightType == FlightTypes.LOW_ALT_PATROL || flightType == FlightTypes.CONTACT_PATROL ||
             flightType == FlightTypes.PARATROOP_DROP)
         {
-            return TacticalTarget.TARGET_ASSAULT;
+            return TargetType.TARGET_ASSAULT;
         }
         else if (flightType == FlightTypes.BALLOON_BUST || flightType == FlightTypes.BALLOON_DEFENSE)
         {
-            return TacticalTarget.TARGET_BALLOON;
+            return TargetType.TARGET_BALLOON;
         }
         else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
         {
-            return TacticalTarget.TARGET_SHIPPING;
+            return TargetType.TARGET_SHIPPING;
         }
         else if (flightType == FlightTypes.SPY_EXTRACT)
         {
-            return TacticalTarget.TARGET_AAA;
+            return TargetType.TARGET_AAA;
         }
         else
         {
-            return TacticalTarget.TARGET_ANY;
+            return TargetType.TARGET_ANY;
         }
     }    
 
-    private void buildTargetDefinitionForTacticalFlight (TacticalTarget targetType) throws PWCGException
+    private void buildTargetDefinitionForTacticalFlight (TargetType targetType) throws PWCGException
     {
         targetDefinition.setTargetType(targetType);
         targetDefinition.setAttackingSquadron(flightInformation.getSquadron());
@@ -83,7 +95,7 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         targetDefinition.setTargetOrientation(targetLocator.getTargetOrientation());
     }
 
-    private void determineAttackingAndDefendingCountries(TacticalTarget targetType) throws PWCGException
+    private void determineAttackingAndDefendingCountries(TargetType targetType) throws PWCGException
     {
         targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
         targetDefinition.setTargetCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
@@ -93,7 +105,7 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
             targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
             targetDefinition.setTargetCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
         }
-        else if (targetType == TacticalTarget.TARGET_ASSAULT)
+        else if (targetType == TargetType.TARGET_ASSAULT)
         {
             TargetDefinitionBuilderUtils.chooseSides(flightInformation);
         }
@@ -111,10 +123,10 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
         return targetTypeAvailabilityInputs;
     }
 
-    private TacticalTarget createTargetType(TargetTypeAvailabilityInputs targetTypeAvailabilityInputs) throws PWCGException
+    private TargetType createTargetType(TargetTypeAvailabilityInputs targetTypeAvailabilityInputs) throws PWCGException
     {
         TargetTypeAttackGenerator targetTypeGenerator = new TargetTypeAttackGenerator(targetTypeAvailabilityInputs);
-        TacticalTarget targetType = targetTypeGenerator.createTargetType();
+        TargetType targetType = targetTypeGenerator.createTargetType();
         return targetType;
     }
 }

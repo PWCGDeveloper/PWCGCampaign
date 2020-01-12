@@ -20,7 +20,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.builder.AssaultBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderGround;
 
@@ -53,7 +53,7 @@ public class AmbientBattleBuilder
                 boolean isPlayerTarget = true;
                 TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
                 TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
-                        attackingCountry, defendingCountry, TacticalTarget.TARGET_ASSAULT, battleLocation, isPlayerTarget);
+                        attackingCountry, defendingCountry, TargetType.TARGET_ASSAULT, battleLocation, isPlayerTarget);
     
                 if (targetDefinition != null)
                 {

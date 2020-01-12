@@ -22,7 +22,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderGround;
 
@@ -50,7 +50,7 @@ public class AssaultBuilderTest
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
                 CountryFactory.makeCountryByCountry(Country.GERMANY), 
                 CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TacticalTarget.TARGET_ASSAULT, new Coordinate (102000, 0, 100000), true);
+                TargetType.TARGET_ASSAULT, new Coordinate (102000, 0, 100000), true);
 
         IGroundUnitCollection groundUnitGroup = AssaultBuilder.generateAssault(mission, targetDefinition);
         

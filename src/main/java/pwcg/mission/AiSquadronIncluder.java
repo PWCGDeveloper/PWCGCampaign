@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 
 public class AiSquadronIncluder
 {
@@ -69,9 +69,9 @@ public class AiSquadronIncluder
     
     private boolean squadronHasPlayerFlight(int squadronId)
     {
-        for (Flight playerFlight: mission.getMissionFlightBuilder().getPlayerFlights())
+        for (IFlight playerFlight: mission.getMissionFlightBuilder().getPlayerFlights())
         {
-            if (playerFlight.getSquadron().getSquadronId() == squadronId)
+            if (playerFlight.getFlightData().getFlightInformation().getSquadron().getSquadronId() == squadronId)
             {
                 return true;
             }

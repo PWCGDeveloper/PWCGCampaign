@@ -2,13 +2,13 @@ package pwcg.mission.flight;
 
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.plane.PlaneMcu;
 
 public class FlightPayloadBuilder
 {
-    private Flight flight;
+    private IFlight flight;
     
-    public FlightPayloadBuilder (Flight flight)
+    public FlightPayloadBuilder (IFlight flight)
     {
         this.flight = flight;
     }
@@ -29,7 +29,7 @@ public class FlightPayloadBuilder
 
     private void setFlightPayloadMixed() throws PWCGException
     {
-        for (PlaneMCU plane : flight.getPlanes())
+        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
         {
             plane.buildPlanePayload(flight);
         }
@@ -37,10 +37,10 @@ public class FlightPayloadBuilder
 
     private void setFlightPayloadHomogeneous() throws PWCGException
     {
-        PlaneMCU leadPlane = flight.getLeadPlane();
+        PlaneMcu leadPlane = flight.getFlightData().getFlightPlanes().getFlightLeader();
         IPlanePayload payload = leadPlane.buildPlanePayload(flight);
         
-        for (PlaneMCU plane : flight.getPlanes())
+        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
         {
             plane.setPlanePayload(payload);
         }
@@ -48,9 +48,9 @@ public class FlightPayloadBuilder
 
     private void initializeFuel() throws PWCGException
     {
-        for (PlaneMCU plane : flight.getPlanes())
+        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
         {
-            if (!flight.isAirStart())
+            if (!flight.getFlightData().getFlightInformation().isAirStart())
             {
                 plane.setFuel(1.0);
             }
@@ -63,8 +63,8 @@ public class FlightPayloadBuilder
 
     private boolean isHomogeneous()
     {
-        PlaneMCU leadPlane = flight.getLeadPlane();
-        for (PlaneMCU plane : flight.getPlanes())
+        PlaneMcu leadPlane = flight.getFlightData().getFlightPlanes().getFlightLeader();
+        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
         {
             if (!plane.getType().equals(leadPlane.getType()))
             {

@@ -6,20 +6,20 @@ import java.util.List;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 public class TargetTypeAttackGenerator
 {
     private TargetTypeAvailabilityInputs targetTypeAvailabilityInputs;
-    private List <TacticalTarget> preferredTargetTypes = new ArrayList<TacticalTarget>();
-    private List <TacticalTarget> longRangeTargetTypes = new ArrayList<TacticalTarget>();
+    private List <TargetType> preferredTargetTypes = new ArrayList<TargetType>();
+    private List <TargetType> longRangeTargetTypes = new ArrayList<TargetType>();
 
     public TargetTypeAttackGenerator(TargetTypeAvailabilityInputs targetTypeAvailabilityInputs)
     {
         this.targetTypeAvailabilityInputs = targetTypeAvailabilityInputs;
     }
     
-    public TacticalTarget createTargetType() throws PWCGException
+    public TargetType createTargetType() throws PWCGException
     {
         while (preferredTargetTypes.size() == 0)
         {
@@ -60,27 +60,27 @@ public class TargetTypeAttackGenerator
     
     private void formTargetPrioritiesForPlayerFlight() throws PWCGException 
     {
-        checkTargetAvailability(TacticalTarget.TARGET_ASSAULT, 2);
-        checkTargetAvailability(TacticalTarget.TARGET_DEFENSE, 2);
-        checkTargetAvailability(TacticalTarget.TARGET_ARTILLERY, 1);
-        checkTargetAvailability(TacticalTarget.TARGET_TRANSPORT, 3);
-        checkTargetAvailability(TacticalTarget.TARGET_TRAIN, 2);
-        checkTargetAvailability(TacticalTarget.TARGET_AIRFIELD, 1);
-        checkTargetAvailability(TacticalTarget.TARGET_DRIFTER, 1);
-        checkTargetAvailability(TacticalTarget.TARGET_SHIPPING, 1);
+        checkTargetAvailability(TargetType.TARGET_ASSAULT, 2);
+        checkTargetAvailability(TargetType.TARGET_DEFENSE, 2);
+        checkTargetAvailability(TargetType.TARGET_ARTILLERY, 1);
+        checkTargetAvailability(TargetType.TARGET_TRANSPORT, 3);
+        checkTargetAvailability(TargetType.TARGET_TRAIN, 2);
+        checkTargetAvailability(TargetType.TARGET_AIRFIELD, 1);
+        checkTargetAvailability(TargetType.TARGET_DRIFTER, 1);
+        checkTargetAvailability(TargetType.TARGET_SHIPPING, 1);
     }
 
     private void formTargetPrioritiesForAiFlight() throws PWCGException 
     {
-        checkTargetAvailability(TacticalTarget.TARGET_ARTILLERY, 1);
-        checkTargetAvailability(TacticalTarget.TARGET_TRANSPORT, 3);
-        checkTargetAvailability(TacticalTarget.TARGET_TRAIN, 2);
-        checkTargetAvailability(TacticalTarget.TARGET_AIRFIELD, 1);
-        checkTargetAvailability(TacticalTarget.TARGET_DRIFTER, 1);
-        checkTargetAvailability(TacticalTarget.TARGET_SHIPPING, 1);
+        checkTargetAvailability(TargetType.TARGET_ARTILLERY, 1);
+        checkTargetAvailability(TargetType.TARGET_TRANSPORT, 3);
+        checkTargetAvailability(TargetType.TARGET_TRAIN, 2);
+        checkTargetAvailability(TargetType.TARGET_AIRFIELD, 1);
+        checkTargetAvailability(TargetType.TARGET_DRIFTER, 1);
+        checkTargetAvailability(TargetType.TARGET_SHIPPING, 1);
     }
     
-    private void checkTargetAvailability(TacticalTarget targetType, int numInstancesForList) throws PWCGException
+    private void checkTargetAvailability(TargetType targetType, int numInstancesForList) throws PWCGException
     {
         TargetTypeAvailability targetTypeAvailability = new TargetTypeAvailability(targetTypeAvailabilityInputs.getSide(), targetTypeAvailabilityInputs.getDate());
         double distanceOfClosestInstanceToReference = targetTypeAvailability.getTargetTypeAvailability(
@@ -98,7 +98,7 @@ public class TargetTypeAttackGenerator
         }
     }
 
-    private void addTargetTypeToList(TacticalTarget targetType, List <TacticalTarget> targetTypes, int numInstancesForList)
+    private void addTargetTypeToList(TargetType targetType, List <TargetType> targetTypes, int numInstancesForList)
     {
         for (int i = 0; i < numInstancesForList; ++i)
         {
@@ -114,31 +114,31 @@ public class TargetTypeAttackGenerator
         }
     }
 
-    private TacticalTarget getTargetType() throws PWCGException
+    private TargetType getTargetType() throws PWCGException
     {        
-        TacticalTarget targetType = getPreferredTargetType();
-        if (targetType == TacticalTarget.TARGET_NONE)
+        TargetType targetType = getPreferredTargetType();
+        if (targetType == TargetType.TARGET_NONE)
         {
             targetType = getTargetTypeFromPrioritizedList();
         }
         return targetType;
     }
 
-    private TacticalTarget getPreferredTargetType() throws PWCGException
+    private TargetType getPreferredTargetType() throws PWCGException
     {        
         TargetPreferenceManager targetPreferenceManager = PWCGContext.getInstance().getCurrentMap().getTargetPreferenceManager();
-        TacticalTarget targetType = targetPreferenceManager.getTargetPreferenceSet().getTargetPreferenceToUse(targetTypeAvailabilityInputs.getDate(), targetTypeAvailabilityInputs.getSide());
+        TargetType targetType = targetPreferenceManager.getTargetPreferenceSet().getTargetPreferenceToUse(targetTypeAvailabilityInputs.getDate(), targetTypeAvailabilityInputs.getSide());
         if (isPreferredAvailable(targetType))
         {
             return targetType;
         }
         
-        return TacticalTarget.TARGET_NONE;
+        return TargetType.TARGET_NONE;
     }
     
-    private boolean isPreferredAvailable(TacticalTarget preferredTargetType)
+    private boolean isPreferredAvailable(TargetType preferredTargetType)
     {
-        for (TacticalTarget targetType : preferredTargetTypes)
+        for (TargetType targetType : preferredTargetTypes)
         {
             if (targetType == preferredTargetType)
             {
@@ -149,18 +149,18 @@ public class TargetTypeAttackGenerator
         return false;
     }
 
-    private TacticalTarget getTargetTypeFromPrioritizedList() throws PWCGException
+    private TargetType getTargetTypeFromPrioritizedList() throws PWCGException
     {        
-        TacticalTarget targetType = preferredTargetTypes.get(RandomNumberGenerator.getRandom(preferredTargetTypes.size()));
+        TargetType targetType = preferredTargetTypes.get(RandomNumberGenerator.getRandom(preferredTargetTypes.size()));
         return targetType;
     }
 
-    public List<TacticalTarget> getPreferredTargetTypes()
+    public List<TargetType> getPreferredTargetTypes()
     {
         return preferredTargetTypes;
     }
 
-    public List<TacticalTarget> getLongRangeTargetTypes()
+    public List<TargetType> getLongRangeTargetTypes()
     {
         return longRangeTargetTypes;
     }

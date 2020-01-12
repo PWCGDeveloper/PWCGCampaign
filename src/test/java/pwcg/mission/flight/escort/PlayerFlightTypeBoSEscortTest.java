@@ -10,7 +10,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
 import pwcg.testutils.CampaignCache;
@@ -41,8 +41,8 @@ public class PlayerFlightTypeBoSEscortTest
 
         PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);
         escortFlightValidator.validateEscortFlight();
-        assert (flight.getFlightType() == FlightTypes.ESCORT);
-        for (PlaneMCU plane : flight.getPlanes())
+        assert (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ESCORT);
+        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
         }

@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.PWCGContext;
@@ -18,7 +19,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.McuTREntity;
 
 public class WindSock
@@ -43,16 +44,17 @@ public class WindSock
 	
 	protected McuTREntity entity = new McuTREntity();
 
-    public static WindSock createWindSock(Flight flight) throws PWCGException 
+    public static WindSock createWindSock(IFlight flight) throws PWCGException 
     {
-        double takeoffOrientation = flight.getAirfield().getTakeoffLocation().getOrientation().getyOri();
+        IAirfield flightAirfield = flight.getFlightData().getFlightInformation().getAirfield();
+        double takeoffOrientation = flightAirfield.getTakeoffLocation().getOrientation().getyOri();
 
         Double angleWindSockLeft = MathUtils.adjustAngle(takeoffOrientation, -90);
         
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         ConfigManager configManager = campaign.getCampaignConfigManager();
         int windsockDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
-        Coordinate windSockCoordMoveLeft = MathUtils.calcNextCoord(flight.getAirfield().getTakeoffLocation().getPosition(), angleWindSockLeft, windsockDistance);
+        Coordinate windSockCoordMoveLeft = MathUtils.calcNextCoord(flightAirfield.getTakeoffLocation().getPosition(), angleWindSockLeft, windsockDistance);
 
         double angleBack = MathUtils.adjustAngle(takeoffOrientation, 180);
         Coordinate windsockPos = MathUtils.calcNextCoord(windSockCoordMoveLeft, angleBack, -20.0);

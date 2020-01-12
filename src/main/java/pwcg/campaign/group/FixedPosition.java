@@ -152,7 +152,7 @@ public class FixedPosition extends PWCGLocation implements Cloneable, IFixedPosi
 
     public Orientation getOrientation()
     {
-        return orientation;
+        return orientation.copy();
     }
 
     public void setOrientation(Orientation orientation)

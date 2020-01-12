@@ -6,7 +6,7 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 public class TestDriver
 {
@@ -26,8 +26,8 @@ public class TestDriver
     private TestFlightType testBombFlightType = new TestFlightType();
     private TestFlightType testStrategicBombFlightType = new TestFlightType();
     
-    private TacticalTarget testPlayerTacticalTargetType = TacticalTarget.TARGET_TRANSPORT;
-    private TacticalTarget testAITacticalTargetType = TacticalTarget.TARGET_ASSAULT;
+    private TargetType testPlayerTacticalTargetType = TargetType.TARGET_TRANSPORT;
+    private TargetType testAITacticalTargetType = TargetType.TARGET_ASSAULT;
 
     private List<SquadronMember>assignedSquadMembers = null;
 
@@ -167,7 +167,7 @@ public class TestDriver
         }
     }
 
-    public TacticalTarget getTestTacticalTargetType(boolean playerFlight) throws PWCGException
+    public TargetType getTestTacticalTargetType(boolean playerFlight) throws PWCGException
     {
         if (enabled)
         {
@@ -184,7 +184,7 @@ public class TestDriver
             }
         }
         
-        return TacticalTarget.TARGET_NONE;
+        return TargetType.TARGET_NONE;
     }
 
     public List<SquadronMember> getAssignedSquadMembers()

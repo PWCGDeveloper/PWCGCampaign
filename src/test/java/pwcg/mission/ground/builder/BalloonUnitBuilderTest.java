@@ -23,7 +23,7 @@ import pwcg.mission.MissionGroundUnitResourceManager;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderGround;
 
@@ -54,7 +54,7 @@ public class BalloonUnitBuilderTest
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
                 CountryFactory.makeCountryByCountry(Country.GERMANY), 
                 CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TacticalTarget.TARGET_BALLOON, new Coordinate (102000, 0, 100000), true);
+                TargetType.TARGET_BALLOON, new Coordinate (102000, 0, 100000), true);
 
 
         BalloonUnitBuilder groundUnitFactory = new BalloonUnitBuilder(mission, targetDefinition);
@@ -70,7 +70,7 @@ public class BalloonUnitBuilderTest
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
                 CountryFactory.makeCountryByCountry(Country.GERMANY), 
                 CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TacticalTarget.TARGET_BALLOON, new Coordinate (102000, 0, 100000), true);
+                TargetType.TARGET_BALLOON, new Coordinate (102000, 0, 100000), true);
 
 
         BalloonUnitBuilder groundUnitFactory = new BalloonUnitBuilder(mission, targetDefinition);

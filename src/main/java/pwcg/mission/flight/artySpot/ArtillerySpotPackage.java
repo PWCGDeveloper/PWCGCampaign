@@ -2,44 +2,42 @@ package pwcg.mission.flight.artySpot;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class ArtillerySpotPackage implements IFlightPackage
 {
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
 
-    public ArtillerySpotPackage(FlightInformation flightInformation)
+    public ArtillerySpotPackage(IFlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }
 
-    public Flight createPackage () throws PWCGException 
+    public IFlight createPackage () throws PWCGException 
     {
-        Flight artySpot = createFlight();
+        IFlight artySpot = createFlight();
 		return artySpot;
 	}
 
-    private Flight createFlight() throws PWCGException
+    private IFlight createFlight() throws PWCGException
     {        
-        Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
         IGroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
         Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(flightInformation.getSquadron().determineEnemySide());
-		Flight artySpot = null;
+		IFlight artySpot = null;
 		if (flightInformation.isPlayerFlight())
 		{
 		    throw new PWCGException("Player artillery spot not supported");
 		}
 		else
 		{
-            artySpot = createAiFlight(targetCoordinates, startCoords);
+            artySpot = createAiFlight(targetCoordinates);
 		}
 
-        artySpot.linkGroundUnitsToFlight(groundUnitCollection);
+        artySpot.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(groundUnitCollection);
         return artySpot;
     }
 
@@ -50,13 +48,11 @@ public class ArtillerySpotPackage implements IFlightPackage
         return targetBuilder.getGroundUnits();
     }
 
-    private Flight createAiFlight(Coordinate targetCoordinates, Coordinate startCoords) throws PWCGException
+    private IFlight createAiFlight(Coordinate targetCoordinates) throws PWCGException
     {
-        Flight artySpot;
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
-        
-        ArtillerySpotFlight artySpotAI = new ArtillerySpotFlight (flightInformation, missionBeginUnit);
-        artySpotAI.createUnitMission();
+        IFlight artySpot;        
+        ArtillerySpotFlight artySpotAI = new ArtillerySpotFlight (flightInformation);
+        artySpotAI.createFlight();
         artySpot = artySpotAI;
         return artySpot;
     }

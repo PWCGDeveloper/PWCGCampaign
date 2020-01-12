@@ -6,8 +6,8 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.plane.PlaneMcu;
 
 public class AiAdjuster
 {
@@ -20,16 +20,16 @@ public class AiAdjuster
     
     public void adjustAI(Mission mission) throws PWCGException
     {
-        for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMCU plane: flight.getAiPlanes())
+            for (PlaneMcu plane: flight.getFlightData().getFlightPlanes().getAiPlanes())
             {
                 adjustAi(plane);
             }
         }
     }
 
-    private void adjustAi(PlaneMCU plane) throws PWCGException
+    private void adjustAi(PlaneMcu plane) throws PWCGException
     {
 
         int aiSkillValue = plane.getAiLevel().getAiSkillLevel();

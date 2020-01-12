@@ -18,13 +18,13 @@ import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.attack.GroundAttackFlight;
 import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
@@ -116,7 +116,7 @@ public class FlightAiSettingsValidator
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BALLOON_DEFENSE);
-        Flight flight = (Flight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        IFlight flight = (IFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         validatePlaneAI(mission);
@@ -124,9 +124,9 @@ public class FlightAiSettingsValidator
 
     private void validatePlaneAI(Mission mission) throws PWCGException
     {
-        for (Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMCU plane : flight.getPlanes())
+            for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
             {
                 SquadronMember squadronMember = mission.getCampaign().getPersonnelManager().getAnyCampaignMember(plane.getPilot().getSerialNumber());
                 Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());

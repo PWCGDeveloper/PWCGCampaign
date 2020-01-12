@@ -11,7 +11,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.intercept.InterceptAiCoordinateGenerator;
 import pwcg.mission.flight.intercept.InterceptPlayerCoordinateGenerator;
 import pwcg.mission.target.TargetDefinition;
@@ -19,9 +19,9 @@ import pwcg.mission.utils.BehindFriendlyLinesPositionCalculator;
 
 public class TargetLocatorAir
 {
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
 
-    public TargetLocatorAir (FlightInformation flightInformation)
+    public TargetLocatorAir (IFlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }

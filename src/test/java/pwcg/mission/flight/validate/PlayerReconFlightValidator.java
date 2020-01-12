@@ -15,7 +15,7 @@ public class PlayerReconFlightValidator
 {
 	public void validateReconFlight(PlayerReconFlight flight) throws PWCGException
 	{
-		assert(flight.getWaypointPackage().getWaypointsForLeadPlane().size() > 0);
+		assert(flight.getFlightData().getWaypointPackage().getWaypointsForLeadPlane().size() > 0);
 		validateWaypointLinkage(flight);
 		validateWaypointTypes(flight);
 	}
@@ -24,7 +24,7 @@ public class PlayerReconFlightValidator
 	{
 		int photoReconSetIndex = 0;
 		McuWaypoint prevWaypoint = null;
-		for (McuWaypoint waypoint : reconFlight.getWaypointPackage().getWaypointsForLeadPlane())
+		for (McuWaypoint waypoint : reconFlight.getFlightData().getWaypointPackage().getWaypointsForLeadPlane())
 		{
 			if (prevWaypoint != null)
 			{
@@ -76,7 +76,7 @@ public class PlayerReconFlightValidator
 		WaypointPriorityValidator.validateWaypointTypes(flight);
 		
         boolean reconFound = false;
-		for (McuWaypoint waypoint : flight.getWaypointPackage().getWaypointsForLeadPlane())
+		for (McuWaypoint waypoint : flight.getFlightData().getWaypointPackage().getWaypointsForLeadPlane())
 		{
 			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_RECON))
 			{

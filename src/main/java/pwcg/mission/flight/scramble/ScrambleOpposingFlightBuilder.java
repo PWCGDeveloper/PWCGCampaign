@@ -3,40 +3,37 @@ package pwcg.mission.flight.scramble;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.campaign.api.IAirfield;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.utils.MathUtils;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plot.FlightInformationFactory;
 
 public class ScrambleOpposingFlightBuilder
 {
-    private FlightInformation playerFlightInformation;
+    private IFlightInformation playerFlightInformation;
 
-    public ScrambleOpposingFlightBuilder(FlightInformation playerFlightInformation)
+    public ScrambleOpposingFlightBuilder(IFlightInformation playerFlightInformation)
     {
         this.playerFlightInformation = playerFlightInformation;
     }
 
-    public List<ScrambleOpposingFlight> buildOpposingFlights() throws PWCGException
+    public List<IFlight> buildOpposingFlights() throws PWCGException
     {
         ScrambleOpposingFlightSquadronChooser opposingFlightSquadronChooser = new ScrambleOpposingFlightSquadronChooser(playerFlightInformation);
         List<Squadron> opposingSquadrons = opposingFlightSquadronChooser.getOpposingSquadrons();            
         return createOpposingFlights(opposingSquadrons);
     }
     
-    private List<ScrambleOpposingFlight> createOpposingFlights(List<Squadron> opposingSquadrons) throws PWCGException
+    private List<IFlight> createOpposingFlights(List<Squadron> opposingSquadrons) throws PWCGException
     {
-        List<ScrambleOpposingFlight> opposingFlights = new ArrayList<>();
+        List<IFlight> opposingFlights = new ArrayList<>();
         for (Squadron squadron : opposingSquadrons)
         {
-            ScrambleOpposingFlight opposingFlight = createOpposingFlight(squadron);
+            IFlight opposingFlight = createOpposingFlight(squadron);
             if (opposingFlight != null)
             {
                 opposingFlights.add(opposingFlight);
@@ -45,56 +42,83 @@ public class ScrambleOpposingFlightBuilder
         return opposingFlights;
     }
 
-    private ScrambleOpposingFlight createOpposingFlight(Squadron opposingSquadron) throws PWCGException
+    private IFlight createOpposingFlight(Squadron opposingSquadron) throws PWCGException
     {
-        ScrambleOpposingFlight ScrambleOpposingFlight = null;
+        IFlight ScrambleOpposingFlight = null;
         String opposingFieldName = opposingSquadron.determineCurrentAirfieldName(playerFlightInformation.getCampaign().getDate());
         if (opposingFieldName != null)
         {
-            Coordinate startingPosition = determineOpposingFlightStartPosition(opposingFieldName);
-            ScrambleOpposingFlight = buildOpposingFlight(opposingSquadron, startingPosition);
+            ScrambleOpposingFlight = buildOpposingFlight(opposingSquadron);
         }
         
         return ScrambleOpposingFlight;
     }
 
-    private Coordinate determineOpposingFlightStartPosition(String opposingFieldName) throws PWCGException
+    private IFlight buildOpposingFlight(Squadron opposingSquadron) throws PWCGException 
     {
-        IAirfield opposingField =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(opposingFieldName);
-        double angleFromFieldToTarget = MathUtils.calcAngle(playerFlightInformation.getTargetPosition(), opposingField.getPosition());
-            
-        double distancePlayerFromTarget = MathUtils.calcDist(playerFlightInformation.getSquadron().determineCurrentPosition(
-                playerFlightInformation.getCampaign().getDate()), playerFlightInformation.getTargetPosition());
-        Coordinate startingPosition = MathUtils.calcNextCoord(playerFlightInformation.getTargetPosition(), angleFromFieldToTarget, distancePlayerFromTarget);
-        return startingPosition;
-    }
-
-    private ScrambleOpposingFlight buildOpposingFlight(Squadron opposingSquadron, Coordinate startingPosition) throws PWCGException 
-    {
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startingPosition.copy());
         FlightTypes opposingFlightType = getFlightType(opposingSquadron);
         
-        FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(
-                opposingSquadron, playerFlightInformation.getMission(), opposingFlightType);
-        ScrambleOpposingFlight opposingFlight = new ScrambleOpposingFlight (opposingFlightInformation, missionBeginUnit);
-        opposingFlight.createUnitMission();
-        opposingFlight.getMissionBeginUnit().setStartTime(2);                
-        return opposingFlight;
+        IFlightInformation opposingFlightInformation = FlightInformationFactory.buildAiScrambleOpposingFlightInformation(
+                opposingSquadron, playerFlightInformation, opposingFlightType);
+        
+        if (opposingFlightType == FlightTypes.PATROL)
+        {
+            ScrambleOpposingFighterFlight opposingFlight = new ScrambleOpposingFighterFlight (opposingFlightInformation);
+            opposingFlight.createFlight();
+            return opposingFlight;            
+        }
+        else if (opposingFlightType == FlightTypes.BOMB)
+        {
+            ScrambleOpposingBombFlight opposingFlight = new ScrambleOpposingBombFlight (opposingFlightInformation);
+            opposingFlight.createFlight();
+            return opposingFlight;            
+        }
+        else if (opposingFlightType == FlightTypes.DIVE_BOMB)
+        {
+            ScrambleOpposingDiveBombFlight opposingFlight = new ScrambleOpposingDiveBombFlight (opposingFlightInformation);
+            opposingFlight.createFlight();
+            return opposingFlight;            
+        }
+        else if (opposingFlightType == FlightTypes.GROUND_ATTACK)
+        {
+            ScrambleOpposingGroundAttackFlight opposingFlight = new ScrambleOpposingGroundAttackFlight (opposingFlightInformation);
+            opposingFlight.createFlight();
+            return opposingFlight;            
+        }
+        else 
+        {
+            throw new PWCGException("No valid scramble flight type generated " + opposingSquadron.getFileName());
+        }
     }
     
     private FlightTypes getFlightType(Squadron opposingSquadron) throws PWCGException
     {
-        if (opposingSquadron.determineSquadronPrimaryRole(playerFlightInformation.getCampaign().getDate()) == Role.ROLE_ATTACK)
+        List<FlightTypes> possibleOpposingFlightTypes = new ArrayList<>();
+        
+        if (opposingSquadron.isSquadronThisRole(playerFlightInformation.getCampaign().getDate(), Role.ROLE_ATTACK))
         {
-            return FlightTypes.GROUND_ATTACK;
+            possibleOpposingFlightTypes.add(FlightTypes.GROUND_ATTACK);
         }
-        else if (opposingSquadron.determineSquadronPrimaryRole(playerFlightInformation.getCampaign().getDate()) == Role.ROLE_DIVE_BOMB)
+        if (opposingSquadron.isSquadronThisRole(playerFlightInformation.getCampaign().getDate(), Role.ROLE_DIVE_BOMB))
         {   
-            return FlightTypes.DIVE_BOMB;
+            possibleOpposingFlightTypes.add(FlightTypes.DIVE_BOMB);
         }
-        else
+        if (opposingSquadron.isSquadronThisRole(playerFlightInformation.getCampaign().getDate(), Role.ROLE_BOMB))
+        {   
+            possibleOpposingFlightTypes.add(FlightTypes.BOMB);
+        }
+        if (opposingSquadron.isSquadronThisRole(playerFlightInformation.getCampaign().getDate(), Role.ROLE_FIGHTER))
         {
-            return FlightTypes.BOMB;            
+            possibleOpposingFlightTypes.add(FlightTypes.PATROL);
         }
+        
+        if (possibleOpposingFlightTypes.size() == 0) 
+        {
+            throw new PWCGException("No valid scramble opposing flight role for squadron " + opposingSquadron.getFileName());
+        }
+        
+     
+        int index = RandomNumberGenerator.getRandom(possibleOpposingFlightTypes.size());
+        return possibleOpposingFlightTypes.get(index);
     }
 }

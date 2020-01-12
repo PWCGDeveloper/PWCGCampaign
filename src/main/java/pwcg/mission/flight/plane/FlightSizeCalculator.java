@@ -9,16 +9,16 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlightInformation;
 
 public class FlightSizeCalculator 
 {
 	private ConfigManagerCampaign configManager;
-	private FlightInformation flightInformation;
+	private IFlightInformation flightInformation;
 
-	public FlightSizeCalculator(FlightInformation flightInformation)
+	public FlightSizeCalculator(IFlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
         configManager = flightInformation.getCampaign().getCampaignConfigManager();
@@ -34,7 +34,7 @@ public class FlightSizeCalculator
         
     	if (flightType == FlightTypes.ARTILLERY_SPOT|| flightType == FlightTypes.CONTACT_PATROL ||
    		    flightType == FlightTypes.SPY_EXTRACT || flightType == FlightTypes.LONE_WOLF ||
-            flightType == FlightTypes.RECON || flightType == FlightTypes.PORT_RECON)
+            flightType == FlightTypes.RECON)
     	{
     		minNumPlanes = 1;
     		randomNumPlanes = 0;

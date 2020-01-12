@@ -23,8 +23,6 @@ public interface IProductSpecificConfiguration
     int getInterceptInnerLoopDistance();
     int getInterceptLoopAngle();
     int getClimbDistance();
-    int getBombApproachDistance();
-    int getBombFinalApproachDistance();
     int getMinClimbWPAlt();
     int getLargeMissionRadius();
     int getMediumMissionRadius();
@@ -39,8 +37,14 @@ public interface IProductSpecificConfiguration
     int getAircraftSpacingHorizontal();
     int getAircraftSpacingVertical();
     int getTakeoffSpacing();
-    int getRendezvousDistanceFromFront();
     int getAdditionalAltitudeForEscort();
     int getScrambleOpposeMinDistance();
     int getScrambleOpposeMaxDistance();
+    int getDefaultIngressDistanceFromFront();
+    int getBombApproachDistance();
+    int getBombFinalApproachDistance();
+    int getAttackAreaTriggerRadius();
+    int getAttackAreaSelectTargetRadius();
+    int getAttackAreaBombDropRadius();
+    int getRendezvousDistanceFromFront();
 }

@@ -1,24 +1,22 @@
 package pwcg.mission.flight.attack;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class GroundAttackPackage implements IFlightPackage
 {
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
 
-    public GroundAttackPackage(FlightInformation flightInformation)
+    public GroundAttackPackage(IFlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }
 
-	public Flight createPackage () throws PWCGException 
+	public IFlight createPackage () throws PWCGException 
 	{
 	    IGroundUnitCollection groundUnits = createGroundUnitsForFlight();
         GroundAttackFlight groundAttackFlight = createFlight(groundUnits);
@@ -27,11 +25,9 @@ public class GroundAttackPackage implements IFlightPackage
 
     private GroundAttackFlight createFlight(IGroundUnitCollection groundUnitCollection) throws PWCGException
     {
-        Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
-        GroundAttackFlight groundAttackFlight = new GroundAttackFlight (flightInformation, missionBeginUnit);
-		groundAttackFlight.linkGroundUnitsToFlight(groundUnitCollection);
-		groundAttackFlight.createUnitMission();
+        GroundAttackFlight groundAttackFlight = new GroundAttackFlight (flightInformation);
+		groundAttackFlight.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(groundUnitCollection);
+		groundAttackFlight.createFlight();
         return groundAttackFlight;
     }
 

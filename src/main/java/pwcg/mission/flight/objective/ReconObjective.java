@@ -10,7 +10,7 @@ public class ReconObjective
     {
         String objective = "";
 
-        String objectiveName =  MissionObjective.formMissionObjectiveLocation(flight.getTargetPosition().copy());
+        String objectiveName =  MissionObjective.formMissionObjectiveLocation(flight.getFlightData().getFlightInformation().getTargetPosition().copy());
         if (flight.getReconFlightType() == ReconFlightTypes.RECON_FLIGHT_TRANSPORT)
         {
             if (!objectiveName.isEmpty())

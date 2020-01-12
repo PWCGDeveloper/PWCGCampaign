@@ -8,16 +8,18 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.FlightPlaneBuilder;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.target.ITargetDefinitionBuilder;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderFactory;
 
 public class FlightInformationFactory
 {
 
-    public static FlightInformation buildPlayerFlightInformation(Squadron squadron, Mission mission, FlightTypes flightType) throws PWCGException
+    public static IFlightInformation buildPlayerFlightInformation(Squadron squadron, Mission mission, FlightTypes flightType) throws PWCGException
     {    	
         FlightInformation playerFlightInformation = new FlightInformation(mission);
         playerFlightInformation.setFlightType(flightType);
@@ -31,11 +33,11 @@ public class FlightInformationFactory
         buildTargetDefinition (playerFlightInformation);
         buildPlanes (playerFlightInformation);
         setAltitude (playerFlightInformation);
-
+        
         return playerFlightInformation;
     }
 
-    public static FlightInformation buildAiFlightInformation(Squadron squadron, Mission mission, FlightTypes flightType) throws PWCGException
+    public static IFlightInformation buildAiFlightInformation(Squadron squadron, Mission mission, FlightTypes flightType) throws PWCGException
     {
         FlightInformation aiFlightInformation = new FlightInformation(mission);
         aiFlightInformation.setFlightType(flightType);
@@ -53,7 +55,7 @@ public class FlightInformationFactory
         return aiFlightInformation;
     }
 
-    public static FlightInformation buildEscortForPlayerFlightInformation(FlightInformation playerFlightInformation, 
+    public static IFlightInformation buildEscortForPlayerFlightInformation(IFlightInformation playerFlightInformation, 
             Squadron friendlyFighterSquadron,
             Coordinate rendezvous) throws PWCGException
     {
@@ -75,13 +77,8 @@ public class FlightInformationFactory
 
         return escortFlightInformation;
     }
-    
-    private static void setAltitude(FlightInformation flightInformation) throws PWCGException
-    {
-        flightInformation.calculateAltitude();
-    }
 
-    public static FlightInformation buildEscortedByPlayerFlightInformation(FlightInformation escortFlightInformation, Squadron friendlyBomberSquadron) throws PWCGException
+    public static IFlightInformation buildEscortedByPlayerFlightInformation(IFlightInformation escortFlightInformation, Squadron friendlyBomberSquadron) throws PWCGException
     {
         FlightInformation escortedFlightInformation = new FlightInformation(escortFlightInformation.getMission());
         escortedFlightInformation.setFlightType(FlightTypes.BOMB);
@@ -96,25 +93,56 @@ public class FlightInformationFactory
         buildTargetDefinition (escortedFlightInformation);
         escortedFlightInformation.setAltitude(escortFlightInformation.getAltitude() - 500);
 
+
         return escortedFlightInformation;
     }
 
-    public static void buildTargetDefinition (FlightInformation flightInformation) throws PWCGException
+
+    public static IFlightInformation buildAiScrambleOpposingFlightInformation(Squadron opposingSquadron, IFlightInformation playerFlightInformation, FlightTypes opposingFlightType) throws PWCGException
+    {
+        FlightInformation scrambleOpposingFlightInformation = new FlightInformation(playerFlightInformation.getMission());
+        scrambleOpposingFlightInformation.setFlightType(opposingFlightType);
+        scrambleOpposingFlightInformation.setMission(playerFlightInformation.getMission());
+        scrambleOpposingFlightInformation.setCampaign(playerFlightInformation.getCampaign());
+        scrambleOpposingFlightInformation.setSquadron(opposingSquadron);
+        scrambleOpposingFlightInformation.setPlayerFlight(false);
+        scrambleOpposingFlightInformation.setEscortForPlayerFlight(false);
+        scrambleOpposingFlightInformation.setEscortedByPlayerFlight(false);
+        scrambleOpposingFlightInformation.setTargetSearchStartLocation(playerFlightInformation.getTargetPosition());
+        buildPlanes (scrambleOpposingFlightInformation);
+        setAltitude (scrambleOpposingFlightInformation);
+        buildSpecificTargetDefinition (scrambleOpposingFlightInformation, TargetType.TARGET_AIRFIELD);
+
+        return scrambleOpposingFlightInformation;
+    }
+    
+    private static void setAltitude(IFlightInformation flightInformation) throws PWCGException
+    {
+        flightInformation.calculateAltitude();
+    }
+
+    private static void buildTargetDefinition (FlightInformation flightInformation) throws PWCGException
     {
         ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinition();
         flightInformation.setTargetDefinition(targetDefinition);
     }
 
+    private static void buildSpecificTargetDefinition (FlightInformation flightInformation, TargetType targetType) throws PWCGException
+    {
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildSpecificTargetDefinition(targetType);
+        flightInformation.setTargetDefinition(targetDefinition);
+    }
+
     private static void buildPlanes(FlightInformation playerFlightInformation) throws PWCGException
     {
         FlightPlaneBuilder flightPlaneBuilder = new FlightPlaneBuilder(playerFlightInformation);
-        List<PlaneMCU> planes = flightPlaneBuilder.createPlanesForFlight();
+        List<PlaneMcu> planes = flightPlaneBuilder.createPlanesForFlight();
         if (planes.size() == 0)
         {
             throw new PWCGException("No planes for flight");
         }
         playerFlightInformation.setPlanes(planes);
     }
-
 }

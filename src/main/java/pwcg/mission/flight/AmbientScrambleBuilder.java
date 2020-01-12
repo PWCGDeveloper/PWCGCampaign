@@ -5,6 +5,7 @@ import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.scramble.AirfieldScramblePackage;
 
 public class AmbientScrambleBuilder
 {
@@ -17,10 +18,10 @@ public class AmbientScrambleBuilder
         this.mission = mission;
     }
 
-    public Flight addPossibleEnemyScramble(Side side, Coordinate airfielPosition) throws PWCGException
+    public IFlight addPossibleEnemyScramble(Side side, Coordinate airfielPosition) throws PWCGException
     {
-        PackageAirfieldScramble packageAirfieldScramble = new PackageAirfieldScramble(mission, campaign, side, airfielPosition);
-        Flight enemyScramble = packageAirfieldScramble.createEnemyScramble();
+        AirfieldScramblePackage packageAirfieldScramble = new AirfieldScramblePackage(mission, campaign, side, airfielPosition);
+        IFlight enemyScramble = packageAirfieldScramble.createEnemyScramble();
         return enemyScramble;
     }
 

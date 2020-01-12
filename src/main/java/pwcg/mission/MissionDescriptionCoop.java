@@ -8,7 +8,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.options.MapWeather;
 import pwcg.mission.options.MissionOptions;
 
@@ -48,7 +48,7 @@ public class MissionDescriptionCoop implements IMissionDescription
 
         buildTitleDescription(campaign.getCampaignData().getName());
         
-        for (Flight flight : mission.getMissionFlightBuilder().getAiFlights())
+        for (IFlight flight : mission.getMissionFlightBuilder().getAiFlights())
         {
             setFlight(flight);
         }
@@ -104,14 +104,14 @@ public class MissionDescriptionCoop implements IMissionDescription
         this.title = campaignName + " " + campaignDateString + " Coop Mission";
     }
 
-    public void setFlight(Flight flight) throws PWCGException
+    public void setFlight(IFlight flight) throws PWCGException
     {
         Campaign campaign = PWCGContext.getInstance().getCampaign();
 
-        String squadron = flight.getSquadron().determineDisplayName(campaign.getDate());
-        String aircraft = flight.getPlanes().get(0).getDisplayName();
+        String squadron = flight.getFlightData().getFlightInformation().getSquadron().determineDisplayName(campaign.getDate());
+        String aircraft = flight.getFlightData().getFlightPlanes().getFlightLeader().getDisplayName();
 
-        if (flight.getSquadron().determineSide() == Side.AXIS)
+        if (flight.getFlightData().getFlightInformation().getSquadron().determineSide() == Side.AXIS)
         {
             String axisInt = "    " + squadron + " flying " + aircraft;
             axisIntList.add(axisInt + "\n");

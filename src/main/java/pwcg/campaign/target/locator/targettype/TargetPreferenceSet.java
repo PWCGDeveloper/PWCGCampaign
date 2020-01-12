@@ -7,7 +7,7 @@ import java.util.List;
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 public class TargetPreferenceSet
 {
@@ -23,10 +23,10 @@ public class TargetPreferenceSet
         this.targetPreferences = targetPreferences;
     }
 
-    public TacticalTarget getTargetPreferenceToUse(Date date, Side side) throws PWCGException 
+    public TargetType getTargetPreferenceToUse(Date date, Side side) throws PWCGException 
     {
         TargetPreference selectedTargetPreference = getTargetPreferenceForDate(date, side);
-        TacticalTarget targetType = getPreferredTargetType(selectedTargetPreference);
+        TargetType targetType = getPreferredTargetType(selectedTargetPreference);
         return targetType;
     }
 
@@ -43,9 +43,9 @@ public class TargetPreferenceSet
         return selectedTargetPreference;
     }
 
-    private TacticalTarget getPreferredTargetType(TargetPreference selectedTargetPreference)
+    private TargetType getPreferredTargetType(TargetPreference selectedTargetPreference)
     {
-        TacticalTarget targetType = TacticalTarget.TARGET_NONE;        
+        TargetType targetType = TargetType.TARGET_NONE;        
         if (selectedTargetPreference != null)
         {
             int roll = RandomNumberGenerator.getRandom(100);

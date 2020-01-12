@@ -19,7 +19,7 @@ import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.PatrolFlightValidator;
 import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.testutils.CampaignCache;
@@ -48,7 +48,7 @@ public class PlayerFlightTypeBoSFighterTest
 		
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
-        assert(flight.getFlightType() == FlightTypes.PATROL);
+        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.PATROL);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
@@ -64,7 +64,7 @@ public class PlayerFlightTypeBoSFighterTest
 		
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
-        assert(flight.getFlightType() == FlightTypes.INTERCEPT);
+        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.INTERCEPT);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
@@ -80,7 +80,7 @@ public class PlayerFlightTypeBoSFighterTest
 		
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
-        assert(flight.getFlightType() == FlightTypes.OFFENSIVE);
+        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.OFFENSIVE);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
@@ -96,7 +96,7 @@ public class PlayerFlightTypeBoSFighterTest
 		
 		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);
 		escortFlightValidator.validateEscortFlight();
-        assert(flight.getFlightType() == FlightTypes.ESCORT);
+        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ESCORT);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
@@ -112,7 +112,7 @@ public class PlayerFlightTypeBoSFighterTest
         
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
-        assert(flight.getFlightType() == FlightTypes.SCRAMBLE);
+        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
@@ -122,7 +122,7 @@ public class PlayerFlightTypeBoSFighterTest
 	{
         assert (targetDefinition.getAttackingCountry() != null);
         assert (targetDefinition.getTargetCountry() != null);
-        assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
-        assert (targetDefinition.getTargetType() != TacticalTarget.TARGET_NONE);
+        assert (targetDefinition.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
+        assert (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
 	}
 }

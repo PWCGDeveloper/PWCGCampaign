@@ -18,7 +18,7 @@ import pwcg.mission.ground.unittypes.artillery.GroundAAArtilleryBattery;
 import pwcg.mission.ground.unittypes.artillery.GroundAAMachineGunBattery;
 import pwcg.mission.ground.unittypes.artillery.SearchLightUnit;
 import pwcg.mission.mcu.Coalition;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 public class AAAUnitBuilder
 {    
@@ -42,7 +42,7 @@ public class AAAUnitBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
                 "AA MG Battery", 
-                TacticalTarget.TARGET_INFANTRY,
+                TargetType.TARGET_INFANTRY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
@@ -73,7 +73,7 @@ public class AAAUnitBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
                 "AA Artillery Battery", 
-                TacticalTarget.TARGET_INFANTRY,
+                TargetType.TARGET_INFANTRY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
@@ -94,7 +94,7 @@ public class AAAUnitBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
                 "AA Artillery Battery With Search Light", 
-                TacticalTarget.TARGET_INFANTRY,
+                TargetType.TARGET_INFANTRY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
@@ -112,7 +112,7 @@ public class AAAUnitBuilder
 
         boolean isPlayerTarget = false;
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                campaign, country, name, TacticalTarget.TARGET_DEFENSE, position, position, Orientation.createRandomOrientation(), isPlayerTarget);
+                campaign, country, name, TargetType.TARGET_DEFENSE, position, position, Orientation.createRandomOrientation(), isPlayerTarget);
         
         groundUnitInformation.setUnitSize(groundUnitSize);
         return groundUnitInformation;
@@ -134,7 +134,7 @@ public class AAAUnitBuilder
 
         boolean isPlayerTarget = false;
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                campaign, country, name, TacticalTarget.TARGET_DEFENSE, position, position, Orientation.createRandomOrientation(), isPlayerTarget);
+                campaign, country, name, TargetType.TARGET_DEFENSE, position, position, Orientation.createRandomOrientation(), isPlayerTarget);
         
         groundUnitInformation.setUnitSize(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
         return groundUnitInformation;

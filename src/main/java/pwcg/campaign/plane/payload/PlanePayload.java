@@ -8,7 +8,7 @@ import java.util.TreeMap;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 
 public abstract class PlanePayload implements IPlanePayload
 {
@@ -135,6 +135,6 @@ public abstract class PlanePayload implements IPlanePayload
         return "";
     }
     
-    abstract public int createWeaponsPayload(Flight flight) throws PWCGException;
+    abstract public int createWeaponsPayload(IFlight flight) throws PWCGException;
     abstract protected void initialize();
 }

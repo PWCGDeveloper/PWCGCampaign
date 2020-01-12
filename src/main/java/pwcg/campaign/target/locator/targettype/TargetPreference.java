@@ -3,14 +3,14 @@ package pwcg.campaign.target.locator.targettype;
 import java.util.Date;
 
 import pwcg.campaign.api.Side;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 public class TargetPreference
 {
     private Date startDate;
     private Date endDate;
     private Side targetSide;
-    private TacticalTarget targetType;
+    private TargetType targetType;
     private int oddsOfUse;
 
     public Date getStartDate()
@@ -43,12 +43,12 @@ public class TargetPreference
         this.targetSide = targetSide;
     }
 
-    public TacticalTarget getTargetType()
+    public TargetType getTargetType()
     {
         return targetType;
     }
 
-    public void setTargetType(TacticalTarget targetType)
+    public void setTargetType(TargetType targetType)
     {
         this.targetType = targetType;
     }

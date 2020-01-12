@@ -5,14 +5,14 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.effect.FirePotSeries;
 
 public class FirePotBuilder
 {
-    public FirePotSeries createFirePots(Flight flight) throws PWCGException 
+    public FirePotSeries createFirePots(IFlight flight) throws PWCGException 
     {
-        IAirfield airfield = flight.getSquadron().determineCurrentAirfieldAnyMap(flight.getCampaign().getDate());
+        IAirfield airfield = flight.getFlightData().getFlightInformation().getSquadron().determineCurrentAirfieldAnyMap(flight.getCampaign().getDate());
 
         FirePotSeries firePotSeries = new FirePotSeries();
 

@@ -7,12 +7,12 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.IFlightPlanes;
 
 public class FormationGenerator
 {
-    public List<Coordinate> createPlaneInitialPosition(
-                    List <PlaneMCU> planes, 
+    public static List<Coordinate> createPlaneFormationPositions(
+                    IFlightPlanes planes, 
                     Coordinate startPosition,
                     Orientation orientation) throws PWCGException 
     {
@@ -21,7 +21,7 @@ public class FormationGenerator
         Coordinate leadPlaneCoords = startPosition.copy();
         flightCoordinates.add(leadPlaneCoords.copy());
         
-        for (int i = 1; i < planes.size(); ++i)
+        for (int i = 1; i < planes.getPlanes().size(); ++i)
         {
             double echelonLeftAngle = MathUtils.adjustAngle(orientation.getyOri(), 330);
             double metersSpacing = 120.0;

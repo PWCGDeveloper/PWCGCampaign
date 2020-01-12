@@ -15,8 +15,8 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.mission.MissionStringHandler;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.CoalitionFactory;
 import pwcg.mission.mcu.McuDelete;
 import pwcg.mission.mcu.McuProximity;
@@ -42,12 +42,12 @@ public class PlaneRemoverCoop implements IPlaneRemover
         index = IndexGenerator.getInstance().getNextIndex();
     }
 
-    public void initialize(Flight flight, PlaneMCU planeToRemove, PlaneMCU playerPlane) throws PWCGException 
+    public void initialize(IFlight flight, PlaneMcu planeToRemove, PlaneMcu playerPlane) throws PWCGException 
     {
         initialize(flight, planeToRemove);
     }
     
-    protected void initialize(Flight flight, PlaneMCU planeToRemove) throws PWCGException 
+    protected void initialize(IFlight flight, PlaneMcu planeToRemove) throws PWCGException 
     {
         outOfEnemyRangeProximity = new McuProximity();
         outOfEnemyRangeProximity.addCoalition(CoalitionFactory.getFriendlyCoalition(planeToRemove.getCountry()));
@@ -98,11 +98,11 @@ public class PlaneRemoverCoop implements IPlaneRemover
         outOfEnemyRangeProximity.setObject(planeToRemove.getEntity().getIndex());
     }
 
-    protected void makeSubtitles(Flight flight, PlaneMCU plane) throws PWCGException
+    protected void makeSubtitles(IFlight flight, PlaneMcu plane) throws PWCGException
     {
         Coordinate coordinate = plane.getPosition().copy();
         
-        Squadron squadron = flight.getSquadron();
+        Squadron squadron = flight.getFlightData().getFlightInformation().getSquadron();
         
         Date campaignDate = flight.getCampaign().getDate();
         

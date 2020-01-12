@@ -7,26 +7,27 @@ import pwcg.campaign.target.locator.targettype.StrategicTargetTypeGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.target.locator.StrategicTargetLocator;
 
 public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilder
 {
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
     private TargetDefinition targetDefinition = new TargetDefinition();
 
-    public TargetDefinitionBuilderStrategic (FlightInformation flightInformation)
+    public TargetDefinitionBuilderStrategic (IFlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }
 
+    @Override
     public TargetDefinition buildTargetDefinition () throws PWCGException
     {
         Coordinate missionCenter = flightInformation.getMission().getMissionBorders().getCenter();
 
         ICountry targetCountry = flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate());
         StrategicTargetTypeGenerator strategicTargetTypeGenerator = new StrategicTargetTypeGenerator(targetCountry.getSide(), flightInformation.getCampaign().getDate(), missionCenter);
-        TacticalTarget targetType = strategicTargetTypeGenerator.createTargetType(flightInformation.getMission().getMissionBorders().getAreaRadius());
+        TargetType targetType = strategicTargetTypeGenerator.createTargetType(flightInformation.getMission().getMissionBorders().getAreaRadius());
 
         TargetRadius targetRadius = new TargetRadius();
         targetRadius.calculateTargetRadius(flightInformation.getFlightType(), flightInformation.getMission().getMissionBorders().getAreaRadius());
@@ -52,6 +53,17 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
         targetDefinition.setTargetPosition(place.getPosition());
         targetDefinition.setTargetOrientation(new Orientation());
 
+        return targetDefinition;
+    }
+    
+
+    @Override
+    public TargetDefinition buildSpecificTargetDefinition(TargetType targetType) throws PWCGException
+    {
+        buildTargetDefinition();          
+        Coordinate targetLocation = flightInformation.getTargetPosition();
+        targetDefinition.setTargetPosition(targetLocation);
+        targetDefinition.setTargetOrientation(new Orientation());
         return targetDefinition;
     }
 }

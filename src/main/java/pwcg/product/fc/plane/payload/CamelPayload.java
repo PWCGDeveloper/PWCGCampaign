@@ -4,8 +4,8 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 
 public class CamelPayload extends PlanePayload implements IPlanePayload
 {
@@ -29,17 +29,17 @@ public class CamelPayload extends PlanePayload implements IPlanePayload
         return super.copy(clone);
     }
 
-    public int createWeaponsPayload(Flight flight)
+    public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
-        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
         {
             selectBombingPayload(flight);
         }
         return selectedPrimaryPayloadId;
     }
 
-    protected void selectBombingPayload(Flight flight)
+    protected void selectBombingPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 2;
     }

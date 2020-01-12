@@ -1,24 +1,22 @@
 package pwcg.mission.flight.contactpatrol;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class ContactPatrolPackage implements IFlightPackage
 {
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
 
-    public ContactPatrolPackage(FlightInformation flightInformation)
+    public ContactPatrolPackage(IFlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }
 
-    public Flight createPackage () throws PWCGException 
+    public IFlight createPackage () throws PWCGException 
 	{
         IGroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
         ContactPatrolFlight contactPatrol = createFlight(groundUnitCollection);
@@ -27,11 +25,9 @@ public class ContactPatrolPackage implements IFlightPackage
 
     private ContactPatrolFlight createFlight(IGroundUnitCollection groundUnitCollection) throws PWCGException
     {
-        Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
-        ContactPatrolFlight contactPatrol = new ContactPatrolFlight (flightInformation, missionBeginUnit);
-        contactPatrol.createUnitMission();
-        contactPatrol.linkGroundUnitsToFlight(groundUnitCollection);
+        ContactPatrolFlight contactPatrol = new ContactPatrolFlight (flightInformation);
+        contactPatrol.createFlight();
+        contactPatrol.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(groundUnitCollection);
         return contactPatrol;
     }
 

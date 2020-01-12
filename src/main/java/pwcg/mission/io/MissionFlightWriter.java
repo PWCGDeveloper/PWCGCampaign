@@ -6,9 +6,8 @@ import java.util.List;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.mission.IUnit;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.group.PlaneCounter;
 
 public class MissionFlightWriter 
@@ -30,14 +29,14 @@ public class MissionFlightWriter
         }
 	}
 
-    private void writeFlights(List<Flight> flights, BufferedWriter writer) throws PWCGException
+    private void writeFlights(List<IFlight> flights, BufferedWriter writer) throws PWCGException
     {
-        for (Flight flight : flights)
+        for (IFlight flight : flights)
         {
             flight.write(writer);
-            for (IUnit linkedUnit : flight.getLinkedUnits())
+            for (IFlight linkedFlight : flight.getFlightData().getLinkedFlights().getLinkedFlights())
             {
-                linkedUnit.write(writer);
+                linkedFlight.write(writer);
             }
         }
     }

@@ -5,9 +5,8 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plot.FlightInformationFactory;
 import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointType;
@@ -15,9 +14,9 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class PlayerEscortBuilder
 {
-    public Flight createEscortForPlayerFlight(Flight playerFlight) throws PWCGException 
+    public IFlight createEscortForPlayerFlight(IFlight playerFlight) throws PWCGException 
     {
-        FlightInformation playerFlightInformation = playerFlight.getFlightInformation();
+        IFlightInformation playerFlightInformation = playerFlight.getFlightData().getFlightInformation();
         
         Squadron friendlyFighterSquadron = PWCGContext.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
                         playerFlightInformation.getCampaign(), 
@@ -26,19 +25,17 @@ public class PlayerEscortBuilder
                         playerFlightInformation.getSquadron().determineSquadronCountry(playerFlightInformation.getCampaign().getDate()).getSide());
 
         if (friendlyFighterSquadron != null)
-        {
-            MissionBeginUnit missionBeginUnitEscort = new MissionBeginUnit(playerFlightInformation.getDepartureAirfield().getPosition());
-            
-            McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getAllFlightWaypoints(), 
+        {          
+            McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getFlightData().getWaypointPackage().getAllWaypoints(), 
                     WaypointType.INGRESS_WAYPOINT.getName());
 
             if (rendezvousWP != null)
             {
                 Coordinate rendezvous = rendezvousWP.getPosition().copy();
-                FlightInformation escortFlightInformation = FlightInformationFactory.buildEscortForPlayerFlightInformation(playerFlight.getFlightInformation(), 
+                IFlightInformation escortFlightInformation = FlightInformationFactory.buildEscortForPlayerFlightInformation(playerFlight.getFlightData().getFlightInformation(), 
                         friendlyFighterSquadron, rendezvous);
-                EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, missionBeginUnitEscort, playerFlight);
-                escortForPlayerFlight.createUnitMission();       
+                EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, playerFlight);
+                escortForPlayerFlight.createFlight();       
                 return escortForPlayerFlight;
             }
         }

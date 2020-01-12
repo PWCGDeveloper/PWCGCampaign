@@ -18,7 +18,7 @@ import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.plane.PlaneMcu;
 
 public class AirfieldBuilderArras 
 {    
@@ -79,7 +79,7 @@ public class AirfieldBuilderArras
                 line = line.trim();
                 if (line.startsWith(DevIOConstants.PLANE))
                 {
-                    PlaneMCU planeThatMarksRunway = PlaneIO.readBlock(reader);
+                    PlaneMcu planeThatMarksRunway = PlaneIO.readBlock(reader);
                     String markerPlaneName = planeThatMarksRunway.getScript().toLowerCase();
                     if (markerPlaneName.contains("he111"))
                     {
@@ -130,7 +130,7 @@ public class AirfieldBuilderArras
         }
     }
 
-    private PWCGLocation getPositionFromPlane(PlaneMCU planeThatMarksRunway)
+    private PWCGLocation getPositionFromPlane(PlaneMcu planeThatMarksRunway)
     {
         PWCGLocation runwayStart;
         runwayStart = new PWCGLocation();

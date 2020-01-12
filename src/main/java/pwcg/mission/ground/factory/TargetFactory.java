@@ -2,8 +2,8 @@ package pwcg.mission.ground.factory;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
 import pwcg.mission.ground.builder.AssaultBuilder;
@@ -12,11 +12,11 @@ import pwcg.mission.target.TargetDefinition;
 
 public class TargetFactory
 {
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
     private TargetDefinition targetDefinition;    
     private IGroundUnitCollection groundUnitCollection;
 
-    public TargetFactory(FlightInformation flightInformation) throws PWCGException 
+    public TargetFactory(IFlightInformation flightInformation) throws PWCGException 
     { 
         this.flightInformation = flightInformation;
         this.targetDefinition = flightInformation.getTargetDefinition();

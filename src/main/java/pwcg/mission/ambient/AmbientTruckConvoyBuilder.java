@@ -21,7 +21,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.TargetSide;
 import pwcg.mission.ground.builder.TruckConvoyBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderGround;
 
@@ -84,7 +84,7 @@ public class AmbientTruckConvoyBuilder extends AmbientUnitBuilder
             boolean isPlayerTarget = true;
             ICountry truckCountry = CountryFactory.makeMapReferenceCountry(targetSide);
             TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
-            TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(truckCountry, TacticalTarget.TARGET_TRANSPORT, bridge.getPosition(), isPlayerTarget);
+            TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(truckCountry, TargetType.TARGET_TRANSPORT, bridge.getPosition(), isPlayerTarget);
             TruckConvoyBuilder groundUnitFactory =  new TruckConvoyBuilder(mission, targetDefinition);
             IGroundUnitCollection truckUnit = groundUnitFactory.createTruckConvoy();
             if (truckUnit != null)

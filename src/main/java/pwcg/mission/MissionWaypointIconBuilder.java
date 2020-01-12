@@ -6,35 +6,36 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.mcu.McuIcon;
-import pwcg.mission.mcu.McuLanding;
-import pwcg.mission.mcu.McuTakeoff;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionWaypointIconBuilder
 {
     private ArrayList<McuIcon> waypointIcons = new ArrayList<McuIcon>();
 
-    public void createWaypointIcons(List<Flight> playerFlights) throws PWCGException 
+    public void createWaypointIcons(List<IFlight> playerFlights) throws PWCGException
     {
-        for (Flight playerFlight : playerFlights)
+        for (IFlight playerFlight : playerFlights)
         {
             createWaypointIconsForFlight(playerFlight);
         }
     }
-    
-    private void createWaypointIconsForFlight(Flight playerFlight) throws PWCGException 
-    {        
-    	waypointIcons.clear();
-    	
-        List<McuWaypoint> waypoints = playerFlight.getAllFlightWaypoints();
+
+    private void createWaypointIconsForFlight(IFlight playerFlight) throws PWCGException
+    {
+        waypointIcons.clear();
+
+        List<McuWaypoint> waypoints = playerFlight.getFlightData().getWaypointPackage().getAllWaypoints();
 
         McuIcon prevIcon = null;
 
-        McuTakeoff takeoff = playerFlight.getTakeoff();
-        if (takeoff != null) {
-            McuIcon icon = new McuIcon(takeoff, playerFlight.getCountry().getSide());
+        MissionPoint takeoff = playerFlight.getFlightData().getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_TAKEOFF);
+        if (takeoff != null)
+        {
+            McuIcon icon = new McuIcon(WaypointAction.WP_ACTION_TAKEOFF, takeoff, playerFlight.getFlightData().getFlightInformation().getCountry().getSide());
             prevIcon = icon;
             waypointIcons.add(icon);
         }
@@ -42,7 +43,7 @@ public class MissionWaypointIconBuilder
         for (int i = 0; i < waypoints.size(); ++i)
         {
             McuWaypoint waypoint = waypoints.get(i);
-            McuIcon icon = new McuIcon(waypoint, playerFlight.getCountry().getSide());
+            McuIcon icon = new McuIcon(waypoint, playerFlight.getFlightData().getFlightInformation().getCountry().getSide());
             if (prevIcon != null)
             {
                 prevIcon.setTarget(icon.getIndex());
@@ -51,21 +52,22 @@ public class MissionWaypointIconBuilder
             waypointIcons.add(icon);
         }
 
-        McuLanding landing = playerFlight.getLanding();
-        if (landing != null) {
-            McuIcon icon = new McuIcon(landing, playerFlight.getCountry().getSide());
+        MissionPoint landing = playerFlight.getFlightData().getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_LANDING);
+        if (landing != null)
+        {
+            McuIcon icon = new McuIcon(WaypointAction.WP_ACTION_LANDING, landing, playerFlight.getFlightData().getFlightInformation().getCountry().getSide());
             if (prevIcon != null)
                 prevIcon.setTarget(icon.getIndex());
             waypointIcons.add(icon);
         }
     }
 
-	public void write(BufferedWriter writer) throws PWCGIOException
-	{
-		for (McuIcon icon : waypointIcons)
-		{
-			icon.write(writer);
-		}
-	}
+    public void write(BufferedWriter writer) throws PWCGIOException
+    {
+        for (McuIcon icon : waypointIcons)
+        {
+            icon.write(writer);
+        }
+    }
 
 }

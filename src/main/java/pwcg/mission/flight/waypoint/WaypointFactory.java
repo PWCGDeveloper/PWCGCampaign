@@ -8,16 +8,7 @@ public class WaypointFactory
 	{
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.TAKEOFF_WAYPOINT);
 		waypoint.setWpAction(WaypointAction.WP_ACTION_TAKEOFF);
-		waypoint.setPriority(WaypointPriority.PRIORITY_HIGH);			
-		
-		return waypoint;
-	}
-
-	public static McuWaypoint createClimbWaypointType()
-	{
-		McuWaypoint waypoint = new McuWaypoint(WaypointType.CLIMB_WAYPOINT);
-		waypoint.setWpAction(WaypointAction.WP_ACTION_CLIMB);
-		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
+		waypoint.setPriority(WaypointPriority.PRIORITY_MED);
 		
 		return waypoint;
 	}
@@ -30,6 +21,15 @@ public class WaypointFactory
         
         return waypoint;
     }
+
+	public static McuWaypoint createClimbWaypointType()
+	{
+		McuWaypoint waypoint = new McuWaypoint(WaypointType.CLIMB_WAYPOINT);
+		waypoint.setWpAction(WaypointAction.WP_ACTION_CLIMB);
+		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
+		
+		return waypoint;
+	}
 
 	public static McuWaypoint createIngressWaypointType()
 	{

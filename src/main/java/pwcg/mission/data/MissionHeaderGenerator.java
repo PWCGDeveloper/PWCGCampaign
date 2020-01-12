@@ -6,7 +6,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.io.MissionFileWriter;
 
 public class MissionHeaderGenerator
@@ -16,8 +16,8 @@ public class MissionHeaderGenerator
     {
         // Even for Coop flights we have to set the header.  Doesn't really matter which flight 
         // as long as itis a player flight
-        Flight myFlight = mission.getMissionFlightBuilder().getReferencePlayerFlight();
-        Squadron mySquadron =myFlight.getSquadron();
+        IFlight myFlight = mission.getMissionFlightBuilder().getReferencePlayerFlight();
+        Squadron mySquadron =myFlight.getFlightData().getFlightInformation().getSquadron();
         
         MissionHeader missionHeader = new MissionHeader();
         
@@ -27,11 +27,11 @@ public class MissionHeaderGenerator
         missionHeader.setAirfield(mySquadron.determineCurrentAirfieldName(campaign.getDate()));
         missionHeader.setDate(DateUtils.getDateStringYYYYMMDD(campaign.getDate()));
         missionHeader.setSquadron(mySquadron.determineDisplayName(campaign.getDate()));
-        missionHeader.setAircraftType(myFlight.getPlanes().get(0).getDisplayName());
+        missionHeader.setAircraftType(myFlight.getFlightData().getFlightPlanes().getFlightLeader().getDisplayName());
 
         
-        missionHeader.setDuty("" + myFlight.getFlightType());  // String to enum and back
-        missionHeader.setAltitude(myFlight.getFlightAltitude()); 
+        missionHeader.setDuty("" + myFlight.getFlightData().getFlightInformation().getFlightType());  // String to enum and back
+        missionHeader.setAltitude(myFlight.getFlightData().getFlightInformation().getAltitude()); 
         
         missionHeader.setMapName(PWCGContext.getInstance().getCurrentMap().getMapName()); 
 

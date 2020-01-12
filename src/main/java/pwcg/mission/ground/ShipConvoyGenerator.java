@@ -7,7 +7,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.shipping.ShippingLane;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.ground.builder.ShipTypeChooser;
 import pwcg.mission.ground.builder.ShippingUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
@@ -15,7 +15,7 @@ import pwcg.mission.ground.vehicle.VehicleClass;
 
 public class ShipConvoyGenerator
 {
-    public List<IGroundUnitCollection> generateConvoys(FlightInformation flightInformation, ShippingLane shippingLane) throws PWCGException 
+    public List<IGroundUnitCollection> generateConvoys(IFlightInformation flightInformation, ShippingLane shippingLane) throws PWCGException 
     {
         List<IGroundUnitCollection> alliedConvoys = new ArrayList<>();
         List<IGroundUnitCollection> axisConvoys = new ArrayList<>();

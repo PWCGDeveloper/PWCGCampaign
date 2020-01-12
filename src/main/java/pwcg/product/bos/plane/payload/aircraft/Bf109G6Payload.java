@@ -4,8 +4,8 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 
 public class Bf109G6Payload extends Bf109Payload implements IPlanePayload
 {
@@ -33,10 +33,10 @@ public class Bf109G6Payload extends Bf109Payload implements IPlanePayload
     }
 
     @Override
-    public int createWeaponsPayload(Flight flight)
+    public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
-        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
         {
             selectGroundAttackPayload(flight);
         }

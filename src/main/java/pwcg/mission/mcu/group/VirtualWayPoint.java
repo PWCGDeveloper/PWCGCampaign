@@ -13,8 +13,8 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.mission.MissionStringHandler;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.FormationGenerator;
 import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.BaseFlightMcu;
@@ -52,7 +52,7 @@ public final class VirtualWayPoint
     }
 
     public void initialize(
-                    Flight flight,
+                    IFlight flight,
                     VirtualWayPointCoordinate vwpCoordinate,
                     Coalition coalition) throws PWCGException 
     {
@@ -136,7 +136,7 @@ public final class VirtualWayPoint
         masterWpTriggerTimer.setDesc("Master WP Trigger Timer");
     }
 
-    private void makeSubtitles(Flight flight) throws PWCGException
+    private void makeSubtitles(IFlight flight) throws PWCGException
     {     
         if (!useSubtitles)
         {
@@ -145,7 +145,7 @@ public final class VirtualWayPoint
 
         MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
 
-        String squadronName = flight.getSquadron().determineDisplayName(flight.getCampaign().getDate());
+        String squadronName = flight.getFlightData().getFlightInformation().getSquadron().determineDisplayName(flight.getCampaign().getDate());
         
         McuSubtitle checkZoneSubtitle = new McuSubtitle();
         checkZoneSubtitle.setName("checkZone Subtitle");
@@ -157,16 +157,16 @@ public final class VirtualWayPoint
         subtitleHandler.registerMissionText(checkZoneSubtitle.getLcText(), checkZoneSubtitle.getText());
     }
 
-    private void generateSpawners(Flight flight) throws PWCGException
+    private void generateSpawners(IFlight flight) throws PWCGException
     {
         FormationGenerator formationGenerator = new FormationGenerator();
-        List<Coordinate> flightCoordinates = formationGenerator.createPlaneInitialPosition(flight.getPlanes(), vwpCoordinate.getCoordinate(), vwpCoordinate.getOrientation());
+        List<Coordinate> flightCoordinates = formationGenerator.createPlaneInitialPosition(flight.getFlightData().getFlightPlanes(), vwpCoordinate.getCoordinate(), vwpCoordinate.getOrientation());
         
         McuTimer lastSpawnTimer = null;
         
-        for (int i = 0; i < flight.getPlanes().size(); ++i)
+        for (int i = 0; i < flight.getFlightData().getFlightPlanes().getFlightSize(); ++i)
         {
-            PlaneMCU plane = flight.getPlanes().get(i);
+            PlaneMcu plane = flight.getFlightData().getFlightPlanes().getPlanes().get(i);
             Coordinate planeCoordinate = flightCoordinates.get(i);
             double planeAltitude = vwpCoordinate.getCoordinate().getYPos() + (30 * i);
             if (planeAltitude < 800.0)
@@ -177,7 +177,7 @@ public final class VirtualWayPoint
             
             // Get the mission points (WPs plus attackarea) and select the one associated with
             // this VWP coordinate.
-            List<BaseFlightMcu>  planeMissionPoints = flight.getAllMissionPointsForPlane(plane);
+            List<BaseFlightMcu>  planeMissionPoints = flight.getFlightData().getWaypointPackage().getAllMissionPointsForPlane(plane);
 
             // Since every plane has a matching set of mission points, the index will be
             // identical for each plane
@@ -261,7 +261,7 @@ public final class VirtualWayPoint
         nextVirtualWaypointTimer.setTarget(nextVWP.getEntryPoint().getIndex());
     }
 
-    public void onTriggerAddTarget(PlaneMCU plane, int index)
+    public void onTriggerAddTarget(PlaneMcu plane, int index)
     {
         vmpSpawnContainers.get(plane.getIndex()).wpActivateTimer.setTarget(index);
     }
@@ -305,7 +305,7 @@ public final class VirtualWayPoint
         private McuTimer wpActivateTimer = new McuTimer();
         private BaseFlightMcu waypoint = null;
         
-        private void create(PlaneMCU plane, int index, Coordinate planeCoordinate)
+        private void create(PlaneMcu plane, int index, Coordinate planeCoordinate)
         {
             spawner.setPosition(planeCoordinate.copy());
             spawner.setOrientation(vwpCoordinate.getOrientation().copy());

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.effect.FirePotSeries;
 import pwcg.mission.mcu.group.SmokeGroup;
 
@@ -15,7 +15,7 @@ public class MissionEffects
 
     public void createFirePots(Mission mission) throws PWCGException 
     {
-        for (Flight flight: mission.getMissionFlightBuilder().getPlayerFlights())
+        for (IFlight flight: mission.getMissionFlightBuilder().getPlayerFlights())
         {
             FirePotBuilder firePotBuilder = new FirePotBuilder();
             FirePotSeries firePotSeries = firePotBuilder.createFirePots(flight);

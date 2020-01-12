@@ -6,7 +6,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 
 public class GroundUnitInformationFactory
@@ -15,7 +15,7 @@ public class GroundUnitInformationFactory
             Campaign campaign, 
             ICountry country, 
             String name,
-            TacticalTarget targetType,
+            TargetType targetType,
             Coordinate startCoords, 
             Coordinate targetCoords,
             Orientation orientation,

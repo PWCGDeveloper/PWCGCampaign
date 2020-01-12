@@ -17,7 +17,7 @@ import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.transport.GroundTruckAAConvoyUnit;
 import pwcg.mission.ground.unittypes.transport.GroundTruckConvoyUnit;
 import pwcg.mission.mcu.Coalition;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 
 public class TruckConvoyBuilder
@@ -52,7 +52,7 @@ public class TruckConvoyBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION, 
                 "Truck Convoy", 
-                TacticalTarget.TARGET_TRANSPORT,
+                TargetType.TARGET_TRANSPORT,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
         
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection(groundUnitCollectionData);

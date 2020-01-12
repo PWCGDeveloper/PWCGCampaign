@@ -2,31 +2,33 @@ package pwcg.mission.flight.escort;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
-import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 
 public class PlayerEscortPackage implements IFlightPackage
 {
-    private FlightInformation flightInformation;    
-    public PlayerEscortPackage(FlightInformation flightInformation)
+    private IFlightInformation playerFlightInformation;    
+    public PlayerEscortPackage(IFlightInformation playerFlightInformation)
     {
-        this.flightInformation = flightInformation;
+        this.playerFlightInformation = playerFlightInformation;
     }
 
-    public Flight createPackage () throws PWCGException 
+    public IFlight createPackage () throws PWCGException 
     {
-	    if(!flightInformation.isPlayerFlight())
+	    if(!playerFlightInformation.isPlayerFlight())
         {
 	        throw new PWCGMissionGenerationException ("Attempt to create non player escort package");
         }
+	    
+	    PlayerEscortedFlightBuilder escortedFlightBuilder = new PlayerEscortedFlightBuilder();
+	    IFlight escortedFlight = escortedFlightBuilder.createEscortedFlight(playerFlightInformation);
 
-        Coordinate squadronPosition = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(squadronPosition.copy());	        
-		PlayerEscortFlight playerEscort = new PlayerEscortFlight(flightInformation, missionBeginUnit);
-		playerEscort.createUnitMission();
+		PlayerEscortFlight playerEscort = new PlayerEscortFlight(playerFlightInformation, escortedFlight);
+		playerEscort.createFlight();
+		
+		playerEscort.getFlightData().getLinkedFlights().addLinkedFlight(escortedFlight);
+		
 		return playerEscort;
 	}
 }

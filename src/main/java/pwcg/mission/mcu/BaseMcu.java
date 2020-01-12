@@ -95,7 +95,7 @@ public class BaseMcu
 
     public Coordinate getPosition()
     {
-        return position;
+        return position.copy();
     }
 
     public void setPosition(Coordinate position)

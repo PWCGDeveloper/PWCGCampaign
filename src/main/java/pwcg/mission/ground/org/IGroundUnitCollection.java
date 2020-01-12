@@ -6,14 +6,13 @@ import java.util.List;
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.IUnit;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
-public interface IGroundUnitCollection extends IUnit
+public interface IGroundUnitCollection
 {
     Coordinate getPosition() throws PWCGException;
     Coordinate getPosition(Side side) throws PWCGException;
-    TacticalTarget getTargetType();
+    TargetType getTargetType();
     void write(BufferedWriter writer) throws PWCGException;
     Coordinate getTargetCoordinatesFromGroundUnits(Side determineEnemySide) throws PWCGException;
     List<IGroundUnit> getGroundUnits();

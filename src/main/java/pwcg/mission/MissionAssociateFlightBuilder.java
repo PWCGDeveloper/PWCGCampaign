@@ -3,48 +3,35 @@ package pwcg.mission;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.escort.EscortFlightBuilder;
 import pwcg.mission.flight.escort.NeedsEscortDecider;
-import pwcg.mission.flight.escort.PlayerEscortFlight;
-import pwcg.mission.flight.escort.PlayerEscortFlightAdjuster;
-import pwcg.mission.flight.escort.PlayerEscortFlightLinker;
-import pwcg.mission.flight.escort.PlayerEscortedFlightBuilder;
 import pwcg.mission.flight.intercept.InterceptOpposingFlightBuilder;
-import pwcg.mission.flight.scramble.ScrambleOpposingFlight;
 import pwcg.mission.flight.scramble.ScrambleOpposingFlightBuilder;
 
 public class MissionAssociateFlightBuilder
 {
     public void buildAssociatedFlights(Mission mission) throws PWCGException
     {
-        List<Flight> flightsForMission = mission.getMissionFlightBuilder().getAllAerialFlights();
-        for (Flight flight : flightsForMission)
+        List<IFlight> flightsForMission = mission.getMissionFlightBuilder().getAllAerialFlights();
+        for (IFlight flight : flightsForMission)
         {
-            if (flight.isPlayerFlight())
+            if (flight.getFlightData().getFlightInformation().isPlayerFlight())
             {
-                if (flight.getFlightType() == FlightTypes.INTERCEPT || flight.getFlightType() == FlightTypes.HOME_DEFENSE)
+                if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.INTERCEPT || flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.HOME_DEFENSE)
                 {
                     makeLinkedInterceptFlights(flight);
                 }
-                else if (flight.getFlightType() == FlightTypes.ESCORT)
-                {
-                    makeLinkedEscortFlights(flight);
-                }
-                else if (flight.getFlightType() == FlightTypes.SCRAMBLE)
+                else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE)
                 {
                     makeLinkedScrambleFlights(flight);
                 }
-                else if (flight.getFlightType() == FlightTypes.BALLOON_BUST)
+                else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.BALLOON_BUST)
                 {
                     // TODO Flying Circus
                 }
-                else if (flight.getFlightType() == FlightTypes.BALLOON_DEFENSE)
-                {
-                    // TODO Flying Circus
-                }
-                else if (flight.getFlightType() == FlightTypes.SEA_PATROL)
+                else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.BALLOON_DEFENSE)
                 {
                     // TODO Flying Circus
                 }
@@ -59,38 +46,24 @@ public class MissionAssociateFlightBuilder
         }
     }
 
-    private void makeLinkedScrambleFlights(Flight flight) throws PWCGException
+    private void makeLinkedScrambleFlights(IFlight flight) throws PWCGException
     {
-        ScrambleOpposingFlightBuilder opposingFlightBuilder = new ScrambleOpposingFlightBuilder(flight.getFlightInformation());
-        List<ScrambleOpposingFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
-        for (ScrambleOpposingFlight opposingFlight: opposingFlights)
+        ScrambleOpposingFlightBuilder opposingFlightBuilder = new ScrambleOpposingFlightBuilder(flight.getFlightData().getFlightInformation());
+        List<IFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
+        for (IFlight opposingFlight: opposingFlights)
         {
-            flight.addLinkedUnit(opposingFlight);
+            flight.getFlightData().getLinkedFlights().addLinkedFlight(opposingFlight);
         }
     }
 
-    private void makeLinkedInterceptFlights(Flight flight) throws PWCGException
+    private void makeLinkedInterceptFlights(IFlight flight) throws PWCGException
     {
-        InterceptOpposingFlightBuilder opposingFlightBuilder = new InterceptOpposingFlightBuilder(flight.getFlightInformation());
-        List<Flight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
-        for (Flight opposingFlight: opposingFlights)
+        InterceptOpposingFlightBuilder opposingFlightBuilder = new InterceptOpposingFlightBuilder(flight.getFlightData().getFlightInformation());
+        List<IFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
+        for (IFlight opposingFlight: opposingFlights)
         {
-            flight.addLinkedUnit(opposingFlight);
+            flight.getFlightData().getLinkedFlights().addLinkedFlight(opposingFlight);
         }
     }
 
-    private void makeLinkedEscortFlights(Flight flight) throws PWCGException
-    {
-        PlayerEscortFlight escortFlight = (PlayerEscortFlight)flight;
-        PlayerEscortedFlightBuilder playerEscortedFlightBuilder = new PlayerEscortedFlightBuilder();
-        Flight escortedFlight = playerEscortedFlightBuilder.createEscortedFlight(escortFlight);
-        
-        PlayerEscortFlightAdjuster playerEscortFlightAdjuster = new PlayerEscortFlightAdjuster(escortFlight, escortedFlight);
-        playerEscortFlightAdjuster.adjustEscortedFlightForEscort();
-        
-        PlayerEscortFlightLinker playerEscortFlightLinker = new PlayerEscortFlightLinker(escortFlight, escortedFlight);
-        playerEscortFlightLinker.linkEscortedFlight();
-        
-        escortFlight.addLinkedUnit(escortedFlight);
-    }
 }

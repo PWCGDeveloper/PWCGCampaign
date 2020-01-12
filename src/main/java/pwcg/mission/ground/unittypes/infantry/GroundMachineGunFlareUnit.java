@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.org.GroundElementFactory;
@@ -16,9 +16,9 @@ import pwcg.mission.mcu.group.FlareSequence;
 public class GroundMachineGunFlareUnit extends GroundMachineGunUnit
 {
     private FlareSequence flares = new FlareSequence();
-    private Flight triggeringFlight;
+    private IFlight triggeringFlight;
     
-    public GroundMachineGunFlareUnit(GroundUnitInformation pwcgGroundUnitInformation, Flight triggeringFlight)
+    public GroundMachineGunFlareUnit(GroundUnitInformation pwcgGroundUnitInformation, IFlight triggeringFlight)
     {
         super(pwcgGroundUnitInformation);
         this.triggeringFlight = triggeringFlight;

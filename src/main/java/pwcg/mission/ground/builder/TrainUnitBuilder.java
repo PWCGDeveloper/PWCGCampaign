@@ -16,7 +16,7 @@ import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.transport.GroundTrainUnit;
 import pwcg.mission.mcu.Coalition;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 
 public class TrainUnitBuilder
@@ -48,7 +48,7 @@ public class TrainUnitBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION, 
                 "Train", 
-                TacticalTarget.TARGET_TRAIN,
+                TargetType.TARGET_TRAIN,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);

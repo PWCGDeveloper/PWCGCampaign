@@ -9,8 +9,8 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.plane.PlaneMcu;
 
 public class BriefingDataInitializer
 {
@@ -40,8 +40,8 @@ public class BriefingDataInitializer
             briefingAssignmentData.addPlane(squadronPlane);
         }
 	    
-        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(squadron.getSquadronId());
-	    for (PlaneMCU plane : playerFlight.getPlanes())
+        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(squadron.getSquadronId());
+	    for (PlaneMcu plane : playerFlight.getFlightData().getFlightPlanes().getPlanes())
 	    {
 	        briefingAssignmentData.assignPilot(plane.getPilot().getSerialNumber(), plane.getSerialNumber());
 	    }

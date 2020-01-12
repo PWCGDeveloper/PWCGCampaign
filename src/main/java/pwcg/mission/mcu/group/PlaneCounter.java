@@ -10,8 +10,8 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.mission.MissionStringHandler;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
 import pwcg.mission.mcu.McuCounter;
 import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
@@ -91,12 +91,11 @@ public class PlaneCounter
          subtitleHandler.registerMissionText(planeCounterSubtitle.getLcText(), planeCounterSubtitle.getText());
      }
 
-    public void setPlaneCounterForFlight(Flight flight) 
+    public void setPlaneCounterForFlight(IFlight flight) 
      {
-         if (flight.isVirtual())
+         if (flight.getFlightData().getFlightInformation().isVirtual())
          {
-             VirtualWaypointPackage virtualWaypointPackage = flight.getVirtualWaypointPackage();
-
+             IVirtualWaypointPackage virtualWaypointPackage = flight.getFlightData().getVirtualWaypointPackage();
              for (VirtualWayPoint vwp : virtualWaypointPackage.getVirtualWaypoints())
              {
                  // Link this VWP spawners to the plane counter

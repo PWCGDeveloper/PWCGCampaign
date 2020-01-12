@@ -38,7 +38,7 @@ public class PWCGLocation
 
 	public Coordinate getPosition()
 	{
-		return position;
+		return position.copy();
 	}
 
 	public void setPosition(Coordinate position)
@@ -48,7 +48,7 @@ public class PWCGLocation
 
 	public Orientation getOrientation()
 	{
-		return orientation;
+		return orientation.copy();
 	}
 
 	public void setOrientation(Orientation orientation)

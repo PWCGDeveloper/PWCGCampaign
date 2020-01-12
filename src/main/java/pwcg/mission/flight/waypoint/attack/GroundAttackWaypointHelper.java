@@ -8,33 +8,32 @@ import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class GroundAttackWaypointHelper
 {
-	private Flight flight;
+	private IFlight flight;
 	private Coordinate ingressPosition;
 	private int attackAltitude;
-	private List<McuWaypoint>waypoints = new ArrayList<>();
+    private List<McuWaypoint>waypointsBefore = new ArrayList<>();
+    private List<McuWaypoint>waypointsAfter = new ArrayList<>();
 	
 	
-	public GroundAttackWaypointHelper(Flight flight, Coordinate ingressPosition, int attackAltitude)
+	public GroundAttackWaypointHelper(IFlight flight, Coordinate ingressPosition, int attackAltitude)
 	{
 		this.ingressPosition = ingressPosition;		
         this.flight = flight;       
         this.attackAltitude = attackAltitude;       
 	}
 	
-	public List<McuWaypoint> createTargetWaypoints() throws PWCGException  
+	public void createTargetWaypoints() throws PWCGException  
 	{
 		McuWaypoint targetIngressWP = createGroundAttackTargetApproachWaypoint();
 		McuWaypoint targetFinalWP = createTargetFinalWaypoint(targetIngressWP);
-		createGroundAttackEgressWaypoint(targetIngressWP, targetFinalWP);
-		
-		return waypoints;
+		createGroundAttackEgressWaypoint(targetIngressWP, targetFinalWP);		
 	}
 
 	private McuWaypoint createGroundAttackTargetApproachWaypoint() throws PWCGException  
@@ -43,10 +42,10 @@ public class GroundAttackWaypointHelper
 
 		McuWaypoint targetApproachWP = WaypointFactory.createTargetApproachWaypointType();		
 		targetApproachWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-		targetApproachWP.setSpeed(flight.getFlightCruisingSpeed());
+		targetApproachWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
 		targetApproachWP.setPosition(coord);	
 		targetApproachWP.setTargetWaypoint(false);
-		waypoints.add(targetApproachWP);	
+		waypointsBefore.add(targetApproachWP);	
 		
 		return targetApproachWP;
 	}
@@ -57,9 +56,9 @@ public class GroundAttackWaypointHelper
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int bombApproachDistance = productSpecificConfiguration.getBombApproachDistance();
 
-        double ingressAngle = MathUtils.calcAngle(ingressPosition.copy(), flight.getTargetPosition().copy());
+        double ingressAngle = MathUtils.calcAngle(ingressPosition.copy(), flight.getFlightData().getFlightInformation().getTargetPosition().copy());
         double angleBackFromTarget = MathUtils.adjustAngle(ingressAngle, 150);
-		Coordinate targetIngressCoords = MathUtils.calcNextCoord(flight.getTargetPosition(), angleBackFromTarget, bombApproachDistance);
+		Coordinate targetIngressCoords = MathUtils.calcNextCoord(flight.getFlightData().getFlightInformation().getTargetPosition(), angleBackFromTarget, bombApproachDistance);
 		targetIngressCoords.setYPos(ingressPosition.getYPos());
 		return targetIngressCoords;
 	}
@@ -71,12 +70,12 @@ public class GroundAttackWaypointHelper
         McuWaypoint targetFinalWP = WaypointFactory.createTargetFinalWaypointType();
         targetFinalWP.setTriggerArea(McuWaypoint.TARGET_AREA);
         targetFinalWP.setDesc(WaypointType.TARGET_FINAL_WAYPOINT.getName());
-        targetFinalWP.setSpeed(flight.getFlightCruisingSpeed());
+        targetFinalWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
         targetFinalWP.setPosition(coord);    
         targetFinalWP.setOrientation(approachWP.getOrientation().copy());
         targetFinalWP.setTargetWaypoint(true);
 
-        waypoints.add(targetFinalWP);
+        waypointsBefore.add(targetFinalWP);
         
         return targetFinalWP;
     }
@@ -86,7 +85,7 @@ public class GroundAttackWaypointHelper
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int bombFinalApproachDistance = productSpecificConfiguration.getBombFinalApproachDistance();
 
-        double angleToTarget = MathUtils.calcAngle(approachWP.getPosition(), flight.getTargetPosition());
+        double angleToTarget = MathUtils.calcAngle(approachWP.getPosition(), flight.getFlightData().getFlightInformation().getTargetPosition());
         Coordinate coord = MathUtils.calcNextCoord(approachWP.getPosition(), angleToTarget, bombFinalApproachDistance);
         coord.setYPos(attackAltitude);
 		return coord;
@@ -98,11 +97,11 @@ public class GroundAttackWaypointHelper
 
 		McuWaypoint targetEgressWP = WaypointFactory.createTargetEgressWaypointType();
 		targetEgressWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-		targetEgressWP.setSpeed(flight.getFlightCruisingSpeed());
+		targetEgressWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
 		targetEgressWP.setPosition(coord);	
 		targetEgressWP.setTargetWaypoint(false);
 
-		waypoints.add(targetEgressWP);	
+		waypointsAfter.add(targetEgressWP);	
 	}
 	
 	private Coordinate calculateTargetEgressCoords(McuWaypoint targetIngressWP, McuWaypoint targetFinalWP) throws PWCGException
@@ -110,11 +109,20 @@ public class GroundAttackWaypointHelper
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int bombTargetEgressDistance = productSpecificConfiguration.getBombFinalApproachDistance() / 2;
 
-        double angleFromTarget = MathUtils.calcAngle(targetFinalWP.getPosition(), flight.getTargetPosition());
+        double angleFromTarget = MathUtils.calcAngle(targetFinalWP.getPosition(), flight.getFlightData().getFlightInformation().getTargetPosition());
         double angleEgressFromTarget = MathUtils.adjustAngle(angleFromTarget, 240);
-        Coordinate coord = MathUtils.calcNextCoord(flight.getTargetPosition(), angleEgressFromTarget, bombTargetEgressDistance);
+        Coordinate coord = MathUtils.calcNextCoord(flight.getFlightData().getFlightInformation().getTargetPosition(), angleEgressFromTarget, bombTargetEgressDistance);
         coord.setYPos(targetIngressWP.getPosition().getYPos());
 		return coord;
-	}   
+	}
 
+    public List<McuWaypoint> getWaypointsBefore()
+    {
+        return waypointsBefore;
+    }
+
+    public List<McuWaypoint> getWaypointsAfter()
+    {
+        return waypointsAfter;
+    }   
 }

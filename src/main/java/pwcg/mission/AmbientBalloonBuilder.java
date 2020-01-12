@@ -16,9 +16,10 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.balloondefense.AiBalloonDefenseFlight;
+import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.balloondefense.AmbientBalloonDefensePackage;
+import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class AmbientBalloonBuilder
@@ -54,7 +55,7 @@ public class AmbientBalloonBuilder
             return false;
         }
 
-        Squadron squad =  mission.getMissionFlightBuilder().getReferencePlayerFlight().getSquadron();
+        Squadron squad =  mission.getMissionFlightBuilder().getReferencePlayerFlight().getFlightData().getFlightInformation().getSquadron();
         if (squad.isSquadronThisRole(mission.getCampaign().getDate(), Role.ROLE_STRAT_BOMB) || 
             squad.isSquadronThisRole(mission.getCampaign().getDate(), Role.ROLE_SEA_PLANE) || 
             squad.isHomeDefense(mission.getCampaign().getDate()))
@@ -68,12 +69,13 @@ public class AmbientBalloonBuilder
     private List<Coordinate> generateBalloonPositions(Mission mission) throws PWCGException
     {
         List<Coordinate> balloonPositions = new ArrayList<Coordinate>();
-        for(Flight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
+        for(IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            if (flight instanceof AiBalloonDefenseFlight)
+            FlightTypes flightType = flight.getFlightData().getFlightInformation().getFlightType();
+            if (flightType == FlightTypes.BALLOON_DEFENSE || flightType == FlightTypes.BALLOON_BUST)
             {
-                AiBalloonDefenseFlight balloonDefenseFlight = (AiBalloonDefenseFlight)flight;
-                balloonPositions.add(balloonDefenseFlight.getBalloonPosition());
+                Coordinate balloonPosition = flight.getFlightData().getLinkedGroundUnits().getLinkedGroundUnitByType(GroundUnitCollectionType.BALLOON_GROUND_UNIT_COLLECTION).getPosition();
+                balloonPositions.add(balloonPosition);
             } 
         }
         return balloonPositions;
@@ -115,10 +117,10 @@ public class AmbientBalloonBuilder
     
     private Coordinate determineAmbientBalloonReferencePosition(Mission mission)
     {
-    	List<Flight> playerFlights = mission.getMissionFlightBuilder().getPlayerFlights();
+    	List<IFlight> playerFlights = mission.getMissionFlightBuilder().getPlayerFlights();
     	int index = RandomNumberGenerator.getRandom(playerFlights.size());
-    	Flight referenceFlight = playerFlights.get(index);
-    	Coordinate ambientBalloonReferencePosition = referenceFlight.getPlanes().get(0).getPosition();
+    	IFlight referenceFlight = playerFlights.get(index);
+    	Coordinate ambientBalloonReferencePosition = referenceFlight.getFlightData().getFlightPlanes().getFlightLeader().getPosition();
     	return ambientBalloonReferencePosition;
     }
 

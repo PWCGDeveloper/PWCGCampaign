@@ -11,12 +11,12 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.flight.attack.GroundAttackFlight;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.testutils.CampaignCache;
@@ -46,8 +46,8 @@ public class PlayerFlightTypeBoSAttackTest
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightType() == FlightTypes.GROUND_ATTACK);
-        for (PlaneMCU plane : flight.getPlanes())
+        assert (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK);
+        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }
@@ -63,7 +63,7 @@ public class PlayerFlightTypeBoSAttackTest
     {
         assert (targetDefinition.getAttackingCountry() != null);
         assert (targetDefinition.getTargetCountry() != null);
-        assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
-        assert (targetDefinition.getTargetType() != TacticalTarget.TARGET_NONE);
+        assert (targetDefinition.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
+        assert (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
     }
 }

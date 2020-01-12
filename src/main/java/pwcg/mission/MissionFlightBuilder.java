@@ -9,17 +9,17 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.plane.PlaneMcu;
 
 public class MissionFlightBuilder
 {
     private Campaign campaign;
     private Mission mission;
-    private List<Flight> playerFlights = new ArrayList<>();
-    private List<Flight> aiFlights = new ArrayList<Flight>();
+    private List<IFlight> playerFlights = new ArrayList<>();
+    private List<IFlight> aiFlights = new ArrayList<IFlight>();
 
     public MissionFlightBuilder(Campaign campaign, Mission mission)
     {
@@ -45,7 +45,7 @@ public class MissionFlightBuilder
         {
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
             PlayerFlightBuilder playerFlightBuilder = new PlayerFlightBuilder(campaign, mission);
-            Flight playerFlight = playerFlightBuilder.createPlayerFlight(flightType, squadron);
+            IFlight playerFlight = playerFlightBuilder.createPlayerFlight(flightType, squadron);
             playerFlights.add(playerFlight);
         }
     }
@@ -53,9 +53,9 @@ public class MissionFlightBuilder
     public List<Integer> determinePlayerPlaneIds() throws PWCGException
     {
         List<Integer> playerPlaneIds = new ArrayList<>();
-        for (Flight playerFlight : playerFlights)
+        for (IFlight playerFlight : playerFlights)
         {
-            for (PlaneMCU playerPlane : playerFlight.getPlayerPlanes())
+            for (PlaneMcu playerPlane : playerFlight.getFlightData().getFlightPlanes().getPlayerPlanes())
             {
                 playerPlaneIds.add(playerPlane.getLinkTrId());
             }
@@ -69,12 +69,12 @@ public class MissionFlightBuilder
         aiFlights = aiFlightBuilder.createAiFlights();
     }
 
-    public List<Flight> getAllFlightsForSide(Side side) throws PWCGException
+    public List<IFlight> getAllFlightsForSide(Side side) throws PWCGException
     {
-        List<Flight> flightsForSide = new ArrayList<Flight>();
-        for (Flight flight : this.getAllAerialFlights())
+        List<IFlight> flightsForSide = new ArrayList<IFlight>();
+        for (IFlight flight : this.getAllAerialFlights())
         {
-            if (flight.getCountry().getSide() == side)
+            if (flight.getFlightData().getFlightInformation().getCountry().getSide() == side)
             {
                 flightsForSide.add(flight);
             }
@@ -82,12 +82,12 @@ public class MissionFlightBuilder
         return flightsForSide;
     }
 
-    public List<Flight> getAiFlightsForSide(Side side) throws PWCGException
+    public List<IFlight> getAiFlightsForSide(Side side) throws PWCGException
     {
-        List<Flight> aiFlightsForSide = new ArrayList<Flight>();
-        for (Flight flight : aiFlights)
+        List<IFlight> aiFlightsForSide = new ArrayList<IFlight>();
+        for (IFlight flight : aiFlights)
         {
-            if (flight.getCountry().getSide() == side)
+            if (flight.getFlightData().getFlightInformation().getCountry().getSide() == side)
             {
                 aiFlightsForSide.add(flight);
             }
@@ -95,12 +95,12 @@ public class MissionFlightBuilder
         return aiFlightsForSide;
     }
 
-    public List<Flight> getPlayerFlightsForSide(Side side) throws PWCGException
+    public List<IFlight> getPlayerFlightsForSide(Side side) throws PWCGException
     {
-        List<Flight> aiFlightsForSide = new ArrayList<Flight>();
-        for (Flight flight : playerFlights)
+        List<IFlight> aiFlightsForSide = new ArrayList<IFlight>();
+        for (IFlight flight : playerFlights)
         {
-            if (flight.getCountry().getSide() == side)
+            if (flight.getFlightData().getFlightInformation().getCountry().getSide() == side)
             {
                 aiFlightsForSide.add(flight);
             }
@@ -109,34 +109,28 @@ public class MissionFlightBuilder
         return aiFlightsForSide;
     }
 
-    public List<Flight> getAllAerialFlights()
+    public List<IFlight> getAllAerialFlights()
     {
-        ArrayList<Flight> allFlights = new ArrayList<Flight>();
+        ArrayList<IFlight> allFlights = new ArrayList<IFlight>();
         allFlights.addAll(playerFlights);
-        for (Flight playerFlight : playerFlights)
+        for (IFlight playerFlight : playerFlights)
         {
-            for (IUnit linkedUnit : playerFlight.getLinkedUnits())
+            for (IFlight linkedFlight : playerFlight.getFlightData().getLinkedFlights().getLinkedFlights())
             {
-                if (linkedUnit instanceof Flight)
-                {
-                    allFlights.add((Flight) linkedUnit);
-                }
+                allFlights.add((IFlight) linkedFlight);
             }
         }
 
-        for (Flight flight : aiFlights)
+        for (IFlight flight : aiFlights)
         {
-            if (flight.getPlanes().size() > 0)
+            if (flight.getFlightData().getFlightPlanes().getPlanes().size() > 0)
             {
                 allFlights.add(flight);
             }
 
-            for (IUnit linkedUnit : flight.getLinkedUnits())
+            for (IFlight linkedFlight : flight.getFlightData().getLinkedFlights().getLinkedFlights())
             {
-                if (linkedUnit instanceof Flight)
-                {
-                    allFlights.add((Flight) linkedUnit);
-                }
+                    allFlights.add((IFlight) linkedFlight);
             }
         }
 
@@ -157,9 +151,9 @@ public class MissionFlightBuilder
 
     public boolean hasPlayerFlightWithFlightType(FlightTypes flightType)
     {
-        for (Flight playerFlight : playerFlights)
+        for (IFlight playerFlight : playerFlights)
         {
-            if (playerFlight.getFlightType() == flightType)
+            if (playerFlight.getFlightData().getFlightInformation().getFlightType() == flightType)
             {
                 return true;
             }
@@ -172,11 +166,11 @@ public class MissionFlightBuilder
         return hasPlayerFlightWithFlightTypes(FlightTypes.getFlightTypesByCategory(FlightTypeCategory.FIGHTER));
     }
 
-    public Flight getPlayerFlightForSquadron(int squadronId)
+    public IFlight getPlayerFlightForSquadron(int squadronId)
     {
-        for (Flight flight : playerFlights)
+        for (IFlight flight : playerFlights)
         {
-            if (flight.getSquadron().getSquadronId() == squadronId)
+            if (flight.getFlightData().getFlightInformation().getSquadron().getSquadronId() == squadronId)
             {
                 return flight;
             }
@@ -184,11 +178,11 @@ public class MissionFlightBuilder
         return null;
     }
 
-    public Flight getPlayerFlight(SquadronMember player) throws PWCGException
+    public IFlight getPlayerFlight(SquadronMember player) throws PWCGException
     {
-        for (Flight flight : playerFlights)
+        for (IFlight flight : playerFlights)
         {
-            for (PlaneMCU plane : flight.getPlayerPlanes())
+            for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlayerPlanes())
             {
                 SquadronMember planePilot = plane.getPilot();
                 if (planePilot.getSerialNumber() == player.getSerialNumber())
@@ -203,9 +197,9 @@ public class MissionFlightBuilder
     public List<Integer> getPlayersInMission() throws PWCGException
     {
         List<Integer> playersInMission = new ArrayList<>();
-        for (Flight flight : playerFlights)
+        for (IFlight flight : playerFlights)
         {
-            for (PlaneMCU plane : flight.getPlayerPlanes())
+            for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlayerPlanes())
             {
                 if (plane.getPilot().isPlayer())
                 {
@@ -216,22 +210,22 @@ public class MissionFlightBuilder
         return playersInMission;
     }
 
-    public Flight getReferencePlayerFlight()
+    public IFlight getReferencePlayerFlight()
     {
         return playerFlights.get(0);
     }
 
-    public List<Flight> getPlayerFlights()
+    public List<IFlight> getPlayerFlights()
     {
         return playerFlights;
     }
 
-    public void addPlayerFlight(Flight playerFlight)
+    public void addPlayerFlight(IFlight playerFlight)
     {
         this.playerFlights.add(playerFlight);
     }
 
-    public List<Flight> getAiFlights()
+    public List<IFlight> getAiFlights()
     {
         return aiFlights;
     }

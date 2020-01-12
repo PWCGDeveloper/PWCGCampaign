@@ -41,9 +41,9 @@ import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.io.MissionFileWriter;
 
 public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListener
@@ -596,9 +596,9 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     		return true;
     	}
     	
-        Flight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
-        List<PlaneMCU> playerPlanes = playerFlight.getPlayerPlanes();
-        for (PlaneMCU playerPlane : playerPlanes)
+        IFlight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
+        List<PlaneMcu> playerPlanes = playerFlight.getFlightData().getFlightPlanes().getPlayerPlanes();
+        for (PlaneMcu playerPlane : playerPlanes)
         {
             SquadronMember squadronMember = playerPlane.getPilot();
             if (squadronMember.isPlayer())
@@ -613,9 +613,9 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
 
     private boolean ensurePlayerOwnsPlane() throws PWCGException
     {
-        Flight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
-        List<PlaneMCU> playerPlanes = playerFlight.getPlayerPlanes();
-        for (PlaneMCU playerPlane : playerPlanes)
+        IFlight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
+        List<PlaneMcu> playerPlanes = playerFlight.getFlightData().getFlightPlanes().getPlayerPlanes();
+        for (PlaneMcu playerPlane : playerPlanes)
         {
             if (!PlanesOwnedManager.getInstance().isPlaneOwned(playerPlane.getType()))
             {

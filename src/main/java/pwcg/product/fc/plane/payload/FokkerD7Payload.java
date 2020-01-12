@@ -4,7 +4,7 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 
 public class FokkerD7Payload extends PlanePayload implements IPlanePayload
 {
@@ -28,7 +28,7 @@ public class FokkerD7Payload extends PlanePayload implements IPlanePayload
         return super.copy(clone);
     }
     
-    public int createWeaponsPayload(Flight flight)
+    public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
         return selectedPrimaryPayloadId;

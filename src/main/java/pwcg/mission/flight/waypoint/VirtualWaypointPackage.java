@@ -6,20 +6,22 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.virtual.VirtualWaypointGenerator;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.group.VirtualWayPoint;
 
-public class VirtualWaypointPackage
+public class VirtualWaypointPackage implements IVirtualWaypointPackage
 {
+    private IFlight flight;
     private List<VirtualWayPoint> virtualWaypoints = new ArrayList<VirtualWayPoint>();
-    private WaypointPackage waypointPackage;
 
-    public VirtualWaypointPackage(WaypointPackage waypointPackage)
+    public VirtualWaypointPackage(IFlight flight)
     {
-        this.waypointPackage = waypointPackage;
+        this.flight = flight;
     }
 
+    @Override
     public void buildVirtualWaypoints() throws PWCGException
     {
         generateVirtualWaypoints();
@@ -28,7 +30,7 @@ public class VirtualWaypointPackage
     
     private void generateVirtualWaypoints() throws PWCGException
     {
-        VirtualWaypointGenerator virtualWaypointGenerator = new VirtualWaypointGenerator(waypointPackage.getFlight());
+        VirtualWaypointGenerator virtualWaypointGenerator = new VirtualWaypointGenerator(flight);
         virtualWaypoints = virtualWaypointGenerator.createVirtualWaypoints();
     }
 
@@ -37,7 +39,7 @@ public class VirtualWaypointPackage
         BaseFlightMcu wpEntryMcu = getEntryMcu();
         if (wpEntryMcu != null)
         {
-            waypointPackage.getFlight().getMissionBeginUnit().linkToMissionBegin(wpEntryMcu.getIndex());
+            flight.getMissionBeginUnit().linkToMissionBegin(wpEntryMcu.getIndex());
         }
     }
 
@@ -47,6 +49,7 @@ public class VirtualWaypointPackage
         return firstVirtualWayPoint.getEntryPoint();
     }
 
+    @Override
     public void write(BufferedWriter writer) throws PWCGIOException 
     {
         for (VirtualWayPoint virtualWaypoint : virtualWaypoints)
@@ -55,11 +58,13 @@ public class VirtualWaypointPackage
         }
     }
 
+    @Override
     public List<VirtualWayPoint> getVirtualWaypoints()
     {
         return this.virtualWaypoints;
     }
 
+    @Override
     public List<VirtualWayPointCoordinate> getVirtualWaypointCoordinates()
     {
         List<VirtualWayPointCoordinate> virtualWayPointCoordinates = new ArrayList<>();
@@ -70,6 +75,7 @@ public class VirtualWaypointPackage
         return virtualWayPointCoordinates;
     }
 
+    @Override
     public void setVirtualWaypoints(List<VirtualWayPoint> virtualWaypoints)
     {
         this.virtualWaypoints = virtualWaypoints;

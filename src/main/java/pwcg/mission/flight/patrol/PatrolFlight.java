@@ -1,36 +1,60 @@
 package pwcg.mission.flight.patrol;
 
-import java.util.List;
-
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
-import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightPayloadBuilder;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.initialposition.FlightPositionSetter;
+import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
+import pwcg.mission.flight.waypoint.begin.FlightWaypointGroupFactory;
+import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
+import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
+import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class PatrolFlight extends Flight
+public class PatrolFlight extends Flight implements IFlight
 {
-    public PatrolFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
-	{
-		super (flightInformation, missionBeginUnit);
-	}
-
-	@Override
-	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
-	{
-		PatrolFrontWaypoints waypointGenerator = new PatrolFrontWaypoints(this);
-
-        List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
-        
-        return waypointList;
-	}
-
-    @Override
-    protected void createFlightSpecificTargetAssociations() throws PWCGException
+    public PatrolFlight(IFlightInformation flightInformation)
     {
-        this.createSimpleTargetAssociations();
+        super(flightInformation);
     }
 
+    public void createFlight() throws PWCGException
+    {
+        flightData.initialize(this);
+        createWaypoints();
+        FlightPositionSetter.setFlightInitialPosition(this);
+        setFlightPayload();
+    }
+
+    private void createWaypoints() throws PWCGException
+    {
+        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(IngressWaypointPattern.INGRESS_NEAR_FRONT, this);
+
+        IMissionPointSet flightBegin = FlightWaypointGroupFactory.createFlightBegin(this, AirStartPattern.AIR_START_NEAR_AIRFIELD, ingressWaypoint);
+        flightData.getWaypointPackage().addMissionPointSet(MissionPointSetType.MISSION_POINT_SET_FLIGHT_BEGIN, flightBegin);
+
+        PatrolFrontWaypointFactory missionWaypointFactory = new PatrolFrontWaypointFactory(this);
+        IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
+        flightData.getWaypointPackage().addMissionPointSet(MissionPointSetType.MISSION_POINT_SET_MISSION_PATROL, missionWaypoints);
+        
+        IMissionPointSet flightEnd = FlightWaypointGroupFactory.createFlightEndAtHomeField(this);
+        flightData.getWaypointPackage().addMissionPointSet(MissionPointSetType.MISSION_POINT_SET_FLIGHT_END, flightEnd);
+        
+        
+    }
+
+    private void setFlightPayload() throws PWCGException
+    {
+        FlightPayloadBuilder flightPayloadHelper = new FlightPayloadBuilder(this);
+        flightPayloadHelper.setFlightPayload();
+    }
+
+    @Override
+    public void finalize() throws PWCGException
+    {
+        flightData.getWaypointPackage().finalize();
+    }
 }

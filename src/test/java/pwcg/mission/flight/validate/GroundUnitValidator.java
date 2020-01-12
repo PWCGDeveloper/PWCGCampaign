@@ -2,9 +2,8 @@ package pwcg.mission.flight.validate;
 
 import java.util.List;
 
-import pwcg.mission.IUnit;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.org.GroundUnitCollectionType;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
@@ -13,16 +12,16 @@ public class GroundUnitValidator
 {
     public void validateGroundUnitsForMission(Mission mission)
     {
-        List<Flight> flights = mission.getMissionFlightBuilder().getAllAerialFlights();
-        for (Flight flight : flights)
+        List<IFlight> flights = mission.getMissionFlightBuilder().getAllAerialFlights();
+        for (IFlight flight : flights)
         {
             validateGroundUnitsForFlight(flight);
         }
     }
 
-    public void validateGroundUnitsForFlight(Flight flight)
+    public void validateGroundUnitsForFlight(IFlight flight)
     {
-        if (flight.isPlayerFlight() || flight.getFlightInformation().isEscortedByPlayerFlight() || flight.getFlightInformation().isEscortForPlayerFlight())
+        if (flight.getFlightData().getFlightInformation().isPlayerFlight() || flight.getFlightData().getFlightInformation().isEscortedByPlayerFlight() || flight.getFlightData().getFlightInformation().isEscortForPlayerFlight())
         {
             validatePlayerGroundUnits(flight);
         }
@@ -32,44 +31,36 @@ public class GroundUnitValidator
         }
     }
     
-    private void validatePlayerGroundUnits(Flight flight)
+    private void validatePlayerGroundUnits(IFlight flight)
     {
-        for (IUnit linkedUnit : flight.getLinkedUnits())
+        for (IGroundUnitCollection linkedUnit : flight.getFlightData().getLinkedGroundUnits().getLinkedGroundUnits())
         {
-            if (linkedUnit instanceof IGroundUnitCollection)
+            if ((linkedUnit).getGroundUnitCollectionType() == GroundUnitCollectionType.BALLOON_GROUND_UNIT_COLLECTION)
             {
-                IGroundUnitCollection groundUnitCollection = (IGroundUnitCollection)linkedUnit;
-                if (((IGroundUnitCollection) linkedUnit).getGroundUnitCollectionType() == GroundUnitCollectionType.BALLOON_GROUND_UNIT_COLLECTION)
-                {
-                    assert(groundUnitCollection.getGroundUnits().size() == 3);
-                }
-                else if (((IGroundUnitCollection) linkedUnit).getGroundUnitCollectionType() == GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION)
-                {
-                    assert(groundUnitCollection.getGroundUnits().size() > 0);
-                }
-                else if (((IGroundUnitCollection) linkedUnit).getGroundUnitCollectionType() == GroundUnitCollectionType.STATIC_GROUND_UNIT_COLLECTION)
-                {
-                    assert(groundUnitCollection.getGroundUnits().size() > 0);
-                }
-                else if (((IGroundUnitCollection) linkedUnit).getGroundUnitCollectionType() == GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION)
-                {
-                    assert(groundUnitCollection.getGroundUnits().size() > 0);
-                }
+                assert(linkedUnit.getGroundUnits().size() == 3);
+            }
+            else if ((linkedUnit).getGroundUnitCollectionType() == GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION)
+            {
+                assert(linkedUnit.getGroundUnits().size() > 0);
+            }
+            else if ((linkedUnit).getGroundUnitCollectionType() == GroundUnitCollectionType.STATIC_GROUND_UNIT_COLLECTION)
+            {
+                assert(linkedUnit.getGroundUnits().size() > 0);
+            }
+            else if (linkedUnit.getGroundUnitCollectionType() == GroundUnitCollectionType.TRANSPORT_GROUND_UNIT_COLLECTION)
+            {
+                assert(linkedUnit.getGroundUnits().size() > 0);
             }
         }
     }
 
-    private void validateAiGroundUnits(Flight flight)
+    private void validateAiGroundUnits(IFlight flight)
     {
-        for (IUnit linkedUnit : flight.getLinkedUnits())
+        for (IGroundUnitCollection linkedUnit : flight.getFlightData().getLinkedGroundUnits().getLinkedGroundUnits())
         {
-            if (linkedUnit instanceof IGroundUnitCollection)
+            for (IGroundUnit groundUnit : linkedUnit.getGroundUnits())
             {
-                IGroundUnitCollection groundUnitCollection = (IGroundUnitCollection)linkedUnit;
-                for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
-                {
-                    assert(groundUnit.getSpawners().size() == 1);
-                }
+                assert(groundUnit.getSpawners().size() == 1);
             }
         }
     }

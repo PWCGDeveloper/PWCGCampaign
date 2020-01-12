@@ -14,7 +14,7 @@ import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.unittypes.artillery.SearchLightUnit;
 import pwcg.mission.mcu.Coalition;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 
 public class SearchLightBuilder
@@ -52,7 +52,7 @@ public class SearchLightBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
                 "Search Lights", 
-                TacticalTarget.TARGET_INFANTRY,
+                TargetType.TARGET_INFANTRY,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
         IGroundUnitCollection groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
@@ -69,7 +69,7 @@ public class SearchLightBuilder
 
         boolean isPlayerTarget = false;
         GroundUnitInformation groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
-                campaign, country, name, TacticalTarget.TARGET_AIRFIELD, position, position, null, isPlayerTarget);
+                campaign, country, name, TargetType.TARGET_AIRFIELD, position, position, null, isPlayerTarget);
         
         groundUnitInformation.setUnitSize(GroundUnitSize.GROUND_UNIT_SIZE_TINY);
         return groundUnitInformation;

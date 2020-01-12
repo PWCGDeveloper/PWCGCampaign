@@ -9,7 +9,7 @@ import pwcg.core.location.Orientation;
 
 public class TargetDefinition
 {
-    private TacticalTarget targetType = TacticalTarget.TARGET_NONE;
+    private TargetType targetType = TargetType.TARGET_NONE;
     private boolean isPlayerTarget = false;
     private Coordinate targetPosition;
     private Orientation targetOrientation;
@@ -31,19 +31,19 @@ public class TargetDefinition
         return targetType.getTargetCategory();
     }
 
-    public TacticalTarget getTargetType()
+    public TargetType getTargetType()
     {
         return targetType;
     }
 
-    public void setTargetType(TacticalTarget targetType)
+    public void setTargetType(TargetType targetType)
     {
         this.targetType = targetType;
     }
 
     public Coordinate getTargetPosition()
     {
-        return targetPosition;
+        return targetPosition.copy();
     }
 
     public void setTargetPosition(Coordinate targetLocation)
@@ -53,7 +53,7 @@ public class TargetDefinition
 
     public Orientation getTargetOrientation()
     {
-        return targetOrientation;
+        return targetOrientation.copy();
     }
 
     public void setTargetOrientation(Orientation targetOrientation)

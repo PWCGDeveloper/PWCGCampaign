@@ -1,23 +1,21 @@
 package pwcg.mission.flight.transport;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 
 public class TransportPackage implements IFlightPackage
 {
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
 
-    public TransportPackage(FlightInformation flightInformation)
+    public TransportPackage(IFlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }
 
     @Override
-    public Flight createPackage() throws PWCGException
+    public IFlight createPackage() throws PWCGException
 	{
         TransportFlight transportFlight = makeTransportFlight();
         return transportFlight;
@@ -25,11 +23,8 @@ public class TransportPackage implements IFlightPackage
     
     private TransportFlight makeTransportFlight() throws PWCGException
     {
-        Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());            
-        TransportFlight transportFlight = new TransportFlight (flightInformation, missionBeginUnit);
-        transportFlight.createUnitMission();
-
+        TransportFlight transportFlight = new TransportFlight (flightInformation);
+        transportFlight.createFlight();
         return transportFlight;
     }
 }

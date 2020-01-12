@@ -13,8 +13,6 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     private static final int CLIMB_DISTANCE = 10000;
     private static final int NEUTRAL_ZONE = 5000;
     private static final int FRONT_LINE_MISSION_RADIUS = 40000;
-    private static final int BOMB_APPROACH_DISTANCE = 18000;
-    private static final int BOMB_APPROACH_FINAL_DISTANCE = 10000;
     private static final int MIN_CLIMB_WP_ALT = 2000;
     private static final int CROSS_DIAMETER = 25000;
     private static final int CREEPING_LINE_LENGTH = 15000;
@@ -32,10 +30,13 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     private static final int AIRCRAFT_SPACING_HORIZONTAL = 300;
     private static final int AIRCRAFT_SPACING_VERTICAL = 200;
     private static final int TAKEOFF_SPACING = 35;
-    private static final int RENDEZVOUS_DISTANCE_FROM_FRONT = 20000;
     private static final int ADDITIONAL_ALTITUDE_FOR_ESCORT = 800;
     private static final int SCRAMBLE_OPPOSE_MIN_DISTANCE = 5000;
-    private static final int SCRAMBLE_OPPOSE_MAX_DISTANCE = 25000;
+    private static final int SCRAMBLE_OPPOSE_MAX_DISTANCE = 25000;  
+    private static final int INGRESS_ADDITIONAL_DISTANCE_FROM_TARGET = 15000;
+    private static final int ATTACK_AREA_SELECT_TARGET_DISTANCE = 8000;
+    private static final int ATTACK_AREA_BOMB_DROP_DISTANCE = 1000;
+    private static final int INGRESS_DISTANCE_FROM_FRONT = 10000;
 
     @Override
     public boolean useWaypointGoal()
@@ -89,18 +90,6 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     public int getClimbDistance()
     {
         return CLIMB_DISTANCE;
-    }
-
-    @Override
-    public int getBombApproachDistance()
-    {
-        return BOMB_APPROACH_DISTANCE;
-    }
-
-    @Override
-    public int getBombFinalApproachDistance()
-    {
-        return BOMB_APPROACH_FINAL_DISTANCE;
     }
 
     @Override
@@ -185,10 +174,6 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
         {
             initialDistance = 50000;                    
         }
-        else if (flightType == FlightTypes.SEA_PATROL)
-        {
-            initialDistance = 50000;                    
-        }
         else if (flightType == FlightTypes.STRATEGIC_BOMB)
         {
             initialDistance = 30000;                    
@@ -262,10 +247,6 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
             initialDistance = 20000;
         }
         else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
-        {
-            initialDistance = 100000;                    
-        }
-        else if (flightType == FlightTypes.SEA_PATROL)
         {
             initialDistance = 100000;                    
         }
@@ -403,12 +384,6 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     }
 
     @Override
-    public int getRendezvousDistanceFromFront()
-    {
-        return RENDEZVOUS_DISTANCE_FROM_FRONT;
-    }
-
-    @Override
     public int getAdditionalAltitudeForEscort()
     {
         return ADDITIONAL_ALTITUDE_FOR_ESCORT;
@@ -424,5 +399,48 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     public int getScrambleOpposeMaxDistance()
     {
         return SCRAMBLE_OPPOSE_MAX_DISTANCE;
+    }
+
+    @Override
+    public int getRendezvousDistanceFromFront()
+    {
+        return getAttackAreaSelectTargetRadius() + INGRESS_ADDITIONAL_DISTANCE_FROM_TARGET;
+    }
+
+    @Override
+    public int getBombApproachDistance()
+    {
+        return getBombFinalApproachDistance() + 8000;
+    }
+
+    @Override
+    public int getBombFinalApproachDistance()
+    {
+        return getAttackAreaTriggerRadius() - 1000 ;
+    }
+
+
+    @Override
+    public int getAttackAreaSelectTargetRadius()
+    {
+        return ATTACK_AREA_SELECT_TARGET_DISTANCE;
+    }
+
+    @Override
+    public int getAttackAreaBombDropRadius()
+    {
+        return ATTACK_AREA_BOMB_DROP_DISTANCE;
+    }
+
+    @Override
+    public int getAttackAreaTriggerRadius()
+    {
+        return getAttackAreaSelectTargetRadius() + 2000;
+    }
+
+    @Override
+    public int getDefaultIngressDistanceFromFront()
+    {
+        return INGRESS_DISTANCE_FROM_FRONT;
     }
 }

@@ -4,8 +4,8 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.target.TargetCategory;
 
 public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
@@ -28,10 +28,10 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
 	}
 
     @Override
-    public int createWeaponsPayload(Flight flight)
+    public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
-        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
         {
             selectGroundAttackPayload(flight);
         }
@@ -39,22 +39,22 @@ public class SpitfireMkIXePayload extends PlanePayload implements IPlanePayload
         return selectedPrimaryPayloadId;
     }
 
-    protected void selectGroundAttackPayload(Flight flight)
+    protected void selectGroundAttackPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 2;
-        if (flight.getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
+        if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
             selectedPrimaryPayloadId = 2;
         }
-        else if (flight.getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
+        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
             selectedPrimaryPayloadId = 4;
         }
-        else if (flight.getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
+        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
             selectedPrimaryPayloadId = 1;
         }
-        else if (flight.getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
+        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
             selectedPrimaryPayloadId = 1;
         }

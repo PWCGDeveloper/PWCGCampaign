@@ -5,39 +5,39 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 public class TargetTypeNightGenerator
 {
-    public static TacticalTarget createTargetType() throws PWCGException
+    public static TargetType createTargetType() throws PWCGException
     {
-        List <TacticalTarget>prioritizedTargetTypes = getTargetPriorities();
+        List <TargetType>prioritizedTargetTypes = getTargetPriorities();
         return getTargetTypeFromPrioritizedList(prioritizedTargetTypes);            
     }
 
-    private static List <TacticalTarget> getTargetPriorities() throws PWCGException 
+    private static List <TargetType> getTargetPriorities() throws PWCGException 
     {
-        List <TacticalTarget> targetTypes = new ArrayList<TacticalTarget>();
+        List <TargetType> targetTypes = new ArrayList<TargetType>();
 
-        targetTypes.add (TacticalTarget.TARGET_ARTILLERY);
-        targetTypes.add (TacticalTarget.TARGET_ARTILLERY);
-        targetTypes.add (TacticalTarget.TARGET_TRANSPORT);
-        targetTypes.add (TacticalTarget.TARGET_TRANSPORT);
-        targetTypes.add (TacticalTarget.TARGET_TRANSPORT);
-        targetTypes.add (TacticalTarget.TARGET_TRANSPORT);
-        targetTypes.add (TacticalTarget.TARGET_TRANSPORT);
-        targetTypes.add (TacticalTarget.TARGET_TRAIN);
-        targetTypes.add (TacticalTarget.TARGET_TRAIN);
-        targetTypes.add (TacticalTarget.TARGET_TRAIN);
-        targetTypes.add (TacticalTarget.TARGET_AIRFIELD);
-        targetTypes.add (TacticalTarget.TARGET_AIRFIELD);
+        targetTypes.add (TargetType.TARGET_ARTILLERY);
+        targetTypes.add (TargetType.TARGET_ARTILLERY);
+        targetTypes.add (TargetType.TARGET_TRANSPORT);
+        targetTypes.add (TargetType.TARGET_TRANSPORT);
+        targetTypes.add (TargetType.TARGET_TRANSPORT);
+        targetTypes.add (TargetType.TARGET_TRANSPORT);
+        targetTypes.add (TargetType.TARGET_TRANSPORT);
+        targetTypes.add (TargetType.TARGET_TRAIN);
+        targetTypes.add (TargetType.TARGET_TRAIN);
+        targetTypes.add (TargetType.TARGET_TRAIN);
+        targetTypes.add (TargetType.TARGET_AIRFIELD);
+        targetTypes.add (TargetType.TARGET_AIRFIELD);
 
         return targetTypes;
     }
 
-    private static TacticalTarget getTargetTypeFromPrioritizedList(List<TacticalTarget> prioritizedTargetTypes)
+    private static TargetType getTargetTypeFromPrioritizedList(List<TargetType> prioritizedTargetTypes)
     {
-        TacticalTarget targetType = prioritizedTargetTypes.get(RandomNumberGenerator.getRandom(prioritizedTargetTypes.size()));
+        TargetType targetType = prioritizedTargetTypes.get(RandomNumberGenerator.getRandom(prioritizedTargetTypes.size()));
         return targetType;
     }
 

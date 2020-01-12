@@ -7,41 +7,41 @@ import java.util.TreeMap;
 
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plot.FlightProximityAnalyzer;
 
 public class MissionFlightProximitySorter
 {
-    private Map<Double, Flight> axisFlightsByContactDistance = new TreeMap<>();
-    private Map<Double, Flight> alliedFlightsByContactDistance = new TreeMap<>();
+    private Map<Double, IFlight> axisFlightsByContactDistance = new TreeMap<>();
+    private Map<Double, IFlight> alliedFlightsByContactDistance = new TreeMap<>();
         
     public void mapEnemyDistanceToPlayerFlights(Mission mission) throws PWCGException
     {
         FlightProximityAnalyzer proximityAnalyzer = new FlightProximityAnalyzer(mission);
         proximityAnalyzer.plotFlightEncounters();
         
-        for (Flight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
+        for (IFlight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
         {
-            if (aiFlight.getSquadron().determineSide() == Side.ALLIED)
+            if (aiFlight.getFlightData().getFlightInformation().getSquadron().determineSide() == Side.ALLIED)
             {
-                alliedFlightsByContactDistance.put(aiFlight.getClosestContactWithPlayerDistance(), aiFlight);
+                alliedFlightsByContactDistance.put(aiFlight.getFlightData().getFlightPlayerContact().getClosestContactWithPlayerDistance(), aiFlight);
             }
             else
             {
-                axisFlightsByContactDistance.put(aiFlight.getClosestContactWithPlayerDistance(), aiFlight);
+                axisFlightsByContactDistance.put(aiFlight.getFlightData().getFlightPlayerContact().getClosestContactWithPlayerDistance(), aiFlight);
             }
         }
     }
     
-    public List<Flight> getFlightsByProximity(Side side)
+    public List<IFlight> getFlightsByProximity(Side side)
     {
         if (side == Side.ALLIED)
         {
-            return new ArrayList<Flight>(alliedFlightsByContactDistance.values());
+            return new ArrayList<IFlight>(alliedFlightsByContactDistance.values());
         }
         else
         {
-            return new ArrayList<Flight>(axisFlightsByContactDistance.values());
+            return new ArrayList<IFlight>(axisFlightsByContactDistance.values());
         }
     }
 }

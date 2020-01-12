@@ -17,7 +17,7 @@ import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
 import pwcg.mission.ground.builder.BalloonUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderGround;
 
@@ -68,7 +68,7 @@ public class AmbientBalloonDefensePackage
         
         TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
         boolean isPlayerTarget = false;
-        TargetDefinition ambientBalloonTargetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(balloonCountry, TacticalTarget.TARGET_BALLOON, balloonPosition, isPlayerTarget);
+        TargetDefinition ambientBalloonTargetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(balloonCountry, TargetType.TARGET_BALLOON, balloonPosition, isPlayerTarget);
         
         BalloonUnitBuilder groundUnitBuilderBalloonDefense = new BalloonUnitBuilder(mission, ambientBalloonTargetDefinition);
         IGroundUnitCollection balloonUnit = groundUnitBuilderBalloonDefense.createBalloonUnit(balloonCountry);

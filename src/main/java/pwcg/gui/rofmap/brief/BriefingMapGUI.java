@@ -36,9 +36,8 @@ import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 import pwcg.gui.utils.ScrollBarWrapper;
-import pwcg.mission.IUnit;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.escort.VirtualEscortFlight;
 import pwcg.mission.utils.MissionTime;
 
@@ -561,27 +560,21 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         
         mapPanel.clearVirtualPoints();
         
-        Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
-        for (IUnit unit : myFlight.getLinkedUnits())
+        IFlight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
+        for (IFlight linkedFlight : myFlight.getFlightData().getLinkedFlights().getLinkedFlights())
         {
-            if (unit instanceof Flight)
-            {
-                mapPanel.makeMapPanelVirtualPoints ((Flight)unit);
-            }
+            mapPanel.makeMapPanelVirtualPoints (linkedFlight);
         }
         
-        for (Flight flight : mission.getMissionFlightBuilder().getAiFlights())
+        for (IFlight flight : mission.getMissionFlightBuilder().getAiFlights())
         {
             mapPanel.makeMapPanelVirtualPoints (flight);
             
-            for (IUnit unit : flight.getLinkedUnits())
+            for (IFlight linkedFlight : flight.getFlightData().getLinkedFlights().getLinkedFlights())
             {
-                if (unit instanceof Flight)
+                if (!(linkedFlight instanceof VirtualEscortFlight))
                 {
-                    if (!(unit instanceof VirtualEscortFlight))
-                    {
-                        mapPanel.makeMapPanelVirtualPoints ((Flight)unit);
-                    }
+                    mapPanel.makeMapPanelVirtualPoints (linkedFlight);
                 }
             }
         }

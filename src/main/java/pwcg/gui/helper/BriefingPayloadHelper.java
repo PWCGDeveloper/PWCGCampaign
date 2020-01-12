@@ -11,9 +11,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.gui.rofmap.brief.BriefingCrewPlanePayloadSorter;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.plane.PlaneMcu;
 
 public class BriefingPayloadHelper
 {
@@ -74,8 +74,8 @@ public class BriefingPayloadHelper
 
     private void assignPayloadsToCrewPlanes() throws PWCGException
     {
-        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
-        for (PlaneMCU plane : playerFlight.getPlanes())
+        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
+        for (PlaneMcu plane : playerFlight.getFlightData().getFlightPlanes().getPlanes())
         {
             SquadronMember pilotOfPlane = plane.getPilot();
             CrewPlanePayloadPairing crewPlane = briefingAssignmentData.getAssignedCrewPlanes().get(pilotOfPlane.getSerialNumber());
@@ -88,8 +88,8 @@ public class BriefingPayloadHelper
 
     private void assignModificationsToCrewPlanes() throws PWCGException
     {
-        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
-        for (PlaneMCU plane : playerFlight.getPlanes())
+        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
+        for (PlaneMcu plane : playerFlight.getFlightData().getFlightPlanes().getPlanes())
         {
             SquadronMember pilotOfPlane = plane.getPilot();
             CrewPlanePayloadPairing crewPlane = briefingAssignmentData.getAssignedCrewPlanes().get(pilotOfPlane.getSerialNumber());
@@ -132,7 +132,7 @@ public class BriefingPayloadHelper
     
     private void setPayloadFromPayloadFactory(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
+        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
         IPayloadFactory payloadFactory = PWCGContext.getInstance().getPayloadFactory();
         IPlanePayload payload = payloadFactory.createPlanePayload(crewPlane.getPlane().getType());
         payload.createWeaponsPayload(playerFlight);

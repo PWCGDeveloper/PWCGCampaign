@@ -13,7 +13,6 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.Logger;
-import pwcg.mission.Unit;
 import pwcg.mission.mcu.McuTREntity;
 
 public class Vehicle implements Cloneable, IVehicle
@@ -29,7 +28,7 @@ public class Vehicle implements Cloneable, IVehicle
     protected String script = "";
     protected String model = "";
     protected String Desc = "";
-    protected int numberInFormation = Unit.NUM_IN_FORMATION_START;
+    protected int numberInFormation = 1;
     protected int vulnerable = 1;
     protected int engageable = 1;
     protected int limitAmmo = 1;

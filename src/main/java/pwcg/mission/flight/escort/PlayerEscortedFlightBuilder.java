@@ -6,48 +6,47 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.bomb.BombingFlight;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plot.FlightInformationFactory;
 import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
+
 public class PlayerEscortedFlightBuilder
 {
-    private FlightInformation escortFlightInformation;
-    private FlightInformation escortedFlightInformation;
+    private IFlightInformation escortFlightInformation;
+    private IFlightInformation escortedFlightInformation;
 	
 	public PlayerEscortedFlightBuilder () throws PWCGException 
 	{
 	}
 	
-	public Flight createEscortedFlight(PlayerEscortFlight escortFlight) throws PWCGException
+	public IFlight createEscortedFlight(IFlightInformation escortFlightInformation) throws PWCGException
     {
-        this.escortFlightInformation = escortFlight.getFlightInformation();
-        MissionBeginUnit missionBeginUnit = buildEscortedFlightInformation(escortFlight);
-        BombingFlight bombingFlightEscortedByPlayer = buildEscortedFlight(missionBeginUnit);        
-        return bombingFlightEscortedByPlayer;
+        MissionBeginUnit missionBeginUnit = buildEscortedFlightInformation();
+        PlayerEscortedFlight PlayerEscortedFlightEscortedByPlayer = buildEscortedFlight(missionBeginUnit);        
+        return PlayerEscortedFlightEscortedByPlayer;
 	}
 
-    private BombingFlight buildEscortedFlight(MissionBeginUnit missionBeginUnit) throws PWCGException
+    private PlayerEscortedFlight buildEscortedFlight(MissionBeginUnit missionBeginUnit) throws PWCGException
     {
-        BombingFlight bombingFlightEscortedByPlayer = new BombingFlight (escortedFlightInformation, missionBeginUnit);
-		bombingFlightEscortedByPlayer.createUnitMission();
+        PlayerEscortedFlight playerEscortedFlight = new PlayerEscortedFlight (escortedFlightInformation);
+		playerEscortedFlight.createFlight();
 		
         IGroundUnitCollection targetUnit = createTargetForPlayerEscortedFlight();
-        bombingFlightEscortedByPlayer.linkGroundUnitsToFlight(targetUnit);
+        playerEscortedFlight.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(targetUnit);
         
-        return bombingFlightEscortedByPlayer;
+        return playerEscortedFlight;
     }
 
-    private MissionBeginUnit buildEscortedFlightInformation(PlayerEscortFlight escortFlight) throws PWCGException
+    private MissionBeginUnit buildEscortedFlightInformation() throws PWCGException
     {
         Squadron friendlyBomberSquadron = determineSquadronToBeEscorted();
         MissionBeginUnit missionBeginUnit = new MissionBeginUnit(friendlyBomberSquadron.determineCurrentPosition(escortFlightInformation.getCampaign().getDate()));     
         
         this.escortedFlightInformation = FlightInformationFactory.buildEscortedByPlayerFlightInformation(
-                escortFlight.getFlightInformation(), friendlyBomberSquadron);
+                escortFlightInformation, friendlyBomberSquadron);
         return missionBeginUnit;
     }
 

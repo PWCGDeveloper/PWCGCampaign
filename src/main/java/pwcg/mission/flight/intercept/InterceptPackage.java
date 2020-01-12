@@ -1,34 +1,23 @@
 package pwcg.mission.flight.intercept;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 
 public class InterceptPackage implements IFlightPackage
 {	
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
 
-    public InterceptPackage(FlightInformation flightInformation)
+    public InterceptPackage(IFlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }
 
-    public Flight createPackage () throws PWCGException 
+    public IFlight createPackage () throws PWCGException 
     {
-        InterceptFlight interceptFlight = createInterceptFlight();            
-		return interceptFlight;
-	}
-
-    private InterceptFlight createInterceptFlight() throws PWCGException
-    {
-        Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
-		InterceptFlight interceptFlight = new InterceptFlight (flightInformation, missionBeginUnit);
-
-		interceptFlight.createUnitMission();
+        InterceptFlight interceptFlight = new InterceptFlight (flightInformation);
+        interceptFlight.createFlight();
         return interceptFlight;
     }
 }

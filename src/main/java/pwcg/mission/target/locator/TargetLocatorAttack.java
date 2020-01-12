@@ -18,7 +18,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.PositionFinder;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 
 public class TargetLocatorAttack
@@ -38,7 +38,7 @@ public class TargetLocatorAttack
     
     public void locateTarget() throws PWCGException
     {
-        TacticalTarget targetType = targetDefinition.getTargetType();
+        TargetType targetType = targetDefinition.getTargetType();
      
         while (targetLocation == null)
         {
@@ -56,33 +56,33 @@ public class TargetLocatorAttack
         }
     }
 
-    private void locateSelectedTarget(TacticalTarget targetType) throws PWCGException
+    private void locateSelectedTarget(TargetType targetType) throws PWCGException
     {
-        if (targetType == TacticalTarget.TARGET_ASSAULT)
+        if (targetType == TargetType.TARGET_ASSAULT)
         {
             getTargetLocationEnemyFrontLines();
         }
-        else if (targetType == TacticalTarget.TARGET_DEFENSE)
+        else if (targetType == TargetType.TARGET_DEFENSE)
         {
             getTargetLocationFriendlyFrontLines();
         }
-        else if (targetType == TacticalTarget.TARGET_TRAIN)
+        else if (targetType == TargetType.TARGET_TRAIN)
         {
             getTargetLocationTrainStation();
         }
-        else if (targetType == TacticalTarget.TARGET_TRANSPORT)
+        else if (targetType == TargetType.TARGET_TRANSPORT)
         {
             getTargetLocationBridge();
         }
-        else if (targetType == TacticalTarget.TARGET_DRIFTER)
+        else if (targetType == TargetType.TARGET_DRIFTER)
         {
             getTargetLocationRiver();
         }
-        else if (targetType == TacticalTarget.TARGET_AIRFIELD)
+        else if (targetType == TargetType.TARGET_AIRFIELD)
         {
             getTargetLocationAirfield();
         }
-        else if (targetType == TacticalTarget.TARGET_SHIPPING)
+        else if (targetType == TargetType.TARGET_SHIPPING)
         {
             getTargetLocationShippingLanes();
         }

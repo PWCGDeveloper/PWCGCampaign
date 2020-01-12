@@ -27,11 +27,8 @@ import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.rofmap.MapPanelBase;
 import pwcg.gui.utils.MapPointInfoPopup;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.virtual.VirtualWaypointPlotter;
-import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
-import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
-import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 
 public class BriefingMapPanel extends MapPanelBase implements ActionListener
 {
@@ -236,10 +233,10 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         axisVirtualPoints.clear();        
     }
 
-    public void makeMapPanelVirtualPoints(Flight flight) throws PWCGException
+    public void makeMapPanelVirtualPoints(IFlight flight) throws PWCGException
     {       
         FlightMap flightMap = getFlightMap(flight);
-        if (flight.getCountry().getSideNoNeutral() == Side.ALLIED)
+        if (flight.getFlightData().getFlightInformation().getCountry().getSideNoNeutral() == Side.ALLIED)
         {
             alliedVirtualPoints.add(flightMap);
         }
@@ -249,57 +246,19 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
         }
     }
 
-    private FlightMap getFlightMap(Flight flight) throws PWCGException
+    private FlightMap getFlightMap(IFlight flight) throws PWCGException
     {
         FlightMap flightMap = new FlightMap();
-        flightMap.flightType = flight.getFlightType().toString();
-        flightMap.planeType = flight.getPlanes().get(0).getDisplayName();
+        flightMap.flightType = flight.getFlightData().getFlightInformation().getFlightType().toString();
+        flightMap.planeType = flight.getFlightData().getFlightPlanes().getFlightLeader().getDisplayName();
         
-        if (flight.isVirtual())
+        for (MissionPoint waypoint : flight.getFlightData().getWaypointPackage().getFlightMissionPoints())
         {
-            List<VirtualWayPointCoordinate> plotCoordinates = getPlotCoordinatesForVirtualFlight(flight);        
-            for (VirtualWayPointCoordinate vwp : plotCoordinates)
-            {
-                BriefingMapPoint mapPoint = BriefingMapPointFactory.virtualWaypointToMapPoint(vwp);
-                flightMap.mapPoints.add(mapPoint);
-            }
-        }
-        else
-        {
-            for (McuWaypoint waypoint : flight.getWaypointPackage().getWaypointsForLeadPlane())
-            {
-                BriefingMapPoint mapPoint = BriefingMapPointFactory.waypointToMapPoint(waypoint);
-                flightMap.mapPoints.add(mapPoint);
-            }
+            BriefingMapPoint mapPoint = BriefingMapPointFactory.missionPointToMapPoint(waypoint);
+            flightMap.mapPoints.add(mapPoint);
         }
         
         return flightMap;
-    }
-
-    private List<VirtualWayPointCoordinate> getPlotCoordinatesForVirtualFlight(Flight flight) throws PWCGException
-    {
-        List<VirtualWayPointCoordinate> plotCoordinates = new ArrayList<>();
-        if (flight.isVirtual())
-        {
-            if (flight.isVirtual())
-            {
-                VirtualWaypointPackage virtualWaypointPackage = flight.getVirtualWaypointPackage();
-                plotCoordinates = virtualWaypointPackage.getVirtualWaypointCoordinates();
-                if (plotCoordinates.size() == 0)
-                {
-                    VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter(flight);
-                    plotCoordinates = virtualWaypointPlotter.plotCoordinates();
-                }
-            }
-        }
-        
-        if (plotCoordinates.size() == 0)
-        {
-            VirtualWaypointPlotter virtualWaypointPlotter = new VirtualWaypointPlotter(flight);
-            plotCoordinates = virtualWaypointPlotter.plotCoordinates();
-        }
-
-        return plotCoordinates;
     }
 
 	public void mouseMovedCallback(MouseEvent e) 

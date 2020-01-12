@@ -1,10 +1,10 @@
 package pwcg.mission.flight.intercept;
 
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlightInformation;
 
 public class HomeDefensePackage extends InterceptPackage
 {
-    public HomeDefensePackage(FlightInformation flightInformation)
+    public HomeDefensePackage(IFlightInformation flightInformation)
     {
         super(flightInformation);
     }

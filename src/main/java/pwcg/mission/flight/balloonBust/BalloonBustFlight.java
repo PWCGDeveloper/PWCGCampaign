@@ -1,36 +1,60 @@
 package pwcg.mission.flight.balloonBust;
 
-import java.util.List;
-
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
-import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.FlightPayloadBuilder;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.initialposition.FlightPositionSetter;
+import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
+import pwcg.mission.flight.waypoint.begin.FlightWaypointGroupFactory;
+import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
+import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
+import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class BalloonBustFlight extends Flight
+public class BalloonBustFlight extends Flight implements IFlight
 {
-    public BalloonBustFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
+    public BalloonBustFlight(IFlightInformation flightInformation)
     {
-        super (flightInformation, missionBeginUnit);
+        super(flightInformation);
     }
 
-	@Override
-	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
-	{
-		BalloonBustWaypoints waypointGenerator = new BalloonBustWaypoints(this);
+    public void createFlight() throws PWCGException
+    {
+        flightData.initialize(this);
+        createWaypoints();
+        FlightPositionSetter.setFlightInitialPosition(this);
+        setFlightPayload();
+    }
 
-        List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
+    private void createWaypoints() throws PWCGException
+    {
+        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(IngressWaypointPattern.INGRESS_NEAR_FRONT, this);
+
+        IMissionPointSet flightBegin = FlightWaypointGroupFactory.createFlightBegin(this, AirStartPattern.AIR_START_NEAR_AIRFIELD, ingressWaypoint);
+        flightData.getWaypointPackage().addMissionPointSet(MissionPointSetType.MISSION_POINT_SET_FLIGHT_BEGIN, flightBegin);
+
+        BalloonBustWaypointFactory missionWaypointFactory = new BalloonBustWaypointFactory(this);
+        IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
+        flightData.getWaypointPackage().addMissionPointSet(MissionPointSetType.MISSION_POINT_SET_MISSION_PATROL, missionWaypoints);
         
-        return waypointList;
-	}
+        IMissionPointSet flightEnd = FlightWaypointGroupFactory.createFlightEndAtHomeField(this);
+        flightData.getWaypointPackage().addMissionPointSet(MissionPointSetType.MISSION_POINT_SET_FLIGHT_END, flightEnd);
+        
+        
+    }
+
+    private void setFlightPayload() throws PWCGException
+    {
+        FlightPayloadBuilder flightPayloadHelper = new FlightPayloadBuilder(this);
+        flightPayloadHelper.setFlightPayload();
+    }
 
     @Override
-    protected void createFlightSpecificTargetAssociations() throws PWCGException
+    public void finalize() throws PWCGException
     {
-        this.createSimpleTargetAssociations();
+        flightData.getWaypointPackage().finalize();
     }
-
 }

@@ -6,27 +6,28 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 
 public class FlightPathByMinutePlotter
 {
-    public List<Coordinate> plotCoordinatesByMinute(Flight flight) throws PWCGException 
+    public List<Coordinate> plotCoordinatesByMinute(IFlight flight) throws PWCGException 
     {        
-        List<Coordinate> allMissionCoordinates = flight.getAllMissionCoordinates();
+        List<MissionPoint> allMissionCoordinates = flight.getFlightData().getWaypointPackage().getFlightMissionPoints();
         if (allMissionCoordinates == null || allMissionCoordinates.size() < 2)
         {
             return this.generatePathNoWaypoints(flight);
         }
         
-        double cruiseSpeedKPH = flight.getFlightCruisingSpeed();
+        double cruiseSpeedKPH = flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed();
         double movementPerInterval = (cruiseSpeedKPH / 60) * 1000;
 
         List<Coordinate> flightPath = new ArrayList<Coordinate>();
         for (int index = 1; index < allMissionCoordinates.size(); ++index)
         {
-            Coordinate legStartPosition = allMissionCoordinates.get(index-1);
-            Coordinate legEndPosition = allMissionCoordinates.get(index);            
+            Coordinate legStartPosition = allMissionCoordinates.get(index-1).getPosition();
+            Coordinate legEndPosition = allMissionCoordinates.get(index).getPosition();            
             List<Coordinate> vwpForLeg = generatePlotPointsForLeg(movementPerInterval, legStartPosition, legEndPosition);
             flightPath.addAll(vwpForLeg);
         }
@@ -70,10 +71,10 @@ public class FlightPathByMinutePlotter
         return nextCoordinate;
     }
 
-    private List<Coordinate> generatePathNoWaypoints(Flight flight)
+    private List<Coordinate> generatePathNoWaypoints(IFlight flight)
     {
         List<Coordinate> circlingFlightPath = new ArrayList<Coordinate>();
-        PlaneMCU leadPlane = flight.getPlanes().get(0);
+        PlaneMcu leadPlane = flight.getFlightData().getFlightPlanes().getFlightLeader();
         for (int i = 0; i < 240; ++i)
         {
             circlingFlightPath.add(leadPlane.getPosition());

@@ -16,7 +16,7 @@ import pwcg.mission.ground.unittypes.artillery.GroundAAArtilleryBattery;
 import pwcg.mission.ground.unittypes.artillery.GroundAAMachineGunBattery;
 import pwcg.mission.ground.unittypes.infantry.BalloonUnit;
 import pwcg.mission.mcu.Coalition;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 
 public class BalloonUnitBuilder
@@ -41,7 +41,7 @@ public class BalloonUnitBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.BALLOON_GROUND_UNIT_COLLECTION, 
                 "Balloon Unit", 
-                TacticalTarget.TARGET_BALLOON,
+                TargetType.TARGET_BALLOON,
                 Coalition.getCoalitionsForSide(groundUnitInformation.getCountry().getSide().getOppositeSide()));
 
         groundUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
@@ -58,8 +58,8 @@ public class BalloonUnitBuilder
         groundUnitInformation = GroundUnitInformationFactory.buildGroundUnitInformation(
                 campaign, 
                 country, 
-                TacticalTarget.TARGET_BALLOON.getTargetName(), 
-                TacticalTarget.TARGET_BALLOON, 
+                TargetType.TARGET_BALLOON.getTargetName(), 
+                TargetType.TARGET_BALLOON, 
                 targetDefinition.getTargetPosition(), 
                 targetDefinition.getTargetPosition(), 
                 Orientation.createRandomOrientation(), 

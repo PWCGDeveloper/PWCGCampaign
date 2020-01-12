@@ -9,7 +9,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Parsers;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.plane.PlaneMcu;
 
 public class PlaneIO 
 {		
@@ -19,11 +19,11 @@ public class PlaneIO
 	 * @throws PWCGIOException 
 	 * @throws PWCGException 
 	 */
-	public static PlaneMCU readBlock (BufferedReader reader) throws PWCGException 
+	public static PlaneMcu readBlock (BufferedReader reader) throws PWCGException 
 	{
 		try
         {
-		    PlaneMCU plane = new PlaneMCU();
+		    PlaneMcu plane = new PlaneMcu();
             Coordinate coords = new Coordinate();
             Orientation ori = new Orientation();
             

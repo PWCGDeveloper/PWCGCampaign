@@ -20,7 +20,7 @@ import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 @RunWith(MockitoJUnitRunner.class)
 public class VirtualWaypointStartInBoxFinderTest
 {
-    @Mock private Flight flight;
+    @Mock private IFlight flight;
     @Mock private Mission mission;
     @Mock VirtualWayPointCoordinate vwpCoordinate1;
     @Mock VirtualWayPointCoordinate vwpCoordinate2;

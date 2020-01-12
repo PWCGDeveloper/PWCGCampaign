@@ -16,7 +16,7 @@ import pwcg.mission.ground.unittypes.infantry.AssaultGroundUnitFactory;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.target.AssaultDefinition;
 import pwcg.mission.target.AssaultDefinitionGenerator;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 public class AssaultSegmentBuilder
 {
@@ -34,7 +34,7 @@ public class AssaultSegmentBuilder
         GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
                 GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION, 
                 "Battle Segment", 
-                TacticalTarget.TARGET_ASSAULT,
+                TargetType.TARGET_ASSAULT,
                 Coalition.getCoalitions());
 
         this.battleSegmentUnitCollection = new GroundUnitCollection (groundUnitCollectionData);
@@ -125,7 +125,7 @@ public class AssaultSegmentBuilder
                 campaign, 
                 assaultDefinition.getTargetDefinition().getAttackingCountry(),
                 name, 
-                TacticalTarget.TARGET_INFANTRY, 
+                TargetType.TARGET_INFANTRY, 
                 unitPosition, 
                 assaultDefinition.getDefensePosition(), 
                 assaultDefinition.getTowardsDefenderOrientation(), 
@@ -209,7 +209,7 @@ public class AssaultSegmentBuilder
                 campaign, 
                 assaultDefinition.getTargetDefinition().getTargetCountry(),
                 name, 
-                TacticalTarget.TARGET_INFANTRY, 
+                TargetType.TARGET_INFANTRY, 
                 unitPosition, 
                 assaultDefinition.getAssaultPosition(), 
                 assaultDefinition.getTowardsAttackerOrientation(), 

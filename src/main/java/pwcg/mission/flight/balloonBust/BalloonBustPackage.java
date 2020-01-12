@@ -8,23 +8,22 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.builder.BalloonUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class BalloonBustPackage implements IFlightPackage
 {
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
 
-    public BalloonBustPackage(FlightInformation flightInformation)
+    public BalloonBustPackage(IFlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }
 
-    public Flight createPackage () throws PWCGException 
+    public IFlight createPackage () throws PWCGException 
     {
         Side enemySide = flightInformation.getSquadron().determineEnemySide();
 
@@ -43,10 +42,9 @@ public class BalloonBustPackage implements IFlightPackage
 
     private BalloonBustFlight createFlight(Coordinate startCoords, IGroundUnitCollection balloonUnit) throws PWCGException
     {
-        MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());
-        BalloonBustFlight balloonBust = new BalloonBustFlight (flightInformation, missionBeginUnit);
-        balloonBust.addLinkedUnit(balloonUnit);
-		balloonBust.createUnitMission();
+        BalloonBustFlight balloonBust = new BalloonBustFlight (flightInformation);
+        balloonBust.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(balloonUnit);
+		balloonBust.createFlight();
         return balloonBust;
     }
 

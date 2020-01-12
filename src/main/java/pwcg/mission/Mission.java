@@ -16,7 +16,7 @@ import pwcg.core.utils.Logger;
 import pwcg.mission.ambient.AmbientGroundUnitBuilder;
 import pwcg.mission.data.PwcgGeneratedMission;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.mission.io.MissionDescriptionFile;
 import pwcg.mission.io.MissionFileFactory;
@@ -156,7 +156,7 @@ public class Mission
 
     private void setMissionScript(MissionOptions missionOptions) throws PWCGException
     {
-        List<PlaneMCU> playerPlanes = missionFlightBuilder.getReferencePlayerFlight().getPlayerPlanes();
+        List<PlaneMcu> playerPlanes = missionFlightBuilder.getReferencePlayerFlight().getFlightData().getFlightPlanes().getPlayerPlanes();
         String playerScript = playerPlanes.get(0).getScript();
         missionOptions.setPlayerConfig(playerScript);
     }

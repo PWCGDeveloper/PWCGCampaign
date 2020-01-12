@@ -2,14 +2,14 @@ package pwcg.campaign.target.locator.targettype;
 
 import pwcg.campaign.api.ICountry;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.target.TargetRadius;
 
 public class TargetTypeAvailabilityInputGenerator
 {
     private TargetTypeAvailabilityInputs targetTypeAvailabilityInputs = new TargetTypeAvailabilityInputs();
 
-    public TargetTypeAvailabilityInputs createTargetAvailabilityInputs(FlightInformation flightInformation) throws PWCGException
+    public TargetTypeAvailabilityInputs createTargetAvailabilityInputs(IFlightInformation flightInformation) throws PWCGException
     {
         ICountry enemyCountry = flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate());
 

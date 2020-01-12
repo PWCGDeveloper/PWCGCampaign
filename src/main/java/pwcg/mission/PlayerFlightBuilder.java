@@ -8,19 +8,19 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.PWCGFlightFactoryFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.factory.FlightFactory;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
 import pwcg.mission.flight.factory.NightFlightTypeConverter;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.plane.PlaneMcu;
 
 public class PlayerFlightBuilder
 {
     private Campaign campaign;
     private Mission mission;
 
-    private Flight playerFlight;
+    private IFlight playerFlight;
  
     public PlayerFlightBuilder(Campaign campaign, Mission mission)
     {
@@ -28,7 +28,7 @@ public class PlayerFlightBuilder
         this.mission = mission;
     }
     
-    public Flight createPlayerFlight(FlightTypes requestedFlightType, Squadron squadron) throws PWCGException 
+    public IFlight createPlayerFlight(FlightTypes requestedFlightType, Squadron squadron) throws PWCGException 
     {
         FlightTypes flightType = finalizeFlightType(requestedFlightType, squadron);        
         buildFlight(flightType, squadron);
@@ -64,7 +64,7 @@ public class PlayerFlightBuilder
     private void validatePlayerFlight() throws PWCGException
     {
         boolean playerIsInFlight = false;
-        for (PlaneMCU plane : playerFlight.getPlanes())
+        for (PlaneMcu plane : playerFlight.getFlightData().getFlightPlanes().getPlanes())
         {
             if (plane.getPilot().isPlayer())
             {

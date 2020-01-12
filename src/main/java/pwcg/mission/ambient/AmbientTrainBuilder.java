@@ -20,7 +20,7 @@ import pwcg.mission.Mission;
 import pwcg.mission.TargetSide;
 import pwcg.mission.ground.builder.TrainUnitBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderGround;
 
@@ -81,7 +81,7 @@ public class AmbientTrainBuilder extends AmbientUnitBuilder
         boolean isPlayerTarget = true;
         ICountry trainCountry = CountryFactory.makeMapReferenceCountry(targetSide);
         TargetDefinitionBuilderGround targetDefinitionBuilder = new TargetDefinitionBuilderGround(campaign);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(trainCountry, TacticalTarget.TARGET_TRAIN, station.getPosition(), isPlayerTarget);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionAmbient(trainCountry, TargetType.TARGET_TRAIN, station.getPosition(), isPlayerTarget);
 
         TrainUnitBuilder trainfactory =  new TrainUnitBuilder(mission, targetDefinition);
         IGroundUnitCollection trainUnit = trainfactory.createTrainUnit();

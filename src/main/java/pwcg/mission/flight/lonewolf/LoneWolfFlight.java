@@ -1,13 +1,12 @@
 package pwcg.mission.flight.lonewolf;
 
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.patrol.PatrolFlight;
 
 public class LoneWolfFlight extends PatrolFlight
 {
-    public LoneWolfFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
+    public LoneWolfFlight(IFlightInformation flightInformation)
     {
-        super (flightInformation, missionBeginUnit);
+        super (flightInformation);
     }
 }

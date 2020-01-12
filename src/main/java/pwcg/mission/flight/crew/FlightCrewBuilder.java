@@ -12,16 +12,16 @@ import pwcg.campaign.squadmember.SquadronMemberSorter;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlightInformation;
 
 public class FlightCrewBuilder
 {
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
 
     private Map <Integer, SquadronMember> assignedCrewMap = new HashMap <>();
     private Map <Integer, SquadronMember> unassignedCrewMap = new HashMap <>();
     
-	public FlightCrewBuilder(FlightInformation flightInformation)
+	public FlightCrewBuilder(IFlightInformation flightInformation)
 	{
         this.flightInformation = flightInformation;
 	}

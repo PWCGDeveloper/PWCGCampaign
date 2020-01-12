@@ -9,8 +9,8 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.plane.PlaneMcu;
 
 
 public class McuCheckZone extends BaseFlightMcu
@@ -41,10 +41,10 @@ public class McuCheckZone extends BaseFlightMcu
         addPlaneCoalition(coalition);
     }
 
-    public void triggerCheckZoneByFlight (Flight flight)
+    public void triggerCheckZoneByFlight (IFlight flight)
     {
         planeCoalitions.clear();
-        for (PlaneMCU plane: flight.getPlanes())
+        for (PlaneMcu plane: flight.getFlightData().getFlightPlanes().getPlanes())
         {
             this.setObject(plane.getLinkTrId());
         }

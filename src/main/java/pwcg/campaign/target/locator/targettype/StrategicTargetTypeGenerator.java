@@ -13,7 +13,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PositionFinder;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetRadius;
 import pwcg.mission.target.locator.StrategicTargetLocator;
 
@@ -30,20 +30,20 @@ public class StrategicTargetTypeGenerator
         this.targetLocation = referenceLocation;
     }
     
-    public TacticalTarget createTargetType(double missionRadius) throws PWCGException
+    public TargetType createTargetType(double missionRadius) throws PWCGException
     {
-        List<TacticalTarget> targetTypes = createAvailableTargetTypes(missionRadius);
+        List<TargetType> targetTypes = createAvailableTargetTypes(missionRadius);
         int index = RandomNumberGenerator.getRandom(targetTypes.size());
         return targetTypes.get(index);
     }
 
-    private List <TacticalTarget> createAvailableTargetTypes(double missionRadius) throws PWCGException
+    private List <TargetType> createAvailableTargetTypes(double missionRadius) throws PWCGException
     {
         TargetRadius targetRadius = new TargetRadius();
         targetRadius.calculateTargetRadius(FlightTypes.STRATEGIC_BOMB, missionRadius);
         int strategicBombingRadius = Double.valueOf(targetRadius.getInitialTargetRadius()).intValue();
 
-        Map<TacticalTarget, List<IFixedPosition>> targetAvailability = new HashMap<>();
+        Map<TargetType, List<IFixedPosition>> targetAvailability = new HashMap<>();
         while (targetAvailability.size() == 0 && strategicBombingRadius < PositionFinder.ABSURDLY_LARGE_DISTANCE)
         {
             StrategicTargetLocator strategicTargetLocator = new StrategicTargetLocator(strategicBombingRadius, side, date, targetLocation);
@@ -51,40 +51,40 @@ public class StrategicTargetTypeGenerator
             strategicBombingRadius += 20000;
         }
         
-        List<TacticalTarget> availbleTargetTypes = new ArrayList<TacticalTarget>();
+        List<TargetType> availbleTargetTypes = new ArrayList<TargetType>();
 
-        if (targetAvailability.containsKey(TacticalTarget.TARGET_FACTORY))
+        if (targetAvailability.containsKey(TargetType.TARGET_FACTORY))
         {
-            availbleTargetTypes.add(TacticalTarget.TARGET_FACTORY);
-            availbleTargetTypes.add(TacticalTarget.TARGET_FACTORY);
-            availbleTargetTypes.add(TacticalTarget.TARGET_FACTORY);
-            availbleTargetTypes.add(TacticalTarget.TARGET_FACTORY);
-            availbleTargetTypes.add(TacticalTarget.TARGET_FACTORY);
+            availbleTargetTypes.add(TargetType.TARGET_FACTORY);
+            availbleTargetTypes.add(TargetType.TARGET_FACTORY);
+            availbleTargetTypes.add(TargetType.TARGET_FACTORY);
+            availbleTargetTypes.add(TargetType.TARGET_FACTORY);
+            availbleTargetTypes.add(TargetType.TARGET_FACTORY);
         }
         
-        if (targetAvailability.containsKey(TacticalTarget.TARGET_RAIL))
+        if (targetAvailability.containsKey(TargetType.TARGET_RAIL))
         {
-            availbleTargetTypes.add(TacticalTarget.TARGET_RAIL);
-            availbleTargetTypes.add(TacticalTarget.TARGET_RAIL);
-            availbleTargetTypes.add(TacticalTarget.TARGET_RAIL);
+            availbleTargetTypes.add(TargetType.TARGET_RAIL);
+            availbleTargetTypes.add(TargetType.TARGET_RAIL);
+            availbleTargetTypes.add(TargetType.TARGET_RAIL);
         }
         
-        if (targetAvailability.containsKey(TacticalTarget.TARGET_PORT))
+        if (targetAvailability.containsKey(TargetType.TARGET_PORT))
         {
-            availbleTargetTypes.add(TacticalTarget.TARGET_PORT);
-            availbleTargetTypes.add(TacticalTarget.TARGET_PORT);
-            availbleTargetTypes.add(TacticalTarget.TARGET_PORT);
+            availbleTargetTypes.add(TargetType.TARGET_PORT);
+            availbleTargetTypes.add(TargetType.TARGET_PORT);
+            availbleTargetTypes.add(TargetType.TARGET_PORT);
         }
         
-        if (targetAvailability.containsKey(TacticalTarget.TARGET_AIRFIELD))
+        if (targetAvailability.containsKey(TargetType.TARGET_AIRFIELD))
         {
-            availbleTargetTypes.add(TacticalTarget.TARGET_AIRFIELD);
-            availbleTargetTypes.add(TacticalTarget.TARGET_AIRFIELD);
+            availbleTargetTypes.add(TargetType.TARGET_AIRFIELD);
+            availbleTargetTypes.add(TargetType.TARGET_AIRFIELD);
         }
         
         if (availbleTargetTypes.isEmpty())
         {
-            availbleTargetTypes.add(TacticalTarget.TARGET_CITY);
+            availbleTargetTypes.add(TargetType.TARGET_CITY);
         }
 
         return availbleTargetTypes;

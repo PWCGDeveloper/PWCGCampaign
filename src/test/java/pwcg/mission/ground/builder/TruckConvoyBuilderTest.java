@@ -23,7 +23,7 @@ import pwcg.mission.MissionGroundUnitResourceManager;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetDefinitionBuilderGround;
 
@@ -53,7 +53,7 @@ public class TruckConvoyBuilderTest
         TargetDefinition targetDefinition = targetDefinitionBuilder.buildTargetDefinitionBattle(
                 CountryFactory.makeCountryByCountry(Country.GERMANY), 
                 CountryFactory.makeCountryByCountry(Country.RUSSIA), 
-                TacticalTarget.TARGET_INFANTRY, new Coordinate (102000, 0, 100000), true);
+                TargetType.TARGET_INFANTRY, new Coordinate (102000, 0, 100000), true);
 
 
         TruckConvoyBuilder groundUnitFactory =  new TruckConvoyBuilder(mission, targetDefinition);

@@ -16,7 +16,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionAnalyzer 
@@ -40,7 +40,7 @@ public class MissionAnalyzer
 
             writer.write("Player flights");
             writer.newLine();
-            for (Flight playerFlight: mission.getMissionFlightBuilder().getPlayerFlights())
+            for (IFlight playerFlight: mission.getMissionFlightBuilder().getPlayerFlights())
             {
             	analyzeFlight (writer, playerFlight, false);
             }
@@ -48,12 +48,12 @@ public class MissionAnalyzer
             writer.newLine();
             writer.newLine();
 
-            List<Flight> alliedFlights = mission.getMissionFlightBuilder().getAiFlights();
+            List<IFlight> alliedFlights = mission.getMissionFlightBuilder().getAiFlights();
             for (int i = 1; i < alliedFlights.size(); ++i)
             {
-            	writer.write("Flight");
+            	writer.write("IFlight");
             	writer.newLine();
-            	Flight flight = alliedFlights.get(i);
+            	IFlight flight = alliedFlights.get(i);
             	analyzeFlight (writer, flight, false);
             	writer.newLine();
             	writer.newLine();
@@ -70,21 +70,21 @@ public class MissionAnalyzer
         }
 	}
 	
-	private void analyzeFlight(BufferedWriter writer, Flight flight, boolean dumpWP) throws PWCGIOException 
+	private void analyzeFlight(BufferedWriter writer, IFlight flight, boolean dumpWP) throws PWCGIOException 
 	{
 		try
         {
             NumberFormat numberFormat = new DecimalFormat("###.0");
 
-            writer.write("  Mission type: " + flight.getFlightType());
+            writer.write("  Mission type: " + flight.getFlightData().getFlightInformation().getFlightType());
             writer.newLine();
-            writer.write("  Airfield    : " + flight.getAirfield().getName());
+            writer.write("  Airfield    : " + flight.getFlightData().getFlightInformation().getAirfield().getName());
             writer.newLine();
-            writer.write("  Aircraft    : " + flight.getPlanes().get(0).getType());
+            writer.write("  Aircraft    : " + flight.getFlightData().getFlightPlanes().getFlightLeader().getType());
             writer.newLine();
-            writer.write("  Player Contact    : " + flight.getFirstContactWithPlayer());
+            writer.write("  Player Contact    : " + flight.getFlightData().getFlightPlayerContact().getFirstContactWithPlayer());
             writer.newLine();
-            List<McuWaypoint> waypoints = flight.getAllFlightWaypoints();
+            List<McuWaypoint> waypoints = flight.getFlightData().getWaypointPackage().getAllWaypoints();
             
             if (dumpWP)
             {
@@ -145,12 +145,12 @@ public class MissionAnalyzer
      * @return
      * @throws PWCGException 
      */
-    List<Flight> getAlliedFlights(List<Flight> flights) throws PWCGException
+    List<IFlight> getAlliedFlights(List<IFlight> flights) throws PWCGException
     {
-        List<Flight> alliedFlights = new ArrayList<Flight>();
-        for (Flight flight : flights)
+        List<IFlight> alliedFlights = new ArrayList<IFlight>();
+        for (IFlight flight : flights)
         {
-            if (flight.getCountry().getSide() == Side.ALLIED)
+            if (flight.getFlightData().getFlightInformation().getCountry().getSide() == Side.ALLIED)
             {
                 alliedFlights.add(flight);
             }
@@ -164,12 +164,12 @@ public class MissionAnalyzer
      * @return
      * @throws PWCGException 
      */
-    List<Flight> getAxisFlights(List<Flight> flights) throws PWCGException
+    List<IFlight> getAxisFlights(List<IFlight> flights) throws PWCGException
     {
-        List<Flight> axisFlights = new ArrayList<Flight>();
-        for (Flight flight : flights)
+        List<IFlight> axisFlights = new ArrayList<IFlight>();
+        for (IFlight flight : flights)
         {
-            if (flight.getCountry().getSide() == Side.AXIS)
+            if (flight.getFlightData().getFlightInformation().getCountry().getSide() == Side.AXIS)
             {
                 axisFlights.add(flight);
             }

@@ -1,70 +1,60 @@
 package pwcg.mission.flight.transport;
 
-import java.io.BufferedWriter;
-import java.util.List;
-
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.mission.Mission;
-import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
-import pwcg.mission.flight.LandingBuilder;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.initialposition.FlightPositionSetter;
+import pwcg.mission.flight.waypoint.WaypointPriority;
+import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
+import pwcg.mission.flight.waypoint.begin.FlightWaypointGroupFactory;
+import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
+import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
+import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class TransportFlight extends Flight
+public class TransportFlight extends Flight implements IFlight
 {
     private IAirfield arrivalAirfield = null;
 
-    public TransportFlight(FlightInformation flightInformation, MissionBeginUnit missionBeginUnit)
+    public TransportFlight(IFlightInformation flightInformation)
     {
-        super (flightInformation, missionBeginUnit);
+        super (flightInformation);
     }
 
-	public void createUnitMission() throws PWCGException  
-	{
-	    determineTargetAirfield();
-		super.createUnitMission();
-	}
+    public void createFlight() throws PWCGException
+    {
+        flightData.initialize(this);
+        
+        determineTargetAirfield();
+        createWaypoints();
+        FlightPositionSetter.setFlightInitialPosition(this);
+        WaypointPriority.setWaypointsNonFighterPriority(this);
+    }
+    
+    private void createWaypoints() throws PWCGException
+    {
+        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(IngressWaypointPattern.INGRESS_NEAR_TARGET, this);
 
-	private void determineTargetAirfield() throws PWCGException
+        IMissionPointSet flightBegin = FlightWaypointGroupFactory.createFlightBegin(this, AirStartPattern.AIR_START_NEAR_AIRFIELD, ingressWaypoint);
+        flightData.getWaypointPackage().addMissionPointSet(MissionPointSetType.MISSION_POINT_SET_FLIGHT_BEGIN, flightBegin);
+
+        TransportWaypointFactory missionWaypointFactory = new TransportWaypointFactory(this, flightData.getFlightInformation().getAirfield(), arrivalAirfield);
+        IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
+        flightData.getWaypointPackage().addMissionPointSet(MissionPointSetType.MISSION_POINT_SET_MISSION_ATTACK, missionWaypoints);
+        
+        IMissionPointSet flightEnd = FlightWaypointGroupFactory.createFlightEnd(this, arrivalAirfield);
+        flightData.getWaypointPackage().addMissionPointSet(MissionPointSetType.MISSION_POINT_SET_FLIGHT_END, flightEnd);        
+    }
+ 
+   	private void determineTargetAirfield() throws PWCGException
     {
 	    AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
-	    arrivalAirfield = airfieldManager.getAirfieldFinder().findClosestAirfieldForSide(getTargetPosition(), getCampaign().getDate(), getSquadron().getCountry().getSide());    
-    }
-
-	@Override
-	public List<McuWaypoint> createWaypoints(Mission mission, Coordinate startPosition) throws PWCGException 
-	{
-        TransportWaypoints waypointGenerator = new TransportWaypoints(this, 
-                getSquadron().determineCurrentAirfieldCurrentMap(getCampaign().getDate()), 
-                arrivalAirfield);
-
-        List<McuWaypoint> waypointList = waypointGenerator.createWaypoints();
-
-	    return waypointList;
-	}
-
-	@Override
-	public void write(BufferedWriter writer) throws PWCGException 
-	{
-		super.write(writer);
-	}
-
-    @Override
-    protected void createFlightSpecificTargetAssociations() throws PWCGException
-    {
-        this.createSimpleTargetAssociations();
-    }
-
-    @Override
-    protected void createLanding() throws PWCGException, PWCGException
-    {
-        LandingBuilder landingBuilder = new LandingBuilder(flightInformation.getCampaign());
-        landing = landingBuilder.createLanding(arrivalAirfield);
+	    arrivalAirfield = airfieldManager.getAirfieldFinder().findClosestAirfieldForSide(getTargetPosition(), getCampaign().getDate(), flightData.getFlightInformation().getSquadron().getCountry().getSide());    
     }
 
     public IAirfield getArrivalAirfield()

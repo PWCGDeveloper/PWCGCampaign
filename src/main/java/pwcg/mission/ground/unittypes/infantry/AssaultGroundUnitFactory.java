@@ -1,7 +1,7 @@
 package pwcg.mission.ground.unittypes.infantry;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.unittypes.artillery.GroundAAArtilleryBattery;
@@ -31,7 +31,7 @@ public class AssaultGroundUnitFactory
         return mgUnit;
     }
 
-    public IGroundUnit createMachineGunFlareUnit (GroundUnitInformation groundUnitInformation, Flight triggeringFlight) throws PWCGException 
+    public IGroundUnit createMachineGunFlareUnit (GroundUnitInformation groundUnitInformation, IFlight triggeringFlight) throws PWCGException 
     {
         IGroundUnit pillBoxUnit = new GroundMachineGunFlareUnit(groundUnitInformation, triggeringFlight);
         pillBoxUnit.createGroundUnit();

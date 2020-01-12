@@ -16,6 +16,8 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.Logger;
 import pwcg.mission.MissionStringHandler;
+import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.product.fc.plane.FCPlaneAttributeMapping;
 
@@ -87,10 +89,22 @@ public class McuIcon extends BaseFlightMcu
         coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
-    public McuIcon(McuTakeoff takeoff, Side side)
+    public McuIcon(WaypointAction action, MissionPoint missionPoint, Side side)
     {
         super();
-        position = takeoff.getPosition().copy();
+        if (action == WaypointAction.WP_ACTION_TAKEOFF)
+        {
+            createIconTakeoff(missionPoint, side);
+        }
+        else
+        {
+            createIconLanding(missionPoint, side);
+        }
+    }
+    
+    private void createIconTakeoff(MissionPoint takeoff, Side side)
+    {
+        position = takeoff.getPosition();
         iconId = McuIconIdType.ICON_ID_TAKEOFF;
         name = "Take Off";
         desc = "Take Off";
@@ -112,10 +126,9 @@ public class McuIcon extends BaseFlightMcu
         coalitions.add(CoalitionFactory.getCoalitionBySide(side));
     }
 
-    public McuIcon(McuLanding landing, Side side)
+    public void createIconLanding(MissionPoint landing, Side side)
     {
-        super();
-        position = landing.getPosition().copy();
+        position = landing.getPosition();
         iconId = McuIconIdType.ICON_ID_LAND;
         name = "Land";
         desc = "Land";

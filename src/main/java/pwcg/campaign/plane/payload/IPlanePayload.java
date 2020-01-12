@@ -3,7 +3,7 @@ package pwcg.campaign.plane.payload;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 
 public interface IPlanePayload
 {
@@ -11,7 +11,7 @@ public interface IPlanePayload
     public PayloadDesignation getSelectedPayloadDesignation() throws PWCGException;
     public int getPayloadIdByDescription(String payloadDescription);
     public String getPayloadMaskByDescription(String payloadDescription);
-    public int createWeaponsPayload(Flight flight) throws PWCGException;
+    public int createWeaponsPayload(IFlight flight) throws PWCGException;
     public int getSelectedPayloadId();
     public void setSelectedPayloadId(int selectedPrimaryPayloadId);
     public void addModification(PayloadElement payloadElement);

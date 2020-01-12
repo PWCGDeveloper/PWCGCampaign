@@ -7,9 +7,9 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class PositionEvaluator
@@ -20,31 +20,31 @@ public class PositionEvaluator
         Coordinate missionCenter = mission.getMissionBorders().getCenter();
 
         boolean failed = false;
-        for (Flight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
+        for (IFlight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
         {
-            if (aiFlight.getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK ||
-                aiFlight.getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB ||
-                aiFlight.getFlightType() == FlightTypes.TRANSPORT)
+            if (aiFlight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK ||
+                aiFlight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB ||
+                aiFlight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.TRANSPORT)
             {
                 continue;
             }
             
-            double distanceMissioNCenterToTarget = MathUtils.calcDist(missionCenter, aiFlight.getTargetPosition());
+            double distanceMissioNCenterToTarget = MathUtils.calcDist(missionCenter, aiFlight.getFlightData().getFlightInformation().getTargetPosition());
             if (distanceMissioNCenterToTarget > 100000)
             {
                 failed = true;
             }
             
-            for (Integer planeId : aiFlight.getWaypointPackage().getAllWaypointsSets().keySet())
+            for (Integer planeId : aiFlight.getFlightData().getWaypointPackage().getAllWaypointsSets().keySet())
             {
-                for (McuWaypoint waypoint : aiFlight.getWaypointPackage().getWaypointsForPlaneId(planeId))
+                for (McuWaypoint waypoint : aiFlight.getFlightData().getWaypointPackage().getWaypointsForPlaneId(planeId))
                 {
                     assert(waypoint.getPosition().getYPos() > 50.0);
                 }
             }
             
             List<Coordinate> planePositionsEvaluated = new ArrayList<>();
-            for (PlaneMCU plane : aiFlight.getPlanes())
+            for (PlaneMcu plane : aiFlight.getFlightData().getFlightPlanes())
             {
                 assert(plane.getPosition().getYPos() > 50.0);
                 for (Coordinate evaluatedPlanePosition: planePositionsEvaluated)

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.CoalitionFactory;
@@ -12,9 +12,9 @@ import pwcg.mission.mcu.group.VirtualWayPoint;
 
 public class VirtualWaypointGenerator
 {
-    private Flight flight;
+    private IFlight flight;
     
-    public VirtualWaypointGenerator(Flight flight)
+    public VirtualWaypointGenerator(IFlight flight)
     {
         this.flight = flight;
     }
@@ -43,7 +43,7 @@ public class VirtualWaypointGenerator
 
     private VirtualWayPoint createVirtualWaypointFromPlot(VirtualWayPointCoordinate plotCoordinate) throws PWCGException
     {
-        Coalition enemyCoalition = CoalitionFactory.getEnemyCoalition(flight.getCountry());
+        Coalition enemyCoalition = CoalitionFactory.getEnemyCoalition(flight.getFlightData().getFlightInformation().getCountry());
         VirtualWayPoint virtualWaypoint = new VirtualWayPoint();
         virtualWaypoint.initialize(flight, plotCoordinate, enemyCoalition);
         return virtualWaypoint;

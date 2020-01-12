@@ -17,6 +17,8 @@ import pwcg.mission.flight.FlightTypes;
 
 public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
 {
+    static public int DIVE_BOMB_ALT = 4100;
+
     public int determineFlightAltitude(Campaign campaign, FlightTypes flightType) throws PWCGException 
     {
         if (flightType == FlightTypes.LOW_ALT_CAP  || 
@@ -183,7 +185,7 @@ public class BoSMissionAltitudeGenerator implements IMissionAltitudeGenerator
     
     private int determineDiveBombFlightAltitude() 
     {
-        int altitude = 4100;
+        int altitude = DIVE_BOMB_ALT;
         return altitude;
     }
     

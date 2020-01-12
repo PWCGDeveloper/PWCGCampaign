@@ -14,7 +14,7 @@ import pwcg.mission.flight.paradrop.ParaDropFlight;
 import pwcg.mission.flight.transport.TransportFlight;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.testutils.CampaignCache;
@@ -43,7 +43,7 @@ public class PlayerFlightTypeBoSTransportTest
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightType() == FlightTypes.PARATROOP_DROP);
+        assert (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.PARATROOP_DROP);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
     }
@@ -59,7 +59,7 @@ public class PlayerFlightTypeBoSTransportTest
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightType() == FlightTypes.CARGO_DROP);
+        assert (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.CARGO_DROP);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
     }
@@ -72,7 +72,7 @@ public class PlayerFlightTypeBoSTransportTest
         TransportFlight flight = (TransportFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
-        assert (flight.getFlightType() == FlightTypes.TRANSPORT);
+        assert (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.TRANSPORT);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateNoEscortForPlayer();
     }
@@ -89,7 +89,7 @@ public class PlayerFlightTypeBoSTransportTest
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightType() == FlightTypes.BOMB);
+        assert (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.BOMB);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
     }
@@ -105,7 +105,7 @@ public class PlayerFlightTypeBoSTransportTest
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB);
+        assert (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.LOW_ALT_BOMB);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
     }
@@ -114,7 +114,7 @@ public class PlayerFlightTypeBoSTransportTest
     {
         assert (targetDefinition.getAttackingCountry() != null);
         assert (targetDefinition.getTargetCountry() != null);
-        assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
-        assert (targetDefinition.getTargetType() != TacticalTarget.TARGET_NONE);
+        assert (targetDefinition.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
+        assert (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
     }
 }

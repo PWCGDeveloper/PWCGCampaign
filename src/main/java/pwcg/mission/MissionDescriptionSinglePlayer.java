@@ -9,8 +9,9 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.escort.EscortForPlayerFlight;
+import pwcg.mission.flight.objective.MissionObjectiveFactory;
 import pwcg.mission.options.MapWeather;
 import pwcg.mission.options.MissionOptions;
 
@@ -60,7 +61,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 
 	public String createDescription() throws PWCGException 
     {
-		Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+		IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 
         MapWeather mapWeather = PWCGContext.getInstance().getCurrentMap().getMapWeather();
         setClouds(mapWeather.getWeatherDescription());
@@ -69,22 +70,22 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
         MissionOptions missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
         setMissionDateTime(DateUtils.getDateAsMissionFileFormat(campaign.getDate()), missionOptions.getMissionTime().getMissionTime());
 
-        setAircraft(playerFlight.getPlanes().get(0).getDisplayName());
-        setAirfield(playerFlight.getAirfield().getName());
-        setObjective(playerFlight.getMissionObjective());
+        setAircraft(playerFlight.getFlightData().getFlightPlanes().getFlightLeader().getDisplayName());
+        setAirfield(playerFlight.getFlightData().getFlightInformation().getAirfieldName());
+        setObjective(MissionObjectiveFactory.formMissionObjective(playerFlight));
         setEscortedBy(playerFlight);
-        setSquadron(playerFlight.getSquadron().determineDisplayName(campaign.getDate()));
-        buildTitleDescription(campaign.getCampaignData().getName(), playerFlight.getFlightType().toString());
+        setSquadron(playerFlight.getFlightData().getFlightInformation().getSquadron().determineDisplayName(campaign.getDate()));
+        buildTitleDescription(campaign.getCampaignData().getName(), playerFlight.getFlightData().getFlightInformation().getFlightType().toString());
 
-        HashMap<String, Flight> squadronMap = new HashMap<String, Flight>();
-        for (Flight flight : mission.getMissionFlightBuilder().getAiFlights())
+        HashMap<String, IFlight> squadronMap = new HashMap<String, IFlight>();
+        for (IFlight flight : mission.getMissionFlightBuilder().getAiFlights())
         {
-            squadronMap.put(flight.getSquadron().determineDisplayName(campaign.getDate()), flight);
+            squadronMap.put(flight.getFlightData().getFlightInformation().getSquadron().determineDisplayName(campaign.getDate()), flight);
         }
 
-        for (Flight flight : squadronMap.values())
+        for (IFlight flight : squadronMap.values())
         {
-            setFlight(playerFlight.getSquadron().getCountry(), flight);
+            setFlight(playerFlight.getFlightData().getFlightInformation().getSquadron().getCountry(), flight);
         }
         
         return descSinglePlayerTemplate;
@@ -140,13 +141,13 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 		descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<WIND>", windCond);
 	}
 	
-	private void setEscortedBy(Flight playerFlight) throws PWCGException
+	private void setEscortedBy(IFlight playerFlight) throws PWCGException
 	{
         String escortedByText = "";
-        EscortForPlayerFlight escortForPlayerFlight = playerFlight.getEscortForPlayer();
+        EscortForPlayerFlight escortForPlayerFlight = playerFlight.getFlightData().getLinkedFlights().getEscortForPlayer();
         if (escortForPlayerFlight != null)
         {
-            escortedByText = "Escorted by " + escortForPlayerFlight.getLeadPlane().getDisplayName() + "s of " + escortForPlayerFlight.getSquadron().determineDisplayName(campaign.getDate());
+            escortedByText = "Escorted by " + escortForPlayerFlight.getFlightData().getFlightPlanes().getFlightLeader().getDisplayName() + "s of " + escortForPlayerFlight.getFlightData().getFlightInformation().getSquadron().determineDisplayName(campaign.getDate());
         }
 	    
 	    descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<ESCORTED_BY>", escortedByText);
@@ -154,13 +155,13 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 	}
 
 	
-	private void setFlight(ICountry country, Flight flight) throws PWCGException 
+	private void setFlight(ICountry country, IFlight flight) throws PWCGException 
 	{
 		Campaign campaign =     PWCGContext.getInstance().getCampaign();
 		
-		String squadron = flight.getSquadron().determineDisplayName(campaign.getDate());
-		String aircraft = flight.getPlanes().get(0).getDisplayName();
-		ICountry flightCountry = flight.getAirfield().createCountry(campaign.getDate());
+		String squadron = flight.getFlightData().getFlightInformation().getSquadron().determineDisplayName(campaign.getDate());
+		String aircraft = flight.getFlightData().getFlightPlanes().getFlightLeader().getDisplayName();
+		ICountry flightCountry = flight.getFlightData().getFlightInformation().getAirfield().createCountry(campaign.getDate());
 		
 		if (country.isSameSide(flightCountry))
 		{

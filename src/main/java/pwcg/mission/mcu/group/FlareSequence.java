@@ -4,8 +4,8 @@ import java.io.BufferedWriter;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.McuFlare;
 import pwcg.mission.mcu.McuTimer;
 
@@ -22,14 +22,14 @@ public class FlareSequence
     {
     }
 
-    public void setFlare(Flight triggeringFlight, Coordinate position, int color, int object) throws PWCGException 
+    public void setFlare(IFlight triggeringFlight, Coordinate position, int color, int object) throws PWCGException 
     {        
         buildFlareTimers(position, color, object);
 
         missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone(position, FLARE_TRIGGER_DISTANCE);
         missionBeginUnit.linkCheckZoneTarget(flareTimers[0].getIndex());
 
-        for (PlaneMCU triggeringPlane : triggeringFlight.getPlanes())
+        for (PlaneMcu triggeringPlane : triggeringFlight.getFlightData().getFlightPlanes().getPlanes())
         {
             missionBeginUnit.setCheckZoneTriggerObject(triggeringPlane.getEntity().getIndex());
         }

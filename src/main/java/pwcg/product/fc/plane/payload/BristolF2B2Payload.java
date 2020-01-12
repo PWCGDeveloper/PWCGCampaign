@@ -4,8 +4,8 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 
 public class BristolF2B2Payload extends PlanePayload implements IPlanePayload
 {
@@ -33,36 +33,36 @@ public class BristolF2B2Payload extends PlanePayload implements IPlanePayload
         return super.copy(clone);
     }
 
-    public int createWeaponsPayload(Flight flight)
+    public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 1;
-        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK || flight.getFlightType() == FlightTypes.BOMB)
+        if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK || flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.BOMB)
         {
             selectBombingPayload(flight);
         }
-        else if (flight.getFlightType() == FlightTypes.RECON)
+        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.RECON)
         {
             selectReconPayload(flight);
         }
-        else if (flight.getFlightType() == FlightTypes.ARTILLERY_SPOT)
+        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ARTILLERY_SPOT)
         {
             selectArtillerySpotPayload(flight);
         }
         return selectedPrimaryPayloadId;
     }
 
-    protected void selectBombingPayload(Flight flight)
+    protected void selectBombingPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 2;
     }
 
-    protected void selectReconPayload(Flight flight)
+    protected void selectReconPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
     }
 
-    protected void selectArtillerySpotPayload(Flight flight)
+    protected void selectArtillerySpotPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
-    }    
+    }
 }

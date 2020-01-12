@@ -8,8 +8,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.mcu.McuWaypoint;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 
 public class CoordinateBox
 {
@@ -56,14 +56,14 @@ public class CoordinateBox
         return coordinateBox;
     }
 
-    public static CoordinateBox coordinateBoxFromFlights (List<Flight> flights) throws PWCGException
+    public static CoordinateBox coordinateBoxFromFlights (List<IFlight> flights) throws PWCGException
     {
         List<Coordinate> flightWaypointCoordinates = new ArrayList<>();
-        for (Flight flight : flights)
+        for (IFlight flight : flights)
         {
-            for (McuWaypoint waypoint : flight.getWaypointPackage().getWaypointsForLeadPlane())
+            for (MissionPoint missionPoint : flight.getFlightData().getWaypointPackage().getFlightMissionPoints())
             {
-                flightWaypointCoordinates.add(waypoint.getPosition().copy());
+                flightWaypointCoordinates.add(missionPoint.getPosition());
             }
         }        
         CoordinateBox coordinateBox = coordinateBoxFromCoordinateList(flightWaypointCoordinates);

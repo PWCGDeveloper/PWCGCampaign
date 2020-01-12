@@ -7,7 +7,7 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 public class GroundUnitInformation
 {
@@ -18,7 +18,7 @@ public class GroundUnitInformation
     private Coordinate destination = new Coordinate();
     private Coordinate fireTarget = new Coordinate();
 	private Orientation orientation = new Orientation();
-    private TacticalTarget targetType = TacticalTarget.TARGET_NONE;
+    private TargetType targetType = TargetType.TARGET_NONE;
     private GroundUnitSize unitSize = GroundUnitSize.GROUND_UNIT_SIZE_TINY;
 
     public ICountry getCountry()
@@ -81,12 +81,12 @@ public class GroundUnitInformation
         this.orientation = orientation;
     }
 
-    public TacticalTarget getTargetType()
+    public TargetType getTargetType()
     {
         return targetType;
     }
 
-    public void setTargetType(TacticalTarget targetType)
+    public void setTargetType(TargetType targetType)
     {
         this.targetType = targetType;
     }

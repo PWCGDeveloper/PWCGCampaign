@@ -10,7 +10,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
@@ -19,7 +19,7 @@ public class AirfieldManagerTest
     Campaign campaign;
     
     @Mock
-    Flight flight;
+    IFlight flight;
 
     @Before
     public void setup() throws PWCGException

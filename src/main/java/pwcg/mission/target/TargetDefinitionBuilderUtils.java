@@ -3,11 +3,11 @@ package pwcg.mission.target;
 import pwcg.campaign.api.ICountry;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlightInformation;
 
 public class TargetDefinitionBuilderUtils
 {
-    public static void chooseSides(FlightInformation flightInformation) throws PWCGException
+    public static void chooseSides(IFlightInformation flightInformation) throws PWCGException
     {
         TargetDefinition targetDefinition = flightInformation.getTargetDefinition();
         
@@ -24,7 +24,7 @@ public class TargetDefinitionBuilderUtils
         }
     }
 
-    public static String buildTargetName(ICountry targetCountry, TacticalTarget targetType)
+    public static String buildTargetName(ICountry targetCountry, TargetType targetType)
     {
         String nationality = targetCountry.getNationality();
         String name = nationality + " " + targetType.getTargetName();

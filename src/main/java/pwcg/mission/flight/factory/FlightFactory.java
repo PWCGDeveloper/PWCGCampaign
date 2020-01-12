@@ -5,21 +5,19 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.flight.artySpot.ArtillerySpotPackage;
 import pwcg.mission.flight.attack.GroundAttackPackage;
 import pwcg.mission.flight.balloonBust.BalloonBustPackage;
 import pwcg.mission.flight.balloondefense.BalloonDefensePackage;
 import pwcg.mission.flight.bomb.BombingPackage;
-import pwcg.mission.flight.bomb.LowAltBombingPackage;
 import pwcg.mission.flight.bomb.StrategicBombingPackage;
 import pwcg.mission.flight.contactpatrol.ContactPatrolPackage;
 import pwcg.mission.flight.divebomb.DiveBombingPackage;
 import pwcg.mission.flight.escort.PlayerEscortPackage;
-import pwcg.mission.flight.ferry.FerryPackage;
 import pwcg.mission.flight.intercept.HomeDefensePackage;
 import pwcg.mission.flight.intercept.InterceptPackage;
 import pwcg.mission.flight.lonewolf.LoneWolfPackage;
@@ -29,9 +27,8 @@ import pwcg.mission.flight.patrol.LowAltPatrolPackage;
 import pwcg.mission.flight.patrol.PatrolPackage;
 import pwcg.mission.flight.plot.FlightInformationFactory;
 import pwcg.mission.flight.recon.ReconPackage;
-import pwcg.mission.flight.scramble.ScramblePackage;
+import pwcg.mission.flight.scramble.PlayerScramblePackage;
 import pwcg.mission.flight.seapatrolantishipping.SeaAntiShippingPackage;
-import pwcg.mission.flight.seapatrolscout.SeaPatrolPackage;
 import pwcg.mission.flight.spy.SpyExtractPackage;
 import pwcg.mission.flight.transport.TransportPackage;
 
@@ -44,17 +41,16 @@ public class FlightFactory
         this.campaign = campaign;
     }
     
-    public Flight buildFlight(
+    public IFlight buildFlight(
     		Mission mission,
     		Squadron squadron,
     		FlightTypes flightType,
     		boolean isPlayerFlight) throws PWCGException 
     {
-        Flight flight = null;
+        IFlight flight = null;
         
-        FlightInformation flightInformation = createFlightInformation(mission, squadron, flightType, isPlayerFlight);
+        IFlightInformation flightInformation = createFlightInformation(mission, squadron, flightType, isPlayerFlight);
 
-        // Flight generator
         IFlightPackage flightPackage = null;
         if (flightType == FlightTypes.ARTILLERY_SPOT)
         {
@@ -68,13 +64,9 @@ public class FlightFactory
         {
             flightPackage = new BalloonDefensePackage(flightInformation);
         }
-        else if (flightType == FlightTypes.BOMB)
+        else if (flightType == FlightTypes.BOMB || flightType == FlightTypes.LOW_ALT_BOMB)
         {
             flightPackage = new BombingPackage(flightInformation);
-        }
-        else if (flightType == FlightTypes.LOW_ALT_BOMB)
-        {
-            flightPackage = new LowAltBombingPackage(flightInformation);
         }
         else if (flightType == FlightTypes.DIVE_BOMB)
         {
@@ -141,7 +133,10 @@ public class FlightFactory
         }
         else if (flightType == FlightTypes.SCRAMBLE)
         {
-            flightPackage = new ScramblePackage(flightInformation);
+            if (isPlayerFlight)
+            {
+                flightPackage = new PlayerScramblePackage(flightInformation);
+            }
         }
         else if (flightType == FlightTypes.HOME_DEFENSE)
         {
@@ -150,14 +145,6 @@ public class FlightFactory
         else if (flightType == FlightTypes.ANTI_SHIPPING_BOMB || flightType == FlightTypes.ANTI_SHIPPING_ATTACK || flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
         {
             flightPackage = new SeaAntiShippingPackage(flightInformation);
-        }
-        else if (flightType == FlightTypes.SEA_PATROL)
-        {
-            flightPackage = new SeaPatrolPackage(flightInformation);
-        }
-        else if (flightType == FlightTypes.FERRY)
-        {
-            flightPackage = new FerryPackage(flightInformation);
         }
         else
         {
@@ -168,17 +155,21 @@ public class FlightFactory
         {
             flight = flightPackage.createPackage();
         }
+        else
+        {
+            throw new PWCGMissionGenerationException("Cannot create package for flight type: " + flightType);
+        }
         
         return flight;
     }
 
-    private FlightInformation createFlightInformation(
+    private IFlightInformation createFlightInformation(
     		Mission mission,
     		Squadron squadron,
     		FlightTypes flightType,
     		boolean isPlayerFlight) throws PWCGException
     {
-        FlightInformation flightInformation = null;
+        IFlightInformation flightInformation = null;
         if (isPlayerFlight)
         {
             flightInformation = FlightInformationFactory.buildPlayerFlightInformation(squadron, mission, flightType);

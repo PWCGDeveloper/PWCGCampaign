@@ -4,8 +4,8 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
 
 public class Ju52Payload extends PlanePayload
 {
@@ -32,29 +32,29 @@ public class Ju52Payload extends PlanePayload
     }
 
     @Override
-    public int createWeaponsPayload(Flight flight)
+    public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
-        if (flight.getFlightType() == FlightTypes.TRANSPORT || flight.getFlightType() == FlightTypes.CARGO_DROP)
+        if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.TRANSPORT || flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.CARGO_DROP)
         {
             selectCargoPayload(flight);
         }
-        else if (flight.getFlightType() == FlightTypes.PARATROOP_DROP)
+        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.PARATROOP_DROP)
         {
             selectParatroopPayload();
         }
-        else if (flight.getFlightType() == FlightTypes.SPY_EXTRACT)
+        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.SPY_EXTRACT)
         {
             selectParatroopPayload();
         }
-        else if ((flight.isBombingFlight()))
+        else if ((FlightTypes.isBombingFlight(flight.getFlightData().getFlightInformation().getFlightType())))
         {
             selectBombPayload();
         }
         return selectedPrimaryPayloadId;
     }    
 
-    private void selectCargoPayload(Flight flight)
+    private void selectCargoPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
     }

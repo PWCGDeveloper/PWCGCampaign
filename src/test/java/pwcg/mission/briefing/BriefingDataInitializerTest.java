@@ -30,9 +30,9 @@ import pwcg.gui.helper.BriefingAssignmentData;
 import pwcg.gui.helper.BriefingDataInitializer;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionFlightBuilder;
-import pwcg.mission.flight.Flight;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.plane.PlaneMCU;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -48,11 +48,11 @@ public class BriefingDataInitializerTest
     @Mock protected SquadronMembers squadronMembers;
     @Mock protected Mission mission;
     @Mock protected MissionFlightBuilder missionFlightBuilder;
-    @Mock protected Flight flight;
-    @Mock protected PlaneMCU plane1;
-    @Mock protected PlaneMCU plane2;
-    @Mock protected PlaneMCU plane3;
-    @Mock protected PlaneMCU plane4;
+    @Mock protected IFlight flight;
+    @Mock protected PlaneMcu plane1;
+    @Mock protected PlaneMcu plane2;
+    @Mock protected PlaneMcu plane3;
+    @Mock protected PlaneMcu plane4;
     @Mock protected EquippedPlane equippedPlane1;
     @Mock protected EquippedPlane equippedPlane2;
     @Mock protected EquippedPlane equippedPlane3;
@@ -63,7 +63,7 @@ public class BriefingDataInitializerTest
     @Mock protected SquadronMember pilot4;
 
     protected Map<Integer, SquadronMember> squadronPersonnelMap = new HashMap<>();
-    protected List<PlaneMCU> planesInFlight = new ArrayList<>();
+    protected List<PlaneMcu> planesInFlight = new ArrayList<>();
     protected Map<Integer, EquippedPlane> equippedPlanes = new HashMap<>();
     protected BriefingAssignmentData briefingAssignmentData = new BriefingAssignmentData();
 
@@ -77,8 +77,8 @@ public class BriefingDataInitializerTest
         Mockito.when(missionFlightBuilder.getPlayerFlightForSquadron(Mockito.anyInt())).thenReturn(flight);
         //Mockito.when(missionFlightBuilder.getPlayerFlightForSquadron(Mockito.any())).thenReturn(flight);
 
-        Mockito.when(flight.getPlanes()).thenReturn(planesInFlight);
-        Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.PATROL);
+        Mockito.when(flight.getFlightData().getFlightPlanes()).thenReturn(planesInFlight);
+        Mockito.when(flight.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);

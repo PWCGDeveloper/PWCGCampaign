@@ -32,7 +32,7 @@ import pwcg.gui.utils.ScrollBarWrapper;
 import pwcg.mission.IMissionDescription;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionDescriptionFactory;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 
 public class BriefingDescriptionPanelSet extends PwcgGuiContext implements ActionListener
 {
@@ -50,9 +50,9 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
         this.campaignHomeGui =  campaignHomeGui;
         this.mission =  mission;
 
-        Flight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
+        IFlight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
 		briefingMissionHandler = new BriefingMissionHandler(mission);
-		briefingMissionHandler.initializeFromMission(myFlight.getSquadron());
+		briefingMissionHandler.initializeFromMission(myFlight.getFlightData().getFlightInformation().getSquadron());
 
 		SoundManager.getInstance().playSound("BriefingStart.WAV");
 	}

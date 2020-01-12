@@ -19,7 +19,7 @@ import pwcg.mission.ground.vehicle.IVehicle;
 import pwcg.mission.ground.vehicle.VehicleClass;
 import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuTimer;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 
 public abstract class GroundUnit implements IGroundUnit
@@ -73,7 +73,7 @@ public abstract class GroundUnit implements IGroundUnit
 
 
     @Override
-    public TacticalTarget getTargetType()
+    public TargetType getTargetType()
     {
         return pwcgGroundUnitInformation.getTargetType();
     }
@@ -81,9 +81,9 @@ public abstract class GroundUnit implements IGroundUnit
     @Override
     public boolean isUnitEngagedInCombat()
     {
-        if (pwcgGroundUnitInformation.getTargetType() == TacticalTarget.TARGET_ASSAULT ||
-            pwcgGroundUnitInformation.getTargetType() == TacticalTarget.TARGET_DEFENSE ||
-            pwcgGroundUnitInformation.getTargetType() == TacticalTarget.TARGET_INFANTRY)
+        if (pwcgGroundUnitInformation.getTargetType() == TargetType.TARGET_ASSAULT ||
+            pwcgGroundUnitInformation.getTargetType() == TargetType.TARGET_DEFENSE ||
+            pwcgGroundUnitInformation.getTargetType() == TargetType.TARGET_INFANTRY)
         {
             return true;
         }

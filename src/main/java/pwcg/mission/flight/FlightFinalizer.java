@@ -10,9 +10,9 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.IUnit;
 import pwcg.mission.MissionSkinGenerator;
-import pwcg.mission.flight.plane.PlaneMCU;
-import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
-import pwcg.mission.flight.waypoint.WaypointPackage;
+import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
+import pwcg.mission.flight.waypoint.IWaypointPackage;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuMessage;
 import pwcg.mission.mcu.McuWaypoint;
@@ -22,9 +22,9 @@ public class FlightFinalizer
 {
     protected int flightId = -1;
 
-     protected Flight flight;
+     protected IFlight flight;
 
-    public FlightFinalizer(Flight flight)
+    public FlightFinalizer(IFlight flight)
     {
         this.flight = flight;
     }
@@ -36,11 +36,11 @@ public class FlightFinalizer
         setFlightLeaderLinks();
 
         // Special finalization logic for player flight
-        if (flight.isPlayerFlight())
+        if (flight.getFlightData().getFlightInformation().isPlayerFlight())
         {
             finalizePlayerFlight();
         }
-        else if (flight.isVirtual())
+        else if (flight.getFlightData().getFlightInformation().isVirtual())
         {
             finalizeVirtualFlight();
         }
@@ -50,13 +50,9 @@ public class FlightFinalizer
         }
 
         // Finalize linked flights
-        for (IUnit unit : flight.getLinkedUnits())
+        for (IFlight linkedFlight : flight.getFlightData().getLinkedFlights().getLinkedFlights())
         {
-            if (unit instanceof Flight)
-            {
-                Flight flight = (Flight) unit;
-                flight.finalizeFlight();
-            }
+            linkedFlight.finalizeFlight();
         }
 
         // Initialize the attack entity to make the AI do something useful
@@ -70,19 +66,19 @@ public class FlightFinalizer
     private void assignSkinsForFlight() throws PWCGException
     {
         MissionSkinGenerator skinGenerator = new MissionSkinGenerator();
-        if (flight.isPlayerFlight())
+        if (flight.getFlightData().getFlightInformation().isPlayerFlight())
         {
-            for (PlaneMCU plane : flight.getPlanes())
+            for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
             {
                 SquadronMember squadronMember = plane.getPilot();
-                skinGenerator.setSkinForPlayerSquadron(squadronMember, flight.getSquadron(), plane, flight.getCampaign().getDate());
+                skinGenerator.setSkinForPlayerSquadron(squadronMember, flight.getFlightData().getFlightInformation().getSquadron(), plane, flight.getCampaign().getDate());
             }
         }
         else
         {
-            for (PlaneMCU plane : flight.getPlanes())
+            for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
             {
-                skinGenerator.setAISkin(flight.getSquadron(), plane, flight.getCampaign().getDate());
+                skinGenerator.setAISkin(flight.getFlightData().getFlightInformation().getSquadron(), plane, flight.getCampaign().getDate());
             }
         }
     }
@@ -91,15 +87,15 @@ public class FlightFinalizer
     {
         // Add take off notification.
         // This is needed to trigger the first WP
-        if (!flight.isAirStart())
+        if (!flight.getFlightData().getFlightInformation().isAirStart())
         {
-            if (flight.getTakeoff() != null)
+            if (flight.getFlightData().getTakeoff() != null)
             {
-                BaseFlightMcu wpEntryMcu = flight.getWaypointPackage().getEntryMcu();
+                BaseFlightMcu wpEntryMcu = flight.getFlightData().getWaypointPackage().getEntryMcu();
 
-                flight.getLeadPlane().getEntity().setOnMessages(
+                flight.getFlightData().getFlightPlanes().getFlightLeader().getEntity().setOnMessages(
                                 McuMessage.ONTAKEOFF,
-                                flight.getTakeoff().getIndex(),
+                                flight.getFlightData().getTakeoff().getTakeoffIndex(),
                                 wpEntryMcu.getIndex());
             }
         }
@@ -107,33 +103,28 @@ public class FlightFinalizer
         {
             // The mission begin timer triggers the formation timer.
             // For airstart, link the formation timer to the WP timer
-            BaseFlightMcu wpEntryMcu = flight.getWaypointPackage().getEntryMcu();
+            BaseFlightMcu wpEntryMcu = flight.getFlightData().getWaypointPackage().getEntryMcu();
             if (wpEntryMcu != null)
             {
                 flight.getFormationTimer().setTarget(wpEntryMcu.getIndex());
             }
-        }
-
-        // Reset the player flight for air starts
-        if (flight.isAirStart())
-        {
             resetPlaneInitialPositionForAirStarts();
         }
         
-        flight.enableNonVirtualFlight();
+        flight.getFlightData().getFlightPlanes().enableNonVirtualFlight();
     }
 
     private void finalizeNonVirtualAiFlight() throws PWCGException 
     {
         // The mission begin timer triggers the formation timer.
         // For airstart, link the formation timer to the WP timer
-    	if (flight.getFlightInformation().isEscortedByPlayerFlight() || flight.getFlightInformation().isEscortForPlayerFlight())
+    	if (flight.getFlightData().getFlightInformation().isEscortedByPlayerFlight() || flight.getFlightData().getFlightInformation().isEscortForPlayerFlight())
         {
             // Flights escorted by the player or escorts for the player circle until rendezvous
         }
     	else
     	{
-	        BaseFlightMcu wpEntryMcu = flight.getWaypointPackage().getEntryMcu();
+	        BaseFlightMcu wpEntryMcu = flight.getFlightData().getWaypointPackage().getEntryMcu();
 	        if (wpEntryMcu != null)
 	        {
 	            flight.getFormationTimer().setTarget(wpEntryMcu.getIndex());
@@ -141,14 +132,14 @@ public class FlightFinalizer
     	}
 
         resetPlaneInitialPositionForAirStarts();
-        flight.enableNonVirtualFlight();
+        flight.getFlightData().getFlightPlanes().enableNonVirtualFlight();
     }
 
     private void finalizeVirtualFlight() throws PWCGException 
     {
-        if (flight.isVirtual())
+        if (flight.getFlightData().getFlightInformation().isVirtual())
         {
-            VirtualWaypointPackage virtualWaypointPackage = flight.getVirtualWaypointPackage();
+            IVirtualWaypointPackage virtualWaypointPackage = flight.getFlightData().getVirtualWaypointPackage();
             virtualWaypointPackage.buildVirtualWaypoints();            
         }
         else
@@ -159,14 +150,14 @@ public class FlightFinalizer
 
     private void linkAttackEntity()
     {
-        for (int index = 0; index < flight.getPlanes().size(); ++index)
+        for (int index = 0; index < flight.getFlightData().getFlightPlanes().getFlightSize(); ++index)
         {
-            PlaneMCU plane = flight.getPlanes().get(index);
+            PlaneMcu plane = flight.getFlightData().getFlightPlanes().get(index);
             
             plane.initializeAttackEntity(index);
-            if (flight.isVirtual())
+            if (flight.getFlightData().getFlightInformation().isVirtual())
             {
-                VirtualWaypointPackage virtualWaypointPackage = flight.getVirtualWaypointPackage();
+                IVirtualWaypointPackage virtualWaypointPackage = flight.getFlightData().getVirtualWaypointPackage();
                 for (VirtualWayPoint vwp : virtualWaypointPackage.getVirtualWaypoints())
                 {
                     vwp.onTriggerAddTarget(plane, plane.getOnSpawnTimer().getIndex());
@@ -174,72 +165,36 @@ public class FlightFinalizer
             }
             else
             {
-                WaypointPackage waypointPackage = flight.getWaypointPackage();
+                IWaypointPackage waypointPackage = flight.getFlightData().getWaypointPackage();
                 waypointPackage.onTriggerAddTarget(plane.getOnSpawnTimer().getIndex());
             }
         }
     }
 
-    private void resetPlaneInitialPositionForAirStarts() throws PWCGException 
-    {
-        PlaneMCU flightLeader = flight.getFlightLeader();
-
-        int i = 0;
-        Coordinate flightLeaderPos = null;
-        Orientation flightLeaderOrient = null;
-        for (PlaneMCU plane : flight.getPlanes())
-        {
-            if (i == 0)
-            {
-                flightLeaderPos = flightLeader.getPosition().copy();
-                flightLeaderOrient = flightLeader.getOrientation().copy();
-                ++i;
-                continue;
-            }
-
-            Coordinate planeCoords = new Coordinate();
-
-            // Since we always face east, subtract from z to get your mates
-            // behind you
-            IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
-            int AircraftSpacingHorizontal = productSpecificConfiguration.getAircraftSpacingHorizontal();
-            planeCoords.setXPos(flightLeaderPos.getXPos() - (i * AircraftSpacingHorizontal));
-            planeCoords.setZPos(flightLeaderPos.getZPos() - (i * AircraftSpacingHorizontal));
-
-            int AircraftSpacingVertical = productSpecificConfiguration.getAircraftSpacingVertical();
-            planeCoords.setYPos(flightLeaderPos.getYPos() + (i * AircraftSpacingVertical));
-            plane.setPosition(planeCoords);
-
-            plane.setOrientation(flightLeaderOrient.copy());
-
-            ++i;
-        }
-    }
-
     private void setFlightLeaderLinks()
     {
-        int flightLeaderIndex = flight.getFlightLeader().getEntity().getIndex();
-        if (flight.getActivationEntity() != null)
+        int flightLeaderIndex = flight.getFlightData().getFlightPlanes().getFlightLeader().getEntity().getIndex();
+        if (flight.getFlightData().getActivation().getActivationEntity() != null)
         {
-            flight.getActivationEntity().setObject(flightLeaderIndex);
+            flight.getFlightData().getActivation().getActivationEntity().setObject(flightLeaderIndex);
         }
 
         // only the player takes off
-        if (flight.getTakeoff() != null)
+        if (flight.getFlightData().getTakeoff() != null)
         {
-            flight.getTakeoff().setObject(flightLeaderIndex);
+            flight.getFlightData().getTakeoff().setObject(flightLeaderIndex);
         }
 
         // Landing
-        if (flight.getLanding() != null)
+        if (flight.getFlightData().getLanding() != null)
         {
-            flight.getLanding().setObject(flightLeaderIndex);
+            flight.getFlightData().getLanding().setObject(flightLeaderIndex);
         }
 
         // Formation
-        if (flight.getFormationEntity() != null)
+        if (flight.getFlightData().getFormation().getFormationEntity() != null)
         {
-            flight.getFormationEntity().setObject(flightLeaderIndex);
+            flight.getFlightData().getFormation().getFormationEntity().setObject(flightLeaderIndex);
         }
     }
 
@@ -247,7 +202,7 @@ public class FlightFinalizer
     {
         // TL each waypoint to the next one
         McuWaypoint prevWP = null;
-        for (McuWaypoint nextWP : flight.getWaypointPackage().getWaypointsForLeadPlane())
+        for (McuWaypoint nextWP : flight.getFlightData().getWaypointPackage().getWaypointsForLeadPlane())
         {
             if (prevWP != null)
             {
@@ -264,6 +219,9 @@ public class FlightFinalizer
         }
     }
 
+    // TODO make series of classes that hook things together ... patterns?
+    // runway -> takeoff -> initial -> mission ingress -> mission (patrol) -> mission egress -> land
+    // runway -> takeoff -> initial -> mission ingress -> attack -> mission egress -> land
     private void createWaypointTargetAssociations() throws PWCGException
     {
         flight.createTargetAssociationsForFlight();
@@ -271,11 +229,11 @@ public class FlightFinalizer
 
     private void createTargetAssociationsMissionBegin()
     {
-        if (flight.isPlayerFlight())
+        if (flight.getFlightData().getFlightInformation().isPlayerFlight())
         {
             flight.getMissionBeginUnit().linkToMissionBegin(flight.getFormationTimer().getIndex());
         }
-        else if (flight.isVirtual())
+        else if (flight.getFlightData().getFlightInformation().isVirtual())
         {
             flight.getMissionBeginUnit().linkToMissionBegin(flight.getActivationTimer().getIndex());
             flight.getActivationTimer().setTarget(flight.getFormationTimer().getIndex());

@@ -15,7 +15,7 @@ import pwcg.gui.rofmap.brief.BriefParametersContextBuilder;
 import pwcg.gui.rofmap.brief.BriefingCrewPlanePayloadSorter;
 import pwcg.gui.rofmap.brief.BriefingFlightParameters;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.crew.CrewPlanePayloadPairing;
 
 public class BriefingMissionHandler
@@ -81,7 +81,7 @@ public class BriefingMissionHandler
     public void pushEditsToMission() throws PWCGException
     {
         SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
-        Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
+        IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
         PlayerFlightEditor planeGeneratorPlayer = new PlayerFlightEditor(mission.getCampaign(), playerFlight);
         planeGeneratorPlayer.updatePlayerPlanes(getCrewsSorted());
     }
@@ -104,10 +104,10 @@ public class BriefingMissionHandler
         if (!mission.isFinalized())
         {
             SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
-            Flight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
+            IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
 
-            playerFlight.updateWaypoints(briefParametersContext.getWaypointsInBriefing());
-            playerFlight.setFuel(briefParametersContext.getSelectedFuel());
+            playerFlight.getFlightData().getWaypointPackage().updateWaypoints(briefParametersContext.getWaypointsInBriefing());
+            playerFlight.getFlightData().getFlightPlanes().setFuel(briefParametersContext.getSelectedFuel());
             
             PWCGContext.getInstance().getCurrentMap().getMissionOptions().getMissionTime().setMissionTime(briefParametersContext.getSelectedTime());
         }

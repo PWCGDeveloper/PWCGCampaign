@@ -12,13 +12,13 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlightInformation;
 
 public class ScrambleOpposingFlightSquadronChooser
 {
-    private FlightInformation playerFlightInformation;
+    private IFlightInformation playerFlightInformation;
 
-    public ScrambleOpposingFlightSquadronChooser(FlightInformation playerFlightInformation)
+    public ScrambleOpposingFlightSquadronChooser(IFlightInformation playerFlightInformation)
     {
         this.playerFlightInformation = playerFlightInformation;
     }
@@ -81,7 +81,7 @@ public class ScrambleOpposingFlightSquadronChooser
     
     private List<Role> determineOpposingRoles()
     {
-        return new ArrayList<>(Arrays.asList(Role.ROLE_FIGHTER, Role.ROLE_BOMB, Role.ROLE_ATTACK, Role.ROLE_DIVE_BOMB, Role.ROLE_STRAT_BOMB, Role.ROLE_RECON));
+        return new ArrayList<>(Arrays.asList(Role.ROLE_FIGHTER, Role.ROLE_BOMB, Role.ROLE_ATTACK, Role.ROLE_DIVE_BOMB));
     }
 
     private int determineNumberOfOpposingFlights() 

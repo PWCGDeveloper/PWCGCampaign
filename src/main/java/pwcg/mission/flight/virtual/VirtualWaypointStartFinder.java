@@ -5,12 +5,12 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.VirtualWayPointCoordinate;
 
 public class VirtualWaypointStartFinder
 {
-    public static int determineStartVWP(Flight flight, List<VirtualWayPointCoordinate> plotCoordinates) throws PWCGException 
+    public static int determineStartVWP(IFlight flight, List<VirtualWayPointCoordinate> plotCoordinates) throws PWCGException 
     {
         int startInBoxIndex = findFirstVwpInBox(flight, plotCoordinates);
 
@@ -21,7 +21,7 @@ public class VirtualWaypointStartFinder
         return selectedWaypoint;
     }
 
-    public static int findFirstVwpInBox(Flight flight, List<VirtualWayPointCoordinate> plotCoordinates) throws PWCGException 
+    public static int findFirstVwpInBox(IFlight flight, List<VirtualWayPointCoordinate> plotCoordinates) throws PWCGException 
     {
         CoordinateBox missionBorders = flight.getMission().getMissionBorders();
 

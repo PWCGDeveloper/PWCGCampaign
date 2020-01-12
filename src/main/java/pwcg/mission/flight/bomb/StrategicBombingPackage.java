@@ -1,10 +1,8 @@
 package pwcg.mission.flight.bomb;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.GroundUnitSize;
 import pwcg.mission.ground.builder.AAAUnitBuilder;
@@ -14,46 +12,43 @@ import pwcg.mission.target.TargetDefinition;
 
 public class StrategicBombingPackage implements IFlightPackage
 {
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
 
-    public StrategicBombingPackage(FlightInformation flightInformation)
+    public StrategicBombingPackage(IFlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }
 
-    public Flight createPackage() throws PWCGException
+    public IFlight createPackage() throws PWCGException
     {
-        StrategicBombingFlight strategicBombingFlight = createStrategicBombingFlight();
+        BombingFlight bombingFlight = createBombingFlight();
 
-        createAAA(flightInformation.getTargetDefinition(), strategicBombingFlight);
-        createSearchlight(flightInformation.getTargetDefinition(), strategicBombingFlight);
-        return strategicBombingFlight;
+        createAAA(flightInformation.getTargetDefinition(), bombingFlight);
+        createSearchlight(flightInformation.getTargetDefinition(), bombingFlight);
+        return bombingFlight;
     }
 
-    private StrategicBombingFlight createStrategicBombingFlight() throws PWCGException
+    private BombingFlight createBombingFlight() throws PWCGException
     {
-        Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
-        StrategicBombingFlight strategicBombingFlight = new StrategicBombingFlight(flightInformation, missionBeginUnit);
-        strategicBombingFlight.createUnitMission();
-
-        return strategicBombingFlight;
+        BombingFlight bombingFlight = new BombingFlight(flightInformation);
+        bombingFlight.createFlight();
+        return bombingFlight;
     }
 
-    private void createAAA(TargetDefinition targetDefinition, StrategicBombingFlight strategicBombingFlight) throws PWCGException
+    private void createAAA(TargetDefinition targetDefinition, BombingFlight bombingFlight) throws PWCGException
     {
         AAAUnitBuilder groundUnitBuilder = new AAAUnitBuilder(flightInformation.getCampaign(), targetDefinition.getTargetCountry(), targetDefinition.getTargetPosition());
         IGroundUnitCollection aaaArty = groundUnitBuilder.createAAAArtilleryBattery(GroundUnitSize.GROUND_UNIT_SIZE_HIGH);
-        strategicBombingFlight.addLinkedUnit(aaaArty);
+        bombingFlight.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(aaaArty);
     }
 
-    private void createSearchlight(TargetDefinition targetDefinition, StrategicBombingFlight strategicBombingFlight) throws PWCGException
+    private void createSearchlight(TargetDefinition targetDefinition, BombingFlight bombingFlight) throws PWCGException
     {
         SearchLightBuilder groundUnitBuilder =  new SearchLightBuilder(flightInformation.getCampaign());
         if (flightInformation.getMission().isNightMission())
         {
             IGroundUnitCollection searchLightGroup = groundUnitBuilder.createSearchLightGroup(targetDefinition);
-            strategicBombingFlight.addLinkedUnit(searchLightGroup);
+            bombingFlight.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(searchLightGroup);
         }
     }
 }

@@ -5,7 +5,7 @@ import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.plane.payload.PlanePayload;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 
 public class U2VSPayload extends PlanePayload implements IPlanePayload
 {
@@ -29,7 +29,7 @@ public class U2VSPayload extends PlanePayload implements IPlanePayload
     }
 
     @Override
-    public int createWeaponsPayload(Flight flight) throws PWCGException
+    public int createWeaponsPayload(IFlight flight) throws PWCGException
     {
         selectedPrimaryPayloadId = 1;
         u2Turret();

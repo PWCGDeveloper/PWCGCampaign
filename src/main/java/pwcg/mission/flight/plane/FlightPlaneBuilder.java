@@ -6,21 +6,21 @@ import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlightInformation;
 
 public class FlightPlaneBuilder 
 {
-	private FlightInformation flightInformation;
+	private IFlightInformation flightInformation;
 	
-	public FlightPlaneBuilder(FlightInformation flightInformation)
+	public FlightPlaneBuilder(IFlightInformation flightInformation)
 	{
 		this.flightInformation = flightInformation;
 	}
 	
-    public List<PlaneMCU> createPlanesForFlight() throws PWCGException 
+    public List<PlaneMcu> createPlanesForFlight() throws PWCGException 
     {
     	int numPlanesInMission = calcNumPlanesInFlight();
-    	List<PlaneMCU> planes = createPlanes(numPlanesInMission);
+    	List<PlaneMcu> planes = createPlanes(numPlanesInMission);
 		return planes;
     }
     
@@ -70,10 +70,10 @@ public class FlightPlaneBuilder
 		return numPlanesInMission;
 	}
 
-	private List<PlaneMCU> createPlanes(int numPlanesInFlight) throws PWCGException 
+	private List<PlaneMcu> createPlanes(int numPlanesInFlight) throws PWCGException 
     {        
         PlaneMCUFactory planeGeneratorPlayer = new PlaneMCUFactory(flightInformation);
-        List<PlaneMCU> planes = planeGeneratorPlayer.createPlanesForFlight(numPlanesInFlight);
+        List<PlaneMcu> planes = planeGeneratorPlayer.createPlanesForFlight(numPlanesInFlight);
 		return planes;
     }
 }

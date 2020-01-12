@@ -8,18 +8,12 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.campaign.context.FrontLinesForMap;
 import pwcg.campaign.context.PWCGContext;
-import pwcg.campaign.plane.Role;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.waypoint.initial.InitialWaypointGenerator;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class WaypointGeneratorUtils 
 {
-    public static int INGRESS_DISTANCE_FROM_FRONT = 10000;
-
 	public static McuWaypoint findWaypointByType(List<McuWaypoint> waypointList, String type)
 	{
 		McuWaypoint theWP = null;
@@ -113,36 +107,6 @@ public class WaypointGeneratorUtils
         return false;
     }
 
-	public static void setWaypointsNonFighterPriority(Flight flight)
-	{
-	    for (List<McuWaypoint> waypoints : flight.getWaypointPackage().getAllWaypointsSets().values())
-	    {
-            for (McuWaypoint waypoint : waypoints)
-            {
-                setWaypointPriorityForNonFIghters(flight, waypoint);
-    	    }
-	    }
-	}
-
-    private static void setWaypointPriorityForNonFIghters(Flight flight, McuWaypoint waypoint)
-    {
-        if (!flight.getPlanes().get(0).isPrimaryRole(Role.ROLE_FIGHTER))
-        {
-            if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TAKEOFF)
-            {
-                waypoint.setPriority(WaypointPriority.PRIORITY_HIGH);
-            }
-            else
-            {
-                waypoint.setPriority(WaypointPriority.PRIORITY_MED);
-                if (FlightTypes.isHighPriorityFlight(flight.getFlightType()))
-                {
-                    waypoint.setPriority(WaypointPriority.PRIORITY_HIGH);
-                }
-            }
-        }
-    }
-
 	public static List<McuWaypoint> getTargetWaypoints(List<McuWaypoint> playerWaypoints)
     {
         List<McuWaypoint> selectedWaypoints = new ArrayList <McuWaypoint>();
@@ -160,17 +124,4 @@ public class WaypointGeneratorUtils
 
         return selectedWaypoints;
     }
-	
-	public static List<McuWaypoint> prependInitialToExistingWaypoints(Flight flight, List<McuWaypoint> waypoints) throws PWCGException
-    {
-        flight.getWaypointPackage().initialize(waypoints);
-
-        List<McuWaypoint> waypointsAfterAddingInitial = new ArrayList<>();
-        InitialWaypointGenerator initialWaypointGenerator = new InitialWaypointGenerator(flight);
-        List<McuWaypoint> initialWPs = initialWaypointGenerator.createInitialFlightWaypoints();
-        waypointsAfterAddingInitial.addAll(initialWPs);
-        waypointsAfterAddingInitial.addAll(waypoints);
-        return waypointsAfterAddingInitial;
-    }
-
 }

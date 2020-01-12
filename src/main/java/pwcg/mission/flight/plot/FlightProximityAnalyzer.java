@@ -7,7 +7,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.group.VirtualWayPoint;
 
 public class FlightProximityAnalyzer
@@ -27,11 +27,11 @@ public class FlightProximityAnalyzer
     private void plotPlayerFlightEncounters() throws PWCGException 
     {
         int playerEncounerDistance = VirtualWayPoint.VWP_TRIGGGER_DISTANCE;
-        for (Flight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
+        for (IFlight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
         {
-            if (!aiFlight.isPlayerFlight())
+            if (!aiFlight.getFlightData().getFlightInformation().isPlayerFlight())
             {
-                for (Flight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
+                for (IFlight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
                 {
                     plotEncounter(playerFlight, aiFlight, playerEncounerDistance);
                 }
@@ -39,7 +39,7 @@ public class FlightProximityAnalyzer
         }
     }
 
-    private void plotEncounter(Flight playerFlight, Flight aiFlight, double encounterRadius) throws PWCGException 
+    private void plotEncounter(IFlight playerFlight, IFlight aiFlight, double encounterRadius) throws PWCGException 
     {
         FlightPathByMinutePlotter virtualWaypointPlotter = new FlightPathByMinutePlotter();
         List<Coordinate> thisFlightPath = virtualWaypointPlotter.plotCoordinatesByMinute(playerFlight);
@@ -58,17 +58,17 @@ public class FlightProximityAnalyzer
                 double distance = MathUtils.calcDist(thisFlightCoordinate, thatFlightCoordinate);
                 if (distance < encounterRadius)
                 {                    
-                    if (playerFlight.isPlayerFlight())
+                    if (playerFlight.getFlightData().getFlightInformation().isPlayerFlight())
                     {
-                        aiFlight.setContactWithPlayer(timeSliceOfFlight);
+                        aiFlight.getFlightData().getFlightPlayerContact().setContactWithPlayer(timeSliceOfFlight);
                     }
                 }
                 
                 if (distance < closestDistanceToThatFlight)
                 {
-                    if (playerFlight.isPlayerFlight())
+                    if (playerFlight.getFlightData().getFlightInformation().isPlayerFlight())
                     {
-                        aiFlight.setClosestContactWithPlayerDistance(distance);
+                        aiFlight.getFlightData().getFlightPlayerContact().setClosestContactWithPlayerDistance(distance);
                         closestDistanceToThatFlight = distance;
                     }
                 }

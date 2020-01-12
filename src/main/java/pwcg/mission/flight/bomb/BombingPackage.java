@@ -2,49 +2,43 @@ package pwcg.mission.flight.bomb;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class BombingPackage implements IFlightPackage
 {
-    private FlightInformation flightInformation;
+    private IFlightInformation flightInformation;
 
-    public BombingPackage(FlightInformation flightInformation)
+    public BombingPackage(IFlightInformation flightInformation)
     {
         this.flightInformation = flightInformation;
     }
 
     @Override
-    public Flight createPackage () throws PWCGException 
+    public IFlight createPackage () throws PWCGException 
 	{
-	    BombingFlight bombingFlight = createPackageTacticalTarget ();
+	    IFlight bombingFlight = createPackageTacticalTarget ();
 		return bombingFlight;
 	}
 
-	public BombingFlight createPackageTacticalTarget () throws PWCGException 
+	public IFlight createPackageTacticalTarget () throws PWCGException 
 	{
         IGroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
         Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(flightInformation.getSquadron().determineEnemySide());
 
-        BombingFlight bombingFlight = makeBombingFlight(targetCoordinates);
-        bombingFlight.linkGroundUnitsToFlight(groundUnitCollection);
+        IFlight bombingFlight = makeBombingFlight(targetCoordinates);
+        bombingFlight.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(groundUnitCollection);
 
         return bombingFlight;
 	}
 
-    private BombingFlight makeBombingFlight(Coordinate targetCoordinates)
-                    throws PWCGException
+    private IFlight makeBombingFlight(Coordinate targetCoordinates) throws PWCGException
     {
-	    Coordinate startCoords = flightInformation.getSquadron().determineCurrentPosition(flightInformation.getCampaign().getDate());
-	    MissionBeginUnit missionBeginUnit = new MissionBeginUnit(startCoords.copy());	        
-        BombingFlight bombingFlight = new BombingFlight (flightInformation, missionBeginUnit);
-
-	    bombingFlight.createUnitMission();
-	    
+        BombingFlight bombingFlight = new BombingFlight (flightInformation);
+	    bombingFlight.createFlight();
 	    return bombingFlight;
     }
 

@@ -10,9 +10,9 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.attack.GroundAttackPackage;
 import pwcg.mission.flight.bomb.BombingPackage;
 import pwcg.mission.flight.divebomb.DiveBombingPackage;
@@ -21,26 +21,26 @@ import pwcg.mission.flight.recon.ReconPackage;
 
 public class InterceptOpposingFlightBuilder
 {
-    private FlightInformation playerFlightInformation;
+    private IFlightInformation playerFlightInformation;
 
-    public InterceptOpposingFlightBuilder(FlightInformation playerFlightInformation)
+    public InterceptOpposingFlightBuilder(IFlightInformation playerFlightInformation)
     {
         this.playerFlightInformation = playerFlightInformation;
     }
 
-    public List<Flight> buildOpposingFlights() throws PWCGException
+    public List<IFlight> buildOpposingFlights() throws PWCGException
     {
         InterceptOpposingFlightSquadronChooser opposingFlightSquadronChooser = new InterceptOpposingFlightSquadronChooser(playerFlightInformation);
         List<Squadron> opposingSquadrons = opposingFlightSquadronChooser.getOpposingSquadrons();            
         return createOpposingFlights(opposingSquadrons);
     }
     
-    private List<Flight> createOpposingFlights(List<Squadron> opposingSquadrons) throws PWCGException
+    private List<IFlight> createOpposingFlights(List<Squadron> opposingSquadrons) throws PWCGException
     {
-        List<Flight> opposingFlights = new ArrayList<>();
+        List<IFlight> opposingFlights = new ArrayList<>();
         for (Squadron squadron : opposingSquadrons)
         {
-            Flight opposingFlight = createOpposingFlight(squadron);
+            IFlight opposingFlight = createOpposingFlight(squadron);
             if (opposingFlight != null)
             {
                 opposingFlights.add(opposingFlight);
@@ -49,9 +49,9 @@ public class InterceptOpposingFlightBuilder
         return opposingFlights;
     }
 
-    private Flight createOpposingFlight(Squadron opposingSquadron) throws PWCGException
+    private IFlight createOpposingFlight(Squadron opposingSquadron) throws PWCGException
     {
-        Flight interceptOpposingFlight = null;
+        IFlight interceptOpposingFlight = null;
 
         String opposingFieldName = opposingSquadron.determineCurrentAirfieldName(playerFlightInformation.getCampaign().getDate());
         if (opposingFieldName != null)
@@ -74,15 +74,13 @@ public class InterceptOpposingFlightBuilder
         return startingPosition;
     }
 
-    private Flight buildOpposingFlight(Squadron opposingSquadron, Coordinate startingPosition) throws PWCGException 
+    private IFlight buildOpposingFlight(Squadron opposingSquadron, Coordinate startingPosition) throws PWCGException 
     {
         FlightTypes opposingFlightType = getFlightType(opposingSquadron);
-        
-        FlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(
+        IFlightInformation opposingFlightInformation = FlightInformationFactory.buildAiFlightInformation(
                 opposingSquadron, playerFlightInformation.getMission(), opposingFlightType);
-        Flight opposingFlight = buildOpposingFlight(opposingFlightInformation);
-        opposingFlight.createUnitMission();
-        opposingFlight.getMissionBeginUnit().setStartTime(2);                
+        IFlight opposingFlight = buildOpposingFlight(opposingFlightInformation);
+        opposingFlight.createFlight();
         return opposingFlight;
     }
     
@@ -106,7 +104,7 @@ public class InterceptOpposingFlightBuilder
         }
     }
     
-    private Flight buildOpposingFlight(FlightInformation opposingFlightInformation) throws PWCGException
+    private IFlight buildOpposingFlight(IFlightInformation opposingFlightInformation) throws PWCGException
     {
         if (opposingFlightInformation.getFlightType() == FlightTypes.GROUND_ATTACK)
         {

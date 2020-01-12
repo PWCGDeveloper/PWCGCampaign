@@ -17,7 +17,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 public class StrategicTargetLocator
 {
@@ -34,64 +34,64 @@ public class StrategicTargetLocator
         this.targetLocation = referenceLocation;
     }
 
-    public Map<TacticalTarget, List<IFixedPosition>> getStrategicTargetAvailability() throws PWCGException
+    public Map<TargetType, List<IFixedPosition>> getStrategicTargetAvailability() throws PWCGException
     {
-        Map<TacticalTarget, List<IFixedPosition>> availableTargets = new HashMap<>();
+        Map<TargetType, List<IFixedPosition>> availableTargets = new HashMap<>();
         
         List<IFixedPosition> factoryTargets = getFactoryTargets();
         if (factoryTargets.size() > 0)
         {
-            availableTargets.put(TacticalTarget.TARGET_FACTORY, factoryTargets);
+            availableTargets.put(TargetType.TARGET_FACTORY, factoryTargets);
         }
 
         List<IFixedPosition> railTargets = getRailTargets();
         if (railTargets.size() > 0)
         {
-            availableTargets.put(TacticalTarget.TARGET_RAIL, railTargets);
+            availableTargets.put(TargetType.TARGET_RAIL, railTargets);
         }
 
         List<IFixedPosition> portTargets = getBlockTargets("port facility");
         if (portTargets.size() > 0)
         {
-            availableTargets.put(TacticalTarget.TARGET_PORT, portTargets);
+            availableTargets.put(TargetType.TARGET_PORT, portTargets);
         }
 
         List<IFixedPosition> airfieldTargets = getAirfieldTargets();
         if (airfieldTargets.size() > 0)
         {
-            availableTargets.put(TacticalTarget.TARGET_AIRFIELD, airfieldTargets);
+            availableTargets.put(TargetType.TARGET_AIRFIELD, airfieldTargets);
         }
 
         List<IFixedPosition> cityTargets = getBlockTargets("block");
         if (cityTargets.size() > 0)
         {
-            availableTargets.put(TacticalTarget.TARGET_CITY, cityTargets);
+            availableTargets.put(TargetType.TARGET_CITY, cityTargets);
         }
         
         return availableTargets;
     }
     
-    public IFixedPosition getStrategicTargetLocation(TacticalTarget targetType) throws PWCGException
+    public IFixedPosition getStrategicTargetLocation(TargetType targetType) throws PWCGException
     {
         List<IFixedPosition> possibleTargets = new ArrayList<>();
 
-        if (targetType == TacticalTarget.TARGET_FACTORY)
+        if (targetType == TargetType.TARGET_FACTORY)
         {
             possibleTargets = getFactoryTargets();
         }
-        else if (targetType == TacticalTarget.TARGET_CITY)
+        else if (targetType == TargetType.TARGET_CITY)
         {
             possibleTargets = getBlockTargets("block");
         }
-        else if (targetType == TacticalTarget.TARGET_AIRFIELD)
+        else if (targetType == TargetType.TARGET_AIRFIELD)
         {
             possibleTargets = getAirfieldTargets();
         }
-        else if (targetType == TacticalTarget.TARGET_RAIL)
+        else if (targetType == TargetType.TARGET_RAIL)
         {
             possibleTargets = getRailTargets();
         }
-        else if (targetType == TacticalTarget.TARGET_PORT)
+        else if (targetType == TargetType.TARGET_PORT)
         {
             possibleTargets = getBlockTargets("port facility");
         }

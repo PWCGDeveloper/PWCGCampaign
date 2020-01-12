@@ -3,7 +3,7 @@ package pwcg.mission.flight.validate;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.GroundTargetAttackFlight;
+import pwcg.mission.flight.attack.GroundTargetAttackFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -11,7 +11,7 @@ public class GroundAttackFlightValidator
 {
 	public void validateGroundAttackFlight(GroundTargetAttackFlight flight) throws PWCGException
 	{
-		assert(flight.getWaypointPackage().getWaypointsForLeadPlane().size() > 0);
+		assert(flight.getFlightData().getWaypointPackage().getWaypointsForLeadPlane().size() > 0);
 		validateWaypointLinkage(flight);
 		validateWaypointTypes(flight);
 	}
@@ -19,7 +19,7 @@ public class GroundAttackFlightValidator
 	private void validateWaypointLinkage(GroundTargetAttackFlight attackFlight) throws PWCGException 
 	{
 		McuWaypoint prevWaypoint = null;
-		for (McuWaypoint waypoint : attackFlight.getWaypointPackage().getWaypointsForLeadPlane())
+		for (McuWaypoint waypoint : attackFlight.getFlightData().getWaypointPackage().getWaypointsForLeadPlane())
 		{
 			if (prevWaypoint != null)
 			{
@@ -60,7 +60,7 @@ public class GroundAttackFlightValidator
 		
 		WaypointPriorityValidator.validateWaypointTypes(attackFlight);
 
-        for (List<McuWaypoint> waypoints : attackFlight.getWaypointPackage().getAllWaypointsSets().values())
+        for (List<McuWaypoint> waypoints : attackFlight.getFlightData().getWaypointPackage().getAllWaypointsSets().values())
         {
             for (McuWaypoint waypoint : waypoints)
             {

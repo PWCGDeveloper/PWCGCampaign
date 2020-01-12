@@ -1,17 +1,17 @@
 package pwcg.mission.flight.initialposition;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 
 public class FlightPositionSetter
 {
-    public static void setFlightInitialPosition(Flight flight) throws PWCGException
+    public static void setFlightInitialPosition(IFlight flight) throws PWCGException
     {
-        if (flight.isAirStart())
+        if (flight.getFlightData().getFlightInformation().isAirStart())
         {
             FlightPositionAirStart.createPlanePositionAirStart(flight);
         }
-        else if (flight.isParkedStart())
+        else if (flight.getFlightData().getFlightInformation().isParkedStart())
         {
             FlightPositionParkedStart parkedStart = new FlightPositionParkedStart(flight);
             parkedStart.createPlanePositionParkedStart();

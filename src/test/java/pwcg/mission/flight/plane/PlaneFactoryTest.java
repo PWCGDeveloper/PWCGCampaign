@@ -19,9 +19,9 @@ import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
-import pwcg.mission.flight.Flight;
-import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plot.FlightInformationFactory;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
@@ -32,7 +32,7 @@ public class PlaneFactoryTest
 {
     Campaign campaign;
     Mission mission;
-    @Mock Flight flight;
+    @Mock IFlight flight;
 
     @Before
     public void setup() throws PWCGException
@@ -50,15 +50,15 @@ public class PlaneFactoryTest
         Mockito.when(flight.isVirtual()).thenReturn(false);
         
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.KG53_PROFILE.getSquadronId());
-        FlightInformation flightInformation = FlightInformationFactory.buildPlayerFlightInformation(squadron, mission, FlightTypes.BOMB);
+        IFlightInformation flightInformation = FlightInformationFactory.buildPlayerFlightInformation(squadron, mission, FlightTypes.BOMB);
 
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
-        List<PlaneMCU> assignedPlanes = planeFactory.createPlanesForFlight(4);
+        List<PlaneMcu> assignedPlanes = planeFactory.createPlanesForFlight(4);
         
         boolean playerFound = false;
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(SquadronTestProfile.KG53_PROFILE.getSquadronId());        
         int callnum = 1;
-        for (PlaneMCU plane : assignedPlanes)
+        for (PlaneMcu plane : assignedPlanes)
         {
             assert(squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
             assert(plane.getCallsign() == Callsign.SEAGULL);
@@ -82,16 +82,16 @@ public class PlaneFactoryTest
         Mockito.when(flight.isVirtual()).thenReturn(true);
         
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20111052);
-        FlightInformation flightInformation = FlightInformationFactory.buildAiFlightInformation(squadron, mission, FlightTypes.BOMB);
+        IFlightInformation flightInformation = FlightInformationFactory.buildAiFlightInformation(squadron, mission, FlightTypes.BOMB);
 
         PlaneMCUFactory planeFactory = new PlaneMCUFactory(flightInformation);
-        List<PlaneMCU> assignedPlanes = planeFactory.createPlanesForFlight(4);
+        List<PlaneMcu> assignedPlanes = planeFactory.createPlanesForFlight(4);
         
         List<SquadronMember> players = campaign.getPersonnelManager().getAllActivePlayers().getSquadronMemberList();
         boolean playerFound = false;
         SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());        
         int callnum = 1;
-        for (PlaneMCU plane : assignedPlanes)
+        for (PlaneMcu plane : assignedPlanes)
         {
             assert(squadronPersonnel.isActiveSquadronMember(plane.getPilot().getSerialNumber()));
             assert(plane.getCallsign() == Callsign.ROOK);

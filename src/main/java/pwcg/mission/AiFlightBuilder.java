@@ -8,7 +8,7 @@ import pwcg.campaign.factory.PWCGFlightFactoryFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.factory.FlightFactory;
 import pwcg.mission.flight.factory.IFlightTypeFactory;
@@ -25,9 +25,9 @@ public class AiFlightBuilder
         this.mission = mission;
     }
     
-    private List<Flight> missionFlights = new ArrayList<Flight>();
+    private List<IFlight> missionFlights = new ArrayList<IFlight>();
 
-    public List<Flight> createAiFlights() throws PWCGException 
+    public List<IFlight> createAiFlights() throws PWCGException 
     {
         TestDriver testDriver = TestDriver.getInstance();
         if (testDriver.isCreatePlayerOnly())
@@ -41,7 +41,7 @@ public class AiFlightBuilder
             FlightTypes flightType = determineFlightType(squadron);
             flightType = NightFlightTypeConverter.getFlightType(mission, flightType);
 
-            Flight flight = buildFlight(flightType, squadron);
+            IFlight flight = buildFlight(flightType, squadron);
             if (flight != null)
             {
                 missionFlights.add(flight);
@@ -66,11 +66,11 @@ public class AiFlightBuilder
         return flightType;
     }
 
-    private Flight buildFlight(FlightTypes flightType, Squadron squadron) throws PWCGException
+    private IFlight buildFlight(FlightTypes flightType, Squadron squadron) throws PWCGException
     {
         FlightFactory flightFactory = new FlightFactory(campaign);
         boolean isPlayerFlight = false;
-        Flight flight = flightFactory.buildFlight(mission, squadron, flightType, isPlayerFlight);
+        IFlight flight = flightFactory.buildFlight(mission, squadron, flightType, isPlayerFlight);
         return flight;        
     }
 

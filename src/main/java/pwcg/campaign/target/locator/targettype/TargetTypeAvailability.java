@@ -19,7 +19,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.PWCGLocation;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
-import pwcg.mission.target.TacticalTarget;
+import pwcg.mission.target.TargetType;
 
 public class TargetTypeAvailability
 {
@@ -32,46 +32,46 @@ public class TargetTypeAvailability
         this.date = date;
     }
     
-    public double getTargetTypeAvailability(TacticalTarget targetType, Coordinate targetGeneralLocation, double maxDistance) throws PWCGException
+    public double getTargetTypeAvailability(TargetType targetType, Coordinate targetGeneralLocation, double maxDistance) throws PWCGException
     {        
         Coordinate closestInstance = null;
-        if (targetType ==TacticalTarget.TARGET_AAA)
+        if (targetType ==TargetType.TARGET_AAA)
         {
             closestInstance = isFrontLinePositionAvailable(targetGeneralLocation);
         }
-        else if (targetType ==TacticalTarget.TARGET_ASSAULT)
+        else if (targetType ==TargetType.TARGET_ASSAULT)
         {
             closestInstance = isFrontLinePositionAvailable(targetGeneralLocation);
         }
-        else if (targetType ==TacticalTarget.TARGET_DEFENSE)
+        else if (targetType ==TargetType.TARGET_DEFENSE)
         {
             closestInstance = isFrontLinePositionAvailable(targetGeneralLocation);
         }
-        else if (targetType ==TacticalTarget.TARGET_ARTILLERY)
+        else if (targetType ==TargetType.TARGET_ARTILLERY)
         {
             closestInstance = isFrontLinePositionAvailable(targetGeneralLocation);
         }
-        else if (targetType ==TacticalTarget.TARGET_TRANSPORT)
+        else if (targetType ==TargetType.TARGET_TRANSPORT)
         {
             closestInstance = isBridgeAvailable(targetGeneralLocation);
             maxDistance +=  10000;
         }
-        else if (targetType ==TacticalTarget.TARGET_TRAIN)
+        else if (targetType ==TargetType.TARGET_TRAIN)
         {
             closestInstance = isRailroadStationAvailable(targetGeneralLocation);
             maxDistance +=  10000;
         }
-        else if (targetType ==TacticalTarget.TARGET_AIRFIELD)
+        else if (targetType ==TargetType.TARGET_AIRFIELD)
         {
             closestInstance = isAirfieldAvailable(targetGeneralLocation);
             maxDistance +=  20000;
         }
-        else if (targetType ==TacticalTarget.TARGET_DRIFTER)
+        else if (targetType ==TargetType.TARGET_DRIFTER)
         {
             closestInstance = isDrifterAvailable(targetGeneralLocation);
             maxDistance +=  20000;
         }
-        else if (targetType ==TacticalTarget.TARGET_SHIPPING)
+        else if (targetType ==TargetType.TARGET_SHIPPING)
         {
             closestInstance = isSeaLaneAvailable(targetGeneralLocation);
             maxDistance +=  40000;

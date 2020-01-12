@@ -4,11 +4,11 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignMode;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
-import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.IFlight;
 
 public class EscortFlightBuilder
 {
-    public void addEscort(Mission mission, Flight escortedFlight) throws PWCGException 
+    public void addEscort(Mission mission, IFlight escortedFlight) throws PWCGException 
     {
         if (mission.isNightMission())
         {
@@ -16,8 +16,8 @@ public class EscortFlightBuilder
         }
         
         Campaign campaign = mission.getCampaign();
-        Flight escortFlight = null;
-        if (escortedFlight.isPlayerFlight())
+        IFlight escortFlight = null;
+        if (escortedFlight.getFlightData().getFlightInformation().isPlayerFlight())
         {
             escortFlight = createEscortForPlayerFlight(escortedFlight);
         }
@@ -29,22 +29,22 @@ public class EscortFlightBuilder
         
         if (escortFlight != null)
         {
-            escortedFlight.addLinkedUnit(escortFlight);
+            escortedFlight.getFlightData().getLinkedFlights().addLinkedFlight(escortFlight);
         }
     }
 
-    private Flight createEscortForPlayerFlight(Flight escortedFlight) throws PWCGException 
+    private IFlight createEscortForPlayerFlight(IFlight escortedFlight) throws PWCGException 
     {
         PlayerEscortBuilder playerEscortBuilder = new PlayerEscortBuilder();
-        Flight escortForPlayerFlight = playerEscortBuilder.createEscortForPlayerFlight(escortedFlight);
+        IFlight escortForPlayerFlight = playerEscortBuilder.createEscortForPlayerFlight(escortedFlight);
         return escortForPlayerFlight;
     }
 
 
-    private Flight createEscortForAiFlight(Mission mission, Flight escortedFlight) throws PWCGException 
+    private IFlight createEscortForAiFlight(Mission mission, IFlight escortedFlight) throws PWCGException 
     {
         VirtualEscortFlightBuilder virtualEscortFlightBuilder = new VirtualEscortFlightBuilder();
-        Flight escortForAiFlight = virtualEscortFlightBuilder.createVirtualEscortFlight(escortedFlight);
+        IFlight escortForAiFlight = virtualEscortFlightBuilder.createVirtualEscortFlight(escortedFlight);
         return escortForAiFlight;
     }
 }
