@@ -1,6 +1,7 @@
 package pwcg.mission.flight.waypoint.missionpoint;
 
 import java.io.BufferedWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
@@ -9,6 +10,7 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
+import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypointSet implements IMissionPointSet
@@ -86,5 +88,13 @@ public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypoin
         MissionPointRouteSet duplicate = new MissionPointRouteSet();
         duplicate.waypoints = super.duplicateWaypoints(positionInFormation);
         return duplicate;
+    }
+
+    @Override
+    public List<BaseFlightMcu> getAllFlightPoints()
+    {
+        List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
+        allFlightPoints.addAll(waypoints.getWaypoints());
+        return allFlightPoints;
     }
 }

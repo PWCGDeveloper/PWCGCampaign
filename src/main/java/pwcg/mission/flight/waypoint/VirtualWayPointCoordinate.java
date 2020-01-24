@@ -17,7 +17,7 @@ public class VirtualWayPointCoordinate
     private int waypointindex = 0;
     private int waypointWaitTimeSeconds = 0;
     
-    public Coordinate getCoordinate()
+    public Coordinate getPosition()
     {
         return coordinate;
     }

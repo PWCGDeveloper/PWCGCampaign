@@ -38,7 +38,6 @@ public class MissionFlightFinalizer
 
         setFlightAttackMcuForPlanes();
         setFlightAttackMcuForBalloons();
-        duplicateMissionPOintsForVirtualFlights(); // Part of write? Can be ... duplicate then write
         
         setCzTriggers();
         

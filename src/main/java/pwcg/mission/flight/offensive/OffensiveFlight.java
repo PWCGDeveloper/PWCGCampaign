@@ -68,12 +68,6 @@ public class OffensiveFlight extends Flight implements IFlight
         flightPayloadHelper.setFlightPayload();
     }
 
-    @Override
-    public void finalize() throws PWCGException
-    {
-        flightData.getWaypointPackage().finalize();
-    }
-
     private void createOffensiveFlightType()
     {
         int roll = RandomNumberGenerator.getRandom(100);

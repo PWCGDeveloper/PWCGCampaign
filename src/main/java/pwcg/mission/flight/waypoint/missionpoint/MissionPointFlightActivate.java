@@ -11,6 +11,7 @@ import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
@@ -172,5 +173,12 @@ public class MissionPointFlightActivate implements IMissionPointSet
     public IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException
     {
         throw new PWCGException("Do not duplicate flight activate");                                
+    }
+
+    @Override
+    public List<BaseFlightMcu> getAllFlightPoints()
+    {
+        List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
+        return allFlightPoints;
     }
 }

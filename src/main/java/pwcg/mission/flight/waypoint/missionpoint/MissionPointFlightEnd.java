@@ -1,6 +1,7 @@
 package pwcg.mission.flight.waypoint.missionpoint;
 
 import java.io.BufferedWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
@@ -11,6 +12,7 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.end.ApproachWaypointGenerator;
+import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuLanding;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -119,5 +121,13 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
 
         duplicate.landingMcu = landingMcu.clone();
         return duplicate;
+    }
+
+    @Override
+    public List<BaseFlightMcu> getAllFlightPoints()
+    {
+        List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
+        allFlightPoints.addAll(waypoints.getWaypoints());
+        return allFlightPoints;
     }
 }

@@ -29,7 +29,7 @@ public final class VirtualWayPoint
 {       
     private Map<Integer, VmpSpawnContainer> vmpSpawnContainers = new HashMap<Integer, VmpSpawnContainer>();
     private int index = IndexGenerator.getInstance().getNextIndex();;
-    private VirtualWayPointCoordinate vwpCoordinate = null;
+    private VirtualWayPointCoordinate vwpPosition = null;
     
     private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
     private boolean useSubtitles = false;
@@ -56,7 +56,7 @@ public final class VirtualWayPoint
                     VirtualWayPointCoordinate vwpCoordinate,
                     Coalition coalition) throws PWCGException 
     {
-        this.vwpCoordinate = vwpCoordinate;                 
+        this.vwpPosition = vwpCoordinate;                 
         buildMcus(vwpCoordinate);
         makeSubtitles(flight);
         setTargetAssociations(vwpCoordinate);
@@ -81,7 +81,7 @@ public final class VirtualWayPoint
         // Set up activate and deactivate
         // virtualWPTimer activates the self deleting CZ
         // deactivateVWPTimer deactivates the self deleting CZ
-        checkZone = new SelfDeactivatingCheckZone(vwpCoordinate.getCoordinate().copy(), VWP_TRIGGGER_DISTANCE);
+        checkZone = new SelfDeactivatingCheckZone(vwpCoordinate.getPosition().copy(), VWP_TRIGGGER_DISTANCE);
         checkZone.setCheckZoneTarget(vwpTriggeredTimer.getIndex());
         checkZone.setAdditionalDeactivate(nextVwpTimer);
         
@@ -99,39 +99,39 @@ public final class VirtualWayPoint
 
     private void buildMcus(VirtualWayPointCoordinate vwpCoordinate)
     {
-        vwpTimer.setPosition(vwpCoordinate.getCoordinate().copy());
+        vwpTimer.setPosition(vwpCoordinate.getPosition().copy());
         vwpTimer.setName("VWP Timer");
         vwpTimer.setDesc("VWP Timer");
         vwpTimer.setTimer(1);
 
-        masterSpawnTimer.setPosition(vwpCoordinate.getCoordinate().copy());
+        masterSpawnTimer.setPosition(vwpCoordinate.getPosition().copy());
         masterSpawnTimer.setName("VWP Spawn Timer");
         masterSpawnTimer.setDesc("VWP Master Spawn Timer");
         masterSpawnTimer.setTimer(1);
 
-        nextVwpTimer.setPosition(vwpCoordinate.getCoordinate().copy());
+        nextVwpTimer.setPosition(vwpCoordinate.getPosition().copy());
         nextVwpTimer.setName("VWP CZ Deactivate Timer");
         nextVwpTimer.setDesc("VWP CZ Deactivate Timer");
         nextVwpTimer.setTimer(vwpCoordinate.getWaypointWaitTimeSeconds());
 
-        vwpTriggeredTimer.setPosition(vwpCoordinate.getCoordinate().copy());
+        vwpTriggeredTimer.setPosition(vwpCoordinate.getPosition().copy());
         vwpTriggeredTimer.setName("VWP Trigger Timer");
         vwpTriggeredTimer.setDesc("VWP Stop Deactivate Timer");
         vwpTriggeredTimer.setTimer(0);
 
-        stopNextVwp.setPosition(vwpCoordinate.getCoordinate().copy());
+        stopNextVwp.setPosition(vwpCoordinate.getPosition().copy());
         stopNextVwp.setName("VWP Stop Next");
         stopNextVwp.setDesc("VWP Stop Deactivate");
 
-        nextVirtualWaypointTimer.setPosition(vwpCoordinate.getCoordinate().copy());
+        nextVirtualWaypointTimer.setPosition(vwpCoordinate.getPosition().copy());
         nextVirtualWaypointTimer.setName("Next VWP Timer");
         nextVirtualWaypointTimer.setDesc("Next VWP Timer");
 
-        killVwpTimer.setPosition(vwpCoordinate.getCoordinate().copy());
+        killVwpTimer.setPosition(vwpCoordinate.getPosition().copy());
         killVwpTimer.setName("Kill VWP Timer");
         killVwpTimer.setDesc("Kill VWP Timer");
 
-        masterWpTriggerTimer.setPosition(vwpCoordinate.getCoordinate().copy());
+        masterWpTriggerTimer.setPosition(vwpCoordinate.getPosition().copy());
         masterWpTriggerTimer.setName("Master WP Trigger Timer");
         masterWpTriggerTimer.setDesc("Master WP Trigger Timer");
     }
@@ -150,7 +150,7 @@ public final class VirtualWayPoint
         McuSubtitle checkZoneSubtitle = new McuSubtitle();
         checkZoneSubtitle.setName("checkZone Subtitle");
         checkZoneSubtitle.setText("VWP " +  squadronName +  " CZ triggered ");
-        checkZoneSubtitle.setPosition(vwpCoordinate.getCoordinate().copy());
+        checkZoneSubtitle.setPosition(vwpPosition.getPosition().copy());
         checkZone.setCheckZoneTarget(checkZoneSubtitle.getIndex());
         subTitleList.add(checkZoneSubtitle);
         
@@ -159,29 +159,27 @@ public final class VirtualWayPoint
 
     private void generateSpawners(IFlight flight) throws PWCGException
     {
-        FormationGenerator formationGenerator = new FormationGenerator();
-        List<Coordinate> flightCoordinates = formationGenerator.createPlaneInitialPosition(flight.getFlightData().getFlightPlanes(), vwpCoordinate.getCoordinate(), vwpCoordinate.getOrientation());
-        
         McuTimer lastSpawnTimer = null;
         
         for (int i = 0; i < flight.getFlightData().getFlightPlanes().getFlightSize(); ++i)
         {
             PlaneMcu plane = flight.getFlightData().getFlightPlanes().getPlanes().get(i);
-            Coordinate planeCoordinate = flightCoordinates.get(i);
-            double planeAltitude = vwpCoordinate.getCoordinate().getYPos() + (30 * i);
+            double planeAltitude = vwpPosition.getPosition().getYPos() + (30 * i);
             if (planeAltitude < 800.0)
             {
                 planeAltitude = 800.0;
             }
+
+            Coordinate planeCoordinate = FormationGenerator.generatePositionForPlaneInFormation(vwpPosition.getOrientation(), vwpPosition.getPosition(), i);
             planeCoordinate.setYPos(planeAltitude);
             
             // Get the mission points (WPs plus attackarea) and select the one associated with
             // this VWP coordinate.
-            List<BaseFlightMcu>  planeMissionPoints = flight.getFlightData().getWaypointPackage().getAllMissionPointsForPlane(plane);
+            List<BaseFlightMcu>  planeMissionPoints = flight.getFlightData().getVirtualWaypointPackage().getAllFlightPointsForPlane(plane);
 
             // Since every plane has a matching set of mission points, the index will be
             // identical for each plane
-            BaseFlightMcu planeMissionPoint = planeMissionPoints.get(vwpCoordinate.getWaypointindex());
+            BaseFlightMcu planeMissionPoint = planeMissionPoints.get(vwpPosition.getWaypointindex());
             VmpSpawnContainer vmpSpawnContainer = new VmpSpawnContainer(planeMissionPoint);
 
             // Chain the spawns such that they happen one after the other
@@ -257,28 +255,12 @@ public final class VirtualWayPoint
 
     public void linkToNextVirtualWaypoint(VirtualWayPoint nextVWP)
     {
-        // If the VWP did not trigger, this moves things to the next VWP
         nextVirtualWaypointTimer.setTarget(nextVWP.getEntryPoint().getIndex());
-    }
-
-    public void onTriggerAddTarget(PlaneMcu plane, int index)
-    {
-        vmpSpawnContainers.get(plane.getIndex()).wpActivateTimer.setTarget(index);
-    }
-
-    public VirtualWayPointCoordinate getCoordinate()
-    {
-        return vwpCoordinate;
     }
 
     public McuTimer getKillVwpTimer()
     {
         return killVwpTimer;
-    }
-
-    public McuTimer getNextVwpTimer()
-    {
-        return nextVwpTimer;
     }
     
     public void registerPlaneCounter(McuCounter counter)
@@ -288,11 +270,7 @@ public final class VirtualWayPoint
             vmpSpawnContainer.spawnTimer.setTarget(counter.getIndex());
         }
     }
-    
-    /**
-     * A sequence that used per plane after a VWP is activated.
-     * Trigger the spawn and activate the associated WP
-     */
+
     private class VmpSpawnContainer
     {
         private VmpSpawnContainer (BaseFlightMcu waypoint)
@@ -308,21 +286,21 @@ public final class VirtualWayPoint
         private void create(PlaneMcu plane, int index, Coordinate planeCoordinate)
         {
             spawner.setPosition(planeCoordinate.copy());
-            spawner.setOrientation(vwpCoordinate.getOrientation().copy());
+            spawner.setOrientation(vwpPosition.getOrientation().copy());
             spawner.setObject(plane.getEntity().getIndex());
             spawner.setName("Spawn " + (index+1));
             spawner.setDesc("Spawn " + (index+1));
             
             spawnTimer.setTimer(1);
             spawnTimer.setPosition(planeCoordinate.copy());
-            spawnTimer.setOrientation(vwpCoordinate.getOrientation().copy());
+            spawnTimer.setOrientation(vwpPosition.getOrientation().copy());
             spawnTimer.setName("Spawn Timer " + (index+1));
             spawnTimer.setDesc("Spawn Timer " + (index+1));
             
             
             wpActivateTimer.setTimer(1);
             wpActivateTimer.setPosition(planeCoordinate.copy());
-            wpActivateTimer.setOrientation(vwpCoordinate.getOrientation().copy());
+            wpActivateTimer.setOrientation(vwpPosition.getOrientation().copy());
             wpActivateTimer.setName("Spawn WP Timer " + (index+1));
             wpActivateTimer.setDesc("Spawn WP Timer " + (index+1));
 

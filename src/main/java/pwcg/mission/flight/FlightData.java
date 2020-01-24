@@ -5,6 +5,8 @@ import java.io.BufferedWriter;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
@@ -37,10 +39,13 @@ public class FlightData implements IFlightData
     public void write(BufferedWriter writer) throws PWCGException 
     {
         flightPlanes.write(writer);
-        waypointPackage.write(writer);
         if (flightInformation.isVirtual())
         {
             virtualWaypointPackage.write(writer);
+        }
+        else
+        {
+            waypointPackage.write(writer);
         }
     }
 
@@ -95,7 +100,8 @@ public class FlightData implements IFlightData
     public void finalize() throws PWCGException
     {
         flightPlanes.finalize();
-        waypointPackage.finalize();
+        PlaneMcu flightLeader = flightPlanes.getFlightLeader();
+        waypointPackage.finalize(flightLeader);
         
         for (IFlight linkedFlight : linkedFlights.getLinkedFlights())
         {
@@ -106,5 +112,11 @@ public class FlightData implements IFlightData
         {
             virtualWaypointPackage.buildVirtualWaypoints();                    
         }
+    }
+
+    @Override
+    public IVirtualWaypointPackage getVirtualWaypointPackage()
+    {
+        return virtualWaypointPackage;
     }
 }

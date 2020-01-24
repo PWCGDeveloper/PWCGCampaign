@@ -90,7 +90,7 @@ public class BriefingMapPointFactory
     {
         BriefingMapPoint mapPoint = new BriefingMapPoint();
         mapPoint.desc = "";
-        mapPoint.coord = vwp.getCoordinate().copy();
+        mapPoint.coord = vwp.getPosition().copy();
         
         return mapPoint;
     }

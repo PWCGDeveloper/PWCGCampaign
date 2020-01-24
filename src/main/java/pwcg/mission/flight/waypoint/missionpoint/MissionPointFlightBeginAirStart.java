@@ -10,6 +10,7 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
+import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuFormation;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
@@ -124,5 +125,13 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     public IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException
     {
         throw new PWCGException("Attempt to duplicate air start waypoint set.  Should ever be virtual");
+    }
+
+    @Override
+    public List<BaseFlightMcu> getAllFlightPoints()
+    {
+        List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
+        allFlightPoints.addAll(waypoints.getWaypoints());
+        return allFlightPoints;
     }
 }

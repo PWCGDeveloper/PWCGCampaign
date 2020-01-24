@@ -15,6 +15,7 @@ import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.flight.waypoint.begin.ClimbWaypointBuilder;
+import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuFormation;
 import pwcg.mission.mcu.McuMessage;
 import pwcg.mission.mcu.McuTakeoff;
@@ -186,5 +187,13 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         int flightLeaderIndex = plane.getLinkTrId();
         takeoffMcu.setObject(flightLeaderIndex);
         formationEntity.setObject(flightLeaderIndex);
+    }
+
+    @Override
+    public List<BaseFlightMcu> getAllFlightPoints()
+    {
+        List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
+        allFlightPoints.addAll(waypoints.getWaypoints());
+        return allFlightPoints;
     }
 }

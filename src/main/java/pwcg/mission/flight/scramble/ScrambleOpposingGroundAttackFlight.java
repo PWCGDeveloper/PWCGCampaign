@@ -45,10 +45,4 @@ public class ScrambleOpposingGroundAttackFlight extends Flight implements IFligh
         FlightPayloadBuilder flightPayloadHelper = new FlightPayloadBuilder(this);
         flightPayloadHelper.setFlightPayload();
     }
-
-    @Override
-    public void finalize() throws PWCGException
-    {
-        flightData.getWaypointPackage().finalize();
-    }
 }

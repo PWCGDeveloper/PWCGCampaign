@@ -47,10 +47,4 @@ public class ParaDropFlight extends Flight implements IFlight
         FlightPayloadBuilder flightPayloadHelper = new FlightPayloadBuilder(this);
         flightPayloadHelper.setFlightPayload();
     }
-
-    @Override
-    public void finalize() throws PWCGException
-    {
-        flightData.getWaypointPackage().finalize();
-    }
 }

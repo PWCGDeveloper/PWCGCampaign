@@ -12,6 +12,7 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.FormationGenerator;
 import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.AirGroundAttackMcuSequence;
 
@@ -96,5 +97,15 @@ public class MissionPointAttackWaypointSet extends MissionPointSetMultipleWaypoi
         duplicate.attackSequence.changeAttackAreaPosition (newPosition);
         
         return duplicate;
+    }
+
+    @Override
+    public List<BaseFlightMcu> getAllFlightPoints()
+    {
+        List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
+        allFlightPoints.addAll(waypointsBefore.getWaypoints());
+        allFlightPoints.add(attackSequence.getActivateTimer());
+        allFlightPoints.addAll(waypointsAfter.getWaypoints());
+        return allFlightPoints;
     }
 }

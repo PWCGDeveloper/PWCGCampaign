@@ -71,10 +71,4 @@ public class ReconFlight extends Flight implements IFlight
     {
         return reconFlightType;
     }
-
-    @Override
-    public void finalize() throws PWCGException
-    {
-        flightData.getWaypointPackage().finalize();
-    }
 }

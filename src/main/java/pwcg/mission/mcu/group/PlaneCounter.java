@@ -43,9 +43,6 @@ public class PlaneCounter
         planeCounter.setCounter(12);
     }
 
-    /**
-     * @param plane
-     */
      public void initialize(Coordinate mcuCoordinate) 
      {
          // set position
@@ -68,7 +65,6 @@ public class PlaneCounter
          {
              makeSubtitles(mcuCoordinate);
          }
-
 
          // Link up targets
          planeCounter.setTarget(disableMorePlanesTimer.getIndex());
@@ -146,10 +142,7 @@ public class PlaneCounter
              throw new PWCGIOException(e.getMessage());
          }
      }
-     
-     /**
-     * @param numPlanes
-     */
+
     public void setPlaneCounter(int numPlanes)
      {
          planeCounter.setCounter(numPlanes);

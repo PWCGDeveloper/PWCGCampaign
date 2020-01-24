@@ -91,6 +91,11 @@ public class AirGroundAttackMcuSequence
         deactivateEntity.write(writer);
     }
 
+    public McuTimer getActivateTimer()
+    {
+        return activateTimer;
+    }
+
     public void setLinkToNextTarget(int targetIndex)
     {
         deactivateTimer.setTarget(targetIndex);

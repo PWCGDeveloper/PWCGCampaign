@@ -9,6 +9,8 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointFlightActivate;
+import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class WaypointPackage implements IWaypointPackage
@@ -59,6 +61,17 @@ public class WaypointPackage implements IWaypointPackage
     }
 
     @Override
+    public List<BaseFlightMcu> getAllFlightPoints()
+    {
+        List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
+        for (IMissionPointSet missionPointSet : missionPointSets)
+        {
+            allFlightPoints.addAll(missionPointSet.getAllFlightPoints());
+        }
+        return allFlightPoints;
+    }
+
+    @Override
     public void updateWaypoints(List<McuWaypoint> waypointsInBriefing) throws PWCGException
     {
         removeUnwantedWaypoints(waypointsInBriefing);
@@ -73,9 +86,8 @@ public class WaypointPackage implements IWaypointPackage
     }
 
     @Override
-    public void finalize() throws PWCGException
+    public void finalize(PlaneMcu plane) throws PWCGException
     {
-        PlaneMcu plane = flight.getFlightData().getFlightPlanes().getFlightLeader();
         for (IMissionPointSet missionPointSet : missionPointSets)
         {
             missionPointSet.finalize(plane);
@@ -101,6 +113,18 @@ public class WaypointPackage implements IWaypointPackage
         for (IMissionPointSet missionPointSet : missionPointSets)
         {
             missionPointSet.write(writer);
+        }
+    }
+
+    @Override
+    public void triggerOnFlightActivation(int nextTargetIndex) throws PWCGException
+    {
+        for (IMissionPointSet missionPointSet : missionPointSets)
+        {
+            if (missionPointSet instanceof MissionPointFlightActivate)
+            {
+                missionPointSet.setLinkToNextTarget(nextTargetIndex);
+            }
         }
     }
 

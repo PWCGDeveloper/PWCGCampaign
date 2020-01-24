@@ -14,25 +14,25 @@ public class SinglePlayerMissionPlaneLimiter
 {
     private int maxAlliedPlanes = 8;
     private int maxAxisPlanes = 8;
-    
+
     private PlaneCounter alliedPlaneCounter = new PlaneCounter();
     private PlaneCounter axisPlaneCounter = new PlaneCounter();
     private Mission mission;
 
-    public void createPlaneCountersToLimitPlanesSpawned(Mission mission) throws PWCGException 
-    {        
+    public void createPlaneCountersToLimitPlanesSpawned(Mission mission) throws PWCGException
+    {
         this.mission = mission;
-        initMaxPlanesPerSide();        
-        adjustForPlayerFlights();        
+        initMaxPlanesPerSide();
+        adjustForPlayerFlights();
         setPlaneCounter(mission);
     }
 
-    private void setPlaneCounter(Mission mission) throws PWCGException 
+    private void setPlaneCounter(Mission mission) throws PWCGException
     {
         Coordinate mcuCoordinate = mission.getMissionFlightBuilder().getReferencePlayerFlight().getFlightData().getFlightInformation().getFlightHomePosition();
         alliedPlaneCounter.initialize(mcuCoordinate);
         axisPlaneCounter.initialize(mcuCoordinate);
-        
+
         alliedPlaneCounter.setPlaneCounter(maxAlliedPlanes);
         axisPlaneCounter.setPlaneCounter(maxAxisPlanes);
 
@@ -40,18 +40,18 @@ public class SinglePlayerMissionPlaneLimiter
         {
             alliedPlaneCounter.setPlaneCounterForFlight(flight);
         }
-        
+
         for (IFlight flight : mission.getMissionFlightBuilder().getAiFlightsForSide(Side.AXIS))
         {
             axisPlaneCounter.setPlaneCounterForFlight(flight);
         }
     }
 
-    private void initMaxPlanesPerSide() throws PWCGException 
+    private void initMaxPlanesPerSide() throws PWCGException
     {
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         ConfigManager configManager = campaign.getCampaignConfigManager();
-        
+
         maxAlliedPlanes = configManager.getIntConfigParam(ConfigItemKeys.AlliedPlanesToSpawnMaxKey);
         maxAxisPlanes = configManager.getIntConfigParam(ConfigItemKeys.AxisPlanesToSpawnMaxKey);
     }
@@ -61,7 +61,7 @@ public class SinglePlayerMissionPlaneLimiter
         for (IFlight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
         {
             int planesInPlayerFlight = playerFlight.getFlightData().getFlightPlanes().getFlightSize();
-            
+
             if (playerFlight.getFlightData().getFlightInformation().getSquadron().determineSide() == Side.ALLIED)
             {
                 maxAlliedPlanes -= planesInPlayerFlight;
@@ -90,5 +90,5 @@ public class SinglePlayerMissionPlaneLimiter
     {
         return axisPlaneCounter;
     }
-    
+
 }

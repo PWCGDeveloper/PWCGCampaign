@@ -278,11 +278,6 @@ public class Mission
         return missionBattleManager;
     }
 
-    public SinglePlayerMissionPlaneLimiter getMissionPlaneLimiter()
-    {
-        return missionPlaneLimiter;
-    }
-
     public VehicleSetBuilderComprehensive getVehicleSetBuilder()
     {
         return vehicleSetBuilder;

@@ -9,6 +9,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.EscortMcuSequence;
 
@@ -110,5 +111,14 @@ public class MissionPointEscortWaypointSet extends MissionPointSetMultipleWaypoi
     public IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException
     {
         throw new PWCGException("Attempt to duplicate escort waypoint set.  Should ever be virtual");
+    }
+
+    @Override
+    public List<BaseFlightMcu> getAllFlightPoints()
+    {
+        List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
+        allFlightPoints.addAll(waypointsBefore.getWaypoints());
+        allFlightPoints.addAll(waypointsAfter.getWaypoints());
+        return allFlightPoints;
     }
 }

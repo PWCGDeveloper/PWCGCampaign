@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
 
 public interface IFlightData
@@ -31,5 +32,7 @@ public interface IFlightData
     void finalize() throws PWCGException;
     
     void initialize(IFlight flight) throws PWCGException;
+
+    IVirtualWaypointPackage getVirtualWaypointPackage();
 
 }

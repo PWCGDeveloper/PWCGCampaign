@@ -32,12 +32,6 @@ public class BalloonDefenseFlight extends Flight implements IFlight
     }
 
     @Override
-    public void finalize() throws PWCGException
-    {
-        flightData.getWaypointPackage().finalize();
-    }
-
-    @Override
     public IMissionPointSet createFlightSpecificWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {
         BalloonDefenseWaypointFactory missionWaypointFactory = new BalloonDefenseWaypointFactory(this);

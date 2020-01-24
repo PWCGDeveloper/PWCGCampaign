@@ -28,7 +28,7 @@ public class VirtualWaypointStartFinder
         for (int startVWP = 0; startVWP < plotCoordinates.size(); ++startVWP)
         {
             VirtualWayPointCoordinate vwpCoordinate = plotCoordinates.get(startVWP);
-            if (missionBorders.isInBox(vwpCoordinate.getCoordinate()))
+            if (missionBorders.isInBox(vwpCoordinate.getPosition()))
             {
                 return startVWP;
             }

@@ -45,6 +45,6 @@ public abstract class Flight implements IFlight
     @Override
     public void finalizeFlight() throws PWCGException
     {
-        flightData.getWaypointPackage().finalize();
+        flightData.finalize();
     }
 }
