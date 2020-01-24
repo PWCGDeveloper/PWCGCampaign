@@ -9,8 +9,6 @@ import pwcg.core.location.Orientation;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.flight.waypoint.begin.IIngressWaypoint;
-import pwcg.mission.flight.waypoint.begin.IngressWaypointNearTarget;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointRouteSet;
@@ -26,9 +24,8 @@ public class ScrambleOpposingFighterWaypointFactory
         this.flight = flight;
     }
 
-    public IMissionPointSet createWaypoints() throws PWCGException
+    public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {
-        McuWaypoint ingressWaypoint = createIngressWaypoint();
         missionPointSet.addWaypoint(ingressWaypoint);
         
         List<McuWaypoint> waypoints = createTargetWaypoints(ingressWaypoint.getPosition());
@@ -38,13 +35,6 @@ public class ScrambleOpposingFighterWaypointFactory
         missionPointSet.addWaypoint(egressWaypoint);
 
         return missionPointSet;
-    }
-
-    private McuWaypoint createIngressWaypoint() throws PWCGException  
-    {
-        IIngressWaypoint ingressWaypointGenerator = new IngressWaypointNearTarget(flight);
-        McuWaypoint ingressWaypoint = ingressWaypointGenerator.createIngressWaypoint();
-        return ingressWaypoint;
     }
 
     private List<McuWaypoint> createTargetWaypoints(Coordinate startPosition) throws PWCGException  

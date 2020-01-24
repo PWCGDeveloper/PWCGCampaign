@@ -8,8 +8,8 @@ import pwcg.mission.ground.BattleSize;
 
 public class BoSProductSpecificConfiguration implements IProductSpecificConfiguration
 {
-    private static final int INTERCEPT_LOOP_ANGLE = 60;
     private static final int INNER_LOOP_DISTANCE = 15000;
+    private static final int BALLOON_DEFENSE_LOOP_DISTANCE = 20000;
     private static final int CLIMB_DISTANCE = 10000;
     private static final int NEUTRAL_ZONE = 5000;
     private static final int FRONT_LINE_MISSION_RADIUS = 40000;
@@ -37,6 +37,8 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     private static final int ATTACK_AREA_SELECT_TARGET_DISTANCE = 8000;
     private static final int ATTACK_AREA_BOMB_DROP_DISTANCE = 1000;
     private static final int INGRESS_DISTANCE_FROM_FRONT = 10000;
+    private static final int FORMATION_HORIZINTAL_SPACING = 200;
+    private static final int FORMATION_VERTICAL_SPACING = 120;
 
     @Override
     public boolean useWaypointGoal()
@@ -265,12 +267,6 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     }
 
     @Override
-    public int getInterceptLoopAngle()
-    {
-        return INTERCEPT_LOOP_ANGLE;
-    }
-
-    @Override
     public int getNumAssaultSegments(BattleSize battleSize)
     {
         if (battleSize == BattleSize.BATTLE_SIZE_ASSAULT)
@@ -442,5 +438,23 @@ public class BoSProductSpecificConfiguration implements IProductSpecificConfigur
     public int getDefaultIngressDistanceFromFront()
     {
         return INGRESS_DISTANCE_FROM_FRONT;
+    }
+    
+    @Override
+    public int getFormationHorizontalSpacing()
+    {
+        return FORMATION_HORIZINTAL_SPACING;
+    }
+
+    @Override
+    public int getFormationVerticalSpacing()
+    {
+        return FORMATION_VERTICAL_SPACING;
+    }
+
+    @Override
+    public int getBalloonDefenseLoopDistance()
+    {
+        return BALLOON_DEFENSE_LOOP_DISTANCE;
     }
 }

@@ -1,53 +1,96 @@
 package pwcg.mission.flight.balloondefense;
 
+import java.util.List;
+
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointFactory;
+import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointPointDefenseWaypointSet;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointRouteSet;
+import pwcg.mission.flight.waypoint.patterns.WaypointPatternFactory;
 import pwcg.mission.mcu.McuWaypoint;
-import pwcg.mission.mcu.group.PointDefenseMcuSequence;
 
 public class BalloonDefenseWaypointFactory
 {
     private IFlight flight;
-    private MissionPointPointDefenseWaypointSet missionPointSet;
+    private MissionPointRouteSet missionPointSet;
+
+    private static final int NUM_LEGS_IN_BALLOON_DEFENSE_CIRCLE = 6;
 
     public BalloonDefenseWaypointFactory(IFlight flight) throws PWCGException
     {
         this.flight = flight;
-        this.missionPointSet = new MissionPointPointDefenseWaypointSet(flight);
+        this.missionPointSet = new MissionPointRouteSet();
     }
 
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {
-        McuWaypoint balloonDefenseWP = createTargetWaypoints();
-        missionPointSet.addWaypointBefore(balloonDefenseWP);
+        missionPointSet.addWaypoint(ingressWaypoint);
         
-        PointDefenseMcuSequence coverSequence = new PointDefenseMcuSequence(flight);
-        coverSequence.createPointDefenseSequence();
-        missionPointSet.setCoverSequence(coverSequence);
+        McuWaypoint initialWP = createInterceptFirstWP(ingressWaypoint);
+        missionPointSet.addWaypoint(initialWP);
+
+        List<McuWaypoint> interceptWaypoints = createCirclePattern(initialWP);
+        missionPointSet.addWaypoints(interceptWaypoints);
 
         McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
-        missionPointSet.addWaypointAfter(egressWaypoint);
+        missionPointSet.addWaypoint(egressWaypoint);
 
         return missionPointSet;
     }
+    
 
-	protected McuWaypoint createTargetWaypoints() throws PWCGException  
-	{
-		Coordinate coord = new Coordinate();
-		coord.setXPos(flight.getFlightData().getFlightInformation().getTargetPosition().getXPos() + 50.0);
-		coord.setZPos(flight.getFlightData().getFlightInformation().getTargetPosition().getZPos() + 50.0);
-		coord.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+    private McuWaypoint createInterceptFirstWP(McuWaypoint ingressWaypoint) throws PWCGException
+    {
+        double angleTargetToIngress = MathUtils.calcAngle(flight.getFlightData().getFlightInformation().getTargetPosition(), ingressWaypoint.getPosition());
 
-		McuWaypoint balloonDefenseWP = WaypointFactory.createBalloonDefenseWaypointType();		
-		balloonDefenseWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-		balloonDefenseWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
-		balloonDefenseWP.setPosition(coord);	
-		balloonDefenseWP.setTargetWaypoint(true);
-        return balloonDefenseWP;
-	}
+        double distanceFromTarget = getRadiusFromCircumferennceOfLoop();
+        Coordinate coord = MathUtils.calcNextCoord(flight.getFlightData().getFlightInformation().getTargetPosition(), angleTargetToIngress, distanceFromTarget);
+
+        McuWaypoint loopFirstWP = WaypointFactory.createPatrolWaypointType();
+        loopFirstWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
+        loopFirstWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        loopFirstWP.setPosition(coord);    
+        loopFirstWP.setTargetWaypoint(true);
+        
+        double initialAngle = MathUtils.calcAngle(flight.getFlightData().getFlightHomePosition(), flight.getFlightData().getFlightInformation().getTargetPosition());
+        loopFirstWP.getOrientation().setyOri(initialAngle);
+        
+        return loopFirstWP;
+    }
+
+    private double getRadiusFromCircumferennceOfLoop()
+    {
+        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int loopDistance = productSpecific.getBalloonDefenseLoopDistance();
+        double loopCircumference = NUM_LEGS_IN_BALLOON_DEFENSE_CIRCLE * loopDistance;
+        double distanceFromTarget = loopCircumference / (2 * Math.PI);
+        return distanceFromTarget;
+    }
+
+    private List<McuWaypoint> createCirclePattern (McuWaypoint ingressWaypoint) throws PWCGException
+    {
+        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int loopDistance = productSpecific.getBalloonDefenseLoopDistance();
+        
+        List<McuWaypoint> interceptWPs = WaypointPatternFactory.generateCirclePattern(
+                flight.getCampaign(),
+                flight, 
+                WaypointType.BALLOON_DEFENSE_WAYPOINT, 
+                WaypointAction.WP_ACTION_PATROL, 
+                McuWaypoint.FLIGHT_AREA,
+                NUM_LEGS_IN_BALLOON_DEFENSE_CIRCLE,
+                ingressWaypoint,
+                flight.getFlightData().getFlightInformation().getAltitude(),
+                loopDistance);
+                        
+        return interceptWPs;
+    }
 }

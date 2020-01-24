@@ -10,8 +10,8 @@ import pwcg.core.location.Orientation;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.AttackAreaFactory;
+import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuAttackArea;
-import pwcg.mission.mcu.McuAttackArea.AttackAreaType;
 import pwcg.mission.mcu.McuDeactivate;
 import pwcg.mission.mcu.McuTimer;
 
@@ -109,5 +109,10 @@ public class AirGroundAttackMcuSequence
     public Coordinate getPosition()
     {
         return attackArea.getPosition();
+    }
+
+    public void changeAttackAreaPosition(Coordinate newPosition)
+    {
+        attackArea.setPosition(newPosition);
     }
 }

@@ -4,8 +4,9 @@ import java.io.BufferedWriter;
 
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
+import pwcg.mission.mcu.McuWaypoint;
 
 public interface IFlight
 {
@@ -15,7 +16,5 @@ public interface IFlight
     void write(BufferedWriter writer) throws PWCGException;
     void finalizeFlight() throws PWCGException;
     void createFlight() throws PWCGException;
-
-    //  TODO - this is a tough ne but needs doing
-    Coordinate getTargetPosition();
+    IMissionPointSet createFlightSpecificWaypoints(McuWaypoint ingressWaypoint) throws PWCGException;
 }

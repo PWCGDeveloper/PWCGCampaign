@@ -3,7 +3,6 @@ package pwcg.mission.mcu;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.mcu.McuAttackArea.AttackAreaType;
 
 public class AttackAreaFactory
 {

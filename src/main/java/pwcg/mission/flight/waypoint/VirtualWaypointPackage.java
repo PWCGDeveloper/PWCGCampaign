@@ -2,7 +2,9 @@ package pwcg.mission.flight.waypoint;
 
 import java.io.BufferedWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
@@ -14,7 +16,8 @@ import pwcg.mission.mcu.group.VirtualWayPoint;
 public class VirtualWaypointPackage implements IVirtualWaypointPackage
 {
     private IFlight flight;
-    private List<VirtualWayPoint> virtualWaypoints = new ArrayList<VirtualWayPoint>();
+    private Map<Integer, IWaypointPackage> waypointPackagesForVirtualFlight = new HashMap<>();
+    private Map<Integer, VirtualWayPoint> virtualWaypoints = new HashMap<>();
 
     public VirtualWaypointPackage(IFlight flight)
     {
@@ -24,10 +27,19 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     @Override
     public void buildVirtualWaypoints() throws PWCGException
     {
+        generateDuplicateWaypoints();
         generateVirtualWaypoints();
         linkVirtualWaypoints();
     }
     
+    private void generateDuplicateWaypoints()
+    {
+        for (int positionInFormation = 1; positionInFormation < flight.getFlightData().getFlightPlanes().getPlanes().size())
+        {
+            waypointPackagesForVirtualFlight
+        }
+    }
+
     private void generateVirtualWaypoints() throws PWCGException
     {
         VirtualWaypointGenerator virtualWaypointGenerator = new VirtualWaypointGenerator(flight);

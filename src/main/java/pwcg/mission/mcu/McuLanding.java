@@ -43,4 +43,17 @@ public class McuLanding extends BaseFlightMcu
             throw new PWCGIOException(e.getMessage());
         }
 	}	
+	
+	   
+    public McuLanding clone ()
+    {
+        McuLanding clone = new McuLanding();
+
+        super.clone(clone);
+        
+        clone.name = "command Land";
+        clone.desc = "command Land";
+
+        return clone;
+    }
 }

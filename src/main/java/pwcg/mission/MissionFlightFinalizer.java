@@ -5,7 +5,6 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.FlightFinalizer;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
 import pwcg.mission.ground.org.IGroundUnit;
@@ -28,8 +27,7 @@ public class MissionFlightFinalizer
         convertForCoop();
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            FlightFinalizer finalizer = new FlightFinalizer(flight);
-            finalizer.finalizeFlight();
+            flight.finalizeFlight();;
         }
         
         AiAdjuster aiAdjuster = new AiAdjuster(campaign);
@@ -40,6 +38,7 @@ public class MissionFlightFinalizer
 
         setFlightAttackMcuForPlanes();
         setFlightAttackMcuForBalloons();
+        duplicateMissionPOintsForVirtualFlights(); // Part of write? Can be ... duplicate then write
         
         setCzTriggers();
         
@@ -106,7 +105,6 @@ public class MissionFlightFinalizer
     {
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            // Trigger the flight on proximity to player
             triggerOtherFlightCZFromPlayerFlight(flight);
             for (IFlight linkedFlight : flight.getFlightData().getLinkedFlights().getLinkedFlights())
             {

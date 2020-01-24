@@ -11,7 +11,7 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public abstract class MissionPointSetSingleWaypointSet implements IMissionPointSetWaypoints
 {
-    private WaypointSet waypoints = new WaypointSet();
+    protected WaypointSet waypoints = new WaypointSet();
     
     @Override
     public void addWaypointAfterWaypoint(McuWaypoint newWaypoint, long waypointIdAfter) throws PWCGException
@@ -98,4 +98,10 @@ public abstract class MissionPointSetSingleWaypointSet implements IMissionPointS
         }
         return missionPoints;
     }
+        
+    protected WaypointSet duplicateWaypoints(int positionInFormation) throws PWCGException
+    {
+        return waypoints.duplicateInFormation(positionInFormation);
+    }
+
 }

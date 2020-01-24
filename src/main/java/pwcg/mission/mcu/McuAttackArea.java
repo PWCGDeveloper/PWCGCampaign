@@ -9,13 +9,6 @@ import pwcg.mission.flight.waypoint.WaypointPriority;
 
 public class McuAttackArea extends BaseFlightMcu
 {
-    public enum AttackAreaType
-    {
-        AIR_TARGETS,
-        GROUND_TARGETS,
-        INDIRECT
-    }
-    
 	private int attackIndirect  = 0;
 	private int attackAir  = 0;
 	private int attackGTargets = 0;

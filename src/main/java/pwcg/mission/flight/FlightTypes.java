@@ -3,6 +3,8 @@ package pwcg.mission.flight;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.mission.mcu.AttackAreaType;
+
 public enum FlightTypes
 {
     PATROL(FlightTypeCategory.FIGHTER),
@@ -123,4 +125,30 @@ public enum FlightTypes
         
         return false;
     }
+    
+
+    public static AttackAreaType getAttackAreaTypeByFlightyType(FlightTypes flightType)
+    {
+        if (flightType == FlightTypes.BOMB ||
+            flightType == FlightTypes.LOW_ALT_BOMB ||
+            flightType == FlightTypes.DIVE_BOMB ||
+            flightType == FlightTypes.ANTI_SHIPPING_BOMB || 
+            flightType == FlightTypes.STRATEGIC_BOMB)
+        {
+            return AttackAreaType.INDIRECT;
+        }
+        else if (flightType == FlightTypes.GROUND_ATTACK ||
+                 flightType == FlightTypes.DIVE_BOMB ||
+                 flightType == FlightTypes.ANTI_SHIPPING_ATTACK || 
+                 flightType == FlightTypes.ANTI_SHIPPING_DIVE_BOMB)
+        {
+            
+            return AttackAreaType.GROUND_TARGETS;
+        }
+        else
+        {
+            return AttackAreaType.AIR_TARGETS;
+        }
+     }
+
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -106,28 +107,6 @@ public class WaypointSet
         createObjectAssociations(plane);
     }
 
-    private void createObjectAssociations(PlaneMcu plane)
-    {
-        for (McuWaypoint waypoint : waypoints)
-        {
-            waypoint.setObject(plane.getLinkTrId());
-        }
-    }
-
-    private void createTargetAssociations()
-    {
-        McuWaypoint previousWaypoint = null;
-        for (McuWaypoint waypoint : waypoints)
-        {
-            if (previousWaypoint != null)
-            {
-                previousWaypoint.setTarget(waypoint.getIndex());
-            }
-            previousWaypoint = waypoint;
-        }
-    }
-    
-
     public void write(BufferedWriter writer) throws PWCGException
     {
         for (McuWaypoint waypoint : waypoints)
@@ -181,4 +160,37 @@ public class WaypointSet
         throw new PWCGException("Waypoint not found in waypoint set " + waypointId);
     }
 
+    private void createObjectAssociations(PlaneMcu plane)
+    {
+        for (McuWaypoint waypoint : waypoints)
+        {
+            waypoint.setObject(plane.getLinkTrId());
+        }
+    }
+
+    private void createTargetAssociations()
+    {
+        McuWaypoint previousWaypoint = null;
+        for (McuWaypoint waypoint : waypoints)
+        {
+            if (previousWaypoint != null)
+            {
+                previousWaypoint.setTarget(waypoint.getIndex());
+            }
+            previousWaypoint = waypoint;
+        }
+    }
+    
+    public WaypointSet duplicateInFormation(int positionInFormation) throws PWCGException
+    {
+        WaypointSet duplicate = new WaypointSet();
+        for (McuWaypoint waypoint : waypoints)
+        {
+            McuWaypoint planeWaypoint = waypoint.copy();
+            Coordinate position = FormationGenerator.generatePositionForPlaneInFormation(waypoint.getOrientation(), planeWaypoint.getPosition(), positionInFormation);
+            planeWaypoint.setPosition(position);
+            duplicate.waypoints.add(planeWaypoint);
+        }
+        return duplicate;
+    }
 }

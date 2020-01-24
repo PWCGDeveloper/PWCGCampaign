@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 
 public interface IMissionPointSet extends IMissionPointSetWaypoints
@@ -21,4 +22,6 @@ public interface IMissionPointSet extends IMissionPointSetWaypoints
     void disableLinkToNextTarget();
 
     boolean isLinkToNextTarget();
+    
+    IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException;
 }

@@ -7,6 +7,7 @@ import pwcg.campaign.api.IAirfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.PWCGLocation;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.end.ApproachWaypointGenerator;
@@ -108,5 +109,15 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
     {
         int flightLeaderIndex = flight.getFlightData().getFlightPlanes().getFlightLeader().getEntity().getIndex();
         landingMcu.setObject(flightLeaderIndex);
+    }
+
+    @Override
+    public IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException
+    {
+        MissionPointFlightEnd duplicate = new MissionPointFlightEnd(flight, landingAirfield);
+        duplicate.waypoints = super.duplicateWaypoints(positionInFormation);
+
+        duplicate.landingMcu = landingMcu.clone();
+        return duplicate;
     }
 }

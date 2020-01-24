@@ -5,7 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
+import pwcg.core.location.Orientation;
+import pwcg.mission.flight.FlightTypes;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.flight.waypoint.FormationGenerator;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.AirGroundAttackMcuSequence;
@@ -76,5 +81,20 @@ public class MissionPointAttackWaypointSet extends MissionPointSetMultipleWaypoi
     public void setAttackSequence(AirGroundAttackMcuSequence attackSequence)
     {
         this.attackSequence = attackSequence;
+    }
+
+    @Override
+    public IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException
+    {
+        MissionPointAttackWaypointSet duplicate = new MissionPointAttackWaypointSet();
+        duplicate.waypointsBefore = super.duplicateBeginWaypoints(positionInFormation);
+        duplicate.waypointsAfter = super.duplicateAfterWaypoints(positionInFormation);
+
+        duplicate.attackSequence = new AirGroundAttackMcuSequence(flightInformation);
+        duplicate.attackSequence.createAttackArea(180, FlightTypes.getAttackAreaTypeByFlightyType(flightInformation.getFlightType()));
+        Coordinate newPosition = FormationGenerator.generatePositionForPlaneInFormation(new Orientation(), attackSequence.getPosition(), positionInFormation);
+        duplicate.attackSequence.changeAttackAreaPosition (newPosition);
+        
+        return duplicate;
     }
 }

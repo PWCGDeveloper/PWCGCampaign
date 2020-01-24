@@ -8,7 +8,7 @@ import pwcg.mission.flight.waypoint.attack.GroundAttackWaypointHelper;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackWaypointSet;
-import pwcg.mission.mcu.McuAttackArea.AttackAreaType;
+import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.AirGroundAttackMcuSequence;
 
@@ -35,6 +35,8 @@ public class PlayerEscortedWaypointFactory
         
         McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
         missionPointSet.addWaypointAfter(egressWaypoint);
+
+        missionPointSet.disableLinkToNextTarget();
 
         return missionPointSet;
     }

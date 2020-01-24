@@ -21,7 +21,6 @@ public interface IProductSpecificConfiguration
     int getInterceptCreepLegDistance();
     int getInterceptCreepCrossDistance();
     int getInterceptInnerLoopDistance();
-    int getInterceptLoopAngle();
     int getClimbDistance();
     int getMinClimbWPAlt();
     int getLargeMissionRadius();
@@ -47,4 +46,7 @@ public interface IProductSpecificConfiguration
     int getAttackAreaSelectTargetRadius();
     int getAttackAreaBombDropRadius();
     int getRendezvousDistanceFromFront();
+    int getFormationHorizontalSpacing();
+    int getFormationVerticalSpacing();
+    int getBalloonDefenseLoopDistance();
 }

@@ -7,14 +7,13 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.McuWaypoint;
 
 public interface IWaypointPackage
 {
     List<MissionPoint> getFlightMissionPoints() throws PWCGException;
     
-    void addMissionPointSet(MissionPointSetType missionPointSetType, IMissionPointSet missionPointSet);
+    void addMissionPointSet(IMissionPointSet missionPointSet);
 
     List<McuWaypoint> getAllWaypoints();
 
@@ -25,4 +24,6 @@ public interface IWaypointPackage
     void finalize() throws PWCGException;
     
     void write(BufferedWriter writer) throws PWCGIOException, PWCGException;
+
+    IWaypointPackage duplicate(int positionInFormation) throws PWCGException;
 }

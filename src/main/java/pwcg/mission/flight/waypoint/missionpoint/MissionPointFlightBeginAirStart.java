@@ -5,13 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
-import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuFormation;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
@@ -22,9 +20,6 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     private AirStartPattern airStartNearAirfield;
     private McuWaypoint ingressWaypoint;
 
-    private MissionBeginUnit missionBeginUnit;
-    private McuTimer activationTimer = null;
-    private McuActivate activationEntity = null;
     private McuTimer formationTimer = null;
     private McuFormation formationEntity = null;
     private boolean linkToNextTarget = true;
@@ -38,9 +33,6 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
 
     public void createFlightBegin() throws PWCGException, PWCGException
     {
-        this.missionBeginUnit = new MissionBeginUnit(flight.getFlightData().getFlightHomePosition());
-
-        createActivation();
         createFormation();
         createAirStartWaypoint();  
     }
@@ -54,7 +46,7 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     @Override
     public int getEntryPoint() throws PWCGException
     {
-        return activationTimer.getIndex();
+        return formationTimer.getIndex();
     }
 
     @Override
@@ -75,21 +67,6 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
         return linkToNextTarget;
     }
 
-    private void createActivation() throws PWCGException
-    {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
-
-        activationEntity = new McuActivate();
-        activationEntity.setName("Activate");
-        activationEntity.setDesc("Activate entity");
-        activationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
-
-        activationTimer = new McuTimer();
-        activationTimer.setName("Activation Timer");
-        activationTimer.setDesc("Activation Timer");
-        activationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
-    }
-
     @Override
     public void finalize(PlaneMcu plane) throws PWCGException
     {
@@ -101,9 +78,6 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     @Override
     public void write(BufferedWriter writer) throws PWCGException
     {
-        missionBeginUnit.write(writer);
-        activationTimer.write(writer);
-        activationEntity.write(writer);
         formationTimer.write(writer);
         formationEntity.write(writer);
     }
@@ -131,17 +105,11 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
 
     private void createTargetAssociations() throws PWCGException
     {
-        missionBeginUnit.linkToMissionBegin(activationTimer.getIndex());
-
-        activationTimer.setTarget(activationEntity.getIndex());
-        activationTimer.setTarget(formationTimer.getIndex());
-
         formationTimer.setTarget(formationEntity.getIndex());
     }
 
     private void createObjectAssociations(PlaneMcu plane)
     {
-        activationEntity.setObject(plane.getLinkTrId());
         formationEntity.setObject(plane.getLinkTrId());
     }
 
@@ -150,5 +118,11 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     {
         List<McuWaypoint> allWaypoints = new ArrayList<>();
         return allWaypoints;
+    }
+
+    @Override
+    public IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException
+    {
+        throw new PWCGException("Attempt to duplicate air start waypoint set.  Should ever be virtual");
     }
 }

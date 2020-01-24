@@ -6,6 +6,7 @@ import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
+import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 
 public class FlightData implements IFlightData
@@ -13,10 +14,12 @@ public class FlightData implements IFlightData
     private IFlightInformation flightInformation;
     
     private IFlightPlanes flightPlanes;
-    private IWaypointPackage waypointPackage;
     private ILinkedGroundUnits linkedGroundUnits = new LinkedGroundUnits();
     private ILinkedFLights linkedFlights = new LinkedFlights();
     private IFlightPlayerContact flightPlayerContact = new FlightPlayerContact();
+    private IWaypointPackage waypointPackage;
+    private VirtualWaypointPackage virtualWaypointPackage;
+
 
     public FlightData(IFlightInformation flightInformation)
     {
@@ -27,6 +30,7 @@ public class FlightData implements IFlightData
     {
         this.flightPlanes = new FlightPlanes(flight);
         this.waypointPackage = new WaypointPackage(flight);
+        this.virtualWaypointPackage = new VirtualWaypointPackage(flight);
     }
 
     @Override
@@ -34,6 +38,10 @@ public class FlightData implements IFlightData
     {
         flightPlanes.write(writer);
         waypointPackage.write(writer);
+        if (flightInformation.isVirtual())
+        {
+            virtualWaypointPackage.write(writer);
+        }
     }
 
     @Override
@@ -92,6 +100,11 @@ public class FlightData implements IFlightData
         for (IFlight linkedFlight : linkedFlights.getLinkedFlights())
         {
             linkedFlight.finalizeFlight();
+        }
+
+        if (flightInformation.isVirtual())
+        {
+            virtualWaypointPackage.buildVirtualWaypoints();                    
         }
     }
 }

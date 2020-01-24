@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 
 public abstract class Flight implements IFlight
@@ -41,12 +40,6 @@ public abstract class Flight implements IFlight
     public void write(BufferedWriter writer) throws PWCGException
     {
         flightData.write(writer);
-    }
-
-    @Override
-    public Coordinate getTargetPosition()
-    {
-        return flightData.getFlightInformation().getTargetPosition();
     }
 
     @Override

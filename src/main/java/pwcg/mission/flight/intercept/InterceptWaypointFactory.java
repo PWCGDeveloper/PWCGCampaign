@@ -99,9 +99,7 @@ public class InterceptWaypointFactory
 
         return coordinatesAfterRandomMove;
     }
-    
 
-    
     private double getPatternMoveAngleForPattern() throws PWCGException
     {
         double angleToMovePattern = 0.0;

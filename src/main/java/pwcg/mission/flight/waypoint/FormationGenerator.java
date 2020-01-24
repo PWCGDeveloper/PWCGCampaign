@@ -3,6 +3,8 @@ package pwcg.mission.flight.waypoint;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.api.IProductSpecificConfiguration;
+import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -23,14 +25,22 @@ public class FormationGenerator
         
         for (int i = 1; i < planes.getPlanes().size(); ++i)
         {
-            double echelonLeftAngle = MathUtils.adjustAngle(orientation.getyOri(), 330);
-            double metersSpacing = 120.0;
-            Coordinate nextPlaneCoords = MathUtils.calcNextCoord(leadPlaneCoords, echelonLeftAngle, metersSpacing * i);
-            nextPlaneCoords.setYPos(leadPlaneCoords.getYPos() + (80 * i));
-            
+            Coordinate nextPlaneCoords = generatePositionForPlaneInFormation(orientation, leadPlaneCoords, i);
             flightCoordinates.add(nextPlaneCoords);
         }
         
         return flightCoordinates;
+    }
+
+    public static Coordinate generatePositionForPlaneInFormation(Orientation orientation, Coordinate leadPlaneCoords, int placeInFormation) throws PWCGException
+    {
+        IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
+        int horizontalSpacing = productSpecific.getFormationHorizontalSpacing();
+        int verticalSpacing = productSpecific.getFormationVerticalSpacing();
+        
+        double echelonLeftAngle = MathUtils.adjustAngle(orientation.getyOri(), 330);
+        Coordinate nextPlaneCoords = MathUtils.calcNextCoord(leadPlaneCoords, echelonLeftAngle, horizontalSpacing * placeInFormation);
+        nextPlaneCoords.setYPos(leadPlaneCoords.getYPos() + (verticalSpacing * placeInFormation));
+        return nextPlaneCoords;
     }
 }

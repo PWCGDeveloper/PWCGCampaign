@@ -1,19 +1,24 @@
-package pwcg.mission.flight.waypoint.begin;
+package pwcg.mission.flight.waypoint.missionpoint;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
-import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointFlightBeginAirStart;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointFlightBeginTakeoff;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointFlightBeginVirtual;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointFlightEnd;
+import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
+import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class FlightWaypointGroupFactory
+public class MissionPointSetFactory
 {
+    
+    public static IMissionPointSet createFlightActivate(IFlight flight) throws PWCGException, PWCGException 
+    {
+        MissionPointFlightActivate flightActivate = new MissionPointFlightActivate(flight);
+        flightActivate.createFlightActivate();
+        return flightActivate;
+    }
+
     public static IMissionPointSet createFlightBegin(IFlight flight, AirStartPattern airStartNearAirfield, McuWaypoint ingressWaypoint) throws PWCGException, PWCGException 
     {
         IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
@@ -52,7 +57,25 @@ public class FlightWaypointGroupFactory
     {
         MissionPointFlightEnd flightEnd = new MissionPointFlightEnd(flight, landingAirfield);
         flightEnd.createFlightEnd();
-        flightEnd.createTargetAssociations();
         return flightEnd;
     }
+    
+
+    public static void createStandardMissionPointSet(IFlight flight, AirStartPattern airStartPattern, IngressWaypointPattern ingressWaypointPattern) throws PWCGException
+    {
+        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(ingressWaypointPattern, flight);
+
+        IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(flight);
+        flight.getFlightData().getWaypointPackage().addMissionPointSet(flightActivate);
+
+        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(flight, airStartPattern, ingressWaypoint);
+        flight.getFlightData().getWaypointPackage().addMissionPointSet(flightBegin);
+
+        IMissionPointSet missionWaypoints = flight.createFlightSpecificWaypoints(ingressWaypoint);
+        flight.getFlightData().getWaypointPackage().addMissionPointSet(missionWaypoints);
+        
+        IMissionPointSet flightEnd = MissionPointSetFactory.createFlightEndAtHomeField(flight);
+        flight.getFlightData().getWaypointPackage().addMissionPointSet(flightEnd);        
+    }
+
 }

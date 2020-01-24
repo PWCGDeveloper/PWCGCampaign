@@ -1,12 +1,7 @@
 package pwcg.mission.flight.escort;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
-import pwcg.core.location.Orientation;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.waypoint.WaypointFactory;
-import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
-import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointEscortWaypointSet;
 import pwcg.mission.mcu.McuWaypoint;
@@ -24,11 +19,10 @@ public class EscortForPlayerWaypointFactory
         this.escortFlight = escortFlight;
     }
 
-    public IMissionPointSet createWaypoints() throws PWCGException
+    public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {
         missionPointSet = new MissionPointEscortWaypointSet(escortFlight);
         
-        McuWaypoint ingressWaypoint = createIngressWaypoint();
         missionPointSet.addWaypointBefore(ingressWaypoint);
         
         McuWaypoint rtbWP = ReturnToBaseWaypoint.createReturnToBaseWaypoint(escortFlight);
@@ -39,29 +33,5 @@ public class EscortForPlayerWaypointFactory
         missionPointSet.setCoverSequence(escortSequence);
 
         return missionPointSet;
-    }
-
-    private McuWaypoint createIngressWaypoint() throws PWCGException
-    {
-        Coordinate ingresseCoords = getCoverPosition();
-        Orientation orient = new Orientation();
-        orient.setyOri(escortFlight.getFlightData().getFlightInformation().getDepartureAirfield().getOrientation().getyOri());
-
-        McuWaypoint ingressWP = WaypointFactory.createIngressWaypointType();
-        ingressWP.setTriggerArea(McuWaypoint.START_AREA);
-        ingressWP.setSpeed(escortFlight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
-        ingressWP.setPosition(ingresseCoords);
-        ingressWP.setOrientation(orient);
-        return ingressWP;
-    }
-
-    private Coordinate getCoverPosition()
-    {
-        McuWaypoint ingressWP = WaypointGeneratorUtils.findWaypointByType(escortedFlight.getFlightData().getWaypointPackage().getAllWaypoints(), 
-                WaypointType.INGRESS_WAYPOINT.getName());
-
-        Coordinate coverPosition = ingressWP.getPosition().copy();
-        coverPosition.setYPos(coverPosition.getYPos() + 400);
-        return coverPosition;
     }
 }

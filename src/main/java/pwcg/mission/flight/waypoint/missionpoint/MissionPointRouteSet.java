@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -61,5 +62,13 @@ public class MissionPointRouteSet extends MissionPointSetSingleWaypointSet imple
     public void write(BufferedWriter writer) throws PWCGException
     {
         super.write(writer);
+    }
+    
+    @Override
+    public IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException
+    {
+        MissionPointRouteSet duplicate = new MissionPointRouteSet();
+        duplicate.waypoints = super.duplicateWaypoints(positionInFormation);
+        return duplicate;
     }
 }

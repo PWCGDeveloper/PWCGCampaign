@@ -8,9 +8,9 @@ import pwcg.core.location.Orientation;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.vehicle.IVehicle;
+import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuAttackArea;
-import pwcg.mission.mcu.McuAttackArea.AttackAreaType;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuValidator;
 

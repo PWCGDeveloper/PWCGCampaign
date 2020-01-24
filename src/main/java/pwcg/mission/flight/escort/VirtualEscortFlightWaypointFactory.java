@@ -22,8 +22,10 @@ public class VirtualEscortFlightWaypointFactory
         this.escortedFlight = escortedFlight;
     }
     
-    public IMissionPointSet createWaypoints() throws PWCGException
+    public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {
+        missionPointSet.addWaypoint(ingressWaypoint);
+
         List<McuWaypoint> waypoints = copyEscortedFlightWaypoints();
         missionPointSet.addWaypoints(waypoints);
         

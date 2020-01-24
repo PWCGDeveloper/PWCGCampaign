@@ -11,8 +11,8 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public abstract class MissionPointSetMultipleWaypointSet implements IMissionPointSetWaypoints
 {
-    private WaypointSet waypointsBefore = new WaypointSet();
-    private WaypointSet waypointsAfter = new WaypointSet();
+    protected WaypointSet waypointsBefore = new WaypointSet();
+    protected WaypointSet waypointsAfter = new WaypointSet();
 
     @Override
     public List<McuWaypoint> getAllWaypoints()
@@ -177,5 +177,15 @@ public abstract class MissionPointSetMultipleWaypointSet implements IMissionPoin
     public McuWaypoint getLastWaypointBefore() throws PWCGException
     {
         return waypointsBefore.getLastWaypoint();
+    }
+    
+    protected WaypointSet duplicateBeginWaypoints(int positionInFormation) throws PWCGException
+    {
+        return waypointsBefore.duplicateInFormation(positionInFormation);
+    }
+    
+    protected WaypointSet duplicateAfterWaypoints(int positionInFormation) throws PWCGException
+    {
+        return waypointsAfter.duplicateInFormation(positionInFormation);
     }
 }

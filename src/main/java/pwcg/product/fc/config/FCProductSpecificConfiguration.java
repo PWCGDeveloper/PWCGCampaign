@@ -8,8 +8,8 @@ import pwcg.mission.ground.BattleSize;
 
 public class FCProductSpecificConfiguration implements IProductSpecificConfiguration
 {
-    private static final int INTERCEPT_LOOP_ANGLE = 60;
     private static final int INNER_LOOP_DISTANCE = 6000;
+    private static final int BALLOON_DEFENSE_LOOP_DISTANCE = 8000;
     private static final int CLIMB_DISTANCE = 5000;
     private static final int NEUTRAL_ZONE = 3000;
     private static final int FRONT_LINE_MISSION_RADIUS = 15000;
@@ -37,6 +37,8 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     private static final int ATTACK_AREA_SELECT_TARGET_DISTANCE = 5000;
     private static final int ATTACK_AREA_BOMB_DROP_DISTANCE = 500;
     private static final int INGRESS_DISTANCE_FROM_FRONT = 6000;
+    private static final int FORMATION_HORIZINTAL_SPACING = 100;
+    private static final int FORMATION_VERTICAL_SPACING = 70;
 
     @Override
     public boolean useWaypointGoal()
@@ -96,12 +98,6 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     public int getInterceptInnerLoopDistance()
     {
         return INNER_LOOP_DISTANCE;
-    }
-
-    @Override
-    public int getInterceptLoopAngle()
-    {
-        return INTERCEPT_LOOP_ANGLE;
     }
 
     @Override
@@ -443,5 +439,23 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     public int getDefaultIngressDistanceFromFront()
     {
         return INGRESS_DISTANCE_FROM_FRONT;
+    }
+    
+    @Override
+    public int getFormationHorizontalSpacing()
+    {
+        return FORMATION_HORIZINTAL_SPACING;
+    }
+
+    @Override
+    public int getFormationVerticalSpacing()
+    {
+        return FORMATION_VERTICAL_SPACING;
+    }
+    
+    @Override
+    public int getBalloonDefenseLoopDistance()
+    {
+        return BALLOON_DEFENSE_LOOP_DISTANCE;
     }
 }

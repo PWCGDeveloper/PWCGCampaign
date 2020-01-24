@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
-import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -17,7 +15,6 @@ import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.flight.waypoint.begin.ClimbWaypointBuilder;
-import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuFormation;
 import pwcg.mission.mcu.McuMessage;
 import pwcg.mission.mcu.McuTakeoff;
@@ -27,9 +24,6 @@ import pwcg.mission.mcu.McuWaypoint;
 public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypointSet implements IMissionPointSet
 {
     private IFlight flight;
-    private MissionBeginUnit missionBeginUnit;
-    private McuTimer activationTimer = null;
-    private McuActivate activationEntity = null;
     private McuTakeoff takeoffMcu = null;
     private McuTimer formationTimer = null;
     private McuFormation formationEntity = null;
@@ -42,27 +36,14 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     
     public void createFlightBegin() throws PWCGException 
     {
-        this.missionBeginUnit = new MissionBeginUnit(flight.getFlightData().getFlightHomePosition());
-
-        setMissionBeginDelay();
-        createActivation();  
         createTakeoff();  
         createFormation();
         createTakeOffWaypoints();
     }
 
     @Override
-    public int getEntryPoint() throws PWCGException
-    {
-        return activationTimer.getIndex();
-    }
-
-    @Override
     public void write(BufferedWriter writer) throws PWCGException 
     {
-        missionBeginUnit.write(writer);
-        activationTimer.write(writer);
-        activationEntity.write(writer);
         takeoffMcu.write(writer);
         formationTimer.write(writer);
         formationEntity.write(writer);
@@ -108,33 +89,20 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         return linkToNextTarget;
     }
 
-    private void setMissionBeginDelay() throws PWCGException
+    @Override
+    public int getEntryPoint() throws PWCGException
     {
-        ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();                        
-        int takeoffTime = configManager.getIntConfigParam(ConfigItemKeys.TakeoffTimeKey);
-        if (takeoffTime > 30)
-        {
-            takeoffTime = 30;
-        }
-
-        missionBeginUnit.setStartTime(takeoffTime);
-    }
-
-    private void createActivation() throws PWCGException
-    {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
-
-        activationEntity = new McuActivate();
-        activationEntity.setName("Activate");
-        activationEntity.setDesc("Activate entity");
-        activationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
-
-        activationTimer = new McuTimer();
-        activationTimer.setName("Activation Timer");
-        activationTimer.setDesc("Activation Timer");
-        activationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
+        return formationTimer.getIndex();
     }
     
+    @Override
+    public IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException
+    {
+        MissionPointRouteSet duplicate = new MissionPointRouteSet();
+        duplicate.waypoints = super.duplicateWaypoints(positionInFormation);
+        return duplicate;
+    }
+
     private void createTakeoff() throws PWCGException
     {
         takeoffMcu = null;
@@ -205,12 +173,6 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
 
     private void createTargetAssociations() throws PWCGException
     {
-        missionBeginUnit.linkToMissionBegin(activationTimer.getIndex());
-
-        activationTimer.setTarget(activationEntity.getIndex());
-        activationTimer.setTarget(formationTimer.getIndex());        
-        activationTimer.setTarget(takeoffMcu.getIndex());        
-        
         formationTimer.setTarget(formationEntity.getIndex());
         
         flight.getFlightData().getFlightPlanes().getFlightLeader().getEntity().setOnMessages(
@@ -222,9 +184,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     private void createObjectAssociations(PlaneMcu plane)
     {
         int flightLeaderIndex = plane.getLinkTrId();
-        activationEntity.setObject(flightLeaderIndex);
         takeoffMcu.setObject(flightLeaderIndex);
         formationEntity.setObject(flightLeaderIndex);
-        activationEntity.setObject(flightLeaderIndex);
     }
 }
