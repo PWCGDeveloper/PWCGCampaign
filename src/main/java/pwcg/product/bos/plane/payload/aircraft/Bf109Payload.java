@@ -18,7 +18,7 @@ public abstract class Bf109Payload extends PlanePayload
     public int createWeaponsPayload(IFlight flight)
     {
         createStandardPayload();
-        if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
         {
             selectGroundAttackPayload(flight);
         }
@@ -29,19 +29,19 @@ public abstract class Bf109Payload extends PlanePayload
     protected void selectGroundAttackPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 1;
-        if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
+        if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
             selectSoftTargetPayload();
         }
-        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
+        else if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
             selectArmoredTargetPayload();
         }
-        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
+        else if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
             selectMediumTargetPayload();
         }
-        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
+        else if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
             selectHeavyTargetPayload();
         }

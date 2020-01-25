@@ -52,7 +52,7 @@ public class ReconTransportWaypointsFactory
     {
         List<McuWaypoint> targetWaypoints = new ArrayList<McuWaypoint>();
         
-        Side enemySide = flight.getFlightData().getFlightInformation().getCountry().getSide().getOppositeSide();
+        Side enemySide = flight.getFlightInformation().getCountry().getSide().getOppositeSide();
         ICountry enemycountry = CountryFactory.makeMapReferenceCountry(enemySide);
 
         List <FixedPosition> allFixedPositionsInRadius = new ArrayList<FixedPosition>();
@@ -62,10 +62,10 @@ public class ReconTransportWaypointsFactory
         {
     	    GroupManager groupData =  PWCGContext.getInstance().getCurrentMap().getGroupManager();
     	    List<Bridge> bridges = groupData.getBridgeFinder().findBridgesForSideWithinRadius(
-    	            enemycountry.getSide(), flight.getCampaign().getDate(), flight.getFlightData().getFlightInformation().getTargetPosition(), maxRadius);
+    	            enemycountry.getSide(), flight.getCampaign().getDate(), flight.getFlightInformation().getTargetPosition(), maxRadius);
     	    
     	    List<Block> trainStations = groupData.getRailroadStationFinder().getTrainPositionWithinRadiusBySide(
-    	            enemycountry.getSide(), flight.getCampaign().getDate(), flight.getFlightData().getFlightInformation().getTargetPosition(), maxRadius);
+    	            enemycountry.getSide(), flight.getCampaign().getDate(), flight.getFlightInformation().getTargetPosition(), maxRadius);
     	    
             allFixedPositionsInRadius.addAll(bridges);
             allFixedPositionsInRadius.addAll(trainStations);
@@ -84,7 +84,7 @@ public class ReconTransportWaypointsFactory
         Map<String, FixedPosition> locationsIncluded = new HashMap<String, FixedPosition>();
 
         List <FixedPosition> remainingFixedPositions = allFixedPositionsInRadius;
-        Coordinate lastCoord = flight.getFlightData().getFlightInformation().getTargetPosition().copy();
+        Coordinate lastCoord = flight.getFlightInformation().getTargetPosition().copy();
         for (int i = 0; i < numWaypoints; ++i)
         {
             int index = getNextFixedPosition(remainingFixedPositions, lastCoord, locationsIncluded);
@@ -134,11 +134,11 @@ public class ReconTransportWaypointsFactory
 
     private McuWaypoint createWP(Coordinate coord) throws PWCGException 
     {
-        coord.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        coord.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint wp = WaypointFactory.createReconWaypointType();
         wp.setTriggerArea(McuWaypoint.TARGET_AREA);
-        wp.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        wp.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         wp.setPosition(coord);
 
         return wp;

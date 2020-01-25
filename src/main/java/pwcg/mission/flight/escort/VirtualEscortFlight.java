@@ -25,7 +25,7 @@ public class VirtualEscortFlight extends Flight implements IFlight
 
     public void createFlight() throws PWCGException
     {
-        flightData.initialize(this);
+        initialize(this);
         createWaypoints();
         FlightPositionSetter.setFlightInitialPosition(this);
         setFlightPayload();

@@ -77,7 +77,7 @@ public class ContactPatrolWaypointFactory
         pathAlongFrontData.setRandomDistanceMax(patrolDistanceRandom);
         pathAlongFrontData.setTargetGeneralLocation(ingressWaypoint.getPosition());
         pathAlongFrontData.setReturnAlongRoute(false);
-        pathAlongFrontData.setSide(flight.getFlightData().getFlightInformation().getSquadron().determineSquadronCountry(campaign.getDate()).getSide());
+        pathAlongFrontData.setSide(flight.getFlightInformation().getSquadron().determineSquadronCountry(campaign.getDate()).getSide());
         
         return pathAlongFrontData;
     }
@@ -88,11 +88,11 @@ public class ContactPatrolWaypointFactory
         int zOffset = 100 - RandomNumberGenerator.getRandom(200);
 		coord.setXPos(coord.getXPos() + xOffset);
 		coord.setZPos(coord.getZPos() + zOffset);
-		coord.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+		coord.setYPos(flight.getFlightInformation().getAltitude());
 
 		McuWaypoint wp = WaypointFactory.createReconWaypointType();
 		wp.setTriggerArea(McuWaypoint.TARGET_AREA);
-		wp.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+		wp.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
 		wp.setPosition(coord);
 
 		return wp;

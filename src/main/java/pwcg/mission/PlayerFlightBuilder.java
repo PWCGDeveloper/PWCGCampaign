@@ -64,7 +64,7 @@ public class PlayerFlightBuilder
     private void validatePlayerFlight() throws PWCGException
     {
         boolean playerIsInFlight = false;
-        for (PlaneMcu plane : playerFlight.getFlightData().getFlightPlanes().getPlanes())
+        for (PlaneMcu plane : playerFlight.getFlightPlanes().getPlanes())
         {
             if (plane.getPilot().isPlayer())
             {

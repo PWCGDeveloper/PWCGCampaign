@@ -145,7 +145,7 @@ public final class VirtualWayPoint
 
         MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
 
-        String squadronName = flight.getFlightData().getFlightInformation().getSquadron().determineDisplayName(flight.getCampaign().getDate());
+        String squadronName = flight.getFlightInformation().getSquadron().determineDisplayName(flight.getCampaign().getDate());
         
         McuSubtitle checkZoneSubtitle = new McuSubtitle();
         checkZoneSubtitle.setName("checkZone Subtitle");
@@ -161,9 +161,9 @@ public final class VirtualWayPoint
     {
         McuTimer lastSpawnTimer = null;
         
-        for (int i = 0; i < flight.getFlightData().getFlightPlanes().getFlightSize(); ++i)
+        for (int i = 0; i < flight.getFlightPlanes().getFlightSize(); ++i)
         {
-            PlaneMcu plane = flight.getFlightData().getFlightPlanes().getPlanes().get(i);
+            PlaneMcu plane = flight.getFlightPlanes().getPlanes().get(i);
             double planeAltitude = vwpPosition.getPosition().getYPos() + (30 * i);
             if (planeAltitude < 800.0)
             {
@@ -175,7 +175,7 @@ public final class VirtualWayPoint
             
             // Get the mission points (WPs plus attackarea) and select the one associated with
             // this VWP coordinate.
-            List<BaseFlightMcu>  planeMissionPoints = flight.getFlightData().getVirtualWaypointPackage().getAllFlightPointsForPlane(plane);
+            List<BaseFlightMcu>  planeMissionPoints = flight.getVirtualWaypointPackage().getAllFlightPointsForPlane(plane);
 
             // Since every plane has a matching set of mission points, the index will be
             // identical for each plane

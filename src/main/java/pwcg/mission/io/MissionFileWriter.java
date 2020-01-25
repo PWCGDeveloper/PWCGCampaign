@@ -241,7 +241,7 @@ public class MissionFileWriter implements IMissionFile
             for (IFlight playerFlight:  mission.getMissionFlightBuilder().getPlayerFlights())
             {
                 IVehicle radioBeacon = VehicleFactory.createVehicle(
-                        playerFlight.getFlightData().getFlightInformation().getCountry(), mission.getCampaign().getDate(), VehicleClass.RadioBeacon);
+                        playerFlight.getFlightInformation().getCountry(), mission.getCampaign().getDate(), VehicleClass.RadioBeacon);
                 if (radioBeacon != null)
                 {
                     radioBeacon.write(writer);

@@ -22,29 +22,29 @@ public class PositionEvaluator
         boolean failed = false;
         for (IFlight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
         {
-            if (aiFlight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK ||
-                aiFlight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB ||
-                aiFlight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.TRANSPORT)
+            if (aiFlight.getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK ||
+                aiFlight.getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB ||
+                aiFlight.getFlightInformation().getFlightType() == FlightTypes.TRANSPORT)
             {
                 continue;
             }
             
-            double distanceMissioNCenterToTarget = MathUtils.calcDist(missionCenter, aiFlight.getFlightData().getFlightInformation().getTargetPosition());
+            double distanceMissioNCenterToTarget = MathUtils.calcDist(missionCenter, aiFlight.getFlightInformation().getTargetPosition());
             if (distanceMissioNCenterToTarget > 100000)
             {
                 failed = true;
             }
             
-            for (Integer planeId : aiFlight.getFlightData().getWaypointPackage().getAllWaypointsSets().keySet())
+            for (Integer planeId : aiFlight.getWaypointPackage().getAllWaypointsSets().keySet())
             {
-                for (McuWaypoint waypoint : aiFlight.getFlightData().getWaypointPackage().getWaypointsForPlaneId(planeId))
+                for (McuWaypoint waypoint : aiFlight.getWaypointPackage().getWaypointsForPlaneId(planeId))
                 {
                     assert(waypoint.getPosition().getYPos() > 50.0);
                 }
             }
             
             List<Coordinate> planePositionsEvaluated = new ArrayList<>();
-            for (PlaneMcu plane : aiFlight.getFlightData().getFlightPlanes())
+            for (PlaneMcu plane : aiFlight.getFlightPlanes())
             {
                 assert(plane.getPosition().getYPos() > 50.0);
                 for (Coordinate evaluatedPlanePosition: planePositionsEvaluated)

@@ -32,7 +32,7 @@ public class Se5aPayload extends PlanePayload implements IPlanePayload
     public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
-        if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
         {
             selectBombingPayload(flight);
         }

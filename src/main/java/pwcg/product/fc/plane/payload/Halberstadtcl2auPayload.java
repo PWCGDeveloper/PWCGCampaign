@@ -35,15 +35,15 @@ public class Halberstadtcl2auPayload extends PlanePayload implements IPlanePaylo
     public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 1;
-        if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK || flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.BOMB)
+        if (flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK || flight.getFlightInformation().getFlightType() == FlightTypes.BOMB)
         {
             selectBombingPayload(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.RECON)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.RECON)
         {
             selectReconPayload(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ARTILLERY_SPOT)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.ARTILLERY_SPOT)
         {
             selectArtillerySpotPayload(flight);
         }

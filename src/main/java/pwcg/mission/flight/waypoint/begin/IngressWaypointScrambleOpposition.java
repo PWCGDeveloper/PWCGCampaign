@@ -27,23 +27,23 @@ public class IngressWaypointScrambleOpposition implements IIngressWaypoint
     public McuWaypoint createIngressWaypoint() throws PWCGException  
     {
         FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        FrontLinePoint nearbyFrontPoint = frontLinesForMap.findCloseFrontPositionForSide(flight.getFlightData().getFlightHomePosition(), 20000, flight.getFlightData().getFlightInformation().getSquadron().getCountry().getSide());
+        FrontLinePoint nearbyFrontPoint = frontLinesForMap.findCloseFrontPositionForSide(flight.getFlightHomePosition(), 20000, flight.getFlightInformation().getSquadron().getCountry().getSide());
         Coordinate nearbyFrontPosition = nearbyFrontPoint.getPosition();
                 
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int attackIngressDistance = productSpecificConfiguration.getGroundAttackIngressDistance();
         
-        double ingressAngle = MathUtils.calcAngle(nearbyFrontPosition, flight.getFlightData().getFlightInformation().getTargetPosition());
-        Coordinate ingressCoords = MathUtils.calcNextCoord(flight.getFlightData().getFlightInformation().getTargetPosition(), ingressAngle, attackIngressDistance);
+        double ingressAngle = MathUtils.calcAngle(nearbyFrontPosition, flight.getFlightInformation().getTargetPosition());
+        Coordinate ingressCoords = MathUtils.calcNextCoord(flight.getFlightInformation().getTargetPosition(), ingressAngle, attackIngressDistance);
         
         Coordinate coord = new Coordinate();
         coord.setXPos(ingressCoords.getXPos());
         coord.setZPos(ingressCoords.getZPos());
-        coord.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        coord.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint ingressWP = WaypointFactory.createIngressWaypointType();
         ingressWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-        ingressWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        ingressWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         ingressWP.setPosition(coord);   
         ingressWP.setTargetWaypoint(true);
         

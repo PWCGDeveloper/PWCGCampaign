@@ -14,7 +14,7 @@ public class AirStartWaypointFactory
 
     public static McuWaypoint createAirStart(IFlight flight, AirStartPattern pattern, McuWaypoint ingressWaypoint) throws PWCGException
     {
-        if (flight.getFlightData().getFlightInformation().isPlayerFlight())
+        if (flight.getFlightInformation().isPlayerFlight())
         {
             return createAirStartNearIngress(flight, ingressWaypoint);
         }

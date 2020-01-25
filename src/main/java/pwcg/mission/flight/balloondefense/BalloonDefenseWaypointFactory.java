@@ -49,18 +49,18 @@ public class BalloonDefenseWaypointFactory
 
     private McuWaypoint createInterceptFirstWP(McuWaypoint ingressWaypoint) throws PWCGException
     {
-        double angleTargetToIngress = MathUtils.calcAngle(flight.getFlightData().getFlightInformation().getTargetPosition(), ingressWaypoint.getPosition());
+        double angleTargetToIngress = MathUtils.calcAngle(flight.getFlightInformation().getTargetPosition(), ingressWaypoint.getPosition());
 
         double distanceFromTarget = getRadiusFromCircumferennceOfLoop();
-        Coordinate coord = MathUtils.calcNextCoord(flight.getFlightData().getFlightInformation().getTargetPosition(), angleTargetToIngress, distanceFromTarget);
+        Coordinate coord = MathUtils.calcNextCoord(flight.getFlightInformation().getTargetPosition(), angleTargetToIngress, distanceFromTarget);
 
         McuWaypoint loopFirstWP = WaypointFactory.createPatrolWaypointType();
         loopFirstWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        loopFirstWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        loopFirstWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         loopFirstWP.setPosition(coord);    
         loopFirstWP.setTargetWaypoint(true);
         
-        double initialAngle = MathUtils.calcAngle(flight.getFlightData().getFlightHomePosition(), flight.getFlightData().getFlightInformation().getTargetPosition());
+        double initialAngle = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getFlightInformation().getTargetPosition());
         loopFirstWP.getOrientation().setyOri(initialAngle);
         
         return loopFirstWP;
@@ -88,7 +88,7 @@ public class BalloonDefenseWaypointFactory
                 McuWaypoint.FLIGHT_AREA,
                 NUM_LEGS_IN_BALLOON_DEFENSE_CIRCLE,
                 ingressWaypoint,
-                flight.getFlightData().getFlightInformation().getAltitude(),
+                flight.getFlightInformation().getAltitude(),
                 loopDistance);
                         
         return interceptWPs;

@@ -22,7 +22,7 @@ public class SpyExtractPackage implements IFlightPackage
         spyFlight.createFlight();
 
         IGroundUnitCollection groundUnitCollection = createGroundUnitsForFlight();
-        spyFlight.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(groundUnitCollection);
+        spyFlight.getLinkedGroundUnits().addLinkedGroundUnit(groundUnitCollection);
 
         return spyFlight;
     }

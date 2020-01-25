@@ -11,13 +11,13 @@ import pwcg.mission.flight.waypoint.IWaypointPackage;
 import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.WaypointPackage;
 
-public class FlightData implements IFlightData
+public class FlightData
 {
     private IFlightInformation flightInformation;
     
     private IFlightPlanes flightPlanes;
     private ILinkedGroundUnits linkedGroundUnits = new LinkedGroundUnits();
-    private ILinkedFLights linkedFlights = new LinkedFlights();
+    private ILinkedFlights linkedFlights = new LinkedFlights();
     private IFlightPlayerContact flightPlayerContact = new FlightPlayerContact();
     private IWaypointPackage waypointPackage;
     private VirtualWaypointPackage virtualWaypointPackage;
@@ -35,7 +35,6 @@ public class FlightData implements IFlightData
         this.virtualWaypointPackage = new VirtualWaypointPackage(flight);
     }
 
-    @Override
     public void write(BufferedWriter writer) throws PWCGException 
     {
         flightPlanes.write(writer);
@@ -49,43 +48,36 @@ public class FlightData implements IFlightData
         }
     }
 
-    @Override
     public IFlightInformation getFlightInformation()
     {
         return flightInformation;
     }
 
-    @Override
     public IFlightPlanes getFlightPlanes()
     {
         return flightPlanes;
     }
 
-    @Override
     public IWaypointPackage getWaypointPackage()
     {
         return waypointPackage;
     }
 
-    @Override
     public ILinkedGroundUnits getLinkedGroundUnits()
     {
         return linkedGroundUnits;
     }
 
-    @Override
-    public ILinkedFLights getLinkedFlights()
+    public ILinkedFlights getLinkedFlights()
     {
         return linkedFlights;
     }
 
-    @Override
     public Coordinate getFlightHomePosition() throws PWCGException
     {
         return flightInformation.getFlightHomePosition();
     }
 
-    @Override
     public Campaign getCampaign()
     {
         return flightInformation.getCampaign();
@@ -114,7 +106,6 @@ public class FlightData implements IFlightData
         }
     }
 
-    @Override
     public IVirtualWaypointPackage getVirtualWaypointPackage()
     {
         return virtualWaypointPackage;

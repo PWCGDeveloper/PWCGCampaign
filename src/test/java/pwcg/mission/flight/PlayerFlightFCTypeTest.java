@@ -67,7 +67,7 @@ public class PlayerFlightFCTypeTest
 		GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
 		groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK);
+        assert(flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK);
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
@@ -89,7 +89,7 @@ public class PlayerFlightFCTypeTest
 		GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
 		groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.BOMB);
+        assert(flight.getFlightInformation().getFlightType() == FlightTypes.BOMB);
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
@@ -114,7 +114,7 @@ public class PlayerFlightFCTypeTest
         PositionEvaluator.evaluateAiFlight(mission);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
-        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.STRATEGIC_BOMB);
+        assert(flight.getFlightInformation().getFlightType() == FlightTypes.STRATEGIC_BOMB);
 	}
 
 	@Test
@@ -130,7 +130,7 @@ public class PlayerFlightFCTypeTest
         PositionEvaluator.evaluateAiFlight(mission);
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
-        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.PATROL);
+        assert(flight.getFlightInformation().getFlightType() == FlightTypes.PATROL);
 	}
 
     @Test
@@ -142,7 +142,7 @@ public class PlayerFlightFCTypeTest
         BalloonBustFlight flight = (BalloonBustFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
         
-        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.BALLOON_BUST);
+        assert(flight.getFlightInformation().getFlightType() == FlightTypes.BALLOON_BUST);
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
@@ -158,7 +158,7 @@ public class PlayerFlightFCTypeTest
         BalloonDefensePlayerFlight flight = (BalloonDefensePlayerFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
         
-        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.BALLOON_DEFENSE);
+        assert(flight.getFlightInformation().getFlightType() == FlightTypes.BALLOON_DEFENSE);
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
@@ -176,7 +176,7 @@ public class PlayerFlightFCTypeTest
 		
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
-        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.INTERCEPT);
+        assert(flight.getFlightInformation().getFlightType() == FlightTypes.INTERCEPT);
         PositionEvaluator.evaluateAiFlight(mission);
 	}
 
@@ -192,7 +192,7 @@ public class PlayerFlightFCTypeTest
 		
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
-        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.OFFENSIVE);
+        assert(flight.getFlightInformation().getFlightType() == FlightTypes.OFFENSIVE);
         PositionEvaluator.evaluateAiFlight(mission);
 	}
 
@@ -208,7 +208,7 @@ public class PlayerFlightFCTypeTest
 		
 		PlayerReconFlightValidator reconFlightValidator = new PlayerReconFlightValidator();
 		reconFlightValidator.validateReconFlight(flight);
-        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.RECON);
+        assert(flight.getFlightInformation().getFlightType() == FlightTypes.RECON);
         PositionEvaluator.evaluateAiFlight(mission);
 	}
 
@@ -224,7 +224,7 @@ public class PlayerFlightFCTypeTest
 		
 		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);
 		escortFlightValidator.validateEscortFlight();
-        assert(flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ESCORT);
+        assert(flight.getFlightInformation().getFlightType() == FlightTypes.ESCORT);
         PositionEvaluator.evaluateAiFlight(mission);
 	}
 	
@@ -232,7 +232,7 @@ public class PlayerFlightFCTypeTest
 	{
         assert (targetDefinition.getAttackingCountry() != null);
         assert (targetDefinition.getTargetCountry() != null);
-        assert (targetDefinition.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
+        assert (targetDefinition.getFlightInformation().getTargetDefinition().getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
         assert (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
 	}
 }

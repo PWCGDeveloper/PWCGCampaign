@@ -35,7 +35,7 @@ public class BalloonDefensePackage implements IFlightPackage
     private IFlight createFlight(Coordinate startCoords, IGroundUnitCollection balloonUnit) throws PWCGException
     {
 		IFlight balloonDefenseFlight = createBalloonDefenseFlight(startCoords, balloonUnit);
-		balloonDefenseFlight.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(balloonUnit);
+		balloonDefenseFlight.getLinkedGroundUnits().addLinkedGroundUnit(balloonUnit);
 		balloonDefenseFlight.createFlight();
         return balloonDefenseFlight;
     }

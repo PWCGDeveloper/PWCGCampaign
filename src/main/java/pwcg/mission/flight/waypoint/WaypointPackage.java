@@ -101,7 +101,7 @@ public class WaypointPackage implements IWaypointPackage
         WaypointPackage duplucateWaypointPackage = new WaypointPackage(flight);
         for (IMissionPointSet missionPointSet : missionPointSets)
         {
-            IMissionPointSet duplicateMissionPointSet = missionPointSet.duplicateWithOffset(flight.getFlightData().getFlightInformation(), positionInFormation);
+            IMissionPointSet duplicateMissionPointSet = missionPointSet.duplicateWithOffset(flight.getFlightInformation(), positionInFormation);
             duplucateWaypointPackage.addMissionPointSet(duplicateMissionPointSet);
         }
         return duplucateWaypointPackage;

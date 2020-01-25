@@ -26,7 +26,7 @@ public class TransportFlight extends Flight implements IFlight
 
     public void createFlight() throws PWCGException
     {
-        flightData.initialize(this);
+        initialize(this);
         
         determineTargetAirfield();
         createWaypoints();
@@ -37,7 +37,7 @@ public class TransportFlight extends Flight implements IFlight
     @Override
     public IMissionPointSet createFlightSpecificWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {
-        TransportWaypointFactory missionWaypointFactory = new TransportWaypointFactory(this, flightData.getFlightInformation().getAirfield(), arrivalAirfield);
+        TransportWaypointFactory missionWaypointFactory = new TransportWaypointFactory(this, this.getFlightInformation().getAirfield(), arrivalAirfield);
         IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
         return missionWaypoints;
     }
@@ -51,7 +51,7 @@ public class TransportFlight extends Flight implements IFlight
     {
 	    AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
 	    arrivalAirfield = airfieldManager.getAirfieldFinder().findClosestAirfieldForSide(
-	            this.getFlightData().getFlightInformation().getTargetPosition(), getCampaign().getDate(), flightData.getFlightInformation().getSquadron().getCountry().getSide());    
+	            this.getFlightInformation().getTargetPosition(), getCampaign().getDate(), this.getFlightInformation().getSquadron().getCountry().getSide());    
     }
 
     public IAirfield getArrivalAirfield()

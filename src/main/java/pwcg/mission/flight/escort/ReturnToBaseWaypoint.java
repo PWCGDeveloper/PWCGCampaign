@@ -12,15 +12,15 @@ public class ReturnToBaseWaypoint
 
     public static McuWaypoint createReturnToBaseWaypoint(IFlight escortFlight) throws PWCGException
     {
-        Coordinate returnToBaseCoords = escortFlight.getFlightData().getFlightInformation().getDepartureAirfield().getPosition().copy();
+        Coordinate returnToBaseCoords = escortFlight.getFlightInformation().getDepartureAirfield().getPosition().copy();
         returnToBaseCoords.setYPos(2000.0);
 
         Orientation orient = new Orientation();
-        orient.setyOri(escortFlight.getFlightData().getFlightInformation().getDepartureAirfield().getOrientation().getyOri());
+        orient.setyOri(escortFlight.getFlightInformation().getDepartureAirfield().getOrientation().getyOri());
 
         McuWaypoint rtbWP = WaypointFactory.createReturnToBaseWaypointType();
         rtbWP.setTriggerArea(McuWaypoint.START_AREA);
-        rtbWP.setSpeed(escortFlight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        rtbWP.setSpeed(escortFlight.getFlightPlanes().getFlightCruisingSpeed());
         rtbWP.setPosition(returnToBaseCoords);
         rtbWP.setOrientation(orient);
         return rtbWP;

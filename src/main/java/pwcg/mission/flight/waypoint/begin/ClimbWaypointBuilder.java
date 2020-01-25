@@ -31,8 +31,8 @@ public class ClimbWaypointBuilder
 	{
 		if (isGenerateClimbWaypoints())
 		{
-		    double flightAlt = flight.getFlightData().getFlightInformation().getAltitude();
-		    int numClimbLegs = Double.valueOf(flightAlt).intValue() / Integer.valueOf(flight.getFlightData().getFlightPlanes().getFlightLeader().getClimbOutRate());
+		    double flightAlt = flight.getFlightInformation().getAltitude();
+		    int numClimbLegs = Double.valueOf(flightAlt).intValue() / Integer.valueOf(flight.getFlightPlanes().getFlightLeader().getClimbOutRate());
 		    if (numClimbLegs > 5)
 		    {
 		        numClimbLegs = 5;
@@ -59,7 +59,7 @@ public class ClimbWaypointBuilder
 
     private boolean isGenerateClimbWaypoints() throws PWCGException
     {
-        if (!flight.getFlightData().getFlightInformation().isPlayerFlight())
+        if (!flight.getFlightInformation().isPlayerFlight())
         {
             return false;
         }
@@ -70,12 +70,12 @@ public class ClimbWaypointBuilder
             return false;
         }
         
-        if (FlightTypes.isLowAltFlightType(flight.getFlightData().getFlightInformation().getFlightType()))
+        if (FlightTypes.isLowAltFlightType(flight.getFlightInformation().getFlightType()))
         {
             return false;
         }
         
-        if (!flight.getFlightData().getFlightInformation().getSquadron().isStartsCloseToFront(campaign, campaign.getDate()))
+        if (!flight.getFlightInformation().getSquadron().isStartsCloseToFront(campaign, campaign.getDate()))
         {
             return false;
         }

@@ -38,7 +38,7 @@ public class VirtualEscortFlightWaypointFactory
     private List<McuWaypoint> copyEscortedFlightWaypoints() 
     {
         List<McuWaypoint> waypoints = new ArrayList<McuWaypoint>();
-        for (McuWaypoint escortedWaypoint : escortedFlight.getFlightData().getWaypointPackage().getAllWaypoints())
+        for (McuWaypoint escortedWaypoint : escortedFlight.getWaypointPackage().getAllWaypoints())
         {
             double altitude = escortedWaypoint.getPosition().getYPos() + 400.0;
 

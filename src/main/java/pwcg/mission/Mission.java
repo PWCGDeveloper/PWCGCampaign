@@ -156,7 +156,7 @@ public class Mission
 
     private void setMissionScript(MissionOptions missionOptions) throws PWCGException
     {
-        List<PlaneMcu> playerPlanes = missionFlightBuilder.getReferencePlayerFlight().getFlightData().getFlightPlanes().getPlayerPlanes();
+        List<PlaneMcu> playerPlanes = missionFlightBuilder.getReferencePlayerFlight().getFlightPlanes().getPlayerPlanes();
         String playerScript = playerPlanes.get(0).getScript();
         missionOptions.setPlayerConfig(playerScript);
     }

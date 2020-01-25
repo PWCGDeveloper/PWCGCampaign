@@ -12,15 +12,15 @@ public class GroundAttackObjective
 {
     static String getMissionObjective(IFlight flight) throws PWCGException 
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
         
         String objective = "Attack the specified objective using all available means.";
-        for (IGroundUnitCollection linkedUnit : flight.getFlightData().getLinkedGroundUnits().getLinkedGroundUnits())
+        for (IGroundUnitCollection linkedUnit : flight.getLinkedGroundUnits().getLinkedGroundUnits())
         {
             IGroundUnitCollection groundUnitCollection = (IGroundUnitCollection)linkedUnit;
             for (IGroundUnit groundUnit : groundUnitCollection.getGroundUnits())
             {
-                if (!groundUnit.getCountry().isSameSide(flight.getFlightData().getFlightInformation().getCountry()))
+                if (!groundUnit.getCountry().isSameSide(flight.getFlightInformation().getCountry()))
                 {
                     objective = getObjectiveFromEnemyUnit(groundUnit, flightInformation);
                     break;

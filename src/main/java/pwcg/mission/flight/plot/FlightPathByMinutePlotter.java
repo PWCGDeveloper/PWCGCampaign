@@ -14,13 +14,13 @@ public class FlightPathByMinutePlotter
 {
     public List<Coordinate> plotCoordinatesByMinute(IFlight flight) throws PWCGException 
     {        
-        List<MissionPoint> allMissionCoordinates = flight.getFlightData().getWaypointPackage().getFlightMissionPoints();
+        List<MissionPoint> allMissionCoordinates = flight.getWaypointPackage().getFlightMissionPoints();
         if (allMissionCoordinates == null || allMissionCoordinates.size() < 2)
         {
             return this.generatePathNoWaypoints(flight);
         }
         
-        double cruiseSpeedKPH = flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed();
+        double cruiseSpeedKPH = flight.getFlightPlanes().getFlightCruisingSpeed();
         double movementPerInterval = (cruiseSpeedKPH / 60) * 1000;
 
         List<Coordinate> flightPath = new ArrayList<Coordinate>();
@@ -74,7 +74,7 @@ public class FlightPathByMinutePlotter
     private List<Coordinate> generatePathNoWaypoints(IFlight flight)
     {
         List<Coordinate> circlingFlightPath = new ArrayList<Coordinate>();
-        PlaneMcu leadPlane = flight.getFlightData().getFlightPlanes().getFlightLeader();
+        PlaneMcu leadPlane = flight.getFlightPlanes().getFlightLeader();
         for (int i = 0; i < 240; ++i)
         {
             circlingFlightPath.add(leadPlane.getPosition());

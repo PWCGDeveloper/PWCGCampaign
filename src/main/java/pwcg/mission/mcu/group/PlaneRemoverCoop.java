@@ -102,7 +102,7 @@ public class PlaneRemoverCoop implements IPlaneRemover
     {
         Coordinate coordinate = plane.getPosition().copy();
         
-        Squadron squadron = flight.getFlightData().getFlightInformation().getSquadron();
+        Squadron squadron = flight.getFlightInformation().getSquadron();
         
         Date campaignDate = flight.getCampaign().getDate();
         

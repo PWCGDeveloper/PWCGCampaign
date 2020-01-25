@@ -16,20 +16,20 @@ public class WaypointPriorityValidator
     {
         
         WaypointPriority expectedWaypointPriority = WaypointPriority.PRIORITY_MED;
-        if (flight.getFlightData().getFlightPlanes().get(0).isPrimaryRole(Role.ROLE_FIGHTER))
+        if (flight.getFlightPlanes().get(0).isPrimaryRole(Role.ROLE_FIGHTER))
         {
             expectedWaypointPriority = WaypointPriority.PRIORITY_LOW;
         }
         else
         {
             expectedWaypointPriority = WaypointPriority.PRIORITY_MED;
-            if (FlightTypes.isHighPriorityFlight(flight.getFlightData().getFlightInformation().getFlightType()))
+            if (FlightTypes.isHighPriorityFlight(flight.getFlightInformation().getFlightType()))
             {
                 expectedWaypointPriority = WaypointPriority.PRIORITY_HIGH;
             }
         }
 
-        for (List<McuWaypoint> waypoints : flight.getFlightData().getWaypointPackage().getAllWaypointsSets().values())
+        for (List<McuWaypoint> waypoints : flight.getWaypointPackage().getAllWaypointsSets().values())
         {
             for (McuWaypoint waypoint : waypoints)
             {

@@ -43,7 +43,7 @@ public class PlayerEscortedWaypointFactory
 
     private void createTargetWaypoints(Coordinate ingressPosition) throws PWCGException  
     {
-        GroundAttackWaypointHelper groundAttackWaypointHelper = new GroundAttackWaypointHelper(flight, ingressPosition, flight.getFlightData().getFlightInformation().getAltitude());
+        GroundAttackWaypointHelper groundAttackWaypointHelper = new GroundAttackWaypointHelper(flight, ingressPosition, flight.getFlightInformation().getAltitude());
         groundAttackWaypointHelper.createTargetWaypoints();
         for (McuWaypoint groundAttackWaypoint : groundAttackWaypointHelper.getWaypointsBefore())
         {
@@ -58,7 +58,7 @@ public class PlayerEscortedWaypointFactory
     
     private AirGroundAttackMcuSequence createAttackArea() throws PWCGException 
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
         AirGroundAttackMcuSequence attackMcuSequence = new AirGroundAttackMcuSequence(flightInformation);
         attackMcuSequence.createAttackArea(BOMB_ATTACK_TIME, AttackAreaType.INDIRECT);        
         return attackMcuSequence;

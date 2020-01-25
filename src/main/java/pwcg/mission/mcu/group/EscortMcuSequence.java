@@ -39,13 +39,13 @@ public class EscortMcuSequence
 
     public void createCover() throws PWCGException 
     {
-        PlaneMcu flightLeader = escortFlight.getFlightData().getFlightPlanes().getFlightLeader();
+        PlaneMcu flightLeader = escortFlight.getFlightPlanes().getFlightLeader();
         Coordinate rendevousPosition = getCoverPosition();
         
         cover  = new McuCover();
         cover.setPosition(rendevousPosition);
         cover.setObject(flightLeader.getEntity().getIndex());
-        cover.setTarget(escortedFlight.getFlightData().getFlightPlanes().getFlightLeader().getEntity().getIndex());
+        cover.setTarget(escortedFlight.getFlightPlanes().getFlightLeader().getEntity().getIndex());
 
         coverTimer  = new McuTimer();
         coverTimer.setName("Cover Timer");
@@ -55,7 +55,7 @@ public class EscortMcuSequence
 
     private Coordinate getCoverPosition()
     {
-        McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(escortedFlight.getFlightData().getWaypointPackage().getAllWaypoints(), 
+        McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(escortedFlight.getWaypointPackage().getAllWaypoints(), 
                 WaypointType.INGRESS_WAYPOINT.getName());
 
         Coordinate coverPosition = rendezvousWP.getPosition().copy();
@@ -65,7 +65,7 @@ public class EscortMcuSequence
 
     private void createForceComplete() throws PWCGException
     {
-        PlaneMcu flightLeader = escortFlight.getFlightData().getFlightPlanes().getFlightLeader();
+        PlaneMcu flightLeader = escortFlight.getFlightPlanes().getFlightLeader();
         Coordinate rendevousPosition = getCoverPosition();
 
         forceCompleteTimer = new McuTimer();
@@ -85,13 +85,13 @@ public class EscortMcuSequence
     
     private void createTargetAssociations()
     {
-        McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(escortedFlight.getFlightData().getWaypointPackage().getAllWaypoints(), 
+        McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(escortedFlight.getWaypointPackage().getAllWaypoints(), 
                 WaypointType.INGRESS_WAYPOINT.getName());
 
-        McuWaypoint partingWP = WaypointGeneratorUtils.findWaypointByType(escortedFlight.getFlightData().getWaypointPackage().getAllWaypoints(), 
+        McuWaypoint partingWP = WaypointGeneratorUtils.findWaypointByType(escortedFlight.getWaypointPackage().getAllWaypoints(), 
                 WaypointType.EGRESS_WAYPOINT.getName());
 
-        McuWaypoint rtbWP = WaypointGeneratorUtils.findWaypointByType(escortFlight.getFlightData().getWaypointPackage().getAllWaypoints(), 
+        McuWaypoint rtbWP = WaypointGeneratorUtils.findWaypointByType(escortFlight.getWaypointPackage().getAllWaypoints(), 
                 WaypointType.RETURN_TO_BASE_WAYPOINT.getName());
 
         rendezvousWP.setTarget(coverTimer.getIndex());

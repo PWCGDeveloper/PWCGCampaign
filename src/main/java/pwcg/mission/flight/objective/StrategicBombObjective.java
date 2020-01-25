@@ -9,7 +9,7 @@ public class StrategicBombObjective
 {
     static String getMissionObjective(IFlight flight) throws PWCGException 
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
         String objective = "Bomb the specified objective.  ";
 
         if (flightInformation.getTargetDefinition().getTargetType() == TargetType.TARGET_FACTORY)

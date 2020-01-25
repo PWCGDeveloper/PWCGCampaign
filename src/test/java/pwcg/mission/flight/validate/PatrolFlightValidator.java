@@ -11,7 +11,7 @@ public class PatrolFlightValidator
 {
     public void validatePatrolFlight(IFlight flight) throws PWCGException
     {
-        assert(flight.getFlightData().getWaypointPackage().getWaypointsForLeadPlane().size() > 0);
+        assert(flight.getWaypointPackage().getWaypointsForLeadPlane().size() > 0);
         validateWaypointLinkage(flight);
         validateWaypointTypes(flight);
     }
@@ -19,7 +19,7 @@ public class PatrolFlightValidator
     private void validateWaypointLinkage(IFlight flight) 
     {
         McuWaypoint prevWaypoint = null;
-        for (McuWaypoint waypoint : flight.getFlightData().getWaypointPackage().getWaypointsForLeadPlane())
+        for (McuWaypoint waypoint : flight.getWaypointPackage().getWaypointsForLeadPlane())
         {
             if (prevWaypoint != null)
             {
@@ -50,7 +50,7 @@ public class PatrolFlightValidator
 
         WaypointPriorityValidator.validateWaypointTypes(flight);
 
-        for (McuWaypoint waypoint : flight.getFlightData().getWaypointPackage().getWaypointsForLeadPlane())
+        for (McuWaypoint waypoint : flight.getWaypointPackage().getWaypointsForLeadPlane())
         {
             if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_PATROL))
             {

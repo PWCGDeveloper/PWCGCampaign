@@ -38,11 +38,11 @@ public class Me262APayload extends PlanePayload implements IPlanePayload
     public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
-        if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
         {
             selectGroundAttackPayload(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.INTERCEPT)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.INTERCEPT)
         {
             selectInterceptPayload();
         }

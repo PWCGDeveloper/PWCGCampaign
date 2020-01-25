@@ -44,7 +44,7 @@ public class McuCheckZone extends BaseFlightMcu
     public void triggerCheckZoneByFlight (IFlight flight)
     {
         planeCoalitions.clear();
-        for (PlaneMcu plane: flight.getFlightData().getFlightPlanes().getPlanes())
+        for (PlaneMcu plane: flight.getFlightPlanes().getPlanes())
         {
             this.setObject(plane.getLinkTrId());
         }

@@ -33,13 +33,13 @@ public class BalloonBustWaypointFactory
     private McuWaypoint createTargetWaypoints() throws PWCGException  
 	{
 		Coordinate coord = new Coordinate();
-		coord.setXPos(flight.getFlightData().getFlightInformation().getTargetPosition().getXPos() + 50.0);
-		coord.setZPos(flight.getFlightData().getFlightInformation().getTargetPosition().getZPos());
-        coord.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+		coord.setXPos(flight.getFlightInformation().getTargetPosition().getXPos() + 50.0);
+		coord.setZPos(flight.getFlightInformation().getTargetPosition().getZPos());
+        coord.setYPos(flight.getFlightInformation().getAltitude());
 
 		McuWaypoint balloonBustWP = WaypointFactory.createBalloonBustWaypointType();
 		balloonBustWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-		balloonBustWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+		balloonBustWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
 		balloonBustWP.setPosition(coord);	
 		balloonBustWP.setTargetWaypoint(true);
         return balloonBustWP;

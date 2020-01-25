@@ -50,7 +50,7 @@ public class OffensiveWaypointsAirfieldFactory
 	    IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
 	    List <IFixedPosition> sortedPositions = sortedFixedPositions.getSortedPositionsWithMaxDistanceTTravelled(
 	            flight.getCampaign(), 
-	            flight.getFlightData().getFlightInformation().getTargetPosition(), productSpecific.getSmallMissionRadius());
+	            flight.getFlightInformation().getTargetPosition(), productSpecific.getSmallMissionRadius());
 	    
 	    for (IFixedPosition transportBlock : sortedPositions)
 	    {
@@ -64,7 +64,7 @@ public class OffensiveWaypointsAirfieldFactory
     private List<IFixedPosition> findEnemyAirieldsForOffensivePatrol() throws PWCGException
     {
         double missionTargetRadius = flight.getMission().getMissionBorders().getAreaRadius();
-        Side enemySide = flight.getFlightData().getFlightInformation().getCountry().getSide().getOppositeSide();
+        Side enemySide = flight.getFlightInformation().getCountry().getSide().getOppositeSide();
         List <IAirfield> enemyAirfields = new ArrayList<>();
         while (!stopLooking(enemyAirfields, missionTargetRadius))
         {
@@ -100,10 +100,10 @@ public class OffensiveWaypointsAirfieldFactory
 
     private McuWaypoint createWP(Coordinate fieldPosition) throws PWCGException 
     {
-        fieldPosition.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        fieldPosition.setYPos(flight.getFlightInformation().getAltitude());
         McuWaypoint wp = WaypointFactory.createPatrolWaypointType();
         wp.setTriggerArea(McuWaypoint.TARGET_AREA);
-        wp.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        wp.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         wp.setPosition(fieldPosition);
         
         return wp;

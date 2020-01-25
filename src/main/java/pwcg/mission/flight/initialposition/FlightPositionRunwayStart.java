@@ -20,16 +20,16 @@ public class FlightPositionRunwayStart
 
     public void createPlanePositionRunway() throws PWCGException 
     {
-        PlaneMcu flightLeader = flight.getFlightData().getFlightPlanes().getFlightLeader();
+        PlaneMcu flightLeader = flight.getFlightPlanes().getFlightLeader();
 
         RunwayPlacer runwayPlacer = new RunwayPlacer();
         List<Coordinate> takeOffPositions = runwayPlacer.getFlightTakeoffPositions(flight);
 
-        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
+        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
             plane.setPosition(takeOffPositions.get(plane.getNumberInFormation()-1));
 
-            Orientation orient = flight.getFlightData().getFlightInformation().getDepartureAirfield().getTakeoffLocation().getOrientation().copy();
+            Orientation orient = flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation().getOrientation().copy();
             plane.setOrientation(orient);
 
             plane.populateEntity(flight, flightLeader);

@@ -72,11 +72,11 @@ public class InterceptWaypointFactory
 
         McuWaypoint innerLoopFirstWP = WaypointFactory.createPatrolWaypointType();
         innerLoopFirstWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        innerLoopFirstWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        innerLoopFirstWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         innerLoopFirstWP.setPosition(coord);    
         innerLoopFirstWP.setTargetWaypoint(true);
         
-        double initialAngle = MathUtils.calcAngle(flight.getFlightData().getFlightHomePosition(), flight.getFlightData().getFlightInformation().getTargetPosition());
+        double initialAngle = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getFlightInformation().getTargetPosition());
         innerLoopFirstWP.getOrientation().setyOri(initialAngle);
         
         return innerLoopFirstWP;
@@ -95,7 +95,7 @@ public class InterceptWaypointFactory
         double randomOffsetDistance = RandomNumberGenerator.getRandom(5000);
         Coordinate coordinatesAfterRandomMove = MathUtils.calcNextCoord(coordinatesAfterFixedMove, randomOffsetAngle, randomOffsetDistance);
 
-        coordinatesAfterRandomMove.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        coordinatesAfterRandomMove.setYPos(flight.getFlightInformation().getAltitude());
 
         return coordinatesAfterRandomMove;
     }
@@ -106,15 +106,15 @@ public class InterceptWaypointFactory
         
         if (pattern  == InterceptSearchPattern.INTERCEPT_CROSS)
         {
-            angleToMovePattern = MathUtils.calcAngle(flight.getFlightData().getFlightInformation().getTargetPosition(), flight.getFlightData().getFlightHomePosition());
+            angleToMovePattern = MathUtils.calcAngle(flight.getFlightInformation().getTargetPosition(), flight.getFlightHomePosition());
         }
         else if (pattern  == InterceptSearchPattern.INTERCEPT_CREEP)
         {
-            angleToMovePattern = MathUtils.calcAngle(flight.getFlightData().getFlightInformation().getTargetPosition(), flight.getFlightData().getFlightHomePosition());
+            angleToMovePattern = MathUtils.calcAngle(flight.getFlightInformation().getTargetPosition(), flight.getFlightHomePosition());
         }
         else
         {
-            angleToMovePattern = MathUtils.calcAngle(flight.getFlightData().getFlightInformation().getTargetPosition(), flight.getFlightData().getFlightHomePosition());
+            angleToMovePattern = MathUtils.calcAngle(flight.getFlightInformation().getTargetPosition(), flight.getFlightHomePosition());
         }
         
         return angleToMovePattern;
@@ -130,12 +130,12 @@ public class InterceptWaypointFactory
         if (pattern  == InterceptSearchPattern.INTERCEPT_CROSS)
         {
             distanceToMovePattern = productSpecific.getInterceptCrossDiameterDistance() / 2;
-            coordinatesAfterFixedMove = MathUtils.calcNextCoord(flight.getFlightData().getFlightInformation().getTargetPosition(), angleToMovePattern, distanceToMovePattern);
+            coordinatesAfterFixedMove = MathUtils.calcNextCoord(flight.getFlightInformation().getTargetPosition(), angleToMovePattern, distanceToMovePattern);
         }
         else if (pattern  == InterceptSearchPattern.INTERCEPT_CREEP)
         {
             distanceToMovePattern = productSpecific.getInterceptCreepCrossDistance() * 4;
-            coordinatesAfterFixedMove = MathUtils.calcNextCoord(flight.getFlightData().getFlightInformation().getTargetPosition(), angleToMovePattern, distanceToMovePattern);
+            coordinatesAfterFixedMove = MathUtils.calcNextCoord(flight.getFlightInformation().getTargetPosition(), angleToMovePattern, distanceToMovePattern);
             
             double shiftAngle = MathUtils.adjustAngle(angleToMovePattern, 90);
             double distanceToShiftPattern = productSpecific.getInterceptCreepLegDistance() * .5;
@@ -143,7 +143,7 @@ public class InterceptWaypointFactory
         }
         else
         {
-            coordinatesAfterFixedMove = flight.getFlightData().getFlightInformation().getTargetPosition().copy();
+            coordinatesAfterFixedMove = flight.getFlightInformation().getTargetPosition().copy();
             
             double shiftAngle = MathUtils.adjustAngle(angleToMovePattern, 90);
             double distanceToShiftPattern = productSpecific.getInterceptInnerLoopDistance() / 1.5;
@@ -203,7 +203,7 @@ public class InterceptWaypointFactory
                 McuWaypoint.FLIGHT_AREA,
                 NUM_LEGS_IN_INTERCEPT_CIRCLE,
                 innerLoopFirstWP,
-                flight.getFlightData().getFlightInformation().getAltitude(),
+                flight.getFlightInformation().getAltitude(),
                 innerLoopDistance);
                         
         return interceptWPs;

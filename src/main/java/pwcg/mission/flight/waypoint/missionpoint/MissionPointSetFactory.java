@@ -21,7 +21,7 @@ public class MissionPointSetFactory
 
     public static IMissionPointSet createFlightBegin(IFlight flight, AirStartPattern airStartNearAirfield, McuWaypoint ingressWaypoint) throws PWCGException, PWCGException 
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
 
         if (!flightInformation.isAirStart())
         {
@@ -49,7 +49,7 @@ public class MissionPointSetFactory
     
     public static IMissionPointSet createFlightEndAtHomeField(IFlight flight) throws PWCGException, PWCGException 
     {
-        IAirfield landingAirfield = flight.getFlightData().getFlightInformation().getAirfield();
+        IAirfield landingAirfield = flight.getFlightInformation().getAirfield();
         return createFlightEnd(flight, landingAirfield);
     }
     
@@ -66,16 +66,16 @@ public class MissionPointSetFactory
         McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(ingressWaypointPattern, flight);
 
         IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(flight);
-        flight.getFlightData().getWaypointPackage().addMissionPointSet(flightActivate);
+        flight.getWaypointPackage().addMissionPointSet(flightActivate);
 
         IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(flight, airStartPattern, ingressWaypoint);
-        flight.getFlightData().getWaypointPackage().addMissionPointSet(flightBegin);
+        flight.getWaypointPackage().addMissionPointSet(flightBegin);
 
         IMissionPointSet missionWaypoints = flight.createFlightSpecificWaypoints(ingressWaypoint);
-        flight.getFlightData().getWaypointPackage().addMissionPointSet(missionWaypoints);
+        flight.getWaypointPackage().addMissionPointSet(missionWaypoints);
         
         IMissionPointSet flightEnd = MissionPointSetFactory.createFlightEndAtHomeField(flight);
-        flight.getFlightData().getWaypointPackage().addMissionPointSet(flightEnd);        
+        flight.getWaypointPackage().addMissionPointSet(flightEnd);        
     }
 
 }

@@ -46,7 +46,7 @@ public class WindSock
 
     public static WindSock createWindSock(IFlight flight) throws PWCGException 
     {
-        IAirfield flightAirfield = flight.getFlightData().getFlightInformation().getAirfield();
+        IAirfield flightAirfield = flight.getFlightInformation().getAirfield();
         double takeoffOrientation = flightAirfield.getTakeoffLocation().getOrientation().getyOri();
 
         Double angleWindSockLeft = MathUtils.adjustAngle(takeoffOrientation, -90);

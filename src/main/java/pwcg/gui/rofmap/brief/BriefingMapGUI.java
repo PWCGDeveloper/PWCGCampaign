@@ -561,7 +561,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         mapPanel.clearVirtualPoints();
         
         IFlight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
-        for (IFlight linkedFlight : myFlight.getFlightData().getLinkedFlights().getLinkedFlights())
+        for (IFlight linkedFlight : myFlight.getLinkedFlights().getLinkedFlights())
         {
             mapPanel.makeMapPanelVirtualPoints (linkedFlight);
         }
@@ -570,7 +570,7 @@ public class BriefingMapGUI extends MapGUI implements ActionListener
         {
             mapPanel.makeMapPanelVirtualPoints (flight);
             
-            for (IFlight linkedFlight : flight.getFlightData().getLinkedFlights().getLinkedFlights())
+            for (IFlight linkedFlight : flight.getLinkedFlights().getLinkedFlights())
             {
                 if (!(linkedFlight instanceof VirtualEscortFlight))
                 {

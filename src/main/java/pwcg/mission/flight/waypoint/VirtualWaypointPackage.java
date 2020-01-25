@@ -61,9 +61,9 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     private void generateDuplicateWaypoints() throws PWCGException
     {
         int positionInFormation = 0;
-        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
+        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
-            IWaypointPackage duplicatedWaypointPackage = flight.getFlightData().getWaypointPackage().duplicate(positionInFormation);
+            IWaypointPackage duplicatedWaypointPackage = flight.getWaypointPackage().duplicate(positionInFormation);
             waypointPackagesForVirtualFlight.put(plane.getIndex(), duplicatedWaypointPackage);
             ++positionInFormation;
         }
@@ -77,7 +77,7 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
 
     private void finalizeWaypointPackages() throws PWCGException
     {
-        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
+        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
             IWaypointPackage waypointPackage = waypointPackagesForVirtualFlight.get(plane.getIndex());
             waypointPackage.finalize(plane);
@@ -86,7 +86,7 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
 
     private void linkVirtualWaypointToMissionBegin() throws PWCGException
     {
-        PlaneMcu flightLeader = flight.getFlightData().getFlightPlanes().getFlightLeader();
+        PlaneMcu flightLeader = flight.getFlightPlanes().getFlightLeader();
         IWaypointPackage waypointPackage = waypointPackagesForVirtualFlight.get(flightLeader.getIndex());
         
         VirtualWayPoint firstVirtualWayPoint = virtualWaypoints.get(0);

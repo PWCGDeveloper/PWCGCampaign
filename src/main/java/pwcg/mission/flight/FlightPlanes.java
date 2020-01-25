@@ -21,13 +21,13 @@ public class FlightPlanes implements IFlightPlanes
     public FlightPlanes(IFlight flight)
     {
         this.flight = flight;
-        this.planes = flight.getFlightData().getFlightInformation().getPlanes();
+        this.planes = flight.getFlightInformation().getPlanes();
     }
     
     @Override
     public void enableNonVirtualFlight()
     {
-        if (!flight.getFlightData().getFlightInformation().isVirtual())
+        if (!flight.getFlightInformation().isVirtual())
         {
             for (PlaneMcu plane : planes)
             {
@@ -126,7 +126,7 @@ public class FlightPlanes implements IFlightPlanes
         {
             if (isAggressivePlane(plane))
             {
-                for (PlaneMcu targetPlane : targetFlight.getFlightData().getFlightPlanes().getPlanes())
+                for (PlaneMcu targetPlane : targetFlight.getFlightPlanes().getPlanes())
                 {
                     plane.addPlaneTarget(targetPlane.getEntity().getIndex());
                 }
@@ -153,7 +153,7 @@ public class FlightPlanes implements IFlightPlanes
             return true;
         }
 
-        if (flight.getFlightData().getFlightInformation().getFlightType().isCategory(FlightTypeCategory.FIGHTER))
+        if (flight.getFlightInformation().getFlightType().isCategory(FlightTypeCategory.FIGHTER))
         {
             return true;
         }

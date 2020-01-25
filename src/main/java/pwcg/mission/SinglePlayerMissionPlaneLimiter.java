@@ -29,7 +29,7 @@ public class SinglePlayerMissionPlaneLimiter
 
     private void setPlaneCounter(Mission mission) throws PWCGException
     {
-        Coordinate mcuCoordinate = mission.getMissionFlightBuilder().getReferencePlayerFlight().getFlightData().getFlightInformation().getFlightHomePosition();
+        Coordinate mcuCoordinate = mission.getMissionFlightBuilder().getReferencePlayerFlight().getFlightInformation().getFlightHomePosition();
         alliedPlaneCounter.initialize(mcuCoordinate);
         axisPlaneCounter.initialize(mcuCoordinate);
 
@@ -60,9 +60,9 @@ public class SinglePlayerMissionPlaneLimiter
     {
         for (IFlight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
         {
-            int planesInPlayerFlight = playerFlight.getFlightData().getFlightPlanes().getFlightSize();
+            int planesInPlayerFlight = playerFlight.getFlightPlanes().getFlightSize();
 
-            if (playerFlight.getFlightData().getFlightInformation().getSquadron().determineSide() == Side.ALLIED)
+            if (playerFlight.getFlightInformation().getSquadron().determineSide() == Side.ALLIED)
             {
                 maxAlliedPlanes -= planesInPlayerFlight;
                 if (maxAlliedPlanes < 2)

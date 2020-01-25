@@ -16,7 +16,7 @@ public class MissionCoopConverter
 
         for (IFlight flight : missionFlightBuilder.getAllAerialFlights())
         {
-            flight.getFlightData().getFlightPlanes().preparePlaneForCoop(flight);
+            flight.getFlightPlanes().preparePlaneForCoop(flight);
         }
     }
 }

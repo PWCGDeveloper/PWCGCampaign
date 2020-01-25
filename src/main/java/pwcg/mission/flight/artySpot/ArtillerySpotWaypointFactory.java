@@ -35,11 +35,11 @@ public class ArtillerySpotWaypointFactory
 		McuWaypoint artillerySpotInitialWaypoint = WaypointFactory.createArtillerySpotWaypointType();
 
 		artillerySpotInitialWaypoint.setTriggerArea(McuWaypoint.TARGET_AREA);
-		artillerySpotInitialWaypoint.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+		artillerySpotInitialWaypoint.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         artillerySpotInitialWaypoint.setTargetWaypoint(true);
 
-		Coordinate initialArtillerySpotCoord = flight.getFlightData().getFlightInformation().getTargetPosition();
-		initialArtillerySpotCoord.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+		Coordinate initialArtillerySpotCoord = flight.getFlightInformation().getTargetPosition();
+		initialArtillerySpotCoord.setYPos(flight.getFlightInformation().getAltitude());
 		artillerySpotInitialWaypoint.setPosition(initialArtillerySpotCoord);	
 
 		missionPointSet.addWaypoint(artillerySpotInitialWaypoint);		
@@ -55,11 +55,11 @@ public class ArtillerySpotWaypointFactory
 		++ iterNum;
 
 		artillerySpotAdditionalWaypoint.setTriggerArea(McuWaypoint.TARGET_AREA);
-		artillerySpotAdditionalWaypoint.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+		artillerySpotAdditionalWaypoint.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
 
 		double distance = 2000.0;
 		Coordinate nextArtillerySpotCoordinate = MathUtils.calcNextCoord(lastWP.getPosition(), angle, distance);
-        nextArtillerySpotCoordinate.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        nextArtillerySpotCoordinate.setYPos(flight.getFlightInformation().getAltitude());
 		artillerySpotAdditionalWaypoint.setPosition(nextArtillerySpotCoordinate);	
 		artillerySpotAdditionalWaypoint.setTargetWaypoint(true);
 

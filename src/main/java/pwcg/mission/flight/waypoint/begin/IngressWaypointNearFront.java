@@ -32,11 +32,11 @@ public class IngressWaypointNearFront implements IIngressWaypoint
         Coordinate coord = new Coordinate();
         coord.setXPos(groundIngressCoords.getXPos());
         coord.setZPos(groundIngressCoords.getZPos());
-        coord.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        coord.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint ingressWP = WaypointFactory.createIngressWaypointType();
         ingressWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        ingressWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        ingressWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         ingressWP.setPosition(coord);   
         ingressWP.setTargetWaypoint(false);
         
@@ -45,13 +45,13 @@ public class IngressWaypointNearFront implements IIngressWaypoint
 
     private Coordinate getBestIngressPosition() throws PWCGException 
     {
-        if (flight.getFlightData().getFlightInformation().isVirtual())
+        if (flight.getFlightInformation().isVirtual())
         {
             return getBestIngressPositionForCommonAIFlights();
         }
         else
         {
-            if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ESCORT)
+            if (flight.getFlightInformation().getFlightType() == FlightTypes.ESCORT)
             {
                 return getBestIngressPositionForEscortRendezvous();
             }
@@ -66,10 +66,10 @@ public class IngressWaypointNearFront implements IIngressWaypoint
     {
         FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         Coordinate closestFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
-                flight.getFlightData().getFlightInformation().getTargetPosition(), 
-                flight.getFlightData().getFlightInformation().getSquadron().determineSide());
+                flight.getFlightInformation().getTargetPosition(), 
+                flight.getFlightInformation().getSquadron().determineSide());
         
-        Coordinate flightHomeCoordinates = flight.getFlightData().getFlightInformation().getSquadron().determineCurrentPosition(campaign.getDate());
+        Coordinate flightHomeCoordinates = flight.getFlightInformation().getSquadron().determineCurrentPosition(campaign.getDate());
         double angleFromFrontToHome = MathUtils.calcAngle(closestFrontLinesToTarget, flightHomeCoordinates);
 
         int distanceBehindFrontForIngress = getDistanceFromFront();
@@ -81,11 +81,11 @@ public class IngressWaypointNearFront implements IIngressWaypoint
     {
         FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         Coordinate closestEnemyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
-                flight.getFlightData().getFlightInformation().getTargetPosition(), 
-                flight.getFlightData().getFlightInformation().getSquadron().determineSide().getOppositeSide());
+                flight.getFlightInformation().getTargetPosition(), 
+                flight.getFlightInformation().getSquadron().determineSide().getOppositeSide());
         Coordinate closestFriendlyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
-                flight.getFlightData().getFlightInformation().getTargetPosition(), 
-                flight.getFlightData().getFlightInformation().getSquadron().determineSide());
+                flight.getFlightInformation().getTargetPosition(), 
+                flight.getFlightInformation().getSquadron().determineSide());
         int distanceBehindFrontForIngress = getDistanceFromFront();
 
         return BehindFriendlyLinesPositionCalculator.getPointBehindFriendlyLines(
@@ -93,29 +93,29 @@ public class IngressWaypointNearFront implements IIngressWaypoint
                 closestFriendlyFrontLinesToTarget, 
                 distanceBehindFrontForIngress, 
                 campaign.getDate(), 
-                flight.getFlightData().getFlightInformation().getSquadron().determineSide());
+                flight.getFlightInformation().getSquadron().determineSide());
     }
 
     private Coordinate getBestIngressPositionForEscortRendezvous() throws PWCGException 
     {
         FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         Coordinate closestEnemyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
-                flight.getFlightData().getFlightInformation().getTargetPosition(), 
-                flight.getFlightData().getFlightInformation().getSquadron().determineSide().getOppositeSide());
+                flight.getFlightInformation().getTargetPosition(), 
+                flight.getFlightInformation().getSquadron().determineSide().getOppositeSide());
         int distanceBehindFrontForIngress = getDistanceFromFront();
 
         return BehindFriendlyLinesPositionCalculator.getPointBehindFriendlyLines(
                 closestEnemyFrontLinesToTarget, 
-                flight.getFlightData().getFlightHomePosition(), 
+                flight.getFlightHomePosition(), 
                 distanceBehindFrontForIngress, 
                 campaign.getDate(), 
-                flight.getFlightData().getFlightInformation().getSquadron().determineSide());
+                flight.getFlightInformation().getSquadron().determineSide());
     }
 
     private int getDistanceFromFront()
     {
-        if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ESCORT || 
-            flight.getFlightData().getFlightInformation().isEscortedByPlayerFlight())
+        if (flight.getFlightInformation().getFlightType() == FlightTypes.ESCORT || 
+            flight.getFlightInformation().isEscortedByPlayerFlight())
         {
             IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
             int rendezvousDistanceFromFront = productSpecific.getRendezvousDistanceFromFront();

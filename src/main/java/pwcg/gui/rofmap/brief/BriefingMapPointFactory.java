@@ -31,7 +31,7 @@ public class BriefingMapPointFactory
 	public static BriefingMapPoint createTakeoff(IFlight flight) throws PWCGException 
 	{
         BriefingMapPoint takeoff =null;
-        MissionPoint takeoffMissionPoint = flight.getFlightData().getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_TAKEOFF);
+        MissionPoint takeoffMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_TAKEOFF);
         if (takeoffMissionPoint != null)
 		{
 			takeoff = new BriefingMapPoint();
@@ -46,7 +46,7 @@ public class BriefingMapPointFactory
 	public static BriefingMapPoint createLanding(IFlight flight) throws PWCGException 
 	{
         BriefingMapPoint briefingMapLanding =null;
-        MissionPoint landingMissionPoint = flight.getFlightData().getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_LANDING);
+        MissionPoint landingMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_LANDING);
         if (landingMissionPoint != null)
 		{
 			briefingMapLanding = new BriefingMapPoint();

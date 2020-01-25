@@ -42,7 +42,7 @@ public class Pe2S35Payload extends PlanePayload implements IPlanePayload
     public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 1;
-    	if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
+    	if (flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
     	{
     		selectGroundAttackPayload(flight);
     	}
@@ -55,19 +55,19 @@ public class Pe2S35Payload extends PlanePayload implements IPlanePayload
 
     protected void selectBombingPayload(IFlight flight)
     {
-        if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
+        if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
             selectBombingSoftTargetPayload();
         }
-        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
+        else if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
             selectBombingArmoredTargetPayload();
         }
-        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
+        else if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
             selectBombingMediumTargetPayload();
         }
-        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
+        else if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
             selectBombingHeavyTargetPayload();
         }
@@ -76,19 +76,19 @@ public class Pe2S35Payload extends PlanePayload implements IPlanePayload
     protected void selectGroundAttackPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 1;
-        if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
+        if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
             selectGroundAttackSoftTargetPayload();
         }
-        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
+        else if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
             selectGroundAttackArmoredTargetPayload();
         }
-        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
+        else if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
             selectGroundAttackMediumTargetPayload();
         }
-        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
+        else if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
             selectGroundAttackHeavyTargetPayload();
         }

@@ -34,10 +34,10 @@ public class MissionObjectiveGroup
     public void createSuccessMissionObjective(Campaign campaign, Mission mission) throws PWCGException 
     {
         IFlight playerFlight = mission.getMissionFlightBuilder().getReferencePlayerFlight();
-        Coordinate squadronLocation = playerFlight.getFlightData().getFlightInformation().getSquadron().determineCurrentPosition(campaign.getDate());
+        Coordinate squadronLocation = playerFlight.getFlightInformation().getSquadron().determineCurrentPosition(campaign.getDate());
         missionBeginUnit = new MissionBeginUnit(squadronLocation.copy());            
                 
-        missionObjective.setCoalition(playerFlight.getFlightData().getFlightInformation().getSquadron().getCountry());
+        missionObjective.setCoalition(playerFlight.getFlightInformation().getSquadron().getCountry());
         missionObjective.setSuccess(1);
         missionObjective.setPosition(squadronLocation);
 
@@ -49,14 +49,14 @@ public class MissionObjectiveGroup
     public void createFailureMissionObjective(Campaign campaign, Mission mission) throws PWCGException 
     {
         IFlight playerFlight = mission.getMissionFlightBuilder().getReferencePlayerFlight();
-        Coordinate squadronLocation = playerFlight.getFlightData().getFlightInformation().getSquadron().determineCurrentPosition(campaign.getDate());
+        Coordinate squadronLocation = playerFlight.getFlightInformation().getSquadron().determineCurrentPosition(campaign.getDate());
         missionBeginUnit = new MissionBeginUnit(squadronLocation.copy());            
 
-        missionObjective.setCoalition(playerFlight.getFlightData().getFlightInformation().getSquadron().getCountry());
+        missionObjective.setCoalition(playerFlight.getFlightInformation().getSquadron().getCountry());
         missionObjective.setPosition(squadronLocation);
         missionObjective.setSuccess(0);
 
-        PlaneMcu referencePlane = mission.getMissionFlightBuilder().getReferencePlayerFlight().getFlightData().getFlightPlanes().getPlayerPlanes().get(0);
+        PlaneMcu referencePlane = mission.getMissionFlightBuilder().getReferencePlayerFlight().getFlightPlanes().getPlayerPlanes().get(0);
         referencePlane.getEntity().setOnMessages(
                         McuMessage.ONKILL,
                         missionBeginUnit.getStartTimeindex(),

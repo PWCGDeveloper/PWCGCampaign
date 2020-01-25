@@ -55,7 +55,7 @@ public class AmbientBalloonBuilder
             return false;
         }
 
-        Squadron squad =  mission.getMissionFlightBuilder().getReferencePlayerFlight().getFlightData().getFlightInformation().getSquadron();
+        Squadron squad =  mission.getMissionFlightBuilder().getReferencePlayerFlight().getFlightInformation().getSquadron();
         if (squad.isSquadronThisRole(mission.getCampaign().getDate(), Role.ROLE_STRAT_BOMB) || 
             squad.isSquadronThisRole(mission.getCampaign().getDate(), Role.ROLE_SEA_PLANE) || 
             squad.isHomeDefense(mission.getCampaign().getDate()))
@@ -71,10 +71,10 @@ public class AmbientBalloonBuilder
         List<Coordinate> balloonPositions = new ArrayList<Coordinate>();
         for(IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            FlightTypes flightType = flight.getFlightData().getFlightInformation().getFlightType();
+            FlightTypes flightType = flight.getFlightInformation().getFlightType();
             if (flightType == FlightTypes.BALLOON_DEFENSE || flightType == FlightTypes.BALLOON_BUST)
             {
-                Coordinate balloonPosition = flight.getFlightData().getLinkedGroundUnits().getLinkedGroundUnitByType(GroundUnitCollectionType.BALLOON_GROUND_UNIT_COLLECTION).getPosition();
+                Coordinate balloonPosition = flight.getLinkedGroundUnits().getLinkedGroundUnitByType(GroundUnitCollectionType.BALLOON_GROUND_UNIT_COLLECTION).getPosition();
                 balloonPositions.add(balloonPosition);
             } 
         }
@@ -120,7 +120,7 @@ public class AmbientBalloonBuilder
     	List<IFlight> playerFlights = mission.getMissionFlightBuilder().getPlayerFlights();
     	int index = RandomNumberGenerator.getRandom(playerFlights.size());
     	IFlight referenceFlight = playerFlights.get(index);
-    	Coordinate ambientBalloonReferencePosition = referenceFlight.getFlightData().getFlightPlanes().getFlightLeader().getPosition();
+    	Coordinate ambientBalloonReferencePosition = referenceFlight.getFlightPlanes().getFlightLeader().getPosition();
     	return ambientBalloonReferencePosition;
     }
 

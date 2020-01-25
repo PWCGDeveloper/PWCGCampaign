@@ -82,17 +82,17 @@ public class OffensiveWaypointsFrontFactory
         pathAlongFrontData.setRandomDistanceMax(patrolDistanceRandom / 2);
         pathAlongFrontData.setTargetGeneralLocation(startPosition);
         pathAlongFrontData.setReturnAlongRoute(true);
-        pathAlongFrontData.setSide(flight.getFlightData().getFlightInformation().getSquadron().determineSquadronCountry(campaign.getDate()).getSide().getOppositeSide());
+        pathAlongFrontData.setSide(flight.getFlightInformation().getSquadron().determineSquadronCountry(campaign.getDate()).getSide().getOppositeSide());
 
         return pathAlongFrontData;
     }
 
     private McuWaypoint createWP(Coordinate frontPosition) throws PWCGException 
     {
-        frontPosition.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        frontPosition.setYPos(flight.getFlightInformation().getAltitude());
         McuWaypoint wp = WaypointFactory.createPatrolWaypointType();
         wp.setTriggerArea(McuWaypoint.TARGET_AREA);
-        wp.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        wp.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         wp.setPosition(frontPosition);
         
         return wp;

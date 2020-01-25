@@ -22,7 +22,7 @@ public class AiAdjuster
     {
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMcu plane: flight.getFlightData().getFlightPlanes().getAiPlanes())
+            for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
                 adjustAi(plane);
             }

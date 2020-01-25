@@ -40,7 +40,7 @@ public class ScrambleOpposingGroundAttackWaypointFactory
 
     private void createTargetWaypoints(Coordinate ingressPosition) throws PWCGException  
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
         GroundAttackWaypointHelper groundAttackWaypointHelper = new GroundAttackWaypointHelper(flight, ingressPosition, flightInformation.getAltitude());
         groundAttackWaypointHelper.createTargetWaypoints();
         for (McuWaypoint groundAttackWaypoint : groundAttackWaypointHelper.getWaypointsBefore())
@@ -55,7 +55,7 @@ public class ScrambleOpposingGroundAttackWaypointFactory
     
     private AirGroundAttackMcuSequence createAttackArea() throws PWCGException 
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
         AirGroundAttackMcuSequence attackMcuSequence = new AirGroundAttackMcuSequence(flightInformation);
         attackMcuSequence.createAttackArea(GroundAttackWaypointFactory.GROUND_ATTACK_TIME, AttackAreaType.GROUND_TARGETS);        
         return attackMcuSequence;

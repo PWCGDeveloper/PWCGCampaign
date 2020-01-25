@@ -85,7 +85,7 @@ public class MissionPointFlightActivate implements IMissionPointSet
     {
         
         int startDelay = 1;
-        if (flight.getFlightData().getFlightInformation().isAirStart() == false) 
+        if (flight.getFlightInformation().isAirStart() == false) 
         {
             ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();                        
             startDelay = configManager.getIntConfigParam(ConfigItemKeys.TakeoffTimeKey);
@@ -95,13 +95,13 @@ public class MissionPointFlightActivate implements IMissionPointSet
             }
         }
 
-        missionBeginUnit = new MissionBeginUnit(flight.getFlightData().getFlightHomePosition());
+        missionBeginUnit = new MissionBeginUnit(flight.getFlightHomePosition());
         missionBeginUnit.setStartTime(startDelay);
     }
 
     private void createActivation() throws PWCGException
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
    
         activationEntity = new McuActivate();
         activationEntity.setName("Activate");

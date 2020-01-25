@@ -41,7 +41,7 @@ public class BriefingDataInitializer
         }
 	    
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(squadron.getSquadronId());
-	    for (PlaneMcu plane : playerFlight.getFlightData().getFlightPlanes().getPlanes())
+	    for (PlaneMcu plane : playerFlight.getFlightPlanes().getPlanes())
 	    {
 	        briefingAssignmentData.assignPilot(plane.getPilot().getSerialNumber(), plane.getSerialNumber());
 	    }

@@ -126,7 +126,7 @@ public class FlightAiSettingsValidator
     {
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
+            for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
             {
                 SquadronMember squadronMember = mission.getCampaign().getPersonnelManager().getAnyCampaignMember(plane.getPilot().getSerialNumber());
                 Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronMember.getSquadronId());

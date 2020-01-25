@@ -70,22 +70,22 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
         MissionOptions missionOptions = PWCGContext.getInstance().getCurrentMap().getMissionOptions();
         setMissionDateTime(DateUtils.getDateAsMissionFileFormat(campaign.getDate()), missionOptions.getMissionTime().getMissionTime());
 
-        setAircraft(playerFlight.getFlightData().getFlightPlanes().getFlightLeader().getDisplayName());
-        setAirfield(playerFlight.getFlightData().getFlightInformation().getAirfieldName());
+        setAircraft(playerFlight.getFlightPlanes().getFlightLeader().getDisplayName());
+        setAirfield(playerFlight.getFlightInformation().getAirfieldName());
         setObjective(MissionObjectiveFactory.formMissionObjective(playerFlight));
         setEscortedBy(playerFlight);
-        setSquadron(playerFlight.getFlightData().getFlightInformation().getSquadron().determineDisplayName(campaign.getDate()));
-        buildTitleDescription(campaign.getCampaignData().getName(), playerFlight.getFlightData().getFlightInformation().getFlightType().toString());
+        setSquadron(playerFlight.getFlightInformation().getSquadron().determineDisplayName(campaign.getDate()));
+        buildTitleDescription(campaign.getCampaignData().getName(), playerFlight.getFlightInformation().getFlightType().toString());
 
         HashMap<String, IFlight> squadronMap = new HashMap<String, IFlight>();
         for (IFlight flight : mission.getMissionFlightBuilder().getAiFlights())
         {
-            squadronMap.put(flight.getFlightData().getFlightInformation().getSquadron().determineDisplayName(campaign.getDate()), flight);
+            squadronMap.put(flight.getFlightInformation().getSquadron().determineDisplayName(campaign.getDate()), flight);
         }
 
         for (IFlight flight : squadronMap.values())
         {
-            setFlight(playerFlight.getFlightData().getFlightInformation().getSquadron().getCountry(), flight);
+            setFlight(playerFlight.getFlightInformation().getSquadron().getCountry(), flight);
         }
         
         return descSinglePlayerTemplate;
@@ -144,10 +144,10 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 	private void setEscortedBy(IFlight playerFlight) throws PWCGException
 	{
         String escortedByText = "";
-        EscortForPlayerFlight escortForPlayerFlight = playerFlight.getFlightData().getLinkedFlights().getEscortForPlayer();
+        EscortForPlayerFlight escortForPlayerFlight = playerFlight.getLinkedFlights().getEscortForPlayer();
         if (escortForPlayerFlight != null)
         {
-            escortedByText = "Escorted by " + escortForPlayerFlight.getFlightData().getFlightPlanes().getFlightLeader().getDisplayName() + "s of " + escortForPlayerFlight.getFlightData().getFlightInformation().getSquadron().determineDisplayName(campaign.getDate());
+            escortedByText = "Escorted by " + escortForPlayerFlight.getFlightPlanes().getFlightLeader().getDisplayName() + "s of " + escortForPlayerFlight.getFlightInformation().getSquadron().determineDisplayName(campaign.getDate());
         }
 	    
 	    descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<ESCORTED_BY>", escortedByText);
@@ -159,9 +159,9 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 	{
 		Campaign campaign =     PWCGContext.getInstance().getCampaign();
 		
-		String squadron = flight.getFlightData().getFlightInformation().getSquadron().determineDisplayName(campaign.getDate());
-		String aircraft = flight.getFlightData().getFlightPlanes().getFlightLeader().getDisplayName();
-		ICountry flightCountry = flight.getFlightData().getFlightInformation().getAirfield().createCountry(campaign.getDate());
+		String squadron = flight.getFlightInformation().getSquadron().determineDisplayName(campaign.getDate());
+		String aircraft = flight.getFlightPlanes().getFlightLeader().getDisplayName();
+		ICountry flightCountry = flight.getFlightInformation().getAirfield().createCountry(campaign.getDate());
 		
 		if (country.isSameSide(flightCountry))
 		{

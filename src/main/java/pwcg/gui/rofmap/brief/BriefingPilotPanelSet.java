@@ -597,7 +597,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     	}
     	
         IFlight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
-        List<PlaneMcu> playerPlanes = playerFlight.getFlightData().getFlightPlanes().getPlayerPlanes();
+        List<PlaneMcu> playerPlanes = playerFlight.getFlightPlanes().getPlayerPlanes();
         for (PlaneMcu playerPlane : playerPlanes)
         {
             SquadronMember squadronMember = playerPlane.getPilot();
@@ -614,7 +614,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
     private boolean ensurePlayerOwnsPlane() throws PWCGException
     {
         IFlight playerFlight = briefingMissionHandler.getMission().getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
-        List<PlaneMcu> playerPlanes = playerFlight.getFlightData().getFlightPlanes().getPlayerPlanes();
+        List<PlaneMcu> playerPlanes = playerFlight.getFlightPlanes().getPlayerPlanes();
         for (PlaneMcu playerPlane : playerPlanes)
         {
             if (!PlanesOwnedManager.getInstance().isPlaneOwned(playerPlane.getType()))

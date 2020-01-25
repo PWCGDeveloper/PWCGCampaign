@@ -18,8 +18,8 @@ public class EgressWaypointGenerator
 
         McuWaypoint egressWP = WaypointFactory.createEgressWaypointType();
         egressWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        egressWP.setDesc(flight.getFlightData().getFlightInformation().getSquadron().determineDisplayName(flight.getCampaign().getDate()), WaypointType.EGRESS_WAYPOINT.getName());
-        egressWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        egressWP.setDesc(flight.getFlightInformation().getSquadron().determineDisplayName(flight.getCampaign().getDate()), WaypointType.EGRESS_WAYPOINT.getName());
+        egressWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         egressWP.setPosition(egressCoord);
         
        return egressWP;
@@ -27,11 +27,11 @@ public class EgressWaypointGenerator
 
     public static Coordinate createEgressCoordinates(IFlight flight, Coordinate ingressWaypointCoord) throws PWCGException
     {
-        double angleFromFieldToFront = MathUtils.calcAngle(ingressWaypointCoord, flight.getFlightData().getFlightHomePosition());
+        double angleFromFieldToFront = MathUtils.calcAngle(ingressWaypointCoord, flight.getFlightHomePosition());
         int headingOffsetFromIngress = 90 - RandomNumberGenerator.getRandom(180);
         double angleOffsetFromIngress = MathUtils.adjustAngle(angleFromFieldToFront, headingOffsetFromIngress);
         Coordinate egressCoord = MathUtils.calcNextCoord(ingressWaypointCoord, angleOffsetFromIngress, 5000);
-        egressCoord.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        egressCoord.setYPos(flight.getFlightInformation().getAltitude());
 
         return egressCoord;
     }

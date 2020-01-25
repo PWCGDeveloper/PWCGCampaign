@@ -50,7 +50,7 @@ public class PlayerFlightEditor
 
     private void replacePlanesInPlayerFlight() throws PWCGException
     {
-        playerFlight.getFlightData().getFlightPlanes().setPlanes(updatedPlaneSet);
+        playerFlight.getFlightPlanes().setPlanes(updatedPlaneSet);
     }
 
     private void resetPlayerFlightInitialPosition() throws PWCGException
@@ -71,7 +71,7 @@ public class PlayerFlightEditor
         }
 
         plane.setNumberInFormation(numInFormation);
-        plane.setCallsign(playerFlight.getFlightData().getFlightInformation().getSquadron().determineCurrentCallsign(campaign.getDate()));
+        plane.setCallsign(playerFlight.getFlightInformation().getSquadron().determineCurrentCallsign(campaign.getDate()));
         plane.setCallnum(numInFormation);
         setPayloadFromBriefing(plane, crewPlane);
         setModificationsFromBriefing(plane, crewPlane);
@@ -124,9 +124,9 @@ public class PlayerFlightEditor
 
     private PlaneMcu updateFlightMember(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
-        PlaneMcu flightmember = playerFlight.getFlightData().getFlightPlanes().getFlightLeader();
+        PlaneMcu flightmember = playerFlight.getFlightPlanes().getFlightLeader();
         PlaneMcu updatedPlaneMcu = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), 
-                playerFlight.getFlightData().getFlightInformation().getCountry(), crewPlane.getPilot());
+                playerFlight.getFlightInformation().getCountry(), crewPlane.getPilot());
         updatedPlaneMcu.setIndex(IndexGenerator.getInstance().getNextIndex());
         updatedPlaneMcu.getEntity().setTarget(flightmember.getLinkTrId());
 
@@ -136,8 +136,8 @@ public class PlayerFlightEditor
     private PlaneMcu updateLeader(CrewPlanePayloadPairing crewPlane) throws PWCGException
     {
         PlaneMcu flightLeader = PlaneMCUFactory.createPlaneMcuByPlaneType(campaign, crewPlane.getPlane(), 
-                playerFlight.getFlightData().getFlightInformation().getCountry(), crewPlane.getPilot());
-        PlaneMcu flightLeaderPlaneMcu = playerFlight.getFlightData().getFlightPlanes().getFlightLeader();        
+                playerFlight.getFlightInformation().getCountry(), crewPlane.getPilot());
+        PlaneMcu flightLeaderPlaneMcu = playerFlight.getFlightPlanes().getFlightLeader();        
         flightLeader.setIndex(flightLeaderPlaneMcu.getIndex());
         flightLeader.setLinkTrId(flightLeaderPlaneMcu.getLinkTrId());
         flightLeader.getEntity().setIndex(flightLeaderPlaneMcu.getEntity().getIndex());

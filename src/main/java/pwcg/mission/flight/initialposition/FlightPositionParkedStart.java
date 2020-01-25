@@ -20,14 +20,14 @@ public class FlightPositionParkedStart
 
     public void createPlanePositionParkedStart() throws PWCGException
     {
-        PlaneMcu flightLeader = flight.getFlightData().getFlightPlanes().getFlightLeader();
-        PWCGLocation parkingLocation = flight.getFlightData().getFlightInformation().getDepartureAirfield().getParkingLocation();
+        PlaneMcu flightLeader = flight.getFlightPlanes().getFlightLeader();
+        PWCGLocation parkingLocation = flight.getFlightInformation().getDepartureAirfield().getParkingLocation();
         double offsetAngle = MathUtils.adjustAngle(parkingLocation.getOrientation().getyOri(), 90);
         int planeSpacing = calculateParkedSpacing(flightLeader);
 
         // Initial position has already been set for ground starts
         int i = 0;
-        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
+        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
             Coordinate planeCoords = MathUtils.calcNextCoord(parkingLocation.getPosition(), offsetAngle, planeSpacing * i);
             int startParkedVal = FlightStartPosition.START_PARKED;

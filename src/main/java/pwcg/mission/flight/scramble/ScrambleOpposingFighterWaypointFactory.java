@@ -41,7 +41,7 @@ public class ScrambleOpposingFighterWaypointFactory
     {
         List<McuWaypoint> targetWaypoints = new ArrayList<>();
 
-        Double angle = MathUtils.calcAngle(startPosition, flight.getFlightData().getFlightInformation().getTargetPosition());
+        Double angle = MathUtils.calcAngle(startPosition, flight.getFlightInformation().getTargetPosition());
         Orientation orientation = new Orientation();
         orientation.setyOri(angle);
 
@@ -56,12 +56,12 @@ public class ScrambleOpposingFighterWaypointFactory
 
     private McuWaypoint createFirstScrambleWP(Orientation orientation) throws PWCGException
     {
-        Coordinate scrambleOpposeTargetPosition =  flight.getFlightData().getFlightInformation().getTargetPosition();
-        scrambleOpposeTargetPosition.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        Coordinate scrambleOpposeTargetPosition =  flight.getFlightInformation().getTargetPosition();
+        scrambleOpposeTargetPosition.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint scrambleTargetWP = WaypointFactory.createPatrolWaypointType();
         scrambleTargetWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-        scrambleTargetWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        scrambleTargetWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         scrambleTargetWP.setPosition(scrambleOpposeTargetPosition);    
         scrambleTargetWP.setOrientation(orientation);
         scrambleTargetWP.setTargetWaypoint(true);
@@ -72,12 +72,12 @@ public class ScrambleOpposingFighterWaypointFactory
             throws PWCGException
     {
         // This will help the situation where all of the WPs get triggered and the flight deletes itself.
-        Coordinate secondCoord =  MathUtils.calcNextCoord(flight.getFlightData().getFlightInformation().getTargetPosition(), angle, 10000.0);
-        secondCoord.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        Coordinate secondCoord =  MathUtils.calcNextCoord(flight.getFlightInformation().getTargetPosition(), angle, 10000.0);
+        secondCoord.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint scrambleFurtherWP = WaypointFactory.createPatrolWaypointType();
         scrambleFurtherWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-        scrambleFurtherWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        scrambleFurtherWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         scrambleFurtherWP.setPosition(secondCoord);    
         scrambleFurtherWP.setTargetWaypoint(false);
         scrambleFurtherWP.setOrientation(orientation);

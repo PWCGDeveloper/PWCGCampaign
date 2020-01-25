@@ -7,11 +7,11 @@ public class FlightPositionSetter
 {
     public static void setFlightInitialPosition(IFlight flight) throws PWCGException
     {
-        if (flight.getFlightData().getFlightInformation().isAirStart())
+        if (flight.getFlightInformation().isAirStart())
         {
             FlightPositionAirStart.createPlanePositionAirStart(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().isParkedStart())
+        else if (flight.getFlightInformation().isParkedStart())
         {
             FlightPositionParkedStart parkedStart = new FlightPositionParkedStart(flight);
             parkedStart.createPlanePositionParkedStart();

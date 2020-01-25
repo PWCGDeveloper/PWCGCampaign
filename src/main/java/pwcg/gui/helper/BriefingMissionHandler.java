@@ -106,8 +106,8 @@ public class BriefingMissionHandler
             SquadronMember referencePlayer = PWCGContext.getInstance().getReferencePlayer();
             IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(referencePlayer);
 
-            playerFlight.getFlightData().getWaypointPackage().updateWaypoints(briefParametersContext.getWaypointsInBriefing());
-            playerFlight.getFlightData().getFlightPlanes().setFuel(briefParametersContext.getSelectedFuel());
+            playerFlight.getWaypointPackage().updateWaypoints(briefParametersContext.getWaypointsInBriefing());
+            playerFlight.getFlightPlanes().setFuel(briefParametersContext.getSelectedFuel());
             
             PWCGContext.getInstance().getCurrentMap().getMissionOptions().getMissionTime().setMissionTime(briefParametersContext.getSelectedTime());
         }

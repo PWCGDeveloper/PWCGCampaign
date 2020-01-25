@@ -21,11 +21,11 @@ public class IngressWaypointNearTarget implements IIngressWaypoint
     public McuWaypoint createIngressWaypoint() throws PWCGException  
     {
         Coordinate ingressCoords = getIngressWaypointNearTarget();
-        ingressCoords.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        ingressCoords.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint ingressWP = WaypointFactory.createIngressWaypointType();
         ingressWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        ingressWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        ingressWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         ingressWP.setPosition(ingressCoords);   
         ingressWP.setTargetWaypoint(false);
         
@@ -34,14 +34,14 @@ public class IngressWaypointNearTarget implements IIngressWaypoint
 
     private Coordinate getIngressWaypointNearTarget() throws PWCGException 
     {
-        double angleToTarget = MathUtils.calcAngle(flight.getFlightData().getFlightHomePosition(), flight.getFlightData().getFlightInformation().getTargetPosition());
-        double distanceToTarget = MathUtils.calcDist(flight.getFlightData().getFlightHomePosition(), flight.getFlightData().getFlightInformation().getTargetPosition());
-        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getFlightData().getFlightHomePosition(), angleToTarget, distanceToTarget / 2);
+        double angleToTarget = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getFlightInformation().getTargetPosition());
+        double distanceToTarget = MathUtils.calcDist(flight.getFlightHomePosition(), flight.getFlightInformation().getTargetPosition());
+        Coordinate ingressCoordinate = MathUtils.calcNextCoord(flight.getFlightHomePosition(), angleToTarget, distanceToTarget / 2);
         
-        double distance = MathUtils.calcDist(flight.getFlightData().getFlightInformation().getTargetPosition(), ingressCoordinate);
+        double distance = MathUtils.calcDist(flight.getFlightInformation().getTargetPosition(), ingressCoordinate);
         if (isIngressTooCloseToTarget(distance))
         {
-            ingressCoordinate = moveIngressZoneAwayFromTarget(ingressCoordinate, flight.getFlightData().getFlightInformation().getTargetPosition());
+            ingressCoordinate = moveIngressZoneAwayFromTarget(ingressCoordinate, flight.getFlightInformation().getTargetPosition());
         }
         
         return ingressCoordinate;

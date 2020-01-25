@@ -12,81 +12,81 @@ public class MissionObjectiveFactory
 {
     public static String formMissionObjective(IFlight flight) throws PWCGException
     {
-        if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ARTILLERY_SPOT)
+        if (flight.getFlightInformation().getFlightType() == FlightTypes.ARTILLERY_SPOT)
         {
             return GroundAttackObjective.getMissionObjective(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.BALLOON_BUST)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.BALLOON_BUST)
         {
             return getBalloonBustMissionObjective(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.BALLOON_DEFENSE)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.BALLOON_DEFENSE)
         {
             return getBalloonDefenseMissionObjective(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.CARGO_DROP)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.CARGO_DROP)
         {
             return getCargoDropMissionObjective(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.CONTACT_PATROL)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.CONTACT_PATROL)
         {
             return getContactPatrolMissionObjective(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ESCORT)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.ESCORT)
         {
             return getEscortMissionObjective(flight);
         }
 
-        if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.BOMB ||
-            flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK ||
-            flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.DIVE_BOMB ||
-            flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.LOW_ALT_BOMB ||
-            flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK ||
-            flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_DIVE_BOMB ||
-            flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB)
+        if (flight.getFlightInformation().getFlightType() == FlightTypes.BOMB ||
+            flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK ||
+            flight.getFlightInformation().getFlightType() == FlightTypes.DIVE_BOMB ||
+            flight.getFlightInformation().getFlightType() == FlightTypes.LOW_ALT_BOMB ||
+            flight.getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK ||
+            flight.getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_DIVE_BOMB ||
+            flight.getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB)
         {
             return GroundAttackObjective.getMissionObjective(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.INTERCEPT ||
-                flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.HOME_DEFENSE)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.INTERCEPT ||
+                flight.getFlightInformation().getFlightType() == FlightTypes.HOME_DEFENSE)
         {
             return getInterceptMissionObjective(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.LONE_WOLF)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.LONE_WOLF)
         {
             return getLoneWolfMissionObjective();
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.OFFENSIVE)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.OFFENSIVE)
         {
             return OffensivePatrolObjective.getMissionObjective((OffensiveFlight) flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.PARATROOP_DROP)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.PARATROOP_DROP)
         {
             return getParatroopDropMissionObjective(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.PATROL ||
-                flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.LOW_ALT_CAP ||
-                flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.LOW_ALT_PATROL)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.PATROL ||
+                flight.getFlightInformation().getFlightType() == FlightTypes.LOW_ALT_CAP ||
+                flight.getFlightInformation().getFlightType() == FlightTypes.LOW_ALT_PATROL)
         {
             return getPatrolMissionObjective(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.RECON)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.RECON)
         {
             return ReconObjective.getMissionObjective((ReconFlight) flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE)
         {
             return getScrambleMissionObjective();
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.SPY_EXTRACT)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.SPY_EXTRACT)
         {
             return getSpyExtractMissionObjective(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.STRATEGIC_BOMB)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.STRATEGIC_BOMB)
         {
             return StrategicBombObjective.getMissionObjective(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.TRANSPORT)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.TRANSPORT)
         {
             return TransportObjective.getMissionObjective((TransportFlight) flight);
         }
@@ -96,13 +96,13 @@ public class MissionObjectiveFactory
 
     private static String getBalloonBustMissionObjective(IFlight flight) throws PWCGException 
     {
-        String objective = "Destroy the enemy balloon" + MissionObjective.formMissionObjectiveLocation(flight.getFlightData().getFlightInformation().getTargetPosition().copy()) + ".";       
+        String objective = "Destroy the enemy balloon" + MissionObjective.formMissionObjectiveLocation(flight.getFlightInformation().getTargetPosition().copy()) + ".";       
         return objective;
     }
 
     private static String getBalloonDefenseMissionObjective(IFlight flight) throws PWCGException 
     {
-        String objective = "Defend our balloon" + MissionObjective.formMissionObjectiveLocation(flight.getFlightData().getFlightInformation().getTargetPosition().copy()) + ".";      
+        String objective = "Defend our balloon" + MissionObjective.formMissionObjectiveLocation(flight.getFlightInformation().getTargetPosition().copy()) + ".";      
 
         return objective;
     }
@@ -112,7 +112,7 @@ public class MissionObjectiveFactory
         String objective = "Perform reconnaissance at the specified front location.  " + 
                 "Make contact with friendly troop concentrations to establish front lines.";
         
-        objective = "Perform reconnaissance" + MissionObjective.formMissionObjectiveLocation(flight.getFlightData().getFlightInformation().getTargetPosition().copy()) + 
+        objective = "Perform reconnaissance" + MissionObjective.formMissionObjectiveLocation(flight.getFlightInformation().getTargetPosition().copy()) + 
                         ".  Make contact with friendly troop concentrations to establish front lines.";
         
         return objective;
@@ -120,7 +120,7 @@ public class MissionObjectiveFactory
 
     private static String getEscortMissionObjective(IFlight flight) throws PWCGException 
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
         String objective = "Escort to the specified location and accompany them until they cross our lines.";
         String objectiveName =  MissionObjective.formMissionObjectiveLocation(flightInformation.getTargetPosition().copy()) + ".";
         if (!objectiveName.isEmpty())
@@ -134,7 +134,7 @@ public class MissionObjectiveFactory
 
     private static String getInterceptMissionObjective(IFlight flight) throws PWCGException 
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
         String objective = "Intercept enemy aircraft" + MissionObjective.formMissionObjectiveLocation(flightInformation.getTargetPosition().copy()) + ".";      
         
         return objective;
@@ -147,21 +147,21 @@ public class MissionObjectiveFactory
     
     private static String getCargoDropMissionObjective(IFlight flight) throws PWCGException
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
         String objective = "Perform a carrgo drop" + MissionObjective.formMissionObjectiveLocation(flightInformation.getTargetPosition().copy()) + ".";     
         return objective;
     }
     
     private static String getParatroopDropMissionObjective(IFlight flight) throws PWCGException
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
         String objective = "Drop our paratroops" + MissionObjective.formMissionObjectiveLocation(flightInformation.getTargetPosition().copy()) + ".";       
         return objective;
     }
 
     private static String getPatrolMissionObjective(IFlight flight) throws PWCGException
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
         String objective = "Patrol aircpace at the specified front location.  " + 
                 "Engage any enemy aircraft that you encounter.  ";
         String objectiveName =  MissionObjective.formMissionObjectiveLocation(flightInformation.getTargetPosition().copy()) + "."; 
@@ -181,7 +181,7 @@ public class MissionObjectiveFactory
 
     private static String getSpyExtractMissionObjective(IFlight flight) throws PWCGException 
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
         String objective = "Extract our spy at the specified location" + 
                 MissionObjective.formMissionObjectiveLocation(flightInformation.getTargetPosition().copy()) + "."  + 
                 ".  Don't get caught!";       

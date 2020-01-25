@@ -76,15 +76,15 @@ public class MissionAnalyzer
         {
             NumberFormat numberFormat = new DecimalFormat("###.0");
 
-            writer.write("  Mission type: " + flight.getFlightData().getFlightInformation().getFlightType());
+            writer.write("  Mission type: " + flight.getFlightInformation().getFlightType());
             writer.newLine();
-            writer.write("  Airfield    : " + flight.getFlightData().getFlightInformation().getAirfield().getName());
+            writer.write("  Airfield    : " + flight.getFlightInformation().getAirfield().getName());
             writer.newLine();
-            writer.write("  Aircraft    : " + flight.getFlightData().getFlightPlanes().getFlightLeader().getType());
+            writer.write("  Aircraft    : " + flight.getFlightPlanes().getFlightLeader().getType());
             writer.newLine();
-            writer.write("  Player Contact    : " + flight.getFlightData().getFlightPlayerContact().getFirstContactWithPlayer());
+            writer.write("  Player Contact    : " + flight.getFlightPlayerContact().getFirstContactWithPlayer());
             writer.newLine();
-            List<McuWaypoint> waypoints = flight.getFlightData().getWaypointPackage().getAllWaypoints();
+            List<McuWaypoint> waypoints = flight.getWaypointPackage().getAllWaypoints();
             
             if (dumpWP)
             {
@@ -150,7 +150,7 @@ public class MissionAnalyzer
         List<IFlight> alliedFlights = new ArrayList<IFlight>();
         for (IFlight flight : flights)
         {
-            if (flight.getFlightData().getFlightInformation().getCountry().getSide() == Side.ALLIED)
+            if (flight.getFlightInformation().getCountry().getSide() == Side.ALLIED)
             {
                 alliedFlights.add(flight);
             }
@@ -169,7 +169,7 @@ public class MissionAnalyzer
         List<IFlight> axisFlights = new ArrayList<IFlight>();
         for (IFlight flight : flights)
         {
-            if (flight.getFlightData().getFlightInformation().getCountry().getSide() == Side.AXIS)
+            if (flight.getFlightInformation().getCountry().getSide() == Side.AXIS)
             {
                 axisFlights.add(flight);
             }

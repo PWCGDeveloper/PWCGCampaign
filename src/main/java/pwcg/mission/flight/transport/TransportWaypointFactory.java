@@ -62,11 +62,11 @@ public class TransportWaypointFactory
         distanceBetweenAirfields = distanceBetweenAirfields / 2;
         
         Coordinate midPointCoords = MathUtils.calcNextCoord(fromAirfield.getTakeoffLocation().getPosition(), angleFromTargetToHomeAirfield, distanceBetweenAirfields);
-        midPointCoords.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        midPointCoords.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint midPointWP = WaypointFactory.createMoveToWaypointType();
         midPointWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        midPointWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        midPointWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         midPointWP.setPosition(midPointCoords);
         midPointWP.setName("Mid Waypoint");
         return midPointWP;
@@ -77,11 +77,11 @@ public class TransportWaypointFactory
         double angleFromTargetToHomeAirfield = MathUtils.calcAngle(toAirfield.getLandingLocation().getPosition(), lastWp.getPosition());
         
         Coordinate destinationCoords = MathUtils.calcNextCoord(toAirfield.getLandingLocation().getPosition(), angleFromTargetToHomeAirfield, 10000.0);
-        destinationCoords.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        destinationCoords.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint destinationWP = WaypointFactory.createMoveToWaypointType();
         destinationWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        destinationWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        destinationWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         destinationWP.setPosition(destinationCoords);
         destinationWP.setName("Destination");
         return destinationWP;

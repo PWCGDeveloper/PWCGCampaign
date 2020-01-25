@@ -29,7 +29,7 @@ public class FlightPayloadBuilder
 
     private void setFlightPayloadMixed() throws PWCGException
     {
-        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
+        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
             plane.buildPlanePayload(flight);
         }
@@ -37,10 +37,10 @@ public class FlightPayloadBuilder
 
     private void setFlightPayloadHomogeneous() throws PWCGException
     {
-        PlaneMcu leadPlane = flight.getFlightData().getFlightPlanes().getFlightLeader();
+        PlaneMcu leadPlane = flight.getFlightPlanes().getFlightLeader();
         IPlanePayload payload = leadPlane.buildPlanePayload(flight);
         
-        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
+        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
             plane.setPlanePayload(payload);
         }
@@ -48,9 +48,9 @@ public class FlightPayloadBuilder
 
     private void initializeFuel() throws PWCGException
     {
-        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
+        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
-            if (!flight.getFlightData().getFlightInformation().isAirStart())
+            if (!flight.getFlightInformation().isAirStart())
             {
                 plane.setFuel(1.0);
             }
@@ -63,8 +63,8 @@ public class FlightPayloadBuilder
 
     private boolean isHomogeneous()
     {
-        PlaneMcu leadPlane = flight.getFlightData().getFlightPlanes().getFlightLeader();
-        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
+        PlaneMcu leadPlane = flight.getFlightPlanes().getFlightLeader();
+        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
             if (!plane.getType().equals(leadPlane.getType()))
             {

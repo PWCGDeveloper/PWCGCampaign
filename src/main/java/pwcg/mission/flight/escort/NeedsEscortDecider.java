@@ -16,7 +16,7 @@ public class NeedsEscortDecider
         if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE ||
             campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COOP)
         {
-            if (escortedFlight.getFlightData().getFlightInformation().isPlayerFlight())
+            if (escortedFlight.getFlightInformation().isPlayerFlight())
             {
                 return playerNeedsEscort(mission, escortedFlight);
             }
@@ -31,7 +31,7 @@ public class NeedsEscortDecider
     
     private boolean playerNeedsEscort(Mission mission, IFlight escortedFlight) throws PWCGException, PWCGException
     {
-        if (!escortedFlight.getFlightData().getFlightInformation().isFighterMission())
+        if (!escortedFlight.getFlightInformation().isFighterMission())
         {
             return true;
         }
@@ -47,7 +47,7 @@ public class NeedsEscortDecider
         {
             if (mission.getMissionFlightBuilder().hasPlayerFighterFlightType())
             {
-                if (!escortedFlight.getFlightData().getFlightInformation().isEscortedByPlayerFlight())
+                if (!escortedFlight.getFlightInformation().isEscortedByPlayerFlight())
                 {
                     if (campaign.isFighterCampaign())
                     {

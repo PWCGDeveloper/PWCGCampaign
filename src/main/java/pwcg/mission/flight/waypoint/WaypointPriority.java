@@ -25,9 +25,9 @@ public enum WaypointPriority
 
     public static void setWaypointsNonFighterPriority(IFlight flight)
     {
-        for (McuWaypoint waypoint : flight.getFlightData().getWaypointPackage().getAllWaypoints())
+        for (McuWaypoint waypoint : flight.getWaypointPackage().getAllWaypoints())
         {
-            if (!flight.getFlightData().getFlightPlanes().getFlightLeader().isPrimaryRole(Role.ROLE_FIGHTER))
+            if (!flight.getFlightPlanes().getFlightLeader().isPrimaryRole(Role.ROLE_FIGHTER))
             {
                 if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TAKEOFF)
                 {
@@ -35,7 +35,7 @@ public enum WaypointPriority
                 }
                 else
                 {
-                    if (FlightTypes.isHighPriorityFlight(flight.getFlightData().getFlightInformation().getFlightType()))
+                    if (FlightTypes.isHighPriorityFlight(flight.getFlightInformation().getFlightType()))
                     {
                         waypoint.setPriority(WaypointPriority.PRIORITY_HIGH);
                     }

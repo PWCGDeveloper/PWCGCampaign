@@ -56,7 +56,7 @@ public class OffensiveWaypointsTransportFactory
         sortedFixedPositions.sortPositionsByDirecton(allFixedPositionsInRadius);
         IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         List <IFixedPosition> sortedPositions = sortedFixedPositions.getSortedPositionsWithMaxDistanceTTravelled(
-                campaign, flight.getFlightData().getFlightInformation().getTargetPosition(), productSpecific.getSmallMissionRadius());
+                campaign, flight.getFlightInformation().getTargetPosition(), productSpecific.getSmallMissionRadius());
 
         for (IFixedPosition transportBlock : sortedPositions)
         {
@@ -70,7 +70,7 @@ public class OffensiveWaypointsTransportFactory
     {
         Campaign campaign = flight.getCampaign();
 
-        ICountry enemycountry = CountryFactory.makeMapReferenceCountry(flight.getFlightData().getFlightInformation().getCountry().getSide().getOppositeSide());
+        ICountry enemycountry = CountryFactory.makeMapReferenceCountry(flight.getFlightInformation().getCountry().getSide().getOppositeSide());
         List <IFixedPosition> allFixedPositionsInRadius = new ArrayList<>();
         double missionTargetRadius = flight.getMission().getMissionBorders().getAreaRadius();
         while (!stopLooking(allFixedPositionsInRadius, missionTargetRadius))
@@ -107,10 +107,10 @@ public class OffensiveWaypointsTransportFactory
 
     private McuWaypoint createWP(Coordinate transportPosition) throws PWCGException 
     {
-        transportPosition.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        transportPosition.setYPos(flight.getFlightInformation().getAltitude());
         McuWaypoint wp = WaypointFactory.createPatrolWaypointType();
         wp.setTriggerArea(McuWaypoint.TARGET_AREA);
-        wp.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        wp.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         wp.setPosition(transportPosition);
         
         return wp;

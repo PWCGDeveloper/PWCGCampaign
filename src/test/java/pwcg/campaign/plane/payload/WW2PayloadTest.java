@@ -39,7 +39,7 @@ public class WW2PayloadTest
 		PWCGContext.setProduct(PWCGProduct.BOS);
         
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign);
-		Mockito.when(flight.getFlightData().getFlightInformation().getSquadron()).thenReturn(squadron);
+		Mockito.when(flight.getFlightInformation().getSquadron()).thenReturn(squadron);
 	}
 
 	@Test
@@ -58,15 +58,15 @@ public class WW2PayloadTest
 	
 	private void testPatrolPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
-		Mockito.when(flight.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
-		Mockito.when(flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
+		Mockito.when(flight.getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
+		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
 		runPayload(payloadGenerator);
 	}
 	
 	private void testInterceptPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
-		Mockito.when(flight.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.INTERCEPT);
-		Mockito.when(flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
+		Mockito.when(flight.getFlightInformation().getFlightType()).thenReturn(FlightTypes.INTERCEPT);
+		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
 		runPayload(payloadGenerator);
 	}
 
@@ -80,14 +80,14 @@ public class WW2PayloadTest
 	
 	private void testBombPayload(IPlanePayload payloadGenerator, FlightTypes flightType) throws PWCGException
 	{
-		Mockito.when(flight.getFlightData().getFlightInformation().getFlightType()).thenReturn(flightType);
-		Mockito.when(flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_SOFT);
+		Mockito.when(flight.getFlightInformation().getFlightType()).thenReturn(flightType);
+		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_SOFT);
 		runPayload(payloadGenerator);
-		Mockito.when(flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_ARMORED);
+		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_ARMORED);
 		runPayload(payloadGenerator);
-		Mockito.when(flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_MEDIUM);
+		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_MEDIUM);
 		runPayload(payloadGenerator);
-		Mockito.when(flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_HEAVY);
+		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_HEAVY);
 		runPayload(payloadGenerator);
 	}
 

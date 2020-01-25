@@ -45,7 +45,7 @@ public class ReconAirfieldWaypointsFactory
     {
         List<McuWaypoint> targetWaypoints = new ArrayList<McuWaypoint>();
         
-        Side enemySide = flight.getFlightData().getFlightInformation().getCountry().getSide().getOppositeSide();
+        Side enemySide = flight.getFlightInformation().getCountry().getSide().getOppositeSide();
 
         // Find airfields to recon
         List <IAirfield> enemyAirfields = new ArrayList<IAirfield>();
@@ -54,7 +54,7 @@ public class ReconAirfieldWaypointsFactory
         while (enemyAirfields.size() <= 2)
         {
             enemyAirfields =  PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfieldFinder().getAirfieldsWithinRadiusBySide(
-                    flight.getFlightData().getFlightInformation().getTargetPosition(), flight.getCampaign().getDate(), maxRadius, enemySide);
+                    flight.getFlightInformation().getTargetPosition(), flight.getCampaign().getDate(), maxRadius, enemySide);
                         
             maxRadius += 10000.0;
         }
@@ -66,7 +66,7 @@ public class ReconAirfieldWaypointsFactory
         }
         
         List <IAirfield> remainingAirfields = enemyAirfields;
-        Coordinate lastCoord = flight.getFlightData().getFlightInformation().getTargetPosition().copy();
+        Coordinate lastCoord = flight.getFlightInformation().getTargetPosition().copy();
         for (int i = 0; i < numWaypoints; ++i)
         {
             int index = getNextAirfield(remainingAirfields, lastCoord);
@@ -102,11 +102,11 @@ public class ReconAirfieldWaypointsFactory
 
     private McuWaypoint createWP(Coordinate coord) throws PWCGException 
     {
-        coord.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        coord.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint wp = WaypointFactory.createReconWaypointType();
         wp.setTriggerArea(McuWaypoint.TARGET_AREA);
-        wp.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        wp.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         wp.setPosition(coord);
 
         return wp;

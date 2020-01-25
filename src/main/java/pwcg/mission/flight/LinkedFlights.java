@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.mission.flight.escort.EscortForPlayerFlight;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
 
-public class LinkedFlights implements ILinkedFLights
+public class LinkedFlights implements ILinkedFlights
 {
     private List<IFlight> linkedFlights = new ArrayList<>();
 
@@ -15,9 +15,9 @@ public class LinkedFlights implements ILinkedFLights
     {
         for (IFlight linkedFlight : linkedFlights)
         {
-            if (linkedFlight.getFlightData().getFlightInformation().isEscortedByPlayerFlight())
+            if (linkedFlight.getFlightInformation().isEscortedByPlayerFlight())
             {
-                return linkedFlight.getFlightData().getWaypointPackage();
+                return linkedFlight.getWaypointPackage();
             }
         }
 

@@ -17,21 +17,21 @@ public class MissionAssociateFlightBuilder
         List<IFlight> flightsForMission = mission.getMissionFlightBuilder().getAllAerialFlights();
         for (IFlight flight : flightsForMission)
         {
-            if (flight.getFlightData().getFlightInformation().isPlayerFlight())
+            if (flight.getFlightInformation().isPlayerFlight())
             {
-                if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.INTERCEPT || flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.HOME_DEFENSE)
+                if (flight.getFlightInformation().getFlightType() == FlightTypes.INTERCEPT || flight.getFlightInformation().getFlightType() == FlightTypes.HOME_DEFENSE)
                 {
                     makeLinkedInterceptFlights(flight);
                 }
-                else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE)
+                else if (flight.getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE)
                 {
                     makeLinkedScrambleFlights(flight);
                 }
-                else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.BALLOON_BUST)
+                else if (flight.getFlightInformation().getFlightType() == FlightTypes.BALLOON_BUST)
                 {
                     // TODO Flying Circus
                 }
-                else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.BALLOON_DEFENSE)
+                else if (flight.getFlightInformation().getFlightType() == FlightTypes.BALLOON_DEFENSE)
                 {
                     // TODO Flying Circus
                 }
@@ -48,21 +48,21 @@ public class MissionAssociateFlightBuilder
 
     private void makeLinkedScrambleFlights(IFlight flight) throws PWCGException
     {
-        ScrambleOpposingFlightBuilder opposingFlightBuilder = new ScrambleOpposingFlightBuilder(flight.getFlightData().getFlightInformation());
+        ScrambleOpposingFlightBuilder opposingFlightBuilder = new ScrambleOpposingFlightBuilder(flight.getFlightInformation());
         List<IFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
         for (IFlight opposingFlight: opposingFlights)
         {
-            flight.getFlightData().getLinkedFlights().addLinkedFlight(opposingFlight);
+            flight.getLinkedFlights().addLinkedFlight(opposingFlight);
         }
     }
 
     private void makeLinkedInterceptFlights(IFlight flight) throws PWCGException
     {
-        InterceptOpposingFlightBuilder opposingFlightBuilder = new InterceptOpposingFlightBuilder(flight.getFlightData().getFlightInformation());
+        InterceptOpposingFlightBuilder opposingFlightBuilder = new InterceptOpposingFlightBuilder(flight.getFlightInformation());
         List<IFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
         for (IFlight opposingFlight: opposingFlights)
         {
-            flight.getFlightData().getLinkedFlights().addLinkedFlight(opposingFlight);
+            flight.getLinkedFlights().addLinkedFlight(opposingFlight);
         }
     }
 

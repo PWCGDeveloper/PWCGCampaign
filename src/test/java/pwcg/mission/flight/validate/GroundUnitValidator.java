@@ -21,7 +21,7 @@ public class GroundUnitValidator
 
     public void validateGroundUnitsForFlight(IFlight flight)
     {
-        if (flight.getFlightData().getFlightInformation().isPlayerFlight() || flight.getFlightData().getFlightInformation().isEscortedByPlayerFlight() || flight.getFlightData().getFlightInformation().isEscortForPlayerFlight())
+        if (flight.getFlightInformation().isPlayerFlight() || flight.getFlightInformation().isEscortedByPlayerFlight() || flight.getFlightInformation().isEscortForPlayerFlight())
         {
             validatePlayerGroundUnits(flight);
         }
@@ -33,7 +33,7 @@ public class GroundUnitValidator
     
     private void validatePlayerGroundUnits(IFlight flight)
     {
-        for (IGroundUnitCollection linkedUnit : flight.getFlightData().getLinkedGroundUnits().getLinkedGroundUnits())
+        for (IGroundUnitCollection linkedUnit : flight.getLinkedGroundUnits().getLinkedGroundUnits())
         {
             if ((linkedUnit).getGroundUnitCollectionType() == GroundUnitCollectionType.BALLOON_GROUND_UNIT_COLLECTION)
             {
@@ -56,7 +56,7 @@ public class GroundUnitValidator
 
     private void validateAiGroundUnits(IFlight flight)
     {
-        for (IGroundUnitCollection linkedUnit : flight.getFlightData().getLinkedGroundUnits().getLinkedGroundUnits())
+        for (IGroundUnitCollection linkedUnit : flight.getLinkedGroundUnits().getLinkedGroundUnits())
         {
             for (IGroundUnit groundUnit : linkedUnit.getGroundUnits())
             {

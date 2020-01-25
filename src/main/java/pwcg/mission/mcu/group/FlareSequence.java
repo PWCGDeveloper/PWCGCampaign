@@ -29,7 +29,7 @@ public class FlareSequence
         missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone(position, FLARE_TRIGGER_DISTANCE);
         missionBeginUnit.linkCheckZoneTarget(flareTimers[0].getIndex());
 
-        for (PlaneMcu triggeringPlane : triggeringFlight.getFlightData().getFlightPlanes().getPlanes())
+        for (PlaneMcu triggeringPlane : triggeringFlight.getFlightPlanes().getPlanes())
         {
             missionBeginUnit.setCheckZoneTriggerObject(triggeringPlane.getEntity().getIndex());
         }

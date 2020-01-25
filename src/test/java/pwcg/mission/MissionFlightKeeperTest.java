@@ -83,87 +83,87 @@ public class MissionFlightKeeperTest
         Mockito.when(configManagerCampaign.getIntConfigParam(ConfigItemKeys.AiFighterFlightsForFighterCampaignMaxKey)).thenReturn(3);
         
         Mockito.when(alliedAiFlight1.isFlightHasFighterPlanes()).thenReturn(true);
-        Mockito.when(alliedAiFlight1.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
+        Mockito.when(alliedAiFlight1.getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
         Mockito.when(alliedAiFlight1.getFl.getSquadron()).thenReturn(alliedSquadron);
         Mockito.when(alliedAiFlight1.getClosestContactWithPlayerDistance()).thenReturn(1000.0);
 
         Mockito.when(alliedAiFlight2.isFlightHasFighterPlanes()).thenReturn(true);
-        Mockito.when(alliedAiFlight2.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
+        Mockito.when(alliedAiFlight2.getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
         Mockito.when(alliedAiFlight2.getSquadron()).thenReturn(alliedSquadron);
         Mockito.when(alliedAiFlight2.getClosestContactWithPlayerDistance()).thenReturn(3000.0);
 
         Mockito.when(alliedAiFlight3.isFlightHasFighterPlanes()).thenReturn(true);
-        Mockito.when(alliedAiFlight3.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
+        Mockito.when(alliedAiFlight3.getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
         Mockito.when(alliedAiFlight3.getSquadron()).thenReturn(alliedSquadron);
         Mockito.when(alliedAiFlight3.getClosestContactWithPlayerDistance()).thenReturn(5000.0);
 
         Mockito.when(alliedAiFlight4.isFlightHasFighterPlanes()).thenReturn(false);
-        Mockito.when(alliedAiFlight4.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
+        Mockito.when(alliedAiFlight4.getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
         Mockito.when(alliedAiFlight4.getSquadron()).thenReturn(alliedSquadron);
         Mockito.when(alliedAiFlight4.getClosestContactWithPlayerDistance()).thenReturn(2000.0);
 
         Mockito.when(alliedAiFlight5.isFlightHasFighterPlanes()).thenReturn(false);
-        Mockito.when(alliedAiFlight5.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
+        Mockito.when(alliedAiFlight5.getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
         Mockito.when(alliedAiFlight5.getSquadron()).thenReturn(alliedSquadron);
         Mockito.when(alliedAiFlight5.getClosestContactWithPlayerDistance()).thenReturn(4000.0);
 
         Mockito.when(alliedAiFlight6.isFlightHasFighterPlanes()).thenReturn(true);
-        Mockito.when(alliedAiFlight6.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
+        Mockito.when(alliedAiFlight6.getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
         Mockito.when(alliedAiFlight6.getSquadron()).thenReturn(alliedSquadron);
         Mockito.when(alliedAiFlight6.getClosestContactWithPlayerDistance()).thenReturn(6000.0);
         
         Mockito.when(axisAiFlight1.isFlightHasFighterPlanes()).thenReturn(true);
-        Mockito.when(axisAiFlight1.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
+        Mockito.when(axisAiFlight1.getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
         Mockito.when(axisAiFlight1.getSquadron()).thenReturn(axisSquadron);
         Mockito.when(axisAiFlight1.getClosestContactWithPlayerDistance()).thenReturn(1000.0);
 
         Mockito.when(axisAiFlight2.isFlightHasFighterPlanes()).thenReturn(true);
-        Mockito.when(axisAiFlight2.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
+        Mockito.when(axisAiFlight2.getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
         Mockito.when(axisAiFlight2.getSquadron()).thenReturn(axisSquadron);
         Mockito.when(axisAiFlight2.getClosestContactWithPlayerDistance()).thenReturn(3000.0);
 
         Mockito.when(axisAiFlight3.isFlightHasFighterPlanes()).thenReturn(true);
-        Mockito.when(axisAiFlight3.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
+        Mockito.when(axisAiFlight3.getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
         Mockito.when(axisAiFlight3.getSquadron()).thenReturn(axisSquadron);
         Mockito.when(axisAiFlight3.getClosestContactWithPlayerDistance()).thenReturn(5000.0);
 
         Mockito.when(axisAiFlight4.isFlightHasFighterPlanes()).thenReturn(false);
-        Mockito.when(axisAiFlight4.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
+        Mockito.when(axisAiFlight4.getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
         Mockito.when(axisAiFlight4.getSquadron()).thenReturn(axisSquadron);
         Mockito.when(axisAiFlight4.getClosestContactWithPlayerDistance()).thenReturn(2000.0);
 
         Mockito.when(axisAiFlight5.isFlightHasFighterPlanes()).thenReturn(false);
-        Mockito.when(axisAiFlight5.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
+        Mockito.when(axisAiFlight5.getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
         Mockito.when(axisAiFlight5.getSquadron()).thenReturn(axisSquadron);
         Mockito.when(axisAiFlight5.getClosestContactWithPlayerDistance()).thenReturn(4000.0);
 
         Mockito.when(axisAiFlight6.isFlightHasFighterPlanes()).thenReturn(true);
-        Mockito.when(axisAiFlight6.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
+        Mockito.when(axisAiFlight6.getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
         Mockito.when(axisAiFlight6.getSquadron()).thenReturn(axisSquadron);
         Mockito.when(axisAiFlight6.getClosestContactWithPlayerDistance()).thenReturn(6000.0);
 
         Mockito.when(alliedPlayerFlight1.isFlightHasFighterPlanes()).thenReturn(true);
-        Mockito.when(alliedPlayerFlight1.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
+        Mockito.when(alliedPlayerFlight1.getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
         Mockito.when(alliedPlayerFlight1.getSquadron()).thenReturn(alliedSquadron);
         
         Mockito.when(alliedPlayerFlight2.isFlightHasFighterPlanes()).thenReturn(true);
-        Mockito.when(alliedPlayerFlight2.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
+        Mockito.when(alliedPlayerFlight2.getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
         Mockito.when(alliedPlayerFlight2.getSquadron()).thenReturn(alliedSquadron);
         
         Mockito.when(alliedPlayerFlight3.isFlightHasFighterPlanes()).thenReturn(true);
-        Mockito.when(alliedPlayerFlight3.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
+        Mockito.when(alliedPlayerFlight3.getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
         Mockito.when(alliedPlayerFlight3.getSquadron()).thenReturn(alliedSquadron);
 
         Mockito.when(axisPlayerFlight1.isFlightHasFighterPlanes()).thenReturn(true);
-        Mockito.when(axisPlayerFlight1.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
+        Mockito.when(axisPlayerFlight1.getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
         Mockito.when(axisPlayerFlight1.getSquadron()).thenReturn(axisSquadron);
         
         Mockito.when(axisPlayerFlight2.isFlightHasFighterPlanes()).thenReturn(true);
-        Mockito.when(axisPlayerFlight2.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
+        Mockito.when(axisPlayerFlight2.getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
         Mockito.when(axisPlayerFlight2.getSquadron()).thenReturn(axisSquadron);
         
         Mockito.when(axisPlayerFlight3.isFlightHasFighterPlanes()).thenReturn(true);
-        Mockito.when(axisPlayerFlight3.getFlightData().getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
+        Mockito.when(axisPlayerFlight3.getFlightInformation().getFlightType()).thenReturn(FlightTypes.BOMB);
         Mockito.when(axisPlayerFlight3.getSquadron()).thenReturn(axisSquadron);
                 
         Mockito.when(missionFlightBuilder.getAiFlights()).thenReturn(alliedAiFlights);

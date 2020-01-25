@@ -89,9 +89,9 @@ public class PlaneCounter
 
     public void setPlaneCounterForFlight(IFlight flight) 
      {
-         if (flight.getFlightData().getFlightInformation().isVirtual())
+         if (flight.getFlightInformation().isVirtual())
          {
-             IVirtualWaypointPackage virtualWaypointPackage = flight.getFlightData().getVirtualWaypointPackage();
+             IVirtualWaypointPackage virtualWaypointPackage = flight.getVirtualWaypointPackage();
              for (VirtualWayPoint vwp : virtualWaypointPackage.getVirtualWaypoints())
              {
                  // Link this VWP spawners to the plane counter

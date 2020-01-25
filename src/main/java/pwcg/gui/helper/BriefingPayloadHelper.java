@@ -75,7 +75,7 @@ public class BriefingPayloadHelper
     private void assignPayloadsToCrewPlanes() throws PWCGException
     {
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
-        for (PlaneMcu plane : playerFlight.getFlightData().getFlightPlanes().getPlanes())
+        for (PlaneMcu plane : playerFlight.getFlightPlanes().getPlanes())
         {
             SquadronMember pilotOfPlane = plane.getPilot();
             CrewPlanePayloadPairing crewPlane = briefingAssignmentData.getAssignedCrewPlanes().get(pilotOfPlane.getSerialNumber());
@@ -89,7 +89,7 @@ public class BriefingPayloadHelper
     private void assignModificationsToCrewPlanes() throws PWCGException
     {
         IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlightForSquadron(briefingAssignmentData.getSquadron().getSquadronId());
-        for (PlaneMcu plane : playerFlight.getFlightData().getFlightPlanes().getPlanes())
+        for (PlaneMcu plane : playerFlight.getFlightPlanes().getPlanes())
         {
             SquadronMember pilotOfPlane = plane.getPilot();
             CrewPlanePayloadPairing crewPlane = briefingAssignmentData.getAssignedCrewPlanes().get(pilotOfPlane.getSerialNumber());

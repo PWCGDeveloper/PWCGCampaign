@@ -58,9 +58,9 @@ public class ScrambleWaypointFactory
 
     private McuWaypoint createScrambleStartWaypoint() throws PWCGException
     {
-        double takeoffOrientation = flight.getFlightData().getFlightInformation().getAirfield().getTakeoffLocation().getOrientation().getyOri();
+        double takeoffOrientation = flight.getFlightInformation().getAirfield().getTakeoffLocation().getOrientation().getyOri();
 		int InitialWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.InitialWaypointDistanceKey);
-		Coordinate startCoords = MathUtils.calcNextCoord(flight.getFlightData().getFlightInformation().getAirfield().getTakeoffLocation().getPosition(), takeoffOrientation, InitialWaypointDistance);
+		Coordinate startCoords = MathUtils.calcNextCoord(flight.getFlightInformation().getAirfield().getTakeoffLocation().getPosition(), takeoffOrientation, InitialWaypointDistance);
 
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         int initialWaypointAltitude = productSpecificConfiguration.getInitialWaypointAltitude();
@@ -68,26 +68,26 @@ public class ScrambleWaypointFactory
 
 		McuWaypoint startWP = WaypointFactory.createPatrolWaypointType();
 		startWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-		startWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+		startWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
 		startWP.setPosition(startCoords);
         return startWP;
     }
 
     private McuWaypoint createTargetScrambleWaypoint(McuWaypoint startWP) throws PWCGException
     {
-        double angle = MathUtils.calcAngle(startWP.getPosition(), flight.getFlightData().getFlightInformation().getTargetPosition());
+        double angle = MathUtils.calcAngle(startWP.getPosition(), flight.getFlightInformation().getTargetPosition());
         Orientation wpOrientation = new Orientation();
         wpOrientation.setyOri(angle);
         
-        Coordinate scrambleTargetCoords =  flight.getFlightData().getFlightInformation().getTargetPosition();
-        scrambleTargetCoords.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+        Coordinate scrambleTargetCoords =  flight.getFlightInformation().getTargetPosition();
+        scrambleTargetCoords.setYPos(flight.getFlightInformation().getAltitude());
          
         McuWaypoint scrambleTargetWP = WaypointFactory.createPatrolWaypointType();
 		scrambleTargetWP.setPosition(scrambleTargetCoords);	
 		scrambleTargetWP.setOrientation(wpOrientation.copy());
 		scrambleTargetWP.setTargetWaypoint(true);
 		scrambleTargetWP.setTriggerArea(McuWaypoint.COMBAT_AREA);
-		scrambleTargetWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+		scrambleTargetWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         return scrambleTargetWP;
     }
 
@@ -95,11 +95,11 @@ public class ScrambleWaypointFactory
     {
         double returnAngle = MathUtils.adjustAngle(scrambleTargetWP.getOrientation().getyOri(), 180.0);
 		Coordinate scrambleSecondaryCoords =  MathUtils.calcNextCoord(scrambleTargetWP.getPosition(), returnAngle, 3000.0);
-		scrambleSecondaryCoords.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+		scrambleSecondaryCoords.setYPos(flight.getFlightInformation().getAltitude());
 
 		McuWaypoint scrambleSecondaryWP = WaypointFactory.createPatrolWaypointType();
 		scrambleSecondaryWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-		scrambleSecondaryWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+		scrambleSecondaryWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
 		scrambleSecondaryWP.setPosition(scrambleSecondaryCoords);    
 		scrambleSecondaryWP.setTargetWaypoint(true);
 		

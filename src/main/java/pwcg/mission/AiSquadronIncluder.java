@@ -71,7 +71,7 @@ public class AiSquadronIncluder
     {
         for (IFlight playerFlight: mission.getMissionFlightBuilder().getPlayerFlights())
         {
-            if (playerFlight.getFlightData().getFlightInformation().getSquadron().getSquadronId() == squadronId)
+            if (playerFlight.getFlightInformation().getSquadron().getSquadronId() == squadronId)
             {
                 return true;
             }

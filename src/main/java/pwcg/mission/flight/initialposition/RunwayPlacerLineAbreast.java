@@ -30,7 +30,7 @@ public class RunwayPlacerLineAbreast implements IRunwayPlacer
         Coordinate initialPlacement = calculateInitialPlacement();
         
         Coordinate lastPlacement = initialPlacement.copy();
-        for (int i = 0; i < flight.getFlightData().getFlightPlanes().getFlightSize(); ++i)
+        for (int i = 0; i < flight.getFlightPlanes().getFlightSize(); ++i)
         {
             if (i == 0)
             {

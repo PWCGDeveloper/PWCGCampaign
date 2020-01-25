@@ -55,7 +55,7 @@ public class MissionFlightBuilder
         List<Integer> playerPlaneIds = new ArrayList<>();
         for (IFlight playerFlight : playerFlights)
         {
-            for (PlaneMcu playerPlane : playerFlight.getFlightData().getFlightPlanes().getPlayerPlanes())
+            for (PlaneMcu playerPlane : playerFlight.getFlightPlanes().getPlayerPlanes())
             {
                 playerPlaneIds.add(playerPlane.getLinkTrId());
             }
@@ -74,7 +74,7 @@ public class MissionFlightBuilder
         List<IFlight> flightsForSide = new ArrayList<IFlight>();
         for (IFlight flight : this.getAllAerialFlights())
         {
-            if (flight.getFlightData().getFlightInformation().getCountry().getSide() == side)
+            if (flight.getFlightInformation().getCountry().getSide() == side)
             {
                 flightsForSide.add(flight);
             }
@@ -87,7 +87,7 @@ public class MissionFlightBuilder
         List<IFlight> aiFlightsForSide = new ArrayList<IFlight>();
         for (IFlight flight : aiFlights)
         {
-            if (flight.getFlightData().getFlightInformation().getCountry().getSide() == side)
+            if (flight.getFlightInformation().getCountry().getSide() == side)
             {
                 aiFlightsForSide.add(flight);
             }
@@ -100,7 +100,7 @@ public class MissionFlightBuilder
         List<IFlight> aiFlightsForSide = new ArrayList<IFlight>();
         for (IFlight flight : playerFlights)
         {
-            if (flight.getFlightData().getFlightInformation().getCountry().getSide() == side)
+            if (flight.getFlightInformation().getCountry().getSide() == side)
             {
                 aiFlightsForSide.add(flight);
             }
@@ -115,7 +115,7 @@ public class MissionFlightBuilder
         allFlights.addAll(playerFlights);
         for (IFlight playerFlight : playerFlights)
         {
-            for (IFlight linkedFlight : playerFlight.getFlightData().getLinkedFlights().getLinkedFlights())
+            for (IFlight linkedFlight : playerFlight.getLinkedFlights().getLinkedFlights())
             {
                 allFlights.add((IFlight) linkedFlight);
             }
@@ -123,12 +123,12 @@ public class MissionFlightBuilder
 
         for (IFlight flight : aiFlights)
         {
-            if (flight.getFlightData().getFlightPlanes().getPlanes().size() > 0)
+            if (flight.getFlightPlanes().getPlanes().size() > 0)
             {
                 allFlights.add(flight);
             }
 
-            for (IFlight linkedFlight : flight.getFlightData().getLinkedFlights().getLinkedFlights())
+            for (IFlight linkedFlight : flight.getLinkedFlights().getLinkedFlights())
             {
                     allFlights.add((IFlight) linkedFlight);
             }
@@ -153,7 +153,7 @@ public class MissionFlightBuilder
     {
         for (IFlight playerFlight : playerFlights)
         {
-            if (playerFlight.getFlightData().getFlightInformation().getFlightType() == flightType)
+            if (playerFlight.getFlightInformation().getFlightType() == flightType)
             {
                 return true;
             }
@@ -170,7 +170,7 @@ public class MissionFlightBuilder
     {
         for (IFlight flight : playerFlights)
         {
-            if (flight.getFlightData().getFlightInformation().getSquadron().getSquadronId() == squadronId)
+            if (flight.getFlightInformation().getSquadron().getSquadronId() == squadronId)
             {
                 return flight;
             }
@@ -182,7 +182,7 @@ public class MissionFlightBuilder
     {
         for (IFlight flight : playerFlights)
         {
-            for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlayerPlanes())
+            for (PlaneMcu plane : flight.getFlightPlanes().getPlayerPlanes())
             {
                 SquadronMember planePilot = plane.getPilot();
                 if (planePilot.getSerialNumber() == player.getSerialNumber())
@@ -199,7 +199,7 @@ public class MissionFlightBuilder
         List<Integer> playersInMission = new ArrayList<>();
         for (IFlight flight : playerFlights)
         {
-            for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlayerPlanes())
+            for (PlaneMcu plane : flight.getFlightPlanes().getPlayerPlanes())
             {
                 if (plane.getPilot().isPlayer())
                 {

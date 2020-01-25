@@ -236,7 +236,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
     public void makeMapPanelVirtualPoints(IFlight flight) throws PWCGException
     {       
         FlightMap flightMap = getFlightMap(flight);
-        if (flight.getFlightData().getFlightInformation().getCountry().getSideNoNeutral() == Side.ALLIED)
+        if (flight.getFlightInformation().getCountry().getSideNoNeutral() == Side.ALLIED)
         {
             alliedVirtualPoints.add(flightMap);
         }
@@ -249,10 +249,10 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
     private FlightMap getFlightMap(IFlight flight) throws PWCGException
     {
         FlightMap flightMap = new FlightMap();
-        flightMap.flightType = flight.getFlightData().getFlightInformation().getFlightType().toString();
-        flightMap.planeType = flight.getFlightData().getFlightPlanes().getFlightLeader().getDisplayName();
+        flightMap.flightType = flight.getFlightInformation().getFlightType().toString();
+        flightMap.planeType = flight.getFlightPlanes().getFlightLeader().getDisplayName();
         
-        for (MissionPoint waypoint : flight.getFlightData().getWaypointPackage().getFlightMissionPoints())
+        for (MissionPoint waypoint : flight.getWaypointPackage().getFlightMissionPoints())
         {
             BriefingMapPoint mapPoint = BriefingMapPointFactory.missionPointToMapPoint(waypoint);
             flightMap.mapPoints.add(mapPoint);

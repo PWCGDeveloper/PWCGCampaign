@@ -44,9 +44,9 @@ public class PlayerEscortWaypointFactory
 	protected McuWaypoint createTargetWaypoint() throws PWCGException  
 	{
 		Coordinate coord = new Coordinate();
-		coord.setXPos(escortFlight.getFlightData().getFlightInformation().getTargetPosition().getXPos() + 50.0);
-		coord.setZPos(escortFlight.getFlightData().getFlightInformation().getTargetPosition().getZPos());
-		coord.setYPos(escortFlight.getFlightData().getFlightInformation().getAltitude());
+		coord.setXPos(escortFlight.getFlightInformation().getTargetPosition().getXPos() + 50.0);
+		coord.setZPos(escortFlight.getFlightInformation().getTargetPosition().getZPos());
+		coord.setYPos(escortFlight.getFlightInformation().getAltitude());
 
 		McuWaypoint rendezvousWaypoint = WaypointFactory.createRendezvousWaypointType();
 		rendezvousWaypoint.setTriggerArea(McuWaypoint.COMBAT_AREA);		

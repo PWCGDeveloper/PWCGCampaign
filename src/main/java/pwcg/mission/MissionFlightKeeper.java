@@ -99,8 +99,8 @@ public class MissionFlightKeeper
     private boolean isConsideredExcessFighterFlight(IFlight aiFlight)
     {
     	boolean isPlayerFlightFighter = mission.getMissionFlightBuilder().hasPlayerFlightWithFlightTypes(FlightTypes.getFlightTypesByCategory(FlightTypeCategory.FIGHTER));
-        boolean isAiFighterSquadron = aiFlight.getFlightData().getFlightPlanes().isFlightHasFighterPlanes();
-        boolean isAiFighterFlight = aiFlight.getFlightData().getFlightInformation().getFlightType().isCategory(FlightTypeCategory.FIGHTER);
+        boolean isAiFighterSquadron = aiFlight.getFlightPlanes().isFlightHasFighterPlanes();
+        boolean isAiFighterFlight = aiFlight.getFlightInformation().getFlightType().isCategory(FlightTypeCategory.FIGHTER);
         
         if (isAiFighterFlight)
         {

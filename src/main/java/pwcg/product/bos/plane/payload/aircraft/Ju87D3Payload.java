@@ -44,11 +44,11 @@ public class Ju87D3Payload extends PlanePayload
     public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
-        if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.DIVE_BOMB)
+        if (flight.getFlightInformation().getFlightType() == FlightTypes.DIVE_BOMB)
         {
             selectDiveBombPayload(flight);
         }
-        else if (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
+        else if (flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
         {
             selectGroundAttackPayload();
         }
@@ -58,19 +58,19 @@ public class Ju87D3Payload extends PlanePayload
     private void selectDiveBombPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 1;
-        if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
+        if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_SOFT)
         {
             selectSoftTargetPayload();
         }
-        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
+        else if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_ARMORED)
         {
             selectArmoredTargetPayload();
         }
-        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
+        else if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_MEDIUM)
         {
             selectMediumTargetPayload();
         }
-        else if (flight.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
+        else if (flight.getFlightInformation().getTargetDefinition().getTargetCategory() == TargetCategory.TARGET_CATEGORY_HEAVY)
         {
             selectHeavyTargetPayload();
         }

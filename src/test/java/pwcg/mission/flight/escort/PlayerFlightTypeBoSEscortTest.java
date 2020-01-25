@@ -41,8 +41,8 @@ public class PlayerFlightTypeBoSEscortTest
 
         PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);
         escortFlightValidator.validateEscortFlight();
-        assert (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ESCORT);
-        for (PlaneMcu plane : flight.getFlightData().getFlightPlanes())
+        assert (flight.getFlightInformation().getFlightType() == FlightTypes.ESCORT);
+        for (PlaneMcu plane : flight.getFlightPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() == 0);
         }

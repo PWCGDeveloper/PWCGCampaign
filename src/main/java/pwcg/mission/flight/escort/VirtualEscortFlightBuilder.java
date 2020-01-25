@@ -21,11 +21,11 @@ public class VirtualEscortFlightBuilder
         List<Role> fighterRole = new ArrayList<Role>(Arrays.asList(Role.ROLE_FIGHTER));
         List<Squadron> friendlyFighterSquadrons = PWCGContext.getInstance().getSquadronManager().getNearestSquadronsByRole(
                 escortedFlight.getCampaign(),
-                escortedFlight.getFlightData().getFlightHomePosition(),
+                escortedFlight.getFlightHomePosition(),
                 1,
                 50000.0,
                 fighterRole,
-                escortedFlight.getFlightData().getFlightInformation().getSquadron().determineSquadronCountry(escortedFlight.getCampaign().getDate()).getSide(), 
+                escortedFlight.getFlightInformation().getSquadron().determineSquadronCountry(escortedFlight.getCampaign().getDate()).getSide(), 
                 escortedFlight.getCampaign().getDate());
         
         if (friendlyFighterSquadrons != null && friendlyFighterSquadrons.size() > 0)

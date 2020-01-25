@@ -16,13 +16,13 @@ public class MissionPlaneGenerator
 
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMcu plane : flight.getFlightData().getFlightPlanes().getPlanes())
+            for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
             {
                 PwcgGeneratedMissionPlaneData missionPlaneData = new PwcgGeneratedMissionPlaneData();
                 missionPlaneData.setPilotName(plane.getPilot().getName());
                 missionPlaneData.setPilotSerialNumber(plane.getPilot().getSerialNumber());
                 missionPlaneData.setPlaneSerialNumber(plane.getSerialNumber());
-                missionPlaneData.setSquadronId(flight.getFlightData().getFlightInformation().getSquadron().getSquadronId());
+                missionPlaneData.setSquadronId(flight.getFlightInformation().getSquadron().getSquadronId());
                 missionPlaneData.setAircraftType(plane.getType());
                 
                 missionPlanes.add(missionPlaneData);

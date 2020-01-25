@@ -41,8 +41,8 @@ public class SpyExtractWaypointWaypoints
 
     private Coordinate getSpyExtractLocation(Coordinate startPosition) throws PWCGException
     {
-		Coordinate pickupLocation = flight.getFlightData().getFlightInformation().getTargetPosition().copy();
-        pickupLocation.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+		Coordinate pickupLocation = flight.getFlightInformation().getTargetPosition().copy();
+        pickupLocation.setYPos(flight.getFlightInformation().getAltitude());
         return pickupLocation;
     }
 
@@ -50,7 +50,7 @@ public class SpyExtractWaypointWaypoints
     {
         McuWaypoint approachWP = WaypointFactory.createSpyExtractWaypointType();
         approachWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        approachWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        approachWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         approachWP.setPosition(pickupLocation);
         approachWP.setTargetWaypoint(true);
         return approachWP;

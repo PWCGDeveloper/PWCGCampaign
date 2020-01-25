@@ -85,7 +85,7 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
 
     private void createFormation() throws PWCGException
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
 
         formationEntity = new McuFormation();
         formationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition());

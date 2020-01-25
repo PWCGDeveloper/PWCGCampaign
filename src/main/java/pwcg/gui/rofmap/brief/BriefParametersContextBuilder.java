@@ -34,11 +34,11 @@ public class BriefParametersContextBuilder
 	{
 		IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
 		McuWaypoint prevWaypoint = null;
-		for (McuWaypoint waypoint :  playerFlight.getFlightData().getWaypointPackage().getAllWaypoints())
+		for (McuWaypoint waypoint :  playerFlight.getWaypointPackage().getAllWaypoints())
 		{				
 		     addPlayerFlightWaypoint(prevWaypoint, waypoint);
 
-		     if (playerFlight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.ESCORT)
+		     if (playerFlight.getFlightInformation().getFlightType() == FlightTypes.ESCORT)
 		     {
 		         if (waypoint.getWpAction() == WaypointAction.WP_ACTION_RENDEZVOUS)
 		         {
@@ -48,7 +48,7 @@ public class BriefParametersContextBuilder
 
 		     if (waypoint.getWpAction() == WaypointAction.WP_ACTION_TARGET_FINAL)
 		     {
-		    	 addAttackPoint(playerFlight.getFlightData().getFlightInformation().getTargetPosition());
+		    	 addAttackPoint(playerFlight.getFlightInformation().getTargetPosition());
 		     }
 		     
 		     prevWaypoint = waypoint;
@@ -124,7 +124,7 @@ public class BriefParametersContextBuilder
     private void updateEscortWaypointsOnMap() throws PWCGException
     {
 		IFlight playerFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
-    	List<McuWaypoint> escortedWaypoints = playerFlight.getFlightData().getLinkedFlights().getLinkedWaypoints().getAllWaypoints();
+    	List<McuWaypoint> escortedWaypoints = playerFlight.getLinkedFlights().getLinkedWaypoints().getAllWaypoints();
 	    if (escortedWaypoints != null)
 	    {
 	        for (McuWaypoint waypoint : escortedWaypoints)

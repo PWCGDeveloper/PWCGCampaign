@@ -62,7 +62,7 @@ public class MissionFlightFinalizer
         {
             for (IFlight alliedFlight : alliedFlights)
             {
-                axisFlight.getFlightData().getFlightPlanes().addFlightTarget(alliedFlight);
+                axisFlight.getFlightPlanes().addFlightTarget(alliedFlight);
             }
         }
         
@@ -70,7 +70,7 @@ public class MissionFlightFinalizer
         {
             for (IFlight axisFlight : axisFlights)
             {
-                alliedFlight.getFlightData().getFlightPlanes().addFlightTarget(axisFlight);
+                alliedFlight.getFlightPlanes().addFlightTarget(axisFlight);
             }
         }
     }
@@ -87,7 +87,7 @@ public class MissionFlightFinalizer
         {
             for (IFlight alliedFlight : alliedFlights)
             {
-                alliedFlight.getFlightData().getFlightPlanes().addGroundUnitTarget(axisBalloon);
+                alliedFlight.getFlightPlanes().addGroundUnitTarget(axisBalloon);
             }
         }
         
@@ -95,7 +95,7 @@ public class MissionFlightFinalizer
         {
             for (IFlight axisFlight : axisFlights)
             {
-                axisFlight.getFlightData().getFlightPlanes().addGroundUnitTarget(alliedBalloon);
+                axisFlight.getFlightPlanes().addGroundUnitTarget(alliedBalloon);
             }
         }
     }
@@ -105,7 +105,7 @@ public class MissionFlightFinalizer
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
             triggerOtherFlightCZFromPlayerFlight(flight);
-            for (IFlight linkedFlight : flight.getFlightData().getLinkedFlights().getLinkedFlights())
+            for (IFlight linkedFlight : flight.getLinkedFlights().getLinkedFlights())
             {
                 triggerOtherFlightCZFromPlayerFlight(linkedFlight);
             }
@@ -114,9 +114,9 @@ public class MissionFlightFinalizer
 
     private void triggerOtherFlightCZFromPlayerFlight(IFlight flight) throws PWCGException 
     {
-        if (flight.getFlightData().getFlightInformation().isVirtual())
+        if (flight.getFlightInformation().isVirtual())
         {
-            IVirtualWaypointPackage virtualWaypointPackage = flight.getFlightData().getVirtualWaypointPackage();
+            IVirtualWaypointPackage virtualWaypointPackage = flight.getVirtualWaypointPackage();
             for (VirtualWayPoint vwp : virtualWaypointPackage.getVirtualWaypoints())
             {
                 if (vwp != null && vwp instanceof VirtualWayPoint)

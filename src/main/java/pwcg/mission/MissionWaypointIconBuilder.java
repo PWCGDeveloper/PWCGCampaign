@@ -28,14 +28,14 @@ public class MissionWaypointIconBuilder
     {
         waypointIcons.clear();
 
-        List<McuWaypoint> waypoints = playerFlight.getFlightData().getWaypointPackage().getAllWaypoints();
+        List<McuWaypoint> waypoints = playerFlight.getWaypointPackage().getAllWaypoints();
 
         McuIcon prevIcon = null;
 
-        MissionPoint takeoff = playerFlight.getFlightData().getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_TAKEOFF);
+        MissionPoint takeoff = playerFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_TAKEOFF);
         if (takeoff != null)
         {
-            McuIcon icon = new McuIcon(WaypointAction.WP_ACTION_TAKEOFF, takeoff, playerFlight.getFlightData().getFlightInformation().getCountry().getSide());
+            McuIcon icon = new McuIcon(WaypointAction.WP_ACTION_TAKEOFF, takeoff, playerFlight.getFlightInformation().getCountry().getSide());
             prevIcon = icon;
             waypointIcons.add(icon);
         }
@@ -43,7 +43,7 @@ public class MissionWaypointIconBuilder
         for (int i = 0; i < waypoints.size(); ++i)
         {
             McuWaypoint waypoint = waypoints.get(i);
-            McuIcon icon = new McuIcon(waypoint, playerFlight.getFlightData().getFlightInformation().getCountry().getSide());
+            McuIcon icon = new McuIcon(waypoint, playerFlight.getFlightInformation().getCountry().getSide());
             if (prevIcon != null)
             {
                 prevIcon.setTarget(icon.getIndex());
@@ -52,10 +52,10 @@ public class MissionWaypointIconBuilder
             waypointIcons.add(icon);
         }
 
-        MissionPoint landing = playerFlight.getFlightData().getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_LANDING);
+        MissionPoint landing = playerFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_LANDING);
         if (landing != null)
         {
-            McuIcon icon = new McuIcon(WaypointAction.WP_ACTION_LANDING, landing, playerFlight.getFlightData().getFlightInformation().getCountry().getSide());
+            McuIcon icon = new McuIcon(WaypointAction.WP_ACTION_LANDING, landing, playerFlight.getFlightInformation().getCountry().getSide());
             if (prevIcon != null)
                 prevIcon.setTarget(icon.getIndex());
             waypointIcons.add(icon);

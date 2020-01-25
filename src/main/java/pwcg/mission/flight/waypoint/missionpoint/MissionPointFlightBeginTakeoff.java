@@ -107,20 +107,20 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     private void createTakeoff() throws PWCGException
     {
         takeoffMcu = null;
-        if (flight.getFlightData().getFlightInformation().isPlayerFlight())
+        if (flight.getFlightInformation().isPlayerFlight())
         {
-            if (!flight.getFlightData().getFlightInformation().isAirStart())
+            if (!flight.getFlightInformation().isAirStart())
             {
                 takeoffMcu = new McuTakeoff();
-                takeoffMcu.setPosition(flight.getFlightData().getFlightInformation().getDepartureAirfield().getTakeoffLocation().getPosition().copy());
-                takeoffMcu.setOrientation(flight.getFlightData().getFlightInformation().getDepartureAirfield().getTakeoffLocation().getOrientation().copy());
+                takeoffMcu.setPosition(flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation().getPosition().copy());
+                takeoffMcu.setOrientation(flight.getFlightInformation().getDepartureAirfield().getTakeoffLocation().getOrientation().copy());
             }
         }
     }
     
     private void createFormation() throws PWCGException
     {
-        IFlightInformation flightInformation = flight.getFlightData().getFlightInformation();
+        IFlightInformation flightInformation = flight.getFlightInformation();
 
         formationEntity = new McuFormation();
         formationEntity.setPosition(flightInformation.getDepartureAirfield().getPosition());
@@ -145,10 +145,10 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
 
         McuWaypoint takeoffWP = WaypointFactory.createTakeOffWaypointType();
         takeoffWP.setTriggerArea(McuWaypoint.INITIAL_CLIMB_AREA);
-        takeoffWP.setDesc(flight.getFlightData().getFlightInformation().getSquadron().determineDisplayName(flight.getCampaign().getDate()), WaypointType.TAKEOFF_WAYPOINT.getName());
-        takeoffWP.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+        takeoffWP.setDesc(flight.getFlightInformation().getSquadron().determineDisplayName(flight.getCampaign().getDate()), WaypointType.TAKEOFF_WAYPOINT.getName());
+        takeoffWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         takeoffWP.setPosition(initialClimbCoords);
-        takeoffWP.setOrientation(flight.getFlightData().getFlightInformation().getAirfield().getTakeoffLocation().getOrientation().copy());
+        takeoffWP.setOrientation(flight.getFlightInformation().getAirfield().getTakeoffLocation().getOrientation().copy());
 
         super.addWaypoint(takeoffWP);
         return takeoffWP;
@@ -158,8 +158,8 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         int takeoffWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.TakeoffWaypointDistanceKey);
         int takeoffWaypointAltitude = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.TakeoffWaypointAltitudeKey);
 
-        double takeoffOrientation = flight.getFlightData().getFlightInformation().getAirfield().getTakeoffLocation().getOrientation().getyOri();
-        Coordinate initialClimbCoords = MathUtils.calcNextCoord(flight.getFlightData().getFlightInformation().getAirfield().getTakeoffLocation().getPosition().copy(), takeoffOrientation, takeoffWaypointDistance);
+        double takeoffOrientation = flight.getFlightInformation().getAirfield().getTakeoffLocation().getOrientation().getyOri();
+        Coordinate initialClimbCoords = MathUtils.calcNextCoord(flight.getFlightInformation().getAirfield().getTakeoffLocation().getPosition().copy(), takeoffOrientation, takeoffWaypointDistance);
         initialClimbCoords.setYPos(takeoffWaypointAltitude);
 
         return initialClimbCoords;
@@ -176,7 +176,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     {
         formationTimer.setTarget(formationEntity.getIndex());
         
-        flight.getFlightData().getFlightPlanes().getFlightLeader().getEntity().setOnMessages(
+        flight.getFlightPlanes().getFlightLeader().getEntity().setOnMessages(
                 McuMessage.ONTAKEOFF,
                 takeoffMcu.getIndex(),
                 super.getFirstWaypoint().getIndex());

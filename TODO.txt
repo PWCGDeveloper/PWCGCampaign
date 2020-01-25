@@ -1,63 +1,19 @@
 https://github.com/PWCGDeveloper/PWCG.git
 
 
-Key Tests for PWCG 6.0
-FlightInformationFactory
-FlightPlaneBuilder
-ShipConvoyGenerator
-MissionBorderBuilder
-Target position for every flight type
+Key Tests for PWCG 8.0
+Player air start near ingress
+Escort linkage
+AI escort linkage
+Ai air start near 
+Balloon defense
+Addition of Ai balloon defense flight for player balloon bust
+Virtual waypoint linkage to correct WP
 
-Add ambient scrambles
-Rethink flight keeper in light of many coop players
-
-Flight.createVirtualEscortFlight needs to be removed from flight - post flight generation processing?  i.e. make the flights first and then build dependent flights.
-- escorts for flights - rules depends on number of flights, player vs ai,  and coop/sp
-- flights to be escorted - rules depends on number of flights, player vs ai,  and coop/sp
-    - Never create escort mission for AI
-    - In coop make flight small
-- intercept targets - can we drive a player formation into an intercept?  probably not.
-	- intercept opposing roles.  Need class to generate opposing flight role based on intercept type
-	- intercept opposing roles.  Need to add ground units for low alt intercept
-- balloon bust - balloon cover for  - rules depends on number of flights, player vs ai,  and coop/sp
-- balloon defense - balloon attack for  - rules depends on number of flights, player vs ai,  and coop/sp
-- Sea Patrol - really does need an opposing flight - should eb a form of intercept
-- enemy scramble - maybe for airfield attacks or offensive flights
-- nighttime strategic bombing - supporting flights for night time bomber stream
-- nighttime strategic bombing - home defense
-- nighttime any - create spotlight decorator
-- Large plane sea patrol - opposing flight
-
-Problems:
-Chronological events not being recorded
-Multiple entries in squadron log
-Handling wounded scenarios for multiple pilots
-    - record recovery date of pilot
-	- record date of return for wounded pilots
-	- record death of dead pilots
-	- never advance time - DONE
-	
-	- if player is available
-		- enable mission button
-	- if all players are wounded 
-		- disable mission button
-		- offer advance time to heal (show date)
-	- if some players are wounded 
-		- enable mission button
-		- offer advance time to heal (show date)
-	- if all players are dead 
-		- disable mission button
-		- disable advance time button
+Player escort ingress should be near rendezvous - rendezvous should be target position
 
 
 
-Weather
-- separate BOS and RoF config keys
-- make sure that thunderstorm is an option
-- stack odds instead of absolute
-
-A/G destroyed vehicles and victories be summarized in the AAR summary
-vehicles and victories be summarized in the pilot log, I believe there is only total of air victories: again it would be nice to have.
 
 New Events
 - Add page and squadron log for aircraft introduced

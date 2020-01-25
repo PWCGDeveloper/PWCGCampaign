@@ -77,7 +77,7 @@ public class ReconFrontWaypointsFactory
         pathAlongFrontData.setRandomDistanceMax(patrolDistanceRandom);
         pathAlongFrontData.setTargetGeneralLocation(startPosition);
         pathAlongFrontData.setReturnAlongRoute(false);
-        pathAlongFrontData.setSide(flight.getFlightData().getFlightInformation().getSquadron().determineSquadronCountry(flight.getCampaign().getDate()).getSide().getOppositeSide());
+        pathAlongFrontData.setSide(flight.getFlightInformation().getSquadron().determineSquadronCountry(flight.getCampaign().getDate()).getSide().getOppositeSide());
         
         return pathAlongFrontData;
     }
@@ -89,11 +89,11 @@ public class ReconFrontWaypointsFactory
 
 		coord.setXPos(coord.getXPos() + xOffset);
 		coord.setZPos(coord.getZPos() + zOffset);
-		coord.setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+		coord.setYPos(flight.getFlightInformation().getAltitude());
 
 		McuWaypoint wp = WaypointFactory.createReconWaypointType();
 		wp.setTriggerArea(McuWaypoint.TARGET_AREA);
-		wp.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+		wp.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
 		wp.setPosition(coord);
 		
 		return wp;

@@ -34,18 +34,18 @@ import pwcg.mission.ground.org.GroundUnitType;
 import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TargetBuilderTest
 {
+    @Mock private IFlightInformation flightInformation;
     @Mock private TargetDefinition targetDefinition;
     @Mock private Campaign campaign;
     @Mock private Squadron squadron;
     @Mock private Mission mission;
     @Mock private ConfigManagerCampaign configManager;
-    @Mock private IFlightInformation flightInformation;
     
     private MissionGroundUnitResourceManager groundUnitResourceManager = new MissionGroundUnitResourceManager();
 
@@ -59,11 +59,13 @@ public class TargetBuilderTest
         ICountry enemyCountry = CountryFactory.makeCountryByCountry(Country.RUSSIA);
                 
         Date date = DateUtils.getDateYYYYMMDD("1943030");
+        Mockito.when(campaign.getDate()).thenReturn(date);
+
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(date);
         Mockito.when(targetDefinition.getTargetCountry()).thenReturn(enemyCountry);
         Mockito.when(targetDefinition.getAttackingCountry()).thenReturn(friendlyCountry);
-        Mockito.when(targetDefinition.getFlightData().getFlightInformation().getTargetPosition()).thenReturn(new Coordinate(216336, 0, 184721));
+        Mockito.when(targetDefinition.getTargetPosition()).thenReturn(new Coordinate(216336, 0, 184721));
         Mockito.when(targetDefinition.getTargetOrientation()).thenReturn(new Orientation(90));
         Mockito.when(configManager.getStringConfigParam(ConfigItemKeys.SimpleConfigGroundKey)).thenReturn(ConfigSimple.CONFIG_LEVEL_MED);
         Mockito.when(mission.getMissionGroundUnitManager()).thenReturn(groundUnitResourceManager);

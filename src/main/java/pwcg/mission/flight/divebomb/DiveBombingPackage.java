@@ -30,7 +30,7 @@ public class DiveBombingPackage implements IFlightPackage
         Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(flightInformation.getSquadron().determineEnemySide());
 
         IFlight diveBombingFlight = makeDiveBombingFlight(targetCoordinates);
-        diveBombingFlight.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(groundUnitCollection);
+        diveBombingFlight.getLinkedGroundUnits().addLinkedGroundUnit(groundUnitCollection);
         return diveBombingFlight;
     }
 

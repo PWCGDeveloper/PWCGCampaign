@@ -44,7 +44,7 @@ public class PlayerFlightTypeBoSDiveBombTest
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightData().getFlightInformation().getFlightType() == FlightTypes.DIVE_BOMB);
+        assert (flight.getFlightInformation().getFlightType() == FlightTypes.DIVE_BOMB);
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
@@ -57,7 +57,7 @@ public class PlayerFlightTypeBoSDiveBombTest
     {
         assert (targetDefinition.getAttackingCountry() != null);
         assert (targetDefinition.getTargetCountry() != null);
-        assert (targetDefinition.getFlightData().getFlightInformation().getTargetDefinition().getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
+        assert (targetDefinition.getFlightInformation().getTargetDefinition().getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
         assert (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import pwcg.mission.flight.escort.EscortForPlayerFlight;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
 
-public interface ILinkedFLights
+public interface ILinkedFlights
 {
 
     IWaypointPackage getLinkedWaypoints();

@@ -27,7 +27,7 @@ public class PlayerEscortPackage implements IFlightPackage
 		PlayerEscortFlight playerEscort = new PlayerEscortFlight(playerFlightInformation, escortedFlight);
 		playerEscort.createFlight();
 		
-		playerEscort.getFlightData().getLinkedFlights().addLinkedFlight(escortedFlight);
+		playerEscort.getLinkedFlights().addLinkedFlight(escortedFlight);
 		
 		return playerEscort;
 	}

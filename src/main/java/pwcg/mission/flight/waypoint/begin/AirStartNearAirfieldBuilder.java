@@ -13,11 +13,11 @@ public class AirStartNearAirfieldBuilder
 {
     public static McuWaypoint buildAirStartNearAirfield(IFlight flight) throws PWCGException
     {
-        Coordinate airfieldCoordinate = flight.getFlightData().getFlightHomePosition();
+        Coordinate airfieldCoordinate = flight.getFlightHomePosition();
         
-        double angleFromAirfield = MathUtils.calcAngle(airfieldCoordinate, flight.getFlightData().getFlightInformation().getTargetPosition());
+        double angleFromAirfield = MathUtils.calcAngle(airfieldCoordinate, flight.getFlightInformation().getTargetPosition());
         Coordinate airStartPosition = MathUtils.calcNextCoord(airfieldCoordinate, angleFromAirfield, 3000.0);
-        airStartPosition.setYPos(WaypointType.getAltitudeForWaypointType(WaypointType.AIR_START_WAYPOINT, flight.getFlightData().getFlightInformation().getAltitude()));
+        airStartPosition.setYPos(WaypointType.getAltitudeForWaypointType(WaypointType.AIR_START_WAYPOINT, flight.getFlightInformation().getAltitude()));
         
         McuWaypoint airStartWP = WaypointFactory.createAirStartWaypointType();
         airStartWP.setPosition(airStartPosition);

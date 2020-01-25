@@ -23,7 +23,7 @@ public class FerryFlight extends Flight implements IFlight
 
     public void createFlight() throws PWCGException
     {
-        flightData.initialize(this);
+        initialize(this);
         createWaypoints();
         FlightPositionSetter.setFlightInitialPosition(this);
         setFlightPayload();
@@ -32,7 +32,7 @@ public class FerryFlight extends Flight implements IFlight
     @Override
     public IMissionPointSet createFlightSpecificWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {
-        IFlightInformation flightInformation = flightData.getFlightInformation();
+        IFlightInformation flightInformation = this.getFlightInformation();
         IAirfield fromAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());
         IAirfield toAirfield = flightInformation.getSquadron().determineCurrentAirfieldCurrentMap(flightInformation.getCampaign().getDate());
         FerryWaypointFactory missionWaypointFactory = new FerryWaypointFactory(this, fromAirfield, toAirfield);

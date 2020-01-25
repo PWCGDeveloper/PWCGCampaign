@@ -19,8 +19,8 @@ public class RunwayPlacer
 
     public List<Coordinate> getFlightTakeoffPositions(IFlight flight) throws PWCGException
     {
-        int takeoffSpacing = calculateTakeoffSpacing(flight.getFlightData().getFlightPlanes().getFlightLeader());
-        IAirfield airfield = flight.getFlightData().getFlightInformation().getAirfield();
+        int takeoffSpacing = calculateTakeoffSpacing(flight.getFlightPlanes().getFlightLeader());
+        IAirfield airfield = flight.getFlightInformation().getAirfield();
 
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
         IRunwayPlacer runwayPlacer = null;

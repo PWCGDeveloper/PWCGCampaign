@@ -109,7 +109,7 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
     
     private void createobjectAssociations (PlaneMcu plane)
     {
-        int flightLeaderIndex = flight.getFlightData().getFlightPlanes().getFlightLeader().getEntity().getIndex();
+        int flightLeaderIndex = flight.getFlightPlanes().getFlightLeader().getEntity().getIndex();
         landingMcu.setObject(flightLeaderIndex);
     }
 

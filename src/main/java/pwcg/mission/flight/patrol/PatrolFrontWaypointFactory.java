@@ -80,7 +80,7 @@ public class PatrolFrontWaypointFactory
         pathAlongFrontData.setRandomDistanceMax(patrolDistanceRandom / 2);
         pathAlongFrontData.setTargetGeneralLocation(ingressPosition);
         pathAlongFrontData.setReturnAlongRoute(true);
-        pathAlongFrontData.setSide(flight.getFlightData().getFlightInformation().getSquadron().determineSquadronCountry(campaign.getDate()).getSide().getOppositeSide());
+        pathAlongFrontData.setSide(flight.getFlightInformation().getSquadron().determineSquadronCountry(campaign.getDate()).getSide().getOppositeSide());
         
         return pathAlongFrontData;
     }
@@ -89,9 +89,9 @@ public class PatrolFrontWaypointFactory
 	{
 		McuWaypoint wp = WaypointFactory.createPatrolWaypointType();
 		wp.setTriggerArea(McuWaypoint.COMBAT_AREA);
-		wp.setSpeed(flight.getFlightData().getFlightPlanes().getFlightCruisingSpeed());
+		wp.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
 		wp.setPosition(coord);
-		wp.getPosition().setYPos(flight.getFlightData().getFlightInformation().getAltitude());
+		wp.getPosition().setYPos(flight.getFlightInformation().getAltitude());
 
 		return wp;
 	}

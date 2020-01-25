@@ -43,7 +43,7 @@ public class VirtualWaypointGenerator
 
     private VirtualWayPoint createVirtualWaypointFromPlot(VirtualWayPointCoordinate plotCoordinate) throws PWCGException
     {
-        Coalition enemyCoalition = CoalitionFactory.getEnemyCoalition(flight.getFlightData().getFlightInformation().getCountry());
+        Coalition enemyCoalition = CoalitionFactory.getEnemyCoalition(flight.getFlightInformation().getCountry());
         VirtualWayPoint virtualWaypoint = new VirtualWayPoint();
         virtualWaypoint.initialize(flight, plotCoordinate, enemyCoalition);
         return virtualWaypoint;

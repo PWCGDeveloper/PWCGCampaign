@@ -30,7 +30,7 @@ public class ParaDropPackage implements IFlightPackage
         Coordinate targetCoordinates = groundUnitCollection.getTargetCoordinatesFromGroundUnits(flightInformation.getSquadron().determineEnemySide());
 
         IFlight paraDropFlight = makeParaDropFlight(targetCoordinates);
-        paraDropFlight.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(groundUnitCollection);
+        paraDropFlight.getLinkedGroundUnits().addLinkedGroundUnit(groundUnitCollection);
 
         return paraDropFlight;
     }

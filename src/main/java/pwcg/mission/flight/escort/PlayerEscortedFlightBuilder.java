@@ -35,7 +35,7 @@ public class PlayerEscortedFlightBuilder
 		playerEscortedFlight.createFlight();
 		
         IGroundUnitCollection targetUnit = createTargetForPlayerEscortedFlight();
-        playerEscortedFlight.getFlightData().getLinkedGroundUnits().addLinkedGroundUnit(targetUnit);
+        playerEscortedFlight.getLinkedGroundUnits().addLinkedGroundUnit(targetUnit);
         
         return playerEscortedFlight;
     }

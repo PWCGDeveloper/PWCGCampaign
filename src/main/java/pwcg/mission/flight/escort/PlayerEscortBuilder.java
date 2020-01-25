@@ -16,7 +16,7 @@ public class PlayerEscortBuilder
 {
     public IFlight createEscortForPlayerFlight(IFlight playerFlight) throws PWCGException 
     {
-        IFlightInformation playerFlightInformation = playerFlight.getFlightData().getFlightInformation();
+        IFlightInformation playerFlightInformation = playerFlight.getFlightInformation();
         
         Squadron friendlyFighterSquadron = PWCGContext.getInstance().getSquadronManager().getSquadronByProximityAndRoleAndSide(
                         playerFlightInformation.getCampaign(), 
@@ -26,13 +26,13 @@ public class PlayerEscortBuilder
 
         if (friendlyFighterSquadron != null)
         {          
-            McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getFlightData().getWaypointPackage().getAllWaypoints(), 
+            McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getWaypointPackage().getAllWaypoints(), 
                     WaypointType.INGRESS_WAYPOINT.getName());
 
             if (rendezvousWP != null)
             {
                 Coordinate rendezvous = rendezvousWP.getPosition().copy();
-                IFlightInformation escortFlightInformation = FlightInformationFactory.buildEscortForPlayerFlightInformation(playerFlight.getFlightData().getFlightInformation(), 
+                IFlightInformation escortFlightInformation = FlightInformationFactory.buildEscortForPlayerFlightInformation(playerFlight.getFlightInformation(), 
                         friendlyFighterSquadron, rendezvous);
                 EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, playerFlight);
                 escortForPlayerFlight.createFlight();       
