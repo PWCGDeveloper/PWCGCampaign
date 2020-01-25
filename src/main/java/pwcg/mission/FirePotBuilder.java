@@ -12,7 +12,7 @@ public class FirePotBuilder
 {
     public FirePotSeries createFirePots(IFlight flight) throws PWCGException 
     {
-        IAirfield airfield = flight.getFlightInformation().getSquadron().determineCurrentAirfieldAnyMap(flight.getCampaign().getDate());
+        IAirfield airfield = flight.getSquadron().determineCurrentAirfieldAnyMap(flight.getCampaign().getDate());
 
         FirePotSeries firePotSeries = new FirePotSeries();
 

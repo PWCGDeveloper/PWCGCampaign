@@ -51,7 +51,7 @@ public class IngressWaypointNearFront implements IIngressWaypoint
         }
         else
         {
-            if (flight.getFlightInformation().getFlightType() == FlightTypes.ESCORT)
+            if (flight.getFlightType() == FlightTypes.ESCORT)
             {
                 return getBestIngressPositionForEscortRendezvous();
             }
@@ -67,9 +67,9 @@ public class IngressWaypointNearFront implements IIngressWaypoint
         FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         Coordinate closestFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
                 flight.getFlightInformation().getTargetPosition(), 
-                flight.getFlightInformation().getSquadron().determineSide());
+                flight.getSquadron().determineSide());
         
-        Coordinate flightHomeCoordinates = flight.getFlightInformation().getSquadron().determineCurrentPosition(campaign.getDate());
+        Coordinate flightHomeCoordinates = flight.getSquadron().determineCurrentPosition(campaign.getDate());
         double angleFromFrontToHome = MathUtils.calcAngle(closestFrontLinesToTarget, flightHomeCoordinates);
 
         int distanceBehindFrontForIngress = getDistanceFromFront();
@@ -82,10 +82,10 @@ public class IngressWaypointNearFront implements IIngressWaypoint
         FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         Coordinate closestEnemyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
                 flight.getFlightInformation().getTargetPosition(), 
-                flight.getFlightInformation().getSquadron().determineSide().getOppositeSide());
+                flight.getSquadron().determineSide().getOppositeSide());
         Coordinate closestFriendlyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
                 flight.getFlightInformation().getTargetPosition(), 
-                flight.getFlightInformation().getSquadron().determineSide());
+                flight.getSquadron().determineSide());
         int distanceBehindFrontForIngress = getDistanceFromFront();
 
         return BehindFriendlyLinesPositionCalculator.getPointBehindFriendlyLines(
@@ -93,7 +93,7 @@ public class IngressWaypointNearFront implements IIngressWaypoint
                 closestFriendlyFrontLinesToTarget, 
                 distanceBehindFrontForIngress, 
                 campaign.getDate(), 
-                flight.getFlightInformation().getSquadron().determineSide());
+                flight.getSquadron().determineSide());
     }
 
     private Coordinate getBestIngressPositionForEscortRendezvous() throws PWCGException 
@@ -101,7 +101,7 @@ public class IngressWaypointNearFront implements IIngressWaypoint
         FrontLinesForMap frontLinesForMap =  PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
         Coordinate closestEnemyFrontLinesToTarget = frontLinesForMap.findClosestFrontCoordinateForSide(
                 flight.getFlightInformation().getTargetPosition(), 
-                flight.getFlightInformation().getSquadron().determineSide().getOppositeSide());
+                flight.getSquadron().determineSide().getOppositeSide());
         int distanceBehindFrontForIngress = getDistanceFromFront();
 
         return BehindFriendlyLinesPositionCalculator.getPointBehindFriendlyLines(
@@ -109,12 +109,12 @@ public class IngressWaypointNearFront implements IIngressWaypoint
                 flight.getFlightHomePosition(), 
                 distanceBehindFrontForIngress, 
                 campaign.getDate(), 
-                flight.getFlightInformation().getSquadron().determineSide());
+                flight.getSquadron().determineSide());
     }
 
     private int getDistanceFromFront()
     {
-        if (flight.getFlightInformation().getFlightType() == FlightTypes.ESCORT || 
+        if (flight.getFlightType() == FlightTypes.ESCORT || 
             flight.getFlightInformation().isEscortedByPlayerFlight())
         {
             IProductSpecificConfiguration productSpecific = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();

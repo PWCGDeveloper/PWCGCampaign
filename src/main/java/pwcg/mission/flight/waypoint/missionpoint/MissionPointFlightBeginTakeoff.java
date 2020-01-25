@@ -107,7 +107,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     private void createTakeoff() throws PWCGException
     {
         takeoffMcu = null;
-        if (flight.getFlightInformation().isPlayerFlight())
+        if (flight.isPlayerFlight())
         {
             if (!flight.getFlightInformation().isAirStart())
             {
@@ -145,7 +145,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
 
         McuWaypoint takeoffWP = WaypointFactory.createTakeOffWaypointType();
         takeoffWP.setTriggerArea(McuWaypoint.INITIAL_CLIMB_AREA);
-        takeoffWP.setDesc(flight.getFlightInformation().getSquadron().determineDisplayName(flight.getCampaign().getDate()), WaypointType.TAKEOFF_WAYPOINT.getName());
+        takeoffWP.setDesc(flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()), WaypointType.TAKEOFF_WAYPOINT.getName());
         takeoffWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         takeoffWP.setPosition(initialClimbCoords);
         takeoffWP.setOrientation(flight.getFlightInformation().getAirfield().getTakeoffLocation().getOrientation().copy());

@@ -12,81 +12,81 @@ public class MissionObjectiveFactory
 {
     public static String formMissionObjective(IFlight flight) throws PWCGException
     {
-        if (flight.getFlightInformation().getFlightType() == FlightTypes.ARTILLERY_SPOT)
+        if (flight.getFlightType() == FlightTypes.ARTILLERY_SPOT)
         {
             return GroundAttackObjective.getMissionObjective(flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.BALLOON_BUST)
+        else if (flight.getFlightType() == FlightTypes.BALLOON_BUST)
         {
             return getBalloonBustMissionObjective(flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.BALLOON_DEFENSE)
+        else if (flight.getFlightType() == FlightTypes.BALLOON_DEFENSE)
         {
             return getBalloonDefenseMissionObjective(flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.CARGO_DROP)
+        else if (flight.getFlightType() == FlightTypes.CARGO_DROP)
         {
             return getCargoDropMissionObjective(flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.CONTACT_PATROL)
+        else if (flight.getFlightType() == FlightTypes.CONTACT_PATROL)
         {
             return getContactPatrolMissionObjective(flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.ESCORT)
+        else if (flight.getFlightType() == FlightTypes.ESCORT)
         {
             return getEscortMissionObjective(flight);
         }
 
-        if (flight.getFlightInformation().getFlightType() == FlightTypes.BOMB ||
-            flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK ||
-            flight.getFlightInformation().getFlightType() == FlightTypes.DIVE_BOMB ||
-            flight.getFlightInformation().getFlightType() == FlightTypes.LOW_ALT_BOMB ||
-            flight.getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK ||
-            flight.getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_DIVE_BOMB ||
-            flight.getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB)
+        if (flight.getFlightType() == FlightTypes.BOMB ||
+            flight.getFlightType() == FlightTypes.GROUND_ATTACK ||
+            flight.getFlightType() == FlightTypes.DIVE_BOMB ||
+            flight.getFlightType() == FlightTypes.LOW_ALT_BOMB ||
+            flight.getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK ||
+            flight.getFlightType() == FlightTypes.ANTI_SHIPPING_DIVE_BOMB ||
+            flight.getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB)
         {
             return GroundAttackObjective.getMissionObjective(flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.INTERCEPT ||
-                flight.getFlightInformation().getFlightType() == FlightTypes.HOME_DEFENSE)
+        else if (flight.getFlightType() == FlightTypes.INTERCEPT ||
+                flight.getFlightType() == FlightTypes.HOME_DEFENSE)
         {
             return getInterceptMissionObjective(flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.LONE_WOLF)
+        else if (flight.getFlightType() == FlightTypes.LONE_WOLF)
         {
             return getLoneWolfMissionObjective();
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.OFFENSIVE)
+        else if (flight.getFlightType() == FlightTypes.OFFENSIVE)
         {
             return OffensivePatrolObjective.getMissionObjective((OffensiveFlight) flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.PARATROOP_DROP)
+        else if (flight.getFlightType() == FlightTypes.PARATROOP_DROP)
         {
             return getParatroopDropMissionObjective(flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.PATROL ||
-                flight.getFlightInformation().getFlightType() == FlightTypes.LOW_ALT_CAP ||
-                flight.getFlightInformation().getFlightType() == FlightTypes.LOW_ALT_PATROL)
+        else if (flight.getFlightType() == FlightTypes.PATROL ||
+                flight.getFlightType() == FlightTypes.LOW_ALT_CAP ||
+                flight.getFlightType() == FlightTypes.LOW_ALT_PATROL)
         {
             return getPatrolMissionObjective(flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.RECON)
+        else if (flight.getFlightType() == FlightTypes.RECON)
         {
             return ReconObjective.getMissionObjective((ReconFlight) flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE)
+        else if (flight.getFlightType() == FlightTypes.SCRAMBLE)
         {
             return getScrambleMissionObjective();
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.SPY_EXTRACT)
+        else if (flight.getFlightType() == FlightTypes.SPY_EXTRACT)
         {
             return getSpyExtractMissionObjective(flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.STRATEGIC_BOMB)
+        else if (flight.getFlightType() == FlightTypes.STRATEGIC_BOMB)
         {
             return StrategicBombObjective.getMissionObjective(flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.TRANSPORT)
+        else if (flight.getFlightType() == FlightTypes.TRANSPORT)
         {
             return TransportObjective.getMissionObjective((TransportFlight) flight);
         }

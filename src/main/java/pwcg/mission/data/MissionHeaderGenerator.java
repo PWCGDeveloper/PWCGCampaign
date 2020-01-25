@@ -17,7 +17,7 @@ public class MissionHeaderGenerator
         // Even for Coop flights we have to set the header.  Doesn't really matter which flight 
         // as long as itis a player flight
         IFlight myFlight = mission.getMissionFlightBuilder().getReferencePlayerFlight();
-        Squadron mySquadron =myFlight.getFlightInformation().getSquadron();
+        Squadron mySquadron =myFlight.getSquadron();
         
         MissionHeader missionHeader = new MissionHeader();
         
@@ -30,7 +30,7 @@ public class MissionHeaderGenerator
         missionHeader.setAircraftType(myFlight.getFlightPlanes().getFlightLeader().getDisplayName());
 
         
-        missionHeader.setDuty("" + myFlight.getFlightInformation().getFlightType());  // String to enum and back
+        missionHeader.setDuty("" + myFlight.getFlightType());  // String to enum and back
         missionHeader.setAltitude(myFlight.getFlightInformation().getAltitude()); 
         
         missionHeader.setMapName(PWCGContext.getInstance().getCurrentMap().getMapName()); 

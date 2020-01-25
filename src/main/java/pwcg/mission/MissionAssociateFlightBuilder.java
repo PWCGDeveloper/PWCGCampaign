@@ -17,21 +17,21 @@ public class MissionAssociateFlightBuilder
         List<IFlight> flightsForMission = mission.getMissionFlightBuilder().getAllAerialFlights();
         for (IFlight flight : flightsForMission)
         {
-            if (flight.getFlightInformation().isPlayerFlight())
+            if (flight.isPlayerFlight())
             {
-                if (flight.getFlightInformation().getFlightType() == FlightTypes.INTERCEPT || flight.getFlightInformation().getFlightType() == FlightTypes.HOME_DEFENSE)
+                if (flight.getFlightType() == FlightTypes.INTERCEPT || flight.getFlightType() == FlightTypes.HOME_DEFENSE)
                 {
                     makeLinkedInterceptFlights(flight);
                 }
-                else if (flight.getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE)
+                else if (flight.getFlightType() == FlightTypes.SCRAMBLE)
                 {
                     makeLinkedScrambleFlights(flight);
                 }
-                else if (flight.getFlightInformation().getFlightType() == FlightTypes.BALLOON_BUST)
+                else if (flight.getFlightType() == FlightTypes.BALLOON_BUST)
                 {
                     // TODO Flying Circus
                 }
-                else if (flight.getFlightInformation().getFlightType() == FlightTypes.BALLOON_DEFENSE)
+                else if (flight.getFlightType() == FlightTypes.BALLOON_DEFENSE)
                 {
                     // TODO Flying Circus
                 }

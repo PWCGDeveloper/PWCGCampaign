@@ -36,15 +36,15 @@ public class BristolF2B3Payload extends PlanePayload implements IPlanePayload
     public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
-        if (flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK || flight.getFlightInformation().getFlightType() == FlightTypes.BOMB)
+        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK || flight.getFlightType() == FlightTypes.BOMB)
         {
             selectBombingPayload(flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.RECON)
+        else if (flight.getFlightType() == FlightTypes.RECON)
         {
             selectReconPayload(flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.ARTILLERY_SPOT)
+        else if (flight.getFlightType() == FlightTypes.ARTILLERY_SPOT)
         {
             selectArtillerySpotPayload(flight);
         }

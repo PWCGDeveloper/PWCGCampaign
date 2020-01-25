@@ -18,7 +18,7 @@ public abstract class Bf109Payload extends PlanePayload
     public int createWeaponsPayload(IFlight flight)
     {
         createStandardPayload();
-        if (flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
+        if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
         {
             selectGroundAttackPayload(flight);
         }

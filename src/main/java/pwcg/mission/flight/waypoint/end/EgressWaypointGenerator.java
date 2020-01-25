@@ -18,7 +18,7 @@ public class EgressWaypointGenerator
 
         McuWaypoint egressWP = WaypointFactory.createEgressWaypointType();
         egressWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
-        egressWP.setDesc(flight.getFlightInformation().getSquadron().determineDisplayName(flight.getCampaign().getDate()), WaypointType.EGRESS_WAYPOINT.getName());
+        egressWP.setDesc(flight.getSquadron().determineDisplayName(flight.getCampaign().getDate()), WaypointType.EGRESS_WAYPOINT.getName());
         egressWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
         egressWP.setPosition(egressCoord);
         

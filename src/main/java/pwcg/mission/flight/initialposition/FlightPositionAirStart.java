@@ -17,7 +17,7 @@ public class FlightPositionAirStart
     {
         if (flight.getWaypointPackage().getAllWaypoints().size() < 2)
         {
-            throw new PWCGException("Flight generated with fewer than two waypoints : " + flight.getFlightInformation().getFlightType());
+            throw new PWCGException("Flight generated with fewer than two waypoints : " + flight.getFlightType());
         }
         
         Coordinate firstWaypointPosition = flight.getWaypointPackage().getAllWaypoints().get(0).getPosition();

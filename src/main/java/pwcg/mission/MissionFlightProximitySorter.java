@@ -22,13 +22,13 @@ public class MissionFlightProximitySorter
         
         for (IFlight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
         {
-            if (aiFlight.getFlightInformation().getSquadron().determineSide() == Side.ALLIED)
+            if (aiFlight.getSquadron().determineSide() == Side.ALLIED)
             {
-                alliedFlightsByContactDistance.put(aiFlight.getFlightPlayerContact().getClosestContactWithPlayerDistance(), aiFlight);
+                alliedFlightsByContactDistance.put(aiFlight.getClosestContactWithPlayerDistance(), aiFlight);
             }
             else
             {
-                axisFlightsByContactDistance.put(aiFlight.getFlightPlayerContact().getClosestContactWithPlayerDistance(), aiFlight);
+                axisFlightsByContactDistance.put(aiFlight.getClosestContactWithPlayerDistance(), aiFlight);
             }
         }
     }

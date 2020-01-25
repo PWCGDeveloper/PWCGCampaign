@@ -22,9 +22,9 @@ public class PositionEvaluator
         boolean failed = false;
         for (IFlight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
         {
-            if (aiFlight.getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK ||
-                aiFlight.getFlightInformation().getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB ||
-                aiFlight.getFlightInformation().getFlightType() == FlightTypes.TRANSPORT)
+            if (aiFlight.getFlightType() == FlightTypes.ANTI_SHIPPING_ATTACK ||
+                aiFlight.getFlightType() == FlightTypes.ANTI_SHIPPING_BOMB ||
+                aiFlight.getFlightType() == FlightTypes.TRANSPORT)
             {
                 continue;
             }

@@ -40,7 +40,7 @@ public class FW190F2PayloadTest
 		PWCGContext.setProduct(PWCGProduct.BOS);
         
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign);
-		Mockito.when(flight.getFlightInformation().getSquadron()).thenReturn(squadron);
+		Mockito.when(flight.getSquadron()).thenReturn(squadron);
 	}
 
 	@Test
@@ -65,21 +65,21 @@ public class FW190F2PayloadTest
 
 	private void testPatrolPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
-		Mockito.when(flight.getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
+		Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.PATROL);
 		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
 		runPayload(payloadGenerator);
 	}
 	
 	private void testInterceptPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
-		Mockito.when(flight.getFlightInformation().getFlightType()).thenReturn(FlightTypes.INTERCEPT);
+		Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.INTERCEPT);
 		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
 		runPayload(payloadGenerator);
 	}
 	
 	private void testGroundAttackPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
-		Mockito.when(flight.getFlightInformation().getFlightType()).thenReturn(FlightTypes.GROUND_ATTACK);
+		Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.GROUND_ATTACK);
 		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_SOFT);
 		runPayload(payloadGenerator);
 		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_ARMORED);

@@ -3,6 +3,7 @@ package pwcg.mission.flight;
 import java.io.BufferedWriter;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
@@ -42,5 +43,20 @@ public interface IFlight
     void initialize(IFlight flight) throws PWCGException;
 
     IVirtualWaypointPackage getVirtualWaypointPackage();
+
+    // From FlightInformation
+    int getFlightId();
+        
+    Squadron getSquadron();
+    
+    FlightTypes getFlightType();
+
+    boolean isPlayerFlight();
+
+    // From FlightPlanes
+    boolean isFlightHasFighterPlanes();
+
+    // From FlightClosestCOntact
+    double getClosestContactWithPlayerDistance();
 
 }

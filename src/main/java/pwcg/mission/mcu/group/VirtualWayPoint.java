@@ -145,7 +145,7 @@ public final class VirtualWayPoint
 
         MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
 
-        String squadronName = flight.getFlightInformation().getSquadron().determineDisplayName(flight.getCampaign().getDate());
+        String squadronName = flight.getSquadron().determineDisplayName(flight.getCampaign().getDate());
         
         McuSubtitle checkZoneSubtitle = new McuSubtitle();
         checkZoneSubtitle.setName("checkZone Subtitle");

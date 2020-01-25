@@ -77,7 +77,7 @@ public class ContactPatrolWaypointFactory
         pathAlongFrontData.setRandomDistanceMax(patrolDistanceRandom);
         pathAlongFrontData.setTargetGeneralLocation(ingressWaypoint.getPosition());
         pathAlongFrontData.setReturnAlongRoute(false);
-        pathAlongFrontData.setSide(flight.getFlightInformation().getSquadron().determineSquadronCountry(campaign.getDate()).getSide());
+        pathAlongFrontData.setSide(flight.getSquadron().determineSquadronCountry(campaign.getDate()).getSide());
         
         return pathAlongFrontData;
     }

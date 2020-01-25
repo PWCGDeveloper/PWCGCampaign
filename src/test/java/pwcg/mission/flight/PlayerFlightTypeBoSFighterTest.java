@@ -48,7 +48,7 @@ public class PlayerFlightTypeBoSFighterTest
 		
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
-        assert(flight.getFlightInformation().getFlightType() == FlightTypes.PATROL);
+        assert(flight.getFlightType() == FlightTypes.PATROL);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
@@ -64,7 +64,7 @@ public class PlayerFlightTypeBoSFighterTest
 		
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
-        assert(flight.getFlightInformation().getFlightType() == FlightTypes.INTERCEPT);
+        assert(flight.getFlightType() == FlightTypes.INTERCEPT);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
@@ -80,7 +80,7 @@ public class PlayerFlightTypeBoSFighterTest
 		
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
-        assert(flight.getFlightInformation().getFlightType() == FlightTypes.OFFENSIVE);
+        assert(flight.getFlightType() == FlightTypes.OFFENSIVE);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
@@ -96,7 +96,7 @@ public class PlayerFlightTypeBoSFighterTest
 		
 		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);
 		escortFlightValidator.validateEscortFlight();
-        assert(flight.getFlightInformation().getFlightType() == FlightTypes.ESCORT);
+        assert(flight.getFlightType() == FlightTypes.ESCORT);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
@@ -112,7 +112,7 @@ public class PlayerFlightTypeBoSFighterTest
         
         PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
         patrolFlightValidator.validatePatrolFlight(flight);
-        assert(flight.getFlightInformation().getFlightType() == FlightTypes.SCRAMBLE);
+        assert(flight.getFlightType() == FlightTypes.SCRAMBLE);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateNoEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);

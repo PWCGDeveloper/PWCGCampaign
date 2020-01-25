@@ -62,7 +62,7 @@ public class SinglePlayerMissionPlaneLimiter
         {
             int planesInPlayerFlight = playerFlight.getFlightPlanes().getFlightSize();
 
-            if (playerFlight.getFlightInformation().getSquadron().determineSide() == Side.ALLIED)
+            if (playerFlight.getSquadron().determineSide() == Side.ALLIED)
             {
                 maxAlliedPlanes -= planesInPlayerFlight;
                 if (maxAlliedPlanes < 2)

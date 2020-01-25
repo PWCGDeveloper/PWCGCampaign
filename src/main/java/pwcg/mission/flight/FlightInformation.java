@@ -10,6 +10,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.MissionAltitudeGeneratorFactory;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
+import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -20,6 +21,7 @@ import pwcg.mission.target.TargetDefinition;
 
 public class FlightInformation implements IFlightInformation
 {
+    private int flightId = IndexGenerator.getInstance().getNextIndex(); 
     private Campaign campaign;
     private Mission mission;
     private FlightTypes flightType;
@@ -279,4 +281,11 @@ public class FlightInformation implements IFlightInformation
     {
         return squadron.determineCurrentAirfieldCurrentMap(campaign.getDate());
     }
+    
+    @Override
+    public int getFlightId()
+    {
+        return flightId;
+    }
+
 }

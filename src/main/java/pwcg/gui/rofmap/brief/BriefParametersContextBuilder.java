@@ -38,7 +38,7 @@ public class BriefParametersContextBuilder
 		{				
 		     addPlayerFlightWaypoint(prevWaypoint, waypoint);
 
-		     if (playerFlight.getFlightInformation().getFlightType() == FlightTypes.ESCORT)
+		     if (playerFlight.getFlightType() == FlightTypes.ESCORT)
 		     {
 		         if (waypoint.getWpAction() == WaypointAction.WP_ACTION_RENDEZVOUS)
 		         {

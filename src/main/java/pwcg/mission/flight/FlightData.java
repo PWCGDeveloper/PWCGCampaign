@@ -14,7 +14,6 @@ import pwcg.mission.flight.waypoint.WaypointPackage;
 public class FlightData
 {
     private IFlightInformation flightInformation;
-    
     private IFlightPlanes flightPlanes;
     private ILinkedGroundUnits linkedGroundUnits = new LinkedGroundUnits();
     private ILinkedFlights linkedFlights = new LinkedFlights();

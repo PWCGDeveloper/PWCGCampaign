@@ -65,4 +65,6 @@ public interface IFlightInformation
     String getAirfieldName();
 
     IAirfield getAirfield();
+
+    int getFlightId();
 }

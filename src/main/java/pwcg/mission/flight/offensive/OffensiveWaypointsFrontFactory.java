@@ -82,7 +82,7 @@ public class OffensiveWaypointsFrontFactory
         pathAlongFrontData.setRandomDistanceMax(patrolDistanceRandom / 2);
         pathAlongFrontData.setTargetGeneralLocation(startPosition);
         pathAlongFrontData.setReturnAlongRoute(true);
-        pathAlongFrontData.setSide(flight.getFlightInformation().getSquadron().determineSquadronCountry(campaign.getDate()).getSide().getOppositeSide());
+        pathAlongFrontData.setSide(flight.getSquadron().determineSquadronCountry(campaign.getDate()).getSide().getOppositeSide());
 
         return pathAlongFrontData;
     }

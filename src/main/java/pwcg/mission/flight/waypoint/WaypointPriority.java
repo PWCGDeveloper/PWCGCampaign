@@ -35,7 +35,7 @@ public enum WaypointPriority
                 }
                 else
                 {
-                    if (FlightTypes.isHighPriorityFlight(flight.getFlightInformation().getFlightType()))
+                    if (FlightTypes.isHighPriorityFlight(flight.getFlightType()))
                     {
                         waypoint.setPriority(WaypointPriority.PRIORITY_HIGH);
                     }

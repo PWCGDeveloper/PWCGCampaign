@@ -25,7 +25,7 @@ public class VirtualEscortFlightBuilder
                 1,
                 50000.0,
                 fighterRole,
-                escortedFlight.getFlightInformation().getSquadron().determineSquadronCountry(escortedFlight.getCampaign().getDate()).getSide(), 
+                escortedFlight.getSquadron().determineSquadronCountry(escortedFlight.getCampaign().getDate()).getSide(), 
                 escortedFlight.getCampaign().getDate());
         
         if (friendlyFighterSquadrons != null && friendlyFighterSquadrons.size() > 0)

@@ -17,7 +17,7 @@ public class EscortFlightBuilder
         
         Campaign campaign = mission.getCampaign();
         IFlight escortFlight = null;
-        if (escortedFlight.getFlightInformation().isPlayerFlight())
+        if (escortedFlight.isPlayerFlight())
         {
             escortFlight = createEscortForPlayerFlight(escortedFlight);
         }

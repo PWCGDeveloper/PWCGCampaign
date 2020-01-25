@@ -59,7 +59,7 @@ public class ClimbWaypointBuilder
 
     private boolean isGenerateClimbWaypoints() throws PWCGException
     {
-        if (!flight.getFlightInformation().isPlayerFlight())
+        if (!flight.isPlayerFlight())
         {
             return false;
         }
@@ -70,12 +70,12 @@ public class ClimbWaypointBuilder
             return false;
         }
         
-        if (FlightTypes.isLowAltFlightType(flight.getFlightInformation().getFlightType()))
+        if (FlightTypes.isLowAltFlightType(flight.getFlightType()))
         {
             return false;
         }
         
-        if (!flight.getFlightInformation().getSquadron().isStartsCloseToFront(campaign, campaign.getDate()))
+        if (!flight.getSquadron().isStartsCloseToFront(campaign, campaign.getDate()))
         {
             return false;
         }

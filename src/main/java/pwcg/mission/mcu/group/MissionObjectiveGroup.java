@@ -34,10 +34,10 @@ public class MissionObjectiveGroup
     public void createSuccessMissionObjective(Campaign campaign, Mission mission) throws PWCGException 
     {
         IFlight playerFlight = mission.getMissionFlightBuilder().getReferencePlayerFlight();
-        Coordinate squadronLocation = playerFlight.getFlightInformation().getSquadron().determineCurrentPosition(campaign.getDate());
+        Coordinate squadronLocation = playerFlight.getSquadron().determineCurrentPosition(campaign.getDate());
         missionBeginUnit = new MissionBeginUnit(squadronLocation.copy());            
                 
-        missionObjective.setCoalition(playerFlight.getFlightInformation().getSquadron().getCountry());
+        missionObjective.setCoalition(playerFlight.getSquadron().getCountry());
         missionObjective.setSuccess(1);
         missionObjective.setPosition(squadronLocation);
 
@@ -49,10 +49,10 @@ public class MissionObjectiveGroup
     public void createFailureMissionObjective(Campaign campaign, Mission mission) throws PWCGException 
     {
         IFlight playerFlight = mission.getMissionFlightBuilder().getReferencePlayerFlight();
-        Coordinate squadronLocation = playerFlight.getFlightInformation().getSquadron().determineCurrentPosition(campaign.getDate());
+        Coordinate squadronLocation = playerFlight.getSquadron().determineCurrentPosition(campaign.getDate());
         missionBeginUnit = new MissionBeginUnit(squadronLocation.copy());            
 
-        missionObjective.setCoalition(playerFlight.getFlightInformation().getSquadron().getCountry());
+        missionObjective.setCoalition(playerFlight.getSquadron().getCountry());
         missionObjective.setPosition(squadronLocation);
         missionObjective.setSuccess(0);
 

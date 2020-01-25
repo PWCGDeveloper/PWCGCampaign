@@ -78,7 +78,7 @@ public class BriefingDataInitializerTest
         //Mockito.when(missionFlightBuilder.getPlayerFlightForSquadron(Mockito.any())).thenReturn(flight);
 
         Mockito.when(flight.getFlightPlanes()).thenReturn(planesInFlight);
-        Mockito.when(flight.getFlightInformation().getFlightType()).thenReturn(FlightTypes.PATROL);
+        Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.PATROL);
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
         Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);

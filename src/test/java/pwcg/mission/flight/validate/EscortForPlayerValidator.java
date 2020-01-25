@@ -88,7 +88,7 @@ public class EscortForPlayerValidator
         assert(escortForPlayerFlight != null);
         assert(escortForPlayerFlight.getFlightInformation().isVirtual() == false);
         assert(escortForPlayerFlight.getFlightInformation().isAirStart() == true);
-        assert(escortForPlayerFlight.getFlightInformation().isPlayerFlight() == false);
+        assert(escortForPlayerFlight.isPlayerFlight() == false);
     }
 
     private void validateEscortAltitude()

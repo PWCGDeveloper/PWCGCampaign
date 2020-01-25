@@ -3,6 +3,7 @@ package pwcg.mission.flight;
 import java.io.BufferedWriter;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
@@ -15,7 +16,7 @@ public abstract class Flight implements IFlight
 
     @Override
     public abstract void createFlight() throws PWCGException;
- 
+
     public Flight(IFlightInformation flightInformation)
     {
         flightData = new FlightData(flightInformation);
@@ -44,7 +45,6 @@ public abstract class Flight implements IFlight
     {
         flightData.finalize();
     }
-    
 
     @Override
     public IFlightInformation getFlightInformation()
@@ -91,13 +91,50 @@ public abstract class Flight implements IFlight
     @Override
     public void initialize(IFlight flight) throws PWCGException
     {
-        flightData.initialize(flight);        
+        flightData.initialize(flight);
     }
 
     @Override
     public IVirtualWaypointPackage getVirtualWaypointPackage()
     {
         return flightData.getVirtualWaypointPackage();
+    }
+
+    @Override
+    public int getFlightId()
+    {
+        return flightData.getFlightInformation().getFlightId();
+    }
+
+
+    @Override
+    public Squadron getSquadron()
+    {
+        return flightData.getFlightInformation().getSquadron();
+    }
+
+    @Override
+    public FlightTypes getFlightType()
+    {
+        return flightData.getFlightInformation().getFlightType();
+    }
+
+    @Override
+    public boolean isPlayerFlight()
+    {
+        return flightData.getFlightInformation().isPlayerFlight();
+    }
+    
+    @Override
+    public boolean isFlightHasFighterPlanes()
+    {
+        return flightData.getFlightPlanes().isFlightHasFighterPlanes();
+    }
+
+    @Override
+    public double getClosestContactWithPlayerDistance()
+    {
+        return flightData.getFlightPlayerContact().getClosestContactWithPlayerDistance();
     }
 
 }

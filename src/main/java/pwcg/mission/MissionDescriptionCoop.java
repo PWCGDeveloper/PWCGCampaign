@@ -108,10 +108,10 @@ public class MissionDescriptionCoop implements IMissionDescription
     {
         Campaign campaign = PWCGContext.getInstance().getCampaign();
 
-        String squadron = flight.getFlightInformation().getSquadron().determineDisplayName(campaign.getDate());
+        String squadron = flight.getSquadron().determineDisplayName(campaign.getDate());
         String aircraft = flight.getFlightPlanes().getFlightLeader().getDisplayName();
 
-        if (flight.getFlightInformation().getSquadron().determineSide() == Side.AXIS)
+        if (flight.getSquadron().determineSide() == Side.AXIS)
         {
             String axisInt = "    " + squadron + " flying " + aircraft;
             axisIntList.add(axisInt + "\n");

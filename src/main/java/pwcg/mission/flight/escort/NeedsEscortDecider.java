@@ -16,7 +16,7 @@ public class NeedsEscortDecider
         if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE ||
             campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_COOP)
         {
-            if (escortedFlight.getFlightInformation().isPlayerFlight())
+            if (escortedFlight.isPlayerFlight())
             {
                 return playerNeedsEscort(mission, escortedFlight);
             }

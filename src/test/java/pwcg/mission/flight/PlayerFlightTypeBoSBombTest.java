@@ -45,7 +45,7 @@ public class PlayerFlightTypeBoSBombTest
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightInformation().getFlightType() == FlightTypes.BOMB);
+        assert (flight.getFlightType() == FlightTypes.BOMB);
         for (PlaneMcu plane : flight.getFlightPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() >= 0);
@@ -69,7 +69,7 @@ public class PlayerFlightTypeBoSBombTest
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightInformation().getFlightType() == FlightTypes.LOW_ALT_BOMB);
+        assert (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB);
         for (PlaneMcu plane : flight.getFlightPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() >= 0);
@@ -93,7 +93,7 @@ public class PlayerFlightTypeBoSBombTest
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightInformation().getFlightType() == FlightTypes.STRATEGIC_BOMB);
+        assert (flight.getFlightType() == FlightTypes.STRATEGIC_BOMB);
         for (PlaneMcu plane : flight.getFlightPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() >= 0);

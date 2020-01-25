@@ -77,7 +77,7 @@ public class ReconFrontWaypointsFactory
         pathAlongFrontData.setRandomDistanceMax(patrolDistanceRandom);
         pathAlongFrontData.setTargetGeneralLocation(startPosition);
         pathAlongFrontData.setReturnAlongRoute(false);
-        pathAlongFrontData.setSide(flight.getFlightInformation().getSquadron().determineSquadronCountry(flight.getCampaign().getDate()).getSide().getOppositeSide());
+        pathAlongFrontData.setSide(flight.getSquadron().determineSquadronCountry(flight.getCampaign().getDate()).getSide().getOppositeSide());
         
         return pathAlongFrontData;
     }

@@ -44,11 +44,11 @@ public class Ju87D3Payload extends PlanePayload
     public int createWeaponsPayload(IFlight flight)
     {
         selectedPrimaryPayloadId = 0;
-        if (flight.getFlightInformation().getFlightType() == FlightTypes.DIVE_BOMB)
+        if (flight.getFlightType() == FlightTypes.DIVE_BOMB)
         {
             selectDiveBombPayload(flight);
         }
-        else if (flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK)
+        else if (flight.getFlightType() == FlightTypes.GROUND_ATTACK)
         {
             selectGroundAttackPayload();
         }

@@ -153,7 +153,7 @@ public class MissionFlightBuilder
     {
         for (IFlight playerFlight : playerFlights)
         {
-            if (playerFlight.getFlightInformation().getFlightType() == flightType)
+            if (playerFlight.getFlightType() == flightType)
             {
                 return true;
             }
@@ -170,7 +170,7 @@ public class MissionFlightBuilder
     {
         for (IFlight flight : playerFlights)
         {
-            if (flight.getFlightInformation().getSquadron().getSquadronId() == squadronId)
+            if (flight.getSquadron().getSquadronId() == squadronId)
             {
                 return flight;
             }

@@ -21,7 +21,7 @@ public class GroundUnitValidator
 
     public void validateGroundUnitsForFlight(IFlight flight)
     {
-        if (flight.getFlightInformation().isPlayerFlight() || flight.getFlightInformation().isEscortedByPlayerFlight() || flight.getFlightInformation().isEscortForPlayerFlight())
+        if (flight.isPlayerFlight() || flight.getFlightInformation().isEscortedByPlayerFlight() || flight.getFlightInformation().isEscortForPlayerFlight())
         {
             validatePlayerGroundUnits(flight);
         }

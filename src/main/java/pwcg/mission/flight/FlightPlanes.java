@@ -153,7 +153,7 @@ public class FlightPlanes implements IFlightPlanes
             return true;
         }
 
-        if (flight.getFlightInformation().getFlightType().isCategory(FlightTypeCategory.FIGHTER))
+        if (flight.getFlightType().isCategory(FlightTypeCategory.FIGHTER))
         {
             return true;
         }

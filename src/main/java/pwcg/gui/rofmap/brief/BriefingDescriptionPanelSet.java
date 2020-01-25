@@ -52,7 +52,7 @@ public class BriefingDescriptionPanelSet extends PwcgGuiContext implements Actio
 
         IFlight myFlight = mission.getMissionFlightBuilder().getPlayerFlight(PWCGContext.getInstance().getReferencePlayer());
 		briefingMissionHandler = new BriefingMissionHandler(mission);
-		briefingMissionHandler.initializeFromMission(myFlight.getFlightInformation().getSquadron());
+		briefingMissionHandler.initializeFromMission(myFlight.getSquadron());
 
 		SoundManager.getInstance().playSound("BriefingStart.WAV");
 	}

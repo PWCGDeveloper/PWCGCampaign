@@ -46,7 +46,7 @@ public class PlayerFlightTypeBoSAttackTest
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightInformation().getFlightType() == FlightTypes.GROUND_ATTACK);
+        assert (flight.getFlightType() == FlightTypes.GROUND_ATTACK);
         for (PlaneMcu plane : flight.getFlightPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);

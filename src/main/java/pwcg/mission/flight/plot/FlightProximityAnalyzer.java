@@ -29,7 +29,7 @@ public class FlightProximityAnalyzer
         int playerEncounerDistance = VirtualWayPoint.VWP_TRIGGGER_DISTANCE;
         for (IFlight aiFlight : mission.getMissionFlightBuilder().getAiFlights())
         {
-            if (!aiFlight.getFlightInformation().isPlayerFlight())
+            if (!aiFlight.isPlayerFlight())
             {
                 for (IFlight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
                 {
@@ -58,7 +58,7 @@ public class FlightProximityAnalyzer
                 double distance = MathUtils.calcDist(thisFlightCoordinate, thatFlightCoordinate);
                 if (distance < encounterRadius)
                 {                    
-                    if (playerFlight.getFlightInformation().isPlayerFlight())
+                    if (playerFlight.isPlayerFlight())
                     {
                         aiFlight.getFlightPlayerContact().setContactWithPlayer(timeSliceOfFlight);
                     }
@@ -66,7 +66,7 @@ public class FlightProximityAnalyzer
                 
                 if (distance < closestDistanceToThatFlight)
                 {
-                    if (playerFlight.getFlightInformation().isPlayerFlight())
+                    if (playerFlight.isPlayerFlight())
                     {
                         aiFlight.getFlightPlayerContact().setClosestContactWithPlayerDistance(distance);
                         closestDistanceToThatFlight = distance;

@@ -27,7 +27,7 @@ public class IngressWaypointScrambleOpposition implements IIngressWaypoint
     public McuWaypoint createIngressWaypoint() throws PWCGException  
     {
         FrontLinesForMap frontLinesForMap = PWCGContext.getInstance().getCurrentMap().getFrontLinesForMap(campaign.getDate());
-        FrontLinePoint nearbyFrontPoint = frontLinesForMap.findCloseFrontPositionForSide(flight.getFlightHomePosition(), 20000, flight.getFlightInformation().getSquadron().getCountry().getSide());
+        FrontLinePoint nearbyFrontPoint = frontLinesForMap.findCloseFrontPositionForSide(flight.getFlightHomePosition(), 20000, flight.getSquadron().getCountry().getSide());
         Coordinate nearbyFrontPosition = nearbyFrontPoint.getPosition();
                 
         IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();

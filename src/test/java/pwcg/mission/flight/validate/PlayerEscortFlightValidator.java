@@ -45,7 +45,7 @@ public class PlayerEscortFlightValidator
         assert(escortedFlight != null);
         assert(escortedFlight.getFlightInformation().isVirtual() == false);
         assert(escortedFlight.getFlightInformation().isAirStart() == true);
-        assert(escortedFlight.getFlightInformation().isPlayerFlight() == false);
+        assert(escortedFlight.isPlayerFlight() == false);
         
         for (PlaneMcu escortedPlane : escortedFlight.getFlightPlanes().getPlanes())
         {

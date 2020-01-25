@@ -249,7 +249,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
     private FlightMap getFlightMap(IFlight flight) throws PWCGException
     {
         FlightMap flightMap = new FlightMap();
-        flightMap.flightType = flight.getFlightInformation().getFlightType().toString();
+        flightMap.flightType = flight.getFlightType().toString();
         flightMap.planeType = flight.getFlightPlanes().getFlightLeader().getDisplayName();
         
         for (MissionPoint waypoint : flight.getWaypointPackage().getFlightMissionPoints())

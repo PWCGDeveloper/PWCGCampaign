@@ -76,7 +76,7 @@ public class MissionAnalyzer
         {
             NumberFormat numberFormat = new DecimalFormat("###.0");
 
-            writer.write("  Mission type: " + flight.getFlightInformation().getFlightType());
+            writer.write("  Mission type: " + flight.getFlightType());
             writer.newLine();
             writer.write("  Airfield    : " + flight.getFlightInformation().getAirfield().getName());
             writer.newLine();

@@ -74,18 +74,18 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
         setAirfield(playerFlight.getFlightInformation().getAirfieldName());
         setObjective(MissionObjectiveFactory.formMissionObjective(playerFlight));
         setEscortedBy(playerFlight);
-        setSquadron(playerFlight.getFlightInformation().getSquadron().determineDisplayName(campaign.getDate()));
-        buildTitleDescription(campaign.getCampaignData().getName(), playerFlight.getFlightInformation().getFlightType().toString());
+        setSquadron(playerFlight.getSquadron().determineDisplayName(campaign.getDate()));
+        buildTitleDescription(campaign.getCampaignData().getName(), playerFlight.getFlightType().toString());
 
         HashMap<String, IFlight> squadronMap = new HashMap<String, IFlight>();
         for (IFlight flight : mission.getMissionFlightBuilder().getAiFlights())
         {
-            squadronMap.put(flight.getFlightInformation().getSquadron().determineDisplayName(campaign.getDate()), flight);
+            squadronMap.put(flight.getSquadron().determineDisplayName(campaign.getDate()), flight);
         }
 
         for (IFlight flight : squadronMap.values())
         {
-            setFlight(playerFlight.getFlightInformation().getSquadron().getCountry(), flight);
+            setFlight(playerFlight.getSquadron().getCountry(), flight);
         }
         
         return descSinglePlayerTemplate;
@@ -147,7 +147,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
         EscortForPlayerFlight escortForPlayerFlight = playerFlight.getLinkedFlights().getEscortForPlayer();
         if (escortForPlayerFlight != null)
         {
-            escortedByText = "Escorted by " + escortForPlayerFlight.getFlightPlanes().getFlightLeader().getDisplayName() + "s of " + escortForPlayerFlight.getFlightInformation().getSquadron().determineDisplayName(campaign.getDate());
+            escortedByText = "Escorted by " + escortForPlayerFlight.getFlightPlanes().getFlightLeader().getDisplayName() + "s of " + escortForPlayerFlight.getSquadron().determineDisplayName(campaign.getDate());
         }
 	    
 	    descSinglePlayerTemplate = replace(descSinglePlayerTemplate, "<ESCORTED_BY>", escortedByText);
@@ -159,7 +159,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 	{
 		Campaign campaign =     PWCGContext.getInstance().getCampaign();
 		
-		String squadron = flight.getFlightInformation().getSquadron().determineDisplayName(campaign.getDate());
+		String squadron = flight.getSquadron().determineDisplayName(campaign.getDate());
 		String aircraft = flight.getFlightPlanes().getFlightLeader().getDisplayName();
 		ICountry flightCountry = flight.getFlightInformation().getAirfield().createCountry(campaign.getDate());
 		

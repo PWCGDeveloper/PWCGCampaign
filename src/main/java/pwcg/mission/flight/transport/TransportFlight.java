@@ -51,7 +51,7 @@ public class TransportFlight extends Flight implements IFlight
     {
 	    AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
 	    arrivalAirfield = airfieldManager.getAirfieldFinder().findClosestAirfieldForSide(
-	            this.getFlightInformation().getTargetPosition(), getCampaign().getDate(), this.getFlightInformation().getSquadron().getCountry().getSide());    
+	            this.getFlightInformation().getTargetPosition(), getCampaign().getDate(), this.getSquadron().getCountry().getSide());    
     }
 
     public IAirfield getArrivalAirfield()
