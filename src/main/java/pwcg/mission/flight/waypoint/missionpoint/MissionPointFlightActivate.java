@@ -24,10 +24,12 @@ public class MissionPointFlightActivate implements IMissionPointSet
     private McuTimer activationTimer = null;
     private McuActivate activationEntity = null;
     private boolean linkToNextTarget = true;
+    private MissionPointSetType missionPointSetType;
 
     public MissionPointFlightActivate(IFlight flight)
     {
         this.flight = flight;
+        this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_ACTIVATE;
     }
     
     public void createFlightActivate() throws PWCGException, PWCGException 
@@ -180,5 +182,11 @@ public class MissionPointFlightActivate implements IMissionPointSet
     {
         List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
         return allFlightPoints;
+    }
+
+    @Override
+    public MissionPointSetType getMissionPointSetType()
+    {
+        return missionPointSetType;
     }
 }

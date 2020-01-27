@@ -7,7 +7,7 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.waypoint.attack.GroundAttackWaypointHelper;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackWaypointSet;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackSet;
 import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.AirGroundAttackMcuSequence;
@@ -17,7 +17,7 @@ public class DiveBombingWaypointFactory
     static public int DIVE_BOMB_ATTACK_TIME = 180;
 
     private IFlight flight;
-    private MissionPointAttackWaypointSet missionPointSet = new MissionPointAttackWaypointSet();
+    private MissionPointAttackSet missionPointSet = new MissionPointAttackSet();
 
     public DiveBombingWaypointFactory(IFlight flight) throws PWCGException
     {

@@ -30,10 +30,14 @@ public class EscortMcuSequence
         this.escortFlight = escortFlight;
     }
     
-    public void createPointDefenseSequence() throws PWCGException
+    public void createEscortSequence() throws PWCGException
     {
         createCover();
         createForceComplete();
+    }
+    
+    public void finalize() throws PWCGException
+    {
         createTargetAssociations();
     }
 
@@ -85,19 +89,11 @@ public class EscortMcuSequence
     
     private void createTargetAssociations()
     {
-        McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(escortedFlight.getWaypointPackage().getAllWaypoints(), 
-                WaypointType.INGRESS_WAYPOINT.getName());
-
-        McuWaypoint partingWP = WaypointGeneratorUtils.findWaypointByType(escortedFlight.getWaypointPackage().getAllWaypoints(), 
+        McuWaypoint rtbWP = WaypointGeneratorUtils.findWaypointByType(escortFlight.getWaypointPackage().getAllWaypoints(), 
                 WaypointType.EGRESS_WAYPOINT.getName());
 
-        McuWaypoint rtbWP = WaypointGeneratorUtils.findWaypointByType(escortFlight.getWaypointPackage().getAllWaypoints(), 
-                WaypointType.RETURN_TO_BASE_WAYPOINT.getName());
-
-        rendezvousWP.setTarget(coverTimer.getIndex());
         coverTimer.setTarget(cover.getIndex());        
         
-        partingWP.setTarget(forceCompleteTimer.getIndex());
         forceCompleteTimer.setTarget(forceComplete.getIndex());
         forceCompleteTimer.setTarget(rtbWP.getIndex());
     }
@@ -123,5 +119,41 @@ public class EscortMcuSequence
     public void setLinkToNextTarget(int nextIndex)
     {
         forceCompleteTimer.setTarget(nextIndex);        
+    }
+
+    // These getters are for test purposes
+    public McuCover getCover()
+    {
+        return cover;
+    }
+
+    public void setCover(McuCover cover)
+    {
+        this.cover = cover;
+    }
+
+    public McuTimer getCoverTimer()
+    {
+        return coverTimer;
+    }
+
+    public McuTimer getForceCompleteTimer()
+    {
+        return forceCompleteTimer;
+    }
+
+    public McuForceComplete getForceComplete()
+    {
+        return forceComplete;
+    }
+
+    public IFlight getEscortFlight()
+    {
+        return escortFlight;
+    }
+
+    public IFlight getEscortedFlight()
+    {
+        return escortedFlight;
     }
 }

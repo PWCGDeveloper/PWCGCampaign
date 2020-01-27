@@ -18,11 +18,12 @@ public class PlayerEscortedFlightBuilder
     private IFlightInformation escortFlightInformation;
     private IFlightInformation escortedFlightInformation;
 	
-	public PlayerEscortedFlightBuilder () throws PWCGException 
+	public PlayerEscortedFlightBuilder (IFlightInformation escortFlightInformation) throws PWCGException 
 	{
+	    this.escortFlightInformation = escortFlightInformation;
 	}
 	
-	public IFlight createEscortedFlight(IFlightInformation escortFlightInformation) throws PWCGException
+	public IFlight createEscortedFlight() throws PWCGException
     {
         MissionBeginUnit missionBeginUnit = buildEscortedFlightInformation();
         PlayerEscortedFlight PlayerEscortedFlightEscortedByPlayer = buildEscortedFlight(missionBeginUnit);        

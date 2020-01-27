@@ -28,4 +28,5 @@ public interface IMissionPointSet extends IMissionPointSetWaypoints
     
     IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException;
 
+    MissionPointSetType getMissionPointSetType();
 }

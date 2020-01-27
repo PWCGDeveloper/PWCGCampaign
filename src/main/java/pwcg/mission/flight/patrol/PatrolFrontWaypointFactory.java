@@ -48,6 +48,7 @@ public class PatrolFrontWaypointFactory
         PathAlongFrontData pathAlongFrontData = buildPathAlongFrontData(startPosition);
         PathAlongFront pathAlongFront = new PathAlongFront();
         List<Coordinate> patrolCoordinates = pathAlongFront.createPathAlongFront(pathAlongFrontData);
+        patrolCoordinates = this.setPatrolPositionAltitude(patrolCoordinates);
         
         for (Coordinate patrolCoordinate : patrolCoordinates)
         {
@@ -84,14 +85,22 @@ public class PatrolFrontWaypointFactory
         
         return pathAlongFrontData;
     }
+    
+    private List<Coordinate> setPatrolPositionAltitude(List<Coordinate> patrolCoordinates)
+    {
+        for (Coordinate patrolCoordinate : patrolCoordinates)
+        {
+            patrolCoordinate.setYPos(flight.getFlightInformation().getAltitude());
+        }
+        return patrolCoordinates;
+    }
 
 	private McuWaypoint createWP(Coordinate coord) throws PWCGException 
 	{
 		McuWaypoint wp = WaypointFactory.createPatrolWaypointType();
 		wp.setTriggerArea(McuWaypoint.COMBAT_AREA);
-		wp.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
+		wp.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());		
 		wp.setPosition(coord);
-		wp.getPosition().setYPos(flight.getFlightInformation().getAltitude());
 
 		return wp;
 	}

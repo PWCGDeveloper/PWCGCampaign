@@ -21,7 +21,7 @@ public class EscortForPlayerWaypointFactory
 
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {
-        missionPointSet = new MissionPointEscortWaypointSet(escortFlight);
+        missionPointSet = new MissionPointEscortWaypointSet();
         
         missionPointSet.addWaypointBefore(ingressWaypoint);
         
@@ -29,7 +29,7 @@ public class EscortForPlayerWaypointFactory
         missionPointSet.addWaypointAfter(rtbWP);
         
         EscortMcuSequence escortSequence = new EscortMcuSequence(escortedFlight, escortFlight);
-        escortSequence.createPointDefenseSequence();
+        escortSequence.createEscortSequence();
         missionPointSet.setCoverSequence(escortSequence);
 
         return missionPointSet;

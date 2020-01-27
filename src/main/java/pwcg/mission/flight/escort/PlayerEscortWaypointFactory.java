@@ -24,15 +24,15 @@ public class PlayerEscortWaypointFactory
 
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {
-        missionPointSet = new MissionPointEscortWaypointSet(escortFlight);
+        missionPointSet = new MissionPointEscortWaypointSet();
 
         missionPointSet.addWaypointBefore(ingressWaypoint);
         
-        McuWaypoint waypoint = createTargetWaypoint();
-        missionPointSet.addWaypointBefore(waypoint);
-       
+        McuWaypoint rendezvousWaypoint = createRendezvousWaypoint();
+        missionPointSet.addWaypointBefore(rendezvousWaypoint);
+               
         EscortMcuSequence escortSequence = new EscortMcuSequence(escortedFlight, escortFlight);
-        escortSequence.createPointDefenseSequence();
+        escortSequence.createEscortSequence();
         missionPointSet.setCoverSequence(escortSequence);
 
         McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(escortFlight, ingressWaypoint.getPosition());
@@ -41,7 +41,7 @@ public class PlayerEscortWaypointFactory
         return missionPointSet;
     }    
 
-	protected McuWaypoint createTargetWaypoint() throws PWCGException  
+	private McuWaypoint createRendezvousWaypoint() throws PWCGException  
 	{
 		Coordinate coord = new Coordinate();
 		coord.setXPos(escortFlight.getFlightInformation().getTargetPosition().getXPos() + 50.0);

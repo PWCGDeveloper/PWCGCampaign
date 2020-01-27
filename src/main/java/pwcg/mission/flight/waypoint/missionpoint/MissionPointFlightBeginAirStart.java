@@ -24,12 +24,14 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     private McuTimer formationTimer = null;
     private McuFormation formationEntity = null;
     private boolean linkToNextTarget = true;
+    private MissionPointSetType missionPointSetType;
 
     public MissionPointFlightBeginAirStart(IFlight flight, AirStartPattern airStartNearAirfield, McuWaypoint ingressWaypoint)
     {
         this.flight = flight;
         this.airStartNearAirfield = airStartNearAirfield;
         this.ingressWaypoint = ingressWaypoint;
+        this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_BEGIN_AIR;
     }
 
     public void createFlightBegin() throws PWCGException, PWCGException
@@ -41,7 +43,7 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     @Override
     public void setLinkToNextTarget(int nextTargetIndex) throws PWCGException
     {
-        formationTimer.setTarget(nextTargetIndex);
+        super.getLastWaypoint().setTarget(nextTargetIndex);
     }
 
     @Override
@@ -118,6 +120,7 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     public List<McuWaypoint> getAllWaypoints()
     {
         List<McuWaypoint> allWaypoints = new ArrayList<>();
+        allWaypoints.addAll(waypoints.getWaypoints());
         return allWaypoints;
     }
 
@@ -133,5 +136,11 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
         List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
         allFlightPoints.addAll(waypoints.getWaypoints());
         return allFlightPoints;
+    }
+
+    @Override
+    public MissionPointSetType getMissionPointSetType()
+    {
+        return missionPointSetType;
     }
 }

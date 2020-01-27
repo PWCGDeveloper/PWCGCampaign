@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
@@ -43,8 +44,11 @@ public class VirtualEscortFlightWaypointFactory
             double altitude = escortedWaypoint.getPosition().getYPos() + 400.0;
 
             McuWaypoint escortWP = escortedWaypoint.copy();
-            escortWP.getPosition().setYPos(altitude);
             escortWP.setPriority(WaypointPriority.PRIORITY_LOW);
+            
+            Coordinate position = escortWP.getPosition();
+            position.setYPos(altitude);
+            escortWP.setPosition(position);
             
             waypoints.add(escortWP);
         }

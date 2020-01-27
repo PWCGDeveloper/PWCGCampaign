@@ -18,7 +18,7 @@ public class ReturnToBaseWaypoint
         Orientation orient = new Orientation();
         orient.setyOri(escortFlight.getFlightInformation().getDepartureAirfield().getOrientation().getyOri());
 
-        McuWaypoint rtbWP = WaypointFactory.createReturnToBaseWaypointType();
+        McuWaypoint rtbWP = WaypointFactory.createEgressWaypointType();
         rtbWP.setTriggerArea(McuWaypoint.START_AREA);
         rtbWP.setSpeed(escortFlight.getFlightPlanes().getFlightCruisingSpeed());
         rtbWP.setPosition(returnToBaseCoords);

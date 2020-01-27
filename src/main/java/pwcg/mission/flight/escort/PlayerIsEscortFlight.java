@@ -12,11 +12,11 @@ import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class PlayerEscortFlight extends Flight implements IFlight
+public class PlayerIsEscortFlight extends Flight implements IFlight
 {
     private IFlight escortedFlight;
     
-    public PlayerEscortFlight(IFlightInformation flightInformation, IFlight escortedFlight)
+    public PlayerIsEscortFlight(IFlightInformation flightInformation, IFlight escortedFlight)
     {
         super(flightInformation);
         this.escortedFlight = escortedFlight;
@@ -36,7 +36,6 @@ public class PlayerEscortFlight extends Flight implements IFlight
         PlayerEscortWaypointFactory missionWaypointFactory = new PlayerEscortWaypointFactory(this, escortedFlight);
         IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
         return missionWaypoints;
-        
     }
 
     private void createWaypoints() throws PWCGException

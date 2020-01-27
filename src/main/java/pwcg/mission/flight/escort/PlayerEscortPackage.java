@@ -21,10 +21,10 @@ public class PlayerEscortPackage implements IFlightPackage
 	        throw new PWCGMissionGenerationException ("Attempt to create non player escort package");
         }
 	    
-	    PlayerEscortedFlightBuilder escortedFlightBuilder = new PlayerEscortedFlightBuilder();
-	    IFlight escortedFlight = escortedFlightBuilder.createEscortedFlight(playerFlightInformation);
+	    PlayerEscortedFlightBuilder escortedFlightBuilder = new PlayerEscortedFlightBuilder(playerFlightInformation);
+	    IFlight escortedFlight = escortedFlightBuilder.createEscortedFlight();
 
-		PlayerEscortFlight playerEscort = new PlayerEscortFlight(playerFlightInformation, escortedFlight);
+		PlayerIsEscortFlight playerEscort = new PlayerIsEscortFlight(playerFlightInformation, escortedFlight);
 		playerEscort.createFlight();
 		
 		playerEscort.getLinkedFlights().addLinkedFlight(escortedFlight);

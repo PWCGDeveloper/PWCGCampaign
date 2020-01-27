@@ -16,24 +16,21 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionGenerator;
 import pwcg.mission.flight.attack.GroundAttackFlight;
 import pwcg.mission.flight.balloonBust.BalloonBustFlight;
-import pwcg.mission.flight.balloondefense.BalloonDefensePlayerFlight;
+import pwcg.mission.flight.balloondefense.BalloonDefenseFlight;
 import pwcg.mission.flight.bomb.BombingFlight;
-import pwcg.mission.flight.bomb.StrategicBombingFlight;
-import pwcg.mission.flight.escort.PlayerEscortFlight;
+import pwcg.mission.flight.escort.PlayerIsEscortFlight;
 import pwcg.mission.flight.intercept.InterceptFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.patrol.PatrolFlight;
-import pwcg.mission.flight.recon.PlayerReconFlight;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PatrolFlightValidator;
 import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
-import pwcg.mission.flight.validate.PlayerReconFlightValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
-import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
@@ -66,7 +63,7 @@ public class PlayerFlightFCTypeTest
 		
 		GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
 		groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getTargetDefinition());
+        validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
         assert(flight.getFlightType() == FlightTypes.GROUND_ATTACK);
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
@@ -88,7 +85,7 @@ public class PlayerFlightFCTypeTest
 
 		GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
 		groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getTargetDefinition());
+        validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
         assert(flight.getFlightType() == FlightTypes.BOMB);
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
@@ -96,25 +93,6 @@ public class PlayerFlightFCTypeTest
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
         PositionEvaluator.evaluateAiFlight(mission);
-	}
-	
-	@Test
-	public void strategicBombFlightTest() throws PWCGException
-	{
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RFC_2_PROFILE);
-
-        MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.STRATEGIC_BOMB);
-        StrategicBombingFlight flight = (StrategicBombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-		flight.finalizeFlight();
-		
-		GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
-		groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getTargetDefinition());
-        PositionEvaluator.evaluateAiFlight(mission);
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
-        playerEscortedFlightValidator.validateEscortForPlayer();
-        assert(flight.getFlightType() == FlightTypes.STRATEGIC_BOMB);
 	}
 
 	@Test
@@ -155,7 +133,7 @@ public class PlayerFlightFCTypeTest
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.JASTA_11_PROFILE);
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BALLOON_DEFENSE);
-        BalloonDefensePlayerFlight flight = (BalloonDefensePlayerFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        BalloonDefenseFlight flight = (BalloonDefenseFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
         
         assert(flight.getFlightType() == FlightTypes.BALLOON_DEFENSE);
@@ -197,29 +175,13 @@ public class PlayerFlightFCTypeTest
 	}
 
 	@Test
-	public void reconFlightTest() throws PWCGException
-	{
-        Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.RFC_2_PROFILE);
-
-        MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.RECON);
-        PlayerReconFlight flight = (PlayerReconFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-		flight.finalizeFlight();
-		
-		PlayerReconFlightValidator reconFlightValidator = new PlayerReconFlightValidator();
-		reconFlightValidator.validateReconFlight(flight);
-        assert(flight.getFlightType() == FlightTypes.RECON);
-        PositionEvaluator.evaluateAiFlight(mission);
-	}
-
-	@Test
 	public void escortFlightTest() throws PWCGException
 	{
         Campaign campaign = CampaignCache.makeCampaign(SquadronTestProfile.ESC_103_PROFILE);
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
-        PlayerEscortFlight flight = (PlayerEscortFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        PlayerIsEscortFlight flight = (PlayerIsEscortFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
 		flight.finalizeFlight();
 		
 		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);
@@ -232,7 +194,7 @@ public class PlayerFlightFCTypeTest
 	{
         assert (targetDefinition.getAttackingCountry() != null);
         assert (targetDefinition.getTargetCountry() != null);
-        assert (targetDefinition.getFlightInformation().getTargetDefinition().getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
+        assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
         assert (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
 	}
 }

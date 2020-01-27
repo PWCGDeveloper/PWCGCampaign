@@ -23,11 +23,13 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
     private McuLanding landingMcu;
     private IAirfield landingAirfield;
     private boolean linkToNextTarget = true;
+    private MissionPointSetType missionPointSetType;
 
     public MissionPointFlightEnd(IFlight flight, IAirfield landingAirfield)
     {
         this.flight = flight;
         this.landingAirfield = landingAirfield;
+        this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_END;
     }
     
     public void createFlightEnd() throws PWCGException, PWCGException 
@@ -129,5 +131,11 @@ public class MissionPointFlightEnd extends MissionPointSetSingleWaypointSet impl
         List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
         allFlightPoints.addAll(waypoints.getWaypoints());
         return allFlightPoints;
+    }
+
+    @Override
+    public MissionPointSetType getMissionPointSetType()
+    {
+        return missionPointSetType;
     }
 }

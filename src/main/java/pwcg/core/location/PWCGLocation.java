@@ -38,11 +38,13 @@ public class PWCGLocation
 
 	public Coordinate getPosition()
 	{
+        position.setYPos(0);
 		return position.copy();
 	}
 
 	public void setPosition(Coordinate position)
 	{
+        position.setYPos(0);
 		this.position = position;
 	}
 
@@ -61,5 +63,4 @@ public class PWCGLocation
 		CountryDesignator countryDesignator = new CountryDesignator();
 		return countryDesignator.determineCountry(position, date);
 	}
-
 }

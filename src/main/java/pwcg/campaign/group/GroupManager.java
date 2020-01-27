@@ -27,7 +27,6 @@ public class GroupManager
 	public void configure(String mapName, AirfieldManager airfieldManager) throws PWCGException 
 	{
 	    groundStructureGroup = GroundObjectIOJson.readJson(mapName);
-	    groundStructureGroup.setAltitudeGroundLevel();
 	    groundStructureGroup.generateEntityRelationships();
         blockFinder = new BlockFinder(groundStructureGroup.getStandaloneBlocks());
         bridgeFinder = new BridgeFinder(groundStructureGroup.getBridges());

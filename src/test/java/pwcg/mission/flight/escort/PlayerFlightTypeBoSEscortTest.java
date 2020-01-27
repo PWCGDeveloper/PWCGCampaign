@@ -36,7 +36,7 @@ public class PlayerFlightTypeBoSEscortTest
         mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
         mission.finalizeMission();
         
-        PlayerEscortFlight flight = (PlayerEscortFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
+        PlayerIsEscortFlight flight = (PlayerIsEscortFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
 
         PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);

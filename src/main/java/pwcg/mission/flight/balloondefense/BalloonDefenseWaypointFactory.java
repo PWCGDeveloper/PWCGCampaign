@@ -52,12 +52,13 @@ public class BalloonDefenseWaypointFactory
         double angleTargetToIngress = MathUtils.calcAngle(flight.getFlightInformation().getTargetPosition(), ingressWaypoint.getPosition());
 
         double distanceFromTarget = getRadiusFromCircumferennceOfLoop();
-        Coordinate coord = MathUtils.calcNextCoord(flight.getFlightInformation().getTargetPosition(), angleTargetToIngress, distanceFromTarget);
+        Coordinate balloonDefensePosition = MathUtils.calcNextCoord(flight.getFlightInformation().getTargetPosition(), angleTargetToIngress, distanceFromTarget);
+        balloonDefensePosition.setYPos(flight.getFlightInformation().getAltitude());
 
         McuWaypoint loopFirstWP = WaypointFactory.createPatrolWaypointType();
         loopFirstWP.setTriggerArea(McuWaypoint.FLIGHT_AREA);
         loopFirstWP.setSpeed(flight.getFlightPlanes().getFlightCruisingSpeed());
-        loopFirstWP.setPosition(coord);    
+        loopFirstWP.setPosition(balloonDefensePosition);    
         loopFirstWP.setTargetWaypoint(true);
         
         double initialAngle = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getFlightInformation().getTargetPosition());

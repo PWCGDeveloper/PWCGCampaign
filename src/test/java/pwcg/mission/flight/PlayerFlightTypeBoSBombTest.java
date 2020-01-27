@@ -82,26 +82,6 @@ public class PlayerFlightTypeBoSBombTest
         PositionEvaluator.evaluateAiFlight(mission);
     }
 
-    @Test
-    public void strategicBombFlightTest() throws PWCGException
-    {
-        MissionGenerator missionGenerator = new MissionGenerator(campaign);
-        Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.STRATEGIC_BOMB);
-        StrategicBombingFlight flight = (StrategicBombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-        flight.finalizeFlight();
-
-        GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
-        groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightType() == FlightTypes.STRATEGIC_BOMB);
-        for (PlaneMcu plane : flight.getFlightPlanes())
-        {
-            assert(plane.getPlanePayload().getSelectedPayloadId() >= 0);
-        }
-        EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
-        playerEscortedFlightValidator.validateEscortForPlayer();
-    }
-
     public void validateTargetDefinition(TargetDefinition targetDefinition)
     {
         assert (targetDefinition.getAttackingCountry() != null);

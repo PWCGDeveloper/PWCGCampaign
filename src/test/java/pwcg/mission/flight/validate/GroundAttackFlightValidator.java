@@ -3,23 +3,23 @@ package pwcg.mission.flight.validate;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.attack.GroundTargetAttackFlight;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class GroundAttackFlightValidator 
 {
-	public void validateGroundAttackFlight(GroundTargetAttackFlight flight) throws PWCGException
+	public void validateGroundAttackFlight(IFlight flight) throws PWCGException
 	{
-		assert(flight.getWaypointPackage().getWaypointsForLeadPlane().size() > 0);
+		assert(flight.getWaypointPackage().getAllWaypoints().size() > 0);
 		validateWaypointLinkage(flight);
 		validateWaypointTypes(flight);
 	}
 
-	private void validateWaypointLinkage(GroundTargetAttackFlight attackFlight) throws PWCGException 
+	private void validateWaypointLinkage(IFlight attackFlight) throws PWCGException 
 	{
 		McuWaypoint prevWaypoint = null;
-		for (McuWaypoint waypoint : attackFlight.getWaypointPackage().getWaypointsForLeadPlane())
+		for (McuWaypoint waypoint : attackFlight.getWaypointPackage().getAllWaypoints())
 		{
 			if (prevWaypoint != null)
 			{
@@ -31,7 +31,6 @@ public class GroundAttackFlightValidator
 				else
 				{
 					assert(!isNextWaypointLinked);
-					attackFlight.validate();
 				}
 			}
 			
@@ -52,7 +51,7 @@ public class GroundAttackFlightValidator
 		return isIndexInTargetList;
 	}
 
-	private void validateWaypointTypes(GroundTargetAttackFlight attackFlight) 
+	private void validateWaypointTypes(IFlight attackFlight) 
 	{
 		boolean attackIngressFound = false;
 		boolean attackFinalFound = false;
@@ -60,23 +59,20 @@ public class GroundAttackFlightValidator
 		
 		WaypointPriorityValidator.validateWaypointTypes(attackFlight);
 
-        for (List<McuWaypoint> waypoints : attackFlight.getWaypointPackage().getAllWaypointsSets().values())
+        for (McuWaypoint waypoint : attackFlight.getWaypointPackage().getAllWaypoints())
         {
-            for (McuWaypoint waypoint : waypoints)
+            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_APPROACH))
             {
-    			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_APPROACH))
-    			{
-    				attackIngressFound = true;
-    			}
-    			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_FINAL))
-    			{
-    				attackFinalFound = true;
-    			}
-    			if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_EGRESS))
-    			{
-    				attackEgressFound = true;
-    			}
-    		}
+                attackIngressFound = true;
+            }
+            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_FINAL))
+            {
+                attackFinalFound = true;
+            }
+            if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_EGRESS))
+            {
+                attackEgressFound = true;
+            }
         }
 		
 		assert(attackIngressFound);

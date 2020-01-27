@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -13,13 +12,16 @@ import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.EscortMcuSequence;
 
+// Ingress -> Rendezvous WP -> Cover Timer -> Cover -> force Complete Timer -> Egress Wp
 public class MissionPointEscortWaypointSet extends MissionPointSetMultipleWaypointSet implements IMissionPointSet
 {
-    private EscortMcuSequence coverSequence;
+    private EscortMcuSequence escortSequence;
     private boolean linkToNextTarget = true;
-
-    public MissionPointEscortWaypointSet(IFlight coveringFlight)
+    private MissionPointSetType missionPointSetType;
+    
+    public MissionPointEscortWaypointSet()
     {
+        this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_ESCORT;
     }
     
     public void addWaypointBefore(McuWaypoint waypoint)
@@ -52,7 +54,7 @@ public class MissionPointEscortWaypointSet extends MissionPointSetMultipleWaypoi
         List<MissionPoint> missionPointsBefore = super.getWaypointsBeforeAsMissionPoints();
         missionPoints.addAll(missionPointsBefore);
         
-        MissionPoint coverPoint = new MissionPoint(coverSequence.getPosition(), WaypointAction.WP_ACTION_RENDEZVOUS);
+        MissionPoint coverPoint = new MissionPoint(escortSequence.getPosition(), WaypointAction.WP_ACTION_RENDEZVOUS);
         missionPoints.add(coverPoint);
         
         List<MissionPoint> missionPointsAfter = super.getWaypointsAfterAsMissionPoints();
@@ -65,12 +67,13 @@ public class MissionPointEscortWaypointSet extends MissionPointSetMultipleWaypoi
     public void finalize(PlaneMcu plane) throws PWCGException
     {
         super.finalize(plane);
-        linkPointDefense();
+        linkEscortSequenceToWaypoints();
+        escortSequence.finalize();
     }
 
     public void setCoverSequence(EscortMcuSequence coverSequence)
     {
-        this.coverSequence = coverSequence;
+        this.escortSequence = coverSequence;
     }
 
     @Override
@@ -91,16 +94,16 @@ public class MissionPointEscortWaypointSet extends MissionPointSetMultipleWaypoi
         validate();
         
         super.write(writer);
-        coverSequence.write(writer);
+        escortSequence.write(writer);
     }
 
-    private void linkPointDefense() throws PWCGException
+    private void linkEscortSequenceToWaypoints() throws PWCGException
     {
         McuWaypoint lastWaypointBefore = super.getLastWaypointBefore();
-        lastWaypointBefore.setTarget(coverSequence.getCoverEntry());
+        lastWaypointBefore.setTarget(escortSequence.getCoverEntry());
 
         McuWaypoint firstWaypointAfter = super.getFirstWaypointAfter();
-        coverSequence.setLinkToNextTarget(firstWaypointAfter.getIndex());
+        escortSequence.setLinkToNextTarget(firstWaypointAfter.getIndex());
     }
 
     private void validate() throws PWCGException
@@ -120,5 +123,17 @@ public class MissionPointEscortWaypointSet extends MissionPointSetMultipleWaypoi
         allFlightPoints.addAll(waypointsBefore.getWaypoints());
         allFlightPoints.addAll(waypointsAfter.getWaypoints());
         return allFlightPoints;
+    }
+
+    @Override
+    public MissionPointSetType getMissionPointSetType()
+    {
+        return missionPointSetType;
+    }
+
+    // test purposes
+    public EscortMcuSequence getEscortSequence()
+    {
+        return escortSequence;
     }
 }

@@ -10,6 +10,7 @@ import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointFlightActivate;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
 
@@ -44,6 +45,20 @@ public class WaypointPackage implements IWaypointPackage
             if (missionPoint.getAction() == action)
             {
                 return missionPoint;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public McuWaypoint getWaypointByAction(WaypointAction action) throws PWCGException
+    {
+        List<McuWaypoint> allWaypoints = this.getAllWaypoints();
+        for (McuWaypoint waypoint : allWaypoints)
+        {
+            if (waypoint.getWpAction() == action)
+            {
+                return waypoint;
             }
         }
         return null;
@@ -101,8 +116,11 @@ public class WaypointPackage implements IWaypointPackage
         WaypointPackage duplucateWaypointPackage = new WaypointPackage(flight);
         for (IMissionPointSet missionPointSet : missionPointSets)
         {
-            IMissionPointSet duplicateMissionPointSet = missionPointSet.duplicateWithOffset(flight.getFlightInformation(), positionInFormation);
-            duplucateWaypointPackage.addMissionPointSet(duplicateMissionPointSet);
+            if (!(missionPointSet instanceof MissionPointFlightActivate))
+            {
+                IMissionPointSet duplicateMissionPointSet = missionPointSet.duplicateWithOffset(flight.getFlightInformation(), positionInFormation);
+                duplucateWaypointPackage.addMissionPointSet(duplicateMissionPointSet);
+            }
         }
         return duplucateWaypointPackage;
     }
@@ -191,5 +209,18 @@ public class WaypointPackage implements IWaypointPackage
             }
         }
         return null;
+    }
+
+    @Override
+    public IMissionPointSet getMissionPointSet(MissionPointSetType missionPointSetType) throws PWCGException
+    {
+        for (IMissionPointSet missionPointSet : missionPointSets)
+        {
+            if (missionPointSet.getMissionPointSetType() == missionPointSetType)
+            {
+                return missionPointSet;
+            }
+        }
+        throw new PWCGException("No mission point set found for requested type " + missionPointSetType);
     }
 }

@@ -18,14 +18,15 @@ public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypoin
     private IFlight flight;
     private AirStartPattern airStartNearAirfield;
     private McuWaypoint ingressWaypoint;
-
     private boolean linkToNextTarget = true;
+    private MissionPointSetType missionPointSetType;
 
     public MissionPointFlightBeginVirtual(IFlight flight, AirStartPattern airStartNearAirfield, McuWaypoint ingressWaypoint)
     {
         this.flight = flight;
         this.airStartNearAirfield = airStartNearAirfield;
         this.ingressWaypoint = ingressWaypoint;
+        this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_BEGIN_VIRTUAL;
     }
     
     public void createFlightBegin() throws PWCGException, PWCGException 
@@ -96,5 +97,11 @@ public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypoin
         List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
         allFlightPoints.addAll(waypoints.getWaypoints());
         return allFlightPoints;
+    }
+
+    @Override
+    public MissionPointSetType getMissionPointSetType()
+    {
+        return missionPointSetType;
     }
 }

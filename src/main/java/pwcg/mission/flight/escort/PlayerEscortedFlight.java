@@ -42,6 +42,13 @@ public class PlayerEscortedFlight extends Flight implements IFlight
         MissionPointSetFactory.createStandardMissionPointSet(this, AirStartPattern.AIR_START_NEAR_INGRESS, IngressWaypointPattern.INGRESS_NEAR_FRONT);
     }
 
+
+    @Override
+    public void finalizeFlight() throws PWCGException
+    {
+        super.finalizeFlight();
+    }
+
     private void setFlightPayload() throws PWCGException
     {
         FlightPayloadBuilder flightPayloadHelper = new FlightPayloadBuilder(this);

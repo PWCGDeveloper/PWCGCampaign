@@ -103,7 +103,7 @@ public class EscortForPlayerValidator
 	{
         McuWaypoint escortAirStartWP = escortForPlayerFlight.getWaypointPackage().getWaypointByType(WaypointType.AIR_START_WAYPOINT);
         McuWaypoint escortIngressWP = escortForPlayerFlight.getWaypointPackage().getWaypointByType(WaypointType.INGRESS_WAYPOINT);
-        McuWaypoint escortReturnToBaseWP = escortForPlayerFlight.getWaypointPackage().getWaypointByType(WaypointType.RETURN_TO_BASE_WAYPOINT);
+        McuWaypoint escortReturnToBaseWP = escortForPlayerFlight.getWaypointPackage().getWaypointByType(WaypointType.EGRESS_WAYPOINT);
 
 		assert(escortAirStartWP.getIndex() == escortForPlayerFlight.getWaypointPackage().getWaypointsForLeadPlane().get(0).getIndex());
 		

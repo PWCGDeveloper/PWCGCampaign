@@ -29,10 +29,12 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
     private McuTimer formationTimer = null;
     private McuFormation formationEntity = null;
     private boolean linkToNextTarget = true;
+    private MissionPointSetType missionPointSetType;
 
     public MissionPointFlightBeginTakeoff(IFlight flight)
     {
         this.flight = flight;
+        this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_BEGIN_TAKEOFF;
     }
     
     public void createFlightBegin() throws PWCGException 
@@ -195,5 +197,11 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
         allFlightPoints.addAll(waypoints.getWaypoints());
         return allFlightPoints;
+    }
+
+    @Override
+    public MissionPointSetType getMissionPointSetType()
+    {
+        return missionPointSetType;
     }
 }

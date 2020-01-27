@@ -1,5 +1,6 @@
 package pwcg.gui.rofmap.brief;
 
+import pwcg.core.location.Coordinate;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class EditorWaypointGroup
@@ -10,7 +11,9 @@ public class EditorWaypointGroup
 
 	public void updateAltitude(int altitude)
 	{
-		waypointInBriefing.getPosition().setYPos(altitude);
+	    Coordinate position = waypointInBriefing.getPosition();
+	    position.setYPos(altitude);
+		waypointInBriefing.setPosition(position);
 	}
 
 	public McuWaypoint getWaypointInBriefing()

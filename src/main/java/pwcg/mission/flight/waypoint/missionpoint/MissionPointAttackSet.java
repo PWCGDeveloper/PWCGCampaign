@@ -16,10 +16,16 @@ import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.AirGroundAttackMcuSequence;
 
-public class MissionPointAttackWaypointSet extends MissionPointSetMultipleWaypointSet implements IMissionPointSet
+public class MissionPointAttackSet extends MissionPointSetMultipleWaypointSet implements IMissionPointSet
 {
     private AirGroundAttackMcuSequence attackSequence;
     private boolean linkToNextTarget = true;
+    private MissionPointSetType missionPointSetType;
+    
+    public MissionPointAttackSet()
+    {
+        this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_ATTACK;
+    }
     
     @Override
     public void setLinkToNextTarget(int nextTargetIndex) throws PWCGException
@@ -87,7 +93,7 @@ public class MissionPointAttackWaypointSet extends MissionPointSetMultipleWaypoi
     @Override
     public IMissionPointSet duplicateWithOffset(IFlightInformation flightInformation, int positionInFormation) throws PWCGException
     {
-        MissionPointAttackWaypointSet duplicate = new MissionPointAttackWaypointSet();
+        MissionPointAttackSet duplicate = new MissionPointAttackSet();
         duplicate.waypointsBefore = super.duplicateBeginWaypoints(positionInFormation);
         duplicate.waypointsAfter = super.duplicateAfterWaypoints(positionInFormation);
 
@@ -107,5 +113,11 @@ public class MissionPointAttackWaypointSet extends MissionPointSetMultipleWaypoi
         allFlightPoints.add(attackSequence.getActivateTimer());
         allFlightPoints.addAll(waypointsAfter.getWaypoints());
         return allFlightPoints;
+    }
+
+    @Override
+    public MissionPointSetType getMissionPointSetType()
+    {
+        return missionPointSetType;
     }
 }

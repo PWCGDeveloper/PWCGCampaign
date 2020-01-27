@@ -60,27 +60,4 @@ public class GroundStructureGroup
         fixedPositions.addAll(bridges);
         fixedPositions.addAll(airfieldBlocks);
 	}
-
-    public void setAltitudeGroundLevel()
-    {
-        for (Block railroadStation : railroadStations)
-        {
-            railroadStation.getPosition().setYPos(0.0);
-        }
-        
-        for (Block standaloneBlock : standaloneBlocks)
-        {
-            standaloneBlock.getPosition().setYPos(0.0);
-        }
-        
-        for (Bridge bridge : bridges)
-        {
-            bridge.getPosition().setYPos(0.0);
-        }
-        
-        for (AirfieldBlock airfieldBlock : airfieldBlocks)
-        {
-            airfieldBlock.getPosition().setYPos(0.0);
-        }
-    }
 }

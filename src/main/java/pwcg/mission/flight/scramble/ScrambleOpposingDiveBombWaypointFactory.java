@@ -8,7 +8,7 @@ import pwcg.mission.flight.divebomb.DiveBombingWaypointFactory;
 import pwcg.mission.flight.waypoint.attack.GroundAttackWaypointHelper;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
-import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackWaypointSet;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointAttackSet;
 import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.AirGroundAttackMcuSequence;
@@ -16,7 +16,7 @@ import pwcg.mission.mcu.group.AirGroundAttackMcuSequence;
 public class ScrambleOpposingDiveBombWaypointFactory
 {
     private IFlight flight;
-    private MissionPointAttackWaypointSet missionPointSet = new MissionPointAttackWaypointSet();
+    private MissionPointAttackSet missionPointSet = new MissionPointAttackSet();
 
     public ScrambleOpposingDiveBombWaypointFactory(IFlight flight) throws PWCGException
     {

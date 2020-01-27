@@ -124,7 +124,7 @@ public abstract class MissionPointSetMultipleWaypointSet implements IMissionPoin
     
     protected int getEntryPointAtFirstWaypoint() throws PWCGException
     {
-        if (waypointsAfter.hasWaypoints())
+        if (waypointsBefore.hasWaypoints())
         {
             McuWaypoint firstWaypoint = waypointsBefore.getFirstWaypoint();
             return firstWaypoint.getIndex();

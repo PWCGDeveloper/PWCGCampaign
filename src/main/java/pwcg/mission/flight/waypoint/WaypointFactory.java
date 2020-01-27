@@ -94,15 +94,6 @@ public class WaypointFactory
 		return waypoint;
 	}
 
-	public static McuWaypoint createReturnToBaseWaypointType()
-	{
-		McuWaypoint waypoint = new McuWaypoint(WaypointType.RETURN_TO_BASE_WAYPOINT);
-		waypoint.setWpAction(WaypointAction.WP_ACTION_EGRESS);
-		waypoint.setPriority(WaypointPriority.PRIORITY_LOW);			
-		
-		return waypoint;
-	}
-
 	public static McuWaypoint createTargetApproachWaypointType()
 	{
 		McuWaypoint waypoint = new McuWaypoint(WaypointType.TARGET_APPROACH_WAYPOINT);

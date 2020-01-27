@@ -13,6 +13,12 @@ import pwcg.mission.mcu.McuWaypoint;
 public class MissionPointRouteSet extends MissionPointSetSingleWaypointSet implements IMissionPointSet
 {
     private boolean linkToNextTarget = true;
+    private MissionPointSetType missionPointSetType;
+    
+    public MissionPointRouteSet()
+    {
+        this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_ROUTE;
+    }
 
     @Override
     public void setLinkToNextTarget(int nextTargetIndex) throws PWCGException
@@ -80,5 +86,11 @@ public class MissionPointRouteSet extends MissionPointSetSingleWaypointSet imple
         List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
         allFlightPoints.addAll(waypoints.getWaypoints());
         return allFlightPoints;
+    }
+
+    @Override
+    public MissionPointSetType getMissionPointSetType()
+    {
+        return missionPointSetType;
     }
 }

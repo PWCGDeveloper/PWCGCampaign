@@ -32,40 +32,42 @@ import pwcg.mission.Mission;
 import pwcg.mission.MissionFlightBuilder;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightPlanes;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BriefingDataInitializerTest
 {
-    @Mock protected Campaign campaign;
-    @Mock protected CampaignPersonnelManager personnelManager;
-    @Mock protected CampaignEquipmentManager equipmentManager;
-    @Mock protected Equipment equipment;
+    @Mock private Campaign campaign;
+    @Mock private CampaignPersonnelManager personnelManager;
+    @Mock private CampaignEquipmentManager equipmentManager;
+    @Mock private Equipment equipment;
 
-    @Mock protected Squadron squadron;
-    @Mock protected SquadronPersonnel squadronPersonnel;
-    @Mock protected SquadronMembers squadronMembers;
-    @Mock protected Mission mission;
-    @Mock protected MissionFlightBuilder missionFlightBuilder;
-    @Mock protected IFlight flight;
-    @Mock protected PlaneMcu plane1;
-    @Mock protected PlaneMcu plane2;
-    @Mock protected PlaneMcu plane3;
-    @Mock protected PlaneMcu plane4;
-    @Mock protected EquippedPlane equippedPlane1;
-    @Mock protected EquippedPlane equippedPlane2;
-    @Mock protected EquippedPlane equippedPlane3;
-    @Mock protected EquippedPlane equippedPlane4;
-    @Mock protected SquadronMember pilot1;
-    @Mock protected SquadronMember pilot2;
-    @Mock protected SquadronMember pilot3;
-    @Mock protected SquadronMember pilot4;
+    @Mock private Squadron squadron;
+    @Mock private SquadronPersonnel squadronPersonnel;
+    @Mock private SquadronMembers squadronMembers;
+    @Mock private Mission mission;
+    @Mock private MissionFlightBuilder missionFlightBuilder;
+    @Mock private IFlight flight;
+    @Mock private IFlightPlanes flightPlanes;
+    @Mock private PlaneMcu plane1;
+    @Mock private PlaneMcu plane2;
+    @Mock private PlaneMcu plane3;
+    @Mock private PlaneMcu plane4;
+    @Mock private EquippedPlane equippedPlane1;
+    @Mock private EquippedPlane equippedPlane2;
+    @Mock private EquippedPlane equippedPlane3;
+    @Mock private EquippedPlane equippedPlane4;
+    @Mock private SquadronMember pilot1;
+    @Mock private SquadronMember pilot2;
+    @Mock private SquadronMember pilot3;
+    @Mock private SquadronMember pilot4;
 
-    protected Map<Integer, SquadronMember> squadronPersonnelMap = new HashMap<>();
-    protected List<PlaneMcu> planesInFlight = new ArrayList<>();
-    protected Map<Integer, EquippedPlane> equippedPlanes = new HashMap<>();
-    protected BriefingAssignmentData briefingAssignmentData = new BriefingAssignmentData();
+    private Map<Integer, SquadronMember> squadronPersonnelMap = new HashMap<>();
+    private List<PlaneMcu> planesInFlight = new ArrayList<>();
+    private Map<Integer, EquippedPlane> equippedPlanes = new HashMap<>();
+    private BriefingAssignmentData briefingAssignmentData = new BriefingAssignmentData();
 
     @Before
     public void setup() throws PWCGException
@@ -77,7 +79,8 @@ public class BriefingDataInitializerTest
         Mockito.when(missionFlightBuilder.getPlayerFlightForSquadron(Mockito.anyInt())).thenReturn(flight);
         //Mockito.when(missionFlightBuilder.getPlayerFlightForSquadron(Mockito.any())).thenReturn(flight);
 
-        Mockito.when(flight.getFlightPlanes()).thenReturn(planesInFlight);
+        Mockito.when(flight.getFlightPlanes()).thenReturn(flightPlanes);
+        Mockito.when(flightPlanes.getPlanes()).thenReturn(planesInFlight);
         Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.PATROL);
 
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19420801"));
