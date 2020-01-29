@@ -20,6 +20,7 @@ public class EscortMcuSequence
     private McuTimer coverTimer  = null;
     private McuTimer forceCompleteTimer;
     private McuForceComplete forceComplete;
+    private McuTimer escortCompleteTimer;
     
     private IFlight escortFlight;
     private IFlight escortedFlight;
@@ -85,6 +86,13 @@ public class EscortMcuSequence
         forceComplete.setOrientation(new Orientation());
         forceComplete.setPosition(rendevousPosition);
         forceComplete.setObject(flightLeader.getEntity().getIndex());
+
+        escortCompleteTimer = new McuTimer();
+        escortCompleteTimer.setName("Escort Complete Timer");
+        escortCompleteTimer.setDesc("Escort Complete Timer");
+        escortCompleteTimer.setOrientation(new Orientation());
+        escortCompleteTimer.setPosition(rendevousPosition);
+        escortCompleteTimer.setTimer(1);
     }
     
     private void createTargetAssociations()
@@ -95,7 +103,8 @@ public class EscortMcuSequence
         coverTimer.setTarget(cover.getIndex());        
         
         forceCompleteTimer.setTarget(forceComplete.getIndex());
-        forceCompleteTimer.setTarget(rtbWP.getIndex());
+        forceCompleteTimer.setTarget(escortCompleteTimer.getIndex());
+        escortCompleteTimer.setTarget(rtbWP.getIndex());
     }
     
     public void write(BufferedWriter writer) throws PWCGException 
@@ -145,6 +154,11 @@ public class EscortMcuSequence
     public McuForceComplete getForceComplete()
     {
         return forceComplete;
+    }
+
+    public McuTimer getEscortCompleteTimer()
+    {
+        return escortCompleteTimer;
     }
 
     public IFlight getEscortFlight()

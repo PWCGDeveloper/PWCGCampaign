@@ -6,7 +6,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.escort.PlayerEscortedFlight;
 import pwcg.mission.flight.escort.PlayerIsEscortFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -75,6 +74,7 @@ public class PlayerEscortFlightValidator
 		McuCover cover = escortMissionPointSet.getEscortSequence().getCover();
 		McuTimer forceCompleteTimer = escortMissionPointSet.getEscortSequence().getForceCompleteTimer();
 		McuForceComplete forceCompleteEntity = escortMissionPointSet.getEscortSequence().getForceComplete();
+        McuTimer escortCompleteTimer = escortMissionPointSet.getEscortSequence().getEscortCompleteTimer();
 
 		McuWaypoint rendezvousWaypoint = playerFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_RENDEZVOUS);
         assert(rendezvousWaypoint != null);
@@ -105,9 +105,10 @@ public class PlayerEscortFlightValidator
 				else if (prevWaypoint.getWpAction().equals(WaypointAction.WP_ACTION_EGRESS))
 				{
 					assert(isNextWaypointLinked);
-					assert(isIndexInTargetList(forceCompleteTimer.getIndex(), escortedEgressWP.getTargets()));
-					assert(isIndexInTargetList(forceCompleteEntity.getIndex(), forceCompleteTimer.getTargets()));
-					assert(isIndexInTargetList(egressWaypoint.getIndex(), forceCompleteTimer.getTargets()));
+                    assert(isIndexInTargetList(forceCompleteTimer.getIndex(), escortedEgressWP.getTargets()));
+                    assert(isIndexInTargetList(forceCompleteEntity.getIndex(), forceCompleteTimer.getTargets()));
+                    assert(isIndexInTargetList(escortCompleteTimer.getIndex(), forceCompleteTimer.getTargets()));
+					assert(isIndexInTargetList(egressWaypoint.getIndex(), escortCompleteTimer.getTargets()));
 				}
 				else
 				{
