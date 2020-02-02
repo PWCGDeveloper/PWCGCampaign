@@ -61,7 +61,7 @@ public class EscortMcuSequence
     private Coordinate getCoverPosition()
     {
         McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(escortedFlight.getWaypointPackage().getAllWaypoints(), 
-                WaypointType.INGRESS_WAYPOINT.getName());
+                WaypointType.RENDEZVOUS_WAYPOINT.getName());
 
         Coordinate coverPosition = rendezvousWP.getPosition().copy();
         coverPosition.setYPos(coverPosition.getYPos() + 400);

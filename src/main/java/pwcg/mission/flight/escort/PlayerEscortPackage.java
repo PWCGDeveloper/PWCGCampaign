@@ -22,10 +22,13 @@ public class PlayerEscortPackage implements IFlightPackage
         }
 	    
 	    PlayerEscortedFlightBuilder escortedFlightBuilder = new PlayerEscortedFlightBuilder(playerFlightInformation);
-	    IFlight escortedFlight = escortedFlightBuilder.createEscortedFlight();
+	    PlayerEscortedFlight escortedFlight = escortedFlightBuilder.createEscortedFlight();
 
 		PlayerIsEscortFlight playerEscort = new PlayerIsEscortFlight(playerFlightInformation, escortedFlight);
 		playerEscort.createFlight();
+		
+		PlayerEscortFlightConnector connector = new PlayerEscortFlightConnector(playerEscort, escortedFlight);
+		connector.connectEscortAndEscortedFlight();
 		
 		playerEscort.getLinkedFlights().addLinkedFlight(escortedFlight);
 		

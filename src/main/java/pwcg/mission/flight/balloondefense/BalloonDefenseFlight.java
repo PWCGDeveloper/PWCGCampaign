@@ -41,7 +41,7 @@ public class BalloonDefenseFlight extends Flight implements IFlight
 
     private void createWaypoints() throws PWCGException
     {
-        MissionPointSetFactory.createStandardMissionPointSet(this, AirStartPattern.AIR_START_NEAR_INGRESS, IngressWaypointPattern.INGRESS_NEAR_TARGET);
+        MissionPointSetFactory.createStandardMissionPointSet(this, AirStartPattern.AIR_START_NEAR_WAYPOINT, IngressWaypointPattern.INGRESS_NEAR_TARGET);
     }
 
     private void setFlightPayload() throws PWCGException

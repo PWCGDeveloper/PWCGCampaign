@@ -9,28 +9,28 @@ public class AirStartWaypointFactory
     public enum AirStartPattern
     {
         AIR_START_NEAR_AIRFIELD,
-        AIR_START_NEAR_INGRESS;
+        AIR_START_NEAR_WAYPOINT;
     }
 
-    public static McuWaypoint createAirStart(IFlight flight, AirStartPattern pattern, McuWaypoint ingressWaypoint) throws PWCGException
+    public static McuWaypoint createAirStart(IFlight flight, AirStartPattern pattern, McuWaypoint waypoint) throws PWCGException
     {
         if (flight.isPlayerFlight())
         {
-            return createAirStartNearIngress(flight, ingressWaypoint);
+            return createAirStartNearWaypoint(flight, waypoint);
         }
-        else if (pattern == AirStartPattern.AIR_START_NEAR_INGRESS)
+        else if (pattern == AirStartPattern.AIR_START_NEAR_WAYPOINT)
         {
-            return createAirStartNearAirfield(flight);
+            return createAirStartNearWaypoint(flight, waypoint);
         }
         else
         {
-            return createAirStartNearIngress(flight, ingressWaypoint);
+            return createAirStartNearAirfield(flight);
         }
     }
 
-    private static McuWaypoint createAirStartNearIngress(IFlight flight, McuWaypoint ingressWaypoint) throws PWCGException
+    private static McuWaypoint createAirStartNearWaypoint(IFlight flight, McuWaypoint waypoint) throws PWCGException
     {
-        return AirStartNearIngressWaypointBuilder.buildAirStartNearIngress(flight, ingressWaypoint);
+        return AirStartNearWaypointBuilder.buildAirStartNearWaypoint(flight, waypoint);
     }  
 
     private static McuWaypoint createAirStartNearAirfield(IFlight flight) throws PWCGException

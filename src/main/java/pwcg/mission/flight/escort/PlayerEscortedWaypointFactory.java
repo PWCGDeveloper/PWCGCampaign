@@ -1,7 +1,6 @@
 package pwcg.mission.flight.escort;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.waypoint.attack.GroundAttackWaypointHelper;
@@ -26,41 +25,47 @@ public class PlayerEscortedWaypointFactory
     
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {
-        missionPointSet.addWaypointBefore(ingressWaypoint);
-        
-        createTargetWaypoints(ingressWaypoint.getPosition());
-        
-        AirGroundAttackMcuSequence attackMcuSequence = createAttackArea();
-        missionPointSet.setAttackSequence(attackMcuSequence);
-        
-        McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
-        missionPointSet.addWaypointAfter(egressWaypoint);
+        GroundAttackWaypointHelper groundAttackWaypointHelper = new GroundAttackWaypointHelper(
+                flight, ingressWaypoint.getPosition(), flight.getFlightInformation().getAltitude());
+        groundAttackWaypointHelper.createTargetWaypoints();
 
-        missionPointSet.disableLinkToNextTarget();
+        missionPointSet.addWaypointBefore(ingressWaypoint);
+
+        createTargetWaypointsBefore(groundAttackWaypointHelper);
+        createAttackArea();
+        createTargetWaypointsAfter(groundAttackWaypointHelper);
+        createEgressWaypoints(ingressWaypoint);
 
         return missionPointSet;
     }
 
-    private void createTargetWaypoints(Coordinate ingressPosition) throws PWCGException  
+    private void createTargetWaypointsBefore(GroundAttackWaypointHelper groundAttackWaypointHelper) throws PWCGException  
     {
-        GroundAttackWaypointHelper groundAttackWaypointHelper = new GroundAttackWaypointHelper(flight, ingressPosition, flight.getFlightInformation().getAltitude());
-        groundAttackWaypointHelper.createTargetWaypoints();
         for (McuWaypoint groundAttackWaypoint : groundAttackWaypointHelper.getWaypointsBefore())
         {
             missionPointSet.addWaypointBefore(groundAttackWaypoint);
         }
-        for (McuWaypoint groundAttackWaypoint : groundAttackWaypointHelper.getWaypointsBefore())
-        {
-            missionPointSet.addWaypointAfter(groundAttackWaypoint);
-        }
     }
-    
-    
-    private AirGroundAttackMcuSequence createAttackArea() throws PWCGException 
+
+    private void createAttackArea() throws PWCGException 
     {
         IFlightInformation flightInformation = flight.getFlightInformation();
         AirGroundAttackMcuSequence attackMcuSequence = new AirGroundAttackMcuSequence(flightInformation);
         attackMcuSequence.createAttackArea(BOMB_ATTACK_TIME, AttackAreaType.INDIRECT);        
-        return attackMcuSequence;
+        missionPointSet.setAttackSequence(attackMcuSequence);
+    }
+
+    private void createTargetWaypointsAfter(GroundAttackWaypointHelper groundAttackWaypointHelper) throws PWCGException  
+    {
+        for (McuWaypoint groundAttackWaypoint : groundAttackWaypointHelper.getWaypointsAfter())
+        {
+            missionPointSet.addWaypointAfter(groundAttackWaypoint);
+        }
+    }
+
+    private void createEgressWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
+    {
+        McuWaypoint egressWaypoint = EgressWaypointGenerator.createEgressWaypoint(flight, ingressWaypoint.getPosition());
+        missionPointSet.addWaypointAfter(egressWaypoint);
     }
 }

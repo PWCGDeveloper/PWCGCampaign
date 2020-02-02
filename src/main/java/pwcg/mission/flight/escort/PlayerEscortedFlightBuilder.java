@@ -6,7 +6,6 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.mission.MissionBeginUnit;
-import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plot.FlightInformationFactory;
 import pwcg.mission.ground.factory.TargetFactory;
@@ -23,7 +22,7 @@ public class PlayerEscortedFlightBuilder
 	    this.escortFlightInformation = escortFlightInformation;
 	}
 	
-	public IFlight createEscortedFlight() throws PWCGException
+	public PlayerEscortedFlight createEscortedFlight() throws PWCGException
     {
         MissionBeginUnit missionBeginUnit = buildEscortedFlightInformation();
         PlayerEscortedFlight PlayerEscortedFlightEscortedByPlayer = buildEscortedFlight(missionBeginUnit);        

@@ -11,7 +11,6 @@ import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionPointSetFactory
 {
-    
     public static IMissionPointSet createFlightActivate(IFlight flight) throws PWCGException, PWCGException 
     {
         MissionPointFlightActivate flightActivate = new MissionPointFlightActivate(flight);
@@ -59,7 +58,6 @@ public class MissionPointSetFactory
         flightEnd.createFlightEnd();
         return flightEnd;
     }
-    
 
     public static void createStandardMissionPointSet(IFlight flight, AirStartPattern airStartPattern, IngressWaypointPattern ingressWaypointPattern) throws PWCGException
     {
@@ -77,5 +75,4 @@ public class MissionPointSetFactory
         IMissionPointSet flightEnd = MissionPointSetFactory.createFlightEndAtHomeField(flight);
         flight.getWaypointPackage().addMissionPointSet(flightEnd);        
     }
-
 }
