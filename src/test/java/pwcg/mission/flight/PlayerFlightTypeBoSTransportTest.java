@@ -42,7 +42,7 @@ public class PlayerFlightTypeBoSTransportTest
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getTargetDefinition());
+        validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.PARATROOP_DROP);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
@@ -58,7 +58,7 @@ public class PlayerFlightTypeBoSTransportTest
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getTargetDefinition());
+        validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.CARGO_DROP);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
@@ -88,7 +88,7 @@ public class PlayerFlightTypeBoSTransportTest
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getTargetDefinition());
+        validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.BOMB);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
@@ -104,7 +104,7 @@ public class PlayerFlightTypeBoSTransportTest
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getTargetDefinition());
+        validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
@@ -114,7 +114,7 @@ public class PlayerFlightTypeBoSTransportTest
     {
         assert (targetDefinition.getAttackingCountry() != null);
         assert (targetDefinition.getTargetCountry() != null);
-        assert (targetDefinition.getFlightInformation().getTargetDefinition().getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
+        assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
         assert (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
     }
 }

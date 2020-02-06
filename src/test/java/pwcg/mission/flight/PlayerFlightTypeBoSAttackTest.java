@@ -40,14 +40,16 @@ public class PlayerFlightTypeBoSAttackTest
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK);
+
         GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
-
+        
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
-        validateTargetDefinition(flight.getTargetDefinition());
-        assert (flight.getFlightType() == FlightTypes.GROUND_ATTACK);
-        for (PlaneMcu plane : flight.getFlightPlanes())
+        validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
+        assert(flight.getFlightType() == FlightTypes.GROUND_ATTACK);
+
+        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
             assert(plane.getPlanePayload().getSelectedPayloadId() > 0);
         }
@@ -63,7 +65,7 @@ public class PlayerFlightTypeBoSAttackTest
     {
         assert (targetDefinition.getAttackingCountry() != null);
         assert (targetDefinition.getTargetCountry() != null);
-        assert (targetDefinition.getFlightInformation().getTargetDefinition().getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
+        assert (targetDefinition.getTargetCategory() != TargetCategory.TARGET_CATEGORY_NONE);
         assert (targetDefinition.getTargetType() != TargetType.TARGET_NONE);
     }
 }

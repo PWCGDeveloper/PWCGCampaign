@@ -31,7 +31,7 @@ public class WaypointPriorityValidator
         {
             if (waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TAKEOFF))
             {
-                assert (waypoint.getPriority() == WaypointPriority.PRIORITY_MED);
+                assert (waypoint.getPriority() != WaypointPriority.PRIORITY_LOW);
             }
             else
             {

@@ -6,7 +6,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.escort.PlayerEscortedFlight;
+import pwcg.mission.flight.escort.EscortedByPlayerFlight;
 import pwcg.mission.flight.escort.PlayerIsEscortFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -21,7 +21,7 @@ import pwcg.mission.mcu.McuWaypoint;
 public class PlayerEscortFlightValidator
 {
     private PlayerIsEscortFlight playerFlight;
-    private PlayerEscortedFlight escortedFlight;
+    private EscortedByPlayerFlight escortedFlight;
 
     public PlayerEscortFlightValidator(PlayerIsEscortFlight playerFlight)
     {
@@ -42,8 +42,8 @@ public class PlayerEscortFlightValidator
     {
         for (IFlight unit : playerFlight.getLinkedFlights().getLinkedFlights())
         {
-            assert (unit instanceof PlayerEscortedFlight);
-            escortedFlight = (PlayerEscortedFlight) unit;
+            assert (unit instanceof EscortedByPlayerFlight);
+            escortedFlight = (EscortedByPlayerFlight) unit;
         }
 
         assert (escortedFlight != null);

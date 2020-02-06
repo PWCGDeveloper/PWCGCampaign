@@ -12,26 +12,26 @@ import pwcg.mission.ground.factory.TargetFactory;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 
-public class PlayerEscortedFlightBuilder
+public class EscortedByPlayerFlightBuilder
 {
     private IFlightInformation escortFlightInformation;
     private IFlightInformation escortedFlightInformation;
 	
-	public PlayerEscortedFlightBuilder (IFlightInformation escortFlightInformation) throws PWCGException 
+	public EscortedByPlayerFlightBuilder (IFlightInformation escortFlightInformation) throws PWCGException 
 	{
 	    this.escortFlightInformation = escortFlightInformation;
 	}
 	
-	public PlayerEscortedFlight createEscortedFlight() throws PWCGException
+	public EscortedByPlayerFlight createEscortedFlight() throws PWCGException
     {
         MissionBeginUnit missionBeginUnit = buildEscortedFlightInformation();
-        PlayerEscortedFlight PlayerEscortedFlightEscortedByPlayer = buildEscortedFlight(missionBeginUnit);        
+        EscortedByPlayerFlight PlayerEscortedFlightEscortedByPlayer = buildEscortedFlight(missionBeginUnit);        
         return PlayerEscortedFlightEscortedByPlayer;
 	}
 
-    private PlayerEscortedFlight buildEscortedFlight(MissionBeginUnit missionBeginUnit) throws PWCGException
+    private EscortedByPlayerFlight buildEscortedFlight(MissionBeginUnit missionBeginUnit) throws PWCGException
     {
-        PlayerEscortedFlight playerEscortedFlight = new PlayerEscortedFlight (escortedFlightInformation);
+        EscortedByPlayerFlight playerEscortedFlight = new EscortedByPlayerFlight (escortedFlightInformation);
 		playerEscortedFlight.createFlight();
 		
         IGroundUnitCollection targetUnit = createTargetForPlayerEscortedFlight();

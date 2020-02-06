@@ -17,7 +17,7 @@ import pwcg.mission.flight.bomb.BombingPackage;
 import pwcg.mission.flight.bomb.StrategicBombingPackage;
 import pwcg.mission.flight.contactpatrol.ContactPatrolPackage;
 import pwcg.mission.flight.divebomb.DiveBombingPackage;
-import pwcg.mission.flight.escort.PlayerEscortPackage;
+import pwcg.mission.flight.escort.PlayerIsEscortPackage;
 import pwcg.mission.flight.intercept.HomeDefensePackage;
 import pwcg.mission.flight.intercept.InterceptPackage;
 import pwcg.mission.flight.lonewolf.LoneWolfPackage;
@@ -80,7 +80,7 @@ public class FlightFactory
         {
             if (isPlayerFlight)
             {
-                flightPackage = new PlayerEscortPackage(flightInformation);
+                flightPackage = new PlayerIsEscortPackage(flightInformation);
             }
         }
         else if (flightType == FlightTypes.GROUND_ATTACK)

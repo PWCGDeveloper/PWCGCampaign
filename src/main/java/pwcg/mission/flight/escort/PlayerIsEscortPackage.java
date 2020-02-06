@@ -6,10 +6,10 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.IFlightPackage;
 
-public class PlayerEscortPackage implements IFlightPackage
+public class PlayerIsEscortPackage implements IFlightPackage
 {
     private IFlightInformation playerFlightInformation;    
-    public PlayerEscortPackage(IFlightInformation playerFlightInformation)
+    public PlayerIsEscortPackage(IFlightInformation playerFlightInformation)
     {
         this.playerFlightInformation = playerFlightInformation;
     }
@@ -21,15 +21,15 @@ public class PlayerEscortPackage implements IFlightPackage
 	        throw new PWCGMissionGenerationException ("Attempt to create non player escort package");
         }
 	    
-	    PlayerEscortedFlightBuilder escortedFlightBuilder = new PlayerEscortedFlightBuilder(playerFlightInformation);
-	    PlayerEscortedFlight escortedFlight = escortedFlightBuilder.createEscortedFlight();
+	    EscortedByPlayerFlightBuilder escortedFlightBuilder = new EscortedByPlayerFlightBuilder(playerFlightInformation);
+	    EscortedByPlayerFlight escortedFlight = escortedFlightBuilder.createEscortedFlight();
 
 		PlayerIsEscortFlight playerEscort = new PlayerIsEscortFlight(playerFlightInformation, escortedFlight);
 		playerEscort.createFlight();
-		
-		PlayerEscortFlightConnector connector = new PlayerEscortFlightConnector(playerEscort, escortedFlight);
-		connector.connectEscortAndEscortedFlight();
-		
+        
+        PlayerIsEscortFlightConnector connector = new PlayerIsEscortFlightConnector(playerEscort, escortedFlight);
+        connector.connectEscortAndEscortedFlight();
+
 		playerEscort.getLinkedFlights().addLinkedFlight(escortedFlight);
 		
 		return playerEscort;

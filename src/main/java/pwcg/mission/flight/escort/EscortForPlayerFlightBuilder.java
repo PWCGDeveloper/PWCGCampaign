@@ -6,7 +6,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 
-public class EscortFlightBuilder
+public class EscortForPlayerFlightBuilder
 {
     public void addEscort(Mission mission, IFlight escortedFlight) throws PWCGException 
     {
@@ -35,7 +35,7 @@ public class EscortFlightBuilder
 
     private IFlight createEscortForPlayerFlight(IFlight escortedFlight) throws PWCGException 
     {
-        PlayerEscortBuilder playerEscortBuilder = new PlayerEscortBuilder();
+        EscortForPlayerBuilder playerEscortBuilder = new EscortForPlayerBuilder();
         IFlight escortForPlayerFlight = playerEscortBuilder.createEscortForPlayerFlight(escortedFlight);
         return escortForPlayerFlight;
     }

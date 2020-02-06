@@ -146,7 +146,7 @@ public class CoopPlayerInclusionTest
             {
                 germanBomberFound = true;
                 assert(playerPlane.isPrimaryRole(Role.ROLE_BOMB));
-                assert(flight.isBombingFlight() == true);
+                assert(FlightTypes.isBombingFlight(flight.getFlightType()) == true);
             }
             else if (playerPlane.getName().contains("Russian Fighter"))
             {
@@ -186,7 +186,7 @@ public class CoopPlayerInclusionTest
             assert (flight.isPlayerFlight() == true);
             assert (flight.getFlightInformation().isAirStart() == false);
             
-            List<PlaneMcu> playerPlanesForFlight = flight.getPlayerPlanes();
+            List<PlaneMcu> playerPlanesForFlight = flight.getFlightPlanes().getPlayerPlanes();
             
             for (PlaneMcu playerPlane : playerPlanesForFlight)
             {

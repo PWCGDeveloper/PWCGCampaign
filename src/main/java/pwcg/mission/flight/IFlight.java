@@ -9,8 +9,6 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
-import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
-import pwcg.mission.mcu.McuWaypoint;
 
 public interface IFlight
 {
@@ -23,8 +21,6 @@ public interface IFlight
     void finalizeFlight() throws PWCGException;
 
     void createFlight() throws PWCGException;
-
-    IMissionPointSet createFlightSpecificWaypoints(McuWaypoint ingressWaypoint) throws PWCGException;
     
     IFlightInformation getFlightInformation();
 
@@ -56,7 +52,7 @@ public interface IFlight
     // From FlightPlanes
     boolean isFlightHasFighterPlanes();
 
-    // From FlightClosestCOntact
+    // From FlightClosestContact
     double getClosestContactWithPlayerDistance();
 
 }

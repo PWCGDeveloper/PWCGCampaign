@@ -25,9 +25,7 @@ public class GroundAttackWaypointFactory
     }
     
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
-    {
-        missionPointSet.addWaypointBefore(ingressWaypoint);
-        
+    {        
         createTargetWaypoints(ingressWaypoint.getPosition());
         
         AirGroundAttackMcuSequence attackMcuSequence = createAttackArea();
@@ -48,7 +46,7 @@ public class GroundAttackWaypointFactory
         {
             missionPointSet.addWaypointBefore(groundAttackWaypoint);
         }
-        for (McuWaypoint groundAttackWaypoint : groundAttackWaypointHelper.getWaypointsBefore())
+        for (McuWaypoint groundAttackWaypoint : groundAttackWaypointHelper.getWaypointsAfter())
         {
             missionPointSet.addWaypointAfter(groundAttackWaypoint);
         }

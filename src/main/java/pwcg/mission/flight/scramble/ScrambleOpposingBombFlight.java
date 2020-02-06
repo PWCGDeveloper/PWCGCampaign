@@ -8,6 +8,7 @@ import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.bomb.BombingWaypointFactory;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
+import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
@@ -28,17 +29,22 @@ public class ScrambleOpposingBombFlight extends Flight implements IFlight
         setFlightPayload();
     }
 
-    @Override
-    public IMissionPointSet createFlightSpecificWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
-    {
-        ScrambleOpposingBombWaypointFactory missionWaypointFactory = new ScrambleOpposingBombWaypointFactory(this, BombingWaypointFactory.BOMB_ATTACK_TIME);
-        IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
-        return missionWaypoints;
-    }
-
     private void createWaypoints() throws PWCGException
     {
-        MissionPointSetFactory.createStandardMissionPointSet(this, AirStartPattern.AIR_START_NEAR_WAYPOINT, IngressWaypointPattern.INGRESS_NEAR_TARGET);
+        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(IngressWaypointPattern.INGRESS_NEAR_TARGET, this);
+
+        IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(this);
+        this.getWaypointPackage().addMissionPointSet(flightActivate);
+
+        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, AirStartPattern.AIR_START_NEAR_AIRFIELD, ingressWaypoint);
+        this.getWaypointPackage().addMissionPointSet(flightBegin);
+
+        ScrambleOpposingBombWaypointFactory missionWaypointFactory = new ScrambleOpposingBombWaypointFactory(this, BombingWaypointFactory.BOMB_ATTACK_TIME);
+        IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
+        this.getWaypointPackage().addMissionPointSet(missionWaypoints);
+        
+        IMissionPointSet flightEnd = MissionPointSetFactory.createFlightEndAtHomeField(this);
+        this.getWaypointPackage().addMissionPointSet(flightEnd);        
     }
 
     private void setFlightPayload() throws PWCGException

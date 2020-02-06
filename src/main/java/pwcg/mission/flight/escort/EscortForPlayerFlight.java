@@ -6,20 +6,17 @@ import pwcg.mission.flight.FlightPayloadBuilder;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
-import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
-import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
-import pwcg.mission.mcu.McuWaypoint;
 
 public class EscortForPlayerFlight extends Flight implements IFlight
 {
-    private IFlight playerFlight;
-   
-    public EscortForPlayerFlight(IFlightInformation flightInformation, IFlight playerFlight)
+    private IFlight playerFlightThatNeedsEscort;
+
+    public EscortForPlayerFlight(IFlightInformation flightInformation, IFlight playerFlightThatNeedsEscort)
     {
         super(flightInformation);
-        this.playerFlight = playerFlight;                
+        this.playerFlightThatNeedsEscort = playerFlightThatNeedsEscort;                
     }
 
     public void createFlight() throws PWCGException
@@ -30,17 +27,17 @@ public class EscortForPlayerFlight extends Flight implements IFlight
         setFlightPayload();
     }
 
-    @Override
-    public IMissionPointSet createFlightSpecificWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
-    {
-        EscortForPlayerWaypointFactory missionWaypointFactory = new EscortForPlayerWaypointFactory(this, playerFlight);
-        IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
-        return missionWaypoints;
-    }
-
     private void createWaypoints() throws PWCGException
     {
-        MissionPointSetFactory.createStandardMissionPointSet(this, AirStartPattern.AIR_START_NEAR_WAYPOINT, IngressWaypointPattern.INGRESS_NEAR_TARGET);
+        IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(playerFlightThatNeedsEscort);
+        this.getWaypointPackage().addMissionPointSet(flightActivate);
+
+        EscortForPlayerWaypointFactory missionWaypointFactory = new EscortForPlayerWaypointFactory(this, playerFlightThatNeedsEscort);
+        IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints();
+        this.getWaypointPackage().addMissionPointSet(missionWaypoints);
+        
+        IMissionPointSet flightEnd = MissionPointSetFactory.createFlightEndAtHomeField(playerFlightThatNeedsEscort);
+        this.getWaypointPackage().addMissionPointSet(flightEnd);        
     }
 
     private void setFlightPayload() throws PWCGException

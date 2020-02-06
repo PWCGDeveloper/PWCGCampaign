@@ -15,13 +15,21 @@ import pwcg.mission.mcu.group.EscortMcuSequence;
 // Ingress -> Rendezvous WP -> Cover Timer -> Cover -> force Complete Timer -> Egress Wp
 public class MissionPointEscortWaypointSet extends MissionPointSetMultipleWaypointSet implements IMissionPointSet
 {
+    public enum EscortSequenceConnect
+    {
+        CONNECT_ESCORT_SEQUENCE,
+        DO_NOT_CONNECT_ESCORT_SEQUENCE;
+    }
+    
     private EscortMcuSequence escortSequence;
     private boolean linkToNextTarget = true;
     private MissionPointSetType missionPointSetType;
+    private EscortSequenceConnect escortSequenceConnect;
     
-    public MissionPointEscortWaypointSet()
+    public MissionPointEscortWaypointSet(EscortSequenceConnect escortSequenceConnect)
     {
         this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_ESCORT;
+        this.escortSequenceConnect = escortSequenceConnect;
     }
     
     public void addWaypointBefore(McuWaypoint waypoint)
@@ -99,9 +107,12 @@ public class MissionPointEscortWaypointSet extends MissionPointSetMultipleWaypoi
 
     private void linkEscortSequenceToWaypoints() throws PWCGException
     {
-        McuWaypoint lastWaypointBefore = super.getLastWaypointBefore();
-        lastWaypointBefore.setTarget(escortSequence.getCoverEntry());
-
+        if (escortSequenceConnect == EscortSequenceConnect.CONNECT_ESCORT_SEQUENCE)
+        {
+            McuWaypoint lastWaypointBefore = super.getLastWaypointBefore();
+            lastWaypointBefore.setTarget(escortSequence.getCoverEntry());
+        }
+        
         McuWaypoint firstWaypointAfter = super.getFirstWaypointAfter();
         escortSequence.setLinkToNextTarget(firstWaypointAfter.getIndex());
     }

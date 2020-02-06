@@ -11,14 +11,14 @@ import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.AirGroundAttackMcuSequence;
 
-public class PlayerEscortedWaypointFactory
+public class EscortedByPlayerWaypointFactory
 {
     static public int BOMB_ATTACK_TIME = 240;
 
     private IFlight flight;
     private MissionPointAttackSet missionPointSet = new MissionPointAttackSet();
 
-    public PlayerEscortedWaypointFactory(IFlight flight) throws PWCGException
+    public EscortedByPlayerWaypointFactory(IFlight flight) throws PWCGException
     {
         this.flight = flight;
     }

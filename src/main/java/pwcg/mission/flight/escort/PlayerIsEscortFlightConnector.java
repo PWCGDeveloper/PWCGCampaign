@@ -8,12 +8,12 @@ import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class PlayerEscortFlightConnector
+public class PlayerIsEscortFlightConnector
 {
     PlayerIsEscortFlight playerEscort;
-    PlayerEscortedFlight escortedFlight;
+    EscortedByPlayerFlight escortedFlight;
     
-    public PlayerEscortFlightConnector(PlayerIsEscortFlight playerEscort, PlayerEscortedFlight escortedFlight)
+    public PlayerIsEscortFlightConnector(PlayerIsEscortFlight playerEscort, EscortedByPlayerFlight escortedFlight)
     {
         this.playerEscort = playerEscort;
         this.escortedFlight = escortedFlight;
@@ -22,7 +22,7 @@ public class PlayerEscortFlightConnector
     public void connectEscortAndEscortedFlight() throws PWCGException
     {
         connectEscortCoverToEscortedIngress();
-        connextEscortedEgressToEscortForceComplete();
+        connectEscortedEgressToEscortForceComplete();
     }
 
     private void connectEscortCoverToEscortedIngress() throws PWCGException
@@ -36,7 +36,7 @@ public class PlayerEscortFlightConnector
         coverTimer.setTarget(escortedIngressWP.getIndex());
     }
 
-    private void connextEscortedEgressToEscortForceComplete() throws PWCGException
+    private void connectEscortedEgressToEscortForceComplete() throws PWCGException
     {
         IMissionPointSet escortMissionPointSetInterface = playerEscort.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ESCORT);
         MissionPointEscortWaypointSet escortMissionPointSet = (MissionPointEscortWaypointSet) escortMissionPointSetInterface;

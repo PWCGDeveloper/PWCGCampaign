@@ -12,7 +12,7 @@ import pwcg.mission.flight.waypoint.WaypointGeneratorUtils;
 import pwcg.mission.flight.waypoint.WaypointType;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class PlayerEscortBuilder
+public class EscortForPlayerBuilder
 {
     public IFlight createEscortForPlayerFlight(IFlight playerFlight) throws PWCGException 
     {
@@ -27,7 +27,7 @@ public class PlayerEscortBuilder
         if (friendlyFighterSquadron != null)
         {          
             McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getWaypointPackage().getAllWaypoints(), 
-                    WaypointType.INGRESS_WAYPOINT.getName());
+                    WaypointType.RENDEZVOUS_WAYPOINT.getName());
 
             if (rendezvousWP != null)
             {
@@ -35,7 +35,11 @@ public class PlayerEscortBuilder
                 IFlightInformation escortFlightInformation = FlightInformationFactory.buildEscortForPlayerFlightInformation(playerFlight.getFlightInformation(), 
                         friendlyFighterSquadron, rendezvous);
                 EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, playerFlight);
-                escortForPlayerFlight.createFlight();       
+                escortForPlayerFlight.createFlight();   
+                                
+                EscortByPlayerFlightConnector connector = new EscortByPlayerFlightConnector(escortForPlayerFlight, playerFlight);
+                connector.connectEscortAndEscortedFlight();
+
                 return escortForPlayerFlight;
             }
         }

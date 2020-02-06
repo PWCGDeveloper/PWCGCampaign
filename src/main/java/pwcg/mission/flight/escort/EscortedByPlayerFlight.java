@@ -13,9 +13,9 @@ import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class PlayerEscortedFlight extends Flight implements IFlight
-{          
-    public PlayerEscortedFlight(IFlightInformation flightInformation)
+public class EscortedByPlayerFlight extends Flight implements IFlight
+{              
+    public EscortedByPlayerFlight(IFlightInformation flightInformation)
     {
         super (flightInformation);
     }
@@ -29,14 +29,6 @@ public class PlayerEscortedFlight extends Flight implements IFlight
         setFlightPayload();
     }
 
-    @Override
-    public IMissionPointSet createFlightSpecificWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
-    {
-        PlayerEscortedWaypointFactory missionWaypointFactory = new PlayerEscortedWaypointFactory(this);
-        IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
-        return missionWaypoints;
-    }
-
     private void createWaypoints() throws PWCGException
     {        
         McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(IngressWaypointPattern.INGRESS_NEAR_TARGET, this);
@@ -44,16 +36,17 @@ public class PlayerEscortedFlight extends Flight implements IFlight
         IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(this);
         this.getWaypointPackage().addMissionPointSet(flightActivate);
 
-        RendezvousWaypointBuilder rendezvousWaypointBuilder = new RendezvousWaypointBuilder(this, ingressWaypoint);
-        IMissionPointSet flightRendezvous = rendezvousWaypointBuilder.createFlightRendezvous();
+        EscortedByPlayerRendezvousBuilder rendezvousBuilder = new EscortedByPlayerRendezvousBuilder(this, ingressWaypoint);
+        IMissionPointSet flightRendezvous = rendezvousBuilder.createFlightRendezvous();
         flightRendezvous.disableLinkToNextTarget();
         this.getWaypointPackage().addMissionPointSet(flightRendezvous);
 
-        IMissionPointSet missionWaypoints = createFlightSpecificWaypoints(ingressWaypoint);
+        EscortedByPlayerWaypointFactory missionWaypointFactory = new EscortedByPlayerWaypointFactory(this);
+        IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
         this.getWaypointPackage().addMissionPointSet(missionWaypoints);
         
         IMissionPointSet flightEnd = MissionPointSetFactory.createFlightEndAtHomeField(this);
-        this.getWaypointPackage().addMissionPointSet(flightEnd);        
+        this.getWaypointPackage().addMissionPointSet(flightEnd);
     }
 
 

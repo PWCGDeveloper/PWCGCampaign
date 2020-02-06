@@ -1,37 +1,61 @@
 package pwcg.mission.flight.escort;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.flight.waypoint.WaypointFactory;
+import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory;
+import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointEscortWaypointSet;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointEscortWaypointSet.EscortSequenceConnect;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.EscortMcuSequence;
 
 public class EscortForPlayerWaypointFactory
 {
     private IFlight escortFlight;
-    private IFlight escortedFlight;
+    private IFlight playerFlightThatNeedsEscort;
     private MissionPointEscortWaypointSet missionPointSet;
     
-    public EscortForPlayerWaypointFactory(IFlight escortedFlight, IFlight escortFlight)
+    public EscortForPlayerWaypointFactory(IFlight escortFlight, IFlight playerFlightThatNeedsEscort)
     {
-        this.escortedFlight = escortedFlight;
         this.escortFlight = escortFlight;
+        this.playerFlightThatNeedsEscort = playerFlightThatNeedsEscort;
     }
 
-    public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
+    public IMissionPointSet createWaypoints() throws PWCGException
     {
-        missionPointSet = new MissionPointEscortWaypointSet();
+        missionPointSet = new MissionPointEscortWaypointSet(EscortSequenceConnect.DO_NOT_CONNECT_ESCORT_SEQUENCE);
         
-        missionPointSet.addWaypointBefore(ingressWaypoint);
-        
-        McuWaypoint rtbWP = ReturnToBaseWaypoint.createReturnToBaseWaypoint(escortFlight);
-        missionPointSet.addWaypointAfter(rtbWP);
-        
-        EscortMcuSequence escortSequence = new EscortMcuSequence(escortedFlight, escortFlight);
+        McuWaypoint rendezvousWaypoint = createRendezvousWaypoint();;
+        McuWaypoint airStartWaypoint = AirStartWaypointFactory.createAirStart(playerFlightThatNeedsEscort, AirStartPattern.AIR_START_NEAR_WAYPOINT, rendezvousWaypoint);
+        missionPointSet.addWaypointBefore(airStartWaypoint);
+        missionPointSet.addWaypointBefore(rendezvousWaypoint);
+
+        EscortMcuSequence escortSequence = new EscortMcuSequence(playerFlightThatNeedsEscort, escortFlight);
         escortSequence.createEscortSequence();
         missionPointSet.setCoverSequence(escortSequence);
+       
+        McuWaypoint rtbWP = ReturnToBaseWaypoint.createReturnToBaseWaypoint(escortFlight);
+        missionPointSet.addWaypointAfter(rtbWP);
 
         return missionPointSet;
     }
+    
+    
+    private McuWaypoint createRendezvousWaypoint() throws PWCGException
+    {
+        McuWaypoint rendezvousWaypoint = playerFlightThatNeedsEscort.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_RENDEZVOUS);
+        Coordinate escortRendezvousCoordinate = rendezvousWaypoint.getPosition();
+        escortRendezvousCoordinate.setYPos(escortRendezvousCoordinate.getYPos() + 300.0);
+
+        McuWaypoint escortRendezvousWaypoint = WaypointFactory.createRendezvousWaypointType();
+        escortRendezvousWaypoint.setTriggerArea(McuWaypoint.COMBAT_AREA);
+        escortRendezvousWaypoint.setPosition(escortRendezvousCoordinate);
+        escortRendezvousWaypoint.setTargetWaypoint(true);
+        return escortRendezvousWaypoint;
+    }
+
 }

@@ -9,6 +9,7 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
+import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
 import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetFactory;
@@ -29,8 +30,25 @@ public class FerryFlight extends Flight implements IFlight
         setFlightPayload();
     }
 
-    @Override
-    public IMissionPointSet createFlightSpecificWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
+    private void createWaypoints() throws PWCGException
+    {
+        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(IngressWaypointPattern.INGRESS_NEAR_FRONT, this);
+
+        IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(this);
+        this.getWaypointPackage().addMissionPointSet(flightActivate);
+
+        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, AirStartPattern.AIR_START_NEAR_AIRFIELD, ingressWaypoint);
+        this.getWaypointPackage().addMissionPointSet(flightBegin);
+
+        IMissionPointSet missionWaypoints = createFerryMissionPointSet(ingressWaypoint);
+        this.getWaypointPackage().addMissionPointSet(missionWaypoints);
+        
+        IMissionPointSet flightEnd = MissionPointSetFactory.createFlightEndAtHomeField(this);
+        this.getWaypointPackage().addMissionPointSet(flightEnd);        
+    }
+
+
+    public IMissionPointSet createFerryMissionPointSet(McuWaypoint ingressWaypoint) throws PWCGException
     {
         IFlightInformation flightInformation = this.getFlightInformation();
         IAirfield fromAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());
@@ -38,11 +56,6 @@ public class FerryFlight extends Flight implements IFlight
         FerryWaypointFactory missionWaypointFactory = new FerryWaypointFactory(this, fromAirfield, toAirfield);
         IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
         return missionWaypoints;
-    }
-
-    private void createWaypoints() throws PWCGException
-    {
-        MissionPointSetFactory.createStandardMissionPointSet(this, AirStartPattern.AIR_START_NEAR_AIRFIELD, IngressWaypointPattern.INGRESS_NEAR_TARGET);
     }
 
     private void setFlightPayload() throws PWCGException

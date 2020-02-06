@@ -5,7 +5,7 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
-import pwcg.mission.flight.escort.EscortFlightBuilder;
+import pwcg.mission.flight.escort.EscortForPlayerFlightBuilder;
 import pwcg.mission.flight.escort.NeedsEscortDecider;
 import pwcg.mission.flight.intercept.InterceptOpposingFlightBuilder;
 import pwcg.mission.flight.scramble.ScrambleOpposingFlightBuilder;
@@ -39,7 +39,7 @@ public class MissionAssociateFlightBuilder
                 NeedsEscortDecider needsEscortDecider = new NeedsEscortDecider();
                 if (needsEscortDecider.needsEscort(mission, flight))
                 {
-                    EscortFlightBuilder escortFlightBuilder = new EscortFlightBuilder();
+                    EscortForPlayerFlightBuilder escortFlightBuilder = new EscortForPlayerFlightBuilder();
                     escortFlightBuilder.addEscort(mission, flight);
                 }
             }

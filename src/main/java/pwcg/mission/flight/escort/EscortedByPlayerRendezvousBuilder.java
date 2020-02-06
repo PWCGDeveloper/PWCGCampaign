@@ -11,13 +11,13 @@ import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointRouteSet;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class RendezvousWaypointBuilder
+public class EscortedByPlayerRendezvousBuilder
 {
     private IFlight escortedFlight;
     private McuWaypoint ingressWaypoint;
     private MissionPointRouteSet missionPointSet = new MissionPointRouteSet();
 
-    public RendezvousWaypointBuilder(IFlight escortedFlight, McuWaypoint ingressWaypoint)
+    public EscortedByPlayerRendezvousBuilder(IFlight escortedFlight, McuWaypoint ingressWaypoint)
     {
         this.escortedFlight = escortedFlight;
         this.ingressWaypoint = ingressWaypoint;

@@ -7,16 +7,17 @@ import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointEscortWaypointSet;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPointEscortWaypointSet.EscortSequenceConnect;
 import pwcg.mission.mcu.McuWaypoint;
 import pwcg.mission.mcu.group.EscortMcuSequence;
 
-public class PlayerEscortWaypointFactory
+public class PlayerIsEscortMissionPointFactory
 {
     private IFlight escortFlight;
     private IFlight escortedFlight;
     private MissionPointEscortWaypointSet missionPointSet;
 
-    public PlayerEscortWaypointFactory(IFlight escortFlight, IFlight escortedFlight) throws PWCGException
+    public PlayerIsEscortMissionPointFactory(IFlight escortFlight, IFlight escortedFlight) throws PWCGException
     {
         this.escortFlight = escortFlight;
         this.escortedFlight = escortedFlight;
@@ -24,9 +25,7 @@ public class PlayerEscortWaypointFactory
 
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {
-        missionPointSet = new MissionPointEscortWaypointSet();
-
-        missionPointSet.addWaypointBefore(ingressWaypoint);
+        missionPointSet = new MissionPointEscortWaypointSet(EscortSequenceConnect.CONNECT_ESCORT_SEQUENCE);
         
         McuWaypoint rendezvousWaypoint = createRendezvousWaypoint();
         missionPointSet.addWaypointBefore(rendezvousWaypoint);

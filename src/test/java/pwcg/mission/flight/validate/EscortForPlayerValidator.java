@@ -3,6 +3,7 @@ package pwcg.mission.flight.validate;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.escort.EscortForPlayerFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -68,11 +69,18 @@ public class EscortForPlayerValidator
         McuCover cover = escortMissionPointSet.getEscortSequence().getCover();
         assert(cover.getTargets().get(0).equals(Integer.valueOf(leadEscortedPlane.getEntity().getIndex()).toString()));
    
-        McuWaypoint ingressWP = WaypointGeneratorUtils.findWaypointByType(playerFlight.getWaypointPackage().getAllWaypoints(), WaypointType.INGRESS_WAYPOINT.getName());
+        McuWaypoint airstartWP = WaypointGeneratorUtils.findWaypointByType(escortForPlayerFlight.getWaypointPackage().getAllWaypoints(), WaypointType.AIR_START_WAYPOINT.getName());
         PlaneMcu leadEscortPlane = escortForPlayerFlight.getFlightPlanes().getFlightLeader();
-        assert(leadEscortPlane.getPosition().getXPos() == ingressWP.getPosition().getXPos());
-        assert(leadEscortPlane.getPosition().getZPos() == ingressWP.getPosition().getZPos());
-        assert(leadEscortPlane.getPosition().getYPos() > ingressWP.getPosition().getYPos());
+        double distanceFromPlaneToAirStart = MathUtils.calcDist(leadEscortPlane.getPosition(), airstartWP.getPosition());
+        assert(distanceFromPlaneToAirStart < 2000.0);
+
+        McuWaypoint rendezvousWP = WaypointGeneratorUtils.findWaypointByType(escortForPlayerFlight.getWaypointPackage().getAllWaypoints(), WaypointType.RENDEZVOUS_WAYPOINT.getName());
+        double distanceToRendezvous = MathUtils.calcDist(airstartWP.getPosition(), rendezvousWP.getPosition());
+        assert(distanceToRendezvous < 4000.0);
+
+        McuWaypoint rendezvousWPForPlayer = WaypointGeneratorUtils.findWaypointByType(playerFlight.getWaypointPackage().getAllWaypoints(), WaypointType.RENDEZVOUS_WAYPOINT.getName());
+        double distanceBetweenRendezvous = MathUtils.calcDist(rendezvousWPForPlayer.getPosition(), rendezvousWP.getPosition());
+        assert(distanceBetweenRendezvous < 100.0);
     }
 
     private void validateEscortLeadPlane() throws PWCGException
@@ -109,10 +117,15 @@ public class EscortForPlayerValidator
 	private void validateWaypointLinkage() throws PWCGException 
 	{
         McuWaypoint escortAirStartWP = escortForPlayerFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_START);
-        McuWaypoint escortIngressWP = escortForPlayerFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert(escortAirStartWP != null);
+
+        McuWaypoint escortRendezvousWP = escortForPlayerFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_RENDEZVOUS);
+        assert(escortRendezvousWP != null);
+
         McuWaypoint escortReturnToBaseWP = escortForPlayerFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_EGRESS);
-		
-        McuWaypoint playerIngressWP = playerFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert(escortReturnToBaseWP != null);
+
+        McuWaypoint playerRendezvousWP = playerFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_RENDEZVOUS);
         McuWaypoint playerEgressWP = playerFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_EGRESS);
 
         IMissionPointSet escortMissionPointSetInterface = escortForPlayerFlight.getWaypointPackage().getMissionPointSet(MissionPointSetType.MISSION_POINT_SET_ESCORT);
@@ -123,8 +136,8 @@ public class EscortForPlayerValidator
         McuCover cover = escortMissionPointSet.getEscortSequence().getCover();
         McuForceComplete forceComplete = escortMissionPointSet.getEscortSequence().getForceComplete();
 
-        assert(isIndexInTargetList(escortIngressWP.getIndex(), escortAirStartWP.getTargets()));
-        assert(isIndexInTargetList(coverTimer.getIndex(), playerIngressWP.getTargets()));
+        assert(isIndexInTargetList(escortRendezvousWP.getIndex(), escortAirStartWP.getTargets()));
+        assert(isIndexInTargetList(coverTimer.getIndex(), playerRendezvousWP.getTargets()));
         assert(isIndexInTargetList(cover.getIndex(), coverTimer.getTargets()));
         assert(isIndexInTargetList(playerFlight.getFlightPlanes().getFlightLeader().getEntity().getIndex(), cover.getTargets()));
 		

@@ -5,8 +5,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.waypoint.begin.AirStartWaypointFactory.AirStartPattern;
-import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory;
-import pwcg.mission.flight.waypoint.begin.IngressWaypointFactory.IngressWaypointPattern;
 import pwcg.mission.mcu.McuWaypoint;
 
 public class MissionPointSetFactory
@@ -18,7 +16,7 @@ public class MissionPointSetFactory
         return flightActivate;
     }
 
-    public static IMissionPointSet createFlightBegin(IFlight flight, AirStartPattern airStartNearAirfield, McuWaypoint ingressWaypoint) throws PWCGException, PWCGException 
+    public static IMissionPointSet createFlightBegin(IFlight flight, AirStartPattern airStartNearAirfield, McuWaypoint waypointToLinkAirSTart) throws PWCGException, PWCGException 
     {
         IFlightInformation flightInformation = flight.getFlightInformation();
 
@@ -30,13 +28,13 @@ public class MissionPointSetFactory
         }
         else if (flightInformation.isVirtual())
         {
-            MissionPointFlightBeginVirtual flightBegin = new MissionPointFlightBeginVirtual(flight, airStartNearAirfield, ingressWaypoint);
+            MissionPointFlightBeginVirtual flightBegin = new MissionPointFlightBeginVirtual(flight, airStartNearAirfield, waypointToLinkAirSTart);
             flightBegin.createFlightBegin();
             return flightBegin;
         }        
         else if (flightInformation.isAirStart())
         {
-            MissionPointFlightBeginAirStart flightBegin = new MissionPointFlightBeginAirStart(flight, airStartNearAirfield, ingressWaypoint);
+            MissionPointFlightBeginAirStart flightBegin = new MissionPointFlightBeginAirStart(flight, airStartNearAirfield, waypointToLinkAirSTart);
             flightBegin.createFlightBegin();
             return flightBegin;
         }
@@ -45,7 +43,7 @@ public class MissionPointSetFactory
             throw new PWCGException("Flight does not match any expected criteria for start");
         }
     }
-    
+
     public static IMissionPointSet createFlightEndAtHomeField(IFlight flight) throws PWCGException, PWCGException 
     {
         IAirfield landingAirfield = flight.getFlightInformation().getAirfield();
@@ -58,21 +56,11 @@ public class MissionPointSetFactory
         flightEnd.createFlightEnd();
         return flightEnd;
     }
-
-    public static void createStandardMissionPointSet(IFlight flight, AirStartPattern airStartPattern, IngressWaypointPattern ingressWaypointPattern) throws PWCGException
+    
+    public static IMissionPointSet createFlightRendezvous (IFlight flight, McuWaypoint ingressWaypoint) throws PWCGException
     {
-        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(ingressWaypointPattern, flight);
-
-        IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(flight);
-        flight.getWaypointPackage().addMissionPointSet(flightActivate);
-
-        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(flight, airStartPattern, ingressWaypoint);
-        flight.getWaypointPackage().addMissionPointSet(flightBegin);
-
-        IMissionPointSet missionWaypoints = flight.createFlightSpecificWaypoints(ingressWaypoint);
-        flight.getWaypointPackage().addMissionPointSet(missionWaypoints);
-        
-        IMissionPointSet flightEnd = MissionPointSetFactory.createFlightEndAtHomeField(flight);
-        flight.getWaypointPackage().addMissionPointSet(flightEnd);        
+        RendezvousMissionPointSetBuilder rendezvousMissionPointSetBuilder = new RendezvousMissionPointSetBuilder(flight); 
+        IMissionPointSet rendezvousMissionPointSet = rendezvousMissionPointSetBuilder.createFlightRendezvous(ingressWaypoint);
+        return rendezvousMissionPointSet;
     }
 }
