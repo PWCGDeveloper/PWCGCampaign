@@ -131,7 +131,7 @@ public class FlightInformationFactory
     private static void buildSpecificTargetDefinition (FlightInformation flightInformation, TargetType targetType) throws PWCGException
     {
         ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildSpecificTargetDefinition(targetType);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildScrambleOpposeTargetDefinition(flightInformation, targetType);
         flightInformation.setTargetDefinition(targetDefinition);
     }
 

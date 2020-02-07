@@ -7,6 +7,7 @@ import pwcg.campaign.target.locator.targettype.StrategicTargetTypeGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.target.locator.StrategicTargetLocator;
 
@@ -58,10 +59,10 @@ public class TargetDefinitionBuilderStrategic implements ITargetDefinitionBuilde
     
 
     @Override
-    public TargetDefinition buildSpecificTargetDefinition(TargetType targetType) throws PWCGException
+    public TargetDefinition buildScrambleOpposeTargetDefinition(FlightInformation scrambleFlightInformation, TargetType targetType) throws PWCGException
     {
         buildTargetDefinition();          
-        Coordinate targetLocation = flightInformation.getTargetPosition();
+        Coordinate targetLocation = scrambleFlightInformation.getFlightHomePosition();
         targetDefinition.setTargetPosition(targetLocation);
         targetDefinition.setTargetOrientation(new Orientation());
         return targetDefinition;

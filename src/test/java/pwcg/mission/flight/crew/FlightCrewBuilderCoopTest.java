@@ -19,7 +19,6 @@ import pwcg.mission.MissionGenerator;
 import pwcg.mission.MissionHumanParticipants;
 import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
-import pwcg.mission.flight.IFlightInformation;
 import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 import pwcg.testutils.TestParticipatingHumanBuilder;
@@ -51,7 +50,7 @@ public class FlightCrewBuilderCoopTest
         MissionGenerator missionGenerator = new MissionGenerator(coopCampaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(participatingPlayers, FlightTypes.GROUND_ATTACK);
         
-        IFlightInformation flightInformation = new FlightInformation(mission);
+        FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
         
@@ -92,7 +91,7 @@ public class FlightCrewBuilderCoopTest
         MissionGenerator missionGenerator = new MissionGenerator(coopCampaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(coopCampaign), FlightTypes.GROUND_ATTACK);
 
-        IFlightInformation flightInformation = new FlightInformation(mission);
+        FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.COOP_COMPETITIVE_PROFILE.getSquadronId());
         flightInformation.setSquadron(squadron);
         
@@ -134,7 +133,7 @@ public class FlightCrewBuilderCoopTest
         MissionGenerator missionGenerator = new MissionGenerator(coopCampaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(coopCampaign), FlightTypes.GROUND_ATTACK);
 
-        IFlightInformation flightInformation = new FlightInformation(mission);
+        FlightInformation flightInformation = new FlightInformation(mission);
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(10131132);
         flightInformation.setSquadron(squadron);
         

@@ -6,6 +6,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 
 public class NeedsEscortDecider
@@ -31,12 +32,22 @@ public class NeedsEscortDecider
     
     private boolean playerNeedsEscort(Mission mission, IFlight escortedFlight) throws PWCGException, PWCGException
     {
-        if (!escortedFlight.getFlightInformation().isFighterMission())
+        if (escortedFlight.getFlightInformation().isFighterMission())
         {
-            return true;
+            return false;
+        }
+        
+        if (!FlightTypes.isFlightNeedsEscort(escortedFlight.getFlightType()))
+        {
+            return false;
+        }
+        
+        if (escortedFlight.getMission().isNightMission())
+        {
+            return false;
         }
 
-        return false;
+        return true;
     }
     
     private boolean aiNeedsEscort(Mission mission, IFlight escortedFlight) throws PWCGException, PWCGException

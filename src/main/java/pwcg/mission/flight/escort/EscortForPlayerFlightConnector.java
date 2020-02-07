@@ -9,12 +9,12 @@ import pwcg.mission.flight.waypoint.missionpoint.MissionPointSetType;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class EscortByPlayerFlightConnector
+public class EscortForPlayerFlightConnector
 {
     EscortForPlayerFlight escortFlight;
     IFlight playerFlight;
     
-    public EscortByPlayerFlightConnector(EscortForPlayerFlight escortForPlayerFlight, IFlight playerFlight2)
+    public EscortForPlayerFlightConnector(EscortForPlayerFlight escortForPlayerFlight, IFlight playerFlight2)
     {
         this.escortFlight = escortForPlayerFlight;
         this.playerFlight = playerFlight2;
@@ -43,8 +43,18 @@ public class EscortByPlayerFlightConnector
         MissionPointEscortWaypointSet escortMissionPointSet = (MissionPointEscortWaypointSet) escortMissionPointSetInterface;
         McuTimer forceCompleteTimer = escortMissionPointSet.getEscortSequence().getForceCompleteTimer();
 
-        McuWaypoint escortedEgressWP = playerFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_EGRESS);
+        McuWaypoint playerEgressWP = getPlayerFlightDeparturePoint();
         
-        escortedEgressWP.setTarget(forceCompleteTimer.getIndex());
+        playerEgressWP.setTarget(forceCompleteTimer.getIndex());
+    }
+
+    private McuWaypoint getPlayerFlightDeparturePoint() throws PWCGException
+    {
+        McuWaypoint playerDepartureWP = playerFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_EGRESS);
+        if (playerDepartureWP == null) 
+        {
+            playerDepartureWP = playerFlight.getWaypointPackage().getWaypointByAction(WaypointAction.WP_ACTION_LANDING_APPROACH);
+        }
+        return playerDepartureWP;
     }
 }

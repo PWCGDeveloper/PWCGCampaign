@@ -43,7 +43,7 @@ public class AiAdjusterTest
 
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMcu plane: flight.getAiPlanes())
+            for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
                 if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
                 {
@@ -69,7 +69,7 @@ public class AiAdjusterTest
 
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMcu plane: flight.getAiPlanes())
+            for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
                 if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
                 {
@@ -95,7 +95,7 @@ public class AiAdjusterTest
 
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMcu plane: flight.getAiPlanes())
+            for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
                 if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
                 {
@@ -111,7 +111,7 @@ public class AiAdjusterTest
 
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMcu plane: flight.getPlayerPlanes())
+            for (PlaneMcu plane: flight.getFlightPlanes().getPlayerPlanes())
             {
                 assert(plane.getAiLevel() == AiSkillLevel.PLAYER);
             }
@@ -130,7 +130,7 @@ public class AiAdjusterTest
 
         for (IFlight flight : mission.getMissionFlightBuilder().getAllAerialFlights())
         {
-            for (PlaneMcu plane: flight.getAiPlanes())
+            for (PlaneMcu plane: flight.getFlightPlanes().getAiPlanes())
             {
                 if (plane.isPrimaryRole(Role.ROLE_FIGHTER))
                 {

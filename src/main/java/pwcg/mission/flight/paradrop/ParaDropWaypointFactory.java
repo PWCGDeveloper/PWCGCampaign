@@ -47,7 +47,7 @@ public class ParaDropWaypointFactory
         {
             missionPointSet.addWaypointBefore(groundAttackWaypoint);
         }
-        for (McuWaypoint groundAttackWaypoint : groundAttackWaypointHelper.getWaypointsBefore())
+        for (McuWaypoint groundAttackWaypoint : groundAttackWaypointHelper.getWaypointsAfter())
         {
             missionPointSet.addWaypointAfter(groundAttackWaypoint);
         }

@@ -33,6 +33,7 @@ public class PlaneFactoryTest
     Campaign campaign;
     Mission mission;
     @Mock IFlight flight;
+    @Mock IFlightInformation flightInformation;
 
     @Before
     public void setup() throws PWCGException
@@ -42,12 +43,13 @@ public class PlaneFactoryTest
         
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB);
+        Mockito.when(flight.getFlightInformation()).thenReturn(flightInformation);
     }
 
     @Test
     public void testPlayerPlaneGeneration() throws PWCGException
     {
-        Mockito.when(flight.isVirtual()).thenReturn(false);
+        Mockito.when(flightInformation.isVirtual()).thenReturn(false);
         
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.KG53_PROFILE.getSquadronId());
         IFlightInformation flightInformation = FlightInformationFactory.buildPlayerFlightInformation(squadron, mission, FlightTypes.BOMB);
@@ -79,7 +81,7 @@ public class PlaneFactoryTest
     @Test
     public void testAiPlaneGeneration() throws PWCGException
     {
-        Mockito.when(flight.isVirtual()).thenReturn(true);
+        Mockito.when(flightInformation.isVirtual()).thenReturn(true);
         
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(20111052);
         IFlightInformation flightInformation = FlightInformationFactory.buildAiFlightInformation(squadron, mission, FlightTypes.BOMB);

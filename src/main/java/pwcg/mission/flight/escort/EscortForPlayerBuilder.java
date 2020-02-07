@@ -37,7 +37,7 @@ public class EscortForPlayerBuilder
                 EscortForPlayerFlight escortForPlayerFlight = new EscortForPlayerFlight(escortFlightInformation, playerFlight);
                 escortForPlayerFlight.createFlight();   
                                 
-                EscortByPlayerFlightConnector connector = new EscortByPlayerFlightConnector(escortForPlayerFlight, playerFlight);
+                EscortForPlayerFlightConnector connector = new EscortForPlayerFlightConnector(escortForPlayerFlight, playerFlight);
                 connector.connectEscortAndEscortedFlight();
 
                 return escortForPlayerFlight;

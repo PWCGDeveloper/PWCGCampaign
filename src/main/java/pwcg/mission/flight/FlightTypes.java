@@ -151,4 +151,14 @@ public enum FlightTypes
         }
      }
 
+    public static boolean isFlightNeedsEscort(FlightTypes flightType)
+    {
+        if (flightType == FlightTypes.TRANSPORT)
+        {
+            return false;
+        }
+        
+        return true;
+    }
+
 }

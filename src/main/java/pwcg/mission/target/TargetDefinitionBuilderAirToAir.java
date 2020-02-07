@@ -5,6 +5,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
+import pwcg.mission.flight.FlightInformation;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.intercept.InterceptPlayerCoordinateGenerator;
@@ -29,10 +30,10 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
     }
 
     @Override
-    public TargetDefinition buildSpecificTargetDefinition(TargetType targetType) throws PWCGException
+    public TargetDefinition buildScrambleOpposeTargetDefinition(FlightInformation scrambleFlightInformation, TargetType targetType) throws PWCGException
     {
         createBasicTargetDefinition();
-        Coordinate targetLocation = flightInformation.getTargetPosition();
+        Coordinate targetLocation = scrambleFlightInformation.getFlightHomePosition();
         targetDefinition.setTargetPosition(targetLocation);
         targetDefinition.setTargetOrientation(new Orientation());
         return targetDefinition;
