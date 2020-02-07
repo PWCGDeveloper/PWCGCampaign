@@ -16,19 +16,18 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.target.TargetCategory;
+import pwcg.mission.target.TargetDefinition;
 
 @RunWith(MockitoJUnitRunner.class)
 public class WW2PayloadTest 
 {
-	@Mock
-	IFlight flight;
-	
-	@Mock
-	Campaign campaign;
-	
-	@Mock
-	Squadron squadron;
+	@Mock IFlight flight;
+	@Mock IFlightInformation flightInformation;
+	@Mock TargetDefinition targetDefinition;
+	@Mock Campaign campaign;
+	@Mock Squadron squadron;
 	
 	@Mock
 	ConfigManagerCampaign configManagerCampaign;
@@ -40,6 +39,8 @@ public class WW2PayloadTest
         
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManagerCampaign);
 		Mockito.when(flight.getSquadron()).thenReturn(squadron);
+        Mockito.when(flight.getFlightInformation()).thenReturn(flightInformation);
+        Mockito.when(flightInformation.getTargetDefinition()).thenReturn(targetDefinition);
 	}
 
 	@Test
@@ -59,14 +60,14 @@ public class WW2PayloadTest
 	private void testPatrolPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
 		Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.PATROL);
-		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
+		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
 		runPayload(payloadGenerator);
 	}
 	
 	private void testInterceptPayload(IPlanePayload payloadGenerator) throws PWCGException
 	{
 		Mockito.when(flight.getFlightType()).thenReturn(FlightTypes.INTERCEPT);
-		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
+		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_NONE);
 		runPayload(payloadGenerator);
 	}
 
@@ -81,13 +82,13 @@ public class WW2PayloadTest
 	private void testBombPayload(IPlanePayload payloadGenerator, FlightTypes flightType) throws PWCGException
 	{
 		Mockito.when(flight.getFlightType()).thenReturn(flightType);
-		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_SOFT);
+		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_SOFT);
 		runPayload(payloadGenerator);
-		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_ARMORED);
+		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_ARMORED);
 		runPayload(payloadGenerator);
-		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_MEDIUM);
+		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_MEDIUM);
 		runPayload(payloadGenerator);
-		Mockito.when(flight.getFlightInformation().getTargetDefinition().getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_HEAVY);
+		Mockito.when(targetDefinition.getTargetCategory()).thenReturn(TargetCategory.TARGET_CATEGORY_HEAVY);
 		runPayload(payloadGenerator);
 	}
 
