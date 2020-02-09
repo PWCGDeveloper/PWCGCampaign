@@ -1,15 +1,18 @@
 plugins {
-  id 'edu.sc.seis.launch4j' version '2.1.0'
+    id 'edu.sc.seis.launch4j' version '2.1.0'
+    id 'application'
 }
 
 repositories {
     jcenter()
 }
+
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'eclipse'
 
-applicationName = 'PWCG'
 mainClassName = 'pwcg.gui.maingui.CampaignMainGUI'
+applicationName = 'PWCG'
 
 dependencies {
     compile 'com.google.guava:guava:20.0'
@@ -19,4 +22,26 @@ dependencies {
 	compile group: 'com.fasterxml', name: 'jackson-xml-databind', version: '0.6.2'
 	compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.0.1'
 	compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+}
+
+application {
+    mainClassName = 'pwcg.gui.maingui.CampaignMainGUI'
+}
+
+jar {
+    archiveName = "PWCG.jar"
+
+    from {
+        configurations.runtime.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    
+	manifest {
+        attributes 'Main-Class': 'pwcg.gui.maingui.CampaignMainGUI'
+    }
 }

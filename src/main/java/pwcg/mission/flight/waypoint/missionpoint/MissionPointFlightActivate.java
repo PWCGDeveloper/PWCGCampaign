@@ -120,7 +120,6 @@ public class MissionPointFlightActivate implements IMissionPointSet
     {
         missionBeginUnit.linkToMissionBegin(activationTimer.getIndex());
         activationTimer.setTarget(activationEntity.getIndex());
-        activationTimer.setTarget(activationEntity.getIndex());
     }
 
     private void createObjectAssociations(PlaneMcu plane)
@@ -168,7 +167,6 @@ public class MissionPointFlightActivate implements IMissionPointSet
     @Override
     public void removeUnwantedWaypoints(List<McuWaypoint> waypointsInBriefing) throws PWCGException
     {
-        throw new PWCGException("No waypoints in flight activate");                                
     }
 
     @Override

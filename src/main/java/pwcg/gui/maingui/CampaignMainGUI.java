@@ -164,12 +164,12 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
                 if (args[0].equals("BoS"))
                 {
                     PWCGContext.setProduct(PWCGProduct.BOS);
-                    Logger.log(LogLevel.INFO, "Set product to BoS");
+                    Logger.log(LogLevel.INFO, "Running BoS");
                 }
                 else if (args[0].equals("FC"))
                 {
                     PWCGContext.setProduct(PWCGProduct.FC);
-                    Logger.log(LogLevel.INFO, "Set product to FC");
+                    Logger.log(LogLevel.INFO, "Running FC");
                 }
             }
         }

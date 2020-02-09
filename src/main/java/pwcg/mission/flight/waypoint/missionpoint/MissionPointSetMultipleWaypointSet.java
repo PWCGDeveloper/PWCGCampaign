@@ -46,7 +46,7 @@ public abstract class MissionPointSetMultipleWaypointSet implements IMissionPoin
         }
         if (waypointsAfter.containsWaypoint(waypointId))
         {
-            return waypointsBefore.getWaypointById(waypointId);
+            return waypointsAfter.getWaypointById(waypointId);
         }
         throw new PWCGException("Waypoint not found in waypoint set " + waypointId);
     }
@@ -58,19 +58,22 @@ public abstract class MissionPointSetMultipleWaypointSet implements IMissionPoin
         {
             waypointsBefore.replaceWaypoint(waypoint);
         }
-        if (waypointsAfter.containsWaypoint(waypoint.getWaypointID()))
+        else if (waypointsAfter.containsWaypoint(waypoint.getWaypointID()))
         {
-            waypointsBefore.replaceWaypoint(waypoint);
+            waypointsAfter.replaceWaypoint(waypoint);
         }
-        throw new PWCGException("Waypoint not found in waypoint set " + waypoint.getWaypointID());
+        else
+        {
+            throw new PWCGException("Waypoint not found in waypoint set " + waypoint.getWaypointID());
+        }
     }
 
     @Override
     public void addWaypointAfterWaypoint(McuWaypoint newWaypoint, long waypointIdAfter) throws PWCGException
     {
-        if (waypointsAfter.containsWaypoint(waypointIdAfter))
+        if (waypointsBefore.containsWaypoint(waypointIdAfter))
         {
-            waypointsAfter.addWaypointAfterWaypoint(newWaypoint, waypointIdAfter);
+            waypointsBefore.addWaypointAfterWaypoint(newWaypoint, waypointIdAfter);
         }
         if (waypointsAfter.containsWaypoint(waypointIdAfter))
         {
@@ -88,7 +91,7 @@ public abstract class MissionPointSetMultipleWaypointSet implements IMissionPoin
         }
         if (waypointsAfter.containsWaypoint(waypointIdBefore))
         {
-            waypointsBefore.addWaypointAfterWaypoint(newWaypoint, waypointIdBefore);
+            waypointsAfter.addWaypointAfterWaypoint(newWaypoint, waypointIdBefore);
         }
         throw new PWCGException("Waypoint not found in waypoint set " + waypointIdBefore);        
     }
