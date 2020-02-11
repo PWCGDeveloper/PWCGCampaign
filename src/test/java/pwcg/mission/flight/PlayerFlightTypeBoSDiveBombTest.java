@@ -13,6 +13,7 @@ import pwcg.mission.flight.divebomb.DiveBombingFlight;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
+import pwcg.mission.flight.validate.FlightActivateValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetCategory;
@@ -40,6 +41,8 @@ public class PlayerFlightTypeBoSDiveBombTest
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.DIVE_BOMB);
         DiveBombingFlight flight = (DiveBombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
+
+        FlightActivateValidator.validate(flight);
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);

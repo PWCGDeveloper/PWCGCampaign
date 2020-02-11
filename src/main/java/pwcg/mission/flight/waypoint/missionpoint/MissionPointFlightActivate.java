@@ -120,6 +120,16 @@ public class MissionPointFlightActivate implements IMissionPointSet
     {
         missionBeginUnit.linkToMissionBegin(activationTimer.getIndex());
         activationTimer.setTarget(activationEntity.getIndex());
+        
+        linkToPlaneAttack();
+    }
+
+    private void linkToPlaneAttack()
+    {
+        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
+        {
+            activationTimer.setTarget(plane.getAttackTimer().getIndex());
+        }        
     }
 
     private void createObjectAssociations(PlaneMcu plane)
@@ -187,4 +197,11 @@ public class MissionPointFlightActivate implements IMissionPointSet
     {
         return missionPointSetType;
     }
+
+    public McuTimer getActivationTimer()
+    {
+        return activationTimer;
+    }
+    
+    
 }

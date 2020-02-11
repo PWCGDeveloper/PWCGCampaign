@@ -35,7 +35,7 @@ public class ScrambleOpposingGroundAttackFlight extends Flight implements IFligh
         IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(this);
         this.getWaypointPackage().addMissionPointSet(flightActivate);
 
-        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, AirStartPattern.AIR_START_NEAR_AIRFIELD, ingressWaypoint);
+        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, flightActivate, AirStartPattern.AIR_START_NEAR_AIRFIELD, ingressWaypoint);
         this.getWaypointPackage().addMissionPointSet(flightBegin);
 
         ScrambleOpposingGroundAttackWaypointFactory missionWaypointFactory = new ScrambleOpposingGroundAttackWaypointFactory(this);

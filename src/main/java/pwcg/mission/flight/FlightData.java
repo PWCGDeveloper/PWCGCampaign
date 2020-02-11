@@ -102,7 +102,7 @@ public class FlightData
         if (flightInformation.isVirtual())
         {
             virtualWaypointPackage.buildVirtualWaypoints();                    
-        }
+        }        
     }
 
     public IVirtualWaypointPackage getVirtualWaypointPackage()

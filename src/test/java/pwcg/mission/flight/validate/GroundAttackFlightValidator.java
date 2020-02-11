@@ -1,7 +1,5 @@
 package pwcg.mission.flight.validate;
 
-import java.util.List;
-
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointAction;
@@ -23,7 +21,7 @@ public class GroundAttackFlightValidator
 		{
 			if (prevWaypoint != null)
 			{
-				boolean isNextWaypointLinked = isIndexInTargetList(waypoint.getIndex(), prevWaypoint.getTargets());
+				boolean isNextWaypointLinked = IndexLinkValidator.isIndexInTargetList(waypoint.getIndex(), prevWaypoint.getTargets());
 				if (!waypoint.getWpAction().equals(WaypointAction.WP_ACTION_TARGET_EGRESS))
 				{
 					assert(isNextWaypointLinked);
@@ -36,19 +34,6 @@ public class GroundAttackFlightValidator
 			
 			prevWaypoint = waypoint;
 		}
-	}
-
-	private boolean isIndexInTargetList(int index, List<String>targets) 
-	{
-		boolean isIndexInTargetList = false;
-		for (String targetIndex : targets)
-		{
-			if (targetIndex.equals(new String("" + index)))
-			{
-				isIndexInTargetList = true;	
-			}
-		}
-		return isIndexInTargetList;
 	}
 
 	private void validateWaypointTypes(IFlight attackFlight) 

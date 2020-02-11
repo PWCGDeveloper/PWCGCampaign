@@ -12,6 +12,7 @@ import pwcg.mission.MissionGenerator;
 import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
+import pwcg.mission.flight.validate.FlightActivateValidator;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
@@ -40,6 +41,8 @@ public class PlayerFlightTypeBoSBombTest
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB);
         BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         flight.finalizeFlight();
+
+        FlightActivateValidator.validate(flight);
 
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);

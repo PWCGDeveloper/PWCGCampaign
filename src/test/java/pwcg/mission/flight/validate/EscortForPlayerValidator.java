@@ -1,7 +1,5 @@
 package pwcg.mission.flight.validate;
 
-import java.util.List;
-
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
@@ -136,27 +134,14 @@ public class EscortForPlayerValidator
         McuCover cover = escortMissionPointSet.getEscortSequence().getCover();
         McuForceComplete forceComplete = escortMissionPointSet.getEscortSequence().getForceComplete();
 
-        assert(isIndexInTargetList(escortRendezvousWP.getIndex(), escortAirStartWP.getTargets()));
-        assert(isIndexInTargetList(coverTimer.getIndex(), playerRendezvousWP.getTargets()));
-        assert(isIndexInTargetList(cover.getIndex(), coverTimer.getTargets()));
-        assert(isIndexInTargetList(playerFlight.getFlightPlanes().getFlightLeader().getEntity().getIndex(), cover.getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(escortRendezvousWP.getIndex(), escortAirStartWP.getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(coverTimer.getIndex(), playerRendezvousWP.getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(cover.getIndex(), coverTimer.getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(playerFlight.getFlightPlanes().getFlightLeader().getEntity().getIndex(), cover.getTargets()));
 		
-        assert(isIndexInTargetList(forceCompleteTimer.getIndex(), playerEgressWP.getTargets()));
-        assert(isIndexInTargetList(escortCompleteTimer.getIndex(), forceCompleteTimer.getTargets()));
-        assert(isIndexInTargetList(forceComplete.getIndex(), forceCompleteTimer.getTargets()));
-        assert(isIndexInTargetList(escortReturnToBaseWP.getIndex(), escortCompleteTimer.getTargets()));
-	}
-
-	private boolean isIndexInTargetList(int targetIndexToFind, List<String>targetsFromMCU) 
-	{
-		boolean isIndexInTargetList = false;
-		for (String targetIndex : targetsFromMCU)
-		{
-			if (targetIndex.equals(new String("" + targetIndexToFind)))
-			{
-				isIndexInTargetList = true;	
-			}
-		}
-		return isIndexInTargetList;
+        assert(IndexLinkValidator.isIndexInTargetList(forceCompleteTimer.getIndex(), playerEgressWP.getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(escortCompleteTimer.getIndex(), forceCompleteTimer.getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(forceComplete.getIndex(), forceCompleteTimer.getTargets()));
+        assert(IndexLinkValidator.isIndexInTargetList(escortReturnToBaseWP.getIndex(), escortCompleteTimer.getTargets()));
 	}
 }

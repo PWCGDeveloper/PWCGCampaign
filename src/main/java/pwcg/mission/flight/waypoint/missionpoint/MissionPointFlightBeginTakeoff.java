@@ -25,15 +25,17 @@ import pwcg.mission.mcu.McuWaypoint;
 public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypointSet implements IMissionPointSet
 {
     private IFlight flight;
+    private IMissionPointSet flightActivate;
     private McuTakeoff takeoffMcu = null;
     private McuTimer formationTimer = null;
     private McuFormation formationEntity = null;
     private boolean linkToNextTarget = true;
     private MissionPointSetType missionPointSetType;
 
-    public MissionPointFlightBeginTakeoff(IFlight flight)
+    public MissionPointFlightBeginTakeoff(IFlight flight, IMissionPointSet flightActivate)
     {
         this.flight = flight;
+        this.flightActivate = flightActivate;
         this.missionPointSetType = MissionPointSetType.MISSION_POINT_SET_BEGIN_TAKEOFF;
     }
     
@@ -42,6 +44,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         createTakeoff();  
         createFormation();
         createTakeOffWaypoints();
+        linkTakeOffToActivate();
     }
 
     @Override
@@ -173,6 +176,11 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         List<McuWaypoint> climbWaypoints = initialWaypointGenerator.createClimbWaypointsForPlayerFlight(takeoffWP);
         super.addWaypoints(climbWaypoints);
     }  
+
+    private void linkTakeOffToActivate() throws PWCGException
+    {
+        flightActivate.setLinkToNextTarget(takeoffMcu.getIndex());        
+    }
 
     private void createTargetAssociations() throws PWCGException
     {

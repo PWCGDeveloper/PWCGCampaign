@@ -16,13 +16,13 @@ public class MissionPointSetFactory
         return flightActivate;
     }
 
-    public static IMissionPointSet createFlightBegin(IFlight flight, AirStartPattern airStartNearAirfield, McuWaypoint waypointToLinkAirSTart) throws PWCGException, PWCGException 
+    public static IMissionPointSet createFlightBegin(IFlight flight, IMissionPointSet flightActivate, AirStartPattern airStartNearAirfield, McuWaypoint waypointToLinkAirSTart) throws PWCGException, PWCGException 
     {
         IFlightInformation flightInformation = flight.getFlightInformation();
 
         if (!flightInformation.isAirStart())
         {
-            MissionPointFlightBeginTakeoff flightBegin = new MissionPointFlightBeginTakeoff(flight);
+            MissionPointFlightBeginTakeoff flightBegin = new MissionPointFlightBeginTakeoff(flight, flightActivate);
             flightBegin.createFlightBegin();
             return flightBegin;
         }
