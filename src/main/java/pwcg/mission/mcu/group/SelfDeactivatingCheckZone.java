@@ -9,7 +9,6 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.Logger;
-import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.McuDeactivate;
@@ -74,11 +73,6 @@ public class SelfDeactivatingCheckZone
         // Deactivate both the CZ and the activate timer
         deactivateCZ.setTarget(checkZone.getIndex());        
         deactivateCZ.setTarget(activateCZTimer.getIndex());    
-    }
-
-    public void setAdditionalDeactivate(BaseFlightMcu additionalDeactivate)
-    {
-        additionalDeactivate.setTarget(deactivateCZTimer.getIndex());
     }
     
     public void write(BufferedWriter writer) throws PWCGIOException

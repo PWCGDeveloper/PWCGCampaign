@@ -15,6 +15,7 @@ import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.FlightActivateValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
+import pwcg.mission.flight.validate.VirtualWaypointPackageValidator;
 import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
@@ -40,7 +41,7 @@ public class PlayerFlightTypeBoSDiveBombTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.DIVE_BOMB);
         DiveBombingFlight flight = (DiveBombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-        flight.finalizeFlight();
+        mission.finalizeMission();
 
         FlightActivateValidator.validate(flight);
 
@@ -54,6 +55,9 @@ public class PlayerFlightTypeBoSDiveBombTest
         PositionEvaluator.evaluateAiFlight(mission);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
+        
+        VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
+        virtualWaypointPackageValidator.validate();
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

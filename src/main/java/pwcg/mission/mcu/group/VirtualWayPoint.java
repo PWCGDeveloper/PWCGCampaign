@@ -3,9 +3,9 @@ package pwcg.mission.mcu.group;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
@@ -21,28 +21,26 @@ import pwcg.mission.mcu.BaseFlightMcu;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuCounter;
 import pwcg.mission.mcu.McuDeactivate;
-import pwcg.mission.mcu.McuSpawn;
 import pwcg.mission.mcu.McuSubtitle;
 import pwcg.mission.mcu.McuTimer;
 
 public final class VirtualWayPoint 
 {       
-    private Map<Integer, VmpSpawnContainer> vmpSpawnContainers = new HashMap<Integer, VmpSpawnContainer>();
+    private Map<Integer, VwpSpawnContainer> vwpSpawnContainers = new TreeMap<>();
     private int index = IndexGenerator.getInstance().getNextIndex();;
-    private VirtualWayPointCoordinate vwpPosition = null;
+    private VirtualWayPointCoordinate vwpPosition;
     
     private List<McuSubtitle> subTitleList = new ArrayList<McuSubtitle>();
     private boolean useSubtitles = false;
 
     private SelfDeactivatingCheckZone checkZone;
-    private McuTimer nextVwpTimer = new McuTimer();
-    private McuTimer vwpTimer = new McuTimer();
-    private McuTimer masterSpawnTimer = new McuTimer();
-    private McuTimer masterWpTriggerTimer = new McuTimer();
-    private McuTimer nextVirtualWaypointTimer = new McuTimer();
-    private McuTimer killVwpTimer = new McuTimer();
     private McuTimer vwpTriggeredTimer = new McuTimer();
-    private McuDeactivate stopNextVwp = new McuDeactivate();
+    private McuTimer masterSpawnTimer = new McuTimer();
+    private McuDeactivate stopNextVwp = new McuDeactivate();    private McuTimer vwpTimer = new McuTimer();
+    private McuTimer vwpTimedOutTimer = new McuTimer();
+    private McuTimer initiateNextVirtualWaypointTimer = new McuTimer();
+    private McuTimer killVwpTimer = new McuTimer();
+
     
     public static int VWP_TRIGGGER_DISTANCE = 20000;
     
@@ -56,7 +54,9 @@ public final class VirtualWayPoint
                     VirtualWayPointCoordinate vwpCoordinate,
                     Coalition coalition) throws PWCGException 
     {
-        this.vwpPosition = vwpCoordinate;                 
+        this.vwpPosition = vwpCoordinate; 
+        checkZone = new SelfDeactivatingCheckZone(vwpPosition.getPosition().copy(), VWP_TRIGGGER_DISTANCE);
+
         buildMcus(vwpCoordinate);
         makeSubtitles(flight);
         setTargetAssociations(vwpCoordinate);
@@ -65,35 +65,42 @@ public final class VirtualWayPoint
 
     private void setTargetAssociations(VirtualWayPointCoordinate vwpCoordinate)
     {
-        // Path of CZ triggered
-        vwpTimer.setTarget(nextVwpTimer.getIndex());
+        setTargetAssociationsVwpActivateVwp();
+        setTargetAssociationsTriggered();
+        setTargetAssociationsTimedOut();
+        setTargetAssociationsForPlaneLimitReached();
+    }
     
-        // 1. Deactivate our deactivate timer
-        vwpTriggeredTimer.setTarget(stopNextVwp.getIndex());
-        stopNextVwp.setTarget(nextVwpTimer.getIndex());
-        
-        // 2. Trigger the Spawn
-        vwpTriggeredTimer.setTarget(masterSpawnTimer.getIndex());
-        
-        // Path of CZ Not triggered
-        nextVwpTimer.setTarget(nextVirtualWaypointTimer.getIndex());
-
+    private void setTargetAssociationsVwpActivateVwp()
+    {
+        vwpTimer.setTarget(checkZone.getActivateEntryPoint());
+    }
+    
+    private void setTargetAssociationsTriggered()
+    {
         // Set up activate and deactivate
         // virtualWPTimer activates the self deleting CZ
         // deactivateVWPTimer deactivates the self deleting CZ
-        checkZone = new SelfDeactivatingCheckZone(vwpCoordinate.getPosition().copy(), VWP_TRIGGGER_DISTANCE);
         checkZone.setCheckZoneTarget(vwpTriggeredTimer.getIndex());
-        checkZone.setAdditionalDeactivate(nextVwpTimer);
+        vwpTimedOutTimer.setTarget(checkZone.getDeactivateEntryPoint());
         
-        // Trigger check zone from the vwp timer
-        vwpTimer.setTarget(checkZone.getActivateEntryPoint());
+        // Stop the next VWP from triggering
+        vwpTriggeredTimer.setTarget(stopNextVwp.getIndex());
+        stopNextVwp.setTarget(vwpTimedOutTimer.getIndex());
         
-        // If the plane counter goes off we want to kill the VWP without spawning
-        // Link the kill to the stopNextVwp deactivate.
-        // We bypass the vwpTriggeredTimer timer to avoid the spawn timer
+        // Trigger the Spawn
+        vwpTriggeredTimer.setTarget(masterSpawnTimer.getIndex());
+    }
+
+    private void setTargetAssociationsTimedOut()
+    {
+        vwpTimer.setTarget(vwpTimedOutTimer.getIndex());
+        vwpTimedOutTimer.setTarget(initiateNextVirtualWaypointTimer.getIndex());
+    }
+
+    private void setTargetAssociationsForPlaneLimitReached()
+    {
         killVwpTimer.setTarget(stopNextVwp.getIndex());
-        
-        // We also want to terminate CZ porcessing
         killVwpTimer.setTarget(checkZone.getDeactivateEntryPoint());
     }
 
@@ -109,10 +116,10 @@ public final class VirtualWayPoint
         masterSpawnTimer.setDesc("VWP Master Spawn Timer");
         masterSpawnTimer.setTimer(1);
 
-        nextVwpTimer.setPosition(vwpCoordinate.getPosition().copy());
-        nextVwpTimer.setName("VWP CZ Deactivate Timer");
-        nextVwpTimer.setDesc("VWP CZ Deactivate Timer");
-        nextVwpTimer.setTimer(vwpCoordinate.getWaypointWaitTimeSeconds());
+        vwpTimedOutTimer.setPosition(vwpCoordinate.getPosition().copy());
+        vwpTimedOutTimer.setName("VWP CZ Deactivate Timer");
+        vwpTimedOutTimer.setDesc("VWP CZ Deactivate Timer");
+        vwpTimedOutTimer.setTimer(vwpCoordinate.getWaypointWaitTimeSeconds());
 
         vwpTriggeredTimer.setPosition(vwpCoordinate.getPosition().copy());
         vwpTriggeredTimer.setName("VWP Trigger Timer");
@@ -123,17 +130,13 @@ public final class VirtualWayPoint
         stopNextVwp.setName("VWP Stop Next");
         stopNextVwp.setDesc("VWP Stop Deactivate");
 
-        nextVirtualWaypointTimer.setPosition(vwpCoordinate.getPosition().copy());
-        nextVirtualWaypointTimer.setName("Next VWP Timer");
-        nextVirtualWaypointTimer.setDesc("Next VWP Timer");
+        initiateNextVirtualWaypointTimer.setPosition(vwpCoordinate.getPosition().copy());
+        initiateNextVirtualWaypointTimer.setName("Next VWP Timer");
+        initiateNextVirtualWaypointTimer.setDesc("Next VWP Timer");
 
         killVwpTimer.setPosition(vwpCoordinate.getPosition().copy());
         killVwpTimer.setName("Kill VWP Timer");
         killVwpTimer.setDesc("Kill VWP Timer");
-
-        masterWpTriggerTimer.setPosition(vwpCoordinate.getPosition().copy());
-        masterWpTriggerTimer.setName("Master WP Trigger Timer");
-        masterWpTriggerTimer.setDesc("Master WP Trigger Timer");
     }
 
     private void makeSubtitles(IFlight flight) throws PWCGException
@@ -159,7 +162,7 @@ public final class VirtualWayPoint
 
     private void generateSpawners(IFlight flight) throws PWCGException
     {
-        McuTimer lastSpawnTimer = null;
+        VwpSpawnContainer lastVwpSpawnContainer = null;
         
         for (int i = 0; i < flight.getFlightPlanes().getFlightSize(); ++i)
         {
@@ -180,23 +183,23 @@ public final class VirtualWayPoint
             // Since every plane has a matching set of mission points, the index will be
             // identical for each plane
             BaseFlightMcu planeMissionPoint = planeMissionPoints.get(vwpPosition.getWaypointindex());
-            VmpSpawnContainer vmpSpawnContainer = new VmpSpawnContainer(planeMissionPoint);
+            VwpSpawnContainer vwpSpawnContainer = new VwpSpawnContainer(planeMissionPoint, vwpPosition);
 
             // Chain the spawns such that they happen one after the other
-            if (lastSpawnTimer == null)
+            if (lastVwpSpawnContainer == null)
             {
-                masterSpawnTimer.setTarget(vmpSpawnContainer.spawnTimer.getIndex());
+                masterSpawnTimer.setTarget(vwpSpawnContainer.getEntryPoint());
             }
             else
             {
-                lastSpawnTimer.setTarget(vmpSpawnContainer.spawnTimer.getIndex());
+                lastVwpSpawnContainer.linkToNextSpawnContainer(vwpSpawnContainer.getEntryPoint());
             }
             
-            lastSpawnTimer = vmpSpawnContainer.spawnTimer;
+            lastVwpSpawnContainer = vwpSpawnContainer;
             
-            vmpSpawnContainer.create(plane, i, planeCoordinate);
+            vwpSpawnContainer.create(plane, i, planeCoordinate);
             
-            vmpSpawnContainers.put(plane.getIndex(), vmpSpawnContainer);
+            vwpSpawnContainers.put(plane.getIndex(), vwpSpawnContainer);
         }        
     }
 
@@ -220,15 +223,15 @@ public final class VirtualWayPoint
             masterSpawnTimer.write(writer);
             
             checkZone.write(writer);
-            nextVwpTimer.write(writer);
-            nextVirtualWaypointTimer.write(writer);
+            vwpTimedOutTimer.write(writer);
+            initiateNextVirtualWaypointTimer.write(writer);
             vwpTriggeredTimer.write(writer);
             stopNextVwp.write(writer);
             killVwpTimer.write(writer);
             
-            for (VmpSpawnContainer vmpSpawnContainer : vmpSpawnContainers.values())
+            for (VwpSpawnContainer vwpSpawnContainer : vwpSpawnContainers.values())
             {
-                vmpSpawnContainer.write(writer);
+                vwpSpawnContainer.write(writer);
             }
             
             for (int i = 0; i < subTitleList.size(); ++i)
@@ -255,7 +258,7 @@ public final class VirtualWayPoint
 
     public void linkToNextVirtualWaypoint(VirtualWayPoint nextVWP)
     {
-        nextVirtualWaypointTimer.setTarget(nextVWP.getEntryPoint().getIndex());
+        initiateNextVirtualWaypointTimer.setTarget(nextVWP.getEntryPoint().getIndex());
     }
 
     public McuTimer getKillVwpTimer()
@@ -265,56 +268,9 @@ public final class VirtualWayPoint
     
     public void registerPlaneCounter(McuCounter counter)
     {
-        for (VmpSpawnContainer vmpSpawnContainer : vmpSpawnContainers.values())
+        for (VwpSpawnContainer vwpSpawnContainer : vwpSpawnContainers.values())
         {
-            vmpSpawnContainer.spawnTimer.setTarget(counter.getIndex());
-        }
-    }
-
-    private class VmpSpawnContainer
-    {
-        private VmpSpawnContainer (BaseFlightMcu waypoint)
-        {
-            this.waypoint = waypoint;
-        }
-        
-        private McuTimer spawnTimer = new McuTimer();
-        private McuSpawn spawner = new McuSpawn();
-        private McuTimer wpActivateTimer = new McuTimer();
-        private BaseFlightMcu waypoint = null;
-        
-        private void create(PlaneMcu plane, int index, Coordinate planeCoordinate)
-        {
-            spawner.setPosition(planeCoordinate.copy());
-            spawner.setOrientation(vwpPosition.getOrientation().copy());
-            spawner.setObject(plane.getEntity().getIndex());
-            spawner.setName("Spawn " + (index+1));
-            spawner.setDesc("Spawn " + (index+1));
-            
-            spawnTimer.setTimer(1);
-            spawnTimer.setPosition(planeCoordinate.copy());
-            spawnTimer.setOrientation(vwpPosition.getOrientation().copy());
-            spawnTimer.setName("Spawn Timer " + (index+1));
-            spawnTimer.setDesc("Spawn Timer " + (index+1));
-            
-            
-            wpActivateTimer.setTimer(1);
-            wpActivateTimer.setPosition(planeCoordinate.copy());
-            wpActivateTimer.setOrientation(vwpPosition.getOrientation().copy());
-            wpActivateTimer.setName("Spawn WP Timer " + (index+1));
-            wpActivateTimer.setDesc("Spawn WP Timer " + (index+1));
-
-            spawnTimer.setTarget(spawner.getIndex());
-            spawnTimer.setTarget(wpActivateTimer.getIndex());
-            
-            wpActivateTimer.setTarget(waypoint.getIndex());
-        }
-        
-        private void write(BufferedWriter writer) throws PWCGIOException 
-        {
-            spawnTimer.write(writer);
-            spawner.write(writer);
-            wpActivateTimer.write(writer);
+            vwpSpawnContainer.registerPlaneCounter(counter.getIndex());
         }
     }
     
@@ -322,4 +278,56 @@ public final class VirtualWayPoint
     {
         checkZone.setCheckZoneTriggerObject(triggerObject);
     }
+
+    public VwpSpawnContainer getVwpSpawnContainerForPlane(int planeIndex)
+    {
+        return vwpSpawnContainers.get(planeIndex);
+    }
+
+    public List<McuSubtitle> getSubTitleList()
+    {
+        return subTitleList;
+    }
+
+    public boolean isUseSubtitles()
+    {
+        return useSubtitles;
+    }
+
+    public SelfDeactivatingCheckZone getCheckZone()
+    {
+        return checkZone;
+    }
+
+    public McuTimer getVwpTimedOutTimer()
+    {
+        return vwpTimedOutTimer;
+    }
+
+    public McuTimer getVwpTimer()
+    {
+        return vwpTimer;
+    }
+
+    public McuTimer getMasterSpawnTimer()
+    {
+        return masterSpawnTimer;
+    }
+
+    public McuTimer getInitiateNextVirtualWaypointTimer()
+    {
+        return initiateNextVirtualWaypointTimer;
+    }
+
+    public McuTimer getVwpTriggeredTimer()
+    {
+        return vwpTriggeredTimer;
+    }
+
+    public McuDeactivate getStopNextVwp()
+    {
+        return stopNextVwp;
+    }
+    
+    
 }

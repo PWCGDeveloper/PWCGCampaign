@@ -13,6 +13,7 @@ import pwcg.mission.flight.bomb.BombingFlight;
 import pwcg.mission.flight.paradrop.ParaDropFlight;
 import pwcg.mission.flight.transport.TransportFlight;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
+import pwcg.mission.flight.validate.VirtualWaypointPackageValidator;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.FlightActivateValidator;
 import pwcg.mission.target.TargetType;
@@ -39,7 +40,7 @@ public class PlayerFlightTypeBoSTransportTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.PARATROOP_DROP);
         ParaDropFlight flight = (ParaDropFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-        flight.finalizeFlight();
+         mission.finalizeMission();
 
         FlightActivateValidator.validate(flight);
 
@@ -49,6 +50,9 @@ public class PlayerFlightTypeBoSTransportTest
         assert (flight.getFlightType() == FlightTypes.PARATROOP_DROP);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
+        
+        VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
+        virtualWaypointPackageValidator.validate();
     }
 
     @Test
@@ -57,7 +61,7 @@ public class PlayerFlightTypeBoSTransportTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.CARGO_DROP);
         ParaDropFlight flight = (ParaDropFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-        flight.finalizeFlight();
+         mission.finalizeMission();
 
         FlightActivateValidator.validate(flight);
 
@@ -67,6 +71,9 @@ public class PlayerFlightTypeBoSTransportTest
         assert (flight.getFlightType() == FlightTypes.CARGO_DROP);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
+        
+        VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
+        virtualWaypointPackageValidator.validate();
     }
 
     @Test
@@ -75,13 +82,16 @@ public class PlayerFlightTypeBoSTransportTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.TRANSPORT);
         TransportFlight flight = (TransportFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-        flight.finalizeFlight();
+         mission.finalizeMission();
 
         FlightActivateValidator.validate(flight);
 
         assert (flight.getFlightType() == FlightTypes.TRANSPORT);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateNoEscortForPlayer();
+        
+        VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
+        virtualWaypointPackageValidator.validate();
     }
 
 
@@ -91,7 +101,7 @@ public class PlayerFlightTypeBoSTransportTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB);
         BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-        flight.finalizeFlight();
+         mission.finalizeMission();
 
         FlightActivateValidator.validate(flight);
 
@@ -101,6 +111,9 @@ public class PlayerFlightTypeBoSTransportTest
         assert (flight.getFlightType() == FlightTypes.BOMB);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
+        
+        VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
+        virtualWaypointPackageValidator.validate();
     }
 
     @Test
@@ -109,7 +122,7 @@ public class PlayerFlightTypeBoSTransportTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.LOW_ALT_BOMB);
         BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-        flight.finalizeFlight();
+         mission.finalizeMission();
 
         FlightActivateValidator.validate(flight);
 
@@ -119,6 +132,9 @@ public class PlayerFlightTypeBoSTransportTest
         assert (flight.getFlightType() == FlightTypes.LOW_ALT_BOMB);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
         playerEscortedFlightValidator.validateEscortForPlayer();
+        
+        VirtualWaypointPackageValidator virtualWaypointPackageValidator = new VirtualWaypointPackageValidator(mission);
+        virtualWaypointPackageValidator.validate();
     }
 
     public void validateTargetDefinition(TargetDefinition targetDefinition)

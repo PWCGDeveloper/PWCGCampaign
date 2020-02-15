@@ -18,4 +18,6 @@ public interface IVirtualWaypointPackage
     void write(BufferedWriter writer) throws PWCGIOException;
 
     List<VirtualWayPoint> getVirtualWaypoints();
+
+    IWaypointPackage getWaypointsForPlane(int planeIndex);
 }

@@ -48,7 +48,12 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     {
         return this.virtualWaypoints;
     }
-    
+
+    @Override
+    public IWaypointPackage getWaypointsForPlane(int planeIndex)
+    {
+        return this.waypointPackagesForVirtualFlight.get(planeIndex);
+    }
 
     @Override
     public List<BaseFlightMcu> getAllFlightPointsForPlane(PlaneMcu plane) throws PWCGException
