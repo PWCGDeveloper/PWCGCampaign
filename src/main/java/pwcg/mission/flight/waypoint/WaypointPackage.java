@@ -134,18 +134,6 @@ public class WaypointPackage implements IWaypointPackage
         }
     }
 
-    @Override
-    public void triggerOnFlightActivation(int nextTargetIndex) throws PWCGException
-    {
-        for (IMissionPointSet missionPointSet : missionPointSets)
-        {
-            if (missionPointSet instanceof MissionPointFlightActivate)
-            {
-                missionPointSet.setLinkToNextTarget(nextTargetIndex);
-            }
-        }
-    }
-
     private void linkMissionPointSets() throws PWCGException
     {
         IMissionPointSet previousMissionPointSet = null;

@@ -103,7 +103,22 @@ public class CampaignPersonnelManager
         	allPlayers.addSquadronMembers(playersInSquadron);
         }
         return allPlayers;
+    }
+    
+
+    public boolean squadronHasActivePlayers(int squadronId) throws PWCGException
+    {
+        SquadronMembers allActivePlayers = getPlayersForStatus(SquadronMemberStatus.STATUS_ACTIVE);
+        for (SquadronMember player : allActivePlayers.getSquadronMemberList())
+        {
+            if (player.getSquadronId() == squadronId)
+            {
+                return true;
+            }
+        }
+        return false;
     }    
+
 
     private Map<Integer, SquadronMember> getAllNonAceCampaignMembers() throws PWCGException
     {

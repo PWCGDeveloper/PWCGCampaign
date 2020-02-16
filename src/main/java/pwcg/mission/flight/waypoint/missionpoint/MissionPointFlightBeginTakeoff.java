@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.MathUtils;
@@ -109,6 +110,20 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         return duplicate;
     }
 
+    @Override
+    public List<BaseFlightMcu> getAllFlightPoints()
+    {
+        List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
+        allFlightPoints.addAll(waypoints.getWaypoints());
+        return allFlightPoints;
+    }
+
+    @Override
+    public MissionPointSetType getMissionPointSetType()
+    {
+        return missionPointSetType;
+    }
+
     private void createTakeoff() throws PWCGException
     {
         takeoffMcu = null;
@@ -134,7 +149,9 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         formationTimer.setName(flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()) + ": Formation Timer");
         formationTimer.setDesc("Formation timer entity for " + flightInformation.getSquadron().determineDisplayName(flightInformation.getCampaign().getDate()));
         formationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
-        formationTimer.setTimer(2);
+        
+        int takeoffDelay = getStartDelay();
+        formationTimer.setTimer(takeoffDelay);
     }
 
     private void createTakeOffWaypoints() throws PWCGException
@@ -158,6 +175,7 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         super.addWaypoint(takeoffWP);
         return takeoffWP;
     }
+    
     private Coordinate createTakeOffCoords() throws PWCGException, PWCGException
     {
         int takeoffWaypointDistance = flight.getCampaign().getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.TakeoffWaypointDistanceKey);
@@ -199,17 +217,18 @@ public class MissionPointFlightBeginTakeoff extends MissionPointSetSingleWaypoin
         formationEntity.setObject(flightLeaderIndex);
     }
 
-    @Override
-    public List<BaseFlightMcu> getAllFlightPoints()
+    private int getStartDelay() throws PWCGException
     {
-        List<BaseFlightMcu> allFlightPoints = new ArrayList<>();
-        allFlightPoints.addAll(waypoints.getWaypoints());
-        return allFlightPoints;
-    }
-
-    @Override
-    public MissionPointSetType getMissionPointSetType()
-    {
-        return missionPointSetType;
+        int startDelay = 1;
+        if (flight.getFlightInformation().isAirStart() == false) 
+        {
+            ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();                        
+            startDelay = configManager.getIntConfigParam(ConfigItemKeys.TakeoffTimeKey);
+            if (startDelay > 30)
+            {
+                startDelay = 30;
+            }
+        }
+        return startDelay;
     }
 }

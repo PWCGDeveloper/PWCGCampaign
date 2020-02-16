@@ -30,8 +30,6 @@ public interface IWaypointPackage
 
     IWaypointPackage duplicate(int positionInFormation) throws PWCGException;
 
-    void triggerOnFlightActivation(int index) throws PWCGException;
-
     void finalize(PlaneMcu plane) throws PWCGException;
     
     IMissionPointSet getMissionPointSet(MissionPointSetType missionPointSetType) throws PWCGException;

@@ -342,17 +342,18 @@ public class SquadronManager
 
     public Squadron getSquadronByProximityAndRoleAndSide(Campaign campaign, Coordinate position, Role role, Side side) throws PWCGException 
     {
+        List<Squadron> selectedSquadrons = getNearSquadronsByRole(campaign, position, role, side);
+        List<Squadron> selectedSquadronsNoPlayer = getSquadronsWithNoPlayers(campaign, selectedSquadrons);
+        return chooseSquadron(selectedSquadronsNoPlayer);
+    }
+
+    private List<Squadron> getNearSquadronsByRole(Campaign campaign, Coordinate position, Role role, Side side) throws PWCGException
+    {
         ConfigManager configManager = campaign.getCampaignConfigManager();
-
         int initialSquadronSearchRadiusKey = configManager.getIntConfigParam(ConfigItemKeys.InitialSquadronSearchRadiusKey);
-
-        Squadron enemySquadron = null;
-
         List<Role> acceptableRoles = new ArrayList<Role>();
         acceptableRoles.add(role);
-
-        List<Squadron> enemySquadrons = null;
-        enemySquadrons =  getNearestSquadronsByRole(
+        List<Squadron> selectedSquadrons =  getNearestSquadronsByRole(
                         campaign,
                         position.copy(),
                         100,
@@ -360,16 +361,34 @@ public class SquadronManager
                         acceptableRoles,
                         side,
                         campaign.getDate());
-
-        if (enemySquadrons.size() > 0)
-        {
-            int index = RandomNumberGenerator.getRandom(enemySquadrons.size());
-            enemySquadron = enemySquadrons.get(index);
-        }
-
-        return enemySquadron;
+        return selectedSquadrons;
     }
 
+    private List<Squadron> getSquadronsWithNoPlayers(Campaign campaign, List<Squadron> selectedSquadrons) throws PWCGException
+    {
+        List<Squadron> selectedSquadronsNoPlayer = new ArrayList<>();
+        for (Squadron squadron : selectedSquadrons)
+        {
+            if (!campaign.getPersonnelManager().squadronHasActivePlayers(squadron.getSquadronId()))
+            {
+                selectedSquadronsNoPlayer.add(squadron);
+            }
+        }
+        return selectedSquadronsNoPlayer;
+    }
+
+    private Squadron chooseSquadron(List<Squadron> squadrons)
+    {
+        Squadron selectedSquadron = null;
+        if (squadrons.size() > 0)
+        {
+            int index = RandomNumberGenerator.getRandom(squadrons.size());
+            selectedSquadron = squadrons.get(index);
+        }
+
+        return selectedSquadron;
+    }
+    
     private void setAirfieldsForMovingFront() throws PWCGException, PWCGException
     {
         boolean useMovingFront = PWCGContext.getInstance().determineUseMovingFront();

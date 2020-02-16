@@ -4,8 +4,6 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import pwcg.core.config.ConfigItemKeys;
-import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.IFlight;
@@ -85,20 +83,8 @@ public class MissionPointFlightActivate implements IMissionPointSet
     
     private void createFlightMissionBegin() throws PWCGException
     {
-        
-        int startDelay = 1;
-        if (flight.getFlightInformation().isAirStart() == false) 
-        {
-            ConfigManagerCampaign configManager = flight.getCampaign().getCampaignConfigManager();                        
-            startDelay = configManager.getIntConfigParam(ConfigItemKeys.TakeoffTimeKey);
-            if (startDelay > 30)
-            {
-                startDelay = 30;
-            }
-        }
-
         missionBeginUnit = new MissionBeginUnit(flight.getFlightHomePosition());
-        missionBeginUnit.setStartTime(startDelay);
+        missionBeginUnit.setStartTime(1);
     }
 
     private void createActivation() throws PWCGException
@@ -113,7 +99,8 @@ public class MissionPointFlightActivate implements IMissionPointSet
         activationTimer = new McuTimer();
         activationTimer.setName("Activation Timer");
         activationTimer.setDesc("Activation Timer");
-        activationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());
+        activationTimer.setPosition(flightInformation.getDepartureAirfield().getPosition().copy());        
+        activationTimer.setTimer(1);
     }
 
     private void createTargetAssociations()

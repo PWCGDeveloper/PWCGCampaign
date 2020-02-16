@@ -15,7 +15,7 @@ public interface IVirtualWaypointPackage
 
     void buildVirtualWaypoints() throws PWCGException;
 
-    void write(BufferedWriter writer) throws PWCGIOException;
+    void write(BufferedWriter writer) throws PWCGIOException, PWCGException;
 
     List<VirtualWayPoint> getVirtualWaypoints();
 

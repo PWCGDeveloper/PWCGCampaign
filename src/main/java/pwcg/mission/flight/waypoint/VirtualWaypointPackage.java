@@ -2,12 +2,9 @@ package pwcg.mission.flight.waypoint;
 
 import java.io.BufferedWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.exception.PWCGIOException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.virtual.VirtualWaypointGenerator;
@@ -17,12 +14,13 @@ import pwcg.mission.mcu.group.VirtualWayPoint;
 public class VirtualWaypointPackage implements IVirtualWaypointPackage
 {
     private IFlight flight;
-    private Map<Integer, IWaypointPackage> waypointPackagesForVirtualFlight = new HashMap<>();
     private List<VirtualWayPoint> virtualWaypoints = new ArrayList<>();
+    private DuplicatedWaypointSet duplicatedWaypointSet;
 
     public VirtualWaypointPackage(IFlight flight)
     {
         this.flight = flight;
+        this.duplicatedWaypointSet = new DuplicatedWaypointSet(flight);
     }
 
     @Override
@@ -35,8 +33,10 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     }
 
     @Override
-    public void write(BufferedWriter writer) throws PWCGIOException 
+    public void write(BufferedWriter writer) throws PWCGException 
     {
+        duplicatedWaypointSet.write(writer);
+        
         for (VirtualWayPoint virtualWaypoint : virtualWaypoints)
         {
             virtualWaypoint.write(writer);
@@ -52,26 +52,29 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     @Override
     public IWaypointPackage getWaypointsForPlane(int planeIndex)
     {
-        return this.waypointPackagesForVirtualFlight.get(planeIndex);
+        return duplicatedWaypointSet.getWayPointsForPlane(planeIndex);
     }
 
     @Override
     public List<BaseFlightMcu> getAllFlightPointsForPlane(PlaneMcu plane) throws PWCGException
     {
-        IWaypointPackage waypointPackage = waypointPackagesForVirtualFlight.get(plane.getIndex());
+        IWaypointPackage waypointPackage = duplicatedWaypointSet.getWayPointsForPlane(plane.getIndex());
         return waypointPackage.getAllFlightPoints();
     }
 
+    public DuplicatedWaypointSet getDuplicatedWaypointSet()
+    {
+        return duplicatedWaypointSet;
+    }
+
+    public void setDuplicatedWaypointSet(DuplicatedWaypointSet duplicatedWaypointSet)
+    {
+        this.duplicatedWaypointSet = duplicatedWaypointSet;
+    }
 
     private void generateDuplicateWaypoints() throws PWCGException
     {
-        int positionInFormation = 0;
-        for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
-        {
-            IWaypointPackage duplicatedWaypointPackage = flight.getWaypointPackage().duplicate(positionInFormation);
-            waypointPackagesForVirtualFlight.put(plane.getIndex(), duplicatedWaypointPackage);
-            ++positionInFormation;
-        }
+        duplicatedWaypointSet.create();
     }
 
     private void generateVirtualWaypoints() throws PWCGException
@@ -84,20 +87,17 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     {
         for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
         {
-            IWaypointPackage waypointPackage = waypointPackagesForVirtualFlight.get(plane.getIndex());
+            IWaypointPackage waypointPackage = duplicatedWaypointSet.getWayPointsForPlane(plane.getIndex());
             waypointPackage.finalize(plane);
         }
     }
 
     private void linkVirtualWaypointToMissionBegin() throws PWCGException
     {
-        PlaneMcu flightLeader = flight.getFlightPlanes().getFlightLeader();
-        IWaypointPackage waypointPackage = waypointPackagesForVirtualFlight.get(flightLeader.getIndex());
-        
         VirtualWayPoint firstVirtualWayPoint = virtualWaypoints.get(0);
         if (firstVirtualWayPoint != null)
         {
-            waypointPackage.triggerOnFlightActivation(firstVirtualWayPoint.getEntryPoint().getIndex());
+            duplicatedWaypointSet.getActivateMissionPointSet().setLinkToNextTarget(firstVirtualWayPoint.getEntryPoint().getIndex());
         }
     }
 }
