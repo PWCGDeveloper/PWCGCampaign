@@ -45,6 +45,10 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
         {
             flightType = getTransportFlightType(isPlayerFlight);
         }
+        else if (missionRole == Role.ROLE_RECON)
+        {
+            return getReconFlightType();
+        }
         else
         {
             throw new PWCGMissionGenerationException("No valid role for squadron: " + squadron.determineDisplayName(campaign.getDate()));
@@ -190,6 +194,18 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
     {
         FlightTypes flightType = FlightTypes.DIVE_BOMB;
 
+
+        return flightType;
+    }
+
+    private FlightTypes getReconFlightType()
+    {
+        FlightTypes flightType = FlightTypes.RECON;
+        int missionOdds = RandomNumberGenerator.getRandom(100);
+        if (missionOdds < 20)
+        {
+            flightType = FlightTypes.CONTACT_PATROL;
+        }
 
         return flightType;
     }

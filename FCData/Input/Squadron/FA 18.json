@@ -35,7 +35,7 @@
           },
           {
             "role": "ROLE_ARTILLERY_SPOT",
-            "weight": 30
+            "weight": 10
           }
         ]
       }

@@ -21,23 +21,24 @@ import pwcg.mission.ground.vehicle.VehicleClass;
 public class AirfieldTargetGroup extends GroundUnit
 {
     protected Campaign campaign;
-    protected IAirfield airfield;
+    protected IAirfield targetAirfield;
 
-	public AirfieldTargetGroup(Campaign campaign, GroundUnitInformation pwcgGroundUnitInformation) 
+	public AirfieldTargetGroup(Campaign campaign, IAirfield targetAirfield, GroundUnitInformation pwcgGroundUnitInformation) 
 	{
         super(VehicleClass.Truck, pwcgGroundUnitInformation);
         this.campaign = campaign;
+        this.targetAirfield = targetAirfield;
 	}
 
     public IAirfield getAirfield()
     {
-        return airfield;
+        return targetAirfield;
     }
 
     public void createAirfield() throws PWCGException  
 	{
         AirfieldManager airfieldManager = PWCGContext.getInstance().getCurrentMap().getAirfieldManager();
-        this.airfield = airfieldManager.getAirfieldFinder().findClosestAirfield(pwcgGroundUnitInformation.getPosition());
+        this.targetAirfield = airfieldManager.getAirfieldFinder().findClosestAirfield(pwcgGroundUnitInformation.getPosition());
 	}
 
     protected List<Coordinate> createSpawnerLocations() throws PWCGException 

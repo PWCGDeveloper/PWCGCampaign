@@ -24,7 +24,7 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
     {
         Role missionRole = squadron.getSquadronRoles().selectRoleForMission(campaign.getDate());
 
-        if (missionRole == Role.ROLE_BOMB || missionRole == Role.ROLE_ARTILLERY_SPOT || missionRole == Role.ROLE_RECON)
+        if (missionRole == Role.ROLE_BOMB || missionRole == Role.ROLE_ARTILLERY_SPOT)
         {
             return getBomberFlightType();
         }
@@ -35,6 +35,10 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
         else if (missionRole == Role.ROLE_ATTACK)
         {
             return getAttackFlightType();
+        }
+        else if (missionRole == Role.ROLE_RECON)
+        {
+            return getReconFlightType();
         }
         else
         {
@@ -160,4 +164,17 @@ public class FCFlightTypeFactory implements IFlightTypeFactory
 
         return flightType;
     }
+
+    private FlightTypes getReconFlightType()
+    {
+        FlightTypes flightType = FlightTypes.RECON;
+        int missionOdds = RandomNumberGenerator.getRandom(100);
+        if (missionOdds < 20)
+        {
+            flightType = FlightTypes.CONTACT_PATROL;
+        }
+
+        return flightType;
+    }
+
 }
