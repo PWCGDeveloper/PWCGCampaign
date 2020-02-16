@@ -7,9 +7,12 @@ import java.util.List;
 
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IStaticPlane;
+import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjectPlacer;
 import pwcg.campaign.group.airfield.staticobject.AirfieldObjects;
+import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -210,21 +213,31 @@ public class Airfield extends FixedPosition implements IAirfield, Cloneable
     @Override
     public PWCGLocation getFakeAirfieldLocation() throws PWCGException
     {
-        Runway runway = selectRunway();
+        ConfigManagerCampaign configManager = PWCGContext.getInstance().getCampaign().getCampaignConfigManager();
+        if (configManager.getIntConfigParam(ConfigItemKeys.AllowAirStartsKey) == 2)
+        {
+            // The game sometimes seems to go funny if the airfield location is on the runway when
+            // doing cold starts, so move to the parking area instead
+            return getParkingLocation();
+        }
+        else
+        {
+            Runway runway = selectRunway();
 
-        PWCGLocation loc = new PWCGLocation();
-        Coordinate pos = new Coordinate();
-        pos.setXPos((runway.getStartPos().getXPos() + runway.getEndPos().getXPos()) / 2.0);
-        pos.setYPos((runway.getStartPos().getYPos() + runway.getEndPos().getYPos()) / 2.0);
-        pos.setZPos((runway.getStartPos().getZPos() + runway.getEndPos().getZPos()) / 2.0);
-        loc.setPosition(pos);
-        double runwayOrientation = MathUtils.calcAngle(runway.getStartPos(), runway.getEndPos());
-        // BoX seems to like the runway orientation to be an odd integer
-        runwayOrientation = Math.rint(runwayOrientation);
-        if ((runwayOrientation % 2) == 0)
-            runwayOrientation = MathUtils.adjustAngle(runwayOrientation, 1.0);
-        loc.setOrientation(new Orientation(runwayOrientation));
-        return loc;
+            PWCGLocation loc = new PWCGLocation();
+            Coordinate pos = new Coordinate();
+            pos.setXPos((runway.getStartPos().getXPos() + runway.getEndPos().getXPos()) / 2.0);
+            pos.setYPos((runway.getStartPos().getYPos() + runway.getEndPos().getYPos()) / 2.0);
+            pos.setZPos((runway.getStartPos().getZPos() + runway.getEndPos().getZPos()) / 2.0);
+            loc.setPosition(pos);
+            double runwayOrientation = MathUtils.calcAngle(runway.getStartPos(), runway.getEndPos());
+            // BoX seems to like the runway orientation to be an odd integer
+            runwayOrientation = Math.rint(runwayOrientation);
+            if ((runwayOrientation % 2) == 0)
+                runwayOrientation = MathUtils.adjustAngle(runwayOrientation, 1.0);
+            loc.setOrientation(new Orientation(runwayOrientation));
+            return loc;
+        }
     }
 
     private Runway selectRunway() throws PWCGException
