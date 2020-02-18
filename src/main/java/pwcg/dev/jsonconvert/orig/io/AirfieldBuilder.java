@@ -39,7 +39,7 @@ public class AirfieldBuilder
 
     private void getAirfieldNames (String mapName) throws Exception 
     {
-        String filename = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\RhineAirfieldMap2.Mission";     
+        String filename = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\BodenplatteAirfields2.Mission";     
         readGroundObjectsFromFile(filename);
         readRunwayLocations(filename);
         buildBoSAirfields();
@@ -235,6 +235,6 @@ public class AirfieldBuilder
         airfieldDescriptorSet = new AirfieldDescriptorSet();
         airfieldDescriptorSet.setLocationSetName("Airfields");
         airfieldDescriptorSet.setLocations(locations);
-        AirfieldDescriptorIOJson.writeJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "AirfieldLocations.json", airfieldDescriptorSet);
+        AirfieldDescriptorIOJson.writeJson(PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\", "AirfieldLocations2.json", airfieldDescriptorSet);
     }
 }

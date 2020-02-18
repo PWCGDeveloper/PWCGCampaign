@@ -12,15 +12,16 @@
     }
   ],
   "airfields": {
-    "19440901": "Chievres",
-    "19441001": "Evere",
-    "19441101": "Deurne",
+    "19440901": "Nivelles",
+    "19441001": "LeCulot East",
+    "19441101": "Eindhoven",
     "19441220": "Chievres",
     "19441225": "Chievres",
     "19441229": "Melsbroek",
     "19450207": "LeCulot",
-    "19450310": "St.Trond",
-    "19450404": "Aachen"
+    "19450310": "Aachen",
+    "19450404": "Koln-Butzweilerhof",
+    "19450503": "Koln-Wahn"
   },
   "skins": [
     {

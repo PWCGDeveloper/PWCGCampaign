@@ -24,7 +24,7 @@ public class GroundObjectsFile
     
     public void readGroundObjects (String mapName) throws PWCGException 
     {
-        String filename = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\GroundObjects.config";     
+        String filename = PWCGContext.getInstance().getDirectoryManager().getPwcgInputDir() + mapName + "\\Rheinland_Airfields.Group";     
         readGroundObjectsFromFile(filename);
 
     }

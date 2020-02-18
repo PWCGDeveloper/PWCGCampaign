@@ -12,7 +12,7 @@
     }
   ],
   "airfields": {
-    "19440901": "St.Trond",
+    "19440901": "Bierset",
     "19441001": "Ophoven",
     "19441101": "Ophoven",
     "19441220": "PetitBrogel",
@@ -20,7 +20,8 @@
     "19441229": "PetitBrogel",
     "19450207": "Eindhoven",
     "19450310": "Ophoven",
-    "19450404": "Koln-Ostheim"
+    "19450404": "Koln-Ostheim",
+    "19450503": "Limburg-Linter"
   },
   "skins": [],
   "squadHistory": {

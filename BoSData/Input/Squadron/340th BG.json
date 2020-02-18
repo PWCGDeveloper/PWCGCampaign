@@ -12,15 +12,16 @@
     }
   ],
   "airfields": {
-    "19440901": "Chievres",
-    "19441001": "Melsbroek",
-    "19441101": "LeCulot",
-    "19441220": "Evere",
+    "19440901": "Florennes",
+    "19441001": "Diest",
+    "19441101": "Diest",
+    "19441220": "St.Trond",
     "19441225": "Deurne",
     "19441229": "Evere",
     "19450207": "St.Trond",
-    "19450310": "St.Trond",
-    "19450404": "Kelz"
+    "19450310": "Aachen",
+    "19450404": "Koln-Wahn",
+    "19450503": "Eudenbach/Asbach"
   },
   "skins": [
     {

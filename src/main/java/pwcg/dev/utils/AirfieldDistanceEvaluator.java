@@ -147,7 +147,7 @@ public class AirfieldDistanceEvaluator
                 System.out.println("\nSquadron " + squadron.getSquadronId() + " at field " + squadronField.getName() + " on date " + dateNow + reason);
                 int distance = AirfieldReporter.getDistanceToFront(squadronField, sideSquadrons, dateNow);
                 System.out.println(squadronField.getName() + "   Km to front: " + distance);
-                AirfieldFinder.recommendBestMatch(squadron, dateNow);
+                AirfieldBestMMatchFinder.recommendBestMatch(squadron, dateNow);
             }
         }
     }
