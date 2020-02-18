@@ -47,7 +47,7 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
         }
         else if (missionRole == Role.ROLE_RECON)
         {
-            return getReconFlightType();
+            return getReconFlightType(squadron);
         }
         else
         {
@@ -198,15 +198,38 @@ public class BoSFlightTypeFactory implements IFlightTypeFactory
         return flightType;
     }
 
-    private FlightTypes getReconFlightType()
+    private FlightTypes getReconFlightType(Squadron squadron) throws PWCGException
     {
         FlightTypes flightType = FlightTypes.RECON;
         int missionOdds = RandomNumberGenerator.getRandom(100);
-        if (missionOdds < 20)
+        
+        int contactPatrolOdds = determineContactPatrolOdds(squadron);
+        if (missionOdds < contactPatrolOdds)
         {
             flightType = FlightTypes.CONTACT_PATROL;
         }
 
         return flightType;
+    }
+
+    private int determineContactPatrolOdds(Squadron squadron) throws PWCGException
+    {
+        int contactPatrolOdds = 20;
+        if (squadron.isSquadronThisPrimaryRole(campaign.getDate(), Role.ROLE_FIGHTER))
+        {
+            if (squadron.getCountry().getSide() == Side.AXIS)
+            {
+                contactPatrolOdds = 100;
+            }
+            else
+            {
+                contactPatrolOdds = 50;
+            }
+        }
+        else if (squadron.isSquadronThisPrimaryRole(campaign.getDate(), Role.ROLE_ATTACK))
+        {
+            contactPatrolOdds = 100;
+        }
+        return contactPatrolOdds;
     }
 }
