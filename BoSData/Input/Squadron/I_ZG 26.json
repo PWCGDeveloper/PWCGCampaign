@@ -81,6 +81,10 @@
         "endDate": "19440901",
         "weightedRoles": [
           {
+            "role": "ROLE_RECON",
+            "weight": 10
+          },
+          {
             "role": "ROLE_ATTACK",
             "weight": 65
           },
