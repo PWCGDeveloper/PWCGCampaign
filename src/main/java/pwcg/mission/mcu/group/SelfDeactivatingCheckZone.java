@@ -18,7 +18,7 @@ import pwcg.mission.mcu.McuValidator;
 
 
 
-public class SelfDeactivatingCheckZone 
+public class SelfDeactivatingCheckZone implements ICheckZone
 {
 	private String name = "Self Deactivating CZ";
 	private String desc = "Self Deactivating CZ";
@@ -76,6 +76,7 @@ public class SelfDeactivatingCheckZone
         deactivateCZ.setTarget(activateCZTimer.getIndex());    
     }
     
+    @Override
     public void write(BufferedWriter writer) throws PWCGIOException
     {
         try
@@ -108,31 +109,37 @@ public class SelfDeactivatingCheckZone
         }
     }
     
+    @Override
     public int getActivateEntryPoint()
     {
         return activateCZTimer.getIndex();
     }
 
+    @Override
     public int getDeactivateEntryPoint()
     {
         return deactivateCZTimer.getIndex();
     }
 
+    @Override
     public void setCheckZoneTarget(int targetMcuIndex)
     {
         checkZone.setTarget(targetMcuIndex);
     }
 
+    @Override
     public void setCheckZoneTriggerObject(int objectMcuIndex)
     {
         checkZone.setObject(objectMcuIndex);
     }
 
+    @Override
     public void setCheckZoneTriggerCoalition(Coalition coalition)
     {
         checkZone.triggerCheckZoneByCoalition(coalition);
     }
 
+    @Override
     public void setCheckZoneTriggerCoalitions(List<Coalition> coalitions)
     {
         checkZone.triggerCheckZoneByCoalitions(coalitions);
@@ -143,6 +150,7 @@ public class SelfDeactivatingCheckZone
         return checkZone;
     }
 
+    @Override
     public void validate() throws PWCGException
     {
         if (!McuValidator.hasTarget(activateCZTimer, checkZone.getIndex()))
@@ -171,6 +179,16 @@ public class SelfDeactivatingCheckZone
         }
     }
 
+    @Override
+    public void validateTarget(int entryPoint) throws PWCGException
+    {
+        if (!McuValidator.hasTarget(checkZone, entryPoint))
+        {
+            throw new PWCGException("Unit not linked to check zone");
+        }
+    }
+
+    @Override
     public void triggerOnPlayerProximity(Mission mission) throws PWCGException
     {
         checkZone.triggerCheckZoneByMultipleObjects(mission.getMissionFlightBuilder().getPlayersInMission());        
