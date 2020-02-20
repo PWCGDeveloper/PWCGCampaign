@@ -57,7 +57,7 @@ public class McuCheckZone extends BaseFlightMcu
         this.setObject(objectId);
     }
 
-	public void triggerCheckZoneByMultipleObjects(List<Integer> playerPlaneIds) throws PWCGException 
+	public void triggerCheckZoneByMultipleObjects(Iterable<Integer> playerPlaneIds) throws PWCGException
     {       
 		planeCoalitions.clear();
 		for (int playerPlaneId : playerPlaneIds)
@@ -131,4 +131,9 @@ public class McuCheckZone extends BaseFlightMcu
 	{
         planeCoalitions.add(coalition);
 	}
+
+    public List<Coalition> getPlaneCoalitions()
+    {
+        return planeCoalitions;
+    }
 }

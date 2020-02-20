@@ -4,15 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.campaign.api.IStaticPlane;
+import pwcg.campaign.api.Side;
+import pwcg.core.exception.PWCGException;
+import pwcg.mission.Mission;
+import pwcg.mission.ground.org.GroundUnitCollection;
+import pwcg.mission.ground.org.GroundUnitCollectionData;
+import pwcg.mission.ground.org.GroundUnitCollectionType;
+import pwcg.mission.ground.org.IGroundUnit;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.IVehicle;
+import pwcg.mission.mcu.Coalition;
+import pwcg.mission.target.TargetType;
 
 public class AirfieldObjects
 {
 	private List<IVehicle> airfieldObjects = new ArrayList<IVehicle>();
 	private List<IStaticPlane> staticPlanes = new ArrayList<IStaticPlane>();
-    private List<IGroundUnitCollection> aaaForAirfield = new ArrayList<>();
-    private List<IGroundUnitCollection> searchLightsForAirfield = new ArrayList<>();
+    private IGroundUnitCollection vehiclesForAirfield = new GroundUnitCollection(null, null);
+
+    public AirfieldObjects(Side airfieldSide)
+    {
+        GroundUnitCollectionData groundUnitCollectionData = new GroundUnitCollectionData(
+                GroundUnitCollectionType.INFANTRY_GROUND_UNIT_COLLECTION,
+                "Airfield vehicles",
+                TargetType.TARGET_AAA,
+                Coalition.getCoalitionsForSide(airfieldSide.getOppositeSide()));
+        vehiclesForAirfield = new GroundUnitCollection ("Airfield vehicles", groundUnitCollectionData);
+    }
 
 	public List<IVehicle> getAirfieldObjects()
 	{
@@ -34,23 +52,23 @@ public class AirfieldObjects
 		this.staticPlanes.add(staticPlane);
 	}
 
-    public List<IGroundUnitCollection> getAaaForAirfield()
+    public IGroundUnitCollection getVehiclesForAirfield()
     {
-        return aaaForAirfield;
+        return vehiclesForAirfield;
     }
 
-    public void addAaaForAirfield(IGroundUnitCollection aaaMg)
+    public void addVehiclesForAirfield(IGroundUnitCollection aaaMg)
     {
-        this.aaaForAirfield.add(aaaMg);
+        vehiclesForAirfield.merge(aaaMg);
     }
 
-    public List<IGroundUnitCollection> getSearchLightsForAirfield()
-    {
-        return searchLightsForAirfield;
+    public void addVehiclesForAirfield(IGroundUnit airfieldGroup) {
+        vehiclesForAirfield.addGroundUnit(airfieldGroup);
     }
 
-    public void addSearchlightsForAirfield(IGroundUnitCollection aaa)
+    public void finish(Mission mission) throws PWCGException
     {
-        this.searchLightsForAirfield.add(aaa);
+        vehiclesForAirfield.finishGroundUnitCollection();
+        vehiclesForAirfield.triggerOnPlayerOrCoalitionProximity(mission);
     }
 }

@@ -2,7 +2,9 @@ package pwcg.mission.mcu.group;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
@@ -10,6 +12,8 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
+import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuActivate;
 import pwcg.mission.mcu.McuCheckZone;
@@ -206,6 +210,26 @@ public class InOutCheckZone implements ICheckZone
     {
         inZone.triggerCheckZoneByMultipleObjects(mission.getMissionFlightBuilder().getPlayersInMission());
         outZone.triggerCheckZoneByMultipleObjects(mission.getMissionFlightBuilder().getPlayersInMission());
+    }
+
+    @Override
+    public void triggerOnPlayerOrCoalitionProximity(Mission mission) throws PWCGException {
+        List<Coalition> coalitions = inZone.getPlaneCoalitions();
+        Set<Integer> triggerPlanes = new HashSet<>();
+        for (Coalition coalition : coalitions)
+        {
+            List<IFlight> flights = mission.getMissionFlightBuilder().getAllFlightsForSide(coalition.getSide());
+            for (IFlight flight : flights)
+            {
+                for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
+                {
+                    triggerPlanes.add(plane.getEntity().getIndex());
+                }
+            }
+        }
+        triggerPlanes.addAll(mission.getMissionFlightBuilder().getPlayersInMission());
+        inZone.triggerCheckZoneByMultipleObjects(triggerPlanes);
+        outZone.triggerCheckZoneByMultipleObjects(triggerPlanes);
     }
 
     public int getActivateEntryPoint()

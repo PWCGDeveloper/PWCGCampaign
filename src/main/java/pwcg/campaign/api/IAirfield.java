@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.campaign.group.airfield.hotspot.HotSpot;
+import pwcg.campaign.group.airfield.staticobject.AirfieldObjects;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
@@ -74,6 +75,8 @@ public interface IAirfield extends IFixedPosition
     public boolean isNearRunwayOrTaxiway(Coordinate pos) throws PWCGException;
 
     public Date getStartDate();
+
+    public AirfieldObjects getAirfieldObjects();
 
     public List<HotSpot> getNearbyHotSpots() throws PWCGException;
 

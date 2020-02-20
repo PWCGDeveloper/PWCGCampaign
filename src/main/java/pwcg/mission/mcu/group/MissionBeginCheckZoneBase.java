@@ -63,4 +63,9 @@ public class MissionBeginCheckZoneBase
         checkZone.triggerOnPlayerProximity(mission);
     }
 
+    public void triggerOnPlayerOrCoalitionProximity(Mission mission) throws PWCGException
+    {
+        checkZone.triggerOnPlayerOrCoalitionProximity(mission);
+    }
+
 }
