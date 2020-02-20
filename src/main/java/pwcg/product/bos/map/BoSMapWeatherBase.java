@@ -1,5 +1,6 @@
 package pwcg.product.bos.map;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import pwcg.campaign.context.PWCGContext;
@@ -75,10 +76,14 @@ public abstract class BoSMapWeatherBase extends MapWeather
      * @param frontMap
      * @return
      */
-    protected void setTemperature(int month, FrontMapIdentifier frontMap)
+    protected void setTemperature(Date date, FrontMapIdentifier frontMap)
     {
         temperature = 25;
         
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int month = calendar.get(Calendar.MONTH) + 1;
+
         if (month == 1)
         {
             temperature = -10 +  RandomNumberGenerator.getRandom(15);

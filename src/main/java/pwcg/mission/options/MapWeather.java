@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
@@ -40,6 +42,8 @@ public abstract class MapWeather
 	    this.mission = mission;
 	    int weatherSeverity = createCloud();
 	    createWindDirection();
+
+	    setTemperature(mission.getCampaign().getDate(), PWCGContext.getInstance().getCurrentMap().getMapIdentifier());
         createWind(weatherSeverity);
     }
 
@@ -428,7 +432,9 @@ public abstract class MapWeather
 		    }
 		}
 	}
-	
+
+    protected abstract void setTemperature(Date date, FrontMapIdentifier frontMap);
+
 	public int getCloudLevel() {
 		return cloudLevel;
 	}
