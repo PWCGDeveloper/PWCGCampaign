@@ -85,7 +85,7 @@ public class FakeAirfield extends FixedPosition implements Cloneable
             
             super.write(writer);
                         
-            writer.write("    Callsign = " + callsign.getNum() + ";");
+            writer.write("    Callsign = " + callsign.getNum(country) + ";");
             writer.newLine();
             writer.write("    Callnum = " + callnum + ";");
             writer.newLine();

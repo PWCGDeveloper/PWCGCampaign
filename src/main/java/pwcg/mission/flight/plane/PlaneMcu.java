@@ -277,7 +277,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
             IProductSpecificConfiguration productSpecificConfiguration = ProductSpecificConfigurationFactory.createProductSpecificConfiguration();
             if (productSpecificConfiguration.useCallSign())
             {
-                writer.write("  Callsign = " + callsign.getNum() + ";");
+                writer.write("  Callsign = " + callsign.getNum(country.getCountry()) + ";");
                 writer.newLine();
                 writer.write("  Callnum = " + callnum + ";");
                 writer.newLine();
