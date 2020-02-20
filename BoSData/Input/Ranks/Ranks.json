@@ -116,7 +116,7 @@
         {
             "rankId": 1,
             "rankName": "Captain",
-            "rankAbbrev": "Cpt",
+            "rankAbbrev": "Capt",
             "rankCountry": 102,
             "rankService": 10102
         },
@@ -131,6 +131,13 @@
             "rankId": 3,
             "rankName": "2nd Lieutenant",
             "rankAbbrev": "2nd Lt",
+            "rankCountry": 102,
+            "rankService": 10102
+        },
+        {
+            "rankId": 4,
+            "rankName": "Flight Officer",
+            "rankAbbrev": "Flt O",
             "rankCountry": 102,
             "rankService": 10102
         },
@@ -159,6 +166,13 @@
             "rankId": 3,
             "rankName": "Pilot Officer",
             "rankAbbrev": "Plt Off",
+            "rankCountry": 103,
+            "rankService": 10103
+        },
+        {
+            "rankId": 4,
+            "rankName": "Warrant Officer",
+            "rankAbbrev": "Wt Off",
             "rankCountry": 103,
             "rankService": 10103
         }
