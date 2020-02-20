@@ -14,26 +14,46 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.Logger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
+import pwcg.mission.flight.FlightData;
 import pwcg.mission.flight.plane.PlaneMcu;
 
 public class MissionSkinGenerator 
 {
 
-    public void setSkinForPlayerSquadron(SquadronMember pilot, Squadron squad, PlaneMcu plane, Date date) 
+    public void assignSkinsForFlight(FlightData flight) throws PWCGException
+    {
+        if (flight.getFlightInformation().isPlayerFlight())
+        {
+            for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
+            {
+                SquadronMember squadronMember = plane.getPilot();
+                setSkinForPlayerSquadron(squadronMember, flight.getFlightInformation().getSquadron(), plane, flight.getCampaign().getDate());
+            }
+        }
+        else
+        {
+            for (PlaneMcu plane : flight.getFlightPlanes().getPlanes())
+            {
+                setAISkin(flight.getFlightInformation().getSquadron(), plane, flight.getCampaign().getDate());
+            }
+        }
+    }
+
+    private void setSkinForPlayerSquadron(SquadronMember pilot, Squadron squad, PlaneMcu plane, Date date)
     {
         plane.setPlaneSkin(null);
         setSquadronSkin(squad, plane, date);
         setUserAssignedPilotSkin(pilot, plane);
     }
 
-    public void setSkinForAce(Ace pilot, Squadron squad, PlaneMcu plane, Date date) 
+    private void setSkinForAce(Ace pilot, Squadron squad, PlaneMcu plane, Date date)
     {
         plane.setPlaneSkin(null);
         setSquadronSkin(squad, plane, date);
         setUserAssignedPilotSkin(pilot, plane);
     }
 
-    public void setAISkin(Squadron squad, PlaneMcu plane, Date date) throws PWCGException 
+    private void setAISkin(Squadron squad, PlaneMcu plane, Date date) throws PWCGException 
     {        
         // Start with setting the squadron livery
         setSquadronSkin(squad, plane, date);
