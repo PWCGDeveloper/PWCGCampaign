@@ -19,7 +19,7 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
     private WaypointPriority priority = WaypointPriority.PRIORITY_LOW;
 
     public static int TARGET_AREA = 500;
-    public static int INITIAL_CLIMB_AREA = 200;
+    public static int INITIAL_CLIMB_AREA = 1000;
     public static int LAND_AREA = 300;
     public static int CLIMB_AREA = 500;
     public static int START_AREA = 500;
