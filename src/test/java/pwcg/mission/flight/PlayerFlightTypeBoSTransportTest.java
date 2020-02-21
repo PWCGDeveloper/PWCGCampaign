@@ -14,6 +14,8 @@ import pwcg.mission.flight.paradrop.ParaDropFlight;
 import pwcg.mission.flight.transport.TransportFlight;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.VirtualWaypointPackageValidator;
+import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.FlightActivateValidator;
 import pwcg.mission.target.TargetType;
@@ -40,7 +42,9 @@ public class PlayerFlightTypeBoSTransportTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.PARATROOP_DROP);
         ParaDropFlight flight = (ParaDropFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-         mission.finalizeMission();
+        mission.finalizeMission();
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
 
         FlightActivateValidator.validate(flight);
 
@@ -61,7 +65,9 @@ public class PlayerFlightTypeBoSTransportTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.CARGO_DROP);
         ParaDropFlight flight = (ParaDropFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-         mission.finalizeMission();
+        mission.finalizeMission();
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
 
         FlightActivateValidator.validate(flight);
 
@@ -82,7 +88,9 @@ public class PlayerFlightTypeBoSTransportTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.TRANSPORT);
         TransportFlight flight = (TransportFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-         mission.finalizeMission();
+        mission.finalizeMission();
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
 
         FlightActivateValidator.validate(flight);
 
@@ -101,7 +109,9 @@ public class PlayerFlightTypeBoSTransportTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB);
         BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-         mission.finalizeMission();
+        mission.finalizeMission();
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
 
         FlightActivateValidator.validate(flight);
 
@@ -122,7 +132,9 @@ public class PlayerFlightTypeBoSTransportTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.LOW_ALT_BOMB);
         BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-         mission.finalizeMission();
+        mission.finalizeMission();
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
 
         FlightActivateValidator.validate(flight);
 

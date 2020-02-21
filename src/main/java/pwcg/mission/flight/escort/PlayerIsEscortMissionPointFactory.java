@@ -26,7 +26,8 @@ public class PlayerIsEscortMissionPointFactory
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {
         missionPointSet = new MissionPointEscortWaypointSet(EscortSequenceConnect.CONNECT_ESCORT_SEQUENCE);
-        
+        missionPointSet.addWaypointBefore(ingressWaypoint);
+   
         McuWaypoint rendezvousWaypoint = createRendezvousWaypoint();
         missionPointSet.addWaypointBefore(rendezvousWaypoint);
                

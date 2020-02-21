@@ -15,8 +15,11 @@ import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.FlightActivateValidator;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
+import pwcg.mission.flight.validate.PlaneRtbValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.mission.flight.validate.VirtualWaypointPackageValidator;
+import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
@@ -42,6 +45,9 @@ public class PlayerFlightTypeBoSBombTest
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB);
         BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         mission.finalizeMission();
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
+        PlaneRtbValidator.verifyPlaneRtbEnabled(mission);
 
         FlightActivateValidator.validate(flight);
 

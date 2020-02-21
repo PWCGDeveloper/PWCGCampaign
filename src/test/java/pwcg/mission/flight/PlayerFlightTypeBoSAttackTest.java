@@ -15,8 +15,11 @@ import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
+import pwcg.mission.flight.validate.PlaneRtbValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.mission.flight.validate.VirtualWaypointPackageValidator;
+import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
@@ -41,10 +44,12 @@ public class PlayerFlightTypeBoSAttackTest
     {
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK);
-
         GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         mission.finalizeMission();
-        
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
+        PlaneRtbValidator.verifyPlaneRtbEnabled(mission);
+
         GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
         groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());

@@ -13,8 +13,8 @@ import pwcg.mission.flight.FlightTypes;
 public class BoSFlightTypeCoopFactory implements IFlightTypeFactory
 {
     protected Campaign campaign;
-    
-    public BoSFlightTypeCoopFactory (Campaign campaign) 
+
+    public BoSFlightTypeCoopFactory(Campaign campaign)
     {
         this.campaign = campaign;
     }
@@ -44,6 +44,10 @@ public class BoSFlightTypeCoopFactory implements IFlightTypeFactory
         {
             return getTransportFlightType(isPlayerFlight);
         }
+        else if (missionRole == Role.ROLE_RECON)
+        {
+            return getReconFlightType(isPlayerFlight);
+        }
         else
         {
             throw new PWCGMissionGenerationException("No valid role for squadron: " + squadron.determineDisplayName(campaign.getDate()));
@@ -63,26 +67,18 @@ public class BoSFlightTypeCoopFactory implements IFlightTypeFactory
         if (squadron.determineSquadronCountry(campaign.getDate()).getSideNoNeutral() == Side.ALLIED)
         {
             offensiveMissionOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedOffensiveMissionKey);
-            interceptMissionOdds = offensiveMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedInterceptMissionKey);
-            patrolMissionOdds = interceptMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedPatrolMissionKey);
-            lowAltPatrolMissionOdds = patrolMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedLowAltPatrolMissionKey);
-            lowAltCapMissionOdds = lowAltPatrolMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedLowAltCapMissionKey);
+            interceptMissionOdds = offensiveMissionOdds + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedInterceptMissionKey);
+            patrolMissionOdds = interceptMissionOdds + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedPatrolMissionKey);
+            lowAltPatrolMissionOdds = patrolMissionOdds + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedLowAltPatrolMissionKey);
+            lowAltCapMissionOdds = lowAltPatrolMissionOdds + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AlliedLowAltCapMissionKey);
         }
         else
         {
             offensiveMissionOdds = campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisOffensiveMissionKey);
-            interceptMissionOdds = offensiveMissionOdds
-                            + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisInterceptMissionKey);
-            patrolMissionOdds = interceptMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisPatrolMissionKey);
-            lowAltPatrolMissionOdds = patrolMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisLowAltPatrolMissionKey);
-            lowAltCapMissionOdds = lowAltPatrolMissionOdds
-                    + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisLowAltCapMissionKey);
+            interceptMissionOdds = offensiveMissionOdds + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisInterceptMissionKey);
+            patrolMissionOdds = interceptMissionOdds + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisPatrolMissionKey);
+            lowAltPatrolMissionOdds = patrolMissionOdds + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisLowAltPatrolMissionKey);
+            lowAltCapMissionOdds = lowAltPatrolMissionOdds + campaign.getCampaignConfigManager().getIntConfigParam(ConfigItemKeys.AxisLowAltCapMissionKey);
         }
 
         int missionOdds = RandomNumberGenerator.getRandom(lowAltCapMissionOdds);
@@ -114,7 +110,6 @@ public class BoSFlightTypeCoopFactory implements IFlightTypeFactory
 
         return flightType;
     }
-    
 
     private FlightTypes getTransportFlightType(boolean isPlayerFlight)
     {
@@ -122,7 +117,7 @@ public class BoSFlightTypeCoopFactory implements IFlightTypeFactory
         {
             return FlightTypes.TRANSPORT;
         }
-        
+
         FlightTypes flightType = FlightTypes.TRANSPORT;
         int missionOdds = RandomNumberGenerator.getRandom(100);
 
@@ -145,16 +140,14 @@ public class BoSFlightTypeCoopFactory implements IFlightTypeFactory
         return flightType;
     }
 
-
-    private FlightTypes getAttackFlightType() throws PWCGException 
+    private FlightTypes getAttackFlightType() throws PWCGException
     {
         FlightTypes flightType = FlightTypes.GROUND_ATTACK;
 
         return flightType;
     }
 
-    private FlightTypes getBomberFlightType() 
-                        throws PWCGException 
+    private FlightTypes getBomberFlightType() throws PWCGException
     {
         FlightTypes flightType = FlightTypes.BOMB;
         int missionOdds = RandomNumberGenerator.getRandom(100);
@@ -166,12 +159,16 @@ public class BoSFlightTypeCoopFactory implements IFlightTypeFactory
         return flightType;
     }
 
-    private FlightTypes getDiveBomberFlightType() 
-                        throws PWCGException 
+    private FlightTypes getDiveBomberFlightType() throws PWCGException
     {
         FlightTypes flightType = FlightTypes.DIVE_BOMB;
+        return flightType;
+    }
+    
 
-
+    private FlightTypes getReconFlightType(boolean isPlayerFlight)
+    {
+        FlightTypes flightType = FlightTypes.RECON;
         return flightType;
     }
 }

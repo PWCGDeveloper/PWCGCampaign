@@ -26,6 +26,8 @@ public class BombingWaypointFactory
     
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {        
+        missionPointSet.addWaypointBefore(ingressWaypoint);
+
         createTargetWaypoints(ingressWaypoint.getPosition());
         
         AirGroundAttackMcuSequence attackMcuSequence = createAttackArea();

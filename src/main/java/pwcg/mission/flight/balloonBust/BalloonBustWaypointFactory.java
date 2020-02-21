@@ -21,6 +21,8 @@ public class BalloonBustWaypointFactory
 
     public IMissionPointSet createWaypoints(McuWaypoint ingressWaypoint) throws PWCGException
     {
+        missionPointSet.addWaypoint(ingressWaypoint);
+
         McuWaypoint balloonBustWP = createTargetWaypoints();
         missionPointSet.addWaypoint(balloonBustWP);
 

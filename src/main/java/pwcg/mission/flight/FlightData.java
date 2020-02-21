@@ -101,7 +101,8 @@ public class FlightData
 
         if (flightInformation.isVirtual())
         {
-            virtualWaypointPackage.buildVirtualWaypoints();                    
+            virtualWaypointPackage.buildVirtualWaypoints();
+            virtualWaypointPackage.addDelayForPlayerDelay(flightInformation.getMission());
         }        
     }
 

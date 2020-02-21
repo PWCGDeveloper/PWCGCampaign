@@ -109,7 +109,7 @@ public final class VirtualWayPoint
         vwpTimer.setPosition(vwpCoordinate.getPosition().copy());
         vwpTimer.setName("VWP Timer");
         vwpTimer.setDesc("VWP Timer");
-        vwpTimer.setTimer(1);
+        vwpTimer.setTimer(vwpCoordinate.getWaypointWaitTimeSeconds());
 
         masterSpawnTimer.setPosition(vwpCoordinate.getPosition().copy());
         masterSpawnTimer.setName("VWP Spawn Timer");
@@ -250,6 +250,15 @@ public final class VirtualWayPoint
             throw new PWCGIOException(e.getMessage());
         }
     }
+    
+
+    public void addAdditionalTime(int additionalTime)
+    {
+        int vwpTimerTime = vwpTimer.getTimer();
+        vwpTimerTime += additionalTime;
+        vwpTimer.setTimer(vwpTimerTime);
+    }
+
 
     public McuTimer getEntryPoint()
     {
@@ -327,7 +336,6 @@ public final class VirtualWayPoint
     public McuDeactivate getStopNextVwp()
     {
         return stopNextVwp;
-    }
-    
+    }    
     
 }

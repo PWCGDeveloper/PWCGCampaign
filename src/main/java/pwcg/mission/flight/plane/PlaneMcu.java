@@ -8,6 +8,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.IProductSpecificConfiguration;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.plane.EquippedPlane;
@@ -77,6 +78,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
     
     public PlaneMcu()
     {
+        disableAirRtbForFCDueToBug();
     }
     
     public PlaneMcu(Campaign campaign, EquippedPlane equippedPlane, ICountry country, SquadronMember pilot)
@@ -92,6 +94,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         startInAir = FlightStartPosition.START_IN_AIR;
         
         initializeAttackEntity();
+        disableAirRtbForFCDueToBug();
     }
     
     public void populateEntity(IFlight flight, PlaneMcu flightLeader)
@@ -558,4 +561,19 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         // Removed because it deletes planes accidentally
         return null;
     }
+
+    public int getAiRTBDecision()
+    {
+        return aiRTBDecision;
+    }
+    
+
+    private void disableAirRtbForFCDueToBug()
+    {
+        if (PWCGContext.getProduct() == PWCGProduct.FC)
+        {
+            aiRTBDecision = 0;
+        }
+    }
+
 }

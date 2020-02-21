@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.core.exception.PWCGException;
+import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.virtual.VirtualWaypointGenerator;
@@ -30,6 +31,17 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
         generateVirtualWaypoints();
         finalizeWaypointPackages();
         linkVirtualWaypointToMissionBegin();
+    }
+
+    @Override
+    public void addDelayForPlayerDelay(Mission mission) throws PWCGException
+    {
+        VirtualAdditionalTimeCalculator additionalTimeCalculator = new VirtualAdditionalTimeCalculator();
+        int additionalTime = additionalTimeCalculator.addDelayForPlayerDelay(mission, flight);
+        if (additionalTime > 30)
+        {
+            virtualWaypoints.get(0).addAdditionalTime(additionalTime);
+        }
     }
 
     @Override
@@ -65,11 +77,6 @@ public class VirtualWaypointPackage implements IVirtualWaypointPackage
     public DuplicatedWaypointSet getDuplicatedWaypointSet()
     {
         return duplicatedWaypointSet;
-    }
-
-    public void setDuplicatedWaypointSet(DuplicatedWaypointSet duplicatedWaypointSet)
-    {
-        this.duplicatedWaypointSet = duplicatedWaypointSet;
     }
 
     private void generateDuplicateWaypoints() throws PWCGException

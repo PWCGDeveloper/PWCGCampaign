@@ -26,9 +26,12 @@ import pwcg.mission.flight.validate.EscortForPlayerValidator;
 import pwcg.mission.flight.validate.GroundAttackFlightValidator;
 import pwcg.mission.flight.validate.GroundUnitValidator;
 import pwcg.mission.flight.validate.PatrolFlightValidator;
+import pwcg.mission.flight.validate.PlaneRtbValidator;
 import pwcg.mission.flight.validate.PlayerEscortFlightValidator;
 import pwcg.mission.flight.validate.PositionEvaluator;
 import pwcg.mission.flight.validate.VirtualWaypointPackageValidator;
+import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.target.TargetCategory;
 import pwcg.mission.target.TargetDefinition;
 import pwcg.mission.target.TargetType;
@@ -58,10 +61,12 @@ public class PlayerFlightFCTypeTest
 
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.GROUND_ATTACK);
-
         GroundAttackFlight flight = (GroundAttackFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         mission.finalizeMission();
-		
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
+        PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
+
 		GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
 		groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
@@ -86,12 +91,15 @@ public class PlayerFlightFCTypeTest
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BOMB);
         BombingFlight flight = (BombingFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         mission.finalizeMission();
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
 
 		GroundAttackFlightValidator groundAttackFlightValidator = new GroundAttackFlightValidator();
 		groundAttackFlightValidator.validateGroundAttackFlight(flight);
         validateTargetDefinition(flight.getFlightInformation().getTargetDefinition());
         assert(flight.getFlightType() == FlightTypes.BOMB);
-        
+        PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
+
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
         groundUnitValidator.validateGroundUnitsForMission(mission);
         EscortForPlayerValidator playerEscortedFlightValidator = new EscortForPlayerValidator(flight);
@@ -111,7 +119,10 @@ public class PlayerFlightFCTypeTest
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.PATROL);
         PatrolFlight flight = (PatrolFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
         mission.finalizeMission();
-		
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
+        PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
+
         PositionEvaluator.evaluateAiFlight(mission);
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
@@ -128,8 +139,11 @@ public class PlayerFlightFCTypeTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BALLOON_BUST);
         BalloonBustFlight flight = (BalloonBustFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-         mission.finalizeMission();
-        
+        mission.finalizeMission();
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
+        PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
+
         assert(flight.getFlightType() == FlightTypes.BALLOON_BUST);
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
@@ -147,8 +161,11 @@ public class PlayerFlightFCTypeTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.BALLOON_DEFENSE);
         BalloonDefenseFlight flight = (BalloonDefenseFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-         mission.finalizeMission();
-        
+        mission.finalizeMission();
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
+        PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
+
         assert(flight.getFlightType() == FlightTypes.BALLOON_DEFENSE);
         
         GroundUnitValidator groundUnitValidator = new GroundUnitValidator();
@@ -166,8 +183,11 @@ public class PlayerFlightFCTypeTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.INTERCEPT);
         InterceptFlight flight = (InterceptFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-		 mission.finalizeMission();
-		
+        mission.finalizeMission();
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
+        PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
+
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.INTERCEPT);
@@ -185,8 +205,11 @@ public class PlayerFlightFCTypeTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.OFFENSIVE);
         OffensiveFlight flight = (OffensiveFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-		 mission.finalizeMission();
-		
+        mission.finalizeMission();
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
+        PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
+
 		PatrolFlightValidator patrolFlightValidator = new PatrolFlightValidator();
 		patrolFlightValidator.validatePatrolFlight(flight);
         assert(flight.getFlightType() == FlightTypes.OFFENSIVE);
@@ -204,8 +227,11 @@ public class PlayerFlightFCTypeTest
         MissionGenerator missionGenerator = new MissionGenerator(campaign);
         Mission mission = missionGenerator.makeMissionFromFlightType(TestParticipatingHumanBuilder.buildTestParticipatingHumans(campaign), FlightTypes.ESCORT);
         PlayerIsEscortFlight flight = (PlayerIsEscortFlight) mission.getMissionFlightBuilder().getPlayerFlights().get(0);
-		 mission.finalizeMission();
-		
+        mission.finalizeMission();
+        MissionPoint targetMissionPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_INGRESS);
+        assert (targetMissionPoint != null);
+        PlaneRtbValidator.verifyPlaneRtbDisabled(mission);
+
 		PlayerEscortFlightValidator escortFlightValidator = new PlayerEscortFlightValidator(flight);
 		escortFlightValidator.validateEscortFlight();
         assert(flight.getFlightType() == FlightTypes.ESCORT);

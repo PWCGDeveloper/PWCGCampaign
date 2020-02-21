@@ -35,5 +35,7 @@ public interface IWaypointPackage
     IMissionPointSet getMissionPointSet(MissionPointSetType missionPointSetType) throws PWCGException;
 
     McuWaypoint getWaypointByAction(WaypointAction action) throws PWCGException;
+    
+    int secondsUntilWaypoint(WaypointAction action) throws PWCGException;
 
 }

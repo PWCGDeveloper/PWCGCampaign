@@ -7,6 +7,7 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.flight.plot.FlightPathToWaypointPlotter;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointFlightActivate;
@@ -132,6 +133,13 @@ public class WaypointPackage implements IWaypointPackage
         {
             missionPointSet.write(writer);
         }
+    }
+
+    @Override
+    public int secondsUntilWaypoint(WaypointAction action) throws PWCGException
+    {
+        FlightPathToWaypointPlotter plotter = new FlightPathToWaypointPlotter(flight);
+        return plotter.plotTimeToWaypointAction(action);
     }
 
     private void linkMissionPointSets() throws PWCGException
