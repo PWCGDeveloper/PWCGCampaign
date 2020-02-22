@@ -3,9 +3,11 @@ package pwcg.mission.flight.escort;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.flight.waypoint.end.EgressWaypointGenerator;
 import pwcg.mission.flight.waypoint.missionpoint.IMissionPointSet;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointEscortWaypointSet;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPointEscortWaypointSet.EscortSequenceConnect;
 import pwcg.mission.mcu.McuWaypoint;
@@ -42,15 +44,15 @@ public class PlayerIsEscortMissionPointFactory
 
 	private McuWaypoint createRendezvousWaypoint() throws PWCGException  
 	{
-		Coordinate coord = new Coordinate();
-		coord.setXPos(escortFlight.getFlightInformation().getTargetPosition().getXPos() + 50.0);
-		coord.setZPos(escortFlight.getFlightInformation().getTargetPosition().getZPos());
+		MissionPoint rendezvous = escortedFlight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_RENDEZVOUS);
+		Coordinate coord = rendezvous.getPosition().copy();
 		coord.setYPos(escortFlight.getFlightInformation().getAltitude());
 
 		McuWaypoint rendezvousWaypoint = WaypointFactory.createRendezvousWaypointType();
 		rendezvousWaypoint.setTriggerArea(McuWaypoint.COMBAT_AREA);		
 		rendezvousWaypoint.setPosition(coord);	
 		rendezvousWaypoint.setTargetWaypoint(true);
-        return rendezvousWaypoint;
+		rendezvousWaypoint.setSpeed(escortFlight.getFlightPlanes().getFlightCruisingSpeed());
+		return rendezvousWaypoint;
 	}
 }
