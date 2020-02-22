@@ -15,11 +15,13 @@ import pwcg.campaign.group.FakeAirfield;
 import pwcg.campaign.group.FixedPosition;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.config.ConfigItemKeys;
+import pwcg.core.config.ConfigManager;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
+import pwcg.core.utils.MathUtils;
 import pwcg.mission.AmbientBalloonBuilder;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBlockBuilder;
@@ -244,6 +246,21 @@ public class MissionFileWriter implements IMissionFile
                         playerFlight.getFlightInformation().getCountry(), mission.getCampaign().getDate(), VehicleClass.RadioBeacon);
                 if (radioBeacon != null)
                 {
+                    IAirfield flightAirfield = playerFlight.getFlightInformation().getAirfield();
+                    double takeoffOrientation = flightAirfield.getTakeoffLocation().getOrientation().getyOri();
+
+                    Double angleBeaconLeft = MathUtils.adjustAngle(takeoffOrientation, -90);
+
+                    Campaign campaign = PWCGContext.getInstance().getCampaign();
+                    ConfigManager configManager = campaign.getCampaignConfigManager();
+                    int windsockDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
+                    Coordinate beaconCoordMoveLeft = MathUtils.calcNextCoord(flightAirfield.getTakeoffLocation().getPosition(), angleBeaconLeft, windsockDistance);
+
+                    Coordinate beaconPos = MathUtils.calcNextCoord(beaconCoordMoveLeft, takeoffOrientation, 200.0);
+
+                    radioBeacon.setPosition(beaconPos);
+                    radioBeacon.setOrientation(flightAirfield.getOrientation().copy());
+                    radioBeacon.getEntity().setEnabled(1);
                     radioBeacon.write(writer);
                 }
             }
