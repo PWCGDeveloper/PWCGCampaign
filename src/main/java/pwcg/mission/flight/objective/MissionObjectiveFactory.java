@@ -1,16 +1,21 @@
 package pwcg.mission.flight.objective;
 
+import java.util.Date;
+
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
+import pwcg.mission.flight.escort.EscortedByPlayerFlight;
 import pwcg.mission.flight.offensive.OffensiveFlight;
 import pwcg.mission.flight.recon.ReconFlight;
 import pwcg.mission.flight.transport.TransportFlight;
+import pwcg.mission.flight.waypoint.WaypointAction;
+import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
 
 public class MissionObjectiveFactory
 {
-    public static String formMissionObjective(IFlight flight) throws PWCGException
+    public static String formMissionObjective(IFlight flight, Date date) throws PWCGException
     {
         if (flight.getFlightType() == FlightTypes.ARTILLERY_SPOT)
         {
@@ -34,7 +39,7 @@ public class MissionObjectiveFactory
         }
         else if (flight.getFlightType() == FlightTypes.ESCORT)
         {
-            return getEscortMissionObjective(flight);
+            return getEscortMissionObjective(flight, date);
         }
 
         if (flight.getFlightType() == FlightTypes.BOMB ||
@@ -118,17 +123,27 @@ public class MissionObjectiveFactory
         return objective;
     }
 
-    private static String getEscortMissionObjective(IFlight flight) throws PWCGException 
+    private static String getEscortMissionObjective(IFlight flight, Date date) throws PWCGException 
     {
-        IFlightInformation flightInformation = flight.getFlightInformation();
-        String objective = "Escort to the specified location and accompany them until they cross our lines.";
-        String objectiveName =  MissionObjective.formMissionObjectiveLocation(flightInformation.getTargetPosition().copy()) + ".";
+        EscortedByPlayerFlight escortedByPlayerFlight = flight.getLinkedFlights().getEscortedByPlayer();
+        MissionPoint rendezvousPoint = flight.getWaypointPackage().getMissionPointByAction(WaypointAction.WP_ACTION_RENDEZVOUS);
+        String rendezvousName =  MissionObjective.formMissionObjectiveLocation(rendezvousPoint.getPosition());
+        String objectiveName =  MissionObjective.formMissionObjectiveLocation(escortedByPlayerFlight.getFlightInformation().getTargetPosition().copy());
+
+        String objective = "Rendezvous with " + escortedByPlayerFlight.getFlightPlanes().getFlightLeader().getDisplayName() + "s of " + escortedByPlayerFlight.getSquadron().determineDisplayName(date);
+        if (!rendezvousName.isEmpty())
+        {
+            objective += rendezvousName;
+        }
+        objective += ". Escort them to ";
         if (!objectiveName.isEmpty())
         {
-            objective = "Escort to the location" + objectiveName + 
-                    ".  Accompany them until they cross our lines.";
+            objective += "the location" + objectiveName + ".";
+        } else {
+            objective += "the specified location.";
         }
-        
+        objective += " Accompany them until they cross our lines.";
+
         return objective;
     }
 

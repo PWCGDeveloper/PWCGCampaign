@@ -72,7 +72,7 @@ public class MissionDescriptionSinglePlayer implements IMissionDescription
 
         setAircraft(playerFlight.getFlightPlanes().getFlightLeader().getDisplayName());
         setAirfield(playerFlight.getFlightInformation().getAirfieldName());
-        setObjective(MissionObjectiveFactory.formMissionObjective(playerFlight));
+        setObjective(MissionObjectiveFactory.formMissionObjective(playerFlight, campaign.getDate()));
         setEscortedBy(playerFlight);
         setSquadron(playerFlight.getSquadron().determineDisplayName(campaign.getDate()));
         buildTitleDescription(campaign.getCampaignData().getName(), playerFlight.getFlightType().toString());

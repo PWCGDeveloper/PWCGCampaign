@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pwcg.mission.flight.escort.EscortForPlayerFlight;
+import pwcg.mission.flight.escort.EscortedByPlayerFlight;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
 
 public class LinkedFlights implements ILinkedFlights
@@ -48,6 +49,20 @@ public class LinkedFlights implements ILinkedFlights
             }
         }
         return escortForPlayerFlight;
+    }
+
+    @Override
+    public EscortedByPlayerFlight getEscortedByPlayer()
+    {
+        EscortedByPlayerFlight escortedByPlayerFlight = null;
+        for (IFlight linkedFlight : linkedFlights)
+        {
+            if (linkedFlight instanceof EscortedByPlayerFlight)
+            {
+                escortedByPlayerFlight = (EscortedByPlayerFlight)linkedFlight;
+            }
+        }
+        return escortedByPlayerFlight;
     }
 
 }
