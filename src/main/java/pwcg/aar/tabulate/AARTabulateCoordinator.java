@@ -29,11 +29,11 @@ public class AARTabulateCoordinator
     
     public void tabulate() throws PWCGException 
     {
+        aarContext.setAarTabulatedData(tabulatedData);
+
         tabulateCombatReport();
         tabulateFlightDebriefUI();
         tabulateAARForCampaignUpdate();
-        
-        aarContext.setAarTabulatedData(tabulatedData);
     }
     
     private void tabulateCombatReport() throws PWCGException
