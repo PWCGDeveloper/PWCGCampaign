@@ -71,7 +71,7 @@ public class CampaignGeneratorSquadronFilter
 	
 	private boolean rejectBecauseSquadronCannotFly(Squadron squad, Date campaignDate) throws PWCGException
 	{
-		if (squad.isCanFly(campaignDate))
+		if (squad.isCanFly(campaignDate) && squad.hasFlyablePlane(campaignDate))
 		{
 			return false;
 		}

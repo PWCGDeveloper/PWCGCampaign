@@ -199,7 +199,7 @@ public class SquadronManager
 		return squadReturn;
 	}
 
-	public ArrayList<Squadron> getFlyableSquadrons(ICountry country, Date date) throws PWCGException
+	public ArrayList<Squadron> getActiveSquadronsForCountry(ICountry country, Date date) throws PWCGException
 	{
 		TreeMap<String, Squadron> squadMap = new TreeMap<String, Squadron>();
 		
@@ -223,33 +223,25 @@ public class SquadronManager
 
 	public List<Squadron> getFlyableSquadronsByService(ArmedService service, Date date) throws PWCGException 
 	{
-		TreeMap<Integer, Squadron> squadMap = new TreeMap<Integer, Squadron>();
-				
-		List<Squadron> squadList = getAllSquadrons();        
+		List<Squadron> squadList = getActiveSquadronsForService(date, service);
+        List<Squadron> list = new ArrayList<Squadron>();
 	        
 		for (Squadron squadron : squadList)
 		{
-			ArmedService squadService = squadron.determineServiceForSquadron(date);
-			if (squadService.getServiceId() == service.getServiceId())
-			{
-			    if (squadron.isCanFly(date))
-			    {
-                    Logger.log(LogLevel.DEBUG, squadron.determineDisplayName(date) 
-                            + "getFlyableSquadronsByService Add squadron + squadron id is " + squadron.getSquadronId());
-			        squadMap.put(squadron.getSquadronId(), squadron);
-			    }
-			    else
-			    {
-	                Logger.log(LogLevel.DEBUG, squadron.determineDisplayName(date) 
-	                        + " getFlyableSquadronsByService not flyable because of date: " + DateUtils.getDateStringDashDelimitedYYYYMMDD(date));
-			    }
-			}
+		    if (squadron.hasFlyablePlane(date))
+		    {
+		        Logger.log(LogLevel.DEBUG, squadron.determineDisplayName(date)
+		                + "getFlyableSquadronsByService Add squadron + squadron id is " + squadron.getSquadronId());
+		        list.add(squadron);
+		    }
+		    else
+		    {
+		        Logger.log(LogLevel.DEBUG, squadron.determineDisplayName(date)
+		                + " getFlyableSquadronsByService not flyable because of date: " + DateUtils.getDateStringDashDelimitedYYYYMMDD(date));
+		    }
 		}
 		
-		ArrayList<Squadron> list = new ArrayList<Squadron>();
-		list.addAll(squadMap.values());
 		return list;
-		
 	}
 
 	public List<Squadron> getNearestSquadronsByRole(Campaign campaign, 

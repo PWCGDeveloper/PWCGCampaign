@@ -227,7 +227,7 @@ public class Squadron
 		    }
 		}
         
-        if (!hasFlyablePlane(date))
+        if (this.determineCurrentAircraftList(date).size() == 0)
         {
             Logger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Cannot fly aircraft is null");
             return false;

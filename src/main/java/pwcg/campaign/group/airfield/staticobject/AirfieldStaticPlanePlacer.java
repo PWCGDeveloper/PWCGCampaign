@@ -52,7 +52,7 @@ public class AirfieldStaticPlanePlacer
         Squadron squadronForField = squadronManager.getAnyActiveSquadronForAirfield(airfield, date);
         if (squadronForField == null)
         {
-        	List<Squadron> allSquadronsForSide = squadronManager.getFlyableSquadrons(country, date);
+        	List<Squadron> allSquadronsForSide = squadronManager.getActiveSquadronsForCountry(country, date);
         	if (allSquadronsForSide.isEmpty())
         	{
                 return null;

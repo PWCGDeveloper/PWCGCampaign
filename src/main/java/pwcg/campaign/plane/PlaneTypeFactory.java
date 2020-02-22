@@ -68,14 +68,11 @@ public class PlaneTypeFactory
         {
             if (planeType != null)
             {
-                if (planeType.isFlyable())
+                if (planeType.isRole(Role.ROLE_FIGHTER))
                 {
-                    if (planeType.isRole(Role.ROLE_FIGHTER))
+                    if (planeType.isPlaneActive(campaign.getDate()))
                     {
-                        if (planeType.isPlaneActive(campaign.getDate()))
-                        {
-                            aircraftTypes.add(planeType);
-                        }
+                        aircraftTypes.add(planeType);
                     }
                 }
             }
@@ -142,25 +139,22 @@ public class PlaneTypeFactory
         return plane;
     }
 
-    public PlaneType createPlaneTypeByType (String planteTypeName) throws PWCGException
+    public PlaneType createPlaneTypeByType (String planeTypeName) throws PWCGException
     {
         PlaneType plane = null;
 
         for (PlaneType thisPlane : planeTypes.values())
         {
-            if (thisPlane.getType().equalsIgnoreCase(planteTypeName))
+            if (thisPlane.getType().equalsIgnoreCase(planeTypeName))
             {
-                if (thisPlane.isFlyable())
-                {
-                    plane = thisPlane;
-                    break;
-                }
+                plane = thisPlane;
+                break;
             }
         }
 
         if (plane == null)
         {
-            throw new PWCGException ("Invalid aircraft name: " + planteTypeName);
+            throw new PWCGException ("Invalid aircraft name: " + planeTypeName);
         }
 
         return plane;
@@ -350,11 +344,8 @@ public class PlaneTypeFactory
         {
             if (thisPlane.getDisplayName().equalsIgnoreCase(pwcgDesc))
             {
-                if (thisPlane.isFlyable())
-                {
-                    plane = thisPlane;
-                    break;
-                }
+                plane = thisPlane;
+                break;
             }
         }
 
