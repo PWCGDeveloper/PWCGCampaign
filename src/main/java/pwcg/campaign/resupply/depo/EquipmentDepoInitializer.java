@@ -28,7 +28,7 @@ public class EquipmentDepoInitializer
 
     public Equipment createReplacementPoolForService() throws PWCGException
     {
-        List<Squadron> activeSquadronsForService = PWCGContext.getInstance().getSquadronManager().getFlyableSquadronsByService(service, campaign.getDate());
+        List<Squadron> activeSquadronsForService = PWCGContext.getInstance().getSquadronManager().getActiveSquadronsForService(campaign.getDate(), service);
         for (Squadron squadron : activeSquadronsForService)
         {
             EquipmentWeightCalculator equipmentWeightCalculator = createPlaneCalculator(squadron);            

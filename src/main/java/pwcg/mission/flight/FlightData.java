@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
+import pwcg.mission.MissionSkinGenerator;
 import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
@@ -104,6 +105,9 @@ public class FlightData
             virtualWaypointPackage.buildVirtualWaypoints();
             virtualWaypointPackage.addDelayForPlayerDelay(flightInformation.getMission());
         }        
+
+        MissionSkinGenerator skinGenerator = new MissionSkinGenerator();
+        skinGenerator.assignSkinsForFlight(this);
     }
 
     public IVirtualWaypointPackage getVirtualWaypointPackage()

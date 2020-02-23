@@ -407,21 +407,18 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
 		{
 			Squadron squad = squadronList.get(i);
 			Date campaignDate = campaign.getDate();
-			if (squad.isCanFly(campaignDate))
+			if(squad.getSquadronId() != squadronMemberToTransfer.getSquadronId())
 			{
-				if(squad.getSquadronId() != squadronMemberToTransfer.getSquadronId())
-				{
-					if (squad.determineSquadronPrimaryRole(campaignDate) == role)
-					{
-					    String display = squad.determineDisplayName(campaign.getDate());
-					    CampaignAces aces =  PWCGContext.getInstance().getAceManager().loadFromHistoricalAces(campaignDate);
-					    List<Ace> squadronAces =  PWCGContext.getInstance().getAceManager().getActiveAcesForSquadron(aces, campaignDate, squad.getSquadronId());
-					    if (!squadronMemberToTransfer.isCommander(campaignDate) || !squad.isCommandedByAce(squadronAces, campaignDate))
-					    {
-					        cbSquadron.addItem(display);
-					    }
-					}
-				}
+			    if (squad.determineSquadronPrimaryRole(campaignDate) == role)
+			    {
+			        String display = squad.determineDisplayName(campaign.getDate());
+			        CampaignAces aces =  PWCGContext.getInstance().getAceManager().loadFromHistoricalAces(campaignDate);
+			        List<Ace> squadronAces =  PWCGContext.getInstance().getAceManager().getActiveAcesForSquadron(aces, campaignDate, squad.getSquadronId());
+			        if (!squadronMemberToTransfer.isCommander(campaignDate) || !squad.isCommandedByAce(squadronAces, campaignDate))
+			        {
+			            cbSquadron.addItem(display);
+			        }
+			    }
 			}
 		}
 		

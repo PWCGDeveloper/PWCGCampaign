@@ -195,10 +195,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         for (int i = 0; i < planes.size(); ++i)
         {
             PlaneType plane = planes.get(i);
-            if (plane.isFlyable())
-            {
-                planeMap.put(plane.getType(), plane);
-            }
+            planeMap.put(plane.getType(), plane);
         }
         return planeMap;
     }
