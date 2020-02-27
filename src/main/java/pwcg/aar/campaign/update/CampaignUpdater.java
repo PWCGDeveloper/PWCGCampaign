@@ -51,7 +51,7 @@ public class CampaignUpdater
     
     private void finishCampaignUpdates(Date newDate) throws PWCGException
     {
-        campaign.getCampaignLogs().setCampaignLogs(campaign, aarContext.getCampaignUpdateData().getLogEvents().getCampaignLogEvents());
+        campaign.getCampaignLogs().parseEventsToCampaignLogs(campaign, aarContext.getCampaignUpdateData().getLogEvents().getCampaignLogEvents());
         campaign.setDate(newDate);
         
         InitialSquadronBuilder initialSquadronBuilder = new InitialSquadronBuilder();

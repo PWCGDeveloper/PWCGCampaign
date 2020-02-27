@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 
 import pwcg.campaign.Campaign;
 import pwcg.campaign.CampaignLog;
+import pwcg.campaign.CampaignLogEntry;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
@@ -41,6 +42,7 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 	private Campaign campaign = null;
     private int linesPerPage = 20;
     private int charsPerLine = 50;
+    private int logsForSquadronId = 0;
 	
 	private JPanel leftpage = null;
 	private JPanel rightpage = null;
@@ -48,9 +50,11 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 	private int pageNum = 0;
 	private Map<Integer, StringBuffer> pages = null;
 
-	public CampaignSquadronLogPanelSet  ()
+	public CampaignSquadronLogPanelSet (int logsForSquadronId)
 	{
         super();
+        
+        this.logsForSquadronId = logsForSquadronId;
 
 		Dimension screenSize = MonitorSupport.getPWCGFrameSize();
 
@@ -134,7 +138,7 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 		int pageCount = 0;
 		// For each date in the log entries
         for (CampaignLog campaignLog : campaign.getCampaignLogs().retrieveCampaignLogsInDateOrder())
-		{
+		{            
 			// Don't end the page with a date entry. leave room for at least one logs
 			if (countLines(page.toString()) >= (linesPerPage-5))
 			{
@@ -149,9 +153,14 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
             page.append("\n");
 			
 			// Enter logs.  New page as necessary
-        	for (String logEntry : campaignLog.getLogs())
+        	for (CampaignLogEntry logEntry : campaignLog.getLogs())
 			{
-                int linesCountedEntry = countLines(logEntry);
+        	    if (logEntry.getSquadronId() != logsForSquadronId)
+        	    {
+        	        continue;
+        	    }
+        	    
+                int linesCountedEntry = countLines(logEntry.getLog());
                 int linesCountedPage = countLines(page.toString());
 				if ((linesCountedPage+linesCountedEntry) >= linesPerPage)
 				{
@@ -160,7 +169,7 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 	                page = new StringBuffer("");
 				}
 				
-                page.append(logEntry + "\n");
+                page.append(logEntry.getLog() + "\n");
 			}
 		}
 		
@@ -170,13 +179,9 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 		return pages;
 	}
 
-	/**
-	 * @param str
-	 * @return
-	 */
-	private int countLines(String str)
+	private int countLines(String logLine)
 	{
-	    String[] lines = str.split("\r\n|\r|\n");
+	    String[] lines = logLine.split("\r\n|\r|\n");
 	    // Default is one line per CR
 	    int calculatedLines = lines.length;
 	    

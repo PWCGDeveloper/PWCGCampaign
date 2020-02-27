@@ -57,6 +57,7 @@ public class GroundUnitAttackFactoryFCTest extends FranceAttackMockCampaign
     public void createAirfieldUnitTest () throws PWCGException 
     {
         targetDefinition.setTargetType(TargetType.TARGET_AIRFIELD);
+        targetDefinition.setAttackingSquadron(squadron);
 
         GroundUnitAttackFactory groundUnitBuilderAttack = new GroundUnitAttackFactory(campaign, mission, targetDefinition);
         groundUnitBuilderAttack.createTargetGroundUnits();

@@ -8,7 +8,6 @@ import pwcg.aar.ui.events.model.PilotStatusEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
 public class PilotStatusEventGenerator
@@ -52,17 +51,8 @@ public class PilotStatusEventGenerator
 
     protected PilotStatusEvent makePilotLostEvent(SquadronMember pilot, int pilotStatus) throws PWCGException
     {
-        PilotStatusEvent pilotLostEvent = new PilotStatusEvent(pilot.getSquadronId());
-        pilotLostEvent.setPilotName(pilot.getNameAndRank());
-        pilotLostEvent.setSerialNumber(pilot.getSerialNumber());
-        pilotLostEvent.setDate(campaign.getDate());
-        Squadron squadron = pilot.determineSquadron();
-        if (squadron != null)
-        {
-            pilotLostEvent.setSquadron(squadron.determineDisplayName(campaign.getDate()));     
-        }
-        pilotLostEvent.setStatus(pilotStatus);
-
+        boolean isNewsworthy = true;
+        PilotStatusEvent pilotLostEvent = new PilotStatusEvent(campaign, pilotStatus, pilot.getSquadronId(), pilot.getSerialNumber(), campaign.getDate(), isNewsworthy);
         return pilotLostEvent;
     }
 

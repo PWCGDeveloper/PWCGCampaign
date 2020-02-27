@@ -3,7 +3,6 @@ package pwcg.gui.campaign.home;
 import java.awt.event.ActionEvent;
 
 import pwcg.aar.AARCoordinator;
-import pwcg.aar.ui.events.model.AARPilotEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.Ace;
@@ -31,8 +30,6 @@ import pwcg.gui.maingui.campaigngenerate.NewPilotGeneratorUI;
 import pwcg.gui.rofmap.brief.BriefingDescriptionPanelSet;
 import pwcg.gui.rofmap.brief.CoopPersonaChooser;
 import pwcg.gui.rofmap.debrief.DebriefMissionDescriptionPanel;
-import pwcg.gui.rofmap.event.AARMainPanel;
-import pwcg.gui.rofmap.event.AARMainPanel.EventPanelReason;
 import pwcg.gui.rofmap.intelmap.IntelMapGUI;
 import pwcg.gui.sound.MusicManager;
 import pwcg.gui.sound.SoundManager;
@@ -219,26 +216,6 @@ public class CampaignHomeGUIAction
         CampaignGuiContextManager.getInstance().pushToContextStack(leaveDisplay);
     }
 
-    public void campaignTimePassed(int timePassedDays, AARPilotEvent pilotEvent, EventPanelReason reason) throws PWCGException 
-    {
-        campaign.setCurrentMission(null);
-
-        if (reason == EventPanelReason.EVENT_PANEL_REASON_LEAVE)
-        {
-            AARCoordinator.getInstance().submitLeave(campaign, timePassedDays);            
-        }
-        else
-        {
-            AARCoordinator.getInstance().submitTransfer(campaign, timePassedDays);
-            
-        }
-
-        AARMainPanel eventDisplay = new AARMainPanel(campaign, parent, reason, pilotEvent);
-        eventDisplay.makePanels();		
-        
-        CampaignGuiContextManager.getInstance().pushToContextStack(eventDisplay);
-    }
-
     private void showAAR() throws PWCGException 
     {
         SoundManager.getInstance().playSound("Typewriter.WAV");
@@ -281,7 +258,7 @@ public class CampaignHomeGUIAction
     {
         SoundManager.getInstance().playSound("BookOpen.WAV");
 
-        CampaignSquadronLogPanelSet logDisplay = new CampaignSquadronLogPanelSet();
+        CampaignSquadronLogPanelSet logDisplay = new CampaignSquadronLogPanelSet(PWCGContext.getInstance().getReferencePlayer().getSquadronId());
         logDisplay.makePanels();
 
         CampaignGuiContextManager.getInstance().pushToContextStack(logDisplay);

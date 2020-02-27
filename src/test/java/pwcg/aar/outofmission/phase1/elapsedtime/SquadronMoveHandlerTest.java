@@ -23,7 +23,7 @@ import pwcg.core.utils.DateUtils;
 public class SquadronMoveHandlerTest
 {
     @Mock private Campaign campaign;
-    @Mock Squadron squad;
+    @Mock Squadron squadron;
     @Mock IAirfield currentAirfield;
     @Mock IAirfield newAirfield;
 
@@ -39,18 +39,18 @@ public class SquadronMoveHandlerTest
         campaignDate = DateUtils.getDateYYYYMMDD("19411120");
         newDate = DateUtils.getDateYYYYMMDD("19411215");
         Mockito.when(campaign.getDate()).thenReturn(campaignDate);
-        Mockito.when(squad.determineCurrentAirfieldAnyMap(campaignDate)).thenReturn(currentAirfield);
-        Mockito.when(squad.determineCurrentAirfieldAnyMap(newDate)).thenReturn(newAirfield);
+        Mockito.when(squadron.determineCurrentAirfieldAnyMap(campaignDate)).thenReturn(currentAirfield);
+        Mockito.when(squadron.determineCurrentAirfieldAnyMap(newDate)).thenReturn(newAirfield);
     }
 
     @Test
     public void noSquadronMove () throws PWCGException
     {             
-        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Ivanskoe");
-        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Ivanskoe");
+        Mockito.when(squadron.determineCurrentAirfieldName(campaignDate)).thenReturn("Ivanskoe");
+        Mockito.when(squadron.determineCurrentAirfieldName(newDate)).thenReturn("Ivanskoe");
 
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
-        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squad);
+        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squadron);
         assert (squadronMoveEvent == null);
         
     }
@@ -58,16 +58,16 @@ public class SquadronMoveHandlerTest
     @Test
     public void squadronMoveNoFerryBecuaseSameMap () throws PWCGException
     {             
-        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Ivanskoe");
-        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Mozhaysk");
+        Mockito.when(squadron.determineCurrentAirfieldName(campaignDate)).thenReturn("Ivanskoe");
+        Mockito.when(squadron.determineCurrentAirfieldName(newDate)).thenReturn("Mozhaysk");
         Mockito.when(currentAirfield.getName()).thenReturn("Ivanskoe");
         Mockito.when(newAirfield.getName()).thenReturn("Mozhaysk");
 
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
-        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squad);
+        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squadron);
         assert (squadronMoveEvent.getLastAirfield().equals("Ivanskoe"));
         assert (squadronMoveEvent.getNewAirfield().equals("Mozhaysk"));
-        assert (squadronMoveEvent.getDate().equals(campaignDate));
+        assert (squadronMoveEvent.getDate().equals(newDate));
         assert (squadronMoveEvent.isNeedsFerryMission() == true);
         
     }
@@ -75,16 +75,16 @@ public class SquadronMoveHandlerTest
     @Test
     public void squadronMoveNoFerryBecuaseDifferentMap () throws PWCGException
     {             
-        Mockito.when(squad.determineCurrentAirfieldName(campaignDate)).thenReturn("Ivanskoe");
-        Mockito.when(squad.determineCurrentAirfieldName(newDate)).thenReturn("Surovikino");
+        Mockito.when(squadron.determineCurrentAirfieldName(campaignDate)).thenReturn("Ivanskoe");
+        Mockito.when(squadron.determineCurrentAirfieldName(newDate)).thenReturn("Surovikino");
         Mockito.when(currentAirfield.getName()).thenReturn("Ivanskoe");
         Mockito.when(newAirfield.getName()).thenReturn("Surovikino");
 
         SquadronMoveHandler squadronMoveHandler = new SquadronMoveHandler(campaign);
-        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squad);
+        SquadronMoveEvent squadronMoveEvent = squadronMoveHandler.squadronMoves(newDate, squadron);
         assert (squadronMoveEvent.getLastAirfield().equals("Ivanskoe"));
         assert (squadronMoveEvent.getNewAirfield().equals("Surovikino"));
-        assert (squadronMoveEvent.getDate().equals(campaignDate));
+        assert (squadronMoveEvent.getDate().equals(newDate));
         assert (squadronMoveEvent.isNeedsFerryMission() == false);
     }
 }

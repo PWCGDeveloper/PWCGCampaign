@@ -41,7 +41,7 @@ public class CampaignReportAceNewspaperGUI extends ImageResizingPanel implements
 			Color bgColor = ColorMap.NEWSPAPER_BACKGROUND;
 			
 			// Picture
-			SquadronMember pilot = PWCGContext.getInstance().getAceManager().getHistoricalAceBySerialNumber(aceEvent.getSerialNumber());
+			SquadronMember pilot = PWCGContext.getInstance().getAceManager().getHistoricalAceBySerialNumber(aceEvent.getPilotSerialNumber());
 			if (pilot != null)
 			{
 				ImageIcon imageIcon = pilot.determinePilotPicture();  

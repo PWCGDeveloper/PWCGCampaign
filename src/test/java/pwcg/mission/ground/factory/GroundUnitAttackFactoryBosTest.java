@@ -32,6 +32,7 @@ public class GroundUnitAttackFactoryBosTest extends KubanAttackMockCampaign
         mockCampaignSetup();
         
         targetDefinition.setAttackingCountry(country);
+        targetDefinition.setAttackingSquadron(squadron);
         targetDefinition.setTargetCountry(CountryFactory.makeCountryByCountry(Country.RUSSIA));
         targetDefinition.setTargetPosition(new Coordinate(100000, 0, 150000));
         targetDefinition.setTargetOrientation(new Orientation());

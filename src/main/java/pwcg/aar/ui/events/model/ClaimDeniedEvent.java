@@ -1,19 +1,20 @@
 package pwcg.aar.ui.events.model;
 
+import java.util.Date;
+
+import pwcg.campaign.Campaign;
+
 public class ClaimDeniedEvent extends AARPilotEvent
 {
-	private String type = "";
+	private String aircraftType = "";
 	
-    public ClaimDeniedEvent(int squadronId)
+    public ClaimDeniedEvent(Campaign campaign, String aircraftType, int squadronId, int pilotSerialNumber, Date date, boolean isNewsWorthy)
     {
-        super(squadronId);
+        super(campaign, squadronId, pilotSerialNumber, date, isNewsWorthy);
+        this.aircraftType = aircraftType;
     }
 
 	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
+		return aircraftType;
 	}
 }

@@ -48,14 +48,19 @@ public class FerryFlight extends Flight implements IFlight
     }
 
 
-    public IMissionPointSet createFerryMissionPointSet(McuWaypoint ingressWaypoint) throws PWCGException
+    private IMissionPointSet createFerryMissionPointSet(McuWaypoint ingressWaypoint) throws PWCGException
     {
         IFlightInformation flightInformation = this.getFlightInformation();
-        IAirfield fromAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());
-        IAirfield toAirfield = flightInformation.getSquadron().determineCurrentAirfieldCurrentMap(flightInformation.getCampaign().getDate());
-        FerryWaypointFactory missionWaypointFactory = new FerryWaypointFactory(this, fromAirfield, toAirfield);
-        IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
-        return missionWaypoints;
+        if (flightInformation.getCampaign().getSquadronMoveEvent() != null)
+        {
+            IAirfield fromAirfield = PWCGContext.getInstance().getCurrentMap().getAirfieldManager().getAirfield(flightInformation.getCampaign().getSquadronMoveEvent().getLastAirfield());
+            IAirfield toAirfield = flightInformation.getSquadron().determineCurrentAirfieldCurrentMap(flightInformation.getCampaign().getDate());
+            FerryWaypointFactory missionWaypointFactory = new FerryWaypointFactory(this, fromAirfield, toAirfield);
+            IMissionPointSet missionWaypoints = missionWaypointFactory.createWaypoints(ingressWaypoint);
+            return missionWaypoints;
+        }
+        
+        throw new PWCGException("Attempt to create a ferry flight with no ferry event recorded on campaign");
     }
 
     private void setFlightPayload() throws PWCGException

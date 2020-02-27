@@ -6,7 +6,6 @@ import java.util.List;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.skin.Skin;
-import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.AiSkillLevel;
@@ -40,13 +39,6 @@ public class MissionSkinGenerator
     }
 
     private void setSkinForPlayerSquadron(SquadronMember pilot, Squadron squad, PlaneMcu plane, Date date)
-    {
-        plane.setPlaneSkin(null);
-        setSquadronSkin(squad, plane, date);
-        setUserAssignedPilotSkin(pilot, plane);
-    }
-
-    private void setSkinForAce(Ace pilot, Squadron squad, PlaneMcu plane, Date date)
     {
         plane.setPlaneSkin(null);
         setSquadronSkin(squad, plane, date);

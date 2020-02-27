@@ -31,13 +31,10 @@ public class TransferEventGenerator
     
     private TransferEvent makeTransferEvent(TransferRecord transferRecord) throws PWCGException  
     {
-        TransferEvent transferEvent = new TransferEvent(transferRecord.getTransferTo());
-        transferEvent.setPilotName(transferRecord.getSquadronMember().getNameAndRank());
-        transferEvent.setDate(campaign.getDate());
-        
-        transferEvent.setTransferTo(transferRecord.getTransferTo());        
-        transferEvent.setTransferFrom(transferRecord.getTransferFrom());
-
+        boolean isNewsworthy = true;
+        int leaveTimeInDays = 0;
+        int pilotSerialNumber = transferRecord.getSquadronMember().getSerialNumber();
+        TransferEvent transferEvent = new TransferEvent(campaign, transferRecord.getTransferFrom(), transferRecord.getTransferTo(), leaveTimeInDays, pilotSerialNumber, campaign.getDate(), isNewsworthy);
         return transferEvent;
     }
 }

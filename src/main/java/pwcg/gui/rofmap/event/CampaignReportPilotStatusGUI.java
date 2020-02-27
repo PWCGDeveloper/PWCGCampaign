@@ -42,7 +42,7 @@ public class CampaignReportPilotStatusGUI extends CampaignDocumentGUI
 
     protected String getBodyText() throws PWCGException
     {
-        String pilotLostText = "Squadron: " + pilotLostEvent.getSquadron() + "\n";
+        String pilotLostText = "Squadron: " + pilotLostEvent.getSquadronName() + "\n";
         pilotLostText += "Date: " + DateUtils.getDateStringPretty(pilotLostEvent.getDate()) + "\n";
         pilotLostText += getPilotLostString() + ".\n";   
         

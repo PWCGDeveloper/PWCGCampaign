@@ -13,6 +13,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.ui.events.AcesKilledEventGenerator;
 import pwcg.aar.ui.events.model.AceKilledEvent;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.CampaignPersonnelManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.squadmember.Ace;
@@ -26,8 +27,8 @@ import pwcg.testutils.MissionEntityBuilder;
 @RunWith(MockitoJUnitRunner.class)
 public class AcesKilledEventGeneratorTest
 {
-    @Mock
-    private Campaign campaign;
+    @Mock private Campaign campaign;
+    @Mock CampaignPersonnelManager personnelManager;
     
     @Before
     public void setupForTestEnvironment() throws PWCGException
@@ -35,6 +36,7 @@ public class AcesKilledEventGeneratorTest
          
         PWCGContext.setProduct(PWCGProduct.FC);
         Mockito.when(campaign.getDate()).thenReturn(DateUtils.getDateYYYYMMDD("19170420"));
+        Mockito.when(campaign.getPersonnelManager()).thenReturn(personnelManager);
     }
 
     @Test

@@ -32,10 +32,9 @@ public class PlaneStatusEventGenerator
 
     protected PlaneStatusEvent makePlaneLostEvent(EquippedPlane equippedPlane) throws PWCGException
     {
-        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent(equippedPlane.getSquadronId());
-        planeStatusEvent.setPlaneSerialNumber(equippedPlane.getSerialNumber());
-        planeStatusEvent.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
-        planeStatusEvent.setDate(campaign.getDate());
+        boolean isNewsworthy = true;
+        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent( equippedPlane.getSerialNumber(), equippedPlane.getSquadronId(), PlaneStatus.STATUS_DESTROYED, 
+                 campaign.getDate(), isNewsworthy);
         return planeStatusEvent;
     }
 }

@@ -43,7 +43,7 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
 		super(ContextSpecificImages.imagesMedals() + "medalAwardAllied.jpg");
 
         this.medalEvent = medalEvent;
-		this.medalRecipient = campaign.getPersonnelManager().getAnyCampaignMember(medalEvent.getSerialNumber());
+		this.medalRecipient = campaign.getPersonnelManager().getAnyCampaignMember(medalEvent.getPilotSerialNumber());
 		
         ICountry country = CountryFactory.makeCountryByCountry(medalRecipient.getCountry());
         if (country.getSide() == Side.AXIS)
@@ -160,7 +160,7 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
 
 	private String getBodyText()
 	{
-        String medalText = "Squadron: " + medalEvent.getSquadron() + "\n";
+        String medalText = "Squadron: " + medalEvent.getSquadronName() + "\n";
         medalText += "Date: " + DateUtils.getDateStringPretty(medalEvent.getDate()) + "\n";
         medalText += medalRecipient.getNameAndRank() + " has been awarded the " + medalEvent.getMedal() + ".\n";               
 

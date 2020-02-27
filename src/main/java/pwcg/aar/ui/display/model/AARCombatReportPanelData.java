@@ -80,7 +80,7 @@ public class AARCombatReportPanelData
 
     public void addPilotLostInMission(PilotStatusEvent pilotLostEvent)
     {
-        squadronMembersLostInMission.put(pilotLostEvent.getSerialNumber(), pilotLostEvent);
+        squadronMembersLostInMission.put(pilotLostEvent.getPilotSerialNumber(), pilotLostEvent);
     }
 
     public void addVictoryForSquadronMembers(VictoryEvent victory)

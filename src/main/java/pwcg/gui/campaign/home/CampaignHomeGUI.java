@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pwcg.aar.AARCoordinator;
-import pwcg.aar.ui.events.model.AARPilotEvent;
+import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
@@ -406,23 +406,21 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
         }
     }
 
-    public void campaignTimePassed(int timePassedDays, AARPilotEvent pilotEvent, EventPanelReason reason) throws PWCGException 
+    public void campaignTimePassedForLeave(int timePassedDays) throws PWCGException 
     {
         campaign.setCurrentMission(null);
-
-        if (reason == EventPanelReason.EVENT_PANEL_REASON_LEAVE)
-        {
-            AARCoordinator.getInstance().submitLeave(campaign, timePassedDays);            
-        }
-        else
-        {
-            AARCoordinator.getInstance().submitTransfer(campaign, timePassedDays);
-            
-        }
-
-        AARMainPanel eventDisplay = new AARMainPanel(campaign, this, reason, pilotEvent);
+        AARCoordinator.getInstance().submitLeave(campaign, timePassedDays);            
+        AARMainPanel eventDisplay = new AARMainPanel(campaign, this, EventPanelReason.EVENT_PANEL_REASON_LEAVE);
         eventDisplay.makePanels();		
-        
+        CampaignGuiContextManager.getInstance().pushToContextStack(eventDisplay);
+    }
+
+    public void campaignTimePassedForTransfer(int timePassedDays, TransferEvent pilotEvent) throws PWCGException 
+    {
+        campaign.setCurrentMission(null);
+        AARCoordinator.getInstance().submitTransfer(campaign, timePassedDays);
+        AARMainPanel eventDisplay = new AARMainPanel(campaign, this, EventPanelReason.EVENT_PANEL_REASON_TRANSFER, pilotEvent);
+        eventDisplay.makePanels();      
         CampaignGuiContextManager.getInstance().pushToContextStack(eventDisplay);
     }
 

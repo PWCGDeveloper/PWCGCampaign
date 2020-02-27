@@ -9,9 +9,12 @@ public class AAREvent
     private int eventId = 1;
     private static int eventIdCounter = 1;
 
-	public AAREvent()
+	public AAREvent(Date date, boolean isNewsWorthy)
 	{
-	    eventId = eventIdCounter;
+        this.date = date;
+        this.isNewsWorthy = isNewsWorthy;
+
+        eventId = eventIdCounter;
 	    ++eventIdCounter;
 	}
 
@@ -20,19 +23,9 @@ public class AAREvent
 		return date;
 	}
 
-	public void setDate(Date date) 
-	{
-		this.date = date;
-	}
-
     public boolean isNewsWorthy()
     {
         return this.isNewsWorthy;
-    }
-
-    public void setNewsWorthy(boolean isNewsWorthy)
-    {
-        this.isNewsWorthy = isNewsWorthy;
     }
 
     public int getEventId()

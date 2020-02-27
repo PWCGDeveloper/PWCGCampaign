@@ -20,7 +20,7 @@ public class CampaignReportPromotionGUI extends CampaignDocumentGUI
 	{
 		super();
 		this.promotionEvent = promotionEvent;
-		this.promotionRecipient = campaign.getPersonnelManager().getAnyCampaignMember(promotionEvent.getSerialNumber());
+		this.promotionRecipient = campaign.getPersonnelManager().getAnyCampaignMember(promotionEvent.getPilotSerialNumber());
 		makePanel();		
 	}
 

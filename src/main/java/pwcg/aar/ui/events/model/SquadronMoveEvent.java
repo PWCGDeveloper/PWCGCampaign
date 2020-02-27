@@ -1,15 +1,43 @@
 package pwcg.aar.ui.events.model;
 
+import java.util.Date;
+
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.SquadronManager;
+import pwcg.campaign.squadron.Squadron;
+import pwcg.core.exception.PWCGException;
+
 public class SquadronMoveEvent  extends AAREvent
 {
-    private String newAirfield = null;
-    private String lastAirfield = null;
-    private String status = "";
-    private String squadron = null;
-    private boolean needsFerryMission = false;
+    private String newAirfield;
+    private String lastAirfield;
+    private int squadronId;
+    private boolean needsFerryMission;
+    private String squadronName = "";
 
-    public SquadronMoveEvent ()
+    
+    public SquadronMoveEvent(String lastAirfield, String newAirfield, int squadronId, boolean needsFerryMission, Date date, boolean isNewsWorthy)
     {
+        super(date, isNewsWorthy);
+        this.lastAirfield = lastAirfield;
+        this.newAirfield = newAirfield;
+        this.squadronId = squadronId;
+        this.needsFerryMission = needsFerryMission;
+        
+        try
+        {
+            SquadronManager squadronManager = PWCGContext.getInstance().getSquadronManager();
+            Squadron squadron = squadronManager.getSquadron(squadronId);
+            if (squadron != null)
+            {
+                this.squadronName = squadron.determineDisplayName(date);
+            }
+        }
+        catch (PWCGException e)
+        {
+            this.squadronName = "";
+            e.printStackTrace();
+        }
     }
 
     public String getNewAirfield()
@@ -17,39 +45,14 @@ public class SquadronMoveEvent  extends AAREvent
         return newAirfield;
     }
 
-    public void setNewAirfield(String newAirfield)
-    {
-        this.newAirfield = newAirfield;
-    }
-
     public String getLastAirfield()
     {
         return lastAirfield;
     }
 
-    public void setLastAirfield(String lastAirfield)
+    public int getSquadronId()
     {
-        this.lastAirfield = lastAirfield;
-    }
-
-    public String getStatus()
-    {
-        return status;
-    }
-
-    public void setStatus(String status)
-    {
-        this.status = status;
-    }
-
-    public String getSquadron()
-    {
-        return squadron;
-    }
-
-    public void setSquadron(String squadron)
-    {
-        this.squadron = squadron;
+        return squadronId;
     }
 
     public boolean isNeedsFerryMission()
@@ -57,8 +60,8 @@ public class SquadronMoveEvent  extends AAREvent
         return needsFerryMission;
     }
 
-    public void setNeedsFerryMission(boolean needsFerryMission)
+    public String getSquadronName()
     {
-        this.needsFerryMission = needsFerryMission;
+        return squadronName;
     }
 }

@@ -31,15 +31,11 @@ public class SquadronMoveHandler
         
         if (!airfieldNameNext.equalsIgnoreCase(airfieldNameNow))
         {
-            
-            squadronMoveEvent = new SquadronMoveEvent();
-            squadronMoveEvent.setLastAirfield(squadron.determineCurrentAirfieldAnyMap(campaign.getDate()).getName());
-            squadronMoveEvent.setNewAirfield(squadron.determineCurrentAirfieldAnyMap(newDate).getName());
-            squadronMoveEvent.setDate(campaign.getDate());
-            squadronMoveEvent.setSquadron(squadron.determineDisplayName(campaign.getDate()));
-            
+            String lastAirfield = squadron.determineCurrentAirfieldAnyMap(campaign.getDate()).getName();
+            String newAirfield = squadron.determineCurrentAirfieldAnyMap(newDate).getName();
             boolean needsFerry = needsFerryMission(airfieldNameNow, airfieldNameNext);
-            squadronMoveEvent.setNeedsFerryMission(needsFerry);
+            boolean isNewsworthy = false;
+            squadronMoveEvent = new SquadronMoveEvent(lastAirfield, newAirfield, squadron.getSquadronId(), needsFerry, newDate, isNewsworthy);
         }
         
         return squadronMoveEvent;

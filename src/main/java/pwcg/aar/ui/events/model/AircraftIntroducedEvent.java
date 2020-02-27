@@ -1,18 +1,19 @@
 package pwcg.aar.ui.events.model;
 
-public class AircraftIntroducedEvent  extends AAREvent
+import java.util.Date;
+
+public class AircraftIntroducedEvent extends AAREvent
 {
-	private String aircraft = "";
+    private String aircraftType = "";
 
-	public AircraftIntroducedEvent ()
-	{
-	}
+    public AircraftIntroducedEvent(String aircraftType, Date date, boolean isNewsWorthy)
+    {
+        super(date, isNewsWorthy);
+        this.aircraftType = aircraftType;
+    }
 
-	public String getAircraft() {
-		return aircraft;
-	}
-
-	public void setAircraft(String aircraft) {
-		this.aircraft = aircraft;
-	}
+    public String getAircraft()
+    {
+        return aircraftType;
+    }
 }

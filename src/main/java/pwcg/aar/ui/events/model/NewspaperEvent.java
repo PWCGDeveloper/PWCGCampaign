@@ -1,5 +1,7 @@
 package pwcg.aar.ui.events.model;
 
+import java.util.Date;
+
 import pwcg.campaign.api.Side;
 
 public class NewspaperEvent  extends AAREvent
@@ -7,8 +9,11 @@ public class NewspaperEvent  extends AAREvent
 	private String newspaperFile = "";
 	private Side side;
 
-	public NewspaperEvent ()
+    public NewspaperEvent(String newspaperFile, Side side, Date date, boolean isNewsWorthy)
 	{
+        super(date, isNewsWorthy);
+        this.newspaperFile = newspaperFile;
+        this.side = side;
 	}
 
 	public String getNewspaperFile() 
@@ -16,18 +21,8 @@ public class NewspaperEvent  extends AAREvent
 		return newspaperFile;
 	}
 
-	public void setNewspaperFile(String newspaperFile) 
-	{
-		this.newspaperFile = newspaperFile;
-	}
-
 	public Side getSide() 
 	{
 		return side;
-	}
-
-	public void setSide(Side side)
-	{
-		this.side = side;
 	}
 }

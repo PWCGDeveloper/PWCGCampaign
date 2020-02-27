@@ -8,7 +8,6 @@ import pwcg.aar.ui.events.model.MedalEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.medals.Medal;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
 public class MedalEventGenerator
@@ -43,21 +42,13 @@ public class MedalEventGenerator
     
     private MedalEvent makeMedalEvent(SquadronMember pilot, Medal medal) throws PWCGException
     {
-        MedalEvent medalEvent = new MedalEvent(pilot.getSquadronId(),pilot.getSerialNumber());
-        medalEvent.setPilotName(pilot.getNameAndRank());
-        medalEvent.setMedal(medal.getMedalName());
-        medalEvent.setDate(campaign.getDate());
-        Squadron squadron = pilot.determineSquadron();
-        if (squadron != null)
-        {
-            medalEvent.setSquadron(squadron.determineDisplayName(campaign.getDate()));
-        }
-        
+        boolean isNewsworthy = true;
         if (medal.getMedalName().contains("Pilots Badge"))
         {
-            medalEvent.setNewsWorthy(false);
+            isNewsworthy = false;
         }
-        
+
+        MedalEvent medalEvent = new MedalEvent(campaign, medal.getMedalName(), pilot.getSquadronId(), pilot.getSerialNumber(), campaign.getDate(), isNewsworthy);
         return medalEvent;
     }
 }

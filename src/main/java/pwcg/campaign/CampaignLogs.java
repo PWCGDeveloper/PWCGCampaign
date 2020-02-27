@@ -19,6 +19,7 @@ import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.VictoryDescription;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
@@ -26,13 +27,13 @@ import pwcg.core.utils.Logger.LogLevel;
 
 public class CampaignLogs
 {
-	private Map<String, CampaignLog> campaignLogs = new TreeMap<>();
+	private Map<String, CampaignLog> campaignLogsByDate = new TreeMap<>();
 
 	public CampaignLogs()
 	{
 	}
 
-	public void setCampaignLogs(Campaign campaign, Map<Integer, AAREvent> eventList) throws PWCGException
+	public void parseEventsToCampaignLogs(Campaign campaign, Map<Integer, AAREvent> eventList) throws PWCGException
 	{
 		for (AAREvent event : eventList.values())
 		{
@@ -84,7 +85,7 @@ public class CampaignLogs
 		AircraftIntroducedEvent logEvent = (AircraftIntroducedEvent) event;
 		String planeName = logEvent.getAircraft();
 		String logEntry = "The " + planeName + " has been introduced to the squadron inventory";
-		addCampaignLog(logEvent.getDate(), logEntry);
+		addCampaignLog(logEvent.getDate(), logEntry, Squadron.SQUADRON_ID_ANY);
 	}
 
 	private void addAircraftRetiredToCampaignLogs(AAREvent event)
@@ -92,7 +93,7 @@ public class CampaignLogs
 		AircraftRetiredEvent logEvent = (AircraftRetiredEvent) event;
 		String planeName = logEvent.getAircraft();
 		String logEntry = "The " + planeName + " has been retired from the squadron inventory";
-		addCampaignLog(logEvent.getDate(), logEntry);
+		addCampaignLog(logEvent.getDate(), logEntry, Squadron.SQUADRON_ID_ANY);
 	}
 
 	private void addClaimDeniedToCampaignLogs(Campaign campaign, AAREvent event) throws PWCGException
@@ -100,7 +101,7 @@ public class CampaignLogs
 		ClaimDeniedEvent logEvent = (ClaimDeniedEvent) event;
 		String planeName = logEvent.getType();
 		String logEntry = "A claim for a  " + planeName + ", made by " + logEvent.getPilotName() + ",  has been denied";
-		addCampaignLog(logEvent.getDate(), logEntry);
+		addCampaignLog(logEvent.getDate(), logEntry, logEvent.getSquadronId());
 	}
 
 	private void addMedalToCampaignLogs(AAREvent event)
@@ -108,15 +109,15 @@ public class CampaignLogs
 		MedalEvent logEvent = (MedalEvent) event;
 		String medalName = logEvent.getMedal();
 		String logEntry = "The  " + medalName + " has been awarded to " + logEvent.getPilotName();
-		addCampaignLog(logEvent.getDate(), logEntry);
+		addCampaignLog(logEvent.getDate(), logEntry, logEvent.getSquadronId());
 	}
 
 	private void addSquadronMoveToCampaignLogs(Campaign campaign, AAREvent event) throws PWCGException
 	{
 		SquadronMoveEvent logEvent = (SquadronMoveEvent) event;
 		String airfieldName = logEvent.getNewAirfield();
-		String logEntry = logEvent.getSquadron() + " has moved to " + airfieldName;
-		addCampaignLog(logEvent.getDate(), logEntry);
+		String logEntry = logEvent.getSquadronName() + " has moved to " + airfieldName;
+		addCampaignLog(logEvent.getDate(), logEntry, logEvent.getSquadronId());
 	}
 
 	private void addPromotionToCampaignLogs(AAREvent event)
@@ -124,7 +125,7 @@ public class CampaignLogs
 		PromotionEvent logEvent = (PromotionEvent) event;
 		String newRankName = logEvent.getNewRank();
 		String logEntry = logEvent.getPilotName() + " has been promoted to " + newRankName;
-		addCampaignLog(logEvent.getDate(), logEntry);
+		addCampaignLog(logEvent.getDate(), logEntry, logEvent.getSquadronId());
 	}
 
 	private void addPilotlostToCampaignLogs(AAREvent event)
@@ -133,22 +134,22 @@ public class CampaignLogs
 		if (logEvent.getStatus() == SquadronMemberStatus.STATUS_KIA)
 		{
 			String logEntry = logEvent.getPilotName() + " has been killed in action";
-			addCampaignLog(logEvent.getDate(), logEntry);
+			addCampaignLog(logEvent.getDate(), logEntry, logEvent.getSquadronId());
 		}
 		else if (logEvent.getStatus() == SquadronMemberStatus.STATUS_SERIOUSLY_WOUNDED)
 		{
 			String logEntry = logEvent.getPilotName() + " has been seriously wounded in action";
-			addCampaignLog(logEvent.getDate(), logEntry);
+			addCampaignLog(logEvent.getDate(), logEntry, logEvent.getSquadronId());
 		}
 		else if (logEvent.getStatus() == SquadronMemberStatus.STATUS_WOUNDED)
 		{
 			String logEntry = logEvent.getPilotName() + " has been wounded in action";
-			addCampaignLog(logEvent.getDate(), logEntry);
+			addCampaignLog(logEvent.getDate(), logEntry, logEvent.getSquadronId());
 		}
 		else if (logEvent.getStatus() == SquadronMemberStatus.STATUS_CAPTURED)
 		{
 			String logEntry = logEvent.getPilotName() + " has been made a prisoner of war";
-			addCampaignLog(logEvent.getDate(), logEntry);
+			addCampaignLog(logEvent.getDate(), logEntry, logEvent.getSquadronId());
 		}
 	}
 
@@ -156,7 +157,7 @@ public class CampaignLogs
 	{
 		TransferEvent logEvent = (TransferEvent) event;
 		String logEntry = logEvent.getPilotName() + " has transferred out of the squadron";
-		addCampaignLog(logEvent.getDate(), logEntry);
+		addCampaignLog(logEvent.getDate(), logEntry, logEvent.getSquadronId());
 	}
 
 	private void addVictoryToCampaignLogs(Campaign campaign, AAREvent event) throws PWCGException
@@ -164,47 +165,47 @@ public class CampaignLogs
 		VictoryEvent logEvent = (VictoryEvent) event;
 		VictoryDescription victoryDescription = new VictoryDescription(campaign, logEvent.getVictory());
 		String logEntry = victoryDescription.createVictoryDescription();
-		addCampaignLog(logEvent.getDate(), logEntry);
+		addCampaignLog(logEvent.getDate(), logEntry, logEvent.getSquadronId());
 	}
 
 	private void addAceKilledToCampaignLogs(AAREvent event)
 	{
 		AceKilledEvent logEvent = (AceKilledEvent) event;
 		String logEntry = "The great ace " + logEvent.getPilotName() + " was reported to be killed in action today";
-		addCampaignLog(logEvent.getDate(), logEntry);
+		addCampaignLog(logEvent.getDate(), logEntry, logEvent.getSquadronId());
 	}
 
-	public void addCampaignLog(Date date, String logEntry)
+	private void addCampaignLog(Date date, String logEntry, int squadronId)
 	{
 		Logger.log(LogLevel.DEBUG, "Added log on date " + date + "     " + logEntry);
 		if (date != null)
 		{
 			String dateString = DateUtils.getDateStringYYYYMMDD(date);
 
-			if (!campaignLogs.containsKey(dateString))
+			if (!campaignLogsByDate.containsKey(dateString))
 			{
 				CampaignLog logsForThisDate = new CampaignLog();
 				logsForThisDate.setDate(date);
-				campaignLogs.put(dateString, logsForThisDate);
+				campaignLogsByDate.put(dateString, logsForThisDate);
 			}
 
-			CampaignLog logsForThisDate = campaignLogs.get(DateUtils.getDateStringYYYYMMDD(date));
-			logsForThisDate.addLog(logEntry);
+			CampaignLog logsForThisDate = campaignLogsByDate.get(DateUtils.getDateStringYYYYMMDD(date));
+			logsForThisDate.addLog(logEntry,squadronId);
 		}
 	}
 
 	public List<CampaignLog> retrieveCampaignLogsInDateOrder()
 	{
-		return new ArrayList<>(campaignLogs.values());
+		return new ArrayList<>(campaignLogsByDate.values());
 	}
 
 	public void setCampaignLogs(Map<String, CampaignLog> campaignLogs)
 	{
-		this.campaignLogs = campaignLogs;
+		this.campaignLogsByDate = campaignLogs;
 	}
 
 	public Map<String, CampaignLog> getCampaignLogs()
 	{
-		return campaignLogs;
+		return campaignLogsByDate;
 	}
 }

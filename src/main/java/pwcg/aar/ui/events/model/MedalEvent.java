@@ -1,31 +1,21 @@
 package pwcg.aar.ui.events.model;
 
-public class MedalEvent  extends AARPilotEvent
+import java.util.Date;
+
+import pwcg.campaign.Campaign;
+
+public class MedalEvent extends AARPilotEvent
 {
-	private String medal = "";
-    private int serialNumber = 0;
+    private String medal = "";
 
-    public MedalEvent(int squadronId, int serialNumber)
+    public MedalEvent(Campaign campaign, String medal, int squadronId, int pilotSerialNumber, Date date, boolean isNewsWorthy)
     {
-        super(squadronId);
-        this.serialNumber = serialNumber;
+        super(campaign, squadronId, pilotSerialNumber, date, isNewsWorthy);
+        this.medal = medal;
     }
 
-    public int getSerialNumber()
+    public String getMedal()
     {
-        return serialNumber;
+        return medal;
     }
-
-    public void setSerialNumber(int serialNumber)
-    {
-        this.serialNumber = serialNumber;
-    }
-
-	public String getMedal() {
-		return medal;
-	}
-
-	public void setMedal(String medal) {
-		this.medal = medal;
-	}
 }

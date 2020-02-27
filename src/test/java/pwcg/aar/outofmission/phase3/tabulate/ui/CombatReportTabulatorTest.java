@@ -27,7 +27,10 @@ import pwcg.aar.ui.events.model.PilotStatusEvent;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.plane.PlaneStatus;
+import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SquadronMember;
+import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadron.Squadron;
@@ -42,6 +45,7 @@ public class CombatReportTabulatorTest extends AARTestSetup
     @Mock private PilotStatusEventGenerator pilotStatusEventGenerator;
     @Mock private PlaneStatusEventGenerator planeStatusEventGenerator;
     @Mock private VictoryEventGenerator victoryEventGenerator;
+    @Mock private Victory victory;
 
     private Map<Integer, SquadronMember> campaignMembersInMissionMap = new HashMap<>();
 
@@ -66,31 +70,34 @@ public class CombatReportTabulatorTest extends AARTestSetup
         Mockito.when(campaignMembersInMission.getSquadronMemberCollection()).thenReturn(campaignMembersInMissionMap);
         
         Mockito.when(pwcgMissionData.getMissionHeader()).thenReturn(missionHeader);
+        
+        boolean isNewsWorthy = false;
+        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(campaign, "Any Plane", player.getSquadronId(), player.getSerialNumber(), campaign.getDate(), isNewsWorthy);
 
         List<ClaimDeniedEvent> claimsDenied = new ArrayList<>();
-        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        claimDenied.setPilotName("Any Pilot");
         claimsDenied.add(claimDenied);
         Mockito.when(reconciledVictoryData.getPlayerClaimsDenied()).thenReturn(claimsDenied);
         Mockito.when(reconciledInMissionData.getReconciledVictoryData()).thenReturn(reconciledVictoryData);
         Mockito.when(aarContext.getReconciledInMissionData()).thenReturn(reconciledInMissionData);
 
         List<VictoryEvent> victories = new ArrayList<>();
-        VictoryEvent victoriesForPilot = new VictoryEvent(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        victoriesForPilot.setPilotName("Any Pilot");
-        victories.add(victoriesForPilot);
+        isNewsWorthy = true;
+        VictoryEvent victoryEvent = new VictoryEvent(campaign, victory, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), SerialNumber.AI_STARTING_SERIAL_NUMBER, campaign.getDate(), isNewsWorthy);        
+        victories.add(victoryEvent);
         Mockito.when(victoryEventGenerator.createPilotVictoryEvents(Matchers.<Map<Integer, List<Victory>>>any())).thenReturn(victories);
-        
+                
+        isNewsWorthy = true;
+        PilotStatusEvent pilotStatusEvent = new PilotStatusEvent(campaign, SquadronMemberStatus.STATUS_KIA, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), SerialNumber.AI_STARTING_SERIAL_NUMBER, campaign.getDate(), isNewsWorthy);
+
         Map<Integer, PilotStatusEvent> pilotsLost = new HashMap<>();
-        PilotStatusEvent pilotStatusEvent = new PilotStatusEvent(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        pilotStatusEvent.setPilotName("Any Pilot");
         pilotsLost.put(pilot1.getSerialNumber(), pilotStatusEvent);
         Mockito.when(pilotStatusEventGenerator.createPilotLossEvents(Matchers.<AARPersonnelLosses>any())).thenReturn(pilotsLost);
-        
-        
+
+        boolean isNewsworthy = true;
+        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent(99999, SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), PlaneStatus.STATUS_DESTROYED, 
+                 campaign.getDate(), isNewsworthy);
+
         Map<Integer, PlaneStatusEvent> planesLost = new HashMap<>();
-        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        planeStatusEvent.setPlaneSerialNumber(99999);
         planesLost.put(plane1.getSerialNumber(), planeStatusEvent);
         Mockito.when(planeStatusEventGenerator.createPlaneLossEvents(Matchers.<AAREquipmentLosses>any())).thenReturn(planesLost);
 

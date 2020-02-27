@@ -6,10 +6,8 @@ import java.util.Map;
 
 import pwcg.aar.ui.events.model.VictoryEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.Victory;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
 public class VictoryEventGenerator
@@ -44,14 +42,8 @@ public class VictoryEventGenerator
 
     private VictoryEvent makeVictoryEvent(SquadronMember pilot, Victory victory) throws PWCGException
     {
-        VictoryEvent victoryEvent = new VictoryEvent(pilot.getSquadronId());
-        victoryEvent.setPilotName(pilot.getNameAndRank());
-        victoryEvent.setDate(campaign.getDate());
-        Squadron squadronName = PWCGContext.getInstance().getSquadronManager().getSquadron(pilot.getSquadronId());
-        victoryEvent.setSquadron(squadronName.determineDisplayName(campaign.getDate()));
-
-        victoryEvent.setVictory(victory);
-        
+        boolean isNewsWorthy = true;
+        VictoryEvent victoryEvent = new VictoryEvent(campaign, victory, pilot.getSquadronId(), pilot.getSerialNumber(), campaign.getDate(), isNewsWorthy);
         return victoryEvent;
      }
 

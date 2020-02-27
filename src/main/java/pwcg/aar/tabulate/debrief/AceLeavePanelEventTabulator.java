@@ -38,11 +38,11 @@ public class AceLeavePanelEventTabulator
     
     private AceLeaveEvent makeLeaveEvent(TransferRecord aceTransferRecord) throws PWCGException
     {
-        AceLeaveEvent aceLeaveEvent = new AceLeaveEvent((aceTransferRecord.getSquadronMember().getSquadronId()));
-        aceLeaveEvent.setPilotName(aceTransferRecord.getSquadronMember().getNameAndRank());
-        aceLeaveEvent.setDate(campaign.getDate());
-        aceLeaveEvent.setSquadron(SquadronMemberStatus.ON_LEAVE_STATUS);
-        
+        int aceSerialNumber = aceTransferRecord.getSquadronMember().getSerialNumber();
+        int aceSquadronId = aceTransferRecord.getSquadronMember().getSquadronId();
+        boolean isNewsworthy = false;
+        AceLeaveEvent aceLeaveEvent = new AceLeaveEvent(campaign, SquadronMemberStatus.ON_LEAVE_STATUS, aceSquadronId, aceSerialNumber, campaign.getDate(), isNewsworthy);
+
         return aceLeaveEvent;
     }
 }

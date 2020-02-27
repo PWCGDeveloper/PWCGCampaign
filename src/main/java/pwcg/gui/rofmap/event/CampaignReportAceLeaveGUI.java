@@ -27,10 +27,10 @@ public class CampaignReportAceLeaveGUI extends CampaignDocumentGUI
 
     protected String getBodyText() throws PWCGException
     {
-        String transferMessage = "Squadron: " + aceLeaveEvent.getSquadron() + "\n";
+        String transferMessage = "Squadron: " + aceLeaveEvent.getSquadronName() + "\n";
         transferMessage += "Date: " + DateUtils.getDateStringPretty(aceLeaveEvent.getDate()) + "\n";
         transferMessage += aceLeaveEvent.getPilotName() + 
-                        " has been granted leave from " + aceLeaveEvent.getSquadron()  + "\n";
+                        " has been granted leave from " + aceLeaveEvent.getSquadronName()  + "\n";
 
 
         return transferMessage;

@@ -47,7 +47,7 @@ public class AcesKilledEventGenerator
         return aceKilledEvents;
     }
     
-    private AceKilledEvent makeAceKilledEvent(SquadronMember ace, Squadron squad) throws PWCGException
+    private AceKilledEvent makeAceKilledEvent(SquadronMember ace, Squadron aceSquadron) throws PWCGException
     {
         AceKilledEvent aceKilledEvent = null;
         
@@ -55,17 +55,10 @@ public class AcesKilledEventGenerator
         {
             String status = SquadronMemberStatus.pilotStatusToStatusDescription(ace.getPilotActiveStatus());
     
-            aceKilledEvent = new AceKilledEvent(ace.getSquadronId(), ace.getSerialNumber());
-    
-            aceKilledEvent.setPilotName(ace.getNameAndRank());
-            aceKilledEvent.setDate(campaign.getDate());
-            String squadName = "";
-            if (!(squad == null))           
-            {
-                squadName = squad.determineDisplayName(campaign.getDate());
-            }
-            aceKilledEvent.setSquadron(squadName);
-            aceKilledEvent.setStatus(status);
+            int aceSerialNumber = ace.getSerialNumber();
+            int aceSquadronId = aceSquadron.getSquadronId();
+            boolean isNewsworthy = true;
+            aceKilledEvent = new AceKilledEvent(campaign, status, aceSquadronId, aceSerialNumber, campaign.getDate(), isNewsworthy);
         }
         
         return aceKilledEvent;

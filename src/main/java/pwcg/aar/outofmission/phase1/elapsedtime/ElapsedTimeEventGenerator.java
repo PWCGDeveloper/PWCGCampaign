@@ -37,7 +37,8 @@ public class ElapsedTimeEventGenerator
         Date theEnd = DateUtils.getEndOfWar();
         if (!aarContext.getNewDate().before(theEnd))
         {
-            EndOfWarEvent endOfWarEvent = new EndOfWarEvent();
+            boolean isNewsworthy = true;
+            EndOfWarEvent endOfWarEvent = new EndOfWarEvent(theEnd, isNewsworthy);
             elapsedTimeEvents.setEndOfWarEvent(endOfWarEvent);
             return true;
         }

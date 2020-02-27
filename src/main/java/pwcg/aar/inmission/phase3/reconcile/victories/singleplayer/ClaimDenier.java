@@ -33,11 +33,8 @@ public class ClaimDenier
         String planeDesc = getPlaneDescription(declaration);
         SquadronMember player = campaign.getPersonnelManager().getAnyCampaignMember(playerSerialNumber);
         
-        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(player.getSquadronId()); 
-        claimDenied.setDate(campaign.getDate());
-        claimDenied.setSquadron(player.determineSquadron().determineDisplayName(campaign.getDate()));
-        claimDenied.setType(planeDesc);
-        claimDenied.setPilotName(player.getNameAndRank());
+        boolean isNewsworthy = false;
+        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(campaign, planeDesc, player.getSquadronId(), player.getSerialNumber(), campaign.getDate(), isNewsworthy);
         
         return claimDenied;
     }

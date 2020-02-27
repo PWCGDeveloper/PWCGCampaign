@@ -44,16 +44,37 @@ public class CampaignIOJson
 
         if (campaign.isValidCampaignForProduct())
         {
-            JsonObjectReader<CampaignAces> jsoReader3 = new JsonObjectReader<>(CampaignAces.class);
-            CampaignAces campaignAces = jsoReader3.readJsonFile(campaignDir, "CampaignAces.json"); 
-            campaign.getPersonnelManager().setCampaignAces(campaignAces);
-    
-            JsonObjectReader<CampaignLogs> jsonWriter4 = new JsonObjectReader<>(CampaignLogs.class);
-            CampaignLogs campaignLogs = jsonWriter4.readJsonFile(campaignDir, "CampaignLog.json"); 
-            campaign.setCampaignLogs(campaignLogs);
+            readCampaignAces(campaign, campaignDir);
+            readCampaignLogs(campaign, campaignDir);
     
             CampaignPersonnelIOJson.readJson(campaign);
             CampaignEquipmentOJson.readJson(campaign);
+        }
+    }
+
+    private static void readCampaignAces(Campaign campaign, String campaignDir) throws PWCGException
+    {
+        JsonObjectReader<CampaignAces> jsoReader3 = new JsonObjectReader<>(CampaignAces.class);
+        CampaignAces campaignAces = jsoReader3.readJsonFile(campaignDir, "CampaignAces.json"); 
+        campaign.getPersonnelManager().setCampaignAces(campaignAces);
+    }
+
+    private static void readCampaignLogs(Campaign campaign, String campaignDir) throws PWCGException
+    {
+        try
+        {
+            JsonObjectReader<CampaignLogs> jsonWriter4 = new JsonObjectReader<>(CampaignLogs.class);
+            CampaignLogs campaignLogs = jsonWriter4.readJsonFile(campaignDir, "CampaignLog.json"); 
+            campaign.setCampaignLogs(campaignLogs);
+        }
+        catch (Exception exp)
+        {
+            File file = new File(campaignDir + "\\CampaignLog.json");
+            if (file.exists())
+            {
+                boolean wasDeleted = file.delete();
+                System.out.println("was deleted " + wasDeleted);
+            }
         }
     }
 }

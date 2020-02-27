@@ -21,7 +21,6 @@ import pwcg.aar.MissionResultLogFileCleaner;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBase;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
-import pwcg.aar.ui.events.model.AARPilotEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -273,9 +272,8 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
         if (!logEvents.isEmpty())
         {
-            AARMainPanel eventDisplay = new AARMainPanel(campaign, home, EventPanelReason.EVENT_PANEL_REASON_AAR, new AARPilotEvent(referencePlayer.getSquadronId()));
+            AARMainPanel eventDisplay = new AARMainPanel(campaign, home, EventPanelReason.EVENT_PANEL_REASON_AAR);
             eventDisplay.makePanels();
-            
             CampaignGuiContextManager.getInstance().pushToContextStack(eventDisplay);
         }
         else

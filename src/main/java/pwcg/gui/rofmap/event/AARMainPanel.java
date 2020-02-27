@@ -10,7 +10,6 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import pwcg.aar.ui.events.model.AARPilotEvent;
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
@@ -37,7 +36,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
 
     private int currentPanelIndex = 0;
     private EventPanelReason reasonToAdvanceTime = EventPanelReason.EVENT_PANEL_REASON_AAR;
-    private AARPilotEvent pilotEventForAdvancingTime;
+    private TransferEvent transferEventForTimeDueToTransfer = null;
     
     public enum EventPanelReason
     {
@@ -46,15 +45,25 @@ public class AARMainPanel extends AARPanel implements ActionListener
         EVENT_PANEL_REASON_TRANSFER
     }
     
-	public AARMainPanel(Campaign campaign, CampaignHomeGUI home, EventPanelReason reasonToAdvanceTime, AARPilotEvent pilotEventForAdvancingTime)
-	{
+    public AARMainPanel(Campaign campaign, CampaignHomeGUI home, EventPanelReason reasonToAdvanceTime)
+    {
         super();
 
         this.campaign = campaign;
         this.home = home;
         this.reasonToAdvanceTime = reasonToAdvanceTime;
-        this.pilotEventForAdvancingTime = pilotEventForAdvancingTime;
-	}
+        this.transferEventForTimeDueToTransfer = null;
+    }
+    
+    public AARMainPanel(Campaign campaign, CampaignHomeGUI home, EventPanelReason reasonToAdvanceTime, TransferEvent transferEventForTimeDueToTransfer)
+    {
+        super();
+
+        this.campaign = campaign;
+        this.home = home;
+        this.reasonToAdvanceTime = reasonToAdvanceTime;
+        this.transferEventForTimeDueToTransfer = transferEventForTimeDueToTransfer;
+    }
 
 	public void makePanels() throws PWCGException  
 	{        
@@ -171,8 +180,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
         }
         else if (reasonToAdvanceTime == EventPanelReason.EVENT_PANEL_REASON_TRANSFER)
         {
-            TransferEvent transferEvent = (TransferEvent)pilotEventForAdvancingTime;
-            AARTransferPanel leaveReportPanelSet = new AARTransferPanel(campaign, transferEvent);
+            AARTransferPanel leaveReportPanelSet = new AARTransferPanel(campaign, transferEventForTimeDueToTransfer);
             allEventPanels.add(leaveReportPanelSet);
         }
     }

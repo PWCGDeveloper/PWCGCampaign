@@ -54,7 +54,7 @@ public class FranceAttackMockCampaign
 
         date = DateUtils.getDateYYYYMMDD("19180501");
         
-        squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(501115);
+        squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(401010);
 
         Mockito.when(campaign.getCampaignConfigManager()).thenReturn(configManager);
         Mockito.when(campaign.getDate()).thenReturn(date);

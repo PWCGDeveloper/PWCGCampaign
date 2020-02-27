@@ -102,10 +102,8 @@ public class NewspaperEventGenerator
 
     private NewspaperEvent makeNewspaperEvent(String newspaperDir, String filename, Date newsPaperDate, Side side)
     {
-        NewspaperEvent newspaperEvent = new NewspaperEvent();
-        newspaperEvent.setDate(newsPaperDate);
-        newspaperEvent.setSide(side);
-        newspaperEvent.setNewspaperFile(newspaperDir + "\\" + filename);
+        boolean isNewsworthy = true;
+        NewspaperEvent newspaperEvent = new NewspaperEvent(filename, side, newsPaperDate, isNewsworthy);
         return newspaperEvent;
     }
 

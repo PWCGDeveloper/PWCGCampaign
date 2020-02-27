@@ -1,14 +1,21 @@
 package pwcg.aar.ui.events.model;
 
+import java.util.Date;
+
+import pwcg.campaign.Campaign;
+
 public class TransferEvent extends AARPilotEvent
 {
     private int transferFrom;
     private int transferTo;
     private int leaveTime = 0;
 	
-    public TransferEvent(int squadronId)
+    public TransferEvent(Campaign campaign, int transferFrom, int transferTo, int leaveTime, int pilotSerialNumber, Date date, boolean isNewsWorthy)
     {
-        super(squadronId);
+        super(campaign, transferTo, pilotSerialNumber, date, isNewsWorthy);
+        this.transferFrom = transferFrom;
+        this.transferTo = transferTo;
+        this.leaveTime = leaveTime;
     }
 
 	public int getTransferTo()
@@ -16,28 +23,13 @@ public class TransferEvent extends AARPilotEvent
         return transferTo;
     }
 
-	public void setTransferTo(int transferTo)
-    {
-        this.transferTo = transferTo;
-    }
-
     public int getTransferFrom()
     {
         return this.transferFrom;
     }
 
-    public void setTransferFrom(int transferFrom)
-    {
-        this.transferFrom = transferFrom;
-    }
-
     public int getLeaveTime()
     {
         return leaveTime;
-    }
-
-    public void setLeaveTime(int leaveTime)
-    {
-        this.leaveTime = leaveTime;
     }
 }

@@ -7,17 +7,7 @@ import java.util.List;
 public class CampaignLog
 {
 	Date date;
-	List<String> logs = new ArrayList<>();
-
-
-	public void addLog(String log)
-	{
-		logs.add(log);
-	}
-
-	public CampaignLog()
-	{
-	}
+	List<CampaignLogEntry> logs = new ArrayList<>();
 
 	public Date getDate()
 	{
@@ -29,14 +19,17 @@ public class CampaignLog
 		this.date = date;
 	}
 
-	public List<String> getLogs()
+	public List<CampaignLogEntry> getLogs()
 	{
 		return logs;
 	}
 
-	public void setLogs(List<String> logs)
+	public void addLog(String logEntryText, int squadronId)
 	{
-		this.logs = logs;
+	    CampaignLogEntry logEntry = new CampaignLogEntry();
+	    logEntry.setLog(logEntryText);
+	    logEntry.setSquadronId(squadronId);
+        logs.add(logEntry);
 	}
 
 	

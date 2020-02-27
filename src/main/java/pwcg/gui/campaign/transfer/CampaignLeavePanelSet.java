@@ -26,7 +26,6 @@ import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
-import pwcg.gui.rofmap.event.AARMainPanel.EventPanelReason;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -208,11 +207,9 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
         SoundManager.getInstance().playSound("Stapling.WAV");
 
         int leaveTimeDays = getLeaveTime();
-
-        LeaveEvent leaveEvent = new LeaveEvent(referencePlayer.getSquadronId());
-        leaveEvent.setLeaveTime(leaveTimeDays);
-
-        parent.campaignTimePassed(leaveEvent.getLeaveTime(), leaveEvent, EventPanelReason.EVENT_PANEL_REASON_LEAVE);
+        boolean isNewsWorthy = false;
+        LeaveEvent leaveEvent = new LeaveEvent(campaign, leaveTimeDays, referencePlayer.getSquadronId(), referencePlayer.getSerialNumber(), campaign.getDate(), isNewsWorthy);
+        parent.campaignTimePassedForLeave(leaveEvent.getLeaveTime());
     }
 
 	public int getLeaveTime()  throws PWCGUserException, Exception

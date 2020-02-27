@@ -42,7 +42,6 @@ import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
-import pwcg.gui.rofmap.event.AARMainPanel.EventPanelReason;
 import pwcg.gui.sound.SoundManager;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -521,7 +520,7 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
     {
         if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
         {
-            parent.campaignTimePassed(transferEvent.getLeaveTime(), transferEvent, EventPanelReason.EVENT_PANEL_REASON_TRANSFER);
+            parent.campaignTimePassedForTransfer(transferEvent.getLeaveTime(), transferEvent);
         }
         else
         {

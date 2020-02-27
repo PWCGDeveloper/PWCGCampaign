@@ -156,7 +156,7 @@ public class SquadronAirfieldAssignmentTest
             airfieldDatesForSquadron.add(DateUtils.getDateStringYYYYMMDD(airfieldDate));
         }
         
-        List<String> frontDatesForSquadron = getDatesFromFirstAppearance(airfieldDatesForSquadron.get(0));
+        List<String> frontDatesForSquadron = getExpectedMoveDates(airfieldDatesForSquadron.get(0));
         for (int i = 0; i < airfieldDatesForSquadron.size(); ++i)
         {
             try
@@ -175,7 +175,7 @@ public class SquadronAirfieldAssignmentTest
             }
             catch (Exception e)
             {
-                System.out.println(e.getMessage());
+                e.printStackTrace();
                 success = false;
             }
         }
@@ -183,7 +183,7 @@ public class SquadronAirfieldAssignmentTest
         return success;
     }
 
-    private List<String> getDatesFromFirstAppearance(String startDate)
+    private List<String> getExpectedMoveDates(String startDate)
     {
         List<String>datesFromFirstAppearance = new ArrayList<>();
         boolean startDateFound = false;

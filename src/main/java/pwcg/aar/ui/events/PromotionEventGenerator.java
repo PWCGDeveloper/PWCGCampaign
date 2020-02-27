@@ -11,7 +11,6 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.squadmember.PilotNames;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
 public class PromotionEventGenerator
@@ -42,23 +41,12 @@ public class PromotionEventGenerator
 
     private PromotionEvent makePromotionEvent(SquadronMember pilot, String newRank) throws PWCGException
     {
-        PromotionEvent promotionEvent = new PromotionEvent(pilot.getSquadronId(), pilot.getSerialNumber());
-        promotionEvent.setPilotName(pilot.getNameAndRank());
-        Squadron squadron = pilot.determineSquadron();
-        if (squadron != null)
-        {
-            promotionEvent.setSquadron(squadron.determineDisplayName(campaign.getDate()));
-        }
-        
-        promotionEvent.setOldRank(pilot.getRank());
-        promotionEvent.setNewRank(newRank);
-        promotionEvent.setDate(campaign.getDate());
-
+        boolean isNewsworthy = true;
+        String oldRank = pilot.getRank();
         Map<String, String> namesUsed = new HashMap<String, String>();
         ICountry country = CountryFactory.makeCountryByCountry(pilot.getCountry());
         String promotingGeneral = PilotNames.getInstance().getName(country, namesUsed);
-        promotionEvent.setPromotingGeneral(promotingGeneral);
-        
+        PromotionEvent promotionEvent = new PromotionEvent(campaign, oldRank, newRank, promotingGeneral, pilot.getSquadronId(), pilot.getSerialNumber(), campaign.getDate(), isNewsworthy);
         return promotionEvent;
     }
 }

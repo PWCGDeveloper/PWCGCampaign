@@ -38,7 +38,7 @@ public class Campaign
     private Mission currentMission = null;    
     private CampaignPersonnelManager personnelManager = null;
     private CampaignEquipmentManager equipmentManager = new CampaignEquipmentManager();
-    private SquadronMoveEvent squadronMoveEvent = new SquadronMoveEvent();
+    private SquadronMoveEvent squadronMoveEvent = null;
 
     public Campaign() 
     {
@@ -292,11 +292,6 @@ public class Campaign
         return campaignData.getSerialNumber();
     }
 
-    public void resetFerryMission()
-    {
-        this.squadronMoveEvent = new SquadronMoveEvent();
-    }
-
 	public CampaignData getCampaignData()
 	{
 		return campaignData;
@@ -345,11 +340,6 @@ public class Campaign
 	public SquadronMoveEvent getSquadronMoveEvent()
 	{
 		return squadronMoveEvent;
-	}
-
-	public void setSquadronMoveEvent(SquadronMoveEvent squadronMoveEvent)
-	{
-		this.squadronMoveEvent = squadronMoveEvent;
 	}
 
     public CampaignEquipmentManager getEquipmentManager()

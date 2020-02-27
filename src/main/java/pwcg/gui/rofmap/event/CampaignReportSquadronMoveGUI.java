@@ -25,9 +25,9 @@ public class CampaignReportSquadronMoveGUI extends CampaignDocumentGUI
 
     protected String getBodyText() throws PWCGException
     {
-        String squadronMoveText = "Squadron: " + squadronMoveEvent.getSquadron() + "\n";
+        String squadronMoveText = "Squadron: " + squadronMoveEvent.getSquadronName() + "\n";
         squadronMoveText += "Date: " + DateUtils.getDateStringPretty(squadronMoveEvent.getDate()) + "\n";
-        squadronMoveText += squadronMoveEvent.getSquadron() + 
+        squadronMoveText += squadronMoveEvent.getSquadronName() + 
                         " has been moved to " + squadronMoveEvent.getNewAirfield() + ".\n";   
         
         

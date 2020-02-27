@@ -1,6 +1,7 @@
 package pwcg.campaign.io.json;
 
 import java.io.FileReader;
+import java.io.IOException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -20,10 +21,10 @@ public class JsonObjectReader<T>
     
 	public T readJsonFile(String directory, String filename) throws PWCGException
 	{
+        JsonReader reader = null;
 		try
 		{
 		    Gson gson= new GsonBuilder().setPrettyPrinting().setDateFormat("yyyyMMdd").create();
-			JsonReader reader;
 			String filepath = directory + filename;
 			reader = new JsonReader(new FileReader(filepath));
 			T object = gson.fromJson(reader, typeParameterClass);
@@ -32,6 +33,17 @@ public class JsonObjectReader<T>
 		} 
 		catch (Exception e)
 		{
+            try
+            {
+                if (reader != null)
+                {
+                    reader.close();
+                }
+            }
+            catch (IOException e1)
+            {
+                e1.printStackTrace();
+            }
             Logger.logException(e);
             throw new PWCGException(e.getMessage());
 		}

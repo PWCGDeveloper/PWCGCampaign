@@ -1,19 +1,20 @@
 package pwcg.aar.ui.events.model;
 
-public class AceLeaveEvent  extends AARPilotEvent
+import java.util.Date;
+
+import pwcg.campaign.Campaign;
+
+public class AceLeaveEvent extends AARPilotEvent
 {
 	private String status = "";
 
-    public AceLeaveEvent(int squadronId)
+    public AceLeaveEvent(Campaign campaign, String status, int squadronId, int pilotSerialNumber, Date date, boolean isNewsWorthy)
     {
-        super(squadronId);
+        super(campaign, squadronId, pilotSerialNumber, date, isNewsWorthy);
+        this.status = status;
     }
 
     public String getStatus() {
 		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 }

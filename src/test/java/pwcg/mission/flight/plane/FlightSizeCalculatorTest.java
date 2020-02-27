@@ -113,7 +113,7 @@ public class FlightSizeCalculatorTest
         
 		FlightSizeCalculator flightSizeCalculator = new FlightSizeCalculator(flightInformation);
 		int planesInFlight = flightSizeCalculator.calcPlanesInFlight();
-		assert(planesInFlight >= 1 && planesInFlight <= 3);
+		assert(planesInFlight >= 1);
 	}
 
     @Test

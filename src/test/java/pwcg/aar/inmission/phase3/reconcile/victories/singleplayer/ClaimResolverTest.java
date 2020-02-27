@@ -110,7 +110,10 @@ public class ClaimResolverTest
     @Test
     public void testClaimDenied() throws PWCGException
     {
-        Mockito.when(claimDenier.determineClaimDenied(Matchers.<Integer>any(), Matchers.<PlayerVictoryDeclaration>any())).thenReturn(new ClaimDeniedEvent(SquadronTestProfile.ESC_103_PROFILE.getSquadronId()));
+        boolean isNewsworthy = false;
+        ClaimDeniedEvent claimDenied = new ClaimDeniedEvent(campaign, "Any Plane", SquadronTestProfile.ESC_103_PROFILE.getSquadronId(), SerialNumber.PLAYER_STARTING_SERIAL_NUMBER, campaign.getDate(), isNewsworthy);
+
+        Mockito.when(claimDenier.determineClaimDenied(Matchers.<Integer>any(), Matchers.<PlayerVictoryDeclaration>any())).thenReturn(claimDenied);
 
         IClaimResolver claimResolver = new ClaimResolverSinglePlayer(campaign, verifiedVictoryGenerator, claimDenier, playerDeclarations);
         ReconciledVictoryData reconciledMissionData = claimResolver.resolvePlayerClaims();
