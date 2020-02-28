@@ -5,7 +5,7 @@
   "primaryUsedBy": [
     "GERMANY"
   ],
-  "displayName": "Me-262 A",
+  "displayName": "Me 262 A",
   "script": "LuaScripts\\WorldObjects\\Planes\\me262a.txt",
   "model": "graphics\\planes\\fw190a3\\me262a.mgm",
   "desc": "",
