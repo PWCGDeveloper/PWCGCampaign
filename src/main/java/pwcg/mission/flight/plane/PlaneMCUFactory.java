@@ -98,7 +98,7 @@ public class PlaneMCUFactory
 
 	private void setPlaceInFormation(int numInFormation, PlaneMcu aiPlane)
 	{
-		if (flightInformation.getFlightParticipatingPlayers().size() == 0)
+		if (flightInformation.isVirtual())
 		{
 		    aiPlane.setNumberInFormation(NUM_IN_FORMATION_START);
 		}

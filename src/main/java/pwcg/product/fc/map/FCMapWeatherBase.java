@@ -101,10 +101,14 @@ public class FCMapWeatherBase extends MapWeather
      * @param frontMap
      * @return
      */
-    protected void setTemperature(int month, FrontMapIdentifier frontMap)
+    protected void setTemperature(Date date, FrontMapIdentifier frontMap)
     {
         temperature = 25;
         
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int month = calendar.get(Calendar.MONTH) + 1;
+
         if (month == 1)
         {
             temperature = -10 +  RandomNumberGenerator.getRandom(15);
