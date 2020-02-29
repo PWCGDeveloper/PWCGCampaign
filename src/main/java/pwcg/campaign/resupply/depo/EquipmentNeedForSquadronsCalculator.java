@@ -11,12 +11,12 @@ import pwcg.campaign.resupply.SquadronNeedFactory;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
-public class EquipmentReplacementWeightNeed
+public class EquipmentNeedForSquadronsCalculator
 {
     private Campaign campaign;
     private SquadronNeedFactory squadronNeedFactory;
     
-    public EquipmentReplacementWeightNeed (Campaign campaign, SquadronNeedFactory squadronNeedFactory)
+    public EquipmentNeedForSquadronsCalculator (Campaign campaign, SquadronNeedFactory squadronNeedFactory)
     {
         this.campaign = campaign;
         this.squadronNeedFactory = squadronNeedFactory;

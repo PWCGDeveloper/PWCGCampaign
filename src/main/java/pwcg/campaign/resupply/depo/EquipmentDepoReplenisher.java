@@ -38,7 +38,7 @@ public class EquipmentDepoReplenisher
         {
             PlaneEquipmentFactory equipmentFactory = new PlaneEquipmentFactory(campaign);
             EquipmentDepo depo = campaign.getEquipmentManager().getEquipmentReplacementsForService(service.getServiceId());
-            addReplacementPlanes(service, squadronsForService, equipmentFactory, depo);
+            addReplacementPlanesForService(service, squadronsForService, equipmentFactory, depo);
         }
         else
         {
@@ -52,32 +52,52 @@ public class EquipmentDepoReplenisher
         return squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
     }
 
-    private void addReplacementPlanes(
+    private void addReplacementPlanesForService(
             ArmedService service, 
             List<Squadron> squadronsForService, 
             PlaneEquipmentFactory equipmentFactory,
             EquipmentDepo depo) throws PWCGException
     {
-        int numPlanes = depo.getEquipmentPoints() / 10;
-        for (int i = 0; i < numPlanes; ++i)
-        {
-            PlaneArchType planeArchType = getArchTypeForReplacement(service, squadronsForService);
-            String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign.getDate(), planeArchType);
-            EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepo(planeTypeName);
-            depo.getEquipment().addEquippedPlane(equippedPlane);
-            depo.setLastReplacementDate(campaign.getDate());
-        }
-        
+        replacePlanesInDepo(squadronsForService, equipmentFactory, depo);        
+        updatePlaneReplacementPoints(service, depo);
+    }
+
+    private void updatePlaneReplacementPoints(ArmedService service, EquipmentDepo depo)
+    {
         int newPoints = service.getDailyEquipmentReplacementRate();
         int remainingPoints = depo.getEquipmentPoints() % 10;
         int updatedEquipmentPoints = newPoints + remainingPoints;
         depo.setEquipmentPoints(updatedEquipmentPoints);
     }
 
-    private PlaneArchType getArchTypeForReplacement(ArmedService service, List<Squadron> squadronsForService) throws PWCGException
-    {        
-        EquipmentReplacementCalculator equipmentArchtypeReplacementFinder = new EquipmentReplacementCalculator(campaign);
-        String archTypeForReplacementPlane = equipmentArchtypeReplacementFinder.getArchTypeForReplacementPlane(squadronsForService);
+    private void replacePlanesInDepo(List<Squadron> squadronsForService, PlaneEquipmentFactory equipmentFactory, EquipmentDepo depo) throws PWCGException
+    {
+        EquipmentReplacementCalculator equipmentReplacementCalculator = new EquipmentReplacementCalculator(campaign);
+        equipmentReplacementCalculator.createArchTypeForReplacementPlane(squadronsForService);
+
+        int numPlanes = depo.getEquipmentPoints() / 10;
+        for (int i = 0; i < numPlanes; ++i)
+        {
+            PlaneArchType planeArchType = getArchTypeForReplacement(equipmentReplacementCalculator);
+            String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign.getDate(), planeArchType);
+            EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepo(planeTypeName);
+            depo.getEquipment().addEquippedPlane(equippedPlane);
+            depo.setLastReplacementDate(campaign.getDate());
+        }
+    }
+
+    private PlaneArchType getArchTypeForReplacement(EquipmentReplacementCalculator equipmentReplacementCalculator) throws PWCGException
+    {
+        String archTypeForReplacementPlane = "";
+        if (equipmentReplacementCalculator.hasMoreForReplacement()) 
+        {
+            archTypeForReplacementPlane = equipmentReplacementCalculator.chooseArchTypeForReplacementByNeed();
+        }
+        else
+        {
+            archTypeForReplacementPlane = equipmentReplacementCalculator.chooseArchTypeForReplacementByUsage();
+        }
+
         PlaneArchType planeArchType = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneArchType(archTypeForReplacementPlane);
         return planeArchType;
     }

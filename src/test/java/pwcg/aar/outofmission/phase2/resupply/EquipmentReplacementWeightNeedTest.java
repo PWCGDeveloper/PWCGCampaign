@@ -20,7 +20,7 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
 import pwcg.campaign.resupply.SquadronNeedFactory;
 import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
-import pwcg.campaign.resupply.depo.EquipmentReplacementWeightNeed;
+import pwcg.campaign.resupply.depo.EquipmentNeedForSquadronsCalculator;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -54,7 +54,7 @@ public class EquipmentReplacementWeightNeedTest
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
-        EquipmentReplacementWeightNeed equipmentReplacementWeightNeed = new EquipmentReplacementWeightNeed(campaign, squadronNeedFactory);
+        EquipmentNeedForSquadronsCalculator equipmentReplacementWeightNeed = new EquipmentNeedForSquadronsCalculator(campaign, squadronNeedFactory);
         Map<String, Integer> aircraftNeedByArchType = equipmentReplacementWeightNeed.getAircraftNeedByArchType(squadronsForService);
 
         assert(aircraftNeedByArchType.containsKey("bf109"));
@@ -87,7 +87,7 @@ public class EquipmentReplacementWeightNeedTest
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
-        EquipmentReplacementWeightNeed equipmentReplacementWeightNeed = new EquipmentReplacementWeightNeed(campaign, squadronNeedFactory);
+        EquipmentNeedForSquadronsCalculator equipmentReplacementWeightNeed = new EquipmentNeedForSquadronsCalculator(campaign, squadronNeedFactory);
         Map<String, Integer> aircraftNeedByArchType = equipmentReplacementWeightNeed.getAircraftNeedByArchType(squadronsForService);
 
         assert(aircraftNeedByArchType.containsKey("il2"));
@@ -112,7 +112,7 @@ public class EquipmentReplacementWeightNeedTest
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
-        EquipmentReplacementWeightNeed equipmentReplacementWeightNeed = new EquipmentReplacementWeightNeed(campaign, squadronNeedFactory);
+        EquipmentNeedForSquadronsCalculator equipmentReplacementWeightNeed = new EquipmentNeedForSquadronsCalculator(campaign, squadronNeedFactory);
         Map<String, Integer> aircraftNeedByArchType = equipmentReplacementWeightNeed.getAircraftNeedByArchType(squadronsForService);
 
         assert(aircraftNeedByArchType.containsKey("mc200"));

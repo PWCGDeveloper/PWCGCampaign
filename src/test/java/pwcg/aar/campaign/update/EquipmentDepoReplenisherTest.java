@@ -23,7 +23,7 @@ import pwcg.testutils.CampaignCache;
 import pwcg.testutils.SquadronTestProfile;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CampaignEquipmentReplacementUpdaterTest 
+public class EquipmentDepoReplenisherTest 
 {
 	private Campaign campaign;
 	

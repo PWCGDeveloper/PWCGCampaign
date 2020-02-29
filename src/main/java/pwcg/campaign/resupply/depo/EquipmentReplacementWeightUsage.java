@@ -29,6 +29,11 @@ public class EquipmentReplacementWeightUsage
                 List<PlaneArchType> currentAircraftArchTypes = squadron.determineCurrentAircraftArchTypes(campaignDate);
                 for (PlaneArchType planeArchType : currentAircraftArchTypes)
                 {
+                    if (excludeFromWeightedList(planeArchType.getPlaneArchTypeName()))
+                    {
+                        continue;
+                    }
+                    
                     if (!aircraftUsageByArchType.containsKey(planeArchType.getPlaneArchTypeName()))
                     {
                         aircraftUsageByArchType.put(planeArchType.getPlaneArchTypeName(), Integer.valueOf(0)); 
@@ -42,5 +47,14 @@ public class EquipmentReplacementWeightUsage
         }
         
         return aircraftUsageByArchType;
+    }
+    
+    private boolean excludeFromWeightedList(String archType)
+    {
+        if (archType.equalsIgnoreCase("ju52"))
+        {
+            return true;
+        }
+        return false;
     }
 }

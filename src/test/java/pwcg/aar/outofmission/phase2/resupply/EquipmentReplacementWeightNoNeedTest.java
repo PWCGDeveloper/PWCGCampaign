@@ -16,7 +16,7 @@ import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.resupply.SquadronNeedFactory;
 import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
-import pwcg.campaign.resupply.depo.EquipmentReplacementWeightNeed;
+import pwcg.campaign.resupply.depo.EquipmentNeedForSquadronsCalculator;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.testutils.CampaignCache;
@@ -43,7 +43,7 @@ public class EquipmentReplacementWeightNoNeedTest
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
-        EquipmentReplacementWeightNeed equipmentReplacementWeightNeed = new EquipmentReplacementWeightNeed(campaign, squadronNeedFactory);
+        EquipmentNeedForSquadronsCalculator equipmentReplacementWeightNeed = new EquipmentNeedForSquadronsCalculator(campaign, squadronNeedFactory);
         Map<String, Integer> aircraftNeedByArchType = equipmentReplacementWeightNeed.getAircraftNeedByArchType(squadronsForService);
 
         assert(aircraftNeedByArchType.size() == 0);
@@ -57,7 +57,7 @@ public class EquipmentReplacementWeightNoNeedTest
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
-        EquipmentReplacementWeightNeed equipmentReplacementWeightNeed = new EquipmentReplacementWeightNeed(campaign, squadronNeedFactory);
+        EquipmentNeedForSquadronsCalculator equipmentReplacementWeightNeed = new EquipmentNeedForSquadronsCalculator(campaign, squadronNeedFactory);
         Map<String, Integer> aircraftNeedByArchType = equipmentReplacementWeightNeed.getAircraftNeedByArchType(squadronsForService);
 
         assert(aircraftNeedByArchType.size() == 0);
@@ -71,7 +71,7 @@ public class EquipmentReplacementWeightNoNeedTest
         List<Squadron> squadronsForService = squadronManager.getActiveSquadronsForService(campaign.getDate(), service);
         
         SquadronNeedFactory squadronNeedFactory = new SquadronNeedFactory(SquadronNeedType.EQUIPMENT);
-        EquipmentReplacementWeightNeed equipmentReplacementWeightNeed = new EquipmentReplacementWeightNeed(campaign, squadronNeedFactory);
+        EquipmentNeedForSquadronsCalculator equipmentReplacementWeightNeed = new EquipmentNeedForSquadronsCalculator(campaign, squadronNeedFactory);
         Map<String, Integer> aircraftNeedByArchType = equipmentReplacementWeightNeed.getAircraftNeedByArchType(squadronsForService);
 
         assert(aircraftNeedByArchType.size() == 0);
