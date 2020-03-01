@@ -1,4 +1,4 @@
-package pwcg.campaign.resupply.depo;
+package pwcg.campaign.resupply.depot;
 
 import java.util.ArrayList;
 import java.util.Collections;

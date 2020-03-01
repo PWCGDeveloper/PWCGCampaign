@@ -1,9 +1,8 @@
-package pwcg.gui.campaign.depo;
+package pwcg.gui.campaign.depot;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -12,9 +11,8 @@ import javax.swing.JTextArea;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.EquippedPlane;
-import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.plane.Role;
-import pwcg.campaign.resupply.depo.EquipmentDepo;
+import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
@@ -23,14 +21,14 @@ import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImagePanel;
 
-public class CampaignEquipmentDepoPanel extends ImagePanel
+public class CampaignEquipmentDepotPanel extends ImagePanel
 {
 	private static final long serialVersionUID = 1L;
 	
     protected Campaign campaign;
     protected ArmedService service;
     
-	public CampaignEquipmentDepoPanel(Campaign campaign, ArmedService service) throws PWCGException  
+	public CampaignEquipmentDepotPanel(Campaign campaign, ArmedService service) throws PWCGException  
 	{
         super();
         this.campaign = campaign;
@@ -46,7 +44,7 @@ public class CampaignEquipmentDepoPanel extends ImagePanel
             String imagePath = ContextSpecificImages.imagesMisc() + "PaperFull.jpg";
             setImage(imagePath);
             
-            JPanel depoPanel = formDepoText();
+            JPanel depoPanel = formDepotText();
             this.add(depoPanel, BorderLayout.NORTH);
         }
         catch (Exception e)
@@ -56,7 +54,7 @@ public class CampaignEquipmentDepoPanel extends ImagePanel
         }       
     }
 
-    private JPanel formDepoText() throws PWCGException
+    private JPanel formDepotText() throws PWCGException
     {        
         JPanel depoHeaderPanel = formHeader();
         JPanel depoPanel = new JPanel(new BorderLayout());
@@ -67,14 +65,14 @@ public class CampaignEquipmentDepoPanel extends ImagePanel
         depoBodyPanel.setOpaque(false);
         depoPanel.add(depoBodyPanel, BorderLayout.CENTER);
 
-        createDepoForRole(Role.ROLE_FIGHTER, depoBodyPanel);
-        createDepoForRole(Role.ROLE_ATTACK, depoBodyPanel);
-        createDepoForRole(Role.ROLE_DIVE_BOMB, depoBodyPanel);
-        createDepoForRole(Role.ROLE_RECON, depoBodyPanel);
-        createDepoForRole(Role.ROLE_BOMB, depoBodyPanel);
-        createDepoForRole(Role.ROLE_STRAT_BOMB, depoBodyPanel);
-        createDepoForRole(Role.ROLE_SEA_PLANE, depoBodyPanel);
-        createDepoForRole(Role.ROLE_TRANSPORT, depoBodyPanel);
+        createDepotForRole(Role.ROLE_FIGHTER, depoBodyPanel);
+        createDepotForRole(Role.ROLE_ATTACK, depoBodyPanel);
+        createDepotForRole(Role.ROLE_DIVE_BOMB, depoBodyPanel);
+        createDepotForRole(Role.ROLE_RECON, depoBodyPanel);
+        createDepotForRole(Role.ROLE_BOMB, depoBodyPanel);
+        createDepotForRole(Role.ROLE_STRAT_BOMB, depoBodyPanel);
+        createDepotForRole(Role.ROLE_SEA_PLANE, depoBodyPanel);
+        createDepotForRole(Role.ROLE_TRANSPORT, depoBodyPanel);
         
         return depoPanel;
     }
@@ -85,51 +83,51 @@ public class CampaignEquipmentDepoPanel extends ImagePanel
         depoHeaderPanel.setOpaque(false);
 
         StringBuffer depoStatusBuffer = new StringBuffer("");
-        depoStatusBuffer.append("Aircraft Depo Status Report\n");
+        depoStatusBuffer.append("Aircraft Depot Status Report\n");
         depoStatusBuffer.append("Date: " + DateUtils.getDateString(campaign.getDate()) + "\n");
         
-        EquipmentDepo aircraftOnInventory = campaign.getEquipmentManager().getEquipmentReplacementsForService(service.getServiceId());
+        EquipmentDepot aircraftOnInventory = campaign.getEquipmentManager().getEquipmentDepotForService(service.getServiceId());
         depoStatusBuffer.append("Last Replacement Date: " + DateUtils.getDateString(aircraftOnInventory.getLastReplacementDate()) + "\n");
 
         depoStatusBuffer.append(service.getName());          
         depoStatusBuffer.append(" Inventory.\n");
 
-        JTextArea headertext = createDepoText();
+        JTextArea headertext = createDepotText();
         headertext.setText(depoStatusBuffer.toString());
         depoHeaderPanel.add(headertext, BorderLayout.NORTH);
         return depoHeaderPanel;
     }
 
-    private void createDepoForRole(Role role, JPanel depoBodyPanel) throws PWCGException
+    private void createDepotForRole(Role role, JPanel depotBodyPanel) throws PWCGException
     {
-        List<EquippedPlane> aircraftForRole = getDepoAircraftForRole(role);
+        List<EquippedPlane> aircraftForRole = getDepotAircraftForRole(role);
         if (aircraftForRole.size() > 0)
         {
-            JPanel depoRolePanel = new JPanel(new BorderLayout());
-            depoRolePanel.setOpaque(false);
+            JPanel depotRolePanel = new JPanel(new BorderLayout());
+            depotRolePanel.setOpaque(false);
             
             String aircraftForRoleReport = formAircraftInventory(aircraftForRole, role);
             
-            JTextArea aircraftForRoleText = createDepoText();
+            JTextArea aircraftForRoleText = createDepotText();
             aircraftForRoleText.setText(aircraftForRoleReport);
-            depoRolePanel.add(aircraftForRoleText, BorderLayout.NORTH);
+            depotRolePanel.add(aircraftForRoleText, BorderLayout.NORTH);
             
-            depoBodyPanel.add(depoRolePanel);
+            depotBodyPanel.add(depotRolePanel);
         }
     }
 
-    private JTextArea createDepoText() throws PWCGException
+    private JTextArea createDepotText() throws PWCGException
     {
-        JTextArea serviceDepoText;
+        JTextArea serviceDepotText;
         Font font = MonitorSupport.getTypewriterFont();
-        serviceDepoText = new JTextArea();
-        serviceDepoText.setFont(font);
-        serviceDepoText.setOpaque(false);
-        serviceDepoText.setLineWrap(true);
-        serviceDepoText.setWrapStyleWord(true);
-        serviceDepoText.setText("");
+        serviceDepotText = new JTextArea();
+        serviceDepotText.setFont(font);
+        serviceDepotText.setOpaque(false);
+        serviceDepotText.setLineWrap(true);
+        serviceDepotText.setWrapStyleWord(true);
+        serviceDepotText.setText("");
 
-        return serviceDepoText;
+        return serviceDepotText;
     }
 
     private String formAircraftInventory(List<EquippedPlane> aircraftForRole, Role role) throws PWCGException
@@ -145,18 +143,9 @@ public class CampaignEquipmentDepoPanel extends ImagePanel
         return depoStatusBuffer.toString();
     }
     
-    private List<EquippedPlane> getDepoAircraftForRole(Role role) throws PWCGException
+    private List<EquippedPlane> getDepotAircraftForRole(Role role) throws PWCGException
     {
-        List<EquippedPlane> depoForRole = new ArrayList<>();
-        EquipmentDepo aircraftOnInventory = campaign.getEquipmentManager().getEquipmentReplacementsForService(service.getServiceId());
-        for (EquippedPlane equippedPlane : aircraftOnInventory.getEquipment().getAvailableDepoPlanes().values())
-        {
-            if (equippedPlane.getRoles().get(0) == role)
-            {
-                depoForRole.add(equippedPlane);
-            }
-        }
-        List<EquippedPlane> sortedDepoForRole = PlaneSorter.sortEquippedPlanesByGoodness(depoForRole);
-        return sortedDepoForRole;
+        EquipmentDepot equipmentDepot = campaign.getEquipmentManager().getEquipmentDepotForService(service.getServiceId());
+        return equipmentDepot.getDepotAircraftForRole(role);
     }
 }

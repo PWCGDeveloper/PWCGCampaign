@@ -10,7 +10,7 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.plane.PlaneType;
-import pwcg.campaign.resupply.depo.EquipmentWeightCalculator;
+import pwcg.campaign.resupply.depot.EquipmentWeightCalculator;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 

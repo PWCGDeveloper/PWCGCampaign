@@ -10,6 +10,7 @@ import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.resupply.ResupplyNeedBuilder;
 import pwcg.campaign.resupply.equipment.EquipmentReplacementHandler;
 import pwcg.campaign.resupply.equipment.EquipmentResupplyData;
+import pwcg.campaign.resupply.equipment.EquipmentUpgradeHandler;
 import pwcg.campaign.resupply.equipment.WithdrawnEquipmentReplacer;
 import pwcg.campaign.resupply.personnel.SquadronTransferData;
 import pwcg.campaign.resupply.personnel.TransferHandler;
@@ -62,6 +63,7 @@ public class AARResupplyCoordinator
         {
             replaceWithdrawnPlanes(armedService);
             replaceLostPlanes(armedService);
+            upgradePlanes(armedService);
         }
     }
 
@@ -84,7 +86,14 @@ public class AARResupplyCoordinator
     {
         ResupplyNeedBuilder equipmentNeedBuilder = new ResupplyNeedBuilder(campaign, armedService);
         EquipmentReplacementHandler equipmentResupplyHandler = new EquipmentReplacementHandler(campaign, equipmentNeedBuilder);
-        EquipmentResupplyData equipmentResupplyData = equipmentResupplyHandler.determineEquipmentResupply(armedService);
+        EquipmentResupplyData equipmentResupplyData = equipmentResupplyHandler.resupplyForLosses(armedService);
+        resupplyData.getEquipmentResupplyData().merge(equipmentResupplyData);
+    }
+    
+    private void upgradePlanes(ArmedService armedService) throws PWCGException
+    {
+        EquipmentUpgradeHandler equipmentUpgradeHandler = new EquipmentUpgradeHandler(campaign);
+        EquipmentResupplyData equipmentResupplyData = equipmentUpgradeHandler.upgradeEquipment(armedService);
         resupplyData.getEquipmentResupplyData().merge(equipmentResupplyData);
     }
 }

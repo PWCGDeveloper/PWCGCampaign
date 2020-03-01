@@ -50,7 +50,7 @@ public class CampaignServiceChangeHandlerTest
             assert(rankPos >= 0);
         }
 
-        CampaignServiceChangeHandler serviceChangeHandler = new CampaignServiceChangeHandler(campaign);
+        ServiceChangeHandler serviceChangeHandler = new ServiceChangeHandler(campaign);
         serviceChangeHandler.handleChangeOfService(DateUtils.getRAFDate());
                 
         service = campaign.determinePlayerSquadrons().get(0).determineServiceForSquadron(DateUtils.getRAFDate());

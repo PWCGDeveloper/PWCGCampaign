@@ -12,11 +12,11 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-public class CampaignPersonnelReplacementUpdater 
+public class PersonnelReplacementUpdater 
 {
 	private Campaign campaign;
 	private AARContext aarContext;
-	public CampaignPersonnelReplacementUpdater(Campaign campaign, AARContext aarContext)
+	public PersonnelReplacementUpdater(Campaign campaign, AARContext aarContext)
 	{
 		this.campaign = campaign;
         this.aarContext = aarContext;

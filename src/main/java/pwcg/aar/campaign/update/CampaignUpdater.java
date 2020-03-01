@@ -5,8 +5,8 @@ import java.util.Date;
 import pwcg.aar.data.AARContext;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.personnel.InitialSquadronBuilder;
-import pwcg.campaign.resupply.depo.EquipmentArchTypeChangeHandler;
-import pwcg.campaign.resupply.depo.EquipmentDepoReplenisher;
+import pwcg.campaign.resupply.depot.EquipmentArchTypeChangeHandler;
+import pwcg.campaign.resupply.depot.EquipmentDepotReplenisher;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignUpdater 
@@ -28,20 +28,20 @@ public class CampaignUpdater
         CampaignAceUpdater aceUpdater = new CampaignAceUpdater(campaign, aarContext.getCampaignUpdateData().getPersonnelAwards().getHistoricalAceAwards().getAceVictories());
         aceUpdater.updatesCampaignAces();
         
-        CampaignPersonnelUpdater personnelUpdater = new CampaignPersonnelUpdater(campaign, aarContext);
+        PersonnelUpdater personnelUpdater = new PersonnelUpdater(campaign, aarContext);
         personnelUpdater.personnelUpdates();
         
-        CampaignSquadronEquipmentUpdater squadronEquipmentUpdater = new CampaignSquadronEquipmentUpdater(campaign, aarContext);
+        EquipmentUpdater squadronEquipmentUpdater = new EquipmentUpdater(campaign, aarContext);
         squadronEquipmentUpdater.equipmentUpdatesForSquadrons();
 
-        CampaignServiceChangeHandler serviceChangeHandler = new CampaignServiceChangeHandler(campaign);
+        ServiceChangeHandler serviceChangeHandler = new ServiceChangeHandler(campaign);
         serviceChangeHandler.handleChangeOfService(aarContext.getCampaignUpdateData().getNewDate());
 
-        CampaignPersonnelReplacementUpdater personnelReplacementUpdater = new CampaignPersonnelReplacementUpdater(campaign, aarContext);
+        PersonnelReplacementUpdater personnelReplacementUpdater = new PersonnelReplacementUpdater(campaign, aarContext);
         personnelReplacementUpdater.updateCampaignPersonnelReplacements();
         
-        EquipmentDepoReplenisher equipmentReplacementUpdater = new EquipmentDepoReplenisher(campaign);
-        equipmentReplacementUpdater.replenishDeposForServices();
+        EquipmentDepotReplenisher equipmentReplacementUpdater = new EquipmentDepotReplenisher(campaign);
+        equipmentReplacementUpdater.replenishDepotsForServices();
         
         EquipmentArchTypeChangeHandler archtypeChangeHandler = new EquipmentArchTypeChangeHandler(campaign, aarContext.getNewDate());
         archtypeChangeHandler.updateCampaignEquipmentForArchtypeChange();

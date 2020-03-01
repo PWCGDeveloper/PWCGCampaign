@@ -48,7 +48,7 @@ public class EquipmentReplacementHandlerTest
         
         deactivateCampaignEquipment();
       
-        EquipmentResupplyData equipmentTransferData = squadronTransferHandler.determineEquipmentResupply(armedService);
+        EquipmentResupplyData equipmentTransferData = squadronTransferHandler.resupplyForLosses(armedService);
         assert (equipmentTransferData.getTransferCount() == 3);
     }
 
@@ -90,7 +90,7 @@ public class EquipmentReplacementHandlerTest
         
         deactivateSquadronEquipment();
       
-        EquipmentResupplyData equipmentTransferData = squadronTransferHandler.determineEquipmentResupply(armedService);
+        EquipmentResupplyData equipmentTransferData = squadronTransferHandler.resupplyForLosses(armedService);
         assert (equipmentTransferData.getTransferCount() == 3);
     }
 

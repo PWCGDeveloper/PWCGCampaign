@@ -19,19 +19,18 @@ public class Equipment
         return equippedPlanes.get(planeSerialNumber);
     }
 
-    public Map<Integer, EquippedPlane> getAvailableDepoPlanes()
+    public Map<Integer, EquippedPlane> getAvailableDepotPlanes()
     {
-        Map<Integer, EquippedPlane> availableDepoPlanes = new HashMap<>();
+        Map<Integer, EquippedPlane> availableDepotPlanes = new HashMap<>();
         for (EquippedPlane equippedPlane : equippedPlanes.values())
         {
-            if (equippedPlane.getPlaneStatus() == PlaneStatus.STATUS_DEPO)
+            if (equippedPlane.getPlaneStatus() == PlaneStatus.STATUS_DEPOT)
             {
-                availableDepoPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);
+                availableDepotPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);
             }
         }
-        return availableDepoPlanes;
+        return availableDepotPlanes;
     }
-
 
     public Map<Integer, EquippedPlane> getActiveEquippedPlanes()
     {
@@ -84,7 +83,7 @@ public class Equipment
         equippedPlanes.put(equippedPlane.getSerialNumber(), equippedPlane);
     }
 
-    public EquippedPlane removeBestEquippedFromDepo(List<String> activeArchTypes)
+    public EquippedPlane removeBestEquippedFromDepot(List<String> activeArchTypes)
     {
         EquippedPlane selectedPlane = null;
         for (EquippedPlane equippedPlane : getPlanesForArchTypes(activeArchTypes))
@@ -96,7 +95,7 @@ public class Equipment
         }
         if (selectedPlane != null)
         {
-            return removeEquippedPlaneFromDepo(selectedPlane.getSerialNumber());
+            return removeEquippedPlane(selectedPlane.getSerialNumber());
         }
         else
         {
@@ -141,7 +140,7 @@ public class Equipment
         return equippedPlane;
     }
 
-    public EquippedPlane removeEquippedPlaneFromDepo(Integer planeSerialNumber)
+    public EquippedPlane removeEquippedPlane(Integer planeSerialNumber)
     {
         return equippedPlanes.remove(planeSerialNumber);
     }

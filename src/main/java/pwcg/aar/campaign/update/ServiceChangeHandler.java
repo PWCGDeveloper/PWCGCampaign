@@ -18,11 +18,11 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
-public class CampaignServiceChangeHandler
+public class ServiceChangeHandler
 {
     private Campaign campaign = null;
         
-    public CampaignServiceChangeHandler (Campaign campaign) 
+    public ServiceChangeHandler (Campaign campaign) 
     {
         this.campaign = campaign;
     }

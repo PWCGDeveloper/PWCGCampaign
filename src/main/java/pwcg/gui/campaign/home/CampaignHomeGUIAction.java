@@ -16,7 +16,7 @@ import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.config.CampaignConfigurationAdvancedGUI;
 import pwcg.gui.campaign.config.CampaignConfigurationSimpleGUI;
 import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
-import pwcg.gui.campaign.depo.CampaignEquipmentDepoPanelSet;
+import pwcg.gui.campaign.depot.CampaignEquipmentDepotPanelSet;
 import pwcg.gui.campaign.intel.CampaignIntelligencePanelSet;
 import pwcg.gui.campaign.journal.CampaignJournalPanelSet;
 import pwcg.gui.campaign.journal.CampaignSquadronLogPanelSet;
@@ -120,9 +120,9 @@ public class CampaignHomeGUIAction
             {
                 showIntelReport();
             }
-            else if (action.equalsIgnoreCase("EquipmentDepoReport"))
+            else if (action.equalsIgnoreCase("EquipmentDepotReport"))
             {
-                showEquipmentDepoReport();
+                showEquipmentDepotReport();
             }
             else if (action.equalsIgnoreCase("CampIntelMap"))
             {
@@ -282,12 +282,12 @@ public class CampaignHomeGUIAction
         CampaignGuiContextManager.getInstance().pushToContextStack(intelligence);
     }
 
-    private void showEquipmentDepoReport() throws PWCGException 
+    private void showEquipmentDepotReport() throws PWCGException 
     {
-        CampaignEquipmentDepoPanelSet depo = new CampaignEquipmentDepoPanelSet(campaign);
-        depo.makePanels();
+        CampaignEquipmentDepotPanelSet depot = new CampaignEquipmentDepotPanelSet(campaign);
+        depot.makePanels();
 
-        CampaignGuiContextManager.getInstance().pushToContextStack(depo);
+        CampaignGuiContextManager.getInstance().pushToContextStack(depot);
     }
     
     private void showIntelMap() throws PWCGException 

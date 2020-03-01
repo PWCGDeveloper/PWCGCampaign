@@ -13,7 +13,7 @@ import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.resupply.depo.EquipmentDepoInitializer;
+import pwcg.campaign.resupply.depot.EquipmentDepotInitializer;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -40,9 +40,9 @@ public class InitialReplacementEquipperTest
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
         ArmedService luftwaffe = serviceManager.getArmedService(20101);
         
-        EquipmentDepoInitializer replacementEquipper = new EquipmentDepoInitializer(campaign, luftwaffe);
+        EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, luftwaffe);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepoPlanes().size() == 45);
+        assert(equipment.getAvailableDepotPlanes().size() == 45);
         
         boolean me110e2Found = false;
         boolean he111h6Found = false;
@@ -50,7 +50,7 @@ public class InitialReplacementEquipperTest
         boolean ju87d3Found = false;
         boolean ju52Found = false;
         
-        for (EquippedPlane replacementPlane : equipment.getAvailableDepoPlanes().values())
+        for (EquippedPlane replacementPlane : equipment.getAvailableDepotPlanes().values())
         {
             if (replacementPlane.getType().equals("bf110e2"))
             {
@@ -90,9 +90,9 @@ public class InitialReplacementEquipperTest
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
         ArmedService vvs = serviceManager.getArmedService(10101);
         
-        EquipmentDepoInitializer replacementEquipper = new EquipmentDepoInitializer(campaign, vvs);
+        EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, vvs);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepoPlanes().size() == 112);
+        assert(equipment.getAvailableDepotPlanes().size() == 112);
         
         boolean i16Found = false;
         boolean mig3 = false;
@@ -101,7 +101,7 @@ public class InitialReplacementEquipperTest
         boolean pe2Found = false;
         boolean il2Found = false;
         
-        for (EquippedPlane replacementPlane : equipment.getAvailableDepoPlanes().values())
+        for (EquippedPlane replacementPlane : equipment.getAvailableDepotPlanes().values())
         {
             if (replacementPlane.getType().equals("i16t24"))
             {
@@ -146,13 +146,13 @@ public class InitialReplacementEquipperTest
         IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
         ArmedService regiaAeronautica = serviceManager.getArmedService(20202);
         
-        EquipmentDepoInitializer replacementEquipper = new EquipmentDepoInitializer(campaign, regiaAeronautica);
+        EquipmentDepotInitializer replacementEquipper = new EquipmentDepotInitializer(campaign, regiaAeronautica);
         Equipment equipment = replacementEquipper.createReplacementPoolForService();
-        assert(equipment.getAvailableDepoPlanes().size() == 1);
+        assert(equipment.getAvailableDepotPlanes().size() == 1);
         
         boolean macchiFound = false;
         
-        for (EquippedPlane replacementPlane : equipment.getAvailableDepoPlanes().values())
+        for (EquippedPlane replacementPlane : equipment.getAvailableDepotPlanes().values())
         {
             if (replacementPlane.getType().equals("mc202s8"))
             {

@@ -188,8 +188,8 @@ public class CampaignHomeGUI extends PwcgGuiContext implements ActionListener
             JButton intelligenceButton = makeMenuButton("Intelligence Report", "CampFlowIntelligence", "View intelligence reports");
             addButton(buttonPanel, intelligenceButton);
     
-            JButton equipmentDepoButton = makeMenuButton("Equipment Depo Report", "EquipmentDepoReport", "View equipment depo report");
-            addButton(buttonPanel, equipmentDepoButton);
+            JButton equipmentDepotButton = makeMenuButton("Equipment Depot Report", "EquipmentDepotReport", "View equipment depot report");
+            addButton(buttonPanel, equipmentDepotButton);
     
             JLabel space3 = new JLabel("");
             buttonPanel.add(space3);

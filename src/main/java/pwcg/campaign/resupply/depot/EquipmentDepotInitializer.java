@@ -1,4 +1,4 @@
-package pwcg.campaign.resupply.depo;
+package pwcg.campaign.resupply.depot;
 
 import java.util.List;
 
@@ -12,14 +12,14 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
-public class EquipmentDepoInitializer
+public class EquipmentDepotInitializer
 {
     private Campaign campaign;
     private ArmedService service;
     private Equipment equipment = new Equipment();
     private PlaneEquipmentFactory equipmentFactory;
 
-    public EquipmentDepoInitializer(Campaign campaign, ArmedService service) 
+    public EquipmentDepotInitializer(Campaign campaign, ArmedService service) 
     {
         this.campaign = campaign;
         this.service = service;
@@ -56,7 +56,7 @@ public class EquipmentDepoInitializer
         for (int i = 0; i < numPlanes; ++i)
         {
             String planeTypeName = equipmentWeightCalculator.getPlaneTypeFromWeight();
-            EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepo(planeTypeName);
+            EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepot(planeTypeName);
             equipment.addEquippedPlane(equippedPlane);
         }
     }

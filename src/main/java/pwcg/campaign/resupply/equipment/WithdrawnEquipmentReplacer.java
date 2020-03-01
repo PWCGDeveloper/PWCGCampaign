@@ -8,7 +8,7 @@ import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
-import pwcg.campaign.resupply.depo.EquipmentReplacementUtils;
+import pwcg.campaign.resupply.depot.EquipmentReplacementUtils;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;

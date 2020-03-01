@@ -18,7 +18,7 @@ import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
-import pwcg.campaign.resupply.depo.EquipmentReplacementWeightByNeed;
+import pwcg.campaign.resupply.depot.EquipmentReplacementWeightByNeed;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;

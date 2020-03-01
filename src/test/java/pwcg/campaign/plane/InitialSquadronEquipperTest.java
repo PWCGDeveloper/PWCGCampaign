@@ -9,7 +9,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.resupply.InitialSquadronEquipper;
-import pwcg.campaign.resupply.depo.EquipmentWeightCalculator;
+import pwcg.campaign.resupply.depot.EquipmentWeightCalculator;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;

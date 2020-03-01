@@ -10,7 +10,7 @@ import pwcg.campaign.resupply.ISquadronNeed;
 import pwcg.campaign.resupply.ResupplyNeedBuilder;
 import pwcg.campaign.resupply.ServiceResupplyNeed;
 import pwcg.campaign.resupply.SquadronNeedFactory.SquadronNeedType;
-import pwcg.campaign.resupply.depo.EquipmentDepo;
+import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
@@ -27,17 +27,16 @@ public class EquipmentReplacementHandler
         this.equipmentNeedBuilder = equipmentNeedBuilder;
     }
     
-    public EquipmentResupplyData determineEquipmentResupply(ArmedService armedService) throws PWCGException
+    public EquipmentResupplyData resupplyForLosses(ArmedService armedService) throws PWCGException
     {
         ServiceResupplyNeed serviceResupplyNeed = equipmentNeedBuilder.determineNeedForService(SquadronNeedType.EQUIPMENT);
-        EquipmentDepo serviceAvailableReplacements =  campaign.getEquipmentManager().getEquipmentReplacementsForService(armedService.getServiceId());
-        replaceForService(serviceResupplyNeed, serviceAvailableReplacements);
-        
+        EquipmentDepot equipmentDepo =  campaign.getEquipmentManager().getEquipmentDepotForService(armedService.getServiceId());
+        replaceForService(serviceResupplyNeed, equipmentDepo);
         return equipmentResupplyData;
     }
 
 
-    private void replaceForService(ServiceResupplyNeed serviceResupplyNeed, EquipmentDepo serviceAvailableReplacements) throws PWCGException
+    private void replaceForService(ServiceResupplyNeed serviceResupplyNeed, EquipmentDepot equipmentDepo) throws PWCGException
     {
         while (serviceResupplyNeed.hasNeedySquadron())
         {
@@ -50,7 +49,7 @@ public class EquipmentReplacementHandler
             Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(selectedSquadronNeed.getSquadronId());
             List<String> activeArchTypes = squadron.getActiveArchTypes(campaign.getDate());
             
-            EquippedPlane replacement = serviceAvailableReplacements.getEquipment().removeBestEquippedFromDepo(activeArchTypes);        
+            EquippedPlane replacement = equipmentDepo.removeBestPlaneFromDepot(activeArchTypes);        
             if (replacement != null)
             {
                 EquipmentResupplyRecord equipmentResupplyRecord = new EquipmentResupplyRecord(replacement, selectedSquadronNeed.getSquadronId());

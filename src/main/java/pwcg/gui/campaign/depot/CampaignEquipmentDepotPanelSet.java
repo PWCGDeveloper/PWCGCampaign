@@ -1,4 +1,4 @@
-package pwcg.gui.campaign.depo;
+package pwcg.gui.campaign.depot;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -23,14 +23,14 @@ import pwcg.gui.utils.ImageJTabbedPane;
 import pwcg.gui.utils.ImageResizingPanel;
 import pwcg.gui.utils.PWCGButtonFactory;
 
-public class CampaignEquipmentDepoPanelSet extends PwcgGuiContext implements ActionListener
+public class CampaignEquipmentDepotPanelSet extends PwcgGuiContext implements ActionListener
 {
     private static final long serialVersionUID = 1L;
 
 	private ImageJTabbedPane tabs = new ImageJTabbedPane();
 	private Campaign campaign;
 
-	public CampaignEquipmentDepoPanelSet(Campaign campaign)
+	public CampaignEquipmentDepotPanelSet(Campaign campaign)
 	{
         super();
 	    this.campaign = campaign;
@@ -80,7 +80,7 @@ public class CampaignEquipmentDepoPanelSet extends PwcgGuiContext implements Act
 			IArmedServiceManager serviceManager = ArmedServiceFactory.createServiceManager();
 			for (ArmedService service : serviceManager.getAllActiveArmedServices(campaign.getDate()))
 			{
-			    CampaignEquipmentDepoPanel serviceEquipmentDepoTab = new CampaignEquipmentDepoPanel(campaign, service);
+			    CampaignEquipmentDepotPanel serviceEquipmentDepoTab = new CampaignEquipmentDepotPanel(campaign, service);
 			    serviceEquipmentDepoTab.makePanel();
 	            tabs.addTab(service.getName(), serviceEquipmentDepoTab);      
 			}

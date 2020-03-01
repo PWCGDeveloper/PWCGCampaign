@@ -8,12 +8,12 @@ import pwcg.campaign.plane.PlaneStatus;
 import pwcg.campaign.resupply.equipment.EquipmentResupplyRecord;
 import pwcg.core.exception.PWCGException;
 
-public class CampaignSquadronEquipmentUpdater 
+public class EquipmentUpdater 
 {
 	private Campaign campaign;
     private AARContext aarContext;
 
-	public CampaignSquadronEquipmentUpdater (Campaign campaign, AARContext aarContext) 
+	public EquipmentUpdater (Campaign campaign, AARContext aarContext) 
 	{
         this.campaign = campaign;
         this.aarContext = aarContext;

@@ -14,7 +14,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
-import pwcg.campaign.resupply.depo.EquipmentReplacementWeightUsage;
+import pwcg.campaign.resupply.depot.EquipmentReplacementWeightUsage;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.product.bos.country.BoSServiceManager;

@@ -1,28 +1,30 @@
 package pwcg.campaign;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
-import pwcg.campaign.resupply.depo.EquipmentDepo;
+import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignEquipmentManager
 {
     private Map<Integer, Equipment> equipmentAllSquadrons = new HashMap<>();
-    private Map<Integer, EquipmentDepo> equipmentDepo = new HashMap<>();
+    private Map<Integer, EquipmentDepot> equipmentDepotsForServices = new HashMap<>();
 
     public Equipment getEquipmentForSquadron(Integer squadronId)
     {
         return equipmentAllSquadrons.get(squadronId);
     }
 
-    public EquipmentDepo getEquipmentReplacementsForService(Integer serviceId)
+    public EquipmentDepot getEquipmentDepotForService(Integer serviceId)
     {
-        return equipmentDepo.get(serviceId);
+        return equipmentDepotsForServices.get(serviceId);
     }
 
     public void addEquipmentForSquadron(Integer squadronId, Equipment equipmentForSquadron)
@@ -30,9 +32,9 @@ public class CampaignEquipmentManager
         equipmentAllSquadrons.put(squadronId, equipmentForSquadron);
     }
 
-    public void addEquipmentDepoForService(Integer serviceId, EquipmentDepo replacementEquipmentForService)
+    public void addEquipmentDepotForService(Integer serviceId, EquipmentDepot replacementEquipmentForService)
     {
-        equipmentDepo.put(serviceId, replacementEquipmentForService);
+        equipmentDepotsForServices.put(serviceId, replacementEquipmentForService);
     }
 
     public Map<Integer, Equipment> getEquipmentAllSquadrons()
@@ -40,9 +42,14 @@ public class CampaignEquipmentManager
         return equipmentAllSquadrons;
     }
 
-    public Map<Integer, EquipmentDepo> getEquipmentReplacements()
+    public EquipmentDepot getEquipmentDepot(Integer serviceId)
     {
-        return equipmentDepo;
+        return equipmentDepotsForServices.get(serviceId);
+    }
+    
+    public List<Integer> getServiceIdsForDepots()
+    {
+        return new ArrayList<Integer>(equipmentDepotsForServices.keySet());
     }
 
     public EquippedPlane getPlaneFromAnySquadron(Integer serialNumber) throws PWCGException
@@ -83,18 +90,5 @@ public class CampaignEquipmentManager
         destroyedPlane.setPlaneStatus(PlaneStatus.STATUS_DESTROYED);
         destroyedPlane.setDateRemovedFromService(date);
         return destroyedPlane;
-    }
-    
-    
-
-    public int getReplacementCount() throws PWCGException
-    {
-        int replacementCount = 0;
-        for (EquipmentDepo replacementService : equipmentDepo.values())
-        {
-            replacementCount += replacementService.getEquipment().getActiveEquippedPlanes().size();
-        }
-        
-        return replacementCount;
     }
 }

@@ -4,7 +4,7 @@ import pwcg.campaign.personnel.InitialSquadronStaffer;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.resupply.InitialSquadronEquipper;
-import pwcg.campaign.resupply.depo.EquipmentWeightCalculator;
+import pwcg.campaign.resupply.depot.EquipmentWeightCalculator;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 

@@ -62,7 +62,7 @@ public class CampaignPersonnelReplacementUpdaterTest
     	
     	replacementServices.add(replacementService);
     	
-    	CampaignPersonnelReplacementUpdater replacementUpdater = new CampaignPersonnelReplacementUpdater(campaign, aarContext);
+    	PersonnelReplacementUpdater replacementUpdater = new PersonnelReplacementUpdater(campaign, aarContext);
     	replacementUpdater.updateCampaignPersonnelReplacements();
     	
     	assert (replacementService.getReplacementPoints() == 30);
@@ -81,7 +81,7 @@ public class CampaignPersonnelReplacementUpdaterTest
     	
     	replacementServices.add(replacementService);
     	
-    	CampaignPersonnelReplacementUpdater replacementUpdater = new CampaignPersonnelReplacementUpdater(campaign, aarContext);
+    	PersonnelReplacementUpdater replacementUpdater = new PersonnelReplacementUpdater(campaign, aarContext);
     	replacementUpdater.updateCampaignPersonnelReplacements();
     	
     	assert (replacementService.getReplacementPoints() == 90);
@@ -100,7 +100,7 @@ public class CampaignPersonnelReplacementUpdaterTest
     	
     	replacementServices.add(replacementService);
     	
-    	CampaignPersonnelReplacementUpdater replacementUpdater = new CampaignPersonnelReplacementUpdater(campaign, aarContext);
+    	PersonnelReplacementUpdater replacementUpdater = new PersonnelReplacementUpdater(campaign, aarContext);
     	replacementUpdater.updateCampaignPersonnelReplacements();
     	
     	assert (replacementService.getReplacementPoints() == 130);
