@@ -121,10 +121,10 @@ public class AARCoordinatorLossAndReplacementAnalyzer
 	        System.out.println("Losses: " + losses);
             System.out.println("  Allied Personnel: " + alliedPersonnelLosses);
             System.out.println("  Axis Personnel: " + axisPersonnelLosses);
-            System.out.println("  Personnel Replacements: " + campaign.getPersonnelManager().getReplacementCount());
+            System.out.println("  Personnel Replacements Available: " + campaign.getPersonnelManager().getReplacementCount());
             System.out.println("  Allied Equipment: " + alliedEquipmentLosses);
             System.out.println("  Axis Equipment: " + axisEquipmentLosses);
-            System.out.println("  Equipment Replacements: " + campaign.getEquipmentManager().getReplacementCount());
+            System.out.println("  Equipment Replacements Available: " + campaign.getEquipmentManager().getReplacementCount());
 	        System.out.println("Replacement: " + replacements);
             System.out.println("Squadrons: " + activeSquadrons);
             System.out.println("Medals: " + medalsAwarded);

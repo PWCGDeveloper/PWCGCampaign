@@ -14,14 +14,14 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
 
-public class AAROutOfMissionPhase1EventCoordinator
+public class AAROutOfMissionEventCoordinator
 {
     private Campaign campaign;
     private AARContext aarContext;
     private ReconciledOutOfMissionData reconciledOutOfMissionData = new ReconciledOutOfMissionData();
     
 
-    public AAROutOfMissionPhase1EventCoordinator(Campaign campaign, AARContext aarContext)
+    public AAROutOfMissionEventCoordinator(Campaign campaign, AARContext aarContext)
     {
         this.campaign = campaign;
         this.aarContext = aarContext;

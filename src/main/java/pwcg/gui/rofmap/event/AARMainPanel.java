@@ -132,6 +132,9 @@ public class AARMainPanel extends AARPanel implements ActionListener
             
             AARPilotLossPanel pilotsLostPanelSet = new AARPilotLossPanel();
             allEventPanels.add(pilotsLostPanelSet);
+            
+            AAREquipmentChangePanel equipmentChangePanelSet = new AAREquipmentChangePanel();
+            allEventPanels.add(equipmentChangePanelSet);
 
             AARPilotsTransferredPanel pilotsTransferredPanelSet = new AARPilotsTransferredPanel(campaign);
             allEventPanels.add(pilotsTransferredPanelSet);

@@ -28,7 +28,7 @@ public class CombatReportTabulator
     private PilotStatusEventGenerator pilotStatusEventGenerator;
     private PlaneStatusEventGenerator planeStatusEventGenerator;
     private VictoryEventGenerator victoryEventGenerator;
-    private AARCombatReportPanelData combatReportData = new AARCombatReportPanelData();
+    private AARCombatReportPanelData combatReportPanelData = new AARCombatReportPanelData();
     
     public CombatReportTabulator (Campaign campaign, Squadron squadron, AARContext aarContext)
     {
@@ -49,24 +49,24 @@ public class CombatReportTabulator
         createLossesForPilotsInMission();
         createLossesForEquipmentInMission();
         createVictoryEventsForSquadronMembersInMission();
-        return combatReportData;
+        return combatReportPanelData;
     }
 
     private void createDeniedClaims()
     {
-        combatReportData.addClaimsDenied(aarContext.getReconciledInMissionData().getReconciledVictoryData().getPlayerClaimsDenied());        
+        combatReportPanelData.addClaimsDenied(aarContext.getReconciledInMissionData().getReconciledVictoryData().getPlayerClaimsDenied());        
     }
 
     private void createCrewsInMission() throws PWCGException
     {
         Map<Integer, SquadronMember> campaignMembersInMission = aarContext.getPreliminaryData().getCampaignMembersInMission().getSquadronMemberCollection();
         SquadronMembers squadronMembersInMission = SquadronMemberFilter.filterActiveAIAndPlayerAndAcesForSquadron(campaignMembersInMission, campaign.getDate(), squadron.getSquadronId());
-        combatReportData.addPilotsInMission(squadronMembersInMission);
+        combatReportPanelData.addPilotsInMission(squadronMembersInMission);
     }
 
     private void extractMissionHeader()
     {
-        combatReportData.setMissionAARHeader(aarContext.getPreliminaryData().getPwcgMissionData().getMissionHeader());
+        combatReportPanelData.setMissionAARHeader(aarContext.getPreliminaryData().getPwcgMissionData().getMissionHeader());
     }
 
     private void createLossesForPilotsInMission() throws PWCGException
@@ -76,7 +76,7 @@ public class CombatReportTabulator
         {
             if (pilotLostEvent.getSquadronId() == squadron.getSquadronId())
             {
-                combatReportData.addPilotLostInMission(pilotLostEvent);
+                combatReportPanelData.addPilotLostInMission(pilotLostEvent);
             }
         }
     }
@@ -88,7 +88,7 @@ public class CombatReportTabulator
         {
             if (planeLostEvent.getSquadronId() == squadron.getSquadronId())
             {
-                combatReportData.addPlaneLostInMission(planeLostEvent);
+                combatReportPanelData.addPlaneLostInMission(planeLostEvent);
             }
         }
     }
@@ -101,7 +101,7 @@ public class CombatReportTabulator
         {
             if (victoryEvent.getSquadronId() == squadron.getSquadronId())
             {
-                combatReportData.addVictoryForSquadronMembers(victoryEvent);
+                combatReportPanelData.addVictoryForSquadronMembers(victoryEvent);
             }
         }
     }

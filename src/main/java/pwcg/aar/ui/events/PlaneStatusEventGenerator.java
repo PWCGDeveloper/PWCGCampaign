@@ -13,7 +13,7 @@ import pwcg.core.exception.PWCGException;
 public class PlaneStatusEventGenerator
 {    
     private Campaign campaign;
-	private Map<Integer, PlaneStatusEvent> planesLost = new HashMap<>();
+	private Map<Integer, PlaneStatusEvent> planeStatusEvents = new HashMap<>();
 
     public PlaneStatusEventGenerator (Campaign campaign)
     {
@@ -25,15 +25,22 @@ public class PlaneStatusEventGenerator
         for (EquippedPlane equippedPlane : equipmentLossesInMission.getPlanesDestroyed().values())
         {
             PlaneStatusEvent equippedPlaneLostEvent = makePlaneLostEvent(equippedPlane);
-            planesLost.put(equippedPlane.getSerialNumber(), equippedPlaneLostEvent);
+            planeStatusEvents.put(equippedPlane.getSerialNumber(), equippedPlaneLostEvent);
         }
-        return planesLost;
+        
+        for (EquippedPlane equippedPlane : equipmentLossesInMission.getPlanesDestroyed().values())
+        {
+            PlaneStatusEvent equippedPlaneLostEvent = makePlaneLostEvent(equippedPlane);
+            planeStatusEvents.put(equippedPlane.getSerialNumber(), equippedPlaneLostEvent);
+        }
+        
+        return planeStatusEvents;
     }
 
-    protected PlaneStatusEvent makePlaneLostEvent(EquippedPlane equippedPlane) throws PWCGException
+    private PlaneStatusEvent makePlaneLostEvent(EquippedPlane equippedPlane) throws PWCGException
     {
         boolean isNewsworthy = true;
-        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent( equippedPlane.getSerialNumber(), equippedPlane.getSquadronId(), PlaneStatus.STATUS_DESTROYED, 
+        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent( equippedPlane.getSerialNumber(), equippedPlane.getDesc(), equippedPlane.getSquadronId(), PlaneStatus.STATUS_DESTROYED, 
                  campaign.getDate(), isNewsworthy);
         return planeStatusEvent;
     }

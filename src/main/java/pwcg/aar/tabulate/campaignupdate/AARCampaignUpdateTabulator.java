@@ -3,6 +3,7 @@ package pwcg.aar.tabulate.campaignupdate;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARLogEvents;
 import pwcg.aar.data.CampaignUpdateData;
+import pwcg.aar.ui.display.model.AARElapsedTimeCombatResultsData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 
@@ -57,9 +58,11 @@ public class AARCampaignUpdateTabulator
 
     private void addEventsToCampaignUpdateData() throws PWCGException
     {
-    	CampaignLogGenerator campaignLogGenerator = new CampaignLogGenerator(campaign, aarContext);
+        ElapsedTimeCombatResultsTabulator elapsedTimeCombatResultsTabulator = new ElapsedTimeCombatResultsTabulator(campaign, aarContext);
+        AARElapsedTimeCombatResultsData elapsedTimeCombatResultsData = elapsedTimeCombatResultsTabulator.tabulateCombatResultsForElapsedTime();
+
+    	CampaignLogGenerator campaignLogGenerator = new CampaignLogGenerator(campaign, aarContext, elapsedTimeCombatResultsData);
     	AARLogEvents campaignLogEvents = campaignLogGenerator.createCampaignLogEventsForCampaignUpdate();
     	campaignUpdateData.getLogEvents().merge(campaignLogEvents);
     }
-
 }

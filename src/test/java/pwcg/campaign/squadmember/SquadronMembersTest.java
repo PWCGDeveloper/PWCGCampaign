@@ -67,7 +67,8 @@ public class SquadronMembersTest
     {
         squadronMembers.addToSquadronMemberCollection(squadronMember3);
         squadronMembers.addToSquadronMemberCollection(squadronMember4);
-        squadronMembers.removeAnySquadronMember();
+        SquadronMember squadronMember = squadronMembers.findSquadronMember();
+        squadronMembers.removeSquadronMember(squadronMember.getSerialNumber());
         assert(squadronMembers.getActiveCount(campaign.getDate()) == 3);
     }
 

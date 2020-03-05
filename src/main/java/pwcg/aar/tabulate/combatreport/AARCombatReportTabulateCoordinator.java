@@ -34,12 +34,14 @@ public class AARCombatReportTabulateCoordinator
         for (Squadron playerSquadron : playerSquadronsInMission)
         {
             CombatReportTabulator combatReportTabulator = new CombatReportTabulator(campaign, playerSquadron, aarContext);
-            AARCombatReportPanelData combatReportData = combatReportTabulator.tabulateForAARCombatReportPanel();
-            AARCombatReportMapData combatReportMapData = tabulateCombatReportMap();
+            AARCombatReportPanelData combatReportPanelData = combatReportTabulator.tabulateForAARCombatReportPanel();
             
             UICombatReportData combatReportUiData = new UICombatReportData(playerSquadron.getSquadronId());
-            combatReportUiData.setCombatReportPanelData(combatReportData);
+            combatReportUiData.setCombatReportPanelData(combatReportPanelData);
+
+            AARCombatReportMapData combatReportMapData = tabulateCombatReportMap();
             combatReportUiData.setCombatReportMapData(combatReportMapData);
+            
             combatReportUiDataSet.add(combatReportUiData);
         }
     }

@@ -8,8 +8,8 @@ import pwcg.core.exception.PWCGException;
 
 public class PersonnelReplacementsService
 {
-	public static final int NUM_POINTS_FOR_ONE_PILOT = 10;
-	
+    public static final int NUM_POINTS_FOR_ONE_PILOT = 10;
+
     private Integer serviceId;
     private SquadronMembers replacements = new SquadronMembers();
     private Date lastReplacementDate;
@@ -19,7 +19,7 @@ public class PersonnelReplacementsService
     public PersonnelReplacementsService()
     {
     }
-    
+
     public Integer getServiceId()
     {
         return serviceId;
@@ -44,11 +44,11 @@ public class PersonnelReplacementsService
     {
         if (replacements.getSquadronMemberCollection().isEmpty())
         {
-        	return false;
+            return false;
         }
         else
         {
-        	return true;
+            return true;
         }
     }
 
@@ -57,52 +57,68 @@ public class PersonnelReplacementsService
         replacements.addToSquadronMemberCollection(replacement);
     }
 
-    public SquadronMember useReplacement() throws PWCGException
+    public SquadronMember findReplacement() throws PWCGException
     {
-        SquadronMember replacement = replacements.removeAnySquadronMember();
+        SquadronMember replacement = replacements.findSquadronMember();
         return replacement;
     }
 
-	public Date getLastReplacementDate() {
-		return lastReplacementDate;
-	}
+    public SquadronMember removeReplacement(int serialNumber) throws PWCGException
+    {
+        SquadronMember replacement = replacements.removeSquadronMember(serialNumber);
+        return replacement;
+    }
 
-	public void setLastReplacementDate(Date lastReplacementDate) {
-		this.lastReplacementDate = lastReplacementDate;
-	}
+    public SquadronMember getAvailableReplacement(int serialNumber) throws PWCGException
+    {
+        SquadronMember replacement = replacements.getSquadronMember(serialNumber);
+        return replacement;
+    }
 
-	public int getDailyReplacementRate() {
-		return dailyReplacementRate;
-	}
+    public Date getLastReplacementDate()
+    {
+        return lastReplacementDate;
+    }
 
-	public void setDailyReplacementRate(int dailyReplacementRate) {
-		this.dailyReplacementRate = dailyReplacementRate;
-	}
+    public void setLastReplacementDate(Date lastReplacementDate)
+    {
+        this.lastReplacementDate = lastReplacementDate;
+    }
 
-	public int getNumReplacements() 
-	{
-		return replacementPoints / NUM_POINTS_FOR_ONE_PILOT;
-	}
+    public int getDailyReplacementRate()
+    {
+        return dailyReplacementRate;
+    }
 
-	public void addReplacementPoints(int daysSinceLastUpdate) 
-	{
-		replacementPoints += (dailyReplacementRate * daysSinceLastUpdate);
-	}
+    public void setDailyReplacementRate(int dailyReplacementRate)
+    {
+        this.dailyReplacementRate = dailyReplacementRate;
+    }
 
-	public void removeReplacementPoints() 
-	{
-		int numPilotsAdded = getNumReplacements();
-		replacementPoints -= (NUM_POINTS_FOR_ONE_PILOT * numPilotsAdded);
-	}
+    public int getNumReplacements()
+    {
+        return replacementPoints / NUM_POINTS_FOR_ONE_PILOT;
+    }
 
-	public int getReplacementPoints() 
-	{
-		return replacementPoints;
-	}
+    public void addReplacementPoints(int daysSinceLastUpdate)
+    {
+        replacementPoints += (dailyReplacementRate * daysSinceLastUpdate);
+    }
 
-	public void setReplacementPoints(int replacementPoints) 
-	{
-		this.replacementPoints = replacementPoints;
-	}    
-    
+    public void removeReplacementPoints()
+    {
+        int numPilotsAdded = getNumReplacements();
+        replacementPoints -= (NUM_POINTS_FOR_ONE_PILOT * numPilotsAdded);
+    }
+
+    public int getReplacementPoints()
+    {
+        return replacementPoints;
+    }
+
+    public void setReplacementPoints(int replacementPoints)
+    {
+        this.replacementPoints = replacementPoints;
+    }
+
 }

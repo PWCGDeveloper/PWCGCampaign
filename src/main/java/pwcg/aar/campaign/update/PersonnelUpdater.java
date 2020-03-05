@@ -4,12 +4,16 @@ import java.util.Date;
 
 import pwcg.aar.campaigndate.WoundRecovery;
 import pwcg.aar.data.AARContext;
+import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.personnel.PersonnelReplacementsService;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.resupply.personnel.TransferRecord;
 import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 
 public class PersonnelUpdater 
@@ -114,6 +118,11 @@ public class PersonnelUpdater
             SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(transferRecord.getTransferTo());
             transferRecord.getSquadronMember().setSquadronId(transferRecord.getTransferTo());
             squadronPersonnel.addSquadronMember(transferRecord.getSquadronMember());
+            
+            Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(transferRecord.getTransferTo());
+            ArmedService service = squadron.determineServiceForSquadron(campaign.getDate());
+            PersonnelReplacementsService replacementService = campaign.getPersonnelManager().getPersonnelReplacementsService(service.getServiceId());
+            replacementService.removeReplacement(transferRecord.getSquadronMember().getSerialNumber());
         }
     }
 

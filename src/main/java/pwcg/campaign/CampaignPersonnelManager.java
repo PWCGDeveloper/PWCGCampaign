@@ -153,6 +153,15 @@ public class CampaignPersonnelManager
             }        
         }
 
+        for (PersonnelReplacementsService personnelReplacements : personnelReplacementsServices.values())
+        {
+            squadronMember =  personnelReplacements.getAvailableReplacement(serialNumber);
+            if (squadronMember != null)
+            {
+                return squadronMember;
+            }        
+        }
+        
         throw new PWCGException ("Unable to locate squadron member for serial number " + serialNumber);
     }
 

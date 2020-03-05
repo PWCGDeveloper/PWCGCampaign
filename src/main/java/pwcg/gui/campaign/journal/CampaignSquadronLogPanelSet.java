@@ -85,10 +85,10 @@ public class CampaignSquadronLogPanelSet extends PwcgGuiContext implements Actio
 
     private void calculateLinesPerPage(Dimension screenSize)
     {
-        linesPerPage = 55;
+        linesPerPage = 45;
         if (screenSize.getHeight() < 1200)
         {
-            linesPerPage = 45;
+            linesPerPage = 40;
         }
         if (screenSize.getHeight() < 1000)
         {

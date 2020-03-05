@@ -29,11 +29,13 @@ public class MedalPanelEventTabulator
         List<MedalEvent> medalEventsForCampaignMembersOutOfMission = medalEventGenerator.createPilotMedalEvents(aarContext.getReconciledOutOfMissionData().getPersonnelAwards().getCampaignMemberMedals());
         List<MedalEvent> medalEventsForCampaignMembersInMission = medalEventGenerator.createPilotMedalEvents(aarContext.getReconciledInMissionData().getPersonnelAwards().getCampaignMemberMedals());
         
-        List<MedalEvent> medalEventsForCampaignMembers = new ArrayList<>();
-        medalEventsForCampaignMembers.addAll(medalEventsForCampaignMembersOutOfMission);
-        medalEventsForCampaignMembers.addAll(medalEventsForCampaignMembersInMission);
-        medalPanelData.setMedalsAwarded(medalEventsForCampaignMembers);
-
+        if (!medalEventsForCampaignMembersOutOfMission.isEmpty() || !medalEventsForCampaignMembersInMission.isEmpty())
+        {
+            List<MedalEvent> medalEventsForCampaignMembers = new ArrayList<>();
+            medalEventsForCampaignMembers.addAll(medalEventsForCampaignMembersOutOfMission);
+            medalEventsForCampaignMembers.addAll(medalEventsForCampaignMembersInMission);
+            medalPanelData.setMedalsAwarded(medalEventsForCampaignMembers);
+        }
         return medalPanelData;
     }
 }

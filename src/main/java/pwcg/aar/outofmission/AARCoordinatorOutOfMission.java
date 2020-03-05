@@ -1,7 +1,7 @@
 package pwcg.aar.outofmission;
 
 import pwcg.aar.data.AARContext;
-import pwcg.aar.outofmission.phase1.elapsedtime.AAROutOfMissionPhase1EventCoordinator;
+import pwcg.aar.outofmission.phase1.elapsedtime.AAROutOfMissionEventCoordinator;
 import pwcg.aar.outofmission.phase1.elapsedtime.ReconciledOutOfMissionData;
 import pwcg.aar.outofmission.phase2.resupply.AARResupplyCoordinator;
 import pwcg.aar.outofmission.phase2.resupply.AARResupplyData;
@@ -27,7 +27,7 @@ public class AARCoordinatorOutOfMission
 
     private void outOfMissionEvents() throws PWCGException
     {
-        AAROutOfMissionPhase1EventCoordinator outOfMissionCoordinator = new AAROutOfMissionPhase1EventCoordinator(campaign, aarContext);
+        AAROutOfMissionEventCoordinator outOfMissionCoordinator = new AAROutOfMissionEventCoordinator(campaign, aarContext);
         ReconciledOutOfMissionData reconciledOutOfMissionData = outOfMissionCoordinator.reconcileOutOfMission();
         aarContext.setReconciledOutMissionData(reconciledOutOfMissionData);
     }

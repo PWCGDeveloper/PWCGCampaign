@@ -91,4 +91,16 @@ public class CampaignEquipmentManager
         destroyedPlane.setDateRemovedFromService(date);
         return destroyedPlane;
     }
+    
+
+    public int getReplacementCount() throws PWCGException
+    {
+        int replacementCount = 0;
+        for (EquipmentDepot replacementService : equipmentDepotsForServices.values())
+        {
+            replacementCount += replacementService.getDepotSize();
+        }
+        
+        return replacementCount;
+    }
 }

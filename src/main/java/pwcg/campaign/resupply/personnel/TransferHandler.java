@@ -39,7 +39,7 @@ public class TransferHandler
             ISquadronNeed selectedSquadronNeed = serviceTransferNeed.chooseNeedySquadron();
             if (serviceReplacements.hasReplacements())
             {
-                SquadronMember replacement = serviceReplacements.useReplacement();        
+                SquadronMember replacement = serviceReplacements.findReplacement();        
                 TransferRecord transferRecord = new TransferRecord(replacement, Squadron.REPLACEMENT, selectedSquadronNeed.getSquadronId());
                 squadronTransferData.addTransferRecord(transferRecord);
                 serviceTransferNeed.noteResupply(selectedSquadronNeed);

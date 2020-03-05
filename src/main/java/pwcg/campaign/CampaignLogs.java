@@ -156,7 +156,7 @@ public class CampaignLogs
 	private void addTransferToCampaignLogs(AAREvent event)
 	{
 		TransferEvent logEvent = (TransferEvent) event;
-		String logEntry = logEvent.getPilotName() + " has transferred out of the squadron";
+		String logEntry = logEvent.getPilotName() + " has transferred into the squadron";
 		addCampaignLog(logEvent.getDate(), logEntry, logEvent.getSquadronId());
 	}
 

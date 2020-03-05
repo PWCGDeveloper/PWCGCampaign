@@ -79,7 +79,7 @@ public class AARPilotLossPanel extends AAREventPanel
         AARCombatReportPanelData combatReportData = aarCoordinator.getAarContext().getAarTabulatedData()
                         .findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportPanelData();
 
-        HashMap<String, CampaignReportPilotStatusGUI> pilotLostGuiList = new HashMap<String, CampaignReportPilotStatusGUI>();
+        HashMap<String, CampaignReportPilotStatusGUI> pilotLostGuiList = new HashMap<>();
 
         for (PilotStatusEvent pilotStatusEvent : combatReportData.getSquadronMembersLostInMission().values())
 		{

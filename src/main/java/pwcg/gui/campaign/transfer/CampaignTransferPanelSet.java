@@ -480,7 +480,6 @@ public class CampaignTransferPanelSet extends PwcgGuiContext implements ActionLi
             else if (action.equalsIgnoreCase("Accept Transfer"))
             {
                 acceptTransfer();
-                CampaignGuiContextManager.getInstance().popFromContextStack();
             }
             else if (action.equalsIgnoreCase("Reject Transfer"))
             {

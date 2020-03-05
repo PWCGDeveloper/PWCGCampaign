@@ -42,7 +42,7 @@ public class EquipmentDepotReplenisher
         }
         else
         {
-            System.out.println("No squadrons for service " + service.getName());
+            // System.out.println("No squadrons for service " + service.getName());
         }
     }
 

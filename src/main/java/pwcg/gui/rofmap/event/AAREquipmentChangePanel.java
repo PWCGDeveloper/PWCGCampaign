@@ -3,13 +3,12 @@ package pwcg.gui.rofmap.event;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.swing.JTabbedPane;
 
 import pwcg.aar.AARCoordinator;
-import pwcg.aar.ui.events.model.MedalEvent;
-import pwcg.campaign.Campaign;
+import pwcg.aar.ui.display.model.AARCombatReportPanelData;
+import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
@@ -20,18 +19,15 @@ import pwcg.gui.rofmap.debrief.AAREventPanel;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
 
-public class AARMedalPanel extends AAREventPanel
+public class AAREquipmentChangePanel extends AAREventPanel
 {
     private static final long serialVersionUID = 1L;
-
-    private Campaign campaign;
     private AARCoordinator aarCoordinator;
     private SquadronMember referencePlayer;
 
-    public AARMedalPanel(Campaign campaign)
+    public AAREquipmentChangePanel()
 	{
         super();
-        this.campaign = campaign;
         this.aarCoordinator = AARCoordinator.getInstance();
         this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
 	}
@@ -40,7 +36,7 @@ public class AARMedalPanel extends AAREventPanel
 	{
         try
         {
-            JTabbedPane eventTabPane = createTab();
+            JTabbedPane eventTabPane = createPilotsLostTab();
             createPostCombatReportTabs(eventTabPane);
         }
         catch (Exception e)
@@ -49,7 +45,7 @@ public class AARMedalPanel extends AAREventPanel
             ErrorDialog.internalError(e.getMessage());
         }
     }
-
+    
     private void createPostCombatReportTabs(JTabbedPane eventTabPane)
     {
         ImageResizingPanel postCombatPanel = new ImageResizingPanel(ContextSpecificImages.imagesMisc() + "PaperPart.jpg");
@@ -58,8 +54,7 @@ public class AARMedalPanel extends AAREventPanel
         this.add(postCombatPanel, BorderLayout.CENTER);
     }
 
-
-    private JTabbedPane createTab() throws PWCGException
+    private JTabbedPane createPilotsLostTab() throws PWCGException
     {
         Color bgColor = ColorMap.PAPER_BACKGROUND;
 
@@ -67,10 +62,10 @@ public class AARMedalPanel extends AAREventPanel
         eventTabPane.setBackground(bgColor);
         eventTabPane.setOpaque(false);
        
-        HashMap<String, CampaignReportMedalGUI> pilotMedalGuiList = createPilotMedalList() ;
-        for (String tabName : pilotMedalGuiList.keySet())
+        HashMap<String, CampaignReportEquipmentStatusGUI> equipmentGuiList = createPilotLostSubTabs() ;
+        for (String tabName : equipmentGuiList.keySet())
         {
-            eventTabPane.addTab(tabName, pilotMedalGuiList.get(tabName));
+            eventTabPane.addTab(tabName, equipmentGuiList.get(tabName));
             shouldDisplay = true;
         }
 
@@ -78,21 +73,24 @@ public class AARMedalPanel extends AAREventPanel
         return eventTabPane;
     }
 
-	private HashMap<String, CampaignReportMedalGUI> createPilotMedalList() throws PWCGException 
+	private HashMap<String, CampaignReportEquipmentStatusGUI> createPilotLostSubTabs() throws PWCGException 
 	{
-        List<MedalEvent> medalsAwarded = aarCoordinator.getAarContext().getAarTabulatedData().getUiDebriefData().getMedalPanelData().getMedalsAwarded();
-        HashMap<String, CampaignReportMedalGUI> pilotMedalGuiList = new HashMap<String, CampaignReportMedalGUI>();
-        for (MedalEvent medalEvent : medalsAwarded)
-        {
-            if (medalEvent.getSquadronId() == referencePlayer.getSquadronId())
+        AARCombatReportPanelData combatReportData = aarCoordinator.getAarContext().getAarTabulatedData()
+                        .findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportPanelData();
+
+        HashMap<String, CampaignReportEquipmentStatusGUI> pilotLostGuiList = new HashMap<>();
+
+        for (PlaneStatusEvent planeStatusEvent : combatReportData.getSquadronPlanesLostInMission().values())
+		{
+            if (planeStatusEvent.getSquadronId() == referencePlayer.getSquadronId())
             {
-                CampaignReportMedalGUI medalGui = new CampaignReportMedalGUI(campaign, medalEvent);
-                String tabName = "Medal Awarded: " + medalEvent.getPilotName();
-                pilotMedalGuiList.put(tabName, medalGui);
+                CampaignReportEquipmentStatusGUI equipmentChangeGui = new CampaignReportEquipmentStatusGUI(planeStatusEvent);
+                String tabName = "Plane Lost: " + planeStatusEvent.getPlaneDesc();
+                pilotLostGuiList.put(tabName, equipmentChangeGui);
             }
-        }
+		}
         
-        return pilotMedalGuiList;
+        return pilotLostGuiList;
 	}
 
 	

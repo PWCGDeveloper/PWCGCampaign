@@ -47,12 +47,13 @@ public class SquadronMembers
         return squadronMemberCollection.containsKey(serialNumber);
     }
 
-    public SquadronMember removeAnySquadronMember() throws PWCGException
+    public SquadronMember findSquadronMember() throws PWCGException
     {
         List<Integer> serialNumbers = new ArrayList<>(squadronMemberCollection.keySet());
         int index = RandomNumberGenerator.getRandom(serialNumbers.size());
         int serialNumber = serialNumbers.get(index);
-        return removeSquadronMember(serialNumber);
+        SquadronMember squadronMember = squadronMemberCollection.get(serialNumber);
+        return squadronMember;
     }
 
     public SquadronMember removeSquadronMember(int serialNumber) throws PWCGException

@@ -7,7 +7,7 @@ import pwcg.aar.data.AARLogEvents;
 import pwcg.aar.data.ui.UIDebriefData;
 import pwcg.aar.outofmission.phase1.elapsedtime.ElapsedTimeEventGenerator;
 import pwcg.aar.outofmission.phase1.elapsedtime.ElapsedTimeEvents;
-import pwcg.aar.tabulate.combatreport.UICombatReportData;
+import pwcg.aar.ui.display.model.AARElapsedTimeCombatResultsData;
 import pwcg.aar.ui.events.model.PilotStatusEvent;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.aar.ui.events.model.SquadronMoveEvent;
@@ -19,12 +19,14 @@ public class CampaignLogGenerator
 	private Campaign campaign;
     private AARContext aarContext;
     private AARLogEvents campaignLogEvents;
+    private AARElapsedTimeCombatResultsData elapsedTimeCombatResultsData;
 	
-	public CampaignLogGenerator(Campaign campaign, AARContext aarContext)
+	public CampaignLogGenerator(Campaign campaign, AARContext aarContext, AARElapsedTimeCombatResultsData elapsedTimeCombatResultsData)
 	{
 		this.campaign = campaign;
         this.aarContext = aarContext;
-		this.campaignLogEvents = new AARLogEvents(campaign);
+        this.elapsedTimeCombatResultsData = elapsedTimeCombatResultsData;
+        this.campaignLogEvents = new AARLogEvents(campaign);
 	}
 	
 	public AARLogEvents createCampaignLogEventsForCampaignUpdate() throws PWCGException
@@ -42,34 +44,29 @@ public class CampaignLogGenerator
 
 	private void createPilotVictoryEvents() throws PWCGException
     {
-	    for (UICombatReportData combatReportData : aarContext.getAarTabulatedData().getUiCombatReportData())
-	    {
-	        campaignLogEvents.addEvents(combatReportData.getCombatReportPanelData().getVictoriesForSquadronMembersInMission());	        
-	    }
+        campaignLogEvents.addEvents(elapsedTimeCombatResultsData.getVictories());          
     }
-	
+
+    private void createPilotLossEvents() throws PWCGException
+    {
+        campaignLogEvents.addEvents(new ArrayList<PilotStatusEvent>(elapsedTimeCombatResultsData.getPilotsLost()));
+    }
+    
+    private void createEquipmentLossEvents()
+    {
+        campaignLogEvents.addEvents(new ArrayList<PlaneStatusEvent>(elapsedTimeCombatResultsData.getPlanesLost()));
+    }
+    
     private void createPilotMedalEvents() throws PWCGException
     {
         UIDebriefData debriefData = aarContext.getAarTabulatedData().getUiDebriefData();
         campaignLogEvents.addEvents(debriefData.getMedalPanelData().getMedalsAwarded());
     }
-	
+    
     private void createPilotPromotionEvents() throws PWCGException
     {
         UIDebriefData debriefData = aarContext.getAarTabulatedData().getUiDebriefData();
         campaignLogEvents.addEvents(debriefData.getPromotionPanelData().getPromotionEventsDuringElapsedTime());
-    }
-
-    private void createPilotLossEvents() throws PWCGException
-    {
-        UIDebriefData debriefData = aarContext.getAarTabulatedData().getUiDebriefData();
-        campaignLogEvents.addEvents(new ArrayList<PilotStatusEvent>(debriefData.getPilotLossPanelData().getSquadMembersLost().values()));
-    }
-    
-    private void createEquipmentLossEvents()
-    {
-        UIDebriefData debriefData = aarContext.getAarTabulatedData().getUiDebriefData();
-        campaignLogEvents.addEvents(new ArrayList<PlaneStatusEvent>(debriefData.getEquipmentLossPanelData().getEquipmentLost().values()));
     }
 
     private void createTransfersEvents() throws PWCGException

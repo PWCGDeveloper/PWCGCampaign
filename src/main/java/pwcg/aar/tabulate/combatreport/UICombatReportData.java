@@ -45,5 +45,4 @@ public class UICombatReportData
     {
         this.combatReportMapData = combatReportMapData;
     }
-
 }
