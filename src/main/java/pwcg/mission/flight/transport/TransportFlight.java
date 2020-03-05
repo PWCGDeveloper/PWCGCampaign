@@ -5,6 +5,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.AirfieldManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.Flight;
+import pwcg.mission.flight.FlightPayloadBuilder;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.initialposition.FlightPositionSetter;
@@ -33,6 +34,7 @@ public class TransportFlight extends Flight implements IFlight
         createWaypoints();
         FlightPositionSetter.setFlightInitialPosition(this);
         WaypointPriority.setWaypointsNonFighterPriority(this);
+        setFlightPayload();
     }
 
     private void createWaypoints() throws PWCGException
@@ -66,5 +68,11 @@ public class TransportFlight extends Flight implements IFlight
     public IAirfield getArrivalAirfield()
     {
         return arrivalAirfield;
+    }
+
+    private void setFlightPayload() throws PWCGException
+    {
+        FlightPayloadBuilder flightPayloadHelper = new FlightPayloadBuilder(this);
+        flightPayloadHelper.setFlightPayload();
     }
 }
