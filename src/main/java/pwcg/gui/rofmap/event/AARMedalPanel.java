@@ -80,7 +80,7 @@ public class AARMedalPanel extends AAREventPanel
 
 	private HashMap<String, CampaignReportMedalGUI> createPilotMedalList() throws PWCGException 
 	{
-        List<MedalEvent> medalsAwarded = aarCoordinator.getAarContext().getAarTabulatedData().getUiDebriefData().getMedalPanelData().getMedalsAwarded();
+        List<MedalEvent> medalsAwarded = aarCoordinator.getAarContext().getUiDebriefData().getMedalPanelData().getMedalsAwarded();
         HashMap<String, CampaignReportMedalGUI> pilotMedalGuiList = new HashMap<String, CampaignReportMedalGUI>();
         for (MedalEvent medalEvent : medalsAwarded)
         {

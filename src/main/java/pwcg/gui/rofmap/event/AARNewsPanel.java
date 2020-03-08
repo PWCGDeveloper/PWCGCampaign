@@ -104,7 +104,7 @@ public class AARNewsPanel extends AAREventPanel
 
     private void makeHistoricalAceEvents(Campaign campaign) throws PWCGException
     {
-        List<AceKilledEvent> aceKilledEvents = aarCoordinator.getAarContext().getAarTabulatedData().getUiDebriefData().getNewsPanelData().getAcesKilledDuringElapsedTime();
+        List<AceKilledEvent> aceKilledEvents = aarCoordinator.getAarContext().getUiDebriefData().getNewsPanelData().getAcesKilledDuringElapsedTime();
         for (AceKilledEvent aceKilledEvent : aceKilledEvents)
         {
             CampaignReportAceNewspaperGUI newspaperGui = new CampaignReportAceNewspaperGUI(aceKilledEvent, campaign);
@@ -115,7 +115,7 @@ public class AARNewsPanel extends AAREventPanel
 
     private void makeHistoricalNewspaperEvents() throws PWCGException
     {
-        List<NewspaperEvent> newspaperEvents = aarCoordinator.getAarContext().getAarTabulatedData().getUiDebriefData().getNewsPanelData().getNewspaperEventsDuringElapsedTime();
+        List<NewspaperEvent> newspaperEvents = aarCoordinator.getAarContext().getUiDebriefData().getNewsPanelData().getNewspaperEventsDuringElapsedTime();
         for (NewspaperEvent newspaperEvent : newspaperEvents)
 		{
         	if (referencePlayer.determineCountry(campaign.getDate()).getSide() == newspaperEvent.getSide())

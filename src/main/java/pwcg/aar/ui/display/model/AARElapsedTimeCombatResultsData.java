@@ -37,7 +37,6 @@ public class AARElapsedTimeCombatResultsData
     public void addVictory(VictoryEvent victory)
     {
         victories.add(victory);
-        
     }
 
     public void addPlaneLost(PlaneStatusEvent planeLostEvent)

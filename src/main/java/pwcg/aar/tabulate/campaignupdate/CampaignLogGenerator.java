@@ -59,19 +59,19 @@ public class CampaignLogGenerator
     
     private void createPilotMedalEvents() throws PWCGException
     {
-        UIDebriefData debriefData = aarContext.getAarTabulatedData().getUiDebriefData();
+        UIDebriefData debriefData = aarContext.getUiDebriefData();
         campaignLogEvents.addEvents(debriefData.getMedalPanelData().getMedalsAwarded());
     }
     
     private void createPilotPromotionEvents() throws PWCGException
     {
-        UIDebriefData debriefData = aarContext.getAarTabulatedData().getUiDebriefData();
+        UIDebriefData debriefData = aarContext.getUiDebriefData();
         campaignLogEvents.addEvents(debriefData.getPromotionPanelData().getPromotionEventsDuringElapsedTime());
     }
 
     private void createTransfersEvents() throws PWCGException
     {
-        UIDebriefData debriefData = aarContext.getAarTabulatedData().getUiDebriefData();
+        UIDebriefData debriefData = aarContext.getUiDebriefData();
         campaignLogEvents.addEvents(debriefData.getTransferPanelData().getTransfers());
     }
 

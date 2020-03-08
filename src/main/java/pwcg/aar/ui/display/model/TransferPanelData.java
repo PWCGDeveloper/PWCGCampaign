@@ -29,4 +29,13 @@ public class TransferPanelData
     {
         this.transfers = transfers;
     }
+
+    public void merge(TransferPanelData transferPanelData)
+    {
+        if (transferPanelData.getPlayerTransferEvent() != null)
+        {
+            playerTransferEvent = transferPanelData.getPlayerTransferEvent();
+        }
+        transfers.addAll(transferPanelData.getTransfers());
+    }
 }

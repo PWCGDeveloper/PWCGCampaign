@@ -65,7 +65,7 @@ public class AARPilotsTransferredPanel extends AAREventPanel
         eventTabPane.setBackground(bgColor);
         eventTabPane.setOpaque(false);
        
-        makeTransferTabs(eventTabPane, aarCoordinator.getAarContext().getAarTabulatedData().getUiDebriefData().getTransferPanelData().getTransfers());
+        makeTransferTabs(eventTabPane, aarCoordinator.getAarContext().getUiDebriefData().getTransferPanelData().getTransfers());
         return eventTabPane;
     }
 

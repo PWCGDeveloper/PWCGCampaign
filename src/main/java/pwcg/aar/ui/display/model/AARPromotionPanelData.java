@@ -18,4 +18,9 @@ public class AARPromotionPanelData
     {
         this.promotionEventsDuringElapsedTime = promotionEventsDuringElapsedTime;
     }
+
+    public void merge(AARPromotionPanelData promotionPanelData)
+    {
+        promotionEventsDuringElapsedTime.addAll(promotionPanelData.getPromotionEventsDuringElapsedTime());        
+    }
 }

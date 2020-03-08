@@ -18,4 +18,9 @@ public class AARMedalPanelData
     {
         this.medalsAwarded = medalsAwarded;
     }
+
+    public void merge(AARMedalPanelData medalPanelData)
+    {
+        medalsAwarded.addAll(medalPanelData.getMedalsAwarded());        
+    }
 }

@@ -76,7 +76,7 @@ public class AARPilotLossPanel extends AAREventPanel
 
 	private HashMap<String, CampaignReportPilotStatusGUI> createPilotLostSubTabs() throws PWCGException 
 	{
-        AARCombatReportPanelData combatReportData = aarCoordinator.getAarContext().getAarTabulatedData()
+        AARCombatReportPanelData combatReportData = aarCoordinator.getAarContext()
                         .findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportPanelData();
 
         HashMap<String, CampaignReportPilotStatusGUI> pilotLostGuiList = new HashMap<>();

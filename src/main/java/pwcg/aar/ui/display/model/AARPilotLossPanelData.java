@@ -18,4 +18,9 @@ public class AARPilotLossPanelData
     {
         this.squadMembersLost = squadMembersLost;
     }
+
+    public void merge(AARPilotLossPanelData pilotLossPanelData)
+    {
+        squadMembersLost.putAll(pilotLossPanelData.getSquadMembersLost());        
+    }
 }

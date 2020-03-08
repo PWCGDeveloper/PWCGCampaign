@@ -1,22 +1,25 @@
 package pwcg.aar.data;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import pwcg.aar.data.ui.UIDebriefData;
 import pwcg.aar.inmission.phase1.parse.AARMissionLogRawData;
 import pwcg.aar.inmission.phase2.logeval.AARMissionEvaluationData;
 import pwcg.aar.inmission.phase3.reconcile.ReconciledInMissionData;
 import pwcg.aar.outofmission.phase1.elapsedtime.ReconciledOutOfMissionData;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.aar.prelim.CampaignMembersOutOfMissionFinder;
+import pwcg.aar.tabulate.combatreport.UICombatReportData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 
-
 public class AARContext
 {
     private Campaign campaign;
-    
+
     private AARPreliminaryData preliminaryData = new AARPreliminaryData();
     private Date newDate;
     private ExtendedTimeReason reasonForExtendedTime = ExtendedTimeReason.NO_EXTENDED_TIME;
@@ -33,12 +36,14 @@ public class AARContext
     private ReconciledOutOfMissionData cumulativeMissionData = new ReconciledOutOfMissionData();
 
     // Tabulated
-    private AARTabulatedData aarTabulatedData;
-    
+    private CampaignUpdateData campaignUpdateData;
+    private List<UICombatReportData> uiCombatReportData = new ArrayList<>();
+    private UIDebriefData uiDebriefData = new UIDebriefData();
+
     public AARContext(Campaign campaign)
     {
         this.campaign = campaign;
-        this.aarTabulatedData = new AARTabulatedData(campaign);
+        this.campaignUpdateData = new CampaignUpdateData(campaign);
     }
 
     public void resetContextForNextTimeIncrement() throws PWCGException
@@ -46,17 +51,29 @@ public class AARContext
         cumulativeMissionData.merge(reconciledOutOfMissionData);
 
         preliminaryData = new AARPreliminaryData();
-        CampaignMembersOutOfMissionFinder campaignMembersOutOfMissionHandler = new CampaignMembersOutOfMissionFinder();        
-        SquadronMembers campaignMembersOutOfMission = campaignMembersOutOfMissionHandler.getCampaignMembersNotInMission(campaign, preliminaryData.getCampaignMembersInMission());
+        CampaignMembersOutOfMissionFinder campaignMembersOutOfMissionHandler = new CampaignMembersOutOfMissionFinder();
+        SquadronMembers campaignMembersOutOfMission = campaignMembersOutOfMissionHandler.getCampaignMembersNotInMission(campaign,
+                preliminaryData.getCampaignMembersInMission());
         preliminaryData.setCampaignMembersOutOfMission(campaignMembersOutOfMission);
 
         missionLogRawData = new AARMissionLogRawData();
         missionEvaluationData = new AARMissionEvaluationData();
         reconciledInMissionData = new ReconciledInMissionData();
         reconciledOutOfMissionData = new ReconciledOutOfMissionData();
-        aarTabulatedData = new AARTabulatedData(campaign);
     }
     
+    public UICombatReportData findUiCombatReportDataForSquadron(int squadronId) throws PWCGException
+    {
+        for (UICombatReportData uiCombatReportDataForSquadron : uiCombatReportData)
+        {
+            if (uiCombatReportDataForSquadron.getSquadronId() == squadronId)
+            {
+                return uiCombatReportDataForSquadron;
+            }
+        }
+        return new UICombatReportData(squadronId);
+    }
+
     public AARPreliminaryData getPreliminaryData()
     {
         return preliminaryData;
@@ -75,11 +92,6 @@ public class AARContext
     public ReconciledInMissionData getReconciledInMissionData()
     {
         return reconciledInMissionData;
-    }
-
-    public CampaignUpdateData getCampaignUpdateData()
-    {
-        return aarTabulatedData.getCampaignUpdateData();
     }
 
     public AARMissionEvaluationData getMissionEvaluationData()
@@ -111,7 +123,7 @@ public class AARContext
     {
         this.reconciledOutOfMissionData = reconciledOutOfMissionData;
     }
-    
+
     public ReconciledOutOfMissionData getCumulativeMissionData()
     {
         return cumulativeMissionData;
@@ -137,13 +149,34 @@ public class AARContext
         this.reasonForExtendedTime = reasonForExtendedTime;
     }
 
-    public AARTabulatedData getAarTabulatedData()
+    public CampaignUpdateData getCampaignUpdateData()
     {
-        return aarTabulatedData;
+        return campaignUpdateData;
     }
 
-    public void setAarTabulatedData(AARTabulatedData aarTabulatedData)
+    public void setCampaignUpdateData(CampaignUpdateData campaignUpdateData)
     {
-        this.aarTabulatedData = aarTabulatedData;
+        this.campaignUpdateData = campaignUpdateData;
     }
+
+    public List<UICombatReportData> getUiCombatReportData()
+    {
+        return uiCombatReportData;
+    }
+
+    public void setUiCombatReportData(List<UICombatReportData> uiCombatReportData)
+    {
+        this.uiCombatReportData = uiCombatReportData;
+    }
+
+    public UIDebriefData getUiDebriefData()
+    {
+        return uiDebriefData;
+    }
+
+    public void mergeUiDebriefData(UIDebriefData uiDebriefData)
+    {
+        this.uiDebriefData.merge(uiDebriefData);
+    }
+
 }

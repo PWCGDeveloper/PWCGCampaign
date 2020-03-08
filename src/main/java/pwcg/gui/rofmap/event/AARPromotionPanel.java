@@ -84,7 +84,7 @@ public class AARPromotionPanel extends AAREventPanel
 	private HashMap<String, CampaignReportPromotionGUI> createPilotPromotionList() throws PWCGException 
 	{
         HashMap<String, CampaignReportPromotionGUI> pilotPromotionGuiList = new HashMap<String, CampaignReportPromotionGUI>();
-        List<PromotionEvent> promotionEvents = aarCoordinator.getAarContext().getAarTabulatedData().getUiDebriefData().getPromotionPanelData().getPromotionEventsDuringElapsedTime();
+        List<PromotionEvent> promotionEvents = aarCoordinator.getAarContext().getUiDebriefData().getPromotionPanelData().getPromotionEventsDuringElapsedTime();
         for (PromotionEvent promotionEvent : promotionEvents)
 		{
             if (promotionEvent.getSquadronId() == referencePlayer.getSquadronId())

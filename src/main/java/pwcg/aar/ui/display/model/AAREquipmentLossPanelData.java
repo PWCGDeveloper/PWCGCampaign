@@ -18,4 +18,9 @@ public class AAREquipmentLossPanelData
     {
         this.equipmentLost = equipmentLost;
     }
+
+    public void merge(AAREquipmentLossPanelData equipmentLossPanelData)
+    {
+        equipmentLost.putAll(equipmentLossPanelData.getEquipmentLost());        
+    }
 }

@@ -13,11 +13,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import pwcg.aar.AARCoordinatorMissionHandler;
 import pwcg.aar.AARTestSetup;
 import pwcg.aar.data.AAREquipmentLosses;
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
-import pwcg.aar.tabulate.combatreport.CombatReportTabulator;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
 import pwcg.aar.ui.events.PilotStatusEventGenerator;
 import pwcg.aar.ui.events.PlaneStatusEventGenerator;
@@ -108,7 +108,15 @@ public class CombatReportTabulatorTest extends AARTestSetup
         Mockito.when(planeStatusEventGenerator.createPlaneLossEvents(Matchers.<AAREquipmentLosses>any())).thenReturn(planesLost);
 
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.ESC_103_PROFILE.getSquadronId());
-        CombatReportTabulator combatReportPanelEventTabulator = new CombatReportTabulator(campaign, squadron, aarContext);
+        
+        
+        
+        
+        
+        
+        
+        
+        AARCoordinatorMissionHandler combatReportPanelEventTabulator = new AARCoordinatorMissionHandler(campaign, aarContext);
         combatReportPanelEventTabulator.setPilotStatusEventGenerator(pilotStatusEventGenerator);
         combatReportPanelEventTabulator.setPlaneStatusEventGenerator(planeStatusEventGenerator);
         combatReportPanelEventTabulator.setVictoryEventGenerator(victoryEventGenerator);

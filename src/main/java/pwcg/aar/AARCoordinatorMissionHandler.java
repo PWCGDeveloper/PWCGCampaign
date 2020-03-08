@@ -1,16 +1,17 @@
 package pwcg.aar;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
-import pwcg.aar.campaign.update.CampaignUpdater;
 import pwcg.aar.campaigndate.AARTimePassedAfterMission;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.inmission.AARCoordinatorInMission;
 import pwcg.aar.inmission.phase1.parse.AARLogEvaluationCoordinator;
 import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarations;
 import pwcg.aar.outofmission.AARCoordinatorOutOfMission;
-import pwcg.aar.tabulate.AARTabulateCoordinator;
+import pwcg.aar.tabulate.combatreport.AARCombatReportTabulateCoordinator;
+import pwcg.aar.tabulate.combatreport.UICombatReportData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 
@@ -30,8 +31,7 @@ public class AARCoordinatorMissionHandler
         determineInMissionResults(playerDeclarations);
         elapsedTimeDuringMission();
         determineOutOfMissionResults();
-        tabulate();
-        updateCampaignFromMission();
+        tabulateInMission();
     }
 
 	private void determineInMissionResults(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
@@ -54,15 +54,10 @@ public class AARCoordinatorMissionHandler
         coordinatorOutOfMission.coordinateOutOfMissionAAR();
 	}
     
-     private void tabulate() throws PWCGException
+     private void tabulateInMission() throws PWCGException
      {
-         AARTabulateCoordinator tabulateCoordinator = new AARTabulateCoordinator(campaign, aarContext);
-         tabulateCoordinator.tabulate();
+         AARCombatReportTabulateCoordinator combatReportTabulator = new AARCombatReportTabulateCoordinator(campaign, aarContext);
+         List<UICombatReportData> uiCombatReportData = combatReportTabulator.tabulate();
+         aarContext.setUiCombatReportData(uiCombatReportData);
      }
-
-	private void updateCampaignFromMission() throws PWCGException
-	{
-        CampaignUpdater campaignUpdater = new CampaignUpdater(campaign, aarContext);
-        campaignUpdater.updateCampaign();
-	}
 }

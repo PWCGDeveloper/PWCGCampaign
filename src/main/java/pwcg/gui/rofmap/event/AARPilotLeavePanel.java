@@ -80,7 +80,7 @@ public class AARPilotLeavePanel extends AAREventPanel
         Campaign campaign = PWCGContext.getInstance().getCampaign();
         HashMap<String, CampaignReportAceLeaveGUI> pilotLeaveGuiList = new HashMap<String, CampaignReportAceLeaveGUI>();
 
-        List<AceLeaveEvent> aceLeaveEvents = aarCoordinator.getAarContext().getAarTabulatedData().getUiDebriefData().getAceLeavePanelData().getAcesOnLeaveDuringElapsedTime();
+        List<AceLeaveEvent> aceLeaveEvents = aarCoordinator.getAarContext().getUiDebriefData().getAceLeavePanelData().getAcesOnLeaveDuringElapsedTime();
         for (AceLeaveEvent aceLeaveEvent : aceLeaveEvents)
 		{
             if (aceLeaveEvent.getSquadronId() == referencePlayer.getSquadronId())

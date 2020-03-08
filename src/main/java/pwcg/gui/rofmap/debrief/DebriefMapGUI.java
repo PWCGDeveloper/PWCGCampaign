@@ -95,7 +95,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
     private void setSoundForScreen() throws PWCGException
     {
-        AARCombatReportPanelData combatPanelData = aarCoordinator.getAarContext().getAarTabulatedData().
+        AARCombatReportPanelData combatPanelData = aarCoordinator.getAarContext().
                         findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportPanelData();
         CampaignMissionWin missionWin = new CampaignMissionWin(combatPanelData);
         MusicManager.playMissionStatusTheme(missionWin.isMissionAWin());
@@ -166,7 +166,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
 	protected void makeMapEvents() throws PWCGException  
 	{
-        List<LogBase> logEvents = aarCoordinator.getAarContext().getAarTabulatedData().
+        List<LogBase> logEvents = aarCoordinator.getAarContext().
                         findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportMapData().getChronologicalEvents();
 
         LogDamage lastDamageEvent = null;
@@ -267,7 +267,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 
     private void showMissionEvents() throws PWCGException 
     {        
-        List<LogBase> logEvents = aarCoordinator.getAarContext().getAarTabulatedData().
+        List<LogBase> logEvents = aarCoordinator.getAarContext().
                         findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportMapData().getChronologicalEvents();
 
         if (!logEvents.isEmpty())

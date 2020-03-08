@@ -57,7 +57,7 @@ public class CombatReportBuilder
         combatReport.setReportPilotName(reportSquadronMember.getNameAndRank());
         combatReport.setSquadron(reportSquadronMember.determineSquadron().determineDisplayName(campaign.getDate()));
         
-        MissionHeader missionHeader = aarCoordinator.getAarContext().getAarTabulatedData().findUiCombatReportDataForSquadron(reportSquadronMember.getSquadronId()).
+        MissionHeader missionHeader = aarCoordinator.getAarContext().findUiCombatReportDataForSquadron(reportSquadronMember.getSquadronId()).
                         getCombatReportPanelData().getMissionHeader();
         Date combatReportDate = DateUtils.getDateYYYYMMDD(missionHeader.getDate());
         
@@ -133,7 +133,7 @@ public class CombatReportBuilder
 
     private String createPilotLostReport() throws PWCGException
     {
-        Map<Integer, PilotStatusEvent> squadronMembersLostInMission = aarCoordinator.getAarContext().getAarTabulatedData()
+        Map<Integer, PilotStatusEvent> squadronMembersLostInMission = aarCoordinator.getAarContext()
                         .findUiCombatReportDataForSquadron(reportSquadronMember.getSquadronId()).
                         getCombatReportPanelData().getSquadronMembersLostInMission();
 
@@ -157,7 +157,7 @@ public class CombatReportBuilder
 
     private String createEquipmentLostReport() throws PWCGException
     {
-        Map<Integer, PlaneStatusEvent> squadronPlanesLostInMission = aarCoordinator.getAarContext().getAarTabulatedData()
+        Map<Integer, PlaneStatusEvent> squadronPlanesLostInMission = aarCoordinator.getAarContext()
                     .findUiCombatReportDataForSquadron(reportSquadronMember.getSquadronId()).
                     getCombatReportPanelData().getSquadronPlanesLostInMission();
 
@@ -179,7 +179,7 @@ public class CombatReportBuilder
     
     private String createCrewsInMissionReport() throws PWCGException
     {        
-        Map<Integer, SquadronMember> pilotsInMission = aarCoordinator.getAarContext().getAarTabulatedData().
+        Map<Integer, SquadronMember> pilotsInMission = aarCoordinator.getAarContext().
                         findUiCombatReportDataForSquadron(reportSquadronMember.getSquadronId()).getCombatReportPanelData().getCrewsInMission();
 
         String missionStatement;
@@ -198,7 +198,7 @@ public class CombatReportBuilder
 
     private String createClaimStatusReport() throws PWCGException
     {
-        List<VictoryEvent> victoryEvents = aarCoordinator.getAarContext().getAarTabulatedData().
+        List<VictoryEvent> victoryEvents = aarCoordinator.getAarContext().
                         findUiCombatReportDataForSquadron(reportSquadronMember.getSquadronId()).getCombatReportPanelData().getVictoriesForSquadronMembersInMission();
 
         String claimStatusStatement = "";
@@ -211,7 +211,7 @@ public class CombatReportBuilder
         }
         
         
-        List<ClaimDeniedEvent> claimDeniedEvents = aarCoordinator.getAarContext().getAarTabulatedData().
+        List<ClaimDeniedEvent> claimDeniedEvents = aarCoordinator.getAarContext().
                         findUiCombatReportDataForSquadron(reportSquadronMember.getSquadronId()).getCombatReportPanelData().getClaimsDenied();
 
         for (ClaimDeniedEvent claimDeniedEvent : claimDeniedEvents)

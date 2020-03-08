@@ -6,6 +6,7 @@ import pwcg.aar.ui.display.model.AARAceLeavePanelData;
 import pwcg.aar.ui.display.model.AAREquipmentLossPanelData;
 import pwcg.aar.ui.display.model.AARMedalPanelData;
 import pwcg.aar.ui.display.model.AARNewsPanelData;
+import pwcg.aar.ui.display.model.AAROutOfMissionVictoryPanelData;
 import pwcg.aar.ui.display.model.AARPilotLossPanelData;
 import pwcg.aar.ui.display.model.AARPromotionPanelData;
 import pwcg.aar.ui.display.model.TransferPanelData;
@@ -26,12 +27,13 @@ public class AARDebriefTabulateCoordinator
     
     public UIDebriefData tabulateForDebriefUI() throws PWCGException 
     {        
+        tabulateOutOfMissionVictories();
         tabulateAceLeave();
         tabulateMedals();        
         tabulateNews();
         tabulatePilotLosses();
         tabulateEquipmentLosses();
-        tabulatePromotions();        
+        tabulatePromotions();   
         tabulateTransfers();
         
         return uiDebriefData;
@@ -65,6 +67,13 @@ public class AARDebriefTabulateCoordinator
         uiDebriefData.setEquipmentLossPanelData(equipmentLossPanelData);        
     }
 
+    private void tabulateOutOfMissionVictories() throws PWCGException
+    {
+        SquadronOutOfMissionVictoryPanelEventTabulator squadronOutOfMissionVictoryPanelEventTabulator = new SquadronOutOfMissionVictoryPanelEventTabulator(campaign, aarContext);
+        AAROutOfMissionVictoryPanelData outOfMissionVictoryPanelData = squadronOutOfMissionVictoryPanelEventTabulator.tabulateOutOfMissionVictoriesForSquadron();
+        uiDebriefData.setOutOfMissionVictoryPanelData(outOfMissionVictoryPanelData);        
+    }
+    
     private void tabulateNews() throws PWCGException
     {
         NewsPanelEventTabulator newsPanelEventTabulator = new NewsPanelEventTabulator(campaign, aarContext);
