@@ -19,6 +19,7 @@ public enum VehicleClass
     
     Tank(false, "Tank", GroundUnitType.TANK_UNIT),
     
+    LandCanvas(false, "Canvas", GroundUnitType.STATIC_UNIT),
     RadioBeacon(false, "Radio Beacon", GroundUnitType.STATIC_UNIT),
     SearchLight(false, "Search Light", GroundUnitType.INFANTRY_UNIT),
 

@@ -3,6 +3,7 @@ package pwcg.mission;
 import java.util.ArrayList;
 import java.util.List;
 
+import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.group.Block;
 import pwcg.campaign.group.Bridge;
@@ -12,6 +13,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.CoordinateBox;
+import pwcg.mission.flight.IFlight;
 
 public class MissionBlockBuilder
 {
@@ -44,6 +46,16 @@ public class MissionBlockBuilder
             if (missionBorders.isInBox(block.getPosition()))
             {
                 selectedBlocks.add(block);
+            } else {
+                for (IFlight playerFlight : mission.getMissionFlightBuilder().getPlayerFlights())
+                {
+                    IAirfield airfield = playerFlight.getFlightInformation().getAirfield();
+                    CoordinateBox airfieldBox = CoordinateBox.coordinateBoxFromCenter(airfield.getPosition(), 10000);
+                    if (airfieldBox.isInBox(block.getPosition()))
+                    {
+                        selectedBlocks.add(block);
+                    }
+                }
             }
         }
 
