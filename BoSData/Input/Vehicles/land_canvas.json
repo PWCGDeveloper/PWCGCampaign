@@ -1,0 +1,17 @@
+{
+  "scriptDir": "vehicles\\",
+  "modelDir": "vehicles\\land_canvas\\",
+  "vehicleType": "land_canvas",
+  "displayName": "canvas",
+  "countries": [
+    "GERMANY",
+    "ITALY",
+    "RUSSIA",
+    "USA",
+    "BRITAIN"
+  ],
+  "startDate": "19390901",
+  "endDate": "19460724",
+  "rarityWeight": 80,
+  "vehicleClass": "LandCanvas"
+}

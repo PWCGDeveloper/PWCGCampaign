@@ -20,6 +20,7 @@ import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
+import pwcg.core.location.Orientation;
 import pwcg.core.utils.DateUtils;
 import pwcg.core.utils.Logger;
 import pwcg.core.utils.MathUtils;
@@ -220,6 +221,7 @@ public class MissionFileWriter implements IMissionFile
     {
         writeFieldsInMission(writer);
         writeRadioBeacon(writer);
+        writeRunwayT(writer);
         writeFakeAirfieldForAiReturnToBase(writer);
         writeSmoke(writer);
         writeFirePots(writer);
@@ -263,6 +265,47 @@ public class MissionFileWriter implements IMissionFile
                     radioBeacon.setOrientation(flightAirfield.getOrientation().copy());
                     radioBeacon.getEntity().setEnabled(1);
                     radioBeacon.write(writer);
+                }
+            }
+        }
+    }
+
+    private void writeRunwayT(BufferedWriter writer) throws PWCGException
+    {
+        if (PWCGContext.getProduct() == PWCGProduct.BOS)
+        {
+            for (IFlight playerFlight:  mission.getMissionFlightBuilder().getPlayerFlights())
+            {
+                IVehicle landCanvas = VehicleFactory.createVehicle(
+                        playerFlight.getFlightInformation().getCountry(), mission.getCampaign().getDate(), VehicleClass.LandCanvas);
+                if (landCanvas != null)
+                {
+                    IAirfield flightAirfield = playerFlight.getFlightInformation().getAirfield();
+                    Orientation takeoffOrientation = flightAirfield.getTakeoffLocation().getOrientation().copy();
+                    IVehicle landCanvas2 = VehicleFactory.createVehicle(
+                            playerFlight.getFlightInformation().getCountry(), mission.getCampaign().getDate(), VehicleClass.LandCanvas);
+
+                    Double angleRight = MathUtils.adjustAngle(takeoffOrientation.getyOri(), 90);
+
+                    Campaign campaign = PWCGContext.getInstance().getCampaign();
+                    ConfigManager configManager = campaign.getCampaignConfigManager();
+                    int windsockDistance = configManager.getIntConfigParam(ConfigItemKeys.WindsockDistanceKey);
+                    Coordinate pos1 = MathUtils.calcNextCoord(flightAirfield.getTakeoffLocation().getPosition(), angleRight, windsockDistance);
+                    pos1 = MathUtils.calcNextCoord(pos1, takeoffOrientation.getyOri(), -15.0);
+
+                    landCanvas.setPosition(pos1);
+                    landCanvas.setOrientation(takeoffOrientation);
+                    landCanvas.getEntity().setEnabled(1);
+                    landCanvas.write(writer);
+
+                    Coordinate pos2 = MathUtils.calcNextCoord(pos1, takeoffOrientation.getyOri(), 5.0);
+                    Orientation orient2 = takeoffOrientation.copy();
+                    orient2.setyOri(angleRight);
+
+                    landCanvas2.setPosition(pos2);
+                    landCanvas2.setOrientation(orient2);
+                    landCanvas2.getEntity().setEnabled(1);
+                    landCanvas2.write(writer);
                 }
             }
         }
