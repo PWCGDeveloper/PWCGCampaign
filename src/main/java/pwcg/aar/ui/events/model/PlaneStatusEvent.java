@@ -4,6 +4,7 @@ import java.util.Date;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadron.Squadron;
 
 public class PlaneStatusEvent extends AAREvent
@@ -14,12 +15,12 @@ public class PlaneStatusEvent extends AAREvent
     private String planeDesc;
 	private int planeStatus;
 	
-    public PlaneStatusEvent(int planeSerialNumber, String planeDesc, int squadronId, int planeStatus, Date date, boolean isNewsWorthy)
+    public PlaneStatusEvent(EquippedPlane equippedPlane, int planeStatus, Date date, boolean isNewsWorthy)
     {
         super(date, isNewsWorthy);
-        this.planeSerialNumber = planeSerialNumber;
-        this.planeDesc = planeDesc;
-        this.squadronId = squadronId;
+        this.planeSerialNumber = equippedPlane.getSerialNumber();
+        this.planeDesc = equippedPlane.getDisplayName();
+        this.squadronId = equippedPlane.getSquadronId();
         this.planeStatus = planeStatus;
         
         try

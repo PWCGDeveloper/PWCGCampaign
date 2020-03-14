@@ -74,7 +74,7 @@ public class AARNewsPanel extends AAREventPanel
         for (String tabName : newsGuiList.keySet())
         {
             eventTabPane.addTab(tabName, newsGuiList.get(tabName));
-            shouldDisplay = true;
+            this.shouldDisplay = true;
         }
 
 

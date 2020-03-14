@@ -21,6 +21,7 @@ public class AAREquipmentLossPanelData
 
     public void merge(AAREquipmentLossPanelData equipmentLossPanelData)
     {
-        equipmentLost.putAll(equipmentLossPanelData.getEquipmentLost());        
+        equipmentLost.putAll(equipmentLossPanelData.getEquipmentLost());
     }
+
 }

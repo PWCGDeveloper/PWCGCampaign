@@ -8,6 +8,8 @@ import pwcg.aar.ui.display.model.AAROutOfMissionVictoryPanelData;
 import pwcg.aar.ui.display.model.AARPilotLossPanelData;
 import pwcg.aar.ui.display.model.AARPromotionPanelData;
 import pwcg.aar.ui.display.model.TransferPanelData;
+import pwcg.campaign.Campaign;
+import pwcg.core.exception.PWCGException;
 
 public class UIDebriefData
 {
@@ -99,7 +101,7 @@ public class UIDebriefData
         return outOfMissionVictoryPanelData;
     }
 
-    public void merge(UIDebriefData uiDebriefDataForIteration)
+    public void merge(Campaign campaign, UIDebriefData uiDebriefDataForIteration) throws PWCGException
     {
         newsPanelData.merge(uiDebriefDataForIteration.getNewsPanelData());
         medalPanelData.merge(uiDebriefDataForIteration.getMedalPanelData());

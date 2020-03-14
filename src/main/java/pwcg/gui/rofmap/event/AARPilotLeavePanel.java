@@ -67,8 +67,7 @@ public class AARPilotLeavePanel extends AAREventPanel
         for (String tabName : pilotLeaveGuiList.keySet())
         {
             eventTabPane.addTab(tabName, pilotLeaveGuiList.get(tabName));
-            
-            shouldDisplay = true;
+            this.shouldDisplay = true;
         }
 
 

@@ -26,6 +26,7 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.personnel.SquadronPersonnel;
+import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneType;
@@ -470,7 +471,6 @@ public class Squadron
 	public boolean isSquadronViable(Campaign campaign) throws PWCGException
 	{
 	    SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadronId);
-	    
 	    if (squadronPersonnel == null)
 	    {
 	        return false;
@@ -481,12 +481,13 @@ public class Squadron
             return false;
         }
         
-        if (campaign.getEquipmentManager().getEquipmentForSquadron(squadronId) == null)
+        Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadronId);
+        if (squadronEquipment == null)
         {
             return false;
         }
         
-        if (!campaign.getEquipmentManager().getEquipmentForSquadron(squadronId).isSquadronEquipmentViable())
+        if (!squadronEquipment.isSquadronEquipmentViable())
         {
             return false;
         }

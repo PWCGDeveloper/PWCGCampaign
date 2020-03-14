@@ -75,7 +75,7 @@ public class AARPilotsTransferredPanel extends AAREventPanel
         for (String tabName : pilotTransferredGuiList.keySet())
         {
             eventTabPane.addTab(tabName, pilotTransferredGuiList.get(tabName));
-            shouldDisplay = true;
+            this.shouldDisplay = true;
         }
     }
 

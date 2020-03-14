@@ -17,7 +17,6 @@ public abstract class CampaignDocumentGUI extends AAREventPanel
     {
         super();
         setLayout(new BorderLayout());
-
         this.shouldDisplay = true;
     }
 

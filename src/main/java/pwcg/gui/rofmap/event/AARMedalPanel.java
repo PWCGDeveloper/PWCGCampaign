@@ -71,7 +71,7 @@ public class AARMedalPanel extends AAREventPanel
         for (String tabName : pilotMedalGuiList.keySet())
         {
             eventTabPane.addTab(tabName, pilotMedalGuiList.get(tabName));
-            shouldDisplay = true;
+            this.shouldDisplay = true;
         }
 
 
@@ -86,9 +86,12 @@ public class AARMedalPanel extends AAREventPanel
         {
             if (medalEvent.getSquadronId() == referencePlayer.getSquadronId())
             {
-                CampaignReportMedalGUI medalGui = new CampaignReportMedalGUI(campaign, medalEvent);
-                String tabName = "Medal Awarded: " + medalEvent.getPilotName();
-                pilotMedalGuiList.put(tabName, medalGui);
+                if (medalEvent.isNewsWorthy())
+                {
+                    CampaignReportMedalGUI medalGui = new CampaignReportMedalGUI(campaign, medalEvent);
+                    String tabName = "Medal Awarded: " + medalEvent.getPilotName();
+                    pilotMedalGuiList.put(tabName, medalGui);
+                }
             }
         }
         

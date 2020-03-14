@@ -3,6 +3,7 @@ package pwcg.gui.rofmap.event;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JTabbedPane;
 
@@ -66,8 +67,7 @@ public class AARPilotLossPanel extends AAREventPanel
         for (String tabName : pilotLostGuiList.keySet())
         {
             eventTabPane.addTab(tabName, pilotLostGuiList.get(tabName));
-            
-            shouldDisplay = true;
+            this.shouldDisplay = true;
         }
 
 
@@ -80,16 +80,26 @@ public class AARPilotLossPanel extends AAREventPanel
                         .findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportPanelData();
 
         HashMap<String, CampaignReportPilotStatusGUI> pilotLostGuiList = new HashMap<>();
-
         for (PilotStatusEvent pilotStatusEvent : combatReportData.getSquadronMembersLostInMission().values())
-		{
+        {
             if (pilotStatusEvent.getSquadronId() == referencePlayer.getSquadronId())
             {
                 CampaignReportPilotStatusGUI pilotLostGui = new CampaignReportPilotStatusGUI(pilotStatusEvent);
                 String tabName = "Pilot Lost: " + pilotStatusEvent.getPilotName();
                 pilotLostGuiList.put(tabName, pilotLostGui);
             }
-		}
+        }
+        
+        Map<Integer, PilotStatusEvent> pilotsLostOutOfMission = aarCoordinator.getAarContext().getUiDebriefData().getPilotLossPanelData().getSquadMembersLost();
+        for (PilotStatusEvent pilotStatusEvent : pilotsLostOutOfMission.values())
+        {
+            if (pilotStatusEvent.getSquadronId() == referencePlayer.getSquadronId())
+            {
+                CampaignReportPilotStatusGUI pilotLostGui = new CampaignReportPilotStatusGUI(pilotStatusEvent);
+                String tabName = "Pilot Lost: " + pilotStatusEvent.getPilotName();
+                pilotLostGuiList.put(tabName, pilotLostGui);
+            }
+        }
         
         return pilotLostGuiList;
 	}

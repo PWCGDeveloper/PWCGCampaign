@@ -23,25 +23,61 @@ public class EnemySquadronFinder
         this.campaign = campaign;
     }
 
+    public Squadron getRandomEnemyViableSquadronNotPlayerSquadron(Squadron squadron, Date date) throws PWCGException
+    {
+        List<Squadron> nearbyViableEnemySquadrons = getBestViableSquadrons(squadron, date);
+        for (Squadron enemySquadron : nearbyViableEnemySquadrons)
+        {
+            SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());
+            if (squadronPersonnel != null)
+            {
+                if (!squadronPersonnel.isPlayerSquadron())
+                {
+                    nearbyViableEnemySquadrons.add(enemySquadron);
+                }
+            }
+        }
+        
+        Squadron enemySquadron = null;
+        if (nearbyViableEnemySquadrons.size() > 0)
+        {
+            enemySquadron = getEnemySquadron(nearbyViableEnemySquadrons);
+        }
+        return enemySquadron;
+    }
+
     public Squadron getRandomEnemyViableSquadron(Squadron squadron, Date date) throws PWCGException
+    {
+        List<Squadron> nearbyViableEnemySquadrons = getBestViableSquadrons(squadron, date);
+        Squadron enemySquadron = null;
+        if (nearbyViableEnemySquadrons.size() > 0)
+        {
+            enemySquadron = getEnemySquadron(nearbyViableEnemySquadrons);
+        }
+
+        return enemySquadron;
+    }
+    
+
+    private List<Squadron> getBestViableSquadrons(Squadron squadron, Date date) throws PWCGException
     {
         List<Squadron> nearbyActiveEnemySquadrons = getNearbyEnemySquadronsForVictory(date, squadron);
         List<Squadron> nearbyViableEnemySquadrons = getViableSquadrons(nearbyActiveEnemySquadrons);
         List<Squadron> allEnemySquadrons = getAllActiveEnemySquadrons(squadron, date);
         List<Squadron> allViableEnemySquadrons = getViableSquadrons(allEnemySquadrons);
 
-        Squadron enemySquadron = null;
         if (nearbyViableEnemySquadrons.size() > 0)
         {
-            enemySquadron = getEnemySquadron(nearbyViableEnemySquadrons);
+            return nearbyViableEnemySquadrons;
         }
         else if (allViableEnemySquadrons.size() > 0)
         {
-            enemySquadron = getEnemySquadron(allViableEnemySquadrons);
+            return allViableEnemySquadrons;
         }
  
-        return enemySquadron;
+        return new ArrayList<Squadron>();
     }
+
 
     private Squadron getEnemySquadron(List<Squadron> possibleSquadrons) throws PWCGException
     {
@@ -81,11 +117,7 @@ public class EnemySquadronFinder
         {
             if (squadron.isSquadronViable(campaign))
             {
-            	SquadronPersonnel squadronPersonnel = campaign.getPersonnelManager().getSquadronPersonnel(squadron.getSquadronId());
-            	if (!squadronPersonnel.isPlayerSquadron())
-            	{
-            		viableSquadrons.add(squadron);
-            	}
+                viableSquadrons.add(squadron);
             }
         }
         return viableSquadrons;

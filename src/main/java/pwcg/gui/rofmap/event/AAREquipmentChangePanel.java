@@ -7,7 +7,7 @@ import java.util.HashMap;
 import javax.swing.JTabbedPane;
 
 import pwcg.aar.AARCoordinator;
-import pwcg.aar.ui.display.model.AARCombatReportPanelData;
+import pwcg.aar.ui.display.model.AAREquipmentLossPanelData;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
@@ -36,7 +36,7 @@ public class AAREquipmentChangePanel extends AAREventPanel
 	{
         try
         {
-            JTabbedPane eventTabPane = createPilotsLostTab();
+            JTabbedPane eventTabPane = createEquipmentLostTab();
             createPostCombatReportTabs(eventTabPane);
         }
         catch (Exception e)
@@ -54,7 +54,7 @@ public class AAREquipmentChangePanel extends AAREventPanel
         this.add(postCombatPanel, BorderLayout.CENTER);
     }
 
-    private JTabbedPane createPilotsLostTab() throws PWCGException
+    private JTabbedPane createEquipmentLostTab() throws PWCGException
     {
         Color bgColor = ColorMap.PAPER_BACKGROUND;
 
@@ -75,22 +75,19 @@ public class AAREquipmentChangePanel extends AAREventPanel
 
 	private HashMap<String, CampaignReportEquipmentStatusGUI> createPilotLostSubTabs() throws PWCGException 
 	{
-        AARCombatReportPanelData combatReportData = aarCoordinator.getAarContext()
-                        .findUiCombatReportDataForSquadron(referencePlayer.getSquadronId()).getCombatReportPanelData();
-
-        HashMap<String, CampaignReportEquipmentStatusGUI> pilotLostGuiList = new HashMap<>();
-
-        for (PlaneStatusEvent planeStatusEvent : combatReportData.getSquadronPlanesLostInMission().values())
+	    AAREquipmentLossPanelData equipmentLossPanelData = aarCoordinator.getAarContext().getUiDebriefData().getEquipmentLossPanelData();
+        HashMap<String, CampaignReportEquipmentStatusGUI> planesLostGuiList = new HashMap<>();
+        for (PlaneStatusEvent planeStatusEvent : equipmentLossPanelData.getEquipmentLost().values())
 		{
             if (planeStatusEvent.getSquadronId() == referencePlayer.getSquadronId())
             {
                 CampaignReportEquipmentStatusGUI equipmentChangeGui = new CampaignReportEquipmentStatusGUI(planeStatusEvent);
-                String tabName = "Plane Lost: " + planeStatusEvent.getPlaneDesc();
-                pilotLostGuiList.put(tabName, equipmentChangeGui);
+                String tabName = "Plane Lost: " + planeStatusEvent.getPlaneSerialNumber();
+                planesLostGuiList.put(tabName, equipmentChangeGui);
             }
 		}
         
-        return pilotLostGuiList;
+        return planesLostGuiList;
 	}
 
 	

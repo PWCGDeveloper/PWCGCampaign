@@ -21,6 +21,6 @@ public class AARMedalPanelData
 
     public void merge(AARMedalPanelData medalPanelData)
     {
-        medalsAwarded.addAll(medalPanelData.getMedalsAwarded());        
+        medalsAwarded.addAll(medalPanelData.getMedalsAwarded());
     }
 }

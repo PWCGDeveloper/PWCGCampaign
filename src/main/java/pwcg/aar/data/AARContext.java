@@ -32,9 +32,6 @@ public class AARContext
     // Out of mission
     private ReconciledOutOfMissionData reconciledOutOfMissionData = new ReconciledOutOfMissionData();
 
-    // Cumulative
-    private ReconciledOutOfMissionData cumulativeMissionData = new ReconciledOutOfMissionData();
-
     // Tabulated
     private CampaignUpdateData campaignUpdateData;
     private List<UICombatReportData> uiCombatReportData = new ArrayList<>();
@@ -48,8 +45,6 @@ public class AARContext
 
     public void resetContextForNextTimeIncrement() throws PWCGException
     {
-        cumulativeMissionData.merge(reconciledOutOfMissionData);
-
         preliminaryData = new AARPreliminaryData();
         CampaignMembersOutOfMissionFinder campaignMembersOutOfMissionHandler = new CampaignMembersOutOfMissionFinder();
         SquadronMembers campaignMembersOutOfMission = campaignMembersOutOfMissionHandler.getCampaignMembersNotInMission(campaign,
@@ -59,7 +54,6 @@ public class AARContext
         missionLogRawData = new AARMissionLogRawData();
         missionEvaluationData = new AARMissionEvaluationData();
         reconciledInMissionData = new ReconciledInMissionData();
-        reconciledOutOfMissionData = new ReconciledOutOfMissionData();
     }
     
     public UICombatReportData findUiCombatReportDataForSquadron(int squadronId) throws PWCGException
@@ -82,11 +76,6 @@ public class AARContext
     public AARMissionLogRawData getMissionLogRawData()
     {
         return missionLogRawData;
-    }
-
-    public ReconciledOutOfMissionData getReconciledOutOfMissionData()
-    {
-        return reconciledOutOfMissionData;
     }
 
     public ReconciledInMissionData getReconciledInMissionData()
@@ -117,16 +106,6 @@ public class AARContext
     public void setReconciledInMissionData(ReconciledInMissionData reconciledInMissionData)
     {
         this.reconciledInMissionData = reconciledInMissionData;
-    }
-
-    public void setReconciledOutMissionData(ReconciledOutOfMissionData reconciledOutOfMissionData)
-    {
-        this.reconciledOutOfMissionData = reconciledOutOfMissionData;
-    }
-
-    public ReconciledOutOfMissionData getCumulativeMissionData()
-    {
-        return cumulativeMissionData;
     }
 
     public Date getNewDate()
@@ -174,9 +153,19 @@ public class AARContext
         return uiDebriefData;
     }
 
-    public void mergeUiDebriefData(UIDebriefData uiDebriefData)
+    public void merge(UIDebriefData uiDebriefData) throws PWCGException
     {
-        this.uiDebriefData.merge(uiDebriefData);
+        this.uiDebriefData.merge(campaign, uiDebriefData);
+    }
+
+    public void setReconciledOutMissionData(ReconciledOutOfMissionData reconciledOutOfMissionDataForTimeStep)
+    {
+        this.reconciledOutOfMissionData = reconciledOutOfMissionDataForTimeStep;
+    }
+
+    public ReconciledOutOfMissionData getReconciledOutOfMissionData()
+    {
+        return reconciledOutOfMissionData;
     }
 
 }

@@ -163,7 +163,7 @@ public class MissionObjectiveFactory
     private static String getCargoDropMissionObjective(IFlight flight) throws PWCGException
     {
         IFlightInformation flightInformation = flight.getFlightInformation();
-        String objective = "Perform a carrgo drop" + MissionObjective.formMissionObjectiveLocation(flightInformation.getTargetPosition().copy()) + ".";     
+        String objective = "Perform a cargo drop" + MissionObjective.formMissionObjectiveLocation(flightInformation.getTargetPosition().copy()) + ".";     
         return objective;
     }
     

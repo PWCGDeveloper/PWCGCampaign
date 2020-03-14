@@ -15,7 +15,7 @@ public class ReconciledOutOfMissionData
     private AARResupplyData resupplyData = new AARResupplyData();
     
     public void merge(ReconciledOutOfMissionData source)
-    {
+    {        
         personnelLossesOutOfMission.merge(source.getPersonnelLossesOutOfMission());
         equipmentLossesOutOfMission.merge(source.getEquipmentLossesOutOfMission());
         personnelAwards.merge(source.getPersonnelAwards());

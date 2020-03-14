@@ -86,7 +86,7 @@ public class AAROutOfMissionStepper
     {
         AARDebriefTabulateCoordinator uiDebriefTabulator = new AARDebriefTabulateCoordinator(campaign, aarContext);
         UIDebriefData uiDebriefDataForTimeStep = uiDebriefTabulator.tabulateForDebriefUI();
-        aarContext.mergeUiDebriefData(uiDebriefDataForTimeStep);
+        aarContext.merge(uiDebriefDataForTimeStep);
     }
 
     private void updateCampaign() throws PWCGException

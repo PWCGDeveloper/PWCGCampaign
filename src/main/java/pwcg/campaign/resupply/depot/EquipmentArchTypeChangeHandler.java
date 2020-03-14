@@ -41,21 +41,24 @@ public class EquipmentArchTypeChangeHandler
         for (Squadron squadron : squadronManager.getActiveSquadrons(campaign.getDate()))
         {
             Equipment squadronEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(squadron.getSquadronId());
-            Set<Integer> planesToRemove = new HashSet<>();
-            for (EquippedPlane plane : squadronEquipment.getActiveEquippedPlanes().values())
+            if (squadronEquipment != null)
             {
-                boolean isActiveArchType = squadron.isPlaneInActiveSquadronArchTypes(newDate, plane);
-                if (!isActiveArchType)
+                Set<Integer> planesToRemove = new HashSet<>();
+                for (EquippedPlane plane : squadronEquipment.getActiveEquippedPlanes().values())
                 {
-                    planesToRemove.add(plane.getSerialNumber());
-                    squadronsToEquip.add(squadron);
+                    boolean isActiveArchType = squadron.isPlaneInActiveSquadronArchTypes(newDate, plane);
+                    if (!isActiveArchType)
+                    {
+                        planesToRemove.add(plane.getSerialNumber());
+                        squadronsToEquip.add(squadron);
+                    }
                 }
-            }
-            
-            for (Integer planeSerialNumber : planesToRemove)
-            {
-                squadronEquipment.deactivateEquippedPlaneFromSquadron(planeSerialNumber, campaign.getDate());
-            }
+
+                for (Integer planeSerialNumber : planesToRemove)
+                {
+                    squadronEquipment.deactivateEquippedPlaneFromSquadron(planeSerialNumber, campaign.getDate());
+                }
+            }            
         }
     }
 
