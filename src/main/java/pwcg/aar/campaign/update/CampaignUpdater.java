@@ -35,7 +35,7 @@ public class CampaignUpdater
         squadronEquipmentUpdater.equipmentUpdatesForSquadrons();
 
         ServiceChangeHandler serviceChangeHandler = new ServiceChangeHandler(campaign);
-        serviceChangeHandler.handleChangeOfService(aarContext.getCampaignUpdateData().getNewDate());
+        serviceChangeHandler.handleChangeOfService(aarContext.getNewDate());
 
         PersonnelReplacementUpdater personnelReplacementUpdater = new PersonnelReplacementUpdater(campaign, aarContext);
         personnelReplacementUpdater.updateCampaignPersonnelReplacements();
@@ -46,7 +46,7 @@ public class CampaignUpdater
         EquipmentArchTypeChangeHandler archtypeChangeHandler = new EquipmentArchTypeChangeHandler(campaign, aarContext.getNewDate());
         archtypeChangeHandler.updateCampaignEquipmentForArchtypeChange();
         
-        finishCampaignUpdates(aarContext.getCampaignUpdateData().getNewDate());
+        finishCampaignUpdates(aarContext.getNewDate());
     }
     
     private void finishCampaignUpdates(Date newDate) throws PWCGException

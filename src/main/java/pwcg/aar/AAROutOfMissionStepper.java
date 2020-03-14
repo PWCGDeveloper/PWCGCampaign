@@ -5,11 +5,8 @@ import java.util.Date;
 import pwcg.aar.campaign.update.CampaignUpdater;
 import pwcg.aar.campaigndate.CampaignDaysPassed;
 import pwcg.aar.data.AARContext;
-import pwcg.aar.data.CampaignUpdateData;
-import pwcg.aar.data.ui.UIDebriefData;
 import pwcg.aar.outofmission.AARCoordinatorOutOfMission;
-import pwcg.aar.tabulate.campaignupdate.AARCampaignUpdateTabulator;
-import pwcg.aar.tabulate.debrief.AARDebriefTabulateCoordinator;
+import pwcg.aar.tabulate.AARTabulateCoordinator;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -84,17 +81,12 @@ public class AAROutOfMissionStepper
     
     private void tabulateFlightDebriefUI() throws PWCGException 
     {
-        AARDebriefTabulateCoordinator uiDebriefTabulator = new AARDebriefTabulateCoordinator(campaign, aarContext);
-        UIDebriefData uiDebriefDataForTimeStep = uiDebriefTabulator.tabulateForDebriefUI();
-        aarContext.merge(uiDebriefDataForTimeStep);
+        AARTabulateCoordinator tabulateCoordinator = new AARTabulateCoordinator(campaign, aarContext);
+        tabulateCoordinator.tabulateOutOfMission();
     }
 
     private void updateCampaign() throws PWCGException
     {
-        AARCampaignUpdateTabulator campaignUpdateTabulator = new AARCampaignUpdateTabulator(campaign, aarContext);
-        CampaignUpdateData campaignUpdateData = campaignUpdateTabulator.tabulateAARForCampaignUpdate();
-        aarContext.setCampaignUpdateData(campaignUpdateData);
-
         CampaignUpdater campaignUpdater = new CampaignUpdater(campaign, aarContext);
         campaignUpdater.updateCampaign();
     }

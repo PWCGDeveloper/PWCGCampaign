@@ -153,7 +153,7 @@ public class AARContext
         return uiDebriefData;
     }
 
-    public void merge(UIDebriefData uiDebriefData) throws PWCGException
+    public void mergeDebriefUiData(UIDebriefData uiDebriefData) throws PWCGException
     {
         this.uiDebriefData.merge(campaign, uiDebriefData);
     }

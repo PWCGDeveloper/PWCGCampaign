@@ -22,7 +22,6 @@ public class AARCampaignUpdateTabulator
     
     public CampaignUpdateData tabulateAARForCampaignUpdate() throws PWCGException
     {        
-        campaignUpdateData.setNewDate(aarContext.getNewDate());        
         tabulatePersonnelAwards();
         tabulatePersonnelChanges();
         tabulateEquipmentChanges();

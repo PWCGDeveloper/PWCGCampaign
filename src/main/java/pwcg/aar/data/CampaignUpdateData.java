@@ -1,13 +1,10 @@
 package pwcg.aar.data;
 
-import java.util.Date;
-
 import pwcg.aar.outofmission.phase2.resupply.AARResupplyData;
 import pwcg.campaign.Campaign;
 
 public class CampaignUpdateData
 {
-    private Date newDate;
     private AARPersonnelLosses personnelLosses = new AARPersonnelLosses();
     private AAREquipmentLosses equipmentLosses = new AAREquipmentLosses();
     private AARResupplyData resupplyData = new AARResupplyData();
@@ -21,23 +18,12 @@ public class CampaignUpdateData
 
     public void merge(CampaignUpdateData sourceCampaignUpdateData)
 	{
-		newDate = sourceCampaignUpdateData.getNewDate();
         personnelLosses.merge(sourceCampaignUpdateData.getPersonnelLosses());
         equipmentLosses.merge(sourceCampaignUpdateData.getEquipmentLosses());
         resupplyData.merge(sourceCampaignUpdateData.getResupplyData());
         personnelAwards.merge(sourceCampaignUpdateData.getPersonnelAwards()); 
         logEvents.merge(sourceCampaignUpdateData.getLogEvents());
 	}
-
-    public void setNewDate(Date newDate)
-    {
-        this.newDate = newDate;
-    }
-
-    public Date getNewDate()
-    {
-        return newDate;
-    }
 
     public AARPersonnelLosses getPersonnelLosses()
     {
