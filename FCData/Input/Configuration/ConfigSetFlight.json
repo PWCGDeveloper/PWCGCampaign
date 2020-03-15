@@ -68,13 +68,13 @@
     },
     "scrambleOddsAllied": {
       "value": "2",
-      "label": "Allied Scrample Odds",
-      "help": "Odds of Allied scrample mission"
+      "label": "Allied Scramble Odds",
+      "help": "Odds of Allied scramble mission"
     },
     "scrambleOddsAxis": {
       "value": "4",
-      "label": "Axis Scrample Odds",
-      "help": "Odds of Axis scrample mission"
+      "label": "Axis Scramble Odds",
+      "help": "Odds of Axis scramble mission"
     },
     "antiShipOddsAllied": {
       "value": "1",

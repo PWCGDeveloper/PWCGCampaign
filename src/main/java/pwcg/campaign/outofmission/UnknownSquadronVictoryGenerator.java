@@ -83,10 +83,9 @@ public class UnknownSquadronVictoryGenerator
                 squadron.determineSquadronPrimaryRole(date),
                 date);
 
-        String victorType = planeType.getType();
-
         victor.setAirOrGround(Victory.AIR_VICTORY);
-        victor.setType(victorType);
+        victor.setType(planeType.getType());
+        victor.setName(planeType.getDisplayName());
         victor.setSquadronName(squadron.determineDisplayName(date));
         victor.setPilotName(victorPilot.getRank() + " " + victorPilot.getName());
         victor.setPilotStatus(SquadronMemberStatus.STATUS_ACTIVE);
@@ -99,6 +98,7 @@ public class UnknownSquadronVictoryGenerator
         VictoryEntity victim = new VictoryEntity();            
         victim.setAirOrGround(Victory.AIR_VICTORY);
         victim.setType("");
+        victim.setName("");
         victim.setSquadronName("");
         victim.setPilotStatus(SquadronMemberStatus.STATUS_KIA);
         return victim;

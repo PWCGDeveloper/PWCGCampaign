@@ -93,6 +93,7 @@ public class OutOfMissionVictoryGenerator
 
         victor.setAirOrGround(Victory.AIR_VICTORY);
         victor.setType(victorPlaneType.getDisplayName());
+        victor.setName(victorPlaneType.getDisplayName());
         victor.setSquadronName(squadron.determineDisplayName(date));
         victor.setPilotName(victorPilot.getRank() + " " + victorPilot.getName());
         victor.setPilotStatus(SquadronMemberStatus.STATUS_ACTIVE);
@@ -109,6 +110,7 @@ public class OutOfMissionVictoryGenerator
             VictoryEntity victim = new VictoryEntity();            
             victim.setAirOrGround(Victory.AIR_VICTORY);
             victim.setType(victimPlane.getType());
+            victim.setName(victimPlane.getDisplayName());
             victim.setSquadronName(victimSquadron.determineDisplayName(date));
             victim.setPilotStatus(SquadronMemberStatus.STATUS_KIA);
             return victim;

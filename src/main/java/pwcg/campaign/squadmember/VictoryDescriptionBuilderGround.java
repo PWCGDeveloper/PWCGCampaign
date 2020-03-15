@@ -32,7 +32,7 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
 
         // Line 2
         victoryDesc +=  "\n";
-        victoryDesc +=  "A " + getGroundUnitName(victory.getVictim().getType()) + " was destroyed by ";
+        victoryDesc +=  "A " + getGroundUnitName(victory.getVictim()) + " was destroyed by ";
         victoryDesc += describeVictor();
         victoryDesc += ".";
 
@@ -66,7 +66,7 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
 
             // Line 2
             victoryDesc +=  "\n";
-            victoryDesc +=  "A " + victimPlaneType + " of " + victory.getVictim().getSquadronName() + " was brought down by a " + getGroundUnitName(victory.getVictor().getType()) + ".";
+            victoryDesc +=  "A " + victimPlaneType + " of " + victory.getVictim().getSquadronName() + " was brought down by a " + getGroundUnitName(victory.getVictor()) + ".";
 
             // Line 3
             victoryDesc +=  "\n";
@@ -76,7 +76,7 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
         // If we do not have all of the information
         else
         {
-            victoryDesc +=  victimPlaneType + " shot down by " + getGroundUnitName(victory.getVictor().getType()) + "";
+            victoryDesc +=  victimPlaneType + " shot down by " + getGroundUnitName(victory.getVictor()) + "";
         }
         
         return victoryDesc;
@@ -97,7 +97,7 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
         victoryDesc +=  ".";
 
         // Line 2
-        victoryDesc +=  "A " + getGroundUnitName(victory.getVictim().getType()) + " was destroyed by a " + getGroundUnitName(victory.getVictor().getType()) + ".";
+        victoryDesc +=  "A " + getGroundUnitName(victory.getVictim()) + " was destroyed by a " + getGroundUnitName(victory.getVictor()) + ".";
         
         return victoryDesc;
     }
@@ -123,15 +123,20 @@ public class VictoryDescriptionBuilderGround extends VictoryDescriptionBuilderBa
     }
     
 
-    private String getGroundUnitName(String groundUnitType) throws PWCGException
+    private String getGroundUnitName(VictoryEntity victoryEntity) throws PWCGException
     {
-        IVehicleDefinition vehicleDefinition = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleType(groundUnitType);
-        String groundUnitName = "vehicle";
-        if (vehicleDefinition != null)
+        IVehicleDefinition vehicleDefinitionType = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleName(victoryEntity.getType());
+        if (vehicleDefinitionType != null)
         {
-            groundUnitName = vehicleDefinition.getDisplayName();
+            return vehicleDefinitionType.getDisplayName();
+        }
+
+        IVehicleDefinition vehicleDefinitionByName = PWCGContext.getInstance().getVehicleDefinitionManager().getVehicleDefinitionByVehicleName(victoryEntity.getName());
+        if (vehicleDefinitionByName != null)
+        {
+            return vehicleDefinitionByName.getDisplayName();
         }
         
-        return groundUnitName;
+        return "vehicle";
     }
 }

@@ -15,6 +15,7 @@ import pwcg.core.exception.PWCGException;
 public class VictoryEntity
 {
     private int airOrGround = Victory.UNSPECIFIED_VICTORY;
+    private String name = "";
     private String type = "";
     private String squadronName = "";
     private Integer pilotSerialNumber = SerialNumber.NO_SERIAL_NUMBER;
@@ -68,6 +69,7 @@ public class VictoryEntity
 
         airOrGround = Victory.AIR_VICTORY;
         type = logPlane.getVehicleType();
+        name = logPlane.getName();
         pilotStatus = logPilot.getStatus();
         pilotSerialNumber = logPilot.getSerialNumber();
         squadronName = squadron.determineDisplayName(victoryDate);
@@ -78,12 +80,14 @@ public class VictoryEntity
     {
         airOrGround = Victory.AIR_VICTORY;
         type = logBalloon.getVehicleType();
+        name = logBalloon.getName();
     }
 
     private void initializeForGround(LogGroundUnit logGrountUnit) throws PWCGException
     {
         airOrGround = Victory.GROUND_VICTORY;
         type = logGrountUnit.getVehicleType();
+        name = logGrountUnit.getName();
     }
 
     private void initializeForTurret(Date victoryDate, LogTurret logTurret, String pilotName) throws PWCGException
@@ -114,6 +118,16 @@ public class VictoryEntity
     public void setType(String type)
     {
         this.type = type;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
     }
 
     public String getSquadronName()

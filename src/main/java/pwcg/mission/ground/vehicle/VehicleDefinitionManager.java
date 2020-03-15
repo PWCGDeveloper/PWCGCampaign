@@ -44,6 +44,19 @@ public class VehicleDefinitionManager
         return null;
     }
     
+    public IVehicleDefinition getVehicleDefinitionByVehicleName(String vehicleName) throws PWCGException
+    {
+        for (VehicleDefinition definition : allVehiclesDefinitions)
+        {
+            if (definition.getVehicleType().equals(vehicleName))
+            {
+                return definition;
+            }
+        }
+        
+        return null;
+    }
+    
     public IVehicleDefinition getVehicleDefinitionForRequest(VehicleRequestDefinition requestDefinition) throws PWCGException
     {
         List<VehicleDefinition> matchingDefinitions = new ArrayList<>();
