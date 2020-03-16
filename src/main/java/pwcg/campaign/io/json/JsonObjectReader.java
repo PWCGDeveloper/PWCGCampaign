@@ -8,7 +8,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class JsonObjectReader<T>
 {
@@ -44,7 +44,7 @@ public class JsonObjectReader<T>
             {
                 e1.printStackTrace();
             }
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGException(e.getMessage());
 		}
 	}

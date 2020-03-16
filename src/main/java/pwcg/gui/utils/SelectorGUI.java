@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
 
 public class SelectorGUI implements ActionListener
@@ -158,7 +158,7 @@ public class SelectorGUI implements ActionListener
         }
         catch (Throwable e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

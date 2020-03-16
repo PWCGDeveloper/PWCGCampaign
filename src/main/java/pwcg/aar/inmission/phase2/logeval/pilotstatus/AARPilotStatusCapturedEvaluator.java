@@ -7,7 +7,7 @@ import pwcg.campaign.context.BehindEnemyLines;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class AARPilotStatusCapturedEvaluator
@@ -38,7 +38,7 @@ public class AARPilotStatusCapturedEvaluator
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
 
         return false;

@@ -8,8 +8,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.skin.Skin;
 import pwcg.campaign.squadmember.HistoricalAce;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class AceSkinChecker
 {
@@ -24,7 +24,7 @@ public class AceSkinChecker
         }
         catch (Exception e)
         {
-             Logger.logException(e);;
+             PWCGLogger.logException(e);;
         }
     }
 
@@ -60,7 +60,7 @@ public class AceSkinChecker
             
             for (HistoricalAce ace : historicalAces)
             {
-                Logger.log(LogLevel.DEBUG, "Ace is " + ace.getSerialNumber());
+                PWCGLogger.log(LogLevel.DEBUG, "Ace is " + ace.getSerialNumber());
                 
                 for (Skin skin : ace.getSkins())
                 {
@@ -69,13 +69,13 @@ public class AceSkinChecker
                     {
                         if (skinExists(plane.getType(), skin.getSkinName()))
                         {
-                            Logger.log(LogLevel.DEBUG, "        Skin");
-                            Logger.log(LogLevel.DEBUG, "        {");
-                            Logger.log(LogLevel.DEBUG, "            Name = \"" + skin.getSkinName() + "\";");
-                            Logger.log(LogLevel.DEBUG, "            StartDate = 01/08/1914;");
-                            Logger.log(LogLevel.DEBUG, "            EndDate = 01/12/1918;");
-                            Logger.log(LogLevel.DEBUG, "            Plane = \"" + plane.getType() + "\";");
-                            Logger.log(LogLevel.DEBUG, "        }");
+                            PWCGLogger.log(LogLevel.DEBUG, "        Skin");
+                            PWCGLogger.log(LogLevel.DEBUG, "        {");
+                            PWCGLogger.log(LogLevel.DEBUG, "            Name = \"" + skin.getSkinName() + "\";");
+                            PWCGLogger.log(LogLevel.DEBUG, "            StartDate = 01/08/1914;");
+                            PWCGLogger.log(LogLevel.DEBUG, "            EndDate = 01/12/1918;");
+                            PWCGLogger.log(LogLevel.DEBUG, "            Plane = \"" + plane.getType() + "\";");
+                            PWCGLogger.log(LogLevel.DEBUG, "        }");
                             
                             skinFound = true;
                         }
@@ -83,12 +83,12 @@ public class AceSkinChecker
                     
                     if (!skinFound)
                     {
-                        Logger.log(LogLevel.DEBUG, "        Skin");
-                        Logger.log(LogLevel.DEBUG, "        {");
-                        Logger.log(LogLevel.DEBUG, "            Name = \"" + skin.getSkinName() + "\";");
-                        Logger.log(LogLevel.DEBUG, "            StartDate = 01/08/1914;");
-                        Logger.log(LogLevel.DEBUG, "            EndDate = 01/12/1918;");
-                        Logger.log(LogLevel.DEBUG, "        }");
+                        PWCGLogger.log(LogLevel.DEBUG, "        Skin");
+                        PWCGLogger.log(LogLevel.DEBUG, "        {");
+                        PWCGLogger.log(LogLevel.DEBUG, "            Name = \"" + skin.getSkinName() + "\";");
+                        PWCGLogger.log(LogLevel.DEBUG, "            StartDate = 01/08/1914;");
+                        PWCGLogger.log(LogLevel.DEBUG, "            EndDate = 01/12/1918;");
+                        PWCGLogger.log(LogLevel.DEBUG, "        }");
                     }
                 }
             }
@@ -96,7 +96,7 @@ public class AceSkinChecker
         }
         catch (Exception e)
         {
-             Logger.logException(e);;
+             PWCGLogger.logException(e);;
         }
     }
 }

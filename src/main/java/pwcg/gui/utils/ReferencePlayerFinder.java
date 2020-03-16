@@ -8,7 +8,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.coop.CoopPersonaManager;
 import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class ReferencePlayerFinder
 {
@@ -33,7 +33,7 @@ public class ReferencePlayerFinder
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
 
         return representativePlayer;

@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -86,7 +86,7 @@ public class CampaignIntelligencePanelSet extends PwcgGuiContext implements Acti
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 		
@@ -106,7 +106,7 @@ public class CampaignIntelligencePanelSet extends PwcgGuiContext implements Acti
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

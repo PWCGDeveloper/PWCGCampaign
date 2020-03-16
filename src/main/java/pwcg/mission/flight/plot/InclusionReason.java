@@ -1,7 +1,7 @@
 package pwcg.mission.flight.plot;
 
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class InclusionReason
 {
@@ -45,10 +45,10 @@ public class InclusionReason
      */
     public void dump()
     {
-        Logger.log(LogLevel.DEBUG, "Inclusion   : ");
-        Logger.log(LogLevel.DEBUG, "       Reason: " + reason);
-        Logger.log(LogLevel.DEBUG, "       player contact: " + firstContactWithPlayer);
-        Logger.log(LogLevel.DEBUG, "       enemy contact: " + firstContactWithEnemy);
+        PWCGLogger.log(LogLevel.DEBUG, "Inclusion   : ");
+        PWCGLogger.log(LogLevel.DEBUG, "       Reason: " + reason);
+        PWCGLogger.log(LogLevel.DEBUG, "       player contact: " + firstContactWithPlayer);
+        PWCGLogger.log(LogLevel.DEBUG, "       enemy contact: " + firstContactWithEnemy);
     }
 
 }

@@ -21,8 +21,8 @@ import pwcg.campaign.medals.MedalManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.ImageCache;
 import pwcg.gui.dialogs.MonitorSupport;
@@ -68,7 +68,7 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}		
 	}
@@ -129,12 +129,12 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
             }
             else
             {
-                Logger.log(LogLevel.ERROR, "Failed to get picture for " + pilot.getSerialNumber() + " at " + pilot.getPicName());
+                PWCGLogger.log(LogLevel.ERROR, "Failed to get picture for " + pilot.getSerialNumber() + " at " + pilot.getPicName());
             }
         }
         else
         {
-            Logger.log(LogLevel.ERROR, "No pilot for medal event"); 
+            PWCGLogger.log(LogLevel.ERROR, "No pilot for medal event"); 
         }
 
         return pilotLabel;
@@ -191,7 +191,7 @@ public class CampaignReportMedalGUI extends ImageResizingPanel implements Action
         }
         catch (Exception ex) 
         {
-            Logger.logException(ex);
+            PWCGLogger.logException(ex);
         }
                             
         JLabel lMedal = new JLabel(medalIcon);

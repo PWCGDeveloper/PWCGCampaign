@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class LooseSkinLoader
 {
@@ -35,7 +35,7 @@ public class LooseSkinLoader
         }
         catch (Exception e)
         {
-             Logger.logException(e);
+             PWCGLogger.logException(e);
         }
     }
 

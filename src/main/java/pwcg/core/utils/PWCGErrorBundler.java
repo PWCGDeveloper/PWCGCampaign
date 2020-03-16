@@ -13,7 +13,7 @@ import java.util.zip.ZipOutputStream;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class PWCGErrorBundler
 {
@@ -43,7 +43,7 @@ public class PWCGErrorBundler
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 		
 	}
@@ -162,7 +162,7 @@ public class PWCGErrorBundler
             destinationDir.mkdir();
         }
 	                	    
-		Logger.log(LogLevel.INFO, "Directory being copied is " + source);
+		PWCGLogger.log(LogLevel.INFO, "Directory being copied is " + source);
 		File[] files = sourceDir.listFiles();
 				
 		for (File file : files) 

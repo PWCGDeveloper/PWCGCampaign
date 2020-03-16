@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pwcg.aar.data.AAREquipmentLosses;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
 import pwcg.core.exception.PWCGException;
 
@@ -22,25 +22,25 @@ public class PlaneStatusEventGenerator
 
     public Map<Integer, PlaneStatusEvent> createPlaneLossEvents(AAREquipmentLosses equipmentLossesInMission) throws PWCGException
     {
-        for (EquippedPlane equippedPlane : equipmentLossesInMission.getPlanesDestroyed().values())
+        for (LogPlane lostPlane : equipmentLossesInMission.getPlanesDestroyed().values())
         {
-            PlaneStatusEvent equippedPlaneLostEvent = makePlaneLostEvent(equippedPlane);
-            planeStatusEvents.put(equippedPlane.getSerialNumber(), equippedPlaneLostEvent);
+            PlaneStatusEvent equippedPlaneLostEvent = makePlaneLostEvent(lostPlane);
+            planeStatusEvents.put(lostPlane.getPlaneSerialNumber(), equippedPlaneLostEvent);
         }
         
-        for (EquippedPlane equippedPlane : equipmentLossesInMission.getPlanesDestroyed().values())
+        for (LogPlane lostPlane : equipmentLossesInMission.getPlanesDestroyed().values())
         {
-            PlaneStatusEvent equippedPlaneLostEvent = makePlaneLostEvent(equippedPlane);
-            planeStatusEvents.put(equippedPlane.getSerialNumber(), equippedPlaneLostEvent);
+            PlaneStatusEvent equippedPlaneLostEvent = makePlaneLostEvent(lostPlane);
+            planeStatusEvents.put(lostPlane.getPlaneSerialNumber(), equippedPlaneLostEvent);
         }
         
         return planeStatusEvents;
     }
 
-    private PlaneStatusEvent makePlaneLostEvent(EquippedPlane equippedPlane) throws PWCGException
+    private PlaneStatusEvent makePlaneLostEvent(LogPlane lostPlane) throws PWCGException
     {
         boolean isNewsworthy = true;
-        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent(equippedPlane, PlaneStatus.STATUS_DESTROYED, campaign.getDate(), isNewsworthy);
+        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent(campaign, lostPlane, PlaneStatus.STATUS_DESTROYED, isNewsworthy);
         return planeStatusEvent;
     }
 }

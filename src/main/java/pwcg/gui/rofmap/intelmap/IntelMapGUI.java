@@ -28,7 +28,7 @@ import pwcg.campaign.group.AirfieldManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -78,7 +78,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError (e.getMessage());
 		}
 	}
@@ -328,7 +328,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			
 			try
 			{
@@ -336,7 +336,7 @@ public class IntelMapGUI extends MapGUI implements ActionListener
 			}
 			catch (Exception e2)
 			{
-	            Logger.logException(e2);
+	            PWCGLogger.logException(e2);
 			}
 		}
 	}

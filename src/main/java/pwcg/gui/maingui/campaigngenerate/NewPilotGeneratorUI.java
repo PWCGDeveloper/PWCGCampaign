@@ -20,7 +20,7 @@ import pwcg.campaign.squadmember.ISquadronMemberReplacer;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.coop.CampaignAdminCoopPilotPanelSet;
@@ -57,7 +57,7 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         }
         catch (Throwable e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }
@@ -145,7 +145,7 @@ public class NewPilotGeneratorUI extends PwcgGuiContext implements ActionListene
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

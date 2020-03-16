@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import pwcg.coop.CoopUserManager;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -36,7 +36,7 @@ public class CoopUserAcceptRequestPanel extends ImageResizingPanel
 		}
 		catch (Throwable e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}

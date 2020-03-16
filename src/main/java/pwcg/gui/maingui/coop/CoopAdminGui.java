@@ -15,7 +15,7 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
@@ -46,7 +46,7 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
         }
         catch (Throwable e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }
@@ -173,7 +173,7 @@ public class CoopAdminGui extends PwcgGuiContext implements ActionListener
         }
         catch (Throwable e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

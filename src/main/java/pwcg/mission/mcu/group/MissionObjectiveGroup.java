@@ -8,7 +8,7 @@ import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.Mission;
 import pwcg.mission.MissionBeginUnit;
 import pwcg.mission.flight.IFlight;
@@ -96,7 +96,7 @@ public class MissionObjectiveGroup
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

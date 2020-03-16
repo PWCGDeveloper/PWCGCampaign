@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class McuBehavior extends BaseFlightMcu
 {
@@ -63,7 +63,7 @@ public class McuBehavior extends BaseFlightMcu
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

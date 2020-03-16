@@ -19,7 +19,7 @@ import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneSorter;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
@@ -47,7 +47,7 @@ public class CampaignEquipmentChalkBoard extends ImageResizingPanel
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

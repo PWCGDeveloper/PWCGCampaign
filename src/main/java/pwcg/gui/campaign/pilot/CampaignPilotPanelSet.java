@@ -25,7 +25,7 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
@@ -227,7 +227,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 		}
 		catch (Exception ex) 
 		{
-            Logger.logException(ex);
+            PWCGLogger.logException(ex);
 		}
 
 		PWCGJButton pilotPictureButton = null;
@@ -278,7 +278,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
         }
         catch (Exception ex) 
         {
-            Logger.logException(ex);
+            PWCGLogger.logException(ex);
         }
 
         PWCGJButton planeSkinsButton = null;
@@ -414,7 +414,7 @@ public class CampaignPilotPanelSet extends PwcgGuiContext implements ActionListe
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}

@@ -8,7 +8,7 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 // T:15 AType:12 ID:302079 TYPE:He 111 H-6 COUNTRY:201 NAME:Obltn Heinkel Mann PID:-1 POS(64429.594,174.325,41093.000)
 public class AType12 extends ATypeBase implements IAType12
@@ -116,7 +116,7 @@ public class AType12 extends ATypeBase implements IAType12
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

@@ -8,8 +8,8 @@ import java.util.TreeMap;
 
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.utils.FileUtils;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public abstract class DeployBase 
 {
@@ -27,13 +27,13 @@ public abstract class DeployBase
     {
         if (!reallyDoDeploy)
         {
-            Logger.log(LogLevel.ERROR, "************  NO DEPLOY  **********");
+            PWCGLogger.log(LogLevel.ERROR, "************  NO DEPLOY  **********");
             return;
         }
         
         if (TestDriver.getInstance().isEnabled())
         {
-            Logger.log(LogLevel.ERROR, "************  NO DEPLOY - TEST DRIVER ENABLED  **********");
+            PWCGLogger.log(LogLevel.ERROR, "************  NO DEPLOY - TEST DRIVER ENABLED  **********");
             return;
         }
         
@@ -57,11 +57,11 @@ public abstract class DeployBase
             
             target.renameTo(targetFinal);
 
-            Logger.log(LogLevel.INFO, "************  DONE  **********");
+            PWCGLogger.log(LogLevel.INFO, "************  DONE  **********");
         }
         catch (Exception e)
         {
-            Logger.log(LogLevel.ERROR, e.getMessage());
+            PWCGLogger.log(LogLevel.ERROR, e.getMessage());
         }
     }
 
@@ -69,7 +69,7 @@ public abstract class DeployBase
     throws IOException 
     {
         String sourceDirName = dirToClean.getName();
-        Logger.log(LogLevel.INFO, "Directory being cleaned is " + sourceDirName);
+        PWCGLogger.log(LogLevel.INFO, "Directory being cleaned is " + sourceDirName);
 
         File[] files = dirToClean.listFiles();
         
@@ -79,7 +79,7 @@ public abstract class DeployBase
 	        {
 	            if (files[n].getName().contains(".hprof"))
 	            {
-	                Logger.log(LogLevel.INFO, "Remove file " + files[n].getName());
+	                PWCGLogger.log(LogLevel.INFO, "Remove file " + files[n].getName());
 	                files[n].delete();
 	            }
 	        }
@@ -96,13 +96,13 @@ public abstract class DeployBase
 	{
 		File nextDirectory = new File(destination, source.getName());
 		String sourceDirName = source.getName();
-		Logger.log(LogLevel.INFO, "Directory being considered is " + sourceDirName);
+		PWCGLogger.log(LogLevel.INFO, "Directory being considered is " + sourceDirName);
 		if (directoriesToMake.containsKey(sourceDirName)|| directoriesToCopy.containsKey(sourceDirName))
 		{
 			//
 			// create the directory if necessary...
 			//
-			Logger.log(LogLevel.INFO, "Directory being made is " + sourceDirName);
+			PWCGLogger.log(LogLevel.INFO, "Directory being made is " + sourceDirName);
 			if (!nextDirectory.exists() && !nextDirectory.mkdirs()) 
 			{
 	 			String message = "DirCopyFailed: " + nextDirectory.getAbsolutePath() ;
@@ -111,7 +111,7 @@ public abstract class DeployBase
 
 			if (directoriesToCopy.containsKey(sourceDirName))
 			{
-				Logger.log(LogLevel.INFO, "Directory being copied is " + sourceDirName);
+				PWCGLogger.log(LogLevel.INFO, "Directory being copied is " + sourceDirName);
 				File[] files = source.listFiles();
 				
 				for (int n = 0; n < files.length; ++n) 
@@ -147,7 +147,7 @@ public abstract class DeployBase
 		}
 		else
 		{
-			Logger.log(LogLevel.INFO, "Directory not being copied is " + sourceDirName);
+			PWCGLogger.log(LogLevel.INFO, "Directory not being copied is " + sourceDirName);
 		}
 	}
 

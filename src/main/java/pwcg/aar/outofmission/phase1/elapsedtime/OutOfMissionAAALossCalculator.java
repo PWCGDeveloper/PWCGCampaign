@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import pwcg.aar.data.AARContext;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.EquippedPlane;
@@ -17,7 +18,7 @@ public class OutOfMissionAAALossCalculator
     private Campaign campaign;
     private AARContext aarContext;
     private Map<Integer, SquadronMember> pilotsLostDueToAAA = new HashMap<>();
-    private Map<Integer, EquippedPlane> planesLostDueToAAA = new HashMap<>();
+    private Map<Integer, LogPlane> planesLostDueToAAA = new HashMap<>();
     private OutOfMissionAAAOddsCalculator oddsShotDownByAAACalculator;
 
     public OutOfMissionAAALossCalculator (Campaign campaign, AARContext aarContext, OutOfMissionAAAOddsCalculator oddsShotDownByAAACalculator)
@@ -50,8 +51,11 @@ public class OutOfMissionAAALossCalculator
             {
                 EquippedPlane planeShotDownByAAA = campaign.getEquipmentManager().destroyPlaneFromSquadron(squadronMember.getSquadronId(), campaign.getDate());
 
+                LogPlane logPlane = new LogPlane(aarContext.getNextOutOfMissionEventSequenceNumber());
+                logPlane.initializeFromOutOfMission(campaign, planeShotDownByAAA, squadronMember);
+                
                 pilotsLostDueToAAA.put(squadronMember.getSerialNumber(), squadronMember);
-                planesLostDueToAAA.put(planeShotDownByAAA.getSerialNumber(), planeShotDownByAAA);
+                planesLostDueToAAA.put(planeShotDownByAAA.getSerialNumber(), logPlane);
             }
         }
     }
@@ -61,7 +65,7 @@ public class OutOfMissionAAALossCalculator
         return pilotsLostDueToAAA;
     }
 
-    public Map<Integer, EquippedPlane> getPlanesLostDueToAAA()
+    public Map<Integer, LogPlane> getPlanesLostDueToAAA()
     {
         return planesLostDueToAAA;
     }

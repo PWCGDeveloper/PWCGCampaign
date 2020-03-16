@@ -9,7 +9,7 @@ import pwcg.campaign.api.ICountry;
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public abstract class CountryBase
 {
@@ -201,7 +201,7 @@ public abstract class CountryBase
          }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }
@@ -217,7 +217,7 @@ public abstract class CountryBase
          }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

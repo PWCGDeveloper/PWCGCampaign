@@ -8,7 +8,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.mcu.group.MissionBeginSelfDeactivatingCheckZone;
 import pwcg.mission.target.TargetType;
 
@@ -132,7 +132,7 @@ public class GroundUnitCollection implements IGroundUnitCollection
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGException(e.getMessage());
         }
     }

@@ -28,7 +28,7 @@ import pwcg.campaign.utils.AutoStart;
 import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MissionLogFileValidator;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
@@ -74,7 +74,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }
@@ -382,7 +382,7 @@ public class BriefingPilotPanelSet extends PwcgGuiContext implements ActionListe
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

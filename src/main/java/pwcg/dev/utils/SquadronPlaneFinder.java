@@ -10,8 +10,8 @@ import pwcg.campaign.plane.SquadronPlaneAssignment;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class SquadronPlaneFinder 
 {
@@ -32,7 +32,7 @@ public class SquadronPlaneFinder
 		}
 		catch (Exception e)
 		{
-			 Logger.logException(e);;
+			 PWCGLogger.logException(e);;
 		}
 	}
 
@@ -40,7 +40,7 @@ public class SquadronPlaneFinder
     private void findPlane(String planeId, Date startDate, Date endDate) throws PWCGException  
     {       
         List<Squadron> allSq =  PWCGContext.getInstance().getSquadronManager().getAllSquadrons();
-        Logger.log(LogLevel.DEBUG, "PlaneType Id: " + planeId);
+        PWCGLogger.log(LogLevel.DEBUG, "PlaneType Id: " + planeId);
         for (Squadron squad : allSq)
         {
             boolean hasPlane = false;
@@ -57,7 +57,7 @@ public class SquadronPlaneFinder
 
             if (hasPlane)
             {
-                Logger.log(LogLevel.DEBUG, "" + squad.getSquadronId());
+                PWCGLogger.log(LogLevel.DEBUG, "" + squad.getSquadronId());
             }
         }
     }
@@ -80,7 +80,7 @@ public class SquadronPlaneFinder
 
             if (hasPlane)
             {
-                Logger.log(LogLevel.DEBUG, "" + squad.getSquadronId());
+                PWCGLogger.log(LogLevel.DEBUG, "" + squad.getSquadronId());
             }
         }
     }

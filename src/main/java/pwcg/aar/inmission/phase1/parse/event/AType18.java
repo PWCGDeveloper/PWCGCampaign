@@ -6,7 +6,7 @@ import java.io.IOException;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 
 // T:66199 AType:18 BOTID:51199 PARENTID:50175 POS(75142.617,169.053,188263.078)
@@ -42,7 +42,7 @@ public class AType18 extends ATypeBase implements IAType18
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

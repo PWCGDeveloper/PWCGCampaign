@@ -13,8 +13,8 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public abstract class MedalManager implements IMedalManager 
 {
@@ -56,7 +56,7 @@ public abstract class MedalManager implements IMedalManager
 		
 		if (medal == null)
 		{
-		    Logger.log(LogLevel.ERROR, "Invalid medal: " + type);
+		    PWCGLogger.log(LogLevel.ERROR, "Invalid medal: " + type);
 		}
 		
 

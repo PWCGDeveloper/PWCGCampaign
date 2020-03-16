@@ -180,7 +180,7 @@ public class FileUtils
             }
             catch (IOException e)
             {
-                Logger.logException(e);
+                PWCGLogger.logException(e);
                 throw new PWCGException("Could not get  file time for file " + pathname);
             }
         }

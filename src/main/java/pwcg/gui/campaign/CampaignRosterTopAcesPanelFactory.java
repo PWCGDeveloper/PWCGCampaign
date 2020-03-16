@@ -10,8 +10,8 @@ import javax.swing.JPanel;
 
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.campaign.home.CampaignPilotChalkBoard;
 import pwcg.gui.campaign.pilot.CampaignPilotListPanel;
@@ -68,7 +68,7 @@ public class CampaignRosterTopAcesPanelFactory extends CampaignRosterBasePanelFa
 	        
 	        ++topAceCount;
 
-			Logger.log(LogLevel.DEBUG, "Selected Ace key: " + newKey + "     " + ace.getName() + "     " + ace.getSquadronMemberVictories().getAirToAirVictories());
+			PWCGLogger.log(LogLevel.DEBUG, "Selected Ace key: " + newKey + "     " + ace.getName() + "     " + ace.getSquadronMemberVictories().getAirToAirVictories());
 	        
 	        if (topAceCount == 10)
 	        {
@@ -89,7 +89,7 @@ public class CampaignRosterTopAcesPanelFactory extends CampaignRosterBasePanelFa
 				++aceCounter;
 				allAcesInCampaign.put(key, pilot);
 
-				Logger.log(LogLevel.DEBUG, "Add Ace key: " + key + "     " + pilot.getName() + "     " + pilot.getSquadronMemberVictories().getAirToAirVictories());
+				PWCGLogger.log(LogLevel.DEBUG, "Add Ace key: " + key + "     " + pilot.getName() + "     " + pilot.getSquadronMemberVictories().getAirToAirVictories());
 			}
 		}
         return aceCounter;

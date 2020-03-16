@@ -1,7 +1,7 @@
 package pwcg.core.config;
 
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class ConfigEditResolver
 {
@@ -25,7 +25,7 @@ public class ConfigEditResolver
             }
             else
             {
-                Logger.log(LogLevel.ERROR, "Edited value is no longer in use: " + parameterKey);
+                PWCGLogger.log(LogLevel.ERROR, "Edited value is no longer in use: " + parameterKey);
             }
         }
         

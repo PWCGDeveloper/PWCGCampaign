@@ -11,7 +11,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.mcu.McuTREntity;
 
 public class FakeAirfield extends FixedPosition implements Cloneable
@@ -117,7 +117,7 @@ public class FakeAirfield extends FixedPosition implements Cloneable
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import pwcg.aar.ui.events.model.TransferEvent;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.debrief.AAREventPanel;
@@ -133,10 +133,10 @@ public class AARMainPanel extends AARPanel implements ActionListener
             AARPilotLossPanel pilotsLostPanelSet = new AARPilotLossPanel();
             allEventPanels.add(pilotsLostPanelSet);
             
-            AAROutOfMissionVictoryPanel outOfMissionVictoryPanel = new AAROutOfMissionVictoryPanel();
+            AAROutOfMissionVictoryPanel outOfMissionVictoryPanel = new AAROutOfMissionVictoryPanel(campaign);
             allEventPanels.add(outOfMissionVictoryPanel);
             
-            AAREquipmentChangePanel equipmentChangePanelSet = new AAREquipmentChangePanel();
+            AAREquipmentChangePanel equipmentChangePanelSet = new AAREquipmentChangePanel(campaign);
             allEventPanels.add(equipmentChangePanelSet);
 
             AARPilotsTransferredPanel pilotsTransferredPanelSet = new AARPilotsTransferredPanel(campaign);
@@ -165,7 +165,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
         
@@ -213,7 +213,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}
@@ -252,7 +252,7 @@ public class AARMainPanel extends AARPanel implements ActionListener
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

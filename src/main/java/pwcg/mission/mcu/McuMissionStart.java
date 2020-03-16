@@ -3,7 +3,7 @@ package pwcg.mission.mcu;
 import java.io.BufferedWriter;
 
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class McuMissionStart extends BaseFlightMcu
 {
@@ -45,7 +45,7 @@ public class McuMissionStart extends BaseFlightMcu
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
 	}

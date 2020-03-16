@@ -9,8 +9,8 @@ import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogBase;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogDamage;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogVictory;
 import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogWaypoint;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class AARChronologicalEventListBuilder
 {
@@ -38,7 +38,7 @@ public class AARChronologicalEventListBuilder
         List<LogWaypoint> waypointEventList =  aarWaypointBuilder.buildWaypointEvents();
         for (LogWaypoint resultWP : waypointEventList)
         {
-            Logger.log(LogLevel.DEBUG, "" + resultWP.getSequenceNum() + ": " + "WP");
+            PWCGLogger.log(LogLevel.DEBUG, "" + resultWP.getSequenceNum() + ": " + "WP");
             chronologicalEvents.put(resultWP.getSequenceNum(), resultWP);
         }
     }
@@ -47,7 +47,7 @@ public class AARChronologicalEventListBuilder
     {
         for (LogAIEntity logPilot : evaluator.getAarVehicleBuilder().getLogPlanes().values())
         {
-            Logger.log(LogLevel.DEBUG, "" + logPilot.getSequenceNum() + ": " + "Pilot: " + logPilot.getId());
+            PWCGLogger.log(LogLevel.DEBUG, "" + logPilot.getSequenceNum() + ": " + "Pilot: " + logPilot.getId());
             chronologicalEvents.put(logPilot.getSequenceNum(), logPilot);
         }
     }
@@ -56,7 +56,7 @@ public class AARChronologicalEventListBuilder
     {
         for (LogAIEntity logBalloon : evaluator.getAarVehicleBuilder().getLogBalloons().values())
         {
-            Logger.log(LogLevel.DEBUG, "" + logBalloon.getSequenceNum() + ": " + "Balloon: " + logBalloon.getId());
+            PWCGLogger.log(LogLevel.DEBUG, "" + logBalloon.getSequenceNum() + ": " + "Balloon: " + logBalloon.getId());
             chronologicalEvents.put(logBalloon.getSequenceNum(), logBalloon);
         }
     }
@@ -65,7 +65,7 @@ public class AARChronologicalEventListBuilder
     {
         for (LogVictory logVictory : evaluator.getAarVictoryEvaluator().getVictoryResults())
         {
-            Logger.log(LogLevel.DEBUG, "" + logVictory.getSequenceNum() + ": " + "Victory: " + logVictory.getVictor().getId() + " over " + logVictory.getVictim().getId());
+            PWCGLogger.log(LogLevel.DEBUG, "" + logVictory.getSequenceNum() + ": " + "Victory: " + logVictory.getVictor().getId() + " over " + logVictory.getVictim().getId());
             chronologicalEvents.put(logVictory.getSequenceNum(), logVictory);
         }
     }
@@ -74,7 +74,7 @@ public class AARChronologicalEventListBuilder
     {
         for (LogDamage logDamage : evaluator.getAarDamageStatusEvaluator().getAllDamageEvents())
         {
-            Logger.log(LogLevel.DEBUG, "" + logDamage.getSequenceNum() + ": " + "Damage: " + logDamage.getVictor().getId() + " over " + logDamage.getVictim().getId());
+            PWCGLogger.log(LogLevel.DEBUG, "" + logDamage.getSequenceNum() + ": " + "Damage: " + logDamage.getVictor().getId() + " over " + logDamage.getVictim().getId());
             chronologicalEvents.put(logDamage.getSequenceNum(), logDamage);
         }
     }

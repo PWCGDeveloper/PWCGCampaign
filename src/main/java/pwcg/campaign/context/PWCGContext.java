@@ -1,6 +1,6 @@
 package pwcg.campaign.context;
 
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class PWCGContext 
 {
@@ -39,7 +39,7 @@ public class PWCGContext
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
         
         return null;

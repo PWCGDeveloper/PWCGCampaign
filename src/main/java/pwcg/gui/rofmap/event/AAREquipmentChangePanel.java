@@ -9,10 +9,11 @@ import javax.swing.JTabbedPane;
 import pwcg.aar.AARCoordinator;
 import pwcg.aar.ui.display.model.AAREquipmentLossPanelData;
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
+import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.rofmap.debrief.AAREventPanel;
@@ -24,12 +25,14 @@ public class AAREquipmentChangePanel extends AAREventPanel
     private static final long serialVersionUID = 1L;
     private AARCoordinator aarCoordinator;
     private SquadronMember referencePlayer;
+    private Campaign campaign;
 
-    public AAREquipmentChangePanel()
+    public AAREquipmentChangePanel(Campaign campaign)
 	{
         super();
         this.aarCoordinator = AARCoordinator.getInstance();
         this.referencePlayer = PWCGContext.getInstance().getReferencePlayer();
+        this.campaign = campaign;
 	}
 
 	public void makePanel() throws PWCGException  
@@ -41,7 +44,7 @@ public class AAREquipmentChangePanel extends AAREventPanel
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }
@@ -81,7 +84,7 @@ public class AAREquipmentChangePanel extends AAREventPanel
 		{
             if (planeStatusEvent.getSquadronId() == referencePlayer.getSquadronId())
             {
-                CampaignReportEquipmentStatusGUI equipmentChangeGui = new CampaignReportEquipmentStatusGUI(planeStatusEvent);
+                CampaignReportEquipmentStatusGUI equipmentChangeGui = new CampaignReportEquipmentStatusGUI(campaign, planeStatusEvent);
                 String tabName = "Plane Lost: " + planeStatusEvent.getPlaneSerialNumber();
                 planesLostGuiList.put(tabName, equipmentChangeGui);
             }

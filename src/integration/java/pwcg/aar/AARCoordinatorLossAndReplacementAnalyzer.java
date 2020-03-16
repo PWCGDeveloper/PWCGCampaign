@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import pwcg.aar.data.AARContext;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
@@ -16,7 +17,6 @@ import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronMemberFilter;
 import pwcg.campaign.personnel.SquadronPersonnel;
 import pwcg.campaign.plane.Equipment;
-import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
@@ -96,9 +96,9 @@ public class AARCoordinatorLossAndReplacementAnalyzer
             
             int alliedEquipmentLosses = 0;
             int axisEquipmentLosses = 0;
-            for (EquippedPlane lostPlane : aarContext.getReconciledOutOfMissionData().getEquipmentLossesOutOfMission().getPlanesDestroyed().values())
+            for (LogPlane lostPlane : aarContext.getReconciledOutOfMissionData().getEquipmentLossesOutOfMission().getPlanesDestroyed().values())
             {
-                if (lostPlane.getSide() == Side.ALLIED)
+                if (lostPlane.getCountry().getSide() == Side.ALLIED)
                 {
                     ++alliedEquipmentLosses;                 
                     ++totalAlliedEquipmentLosses;                    

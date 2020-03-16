@@ -8,7 +8,7 @@ import pwcg.campaign.group.FixedPosition;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.mcu.McuIcon;
@@ -74,7 +74,7 @@ public class AirfieldBlock extends FixedPosition implements Cloneable
 		}
 		catch (IOException e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			throw new PWCGIOException(e.getMessage());
 		}
 	}
@@ -102,7 +102,7 @@ public class AirfieldBlock extends FixedPosition implements Cloneable
 		}
 		catch (IOException e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			throw new PWCGIOException(e.getMessage());
 		}
 	}

@@ -10,7 +10,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DirectoryReader;
 import pwcg.core.utils.FileUtils;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class CampaignV5V6Converter
 {
@@ -40,7 +40,7 @@ public class CampaignV5V6Converter
         }
         catch(Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
     }
     

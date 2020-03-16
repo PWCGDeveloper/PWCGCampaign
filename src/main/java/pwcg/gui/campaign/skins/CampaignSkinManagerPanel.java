@@ -15,7 +15,7 @@ import pwcg.campaign.squadmember.Ace;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.CampaignRosterBasePanelFactory;
 import pwcg.gui.campaign.CampaignRosterSquadronPanelFactory;
@@ -48,7 +48,7 @@ public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionLi
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }
@@ -164,12 +164,12 @@ public class CampaignSkinManagerPanel extends PwcgGuiContext implements ActionLi
         }
         catch (PWCGUserException ue)
         {
-            Logger.logException(ue);
+            PWCGLogger.logException(ue);
             ErrorDialog.userError(ue.getMessage());
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

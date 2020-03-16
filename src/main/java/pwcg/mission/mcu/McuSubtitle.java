@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import pwcg.campaign.utils.LCIndexGenerator;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class McuSubtitle extends BaseFlightMcu
 {
@@ -102,7 +102,7 @@ public class McuSubtitle extends BaseFlightMcu
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
 	}	

@@ -41,8 +41,8 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.campaign.config.CampaignConfigurationSimpleGUIController;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -179,7 +179,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}
@@ -785,7 +785,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 		for (int i = 0; i < rankList.size(); ++i)
 		{
 			cbRank.addItem(rankList.get(i));
-			Logger.log(LogLevel.DEBUG, "Add Rank = " + rankList.get(i));
+			PWCGLogger.log(LogLevel.DEBUG, "Add Rank = " + rankList.get(i));
 		}
 		
 		cbRank.addActionListener(this);
@@ -803,7 +803,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 	    }
 	    catch (Exception exp)
 	    {
-            Logger.logException(exp);
+            PWCGLogger.logException(exp);
             throw exp;
 	    }
 	}
@@ -824,7 +824,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 	    }
 	    catch (Exception exp)
 	    {
-	        Logger.logException(exp);
+	        PWCGLogger.logException(exp);
 	        throw exp;
 	    }
 	}
@@ -877,7 +877,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 	    }
 	    catch (Exception exp)
 	    {
-            Logger.logException(exp);
+            PWCGLogger.logException(exp);
             throw exp;
 	    }
 	}
@@ -967,7 +967,7 @@ public class CampaignGeneratorDataEntryGUI extends ImageResizingPanel implements
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}

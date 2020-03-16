@@ -8,7 +8,7 @@ import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.mcu.Coalition;
 import pwcg.mission.mcu.McuCheckZone;
 import pwcg.mission.mcu.McuDeactivate;
@@ -102,7 +102,7 @@ public class SelfDeactivatingCheckZone
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

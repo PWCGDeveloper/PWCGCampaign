@@ -16,7 +16,7 @@ import pwcg.campaign.squadmember.VictoryEntity;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class OutOfMissionVictoryGenerator
 {
@@ -47,7 +47,7 @@ public class OutOfMissionVictoryGenerator
         }
         catch (PWCGException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             victory = null;
         }
         

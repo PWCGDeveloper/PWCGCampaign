@@ -22,8 +22,8 @@ import pwcg.campaign.squadmember.VictoryDescription;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class CampaignLogs
 {
@@ -177,7 +177,7 @@ public class CampaignLogs
 
 	private void addCampaignLog(Date date, String logEntry, int squadronId)
 	{
-		Logger.log(LogLevel.DEBUG, "Added log on date " + date + "     " + logEntry);
+		PWCGLogger.log(LogLevel.DEBUG, "Added log on date " + date + "     " + logEntry);
 		if (date != null)
 		{
 			String dateString = DateUtils.getDateStringYYYYMMDD(date);

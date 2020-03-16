@@ -10,7 +10,7 @@ import pwcg.aar.inmission.phase3.reconcile.victories.singleplayer.PlayerDeclarat
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -64,7 +64,7 @@ public class AARClaimPanels extends AARPanel
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
 

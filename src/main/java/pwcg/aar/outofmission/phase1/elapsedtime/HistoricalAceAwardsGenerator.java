@@ -14,8 +14,8 @@ import pwcg.campaign.squadmember.HistoricalAce;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class HistoricalAceAwardsGenerator
 {
@@ -58,7 +58,7 @@ public class HistoricalAceAwardsGenerator
         }
         else
         {
-            Logger.log(LogLevel.ERROR, "Ace not found in historical aces: " + aceAtPreviousDate.getSerialNumber());
+            PWCGLogger.log(LogLevel.ERROR, "Ace not found in historical aces: " + aceAtPreviousDate.getSerialNumber());
         }
     }
 

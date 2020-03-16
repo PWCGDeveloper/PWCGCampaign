@@ -11,7 +11,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.LocationSet;
 import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.rofmap.MapPanelBase;
 
 public class MapLocationEditor
@@ -50,7 +50,7 @@ public class MapLocationEditor
         }
         catch (Exception exp)
         {
-            Logger.logException(exp);
+            PWCGLogger.logException(exp);
         }
     }
 }

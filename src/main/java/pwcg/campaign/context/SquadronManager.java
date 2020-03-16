@@ -21,8 +21,8 @@ import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class SquadronManager 
@@ -230,13 +230,13 @@ public class SquadronManager
 		{
 		    if (squadron.hasFlyablePlane(date))
 		    {
-		        Logger.log(LogLevel.DEBUG, squadron.determineDisplayName(date)
+		        PWCGLogger.log(LogLevel.DEBUG, squadron.determineDisplayName(date)
 		                + "getFlyableSquadronsByService Add squadron + squadron id is " + squadron.getSquadronId());
 		        list.add(squadron);
 		    }
 		    else
 		    {
-		        Logger.log(LogLevel.DEBUG, squadron.determineDisplayName(date)
+		        PWCGLogger.log(LogLevel.DEBUG, squadron.determineDisplayName(date)
 		                + " getFlyableSquadronsByService not flyable because of date: " + DateUtils.getDateStringDashDelimitedYYYYMMDD(date));
 		    }
 		}

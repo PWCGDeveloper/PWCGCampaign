@@ -7,7 +7,7 @@ import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.mcu.McuTREntity;
 
 public abstract class Effect implements Cloneable
@@ -175,7 +175,7 @@ public abstract class Effect implements Cloneable
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

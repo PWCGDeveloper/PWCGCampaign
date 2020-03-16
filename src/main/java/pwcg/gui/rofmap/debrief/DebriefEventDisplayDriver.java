@@ -2,7 +2,7 @@ package pwcg.gui.rofmap.debrief;
 
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.rofmap.debrief.DebriefMapPanel.DebriefStates;
 
 public class DebriefEventDisplayDriver implements Runnable 
@@ -41,7 +41,7 @@ public class DebriefEventDisplayDriver implements Runnable
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 	}
 }

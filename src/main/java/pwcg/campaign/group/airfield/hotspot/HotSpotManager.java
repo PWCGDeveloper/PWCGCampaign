@@ -9,7 +9,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.JsonObjectReader;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class HotSpotManager
 {
@@ -36,7 +36,7 @@ public class HotSpotManager
         } 
         catch (Exception e) 
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
     }
     

@@ -304,7 +304,7 @@ public class DateUtils
 	    }
 	    catch (ParseException e)
 	    {
-	        Logger.logException(e);
+	        PWCGLogger.logException(e);
 	        throw new PWCGException(e.getMessage());
 	    }
 	    

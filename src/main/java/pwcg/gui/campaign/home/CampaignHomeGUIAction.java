@@ -10,7 +10,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGErrorBundler;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.config.CampaignConfigurationAdvancedGUI;
@@ -148,19 +148,19 @@ public class CampaignHomeGUIAction
         catch (PWCGUserException ue)
         {
             campaign.setCurrentMission(null);
-            Logger.logException(ue);
+            PWCGLogger.logException(ue);
             ErrorDialog.userError(ue.getMessage());
         }
         catch (Exception e)
         {
             campaign.setCurrentMission(null);
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
         catch (Throwable t)
         {
             campaign.setCurrentMission(null);
-            Logger.logException(t);
+            PWCGLogger.logException(t);
             ErrorDialog.internalError(t.getMessage());
         }
     }

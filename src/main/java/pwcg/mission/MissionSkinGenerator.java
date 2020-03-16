@@ -10,8 +10,8 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightData;
 import pwcg.mission.flight.plane.PlaneMcu;
@@ -83,11 +83,11 @@ public class MissionSkinGenerator
         {
             plane.setPlaneSkin(skin);
             PWCGContext.getInstance().getSkinManager().getSkinsInUse().addSkinInUse(skin);
-            Logger.log(LogLevel.DEBUG, "SKIN: Assign squadron personal: " + skin.getSkinName());
+            PWCGLogger.log(LogLevel.DEBUG, "SKIN: Assign squadron personal: " + skin.getSkinName());
         }
         else
         {
-            Logger.log(LogLevel.DEBUG, "SKIN: no squadron personal skin available");
+            PWCGLogger.log(LogLevel.DEBUG, "SKIN: no squadron personal skin available");
         }
         
         return skin;
@@ -104,16 +104,16 @@ public class MissionSkinGenerator
             {
                 plane.setPlaneSkin(skin);
                 PWCGContext.getInstance().getSkinManager().getSkinsInUse().addSkinInUse(skin);
-                Logger.log(LogLevel.DEBUG, "SKIN: Assign non squadron personal: " + skin.getSkinName());
+                PWCGLogger.log(LogLevel.DEBUG, "SKIN: Assign non squadron personal: " + skin.getSkinName());
             }
             else
             {
-                Logger.log(LogLevel.DEBUG, "SKIN: no non squadron personal skin available");
+                PWCGLogger.log(LogLevel.DEBUG, "SKIN: no non squadron personal skin available");
             }
         }
         else
         {
-            Logger.log(LogLevel.DEBUG, "SKIN: non squadron personal skin - must be veteran or higher");
+            PWCGLogger.log(LogLevel.DEBUG, "SKIN: non squadron personal skin - must be veteran or higher");
         }
 
         return skin;
@@ -121,7 +121,7 @@ public class MissionSkinGenerator
 
     private void chooseNoviceSkin(PlaneMcu plane, List<Skin> genericSkins)
     {
-        Logger.log(LogLevel.DEBUG, "SKIN: Choose novice skin");
+        PWCGLogger.log(LogLevel.DEBUG, "SKIN: Choose novice skin");
         
         // Novice pilots get either the squadron skin or an unmarked
         int genericRoll = RandomNumberGenerator.getRandom(100);
@@ -132,16 +132,16 @@ public class MissionSkinGenerator
             {
                 // This is a factory generic skin so no need to declare it to be in use
                 plane.setPlaneSkin(skin);
-                Logger.log(LogLevel.DEBUG, "SKIN: Assign generic skin: " + skin.getSkinName());
+                PWCGLogger.log(LogLevel.DEBUG, "SKIN: Assign generic skin: " + skin.getSkinName());
             }
             else
             {
-                Logger.log(LogLevel.DEBUG, "SKIN: novice skin - no generic available");
+                PWCGLogger.log(LogLevel.DEBUG, "SKIN: novice skin - no generic available");
             }
         }
         else
         {
-            Logger.log(LogLevel.DEBUG, "SKIN: retain novice skin");
+            PWCGLogger.log(LogLevel.DEBUG, "SKIN: retain novice skin");
         }
     }
 
@@ -226,7 +226,7 @@ public class MissionSkinGenerator
 		    }
 		    catch (Exception exp)
 		    {
-	            Logger.logException(exp);
+	            PWCGLogger.logException(exp);
 		    }
 		}
 	}

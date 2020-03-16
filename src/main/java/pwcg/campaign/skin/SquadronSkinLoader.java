@@ -6,8 +6,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.SquadronManager;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class SquadronSkinLoader
 {
@@ -39,7 +39,7 @@ public class SquadronSkinLoader
             }
             else
             {
-                Logger.log(LogLevel.ERROR, "Invalid plane for squadron skin <" + squadron.getSquadronId() 
+                PWCGLogger.log(LogLevel.ERROR, "Invalid plane for squadron skin <" + squadron.getSquadronId() 
                 + "><"  + squadronSkin.getSkinName() + ">" );
             }
         }

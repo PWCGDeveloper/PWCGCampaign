@@ -1,6 +1,7 @@
 package pwcg.aar.outofmission.phase1.elapsedtime;
 
 import pwcg.aar.data.AARContext;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.ArmedService;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.outofmission.DuringCampaignVictimGenerator;
@@ -112,7 +113,11 @@ public class OutOfMissionVictoryEventHandler
             {
                 victoriesOutOMission.addVictoryAwards(victorPilot.getSerialNumber(), victory);
                 victoriesOutOMission.addShotDownPilot(shotDownPilot);
-                victoriesOutOMission.addShotDownPlane(shotDownPlane);
+                
+                LogPlane logPlane = new LogPlane(aarContext.getNextOutOfMissionEventSequenceNumber());
+                logPlane.initializeFromOutOfMission(campaign, shotDownPlane, shotDownPilot);
+                
+                victoriesOutOMission.addShotDownPlane(logPlane);
             }
         }
     }

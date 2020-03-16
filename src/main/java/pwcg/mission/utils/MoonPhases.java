@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class MoonPhases 
 {
@@ -31,7 +31,7 @@ public class MoonPhases
 		}
 		catch (Exception e)
 		{
-			 Logger.logException(e);;
+			 PWCGLogger.logException(e);;
 		}
 	}
 	

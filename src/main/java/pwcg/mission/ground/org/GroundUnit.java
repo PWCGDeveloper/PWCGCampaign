@@ -11,7 +11,7 @@ import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.ground.GroundUnitInformation;
 import pwcg.mission.ground.unittypes.GroundUnitSpawningTrainBuilder;
 import pwcg.mission.ground.unittypes.GroundUnitSpawningVehicleBuilder;
@@ -115,7 +115,7 @@ public abstract class GroundUnit implements IGroundUnit
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

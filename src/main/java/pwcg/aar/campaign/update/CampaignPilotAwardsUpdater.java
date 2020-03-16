@@ -13,8 +13,8 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadmember.Victory;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class CampaignPilotAwardsUpdater 
 {
@@ -68,7 +68,7 @@ public class CampaignPilotAwardsUpdater
                 }
                 else
                 {
-                    Logger.log(LogLevel.ERROR, "Invalid victory type " + victory.getVictim().getType());
+                    PWCGLogger.log(LogLevel.ERROR, "Invalid victory type " + victory.getVictim().getType());
                 }
             }
         }

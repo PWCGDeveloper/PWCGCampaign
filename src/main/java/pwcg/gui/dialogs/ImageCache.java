@@ -15,8 +15,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class ImageCache 
 {
@@ -53,7 +53,7 @@ public class ImageCache
             	}
             	else
             	{
-            	    Logger.log(LogLevel.ERROR, "Image not found: " + imagePath);
+            	    PWCGLogger.log(LogLevel.ERROR, "Image not found: " + imagePath);
             	}
             }
             
@@ -61,7 +61,7 @@ public class ImageCache
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
 	}
@@ -71,7 +71,7 @@ public class ImageCache
 		BufferedImage origImage = getBufferedImage(imagePath);
 	    if (origImage == null) {
 
-	        Logger.log(LogLevel.ERROR, "getRotatedImage: input image is null");
+	        PWCGLogger.log(LogLevel.ERROR, "getRotatedImage: input image is null");
 	      return null;
 
 	    }
@@ -160,8 +160,8 @@ public class ImageCache
         }
         catch (IOException e)
         {
-            Logger.log(LogLevel.ERROR, "Error readingimage file " + imagePath);
-            Logger.logException(e);
+            PWCGLogger.log(LogLevel.ERROR, "Error readingimage file " + imagePath);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
 	}
@@ -195,7 +195,7 @@ public class ImageCache
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

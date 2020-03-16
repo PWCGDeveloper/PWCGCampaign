@@ -18,7 +18,7 @@ import pwcg.coop.CoopPersonaDataBuilder;
 import pwcg.coop.model.CoopDisplayRecord;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
@@ -45,7 +45,7 @@ public class CoopPersonaInfoPanel extends ImageResizingPanel
 		}
 		catch (Throwable e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}

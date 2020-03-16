@@ -9,8 +9,8 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.PWCGLocation;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.MathUtils;
 
 public class FrontLinePoint extends PWCGLocation
@@ -57,7 +57,7 @@ public class FrontLinePoint extends PWCGLocation
         }
         else
         {
-            Logger.log(LogLevel.ERROR, "Unidentifiable name for front line location " + name);
+            PWCGLogger.log(LogLevel.ERROR, "Unidentifiable name for front line location " + name);
         }
     }
 

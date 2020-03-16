@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class FileCopy
 {
@@ -38,11 +38,11 @@ public class FileCopy
             if (inStream != null)inStream.close();
             if (outStream != null)outStream.close();
  
-            Logger.log(LogLevel.DEBUG, "File Copied..");
+            PWCGLogger.log(LogLevel.DEBUG, "File Copied..");
         }
         catch(IOException e)
         {
-             Logger.logException(e);
+             PWCGLogger.logException(e);
         }
     }
 

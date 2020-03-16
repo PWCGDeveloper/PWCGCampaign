@@ -14,7 +14,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.factory.ArmedServiceFactory;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -94,7 +94,7 @@ public class CampaignEquipmentDepotPanelSet extends PwcgGuiContext implements Ac
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 		
@@ -114,7 +114,7 @@ public class CampaignEquipmentDepotPanelSet extends PwcgGuiContext implements Ac
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

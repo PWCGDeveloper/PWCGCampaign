@@ -12,7 +12,7 @@ import pwcg.campaign.group.Bridge;
 import pwcg.campaign.group.airfield.AirfieldBlock;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class GroundObjectsFile 
 {
@@ -70,7 +70,7 @@ public class GroundObjectsFile
 		} 
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
 	}

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.mcu.McuMissionStart;
 import pwcg.mission.mcu.McuTimer;
 import pwcg.mission.mcu.McuValidator;
@@ -55,7 +55,7 @@ public class MissionBeginUnit
 	    }
 	    else
 	    {
-	        Logger.log(LogLevel.DEBUG, "Multiple Users");
+	        PWCGLogger.log(LogLevel.DEBUG, "Multiple Users");
 	    }
 	    
 	    hasBeenWritten = true;

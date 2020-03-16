@@ -15,8 +15,8 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 /**
  * Manages state for a skin editing session.
@@ -122,7 +122,7 @@ public class SkinSessionManager
                     }
                     else
                     {
-                        Logger.log(LogLevel.DEBUG, "Null skin in list");
+                        PWCGLogger.log(LogLevel.DEBUG, "Null skin in list");
                     }
                 }
             }

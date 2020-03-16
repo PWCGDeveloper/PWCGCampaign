@@ -8,8 +8,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import pwcg.aar.AAROutOfMissionStepper;
 import pwcg.aar.data.AARContext;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
@@ -30,7 +30,7 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
     private AARContext aarContext;
 
     private Map<Integer, SquadronMember> personnelLosses;
-    private Map<Integer, EquippedPlane> equipmentLosses;
+    private Map<Integer, LogPlane> equipmentLosses;
 
     @Before
     public void setup() throws PWCGException
@@ -85,10 +85,9 @@ public class AARCoordinatorCampaignUpdateIntegrityValidator
 
     private void validateEquipmentLossesInMemory() throws PWCGException
     {
-        for (EquippedPlane lostPlane : equipmentLosses.values())
+        for (LogPlane lostPlane : equipmentLosses.values())
         {
-            System.out.println("Plane Lost: " + lostPlane.getDisplayName() + " " + lostPlane.getSerialNumber());
-            EquippedPlane lostPlaneFromEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(lostPlane.getSquadronId()).getEquippedPlane(lostPlane.getSerialNumber());
+            EquippedPlane lostPlaneFromEquipment = campaign.getEquipmentManager().getEquipmentForSquadron(lostPlane.getSquadronId()).getEquippedPlane(lostPlane.getPlaneSerialNumber());
             assert (lostPlaneFromEquipment != null);
             assert (lostPlaneFromEquipment.getPlaneStatus() == PlaneStatus.STATUS_DESTROYED);
         }

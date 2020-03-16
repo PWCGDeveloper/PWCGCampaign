@@ -14,7 +14,7 @@ import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.campaign.utils.LCIndexGenerator;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.MissionStringHandler;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.missionpoint.MissionPoint;
@@ -237,7 +237,7 @@ public class McuIcon extends BaseFlightMcu
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

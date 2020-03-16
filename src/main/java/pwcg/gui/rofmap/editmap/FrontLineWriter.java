@@ -10,7 +10,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.io.json.LocationIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.LocationSet;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MathUtils;
 
 public class FrontLineWriter
@@ -31,7 +31,7 @@ public class FrontLineWriter
         }
         catch (Exception exp)
         {
-            Logger.logException(exp);
+            PWCGLogger.logException(exp);
         }
     }
 

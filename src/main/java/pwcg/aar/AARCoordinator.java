@@ -10,7 +10,7 @@ import pwcg.aar.prelim.AARPhase0Preliminary;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class AARCoordinator
 {
@@ -47,7 +47,7 @@ public class AARCoordinator
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             MissionResultErrorBundleCreator errorBundleCreator = new MissionResultErrorBundleCreator();
             errorBundleFileName = errorBundleCreator.createErrorBundle();
         }
@@ -71,7 +71,7 @@ public class AARCoordinator
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             MissionResultErrorBundleCreator errorBundleCreator = new MissionResultErrorBundleCreator();
             errorBundleFileName = errorBundleCreator.createErrorBundle();
         }
@@ -91,7 +91,7 @@ public class AARCoordinator
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             MissionResultErrorBundleCreator errorBundleCreator = new MissionResultErrorBundleCreator();
             errorBundleFileName = errorBundleCreator.createErrorBundle();
         }

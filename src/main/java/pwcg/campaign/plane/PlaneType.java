@@ -13,8 +13,8 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.ProductSpecificConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class PlaneType implements Cloneable
 {
@@ -145,7 +145,7 @@ public class PlaneType implements Cloneable
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }
@@ -177,7 +177,7 @@ public class PlaneType implements Cloneable
     {
         if (roles.size() == 0)
         {
-            Logger.log(LogLevel.ERROR, "No roles for: " + getType());
+            PWCGLogger.log(LogLevel.ERROR, "No roles for: " + getType());
         }
         for (int i = 0; i < roles.size(); ++i)
         {
@@ -195,7 +195,7 @@ public class PlaneType implements Cloneable
     {
         if (roles.size() == 0)
         {
-            Logger.log(LogLevel.ERROR, "No roles for: " + getType());
+            PWCGLogger.log(LogLevel.ERROR, "No roles for: " + getType());
         }
 
         if (role == determinePrimaryRole())
@@ -210,7 +210,7 @@ public class PlaneType implements Cloneable
     {
         if (roles.size() == 0)
         {
-            Logger.log(LogLevel.ERROR, "No roles for: " + getType());
+            PWCGLogger.log(LogLevel.ERROR, "No roles for: " + getType());
         }
         for (int i = 0; i < roles.size(); ++i)
         {

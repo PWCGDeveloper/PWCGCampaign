@@ -22,7 +22,7 @@ import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
@@ -188,13 +188,13 @@ public class AARPanelSet extends AARPanel implements ActionListener
         catch (PWCGUserException ue)
         {
             campaign.setCurrentMission(null);
-            Logger.logException(ue);
+            PWCGLogger.logException(ue);
             ErrorDialog.userError(ue.getMessage());
         }
         catch (Exception e)
         {
             campaign.setCurrentMission(null);
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

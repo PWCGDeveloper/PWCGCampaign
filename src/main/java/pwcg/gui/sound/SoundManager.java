@@ -6,7 +6,7 @@ import java.util.List;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 
 public class SoundManager extends Thread
@@ -92,7 +92,7 @@ public class SoundManager extends Thread
             }
             catch (Exception exp)
             {
-            	Logger.logException(exp);
+            	PWCGLogger.logException(exp);
             }
         }
     }
@@ -190,7 +190,7 @@ public class SoundManager extends Thread
         }
         catch (Exception exp)
         {
-             Logger.logException(exp);;
+             PWCGLogger.logException(exp);;
         }
     }
     

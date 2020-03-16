@@ -6,8 +6,8 @@ import java.awt.Image;
 
 import javax.swing.JPanel;
 
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.ImageCache;
 import pwcg.gui.dialogs.MonitorSupport;
 
@@ -54,12 +54,12 @@ public class ImageScaledPanel extends JPanel
 			image = ImageCache.getInstance().getBufferedImage(imagePath);
 			if (image == null)
 			{
-			    Logger.log(LogLevel.ERROR, "Request to load null image: " + imagePath);
+			    PWCGLogger.log(LogLevel.ERROR, "Request to load null image: " + imagePath);
 			}
 		}
 		catch (Exception ex) 
 		{
-			Logger.logException(ex);
+			PWCGLogger.logException(ex);
 		}
 	}
 
@@ -82,7 +82,7 @@ public class ImageScaledPanel extends JPanel
 		}
 		else
 		{
-		    Logger.log(LogLevel.ERROR, "Request to paint null image: " + imagePath);
+		    PWCGLogger.log(LogLevel.ERROR, "Request to paint null image: " + imagePath);
 		}
 	}
 

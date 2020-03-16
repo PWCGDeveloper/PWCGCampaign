@@ -22,7 +22,7 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.rofmap.MapPanelBase;
@@ -67,7 +67,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 	}
 
@@ -357,7 +357,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
             }
             catch (Exception exp)
             {
-                Logger.logException(exp);
+                PWCGLogger.logException(exp);
             }
 		}
 
@@ -476,7 +476,7 @@ public class BriefingMapPanel extends MapPanelBase implements ActionListener
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 		
 	}

@@ -11,7 +11,7 @@ import pwcg.campaign.factory.RankFactory;
 import pwcg.campaign.io.json.RankIOJson;
 import pwcg.campaign.personnel.Rank;
 import pwcg.campaign.personnel.Ranks;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class BoSRank implements IRankHelper 
 {
@@ -63,7 +63,7 @@ public class BoSRank implements IRankHelper
 	    }
 	    catch (Exception e)
 	    {
-	        Logger.logException(e);
+	        PWCGLogger.logException(e);
 	    }
 	}
 

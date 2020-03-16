@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 
 
@@ -43,7 +43,7 @@ public class McuCounter extends BaseFlightMcu
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
 	}

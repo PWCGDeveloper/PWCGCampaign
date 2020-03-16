@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.exception.PWCGMissionDebriefException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class AutoStart
 {
@@ -37,7 +37,7 @@ public class AutoStart
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }
@@ -64,17 +64,17 @@ public class AutoStart
         }
         catch (FileNotFoundException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
         catch (PWCGMissionDebriefException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

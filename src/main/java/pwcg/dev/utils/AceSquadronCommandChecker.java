@@ -3,8 +3,8 @@ package pwcg.dev.utils;
 import java.util.Set;
 
 import pwcg.campaign.context.AceManager;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class AceSquadronCommandChecker
 {
@@ -19,7 +19,7 @@ public class AceSquadronCommandChecker
         }
         catch (Exception e)
         {
-             Logger.logException(e);;
+             PWCGLogger.logException(e);;
         }
     }
 
@@ -34,13 +34,13 @@ public class AceSquadronCommandChecker
              
             for (Integer aceSquadronId : aceCommandedSquadrons)
             {
-                Logger.log(LogLevel.DEBUG, "" + aceSquadronId);
+                PWCGLogger.log(LogLevel.DEBUG, "" + aceSquadronId);
             }
             
         }
         catch (Exception e)
         {
-             Logger.logException(e);
+             PWCGLogger.logException(e);
         }
     }
 }

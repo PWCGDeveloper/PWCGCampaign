@@ -24,7 +24,7 @@ import pwcg.campaign.squadmember.Victory;
 import pwcg.campaign.squadmember.VictoryBuilder;
 import pwcg.campaign.squadmember.VictoryDescription;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.rofmap.MapPanelBase;
 import pwcg.gui.rofmap.debrief.DebriefMapPoint.EventTypes;
 
@@ -105,7 +105,7 @@ public class DebriefMapPanel  extends MapPanelBase
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 	}
 
@@ -283,7 +283,7 @@ public class DebriefMapPanel  extends MapPanelBase
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 		
 		// Speed up the path

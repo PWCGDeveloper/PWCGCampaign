@@ -28,7 +28,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DirectoryReader;
 import pwcg.core.utils.FileUtils;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
@@ -88,7 +88,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}
@@ -344,7 +344,7 @@ public class DebriefMapGUI  extends MapGUI implements ActionListener
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 	}
 }

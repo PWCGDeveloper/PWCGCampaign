@@ -10,7 +10,7 @@ import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -136,7 +136,7 @@ public class AARPilotStatusDeadEvaluator
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
         
         return isDead;

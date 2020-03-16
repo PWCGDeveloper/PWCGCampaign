@@ -19,7 +19,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
@@ -65,7 +65,7 @@ public class CoopPersonaChooser extends PwcgGuiContext implements ActionListener
         }
         catch (Throwable e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }
@@ -196,7 +196,7 @@ public class CoopPersonaChooser extends PwcgGuiContext implements ActionListener
         }
         catch (Throwable e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

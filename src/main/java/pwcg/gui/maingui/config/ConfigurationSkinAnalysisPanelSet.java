@@ -25,7 +25,7 @@ import javax.swing.SwingConstants;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MissingSkin;
 import pwcg.core.utils.SkinAnalyzer;
 import pwcg.gui.CampaignGuiContextManager;
@@ -69,7 +69,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }
@@ -278,7 +278,7 @@ public class ConfigurationSkinAnalysisPanelSet extends PwcgGuiContext implements
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}

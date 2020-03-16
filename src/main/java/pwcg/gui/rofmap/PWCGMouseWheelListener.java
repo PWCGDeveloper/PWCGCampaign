@@ -3,7 +3,7 @@ package pwcg.gui.rofmap;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 
 public class PWCGMouseWheelListener implements MouseWheelListener
@@ -32,7 +32,7 @@ public class PWCGMouseWheelListener implements MouseWheelListener
 	    }
 	    catch  (Exception exp)
 	    {
-	        Logger.logException(exp);
+	        PWCGLogger.logException(exp);
 	    }
 	}
 }

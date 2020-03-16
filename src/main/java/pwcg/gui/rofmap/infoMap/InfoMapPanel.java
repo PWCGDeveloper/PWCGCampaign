@@ -28,7 +28,7 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.PWCGLocation;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.colors.IServiceColorMap;
 import pwcg.gui.rofmap.MapGUI;
@@ -185,7 +185,7 @@ public class InfoMapPanel extends MapPanelBase
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 	}
 
@@ -255,7 +255,7 @@ public class InfoMapPanel extends MapPanelBase
         }
         catch (Exception exp)
         {
-            Logger.logException(exp);
+            PWCGLogger.logException(exp);
         }
     }
     
@@ -274,7 +274,7 @@ public class InfoMapPanel extends MapPanelBase
         }
         catch (Exception exp)
         {
-            Logger.logException(exp);
+            PWCGLogger.logException(exp);
         }
         
         return null;
@@ -509,7 +509,7 @@ public class InfoMapPanel extends MapPanelBase
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
 	}
 

@@ -15,8 +15,8 @@ import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.factory.AirfieldConfigurationFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGMissionGenerationException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class AirfieldManager
 {
@@ -70,7 +70,7 @@ public class AirfieldManager
         }
 
         airfields.put(field.getName(), field);
-        Logger.log(LogLevel.DEBUG, "Add to allied: " + field.getName());
+        PWCGLogger.log(LogLevel.DEBUG, "Add to allied: " + field.getName());
     }
 
     public IAirfield getAirfield(String airfieldName)

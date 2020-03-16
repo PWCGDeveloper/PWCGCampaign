@@ -1,17 +1,20 @@
 package pwcg.gui.rofmap.event;
 
 import pwcg.aar.ui.events.model.PlaneStatusEvent;
+import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.PlaneStatus;
 import pwcg.core.exception.PWCGException;
 
 public class CampaignReportEquipmentStatusGUI extends CampaignDocumentGUI
 {
 	private static final long serialVersionUID = 1L;
-	private PlaneStatusEvent equipmentStatusEvent = null;
+    private PlaneStatusEvent equipmentStatusEvent;
+    private Campaign campaign;
 	
-	public CampaignReportEquipmentStatusGUI(PlaneStatusEvent pilotLostEvent)
+	public CampaignReportEquipmentStatusGUI(Campaign campaign, PlaneStatusEvent pilotLostEvent)
 	{
 		super();
+        this.campaign = campaign;
         this.equipmentStatusEvent = pilotLostEvent;
         makePanel();        
 	}
@@ -40,53 +43,28 @@ public class CampaignReportEquipmentStatusGUI extends CampaignDocumentGUI
         String planeEventText = "";
         if (equipmentStatusEvent.getPlaneStatus() == PlaneStatus.STATUS_DESTROYED)
         {
-            planeEventText = getPlaneLostText();
+            planeEventText = equipmentStatusEvent.getPlaneLostText(campaign);
         }
         if (equipmentStatusEvent.getPlaneStatus() == PlaneStatus.STATUS_DEPOT)
         {
-            planeEventText = getPlaneAddedToDepotText();
+            planeEventText = equipmentStatusEvent.getPlaneAddedToDepotText(campaign);
         }
         if (equipmentStatusEvent.getPlaneStatus() == PlaneStatus.STATUS_REMOVED_FROM_SERVICE)
         {
-            planeEventText = getPlaneWithdrawnFromServiceText();
+            planeEventText = equipmentStatusEvent.getPlaneWithdrawnFromServiceText(campaign);
         }
         
         
-        return planeEventText;
-    }
-
-    private String getPlaneLostText()
-    {
-        String planeEventText = 
-                "A " + equipmentStatusEvent.getPlaneDesc() +
-                ",  serial number " + equipmentStatusEvent.getPlaneSerialNumber() + 
-                " has been lost in combat.\n";                
-
-        return planeEventText;
-    }
-
-    private String getPlaneAddedToDepotText()
-    {
-        String planeEventText = 
-                "A " + equipmentStatusEvent.getPlaneDesc() +
-                ",  serial number " + equipmentStatusEvent.getPlaneSerialNumber() + 
-                " has been provided to the depot for distribution to front line units.\n";                
-
-        return planeEventText;
-    }
-
-    private String getPlaneWithdrawnFromServiceText()
-    {
-        String planeEventText = 
-                "A " + equipmentStatusEvent.getPlaneDesc() +
-                ",  serial number " + equipmentStatusEvent.getPlaneSerialNumber() + 
-                " has been withdrawn from service.\n";                
-
         return planeEventText;
     }
 
     @Override
     public void finished()
     {
+    }
+
+    public Campaign getCampaign()
+    {
+        return campaign;
     }
 }

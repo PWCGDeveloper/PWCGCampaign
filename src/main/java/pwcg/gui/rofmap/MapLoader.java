@@ -1,7 +1,7 @@
 package pwcg.gui.rofmap;
 
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.ImageCache;
 import pwcg.gui.utils.ContextSpecificImages;
 
@@ -20,8 +20,8 @@ public abstract class MapLoader implements Runnable
         }
         catch (Exception e)
         {
-            Logger.log(LogLevel.ERROR, "Failed to load map " + mapFileName);
-            Logger.logException(e);
+            PWCGLogger.log(LogLevel.ERROR, "Failed to load map " + mapFileName);
+            PWCGLogger.logException(e);
         }
 
     }

@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 
 import pwcg.coop.CoopUserManager;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
@@ -38,7 +38,7 @@ public class CoopHostPasswordPanel extends ImageResizingPanel
 		}
 		catch (Throwable e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}

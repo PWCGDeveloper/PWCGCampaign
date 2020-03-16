@@ -19,7 +19,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
@@ -111,7 +111,7 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 		
@@ -197,7 +197,7 @@ public class CampaignLeavePanelSet extends PwcgGuiContext implements ActionListe
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

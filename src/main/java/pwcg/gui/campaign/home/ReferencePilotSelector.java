@@ -19,7 +19,7 @@ import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.coop.CoopPersonaManager;
 import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
@@ -53,7 +53,7 @@ public class ReferencePilotSelector extends PwcgGuiContext implements ActionList
         }
         catch (Throwable e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }
@@ -135,7 +135,7 @@ public class ReferencePilotSelector extends PwcgGuiContext implements ActionList
         }
         catch (Throwable e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

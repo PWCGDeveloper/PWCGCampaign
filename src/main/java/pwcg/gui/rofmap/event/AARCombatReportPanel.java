@@ -8,7 +8,7 @@ import pwcg.campaign.CombatReport;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.display.model.CombatReportBuilder;
 import pwcg.gui.rofmap.debrief.AAREventPanel;
@@ -44,7 +44,7 @@ public class AARCombatReportPanel extends AAREventPanel
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }
@@ -81,7 +81,7 @@ public class AARCombatReportPanel extends AAREventPanel
 		}
 		catch (Exception e)
 		{	
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 	}
 

@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class SkinManager 
 {
@@ -38,7 +38,7 @@ public class SkinManager
         }
         else
         {
-            Logger.log(LogLevel.ERROR, "getSkinsBySquadronPlaneDateInUse: Invalid plane " + planeName);
+            PWCGLogger.log(LogLevel.ERROR, "getSkinsBySquadronPlaneDateInUse: Invalid plane " + planeName);
         }
         
         return skinsForSquadron;
@@ -75,7 +75,7 @@ public class SkinManager
         }
         else
         {
-            Logger.log(LogLevel.ERROR, "getSkinsBySquadronPlaneDateInUse: Invalid plane " + planeName);
+            PWCGLogger.log(LogLevel.ERROR, "getSkinsBySquadronPlaneDateInUse: Invalid plane " + planeName);
         }
 		
 		return skinsForSquadronPlaneDate;
@@ -96,7 +96,7 @@ public class SkinManager
         }
         else
         {
-            Logger.log(LogLevel.ERROR, "getPersonalSkinsByPlaneCountryDateInUse: Invalid plane " + planeName);
+            PWCGLogger.log(LogLevel.ERROR, "getPersonalSkinsByPlaneCountryDateInUse: Invalid plane " + planeName);
         }
         
         return skinsForCountryPlaneDate;
@@ -115,7 +115,7 @@ public class SkinManager
         }
         else
         {
-            Logger.log(LogLevel.ERROR, "getSkinsBySquadronPlaneDate: Invalid plane " + planeName);
+            PWCGLogger.log(LogLevel.ERROR, "getSkinsBySquadronPlaneDate: Invalid plane " + planeName);
         }
         
         return skinsForSquadronPlaneDate;
@@ -133,7 +133,7 @@ public class SkinManager
         }
         else
         {
-            Logger.log(LogLevel.ERROR, "getSkinsByPlaneSquadron: Invalid plane " + planeName);
+            PWCGLogger.log(LogLevel.ERROR, "getSkinsByPlaneSquadron: Invalid plane " + planeName);
         }
         
         return skinsForSquadronPlane;
@@ -151,7 +151,7 @@ public class SkinManager
         }
         else
         {
-            Logger.log(LogLevel.ERROR, "getSkinsByPlaneCountry: Invalid plane " + planeName);
+            PWCGLogger.log(LogLevel.ERROR, "getSkinsByPlaneCountry: Invalid plane " + planeName);
         }
         
         return skinsForPlaneCountry;
@@ -175,7 +175,7 @@ public class SkinManager
         }
         else
         {
-            Logger.log(LogLevel.ERROR, "getConfiguredSkinByName: Invalid plane " + planeName);
+            PWCGLogger.log(LogLevel.ERROR, "getConfiguredSkinByName: Invalid plane " + planeName);
         }
         
         return returnSkin;
@@ -192,7 +192,7 @@ public class SkinManager
         }
         else
         {
-            Logger.log(LogLevel.INFO, "getLooseSkinByPlane: Unconfigured plane for PWCG " + planeName);
+            PWCGLogger.log(LogLevel.INFO, "getLooseSkinByPlane: Unconfigured plane for PWCG " + planeName);
         }
         
         return looseSkinsForPlane;

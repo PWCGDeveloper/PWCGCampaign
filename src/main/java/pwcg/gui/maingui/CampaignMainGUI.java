@@ -28,8 +28,8 @@ import pwcg.campaign.utils.AutoStart;
 import pwcg.campaign.utils.PlanesOwnedManager;
 import pwcg.campaign.utils.TestDriver;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
@@ -80,7 +80,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 	}
 	
@@ -121,7 +121,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
 	}
 
@@ -164,12 +164,12 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
                 if (args[0].equals("BoS"))
                 {
                     PWCGContext.setProduct(PWCGProduct.BOS);
-                    Logger.log(LogLevel.INFO, "Running BoS");
+                    PWCGLogger.log(LogLevel.INFO, "Running BoS");
                 }
                 else if (args[0].equals("FC"))
                 {
                     PWCGContext.setProduct(PWCGProduct.FC);
-                    Logger.log(LogLevel.INFO, "Running FC");
+                    PWCGLogger.log(LogLevel.INFO, "Running FC");
                 }
             }
         }
@@ -199,7 +199,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}		
 	}
 
@@ -223,7 +223,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}		
 	}
 
@@ -242,7 +242,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}		
 	}
 
@@ -459,7 +459,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 			}
 			catch (Exception e)
 			{
-				Logger.logException(e);
+				PWCGLogger.logException(e);
 			}
 			
 		}
@@ -592,7 +592,7 @@ public class CampaignMainGUI extends PwcgGuiContext implements ActionListener
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}

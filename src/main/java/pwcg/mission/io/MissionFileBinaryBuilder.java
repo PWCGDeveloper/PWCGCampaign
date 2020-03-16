@@ -9,8 +9,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.HelpDialog;
 
 public class MissionFileBinaryBuilder implements buildCommandPath
@@ -38,7 +38,7 @@ public class MissionFileBinaryBuilder implements buildCommandPath
         String missionFilePathArg = formMissionFilePathArg(campaign, fileName);
 
         String fullCommand = resaverExe + " " + listFileArg + " " + missionDirArg + " " + missionFilePathArg;
-        Logger.log(LogLevel.INFO, fullCommand);
+        PWCGLogger.log(LogLevel.INFO, fullCommand);
         return fullCommand;
     }
     
@@ -51,11 +51,11 @@ public class MissionFileBinaryBuilder implements buildCommandPath
             boolean status = process.waitFor(binaryBuildTimeout, TimeUnit.MINUTES);
             if (status == true)
             {
-                Logger.log(LogLevel.INFO, "Succeeded creating binary mission file for: " + fullCommand);
+                PWCGLogger.log(LogLevel.INFO, "Succeeded creating binary mission file for: " + fullCommand);
             }
             else
             {
-                Logger.log(LogLevel.INFO, "Failed to create binary mission file for: " + fullCommand);
+                PWCGLogger.log(LogLevel.INFO, "Failed to create binary mission file for: " + fullCommand);
                 new  HelpDialog("Failed to create binary mission file for " + fullCommand);
             }
         }

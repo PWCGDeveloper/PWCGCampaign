@@ -5,13 +5,15 @@ import java.util.Map;
 
 import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.campaign.Campaign;
+import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.plane.PlaneStatus;
+import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 
 public class LogPlane extends LogAIEntity
@@ -48,6 +50,20 @@ public class LogPlane extends LogAIEntity
         intializePilot(missionPlane.getPilotSerialNumber());
     }
 
+    public void initializeFromOutOfMission(Campaign campaign, EquippedPlane plane, SquadronMember squadronMember) throws PWCGException
+    {
+        this.squadronId = squadronMember.getSquadronId();
+        this.pilotSerialNumber = squadronMember.getSerialNumber();
+        this.planeSerialNumber = plane.getSerialNumber();
+
+        super.setId(""+super.getSequenceNum());
+        super.setCountry(squadronMember.determineCountry(campaign.getDate()));
+        super.setName(squadronMember.getNameAndRank());
+        super.setVehicleType(plane.getDisplayName());
+        Role approximateRole = Role.getApproximateRole(plane.determinePrimaryRole());
+        super.setRole(approximateRole);
+    }
+
     public void intializePilot(int serialNumber)
     {
         logPilot = new LogPilot();
@@ -62,7 +78,7 @@ public class LogPlane extends LogAIEntity
         }
         else
         {
-            Logger.log(LogLevel.ERROR, "While mapping bot = No crew member found for bot: " + botId);
+            PWCGLogger.log(LogLevel.ERROR, "While mapping bot = No crew member found for bot: " + botId);
         }
     }
 

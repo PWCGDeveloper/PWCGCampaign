@@ -10,7 +10,7 @@ import java.util.List;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class LargeAirfieldFile 
 {
@@ -26,7 +26,7 @@ public class LargeAirfieldFile
         } 
         catch (IOException e) 
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGException(e.getMessage());
         }
         

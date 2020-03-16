@@ -13,8 +13,8 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.io.json.AircraftIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class PlaneTypeFactory 
@@ -51,7 +51,7 @@ public class PlaneTypeFactory
     {
         for (PlaneType planeType : planeTypes.values())
         {
-            Logger.log(LogLevel.DEBUG, "" + planeType.getType() + "    " +  planeType.getDisplayName());
+            PWCGLogger.log(LogLevel.DEBUG, "" + planeType.getType() + "    " +  planeType.getDisplayName());
         }
     }    
     

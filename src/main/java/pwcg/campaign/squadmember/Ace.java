@@ -8,8 +8,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.medals.Medal;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class Ace extends SquadronMember
 {
@@ -50,7 +50,7 @@ public class Ace extends SquadronMember
 
         if (historicalAce == null)
         {
-            Logger.log(LogLevel.ERROR, "Ace from campaign file not found: " + getSerialNumber());
+            PWCGLogger.log(LogLevel.ERROR, "Ace from campaign file not found: " + getSerialNumber());
             return;
         }
 

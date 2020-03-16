@@ -2,7 +2,7 @@ package pwcg.gui.sound;
 
 import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
 
 public class MusicManager
@@ -52,7 +52,7 @@ public class MusicManager
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}

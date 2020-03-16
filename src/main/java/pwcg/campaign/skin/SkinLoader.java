@@ -7,7 +7,7 @@ import java.util.Map;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class SkinLoader
 {
@@ -41,7 +41,7 @@ public class SkinLoader
         }
         catch (Exception exp)
         {
-             Logger.logException(exp);
+             PWCGLogger.logException(exp);
         }
     }
 
@@ -54,7 +54,7 @@ public class SkinLoader
         }
         catch (PWCGException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
     }
 
@@ -67,7 +67,7 @@ public class SkinLoader
         }
         catch (PWCGException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }        
     }
 
@@ -80,7 +80,7 @@ public class SkinLoader
         }
         catch (PWCGException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }        
     }
 

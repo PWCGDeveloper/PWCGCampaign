@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Date;
 
-public class Logger 
+public class PWCGLogger 
 {
     private static LogLevel activeLogLevel = LogLevel.INFO;
     public enum LogLevel 
@@ -262,7 +262,7 @@ public class Logger
 
     public static void setActiveLogLevel(LogLevel activeLogLevel)
     {
-        Logger.activeLogLevel = activeLogLevel;
+        PWCGLogger.activeLogLevel = activeLogLevel;
     }
 	
 	

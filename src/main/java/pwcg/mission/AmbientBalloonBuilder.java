@@ -14,7 +14,7 @@ import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManager;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
@@ -110,7 +110,7 @@ public class AmbientBalloonBuilder
             }
             catch (Exception e)
             {
-                Logger.logException(e);
+                PWCGLogger.logException(e);
             }
         }
     }

@@ -6,7 +6,7 @@ import java.io.IOException;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 
 // T:14605 AType:17 ID:129023 POS(97132.141,1781.138,133919.984)
@@ -47,7 +47,7 @@ public class AType17 extends ATypeBase implements IAType17
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }   

@@ -18,8 +18,8 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.data.PwcgGeneratedMissionPlaneData;
 
 public class AARVehicleBuilder
@@ -115,7 +115,7 @@ public class AARVehicleBuilder
         LogPlane logPlane = makePlaneFromMissionAndLog(atype12);
                         
         logPlanes.put(atype12.getId(), logPlane);
-        Logger.log(LogLevel.DEBUG, "Add Plane: " + atype12.getName() + " ID:" + atype12.getId() + " Type:" + atype12.getType());
+        PWCGLogger.log(LogLevel.DEBUG, "Add Plane: " + atype12.getName() + " ID:" + atype12.getId() + " Type:" + atype12.getType());
     }
 
     private LogPlane makePlaneFromMissionAndLog(IAType12 atype12) throws PWCGException
@@ -135,7 +135,7 @@ public class AARVehicleBuilder
         logEntity.setRole(Role.ROLE_BALLOON);
         
         logBalloons.put(atype12.getId(), (LogBalloon)logEntity);
-        Logger.log(LogLevel.DEBUG, "Add Plane: " + atype12.getName() + " ID:" + atype12.getId() + " Type:" + atype12.getType());
+        PWCGLogger.log(LogLevel.DEBUG, "Add Plane: " + atype12.getName() + " ID:" + atype12.getId() + " Type:" + atype12.getType());
     }
 
     private void createLogGroundUNit(IAType12 atype12) throws PWCGException
@@ -145,7 +145,7 @@ public class AARVehicleBuilder
         logEntity.initializeEntityFromEvent(atype12);
         
         logGroundUnits.put(atype12.getId(), (LogGroundUnit)logEntity);
-        Logger.log(LogLevel.DEBUG, "Add Entity: " + atype12.getName() + " ID:" + atype12.getId() + " Type:" + atype12.getType());
+        PWCGLogger.log(LogLevel.DEBUG, "Add Entity: " + atype12.getName() + " ID:" + atype12.getId() + " Type:" + atype12.getType());
     }
     
     private void createTurretEntitiesForVehicle(List<IAType12> turretList) throws PWCGException

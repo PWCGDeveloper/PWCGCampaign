@@ -38,8 +38,8 @@ import pwcg.core.constants.Callsign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.MathUtils;
 
 public class Squadron 
@@ -212,7 +212,7 @@ public class Squadron
 		String currentAirfield = determineCurrentAirfieldName(date);
 		if (currentAirfield == null)
 		{
-		    Logger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Cannot fly airfield is null");
+		    PWCGLogger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Cannot fly airfield is null");
 		    return false;
 		}
 		
@@ -231,12 +231,12 @@ public class Squadron
         
         if (this.determineCurrentAircraftList(date).size() == 0)
         {
-            Logger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Cannot fly aircraft is null");
+            PWCGLogger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Cannot fly aircraft is null");
             return false;
         }
         else
         {
-            Logger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Can fly fom airfield " + currentAirfield);
+            PWCGLogger.log(LogLevel.DEBUG, determineDisplayName(date) + ": Can fly fom airfield " + currentAirfield);
             return true; 
         }
 	}

@@ -13,7 +13,7 @@ import pwcg.core.location.LocationSet;
 import pwcg.core.location.McuIconToLocationConverter;
 import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.Parsers;
 import pwcg.mission.mcu.McuIcon;
 
@@ -53,7 +53,7 @@ public class McuIconIO
         } 
         catch (IOException e) 
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
         
         return icons;
@@ -126,12 +126,12 @@ public class McuIconIO
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
         catch (PWCGException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
         

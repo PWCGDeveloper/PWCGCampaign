@@ -22,7 +22,7 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.config.ConfigSet;
 import pwcg.core.config.ConfigSetKeys;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
@@ -57,7 +57,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 		}
 		catch (Throwable e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}
@@ -142,7 +142,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 		} 
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 
@@ -278,7 +278,7 @@ public class CampaignConfigurationAdvancedGUI extends PwcgGuiContext implements 
 		}
 		catch (Throwable e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}

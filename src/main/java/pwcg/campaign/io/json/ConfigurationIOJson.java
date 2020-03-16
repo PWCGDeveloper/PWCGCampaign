@@ -8,7 +8,7 @@ import java.util.Map;
 import pwcg.core.config.ConfigSet;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class ConfigurationIOJson 
 {
@@ -39,7 +39,7 @@ public class ConfigurationIOJson
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			throw new PWCGException("Malfomed JSON in file " + currentJsonFile.getAbsolutePath());
 		}
 		

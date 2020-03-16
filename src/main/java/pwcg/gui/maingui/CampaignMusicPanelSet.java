@@ -17,7 +17,7 @@ import javax.swing.event.ChangeListener;
 import pwcg.core.config.ConfigItemKeys;
 import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -52,7 +52,7 @@ public class CampaignMusicPanelSet extends PwcgGuiContext implements ActionListe
         }
         catch (Throwable e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }
@@ -189,7 +189,7 @@ public class CampaignMusicPanelSet extends PwcgGuiContext implements ActionListe
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }
@@ -272,7 +272,7 @@ public class CampaignMusicPanelSet extends PwcgGuiContext implements ActionListe
 		}
 		catch (PWCGException e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 	}
 

@@ -14,7 +14,7 @@ import pwcg.campaign.api.Side;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.mcu.McuWaypoint;
@@ -65,7 +65,7 @@ public class MissionAnalyzer
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
 	}
@@ -129,12 +129,12 @@ public class MissionAnalyzer
         }
         catch (PWCGException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
          }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
 	}

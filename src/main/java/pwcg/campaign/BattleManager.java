@@ -10,7 +10,7 @@ import pwcg.campaign.io.json.BattleIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class BattleManager
 {
@@ -28,7 +28,7 @@ public class BattleManager
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
 	}
 
@@ -52,7 +52,7 @@ public class BattleManager
         }
         catch (Throwable t)
         {
-           Logger.logException(t);
+           PWCGLogger.logException(t);
         }
         
         return null;

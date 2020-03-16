@@ -7,8 +7,8 @@ import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.plane.Role;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class PlayerClaimResolverFirm
 {    
@@ -35,7 +35,7 @@ public class PlayerClaimResolverFirm
             
                             if (shotDownPlane == null || claimedPlane == null)
                             {
-                                Logger.log(LogLevel.ERROR, 
+                                PWCGLogger.log(LogLevel.ERROR, 
                                                 "resolveAsFirmVictory: No plane found for claimed type " + playerDeclaration.getAircraftType() );
                                 
                             }

@@ -12,7 +12,7 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.AmericanColorMap;
 import pwcg.gui.colors.BelgianColorMap;
 import pwcg.gui.colors.FrenchColorMap;
@@ -118,7 +118,7 @@ public class FCServiceManager extends ArmedServiceManager implements IArmedServi
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
     }
 

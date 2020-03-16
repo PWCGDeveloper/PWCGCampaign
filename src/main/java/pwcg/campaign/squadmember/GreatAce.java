@@ -4,7 +4,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class GreatAce
 {
@@ -70,7 +70,7 @@ public class GreatAce
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
 
         return false;

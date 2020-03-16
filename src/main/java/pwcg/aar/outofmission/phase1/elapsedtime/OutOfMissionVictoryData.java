@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.campaign.plane.EquippedPlane;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.Victory;
 
@@ -13,7 +13,7 @@ public class OutOfMissionVictoryData
 {
     private Map<Integer, List<Victory>> victoryAwardsBySquadronMember = new HashMap<>();
     private Map<Integer, SquadronMember> shotDownPilots = new HashMap<>();
-    private Map<Integer, EquippedPlane> shotDownPlanes = new HashMap<>();
+    private Map<Integer, LogPlane> shotDownPlanes = new HashMap<>();
     
     public void merge(OutOfMissionVictoryData victoryData)
     {
@@ -31,7 +31,7 @@ public class OutOfMissionVictoryData
             addShotDownPilot(shotDownPilot);
         }
         
-        for (EquippedPlane shotDownPlane : victoryData.getShotDownPlanes().values())
+        for (LogPlane shotDownPlane : victoryData.getShotDownPlanes().values())
         {
             addShotDownPlane(shotDownPlane);
         }
@@ -59,9 +59,9 @@ public class OutOfMissionVictoryData
         shotDownPilots.put(shotDownPilot.getSerialNumber(), shotDownPilot);
     }
 
-    public void addShotDownPlane(EquippedPlane shotDownPlane)
+    public void addShotDownPlane(LogPlane shotDownPlane)
     {
-        shotDownPlanes.put(shotDownPlane.getSerialNumber(), shotDownPlane);
+        shotDownPlanes.put(shotDownPlane.getPlaneSerialNumber(), shotDownPlane);
     }
     
     public Map<Integer, SquadronMember> getShotDownPilots()
@@ -74,7 +74,7 @@ public class OutOfMissionVictoryData
         return victoryAwardsBySquadronMember;
     }
 
-    public Map<Integer, EquippedPlane> getShotDownPlanes()
+    public Map<Integer, LogPlane> getShotDownPlanes()
     {
         return shotDownPlanes;
     }

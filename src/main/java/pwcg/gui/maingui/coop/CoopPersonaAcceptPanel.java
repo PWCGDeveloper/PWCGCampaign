@@ -13,7 +13,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.coop.CoopPersonaManager;
 import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ImageResizingPanel;
@@ -40,7 +40,7 @@ public class CoopPersonaAcceptPanel extends ImageResizingPanel
 		}
 		catch (Throwable e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}

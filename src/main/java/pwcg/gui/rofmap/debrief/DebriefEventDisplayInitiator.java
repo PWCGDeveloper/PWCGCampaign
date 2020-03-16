@@ -1,6 +1,6 @@
 package pwcg.gui.rofmap.debrief;
 
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 
 public class DebriefEventDisplayInitiator implements Runnable 
@@ -29,7 +29,7 @@ public class DebriefEventDisplayInitiator implements Runnable
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 	}
 

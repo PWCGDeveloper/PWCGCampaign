@@ -6,7 +6,7 @@ import java.io.IOException;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 //T:105391 AType:3 AID:1680383 TID:2256895 POS(155892.000,171.120,22055.320)
 public class AType3 extends ATypeBase implements IAType3
@@ -48,7 +48,7 @@ public class AType3 extends ATypeBase implements IAType3
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

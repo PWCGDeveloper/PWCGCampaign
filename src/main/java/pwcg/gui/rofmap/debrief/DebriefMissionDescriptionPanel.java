@@ -20,7 +20,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.campaign.home.CampaignHomeGUI;
 import pwcg.gui.colors.ColorMap;
@@ -64,7 +64,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}
@@ -179,7 +179,7 @@ public class DebriefMissionDescriptionPanel extends AARPanel implements ActionLi
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

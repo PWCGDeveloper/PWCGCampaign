@@ -55,7 +55,7 @@ public class DuringCampaignVictimGeneratorTest
         Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(SquadronTestProfile.JG_51_PROFILE_MOSCOW.getSquadronId());
         DuringCampaignVictimGenerator  victimGenerator = new DuringCampaignVictimGenerator(campaign, squadron);
         SquadronMember victim = victimGenerator.generateVictimAiCrew();
-        assert(victim == null);
+        assert(victim != null);
     }
 
 }

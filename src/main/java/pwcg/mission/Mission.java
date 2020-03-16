@@ -12,7 +12,7 @@ import pwcg.campaign.io.json.CampaignMissionIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.ambient.AmbientGroundUnitBuilder;
 import pwcg.mission.data.PwcgGeneratedMission;
 import pwcg.mission.flight.FlightTypes;
@@ -59,7 +59,7 @@ public class Mission
 
     private void initialize() throws PWCGException 
     {
-        Logger.eraseLog();
+        PWCGLogger.eraseLog();
         MissionStringHandler subtitleHandler = MissionStringHandler.getInstance();
         subtitleHandler.clear();
         

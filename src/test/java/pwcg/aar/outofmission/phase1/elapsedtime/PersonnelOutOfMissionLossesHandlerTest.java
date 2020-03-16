@@ -13,12 +13,12 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AARPersonnelLosses;
 import pwcg.aar.data.CampaignUpdateData;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.prelim.AARPreliminaryData;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.personnel.SquadronMemberFilter;
-import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMembers;
 import pwcg.core.exception.PWCGException;
@@ -56,7 +56,7 @@ public class PersonnelOutOfMissionLossesHandlerTest
     public void testAcesKilled () throws PWCGException
     {     
         OutOfMissionLossHandler outOfMissionLossesHandler = new OutOfMissionLossHandler(campaign, aarContext);
-        outOfMissionLossesHandler.lossesOutOfMission(new HashMap<Integer, SquadronMember>(), new HashMap<Integer, EquippedPlane>());
+        outOfMissionLossesHandler.lossesOutOfMission(new HashMap<Integer, SquadronMember>(), new HashMap<Integer, LogPlane>());
         AARPersonnelLosses lossesInMissionDataTotal = outOfMissionLossesHandler.getOutOfMissionPersonnelLosses();
         assert (lossesInMissionDataTotal.getAcesKilled().size() > 0);
     }
@@ -71,7 +71,7 @@ public class PersonnelOutOfMissionLossesHandlerTest
 
         OutOfMissionLossHandler outOfMissionLossesHandler = new OutOfMissionLossHandler(campaign, aarContext);
         SquadronMembers allAiCampaignMembers = SquadronMemberFilter.filterActiveAI(campaign.getPersonnelManager().getAllCampaignMembers(), campaign.getDate());
-        outOfMissionLossesHandler.lossesOutOfMission(allAiCampaignMembers.getSquadronMemberCollection(), new HashMap<Integer, EquippedPlane>());
+        outOfMissionLossesHandler.lossesOutOfMission(allAiCampaignMembers.getSquadronMemberCollection(), new HashMap<Integer, LogPlane>());
 
         AARPersonnelLosses lossesInMissionDataTotal = outOfMissionLossesHandler.getOutOfMissionPersonnelLosses();
         aiKilled.putAll(lossesInMissionDataTotal.getPersonnelKilled());

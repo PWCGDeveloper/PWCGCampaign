@@ -8,7 +8,7 @@ import pwcg.campaign.factory.CountryFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 // missionReport(2018-03-19_08-04-13)[0].txt:T:15 AType:10 PLID:302079 PID:303103 BUL:3056 SH:0 BOMB:17 RCT:0 (64429.594,174.325,41093.000) IDS:beadb889-54ff-4b2c-ba6c-185bc706600b LOGIN:6cfc9723-e261-44cc-b59c-1a1abc71edb5 NAME:PatrickAWlson TYPE:He 111 H-6 COUNTRY:201 FORM:1 FIELD:236543 INAIR:1 PARENT:-1 ISPL:1 ISTSTART:1
 public class AType10 extends ATypeBase implements IAType10
@@ -65,7 +65,7 @@ public class AType10 extends ATypeBase implements IAType10
         }
         catch (NumberFormatException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGException(e.getMessage());
         }
 	}
@@ -104,7 +104,7 @@ public class AType10 extends ATypeBase implements IAType10
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

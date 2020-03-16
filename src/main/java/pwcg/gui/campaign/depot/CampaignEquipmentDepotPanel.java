@@ -15,7 +15,7 @@ import pwcg.campaign.plane.Role;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -49,7 +49,7 @@ public class CampaignEquipmentDepotPanel extends ImagePanel
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }       
     }

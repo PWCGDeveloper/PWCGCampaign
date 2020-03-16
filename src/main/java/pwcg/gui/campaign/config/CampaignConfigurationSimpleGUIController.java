@@ -3,7 +3,7 @@ package pwcg.gui.campaign.config;
 import pwcg.campaign.Campaign;
 import pwcg.core.config.ConfigSimple;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.CommonUIActions;
@@ -48,7 +48,7 @@ public class CampaignConfigurationSimpleGUIController
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}

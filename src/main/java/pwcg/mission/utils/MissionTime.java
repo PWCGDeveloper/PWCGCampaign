@@ -5,8 +5,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class MissionTime
@@ -216,7 +216,7 @@ public class MissionTime
     {
         for (String missionTime : missionTimes)
         {
-            Logger.log(LogLevel.DEBUG, "    " + missionTime);
+            PWCGLogger.log(LogLevel.DEBUG, "    " + missionTime);
         }
     }
 

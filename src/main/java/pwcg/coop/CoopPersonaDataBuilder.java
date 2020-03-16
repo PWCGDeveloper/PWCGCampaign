@@ -9,7 +9,7 @@ import pwcg.coop.model.CoopDisplayRecord;
 import pwcg.coop.model.CoopPersona;
 import pwcg.coop.model.CoopUser;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class CoopPersonaDataBuilder
 {
@@ -28,7 +28,7 @@ public class CoopPersonaDataBuilder
             }
             catch (Exception e)
             {
-                Logger.logException(e);
+                PWCGLogger.logException(e);
             }
         }
         return coopDisplayRecords;

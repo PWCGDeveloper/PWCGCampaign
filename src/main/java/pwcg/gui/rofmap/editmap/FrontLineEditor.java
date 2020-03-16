@@ -8,7 +8,7 @@ import java.util.List;
 import pwcg.campaign.context.FrontLinePoint;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.PositionFinder;
 import pwcg.gui.rofmap.MapPanelBase;
@@ -42,7 +42,7 @@ public class FrontLineEditor
         }
         catch (Exception exp)
         {
-            Logger.logException(exp);
+            PWCGLogger.logException(exp);
         }
     }
     
@@ -77,7 +77,7 @@ public class FrontLineEditor
         }
         catch (Exception exp)
         {
-            Logger.logException(exp);
+            PWCGLogger.logException(exp);
         }
     }
 
@@ -174,7 +174,7 @@ public class FrontLineEditor
         }
         catch (Exception exp)
         {
-            Logger.logException(exp);
+            PWCGLogger.logException(exp);
         }
         
         return LOCATION_INDEX_NOT_FOUND;

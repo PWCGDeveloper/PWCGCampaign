@@ -7,7 +7,7 @@ import pwcg.aar.inmission.phase1.parse.AARLogParser;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 // T:80867 AType:2 DMG:0.082 AID:302079 TID:1351679 POS(155995.594,172.822,21908.119)
 public class AType2  extends ATypeBase implements IAType2
@@ -44,7 +44,7 @@ public class AType2  extends ATypeBase implements IAType2
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }   

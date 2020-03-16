@@ -16,6 +16,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pwcg.aar.AARTestSetup;
 import pwcg.aar.data.AAREquipmentLosses;
 import pwcg.aar.data.AARPersonnelLosses;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.aar.inmission.phase3.reconcile.victories.ReconciledVictoryData;
 import pwcg.aar.tabulate.combatreport.CombatReportTabulator;
 import pwcg.aar.ui.display.model.AARCombatReportPanelData;
@@ -94,8 +95,10 @@ public class CombatReportTabulatorTest extends AARTestSetup
         Mockito.when(pilotStatusEventGenerator.createPilotLossEvents(Matchers.<AARPersonnelLosses>any())).thenReturn(pilotsLost);
 
         boolean isNewsworthy = true;
-        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent(plane1, PlaneStatus.STATUS_DESTROYED, 
-                 campaign.getDate(), isNewsworthy);
+        LogPlane logPlane = new LogPlane(aarContext.getNextOutOfMissionEventSequenceNumber());
+        logPlane.initializeFromOutOfMission(campaign, plane1, pilot1);
+        
+        PlaneStatusEvent planeStatusEvent = new PlaneStatusEvent(campaign, logPlane, PlaneStatus.STATUS_DESTROYED, isNewsworthy);
 
         Map<Integer, PlaneStatusEvent> planesLost = new HashMap<>();
         planesLost.put(plane1.getSerialNumber(), planeStatusEvent);

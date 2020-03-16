@@ -14,7 +14,7 @@ import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.coop.CoopPersonaManager;
 import pwcg.coop.model.CoopPersona;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ContextSpecificImages;
 import pwcg.gui.utils.ISelectorGUICallback;
@@ -51,7 +51,7 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
 		}
 		catch (Throwable e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}
@@ -153,7 +153,7 @@ public class CoopPersonaChooserPanel extends ImageResizingPanel implements ISele
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 	}
 }

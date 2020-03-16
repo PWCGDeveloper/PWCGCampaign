@@ -16,7 +16,7 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Orientation;
 import pwcg.core.location.PWCGLocation;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MathUtils;
 import pwcg.mission.flight.plane.PlaneMcu;
 
@@ -125,7 +125,7 @@ public class AirfieldBuilderArras
         } 
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

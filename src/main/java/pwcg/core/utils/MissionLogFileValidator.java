@@ -30,7 +30,7 @@ public class MissionLogFileValidator
 		}
 		catch (Exception e)
 		{
-			 Logger.logException(e);
+			 PWCGLogger.logException(e);
 		}
 		
 		return false;
@@ -57,7 +57,7 @@ public class MissionLogFileValidator
 		}
 		catch (Exception e)
 		{
-			 Logger.logException(e);
+			 PWCGLogger.logException(e);
 		}
 		
 		return missionLoggingEnabled;

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.Parsers;
 
 public class LooseSkinReader
@@ -28,7 +28,7 @@ public class LooseSkinReader
         }
         catch (Exception exp)
         {
-             Logger.logException(exp);;
+             PWCGLogger.logException(exp);;
         }
         
         return looseSkins;

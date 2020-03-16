@@ -20,8 +20,8 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.plane.PlaneType;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.MonitorSupport;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -194,7 +194,7 @@ public class AARClaimPanel extends ImageResizingPanel implements ActionListener
 			    }
 			    else
 			    {
-			        Logger.log(LogLevel.ERROR, "Declared plane type not found: " + planeTypeDesc);
+			        PWCGLogger.log(LogLevel.ERROR, "Declared plane type not found: " + planeTypeDesc);
 			    }
 			}
 		}
@@ -228,7 +228,7 @@ public class AARClaimPanel extends ImageResizingPanel implements ActionListener
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 	}
 

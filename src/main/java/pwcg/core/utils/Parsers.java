@@ -6,7 +6,7 @@ import java.util.List;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class Parsers 
 {
@@ -47,7 +47,7 @@ public class Parsers
 		
 		if (val.contains(";"))
 		{
-			Logger.log(LogLevel.ERROR, "Malformed value for line: " + line);
+			PWCGLogger.log(LogLevel.ERROR, "Malformed value for line: " + line);
 		}
 		
 		return val;
@@ -62,7 +62,7 @@ public class Parsers
 		
 		if (val.contains(";"))
 		{
-		    Logger.log(LogLevel.ERROR, "Malformed value for line: " + line);
+		    PWCGLogger.log(LogLevel.ERROR, "Malformed value for line: " + line);
 		}
 
 
@@ -111,7 +111,7 @@ public class Parsers
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			throw e;
 		}
 

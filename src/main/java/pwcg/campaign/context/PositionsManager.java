@@ -9,7 +9,7 @@ import pwcg.campaign.api.Side;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.CoordinateBox;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MathUtils;
 import pwcg.core.utils.RandomNumberGenerator;
 
@@ -31,7 +31,7 @@ public class PositionsManager
 		}
 		catch (Exception e)
 		{
-            Logger.logException(e);
+            PWCGLogger.logException(e);
 		}
 	}
 	

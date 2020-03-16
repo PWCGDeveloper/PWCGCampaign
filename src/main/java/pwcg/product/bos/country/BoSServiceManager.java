@@ -10,7 +10,7 @@ import pwcg.campaign.api.IArmedServiceManager;
 import pwcg.campaign.context.Country;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.AmericanColorMap;
 import pwcg.gui.colors.GermanColorMap;
 import pwcg.gui.colors.ItalianColorMap;
@@ -66,7 +66,7 @@ public class BoSServiceManager extends ArmedServiceManager implements IArmedServ
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
     }
 

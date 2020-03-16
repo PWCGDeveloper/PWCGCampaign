@@ -5,8 +5,8 @@ import java.awt.Image;
 
 import javax.swing.JTextArea;
 
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.ImageCache;
 
 public class ImageTextArea extends JTextArea
@@ -42,7 +42,7 @@ public class ImageTextArea extends JTextArea
 		}
 		catch (Exception ex) 
 		{
-		    Logger.log(LogLevel.ERROR, "Request to load null image: " + imagePath);
+		    PWCGLogger.log(LogLevel.ERROR, "Request to load null image: " + imagePath);
 		}
 	}
 

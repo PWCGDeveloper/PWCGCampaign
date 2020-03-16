@@ -8,8 +8,8 @@ import pwcg.aar.data.AARContext;
 import pwcg.aar.data.AAREquipmentLosses;
 import pwcg.aar.data.AARPersonnelAwards;
 import pwcg.aar.data.AARPersonnelLosses;
+import pwcg.aar.inmission.phase2.logeval.missionresultentity.LogPlane;
 import pwcg.campaign.Campaign;
-import pwcg.campaign.plane.EquippedPlane;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
@@ -87,7 +87,7 @@ public class AAROutOfMissionEventCoordinator
         reconciledOutOfMissionData.getPersonnelLossesOutOfMission().mergePersonnelTransferredHome(personnelLossesTransferHome.getPersonnelTransferredHome());
     }
 
-    private void outOfMissionLosses(Map<Integer, SquadronMember> shotDownPilots, Map<Integer, EquippedPlane> shotDownPlanes) throws PWCGException 
+    private void outOfMissionLosses(Map<Integer, SquadronMember> shotDownPilots, Map<Integer, LogPlane> shotDownPlanes) throws PWCGException 
     {
         OutOfMissionLossHandler lossHandler = new  OutOfMissionLossHandler(campaign, aarContext);
         lossHandler.lossesOutOfMission(shotDownPilots, shotDownPlanes);

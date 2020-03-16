@@ -13,8 +13,8 @@ import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
 
 public class PilotNames 
@@ -118,7 +118,7 @@ public class PilotNames
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
 	}
@@ -264,7 +264,7 @@ public class PilotNames
             if (!asciiEncoder.canEncode(name))
             {
                 String error = "Bad name in list: " + listName + " is " + name;
-                Logger.log(LogLevel.ERROR, error);
+                PWCGLogger.log(LogLevel.ERROR, error);
             }
        }
         

@@ -6,7 +6,7 @@ import java.util.Date;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 /**
  * Defines a skin for use on a plane
@@ -52,7 +52,7 @@ public class Skin implements Cloneable
 		}
 		catch (Exception e)
 		{
-            Logger.logException(e);
+            PWCGLogger.logException(e);
 		}
 		
 		return skin;

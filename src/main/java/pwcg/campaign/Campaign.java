@@ -25,7 +25,7 @@ import pwcg.core.config.ConfigManagerCampaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGUserException;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.utils.ReferencePlayerFinder;
 import pwcg.mission.Mission;
 
@@ -87,7 +87,7 @@ public class Campaign
 		}
 		catch (PWCGException e)
 		{
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             return false;
 		}
 

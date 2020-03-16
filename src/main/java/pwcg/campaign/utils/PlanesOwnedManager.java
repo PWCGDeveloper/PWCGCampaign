@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import pwcg.campaign.context.PWCGContext;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class PlanesOwnedManager 
 {
@@ -54,7 +54,7 @@ public class PlanesOwnedManager
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
 	}
@@ -85,7 +85,7 @@ public class PlanesOwnedManager
 		// has not yet been created.
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 		}
 	}
 	

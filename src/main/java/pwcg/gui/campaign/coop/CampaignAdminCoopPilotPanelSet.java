@@ -15,7 +15,7 @@ import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.coop.model.CoopDisplayRecord;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.campaign.transfer.CampaignTransferPanelSet;
@@ -48,7 +48,7 @@ public class CampaignAdminCoopPilotPanelSet extends PwcgGuiContext implements Ac
         }
         catch (Throwable e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }
@@ -156,7 +156,7 @@ public class CampaignAdminCoopPilotPanelSet extends PwcgGuiContext implements Ac
         }
         catch (Throwable e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

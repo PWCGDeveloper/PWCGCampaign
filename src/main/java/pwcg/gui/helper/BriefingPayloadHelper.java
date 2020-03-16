@@ -8,7 +8,7 @@ import pwcg.campaign.plane.payload.IPlanePayload;
 import pwcg.campaign.plane.payload.PayloadElement;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.rofmap.brief.BriefingCrewPlanePayloadSorter;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.IFlight;
@@ -44,7 +44,7 @@ public class BriefingPayloadHelper
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
     }
 

@@ -12,8 +12,8 @@ import pwcg.aar.ui.events.model.AceKilledEvent;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SquadronMember;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
 import pwcg.gui.utils.ContextSpecificImages;
@@ -64,12 +64,12 @@ public class CampaignReportAceNewspaperGUI extends ImageResizingPanel implements
 			}
 			else
 			{
-			    Logger.log(LogLevel.ERROR, "CampaignReportAceNewspaperGUI: Failed to find pilot"); 
+			    PWCGLogger.log(LogLevel.ERROR, "CampaignReportAceNewspaperGUI: Failed to find pilot"); 
 			}
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}

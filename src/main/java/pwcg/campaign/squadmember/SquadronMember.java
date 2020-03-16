@@ -23,8 +23,8 @@ import pwcg.campaign.squadmember.SerialNumber.SerialNumberClassification;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.constants.AiSkillLevel;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.gui.dialogs.ImageCache;
 import pwcg.gui.utils.StringValidity;
 
@@ -107,12 +107,12 @@ public class SquadronMember implements Cloneable
             imageIcon = ImageCache.getInstance().getImageIcon(picPath);
             if (imageIcon == null)
             {
-                Logger.log(LogLevel.ERROR, "Got null image picture for " + getName() + " at " + picPath);
+                PWCGLogger.log(LogLevel.ERROR, "Got null image picture for " + getName() + " at " + picPath);
             }
         }
         catch (Exception ex)
         {
-            Logger.logException(ex);
+            PWCGLogger.logException(ex);
         }
 
         return imageIcon;

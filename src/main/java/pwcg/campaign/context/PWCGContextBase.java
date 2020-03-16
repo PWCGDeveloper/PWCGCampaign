@@ -17,8 +17,8 @@ import pwcg.campaign.plane.payload.IPayloadFactory;
 import pwcg.campaign.skin.SkinManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.ground.vehicle.VehicleDefinitionManager;
 
 public abstract class PWCGContextBase implements IPWCGContextManager
@@ -209,12 +209,12 @@ public abstract class PWCGContextBase implements IPWCGContextManager
                 
                 if (airfield != null)
                 {
-                    Logger.log(LogLevel.DEBUG, airfieldName + ": found on map " + map.getMapName());
+                    PWCGLogger.log(LogLevel.DEBUG, airfieldName + ": found on map " + map.getMapName());
                     return airfield;
                 }
             }
 
-            Logger.log(LogLevel.DEBUG, airfieldName + ": found NOT on map " + map.getMapName());
+            PWCGLogger.log(LogLevel.DEBUG, airfieldName + ": found NOT on map " + map.getMapName());
         }
 
         return airfield;

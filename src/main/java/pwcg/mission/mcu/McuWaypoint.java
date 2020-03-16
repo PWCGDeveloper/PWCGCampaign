@@ -4,8 +4,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.mission.flight.waypoint.WaypointAction;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.flight.waypoint.WaypointType;
@@ -163,16 +163,16 @@ public class McuWaypoint extends BaseFlightMcu implements Cloneable
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }
 
     public void dump()
     {
-        Logger.log(LogLevel.DEBUG, "MCU_Waypoint");
-        Logger.log(LogLevel.DEBUG, "    " + desc);
-        Logger.log(LogLevel.DEBUG, "    " + position.getXPos() + "   " + position.getZPos() + "   " + position.getYPos());
+        PWCGLogger.log(LogLevel.DEBUG, "MCU_Waypoint");
+        PWCGLogger.log(LogLevel.DEBUG, "    " + desc);
+        PWCGLogger.log(LogLevel.DEBUG, "    " + position.getXPos() + "   " + position.getZPos() + "   " + position.getYPos());
     }
 
 }

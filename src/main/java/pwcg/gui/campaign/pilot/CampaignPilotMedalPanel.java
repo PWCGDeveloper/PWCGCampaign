@@ -21,7 +21,7 @@ import pwcg.campaign.medals.Medal;
 import pwcg.campaign.medals.MedalManager;
 import pwcg.campaign.squadmember.SquadronMember;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -131,7 +131,7 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 		}
 		catch (Exception ex) 
 		{
-			Logger.logException(ex);
+			PWCGLogger.logException(ex);
 		}
 
 		Color bg = ColorMap.PAPER_BACKGROUND;
@@ -185,7 +185,7 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 				}
 				catch (Exception ex) 
 				{
-		            Logger.logException(ex);
+		            PWCGLogger.logException(ex);
 				}
 				
 				JLabel lMedal = new JLabel(medalIcon);
@@ -230,7 +230,7 @@ public class CampaignPilotMedalPanel extends PwcgGuiContext implements ActionLis
 		}
 		catch (Exception e)
 		{
-			Logger.logException(e);
+			PWCGLogger.logException(e);
 			ErrorDialog.internalError(e.getMessage());
 		}
 	}

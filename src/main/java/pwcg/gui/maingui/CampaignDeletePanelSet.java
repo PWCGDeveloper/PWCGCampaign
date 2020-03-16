@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import pwcg.campaign.Campaign;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.CampaignRemover;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.CampaignGuiContextManager;
 import pwcg.gui.PwcgGuiContext;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -46,7 +46,7 @@ public class CampaignDeletePanelSet extends PwcgGuiContext implements ActionList
         }
         catch (Throwable e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }
@@ -131,7 +131,7 @@ public class CampaignDeletePanelSet extends PwcgGuiContext implements ActionList
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             ErrorDialog.internalError(e.getMessage());
         }
     }

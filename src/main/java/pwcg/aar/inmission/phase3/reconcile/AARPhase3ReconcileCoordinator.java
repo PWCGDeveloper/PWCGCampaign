@@ -53,7 +53,7 @@ public class AARPhase3ReconcileCoordinator
 
     private void equipmentChangesInMission() throws PWCGException 
     {
-        EquipmentResultsInMissionHandler equipmentHandler = new EquipmentResultsInMissionHandler(campaign, aarContext.getMissionEvaluationData());
+        EquipmentResultsInMissionHandler equipmentHandler = new EquipmentResultsInMissionHandler(aarContext.getMissionEvaluationData());
         AAREquipmentLosses equipmentResultsInMission = equipmentHandler.equipmentChanges();
         reconciledInMissionData.setEquipmentLossesInMission(equipmentResultsInMission);
     }

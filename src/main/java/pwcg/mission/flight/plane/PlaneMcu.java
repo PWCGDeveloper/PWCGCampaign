@@ -24,8 +24,8 @@ import pwcg.core.exception.PWCGIOException;
 import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.core.utils.DateUtils;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogCategory;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogCategory;
 import pwcg.mission.flight.FlightStartPosition;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointPriority;
@@ -169,17 +169,17 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
                 }
                 else
                 {
-                    Logger.logByCategory(LogCategory.SKIN, "setPlaneSkin: skin rejected by skin exists");
+                    PWCGLogger.logByCategory(LogCategory.SKIN, "setPlaneSkin: skin rejected by skin exists");
                 }
             }
             else
             {
-                Logger.logByCategory(LogCategory.SKIN, "setPlaneSkin: skin rejected by end date: " + DateUtils.getDateStringDashDelimitedYYYYMMDD(newSkin.getEndDate()));
+                PWCGLogger.logByCategory(LogCategory.SKIN, "setPlaneSkin: skin rejected by end date: " + DateUtils.getDateStringDashDelimitedYYYYMMDD(newSkin.getEndDate()));
             }
         }
         else
         {
-            Logger.logByCategory(LogCategory.SKIN, "setPlaneSkin: skin rejected by start date: " + DateUtils.getDateStringDashDelimitedYYYYMMDD(newSkin.getStartDate()));
+            PWCGLogger.logByCategory(LogCategory.SKIN, "setPlaneSkin: skin rejected by start date: " + DateUtils.getDateStringDashDelimitedYYYYMMDD(newSkin.getStartDate()));
         }
     }
 
@@ -301,7 +301,7 @@ public class PlaneMcu extends EquippedPlane implements Cloneable
         }
         catch (IOException e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
     }

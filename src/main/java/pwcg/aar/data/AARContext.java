@@ -36,6 +36,8 @@ public class AARContext
     private CampaignUpdateData campaignUpdateData;
     private List<UICombatReportData> uiCombatReportData = new ArrayList<>();
     private UIDebriefData uiDebriefData = new UIDebriefData();
+    
+    private int outOfMissionEventSequenceNumber = 100000;
 
     public AARContext(Campaign campaign)
     {
@@ -168,4 +170,9 @@ public class AARContext
         return reconciledOutOfMissionData;
     }
 
+    public int getNextOutOfMissionEventSequenceNumber()
+    {
+        ++outOfMissionEventSequenceNumber;
+        return outOfMissionEventSequenceNumber;
+    }
 }

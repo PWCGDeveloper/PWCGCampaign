@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 
 import pwcg.campaign.utils.IndexGenerator;
 import pwcg.core.exception.PWCGIOException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.mission.mcu.BaseFlightMcu;
 
 public class EffectCommand extends BaseFlightMcu
@@ -50,7 +50,7 @@ public class EffectCommand extends BaseFlightMcu
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
             throw new PWCGIOException(e.getMessage());
         }
 	}

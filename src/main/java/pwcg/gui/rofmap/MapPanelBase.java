@@ -22,7 +22,7 @@ import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.factory.MapLoaderFactory;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.MathUtils;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ErrorDialog;
@@ -73,7 +73,7 @@ public abstract class MapPanelBase extends ImagePanel implements ActionListener
         }
         catch (Exception e)
         {
-            Logger.logException(e);
+            PWCGLogger.logException(e);
         }
 	}
 	

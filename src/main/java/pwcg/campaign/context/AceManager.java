@@ -22,7 +22,7 @@ import pwcg.campaign.squadmember.HistoricalAceSquadron;
 import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 
 public class AceManager
 {
@@ -185,7 +185,7 @@ public class AceManager
         }
         catch (Exception e)
         {
-             Logger.logException(e);
+             PWCGLogger.logException(e);
         }
         
         return aceCommandedSquadrons;

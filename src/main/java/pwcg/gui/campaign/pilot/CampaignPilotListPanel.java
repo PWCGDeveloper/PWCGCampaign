@@ -19,7 +19,7 @@ import pwcg.campaign.squadmember.SquadronMemberStatus;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
 import pwcg.core.exception.PWCGUserException;
-import pwcg.core.utils.Logger;
+import pwcg.core.utils.PWCGLogger;
 import pwcg.gui.colors.ColorMap;
 import pwcg.gui.dialogs.ImageCache;
 import pwcg.gui.dialogs.MonitorSupport;
@@ -63,7 +63,7 @@ public class CampaignPilotListPanel extends ImageResizingPanel
 			}
 			catch (Exception e)
 			{
-				Logger.logException(e);
+				PWCGLogger.logException(e);
 			}
 		}
 		

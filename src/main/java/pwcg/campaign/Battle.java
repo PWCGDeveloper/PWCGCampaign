@@ -5,8 +5,8 @@ import java.util.Date;
 import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.core.location.Coordinate;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class Battle
 {
@@ -105,11 +105,11 @@ public class Battle
     
     public void dump()
     {
-        Logger.log(LogLevel.DEBUG, name);
-        Logger.log(LogLevel.DEBUG, startDate.toString());
-        Logger.log(LogLevel.DEBUG, stopDate.toString());
-        Logger.log(LogLevel.DEBUG, swCorner.toString());
-        Logger.log(LogLevel.DEBUG, neCorner.toString());
-        Logger.log(LogLevel.DEBUG, "" + map);
+        PWCGLogger.log(LogLevel.DEBUG, name);
+        PWCGLogger.log(LogLevel.DEBUG, startDate.toString());
+        PWCGLogger.log(LogLevel.DEBUG, stopDate.toString());
+        PWCGLogger.log(LogLevel.DEBUG, swCorner.toString());
+        PWCGLogger.log(LogLevel.DEBUG, neCorner.toString());
+        PWCGLogger.log(LogLevel.DEBUG, "" + map);
     }
 }

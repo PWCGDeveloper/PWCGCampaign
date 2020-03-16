@@ -10,8 +10,8 @@ import pwcg.core.config.ConfigManagerGlobal;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.DirectoryReader;
 import pwcg.core.utils.FileUtils;
-import pwcg.core.utils.Logger;
-import pwcg.core.utils.Logger.LogLevel;
+import pwcg.core.utils.PWCGLogger;
+import pwcg.core.utils.PWCGLogger.LogLevel;
 
 public class MissionFileCleaner 
 {
@@ -52,7 +52,7 @@ public class MissionFileCleaner
         {
             try
             {
-                Logger.log(LogLevel.DEBUG, "Campaign = " + campaign.getCampaignData().getName() + "    " + filename);
+                PWCGLogger.log(LogLevel.DEBUG, "Campaign = " + campaign.getCampaignData().getName() + "    " + filename);
                 if (filename.contains(campaign.getCampaignData().getName()))
                 {
                     if (filename.contains(".mission"))
@@ -65,7 +65,7 @@ public class MissionFileCleaner
             }
             catch (Exception e)
             {
-                Logger.logException(e);
+                PWCGLogger.logException(e);
             }
         }
         return missionFilesForCampaign;
