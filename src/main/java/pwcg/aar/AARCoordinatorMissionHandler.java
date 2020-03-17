@@ -29,9 +29,12 @@ public class AARCoordinatorMissionHandler
     {
         determineInMissionResults(playerDeclarations);
         elapsedTimeDuringMission();
+        tabulate();
+        updateCampaign();
+
         determineOutOfMissionResults();
-        tabulateInMission();
-        updateCampaignFromMission();
+        tabulate();
+        updateCampaign();
     }
 
 	private void determineInMissionResults(Map<Integer, PlayerDeclarations> playerDeclarations) throws PWCGException
@@ -54,13 +57,13 @@ public class AARCoordinatorMissionHandler
         coordinatorOutOfMission.coordinateOutOfMissionAAR();
 	}
     
-     private void tabulateInMission() throws PWCGException
+     private void tabulate() throws PWCGException
      {
          AARTabulateCoordinator tabulateCoordinator = new AARTabulateCoordinator(campaign, aarContext);
          tabulateCoordinator.tabulateInMission();
      }
 
-     private void updateCampaignFromMission() throws PWCGException
+     private void updateCampaign() throws PWCGException
      {
          CampaignUpdater campaignUpdater = new CampaignUpdater(campaign, aarContext);
          campaignUpdater.updateCampaign();
