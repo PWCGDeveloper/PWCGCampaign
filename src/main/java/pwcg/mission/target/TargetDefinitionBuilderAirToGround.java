@@ -77,8 +77,6 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
     {
         targetDefinition.setTargetType(targetType);
         targetDefinition.setAttackingSquadron(flightInformation.getSquadron());
-        targetDefinition.setTargetName(TargetDefinitionBuilderUtils.buildTargetName(
-                flightInformation.getTargetDefinition().getTargetCountry(), targetType));
 
         determineAttackingAndDefendingCountries(targetType);
         
@@ -115,6 +113,9 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
             targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
             targetDefinition.setTargetCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
         }
+        
+        targetDefinition.setTargetName(TargetDefinitionBuilderUtils.buildTargetName(
+                targetDefinition.getTargetCountry(), targetType));
     }
 
     private TargetTypeAvailabilityInputs createTargetingInputs(Coordinate targetSearchStartLocation) throws PWCGException
