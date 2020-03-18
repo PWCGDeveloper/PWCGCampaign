@@ -83,6 +83,7 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     {
         formationTimer.write(writer);
         formationEntity.write(writer);
+        super.write(writer);
     }
 
     private void createFormation() throws PWCGException
@@ -109,6 +110,7 @@ public class MissionPointFlightBeginAirStart extends MissionPointSetSingleWaypoi
     private void createTargetAssociations() throws PWCGException
     {
         formationTimer.setTarget(formationEntity.getIndex());
+        formationTimer.setTarget(this.getFirstWaypoint().getIndex());
     }
 
     private void createObjectAssociations(PlaneMcu plane)

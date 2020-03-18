@@ -11,5 +11,4 @@ public interface ILinkedGroundUnits
     void addLinkedGroundUnit(IGroundUnitCollection groundUnit);
     List<IGroundUnitCollection> getLinkedGroundUnits();
     IGroundUnitCollection getLinkedGroundUnitByType(GroundUnitCollectionType groundUnitCollectionType);
-
 }

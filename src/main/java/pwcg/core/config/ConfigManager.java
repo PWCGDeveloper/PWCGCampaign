@@ -134,6 +134,32 @@ public abstract class ConfigManager
         throw new PWCGException("Config value not found: " + parameterKey);
     }
 
+    public String setConfigParam(String parameterKey, String value) throws PWCGException
+    {
+        String configSetKey = identifyConfigSetKey(parameterKey);
+
+        ConfigSet defaultConfigSet = defaultCampaignConfigSets.get(configSetKey);        
+        ConfigSet userConfigSet = userCampaignConfigSets.get(configSetKey);
+
+        if (userConfigSet.hasConfigItem(parameterKey))
+        {
+            ConfigItem configItem = userConfigSet.getConfigItem(parameterKey);
+            configItem.setValue(value);
+            userConfigSet.addConfigItem(parameterKey, configItem);
+            return value;
+        }
+
+        if (defaultConfigSet.hasConfigItem(parameterKey))
+        {
+            ConfigItem configItem = defaultConfigSet.getConfigItem(parameterKey);
+            configItem.setValue(value);
+            defaultConfigSet.addConfigItem(parameterKey, configItem);
+            return value;
+        }
+
+        throw new PWCGException("Config value not found: " + parameterKey);
+    }
+
     private String identifyConfigSetKey(String parameterKey) throws PWCGException
     {
         for (ConfigSet defaultConfigSet : defaultCampaignConfigSets.values())

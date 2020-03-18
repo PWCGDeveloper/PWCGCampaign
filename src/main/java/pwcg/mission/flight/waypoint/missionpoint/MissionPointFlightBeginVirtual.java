@@ -80,7 +80,6 @@ public class MissionPointFlightBeginVirtual extends MissionPointSetSingleWaypoin
     {
         McuWaypoint airStartWaypoint = AirStartWaypointFactory.createAirStart(flight, airStartNearAirfield, ingressWaypoint);
         super.addWaypoint(airStartWaypoint);
-        
     }
 
     @Override
