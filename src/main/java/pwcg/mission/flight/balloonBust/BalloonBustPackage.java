@@ -43,7 +43,7 @@ public class BalloonBustPackage implements IFlightPackage
     private BalloonBustFlight createFlight(Coordinate startCoords, IGroundUnitCollection balloonUnit) throws PWCGException
     {
         BalloonBustFlight balloonBust = new BalloonBustFlight (flightInformation);
-        balloonBust.getLinkedGroundUnits().addLinkedGroundUnit(balloonUnit);
+        balloonBust.addLinkedGroundUnit(balloonUnit);
 		balloonBust.createFlight();
         return balloonBust;
     }

@@ -26,7 +26,7 @@ public class GroundAttackPackage implements IFlightPackage
     private GroundAttackFlight createFlight(IGroundUnitCollection groundUnitCollection) throws PWCGException
     {
         GroundAttackFlight groundAttackFlight = new GroundAttackFlight (flightInformation);
-		groundAttackFlight.getLinkedGroundUnits().addLinkedGroundUnit(groundUnitCollection);
+		groundAttackFlight.addLinkedGroundUnit(groundUnitCollection);
 		groundAttackFlight.createFlight();
         return groundAttackFlight;
     }

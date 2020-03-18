@@ -83,7 +83,7 @@ public class SeaAntiShippingPackage implements IFlightPackage
             List<IGroundUnitCollection> otherConvoys = shipConvoyGenerator.generateConvoys(flightInformation, selectedShippingLane);
             for (IGroundUnitCollection convoy : otherConvoys)
             {
-                seaPatrol.getLinkedGroundUnits().addLinkedGroundUnit(convoy);
+                seaPatrol.addLinkedGroundUnit(convoy);
             }
 		}
 	}

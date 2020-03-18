@@ -9,6 +9,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
 import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public abstract class Flight implements IFlight
 {
@@ -74,6 +75,12 @@ public abstract class Flight implements IFlight
     public ILinkedFlights getLinkedFlights()
     {
         return flightData.getLinkedFlights();
+    }
+
+    @Override
+    public void addLinkedGroundUnit(IGroundUnitCollection groundUnit)
+    {
+        flightData.addLinkedGroundUnit(groundUnit);
     }
 
     @Override

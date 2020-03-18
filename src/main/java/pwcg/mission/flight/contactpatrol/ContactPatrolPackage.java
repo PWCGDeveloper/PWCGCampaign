@@ -27,7 +27,7 @@ public class ContactPatrolPackage implements IFlightPackage
     {
         ContactPatrolFlight contactPatrol = new ContactPatrolFlight (flightInformation);
         contactPatrol.createFlight();
-        contactPatrol.getLinkedGroundUnits().addLinkedGroundUnit(groundUnitCollection);
+        contactPatrol.addLinkedGroundUnit(groundUnitCollection);
         return contactPatrol;
     }
 

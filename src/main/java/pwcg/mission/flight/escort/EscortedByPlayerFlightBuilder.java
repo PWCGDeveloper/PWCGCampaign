@@ -35,7 +35,7 @@ public class EscortedByPlayerFlightBuilder
 		playerEscortedFlight.createFlight();
 		
         IGroundUnitCollection targetUnit = createTargetForPlayerEscortedFlight();
-        playerEscortedFlight.getLinkedGroundUnits().addLinkedGroundUnit(targetUnit);
+        playerEscortedFlight.addLinkedGroundUnit(targetUnit);
         
         return playerEscortedFlight;
     }
