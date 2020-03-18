@@ -13,13 +13,13 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.PWCGLogger;
 import pwcg.core.utils.PWCGLogger.LogLevel;
 import pwcg.core.utils.RandomNumberGenerator;
-import pwcg.mission.flight.FlightData;
+import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
 
 public class MissionSkinGenerator 
 {
 
-    public void assignSkinsForFlight(FlightData flight) throws PWCGException
+    public void assignSkinsForFlight(IFlight flight) throws PWCGException
     {
         if (flight.getFlightInformation().isPlayerFlight())
         {

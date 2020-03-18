@@ -7,141 +7,185 @@ import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
 import pwcg.mission.Mission;
+import pwcg.mission.MissionSkinGenerator;
+import pwcg.mission.flight.plane.PlaneMcu;
 import pwcg.mission.flight.waypoint.IVirtualWaypointPackage;
 import pwcg.mission.flight.waypoint.IWaypointPackage;
+import pwcg.mission.flight.waypoint.VirtualWaypointPackage;
+import pwcg.mission.flight.waypoint.WaypointPackage;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public abstract class Flight implements IFlight
 {
-    private FlightData flightData;
+    private IFlightInformation flightInformation;
+    private IFlightPlanes flightPlanes;
+    private ILinkedGroundUnits linkedGroundUnits = new LinkedGroundUnits();
+    private ILinkedFlights linkedFlights = new LinkedFlights();
+    private IFlightPlayerContact flightPlayerContact = new FlightPlayerContact();
+    private IWaypointPackage waypointPackage;
+    private VirtualWaypointPackage virtualWaypointPackage;
 
-    @Override
-    public abstract void createFlight() throws PWCGException;
 
     public Flight(IFlightInformation flightInformation)
     {
-        flightData = new FlightData(flightInformation);
+        this.flightInformation = flightInformation;
     }
-
-    @Override
-    public Mission getMission()
+    
+    public void initialize(IFlight flight) throws PWCGException
     {
-        return flightData.getFlightInformation().getMission();
+        this.flightPlanes = new FlightPlanes(flight);
+        this.waypointPackage = new WaypointPackage(flight);
+        this.virtualWaypointPackage = new VirtualWaypointPackage(flight);
     }
 
-    @Override
+    public void write(BufferedWriter writer) throws PWCGException 
+    {
+        flightPlanes.write(writer);
+        if (flightInformation.isVirtual())
+        {
+            virtualWaypointPackage.write(writer);
+        }
+        else
+        {
+            waypointPackage.write(writer);
+        }
+        
+        writeLinkedFlights(writer);
+        writeLinkedGroundUnits(writer);
+    }
+
+    private void writeLinkedFlights(BufferedWriter writer) throws PWCGException
+    {
+        for (IFlight flight : linkedFlights.getLinkedFlights())
+        {
+            flight.write(writer);
+            for (IFlight linkedFlight : flight.getLinkedFlights().getLinkedFlights())
+            {
+                linkedFlight.write(writer);
+            }
+        }
+    }
+
+    private void writeLinkedGroundUnits(BufferedWriter writer) throws PWCGException
+    {
+        for (IGroundUnitCollection linkedGroundUnit : linkedGroundUnits.getLinkedGroundUnits())
+        {
+            linkedGroundUnit.write(writer);
+        }
+    }
+
+    public IFlightInformation getFlightInformation()
+    {
+        return flightInformation;
+    }
+
+    public IFlightPlanes getFlightPlanes()
+    {
+        return flightPlanes;
+    }
+
+    public IWaypointPackage getWaypointPackage()
+    {
+        return waypointPackage;
+    }
+
+    public ILinkedGroundUnits getLinkedGroundUnits()
+    {
+        return linkedGroundUnits;
+    }
+
+    public void addLinkedGroundUnit(IGroundUnitCollection groundUnit)
+    {
+        linkedGroundUnits.addLinkedGroundUnit(groundUnit);        
+    }
+
+    public ILinkedFlights getLinkedFlights()
+    {
+        return linkedFlights;
+    }
+
+    public Coordinate getFlightHomePosition() throws PWCGException
+    {
+        return flightInformation.getFlightHomePosition();
+    }
+
     public Campaign getCampaign()
     {
-        return flightData.getFlightInformation().getCampaign();
+        return flightInformation.getCampaign();
     }
 
-    @Override
-    public void write(BufferedWriter writer) throws PWCGException
+    public IFlightPlayerContact getFlightPlayerContact()
     {
-        flightData.write(writer);
+        return flightPlayerContact;
     }
 
     @Override
     public void finalizeFlight() throws PWCGException
     {
-        flightData.finalize();
+        flightPlanes.finalize();
+        PlaneMcu flightLeader = flightPlanes.getFlightLeader();
+        waypointPackage.finalize(flightLeader);
+        
+        for (IFlight linkedFlight : linkedFlights.getLinkedFlights())
+        {
+            linkedFlight.finalizeFlight();
+        }
+
+        if (flightInformation.isVirtual())
+        {
+            virtualWaypointPackage.buildVirtualWaypoints();
+            virtualWaypointPackage.addDelayForPlayerDelay(flightInformation.getMission());
+        }        
+
+        MissionSkinGenerator skinGenerator = new MissionSkinGenerator();
+        skinGenerator.assignSkinsForFlight(this);
     }
 
-    @Override
-    public IFlightInformation getFlightInformation()
-    {
-        return flightData.getFlightInformation();
-    }
-
-    @Override
-    public IFlightPlanes getFlightPlanes()
-    {
-        return flightData.getFlightPlanes();
-    }
-
-    @Override
-    public IWaypointPackage getWaypointPackage()
-    {
-        return flightData.getWaypointPackage();
-    }
-
-    @Override
-    public ILinkedGroundUnits getLinkedGroundUnits()
-    {
-        return flightData.getLinkedGroundUnits();
-    }
-
-    @Override
-    public ILinkedFlights getLinkedFlights()
-    {
-        return flightData.getLinkedFlights();
-    }
-
-    @Override
-    public void addLinkedGroundUnit(IGroundUnitCollection groundUnit)
-    {
-        flightData.addLinkedGroundUnit(groundUnit);
-    }
-
-    @Override
-    public Coordinate getFlightHomePosition() throws PWCGException
-    {
-        return flightData.getFlightHomePosition();
-    }
-
-    @Override
-    public IFlightPlayerContact getFlightPlayerContact()
-    {
-        return flightData.getFlightPlayerContact();
-    }
-
-    @Override
-    public void initialize(IFlight flight) throws PWCGException
-    {
-        flightData.initialize(flight);
-    }
-
-    @Override
     public IVirtualWaypointPackage getVirtualWaypointPackage()
     {
-        return flightData.getVirtualWaypointPackage();
+        return virtualWaypointPackage;
+    }
+    
+
+    @Override
+    public Mission getMission()
+    {
+        return flightInformation.getMission();
     }
 
     @Override
     public int getFlightId()
     {
-        return flightData.getFlightInformation().getFlightId();
+        return flightInformation.getFlightId();
     }
-
 
     @Override
     public Squadron getSquadron()
     {
-        return flightData.getFlightInformation().getSquadron();
+        return flightInformation.getSquadron();
     }
 
     @Override
     public FlightTypes getFlightType()
     {
-        return flightData.getFlightInformation().getFlightType();
+        return flightInformation.getFlightType();
     }
 
     @Override
     public boolean isPlayerFlight()
     {
-        return flightData.getFlightInformation().isPlayerFlight();
+        return flightInformation.isPlayerFlight();
     }
-    
+
     @Override
     public boolean isFlightHasFighterPlanes()
     {
-        return flightData.getFlightPlanes().isFlightHasFighterPlanes();
+        return flightPlanes.isFlightHasFighterPlanes();
     }
 
     @Override
     public double getClosestContactWithPlayerDistance()
     {
-        return flightData.getFlightPlayerContact().getClosestContactWithPlayerDistance();
+        return flightPlayerContact.getClosestContactWithPlayerDistance();
     }
-
 }
