@@ -8,6 +8,7 @@ import pwcg.campaign.CampaignMode;
 import pwcg.campaign.api.IAirfield;
 import pwcg.campaign.api.IMissionFile;
 import pwcg.campaign.context.PWCGContext;
+import pwcg.campaign.context.PWCGProduct;
 import pwcg.campaign.io.json.CampaignMissionIOJson;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.location.Coordinate;
@@ -179,6 +180,11 @@ public class Mission
         	if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
         	{
         		finalizeForSinglePlayer();
+        	}
+        	
+        	if (PWCGContext.getProduct() == PWCGProduct.FC)
+        	{
+        	    FCBugHandler.fcBugs(this);
         	}
         	
             MissionAnalyzer analyzer = new MissionAnalyzer();
