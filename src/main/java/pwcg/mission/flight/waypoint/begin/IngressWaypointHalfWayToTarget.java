@@ -9,11 +9,11 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.waypoint.WaypointFactory;
 import pwcg.mission.mcu.McuWaypoint;
 
-public class IngressWaypointNearTarget implements IIngressWaypoint
+public class IngressWaypointHalfWayToTarget implements IIngressWaypoint
 {
     private IFlight flight;
 
-    public IngressWaypointNearTarget(IFlight flight) throws PWCGException 
+    public IngressWaypointHalfWayToTarget(IFlight flight) throws PWCGException 
     {
         this.flight = flight;
     }

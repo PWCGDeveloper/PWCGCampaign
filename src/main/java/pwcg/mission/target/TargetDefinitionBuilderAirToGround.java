@@ -38,10 +38,10 @@ public class TargetDefinitionBuilderAirToGround implements ITargetDefinitionBuil
     }
 
     @Override
-    public TargetDefinition buildScrambleOpposeTargetDefinition(FlightInformation scrambleFlightInformation, TargetType targetType) throws PWCGException
+    public TargetDefinition buildScrambleOpposeTargetDefinition(FlightInformation scrambleOpposingFlightInformation, TargetType targetType) throws PWCGException
     {
         buildTargetDefinitionForTacticalFlight(targetType);          
-        Coordinate targetLocation = scrambleFlightInformation.getFlightHomePosition();
+        Coordinate targetLocation = scrambleOpposingFlightInformation.getTargetSearchStartLocation();
         targetDefinition.setTargetPosition(targetLocation);
         targetDefinition.setTargetOrientation(new Orientation());
         return targetDefinition;

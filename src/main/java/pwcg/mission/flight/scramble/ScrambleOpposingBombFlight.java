@@ -31,12 +31,12 @@ public class ScrambleOpposingBombFlight extends Flight implements IFlight
 
     private void createWaypoints() throws PWCGException
     {
-        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(IngressWaypointPattern.INGRESS_NEAR_TARGET, this);
+        McuWaypoint ingressWaypoint = IngressWaypointFactory.createIngressWaypoint(IngressWaypointPattern.INGRESS_AT_TARGET, this);
 
         IMissionPointSet flightActivate = MissionPointSetFactory.createFlightActivate(this);
         this.getWaypointPackage().addMissionPointSet(flightActivate);
 
-        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, flightActivate, AirStartPattern.AIR_START_NEAR_AIRFIELD, ingressWaypoint);
+        IMissionPointSet flightBegin = MissionPointSetFactory.createFlightBegin(this, flightActivate, AirStartPattern.AIR_START_NEAR_WAYPOINT, ingressWaypoint);
         this.getWaypointPackage().addMissionPointSet(flightBegin);
 
         ScrambleOpposingBombWaypointFactory missionWaypointFactory = new ScrambleOpposingBombWaypointFactory(this, BombingWaypointFactory.BOMB_ATTACK_TIME);

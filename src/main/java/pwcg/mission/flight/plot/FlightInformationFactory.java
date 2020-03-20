@@ -108,7 +108,7 @@ public class FlightInformationFactory
         scrambleOpposingFlightInformation.setPlayerFlight(false);
         scrambleOpposingFlightInformation.setEscortForPlayerFlight(false);
         scrambleOpposingFlightInformation.setEscortedByPlayerFlight(false);
-        scrambleOpposingFlightInformation.setTargetSearchStartLocation(playerFlightInformation.getTargetPosition());
+        scrambleOpposingFlightInformation.setTargetSearchStartLocation(playerFlightInformation.getFlightHomePosition());
         buildPlanes (scrambleOpposingFlightInformation);
         setAltitude (scrambleOpposingFlightInformation);
         buildSpecificTargetDefinition (scrambleOpposingFlightInformation, TargetType.TARGET_AIRFIELD);
@@ -128,11 +128,11 @@ public class FlightInformationFactory
         flightInformation.setTargetDefinition(targetDefinition);
     }
 
-    private static void buildSpecificTargetDefinition (FlightInformation flightInformation, TargetType targetType) throws PWCGException
+    private static void buildSpecificTargetDefinition (FlightInformation scrambleOpposingFlightInformation, TargetType targetType) throws PWCGException
     {
-        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(flightInformation);
-        TargetDefinition targetDefinition = targetDefinitionBuilder.buildScrambleOpposeTargetDefinition(flightInformation, targetType);
-        flightInformation.setTargetDefinition(targetDefinition);
+        ITargetDefinitionBuilder targetDefinitionBuilder = TargetDefinitionBuilderFactory.createFlightTargetDefinitionBuilder(scrambleOpposingFlightInformation);
+        TargetDefinition targetDefinition = targetDefinitionBuilder.buildScrambleOpposeTargetDefinition(scrambleOpposingFlightInformation, targetType);
+        scrambleOpposingFlightInformation.setTargetDefinition(targetDefinition);
     }
 
     private static void buildPlanes(FlightInformation playerFlightInformation) throws PWCGException

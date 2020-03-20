@@ -37,8 +37,8 @@ public interface IProductSpecificConfiguration
     int getAircraftSpacingVertical();
     int getTakeoffSpacing();
     int getAdditionalAltitudeForEscort();
-    int getScrambleOpposeMinDistance();
-    int getScrambleOpposeMaxDistance();
+    int getIngressAtTargetMinDIstance();
+    int getIngressAtTargetMaxDIstance();
     int getDefaultIngressDistanceFromFront();
     int getBombApproachDistance();
     int getBombFinalApproachDistance();

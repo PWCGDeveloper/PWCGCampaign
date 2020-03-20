@@ -30,10 +30,10 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
     }
 
     @Override
-    public TargetDefinition buildScrambleOpposeTargetDefinition(FlightInformation scrambleFlightInformation, TargetType targetType) throws PWCGException
+    public TargetDefinition buildScrambleOpposeTargetDefinition(FlightInformation scrambleOpposingFlightInformation, TargetType targetType) throws PWCGException
     {
         createBasicTargetDefinition();
-        Coordinate targetLocation = scrambleFlightInformation.getFlightHomePosition();
+        Coordinate targetLocation = scrambleOpposingFlightInformation.getTargetSearchStartLocation();
         targetDefinition.setTargetPosition(targetLocation);
         targetDefinition.setTargetOrientation(new Orientation());
         return targetDefinition;
@@ -51,11 +51,11 @@ public class TargetDefinitionBuilderAirToAir implements ITargetDefinitionBuilder
     {
         targetDefinition.setTargetType(TargetType.TARGET_AIR);
         targetDefinition.setAttackingSquadron(flightInformation.getSquadron());
-        targetDefinition.setTargetName(buildTargetName(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()), TargetType.TARGET_AIR));
 
         targetDefinition.setAttackingCountry(flightInformation.getSquadron().determineSquadronCountry(flightInformation.getCampaign().getDate()));
         targetDefinition.setTargetCountry(flightInformation.getSquadron().determineEnemyCountry(flightInformation.getCampaign(), flightInformation.getCampaign().getDate()));
-        
+        targetDefinition.setTargetName(buildTargetName(targetDefinition.getTargetCountry(), TargetType.TARGET_AIR));
+
         targetDefinition.setDate(flightInformation.getCampaign().getDate());
         targetDefinition.setPlayerTarget((Squadron.isPlayerSquadron(flightInformation.getCampaign(), flightInformation.getSquadron().getSquadronId())));
     }

@@ -8,7 +8,6 @@ import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.escort.EscortForPlayerFlightBuilder;
 import pwcg.mission.flight.escort.NeedsEscortDecider;
 import pwcg.mission.flight.intercept.InterceptOpposingFlightBuilder;
-import pwcg.mission.flight.scramble.ScrambleOpposingFlightBuilder;
 
 public class MissionAssociateFlightBuilder
 {
@@ -22,10 +21,6 @@ public class MissionAssociateFlightBuilder
                 if (flight.getFlightType() == FlightTypes.INTERCEPT || flight.getFlightType() == FlightTypes.HOME_DEFENSE)
                 {
                     makeLinkedInterceptFlights(flight);
-                }
-                else if (flight.getFlightType() == FlightTypes.SCRAMBLE)
-                {
-                    makeLinkedScrambleFlights(flight);
                 }
                 else if (flight.getFlightType() == FlightTypes.BALLOON_BUST)
                 {
@@ -43,16 +38,6 @@ public class MissionAssociateFlightBuilder
                     escortFlightBuilder.addEscort(mission, flight);
                 }
             }
-        }
-    }
-
-    private void makeLinkedScrambleFlights(IFlight flight) throws PWCGException
-    {
-        ScrambleOpposingFlightBuilder opposingFlightBuilder = new ScrambleOpposingFlightBuilder(flight.getFlightInformation());
-        List<IFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
-        for (IFlight opposingFlight: opposingFlights)
-        {
-            flight.getLinkedFlights().addLinkedFlight(opposingFlight);
         }
     }
 

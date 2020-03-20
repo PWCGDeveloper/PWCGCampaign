@@ -31,9 +31,9 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     private static final int AIRCRAFT_SPACING_VERTICAL = 100;
     private static final int TAKEOFF_SPACING = 30;
     private static final int ADDITIONAL_ALTITUDE_FOR_ESCORT = 300;
-    private static final int SCRAMBLE_OPPOSE_MIN_DISTANCE = 3000;
-    private static final int SCRAMBLE_OPPOSE_MAX_DISTANCE = 10000;
-    private static final int INGRESS_ADDITIONAL_DISTANCE_FROM_TARGET = 6000;
+    private static final int INGRESS_AT_TARGET_MIN_DISTANCE = 2000;
+    private static final int INGRESS_AT_TARGET_MAX_DISTANCE = 7000;
+    private static final int ADDITIONAL_RENDEZVOUS_DISTANCE_FROM_FRONT = 6000;
     private static final int ATTACK_AREA_SELECT_TARGET_DISTANCE = 5000;
     private static final int ATTACK_AREA_BOMB_DROP_DISTANCE = 500;
     private static final int INGRESS_DISTANCE_FROM_FRONT = 6000;
@@ -388,21 +388,21 @@ public class FCProductSpecificConfiguration implements IProductSpecificConfigura
     }
 
     @Override
-    public int getScrambleOpposeMinDistance()
+    public int getIngressAtTargetMinDIstance()
     {
-        return SCRAMBLE_OPPOSE_MIN_DISTANCE;
+        return INGRESS_AT_TARGET_MIN_DISTANCE;
     }
 
     @Override
-    public int getScrambleOpposeMaxDistance()
+    public int getIngressAtTargetMaxDIstance()
     {
-        return SCRAMBLE_OPPOSE_MAX_DISTANCE;
+        return INGRESS_AT_TARGET_MAX_DISTANCE;
     }
 
     @Override
     public int getRendezvousDistanceFromFront()
     {
-        return getAttackAreaSelectTargetRadius() + INGRESS_ADDITIONAL_DISTANCE_FROM_TARGET;
+        return getAttackAreaSelectTargetRadius() + ADDITIONAL_RENDEZVOUS_DISTANCE_FROM_FRONT;
     }
 
     @Override

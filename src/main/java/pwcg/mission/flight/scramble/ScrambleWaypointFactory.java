@@ -44,14 +44,14 @@ public class ScrambleWaypointFactory
 	{
         List<McuWaypoint> waypoints = new ArrayList<>();
 
-		McuWaypoint startWP = createScrambleStartWaypoint();
-        waypoints.add(startWP);
+		//McuWaypoint startWP = createScrambleStartWaypoint();
+       // waypoints.add(startWP);
 
-		McuWaypoint scrambleTargetWP = createTargetScrambleWaypoint(startWP);
+		McuWaypoint scrambleTargetWP = createTargetScrambleWaypoint();
 		waypoints.add(scrambleTargetWP);
 
-		McuWaypoint scrambleReturnWP = createReturnScrambleWaypoint(scrambleTargetWP);
-		waypoints.add(scrambleReturnWP);
+		//McuWaypoint scrambleReturnWP = createReturnScrambleWaypoint(scrambleTargetWP);
+		//waypoints.add(scrambleReturnWP);
 		
         return waypoints;
 	}
@@ -73,11 +73,11 @@ public class ScrambleWaypointFactory
         return startWP;
     }
 
-    private McuWaypoint createTargetScrambleWaypoint(McuWaypoint startWP) throws PWCGException
+    private McuWaypoint createTargetScrambleWaypoint() throws PWCGException
     {
-        double angle = MathUtils.calcAngle(startWP.getPosition(), flight.getFlightInformation().getTargetPosition());
+        double angleToTarget = MathUtils.calcAngle(flight.getFlightHomePosition(), flight.getFlightInformation().getTargetPosition());
         Orientation wpOrientation = new Orientation();
-        wpOrientation.setyOri(angle);
+        wpOrientation.setyOri(angleToTarget);
         
         Coordinate scrambleTargetCoords =  flight.getFlightInformation().getTargetPosition();
         scrambleTargetCoords.setYPos(flight.getFlightInformation().getAltitude());
