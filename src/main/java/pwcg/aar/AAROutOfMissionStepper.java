@@ -26,7 +26,6 @@ public class AAROutOfMissionStepper
 	{
 	    do 
 	    {
-	        aarContext.resetContextForNextTimeIncrement();
 	        setIncrementDate(targetCampaignDate);	        
             outOfMission();
             tabulateFlightDebriefUI();
@@ -37,7 +36,6 @@ public class AAROutOfMissionStepper
 
 	public void oneStep() throws PWCGException
 	{
-        aarContext.resetContextForNextTimeIncrement();
         Date targetCampaignDate = DateUtils.advanceTimeDays(campaign.getDate(), calculateDaysForMission());
         setIncrementDate(targetCampaignDate);	        
         outOfMission();

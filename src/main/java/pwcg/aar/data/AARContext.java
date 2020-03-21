@@ -80,11 +80,6 @@ public class AARContext
         return missionLogRawData;
     }
 
-    public ReconciledInMissionData getReconciledInMissionData()
-    {
-        return reconciledInMissionData;
-    }
-
     public AARMissionEvaluationData getMissionEvaluationData()
     {
         return missionEvaluationData;
@@ -108,6 +103,11 @@ public class AARContext
     public void setReconciledInMissionData(ReconciledInMissionData reconciledInMissionData)
     {
         this.reconciledInMissionData = reconciledInMissionData;
+    }
+
+    public ReconciledInMissionData getReconciledInMissionData()
+    {
+        return reconciledInMissionData;
     }
 
     public Date getNewDate()

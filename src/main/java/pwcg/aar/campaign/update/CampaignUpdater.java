@@ -47,6 +47,8 @@ public class CampaignUpdater
         archtypeChangeHandler.updateCampaignEquipmentForArchtypeChange();
         
         finishCampaignUpdates(aarContext.getNewDate());
+        
+        aarContext.resetContextForNextTimeIncrement();
     }
     
     private void finishCampaignUpdates(Date newDate) throws PWCGException
