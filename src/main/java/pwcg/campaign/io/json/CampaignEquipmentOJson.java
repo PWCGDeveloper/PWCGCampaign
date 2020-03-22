@@ -7,7 +7,9 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.PlaneType;
 import pwcg.campaign.resupply.depot.EquipmentDepot;
+import pwcg.campaign.squadron.Squadron;
 import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.FileUtils;
 
@@ -67,10 +69,20 @@ public class CampaignEquipmentOJson
             Equipment squadronEquipment = jsoReader.readJsonFile(campaignEquipmentDir, jsonFile.getName());
             int squadronId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
             campaign.getEquipmentManager().addEquipmentForSquadron(squadronId, squadronEquipment);
-            // Allocate ID codes in case none were present
-            // Can be removed after the next campaign compatibility break
             for (EquippedPlane equippedPlane : squadronEquipment.getActiveEquippedPlanes().values())
             {
+                // Propagate any updates to the aircraft definitions into plane instances
+                PlaneType basePlane = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneById(equippedPlane.getType());
+                basePlane.copyTemplate(equippedPlane);
+
+                // Allocate ID codes in case none were present
+                // Can be removed after the next campaign compatibility break
+                if (equippedPlane.getServiceSerial() == null)
+                {
+                    Squadron squadron = PWCGContext.getInstance().getSquadronManager().getSquadron(squadronId);
+
+                    PWCGContext.getInstance().getPlaneMarkingManager().generatePlaneSerialHistoric(campaign, equippedPlane, squadron.getService());
+                }
                 if (equippedPlane.getAircraftIdCode() == null)
                     PWCGContext.getInstance().getPlaneMarkingManager().allocatePlaneIdCode(campaign, squadronId, squadronEquipment, equippedPlane);
             }
@@ -87,6 +99,16 @@ public class CampaignEquipmentOJson
             EquipmentDepot replacementEquipemnt = jsoReader.readJsonFile(campaignEquipmentReplacementDir, jsonFile.getName());
             int serviceId = Integer.valueOf(FileUtils.stripFileExtension(jsonFile.getName()));
             campaign.getEquipmentManager().addEquipmentDepotForService(serviceId, replacementEquipemnt);
+            for (EquippedPlane equippedPlane : replacementEquipemnt.getAllPlanesInDepot())
+            {
+                // Propagate any updates to the aircraft definitions into plane instances
+                PlaneType basePlane = PWCGContext.getInstance().getPlaneTypeFactory().getPlaneById(equippedPlane.getType());
+                basePlane.copyTemplate(equippedPlane);
+                // Allocate ID codes in case none were present
+                // Can be removed after the next campaign compatibility break
+                if (equippedPlane.getServiceSerial() == null)
+                    PWCGContext.getInstance().getPlaneMarkingManager().generatePlaneSerialHistoric(campaign, equippedPlane, serviceId);
+            }
         }
     }
 }

@@ -52,6 +52,17 @@ public class MissionSkinTemplateGenerator
                     params.put("UNIT_ID_CODE", squadron.determineUnitIdCode(date));
                     params.put("SUB_UNIT_ID_CODE", squadron.determineSubUnitIdCode(date));
                     params.put("AIRCRAFT_ID_CODE", plane.getAircraftIdCode());
+
+                    String serial = plane.getServiceSerial();
+                    params.put("SERIAL", serial);
+                    if (serial != null && serial.contains("-"))
+                    {
+                    	String tailcode = serial.replaceAll("-", "").substring(1);
+                    	params.put("TAIL_CODE", tailcode);
+                    	params.put("TAIL_CODE_START", tailcode.substring(0, tailcode.length() - 3));
+                    	params.put("TAIL_CODE_END", tailcode.substring(tailcode.length() - 3));
+                    }
+
                     PWCGMap currentMap = PWCGContext.getInstance().getCurrentMap();
                     params.put("WINTER", (currentMap.getMapWeather().getSeason(date) == Season.WINTER) ? 1 : 0);
                     params.put("WESTERN_FRONT", (currentMap.getMapIdentifier() == FrontMapIdentifier.BODENPLATTE_MAP) ? 1 : 0);

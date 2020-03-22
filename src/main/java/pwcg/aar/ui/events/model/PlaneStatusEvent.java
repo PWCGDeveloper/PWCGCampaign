@@ -17,6 +17,7 @@ public class PlaneStatusEvent extends AARPilotEvent
     private int planeSerialNumber;
     private String squadronName;
 	private int planeStatus;
+	private String displaySerial;
 	
     public PlaneStatusEvent(Campaign campaign, LogPlane lostPlane, int planeStatus, boolean isNewsWorthy)
     {
@@ -32,6 +33,10 @@ public class PlaneStatusEvent extends AARPilotEvent
             {
                 this.squadronName = squadron.determineDisplayName(campaign.getDate());
             }
+
+            CampaignEquipmentManager campaignEquipmentManager = campaign.getEquipmentManager();
+            EquippedPlane shotDownPlane = campaignEquipmentManager.destroyPlane(planeSerialNumber, campaign.getDate());
+            this.displaySerial = shotDownPlane.getDisplaySerial();
         }
         catch (Exception e)
         {
@@ -51,7 +56,7 @@ public class PlaneStatusEvent extends AARPilotEvent
         String prettyDate = DateUtils.getDateStringPretty(campaign.getDate());
         String planeEventText = 
                 "A " + shotDownPlane.getDisplayName() +
-                ",  serial number " + planeSerialNumber + 
+                ",  serial number " + shotDownPlane.getDisplaySerial() + 
                 ",  flown by " + shotDownPilot.getNameAndRank() + 
                 " has been lost in combat on " + prettyDate + ".\n";    ;                
 
@@ -66,7 +71,7 @@ public class PlaneStatusEvent extends AARPilotEvent
         String prettyDate = DateUtils.getDateStringPretty(campaign.getDate());
         String planeEventText = 
                 "A " + shotDownPlane.getDisplayName() +
-                ",  serial number " + planeSerialNumber + 
+                ",  serial number " + shotDownPlane.getDisplaySerial() + 
                 " has been provided to the depot for distribution to front line units on " + prettyDate + ".\n";               
 
         return planeEventText;
@@ -80,7 +85,7 @@ public class PlaneStatusEvent extends AARPilotEvent
         String prettyDate = DateUtils.getDateStringPretty(campaign.getDate());
         String planeEventText = 
                 "A " + shotDownPlane.getDisplayName() +
-                ",  serial number " + planeSerialNumber + 
+                ",  serial number " + shotDownPlane.getDisplaySerial() + 
                 " has been withdrawn from service on " + prettyDate + ".\n";                
 
         return planeEventText;
@@ -99,5 +104,10 @@ public class PlaneStatusEvent extends AARPilotEvent
     public String getSquadronName()
     {
         return squadronName;
+    }
+
+    public String getDisplaySerial()
+    {
+        return displaySerial;
     }
 }

@@ -18,20 +18,21 @@ public class PlaneEquipmentFactory
         this.campaign = campaign;
     }
 
-    public EquippedPlane makePlaneForSquadron (String planteTypeName, int squadronId) throws PWCGException
+    public EquippedPlane makePlaneForSquadron (String planeTypeName, int squadronId) throws PWCGException
     {
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
-        PlaneType planeType = planeTypeFactory.createPlaneTypeByType(planteTypeName);        
+        PlaneType planeType = planeTypeFactory.createPlaneTypeByType(planeTypeName);
         EquippedPlane equippedPlane = new EquippedPlane(planeType, campaign.getSerialNumber().getNextPlaneSerialNumber(), squadronId, PlaneStatus.STATUS_DEPLOYED);
 
         return equippedPlane;
     }
 
-    public EquippedPlane makePlaneForDepot (String planteTypeName) throws PWCGException
+    public EquippedPlane makePlaneForDepot (String planeTypeName, int service) throws PWCGException
     {
         PlaneTypeFactory planeTypeFactory = PWCGContext.getInstance().getPlaneTypeFactory();
-        PlaneType planeType = planeTypeFactory.createPlaneTypeByType(planteTypeName);        
+        PlaneType planeType = planeTypeFactory.createPlaneTypeByType(planeTypeName);
         EquippedPlane equippedPlane = new EquippedPlane(planeType, campaign.getSerialNumber().getNextPlaneSerialNumber(), -1, PlaneStatus.STATUS_DEPOT);
+        PWCGContext.getInstance().getPlaneMarkingManager().generatePlaneSerial(campaign.getDate(), equippedPlane, service);
 
         return equippedPlane;
     }

@@ -147,7 +147,7 @@ public class CampaignEquipmentChalkBoard extends ImageResizingPanel
             constraints.gridy = i;
             squadronPanel.add(pilotButton, constraints);
 
-            JLabel lMissions = new JLabel("" + plane.getSerialNumber(), JLabel.RIGHT);
+            JLabel lMissions = new JLabel(plane.getDisplaySerial(), JLabel.RIGHT);
             lMissions.setOpaque(false);
             lMissions.setForeground(buttonFG);
             lMissions.setFont(font);

@@ -58,7 +58,7 @@ public class EquipmentDepotReplenisher
             PlaneEquipmentFactory equipmentFactory,
             EquipmentDepot depot) throws PWCGException
     {
-        replacePlanesInDepot(squadronsForService, equipmentFactory, depot);        
+        replacePlanesInDepot(service, squadronsForService, equipmentFactory, depot);
         updatePlaneReplacementPoints(service, depot);
     }
 
@@ -70,7 +70,7 @@ public class EquipmentDepotReplenisher
         depot.setEquipmentPoints(updatedEquipmentPoints);
     }
 
-    private void replacePlanesInDepot(List<Squadron> squadronsForService, PlaneEquipmentFactory equipmentFactory, EquipmentDepot equipmentDepot) throws PWCGException
+    private void replacePlanesInDepot(ArmedService service, List<Squadron> squadronsForService, PlaneEquipmentFactory equipmentFactory, EquipmentDepot equipmentDepot) throws PWCGException
     {
         EquipmentReplacementCalculator equipmentReplacementCalculator = new EquipmentReplacementCalculator(campaign);
         equipmentReplacementCalculator.createArchTypeForReplacementPlane(squadronsForService);
@@ -79,14 +79,14 @@ public class EquipmentDepotReplenisher
         for (int i = 0; i < numPlanes; ++i)
         {
             PlaneArchType planeArchType = getArchTypeForReplacement(equipmentReplacementCalculator);
-            replacePlaneByArchType(equipmentFactory, equipmentDepot, planeArchType);
+            replacePlaneByArchType(service, equipmentFactory, equipmentDepot, planeArchType);
         }
     }
 
-    private void replacePlaneByArchType(PlaneEquipmentFactory equipmentFactory, EquipmentDepot equipmentDepot, PlaneArchType planeArchType) throws PWCGException
+    private void replacePlaneByArchType(ArmedService service, PlaneEquipmentFactory equipmentFactory, EquipmentDepot equipmentDepot, PlaneArchType planeArchType) throws PWCGException
     {
         String planeTypeName = EquipmentReplacementUtils.getTypeForReplacement(campaign.getDate(), planeArchType);
-        EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepot(planeTypeName);
+        EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepot(planeTypeName, service.getServiceId());
         equipmentDepot.addPlaneToDepot(equippedPlane);
         equipmentDepot.setLastReplacementDate(campaign.getDate());
     }
