@@ -1,8 +1,5 @@
 package pwcg.aar.inmission.phase2.logeval.missionresultentity;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import pwcg.aar.inmission.phase1.parse.event.IAType12;
 import pwcg.campaign.Campaign;
 import pwcg.campaign.plane.EquippedPlane;
@@ -22,10 +19,10 @@ public class LogPlane extends LogAIEntity
     private Integer squadronId;
     private boolean crashedInSight = false;
     private LogPilot logPilot;
-    private Map<String, LogTurret> logTurrets = new HashMap<>();
     private int pilotSerialNumber;
     private int planeSerialNumber;
     private int planeStatus = PlaneStatus.STATUS_DEPLOYED;
+    private LogTurrets turrets = new LogTurrets();
 
     public LogPlane(int sequenceNumber)
     {
@@ -84,11 +81,12 @@ public class LogPlane extends LogAIEntity
 
     public LogTurret createTurret(IAType12 atype12) throws PWCGException
     {
-        LogTurret logTurret = new LogTurret(atype12.getSequenceNum());
-        logTurret.initializeEntityFromEvent(atype12);
-        logTurret.setParent(this);
-        logTurrets.put(atype12.getId(), logTurret);
-        return logTurret;
+        return turrets.createTurret(atype12, this);
+    }
+
+    public boolean ownsTurret(String turretId) throws PWCGException
+    {
+        return turrets.hasTurret(turretId);
     }
 
     public boolean isWithPlane(String searchId)

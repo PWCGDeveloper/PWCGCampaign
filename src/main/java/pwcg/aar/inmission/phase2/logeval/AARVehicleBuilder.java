@@ -67,12 +67,12 @@ public class AARVehicleBuilder
         }
         else if (logTurrets.containsKey(id))
         {
-            return logTurrets.get(id);
+            return findEntityForTurret(id);
         }
 
         return null;
     }    
-    
+
     public LogAIEntity getPlaneByName(Integer serialNumber) throws PWCGException
     {
         for (LogPlane logPlane : logPlanes.values())
@@ -84,6 +84,19 @@ public class AARVehicleBuilder
         }
 
         return null;
+    }
+
+    public List<LogPlane> getPlayerLogPlanes()
+    {
+        List<LogPlane> playerLogPlanes = new ArrayList<>();
+        for (LogPlane logPlane : logPlanes.values())
+        {
+            if (SerialNumber.getSerialNumberClassification(logPlane.getPilotSerialNumber()) == SerialNumberClassification.PLAYER)
+            {
+                playerLogPlanes.add(logPlane);
+            }
+        }
+        return playerLogPlanes;
     }
 
     private void sortVehiclesByType(List<IAType12> vehicleList) throws PWCGException
@@ -157,20 +170,34 @@ public class AARVehicleBuilder
             {
                 logTurrets.put(atype12.getId(), planeResult.createTurret(atype12));
             }
-        }
-    }
-
-    public List<LogPlane> getPlayerLogPlanes()
-    {
-        List<LogPlane> playerLogPlanes = new ArrayList<>();
-        for (LogPlane logPlane : logPlanes.values())
-        {
-            if (SerialNumber.getSerialNumberClassification(logPlane.getPilotSerialNumber()) == SerialNumberClassification.PLAYER)
+            
+            LogGroundUnit groundUnitResult = logGroundUnits.get(atype12.getPid());
+            if (groundUnitResult != null)
             {
-                playerLogPlanes.add(logPlane);
+                logTurrets.put(atype12.getId(), groundUnitResult.createTurret(atype12));
             }
         }
-        return playerLogPlanes;
+    }
+    
+    private LogAIEntity findEntityForTurret(String turretId) throws PWCGException
+    {
+        for (LogPlane logPlane : logPlanes.values())
+        {
+            if (logPlane.ownsTurret(turretId))
+            {
+                return logPlane;
+            }
+        }
+        
+        for (LogGroundUnit logGroundUnit : logGroundUnits.values())
+        {
+            if (logGroundUnit.ownsTurret(turretId))
+            {
+                return logGroundUnit;
+            }
+        }
+
+        return null;
     }
 
     public Map<String, LogPlane> getLogPlanes()

@@ -9,11 +9,13 @@ public class LogTurret extends LogAIEntity
         super(sequenceNumber);
     }
 
-    public LogAIEntity getParent() {
+    public LogAIEntity getParent()
+    {
         return parent;
     }
 
-    public void setParent(LogAIEntity parent) {
+    public void setParent(LogAIEntity parent)
+    {
         this.parent = parent;
     }
 }
