@@ -78,8 +78,10 @@ public class PlaneType implements Cloneable
 
         planeType.introduction = this.introduction;
         planeType.withdrawal = this.withdrawal;
+        planeType.endProduction = this.endProduction;
 
         planeType.side = this.side;
+        planeType.primaryUsedBy = new ArrayList<>(this.primaryUsedBy);
     }
 
     public int getCruisingSpeed()

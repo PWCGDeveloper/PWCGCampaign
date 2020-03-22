@@ -3,6 +3,7 @@ package pwcg.campaign.plane;
 import java.util.Date;
 
 import pwcg.campaign.Campaign;
+import pwcg.campaign.context.Country;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.squadmember.SerialNumber;
 import pwcg.core.config.ConfigItemKeys;
@@ -16,6 +17,7 @@ public class EquippedPlane extends PlaneType
     protected int squadronId;
     protected Date dateRemovedFromService;
     protected String aircraftIdCode;
+    protected String serviceSerial;
 
     public EquippedPlane()
     {
@@ -39,6 +41,7 @@ public class EquippedPlane extends PlaneType
         equippedPlane.dateRemovedFromService = this.dateRemovedFromService;
         equippedPlane.planeStatus = this.planeStatus;
         equippedPlane.aircraftIdCode = this.aircraftIdCode;
+        equippedPlane.serviceSerial = this.serviceSerial;
     }
     
     public int getSerialNumber()
@@ -89,6 +92,27 @@ public class EquippedPlane extends PlaneType
         this.aircraftIdCode = aircraftIdCode;
     }
 
+	public String getServiceSerial() {
+		return serviceSerial;
+	}
+
+	public void setServiceSerial(String displaySerial) {
+		this.serviceSerial = displaySerial;
+	}
+
+	public String getDisplaySerial() {
+		String serialToShow = getServiceSerial();
+		if (serialToShow == null)
+		{
+			serialToShow = Integer.toString(getSerialNumber());
+		}
+		else if (primaryUsedBy.indexOf(Country.GERMANY) == 0)
+		{
+			serialToShow = "W.Nr. " + serialToShow;
+		}
+		return serialToShow;
+	}
+
     public String getDisplayMarkings() throws PWCGException {
         int generateSkins = ConfigManagerGlobal.getInstance().getIntConfigParam(ConfigItemKeys.GenerateSkinsKey);
         if (generateSkins > 0)
@@ -98,7 +122,7 @@ public class EquippedPlane extends PlaneType
         }
         else
         {
-            return Integer.toString(getSerialNumber());
+            return getDisplaySerial();
         }
     }
 }

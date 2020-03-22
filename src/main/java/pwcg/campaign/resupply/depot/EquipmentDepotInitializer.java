@@ -56,7 +56,7 @@ public class EquipmentDepotInitializer
         for (int i = 0; i < numPlanes; ++i)
         {
             String planeTypeName = equipmentWeightCalculator.getPlaneTypeFromWeight();
-            EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepot(planeTypeName);
+            EquippedPlane equippedPlane = equipmentFactory.makePlaneForDepot(planeTypeName, service.getServiceId());
             equipment.addEquippedPlane(equippedPlane);
         }
     }

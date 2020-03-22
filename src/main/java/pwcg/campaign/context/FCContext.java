@@ -1,5 +1,7 @@
 package pwcg.campaign.context;
 
+import java.util.Date;
+
 import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGMap.FrontMapIdentifier;
 import pwcg.campaign.plane.Equipment;
@@ -67,8 +69,16 @@ public class FCContext extends PWCGContextBase implements IPWCGContextManager
 
             @Override
             public String determineDisplayMarkings(Campaign campaign, EquippedPlane equippedPlane) throws PWCGException {
-                return null;
+                return equippedPlane.getDisplaySerial();
             }
+
+			@Override
+			public void generatePlaneSerial(Date date, EquippedPlane plane, int service) throws PWCGException {
+			}
+
+			@Override
+			public void generatePlaneSerialHistoric(Campaign campaign, EquippedPlane plane, int service) throws PWCGException {
+			}
         };
     }
 }

@@ -7,6 +7,7 @@ import pwcg.campaign.Campaign;
 import pwcg.campaign.context.PWCGContext;
 import pwcg.campaign.plane.Equipment;
 import pwcg.campaign.plane.EquippedPlane;
+import pwcg.campaign.plane.IPlaneMarkingManager;
 import pwcg.campaign.plane.PlaneArchType;
 import pwcg.campaign.plane.PlaneEquipmentFactory;
 import pwcg.campaign.plane.PlaneType;
@@ -57,11 +58,12 @@ public class InitialSquadronEquipper
         {
             String planeTypeName = equipmentWeightCalculator.getPlaneTypeFromWeight();
             
+            IPlaneMarkingManager planeMarkingManager = PWCGContext.getInstance().getPlaneMarkingManager();
             PlaneEquipmentFactory equipmentFactory = new PlaneEquipmentFactory(campaign);
             EquippedPlane equippedPlane = equipmentFactory.makePlaneForSquadron(planeTypeName, squadron.getSquadronId());
-            PWCGContext.getInstance().getPlaneMarkingManager().allocatePlaneIdCode(campaign, squadron.getSquadronId(), equipment, equippedPlane);
+            planeMarkingManager.generatePlaneSerialHistoric(campaign, equippedPlane, squadron.getService());
+            planeMarkingManager.allocatePlaneIdCode(campaign, squadron.getSquadronId(), equipment, equippedPlane);
             equipment.addEquippedPlane(equippedPlane);
         }
     }
-
 }
