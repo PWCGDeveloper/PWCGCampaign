@@ -21,6 +21,8 @@ public class PWCGErrorBundler
 	
 	String targetErrorFileName = "";
 	
+    String programDataDir; 
+    String targetDataDir; 
 
 	public PWCGErrorBundler()
 	{
@@ -33,7 +35,9 @@ public class PWCGErrorBundler
 		    Campaign campaign = PWCGContext.getInstance().getCampaign();
 	        
 			targetErrorFileName = campaign.getCampaignData().getName() + DateUtils.getDateStringYYYYMMDDHHMMSS(new Date());
-			
+		    programDataDir = createSourceCampaignDirPath(); 
+		    targetDataDir = createTargetDirCampaignPath(); 
+
 			// make sure the error dir is there
 			createTargetDirs();
 			copyMissionFiles();
@@ -50,7 +54,6 @@ public class PWCGErrorBundler
 
 	private void createTargetDirs()
 	{
-		// make sure the error dir is there
 		createErrorDir();
 		createTargetDirRoot();
 		createTargetDataDir();
@@ -101,12 +104,7 @@ public class PWCGErrorBundler
 
 	public void copyCampaignFiles() throws IOException, PWCGException
 	{
-		String programDataDir = createSourceCampaignDirPath(); 
-		String targetDataDir = createTargetDirCampaignPath(); 
-				
         copyDirectory(programDataDir, targetDataDir, "*");
-        copyDirectory(programDataDir + "\\Personnel", targetDataDir + "\\Personnel", "*");
-        copyDirectory(programDataDir + "\\Equipment", targetDataDir + "\\Equipment", "*");
 	}
 
 	private String createErrorDirPath()
@@ -169,7 +167,12 @@ public class PWCGErrorBundler
 		{
 			if (file.isDirectory())
 			{
-				continue;
+                if (prefix.equalsIgnoreCase("*") || file.getName().startsWith(prefix))
+                {
+                    String newSource = source + "\\" + file.getName();
+                    String newDestination = destination + "\\" + file.getName();
+    			    copyDirectory(newSource, newDestination, "*");
+                }
 			}
 			else
 			{

@@ -39,7 +39,7 @@ public class GroundElementAreaFire implements IGroundElement
         attackArea.setName(pwcgGroundUnitInformation.getName() + " AttackArea");
         attackArea.setDesc(pwcgGroundUnitInformation.getName() + " AttackArea");
         attackArea.setOrientation(new Orientation());       
-        attackArea.setPosition(pwcgGroundUnitInformation.getFireTarget()); 
+        attackArea.setPosition(pwcgGroundUnitInformation.getPosition()); 
         attackArea.setPriority(WaypointPriority.PRIORITY_HIGH);
         attackArea.setAttackRadius(attackAreaDistance);
         attackArea.setTime(3600);

@@ -13,7 +13,7 @@ public class McuAttackArea extends BaseFlightMcu
 	private int attackAir  = 0;
 	private int attackGTargets = 0;
 	private int attackRadius = 20000;
-	private int time = 60;
+	private int time = 6000;
 	private WaypointPriority priority = WaypointPriority.PRIORITY_HIGH;
 
 	public McuAttackArea (AttackAreaType attackAreaType)

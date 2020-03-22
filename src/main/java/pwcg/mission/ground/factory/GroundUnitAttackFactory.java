@@ -13,8 +13,8 @@ import pwcg.mission.ground.builder.TrainUnitBuilder;
 import pwcg.mission.ground.builder.TruckConvoyBuilder;
 import pwcg.mission.ground.org.IGroundUnitCollection;
 import pwcg.mission.ground.vehicle.VehicleClass;
-import pwcg.mission.target.TargetType;
 import pwcg.mission.target.TargetDefinition;
+import pwcg.mission.target.TargetType;
 
 public class GroundUnitAttackFactory
 {

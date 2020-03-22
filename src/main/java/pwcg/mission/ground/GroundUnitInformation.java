@@ -16,7 +16,6 @@ public class GroundUnitInformation
     private Date date;
     private Coordinate position = new Coordinate();
     private Coordinate destination = new Coordinate();
-    private Coordinate fireTarget = new Coordinate();
 	private Orientation orientation = new Orientation();
     private TargetType targetType = TargetType.TARGET_NONE;
     private GroundUnitSize unitSize = GroundUnitSize.GROUND_UNIT_SIZE_TINY;
@@ -59,16 +58,6 @@ public class GroundUnitInformation
     public void setDestination(Coordinate destination)
     {
         this.destination = destination;
-    }
-
-    public Coordinate getFireTarget()
-    {
-        return fireTarget;
-    }
-
-    public void setFireTarget(Coordinate fireTarget)
-    {
-        this.fireTarget = fireTarget;
     }
 
     public Orientation getOrientation()
