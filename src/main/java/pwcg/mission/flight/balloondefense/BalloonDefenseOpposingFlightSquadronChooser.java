@@ -1,4 +1,4 @@
-package pwcg.mission.flight.intercept;
+package pwcg.mission.flight.balloondefense;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,14 +10,12 @@ import pwcg.core.exception.PWCGException;
 import pwcg.core.utils.RandomNumberGenerator;
 import pwcg.mission.OpposingSquadronChooser;
 import pwcg.mission.flight.IFlightInformation;
-import pwcg.mission.target.TargetCategory;
-import pwcg.mission.target.TargetDefinition;
 
-public class InterceptOpposingFlightSquadronChooser
+public class BalloonDefenseOpposingFlightSquadronChooser
 {
     private IFlightInformation playerFlightInformation;
 
-    public InterceptOpposingFlightSquadronChooser(IFlightInformation playerFlightInformation)
+    public BalloonDefenseOpposingFlightSquadronChooser(IFlightInformation playerFlightInformation)
     {
         this.playerFlightInformation = playerFlightInformation;
     }
@@ -32,23 +30,16 @@ public class InterceptOpposingFlightSquadronChooser
 
     private List<Role> determineOpposingRoles()
     {
-        TargetDefinition interceptedFlightTargetDefinitions = playerFlightInformation.getTargetDefinition().getLinkedFlightTargetDefinition();
-        if (interceptedFlightTargetDefinitions.getTargetCategory() == TargetCategory.TARGET_CATEGORY_STRATEGIC)
-        {
-            return new ArrayList<>(Arrays.asList(Role.ROLE_BOMB, Role.ROLE_STRAT_BOMB, Role.ROLE_RECON));
-        }
-        else
-        {
-            return new ArrayList<>(Arrays.asList(Role.ROLE_BOMB, Role.ROLE_ATTACK, Role.ROLE_DIVE_BOMB, Role.ROLE_STRAT_BOMB, Role.ROLE_RECON));
-        }
+        return new ArrayList<>(Arrays.asList(Role.ROLE_FIGHTER));
     }
 
     private int determineNumberOfOpposingFlights() 
     {
-        int numOpposingFlights = 1 + RandomNumberGenerator.getRandom(3);
-        if (playerFlightInformation.getCampaign().isCoop())
+        int numOpposingFlights = 1;
+        int twoFlightsDiceRoll = RandomNumberGenerator.getRandom(100);
+        if (twoFlightsDiceRoll < 10)
         {
-            numOpposingFlights = 1;
+            numOpposingFlights = 2;
         }
         return numOpposingFlights;
     }

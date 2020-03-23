@@ -5,6 +5,8 @@ import java.util.List;
 import pwcg.core.exception.PWCGException;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
+import pwcg.mission.flight.balloonBust.BalloonBustOpposingFlightBuilder;
+import pwcg.mission.flight.balloondefense.BalloonDefenseOpposingFlightBuilder;
 import pwcg.mission.flight.escort.EscortForPlayerFlightBuilder;
 import pwcg.mission.flight.escort.NeedsEscortDecider;
 import pwcg.mission.flight.intercept.InterceptOpposingFlightBuilder;
@@ -24,11 +26,11 @@ public class MissionAssociateFlightBuilder
                 }
                 else if (flight.getFlightType() == FlightTypes.BALLOON_BUST)
                 {
-                    // TODO Flying Circus
+                    makeLinkedBalloonBustFlights(flight);
                 }
                 else if (flight.getFlightType() == FlightTypes.BALLOON_DEFENSE)
                 {
-                    // TODO Flying Circus
+                    makeLinkedBalloonDefenseFlights(flight);
                 }
                 
                 NeedsEscortDecider needsEscortDecider = new NeedsEscortDecider();
@@ -51,4 +53,23 @@ public class MissionAssociateFlightBuilder
         }
     }
 
+    private void makeLinkedBalloonBustFlights(IFlight flight) throws PWCGException
+    {
+        BalloonBustOpposingFlightBuilder opposingFlightBuilder = new BalloonBustOpposingFlightBuilder(flight.getFlightInformation());
+        List<IFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
+        for (IFlight opposingFlight: opposingFlights)
+        {
+            flight.getLinkedFlights().addLinkedFlight(opposingFlight);
+        }
+    }
+
+    private void makeLinkedBalloonDefenseFlights(IFlight flight) throws PWCGException
+    {
+        BalloonDefenseOpposingFlightBuilder opposingFlightBuilder = new BalloonDefenseOpposingFlightBuilder(flight.getFlightInformation());
+        List<IFlight> opposingFlights = opposingFlightBuilder.buildOpposingFlights();
+        for (IFlight opposingFlight: opposingFlights)
+        {
+            flight.getLinkedFlights().addLinkedFlight(opposingFlight);
+        }
+    }
 }
