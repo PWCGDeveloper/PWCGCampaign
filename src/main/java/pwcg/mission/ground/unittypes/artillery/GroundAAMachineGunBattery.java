@@ -12,6 +12,7 @@ import pwcg.mission.ground.org.GroundUnit;
 import pwcg.mission.ground.org.GroundUnitNumberCalculator;
 import pwcg.mission.ground.org.IGroundElement;
 import pwcg.mission.ground.vehicle.VehicleClass;
+import pwcg.mission.mcu.AttackAreaType;
 
 public class GroundAAMachineGunBattery extends GroundUnit
 {
@@ -82,9 +83,9 @@ public class GroundAAMachineGunBattery extends GroundUnit
     }
 
     @Override
-    protected void addElements()
+    protected void addElements() throws PWCGException
     {
-        IGroundElement areaFire = GroundElementFactory.createGroundElementAreaFire(pwcgGroundUnitInformation, vehicle, AA_MG_ATTACK_AREA);
+        IGroundElement areaFire = GroundElementFactory.createGroundElementAreaFire(pwcgGroundUnitInformation, pwcgGroundUnitInformation.getPosition(), vehicle, AttackAreaType.AIR_TARGETS, AA_MG_ATTACK_AREA);
         this.addGroundElement(areaFire);        
     }
 }

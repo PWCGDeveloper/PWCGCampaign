@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 
 import pwcg.core.exception.PWCGException;
 import pwcg.core.exception.PWCGIOException;
+import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.waypoint.WaypointPriority;
 import pwcg.mission.ground.GroundUnitInformation;
@@ -17,20 +18,23 @@ import pwcg.mission.mcu.McuValidator;
 public class GroundElementAreaFire implements IGroundElement
 {
     private McuTimer attackAreaTimer = new McuTimer();
-    private McuAttackArea attackArea = new McuAttackArea(AttackAreaType.AIR_TARGETS);
+    private McuAttackArea attackArea;
     private GroundUnitInformation pwcgGroundUnitInformation;
     private IVehicle vehicle;
     private int attackAreaDistance = 1000;
+    private Coordinate targetPosition;
 
-	public GroundElementAreaFire(GroundUnitInformation pwcgGroundUnitInformation, IVehicle vehicle, int attackAreaDistance)
+	public GroundElementAreaFire(GroundUnitInformation pwcgGroundUnitInformation, Coordinate targetPosition, IVehicle vehicle, AttackAreaType attackAreaType, int attackAreaDistance)
 	{
         this.pwcgGroundUnitInformation = pwcgGroundUnitInformation;
         this.vehicle = vehicle;
+        this.targetPosition = targetPosition;
         this.attackAreaDistance = attackAreaDistance;
+        this.attackArea = new McuAttackArea(attackAreaType);
 	}
 
 	@Override
-    public void createGroundUnitElement() 
+    public void createGroundUnitElement() throws PWCGException 
     {
         attackAreaTimer.setName(pwcgGroundUnitInformation.getName() + " AttackArea Timer");      
         attackAreaTimer.setDesc(pwcgGroundUnitInformation.getName() + " AttackArea Timer");       
@@ -38,11 +42,12 @@ public class GroundElementAreaFire implements IGroundElement
 
         attackArea.setName(pwcgGroundUnitInformation.getName() + " AttackArea");
         attackArea.setDesc(pwcgGroundUnitInformation.getName() + " AttackArea");
-        attackArea.setOrientation(new Orientation());       
-        attackArea.setPosition(pwcgGroundUnitInformation.getPosition()); 
         attackArea.setPriority(WaypointPriority.PRIORITY_HIGH);
         attackArea.setAttackRadius(attackAreaDistance);
         attackArea.setTime(3600);
+        
+        attackArea.setOrientation(new Orientation());       
+        attackArea.setPosition(targetPosition); 
 
         createTargetAssociations();
         createObjectAssociations();
@@ -95,6 +100,12 @@ public class GroundElementAreaFire implements IGroundElement
         {
             throw new PWCGException("GroundElementAreaFire: attack not linked to vehicle");
         }
+    }
+
+    public void setTargetPosition(Coordinate targetPosition)
+    {
+        this.targetPosition = targetPosition.copy();
+        attackArea.setPosition(this.targetPosition.copy()); 
     }
 }	
 

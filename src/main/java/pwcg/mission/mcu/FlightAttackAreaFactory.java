@@ -4,7 +4,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.FlightTypes;
 
-public class AttackAreaFactory
+public class FlightAttackAreaFactory
 {
     public static final int ATTACK_AREA_SELECT_TARGET_DISTANCE = 7000;
     public static final int ATTACK_AREA_BOMB_DROP_DISTANCE = 1000;

@@ -77,7 +77,7 @@ public class GroundAntiTankArtillery extends GroundUnit
     }
 
     @Override
-    protected void addElements()
+    protected void addElements() throws PWCGException
     {
         IGroundElement areaFire = GroundElementFactory.createGroundElementDirectFire(pwcgGroundUnitInformation, vehicle);
         this.addGroundElement(areaFire);         

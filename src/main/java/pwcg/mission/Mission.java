@@ -18,6 +18,7 @@ import pwcg.mission.ambient.AmbientGroundUnitBuilder;
 import pwcg.mission.data.PwcgGeneratedMission;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.ground.builder.IndirectFireAssignmentHandler;
 import pwcg.mission.ground.vehicle.VehicleSetBuilderComprehensive;
 import pwcg.mission.io.MissionDescriptionFile;
 import pwcg.mission.io.MissionFileFactory;
@@ -177,6 +178,8 @@ public class Mission
             missionWaypointIconBuilder.createWaypointIcons(missionFlightBuilder.getPlayerFlights());
             missionAirfieldIconBuilder.createWaypointIcons(campaign, this);
 
+            assignIndirectFireTargets();
+
         	if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
         	{
         		finalizeForSinglePlayer();
@@ -194,7 +197,13 @@ public class Mission
         isFinalized = true;
     }
 
-	private void finalizeForSinglePlayer() throws PWCGException 
+	private void assignIndirectFireTargets() throws PWCGException
+    {
+	    IndirectFireAssignmentHandler indirectFireAssignmentHandler = new IndirectFireAssignmentHandler(this);
+	    indirectFireAssignmentHandler.makeIndirectFireAssignments();
+    }
+
+    private void finalizeForSinglePlayer() throws PWCGException 
 	{
         if (campaign.getCampaignData().getCampaignMode() == CampaignMode.CAMPAIGN_MODE_SINGLE)
 	    {

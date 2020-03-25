@@ -8,7 +8,7 @@ import pwcg.mission.mcu.BaseFlightMcu;
 
 public interface IGroundElement
 {
-    void createGroundUnitElement();
+    void createGroundUnitElement() throws PWCGException;
 
     void linkToNextElement(int targetIndex);
 

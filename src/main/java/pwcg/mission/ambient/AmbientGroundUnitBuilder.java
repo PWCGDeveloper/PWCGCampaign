@@ -91,4 +91,14 @@ public class AmbientGroundUnitBuilder
             aaa.write(writer);
         }
     }
+    
+    public List<IGroundUnitCollection> getAllAmbientGroundUnits()
+    {
+        List<IGroundUnitCollection> allAmbientGroundUnits = new ArrayList<>();
+        allAmbientGroundUnits.addAll(ambientBattles);
+        allAmbientGroundUnits.addAll(ambientTrucks);
+        allAmbientGroundUnits.addAll(ambientTrains);
+        allAmbientGroundUnits.addAll(AAA);
+        return allAmbientGroundUnits;
+    }
  }

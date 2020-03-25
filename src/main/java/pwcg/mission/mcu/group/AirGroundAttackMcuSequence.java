@@ -9,7 +9,7 @@ import pwcg.core.location.Coordinate;
 import pwcg.core.location.Orientation;
 import pwcg.mission.flight.IFlightInformation;
 import pwcg.mission.flight.plane.PlaneMcu;
-import pwcg.mission.mcu.AttackAreaFactory;
+import pwcg.mission.mcu.FlightAttackAreaFactory;
 import pwcg.mission.mcu.AttackAreaType;
 import pwcg.mission.mcu.McuAttackArea;
 import pwcg.mission.mcu.McuDeactivate;
@@ -38,7 +38,7 @@ public class AirGroundAttackMcuSequence
         int attackMcuTriggerDistance = productSpecificConfiguration.getBombFinalApproachDistance();
 
         missionBeginUnit = new MissionBeginSelfDeactivatingCheckZone(flightInformation.getTargetPosition(), attackMcuTriggerDistance);
-        attackArea = AttackAreaFactory.createAttackArea(flightInformation.getFlightType(), flightInformation.getTargetPosition(), flightInformation.getAltitude(), attackTime);
+        attackArea = FlightAttackAreaFactory.createAttackArea(flightInformation.getFlightType(), flightInformation.getTargetPosition(), flightInformation.getAltitude(), attackTime);
         createSequence(attackTime) ;
         linkTargets() ;
     }

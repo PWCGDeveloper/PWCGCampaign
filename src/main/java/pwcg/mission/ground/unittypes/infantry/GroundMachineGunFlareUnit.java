@@ -56,7 +56,7 @@ public class GroundMachineGunFlareUnit extends GroundMachineGunUnit
     }
 
     @Override
-    protected void addElements()
+    protected void addElements() throws PWCGException
     {
         IGroundElement areaFire = GroundElementFactory.createGroundElementDirectFire(pwcgGroundUnitInformation, vehicle);
         this.addGroundElement(areaFire);           

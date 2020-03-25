@@ -21,7 +21,7 @@ public class ShipSubmarineConvoyUnit extends GroundUnit
     }   
 
     @Override
-    protected void addElements()
+    protected void addElements() throws PWCGException
     {       
         int unitSpeed = 5;
         IGroundElement movement = GroundElementFactory.createGroundElementMovement(pwcgGroundUnitInformation, vehicle, unitSpeed);

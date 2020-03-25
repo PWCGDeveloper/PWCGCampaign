@@ -13,6 +13,7 @@ import pwcg.mission.flight.FlightTypeCategory;
 import pwcg.mission.flight.FlightTypes;
 import pwcg.mission.flight.IFlight;
 import pwcg.mission.flight.plane.PlaneMcu;
+import pwcg.mission.ground.org.IGroundUnitCollection;
 
 public class MissionFlightBuilder
 {
@@ -135,6 +136,18 @@ public class MissionFlightBuilder
         }
 
         return allFlights;
+    }
+
+
+    public List<IGroundUnitCollection> getAllFlightLinkedGroundUnits()
+    {
+        List<IGroundUnitCollection> allAmbientGroundUnits = new ArrayList<>();
+        for (IFlight flight : getAllAerialFlights())
+        {
+            allAmbientGroundUnits.addAll(flight.getLinkedGroundUnits().getLinkedGroundUnits());
+        }
+
+        return allAmbientGroundUnits;
     }
 
     public boolean hasPlayerFlightWithFlightTypes(List<FlightTypes> flightTypes)

@@ -195,7 +195,7 @@ public abstract class GroundUnit implements IGroundUnit
         return spawnTimer;
     }
 
-    List<IGroundElement> getGroundElements()
+    protected List<IGroundElement> getGroundElements()
     {
         return groundElements;
     }
